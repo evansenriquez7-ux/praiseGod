@@ -1,0 +1,148 @@
+{
+  "node_id": "A-REI.B.4a",
+  "standard_description": "Use the method of completing the square to transform any quadratic equation in x into an equation of the form (x – p)^(2) = q that has the same solutions. Derive the quadratic formula from this form.",
+  "subject": "Math",
+  "grade_level": "HS",
+  "problems": [
+    {
+      "source": "mathfish",
+      "text": "Task\nIn ''Building an explicit quadratic function'' a particular quadratic function was rewritten by completing the square. The quadratic function used was $q(x) = 2x^2 + 4x - 16$ and this function was rewritten as $$ q(x) = 2\\left(x+1\\right)^2 - 18 = 2\\left((x+1)^2 - 9\\right). $$ Some of the advantages to this form are that the $x$-coordinate of the vertex of the graph of $q$ can be found more easily and the two roots of $q$ can also be found readily. The right hand side of this equation can be seen as a horizontal translation by $-1$, then squaring, then a vertical translation by $-9$, and finally a multiplicative scaling by $2$. The goal of this task is first to employ the same technique on a general quadratic function and then derive the quadratic formula. To assist in this process, we first rewrite the equation above: $$ \\frac{q(x)}{2} = \\left(x+1\\right)^2 - 9. $$\nLet $f$ be a quadratic function, so we have $$ f(x) = ax^2 + bx + c. $$ Here $a,b,c$ are real numbers and we assume that $a$ is non-zero.\nFollowing the lead of our example problem, we begin by dividing out the leading coefficient:\nMultiplying $f(x)$ by $\\frac{1}{a}$ gives $$ \\frac{f(x)}{a} = x^2 + \\frac{b}{a}x + \\frac{c}{a}. $$ We wish to write this as the square of a linear function $x + d$ plus a constant. Find numbers $d$ and $k$ so that $\\frac{f(x)}{a} = (x+d)^2 + k$.\nUsing the values for $d$ and $k$ found in part (b), rewrite $f(x) = ax^2 + bx + c$ as $$ \\frac{f(x)}{a} = \\left(x+d\\right)^2 + k. $$ Why do the expressions $f(x)$ and $\\frac{f(x)}{a}$ have the same roots?\nExplain how to deduce the quadratic formula for the roots of $f$ from part (c).\n",
+      "metadata": {
+        "problem_activity_type": "task",
+        "url": "https://tasks.illustrativemathematics.org/content-standards/HSA/REI/B/4/tasks/505",
+        "html": "content-standards_HSA_REI_B_4_tasks_505.html",
+        "title": "Building a General Quadratic Function"
+      },
+      "source_curriculum": "Illustrative Mathematics",
+      "relation": "Alignment",
+      "id": "im_task_000848"
+    },
+    {
+      "source": "mathfish",
+      "text": "Problem 1\nSolve the equation by completing the square. Show each step clearly.\n$${3x^2-5x+1=0}$$\nProblem 2\nA quadratic equation is written below in standard, general form.\n$${ax^2+bx+c=0}$$\nSolve for\n$$x$$\nby completing the square as you did in Anchor Problem #1.\nProblem 3\nRecall the equation from Anchor Problem #1:\n$${3x^2-5x+1=0}$$\n.\nUse the quadratic formula to determine the exact roots of the equation.\n",
+      "metadata": {
+        "problem_activity_type": "anchor_problems",
+        "url": "https://www.fishtanklearning.org/curriculum/math/algebra-1/quadratic-equations-and-applications/lesson-6/",
+        "html": "algebra-1_quadratic-equations-and-applications_lesson-6.html",
+        "grade / subject": "algebra-1",
+        "unit": "quadratic-equations-and-applications",
+        "lesson_number": 6
+      },
+      "source_curriculum": "Fishtank Learning",
+      "relation": "Addressing",
+      "id": "fl_problem_001665"
+    },
+    {
+      "source": "mathfish",
+      "text": "Task\nEnrico has discovered a geometric technique for ''completing the square'' to find the solutions of quadratic equations. To solve the equation $x^2 + 6x + 4 = 0$, Enrico draws a square of dimension $x$ by $x$ and attaches 6 strips (3 of dimension 1 by $x$ and 3 of dimension $x$ by 1) to make the picture below:\n###IMAGE0###\nTo complete the larger square, Enrico adds 9 squares of dimension 1 by 1. He has 4 of them in his initial expression so he needs five more as shown in the picture. So the picture represents the equation $$ (x+3)^2 = (x^2 + 6x + 4) + 5 $$\nExplain how Enrico's method helps find the roots of $x^2 + 6x + 4 = 0$.\nHelp Enrico draw a picture for, and then solve, the equation $x^2 - 6x + 4 = 0$.\n",
+      "metadata": {
+        "problem_activity_type": "task",
+        "url": "https://tasks.illustrativemathematics.org/content-standards/HSA/REI/B/4/tasks/1827",
+        "html": "content-standards_HSA_REI_B_4_tasks_1827.html",
+        "title": "Visualizing Completing the Square"
+      },
+      "source_curriculum": "Illustrative Mathematics",
+      "relation": "Alignment",
+      "id": "im_task_000841"
+    },
+    {
+      "source": "mathfish",
+      "text": "Use the quadratic formula to find the exact roots of the equation below.\n$${-4x^2-3x+8=y}$$\n",
+      "metadata": {
+        "problem_activity_type": "target_task",
+        "url": "https://www.fishtanklearning.org/curriculum/math/algebra-1/quadratic-equations-and-applications/lesson-6/",
+        "html": "algebra-1_quadratic-equations-and-applications_lesson-6.html",
+        "grade / subject": "algebra-1",
+        "unit": "quadratic-equations-and-applications",
+        "lesson_number": 6
+      },
+      "source_curriculum": "Fishtank Learning",
+      "relation": "Addressing",
+      "id": "fl_problem_001666"
+    },
+    {
+      "source": "mathfish",
+      "text": "Task\nRenee reasons as follows to solve the equation $x^2 + x + 1 = 0$.\nFirst I will rewrite this as a square plus some number.\n$$\nx^2 + x + 1 = \\left(x+\\frac{1}{2}\\right)^2 + \\frac{3}{4}.\n$$\nNow I can subtract $\\frac{3}{4}$ from both sides of the equation\n$$\n\\left(x+\\frac{1}{2}\\right)^2 = -\\frac{3}{4}.\n$$\nBut I can't take the square root of a negative number so I can't solve this equation.\nShow how Renee might have continued to find the complex solutions of $x^2 + x + 1 = 0$.\nApply Renee's reasoning to find the solutions to $x^2 + 4x + 6  = 0$.\n",
+      "metadata": {
+        "problem_activity_type": "task",
+        "url": "https://tasks.illustrativemathematics.org/content-standards/HSA/REI/B/4/tasks/1690",
+        "html": "content-standards_HSA_REI_B_4_tasks_1690.html",
+        "title": "Completing the square"
+      },
+      "source_curriculum": "Illustrative Mathematics",
+      "relation": "Alignment",
+      "id": "im_task_000840"
+    },
+    {
+      "source": "mathfish",
+      "text": "Task\nIn ''Building an explicit quadratic function'' a particular quadratic function was rewritten by completing the square. The quadratic function used was $q(x) = 2x^2 + 4x - 16$ and this function was rewritten as $$ q(x) = 2\\left(x+1\\right)^2 - 18 = 2\\left((x+1)^2 - 9\\right). $$ Some of the advantages to this form are that the $x$-coordinate of the vertex of the graph of $q$ can be found more easily and the two roots of $q$ can also be found readily. The right hand side of this equation can be seen as a horizontal translation by $-1$, then squaring, then a vertical translation by $-9$, and finally a multiplicative scaling by $2$. The goal of this task is first to employ the same technique on a general quadratic function and then derive the quadratic formula. To assist in this process, we first rewrite the equation above: $$ \\frac{q(x)}{2} = \\left(x+1\\right)^2 - 9. $$\nLet $f$ be a quadratic function, so we have $$ f(x) = ax^2 + bx + c. $$ Here $a,b,c$ are real numbers and we assume that $a$ is non-zero.\nFollowing the lead of our example problem, we begin by dividing out the leading coefficient:\nMultiplying $f(x)$ by $\\frac{1}{a}$ gives $$ \\frac{f(x)}{a} = x^2 + \\frac{b}{a}x + \\frac{c}{a}. $$ We wish to write this as the square of a linear function $x + d$ plus a constant. Find numbers $d$ and $k$ so that $\\frac{f(x)}{a} = (x+d)^2 + k$.\nUsing the values for $d$ and $k$ found in part (b), rewrite $f(x) = ax^2 + bx + c$ as $$ \\frac{f(x)}{a} = \\left(x+d\\right)^2 + k. $$ Why do the expressions $f(x)$ and $\\frac{f(x)}{a}$ have the same roots?\nExplain how to deduce the quadratic formula for the roots of $f$ from part (c).\n",
+      "metadata": {
+        "problem_activity_type": "task",
+        "url": "https://tasks.illustrativemathematics.org/content-standards/HSA/SSE/B/tasks/505",
+        "html": "content-standards_HSA_SSE_B_tasks_505.html",
+        "title": "Building a General Quadratic Function"
+      },
+      "source_curriculum": "Illustrative Mathematics",
+      "relation": "Alignment",
+      "id": "im_task_000912"
+    },
+    {
+      "source": "mathfish",
+      "text": "Task\nIn ''Building an explicit quadratic function'' a particular quadratic function was rewritten by completing the square. The quadratic function used was $q(x) = 2x^2 + 4x - 16$ and this function was rewritten as $$ q(x) = 2\\left(x+1\\right)^2 - 18 = 2\\left((x+1)^2 - 9\\right). $$ Some of the advantages to this form are that the $x$-coordinate of the vertex of the graph of $q$ can be found more easily and the two roots of $q$ can also be found readily. The right hand side of this equation can be seen as a horizontal translation by $-1$, then squaring, then a vertical translation by $-9$, and finally a multiplicative scaling by $2$. The goal of this task is first to employ the same technique on a general quadratic function and then derive the quadratic formula. To assist in this process, we first rewrite the equation above: $$ \\frac{q(x)}{2} = \\left(x+1\\right)^2 - 9. $$\nLet $f$ be a quadratic function, so we have $$ f(x) = ax^2 + bx + c. $$ Here $a,b,c$ are real numbers and we assume that $a$ is non-zero.\nFollowing the lead of our example problem, we begin by dividing out the leading coefficient:\nMultiplying $f(x)$ by $\\frac{1}{a}$ gives $$ \\frac{f(x)}{a} = x^2 + \\frac{b}{a}x + \\frac{c}{a}. $$ We wish to write this as the square of a linear function $x + d$ plus a constant. Find numbers $d$ and $k$ so that $\\frac{f(x)}{a} = (x+d)^2 + k$.\nUsing the values for $d$ and $k$ found in part (b), rewrite $f(x) = ax^2 + bx + c$ as $$ \\frac{f(x)}{a} = \\left(x+d\\right)^2 + k. $$ Why do the expressions $f(x)$ and $\\frac{f(x)}{a}$ have the same roots?\nExplain how to deduce the quadratic formula for the roots of $f$ from part (c).\n",
+      "metadata": {
+        "problem_activity_type": "task",
+        "url": "https://tasks.illustrativemathematics.org/content-standards/HSF/BF/B/3/tasks/505",
+        "html": "content-standards_HSF_BF_B_3_tasks_505.html",
+        "title": "Building a General Quadratic Function"
+      },
+      "source_curriculum": "Illustrative Mathematics",
+      "relation": "Alignment",
+      "id": "im_task_000936"
+    },
+    {
+      "source": "mathfish",
+      "text": "Task\nRenee reasons as follows to solve the equation $x^2 + x + 1 = 0$.\nFirst I will rewrite this as a square plus some number.\n$$\nx^2 + x + 1 = \\left(x+\\frac{1}{2}\\right)^2 + \\frac{3}{4}.\n$$\nNow I can subtract $\\frac{3}{4}$ from both sides of the equation\n$$\n\\left(x+\\frac{1}{2}\\right)^2 = -\\frac{3}{4}.\n$$\nBut I can't take the square root of a negative number so I can't solve this equation.\nShow how Renee might have continued to find the complex solutions of $x^2 + x + 1 = 0$.\nApply Renee's reasoning to find the solutions to $x^2 + 4x + 6  = 0$.\n",
+      "metadata": {
+        "problem_activity_type": "task",
+        "url": "https://tasks.illustrativemathematics.org/content-standards/HSN/CN/C/7/tasks/1690",
+        "html": "content-standards_HSN_CN_C_7_tasks_1690.html",
+        "title": "Completing the square"
+      },
+      "source_curriculum": "Illustrative Mathematics",
+      "relation": "Alignment",
+      "id": "im_task_001299"
+    },
+    {
+      "source": "mathfish",
+      "text": "Describe the translations and dilations you could use to map circle\n$$A$$\nto circle\n$$B$$\n.\nCircle\n$$A$$\n:\n$$(x+4)^2+(y+3)^2=16$$\nCircle\n$$B$$\n:\n$$ x^2+y^2-4y-2x+2=1$$\n",
+      "metadata": {
+        "problem_activity_type": "target_task",
+        "url": "https://www.fishtanklearning.org/curriculum/math/geometry/circles/lesson-3/",
+        "html": "geometry_circles_lesson-3.html",
+        "grade / subject": "geometry",
+        "unit": "circles",
+        "lesson_number": 3
+      },
+      "source_curriculum": "Fishtank Learning",
+      "relation": "Building On",
+      "id": "fl_problem_001962"
+    },
+    {
+      "source": "mathfish",
+      "text": "Problem 1\nBoth equations below model the same circle:\nEquation A:\n$$x^2+y^2-2x+6y=15$$\nEquation B:\n$$(x-1)^2+(y+3)^2=25$$\nEquation A is the general form of the circle while Equation B is the standard form of the circle. Describe how you could transform Equation A to get Equation B.\nProblem 2\nWrite the following equation in standard form to identify the center and the radius of the circle.\n$$x^2+y^2+10x-8y-6=2$$\n",
+      "metadata": {
+        "problem_activity_type": "anchor_problems",
+        "url": "https://www.fishtanklearning.org/curriculum/math/geometry/circles/lesson-3/",
+        "html": "geometry_circles_lesson-3.html",
+        "grade / subject": "geometry",
+        "unit": "circles",
+        "lesson_number": 3
+      },
+      "source_curriculum": "Fishtank Learning",
+      "relation": "Building On",
+      "id": "fl_problem_001961"
+    }
+  ],
+  "tasks": [],
+  "khan_exercises": []
+}

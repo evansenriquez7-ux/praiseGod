@@ -1,0 +1,3104 @@
+{
+  "node_id": "5.MD.C.5a",
+  "standard_description": "Find the volume of a right rectangular prism with whole-number side lengths by packing it with unit cubes, and show that the volume is the same as would be found by multiplying the edge lengths, equivalently by multiplying the height by the area of the base. Represent threefold whole-number products as volumes, e.g., to represent the associative property of multiplication.",
+  "subject": "Math",
+  "grade_level": "5",
+  "problems": [
+    {
+      "source": "mathfish",
+      "text": "Task\nMake sure you have plenty of snap cubes.\nBuild a rectangular prism that is 2 cubes on one side, 3 cubes on another, and 5 cubes on the third side.\nWe will say that the volume of one cube is 1 cubic unit. What is the volume of the rectangular prism?\nJenna said,\nThe rectangular prism is 2 cubes by 3 cubes by 5 cubes, so the volume of the prism is $2\\times3\\times5$ cubic units.\nAri said,\nI don't know what $2\\times3\\times5$ means. Do you multiply the 2 and 3 first\n$$\n\\begin{align}\n2\\times3\\times5 &= (2\\times3)\\times5\\\\\n&=6\\times 5\n\\end{align}\n$$\nso you have 6 groups of 5, or do you multiply the 3 and the 5 first\n$$\\begin{align}2\\times3\\times5 &= 2\\times(3\\times5)\\\\\n&=2\\times 15\n\\end{align}\n$$\nso you have 2 groups of 15?\nExplain how you can see the rectangular prism as being made of 2 groups with 15 cubes in each.\nExplain how you can also see the rectangular prism as being made of 6 groups with 5 cubes in each.\nDoes it matter which numbers you multiply first when you want to find the volume of a rectangular prism?\n",
+      "metadata": {
+        "problem_activity_type": "task",
+        "url": "https://tasks.illustrativemathematics.org/content-standards/5/MD/C/5/tasks/1655",
+        "html": "content-standards_5_MD_C_5_tasks_1655.html",
+        "title": "Using Volume to Understand the Associative Property of Multiplication"
+      },
+      "source_curriculum": "Illustrative Mathematics",
+      "relation": "Alignment",
+      "id": "im_task_000255"
+    }
+  ],
+  "tasks": [],
+  "khan_exercises": [
+    {
+      "node_id": "483e90d1a66b5e7fbc5b42981a130f7c",
+      "title": "Volume of rectangular prisms",
+      "description": "Find volume of a rectangular prism with labeled whole number side lengths.",
+      "topic_path": [
+        "Khan Academy (English - US curriculum)",
+        "Math by grade",
+        "5th grade",
+        "Volume",
+        "Volume of rectangular prisms",
+        "Volume of rectangular prisms"
+      ],
+      "item_count": 21,
+      "mastery_model": {
+        "type": "m_of_n",
+        "m": 3,
+        "n": 4
+      },
+      "template_file": "perseus_templates/483e90d1a66b5e7fbc5b42981a130f7c.json",
+      "items": [
+        {
+          "item_id": "693c0e1508c052168cd8b96764311987",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n\n\n[[☃ image 1]]\n\nWe can fit $6\\times 5=30$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $30 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $30$ cubes. But, how many layers fit in the prism?\n\n\n\n[[☃ image 1]]\n\n",
+            "We can fit $7$ layers of cubes in the prism because its height is $7\\text{ cm}$.\n\nMultiplying, we get\n\n$30\\times 7=210$ cubes\n\nwhich means the volume of the prism is $210\\text{ cm}^3$.\n\n\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$210 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 6 centimeters long and 5 centimeters wide. The height is 7 centimeters high. ",
+                "backgroundImage": {
+                  "height": 240,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/dd95b3ba963716c4eab2e3429df264ad09ee1200",
+                  "width": 242
+                },
+                "box": [
+                  242,
+                  240
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 210
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "8609382b44ae58759cb34addd45e3f26",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $3\\times 4=12$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $12 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $12$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $6$ layers of cubes in the prism because its height is $6\\text{ cm}$.\n\nMultiplying, we get\n\n$12\\times 6=72$ cubes\n\nwhich means the volume of the prism is $72\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$72 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 3 centimeters long and 4 centimeters wide. The height is 6 centimeters high. ",
+                "backgroundImage": {
+                  "height": 247,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/c3d4ee0ab3c1acf2b792c11ae17ce4e32e6cb4db",
+                  "width": 191
+                },
+                "box": [
+                  191,
+                  247
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 72
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "a67e0c68d1495900ad19ccb4fa880918",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $2\\times 5=10$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $10 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $10$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $7$ layers of cubes in the prism because its height is $7\\text{ cm}$.\n\nMultiplying, we get\n\n$10\\times 7=70$ cubes\n\nwhich means the volume of the prism is $70\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$70 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 5 centimeters long and 2 centimeters wide. The height is 7 centimeters high. ",
+                "backgroundImage": {
+                  "height": 257,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/ffeaac8251eaa898b45962998f6f4b54973f966e",
+                  "width": 229
+                },
+                "box": [
+                  229,
+                  257
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 70
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "93f47bbbd10d5bcca013d98c91e1629f",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $8\\times 1=8$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $8 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $8$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $5$ layers of cubes in the prism because its height is $5\\text{ cm}$.\n\nMultiplying, we get\n\n$8\\times 5=40$ cubes\n\nwhich means the volume of the prism is $40\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$40 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 1 centimeter long and 8 centimeters wide. The height is 5 centimeters high. ",
+                "backgroundImage": {
+                  "height": 228,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/85adbf35603abd5785832a561b7777a74a406073",
+                  "width": 153
+                },
+                "box": [
+                  153,
+                  228
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 40
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "11bfefb89d80511791646a17820614a5",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $2\\times 2=4$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $4 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $4$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $2$ layers of cubes in the prism because its height is $2\\text{ cm}$.\n\nMultiplying, we get\n\n$4\\times 2=8$ cubes\n\nwhich means the volume of the prism is $8\\text{ cm}^3$.\n\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$8 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 2 centimeters long and 2 centimeters wide. The height is 2 centimeters high. ",
+                "backgroundImage": {
+                  "height": 301,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/e0ccd441518942f6dcd4e5ed225be86349dad060",
+                  "width": 382
+                },
+                "box": [
+                  382,
+                  301
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 8
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "d04a224ef12d5d5faf8a5fa93fcc447e",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $3\\times 3=9$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $9 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $9$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $3$ layers of cubes in the prism because its height is $3\\text{ cm}$.\n\nMultiplying, we get\n\n$9\\times 3=27$ cubes\n\nwhich means the volume of the prism is $27\\text{ cm}^3$.\n\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$27 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 3 centimeters long and 3 centimeters wide. The height is 3 centimeters high. ",
+                "backgroundImage": {
+                  "height": 269,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/250a64fbc321e874a4220d5a063fdab75bcf0211",
+                  "width": 323
+                },
+                "box": [
+                  323,
+                  269
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 27
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "093528dea83556f8bd58785d32ad3be0",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n\n[[☃ image 1]]\n\nWe can fit $4\\times 4=16$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $16 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $16$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $4$ layers of cubes in the prism because its height is $4\\text{ cm}$.\n\nMultiplying, we get\n\n$16\\times 4=64$ cubes\n\nwhich means the volume of the prism is $64\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$64 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 4 centimeters long and 4 centimeters wide. The height is 4 centimeters high. ",
+                "backgroundImage": {
+                  "height": 253,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/104ba58525e4dc53ebf00bff523a6da7fd885ce2",
+                  "width": 293
+                },
+                "box": [
+                  293,
+                  253
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 64
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "a4ddfc028f6851a3945b8e0997f4bccb",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $5\\times 5=25$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $25 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $25$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $5$ layers of cubes in the prism because its height is $5\\text{ cm}$.\n\nMultiplying, we get\n\n$25\\times 5=125$ cubes\n\nwhich means the volume of the prism is $125\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$125 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 5 centimeters long and 5 centimeters wide. The height is 5 centimeters high. ",
+                "backgroundImage": {
+                  "height": 243,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/a3b81bef7dde809f9239ae1ede0037fa006cf2ae",
+                  "width": 275
+                },
+                "box": [
+                  275,
+                  243
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 125
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "a458d72856b75448bda78165a5ab705d",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $6\\times 5=30$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $30 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $30$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $5$ layers of cubes in the prism because its height is $5\\text{ cm}$.\n\nMultiplying, we get\n\n$30\\times 5=150$ cubes\n\nwhich means the volume of the prism is $150\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$150 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 5 centimeters long and 6 centimeters wide. The height is 5 centimeters high. ",
+                "backgroundImage": {
+                  "height": 237,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/2b97a87f2aee1c04330af7e66daf67a0ef5ba97f",
+                  "width": 268
+                },
+                "box": [
+                  268,
+                  237
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 150
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "d2ab1ac0bda45df297d4d1717594b39c",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $4\\times 3=12$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $12 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $12$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $2$ layers of cubes in the prism because its height is $2\\text{ cm}$.\n\nMultiplying, we get\n\n$12\\times 2=24$ cubes\n\nwhich means the volume of the prism is $24\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$24 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 3 centimeters long and 4 centimeters wide. The height is 2 centimeters high. ",
+                "backgroundImage": {
+                  "height": 211,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/3dd04ecbd018518c6ffebd3d60b2b1cab5ba0dc4",
+                  "width": 306
+                },
+                "box": [
+                  306,
+                  211
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 24
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "582d50a7fc635b1895ae01a4cd61a463",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $5\\times 3=15$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $15 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $15$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $4$ layers of cubes in the prism because its height is $4\\text{ cm}$.\n\nMultiplying, we get\n\n$15\\times 4=60$ cubes\n\nwhich means the volume of the prism is $60\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$60 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 3 centimeters long and 5 centimeters wide. The height is 4 centimeters high. ",
+                "backgroundImage": {
+                  "height": 245,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/bb484cb5cc498be0d7a3be50c6028494a339b218",
+                  "width": 247
+                },
+                "box": [
+                  247,
+                  245
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 60
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "c237344bf2a959bd95d110bf5ae2ad8e",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $3\\times 6=18$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $18 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $18$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $5$ layers of cubes in the prism because its height is $5\\text{ cm}$.\n\nMultiplying, we get\n\n$18\\times 5=90$ cubes\n\nwhich means the volume of the prism is $90\\text{ cm}^3$.\n\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$90 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 6 centimeters long and 3 centimeters wide. The height is 5 centimeters high. ",
+                "backgroundImage": {
+                  "height": 223,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/9d50bee53abcd418a9f7655d257ba306100b3162",
+                  "width": 286
+                },
+                "box": [
+                  286,
+                  223
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 90
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "c4a41182091c5c0f8129016863d2eb89",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $7\\times 4=28$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $28 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $28$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $2$ layers of cubes in the prism because its height is $2\\text{ cm}$.\n\nMultiplying, we get\n\n$28\\times 2=56$ cubes\n\nwhich means the volume of the prism is $56\\text{ cm}^3$.\n\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$56 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 4 centimeters long and 7 centimeters wide. The height is 2 centimeters high. ",
+                "backgroundImage": {
+                  "height": 172,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/7b293ec2c8df0653f20246f7e4405386cf1f9c7e",
+                  "width": 265
+                },
+                "box": [
+                  265,
+                  172
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 56
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "201825ecaa69546e80b6ada2be8d38e3",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $8\\times 3=24$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $24 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $24$ cubes. But, how many layers fit in the prism?\n\n\n[[☃ image 1]]\n\n",
+            "We can fit $1$ layer of cubes in the prism because its height is $1\\text{ cm}$.\n\nMultiplying, we get\n\n$24\\times 1=24$ cubes\n\nwhich means the volume of the prism is $24\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$24 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 3 centimeters long and 8 centimeters wide. The height is 1 centimeter high. ",
+                "backgroundImage": {
+                  "height": 142,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/876fe32289a9895aadac033bd7141c79bb13c1d0",
+                  "width": 229
+                },
+                "box": [
+                  229,
+                  142
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 24
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "4d4092694c4253b0beef09d9987b24f7",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $2\\times 7=14$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $14 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $14$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $4$ layers of cubes in the prism because its height is $4\\text{ cm}$.\n\nMultiplying, we get\n\n$14\\times 4=56$ cubes\n\nwhich means the volume of the prism is $56\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$56 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 7 centimeters long and 2 centimeters wide. The height is 4 centimeters high. ",
+                "backgroundImage": {
+                  "height": 170,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/acaeaf578cac7d8477587699861c9d17d91e3f7b",
+                  "width": 287
+                },
+                "box": [
+                  287,
+                  170
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 56
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "fd28e2ad24925cb29bba3ebfdd626a68",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $6\\times 6=36$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $36 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $36$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $1$ layer of cubes in the prism because its height is $1\\text{ cm}$.\n\nMultiplying, we get\n\n$36\\times 1=36$ cubes\n\nwhich means the volume of the prism is $36\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$36 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 6 centimeters long and 6 centimeters wide. The height is 1 centimeter high. ",
+                "backgroundImage": {
+                  "height": 109,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/1aec86601abe3843d4034e2338d049d280ad6cfb",
+                  "width": 263
+                },
+                "box": [
+                  263,
+                  109
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 36
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "b76bb8ab33b957098841ebcfbbd2a2b2",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $1\\times 8=8$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $8 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $8$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $5$ layers of cubes in the prism because its height is $5\\text{ cm}$.\n\nMultiplying, we get\n\n$8\\times 5=40$ cubes\n\nwhich means the volume of the prism is $40\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$40 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 8 centimeters long and 1 centimeter wide. The height is 5 centimeters high. ",
+                "backgroundImage": {
+                  "height": 178,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/18bdc26fae3b478694b48ad4545127fb35b5bce3",
+                  "width": 288
+                },
+                "box": [
+                  288,
+                  178
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 40
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "85816e379f6359bf98809bd27b6318b1",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $9\\times 1=9$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $9 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $9$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $6$ layers of cubes in the prism because its height is $6\\text{ cm}$.\n\nMultiplying, we get\n\n$9\\times 6=54$ cubes\n\nwhich means the volume of the prism is $54\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$54 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 1 centimeter long and 9 centimeters wide. The height is 6 centimeters high. ",
+                "backgroundImage": {
+                  "height": 225,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/682be2ab47e77997ec51a84e773f40f63123a045",
+                  "width": 138
+                },
+                "box": [
+                  138,
+                  225
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 54
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "15eeff4ec3e25ff884b302e57b8ffc1d",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $4\\times 2=8$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $8 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $8$ cubes. But, how many layers fit in the prism?\n\n\n[[☃ image 1]]\n\n",
+            "We can fit $9$ layers of cubes in the prism because its height is $9\\text{ cm}$.\n\nMultiplying, we get\n\n$8\\times 9=72$ cubes\n\nwhich means the volume of the prism is $72\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$72 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 2 centimeters long and 4 centimeters wide. The height is 9 centimeters high. ",
+                "backgroundImage": {
+                  "height": 242,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/5d5031574ad436d7cf920c3bb7fc6ac41795838f",
+                  "width": 118
+                },
+                "box": [
+                  118,
+                  242
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 72
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "86f2432a5fba54878a2d383583a84fff",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $8\\times 2=16$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $16 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $16$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $3$ layers of cubes in the prism because its height is $3\\text{ cm}$.\n\nMultiplying, we get\n\n$16\\times 3=48$ cubes\n\nwhich means the volume of the prism is $48\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$48 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 2 centimeters long and 8 centimeters wide. The height is 3 centimeters high. ",
+                "backgroundImage": {
+                  "height": 199,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/4715282939ccecb9c738af2d8298c9e4ebb7fc37",
+                  "width": 201
+                },
+                "box": [
+                  201,
+                  199
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 48
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "d8c003cba47d5e4480e008cd27851bc6",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $7\\times 5=35$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $35 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $35$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $4$ layers of cubes in the prism because its height is $4\\text{ cm}$.\n\nMultiplying, we get\n\n$35\\times 4=140$ cubes\n\nwhich means the volume of the prism is $140\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$140 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 7 centimeters long and 5 centimeters wide. The height is 4 centimeters high. ",
+                "backgroundImage": {
+                  "height": 168,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/cdadcfa27947c1720eb0197cd80507e1561347e4",
+                  "width": 266
+                },
+                "box": [
+                  266,
+                  168
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 140
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "node_id": "2c7501c626175d1d9ba93fbdfd24ba8a",
+      "title": "Volume of rectangular prisms",
+      "description": "Find volume of a rectangular prism with labeled whole number side lengths.",
+      "topic_path": [
+        "Khan Academy (English - US curriculum)",
+        "Math by grade",
+        "Eureka Math/EngageNY",
+        "5th grade (Eureka Math/EngageNY)",
+        "Module 5: Addition and multiplication with volume and area",
+        "Topic B: Volume and the operations of multiplication and addition",
+        "Volume of rectangular prisms"
+      ],
+      "item_count": 21,
+      "mastery_model": {
+        "type": "m_of_n",
+        "m": 3,
+        "n": 4
+      },
+      "template_file": "perseus_templates/2c7501c626175d1d9ba93fbdfd24ba8a.json",
+      "items": [
+        {
+          "item_id": "693c0e1508c052168cd8b96764311987",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n\n\n[[☃ image 1]]\n\nWe can fit $6\\times 5=30$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $30 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $30$ cubes. But, how many layers fit in the prism?\n\n\n\n[[☃ image 1]]\n\n",
+            "We can fit $7$ layers of cubes in the prism because its height is $7\\text{ cm}$.\n\nMultiplying, we get\n\n$30\\times 7=210$ cubes\n\nwhich means the volume of the prism is $210\\text{ cm}^3$.\n\n\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$210 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 6 centimeters long and 5 centimeters wide. The height is 7 centimeters high. ",
+                "backgroundImage": {
+                  "height": 240,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/dd95b3ba963716c4eab2e3429df264ad09ee1200",
+                  "width": 242
+                },
+                "box": [
+                  242,
+                  240
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 210
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "8609382b44ae58759cb34addd45e3f26",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $3\\times 4=12$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $12 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $12$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $6$ layers of cubes in the prism because its height is $6\\text{ cm}$.\n\nMultiplying, we get\n\n$12\\times 6=72$ cubes\n\nwhich means the volume of the prism is $72\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$72 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 3 centimeters long and 4 centimeters wide. The height is 6 centimeters high. ",
+                "backgroundImage": {
+                  "height": 247,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/c3d4ee0ab3c1acf2b792c11ae17ce4e32e6cb4db",
+                  "width": 191
+                },
+                "box": [
+                  191,
+                  247
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 72
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "a67e0c68d1495900ad19ccb4fa880918",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $2\\times 5=10$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $10 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $10$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $7$ layers of cubes in the prism because its height is $7\\text{ cm}$.\n\nMultiplying, we get\n\n$10\\times 7=70$ cubes\n\nwhich means the volume of the prism is $70\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$70 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 5 centimeters long and 2 centimeters wide. The height is 7 centimeters high. ",
+                "backgroundImage": {
+                  "height": 257,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/ffeaac8251eaa898b45962998f6f4b54973f966e",
+                  "width": 229
+                },
+                "box": [
+                  229,
+                  257
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 70
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "93f47bbbd10d5bcca013d98c91e1629f",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $8\\times 1=8$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $8 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $8$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $5$ layers of cubes in the prism because its height is $5\\text{ cm}$.\n\nMultiplying, we get\n\n$8\\times 5=40$ cubes\n\nwhich means the volume of the prism is $40\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$40 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 1 centimeter long and 8 centimeters wide. The height is 5 centimeters high. ",
+                "backgroundImage": {
+                  "height": 228,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/85adbf35603abd5785832a561b7777a74a406073",
+                  "width": 153
+                },
+                "box": [
+                  153,
+                  228
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 40
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "11bfefb89d80511791646a17820614a5",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $2\\times 2=4$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $4 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $4$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $2$ layers of cubes in the prism because its height is $2\\text{ cm}$.\n\nMultiplying, we get\n\n$4\\times 2=8$ cubes\n\nwhich means the volume of the prism is $8\\text{ cm}^3$.\n\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$8 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 2 centimeters long and 2 centimeters wide. The height is 2 centimeters high. ",
+                "backgroundImage": {
+                  "height": 301,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/e0ccd441518942f6dcd4e5ed225be86349dad060",
+                  "width": 382
+                },
+                "box": [
+                  382,
+                  301
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 8
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "d04a224ef12d5d5faf8a5fa93fcc447e",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $3\\times 3=9$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $9 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $9$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $3$ layers of cubes in the prism because its height is $3\\text{ cm}$.\n\nMultiplying, we get\n\n$9\\times 3=27$ cubes\n\nwhich means the volume of the prism is $27\\text{ cm}^3$.\n\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$27 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 3 centimeters long and 3 centimeters wide. The height is 3 centimeters high. ",
+                "backgroundImage": {
+                  "height": 269,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/250a64fbc321e874a4220d5a063fdab75bcf0211",
+                  "width": 323
+                },
+                "box": [
+                  323,
+                  269
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 27
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "093528dea83556f8bd58785d32ad3be0",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n\n[[☃ image 1]]\n\nWe can fit $4\\times 4=16$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $16 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $16$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $4$ layers of cubes in the prism because its height is $4\\text{ cm}$.\n\nMultiplying, we get\n\n$16\\times 4=64$ cubes\n\nwhich means the volume of the prism is $64\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$64 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 4 centimeters long and 4 centimeters wide. The height is 4 centimeters high. ",
+                "backgroundImage": {
+                  "height": 253,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/104ba58525e4dc53ebf00bff523a6da7fd885ce2",
+                  "width": 293
+                },
+                "box": [
+                  293,
+                  253
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 64
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "a4ddfc028f6851a3945b8e0997f4bccb",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $5\\times 5=25$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $25 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $25$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $5$ layers of cubes in the prism because its height is $5\\text{ cm}$.\n\nMultiplying, we get\n\n$25\\times 5=125$ cubes\n\nwhich means the volume of the prism is $125\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$125 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 5 centimeters long and 5 centimeters wide. The height is 5 centimeters high. ",
+                "backgroundImage": {
+                  "height": 243,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/a3b81bef7dde809f9239ae1ede0037fa006cf2ae",
+                  "width": 275
+                },
+                "box": [
+                  275,
+                  243
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 125
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "a458d72856b75448bda78165a5ab705d",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $6\\times 5=30$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $30 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $30$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $5$ layers of cubes in the prism because its height is $5\\text{ cm}$.\n\nMultiplying, we get\n\n$30\\times 5=150$ cubes\n\nwhich means the volume of the prism is $150\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$150 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 5 centimeters long and 6 centimeters wide. The height is 5 centimeters high. ",
+                "backgroundImage": {
+                  "height": 237,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/2b97a87f2aee1c04330af7e66daf67a0ef5ba97f",
+                  "width": 268
+                },
+                "box": [
+                  268,
+                  237
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 150
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "d2ab1ac0bda45df297d4d1717594b39c",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $4\\times 3=12$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $12 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $12$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $2$ layers of cubes in the prism because its height is $2\\text{ cm}$.\n\nMultiplying, we get\n\n$12\\times 2=24$ cubes\n\nwhich means the volume of the prism is $24\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$24 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 3 centimeters long and 4 centimeters wide. The height is 2 centimeters high. ",
+                "backgroundImage": {
+                  "height": 211,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/3dd04ecbd018518c6ffebd3d60b2b1cab5ba0dc4",
+                  "width": 306
+                },
+                "box": [
+                  306,
+                  211
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 24
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "582d50a7fc635b1895ae01a4cd61a463",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $5\\times 3=15$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $15 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $15$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $4$ layers of cubes in the prism because its height is $4\\text{ cm}$.\n\nMultiplying, we get\n\n$15\\times 4=60$ cubes\n\nwhich means the volume of the prism is $60\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$60 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 3 centimeters long and 5 centimeters wide. The height is 4 centimeters high. ",
+                "backgroundImage": {
+                  "height": 245,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/bb484cb5cc498be0d7a3be50c6028494a339b218",
+                  "width": 247
+                },
+                "box": [
+                  247,
+                  245
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 60
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "c237344bf2a959bd95d110bf5ae2ad8e",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $3\\times 6=18$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $18 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $18$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $5$ layers of cubes in the prism because its height is $5\\text{ cm}$.\n\nMultiplying, we get\n\n$18\\times 5=90$ cubes\n\nwhich means the volume of the prism is $90\\text{ cm}^3$.\n\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$90 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 6 centimeters long and 3 centimeters wide. The height is 5 centimeters high. ",
+                "backgroundImage": {
+                  "height": 223,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/9d50bee53abcd418a9f7655d257ba306100b3162",
+                  "width": 286
+                },
+                "box": [
+                  286,
+                  223
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 90
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "c4a41182091c5c0f8129016863d2eb89",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $7\\times 4=28$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $28 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $28$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $2$ layers of cubes in the prism because its height is $2\\text{ cm}$.\n\nMultiplying, we get\n\n$28\\times 2=56$ cubes\n\nwhich means the volume of the prism is $56\\text{ cm}^3$.\n\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$56 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 4 centimeters long and 7 centimeters wide. The height is 2 centimeters high. ",
+                "backgroundImage": {
+                  "height": 172,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/7b293ec2c8df0653f20246f7e4405386cf1f9c7e",
+                  "width": 265
+                },
+                "box": [
+                  265,
+                  172
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 56
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "201825ecaa69546e80b6ada2be8d38e3",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $8\\times 3=24$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $24 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $24$ cubes. But, how many layers fit in the prism?\n\n\n[[☃ image 1]]\n\n",
+            "We can fit $1$ layer of cubes in the prism because its height is $1\\text{ cm}$.\n\nMultiplying, we get\n\n$24\\times 1=24$ cubes\n\nwhich means the volume of the prism is $24\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$24 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 3 centimeters long and 8 centimeters wide. The height is 1 centimeter high. ",
+                "backgroundImage": {
+                  "height": 142,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/876fe32289a9895aadac033bd7141c79bb13c1d0",
+                  "width": 229
+                },
+                "box": [
+                  229,
+                  142
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 24
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "4d4092694c4253b0beef09d9987b24f7",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $2\\times 7=14$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $14 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $14$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $4$ layers of cubes in the prism because its height is $4\\text{ cm}$.\n\nMultiplying, we get\n\n$14\\times 4=56$ cubes\n\nwhich means the volume of the prism is $56\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$56 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 7 centimeters long and 2 centimeters wide. The height is 4 centimeters high. ",
+                "backgroundImage": {
+                  "height": 170,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/acaeaf578cac7d8477587699861c9d17d91e3f7b",
+                  "width": 287
+                },
+                "box": [
+                  287,
+                  170
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 56
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "fd28e2ad24925cb29bba3ebfdd626a68",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $6\\times 6=36$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $36 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $36$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $1$ layer of cubes in the prism because its height is $1\\text{ cm}$.\n\nMultiplying, we get\n\n$36\\times 1=36$ cubes\n\nwhich means the volume of the prism is $36\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$36 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 6 centimeters long and 6 centimeters wide. The height is 1 centimeter high. ",
+                "backgroundImage": {
+                  "height": 109,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/1aec86601abe3843d4034e2338d049d280ad6cfb",
+                  "width": 263
+                },
+                "box": [
+                  263,
+                  109
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 36
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "b76bb8ab33b957098841ebcfbbd2a2b2",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $1\\times 8=8$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $8 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $8$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $5$ layers of cubes in the prism because its height is $5\\text{ cm}$.\n\nMultiplying, we get\n\n$8\\times 5=40$ cubes\n\nwhich means the volume of the prism is $40\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$40 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 8 centimeters long and 1 centimeter wide. The height is 5 centimeters high. ",
+                "backgroundImage": {
+                  "height": 178,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/18bdc26fae3b478694b48ad4545127fb35b5bce3",
+                  "width": 288
+                },
+                "box": [
+                  288,
+                  178
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 40
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "85816e379f6359bf98809bd27b6318b1",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $9\\times 1=9$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $9 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $9$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $6$ layers of cubes in the prism because its height is $6\\text{ cm}$.\n\nMultiplying, we get\n\n$9\\times 6=54$ cubes\n\nwhich means the volume of the prism is $54\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$54 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 1 centimeter long and 9 centimeters wide. The height is 6 centimeters high. ",
+                "backgroundImage": {
+                  "height": 225,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/682be2ab47e77997ec51a84e773f40f63123a045",
+                  "width": 138
+                },
+                "box": [
+                  138,
+                  225
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 54
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "15eeff4ec3e25ff884b302e57b8ffc1d",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $4\\times 2=8$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $8 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $8$ cubes. But, how many layers fit in the prism?\n\n\n[[☃ image 1]]\n\n",
+            "We can fit $9$ layers of cubes in the prism because its height is $9\\text{ cm}$.\n\nMultiplying, we get\n\n$8\\times 9=72$ cubes\n\nwhich means the volume of the prism is $72\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$72 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 2 centimeters long and 4 centimeters wide. The height is 9 centimeters high. ",
+                "backgroundImage": {
+                  "height": 242,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/5d5031574ad436d7cf920c3bb7fc6ac41795838f",
+                  "width": 118
+                },
+                "box": [
+                  118,
+                  242
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 72
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "86f2432a5fba54878a2d383583a84fff",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $8\\times 2=16$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $16 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $16$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $3$ layers of cubes in the prism because its height is $3\\text{ cm}$.\n\nMultiplying, we get\n\n$16\\times 3=48$ cubes\n\nwhich means the volume of the prism is $48\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$48 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 2 centimeters long and 8 centimeters wide. The height is 3 centimeters high. ",
+                "backgroundImage": {
+                  "height": 199,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/4715282939ccecb9c738af2d8298c9e4ebb7fc37",
+                  "width": 201
+                },
+                "box": [
+                  201,
+                  199
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 48
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "d8c003cba47d5e4480e008cd27851bc6",
+          "question_content": "**What is the volume of the rectangular prism?**\n\n[[☃ image 1]]\n\n[[☃ numeric-input 1]] $\\text{cm}^3$\n",
+          "hints": [
+            "We want to know how many one-centimeter cubes can we fit in the prism.",
+            "### Step 1: Find the area of the base\n\nFirst, let's figure out how many fit at the bottom (base) of the shape.\n\n[[☃ image 1]]\n\nWe can fit $7\\times 5=35$ unit cubes at the base.\n\n**Note:** The base of this prism is a rectangle, which is why we call it a rectangular prism. The area of the base is $35 \\text{ cm}^2$.",
+            "### Step 2: Multiply by the height of the prism\n\nOne layer of cubes has $35$ cubes. But, how many layers fit in the prism?\n\n[[☃ image 1]]\n\n",
+            "We can fit $4$ layers of cubes in the prism because its height is $4\\text{ cm}$.\n\nMultiplying, we get\n\n$35\\times 4=140$ cubes\n\nwhich means the volume of the prism is $140\\text{ cm}^3$.\n\n[[☃ image 1]]\n\n",
+            "The answer:\n\n$140 \\text{ cm}^3$"
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 1": {
+              "type": "image",
+              "options": {
+                "alt": "A rectangular prism. The base is 7 centimeters long and 5 centimeters wide. The height is 4 centimeters high. ",
+                "backgroundImage": {
+                  "height": 168,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/cdadcfa27947c1720eb0197cd80507e1561347e4",
+                  "width": 266
+                },
+                "box": [
+                  266,
+                  168
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 140
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "node_id": "1fec31af27ce50c4aca435a65eab7988",
+      "title": "Volume as area of base times height",
+      "description": "Find volume of rectangular prisms by multiplying the area of their base by their height.",
+      "topic_path": [
+        "Khan Academy (English - US curriculum)",
+        "Math by grade",
+        "Eureka Math/EngageNY",
+        "5th grade (Eureka Math/EngageNY)",
+        "Module 5: Addition and multiplication with volume and area",
+        "Topic B: Volume and the operations of multiplication and addition",
+        "Volume as area of base times height"
+      ],
+      "item_count": 12,
+      "mastery_model": {
+        "type": "m_of_n",
+        "m": 3,
+        "n": 4
+      },
+      "template_file": "perseus_templates/1fec31af27ce50c4aca435a65eab7988.json",
+      "items": [
+        {
+          "item_id": "49a0ca647b325ee3a735876f0a77b1d4",
+          "question_content": "Carly is building a rectangular prism. The base of her prism is shown below. The height of her prism is $3$ units. \n\n[[☃ image 2]]\n\n**How many *more cubes* does Carly need to complete her prism?**\n\n[[☃ numeric-input 2]] more cubes",
+          "hints": [
+            "To find the volume of a rectangular prism, we multiply the $\\text{length}\\times\\text{height}\\times{\\text{width}}$.\n\nThen to find how many more cubes Carly needs, we can subtract the cubes she already used.",
+            "The base has dimensions of $4, 2$ and $1$.\n\n[[☃ image 1]]\n\nSo, to find the volume we use the following equation:\n\n$4\\text{ units}\\times2\\text{ units}\\times1\\text{ unit}=8\\text{ cubic units}$",
+            "The figure has $3$ layers of $8\\text{ units}$. \n\n[[☃ image 1]]\n\nWe already have $1$ layer, so we need $2$ more layers of $8\\text{ units}$.",
+            "$8\\text{ cubic units}\\times2=16\\text{ cubic units}$\n\n[[☃ image 1]]\n\n",
+            "Carly needs $16$ more cubes to finish her rectangular prism."
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 2": {
+              "type": "image",
+              "options": {
+                "alt": "The base of a rectangular prism has 8 cubes: 2 rows and 4 columns. Overlapping the base are lines representing a larger rectangular prism. The larger rectangular prism has a bracket to the left indicating it has a height of 3 cubes.  ",
+                "backgroundImage": {
+                  "height": 176,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/c1014464ad9a776515afef0a1139cd378882d87a",
+                  "width": 240
+                },
+                "box": [
+                  240,
+                  176
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 2": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 16
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "c8727df655dd50fdb86acc274d981066",
+          "question_content": "Husien is building a rectangular prism. The base of his prism is shown below. The height of his prism is $4$ units. \n\n[[☃ image 2]]\n\n**How many *more cubes* does Husien need to complete his prism?**\n\n[[☃ numeric-input 1]] more cubes",
+          "hints": [
+            "To find the volume of a rectangular prism, we multiply the $\\text{length}\\times\\text{height}\\times{\\text{width}}$.\n\nThen to find how many more cubes Husein needs, we can subtract the cubes he already used.",
+            "The base has dimensions of $3, 4$ and $1$.\n\n[[☃ image 1]]\n\nSo, to find the volume we use the following equation:\n\n$3\\text{ units}\\times4\\text{ units}\\times1\\text{ unit}=12\\text{ cubic units}$",
+            "The figure has $4$ layers of $12\\text{ units}$. \n\n[[☃ image 1]]\n\nWe already have $1$ layer, so we need $3$ more layers of $12\\text{ units}$.",
+            "$12\\text{ cubic units}\\times3=36\\text{ cubic units}$\n\n\n[[☃ image 1]]\n\n",
+            "Husien needs $36$ more cubes to finish his rectangular prism."
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 2": {
+              "type": "image",
+              "options": {
+                "alt": "The base of a rectangular prism has 12 cubes: 3 rows and 4 columns. Overlapping the base are lines representing a larger rectangular prism. The larger rectangular prism has a bracket to the left indicating it has a height of 4 cubes.  ",
+                "backgroundImage": {
+                  "height": 224,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/ede33c1389aa0ab4dd6b2ba247bcaba50cfeda24",
+                  "width": 240
+                },
+                "box": [
+                  240,
+                  224
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 36
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "bb380cf5842f5169ae9e9ee6388f0ecf",
+          "question_content": "Hafiz is building a rectangular prism. The base of his prism is shown below. The height of his prism is $3$ units. \n\n[[☃ image 2]]\n\n**How many *more cubes* does Hafiz need to complete his prism?**\n\n[[☃ numeric-input 1]] more cubes",
+          "hints": [
+            "To find the volume of a rectangular prism, we multiply the $\\text{length}\\times\\text{height}\\times{\\text{width}}$.\n\nThen to find how many more cubes Hafiz needs, we can subtract the cubes he already used.",
+            "The base has dimensions of $6, 5$ and $1$.\n\n[[☃ image 1]]\n\nSo, to find the volume we use the following equation:\n\n$6\\text{ units}\\times5\\text{ units}\\times1\\text{ unit}=30\\text{ cubic units}$",
+            "The figure has $3$ layers of $30\\text{ units}$. \n\n[[☃ image 1]]\n\nWe already have $1$ layer, so we need $2$ more layers of $30\\text{ units}$.",
+            "$30\\text{ cubic units}\\times2=60\\text{ cubic units}$\n\n[[☃ image 1]]\n\n",
+            "Hafiz needs $60$ more cubes to finish his rectangular prism."
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 2": {
+              "type": "image",
+              "options": {
+                "alt": "The base of a rectangular prism has 30 cubes: 5 rows and 6 columns. Overlapping the base are lines representing a larger rectangular prism. The larger rectangular prism has a bracket to the left indicating it has a height of 3 cubes.  ",
+                "backgroundImage": {
+                  "height": 173,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/44b401858e379662e7220f57710a4fa5b396c644",
+                  "width": 240
+                },
+                "box": [
+                  240,
+                  173
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 60
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "e66ab41844f7502699689dff22ccada4",
+          "question_content": "Gene is creating a rectangular prism. The base of his prism is shown below. He plans to have a height of $5$ cubes.\n\n[[☃ image 2]]\n\n**What will the volume of the completed figure be?**\n\n[[☃ numeric-input 1]] cubic units",
+          "hints": [
+            "To find the volume of a rectangular prism, we multiply the $\\text{length}\\times\\text{height}\\times{\\text{width}}$.",
+            "The base has dimensions of $3, 2$ and $1$.\n\n\n\n[[☃ image 1]]\n\nSo, to find the volume we use the following equation:\n\n $3\\text{ units}\\times2\\text{ units}\\times1\\text{ unit}=6\\text{ cubic units}$\n",
+            "The height of Gene's prism is $5$ units, so we would have $5$ layers of $6\\text{ units}$.\n\n\n[[☃ image 1]]\n\n$6\\text{ cubic units}\\times5=?\\text{ cubic units}$",
+            "Gene would have $30\\text{ cubic units}$ in his rectangular prism.\n\n\n\n[[☃ image 1]]\n\n$6\\text{ cubic units}\\times5=30\\text{ cubic units}$",
+            "Gene's rectangular prism will have $30$ cubic units."
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 2": {
+              "type": "image",
+              "options": {
+                "alt": "The base of a rectangular prism has 6 cubes: 2 rows and 3 columns. Overlapping the base are lines representing a taller rectangular prism. The taller rectangular prism has a bracket to the left indicating it has a height of 5 cubes.  ",
+                "backgroundImage": {
+                  "height": 223,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/4232df3f896472dae88cac09332156ca969bdc4e",
+                  "width": 240
+                },
+                "box": [
+                  240,
+                  223
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 30
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "aa65167b78ec5e60897a30b320078154",
+          "question_content": "Cora is creating a rectangular prism. The base of her prism is shown below. She plans to have a height of $8$ cubes.\n\n[[☃ image 2]]\n\n**What will the volume of the completed figure be?**\n\n[[☃ numeric-input 1]] cubic units",
+          "hints": [
+            "To find the volume of a rectangular prism, we multiply the $\\text{length}\\times\\text{height}\\times{\\text{width}}$.",
+            "The base has dimensions of $5, 6$ and $1$.\n\n[[☃ image 1]]\n\nSo, to find the volume we use the following equation:\n\n $5\\text{ units}\\times6\\text{ units}\\times1\\text{ unit}=30\\text{ cubic units}$\n",
+            "The height of Cora's prism is $8$ units, so we would have $8$ layers of $30\\text{ units}$.\n\n[[☃ image 1]]\n\n$30\\text{ cubic units}\\times8=?\\text{ cubic units}$",
+            "Cora would have $240\\text{ cubic units}$ in her rectangular prism.\n\n[[☃ image 1]]\n\n$30\\text{ cubic units}\\times8=240\\text{ cubic units}$",
+            "Cora's rectangular prism will have $240$ cubic units."
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 2": {
+              "type": "image",
+              "options": {
+                "alt": "The base of a rectangular prism has 30 cubes: 6 rows and 5 columns. Overlapping the base are lines representing a larger rectangular prism. The larger rectangular prism has a bracket to the left indicating it has a height of 8 cubes.  ",
+                "backgroundImage": {
+                  "height": 240,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/45ea24e574de7c0d25d5ae514830e3bfd89ace88",
+                  "width": 188
+                },
+                "box": [
+                  188,
+                  240
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 240
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "3cc2abc7bf3953cdb4e2c31dd5959851",
+          "question_content": "Lua is creating a rectangular prism. The base of her prism is shown below. She plans to have a height of $7$ cubes.\n\n[[☃ image 2]]\n\n**What will the volume of the completed figure be?**\n\n[[☃ numeric-input 1]] cubic units",
+          "hints": [
+            "To find the volume of a rectangular prism, we multiply the $\\text{length}\\times\\text{height}\\times{\\text{width}}$.",
+            "The base has dimensions of $3, 3,$ and $1$.\n\n\n[[☃ image 1]]\n\nSo, to find the volume we use the following equation:\n\n $3\\text{ units}\\times3\\text{ units}\\times1\\text{ unit}=9\\text{ cubic units}$\n",
+            "The height of Lua's prism is $7$ units, so we would have $7$ layers of $9\\text{ units}$.\n\n\n[[☃ image 1]]\n\n$9\\text{ cubic units}\\times7=?\\text{ cubic units}$",
+            "Lua would have $63\\text{ cubic units}$ in her rectangular prism.\n\n[[☃ image 1]]\n\n$9\\text{ cubic units}\\times7=63\\text{ cubic units}$",
+            "Lua's rectangular prism will have $63$ cubic units."
+          ],
+          "widget_types": [
+            "image",
+            "numeric-input"
+          ],
+          "answer_data": {
+            "image 2": {
+              "type": "image",
+              "options": {
+                "alt": "The base of a rectangular prism has 9 cubes: 3 rows and 3 columns. Overlapping the base are lines representing a larger rectangular prism. The larger rectangular prism has a bracket to the left indicating it has a height of 7 cubes.  ",
+                "backgroundImage": {
+                  "height": 240,
+                  "url": "web+graphie:${☣ LOCALPATH}/images/d343a79a53ed004812dcf44c405a187d3593d6b2",
+                  "width": 148
+                },
+                "box": [
+                  148,
+                  240
+                ],
+                "caption": "",
+                "labels": [],
+                "range": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    0,
+                    10
+                  ]
+                ],
+                "static": false,
+                "title": ""
+              }
+            },
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 63
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "30304cdb1c2d563c8a59ac2891ca9a0b",
+          "question_content": "Pat used unit cubes to build a right rectangular prism with a volume of $32$ cubic units. The height of the prism is $4$ units. \n\n**What figure could be the bottom layer of the prism?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "A **prism** is a shape that looks like we made a stack of exact copies of the base.\n\nTo find the volume of any prism, we multiply the area of the base times the height.",
+            "Let's fill in the information about Pat's prism.\n\n$\\begin{align} \\blueE{\\text{base area}} \\times \\maroonD{\\text{height}} &= \\greenE{\\text{volume}}\\\\\\\\\n\\blueE{?\\,\\text{square units}} \\times \\maroonD{4\\,\\text{units}} &= \\greenE{32\\,\\text{cubic units}}\n\\end{align}$",
+            "We can use a related division equation to find the area of the base.\n\n$\\begin{align}\n\\greenE{\\text{volume}} \\div\\maroonD{\\text{height}}  &= \\blueE{\\text{base area}} \\\\\\\\\n\\greenE{32\\,\\text{cubic units}} \\div \\maroonD{4\\,\\text{units}} &= \\blueE{{?}\\,\\text{square units}} \\\\\\\\\n&= \\blueE{8\\,\\text{square units}} \n\\end{align}$",
+            "Which of the figures has a base area of $\\blueE{8}$ square units?",
+            "The figure below could be the bottom layer of the prism:\n\n[[☃ image 1]]\n\n"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![The base of a rectangular prism has 8 cubes: 2 rows and 4 columns.](web+graphie:${☣ LOCALPATH}/images/f69842cb8e2cbdc57608f1a1fc2add1acf4139f7)",
+                  "correct": true
+                },
+                {
+                  "content": "![The base of a rectangular prism has 4 cubes: 2 rows and 2 columns.](web+graphie:${☣ LOCALPATH}/images/a46402d8c0969566d442a70f1e009125f27e7258)",
+                  "correct": false
+                },
+                {
+                  "content": "![The base of a rectangular prism has 12 cubes: 2 rows and 6 columns.](web+graphie:${☣ LOCALPATH}/images/0dc9f23d5f190a9b98cbf9460559b6b86f88c8ba)",
+                  "correct": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "741b04750b5f596a9609043262604411",
+          "question_content": "Ben used unit cubes to build a right rectangular prism with a volume of $120$ cubic units. The height of the prism is $10$ units. \n\n**What figure could be the bottom layer of the prism?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "A **prism** is a shape that looks like we made a stack of exact copies of the base.\n\nTo find the volume of any prism, we multiply the area of the base times the height.",
+            "Let's fill in the information about Ben's prism.\n\n$\\begin{align} \\purpleD{\\text{base area}} \\times \\maroonD{\\text{height}} &= \\greenE{\\text{volume}}\\\\\\\\\n\\purpleD{?\\,\\text{square units}} \\times \\maroonD{10\\,\\text{units}} &= \\greenE{120\\,\\text{cubic units}}\n\\end{align}$",
+            "We can use a related division equation to find the area of the base.\n\n$\\begin{align}\n\\greenE{\\text{volume}} \\div\\maroonD{\\text{height}}  &= \\purpleD{\\text{base area}} \\\\\\\\\n\\greenE{120\\,\\text{cubic units}} \\div \\maroonD{10\\,\\text{units}} &=\\purpleD{{?}\\,\\text{square units}} \\\\\\\\\n&= \\purpleD{12\\,\\text{square units}} \n\\end{align}$",
+            "Which of the figures has a base area of $\\purpleD{12}$ square units?",
+            "The figure below could be the bottom layer of the prism:\n\n[[☃ image 1]]\n\n"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![The base of a rectangular prism has 12 cubes: 2 rows and 6 columns.](web+graphie:${☣ LOCALPATH}/images/e8160b6c0859625269d705f6a832cf519b5b1fc1)",
+                  "correct": true
+                },
+                {
+                  "content": "![The base of a rectangular prism has 16 cubes: 4 rows and 4 columns.](web+graphie:${☣ LOCALPATH}/images/d4f0e59bded5de9acf8a4999292b01fab3919ba8)",
+                  "correct": false
+                },
+                {
+                  "content": "![The base of a rectangular prism has 14 cubes: 7 rows and 2 columns.](web+graphie:${☣ LOCALPATH}/images/34c9344456bc0a87bc188a4ebff4954b5033b4b2)",
+                  "correct": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "c6c581773b0a5e80a1b360e2eb795700",
+          "question_content": "Adeline used unit cubes to build a right rectangular prism with a volume of $90$ cubic units. The height of the prism is $6$ units. \n\n**What figure could be the bottom layer of the prism?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "A **prism** is a shape that looks like we made a stack of exact copies of the base.\n\nTo find the volume of any prism, we multiply the area of the base times the height.",
+            "Let's fill in the information about Ben's prism.\n\n$\\begin{align} \\goldD{\\text{base area}} \\times \\maroonD{\\text{height}} &= \\greenD{\\text{volume}}\\\\\\\\\n\\goldD{?\\,\\text{square units}} \\times \\maroonD{6\\,\\text{units}} &= \\greenE{90\\,\\text{cubic units}}\n\\end{align}$",
+            "We can use a related division equation to find the area of the base.\n\n$\\begin{align}\n\\greenE{\\text{volume}} \\div\\maroonD{\\text{height}}  &= \\goldD{\\text{base area}} \\\\\\\\\n\\greenE{90\\,\\text{cubic units}} \\div \\maroonD{6\\,\\text{units}} &=\\goldD{{?}\\,\\text{square units}} \\\\\\\\\n&= \\goldD{15\\,\\text{square units}} \n\\end{align}$",
+            "Which of the figures has a base area of $\\goldD{15}$ square units?",
+            "The figure below could be the bottom layer of the prism:\n\n[[☃ image 1]]\n\n"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![The base of a rectangular prism has 15 cubes: 5 rows and 3 columns.](web+graphie:${☣ LOCALPATH}/images/8292176b53e4cefacc25a8d27615d756823ec26e)",
+                  "correct": true
+                },
+                {
+                  "content": "![The base of a rectangular prism has 6 cubes: 2 rows and 3 columns.](web+graphie:${☣ LOCALPATH}/images/be1fc9f1ad871836856251914d6571b2df866490)",
+                  "correct": false
+                },
+                {
+                  "content": "![The base of a rectangular prism has 25 cubes: 5 rows and 5 columns.](web+graphie:${☣ LOCALPATH}/images/5df8109649f99fa938a510055c01516f703c105d)",
+                  "correct": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "6829d276919a512fb7b8bfe69fe9251e",
+          "question_content": "The base of a rectangular prism has an area of $12$ square centimeters. The height of the rectangular prism is $3$ centimeters.\n\n**What is the volume, in cubic centimeters, of this rectangular prism?**\n\n[[☃ numeric-input 1]] cubic centimeters",
+          "hints": [
+            "A **prism** is a shape that looks like we made a stack of exact copies of the base.\n\nTo find the volume of any prism, we multiply the area of the base times the height.",
+            "Let's fill in the information we know about the prism.\n\n$\\begin{align} \\blueE{\\text{base area}} \\times \\maroonD{\\text{height}} &= \\greenE{\\text{volume}}\\\\\\\\\n\\blueE{12\\,\\text{square cm}} \\times \\maroonD{3\\,\\text{cm}} &= \\greenE{?\\,\\text{cubic cm}}\\\\\\\\\n&=\\greenE{36\\,\\text{ cubic cm}}\n\\end{align}$",
+            "The volume of the rectangular prism is $\\greenE{36}$ cubic centimeters."
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 36
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "08c6d62eb7a95f31862d1bef0d0d63d5",
+          "question_content": "The base of a rectangular prism has an area of $25$ square meters. The height of the rectangular prism is $4$ meters.\n\n**What is the volume, in cubic meters, of this rectangular prism?**\n\n[[☃ numeric-input 1]] cubic meters",
+          "hints": [
+            "A **prism** is a shape that looks like we made a stack of exact copies of the base.\n\nTo find the volume of any prism, we multiply the area of the base times the height.",
+            "Let's fill in the information we know about the prism.\n\n$\\begin{align} \\blueE{\\text{base area}} \\times \\maroonD{\\text{height}} &= \\greenE{\\text{volume}}\\\\\\\\\n\\blueE{25\\,\\text{square m}} \\times \\maroonD{4\\,\\text{m}} &= \\greenE{?\\,\\text{cubic m}}\\\\\\\\\n&=\\greenE{100\\,\\text{ cubic m}}\n\\end{align}$",
+            "The volume of the rectangular prism is $\\greenE{100}$ cubic meters."
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 100
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "39922980e90156f983933ea0b74d1e99",
+          "question_content": "The base of a rectangular prism has an area of $8$ square meters. The height of the rectangular prism is $5$ meters.\n\n**What is the volume, in cubic meters, of this rectangular prism?**\n\n[[☃ numeric-input 1]] cubic meters",
+          "hints": [
+            "A **prism** is a shape that looks like we made a stack of exact copies of the base.\n\nTo find the volume of any prism, we multiply the area of the base times the height.",
+            "Let's fill in the information we know about the prism.\n\n$\\begin{align} \\blueE{\\text{base area}} \\times \\maroonD{\\text{height}} &= \\greenE{\\text{volume}}\\\\\\\\\n\\blueE{8\\,\\text{square m}} \\times \\maroonD{5\\,\\text{m}} &= \\greenE{?\\,\\text{cubic m}}\\\\\\\\\n&=\\greenE{40\\,\\text{ cubic m}}\n\\end{align}$",
+            "The volume of the rectangular prism is $\\greenE{40}$ cubic meters."
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 40
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

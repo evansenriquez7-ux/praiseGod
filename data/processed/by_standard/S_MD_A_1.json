@@ -1,0 +1,931 @@
+{
+  "node_id": "S-MD.A.1",
+  "standard_description": "Define a random variable for a quantity of interest by assigning a numerical value to each event in a sample space; graph the corresponding probability distribution using the same graphical displays as for data distributions.",
+  "subject": "Math",
+  "grade_level": "HS",
+  "problems": [],
+  "tasks": [],
+  "khan_exercises": [
+    {
+      "node_id": "445151a4019a5856af9b2614cc76d389",
+      "title": "Develop probability distributions: Empirical probabilities",
+      "description": "Given sample data, create an approximate probability distribution for a random variable.",
+      "topic_path": [
+        "Khan Academy (English - US curriculum)",
+        "Math",
+        "Get ready for AP® Statistics",
+        "Get ready for random variables and probability distributions",
+        "Probability distributions introduction",
+        "Develop probability distributions: Empirical probabilities"
+      ],
+      "item_count": 12,
+      "mastery_model": {
+        "type": "m_of_n",
+        "m": 3,
+        "n": 4
+      },
+      "template_file": "perseus_templates/445151a4019a5856af9b2614cc76d389.json",
+      "items": [
+        {
+          "item_id": "fe460e36708f5a1098dbdeca7d012a7b",
+          "question_content": "Rosie is designing a board game where players roll two six-sided dice and subtract the numbers showing on the faces. The game only looks at nonnegative differences. For example, if a player rolls a $4$ and a $6$, the difference is $2$.\n\nRosie simulated the differences of $1{,}000$ rolls. Here are the results:\n\nDifference | $0$ | $1$ | $2$ | $3$ | $4$ | $5$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $158$ | $282$ | $221$ | $174$ | $103$ | $62$\n\n**Based on these results, which graph represents an approximate probability distribution of the difference on a random roll?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "When we graph a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these simulation results to estimate the probability of each outcome.\n\nFor example, we saw a difference of $0$ in $158$ of the $1{,}000$ trials, so we can estimate the probability of that outcome to be $\\dfrac{158}{1{,}000}=0.158$.\n\nWhich graph shows the correct probability for each outcome?",
+            "Let's look at graph B first:\n\n[[☃ image 2]]\n\nSome of the probabilities here are incorrect. For instance, the height of the bar for $\\maroonD{0}$ should be $0.158$, but that bar is below $0.15$. Also, the height of the bar for $\\purpleD{1}$ should be $\\dfrac{282}{1{,}000}=0.282$, but that bar is above $0.3$.",
+            "In graph C, all of the probabilities are smaller than they should be:\n\n[[☃ image 1]]",
+            "Graph A represents an approximate probability distribution of the differences:\n\n[[☃ image 1]]"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![A bar graph shows the probability distribution for the difference. The x-axis is labeled \"Difference\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.3. The probability distribution shows the following values: for a difference of 0, the probability is 0.1; for a difference of 1, the probability is 0.3, which is the highest value; for a difference of 2, the probability is 0.2; for a difference of 3, the probability is 0.15; for a difference of 4, the probability is 0.1; and for a difference of 5, the probability is 0.05. All values are approximate. \n](web+graphie:${☣ LOCALPATH}/images/b847ec433730fe6bdbb32bd7ed986d5d129f0112)",
+                  "correct": true
+                },
+                {
+                  "content": "![](web+graphie:${☣ LOCALPATH}/images/7345926e62d37f4bbe1e4aef6cf22139bff86030)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the difference. The x-axis is labeled \"Difference\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.3. The probability distribution shows the following values: for a difference of 0, the probability is 0.15; for a difference of 1, the probability is 0.35, which is the highest value; for a difference of 2, the probability is 0.25; for a difference of 3, the probability is 0.15; for a difference of 4, the probability is 0.07; and for a difference of 5, the probability is 0.03. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/673b1273d8eaaee887d05a1a14ba33c4f374ede2)",
+                  "correct": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "5f29896325fe5a4b82ee79e8e78f7a4a",
+          "question_content": "Airlines are usually willing to \"overbook\" flights and sell a few more tickets than they have seats available. On most flights, some people who buy tickets don't show up, so everyone who does show up gets a seat. But if too many people show up, the airline must move some passengers to another flight (and give them a large credit).\n\nAn airline tracked how many passengers needed to be moved off a certain flight in each of the last $500$ times that the flight ran:\n\n# moved off flight | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | $290$ | $160$ | $30$ | $20$\n\n**Based on these results, which graph represents an approximate probability distribution of the number of passengers moved off this flight on a random day?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "When we graph a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $0$ moved passengers in $290$ of the $500$ trials, so we can estimate the probability of that outcome to be $\\dfrac{290}{500}=0.58$.\n\nWhich graph shows the correct probability for each outcome?",
+            "Let's look at graph A first:\n\n[[☃ image 2]]\n\nSome of the probabilities here are incorrect. For instance, the height of the bar for $\\maroonD{0}$ moved passengers should be $0.58$, but that bar is below $0.5$. Also, the height of the bar for $\\purpleD{1}$ moved passenger should be $\\dfrac{160}{500}=0.32$, but that bar is below $0.3$.",
+            "In graph C, all of the probabilities are smaller than they should be:\n\n[[☃ image 1]]",
+            "Graph B represents an approximate probability distribution of the number of passengers moved off the flight on a random day:\n\n[[☃ image 1]]"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of moved passengers. The x-axis is labeled \"number of moved passengers\" and ranges from 0 to 3. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 passengers moved, the probability is 0.5; for 1 passenger moved, the probability is 0.3; for 2 passengers moved, the probability is 0.05; and for 3 passengers moved, the probability is 0.04. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/819174a557c4b0a20e56cf628bb55ae3b783e124)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of moved passengers. The x-axis is labeled \"number of moved passengers\" and ranges from 0 to 3. The y-axis is labeled \"Probability\" and ranges from 0 to 0.6. The probability distribution shows the following values: for 0 passengers moved, the probability is 0.6; for 1 passenger moved, the probability is 0.3; for 2 passengers moved, the probability is 0.08; and for 3 passengers moved, the probability is 0.02. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/dcb24d3a531147c7656851562324757563c4aeb2)",
+                  "correct": true
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of moved passengers. The x-axis is labeled \"number of moved passengers\" and ranges from 0 to 3. The y-axis is labeled \"Probability\" and ranges from 0 to 0.6. The probability distribution shows the following values: for 0 passengers moved, the probability is 0.6; for 1 passenger moved, the probability is 0.3; for 2 passengers moved, the probability is 0.08; and for 3 passengers moved, the probability is 0.02. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/d0d84ff7d7ed555c610832449731585a2230f975)",
+                  "correct": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "c8ba0895e82f5b1f81c1c652d5e121ec",
+          "question_content": "Mikel runs his own business — he takes small groups of tourists on day-long tours of the city where he lives. He'll take up to $4$ people at a time on a tour.\n\nMikel tracked how many people came on his tour in the last $200$ days:\n\n# of people | $0$ | $1$ | $2$ | $3$ | $4$\n- | -: | -: | -: | -: | -:\n**Frequency** | $6$ | $14$ | $78$ | $30$ | $72$\n\n**Based on these results, which graph represents an approximate probability distribution of the number of people on a random tour?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "When we graph a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $2$ people in $78$ of the $200$ trials, so we can estimate the probability of that outcome to be $\\dfrac{78}{200}=0.39$.\n\nWhich graph shows the correct probability for each outcome?",
+            "Let's look at graph A first:\n\n[[☃ image 2]]\n\nThe probabilities here are incorrect. For instance, the height of the bar for $\\maroonD{2}$ people should be $0.39$, but that bar is above $0.4$. Also, the height of the bar for $\\purpleD{4}$ people should be $\\dfrac{72}{200}=0.36$, but that bar is below $0.35$.",
+            "In graph B, all of the probabilities are larger than they should be:\n\n[[☃ image 1]]",
+            "Graph C represents an approximate probability distribution of the number of people on a random tour:\n\n[[☃ image 1]]"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of people. The x-axis is labeled \"number of people\" and ranges from 0 to 4. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 people, the probability is close to 0; for 1 person, the probability is 0.2; for 2 people, the probability is 0.45, which is the highest value; for 3 people, the probability is 0.15; and for 4 people, the probability is 0.35. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/a8a9f3533c28fa1fb29f67fbe0be836a28749366)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of people. The x-axis is labeled \"number of people\" and ranges from 0 to 4. The y-axis is labeled \"Probability\" and ranges from 0 to 0.8. The probability distribution shows the following values: for 0 people, the probability is close to 0; for 1 person, the probability is 0.1; for 2 people, the probability is 0.7, which is the highest value; for 3 people, the probability is close to 0; and for 4 people, the probability is 0.65. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/3c7a3f35f7526dd57bd0fc4877659234f4c9c7ba)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of people. The x-axis is labeled \"number of people\" and ranges from 0 to 4. The y-axis is labeled \"Probability\" and ranges from 0 to 0.4. The probability distribution shows the following values: for 0 people, the probability is close to 0; for 1 person, the probability is 0.05; for 2 people, the probability is 0.35, which is the highest value; for 3 people, the probability is close to 0; and for 4 people, the probability is 0.35. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/3e7d068a8fd2ea0de574c0dab9fa3f45623cb779)",
+                  "correct": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "6ff7a96dcd5d5754acb14646bb0e45f4",
+          "question_content": "Tyreek owns a barber shop. They advertise saying they take customers by appointment only, but if time permits, they will take walk-in customers who don't have appointments.\n\nTyreek tracked how many walk-in customers there were in each of last $100$ days:\n\n# of walk-ins | $0$ | $1$ | $2$ | $3$ | $4$ | $5$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $3$ | $7$ | $13$ | $28$ | $39$ | $10$\n\n**Based on these results, which graph represents an approximate probability distribution of walk-in customers on a random day?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "When we graph a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $4$ walk-in customers in $39$ of the $100$ trials, so we can estimate the probability of that outcome to be $\\dfrac{39}{100}=0.39$.\n\nWhich graph shows the correct probability for each outcome?",
+            "Let's look at graph B first:\n\n[[☃ image 2]]\n\nThe probabilities here are incorrect. For instance, the height of the bar for $\\maroonD{4}$ walk-ins should be $0.39$, but that bar is above $0.4$. Also, the height of the bar for $\\purpleD{3}$ walk-ins should be $\\dfrac{28}{100}=0.28$, but that bar is above $0.3$.",
+            "In graph C, all of the probabilities are larger than they should be:\n\n[[☃ image 1]]",
+            "Graph A represents an approximate probability distribution of the number of walk-in customers on a random day:\n\n[[☃ image 1]]"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of walk-ins. The x-axis is labeled \"number of walk-ins\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.4. The probability distribution shows the following values: for 0 walk-ins, the probability is close to 0.05; for 1 walk-in, the probability is 0.04; for 2 walk-ins, the probability is 0.1; for 3 walk-ins, the probability is 0.32 for 4 walk-ins, the probability is 0.42, which is the highest value; and for 5 walk-ins, the probability is 0.05. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/e79ba400b8d47b5293ccd7b1f82dcbee832400ba)",
+                  "correct": true
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of walk-ins. The x-axis is labeled \"number of walk-ins\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 walk-ins, the probability is close to 0.05; for 1 walk-in, the probability is 0.04; for 2 walk-ins, the probability is 0.1; for 3 walk-ins, the probability is 0.32 for 4 walk-ins, the probability is 0.42, which is the highest value; and for 5 walk-ins, the probability is 0.05. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/ceab0202e358b8042dfb92e464d4e69aea2f784e)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of walk-ins. The x-axis is labeled \"number of walk-ins\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 walk-ins, the probability is close to 0.05; for 1 walk-in, the probability is 0.04; for 2 walk-ins, the probability is 0.1; for 3 walk-ins, the probability is 0.32 for 4 walk-ins, the probability is 0.42, which is the highest value; and for 5 walk-ins, the probability is 0.05. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/d3153d76c46c517b31ebc575acf40ab5504aeedc)",
+                  "correct": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "3afbe56e075f54eaae577e1f28b98ef3",
+          "question_content": "In an experiment about the behavior of adults, each of the $50$ subjects involved was told to sit in a waiting room until the researcher called for them. There were $5$ different types of snacks in the waiting room.\n\nThe researchers recorded how many snacks each of the $50$ subjects tried. Here are the results:\n\n# of snacks | $0$ | $1$ | $2$ | $3$ | $4$ | $5$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $4$ | $11$ | $22$ | $8$ | $4$ | $1$\n\n**Based on these results, which graph represents an approximate probability distribution of the number of snacks a random adult would try?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "When we graph a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $2$ snacks tried in $22$ of the $50$ trials, so we can estimate the probability of that outcome to be $\\dfrac{22}{50}=0.44$.\n\nWhich graph shows the correct probability for each outcome?",
+            "Let's look at graph A first:\n\n[[☃ image 2]]\n\nThe height of the bar for $\\maroonD{2}$ snacks should be $0.44$, but that bar is below $0.3$. Also, the height of the bar for $\\purpleD{1}$ snack should be $\\dfrac{11}{50}=0.22$, but that bar is below $0.2$.\n\nAll of the probabilities are smaller than they should be.",
+            "The probabilities in graph C are incorrect. For instance, the height of the bar for $\\maroonD{2}$ snacks should be $0.44$, but that bar is above $0.45$. Also, the height of the bar for $\\purpleD{1}$ snack should be $0.22$, but that bar is below $0.2$.\n\n[[☃ image 1]]",
+            "Graph B represents an approximate probability distribution of the number of snacks a random adult would try:\n\n[[☃ image 1]]"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of snacks. The x-axis is labeled \"number of snacks\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.3. The probability distribution shows the following values: for 0 snacks, the probability is 0.04; for 1 snack, the probability is 0.1; for 2 snacks, the probability is 0.22; for 3 snacks, the probability is 0.15; for 4 snacks, the probability is 0.1; and for 5 snacks, the probability is 0.05. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/17e5ccc4c673eadf3cb33059235f68142190bbb1)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of snacks. The x-axis is labeled \"number of snacks\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 snacks, the probability is 0.0; for 1 snack, the probability is 0.1; for 2 snacks, the probability is 0.45; for 3 snacks, the probability is 0.2; for 4 snacks, the probability is 0.1; and for 5 snacks, the probability is 0.05. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/b0090c07a3e3a0574b61ca5bf4315d5f2db69f38)",
+                  "correct": true
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of snacks. The x-axis is labeled \"number of snacks\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 snacks, the probability is 0.0; for 1 snack, the probability is 0.1; for 2 snacks, the probability is 0.45; for 3 snacks, the probability is 0.2; for 4 snacks, the probability is 0.1; and for 5 snacks, the probability is 0.05. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/a87fa1680b111831ca221c3b41450b8fd59ce789)",
+                  "correct": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "8b01dc8e6bc258acb0f1aa90af2f6f42",
+          "question_content": "Mia owns a small restaurant where customers can order takeout either online or by phone. Most customers order online, but some still prefer to use the phone.\n\nMia tracked how many takeout orders came by phone each of the past $400$ days:\n\n# of orders | $0$ | $1$ | $2$ | $3$ | $4$\n- | -: | -: | -: | -: | -:\n**Frequency** | $12$ | $20$ | $88$ | $160$ | $120$\n\n**Based on these results, which graph represents an approximate probability distribution of the number of phone orders a random day?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "When we graph a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $3$ phone orders in $160$ of the $400$ trials, so we can estimate the probability of that outcome to be $\\dfrac{160}{400}=0.4$.\n\nWhich graph shows the correct probability for each outcome?",
+            "Let's look at graph A first:\n\n[[☃ image 2]]\n\nThe probabilities here are incorrect. For instance, the height of the bar for $\\maroonD{3}$ orders should be $0.4$, but that bar is above $0.4$. Also, the height of the bar for $\\purpleD{2}$ orders should be $\\dfrac{88}{400}=0.22$, but that bar is below $0.2$.",
+            "In graph B, all of the probabilities are larger than they should be:\n\n[[☃ image 1]]",
+            "Graph C represents an approximate probability distribution of the number of phone orders on a random day:\n\n[[☃ image 1]]"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of orders. The x-axis is labeled \"number of orders\" and ranges from 0 to 4. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 orders, the probability is close to 0.02; for 1 order, the probability is 0; for 2 orders, the probability is 0.15; for 3 orders, the probability is 0.42, which is the highest value; and for 4 orders, the probability is 0.32. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/8ca39640a9af22ec4d39e418ec70c287105c7189)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of orders. The x-axis is labeled \"number of orders\" and ranges from 0 to 4. The y-axis is labeled \"Probability\" and ranges from 0 to 0.8. The probability distribution shows the following values: for 0 orders, the probability is close to 0.02; for 1 order, the probability is 0.05; for 2 orders, the probability is 0.42; for 3 orders, the probability is 0.8, which is the highest value; and for 4 orders, the probability is 0.6. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/9b0980e44e48d8e6f08794f838f8f3ecd82d56a1)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of orders. The x-axis is labeled \"number of orders\" and ranges from 0 to 4. The y-axis is labeled \"Probability\" and ranges from 0 to 0.4. The probability distribution shows the following values: for 0 orders, the probability is close to 0; for 1 order, the probability is 0.05; for 2 orders, the probability is 0.2; for 3 orders, the probability is 0.35, which is the highest value; and for 4 orders, the probability is 0.3. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/101413a2ef0e33fe09af2787e26f01c029999af2)",
+                  "correct": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "fdee4a3c3f485656aa8813ca4ccdea1a",
+          "question_content": "Pedro is designing a board game where players roll two six-sided dice and subtract the numbers showing on the faces. The game only looks at nonnegative differences. For example, if a player rolls a $4$ and a $6$, the difference is $2$.\n\nPedro simulated the differences of $500$ rolls.\n\n**Fill in the blanks to complete the probability distribution.**  \n*Do not round your answers.*\n\nDifference | $0$ | $1$ | $2$ | $3$ | $4$ | $5$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $88$ | $134$ | [[☃ numeric-input 1]] | $86$ | $56$ | $26$\n**Probability** | $0.176$ | $0.268$ | [[☃ numeric-input 2]] | $0.172$ | $0.112$ | $0.052$",
+          "hints": [
+            "###Strategy\n\nWhen we create a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these simulation results to estimate the probability of each outcome.\n\nFor example, we saw a difference of $0$ in $88$ of the $500$ trials, so we can estimate the probability of that outcome to be $\\dfrac{88}{500}=0.176$.\n\nSo if we find the missing frequency, we can use it to find its corresponding probability.",
+            "###Missing frequency\n\nSince Pedro simulated $500$ rolls, the sum of the frequencies must be $500$.\n\nSo the missing frequency must be $\\blueE{110}$:\n\nDifference | $0$ | $1$ | $2$ | $3$ | $4$ | $5$ | Total\n- | -: | -: | -: | -: | -: | -: | -:\n**Frequency** | $88$ | $134$ | $\\boxed{\\blueE{110}}$ | $86$ | $56$ | $26$ | $500$\n**Probability** | $0.176$ | $0.268$ | $\\boxed{\\text{???}}$ | $0.172$ | $0.112$ | $0.052$ |",
+            "###Missing probability\n\nWe saw a difference of $2$ in $\\blueE{110}$ of the $500$ trials, so we can estimate the probability of that outcome to be $\\dfrac{\\blueE{110}}{500}=\\maroonD{0.22}$.\n\nDifference | $0$ | $1$ | $2$ | $3$ | $4$ | $5$ | Total\n- | -: | -: | -: | -: | -: | -: | -:\n**Frequency** | $88$ | $134$ | $\\boxed{\\blueE{110}}$ | $86$ | $56$ | $26$ | $500$\n**Probability** | $0.176$ | $0.268$ | $\\boxed{\\maroonD{0.22}}$ | $0.172$ | $0.112$ | $0.052$ |",
+            "###Answer\n\nHere's the completed probability distribution:\n\nDifference | $0$ | $1$ | $2$ | $3$ | $4$ | $5$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $88$ | $134$ | $\\boxed{110}$ | $86$ | $56$ | $26$\n**Probability** | $0.176$ | $0.268$ | $\\boxed{0.22}$ | $0.172$ | $0.112$ | $0.052$"
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 110
+                }
+              ]
+            },
+            "numeric-input 2": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 0.22
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "ee3aadd3c1a2512a895abbd2a8243538",
+          "question_content": "Samantha is designing a video game where players get $3$ free revives per level. She wanted to test how many revives players might use on a new level.\n\nSamantha recruited $50$ players to play the level, and she recorded how many revives each player used.\n\n**Fill in the blanks to complete the probability distribution.**  \n*Do not round your answers.*\n\nRevives used | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | $6$ |  [[☃ numeric-input 1]] | $22$ | $8$\n**Probability** | $0.12$ | [[☃ numeric-input 2]] | $0.44$ | $0.16$",
+          "hints": [
+            "###Strategy\n\nWhen we create a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $0$ revives used in $6$ of the $50$ trials, so we can estimate the probability of that outcome to be $\\dfrac{6}{50}=0.12$.\n\nSo if we find the missing frequency, we can use it to find its corresponding probability.",
+            "###Missing frequency\n\nSince Samantha has data for $50$ trials (players), the sum of the frequencies must be $50$.\n\nSo the missing frequency must be $\\blueE{14}$:\n\nRevives used | $0$ | $1$ | $2$ | $3$ | Total\n- | -: | -: | -: | -: | -:\n**Frequency** | $6$ | $\\boxed{\\blueE{14}}$ | $22$ | $8$ | $50$\n**Probability** | $0.12$ | $\\boxed{\\text{???}}$ | $0.44$ | $0.16$ | ",
+            "###Missing probability\n\nWe saw $1$ revive used in $\\blueE{14}$ of the $50$ trials, so we can estimate the probability of that outcome to be $\\dfrac{\\blueE{14}}{50}=\\maroonD{0.28}$.\n\nRevives used | $0$ | $1$ | $2$ | $3$ | Total\n- | -: | -: | -: | -: | -:\n**Frequency** | $6$ | $\\boxed{\\blueE{14}}$ | $22$ | $8$ | $50$\n**Probability** | $0.12$ | $\\boxed{\\maroonD{0.28}}$ | $0.44$ | $0.16$ | ",
+            "###Answer\n\nHere's the completed probability distribution:\n\nRevives used | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | $6$ | $\\boxed{14}$ | $22$ | $8$\n**Probability** | $0.12$ | $\\boxed{0.28}$ | $0.44$ | $0.16$"
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 14
+                }
+              ]
+            },
+            "numeric-input 2": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 0.28
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "e6d316ff7f6c57819acb36f511c42fe8",
+          "question_content": "Manuel's friend gave him an \"unfair\" $6$-sided die, and Manuel was curious about the associated probabilities.\n\nManuel rolled the die $200$ times and recorded the results.\n\n**Fill in the blanks to complete the probability distribution.**  \n*Do not round your answers.*\n\nFace showing | $1$ | $2$ | $3$ | $4$ | $5$ | $6$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | [[☃ numeric-input 1]] | $28$ | $24$ | $30$ | $36$ | $62$\n**Probability** | [[☃ numeric-input 2]] | $0.14$ | $0.12$ | $0.15$ | $0.18$ | $0.31$",
+          "hints": [
+            "###Strategy\n\nWhen we create a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw the face $2$ showing in $28$ of the $200$ trials, so we can estimate the probability of that outcome to be $\\dfrac{28}{200}=0.14$.\n\nSo if we find the missing frequency, we can use it to find its corresponding probability.",
+            "###Missing frequency\n\nSince Manuel performed $200$ rolls, the sum of the frequencies must be $200$.\n\nSo the missing frequency must be $\\blueE{20}$:\n\nFace showing | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | Total\n- | -: | -: | -: | -: | -: | -: | -:\n**Frequency** | $\\boxed{\\blueE{20}}$ | $28$ | $24$ | $30$ | $36$ | $62$ | $200$\n**Probability** | $\\boxed{\\text{???}}$ | $0.14$ | $0.12$ | $0.15$ | $0.18$ | $0.31$ |",
+            "###Missing probability\n\nWe saw the face $1$ show in $\\blueE{20}$ of the $200$ trials, so we can estimate the probability of that outcome to be $\\dfrac{\\blueE{20}}{200}=\\maroonD{0.1}$.\n\nFace showing | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | Total\n- | -: | -: | -: | -: | -: | -: | -:\n**Frequency** | $\\boxed{\\blueE{20}}$ | $28$ | $24$ | $30$ | $36$ | $62$ | $200$\n**Probability** | $\\boxed{\\maroonD{0.1}}$ | $0.14$ | $0.12$ | $0.15$ | $0.18$ | $0.31$ |",
+            "###Answer\n\nHere's the completed probability distribution:\n\nFace showing | $1$ | $2$ | $3$ | $4$ | $5$ | $6$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $\\boxed{20}$ | $28$ | $24$ | $30$ | $36$ | $62$\n**Probability** | $\\boxed{0.1}$ | $0.14$ | $0.12$ | $0.15$ | $0.18$ | $0.31$"
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 20
+                }
+              ]
+            },
+            "numeric-input 2": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 0.1
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "0acc6e6533485a5aa8793f142cc83ee1",
+          "question_content": "Kelsey plays a video game where enemies sometimes drop objects when they are defeated. \n\nKelsey defeated a certain enemy $80$ times and recorded how many objects the enemy dropped each time:\n\n**Fill in the blanks to complete the probability distribution.**  \n*Do not round your answers.*\n\nObjects dropped | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | [[☃ numeric-input 1]] | $18$ | $6$ | $2$\n**Probability** | $0.675$ | [[☃ numeric-input 2]] | $0.075$ | $0.025$",
+          "hints": [
+            "###Strategy\n\nWhen we create a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $2$ objects dropped in $6$ of the $80$ trials, so we can estimate the probability of that outcome to be $\\dfrac{6}{80}=0.075$.\n\nSo we can find the missing frequency and the missing probability.",
+            "###Missing frequency\n\nSince Kelsey defeated the enemy $80$ times, the sum of the frequencies must be $80$.\n\nSo the missing frequency must be $\\blueE{54}$:\n\nObjects dropped | $0$ | $1$ | $2$ | $3$ | Total\n- | -: | -: | -: | -: | -:\n**Frequency** | $\\boxed{\\blueE{54}}$ | $18$ | $6$ | $2$ | $80$\n**Probability** | $0.675$ | $\\boxed{\\text{???}}$ | $0.075$ | $0.025$ | \n\n[[☃ explanation 1]]",
+            "###Missing probability\n\nWe saw $1$ object dropped in $18$ of the $80$ trials, so we can estimate the probability of that outcome to be $\\dfrac{18}{80}=\\maroonD{0.225}$.\n\nObjects dropped | $0$ | $1$ | $2$ | $3$ | Total\n- | -: | -: | -: | -: | -:\n**Frequency** | $\\boxed{\\blueE{54}}$ | $18$ | $6$ | $2$ | $80$\n**Probability** | $0.675$ | $\\boxed{\\maroonD{0.225}}$ | $0.075$ | $0.025$ | $1$\n\n[[☃ explanation 1]]",
+            "###Answer\n\nHere's the completed probability distribution:\n\nObjects dropped | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | $\\boxed{54}$ | $18$ | $6$ | $2$\n**Probability** | $0.675$ | $\\boxed{0.225}$ | $0.075$ | $0.025$"
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 54
+                }
+              ]
+            },
+            "numeric-input 2": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 0.225
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "f1e899837ff959ab9a79fee088674423",
+          "question_content": "Casey is designing a game for a fundraiser where players get $3$ chances to shoot a ball in a basket. He wants to test how likely it is that a contestant makes each possible number of shots.\n\nCasey recruited $40$ people. They each shot a set of $3$ shots, and he recorded the results.\n\n**Fill in the blanks to complete the probability distribution.**  \n*Do not round your answers.*\n\nShots made | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | $11$ |  [[☃ numeric-input 1]] | $8$ | $4$\n**Probability** | [[☃ numeric-input 2]] | $0.425$ | $0.2$ | $0.1$",
+          "hints": [
+            "###Strategy\n\nWhen we create a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $2$ shots made in $8$ of the $40$ trials, so we can estimate the probability of that outcome to be $\\dfrac{8}{40}=0.2$.\n\nSo we can find the missing frequency and the missing probability.",
+            "###Missing frequency\n\nSince Casey has data for $40$ trials (players), the sum of the frequencies must be $40$.\n\nSo the missing frequency must be $\\blueE{17}$:\n\nShots made | $0$ | $1$ | $2$ | $3$ | Total\n- | -: | -: | -: | -: | -:\n**Frequency** | $11$ |  $\\boxed{\\blueE{17}}$ | $8$ | $4$ | $40$\n**Probability** | $\\boxed{\\text{???}}$ | $0.425$ | $0.2$ | $0.1$ |\n\n[[☃ explanation 1]]",
+            "###Missing probability\n\nWe saw $0$ shots made in $11$ of the $40$ trials, so we can estimate the probability of that outcome to be $\\dfrac{11}{40}=\\maroonD{0.275}$.\n\nShots made | $0$ | $1$ | $2$ | $3$ | Total\n- | -: | -: | -: | -: | -:\n**Frequency** | $11$ |  $\\boxed{\\blueE{17}}$ | $8$ | $4$ | $40$\n**Probability** | $\\boxed{\\maroonD{0.275}}$ | $0.425$ | $0.2$ | $0.1$ | $1$\n\n[[☃ explanation 1]]",
+            "###Answer\n\nHere's the completed probability distribution:\n\nShots made | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | $11$ |  $\\boxed{17}$ | $8$ | $4$\n**Probability** | $\\boxed{0.275}$ | $0.425$ | $0.2$ | $0.1$"
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 17
+                }
+              ]
+            },
+            "numeric-input 2": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 0.275
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "7b0d1476e5465fd6822caa42d82dba4e",
+          "question_content": "A pet toy company performed an experiment to see how many toys dogs might play with. Each of the $60$ dogs involved was put in a room with its owner and $4$ different toys.\n\nThe researchers recorded how many toys each of the $60$ dogs used.\n\n**Fill in the blanks to complete the probability distribution.**  \n*Do not round your answers.*\n\nToys used | $0$ | $1$ | $2$ | $3$ | $4$\n- | -: | -: | -: | -: | -:\n**Frequency** | $3$ |  [[☃ numeric-input 1]] | $21$ | $12$ | $9$\n**Probability** | [[☃ numeric-input 2]] | $0.25$ | $0.35$ | $0.2$ | $0.15$",
+          "hints": [
+            "###Strategy\n\nWhen we create a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $2$ toys used in $21$ of the $60$ trials, so we can estimate the probability of that outcome to be $\\dfrac{21}{60}=0.35$.\n\nSo we can find the missing frequency and the missing probability.",
+            "###Missing frequency\n\nSince we have data for $60$ trials (dogs), the sum of the frequencies must be $60$.\n\nSo the missing frequency must be $\\blueE{15}$:\n\nToys used | $0$ | $1$ | $2$ | $3$ | $4$ | Total\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $3$ | $\\boxed{\\blueE{15}}$ | $21$ | $12$ | $9$ | $60$\n**Probability** | $\\boxed{\\text{???}}$ | $0.25$ | $0.35$ | $0.2$ | $0.15$ |\n\n[[☃ explanation 1]]",
+            "###Missing probability\n\nWe saw $0$ toys used in $3$ of the $60$ trials, so we can estimate the probability of that outcome to be $\\dfrac{3}{60}=\\maroonD{0.05}$.\n\nToys used | $0$ | $1$ | $2$ | $3$ | $4$ | Total\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $3$ | $\\boxed{\\blueE{15}}$ | $21$ | $12$ | $9$ | $60$\n**Probability** | $\\boxed{\\maroonD{0.05}}$ | $0.25$ | $0.35$ | $0.2$ | $0.15$ | $1$\n\n[[☃ explanation 1]]",
+            "###Answer\n\nHere's the completed probability distribution:\n\nToys used | $0$ | $1$ | $2$ | $3$ | $4$\n- | -: | -: | -: | -: | -:\n**Frequency** | $3$ | $\\boxed{15}$ | $21$ | $12$ | $9$\n**Probability** | $\\boxed{0.05}$ | $0.25$ | $0.35$ | $0.2$ | $0.15$"
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 15
+                }
+              ]
+            },
+            "numeric-input 2": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 0.05
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "node_id": "4196f0638996568d9870d55b3540ba96",
+      "title": "Develop probability distributions: Empirical probabilities",
+      "description": "Given sample data, create an approximate probability distribution for a random variable.",
+      "topic_path": [
+        "Khan Academy (English - US curriculum)",
+        "Math by grade",
+        "High school",
+        "High school statistics",
+        "Probability distributions & expected value",
+        "Theoretical & empirical probability distributions",
+        "Develop probability distributions: Empirical probabilities"
+      ],
+      "item_count": 12,
+      "mastery_model": {
+        "type": "m_of_n",
+        "m": 3,
+        "n": 4
+      },
+      "template_file": "perseus_templates/4196f0638996568d9870d55b3540ba96.json",
+      "items": [
+        {
+          "item_id": "fe460e36708f5a1098dbdeca7d012a7b",
+          "question_content": "Rosie is designing a board game where players roll two six-sided dice and subtract the numbers showing on the faces. The game only looks at nonnegative differences. For example, if a player rolls a $4$ and a $6$, the difference is $2$.\n\nRosie simulated the differences of $1{,}000$ rolls. Here are the results:\n\nDifference | $0$ | $1$ | $2$ | $3$ | $4$ | $5$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $158$ | $282$ | $221$ | $174$ | $103$ | $62$\n\n**Based on these results, which graph represents an approximate probability distribution of the difference on a random roll?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "When we graph a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these simulation results to estimate the probability of each outcome.\n\nFor example, we saw a difference of $0$ in $158$ of the $1{,}000$ trials, so we can estimate the probability of that outcome to be $\\dfrac{158}{1{,}000}=0.158$.\n\nWhich graph shows the correct probability for each outcome?",
+            "Let's look at graph B first:\n\n[[☃ image 2]]\n\nSome of the probabilities here are incorrect. For instance, the height of the bar for $\\maroonD{0}$ should be $0.158$, but that bar is below $0.15$. Also, the height of the bar for $\\purpleD{1}$ should be $\\dfrac{282}{1{,}000}=0.282$, but that bar is above $0.3$.",
+            "In graph C, all of the probabilities are smaller than they should be:\n\n[[☃ image 1]]",
+            "Graph A represents an approximate probability distribution of the differences:\n\n[[☃ image 1]]"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![A bar graph shows the probability distribution for the difference. The x-axis is labeled \"Difference\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.3. The probability distribution shows the following values: for a difference of 0, the probability is 0.1; for a difference of 1, the probability is 0.3, which is the highest value; for a difference of 2, the probability is 0.2; for a difference of 3, the probability is 0.15; for a difference of 4, the probability is 0.1; and for a difference of 5, the probability is 0.05. All values are approximate. \n](web+graphie:${☣ LOCALPATH}/images/b847ec433730fe6bdbb32bd7ed986d5d129f0112)",
+                  "correct": true
+                },
+                {
+                  "content": "![](web+graphie:${☣ LOCALPATH}/images/7345926e62d37f4bbe1e4aef6cf22139bff86030)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the difference. The x-axis is labeled \"Difference\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.3. The probability distribution shows the following values: for a difference of 0, the probability is 0.15; for a difference of 1, the probability is 0.35, which is the highest value; for a difference of 2, the probability is 0.25; for a difference of 3, the probability is 0.15; for a difference of 4, the probability is 0.07; and for a difference of 5, the probability is 0.03. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/673b1273d8eaaee887d05a1a14ba33c4f374ede2)",
+                  "correct": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "5f29896325fe5a4b82ee79e8e78f7a4a",
+          "question_content": "Airlines are usually willing to \"overbook\" flights and sell a few more tickets than they have seats available. On most flights, some people who buy tickets don't show up, so everyone who does show up gets a seat. But if too many people show up, the airline must move some passengers to another flight (and give them a large credit).\n\nAn airline tracked how many passengers needed to be moved off a certain flight in each of the last $500$ times that the flight ran:\n\n# moved off flight | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | $290$ | $160$ | $30$ | $20$\n\n**Based on these results, which graph represents an approximate probability distribution of the number of passengers moved off this flight on a random day?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "When we graph a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $0$ moved passengers in $290$ of the $500$ trials, so we can estimate the probability of that outcome to be $\\dfrac{290}{500}=0.58$.\n\nWhich graph shows the correct probability for each outcome?",
+            "Let's look at graph A first:\n\n[[☃ image 2]]\n\nSome of the probabilities here are incorrect. For instance, the height of the bar for $\\maroonD{0}$ moved passengers should be $0.58$, but that bar is below $0.5$. Also, the height of the bar for $\\purpleD{1}$ moved passenger should be $\\dfrac{160}{500}=0.32$, but that bar is below $0.3$.",
+            "In graph C, all of the probabilities are smaller than they should be:\n\n[[☃ image 1]]",
+            "Graph B represents an approximate probability distribution of the number of passengers moved off the flight on a random day:\n\n[[☃ image 1]]"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of moved passengers. The x-axis is labeled \"number of moved passengers\" and ranges from 0 to 3. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 passengers moved, the probability is 0.5; for 1 passenger moved, the probability is 0.3; for 2 passengers moved, the probability is 0.05; and for 3 passengers moved, the probability is 0.04. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/819174a557c4b0a20e56cf628bb55ae3b783e124)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of moved passengers. The x-axis is labeled \"number of moved passengers\" and ranges from 0 to 3. The y-axis is labeled \"Probability\" and ranges from 0 to 0.6. The probability distribution shows the following values: for 0 passengers moved, the probability is 0.6; for 1 passenger moved, the probability is 0.3; for 2 passengers moved, the probability is 0.08; and for 3 passengers moved, the probability is 0.02. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/dcb24d3a531147c7656851562324757563c4aeb2)",
+                  "correct": true
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of moved passengers. The x-axis is labeled \"number of moved passengers\" and ranges from 0 to 3. The y-axis is labeled \"Probability\" and ranges from 0 to 0.6. The probability distribution shows the following values: for 0 passengers moved, the probability is 0.6; for 1 passenger moved, the probability is 0.3; for 2 passengers moved, the probability is 0.08; and for 3 passengers moved, the probability is 0.02. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/d0d84ff7d7ed555c610832449731585a2230f975)",
+                  "correct": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "c8ba0895e82f5b1f81c1c652d5e121ec",
+          "question_content": "Mikel runs his own business — he takes small groups of tourists on day-long tours of the city where he lives. He'll take up to $4$ people at a time on a tour.\n\nMikel tracked how many people came on his tour in the last $200$ days:\n\n# of people | $0$ | $1$ | $2$ | $3$ | $4$\n- | -: | -: | -: | -: | -:\n**Frequency** | $6$ | $14$ | $78$ | $30$ | $72$\n\n**Based on these results, which graph represents an approximate probability distribution of the number of people on a random tour?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "When we graph a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $2$ people in $78$ of the $200$ trials, so we can estimate the probability of that outcome to be $\\dfrac{78}{200}=0.39$.\n\nWhich graph shows the correct probability for each outcome?",
+            "Let's look at graph A first:\n\n[[☃ image 2]]\n\nThe probabilities here are incorrect. For instance, the height of the bar for $\\maroonD{2}$ people should be $0.39$, but that bar is above $0.4$. Also, the height of the bar for $\\purpleD{4}$ people should be $\\dfrac{72}{200}=0.36$, but that bar is below $0.35$.",
+            "In graph B, all of the probabilities are larger than they should be:\n\n[[☃ image 1]]",
+            "Graph C represents an approximate probability distribution of the number of people on a random tour:\n\n[[☃ image 1]]"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of people. The x-axis is labeled \"number of people\" and ranges from 0 to 4. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 people, the probability is close to 0; for 1 person, the probability is 0.2; for 2 people, the probability is 0.45, which is the highest value; for 3 people, the probability is 0.15; and for 4 people, the probability is 0.35. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/a8a9f3533c28fa1fb29f67fbe0be836a28749366)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of people. The x-axis is labeled \"number of people\" and ranges from 0 to 4. The y-axis is labeled \"Probability\" and ranges from 0 to 0.8. The probability distribution shows the following values: for 0 people, the probability is close to 0; for 1 person, the probability is 0.1; for 2 people, the probability is 0.7, which is the highest value; for 3 people, the probability is close to 0; and for 4 people, the probability is 0.65. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/3c7a3f35f7526dd57bd0fc4877659234f4c9c7ba)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of people. The x-axis is labeled \"number of people\" and ranges from 0 to 4. The y-axis is labeled \"Probability\" and ranges from 0 to 0.4. The probability distribution shows the following values: for 0 people, the probability is close to 0; for 1 person, the probability is 0.05; for 2 people, the probability is 0.35, which is the highest value; for 3 people, the probability is close to 0; and for 4 people, the probability is 0.35. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/3e7d068a8fd2ea0de574c0dab9fa3f45623cb779)",
+                  "correct": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "6ff7a96dcd5d5754acb14646bb0e45f4",
+          "question_content": "Tyreek owns a barber shop. They advertise saying they take customers by appointment only, but if time permits, they will take walk-in customers who don't have appointments.\n\nTyreek tracked how many walk-in customers there were in each of last $100$ days:\n\n# of walk-ins | $0$ | $1$ | $2$ | $3$ | $4$ | $5$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $3$ | $7$ | $13$ | $28$ | $39$ | $10$\n\n**Based on these results, which graph represents an approximate probability distribution of walk-in customers on a random day?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "When we graph a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $4$ walk-in customers in $39$ of the $100$ trials, so we can estimate the probability of that outcome to be $\\dfrac{39}{100}=0.39$.\n\nWhich graph shows the correct probability for each outcome?",
+            "Let's look at graph B first:\n\n[[☃ image 2]]\n\nThe probabilities here are incorrect. For instance, the height of the bar for $\\maroonD{4}$ walk-ins should be $0.39$, but that bar is above $0.4$. Also, the height of the bar for $\\purpleD{3}$ walk-ins should be $\\dfrac{28}{100}=0.28$, but that bar is above $0.3$.",
+            "In graph C, all of the probabilities are larger than they should be:\n\n[[☃ image 1]]",
+            "Graph A represents an approximate probability distribution of the number of walk-in customers on a random day:\n\n[[☃ image 1]]"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of walk-ins. The x-axis is labeled \"number of walk-ins\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.4. The probability distribution shows the following values: for 0 walk-ins, the probability is close to 0.05; for 1 walk-in, the probability is 0.04; for 2 walk-ins, the probability is 0.1; for 3 walk-ins, the probability is 0.32 for 4 walk-ins, the probability is 0.42, which is the highest value; and for 5 walk-ins, the probability is 0.05. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/e79ba400b8d47b5293ccd7b1f82dcbee832400ba)",
+                  "correct": true
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of walk-ins. The x-axis is labeled \"number of walk-ins\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 walk-ins, the probability is close to 0.05; for 1 walk-in, the probability is 0.04; for 2 walk-ins, the probability is 0.1; for 3 walk-ins, the probability is 0.32 for 4 walk-ins, the probability is 0.42, which is the highest value; and for 5 walk-ins, the probability is 0.05. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/ceab0202e358b8042dfb92e464d4e69aea2f784e)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of walk-ins. The x-axis is labeled \"number of walk-ins\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 walk-ins, the probability is close to 0.05; for 1 walk-in, the probability is 0.04; for 2 walk-ins, the probability is 0.1; for 3 walk-ins, the probability is 0.32 for 4 walk-ins, the probability is 0.42, which is the highest value; and for 5 walk-ins, the probability is 0.05. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/d3153d76c46c517b31ebc575acf40ab5504aeedc)",
+                  "correct": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "3afbe56e075f54eaae577e1f28b98ef3",
+          "question_content": "In an experiment about the behavior of adults, each of the $50$ subjects involved was told to sit in a waiting room until the researcher called for them. There were $5$ different types of snacks in the waiting room.\n\nThe researchers recorded how many snacks each of the $50$ subjects tried. Here are the results:\n\n# of snacks | $0$ | $1$ | $2$ | $3$ | $4$ | $5$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $4$ | $11$ | $22$ | $8$ | $4$ | $1$\n\n**Based on these results, which graph represents an approximate probability distribution of the number of snacks a random adult would try?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "When we graph a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $2$ snacks tried in $22$ of the $50$ trials, so we can estimate the probability of that outcome to be $\\dfrac{22}{50}=0.44$.\n\nWhich graph shows the correct probability for each outcome?",
+            "Let's look at graph A first:\n\n[[☃ image 2]]\n\nThe height of the bar for $\\maroonD{2}$ snacks should be $0.44$, but that bar is below $0.3$. Also, the height of the bar for $\\purpleD{1}$ snack should be $\\dfrac{11}{50}=0.22$, but that bar is below $0.2$.\n\nAll of the probabilities are smaller than they should be.",
+            "The probabilities in graph C are incorrect. For instance, the height of the bar for $\\maroonD{2}$ snacks should be $0.44$, but that bar is above $0.45$. Also, the height of the bar for $\\purpleD{1}$ snack should be $0.22$, but that bar is below $0.2$.\n\n[[☃ image 1]]",
+            "Graph B represents an approximate probability distribution of the number of snacks a random adult would try:\n\n[[☃ image 1]]"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of snacks. The x-axis is labeled \"number of snacks\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.3. The probability distribution shows the following values: for 0 snacks, the probability is 0.04; for 1 snack, the probability is 0.1; for 2 snacks, the probability is 0.22; for 3 snacks, the probability is 0.15; for 4 snacks, the probability is 0.1; and for 5 snacks, the probability is 0.05. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/17e5ccc4c673eadf3cb33059235f68142190bbb1)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of snacks. The x-axis is labeled \"number of snacks\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 snacks, the probability is 0.0; for 1 snack, the probability is 0.1; for 2 snacks, the probability is 0.45; for 3 snacks, the probability is 0.2; for 4 snacks, the probability is 0.1; and for 5 snacks, the probability is 0.05. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/b0090c07a3e3a0574b61ca5bf4315d5f2db69f38)",
+                  "correct": true
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of snacks. The x-axis is labeled \"number of snacks\" and ranges from 0 to 5. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 snacks, the probability is 0.0; for 1 snack, the probability is 0.1; for 2 snacks, the probability is 0.45; for 3 snacks, the probability is 0.2; for 4 snacks, the probability is 0.1; and for 5 snacks, the probability is 0.05. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/a87fa1680b111831ca221c3b41450b8fd59ce789)",
+                  "correct": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "8b01dc8e6bc258acb0f1aa90af2f6f42",
+          "question_content": "Mia owns a small restaurant where customers can order takeout either online or by phone. Most customers order online, but some still prefer to use the phone.\n\nMia tracked how many takeout orders came by phone each of the past $400$ days:\n\n# of orders | $0$ | $1$ | $2$ | $3$ | $4$\n- | -: | -: | -: | -: | -:\n**Frequency** | $12$ | $20$ | $88$ | $160$ | $120$\n\n**Based on these results, which graph represents an approximate probability distribution of the number of phone orders a random day?**\n\n[[☃ radio 1]]",
+          "hints": [
+            "When we graph a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $3$ phone orders in $160$ of the $400$ trials, so we can estimate the probability of that outcome to be $\\dfrac{160}{400}=0.4$.\n\nWhich graph shows the correct probability for each outcome?",
+            "Let's look at graph A first:\n\n[[☃ image 2]]\n\nThe probabilities here are incorrect. For instance, the height of the bar for $\\maroonD{3}$ orders should be $0.4$, but that bar is above $0.4$. Also, the height of the bar for $\\purpleD{2}$ orders should be $\\dfrac{88}{400}=0.22$, but that bar is below $0.2$.",
+            "In graph B, all of the probabilities are larger than they should be:\n\n[[☃ image 1]]",
+            "Graph C represents an approximate probability distribution of the number of phone orders on a random day:\n\n[[☃ image 1]]"
+          ],
+          "widget_types": [
+            "radio"
+          ],
+          "answer_data": {
+            "radio 1": {
+              "type": "radio",
+              "choices": [
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of orders. The x-axis is labeled \"number of orders\" and ranges from 0 to 4. The y-axis is labeled \"Probability\" and ranges from 0 to 0.5. The probability distribution shows the following values: for 0 orders, the probability is close to 0.02; for 1 order, the probability is 0; for 2 orders, the probability is 0.15; for 3 orders, the probability is 0.42, which is the highest value; and for 4 orders, the probability is 0.32. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/8ca39640a9af22ec4d39e418ec70c287105c7189)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of orders. The x-axis is labeled \"number of orders\" and ranges from 0 to 4. The y-axis is labeled \"Probability\" and ranges from 0 to 0.8. The probability distribution shows the following values: for 0 orders, the probability is close to 0.02; for 1 order, the probability is 0.05; for 2 orders, the probability is 0.42; for 3 orders, the probability is 0.8, which is the highest value; and for 4 orders, the probability is 0.6. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/9b0980e44e48d8e6f08794f838f8f3ecd82d56a1)",
+                  "correct": false
+                },
+                {
+                  "content": "![A bar graph shows the probability distribution for the number of orders. The x-axis is labeled \"number of orders\" and ranges from 0 to 4. The y-axis is labeled \"Probability\" and ranges from 0 to 0.4. The probability distribution shows the following values: for 0 orders, the probability is close to 0; for 1 order, the probability is 0.05; for 2 orders, the probability is 0.2; for 3 orders, the probability is 0.35, which is the highest value; and for 4 orders, the probability is 0.3. All values are approximate.\n](web+graphie:${☣ LOCALPATH}/images/101413a2ef0e33fe09af2787e26f01c029999af2)",
+                  "correct": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "fdee4a3c3f485656aa8813ca4ccdea1a",
+          "question_content": "Pedro is designing a board game where players roll two six-sided dice and subtract the numbers showing on the faces. The game only looks at nonnegative differences. For example, if a player rolls a $4$ and a $6$, the difference is $2$.\n\nPedro simulated the differences of $500$ rolls.\n\n**Fill in the blanks to complete the probability distribution.**  \n*Do not round your answers.*\n\nDifference | $0$ | $1$ | $2$ | $3$ | $4$ | $5$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $88$ | $134$ | [[☃ numeric-input 1]] | $86$ | $56$ | $26$\n**Probability** | $0.176$ | $0.268$ | [[☃ numeric-input 2]] | $0.172$ | $0.112$ | $0.052$",
+          "hints": [
+            "###Strategy\n\nWhen we create a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these simulation results to estimate the probability of each outcome.\n\nFor example, we saw a difference of $0$ in $88$ of the $500$ trials, so we can estimate the probability of that outcome to be $\\dfrac{88}{500}=0.176$.\n\nSo if we find the missing frequency, we can use it to find its corresponding probability.",
+            "###Missing frequency\n\nSince Pedro simulated $500$ rolls, the sum of the frequencies must be $500$.\n\nSo the missing frequency must be $\\blueE{110}$:\n\nDifference | $0$ | $1$ | $2$ | $3$ | $4$ | $5$ | Total\n- | -: | -: | -: | -: | -: | -: | -:\n**Frequency** | $88$ | $134$ | $\\boxed{\\blueE{110}}$ | $86$ | $56$ | $26$ | $500$\n**Probability** | $0.176$ | $0.268$ | $\\boxed{\\text{???}}$ | $0.172$ | $0.112$ | $0.052$ |",
+            "###Missing probability\n\nWe saw a difference of $2$ in $\\blueE{110}$ of the $500$ trials, so we can estimate the probability of that outcome to be $\\dfrac{\\blueE{110}}{500}=\\maroonD{0.22}$.\n\nDifference | $0$ | $1$ | $2$ | $3$ | $4$ | $5$ | Total\n- | -: | -: | -: | -: | -: | -: | -:\n**Frequency** | $88$ | $134$ | $\\boxed{\\blueE{110}}$ | $86$ | $56$ | $26$ | $500$\n**Probability** | $0.176$ | $0.268$ | $\\boxed{\\maroonD{0.22}}$ | $0.172$ | $0.112$ | $0.052$ |",
+            "###Answer\n\nHere's the completed probability distribution:\n\nDifference | $0$ | $1$ | $2$ | $3$ | $4$ | $5$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $88$ | $134$ | $\\boxed{110}$ | $86$ | $56$ | $26$\n**Probability** | $0.176$ | $0.268$ | $\\boxed{0.22}$ | $0.172$ | $0.112$ | $0.052$"
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 110
+                }
+              ]
+            },
+            "numeric-input 2": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 0.22
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "ee3aadd3c1a2512a895abbd2a8243538",
+          "question_content": "Samantha is designing a video game where players get $3$ free revives per level. She wanted to test how many revives players might use on a new level.\n\nSamantha recruited $50$ players to play the level, and she recorded how many revives each player used.\n\n**Fill in the blanks to complete the probability distribution.**  \n*Do not round your answers.*\n\nRevives used | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | $6$ |  [[☃ numeric-input 1]] | $22$ | $8$\n**Probability** | $0.12$ | [[☃ numeric-input 2]] | $0.44$ | $0.16$",
+          "hints": [
+            "###Strategy\n\nWhen we create a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $0$ revives used in $6$ of the $50$ trials, so we can estimate the probability of that outcome to be $\\dfrac{6}{50}=0.12$.\n\nSo if we find the missing frequency, we can use it to find its corresponding probability.",
+            "###Missing frequency\n\nSince Samantha has data for $50$ trials (players), the sum of the frequencies must be $50$.\n\nSo the missing frequency must be $\\blueE{14}$:\n\nRevives used | $0$ | $1$ | $2$ | $3$ | Total\n- | -: | -: | -: | -: | -:\n**Frequency** | $6$ | $\\boxed{\\blueE{14}}$ | $22$ | $8$ | $50$\n**Probability** | $0.12$ | $\\boxed{\\text{???}}$ | $0.44$ | $0.16$ | ",
+            "###Missing probability\n\nWe saw $1$ revive used in $\\blueE{14}$ of the $50$ trials, so we can estimate the probability of that outcome to be $\\dfrac{\\blueE{14}}{50}=\\maroonD{0.28}$.\n\nRevives used | $0$ | $1$ | $2$ | $3$ | Total\n- | -: | -: | -: | -: | -:\n**Frequency** | $6$ | $\\boxed{\\blueE{14}}$ | $22$ | $8$ | $50$\n**Probability** | $0.12$ | $\\boxed{\\maroonD{0.28}}$ | $0.44$ | $0.16$ | ",
+            "###Answer\n\nHere's the completed probability distribution:\n\nRevives used | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | $6$ | $\\boxed{14}$ | $22$ | $8$\n**Probability** | $0.12$ | $\\boxed{0.28}$ | $0.44$ | $0.16$"
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 14
+                }
+              ]
+            },
+            "numeric-input 2": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 0.28
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "e6d316ff7f6c57819acb36f511c42fe8",
+          "question_content": "Manuel's friend gave him an \"unfair\" $6$-sided die, and Manuel was curious about the associated probabilities.\n\nManuel rolled the die $200$ times and recorded the results.\n\n**Fill in the blanks to complete the probability distribution.**  \n*Do not round your answers.*\n\nFace showing | $1$ | $2$ | $3$ | $4$ | $5$ | $6$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | [[☃ numeric-input 1]] | $28$ | $24$ | $30$ | $36$ | $62$\n**Probability** | [[☃ numeric-input 2]] | $0.14$ | $0.12$ | $0.15$ | $0.18$ | $0.31$",
+          "hints": [
+            "###Strategy\n\nWhen we create a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw the face $2$ showing in $28$ of the $200$ trials, so we can estimate the probability of that outcome to be $\\dfrac{28}{200}=0.14$.\n\nSo if we find the missing frequency, we can use it to find its corresponding probability.",
+            "###Missing frequency\n\nSince Manuel performed $200$ rolls, the sum of the frequencies must be $200$.\n\nSo the missing frequency must be $\\blueE{20}$:\n\nFace showing | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | Total\n- | -: | -: | -: | -: | -: | -: | -:\n**Frequency** | $\\boxed{\\blueE{20}}$ | $28$ | $24$ | $30$ | $36$ | $62$ | $200$\n**Probability** | $\\boxed{\\text{???}}$ | $0.14$ | $0.12$ | $0.15$ | $0.18$ | $0.31$ |",
+            "###Missing probability\n\nWe saw the face $1$ show in $\\blueE{20}$ of the $200$ trials, so we can estimate the probability of that outcome to be $\\dfrac{\\blueE{20}}{200}=\\maroonD{0.1}$.\n\nFace showing | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | Total\n- | -: | -: | -: | -: | -: | -: | -:\n**Frequency** | $\\boxed{\\blueE{20}}$ | $28$ | $24$ | $30$ | $36$ | $62$ | $200$\n**Probability** | $\\boxed{\\maroonD{0.1}}$ | $0.14$ | $0.12$ | $0.15$ | $0.18$ | $0.31$ |",
+            "###Answer\n\nHere's the completed probability distribution:\n\nFace showing | $1$ | $2$ | $3$ | $4$ | $5$ | $6$\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $\\boxed{20}$ | $28$ | $24$ | $30$ | $36$ | $62$\n**Probability** | $\\boxed{0.1}$ | $0.14$ | $0.12$ | $0.15$ | $0.18$ | $0.31$"
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 20
+                }
+              ]
+            },
+            "numeric-input 2": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 0.1
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "0acc6e6533485a5aa8793f142cc83ee1",
+          "question_content": "Kelsey plays a video game where enemies sometimes drop objects when they are defeated. \n\nKelsey defeated a certain enemy $80$ times and recorded how many objects the enemy dropped each time:\n\n**Fill in the blanks to complete the probability distribution.**  \n*Do not round your answers.*\n\nObjects dropped | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | [[☃ numeric-input 1]] | $18$ | $6$ | $2$\n**Probability** | $0.675$ | [[☃ numeric-input 2]] | $0.075$ | $0.025$",
+          "hints": [
+            "###Strategy\n\nWhen we create a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $2$ objects dropped in $6$ of the $80$ trials, so we can estimate the probability of that outcome to be $\\dfrac{6}{80}=0.075$.\n\nSo we can find the missing frequency and the missing probability.",
+            "###Missing frequency\n\nSince Kelsey defeated the enemy $80$ times, the sum of the frequencies must be $80$.\n\nSo the missing frequency must be $\\blueE{54}$:\n\nObjects dropped | $0$ | $1$ | $2$ | $3$ | Total\n- | -: | -: | -: | -: | -:\n**Frequency** | $\\boxed{\\blueE{54}}$ | $18$ | $6$ | $2$ | $80$\n**Probability** | $0.675$ | $\\boxed{\\text{???}}$ | $0.075$ | $0.025$ | \n\n[[☃ explanation 1]]",
+            "###Missing probability\n\nWe saw $1$ object dropped in $18$ of the $80$ trials, so we can estimate the probability of that outcome to be $\\dfrac{18}{80}=\\maroonD{0.225}$.\n\nObjects dropped | $0$ | $1$ | $2$ | $3$ | Total\n- | -: | -: | -: | -: | -:\n**Frequency** | $\\boxed{\\blueE{54}}$ | $18$ | $6$ | $2$ | $80$\n**Probability** | $0.675$ | $\\boxed{\\maroonD{0.225}}$ | $0.075$ | $0.025$ | $1$\n\n[[☃ explanation 1]]",
+            "###Answer\n\nHere's the completed probability distribution:\n\nObjects dropped | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | $\\boxed{54}$ | $18$ | $6$ | $2$\n**Probability** | $0.675$ | $\\boxed{0.225}$ | $0.075$ | $0.025$"
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 54
+                }
+              ]
+            },
+            "numeric-input 2": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 0.225
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "f1e899837ff959ab9a79fee088674423",
+          "question_content": "Casey is designing a game for a fundraiser where players get $3$ chances to shoot a ball in a basket. He wants to test how likely it is that a contestant makes each possible number of shots.\n\nCasey recruited $40$ people. They each shot a set of $3$ shots, and he recorded the results.\n\n**Fill in the blanks to complete the probability distribution.**  \n*Do not round your answers.*\n\nShots made | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | $11$ |  [[☃ numeric-input 1]] | $8$ | $4$\n**Probability** | [[☃ numeric-input 2]] | $0.425$ | $0.2$ | $0.1$",
+          "hints": [
+            "###Strategy\n\nWhen we create a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $2$ shots made in $8$ of the $40$ trials, so we can estimate the probability of that outcome to be $\\dfrac{8}{40}=0.2$.\n\nSo we can find the missing frequency and the missing probability.",
+            "###Missing frequency\n\nSince Casey has data for $40$ trials (players), the sum of the frequencies must be $40$.\n\nSo the missing frequency must be $\\blueE{17}$:\n\nShots made | $0$ | $1$ | $2$ | $3$ | Total\n- | -: | -: | -: | -: | -:\n**Frequency** | $11$ |  $\\boxed{\\blueE{17}}$ | $8$ | $4$ | $40$\n**Probability** | $\\boxed{\\text{???}}$ | $0.425$ | $0.2$ | $0.1$ |\n\n[[☃ explanation 1]]",
+            "###Missing probability\n\nWe saw $0$ shots made in $11$ of the $40$ trials, so we can estimate the probability of that outcome to be $\\dfrac{11}{40}=\\maroonD{0.275}$.\n\nShots made | $0$ | $1$ | $2$ | $3$ | Total\n- | -: | -: | -: | -: | -:\n**Frequency** | $11$ |  $\\boxed{\\blueE{17}}$ | $8$ | $4$ | $40$\n**Probability** | $\\boxed{\\maroonD{0.275}}$ | $0.425$ | $0.2$ | $0.1$ | $1$\n\n[[☃ explanation 1]]",
+            "###Answer\n\nHere's the completed probability distribution:\n\nShots made | $0$ | $1$ | $2$ | $3$\n- | -: | -: | -: | -:\n**Frequency** | $11$ |  $\\boxed{17}$ | $8$ | $4$\n**Probability** | $\\boxed{0.275}$ | $0.425$ | $0.2$ | $0.1$"
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 17
+                }
+              ]
+            },
+            "numeric-input 2": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 0.275
+                }
+              ]
+            }
+          }
+        },
+        {
+          "item_id": "7b0d1476e5465fd6822caa42d82dba4e",
+          "question_content": "A pet toy company performed an experiment to see how many toys dogs might play with. Each of the $60$ dogs involved was put in a room with its owner and $4$ different toys.\n\nThe researchers recorded how many toys each of the $60$ dogs used.\n\n**Fill in the blanks to complete the probability distribution.**  \n*Do not round your answers.*\n\nToys used | $0$ | $1$ | $2$ | $3$ | $4$\n- | -: | -: | -: | -: | -:\n**Frequency** | $3$ |  [[☃ numeric-input 1]] | $21$ | $12$ | $9$\n**Probability** | [[☃ numeric-input 2]] | $0.25$ | $0.35$ | $0.2$ | $0.15$",
+          "hints": [
+            "###Strategy\n\nWhen we create a probability distribution, we show each possible outcome along with its corresponding probability. We can use empirical data like these results to estimate the probability of each outcome.\n\nFor example, we saw $2$ toys used in $21$ of the $60$ trials, so we can estimate the probability of that outcome to be $\\dfrac{21}{60}=0.35$.\n\nSo we can find the missing frequency and the missing probability.",
+            "###Missing frequency\n\nSince we have data for $60$ trials (dogs), the sum of the frequencies must be $60$.\n\nSo the missing frequency must be $\\blueE{15}$:\n\nToys used | $0$ | $1$ | $2$ | $3$ | $4$ | Total\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $3$ | $\\boxed{\\blueE{15}}$ | $21$ | $12$ | $9$ | $60$\n**Probability** | $\\boxed{\\text{???}}$ | $0.25$ | $0.35$ | $0.2$ | $0.15$ |\n\n[[☃ explanation 1]]",
+            "###Missing probability\n\nWe saw $0$ toys used in $3$ of the $60$ trials, so we can estimate the probability of that outcome to be $\\dfrac{3}{60}=\\maroonD{0.05}$.\n\nToys used | $0$ | $1$ | $2$ | $3$ | $4$ | Total\n- | -: | -: | -: | -: | -: | -:\n**Frequency** | $3$ | $\\boxed{\\blueE{15}}$ | $21$ | $12$ | $9$ | $60$\n**Probability** | $\\boxed{\\maroonD{0.05}}$ | $0.25$ | $0.35$ | $0.2$ | $0.15$ | $1$\n\n[[☃ explanation 1]]",
+            "###Answer\n\nHere's the completed probability distribution:\n\nToys used | $0$ | $1$ | $2$ | $3$ | $4$\n- | -: | -: | -: | -: | -:\n**Frequency** | $3$ | $\\boxed{15}$ | $21$ | $12$ | $9$\n**Probability** | $\\boxed{0.05}$ | $0.25$ | $0.35$ | $0.2$ | $0.15$"
+          ],
+          "widget_types": [
+            "numeric-input"
+          ],
+          "answer_data": {
+            "numeric-input 1": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 15
+                }
+              ]
+            },
+            "numeric-input 2": {
+              "type": "numeric-input",
+              "answers": [
+                {
+                  "maxError": null,
+                  "message": "",
+                  "simplify": "required",
+                  "status": "correct",
+                  "strict": false,
+                  "value": 0.05
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
