@@ -275,6 +275,81 @@ def get_node_competency_bounds(node_id: str, dna_name: Optional[str] = None) -> 
 #     the most appropriate one for a given formatter.
 # ═══════════════════════════════════════════════════════════════════════════════
 
+from backend.app.practice_gen.schemas.visuals import VisualSchemaRegistry
+
+# New Binding Registry (Phase 2 Migration)
+BINDINGS = {
+    # Grade 1
+    "mat_g1_na_q1_0": {"dna": "counting", "visual": "EmojiPictorial"},
+    "mat_g1_na_q1_1": {"dna": "number_reading", "visual": "EmojiPictorial"},
+    "mat_g1_na_q1_2": {"dna": "number_reading", "visual": "EmojiPictorial"},
+    "mat_g1_na_q1_3": {"dna": "comparing_ordering", "visual": "SortOrder"},
+    "mat_g1_na_q1_4": {"dna": "comparing_ordering", "visual": "SortOrder"},
+    "mat_g1_na_q1_5": {"dna": "ordinal_numbers", "visual": "SortOrder"},
+    "mat_g1_na_q1_6": {"dna": "addition", "visual": "NumberLine"},
+    "mat_g1_na_q1_7": {"dna": "addition", "visual": "NumberLine"},
+    "mat_g1_na_q1_8": {"dna": "addition", "visual": "NumberLine"},
+    "mat_g1_na_q1_9": {"dna": "addition", "visual": "NumberLine"},
+    "mat_g1_na_q2_0": {"dna": "comparing_ordering", "visual": "SortOrder"},
+    "mat_g1_na_q2_1": {"dna": "counting", "visual": "EmojiPictorial"},
+    "mat_g1_na_q2_2": {"dna": "place_value", "visual": "PlaceValueBlocks"},
+    "mat_g1_na_q2_3": {"dna": "place_value", "visual": "PlaceValueBlocks"},
+    "mat_g1_na_q2_4": {"dna": "place_value", "visual": "PlaceValueBlocks"},
+    "mat_g1_na_q2_5": {"dna": "addition", "visual": "NumberLine"},
+    "mat_g1_na_q2_6": {"dna": "addition", "visual": "NumberLine"},
+    "mat_g1_na_q3_0": {"dna": "subtraction", "visual": "NumberLine"},
+    "mat_g1_na_q3_1": {"dna": "missing_number", "visual": "NumberBond"},
+    "mat_g1_na_q3_2": {"dna": "missing_number", "visual": "NumberBond"},
+    "mat_g1_na_q3_3": {"dna": "subtraction", "visual": "NumberLine"},
+    "mat_g1_na_q3_4": {"dna": "subtraction", "visual": "NumberLine"},
+    "mat_g1_na_q3_5": {"dna": "subtraction", "visual": "NumberLine"},
+    "mat_g1_na_q3_6": {"dna": "patterns", "visual": "PatternSequence"},
+    "mat_g1_na_q3_7": {"dna": "patterns", "visual": "PatternSequence"},
+    "mat_g1_na_q4_0": {"dna": "fractions", "visual": "FractionModel"},
+    "mat_g1_na_q4_1": {"dna": "fractions", "visual": "FractionModel"},
+    "mat_g1_na_q4_2": {"dna": "fractions", "visual": "FractionModel"},
+    "mat_g1_na_q4_3": {"dna": "money_peso", "visual": "PesoMoney"},
+    "mat_g1_na_q4_4": {"dna": "money_peso", "visual": "PesoMoney"},
+    "mat_g1_na_q4_5": {"dna": "money_peso", "visual": "PesoMoney"},
+    "mat_g1_na_q4_6": {"dna": "money_peso", "visual": "PesoMoney"},
+    "mat_g1_mg_q1_0": {"dna": "shapes_2d", "visual": "ShapeBoard"},
+    "mat_g1_mg_q1_1": {"dna": "shapes_2d", "visual": "ShapeBoard"},
+    "mat_g1_mg_q1_2": {"dna": "shapes_2d", "visual": "ShapeBoard"},
+    "mat_g1_mg_q2_0": {"dna": "length_measurement", "visual": "RulerMeasure"},
+    "mat_g1_mg_q2_1": {"dna": "length_measurement", "visual": "RulerMeasure"},
+    "mat_g1_mg_q2_2": {"dna": "length_measurement", "visual": "RulerMeasure"},
+    "mat_g1_mg_q4_0": {"dna": "symmetry_slides", "visual": "ShapeBoard"},
+    "mat_g1_mg_q4_1": {"dna": "time_reading", "visual": "ClockSet"},
+    "mat_g1_mg_q4_2": {"dna": "calendar", "visual": "Calendar"},
+    "mat_g1_mg_q4_3": {"dna": "calendar", "visual": "Calendar"},
+    "mat_g1_mg_q4_4": {"dna": "time_reading", "visual": "ClockSet"},
+    "mat_g1_dp_q3_0": {"dna": "pictographs", "visual": "Pictograph"},
+    "mat_g1_dp_q3_1": {"dna": "pictographs", "visual": "Pictograph"},
+    "mat_g1_dp_q3_2": {"dna": "pictographs", "visual": "Pictograph"},
+    "mat_g1_dp_q3_3": {"dna": "pictographs", "visual": "Pictograph"},
+
+    # Grade 2 (Simplified mappings for the audit)
+    "mat_g2_na_q1_0": {"dna": "counting", "visual": "NumberLine"},
+    "mat_g2_na_q1_6": {"dna": "place_value", "visual": "PlaceValueBlocks"},
+    "mat_g2_na_q2_0": {"dna": "money_peso", "visual": "PesoMoney"},
+    "mat_g2_na_q3_0": {"dna": "multiplication", "visual": "BarChart"},
+    "mat_g2_na_q4_0": {"dna": "fractions", "visual": "FractionShade"},
+    "mat_g2_mg_q1_0": {"dna": "shapes_2d", "visual": "ShapeBoard"},
+    "mat_g2_mg_q2_0": {"dna": "length_measurement", "visual": "RulerMeasure"},
+    "mat_g2_mg_q4_0": {"dna": "time_reading", "visual": "ClockSet"},
+    "mat_g2_dp_q3_0": {"dna": "pictographs", "visual": "Pictograph"},
+
+    # Grade 3 (Simplified mappings for the audit)
+    "mat_g3_na_q1_0": {"dna": "number_reading", "visual": "NumberLine"},
+    "mat_g3_na_q2_0": {"dna": "money_peso", "visual": "PesoMoney"},
+    "mat_g3_na_q3_0": {"dna": "multiplication", "visual": "BarChart"},
+    "mat_g3_na_q4_0": {"dna": "division", "visual": "BarChart"},
+    "mat_g3_mg_q1_0": {"dna": "area", "visual": "ShapeBoard"},
+    "mat_g3_mg_q2_0": {"dna": "mass_capacity", "visual": "BarChart"},
+    "mat_g3_mg_q4_0": {"dna": "symmetry_slides", "visual": "ShapeBoard"},
+    "mat_g3_dp_q3_0": {"dna": "pictographs", "visual": "Pictograph"},
+}
+
 NODE_TO_DNA: Dict[str, List[str]] = {
 
     # ────────────────────────────────────────────────────────────────────────
