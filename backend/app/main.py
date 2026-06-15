@@ -2991,7 +2991,7 @@ def get_matatag_lab_interests():
     """
     Return ALL available interest themes for word problem personalization.
     
-    All data comes from data/skeletons/interest_bank.json - the single source of truth.
+    All data comes from data/interest_bank.json - the single source of truth.
     Update that file to add/modify interests without code changes.
     
     Note: Grade bands are ignored - all interests are available for all grades.
@@ -3025,7 +3025,7 @@ def get_matatag_lab_interests():
     
     return {
         "interests": interests,
-        "source": "data/skeletons/interest_bank.json",
+        "source": "data/interest_bank.json",
         "total_count": len(_INTERESTS),
     }
 

@@ -14,7 +14,7 @@ Responsibilities:
      to a grade-appropriate random choice or the neutral fallback.
 
 Source data:
-    data/skeletons/interest_bank.json
+    data/interest_bank.json
     (relative path from project root)
 """
 

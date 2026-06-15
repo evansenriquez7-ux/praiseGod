@@ -4,7 +4,7 @@ from typing import Set, Tuple, List, Optional, Dict, Any
 import json
 import os
 
-INTEREST_BANK_PATH = os.path.join(os.path.dirname(__file__), "../../../data/skeletons/interest_bank.json")
+INTEREST_BANK_PATH = os.path.join(os.path.dirname(__file__), "../../../data/interest_bank.json")
 try:
     with open(INTEREST_BANK_PATH, "r", encoding="utf-8") as f:
         INTEREST_BANK = json.load(f)["interests"]

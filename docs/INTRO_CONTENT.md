@@ -270,7 +270,7 @@ slots fillable from the student's registered interest theme.
 
 ### Interest Bank Structure
 
-Source: `data/skeletons/interest_bank.json` — 25 Filipino student interest
+Source: `data/ interest_bank.json` — 25 Filipino student interest
 themes, each providing:
 
 ```json
@@ -911,11 +911,11 @@ appropriateness, grade-level fit, and visual strategy diversity.
 
 | File | Role in Intro System |
 |------|---------------------|
-| `data/skeletons/knowledge_graph_g1_3.json` | Primary constraint source: `introduces_vocab`, `cumulative_vocab`, `cumulative_concepts`, `sentence_max_words`, `prior_node_ids` |
+| `data/knowledge_graph_g1_3.json` | Primary constraint source: `introduces_vocab`, `cumulative_vocab`, `cumulative_concepts`, `sentence_max_words`, `prior_node_ids` |
 | `data/skeletons/vocab_annotation.json` | Source of truth for what each node introduces (drives definition slides) |
 | `ph/matatag_grade_knowledge.json` | Grade-level ceiling: `number_range`, `sentence_max_words`, `NOT_YET_KNOWN`, `operations_known` |
 | `ph/matatag_matched_problems.json` | Maps competencies → Perseus templates (starting point for worked examples) |
-| `data/skeletons/interest_bank.json` | 25 interest themes for wrapping worked examples |
+| `data/ interest_bank.json` | 25 interest themes for wrapping worked examples |
 | `scripts/perseus_extractor/output/perseus_templates/*.json` | Source templates: hint sequences, visual strategies, assessment items |
 | `scripts/perseus_extractor/output/ccss_crosswalk_v2.json` | Maps CCSS standards → Perseus templates (useful for finding additional relevant templates) |
 
@@ -1772,7 +1772,7 @@ Grade 3's `comparison_vocabulary`.
 
 1. **Always check grade-level vocabulary** before writing worked example text
 2. The two sources of truth:
-   - `data/skeletons/knowledge_graph_g1_3.json` → `cumulative_vocab` at each node
+   - `data/knowledge_graph_g1_3.json` → `cumulative_vocab` at each node
    - `ph/matatag_grade_knowledge.json` → `comparison_vocabulary`, `allowed_question_words`
 
 **Grade 1 comparison language:**
@@ -1802,7 +1802,7 @@ vocab_annotation.json → _cross_branch_terms + per-node student_vocab
                 ↓
 scripts/rebuild_knowledge_graph.py → reads cross_branch_terms from vocab_annotation.json
                 ↓
-data/skeletons/knowledge_graph_g1_3.json → cumulative_vocab at each node
+data/knowledge_graph_g1_3.json → cumulative_vocab at each node
 ```
 
 `cumulative_vocab` at any node = `_cross_branch_terms` + all `student_vocab`
