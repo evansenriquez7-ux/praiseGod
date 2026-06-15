@@ -20,7 +20,7 @@ def pytest_configure(config):
     except Exception as e:
         raise RuntimeError(
             f"Backend not responding at {BASE}. "
-            f"Run `./manage.sh start` before running tests.\n{e}"
+            f"Run `./scripts/manage.sh start` before running tests.\n{e}"
         )
 
     pytest.all_nodes = nodes_resp.json()["nodes"]

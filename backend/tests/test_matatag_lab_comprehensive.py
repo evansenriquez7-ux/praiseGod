@@ -16,7 +16,7 @@ Usage:
   pytest tests/test_matatag_lab_comprehensive.py -v -n auto 2>&1 | tee test_results.txt
 
 Requirements:
-  - Backend running on localhost:8000  (`./manage.sh start`)
+  - Backend running on localhost:8000  (`./scripts/manage.sh start`)
   - pytest-xdist installed             (`pip install pytest-xdist`)
 """
 

@@ -43,7 +43,7 @@ from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 
-DB_PATH = Path(__file__).parent.parent.parent / "jump_start" / "data" / "khan_academy.sqlite3"
+DB_PATH = Path(__file__).parent.parent.parent / "scripts" / "jump_start" / "data" / "khan_academy.sqlite3"
 OUTPUT_DIR = Path(__file__).parent / "output" / "perseus_templates"
 STUDIO_URL = "https://studio.learningequality.org/content/storage/{a}/{b}/{file_id}.perseus"
 DELAY = 0.1       # seconds between requests per thread (10 threads = ~1 req/s effective)
