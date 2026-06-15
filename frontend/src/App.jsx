@@ -60,11 +60,13 @@ const _isTunnel = _host.endsWith('loca.lt') ||
                   _host.includes('tunnel') ||
                   _host.includes('ngrok');
 
+const _isFirebase = _host.endsWith('web.app') || _host.endsWith('firebaseapp.com');
+
 // If accessed via LAN IP, use http on port 8000. If tunnel, use https. Otherwise fallback to localhost.
 let DEFAULT_API_BASE = `http://127.0.0.1:8000/api`;
 if (_isLan) {
   DEFAULT_API_BASE = `http://${_host}:8000/api`;
-} else if (_isTunnel) {
+} else if (_isTunnel || _isFirebase) {
   DEFAULT_API_BASE = `https://${_host}/api`;
 }
 
@@ -81,6 +83,9 @@ let API_BASE = localStorage.getItem('ccmed_api_base');
 // This ensures local testing always defaults to the correct local ports.
 if (!API_BASE || _host === 'localhost' || _host === '127.0.0.1') {
   API_BASE = DEFAULT_API_BASE;
+} else if (!API_BASE.startsWith('http://') && !API_BASE.startsWith('https://')) {
+  // If the user typed it manually without protocol, default to https://
+  API_BASE = 'https://' + API_BASE;
 }
 console.log("[CCMed] Active hostname:", _host);
 console.log("[CCMed] Is tunnel connection:", _isTunnel);
@@ -368,7 +373,7 @@ function App() {
       setConnectionStatus('checking');
       
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+      const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout for serverless cold start
       
       try {
         const res = await fetch(`${API_BASE}/parent/config`, { signal: controller.signal });
@@ -2925,20 +2930,7 @@ function App() {
               animation: 'fade-in 0.4s ease-out'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <span style={{ fontSize: '24px' }}>🔌</span>
-                  <div>
-                    <h4 style={{ margin: 0, fontSize: '17px', fontWeight: 700, color: '#f8fafc', letterSpacing: '0.3px' }}>
-                      CCMed Core API Server Connection
-                    </h4>
-                    <p style={{ margin: '3px 0 0 0', fontSize: '13px', color: 'hsl(var(--text-muted))' }}>
-                      Target Endpoint: <code style={{ background: 'rgba(255,255,255,0.06)', padding: '2px 8px', borderRadius: '6px', color: '#c084fc', fontFamily: 'monospace', fontSize: '12.5px' }}>{API_BASE}</code>
-                    </p>
-                    <p style={{ margin: '3px 0 0 0', fontSize: '10px', color: 'rgba(255,255,255,0.3)' }}>
-                      Debug: host={_host}, isTunnel={String(_isTunnel)}, default={DEFAULT_API_BASE}
-                    </p>
-                  </div>
-                </div>
+
                 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   {connectionStatus === 'checking' && (

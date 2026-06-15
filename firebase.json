@@ -1,4 +1,25 @@
 {
+  "functions": [
+    {
+      "source": ".",
+      "codebase": "default",
+      "runtime": "python312",
+      "ignore": [
+        "venv",
+        ".git",
+        ".github",
+        "frontend",
+        "node_modules",
+        "scratch",
+        "validation_reports",
+        "artifacts",
+        ".pytest_cache",
+        ".opencode",
+        "firebase-debug.log",
+        "firebaselog.log"
+      ]
+    }
+  ],
   "hosting": {
     "public": "frontend/dist",
     "ignore": [
@@ -7,6 +28,13 @@
       "**/node_modules/**"
     ],
     "rewrites": [
+      {
+        "source": "/api/**",
+        "run": {
+          "serviceId": "ccmed-api",
+          "region": "asia-southeast1"
+        }
+      },
       {
         "source": "**",
         "destination": "/index.html"

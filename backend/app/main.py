@@ -36,7 +36,10 @@ from backend.app.practice_gen.axes_catalog import (
 app = FastAPI(
     title="CCMed Adaptive Mastery Engine API",
     description="Adaptive K-12 math mastery engine with deterministic SymPy validation and Socratic split tutoring.",
-    version="1.0.0"
+    version="1.0.0",
+    openapi_url="/api/openapi.json",
+    docs_url="/api/docs",
+    redoc_url="/api/redoc"
 )
 
 # Enable CORS for tablet local LAN sync and external tunnels
@@ -49,7 +52,7 @@ app.add_middleware(
         "http://127.0.0.1:8000",
         "https://mellow-mirage-jhc3.here.now",
     ],
-    allow_origin_regex=r"https://.*\.here\.now|https://.*\.trycloudflare\.com|https://.*\.loca\.lt|https://.*\.ts\.net|http://.*\.local:.*|http://192\.168\..*|http://10\..*|http://localhost:.*|http://127\.0\.0\.1:.*",
+    allow_origin_regex=r"https://.*\.web\.app|https://.*\.firebaseapp\.com|https://.*\.here\.now|https://.*\.trycloudflare\.com|https://.*\.loca\.lt|https://.*\.ts\.net|http://.*\.local:.*|http://192\.168\..*|http://10\..*|http://localhost:.*|http://127\.0\.0\.1:.*",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -166,7 +169,7 @@ def _clear_student_history(student_id: int) -> None:
     except OSError as e:
         print(f"[ELA Dedup] Could not clear history: {e}")
 
-@app.on_event("startup")
+# The startup event is called explicitly at module load time below
 def _startup_migrate_and_configure():
     """
     Zero-downtime column migrations + load AI backend config into subagents.
@@ -3908,3 +3911,6 @@ def get_intro_status(node_key: str, student_id: int, db: Session = Depends(get_d
     if record:
         return {"viewed": True, "viewed_at": record.viewed_at.isoformat()}
     return {"viewed": False, "viewed_at": None}
+
+# Removed lazy_startup_middleware to prevent first-request timeout.
+# Database tables and migrations have already been applied previously.
