@@ -62,12 +62,10 @@ const _isTunnel = _host.endsWith('loca.lt') ||
 
 const _isFirebase = _host.endsWith('web.app') || _host.endsWith('firebaseapp.com');
 
-// If accessed via LAN IP, use http on port 8000. If tunnel, use https. Otherwise fallback to localhost.
-let DEFAULT_API_BASE = `http://127.0.0.1:8000/api`;
+// If accessed via LAN IP, use http on port 8000. If tunnel, use https. Otherwise fallback to https on the same host.
+let DEFAULT_API_BASE = `https://${_host}/api`;
 if (_isLan) {
   DEFAULT_API_BASE = `http://${_host}:8000/api`;
-} else if (_isTunnel || _isFirebase) {
-  DEFAULT_API_BASE = `https://${_host}/api`;
 }
 
 // If accessed externally via here.now, default directly to the active, zero-warning secure Tailscale funnel!

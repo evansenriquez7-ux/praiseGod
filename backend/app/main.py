@@ -52,7 +52,7 @@ app.add_middleware(
         "http://127.0.0.1:8000",
         "https://mellow-mirage-jhc3.here.now",
     ],
-    allow_origin_regex=r"https://.*\.web\.app|https://.*\.firebaseapp\.com|https://.*\.here\.now|https://.*\.trycloudflare\.com|https://.*\.loca\.lt|https://.*\.ts\.net|http://.*\.local:.*|http://192\.168\..*|http://10\..*|http://localhost:.*|http://127\.0\.0\.1:.*",
+    allow_origin_regex=r"https://.*\.web\.app|https://.*\.firebaseapp\.com|https://.*\.here\.now|https://.*\.trycloudflare\.com|https://.*\.loca\.lt|https://.*\.ts\.net|https://edu\.enrichmentcap\.com|http://.*\.local:.*|http://192\.168\..*|http://10\..*|http://localhost:.*|http://127\.0\.0\.1:.*",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
