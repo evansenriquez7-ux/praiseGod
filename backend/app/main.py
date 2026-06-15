@@ -3451,7 +3451,7 @@ def matatag_lab_v2_generate(req: LabV2GenerateRequest, db: Session = Depends(get
     """
     Generate a practice problem using the new practice_gen pipeline.
     """
-    with open("scratch/last_request.json", "w") as f:
+    with open("/tmp/last_request.json", "w") as f:
         f.write(req.json())
 
     from backend.app.practice_gen.pipeline import run
