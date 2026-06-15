@@ -29,7 +29,7 @@ TRADITIONAL_DEFAULTS = {
 
 
 # Load MATATAG curriculum data
-_MATATAG_PATH = Path(__file__).parent.parent.parent / "ph" / "matatagmath.json"
+_MATATAG_PATH = Path(__file__).parent.parent.parent / "data" / "ph" / "matatagmath.json"
 _MATATAG_DATA = {}
 
 if _MATATAG_PATH.exists():

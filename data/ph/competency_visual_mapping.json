@@ -1,0 +1,242 @@
+{
+  "version": "2.0",
+  "description": "Maps MATATAG Math competencies to visual skeleton types via regex patterns. Competencies are matched against these patterns in priority order. First match wins. Version 2.0 adds better routing with negative lookaheads and sub-type hints.",
+  "mappings": [
+    {
+      "id": "sort_order",
+      "pattern": "(?i)(order|arrange|compare).*(number|fraction|decimal|integer|smallest|largest|ascending|descending)",
+      "visual_type": "SortOrder",
+      "question_mode": "ordering",
+      "grades": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "priority": 1,
+      "description": "Competencies about ordering, arranging, or comparing numbers/fractions/decimals. HIGH PRIORITY to catch 'order' before NumberLine.",
+      "sub_patterns": [
+        {"match": "fraction", "hint": "content_type:fraction"},
+        {"match": "decimal", "hint": "content_type:decimal"},
+        {"match": "integer|negative", "hint": "content_type:integer"},
+        {"match": "smallest.*largest|ascending", "hint": "direction:ascending"},
+        {"match": "largest.*smallest|descending", "hint": "direction:descending"}
+      ]
+    },
+    {
+      "id": "calendar",
+      "pattern": "(?i)(calendar|days? of the week|days? in a|months? of the year|duration.*days|duration.*weeks)(?!.*operation|.*add|.*subtract)",
+      "visual_type": "Calendar",
+      "question_mode": "calendar",
+      "grades": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "priority": 2,
+      "description": "Competencies involving calendar reading, days of week, dates, duration in days/weeks.",
+      "sub_patterns": [
+        {"match": "day of the week|days of the week", "hint": "task:day_of_week"},
+        {"match": "month", "hint": "task:month"},
+        {"match": "how many days|duration", "hint": "task:count_days"},
+        {"match": "correct order", "hint": "task:sequence"}
+      ]
+    },
+    {
+      "id": "clock",
+      "pattern": "(?i)(tell.*time|read.*time|write.*time|analog clock|hour.*minute|half hour|quarter hour|a\\.?m\\.?.*p\\.?m\\.?|convert.*time|seconds? to minutes?|minutes? to hours?)",
+      "visual_type": "ClockSet",
+      "question_mode": "clock_set",
+      "grades": [1, 2, 3, 4, 5, 6, 7],
+      "priority": 3,
+      "description": "Competencies about reading or setting analog clocks, telling time, time conversions.",
+      "sub_patterns": [
+        {"match": "half hour", "hint": "granularity:30"},
+        {"match": "quarter hour", "hint": "granularity:15"},
+        {"match": "hour and minute|hours? and minutes?", "hint": "granularity:1"},
+        {"match": "a\\.?m\\.?|p\\.?m\\.?", "hint": "require_ampm:true"},
+        {"match": "convert", "hint": "task:convert"}
+      ]
+    },
+    {
+      "id": "peso_money",
+      "pattern": "(?i)(peso|money|coin|bill|\\u20b1|php|currency|denominations?)",
+      "visual_type": "PesoMoney",
+      "question_mode": "currency_picker",
+      "grades": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "priority": 4,
+      "description": "Competencies involving Philippine peso currency, making change, coin/bill recognition.",
+      "sub_patterns": [
+        {"match": "up to \\u20b1?(\\d+)", "hint": "max_amount:$1"},
+        {"match": "centavo", "hint": "include_centavos:true"},
+        {"match": "fewest|minimum", "hint": "require_optimal:true"}
+      ]
+    },
+    {
+      "id": "number_line_plot",
+      "pattern": "(?i)(plot|locate|place|represent).*(number line|on the line)(?!.*order|.*arrange|.*compare)",
+      "visual_type": "NumberLine",
+      "question_mode": "number_line",
+      "grades": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "priority": 5,
+      "description": "Competencies about PLOTTING/LOCATING values on a number line. Excludes ordering (handled by SortOrder).",
+      "sub_patterns": [
+        {"match": "improper|mixed", "hint": "fraction_type:improper_or_mixed"},
+        {"match": "proper fraction", "hint": "fraction_type:proper"},
+        {"match": "decimal", "hint": "content_type:decimal"},
+        {"match": "integer|negative", "hint": "content_type:integer"},
+        {"match": "irrational|square root|cube root", "hint": "content_type:irrational"},
+        {"match": "denominators?\\s+([\\d,\\s]+(?:and\\s+\\d+)?)", "hint": "allowed_denominators:$1"}
+      ]
+    },
+    {
+      "id": "number_line_operations",
+      "pattern": "(?i)(illustrate|show|demonstrate).*(addition|subtraction|multiplication|division).*(number line|counting up|jumps?)",
+      "visual_type": "NumberLine",
+      "question_mode": "number_line_jump",
+      "grades": [1, 2, 3, 4, 5, 6, 7],
+      "priority": 6,
+      "description": "Competencies about illustrating arithmetic operations ON a number line (jumps, counting up).",
+      "sub_patterns": [
+        {"match": "addition|counting up", "hint": "operation:addition"},
+        {"match": "subtraction", "hint": "operation:subtraction"},
+        {"match": "multiplication|repeated addition", "hint": "operation:multiplication"},
+        {"match": "division|equal jumps", "hint": "operation:division"}
+      ]
+    },
+    {
+      "id": "constraint_satisfaction",
+      "pattern": "(?i)(divisib|factor|multiple|prime|composite|even|odd|property of)(?!.*table|.*pattern)",
+      "visual_type": "ConstraintSatisfaction",
+      "question_mode": "constraint",
+      "grades": [2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "priority": 7,
+      "description": "Competencies involving number properties, divisibility, factors, multiples. Excludes multiplication tables.",
+      "sub_patterns": [
+        {"match": "prime", "hint": "constraint:prime"},
+        {"match": "composite", "hint": "constraint:composite"},
+        {"match": "even", "hint": "constraint:even"},
+        {"match": "odd", "hint": "constraint:odd"},
+        {"match": "divisible by (\\d+)", "hint": "divisor:$1"},
+        {"match": "factor", "hint": "task:find_factors"},
+        {"match": "multiple", "hint": "task:find_multiples"}
+      ]
+    },
+    {
+      "id": "bar_chart_read",
+      "pattern": "(?i)(interpret|read|analyze).*(bar graph|bar chart|pictograph|graph)",
+      "visual_type": "BarChart",
+      "question_mode": "read_bar",
+      "grades": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "priority": 8,
+      "description": "Competencies about READING/INTERPRETING bar graphs or pictographs. Shows pre-filled chart, student reports values.",
+      "sub_patterns": [
+        {"match": "pictograph", "hint": "chart_type:pictograph"},
+        {"match": "bar graph|bar chart", "hint": "chart_type:bar"},
+        {"match": "double", "hint": "chart_type:double"}
+      ]
+    },
+    {
+      "id": "bar_chart_create",
+      "pattern": "(?i)(present|create|construct|make|build|draw).*(bar graph|bar chart|pictograph|data.*graph)",
+      "visual_type": "BarChart",
+      "question_mode": "plotter_bar",
+      "grades": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "priority": 9,
+      "description": "Competencies about CREATING bar graphs or pictographs. Student builds the chart from data.",
+      "sub_patterns": [
+        {"match": "pictograph", "hint": "chart_type:pictograph"},
+        {"match": "bar graph|bar chart", "hint": "chart_type:bar"},
+        {"match": "double", "hint": "chart_type:double"}
+      ]
+    },
+    {
+      "id": "grid_area",
+      "pattern": "(?i)(area.*square|grid|tile|square unit|count.*squares)",
+      "visual_type": "GridArea",
+      "question_mode": "grid_area",
+      "grades": [2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "priority": 9,
+      "description": "Competencies involving area counting using grids or square units.",
+      "sub_patterns": [
+        {"match": "irregular", "hint": "shape:irregular"},
+        {"match": "rectangle|square", "hint": "shape:rectangle"}
+      ]
+    },
+    {
+      "id": "categorize",
+      "pattern": "(?i)(classify|categorize|sort into groups?|sort into categor|distinguish between|identify.*types? of)(?!.*order|.*arrange|.*number)",
+      "visual_type": "Categorize",
+      "question_mode": "categorize",
+      "grades": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "priority": 11,
+      "description": "Competencies about classifying, sorting into categories, or distinguishing types. Excludes ordering and general number operations.",
+      "sub_patterns": [
+        {"match": "polygon", "hint": "category:polygons"},
+        {"match": "triangle", "hint": "category:triangles"},
+        {"match": "quadrilateral", "hint": "category:quadrilaterals"},
+        {"match": "prime|composite", "hint": "category:prime_composite"},
+        {"match": "even|odd", "hint": "category:even_odd"}
+      ]
+    },
+    {
+      "id": "fill_in_table_multiplication",
+      "pattern": "(?i)(multiplication table|times table|multiply.*table)",
+      "visual_type": "FillInTable",
+      "question_mode": "cloze",
+      "grades": [2, 3, 4, 5, 6],
+      "priority": 12,
+      "description": "Competencies specifically about multiplication tables.",
+      "sub_patterns": [
+        {"match": "(\\d+)(?:,\\s*\\d+)*(?:,?\\s*and\\s+\\d+)?\\s*multiplication", "hint": "multipliers:$1"}
+      ]
+    },
+    {
+      "id": "fill_in_table_pattern",
+      "pattern": "(?i)(determine.*next term|determine.*missing term|next term.*pattern|pattern.*determine|pattern.*complete|create.*pattern|repeating pattern|increasing pattern|decreasing pattern|sequence.*term)(?!.*multiplic)",
+      "visual_type": "FillInTable",
+      "question_mode": "cloze",
+      "grades": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "priority": 13,
+      "description": "Competencies involving patterns, sequences with finding next/missing terms. Excludes multiplication tables.",
+      "sub_patterns": [
+        {"match": "repeating", "hint": "pattern_type:repeating"},
+        {"match": "growing|increasing", "hint": "pattern_type:growing"},
+        {"match": "decreasing", "hint": "pattern_type:decreasing"},
+        {"match": "arithmetic", "hint": "pattern_type:arithmetic"},
+        {"match": "geometric", "hint": "pattern_type:geometric"}
+      ]
+    },
+    {
+      "id": "rule_discovery",
+      "pattern": "(?i)(find.*rule|discover.*pattern|what.*rule|express.*rule|generalize)(?!.*table)",
+      "visual_type": "RuleDiscovery",
+      "question_mode": "expression",
+      "grades": [3, 4, 5, 6, 7, 8, 9, 10],
+      "priority": 14,
+      "description": "Competencies about discovering or expressing rules from patterns. More advanced than fill-in-table.",
+      "sub_patterns": [
+        {"match": "algebraic|expression", "hint": "output:expression"},
+        {"match": "formula", "hint": "output:formula"}
+      ]
+    },
+    {
+      "id": "function_table",
+      "pattern": "(?i)(function|input.*output|domain.*range).*table",
+      "visual_type": "FillInTable",
+      "question_mode": "cloze",
+      "grades": [6, 7, 8, 9, 10],
+      "priority": 15,
+      "description": "Competencies involving function tables with input/output relationships.",
+      "sub_patterns": [
+        {"match": "linear", "hint": "function_type:linear"},
+        {"match": "quadratic", "hint": "function_type:quadratic"}
+      ]
+    }
+  ],
+  "usage_notes": {
+    "matching_algorithm": "Competency text is matched against each pattern in priority order. First match wins.",
+    "grade_filtering": "Only mappings with the student's grade in the grades array are considered.",
+    "sub_patterns": "After a mapping matches, sub_patterns are checked to provide hints to the generator about specific content requirements.",
+    "negative_lookaheads": "Patterns use (?!...) to exclude certain terms that would cause mis-routing.",
+    "version_2_changes": [
+      "SortOrder now has highest priority to catch 'order' competencies before NumberLine",
+      "Calendar has high priority to catch date competencies before FillInTable",
+      "NumberLine split into 'plot' and 'operations' sub-types",
+      "ConstraintSatisfaction excludes multiplication table patterns",
+      "FillInTable split into multiplication, pattern, and function sub-types",
+      "Added sub_patterns for generator hints"
+    ]
+  }
+}

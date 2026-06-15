@@ -2428,8 +2428,8 @@ def socratic_chat_exchange(req: schemas.SocraticChatRequest, db: Session = Depen
 # ============================================================================
 
 # Load MATATAG competencies and visual mappings (cached at module load)
-_MATATAG_PATH = Path(__file__).parent.parent.parent / "ph" / "matatagmath.json"
-_VISUAL_MAPPING_PATH = Path(__file__).parent.parent.parent / "ph" / "competency_visual_mapping.json"
+_MATATAG_PATH = Path(__file__).parent.parent.parent / "data" / "ph" / "matatagmath.json"
+_VISUAL_MAPPING_PATH = Path(__file__).parent.parent.parent / "data" / "ph" / "competency_visual_mapping.json"
 
 _MATATAG_DATA = {}
 _VISUAL_MAPPINGS = []
