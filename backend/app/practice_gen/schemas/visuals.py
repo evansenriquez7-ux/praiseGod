@@ -28,7 +28,8 @@ class NumberBondParams(BaseVisualParams):
 
 class BarChartParams(BaseVisualParams):
     categories: List[str]
-    values: List[int]
+    values: Optional[List[int]] = None
+    counts: Optional[List[int]] = None
     title: Optional[str] = None
 
 class EmojiPictorialParams(BaseVisualParams):
@@ -48,8 +49,10 @@ class FractionModelParams(BaseVisualParams):
     denominator: int
 
 class FractionShadeParams(BaseVisualParams):
-    parts: int
-    shaded_parts: int
+    parts: Optional[int] = None
+    shaded_parts: Optional[int] = None
+    numerator: Optional[int] = None
+    denominator: Optional[int] = None
 
 class CalendarParams(BaseVisualParams):
     month: int
