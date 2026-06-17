@@ -31,4 +31,4 @@ To enable automated deployments, the following secrets must be configured in the
 
 ## Handling Configuration Issues
 - **CORS**: If new domains are added, update `backend/app/main.py`'s `CORSMiddleware` `allow_origin_regex` to include the new domain.
-- **Data Dependencies**: Ensure the `Dockerfile` correctly copies all necessary data directories (`data/`, `ph/`) for backend runtime availability.
+- **Data Dependencies**: Ensure the `Dockerfile` correctly copies all necessary data directories (`data/`) for backend runtime availability.

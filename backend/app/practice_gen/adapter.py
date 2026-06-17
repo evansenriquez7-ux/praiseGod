@@ -21,9 +21,10 @@ from .compatibility import get_formatters_for_dna
 from .dna.base import FormattedProblem, QuestionContext
 from .generators.base_generator import _import_dna_module, generate_context
 from .registry import get_node_dnas, get_node_info
-
+from backend.app.practice_gen.schemas.visuals import VisualSchemaRegistry
 
 # ═══════════════════════════════════════════════════════════════════════════════
+
 # FORMATTER WEIGHT MAP
 # Textual formatters (mcq, numeric_input) are preferred for the majority of
 # problems so the primary formatter bias is maintained.
@@ -601,8 +602,15 @@ def apply_formatter(
     func = getattr(module, func_name)
 
     if extra_kwargs:
-        return func(ctx, rng, **extra_kwargs)
-    return func(ctx, rng)
+        problem = func(ctx, rng, **extra_kwargs)
+    else:
+        problem = func(ctx, rng)
+    
+    # Contract Validation
+    if problem.is_visual and problem.visual_params:
+        VisualSchemaRegistry.validate(problem.visual_type, problem.visual_params)
+        
+    return problem
 
 
 def apply_experience(

@@ -32,7 +32,6 @@ from typing import Dict, List, Optional
 _INTEREST_BANK_PATH: Path = (
     Path(__file__).parent.parent.parent.parent.parent
     / "data"
-    / "skeletons"
     / "interest_bank.json"
 )
 

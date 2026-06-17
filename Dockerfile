@@ -15,7 +15,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the backend code and essential data
 COPY backend ./backend
 COPY data ./data
-COPY ph ./ph
 
 # Environment variables
 ENV PORT=8080

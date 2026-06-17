@@ -36,7 +36,7 @@ AREA_NAMES = {v: k for k, v in AREA_CODES.items()}
 def _get_matatag_data_path() -> str:
     """Get path to matatagmath.json file."""
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    return os.path.join(base_dir, "ph", "matatagmath.json")
+    return os.path.join(base_dir, "data", "ph", "matatagmath.json")
 
 
 def _load_matatag_json() -> dict:

@@ -22,7 +22,7 @@ def _load_interest_bank() -> Dict:
     global _INTEREST_BANK
     if _INTEREST_BANK is not None:
         return _INTEREST_BANK
-    path = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "skeletons", "interest_bank.json")
+    path = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "interest_bank.json")
     with open(os.path.abspath(path)) as f:
         _INTEREST_BANK = json.load(f)
     return _INTEREST_BANK

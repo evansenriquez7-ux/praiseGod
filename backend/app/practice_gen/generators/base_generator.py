@@ -43,7 +43,6 @@ from .spines import select_spine
 _KG_PATH: Path = (
     Path(__file__).parent.parent.parent.parent.parent
     / "data"
-    / "skeletons"
     / "knowledge_graph_g1_3.json"
 )
 

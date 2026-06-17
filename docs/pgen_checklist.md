@@ -16,6 +16,7 @@ Contextual variants represent different ways to present or interact with the cor
 - [ ] **Competency Fulfillment**: At least ONE contextual variant must directly and explicitly address the exact wording of the learning competency.
 - [ ] **Functional Integrity**: Every variant option must execute without errors and successfully generate the expected problem context.
 - [ ] **Separation of Concerns**: Variants must NOT alter the core mathematical difficulty.
+- [ ] **Variant Comprehensiveness**: Ensure all logical variants for the underlying math concept of the learning competency are included. Variants must assist the student/user in mastering the learning competency. Include missing variants in compatibility.py if not already included.
 
 ## 3. Formatters (Problem Types)
 Formatters determine how the problem is visually and interactively presented (e.g., MCQ, cloze, number line).

@@ -247,6 +247,7 @@ def format_clock(
         "minute_angle": vp.get("minute_angle", (minutes / 60) * 360),
         "hour_angle": vp.get("hour_angle", ((hours % 12) / 12) * 360 + (minutes / 60) * 30),
         "minute_snap_interval": 5,
+        "interaction_mode": interaction_mode,
         "is_read_only": interaction_mode == "read",
         "show_labels": True,
         "precision": "5min" if minutes % 5 == 0 else "1min",

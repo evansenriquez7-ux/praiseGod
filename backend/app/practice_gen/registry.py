@@ -7,7 +7,7 @@ used by the pipeline to select generators and formatters.
 
 Responsibilities:
   1. Load knowledge_graph_g1_3.json at import time.
-  2. Load ph/matatagmath.json at import time.
+  2. Load data/ph/matatagmath.json at import time.
   3. Define NODE_TO_DNA: static mapping node_id → List[str] (DNA names).
   4. Expose get_node_dnas(), get_node_formatters(), get_node_info(),
      find_node_id(), get_all_node_ids().
@@ -39,8 +39,8 @@ from .compatibility import COMPATIBILITY
 # practice_gen/ → app/ → backend/ → ccmed/ (project root)
 _ROOT: Path = Path(__file__).parent.parent.parent.parent
 
-_KG_PATH: Path = _ROOT / "data" / "skeletons" / "knowledge_graph_g1_3.json"
-_MATATAG_PATH: Path = _ROOT / "ph" / "matatagmath.json"
+_KG_PATH: Path = _ROOT / "data" / "knowledge_graph_g1_3.json"
+_MATATAG_PATH: Path = _ROOT / "data" / "ph" / "matatagmath.json"
 
 _KG_NODES: Dict[str, Dict] = {}
 _MATATAG_DATA: Dict = {}

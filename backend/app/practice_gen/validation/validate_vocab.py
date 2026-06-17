@@ -4,7 +4,7 @@ Practice Generation — Vocabulary & Concept Constraint Validation
 Verifies that generated question text respects grade-level vocabulary
 gates and does not use terms the student hasn't been introduced to yet.
 
-Refactored from: ph/matatag_grade_knowledge.json NOT_YET_KNOWN lists.
+Refactored from: data/ph/matatag_grade_knowledge.json NOT_YET_KNOWN lists.
 
 Run as a module:
     python -m backend.app.practice_gen.validation.validate_vocab
