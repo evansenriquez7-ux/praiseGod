@@ -4,7 +4,7 @@ import sys
 sys.path.append(os.path.abspath("backend"))
 
 # Mock environment
-os.environ["GOOGLE_API_KEY"] = "mock_key"
+os.environ["GEMINI_API_KEY"] = "mock_key"
 
 from app.subagents import socratic_tutor_subagent
 

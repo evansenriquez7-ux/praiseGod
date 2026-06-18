@@ -35,25 +35,25 @@ import time
 import re
 from pathlib import Path
 from typing import Optional
-import google.generativeai as genai
-
-# Initialize GenAI client
-if os.environ.get("GOOGLE_API_KEY"):
-    genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+from google import genai
+from google.genai import types
 
 class GenAIBridge:
     def __init__(self, model="gemini-1.5-flash"):
-        self.model = genai.GenerativeModel(model)
+        self.model = model
+        api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+        self.client = genai.Client(api_key=api_key)
 
     def prompt(self, text, temperature=None):
-        generation_config = {}
+        config = None
         if temperature is not None:
-            generation_config["temperature"] = temperature
+            config = types.GenerateContentConfig(temperature=temperature)
         
         try:
-            response = self.model.generate_content(
-                text,
-                generation_config=generation_config
+            response = self.client.models.generate_content(
+                model=self.model,
+                contents=text,
+                config=config
             )
             return response.text
         except Exception as e:
