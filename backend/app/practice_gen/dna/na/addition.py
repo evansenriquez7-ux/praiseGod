@@ -240,32 +240,6 @@ def generate_params(
         "max_sum": max_result,  # Numeric value
     }
 
-    # Generate question text based on context and structure
-    if context == "word_problem":
-        from backend.app.practice_gen.spines import select_spine, format_spine
-        
-        narrative_logic = spine if spine and spine != "random" else None
-        interest_id = profile.get("interest_id")
-        
-        selected_spine = select_spine(
-            grade=grade,
-            concept="addition",
-            rng=rng,
-            blank_target=blank_target,
-            narrative_logic=narrative_logic
-        )
-        
-        if selected_spine:
-            math_vars = {"a": a, "b": b, "result": a + b}
-            question = format_spine(
-                spine=selected_spine,
-                math_vars=math_vars,
-                rng=rng,
-                grade=grade,
-                interest_id=interest_id
-            )
-            result_dict["question"] = question
-
     return result_dict
 
 

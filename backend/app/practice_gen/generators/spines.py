@@ -89,13 +89,40 @@ _ADD_PUTTING_TOGETHER = Spine(
     grade_band=(1, 3),
 )
 
-_ADD_PUTTING_TOGETHER_NAMES = Spine(
+_ADD_PUT_TOGETHER_NAMES = Spine(
     id="add_putting_together_names",
     template=(
         "{actor} has {a} {objects}. A friend has {b} {objects}. "
         "If they put all their {objects} together, how many {objects} do they have in all?"
     ),
     required_concepts={"addition"},
+    blank_target="result",
+    grade_band=(1, 3),
+)
+
+_ADD_FOUND = Spine(
+    id="add_found",
+    template=(
+        "{actor} found {a} {objects}. A friend found {b} {objects}. "
+        "If they put all their {objects} together, how many {objects} do they have altogether?"
+    ),
+    required_concepts={"addition"},
+    blank_target="result",
+    grade_band=(1, 3),
+)
+
+_ADD_COUNT_FORWARD = Spine(
+    id="add_count_forward",
+    template="Begin at {a}. Count forward {b}. What number do you reach?",
+    required_concepts={"addition"},
+    blank_target="result",
+    grade_band=(1, 3),
+)
+
+_SUB_REMOVES = Spine(
+    id="sub_removes",
+    template="A {place} has {a} {objects}. {actor} removes {b} {objects}. How many {objects} are left in the {place}?",
+    required_concepts={"subtraction"},
     blank_target="result",
     grade_band=(1, 3),
 )
@@ -513,7 +540,9 @@ ALL_SPINES: List[Spine] = [
     _ADD_COUNTING_UP_STORY,
     # Addition - putting together (competency-aligned)
     _ADD_PUTTING_TOGETHER,
-    _ADD_PUTTING_TOGETHER_NAMES,
+    _ADD_PUT_TOGETHER_NAMES,
+    _ADD_FOUND,
+    _ADD_COUNT_FORWARD,
     # Addition - general
     _ADD_GAIN,
     _ADD_COMBINATION,
@@ -526,6 +555,7 @@ ALL_SPINES: List[Spine] = [
     # Subtraction - taking away (competency-aligned)
     _SUB_TAKING_AWAY,
     _SUB_TAKING_AWAY_TABLE,
+    _SUB_REMOVES,
     # Subtraction - comparing (competency-aligned)
     _SUB_COMPARING,
     _SUB_COMPARING_FEWER,

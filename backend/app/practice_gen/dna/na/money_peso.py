@@ -356,31 +356,6 @@ def generate_params(
         result_dict["a"] = amounts[0] if amounts else 0
         result_dict["b"] = amounts[1] if len(amounts) > 1 else amounts[0] if amounts else 0
 
-    if context == "word_problem":
-        from backend.app.practice_gen.spines import select_spine, format_spine
-        interest_id = profile.get("interest_id")
-        narrative_logic = spine if spine and spine != "random" else None
-
-        if not narrative_logic:
-            if operation == "find_change":
-                narrative_logic = "sub_money"
-            else:
-                narrative_logic = "add_money"
-
-        selected_spine = select_spine(
-            grade=grade, concept="money_peso", rng=rng,
-            blank_target="result", narrative_logic=narrative_logic
-        )
-        if selected_spine:
-            # Use the already-computed a, b, result from result_dict
-            math_vars = {
-                "a": result_dict["a"],
-                "b": result_dict["b"],
-                "result": result_dict["result"],
-            }
-            question = format_spine(selected_spine, math_vars, rng, grade, interest_id)
-            result_dict["question"] = question
-
     return result_dict
 
 

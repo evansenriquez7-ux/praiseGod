@@ -230,18 +230,6 @@ def generate_params(
         "context":       context,
     }
 
-    if context == "word_problem":
-        from backend.app.practice_gen.spines import select_spine, format_spine
-        interest_id = profile.get("interest_id")
-        selected_spine = select_spine(
-            grade=grade, concept=op, rng=rng,
-            blank_target=blank_pos, narrative_logic=profile.get("spine")
-        )
-        if selected_spine:
-            math_vars = {"a": a, "b": b, "result": result}
-            question = format_spine(selected_spine, math_vars, rng, grade, interest_id)
-            result_dict["question"] = question
-
     return result_dict
 
 

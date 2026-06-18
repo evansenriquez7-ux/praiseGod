@@ -13,12 +13,14 @@ from sqlalchemy import text
 from typing import List, Optional, Dict, Any
 import concurrent.futures
 import subprocess
+import sympy as sp
+from sympy.parsing.sympy_parser import parse_expr
 
 
 
 from backend.app.database import get_db, engine, Base
-from backend.app import models, schemas, sympy_skeletons, subagents, placement
-from backend.app import visual_skeletons
+from backend.app import models, schemas, subagents, placement
+from backend.app.practice_gen import pipeline
 
 class DummyOpenCodeBridge:
     OPENCODE_BIN = "opencode"
@@ -27,6 +29,18 @@ class DummyOpenCodeBridge:
         return {"verdict": "Dummy opencode verdict"}
 opencode_bridge = DummyOpenCodeBridge()
 from backend.app.practice_gen import registry as _pg_registry
+
+def validate_math_answer(expected: Any, student_ans: str) -> bool:
+    """
+    Deterministic validation using SymPy solver.
+    Verifies if the student_ans is mathematically equivalent to expected.
+    """
+    try:
+        expr_solved = parse_expr(str(expected))
+        ans_solved = parse_expr(str(student_ans))
+        return sp.simplify(expr_solved - ans_solved) == 0
+    except Exception:
+        return str(expected).strip() == str(student_ans).strip()
 from backend.app.practice_gen.axes_catalog import (
     get_axes_for_concept as _get_axes_for_concept,
     compute_difficulty_scalar as _compute_difficulty_scalar,
@@ -1331,88 +1345,7 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
     is_ela = skill_id.startswith(("RL", "RI", "W", "L", "SL", "RF"))
     is_matatag = skill_id.startswith("mat_") or subject in ["Matatag", "MATATAG", "matatag"]
     
-    if is_matatag:
-        # Generate MATATAG skeleton using v2 pipeline (registry-aware, correct competency+grade)
-        from backend.app.practice_gen.pipeline import run as _pg_run
-        from backend.app.practice_gen.registry import get_node_info as _pg_info
-
-        # Derive node-level grade from the skill_id (e.g. mat_g3_na_q1_0 → grade 3)
-        import re as _re
-        _m = _re.match(r"mat_g(\d+)_", skill_id)
-        node_grade = int(_m.group(1)) if _m else student.grade
-
-        # Load saved portal config for this node (allowed formatters etc.)
-        _cfg = db.query(models.CompetencyConfiguration).filter_by(node_id=skill_id).first()
-        _allowed_fmt = _cfg.allowed_formatters if _cfg else None
-
-        try:
-            problem_dict = _pg_run(
-                node_id=skill_id,
-                student_grade=node_grade,
-                formatter=None,          # random from allowed
-                difficulty_profile=None, # random from allowed
-                seed=None,
-                student_interest=None,
-                allowed_formatters=_allowed_fmt,
-            )
-        except Exception as _e:
-            # Fallback to generic if v2 fails
-            problem_dict = None
-
-        if problem_dict:
-            is_visual = problem_dict.get("is_visual", False)
-            question_mode = problem_dict.get("format", "mcq")
-            skeleton = {
-                "skill_id": skill_id,
-                "skeleton_id": problem_dict.get("problem_id", f"mg_{skill_id}_{id(problem_dict)}"),
-                "stem_template": problem_dict.get("question_text", ""),
-                "stem": problem_dict.get("question_text", ""),
-                "math_expression": problem_dict.get("question_text", ""),
-                "is_visual": is_visual,
-            }
-            skeleton.update(problem_dict)
-            if not is_visual:
-                fmt_data = problem_dict.get("format_data", {})
-                raw_opts = fmt_data.get("mcq_options") or fmt_data.get("options") or []
-                if raw_opts:
-                    opts_dict = {}
-                    correct_key = "A"
-                    for i, o in enumerate(raw_opts):
-                        k = o.get("key", chr(65 + i))
-                        v = str(o.get("value", o.get("text", "")))
-                        opts_dict[k] = {"text": v, "value": v}
-                        if o.get("is_correct") or o.get("correct"):
-                            correct_key = k
-                    skeleton["options"] = opts_dict
-                    skeleton["correct_key"] = correct_key
-                    skeleton["correct_answer"] = opts_dict.get(correct_key, {}).get("value", "")
-        
-        # If v2 produced a valid problem, skeleton is already built above.
-        # Guard: if problem_dict was None (v2 failed), create a minimal fallback skeleton.
-        if not problem_dict:
-            skeleton = {
-                "skill_id": skill_id,
-                "skeleton_id": f"fallback_{skill_id}",
-                "stem_template": f"Practice problem for {skill_id}",
-                "stem": f"Practice problem for {skill_id}",
-                "math_expression": "",
-                "is_visual": False,
-                "options": {"A": {"text": "No options available", "value": "N/A"}},
-                "correct_key": "A",
-            }
-            question_mode = "mcq"
-            is_visual = False
-
-        # Ensure required keys present for cache
-        if "skill_id" not in skeleton:
-            skeleton["skill_id"] = skill_id
-        if "stem_template" not in skeleton:
-            skeleton["stem_template"] = skeleton.get("stem", "")
-
-        # Cache for answer validation
-        MATATAG_SKELETON_CACHE[skeleton["skeleton_id"]] = skeleton
-        skeleton["standard_description"] = skeleton.get("competency_text", skill_id)
-    elif is_ela:
+    if is_ela:
         question_mode = "writing_prompt" if skill_id.startswith("W") else "mcq"
 
         # Load questions this student has already answered on this node — feed into
@@ -1449,53 +1382,53 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
 
         ELA_SKELETON_CACHE[skeleton["skeleton_id"]] = skeleton
     else:
-        # Generate Deterministic SymPy Skeleton for Math
-        skeleton = sympy_skeletons.get_question_skeleton(skill_id, grade_level=student.grade)
-        question_mode = "mcq"
+        # Unified v2 pipeline for MATATAG and Math
+        from backend.app.practice_gen.pipeline import run as _pg_run
         
-        # Determine if this standard specifically REQUIRES a word problem narrative
-        # (e.g., 3.OA.D.8, 4.OA.A.3 are explicitly word problem standards) or has enriched context
-        safe_name = skill_id.replace('.', '_').replace('-', '_')
-        research_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "research")
-        has_research = os.path.exists(os.path.join(research_dir, f"{safe_name}_Context.md"))
-        is_word_problem_standard = has_research or any(wp in skill_id.upper() for wp in ["OA.D.8", "OA.A.3", "OA.B.3", "MD.A.3"])
+        # Load saved portal config for this node (allowed formatters etc.)
+        _allowed_fmt = None
+        if is_matatag:
+            _cfg = db.query(models.CompetencyConfiguration).filter_by(node_id=skill_id).first()
+            _allowed_fmt = _cfg.allowed_formatters if _cfg else None
         
-        # Call the Problem Narrator subagent for Math only if it's a word problem standard
-        # The goal is simplicity and repetition for drills for regular standards.
-        if is_word_problem_standard and not is_placement:
-            for attempt_num in range(3):
-                try:
-                    narrated = subagents.narrate_question_subagent(
-                        math_expression=skeleton["math_expression"],
-                        stem_template=skeleton["stem_template"],
-                        options=skeleton["options"],
-                        student_interest=_combined_interests(student, "reading"),
-                        language=student.language_preference or "en",
-                        student_age=student.age or 10,
-                        student_grade=student.grade or 5,
-                        skill_id=skill_id
-                    )
-                    if narrated and "stem" in narrated and "options" in narrated:
-                        # Extract math to re-validate: ensure the correct option text contains the correct numeric value
-                        correct_key = skeleton.get("correct_key", "A")
-                        narrated_opt_text = str(narrated["options"].get(correct_key, {}).get("text", ""))
-                        original_correct_val = str(skeleton.get("correct_answer", ""))
-                        
-                        # Check if the numeric value is actually in the narrative text for the correct key
-                        if original_correct_val in narrated_opt_text or sympy_skeletons.validate_answer(original_correct_val, narrated_opt_text):
-                            skeleton["stem_template"] = narrated["stem"]
-                            skeleton["options"] = narrated["options"]
-                            # Cache the narrated details
-                            MATH_NARRATED_CACHE[skeleton["skeleton_id"]] = {
-                                "stem": narrated["stem"],
-                                "explanation": narrated.get("explanation", ""),
-                                "options": narrated["options"]
-                            }
-                            break
-                        else:
-                            print(f"[Narrator Subagent] Validation failed. Key {correct_key} text '{narrated_opt_text}' missing value '{original_correct_val}'. Retrying...")
-                except Exception as ns_err:
-                    print(f"[Narrator Subagent Error] Attempt {attempt_num + 1} failed: {ns_err}")
+        interest_theme = _combined_interests(student, "math")
+        
+        try:
+            problem_dict = _pg_run(
+                node_id=skill_id,
+                student_grade=student.grade,
+                student_interest=interest_theme,
+                allowed_formatters=_allowed_fmt,
+                experience="standard"
+            )
+            # Normalise to legacy format
+            skeleton = problem_dict
+            question_mode = problem_dict.get("format", "mcq")
+            is_visual = problem_dict.get("is_visual", False)
+            
+            # Map complex formats to legacy question_mode for frontend compatibility
+            if question_mode == "numeric_input":
+                question_mode = "mcq"
+            
+        except Exception as _e:
+            print(f"[V2 Pipeline Error] Node {skill_id} failed: {_e}. Falling back to minimal.")
+            skeleton = {
+                "skill_id": skill_id,
+                "skeleton_id": f"fallback_{skill_id}",
+                "stem_template": f"Practice problem for {skill_id}",
+                "options": {"A": {"text": "No options available", "value": "N/A"}},
+                "correct_key": "A",
+                "correct_answer": "N/A",
+                "is_visual": False
+            }
+            question_mode = "mcq"
+            is_visual = False
+            
+        # Cache for answer validation
+        if is_matatag:
+            MATATAG_SKELETON_CACHE[skeleton["skeleton_id"]] = skeleton
+        
+        skeleton["standard_description"] = skeleton.get("competency_text", skill_id)
 
     # 3. Build options list (empty for writing prompts)
     options_list = []
@@ -1516,10 +1449,8 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
     if m_state:
         consec_incorrect = m_state.consecutive_incorrect
 
-    is_worked_example = (not is_ela) and (not is_matatag) and (consec_incorrect >= 1)
-    worked_steps = None
-    if is_worked_example:
-        worked_steps = sympy_skeletons.generate_worked_example_steps(skill_id, skeleton)
+    is_worked_example = (not is_ela) and (consec_incorrect >= 1)
+    worked_steps = skeleton.get("hints")
 
     # Check if this is a visual skeleton question
     is_visual = skeleton.get("is_visual", False)
@@ -1662,285 +1593,87 @@ def get_practice_question_batch(
 
         return questions
 
-    # ── Math (and any future non-Verbal subjects) ─────────────────────────────
-    # Batch-of-3 strategy:
-    #   Q1 — already generated above before the is_verbal branch.
-    #   Q2 + Q3 — SymPy skeletons generated instantly; for word-problem standards
-    #             both are narrated in ONE additional LLM call so the model
-    #             self-diversifies the story contexts.  For drill-style standards
-    #             (non-word-problem) no LLM call is made — raw math symbols only.
-    #   All 3 are logged to gen_problems.jsonl at serve time.
-    skill_id = q1.skill_id
-    questions = [q1]
+    # ── Math / Matatag path (Unified v2 Pipeline) ────────────────────────────
+    from backend.app.practice_gen.pipeline import run_batch as _pg_batch
     
-    # Check if this is a MATATAG subject
-    is_matatag = skill_id.startswith("mat_") or subject in ["Matatag", "MATATAG", "matatag"]
+    # Identify student
+    student = db.query(models.StudentProfile).filter(models.StudentProfile.id == student_id).first()
+    interest_theme = _combined_interests(student, "math") if student else "math"
     
+    # Load config for MATATAG nodes
+    is_matatag = q1.skill_id.startswith("mat_") or subject in ["Matatag", "MATATAG", "matatag"]
+    _allowed_fmt = None
     if is_matatag:
-        # ── MATATAG path ──────────────────────────────────────────────────────
-        # Generate Q2 and Q3 using unified MATATAG skeleton generator
-        # This randomly mixes MCQ and visual questions for variety
-        from backend.app import matatag_skeletons
-        from backend.app.practice_gen.pipeline import run as _pg_run
-        
-        student = db.query(models.StudentProfile).filter(
-            models.StudentProfile.id == student_id
-        ).first()
-        grade = student.grade if student else 1
-        
-        import re as _re
-        _m = _re.match(r"mat_g(\d+)_", skill_id)
-        node_grade = int(_m.group(1)) if _m else grade
-        
-        # Load saved portal config for this node (allowed formatters etc.)
-        _cfg = db.query(models.CompetencyConfiguration).filter_by(node_id=skill_id).first()
+        _cfg = db.query(models.CompetencyConfiguration).filter_by(node_id=q1.skill_id).first()
         _allowed_fmt = _cfg.allowed_formatters if _cfg else None
-        
-        # Get the competency text from the skill node
-        node = db.query(models.SkillNode).filter(models.SkillNode.id == skill_id).first()
-        competency_text = node.title if node else "General math problem"
-        
-        # Build the set of stems already seen for dedup
-        seen_stems = {r["problem_text"] for r in _load_previous_questions(student_id, skill_id)}
-        seen_stems.add(q1.stem)
-        
-        for _ in range(2):  # Generate Q2 and Q3
-            try:
-                _pd = _pg_run(
-                    node_id=skill_id,
-                    student_grade=node_grade,
-                    formatter=None,
-                    difficulty_profile=None,
-                    seed=None,
-                    student_interest=None,
-                    allowed_formatters=_allowed_fmt,
-                )
-            except Exception:
-                _pd = None
-
-            if not _pd:
-                continue
-
-            _q_mode = _pd.get("format", "mcq")
-            _is_vis = _pd.get("is_visual", False)
-            sk = {
-                "skill_id": skill_id,
-                "skeleton_id": _pd.get("problem_id", f"mg_{skill_id}_{_}"),
-                "stem_template": _pd.get("question_text", ""),
-                "stem": _pd.get("question_text", ""),
-                "is_visual": _is_vis,
-            }
-            sk.update(_pd)
-            if not _is_vis:
-                _fmt = _pd.get("format_data", {})
-                _raw = _fmt.get("mcq_options") or _fmt.get("options") or []
-                if _raw:
-                    _opts = {}
-                    _ck = "A"
-                    for _i, _o in enumerate(_raw):
-                        _k = _o.get("key", chr(65 + _i))
-                        _v = str(_o.get("value", _o.get("text", "")))
-                        _opts[_k] = {"text": _v, "value": _v}
-                        if _o.get("is_correct") or _o.get("correct"):
-                            _ck = _k
-                    sk["options"] = _opts
-                    sk["correct_key"] = _ck
-                    sk["correct_answer"] = _opts.get(_ck, {}).get("value", "")
-            
-            is_visual = sk.get("is_visual", False)
-            
-            # Convert format and cache
-            sk["skill_id"] = skill_id
-            sk["stem_template"] = sk["stem"]
-            
-            if is_visual:
-                # Visual skeleton - already has correct_key
-                question_mode = sk.get("question_mode", "interactive")
-            else:
-                _fmt_type = sk.get("format", "mcq")
-                if _fmt_type in ["cloze", "numeric_input", "ordering", "true_false", "error_detect", "fill_in_blank"]:
-                    question_mode = _fmt_type
-                else:
-                    question_mode = "mcq"
-            
-            # Cache for answer validation
-            MATATAG_SKELETON_CACHE[sk["skeleton_id"]] = sk
-            
-            # Build response
-            opts = []
-            if sk.get("options"):
-                for k, v in sk["options"].items():
-                    opt_text = str(v.get("text", v.get("value", ""))) if isinstance(v, dict) else str(v)
-                    opts.append(schemas.QuestionOption(
-                        key=k,
-                        text=opt_text
-                    ))
-            questions.append(schemas.QuestionResponse(
-                skill_id=skill_id,
-                skeleton_id=sk["skeleton_id"],
-                stem=sk["stem_template"],
-                options=opts,
-                is_worked_example=False,
-                worked_example_steps=None,
-                is_placement=False,
-                placement_progress=None,
-                question_mode=question_mode,
-                standard_description=competency_text,
-                domain=None,
-                visual_type=sk.get("visual_type") if is_visual else None,
-                visual_params=sk.get("visual_params") if is_visual else None,
-                is_visual=is_visual,
-            ))
-        
-        # Log questions
-        for q in questions:
-            _save_practice_question(
-                student_id, skill_id, q.stem,
-                answer="", subject=subject, question_mode="mcq",
-            )
-        print(f"[MATATAG Batch] student={student_id} node={skill_id} "
-              f"→ served & logged {len(questions)} questions")
-        
-        return questions
-
-    # Determine if this standard uses AI narration (word problems) or raw math symbols
-    safe_name = skill_id.replace('.', '_').replace('-', '_')
-    research_dir = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "research"
-    )
-    has_research = os.path.exists(os.path.join(research_dir, f"{safe_name}_Context.md"))
-    is_word_problem = has_research or any(
-        wp in skill_id.upper() for wp in ["OA.D.8", "OA.A.3", "OA.B.3", "MD.A.3"]
-    )
-
-    student = db.query(models.StudentProfile).filter(
-        models.StudentProfile.id == student_id
-    ).first()
-    grade = student.grade if student else 5
-
-    # Build the set of stems already seen this session for this node (for within-batch dedup)
-    seen_stems = {r["problem_text"] for r in _load_previous_questions(student_id, skill_id)}
-    seen_stems.add(q1.stem)  # always exclude Q1
-
-    # Previous questions list for the AI fallback (includes Q1)
-    previous_for_ai = _load_previous_questions(student_id, skill_id)
-    previous_for_ai = list(previous_for_ai) + [{"problem_text": q1.stem, "answer": ""}]
-
-    def _fresh_skeleton(sid, grade, seen, student_obj, max_attempts=6):
-        """
-        Generate a SymPy skeleton that:
-          a) hasn't been seen this session (dedup), and
-          b) contains no visual references.
-        Falls back to AI generation if SymPy exhausts variety or always produces
-        visual-reference stems.
-        """
-        last_sk = None
-        for _ in range(max_attempts):
-            sk = sympy_skeletons.get_question_skeleton(sid, grade_level=grade)
-            stem = sk.get("stem_template", "")
-            if stem in seen:
-                last_sk = sk
-                continue
-            if subagents.has_visual_reference(stem):
-                print(f"[Math Batch] Visual reference detected in SymPy stem, skipping: {stem[:60]}")
-                last_sk = sk
-                continue
-            # Passes both checks
-            seen.add(stem)
-            return sk
-        # Exhausted SymPy variety — fall back to AI generation
-        print(f"[Math Batch] SymPy exhausted for {sid}, using AI fallback")
-        ai_sk = subagents.generate_math_question_ai(
-            skill_id=sid,
-            grade_level=grade,
-            student_interest=_combined_interests(student_obj, "math") if student_obj else "math",
-            language=student_obj.language_preference or "en" if student_obj else "en",
-            student_age=student_obj.age or 10 if student_obj else 10,
-            previous_questions=previous_for_ai,
-        )
-        # Store in MATH_AI_CACHE so grading can look it up
-        MATH_AI_CACHE[ai_sk["skeleton_id"]] = ai_sk
-        seen.add(ai_sk.get("stem_template", ""))
-        return ai_sk
-
-    # Generate Q2 and Q3 with visual-reference detection + cross-session dedup
-    sk2 = _fresh_skeleton(skill_id, grade, seen_stems, student)
-    sk3 = _fresh_skeleton(skill_id, grade, seen_stems, student)
-
-    if is_word_problem and student:
-        # Load previously served narrative contexts for this node
-        previous = _load_previous_questions(student_id, skill_id)
-        # Include Q1's stem so the batch LLM avoids repeating Q1's story
-        ctx = list(previous) + [{"problem_text": q1.stem, "answer": ""}]
-
-        narrated_list = subagents.narrate_math_batch_subagent(
-            skeletons=[sk2, sk3],
-            skill_id=skill_id,
-            grade_level=grade,
-            student_interest=_combined_interests(student, "math"),
-            language=student.language_preference or "en",
-            student_age=student.age or 10,
-            previous_questions=ctx,
-        )
-
-        # Apply narrated text back to skeletons and store in MATH_NARRATED_CACHE
-        for sk, nar in zip([sk2, sk3], narrated_list):
-            sk["stem_template"] = nar["stem"]
-            for k in ["A", "B", "C", "D"]:
-                if k in sk["options"]:
-                    nar_val = nar["options"].get(k, "")
-                    sk["options"][k]["text"] = nar_val if isinstance(nar_val, str) \
-                        else sk["options"][k].get("value", "")
-            MATH_NARRATED_CACHE[sk["skeleton_id"]] = {
-                "stem":        nar["stem"],
-                "explanation": nar.get("explanation", ""),
-                "options":     sk["options"],
-            }
-
-    # Build QuestionResponse objects for Q2 and Q3
-    for sk in [sk2, sk3]:
-        opts = []
-        for k, v in sk.get("options", {}).items():
-            opts.append(schemas.QuestionOption(
-                key=k,
-                text=str(v.get("text", v.get("value", "")))
-            ))
-        questions.append(schemas.QuestionResponse(
-            skill_id=skill_id,
-            skeleton_id=sk["skeleton_id"],
-            stem=sk.get("stem_template", ""),
-            options=opts,
-            is_worked_example=False,
-            worked_example_steps=None,
-            is_placement=False,
-            placement_progress=None,
-            question_mode="mcq",
-            standard_description=None,
-            domain=None,
-        ))
-
-    # Log all 3 at serve time with their correct answer keys
-    # Q1: extract correct_key by reconstructing the skeleton from its embedded seed
-    q1_answer = ""
+    
     try:
-        import re as _re
-        m = _re.search(r"_skel_(\d+)", q1.skeleton_id)
-        if m:
-            q1_sk = sympy_skeletons.get_question_skeleton(skill_id, seed=int(m.group(1)), grade_level=grade)
-            q1_answer = q1_sk.get("correct_key", "")
-    except Exception:
-        pass
+        # We already have q1, so we generate count-1 more problems
+        additional_count = max(0, count - 1)
+        batch = [q1]
+        
+        if additional_count > 0:
+            new_problems = _pg_batch(
+                node_id=q1.skill_id,
+                grade=student.grade if student else 5,
+                count=additional_count,
+                student_interest=interest_theme,
+                experience="standard"
+            )
+            
+            for p in new_problems:
+                # Normalise options
+                options_list = []
+                fmt_data = p.get("format_data", {})
+                raw_opts = fmt_data.get("mcq_options") or fmt_data.get("options") or []
+                
+                if isinstance(raw_opts, list):
+                    for o in raw_opts:
+                        options_list.append(schemas.QuestionOption(
+                            key=o.get("key", "A"), 
+                            text=str(o.get("value", o.get("text", "")))
+                        ))
+                elif isinstance(raw_opts, dict):
+                    for k, v in raw_opts.items():
+                        opt_text = str(v.get("text", v.get("value", ""))) if isinstance(v, dict) else str(v)
+                        options_list.append(schemas.QuestionOption(key=k, text=opt_text))
 
-    answers = [q1_answer, sk2.get("correct_key", ""), sk3.get("correct_key", "")]
-    for q, ans in zip(questions, answers):
-        _save_practice_question(
-            student_id, skill_id, q.stem,
-            answer=ans, subject=subject, question_mode="mcq",
-        )
-    print(f"[Math Batch] student={student_id} node={skill_id} "
-          f"word_problem={is_word_problem} → served & logged {len(questions)} questions")
+                is_vis = p.get("is_visual", False)
+                q_mode = p.get("format", "mcq")
+                if q_mode == "numeric_input": q_mode = "mcq"
 
-    return questions
+                batch.append(schemas.QuestionResponse(
+                    skill_id=q1.skill_id,
+                    skeleton_id=p.get("problem_id"),
+                    stem=p.get("question_text"),
+                    options=options_list,
+                    is_worked_example=False,
+                    worked_example_steps=p.get("hints"),
+                    is_placement=False,
+                    placement_progress=None,
+                    question_mode=q_mode,
+                    standard_description=p.get("competency_text"),
+                    domain=None,
+                    visual_type=p.get("visual_type"),
+                    visual_params=p.get("visual_params"),
+                    is_visual=is_vis,
+                ))
+                
+                if is_matatag:
+                    MATATAG_SKELETON_CACHE[p["problem_id"]] = p
+        
+        # Log batch
+        for q in batch:
+            _save_practice_question(
+                student_id, q1.skill_id, q.stem,
+                answer="", subject=subject, question_mode=q.question_mode,
+            )
+        print(f"[V2 Batch] student={student_id} node={q1.skill_id} → served {len(batch)} questions")
+        return batch
+        
+    except Exception as _e:
+        print(f"[Batch Pipeline Error] Node {q1.skill_id} failed: {_e}. Falling back to single q1.")
+        return [q1]
 
 @app.post("/api/practice/placement/skip")
 def skip_placement(req: schemas.PlacementSkipRequest, db: Session = Depends(get_db)):
@@ -1983,21 +1716,15 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
         # MATATAG skeleton — use cached skeleton or regenerate from skeleton_id
         skeleton = MATATAG_SKELETON_CACHE.get(req.skeleton_id)
         if not skeleton:
-            # Try to regenerate from skeleton_id (which encodes seed)
-            from backend.app import matatag_skeletons
+            # Reconstruct from seed via unified v2 pipeline
+            import re
+            match = re.search(r"_(\d+)$", req.skeleton_id)
+            seed_val = int(match.group(1)) if match else None
+            node_id = req.skeleton_id.rsplit('_', 1)[0] if match else req.skill_id
+            
+            from backend.app.practice_gen.pipeline import run as _pg_run
             try:
-                skeleton = matatag_skeletons.regenerate_matatag_skeleton(req.skeleton_id)
-                # Convert format to match expected structure
-                skeleton["correct_key"] = next(
-                    (k for k, v in skeleton["options"].items() if v.get("trap") is None),
-                    "A"
-                )
-                for key, opt in skeleton["options"].items():
-                    skeleton["options"][key] = {
-                        "text": str(opt["value"]),
-                        "value": str(opt["value"]),
-                        "trap": opt.get("trap")
-                    }
+                skeleton = _pg_run(node_id=node_id, seed=seed_val)
             except Exception as e:
                 raise HTTPException(status_code=400, detail=f"MATATAG question session expired or invalid: {e}")
     elif req.skeleton_id.startswith("ai_"):
@@ -2006,20 +1733,21 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
         if not skeleton:
             raise HTTPException(status_code=400, detail="Math AI question session expired or invalid.")
     else:
-        # SymPy-generated Math — reconstruct from embedded seed
+        # Reconstruct from seed via unified v2 pipeline
         import re
         seed_val = None
-        match = re.search(r"_skel_(\d+)", req.skeleton_id)
+        # Extract seed from format "{node_id}_{seed}"
+        match = re.search(r"_(\d+)$", req.skeleton_id)
         if match:
             seed_val = int(match.group(1))
 
-        skeleton = sympy_skeletons.get_question_skeleton(req.skill_id, seed=seed_val, grade_level=student.grade)
-
-        # Check cache first for custom narrative options & stem
-        narrated_data = MATH_NARRATED_CACHE.get(req.skeleton_id)
-        if narrated_data:
-            skeleton["stem_template"] = narrated_data["stem"]
-            skeleton["options"] = narrated_data["options"]
+        from backend.app.practice_gen.pipeline import run as _pg_run
+        skeleton = _pg_run(
+            node_id=req.skill_id,
+            student_grade=student.grade,
+            seed=seed_val,
+            student_interest=_combined_interests(student, "math")
+        )
 
     # Grading
     if is_ela or req.skeleton_id.startswith("ai_"):
@@ -2140,10 +1868,10 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
         selected_key = req.selected_answer.upper()
         if selected_key in skeleton["options"]:
             selected_opt = skeleton["options"][selected_key]
-            is_correct = sympy_skeletons.validate_answer(skeleton["correct_answer"], selected_opt["value"])
+            is_correct = validate_math_answer(skeleton["correct_answer"], selected_opt["value"])
         else:
             # Worked example: student typed a raw value (e.g. "5/6")
-            is_correct = sympy_skeletons.validate_answer(skeleton["correct_answer"], req.selected_answer)
+            is_correct = validate_math_answer(skeleton["correct_answer"], req.selected_answer)
             
     # Identify Trap engineered misconception
     trap_selected = None
@@ -2546,62 +2274,66 @@ def get_matatag_competencies(
     return result
 
 
+def _get_available_formats(node_id: str) -> list:
+    """Return which formats are available for a node: ['mcq'], ['visual'], or ['mcq','visual']."""
+    from backend.app.practice_gen.registry import get_node_dnas
+    from backend.app.practice_gen.compatibility import get_formatters_for_dna
+    
+    dnas = get_node_dnas(node_id)
+    if not dnas:
+        return ["mcq"]
+        
+    fmts = get_formatters_for_dna(dnas[0])
+    has_visual = any(f not in ["mcq", "numeric_input", "cloze"] for f in fmts)
+    has_mcq = "mcq" in fmts or "numeric_input" in fmts
+    
+    res = []
+    if has_mcq: res.append("mcq")
+    if has_visual: res.append("visual")
+    return res if res else ["mcq"]
+
+
 @app.get("/api/matatag/nodes")
 def get_matatag_nodes(
     grade: Optional[int] = Query(None, description="Filter by grade (1–3)"),
     branch: Optional[str] = Query(None, description="Filter by branch: na, mg, dp"),
 ):
-    """
-    Return all MATATAG nodes (G1–3) with node_id, competency text, and a
-    searchable label.  Used to populate the Problem Lab node selector.
-
-    Response:
-    {
-      "nodes": [
-        {
-          "node_id": "mat_g1_na_q1_0",
-          "grade": 1,
-          "branch": "na",
-          "quarter": 1,
-          "index": 0,
-          "competency": "Count up to 100...",
-          "primary_concept": "counting",
-          "label": "G1 NA Q1 · counting — Count up to 100..."
-        },
-        ...
-      ]
-    }
-    """
-    node_ids = _pg_registry.get_all_node_ids(grade=grade, branch=branch)
-    nodes = []
-    for nid in node_ids:
-        info = _pg_registry.get_node_info(nid)
-        if not info:
-            continue
-        dnas = _pg_registry.get_node_dnas(nid)
-        primary_concept = dnas[0] if dnas else ""
-        parts = nid.split("_")
-        # mat_g{grade}_{branch}_q{quarter}_{index}
-        n_grade  = int(parts[1][1:])
-        n_branch = parts[2].upper()
-        n_quarter = int(parts[3][1:])
-        n_index   = int(parts[4])
-        comp = info.get("competency", "")
-        # Build a short label: first 90 chars of competency with context prefix
-        short = comp[:90] + ("…" if len(comp) > 90 else "")
-        label = f"G{n_grade} {n_branch} Q{n_quarter} · {primary_concept} — {short}"
-        nodes.append({
-            "node_id": nid,
-            "grade": n_grade,
-            "branch": parts[2],
-            "quarter": n_quarter,
-            "index": n_index,
-            "competency": comp,
-            "primary_concept": primary_concept,
-            "label": label,
-            "available_formats": _get_available_formats(comp, n_grade),
-        })
-    return {"nodes": nodes}
+    try:
+        node_ids = _pg_registry.get_all_node_ids(grade=grade, branch=branch)
+        nodes = []
+        for nid in node_ids:
+            info = _pg_registry.get_node_info(nid)
+            if not info:
+                continue
+            dnas = _pg_registry.get_node_dnas(nid)
+            primary_concept = dnas[0] if dnas else ""
+            parts = nid.split("_")
+            # mat_g{grade}_{branch}_q{quarter}_{index}
+            n_grade  = int(parts[1][1:])
+            n_branch = parts[2].upper()
+            n_quarter = int(parts[3][1:])
+            n_index   = int(parts[4])
+            comp = info.get("competency", "")
+            # Build a short label: first 90 chars of competency with context prefix
+            short = comp[:90] + ("…" if len(comp) > 90 else "")
+            label = f"G{n_grade} {n_branch} Q{n_quarter} · {primary_concept} — {short}"
+            nodes.append({
+                "node_id": nid,
+                "grade": n_grade,
+                "branch": parts[2],
+                "quarter": n_quarter,
+                "index": n_index,
+                "competency": comp,
+                "primary_concept": primary_concept,
+                "label": label,
+                "available_formats": _get_available_formats(nid),
+            })
+        return {"nodes": nodes}
+    except Exception as e:
+        print(f"CRITICAL ERROR in get_matatag_nodes: {e}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Failed to load nodes: {str(e)}")
 
 
 @app.get("/api/matatag/difficulty-axes/{node_id}")
@@ -3030,33 +2762,6 @@ def get_matatag_lab_interests():
     }
 
 
-def _get_available_formats(competency_text: str, grade: int) -> list:
-    """Return which formats are available for a competency: ['mcq'], ['visual'], or ['mcq','visual']."""
-    from backend.app.matatag_skeletons import get_visual_type_for_competency, COMPETENCY_ROUTES
-    import re as _re
-
-    visual_match = get_visual_type_for_competency(competency_text, grade)
-    has_visual = visual_match is not None
-    has_mcq_fallback = visual_match.get("mcq_fallback", False) if visual_match else False
-
-    # Check if MCQ generator exists (not just conceptual fallback)
-    mcq_routed = False
-    for route in COMPETENCY_ROUTES[:-1]:  # Exclude the catch-all "conceptual" fallback
-        if _re.search(route["pattern"], competency_text, _re.IGNORECASE):
-            if grade in route.get("grades", []):
-                mcq_routed = True
-                break
-
-    if has_visual and not has_mcq_fallback:
-        return ["visual"]
-    if has_visual and has_mcq_fallback and mcq_routed:
-        return ["mcq", "visual"]
-    if has_visual and has_mcq_fallback and not mcq_routed:
-        # Visual available but MCQ fallback would hit conceptual (broken) — visual only
-        return ["visual"]
-    return ["mcq"]
-
-
 @app.get("/api/matatag/lab/generate")
 def matatag_lab_generate(
     node_id: str = Query(..., description="MATATAG node_id, e.g. mat_g1_na_q1_8"),
@@ -3074,13 +2779,10 @@ def matatag_lab_generate(
       'mcq'    → always MCQ
       'auto'   → random 50/50 when both available, otherwise whichever is available
     """
-    from backend.app import matatag_skeletons
-
     # Resolve node info
     info = _pg_registry.get_node_info(node_id)
     if not info:
         raise HTTPException(status_code=404, detail=f"Node '{node_id}' not found.")
-    competency = info.get("competency", "")
     grade = info.get("grade", 1)
 
     # Compute effective difficulty from axis values
@@ -3102,31 +2804,25 @@ def matatag_lab_generate(
         import random as _rand
         seed = _rand.randint(10000, 999999)
 
-    # Determine visual probability based on format_preference and what's available
-    available_formats = _get_available_formats(competency, grade)
-    has_visual = "visual" in available_formats
-    has_mcq = "mcq" in available_formats
-
+    # Determine allowed formatters based on format_preference
+    allowed_fmt = None
     if format_preference == "visual":
-        visual_prob = 1.0 if has_visual else 0.0
+        # Filter for non-textual formatters
+        from backend.app.practice_gen.compatibility import get_formatters_for_dna
+        dnas = _pg_registry.get_node_dnas(node_id)
+        if dnas:
+            all_fmts = get_formatters_for_dna(dnas[0])
+            allowed_fmt = [f for f in all_fmts if f not in ["mcq", "numeric_input", "cloze"]]
     elif format_preference == "mcq":
-        visual_prob = 0.0
-    else:  # "auto" — random when both available, otherwise deterministic
-        if has_visual and has_mcq:
-            visual_prob = 0.5
-        elif has_visual:
-            visual_prob = 1.0
-        else:
-            visual_prob = 0.0
+        allowed_fmt = ["mcq"]
 
     try:
-        skeleton = matatag_skeletons.get_matatag_skeleton_with_visual_option(
-            competency_text=competency,
-            grade=grade,
-            difficulty=effective_difficulty,
+        skeleton = pipeline.run(
+            node_id=node_id,
+            student_grade=grade,
+            difficulty_profile=parsed_axes if parsed_axes else {"range": effective_difficulty},
             seed=seed,
-            visual_probability=visual_prob,
-            axis_values=parsed_axes if parsed_axes else None,
+            allowed_formatters=allowed_fmt
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Generation failed: {str(e)}")
@@ -3199,13 +2895,18 @@ def matatag_lab_submit(
         "explanation": str
     }
     """
-    from backend.app import matatag_skeletons
-
     skeleton = MATATAG_SKELETON_CACHE.get(skeleton_id)
     if not skeleton:
-        # Attempt to regenerate from skeleton_id
+        # Attempt to regenerate from skeleton_id using v2 pipeline
         try:
-            skeleton = matatag_skeletons.regenerate_matatag_skeleton(skeleton_id)
+            import re
+            # Extract seed from format "{node_id}_{seed}"
+            match = re.search(r"_(\d+)$", skeleton_id)
+            seed_val = int(match.group(1)) if match else None
+            node_id = skeleton_id.rsplit('_', 1)[0] if match else skeleton_id
+            
+            from backend.app.practice_gen.pipeline import run as _pg_run
+            skeleton = _pg_run(node_id=node_id, seed=seed_val)
         except Exception:
             raise HTTPException(status_code=404, detail="Question session expired. Please generate a new problem.")
 
@@ -3310,22 +3011,9 @@ def matatag_lab_submit(
             correct_answer_str = str(correct_raw)
 
         else:
-            # Fallback: try validate_student_answer (works when no axis_values were used)
-            try:
-                result = visual_skeletons.validate_student_answer(
-                    skeleton_id=skeleton_id,
-                    student_answer=parsed,
-                )
-                is_correct = result.get("is_correct", False)
-                correct_answer_str = str(result.get("correct_answer", ""))
-                trap_triggered = result.get("trap_triggered")
-            except Exception:
-                # Last resort: direct comparison
-                try:
-                    is_correct = int(str(parsed)) == int(str(correct_raw))
-                except (ValueError, TypeError):
-                    is_correct = str(parsed) == str(correct_raw)
-                correct_answer_str = str(correct_raw)
+            # Fallback: direct comparison
+            is_correct = str(parsed) == str(correct_raw)
+            correct_answer_str = str(correct_raw)
     else:
         # MCQ: compare selected key to correct_key
         raw_opts = skeleton.get("options", {})

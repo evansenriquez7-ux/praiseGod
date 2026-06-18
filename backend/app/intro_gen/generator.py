@@ -12,27 +12,12 @@ import random
 from typing import Dict, List, Optional
 
 
-# --------------------------------------------------------------------------
-# Interest Bank Loader
-# --------------------------------------------------------------------------
-
-_INTEREST_BANK = None
-
-def _load_interest_bank() -> Dict:
-    global _INTEREST_BANK
-    if _INTEREST_BANK is not None:
-        return _INTEREST_BANK
-    path = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "interest_bank.json")
-    with open(os.path.abspath(path)) as f:
-        _INTEREST_BANK = json.load(f)
-    return _INTEREST_BANK
-
+from backend.app.practice_gen.generators.interest import _INTERESTS as _BANK_MAP
 
 def get_interest_themes(grade: int = None) -> List[Dict]:
     """Return all interest themes. Grade parameter is ignored (kept for API compatibility)."""
-    bank = _load_interest_bank()
     themes = []
-    for key, theme in bank["interests"].items():
+    for key, theme in _BANK_MAP.items():
         themes.append({
             "key": key,
             "name": theme["name"],
@@ -626,9 +611,8 @@ def generate_intro_content(
     # Load interest context if specified
     interest_ctx = None
     if interest_key:
-        bank = _load_interest_bank()
-        if interest_key in bank["interests"]:
-            interest_ctx = bank["interests"][interest_key]
+        if interest_key in _BANK_MAP:
+            interest_ctx = _BANK_MAP[interest_key]
 
     # Build mini-lessons
     mini_lessons = []

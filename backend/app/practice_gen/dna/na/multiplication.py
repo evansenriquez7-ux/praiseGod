@@ -182,21 +182,6 @@ def generate_params(
         "structure": structure,
     }
 
-    if context == "word_problem":
-        from backend.app.practice_gen.spines import select_spine, format_spine
-        interest_id = profile.get("interest_id")
-        narrative_logic = profile.get("spine")
-        if narrative_logic == "random":
-            narrative_logic = None
-
-        selected_spine = select_spine(
-            grade=grade, concept="multiplication", rng=rng,
-            blank_target=blank_target, narrative_logic=narrative_logic
-        )
-        if selected_spine:
-            question = format_spine(selected_spine, {"a": a, "b": b, "result": a * b}, rng, grade, interest_id)
-            result_dict["question"] = question
-
     return result_dict
 
 

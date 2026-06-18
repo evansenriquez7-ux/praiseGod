@@ -298,9 +298,9 @@ export function NumberLineInteractive({ params, onAnswer, disabled }) {
 //  CLOCK SET INTERACTIVE
 // ============================================================================
 export function ClockSetInteractive({ params, onAnswer, disabled }) {
-  const { target_time, use_24_hour, show_minutes } = params;
-  const [hours, setHours] = useState(3);
-  const [minutes, setMinutes] = useState(0);
+  const { target_time, use_24_hour, show_minutes, hours: targetHours, minutes: targetMinutes } = params;
+  const [hours, setHours] = useState(targetHours !== undefined ? targetHours : 3);
+  const [minutes, setMinutes] = useState(targetMinutes !== undefined ? targetMinutes : 0);
   const [selectedHand, setSelectedHand] = useState('minute'); // 'hour' or 'minute'
   const canvasRef = useRef(null);
   const [isDraggingHour, setIsDraggingHour] = useState(false);
@@ -1470,7 +1470,9 @@ export function ConstraintSatisfactionInteractive({ params, onAnswer, disabled }
 export function BarChartInteractive({ params, onAnswer, disabled }) {
   const { 
     labels, 
-    values: targetValues, 
+    categories,
+    values, 
+    counts,
     values2: targetValues2,  // For double bar charts
     series_labels,
     title, 
@@ -1483,14 +1485,17 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
     ask_series = null,     // For read mode: which series to ask about
     orientation = 'vertical'
   } = params;
+
+  const actualLabels = labels || categories || [];
+  const targetValues = values || counts || [];
   
   // CREATE mode: student builds chart from 0
   // READ mode: chart is pre-filled, student enters what they read
   const [barValues, setBarValues] = useState(() => 
-    is_read_mode ? [...targetValues] : labels.map(() => 0)
+    is_read_mode ? [...targetValues] : actualLabels.map(() => 0)
   );
   const [barValues2, setBarValues2] = useState(() => 
-    targetValues2 ? (is_read_mode ? [...targetValues2] : labels.map(() => 0)) : null
+    targetValues2 ? (is_read_mode ? [...targetValues2] : actualLabels.map(() => 0)) : null
   );
   
   // For read mode: student's answers
@@ -1498,7 +1503,7 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
     is_read_mode 
       ? (ask_category 
           ? '' // Single value answer
-          : labels.map(() => '')) // Array of answers
+          : actualLabels.map(() => '')) // Array of answers
       : null
   );
 
@@ -1585,7 +1590,7 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
   const pictographIcon = '🍎';  // Can be customized based on category
   
   // For read mode with specific category, find the index
-  const askIdx = ask_category ? labels.indexOf(ask_category) : -1;
+  const askIdx = ask_category ? actualLabels.indexOf(ask_category) : -1;
   const isSecondSeriesActive = !!(targetValues2 && ask_series && series_labels && ask_series === series_labels[1]);
   const guideVal = askIdx !== -1 
     ? (barValues2 && isSecondSeriesActive ? barValues2[askIdx] : barValues[askIdx])
@@ -1707,7 +1712,7 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
         })}
 
         {/* Bars */}
-        {labels.map((label, idx) => {
+        {actualLabels.map((label, idx) => {
           // In read mode, highlight the category being asked about
           const isAskedCategory = is_read_mode && ask_category && label === ask_category;
           
@@ -1907,7 +1912,7 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
           ) : (
             // Multiple value inputs
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-              {labels.map((label, idx) => (
+              {actualLabels.map((label, idx) => (
                 <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <span style={{ fontSize: '12px' }}>{label}:</span>
                   <input

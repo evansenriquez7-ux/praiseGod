@@ -27,170 +27,62 @@ try:
 except ImportError:
     ANTHROPIC_AVAILABLE = False
 
-# --- Persistent ACP Bridge ---
-class GeminiACPBridge:
-    def __init__(self, model="gemini-2.5-flash-lite"):
-        print(f"-> Starting persistent ACP process (model: {model})...", flush=True)
-        self.process = subprocess.Popen(
-            ["/usr/local/bin/gemini", "--acp", "--model", model],
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.DEVNULL, # Prevent stderr buffer pipe deadlock!
-            text=True,
-            bufsize=1
-        )
-        self.request_id = 1
-        self.lock = threading.Lock()
-        self.ready = False
-        
-        # Start initialization thread
-        init_thread = threading.Thread(target=self._initialize_process)
-        init_thread.daemon = True
-        init_thread.start()
+import os
+import json
+import uuid
+import threading
+import time
+import re
+from pathlib import Path
+from typing import Optional
+import google.generativeai as genai
 
-    def _send_request(self, method, params=None):
-        request = {
-            "jsonrpc": "2.0",
-            "method": method,
-            "params": params or {},
-            "id": self.request_id
-        }
-        print(f"[ACP BRIDGE] Sending request id={self.request_id}, method={method}", flush=True)
-        self.process.stdin.write(json.dumps(request) + "\n")
-        self.process.stdin.flush()
-        self.request_id += 1
-        
-        accumulated_text = ""
-        
-        # Read stdout until we find the response with the matching ID
-        while True:
-            line = self.process.stdout.readline()
-            if not line:
-                print("[ACP BRIDGE] stdout pipe closed!", flush=True)
-                break
-            line = line.strip()
-            if not line:
-                continue
-            
-            print(f"[ACP BRIDGE] Received line: {line[:300]}", flush=True)
-            
-            try:
-                if not line.startswith("{"):
-                    continue
-                    
-                response = json.loads(line)
-                
-                # Accumulate text chunks from notifications
-                if response.get("method") == "session/update":
-                    update = response.get("params", {}).get("update", {})
-                    if update.get("sessionUpdate") == "agent_message_chunk":
-                        accumulated_text += update.get("content", {}).get("text", "")
-                
-                if response.get("id") == request["id"]:
-                    print(f"[ACP BRIDGE] Matched matching ID={request['id']}", flush=True)
-                    if accumulated_text:
-                        response["_accumulated_text"] = accumulated_text
-                    return response
-            except json.JSONDecodeError as e:
-                print(f"[ACP BRIDGE] JSON decode error: {e}", flush=True)
-                continue
-        return None
+# Initialize GenAI client
+if os.environ.get("GOOGLE_API_KEY"):
+    genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
-    def _initialize_process(self):
-        print("-> ACP: Initializing...", flush=True)
-        self._send_request("initialize", {
-            "protocolVersion": 1
-        })
-        self.ready = True
-        print("-> ACP: Bridge is READY.", flush=True)
-
-    def _create_session(self):
-        response = self._send_request("session/new", {
-            "cwd": os.getcwd(),
-            "mcpServers": []
-        })
-        if response and "result" in response and "sessionId" in response["result"]:
-            return response["result"]["sessionId"]
-        print(f"-> ACP: Error creating session. Raw: {response}", flush=True)
-        return None
+class GenAIBridge:
+    def __init__(self, model="gemini-1.5-flash"):
+        self.model = genai.GenerativeModel(model)
 
     def prompt(self, text, temperature=None):
-        # Wait up to 15 seconds for initialization
-        if not self.ready:
-            for _ in range(15):
-                if self.ready: break
-                time.sleep(1)
+        generation_config = {}
+        if temperature is not None:
+            generation_config["temperature"] = temperature
         
-        with self.lock:
-            session_id = self._create_session()
-            if not session_id:
-                return "ERROR: Could not create Gemini session."
-            
-            print("-> ACP: Sending prompt...", flush=True)
-            payload = {
-                "sessionId": session_id,
-                "prompt": [{"type": "text", "text": text}]
-            }
-            if temperature is not None:
-                payload["generationConfig"] = {"temperature": temperature}
-                
-            response = self._send_request("session/prompt", payload)
-            
-            if response:
-                if "_accumulated_text" in response:
-                    return response["_accumulated_text"]
-                elif "result" in response:
-                    # Fallback if no text was streamed
-                    return json.dumps(response["result"])
-            
-            print(f"-> ACP: Error - No response. Raw: {response}", flush=True)
-            return "ERROR: No response from Gemini."
+        try:
+            response = self.model.generate_content(
+                text,
+                generation_config=generation_config
+            )
+            return response.text
+        except Exception as e:
+            return f"ERROR: GenAI call failed: {str(e)}"
 
-    def stop(self):
-        self.process.terminate()
+# ── Gemini bridge pool ────────────────────────────────────────────────────────
+# Using the GenAIBridge now instead of subprocess-based ACPBridge
 
-# --- Persistent ACP Bridge Pool ---
-class GeminiBridgePool:
-    def __init__(self, pool_size=3, model="gemini-2.5-flash-lite"):
-        self.bridges = [GeminiACPBridge(model) for _ in range(pool_size)]
-        self.current = 0
-        self.lock = threading.Lock()
-
-    def get_bridge(self):
-        with self.lock:
-            bridge = self.bridges[self.current]
-            self.current = (self.current + 1) % len(self.bridges)
-            return bridge
-
-    def prompt(self, text, temperature=None):
-        bridge = self.get_bridge()
-        return bridge.prompt(text, temperature)
-
-    def stop(self):
-        for b in self.bridges:
-            b.stop()
-
-# ── Lazy Gemini bridge pool ────────────────────────────────────────────────────
-# Not created at import time — only spawned on the first call_gemini_cli() call
-# so that OpenCode-only deployments don't waste three Gemini subprocesses.
-
-_bridge_pool: Optional["GeminiBridgePool"] = None
+_bridge_pool: Optional["GenAIBridge"] = None
 _bridge_pool_lock = threading.Lock()
 
-def _get_bridge_pool() -> "GeminiBridgePool":
+def _get_bridge_pool() -> "GenAIBridge":
     global _bridge_pool
     if _bridge_pool is None:
         with _bridge_pool_lock:
             if _bridge_pool is None:
-                _bridge_pool = GeminiBridgePool(pool_size=3)
+                # Direct SDK doesn't strictly need a pool, but maintaining interface compatibility
+                _bridge_pool = GenAIBridge()
     return _bridge_pool
 
 def call_gemini_cli(prompt: str, temperature: Optional[float] = None) -> str:
-    """Routes the prompt through the persistent local ACP bridge pool."""
+    """Routes the prompt through the GenAI SDK."""
     try:
         return _get_bridge_pool().prompt(prompt, temperature)
     except Exception as e:
-        return f"Error: Persistent ACP bridge pool call failed: {str(e)}"
+        return f"Error: GenAI SDK call failed: {str(e)}"
+
+# ... (rest of the file remains largely the same) ...
+
 
 # ── OpenCode chat bridge (synchronous) ────────────────────────────────────────
 

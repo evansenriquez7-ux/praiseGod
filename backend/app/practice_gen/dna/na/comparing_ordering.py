@@ -199,33 +199,6 @@ def generate_params(
         "distractors": distractors,
     }
 
-    if context == "word_problem":
-        from backend.app.practice_gen.spines import select_spine, format_spine
-        interest_id = profile.get("interest_id")
-        narrative_logic = spine if spine and spine != "random" else None
-        
-        if task_type == "compare_two":
-            nl = narrative_logic or "compare_two"
-        elif task_type == "order_set":
-            nl = narrative_logic or "order_set"
-        else:
-            nl = None
-
-        if nl:
-            selected_spine = select_spine(
-                grade=grade, concept="comparing_ordering", rng=rng,
-                blank_target="result", narrative_logic=nl
-            )
-            if selected_spine:
-                math_vars = {}
-                if task_type == "compare_two":
-                    math_vars = {"a": numbers[0], "b": numbers[1], "result": answer}
-                elif task_type == "order_set":
-                    math_vars = {"seq_str": ", ".join(map(str, numbers)), "result": answer}
-                
-                question = format_spine(selected_spine, math_vars, rng, grade, interest_id)
-                result_dict["question"] = question
-
     return result_dict
 
 
