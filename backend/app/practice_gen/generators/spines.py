@@ -541,8 +541,6 @@ ALL_SPINES: List[Spine] = [
     # Addition - putting together (competency-aligned)
     _ADD_PUTTING_TOGETHER,
     _ADD_PUT_TOGETHER_NAMES,
-    _ADD_FOUND,
-    _ADD_COUNT_FORWARD,
     # Addition - general
     _ADD_GAIN,
     _ADD_COMBINATION,
