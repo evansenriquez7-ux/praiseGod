@@ -45,7 +45,8 @@ import {
   CategorizeInteractive,
   CalendarInteractive,
   EmojiPictorialInteractive,
-  PlaceValueBlocksInteractive
+  PlaceValueBlocksInteractive,
+  PatternSequenceInteractive
 } from './components/VisualSkeletons.jsx';
 const _host = window.location.hostname;
 // Detect if we are on a local LAN network (IPs or .local hostnames)
@@ -188,6 +189,8 @@ function renderVisualInner(vt, vp, onAnswer, disabled, uniqueKey) {
       return <RuleDiscoveryInteractive key={uniqueKey} params={vp} onAnswer={onAnswer} disabled={disabled} />;
     case 'BarChart':
       return <BarChartInteractive key={uniqueKey} params={vp} onAnswer={onAnswer} disabled={disabled} />;
+    case 'PatternSequence':
+      return <PatternSequenceInteractive key={uniqueKey} params={vp} disabled={disabled} />;
     default:
       return <div style={{ padding: '20px', background: 'rgba(239,68,68,0.1)', borderRadius: '8px', color: '#f87171' }}>Unknown visual type: {vt}</div>;
   }

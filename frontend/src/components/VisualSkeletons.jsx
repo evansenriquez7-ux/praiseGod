@@ -2972,3 +2972,42 @@ export function PlaceValueBlocksInteractive({ params, onAnswer, disabled }) {
 // ============================================================================
 //  EXPORTS
 // ============================================================================
+
+// ============================================================================
+//  PATTERN SEQUENCE (READ MODE)
+// ============================================================================
+export function PatternSequenceInteractive({ params, disabled }) {
+  const sequence = params.sequence || [];
+  const missingIndices = params.missing_indices || [];
+  
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '20px', width: '100%' }}>
+      <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
+        {sequence.map((item, idx) => {
+          const isMissing = missingIndices.includes(idx);
+          return (
+            <div 
+              key={idx}
+              style={{
+                width: '60px',
+                height: '60px',
+                borderRadius: '12px',
+                background: isMissing ? 'rgba(255,255,255,0.05)' : 'rgba(99,102,241,0.15)',
+                border: isMissing ? '2px dashed rgba(255,255,255,0.2)' : '2px solid rgba(99,102,241,0.3)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '20px',
+                fontWeight: 700,
+                color: isMissing ? 'hsl(var(--text-muted))' : '#f1f5f9',
+                boxShadow: isMissing ? 'none' : '0 4px 12px rgba(0,0,0,0.1)'
+              }}
+            >
+              {isMissing ? '?' : item}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
