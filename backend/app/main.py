@@ -1460,7 +1460,7 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
     return schemas.QuestionResponse(
         skill_id=skill_id,
         skeleton_id=skeleton["skeleton_id"],
-        stem=skeleton["stem_template"],
+        stem=skeleton.get("stem_template", skeleton.get("stem", "")),
         options=options_list,
         is_worked_example=is_worked_example,
         worked_example_steps=worked_steps,
