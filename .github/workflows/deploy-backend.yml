@@ -6,6 +6,7 @@ on:
     paths:
       - 'backend/**'
       - 'Dockerfile'
+      - 'requirements.txt'
       - '.github/workflows/deploy-backend.yml'
 
 jobs:
@@ -18,6 +19,15 @@ jobs:
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PRAISEGOD_EDU }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Build Docker image via Cloud Build
+        run: |
+          gcloud builds submit \
+            --tag asia-southeast1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/cloud-run-source-deploy/ccmed-api \
+            --project ${{ secrets.PROJECT_ID }}
 
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
