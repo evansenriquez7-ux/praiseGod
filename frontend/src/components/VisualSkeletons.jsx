@@ -2169,11 +2169,11 @@ export function SortOrderInteractive({ params, onAnswer, disabled }) {
 //  GRID AREA INTERACTIVE
 // ============================================================================
 export function GridAreaInteractive({ params, onAnswer, disabled }) {
-  const { grid_size, correct_count, width, height, shape_type } = params || {};
+  const { grid_size, correct_count, width, height, shape_type, cols, rows } = params || {};
   
   // Safely extract grid dimensions
-  const gridWidth = Array.isArray(grid_size) ? grid_size[0] : 10;
-  const gridHeight = Array.isArray(grid_size) ? grid_size[1] : 10;
+  const gridWidth = cols || (Array.isArray(grid_size) ? grid_size[0] : 10);
+  const gridHeight = rows || (Array.isArray(grid_size) ? grid_size[1] : 10);
   
   const [shaded, setShaded] = useState(new Set());
 
@@ -2216,8 +2216,8 @@ export function GridAreaInteractive({ params, onAnswer, disabled }) {
         fontSize: '13px',
         color: 'hsl(var(--text-muted))'
       }}>
-        {shape_type === 'rectangle' && width && height ? (
-          <>Click squares to shade a <strong style={{ color: 'hsl(var(--primary))' }}>{width} × {height}</strong> rectangle</>
+        {shape_type === 'rectangle' && (width || cols) && (height || rows) ? (
+          <>Click squares to shade a <strong style={{ color: 'hsl(var(--primary))' }}>{width || cols} × {height || rows}</strong> rectangle</>
         ) : (
           <>Click squares to shade them. Count the area in square units.</>
         )}
