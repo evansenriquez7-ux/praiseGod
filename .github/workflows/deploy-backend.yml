@@ -25,4 +25,4 @@ jobs:
           service: ccmed-api
           image: asia-southeast1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/cloud-run-source-deploy/ccmed-api
           region: asia-southeast1
-          flags: '--allow-unauthenticated --set-env-vars=DATABASE_URL=${{ secrets.DATABASE_URL }}'
+          flags: '--allow-unauthenticated --update-env-vars=DATABASE_URL=${{ secrets.DATABASE_URL }}'
