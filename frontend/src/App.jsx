@@ -3789,7 +3789,7 @@ function App() {
                             </div>
                           )}
                         </div>
-                      ) : activeQuestion.visual_params?.is_interactive ? (
+                      ) : (activeQuestion.visual_params?.is_interactive || activeQuestion.interaction_mode === 'set') ? (
                         renderVisualInner(
                           activeQuestion.visual_type,
                           activeQuestion.visual_params,
@@ -5364,7 +5364,7 @@ difficulty: {Math.round(matatagQuestion.difficulty * 100)}%
                                     </div>
                                   )}
                                 </div>
-                              ) : matatagQuestion.visual_params?.is_interactive ? (
+                              ) : (matatagQuestion.visual_params?.is_interactive || matatagQuestion.interaction_mode === 'set') ? (
                                 renderVisualInner(
                                   matatagQuestion.visual_type,
                                   matatagQuestion.visual_params,
