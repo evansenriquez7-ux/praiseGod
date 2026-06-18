@@ -1,9 +1,9 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from typing import List, Optional, Union, Dict, Any
 
 class BaseVisualParams(BaseModel):
     """Base class for all visual problem parameters."""
-    pass
+    model_config = ConfigDict(extra="allow")
 
 class NumberLineParams(BaseVisualParams):
     correct_position: int
