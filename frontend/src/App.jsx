@@ -46,7 +46,13 @@ import {
   CalendarInteractive,
   EmojiPictorialInteractive,
   PlaceValueBlocksInteractive,
-  PatternSequenceInteractive
+  PatternSequenceInteractive,
+  FractionModelInteractive,
+  FractionShadeInteractive,
+  TenFrameInteractive,
+  RulerMeasureInteractive,
+  BalanceScaleInteractive,
+  ShapeBoardInteractive
 } from './components/VisualSkeletons.jsx';
 const _host = window.location.hostname;
 // Detect if we are on a local LAN network (IPs or .local hostnames)
@@ -191,6 +197,18 @@ function renderVisualInner(vt, vp, onAnswer, disabled, uniqueKey) {
       return <BarChartInteractive key={uniqueKey} params={vp} onAnswer={onAnswer} disabled={disabled} />;
     case 'PatternSequence':
       return <PatternSequenceInteractive key={uniqueKey} params={vp} disabled={disabled} />;
+    case 'FractionModel':
+      return <FractionModelInteractive key={uniqueKey} params={vp} disabled={disabled} />;
+    case 'FractionShade':
+      return <FractionShadeInteractive key={uniqueKey} params={vp} disabled={disabled} />;
+    case 'TenFrame':
+      return <TenFrameInteractive key={uniqueKey} params={vp} disabled={disabled} />;
+    case 'RulerMeasure':
+      return <RulerMeasureInteractive key={uniqueKey} params={vp} disabled={disabled} />;
+    case 'BalanceScale':
+      return <BalanceScaleInteractive key={uniqueKey} params={vp} disabled={disabled} />;
+    case 'ShapeBoard':
+      return <ShapeBoardInteractive key={uniqueKey} params={vp} disabled={disabled} />;
     default:
       return <div style={{ padding: '20px', background: 'rgba(239,68,68,0.1)', borderRadius: '8px', color: '#f87171' }}>Unknown visual type: {vt}</div>;
   }

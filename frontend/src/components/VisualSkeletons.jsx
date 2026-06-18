@@ -3011,3 +3011,209 @@ export function PatternSequenceInteractive({ params, disabled }) {
     </div>
   );
 }
+
+// ============================================================================
+//  FRACTION MODEL & SHADE
+// ============================================================================
+export function FractionModelInteractive({ params }) {
+  const den = params.denominator || params.parts || 1;
+  const num = params.numerator !== undefined ? params.numerator : (params.shaded_parts || 0);
+  
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', width: '100%' }}>
+      <div style={{ 
+        display: 'flex', 
+        width: '100%', 
+        maxWidth: '400px', 
+        height: '60px', 
+        border: '3px solid hsl(var(--primary))', 
+        borderRadius: '8px', 
+        overflow: 'hidden' 
+      }}>
+        {Array.from({ length: den }).map((_, i) => (
+          <div key={i} style={{
+            flex: 1,
+            background: i < num ? 'rgba(99,102,241,0.5)' : 'transparent',
+            borderRight: i < den - 1 ? '2px solid hsl(var(--primary))' : 'none'
+          }} />
+        ))}
+      </div>
+      <div style={{ marginTop: '15px', fontSize: '18px', fontWeight: 700, color: '#f1f5f9' }}>
+        {num} / {den}
+      </div>
+    </div>
+  );
+}
+
+export function FractionShadeInteractive({ params }) {
+  return <FractionModelInteractive params={params} />;
+}
+
+// ============================================================================
+//  TEN FRAME
+// ============================================================================
+export function TenFrameInteractive({ params }) {
+  const filled = params.filled || 0;
+  const total = params.total || 10;
+  
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', width: '100%' }}>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(5, 1fr)',
+        gap: '4px',
+        padding: '8px',
+        background: 'rgba(255,255,255,0.05)',
+        border: '3px solid hsl(var(--secondary))',
+        borderRadius: '12px'
+      }}>
+        {Array.from({ length: total }).map((_, i) => (
+          <div key={i} style={{
+            width: '50px',
+            height: '50px',
+            border: '2px solid rgba(255,255,255,0.2)',
+            borderRadius: '8px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            {i < filled && (
+              <div style={{ width: '30px', height: '30px', borderRadius: '50%', background: '#ef4444' }} />
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+//  RULER MEASURE
+// ============================================================================
+export function RulerMeasureInteractive({ params }) {
+  const length = params.length || 0;
+  const unit = params.unit || 'cm';
+  const max = Math.max(10, Math.ceil(length + 2));
+  
+  return (
+    <div style={{ padding: '40px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+      {/* Object being measured */}
+      <div style={{ 
+        width: `${(length / max) * 100}%`, 
+        height: '40px', 
+        background: 'linear-gradient(90deg, #f59e0b, #fbbf24)',
+        borderRadius: '4px',
+        marginBottom: '10px',
+        alignSelf: 'flex-start'
+      }} />
+      
+      {/* Ruler */}
+      <div style={{ 
+        width: '100%', 
+        height: '60px', 
+        background: '#f8fafc', 
+        borderRadius: '4px',
+        display: 'flex',
+        position: 'relative',
+        border: '2px solid #cbd5e1'
+      }}>
+        {Array.from({ length: max + 1 }).map((_, i) => (
+          <div key={i} style={{
+            position: 'absolute',
+            left: `${(i / max) * 100}%`,
+            top: 0,
+            bottom: i % 5 === 0 ? 0 : '50%',
+            width: '2px',
+            background: '#475569',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'flex-end'
+          }}>
+            {i % 5 === 0 && (
+              <span style={{ color: '#0f172a', fontSize: '12px', fontWeight: 700, position: 'absolute', bottom: '5px' }}>
+                {i}
+              </span>
+            )}
+          </div>
+        ))}
+        <span style={{ position: 'absolute', right: '10px', bottom: '5px', color: '#0f172a', fontSize: '14px', fontWeight: 700 }}>
+          {unit}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+//  BALANCE SCALE
+// ============================================================================
+export function BalanceScaleInteractive({ params }) {
+  const left = Array.isArray(params.left_side) ? params.left_side.join(' + ') : params.left_side;
+  const right = Array.isArray(params.right_side) ? params.right_side.join(' + ') : params.right_side;
+  const rotate = params.is_balanced ? 0 : (params.left_weight > params.right_weight ? -10 : 10);
+  
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '40px 20px', height: '200px', width: '100%' }}>
+      <div style={{
+        width: '100%',
+        maxWidth: '300px',
+        height: '10px',
+        background: '#94a3b8',
+        position: 'relative',
+        transform: `rotate(${rotate}deg)`,
+        transition: 'transform 0.5s ease',
+        borderRadius: '5px'
+      }}>
+        <div style={{
+          position: 'absolute', left: '-20px', top: '-40px', width: '60px', height: '40px',
+          background: 'rgba(59,130,246,0.2)', border: '2px solid #3b82f6', borderRadius: '8px',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 700
+        }}>
+          {left}
+        </div>
+        <div style={{
+          position: 'absolute', right: '-20px', top: '-40px', width: '60px', height: '40px',
+          background: 'rgba(59,130,246,0.2)', border: '2px solid #3b82f6', borderRadius: '8px',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 700
+        }}>
+          {right}
+        </div>
+      </div>
+      <div style={{
+        width: 0, height: 0,
+        borderLeft: '20px solid transparent',
+        borderRight: '20px solid transparent',
+        borderBottom: '40px solid #64748b',
+        marginTop: '-5px'
+      }} />
+    </div>
+  );
+}
+
+// ============================================================================
+//  SHAPE BOARD
+// ============================================================================
+export function ShapeBoardInteractive({ params }) {
+  const shapes = params.shapes || [];
+  
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center', padding: '20px', width: '100%' }}>
+      {shapes.map((s, i) => {
+        let borderRadius = '0';
+        if (s.type.includes('circle')) borderRadius = '50%';
+        else if (s.type.includes('oval')) borderRadius = '50% / 30%';
+        
+        return (
+          <div key={i} style={{
+            width: '50px', height: '50px',
+            background: 'hsl(var(--primary))',
+            borderRadius: borderRadius,
+            transform: `rotate(${s.orientation_deg || 0}deg)`,
+            clipPath: s.type.includes('triangle') ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 'none'
+          }} />
+        );
+      })}
+    </div>
+  );
+}
