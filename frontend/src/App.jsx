@@ -386,6 +386,12 @@ function App() {
     }
   }, [chatMessages, sendingChat]);
 
+  // Reset chat on slide or mini-lesson change
+  useEffect(() => {
+    setSocraticActive(false);
+    setChatMessages([]);
+  }, [introSlideIndex, introMiniLessonIndex]);
+
   // Load profiles and parent config on mount with dynamic server verification
   useEffect(() => {
     const verifyServerAndLoad = async () => {
@@ -593,7 +599,7 @@ function App() {
     setIntroMiniLessonIndex(0);
     setIntroSlideIndex(0);
     setIntroStepIndex(0);
-    setSocraticActive(true); // Always show tutor for intro content
+    setSocraticActive(false); // Always start closed as requested
     setChatMessages([]);
     try {
       // Convert full node_id (e.g. "mat_g3_na_q1_0") to the node_key
@@ -618,11 +624,7 @@ function App() {
     setAnswerResult(null);
     setSelectedOptionKey(null);
     setChatMessages([]);
-    if (subject === 'Matatag' || subject === 'MATATAG') {
-      setSocraticActive(true);
-    } else {
-      setSocraticActive(false);
-    }
+    setSocraticActive(false);
     // Reset visual practice state
     setPracticeVisualAnswer(null);
     setPracticeOrdered([]);
@@ -905,60 +907,10 @@ function App() {
       if (activeQuestion.is_placement) {
         setQuestionQueue([]);
       }
-
-      // Auto-trigger Socratic Tutor on ANY incorrect practice question
-      if (!data.is_correct && !activeQuestion.is_placement) {
-        setSocraticActive(true);
-        const greeting = selectedStudent.language_preference === 'tl' 
-          ? "Purihin ang Diyos at ang Panginoong Hesukristo, ako ang iyong tutor ngayon. Suriin natin ang iyong sagot..."
-          : "Praise God and the Lord Jesus Christ, I'm your tutor today. Let's analyze your answer...";
-        
-        setChatMessages([
-          { role: 'assistant', content: greeting }
-        ]);
-
-        // Auto-ask the tutor to explain the mistake
-        setSendingChat(true);
-        fetch(`${API_BASE}/socratic/chat`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            student_id:     selectedStudent.id,
-            skill_id:       activeQuestion.skill_id,
-            question_text:  activeQuestion.stem,
-            student_answer: data.student_answer || selectedOptionKey || '',
-            is_intro:       false,
-            message: selectedStudent.language_preference === 'tl'
-              ? 'Mali ang aking sagot. Tulungan mo ako na maunawaan kung bakit.'
-              : 'I chose the wrong answer. Can you help me understand why?',
-            history: []
-          })
-        })
-        .then(res => res.json())
-        .then(chatData => {
-          setChatMessages([
-            { role: 'assistant', content: greeting + "\n\n" + chatData.reply }
-          ]);
-        })
-        .catch(e => {
-          console.error(e);
-          setChatMessages([
-            { role: 'assistant', content: greeting + "\n\n" + data.explanation }
-          ]);
-        })
-        .finally(() => {
-          setSendingChat(false);
-        });
-      } else if (data.trap_selected) {
-        setSocraticActive(true);
-        const greeting = selectedStudent.language_preference === 'tl' 
-          ? "Purihin ang Diyos at ang Panginoong Hesukristo, ako ang iyong tutor ngayon. Paano kita matutulungan?"
-          : "Praise God and the Lord Jesus Christ, I'm your tutor today. How can I help you?";
-        
-        setChatMessages([
-          { role: 'assistant', content: greeting }
-        ]);
-      }
+      
+      // Auto-trigger removed: Socratic Tutor now only opens when Ask Tutor is clicked
+      
+      // No auto triggers
     } catch (e) {
       console.error("Answer submission failed", e);
     }
@@ -1471,11 +1423,27 @@ function App() {
                                 <button
                                   onClick={() => {
                                     setSocraticActive(prev => !prev);
-                                    if (chatMessages.length === 0) {
-                                      const greeting = selectedStudent?.language_preference === 'tl'
-                                        ? 'Purihin ang Diyos! Ako ang iyong tutor ngayon. Paano kita matutulungan sa araling ito?'
-                                        : "Praise God! I'm your tutor. What questions do you have about this lesson?";
-                                      setChatMessages([{ role: 'assistant', content: greeting }]);
+                                    if (chatMessages.length === 0 && !sendingChat) {
+                                      setSendingChat(true);
+                                      fetch(`${API_BASE}/socratic/chat`, {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({
+                                          student_id:     selectedStudent.id,
+                                          skill_id:       selectedSkill,
+                                          question_text:  nodeData?.intro_content?.mini_lessons?.[introMiniLessonIndex]?.content?.[introSlideIndex]?.text || '',
+                                          student_answer: '',
+                                          is_intro:       true,
+                                          message: '',
+                                          history: []
+                                        })
+                                      })
+                                      .then(res => res.json())
+                                      .then(chatData => {
+                                        setChatMessages([{ role: 'assistant', content: chatData.reply }]);
+                                      })
+                                      .catch(e => console.error(e))
+                                      .finally(() => setSendingChat(false));
                                     }
                                   }}
                                   style={{
@@ -3528,13 +3496,27 @@ function App() {
                         className="btn-secondary" 
                         onClick={() => {
                           setSocraticActive(prev => !prev);
-                          if (chatMessages.length === 0) {
-                            const greeting = selectedStudent.language_preference === 'tl'
-                              ? "Purihin ang Diyos at ang Panginoong Hesukristo, ako ang iyong tutor ngayon. Paano kita matutulungan sa araling ito?"
-                              : "Praise God and the Lord Jesus Christ, I'm your tutor today. How can I help you with this lesson?";
-                            setChatMessages([
-                              { role: 'assistant', content: greeting }
-                            ]);
+                          if (chatMessages.length === 0 && !sendingChat) {
+                            setSendingChat(true);
+                            fetch(`${API_BASE}/socratic/chat`, {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({
+                                student_id:     selectedStudent.id,
+                                skill_id:       activeQuestion?.skill_id || '',
+                                question_text:  activeQuestion?.stem || '',
+                                student_answer: '',
+                                is_intro:       false,
+                                message: '',
+                                history: []
+                              })
+                            })
+                            .then(res => res.json())
+                            .then(chatData => {
+                              setChatMessages([{ role: 'assistant', content: chatData.reply }]);
+                            })
+                            .catch(e => console.error(e))
+                            .finally(() => setSendingChat(false));
                           }
                         }}
                         style={{ padding: '6px 12px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', borderRadius: '10px', background: socraticActive ? 'rgba(139,92,246,0.25)' : 'rgba(139,92,246,0.1)', border: `1px solid ${socraticActive ? 'rgba(139,92,246,0.6)' : 'rgba(139,92,246,0.3)'}` }}
@@ -3612,13 +3594,27 @@ function App() {
                         className="btn-secondary" 
                         onClick={() => {
                           setSocraticActive(prev => !prev);
-                          if (chatMessages.length === 0) {
-                            const greeting = selectedStudent.language_preference === 'tl'
-                              ? "Purihin ang Diyos at ang Panginoong Hesukristo, ako ang iyong tutor ngayon. Paano kita matutulungan?"
-                              : "Praise God and the Lord Jesus Christ, I'm your tutor today. How can I help you?";
-                            setChatMessages([
-                              { role: 'assistant', content: greeting }
-                            ]);
+                          if (chatMessages.length === 0 && !sendingChat) {
+                            setSendingChat(true);
+                            fetch(`${API_BASE}/socratic/chat`, {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({
+                                student_id:     selectedStudent.id,
+                                skill_id:       activeQuestion?.skill_id || '',
+                                question_text:  activeQuestion?.stem || '',
+                                student_answer: '',
+                                is_intro:       false,
+                                message: '',
+                                history: []
+                              })
+                            })
+                            .then(res => res.json())
+                            .then(chatData => {
+                              setChatMessages([{ role: 'assistant', content: chatData.reply }]);
+                            })
+                            .catch(e => console.error(e))
+                            .finally(() => setSendingChat(false));
                           }
                         }}
                         style={{ padding: '6px 12px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', borderRadius: '10px' }}
