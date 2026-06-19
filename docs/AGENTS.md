@@ -13,7 +13,8 @@ When writing generator code, DNA files, or student-facing content, you must rigi
 ## Engineering & Verification Constraints
 When writing, modifying, or debugging code for this project, you must follow strict engineering protocols:
 1. **Never Assume Success:** Do NOT inform the user that a bug is fixed or a feature is resolved until you have rigorously verified it yourself. When the user finds a bug, always ensure you find the root cause and then fix for the entire web app.
-2. **Mandatory Testing:** Always ensure everything is working from a UI perspective before reporting positively. A fix is only confirmed when you have inspected the output, and proven that the pipeline produces the correct results. Do not outsource testing of practice generators to test suites and scripts. So far 0% of these have worked though previously claimed to be 100% effective. Check all UI output for practice generators yourself or with the help of subagents with the relevant practice generator and checklist md files.
+2. **Mandatory Testing:** Always ensure everything is working from a UI perspective before reporting positively. A fix is only confirmed when you have inspected the output, and proven that the pipeline produces the correct results.
 3. **File Management:** 
    - Store all markdown files in the `/docs` directory of the workspace.
    - Store all buildtime logs and temporary test and verification scripts in the `local_only/scratch` directory of the workspace.
+   - Keep the root directory clean and tidy.

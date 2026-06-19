@@ -485,7 +485,7 @@ def update_parent_config(req: Dict[str, Any], db: Session = Depends(get_db)):
         "gemini_model": effective_model,
     }
 
-@app.get("/api/parent/opencode-models")
+@app.get("/api/parent/gemini-models")
 def get_opencode_models():
     """
     Returns the list of Gemini models available with the free tier API key.
@@ -498,7 +498,7 @@ def get_opencode_models():
         client = genai.Client(api_key=api_key)
         models = client.models.list()
         
-        models_list = [m.name.replace("models/", "") for m in models if m.name.startswith("models/gemini") or m.name.startswith("models/gemma")]
+        models_list = [m.name.replace("models/", "") for m in models if (m.name.startswith("models/gemini") or m.name.startswith("models/gemma")) and "embedding" not in m.name]
         return {"models": models_list}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to list Gemini models: {e}")
