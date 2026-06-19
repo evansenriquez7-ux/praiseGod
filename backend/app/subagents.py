@@ -41,7 +41,7 @@ from google.genai import types
 _genai_client = None
 
 class GenAIBridge:
-    def __init__(self, model="gemini-1.5-flash"):
+    def __init__(self, model="gemini-2.5-flash"):
         self.model_name = model
 
     def prompt(self, text, temperature=None):
@@ -196,7 +196,7 @@ def call_opencode_cli(prompt: str, model: str, timeout: int = 120) -> str:
 # ── In-memory AI routing config ───────────────────────────────────────────────
 
 _ai_backend: str = "gemini"
-_opencode_model: str = "gemini-1.5-flash"
+_opencode_model: str = "gemini-2.5-flash"
 
 def set_ai_config(model: str) -> None:
     """Called by main.py at startup and on every POST /api/parent/config."""
@@ -205,7 +205,7 @@ def set_ai_config(model: str) -> None:
     
     # Force valid Gemini model, ignoring any lingering OpenCode or Gemma references in DB
     if "opencode" in model or "gemma" in model or "deepseek" in model:
-        model = "gemini-1.5-flash"
+        model = "gemini-2.5-flash"
         
     _opencode_model = model
     print(f"[subagents] Gemini model set to: {model!r}", flush=True)
