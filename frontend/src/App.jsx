@@ -268,6 +268,9 @@ function App() {
   const [loadingMathTracks, setLoadingMathTracks] = useState(false);
   const [matatagTracks, setMatatagTracks] = useState([]);
   const [loadingMatatagTracks, setLoadingMatatagTracks] = useState(false);
+  const [verbalTracks, setVerbalTracks] = useState([]);
+  const [loadingVerbalTracks, setLoadingVerbalTracks] = useState(false);
+  const [writingCoachActive, setWritingCoachActive] = useState(false);
 
 
   // Telemetry Metrics
@@ -1430,7 +1433,7 @@ function App() {
                                         headers: { 'Content-Type': 'application/json' },
                                         body: JSON.stringify({
                                           student_id:     selectedStudent.id,
-                                          skill_id:       selectedSkill,
+                                          skill_id:       introContent?.node_key || selectedSubdomain || '',
                                           question_text:  introContent?.mini_lessons?.[introMiniLessonIndex]?.slides?.[introSlideIndex]?.content || '',
                                           student_answer: '',
                                           is_intro:       true,
@@ -5907,7 +5910,14 @@ difficulty: {Math.round(matatagQuestion.difficulty * 100)}%
               </button>
               <button 
                 className="btn-primary" 
-                onClick={handleFlagQuestion}
+                onClick={() => {
+                  setIsFlagging(true);
+                  setTimeout(() => {
+                    setIsFlagging(false);
+                    setShowFlagModal(false);
+                    setFlagReason('');
+                  }, 1000);
+                }}
                 disabled={isFlagging}
                 style={{ flex: 2, background: '#ef4444', borderColor: '#ef4444' }}
               >
