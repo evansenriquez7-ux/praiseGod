@@ -26,13 +26,13 @@ jobs:
       - name: Build Docker image via Cloud Build
         run: |
           gcloud builds submit \
-            --tag asia-southeast1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/cloud-run-source-deploy/ccmed-api \
-            --project ${{ secrets.PROJECT_ID }}
+            --tag asia-southeast1-docker.pkg.dev/praisegod-edu/cloud-run-source-deploy/ccmed-api \
+            --project praisegod-edu
 
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: ccmed-api
-          image: asia-southeast1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/cloud-run-source-deploy/ccmed-api
+          image: asia-southeast1-docker.pkg.dev/praisegod-edu/cloud-run-source-deploy/ccmed-api
           region: asia-southeast1
           flags: '--allow-unauthenticated --update-env-vars=DATABASE_URL=${{ secrets.DATABASE_URL }}'
