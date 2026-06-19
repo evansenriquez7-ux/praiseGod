@@ -196,18 +196,23 @@ def call_opencode_cli(prompt: str, model: str, timeout: int = 120) -> str:
 # ── In-memory AI routing config ───────────────────────────────────────────────
 
 _ai_backend: str = "gemini"
-_opencode_model: str = "opencode/deepseek-v4-flash-free"
+_opencode_model: str = "gemini-1.5-flash"
 
 def set_ai_config(model: str) -> None:
     """Called by main.py at startup and on every POST /api/parent/config."""
     global _ai_backend, _opencode_model
     _ai_backend = "gemini"
+    
+    # Force valid Gemini model, ignoring any lingering OpenCode or Gemma references in DB
+    if "opencode" in model or "gemma" in model or "deepseek" in model:
+        model = "gemini-1.5-flash"
+        
     _opencode_model = model
     print(f"[subagents] Gemini model set to: {model!r}", flush=True)
     
     global _bridge_pool
     if _bridge_pool is not None:
-        _bridge_pool.model = model
+        _bridge_pool.model_name = model
 
 def get_ai_config() -> tuple:
     return _ai_backend, _opencode_model
