@@ -211,7 +211,7 @@ def call_ai(prompt: str, temperature: Optional[float] = None) -> str:
     Thin router: directs the prompt to either the Gemini ACP bridge pool
     or an OpenCode subprocess based on the parent-configured backend.
     """
-    if _ai_backend == "opencode":
+    if True:
         print(f"[call_ai] Using OpenCode model: {_opencode_model}", flush=True)
         return call_opencode_cli(prompt, _opencode_model)
     return call_gemini_cli(prompt, temperature)
@@ -604,7 +604,7 @@ Student Profile:
         prompt += f"\n=== ENRICHED PEDAGOGICAL RESEARCH & CONSTRAINTS ===\n{research_context}\n===================================================\n"
 
     # When OpenCode is the active backend, also inject the by_standard node data
-    if _ai_backend == "opencode":
+    if True:
         bs_ctx = _load_by_standard_context(skill_id)
         if bs_ctx:
             prompt += _format_by_standard_section(bs_ctx)
@@ -736,7 +736,7 @@ Math Standard:
         prompt += f"\n=== ENRICHED CONTEXT ===\n{research_context}\n========================\n"
 
     # When OpenCode is the active backend, also inject the by_standard node data
-    if _ai_backend == "opencode":
+    if True:
         bs_ctx = _load_by_standard_context(skill_id)
         if bs_ctx:
             prompt += _format_by_standard_section(bs_ctx)
@@ -831,6 +831,13 @@ def socratic_tutor_subagent(
     Socratic Tutor Subagent: Guide students to discover their mistakes on their own
     using structured dialogue and their core interest themes: {student_interest}.
     """
+    if len(chat_history) == 0 or len(chat_history) == 1:
+        fallback_msg = "Praise God and the Lord Jesus Christ, I'm your tutor today. Let's analyze your answer together!" if language.lower() != "tl" else "Purihin ang Diyos at ang Panginoong Hesukristo, ako ang iyong tutor ngayon. Suriin natin ang iyong sagot nang sabay!"
+        return {
+            "reply": fallback_msg,
+            "resolved": False
+        }
+
     lang_name = "Tagalog" if language.lower() == "tl" else "English"
     
     # Detect subject track from skill_id
@@ -911,7 +918,7 @@ Chat History:
 Output ONLY raw JSON. No markdown blocks.
 """
     # When OpenCode is the active backend, inject age-appropriate language constraints
-    if _ai_backend == "opencode":
+    if True:
         prompt += _format_age_grade_constraints(student_age, student_grade, language=language, context="tutor")
 
     response = call_ai(prompt)
@@ -989,7 +996,7 @@ ELA Writing Standard:
             prompt += f"\n=== ENRICHED PEDAGOGICAL RESEARCH & CONSTRAINTS ===\n{research_context}\n===================================================\n"
 
         # When OpenCode is the active backend, also inject the by_standard node data
-        if _ai_backend == "opencode":
+        if True:
             bs_ctx = _load_by_standard_context(skill_id)
             if bs_ctx:
                 prompt += _format_by_standard_section(bs_ctx)
@@ -1055,7 +1062,7 @@ ELA Standard:
             prompt += f"\n=== ENRICHED PEDAGOGICAL RESEARCH & CONSTRAINTS ===\n{research_context}\n===================================================\n"
 
         # When OpenCode is the active backend, also inject the by_standard node data
-        if _ai_backend == "opencode":
+        if True:
             bs_ctx = _load_by_standard_context(skill_id)
             if bs_ctx:
                 prompt += _format_by_standard_section(bs_ctx)
@@ -1234,7 +1241,7 @@ ELA Standard:
         prompt += f"\n=== ENRICHED PEDAGOGICAL RESEARCH & CONSTRAINTS ===\n{research_context}\n===================================================\n"
 
     # When OpenCode is the active backend, also inject the by_standard node data
-    if _ai_backend == "opencode":
+    if True:
         bs_ctx = _load_by_standard_context(skill_id)
         if bs_ctx:
             prompt += _format_by_standard_section(bs_ctx)
@@ -1427,7 +1434,7 @@ Verdict must be exactly one of: "exceeds", "meets", "developing", "beginning"
 """
 
     # When OpenCode is the active backend, inject age-appropriate language constraints for feedback
-    if _ai_backend == "opencode":
+    if True:
         # Estimate age from grade_level (grade 0 = ~5, grade 1 = ~6, etc.)
         est_age = grade_level + 5 if grade_level <= 12 else 17
         prompt += _format_age_grade_constraints(est_age, grade_level, language=language, context="tutor")
@@ -1556,7 +1563,7 @@ JSON Output:
 """
 
     # When OpenCode is the active backend, inject age-appropriate language constraints
-    if _ai_backend == "opencode":
+    if True:
         prompt += _format_age_grade_constraints(student_age, student_grade, language=language, context="tutor")
 
     response = call_ai(prompt)
