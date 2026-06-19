@@ -217,7 +217,7 @@ def call_ai(prompt: str, temperature: Optional[float] = None) -> str:
     Thin router: directs the prompt to either the Gemini ACP bridge pool
     or an OpenCode subprocess based on the parent-configured backend.
     """
-    if True:
+    if _ai_backend == "opencode":
         print(f"[call_ai] Using OpenCode model: {_opencode_model}", flush=True)
         return call_opencode_cli(prompt, _opencode_model)
     return call_gemini_cli(prompt, temperature)
