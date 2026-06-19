@@ -220,8 +220,7 @@ def _startup_migrate_and_configure():
         parent = db.query(models.ParentAccount).first()
         if parent:
             subagents.set_ai_config(
-                parent.ai_backend or "gemini",
-                parent.opencode_model or "opencode/deepseek-v4-flash-free",
+                parent.opencode_model or "gemma-4-31b-it"
             )
 
 
@@ -468,44 +467,41 @@ def update_parent_config(req: Dict[str, Any], db: Session = Depends(get_db)):
         parent.password_hash = req["password"]
 
     if "ai_backend" in req:
-        parent.ai_backend = req["ai_backend"]
+        parent.ai_backend = "gemini" # Always gemini now
 
-    if "opencode_model" in req:
-        parent.opencode_model = req["opencode_model"]
+    if "gemini_model" in req:
+        parent.opencode_model = req["gemini_model"]
 
     db.commit()
 
     # Keep in-memory routing in sync
-    effective_backend = parent.ai_backend or "gemini"
-    effective_model = parent.opencode_model or "opencode/deepseek-v4-flash-free"
-    subagents.set_ai_config(effective_backend, effective_model)
-    print(f"[Config Update] AI backend={effective_backend!r}, model={effective_model!r}", flush=True)
+    effective_model = parent.opencode_model or "gemma-4-31b-it"
+    subagents.set_ai_config(effective_model)
+    print(f"[Config Update] Gemini model={effective_model!r}", flush=True)
 
     return {
         "password_auth_required": parent.password_auth_required,
-        "ai_backend": parent.ai_backend,
-        "opencode_model": parent.opencode_model,
+        "ai_backend": "gemini",
+        "gemini_model": effective_model,
     }
 
 @app.get("/api/parent/opencode-models")
 def get_opencode_models():
     """
-    Returns the list of models available through the local OpenCode CLI.
-    Called once when the parent switches to OpenCode mode in the portal.
+    Returns the list of Gemini models available with the free tier API key.
+    (Endpoint kept as opencode-models for frontend compatibility).
     """
     try:
-        result = subprocess.run(
-            [opencode_bridge.OPENCODE_BIN, "models"],
-            capture_output=True, text=True, timeout=15,
-        )
-        models_list = [
-            line.strip()
-            for line in result.stdout.strip().splitlines()
-            if line.strip()
-        ]
+        from google import genai
+        import os
+        api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+        client = genai.Client(api_key=api_key)
+        models = client.models.list()
+        
+        models_list = [m.name.replace("models/", "") for m in models if m.name.startswith("models/gemini") or m.name.startswith("models/gemma")]
         return {"models": models_list}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to list OpenCode models: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to list Gemini models: {e}")
 
 @app.get("/api/parent/analytics/{student_id}", response_model=schemas.ParentAnalyticsResponse)
 def get_parent_analytics(student_id: int, db: Session = Depends(get_db)):

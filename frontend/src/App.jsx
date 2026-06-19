@@ -401,15 +401,13 @@ function App() {
           setConnectionStatus('connected');
           const config = await res.json();
           setParentAuthRequired(config.password_auth_required);
-          setAiBackend(config.ai_backend || 'gemini');
-          setOpencodeModel(config.opencode_model || 'opencode/deepseek-v4-flash-free');
-          // Pre-load model list if opencode backend is already configured
-          if (config.ai_backend === 'opencode') {
-            fetch(`${API_BASE}/parent/opencode-models`)
-              .then(r => r.json())
-              .then(d => setOpencodeModels(d.models || []))
-              .catch(() => {});
-          }
+          setAiBackend('gemini');
+          setOpencodeModel(config.gemini_model || 'gemma-4-31b-it');
+          // Pre-load model list
+          fetch(`${API_BASE}/parent/gemini-models`)
+            .then(r => r.json())
+            .then(d => setOpencodeModels(d.models || []))
+            .catch(() => {});
           if (!config.password_auth_required) {
             setParentLoggedIn(true);
           } else {
@@ -2704,45 +2702,17 @@ function App() {
     }
   };
 
-  const handleAiBackendChange = async (newBackend) => {
-    setAiBackend(newBackend);
-    if (newBackend === 'opencode' && opencodeModels.length === 0) {
-      setModelsLoading(true);
-      try {
-        const res = await fetch(`${API_BASE}/parent/opencode-models`);
-        const data = await res.json();
-        setOpencodeModels(data.models || []);
-      } catch (e) {
-        console.error("Failed to fetch OpenCode models", e);
-      } finally {
-        setModelsLoading(false);
-      }
-    }
-    // Send both ai_backend AND the current model together so they stay in sync
-    try {
-      await fetch(`${API_BASE}/parent/config`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ai_backend: newBackend, opencode_model: opencodeModel }),
-      });
-    } catch (e) {
-      console.error("Failed to save AI backend setting", e);
-    }
-  };
-
   const handleOpencodeModelChange = async (newModel) => {
     setOpencodeModel(newModel);
-    // Always send both ai_backend and model together to ensure full propagation
     try {
       await fetch(`${API_BASE}/parent/config`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ai_backend: 'opencode', opencode_model: newModel }),
+        body: JSON.stringify({ ai_backend: 'gemini', gemini_model: newModel }),
       });
-      // Also update local state to ensure UI reflects opencode is active
-      setAiBackend('opencode');
+      setAiBackend('gemini');
     } catch (e) {
-      console.error("Failed to save OpenCode model setting", e);
+      console.error("Failed to save Gemini model setting", e);
     }
   };
 
@@ -4252,102 +4222,68 @@ function App() {
                         Choose which AI engine powers question generation and student chat.
                       </p>
 
-                      {/* Backend selector tiles */}
+                      {/* Backend selector tile (Gemini only) */}
                       <div style={{ display: 'flex', gap: '12px' }}>
-                        {/* Gemini CLI tile */}
                         <div
-                          onClick={() => handleAiBackendChange('gemini')}
                           style={{
                             flex: 1,
                             padding: '14px 16px',
                             borderRadius: '12px',
-                            border: `2px solid ${aiBackend === 'gemini' ? '#10b981' : 'rgba(255,255,255,0.08)'}`,
-                            background: aiBackend === 'gemini' ? 'rgba(16,185,129,0.08)' : 'rgba(255,255,255,0.03)',
-                            cursor: 'pointer',
-                            transition: 'all 0.2s',
-                            boxShadow: aiBackend === 'gemini' ? '0 0 14px rgba(16,185,129,0.25)' : 'none',
+                            border: `2px solid #10b981`,
+                            background: 'rgba(16,185,129,0.08)',
+                            boxShadow: '0 0 14px rgba(16,185,129,0.25)',
                           }}
                         >
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
                             <div style={{
                               width: '14px', height: '14px', borderRadius: '50%',
-                              border: `2px solid ${aiBackend === 'gemini' ? '#10b981' : 'rgba(255,255,255,0.3)'}`,
-                              background: aiBackend === 'gemini' ? '#10b981' : 'transparent',
+                              border: `2px solid #10b981`,
+                              background: '#10b981',
                               flexShrink: 0,
                             }} />
-                            <span style={{ fontWeight: 600, fontSize: '15px', color: 'hsl(var(--text-main))' }}>Gemini CLI</span>
+                            <span style={{ fontWeight: 600, fontSize: '15px', color: 'hsl(var(--text-main))' }}>Gemini Free Tier</span>
                           </div>
                           <span style={{ fontSize: '12px', color: 'hsl(var(--text-muted))', paddingLeft: '22px' }}>
-                            gemini-2.5-flash-lite · ACP bridge
-                          </span>
-                        </div>
-
-                        {/* OpenCode tile */}
-                        <div
-                          onClick={() => handleAiBackendChange('opencode')}
-                          style={{
-                            flex: 1,
-                            padding: '14px 16px',
-                            borderRadius: '12px',
-                            border: `2px solid ${aiBackend === 'opencode' ? '#a78bfa' : 'rgba(255,255,255,0.08)'}`,
-                            background: aiBackend === 'opencode' ? 'rgba(167,139,250,0.08)' : 'rgba(255,255,255,0.03)',
-                            cursor: 'pointer',
-                            transition: 'all 0.2s',
-                            boxShadow: aiBackend === 'opencode' ? '0 0 14px rgba(167,139,250,0.25)' : 'none',
-                          }}
-                        >
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                            <div style={{
-                              width: '14px', height: '14px', borderRadius: '50%',
-                              border: `2px solid ${aiBackend === 'opencode' ? '#a78bfa' : 'rgba(255,255,255,0.3)'}`,
-                              background: aiBackend === 'opencode' ? '#a78bfa' : 'transparent',
-                              flexShrink: 0,
-                            }} />
-                            <span style={{ fontWeight: 600, fontSize: '15px', color: 'hsl(var(--text-main))' }}>OpenCode</span>
-                          </div>
-                          <span style={{ fontSize: '12px', color: 'hsl(var(--text-muted))', paddingLeft: '22px' }}>
-                            Any provider · select model below
+                            Select the model below to power the Socratic Tutor
                           </span>
                         </div>
                       </div>
 
-                      {/* Model selector — shown only when OpenCode is selected */}
-                      {aiBackend === 'opencode' && (
-                        <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                          {modelsLoading ? (
-                            <div style={{ fontSize: '13px', color: 'hsl(var(--text-muted))' }}>
-                              Loading available models…
-                            </div>
-                          ) : (
-                            <>
-                              <input
-                                type="text"
-                                className="premium-input"
-                                placeholder="Filter models…"
-                                value={modelFilter}
-                                onChange={(e) => setModelFilter(e.target.value)}
-                                style={{ fontSize: '13px', padding: '8px 12px' }}
-                              />
-                              <select
-                                className="premium-input"
-                                value={opencodeModel}
-                                onChange={(e) => handleOpencodeModelChange(e.target.value)}
-                                style={{ fontSize: '13px', padding: '8px 12px', cursor: 'pointer' }}
-                              >
-                                {(opencodeModels.length === 0 ? [opencodeModel] : opencodeModels)
-                                  .filter(m => m.toLowerCase().includes(modelFilter.toLowerCase()))
-                                  .map(m => (
-                                    <option key={m} value={m}>{m}</option>
-                                  ))
-                                }
-                              </select>
-                              <span style={{ fontSize: '11px', color: 'hsl(var(--text-muted))' }}>
-                                Active: <strong style={{ color: '#a78bfa' }}>{opencodeModel}</strong>
-                              </span>
-                            </>
-                          )}
-                        </div>
-                      )}
+                      {/* Model selector */}
+                      <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        {modelsLoading ? (
+                          <div style={{ fontSize: '13px', color: 'hsl(var(--text-muted))' }}>
+                            Loading available models…
+                          </div>
+                        ) : (
+                          <>
+                            <input
+                              type="text"
+                              className="premium-input"
+                              placeholder="Filter models…"
+                              value={modelFilter}
+                              onChange={(e) => setModelFilter(e.target.value)}
+                              style={{ fontSize: '13px', padding: '8px 12px' }}
+                            />
+                            <select
+                              className="premium-input"
+                              value={opencodeModel}
+                              onChange={(e) => handleOpencodeModelChange(e.target.value)}
+                              style={{ fontSize: '13px', padding: '8px 12px', cursor: 'pointer' }}
+                            >
+                              {(opencodeModels.length === 0 ? [opencodeModel] : opencodeModels)
+                                .filter(m => m.toLowerCase().includes(modelFilter.toLowerCase()))
+                                .map(m => (
+                                  <option key={m} value={m}>{m}</option>
+                                ))
+                              }
+                            </select>
+                            <span style={{ fontSize: '11px', color: 'hsl(var(--text-muted))' }}>
+                              Active: <strong style={{ color: '#10b981' }}>{opencodeModel}</strong>
+                            </span>
+                          </>
+                        )}
+                      </div>
                     </div>
 
                     {!analyticsData ? (
