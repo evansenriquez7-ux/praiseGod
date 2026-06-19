@@ -931,6 +931,7 @@ Chat History:
 {formatted_history}
 
 Output ONLY raw JSON. No markdown blocks.
+CRITICAL: If you use ASCII art or any backslashes, you MUST properly escape them (use \\\\ for a single backslash, and \\n for newlines) so the response remains valid parseable JSON.
 """
     # When OpenCode is the active backend, inject age-appropriate language constraints
     if True:
@@ -951,7 +952,8 @@ Output ONLY raw JSON. No markdown blocks.
             "reply": parsed.get("reply", "Paki-check ang iyong solusyon sa basketball court! Susubukan nating muli."),
             "resolved": parsed.get("resolved", False)
         }
-    except Exception:
+    except Exception as e:
+        print(f"[socratic_tutor_subagent] JSON parsing failed: {e}\nRaw response: {response_clean}", flush=True)
         fallback_msg = "Praise God and the Lord Jesus Christ, I'm your tutor today. How can I help you?" if language == "en" else "Purihin ang Diyos at ang Panginoong Hesukristo, ako ang iyong tutor ngayon. Paano kita matutulungan?"
         return {
             "reply": fallback_msg,
