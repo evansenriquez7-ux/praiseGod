@@ -832,7 +832,10 @@ def socratic_tutor_subagent(
     using structured dialogue and their core interest themes: {student_interest}.
     """
     if len(chat_history) == 0 or len(chat_history) == 1:
-        fallback_msg = "Praise God and the Lord Jesus Christ, I'm your tutor today. Let's analyze your answer together!" if language.lower() != "tl" else "Purihin ang Diyos at ang Panginoong Hesukristo, ako ang iyong tutor ngayon. Suriin natin ang iyong sagot nang sabay!"
+        if is_intro:
+            fallback_msg = "Praise God and the Lord Jesus Christ, I'm your tutor today. How can I help you with this lesson?" if language.lower() != "tl" else "Purihin ang Diyos at ang Panginoong Hesukristo, ako ang iyong tutor ngayon. Paano kita matutulungan sa araling ito?"
+        else:
+            fallback_msg = "Praise God and the Lord Jesus Christ, I'm your tutor today. Let's analyze your answer together!" if language.lower() != "tl" else "Purihin ang Diyos at ang Panginoong Hesukristo, ako ang iyong tutor ngayon. Suriin natin ang iyong sagot nang sabay!"
         return {
             "reply": fallback_msg,
             "resolved": False
@@ -907,7 +910,7 @@ Your Objectives:
 2. Guide the student to discover the answer themselves using the Socratic method — ask questions that help them reason step by step.
 3. When the student asks a conceptual "what is" or "how to" question, explain it clearly using warm analogies related to {student_interest}.
 4. Keep responses warm, supportive, and under 3-4 sentences (excluding ASCII art).
-5. Use ASCII art to visually engage the student when beneficial and appropriate for their grade level.
+5. Use ASCII art and emojis to visually engage the student when beneficial and appropriate for their grade level.
 6. Respond ONLY in {lang_name}.
 7. Output a JSON object:
    - "reply": your Socratic reply text
