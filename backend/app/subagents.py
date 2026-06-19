@@ -38,22 +38,23 @@ from typing import Optional
 from google import genai
 from google.genai import types
 
+# Initialize GenAI client
+if os.environ.get("GOOGLE_API_KEY"):
+    genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+
 class GenAIBridge:
-    def __init__(self, model="gemma-4-31b-it"):
-        self.model = model
-        api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
-        self.client = genai.Client(api_key=api_key)
+    def __init__(self, model="gemini-1.5-flash"):
+        self.model = genai.GenerativeModel(model)
 
     def prompt(self, text, temperature=None):
-        config = None
+        generation_config = {}
         if temperature is not None:
-            config = types.GenerateContentConfig(temperature=temperature)
+            generation_config["temperature"] = temperature
         
         try:
-            response = self.client.models.generate_content(
-                model=self.model,
-                contents=text,
-                config=config
+            response = self.model.generate_content(
+                text,
+                generation_config=generation_config
             )
             return response.text
         except Exception as e:
@@ -71,7 +72,7 @@ def _get_bridge_pool() -> "GenAIBridge":
         with _bridge_pool_lock:
             if _bridge_pool is None:
                 # Direct SDK doesn't strictly need a pool, but maintaining interface compatibility
-                _bridge_pool = GenAIBridge(model=_active_gemini_model)
+                _bridge_pool = GenAIBridge(model=_opencode_model)
     return _bridge_pool
 
 def call_gemini_cli(prompt: str, temperature: Optional[float] = None) -> str:
@@ -171,28 +172,48 @@ def call_opencode_cli(prompt: str, model: str, timeout: int = 120) -> str:
         if message_order:
             return message_texts[message_order[-1]]
         return f"Error: OpenCode returned no text (stderr: {result.stderr[:300]})"
+
+    # First attempt with the exact model name from the dropdown
+    response = _run_once(model)
+
+    # If we get a "Model not found" error, retry once after a brief delay
+    # (handles transient availability issues)
+    if "Model not found" in response:
+        print(f"[OpenCode CLI] Model not found on first try: {model!r}. Retrying in 2s...", flush=True)
+        time.sleep(2)
+        response = _run_once(model)
+        if "Model not found" in response:
+            print(f"[OpenCode CLI] Model still not found after retry: {model!r}", flush=True)
+
+    return response
+
 # ── In-memory AI routing config ───────────────────────────────────────────────
 
-_active_gemini_model: str = "gemma-4-31b-it"
+_ai_backend: str = "gemini"
+_opencode_model: str = "opencode/deepseek-v4-flash-free"
 
 def set_ai_config(model: str) -> None:
     """Called by main.py at startup and on every POST /api/parent/config."""
-    global _active_gemini_model
-    _active_gemini_model = model
+    global _ai_backend, _opencode_model
+    _ai_backend = "gemini"
+    _opencode_model = model
     print(f"[subagents] Gemini model set to: {model!r}", flush=True)
     
-    # Also immediately update the bridge pool model if initialized
     global _bridge_pool
     if _bridge_pool is not None:
         _bridge_pool.model = model
 
-def get_ai_config() -> str:
-    return _active_gemini_model
+def get_ai_config() -> tuple:
+    return _ai_backend, _opencode_model
 
 def call_ai(prompt: str, temperature: Optional[float] = None) -> str:
     """
-    Thin router: directs the prompt to the Gemini GenAI bridge.
+    Thin router: directs the prompt to either the Gemini ACP bridge pool
+    or an OpenCode subprocess based on the parent-configured backend.
     """
+    if _ai_backend == "opencode":
+        print(f"[call_ai] Using OpenCode model: {_opencode_model}", flush=True)
+        return call_opencode_cli(prompt, _opencode_model)
     return call_gemini_cli(prompt, temperature)
 
 # ── Visual reference detection ─────────────────────────────────────────────────
