@@ -38,26 +38,26 @@ from typing import Optional
 from google import genai
 from google.genai import types
 
-# Initialize GenAI client
-try:
-    _genai_client = genai.Client(api_key=os.environ.get("GOOGLE_API_KEY")) if os.environ.get("GOOGLE_API_KEY") else genai.Client()
-except Exception:
-    _genai_client = None
+_genai_client = None
 
 class GenAIBridge:
     def __init__(self, model="gemini-1.5-flash"):
         self.model_name = model
-        self.client = _genai_client
 
     def prompt(self, text, temperature=None):
-        if not self.client:
-            return "ERROR: GenAI SDK client not initialized"
+        global _genai_client
+        if _genai_client is None:
+            try:
+                _genai_client = genai.Client(api_key=os.environ.get("GOOGLE_API_KEY")) if os.environ.get("GOOGLE_API_KEY") else genai.Client()
+            except Exception:
+                return "ERROR: GenAI SDK client failed to initialize"
+        
         config_kwargs = {}
         if temperature is not None:
             config_kwargs["temperature"] = temperature
         
         try:
-            response = self.client.models.generate_content(
+            response = _genai_client.models.generate_content(
                 model=self.model_name,
                 contents=text,
                 config=types.GenerateContentConfig(**config_kwargs) if config_kwargs else None
