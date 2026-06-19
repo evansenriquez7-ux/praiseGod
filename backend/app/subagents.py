@@ -39,7 +39,7 @@ from google import genai
 from google.genai import types
 
 class GenAIBridge:
-    def __init__(self, model="gemini-1.5-flash"):
+    def __init__(self, model="gemma-4-31b-it"):
         self.model = model
         api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
         self.client = genai.Client(api_key=api_key)
