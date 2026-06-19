@@ -1431,7 +1431,7 @@ function App() {
                                         body: JSON.stringify({
                                           student_id:     selectedStudent.id,
                                           skill_id:       selectedSkill,
-                                          question_text:  nodeData?.intro_content?.mini_lessons?.[introMiniLessonIndex]?.content?.[introSlideIndex]?.text || '',
+                                          question_text:  introContent?.mini_lessons?.[introMiniLessonIndex]?.slides?.[introSlideIndex]?.content || '',
                                           student_answer: '',
                                           is_intro:       true,
                                           message: '',
