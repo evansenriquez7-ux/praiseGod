@@ -39,22 +39,28 @@ from google import genai
 from google.genai import types
 
 # Initialize GenAI client
-if os.environ.get("GOOGLE_API_KEY"):
-    genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+try:
+    _genai_client = genai.Client(api_key=os.environ.get("GOOGLE_API_KEY")) if os.environ.get("GOOGLE_API_KEY") else genai.Client()
+except Exception:
+    _genai_client = None
 
 class GenAIBridge:
     def __init__(self, model="gemini-1.5-flash"):
-        self.model = genai.GenerativeModel(model)
+        self.model_name = model
+        self.client = _genai_client
 
     def prompt(self, text, temperature=None):
-        generation_config = {}
+        if not self.client:
+            return "ERROR: GenAI SDK client not initialized"
+        config_kwargs = {}
         if temperature is not None:
-            generation_config["temperature"] = temperature
+            config_kwargs["temperature"] = temperature
         
         try:
-            response = self.model.generate_content(
-                text,
-                generation_config=generation_config
+            response = self.client.models.generate_content(
+                model=self.model_name,
+                contents=text,
+                config=types.GenerateContentConfig(**config_kwargs) if config_kwargs else None
             )
             return response.text
         except Exception as e:
