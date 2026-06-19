@@ -23,11 +23,16 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
 
-      - name: Build Docker image via Cloud Build
+      - name: Configure Docker authentication
+        run: gcloud auth configure-docker asia-southeast1-docker.pkg.dev --quiet
+
+      - name: Build Docker image locally on GitHub Runner
         run: |
-          gcloud builds submit \
-            --tag asia-southeast1-docker.pkg.dev/praisegod-edu/cloud-run-source-deploy/ccmed-api \
-            --project praisegod-edu
+          docker build -t asia-southeast1-docker.pkg.dev/praisegod-edu/cloud-run-source-deploy/ccmed-api:latest .
+
+      - name: Push Docker image to Artifact Registry
+        run: |
+          docker push asia-southeast1-docker.pkg.dev/praisegod-edu/cloud-run-source-deploy/ccmed-api:latest
 
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
