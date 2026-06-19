@@ -1724,7 +1724,10 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
             
             from backend.app.practice_gen.pipeline import run as _pg_run
             try:
-                skeleton = _pg_run(node_id=node_id, seed=seed_val)
+                # Parse grade level from node ID or default to student's grade
+                grade_match = re.search(r"mat_g(\d+)", node_id)
+                grade_val = int(grade_match.group(1)) if grade_match else (student.grade if student else 1)
+                skeleton = _pg_run(node_id=node_id, student_grade=grade_val, seed=seed_val)
             except Exception as e:
                 raise HTTPException(status_code=400, detail=f"MATATAG question session expired or invalid: {e}")
     elif req.skeleton_id.startswith("ai_"):
@@ -1875,11 +1878,14 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
             
     # Identify Trap engineered misconception
     trap_selected = None
-    opt_data = skeleton["options"].get(req.selected_answer.upper())
-    if opt_data:
-        trap_selected = opt_data.get("trap_name")
-        if trap_selected == "distractor":
-            trap_selected = None
+    if isinstance(skeleton.get("options"), dict):
+        opt_data = skeleton["options"].get(req.selected_answer.upper())
+        if isinstance(opt_data, dict):
+            trap_selected = opt_data.get("trap_name")
+            if trap_selected == "distractor":
+                trap_selected = None
+        elif isinstance(opt_data, tuple) and len(opt_data) > 1:
+            trap_selected = opt_data[1]
             
     # Save the Attempt log in PostgreSQL
     new_attempt = models.Attempt(
@@ -2906,7 +2912,10 @@ def matatag_lab_submit(
             node_id = skeleton_id.rsplit('_', 1)[0] if match else skeleton_id
             
             from backend.app.practice_gen.pipeline import run as _pg_run
-            skeleton = _pg_run(node_id=node_id, seed=seed_val)
+            # Parse grade level from node ID
+            grade_match = re.search(r"mat_g(\d+)", node_id)
+            grade_val = int(grade_match.group(1)) if grade_match else 1
+            skeleton = _pg_run(node_id=node_id, student_grade=grade_val, seed=seed_val)
         except Exception:
             raise HTTPException(status_code=404, detail="Question session expired. Please generate a new problem.")
 
