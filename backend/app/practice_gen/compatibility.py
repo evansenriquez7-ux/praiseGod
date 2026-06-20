@@ -502,9 +502,8 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     },
 
     "comparing_ordering": {
-        # sort_order formatter handles ordering task
         "sort_order": {"task_type": ["order_sequence"]},
-        # mcq/cloze can do both
+        "ordering": {"task_type": ["order_sequence"]},
     },
 
     "patterns": {

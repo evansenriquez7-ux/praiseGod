@@ -1586,9 +1586,7 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
   const numGridLines = Math.floor(max_y / scale) + 1;
   const gridLines = Array.from({ length: numGridLines }, (_, i) => i * scale);
 
-  // For pictographs, use emoji icons
-  const pictographIcon = '🍎';  // Can be customized based on category
-  
+
   // For read mode with specific category, find the index
   const askIdx = ask_category ? actualLabels.indexOf(ask_category) : -1;
   const isSecondSeriesActive = !!(targetValues2 && ask_series && series_labels && ask_series === series_labels[1]);
@@ -1739,15 +1737,34 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
                 onClick={(e) => !is_read_mode && handleBarDrag(idx, e, false)}
               >
                 {/* Actual bar - no value label on top */}
-                <div style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  width: '100%',
-                  height: `${(barValues[idx] / max_y) * 100}%`,
-                  background: 'linear-gradient(180deg, hsl(var(--primary)), hsl(var(--primary) / 0.7))',
-                  borderRadius: '4px 4px 0 0',
-                  transition: 'height 0.1s ease'
-                }} />
+                {is_pictograph ? (
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column-reverse',
+                    alignItems: 'center',
+                    justifyContent: 'flex-start',
+                    gap: '2px',
+                    height: `${(barValues[idx] / max_y) * 100}%`,
+                    overflow: 'hidden'
+                  }}>
+                    {Array.from({ length: Math.round(barValues[idx] / scale) }).map((_, i) => (
+                      <span key={i} style={{ fontSize: '24px', lineHeight: '1' }}>{params.symbol || '🍎'}</span>
+                    ))}
+                  </div>
+                ) : (
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    width: '100%',
+                    height: `${(barValues[idx] / max_y) * 100}%`,
+                    background: 'linear-gradient(180deg, hsl(var(--primary)), hsl(var(--primary) / 0.7))',
+                    borderRadius: '4px 4px 0 0',
+                    transition: 'height 0.1s ease'
+                  }} />
+                )}
               </div>
 
               {/* Second bar (for double bar charts) */}
