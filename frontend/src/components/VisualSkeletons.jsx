@@ -3224,16 +3224,23 @@ export function ShapeBoardInteractive({ params }) {
         );
         
         return (
-          <div key={i} style={{
-            width: '50px', height: '50px',
-            background: 'hsl(var(--primary))',
-            borderRadius: borderRadius,
-            transform: `rotate(${s.orientation_deg || 0}deg)`,
-            clipPath: s.type.includes('triangle') ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 'none',
-            filter: isHighlighted ? 'drop-shadow(0 0 12px #facc15) drop-shadow(0 0 4px #eab308)' : 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))',
-            border: isHighlighted && !s.type.includes('triangle') ? '3px solid #facc15' : 'none',
-            transition: 'all 0.3s ease'
-          }} />
+          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+            <div style={{
+              width: '50px', height: '50px',
+              background: 'hsl(var(--primary))',
+              borderRadius: borderRadius,
+              transform: `rotate(${s.orientation_deg || 0}deg)`,
+              clipPath: s.type.includes('triangle') ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 'none',
+              filter: isHighlighted ? 'drop-shadow(0 0 12px #facc15) drop-shadow(0 0 4px #eab308)' : 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))',
+              border: isHighlighted && !s.type.includes('triangle') ? '3px solid #facc15' : 'none',
+              transition: 'all 0.3s ease'
+            }} />
+            {params.question_type === 'compare' && i < 2 && (
+              <span style={{ fontWeight: 700, fontSize: '18px', color: 'hsl(var(--text))' }}>
+                {i === 0 ? 'A' : 'B'}
+              </span>
+            )}
+          </div>
         );
       })}
     </div>

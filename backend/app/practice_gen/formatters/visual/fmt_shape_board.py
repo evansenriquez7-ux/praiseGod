@@ -122,15 +122,22 @@ def _correct_answer_and_traps(shapes: List[dict], question_type: str, rng: rando
     if question_type == "sort_by":
         # Sort shapes by side count — answer is the sorted type list
         sorted_shapes = sorted(shapes, key=lambda s: s["sides"])
-        correct = [s["type"] for s in sorted_shapes]
+        correct_list = [s["type"] for s in sorted_shapes]
+        correct = ", ".join(correct_list)
         # Traps: reversed, or adjacent swap
-        reversed_order = list(reversed(correct))
-        swapped = correct.copy()
+        reversed_order = list(reversed(correct_list))
+        swapped = correct_list.copy()
         if len(swapped) >= 2:
             swapped[0], swapped[1] = swapped[1], swapped[0]
-        traps = [str(reversed_order), str(swapped)]
+        traps = [", ".join(reversed_order), ", ".join(swapped)]
+        # Add a random shuffle trap if there are more than 2 shapes
+        if len(correct_list) > 2:
+            shuffled = correct_list.copy()
+            rng.shuffle(shuffled)
+            traps.append(", ".join(shuffled))
+            
         detail = "sort the shapes by number of sides (fewest first)"
-        return correct, traps, detail, None
+        return correct, list(dict.fromkeys(traps))[:3], detail, None
 
     # compare
     if len(shapes) >= 2:
