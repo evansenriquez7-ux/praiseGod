@@ -145,6 +145,16 @@ def generate_number_by_window(
             score = score_candidate(val, max_val, num_type, decimal_places=decimal_places)
             scored_candidates.append((val, score))
             
+    # Strict Scalar Mapping
+    if scalar == 1.0:
+        if num_type == "fraction":
+            return max(unique_candidates, key=lambda x: x[0]/x[1])
+        return max(unique_candidates)
+    elif scalar == 0.0:
+        if num_type == "fraction":
+            return min(unique_candidates, key=lambda x: x[0]/x[1])
+        return min(unique_candidates)
+            
     # Compute window bounds
     w = 1.0 / d
     t_lo = scalar * (1.0 - w)
@@ -203,6 +213,16 @@ def generate_pair_by_window(
             s_b = score_candidate(b, max_val, num_type, decimal_places=decimal_places)
             score = round(math.sqrt((s_a**2 + s_b**2) / 2.0), 4)
             scored_pairs.append(((a, b), score))
+            
+    # Strict Scalar Mapping
+    if scalar == 1.0:
+        if num_type == "fraction":
+            return max(candidate_pairs, key=lambda p: (p[0][0]/p[0][1], p[1][0]/p[1][1]))
+        return max(candidate_pairs, key=lambda p: (p[0], p[1]))
+    elif scalar == 0.0:
+        if num_type == "fraction":
+            return min(candidate_pairs, key=lambda p: (p[0][0]/p[0][1], p[1][0]/p[1][1]))
+        return min(candidate_pairs, key=lambda p: (p[0], p[1]))
             
     # Compute window bounds
     w = 1.0 / d

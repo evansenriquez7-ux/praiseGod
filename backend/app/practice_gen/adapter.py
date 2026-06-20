@@ -453,10 +453,7 @@ def _fix_question_text(ctx: QuestionContext) -> None:
             fixed = f"What digit is in the {pos_name} place of {number}?"
 
     elif concept == "time_reading":
-        hour = v.get("hour", "?")
-        minute = v.get("minute", 0)
-        time_str = v.get("time_str", f"{hour}:{minute:02d}" if isinstance(minute, int) else "?:??")
-        fixed = f"What time does the clock show? ({time_str})"
+        fixed = "What time does the clock show?"
 
     elif concept == "fractions":
         numer = v.get("numerator", "?")
@@ -780,7 +777,13 @@ def to_legacy_dict(problem: FormattedProblem) -> Dict[str, Any]:
             if problem.answer_collection == "mcq":
                 correct_key = "A"
             else:
-                correct_key = str(problem.correct_answer)
+                if isinstance(problem.correct_answer, dict) and "correct_value" in problem.correct_answer:
+                    # For error_detect, correct_key might just need to be the actual value or a JSON string,
+                    # but definitely not a Python dict string. Let's use the correct_value or stringify as json.
+                    import json
+                    correct_key = json.dumps(problem.correct_answer)
+                else:
+                    correct_key = str(problem.correct_answer)
 
     return {
         "skeleton_id": problem.problem_id,

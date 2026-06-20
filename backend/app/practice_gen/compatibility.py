@@ -208,15 +208,11 @@ COMPATIBILITY: Dict[str, List[str]] = {
     ],
 
     "time_reading": [
-        "mcq",
-        "fill_in_blank",
         "clock_read",
         "clock_set",
     ],
 
     "calendar": [
-        "mcq",
-        "fill_in_blank",
         "calendar_read",
     ],
 
@@ -244,15 +240,11 @@ COMPATIBILITY: Dict[str, List[str]] = {
     # ── Data & Probability ────────────────────────────────────────────────────
 
     "pictographs": [
-        "mcq",
-        "cloze",
         "bar_chart_read",
         "pictograph_read",
     ],
 
     "bar_graphs": [
-        "mcq",
-        "cloze",
         "bar_chart_read",
         "bar_chart_set",
     ],

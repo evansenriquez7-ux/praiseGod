@@ -2180,7 +2180,17 @@ export function GridAreaInteractive({ params, onAnswer, disabled }) {
   const gridWidth = cols || (Array.isArray(grid_size) ? grid_size[0] : 10);
   const gridHeight = rows || (Array.isArray(grid_size) ? grid_size[1] : 10);
   
-  const [shaded, setShaded] = useState(new Set());
+  const [shaded, setShaded] = useState(() => {
+    const initial = new Set();
+    if (params?.shaded) {
+      for (let r = 0; r < gridHeight; r++) {
+        for (let c = 0; c < gridWidth; c++) {
+          initial.add(`${r}-${c}`);
+        }
+      }
+    }
+    return initial;
+  });
 
   useEffect(() => {
     if (onAnswer) {
@@ -3203,11 +3213,15 @@ export function ShapeBoardInteractive({ params }) {
   const shapes = params.shapes || [];
   
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center', padding: '20px', width: '100%' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '25px', justifyContent: 'center', padding: '20px', width: '100%' }}>
       {shapes.map((s, i) => {
         let borderRadius = '0';
         if (s.type.includes('circle')) borderRadius = '50%';
         else if (s.type.includes('oval')) borderRadius = '50% / 30%';
+        
+        const isHighlighted = params.highlighted_shape && (
+          s.id ? s.id === params.highlighted_shape.id : JSON.stringify(s) === JSON.stringify(params.highlighted_shape)
+        );
         
         return (
           <div key={i} style={{
@@ -3215,7 +3229,10 @@ export function ShapeBoardInteractive({ params }) {
             background: 'hsl(var(--primary))',
             borderRadius: borderRadius,
             transform: `rotate(${s.orientation_deg || 0}deg)`,
-            clipPath: s.type.includes('triangle') ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 'none'
+            clipPath: s.type.includes('triangle') ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 'none',
+            filter: isHighlighted ? 'drop-shadow(0 0 12px #facc15) drop-shadow(0 0 4px #eab308)' : 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))',
+            border: isHighlighted && !s.type.includes('triangle') ? '3px solid #facc15' : 'none',
+            transition: 'all 0.3s ease'
           }} />
         );
       })}

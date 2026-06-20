@@ -381,6 +381,7 @@ function App() {
   const lastActiveTime = useRef(Date.now());
   const clickTracker = useRef([]);
   const chatEndRef = useRef(null);
+  const socraticAbortControllerRef = useRef(null);
 
   // Auto-scroll chat container to bottom
   useEffect(() => {
@@ -391,6 +392,9 @@ function App() {
 
   // Reset chat on slide or mini-lesson change
   useEffect(() => {
+    if (socraticAbortControllerRef.current) {
+      socraticAbortControllerRef.current.abort();
+    }
     setSocraticActive(false);
     setChatMessages([]);
   }, [introSlideIndex, introMiniLessonIndex]);
@@ -626,6 +630,9 @@ function App() {
     setLoadingQuestion(true);
     setAnswerResult(null);
     setSelectedOptionKey(null);
+    if (socraticAbortControllerRef.current) {
+      socraticAbortControllerRef.current.abort();
+    }
     setChatMessages([]);
     setSocraticActive(false);
     // Reset visual practice state
@@ -949,9 +956,15 @@ function App() {
     setChatInput('');
     setSendingChat(true);
 
+    if (socraticAbortControllerRef.current) {
+      socraticAbortControllerRef.current.abort();
+    }
+    socraticAbortControllerRef.current = new AbortController();
+
     try {
       const res = await fetch(`${API_BASE}/socratic/chat`, {
         method: 'POST',
+        signal: socraticAbortControllerRef.current.signal,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           student_id:     selectedStudent.id,
@@ -992,9 +1005,14 @@ function App() {
         }, 5000);
       }
     } catch (e) {
-      console.error("Socratic chatbot exchange failed", e);
+      if (e.name !== 'AbortError') {
+        console.error("Socratic chatbot exchange failed", e);
+      }
     } finally {
-      setSendingChat(false);
+      // Only clear loading state if this wasn't aborted
+      if (!socraticAbortControllerRef.current?.signal.aborted) {
+        setSendingChat(false);
+      }
     }
   };
 
@@ -1428,8 +1446,13 @@ function App() {
                                     setSocraticActive(prev => !prev);
                                     if (chatMessages.length === 0 && !sendingChat) {
                                       setSendingChat(true);
+                                      if (socraticAbortControllerRef.current) {
+                                        socraticAbortControllerRef.current.abort();
+                                      }
+                                      socraticAbortControllerRef.current = new AbortController();
                                       fetch(`${API_BASE}/socratic/chat`, {
                                         method: 'POST',
+                                        signal: socraticAbortControllerRef.current.signal,
                                         headers: { 'Content-Type': 'application/json' },
                                         body: JSON.stringify({
                                           student_id:     selectedStudent.id,
@@ -1443,10 +1466,18 @@ function App() {
                                       })
                                       .then(res => res.json())
                                       .then(chatData => {
-                                        setChatMessages([{ role: 'assistant', content: chatData.reply }]);
+                                        if (!socraticAbortControllerRef.current?.signal.aborted) {
+                                          setChatMessages([{ role: 'assistant', content: chatData.reply }]);
+                                        }
                                       })
-                                      .catch(e => console.error(e))
-                                      .finally(() => setSendingChat(false));
+                                      .catch(e => {
+                                        if (e.name !== 'AbortError') console.error(e);
+                                      })
+                                      .finally(() => {
+                                        if (!socraticAbortControllerRef.current?.signal.aborted) {
+                                          setSendingChat(false);
+                                        }
+                                      });
                                     }
                                   }}
                                   style={{
@@ -3501,8 +3532,14 @@ function App() {
                           setSocraticActive(prev => !prev);
                           if (chatMessages.length === 0 && !sendingChat) {
                             setSendingChat(true);
+                            if (socraticAbortControllerRef.current) {
+                              socraticAbortControllerRef.current.abort();
+                            }
+                            socraticAbortControllerRef.current = new AbortController();
+
                             fetch(`${API_BASE}/socratic/chat`, {
                               method: 'POST',
+                              signal: socraticAbortControllerRef.current.signal,
                               headers: { 'Content-Type': 'application/json' },
                               body: JSON.stringify({
                                 student_id:     selectedStudent.id,
@@ -3516,10 +3553,18 @@ function App() {
                             })
                             .then(res => res.json())
                             .then(chatData => {
-                              setChatMessages([{ role: 'assistant', content: chatData.reply }]);
+                              if (!socraticAbortControllerRef.current?.signal.aborted) {
+                                setChatMessages([{ role: 'assistant', content: chatData.reply }]);
+                              }
                             })
-                            .catch(e => console.error(e))
-                            .finally(() => setSendingChat(false));
+                            .catch(e => {
+                              if (e.name !== 'AbortError') console.error(e);
+                            })
+                            .finally(() => {
+                              if (!socraticAbortControllerRef.current?.signal.aborted) {
+                                setSendingChat(false);
+                              }
+                            });
                           }
                         }}
                         style={{ padding: '6px 12px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', borderRadius: '10px', background: socraticActive ? 'rgba(139,92,246,0.25)' : 'rgba(139,92,246,0.1)', border: `1px solid ${socraticActive ? 'rgba(139,92,246,0.6)' : 'rgba(139,92,246,0.3)'}` }}
@@ -3599,8 +3644,14 @@ function App() {
                           setSocraticActive(prev => !prev);
                           if (chatMessages.length === 0 && !sendingChat) {
                             setSendingChat(true);
+                            if (socraticAbortControllerRef.current) {
+                              socraticAbortControllerRef.current.abort();
+                            }
+                            socraticAbortControllerRef.current = new AbortController();
+
                             fetch(`${API_BASE}/socratic/chat`, {
                               method: 'POST',
+                              signal: socraticAbortControllerRef.current.signal,
                               headers: { 'Content-Type': 'application/json' },
                               body: JSON.stringify({
                                 student_id:     selectedStudent.id,
@@ -3614,10 +3665,18 @@ function App() {
                             })
                             .then(res => res.json())
                             .then(chatData => {
-                              setChatMessages([{ role: 'assistant', content: chatData.reply }]);
+                              if (!socraticAbortControllerRef.current?.signal.aborted) {
+                                setChatMessages([{ role: 'assistant', content: chatData.reply }]);
+                              }
                             })
-                            .catch(e => console.error(e))
-                            .finally(() => setSendingChat(false));
+                            .catch(e => {
+                              if (e.name !== 'AbortError') console.error(e);
+                            })
+                            .finally(() => {
+                              if (!socraticAbortControllerRef.current?.signal.aborted) {
+                                setSendingChat(false);
+                              }
+                            });
                           }
                         }}
                         style={{ padding: '6px 12px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', borderRadius: '10px' }}
@@ -5910,13 +5969,31 @@ difficulty: {Math.round(matatagQuestion.difficulty * 100)}%
               </button>
               <button 
                 className="btn-primary" 
-                onClick={() => {
+                onClick={async () => {
                   setIsFlagging(true);
-                  setTimeout(() => {
+                  try {
+                    await fetch(`${API_BASE}/practice/flag`, {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        student_id: selectedStudent?.id || 0,
+                        skill_id: activeQuestion?.skill_id || '',
+                        skeleton_id: activeQuestion?.skeleton_id || '',
+                        stem: activeQuestion?.stem || '',
+                        correct_answer: '',
+                        selected_answer: selectedOptionKey || (typeof practiceVisualAnswer === 'object' ? JSON.stringify(practiceVisualAnswer) : String(practiceVisualAnswer || '')) || '',
+                        reason: flagReason,
+                        comment: flagComment
+                      })
+                    });
+                  } catch (e) {
+                    console.error("Failed to submit flag", e);
+                  } finally {
                     setIsFlagging(false);
                     setShowFlagModal(false);
-                    setFlagReason('');
-                  }, 1000);
+                    setFlagReason('incorrect');
+                    setFlagComment('');
+                  }
                 }}
                 disabled={isFlagging}
                 style={{ flex: 2, background: '#ef4444', borderColor: '#ef4444' }}

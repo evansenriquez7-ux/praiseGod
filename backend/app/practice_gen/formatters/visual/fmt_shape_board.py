@@ -69,9 +69,10 @@ def _build_shapes(grade: int, diff_level: int, rng: random.Random, count: int = 
 
     chosen = rng.choices(eligible, k=count)
     shapes = []
-    for s in chosen:
+    for i, s in enumerate(chosen):
         orientation = rng.choice(_ORIENTATIONS) if diff_level >= 2 else 0
         shapes.append({
+            "id": f"shape_{i}",
             "type": s["type"],
             "sides": s["sides"],
             "corners": s["corners"],
