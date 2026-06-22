@@ -603,6 +603,7 @@ function App() {
   const fetchIntroForStudent = async (nodeId) => {
     setLoadingQuestion(true);
     setPracticeViewType('intro_viewer');
+    setSelectedSubdomain(nodeId);
     setIntroContent(null);
     setIntroMiniLessonIndex(0);
     setIntroSlideIndex(0);
@@ -2561,29 +2562,56 @@ function App() {
                                   Previous
                                 </button>
   
-                                {/* Next */}
-                                <button
-                                  onClick={() => {
-                                    if (isWorkedExample && introStepIndex < totalSteps - 1) {
-                                      setIntroStepIndex(introStepIndex + 1);
-                                    } else if (introSlideIndex < totalSlides - 1) {
-                                      setIntroSlideIndex(introSlideIndex + 1);
-                                      setIntroStepIndex(0);
-                                    } else if (introMiniLessonIndex < totalMiniLessons - 1) {
-                                      setIntroMiniLessonIndex(introMiniLessonIndex + 1);
-                                      setIntroSlideIndex(0);
-                                      setIntroStepIndex(0);
-                                    }
-                                  }}
-                                  disabled={introMiniLessonIndex === totalMiniLessons - 1 && introSlideIndex === totalSlides - 1 && (!isWorkedExample || introStepIndex >= totalSteps - 1)}
-                                  style={{
-                                    padding: '8px 16px', borderRadius: '8px', fontSize: '13px', fontWeight: 600,
-                                    cursor: 'pointer', border: 'none',
-                                    background: '#06b6d4', color: '#fff',
-                                  }}
-                                >
-                                  {isWorkedExample && introStepIndex < totalSteps - 1 ? 'Next Step' : 'Next'}
-                                </button>
+                                {/* Next or Start Practice */}
+                                {(() => {
+                                  const isLastSlide = introMiniLessonIndex === totalMiniLessons - 1 && introSlideIndex === totalSlides - 1 && (!isWorkedExample || introStepIndex >= totalSteps - 1);
+                                  if (isLastSlide) {
+                                    return (
+                                      <button
+                                        onClick={() => {
+                                          const nodeId = selectedSubdomain || introContent?.node_key;
+                                          if (nodeId) {
+                                            setSelectedSubject('Matatag');
+                                            setSelectedSubdomain(nodeId);
+                                            setPracticeViewType('workspace');
+                                            setQuestionQueue([]);
+                                            fetchNextQuestion(selectedStudent.id, 'Matatag', nodeId, true);
+                                          }
+                                        }}
+                                        style={{
+                                          padding: '8px 16px', borderRadius: '8px', fontSize: '13px', fontWeight: 600,
+                                          cursor: 'pointer', border: 'none',
+                                          background: '#10b981', color: '#fff',
+                                        }}
+                                      >
+                                        ✏️ Move to Practice Problems
+                                      </button>
+                                    );
+                                  }
+                                  return (
+                                    <button
+                                      onClick={() => {
+                                        if (isWorkedExample && introStepIndex < totalSteps - 1) {
+                                          setIntroStepIndex(introStepIndex + 1);
+                                        } else if (introSlideIndex < totalSlides - 1) {
+                                          setIntroSlideIndex(introSlideIndex + 1);
+                                          setIntroStepIndex(0);
+                                        } else if (introMiniLessonIndex < totalMiniLessons - 1) {
+                                          setIntroMiniLessonIndex(introMiniLessonIndex + 1);
+                                          setIntroSlideIndex(0);
+                                          setIntroStepIndex(0);
+                                        }
+                                      }}
+                                      style={{
+                                        padding: '8px 16px', borderRadius: '8px', fontSize: '13px', fontWeight: 600,
+                                        cursor: 'pointer', border: 'none',
+                                        background: '#06b6d4', color: '#fff',
+                                      }}
+                                    >
+                                      {isWorkedExample && introStepIndex < totalSteps - 1 ? 'Next Step' : 'Next'}
+                                    </button>
+                                  );
+                                })()}
                               </div>
                             </div>
   
