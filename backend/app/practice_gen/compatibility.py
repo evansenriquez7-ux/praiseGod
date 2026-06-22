@@ -229,7 +229,6 @@ COMPATIBILITY: Dict[str, List[str]] = {
 
     "geometric_lines": [
         "mcq",
-        "categorize",
     ],
 
     "symmetry_slides": [
@@ -251,7 +250,6 @@ COMPATIBILITY: Dict[str, List[str]] = {
 
     "probability_language": [
         "mcq",
-        "categorize",
     ],
 }
 
@@ -399,12 +397,12 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "length_measurement": {
-        "task_type": ["measure", "compare", "convert"],
+        "task_type": ["compare", "convert"],
         "unit_system": ["metric", "customary"],
     },
 
     "mass_capacity": {
-        "task_type": ["measure", "compare", "convert"],
+        "task_type": ["compare", "convert"],
         "measurement_type": ["mass", "capacity"],
         "unit_system": ["metric", "customary"],
     },

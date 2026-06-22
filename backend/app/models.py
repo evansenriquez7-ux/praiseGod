@@ -9,8 +9,8 @@ class ParentAccount(Base):
     id = Column(Integer, primary_key=True, index=True)
     password_hash = Column(String, nullable=False)
     password_auth_required = Column(Boolean, default=False)
-    ai_backend = Column(String, default="gemini")          # "gemini" | "opencode"
-    opencode_model = Column(String, default="opencode/deepseek-v4-flash-free")
+    ai_backend = Column(String, default="gemini")          # "gemini" only
+    opencode_model = Column(String, default="gemini-2.5-flash")
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
 
 class StudentProfile(Base):

@@ -78,136 +78,29 @@ def _get_bridge_pool() -> "GenAIBridge":
         with _bridge_pool_lock:
             if _bridge_pool is None:
                 # Direct SDK doesn't strictly need a pool, but maintaining interface compatibility
-                _bridge_pool = GenAIBridge(model=_opencode_model)
+                _bridge_pool = GenAIBridge(model=_gemini_model)
     return _bridge_pool
 
-def call_gemini_cli(prompt: str, temperature: Optional[float] = None) -> str:
+def call_ai(prompt: str, temperature: Optional[float] = None) -> str:
     """Routes the prompt through the GenAI SDK."""
     try:
         return _get_bridge_pool().prompt(prompt, temperature)
     except Exception as e:
         return f"Error: GenAI SDK call failed: {str(e)}"
 
-# ... (rest of the file remains largely the same) ...
-
-
-# ── OpenCode chat bridge (synchronous) ────────────────────────────────────────
-
-# Pre-approved temp directory — isolated from the repo so any files OpenCode
-# decides to write as a side-effect never land in the working tree.
-_OC_WORK_DIR = "/var/folders/db/v4l6qxx55vs19dxhbjs6cx_w0000gn/T/opencode"
-
-# Prefix injected before every plain-chat prompt to suppress file-write tool use.
-_NO_FILE_WRITE_PREFIX = (
-    "CRITICAL INSTRUCTION: You are operating in text-only output mode. "
-    "Output ONLY plain text or a JSON object in your response. "
-    "Do NOT write any files. Do NOT use any file-write tools. "
-    "Do NOT create or modify files on disk. Return your answer as text only.\n\n"
-)
-
-def call_opencode_cli(prompt: str, model: str, timeout: int = 120) -> str:
-    """
-    Calls OpenCode for a plain-text completion (no agent).
-    Uses `opencode run --model <model> --format json` and parses the JSON event
-    stream to extract the final assistant message text.
-
-    Runs in a sandboxed temp directory so any accidental file writes by the
-    model never land in the repo working tree.
-
-    Retries once on transient "Model not found" errors with a brief delay.
-    """
-    import shutil
-    import time
-    from collections import defaultdict
-    from pathlib import Path
-    import os
-
-    opencode_bin = shutil.which("opencode") or str(Path.home() / ".opencode" / "bin" / "opencode")
-
-    # Ensure the isolated work directory exists
-    os.makedirs(_OC_WORK_DIR, exist_ok=True)
-
-    safe_prompt = _NO_FILE_WRITE_PREFIX + prompt
-
-    def _run_once(model_name: str) -> str:
-        try:
-            result = subprocess.run(
-                [
-                    opencode_bin,
-                    "run",
-                    "--model", model_name,
-                    "--format", "json",
-                    "--dangerously-skip-permissions",
-                    safe_prompt,
-                ],
-                capture_output=True,
-                text=True,
-                timeout=timeout,
-                cwd=_OC_WORK_DIR,
-            )
-        except subprocess.TimeoutExpired:
-            return f"Error: OpenCode call timed out after {timeout}s"
-        except Exception as e:
-            return f"Error: OpenCode call failed: {e}"
-
-        # Parse the JSON event stream
-        message_texts: dict = defaultdict(str)
-        message_order: list = []
-
-        for line in result.stdout.splitlines():
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                ev = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            if ev.get("type") == "text":
-                part = ev.get("part", {})
-                msg_id = part.get("messageID", "unknown")
-                chunk = part.get("text", "")
-                if chunk:
-                    if msg_id not in message_texts:
-                        message_order.append(msg_id)
-                    message_texts[msg_id] += chunk
-            elif ev.get("type") == "error":
-                err = ev.get("error", {})
-                msg = err.get("data", {}).get("message", str(err))
-                return f"Error: OpenCode agent error: {msg}"
-
-        if message_order:
-            return message_texts[message_order[-1]]
-        return f"Error: OpenCode returned no text (stderr: {result.stderr[:300]})"
-
-    # First attempt with the exact model name from the dropdown
-    response = _run_once(model)
-
-    # If we get a "Model not found" error, retry once after a brief delay
-    # (handles transient availability issues)
-    if "Model not found" in response:
-        print(f"[OpenCode CLI] Model not found on first try: {model!r}. Retrying in 2s...", flush=True)
-        time.sleep(2)
-        response = _run_once(model)
-        if "Model not found" in response:
-            print(f"[OpenCode CLI] Model still not found after retry: {model!r}", flush=True)
-
-    return response
-
 # ── In-memory AI routing config ───────────────────────────────────────────────
 
-_ai_backend: str = "gemini"
-_opencode_model: str = "gemini-2.5-flash"
+_gemini_model: str = "gemini-2.5-flash"
 
 def set_ai_config(model: str) -> None:
     """Called by main.py at startup and on every POST /api/parent/config."""
-    global _ai_backend, _opencode_model
-    _ai_backend = "gemini"
+    global _gemini_model
     
-    # Force valid Gemini model, ignoring any lingering OpenCode or Gemma references in DB
-    if "opencode" in model or "gemma" in model or "deepseek" in model:
+    # Ensure model is a valid Gemini model
+    if not (model.startswith("gemini") or model.startswith("models/gemini")):
         model = "gemini-2.5-flash"
         
-    _opencode_model = model
+    _gemini_model = model
     print(f"[subagents] Gemini model set to: {model!r}", flush=True)
     
     global _bridge_pool
@@ -215,17 +108,8 @@ def set_ai_config(model: str) -> None:
         _bridge_pool.model_name = model
 
 def get_ai_config() -> tuple:
-    return _ai_backend, _opencode_model
+    return "gemini", _gemini_model
 
-def call_ai(prompt: str, temperature: Optional[float] = None) -> str:
-    """
-    Thin router: directs the prompt to either the Gemini ACP bridge pool
-    or an OpenCode subprocess based on the parent-configured backend.
-    """
-    if _ai_backend == "opencode":
-        print(f"[call_ai] Using OpenCode model: {_opencode_model}", flush=True)
-        return call_opencode_cli(prompt, _opencode_model)
-    return call_gemini_cli(prompt, temperature)
 
 # ── Visual reference detection ─────────────────────────────────────────────────
 # Shared with testy_grader.py — any text containing these patterns describes a

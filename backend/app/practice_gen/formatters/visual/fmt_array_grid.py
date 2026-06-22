@@ -220,6 +220,7 @@ def format_array_grid(
                 "Look at the shaded shape. How many square units is the area?"
             )
     else:
+        vp["shaded"] = False
         if shape_type == "rectangle" and rows and cols:
             question_text = (
                 f"Shade all the squares inside the {rows}×{cols} rectangle. "

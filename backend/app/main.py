@@ -22,12 +22,6 @@ from backend.app.database import get_db, engine, Base
 from backend.app import models, schemas, subagents, placement
 from backend.app.practice_gen import pipeline
 
-class DummyOpenCodeBridge:
-    OPENCODE_BIN = "opencode"
-    @staticmethod
-    async def run_testy_agent(*args, **kwargs):
-        return {"verdict": "Dummy opencode verdict"}
-opencode_bridge = DummyOpenCodeBridge()
 from backend.app.practice_gen import registry as _pg_registry
 
 def validate_math_answer(expected: Any, student_ans: str) -> bool:
@@ -197,7 +191,7 @@ def _startup_migrate_and_configure():
         ))
         conn.execute(text(
             "ALTER TABLE parent_accounts "
-            "ADD COLUMN IF NOT EXISTS opencode_model VARCHAR DEFAULT 'opencode/deepseek-v4-flash-free'"
+            "ADD COLUMN IF NOT EXISTS opencode_model VARCHAR DEFAULT 'gemini-2.5-flash'"
         ))
         conn.commit()
 
@@ -220,7 +214,7 @@ def _startup_migrate_and_configure():
         parent = db.query(models.ParentAccount).first()
         if parent:
             subagents.set_ai_config(
-                parent.opencode_model or "gemma-4-31b-it"
+                parent.opencode_model or "gemini-2.5-flash"
             )
 
 
@@ -442,12 +436,12 @@ def get_parent_config(db: Session = Depends(get_db)):
         return {
             "password_auth_required": False,
             "ai_backend": "gemini",
-            "opencode_model": "opencode/deepseek-v4-flash-free",
+            "opencode_model": "gemini-2.5-flash",
         }
     return {
         "password_auth_required": parent.password_auth_required,
-        "ai_backend": parent.ai_backend or "gemini",
-        "opencode_model": parent.opencode_model or "opencode/deepseek-v4-flash-free",
+        "ai_backend": "gemini",
+        "opencode_model": parent.opencode_model or "gemini-2.5-flash",
     }
 
 @app.post("/api/parent/config")
@@ -475,7 +469,7 @@ def update_parent_config(req: Dict[str, Any], db: Session = Depends(get_db)):
     db.commit()
 
     # Keep in-memory routing in sync
-    effective_model = parent.opencode_model or "gemma-4-31b-it"
+    effective_model = parent.opencode_model or "gemini-2.5-flash"
     subagents.set_ai_config(effective_model)
     print(f"[Config Update] Gemini model={effective_model!r}", flush=True)
 
@@ -486,10 +480,11 @@ def update_parent_config(req: Dict[str, Any], db: Session = Depends(get_db)):
     }
 
 @app.get("/api/parent/gemini-models")
-def get_opencode_models():
+@app.get("/api/parent/opencode-models")
+def get_gemini_models():
     """
     Returns the list of Gemini models available with the free tier API key.
-    (Endpoint kept as opencode-models for frontend compatibility).
+    (Endpoint decorated with both paths for frontend compatibility).
     """
     try:
         from google import genai

@@ -116,6 +116,54 @@ def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
         "context": context_variant,
     }
 
+    # Attempt to build MCQ options
+    correct = ctx.correct_answer
+    candidates = []
+    seen = {correct}
+    for d in ctx.distractors:
+        if d not in seen:
+            candidates.append(d)
+            seen.add(d)
+
+    if len(candidates) < 3 and isinstance(correct, (int, float)):
+        for offset in [-1, 1, 2, -2, 10, -10]:
+            if len(candidates) >= 3:
+                break
+            candidate = correct + offset
+            if candidate not in seen:
+                candidates.append(candidate)
+                seen.add(candidate)
+
+    mcq_options = None
+    if len(candidates) > 0:
+        distractors = candidates[:3]
+        pool = [{"value": correct, "is_correct": True}] + [
+            {"value": d, "is_correct": False} for d in distractors
+        ]
+        pad_index = 1
+        while len(pool) < 4:
+            if isinstance(correct, (int, float)):
+                pad_val = correct + pad_index * 3
+            else:
+                pad_val = f"{correct} (alt {pad_index})"
+            if pad_val not in seen:
+                pool.append({"value": pad_val, "is_correct": False})
+                seen.add(pad_val)
+            pad_index += 1
+        
+        rng.shuffle(pool)
+        keys = ["A", "B", "C", "D"]
+        mcq_options = []
+        for key, opt in zip(keys, pool):
+            mcq_options.append({"key": key, "value": opt["value"], "text": str(opt["value"]), "is_correct": opt["is_correct"]})
+            if opt["is_correct"]:
+                format_data["correct_key"] = key
+        format_data["mcq_options"] = mcq_options
+
+    # Set format properties
+    format_type = "mcq" if mcq_options else "cloze"
+    answer_collection = "mcq" if mcq_options else "fill_in_blank"
+
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_cloze",
         node_id=ctx.node_id,
@@ -124,15 +172,15 @@ def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
         seed=ctx.seed,
         question_text=sentence,
         correct_answer=ctx.correct_answer,
-        distractors=ctx.distractors,
+        distractors=candidates[:3],
         hints=ctx.hints,
-        format="cloze",
+        format=format_type,
         format_data=format_data,
         is_visual=False,
         visual_type=None,
         visual_params=None,
         interaction_mode=None,
-        answer_collection="fill_in_blank",
+        answer_collection=answer_collection,
         difficulty_profile=ctx.difficulty_profile or {},
         difficulty_axes_served=ctx.difficulty_axes_served,
         experience="standard",

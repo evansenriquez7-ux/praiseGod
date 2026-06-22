@@ -203,6 +203,16 @@ def format_shape_board(
         question_type = "sort_by"
 
     # ── 2. Answer + traps ─────────────────────────────────────────────────────
+    # Normalize question_type so fallthroughs are correctly labeled for the frontend
+    if "identify" in question_type:
+        question_type = "identify"
+    elif "count" in question_type:
+        question_type = "count_property"
+    elif "sort" in question_type or interaction_mode == "set":
+        question_type = "sort_by"
+    else:
+        question_type = "compare"
+
     correct_answer, traps, detail, highlighted = _correct_answer_and_traps(shapes, question_type, rng)
 
     vp = {
@@ -246,7 +256,7 @@ def format_shape_board(
         visual_type="ShapeBoard",
         visual_params=vp,
         interaction_mode=interaction_mode,
-        answer_collection=answer_collection,
+        answer_collection="mcq" if mcq_options else answer_collection,
         difficulty_profile=ctx.difficulty_profile or {},
         difficulty_axes_served=ctx.difficulty_axes_served,
         experience="standard",

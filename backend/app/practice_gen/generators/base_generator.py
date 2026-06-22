@@ -513,10 +513,33 @@ def _build_symbolic_question(
 
     # ── Measurement ───────────────────────────────────────────────────────────
     if concept == "length_measurement":
+        task_type = values.get("task_type")
+        if task_type == "convert":
+            val = values.get("value")
+            from_u = values.get("from_unit")
+            to_u = values.get("to_unit")
+            return f"Convert {val} {from_u} to {to_u}."
+        if task_type == "compare":
+            val_a = values.get("value_a")
+            val_b = values.get("value_b")
+            u = values.get("unit")
+            return f"Which is longer: {val_a} {u} or {val_b} {u}?"
         unit = values.get("unit", "cm")
         return f"Measure the object. Its length is ___ {unit}."
 
     if concept == "mass_capacity":
+        task_type = values.get("task_type")
+        mtype = values.get("measurement_type", "mass")
+        if task_type == "convert":
+            val = values.get("value")
+            from_u = values.get("from_unit")
+            to_u = values.get("to_unit")
+            return f"Convert {val} {from_u} to {to_u}."
+        if task_type == "compare":
+            val_a = values.get("value_a")
+            val_b = values.get("value_b")
+            u = values.get("unit")
+            return f"Which is {'heavier' if mtype == 'mass' else 'more'}: {val_a} {u} or {val_b} {u}?"
         unit = values.get("unit", "kg")
         return f"What is the mass/capacity of the object in {unit}?"
 

@@ -92,6 +92,7 @@ class QuestionResponse(BaseModel):
     visual_type: Optional[str] = None  # "NumberLine", "ClockSet", "BarChart", etc.
     visual_params: Optional[Dict[str, Any]] = None  # Type-specific rendering parameters
     is_visual: bool = False  # True if this is a visual skeleton question
+    answer_collection: str = "mcq" # How the frontend should collect the answer
 
 class VisualQuestionResponse(BaseModel):
     """Extended response for visual skeleton problems with interactive UI params"""

@@ -390,13 +390,14 @@ function App() {
     }
   }, [chatMessages, sendingChat]);
 
-  // Reset chat on slide or mini-lesson change
   useEffect(() => {
     if (socraticAbortControllerRef.current) {
       socraticAbortControllerRef.current.abort();
+      socraticAbortControllerRef.current = null;
     }
     setSocraticActive(false);
     setChatMessages([]);
+    setSendingChat(false);
   }, [introSlideIndex, introMiniLessonIndex]);
 
   // Load profiles and parent config on mount with dynamic server verification
@@ -632,8 +633,10 @@ function App() {
     setSelectedOptionKey(null);
     if (socraticAbortControllerRef.current) {
       socraticAbortControllerRef.current.abort();
+      socraticAbortControllerRef.current = null;
     }
     setChatMessages([]);
+    setSendingChat(false);
     setSocraticActive(false);
     // Reset visual practice state
     setPracticeVisualAnswer(null);
@@ -3775,7 +3778,7 @@ function App() {
                             { ...activeQuestion.visual_params, is_interactive: false },
                             () => {},
                             true,
-                            activeQuestion.skeleton_id
+                            activeQuestion.problem_id || activeQuestion.skeleton_id
                           )}
                           {(activeQuestion.mcq_options || activeQuestion.options) && (
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', maxWidth: '400px' }}>
@@ -3832,7 +3835,7 @@ function App() {
                             { ...activeQuestion.visual_params, is_interactive: false },
                             () => {},
                             true,
-                            activeQuestion.skeleton_id
+                            activeQuestion.problem_id || activeQuestion.skeleton_id
                           )}
                           <input
                             type="text"
@@ -5977,10 +5980,10 @@ difficulty: {Math.round(matatagQuestion.difficulty * 100)}%
                       headers: { 'Content-Type': 'application/json' },
                       body: JSON.stringify({
                         student_id: selectedStudent?.id || 0,
-                        skill_id: activeQuestion?.skill_id || '',
-                        skeleton_id: activeQuestion?.skeleton_id || '',
-                        stem: activeQuestion?.stem || '',
-                        correct_answer: '',
+                        skill_id: activeQuestion?.skill_id || activeQuestion?.node_id || '',
+                        skeleton_id: activeQuestion?.skeleton_id || activeQuestion?.problem_id || '',
+                        stem: activeQuestion?.stem || activeQuestion?.question_text || '',
+                        correct_answer: String(activeQuestion?.correct_answer || activeQuestion?.format_data?.correct_key || ''),
                         selected_answer: selectedOptionKey || (typeof practiceVisualAnswer === 'object' ? JSON.stringify(practiceVisualAnswer) : String(practiceVisualAnswer || '')) || '',
                         reason: flagReason,
                         comment: flagComment

@@ -3241,17 +3241,24 @@ export function ShapeBoardInteractive({ params }) {
         );
         
         return (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', opacity: (params.highlighted_shape && !isHighlighted) ? 0.3 : 1 }}>
             <div style={{
+              filter: isHighlighted ? 'drop-shadow(0 0 15px #f59e0b) drop-shadow(0 0 5px #f59e0b)' : 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))',
+              transform: `rotate(${s.orientation_deg || 0}deg) ${isHighlighted ? 'scale(1.3)' : 'scale(1)'}`,
+              transition: 'all 0.3s ease',
+              zIndex: isHighlighted ? 10 : 1,
               width: '50px', height: '50px',
-              background: 'hsl(var(--primary))',
+              border: isHighlighted && !s.type.includes('triangle') ? '4px solid #f59e0b' : 'none',
               borderRadius: borderRadius,
-              transform: `rotate(${s.orientation_deg || 0}deg)`,
-              clipPath: s.type.includes('triangle') ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 'none',
-              filter: isHighlighted ? 'drop-shadow(0 0 12px #facc15) drop-shadow(0 0 4px #eab308)' : 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))',
-              border: isHighlighted && !s.type.includes('triangle') ? '3px solid #facc15' : 'none',
-              transition: 'all 0.3s ease'
-            }} />
+              boxSizing: 'border-box'
+            }}>
+              <div style={{
+                width: '100%', height: '100%',
+                background: 'hsl(var(--primary))',
+                borderRadius: borderRadius,
+                clipPath: s.type.includes('triangle') ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 'none',
+              }} />
+            </div>
             {params.question_type === 'compare' && i < 2 && (
               <span style={{ fontWeight: 700, fontSize: '18px', color: 'hsl(var(--text))' }}>
                 {i === 0 ? 'A' : 'B'}

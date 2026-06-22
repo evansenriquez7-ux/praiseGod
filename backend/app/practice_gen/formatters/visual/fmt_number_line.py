@@ -356,45 +356,53 @@ def _build_addition_params(values: dict, grade: int, rng: random.Random) -> dict
     b = values.get("b", 0)
     result = values.get("result", a + b)
     
-    # Choose a clean end value that fits the result with room
-    if result <= 10:
-        end = 10
-    elif result <= 20:
+    range_span = max(b, 10)
+    
+    if result <= 20:
+        start = 0
         end = 20
-    elif result <= 50:
-        end = ((result // 10) + 2) * 10
-    else:
-        end = ((result // 50) + 1) * 50
-    
-    # Major interval (labeled ticks)
-    if end <= 10:
-        major_interval = 1
-    elif end <= 20:
         major_interval = 5
-    else:
+        minor_interval = 1
+    elif result <= 50:
+        start = 0
+        end = ((result // 10) + 2) * 10
         major_interval = 10
-    
-    # Minor interval (unlabeled small ticks between majors)
-    if end <= 10:
-        minor_interval = 1
-    elif end <= 20:
-        minor_interval = 1
-    else:
         minor_interval = 5
-    
+    else:
+        if range_span <= 100:
+            minor_interval = 5
+            major_interval = 10
+        elif range_span <= 1000:
+            minor_interval = 50
+            major_interval = 100
+        else:
+            minor_interval = 100
+            major_interval = 500
+            
+        start = (max(0, a - major_interval) // major_interval) * major_interval
+        end = ((result + major_interval) // major_interval) * major_interval
+        
+    divisions = (end - start) // minor_interval
+    if divisions > 50:
+        minor_interval = major_interval
+        major_interval = major_interval * 5
+        start = (max(0, a - major_interval) // major_interval) * major_interval
+        end = ((result + major_interval) // major_interval) * major_interval
+        divisions = (end - start) // minor_interval
+
     return {
-        "start": 0,
+        "start": start,
         "end": end,
         "major_interval": major_interval,
         "minor_interval": minor_interval,
-        "dot_value": a,           # dot is placed here
-        "move_by": b,             # how many spaces to move forward
+        "interval": minor_interval,
+        "dot_value": a,
+        "move_by": b,
         "content_type": "whole_number",
         "value": result,
         "correct_position": result,
-        "divisions": end,
+        "divisions": divisions,
     }
-
 
 def _build_subtraction_params(values: dict, grade: int, rng: random.Random) -> dict:
     """
@@ -407,37 +415,52 @@ def _build_subtraction_params(values: dict, grade: int, rng: random.Random) -> d
     b = values.get("b", 0)
     result = values.get("result", a - b)
     
-    # Choose a clean end value based on the minuend
-    if a <= 10:
-        end = 10
-    elif a <= 20:
-        end = 20
-    elif a <= 50:
-        end = ((a // 10) + 2) * 10
-    else:
-        end = ((a // 50) + 1) * 50
+    range_span = max(b, 10)
     
-    if end <= 10:
-        major_interval = 1
-        minor_interval = 1
-    elif end <= 20:
+    if a <= 20:
+        start = 0
+        end = 20
         major_interval = 5
         minor_interval = 1
-    else:
+    elif a <= 50:
+        start = 0
+        end = ((a // 10) + 2) * 10
         major_interval = 10
         minor_interval = 5
+    else:
+        if range_span <= 100:
+            minor_interval = 5
+            major_interval = 10
+        elif range_span <= 1000:
+            minor_interval = 50
+            major_interval = 100
+        else:
+            minor_interval = 100
+            major_interval = 500
+            
+        start = (max(0, result - major_interval) // major_interval) * major_interval
+        end = ((a + major_interval) // major_interval) * major_interval
+        
+    divisions = (end - start) // minor_interval
+    if divisions > 50:
+        minor_interval = major_interval
+        major_interval = major_interval * 5
+        start = (max(0, result - major_interval) // major_interval) * major_interval
+        end = ((a + major_interval) // major_interval) * major_interval
+        divisions = (end - start) // minor_interval
     
     return {
-        "start": 0,
+        "start": start,
         "end": end,
         "major_interval": major_interval,
         "minor_interval": minor_interval,
-        "dot_value": a,           # dot is placed here
-        "move_by": -b,            # negative = move backward
+        "interval": minor_interval,
+        "dot_value": a,
+        "move_by": -b,
         "content_type": "whole_number",
         "value": result,
         "correct_position": result,
-        "divisions": end,
+        "divisions": divisions,
     }
 
 
