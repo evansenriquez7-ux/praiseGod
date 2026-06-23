@@ -471,3 +471,306 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         "context": ["pure", "word_problem"],
     },
 }
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# FORMATTER-VARIANT SUPPORT TABLE
+# Maps DNA → formatter → dict of variant restrictions.
+# If a variant is listed, only those values are supported.
+# If a variant is omitted, ALL values from VARIANTS_BY_DNA are supported.
+# If a formatter is omitted, it supports ALL variants for that DNA.
+# Use "*" as formatter key to set defaults for all formatters.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
+
+    # ── Number & Algebra ──────────────────────────────────────────────────────
+
+    "addition": {
+        # number_line only supports find_sum (can't show missing addend well)
+        "number_line_read": {"task_type": ["find_sum"]},
+        "number_line_set": {"task_type": ["find_sum"]},
+        # number_bond supports all task_types
+        "number_bond": {},  # all variants supported
+    },
+
+    "subtraction": {
+        "number_line_read": {"task_type": ["find_difference"]},
+        "number_bond": {},
+    },
+
+    "multiplication": {
+        "table": ["2", "3", "4", "5", "10"],
+        "structure": ["result_unknown"],
+        # array grid naturally shows product, not missing factor
+        "array_grid_read": {"task_type": ["find_product"]},
+        "array_grid_set": {"task_type": ["find_product"]},
+    },
+
+    "division": {
+        "remainder": ["none", "some"],
+        "table": ["2", "3", "4", "5", "10"],
+        "structure": ["result_unknown"],
+        "array_grid_read": {"task_type": ["find_quotient"]},
+        "array_grid_set": {"task_type": ["find_quotient"]},
+    },
+
+    "counting": {
+        # ten_frame only works for forward counting
+        "ten_frame": {"direction": ["forward"]},
+        "number_line_read": {},  # both directions work
+    },
+
+    "place_value": {
+        "include_zeros": ["yes", "no"],
+        # blocks work best for compose/decompose
+        "place_value_blocks_read": {"task_type": ["identify_value", "compose"]},
+        "place_value_blocks_set": {"task_type": ["compose", "decompose"]},
+    },
+
+    "comparing_ordering": {
+        "proximity": ["close", "far"],
+        "sort_order": {"task_type": ["order_sequence"]},
+        "ordering": {"task_type": ["order_sequence"]},
+    },
+
+    "patterns": {
+        "element_type": ["numbers", "shapes"],
+        "ask_type": ["next", "missing"],
+        # visual pattern sequence works for find_next
+        "pattern_sequence": {"task_type": ["find_next"]},
+        "fill_in_table": {"task_type": ["find_missing", "find_rule"]},
+    },
+
+    "fractions": {
+        "context": ["pure", "word_problem"],
+        "fraction_type": ["proper", "improper", "mixed"],
+        "operation": ["add", "subtract"],
+        # visual models support specific task types
+        "fraction_model_read": {"task_type": ["identify", "compare"]},
+        "fraction_shade": {"task_type": ["identify", "equivalent"]},
+    },
+
+    "money_peso": {
+        "denomination_type": ["coins", "bills", "mixed"],
+        "operation": ["add", "subtract"],
+        # visual peso formatters don't handle word problems
+        "peso_money_read": {"task_type": ["count_total"], "context": ["pure"]},
+        "peso_money_build": {"task_type": ["count_total", "make_change"], "context": ["pure"]},
+    },
+
+    "rounding": {
+        # number line good for showing rounding visually
+        "number_line_read": {"task_type": ["round_to_place"]},
+    },
+
+    # ── Measurement & Geometry ────────────────────────────────────────────────
+
+    "time_reading": {
+        "context": ["pure", "word_problem"],
+        "mode": ["analog", "digital"],
+        "include_ampm": ["yes", "no"],
+        "clock_read": {"task_type": ["read_time"]},
+        "clock_set": {"task_type": ["set_time"]},
+        # elapsed_time only via mcq/cloze
+    },
+
+    "calendar": {
+        "context": ["pure", "word_problem"],
+        "calendar_feature": ["days", "weeks", "months", "dates"],
+        "calendar_read": {},  # all task types work
+    },
+
+    "area": {
+        "shape": ["rectangle", "square"],
+        "unit": ["cm", "m"],
+        # grid_area shows counting squares
+        "grid_area": {"task_type": ["find_area"]},
+    },
+
+    # ── Data & Probability ────────────────────────────────────────────────────
+
+    "pictographs": {
+        "pictograph_read": {"task_type": ["read_value", "compare", "find_total", "find_difference"]},
+        "bar_chart_read": {"task_type": ["read_value", "compare", "find_total", "find_difference"]},
+        "pictograph_set": {"task_type": ["present_data"]},
+        "fill_in_table": {"task_type": ["organize_table"]},
+    },
+
+    "bar_graphs": {
+        "bar_chart_read": {},  # all task types
+        "bar_chart_set": {"task_type": ["read_value"]},  # set mode is simpler
+    },
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# VARIANT HELPER FUNCTIONS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def get_variants_for_dna(dna_concept: str) -> Dict[str, List[str]]:
+    """
+    Return all contextual variants defined for a DNA concept.
+
+    Args:
+        dna_concept: DNA concept name, e.g. "addition".
+
+    Returns:
+        Dict mapping variant names to their possible values.
+        Empty dict if concept not found.
+    """
+    return dict(VARIANTS_BY_DNA.get(dna_concept, {}))
+
+
+def get_supported_variants(
+    dna_concept: str,
+    formatter_name: str
+) -> Dict[str, List[str]]:
+    """
+    Return variants supported by a specific DNA + formatter combination.
+
+    Applies restrictions from FORMATTER_VARIANT_SUPPORT on top of
+    the full variant set from VARIANTS_BY_DNA.
+
+    Args:
+        dna_concept: DNA concept name, e.g. "addition".
+        formatter_name: Formatter name, e.g. "number_line_read".
+
+    Returns:
+        Dict mapping variant names to their allowed values for this
+        formatter. If formatter has no restrictions, returns full
+        variant set for the DNA.
+    """
+    base_variants = get_variants_for_dna(dna_concept)
+    if not base_variants:
+        return {}
+
+    # Check if this DNA has formatter-specific restrictions
+    dna_restrictions = FORMATTER_VARIANT_SUPPORT.get(dna_concept, {})
+    formatter_restrictions = dna_restrictions.get(formatter_name)
+
+    # No restrictions defined → all variants supported
+    if formatter_restrictions is None:
+        return base_variants
+
+    # Apply restrictions
+    result = {}
+    for variant_name, all_values in base_variants.items():
+        if variant_name in formatter_restrictions:
+            # Use restricted values
+            result[variant_name] = formatter_restrictions[variant_name]
+        else:
+            # No restriction on this variant → all values allowed
+            result[variant_name] = all_values
+
+    return result
+
+
+def is_variant_supported(
+    dna_concept: str,
+    formatter_name: str,
+    variant_name: str,
+    variant_value: str
+) -> bool:
+    """
+    Check if a specific variant value is supported for a DNA + formatter.
+
+    Args:
+        dna_concept: DNA concept name, e.g. "addition".
+        formatter_name: Formatter name, e.g. "number_line_read".
+        variant_name: Variant name, e.g. "task_type".
+        variant_value: Variant value, e.g. "find_sum".
+
+    Returns:
+        True if the variant value is supported, False otherwise.
+    """
+    supported = get_supported_variants(dna_concept, formatter_name)
+    allowed_values = supported.get(variant_name, [])
+    return variant_value in allowed_values
+
+
+def get_compatible_formatters_for_variant(
+    dna_concept: str,
+    variant_name: str,
+    variant_value: str
+) -> List[str]:
+    """
+    Return formatters that support a specific variant value.
+
+    Useful for lab UI to filter formatter dropdown based on selected variant.
+
+    Args:
+        dna_concept: DNA concept name, e.g. "addition".
+        variant_name: Variant name, e.g. "task_type".
+        variant_value: Variant value, e.g. "find_addend".
+
+    Returns:
+        List of formatter names that support this variant value.
+    """
+    all_formatters = get_formatters_for_dna(dna_concept)
+    return [
+        fmt for fmt in all_formatters
+        if is_variant_supported(dna_concept, fmt, variant_name, variant_value)
+    ]
+
+
+def validate_lab_selection(
+    dna_concept: str,
+    formatter_name: str,
+    selected_variants: Dict[str, str]
+) -> Dict[str, Any]:
+    """
+    Validate a lab UI selection and return compatibility info.
+
+    Args:
+        dna_concept: DNA concept name.
+        formatter_name: Selected formatter.
+        selected_variants: Dict of variant_name → selected_value.
+
+    Returns:
+        Dict with:
+            valid: bool - True if all selections are compatible
+            errors: List[str] - Error messages for incompatible selections
+            warnings: List[str] - Warnings (e.g., will fall back to MCQ)
+            effective_formatter: str - Actual formatter that will be used
+    """
+    result = {
+        "valid": True,
+        "errors": [],
+        "warnings": [],
+        "effective_formatter": formatter_name,
+    }
+
+    # Check if formatter is compatible with DNA
+    if formatter_name not in get_formatters_for_dna(dna_concept):
+        result["valid"] = False
+        result["errors"].append(
+            f"Formatter '{formatter_name}' is not compatible with '{dna_concept}'"
+        )
+        return result
+
+    # Check each variant
+    supported = get_supported_variants(dna_concept, formatter_name)
+    incompatible_variants = []
+
+    for variant_name, variant_value in selected_variants.items():
+        if variant_name not in supported:
+            # Variant doesn't exist for this DNA
+            result["warnings"].append(
+                f"Variant '{variant_name}' is not defined for '{dna_concept}'"
+            )
+            continue
+
+        if variant_value not in supported[variant_name]:
+            incompatible_variants.append(
+                f"{variant_name}={variant_value}"
+            )
+
+    if incompatible_variants:
+        result["warnings"].append(
+            f"Variants {incompatible_variants} not supported by '{formatter_name}'. "
+            f"Will fall back to 'mcq'."
+        )
+        result["effective_formatter"] = "mcq"
+
+    return result
