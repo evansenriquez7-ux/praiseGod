@@ -153,17 +153,17 @@ def generate_params(
         from backend.app.practice_gen.dna.base import linear_interpolate
         val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, float(scalar))))
 
-    counts = [rng.randint(val_lo, val_hi // scale) * scale for _ in categories]
+    values = [rng.randint(val_lo, val_hi // scale) * scale for _ in categories]
     vp = {
         "categories": categories,
-        "counts": counts,
+        "counts": values,
         "scale": scale,
     }
 
     # Choose question target
     if task_type in ("read_value", "read_single", "present_data"):
         q_idx = rng.randint(0, len(categories) - 1)
-        answer = counts[q_idx]
+        answer = values[q_idx]
         question_category = categories[q_idx]
         vp["ask_category"] = question_category
         return {
@@ -176,7 +176,7 @@ def generate_params(
     if task_type in ("compare", "compare_two"):
         idx_a, idx_b = rng.sample(range(len(categories)), 2)
         # answer is the category name with more items
-        answer_cat = categories[idx_a] if counts[idx_a] >= counts[idx_b] else categories[idx_b]
+        answer_cat = categories[idx_a] if values[idx_a] >= values[idx_b] else categories[idx_b]
         return {
             "visual_params": vp,
             "question_category": f"{categories[idx_a]} vs {categories[idx_b]}",
@@ -190,7 +190,7 @@ def generate_params(
         return {
             "visual_params": vp,
             "question_category": "total",
-            "answer": sum(counts),
+            "answer": sum(values),
             "task_type": task_type,
         }
 
@@ -198,6 +198,7 @@ def generate_params(
         idx_a, idx_b = rng.sample(range(len(categories)), 2)
         diff = abs(values[idx_a] - values[idx_b])
         return {
+            "visual_params": vp,
             "categories": categories,
             "values": values,
             "scale": scale,
@@ -212,6 +213,7 @@ def generate_params(
         # Table expects all values or something similar, answer can just be the entire dict of categories/values
         # Or an interaction where they fill in the entire table
         return {
+            "visual_params": vp,
             "categories": categories,
             "values": values,
             "scale": scale,
@@ -222,6 +224,7 @@ def generate_params(
     
     # fallback
     return {
+        "visual_params": vp,
         "categories": categories,
         "values": values,
         "scale": scale,
