@@ -359,15 +359,17 @@ def _build_symbolic_question(
 
     # ── Arithmetic operations ─────────────────────────────────────────────────
     if concept == "addition":
-        sum_label = VocabGated("sum", "the sum of", "the answer to").resolve(cumulative_vocab)
+        strategy = values.get("strategy", "standard")
+        prefix = "Solve using expanded form. " if strategy == "expanded_form" else ""
+        
         if blank == "result":
-            return f"What is {a} + {b}?"
+            return f"{prefix}What is {a} + {b}?"
         elif blank == "b":
             result = values.get("result")
-            return f"{a} + ___ = {result}. What is the missing number?"
+            return f"{prefix}{a} + ___ = {result}. What is the missing number?"
         else:
             result = values.get("result")
-            return f"___ + {b} = {result}. What is the missing number?"
+            return f"{prefix}___ + {b} = {result}. What is the missing number?"
 
     if concept == "subtraction":
         if blank == "result":

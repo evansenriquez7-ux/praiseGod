@@ -63,8 +63,9 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, List[str]] = {
-    }
+_DIFFICULTY_AXES: Dict[str, Any] = {
+    "number_difficulty": "continuous",
+}
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
@@ -95,30 +96,38 @@ def generate_params(
     """
     Returns visual_params for the Calendar formatter and an answer value.
       {"month": int, "year": int, "target_date": int, "answer": str_or_int}
+    # The answer may be a string (day of week) or an integer (date/month)
+    # We always return the components so the formatter can reconstruct the exact scenario.
     """
     rng = random.Random(seed)
     profile = difficulty_profile or {}
     g_key = f"g{max(1, min(grade, 2))}"
     bounds = _PARAM_BOUNDS[g_key]
-    task_type = profile.get("task_type", "read_day_of_week")
+    task_type = profile.get("task_type", "read_day")
 
     month = rng.randint(bounds["month"][0], bounds["month"][1])
     year  = bounds.get("year", 2025)
     days_in_this_month = DAYS_IN_MONTH[month]
 
     # day-of-week anchor: January 1 2025 is a Wednesday (index 3)
-    # We approximate: first day of target month
-    # Jan=Wed(3), Feb=Sat(6), Mar=Sat(6), Apr=Tue(2), May=Thu(4),
-    # Jun=Sun(0), Jul=Tue(2), Aug=Fri(5), Sep=Mon(1), Oct=Wed(3),
-    # Nov=Sat(6), Dec=Mon(1)
     FIRST_DAY_2025 = [0, 3, 6, 6, 2, 4, 0, 2, 5, 1, 3, 6, 1]
     first_dow = FIRST_DAY_2025[month]
 
-    if task_type == "read_day_of_week":
+    vp = {
+        "month": month,
+        "year": year,
+        "task_type": "select_date" if task_type in ("read_day", "find_date", "read_month") else "measure_duration",
+        "show_day_names": True,
+    }
+
+    if task_type == "read_day":
         target_date = rng.randint(1, days_in_this_month)
         dow_index = (first_dow + target_date - 1) % 7
         answer = DAYS_OF_WEEK[dow_index]
+        vp["highlighted_dates"] = [target_date]
+        vp["correct_date"] = target_date
         return {
+            "visual_params": vp,
             "month": month,
             "year": year,
             "target_date": target_date,
@@ -130,7 +139,11 @@ def generate_params(
     if task_type == "read_month":
         month_num = rng.randint(1, 12)
         answer = MONTHS_OF_YEAR[month_num - 1]
+        vp["month"] = month_num
+        vp["highlighted_dates"] = [1]
+        vp["correct_date"] = 1
         return {
+            "visual_params": vp,
             "month": month_num,
             "year": year,
             "target_date": 1,
@@ -140,14 +153,17 @@ def generate_params(
         }
 
     if task_type == "find_date":
-        # Given a day name in the month, find the date number
         target_date = rng.randint(1, days_in_this_month)
         dow_index   = (first_dow + target_date - 1) % 7
         day_name    = DAYS_OF_WEEK[dow_index]
+        vp["question_date"] = target_date
+        vp["correct_date"] = target_date
         return {
+            "visual_params": vp,
             "month": month,
             "year": year,
             "target_date": target_date,
+            "day_name": day_name,
             "answer": target_date,
             "task_type": task_type,
             "question": (

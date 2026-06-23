@@ -38,8 +38,9 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, List[str]] = {
-    }
+_DIFFICULTY_AXES: Dict[str, Any] = {
+    "number_difficulty": "continuous",
+}
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────

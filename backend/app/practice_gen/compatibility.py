@@ -115,6 +115,7 @@ COMPATIBILITY: Dict[str, List[str]] = {
         "number_line_read",
         "ten_frame",
         "bar_chart_read",
+        "emoji_pictorial",
     ],
 
     "number_reading": [
@@ -126,6 +127,7 @@ COMPATIBILITY: Dict[str, List[str]] = {
         "place_value_blocks_read",
         "place_value_blocks_set",
         "bar_chart_read",
+        "emoji_pictorial",
     ],
 
     "ordinal_numbers": [
@@ -319,23 +321,23 @@ def get_dnas_for_formatter(formatter_name: str) -> List[str]:
 
 VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
 
-    # ── Number & Algebra ──────────────────────────────────────────────────────
-
     "addition": {
         "context": ["pure", "word_problem"],
         "structure": ["result_unknown"],
-        "spine": ["random", "putting_together", "counting_up"],
+        "spine": ["putting_together", "counting_up"],
+        "strategy": ["standard", "expanded_form"],
     },
 
     "subtraction": {
         "context": ["pure", "word_problem"],
         "structure": ["result_unknown", "change_unknown", "start_unknown"],
+        "spine": ["taking_away", "comparing"],
     },
 
     "multiplication": {
         "table": ["2", "3", "4", "5", "10"],
         "structure": ["result_unknown"],
-        "task_type": ["find_product", "find_factor"],
+        "number_type": ["single_digit", "multi_digit"],
         "context": ["pure", "word_problem"],
     },
 
@@ -343,13 +345,13 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         "remainder": ["none", "some"],
         "table": ["2", "3", "4", "5", "10"],
         "structure": ["result_unknown"],
-        "task_type": ["find_quotient", "find_dividend", "find_divisor"],
         "context": ["pure", "word_problem"],
     },
 
     "counting": {
         "direction": ["forward", "backward"],
         "context": ["pure", "word_problem"],
+        "skip_interval": ["1", "2", "5", "10", "20", "50", "100"],
     },
 
     "number_reading": {
@@ -358,8 +360,6 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
 
     "ordinal_numbers": {
         "task_type": ["identify_position", "identify_object"],
-        "direction": ["from_left", "from_right"],
-        "context": ["pure", "word_problem"],
     },
 
     "place_value": {
@@ -368,427 +368,106 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "comparing_ordering": {
-        "proximity": ["close", "far"],
+        "proximity": ["close_together", "far_apart"],
         "task_type": ["compare_pair", "order_sequence"],
-        "direction": ["ascending", "descending"],
+        "context": ["pure", "word_problem"],
     },
 
     "missing_number": {
         "operation": ["addition", "subtraction"],
         "equation_type": ["standard", "non_standard"],
         "blank_position": ["start", "middle", "end"],
-        "position": ["start", "middle", "end"],
         "context": ["pure", "word_problem"],
+        "tables": ["2", "3", "4", "5", "10"],
     },
 
     "patterns": {
-        "element_type": ["numbers", "shapes"],
         "ask_type": ["next", "missing"],
-        "task_type": ["find_next", "find_rule", "find_missing"],
         "pattern_type": ["repeating", "growing"],
     },
 
     "fractions": {
-        "context": ["pure", "word_problem"],
         "fraction_type": ["proper", "improper", "mixed"],
         "operation": ["add", "subtract"],
-        "task_type": ["identify", "compare", "equivalent", "add_like", "subtract_like"],
         "fraction_model": ["area_model", "set_model", "number_line"],
     },
 
     "money_peso": {
         "denomination_type": ["coins", "bills", "mixed"],
         "operation": ["add", "subtract"],
-        "task_type": ["count_total", "make_change", "compare_amounts"],
         "context": ["pure", "word_problem"],
     },
 
     "rounding": {
-        "task_type": ["round_to_place", "estimate_sum", "estimate_difference"],
+        "precision": ["nearest_ten", "nearest_hundred", "nearest_thousand"],
+        "boundary_proximity": ["near_boundary", "far_from_boundary"],
     },
 
     "order_of_operations": {
         "operation_mix": ["add_sub", "mult_div", "all"],
-        "context": ["pure", "word_problem"],
+        "num_operands": ["three_terms", "four_terms"],
     },
-
-    # ── Measurement & Geometry ────────────────────────────────────────────────
 
     "shapes_2d": {
         "orientation": ["standard", "rotated"],
-        "shape_set": ["basic", "polygons", "quadrilaterals", "3d_shapes"],
-        "task_type": ["identify", "count_sides", "count_vertices", "classify"],
+        "shape_set": ["basic_triangles_rectangles_squares", "extended_with_circles", "composite_figures"],
+        "task_type": ["identify_name", "count_sides_corners", "compare_shapes", "compose_decompose"],
     },
 
     "length_measurement": {
-        "context": ["pure", "word_problem"],
-        "unit_type": ["cm", "m", "inch", "foot"],
+        "unit_type": ["cm", "m"],
         "task_type": ["compare", "convert"],
-        "unit_system": ["metric", "customary"],
     },
 
     "mass_capacity": {
-        "context": ["pure", "word_problem"],
         "unit": ["g", "kg", "ml", "l"],
         "task_type": ["compare", "convert"],
         "measurement_type": ["mass", "capacity"],
-        "unit_system": ["metric", "customary"],
     },
 
     "time_reading": {
-        "context": ["pure", "word_problem"],
-        "mode": ["analog", "digital"],
+        "precision": ["hour", "half_hour", "quarter_hour", "five_minutes", "one_minute"],
         "include_ampm": ["yes", "no"],
-        "task_type": ["read_time", "set_time", "elapsed_time"],
     },
 
     "calendar": {
-        "context": ["pure", "word_problem"],
-        "calendar_feature": ["days", "weeks", "months", "dates"],
-        "task_type": ["identify_date", "count_days", "identify_day"],
+        "task_type": ["read_calendar", "elapsed_time"],
     },
 
     "perimeter": {
-        "shape": ["rectangle", "square", "triangle", "polygon"],
-        "number_size": ["small", "medium", "large"],
-        "task_type": ["find_perimeter", "find_side"],
-        "context": ["pure", "word_problem"],
+        "shape": ["square", "rectangle", "triangle"],
+        "task_type": ["calculate", "missing_side"],
     },
 
     "area": {
-        "shape": ["rectangle", "square"],
-        "unit": ["cm", "m"],
-        "task_type": ["find_area", "find_side"],
-        "context": ["pure", "word_problem"],
+        "shape": ["square", "rectangle"],
+        "task_type": ["calculate", "missing_side"],
+        "unit": ["sq_cm", "sq_m"],
     },
 
     "geometric_lines": {
-        "concept_type": ["point", "line", "line_segment", "ray", "parallel", "perpendicular", "intersecting"],
-        "task_type": ["identify", "classify", "draw"],
+        "task_type": ["identify", "draw"],
+        "concept_type": ["straight_curved", "parallel_intersecting"],
     },
 
     "symmetry_slides": {
-        "concept": ["line_symmetry", "slide_translation", "complete_symmetric_figure"],
-        "directions": ["horizontal", "vertical", "diagonal"],
-        "task_type": ["identify_symmetry", "draw_line", "identify_transformation"],
+        "concept": ["symmetry", "slides"],
+        "directions": ["horizontal", "vertical", "both"],
     },
 
-    # ── Data & Probability ────────────────────────────────────────────────────
-
     "pictographs": {
-        "task_type": ["read_value", "compare", "find_total", "find_difference", "present_data", "organize_table"],
-        "context": ["standard", "interview"],
+        "task_type": ["read", "create"],
+        "scale_type": ["no_scale", "scale_2", "scale_5", "scale_10"],
     },
 
     "bar_graphs": {
-        "task_type": ["read_value", "compare", "find_total", "find_difference"],
+        "task_type": ["read", "create"],
         "orientation": ["vertical", "horizontal"],
+        "scale": ["scale_5", "scale_10", "scale_20"],
     },
 
     "probability_language": {
-        "task_type": ["classify_likelihood", "compare_events"],
+        "scenario_type": ["weather", "games", "daily_life"],
+        "context": ["pure", "word_problem"],
     },
 }
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# FORMATTER-VARIANT SUPPORT TABLE
-# Maps DNA → formatter → dict of variant restrictions.
-# If a variant is listed, only those values are supported.
-# If a variant is omitted, ALL values from VARIANTS_BY_DNA are supported.
-# If a formatter is omitted, it supports ALL variants for that DNA.
-# Use "*" as formatter key to set defaults for all formatters.
-# ═══════════════════════════════════════════════════════════════════════════════
-
-FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
-
-    # ── Number & Algebra ──────────────────────────────────────────────────────
-
-    "addition": {
-        # number_line only supports find_sum (can't show missing addend well)
-        "number_line_read": {"task_type": ["find_sum"]},
-        "number_line_set": {"task_type": ["find_sum"]},
-        # number_bond supports all task_types
-        "number_bond": {},  # all variants supported
-    },
-
-    "subtraction": {
-        "number_line_read": {"task_type": ["find_difference"]},
-        "number_bond": {},
-    },
-
-    "multiplication": {
-        "table": ["2", "3", "4", "5", "10"],
-        "structure": ["result_unknown"],
-        # array grid naturally shows product, not missing factor
-        "array_grid_read": {"task_type": ["find_product"]},
-        "array_grid_set": {"task_type": ["find_product"]},
-    },
-
-    "division": {
-        "remainder": ["none", "some"],
-        "table": ["2", "3", "4", "5", "10"],
-        "structure": ["result_unknown"],
-        "array_grid_read": {"task_type": ["find_quotient"]},
-        "array_grid_set": {"task_type": ["find_quotient"]},
-    },
-
-    "counting": {
-        # ten_frame only works for forward counting
-        "ten_frame": {"direction": ["forward"]},
-        "number_line_read": {},  # both directions work
-    },
-
-    "place_value": {
-        "include_zeros": ["yes", "no"],
-        # blocks work best for compose/decompose
-        "place_value_blocks_read": {"task_type": ["identify_value", "compose"]},
-        "place_value_blocks_set": {"task_type": ["compose", "decompose"]},
-    },
-
-    "comparing_ordering": {
-        "proximity": ["close", "far"],
-        "sort_order": {"task_type": ["order_sequence"]},
-        "ordering": {"task_type": ["order_sequence"]},
-    },
-
-    "patterns": {
-        "element_type": ["numbers", "shapes"],
-        "ask_type": ["next", "missing"],
-        # visual pattern sequence works for find_next
-        "pattern_sequence": {"task_type": ["find_next"]},
-        "fill_in_table": {"task_type": ["find_missing", "find_rule"]},
-    },
-
-    "fractions": {
-        "context": ["pure", "word_problem"],
-        "fraction_type": ["proper", "improper", "mixed"],
-        "operation": ["add", "subtract"],
-        # visual models support specific task types
-        "fraction_model_read": {"task_type": ["identify", "compare"]},
-        "fraction_shade": {"task_type": ["identify", "equivalent"]},
-    },
-
-    "money_peso": {
-        "denomination_type": ["coins", "bills", "mixed"],
-        "operation": ["add", "subtract"],
-        # visual peso formatters don't handle word problems
-        "peso_money_read": {"task_type": ["count_total"], "context": ["pure"]},
-        "peso_money_build": {"task_type": ["count_total", "make_change"], "context": ["pure"]},
-    },
-
-    "rounding": {
-        # number line good for showing rounding visually
-        "number_line_read": {"task_type": ["round_to_place"]},
-    },
-
-    # ── Measurement & Geometry ────────────────────────────────────────────────
-
-    "time_reading": {
-        "context": ["pure", "word_problem"],
-        "mode": ["analog", "digital"],
-        "include_ampm": ["yes", "no"],
-        "clock_read": {"task_type": ["read_time"]},
-        "clock_set": {"task_type": ["set_time"]},
-        # elapsed_time only via mcq/cloze
-    },
-
-    "calendar": {
-        "context": ["pure", "word_problem"],
-        "calendar_feature": ["days", "weeks", "months", "dates"],
-        "calendar_read": {},  # all task types work
-    },
-
-    "area": {
-        "shape": ["rectangle", "square"],
-        "unit": ["cm", "m"],
-        # grid_area shows counting squares
-        "grid_area": {"task_type": ["find_area"]},
-    },
-
-    # ── Data & Probability ────────────────────────────────────────────────────
-
-    "pictographs": {
-        "pictograph_read": {"task_type": ["read_value", "compare", "find_total", "find_difference"]},
-        "bar_chart_read": {"task_type": ["read_value", "compare", "find_total", "find_difference"]},
-        "pictograph_set": {"task_type": ["present_data"]},
-        "fill_in_table": {"task_type": ["organize_table"]},
-    },
-
-    "bar_graphs": {
-        "bar_chart_read": {},  # all task types
-        "bar_chart_set": {"task_type": ["read_value"]},  # set mode is simpler
-    },
-}
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# VARIANT HELPER FUNCTIONS
-# ═══════════════════════════════════════════════════════════════════════════════
-
-def get_variants_for_dna(dna_concept: str) -> Dict[str, List[str]]:
-    """
-    Return all contextual variants defined for a DNA concept.
-
-    Args:
-        dna_concept: DNA concept name, e.g. "addition".
-
-    Returns:
-        Dict mapping variant names to their possible values.
-        Empty dict if concept not found.
-    """
-    return dict(VARIANTS_BY_DNA.get(dna_concept, {}))
-
-
-def get_supported_variants(
-    dna_concept: str,
-    formatter_name: str
-) -> Dict[str, List[str]]:
-    """
-    Return variants supported by a specific DNA + formatter combination.
-
-    Applies restrictions from FORMATTER_VARIANT_SUPPORT on top of
-    the full variant set from VARIANTS_BY_DNA.
-
-    Args:
-        dna_concept: DNA concept name, e.g. "addition".
-        formatter_name: Formatter name, e.g. "number_line_read".
-
-    Returns:
-        Dict mapping variant names to their allowed values for this
-        formatter. If formatter has no restrictions, returns full
-        variant set for the DNA.
-    """
-    base_variants = get_variants_for_dna(dna_concept)
-    if not base_variants:
-        return {}
-
-    # Check if this DNA has formatter-specific restrictions
-    dna_restrictions = FORMATTER_VARIANT_SUPPORT.get(dna_concept, {})
-    formatter_restrictions = dna_restrictions.get(formatter_name)
-
-    # No restrictions defined → all variants supported
-    if formatter_restrictions is None:
-        return base_variants
-
-    # Apply restrictions
-    result = {}
-    for variant_name, all_values in base_variants.items():
-        if variant_name in formatter_restrictions:
-            # Use restricted values
-            result[variant_name] = formatter_restrictions[variant_name]
-        else:
-            # No restriction on this variant → all values allowed
-            result[variant_name] = all_values
-
-    return result
-
-
-def is_variant_supported(
-    dna_concept: str,
-    formatter_name: str,
-    variant_name: str,
-    variant_value: str
-) -> bool:
-    """
-    Check if a specific variant value is supported for a DNA + formatter.
-
-    Args:
-        dna_concept: DNA concept name, e.g. "addition".
-        formatter_name: Formatter name, e.g. "number_line_read".
-        variant_name: Variant name, e.g. "task_type".
-        variant_value: Variant value, e.g. "find_sum".
-
-    Returns:
-        True if the variant value is supported, False otherwise.
-    """
-    supported = get_supported_variants(dna_concept, formatter_name)
-    allowed_values = supported.get(variant_name, [])
-    return variant_value in allowed_values
-
-
-def get_compatible_formatters_for_variant(
-    dna_concept: str,
-    variant_name: str,
-    variant_value: str
-) -> List[str]:
-    """
-    Return formatters that support a specific variant value.
-
-    Useful for lab UI to filter formatter dropdown based on selected variant.
-
-    Args:
-        dna_concept: DNA concept name, e.g. "addition".
-        variant_name: Variant name, e.g. "task_type".
-        variant_value: Variant value, e.g. "find_addend".
-
-    Returns:
-        List of formatter names that support this variant value.
-    """
-    all_formatters = get_formatters_for_dna(dna_concept)
-    return [
-        fmt for fmt in all_formatters
-        if is_variant_supported(dna_concept, fmt, variant_name, variant_value)
-    ]
-
-
-def validate_lab_selection(
-    dna_concept: str,
-    formatter_name: str,
-    selected_variants: Dict[str, str]
-) -> Dict[str, Any]:
-    """
-    Validate a lab UI selection and return compatibility info.
-
-    Args:
-        dna_concept: DNA concept name.
-        formatter_name: Selected formatter.
-        selected_variants: Dict of variant_name → selected_value.
-
-    Returns:
-        Dict with:
-            valid: bool - True if all selections are compatible
-            errors: List[str] - Error messages for incompatible selections
-            warnings: List[str] - Warnings (e.g., will fall back to MCQ)
-            effective_formatter: str - Actual formatter that will be used
-    """
-    result = {
-        "valid": True,
-        "errors": [],
-        "warnings": [],
-        "effective_formatter": formatter_name,
-    }
-
-    # Check if formatter is compatible with DNA
-    if formatter_name not in get_formatters_for_dna(dna_concept):
-        result["valid"] = False
-        result["errors"].append(
-            f"Formatter '{formatter_name}' is not compatible with '{dna_concept}'"
-        )
-        return result
-
-    # Check each variant
-    supported = get_supported_variants(dna_concept, formatter_name)
-    incompatible_variants = []
-
-    for variant_name, variant_value in selected_variants.items():
-        if variant_name not in supported:
-            # Variant doesn't exist for this DNA
-            result["warnings"].append(
-                f"Variant '{variant_name}' is not defined for '{dna_concept}'"
-            )
-            continue
-
-        if variant_value not in supported[variant_name]:
-            incompatible_variants.append(
-                f"{variant_name}={variant_value}"
-            )
-
-    if incompatible_variants:
-        result["warnings"].append(
-            f"Variants {incompatible_variants} not supported by '{formatter_name}'. "
-            f"Will fall back to 'mcq'."
-        )
-        result["effective_formatter"] = "mcq"
-
-    return result

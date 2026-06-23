@@ -146,6 +146,10 @@ def format_pictograph(
     # ── 1. Resolve visual_params ───────────────────────────────────────────────
     if ctx.visual_params and "counts" in ctx.visual_params:
         vp = ctx.visual_params.copy()
+        if "symbol" not in vp:
+            vp["symbol"] = "🍎"
+            vp["title"] = "Pictograph"
+            vp["has_scale"] = vp.get("scale", 1) > 1
     else:
         diff_profile = ctx.difficulty_profile or {}
         diff_level = min(len(diff_profile) + 1, 4) if diff_profile else 2
@@ -242,7 +246,7 @@ def format_pictograph(
         format=fmt,
         format_data=format_data,
         is_visual=True,
-        visual_type="BarChart",        # reuses BarChart visual_home (pictograph mode)
+        visual_type="Pictograph",
         visual_params=vp,
         interaction_mode=interaction_mode,
         answer_collection=answer_collection,

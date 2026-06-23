@@ -223,6 +223,8 @@ def generate_params(
         "start_unknown":  "a",
     }.get(structure, "result")
 
+    strategy = profile.get("strategy", "standard")
+
     result_dict = {
         "a": a,
         "b": b,
@@ -231,6 +233,7 @@ def generate_params(
         "context": context,
         "structure": structure,
         "max_sum": max_result,  # Numeric value
+        "strategy": strategy,
     }
 
     return result_dict

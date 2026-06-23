@@ -32,6 +32,15 @@ class BarChartParams(BaseVisualParams):
     counts: Optional[List[int]] = None
     title: Optional[str] = None
 
+class PictographParams(BaseVisualParams):
+    categories: List[str]
+    counts: List[int]
+    scale: int
+    symbol: str
+    title: str
+    ask_category: Optional[str] = None
+    has_scale: bool
+
 class EmojiPictorialParams(BaseVisualParams):
     emoji: str
     group_a: int
@@ -104,6 +113,7 @@ class VisualSchemaRegistry:
         "ClockSet": ClockParams,
         "NumberBond": NumberBondParams,
         "BarChart": BarChartParams,
+        "Pictograph": PictographParams,
         "EmojiPictorial": EmojiPictorialParams,
         "TenFrame": TenFrameParams,
         "FractionModel": FractionModelParams,

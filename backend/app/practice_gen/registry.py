@@ -281,75 +281,75 @@ from backend.app.practice_gen.schemas.visuals import VisualSchemaRegistry
 BINDINGS = {
     "mat_g1_na_q1_0": {
         "dna": "counting",
-        "visual": "EmojiPictorial"
+        "visual": "emoji_pictorial"
     },
     "mat_g1_na_q1_1": {
         "dna": "number_reading",
-        "visual": "EmojiPictorial"
+        "visual": "emoji_pictorial"
     },
     "mat_g1_na_q1_2": {
         "dna": "number_reading",
-        "visual": "EmojiPictorial"
+        "visual": "emoji_pictorial"
     },
     "mat_g1_na_q1_3": {
         "dna": "comparing_ordering",
-        "visual": "SortOrder"
+        "visual": "sort_order"
     },
     "mat_g1_na_q1_4": {
         "dna": "comparing_ordering",
-        "visual": "SortOrder"
+        "visual": "sort_order"
     },
     "mat_g1_na_q1_5": {
         "dna": "ordinal_numbers",
-        "visual": "SortOrder"
+        "visual": "sort_order"
     },
     "mat_g1_na_q1_6": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g1_na_q1_7": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g1_na_q1_8": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g1_na_q1_9": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g1_na_q2_0": {
         "dna": "comparing_ordering",
-        "visual": "SortOrder"
+        "visual": "sort_order"
     },
     "mat_g1_na_q2_1": {
         "dna": "counting",
-        "visual": "EmojiPictorial"
+        "visual": "emoji_pictorial"
     },
     "mat_g1_na_q2_2": {
         "dna": "place_value",
-        "visual": "PlaceValueBlocks"
+        "visual": "place_value_blocks_read"
     },
     "mat_g1_na_q2_3": {
         "dna": "place_value",
-        "visual": "PlaceValueBlocks"
+        "visual": "place_value_blocks_read"
     },
     "mat_g1_na_q2_4": {
         "dna": "place_value",
-        "visual": "PlaceValueBlocks"
+        "visual": "place_value_blocks_read"
     },
     "mat_g1_na_q2_5": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g1_na_q2_6": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g1_na_q3_0": {
         "dna": "subtraction",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g1_na_q3_1": {
         "dna": "missing_number",
@@ -361,83 +361,83 @@ BINDINGS = {
     },
     "mat_g1_na_q3_3": {
         "dna": "subtraction",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g1_na_q3_4": {
         "dna": "subtraction",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g1_na_q3_5": {
         "dna": "subtraction",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g1_na_q3_6": {
         "dna": "patterns",
-        "visual": "PatternSequence"
+        "visual": "pattern_sequence"
     },
     "mat_g1_na_q3_7": {
         "dna": "patterns",
-        "visual": "PatternSequence"
+        "visual": "pattern_sequence"
     },
     "mat_g1_na_q4_0": {
         "dna": "fractions",
-        "visual": "FractionModel"
+        "visual": "fraction_model_read"
     },
     "mat_g1_na_q4_1": {
         "dna": "fractions",
-        "visual": "FractionModel"
+        "visual": "fraction_model_read"
     },
     "mat_g1_na_q4_2": {
         "dna": "fractions",
-        "visual": "FractionModel"
+        "visual": "fraction_model_read"
     },
     "mat_g1_na_q4_3": {
         "dna": "money_peso",
-        "visual": "PesoMoney"
+        "visual": "peso_money_read"
     },
     "mat_g1_na_q4_4": {
         "dna": "money_peso",
-        "visual": "PesoMoney"
+        "visual": "peso_money_read"
     },
     "mat_g1_na_q4_5": {
         "dna": "money_peso",
-        "visual": "PesoMoney"
+        "visual": "peso_money_read"
     },
     "mat_g1_na_q4_6": {
         "dna": "money_peso",
-        "visual": "PesoMoney"
+        "visual": "peso_money_read"
     },
     "mat_g1_mg_q1_0": {
         "dna": "shapes_2d",
-        "visual": "ShapeBoard"
+        "visual": "shape_board"
     },
     "mat_g1_mg_q1_1": {
         "dna": "shapes_2d",
-        "visual": "ShapeBoard"
+        "visual": "shape_board"
     },
     "mat_g1_mg_q1_2": {
         "dna": "shapes_2d",
-        "visual": "ShapeBoard"
+        "visual": "shape_board"
     },
     "mat_g1_mg_q2_0": {
         "dna": "length_measurement",
-        "visual": "RulerMeasure"
+        "visual": "ruler_measure"
     },
     "mat_g1_mg_q2_1": {
         "dna": "length_measurement",
-        "visual": "RulerMeasure"
+        "visual": "ruler_measure"
     },
     "mat_g1_mg_q2_2": {
         "dna": "length_measurement",
-        "visual": "RulerMeasure"
+        "visual": "ruler_measure"
     },
     "mat_g1_mg_q4_0": {
         "dna": "symmetry_slides",
-        "visual": "ShapeBoard"
+        "visual": "shape_board"
     },
     "mat_g1_mg_q4_1": {
         "dna": "time_reading",
-        "visual": "ClockSet"
+        "visual": "clock_set"
     },
     "mat_g1_mg_q4_2": {
         "dna": "calendar",
@@ -449,43 +449,43 @@ BINDINGS = {
     },
     "mat_g1_mg_q4_4": {
         "dna": "time_reading",
-        "visual": "ClockSet"
+        "visual": "clock_set"
     },
     "mat_g1_dp_q3_0": {
         "dna": "pictographs",
-        "visual": "Pictograph"
+        "visual": "pictograph_read"
     },
     "mat_g1_dp_q3_1": {
         "dna": "pictographs",
-        "visual": "Pictograph"
+        "visual": "pictograph_read"
     },
     "mat_g1_dp_q3_2": {
         "dna": "pictographs",
-        "visual": "Pictograph"
+        "visual": "pictograph_read"
     },
     "mat_g1_dp_q3_3": {
         "dna": "pictographs",
-        "visual": "Pictograph"
+        "visual": "pictograph_read"
     },
     "mat_g2_na_q1_0": {
         "dna": "counting",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g2_na_q1_1": {
         "dna": "number_reading",
-        "visual": "EmojiPictorial"
+        "visual": "emoji_pictorial"
     },
     "mat_g2_na_q1_2": {
         "dna": "number_reading",
-        "visual": "EmojiPictorial"
+        "visual": "emoji_pictorial"
     },
     "mat_g2_na_q1_3": {
         "dna": "counting",
-        "visual": "EmojiPictorial"
+        "visual": "emoji_pictorial"
     },
     "mat_g2_na_q1_4": {
         "dna": "comparing_ordering",
-        "visual": "SortOrder"
+        "visual": "sort_order"
     },
     "mat_g2_na_q1_5": {
         "dna": "ordinal_numbers",
@@ -493,91 +493,91 @@ BINDINGS = {
     },
     "mat_g2_na_q1_6": {
         "dna": "place_value",
-        "visual": "PlaceValueBlocks"
+        "visual": "place_value_blocks_read"
     },
     "mat_g2_na_q1_7": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g2_na_q1_8": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g2_na_q1_9": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g2_na_q1_10": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g2_na_q2_0": {
         "dna": "money_peso",
-        "visual": "PesoMoney"
+        "visual": "peso_money_read"
     },
     "mat_g2_na_q2_1": {
         "dna": "money_peso",
-        "visual": "PesoMoney"
+        "visual": "peso_money_read"
     },
     "mat_g2_na_q2_2": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g2_na_q2_3": {
         "dna": "subtraction",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g2_na_q2_4": {
         "dna": "subtraction",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g2_na_q2_5": {
         "dna": "subtraction",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g2_na_q2_6": {
         "dna": "subtraction",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g2_na_q2_7": {
         "dna": "subtraction",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g2_na_q2_8": {
         "dna": "patterns",
-        "visual": "PatternSequence"
+        "visual": "pattern_sequence"
     },
     "mat_g2_na_q2_9": {
         "dna": "patterns",
-        "visual": "PatternSequence"
+        "visual": "pattern_sequence"
     },
     "mat_g2_na_q3_0": {
         "dna": "multiplication",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g2_na_q3_1": {
         "dna": "multiplication",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g2_na_q3_2": {
         "dna": "multiplication",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g2_na_q3_3": {
         "dna": "multiplication",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g2_na_q3_4": {
         "dna": "division",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g2_na_q3_5": {
         "dna": "division",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g2_na_q3_6": {
         "dna": "division",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g2_na_q3_7": {
         "dna": "missing_number",
@@ -585,51 +585,51 @@ BINDINGS = {
     },
     "mat_g2_na_q3_8": {
         "dna": "division",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g2_na_q3_9": {
         "dna": "division",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g2_na_q4_0": {
         "dna": "fractions",
-        "visual": "FractionShade"
+        "visual": "fraction_shade"
     },
     "mat_g2_na_q4_1": {
         "dna": "fractions",
-        "visual": "FractionModel"
+        "visual": "fraction_model_read"
     },
     "mat_g2_na_q4_2": {
         "dna": "fractions",
-        "visual": "FractionModel"
+        "visual": "fraction_model_read"
     },
     "mat_g2_na_q4_3": {
         "dna": "fractions",
-        "visual": "FractionModel"
+        "visual": "fraction_model_read"
     },
     "mat_g2_na_q4_4": {
         "dna": "fractions",
-        "visual": "FractionModel"
+        "visual": "fraction_model_read"
     },
     "mat_g2_na_q4_5": {
         "dna": "fractions",
-        "visual": "FractionModel"
+        "visual": "fraction_model_read"
     },
     "mat_g2_mg_q1_0": {
         "dna": "shapes_2d",
-        "visual": "ShapeBoard"
+        "visual": "shape_board"
     },
     "mat_g2_mg_q1_1": {
         "dna": "shapes_2d",
-        "visual": "ShapeBoard"
+        "visual": "shape_board"
     },
     "mat_g2_mg_q1_2": {
         "dna": "symmetry_slides",
-        "visual": "ShapeBoard"
+        "visual": "shape_board"
     },
     "mat_g2_mg_q2_0": {
         "dna": "length_measurement",
-        "visual": "RulerMeasure"
+        "visual": "ruler_measure"
     },
     "mat_g2_mg_q2_1": {
         "dna": "length_measurement",
@@ -645,15 +645,15 @@ BINDINGS = {
     },
     "mat_g2_mg_q4_0": {
         "dna": "time_reading",
-        "visual": "ClockSet"
+        "visual": "clock_set"
     },
     "mat_g2_mg_q4_1": {
         "dna": "time_reading",
-        "visual": "ClockSet"
+        "visual": "clock_set"
     },
     "mat_g2_mg_q4_2": {
         "dna": "time_reading",
-        "visual": "ClockSet"
+        "visual": "clock_set"
     },
     "mat_g2_mg_q4_3": {
         "dna": "geometric_lines",
@@ -673,19 +673,19 @@ BINDINGS = {
     },
     "mat_g2_dp_q3_0": {
         "dna": "pictographs",
-        "visual": "Pictograph"
+        "visual": "pictograph_read"
     },
     "mat_g2_dp_q3_1": {
         "dna": "pictographs",
-        "visual": "Pictograph"
+        "visual": "pictograph_read"
     },
     "mat_g3_na_q1_0": {
         "dna": "number_reading",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g3_na_q1_1": {
         "dna": "number_reading",
-        "visual": "EmojiPictorial"
+        "visual": "emoji_pictorial"
     },
     "mat_g3_na_q1_2": {
         "dna": "ordinal_numbers",
@@ -693,87 +693,87 @@ BINDINGS = {
     },
     "mat_g3_na_q1_3": {
         "dna": "place_value",
-        "visual": "PlaceValueBlocks"
+        "visual": "place_value_blocks_read"
     },
     "mat_g3_na_q1_4": {
         "dna": "rounding",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g3_na_q1_5": {
         "dna": "comparing_ordering",
-        "visual": "SortOrder"
+        "visual": "sort_order"
     },
     "mat_g3_na_q1_6": {
         "dna": "comparing_ordering",
-        "visual": "SortOrder"
+        "visual": "sort_order"
     },
     "mat_g3_na_q2_0": {
         "dna": "money_peso",
-        "visual": "PesoMoney"
+        "visual": "peso_money_read"
     },
     "mat_g3_na_q2_1": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g3_na_q2_2": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g3_na_q2_3": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g3_na_q2_4": {
         "dna": "subtraction",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g3_na_q2_5": {
         "dna": "subtraction",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g3_na_q2_6": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g3_na_q2_7": {
         "dna": "addition",
-        "visual": "NumberLine"
+        "visual": "number_line_read"
     },
     "mat_g3_na_q3_0": {
         "dna": "multiplication",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g3_na_q3_1": {
         "dna": "multiplication",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g3_na_q3_2": {
         "dna": "multiplication",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g3_na_q3_3": {
         "dna": "multiplication",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g3_na_q3_4": {
         "dna": "multiplication",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g3_na_q3_5": {
         "dna": "patterns",
-        "visual": "PatternSequence"
+        "visual": "pattern_sequence"
     },
     "mat_g3_na_q3_6": {
         "dna": "patterns",
-        "visual": "PatternSequence"
+        "visual": "pattern_sequence"
     },
     "mat_g3_na_q4_0": {
         "dna": "division",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g3_na_q4_1": {
         "dna": "division",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g3_na_q4_2": {
         "dna": "missing_number",
@@ -781,39 +781,39 @@ BINDINGS = {
     },
     "mat_g3_na_q4_3": {
         "dna": "division",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g3_na_q4_4": {
         "dna": "division",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g3_na_q4_5": {
         "dna": "division",
-        "visual": "BarChart"
+        "visual": "array_grid_read"
     },
     "mat_g3_na_q4_6": {
         "dna": "fractions",
-        "visual": "FractionModel"
+        "visual": "fraction_model_read"
     },
     "mat_g3_na_q4_7": {
         "dna": "fractions",
-        "visual": "FractionModel"
+        "visual": "fraction_model_read"
     },
     "mat_g3_mg_q1_0": {
         "dna": "area",
-        "visual": "ShapeBoard"
+        "visual": "shape_board"
     },
     "mat_g3_mg_q1_1": {
         "dna": "area",
-        "visual": "GridArea"
+        "visual": "grid_area"
     },
     "mat_g3_mg_q1_2": {
         "dna": "area",
-        "visual": "GridArea"
+        "visual": "grid_area"
     },
     "mat_g3_mg_q1_3": {
         "dna": "area",
-        "visual": "GridArea"
+        "visual": "grid_area"
     },
     "mat_g3_mg_q1_4": {
         "dna": "geometric_lines",
@@ -829,55 +829,55 @@ BINDINGS = {
     },
     "mat_g3_mg_q2_0": {
         "dna": "mass_capacity",
-        "visual": "BarChart"
+        "visual": "bar_chart_read"
     },
     "mat_g3_mg_q2_1": {
         "dna": "mass_capacity",
-        "visual": "BarChart"
+        "visual": "bar_chart_read"
     },
     "mat_g3_mg_q2_2": {
         "dna": "mass_capacity",
-        "visual": "BarChart"
+        "visual": "bar_chart_read"
     },
     "mat_g3_mg_q2_3": {
         "dna": "mass_capacity",
-        "visual": "BarChart"
+        "visual": "bar_chart_read"
     },
     "mat_g3_mg_q2_4": {
         "dna": "mass_capacity",
-        "visual": "BarChart"
+        "visual": "bar_chart_read"
     },
     "mat_g3_mg_q2_5": {
         "dna": "mass_capacity",
-        "visual": "BarChart"
+        "visual": "bar_chart_read"
     },
     "mat_g3_mg_q4_0": {
         "dna": "symmetry_slides",
-        "visual": "ShapeBoard"
+        "visual": "shape_board"
     },
     "mat_g3_mg_q4_1": {
         "dna": "symmetry_slides",
-        "visual": "ShapeBoard"
+        "visual": "shape_board"
     },
     "mat_g3_mg_q4_2": {
         "dna": "symmetry_slides",
-        "visual": "ShapeBoard"
+        "visual": "shape_board"
     },
     "mat_g3_dp_q3_0": {
         "dna": "pictographs",
-        "visual": "Pictograph"
+        "visual": "pictograph_read"
     },
     "mat_g3_dp_q3_1": {
         "dna": "bar_graphs",
-        "visual": "BarChart"
+        "visual": "bar_chart_read"
     },
     "mat_g3_dp_q3_2": {
         "dna": "bar_graphs",
-        "visual": "BarChart"
+        "visual": "bar_chart_read"
     },
     "mat_g3_dp_q3_3": {
         "dna": "bar_graphs",
-        "visual": "BarChart"
+        "visual": "bar_chart_read"
     },
     "mat_g3_dp_q3_4": {
         "dna": "probability_language",

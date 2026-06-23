@@ -193,6 +193,7 @@ def generate_params(
         "common_difference": step if pattern_type != "repeating" else 0,
         "first":             first_val,
         "position":          position,
+        "pattern_kind":      pattern_type,
     }
 
 

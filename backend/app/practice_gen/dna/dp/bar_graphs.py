@@ -118,11 +118,15 @@ def generate_params(
     # Values are multiples of scale
     values = [rng.randint(val_lo // scale, val_hi // scale) * scale for _ in categories]
 
-    base = {
+    vp = {
         "categories": categories,
         "values": values,
         "scale": scale,
         "orientation": orientation,
+    }
+
+    base = {
+        "visual_params": vp,
         "task_type": task_type,
     }
 

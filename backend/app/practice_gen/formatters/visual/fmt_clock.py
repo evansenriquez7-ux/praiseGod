@@ -193,6 +193,20 @@ def format_clock(
         hours = vp["hours"]
         minutes = vp["minutes"]
         use_24 = vp.get("use_24_hour", ctx.grade >= 5)
+    elif ctx.values and "hour" in ctx.values:
+        hours = ctx.values["hour"]
+        minutes = ctx.values.get("minute", 0)
+        use_24 = False
+        vp = {
+            "hours": hours,
+            "minutes": minutes,
+            "display_hours": hours,
+            "target_time": f"{hours}:{minutes:02d}",
+            "use_24_hour": use_24,
+            "minute_angle": (minutes / 60) * 360,
+            "hour_angle": ((hours % 12) / 12) * 360 + (minutes / 60) * 30,
+            "minute_snap_interval": 5,
+        }
     else:
         # Derive difficulty level from ctx (1–4 int scale)
         _difficulty_map = {1: 1, 2: 2, 3: 3, 4: 4}

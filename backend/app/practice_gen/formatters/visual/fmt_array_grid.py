@@ -196,6 +196,30 @@ def format_array_grid(
     # ── 1. Resolve visual_params ───────────────────────────────────────────────
     if ctx.visual_params and "correct_count" in ctx.visual_params:
         vp = ctx.visual_params.copy()
+    elif ctx.values and "sides" in ctx.values and "l" in ctx.values["sides"]:
+        l = ctx.values["sides"]["l"]
+        w = ctx.values["sides"]["w"]
+        vp = {
+            "rows": l,
+            "cols": w,
+            "shaded": True,
+            "highlight_groups": [],
+            "shape_type": "rectangle",
+            "correct_count": l * w,
+            "grid_size": [l + 1, w + 1],
+        }
+    elif ctx.values and "groups" in ctx.values and "n" in ctx.values:
+        rows = ctx.values["groups"]
+        cols = ctx.values["n"]
+        vp = {
+            "rows": rows,
+            "cols": cols,
+            "shaded": True,
+            "highlight_groups": [],
+            "shape_type": "rectangle",
+            "correct_count": rows * cols,
+            "grid_size": [rows + 1, cols + 1],
+        }
     else:
         diff_profile = ctx.difficulty_profile or {}
         diff_level = min(len(diff_profile) + 1, 4) if diff_profile else 2

@@ -164,9 +164,9 @@ _FORMATTER_ROUTES: Dict[str, tuple] = {
         "format_balance_scale",
         {"interaction_mode": "read", "answer_collection": "mcq"},
     ),
-    "pattern_sequence": (
-        "backend.app.practice_gen.formatters.visual.fmt_pattern_sequence",
-        "format_pattern_sequence",
+    "grid_area": (
+        "backend.app.practice_gen.formatters.visual.fmt_array_grid",
+        "format_array_grid",
         {"interaction_mode": "read", "answer_collection": "mcq"},
     ),
     "calendar_read": (
@@ -213,6 +213,11 @@ _FORMATTER_ROUTES: Dict[str, tuple] = {
     "fraction_shade": (
         "backend.app.practice_gen.formatters.visual.fmt_fraction_shade",
         "format_fraction_shade",
+        {"interaction_mode": "set", "answer_collection": "fill_in_blank"},
+    ),
+    "pictograph_set": (
+        "backend.app.practice_gen.formatters.visual.fmt_pictograph",
+        "format_pictograph",
         {"interaction_mode": "set", "answer_collection": "fill_in_blank"},
     ),
     "fill_in_table": (
@@ -740,27 +745,24 @@ def to_legacy_dict(problem: FormattedProblem) -> Dict[str, Any]:
         options = options_raw
 
     # Map question_mode based on visual type for proper grading in main.py
-    question_mode = problem.interaction_mode or "mcq"
+    # If the visual is in read mode, use its answer collection so the frontend renders MCQ or inputs
+    if problem.interaction_mode == "read" or not problem.is_visual:
+        question_mode = problem.answer_collection or "mcq"
+    else:
+        question_mode = problem.interaction_mode
+
     if problem.visual_type == "PesoMoney":
         if problem.interaction_mode == "set":
             question_mode = "currency_picker"
-        else:
-            question_mode = "read"
     elif problem.visual_type == "ClockSet":
         if problem.interaction_mode == "set":
             question_mode = "clock_set"
-        else:
-            question_mode = "read"
     elif problem.visual_type == "BarChart":
         if problem.interaction_mode == "set":
             question_mode = "plotter_bar"
-        else:
-            question_mode = "read_bar"
     elif problem.visual_type == "NumberLine":
         if problem.interaction_mode == "set":
             question_mode = "number_line"
-        else:
-            question_mode = "read"
     elif problem.visual_type == "SortOrder":
         question_mode = "ordering"
 
