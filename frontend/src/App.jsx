@@ -1556,6 +1556,8 @@ function App() {
                                         if (!part.startsWith('$')) return <span key={i}>{part}</span>;
                                         // Strip $ delimiters
                                         let inner = part.slice(1, -1);
+                                        // Process \frac FIRST so nested braces don't break color commands
+                                        inner = inner.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2');
                                         // Replace color commands with styled spans
                                         let hasColor = false;
                                         for (const [cmd, color] of Object.entries(colorMap)) {
@@ -1566,8 +1568,7 @@ function App() {
                                           }
                                         }
                                         // Remove remaining LaTeX commands
-                                        inner = inner.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2')
-                                                     .replace(/\\Large/g, '')
+                                        inner = inner.replace(/\\Large/g, '')
                                                      .replace(/\\\w+\{([^}]+)\}/g, '$1')
                                                      .replace(/\{|\}/g, '')
                                                      .trim();
