@@ -1750,9 +1750,40 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
                     height: `${(barValues[idx] / max_y) * 100}%`,
                     overflow: 'hidden'
                   }}>
-                    {Array.from({ length: Math.round(barValues[idx] / scale) }).map((_, i) => (
-                      <span key={i} style={{ fontSize: '24px', lineHeight: '1' }}>{params.symbol || '🍎'}</span>
-                    ))}
+                    {(() => {
+                      const totalSymbols = Math.round(barValues[idx] / scale);
+                      if (totalSymbols <= 50) {
+                        return Array.from({ length: totalSymbols }).map((_, i) => (
+                          <span key={i} style={{ fontSize: '24px', lineHeight: '1' }}>{params.symbol || '🍎'}</span>
+                        ));
+                      }
+                      
+                      // For > 50, do grouping to prevent DOM bloat and make it readable
+                      const numThousands = Math.floor(totalSymbols / 1000);
+                      const remThousands = totalSymbols % 1000;
+                      const numHundreds = Math.floor(remThousands / 100);
+                      const remHundreds = remThousands % 100;
+                      const numTens = Math.floor(remHundreds / 10);
+                      const numOnes = remHundreds % 10;
+                      
+                      const renderGroup = (count, label, color) => {
+                        return Array.from({ length: count }).map((_, i) => (
+                          <div key={`${label}-${i}`} style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <span style={{ fontSize: '28px', lineHeight: '1', opacity: 0.9 }}>{params.symbol || '🍎'}</span>
+                            <span style={{ position: 'absolute', fontSize: '11px', fontWeight: 900, color: 'white', background: color, borderRadius: '4px', padding: '1px 3px', zIndex: 2, boxShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>{label}</span>
+                          </div>
+                        ));
+                      };
+                      
+                      return (
+                        <div style={{ display: 'flex', flexDirection: 'column-reverse', gap: '4px', alignItems: 'center' }}>
+                          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2px' }}>{renderGroup(numOnes, '1x', '#475569')}</div>
+                          {numTens > 0 && <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2px' }}>{renderGroup(numTens, '10x', '#2563eb')}</div>}
+                          {numHundreds > 0 && <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2px' }}>{renderGroup(numHundreds, '100x', '#16a34a')}</div>}
+                          {numThousands > 0 && <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2px' }}>{renderGroup(numThousands, '1k', '#dc2626')}</div>}
+                        </div>
+                      );
+                    })()}
                   </div>
                 ) : (
                   <div style={{
