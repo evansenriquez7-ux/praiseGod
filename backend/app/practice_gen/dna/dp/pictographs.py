@@ -67,10 +67,24 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "scale_type":      ["no_scale", "scale_2", "scale_5", "scale_10"],
-    "num_categories":  ["three_four", "five_six"],
-}
+_DIFFICULTY_AXES = [
+    {
+        "name": "num_categories",
+        "label": "Number of Categories",
+        "dim_type": "continuous",
+        "default_min": 3,
+        "default_max": 6,
+        "divisions": 4,
+    },
+    {
+        "name": "value_max",
+        "label": "Maximum Value per Category",
+        "dim_type": "continuous",
+        "default_min": 5,
+        "default_max": 50,
+        "divisions": 5,
+    },
+]
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
@@ -115,7 +129,6 @@ def generate_params(
 
     scale_type    = profile.get("scale_type", "no_scale" if grade == 1 else "scale_2")
     task_type     = profile.get("task_type", "read_value")
-    num_cat_level = profile.get("num_categories", "three_four")
 
     # Determine scale
     if scale_type == "no_scale" or grade == 1:
@@ -124,20 +137,21 @@ def generate_params(
         scale = 2
     elif scale_type == "scale_5":
         scale = 5
-    else:
+    elif scale_type == "scale_10":
         scale = 10
+    else:
+        scale = 1
 
     # Number of categories
-    if num_cat_level == "three_four":
-        num_cats = rng.randint(
-            int(profile.get("num_categories_min", bounds["num_categories_min"])),
-            min(4, int(profile.get("num_categories_max", bounds["num_categories_max"]))),
-        )
+    cat_min = bounds["num_categories_min"]
+    cat_max = bounds["num_categories_max"]
+    from backend.app.practice_gen.dna.base import linear_interpolate
+    
+    if "num_categories" in profile:
+        num_cats = int(linear_interpolate(cat_min, cat_max, float(profile["num_categories"])))
     else:
-        num_cats = rng.randint(
-            max(5, int(profile.get("num_categories_min", bounds["num_categories_min"]))),
-            int(profile.get("num_categories_max", bounds["num_categories_max"])),
-        )
+        num_cats = rng.randint(cat_min, cat_max)
+
     num_cats = max(3, min(num_cats, 6))
 
     # Pick categories
@@ -145,15 +159,24 @@ def generate_params(
     categories = cat_set[:num_cats] if len(cat_set) >= num_cats else (cat_set * 2)[:num_cats]
 
     # Generate values (multiples of scale so pictograph pictures are whole numbers)
-    val_lo = int(profile.get("value_min", bounds["value_min"]))
-    val_hi = int(profile.get("value_max", bounds["value_max"]))
+    val_lo = bounds["value_min"]
+    val_hi = bounds["value_max"]
 
-    scalar = profile.get("difficulty_scalar")
-    if scalar is not None:
-        from backend.app.practice_gen.dna.base import linear_interpolate
-        val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, float(scalar))))
+    if "value_max" in profile:
+        val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, float(profile["value_max"]))))
+        
+    scalar = float(profile.get("difficulty_scalar", 0.5))
+    if "value_max" not in profile:
+        val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, scalar)))
 
-    values = [rng.randint(val_lo, val_hi // scale) * scale for _ in categories]
+
+    import math
+    min_mult = math.ceil(val_lo / scale) if scale > 0 else val_lo
+    max_mult = val_hi // scale if scale > 0 else val_hi
+    if max_mult < min_mult:
+        max_mult = min_mult
+    
+    values = [rng.randint(min_mult, max_mult) * scale for _ in categories]
     vp = {
         "categories": categories,
         "counts": values,

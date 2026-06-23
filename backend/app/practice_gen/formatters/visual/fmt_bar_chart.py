@@ -240,37 +240,44 @@ def format_bar_chart(
     values2 = vp.get("values2")
     series_labels = vp.get("series_labels")
 
-    # ── 2. Determine query target for "read" mode ─────────────────────────────
-    ask_idx = rng.randint(0, len(categories) - 1)
-    ask_cat = categories[ask_idx]
+    task_type = vp.get("task_type", ctx.values.get("task_type", "read_value"))
+    traps = _build_traps(vp, rng)
+    ask_idx = 0
     ask_series = series_labels[0] if series_labels else None
 
     if interaction_mode == "read":
-        vp["ask_category"] = ask_cat
-        vp["ask_series"] = ask_series
         vp["is_read_mode"] = True
-
-        if values2 and ask_series:
-            correct_value = values[ask_idx] if ask_series == series_labels[0] else values2[ask_idx]
+        if task_type in ("compare_bars", "compare"):
+            comp_a = ctx.values.get("compare_a", categories[0])
+            comp_b = ctx.values.get("compare_b", categories[1])
+            correct_value = ctx.correct_answer if ctx.correct_answer is not None else (comp_a if values[categories.index(comp_a)] >= values[categories.index(comp_b)] else comp_b)
+            question_text = f"Look at the bar graph. Which is greater: {comp_a} or {comp_b}?"
+        elif task_type == "find_total":
+            correct_value = ctx.correct_answer if ctx.correct_answer is not None else sum(values)
+            question_text = "Look at the bar graph. What is the total value of all categories?"
+        elif task_type == "find_difference":
+            comp_a = ctx.values.get("compare_a", categories[0])
+            comp_b = ctx.values.get("compare_b", categories[1])
+            correct_value = ctx.correct_answer if ctx.correct_answer is not None else abs(values[categories.index(comp_a)] - values[categories.index(comp_b)])
+            question_text = f"Look at the bar graph. What is the difference between {comp_a} and {comp_b}?"
+        elif task_type == "find_most_least":
+            direction = ctx.values.get("direction", "most")
+            correct_value = ctx.correct_answer if ctx.correct_answer is not None else (categories[values.index(max(values))] if direction == "most" else categories[values.index(min(values))])
+            question_text = f"Look at the bar graph. Which category has the {direction}?"
         else:
-            correct_value = values[ask_idx]
+            ask_idx = rng.randint(0, len(categories) - 1)
+            ask_cat = categories[ask_idx]
+            vp["ask_category"] = ask_cat
+            vp["ask_series"] = ask_series
+            if values2 and ask_series:
+                correct_value = values[ask_idx] if ask_series == series_labels[0] else values2[ask_idx]
+                question_text = f"Look at the double bar graph. What is the value for {ask_cat} in {ask_series}?"
+            else:
+                correct_value = values[ask_idx]
+                question_text = f"Look at the bar graph. What is the value for {ask_cat}?"
     else:
         vp["is_read_mode"] = False
-        # "set" mode: correct answer is the full values list
         correct_value = values if not values2 else [values, values2]
-
-    traps = _build_traps(vp, rng)
-
-    # ── 3. Question text ──────────────────────────────────────────────────────
-    if interaction_mode == "read":
-        if values2 and series_labels:
-            question_text = (
-                f"Look at the double bar graph. "
-                f"What is the value for {ask_cat} in {ask_series}?"
-            )
-        else:
-            question_text = f"Look at the bar graph. What is the value for {ask_cat}?"
-    else:
         data_str = ", ".join(f"{categories[i]}: {values[i]}" for i in range(len(categories)))
         orient_hint = " (horizontal bars)" if vp.get("orientation") == "horizontal" else ""
         question_text = f"Create a bar graph{orient_hint} to show: {data_str}."
@@ -280,24 +287,42 @@ def format_bar_chart(
     if answer_collection == "mcq" and interaction_mode == "read":
         seen = {correct_value}
         distractor_vals = []
-        for t in traps.values():
-            tv = t.get("values")
-            if isinstance(tv, list) and len(tv) > ask_idx:
-                d = tv[ask_idx]
-                if d not in seen and d >= 0:
-                    seen.add(d)
-                    distractor_vals.append(d)
-            if len(distractor_vals) == 3:
-                break
-        scale = vp.get("scale", 1)
-        offsets_steps = [1, 2, 3, -1, -2]
-        for off in offsets_steps:
-            if len(distractor_vals) >= 3:
-                break
-            candidate = correct_value + off * scale
-            if candidate > 0 and candidate not in seen:
-                seen.add(candidate)
-                distractor_vals.append(candidate)
+        
+        if isinstance(correct_value, str):
+            for cat in categories:
+                if cat != correct_value and len(distractor_vals) < 3:
+                    distractor_vals.append(cat)
+                    seen.add(cat)
+            pad_idx = 1
+            while len(distractor_vals) < 3:
+                distractor_vals.append(f"Option {pad_idx}")
+                pad_idx += 1
+        else:
+            for t in traps.values():
+                tv = t.get("values")
+                if isinstance(tv, list) and len(tv) > ask_idx:
+                    d = tv[ask_idx]
+                    if task_type == "find_total":
+                        d = sum(tv)
+                    elif task_type == "find_difference":
+                        comp_a = ctx.values.get("compare_a", categories[0])
+                        comp_b = ctx.values.get("compare_b", categories[1])
+                        d = abs(tv[categories.index(comp_a)] - tv[categories.index(comp_b)])
+                    
+                    if d not in seen and d >= 0:
+                        seen.add(d)
+                        distractor_vals.append(d)
+                if len(distractor_vals) == 3:
+                    break
+            scale = vp.get("scale", 1)
+            offsets_steps = [1, 2, 3, -1, -2]
+            for off in offsets_steps:
+                if len(distractor_vals) >= 3:
+                    break
+                candidate = correct_value + off * scale
+                if candidate >= 0 and candidate not in seen:
+                    seen.add(candidate)
+                    distractor_vals.append(candidate)
 
         all_opts = [correct_value] + distractor_vals[:3]
         rng.shuffle(all_opts)

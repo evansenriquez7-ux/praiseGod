@@ -159,28 +159,33 @@ def format_pictograph(
     counts: List[int] = vp["counts"]
     scale: int = vp["scale"]
 
-    # ── 2. Pick query category for read mode ──────────────────────────────────
-    ask_idx = rng.randint(0, len(categories) - 1)
-    ask_cat = categories[ask_idx]
-    correct_count = counts[ask_idx]
-
-    if interaction_mode == "read":
-        vp["ask_category"] = ask_cat
-
+    task_type = vp.get("task_type", ctx.values.get("task_type", "read_value"))
     traps = _build_traps(vp, rng)
-
-    # ── 3. Question text ──────────────────────────────────────────────────────
+    ask_idx = 0
+    
     if interaction_mode == "read":
-        if scale > 1:
-            question_text = (
-                f"Look at the picture graph. Each {vp['symbol']} = {scale}. "
-                f"How many are in {ask_cat}?"
-            )
-        else:
-            question_text = (
-                f"Look at the picture graph. "
-                f"How many are in {ask_cat}?"
-            )
+        if task_type in ("compare_two", "compare"):
+            comp_a = ctx.values.get("compare_a", categories[0])
+            comp_b = ctx.values.get("compare_b", categories[1])
+            correct_count = ctx.correct_answer if ctx.correct_answer is not None else (comp_a if counts[categories.index(comp_a)] >= counts[categories.index(comp_b)] else comp_b)
+            question_text = f"Look at the picture graph. Which has more: {comp_a} or {comp_b}?"
+        elif task_type == "find_total":
+            correct_count = ctx.correct_answer if ctx.correct_answer is not None else sum(counts)
+            question_text = "Look at the picture graph. What is the total number of items shown?"
+        elif task_type == "find_difference":
+            comp_a = ctx.values.get("compare_a", categories[0])
+            comp_b = ctx.values.get("compare_b", categories[1])
+            correct_count = ctx.correct_answer if ctx.correct_answer is not None else abs(counts[categories.index(comp_a)] - counts[categories.index(comp_b)])
+            question_text = f"Look at the picture graph. What is the difference between {comp_a} and {comp_b}?"
+        else: # read_value
+            ask_idx = rng.randint(0, len(categories) - 1)
+            ask_cat = categories[ask_idx]
+            correct_count = counts[ask_idx]
+            vp["ask_category"] = ask_cat
+            if scale > 1:
+                question_text = f"Look at the picture graph. Each {vp['symbol']} = {scale}. How many are in {ask_cat}?"
+            else:
+                question_text = f"Look at the picture graph. How many are in {ask_cat}?"
     else:
         data_str = ", ".join(f"{categories[i]}: {counts[i]}" for i in range(len(categories)))
         if scale > 1:
@@ -199,23 +204,44 @@ def format_pictograph(
     if answer_collection == "mcq" and interaction_mode == "read":
         seen = {correct_count}
         distractor_vals = []
-        for t in traps.values():
-            tv = t.get("values")
-            if isinstance(tv, list) and len(tv) > ask_idx:
-                d = tv[ask_idx]
-                if d not in seen and d > 0:
-                    seen.add(d)
-                    distractor_vals.append(d)
-            if len(distractor_vals) == 3:
-                break
-        # Pad
-        for off in [scale, scale * 2, -scale, scale * 3]:
-            if len(distractor_vals) >= 3:
-                break
-            candidate = correct_count + off
-            if candidate > 0 and candidate not in seen:
-                seen.add(candidate)
-                distractor_vals.append(candidate)
+        
+        if isinstance(correct_count, str):
+            # The answer is a category name
+            for cat in categories:
+                if cat != correct_count and len(distractor_vals) < 3:
+                    distractor_vals.append(cat)
+                    seen.add(cat)
+            # if still need padding, just make up some generic names? (shouldnt happen, min 3 categories)
+            pad_idx = 1
+            while len(distractor_vals) < 3:
+                distractor_vals.append(f"Option {pad_idx}")
+                pad_idx += 1
+        else:
+            # The answer is a number
+            for t in traps.values():
+                tv = t.get("values")
+                if isinstance(tv, list) and len(tv) > ask_idx:
+                    d = tv[ask_idx]
+                    if task_type == "find_total":
+                        d = sum(tv)
+                    elif task_type == "find_difference":
+                        comp_a = ctx.values.get("compare_a", categories[0])
+                        comp_b = ctx.values.get("compare_b", categories[1])
+                        d = abs(tv[categories.index(comp_a)] - tv[categories.index(comp_b)])
+                    
+                    if d not in seen and d >= 0:
+                        seen.add(d)
+                        distractor_vals.append(d)
+                if len(distractor_vals) == 3:
+                    break
+            # Pad
+            for off in [scale, scale * 2, -scale, scale * 3]:
+                if len(distractor_vals) >= 3:
+                    break
+                candidate = correct_count + off
+                if candidate >= 0 and candidate not in seen:
+                    seen.add(candidate)
+                    distractor_vals.append(candidate)
 
         all_opts = [correct_count] + distractor_vals[:3]
         rng.shuffle(all_opts)

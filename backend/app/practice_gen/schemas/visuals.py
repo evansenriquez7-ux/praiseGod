@@ -106,6 +106,10 @@ class GridAreaParams(BaseVisualParams):
     cols: int
     title: Optional[str] = None
 
+class FillInTableParams(BaseModel):
+    columns: List[str] = Field(description="Column headers")
+    rows: List[List[Any]] = Field(description="Table rows (values can be numbers, strings, or None for blank)")
+
 class VisualSchemaRegistry:
     """Registry to map visual types to their Pydantic schemas."""
     SCHEMAS = {
@@ -125,7 +129,8 @@ class VisualSchemaRegistry:
         "PatternSequence": PatternSequenceParams,
         "RulerMeasure": RulerMeasureParams,
         "BalanceScale": BalanceScaleParams,
-        "GridArea": GridAreaParams
+        "GridArea": GridAreaParams,
+        "FillInTable": FillInTableParams,
     }
 
     @classmethod

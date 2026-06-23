@@ -65,9 +65,24 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "scale":       ["scale_5", "scale_10", "scale_20"],
-}
+_DIFFICULTY_AXES = [
+    {
+        "name": "num_categories",
+        "label": "Number of Categories",
+        "dim_type": "continuous",
+        "default_min": 3,
+        "default_max": 6,
+        "divisions": 3,
+    },
+    {
+        "name": "value_max",
+        "label": "Maximum Value",
+        "dim_type": "continuous",
+        "default_min": 20,
+        "default_max": 100,
+        "divisions": 4,
+    },
+]
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
@@ -106,17 +121,39 @@ def generate_params(
     scale_map = {"scale_5": 5, "scale_10": 10, "scale_20": 20}
     scale = scale_map.get(scale_level, 5)
 
-    num_cats = rng.randint(bounds["num_categories_min"], bounds["num_categories_max"])
+    # Number of categories
+    cat_min = bounds["num_categories_min"]
+    cat_max = bounds["num_categories_max"]
+    from backend.app.practice_gen.dna.base import linear_interpolate
+    
+    if "num_categories" in profile:
+        num_cats = int(linear_interpolate(cat_min, cat_max, float(profile["num_categories"])))
+    else:
+        num_cats = rng.randint(cat_min, cat_max)
+    
+    num_cats = max(3, min(num_cats, 6))
+
     cat_set  = rng.choice(_CATEGORY_SETS)
     categories = cat_set[:num_cats] if len(cat_set) >= num_cats else (cat_set * 2)[:num_cats]
 
     val_lo = max(bounds["value_min"], scale)
     val_hi = bounds["value_max"]
+
+    if "value_max" in profile:
+        val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, float(profile["value_max"]))))
+    
     scalar = float(profile.get("difficulty_scalar", 0.5))
-    val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, scalar)))
+    if "value_max" not in profile:
+        val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, scalar)))
+    
+    import math
+    min_mult = math.ceil(val_lo / scale) if scale > 0 else val_lo
+    max_mult = val_hi // scale if scale > 0 else val_hi
+    if max_mult < min_mult:
+        max_mult = min_mult
     
     # Values are multiples of scale
-    values = [rng.randint(val_lo // scale, val_hi // scale) * scale for _ in categories]
+    values = [rng.randint(min_mult, max_mult) * scale for _ in categories]
 
     vp = {
         "categories": categories,

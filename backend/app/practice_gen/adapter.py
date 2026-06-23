@@ -221,8 +221,8 @@ _FORMATTER_ROUTES: Dict[str, tuple] = {
         {"interaction_mode": "set", "answer_collection": "fill_in_blank"},
     ),
     "fill_in_table": (
-        "backend.app.practice_gen.formatters.visual.fmt_pattern_sequence",
-        "format_pattern_sequence",
+        "backend.app.practice_gen.formatters.visual.fmt_fill_in_table",
+        "format_fill_in_table",
         {"interaction_mode": "set", "answer_collection": "fill_in_blank"},
     ),
     "number_bond": (
