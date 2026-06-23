@@ -17,7 +17,10 @@ from __future__ import annotations
 import random
 from typing import Any, Dict, List, Optional
 
-from .compatibility import get_formatters_for_dna
+from backend.app.practice_gen.compatibility import (
+    get_formatters_for_dna,
+    get_compatible_formatters_for_variant,
+)
 from .dna.base import FormattedProblem, QuestionContext
 from .generators.base_generator import _import_dna_module, generate_context
 from .registry import get_node_dnas, get_node_info
@@ -560,6 +563,11 @@ def generate_problem(
     # 5. Pick formatter
     if formatter is None:
         available = get_formatters_for_dna(dna_name)
+        task_type = ctx.values.get("task_type")
+        if task_type:
+            compatible = get_compatible_formatters_for_variant(dna_name, "task_type", task_type)
+            if compatible:
+                available = [fmt for fmt in available if fmt in compatible]
         if allowed_formatters:
             available = [fmt for fmt in available if fmt in allowed_formatters]
         if not available:

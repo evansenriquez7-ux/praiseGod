@@ -590,6 +590,7 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     # ── Data & Probability ────────────────────────────────────────────────────
 
     "pictographs": {
+        "mcq": {"task_type": ["read_value", "compare_two", "find_total", "find_difference"]},
         "pictograph_read": {"task_type": ["read_value", "compare_two", "find_total", "find_difference"]},
         "pictograph_set": {"task_type": ["present_data"]},
         "fill_in_table": {"task_type": ["organize_table"]},
