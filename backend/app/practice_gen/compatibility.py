@@ -239,8 +239,11 @@ COMPATIBILITY: Dict[str, List[str]] = {
     # ── Data & Probability ────────────────────────────────────────────────────
 
     "pictographs": [
+        "mcq",
         "bar_chart_read",
         "pictograph_read",
+        "pictograph_set",
+        "fill_in_table",
     ],
 
     "bar_graphs": [
@@ -436,7 +439,8 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     # ── Data & Probability ────────────────────────────────────────────────────
 
     "pictographs": {
-        "task_type": ["read_value", "compare", "find_total", "find_difference"],
+        "task_type": ["read_value", "compare", "find_total", "find_difference", "present_data", "organize_table"],
+        "context": ["standard", "interview"],
     },
 
     "bar_graphs": {
@@ -547,8 +551,10 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     # ── Data & Probability ────────────────────────────────────────────────────
 
     "pictographs": {
-        "pictograph_read": {},  # all task types
-        "bar_chart_read": {},  # can also read pictograph data
+        "pictograph_read": {"task_type": ["read_value", "compare", "find_total", "find_difference"]},
+        "bar_chart_read": {"task_type": ["read_value", "compare", "find_total", "find_difference"]},
+        "pictograph_set": {"task_type": ["present_data"]},
+        "fill_in_table": {"task_type": ["organize_table"]},
     },
 
     "bar_graphs": {

@@ -69,7 +69,6 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, List[str]] = {
     "scale_type":      ["no_scale", "scale_2", "scale_5", "scale_10"],
-    "task_type":       ["read_single", "compare_two", "find_total", "find_difference"],
     "num_categories":  ["three_four", "five_six"],
 }
 
@@ -115,7 +114,7 @@ def generate_params(
     bounds = _PARAM_BOUNDS[g_key]
 
     scale_type    = profile.get("scale_type", "no_scale" if grade == 1 else "scale_2")
-    task_type     = profile.get("task_type", "read_single")
+    task_type     = profile.get("task_type", "read_value")
     num_cat_level = profile.get("num_categories", "three_four")
 
     # Determine scale
@@ -131,13 +130,13 @@ def generate_params(
     # Number of categories
     if num_cat_level == "three_four":
         num_cats = rng.randint(
-            bounds["num_categories_min"],
-            min(4, bounds["num_categories_max"]),
+            int(profile.get("num_categories_min", bounds["num_categories_min"])),
+            min(4, int(profile.get("num_categories_max", bounds["num_categories_max"]))),
         )
     else:
         num_cats = rng.randint(
-            max(5, bounds["num_categories_min"]),
-            bounds["num_categories_max"],
+            max(5, int(profile.get("num_categories_min", bounds["num_categories_min"]))),
+            int(profile.get("num_categories_max", bounds["num_categories_max"])),
         )
     num_cats = max(3, min(num_cats, 6))
 
@@ -146,12 +145,18 @@ def generate_params(
     categories = cat_set[:num_cats] if len(cat_set) >= num_cats else (cat_set * 2)[:num_cats]
 
     # Generate values (multiples of scale so pictograph pictures are whole numbers)
-    val_lo = bounds["value_min"]
-    val_hi = bounds["value_max"]
+    val_lo = int(profile.get("value_min", bounds["value_min"]))
+    val_hi = int(profile.get("value_max", bounds["value_max"]))
+
+    scalar = profile.get("difficulty_scalar")
+    if scalar is not None:
+        from backend.app.practice_gen.dna.base import linear_interpolate
+        val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, float(scalar))))
+
     values = [rng.randint(val_lo, val_hi // scale) * scale for _ in categories]
 
     # Choose question target
-    if task_type == "read_single":
+    if task_type in ("read_value", "read_single", "present_data"):
         q_idx = rng.randint(0, len(categories) - 1)
         answer = values[q_idx]
         question_category = categories[q_idx]
@@ -164,7 +169,7 @@ def generate_params(
             "task_type": task_type,
         }
 
-    if task_type == "compare_two":
+    if task_type in ("compare", "compare_two"):
         idx_a, idx_b = rng.sample(range(len(categories)), 2)
         # answer is the category name with more items
         answer_cat = categories[idx_a] if values[idx_a] >= values[idx_b] else categories[idx_b]
@@ -189,17 +194,39 @@ def generate_params(
             "task_type": task_type,
         }
 
-    # find_difference
-    idx_a, idx_b = rng.sample(range(len(categories)), 2)
-    diff = abs(values[idx_a] - values[idx_b])
+    if task_type == "find_difference":
+        idx_a, idx_b = rng.sample(range(len(categories)), 2)
+        diff = abs(values[idx_a] - values[idx_b])
+        return {
+            "categories": categories,
+            "values": values,
+            "scale": scale,
+            "question_category": f"{categories[idx_a]} and {categories[idx_b]}",
+            "compare_a": categories[idx_a],
+            "compare_b": categories[idx_b],
+            "answer": diff,
+            "task_type": task_type,
+        }
+        
+    if task_type == "organize_table":
+        # Table expects all values or something similar, answer can just be the entire dict of categories/values
+        # Or an interaction where they fill in the entire table
+        return {
+            "categories": categories,
+            "values": values,
+            "scale": scale,
+            "question_category": "all",
+            "answer": values,
+            "task_type": task_type,
+        }
+    
+    # fallback
     return {
         "categories": categories,
         "values": values,
         "scale": scale,
-        "question_category": f"{categories[idx_a]} and {categories[idx_b]}",
-        "compare_a": categories[idx_a],
-        "compare_b": categories[idx_b],
-        "answer": diff,
+        "question_category": categories[0],
+        "answer": values[0],
         "task_type": task_type,
     }
 
@@ -214,7 +241,7 @@ def generate_hints(
     scale_label = VOCAB_SCALE.resolve(cumulative_vocab)
     key_label   = VOCAB_KEY.resolve(cumulative_vocab)
     scale       = values.get("scale", 1)
-    task_type   = values.get("task_type", "read_single")
+    task_type   = values.get("task_type", "read_value")
 
     hints = [f"Look at the {pg_label} carefully."]
 
@@ -225,7 +252,7 @@ def generate_hints(
     else:
         hints.append("Each picture stands for 1 item.")
 
-    if task_type == "read_single":
+    if task_type in ("read_value", "read_single", "present_data"):
         cat = values.get("question_category", "the category")
         count = values.get("answer", "?")
         pics = count // scale if scale > 0 else count
@@ -236,8 +263,10 @@ def generate_hints(
         hints.append("Add up the values for ALL categories to find the total.")
     elif task_type == "find_difference":
         hints.append("Read each category's value, then subtract the smaller from the larger.")
-    elif task_type == "compare_two":
+    elif task_type in ("compare", "compare_two"):
         hints.append("Compare the two category values. The one with more pictures has more items.")
+    elif task_type == "organize_table":
+        hints.append(f"Count the items for each category and record them in the table.")
 
     return hints
 
@@ -250,7 +279,7 @@ PICTOGRAPHS_DNA = DNA(
     answer_formula=None,
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,
-    compatible_formatters=["mcq", "numeric_input", "bar_chart_read", "pictograph_read"],
+    compatible_formatters=["mcq", "numeric_input", "bar_chart_read", "pictograph_read", "pictograph_set", "fill_in_table"],
     requires_context=False,
     visual_home="BarChart",
     difficulty_axes=_DIFFICULTY_AXES,
