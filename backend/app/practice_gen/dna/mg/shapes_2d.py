@@ -39,19 +39,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "shape_set": [
-        "basic_triangles_rectangles_squares",
-        "extended_with_circles",
-        "composite_figures",
-    ],
-    "task_type": [
-        "identify_name",
-        "count_sides_corners",
-        "compare_shapes",
-        "compose_decompose",
-    ],
-    "orientation": ["standard", "rotated"],
-}
+    }
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────

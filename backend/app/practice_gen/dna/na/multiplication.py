@@ -77,10 +77,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, Any] = {
-    "table":       ["2_3_4_5_10", "6_7_8_9"],
-    "structure":   ["result_unknown", "factor_unknown"],
-    "number_type": ["single_digit", "multi_digit"],
+_DIFFICULTY_AXES: Dict[str, Any] = {    "number_type": ["single_digit", "multi_digit"],
     "number_difficulty": "continuous",
 }
 
@@ -143,7 +140,10 @@ def generate_params(
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
     allowed_tables = _table_for_level(table_level, grade)
-    a_lo, a_hi     = bounds["a"]
+    from backend.app.practice_gen.dna.base import linear_interpolate
+    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+    a_lo = bounds["a"][0]
+    a_hi = int(linear_interpolate(max(1, a_lo), bounds["a"][1], diff_scalar))
 
     max_prod_val = profile.get("max_product")
     if max_prod_val is not None:

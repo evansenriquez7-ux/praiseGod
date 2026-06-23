@@ -49,8 +49,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, Any] = {
-    "precision":           ["nearest_ten", "nearest_hundred", "nearest_thousand"],
+_DIFFICULTY_AXES: Dict[str, Any] = {    "precision":           ["nearest_ten", "nearest_hundred", "nearest_thousand"],
     "boundary_proximity":  ["far_from_boundary", "near_boundary"],
     "number_difficulty": "continuous",
 }
@@ -101,7 +100,10 @@ def generate_params(
 
     bounds = _PARAM_BOUNDS["g3"]
     min_val = int(profile.get("min_value", bounds["min_value"]))
-    max_val = int(profile.get("max_value", bounds["max_value"]))
+    from backend.app.practice_gen.dna.base import log_interpolate
+    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+    max_val_bound = int(log_interpolate(10, bounds["max_value"], diff_scalar))
+    max_val = int(profile.get("max_value", max_val_bound))
     if min_val >= max_val:
         min_val = max(10, max_val // 10)
 

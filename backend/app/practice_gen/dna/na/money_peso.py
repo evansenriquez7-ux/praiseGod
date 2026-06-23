@@ -71,9 +71,6 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "amount_range":       ["up_to_100", "up_to_1000", "up_to_10000"],
-    "denomination_type":  ["coins_only", "bills_only", "mixed"],
-    "operation":          ["identify_value", "add_amounts", "find_change", "compare", "read_write"],
 }
 
 
@@ -163,7 +160,9 @@ def generate_params(
 
     max_total_prof = profile.get("max_total")
     if max_total_prof is None:
-        max_total = bounds["max_total"]
+        from backend.app.practice_gen.dna.base import log_interpolate
+        diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+        max_total = int(log_interpolate(10, bounds["max_total"], diff_scalar))
     elif isinstance(max_total_prof, (int, float)):
         max_total = int(max_total_prof)
     elif isinstance(max_total_prof, str):

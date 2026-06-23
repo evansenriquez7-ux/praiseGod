@@ -73,11 +73,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, Any] = {
-    "remainder": ["none", "with_remainder"],
-    "table":     ["2_3_4_5_10", "6_7_8_9"],
-    "structure": ["result_unknown", "divisor_unknown"],
-    "number_difficulty": "continuous",
+_DIFFICULTY_AXES: Dict[str, Any] = {    "number_difficulty": "continuous",
 }
 
 _TABLE_SETS: Dict[str, List[int]] = {
@@ -138,17 +134,19 @@ def generate_params(
     g_key        = f"g{max(2, min(grade, 3))}"
     bounds       = _PARAM_BOUNDS[g_key]
     
-    q_max = profile.get("max_quotient")
-    if q_max is None:
-        q_max = bounds["q_max"]
+    q_max_override = profile.get("max_quotient")
+    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+    if q_max_override is None:
+        from backend.app.practice_gen.dna.base import log_interpolate
+        q_max = int(log_interpolate(2, bounds["q_max"], diff_scalar))
     else:
-        q_max = int(q_max)
+        q_max = int(q_max_override)
 
     rem_level    = profile.get("remainder", "none")
     table_level  = profile.get("table", "2_3_4_5_10")
     structure    = profile.get("structure", "result_unknown")
     context      = profile.get("context", "pure")
-    num_diff_scalar = float(profile.get("number_difficulty", 0.5))
+    num_diff_scalar = diff_scalar
 
     allowed_divisors = _table_for_level(table_level, grade)
 

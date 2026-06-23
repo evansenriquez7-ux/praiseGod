@@ -38,9 +38,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "scenario_type": ["certain_impossible", "likely_unlikely", "comparative"],
-    "context":       ["coins", "spinners", "colored_objects", "weather"],
-}
+    }
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────

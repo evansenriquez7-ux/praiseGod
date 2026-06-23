@@ -145,9 +145,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, Any] = {
-    "range":     ["1st_to_10th", "11th_to_20th", "21st_to_100th"],
-    "task_type": ["identify_ordinal", "find_position", "compare_positions"],
+_DIFFICULTY_AXES: Dict[str, Any] = {    "range":     ["1st_to_10th", "11th_to_20th", "21st_to_100th"],
     "number_difficulty": "continuous",
 }
 
@@ -184,7 +182,9 @@ def generate_params(
     g_key = f"g{max(1, min(grade, 3))}"
     bounds = _PARAM_BOUNDS[g_key]
     min_ord = bounds["min_ordinal"]
-    max_ord = bounds["max_ordinal"]
+    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+    from backend.app.practice_gen.dna.base import log_interpolate
+    max_ord = int(log_interpolate(10, bounds["max_ordinal"], diff_scalar))
 
     range_level = profile.get("range", "1st_to_10th")
     task_type   = profile.get("task_type", "identify_ordinal")

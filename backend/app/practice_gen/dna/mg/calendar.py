@@ -64,19 +64,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "task_type": [
-        "read_day_of_week",
-        "read_month",
-        "find_date",
-        "elapsed_days",
-        "elapsed_weeks",
-    ],
-    "calendar_feature": [
-        "days_order",
-        "months_order",
-        "full_calendar",
-    ],
-}
+    }
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────

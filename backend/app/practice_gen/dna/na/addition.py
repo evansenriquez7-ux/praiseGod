@@ -77,8 +77,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 # NOTE: "structure" is a contextual variant, not a difficulty dimension.
 # max_sum is now continuous: accepts numeric value directly (e.g., 20) not level string
-_DIFFICULTY_AXES: Dict[str, Any] = {
-    "max_sum": "continuous",  # Accepts numeric value (2-1000)
+_DIFFICULTY_AXES: Dict[str, Any] = {    "max_sum": "continuous",  # Accepts numeric value (2-1000)
     "regrouping": ["none", "ones", "tens", "double"],
     "number_difficulty": "continuous",  # Continuous axis based on divisibility, digits, and magnitude
 }
@@ -155,25 +154,19 @@ def generate_params(
     rng = random.Random(seed)
     profile = difficulty_profile or {}
 
-    # Get max_sum from profile - accepts numeric value directly
+    g_key = f"g{max(1, min(grade, 3))}"
+    bounds = _PARAM_BOUNDS[g_key]
+    max_result_bound = bounds["max_result"]
+    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+    from backend.app.practice_gen.dna.base import log_interpolate
+    max_result = int(log_interpolate(10, max_result_bound, diff_scalar))
     max_sum_value = profile.get("max_sum")
-    if max_sum_value is None:
-        # Default max_sum based on grade
-        if grade == 1:
-            max_result = 20
-        elif grade == 2:
-            max_result = 100
-        else:
-            max_result = 1000
-    elif isinstance(max_sum_value, (int, float)):
-        # Numeric value provided directly
-        max_result = int(max_sum_value)
-    elif isinstance(max_sum_value, str):
-        # Legacy string value - convert to number
-        legacy_map = {"up_to_10": 10, "up_to_20": 20, "up_to_50": 50, "up_to_100": 100, "up_to_1000": 1000}
-        max_result = legacy_map.get(max_sum_value, 20)
-    else:
-        max_result = 20
+    if max_sum_value is not None:
+        if isinstance(max_sum_value, (int, float)):
+            max_result = int(max_sum_value)
+        elif isinstance(max_sum_value, str):
+            legacy_map = {"up_to_10": 10, "up_to_20": 20, "up_to_50": 50, "up_to_100": 100, "up_to_1000": 1000}
+            max_result = legacy_map.get(max_sum_value, max_result)
     
     # Ensure reasonable bounds
     max_result = max(2, min(max_result, 10000))

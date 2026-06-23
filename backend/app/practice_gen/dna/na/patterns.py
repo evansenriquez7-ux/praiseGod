@@ -51,11 +51,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, Any] = {
-    "pattern_type":  ["repeating", "arithmetic_increasing", "arithmetic_decreasing", "combined"],
-    "element_type":  ["numbers", "number_words"],
-    "ask_type":      ["next_term", "missing_middle", "state_rule"],
-    "number_difficulty": "continuous",
+_DIFFICULTY_AXES: Dict[str, Any] = {    "number_difficulty": "continuous",
 }
 
 
@@ -106,16 +102,23 @@ def generate_params(
 
     g_key = f"g{max(1, min(grade, 3))}"
     bounds = _PARAM_BOUNDS[g_key]
-    max_val = int(profile.get("max_value", bounds["max_value"]))
-    step_lo, step_hi = bounds["step"]
-    step_lo = int(profile.get("step_lo", step_lo))
-    step_hi = int(profile.get("step_hi", step_hi))
+    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+    from backend.app.practice_gen.dna.base import log_interpolate, linear_interpolate
+    
+    max_val_bound = int(log_interpolate(10, bounds["max_value"], diff_scalar))
+    max_val = int(profile.get("max_value", max_val_bound))
+    
+    step_lo_bound, step_hi_bound = bounds["step"]
+    step_hi_bound = int(linear_interpolate(step_lo_bound, step_hi_bound, diff_scalar))
+    step_lo = int(profile.get("step_lo", step_lo_bound))
+    step_hi = int(profile.get("step_hi", step_hi_bound))
 
-    cyc_lo, cyc_hi  = bounds["cycle_length"]
-    cyc_lo = int(profile.get("cycle_lo", cyc_lo))
-    cyc_hi = int(profile.get("cycle_hi", cyc_hi))
+    cyc_lo_bound, cyc_hi_bound  = bounds["cycle_length"]
+    cyc_hi_bound = int(linear_interpolate(cyc_lo_bound, cyc_hi_bound, diff_scalar))
+    cyc_lo = int(profile.get("cycle_lo", cyc_lo_bound))
+    cyc_hi = int(profile.get("cycle_hi", cyc_hi_bound))
 
-    num_diff_scalar = float(profile.get("number_difficulty", 0.5))
+    num_diff_scalar = diff_scalar
 
     pattern_type = profile.get("pattern_type", "arithmetic_increasing")
     ask_type     = profile.get("ask_type", "next_term")

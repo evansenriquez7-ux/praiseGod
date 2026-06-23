@@ -45,9 +45,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "range":      ["up_to_20", "up_to_100", "up_to_1000", "up_to_10000"],
-    "task_type":  ["compare_two", "order_set", "find_between"],
+_DIFFICULTY_AXES: Dict[str, List[str]] = {    "range":      ["up_to_20", "up_to_100", "up_to_1000", "up_to_10000"],
     "proximity":  ["far_apart", "close_together"],
 }
 
@@ -100,7 +98,9 @@ def generate_params(
 
     max_val_prof = profile.get("max_value")
     if max_val_prof is None:
-        effective_max = bounds["max_value"]
+        from backend.app.practice_gen.dna.base import log_interpolate
+        diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+        effective_max = int(log_interpolate(10, bounds["max_value"], diff_scalar))
     elif isinstance(max_val_prof, (int, float)):
         effective_max = int(max_val_prof)
     elif isinstance(max_val_prof, str):

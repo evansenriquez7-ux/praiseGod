@@ -75,9 +75,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, Any] = {
-    "range":           "continuous",
-    "skip_interval":   ["by_1", "by_2_5_10", "by_20_50_100"],
+_DIFFICULTY_AXES: Dict[str, Any] = {    "range":           "continuous",
 }
 
 
@@ -139,7 +137,11 @@ def generate_params(
     context = profile.get("context", "pure")
     spine = profile.get("spine", None)
 
-    max_num_limit = bounds["max_num"]
+    from backend.app.practice_gen.dna.base import log_interpolate
+
+    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+
+    max_num_limit = int(log_interpolate(10, bounds["max_num"], diff_scalar))
     lo = bounds.get("min_value", 1)
 
     range_val = profile.get("range", 0.0)

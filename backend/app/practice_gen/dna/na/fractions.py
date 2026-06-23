@@ -88,11 +88,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, Any] = {
-    "fraction_type":  ["unit_fraction", "similar_proper", "mixed_number"],
-    "fraction_model": ["area_model", "set_model", "number_line"],
-    "operation":      ["identify_name", "compare", "add_subtract"],
-    "number_difficulty": "continuous",
+_DIFFICULTY_AXES: Dict[str, Any] = {    "number_difficulty": "continuous",
 }
 
 

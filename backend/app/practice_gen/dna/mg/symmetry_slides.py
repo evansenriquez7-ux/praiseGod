@@ -33,9 +33,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "concept":    ["slide_translation", "line_symmetry", "complete_symmetric_figure"],
-    "directions": ["one_direction", "two_directions"],
-}
+    }
 
 
 # ─── static item pool ─────────────────────────────────────────────────────────

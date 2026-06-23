@@ -72,11 +72,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, Any] = {
-    "operation":       ["addition_subtraction", "multiplication_division"],
-    "blank_position":  ["result", "change", "start"],
-    "equation_type":   ["standard", "balance_expression"],
-    "number_difficulty": "continuous",
+_DIFFICULTY_AXES: Dict[str, Any] = {    "number_difficulty": "continuous",
 }
 
 
@@ -138,12 +134,16 @@ def generate_params(
 
     max_result = profile.get("max_result")
     if max_result is None:
-        max_result = bounds["max_result"]
+        from backend.app.practice_gen.dna.base import log_interpolate
+        diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+        max_result = int(log_interpolate(10, bounds["max_result"], diff_scalar))
     else:
         try:
             max_result = int(max_result)
         except ValueError:
-            max_result = bounds["max_result"]
+            from backend.app.practice_gen.dna.base import log_interpolate
+            diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+            max_result = int(log_interpolate(10, bounds["max_result"], diff_scalar))
 
     tables         = profile.get("tables", bounds["tables"])
     if isinstance(tables, str):

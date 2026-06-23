@@ -14,6 +14,7 @@ from backend.app.practice_gen.dna.base import (
     DNA,
     ErrorPattern,
     VocabGated,
+    linear_interpolate,
 )
 
 
@@ -65,8 +66,6 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "orientation": ["vertical", "horizontal"],
-    "task_type":   ["read_value", "compare_bars", "find_total", "find_difference", "find_most_least"],
     "scale":       ["scale_5", "scale_10", "scale_20"],
 }
 
@@ -113,6 +112,9 @@ def generate_params(
 
     val_lo = max(bounds["value_min"], scale)
     val_hi = bounds["value_max"]
+    scalar = float(profile.get("difficulty_scalar", 0.5))
+    val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, scalar)))
+    
     # Values are multiples of scale
     values = [rng.randint(val_lo // scale, val_hi // scale) * scale for _ in categories]
 

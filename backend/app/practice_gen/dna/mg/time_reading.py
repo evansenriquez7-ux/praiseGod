@@ -58,9 +58,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, List[str]] = {
     "precision":    ["hour", "half_hour", "quarter_hour", "five_minutes", "one_minute"],
-    "mode":         ["read", "set"],
-    "include_ampm": ["no_ampm", "with_ampm"],
-}
+    }
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────

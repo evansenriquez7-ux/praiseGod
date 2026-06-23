@@ -15,6 +15,8 @@ from backend.app.practice_gen.dna.base import (
     DNA,
     ErrorPattern,
     VocabGated,
+    linear_interpolate,
+    log_interpolate,
 )
 
 
@@ -62,9 +64,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "unit_type": ["non_standard", "centimeters", "meters", "convert_between"],
-    "task_type": ["read_measurement", "compare_lengths", "estimate", "solve_problem"],
-}
+    }
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
@@ -108,10 +108,13 @@ def generate_params(
     bounds = _PARAM_BOUNDS[g_key]
     unit_type = profile.get("unit_type", "non_standard" if grade == 1 else "centimeters")
     task_type = profile.get("task_type", "read_measurement")
+    scalar = float(profile.get("difficulty_scalar", 0.5))
 
     if unit_type == "non_standard":
         unit = rng.choice(_NON_STANDARD_UNITS)
-        length = rng.randint(bounds.get("length_min", 1), bounds.get("length_max", 20))
+        l_min, l_max = bounds.get("length_min", 1), bounds.get("length_max", 20)
+        l_max = max(l_min, int(linear_interpolate(l_min, l_max, scalar)))
+        length = rng.randint(l_min, l_max)
         return {
             "length": length,
             "unit": unit,
@@ -122,6 +125,7 @@ def generate_params(
 
     if unit_type == "centimeters":
         lo, hi = bounds.get("cm_min", 1), bounds.get("cm_max", 500)
+        hi = max(lo, int(log_interpolate(lo, hi, scalar)))
         length = rng.randint(lo, hi)
         return {
             "length": length,
@@ -133,6 +137,7 @@ def generate_params(
 
     if unit_type == "meters":
         lo, hi = bounds.get("m_min", 1), bounds.get("m_max", 100)
+        hi = max(lo, int(linear_interpolate(lo, hi, scalar)))
         length = rng.randint(lo, hi)
         return {
             "length": length,
@@ -144,6 +149,7 @@ def generate_params(
 
     # convert_between: give meters, ask for centimeters (or vice versa)
     lo, hi = bounds.get("m_min", 1), min(bounds.get("m_max", 100), 20)
+    hi = max(lo, int(linear_interpolate(lo, hi, scalar)))
     length_m = rng.randint(lo, hi)
     direction = rng.choice(["m_to_cm", "cm_to_m"])
     if direction == "m_to_cm":

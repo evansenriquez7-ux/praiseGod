@@ -39,13 +39,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "concept_type": [
-        "point_line_segment_ray",
-        "parallel_intersecting_perpendicular",
-        "rotation_turns",
-    ],
-    "task_type": ["identify_name", "identify_property", "apply_rotation"],
-}
+    }
 
 
 # ─── static item pool ─────────────────────────────────────────────────────────

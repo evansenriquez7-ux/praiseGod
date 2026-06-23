@@ -15,6 +15,8 @@ from backend.app.practice_gen.dna.base import (
     DNA,
     ErrorPattern,
     VocabGated,
+    linear_interpolate,
+    log_interpolate,
 )
 
 
@@ -48,10 +50,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "measurement_type": ["mass", "capacity"],
-    "unit":             ["grams_kilograms", "liters_milliliters"],
-    "task_type":        ["read_measurement", "compare", "estimate", "convert"],
-}
+    }
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
@@ -82,9 +81,12 @@ def generate_params(
     mtype     = profile.get("measurement_type", "mass")
     unit      = profile.get("unit", "grams_kilograms")
     task_type = profile.get("task_type", "read_measurement")
+    scalar = float(profile.get("difficulty_scalar", 0.5))
 
     if mtype == "mass":
-        val_g = rng.randint(bounds["mass_g_min"], bounds["mass_g_max"])
+        g_min, g_max = bounds["mass_g_min"], bounds["mass_g_max"]
+        g_max = max(g_min, int(log_interpolate(g_min, g_max, scalar)))
+        val_g = rng.randint(g_min, g_max)
 
         if task_type == "convert":
             # g to kg (always divide by 1000)
@@ -116,7 +118,7 @@ def generate_params(
             }
 
         if task_type == "compare":
-            val_g2 = rng.randint(bounds["mass_g_min"], bounds["mass_g_max"])
+            val_g2 = rng.randint(g_min, g_max)
             heavier = max(val_g, val_g2)
             return {
                 "measurement_type": "mass",
@@ -138,7 +140,9 @@ def generate_params(
         }
 
     # capacity
-    val_ml = rng.randint(bounds["capacity_ml_min"], bounds["capacity_ml_max"])
+    ml_min, ml_max = bounds["capacity_ml_min"], bounds["capacity_ml_max"]
+    ml_max = max(ml_min, int(log_interpolate(ml_min, ml_max, scalar)))
+    val_ml = rng.randint(ml_min, ml_max)
 
     if task_type == "convert":
         val_ml = rng.randint(1, 5) * 1000
@@ -155,7 +159,7 @@ def generate_params(
         }
 
     if task_type == "compare":
-        val_ml2 = rng.randint(bounds["capacity_ml_min"], bounds["capacity_ml_max"])
+        val_ml2 = rng.randint(ml_min, ml_max)
         larger = max(val_ml, val_ml2)
         return {
             "measurement_type": "capacity",

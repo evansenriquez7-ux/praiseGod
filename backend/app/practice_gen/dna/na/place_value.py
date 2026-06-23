@@ -80,9 +80,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, Any] = {
-    "digit_count":    ["2_digit", "3_digit", "4_digit"],
-    "task_type":      ["identify_place", "identify_value", "compose", "decompose"],
+_DIFFICULTY_AXES: Dict[str, Any] = {    "digit_count":    ["2_digit", "3_digit", "4_digit"],
     "include_zeros":  ["no_zeros", "with_zeros"],
     "number_difficulty": "continuous",
 }
@@ -156,7 +154,9 @@ def generate_params(
     g_key  = f"g{max(1, min(grade, 3))}"
     bounds = _PARAM_BOUNDS[g_key]
     n_lo   = bounds["number_min"]
-    n_hi   = bounds["number_max"]
+    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+    from backend.app.practice_gen.dna.base import log_interpolate
+    n_hi   = int(log_interpolate(10, bounds["number_max"], diff_scalar))
     max_pl = bounds["max_place"]
 
     # Map difficulty axes to constraints

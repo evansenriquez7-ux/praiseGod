@@ -15,6 +15,7 @@ from backend.app.practice_gen.dna.base import (
     DNA,
     ErrorPattern,
     VocabGated,
+    linear_interpolate,
 )
 
 
@@ -50,8 +51,6 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "shape":       ["square", "rectangle", "triangle"],
-    "task_type":   ["find_perimeter", "find_missing_side"],
     "number_size": ["small_numbers", "larger_numbers"],
 }
 
@@ -83,9 +82,11 @@ def generate_params(
     shape     = profile.get("shape", "rectangle")
     task_type = profile.get("task_type", "find_perimeter")
     num_size  = profile.get("number_size", "small_numbers")
+    scalar    = float(profile.get("difficulty_scalar", 0.5))
 
     lo = bounds["side_min"]
-    hi = bounds["side_max"] // 2 if num_size == "small_numbers" else bounds["side_max"]
+    hi_bound = bounds["side_max"] // 2 if num_size == "small_numbers" else bounds["side_max"]
+    hi = max(lo, int(linear_interpolate(lo, hi_bound, scalar)))
     lo = max(1, lo)
     hi = max(lo + 1, hi)
 

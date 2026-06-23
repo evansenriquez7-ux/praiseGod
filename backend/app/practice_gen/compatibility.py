@@ -333,11 +333,16 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "multiplication": {
+        "table": ["2", "3", "4", "5", "10"],
+        "structure": ["result_unknown"],
         "task_type": ["find_product", "find_factor"],
         "context": ["pure", "word_problem"],
     },
 
     "division": {
+        "remainder": ["none", "some"],
+        "table": ["2", "3", "4", "5", "10"],
+        "structure": ["result_unknown"],
         "task_type": ["find_quotient", "find_dividend", "find_divisor"],
         "context": ["pure", "word_problem"],
     },
@@ -352,35 +357,47 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "ordinal_numbers": {
+        "task_type": ["identify_position", "identify_object"],
         "direction": ["from_left", "from_right"],
         "context": ["pure", "word_problem"],
     },
 
     "place_value": {
+        "include_zeros": ["yes", "no"],
         "task_type": ["identify_place", "identify_value", "compose", "decompose"],
     },
 
     "comparing_ordering": {
+        "proximity": ["close", "far"],
         "task_type": ["compare_pair", "order_sequence"],
         "direction": ["ascending", "descending"],
     },
 
     "missing_number": {
+        "operation": ["addition", "subtraction"],
+        "equation_type": ["standard", "non_standard"],
+        "blank_position": ["start", "middle", "end"],
         "position": ["start", "middle", "end"],
         "context": ["pure", "word_problem"],
     },
 
     "patterns": {
+        "element_type": ["numbers", "shapes"],
+        "ask_type": ["next", "missing"],
         "task_type": ["find_next", "find_rule", "find_missing"],
         "pattern_type": ["repeating", "growing"],
     },
 
     "fractions": {
+        "fraction_type": ["proper", "improper", "mixed"],
+        "operation": ["add", "subtract"],
         "task_type": ["identify", "compare", "equivalent", "add_like", "subtract_like"],
         "fraction_model": ["area_model", "set_model", "number_line"],
     },
 
     "money_peso": {
+        "denomination_type": ["coins", "bills", "mixed"],
+        "operation": ["add", "subtract"],
         "task_type": ["count_total", "make_change", "compare_amounts"],
         "context": ["pure", "word_problem"],
     },
@@ -390,49 +407,64 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "order_of_operations": {
+        "operation_mix": ["add_sub", "mult_div", "all"],
         "context": ["pure", "word_problem"],
     },
 
     # ── Measurement & Geometry ────────────────────────────────────────────────
 
     "shapes_2d": {
+        "orientation": ["standard", "rotated"],
+        "shape_set": ["basic", "polygons", "quadrilaterals", "3d_shapes"],
         "task_type": ["identify", "count_sides", "count_vertices", "classify"],
     },
 
     "length_measurement": {
+        "unit_type": ["cm", "m", "inch", "foot"],
         "task_type": ["compare", "convert"],
         "unit_system": ["metric", "customary"],
     },
 
     "mass_capacity": {
+        "unit": ["g", "kg", "ml", "l"],
         "task_type": ["compare", "convert"],
         "measurement_type": ["mass", "capacity"],
         "unit_system": ["metric", "customary"],
     },
 
     "time_reading": {
+        "mode": ["analog", "digital"],
+        "include_ampm": ["yes", "no"],
         "task_type": ["read_time", "set_time", "elapsed_time"],
     },
 
     "calendar": {
+        "calendar_feature": ["days", "weeks", "months", "dates"],
         "task_type": ["identify_date", "count_days", "identify_day"],
     },
 
     "perimeter": {
+        "shape": ["rectangle", "square", "triangle", "polygon"],
+        "number_size": ["small", "medium", "large"],
         "task_type": ["find_perimeter", "find_side"],
         "context": ["pure", "word_problem"],
     },
 
     "area": {
+        "shape": ["rectangle", "square"],
+        "unit": ["cm", "m"],
         "task_type": ["find_area", "find_side"],
         "context": ["pure", "word_problem"],
     },
 
     "geometric_lines": {
+        "concept_type": ["point", "line", "line_segment", "ray", "parallel", "perpendicular", "intersecting"],
         "task_type": ["identify", "classify", "draw"],
     },
 
     "symmetry_slides": {
+        "concept": ["line_symmetry", "slide_translation", "complete_symmetric_figure"],
+        "directions": ["horizontal", "vertical", "diagonal"],
         "task_type": ["identify_symmetry", "draw_line", "identify_transformation"],
     },
 
@@ -481,12 +513,17 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     },
 
     "multiplication": {
+        "table": ["2", "3", "4", "5", "10"],
+        "structure": ["result_unknown"],
         # array grid naturally shows product, not missing factor
         "array_grid_read": {"task_type": ["find_product"]},
         "array_grid_set": {"task_type": ["find_product"]},
     },
 
     "division": {
+        "remainder": ["none", "some"],
+        "table": ["2", "3", "4", "5", "10"],
+        "structure": ["result_unknown"],
         "array_grid_read": {"task_type": ["find_quotient"]},
         "array_grid_set": {"task_type": ["find_quotient"]},
     },
@@ -498,29 +535,37 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     },
 
     "place_value": {
+        "include_zeros": ["yes", "no"],
         # blocks work best for compose/decompose
         "place_value_blocks_read": {"task_type": ["identify_value", "compose"]},
         "place_value_blocks_set": {"task_type": ["compose", "decompose"]},
     },
 
     "comparing_ordering": {
+        "proximity": ["close", "far"],
         "sort_order": {"task_type": ["order_sequence"]},
         "ordering": {"task_type": ["order_sequence"]},
     },
 
     "patterns": {
+        "element_type": ["numbers", "shapes"],
+        "ask_type": ["next", "missing"],
         # visual pattern sequence works for find_next
         "pattern_sequence": {"task_type": ["find_next"]},
         "fill_in_table": {"task_type": ["find_missing", "find_rule"]},
     },
 
     "fractions": {
+        "fraction_type": ["proper", "improper", "mixed"],
+        "operation": ["add", "subtract"],
         # visual models support specific task types
         "fraction_model_read": {"task_type": ["identify", "compare"]},
         "fraction_shade": {"task_type": ["identify", "equivalent"]},
     },
 
     "money_peso": {
+        "denomination_type": ["coins", "bills", "mixed"],
+        "operation": ["add", "subtract"],
         # visual peso formatters don't handle word problems
         "peso_money_read": {"task_type": ["count_total"], "context": ["pure"]},
         "peso_money_build": {"task_type": ["count_total", "make_change"], "context": ["pure"]},
@@ -534,16 +579,21 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     # ── Measurement & Geometry ────────────────────────────────────────────────
 
     "time_reading": {
+        "mode": ["analog", "digital"],
+        "include_ampm": ["yes", "no"],
         "clock_read": {"task_type": ["read_time"]},
         "clock_set": {"task_type": ["set_time"]},
         # elapsed_time only via mcq/cloze
     },
 
     "calendar": {
+        "calendar_feature": ["days", "weeks", "months", "dates"],
         "calendar_read": {},  # all task types work
     },
 
     "area": {
+        "shape": ["rectangle", "square"],
+        "unit": ["cm", "m"],
         # grid_area shows counting squares
         "grid_area": {"task_type": ["find_area"]},
     },

@@ -14,6 +14,7 @@ from backend.app.practice_gen.dna.base import (
     DNA,
     ErrorPattern,
     VocabGated,
+    linear_interpolate,
 )
 
 
@@ -47,10 +48,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, List[str]] = {
-    "shape":    ["square", "rectangle"],
-    "unit":     ["square_cm", "square_m"],
-    "task_type": ["find_area", "find_missing_dimension"],
-}
+    }
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
@@ -79,6 +77,7 @@ def generate_params(
     shape     = profile.get("shape", "rectangle")
     unit      = profile.get("unit", "square_cm")
     task_type = profile.get("task_type", "find_area")
+    scalar    = float(profile.get("difficulty_scalar", 0.5))
 
     if unit == "square_cm":
         lo, hi = bounds["side_cm_min"], bounds["side_cm_max"]
@@ -86,6 +85,8 @@ def generate_params(
     else:
         lo, hi = bounds["side_m_min"], bounds["side_m_max"]
         unit_label = "sq m"
+        
+    hi = max(lo, int(linear_interpolate(lo, hi, scalar)))
 
     if shape == "square":
         s = rng.randint(lo, hi)
