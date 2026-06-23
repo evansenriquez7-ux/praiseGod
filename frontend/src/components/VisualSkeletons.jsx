@@ -2749,17 +2749,106 @@ export function EmojiPictorialInteractive({ params, disabled }) {
     group_b,
     operation,
     layout,
-    display,
-    display_b,
-    reveal_display,
     reveal_text
   } = params || {};
 
-  // For subtraction, we show the initial items, and cross out the subtracted ones.
-  // For addition, we show the items based on the layout preference.
+  const renderEmojiNumber = (count, emoji, isCrossedOut = false) => {
+    if (count === 0) return null;
+    
+    // If count <= 100, just render them individually
+    if (count <= 100) {
+      return Array.from({ length: count }).map((_, i) => (
+        <span key={`single-${i}`} style={{
+          display: 'inline-block',
+          position: 'relative',
+          opacity: isCrossedOut ? 0.5 : 1
+        }}>
+          {emoji}
+          {isCrossedOut && (
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              width: '100%',
+              height: '4px',
+              background: 'red',
+              transform: 'translate(-50%, -50%) rotate(-45deg)',
+              borderRadius: '2px'
+            }} />
+          )}
+        </span>
+      ));
+    }
+    
+    // For large numbers, do grouping
+    const thousands = Math.floor(count / 1000);
+    const hundreds = Math.floor((count % 1000) / 100);
+    const tens = Math.floor((count % 100) / 10);
+    const ones = count % 10;
+    
+    const groups = [
+      { value: 1000, count: thousands, icon: '🚚', label: '1000x' },
+      { value: 100, count: hundreds, icon: '📦', label: '100x' },
+      { value: 10, count: tens, icon: '🛍️', label: '10x' },
+      { value: 1, count: ones, icon: emoji, label: '' }
+    ];
+    
+    const elements = [];
+    groups.forEach(({ value, count: grpCount, icon, label }) => {
+      for (let i = 0; i < grpCount; i++) {
+        if (value === 1) {
+          elements.push(
+            <span key={`grp-1-${i}`} style={{
+              display: 'inline-block',
+              position: 'relative',
+              opacity: isCrossedOut ? 0.5 : 1
+            }}>
+              {emoji}
+              {isCrossedOut && (
+                <div style={{
+                  position: 'absolute', top: '50%', left: '50%',
+                  width: '100%', height: '4px', background: 'red',
+                  transform: 'translate(-50%, -50%) rotate(-45deg)',
+                  borderRadius: '2px'
+                }} />
+              )}
+            </span>
+          );
+        } else {
+          elements.push(
+            <div key={`grp-${value}-${i}`} style={{
+              display: 'inline-flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'hsl(var(--card-bg))',
+              border: '2px solid hsl(var(--border-color))',
+              borderRadius: '8px',
+              padding: '8px',
+              minWidth: '70px',
+              position: 'relative',
+              opacity: isCrossedOut ? 0.5 : 1
+            }}>
+              <span style={{ fontSize: '36px' }}>{icon}</span>
+              <span style={{ fontSize: '14px', fontWeight: 'bold' }}>{label} {emoji}</span>
+              {isCrossedOut && (
+                <div style={{
+                  position: 'absolute', top: '50%', left: '50%',
+                  width: '120%', height: '4px', background: 'red',
+                  transform: 'translate(-50%, -50%) rotate(-45deg)',
+                  borderRadius: '2px'
+                }} />
+              )}
+            </div>
+          );
+        }
+      }
+    });
+    
+    return elements;
+  };
 
   if (operation === 'subtraction') {
-    // Show 'group_a' total items, but the last 'group_b' items are crossed out
     const remaining = Math.max(0, group_a - group_b);
     const crossedOut = Math.min(group_a, group_b);
 
@@ -2773,30 +2862,8 @@ export function EmojiPictorialInteractive({ params, disabled }) {
           fontSize: '48px',
           lineHeight: '1.2'
         }}>
-          {/* Remaining items */}
-          {Array.from({ length: remaining }).map((_, i) => (
-            <span key={`rem-${i}`} style={{ display: 'inline-block' }}>{emoji}</span>
-          ))}
-          {/* Crossed out items */}
-          {Array.from({ length: crossedOut }).map((_, i) => (
-            <span key={`cross-${i}`} style={{
-              display: 'inline-block',
-              position: 'relative',
-              opacity: 0.5
-            }}>
-              {emoji}
-              <div style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                width: '100%',
-                height: '4px',
-                background: 'red',
-                transform: 'translate(-50%, -50%) rotate(-45deg)',
-                borderRadius: '2px'
-              }} />
-            </span>
-          ))}
+          {renderEmojiNumber(remaining, emoji, false)}
+          {renderEmojiNumber(crossedOut, emoji, true)}
         </div>
         {disabled && reveal_text && (
           <div style={{ marginTop: '20px', fontSize: '18px', fontWeight: 600, color: 'hsl(var(--primary))' }}>
@@ -2808,13 +2875,16 @@ export function EmojiPictorialInteractive({ params, disabled }) {
   }
 
   // Addition layouts
+  const displayA = renderEmojiNumber(group_a, emoji) || <span style={{ opacity: 0.3 }}>Empty</span>;
+  const displayB = renderEmojiNumber(group_b, emoji) || <span style={{ opacity: 0.3 }}>Empty</span>;
+
   return (
     <div style={{ padding: '20px', textAlign: 'center' }}>
       {layout === 'stacked' ? (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-          <div style={{ fontSize: '48px', letterSpacing: '4px' }}>{display}</div>
+          <div style={{ fontSize: '48px', letterSpacing: '4px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px' }}>{displayA}</div>
           <div style={{ fontSize: '32px', fontWeight: 800, color: 'hsl(var(--text-muted))' }}>+</div>
-          <div style={{ fontSize: '48px', letterSpacing: '4px' }}>{display_b}</div>
+          <div style={{ fontSize: '48px', letterSpacing: '4px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px' }}>{displayB}</div>
         </div>
       ) : layout === 'separated' ? (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '30px' }}>
@@ -2824,9 +2894,9 @@ export function EmojiPictorialInteractive({ params, disabled }) {
             borderRadius: '16px',
             border: '2px dashed hsl(var(--border-color))',
             fontSize: '40px',
-            letterSpacing: '2px'
+            display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px'
           }}>
-            {display || <span style={{ opacity: 0.3 }}>Empty</span>}
+            {displayA}
           </div>
           <div style={{ fontSize: '32px', fontWeight: 800, color: 'hsl(var(--text-muted))' }}>+</div>
           <div style={{
@@ -2835,17 +2905,17 @@ export function EmojiPictorialInteractive({ params, disabled }) {
             borderRadius: '16px',
             border: '2px dashed hsl(var(--border-color))',
             fontSize: '40px',
-            letterSpacing: '2px'
+            display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px'
           }}>
-            {display_b || <span style={{ opacity: 0.3 }}>Empty</span>}
+            {displayB}
           </div>
         </div>
       ) : (
         // Inline (default)
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-          <div style={{ fontSize: '48px', letterSpacing: '4px' }}>{display}</div>
+          <div style={{ fontSize: '48px', letterSpacing: '4px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px' }}>{displayA}</div>
           <div style={{ fontSize: '32px', fontWeight: 800, color: 'hsl(var(--text-muted))' }}>and</div>
-          <div style={{ fontSize: '48px', letterSpacing: '4px' }}>{display_b}</div>
+          <div style={{ fontSize: '48px', letterSpacing: '4px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px' }}>{displayB}</div>
         </div>
       )}
     </div>

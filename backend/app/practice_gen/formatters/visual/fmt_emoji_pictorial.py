@@ -121,10 +121,13 @@ def _build_params(
     # Layout options (for addition only; subtraction shows all items inline)
     layout = rng.choice(["inline", "stacked", "separated"]) if operation == "addition" else "inline"
     
-    # Build the display strings
-    display = emoji * a if a > 0 else "0"
+    # Build the display strings (capped to prevent massive JSON payloads)
+    display = (emoji * a) if a <= 100 else f"(Large group of {a} {_pluralize(base_name, a)})"
+    if a == 0: display = "0"
+
     if operation == "addition":
-        display_b = emoji * b if b > 0 else "0"
+        display_b = (emoji * b) if b <= 100 else f"(Large group of {b} {_pluralize(base_name, b)})"
+        if b == 0: display_b = "0"
     
     # For subtraction, build reveal display showing remaining items with explanation
     reveal_display = None
@@ -132,7 +135,8 @@ def _build_params(
     if operation == "subtraction":
         remaining = a - b
         # Show remaining emojis
-        reveal_display = emoji * remaining if remaining > 0 else "(none left)"
+        reveal_display = (emoji * remaining) if remaining <= 100 else f"(Large group of {remaining} {_pluralize(base_name, remaining)})"
+        if remaining == 0: reveal_display = "(none left)"
         # Text explanation
         reveal_text = f"{remaining} {_pluralize(base_name, remaining) if remaining != 1 else base_name}"
     
@@ -154,7 +158,6 @@ def _build_params(
         params["reveal_text"] = reveal_text
     
     return params
-
 
 def _correct_answer(params: dict) -> int:
     """Calculate the correct answer."""

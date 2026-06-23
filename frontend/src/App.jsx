@@ -1115,22 +1115,12 @@ function App() {
           }
           if (Object.keys(allowedCtxs).length === 0) {
             (data.contextual_variants || []).forEach(v => {
-              if (v.name !== 'spine') {
-                allowedCtxs[v.name] = [...v.options];
-              }
+              allowedCtxs[v.name] = [...v.options];
             });
           }
           if (allowedFmts.length === 0) {
-            // For peso nodes keep all formatters; for all other (non-peso) nodes
-            // default to MCQ only so only the working formatter is pre-selected.
             const allFmtNames = (data.formatters || []).map(f => f.name);
-            const isPesoNode = allFmtNames.some(n => n === 'peso_money_read' || n === 'peso_money_build');
-            if (isPesoNode) {
-              allowedFmts.push(...allFmtNames);
-            } else {
-              // Default: only MCQ enabled for non-peso nodes
-              allowedFmts.push('mcq');
-            }
+            allowedFmts.push(...allFmtNames);
           }
 
           setLabAllowedDifficulties(allowedDiffs);
