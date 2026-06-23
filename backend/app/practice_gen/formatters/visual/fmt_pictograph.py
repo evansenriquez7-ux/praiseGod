@@ -164,6 +164,7 @@ def format_pictograph(
     ask_idx = 0
     
     if interaction_mode == "read":
+        vp["is_read_mode"] = True
         if task_type in ("compare_two", "compare"):
             comp_a = ctx.values.get("compare_a", categories[0])
             comp_b = ctx.values.get("compare_b", categories[1])
@@ -187,6 +188,7 @@ def format_pictograph(
             else:
                 question_text = f"Look at the picture graph. How many are in {ask_cat}?"
     else:
+        vp["is_read_mode"] = False
         data_str = ", ".join(f"{categories[i]}: {counts[i]}" for i in range(len(categories)))
         if scale > 1:
             question_text = (
