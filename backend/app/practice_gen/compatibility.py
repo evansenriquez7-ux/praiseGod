@@ -389,6 +389,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "fractions": {
+        "context": ["pure", "word_problem"],
         "fraction_type": ["proper", "improper", "mixed"],
         "operation": ["add", "subtract"],
         "task_type": ["identify", "compare", "equivalent", "add_like", "subtract_like"],
@@ -420,12 +421,14 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "length_measurement": {
+        "context": ["pure", "word_problem"],
         "unit_type": ["cm", "m", "inch", "foot"],
         "task_type": ["compare", "convert"],
         "unit_system": ["metric", "customary"],
     },
 
     "mass_capacity": {
+        "context": ["pure", "word_problem"],
         "unit": ["g", "kg", "ml", "l"],
         "task_type": ["compare", "convert"],
         "measurement_type": ["mass", "capacity"],
@@ -433,12 +436,14 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "time_reading": {
+        "context": ["pure", "word_problem"],
         "mode": ["analog", "digital"],
         "include_ampm": ["yes", "no"],
         "task_type": ["read_time", "set_time", "elapsed_time"],
     },
 
     "calendar": {
+        "context": ["pure", "word_problem"],
         "calendar_feature": ["days", "weeks", "months", "dates"],
         "task_type": ["identify_date", "count_days", "identify_day"],
     },
@@ -556,6 +561,7 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     },
 
     "fractions": {
+        "context": ["pure", "word_problem"],
         "fraction_type": ["proper", "improper", "mixed"],
         "operation": ["add", "subtract"],
         # visual models support specific task types
@@ -579,6 +585,7 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     # ── Measurement & Geometry ────────────────────────────────────────────────
 
     "time_reading": {
+        "context": ["pure", "word_problem"],
         "mode": ["analog", "digital"],
         "include_ampm": ["yes", "no"],
         "clock_read": {"task_type": ["read_time"]},
@@ -587,6 +594,7 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     },
 
     "calendar": {
+        "context": ["pure", "word_problem"],
         "calendar_feature": ["days", "weeks", "months", "dates"],
         "calendar_read": {},  # all task types work
     },
