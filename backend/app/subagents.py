@@ -81,10 +81,12 @@ def _get_bridge_pool() -> "GenAIBridge":
                 _bridge_pool = GenAIBridge(model=_gemini_model)
     return _bridge_pool
 
-def call_ai(prompt: str, temperature: Optional[float] = None) -> str:
+def call_ai(prompt: str, temperature: Optional[float] = None, model: Optional[str] = None) -> str:
     """Routes the prompt through the GenAI SDK."""
     try:
-        return _get_bridge_pool().prompt(prompt, temperature)
+        model_name = model or _get_bridge_pool().model_name
+        bridge = GenAIBridge(model=model_name)
+        return bridge.prompt(prompt, temperature)
     except Exception as e:
         return f"Error: GenAI SDK call failed: {str(e)}"
 
@@ -821,7 +823,7 @@ CRITICAL: If you use ASCII art or any backslashes, you MUST properly escape them
     if True:
         prompt += _format_age_grade_constraints(student_age, student_grade, language=language, context="tutor")
 
-    response = call_ai(prompt)
+    response = call_ai(prompt, model="gemma-4-31b-it")
 
     response_clean = response.strip()
     if response_clean.startswith("```json"):
@@ -1467,7 +1469,7 @@ JSON Output:
     if True:
         prompt += _format_age_grade_constraints(student_age, student_grade, language=language, context="tutor")
 
-    response = call_ai(prompt)
+    response = call_ai(prompt, model="gemma-4-31b-it")
     response_clean = response.strip()
     if response_clean.startswith("```json"):
         response_clean = response_clean[7:]

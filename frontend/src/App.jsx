@@ -1566,7 +1566,11 @@ function App() {
                                           }
                                         }
                                         // Remove remaining LaTeX commands
-                                        inner = inner.replace(/\\Large/g, '').replace(/\\\w+\{([^}]+)\}/g, '$1').replace(/\{|\}/g, '').trim();
+                                        inner = inner.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2')
+                                                     .replace(/\\Large/g, '')
+                                                     .replace(/\\\w+\{([^}]+)\}/g, '$1')
+                                                     .replace(/\{|\}/g, '')
+                                                     .trim();
                                         if (hasColor) {
                                           // Parse our color markers into spans
                                           const colorParts = inner.split(/(<c:[^>]+>[^<]*<\/c>)/g);
@@ -1944,10 +1948,10 @@ function App() {
                                           const barColor = color;
                                           return (
                                             <div style={{ textAlign: 'center' }}>
-                                              <div style={{ display: 'flex', gap: '2px', marginBottom: '4px' }}>
+                                              <div style={{ display: 'flex', gap: '2px', marginBottom: '4px', width: '128px' }}>
                                                 {Array.from({ length: parts }).map((_, i) => (
                                                   <div key={i} style={{
-                                                    width: '32px', height: '28px', borderRadius: '3px',
+                                                    flex: 1, height: '28px', borderRadius: '3px',
                                                     background: i < shaded ? `${barColor}50` : 'rgba(255,255,255,0.05)',
                                                     border: `2px solid ${i < shaded ? barColor : 'rgba(255,255,255,0.15)'}`,
                                                   }} />
