@@ -2789,7 +2789,7 @@ function App() {
             socraticActive={socraticActive}
             chatMessages={chatMessages} setChatMessages={setChatMessages} sendingChat={sendingChat} setSendingChat={setSendingChat}
             selectedStudent={selectedStudent} socraticAbortControllerRef={socraticAbortControllerRef} API_BASE={API_BASE}
-            setSelectedStudent={setSelectedStudent} setSocraticActive={setSocraticActive} setShowFlagModal={setShowFlagModal}
+            setSelectedStudent={setSelectedStudent} setSocraticActive={setSocraticActive} setShowFlagModal={setShowFlagModal} renderIntroViewer={renderIntroViewer}
             studentInterestInput={studentInterestInput} setStudentInterestInput={setStudentInterestInput} interestSaveStatus={interestSaveStatus} setInterestSaveStatus={setInterestSaveStatus} handleSaveInterests={handleSaveInterests} setSelectedSubject={setSelectedSubject} fetchMatatagTracks={fetchMatatagTracks} fetchMatatagNodes={fetchMatatagNodes} matatagNodes={matatagNodes} loadingMathTracks={loadingMathTracks} mathTracks={mathTracks} setSelectedSubdomain={setSelectedSubdomain} setQuestionQueue={setQuestionQueue} fetchNextQuestion={fetchNextQuestion} selectedSubject={selectedSubject} loadingVerbalTracks={loadingVerbalTracks} verbalTracks={verbalTracks} loadingMatatagTracks={loadingMatatagTracks} selectedRoadmapNode={selectedRoadmapNode} setSelectedRoadmapNode={setSelectedRoadmapNode} fetchIntroForStudent={fetchIntroForStudent} writingCoachActive={writingCoachActive} introContent={introContent} handleLogout={handleLogout} loadingQuestion={loadingQuestion} aiBackend={aiBackend} opencodeModel={opencodeModel} handleSkipPlacement={handleSkipPlacement} tabSwitchCount={tabSwitchCount} idleSeconds={idleSeconds} guessCount={guessCount} answerResult={answerResult} handleOptionClick={handleOptionClick} chatEndRef={chatEndRef} handleSendMessage={handleSendMessage} chatInput={chatInput} setChatInput={setChatInput} selectedSubdomain={selectedSubdomain}
           />
         )}
@@ -2801,7 +2801,7 @@ function App() {
             editName, setEditName, editElo, setEditElo, editAge, setEditAge, editGrade, setEditGrade, editInterests, setEditInterests,
             socraticActive, setSocraticActive, chatMessages, setChatMessages, sendingChat, setSendingChat,
             selectedStudent, setCurrentView, socraticAbortControllerRef,
-            introNodes, introInterests, introSelectedNode, setIntroSelectedNode, introSelectedInterest, setIntroSelectedInterest, generateIntroContent, introLoading,
+            renderIntroViewer, introNodes, introInterests, introSelectedNode, setIntroSelectedNode, introSelectedInterest, setIntroSelectedInterest, generateIntroContent, introLoading,
             setSelectedStudent, setTelemetrySessionId, setParentLoggedIn, setParentError,
             matatagNodeId, matatagNodes,
             fetchMatatagNodes, fetchIntroNodes, fetchIntroInterests,
