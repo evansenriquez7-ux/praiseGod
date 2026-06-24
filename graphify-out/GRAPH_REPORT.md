@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-06-24)
 
 ## Corpus Check
-- 117 files · ~200,295 words
+- 117 files · ~200,258 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1269 nodes · 2244 edges · 107 communities (103 shown, 4 thin omitted)
+- 1269 nodes · 2244 edges · 106 communities (102 shown, 4 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d9378f8c`
+- Built from commit: `53de9146`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -105,7 +105,6 @@
 - [[_COMMUNITY_Community 107|Community 107]]
 - [[_COMMUNITY_Community 108|Community 108]]
 - [[_COMMUNITY_Community 116|Community 116]]
-- [[_COMMUNITY_Community 119|Community 119]]
 - [[_COMMUNITY_Community 132|Community 132]]
 
 ## God Nodes (most connected - your core abstractions)
@@ -135,7 +134,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (107 total, 4 thin omitted)
+## Communities (106 total, 4 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.16
@@ -150,12 +149,12 @@ Cohesion: 0.09
 Nodes (25): FormattedProblem, Final output of the practice generation pipeline.      Produced by a formatter o, Serialize to dict for API response., Practice Generation — Hint-Gated Experience Wrapper  Hints unlock one at a time., Apply the hint-gated experience wrapper.      Sets problem.experience to "hint_g, Increment hints_revealed by 1 and return the updated problem.      If the proble, reveal_next_hint(), wrap_hint_gated() (+17 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.10
-Nodes (22): linear_interpolate(), Linear interpolation between min_val and max_val at position t., generate_hints(), generate_params(), DNA: Bar Graphs (Data & Probability)  Covers MATATAG grade 3 bar graph competenc, Returns visual_params for the BarChart formatter (G3 only).     {"categories": l, generate_hints(), generate_params() (+14 more)
+Cohesion: 0.12
+Nodes (18): linear_interpolate(), Linear interpolation between min_val and max_val at position t., generate_hints(), generate_params(), DNA: Bar Graphs (Data & Probability)  Covers MATATAG grade 3 bar graph competenc, Returns visual_params for the BarChart formatter (G3 only).     {"categories": l, generate_hints(), generate_params() (+10 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.05
-Nodes (44): Any, ErrorPattern, A pedagogically meaningful wrong answer.      formula:          SymPy expression, Fill template with interest slots and numeric values.                  Handles s, A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params() (+36 more)
+Cohesion: 0.06
+Nodes (43): Any, ErrorPattern, A pedagogically meaningful wrong answer.      formula:          SymPy expression, A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params(), DNA: Pictographs (Data & Probability)  Covers MATATAG grades 1–2 pictograph comp (+35 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.10
@@ -174,8 +173,8 @@ Cohesion: 0.06
 Nodes (35): _gen_g3_dp_q3_bar_graphs(), _gen_g3_dp_q3_probability(), _gen_g3_mg_q1_area(), _gen_g3_mg_q1_lines(), _gen_g3_mg_q2_capacity(), _gen_g3_mg_q2_mass(), _gen_g3_mg_q4_symmetry(), _gen_g3_na_q1_comparing() (+27 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.15
-Nodes (20): _count_decimal_places(), generate_number_by_window(), generate_pair_by_window(), Choose a number randomly from the candidates list within the difficulty range wi, Choose an operand pair randomly from candidate_pairs within the difficulty range, Score signed integers, adding a small penalty for negative numbers., Score a fraction n/d based on:     - Denominator size (40%)     - Numerator/Deno, Ordinal difficulty scales linearly with magnitude (1st is easiest, 100th is hard (+12 more)
+Cohesion: 0.11
+Nodes (26): _count_decimal_places(), generate_number_by_window(), generate_pair_by_window(), Choose a number randomly from the candidates list within the difficulty range wi, Choose an operand pair randomly from candidate_pairs within the difficulty range, Score signed integers, adding a small penalty for negative numbers., Score a fraction n/d based on:     - Denominator size (40%)     - Numerator/Deno, Ordinal difficulty scales linearly with magnitude (1st is easiest, 100th is hard (+18 more)
 
 ### Community 11 - "Community 11"
 Cohesion: 0.06
@@ -242,16 +241,16 @@ Cohesion: 0.14
 Nodes (21): BalanceScaleParams, BarChartParams, BaseVisualParams, CalendarParams, ClockParams, EmojiPictorialParams, FillInTableParams, FractionModelParams (+13 more)
 
 ### Community 27 - "Community 27"
-Cohesion: 0.21
-Nodes (13): get_node(), Return the raw knowledge-graph node dict for node_id, or None.      Args:, _load_dna(), Practice Generation — Vocabulary & Concept Constraint Validation  Verifies that, Verify that distractors don't presuppose unknown concepts.      For each distrac, Generate sample problems for a node and run vocabulary/concept checks.      Args, Import the DNA module and return its DNA instance, or None on failure., Return True if `term` appears as a standalone token in `text`.      Case-insensi (+5 more)
+Cohesion: 0.38
+Nodes (6): _build_traps(), _build_visual_params(), format_pictograph(), fmt_pictograph.py — Pictograph (picture graph) visual formatter  Produces a Form, Build a Pictograph FormattedProblem from a QuestionContext.      interaction_mod, Build pictograph visual_params.      visual_params keys:         categories   —
 
 ### Community 28 - "Community 28"
 Cohesion: 0.20
 Nodes (10): get_intro_content(), list_intro_interests(), List interest themes available for a grade level., Generate intro content for a MATATAG node.          - node_key: e.g., "g1_na_q1", generate_intro_content(), get_interest_themes(), _get_introduction(), Return all interest themes. Grade parameter is ignored (kept for API compatibili (+2 more)
 
 ### Community 29 - "Community 29"
-Cohesion: 0.10
-Nodes (22): log_interpolate(), Logarithmic interpolation between min_val and max_val at position t.      Produc, _close_pair(), _compare_symbol(), generate_hints(), generate_params(), DNA: Comparing and Ordering Numbers (Number & Algebra)  Covers MATATAG grades 1–, Return 2–4 step-by-step hints for a comparison/ordering problem. (+14 more)
+Cohesion: 0.08
+Nodes (27): log_interpolate(), Logarithmic interpolation between min_val and max_val at position t.      Produc, generate_hints(), generate_params(), DNA: Mass and Capacity (Measurement & Geometry)  Covers MATATAG grade 3 mass and, Returns measurement value(s) and the answer.     For 'convert' task: produces va, generate_hints(), generate_params() (+19 more)
 
 ### Community 30 - "Community 30"
 Cohesion: 0.09
@@ -326,8 +325,8 @@ Cohesion: 0.50
 Nodes (4): 10. Backend API Specification, GET /api/matatag/intro/{node_key}, GET /api/matatag/intro/{node_key}/status, POST /api/matatag/intro/{node_key}/viewed
 
 ### Community 48 - "Community 48"
-Cohesion: 0.08
-Nodes (31): Practice Generation — DNA Base Definitions  All dataclasses, enums, and shared u, A reusable story template with named slots.      Slots are filled from the stude, Spine, _build_symbolic_question(), _detect_axes_served(), _eval_error_formula(), generate_context(), Practice Generation — Context Generator ======================================== (+23 more)
+Cohesion: 0.07
+Nodes (38): _build_symbolic_question(), _detect_axes_served(), _eval_error_formula(), generate_context(), get_node(), Practice Generation — Context Generator ========================================, Return the raw knowledge-graph node dict for node_id, or None.      Args:, Generate a format-agnostic QuestionContext from a DNA + node.      Steps: (+30 more)
 
 ### Community 49 - "Community 49"
 Cohesion: 0.50
@@ -450,8 +449,8 @@ Cohesion: 0.28
 Nodes (8): _build_expression_str(), _evaluate_left_to_right(), generate_hints(), generate_params(), DNA: Order of Operations (Number & Algebra)  G3 only — addition and subtraction, Generate an order-of-operations problem (G3 only, + and − left to right).      R, Return 2–4 step-by-step hints for an order-of-operations problem., Evaluate an expression left to right given operands and operator list.
 
 ### Community 93 - "Community 93"
-Cohesion: 0.15
-Nodes (12): DimensionSpec, interpolate(), Compute the dimension value at difficulty scalar t.          If override_min/ove, Interpolate between min_val and max_val using the given scale type.      scale_t, Specification for a single difficulty dimension.      Defines how a dimension sc, generate_hints(), generate_params(), DNA: Addition (Number & Algebra)  Refactored from:   - matatag_skeletons.py  (ar (+4 more)
+Cohesion: 0.14
+Nodes (12): DimensionSpec, interpolate(), Practice Generation — DNA Base Definitions  All dataclasses, enums, and shared u, Compute the dimension value at difficulty scalar t.          If override_min/ove, A reusable story template with named slots.      Slots are filled from the stude, Fill template with interest slots and numeric values.                  Handles s, Interpolate between min_val and max_val using the given scale type.      scale_t, Specification for a single difficulty dimension.      Defines how a dimension sc (+4 more)
 
 ### Community 98 - "Community 98"
 Cohesion: 0.31
@@ -481,10 +480,6 @@ Nodes (7): _build_traps(), format_fraction_shade(), _pick_params(), fmt_fraction
 Cohesion: 0.29
 Nodes (6): compute_difficulty_scalar(), get_axes_for_concept(), Practice Generation — Difficulty Axes Catalog ==================================, # NOTE: "structure" removed - it's a contextual variant, not a difficulty dimens, Return the UI-ready axis list for a concept, or [] if not found., Compute a 0.0–1.0 difficulty scalar from the selected axis values.      For each
 
-### Community 119 - "Community 119"
-Cohesion: 0.38
-Nodes (6): _build_traps(), _build_visual_params(), format_array_grid(), fmt_array_grid.py — ArrayGrid (GridArea) visual formatter  Produces a FormattedP, Build an ArrayGrid FormattedProblem from a QuestionContext.      interaction_mod, Build ArrayGrid visual_params.      Grade 2: arrays up to 10×10 (multiplication
-
 ### Community 132 - "Community 132"
 Cohesion: 0.40
 Nodes (3): Content Generation Rules, Core Persona: The Master K-12 Educator, Engineering & Verification Constraints
@@ -499,9 +494,9 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `VisualSchemaRegistry` connect `Community 52` to `Community 24`, `Community 26`?**
   _High betweenness centrality (0.027) - this node is a cross-community bridge._
-- **Why does `DNA` connect `Community 6` to `Community 1`, `Community 3`, `Community 4`, `Community 5`, `Community 7`, `Community 10`, `Community 20`, `Community 24`, `Community 25`, `Community 27`, `Community 29`, `Community 35`, `Community 46`, `Community 48`, `Community 55`, `Community 74`, `Community 75`, `Community 92`, `Community 93`?**
+- **Why does `DNA` connect `Community 6` to `Community 1`, `Community 3`, `Community 4`, `Community 5`, `Community 35`, `Community 7`, `Community 10`, `Community 74`, `Community 75`, `Community 46`, `Community 48`, `Community 29`, `Community 20`, `Community 55`, `Community 24`, `Community 25`, `Community 92`, `Community 93`?**
   _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **Why does `FormattedProblem` connect `Community 3` to `Community 11`, `Community 19`, `Community 24`, `Community 30`, `Community 39`, `Community 48`, `Community 50`, `Community 51`, `Community 61`, `Community 69`, `Community 70`, `Community 71`, `Community 78`, `Community 79`, `Community 80`, `Community 81`, `Community 82`, `Community 83`, `Community 98`, `Community 105`, `Community 106`, `Community 108`, `Community 119`?**
+- **Why does `FormattedProblem` connect `Community 3` to `Community 11`, `Community 19`, `Community 24`, `Community 27`, `Community 30`, `Community 39`, `Community 50`, `Community 51`, `Community 61`, `Community 69`, `Community 70`, `Community 71`, `Community 78`, `Community 79`, `Community 80`, `Community 81`, `Community 82`, `Community 83`, `Community 93`, `Community 98`, `Community 105`, `Community 106`, `Community 108`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **What connects `Constraint Extractor Module  Parses dimensional constraints from MATATAG compete`, `Extract all dimensional constraints from a competency text.          Args:`, `Quick extraction of just the numeric limit.          Returns:         Numeric li` to the rest of the system?**
   _591 weakly-connected nodes found - possible documentation gaps or missing edges._
@@ -510,4 +505,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `Community 3` be split into smaller, more focused modules?**
   _Cohesion score 0.0896551724137931 - nodes in this community are weakly interconnected._
 - **Should `Community 4` be split into smaller, more focused modules?**
-  _Cohesion score 0.09538461538461539 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11904761904761904 - nodes in this community are weakly interconnected._

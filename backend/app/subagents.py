@@ -1,25 +1,7 @@
 import os
 import json
 import uuid
-import subprocess
 import threading
-import time
-import re
-from pathlib import Path
-from typing import Optional
-
-
-try:
-    from anthropic import Anthropic
-    ANTHROPIC_AVAILABLE = True
-except ImportError:
-    ANTHROPIC_AVAILABLE = False
-
-import os
-import json
-import uuid
-import threading
-import time
 import re
 from pathlib import Path
 from typing import Optional
