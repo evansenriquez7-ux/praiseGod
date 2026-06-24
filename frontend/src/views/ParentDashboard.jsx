@@ -1,4 +1,8 @@
 import React from 'react';
+import { CheckCircle, XCircle, BookOpen, Unlock, Trash2, Save, Layout } from 'lucide-react';
+import { SortOrderInteractive } from '../components/VisualSkeletons';
+import { renderMath } from '../utils/mathUtils';
+import { renderVisualInner } from '../utils/renderUtils';
 import { AlertTriangle, Check, Play, Zap, Shield, User, RefreshCw } from 'lucide-react';
 import { API_BASE } from '../api/apiClient';
 
@@ -18,7 +22,7 @@ export default function ParentDashboard(props) {
     renderIntroViewer, introNodes, introInterests, introSelectedNode, setIntroSelectedNode, introSelectedInterest, setIntroSelectedInterest, generateIntroContent, introLoading,
     setSelectedStudent, setTelemetrySessionId, setParentLoggedIn, setParentError,
     matatagNodeId, matatagNodes, handleRunMatatagTest, matatagTestResults, testLoading, clearMatatagTests,
-    activeSubject, activeDomain, activeSubdomain, renderMapOverlay, fetchMatatagNodes, fetchIntroNodes, fetchIntroInterests, modelsLoading, modelFilter, setModelFilter, setAnalyticsData
+    activeSubject, activeDomain, activeSubdomain, renderMapOverlay, fetchMatatagNodes, fetchIntroNodes, fetchIntroInterests, modelsLoading, modelFilter, setModelFilter, setAnalyticsData, _resetMatatagState, labAllowedDifficulties, labVariantValues, labSelectedFormatter, setLabSelectedInterest, fetchParentGraph, opencodeModel, parentAuthRequired, matatagNodeSearch, setLabAllowedContexts, fetchParentAnalytics, labDifficultyScalars, setEditTelemetryEnabled, fetchProfiles, fetchMatatagQuestion, opencodeModels, fetchMatatagAxes, labAllowedFormatters, saveLabConfig, labInterests, handleUpdateSettings, setLabAllowedFormatters, matatagAxisValues, activeQuestion, parentSelectedGrade, setMatatagNodeId, setParentSubjectFilter, setParentSelectedGrade, setLabAllowedDifficulties, matatagQuestion, handleToggleParentAuth, matatagResult, parentSubjectFilter, labSelectedInterest, setMatatagNodeSearch, analyticsData, matatagLoading, labConfig, labConfigLoading, setMatatagAnswer, matatagAnswer, editTelemetryEnabled, labAllowedContexts, submitMatatagAnswer, handleOpencodeModelChange, parentGraphData, fetchLabConfig
   } = props;
 
   return (

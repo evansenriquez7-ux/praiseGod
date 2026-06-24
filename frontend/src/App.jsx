@@ -2815,7 +2815,7 @@ function App() {
             matatagNodeId, matatagNodes, handleRunMatatagTest, matatagTestResults, testLoading, clearMatatagTests,
             activeSubject, activeDomain, activeSubdomain, renderMapOverlay,
             fetchMatatagNodes, fetchIntroNodes, fetchIntroInterests,
-            modelsLoading, modelFilter, setModelFilter, setAnalyticsData}}
+            modelsLoading, modelFilter, setModelFilter, setAnalyticsData, _resetMatatagState, labAllowedDifficulties, labVariantValues, labSelectedFormatter, setLabSelectedInterest, fetchParentGraph, opencodeModel, parentAuthRequired, matatagNodeSearch, setLabAllowedContexts, fetchParentAnalytics, labDifficultyScalars, setEditTelemetryEnabled, fetchProfiles, fetchMatatagQuestion, opencodeModels, fetchMatatagAxes, labAllowedFormatters, saveLabConfig, labInterests, handleUpdateSettings, setLabAllowedFormatters, matatagAxisValues, activeQuestion, parentSelectedGrade, setMatatagNodeId, setParentSubjectFilter, setParentSelectedGrade, setLabAllowedDifficulties, matatagQuestion, handleToggleParentAuth, matatagResult, parentSubjectFilter, labSelectedInterest, setMatatagNodeSearch, analyticsData, matatagLoading, labConfig, labConfigLoading, setMatatagAnswer, matatagAnswer, editTelemetryEnabled, labAllowedContexts, submitMatatagAnswer, handleOpencodeModelChange, parentGraphData, fetchLabConfig}}
           />
         )}
       </main>
