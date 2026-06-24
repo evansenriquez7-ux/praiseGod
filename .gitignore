@@ -73,16 +73,13 @@ local_only/
 scratch/
 local_only/*
 
-# Dependencies
-frontend/node_modules/
-
 # Build Artifacts
-frontend/dist/
-frontend/build/
 frontend/.npm_cache/
-__pycache__/
-*.pyc
+frontend/.npm_tmp/
 
 # Firebase
 .firebase/
 .firebaserc
+
+# Testing
+.pytest_cache/
