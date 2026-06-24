@@ -8,11 +8,6 @@ import re
 from pathlib import Path
 from typing import Optional
 
-# ── By-standard node directory (processed curriculum data) ─────────────────────
-_BY_STANDARD_DIR = Path(__file__).parent.parent.parent / "data" / "processed" / "by_standard"
-
-# ── by_standard node directory ─────────────────────────────────────────────────
-_BY_STANDARD_DIR = Path(__file__).parent.parent.parent / "data" / "processed" / "by_standard"
 
 try:
     from anthropic import Anthropic
@@ -140,261 +135,6 @@ def has_visual_reference(text: str) -> bool:
     return False
 
 
-# ── by_standard context loader ─────────────────────────────────────────────────
-
-def _find_by_standard_file(skill_id: str):
-    """
-    Resolve a CCSS standard code to its by_standard JSON file.
-    Tries three strategies, mirroring scripts/testy.py:
-      1. Direct dot format:       RL.3.1.json
-      2. Underscore format:       3_OA_A_1.json  (dots + hyphens → underscores)
-      3. Case-insensitive glob fallback (strips all separators for comparison)
-    Returns a Path on hit, None on miss.
-    """
-    # Strategy 1 — dot format (ELA standards)
-    dot_path = _BY_STANDARD_DIR / f"{skill_id}.json"
-    if dot_path.exists():
-        return dot_path
-
-    # Strategy 2 — underscore format (Math standards)
-    us_name = skill_id.replace(".", "_").replace("-", "_") + ".json"
-    us_path = _BY_STANDARD_DIR / us_name
-    if us_path.exists():
-        return us_path
-
-    # Strategy 3 — case-insensitive glob (handles capitalisation differences)
-    def _norm(s: str) -> str:
-        return re.sub(r"[.\-_]", "", s.lower())
-
-    target = _norm(skill_id)
-    try:
-        for f in _BY_STANDARD_DIR.glob("*.json"):
-            if _norm(f.stem) == target:
-                return f
-    except Exception:
-        pass
-
-    return None
-
-
-def _load_by_standard_context(skill_id: str) -> dict:
-    """
-    Load enrichment data from the by_standard node JSON file for `skill_id`.
-
-    IMPORTANT: Only extracts student-facing content (example problems, question
-    stems, answer choices).  Strips all metadata (curriculum references, URLs,
-    source IDs, image/video placeholders, teacher instructions, standard codes).
-
-    Returns a dict:
-      {
-        "description": str,        (the standard's pedagogical skill description)
-        "grade_label":  str,       e.g. "Grade 3" or "Kindergarten"
-        "subject":      str,
-        "examples":     list[{"question": str, "answer": str}]  (up to 3)
-      }
-    Returns {} silently if the file doesn't exist or any error occurs.
-    """
-    try:
-        std_file = _find_by_standard_file(skill_id)
-        if std_file is None:
-            return {}
-
-        with open(std_file, encoding="utf-8") as f:
-            data = json.load(f)
-
-        description = data.get("standard_description", "").strip()
-        grade_raw   = data.get("grade_level", "")
-        subject     = data.get("subject", "").strip()
-
-        try:
-            grade_int   = int(grade_raw)
-            grade_label = "Kindergarten" if grade_int == 0 else f"Grade {grade_int}"
-        except (ValueError, TypeError):
-            grade_label = f"Grade {grade_raw}" if grade_raw else ""
-
-        # Extract up to 3 example problems ─────────────────────────────────
-        examples = []
-
-        # Priority 1: NYSED released items — cleanest student-facing content
-        for nysed in data.get("nysed_items", []):
-            stem = nysed.get("stem", "").strip()
-            if not stem:
-                continue
-            options = nysed.get("options", {})
-            correct_key = nysed.get("correct_answer", "")
-            answer_text = options.get(correct_key, "") if correct_key else ""
-            # Format as a complete MCQ example
-            q_lines = [stem]
-            for k in ["A", "B", "C", "D"]:
-                if k in options:
-                    q_lines.append(f"  {k}) {options[k]}")
-            examples.append({"question": "\n".join(q_lines), "answer": answer_text})
-            if len(examples) >= 3:
-                break
-
-        # Priority 2: Khan Academy MCQ (radio) items — good student-facing content
-        if len(examples) < 3:
-            for exercise in data.get("khan_exercises", []):
-                for item in exercise.get("items", []):
-                    if "radio" not in item.get("widget_types", []):
-                        continue
-                    raw_q = item.get("question_content", "")
-                    # Strip widget placeholders
-                    question = re.sub(r"\[\[☃[^\]]*\]\]", "", raw_q)
-                    question = re.sub(r"\n{3,}", "\n\n", question).strip()
-                    if not question:
-                        continue
-                    # Skip if it still contains visual/media references
-                    if _is_non_student_facing(question):
-                        continue
-                    answer_text = ""
-                    for widget_data in item.get("answer_data", {}).values():
-                        if widget_data.get("type") != "radio":
-                            continue
-                        for choice in widget_data.get("choices", []):
-                            if choice.get("correct"):
-                                answer_text = choice.get("content", "").strip()
-                                break
-                        if answer_text:
-                            break
-                    # Skip answers that are images/visual content
-                    if answer_text and _is_non_student_facing(answer_text):
-                        answer_text = ""
-                    examples.append({"question": question, "answer": answer_text})
-                    if len(examples) >= 3:
-                        break
-                if len(examples) >= 3:
-                    break
-
-        # Priority 3: Math problems — filter to only self-contained, student-facing ones
-        if len(examples) < 3:
-            for prob in data.get("problems", []):
-                text = prob.get("text", "").strip()
-                if not text:
-                    continue
-                # Clean and filter out non-student-facing content
-                cleaned = _clean_problem_text(text)
-                if cleaned and not _is_non_student_facing(cleaned):
-                    examples.append({"question": cleaned, "answer": ""})
-                if len(examples) >= 3:
-                    break
-
-        return {
-            "description": description,
-            "grade_label":  grade_label,
-            "subject":      subject,
-            "examples":     examples,
-        }
-
-    except Exception as e:
-        print(f"[by_standard] Error loading context for {skill_id}: {e}")
-        return {}
-
-
-def _is_non_student_facing(text: str) -> bool:
-    """
-    Returns True if the text contains indicators that it's NOT student-facing
-    content (curriculum metadata, teacher instructions, visual references, etc).
-    """
-    # Image/table/video placeholders
-    if re.search(r"###(IMAGE|TABLE|FIGURE|VIDEO)\d*###", text, re.IGNORECASE):
-        return True
-    # Graphie/image markdown (Khan Academy internal image format)
-    if re.search(r"web\+graphie:|!\[.*\]\(.*graphie|LOCALPATH", text):
-        return True
-    # References to curriculum lessons/tasks
-    if re.search(r"(Anchor Task|Lesson \d|from Lesson|from Unit|Problem Set)", text, re.IGNORECASE):
-        return True
-    # Teacher-facing instructions
-    if re.search(r"(Add the new facts|to your multiplication table|Watch the following video|Act \d:)", text, re.IGNORECASE):
-        return True
-    # Standard code references (CCSS, CCRA, NYSED identifiers)
-    if re.search(r"\b(CCSS|CCRA|NYSED|NYSP12|Common Core|standard\s+\w+\.\d)", text, re.IGNORECASE):
-        return True
-    # URLs and file references
-    if re.search(r"https?://|\.html\b|\.pdf\b|\.json\b", text, re.IGNORECASE):
-        return True
-    # References to external resources or curriculum structure
-    if re.search(r"(curriculum|Fishtank|EngageNY|Eureka Math|module \d)", text, re.IGNORECASE):
-        return True
-    # Perseus/Khan widget references that leaked through
-    if re.search(r"☃|☣|widget_types|answer_data", text):
-        return True
-    # Visual reference patterns (shared with has_visual_reference but broader)
-    if has_visual_reference(text):
-        return True
-    return False
-
-
-def _clean_problem_text(text: str) -> str:
-    """
-    Clean a raw problem text block to extract only student-facing content.
-    Strips metadata, curriculum references, image placeholders, and
-    extracts the first self-contained problem sub-part.
-    """
-    # Remove image/table/video placeholders
-    text = re.sub(r"###(IMAGE|TABLE|FIGURE|VIDEO)\d*###", "", text)
-    # Remove URLs
-    text = re.sub(r"https?://\S+", "", text)
-    # Remove markdown headers that are just "Problem N" — keep the content below
-    text = re.sub(r"^Problem\s+\d+\s*\n?", "", text, flags=re.MULTILINE)
-    # Remove sub-part labels like "a." "b." "i." "ii." at start of line
-    # (keep the content)
-    text = re.sub(r"^\s*[a-z]\.\s+", "", text, flags=re.MULTILINE)
-    text = re.sub(r"^\s*[ivx]+\.\s+", "", text, flags=re.MULTILINE)
-    # Collapse excessive whitespace
-    text = re.sub(r"\n{3,}", "\n\n", text).strip()
-
-    # If text is very long (multi-problem dump), take only the first meaningful chunk
-    # Split on "Problem" boundaries and take the first substantial one
-    chunks = re.split(r"\n(?=Problem\s+\d)", text)
-    if chunks:
-        # Take the first chunk that has reasonable length (>20 chars, <500 chars)
-        for chunk in chunks:
-            chunk = chunk.strip()
-            if 20 < len(chunk) < 500:
-                return chunk
-        # If no chunk in ideal range, just take first chunk truncated
-        first = chunks[0].strip()
-        if len(first) > 500:
-            # Truncate at sentence boundary
-            sentences = first[:500].rsplit(".", 1)
-            return sentences[0] + "." if len(sentences) > 1 else first[:400]
-        return first
-
-    return text[:500] if len(text) > 500 else text
-
-
-def _format_by_standard_section(ctx: dict) -> str:
-    """
-    Format a loaded by_standard context dict into a prompt-injectable text block.
-
-    CRITICAL: The description is framed as the SKILL THE STUDENT SHOULD PRACTICE,
-    not as content to quiz them about.  The AI must never ask "what does this
-    standard say?" or reference the standard code in student-facing text.
-    """
-    lines = ["\n=== SKILL CONTEXT (for your reference — NOT student-facing) ==="]
-    lines.append("NOTE: The information below tells YOU what skill to assess.")
-    lines.append("NEVER show standard codes, descriptions, or curriculum metadata to the student.")
-    lines.append("NEVER ask the student what a standard means or what it requires.")
-    lines.append("")
-    if ctx.get("description"):
-        lines.append(f"Skill being assessed: {ctx['description']}")
-    if ctx.get("subject"):
-        lines.append(f"Subject area: {ctx['subject']}")
-    if ctx.get("grade_label"):
-        lines.append(f"Target level: {ctx['grade_label']}")
-    if ctx.get("examples"):
-        lines.append("\nEXAMPLE PROBLEMS (use these as format/difficulty reference only — do NOT copy or closely paraphrase):")
-        for i, ex in enumerate(ctx["examples"], 1):
-            lines.append(f"\n  Example {i}:")
-            # Indent each line for clarity
-            for line in ex["question"].splitlines():
-                lines.append(f"    {line}")
-            if ex.get("answer"):
-                lines.append(f"    [Correct: {ex['answer']}]")
-    lines.append("\n=============================================================\n")
-    return "\n".join(lines)
 
 
 def _format_age_grade_constraints(student_age: int, student_grade: int, language: str = "en", context: str = "question") -> str:
@@ -466,20 +206,6 @@ def narrate_question_subagent(
     """
     lang_name = "Tagalog (Filipino)" if language.lower() == "tl" else "English"
     
-    # Load enriched research context if available
-    research_context = ""
-    if skill_id:
-        try:
-            safe_name = skill_id.replace('.', '_').replace('-', '_')
-            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-            research_file = os.path.join(base_dir, "data", "research", f"{safe_name}_Context.md")
-            if os.path.exists(research_file):
-                with open(research_file, "r", encoding="utf-8") as f:
-                    research_context = f.read().strip()
-                print(f"[Problem Narrator] Loaded enriched pedagogical context for {skill_id}")
-        except Exception as e:
-            print(f"[Problem Narrator] Error loading context: {e}")
-            
     prompt = f"""
 You are the Problem Narrator subagent for an adaptive learning platform. Your task is to wrap a mathematical question into a narrative word problem matching the student's interests and age.
 
@@ -490,15 +216,7 @@ Student Profile:
 - Output Language: {lang_name}
 """
 
-    if research_context:
-        prompt += f"\n=== ENRICHED PEDAGOGICAL RESEARCH & CONSTRAINTS ===\n{research_context}\n===================================================\n"
-
-    # When OpenCode is the active backend, also inject the by_standard node data
-    if True:
-        bs_ctx = _load_by_standard_context(skill_id)
-        if bs_ctx:
-            prompt += _format_by_standard_section(bs_ctx)
-        prompt += _format_age_grade_constraints(student_age, student_grade, language=language, context="question")
+    prompt += _format_age_grade_constraints(student_age, student_grade, language=language, context="question")
 
     prompt += f"""
 Mathematical Skeleton:
@@ -593,18 +311,6 @@ def generate_math_question_ai(
 
     standard_description = f"Grade {grade_level} Math standard {skill_id}"
 
-    # Load enriched research context if available
-    research_context = ""
-    try:
-        safe_name = skill_id.replace('.', '_').replace('-', '_')
-        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        research_file = os.path.join(base_dir, "data", "research", f"{safe_name}_Context.md")
-        if os.path.exists(research_file):
-            with open(research_file, "r", encoding="utf-8") as f:
-                research_context = f.read().strip()
-    except Exception:
-        pass
-
     prompt = f"""You are a Math Curriculum Subagent for an adaptive K-12 platform.
 Generate ONE multiple-choice math question testing the given standard.
 
@@ -619,15 +325,7 @@ Math Standard:
 - Description: "{standard_description}"
 """
 
-    if research_context:
-        prompt += f"\n=== ENRICHED CONTEXT ===\n{research_context}\n========================\n"
-
-    # When OpenCode is the active backend, also inject the by_standard node data
-    if True:
-        bs_ctx = _load_by_standard_context(skill_id)
-        if bs_ctx:
-            prompt += _format_by_standard_section(bs_ctx)
-        prompt += _format_age_grade_constraints(student_age, grade_level, language=language, context="question")
+    prompt += _format_age_grade_constraints(student_age, grade_level, language=language, context="question")
 
     if previous_questions:
         pn = len(previous_questions)
@@ -856,87 +554,9 @@ def generate_ela_skeleton_subagent(
     standard_description = std_info.get("description", f"Grade {grade_level} ELA standard {skill_id}")
     domain = std_info.get("domain", "English Language Arts")
 
-    # Load enriched research context if available
-    research_context = ""
-    try:
-        safe_name = skill_id.replace('.', '_').replace('-', '_')
-        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        research_file = os.path.join(base_dir, "data", "research", f"{safe_name}_Context.md")
-        if os.path.exists(research_file):
-            with open(research_file, "r", encoding="utf-8") as f:
-                research_context = f.read().strip()
-            print(f"[ELA Generator] Loaded enriched pedagogical context for {skill_id}")
-    except Exception as e:
-        print(f"[ELA Generator] Error loading context: {e}")
 
-    if question_mode == "writing_prompt":
-        prompt = f"""
-You are the ELA Writing Curriculum Subagent for an adaptive K-12 platform.
-Generate an engaging, grade-appropriate open-ended writing prompt.
 
-Student Profile:
-- Age: {student_age} years old
-- Grade: Grade {grade_level}
-- Interests: {student_interest}
-- Target Language: {lang_name}
-
-ELA Writing Standard:
-- Code: {skill_id}
-- Domain: {domain}
-- Official Description: "{standard_description}"
-"""
-        if research_context:
-            prompt += f"\n=== ENRICHED PEDAGOGICAL RESEARCH & CONSTRAINTS ===\n{research_context}\n===================================================\n"
-
-        # When OpenCode is the active backend, also inject the by_standard node data
-        if True:
-            bs_ctx = _load_by_standard_context(skill_id)
-            if bs_ctx:
-                prompt += _format_by_standard_section(bs_ctx)
-            prompt += _format_age_grade_constraints(student_age, grade_level, language=language, context="question")
-
-        if previous_questions:
-            n = len(previous_questions)
-            prompt += (
-                f"\n\nALREADY ANSWERED BY THIS STUDENT "
-                f"({n} prompt{'s' if n > 1 else ''}) — "
-                "DO NOT repeat or closely resemble any of these:\n"
-            )
-            for i, q in enumerate(previous_questions, 1):
-                prompt += f"\n  [Prompt {i}]\n"
-                for line in q.get("problem_text", "").splitlines():
-                    prompt += f"  {line}\n"
-            prompt += (
-                "\nYour new prompt MUST use a completely different context, "
-                "scenario, and subject matter. "
-                "The CCSS standard being assessed must remain identical.\n"
-            )
-
-        prompt += f"""
-Instructions:
-1. Create a focused writing prompt that directly assesses the standard above.
-2. Theme the prompt around the student's interests to make it engaging.
-3. The prompt length and difficulty must match the student's age ({student_age} years old) and Grade level (Grade {grade_level}):
-   - For Kindergarten (Grade 0) & Grade 1: The prompt must only ask for 1 very simple sentence (e.g. write one simple sentence about a happy dog or write one word). NEVER ask for paragraphs or complex essays. Use extremely simple, sight words.
-   - For Elementary (Grades 2-5): Ask for 1 short paragraph (3-4 simple sentences).
-   - For Middle & High School (Grades 6-13): The prompt can ask for 1-3 paragraphs of original student writing.
-4. Include a brief, friendly setup sentence before the actual prompt.
-5. Do NOT include any sample answer or outline.
-6. Output a clean JSON object. Do NOT wrap in markdown blocks.
-
-Output JSON Schema:
-{{
-  "stem_template": "Setup sentence + the writing prompt question...",
-  "options": {{}},
-  "correct_key": "",
-  "correct_answer": "",
-  "math_expression": "Writing: {skill_id}",
-  "standard_description": "{standard_description}",
-  "domain": "{domain}"
-}}
-"""
-    else:  # MCQ reading comprehension or grammar
-        prompt = f"""
+    prompt = f"""
 You are the ELA Reading Curriculum Subagent for an adaptive K-12 platform.
 Generate a short reading passage and multiple-choice question testing the given standard.
 
@@ -951,36 +571,28 @@ ELA Standard:
 - Domain: {domain}
 - Official Description: "{standard_description}"
 """
-        if research_context:
-            prompt += f"\n=== ENRICHED PEDAGOGICAL RESEARCH & CONSTRAINTS ===\n{research_context}\n===================================================\n"
+    prompt += _format_age_grade_constraints(student_age, grade_level, language=language, context="question")
 
-        # When OpenCode is the active backend, also inject the by_standard node data
-        if True:
-            bs_ctx = _load_by_standard_context(skill_id)
-            if bs_ctx:
-                prompt += _format_by_standard_section(bs_ctx)
-            prompt += _format_age_grade_constraints(student_age, grade_level, language=language, context="question")
+    if previous_questions:
+        n = len(previous_questions)
+        prompt += (
+            f"\n\nALREADY ANSWERED BY THIS STUDENT "
+            f"({n} question{'s' if n > 1 else ''}) — "
+            "DO NOT repeat or closely resemble any of these:\n"
+        )
+        for i, q in enumerate(previous_questions, 1):
+            prompt += f"\n  [Question {i}]\n"
+            for line in q.get("problem_text", "").splitlines():
+                prompt += f"  {line}\n"
+            if q.get("answer"):
+                prompt += f"  Answer: {q['answer']}\n"
+        prompt += (
+            "\nYour new passage and question MUST use a completely different "
+            "real-world context, scenario, and subject matter. "
+            "The CCSS standard being assessed must remain identical.\n"
+        )
 
-        if previous_questions:
-            n = len(previous_questions)
-            prompt += (
-                f"\n\nALREADY ANSWERED BY THIS STUDENT "
-                f"({n} question{'s' if n > 1 else ''}) — "
-                "DO NOT repeat or closely resemble any of these:\n"
-            )
-            for i, q in enumerate(previous_questions, 1):
-                prompt += f"\n  [Question {i}]\n"
-                for line in q.get("problem_text", "").splitlines():
-                    prompt += f"  {line}\n"
-                if q.get("answer"):
-                    prompt += f"  Answer: {q['answer']}\n"
-            prompt += (
-                "\nYour new passage and question MUST use a completely different "
-                "real-world context, scenario, and subject matter. "
-                "The CCSS standard being assessed must remain identical.\n"
-            )
-
-        prompt += f"""
+    prompt += f"""
 Instructions:
 1. Write a short engaging passage themed around the student's interests. The length, vocabulary, and syntactic complexity MUST strictly match the student's age ({student_age} years old) and Grade level (Grade {grade_level}):
    - For Kindergarten (Grade 0) & Grade 1: The passage MUST be ONLY 1 or 2 ultra-simple sentences (maximum 15-20 words total). Use only concrete, high-frequency sight words and basic CVC words (like "cat", "dog", "run", "big", "sun", "glad", "help"). NEVER use multi-syllable, abstract, or advanced vocabulary (like "diligent", "sewing", "neighbors", "circumstances"). The question and options must also be extremely brief and simple.
@@ -1044,18 +656,6 @@ Output JSON Schema:
 
     # All 3 attempts failed — serve last-resort fallback
     print(f"Failed to parse ELA skeleton after 3 attempts: {last_error}. Raw response: {last_response}")
-    if question_mode == "writing_prompt":
-        return {
-            "skeleton_id": f"ela_fallback_{uuid.uuid4().hex[:8]}",
-            "stem_template": f"Write a short paragraph about something you care about that connects to this idea: {standard_description}",
-            "options": {},
-            "correct_key": "",
-            "correct_answer": "",
-            "math_expression": f"Writing: {skill_id}",
-            "question_mode": "writing_prompt",
-            "standard_description": standard_description,
-            "domain": domain
-        }
     return {
         "skeleton_id": f"ela_fallback_{uuid.uuid4().hex[:8]}",
         "stem_template": "Read the following sentence: The quick brown fox jumps over the lazy dog.\n\nWhat is the subject of this sentence?",
@@ -1102,20 +702,10 @@ def generate_ela_batch_subagent(
     standard_description = std_info.get("description", f"Grade {grade_level} ELA standard {skill_id}")
     domain = std_info.get("domain", "English Language Arts")
 
-    # Load enriched research context if available
-    research_context = ""
-    try:
-        safe_name = skill_id.replace('.', '_').replace('-', '_')
-        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        research_file = os.path.join(base_dir, "data", "research", f"{safe_name}_Context.md")
-        if os.path.exists(research_file):
-            with open(research_file, "r", encoding="utf-8") as f:
-                research_context = f.read().strip()
-    except Exception:
-        pass
+
 
     prompt = f"""You are the ELA Curriculum Subagent for an adaptive K-12 platform.
-Generate exactly {n} COMPLETELY DIFFERENT {'reading comprehension' if question_mode == 'mcq' else 'writing'} questions,
+Generate exactly {n} COMPLETELY DIFFERENT reading comprehension questions,
 all testing the SAME standard.
 
 Student Profile:
@@ -1130,15 +720,7 @@ ELA Standard:
 - Official Description: "{standard_description}"
 """
 
-    if research_context:
-        prompt += f"\n=== ENRICHED PEDAGOGICAL RESEARCH & CONSTRAINTS ===\n{research_context}\n===================================================\n"
-
-    # When OpenCode is the active backend, also inject the by_standard node data
-    if True:
-        bs_ctx = _load_by_standard_context(skill_id)
-        if bs_ctx:
-            prompt += _format_by_standard_section(bs_ctx)
-        prompt += _format_age_grade_constraints(student_age, grade_level, language=language, context="question")
+    prompt += _format_age_grade_constraints(student_age, grade_level, language=language, context="question")
 
     if previous_questions:
         pn = len(previous_questions)
@@ -1158,8 +740,7 @@ ELA Standard:
             "scenario, and subject matter.\n"
         )
 
-    if question_mode == "mcq":
-        prompt += f"""
+    prompt += f"""
 CRITICAL DIVERSITY RULE: The {n} questions MUST NOT share any passage, scenario,
 context, character, or setting. A student who reads Q1 gains ZERO advantage on Q2 or Q3.
 
@@ -1184,22 +765,6 @@ Output a JSON ARRAY of exactly {n} objects. No markdown fences. No extra text.
     "domain": "{domain}"
   }},
   {{ ... }},
-  {{ ... }}
-]"""
-    else:  # writing_prompt
-        prompt += f"""
-CRITICAL DIVERSITY RULE: The {n} prompts must address completely different scenarios.
-
-Output a JSON ARRAY of exactly {n} objects. No markdown fences. No extra text.
-[
-  {{
-    "stem_template": "Setup sentence + the writing prompt...",
-    "options": {{}},
-    "correct_key": "",
-    "correct_answer": "",
-    "standard_description": "{standard_description}",
-    "domain": "{domain}"
-  }},
   {{ ... }}
 ]"""
 
@@ -1255,220 +820,3 @@ Output a JSON ARRAY of exactly {n} objects. No markdown fences. No extra text.
     return results
 
 
-def grade_writing_subagent(
-    student_text: str,
-    standard_description: str,
-    skill_id: str,
-    grade_level: int,
-    student_interest: str,
-    language: str
-) -> dict:
-    """
-    6-Trait Analytic Writing Scorer Subagent.
-    Scores student writing across 6 independent traits (1-4 scale each).
-    Returns structured JSON with per-trait scores, feedback, and composite verdict.
-    """
-    lang_name = "Tagalog (Filipino)" if language.lower() == "tl" else "English"
-
-    prompt = f"""
-You are an expert K-12 writing assessor. Score the following Grade {grade_level} student writing sample
-using the 6-Trait Analytic Writing Rubric. Be fair, grade-appropriate, and encouraging in your feedback.
-
-ELA Standard Being Assessed:
-- Code: {skill_id}
-- Description: "{standard_description}"
-
-Student Profile:
-- Grade: {grade_level}
-- Language: {lang_name}
-- Interests: {student_interest}
-
-Student's Writing:
----
-{student_text}
----
-
-Scoring Rubric (score each trait 1-4):
-- 4 = Exceeds grade-level expectations
-- 3 = Meets grade-level expectations
-- 2 = Developing, approaching grade level
-- 1 = Beginning, significant gaps
-
-Traits to Score:
-1. Ideas: Clarity of central claim/argument, relevance, supporting details
-2. Organization: Logical structure, transitions, clear intro and conclusion
-3. Voice: Appropriate tone for audience and purpose, engagement
-4. Word Choice: Precision, grade-level vocabulary, descriptive language
-5. Sentence Fluency: Sentence variety, rhythm, flow when read aloud
-6. Conventions: Grammar, spelling, punctuation, capitalization
-
-Output ONLY a raw JSON object (no markdown, no explanation outside JSON):
-{{
-  "ideas": 2,
-  "organization": 1,
-  "voice": 3,
-  "word_choice": 2,
-  "sentence_fluency": 2,
-  "conventions": 3,
-  "composite": 2.17,
-  "verdict": "developing",
-  "trait_feedback": {{
-    "ideas": "Your main point is present but needs specific evidence or examples to support it.",
-    "organization": "Try starting with a clear opening sentence that states your main idea.",
-    "voice": "Your enthusiasm comes through! Keep that personal connection.",
-    "word_choice": "Good start. Try replacing common words with more specific ones.",
-    "sentence_fluency": "Most sentences follow a similar pattern. Try starting one differently.",
-    "conventions": "Strong spelling and punctuation! Watch for comma usage."
-  }}
-}}
-
-Verdict must be exactly one of: "exceeds", "meets", "developing", "beginning"
-(exceeds: 3.5-4.0, meets: 2.5-3.4, developing: 1.5-2.4, beginning: 1.0-1.4)
-"""
-
-    # When OpenCode is the active backend, inject age-appropriate language constraints for feedback
-    if True:
-        # Estimate age from grade_level (grade 0 = ~5, grade 1 = ~6, etc.)
-        est_age = grade_level + 5 if grade_level <= 12 else 17
-        prompt += _format_age_grade_constraints(est_age, grade_level, language=language, context="tutor")
-
-    response = call_ai(prompt)
-
-    response_clean = response.strip()
-    if response_clean.startswith("```json"):
-        response_clean = response_clean[7:]
-    if response_clean.endswith("```"):
-        response_clean = response_clean[:-3]
-    response_clean = response_clean.strip()
-
-    try:
-        parsed = json.loads(response_clean)
-        # Ensure composite is recalculated for integrity
-        trait_keys = ["ideas", "organization", "voice", "word_choice", "sentence_fluency", "conventions"]
-        scores = [parsed.get(k, 1) for k in trait_keys]
-        composite = round(sum(scores) / len(scores), 2)
-        parsed["composite"] = composite
-        # Ensure verdict matches composite
-        if composite >= 3.5:
-            parsed["verdict"] = "exceeds"
-        elif composite >= 2.5:
-            parsed["verdict"] = "meets"
-        elif composite >= 1.5:
-            parsed["verdict"] = "developing"
-        else:
-            parsed["verdict"] = "beginning"
-        return parsed
-    except Exception as e:
-        print(f"Failed to parse writing grade from subagent: {str(e)}. Raw: {response}")
-        return {
-            "ideas": 1, "organization": 1, "voice": 1,
-            "word_choice": 1, "sentence_fluency": 1, "conventions": 1,
-            "composite": 1.0, "verdict": "beginning",
-            "trait_feedback": {
-                "ideas": "Please try to expand your response with more detail.",
-                "organization": "Make sure your response has a clear beginning and end.",
-                "voice": "Let your own perspective come through in your writing!",
-                "word_choice": "Try using more specific and descriptive words.",
-                "sentence_fluency": "Vary the way you begin your sentences.",
-                "conventions": "Review grammar and punctuation before submitting."
-            }
-        }
-
-
-def writing_socratic_tutor_subagent(
-    student_question: str,
-    trait_scores: dict,
-    standard_description: str,
-    skill_id: str,
-    student_text: str,
-    chat_history: list,
-    language: str,
-    student_age: int,
-    student_grade: int,
-    student_interest: str
-) -> dict:
-    """
-    Writing-Mode Socratic Tutor Subagent.
-    Reactive-only: answers ONLY what the student explicitly asks.
-    Uses trait scores as private context to nudge toward weak areas without lecturing.
-    """
-    lang_name = "Tagalog" if language.lower() == "tl" else "English"
-
-    # Format the private trait context for the tutor
-    trait_context = "\n".join([
-        f"- {trait.replace('_', ' ').title()}: {score}/4"
-        for trait, score in trait_scores.items()
-        if trait in ["ideas", "organization", "voice", "word_choice", "sentence_fluency", "conventions"]
-    ])
-
-    # Format chat history
-    formatted_history = ""
-    for msg in chat_history:
-        if isinstance(msg, dict):
-            role_val = msg.get("role")
-            content_val = msg.get("content")
-        else:
-            role_val = getattr(msg, "role", "user")
-            content_val = getattr(msg, "content", "")
-        role = "Student" if role_val == "user" else "Coach"
-        formatted_history += f"{role}: {content_val}\n"
-
-    prompt = f"""
-You are a warm, Socratic Writing Coach for a {student_age}-year-old Grade {student_grade} student.
-Your role is to ONLY answer the specific question the student has asked. Do NOT volunteer
-extra information or corrections they didn't ask about.
-
-However, you have private context (the student cannot see this) that you use to shape HOW
-you answer — guiding them gently toward their weakest areas without being explicit about it.
-
-=== PRIVATE CONTEXT (student cannot see this) ===
-Writing Standard: {skill_id} - "{standard_description}"
-Student's Writing Sample:
-"{student_text[:500]}..."
-
-Trait Scores (private):
-{trait_context}
-=== END PRIVATE CONTEXT ===
-
-Student Profile (visible context):
-- Age: {student_age}, Grade: {student_grade}
-- Interests: {student_interest}
-- Output Language: {lang_name}
-
-Conversation History:
-{formatted_history}
-
-Student's Current Question: "{student_question}"
-
-Your Response Rules:
-1. Answer ONLY what the student asked — do not proactively teach other traits.
-2. Use Socratic questioning where possible (guide with questions, not answers).
-3. If their question touches a weak trait (low score), gently help them see the gap without
-   saying "you scored low on..." — instead, ask guiding questions.
-4. Keep response warm, encouraging, and under 4 sentences.
-5. Use the student's interest themes ({student_interest}) when helpful for analogies.
-6. Output ONLY raw JSON.
-
-JSON Output:
-{{
-  "reply": "your coaching response in {lang_name}"
-}}
-"""
-
-    # When OpenCode is the active backend, inject age-appropriate language constraints
-    if True:
-        prompt += _format_age_grade_constraints(student_age, student_grade, language=language, context="tutor")
-
-    response = call_ai(prompt, model="gemma-4-31b-it")
-    response_clean = response.strip()
-    if response_clean.startswith("```json"):
-        response_clean = response_clean[7:]
-    if response_clean.endswith("```"):
-        response_clean = response_clean[:-3]
-    response_clean = response_clean.strip()
-
-    try:
-        parsed = json.loads(response_clean)
-        return {"reply": parsed.get("reply", "Great question! Think about how your writing connects to what the prompt is asking — what's the most important idea you want the reader to remember?")}
-    except Exception:
-        return {"reply": "That's a thoughtful question! Consider reading your writing aloud — does each sentence support your main idea? What would make it even stronger?"}

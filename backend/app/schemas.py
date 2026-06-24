@@ -196,39 +196,7 @@ class ParentAnalyticsResponse(BaseModel):
     total_attempts: int
     correct_attempts: int
 
-# --- Writing Schemas ---
-class WritingGradeRequest(BaseModel):
-    student_id: int
-    skill_id: str
-    skeleton_id: str
-    student_text: str
-    session_id: int
 
-class TraitScores(BaseModel):
-    ideas: int
-    organization: int
-    voice: int
-    word_choice: int
-    sentence_fluency: int
-    conventions: int
-    composite: float
-    verdict: str  # "exceeds", "meets", "developing", "beginning"
-    trait_feedback: Dict[str, str]
-
-class WritingGradeResponse(BaseModel):
-    trait_scores: TraitScores
-    new_student_elo: float
-    can_resubmit: bool  # True if verdict is "developing" or "beginning"
-
-class WritingChatRequest(BaseModel):
-    student_id: int
-    skill_id: str
-    skeleton_id: str
-    message: str
-    history: List[SocraticChatMessage]
-
-class WritingChatResponse(BaseModel):
-    reply: str
 
 class AdminGraphNode(BaseModel):
     id: str

@@ -1337,7 +1337,7 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
     is_matatag = skill_id.startswith("mat_") or subject in ["Matatag", "MATATAG", "matatag"]
     
     if is_ela:
-        question_mode = "writing_prompt" if skill_id.startswith("W") else "mcq"
+        question_mode = "mcq"
 
         # Load questions this student has already answered on this node — feed into
         # the LLM prompt so it knows exactly what to avoid (full question text, not just topics).
@@ -1355,8 +1355,7 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
                 question_mode=question_mode,
                 previous_questions=_previous if _previous else None,
             )
-            if question_mode == "writing_prompt":
-                break
+
 
             # Validate correct_key alignment
             ck = skeleton.get("correct_key", "A").upper()
@@ -1532,7 +1531,7 @@ def get_practice_question_batch(
         student = db.query(models.StudentProfile).filter(
             models.StudentProfile.id == student_id
         ).first()
-        q_mode = "writing_prompt" if skill_id.startswith("W") else "mcq"
+        q_mode = "mcq"
 
         batch_skeletons = subagents.generate_ela_batch_subagent(
             skill_id=skill_id,
