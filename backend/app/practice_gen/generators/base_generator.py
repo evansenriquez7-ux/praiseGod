@@ -272,7 +272,7 @@ def generate_context(
     difficulty_axes_served = _detect_axes_served(dna, values)
 
     # ── l. Build and return QuestionContext ───────────────────────────────────
-    return QuestionContext(
+    ctx = QuestionContext(
         values=values,
         correct_answer=correct_answer,
         distractors=distractors,
@@ -294,7 +294,138 @@ def generate_context(
         dna_concept=dna.concept,
         dna_type=dna.dna_type,
     )
+    return _fix_context_answer(ctx)
 
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# NORMALIZATION FIXERS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+_ANSWER_KEY_FALLBACKS: Dict[str, List[str]] = {
+    "counting":           ["answer"],
+    "area":               ["answer"],
+    "bar_graphs":         ["answer"],
+    "calendar":           ["answer"],
+    "comparing_ordering": ["answer"],
+    "geometric_lines":    ["answer"],
+    "length_measurement": ["answer"],
+    "mass_capacity":      ["answer"],
+    "order_of_operations":["answer"],
+    "ordinal_numbers":    ["answer", "word"],
+    "patterns":           ["answer"],
+    "perimeter":          ["answer"],
+    "pictographs":        ["answer"],
+    "probability_language":["answer"],
+    "rounding":           ["answer"],
+    "shapes_2d":          ["answer"],
+    "symmetry_slides":    ["answer"],
+    "money_peso":         ["answer", "total"],
+    "missing_number":     ["result", "answer"],
+    "fractions":          ["fraction_str", "numerator"],
+    "number_reading":     ["word_form", "number"],
+    "place_value":        ["value_at_position", "digit_at_position"],
+    "time_reading":       ["time_str"],
+}
+
+def _fix_context_answer(ctx: QuestionContext) -> QuestionContext:
+    if ctx.correct_answer is not None:
+        _fix_question_text(ctx)
+        _fix_distractors(ctx)
+        return ctx
+
+    fallback_keys = _ANSWER_KEY_FALLBACKS.get(ctx.dna_concept, [])
+    for key in fallback_keys:
+        val = ctx.values.get(key)
+        if val is not None:
+            ctx.correct_answer = val
+            ctx.blank_target = key
+            if str(val) in ctx.question_text and "___" not in ctx.question_text:
+                ctx.question_text_with_blank = ctx.question_text.replace(
+                    str(val), "___", 1
+                )
+            break
+
+    _fix_question_text(ctx)
+    _fix_distractors(ctx)
+    return ctx
+
+def _fix_distractors(ctx: QuestionContext) -> None:
+    built_in = ctx.values.get("distractors")
+    if isinstance(built_in, list):
+        correct = ctx.correct_answer
+        ctx.distractors = [d for d in built_in if d != correct]
+        return
+    if ctx.distractors:
+        return
+
+def _fix_question_text(ctx: QuestionContext) -> None:
+    v = ctx.values
+    embedded = v.get("question")
+    if embedded and v.get("context") == "word_problem" and ctx.spine_id is None:
+        ctx.question_text = embedded
+        answer = ctx.correct_answer
+        if answer is not None and str(answer) in embedded and "___" not in embedded:
+            ctx.question_text_with_blank = embedded.replace(str(answer), "___", 1)
+        else:
+            ctx.question_text_with_blank = embedded
+        return
+
+    concept = ctx.dna_concept
+    if "None" not in ctx.question_text and concept not in ("number_reading", "counting"):
+        if embedded and ctx.spine_id is None and (ctx.question_text.startswith("What is the answer?") or
+                        ctx.question_text.startswith("Identify")):
+            ctx.question_text = embedded
+            ctx.question_text_with_blank = embedded
+        return
+
+    fixed: Optional[str] = None
+    if concept == "counting":
+        seq = v.get("sequence", [])
+        skip = v.get("skip_by", "?")
+        direction = v.get("direction", "forward")
+        seq_str = ", ".join(str(x) for x in seq) + ", ___" if seq else "..."
+        fixed = f"What is the next number in this counting pattern? {seq_str}  (counting {'forward' if direction == 'forward' else 'backward'} by {skip}s)"
+    elif concept == "number_reading":
+        number = v.get("number", "?")
+        task_type = v.get("task_type", "numeral_to_word")
+        if task_type == "numeral_to_word":
+            fixed = f"Write {number} in words."
+        elif task_type == "numeral_to_expanded":
+            fixed = f"Write {number} in expanded form."
+        else:
+            word = v.get("word_form", "?")
+            fixed = f"What number is written as '{word}'?"
+    elif concept == "place_value":
+        number = v.get("number", "?")
+        task = v.get("task_type", "identify_place")
+        pos = v.get("target_digit_position", 0)
+        digit = v.get("digit_at_position", "?")
+        pos_names = {0: "ones", 1: "tens", 2: "hundreds", 3: "thousands"}
+        pos_name = pos_names.get(pos, f"position {pos}")
+        if task == "identify_place":
+            fixed = f"What is the place value of the digit {digit} in {number}?"
+        else:
+            fixed = f"What digit is in the {pos_name} place of {number}?"
+    elif concept == "time_reading":
+        fixed = "What time does the clock show?"
+    elif concept == "fractions":
+        numer = v.get("numerator", "?")
+        denom = v.get("denominator", "?")
+        fixed = f"What fraction does {numer} out of {denom} equal parts represent?"
+
+    if fixed:
+        ctx.question_text = fixed
+        answer = ctx.correct_answer
+        if answer is not None and str(answer) in fixed and "___" not in fixed:
+            ctx.question_text_with_blank = fixed.replace(str(answer), "___", 1)
+        else:
+            ctx.question_text_with_blank = fixed
+
+    if "None" in ctx.question_text or ctx.question_text.startswith("Identify"):
+        embedded = ctx.values.get("question")
+        if embedded:
+            ctx.question_text = embedded
+            ctx.question_text_with_blank = embedded
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # INTERNAL HELPERS

@@ -17,22 +17,13 @@ from sympy.parsing.sympy_parser import parse_expr
 
 
 from backend.app.database import get_db, engine, Base
-from backend.app import models, schemas, subagents, placement
+from backend.app import models, schemas, subagents
+from backend.app.services import placement
 from backend.app.practice_gen import pipeline
 
 from backend.app.practice_gen import registry as _pg_registry
 
-def validate_math_answer(expected: Any, student_ans: str) -> bool:
-    """
-    Deterministic validation using SymPy solver.
-    Verifies if the student_ans is mathematically equivalent to expected.
-    """
-    try:
-        expr_solved = parse_expr(str(expected))
-        ans_solved = parse_expr(str(student_ans))
-        return sp.simplify(expr_solved - ans_solved) == 0
-    except Exception:
-        return str(expected).strip() == str(student_ans).strip()
+from backend.app.services.scoring import validate_math_answer
 from backend.app.practice_gen.axes_catalog import (
     get_axes_for_concept as _get_axes_for_concept,
     compute_difficulty_scalar as _compute_difficulty_scalar,
@@ -88,295 +79,49 @@ def _combined_interests(student, fallback: str = "general") -> str:
     combined = ", ".join(filter(None, [parent, child]))
     return combined or fallback
 
-def _load_previous_questions(student_id: int, node_id: str) -> list:
-    """
-    Return all full question records already served to this student on node_id
-    from gen_problems.jsonl.  Used by both Math and ELA batch generators so the
-    LLM knows exactly what to avoid.  Mirrors testy.load_previous_problems().
-    """
-    if not _SCRATCH_FILE.exists():
-        return []
-    records = []
-    try:
-        with open(_SCRATCH_FILE, encoding="utf-8") as f:
-            for line in f:
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    obj = json.loads(line)
-                    if (obj.get("node_id") == node_id
-                            and obj.get("student_id") == student_id
-                            and obj.get("source") == "live_practice"):
-                        records.append(obj)
-                except json.JSONDecodeError:
-                    continue
-    except OSError:
-        pass
-    return records
-
-def _save_practice_question(
-    student_id: int,
-    node_id: str,
-    problem_text: str,
-    answer: str = "",
-    subject: str = "Verbal",
-    question_mode: str = "mcq",
-) -> None:
-    """
-    Append a served question to gen_problems.jsonl so the next batch's LLM
-    sees exactly what this student has already encountered and avoids it.
-    Works for both Math and ELA.
-    """
-    problem_text = problem_text.strip()
-    if not problem_text:
-        return
-    record = {
-        "student_id":    student_id,
-        "node_id":       node_id,
-        "subject":       subject,
-        "question_mode": question_mode,
-        "problem_text":  problem_text,
-        "answer":        answer,
-        "generated_at":  datetime.datetime.utcnow().isoformat(),
-        "source":        "live_practice",
-    }
-    _SCRATCH_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(_SCRATCH_FILE, "a", encoding="utf-8") as f:
-        f.write(json.dumps(record) + "\n")
-
-def _clear_student_history(student_id: int) -> None:
-    """
-    Remove all live_practice entries for this student from gen_problems.jsonl.
-    Called on student login so each new session starts fresh (both Math and ELA).
-    Testy entries (source != 'live_practice') are never touched.
-    """
-    if not _SCRATCH_FILE.exists():
-        return
-    try:
-        kept = []
-        with open(_SCRATCH_FILE, encoding="utf-8") as f:
-            for line in f:
-                stripped = line.strip()
-                if not stripped:
-                    continue
-                try:
-                    obj = json.loads(stripped)
-                    if obj.get("source") == "live_practice" and obj.get("student_id") == student_id:
-                        continue
-                    kept.append(stripped)
-                except json.JSONDecodeError:
-                    kept.append(stripped)
-        _SCRATCH_FILE.write_text("\n".join(kept) + ("\n" if kept else ""))
-        print(f"[Dedup] Cleared session history for student {student_id}")
-    except OSError as e:
-        print(f"[ELA Dedup] Could not clear history: {e}")
+from backend.app.services.telemetry import load_previous_questions as _load_previous_questions, save_practice_question as _save_practice_question, clear_student_history as _clear_student_history
 
 def replenish_question_cache(student_id: int, subject: str, subdomain: Optional[str], count: int):
     """
     Background task to pre-generate questions into the cache.
     Uses parallel execution for high-speed generation.
     """
-    from backend.app.database import SessionLocal
-    db = SessionLocal()
     cache_key = f"{student_id}_{subject}_{subdomain}"
     
-    try:
-        def generate_one():
-            inner_db = SessionLocal()
-            try:
-                return get_practice_question(student_id, subject, subdomain, inner_db)
-            finally:
-                inner_db.close()
-
-        with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
-            futures = [executor.submit(generate_one) for _ in range(count)]
-            new_questions = []
-            for future in concurrent.futures.as_completed(futures):
-                try:
-                    new_questions.append(future.result())
-                except Exception as e:
-                    print(f"Background generation error: {e}")
-            
-            if cache_key not in QUESTION_CACHE:
-                QUESTION_CACHE[cache_key] = []
-            QUESTION_CACHE[cache_key].extend(new_questions)
-            print(f"Replenished cache for {cache_key} with {len(new_questions)} items (Total: {len(QUESTION_CACHE[cache_key])})")
-    finally:
-        db.close()
-
-def get_clean_node_title(node):
-    """
-    Returns a child-friendly, descriptive title for a skill node,
-    cleaning up raw CCSS codes and generic fallback 'Math Standard' titles.
-    """
-    title = node.title or ""
-    
-    # Check if the title is generic (e.g. 'Math Standard...' or starts with ELA domain codes)
-    is_generic = (
-        "Standard" in title or 
-        title.strip().startswith("Math") or 
-        title.strip().startswith("Reading") or
-        node.id in title or
-        not title.strip()
-    )
-    
-    if is_generic and node.description:
-        desc = node.description.strip()
-        if desc.endswith("."):
-            desc = desc[:-1]
-        
-        # If it's short, use it completely
-        if len(desc) <= 65:
-            return desc
-            
-        # If it has a semicolon, colon, or comma early on, truncate there
-        for char in [";", ":", "—"]:
-            if char in desc and desc.index(char) < 65:
-                return desc[:desc.index(char)].strip()
-                
-        # Split by sentence and take the first one
-        sentences = desc.split(". ")
-        first_sentence = sentences[0].strip()
-        if len(first_sentence) <= 65:
-            return first_sentence
-            
-        # Graceful word truncation
-        words = first_sentence.split(" ")
-        truncated = []
-        char_count = 0
-        for w in words:
-            if char_count + len(w) + 1 > 60:
-                break
-            truncated.append(w)
-            char_count += len(w) + 1
-        return " ".join(truncated) + "..."
-        
-    # Clean up standard code prefix from the existing title if no description
-    cleaned_title = re.sub(r"^(Math Standard|ELA Standard|Reading Literature Standard|Reading Informational Standard|Writing Standard|Language Standard)\s*", "", title, flags=re.IGNORECASE)
-    if not cleaned_title.strip():
-        cleaned_title = node.id
-    return cleaned_title.strip()
-
-def check_and_advance_subject_frontier(student_id: int, subject: str, db: Session):
-    """
-    Checks if all skill nodes at the current frontier grade for a given subject are mastered.
-    If so, automatically unlocks the next grade's nodes (changing them from 'locked' to 'active').
-    """
-    # 1. Get all mastery states for this subject
-    states = db.query(models.MasteryState).join(models.SkillNode).filter(
-        models.MasteryState.student_id == student_id,
-        models.SkillNode.subject == subject
-    ).all()
-    
-    if not states:
-        return
-        
-    def get_grade_num(grade_str):
-        special_grades = {"K": 0, "HS": 10}
-        if grade_str in special_grades:
-            return special_grades[grade_str]
+    def generate_one():
+        from backend.app.database import SessionLocal
+        inner_db = SessionLocal()
         try:
-            return int(grade_str)
-        except ValueError:
-            return 0
-            
-    active_grades = set()
-    for s in states:
-        if s.status in ("active", "review"):
-            node = db.query(models.SkillNode).filter(models.SkillNode.id == s.skill_id).first()
-            if node:
-                active_grades.add(get_grade_num(node.grade_level))
-                
-    if not active_grades:
-        # If there are no active/review states at all, find the highest mastered grade and activate the next one!
-        mastered_grades = set()
-        for s in states:
-            if s.status == "mastered":
-                node = db.query(models.SkillNode).filter(models.SkillNode.id == s.skill_id).first()
-                if node:
-                    mastered_grades.add(get_grade_num(node.grade_level))
-        if not mastered_grades:
-            return
-        highest_mastered = max(mastered_grades)
-        next_grade = highest_mastered + 1
-    else:
-        current_working_grade = min(active_grades)
+            return get_practice_question(student_id, subject, subdomain, inner_db)
+        finally:
+            inner_db.close()
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+        futures = [executor.submit(generate_one) for _ in range(count)]
+        new_questions = []
+        for future in concurrent.futures.as_completed(futures):
+            try:
+                new_questions.append(future.result())
+            except Exception as e:
+                print(f"Background generation error: {e}")
         
-        remaining_active = 0
-        for s in states:
-            if s.status in ("active", "review"):
-                node = db.query(models.SkillNode).filter(models.SkillNode.id == s.skill_id).first()
-                if node and get_grade_num(node.grade_level) == current_working_grade:
-                    remaining_active += 1
-                    
-        if remaining_active > 0:
-            return
-            
-        next_grade = current_working_grade + 1
-        
-    if next_grade == 0:
-        next_grade_str = "K"
-    elif next_grade >= 10:
-        next_grade_str = "HS"
-    else:
-        next_grade_str = str(next_grade)
-        
-    grade_search = ["0", "K"] if next_grade_str == "K" else [next_grade_str]
-    locked_skills = db.query(models.MasteryState).join(models.SkillNode).filter(
-        models.MasteryState.student_id == student_id,
-        models.MasteryState.status == "locked",
-        models.SkillNode.subject == subject,
-        models.SkillNode.grade_level.in_(grade_search)
-    ).all()
-    
-    if locked_skills:
-        for s in locked_skills:
-            s.status = "active"
-        db.commit()
-        print(f"[Frontier Advancement] Student {student_id} has advanced to {subject} Grade {next_grade_str}! Unlocked {len(locked_skills)} skills.")
+        if cache_key not in QUESTION_CACHE:
+            QUESTION_CACHE[cache_key] = []
+        QUESTION_CACHE[cache_key].extend(new_questions)
+        print(f"Replenished cache for {cache_key} with {len(new_questions)} items (Total: {len(QUESTION_CACHE[cache_key])})")
+
+from backend.app.services.curriculum import get_clean_node_title
+
+from backend.app.services.curriculum import check_and_advance_subject_frontier
 
 # --- Elo Rating Helper ---
-def update_elo(student_elo: float, skill_elo: float, is_correct: bool, k_factor: float = 32.0):
-    """
-    Standard Elo update matchmaking formula.
-    Adjusts student ELO and skill/question ELO based on performance.
-    """
-    expected_student = 1.0 / (1.0 + math.pow(10.0, (skill_elo - student_elo) / 400.0))
-    actual_student = 1.0 if is_correct else 0.0
-    
-    new_student_elo = student_elo + k_factor * (actual_student - expected_student)
-    
-    # Skill difficulty increases on student failure, decreases on success
-    expected_skill = 1.0 - expected_student
-    actual_skill = 0.0 if is_correct else 1.0
-    new_skill_elo = skill_elo + k_factor * (actual_skill - expected_skill)
-    
-    return round(new_student_elo, 1), round(new_skill_elo, 1)
+from backend.app.services.scoring import update_elo
+
+# --- ROUTERS ---
+from backend.app.routes import parent
+app.include_router(parent.router)
 
 # --- PARENT ENDPOINTS ---
-
-@app.post("/api/parent/login", response_model=schemas.ParentLoginResponse)
-def parent_login(req: schemas.ParentLoginRequest, db: Session = Depends(get_db)):
-    """
-    Parent Login. Auto-registers alphanumeric password on first run for developer comfort!
-    """
-    parent = db.query(models.ParentAccount).first()
-    if not parent:
-        # First-time run: save this password as canonical, default to password-free
-        new_parent = models.ParentAccount(password_hash=req.password, password_auth_required=False)
-        db.add(new_parent)
-        db.commit()
-        return {"success": True, "token": "ccmed_parent_session_active"}
-    
-    # Bypass password verification if disabled by parent
-    if not parent.password_auth_required:
-        return {"success": True, "token": "ccmed_parent_session_active"}
-    
-    if parent.password_hash == req.password:
-        return {"success": True, "token": "ccmed_parent_session_active"}
-    
-    raise HTTPException(status_code=401, detail="Invalid parent alphanumeric password.")
 
 @app.get("/api/parent/config")
 def get_parent_config(db: Session = Depends(get_db)):
@@ -862,76 +607,8 @@ def update_parent_settings(req: schemas.ParentSettingsUpdateRequest, db: Session
     db.refresh(student)
     return student
 
-# --- STUDENT PROFILE ENDPOINTS ---
-
-@app.get("/api/students/profiles", response_model=List[schemas.StudentProfileResponse])
-def get_student_profiles(db: Session = Depends(get_db)):
-    """
-    Lists all active student profiles.
-    """
-    return db.query(models.StudentProfile).all()
-
-@app.patch("/api/students/{student_id}/interests", response_model=schemas.StudentProfileResponse)
-def update_student_interests(student_id: int, req: schemas.UpdateInterestsRequest, db: Session = Depends(get_db)):
-    """
-    Student-facing endpoint: updates the student's own interest tags.
-    These are stored separately from parent-set interest_tags and combined
-    at question-generation time so both sets influence AI prompts.
-    """
-    student = db.query(models.StudentProfile).filter(models.StudentProfile.id == student_id).first()
-    if not student:
-        raise HTTPException(status_code=404, detail="Student profile not found.")
-    student.student_interest_tags = req.interest_tags.strip()
-    db.commit()
-    db.refresh(student)
-    return student
-
-@app.post("/api/students/register", response_model=schemas.StudentProfileResponse)
-def register_student(req: schemas.StudentRegisterRequest, db: Session = Depends(get_db)):
-    """
-    Registers a new student profile and triggers binary placement onboarding initialization.
-    """
-    new_student = models.StudentProfile(
-        name=req.name,
-        pin_hash=req.pin, # Saved directly for testing convenience
-        age=req.age,
-        grade=req.grade,
-        language_preference=req.language_preference,
-        interest_tags=req.interest_tags
-    )
-    db.add(new_student)
-    db.commit()
-    db.refresh(new_student)
-    
-    # Initialize placement onboarding
-    placement.PlacementEngine.initialize_placement(new_student, db)
-    return new_student
-
-@app.post("/api/students/login", response_model=schemas.StudentProfileResponse)
-def student_login(req: schemas.StudentLoginRequest, db: Session = Depends(get_db)):
-    """
-    PIN-based Student login endpoint.
-    """
-    student = db.query(models.StudentProfile).filter(models.StudentProfile.id == req.student_id).first()
-    if not student:
-        raise HTTPException(status_code=404, detail="Student profile not found.")
-        
-    if student.pin_hash == req.pin:
-        # Clear this student's Math and ELA question history so the new session
-        # starts fresh — no repeated story contexts or passages from prior sessions.
-        _clear_student_history(req.student_id)
-        return student
-        
-    raise HTTPException(status_code=401, detail="Invalid student numeric PIN.")
-
-@app.delete("/api/students/{student_id}")
-def delete_student(student_id: int, db: Session = Depends(get_db)):
-    student = db.query(models.StudentProfile).filter(models.StudentProfile.id == student_id).first()
-    if not student:
-        raise HTTPException(status_code=404, detail="Student not found")
-    db.delete(student)
-    db.commit()
-    return {"success": True}
+from backend.app.routes import student
+app.include_router(student.router)
 
 # --- TELEMETRY ENDPOINTS ---
 
@@ -1439,20 +1116,15 @@ def get_practice_question_batch(
       Cache target and worker count are scaled to the active AI backend so
       OpenCode-powered narration doesn't create a pile-up.
     """
-    from backend.app.database import SessionLocal
-
     # Step 1: generate Q1 via the full pipeline (handles both ELA and Math correctly).
     # Q1 is always generated first so we can derive routing from the actual skill node
     # selected — not the subject string from the frontend, which may be a raw DB subject
     # name ("Language", "Writing", "Reading: Literature", etc.) rather than the
     # normalised "Verbal" sentinel value.
-    db_q1 = SessionLocal()
     try:
-        q1 = get_practice_question(student_id, subject, subdomain, db_q1)
+        q1 = get_practice_question(student_id, subject, subdomain, db)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to generate question: {e}")
-    finally:
-        db_q1.close()
 
     # Placement questions are always delivered one at a time
     if q1.is_placement:

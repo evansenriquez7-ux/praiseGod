@@ -15,6 +15,6 @@ When writing, modifying, or debugging code for this project, you must follow str
 1. **Never Assume Success:** Do NOT inform the user that a bug is fixed or a feature is resolved until you have rigorously verified it yourself. When the user finds a bug, always ensure you find the root cause and then fix for the entire web app.
 2. **Mandatory Testing:** Always ensure everything is working from a UI perspective before reporting positively. A fix is only confirmed when you have inspected the output, and proven that the pipeline produces the correct results.
 3. **File Management:** 
-   - Store all markdown files in the `/docs` directory of the workspace.
-   - Store all buildtime logs and temporary test and verification scripts in the `local_only/scratch` directory of the workspace.
+   - Store all temporary markdown files, buildtime logs, temporary test and verification scripts in the `local_only/scratch` directory of the workspace.
+   - Store all permanent markdown files in the `/docs` directory of the workspace.
    - Keep the root directory clean and tidy.
