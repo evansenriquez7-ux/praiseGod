@@ -142,6 +142,7 @@ def generate_params(
     answer = _round_standard(number, round_to)
 
     return {
+        "blank_target": "answer",
         "number":            number,
         "round_to":          round_to,
         "answer":            answer,

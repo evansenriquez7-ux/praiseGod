@@ -17,7 +17,8 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional
 
-from .adapter import generate_batch, generate_problem, to_legacy_dict
+from .adapter import to_legacy_dict
+from backend.app.services.orchestrator import PracticeOrchestrator
 from .generators.base_generator import _DNA_MODULE_MAP, _import_dna_module
 from .registry import get_all_node_ids, get_node_dnas
 
@@ -50,7 +51,7 @@ def run(
     Returns:
         problem.to_dict() — a fully serialised FormattedProblem dict.
     """
-    problem = generate_problem(
+    problem = PracticeOrchestrator.generate_problem(
         node_id=node_id,
         grade=student_grade,
         seed=seed,
@@ -85,7 +86,7 @@ def run_batch(
     Returns:
         List of legacy dicts.
     """
-    problems = generate_batch(
+    problems = PracticeOrchestrator.generate_batch(
         node_id=node_id,
         grade=grade,
         count=count,

@@ -127,6 +127,7 @@ def generate_params(
         vp["highlighted_dates"] = [target_date]
         vp["correct_date"] = target_date
         return {
+        "blank_target": "answer",
             "visual_params": vp,
             "month": month,
             "year": year,
@@ -143,6 +144,7 @@ def generate_params(
         vp["highlighted_dates"] = [1]
         vp["correct_date"] = 1
         return {
+        "blank_target": "answer",
             "visual_params": vp,
             "month": month_num,
             "year": year,
@@ -159,6 +161,7 @@ def generate_params(
         vp["question_date"] = target_date
         vp["correct_date"] = target_date
         return {
+        "blank_target": "answer",
             "visual_params": vp,
             "month": month,
             "year": year,
@@ -177,6 +180,7 @@ def generate_params(
         elapsed     = rng.randint(1, min(7, days_in_this_month - start_date))
         end_date    = start_date + elapsed
         return {
+        "blank_target": "answer",
             "month": month,
             "year": year,
             "target_date": start_date,
@@ -194,6 +198,7 @@ def generate_params(
     weeks      = rng.randint(1, min(4, (days_in_this_month - start_date) // 7))
     end_date   = start_date + weeks * 7
     return {
+        "blank_target": "answer",
         "month": month,
         "year": year,
         "target_date": start_date,

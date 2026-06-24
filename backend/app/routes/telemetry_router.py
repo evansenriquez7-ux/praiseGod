@@ -30,30 +30,10 @@ from backend.app.practice_gen.axes_catalog import (
 )
 
 # Initialize FastAPI app
-app = FastAPI(
-    title="CCMed Adaptive Mastery Engine API",
-    description="Adaptive K-12 math mastery engine with deterministic SymPy validation and Socratic split tutoring.",
-    version="1.0.0",
-    openapi_url="/api/openapi.json",
-    docs_url="/api/docs",
-    redoc_url="/api/redoc"
-)
+
 
 # Enable CORS for tablet local LAN sync and external tunnels
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:8000",
-        "http://127.0.0.1:8000",
-        "https://mellow-mirage-jhc3.here.now",
-    ],
-    allow_origin_regex=r"https://.*\.web\.app|https://.*\.firebaseapp\.com|https://.*\.here\.now|https://.*\.trycloudflare\.com|https://.*\.loca\.lt|https://.*\.ts\.net|https://edu\.enrichmentcap\.com|http://.*\.local:.*|http://192\.168\..*|http://10\..*|http://localhost:.*|http://127\.0\.0\.1:.*",
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
 from backend.app.services.cache import get_cache, set_cache, delete_cache
 
 class RedisDict:
@@ -153,53 +133,55 @@ from backend.app.services.scoring import update_elo
 
 # --- ROUTERS ---
 from backend.app.routes import parent
-app.include_router(parent.router)
-
-from backend.app.routes import matatag_router, practice_router, telemetry_router, socratic_router, admin_router
-app.include_router(matatag_router.router)
-app.include_router(practice_router.router)
-app.include_router(telemetry_router.router)
-app.include_router(socratic_router.router)
-app.include_router(admin_router.router)
 
 
 # --- PARENT ENDPOINTS ---
 
+from fastapi import APIRouter
+router = APIRouter(tags=['telemetry'])
+
+@router.post("/api/telemetry/start", response_model=schemas.TelemetrySessionStartResponse)
+def start_telemetry_session(req: schemas.TelemetrySessionStartRequest, db: Session = Depends(get_db)):
+    """
+    Initiates a telemetry tracking session for window defense telemetry.
+    """
+    # Deactivate any previous active session
+    db.query(models.TelemetrySession).filter(
+        models.TelemetrySession.student_id == req.student_id,
+        models.TelemetrySession.is_active == True
+    ).update({"is_active": False, "ended_at": datetime.datetime.utcnow()})
+    
+    new_session = models.TelemetrySession(
+        student_id=req.student_id,
+        started_at=datetime.datetime.utcnow(),
+        is_active=True
+    )
+    db.add(new_session)
+    db.commit()
+    db.refresh(new_session)
+    
+    return {"session_id": new_session.id, "success": True}
 
 
-
-
-
-
-
-# --- TELEMETRY ENDPOINTS ---
-
-
-
-# --- PRACTICE ENGINE ENDPOINTS ---
-
-
-
-
-
-
-# --- SOCRATIC SPLIT ENDPOINTS ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@router.post("/api/telemetry/update", response_model=schemas.TelemetrySessionResponse)
+def update_telemetry_session(req: schemas.TelemetrySessionUpdateRequest, db: Session = Depends(get_db)):
+    """
+    Updates statistics in the telemetry logs database.
+    """
+    session = db.query(models.TelemetrySession).filter(models.TelemetrySession.id == req.session_id).first()
+    if not session:
+        raise HTTPException(status_code=404, detail="Telemetry session not found.")
+        
+    session.tab_switch_count += req.tab_switch_count
+    session.idle_seconds += req.idle_seconds
+    session.spam_click_count += req.spam_click_count
+    session.guess_count += req.guess_count
+    
+    if req.ended:
+        session.is_active = False
+        session.ended_at = datetime.datetime.utcnow()
+        
+    db.commit()
+    return {"success": True}
 
 

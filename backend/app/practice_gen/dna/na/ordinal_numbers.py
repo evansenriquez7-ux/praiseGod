@@ -237,6 +237,7 @@ def generate_params(
         question_text = tpl
 
     return {
+        "blank_target": "answer",
         "n":             n,
         "symbol":        symbol,
         "word":          word,

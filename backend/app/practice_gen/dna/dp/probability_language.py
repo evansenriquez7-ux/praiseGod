@@ -292,6 +292,7 @@ def generate_params(
 
     chosen = dict(rng.choice(candidates))
     return {
+        "blank_target": "answer",
         "scenario": chosen["question"],
         "answer": chosen["answer"],
         "probability_term": chosen["probability_term"],

@@ -190,6 +190,7 @@ def generate_params(
         question_category = categories[q_idx]
         vp["ask_category"] = question_category
         return {
+        "blank_target": "answer",
             "visual_params": vp,
             "question_category": question_category,
             "answer": answer,
@@ -201,6 +202,7 @@ def generate_params(
         # answer is the category name with more items
         answer_cat = categories[idx_a] if values[idx_a] >= values[idx_b] else categories[idx_b]
         return {
+        "blank_target": "answer",
             "visual_params": vp,
             "question_category": f"{categories[idx_a]} vs {categories[idx_b]}",
             "compare_a": categories[idx_a],
@@ -211,6 +213,7 @@ def generate_params(
 
     if task_type == "find_total":
         return {
+        "blank_target": "answer",
             "visual_params": vp,
             "question_category": "total",
             "answer": sum(values),
@@ -221,6 +224,7 @@ def generate_params(
         idx_a, idx_b = rng.sample(range(len(categories)), 2)
         diff = abs(values[idx_a] - values[idx_b])
         return {
+        "blank_target": "answer",
             "visual_params": vp,
             "categories": categories,
             "values": values,
@@ -236,6 +240,7 @@ def generate_params(
         # Table expects all values or something similar, answer can just be the entire dict of categories/values
         # Or an interaction where they fill in the entire table
         return {
+        "blank_target": "answer",
             "visual_params": vp,
             "categories": categories,
             "values": values,
@@ -247,6 +252,7 @@ def generate_params(
     
     # fallback
     return {
+        "blank_target": "answer",
         "visual_params": vp,
         "categories": categories,
         "values": values,

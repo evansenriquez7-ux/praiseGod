@@ -97,6 +97,7 @@ def generate_params(
         answer_formula_used = "4 * s"
         if task_type == "find_missing_side" and grade >= 3:
             return {
+        "blank_target": "answer",
                 "shape": "square",
                 "perimeter": perimeter,
                 "task_type": "find_missing_side",
@@ -105,6 +106,7 @@ def generate_params(
                 "sides": sides,
             }
         return {
+        "blank_target": "answer",
             "shape": "square",
             "sides": sides,
             "task_type": "find_perimeter",
@@ -124,6 +126,7 @@ def generate_params(
             known_val = sides[known]
             missing_val = sides[missing]
             return {
+        "blank_target": "answer",
                 "shape": "rectangle",
                 "perimeter": perimeter,
                 "known_side": known,
@@ -134,6 +137,7 @@ def generate_params(
                 "sides": sides,
             }
         return {
+        "blank_target": "answer",
             "shape": "rectangle",
             "sides": sides,
             "task_type": "find_perimeter",
@@ -152,6 +156,7 @@ def generate_params(
         known_sides = {k: v for k, v in sides.items() if k != missing_side}
         missing_val = sides[missing_side]
         return {
+        "blank_target": "answer",
             "shape": "triangle",
             "perimeter": perimeter,
             "known_sides": known_sides,
@@ -161,6 +166,7 @@ def generate_params(
             "sides": sides,
         }
     return {
+        "blank_target": "answer",
         "shape": "triangle",
         "sides": sides,
         "task_type": "find_perimeter",

@@ -30,30 +30,10 @@ from backend.app.practice_gen.axes_catalog import (
 )
 
 # Initialize FastAPI app
-app = FastAPI(
-    title="CCMed Adaptive Mastery Engine API",
-    description="Adaptive K-12 math mastery engine with deterministic SymPy validation and Socratic split tutoring.",
-    version="1.0.0",
-    openapi_url="/api/openapi.json",
-    docs_url="/api/docs",
-    redoc_url="/api/redoc"
-)
+
 
 # Enable CORS for tablet local LAN sync and external tunnels
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:8000",
-        "http://127.0.0.1:8000",
-        "https://mellow-mirage-jhc3.here.now",
-    ],
-    allow_origin_regex=r"https://.*\.web\.app|https://.*\.firebaseapp\.com|https://.*\.here\.now|https://.*\.trycloudflare\.com|https://.*\.loca\.lt|https://.*\.ts\.net|https://edu\.enrichmentcap\.com|http://.*\.local:.*|http://192\.168\..*|http://10\..*|http://localhost:.*|http://127\.0\.0\.1:.*",
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
 from backend.app.services.cache import get_cache, set_cache, delete_cache
 
 class RedisDict:
@@ -153,53 +133,32 @@ from backend.app.services.scoring import update_elo
 
 # --- ROUTERS ---
 from backend.app.routes import parent
-app.include_router(parent.router)
-
-from backend.app.routes import matatag_router, practice_router, telemetry_router, socratic_router, admin_router
-app.include_router(matatag_router.router)
-app.include_router(practice_router.router)
-app.include_router(telemetry_router.router)
-app.include_router(socratic_router.router)
-app.include_router(admin_router.router)
 
 
 # --- PARENT ENDPOINTS ---
 
+from fastapi import APIRouter
+router = APIRouter(tags=['admin'])
 
-
-
-
-
-
-
-# --- TELEMETRY ENDPOINTS ---
-
-
-
-# --- PRACTICE ENGINE ENDPOINTS ---
-
-
-
-
-
-
-# --- SOCRATIC SPLIT ENDPOINTS ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@router.post("/api/admin/load-matatag")
+def load_matatag_curriculum_endpoint(clear: bool = False, db: Session = Depends(get_db)):
+    """
+    Load MATATAG (Philippine K-10 Math) curriculum into the skill_nodes table.
+    
+    Args:
+        clear: If true, delete all existing MATATAG nodes before loading
+        
+    Returns:
+        Stats about loaded, skipped, and errored nodes
+    """
+    from backend.app import matatag_loader
+    
+    stats = matatag_loader.load_matatag_curriculum(db, clear_existing=clear)
+    return {
+        "success": True,
+        "message": f"MATATAG curriculum loaded: {stats['loaded']} nodes added, {stats['skipped']} skipped, {stats['errors']} errors",
+        "stats": stats
+    }
 
 
 

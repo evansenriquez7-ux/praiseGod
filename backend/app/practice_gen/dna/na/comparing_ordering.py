@@ -190,6 +190,7 @@ def generate_params(
         distractors = [d1, d2, d3]
 
     result_dict = {
+        "blank_target": "answer",
         "numbers": numbers,
         "answer": answer,
         "task_type": task_type,

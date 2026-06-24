@@ -210,6 +210,7 @@ def generate_params(
     exp_form          = _expanded_form(number)
 
     return {
+        "blank_target": "value_at_position",
         "number":                number,
         "target_digit_position": target_pos,
         "task_type":             task_type,

@@ -98,6 +98,7 @@ def generate_params(
             s = rng.randint(lo, min(hi, 10))  # keep sq roots manageable
             area = s * s
             return {
+        "blank_target": "answer",
                 "shape": "square",
                 "area": area,
                 "unit": unit_label,
@@ -107,6 +108,7 @@ def generate_params(
                 "sides": {"s": s},
             }
         return {
+        "blank_target": "answer",
             "shape": "square",
             "sides": {"s": s},
             "unit": unit_label,
@@ -124,6 +126,7 @@ def generate_params(
         known_val = l if known == "l" else w
         missing_val = w if known == "l" else l
         return {
+        "blank_target": "answer",
             "shape": "rectangle",
             "area": area,
             "unit": unit_label,
@@ -135,6 +138,7 @@ def generate_params(
             "sides": {"l": l, "w": w},
         }
     return {
+        "blank_target": "answer",
         "shape": "rectangle",
         "sides": {"l": l, "w": w},
         "unit": unit_label,

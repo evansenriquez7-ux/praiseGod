@@ -186,6 +186,7 @@ def generate_params(
     position = missing_index + 1 if missing_index >= 0 else seq_length + 1
 
     return {
+        "blank_target": "answer",
         "sequence":          visible,
         "missing_index":     missing_index,
         "answer":            answer,

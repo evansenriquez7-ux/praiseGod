@@ -96,6 +96,7 @@ def generate_params(
                 val_g = rng.randint(1, 5) * 1000
                 val_kg = val_g // 1000
                 return {
+        "blank_target": "answer",
                     "measurement_type": "mass",
                     "task_type": "convert",
                     "value": val_g,
@@ -108,6 +109,7 @@ def generate_params(
             # kg to g
             val_kg = rng.randint(1, 5)
             return {
+        "blank_target": "answer",
                 "measurement_type": "mass",
                 "task_type": "convert",
                 "value": val_kg,
@@ -122,6 +124,7 @@ def generate_params(
             val_g2 = rng.randint(g_min, g_max)
             heavier = max(val_g, val_g2)
             return {
+        "blank_target": "answer",
                 "measurement_type": "mass",
                 "task_type": "compare",
                 "value_a": val_g,
@@ -133,6 +136,7 @@ def generate_params(
 
         # read_measurement or estimate
         return {
+        "blank_target": "answer",
             "measurement_type": "mass",
             "task_type": task_type,
             "value": val_g,
@@ -149,6 +153,7 @@ def generate_params(
         val_ml = rng.randint(1, 5) * 1000
         val_l  = val_ml // 1000
         return {
+        "blank_target": "answer",
             "measurement_type": "capacity",
             "task_type": "convert",
             "value": val_ml,
@@ -163,6 +168,7 @@ def generate_params(
         val_ml2 = rng.randint(ml_min, ml_max)
         larger = max(val_ml, val_ml2)
         return {
+        "blank_target": "answer",
             "measurement_type": "capacity",
             "task_type": "compare",
             "value_a": val_ml,
@@ -173,6 +179,7 @@ def generate_params(
         }
 
     return {
+        "blank_target": "answer",
         "measurement_type": "capacity",
         "task_type": task_type,
         "value": val_ml,

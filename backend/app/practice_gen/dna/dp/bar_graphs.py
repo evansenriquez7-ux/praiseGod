@@ -169,12 +169,14 @@ def generate_params(
 
     if task_type == "read_value":
         q_idx = rng.randint(0, len(categories) - 1)
-        return {**base, "question_category": categories[q_idx], "answer": values[q_idx]}
+        return {
+        "blank_target": "answer",**base, "question_category": categories[q_idx], "answer": values[q_idx]}
 
     if task_type == "compare_bars":
         idx_a, idx_b = rng.sample(range(len(categories)), 2)
         answer_cat = categories[idx_a] if values[idx_a] >= values[idx_b] else categories[idx_b]
         return {
+        "blank_target": "answer",
             **base,
             "compare_a": categories[idx_a],
             "compare_b": categories[idx_b],
@@ -182,12 +184,14 @@ def generate_params(
         }
 
     if task_type == "find_total":
-        return {**base, "question_category": "total", "answer": sum(values)}
+        return {
+        "blank_target": "answer",**base, "question_category": "total", "answer": sum(values)}
 
     if task_type == "find_difference":
         idx_a, idx_b = rng.sample(range(len(categories)), 2)
         diff = abs(values[idx_a] - values[idx_b])
         return {
+        "blank_target": "answer",
             **base,
             "compare_a": categories[idx_a],
             "compare_b": categories[idx_b],
@@ -198,10 +202,12 @@ def generate_params(
     direction = rng.choice(["most", "least"])
     if direction == "most":
         best_idx = values.index(max(values))
-        return {**base, "direction": "most", "answer": categories[best_idx]}
+        return {
+        "blank_target": "answer",**base, "direction": "most", "answer": categories[best_idx]}
     else:
         best_idx = values.index(min(values))
-        return {**base, "direction": "least", "answer": categories[best_idx]}
+        return {
+        "blank_target": "answer",**base, "direction": "least", "answer": categories[best_idx]}
 
 
 # ─── hint generator ───────────────────────────────────────────────────────────

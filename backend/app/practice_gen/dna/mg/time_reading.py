@@ -118,6 +118,7 @@ def generate_params(
         period = None
 
     return {
+        "blank_target": "time_str",
         "hour": hour,
         "minute": minute,
         "time_str": time_str,

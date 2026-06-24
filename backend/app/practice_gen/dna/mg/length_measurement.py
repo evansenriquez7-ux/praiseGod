@@ -117,6 +117,7 @@ def generate_params(
         l_max = max(l_min, int(linear_interpolate(l_min, l_max, scalar)))
         length = rng.randint(l_min, l_max)
         return {
+        "blank_target": "answer",
             "length": length,
             "unit": unit,
             "unit_type": "non_standard",
@@ -129,6 +130,7 @@ def generate_params(
         hi = max(lo, int(log_interpolate(lo, hi, scalar)))
         length = rng.randint(lo, hi)
         return {
+        "blank_target": "answer",
             "length": length,
             "unit": "cm",
             "unit_type": "centimeters",
@@ -141,6 +143,7 @@ def generate_params(
         hi = max(lo, int(linear_interpolate(lo, hi, scalar)))
         length = rng.randint(lo, hi)
         return {
+        "blank_target": "answer",
             "length": length,
             "unit": "m",
             "unit_type": "meters",
@@ -155,6 +158,7 @@ def generate_params(
     direction = rng.choice(["m_to_cm", "cm_to_m"])
     if direction == "m_to_cm":
         return {
+        "blank_target": "answer",
             "length": length_m,
             "unit": "m",
             "target_unit": "cm",
@@ -167,6 +171,7 @@ def generate_params(
     else:
         length_cm = length_m * 100
         return {
+        "blank_target": "answer",
             "length": length_cm,
             "unit": "cm",
             "target_unit": "m",

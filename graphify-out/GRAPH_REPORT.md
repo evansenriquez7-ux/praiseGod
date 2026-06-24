@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-06-24)
 
 ## Corpus Check
-- 126 files · ~200,025 words
+- 138 files · ~205,059 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1275 nodes · 2273 edges · 99 communities (98 shown, 1 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.5)
+- 1364 nodes · 2586 edges · 111 communities (104 shown, 7 thin omitted)
+- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.54)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c81ce4bf`
+- Built from commit: `a6043ee0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -71,75 +71,91 @@
 - [[_COMMUNITY_Community 53|Community 53]]
 - [[_COMMUNITY_Community 54|Community 54]]
 - [[_COMMUNITY_Community 55|Community 55]]
+- [[_COMMUNITY_Community 56|Community 56]]
 - [[_COMMUNITY_Community 57|Community 57]]
+- [[_COMMUNITY_Community 59|Community 59]]
 - [[_COMMUNITY_Community 60|Community 60]]
 - [[_COMMUNITY_Community 61|Community 61]]
+- [[_COMMUNITY_Community 62|Community 62]]
 - [[_COMMUNITY_Community 63|Community 63]]
+- [[_COMMUNITY_Community 64|Community 64]]
+- [[_COMMUNITY_Community 65|Community 65]]
 - [[_COMMUNITY_Community 66|Community 66]]
 - [[_COMMUNITY_Community 67|Community 67]]
+- [[_COMMUNITY_Community 68|Community 68]]
 - [[_COMMUNITY_Community 69|Community 69]]
 - [[_COMMUNITY_Community 70|Community 70]]
 - [[_COMMUNITY_Community 71|Community 71]]
+- [[_COMMUNITY_Community 72|Community 72]]
 - [[_COMMUNITY_Community 73|Community 73]]
 - [[_COMMUNITY_Community 74|Community 74]]
 - [[_COMMUNITY_Community 75|Community 75]]
+- [[_COMMUNITY_Community 76|Community 76]]
+- [[_COMMUNITY_Community 77|Community 77]]
 - [[_COMMUNITY_Community 78|Community 78]]
 - [[_COMMUNITY_Community 79|Community 79]]
 - [[_COMMUNITY_Community 80|Community 80]]
 - [[_COMMUNITY_Community 81|Community 81]]
 - [[_COMMUNITY_Community 82|Community 82]]
 - [[_COMMUNITY_Community 83|Community 83]]
+- [[_COMMUNITY_Community 84|Community 84]]
+- [[_COMMUNITY_Community 85|Community 85]]
+- [[_COMMUNITY_Community 86|Community 86]]
+- [[_COMMUNITY_Community 87|Community 87]]
+- [[_COMMUNITY_Community 88|Community 88]]
 - [[_COMMUNITY_Community 92|Community 92]]
-- [[_COMMUNITY_Community 93|Community 93]]
 - [[_COMMUNITY_Community 98|Community 98]]
 - [[_COMMUNITY_Community 102|Community 102]]
 - [[_COMMUNITY_Community 105|Community 105]]
-- [[_COMMUNITY_Community 106|Community 106]]
 - [[_COMMUNITY_Community 107|Community 107]]
 - [[_COMMUNITY_Community 108|Community 108]]
 - [[_COMMUNITY_Community 116|Community 116]]
 - [[_COMMUNITY_Community 132|Community 132]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `QuestionContext` - 66 edges
-2. `FormattedProblem` - 66 edges
+1. `FormattedProblem` - 70 edges
+2. `QuestionContext` - 66 edges
 3. `DNA` - 56 edges
 4. `VocabGated` - 32 edges
-5. `log_interpolate()` - 30 edges
-6. `ErrorPattern` - 30 edges
-7. `20. Lessons Learned & Implementation Pitfalls` - 25 edges
-8. `generate_pair_by_window()` - 24 edges
-9. `Introductory Content Strategy` - 22 edges
-10. `BaseVisualParams` - 20 edges
+5. `get_cache()` - 32 edges
+6. `log_interpolate()` - 30 edges
+7. `ErrorPattern` - 30 edges
+8. `set_cache()` - 26 edges
+9. `20. Lessons Learned & Implementation Pitfalls` - 25 edges
+10. `generate_pair_by_window()` - 24 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `PlacementEngine` --uses--> `SkillNode`  [INFERRED]
   backend/app/services/placement.py → backend/app/models.py
-- `get_practice_question_batch()` --calls--> `SessionLocal()`  [EXTRACTED]
-  backend/app/main.py → backend/app/database.py
-- `_get_available_formats()` --calls--> `get_formatters_for_dna()`  [EXTRACTED]
-  backend/app/main.py → backend/app/practice_gen/compatibility.py
-- `_get_available_formats()` --calls--> `get_node_dnas()`  [EXTRACTED]
-  backend/app/main.py → backend/app/practice_gen/registry.py
-- `matatag_lab_generate()` --calls--> `get_formatters_for_dna()`  [EXTRACTED]
-  backend/app/main.py → backend/app/practice_gen/compatibility.py
+- `RedisDict` --uses--> `CompetencyConfiguration`  [INFERRED]
+  backend/app/routes/matatag_router.py → backend/app/models.py
+- `replenish_question_cache()` --calls--> `SessionLocal()`  [EXTRACTED]
+  backend/app/routes/admin_router.py → backend/app/database.py
+- `replenish_question_cache()` --calls--> `SessionLocal()`  [EXTRACTED]
+  backend/app/routes/matatag_router.py → backend/app/database.py
+- `replenish_question_cache()` --calls--> `SessionLocal()`  [EXTRACTED]
+  backend/app/routes/practice_router.py → backend/app/database.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (99 total, 1 thin omitted)
+## Communities (111 total, 7 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.22
-Nodes (10): _combined_interests(), get_practice_question(), get_practice_question_batch(), Returns a batch of 3 questions.      ELA/Verbal — batch-of-3 LLM strategy:, Socratic Tutor split-screen dialog endpoint.     Guides the student out of their, Onboarding Placement / Elo Match practice question dispatch router.     Integrat, Merge parent-set interest_tags and student-set student_interest_tags into a, socratic_chat_exchange() (+2 more)
+Cohesion: 0.17
+Nodes (10): BackgroundTasks, _combined_interests(), get_practice_question(), get_practice_question_batch(), Background task to pre-generate questions into the cache.     Uses parallel exec, Onboarding Placement / Elo Match practice question dispatch router.     Integrat, Returns a batch of 3 questions.      ELA/Verbal — batch-of-3 LLM strategy:, Merge parent-set interest_tags and student-set student_interest_tags into a (+2 more)
+
+### Community 1 - "Community 1"
+Cohesion: 0.09
+Nodes (20): _get_available_formats(), get_matatag_difficulty_axes(), get_matatag_lab_config(), get_matatag_lab_interests(), get_matatag_nodes(), get_matatag_progress(), get_node_capabilities(), matatag_lab_generate() (+12 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.08
 Nodes (25): 20.0 Curriculum Descriptor ≠ Student Vocabulary, 20.10 Common Generator Pitfalls, 20.11 Debugging Visual Rendering Issues, 20.12 Introduction Slide ≠ Definitions Slide (CRITICAL), 20.13 Grade-Level Vocabulary Constraints, 20.14 Cross-Branch Terms and the Vocabulary System, 20.15 Every Competency Needs a Worked Example, 20.16 Interest Wrapping Must Be Consistent Within a Mini-Lesson (+17 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.08
-Nodes (30): FormattedProblem, Practice Generation — DNA Base Definitions  All dataclasses, enums, and shared u, Final output of the practice generation pipeline.      Produced by a formatter o, Serialize to dict for API response., Practice Generation — Hint-Gated Experience Wrapper  Hints unlock one at a time., Apply the hint-gated experience wrapper.      Sets problem.experience to "hint_g, Increment hints_revealed by 1 and return the updated problem.      If the proble, reveal_next_hint() (+22 more)
+Cohesion: 0.13
+Nodes (11): Practice Generation — DNA Base Definitions  All dataclasses, enums, and shared u, A reusable story template with named slots.      Slots are filled from the stude, Fill template with interest slots and numeric values.                  Handles s, Spine, build_scaffold_sequence(), Practice Generation — Scaffolded Experience Wrapper  Ascending-difficulty sequen, Build an ordered list of difficulty profiles for a scaffold sequence.      Each, Practice Generation — Standard Experience Wrapper  Simple pass-through wrapper t (+3 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.28
@@ -162,28 +178,28 @@ Cohesion: 0.14
 Nodes (20): call_ai(), _format_age_grade_constraints(), GenAIBridge, generate_ela_batch_subagent(), generate_ela_skeleton_subagent(), generate_math_question_ai(), _get_bridge_pool(), has_visual_reference() (+12 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.06
-Nodes (35): _gen_g3_dp_q3_bar_graphs(), _gen_g3_dp_q3_probability(), _gen_g3_mg_q1_area(), _gen_g3_mg_q1_lines(), _gen_g3_mg_q2_capacity(), _gen_g3_mg_q2_mass(), _gen_g3_mg_q4_symmetry(), _gen_g3_na_q1_comparing() (+27 more)
+Cohesion: 0.05
+Nodes (37): _gen_g3_dp_q3_bar_graphs(), _gen_g3_dp_q3_probability(), _gen_g3_mg_q1_area(), _gen_g3_mg_q1_lines(), _gen_g3_mg_q2_capacity(), _gen_g3_mg_q2_mass(), _gen_g3_mg_q4_symmetry(), _gen_g3_na_q1_comparing() (+29 more)
 
 ### Community 10 - "Community 10"
 Cohesion: 0.15
 Nodes (18): _count_decimal_places(), generate_number_by_window(), Choose a number randomly from the candidates list within the difficulty range wi, Score signed integers, adding a small penalty for negative numbers., Score a fraction n/d based on:     - Denominator size (40%)     - Numerator/Deno, Ordinal difficulty scales linearly with magnitude (1st is easiest, 100th is hard, Score a whole number or decimal based on divisibility, digits, and magnitude., Unified scoring router based on number type. (+10 more)
 
 ### Community 11 - "Community 11"
-Cohesion: 0.06
-Nodes (48): _gen_g2_dp_q3_pictograph(), _gen_g2_mg_q1_circles(), _gen_g2_mg_q1_slides(), _gen_g2_mg_q2_measurement(), _gen_g2_mg_q4_perimeter(), _gen_g2_mg_q4_solid_figures(), _gen_g2_mg_q4_time(), _gen_g2_na_q1_addition() (+40 more)
+Cohesion: 0.05
+Nodes (53): _gen_g2_dp_q3_pictograph(), _gen_g2_mg_q1_circles(), _gen_g2_mg_q1_slides(), _gen_g2_mg_q2_measurement(), _gen_g2_mg_q4_perimeter(), _gen_g2_mg_q4_solid_figures(), _gen_g2_mg_q4_time(), _gen_g2_na_q1_addition() (+45 more)
 
 ### Community 12 - "Community 12"
 Cohesion: 0.06
-Nodes (30): dependencies, dagre, @dnd-kit/core, @dnd-kit/sortable, @dnd-kit/utilities, localtunnel, lucide-react, react (+22 more)
+Nodes (31): dependencies, dagre, @dnd-kit/core, @dnd-kit/sortable, @dnd-kit/utilities, localtunnel, lucide-react, react (+23 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.09
-Nodes (37): flag_question(), Bypasses placement for a subject and seeds based on student grade., Stores a flagged question for post-mortem review., Allows parent to update student profiles, interest tags, and base ELO manually., Initiates a telemetry tracking session for window defense telemetry., Updates statistics in the telemetry logs database., skip_placement(), start_telemetry_session() (+29 more)
+Cohesion: 0.14
+Nodes (25): AdminGraphEdge, AdminGraphNode, AdminGraphResponse, AnswerSubmitRequest, AnswerSubmitResponse, Config, GraphNode, GraphTrack (+17 more)
 
 ### Community 14 - "Community 14"
-Cohesion: 0.15
-Nodes (25): API_BASE, BalanceScaleInteractive(), BarChartInteractive(), CalendarInteractive(), CategorizeInteractive(), ClockSetInteractive(), ConstraintSatisfactionInteractive(), EmojiPictorialInteractive() (+17 more)
+Cohesion: 0.13
+Nodes (27): API_BASE, BalanceScaleInteractive(), BarChartInteractive(), CalendarInteractive(), CategorizeInteractive(), ClockSetInteractive(), ConstraintSatisfactionInteractive(), EmojiPictorialInteractive() (+19 more)
 
 ### Community 15 - "Community 15"
 Cohesion: 0.17
@@ -195,11 +211,11 @@ Nodes (23): 1. Architecture Decisions, 1. Core Architecture Layers, 1. Critical 
 
 ### Community 17 - "Community 17"
 Cohesion: 0.07
-Nodes (27): _gen_g1_dp_q3_data(), _gen_g1_mg_q1_shapes(), _gen_g1_mg_q2_length(), _gen_g1_mg_q4_time(), _gen_g1_mg_q4_turns(), _gen_g1_na_q2_addition(), _gen_g1_na_q2_counting(), _gen_g1_na_q2_place_value() (+19 more)
+Nodes (29): _gen_g1_dp_q3_data(), _gen_g1_mg_q1_shapes(), _gen_g1_mg_q2_length(), _gen_g1_mg_q4_time(), _gen_g1_mg_q4_turns(), _gen_g1_na_q2_addition(), _gen_g1_na_q2_counting(), _gen_g1_na_q2_place_value() (+21 more)
 
 ### Community 18 - "Community 18"
-Cohesion: 0.15
-Nodes (16): get_intro_status(), get_node_config(), mark_intro_viewed(), Read the enabled checkboxes for a node., Mark the intro for a node as viewed by a student., Check whether a student has viewed the intro for a node., MasteryState, StudentProfile (+8 more)
+Cohesion: 0.23
+Nodes (9): MasteryState, StudentProfile, PlacementEngine, Calculates the active search bounds from the student's attempt history., Concludes placement onboarding, calculates baseline ELO and populates mastery st, Implements a Binary Search Onboarding Placement Engine.     Pinpoints student's, Initializes placement state for a new student.         Seeds grade-appropriate m, Bypasses the placement test and seeds mastery based on the student's claimed gra (+1 more)
 
 ### Community 19 - "Community 19"
 Cohesion: 0.15
@@ -214,8 +230,8 @@ Cohesion: 0.20
 Nodes (9): 15. Data Dependencies, 16. File Structure, 19. Open Questions (To Resolve During Implementation), 1. Philosophy, 2. Core Architecture, 9. Runtime Generation Pipeline, CCMed — Adaptive K-12 Mastery Engine, Introductory Content Strategy (+1 more)
 
 ### Community 22 - "Community 22"
-Cohesion: 0.12
-Nodes (15): get_parent_analytics(), get_parent_graph(), Verifies student answers using SymPy, adjusts Elo, updates mastery state, and sc, Parent Dashboard compiling telemetry statistics, Elo progress, and skills master, Returns highly granular parallel linear tracks and their exact masteries     mat, submit_practice_answer(), AnswerSubmitRequest, check_and_advance_subject_frontier() (+7 more)
+Cohesion: 0.15
+Nodes (26): get_db(), FastAPI dependency that yields a database session.     Guarantees session closur, SessionLocal(), Background task to pre-generate questions into the cache.     Uses parallel exec, replenish_question_cache(), compute_difficulty_scalar(), get_axes_for_concept(), Return the UI-ready axis list for a concept, or [] if not found. (+18 more)
 
 ### Community 23 - "Community 23"
 Cohesion: 0.12
@@ -234,20 +250,20 @@ Cohesion: 0.14
 Nodes (23): BalanceScaleParams, BarChartParams, BaseVisualParams, CalendarParams, ClockParams, EmojiPictorialParams, FillInTableParams, FractionModelParams (+15 more)
 
 ### Community 27 - "Community 27"
-Cohesion: 0.38
-Nodes (6): _build_traps(), _build_visual_params(), format_pictograph(), fmt_pictograph.py — Pictograph (picture graph) visual formatter  Produces a Form, Build a Pictograph FormattedProblem from a QuestionContext.      interaction_mod, Build pictograph visual_params.      visual_params keys:         categories   —
+Cohesion: 0.22
+Nodes (4): RedisDict, RedisDict, get_cache(), set_cache()
 
 ### Community 28 - "Community 28"
-Cohesion: 0.32
-Nodes (7): _load_dna(), Practice Generation — Interest Invariance Validation  Verifies that interest-the, Run interest invariance checks for all requires_context=True formula DNAs., Import the DNA module and return its DNA instance, or None on failure., Verify that interest theme does not alter the correct answer.      For each of `, validate_all_interest_invariance(), validate_interest_invariance()
+Cohesion: 0.15
+Nodes (11): get_matatag_competencies(), Return MATATAG competencies for dropdown selection in Problem Lab.          Resp, _combined_interests(), _match_competency_to_visual_type(), Background task to pre-generate questions into the cache.     Uses parallel exec, Socratic Tutor split-screen dialog endpoint.     Guides the student out of their, Match a MATATAG competency to a visual skeleton type using regex patterns.     R, Merge parent-set interest_tags and student-set student_interest_tags into a (+3 more)
 
 ### Community 29 - "Community 29"
 Cohesion: 0.14
 Nodes (16): generate_pair_by_window(), Choose an operand pair randomly from candidate_pairs within the difficulty range, _close_pair(), _compare_symbol(), generate_hints(), generate_params(), DNA: Comparing and Ordering Numbers (Number & Algebra)  Covers MATATAG grades 1–, Return 2–4 step-by-step hints for a comparison/ordering problem. (+8 more)
 
 ### Community 30 - "Community 30"
-Cohesion: 0.31
-Nodes (8): _build_balance_params(), _build_traps(), format_balance_scale(), fmt_balance_scale.py — BalanceScale visual formatter  NEW formatter — no existin, Build a BalanceScale FormattedProblem from a QuestionContext.      interaction_m, Derive balance-scale parameters from ctx.values.      Expects keys: a, b, result, Return up to 3 distractor values.      Traps:         wrong_op     — adds instea, _stem()
+Cohesion: 0.07
+Nodes (36): QuestionContext, Format-agnostic intermediate produced by the context generator.      Everything, _build_equation_sentence(), format_cloze(), Textual Formatter — Cloze (Fill-in-the-Blank)  Unified formatter for fill-in-the, Build pure equation with blank based on concept and blank_target., Format a QuestionContext as a cloze (fill-in-the-blank) problem.      Respects t, _build_pure_question() (+28 more)
 
 ### Community 31 - "Community 31"
 Cohesion: 0.29
@@ -263,19 +279,19 @@ Nodes (7): 8. Definition Bank, Classification Rules, Definition Bank Location, R
 
 ### Community 34 - "Community 34"
 Cohesion: 0.29
-Nodes (6): Architectural Refactoring Implementation Plan, Phase 1: Frontend Decomposition (Low Risk), Phase 2: Backend Decomposition (Medium Risk), Phase 3: Pipeline Normalization (Medium Risk), Phase 4: Cache & Telemetry Bottleneck Resolution (High Risk), Phase 5: CI/CD & Verification
+Nodes (6): Architectural Refactoring Implementation Plan, Phase 1: Immediate Priority - Data Contracts & Normalization (High Impact), Phase 2: Structural Improvements via Graph Insights (Medium Risk), Phase 3: Frontend Efficiency & State Management (Medium Risk), Phase 4: Performance & Scaling - Backend Efficiency (High Risk), Phase 5: CI/CD & Verification
 
 ### Community 35 - "Community 35"
 Cohesion: 0.10
 Nodes (22): linear_interpolate(), Linear interpolation between min_val and max_val at position t., generate_hints(), generate_params(), DNA: Bar Graphs (Data & Probability)  Covers MATATAG grade 3 bar graph competenc, Returns visual_params for the BarChart formatter (G3 only).     {"categories": l, generate_hints(), generate_params() (+14 more)
 
 ### Community 36 - "Community 36"
-Cohesion: 0.07
-Nodes (32): get_intro_content(), list_intro_interests(), list_intro_nodes(), List all nodes that have intro content available., List interest themes available for a grade level., Generate intro content for a MATATAG node.          - node_key: e.g., "g1_na_q1", Register all G1 node groups into MINI_LESSON_GROUPS and _INTRODUCTIONS., register() (+24 more)
+Cohesion: 0.11
+Nodes (20): generate_intro_content(), get_available_intro_nodes(), get_interest_themes(), _get_introduction(), Intro Content Generator  Produces structured intro slides for MATATAG nodes usin, Return all interest themes. Grade parameter is ignored (kept for API compatibili, Bind the G1_NA_Q1 generator functions after they are defined., Return list of nodes that have intro content available. (+12 more)
 
 ### Community 37 - "Community 37"
-Cohesion: 0.15
-Nodes (17): get_compatible_formatters_for_variant(), get_dnas_for_formatter(), get_formatters_for_dna(), get_supported_variants(), get_variants_for_dna(), is_compatible(), is_variant_supported(), Practice Generation — DNA-Formatter Compatibility Table ======================== (+9 more)
+Cohesion: 0.18
+Nodes (13): get_dnas_for_formatter(), get_supported_variants(), get_variants_for_dna(), is_compatible(), is_variant_supported(), Practice Generation — DNA-Formatter Compatibility Table ========================, Return True if the formatter is compatible with the given DNA concept.      Args, Return all DNA concept names that support a given formatter.      Performs a rev (+5 more)
 
 ### Community 38 - "Community 38"
 Cohesion: 0.33
@@ -310,16 +326,16 @@ Cohesion: 0.40
 Nodes (5): 6. Interest Wrapping, Answer Invariance, Grade Band Filtering, Interest Bank Structure, When Interest Wrapping Applies
 
 ### Community 46 - "Community 46"
-Cohesion: 0.40
-Nodes (5): _build_equation_sentence(), format_cloze(), Textual Formatter — Cloze (Fill-in-the-Blank)  Unified formatter for fill-in-the, Build pure equation with blank based on concept and blank_target., Format a QuestionContext as a cloze (fill-in-the-blank) problem.      Respects t
+Cohesion: 0.12
+Nodes (17): Generate a single practice problem and return it as a dict.      This is the sin, run(), find_node_id(), get_all_node_ids(), get_node_competency_bounds(), get_node_formatters(), get_node_info(), _parse_competency_bounds() (+9 more)
 
 ### Community 47 - "Community 47"
 Cohesion: 0.50
 Nodes (4): 10. Backend API Specification, GET /api/matatag/intro/{node_key}, GET /api/matatag/intro/{node_key}/status, POST /api/matatag/intro/{node_key}/viewed
 
 ### Community 48 - "Community 48"
-Cohesion: 0.08
-Nodes (41): DNA, QuestionContext, Specification of a mathematical concept for practice generation.      dna_type:, Return param_bounds for grade, falling back to nearest defined grade., Format-agnostic intermediate produced by the context generator.      Everything, _build_symbolic_question(), _detect_axes_served(), _eval_error_formula() (+33 more)
+Cohesion: 0.09
+Nodes (28): DNA, Specification of a mathematical concept for practice generation.      dna_type:, Return param_bounds for grade, falling back to nearest defined grade., Return the index of a level within an axis (0 = easiest)., Return a 0.0–1.0 scalar for a given axis level., _build_symbolic_question(), _detect_axes_served(), _eval_error_formula() (+20 more)
 
 ### Community 49 - "Community 49"
 Cohesion: 0.50
@@ -334,36 +350,52 @@ Cohesion: 0.22
 Nodes (13): _build_traps(), _build_visual_params(), format_peso_money(), _grade_denominations(), _greedy(), fmt_peso_money.py — PesoMoney visual formatter  Produces a FormattedProblem with, Generate PesoMoney visual_params.      visual_params keys:         coins, Return trap dict mirroring visual_skeletons._traps_peso_money. (+5 more)
 
 ### Community 52 - "Community 52"
-Cohesion: 0.08
-Nodes (37): matatag_lab_v2_generate(), Generate a practice problem using the new practice_gen pipeline., _import_dna_module(), Dynamically import the DNA module for a given concept name.      Looks up the co, apply_formatter(), generate_batch(), generate_problem(), _get_dna_instance() (+29 more)
+Cohesion: 0.11
+Nodes (38): FormattedProblem, Final output of the practice generation pipeline.      Produced by a formatter o, Apply the mastery-drill experience wrapper.      Sets problem.experience to "mas, wrap_mastery_drill(), Apply the scaffolded experience wrapper.      Sets problem.experience to "scaffo, wrap_scaffolded(), Apply the standard (no-op) experience wrapper.      Sets problem.experience to ", wrap_standard() (+30 more)
 
 ### Community 53 - "Community 53"
 Cohesion: 0.50
 Nodes (4): 7. Mini-Lesson Grouping, Grouping Algorithm, Mini-Lesson Structure, Slide Count Estimates
 
 ### Community 54 - "Community 54"
-Cohesion: 0.40
-Nodes (5): _build_pure_question(), format_mcq(), Textual Formatter — Multiple Choice (MCQ)  Refactored from matatag_skeletons.py, Build a pure equation question based on concept., Format a QuestionContext as a 4-option MCQ.      Respects the 'context' variant:
+Cohesion: 0.21
+Nodes (13): get_node(), Return the raw knowledge-graph node dict for node_id, or None.      Args:, _load_dna(), Practice Generation — Vocabulary & Concept Constraint Validation  Verifies that, Verify that distractors don't presuppose unknown concepts.      For each distrac, Generate sample problems for a node and run vocabulary/concept checks.      Args, Import the DNA module and return its DNA instance, or None on failure., Return True if `term` appears as a standalone token in `text`.      Case-insensi (+5 more)
 
 ### Community 55 - "Community 55"
 Cohesion: 0.13
 Nodes (17): log_interpolate(), Logarithmic interpolation between min_val and max_val at position t.      Produc, generate_hints(), generate_params(), DNA: Length Measurement (Measurement & Geometry)  Covers MATATAG grades 1–2 leng, Returns numeric params used by the ruler_measure formatter or word-problem spine, generate_hints(), generate_params() (+9 more)
 
-### Community 57 - "Community 57"
-Cohesion: 0.15
-Nodes (12): StudentLoginRequest, StudentRegisterRequest, UpdateInterestsRequest, delete_student(), get_student_profiles(), Lists all active student profiles., Student-facing endpoint: updates the student's own interest tags.     These are, Registers a new student profile and triggers binary placement onboarding initial (+4 more)
+### Community 56 - "Community 56"
+Cohesion: 0.24
+Nodes (11): CompetencyConfiguration, PydanticBaseModel, LabV2ConfigSaveRequest, LabV2GenerateRequest, LabV2SubmitRequest, matatag_lab_v2_submit(), Request body for /api/matatag/lab/v2/generate, Request body for /api/matatag/lab/v2/submit (+3 more)
 
-### Community 60 - "Community 60"
-Cohesion: 0.17
-Nodes (10): EngineProxy, get_db(), get_engine(), FastAPI dependency that yields a database session.     Guarantees session closur, SessionLocal(), Background task to pre-generate questions into the cache.     Uses parallel exec, replenish_question_cache(), ParentLoginRequest (+2 more)
+### Community 57 - "Community 57"
+Cohesion: 0.08
+Nodes (24): QuestionFlagRequest, StudentRegisterRequest, TelemetrySessionStartRequest, UpdateInterestsRequest, load_matatag_curriculum_endpoint(), Load MATATAG (Philippine K-10 Math) curriculum into the skill_nodes table., get_intro_status(), get_node_config() (+16 more)
+
+### Community 59 - "Community 59"
+Cohesion: 0.31
+Nodes (3): Background task to pre-generate questions into the cache.     Uses parallel exec, RedisDict, replenish_question_cache()
 
 ### Community 61 - "Community 61"
 Cohesion: 0.24
 Nodes (11): _build_traps(), _decompose(), format_place_value_blocks(), _grade_max(), _grade_min(), fmt_place_value_blocks.py — PlaceValueBlocks visual formatter  NEW formatter — n, Build a PlaceValueBlocks FormattedProblem from a QuestionContext.      interacti, Break number into place-value blocks appropriate for the grade.     Returns dict (+3 more)
 
+### Community 62 - "Community 62"
+Cohesion: 0.29
+Nodes (4): LearningDomain, Enforces Grade-Level Vocabulary Constraints (Community 2), Extracts common misconceptions (Community 5), Base class for Domain Services.     Encapsulates DNA generation logic, curriculu
+
 ### Community 63 - "Community 63"
-Cohesion: 0.06
-Nodes (33): _get_available_formats(), get_gemini_models(), get_matatag_competencies(), get_matatag_difficulty_axes(), get_matatag_lab_config(), get_matatag_lab_interests(), get_matatag_nodes(), get_matatag_progress() (+25 more)
+Cohesion: 0.38
+Nodes (6): _build_traps(), _build_visual_params(), format_array_grid(), fmt_array_grid.py — ArrayGrid (GridArea) visual formatter  Produces a FormattedP, Build an ArrayGrid FormattedProblem from a QuestionContext.      interaction_mod, Build ArrayGrid visual_params.      Grade 2: arrays up to 10×10 (multiplication
+
+### Community 64 - "Community 64"
+Cohesion: 0.40
+Nodes (5): Practice Generation — Hint-Gated Experience Wrapper  Hints unlock one at a time., Apply the hint-gated experience wrapper.      Sets problem.experience to "hint_g, Increment hints_revealed by 1 and return the updated problem.      If the proble, reveal_next_hint(), wrap_hint_gated()
+
+### Community 65 - "Community 65"
+Cohesion: 0.33
+Nodes (5): is_mastered(), Practice Generation — Mastery Drill Experience Wrapper  Rapid-fire practice unti, Return an updated session state after one answer.      Correct answer  → consecu, Return True if the student has reached mastery.      Args:         session_state, update_drill_state()
 
 ### Community 66 - "Community 66"
 Cohesion: 0.67
@@ -372,6 +404,10 @@ Nodes (3): 12. Database Model, New Table: `node_intro_views`, Node Key Format
 ### Community 67 - "Community 67"
 Cohesion: 0.67
 Nodes (3): 3. Content Types, Type A: Perseus-Derived (Dynamic, Automatable), Type B: Authored Augmentations (Static, Validated)
+
+### Community 68 - "Community 68"
+Cohesion: 0.50
+Nodes (3): ParentLoginRequest, parent_login(), Parent Login. Auto-registers alphanumeric password on first run for developer co
 
 ### Community 69 - "Community 69"
 Cohesion: 0.29
@@ -385,9 +421,13 @@ Nodes (10): _answer_from_bond(), _build_bond(), _build_traps(), format_number_bo
 Cohesion: 0.25
 Nodes (10): _build_sequence(), _build_traps(), _choose_missing_indices(), format_pattern_sequence(), fmt_pattern_sequence.py — PatternSequence visual formatter  Refactored from visu, Select which indices to blank out.     Never blank the first two terms (anchors), Return list of distractor values for the primary missing term.      Traps:, Build a PatternSequence FormattedProblem from a QuestionContext.      interactio (+2 more)
 
+### Community 72 - "Community 72"
+Cohesion: 0.67
+Nodes (3): PlacementSkipRequest, Bypasses placement for a subject and seeds based on student grade., skip_placement()
+
 ### Community 73 - "Community 73"
-Cohesion: 0.15
-Nodes (20): LabV2ConfigSaveRequest, LabV2GenerateRequest, LabV2SubmitRequest, matatag_lab_v2_submit(), Request body for /api/matatag/lab/v2/generate, Request body for /api/matatag/lab/v2/submit, Save the enabled checkboxes for a node., Grade an answer from the v2 pipeline.      Handles all formatter types:     - mc (+12 more)
+Cohesion: 0.36
+Nodes (9): Attempt, NodeIntroView, ParentAccount, QuestionFlag, SkillEdge, SkillNode, SpacedRepetition, TelemetrySession (+1 more)
 
 ### Community 74 - "Community 74"
 Cohesion: 0.27
@@ -396,6 +436,14 @@ Nodes (9): generate_hints(), generate_params(), _make_expanded_form(), num_to_ta
 ### Community 75 - "Community 75"
 Cohesion: 0.27
 Nodes (9): generate_hints(), generate_params(), _ordinal_suffix(), _ordinal_word(), DNA: Ordinal Numbers (Number & Algebra)  Static-bank DNA. Item pool is authored, Static-bank generator: pick a template and fill in a random ordinal value., Return 2–4 step-by-step hints for an ordinal number problem., Return '1st', '2nd', '3rd', '4th', … for any positive integer. (+1 more)
+
+### Community 76 - "Community 76"
+Cohesion: 0.67
+Nodes (3): StudentLoginRequest, PIN-based Student login endpoint., student_login()
+
+### Community 77 - "Community 77"
+Cohesion: 0.67
+Nodes (3): TelemetrySessionUpdateRequest, Updates statistics in the telemetry logs database., update_telemetry_session()
 
 ### Community 78 - "Community 78"
 Cohesion: 0.29
@@ -425,10 +473,6 @@ Nodes (9): _build_params(), _build_traps(), _correct_answer(), format_ten_frame(
 Cohesion: 0.28
 Nodes (8): _build_expression_str(), _evaluate_left_to_right(), generate_hints(), generate_params(), DNA: Order of Operations (Number & Algebra)  G3 only — addition and subtraction, Generate an order-of-operations problem (G3 only, + and − left to right).      R, Return 2–4 step-by-step hints for an order-of-operations problem., Evaluate an expression left to right given operands and operator list.
 
-### Community 93 - "Community 93"
-Cohesion: 0.29
-Nodes (4): A reusable story template with named slots.      Slots are filled from the stude, Fill template with interest slots and numeric values.                  Handles s, Spine, Practice Generation — Story Spines ====================================  Defines
-
 ### Community 98 - "Community 98"
 Cohesion: 0.31
 Nodes (8): _build_ruler_params(), _build_traps(), format_ruler_measure(), fmt_ruler_measure.py — RulerMeasure visual formatter  NEW formatter — partial an, Build a RulerMeasure FormattedProblem from a QuestionContext.      interaction_m, Generate ruler + object placement for the given grade.      G1:   non-standard u, Return up to 3 distractor values.      Traps:         misread_start   — student, _stem()
@@ -441,10 +485,6 @@ Nodes (7): extract_constraints(), extract_numeric_limit(), has_constraint(), Con
 Cohesion: 0.32
 Nodes (7): _detect_input_type(), format_numeric_input(), _numeric_bounds(), Textual Formatter — Numeric Input (Free-Entry)  Refactored from visual_skeletons, Classify the correct answer into integer, decimal, or fraction., Derive min_value / max_value from correct answer and available distractors., Format a QuestionContext as a free-entry numeric input problem.      format_data
 
-### Community 106 - "Community 106"
-Cohesion: 0.32
-Nodes (7): format_ordering(), _infer_direction(), Textual Formatter — Ordering  Refactored from visual_skeletons.py SortOrder gene, Return the sequence to be ordered, from context values or fallback., Infer the intended sort direction from the sequence.      Returns "descending" i, Format a QuestionContext as an ordering problem.      The student is shown a shu, _resolve_sequence()
-
 ### Community 107 - "Community 107"
 Cohesion: 0.32
 Nodes (7): Practice Generation — Compatibility & Registry Coverage Validation  Verifies tha, Verify bidirectional coverage between the knowledge graph and NODE_TO_DNA,     a, Run all compatibility and coverage checks and print a summary.      Returns:, Validate every entry in the COMPATIBILITY table.      Checks:       1. Each DNA, validate_all(), validate_compatibility_table(), validate_registry_coverage()
@@ -453,33 +493,29 @@ Nodes (7): Practice Generation — Compatibility & Registry Coverage Validation 
 Cohesion: 0.36
 Nodes (7): _build_traps(), format_fraction_shade(), _pick_params(), fmt_fraction_shade.py — FractionShade visual formatter  NEW formatter — gap anal, Build a FractionShade FormattedProblem from a QuestionContext.      interaction_, Return up to 3 distractor fraction strings.      Traps:         swap_nd        —, _stem()
 
-### Community 116 - "Community 116"
-Cohesion: 0.29
-Nodes (6): compute_difficulty_scalar(), get_axes_for_concept(), Practice Generation — Difficulty Axes Catalog ==================================, # NOTE: "structure" removed - it's a contextual variant, not a difficulty dimens, Return the UI-ready axis list for a concept, or [] if not found., Compute a 0.0–1.0 difficulty scalar from the selected axis values.      For each
-
 ### Community 132 - "Community 132"
 Cohesion: 0.40
 Nodes (3): Content Generation Rules, Core Persona: The Master K-12 Educator, Engineering & Verification Constraints
 
 ## Knowledge Gaps
-- **149 isolated node(s):** `Config`, `name`, `private`, `version`, `type` (+144 more)
+- **151 isolated node(s):** `Config`, `name`, `private`, `version`, `type` (+146 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `DNA` connect `Community 48` to `Community 1`, `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 10`, `Community 19`, `Community 20`, `Community 24`, `Community 25`, `Community 28`, `Community 29`, `Community 35`, `Community 42`, `Community 52`, `Community 55`, `Community 74`, `Community 75`, `Community 92`?**
-  _High betweenness centrality (0.061) - this node is a cross-community bridge._
-- **Why does `FormattedProblem` connect `Community 3` to `Community 11`, `Community 27`, `Community 30`, `Community 39`, `Community 46`, `Community 50`, `Community 51`, `Community 52`, `Community 54`, `Community 61`, `Community 69`, `Community 70`, `Community 71`, `Community 78`, `Community 79`, `Community 80`, `Community 81`, `Community 82`, `Community 83`, `Community 98`, `Community 105`, `Community 106`, `Community 108`?**
-  _High betweenness centrality (0.044) - this node is a cross-community bridge._
-- **Why does `QuestionContext` connect `Community 48` to `Community 3`, `Community 11`, `Community 27`, `Community 30`, `Community 39`, `Community 46`, `Community 50`, `Community 51`, `Community 52`, `Community 54`, `Community 61`, `Community 69`, `Community 70`, `Community 71`, `Community 78`, `Community 79`, `Community 80`, `Community 81`, `Community 82`, `Community 83`, `Community 98`, `Community 105`, `Community 106`, `Community 108`?**
+- **Why does `FormattedProblem` connect `Community 52` to `Community 3`, `Community 11`, `Community 13`, `Community 30`, `Community 39`, `Community 50`, `Community 51`, `Community 61`, `Community 63`, `Community 64`, `Community 65`, `Community 69`, `Community 70`, `Community 71`, `Community 78`, `Community 79`, `Community 80`, `Community 81`, `Community 82`, `Community 83`, `Community 85`, `Community 98`, `Community 105`, `Community 108`?**
+  _High betweenness centrality (0.032) - this node is a cross-community bridge._
+- **Why does `get_cache()` connect `Community 27` to `Community 0`, `Community 1`, `Community 5`, `Community 22`, `Community 59`, `Community 28`?**
+  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+- **Why does `DNA` connect `Community 48` to `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 10`, `Community 19`, `Community 20`, `Community 24`, `Community 25`, `Community 29`, `Community 35`, `Community 42`, `Community 52`, `Community 54`, `Community 55`, `Community 74`, `Community 75`, `Community 92`?**
   _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **What connects `Constraint Extractor Module  Parses dimensional constraints from MATATAG compete`, `Extract all dimensional constraints from a competency text.          Args:`, `Quick extraction of just the numeric limit.          Returns:         Numeric li` to the rest of the system?**
-  _588 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _598 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Community 1` be split into smaller, more focused modules?**
+  _Cohesion score 0.08994708994708994 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `Community 3` be split into smaller, more focused modules?**
-  _Cohesion score 0.07539118065433854 - nodes in this community are weakly interconnected._
-- **Should `Community 5` be split into smaller, more focused modules?**
-  _Cohesion score 0.06755260243632337 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1323529411764706 - nodes in this community are weakly interconnected._

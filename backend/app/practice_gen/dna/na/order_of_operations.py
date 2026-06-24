@@ -157,6 +157,7 @@ def generate_params(
         expression_str = _build_expression_str(operands, operators)
 
         return {
+        "blank_target": "answer",
             "operands":       operands,
             "operators":      operators,
             "expression_str": expression_str,
@@ -167,6 +168,7 @@ def generate_params(
     operands = [rng.randint(min_op, 9) for _ in range(n_terms)]
     operators = ["+"] * (n_terms - 1)
     return {
+        "blank_target": "answer",
         "operands":       operands,
         "operators":      operators,
         "expression_str": _build_expression_str(operands, operators),

@@ -211,6 +211,7 @@ def generate_params(
     last_visible = sequence[3]
 
     result_dict = {
+        "blank_target": "answer",
         "start":          last_visible,
         "skip_by":        skip_by,
         "direction":      direction,

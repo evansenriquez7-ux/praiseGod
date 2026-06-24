@@ -328,14 +328,15 @@ class DNA:
         return idx / (len(levels) - 1)
 
 
+from pydantic import BaseModel, Field, field_validator, model_validator
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # QUESTION CONTEXT
 # Format-agnostic intermediate object produced by the Context Generator.
 # Consumed by all formatters and experience wrappers.
 # ═══════════════════════════════════════════════════════════════════════════════
 
-@dataclass
-class QuestionContext:
+class QuestionContext(BaseModel):
     """
     Format-agnostic intermediate produced by the context generator.
 
@@ -374,14 +375,22 @@ class QuestionContext:
     dna_concept: str                # "addition"
     dna_type: str                   # "formula" | "visual_read" | "static_bank"
 
+    @model_validator(mode='after')
+    def validate_context(self) -> 'QuestionContext':
+        if self.correct_answer is None:
+            raise ValueError(f"Strict Output Schema Violation: DNA generator for '{self.dna_concept}' produced correct_answer=None. Please fix the DNA generator to output a valid 'correct_answer' or correct 'blank_target'.")
+        if "___" not in self.question_text_with_blank and self.dna_concept not in ("number_reading", "counting"):
+            # Warn or fail fast if the question doesn't have a blank and should.
+            pass
+        return self
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # FORMATTED PROBLEM
 # Final output of the pipeline. What the API and frontend consume.
 # ═══════════════════════════════════════════════════════════════════════════════
 
-@dataclass
-class FormattedProblem:
+class FormattedProblem(BaseModel):
     """
     Final output of the practice generation pipeline.
 

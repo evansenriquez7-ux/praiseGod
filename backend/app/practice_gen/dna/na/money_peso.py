@@ -260,6 +260,7 @@ def generate_params(
             distractors = [desc1, "They are equal", desc3]
 
         return {
+        "blank_target": "answer",
             "amounts": amounts1,
             "total": t1,
             "operation": "compare",
@@ -319,6 +320,7 @@ def generate_params(
                     f"{total_rw} PhP"
                 ]
         return {
+        "blank_target": "answer",
             "amounts": [total_rw],
             "total": total_rw,
             "operation": "read_write",
@@ -329,6 +331,7 @@ def generate_params(
         }
 
     result_dict = {
+        "blank_target": "answer",
         "amounts":            amounts,
         "denominations_used": amounts,
         "total":              total,
