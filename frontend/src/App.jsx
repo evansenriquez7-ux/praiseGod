@@ -2783,16 +2783,13 @@ function App() {
         {/* --- VIEW 2: PRACTICE WORKSPACE SCREEN --- */}
         {currentView === 'practice' && selectedStudent && (
           <PracticeView
-            practiceViewType={practiceViewType} setPracticeViewType={setPracticeViewType} setSubject={setSubject} setCurrentView={setCurrentView}
-            activeQuestion={activeQuestion} isSubmitting={isSubmitting} practiceVisualAnswer={practiceVisualAnswer} setPracticeVisualAnswer={setPracticeVisualAnswer}
-            selectedOptionKey={selectedOptionKey} setSelectedOptionKey={setSelectedOptionKey} handleAnswerSubmit={handleAnswerSubmit} showFeedback={showFeedback}
-            isCorrect={isCorrect} isGenerating={isGenerating} activeFeedback={activeFeedback} socraticActive={socraticActive}
+            practiceViewType={practiceViewType} setPracticeViewType={setPracticeViewType} setCurrentView={setCurrentView}
+            activeQuestion={activeQuestion} practiceVisualAnswer={practiceVisualAnswer} setPracticeVisualAnswer={setPracticeVisualAnswer}
+            selectedOptionKey={selectedOptionKey} setSelectedOptionKey={setSelectedOptionKey} handleAnswerSubmit={handleAnswerSubmit}
+            socraticActive={socraticActive}
             chatMessages={chatMessages} setChatMessages={setChatMessages} sendingChat={sendingChat} setSendingChat={setSendingChat}
             selectedStudent={selectedStudent} socraticAbortControllerRef={socraticAbortControllerRef} API_BASE={API_BASE}
-            renderMapOverlay={renderMapOverlay}
-            handleGeneratePractice={handleGeneratePractice} showSolution={showSolution} isSolutionVisible={isSolutionVisible}
-            handleNodeClick={handleNodeClick} handleNextQuestion={handleNextQuestion}
-            setSelectedStudent={setSelectedStudent} setSocraticActive={setSocraticActive} renderIntroViewer={renderIntroViewer} setShowFlagModal={setShowFlagModal}
+            setSelectedStudent={setSelectedStudent} setSocraticActive={setSocraticActive} setShowFlagModal={setShowFlagModal}
             studentInterestInput={studentInterestInput} setStudentInterestInput={setStudentInterestInput} interestSaveStatus={interestSaveStatus} setInterestSaveStatus={setInterestSaveStatus} handleSaveInterests={handleSaveInterests} setSelectedSubject={setSelectedSubject} fetchMatatagTracks={fetchMatatagTracks} fetchMatatagNodes={fetchMatatagNodes} matatagNodes={matatagNodes} loadingMathTracks={loadingMathTracks} mathTracks={mathTracks} setSelectedSubdomain={setSelectedSubdomain} setQuestionQueue={setQuestionQueue} fetchNextQuestion={fetchNextQuestion} selectedSubject={selectedSubject} loadingVerbalTracks={loadingVerbalTracks} verbalTracks={verbalTracks} loadingMatatagTracks={loadingMatatagTracks} selectedRoadmapNode={selectedRoadmapNode} setSelectedRoadmapNode={setSelectedRoadmapNode} fetchIntroForStudent={fetchIntroForStudent} writingCoachActive={writingCoachActive} introContent={introContent} handleLogout={handleLogout} loadingQuestion={loadingQuestion} aiBackend={aiBackend} opencodeModel={opencodeModel} handleSkipPlacement={handleSkipPlacement} tabSwitchCount={tabSwitchCount} idleSeconds={idleSeconds} guessCount={guessCount} answerResult={answerResult} handleOptionClick={handleOptionClick} chatEndRef={chatEndRef} handleSendMessage={handleSendMessage} chatInput={chatInput} setChatInput={setChatInput} selectedSubdomain={selectedSubdomain}
           />
         )}
@@ -2802,18 +2799,11 @@ function App() {
             {...{parentLoggedIn, handleParentLogin, parentPassword, setParentPassword, parentError,
             parentActiveTab, setParentActiveTab, students,
             editName, setEditName, editElo, setEditElo, editAge, setEditAge, editGrade, setEditGrade, editInterests, setEditInterests,
-            handleDeleteStudent, handleSaveStudentEdit,
-            telemetryStats, adminLogs, setAdminLogs,
-            matatagRawSkeletons, matatagCount, syncMatatagSkeletons,
-            adminGenTopic, setAdminGenTopic, adminGenCount, setAdminGenCount, adminGenLoading, setAdminGenLoading, generateAdminProblems,
-            adminCustomTarget, setAdminCustomTarget, adminCustomContext, setAdminCustomContext, adminCustomTheme, setAdminCustomTheme,
-            adminCustomSkeletons, setAdminCustomSkeletons, injectCustomKnowledge,
             socraticActive, setSocraticActive, chatMessages, setChatMessages, sendingChat, setSendingChat,
             selectedStudent, setCurrentView, socraticAbortControllerRef,
-            renderIntroViewer, introNodes, introInterests, introSelectedNode, setIntroSelectedNode, introSelectedInterest, setIntroSelectedInterest, generateIntroContent, introLoading,
+            introNodes, introInterests, introSelectedNode, setIntroSelectedNode, introSelectedInterest, setIntroSelectedInterest, generateIntroContent, introLoading,
             setSelectedStudent, setTelemetrySessionId, setParentLoggedIn, setParentError,
-            matatagNodeId, matatagNodes, handleRunMatatagTest, matatagTestResults, testLoading, clearMatatagTests,
-            activeSubject, activeDomain, activeSubdomain, renderMapOverlay,
+            matatagNodeId, matatagNodes,
             fetchMatatagNodes, fetchIntroNodes, fetchIntroInterests,
             modelsLoading, modelFilter, setModelFilter, setAnalyticsData, _resetMatatagState, labAllowedDifficulties, labVariantValues, labSelectedFormatter, setLabSelectedInterest, fetchParentGraph, opencodeModel, parentAuthRequired, matatagNodeSearch, setLabAllowedContexts, fetchParentAnalytics, labDifficultyScalars, setEditTelemetryEnabled, fetchProfiles, fetchMatatagQuestion, opencodeModels, fetchMatatagAxes, labAllowedFormatters, saveLabConfig, labInterests, handleUpdateSettings, setLabAllowedFormatters, matatagAxisValues, activeQuestion, parentSelectedGrade, setMatatagNodeId, setParentSubjectFilter, setParentSelectedGrade, setLabAllowedDifficulties, matatagQuestion, handleToggleParentAuth, matatagResult, parentSubjectFilter, labSelectedInterest, setMatatagNodeSearch, analyticsData, matatagLoading, labConfig, labConfigLoading, setMatatagAnswer, matatagAnswer, editTelemetryEnabled, labAllowedContexts, submitMatatagAnswer, handleOpencodeModelChange, parentGraphData, fetchLabConfig}}
           />
