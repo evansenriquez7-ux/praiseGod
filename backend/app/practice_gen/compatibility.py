@@ -392,6 +392,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "money_peso": {
+        "task_type": ["count_total", "make_change", "give_money"],
         "denomination_type": ["coins", "bills", "mixed"],
         "operation": ["add", "subtract"],
         "context": ["pure", "word_problem"],

@@ -2582,15 +2582,17 @@ export function CategorizeInteractive({ params, onAnswer, disabled }) {
 //  CALENDAR INTERACTIVE
 // ============================================================================
 export function CalendarInteractive({ params, onAnswer, disabled }) {
-  const { year, month, task_type, correct_date, correct_duration } = params;
+  const { 
+    task_type = 'select_date'
+  } = params || {};
   const [selectedDate, setSelectedDate] = useState(null);
   const [rangeStart, setRangeStart] = useState(null);
   const [rangeEnd, setRangeEnd] = useState(null);
 
   // Get calendar info
-  const firstDay = new Date(year, month - 1, 1).getDay();
-  const daysInMonth = new Date(year, month, 0).getDate();
-  const monthName = new Date(year, month - 1).toLocaleString('default', { month: 'long' });
+  const firstDay = new Date(params.year, params.month - 1, 1).getDay();
+  const daysInMonth = new Date(params.year, params.month, 0).getDate();
+  const monthName = new Date(params.year, params.month - 1).toLocaleString('default', { month: 'long' });
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   useEffect(() => {
@@ -2603,7 +2605,7 @@ export function CalendarInteractive({ params, onAnswer, disabled }) {
         }
       }
     }
-  }, [selectedDate, rangeStart, rangeEnd]);
+  }, [selectedDate, rangeStart, rangeEnd, onAnswer, task_type]);
 
   const handleDateClick = (day) => {
     if (disabled) return;
@@ -2653,7 +2655,7 @@ export function CalendarInteractive({ params, onAnswer, disabled }) {
         fontWeight: 700,
         color: 'hsl(var(--primary))'
       }}>
-        {monthName} {year}
+        {monthName} {params.year}
       </div>
 
       {/* Calendar grid */}
@@ -2735,7 +2737,7 @@ export function CalendarInteractive({ params, onAnswer, disabled }) {
       }}>
         {task_type === 'select_date' ? (
           selectedDate ? (
-            <span>Selected: <strong style={{ color: 'hsl(var(--primary))' }}>{month}/{selectedDate}/{year}</strong></span>
+            <span>Selected: <strong style={{ color: 'hsl(var(--primary))' }}>{params.month}/{selectedDate}/{params.year}</strong></span>
           ) : (
             <span style={{ color: 'hsl(var(--text-muted))' }}>Click a date to select it</span>
           )
@@ -2746,7 +2748,7 @@ export function CalendarInteractive({ params, onAnswer, disabled }) {
             )}
             {computedDuration && (
               <span>
-                Range: {month}/{rangeStart} to {month}/{rangeEnd} = <strong style={{ color: 'hsl(var(--primary))' }}>{computedDuration} days</strong>
+                Range: {params.month}/{rangeStart} to {params.month}/{rangeEnd} = <strong style={{ color: 'hsl(var(--primary))' }}>{computedDuration} days</strong>
               </span>
             )}
             {!rangeStart && (
@@ -2962,7 +2964,6 @@ export function PlaceValueBlocksInteractive({ params, onAnswer, disabled }) {
     hundreds: targetH = 0, 
     tens: targetTen = 0, 
     ones: targetO = 0, 
-    total_value = 0,
     is_interactive = true
   } = params || {};
 
@@ -2974,11 +2975,13 @@ export function PlaceValueBlocksInteractive({ params, onAnswer, disabled }) {
 
   useEffect(() => {
     if (is_interactive) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setThousands(0);
       setHundreds(0);
       setTens(0);
       setOnes(0);
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setThousands(targetT);
       setHundreds(targetH);
       setTens(targetTen);
@@ -2991,7 +2994,7 @@ export function PlaceValueBlocksInteractive({ params, onAnswer, disabled }) {
       const currentTotal = thousands * 1000 + hundreds * 100 + tens * 10 + ones;
       onAnswer(currentTotal);
     }
-  }, [thousands, hundreds, tens, ones, is_interactive]);
+  }, [thousands, hundreds, tens, ones, is_interactive, onAnswer]);
 
   const unitSize = 14;
   const colorT = '#a78bfa'; // thousands - purple

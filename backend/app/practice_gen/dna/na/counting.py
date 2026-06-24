@@ -139,7 +139,7 @@ def generate_params(
 
     from backend.app.practice_gen.dna.base import log_interpolate
 
-    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+    diff_scalar = float(profile.get("difficulty_scalar", profile.get("range", 0.5)))
 
     max_num_limit = int(log_interpolate(10, bounds["max_num"], diff_scalar))
     lo = bounds.get("min_value", 1)

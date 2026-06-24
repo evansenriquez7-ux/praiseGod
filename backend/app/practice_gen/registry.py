@@ -397,15 +397,15 @@ BINDINGS = {
     },
     "mat_g1_na_q4_4": {
         "dna": "money_peso",
-        "visual": "peso_money_read"
+        "visual": "peso_money_build"
     },
     "mat_g1_na_q4_5": {
         "dna": "money_peso",
-        "visual": "peso_money_read"
+        "visual": "peso_money_build"
     },
     "mat_g1_na_q4_6": {
         "dna": "money_peso",
-        "visual": "peso_money_read"
+        "visual": "peso_money_build"
     },
     "mat_g1_mg_q1_0": {
         "dna": "shapes_2d",
