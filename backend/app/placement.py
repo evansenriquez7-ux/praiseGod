@@ -2,62 +2,6 @@ from sqlalchemy.orm import Session
 from backend.app.models import StudentProfile, MasteryState, SkillNode
 import random
 
-# Core Common Core milestones for binary-search onboarding
-# Each index represents Grade 1 to 12 respectively
-MATH_PLACEMENT_MILESTONES = [
-    "1.OA.A.1", # Grade 1: Addition/subtraction word problems
-    "2.OA.A.1", # Grade 2: 1-step/2-step addition word problems
-    "3.OA.D.8", # Grade 3: Two-step word problems using four operations
-    "4.NF.A.1", # Grade 4: Fraction equivalence and simplification
-    "5.NF.A.1", # Grade 5: Unlike fraction addition/subtraction
-    "6.EE.A.2", # Grade 6: Algebraic expressions
-    "7.EE.B.3", # Grade 7: Multi-step real-life problems with rational numbers
-    "8.EE.C.7", # Grade 8: Linear equations in one variable
-    "N-RN.A.1", # Grade 9: Rational exponents
-    "N-RN.A.2", # Grade 10: Radicals and rational exponents
-    "N-RN.B.3", # Grade 11: Properties of rational and irrational numbers
-    "A-REI.C.8"  # Grade 12: Systems of linear equations
-]
-
-READING_PLACEMENT_MILESTONES = [
-    "RL.1.1",  # Grade 1: Key details
-    "RL.2.1",  # Grade 2: 5 W's
-    "RL.3.1",  # Grade 3: Explicit reference
-    "RI.4.1",  # Grade 4: Drawing inferences
-    "RL.5.1",  # Grade 5: Quote accurately
-    "RI.6.1",  # Grade 6: Textual evidence
-    "RL.7.1",  # Grade 7: Citations
-    "RI.8.1",  # Grade 8: Strongest evidence
-    "RL.9-10.1", # Grade 9-10: Inference & citation
-    "RI.11-12.1" # Grade 11-12: Ambiguity & gaps
-]
-
-WRITING_PLACEMENT_MILESTONES = [
-    "W.1.1",   # Grade 1: Opinion pieces
-    "W.2.1",   # Grade 2: Opinion writing
-    "W.3.1",   # Grade 3: Support opinion
-    "W.4.1",   # Grade 4: Organized reasons
-    "W.5.1",   # Grade 5: Logical structure
-    "W.6.1",   # Grade 6: Claims & evidence
-    "W.7.1",   # Grade 7: Acknowledgement of claims
-    "W.8.1",   # Grade 8: Distinguish claims
-    "W.9-10.1",# Grade 9-10: Arguments
-    "W.11-12.1" # Grade 11-12: Precise claims
-]
-
-LANGUAGE_PLACEMENT_MILESTONES = [
-    "L.1.1",   # Grade 1: Grammar
-    "L.2.1",   # Grade 2: Usage
-    "L.3.1",   # Grade 3: Sentence patterns
-    "L.4.1",   # Grade 4: Relative pronouns
-    "L.5.1",   # Grade 5: Conjunctions
-    "L.6.1",   # Grade 6: Pronouns
-    "L.7.1",   # Grade 7: Phrases/Clauses
-    "L.8.1",   # Grade 8: Verbals
-    "L.9-10.1",# Grade 9-10: Parallel structure
-    "L.11-12.1" # Grade 11-12: Hyphenation
-]
-
 # MATATAG (Philippine K-10 Math Curriculum) placement milestones
 # Uses Number and Algebra strand as primary placement path
 MATATAG_PLACEMENT_MILESTONES = [
@@ -72,8 +16,6 @@ MATATAG_PLACEMENT_MILESTONES = [
     "mat_g9_na_q1_1",   # Grade 9: Functions and relations
     "mat_g10_na_q1_1",  # Grade 10: Quadratic inequalities
 ]
-
-ELA_PLACEMENT_MILESTONES = READING_PLACEMENT_MILESTONES # Legacy fallback
 
 class PlacementEngine:
     """
@@ -109,18 +51,7 @@ class PlacementEngine:
 
     @staticmethod
     def get_milestones(subject: str) -> list:
-        if subject == "Math":
-            return MATH_PLACEMENT_MILESTONES
-        elif subject in ["Reading", "Reading: Literature", "Reading: Informational Text", "Reading Foundations", "Speaking & Listening", "Verbal"]:
-            return READING_PLACEMENT_MILESTONES
-        elif subject == "Writing":
-            return WRITING_PLACEMENT_MILESTONES
-        elif subject in ["Language", "Grammar"]:
-            return LANGUAGE_PLACEMENT_MILESTONES
-        elif subject in ["Matatag", "MATATAG", "matatag"]:
-            return MATATAG_PLACEMENT_MILESTONES
-        else:
-            return ELA_PLACEMENT_MILESTONES
+        return MATATAG_PLACEMENT_MILESTONES
 
     @staticmethod
     def is_in_placement(subject: str, student: StudentProfile, history: list) -> bool:

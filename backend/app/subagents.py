@@ -7,13 +7,6 @@ import time
 import re
 from pathlib import Path
 from typing import Optional
-# from backend.app import ela_loader
-
-class DummyElaLoader:
-    @staticmethod
-    def load_ela_standard(skill_id, grade_level):
-        return {"code": skill_id, "description": "Dummy CCSS Standard Description", "domain": "Dummy ELA Domain", "grade_level": grade_level}
-ela_loader = DummyElaLoader()
 
 # ── By-standard node directory (processed curriculum data) ─────────────────────
 _BY_STANDARD_DIR = Path(__file__).parent.parent.parent / "data" / "processed" / "by_standard"
@@ -598,10 +591,7 @@ def generate_math_question_ai(
     """
     lang_name = "Tagalog (Filipino)" if language.lower() == "tl" else "English"
 
-    std_info = ela_loader.load_ela_standard(skill_id, grade_level)
-    standard_description = std_info.get(
-        "description", f"Grade {grade_level} Math standard {skill_id}"
-    )
+    standard_description = f"Grade {grade_level} Math standard {skill_id}"
 
     # Load enriched research context if available
     research_context = ""

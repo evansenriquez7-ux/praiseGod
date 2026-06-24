@@ -11,6 +11,8 @@ build/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.npm_cache/
+.npm_tmp/
 
 # Python
 __pycache__/
@@ -18,9 +20,7 @@ __pycache__/
 *$py.class
 *.so
 .Python
-build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
@@ -35,6 +35,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+.pytest_cache/
 
 # macOS
 .DS_Store
@@ -48,38 +49,18 @@ Icon
 
 # Temporary data
 scratch/
-gen_problems.jsonl
 *.sqlite3
 *.db
-.npm_cache/
-.npm_tmp/
 .cache/
-
-# Large reference data and extraction outputs
-data/raw/
-scripts/perseus_extractor/output/
-scripts/khan_scraper/data/
-scripts/khan_scraper/output/
-scripts/jump_start/data/
-data/ph/*.pdf
-data/ph/matatag_matched_problems.json
-
-# Logs and temporary files
-*.log
-data/backups/dump.sql
-logs/import.log
-docs/profile.txt
 local_only/
-scratch/
-local_only/*
 
-# Build Artifacts
-frontend/.npm_cache/
-frontend/.npm_tmp/
+# Logs
+*.log
 
 # Firebase
 .firebase/
 .firebaserc
 
-# Testing
-.pytest_cache/
+# Local Documentation & Agent Data
+.agents/
+docs/
