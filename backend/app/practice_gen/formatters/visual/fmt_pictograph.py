@@ -255,6 +255,16 @@ def format_pictograph(
     else:
         correct_answer = correct_count if interaction_mode == "read" else counts
 
+    vp["is_pictograph"] = True
+    
+    # Calculate max_y for BarChartInteractive
+    if vp.get("counts"):
+        vp["max_y"] = max(vp["counts"]) + (vp.get("scale", 1) * 2)
+    elif vp.get("values"):
+        vp["max_y"] = max(vp["values"]) + (vp.get("scale", 1) * 2)
+    else:
+        vp["max_y"] = 10
+
     format_data: dict = {"visual_params": vp}
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
@@ -274,7 +284,7 @@ def format_pictograph(
         format=fmt,
         format_data=format_data,
         is_visual=True,
-        visual_type="Pictograph",
+        visual_type="BarChart",
         visual_params=vp,
         interaction_mode=interaction_mode,
         answer_collection=answer_collection,

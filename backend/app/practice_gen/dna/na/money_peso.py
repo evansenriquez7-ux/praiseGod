@@ -331,7 +331,7 @@ def generate_params(
         }
 
     result_dict = {
-        "blank_target": "answer",
+        "blank_target": "result",
         "amounts":            amounts,
         "denominations_used": amounts,
         "total":              total,

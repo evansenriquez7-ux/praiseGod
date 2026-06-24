@@ -148,7 +148,16 @@ def generate_params(
     from backend.app.practice_gen.dna.base import linear_interpolate
     
     if "num_categories" in profile:
-        num_cats = int(linear_interpolate(cat_min, cat_max, float(profile["num_categories"])))
+        cat_val = profile["num_categories"]
+        if isinstance(cat_val, str):
+            if cat_val == "three_four":
+                num_cats = rng.choice([3, 4])
+            elif cat_val == "five_six":
+                num_cats = rng.choice([5, 6])
+            else:
+                num_cats = rng.randint(cat_min, cat_max)
+        else:
+            num_cats = int(linear_interpolate(cat_min, cat_max, float(cat_val)))
     else:
         num_cats = rng.randint(cat_min, cat_max)
 

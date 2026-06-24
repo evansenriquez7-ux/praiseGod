@@ -173,6 +173,12 @@ def generate_params(
 
     # Difficulty axes
     reg_level  = profile.get("regrouping", "none")
+    if reg_level == "double":
+        max_result = max(110, max_result)
+    elif reg_level == "tens":
+        max_result = max(100, max_result)
+    elif reg_level == "ones":
+        max_result = max(20, max_result)
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
     # Contextual variants

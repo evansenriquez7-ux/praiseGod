@@ -297,7 +297,9 @@ def generate_params(
     if not candidates:
         candidates = _ITEM_POOL
 
-    return dict(rng.choice(candidates))
+    item = dict(rng.choice(candidates))
+    item["result"] = item["answer"]
+    return item
 
 
 # ─── hint generator ───────────────────────────────────────────────────────────

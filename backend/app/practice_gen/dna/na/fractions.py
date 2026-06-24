@@ -175,6 +175,12 @@ def generate_params(
             frac_s = _fraction_str(num, den)
 
             if operation != "add_subtract":
+                b_num = min(den - 1, num + 1) if den > 1 else num + 1
+                if operation == "compare":
+                    ans = "=" if num == b_num else (">" if num > b_num else "<")
+                else:
+                    ans = frac_s
+                
                 candidate_params.append({
                     "numerator":    num,
                     "denominator":  den,
@@ -183,8 +189,9 @@ def generate_params(
                     "operation":    operation,
                     "a_num":        num,
                     "a_den":        den,
-                    "b_num":        min(den - 1, num + 1) if den > 1 else num + 1,
+                    "b_num":        b_num,
                     "b_den":        den,
+                    "result":       ans,
                 })
             else:
                 for b_num in range(1, den):
@@ -206,6 +213,7 @@ def generate_params(
                         "b_den":        den,
                         "result_num":   r_num,
                         "result_den":   r_den,
+                        "result":       f"{r_num}/{r_den}" if r_den != 1 else str(r_num),
                     })
 
     if not candidate_params:

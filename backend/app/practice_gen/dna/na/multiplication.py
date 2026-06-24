@@ -143,11 +143,14 @@ def generate_params(
     from backend.app.practice_gen.dna.base import linear_interpolate
     diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
     a_lo = bounds["a"][0]
-    a_hi = int(linear_interpolate(max(1, a_lo), bounds["a"][1], diff_scalar))
+    if num_level == "multi_digit":
+        a_lo = max(10, a_lo)
+    a_hi = int(linear_interpolate(max(1, a_lo), max(a_lo, bounds["a"][1]), diff_scalar))
 
     max_prod_val = profile.get("max_product")
     if max_prod_val is not None:
-        max_prod_val = int(max_prod_val)
+        min_possible = (10 if num_level == "multi_digit" else 1) * min(allowed_tables)
+        max_prod_val = max(int(max_prod_val), min_possible)
     else:
         max_prod_val = 999999 # Rely on bounds["a"]
 

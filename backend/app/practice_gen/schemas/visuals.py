@@ -23,8 +23,8 @@ class ClockParams(BaseVisualParams):
 
 class NumberBondParams(BaseVisualParams):
     whole: Optional[int] = None
-    part1: int
-    part2: int
+    part1: Optional[int] = None
+    part2: Optional[int] = None
 
 class BarChartParams(BaseVisualParams):
     categories: List[str]

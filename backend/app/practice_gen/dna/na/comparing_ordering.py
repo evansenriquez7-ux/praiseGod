@@ -170,9 +170,10 @@ def generate_params(
         distractors = [d1] + shuffles_list[:2]
 
     else:  # find_between
+        effective_max = max(3, effective_max)
         candidates = []
         for _ in range(500):
-            a = rng.randint(1, max(1, effective_max - 2))
+            a = rng.randint(1, effective_max - 2)
             b = rng.randint(a + 2, effective_max)
             candidates.append((a, b))
         from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
