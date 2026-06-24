@@ -1011,7 +1011,7 @@ from pydantic import BaseModel as PydanticBaseModel
 class LabV2GenerateRequest(PydanticBaseModel):
     """Request body for /api/matatag/lab/v2/generate"""
     node_id: str
-    formatter: str = "mcq"
+    formatter: Optional[str] = "mcq"
     difficulty_profile: Optional[Dict[str, Any]] = None  # {axis: level_or_value}
     variant_values: Optional[Dict[str, Any]] = None      # {variant: value}
     interest_theme: Optional[str] = None                 # Interest ID for word problem personalization
@@ -1020,7 +1020,7 @@ class LabV2GenerateRequest(PydanticBaseModel):
 class LabV2SubmitRequest(PydanticBaseModel):
     """Request body for /api/matatag/lab/v2/submit"""
     problem_id: str
-    student_answer: str
+    student_answer: Any
 
 class LabV2ConfigSaveRequest(PydanticBaseModel):
     allowed_difficulties: Optional[Dict[str, List[Any]]] = None
