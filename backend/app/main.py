@@ -4,7 +4,6 @@ import math
 import json
 import re
 import random as _random
-import hashlib
 from pathlib import Path
 from fastapi import FastAPI, Depends, HTTPException, status, BackgroundTasks, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,7 +11,6 @@ from sqlalchemy.orm import Session
 from sqlalchemy import text
 from typing import List, Optional, Dict, Any
 import concurrent.futures
-import subprocess
 import sympy as sp
 from sympy.parsing.sympy_parser import parse_expr
 
@@ -67,11 +65,8 @@ app.add_middleware(
 )
 # Global in-memory cache for LLM-generated ELA skeletons
 ELA_SKELETON_CACHE = {}
-# Global in-memory cache for narrated Math skeletons to retrieve their stems/options/explanations
-MATH_NARRATED_CACHE = {}
-# Global in-memory cache for AI-generated Math skeletons (ai_ prefix skeleton_ids)
-# Used when SymPy exhausts variety or generates a visual-reference question
-MATH_AI_CACHE = {}
+
+
 # Global in-memory cache for pre-generated questions to eliminate latency
 QUESTION_CACHE = {} # key: f"{student_id}_{subject}_{subdomain}"
 # Global in-memory cache for MATATAG skeleton problems
@@ -177,47 +172,6 @@ def _clear_student_history(student_id: int) -> None:
     except OSError as e:
         print(f"[ELA Dedup] Could not clear history: {e}")
 
-# The startup event is called explicitly at module load time below
-def _startup_migrate_and_configure():
-    """
-    Zero-downtime column migrations + load AI backend config into subagents.
-    Runs once when uvicorn boots, before any request is handled.
-    """
-    # Add new columns to parent_accounts if they don't already exist
-    with engine.connect() as conn:
-        conn.execute(text(
-            "ALTER TABLE parent_accounts "
-            "ADD COLUMN IF NOT EXISTS ai_backend VARCHAR DEFAULT 'gemini'"
-        ))
-        conn.execute(text(
-            "ALTER TABLE parent_accounts "
-            "ADD COLUMN IF NOT EXISTS opencode_model VARCHAR DEFAULT 'gemini-2.5-flash'"
-        ))
-        conn.commit()
-
-    # Ensure node_intro_views table exists (idempotent)
-    with engine.connect() as conn:
-        conn.execute(text("""
-            CREATE TABLE IF NOT EXISTS node_intro_views (
-                id SERIAL PRIMARY KEY,
-                student_id INTEGER NOT NULL REFERENCES student_profiles(id) ON DELETE CASCADE,
-                node_key VARCHAR(20) NOT NULL,
-                viewed_at TIMESTAMP NOT NULL DEFAULT NOW(),
-                UNIQUE(student_id, node_key)
-            )
-        """))
-        conn.commit()
-
-    # Seed the in-memory AI routing config from whatever's already stored
-    from backend.app.database import SessionLocal
-    with SessionLocal() as db:
-        parent = db.query(models.ParentAccount).first()
-        if parent:
-            subagents.set_ai_config(
-                parent.opencode_model or "gemini-2.5-flash"
-            )
-
-
 def replenish_question_cache(student_id: int, subject: str, subdomain: Optional[str], count: int):
     """
     Background task to pre-generate questions into the cache.
@@ -256,7 +210,6 @@ def get_clean_node_title(node):
     Returns a child-friendly, descriptive title for a skill node,
     cleaning up raw CCSS codes and generic fallback 'Math Standard' titles.
     """
-    import re
     title = node.title or ""
     
     # Check if the title is generic (e.g. 'Math Standard...' or starts with ELA domain codes)
@@ -320,10 +273,9 @@ def check_and_advance_subject_frontier(student_id: int, subject: str, db: Sessio
         return
         
     def get_grade_num(grade_str):
-        if grade_str == "HS":
-            return 10
-        elif grade_str == "K":
-            return 0
+        special_grades = {"K": 0, "HS": 10}
+        if grade_str in special_grades:
+            return special_grades[grade_str]
         try:
             return int(grade_str)
         except ValueError:
@@ -488,7 +440,6 @@ def get_gemini_models():
     """
     try:
         from google import genai
-        import os
         api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
         client = genai.Client(api_key=api_key)
         models = client.models.list()
@@ -1721,13 +1672,10 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
             except Exception as e:
                 raise HTTPException(status_code=400, detail=f"MATATAG question session expired or invalid: {e}")
     elif req.skeleton_id.startswith("ai_"):
-        # AI-generated Math fallback — graded by key comparison (like ELA)
-        skeleton = MATH_AI_CACHE.get(req.skeleton_id)
-        if not skeleton:
-            raise HTTPException(status_code=400, detail="Math AI question session expired or invalid.")
+        # AI-generated Math fallback is deprecated
+        raise HTTPException(status_code=400, detail="Math AI question session expired or invalid.")
     else:
         # Reconstruct from seed via unified v2 pipeline
-        import re
         seed_val = None
         # Extract seed from format "{node_id}_{seed}"
         match = re.search(r"_(\d+)$", req.skeleton_id)
@@ -1765,7 +1713,6 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
             elif fmt in ["cloze", "fill_in_blank"]:
                 is_correct = student_answer.lower() == str(correct_answer).lower()
             elif fmt == "ordering":
-                import json
                 try:
                     student_seq = json.loads(student_answer) if isinstance(student_answer, str) else student_answer
                     correct_seq = correct_answer
@@ -1779,7 +1726,6 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                 correct_bool = str(correct_answer).lower() in ("true", "yes", "t", "1")
                 is_correct = student_bool == correct_bool
             elif fmt == "error_detect":
-                import json
                 try:
                     student_parsed = json.loads(student_answer) if isinstance(student_answer, str) else student_answer
                 except:
@@ -1807,7 +1753,6 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                 visual_params = skeleton.get("visual_params", {})
                 
                 if question_mode == "ordering":
-                    import json
                     try:
                         student_order = json.loads(req.selected_answer)
                     except:
@@ -1825,7 +1770,6 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                     except:
                         is_correct = False
                 elif question_mode in ["plotter_bar", "read_bar"]:
-                    import json
                     try:
                         student_answer = json.loads(req.selected_answer) if isinstance(req.selected_answer, str) else req.selected_answer
                     except:
@@ -1833,7 +1777,6 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                     correct_answer = visual_params.get("correct_answer")
                     is_correct = student_answer == correct_answer
                 elif question_mode == "currency_picker":
-                    import json
                     try:
                         student_answer = json.loads(req.selected_answer) if isinstance(req.selected_answer, str) else req.selected_answer
                         target_amount = visual_params.get("target_amount", 0)
@@ -1842,7 +1785,6 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                     except:
                         is_correct = False
                 elif question_mode == "clock_set":
-                    import json
                     try:
                         student_answer = json.loads(req.selected_answer) if isinstance(req.selected_answer, str) else req.selected_answer
                         correct_time = visual_params.get("correct_time", {})
@@ -2039,17 +1981,12 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
         else:
             explanation_text = f"The correct answer to '{stem}' is {correct_ans}."
     else:
-        # Check cache first for custom narrative explanation (Finding 3.2)
-        narrated_data = MATH_NARRATED_CACHE.get(req.skeleton_id)
-        if narrated_data and "explanation" in narrated_data:
-            explanation_text = narrated_data["explanation"]
+        math_expr = skeleton.get('math_expression') or skeleton.get('stem_template') or 'the expression'
+        correct_ans = skeleton.get('correct_answer', '')
+        if student.language_preference == "tl":
+            explanation_text = f"Ang math expression na {math_expr} ay nagreresulta sa {correct_ans}."
         else:
-            math_expr = skeleton.get('math_expression') or skeleton.get('stem_template') or 'the expression'
-            correct_ans = skeleton.get('correct_answer', '')
-            if student.language_preference == "tl":
-                explanation_text = f"Ang math expression na {math_expr} ay nagreresulta sa {correct_ans}."
-            else:
-                explanation_text = f"The math expression {math_expr} simplifies to {correct_ans}."
+            explanation_text = f"The math expression {math_expr} simplifies to {correct_ans}."
     
     return schemas.AnswerSubmitResponse(
         is_correct=is_correct,
@@ -2497,7 +2434,6 @@ def get_matatag_lab_config(node_id: str):
       ]
     }
     """
-    import math
     from backend.app.practice_gen.compatibility import (
         COMPATIBILITY,
         VARIANTS_BY_DNA,
@@ -2553,7 +2489,6 @@ def get_matatag_lab_config(node_id: str):
                 scalar = i / (divisions - 1) if divisions > 1 else 0.0
                 
                 if scale_type == "logarithmic":
-                    import math
                     # Use a shifted log scale to handle 0
                     shift = 1 if min_val == 0 else 0
                     log_min = math.log10(min_val + shift)
@@ -3599,6 +3534,3 @@ def get_intro_status(node_key: str, student_id: int, db: Session = Depends(get_d
         return {"viewed": True, "viewed_at": record.viewed_at.isoformat()}
     return {"viewed": False, "viewed_at": None}
 
-# Removed lazy_startup_middleware to prevent first-request timeout.
-# Database tables and migrations have already been applied previously.
-# Fri Jun 19 06:17:36 PST 2026
