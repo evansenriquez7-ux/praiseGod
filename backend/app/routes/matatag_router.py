@@ -729,6 +729,7 @@ def matatag_lab_generate(
     if not info:
         raise HTTPException(status_code=404, detail=f"Node '{node_id}' not found.")
     grade = info.get("grade", 1)
+    competency = info.get("competency", "")
 
     # Compute effective difficulty from axis values
     dnas = _pg_registry.get_node_dnas(node_id)
@@ -1012,7 +1013,7 @@ class LabV2GenerateRequest(PydanticBaseModel):
     node_id: str
     formatter: str = "mcq"
     difficulty_profile: Optional[Dict[str, Any]] = None  # {axis: level_or_value}
-    variant_values: Optional[Dict[str, str]] = None      # {variant: value}
+    variant_values: Optional[Dict[str, Any]] = None      # {variant: value}
     interest_theme: Optional[str] = None                 # Interest ID for word problem personalization
     seed: Optional[int] = None
 
@@ -1023,7 +1024,7 @@ class LabV2SubmitRequest(PydanticBaseModel):
 
 class LabV2ConfigSaveRequest(PydanticBaseModel):
     allowed_difficulties: Optional[Dict[str, List[Any]]] = None
-    allowed_contexts: Optional[Dict[str, List[str]]] = None
+    allowed_contexts: Optional[Dict[str, List[Any]]] = None
     allowed_formatters: Optional[List[str]] = None
 
 
