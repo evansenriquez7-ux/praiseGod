@@ -15,7 +15,7 @@ const _isFirebase = _host.endsWith('web.app') || _host.endsWith('firebaseapp.com
 
 // If accessed via LAN IP, use http on port 8000. If tunnel, use https. Otherwise fallback to https on the same host.
 let DEFAULT_API_BASE = `https://${_host}/api`;
-if (_isLan) {
+if (_isLan || _host === 'localhost' || _host === '127.0.0.1') {
   DEFAULT_API_BASE = `http://${_host}:8000/api`;
 }
 
