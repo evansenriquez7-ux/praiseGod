@@ -134,7 +134,7 @@ def _with_zero_in_middle(number: int, rng: random.Random) -> int:
 
 def generate_params(
     grade: int,
-    difficulty_profile: Optional[Dict[str, str]],
+    difficulty_profile: Optional[Dict[str, Any]],
     seed: int,
 ) -> Dict[str, Any]:
     """

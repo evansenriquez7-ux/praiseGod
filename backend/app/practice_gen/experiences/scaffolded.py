@@ -57,7 +57,7 @@ def build_scaffold_sequence(
     dna: DNA,
     grade: int,
     axis_name: Optional[str],
-) -> List[Dict[str, str]]:
+) -> List[Dict[str, Any]]:
     """
     Build an ordered list of difficulty profiles for a scaffold sequence.
 

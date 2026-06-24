@@ -102,7 +102,7 @@ def _build_expression_str(operands: List[int], operators: List[str]) -> str:
 
 def generate_params(
     grade: int,
-    difficulty_profile: Optional[Dict[str, str]],
+    difficulty_profile: Optional[Dict[str, Any]],
     seed: int,
 ) -> Dict[str, Any]:
     """

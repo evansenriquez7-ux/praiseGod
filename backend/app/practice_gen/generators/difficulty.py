@@ -109,7 +109,7 @@ def extract_numerical_limits(text: str) -> List[int]:
 # ---------------------------------------------------------------------------
 
 def normalize_difficulty(
-    difficulty_profile: Dict[str, str],
+    difficulty_profile: Dict[str, Any],
     dna: DNA,
 ) -> float:
     """
@@ -213,7 +213,7 @@ def get_dimension_ranges(
 # ---------------------------------------------------------------------------
 
 def _make_predicates(
-    difficulty_profile: Dict[str, str],
+    difficulty_profile: Dict[str, Any],
 ) -> List:
     """
     Build a list of constraint predicate callables for a difficulty_profile.
@@ -325,7 +325,7 @@ def _sample_params(
 def sample_for_difficulty(
     dna: DNA,
     grade: int,
-    difficulty_profile: Optional[Dict[str, str]],
+    difficulty_profile: Optional[Dict[str, Any]],
     rng: random.Random,
     max_tries: int = 200,
 ) -> Dict[str, Any]:
@@ -380,7 +380,7 @@ def sample_for_difficulty(
 # enumerate_profiles
 # ---------------------------------------------------------------------------
 
-def enumerate_profiles(dna: DNA) -> List[Dict[str, str]]:
+def enumerate_profiles(dna: DNA) -> List[Dict[str, Any]]:
     """
     Return every combination of difficulty axis levels for a DNA.
 

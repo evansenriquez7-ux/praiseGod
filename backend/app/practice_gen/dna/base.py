@@ -368,8 +368,8 @@ class QuestionContext(BaseModel):
     spine_id: Optional[str]         # Which story spine was used
 
     # ── Difficulty ────────────────────────────────────────────────────────────
-    difficulty_profile: Optional[Dict[str, str]]  # {"regrouping": "ones", ...}
-    difficulty_axes_served: Dict[str, str]         # Actual axes produced (logged to student model)
+    difficulty_profile: Optional[Dict[str, Any]]  # {"regrouping": "ones", ...}
+    difficulty_axes_served: Dict[str, Any]         # Actual axes produced (logged to student model)
 
     # ── DNA reference ─────────────────────────────────────────────────────────
     dna_concept: str                # "addition"
@@ -422,8 +422,8 @@ class FormattedProblem(BaseModel):
     answer_collection: Optional[str]    # "mcq" | "fill_in_blank" | "drag" | "numeric_input"
 
     # ── Difficulty ────────────────────────────────────────────────────────────
-    difficulty_profile: Dict[str, str]
-    difficulty_axes_served: Dict[str, str]
+    difficulty_profile: Dict[str, Any]
+    difficulty_axes_served: Dict[str, Any]
 
     # ── Personalization ───────────────────────────────────────────────────────
     experience: str                 # "standard"|"hint_gated"|"mastery_drill"|"scaffolded"

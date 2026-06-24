@@ -94,7 +94,7 @@ def _inverse_op(op: str) -> str:
 
 def generate_params(
     grade: int,
-    difficulty_profile: Optional[Dict[str, str]],
+    difficulty_profile: Optional[Dict[str, Any]],
     seed: int,
 ) -> Dict[str, Any]:
     """

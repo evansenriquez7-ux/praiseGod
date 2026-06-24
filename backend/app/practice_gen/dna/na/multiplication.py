@@ -117,7 +117,7 @@ def _satisfies_number_type(a: int, level: str) -> bool:
 
 def generate_params(
     grade: int,
-    difficulty_profile: Optional[Dict[str, str]],
+    difficulty_profile: Optional[Dict[str, Any]],
     seed: int,
 ) -> Dict[str, Any]:
     """

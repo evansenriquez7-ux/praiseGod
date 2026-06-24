@@ -80,7 +80,7 @@ def _make_arithmetic_sequence(first: int, step: int, length: int, increasing: bo
 
 def generate_params(
     grade: int,
-    difficulty_profile: Optional[Dict[str, str]],
+    difficulty_profile: Optional[Dict[str, Any]],
     seed: int,
 ) -> Dict[str, Any]:
     """

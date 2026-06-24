@@ -1178,7 +1178,7 @@ def matatag_lab_v2_submit(req: LabV2SubmitRequest):
     trap_triggered = None
 
     # Normalize student answer
-    student_answer = req.student_answer.strip()
+    student_answer = req.student_answer
 
     if fmt == "mcq" or answer_collection == "mcq":
         # MCQ: compare selected key OR value to correct answer
@@ -1193,16 +1193,16 @@ def matatag_lab_v2_submit(req: LabV2SubmitRequest):
         # Accept either:
         # 1. The key (A/B/C/D)
         # 2. The value itself
-        if correct_key and student_answer.upper() == correct_key.upper():
+        if correct_key and str(student_answer).strip().upper() == str(correct_key).upper():
             is_correct = True
-        elif str(student_answer) == str(correct_answer):
+        elif str(student_answer).strip() == str(correct_answer):
             is_correct = True
         else:
             # Check if student submitted the value directly
             for opt in mcq_options:
                 if opt.get("is_correct"):
                     correct_value = opt.get("value")
-                    if str(student_answer) == str(correct_value):
+                    if str(student_answer).strip() == str(correct_value):
                         is_correct = True
                     break
 
@@ -1211,22 +1211,22 @@ def matatag_lab_v2_submit(req: LabV2SubmitRequest):
             for opt in mcq_options:
                 opt_key = opt.get("key", "").upper()
                 opt_val = str(opt.get("value", ""))
-                if opt_key == student_answer.upper() or opt_val == str(student_answer):
+                if opt_key == str(student_answer).strip().upper() or opt_val == str(student_answer).strip():
                     trap_triggered = opt.get("trap")
                     break
 
     elif fmt == "numeric_input":
         # Numeric: compare numeric values
         try:
-            student_val = float(student_answer.replace(",", "").replace("₱", ""))
+            student_val = float(str(student_answer).strip().replace(",", "").replace("₱", ""))
             correct_val = float(str(correct_answer).replace(",", "").replace("₱", ""))
             is_correct = abs(student_val - correct_val) < 0.001
         except (ValueError, TypeError):
-            is_correct = str(student_answer) == str(correct_answer)
+            is_correct = str(student_answer).strip() == str(correct_answer)
 
     elif fmt == "cloze" or fmt == "fill_in_blank":
         # Cloze: compare text (case-insensitive)
-        is_correct = student_answer.lower() == str(correct_answer).lower()
+        is_correct = str(student_answer).strip().lower() == str(correct_answer).lower()
 
     elif fmt == "ordering":
         # Ordering: compare sequence
@@ -1241,11 +1241,11 @@ def matatag_lab_v2_submit(req: LabV2SubmitRequest):
                 correct_seq = json.loads(correct_seq)
             is_correct = student_seq == correct_seq
         except (json.JSONDecodeError, ValueError):
-            is_correct = str(student_answer) == str(correct_answer)
+            is_correct = str(student_answer).strip() == str(correct_answer)
 
     elif fmt == "true_false":
         # True/False: compare boolean-like values
-        student_bool = student_answer.lower() in ("true", "yes", "t", "1")
+        student_bool = str(student_answer).strip().lower() in ("true", "yes", "t", "1")
         correct_bool = str(correct_answer).lower() in ("true", "yes", "t", "1")
         is_correct = student_bool == correct_bool
 

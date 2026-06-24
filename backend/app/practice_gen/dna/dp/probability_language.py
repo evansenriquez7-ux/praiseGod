@@ -270,7 +270,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
 
 def generate_params(
     grade: int,
-    difficulty_profile: Optional[Dict[str, str]],
+    difficulty_profile: Optional[Dict[str, Any]],
     seed: int,
 ) -> Dict[str, Any]:
     """Sample one scenario from the static pool filtered by difficulty profile."""

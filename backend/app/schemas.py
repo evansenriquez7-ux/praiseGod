@@ -118,15 +118,15 @@ class AnswerSubmitRequest(BaseModel):
     skill_id: str
     skeleton_id: str
     stem: str
-    correct_answer: str
-    selected_answer: str
+    correct_answer: Any
+    selected_answer: Any
     response_time_ms: int
     telemetry_flagged: bool = False
 
 class AnswerSubmitResponse(BaseModel):
     is_correct: bool
-    correct_answer: str
-    selected_answer: str
+    correct_answer: Any
+    selected_answer: Any
     explanation: str # Thematic explanation of correct answer
     trap_selected: Optional[str] = None # Name of trap if triggered
     new_student_elo: float
@@ -138,8 +138,8 @@ class QuestionFlagRequest(BaseModel):
     skill_id: str
     skeleton_id: str
     stem: str
-    correct_answer: Optional[str] = None
-    selected_answer: Optional[str] = None
+    correct_answer: Any = None
+    selected_answer: Any = None
     reason: str
     comment: Optional[str] = None
 
@@ -155,7 +155,7 @@ class SocraticChatRequest(BaseModel):
     history: List[SocraticChatMessage]
     # Live question context — always preferred over stale DB lookup
     question_text: Optional[str] = None   # exact stem the student sees
-    student_answer: Optional[str] = None  # what the student typed/selected
+    student_answer: Any = None  # what the student typed/selected
     is_intro: Optional[bool] = False      # True when tutor is in intro-viewer mode
 
 class SocraticChatResponse(BaseModel):

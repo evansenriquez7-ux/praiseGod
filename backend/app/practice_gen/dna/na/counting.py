@@ -122,7 +122,7 @@ def _select_skip(grade: int, interval_level: str, pool: List[int], rng: random.R
 
 def generate_params(
     grade: int,
-    difficulty_profile: Optional[Dict[str, str]],
+    difficulty_profile: Optional[Dict[str, Any]],
     seed: int,
 ) -> Dict[str, Any]:
     """

@@ -63,7 +63,7 @@ class PracticeOrchestrator:
         node_id: str,
         grade: int,
         count: int = 5,
-        difficulty_profile: Optional[Dict[str, str]] = None,
+        difficulty_profile: Optional[Dict[str, Any]] = None,
         interest_theme: Optional[str] = None,
         experience: str = "standard",
     ) -> List[FormattedProblem]:

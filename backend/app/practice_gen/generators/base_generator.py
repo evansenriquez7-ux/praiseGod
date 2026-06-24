@@ -117,7 +117,7 @@ def generate_context(
     node_id: str,
     grade: int,
     seed: int,
-    difficulty_profile: Optional[Dict[str, str]] = None,
+    difficulty_profile: Optional[Dict[str, Any]] = None,
     interest_theme: Optional[str] = None,
 ) -> QuestionContext:
     """
@@ -590,7 +590,7 @@ def _build_symbolic_question(
     return f"What is the answer? ({concept}: {a}, {b} → {result})"
 
 
-def _detect_axes_served(dna: DNA, values: Dict[str, Any]) -> Dict[str, str]:
+def _detect_axes_served(dna: DNA, values: Dict[str, Any]) -> Dict[str, Any]:
     """
     Back-infer which difficulty axis levels were actually produced.
 
@@ -610,7 +610,7 @@ def _detect_axes_served(dna: DNA, values: Dict[str, Any]) -> Dict[str, str]:
         If values has a=20, b=30 → {"number_type": "round"}
     """
     axes = dna.difficulty_axes
-    served: Dict[str, str] = {}
+    served: Dict[str, Any] = {}
 
     a = values.get("a", 0)
     b = values.get("b", 0)

@@ -851,25 +851,25 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
     # Grading
     if is_ela or req.skeleton_id.startswith("ai_"):
         # Key comparison for ELA and AI-generated Math
-        is_correct = (req.selected_answer.upper() == skeleton.get("correct_key", "A").upper())
+        is_correct = (str(req.selected_answer).upper() == skeleton.get("correct_key", "A").upper())
     elif is_matatag:
         # MATATAG — check format type
         fmt = skeleton.get("format", "mcq")
         if fmt == "mcq":
-            is_correct = (req.selected_answer.upper() == skeleton.get("correct_key", "A").upper())
+            is_correct = (str(req.selected_answer).upper() == skeleton.get("correct_key", "A").upper())
         elif fmt in ["cloze", "numeric_input", "ordering", "true_false", "error_detect", "fill_in_blank"]:
-            student_answer = req.selected_answer.strip()
+            student_answer = req.selected_answer
             correct_answer = skeleton.get("correct_answer")
             
             if fmt == "numeric_input":
                 try:
-                    student_val = float(student_answer.replace(",", "").replace("₱", ""))
+                    student_val = float(str(student_answer).strip().replace(",", "").replace("₱", ""))
                     correct_val = float(str(correct_answer).replace(",", "").replace("₱", ""))
                     is_correct = abs(student_val - correct_val) < 0.001
                 except (ValueError, TypeError):
-                    is_correct = str(student_answer) == str(correct_answer)
+                    is_correct = str(student_answer).strip() == str(correct_answer)
             elif fmt in ["cloze", "fill_in_blank"]:
-                is_correct = student_answer.lower() == str(correct_answer).lower()
+                is_correct = str(student_answer).strip().lower() == str(correct_answer).lower()
             elif fmt == "ordering":
                 try:
                     student_seq = json.loads(student_answer) if isinstance(student_answer, str) else student_answer
@@ -878,9 +878,9 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                         correct_seq = json.loads(correct_seq)
                     is_correct = [str(x) for x in student_seq] == [str(x) for x in correct_seq]
                 except:
-                    is_correct = str(student_answer) == str(correct_answer)
+                    is_correct = str(student_answer).strip() == str(correct_answer)
             elif fmt == "true_false":
-                student_bool = student_answer.lower() in ("true", "yes", "t", "1")
+                student_bool = str(student_answer).strip().lower() in ("true", "yes", "t", "1")
                 correct_bool = str(correct_answer).lower() in ("true", "yes", "t", "1")
                 is_correct = student_bool == correct_bool
             elif fmt == "error_detect":
@@ -953,12 +953,12 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                     except:
                         is_correct = False
                 else:
-                    is_correct = (req.selected_answer.upper() == skeleton.get("correct_key", "A").upper())
+                    is_correct = (str(req.selected_answer).upper() == skeleton.get("correct_key", "A").upper())
             else:
-                is_correct = (req.selected_answer.upper() == skeleton.get("correct_key", "A").upper())
+                is_correct = (str(req.selected_answer).upper() == skeleton.get("correct_key", "A").upper())
     else:
         # SymPy Math — VALUE comparison (robust against narration shuffles and worked examples)
-        selected_key = req.selected_answer.upper()
+        selected_key = str(req.selected_answer).upper()
         if selected_key in skeleton["options"]:
             selected_opt = skeleton["options"][selected_key]
             is_correct = validate_math_answer(skeleton["correct_answer"], selected_opt["value"])
@@ -969,7 +969,7 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
     # Identify Trap engineered misconception
     trap_selected = None
     if isinstance(skeleton.get("options"), dict):
-        opt_data = skeleton["options"].get(req.selected_answer.upper())
+        opt_data = skeleton["options"].get(str(req.selected_answer).upper())
         if isinstance(opt_data, dict):
             trap_selected = opt_data.get("trap_name")
             if trap_selected == "distractor":
