@@ -155,12 +155,13 @@ from backend.app.services.scoring import update_elo
 from backend.app.routes import parent
 app.include_router(parent.router)
 
-from backend.app.routes import matatag_router, practice_router, telemetry_router, socratic_router, admin_router
+from backend.app.routes import matatag_router, practice_router, telemetry_router, socratic_router, admin_router, student
 app.include_router(matatag_router.router)
 app.include_router(practice_router.router)
 app.include_router(telemetry_router.router)
 app.include_router(socratic_router.router)
 app.include_router(admin_router.router)
+app.include_router(student.router)
 
 
 # --- PARENT ENDPOINTS ---

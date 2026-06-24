@@ -1,5 +1,5 @@
 import React from 'react';
-import { Play, BookOpen, Shield, RefreshCw, Zap, Maximize2, Minimize2, Check, ExternalLink, ChevronRight, Share2, Upload, Terminal, BookMarked, User, Cpu, Award } from 'lucide-react';
+import { Play, BookOpen, Shield, RefreshCw, Zap, Maximize2, Minimize2, Check, ExternalLink, ChevronRight, Share2, Upload, Terminal, BookMarked, User, Cpu, Award, MessageSquare, AlertTriangle, CheckCircle, XCircle } from 'lucide-react';
 import ReactFlow, { Background, Controls } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { DndContext, closestCenter } from '@dnd-kit/core';
@@ -7,6 +7,7 @@ import { SortableContext, horizontalListSortingStrategy } from '@dnd-kit/sortabl
 
 import { renderMath } from '../utils/mathUtils';
 import { renderVisualInner } from '../utils/renderUtils';
+import { SortOrderInteractive } from '../components/VisualSkeletons';
 
 export default function PracticeView(props) {
   const {
@@ -18,12 +19,1123 @@ export default function PracticeView(props) {
     selectedStudent, socraticAbortControllerRef, API_BASE,
     renderMapOverlay,
     handleGeneratePractice, showSolution, isSolutionVisible, 
-    handleNodeClick, handleNextQuestion, handleParentLogin
+    handleNodeClick, handleNextQuestion, handleParentLogin,
+    setSelectedStudent, setSocraticActive, renderIntroViewer, setShowFlagModal,
+    studentInterestInput, setStudentInterestInput, interestSaveStatus, setInterestSaveStatus, handleSaveInterests, setSelectedSubject, fetchMatatagTracks, fetchMatatagNodes, matatagNodes, loadingMathTracks, mathTracks, setSelectedSubdomain, setQuestionQueue, fetchNextQuestion, selectedSubject, loadingVerbalTracks, verbalTracks, loadingMatatagTracks, selectedRoadmapNode, setSelectedRoadmapNode, fetchIntroForStudent, writingCoachActive, introContent, handleLogout, loadingQuestion, aiBackend, opencodeModel, handleSkipPlacement, tabSwitchCount, idleSeconds, guessCount, answerResult, handleOptionClick, chatEndRef, handleSendMessage, chatInput, setChatInput, selectedSubdomain
   } = props;
 
   return (
     <>
-      {'          practiceViewType === \'subject_selection\' ? (\n            <div style={{ maxWidth: \'1000px\', margin: \'0 auto\', padding: \'40px 20px\' }}>\n              {/* Header block */}\n              <div style={{ textAlign: \'center\', marginBottom: \'50px\' }}>\n                <h1 style={{ fontSize: \'38px\', fontWeight: 800, color: \'#f8fafc\', marginBottom: \'12px\', background: \'linear-gradient(135deg, #fff 0%, #cbd5e1 100%)\', WebkitBackgroundClip: \'text\', WebkitTextFillColor: \'transparent\' }}>\n                  Choose Your Learning Track\n                </h1>\n                <p style={{ fontSize: \'18px\', color: \'hsl(var(--text-muted))\', maxWidth: \'600px\', margin: \'0 auto\' }}>\n                  Hello, <strong style={{ color: \'#a78bfa\' }}>{selectedStudent.name}</strong>! Which domain would you like to explore and master today?\n                </p>\n                <div style={{ marginTop: \'20px\', display: \'flex\', gap: \'15px\', justifyContent: \'center\' }}>\n                  <span className="badge-status active" style={{ fontSize: \'14px\', padding: \'6px 16px\' }}>Grade Level: {selectedStudent.grade}</span>\n                  <span className="badge-status mastered" style={{ fontSize: \'14px\', padding: \'6px 16px\', background: \'rgba(139, 92, 246, 0.15)\', color: \'#c084fc\' }}>Active ELO: {selectedStudent.elo_rating}</span>\n                </div>\n              </div>\n\n              {/* Student interests panel */}\n              <div style={{ maxWidth: \'600px\', margin: \'0 auto 40px\', background: \'rgba(255,255,255,0.04)\', border: \'1px solid rgba(255,255,255,0.08)\', borderRadius: \'16px\', padding: \'18px 20px\' }}>\n                <div style={{ fontSize: \'12px\', fontWeight: 700, color: \'hsl(var(--text-muted))\', textTransform: \'uppercase\', letterSpacing: \'0.07em\', marginBottom: \'12px\' }}>\n                  ✏️ Your Interests\n                </div>\n\n                {/* Input row */}\n                <div style={{ display: \'flex\', gap: \'10px\', alignItems: \'center\', marginBottom: \'14px\' }}>\n                  <input\n                    type="text"\n                    value={studentInterestInput}\n                    onChange={e => { setStudentInterestInput(e.target.value); setInterestSaveStatus(\'\'); }}\n                    onKeyDown={e => e.key === \'Enter\' && handleSaveInterests()}\n                    placeholder="e.g. Minecraft, dinosaurs, soccer..."\n                    style={{ flex: 1, background: \'rgba(255,255,255,0.06)\', border: \'1px solid rgba(255,255,255,0.1)\', borderRadius: \'10px\', padding: \'8px 12px\', color: \'#f1f5f9\', fontSize: \'14px\', outline: \'none\' }}\n                  />\n                  <button\n                    onClick={handleSaveInterests}\n                    disabled={interestSaveStatus === \'saving\'}\n                    style={{\n                      flexShrink: 0, padding: \'8px 18px\', borderRadius: \'10px\', border: \'none\', cursor: \'pointer\', fontSize: \'13px\', fontWeight: 700,\n                      background: interestSaveStatus === \'saved\' ? \'rgba(16,185,129,0.25)\' : interestSaveStatus === \'error\' ? \'rgba(239,68,68,0.2)\' : \'rgba(139,92,246,0.3)\',\n                      color: interestSaveStatus === \'saved\' ? \'#34d399\' : interestSaveStatus === \'error\' ? \'#f87171\' : \'#c084fc\',\n                      transition: \'all 0.2s\'\n                    }}\n                  >\n                    {interestSaveStatus === \'saved\' ? \'✓ Saved\' : interestSaveStatus === \'saving\' ? \'...\' : interestSaveStatus === \'error\' ? \'✗ Error\' : \'Save\'}\n                  </button>\n                </div>\n\n                {/* Saved student interests as tags */}\n                {selectedStudent.student_interest_tags && selectedStudent.student_interest_tags.trim() ? (\n                  <div style={{ marginBottom: \'12px\' }}>\n                    <div style={{ fontSize: \'11px\', color: \'hsl(var(--text-muted))\', marginBottom: \'6px\' }}>Your saved topics:</div>\n                    <div style={{ display: \'flex\', flexWrap: \'wrap\', gap: \'6px\' }}>\n                      {selectedStudent.student_interest_tags.split(\',\').map(t => t.trim()).filter(Boolean).map((tag, i) => (\n                        <span key={i} style={{ padding: \'3px 10px\', borderRadius: \'20px\', background: \'rgba(139,92,246,0.18)\', color: \'#c084fc\', fontSize: \'12px\', fontWeight: 600, border: \'1px solid rgba(139,92,246,0.25)\' }}>\n                          {tag}\n                        </span>\n                      ))}\n                    </div>\n                  </div>\n                ) : (\n                  <div style={{ fontSize: \'12px\', color: \'hsl(var(--text-muted))\', marginBottom: \'12px\', fontStyle: \'italic\' }}>\n                    No extra interests saved yet — type above and press Save!\n                  </div>\n                )}\n\n                {/* Parent-set interests (read-only) */}\n                {selectedStudent.interest_tags && selectedStudent.interest_tags.trim() && (\n                  <div style={{ borderTop: \'1px solid rgba(255,255,255,0.06)\', paddingTop: \'10px\' }}>\n                    <div style={{ fontSize: \'11px\', color: \'hsl(var(--text-muted))\', marginBottom: \'6px\' }}>Also included (set by parent):</div>\n                    <div style={{ display: \'flex\', flexWrap: \'wrap\', gap: \'6px\' }}>\n                      {selectedStudent.interest_tags.split(\',\').map(t => t.trim()).filter(Boolean).map((tag, i) => (\n                        <span key={i} style={{ padding: \'3px 10px\', borderRadius: \'20px\', background: \'rgba(255,255,255,0.06)\', color: \'hsl(var(--text-muted))\', fontSize: \'12px\', border: \'1px solid rgba(255,255,255,0.08)\' }}>\n                          {tag}\n                        </span>\n                      ))}\n                    </div>\n                  </div>\n                )}\n              </div>\n\n              {/* Subject Track Grid */}\n              <div style={{ display: \'grid\', gridTemplateColumns: \'repeat(auto-fit, minmax(220px, 1fr))\', gap: \'30px\', marginBottom: \'50px\' }}>\n                \n                {/* 3. MATATAG (Philippine K-10 Math) CARD */}\n                <div \n                  className="glass-card hover-glow"\n                  onClick={() => {\n                    setSelectedSubject(\'Matatag\');\n                    setPracticeViewType(\'matatag_track_selection\');\n                    fetchMatatagTracks(selectedStudent.id);\n                    fetchMatatagNodes();\n                  }}\n                  style={{ cursor: \'pointer\', display: \'flex\', flexDirection: \'column\', gap: \'20px\', padding: \'30px\', transition: \'all 0.3s ease\', border: \'1px solid rgba(245, 158, 11, 0.2)\' }}\n                >\n                  <div style={{ width: \'60px\', height: \'60px\', borderRadius: \'15px\', background: \'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)\', display: \'flex\', alignItems: \'center\', justifyContent: \'center\', fontSize: \'30px\', boxShadow: \'0 8px 20px rgba(245, 158, 11, 0.3)\' }}>\n                    🇵🇭\n                  </div>\n                  <div>\n                    <h3 style={{ fontSize: \'22px\', fontWeight: 700, color: \'#f8fafc\', marginBottom: \'8px\' }}>MATATAG Math</h3>\n                    <p style={{ color: \'hsl(var(--text-muted))\', fontSize: \'14px\', lineHeight: \'1.5\' }}>\n                      Philippine K-10 curriculum with Number & Algebra, Measurement & Geometry, and Data & Probability.\n                    </p>\n                  </div>\n                  <div style={{ marginTop: \'auto\', display: \'flex\', alignItems: \'center\', gap: \'6px\', color: \'#fbbf24\', fontWeight: 600, fontSize: \'15px\' }}>\n                    <span>Launch Track 🚀</span>\n                  </div>\n                </div>\n\n              </div>\n\n              {/* Utility actions */}\n              <div style={{ textAlign: \'center\' }}>\n                <button \n                  className="btn-secondary" \n                  onClick={() => {\n                    setSelectedStudent(null);\n                    setCurrentView(\'login\');\n                  }}\n                  style={{ padding: \'12px 30px\', fontSize: \'16px\', borderRadius: \'15px\' }}\n                >\n                  🚪 Exit Profile & Logout\n                </button>\n              </div>\n            </div>\n          ) : practiceViewType === \'math_track_selection\' ? (\n            <div style={{ maxWidth: \'1000px\', margin: \'0 auto\', padding: \'40px 20px\' }}>\n              {/* Header block */}\n              <div style={{ textAlign: \'center\', marginBottom: \'40px\' }}>\n                <h1 style={{ fontSize: \'38px\', fontWeight: 800, color: \'#f8fafc\', marginBottom: \'12px\', background: \'linear-gradient(135deg, #fff 0%, #cbd5e1 100%)\', WebkitBackgroundClip: \'text\', WebkitTextFillColor: \'transparent\' }}>\n                  Select Math Study Domain\n                </h1>\n                <p style={{ fontSize: \'18px\', color: \'hsl(var(--text-muted))\', maxWidth: \'600px\', margin: \'0 auto\' }}>\n                  Hello, <strong style={{ color: \'#a78bfa\' }}>{selectedStudent.name}</strong>! Which of your active math pathways would you like to master today?\n                </p>\n              </div>\n\n              {loadingMathTracks ? (\n                <div style={{ display: \'flex\', flexDirection: \'column\', alignItems: \'center\', justifyContent: \'center\', padding: \'100px\', gap: \'20px\' }}>\n                  <RefreshCw className="w-12 h-12 animate-spin" style={{ animation: \'spin 2s linear infinite\', color: \'#8b5cf6\' }} />\n                  <p style={{ color: \'hsl(var(--text-muted))\' }}>Discovering parallel learning tracks for Grade {selectedStudent.grade === 0 ? \'Kindergarten\' : selectedStudent.grade === 13 ? \'13\' : selectedStudent.grade}...</p>\n                </div>\n              ) : (\n                <>\n                  <div style={{ display: \'grid\', gridTemplateColumns: \'repeat(auto-fit, minmax(280px, 1fr))\', gap: \'25px\', marginBottom: \'40px\' }}>\n                    {mathTracks.map(track => {\n                      const totalNodes = track.nodes.length;\n                      const masteredNodes = track.nodes.filter(n => n.status === \'mastered\').length;\n                      const activeNodes = track.nodes.filter(n => n.status === \'active\').length;\n                      const completionPct = totalNodes > 0 ? Math.round((masteredNodes / totalNodes) * 100) : 0;\n                      \n                      return (\n                        <div \n                          key={track.key}\n                          className="glass-card hover-glow"\n                          onClick={() => {\n                            setSelectedSubdomain(track.key);\n                            setPracticeViewType(\'workspace\');\n                            setQuestionQueue([]); // Clear queue when switching subdomains\n                            fetchNextQuestion(selectedStudent.id, selectedSubject, track.key, true);\n                          }}\n                          style={{ cursor: \'pointer\', display: \'flex\', flexDirection: \'column\', gap: \'15px\', padding: \'25px\', transition: \'all 0.3s ease\', border: `1px solid ${track.color}44` }}\n                        >\n                          <div style={{ display: \'flex\', justifyContent: \'space-between\', alignItems: \'center\' }}>\n                            <div style={{ width: \'45px\', height: \'45px\', borderRadius: \'10px\', background: `linear-gradient(135deg, ${track.color} 0%, #1e1b4b 100%)`, display: \'flex\', alignItems: \'center\', justifyContent: \'center\', fontSize: \'20px\' }}>\n                              🧮\n                            </div>\n                            <span className="badge-status active" style={{ background: `${track.color}22`, color: track.color, border: `1px solid ${track.color}44` }}>\n                              {track.key}\n                            </span>\n                          </div>\n                          <div>\n                            <h3 style={{ fontSize: \'18px\', fontWeight: 700, color: \'#f8fafc\', marginBottom: \'6px\' }}>\n                              {track.title.replace(\'🧮 Math: \', \'\')}\n                            </h3>\n                            <p style={{ color: \'hsl(var(--text-muted))\', fontSize: \'13px\', lineHeight: \'1.4\' }}>\n                              Track contains {totalNodes} dynamic standards tailored for your level.\n                            </p>\n                          </div>\n                          \n                          {/* Mini progress bar */}\n                          <div style={{ marginTop: \'auto\', paddingTop: \'10px\' }}>\n                            <div style={{ display: \'flex\', justifyContent: \'space-between\', fontSize: \'12px\', color: \'hsl(var(--text-muted))\', marginBottom: \'4px\' }}>\n                              <span>Mastery progress</span>\n                              <strong>{completionPct}%</strong>\n                            </div>\n                            <div style={{ height: \'6px\', background: \'rgba(255,255,255,0.05)\', borderRadius: \'3px\', overflow: \'hidden\' }}>\n                              <div style={{ height: \'100%\', width: `${completionPct}%`, background: track.color, transition: \'width 0.5s ease\' }} />\n                            </div>\n                            <div style={{ display: \'flex\', gap: \'10px\', marginTop: \'8px\', fontSize: \'11px\' }}>\n                              <span style={{ color: \'#10b981\' }}>● {masteredNodes} Mastered</span>\n                              <span style={{ color: \'#60a5fa\' }}>● {activeNodes} Active</span>\n                            </div>\n                          </div>\n                        </div>\n                      );\n                    })}\n                  </div>\n\n                  <div style={{ textAlign: \'center\' }}>\n                    <button \n                      className="btn-secondary" \n                      onClick={() => {\n                        setPracticeViewType(\'subject_selection\');\n                        setSelectedSubdomain(null);\n                      }}\n                      style={{ padding: \'12px 30px\', fontSize: \'16px\', borderRadius: \'15px\' }}\n                    >\n                      ← Back to Subjects\n                    </button>\n                  </div>\n                </>\n              )}\n            </div>\n          ) : practiceViewType === \'verbal_track_selection\' ? (\n            <div style={{ maxWidth: \'1000px\', margin: \'0 auto\', padding: \'40px 20px\' }}>\n              {/* Header block */}\n              <div style={{ textAlign: \'center\', marginBottom: \'40px\' }}>\n                <h1 style={{ fontSize: \'38px\', fontWeight: 800, color: \'#f8fafc\', marginBottom: \'12px\', background: \'linear-gradient(135deg, #fff 0%, #cbd5e1 100%)\', WebkitBackgroundClip: \'text\', WebkitTextFillColor: \'transparent\' }}>\n                  Select Verbal Study Domain\n                </h1>\n                <p style={{ fontSize: \'18px\', color: \'hsl(var(--text-muted))\', maxWidth: \'600px\', margin: \'0 auto\' }}>\n                  Hello, <strong style={{ color: \'#34d399\' }}>{selectedStudent.name}</strong>! Which of your active ELA pathways would you like to master today?\n                </p>\n              </div>\n\n              {loadingVerbalTracks ? (\n                <div style={{ display: \'flex\', flexDirection: \'column\', alignItems: \'center\', justifyContent: \'center\', padding: \'100px\', gap: \'20px\' }}>\n                  <RefreshCw className="w-12 h-12 animate-spin" style={{ animation: \'spin 2s linear infinite\', color: \'#34d399\' }} />\n                  <p style={{ color: \'hsl(var(--text-muted))\' }}>Discovering parallel learning tracks for Grade {selectedStudent.grade === 0 ? \'Kindergarten\' : selectedStudent.grade === 13 ? \'13\' : selectedStudent.grade}...</p>\n                </div>\n              ) : (\n                <>\n                  <div style={{ display: \'grid\', gridTemplateColumns: \'repeat(auto-fit, minmax(280px, 1fr))\', gap: \'25px\', marginBottom: \'40px\' }}>\n                    {verbalTracks.map(track => {\n                      const totalNodes = track.nodes.length;\n                      const masteredNodes = track.nodes.filter(n => n.status === \'mastered\').length;\n                      const activeNodes = track.nodes.filter(n => n.status === \'active\').length;\n                      const completionPct = totalNodes > 0 ? Math.round((masteredNodes / totalNodes) * 100) : 0;\n                      \n                      // Map emoji/icon based on the track key/subject\n                      let emoji = \'📚\';\n                      if (track.key.includes(\'RL\')) emoji = \'📖\';\n                      else if (track.key.includes(\'RI\')) emoji = \'📰\';\n                      else if (track.key.includes(\'RF\')) emoji = \'🧩\';\n                      else if (track.key.includes(\'SL\')) emoji = \'🗣️\';\n                      else if (track.key.includes(\'W\')) emoji = \'✍️\';\n                      else if (track.key.includes(\'L\')) emoji = \'✨\';\n\n                      // Overwrite titles and descriptions with child-friendly, high-precision educational names and distinct definitions\n                      let displayTitle = \'\';\n                      let displayKey = \'\';\n                      let description = \'\';\n                      \n                      if (track.key.includes(\'RL\')) {\n                        displayTitle = \'Reading Stories & Literature\';\n                        displayKey = \'Fiction Analysis\';\n                        description = \'Analyze plot, setting, character perspectives, themes, and metaphors in stories, plays, and poetry.\';\n                      } else if (track.key.includes(\'RI\')) {\n                        displayTitle = \'Reading Articles & Non-Fiction\';\n                        displayKey = \'Non-Fiction Analysis\';\n                        description = \'Evaluate articles, historical documents, scientific texts, structural layouts, and support evidence.\';\n                      } else if (track.key.includes(\'RF\')) {\n                        displayTitle = \'Phonics & Reading Mechanics\';\n                        displayKey = \'Phonics & Fluency\';\n                        description = \'Master alphabet blends, sight-word decoding, syllable divisions, and pronunciation rules.\';\n                      } else if (track.key.includes(\'SL\')) {\n                        displayTitle = \'Listening & Speech Comprehension\';\n                        displayKey = \'Oral Communication\';\n                        description = \'Develop audio comprehension, collaborative conversation, and presentation structure mastery.\';\n                      } else if (track.key.includes(\'W\')) {\n                        displayTitle = \'Creative Writing & Essays\';\n                        displayKey = \'Writing & Essays\';\n                        description = \'Build clear writing habits for thesis arguments, multi-paragraph essays, narrative tales, and research papers.\';\n                      } else if (track.key.includes(\'L\')) {\n                        displayTitle = \'Grammar, Vocab & Conventions\';\n                        displayKey = \'Grammar & Conventions\';\n                        description = \'Master vocabulary contextual clues, spelling guidelines, punctuation, capitalization, and standard grammar rules.\';\n                      } else {\n                        displayTitle = track.title.replace(/.*ELA: /, \'\');\n                        displayKey = track.key.replace(\'ELA_\', \'\');\n                        description = `Targeted academic curriculum covering ${displayTitle} level mastery.`;\n                      }\n\n                      return (\n                        <div \n                          key={track.key}\n                          className="glass-card hover-glow"\n                          onClick={() => {\n                            setSelectedSubject(\'Verbal\');\n                            setSelectedSubdomain(track.key);\n                            setPracticeViewType(\'workspace\');\n                            setQuestionQueue([]); // Clear queue when switching subdomains\n                            fetchNextQuestion(selectedStudent.id, \'Verbal\', null, true);\n                          }}\n                          style={{ cursor: \'pointer\', display: \'flex\', flexDirection: \'column\', gap: \'15px\', padding: \'25px\', transition: \'all 0.3s ease\', border: `1px solid ${track.color}44` }}\n                        >\n                          <div style={{ display: \'flex\', justifyContent: \'space-between\', alignItems: \'center\' }}>\n                            <div style={{ width: \'45px\', height: \'45px\', borderRadius: \'10px\', background: `linear-gradient(135deg, ${track.color} 0%, #1e1b4b 100%)`, display: \'flex\', alignItems: \'center\', justifyContent: \'center\', fontSize: \'20px\' }}>\n                              {emoji}\n                            </div>\n                            <span className="badge-status active" style={{ background: `${track.color}22`, color: track.color, border: `1px solid ${track.color}44`, fontSize: \'11px\' }}>\n                              {displayKey}\n                            </span>\n                          </div>\n                          <div>\n                            <h3 style={{ fontSize: \'18px\', fontWeight: 700, color: \'#f8fafc\', marginBottom: \'6px\' }}>\n                              {displayTitle}\n                            </h3>\n                            <p style={{ color: \'hsl(var(--text-muted))\', fontSize: \'13px\', lineHeight: \'1.4\' }}>\n                              {description}\n                            </p>\n                          </div>\n                          \n                          {/* Mini progress bar */}\n                          <div style={{ marginTop: \'auto\', paddingTop: \'10px\' }}>\n                            <div style={{ display: \'flex\', justifyContent: \'space-between\', fontSize: \'12px\', color: \'hsl(var(--text-muted))\', marginBottom: \'4px\' }}>\n                              <span>Mastery progress</span>\n                              <strong>{completionPct}%</strong>\n                            </div>\n                            <div style={{ height: \'6px\', background: \'rgba(255,255,255,0.05)\', borderRadius: \'3px\', overflow: \'hidden\' }}>\n                              <div style={{ height: \'100%\', width: `${completionPct}%`, background: track.color, transition: \'width 0.5s ease\' }} />\n                            </div>\n                            <div style={{ display: \'flex\', gap: \'10px\', marginTop: \'8px\', fontSize: \'11px\' }}>\n                              <span style={{ color: \'#10b981\' }}>● {masteredNodes} Mastered</span>\n                              <span style={{ color: \'#60a5fa\' }}>● {activeNodes} Active</span>\n                            </div>\n                          </div>\n                        </div>\n                      );\n                    })}\n                  </div>\n\n                  <div style={{ textAlign: \'center\' }}>\n                    <button \n                      className="btn-secondary" \n                      onClick={() => {\n                        setPracticeViewType(\'subject_selection\');\n                        setSelectedSubdomain(null);\n                      }}\n                      style={{ padding: \'12px 30px\', fontSize: \'16px\', borderRadius: \'15px\' }}\n                    >\n                      ← Back to Subjects\n                    </button>\n                  </div>\n                </>\n              )}\n            </div>\n          ) : practiceViewType === \'matatag_track_selection\' ? (\n            <div style={{ maxWidth: \'1000px\', margin: \'0 auto\', padding: \'40px 20px\' }}>\n              {/* Header block */}\n              <div style={{ textAlign: \'center\', marginBottom: \'40px\' }}>\n                <h1 style={{ fontSize: \'38px\', fontWeight: 800, color: \'#f8fafc\', marginBottom: \'12px\', background: \'linear-gradient(135deg, #fff 0%, #cbd5e1 100%)\', WebkitBackgroundClip: \'text\', WebkitTextFillColor: \'transparent\' }}>\n                  Select MATATAG Content Area\n                </h1>\n                <p style={{ fontSize: \'18px\', color: \'hsl(var(--text-muted))\', maxWidth: \'600px\', margin: \'0 auto\' }}>\n                  Hello, <strong style={{ color: \'#fbbf24\' }}>{selectedStudent.name}</strong>! Choose a MATATAG content area to practice.\n                </p>\n              </div>\n\n              {loadingMatatagTracks ? (\n                <div style={{ display: \'flex\', flexDirection: \'column\', alignItems: \'center\', justifyContent: \'center\', padding: \'100px\', gap: \'20px\' }}>\n                  <RefreshCw className="w-12 h-12 animate-spin" style={{ animation: \'spin 2s linear infinite\', color: \'#f59e0b\' }} />\n                  <p style={{ color: \'hsl(var(--text-muted))\' }}>Loading MATATAG content areas for Grade {selectedStudent.grade === 0 ? \'Kindergarten\' : selectedStudent.grade}...</p>\n                </div>\n              ) : (\n                <>\n                  <div style={{ display: \'flex\', flexDirection: \'column\', gap: \'40px\', marginBottom: \'40px\' }}>\n                    {[\n                      { key: \'NA\', title: \'Number and Algebra\', emoji: \'🔢\', color: \'#8b5cf6\' },\n                      { key: \'MG\', title: \'Measurement and Geometry\', emoji: \'📐\', color: \'#f59e0b\' },\n                      { key: \'DP\', title: \'Data and Probability\', emoji: \'📊\', color: \'#10b981\' }\n                    ].map(domain => {\n                      // Filter nodes for this subdomain (show all grades)\n                      const nodesInDomain = matatagNodes.filter(n => n.branch && n.branch.toUpperCase() === domain.key);\n                      if (nodesInDomain.length === 0) return null;\n\n                      return (\n                        <div key={domain.key} className="glass-card" style={{ padding: \'24px\', border: `1px solid ${domain.color}44` }}>\n                          <div style={{ display: \'flex\', alignItems: \'center\', gap: \'12px\', marginBottom: \'20px\' }}>\n                            <div style={{ width: \'40px\', height: \'40px\', borderRadius: \'10px\', background: `linear-gradient(135deg, ${domain.color} 0%, #1e1b4b 100%)`, display: \'flex\', alignItems: \'center\', justifyContent: \'center\', fontSize: \'20px\' }}>\n                              {domain.emoji}\n                            </div>\n                            <h3 style={{ fontSize: \'22px\', fontWeight: 700, color: \'#f8fafc\', margin: 0 }}>{domain.title}</h3>\n                          </div>\n\n                          {/* Horizontal scroll container for the roadmap nodes */}\n                          <div style={{ display: \'flex\', gap: \'16px\', overflowX: \'auto\', paddingBottom: \'16px\', scrollbarWidth: \'thin\' }}>\n                            {nodesInDomain.map(node => (\n                              <div\n                                key={node.node_id}\n                                onClick={() => setSelectedRoadmapNode(node)}\n                                className="hover-glow"\n                                style={{ \n                                  minWidth: \'220px\', \n                                  maxWidth: \'220px\', \n                                  padding: \'16px\', \n                                  background: \'rgba(0,0,0,0.3)\', \n                                  borderRadius: \'12px\', \n                                  cursor: \'pointer\',\n                                  border: `1px solid ${domain.color}33`,\n                                  transition: \'all 0.2s\'\n                                }}\n                              >\n                                <div style={{ fontSize: \'11px\', color: domain.color, fontWeight: 700, marginBottom: \'6px\' }}>\n                                  GRADE {node.grade} • Q{node.quarter}\n                                </div>\n                                <div style={{ fontSize: \'14px\', fontWeight: 600, color: \'#fff\', marginBottom: \'8px\', lineHeight: \'1.3\' }}>\n                                  {node.primary_concept}\n                                </div>\n                                <div style={{ fontSize: \'11px\', color: \'hsl(var(--text-muted))\', display: \'-webkit-box\', WebkitLineClamp: 3, WebkitBoxOrient: \'vertical\', overflow: \'hidden\' }}>\n                                  {node.competency}\n                                </div>\n                              </div>\n                            ))}\n                          </div>\n                        </div>\n                      );\n                    })}\n                  </div>\n\n                  {/* Modal for dual options when a roadmap node is clicked */}\n                  {selectedRoadmapNode && (\n                    <div style={{ position: \'fixed\', top: 0, left: 0, right: 0, bottom: 0, background: \'rgba(0,0,0,0.7)\', zIndex: 9999, display: \'flex\', alignItems: \'center\', justifyContent: \'center\', backdropFilter: \'blur(4px)\' }}>\n                      <div className="glass-card animate-fade-in" style={{ width: \'400px\', padding: \'30px\', textAlign: \'center\', border: \'1px solid rgba(255,255,255,0.1)\' }}>\n                        <div style={{ fontSize: \'30px\', marginBottom: \'16px\' }}>🎯</div>\n                        <h2 style={{ fontSize: \'20px\', color: \'#fff\', marginBottom: \'8px\', fontWeight: 700 }}>{selectedRoadmapNode.primary_concept}</h2>\n                        <p style={{ color: \'hsl(var(--text-muted))\', fontSize: \'13px\', marginBottom: \'24px\', lineHeight: \'1.4\' }}>{selectedRoadmapNode.competency}</p>\n                        <div style={{ display: \'flex\', flexDirection: \'column\', gap: \'12px\' }}>\n                          <button \n                            className="btn-primary"\n                            onClick={() => {\n                                fetchIntroForStudent(selectedRoadmapNode.node_id);\n                                setSelectedRoadmapNode(null);\n                            }}\n                            style={{ padding: \'12px\', background: \'#3b82f6\', border: \'none\', fontSize: \'15px\' }}\n                          >\n                            📖 Read Intro\n                          </button>\n                          <button \n                            className="btn-primary"\n                            onClick={() => {\n                                setSelectedSubject(\'Matatag\');\n                                setSelectedSubdomain(selectedRoadmapNode.node_id);\n                                setPracticeViewType(\'workspace\');\n                                setQuestionQueue([]);\n                                fetchNextQuestion(selectedStudent.id, \'Matatag\', selectedRoadmapNode.node_id, true);\n                                setSelectedRoadmapNode(null);\n                            }}\n                            style={{ padding: \'12px\', background: \'#10b981\', border: \'none\', fontSize: \'15px\' }}\n                          >\n                            ✏️ Start Practice\n                          </button>\n                          <button \n                            className="btn-secondary"\n                            onClick={() => setSelectedRoadmapNode(null)}\n                            style={{ padding: \'12px\', marginTop: \'8px\', fontSize: \'14px\' }}\n                          >\n                            Cancel\n                          </button>\n                        </div>\n                      </div>\n                    </div>\n                  )}\n\n                  <div style={{ textAlign: \'center\' }}>\n                    <button \n                      className="btn-secondary" \n                      onClick={() => {\n                        setPracticeViewType(\'subject_selection\');\n                        setSelectedSubdomain(null);\n                      }}\n                      style={{ padding: \'12px 30px\', fontSize: \'16px\', borderRadius: \'15px\' }}\n                    >\n                      ← Back to Subjects\n                    </button>\n                  </div>\n                </>\n              )}\n            </div>\n          ) : (\n            <div style={{ display: \'grid\', gridTemplateColumns: (socraticActive || writingCoachActive) ? \'1.1fr 0.9fr\' : \'1fr\', gap: \'40px\', transition: \'all 0.4s ease\' }}>\n\n\n            \n            {/* Left side: Problem panel */}\n            <div className="glass-card" style={{ border: practiceViewType === \'intro_viewer\' ? \'none\' : undefined, background: practiceViewType === \'intro_viewer\' ? \'transparent\' : undefined, boxShadow: practiceViewType === \'intro_viewer\' ? \'none\' : undefined, padding: practiceViewType === \'intro_viewer\' ? 0 : undefined }}>\n              {practiceViewType === \'intro_viewer\' ? (\n                <div>\n                  {/* Status header for Intro Viewer */}\n                  <div style={{ display: \'flex\', justifyContent: \'space-between\', alignItems: \'center\', marginBottom: \'25px\', background: \'rgba(255,255,255,0.03)\', padding: \'16px 24px\', borderRadius: \'15px\', border: \'1px solid rgba(255,255,255,0.08)\' }}>\n                    <div style={{ display: \'flex\', gap: \'12px\', alignItems: \'center\', flexWrap: \'wrap\' }}>\n                      <span className="badge-status mastered" style={{ \n                        background: \'rgba(6, 182, 212, 0.15)\',\n                        color: \'#06b6d4\',\n                        border: \'1px solid #0891b2\',\n                        padding: \'8px 16px\',\n                        fontSize: \'14px\',\n                        fontWeight: 700\n                      }}>\n                        📖 Intro Lesson: {selectedSubdomain || (introContent?.node_key) || \'Node Intro\'}\n                      </span>\n\n                      <button \n                        className="btn-secondary" \n                        onClick={() => {\n                          setPracticeViewType(\'subject_selection\');\n                          setSelectedSubdomain(null);\n                        }}\n                        style={{ padding: \'6px 12px\', fontSize: \'13px\', display: \'flex\', alignItems: \'center\', gap: \'6px\', borderRadius: \'10px\', background: \'rgba(59, 130, 246, 0.15)\', color: \'#60a5fa\', border: \'1px solid rgba(59, 130, 246, 0.3)\' }}\n                      >\n                        <span>🎒 Switch Subject / Back</span>\n                      </button>\n                      \n                      {/* Manual Socratic Tutor toggle button */}\n                      <button \n                        className="btn-secondary" \n                        onClick={() => {\n                          setSocraticActive(prev => !prev);\n                          if (chatMessages.length === 0 && !sendingChat) {\n                            setSendingChat(true);\n                            if (socraticAbortControllerRef.current) {\n                              socraticAbortControllerRef.current.abort();\n                            }\n                            socraticAbortControllerRef.current = new AbortController();\n\n                            fetch(`${API_BASE}/socratic/chat`, {\n                              method: \'POST\',\n                              signal: socraticAbortControllerRef.current.signal,\n                              headers: { \'Content-Type\': \'application/json\' },\n                              body: JSON.stringify({\n                                student_id:     selectedStudent.id,\n                                skill_id:       activeQuestion?.skill_id || \'\',\n                                question_text:  activeQuestion?.stem || \'\',\n                                student_answer: \'\',\n                                is_intro:       false,\n                                message: \'\',\n                                history: []\n                              })\n                            })\n                            .then(res => res.json())\n                            .then(chatData => {\n                              if (!socraticAbortControllerRef.current?.signal.aborted) {\n                                setChatMessages([{ role: \'assistant\', content: chatData.reply }]);\n                              }\n                            })\n                            .catch(e => {\n                              if (e.name !== \'AbortError\') console.error(e);\n                            })\n                            .finally(() => {\n                              if (!socraticAbortControllerRef.current?.signal.aborted) {\n                                setSendingChat(false);\n                              }\n                            });\n                          }\n                        }}\n                        style={{ padding: \'6px 12px\', fontSize: \'13px\', display: \'flex\', alignItems: \'center\', gap: \'6px\', borderRadius: \'10px\', background: socraticActive ? \'rgba(139,92,246,0.25)\' : \'rgba(139,92,246,0.1)\', border: `1px solid ${socraticActive ? \'rgba(139,92,246,0.6)\' : \'rgba(139,92,246,0.3)\'}` }}\n                      >\n                        <MessageSquare className="w-4 h-4 text-purple-400" style={{ color: \'#c084fc\' }} />\n                        <span>💡 {socraticActive ? \'Close Tutor\' : \'Ask Tutor\'}</span>\n                      </button>\n\n                      {/* Exit to Home button */}\n                      <button \n                        className="btn-secondary" \n                        onClick={handleLogout}\n                        style={{ padding: \'6px 12px\', fontSize: \'13px\', display: \'flex\', alignItems: \'center\', gap: \'6px\', borderRadius: \'10px\', background: \'rgba(107, 114, 128, 0.15)\', color: \'#9ca3af\', border: \'1px solid rgba(107, 114, 128, 0.3)\' }}\n                      >\n                        <span>🚪 Exit to Home</span>\n                      </button>\n                    </div>\n                  </div>\n                  {renderIntroViewer()}\n                </div>\n              ) : loadingQuestion ? (\n                <div style={{ display: \'flex\', flexDirection: \'column\', alignItems: \'center\', justifyContent: \'center\', padding: \'80px\', gap: \'20px\' }}>\n                  <RefreshCw className="w-12 h-12 animate-spin" style={{ animation: \'spin 2s linear infinite\', color: \'hsl(var(--secondary))\' }} />\n                  <p style={{ color: \'hsl(var(--text-muted))\' }}>\n                    {aiBackend === \'opencode\'\n                      ? `OpenCode (${opencodeModel}) is generating a personalized story narrative...`\n                      : \'Gemini CLI subagent is orchestrating a personalized story narrative...\'}\n                  </p>\n                </div>\n              ) : activeQuestion ? (\n                <div>\n                  {/* Status header */}\n                  <div style={{ display: \'flex\', justifyContent: \'space-between\', alignItems: \'center\', marginBottom: \'25px\' }}>\n                    <div style={{ display: \'flex\', gap: \'12px\', alignItems: \'center\' }}>\n                      <span className={`badge-status ${activeQuestion.is_placement ? \'active\' : \'mastered\'}`} style={{ \n                        background: activeQuestion.is_placement ? \'rgba(59, 130, 246, 0.2)\' : \'rgba(16, 185, 129, 0.15)\',\n                        color: activeQuestion.is_placement ? \'#60a5fa\' : \'#10b981\',\n                        border: activeQuestion.is_placement ? \'1px solid #3b82f6\' : \'1px solid #059669\',\n                        padding: \'8px 16px\',\n                        fontSize: \'14px\',\n                        fontWeight: 700\n                      }}>\n                        {activeQuestion.is_placement ? `📍 PLACEMENT MODE: Question ${activeQuestion.placement_progress}/~10` : `🎯 Mastery Mode: ${activeQuestion.skill_id}`}\n                      </span>\n\n                      {activeQuestion.is_placement && (\n                        <button \n                          className="btn-secondary" \n                          onClick={handleSkipPlacement}\n                          style={{ padding: \'6px 12px\', fontSize: \'12px\', borderRadius: \'10px\', background: \'rgba(239, 68, 68, 0.1)\', color: \'#f87171\', border: \'1px solid rgba(239, 68, 68, 0.2)\' }}\n                        >\n                          ⏩ Skip Placement\n                        </button>\n                      )}\n\n                      {!activeQuestion.is_placement && (\n                        <span className="badge-status mastered" style={{ background: \'rgba(139, 92, 246, 0.15)\', color: \'#c084fc\' }}>\n                          Student ELO: {selectedStudent.elo_rating}\n                        </span>\n                      )}\n                      \n                      <button \n                        className="btn-secondary" \n                        onClick={() => {\n                          setPracticeViewType(\'subject_selection\');\n                          setSelectedSubdomain(null);\n                        }}\n                        style={{ padding: \'6px 12px\', fontSize: \'13px\', display: \'flex\', alignItems: \'center\', gap: \'6px\', borderRadius: \'10px\', background: \'rgba(59, 130, 246, 0.15)\', color: \'#60a5fa\', border: \'1px solid rgba(59, 130, 246, 0.3)\' }}\n                      >\n                        <span>🎒 Switch Subject: {selectedSubject === \'Math\' ? `Math (${selectedSubdomain})` : (selectedSubject === \'Verbal\' ? \'Verbal Competency\' : selectedSubject.replace(\'Reading: Literature\', \'Stories & Literature\').replace(\'Reading: Informational Text\', \'Articles & Non-Fiction\').replace(\'Reading Foundations\', \'Phonics & Reading Basics\').replace(\'Speaking & Listening\', \'Listening & Speech\').replace(\'Writing\', \'Creative Writing & Essays\').replace(\'Language\', \'Grammar & Conventions\'))}</span>\n                      </button>\n                      \n                      {/* Manual Socratic Tutor toggle button */}\n                      <button \n                        className="btn-secondary" \n                        onClick={() => {\n                          setSocraticActive(prev => !prev);\n                          if (chatMessages.length === 0 && !sendingChat) {\n                            setSendingChat(true);\n                            if (socraticAbortControllerRef.current) {\n                              socraticAbortControllerRef.current.abort();\n                            }\n                            socraticAbortControllerRef.current = new AbortController();\n\n                            fetch(`${API_BASE}/socratic/chat`, {\n                              method: \'POST\',\n                              signal: socraticAbortControllerRef.current.signal,\n                              headers: { \'Content-Type\': \'application/json\' },\n                              body: JSON.stringify({\n                                student_id:     selectedStudent.id,\n                                skill_id:       activeQuestion?.skill_id || \'\',\n                                question_text:  activeQuestion?.stem || \'\',\n                                student_answer: \'\',\n                                is_intro:       false,\n                                message: \'\',\n                                history: []\n                              })\n                            })\n                            .then(res => res.json())\n                            .then(chatData => {\n                              if (!socraticAbortControllerRef.current?.signal.aborted) {\n                                setChatMessages([{ role: \'assistant\', content: chatData.reply }]);\n                              }\n                            })\n                            .catch(e => {\n                              if (e.name !== \'AbortError\') console.error(e);\n                            })\n                            .finally(() => {\n                              if (!socraticAbortControllerRef.current?.signal.aborted) {\n                                setSendingChat(false);\n                              }\n                            });\n                          }\n                        }}\n                        style={{ padding: \'6px 12px\', fontSize: \'13px\', display: \'flex\', alignItems: \'center\', gap: \'6px\', borderRadius: \'10px\' }}\n                      >\n                        <MessageSquare className="w-4 h-4 text-purple-400" style={{ color: \'#c084fc\' }} />\n                        <span>💡 Ask Tutor</span>\n                      </button>\n\n                      {/* Flag Question button */}\n                      <button \n                        className="btn-secondary" \n                        onClick={() => setShowFlagModal(true)}\n                        style={{ padding: \'6px 12px\', fontSize: \'13px\', display: \'flex\', alignItems: \'center\', gap: \'6px\', borderRadius: \'10px\', background: \'rgba(239, 68, 68, 0.1)\', color: \'#f87171\', border: \'1px solid rgba(239, 68, 68, 0.2)\' }}\n                      >\n                        <AlertTriangle className="w-4 h-4" />\n                        <span>🚩 Flag</span>\n                      </button>\n\n                      {/* Exit to Home button */}\n                      <button \n                        className="btn-secondary" \n                        onClick={handleLogout}\n                        style={{ padding: \'6px 12px\', fontSize: \'13px\', display: \'flex\', alignItems: \'center\', gap: \'6px\', borderRadius: \'10px\', background: \'rgba(107, 114, 128, 0.15)\', color: \'#9ca3af\', border: \'1px solid rgba(107, 114, 128, 0.3)\' }}\n                      >\n                        <span>🚪 Exit to Home</span>\n                      </button>\n                    </div>\n\n                    <div style={{ display: \'flex\', gap: \'10px\', fontSize: \'13px\', color: \'hsl(var(--text-muted))\' }}>\n                      <span>Focus: {tabSwitchCount} tab-outs</span>\n                      <span>Idle: {idleSeconds}s</span>\n                      <span>Guesses: {guessCount}</span>\n                    </div>\n                  </div>\n\n                  {/* Learning Competency Badge */}\n                  {activeQuestion.standard_description && (\n                    <div style={{ \n                      marginBottom: \'20px\',\n                      padding: \'12px 16px\',\n                      background: \'linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1))\',\n                      borderRadius: \'12px\',\n                      border: \'1px solid rgba(139, 92, 246, 0.3)\',\n                      display: \'flex\',\n                      alignItems: \'flex-start\',\n                      gap: \'10px\'\n                    }}>\n                      <span style={{ fontSize: \'18px\', flexShrink: 0 }}>📚</span>\n                      <div style={{ flex: 1 }}>\n                        <div style={{ fontSize: \'11px\', textTransform: \'uppercase\', letterSpacing: \'0.5px\', color: \'#a78bfa\', marginBottom: \'4px\', fontWeight: 600 }}>\n                          Learning Competency\n                        </div>\n                        <div style={{ fontSize: \'14px\', color: \'#e0e7ff\', lineHeight: \'1.5\' }}>\n                          {activeQuestion.standard_description}\n                        </div>\n                      </div>\n                    </div>\n                  )}\n\n                  {/* Question Stem narrative */}\n                  <h1 style={{ fontSize: \'24px\', fontWeight: 600, lineHeight: \'1.6\', marginBottom: \'30px\', color: \'#f1f5f9\', whiteSpace: \'pre-wrap\' }}>\n                    {activeQuestion.stem}\n                  </h1>\n\n                  {/* Worked Example Scaffolded decompositions (alternates when struggling) */}\n                  {activeQuestion.is_worked_example && activeQuestion.worked_example_steps && (\n                    <div className="glass-card" style={{ borderLeft: \'4px solid hsl(var(--warning))\', background: \'rgba(245, 158, 11, 0.05)\', marginBottom: \'30px\', padding: \'20px\' }}>\n                      <h4 style={{ color: \'#fbbf24\', display: \'flex\', gap: \'6px\', alignItems: \'center\', marginBottom: \'10px\' }}>\n                        <Zap className="w-5 h-5" />\n                        <span>Worked Example Guidance Scaffold Active</span>\n                      </h4>\n                      <div style={{ display: \'flex\', flexDirection: \'column\', gap: \'8px\', fontSize: \'15px\' }}>\n                        {activeQuestion.worked_example_steps.map((step, idx) => (\n                          <div key={idx} style={{ padding: \'8px\', background: \'rgba(0,0,0,0.2)\', borderRadius: \'8px\' }}>\n                            {step}\n                          </div>\n                        ))}\n                      </div>\n                    </div>\n                  )}\n\n                  {/* Visual Question Rendering OR MCQ Options */}\n                  {activeQuestion.is_visual ? (\n                    /* Visual Question Rendering */\n                    <div style={{ marginBottom: \'30px\' }}>\n                      {activeQuestion.visual_type === \'SortOrder\' || activeQuestion.question_mode === \'ordering\' ? (\n                        <SortOrderInteractive \n                          params={activeQuestion.visual_params}\n                          onAnswer={(answer) => setPracticeVisualAnswer(answer)}\n                          disabled={!!answerResult}\n                        />\n                      ) : activeQuestion.answer_collection === \'mcq\' ? (\n                        <div style={{ display: \'flex\', flexDirection: \'column\', alignItems: \'center\', gap: \'16px\', width: \'100%\' }}>\n                          {renderVisualInner(\n                            activeQuestion.visual_type,\n                            { ...activeQuestion.visual_params, is_interactive: false },\n                            () => {},\n                            true,\n                            activeQuestion.problem_id || activeQuestion.skeleton_id\n                          )}\n                          {(activeQuestion.mcq_options || activeQuestion.options) && (\n                            <div style={{ display: \'flex\', flexDirection: \'column\', gap: \'10px\', width: \'100%\', maxWidth: \'400px\' }}>\n                              {(activeQuestion.mcq_options || activeQuestion.options).map(opt => {\n                                const isSelected = practiceVisualAnswer === opt.key;\n                                const isCorrectOpt = answerResult && opt.key === answerResult.correct_answer;\n                                const isWrong = answerResult && isSelected && !answerResult.is_correct;\n                                return (\n                                  <button\n                                    key={opt.key}\n                                    className={`option-btn ${isWrong ? \'incorrect\' : isCorrectOpt ? \'correct\' : isSelected ? \'correct\' : \'\'}`}\n                                    onClick={() => { if (!answerResult) setPracticeVisualAnswer(opt.key); }}\n                                    disabled={!!answerResult}\n                                    style={{ textAlign: \'left\' }}\n                                  >\n                                    <div className="option-badge">{isSelected && !answerResult ? \'✓\' : opt.key}</div>\n                                    <span>{renderMath(opt.text || String(opt.value || \'\'))}</span>\n                                  </button>\n                                );\n                              })}\n                            </div>\n                          )}\n                          {answerResult && activeQuestion.visual_params?.reveal_display && (\n                            <div style={{ \n                              marginTop: \'12px\', \n                              padding: \'16px\', \n                              background: answerResult.is_correct ? \'rgba(16,185,129,0.15)\' : \'rgba(239,68,68,0.15)\', \n                              borderRadius: \'8px\',\n                              textAlign: \'center\',\n                            }}>\n                              <div style={{ fontSize: \'28px\', letterSpacing: \'4px\', marginBottom: \'8px\' }}>\n                                {activeQuestion.visual_params.reveal_display}\n                              </div>\n                              {activeQuestion.visual_params.reveal_text && (\n                                <div style={{ fontSize: \'16px\', color: \'#94a3b8\' }}>\n                                  {activeQuestion.visual_params.reveal_text} left\n                                </div>\n                              )}\n                            </div>\n                          )}\n                        </div>\n                      ) : (activeQuestion.visual_params?.is_interactive || activeQuestion.interaction_mode === \'set\') ? (\n                        renderVisualInner(\n                          activeQuestion.visual_type,\n                          activeQuestion.visual_params,\n                          (answer) => setPracticeVisualAnswer(answer),\n                          !!answerResult,\n                          activeQuestion.skeleton_id\n                        )\n                      ) : (\n                        <div style={{ display: \'flex\', flexDirection: \'column\', alignItems: \'center\', gap: \'16px\', width: \'100%\' }}>\n                          {renderVisualInner(\n                            activeQuestion.visual_type,\n                            { ...activeQuestion.visual_params, is_interactive: false },\n                            () => {},\n                            true,\n                            activeQuestion.problem_id || activeQuestion.skeleton_id\n                          )}\n                          <input\n                            type="text"\n                            className="premium-input"\n                            placeholder="Enter your answer..."\n                            value={practiceVisualAnswer ?? \'\'}\n                            onChange={e => setPracticeVisualAnswer(e.target.value)}\n                            disabled={!!answerResult}\n                            style={{ \n                              padding: \'14px 16px\', \n                              fontSize: \'18px\', \n                              textAlign: \'center\',\n                              fontWeight: 600,\n                              borderRadius: \'10px\',\n                              maxWidth: \'250px\',\n                            }}\n                            autoFocus\n                          />\n                        </div>\n                      )}\n                    </div>\n                  ) : (\n                    <div style={{ display: \'flex\', flexDirection: \'column\', gap: \'14px\', marginBottom: \'30px\', width: \'100%\', alignItems: \'center\' }}>\n                      {/* Cloze / fill-in-blank format */}\n                      {(activeQuestion.question_mode === \'cloze\' || activeQuestion.question_mode === \'fill_in_blank\') && (\n                        <div style={{ display: \'flex\', flexDirection: \'column\', gap: \'12px\', width: \'100%\', maxWidth: \'300px\' }}>\n                          <input\n                            type="text"\n                            className="premium-input"\n                            placeholder="Fill in the blank..."\n                            value={practiceVisualAnswer ?? \'\'}\n                            onChange={e => setPracticeVisualAnswer(e.target.value)}\n                            disabled={!!answerResult}\n                            style={{ \n                              padding: \'14px 16px\', \n                              fontSize: \'18px\', \n                              textAlign: \'center\',\n                              fontWeight: 600,\n                              borderRadius: \'10px\',\n                            }}\n                            autoFocus\n                          />\n                        </div>\n                      )}\n\n                      {/* Numeric input format */}\n                      {(activeQuestion.question_mode === \'numeric_input\' || activeQuestion.question_mode === \'integer\' || activeQuestion.question_mode === \'decimal\') && (\n                        <div style={{ display: \'flex\', flexDirection: \'column\', gap: \'12px\', width: \'100%\', maxWidth: \'300px\' }}>\n                          <input\n                            type="number"\n                            className="premium-input"\n                            placeholder="Enter your answer..."\n                            value={practiceVisualAnswer ?? \'\'}\n                            onChange={e => setPracticeVisualAnswer(e.target.value)}\n                            disabled={!!answerResult}\n                            style={{ \n                              padding: \'14px 16px\', \n                              fontSize: \'18px\', \n                              textAlign: \'center\',\n                              fontWeight: 600,\n                              borderRadius: \'10px\',\n                            }}\n                            autoFocus\n                          />\n                        </div>\n                      )}\n\n                      {/* True/False format */}\n                      {activeQuestion.question_mode === \'true_false\' && (\n                        <div style={{ display: \'flex\', gap: \'12px\', justifyContent: \'center\', width: \'100%\', maxWidth: \'400px\' }}>\n                          {[\'True\', \'False\'].map(val => {\n                            const isSelected = practiceVisualAnswer === val;\n                            const isCorrect = answerResult && answerResult.is_correct && isSelected;\n                            const isWrong = answerResult && !answerResult.is_correct && isSelected;\n                            const isCorrectAnswer = answerResult && !answerResult.is_correct && String(activeQuestion.correct_answer) === val;\n                            return (\n                              <button\n                                key={val}\n                                className={`option-btn ${isWrong ? \'incorrect\' : (isCorrect || isCorrectAnswer) ? \'correct\' : isSelected ? \'selected\' : \'\'}`}\n                                onClick={() => { if (!answerResult) setPracticeVisualAnswer(val); }}\n                                disabled={!!answerResult}\n                                style={{ \n                                  flex: 1, \n                                  padding: \'16px 24px\', \n                                  fontSize: \'16px\',\n                                  fontWeight: 600,\n                                  justifyContent: \'center\',\n                                }}\n                              >\n                                {val}\n                              </button>\n                            );\n                          })}\n                        </div>\n                      )}\n\n                      {/* Ordering format */}\n                      {activeQuestion.question_mode === \'ordering\' && (\n                        <div style={{ display: \'flex\', flexDirection: \'column\', gap: \'12px\', width: \'100%\', maxWidth: \'400px\' }}>\n                          <p style={{ fontSize: \'12px\', color: \'hsl(var(--text-muted))\', margin: 0, textAlign: \'center\' }}>\n                            Enter the values in the correct order, separated by commas:\n                          </p>\n                          <input\n                            type="text"\n                            className="premium-input"\n                            placeholder="e.g., 1, 2, 3, 4"\n                            value={practiceVisualAnswer ?? \'\'}\n                            onChange={e => setPracticeVisualAnswer(e.target.value)}\n                            disabled={!!answerResult}\n                            style={{ \n                              padding: \'14px 16px\', \n                              fontSize: \'16px\', \n                              textAlign: \'center\',\n                              borderRadius: \'10px\',\n                            }}\n                          />\n                        </div>\n                      )}\n\n                      {/* Error detect format */}\n                      {activeQuestion.question_mode === \'error_detect\' && (\n                        <div style={{ display: \'flex\', flexDirection: \'column\', gap: \'12px\', width: \'100%\', maxWidth: \'400px\' }}>\n                          <div style={{ display: \'flex\', gap: \'10px\', justifyContent: \'center\' }}>\n                            <button\n                              className={`option-btn ${practiceVisualAnswer?.has_error === false ? \'correct\' : \'\'}`}\n                              onClick={() => { if (!answerResult) setPracticeVisualAnswer({ has_error: false, correct_value: \'\' }); }}\n                              disabled={!!answerResult}\n                              style={{ flex: 1, padding: \'14px\', fontSize: \'16px\', fontWeight: 600 }}\n                            >\n                              Yes, correct\n                            </button>\n                            <button\n                              className={`option-btn ${practiceVisualAnswer?.has_error === true ? \'correct\' : \'\'}`}\n                              onClick={() => { if (!answerResult) setPracticeVisualAnswer({ has_error: true, correct_value: \'\' }); }}\n                              disabled={!!answerResult}\n                              style={{ flex: 1, padding: \'14px\', fontSize: \'16px\', fontWeight: 600 }}\n                            >\n                              No, incorrect\n                            </button>\n                          </div>\n                          {practiceVisualAnswer?.has_error === true && (\n                            <input\n                              type="number"\n                              className="premium-input"\n                              placeholder="What is the correct answer?"\n                              value={practiceVisualAnswer?.correct_value ?? \'\'}\n                              onChange={e => setPracticeVisualAnswer({ ...practiceVisualAnswer, correct_value: e.target.value })}\n                              disabled={!!answerResult}\n                              style={{ \n                                padding: \'14px 16px\', \n                                fontSize: \'18px\', \n                                textAlign: \'center\',\n                                fontWeight: 600,\n                                borderRadius: \'10px\',\n                              }}\n                            />\n                          )}\n                        </div>\n                      )}\n\n                      {/* Default MCQ format */}\n                      {(!activeQuestion.question_mode || activeQuestion.question_mode === \'mcq\') && activeQuestion.options && activeQuestion.options.length > 0 && (\n                        <div style={{ display: \'flex\', flexDirection: \'column\', gap: \'10px\', width: \'100%\', maxWidth: \'400px\' }}>\n                          {activeQuestion.options.map(opt => {\n                            let btnClass = \'\';\n                            if (answerResult) {\n                              if (opt.key === answerResult.correct_answer) btnClass = \'correct\';\n                              else if (opt.key === selectedOptionKey) btnClass = \'incorrect\';\n                            } else if (selectedOptionKey === opt.key) {\n                              btnClass = \'correct\';\n                            }\n                            return (\n                              <button\n                                key={opt.key}\n                                className={`option-btn ${btnClass}`}\n                                onClick={() => handleOptionClick(opt.key)}\n                                disabled={!!answerResult}\n                                style={{ textAlign: \'left\' }}\n                              >\n                                <div className="option-badge">{opt.key}</div>\n                                <span>{renderMath(opt.text)}</span>\n                              </button>\n                            );\n                          })}\n                        </div>\n                      )}\n                    </div>\n                  )}\n\n                  {/* MCQ/Visual Submit/Result — only for non-writing mode */}\n                  {activeQuestion.question_mode !== \'writing_prompt\' && (<div>\n                  {!answerResult ? (\n                    <button\n                      className="btn-primary"\n                      onClick={handleAnswerSubmit}\n                      disabled={\n                        (!activeQuestion.is_visual && (!activeQuestion.question_mode || activeQuestion.question_mode === \'mcq\')) \n                          ? !selectedOptionKey \n                          : (practiceVisualAnswer === null || practiceVisualAnswer === undefined || practiceVisualAnswer === \'\')\n                      }\n                      style={{ width: \'100%\', padding: \'16px\' }}\n                    >\n                      <Check className="w-6 h-6" />\n                      <span>Submit Answer</span>\n                    </button>\n                  ) : (\n                    <div className="glass-card" style={{ background: \'rgba(255,255,255,0.02)\', padding: \'20px\', borderLeft: answerResult.is_correct ? \'4px solid #10b981\' : \'4px solid #ef4444\' }}>\n                      <div style={{ display: \'flex\', alignItems: \'center\', gap: \'10px\', marginBottom: \'12px\' }}>\n                        {answerResult.is_correct ? (\n                          <CheckCircle className="w-6 h-6" style={{ color: \'#10b981\' }} />\n                        ) : (\n                          <XCircle className="w-6 h-6" style={{ color: \'#ef4444\' }} />\n                        )}\n                        <span style={{ fontSize: \'18px\', fontWeight: 700 }}>\n                          {answerResult.is_correct ? \'Correct! Awesome job!\' : \'Incorrect answer.\'}\n                        </span>\n                      </div>\n                      <p style={{ fontSize: \'15px\', color: \'hsl(var(--text-muted))\', marginBottom: \'20px\' }}>\n                        {answerResult.explanation}\n                      </p>\n                      <button\n                        className="btn-primary"\n                        onClick={() => fetchNextQuestion(selectedStudent.id)}\n                        style={{ width: \'100%\' }}\n                      >\n                        <span>Next Question</span>\n                      </button>\n                    </div>\n                  )}\n                  </div>)}\n                </div>\n              ) : (\n                <div style={{ padding: \'40px\', textAlign: \'center\' }}>No question loaded.</div>\n              )}\n            </div>\n\n            {/* Right side: Socratic split dialog tutor */}\n            {socraticActive && (\n              <div className="glass-card" style={{ display: \'flex\', flexDirection: \'column\', height: \'650px\', borderLeft: \'4px solid hsl(var(--primary))\', animation: \'slide-up 0.4s cubic-bezier(0.4, 0, 0.2, 1)\' }}>\n                <div style={{ display: \'flex\', justifyContent: \'space-between\', alignItems: \'center\', borderBottom: \'1px solid rgba(255,255,255,0.05)\', paddingBottom: \'15px\', marginBottom: \'15px\' }}>\n                  <div style={{ display: \'flex\', alignItems: \'center\', gap: \'10px\' }}>\n                    <MessageSquare className="w-6 h-6 text-purple-400" style={{ color: \'#c084fc\' }} />\n                    <h3 style={{ fontSize: \'20px\' }}>Socratic Tutoring</h3>\n                  </div>\n                  <button className="btn-secondary" style={{ padding: \'6px 12px\', fontSize: \'12px\' }} onClick={() => setSocraticActive(false)}>\n                    Close Split\n                  </button>\n                </div>\n\n                {/* Socratic chat bubbles */}\n                <div style={{ flex: 1, display: \'flex\', flexDirection: \'column\', justifyContent: \'space-between\' }}>\n                  <div className="chat-container" style={{ flex: 1, marginBottom: \'15px\' }}>\n                    {chatMessages.map((msg, idx) => (\n                      <div key={idx} className={`chat-bubble ${msg.role === \'user\' ? \'student\' : \'tutor\'}`}>\n                        {msg.content}\n                      </div>\n                    ))}\n                    {sendingChat && (\n                      <div className="chat-bubble tutor" style={{ display: \'flex\', alignItems: \'center\', gap: \'6px\', padding: \'10px 16px\' }}>\n                        <span className="dot-pulse" style={{ width: \'6px\', height: \'6px\', backgroundColor: \'#c084fc\', borderRadius: \'50%\', display: \'inline-block\' }}></span>\n                        <span className="dot-pulse" style={{ width: \'6px\', height: \'6px\', backgroundColor: \'#c084fc\', borderRadius: \'50%\', display: \'inline-block\', animationDelay: \'0.2s\' }}></span>\n                        <span className="dot-pulse" style={{ width: \'6px\', height: \'6px\', backgroundColor: \'#c084fc\', borderRadius: \'50%\', display: \'inline-block\', animationDelay: \'0.4s\' }}></span>\n                        <span style={{ fontSize: \'13px\', color: \'rgba(192, 132, 252, 0.7)\', marginLeft: \'6px\' }}>Tutor is thinking...</span>\n                      </div>\n                    )}\n                    <div ref={chatEndRef} />\n                  </div>\n\n                  <form onSubmit={handleSendMessage} style={{ display: \'flex\', gap: \'10px\' }}>\n                    <input \n                      type="text" \n                      className="premium-input" \n                      placeholder="Type your explanation or question..."\n                      value={chatInput}\n                      onChange={(e) => setChatInput(e.target.value)}\n                      disabled={sendingChat}\n                    />\n                    <button type="submit" className="btn-primary" disabled={sendingChat}>\n                      {sendingChat ? \'...\' : \'Send\'}\n                    </button>\n                  </form>\n                </div>\n              </div>\n            )}\n\n          </div>\n        )\n      )}\n\n'}
+      {
+          practiceViewType === 'subject_selection' ? (
+            <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '40px 20px' }}>
+              {/* Header block */}
+              <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+                <h1 style={{ fontSize: '38px', fontWeight: 800, color: '#f8fafc', marginBottom: '12px', background: 'linear-gradient(135deg, #fff 0%, #cbd5e1 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                  Choose Your Learning Track
+                </h1>
+                <p style={{ fontSize: '18px', color: 'hsl(var(--text-muted))', maxWidth: '600px', margin: '0 auto' }}>
+                  Hello, <strong style={{ color: '#a78bfa' }}>{selectedStudent.name}</strong>! Which domain would you like to explore and master today?
+                </p>
+                <div style={{ marginTop: '20px', display: 'flex', gap: '15px', justifyContent: 'center' }}>
+                  <span className="badge-status active" style={{ fontSize: '14px', padding: '6px 16px' }}>Grade Level: {selectedStudent.grade}</span>
+                  <span className="badge-status mastered" style={{ fontSize: '14px', padding: '6px 16px', background: 'rgba(139, 92, 246, 0.15)', color: '#c084fc' }}>Active ELO: {selectedStudent.elo_rating}</span>
+                </div>
+              </div>
+
+              {/* Student interests panel */}
+              <div style={{ maxWidth: '600px', margin: '0 auto 40px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '18px 20px' }}>
+                <div style={{ fontSize: '12px', fontWeight: 700, color: 'hsl(var(--text-muted))', textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: '12px' }}>
+                  ✏️ Your Interests
+                </div>
+
+                {/* Input row */}
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '14px' }}>
+                  <input
+                    type="text"
+                    value={setSelectedStudent, setSocraticActive, renderIntroViewer, setShowFlagModal,
+    studentInterestInput}
+                    onChange={e => { setStudentInterestInput(e.target.value); setInterestSaveStatus(''); }}
+                    onKeyDown={e => e.key === 'Enter' && handleSaveInterests()}
+                    placeholder="e.g. Minecraft, dinosaurs, soccer..."
+                    style={{ flex: 1, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', padding: '8px 12px', color: '#f1f5f9', fontSize: '14px', outline: 'none' }}
+                  />
+                  <button
+                    onClick={handleSaveInterests}
+                    disabled={interestSaveStatus === 'saving'}
+                    style={{
+                      flexShrink: 0, padding: '8px 18px', borderRadius: '10px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 700,
+                      background: interestSaveStatus === 'saved' ? 'rgba(16,185,129,0.25)' : interestSaveStatus === 'error' ? 'rgba(239,68,68,0.2)' : 'rgba(139,92,246,0.3)',
+                      color: interestSaveStatus === 'saved' ? '#34d399' : interestSaveStatus === 'error' ? '#f87171' : '#c084fc',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    {interestSaveStatus === 'saved' ? '✓ Saved' : interestSaveStatus === 'saving' ? '...' : interestSaveStatus === 'error' ? '✗ Error' : 'Save'}
+                  </button>
+                </div>
+
+                {/* Saved student interests as tags */}
+                {selectedStudent.student_interest_tags && selectedStudent.student_interest_tags.trim() ? (
+                  <div style={{ marginBottom: '12px' }}>
+                    <div style={{ fontSize: '11px', color: 'hsl(var(--text-muted))', marginBottom: '6px' }}>Your saved topics:</div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                      {selectedStudent.student_interest_tags.split(',').map(t => t.trim()).filter(Boolean).map((tag, i) => (
+                        <span key={i} style={{ padding: '3px 10px', borderRadius: '20px', background: 'rgba(139,92,246,0.18)', color: '#c084fc', fontSize: '12px', fontWeight: 600, border: '1px solid rgba(139,92,246,0.25)' }}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div style={{ fontSize: '12px', color: 'hsl(var(--text-muted))', marginBottom: '12px', fontStyle: 'italic' }}>
+                    No extra interests saved yet — type above and press Save!
+                  </div>
+                )}
+
+                {/* Parent-set interests (read-only) */}
+                {selectedStudent.interest_tags && selectedStudent.interest_tags.trim() && (
+                  <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '10px' }}>
+                    <div style={{ fontSize: '11px', color: 'hsl(var(--text-muted))', marginBottom: '6px' }}>Also included (set by parent):</div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                      {selectedStudent.interest_tags.split(',').map(t => t.trim()).filter(Boolean).map((tag, i) => (
+                        <span key={i} style={{ padding: '3px 10px', borderRadius: '20px', background: 'rgba(255,255,255,0.06)', color: 'hsl(var(--text-muted))', fontSize: '12px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Subject Track Grid */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '30px', marginBottom: '50px' }}>
+                
+                {/* 3. MATATAG (Philippine K-10 Math) CARD */}
+                <div 
+                  className="glass-card hover-glow"
+                  onClick={() => {
+                    setSelectedSubject('Matatag');
+                    setPracticeViewType('matatag_track_selection');
+                    fetchMatatagTracks(selectedStudent.id);
+                    fetchMatatagNodes();
+                  }}
+                  style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '20px', padding: '30px', transition: 'all 0.3s ease', border: '1px solid rgba(245, 158, 11, 0.2)' }}
+                >
+                  <div style={{ width: '60px', height: '60px', borderRadius: '15px', background: 'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '30px', boxShadow: '0 8px 20px rgba(245, 158, 11, 0.3)' }}>
+                    🇵🇭
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: '22px', fontWeight: 700, color: '#f8fafc', marginBottom: '8px' }}>MATATAG Math</h3>
+                    <p style={{ color: 'hsl(var(--text-muted))', fontSize: '14px', lineHeight: '1.5' }}>
+                      Philippine K-10 curriculum with Number & Algebra, Measurement & Geometry, and Data & Probability.
+                    </p>
+                  </div>
+                  <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '6px', color: '#fbbf24', fontWeight: 600, fontSize: '15px' }}>
+                    <span>Launch Track 🚀</span>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Utility actions */}
+              <div style={{ textAlign: 'center' }}>
+                <button 
+                  className="btn-secondary" 
+                  onClick={() => {
+                    setSelectedStudent(null);
+                    setCurrentView('login');
+                  }}
+                  style={{ padding: '12px 30px', fontSize: '16px', borderRadius: '15px' }}
+                >
+                  🚪 Exit Profile & Logout
+                </button>
+              </div>
+            </div>
+          ) : practiceViewType === 'math_track_selection' ? (
+            <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '40px 20px' }}>
+              {/* Header block */}
+              <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                <h1 style={{ fontSize: '38px', fontWeight: 800, color: '#f8fafc', marginBottom: '12px', background: 'linear-gradient(135deg, #fff 0%, #cbd5e1 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                  Select Math Study Domain
+                </h1>
+                <p style={{ fontSize: '18px', color: 'hsl(var(--text-muted))', maxWidth: '600px', margin: '0 auto' }}>
+                  Hello, <strong style={{ color: '#a78bfa' }}>{selectedStudent.name}</strong>! Which of your active math pathways would you like to master today?
+                </p>
+              </div>
+
+              {loadingMathTracks ? (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '100px', gap: '20px' }}>
+                  <RefreshCw className="w-12 h-12 animate-spin" style={{ animation: 'spin 2s linear infinite', color: '#8b5cf6' }} />
+                  <p style={{ color: 'hsl(var(--text-muted))' }}>Discovering parallel learning tracks for Grade {selectedStudent.grade === 0 ? 'Kindergarten' : selectedStudent.grade === 13 ? '13' : selectedStudent.grade}...</p>
+                </div>
+              ) : (
+                <>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '25px', marginBottom: '40px' }}>
+                    {mathTracks.map(track => {
+                      const totalNodes = track.nodes.length;
+                      const masteredNodes = track.nodes.filter(n => n.status === 'mastered').length;
+                      const activeNodes = track.nodes.filter(n => n.status === 'active').length;
+                      const completionPct = totalNodes > 0 ? Math.round((masteredNodes / totalNodes) * 100) : 0;
+                      
+                      return (
+                        <div 
+                          key={track.key}
+                          className="glass-card hover-glow"
+                          onClick={() => {
+                            setSelectedSubdomain(track.key);
+                            setPracticeViewType('workspace');
+                            setQuestionQueue([]); // Clear queue when switching subdomains
+                            fetchNextQuestion(selectedStudent.id, selectedSubject, track.key, true);
+                          }}
+                          style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '15px', padding: '25px', transition: 'all 0.3s ease', border: `1px solid ${track.color}44` }}
+                        >
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div style={{ width: '45px', height: '45px', borderRadius: '10px', background: `linear-gradient(135deg, ${track.color} 0%, #1e1b4b 100%)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>
+                              🧮
+                            </div>
+                            <span className="badge-status active" style={{ background: `${track.color}22`, color: track.color, border: `1px solid ${track.color}44` }}>
+                              {track.key}
+                            </span>
+                          </div>
+                          <div>
+                            <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#f8fafc', marginBottom: '6px' }}>
+                              {track.title.replace('🧮 Math: ', '')}
+                            </h3>
+                            <p style={{ color: 'hsl(var(--text-muted))', fontSize: '13px', lineHeight: '1.4' }}>
+                              Track contains {totalNodes} dynamic standards tailored for your level.
+                            </p>
+                          </div>
+                          
+                          {/* Mini progress bar */}
+                          <div style={{ marginTop: 'auto', paddingTop: '10px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: 'hsl(var(--text-muted))', marginBottom: '4px' }}>
+                              <span>Mastery progress</span>
+                              <strong>{completionPct}%</strong>
+                            </div>
+                            <div style={{ height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', overflow: 'hidden' }}>
+                              <div style={{ height: '100%', width: `${completionPct}%`, background: track.color, transition: 'width 0.5s ease' }} />
+                            </div>
+                            <div style={{ display: 'flex', gap: '10px', marginTop: '8px', fontSize: '11px' }}>
+                              <span style={{ color: '#10b981' }}>● {masteredNodes} Mastered</span>
+                              <span style={{ color: '#60a5fa' }}>● {activeNodes} Active</span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  <div style={{ textAlign: 'center' }}>
+                    <button 
+                      className="btn-secondary" 
+                      onClick={() => {
+                        setPracticeViewType('subject_selection');
+                        setSelectedSubdomain(null);
+                      }}
+                      style={{ padding: '12px 30px', fontSize: '16px', borderRadius: '15px' }}
+                    >
+                      ← Back to Subjects
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          ) : practiceViewType === 'verbal_track_selection' ? (
+            <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '40px 20px' }}>
+              {/* Header block */}
+              <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                <h1 style={{ fontSize: '38px', fontWeight: 800, color: '#f8fafc', marginBottom: '12px', background: 'linear-gradient(135deg, #fff 0%, #cbd5e1 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                  Select Verbal Study Domain
+                </h1>
+                <p style={{ fontSize: '18px', color: 'hsl(var(--text-muted))', maxWidth: '600px', margin: '0 auto' }}>
+                  Hello, <strong style={{ color: '#34d399' }}>{selectedStudent.name}</strong>! Which of your active ELA pathways would you like to master today?
+                </p>
+              </div>
+
+              {loadingVerbalTracks ? (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '100px', gap: '20px' }}>
+                  <RefreshCw className="w-12 h-12 animate-spin" style={{ animation: 'spin 2s linear infinite', color: '#34d399' }} />
+                  <p style={{ color: 'hsl(var(--text-muted))' }}>Discovering parallel learning tracks for Grade {selectedStudent.grade === 0 ? 'Kindergarten' : selectedStudent.grade === 13 ? '13' : selectedStudent.grade}...</p>
+                </div>
+              ) : (
+                <>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '25px', marginBottom: '40px' }}>
+                    {verbalTracks.map(track => {
+                      const totalNodes = track.nodes.length;
+                      const masteredNodes = track.nodes.filter(n => n.status === 'mastered').length;
+                      const activeNodes = track.nodes.filter(n => n.status === 'active').length;
+                      const completionPct = totalNodes > 0 ? Math.round((masteredNodes / totalNodes) * 100) : 0;
+                      
+                      // Map emoji/icon based on the track key/subject
+                      let emoji = '📚';
+                      if (track.key.includes('RL')) emoji = '📖';
+                      else if (track.key.includes('RI')) emoji = '📰';
+                      else if (track.key.includes('RF')) emoji = '🧩';
+                      else if (track.key.includes('SL')) emoji = '🗣️';
+                      else if (track.key.includes('W')) emoji = '✍️';
+                      else if (track.key.includes('L')) emoji = '✨';
+
+                      // Overwrite titles and descriptions with child-friendly, high-precision educational names and distinct definitions
+                      let displayTitle = '';
+                      let displayKey = '';
+                      let description = '';
+                      
+                      if (track.key.includes('RL')) {
+                        displayTitle = 'Reading Stories & Literature';
+                        displayKey = 'Fiction Analysis';
+                        description = 'Analyze plot, setting, character perspectives, themes, and metaphors in stories, plays, and poetry.';
+                      } else if (track.key.includes('RI')) {
+                        displayTitle = 'Reading Articles & Non-Fiction';
+                        displayKey = 'Non-Fiction Analysis';
+                        description = 'Evaluate articles, historical documents, scientific texts, structural layouts, and support evidence.';
+                      } else if (track.key.includes('RF')) {
+                        displayTitle = 'Phonics & Reading Mechanics';
+                        displayKey = 'Phonics & Fluency';
+                        description = 'Master alphabet blends, sight-word decoding, syllable divisions, and pronunciation rules.';
+                      } else if (track.key.includes('SL')) {
+                        displayTitle = 'Listening & Speech Comprehension';
+                        displayKey = 'Oral Communication';
+                        description = 'Develop audio comprehension, collaborative conversation, and presentation structure mastery.';
+                      } else if (track.key.includes('W')) {
+                        displayTitle = 'Creative Writing & Essays';
+                        displayKey = 'Writing & Essays';
+                        description = 'Build clear writing habits for thesis arguments, multi-paragraph essays, narrative tales, and research papers.';
+                      } else if (track.key.includes('L')) {
+                        displayTitle = 'Grammar, Vocab & Conventions';
+                        displayKey = 'Grammar & Conventions';
+                        description = 'Master vocabulary contextual clues, spelling guidelines, punctuation, capitalization, and standard grammar rules.';
+                      } else {
+                        displayTitle = track.title.replace(/.*ELA: /, '');
+                        displayKey = track.key.replace('ELA_', '');
+                        description = `Targeted academic curriculum covering ${displayTitle} level mastery.`;
+                      }
+
+                      return (
+                        <div 
+                          key={track.key}
+                          className="glass-card hover-glow"
+                          onClick={() => {
+                            setSelectedSubject('Verbal');
+                            setSelectedSubdomain(track.key);
+                            setPracticeViewType('workspace');
+                            setQuestionQueue([]); // Clear queue when switching subdomains
+                            fetchNextQuestion(selectedStudent.id, 'Verbal', null, true);
+                          }}
+                          style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '15px', padding: '25px', transition: 'all 0.3s ease', border: `1px solid ${track.color}44` }}
+                        >
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div style={{ width: '45px', height: '45px', borderRadius: '10px', background: `linear-gradient(135deg, ${track.color} 0%, #1e1b4b 100%)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>
+                              {emoji}
+                            </div>
+                            <span className="badge-status active" style={{ background: `${track.color}22`, color: track.color, border: `1px solid ${track.color}44`, fontSize: '11px' }}>
+                              {displayKey}
+                            </span>
+                          </div>
+                          <div>
+                            <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#f8fafc', marginBottom: '6px' }}>
+                              {displayTitle}
+                            </h3>
+                            <p style={{ color: 'hsl(var(--text-muted))', fontSize: '13px', lineHeight: '1.4' }}>
+                              {description}
+                            </p>
+                          </div>
+                          
+                          {/* Mini progress bar */}
+                          <div style={{ marginTop: 'auto', paddingTop: '10px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: 'hsl(var(--text-muted))', marginBottom: '4px' }}>
+                              <span>Mastery progress</span>
+                              <strong>{completionPct}%</strong>
+                            </div>
+                            <div style={{ height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', overflow: 'hidden' }}>
+                              <div style={{ height: '100%', width: `${completionPct}%`, background: track.color, transition: 'width 0.5s ease' }} />
+                            </div>
+                            <div style={{ display: 'flex', gap: '10px', marginTop: '8px', fontSize: '11px' }}>
+                              <span style={{ color: '#10b981' }}>● {masteredNodes} Mastered</span>
+                              <span style={{ color: '#60a5fa' }}>● {activeNodes} Active</span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  <div style={{ textAlign: 'center' }}>
+                    <button 
+                      className="btn-secondary" 
+                      onClick={() => {
+                        setPracticeViewType('subject_selection');
+                        setSelectedSubdomain(null);
+                      }}
+                      style={{ padding: '12px 30px', fontSize: '16px', borderRadius: '15px' }}
+                    >
+                      ← Back to Subjects
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          ) : practiceViewType === 'matatag_track_selection' ? (
+            <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '40px 20px' }}>
+              {/* Header block */}
+              <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                <h1 style={{ fontSize: '38px', fontWeight: 800, color: '#f8fafc', marginBottom: '12px', background: 'linear-gradient(135deg, #fff 0%, #cbd5e1 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                  Select MATATAG Content Area
+                </h1>
+                <p style={{ fontSize: '18px', color: 'hsl(var(--text-muted))', maxWidth: '600px', margin: '0 auto' }}>
+                  Hello, <strong style={{ color: '#fbbf24' }}>{selectedStudent.name}</strong>! Choose a MATATAG content area to practice.
+                </p>
+              </div>
+
+              {loadingMatatagTracks ? (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '100px', gap: '20px' }}>
+                  <RefreshCw className="w-12 h-12 animate-spin" style={{ animation: 'spin 2s linear infinite', color: '#f59e0b' }} />
+                  <p style={{ color: 'hsl(var(--text-muted))' }}>Loading MATATAG content areas for Grade {selectedStudent.grade === 0 ? 'Kindergarten' : selectedStudent.grade}...</p>
+                </div>
+              ) : (
+                <>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', marginBottom: '40px' }}>
+                    {[
+                      { key: 'NA', title: 'Number and Algebra', emoji: '🔢', color: '#8b5cf6' },
+                      { key: 'MG', title: 'Measurement and Geometry', emoji: '📐', color: '#f59e0b' },
+                      { key: 'DP', title: 'Data and Probability', emoji: '📊', color: '#10b981' }
+                    ].map(domain => {
+                      // Filter nodes for this subdomain (show all grades)
+                      const nodesInDomain = matatagNodes.filter(n => n.branch && n.branch.toUpperCase() === domain.key);
+                      if (nodesInDomain.length === 0) return null;
+
+                      return (
+                        <div key={domain.key} className="glass-card" style={{ padding: '24px', border: `1px solid ${domain.color}44` }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+                            <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: `linear-gradient(135deg, ${domain.color} 0%, #1e1b4b 100%)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>
+                              {domain.emoji}
+                            </div>
+                            <h3 style={{ fontSize: '22px', fontWeight: 700, color: '#f8fafc', margin: 0 }}>{domain.title}</h3>
+                          </div>
+
+                          {/* Horizontal scroll container for the roadmap nodes */}
+                          <div style={{ display: 'flex', gap: '16px', overflowX: 'auto', paddingBottom: '16px', scrollbarWidth: 'thin' }}>
+                            {nodesInDomain.map(node => (
+                              <div
+                                key={node.node_id}
+                                onClick={() => setSelectedRoadmapNode(node)}
+                                className="hover-glow"
+                                style={{ 
+                                  minWidth: '220px', 
+                                  maxWidth: '220px', 
+                                  padding: '16px', 
+                                  background: 'rgba(0,0,0,0.3)', 
+                                  borderRadius: '12px', 
+                                  cursor: 'pointer',
+                                  border: `1px solid ${domain.color}33`,
+                                  transition: 'all 0.2s'
+                                }}
+                              >
+                                <div style={{ fontSize: '11px', color: domain.color, fontWeight: 700, marginBottom: '6px' }}>
+                                  GRADE {node.grade} • Q{node.quarter}
+                                </div>
+                                <div style={{ fontSize: '14px', fontWeight: 600, color: '#fff', marginBottom: '8px', lineHeight: '1.3' }}>
+                                  {node.primary_concept}
+                                </div>
+                                <div style={{ fontSize: '11px', color: 'hsl(var(--text-muted))', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                                  {node.competency}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Modal for dual options when a roadmap node is clicked */}
+                  {selectedRoadmapNode && (
+                    <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.7)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)' }}>
+                      <div className="glass-card animate-fade-in" style={{ width: '400px', padding: '30px', textAlign: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>
+                        <div style={{ fontSize: '30px', marginBottom: '16px' }}>🎯</div>
+                        <h2 style={{ fontSize: '20px', color: '#fff', marginBottom: '8px', fontWeight: 700 }}>{selectedRoadmapNode.primary_concept}</h2>
+                        <p style={{ color: 'hsl(var(--text-muted))', fontSize: '13px', marginBottom: '24px', lineHeight: '1.4' }}>{selectedRoadmapNode.competency}</p>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                          <button 
+                            className="btn-primary"
+                            onClick={() => {
+                                fetchIntroForStudent(selectedRoadmapNode.node_id);
+                                setSelectedRoadmapNode(null);
+                            }}
+                            style={{ padding: '12px', background: '#3b82f6', border: 'none', fontSize: '15px' }}
+                          >
+                            📖 Read Intro
+                          </button>
+                          <button 
+                            className="btn-primary"
+                            onClick={() => {
+                                setSelectedSubject('Matatag');
+                                setSelectedSubdomain(selectedRoadmapNode.node_id);
+                                setPracticeViewType('workspace');
+                                setQuestionQueue([]);
+                                fetchNextQuestion(selectedStudent.id, 'Matatag', selectedRoadmapNode.node_id, true);
+                                setSelectedRoadmapNode(null);
+                            }}
+                            style={{ padding: '12px', background: '#10b981', border: 'none', fontSize: '15px' }}
+                          >
+                            ✏️ Start Practice
+                          </button>
+                          <button 
+                            className="btn-secondary"
+                            onClick={() => setSelectedRoadmapNode(null)}
+                            style={{ padding: '12px', marginTop: '8px', fontSize: '14px' }}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <div style={{ textAlign: 'center' }}>
+                    <button 
+                      className="btn-secondary" 
+                      onClick={() => {
+                        setPracticeViewType('subject_selection');
+                        setSelectedSubdomain(null);
+                      }}
+                      style={{ padding: '12px 30px', fontSize: '16px', borderRadius: '15px' }}
+                    >
+                      ← Back to Subjects
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          ) : (
+            <div style={{ display: 'grid', gridTemplateColumns: (socraticActive || writingCoachActive) ? '1.1fr 0.9fr' : '1fr', gap: '40px', transition: 'all 0.4s ease' }}>
+
+
+            
+            {/* Left side: Problem panel */}
+            <div className="glass-card" style={{ border: practiceViewType === 'intro_viewer' ? 'none' : undefined, background: practiceViewType === 'intro_viewer' ? 'transparent' : undefined, boxShadow: practiceViewType === 'intro_viewer' ? 'none' : undefined, padding: practiceViewType === 'intro_viewer' ? 0 : undefined }}>
+              {practiceViewType === 'intro_viewer' ? (
+                <div>
+                  {/* Status header for Intro Viewer */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px', background: 'rgba(255,255,255,0.03)', padding: '16px 24px', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+                      <span className="badge-status mastered" style={{ 
+                        background: 'rgba(6, 182, 212, 0.15)',
+                        color: '#06b6d4',
+                        border: '1px solid #0891b2',
+                        padding: '8px 16px',
+                        fontSize: '14px',
+                        fontWeight: 700
+                      }}>
+                        📖 Intro Lesson: {selectedSubdomain || (introContent?.node_key) || 'Node Intro'}
+                      </span>
+
+                      <button 
+                        className="btn-secondary" 
+                        onClick={() => {
+                          setPracticeViewType('subject_selection');
+                          setSelectedSubdomain(null);
+                        }}
+                        style={{ padding: '6px 12px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', borderRadius: '10px', background: 'rgba(59, 130, 246, 0.15)', color: '#60a5fa', border: '1px solid rgba(59, 130, 246, 0.3)' }}
+                      >
+                        <span>🎒 Switch Subject / Back</span>
+                      </button>
+                      
+                      {/* Manual Socratic Tutor toggle button */}
+                      <button 
+                        className="btn-secondary" 
+                        onClick={() => {
+                          setSocraticActive(prev => !prev);
+                          if (chatMessages.length === 0 && !sendingChat) {
+                            setSendingChat(true);
+                            if (socraticAbortControllerRef.current) {
+                              socraticAbortControllerRef.current.abort();
+                            }
+                            socraticAbortControllerRef.current = new AbortController();
+
+                            fetch(`${API_BASE}/socratic/chat`, {
+                              method: 'POST',
+                              signal: socraticAbortControllerRef.current.signal,
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({
+                                student_id:     selectedStudent.id,
+                                skill_id:       activeQuestion?.skill_id || '',
+                                question_text:  activeQuestion?.stem || '',
+                                student_answer: '',
+                                is_intro:       false,
+                                message: '',
+                                history: []
+                              })
+                            })
+                            .then(res => res.json())
+                            .then(chatData => {
+                              if (!socraticAbortControllerRef.current?.signal.aborted) {
+                                setChatMessages([{ role: 'assistant', content: chatData.reply }]);
+                              }
+                            })
+                            .catch(e => {
+                              if (e.name !== 'AbortError') console.error(e);
+                            })
+                            .finally(() => {
+                              if (!socraticAbortControllerRef.current?.signal.aborted) {
+                                setSendingChat(false);
+                              }
+                            });
+                          }
+                        }}
+                        style={{ padding: '6px 12px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', borderRadius: '10px', background: socraticActive ? 'rgba(139,92,246,0.25)' : 'rgba(139,92,246,0.1)', border: `1px solid ${socraticActive ? 'rgba(139,92,246,0.6)' : 'rgba(139,92,246,0.3)'}` }}
+                      >
+                        <MessageSquare className="w-4 h-4 text-purple-400" style={{ color: '#c084fc' }} />
+                        <span>💡 {socraticActive ? 'Close Tutor' : 'Ask Tutor'}</span>
+                      </button>
+
+                      {/* Exit to Home button */}
+                      <button 
+                        className="btn-secondary" 
+                        onClick={handleLogout}
+                        style={{ padding: '6px 12px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', borderRadius: '10px', background: 'rgba(107, 114, 128, 0.15)', color: '#9ca3af', border: '1px solid rgba(107, 114, 128, 0.3)' }}
+                      >
+                        <span>🚪 Exit to Home</span>
+                      </button>
+                    </div>
+                  </div>
+                  {renderIntroViewer()}
+                </div>
+              ) : loadingQuestion ? (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '80px', gap: '20px' }}>
+                  <RefreshCw className="w-12 h-12 animate-spin" style={{ animation: 'spin 2s linear infinite', color: 'hsl(var(--secondary))' }} />
+                  <p style={{ color: 'hsl(var(--text-muted))' }}>
+                    {aiBackend === 'opencode'
+                      ? `OpenCode (${opencodeModel}) is generating a personalized story narrative...`
+                      : 'Gemini CLI subagent is orchestrating a personalized story narrative...'}
+                  </p>
+                </div>
+              ) : activeQuestion ? (
+                <div>
+                  {/* Status header */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                      <span className={`badge-status ${activeQuestion.is_placement ? 'active' : 'mastered'}`} style={{ 
+                        background: activeQuestion.is_placement ? 'rgba(59, 130, 246, 0.2)' : 'rgba(16, 185, 129, 0.15)',
+                        color: activeQuestion.is_placement ? '#60a5fa' : '#10b981',
+                        border: activeQuestion.is_placement ? '1px solid #3b82f6' : '1px solid #059669',
+                        padding: '8px 16px',
+                        fontSize: '14px',
+                        fontWeight: 700
+                      }}>
+                        {activeQuestion.is_placement ? `📍 PLACEMENT MODE: Question ${activeQuestion.placement_progress}/~10` : `🎯 Mastery Mode: ${activeQuestion.skill_id}`}
+                      </span>
+
+                      {activeQuestion.is_placement && (
+                        <button 
+                          className="btn-secondary" 
+                          onClick={handleSkipPlacement}
+                          style={{ padding: '6px 12px', fontSize: '12px', borderRadius: '10px', background: 'rgba(239, 68, 68, 0.1)', color: '#f87171', border: '1px solid rgba(239, 68, 68, 0.2)' }}
+                        >
+                          ⏩ Skip Placement
+                        </button>
+                      )}
+
+                      {!activeQuestion.is_placement && (
+                        <span className="badge-status mastered" style={{ background: 'rgba(139, 92, 246, 0.15)', color: '#c084fc' }}>
+                          Student ELO: {selectedStudent.elo_rating}
+                        </span>
+                      )}
+                      
+                      <button 
+                        className="btn-secondary" 
+                        onClick={() => {
+                          setPracticeViewType('subject_selection');
+                          setSelectedSubdomain(null);
+                        }}
+                        style={{ padding: '6px 12px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', borderRadius: '10px', background: 'rgba(59, 130, 246, 0.15)', color: '#60a5fa', border: '1px solid rgba(59, 130, 246, 0.3)' }}
+                      >
+                        <span>🎒 Switch Subject: {selectedSubject === 'Math' ? `Math (${selectedSubdomain})` : (selectedSubject === 'Verbal' ? 'Verbal Competency' : selectedSubject.replace('Reading: Literature', 'Stories & Literature').replace('Reading: Informational Text', 'Articles & Non-Fiction').replace('Reading Foundations', 'Phonics & Reading Basics').replace('Speaking & Listening', 'Listening & Speech').replace('Writing', 'Creative Writing & Essays').replace('Language', 'Grammar & Conventions'))}</span>
+                      </button>
+                      
+                      {/* Manual Socratic Tutor toggle button */}
+                      <button 
+                        className="btn-secondary" 
+                        onClick={() => {
+                          setSocraticActive(prev => !prev);
+                          if (chatMessages.length === 0 && !sendingChat) {
+                            setSendingChat(true);
+                            if (socraticAbortControllerRef.current) {
+                              socraticAbortControllerRef.current.abort();
+                            }
+                            socraticAbortControllerRef.current = new AbortController();
+
+                            fetch(`${API_BASE}/socratic/chat`, {
+                              method: 'POST',
+                              signal: socraticAbortControllerRef.current.signal,
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({
+                                student_id:     selectedStudent.id,
+                                skill_id:       activeQuestion?.skill_id || '',
+                                question_text:  activeQuestion?.stem || '',
+                                student_answer: '',
+                                is_intro:       false,
+                                message: '',
+                                history: []
+                              })
+                            })
+                            .then(res => res.json())
+                            .then(chatData => {
+                              if (!socraticAbortControllerRef.current?.signal.aborted) {
+                                setChatMessages([{ role: 'assistant', content: chatData.reply }]);
+                              }
+                            })
+                            .catch(e => {
+                              if (e.name !== 'AbortError') console.error(e);
+                            })
+                            .finally(() => {
+                              if (!socraticAbortControllerRef.current?.signal.aborted) {
+                                setSendingChat(false);
+                              }
+                            });
+                          }
+                        }}
+                        style={{ padding: '6px 12px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', borderRadius: '10px' }}
+                      >
+                        <MessageSquare className="w-4 h-4 text-purple-400" style={{ color: '#c084fc' }} />
+                        <span>💡 Ask Tutor</span>
+                      </button>
+
+                      {/* Flag Question button */}
+                      <button 
+                        className="btn-secondary" 
+                        onClick={() => setShowFlagModal(true)}
+                        style={{ padding: '6px 12px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', borderRadius: '10px', background: 'rgba(239, 68, 68, 0.1)', color: '#f87171', border: '1px solid rgba(239, 68, 68, 0.2)' }}
+                      >
+                        <AlertTriangle className="w-4 h-4" />
+                        <span>🚩 Flag</span>
+                      </button>
+
+                      {/* Exit to Home button */}
+                      <button 
+                        className="btn-secondary" 
+                        onClick={handleLogout}
+                        style={{ padding: '6px 12px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', borderRadius: '10px', background: 'rgba(107, 114, 128, 0.15)', color: '#9ca3af', border: '1px solid rgba(107, 114, 128, 0.3)' }}
+                      >
+                        <span>🚪 Exit to Home</span>
+                      </button>
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '10px', fontSize: '13px', color: 'hsl(var(--text-muted))' }}>
+                      <span>Focus: {tabSwitchCount} tab-outs</span>
+                      <span>Idle: {idleSeconds}s</span>
+                      <span>Guesses: {guessCount}</span>
+                    </div>
+                  </div>
+
+                  {/* Learning Competency Badge */}
+                  {activeQuestion.standard_description && (
+                    <div style={{ 
+                      marginBottom: '20px',
+                      padding: '12px 16px',
+                      background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1))',
+                      borderRadius: '12px',
+                      border: '1px solid rgba(139, 92, 246, 0.3)',
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '10px'
+                    }}>
+                      <span style={{ fontSize: '18px', flexShrink: 0 }}>📚</span>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#a78bfa', marginBottom: '4px', fontWeight: 600 }}>
+                          Learning Competency
+                        </div>
+                        <div style={{ fontSize: '14px', color: '#e0e7ff', lineHeight: '1.5' }}>
+                          {activeQuestion.standard_description}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Question Stem narrative */}
+                  <h1 style={{ fontSize: '24px', fontWeight: 600, lineHeight: '1.6', marginBottom: '30px', color: '#f1f5f9', whiteSpace: 'pre-wrap' }}>
+                    {activeQuestion.stem}
+                  </h1>
+
+                  {/* Worked Example Scaffolded decompositions (alternates when struggling) */}
+                  {activeQuestion.is_worked_example && activeQuestion.worked_example_steps && (
+                    <div className="glass-card" style={{ borderLeft: '4px solid hsl(var(--warning))', background: 'rgba(245, 158, 11, 0.05)', marginBottom: '30px', padding: '20px' }}>
+                      <h4 style={{ color: '#fbbf24', display: 'flex', gap: '6px', alignItems: 'center', marginBottom: '10px' }}>
+                        <Zap className="w-5 h-5" />
+                        <span>Worked Example Guidance Scaffold Active</span>
+                      </h4>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '15px' }}>
+                        {activeQuestion.worked_example_steps.map((step, idx) => (
+                          <div key={idx} style={{ padding: '8px', background: 'rgba(0,0,0,0.2)', borderRadius: '8px' }}>
+                            {step}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Visual Question Rendering OR MCQ Options */}
+                  {activeQuestion.is_visual ? (
+                    /* Visual Question Rendering */
+                    <div style={{ marginBottom: '30px' }}>
+                      {activeQuestion.visual_type === 'SortOrder' || activeQuestion.question_mode === 'ordering' ? (
+                        <SortOrderInteractive 
+                          params={activeQuestion.visual_params}
+                          onAnswer={(answer) => setPracticeVisualAnswer(answer)}
+                          disabled={!!answerResult}
+                        />
+                      ) : activeQuestion.answer_collection === 'mcq' ? (
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', width: '100%' }}>
+                          {renderVisualInner(
+                            activeQuestion.visual_type,
+                            { ...activeQuestion.visual_params, is_interactive: false },
+                            () => {},
+                            true,
+                            activeQuestion.problem_id || activeQuestion.skeleton_id
+                          )}
+                          {(activeQuestion.mcq_options || activeQuestion.options) && (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', maxWidth: '400px' }}>
+                              {(activeQuestion.mcq_options || activeQuestion.options).map(opt => {
+                                const isSelected = practiceVisualAnswer === opt.key;
+                                const isCorrectOpt = answerResult && opt.key === answerResult.correct_answer;
+                                const isWrong = answerResult && isSelected && !answerResult.is_correct;
+                                return (
+                                  <button
+                                    key={opt.key}
+                                    className={`option-btn ${isWrong ? 'incorrect' : isCorrectOpt ? 'correct' : isSelected ? 'correct' : ''}`}
+                                    onClick={() => { if (!answerResult) setPracticeVisualAnswer(opt.key); }}
+                                    disabled={!!answerResult}
+                                    style={{ textAlign: 'left' }}
+                                  >
+                                    <div className="option-badge">{isSelected && !answerResult ? '✓' : opt.key}</div>
+                                    <span>{renderMath(opt.text || String(opt.value || ''))}</span>
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          )}
+                          {answerResult && activeQuestion.visual_params?.reveal_display && (
+                            <div style={{ 
+                              marginTop: '12px', 
+                              padding: '16px', 
+                              background: answerResult.is_correct ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)', 
+                              borderRadius: '8px',
+                              textAlign: 'center',
+                            }}>
+                              <div style={{ fontSize: '28px', letterSpacing: '4px', marginBottom: '8px' }}>
+                                {activeQuestion.visual_params.reveal_display}
+                              </div>
+                              {activeQuestion.visual_params.reveal_text && (
+                                <div style={{ fontSize: '16px', color: '#94a3b8' }}>
+                                  {activeQuestion.visual_params.reveal_text} left
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      ) : (activeQuestion.visual_params?.is_interactive || activeQuestion.interaction_mode === 'set') ? (
+                        renderVisualInner(
+                          activeQuestion.visual_type,
+                          activeQuestion.visual_params,
+                          (answer) => setPracticeVisualAnswer(answer),
+                          !!answerResult,
+                          activeQuestion.skeleton_id
+                        )
+                      ) : (
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', width: '100%' }}>
+                          {renderVisualInner(
+                            activeQuestion.visual_type,
+                            { ...activeQuestion.visual_params, is_interactive: false },
+                            () => {},
+                            true,
+                            activeQuestion.problem_id || activeQuestion.skeleton_id
+                          )}
+                          <input
+                            type="text"
+                            className="premium-input"
+                            placeholder="Enter your answer..."
+                            value={practiceVisualAnswer ?? ''}
+                            onChange={e => setPracticeVisualAnswer(e.target.value)}
+                            disabled={!!answerResult}
+                            style={{ 
+                              padding: '14px 16px', 
+                              fontSize: '18px', 
+                              textAlign: 'center',
+                              fontWeight: 600,
+                              borderRadius: '10px',
+                              maxWidth: '250px',
+                            }}
+                            autoFocus
+                          />
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '30px', width: '100%', alignItems: 'center' }}>
+                      {/* Cloze / fill-in-blank format */}
+                      {(activeQuestion.question_mode === 'cloze' || activeQuestion.question_mode === 'fill_in_blank') && (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', maxWidth: '300px' }}>
+                          <input
+                            type="text"
+                            className="premium-input"
+                            placeholder="Fill in the blank..."
+                            value={practiceVisualAnswer ?? ''}
+                            onChange={e => setPracticeVisualAnswer(e.target.value)}
+                            disabled={!!answerResult}
+                            style={{ 
+                              padding: '14px 16px', 
+                              fontSize: '18px', 
+                              textAlign: 'center',
+                              fontWeight: 600,
+                              borderRadius: '10px',
+                            }}
+                            autoFocus
+                          />
+                        </div>
+                      )}
+
+                      {/* Numeric input format */}
+                      {(activeQuestion.question_mode === 'numeric_input' || activeQuestion.question_mode === 'integer' || activeQuestion.question_mode === 'decimal') && (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', maxWidth: '300px' }}>
+                          <input
+                            type="number"
+                            className="premium-input"
+                            placeholder="Enter your answer..."
+                            value={practiceVisualAnswer ?? ''}
+                            onChange={e => setPracticeVisualAnswer(e.target.value)}
+                            disabled={!!answerResult}
+                            style={{ 
+                              padding: '14px 16px', 
+                              fontSize: '18px', 
+                              textAlign: 'center',
+                              fontWeight: 600,
+                              borderRadius: '10px',
+                            }}
+                            autoFocus
+                          />
+                        </div>
+                      )}
+
+                      {/* True/False format */}
+                      {activeQuestion.question_mode === 'true_false' && (
+                        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', width: '100%', maxWidth: '400px' }}>
+                          {['True', 'False'].map(val => {
+                            const isSelected = practiceVisualAnswer === val;
+                            const isCorrect = answerResult && answerResult.is_correct && isSelected;
+                            const isWrong = answerResult && !answerResult.is_correct && isSelected;
+                            const isCorrectAnswer = answerResult && !answerResult.is_correct && String(activeQuestion.correct_answer) === val;
+                            return (
+                              <button
+                                key={val}
+                                className={`option-btn ${isWrong ? 'incorrect' : (isCorrect || isCorrectAnswer) ? 'correct' : isSelected ? 'selected' : ''}`}
+                                onClick={() => { if (!answerResult) setPracticeVisualAnswer(val); }}
+                                disabled={!!answerResult}
+                                style={{ 
+                                  flex: 1, 
+                                  padding: '16px 24px', 
+                                  fontSize: '16px',
+                                  fontWeight: 600,
+                                  justifyContent: 'center',
+                                }}
+                              >
+                                {val}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+
+                      {/* Ordering format */}
+                      {activeQuestion.question_mode === 'ordering' && (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', maxWidth: '400px' }}>
+                          <p style={{ fontSize: '12px', color: 'hsl(var(--text-muted))', margin: 0, textAlign: 'center' }}>
+                            Enter the values in the correct order, separated by commas:
+                          </p>
+                          <input
+                            type="text"
+                            className="premium-input"
+                            placeholder="e.g., 1, 2, 3, 4"
+                            value={practiceVisualAnswer ?? ''}
+                            onChange={e => setPracticeVisualAnswer(e.target.value)}
+                            disabled={!!answerResult}
+                            style={{ 
+                              padding: '14px 16px', 
+                              fontSize: '16px', 
+                              textAlign: 'center',
+                              borderRadius: '10px',
+                            }}
+                          />
+                        </div>
+                      )}
+
+                      {/* Error detect format */}
+                      {activeQuestion.question_mode === 'error_detect' && (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', maxWidth: '400px' }}>
+                          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+                            <button
+                              className={`option-btn ${practiceVisualAnswer?.has_error === false ? 'correct' : ''}`}
+                              onClick={() => { if (!answerResult) setPracticeVisualAnswer({ has_error: false, correct_value: '' }); }}
+                              disabled={!!answerResult}
+                              style={{ flex: 1, padding: '14px', fontSize: '16px', fontWeight: 600 }}
+                            >
+                              Yes, correct
+                            </button>
+                            <button
+                              className={`option-btn ${practiceVisualAnswer?.has_error === true ? 'correct' : ''}`}
+                              onClick={() => { if (!answerResult) setPracticeVisualAnswer({ has_error: true, correct_value: '' }); }}
+                              disabled={!!answerResult}
+                              style={{ flex: 1, padding: '14px', fontSize: '16px', fontWeight: 600 }}
+                            >
+                              No, incorrect
+                            </button>
+                          </div>
+                          {practiceVisualAnswer?.has_error === true && (
+                            <input
+                              type="number"
+                              className="premium-input"
+                              placeholder="What is the correct answer?"
+                              value={practiceVisualAnswer?.correct_value ?? ''}
+                              onChange={e => setPracticeVisualAnswer({ ...practiceVisualAnswer, correct_value: e.target.value })}
+                              disabled={!!answerResult}
+                              style={{ 
+                                padding: '14px 16px', 
+                                fontSize: '18px', 
+                                textAlign: 'center',
+                                fontWeight: 600,
+                                borderRadius: '10px',
+                              }}
+                            />
+                          )}
+                        </div>
+                      )}
+
+                      {/* Default MCQ format */}
+                      {(!activeQuestion.question_mode || activeQuestion.question_mode === 'mcq') && activeQuestion.options && activeQuestion.options.length > 0 && (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', maxWidth: '400px' }}>
+                          {activeQuestion.options.map(opt => {
+                            let btnClass = '';
+                            if (answerResult) {
+                              if (opt.key === answerResult.correct_answer) btnClass = 'correct';
+                              else if (opt.key === selectedOptionKey) btnClass = 'incorrect';
+                            } else if (selectedOptionKey === opt.key) {
+                              btnClass = 'correct';
+                            }
+                            return (
+                              <button
+                                key={opt.key}
+                                className={`option-btn ${btnClass}`}
+                                onClick={() => handleOptionClick(opt.key)}
+                                disabled={!!answerResult}
+                                style={{ textAlign: 'left' }}
+                              >
+                                <div className="option-badge">{opt.key}</div>
+                                <span>{renderMath(opt.text)}</span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* MCQ/Visual Submit/Result — only for non-writing mode */}
+                  {activeQuestion.question_mode !== 'writing_prompt' && (<div>
+                  {!answerResult ? (
+                    <button
+                      className="btn-primary"
+                      onClick={handleAnswerSubmit}
+                      disabled={
+                        (!activeQuestion.is_visual && (!activeQuestion.question_mode || activeQuestion.question_mode === 'mcq')) 
+                          ? !selectedOptionKey 
+                          : (practiceVisualAnswer === null || practiceVisualAnswer === undefined || practiceVisualAnswer === '')
+                      }
+                      style={{ width: '100%', padding: '16px' }}
+                    >
+                      <Check className="w-6 h-6" />
+                      <span>Submit Answer</span>
+                    </button>
+                  ) : (
+                    <div className="glass-card" style={{ background: 'rgba(255,255,255,0.02)', padding: '20px', borderLeft: answerResult.is_correct ? '4px solid #10b981' : '4px solid #ef4444' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
+                        {answerResult.is_correct ? (
+                          <CheckCircle className="w-6 h-6" style={{ color: '#10b981' }} />
+                        ) : (
+                          <XCircle className="w-6 h-6" style={{ color: '#ef4444' }} />
+                        )}
+                        <span style={{ fontSize: '18px', fontWeight: 700 }}>
+                          {answerResult.is_correct ? 'Correct! Awesome job!' : 'Incorrect answer.'}
+                        </span>
+                      </div>
+                      <p style={{ fontSize: '15px', color: 'hsl(var(--text-muted))', marginBottom: '20px' }}>
+                        {answerResult.explanation}
+                      </p>
+                      <button
+                        className="btn-primary"
+                        onClick={() => fetchNextQuestion(selectedStudent.id)}
+                        style={{ width: '100%' }}
+                      >
+                        <span>Next Question</span>
+                      </button>
+                    </div>
+                  )}
+                  </div>)}
+                </div>
+              ) : (
+                <div style={{ padding: '40px', textAlign: 'center' }}>No question loaded.</div>
+              )}
+            </div>
+
+            {/* Right side: Socratic split dialog tutor */}
+            {socraticActive && (
+              <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', height: '650px', borderLeft: '4px solid hsl(var(--primary))', animation: 'slide-up 0.4s cubic-bezier(0.4, 0, 0.2, 1)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '15px', marginBottom: '15px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <MessageSquare className="w-6 h-6 text-purple-400" style={{ color: '#c084fc' }} />
+                    <h3 style={{ fontSize: '20px' }}>Socratic Tutoring</h3>
+                  </div>
+                  <button className="btn-secondary" style={{ padding: '6px 12px', fontSize: '12px' }} onClick={() => setSocraticActive(false)}>
+                    Close Split
+                  </button>
+                </div>
+
+                {/* Socratic chat bubbles */}
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div className="chat-container" style={{ flex: 1, marginBottom: '15px' }}>
+                    {chatMessages.map((msg, idx) => (
+                      <div key={idx} className={`chat-bubble ${msg.role === 'user' ? 'student' : 'tutor'}`}>
+                        {msg.content}
+                      </div>
+                    ))}
+                    {sendingChat && (
+                      <div className="chat-bubble tutor" style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '10px 16px' }}>
+                        <span className="dot-pulse" style={{ width: '6px', height: '6px', backgroundColor: '#c084fc', borderRadius: '50%', display: 'inline-block' }}></span>
+                        <span className="dot-pulse" style={{ width: '6px', height: '6px', backgroundColor: '#c084fc', borderRadius: '50%', display: 'inline-block', animationDelay: '0.2s' }}></span>
+                        <span className="dot-pulse" style={{ width: '6px', height: '6px', backgroundColor: '#c084fc', borderRadius: '50%', display: 'inline-block', animationDelay: '0.4s' }}></span>
+                        <span style={{ fontSize: '13px', color: 'rgba(192, 132, 252, 0.7)', marginLeft: '6px' }}>Tutor is thinking...</span>
+                      </div>
+                    )}
+                    <div ref={chatEndRef} />
+                  </div>
+
+                  <form onSubmit={handleSendMessage} style={{ display: 'flex', gap: '10px' }}>
+                    <input 
+                      type="text" 
+                      className="premium-input" 
+                      placeholder="Type your explanation or question..."
+                      value={chatInput}
+                      onChange={(e) => setChatInput(e.target.value)}
+                      disabled={sendingChat}
+                    />
+                    <button type="submit" className="btn-primary" disabled={sendingChat}>
+                      {sendingChat ? '...' : 'Send'}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            )}
+
+          </div>
+        )
+      }
     </>
   );
 }

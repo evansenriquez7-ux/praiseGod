@@ -268,7 +268,12 @@ function App() {
     try {
       const res = await fetch(`${API_BASE}/students/profiles`);
       const data = await res.json();
-      setStudents(data);
+      if (Array.isArray(data)) {
+        setStudents(data);
+      } else {
+        console.error("Profiles response not an array:", data);
+        setStudents([]);
+      }
     } catch (e) {
       console.error("Failed to fetch profiles", e);
     }
@@ -2787,6 +2792,8 @@ function App() {
             renderMapOverlay={renderMapOverlay}
             handleGeneratePractice={handleGeneratePractice} showSolution={showSolution} isSolutionVisible={isSolutionVisible}
             handleNodeClick={handleNodeClick} handleNextQuestion={handleNextQuestion}
+            setSelectedStudent={setSelectedStudent} setSocraticActive={setSocraticActive} renderIntroViewer={renderIntroViewer} setShowFlagModal={setShowFlagModal}
+            studentInterestInput={studentInterestInput} setStudentInterestInput={setStudentInterestInput} interestSaveStatus={interestSaveStatus} setInterestSaveStatus={setInterestSaveStatus} handleSaveInterests={handleSaveInterests} setSelectedSubject={setSelectedSubject} fetchMatatagTracks={fetchMatatagTracks} fetchMatatagNodes={fetchMatatagNodes} matatagNodes={matatagNodes} loadingMathTracks={loadingMathTracks} mathTracks={mathTracks} setSelectedSubdomain={setSelectedSubdomain} setQuestionQueue={setQuestionQueue} fetchNextQuestion={fetchNextQuestion} selectedSubject={selectedSubject} loadingVerbalTracks={loadingVerbalTracks} verbalTracks={verbalTracks} loadingMatatagTracks={loadingMatatagTracks} selectedRoadmapNode={selectedRoadmapNode} setSelectedRoadmapNode={setSelectedRoadmapNode} fetchIntroForStudent={fetchIntroForStudent} writingCoachActive={writingCoachActive} introContent={introContent} handleLogout={handleLogout} loadingQuestion={loadingQuestion} aiBackend={aiBackend} opencodeModel={opencodeModel} handleSkipPlacement={handleSkipPlacement} tabSwitchCount={tabSwitchCount} idleSeconds={idleSeconds} guessCount={guessCount} answerResult={answerResult} handleOptionClick={handleOptionClick} chatEndRef={chatEndRef} handleSendMessage={handleSendMessage} chatInput={chatInput} setChatInput={setChatInput} selectedSubdomain={selectedSubdomain}
           />
         )}
         {/* --- VIEW 3: PARENT CONTROL PANEL SCREEN --- */}
@@ -2806,7 +2813,9 @@ function App() {
             renderIntroViewer, introNodes, introInterests, introSelectedNode, setIntroSelectedNode, introSelectedInterest, setIntroSelectedInterest, generateIntroContent, introLoading,
             setSelectedStudent, setTelemetrySessionId, setParentLoggedIn, setParentError,
             matatagNodeId, matatagNodes, handleRunMatatagTest, matatagTestResults, testLoading, clearMatatagTests,
-            activeSubject, activeDomain, activeSubdomain, renderMapOverlay}}
+            activeSubject, activeDomain, activeSubdomain, renderMapOverlay,
+            fetchMatatagNodes, fetchIntroNodes, fetchIntroInterests,
+            modelsLoading, modelFilter, setModelFilter, setAnalyticsData}}
           />
         )}
       </main>
