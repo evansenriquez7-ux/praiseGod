@@ -44,6 +44,7 @@ import { renderVisualInner } from './utils/renderUtils.jsx';
 function App() {
   // Global App States
   const [currentView, setCurrentView] = useState('login'); // 'login', 'practice', 'parent'
+  const [isLoadingProfiles, setIsLoadingProfiles] = useState(true);
   const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [pinInput, setPinInput] = useState('');
@@ -260,6 +261,7 @@ function App() {
         console.error("CCMed server connection check failed:", e);
       }
       setConnectionStatus('error');
+      setIsLoadingProfiles(false);
     };
     verifyServerAndLoad();
   }, []);
@@ -276,6 +278,8 @@ function App() {
       }
     } catch (e) {
       console.error("Failed to fetch profiles", e);
+    } finally {
+      setIsLoadingProfiles(false);
     }
   };
 
@@ -2765,6 +2769,7 @@ function App() {
         {/* --- VIEW 1: LOGIN & SEEDING PROFILE SCREEN --- */}
         {currentView === 'login' && (
           <LoginView
+            isLoadingProfiles={isLoadingProfiles}
             students={students}
             handleSelectStudent={handleSelectStudent}
             selectedStudent={selectedStudent}

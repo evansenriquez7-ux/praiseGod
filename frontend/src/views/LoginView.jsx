@@ -1,7 +1,8 @@
 import React from 'react';
-import { Lock } from 'lucide-react';
+import { Lock, Loader2 } from 'lucide-react';
 
 export default function LoginView({
+  isLoadingProfiles,
   students,
   handleSelectStudent,
   selectedStudent,
@@ -21,7 +22,12 @@ export default function LoginView({
             <div className="glass-card">
               <h2 style={{ fontSize: '28px', marginBottom: '15px' }}>Enter Student Portal</h2>
               
-              {students.length === 0 ? (
+              {isLoadingProfiles ? (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px 0', gap: '10px' }}>
+                  <Loader2 className="w-8 h-8 spin" style={{ animation: 'spin 2s linear infinite', color: 'hsl(var(--text-muted))' }} />
+                  <span style={{ color: 'hsl(var(--text-muted))', fontSize: '14px' }}>Loading student profiles...</span>
+                </div>
+              ) : students.length === 0 ? (
                 <p style={{ color: 'hsl(var(--text-muted))', marginBottom: '20px' }}>No student profiles created yet. Create one below!</p>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '25px' }}>
