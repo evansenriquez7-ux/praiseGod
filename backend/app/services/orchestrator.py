@@ -37,7 +37,21 @@ class PracticeOrchestrator:
         if not dna_names:
             raise ValueError(f"No DNA mappings found for node_id '{node_id}'")
 
-        dna_name = rng.choice(dna_names)
+        # Filter DNAs by requested formatter or allowed_formatters
+        valid_dnas = []
+        for d in dna_names:
+            available_for_d = get_formatters_for_dna(d)
+            if formatter and formatter not in available_for_d:
+                continue
+            if allowed_formatters and not any(f in available_for_d for f in allowed_formatters):
+                continue
+            valid_dnas.append(d)
+            
+        if not valid_dnas:
+            # Fallback if filters are too strict
+            valid_dnas = dna_names
+
+        dna_name = rng.choice(valid_dnas)
         dna = _get_dna_instance(dna_name)
 
         ctx = generate_context(dna, node_id, grade, seed, difficulty_profile, interest_theme)

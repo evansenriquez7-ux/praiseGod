@@ -146,7 +146,6 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
 _DIFFICULTY_AXES: Dict[str, Any] = {    "range":     ["1st_to_10th", "11th_to_20th", "21st_to_100th"],
-    "number_difficulty": "continuous",
 }
 
 
@@ -182,7 +181,7 @@ def generate_params(
     g_key = f"g{max(1, min(grade, 3))}"
     bounds = _PARAM_BOUNDS[g_key]
     min_ord = bounds["min_ordinal"]
-    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+    diff_scalar = float(profile.get("difficulty_scalar", 0.5))
     from backend.app.practice_gen.dna.base import log_interpolate
     max_ord = int(log_interpolate(10, bounds["max_ordinal"], diff_scalar))
 
@@ -198,11 +197,10 @@ def generate_params(
 
     min_ord = int(profile.get("min_ordinal", min_ord))
     max_ord = int(profile.get("max_ordinal", max_ord))
-    num_diff_scalar = float(profile.get("number_difficulty", 0.5))
     
     number_candidates = list(range(min_ord, max_ord + 1))
     from backend.app.practice_gen.generators.number_difficulty import generate_number_by_window
-    n = generate_number_by_window(number_candidates, num_diff_scalar, d=5, rng=rng, num_type="ordinal")
+    n = generate_number_by_window(number_candidates, diff_scalar, d=5, rng=rng, num_type="ordinal")
     symbol  = _ordinal_suffix(n)
     word    = _ordinal_word(n)
 

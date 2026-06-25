@@ -229,6 +229,7 @@ def format_peso_money(
         }
     elif ctx.values and ("total" in ctx.values or "answer" in ctx.values or "result" in ctx.values):
         total = ctx.values.get("total") or ctx.values.get("answer") or ctx.values.get("result")
+        print("DEBUG TOTAL:", type(total), repr(total))
         coin_faces, bill_faces = _grade_denominations(ctx.grade)
         coins_list, bills_list = _greedy(total, coin_faces, bill_faces)
         if coins_list is None:

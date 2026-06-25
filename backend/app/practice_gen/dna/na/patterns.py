@@ -51,8 +51,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, Any] = {    "number_difficulty": "continuous",
-}
+_DIFFICULTY_AXES: Dict[str, Any] = {}
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
@@ -102,7 +101,7 @@ def generate_params(
 
     g_key = f"g{max(1, min(grade, 3))}"
     bounds = _PARAM_BOUNDS[g_key]
-    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
+    diff_scalar = float(profile.get("difficulty_scalar", 0.5))
     from backend.app.practice_gen.dna.base import log_interpolate, linear_interpolate
     
     max_val_bound = int(log_interpolate(10, bounds["max_value"], diff_scalar))
@@ -145,18 +144,27 @@ def generate_params(
         sequence = _make_arithmetic_sequence(first, step, seq_length + 1, increasing=False)
         rule = f"Subtract {step} each time"
     elif pattern_type == "combined":
-        pairs = []
-        c_step_hi = min(step_hi, 10)
-        for s in range(step_lo, c_step_hi + 1):
-            for f in range(1, max(2, max_val // 2) + 1):
-                pairs.append((f, s))
-        if not pairs:
-            pairs = [(1, step_lo)]
-        first, step = generate_pair_by_window(pairs, num_diff_scalar, d=5, rng=rng)
-        base = _make_arithmetic_sequence(first, step, seq_length + 1, increasing=True)
-        offsets = [0, rng.randint(1, 3)] * (seq_length + 1)
-        sequence = [base[i] + offsets[i] for i in range(seq_length + 1)]
-        rule = f"Add {step}, with alternating offset"
+        # Create a nested pattern: an inner repeating loop + an outer increasing step
+        # E.g. [11, 12, 13, 21, 22, 23, 31, 32, 33]
+        inner_cycle_len = rng.randint(2, 3)
+        outer_step = rng.choice([1, 2, 5, 10])
+        
+        # Cap sequence length to 9 terms to avoid UI clutter
+        total_elements = min(9, inner_cycle_len * 3)
+        seq_length = total_elements - 1
+        
+        inner_cycle = [rng.randint(1, 9) for _ in range(inner_cycle_len)]
+        outer_start = rng.randint(1, 5) * 10
+        
+        sequence = []
+        for i in range(total_elements):
+            block_idx = i // inner_cycle_len
+            cycle_idx = i % inner_cycle_len
+            val = (outer_start + block_idx * outer_step * 10) + inner_cycle[cycle_idx]
+            sequence.append(val)
+            
+        step = outer_step * 10
+        rule = f"Repeat the ones {inner_cycle} and add {step} every group"
     else:  # arithmetic_increasing (default)
         pairs = []
         for s in range(step_lo, step_hi + 1):
@@ -235,8 +243,8 @@ def generate_hints(
 
 PATTERNS_DNA = DNA(
     concept="patterns",
-    dna_type="formula",
-    answer_formula="first + (position * common_difference)",
+    dna_type="algorithmic",
+    answer_formula="answer",
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,
     compatible_formatters=[

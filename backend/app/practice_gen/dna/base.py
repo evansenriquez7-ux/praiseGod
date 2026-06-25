@@ -442,3 +442,47 @@ class FormattedProblem(BaseModel):
         """Serialize to dict for API response."""
         import dataclasses
         return dataclasses.asdict(self)
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# UTILITIES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def extract_discrete_level(profile: dict, key: str, options: list, default: str) -> str:
+    """
+    Extracts a discrete level from the difficulty profile.
+    If the value is a string, it returns it directly (for frontend compatibility).
+    If the value is a dict with 'level', it uses that.
+    If the value is a float scalar, it maps it to the discrete option using 1/(d-1).
+    """
+    val = profile.get(key)
+    if val is None:
+        return default
+    if isinstance(val, dict):
+        val = val.get("level", val.get("scalar", default))
+    if isinstance(val, str):
+        return val
+    try:
+        scalar = float(val)
+        d = len(options)
+        if d <= 1:
+            return options[0]
+        idx = int(round(scalar * (d - 1)))
+        idx = max(0, min(d - 1, idx))
+        return options[idx]
+    except (TypeError, ValueError):
+        return default
+
+def extract_continuous_scalar(profile: dict, key: str, default: float = 0.5) -> float:
+    """
+    Extracts a continuous scalar from the difficulty profile.
+    Handles floats, dicts, and string fallbacks.
+    """
+    val = profile.get(key)
+    if val is None:
+        return default
+    if isinstance(val, dict):
+        val = val.get("scalar", val.get("level", default))
+    try:
+        return float(val)
+    except (TypeError, ValueError):
+        return default

@@ -114,9 +114,11 @@ def generate_params(
     profile = difficulty_profile or {}
     bounds  = _PARAM_BOUNDS["g3"]
 
-    orientation = profile.get("orientation", "vertical")
-    task_type   = profile.get("task_type", "read_value")
-    scale_level = profile.get("scale", "scale_5")
+    from backend.app.practice_gen.dna.base import linear_interpolate, extract_discrete_level, extract_continuous_scalar
+    
+    orientation = extract_discrete_level(profile, "orientation", ["vertical", "horizontal"], "vertical")
+    task_type   = extract_discrete_level(profile, "task_type", ["read_value", "compare_bars", "find_total", "find_difference", "find_most_least"], "read_value")
+    scale_level = extract_discrete_level(profile, "scale", ["scale_5", "scale_10", "scale_20"], "scale_5")
 
     scale_map = {"scale_5": 5, "scale_10": 10, "scale_20": 20}
     scale = scale_map.get(scale_level, 5)
@@ -124,19 +126,12 @@ def generate_params(
     # Number of categories
     cat_min = bounds["num_categories_min"]
     cat_max = bounds["num_categories_max"]
-    from backend.app.practice_gen.dna.base import linear_interpolate
     
-    if "num_categories" in profile:
-        cat_val = profile["num_categories"]
-        if isinstance(cat_val, str):
-            if cat_val == "three_four":
-                num_cats = rng.choice([3, 4])
-            elif cat_val == "five_six":
-                num_cats = rng.choice([5, 6])
-            else:
-                num_cats = rng.randint(cat_min, cat_max)
-        else:
-            num_cats = int(linear_interpolate(cat_min, cat_max, float(cat_val)))
+    cat_val = extract_discrete_level(profile, "num_categories", ["three_four", "five_six"], "three_four")
+    if cat_val == "three_four":
+        num_cats = rng.choice([3, 4])
+    elif cat_val == "five_six":
+        num_cats = rng.choice([5, 6])
     else:
         num_cats = rng.randint(cat_min, cat_max)
     
@@ -148,12 +143,8 @@ def generate_params(
     val_lo = max(bounds["value_min"], scale)
     val_hi = bounds["value_max"]
 
-    if "value_max" in profile:
-        val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, float(profile["value_max"]))))
-    
-    scalar = float(profile.get("difficulty_scalar", 0.5))
-    if "value_max" not in profile:
-        val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, scalar)))
+    scalar = extract_continuous_scalar(profile, "value_max", extract_continuous_scalar(profile, "difficulty_scalar", 0.5))
+    val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, scalar)))
     
     import math
     min_mult = math.ceil(val_lo / scale) if scale > 0 else val_lo

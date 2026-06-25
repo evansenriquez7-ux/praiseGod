@@ -24,7 +24,7 @@ from backend.app.practice_gen.dna.base import (
 _PARAM_BOUNDS: Dict[str, Dict[str, Any]] = {
     "g1": {
         "length_min": 1,
-        "length_max": 20,
+        "length_max": 100,
         "units": ["paperclips", "hands", "steps", "blocks"],
     },
     "g2": {
@@ -113,15 +113,33 @@ def generate_params(
 
     if unit_type == "non_standard":
         unit = rng.choice(_NON_STANDARD_UNITS)
-        l_min, l_max = bounds.get("length_min", 1), bounds.get("length_max", 20)
-        l_max = max(l_min, int(linear_interpolate(l_min, l_max, scalar)))
-        length = rng.randint(l_min, l_max)
+        l_min, l_max = bounds.get("length_min", 1), bounds.get("length_max", 100)
+        
+        # We use log interpolate so we spend a good amount of time in 1-20 range before jumping to 100
+        l_max_current = max(l_min, int(log_interpolate(l_min, l_max, scalar)))
+        
+        # Calculate tick step based on difficulty (1 to 10)
+        tick_options = [1, 2, 5, 10]
+        tick_step = tick_options[min(3, int(scalar * 4))]
+        
+        # Ensure UX is visually clear for larger numbers (prevent too many tiny ticks)
+        if l_max_current > 50:
+            tick_step = max(tick_step, 10)
+        elif l_max_current > 20:
+            tick_step = max(tick_step, 5)
+            
+        # Snap the length to a multiple of tick_step so it always lands exactly on a tick mark
+        min_mult = max(1, (l_min + tick_step - 1) // tick_step)
+        max_mult = max(min_mult, l_max_current // tick_step)
+        length = rng.randint(min_mult, max_mult) * tick_step
+            
         return {
-        "blank_target": "answer",
+            "blank_target": "answer",
             "length": length,
             "unit": unit,
             "unit_type": "non_standard",
             "task_type": task_type,
+            "tick_step": tick_step,
             "answer": length,
         }
 

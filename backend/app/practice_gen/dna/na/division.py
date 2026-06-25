@@ -134,19 +134,16 @@ def generate_params(
     g_key        = f"g{max(2, min(grade, 3))}"
     bounds       = _PARAM_BOUNDS[g_key]
     
-    q_max_override = profile.get("max_quotient")
-    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
-    if q_max_override is None:
-        from backend.app.practice_gen.dna.base import log_interpolate
-        q_max = int(log_interpolate(2, bounds["q_max"], diff_scalar))
-    else:
-        q_max = int(q_max_override)
+    from backend.app.practice_gen.dna.base import log_interpolate, extract_discrete_level, extract_continuous_scalar
 
-    rem_level    = profile.get("remainder", "none")
-    table_level  = profile.get("table", "2_3_4_5_10")
-    structure    = profile.get("structure", "result_unknown")
-    context      = profile.get("context", "pure")
-    num_diff_scalar = diff_scalar
+    q_max_scalar = extract_continuous_scalar(profile, "max_quotient", extract_continuous_scalar(profile, "difficulty_scalar", 0.5))
+    q_max = int(log_interpolate(2, bounds["q_max"], q_max_scalar))
+
+    rem_level    = extract_discrete_level(profile, "remainder", ["none", "with_remainder"], "none")
+    table_level  = extract_discrete_level(profile, "table", ["2_3_4_5_10", "6_7_8_9"], "2_3_4_5_10")
+    structure    = extract_discrete_level(profile, "structure", ["result_unknown", "divisor_unknown"], "result_unknown")
+    context      = extract_discrete_level(profile, "context", ["pure", "word_problem"], "pure")
+    num_diff_scalar = extract_continuous_scalar(profile, "number_difficulty", extract_continuous_scalar(profile, "difficulty_scalar", 0.5))
 
     allowed_divisors = _table_for_level(table_level, grade)
 
