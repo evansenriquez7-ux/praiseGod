@@ -467,8 +467,8 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "probability_language": {
-        "scenario_type": ["weather", "games", "daily_life"],
-        "context": ["pure", "word_problem"],
+        "scenario_type": ["certain_impossible", "likely_unlikely", "comparative"],
+        "context": ["colored_objects", "coins", "spinners", "weather"],
     },
 }
 
