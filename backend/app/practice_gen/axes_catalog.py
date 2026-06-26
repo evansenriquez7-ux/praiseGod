@@ -831,29 +831,7 @@ CONCEPT_AXES_CATALOG: Dict[str, List[dict]] = {
         },
     ],
 
-    "probability_language": [
-        {
-            "name": "scenario_type",
-            "label": "Scenario Type",
-            "options": [
-                {"value": "certain_impossible", "label": "Certain / Impossible"},
-                {"value": "likely_unlikely",    "label": "Likely / Unlikely"},
-                {"value": "comparative",        "label": "Comparative (more/less likely than)"},
-            ],
-            "default": "certain_impossible",
-        },
-        {
-            "name": "context",
-            "label": "Context",
-            "options": [
-                {"value": "coins",           "label": "Coin Toss"},
-                {"value": "spinners",        "label": "Spinners"},
-                {"value": "colored_objects", "label": "Colored Objects (bag, jar)"},
-                {"value": "weather",         "label": "Weather"},
-            ],
-            "default": "coins",
-        },
-    ],
+    "probability_language": [],
 }
 
 
