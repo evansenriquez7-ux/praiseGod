@@ -1,4 +1,4 @@
-// Force frontend rebuild hash to bypass Firebase Hosting 400 identical version error
+console.log("Force deploy 2");
 import TelemetryModal from './components/Modals/TelemetryModal';
 import FlagModal from './components/Modals/FlagModal';
 import LoginView from './views/LoginView';
