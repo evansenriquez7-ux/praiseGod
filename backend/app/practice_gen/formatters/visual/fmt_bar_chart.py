@@ -270,8 +270,12 @@ def format_bar_chart(
             correct_value = ctx.correct_answer if ctx.correct_answer is not None else (categories[values.index(max(values))] if direction == "most" else categories[values.index(min(values))])
             question_text = f"Look at the bar graph. Which category has the {direction}?"
         else:
-            ask_idx = rng.randint(0, len(categories) - 1)
-            ask_cat = categories[ask_idx]
+            if ctx.values and "question_category" in ctx.values and ctx.values["question_category"] in categories:
+                ask_cat = ctx.values["question_category"]
+                ask_idx = categories.index(ask_cat)
+            else:
+                ask_idx = rng.randint(0, len(categories) - 1)
+                ask_cat = categories[ask_idx]
             vp["ask_category"] = ask_cat
             vp["ask_series"] = ask_series
             if values2 and ask_series:

@@ -49,3 +49,13 @@ For each `node_id`:
 - If an exception occurs (e.g., `ValueError`, `TypeError`, `KeyError`), log the stack trace, the exact `node_id`, and the JSON payload that caused it.
 - Trace the error into the specific DNA file (e.g., `dna/dp/bar_graphs.py` or `dna/na/addition.py`) and fix the parsing logic so it safely handles the payload provided by the lab configuration.
 - Continue testing until all combinations for all nodes yield a 100% success rate.
+
+## Finding Logical Bugs in Bar Charts
+
+During manual testing of the generator pipeline for `mat_g3_dp_q3_3`, we discovered several critical logical bugs that did not cause code crashes, but instead produced fundamentally broken educational content:
+
+1. **Disconnected Hints & Questions**: The DNA generator (`bar_graphs.py`) randomly selected a category (e.g. "sunflowers") and baked it into the problem hints. However, the downstream visual formatter (`fmt_bar_chart.py`) ignored the DNA's selection and randomly generated a *new* target category for the question stem (e.g. "tulips"). This resulted in the question asking for one thing, while the hints gave the answer to something else.
+2. **Horizontal vs. Vertical Vocabulary**: When the difficulty profile explicitly requested `orientation: "horizontal"`, the hints incorrectly stated that the scale was on the "vertical (y-axis)" and asked the student to look for the "tallest" bar instead of the "longest" bar. This happened because the hint generator was looking for the `orientation` key in the wrong nested dictionary level.
+3. **Four-Way Ties for "The Most"**: When testing the `task_type: "find_most_least"` dimension, the generator randomly assigned values to the bars. Occasionally, it assigned identical values to all bars (e.g., `[30, 30, 30, 30]`). When evaluating which bar had "the most", it blindly used `max(values)` and returned the first category it hit, producing a broken question where multiple options were technically correct.
+
+**Fix Action**: We updated the formatting pipeline to ensure it extracts `question_category` directly from the DNA context (`ctx.values`). We also updated the hint generation to properly unpack the `visual_params` payload, and added logic to artificially increment/decrement values in the generator array to prevent ties when generating "most/least" questions.

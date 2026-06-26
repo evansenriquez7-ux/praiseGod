@@ -201,10 +201,23 @@ def generate_params(
     # find_most_least
     direction = rng.choice(["most", "least"])
     if direction == "most":
+        m_val = max(values)
+        if values.count(m_val) > 1:
+            idx = values.index(m_val)
+            values[idx] += scale
         best_idx = values.index(max(values))
         return {
         "blank_target": "answer",**base, "direction": "most", "answer": categories[best_idx]}
     else:
+        m_val = min(values)
+        if values.count(m_val) > 1:
+            idx = values.index(m_val)
+            if m_val - scale >= 0:
+                values[idx] -= scale
+            else:
+                for i in range(len(values)):
+                    if i != idx and values[i] == m_val:
+                        values[i] += scale
         best_idx = values.index(min(values))
         return {
         "blank_target": "answer",**base, "direction": "least", "answer": categories[best_idx]}
@@ -218,9 +231,10 @@ def generate_hints(
 ) -> List[str]:
     bg_label    = VOCAB_BAR_GRAPH.resolve(cumulative_vocab)
     scale_label = VOCAB_SCALE.resolve(cumulative_vocab)
-    scale       = values.get("scale", 5)
+    vp          = values.get("visual_params", {})
+    scale       = vp.get("scale", 5)
     task_type   = values.get("task_type", "read_value")
-    orientation = values.get("orientation", "vertical")
+    orientation = vp.get("orientation", "vertical")
 
     axis = "vertical (y-axis)" if orientation == "vertical" else "horizontal (x-axis)"
     hints = [
@@ -244,9 +258,11 @@ def generate_hints(
             hints.append("Compare: which bar is taller (or longer)?")
     elif task_type == "find_most_least":
         direction = values.get("direction", "most")
-        hints.append(
-            f"Look for the {'tallest' if direction == 'most' else 'shortest'} bar."
-        )
+        if orientation == "vertical":
+            adj = "tallest" if direction == "most" else "shortest"
+        else:
+            adj = "longest" if direction == "most" else "shortest"
+        hints.append(f"Look for the {adj} bar.")
 
     return hints
 
