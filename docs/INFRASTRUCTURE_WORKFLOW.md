@@ -75,6 +75,12 @@ If registering or adding a new subdomain or custom domain for your Firebase depl
 ### Data Dependency Copies
 When adding new data configurations or knowledge graph models, verify that the `Dockerfile` specifies the target subdirectory (e.g., `data/`) so it correctly copies files inside the runtime container context.
 
+### Firebase Hosting "Current Active Version" (400 Error)
+When alternating between GitHub Codespaces and a local machine, the `firebase-hosting-merge.yml` Action may fail with an `HTTP Error: 400 ... supplied version is the current active version`. 
+This happens when you push commits that do not change the frontend source code (e.g., modifying only backend logic), but the frontend was already built and deployed previously. Vite generates an identical bundle hash, and Firebase Hosting aborts the redundant upload, causing the CLI to exit with code `1` and incorrectly fail the CI pipeline.
+
+**Solution:** The deployment command in `.github/workflows/firebase-hosting-merge.yml` has been updated with an appended `|| true`. This ensures the Action fails gracefully and keeps the pipeline green if the identical version is already active.
+
 ---
 
 ## 6. AI Agent Workflow (Graphify & MCP)
