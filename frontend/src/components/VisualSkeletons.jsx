@@ -1546,20 +1546,40 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
     });
   };
 
-  const handleBarDrag = (idx, e, isSecondSeries = false) => {
+  const handlePointerDown = (idx, e, isSecondSeries = false) => {
     if (disabled || is_read_mode) return;
-    const rect = e.currentTarget.parentElement.getBoundingClientRect();
-    const y = e.clientY - rect.top;
-    const height = rect.height;
-    // Snap to scale increments
-    const rawValue = (1 - y / height) * max_y;
-    const snappedValue = Math.round(rawValue / scale) * scale;
+    
+    e.preventDefault(); // prevent text selection while dragging
+    
+    const rect = e.currentTarget.getBoundingClientRect();
     const setter = isSecondSeries ? setBarValues2 : setBarValues;
-    setter(prev => {
-      const newVals = [...prev];
-      newVals[idx] = Math.max(0, Math.min(max_y, snappedValue));
-      return newVals;
-    });
+    
+    const updateValue = (clientY) => {
+      const y = clientY - rect.top;
+      const height = rect.height;
+      const rawValue = (1 - y / height) * max_y;
+      const snappedValue = Math.round(rawValue / scale) * scale;
+      setter(prev => {
+        const newVals = [...prev];
+        newVals[idx] = Math.max(0, Math.min(max_y, snappedValue));
+        return newVals;
+      });
+    };
+    
+    // Initial update on click
+    updateValue(e.clientY);
+    
+    const onMove = (moveEvent) => {
+      updateValue(moveEvent.clientY);
+    };
+    
+    const onUp = () => {
+      document.removeEventListener('pointermove', onMove);
+      document.removeEventListener('pointerup', onUp);
+    };
+    
+    document.addEventListener('pointermove', onMove);
+    document.addEventListener('pointerup', onUp);
   };
   
   const handleReadAnswerChange = (idx, value) => {
@@ -1732,9 +1752,10 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
                   borderRadius: '4px 4px 0 0',
                   cursor: (disabled || is_read_mode) ? 'default' : 'pointer',
                   outline: isAskedCategory ? '2px solid hsl(var(--primary))' : 'none',
-                  outlineOffset: '2px'
+                  outlineOffset: '2px',
+                  touchAction: 'none'
                 }}
-                onClick={(e) => !is_read_mode && handleBarDrag(idx, e, false)}
+                onPointerDown={(e) => !is_read_mode && handlePointerDown(idx, e, false)}
               >
                 {/* Actual bar - no value label on top */}
                 {is_pictograph ? (
@@ -1809,9 +1830,10 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
                     borderRadius: '4px 4px 0 0',
                     cursor: (disabled || is_read_mode) ? 'default' : 'pointer',
                     outline: (isAskedCategory && ask_series === series_labels?.[1]) ? '2px solid hsl(var(--secondary))' : 'none',
-                    outlineOffset: '2px'
+                    outlineOffset: '2px',
+                    touchAction: 'none'
                   }}
-                  onClick={(e) => !is_read_mode && handleBarDrag(idx, e, true)}
+                  onPointerDown={(e) => !is_read_mode && handlePointerDown(idx, e, true)}
                 >
                   <div style={{
                     position: 'absolute',

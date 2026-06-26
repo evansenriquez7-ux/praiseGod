@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-06-26)
 
 ## Corpus Check
-- 223 files · ~252,311 words
+- 223 files · ~252,353 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f6951fac`
+- Built from commit: `29cbd11a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -354,7 +354,7 @@ Nodes (19): Breaking Changes, CI/CD Integration, Cloud SQL Configuration, Config
 
 ### Community 35 - "Community 35"
 Cohesion: 0.09
-Nodes (18): ErrorPattern, A pedagogically meaningful wrong answer.      formula:          SymPy expression, generate_hints(), generate_params(), DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile., generate_hints(), generate_params() (+10 more)
+Nodes (18): ErrorPattern, A pedagogically meaningful wrong answer.      formula:          SymPy expression, generate_hints(), generate_params(), DNA: Calendar (Measurement & Geometry)  Covers MATATAG grades 1–2 calendar compe, Returns visual_params for the Calendar formatter and an answer value.       {"mo, generate_hints(), generate_params() (+10 more)
 
 ### Community 36 - "Community 36"
 Cohesion: 0.08
@@ -822,7 +822,7 @@ Nodes (5): _build_equation_sentence(), format_cloze(), Textual Formatter — Clo
 
 ### Community 156 - "Community 156"
 Cohesion: 0.40
-Nodes (4): generate_hints(), generate_params(), DNA: 2D Shapes (Measurement & Geometry)  Covers MATATAG grades 1–2 2D shape comp, Sample one item from the static pool filtered by grade and difficulty_profile.
+Nodes (4): generate_hints(), generate_params(), DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile.
 
 ### Community 157 - "Community 157"
 Cohesion: 0.40
