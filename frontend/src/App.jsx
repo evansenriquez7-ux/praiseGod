@@ -1,3 +1,4 @@
+// Force frontend rebuild hash to bypass Firebase Hosting 400 identical version error
 import TelemetryModal from './components/Modals/TelemetryModal';
 import FlagModal from './components/Modals/FlagModal';
 import LoginView from './views/LoginView';

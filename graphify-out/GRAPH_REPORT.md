@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-06-26)
 
 ## Corpus Check
-- 223 files · ~252,244 words
+- 223 files · ~252,257 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2212 nodes · 3465 edges · 167 communities (164 shown, 3 thin omitted)
+- 2212 nodes · 3465 edges · 168 communities (165 shown, 3 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.54)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e1ec0fc0`
+- Built from commit: `5732a4b3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -166,6 +166,7 @@
 - [[_COMMUNITY_Community 150|Community 150]]
 - [[_COMMUNITY_Community 151|Community 151]]
 - [[_COMMUNITY_Community 152|Community 152]]
+- [[_COMMUNITY_Community 153|Community 153]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `FormattedProblem` - 70 edges
@@ -194,7 +195,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (167 total, 3 thin omitted)
+## Communities (168 total, 3 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.17
@@ -218,7 +219,7 @@ Nodes (24): _count_decimal_places(), generate_number_by_window(), generate_pair_
 
 ### Community 5 - "Community 5"
 Cohesion: 0.08
-Nodes (25): Any, generate_hints(), generate_hints(), generate_hints(), generate_params(), DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile., generate_hints() (+17 more)
+Nodes (25): Any, generate_hints(), generate_hints(), generate_hints(), generate_params(), DNA: Geometric Lines (Measurement & Geometry)  Covers MATATAG grade 3 lines comp, Sample one item from the static pool filtered by grade and difficulty profile., generate_hints() (+17 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.13
@@ -338,7 +339,7 @@ Nodes (19): Breaking Changes, CI/CD Integration, Cloud SQL Configuration, Config
 
 ### Community 35 - "Community 35"
 Cohesion: 0.09
-Nodes (20): ErrorPattern, A pedagogically meaningful wrong answer.      formula:          SymPy expression, A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params(), DNA: Area (Measurement & Geometry)  Covers MATATAG grade 3 area competencies onl, Returns side dimensions and the area answer.     For find_missing_dimension task (+12 more)
+Nodes (20): ErrorPattern, A pedagogically meaningful wrong answer.      formula:          SymPy expression, A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params(), DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile. (+12 more)
 
 ### Community 36 - "Community 36"
 Cohesion: 0.11
@@ -489,8 +490,8 @@ Cohesion: 0.27
 Nodes (9): generate_hints(), generate_params(), _make_expanded_form(), num_to_tagalog_style_english_words(), DNA: Number Reading / Writing (Number & Algebra)  Covers MATATAG grades 1–3 nume, Generate a number reading/writing problem.      Returns:         {             ", Return 2–4 step-by-step hints for a number reading/writing problem., Convert a positive integer (1–10000) to Filipino math word style English.      E (+1 more)
 
 ### Community 75 - "Community 75"
-Cohesion: 0.09
-Nodes (24): log_interpolate(), Logarithmic interpolation between min_val and max_val at position t.      Produc, generate_hints(), generate_params(), DNA: Length Measurement (Measurement & Geometry)  Covers MATATAG grades 1–2 leng, Returns numeric params used by the ruler_measure formatter or word-problem spine, generate_hints(), generate_params() (+16 more)
+Cohesion: 0.12
+Nodes (18): log_interpolate(), Logarithmic interpolation between min_val and max_val at position t.      Produc, generate_hints(), generate_params(), DNA: Length Measurement (Measurement & Geometry)  Covers MATATAG grades 1–2 leng, Returns numeric params used by the ruler_measure formatter or word-problem spine, generate_hints(), generate_params() (+10 more)
 
 ### Community 76 - "Community 76"
 Cohesion: 0.33
@@ -788,6 +789,10 @@ Nodes (4): 1. Install and Verify Firebase Skills, 2. Configure and Verify Fireba
 Cohesion: 0.50
 Nodes (3): Android Studio Setup, MCP Setup, Skills Installation
 
+### Community 153 - "Community 153"
+Cohesion: 0.29
+Nodes (6): generate_hints(), generate_params(), DNA: Counting (Number & Algebra)  Refactored from:   - matatag_skeletons.py  (co, Generate counting parameters satisfying difficulty_profile., Return 2–4 step-by-step hint strings for the given counting problem., _select_skip()
+
 ## Knowledge Gaps
 - **692 isolated node(s):** `PackageDescription`, `Foundation`, `PathKit`, `Config`, `name` (+687 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -796,7 +801,7 @@ Nodes (3): Android Studio Setup, MCP Setup, Skills Installation
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `DNA` connect `Community 84` to `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 20`, `Community 35`, `Community 37`, `Community 42`, `Community 48`, `Community 54`, `Community 55`, `Community 57`, `Community 62`, `Community 72`, `Community 74`, `Community 75`, `Community 76`, `Community 92`, `Community 123`, `Community 124`?**
+- **Why does `DNA` connect `Community 84` to `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 20`, `Community 153`, `Community 35`, `Community 37`, `Community 42`, `Community 48`, `Community 54`, `Community 55`, `Community 57`, `Community 62`, `Community 72`, `Community 74`, `Community 75`, `Community 76`, `Community 92`, `Community 123`, `Community 124`?**
   _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **Why does `QuestionContext` connect `Community 30` to `Community 11`, `Community 13`, `Community 37`, `Community 39`, `Community 48`, `Community 50`, `Community 51`, `Community 52`, `Community 54`, `Community 55`, `Community 61`, `Community 69`, `Community 70`, `Community 71`, `Community 78`, `Community 79`, `Community 80`, `Community 81`, `Community 82`, `Community 83`, `Community 98`, `Community 105`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
