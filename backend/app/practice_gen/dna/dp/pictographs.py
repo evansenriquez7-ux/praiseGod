@@ -147,14 +147,8 @@ def generate_params(
     cat_min = bounds["num_categories_min"]
     cat_max = bounds["num_categories_max"]
     
-    cat_val = extract_discrete_level(profile, "num_categories", ["three_four", "five_six"], "three_four")
-    if cat_val == "three_four":
-        num_cats = rng.choice([3, 4])
-    elif cat_val == "five_six":
-        num_cats = rng.choice([5, 6])
-    else:
-        num_cats = rng.randint(cat_min, cat_max)
-
+    cat_scalar = extract_continuous_scalar(profile, "num_categories", extract_continuous_scalar(profile, "difficulty_scalar", 0.5))
+    num_cats = int(linear_interpolate(cat_min, cat_max, cat_scalar))
     num_cats = max(3, min(num_cats, 6))
 
     # Pick categories

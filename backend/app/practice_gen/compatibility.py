@@ -383,6 +383,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     "patterns": {
         "ask_type": ["next", "missing"],
         "pattern_type": ["repeating", "growing"],
+        "element_type": ["numbers", "shapes", "number_words"],
     },
 
     "fractions": {
@@ -428,10 +429,12 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     "time_reading": {
         "precision": ["hour", "half_hour", "quarter_hour", "five_minutes", "one_minute"],
         "include_ampm": ["yes", "no"],
+        "mode": ["read", "set"],
     },
 
     "calendar": {
         "task_type": ["read_calendar", "elapsed_time"],
+        "calendar_feature": ["days", "weeks", "months", "dates"],
     },
 
     "perimeter": {

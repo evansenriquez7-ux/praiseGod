@@ -77,9 +77,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, Any] = {    "number_type": ["single_digit", "multi_digit"],
-    "number_difficulty": "continuous",
-}
+_DIFFICULTY_AXES: Dict[str, Any] = {"number_difficulty": "continuous"}
 
 # Tables allowed per axis level
 _TABLE_SETS: Dict[str, List[int]] = {

@@ -73,9 +73,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, List[str]] = {    "regrouping": ["none", "ones", "tens", "double"],
-    "number_type": ["round", "non_round"],
-}
+_DIFFICULTY_AXES: Dict[str, Any] = {"number_difficulty": "continuous"}
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────

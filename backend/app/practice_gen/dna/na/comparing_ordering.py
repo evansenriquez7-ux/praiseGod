@@ -45,8 +45,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, List[str]] = {    "range":      ["up_to_20", "up_to_100", "up_to_1000", "up_to_10000"],
-    "proximity":  ["far_apart", "close_together"],
+_DIFFICULTY_AXES: Dict[str, Any] = {"number_difficulty": "continuous"}
 }
 
 

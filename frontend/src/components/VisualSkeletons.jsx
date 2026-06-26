@@ -1546,10 +1546,17 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
     });
   };
 
-  const updateBarValue = (idx, clientY, rect, isSecondSeries) => {
-    const y = clientY - rect.top;
-    const height = rect.height;
-    const rawValue = (1 - y / height) * max_y;
+  const updateBarValue = (idx, clientX, clientY, rect, isSecondSeries) => {
+    let rawValue;
+    if (orientation === 'horizontal') {
+      const x = clientX - rect.left;
+      const width = rect.width;
+      rawValue = (x / width) * max_y;
+    } else {
+      const y = clientY - rect.top;
+      const height = rect.height;
+      rawValue = (1 - y / height) * max_y;
+    }
     const snappedValue = Math.round(rawValue / scale) * scale;
     const setter = isSecondSeries ? setBarValues2 : setBarValues;
     setter(prev => {
@@ -1566,10 +1573,12 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
     
     // Store rect on the element dataset so move events can use it without recalculating
     const rect = element.getBoundingClientRect();
+    element.dataset.rectLeft = rect.left;
+    element.dataset.rectWidth = rect.width;
     element.dataset.rectTop = rect.top;
     element.dataset.rectHeight = rect.height;
     
-    updateBarValue(idx, e.clientY, rect, isSecondSeries);
+    updateBarValue(idx, e.clientX, e.clientY, rect, isSecondSeries);
   };
 
   const handlePointerMove = (idx, e, isSecondSeries = false) => {
@@ -1577,10 +1586,12 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
     const element = e.currentTarget;
     if (element.hasPointerCapture(e.pointerId)) {
       const rect = {
+        left: parseFloat(element.dataset.rectLeft),
+        width: parseFloat(element.dataset.rectWidth),
         top: parseFloat(element.dataset.rectTop),
         height: parseFloat(element.dataset.rectHeight)
       };
-      updateBarValue(idx, e.clientY, rect, isSecondSeries);
+      updateBarValue(idx, e.clientX, e.clientY, rect, isSecondSeries);
     }
   };
 
@@ -1678,48 +1689,64 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
       <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
         <div style={{
           position: 'relative',
-          height: chartHeight + 60,
+          height: orientation === 'horizontal' ? 'auto' : chartHeight + 60,
+          width: orientation === 'horizontal' ? chartHeight + 100 : 'auto',
           display: 'flex',
-          alignItems: 'flex-end',
+          flexDirection: orientation === 'horizontal' ? 'column' : 'row',
+          alignItems: orientation === 'horizontal' ? 'flex-start' : 'flex-end',
         gap: targetValues2 ? groupGap : barGap,
-        padding: '20px 50px 40px',
+        padding: orientation === 'horizontal' ? '20px 40px 30px 80px' : '20px 50px 40px',
         background: 'hsl(var(--card-bg))',
         borderRadius: '12px',
         border: '1px solid hsl(var(--border-color))'
       }}>
-        {/* Horizontal grid lines */}
+        {/* Grid lines */}
         {gridLines.map((value, i) => (
           <div
             key={i}
             style={{
               position: 'absolute',
-              left: '45px',
-              right: '20px',
-              bottom: `${40 + (value / max_y) * chartHeight}px`,
-              borderTop: value === 0 
-                ? '2px solid hsl(var(--border-color))' 
-                : '1px solid hsla(var(--border-color), 0.35)', // Subtle solid line
+              ...(orientation === 'horizontal' ? {
+                top: '20px',
+                bottom: '30px',
+                left: `${80 + (value / max_y) * chartHeight}px`,
+                borderLeft: value === 0 
+                  ? '2px solid hsl(var(--border-color))' 
+                  : '1px solid hsla(var(--border-color), 0.35)',
+              } : {
+                left: '45px',
+                right: '20px',
+                bottom: `${40 + (value / max_y) * chartHeight}px`,
+                borderTop: value === 0 
+                  ? '2px solid hsl(var(--border-color))' 
+                  : '1px solid hsla(var(--border-color), 0.35)',
+              }),
               pointerEvents: 'none'
             }}
           />
         ))}
 
-
-
-        {/* Y-axis labels */}
+        {/* Grid value labels */}
         {gridLines.map((value, i) => {
           return (
             <span
               key={i}
               style={{
                 position: 'absolute',
-                left: '4px',
-                width: '36px',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'flex-end',
-                bottom: `${40 + (value / max_y) * chartHeight}px`,
-                transform: 'translateY(50%)',
+                ...(orientation === 'horizontal' ? {
+                  bottom: '4px',
+                  left: `${80 + (value / max_y) * chartHeight}px`,
+                  transform: 'translateX(-50%)',
+                  justifyContent: 'center',
+                } : {
+                  left: '4px',
+                  width: '36px',
+                  justifyContent: 'flex-end',
+                  bottom: `${40 + (value / max_y) * chartHeight}px`,
+                  transform: 'translateY(50%)',
+                }),
                 fontSize: '11px',
                 fontWeight: '600',
                 color: 'hsl(var(--text-muted))',
@@ -1748,18 +1775,23 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
           <div key={idx} style={{
             position: 'relative',
             display: 'flex',
-            alignItems: 'flex-end'
+            alignItems: orientation === 'horizontal' ? 'center' : 'flex-end'
           }}>
             {/* Bar group (single or double) */}
-            <div style={{ display: 'flex', gap: barGap, alignItems: 'flex-end' }}>
+            <div style={{ display: 'flex', gap: barGap, flexDirection: orientation === 'horizontal' ? 'column' : 'row', alignItems: orientation === 'horizontal' ? 'flex-start' : 'flex-end' }}>
               {/* First bar */}
               <div
                 style={{
                   position: 'relative',
-                  width: barWidth,
-                  height: chartHeight,
+                  ...(orientation === 'horizontal' ? {
+                    width: chartHeight,
+                    height: barWidth,
+                  } : {
+                    width: barWidth,
+                    height: chartHeight,
+                  }),
                   background: 'rgba(255,255,255,0.03)',
-                  borderRadius: '4px 4px 0 0',
+                  borderRadius: orientation === 'horizontal' ? '0 4px 4px 0' : '4px 4px 0 0',
                   cursor: (disabled || is_read_mode) ? 'default' : 'pointer',
                   outline: isAskedCategory ? '2px solid hsl(var(--primary))' : 'none',
                   outlineOffset: '2px',
@@ -1774,14 +1806,21 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
                 {is_pictograph ? (
                   <div style={{
                     position: 'absolute',
-                    bottom: 0,
-                    width: '100%',
+                    ...(orientation === 'horizontal' ? {
+                      left: 0,
+                      height: '100%',
+                      width: `${(barValues[idx] / max_y) * 100}%`,
+                      flexDirection: 'row',
+                    } : {
+                      bottom: 0,
+                      width: '100%',
+                      height: `${(barValues[idx] / max_y) * 100}%`,
+                      flexDirection: 'column-reverse',
+                    }),
                     display: 'flex',
-                    flexDirection: 'column-reverse',
                     alignItems: 'center',
                     justifyContent: 'flex-start',
                     gap: '2px',
-                    height: `${(barValues[idx] / max_y) * 100}%`,
                     overflow: 'hidden'
                   }}>
                     {(() => {
@@ -1810,7 +1849,7 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
                       };
                       
                       return (
-                        <div style={{ display: 'flex', flexDirection: 'column-reverse', gap: '4px', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: orientation === 'horizontal' ? 'row' : 'column-reverse', gap: '4px', alignItems: 'center' }}>
                           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2px' }}>{renderGroup(numOnes, '1x', '#475569')}</div>
                           {numTens > 0 && <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2px' }}>{renderGroup(numTens, '10x', '#2563eb')}</div>}
                           {numHundreds > 0 && <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2px' }}>{renderGroup(numHundreds, '100x', '#16a34a')}</div>}
@@ -1822,12 +1861,21 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
                 ) : (
                   <div style={{
                     position: 'absolute',
-                    bottom: 0,
-                    width: '100%',
-                    height: `${(barValues[idx] / max_y) * 100}%`,
-                    background: 'linear-gradient(180deg, hsl(var(--primary)), hsl(var(--primary) / 0.7))',
-                    borderRadius: '4px 4px 0 0',
-                    transition: 'height 0.1s ease'
+                    ...(orientation === 'horizontal' ? {
+                      left: 0,
+                      height: '100%',
+                      width: `${(barValues[idx] / max_y) * 100}%`,
+                      background: 'linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary) / 0.7))',
+                      borderRadius: '0 4px 4px 0',
+                      transition: 'width 0.1s ease'
+                    } : {
+                      bottom: 0,
+                      width: '100%',
+                      height: `${(barValues[idx] / max_y) * 100}%`,
+                      background: 'linear-gradient(180deg, hsl(var(--primary)), hsl(var(--primary) / 0.7))',
+                      borderRadius: '4px 4px 0 0',
+                      transition: 'height 0.1s ease'
+                    })
                   }} />
                 )}
               </div>
@@ -1837,10 +1885,15 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
                 <div
                   style={{
                     position: 'relative',
-                    width: barWidth,
-                    height: chartHeight,
+                    ...(orientation === 'horizontal' ? {
+                      width: chartHeight,
+                      height: barWidth,
+                    } : {
+                      width: barWidth,
+                      height: chartHeight,
+                    }),
                     background: 'rgba(255,255,255,0.03)',
-                    borderRadius: '4px 4px 0 0',
+                    borderRadius: orientation === 'horizontal' ? '0 4px 4px 0' : '4px 4px 0 0',
                     cursor: (disabled || is_read_mode) ? 'default' : 'pointer',
                     outline: (isAskedCategory && ask_series === series_labels?.[1]) ? '2px solid hsl(var(--secondary))' : 'none',
                     outlineOffset: '2px',
@@ -1853,12 +1906,21 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
                 >
                   <div style={{
                     position: 'absolute',
-                    bottom: 0,
-                    width: '100%',
-                    height: `${(barValues2[idx] / max_y) * 100}%`,
-                    background: 'linear-gradient(180deg, hsl(var(--secondary)), hsl(var(--secondary) / 0.7))',
-                    borderRadius: '4px 4px 0 0',
-                    transition: 'height 0.1s ease'
+                    ...(orientation === 'horizontal' ? {
+                      left: 0,
+                      height: '100%',
+                      width: `${(barValues2[idx] / max_y) * 100}%`,
+                      background: 'linear-gradient(90deg, hsl(var(--secondary)), hsl(var(--secondary) / 0.7))',
+                      borderRadius: '0 4px 4px 0',
+                      transition: 'width 0.1s ease'
+                    } : {
+                      bottom: 0,
+                      width: '100%',
+                      height: `${(barValues2[idx] / max_y) * 100}%`,
+                      background: 'linear-gradient(180deg, hsl(var(--secondary)), hsl(var(--secondary) / 0.7))',
+                      borderRadius: '4px 4px 0 0',
+                      transition: 'height 0.1s ease'
+                    })
                   }} />
                 </div>
               )}
@@ -1866,15 +1928,27 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
 
             {/* Labels and Controls below the bar group */}
             <div style={{
-              position: 'absolute',
-              top: '100%',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '8px',
-              marginTop: '8px'
+              ...(orientation === 'horizontal' ? {
+                position: 'absolute',
+                right: '100%',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                paddingRight: '12px',
+                display: 'flex',
+                flexDirection: 'row-reverse',
+                alignItems: 'center',
+                gap: '8px',
+              } : {
+                position: 'absolute',
+                top: '100%',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '8px',
+                marginTop: '8px'
+              })
             }}>
             {/* Controls - only in CREATE mode */}
             {!disabled && !is_read_mode && (

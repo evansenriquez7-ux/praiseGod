@@ -49,10 +49,7 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
 
 
 # ─── difficulty axes ──────────────────────────────────────────────────────────
-_DIFFICULTY_AXES: Dict[str, Any] = {    "precision":           ["nearest_ten", "nearest_hundred", "nearest_thousand"],
-    "boundary_proximity":  ["far_from_boundary", "near_boundary"],
-    "number_difficulty": "continuous",
-}
+_DIFFICULTY_AXES: Dict[str, Any] = {"number_difficulty": "continuous"}
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
