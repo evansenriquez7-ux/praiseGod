@@ -203,6 +203,11 @@ def format_bar_chart(
         vp = ctx.visual_params.copy()
         if "labels" not in vp:
             vp["labels"] = vp["categories"]
+        if "max_y" not in vp:
+            all_vals = vp.get("values", []) + (vp.get("values2") or [])
+            max_v = max(all_vals) if all_vals else 10
+            scale = vp.get("scale", 1)
+            vp["max_y"] = ((max_v // scale) + 1) * scale
     elif ctx.values and "number" in ctx.values:
         # Represent a single number as a bar
         val = int(ctx.values["number"])

@@ -1546,40 +1546,50 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
     });
   };
 
+  const updateBarValue = (idx, clientY, rect, isSecondSeries) => {
+    const y = clientY - rect.top;
+    const height = rect.height;
+    const rawValue = (1 - y / height) * max_y;
+    const snappedValue = Math.round(rawValue / scale) * scale;
+    const setter = isSecondSeries ? setBarValues2 : setBarValues;
+    setter(prev => {
+      const newVals = [...prev];
+      newVals[idx] = Math.max(0, Math.min(max_y, snappedValue));
+      return newVals;
+    });
+  };
+
   const handlePointerDown = (idx, e, isSecondSeries = false) => {
     if (disabled || is_read_mode) return;
+    const element = e.currentTarget;
+    element.setPointerCapture(e.pointerId);
     
-    e.preventDefault(); // prevent text selection while dragging
+    // Store rect on the element dataset so move events can use it without recalculating
+    const rect = element.getBoundingClientRect();
+    element.dataset.rectTop = rect.top;
+    element.dataset.rectHeight = rect.height;
     
-    const rect = e.currentTarget.getBoundingClientRect();
-    const setter = isSecondSeries ? setBarValues2 : setBarValues;
-    
-    const updateValue = (clientY) => {
-      const y = clientY - rect.top;
-      const height = rect.height;
-      const rawValue = (1 - y / height) * max_y;
-      const snappedValue = Math.round(rawValue / scale) * scale;
-      setter(prev => {
-        const newVals = [...prev];
-        newVals[idx] = Math.max(0, Math.min(max_y, snappedValue));
-        return newVals;
-      });
-    };
-    
-    // Initial update on click
-    updateValue(e.clientY);
-    
-    const onMove = (moveEvent) => {
-      updateValue(moveEvent.clientY);
-    };
-    
-    const onUp = () => {
-      document.removeEventListener('pointermove', onMove);
-      document.removeEventListener('pointerup', onUp);
-    };
-    
-    document.addEventListener('pointermove', onMove);
-    document.addEventListener('pointerup', onUp);
+    updateBarValue(idx, e.clientY, rect, isSecondSeries);
+  };
+
+  const handlePointerMove = (idx, e, isSecondSeries = false) => {
+    if (disabled || is_read_mode) return;
+    const element = e.currentTarget;
+    if (element.hasPointerCapture(e.pointerId)) {
+      const rect = {
+        top: parseFloat(element.dataset.rectTop),
+        height: parseFloat(element.dataset.rectHeight)
+      };
+      updateBarValue(idx, e.clientY, rect, isSecondSeries);
+    }
+  };
+
+  const handlePointerUp = (idx, e) => {
+    if (disabled || is_read_mode) return;
+    const element = e.currentTarget;
+    if (element.hasPointerCapture(e.pointerId)) {
+      element.releasePointerCapture(e.pointerId);
+    }
   };
   
   const handleReadAnswerChange = (idx, value) => {
@@ -1756,6 +1766,9 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
                   touchAction: 'none'
                 }}
                 onPointerDown={(e) => !is_read_mode && handlePointerDown(idx, e, false)}
+                onPointerMove={(e) => !is_read_mode && handlePointerMove(idx, e, false)}
+                onPointerUp={(e) => !is_read_mode && handlePointerUp(idx, e)}
+                onPointerCancel={(e) => !is_read_mode && handlePointerUp(idx, e)}
               >
                 {/* Actual bar - no value label on top */}
                 {is_pictograph ? (
@@ -1834,6 +1847,9 @@ export function BarChartInteractive({ params, onAnswer, disabled }) {
                     touchAction: 'none'
                   }}
                   onPointerDown={(e) => !is_read_mode && handlePointerDown(idx, e, true)}
+                  onPointerMove={(e) => !is_read_mode && handlePointerMove(idx, e, true)}
+                  onPointerUp={(e) => !is_read_mode && handlePointerUp(idx, e)}
+                  onPointerCancel={(e) => !is_read_mode && handlePointerUp(idx, e)}
                 >
                   <div style={{
                     position: 'absolute',
