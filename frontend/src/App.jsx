@@ -64,9 +64,9 @@ function App() {
   const [regInterests, setRegInterests] = useState('basketball, bible');
   const [regLang, setRegLang] = useState('en');
 
-  // Practice States
+    // Restore activeQuestion and selectedOptionKey state variables
   const [activeQuestion, setActiveQuestion] = useState(null);
-    // Removed selectedOptionKey, rely entirely on practiceVisualAnswer
+  const [selectedOptionKey, setSelectedOptionKey] = useState(null);
   const [answerResult, setAnswerResult] = useState(null);
   const [loadingQuestion, setLoadingQuestion] = useState(false);
   const [questionStartTime, setQuestionStartTime] = useState(null);
