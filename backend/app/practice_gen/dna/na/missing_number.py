@@ -127,7 +127,14 @@ def generate_params(
         op_axis = "addition_subtraction"
 
     blank_pos      = profile.get("blank_position")
-    if blank_pos is None:
+    if blank_pos == "middle":
+        blank_pos = "change"
+    elif blank_pos == "end":
+        blank_pos = "result"
+    elif blank_pos == "beginning":
+        blank_pos = "start"
+
+    if blank_pos not in ["result", "change", "start"]:
         blank_pos = rng.choice(["result", "change", "start"])
 
     equation_type  = profile.get("equation_type",   "standard")

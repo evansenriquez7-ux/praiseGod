@@ -1,3 +1,4 @@
+import QuestionRenderer from '../components/QuestionRenderer';
 import React from 'react';
 import { Play, BookOpen, Shield, RefreshCw, Zap, Maximize2, Minimize2, Check, ExternalLink, ChevronRight, Share2, Upload, Terminal, BookMarked, User, Cpu, Award, MessageSquare, AlertTriangle, CheckCircle, XCircle } from 'lucide-react';
 import ReactFlow, { Background, Controls } from 'reactflow';
@@ -10,6 +11,7 @@ import { renderVisualInner } from '../utils/renderUtils';
 import { SortOrderInteractive } from '../components/VisualSkeletons';
 
 export default function PracticeView(props) {
+
   const {
     practiceViewType, setPracticeViewType, setSubject, setCurrentView,
     activeQuestion, isSubmitting, practiceVisualAnswer, setPracticeVisualAnswer,
@@ -756,22 +758,12 @@ export default function PracticeView(props) {
                     {activeQuestion.stem}
                   </h1>
 
-                  {/* Worked Example Scaffolded decompositions (alternates when struggling) */}
-                  {activeQuestion.is_worked_example && activeQuestion.worked_example_steps && (
-                    <div className="glass-card" style={{ borderLeft: '4px solid hsl(var(--warning))', background: 'rgba(245, 158, 11, 0.05)', marginBottom: '30px', padding: '20px' }}>
-                      <h4 style={{ color: '#fbbf24', display: 'flex', gap: '6px', alignItems: 'center', marginBottom: '10px' }}>
-                        <Zap className="w-5 h-5" />
-                        <span>Worked Example Guidance Scaffold Active</span>
-                      </h4>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '15px' }}>
-                        {activeQuestion.worked_example_steps.map((step, idx) => (
-                          <div key={idx} style={{ padding: '8px', background: 'rgba(0,0,0,0.2)', borderRadius: '8px' }}>
-                            {step}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <QuestionRenderer 
+                      question={activeQuestion}
+                      answer={practiceVisualAnswer}
+                      setAnswer={setPracticeVisualAnswer}
+                      answerResult={answerResult}
+                    />
 
                   {/* Visual Question Rendering OR MCQ Options */}
                   {activeQuestion.is_visual ? (
