@@ -190,9 +190,15 @@ def generate_params(
     structure = profile.get("structure", "result_unknown")
     spine = profile.get("spine", None)
 
-    # Build candidate operand pool
+    # Build candidate operand pool with grade-appropriate floor
+    min_a = 0
+    if grade >= 3 and max_result >= 100:
+        min_a = 10
+    if grade >= 4 and max_result >= 1000:
+        min_a = 100
+        
     a_hi = max(1, max_result - 1)
-    candidates_a = list(range(0, a_hi + 1))
+    candidates_a = list(range(min_a, a_hi + 1))
     candidates_b = candidates_a.copy()
 
     # Build all valid pairs satisfying sum and regrouping
@@ -208,7 +214,7 @@ def generate_params(
         attempts = 0
         while len(candidate_pairs) < 2000 and attempts < 50000:
             attempts += 1
-            a = rng.randint(0, a_hi)
+            a = rng.randint(min_a, a_hi)
             b = rng.randint(0, max_result - a)
             if _satisfies_regrouping(a, b, reg_level):
                 candidate_pairs.append((a, b))

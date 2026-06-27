@@ -182,8 +182,14 @@ def generate_params(
     # - "start_unknown": ? - b = result (for missing number competencies)
     structure = profile.get("structure", "result_unknown")
 
-    # Build candidate pool
-    candidates_a = list(range(1, max_minuend + 1))
+    # Build candidate pool with a grade-appropriate floor
+    min_a = 1
+    if grade >= 3 and max_minuend >= 100:
+        min_a = 10  # Enforce at least 2-digit minuends for Grade 3+ large bounds
+    if grade >= 4 and max_minuend >= 1000:
+        min_a = 100 # Enforce at least 3-digit minuends for Grade 4+ large bounds
+        
+    candidates_a = list(range(min_a, max_minuend + 1))
 
     # Build valid pairs with rejection sampling
     candidate_pairs = []
@@ -196,7 +202,7 @@ def generate_params(
         attempts = 0
         while len(candidate_pairs) < 2000 and attempts < 50000:
             attempts += 1
-            a = rng.randint(1, max_minuend)
+            a = rng.randint(min_a, max_minuend)
             b = rng.randint(0, a)
             if _satisfies_regrouping(a, b, reg_level):
                 candidate_pairs.append((a, b))

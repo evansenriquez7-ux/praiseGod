@@ -206,10 +206,19 @@ def _parse_competency_bounds(competency: str, dna_name: str) -> Dict[str, Tuple[
     limit_keys = ["range", "max_value", "max_total", "max_sum", "max_difference", "num_digits"]
     if not any(key in bounds for key in limit_keys):
         limits = []
-        for match in re.finditer(r'\b\d+\b', text):
-            val = int(match.group(0))
-            if val >= 10:
-                limits.append(val)
+        
+        # Check for digit limits first (e.g. "up to 4 digits")
+        digit_match = re.search(r'(?:up\s+to|to)\s+(\d+)\s+digits?', text)
+        if digit_match:
+            digits = int(digit_match.group(1))
+            val = (10 ** digits) - 1
+            limits.append(val)
+        else:
+            for match in re.finditer(r'\b\d+\b', text):
+                val = int(match.group(0))
+                if val >= 10:
+                    limits.append(val)
+                    
         if limits:
             limit = max(limits)
             if dna_name in ("comparing_ordering", "rounding"):
