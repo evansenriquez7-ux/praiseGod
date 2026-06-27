@@ -89,8 +89,7 @@ To ensure Large Language Models (LLMs) and autonomous agents can dynamically und
 
 ### The Pipeline
 1. **Automated Graphing (Git Hook):** A local `.git/hooks/pre-commit` script is installed. Every time a developer commits code, Graphify automatically scans the repository, builds a new semantic AST graph, and overwrites `graphify-out/graph.json`. This JSON graph is instantly bundled with the commit.
-2. **Zero-Config Agent Navigation:** Agents do **not** rely on reading static agent rules or `.agents/` configuration to understand the architecture. Instead, agents connect to the live `graph.json` MCP server.
-3. **Optimized Inference:** Instead of parsing hundreds of raw files, the agent queries the Graphify server dynamically for shortest-paths and community summaries, significantly increasing context window efficiency and precision.
+2. **Optimized Inference:** Instead of parsing hundreds of raw files, the agent queries the Graphify server dynamically for shortest-paths and community summaries, significantly increasing context window efficiency and precision.
 
 ### Agent Environment
-This repository purposefully untracks standard local agent folders (like `.agents/`) to enforce the graph-driven workflow. Any agent initialized in this repository must use its Graphify MCP connection to map, plan, and execute adjustments purely derived from the live GitHub repository graph.
+Any agent initialized in this repository must use its Graphify MCP connection to map, plan, and execute adjustments purely derived from the live GitHub repository graph.
