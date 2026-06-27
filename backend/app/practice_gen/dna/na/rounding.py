@@ -120,6 +120,10 @@ def generate_params(
     for number in range(min_val, max_val + 1):
         dist = _boundary_distance(number, round_to)
 
+        # Do not present numbers that are already perfectly rounded
+        if dist == 0:
+            continue
+
         if boundary_prox == "near_boundary":
             # Within 10% of the half-way point
             if abs(dist - half) > max(1, half // 5):
@@ -169,7 +173,10 @@ def generate_hints(
     check_digit  = remainder // (round_to // 10)
 
     hints: List[str] = []
-    hints.append(f"{round_label.capitalize()} {number} to the {nearest_label} {place}.")
+    if round_label.lower() == "round":
+        hints.append(f"Round {number} to the {nearest_label} {place}.")
+    else:
+        hints.append(f"Find the {nearest_label} {place} to {number}.")
     hints.append(
         f"Look at the digit just to the right of the {place} place: it is {check_digit}."
     )
@@ -187,7 +194,7 @@ def generate_hints(
 ROUNDING_DNA = DNA(
     concept="rounding",
     dna_type="formula",
-    answer_formula="round(number, -1 * int(log10(round_to)))",
+    answer_formula="((number + (round_to // 2)) // round_to) * round_to",
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,
     compatible_formatters=[
