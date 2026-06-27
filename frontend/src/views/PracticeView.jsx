@@ -605,9 +605,7 @@ export default function PracticeView(props) {
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '80px', gap: '20px' }}>
                   <RefreshCw className="w-12 h-12 animate-spin" style={{ animation: 'spin 2s linear infinite', color: 'hsl(var(--secondary))' }} />
                   <p style={{ color: 'hsl(var(--text-muted))' }}>
-                    {aiBackend === 'opencode'
-                      ? `OpenCode (${opencodeModel}) is generating a personalized story narrative...`
-                      : 'Gemini CLI subagent is orchestrating a personalized story narrative...'}
+                    Gemini is generating your personalized learning experience...
                   </p>
                 </div>
               ) : activeQuestion ? (

@@ -8,6 +8,12 @@ from typing import Optional
 from google import genai
 from google.genai import types
 
+class DummyElaLoader:
+    @staticmethod
+    def load_ela_standard(skill_id, grade_level):
+        return {"code": skill_id, "description": "Dummy CCSS Standard Description", "domain": "Dummy ELA Domain", "grade_level": grade_level}
+ela_loader = DummyElaLoader()
+
 _genai_client = None
 
 class GenAIBridge:

@@ -409,7 +409,11 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
                 if fallback_node:
                     skill_id = fallback_node.id
                 else:
-                    skill_id = "5.NF.A.1" if subject == "Math" else "RL.5.1"
+                    try:
+                        student_g = int(student.grade)
+                    except Exception:
+                        student_g = 1
+                    skill_id = f"mat_g{student_g}_na_q1_0" if student_g > 0 else "mat_g1_na_q1_0"
 
     # Grade Guard: Ensure selected skill_id does not exceed student's claimed grade level under any circumstances.
     # Bypass Grade Guard if the user explicitly requested a specific node (subdomain starts with mat_g or matches skill_id)
@@ -449,10 +453,7 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
                 if fallback_node:
                     skill_id = fallback_node.id
                 else:
-                    if subject in ["Matatag", "MATATAG", "matatag"]:
-                        skill_id = f"mat_g{student_g}_na_q1_0" if student_g > 0 else "mat_g1_na_q1_0"
-                    else:
-                        skill_id = "K.CC.A.1" if student_g == 0 else "5.NF.A.1" if subject == "Math" else "RL.5.1"
+                    skill_id = f"mat_g{student_g}_na_q1_0" if student_g > 0 else "mat_g1_na_q1_0"
                 
     # 2. Check Domain (ELA vs Math vs MATATAG)
     is_ela = skill_id.startswith(("RL", "RI", "W", "L", "SL", "RF"))
