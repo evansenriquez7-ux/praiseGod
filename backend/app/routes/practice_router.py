@@ -836,9 +836,16 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
         if not skeleton:
             # Reconstruct from seed via unified v2 pipeline
             import re
-            match = re.search(r"_(\d+)$", req.skeleton_id)
+            match = re.search(r"_(\d+)(?:_[a-z_]+)?$", req.skeleton_id)
             seed_val = int(match.group(1)) if match else None
             node_id = req.skeleton_id.rsplit('_', 1)[0] if match else req.skill_id
+            
+            # If the node_id ends with _pictograph (etc) due to rsplit taking only the suffix, we need to extract the actual node_id
+            if node_id.endswith("_pictograph") or not node_id.startswith("mat_"):
+                # robust extraction
+                node_match = re.match(r"(mat_g\d+_.*?_q\d+_\d+)", req.skeleton_id)
+                if node_match:
+                    node_id = node_match.group(1)
             
             from backend.app.practice_gen.pipeline import run as _pg_run
             try:
@@ -854,8 +861,8 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
     else:
         # Reconstruct from seed via unified v2 pipeline
         seed_val = None
-        # Extract seed from format "{node_id}_{seed}"
-        match = re.search(r"_(\d+)$", req.skeleton_id)
+        # Extract seed from format "{node_id}_{seed}" or "{node_id}_{seed}_{format}"
+        match = re.search(r"_(\d+)(?:_[a-z_]+)?$", req.skeleton_id)
         if match:
             seed_val = int(match.group(1))
 

@@ -15,7 +15,7 @@ export default function PracticeView(props) {
   const {
     practiceViewType, setPracticeViewType, setSubject, setCurrentView,
     activeQuestion, isSubmitting, practiceVisualAnswer, setPracticeVisualAnswer,
-    selectedOptionKey, setSelectedOptionKey, handleAnswerSubmit, showFeedback,
+    handleAnswerSubmit, showFeedback,
     isCorrect, isGenerating, activeFeedback, socraticActive,
     chatMessages, setChatMessages, sendingChat, setSendingChat,
     selectedStudent, socraticAbortControllerRef, API_BASE,
@@ -773,11 +773,7 @@ export default function PracticeView(props) {
                     <button
                       className="btn-primary"
                       onClick={handleAnswerSubmit}
-                      disabled={
-                        (!activeQuestion.is_visual && (!activeQuestion.question_mode || activeQuestion.question_mode === 'mcq')) 
-                          ? !selectedOptionKey 
-                          : (practiceVisualAnswer === null || practiceVisualAnswer === undefined || practiceVisualAnswer === '')
-                      }
+                      disabled={practiceVisualAnswer === null || practiceVisualAnswer === undefined || practiceVisualAnswer === ''}
                       style={{ width: '100%', padding: '16px' }}
                     >
                       <Check className="w-6 h-6" />

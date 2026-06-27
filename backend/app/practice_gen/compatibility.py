@@ -241,10 +241,8 @@ COMPATIBILITY: Dict[str, List[str]] = {
     # ── Data & Probability ────────────────────────────────────────────────────
 
     "pictographs": [
-        "mcq",
         "pictograph_read",
         "pictograph_set",
-        "fill_in_table",
     ],
 
     "bar_graphs": [

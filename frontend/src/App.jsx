@@ -66,7 +66,7 @@ function App() {
 
   // Practice States
   const [activeQuestion, setActiveQuestion] = useState(null);
-  const [selectedOptionKey, setSelectedOptionKey] = useState(null);
+    // Removed selectedOptionKey, rely entirely on practiceVisualAnswer
   const [answerResult, setAnswerResult] = useState(null);
   const [loadingQuestion, setLoadingQuestion] = useState(false);
   const [questionStartTime, setQuestionStartTime] = useState(null);
@@ -681,19 +681,13 @@ function App() {
   const handleAnswerSubmit = async () => {
     if (!activeQuestion) return;
     
-    // Determine answer based on question type
-    let answerToSubmit;
-    const isMcq = !activeQuestion.is_visual && (!activeQuestion.question_mode || activeQuestion.question_mode === 'mcq');
-    if (isMcq) {
-      if (!selectedOptionKey) return;
-      answerToSubmit = selectedOptionKey;
-    } else {
-      // Visual formats and non-MCQ textual formats store answer in practiceVisualAnswer
-      if (practiceVisualAnswer === null || practiceVisualAnswer === undefined || practiceVisualAnswer === '') return;
-      answerToSubmit = typeof practiceVisualAnswer === 'object' 
-        ? JSON.stringify(practiceVisualAnswer) 
-        : String(practiceVisualAnswer);
-    }
+    if (practiceVisualAnswer === null || practiceVisualAnswer === undefined || practiceVisualAnswer === '') return;
+    
+    // Convert array/object answers to string for submission
+    let answerToSubmit = typeof practiceVisualAnswer === 'object' 
+      ? JSON.stringify(practiceVisualAnswer) 
+      : String(practiceVisualAnswer);
+
 
     const timeSpentMs = Date.now() - questionStartTime;
     
@@ -814,7 +808,7 @@ function App() {
                 || introContent?.mini_lessons?.[introMiniLessonIndex]?.title
                 || 'Intro lesson content')
             : (activeQuestion?.stem || ''),
-          student_answer: selectedOptionKey || (typeof practiceVisualAnswer === 'object' ? JSON.stringify(practiceVisualAnswer) : String(practiceVisualAnswer || '')) || '',
+          student_answer: (typeof practiceVisualAnswer === 'object' ? JSON.stringify(practiceVisualAnswer) : String(practiceVisualAnswer || '')) || '',
           is_intro:       practiceViewType === 'intro_viewer',
           message:        chatInput,
           history:        chatMessages
@@ -2788,7 +2782,7 @@ function App() {
           <PracticeView
             practiceViewType={practiceViewType} setPracticeViewType={setPracticeViewType} setCurrentView={setCurrentView}
             activeQuestion={activeQuestion} practiceVisualAnswer={practiceVisualAnswer} setPracticeVisualAnswer={setPracticeVisualAnswer}
-            selectedOptionKey={selectedOptionKey} setSelectedOptionKey={setSelectedOptionKey} handleAnswerSubmit={handleAnswerSubmit}
+            handleAnswerSubmit={handleAnswerSubmit}
             socraticActive={socraticActive}
             chatMessages={chatMessages} setChatMessages={setChatMessages} sendingChat={sendingChat} setSendingChat={setSendingChat}
             selectedStudent={selectedStudent} socraticAbortControllerRef={socraticAbortControllerRef} API_BASE={API_BASE}
@@ -2823,7 +2817,7 @@ function App() {
         setShowFlagModal={setShowFlagModal}
         selectedStudent={selectedStudent}
         activeQuestion={activeQuestion}
-        selectedOptionKey={selectedOptionKey}
+
         practiceVisualAnswer={practiceVisualAnswer}
       />
     </div>

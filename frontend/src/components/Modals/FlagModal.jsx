@@ -7,7 +7,7 @@ export default function FlagModal({
   setShowFlagModal,
   selectedStudent,
   activeQuestion,
-  selectedOptionKey,
+
   practiceVisualAnswer
 }) {
   const [flagReason, setFlagReason] = useState('incorrect');
@@ -121,7 +121,7 @@ export default function FlagModal({
                         skeleton_id: activeQuestion?.skeleton_id || activeQuestion?.problem_id || '',
                         stem: activeQuestion?.stem || activeQuestion?.question_text || '',
                         correct_answer: String(activeQuestion?.correct_answer || activeQuestion?.format_data?.correct_key || ''),
-                        selected_answer: selectedOptionKey || (typeof practiceVisualAnswer === 'object' ? JSON.stringify(practiceVisualAnswer) : String(practiceVisualAnswer || '')) || '',
+                        selected_answer: (typeof practiceVisualAnswer === 'object' ? JSON.stringify(practiceVisualAnswer) : String(practiceVisualAnswer || '')) || '',
                         reason: flagReason,
                         comment: flagComment
                       })
