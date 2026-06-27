@@ -505,7 +505,7 @@ function App() {
         if (data[0].question_mode === 'ordering' && data[0].visual_params?.items) {
           setPracticeOrdered(data[0].visual_params.items.map((item, idx) => ({ id: `item_${idx}`, key: `${idx}`, text: String(item) })));
         }
-      }
+      
     } catch (e) {
       console.error("Failed to load question", e);
     } finally {
