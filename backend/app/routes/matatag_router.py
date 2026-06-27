@@ -1118,9 +1118,7 @@ def matatag_lab_v2_generate(req: LabV2GenerateRequest, db: Session = Depends(get
     if seed is None:
         import random as _rand
         seed = _rand.randint(10000, 999999)
-    from backend.app.models import CompetencyConfiguration
-    config = db.query(CompetencyConfiguration).filter_by(node_id=req.node_id).first()
-    allowed_formatters = config.allowed_formatters if config else None
+    allowed_formatters = None
 
     try:
         problem_dict = run(

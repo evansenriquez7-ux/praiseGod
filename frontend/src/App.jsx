@@ -1022,10 +1022,7 @@ function App() {
           const chosenScalar = allowedScalars.length > 0 
             ? allowedScalars[Math.floor(Math.random() * allowedScalars.length)]
             : (dim.default_scalar ?? 0.0);
-          const matchingOption = dim.options.find(o => Math.abs(o.scalar - chosenScalar) < 0.01);
-          if (matchingOption) {
-            difficultyProfile[dim.name] = dim.dim_type === 'continuous' ? matchingOption.value : matchingOption.level;
-          }
+          difficultyProfile[dim.name] = chosenScalar;
         });
 
         // 2. Pick a random allowed variant for each context
