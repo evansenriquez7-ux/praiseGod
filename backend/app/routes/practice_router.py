@@ -580,7 +580,8 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
         visual_type=visual_type,
         visual_params=visual_params,
         is_visual=is_visual,
-        answer_collection=skeleton.get("answer_collection", "mcq")
+        answer_collection=skeleton.get("answer_collection", "mcq"),
+        interaction_mode=skeleton.get("interaction_mode", "read")
     )
 
 
@@ -770,7 +771,8 @@ def get_practice_question_batch(
                     visual_type=p.get("visual_type"),
                     visual_params=p.get("visual_params"),
                     is_visual=is_vis,
-                    answer_collection=p.get("answer_collection", "mcq")
+                    answer_collection=p.get("answer_collection", "mcq"),
+                    interaction_mode=p.get("interaction_mode", "read")
                 ))
                 
                 if is_matatag:

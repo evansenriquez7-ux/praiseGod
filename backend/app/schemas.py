@@ -93,6 +93,7 @@ class QuestionResponse(BaseModel):
     visual_params: Optional[Dict[str, Any]] = None  # Type-specific rendering parameters
     is_visual: bool = False  # True if this is a visual skeleton question
     answer_collection: str = "mcq" # How the frontend should collect the answer
+    interaction_mode: Optional[str] = "read" # "read" or "set"
 
 class VisualQuestionResponse(BaseModel):
     """Extended response for visual skeleton problems with interactive UI params"""
