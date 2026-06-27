@@ -357,8 +357,8 @@ def _build_symbolic_question(
         division   → "What is 42 ÷ 6?"
     """
     concept = dna.concept
-    a = values.get("a")
-    b = values.get("b")
+    a = values.get("a", values.get("start"))
+    b = values.get("b", values.get("skip_by"))
     blank = values.get("blank_target", "result")
 
     # ── Arithmetic operations ─────────────────────────────────────────────────

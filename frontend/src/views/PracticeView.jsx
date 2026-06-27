@@ -55,8 +55,7 @@ export default function PracticeView(props) {
                 <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '14px' }}>
                   <input
                     type="text"
-                    value={setSelectedStudent, setSocraticActive, renderIntroViewer, setShowFlagModal,
-    studentInterestInput}
+                    value={studentInterestInput}
                     onChange={e => { setStudentInterestInput(e.target.value); setInterestSaveStatus(''); }}
                     onKeyDown={e => e.key === 'Enter' && handleSaveInterests()}
                     placeholder="e.g. Minecraft, dinosaurs, soccer..."
