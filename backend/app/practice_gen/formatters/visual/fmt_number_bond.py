@@ -207,17 +207,35 @@ def format_number_bond(
         b = ctx.values["b"]
         result = ctx.values.get("result", a + b)
         blank_target = ctx.values.get("blank_target", "result")
-        # Map DNA blank_target to bond blank_position
-        pos_map = {"result": "whole", "a": "part1", "b": "part2"}
-        blank_position = pos_map.get(blank_target, "whole")
-
-        bond = {
-            "whole": None if blank_position == "whole" else result,
-            "part1": None if blank_position == "part1" else a,
-            "part2": None if blank_position == "part2" else b,
-            "blank_position": blank_position,
-            "_whole": result, "_part1": a, "_part2": b,
-        }
+        
+        # Check if it's subtraction (a - b = result implies a is the whole)
+        # We can safely assume if result < a, it's subtraction, but better to check exactly
+        is_subtraction = (result == a - b) and (result != a + b or (b == 0 and ctx.node_id and "sub" in ctx.spine_id))
+        if not is_subtraction and ctx.spine_id and "sub" in ctx.spine_id:
+             is_subtraction = True
+             
+        if is_subtraction:
+            # For subtraction: a is whole, b is part1, result is part2
+            pos_map = {"a": "whole", "b": "part1", "result": "part2"}
+            blank_position = pos_map.get(blank_target, "part2")
+            bond = {
+                "whole": None if blank_position == "whole" else a,
+                "part1": None if blank_position == "part1" else b,
+                "part2": None if blank_position == "part2" else result,
+                "blank_position": blank_position,
+                "_whole": a, "_part1": b, "_part2": result,
+            }
+        else:
+            # For addition: result is whole, a is part1, b is part2
+            pos_map = {"result": "whole", "a": "part1", "b": "part2"}
+            blank_position = pos_map.get(blank_target, "whole")
+            bond = {
+                "whole": None if blank_position == "whole" else result,
+                "part1": None if blank_position == "part1" else a,
+                "part2": None if blank_position == "part2" else b,
+                "blank_position": blank_position,
+                "_whole": result, "_part1": a, "_part2": b,
+            }
     else:
         blank_position = rng.choice(["whole", "part1", "part2"])
         bond = _build_bond(ctx.grade, diff_level, rng, blank_position)

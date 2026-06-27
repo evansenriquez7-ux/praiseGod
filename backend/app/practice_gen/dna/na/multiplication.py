@@ -138,12 +138,10 @@ def generate_params(
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
     allowed_tables = _table_for_level(table_level, grade)
-    from backend.app.practice_gen.dna.base import linear_interpolate
-    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
     a_lo = bounds["a"][0]
     if num_level == "multi_digit":
         a_lo = max(10, a_lo)
-    a_hi = int(linear_interpolate(max(1, a_lo), max(a_lo, bounds["a"][1]), diff_scalar))
+    a_hi = max(a_lo, bounds["a"][1])
 
     max_prod_val = profile.get("max_product")
     if max_prod_val is not None:

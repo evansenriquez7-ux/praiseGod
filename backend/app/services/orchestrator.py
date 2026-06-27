@@ -2,11 +2,12 @@ from typing import Any, Dict, List, Optional
 import random
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
-from backend.app.practice_gen.registry import get_node_dnas
+from backend.app.practice_gen.registry import get_node_dnas, get_node_competency_bounds
 from backend.app.practice_gen.compatibility import (
     get_formatters_for_dna,
     get_compatible_formatters_for_variant,
 )
+from backend.app.practice_gen.axes_catalog import get_axes_for_concept
 from backend.app.practice_gen.adapter import _get_dna_instance, _weighted_choice, apply_formatter, apply_experience
 from backend.app.practice_gen.generators.base_generator import generate_context
 
@@ -50,6 +51,37 @@ class PracticeOrchestrator:
         dna_names = get_node_dnas(node_id)
         if not dna_names:
             raise ValueError(f"No DNA mappings found for node_id '{node_id}'")
+            
+        primary_concept = dna_names[0]
+
+        # Single source of truth for normalizing scalars (0.0-1.0) into proper dimension values
+        axes = get_axes_for_concept(primary_concept)
+        for axis in axes:
+            if axis.get("dim_type") == "continuous" and axis["name"] in local_difficulty_profile:
+                val = local_difficulty_profile[axis["name"]]
+                if isinstance(val, float) and val <= 2.0:
+                    competency_bounds = get_node_competency_bounds(node_id)
+                    bounds = competency_bounds.get(axis["name"])
+                    if bounds:
+                        min_val, max_val = bounds
+                    else:
+                        min_val = axis.get("default_min", 1)
+                        max_val = axis.get("default_max", 100)
+                    
+                    scale_type = axis.get("scale", "linear")
+                    if scale_type == "logarithmic":
+                        import math
+                        shift = 1 if min_val == 0 else 0
+                        log_min = math.log10(min_val + shift)
+                        log_max = math.log10(max_val + shift)
+                        log_val = log_min + val * (log_max - log_min)
+                        mapped_val = int(math.pow(10, log_val)) - shift
+                    else:
+                        if isinstance(min_val, float) or isinstance(max_val, float) or (max_val - min_val <= 2):
+                            mapped_val = round(min_val + val * (max_val - min_val), 2)
+                        else:
+                            mapped_val = int(min_val + val * (max_val - min_val))
+                    local_difficulty_profile[axis["name"]] = mapped_val
 
         # Filter DNAs by requested formatter or allowed_formatters
         valid_dnas = []

@@ -134,10 +134,14 @@ def generate_params(
     g_key        = f"g{max(2, min(grade, 3))}"
     bounds       = _PARAM_BOUNDS[g_key]
     
-    from backend.app.practice_gen.dna.base import log_interpolate, extract_discrete_level, extract_continuous_scalar
+    from backend.app.practice_gen.dna.base import extract_discrete_level, extract_continuous_scalar
 
-    q_max_scalar = extract_continuous_scalar(profile, "max_quotient", extract_continuous_scalar(profile, "difficulty_scalar", 0.5))
-    q_max = int(log_interpolate(2, bounds["q_max"], q_max_scalar))
+    q_max_bound = bounds["q_max"]
+    q_max_value = profile.get("max_quotient")
+    if q_max_value is not None and isinstance(q_max_value, (int, float)):
+        q_max = int(q_max_value)
+    else:
+        q_max = q_max_bound
 
     rem_level    = extract_discrete_level(profile, "remainder", ["none", "with_remainder"], "none")
     table_level  = extract_discrete_level(profile, "table", ["2_3_4_5_10", "6_7_8_9"], "2_3_4_5_10")

@@ -154,16 +154,17 @@ def generate_params(
     g_key = f"g{max(1, min(grade, 3))}"
     bounds = _PARAM_BOUNDS[g_key]
     max_minuend_bound = bounds["a"][1]
-    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
-    from backend.app.practice_gen.dna.base import log_interpolate
-    max_minuend = int(log_interpolate(10, max_minuend_bound, diff_scalar))
+    
+    # Retrieve explicitly set maximum bound from profile, fallback to curriculum absolute maximum
     max_diff_value = profile.get("max_difference") or profile.get("max_sum")
     if max_diff_value is not None:
         if isinstance(max_diff_value, (int, float)):
             max_minuend = int(max_diff_value)
         elif isinstance(max_diff_value, str):
             legacy_map = {"up_to_10": 10, "up_to_20": 20, "up_to_50": 50, "up_to_100": 100, "up_to_1000": 1000}
-            max_minuend = legacy_map.get(max_diff_value, max_minuend)
+            max_minuend = legacy_map.get(max_diff_value, max_minuend_bound)
+    else:
+        max_minuend = max_minuend_bound
 
     # Ensure reasonable bounds
     max_minuend = max(2, min(max_minuend, 10000))
