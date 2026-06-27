@@ -17,6 +17,9 @@ const _isFirebase = _host.endsWith('web.app') || _host.endsWith('firebaseapp.com
 let DEFAULT_API_BASE = `https://${_host}/api`;
 if (_isLan || _host === 'localhost' || _host === '127.0.0.1') {
   DEFAULT_API_BASE = `http://${_host}:8000/api`;
+} else if (_host.includes('github.dev')) {
+  const codespaceHost = _host.replace('-5173.', '-8000.').replace('-5173-port.', '-8000-port.');
+  DEFAULT_API_BASE = `https://${codespaceHost}/api`;
 }
 
 // If accessed externally via here.now, default directly to the active, zero-warning secure Tailscale funnel!
