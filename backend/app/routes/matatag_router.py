@@ -796,7 +796,7 @@ def matatag_lab_generate(
         raise HTTPException(status_code=500, detail=f"Generation failed: {str(e)}")
 
     # Cache for answer submission
-    MATATAG_SKELETON_CACHE[skeleton["skeleton_id"]] = skeleton
+    MATATAG_SKELETON_CACHE[skeleton.get("skeleton_id", skeleton.get("problem_id"))] = skeleton
 
     # Build unified response
     is_visual = skeleton.get("is_visual", False)
@@ -805,35 +805,47 @@ def matatag_lab_generate(
     mcq_options = []
     correct_key = None
     if not is_visual:
-        raw_opts = skeleton.get("options", {})
-        correct_key = skeleton.get("correct_key")
-        if not correct_key:
-            # Derive correct_key from options where trap is None
+        format_data = skeleton.get("format_data", {})
+        raw_opts = skeleton.get("options", format_data.get("options", []))
+        correct_key = skeleton.get("correct_key", format_data.get("correct_key"))
+        
+        # Determine correct key if missing
+        if not correct_key and isinstance(raw_opts, dict):
             for k, v in raw_opts.items():
                 if isinstance(v, dict) and v.get("trap") is None:
                     correct_key = k
                     break
-        for k in ["A", "B", "C", "D"]:
-            if k in raw_opts:
-                opt = raw_opts[k]
-                if isinstance(opt, dict):
-                    mcq_options.append({"key": k, "text": str(opt.get("text", opt.get("value", "")))})
-                else:
-                    mcq_options.append({"key": k, "text": str(opt)})
+        elif not correct_key and isinstance(raw_opts, list):
+            for opt in raw_opts:
+                if opt.get("is_correct"):
+                    correct_key = opt.get("key")
+                    break
+
+        if isinstance(raw_opts, dict):
+            for k in ["A", "B", "C", "D"]:
+                if k in raw_opts:
+                    opt = raw_opts[k]
+                    if isinstance(opt, dict):
+                        mcq_options.append({"key": k, "text": str(opt.get("text", opt.get("value", "")))})
+                    else:
+                        mcq_options.append({"key": k, "text": str(opt)})
+        elif isinstance(raw_opts, list):
+            for opt in raw_opts:
+                mcq_options.append({"key": opt.get("key"), "text": str(opt.get("text", opt.get("value", "")))})
 
     return {
-        "skeleton_id": skeleton["skeleton_id"],
+        "skeleton_id": skeleton.get("skeleton_id", skeleton.get("problem_id")),
         "node_id": node_id,
         "competency_text": competency,
         "grade": grade,
         "difficulty": effective_difficulty,
         "axis_values": parsed_axes,
         "primary_concept": primary_concept,
-        "available_formats": available_formats,
+        "available_formats": final_fmts,
         "format_used": "visual" if is_visual else "mcq",
 
         # Question content
-        "stem": skeleton.get("stem", ""),
+        "stem": skeleton.get("stem", skeleton.get("question_text", "")),
         "is_visual": is_visual,
 
         # Visual fields (only when is_visual=True)

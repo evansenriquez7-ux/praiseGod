@@ -20,7 +20,7 @@ def test_mat_g3_na_q2_5():
     import json
     print("--- EASIEST PROFILE (Grade 3, 0th Percentile) ---")
     try:
-        res1 = run("mat_g3_na_q2_5", student_grade=3, difficulty_profile=dp_easiest, formatter="true_false")
+        res1 = run("mat_g3_na_q2_5", student_grade=3, difficulty_profile=dp_easiest, formatter="mcq")
         print(json.dumps(res1, indent=2))
     except Exception as e:
         print(f"Error: {e}")
