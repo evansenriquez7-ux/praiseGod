@@ -20,41 +20,41 @@ def main():
         print(f"No configuration found in DB for {node_id}")
         return
         
-    axis_values_dict = {}
-    if cfg.allowed_difficulties:
-        for k, v in cfg.allowed_difficulties.items():
-            if v: axis_values_dict[k] = max(v) if isinstance(v[0], (int, float)) else v[-1]
-                
-    if cfg.allowed_contexts:
-        for k, v in cfg.allowed_contexts.items():
-            if v: axis_values_dict[k] = v[0] 
-            
-    print("=== Matatag Lab Output (10 Questions) ===")
-    for i in range(10):
+    print("=== UI Settings Saved in DB ===")
+    print("Formatters:", cfg.allowed_formatters)
+    print("Difficulties:", cfg.allowed_difficulties)
+    print("Contexts:", cfg.allowed_contexts)
+    
+    print("\n=== Matatag Lab Output (Organic Preview Mode) ===")
+    # The Matatag Lab now correctly queries the DB and passes your allowed constraints!
+    # If the user clicks Preview without forcing sliders, it behaves exactly like the Student Portal.
+    for i in range(5):
         try:
             lab_res = run(
                 node_id=node_id,
                 student_grade=3,
-                difficulty_profile=axis_values_dict,
-                seed=1000 + i,
-                allowed_formatters=cfg.allowed_formatters
-            )
-            print(f"{i+1}. {lab_res.get('question_text')}")
-        except Exception as e:
-            print(f"Error in Lab Generate: {e}")
-        
-    print("\n=== Student Portal Output (10 Questions) ===")
-    for i in range(10):
-        try:
-            portal_res = run(
-                node_id=node_id,
-                student_grade=3,
-                seed=2000 + i,
+                difficulty_profile={"range": 0.5}, # Matatag Lab's default fallback when no sliders moved
+                seed=3000 + i,
                 allowed_formatters=cfg.allowed_formatters,
                 allowed_difficulties=cfg.allowed_difficulties,
                 allowed_contexts=cfg.allowed_contexts
             )
-            print(f"{i+1}. {portal_res.get('question_text')}")
+            print(f"{i+1}. Format: {lab_res.get('format')} | Question: {lab_res.get('question_text')}")
+        except Exception as e:
+            print(f"Error in Lab Generate: {e}")
+            
+    print("\n=== Student Portal Output ===")
+    for i in range(5):
+        try:
+            portal_res = run(
+                node_id=node_id,
+                student_grade=3,
+                seed=4000 + i,
+                allowed_formatters=cfg.allowed_formatters,
+                allowed_difficulties=cfg.allowed_difficulties,
+                allowed_contexts=cfg.allowed_contexts
+            )
+            print(f"{i+1}. Format: {portal_res.get('format')} | Question: {portal_res.get('question_text')}")
         except Exception as e:
             print(f"Error in Portal Generate: {e}")
 

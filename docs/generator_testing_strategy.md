@@ -1,61 +1,47 @@
 # Comprehensive Generator Testing Strategy
 
-This document outlines how the `float('three_four')` crash was discovered in the MATATAG Lab, and provides a systematic plan for an autonomous agent to test all learning competencies to identify and fix similar bugs.
+This document outlines how we diagnosed and resolved fundamental discrepancies between the Matatag Lab and the Student Portal, and provides a systematic plan for testing all 151 learning competencies to ensure absolute adherence to the prescribed difficulty dimensions, contextual variants, and formatters.
 
-## How the Error Was Reproduced
-The initial testing of the backend generator using default parameters (e.g., passing `difficulty_profile=None`) yielded zero errors. The generator only crashed when triggered *from the frontend UI*. To uncover the issue, we mirrored the exact data flow of the Matatag Lab:
+## Diagnosis: Why the UI Output Was Masked
+Initially, we were unable to accurately identify what was showing in the Matatag Lab and Student Portal because our test simulations were flawed. When building the test script, we hardcoded the Matatag Lab simulation to force the **maximum possible value** (`max(v)`) for every single difficulty dimension. 
+1. **The Artificial Ceiling**: This manual override forced the generator to act as if a user had dragged every slider in the Lab to 100% difficulty, outputting only the absolute hardest variants (e.g., locking minuends at `1000`). 
+2. **Missing the "Floor" Flaw**: Because our test script forcefully clamped the difficulty to the ceiling, we completely bypassed and missed the real bug occurring at the 0th percentile (the "floor"), where unbounded generation was producing tiny, inappropriate numbers like `1 - 0`. 
+3. **The Routing Bug**: The simulation assumed the Lab endpoint was using the database configuration (like the Portal does), but we failed to realize `matatag_lab_generate` was missing its database dependency and completely ignoring the user's checked boxes.
 
-1. **Analyzed the Frontend Lab Configuration:** We queried `/api/matatag/lab/config/mat_g3_dp_q3_0` and inspected the returned `difficulty_dimensions`. We noticed that `num_categories` was designated as `dim_type: "discrete"`, with options containing string levels (e.g., `level: "three_four"`).
-2. **Traced the Frontend Request Payload:** We analyzed `fetchMatatagQuestion` in `App.jsx` and found that for `discrete` dimensions, the frontend explicitly populates the `difficultyProfile` with the string `level` rather than a numeric scalar.
-3. **Simulated the Frontend Payload in Python:** We created a test script that imported the backend generator's `run()` function and passed a mock `difficulty_profile` identical to the frontend's payload:
-   ```python
-   dp = {
-       "scale_type": "no_scale",
-       "task_type": "read_single",
-       "num_categories": "three_four"
-   }
-   run("mat_g3_dp_q3_0", student_grade=3, difficulty_profile=dp)
-   ```
-4. **Identified the Root Cause:** The generator immediately crashed with `ValueError: could not convert string to float: 'three_four'`. The DNA generator for pictographs (`pictographs.py`) expected `num_categories` to be a continuous float scalar and erroneously tried to parse the discrete string level. 
+## Resolution: Ensuring UI-Accurate Testing
+To ensure our tests see exactly what the user sees, we realigned the testing architecture:
+1. **Single Source of Truth**: We patched `matatag_router.py` to inject the database dependency into the Lab generation endpoint. Both the Portal and the Lab now exclusively pull from `CompetencyConfiguration` in the Postgres database.
+2. **Organic Sampling Simulation**: We removed the `max(v)` hardcoding from the test scripts. Instead of forcing manual slider inputs, the test script now passes `{"range": 0.5}` or relies on the allowed lists from the DB, perfectly mirroring how the orchestrator organically samples from the `allowed_difficulties` array (e.g., `rng.choice(opts)`). This exposes the full spectrum of outputs—including the broken floors (e.g., `1 - 0 = 1`) and formatter anomalies (e.g., negative numbers in True/False).
 
 ---
 
-## Agent Execution Plan
+## Agent Execution Plan: Validating All 151 Competencies
 
-To systematically eliminate these issues across the entire platform, an agent should run a comprehensive fuzzer against the `practice_gen` pipeline, mirroring the exact configurations served to the frontend.
+To ensure every generated problem strictly follows the chosen options and curriculum constraints, an agent must execute the following end-to-end plan across all 151 competencies.
 
-### Step 1: Discover All Learning Competencies
-- Use `get_all_node_ids()` from `backend.app.practice_gen.registry` to get a list of all MATATAG node IDs.
+### Phase 1: Pre-Test Configuration Auditing
+Before testing the outputs, the agent must fix overlapping dimension configurations according to `pgen_checklist.md` and `difficulty_dimensions.md`.
+1. **Audit `axes_catalog.py`**: Scan all continuous difficulty dimensions (especially those with linear scales and `divisions=5`). Identify overlapping outputs where `min_val` and `max_val` are too close (e.g., resulting in scalar options like `[1, 1, 2, 2, 3]`).
+2. **Fix Overlaps**: Adjust the divisions, apply logarithmic scaling, or raise the `min_val` to ensure each tick on the slider provides a distinct, monotonically increasing scalar value.
 
-### Step 2: Fetch the Valid Configuration Schema
-For each `node_id`:
-- Query the lab configuration (mimicking the `/api/matatag/lab/config/{node_id}` endpoint). You can invoke `get_matatag_lab_config(node_id)` from `matatag_router.py`.
-- Extract the `difficulty_dimensions`, `contextual_variants`, and `formatters` exposed by the configuration. 
+### Phase 2: Systematic Fuzzing & Matrix Generation
+For every single `node_id` in the `backend.app.practice_gen.registry`:
+1. **Fetch Config**: Query `get_matatag_lab_config(node_id)` to extract all available `difficulty_dimensions`, `contextual_variants`, and `formatters`.
+2. **Matrix Construction**:
+   - For every continuous dimension, iterate through every generated scalar division.
+   - For every discrete dimension, iterate through every level.
+   - Pair each difficulty profile with every allowed contextual variant.
+   - Route the combination through every compatible formatter.
+3. **Execution Run**: Run `pipeline.run()` to generate **10 distinct problems** for each unique combination in the matrix.
 
-### Step 3: Construct Frontend-Accurate Payloads
-- Generate test matrices for the node.
-- **Difficulty Profiles:** 
-  - If a dimension is `dim_type: "continuous"`, pick the numeric `value`.
-  - If a dimension is `dim_type: "discrete"`, pick the string `level`.
-  - Test edge cases (easiest config, hardest config, and random permutations).
-- **Variants:** Pair the difficulty profiles with all valid `contextual_variants`.
-- **Formatters:** Run the generated profiles against every valid formatter defined in the `formatters` list for that config.
+### Phase 3: Heuristic Output Validation
+As the 10 problems are generated, the agent will dynamically inspect the outputs to ensure they strictly follow the requested options:
+1. **Difficulty Adherence**: If the dimension is set to the lowest level (e.g., `number_difficulty=0`), verify the numbers are grade-appropriate (no `1 - 0` in Grade 3). If it is set to max, verify the numbers hit the cap.
+2. **Variant Consistency**: If the variant is `structure: "change_unknown"`, parse the question text and `options` to ensure the structure strictly matches the definition (e.g., $A \pm x = C$).
+3. **Formatter Integrity**: Check the raw formatter outputs. Ensure `true_false` traps do not generate mathematically or pedagogically invalid traps (like negative numbers for 3rd graders) and that the text is properly constructed.
+4. **DNA/Intent Check**: Verify the underlying DNA is preserved. For instance, if the competency requires "Estimation", ensure the presence of the `true_false` formatter does not silently override the `rounding` DNA and revert to exact arithmetic.
 
-### Step 4: Fuzz the Generator Pipeline
-- Pass the constructed payloads into `backend.app.practice_gen.pipeline.run(node_id=node_id, difficulty_profile=profile, variant_values=variants, formatter=formatter)`.
-- Wrap the execution in a `try...except` block.
-
-### Step 5: Log and Fix
-- If an exception occurs (e.g., `ValueError`, `TypeError`, `KeyError`), log the stack trace, the exact `node_id`, and the JSON payload that caused it.
-- Trace the error into the specific DNA file (e.g., `dna/dp/bar_graphs.py` or `dna/na/addition.py`) and fix the parsing logic so it safely handles the payload provided by the lab configuration.
-- Continue testing until all combinations for all nodes yield a 100% success rate.
-
-## Finding Logical Bugs in Bar Charts
-
-During manual testing of the generator pipeline for `mat_g3_dp_q3_3`, we discovered several critical logical bugs that did not cause code crashes, but instead produced fundamentally broken educational content:
-
-1. **Disconnected Hints & Questions**: The DNA generator (`bar_graphs.py`) randomly selected a category (e.g. "sunflowers") and baked it into the problem hints. However, the downstream visual formatter (`fmt_bar_chart.py`) ignored the DNA's selection and randomly generated a *new* target category for the question stem (e.g. "tulips"). This resulted in the question asking for one thing, while the hints gave the answer to something else.
-2. **Horizontal vs. Vertical Vocabulary**: When the difficulty profile explicitly requested `orientation: "horizontal"`, the hints incorrectly stated that the scale was on the "vertical (y-axis)" and asked the student to look for the "tallest" bar instead of the "longest" bar. This happened because the hint generator was looking for the `orientation` key in the wrong nested dictionary level.
-3. **Four-Way Ties for "The Most"**: When testing the `task_type: "find_most_least"` dimension, the generator randomly assigned values to the bars. Occasionally, it assigned identical values to all bars (e.g., `[30, 30, 30, 30]`). When evaluating which bar had "the most", it blindly used `max(values)` and returned the first category it hit, producing a broken question where multiple options were technically correct.
-
-**Fix Action**: We updated the formatting pipeline to ensure it extracts `question_category` directly from the DNA context (`ctx.values`). We also updated the hint generation to properly unpack the `visual_params` payload, and added logic to artificially increment/decrement values in the generator array to prevent ties when generating "most/least" questions.
+### Phase 4: Resolution & Patching
+- Log any configuration overlap, logical failure, crash, or heuristic violation.
+- Trace the failure directly to the responsible DNA file (e.g., `subtraction.py`), registry bound, or formatting handler (`fmt_true_false.py`).
+- Implement the fix, then immediately re-run Phase 2 for that node to guarantee success before moving to the next.
