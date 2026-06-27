@@ -499,16 +499,6 @@ function App() {
         return;
       }
 
-      let url = `${API_BASE}/practice/${studentId}/batch?count=3&subject=${subject}`;
-      // Pass subdomain (node_id for Matatag, track key for Math) to scope the question
-      if (subdomain && (subject === 'Math' || subject === 'Matatag' || subject === 'MATATAG')) {
-        url += `&subdomain=${encodeURIComponent(subdomain)}`;
-      }
-      const res = await fetch(url);
-      const data = await res.json();
-      
-      if (data && data.length > 0) {
-        setActiveQuestion(data[0]);
         setQuestionQueue(data.slice(1));
         setQuestionStartTime(Date.now());
         // Initialize ordering state if first question is ordering

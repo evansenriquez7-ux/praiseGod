@@ -277,18 +277,29 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
     # 1. Check if student is in placement onboarding stage
     if not subdomain:
         # Get placement history for this specific subject
-        if subject == "Verbal":
-            placement_history = db.query(models.Attempt).join(models.SkillNode).filter(
-                models.Attempt.student_id == student_id,
-                models.Attempt.telemetry_flagged == False,
-                models.SkillNode.subject.in_(["Reading: Literature", "Reading: Informational Text", "Reading Foundations", "Speaking & Listening", "Writing", "Language"])
-            ).all()
-        else:
-            placement_history = db.query(models.Attempt).join(models.SkillNode).filter(
-                models.Attempt.student_id == student_id,
-                models.Attempt.telemetry_flagged == False,
-                models.SkillNode.subject.like(f"%{subject}%")
-            ).all()
+        try:
+            if subject == "Verbal":
+                placement_history = db.query(models.Attempt).join(models.SkillNode).filter(
+                    models.Attempt.student_id == student_id,
+                    models.Attempt.telemetry_flagged == False,
+                    models.SkillNode.subject.in_([
+                        "Reading: Literature",
+                        "Reading: Informational Text",
+                        "Reading Foundations",
+                        "Speaking & Listening",
+                        "Writing",
+                        "Language"
+                    ])
+                ).all()
+            else:
+                placement_history = db.query(models.Attempt).join(models.SkillNode).filter(
+                    models.Attempt.student_id == student_id,
+                    models.Attempt.telemetry_flagged == False,
+                    models.SkillNode.subject.like(f"%{subject}%")
+                ).all()
+        except Exception as db_err:
+            print(f"[DB Warning] Placement history query failed: {db_err}. Proceeding without placement history.")
+            placement_history = []
         
         is_placement = placement.PlacementEngine.is_in_placement(subject, student, placement_history)
         if is_placement:
@@ -491,11 +502,15 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
         _allowed_diff = None
         _allowed_ctx = None
         if is_matatag:
-            _cfg = db.query(models.CompetencyConfiguration).filter_by(node_id=skill_id).first()
-            if _cfg:
-                _allowed_fmt = _cfg.allowed_formatters
-                _allowed_diff = _cfg.allowed_difficulties
-                _allowed_ctx = _cfg.allowed_contexts
+            try:
+                _cfg = db.query(models.CompetencyConfiguration).filter_by(node_id=skill_id).first()
+                if _cfg:
+                    _allowed_fmt = _cfg.allowed_formatters
+                    _allowed_diff = _cfg.allowed_difficulties
+                    _allowed_ctx = _cfg.allowed_contexts
+            except Exception as db_err:
+                print(f"[DB Warning] Unable to fetch CompetencyConfiguration: {db_err}. Using defaults.")
+                _cfg = None
         
         interest_theme = _combined_interests(student, "math")
         
