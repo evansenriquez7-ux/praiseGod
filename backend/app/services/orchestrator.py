@@ -59,7 +59,7 @@ class PracticeOrchestrator:
         for axis in axes:
             if axis.get("dim_type") == "continuous" and axis["name"] in local_difficulty_profile:
                 val = local_difficulty_profile[axis["name"]]
-                if isinstance(val, float) and val <= 2.0:
+                if isinstance(val, (float, int)) and val <= 2.0:
                     competency_bounds = get_node_competency_bounds(node_id)
                     bounds = competency_bounds.get(axis["name"])
                     if bounds:
