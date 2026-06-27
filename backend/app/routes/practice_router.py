@@ -524,8 +524,10 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
                 allowed_contexts=_allowed_ctx,
                 experience="standard"
             )
-            # Normalise to legacy format
+            # Normalise to legacy keys for router compatibility
             skeleton = problem_dict
+            skeleton["skeleton_id"] = problem_dict.get("problem_id")
+            skeleton["stem_template"] = problem_dict.get("question_text")
             question_mode = problem_dict.get("format", "mcq")
             is_visual = problem_dict.get("is_visual", False)
             
@@ -555,13 +557,19 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
 
     # 3. Build options list (empty for writing prompts)
     options_list = []
-    if skeleton.get("options"):
-        for k, v in skeleton["options"].items():
-            opt_text = str(v.get("text", v.get("value", ""))) if isinstance(v, dict) else str(v)
+    fmt_data = skeleton.get("format_data") or {}
+    raw_opts = fmt_data.get("mcq_options") or fmt_data.get("options") or skeleton.get("options") or []
+    
+    if isinstance(raw_opts, list):
+        for o in raw_opts:
             options_list.append(schemas.QuestionOption(
-                key=k,
-                text=opt_text
+                key=o.get("key", "A"),
+                text=str(o.get("value", o.get("text", ""))) if o.get("value") is not None else str(o.get("text", ""))
             ))
+    elif isinstance(raw_opts, dict):
+        for k, v in raw_opts.items():
+            opt_text = str(v.get("text", v.get("value", ""))) if isinstance(v, dict) else str(v)
+            options_list.append(schemas.QuestionOption(key=k, text=opt_text))
 
     # 4. Check for Worked Examples (alternates for struggling students, Math only)
     consec_incorrect = 0
@@ -888,6 +896,47 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
             seed=seed_val,
             student_interest=_combined_interests(student, "math")
         )
+
+    # Normalize skeleton dictionary to support both legacy and native v2 formats
+    if skeleton:
+        # 1. Format and mode
+        fmt = skeleton.get("format", "mcq")
+        if "question_mode" not in skeleton:
+            skeleton["question_mode"] = fmt
+            
+        # 2. Correct Key
+        if "correct_key" not in skeleton:
+            correct_key = skeleton.get("format_data", {}).get("correct_key")
+            if not correct_key:
+                # Find from mcq_options list
+                mcq_opts = skeleton.get("format_data", {}).get("mcq_options") or []
+                for opt in mcq_opts:
+                    if opt.get("is_correct"):
+                        correct_key = opt.get("key")
+                        break
+            skeleton["correct_key"] = correct_key or "A"
+            
+        # 3. Options Dictionary
+        if "options" not in skeleton or not isinstance(skeleton.get("options"), dict):
+            # Build options dictionary
+            options_dict = {}
+            raw_opts = skeleton.get("format_data", {}).get("mcq_options") or skeleton.get("format_data", {}).get("options") or skeleton.get("options") or []
+            if isinstance(raw_opts, list):
+                for o in raw_opts:
+                    key = o.get("key", "A")
+                    options_dict[key] = {
+                        "text": o.get("text", ""),
+                        "value": o.get("value", o.get("text", "")),
+                        "trap_name": o.get("trap")
+                    }
+            elif isinstance(raw_opts, dict):
+                for k, v in raw_opts.items():
+                    options_dict[k] = {
+                        "text": v.get("text", str(v)) if isinstance(v, dict) else str(v),
+                        "value": v.get("value", v.get("text", str(v))) if isinstance(v, dict) else v,
+                        "trap_name": v.get("trap_name") if isinstance(v, dict) else None
+                    }
+            skeleton["options"] = options_dict
 
     # Grading
     if is_ela or req.skeleton_id.startswith("ai_"):

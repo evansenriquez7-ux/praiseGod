@@ -8,6 +8,20 @@ import { Zap } from 'lucide-react';
 export default function QuestionRenderer({ question, answer, setAnswer, answerResult }) {
   const questionMode = question.question_mode || question.format;
 
+  // Normalize options to a list of {key, text} objects to support all generator pipelines
+  const rawOptions = question.format_data?.mcq_options || question.mcq_options || question.options || [];
+  const optionsList = Array.isArray(rawOptions)
+    ? rawOptions.map(o => ({
+        key: o.key,
+        text: String(o.text !== undefined && o.text !== null ? o.text : (o.value ?? ''))
+      }))
+    : (rawOptions && typeof rawOptions === 'object')
+      ? Object.entries(rawOptions).map(([key, val]) => ({
+          key,
+          text: String(val && typeof val === 'object' ? (val.text !== undefined ? val.text : (val.value ?? '')) : (val ?? ''))
+        }))
+      : [];
+
   return (
     <>
       {question.is_worked_example && question.worked_example_steps && (
@@ -52,13 +66,13 @@ export default function QuestionRenderer({ question, answer, setAnswer, answerRe
                 true,
                 question.problem_id || question.skeleton_id
               )}
-              {(question.format_data?.mcq_options || question.mcq_options || question.options) && (
+              {optionsList.length > 0 && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', maxWidth: '400px' }}>
-                  {(question.format_data?.mcq_options || question.mcq_options || question.options).map(opt => {
+                  {optionsList.map(opt => {
                     const isSelected = answer === opt.key;
                     // Properly handle both result structures (lab vs portal)
                     const correctAnsStr = answerResult ? (answerResult.correct_answer !== undefined ? String(answerResult.correct_answer) : null) : null;
-                    const optValueStr = String(opt.value !== undefined ? opt.value : (opt.text ?? ''));
+                    const optValueStr = String(opt.text);
                     const isCorrectOpt = answerResult && (
                       opt.is_correct || 
                       opt.key === answerResult.correct_answer ||
@@ -75,7 +89,7 @@ export default function QuestionRenderer({ question, answer, setAnswer, answerRe
                         style={{ textAlign: 'left' }}
                       >
                         <div className="option-badge">{isSelected && !answerResult ? '✓' : opt.key}</div>
-                        <span>{renderMath(opt.text || String(opt.value || ''))}</span>
+                        <span>{renderMath(opt.text)}</span>
                       </button>
                     );
                   })}
@@ -205,12 +219,12 @@ export default function QuestionRenderer({ question, answer, setAnswer, answerRe
           )}
 
           {/* Standard MCQ format */}
-          {(questionMode === 'mcq' && question.options) && (
+          {(questionMode === 'mcq' && optionsList.length > 0) && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%', maxWidth: '500px' }}>
-              {question.options.map((opt) => {
+              {optionsList.map((opt) => {
                 const isSelected = answer === opt.key;
                 const correctAnsStr = answerResult ? (answerResult.correct_answer !== undefined ? String(answerResult.correct_answer) : null) : null;
-                const optValueStr = String(opt.value !== undefined ? opt.value : (opt.text ?? ''));
+                const optValueStr = String(opt.text);
                 const isCorrectOpt = answerResult && (
                   opt.is_correct || 
                   opt.key === answerResult.correct_answer ||

@@ -17,7 +17,6 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional
 
-from .adapter import to_legacy_dict
 from backend.app.services.orchestrator import PracticeOrchestrator
 from .generators.base_generator import _DNA_MODULE_MAP, _import_dna_module
 from .registry import get_all_node_ids, get_node_dnas
@@ -65,7 +64,7 @@ def run(
         allowed_difficulties=allowed_difficulties,
         allowed_contexts=allowed_contexts,
     )
-    return to_legacy_dict(problem)
+    return problem.model_dump()
 
 
 def run_batch(
@@ -91,7 +90,7 @@ def run_batch(
         experience: Experience wrapper applied to all problems.
 
     Returns:
-        List of legacy dicts.
+        List of native dicts.
     """
     problems = PracticeOrchestrator.generate_batch(
         node_id=node_id,
@@ -104,7 +103,7 @@ def run_batch(
         allowed_difficulties=allowed_difficulties,
         allowed_contexts=allowed_contexts,
     )
-    return [to_legacy_dict(p) for p in problems]
+    return [p.model_dump() for p in problems]
 
 
 def get_pipeline_status() -> Dict[str, Any]:

@@ -499,13 +499,28 @@ function App() {
         return;
       }
 
+      // No cached question, fetch a new batch from the API
+      let data = [];
+      try {
+        let url = `${API_BASE}/practice/${studentId}/batch?count=3&subject=${subject}`;
+        if (subdomain && (subject === 'Math' || subject === 'Matatag' || subject === 'MATATAG')) {
+          url += `&subdomain=${encodeURIComponent(subdomain)}`;
+        }
+        const res = await fetch(url);
+        data = await res.json();
+      } catch (fetchErr) {
+        console.error("Failed to fetch question batch", fetchErr);
+      }
+
+      if (data && data.length > 0) {
         setQuestionQueue(data.slice(1));
+        setActiveQuestion(data[0]);
         setQuestionStartTime(Date.now());
         // Initialize ordering state if first question is ordering
         if (data[0].question_mode === 'ordering' && data[0].visual_params?.items) {
           setPracticeOrdered(data[0].visual_params.items.map((item, idx) => ({ id: `item_${idx}`, key: `${idx}`, text: String(item) })));
         }
-      
+      }
     } catch (e) {
       console.error("Failed to load question", e);
     } finally {
