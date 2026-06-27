@@ -488,9 +488,14 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
         
         # Load saved portal config for this node (allowed formatters etc.)
         _allowed_fmt = None
+        _allowed_diff = None
+        _allowed_ctx = None
         if is_matatag:
             _cfg = db.query(models.CompetencyConfiguration).filter_by(node_id=skill_id).first()
-            _allowed_fmt = _cfg.allowed_formatters if _cfg else None
+            if _cfg:
+                _allowed_fmt = _cfg.allowed_formatters
+                _allowed_diff = _cfg.allowed_difficulties
+                _allowed_ctx = _cfg.allowed_contexts
         
         interest_theme = _combined_interests(student, "math")
         
@@ -500,6 +505,8 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
                 student_grade=student.grade,
                 student_interest=interest_theme,
                 allowed_formatters=_allowed_fmt,
+                allowed_difficulties=_allowed_diff,
+                allowed_contexts=_allowed_ctx,
                 experience="standard"
             )
             # Normalise to legacy format
@@ -700,9 +707,14 @@ def get_practice_question_batch(
     # Load config for MATATAG nodes
     is_matatag = q1.skill_id.startswith("mat_") or subject in ["Matatag", "MATATAG", "matatag"]
     _allowed_fmt = None
+    _allowed_diff = None
+    _allowed_ctx = None
     if is_matatag:
         _cfg = db.query(models.CompetencyConfiguration).filter_by(node_id=q1.skill_id).first()
-        _allowed_fmt = _cfg.allowed_formatters if _cfg else None
+        if _cfg:
+            _allowed_fmt = _cfg.allowed_formatters
+            _allowed_diff = _cfg.allowed_difficulties
+            _allowed_ctx = _cfg.allowed_contexts
     
     try:
         # We already have q1, so we generate count-1 more problems
@@ -715,7 +727,10 @@ def get_practice_question_batch(
                 grade=student.grade if student else 5,
                 count=additional_count,
                 student_interest=interest_theme,
-                experience="standard"
+                experience="standard",
+                allowed_formatters=_allowed_fmt,
+                allowed_difficulties=_allowed_diff,
+                allowed_contexts=_allowed_ctx,
             )
             
             for p in new_problems:

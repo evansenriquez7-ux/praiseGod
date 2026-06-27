@@ -32,6 +32,8 @@ def run(
     experience: str = "standard",
     seed: Optional[int] = None,
     allowed_formatters: Optional[List[str]] = None,
+    allowed_difficulties: Optional[Dict[str, List[Any]]] = None,
+    allowed_contexts: Optional[Dict[str, List[str]]] = None,
 ) -> Dict[str, Any]:
     """
     Generate a single practice problem and return it as a dict.
@@ -60,6 +62,8 @@ def run(
         formatter=formatter,
         experience=experience,
         allowed_formatters=allowed_formatters,
+        allowed_difficulties=allowed_difficulties,
+        allowed_contexts=allowed_contexts,
     )
     return to_legacy_dict(problem)
 
@@ -71,6 +75,9 @@ def run_batch(
     difficulty_profile: Optional[Dict[str, Any]] = None,
     student_interest: Optional[str] = None,
     experience: str = "standard",
+    allowed_formatters: Optional[List[str]] = None,
+    allowed_difficulties: Optional[Dict[str, List[Any]]] = None,
+    allowed_contexts: Optional[Dict[str, List[str]]] = None,
 ) -> List[Dict[str, Any]]:
     """
     Generate a batch of varied practice problems and return them as dicts.
@@ -93,6 +100,9 @@ def run_batch(
         difficulty_profile=difficulty_profile,
         interest_theme=student_interest,
         experience=experience,
+        allowed_formatters=allowed_formatters,
+        allowed_difficulties=allowed_difficulties,
+        allowed_contexts=allowed_contexts,
     )
     return [to_legacy_dict(p) for p in problems]
 

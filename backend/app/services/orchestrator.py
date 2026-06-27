@@ -28,10 +28,24 @@ class PracticeOrchestrator:
         experience: str = "standard",
         experience_config: Optional[Dict] = None,
         allowed_formatters: Optional[List[str]] = None,
+        allowed_difficulties: Optional[Dict[str, List[Any]]] = None,
+        allowed_contexts: Optional[Dict[str, List[str]]] = None,
     ) -> FormattedProblem:
         if seed is None:
             seed = random.randint(10000, 99999)
         rng = random.Random(seed)
+        
+        # Merge allowed configs into a local difficulty_profile
+        local_difficulty_profile = dict(difficulty_profile) if difficulty_profile else {}
+        if allowed_difficulties:
+            for dim, opts in allowed_difficulties.items():
+                if opts and isinstance(opts, list) and len(opts) > 0:
+                    local_difficulty_profile[dim] = rng.choice(opts)
+        
+        if allowed_contexts:
+            for var_name, opts in allowed_contexts.items():
+                if opts and isinstance(opts, list) and len(opts) > 0:
+                    local_difficulty_profile[var_name] = rng.choice(opts)
 
         dna_names = get_node_dnas(node_id)
         if not dna_names:
@@ -54,7 +68,7 @@ class PracticeOrchestrator:
         dna_name = rng.choice(valid_dnas)
         dna = _get_dna_instance(dna_name)
 
-        ctx = generate_context(dna, node_id, grade, seed, difficulty_profile, interest_theme)
+        ctx = generate_context(dna, node_id, grade, seed, local_difficulty_profile, interest_theme)
 
         if formatter is None:
             available = get_formatters_for_dna(dna_name)
@@ -80,6 +94,9 @@ class PracticeOrchestrator:
         difficulty_profile: Optional[Dict[str, Any]] = None,
         interest_theme: Optional[str] = None,
         experience: str = "standard",
+        allowed_formatters: Optional[List[str]] = None,
+        allowed_difficulties: Optional[Dict[str, List[Any]]] = None,
+        allowed_contexts: Optional[Dict[str, List[str]]] = None,
     ) -> List[FormattedProblem]:
         base_seed = random.randint(10000, 99999)
         batch_rng = random.Random(base_seed)
@@ -92,6 +109,8 @@ class PracticeOrchestrator:
         seen: set = set()
         for dna_name in dna_names:
             for fmt in get_formatters_for_dna(dna_name):
+                if allowed_formatters and fmt not in allowed_formatters:
+                    continue
                 if fmt not in seen:
                     seen.add(fmt)
                     available_formatters.append(fmt)
@@ -117,6 +136,9 @@ class PracticeOrchestrator:
                 interest_theme=interest_theme,
                 formatter=formatter,
                 experience=experience,
+                allowed_formatters=allowed_formatters,
+                allowed_difficulties=allowed_difficulties,
+                allowed_contexts=allowed_contexts,
             )
             problems.append(problem)
 
