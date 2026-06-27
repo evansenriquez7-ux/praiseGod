@@ -2900,8 +2900,8 @@ export function EmojiPictorialInteractive({ params, disabled }) {
   const renderEmojiNumber = (count, emoji, isCrossedOut = false) => {
     if (count === 0) return null;
     
-    // If count <= 100, just render them individually
-    if (count <= 100) {
+    // If count <= 20, just render them individually
+    if (count <= 20) {
       return Array.from({ length: count }).map((_, i) => (
         <span key={`single-${i}`} style={{
           display: 'inline-block',
@@ -2943,21 +2943,30 @@ export function EmojiPictorialInteractive({ params, disabled }) {
       for (let i = 0; i < grpCount; i++) {
         if (value === 1) {
           elements.push(
-            <span key={`grp-1-${i}`} style={{
-              display: 'inline-block',
+            <div key={`grp-1-${i}`} style={{
+              display: 'inline-flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'hsl(var(--card-bg))',
+              border: '2px solid hsl(var(--border-color))',
+              borderRadius: '8px',
+              padding: '8px',
+              minWidth: '70px',
               position: 'relative',
               opacity: isCrossedOut ? 0.5 : 1
             }}>
-              {emoji}
+              <span style={{ fontSize: '36px' }}>{emoji}</span>
+              <span style={{ fontSize: '14px', fontWeight: 'bold' }}>1x {emoji}</span>
               {isCrossedOut && (
                 <div style={{
                   position: 'absolute', top: '50%', left: '50%',
-                  width: '100%', height: '4px', background: 'red',
+                  width: '120%', height: '4px', background: 'red',
                   transform: 'translate(-50%, -50%) rotate(-45deg)',
                   borderRadius: '2px'
                 }} />
               )}
-            </span>
+            </div>
           );
         } else {
           elements.push(

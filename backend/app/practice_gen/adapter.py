@@ -408,6 +408,19 @@ def apply_formatter(
     """
     import importlib
 
+    # If emoji_pictorial is selected but values exceed 100, fall back to mcq
+    # to avoid rendering a large number of emojis (even as grouped items).
+    if formatter_name == "emoji_pictorial":
+        max_val = max(
+            ctx.values.get("a") or 0,
+            ctx.values.get("b") or 0,
+            ctx.values.get("number") or 0,
+            ctx.values.get("answer") or 0,
+            ctx.values.get("start") or 0
+        )
+        if max_val > 100:
+            formatter_name = "mcq"
+
     route = _FORMATTER_ROUTES.get(formatter_name)
     if route is None:
         # Unknown formatter — fall back to MCQ

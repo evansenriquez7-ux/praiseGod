@@ -121,12 +121,12 @@ def _build_params(
     # Layout options (for addition only; subtraction shows all items inline)
     layout = rng.choice(["inline", "stacked", "separated"]) if operation == "addition" else "inline"
     
-    # Build the display strings (capped to prevent massive JSON payloads)
-    display = (emoji * a) if a <= 100 else f"(Large group of {a} {_pluralize(base_name, a)})"
+    # Build the display strings (capped to prevent massive JSON payloads and UI clutter)
+    display = (emoji * a) if a <= 20 else f"(Large group of {a} {_pluralize(base_name, a)})"
     if a == 0: display = "0"
 
     if operation == "addition":
-        display_b = (emoji * b) if b <= 100 else f"(Large group of {b} {_pluralize(base_name, b)})"
+        display_b = (emoji * b) if b <= 20 else f"(Large group of {b} {_pluralize(base_name, b)})"
         if b == 0: display_b = "0"
     
     # For subtraction, build reveal display showing remaining items with explanation
@@ -135,7 +135,7 @@ def _build_params(
     if operation == "subtraction":
         remaining = a - b
         # Show remaining emojis
-        reveal_display = (emoji * remaining) if remaining <= 100 else f"(Large group of {remaining} {_pluralize(base_name, remaining)})"
+        reveal_display = (emoji * remaining) if remaining <= 20 else f"(Large group of {remaining} {_pluralize(base_name, remaining)})"
         if remaining == 0: reveal_display = "(none left)"
         # Text explanation
         reveal_text = f"{remaining} {_pluralize(base_name, remaining) if remaining != 1 else base_name}"
@@ -241,9 +241,9 @@ def _build_question_text(params: dict) -> str:
     name_b = _get_emoji_name(emoji, b)
     name_plural = _pluralize(base_name, 2)
     
-    # Build emoji strings
-    group_a_str = emoji * a if a > 0 else "(none)"
-    group_b_str = emoji * b if b > 0 else "(none)"
+    # Use display strings from params which are capped
+    group_a_str = params.get("display", "(none)")
+    group_b_str = params.get("display_b", "(none)")
     
     if operation == "addition":
         # Line 1: Show starting amount
