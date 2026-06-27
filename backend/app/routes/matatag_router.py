@@ -714,6 +714,7 @@ def matatag_lab_generate(
     seed: Optional[int] = Query(None, description="Optional seed for reproducibility"),
     difficulty: Optional[float] = Query(None, description="Difficulty scalar 0.0-1.0"),
     format_preference: Optional[str] = Query("auto", description="'visual', 'mcq', or 'auto'"),
+    db: Session = Depends(get_db),
 ):
     """
     Generate a practice problem for the MATATAG Problem Lab.
@@ -730,6 +731,19 @@ def matatag_lab_generate(
         raise HTTPException(status_code=404, detail=f"Node '{node_id}' not found.")
     grade = info.get("grade", 1)
     competency = info.get("competency", "")
+
+    # Load config for MATATAG nodes to maintain a single source of truth
+    _allowed_fmt = None
+    _allowed_diff = None
+    _allowed_ctx = None
+    try:
+        _cfg = db.query(models.CompetencyConfiguration).filter_by(node_id=node_id).first()
+        if _cfg:
+            _allowed_fmt = _cfg.allowed_formatters
+            _allowed_diff = _cfg.allowed_difficulties
+            _allowed_ctx = _cfg.allowed_contexts
+    except Exception as db_err:
+        print(f"[DB Warning] Unable to fetch CompetencyConfiguration: {db_err}. Using defaults.")
 
     # Compute effective difficulty from axis values
     dnas = _pg_registry.get_node_dnas(node_id)
@@ -762,13 +776,21 @@ def matatag_lab_generate(
     elif format_preference == "mcq":
         allowed_fmt = ["mcq"]
 
+    # Intersect explicit formatting preference with DB allowed formats if they exist
+    if allowed_fmt and _allowed_fmt:
+        final_fmts = [f for f in allowed_fmt if f in _allowed_fmt]
+    else:
+        final_fmts = allowed_fmt or _allowed_fmt
+
     try:
         skeleton = pipeline.run(
             node_id=node_id,
             student_grade=grade,
             difficulty_profile=parsed_axes if parsed_axes else {"range": effective_difficulty},
             seed=seed,
-            allowed_formatters=allowed_fmt
+            allowed_formatters=final_fmts,
+            allowed_difficulties=_allowed_diff,
+            allowed_contexts=_allowed_ctx
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Generation failed: {str(e)}")
