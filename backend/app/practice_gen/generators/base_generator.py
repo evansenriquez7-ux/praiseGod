@@ -242,7 +242,7 @@ def generate_context(
         ep for ep in dna.error_patterns
         if ep.required_concept in cumulative_concepts
     ]
-    distractors: List[Any] = []
+    distractors: List[Any] = list(values.get("distractors", []))
     for ep in filtered_patterns:
         try:
             distractor = _eval_error_formula(ep.formula, values)
