@@ -30,12 +30,12 @@ _PARAM_BOUNDS: Dict[str, Dict[str, Any]] = {
 }
 
 _CATEGORY_SETS = [
-    ["apples", "bananas", "mangoes", "grapes", "oranges"],
-    ["cats", "dogs", "birds", "fish", "rabbits"],
-    ["Math", "Science", "English", "Art", "PE"],
-    ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    ["basketball", "volleyball", "swimming", "running", "cycling"],
-    ["roses", "sunflowers", "tulips", "daisies", "lilies"],
+    ["apples", "bananas", "mangoes", "grapes", "oranges", "strawberries"],
+    ["cats", "dogs", "birds", "fish", "rabbits", "turtles"],
+    ["Math", "Science", "English", "Art", "PE", "Music"],
+    ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    ["basketball", "volleyball", "swimming", "running", "cycling", "tennis"],
+    ["roses", "sunflowers", "tulips", "daisies", "lilies", "orchids"],
     ["Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6"],
     ["January", "February", "March", "April", "May", "June"],
 ]
@@ -124,21 +124,17 @@ def generate_params(
     scale = scale_map.get(scale_level, 5)
 
     # Number of categories
-    cat_min = bounds["num_categories_min"]
-    cat_max = bounds["num_categories_max"]
-    
-    cat_scalar = extract_continuous_scalar(profile, "num_categories", extract_continuous_scalar(profile, "difficulty_scalar", 0.5))
-    num_cats = int(linear_interpolate(cat_min, cat_max, cat_scalar))
+    num_cats = int(profile.get("num_categories", extract_continuous_scalar(profile, "difficulty_scalar", 0.5) * (bounds["num_categories_max"] - bounds["num_categories_min"]) + bounds["num_categories_min"]))
     num_cats = max(3, min(num_cats, 6))
 
     cat_set  = rng.choice(_CATEGORY_SETS)
     categories = cat_set[:num_cats] if len(cat_set) >= num_cats else (cat_set * 2)[:num_cats]
 
     val_lo = max(bounds["value_min"], scale)
-    val_hi = bounds["value_max"]
+    val_hi_bound = bounds["value_max"]
 
-    scalar = extract_continuous_scalar(profile, "value_max", extract_continuous_scalar(profile, "difficulty_scalar", 0.5))
-    val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, scalar)))
+    val_hi = int(profile.get("value_max", extract_continuous_scalar(profile, "difficulty_scalar", 0.5) * (val_hi_bound - val_lo) + val_lo))
+    val_hi = max(val_lo, min(val_hi, val_hi_bound))
     
     import math
     min_mult = math.ceil(val_lo / scale) if scale > 0 else val_lo

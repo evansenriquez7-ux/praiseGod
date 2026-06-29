@@ -153,7 +153,8 @@ def generate_params(
     n_lo   = bounds["number_min"]
     diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
     from backend.app.practice_gen.dna.base import log_interpolate
-    n_hi   = int(log_interpolate(10, bounds["number_max"], diff_scalar))
+    n_hi   = int(log_interpolate(n_lo, bounds["number_max"], diff_scalar))
+    n_hi   = max(n_hi, n_lo)
     max_pl = bounds["max_place"]
 
     # Map difficulty axes to constraints

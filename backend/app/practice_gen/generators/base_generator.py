@@ -410,7 +410,7 @@ def _build_symbolic_question(
     # ── Place value ───────────────────────────────────────────────────────────
     if concept == "place_value":
         number = values.get("number", a)
-        digit = values.get("digit", b)
+        digit = values.get("digit", values.get("digit_at_position", b))
         pv_label = VocabGated("place value", "place value", "value").resolve(cumulative_vocab)
         return f"What is the {pv_label} of the digit {digit} in {number}?"
 

@@ -411,13 +411,15 @@ def apply_formatter(
     # If emoji_pictorial is selected but values exceed 100, fall back to mcq
     # to avoid rendering a large number of emojis (even as grouped items).
     if formatter_name == "emoji_pictorial":
-        max_val = max(
-            ctx.values.get("a") or 0,
-            ctx.values.get("b") or 0,
-            ctx.values.get("number") or 0,
-            ctx.values.get("answer") or 0,
-            ctx.values.get("start") or 0
-        )
+        vals = [
+            ctx.values.get("a"),
+            ctx.values.get("b"),
+            ctx.values.get("number"),
+            ctx.values.get("answer"),
+            ctx.values.get("start")
+        ]
+        int_vals = [v for v in vals if isinstance(v, (int, float))]
+        max_val = max(int_vals) if int_vals else 0
         if max_val > 100:
             formatter_name = "mcq"
 

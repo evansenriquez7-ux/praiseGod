@@ -100,6 +100,17 @@ class PracticeOrchestrator:
         dna_name = rng.choice(valid_dnas)
         dna = _get_dna_instance(dna_name)
 
+        if not formatter and allowed_formatters and len(allowed_formatters) == 1:
+            formatter = allowed_formatters[0]
+
+        if formatter:
+            from backend.app.practice_gen.compatibility import FORMATTER_VARIANT_SUPPORT
+            if dna_name in FORMATTER_VARIANT_SUPPORT and formatter in FORMATTER_VARIANT_SUPPORT[dna_name]:
+                caps = FORMATTER_VARIANT_SUPPORT[dna_name][formatter]
+                for variant_name, allowed_vals in caps.items():
+                    if variant_name not in local_difficulty_profile and allowed_vals:
+                        local_difficulty_profile[variant_name] = rng.choice(allowed_vals)
+
         ctx = generate_context(dna, node_id, grade, seed, local_difficulty_profile, interest_theme)
 
         if formatter is None:

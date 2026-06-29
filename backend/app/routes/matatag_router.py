@@ -347,14 +347,25 @@ def get_matatag_difficulty_axes(node_id: str):
                     "value": value,
                     "label": f"Up to {value} (scalar={scalar:.2f})",
                 })
-            # Add advanced (bridge zone) scalar of 1.25 for max_sum
-            if axis_name == "max_sum":
-                bridge_scalar = 1.25
-                bridge_value = int(min_val + bridge_scalar * (max_val - min_val))
-                options.append({
-                    "value": bridge_value,
-                    "label": f"Up to {bridge_value} (scalar={bridge_scalar:.2f}) [Bridge]",
-                })
+            # Add advanced (bridge zone) scalar of 1.25 for all continuous dimensions
+            bridge_scalar = 1.25
+            scale_type = axis.get("scale", "linear")
+            if scale_type == "logarithmic":
+                shift = 1 if min_val == 0 else 0
+                log_min = math.log10(min_val + shift)
+                log_max = math.log10(max_val + shift)
+                log_val = log_min + bridge_scalar * (log_max - log_min)
+                bridge_value = int(math.pow(10, log_val)) - shift
+            else:
+                if isinstance(min_val, float) or isinstance(max_val, float) or (max_val - min_val <= 2):
+                    bridge_value = round(min_val + bridge_scalar * (max_val - min_val), 2)
+                else:
+                    bridge_value = int(min_val + bridge_scalar * (max_val - min_val))
+                    
+            options.append({
+                "value": bridge_value,
+                "label": f"Up to {bridge_value} (scalar={bridge_scalar:.2f}) [Advanced]",
+            })
             
             resolved_axes.append({
                 "name": axis_name,
@@ -519,15 +530,25 @@ def get_matatag_lab_config(node_id: str):
                     "label": f"Up to {value} (scalar={scalar:.2f})",
                 })
             
-            # Add advanced (bridge zone) scalar of 1.25 for max_sum
-            if axis_name == "max_sum":
-                bridge_scalar = 1.25
-                bridge_value = int(min_val + bridge_scalar * (max_val - min_val))
-                options.append({
-                    "scalar": bridge_scalar,
-                    "value": bridge_value,
-                    "label": f"Up to {bridge_value} (scalar={bridge_scalar:.2f}) [Bridge]",
-                })
+            # Add advanced (bridge zone) scalar of 1.25 for all continuous dimensions
+            bridge_scalar = 1.25
+            if scale_type == "logarithmic":
+                shift = 1 if min_val == 0 else 0
+                log_min = math.log10(min_val + shift)
+                log_max = math.log10(max_val + shift)
+                log_val = log_min + bridge_scalar * (log_max - log_min)
+                bridge_value = int(math.pow(10, log_val)) - shift
+            else:
+                if isinstance(min_val, float) or isinstance(max_val, float) or (max_val - min_val <= 2):
+                    bridge_value = round(min_val + bridge_scalar * (max_val - min_val), 2)
+                else:
+                    bridge_value = int(min_val + bridge_scalar * (max_val - min_val))
+                    
+            options.append({
+                "scalar": bridge_scalar,
+                "value": bridge_value,
+                "label": f"Up to {bridge_value} (scalar={bridge_scalar:.2f}) [Advanced]",
+            })
             
             difficulty_dimensions.append({
                 "name": axis_name,
@@ -775,6 +796,8 @@ def matatag_lab_generate(
             allowed_fmt = [f for f in all_fmts if f not in ["mcq", "numeric_input", "cloze"]]
     elif format_preference == "mcq":
         allowed_fmt = ["mcq"]
+    elif format_preference and format_preference != "auto":
+        allowed_fmt = [format_preference]
 
     # Intersect explicit formatting preference with DB allowed formats if they exist
     if allowed_fmt and _allowed_fmt:
@@ -806,7 +829,7 @@ def matatag_lab_generate(
     correct_key = None
     if not is_visual:
         format_data = skeleton.get("format_data", {})
-        raw_opts = skeleton.get("options", format_data.get("options", []))
+        raw_opts = skeleton.get("options", format_data.get("options", format_data.get("mcq_options", [])))
         correct_key = skeleton.get("correct_key", format_data.get("correct_key"))
         
         # Determine correct key if missing
@@ -842,7 +865,7 @@ def matatag_lab_generate(
         "axis_values": parsed_axes,
         "primary_concept": primary_concept,
         "available_formats": final_fmts,
-        "format_used": "visual" if is_visual else "mcq",
+        "format_used": skeleton.get("format", "visual" if is_visual else "mcq"),
 
         # Question content
         "stem": skeleton.get("stem", skeleton.get("question_text", "")),

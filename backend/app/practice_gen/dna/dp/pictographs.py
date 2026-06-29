@@ -38,14 +38,14 @@ _PARAM_BOUNDS: Dict[str, Dict[str, Any]] = {
 
 # Sample category sets for variety
 _CATEGORY_SETS = [
-    ["apples", "bananas", "mangoes", "grapes"],
-    ["cats", "dogs", "birds", "fish"],
-    ["red", "blue", "green", "yellow"],
-    ["Math", "Science", "English", "Art", "PE"],
-    ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    ["basketball", "volleyball", "swimming", "running"],
-    ["roses", "sunflowers", "tulips", "daisies"],
-    ["Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5"],
+    ["apples", "bananas", "mangoes", "grapes", "oranges", "strawberries"],
+    ["cats", "dogs", "birds", "fish", "rabbits", "turtles"],
+    ["red", "blue", "green", "yellow", "purple", "orange"],
+    ["Math", "Science", "English", "Art", "PE", "Music"],
+    ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    ["basketball", "volleyball", "swimming", "running", "soccer", "tennis"],
+    ["roses", "sunflowers", "tulips", "daisies", "orchids", "lilies"],
+    ["Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6"],
 ]
 
 
@@ -129,7 +129,7 @@ def generate_params(
     from backend.app.practice_gen.dna.base import linear_interpolate, extract_discrete_level, extract_continuous_scalar
     
     scale_type    = extract_discrete_level(profile, "scale_type", ["no_scale", "scale_2", "scale_5", "scale_10"], "no_scale" if grade == 1 else "scale_2")
-    task_type     = extract_discrete_level(profile, "task_type", ["read_single", "compare_two", "find_total", "find_difference", "organize_table"], "read_value")
+    task_type     = extract_discrete_level(profile, "task_type", ["read_single", "compare_two", "find_total", "find_difference", "organize_table", "present_data"], "read_value")
 
     # Determine scale
     if scale_type == "no_scale" or grade == 1:
@@ -144,11 +144,7 @@ def generate_params(
         scale = 1
 
     # Number of categories
-    cat_min = bounds["num_categories_min"]
-    cat_max = bounds["num_categories_max"]
-    
-    cat_scalar = extract_continuous_scalar(profile, "num_categories", extract_continuous_scalar(profile, "difficulty_scalar", 0.5))
-    num_cats = int(linear_interpolate(cat_min, cat_max, cat_scalar))
+    num_cats = int(profile.get("num_categories", extract_continuous_scalar(profile, "difficulty_scalar", 0.5) * (bounds["num_categories_max"] - bounds["num_categories_min"]) + bounds["num_categories_min"]))
     num_cats = max(3, min(num_cats, 6))
 
     # Pick categories
@@ -157,10 +153,10 @@ def generate_params(
 
     # Generate values (multiples of scale so pictograph pictures are whole numbers)
     val_lo = bounds["value_min"]
-    val_hi = bounds["value_max"]
+    val_hi_bound = bounds["value_max"]
 
-    scalar = extract_continuous_scalar(profile, "value_max", extract_continuous_scalar(profile, "difficulty_scalar", 0.5))
-    val_hi = max(val_lo, int(linear_interpolate(val_lo, val_hi, scalar)))
+    val_hi = int(profile.get("value_max", extract_continuous_scalar(profile, "difficulty_scalar", 0.5) * (val_hi_bound - val_lo) + val_lo))
+    val_hi = max(val_lo, min(val_hi, val_hi_bound))
 
 
     import math
