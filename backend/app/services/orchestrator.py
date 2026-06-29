@@ -42,6 +42,17 @@ class PracticeOrchestrator:
         # If the UI sends multi-select variants as a list, pick one randomly for this generation
         keys_to_remove = []
         for k, v in local_difficulty_profile.items():
+            if isinstance(v, str):
+                v = v.strip()
+                if v.startswith("[") and v.endswith("]"):
+                    import ast
+                    try:
+                        v = ast.literal_eval(v)
+                    except Exception:
+                        pass
+                elif "," in v:
+                    v = [opt.strip() for opt in v.split(",") if opt.strip()]
+            
             if isinstance(v, list) and len(v) > 0:
                 local_difficulty_profile[k] = rng.choice(v)
             elif v in ("", "any", "random", None):
