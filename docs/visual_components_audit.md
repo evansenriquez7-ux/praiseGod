@@ -87,3 +87,13 @@ Frontend interactive state outputs raw numbers or complex objects (e.g., `{ hour
    Update frontend components or backend evaluators to convert payloads to uniform formats (e.g., converting fraction selections to strings, parsing PesoMoney total to raw integer, etc.).
 4. **Implement Missing Interactive States**:
    Introduce interactive input elements, interactive toggles, or click handlers to `PatternSequenceInteractive`, `TenFrameInteractive`, and `ShapeBoardInteractive` so students can submit configurations in `"set"` mode.
+
+---
+
+## Mapping Summary & Machine-Readable Findings
+
+- The backend visual formatters under `backend/app/practice_gen/formatters/visual` were enumerated and mapped to frontend renderer entries in `frontend/src/utils/renderUtils.jsx`, which dispatch to implementations in `frontend/src/components/VisualSkeletons.jsx`.
+- A machine-readable JSONL with one object per formatter/component mapping and per-finding details was written to `local_only/scratch/visual_audit_findings.jsonl`.
+- Notable mapping to review: `fmt_pictograph.py` emits `visual_type = "BarChart"` and therefore routes to `BarChartInteractive`. Confirm whether pictograph-specific rendering parameters or styling are needed — otherwise no functional mismatch was detected.
+
+If you want a follow-up, I can scaffold an adapter component for pictographs, run focused fuzz tests for pictograph cases, or expand the audit to non-visual formatters.

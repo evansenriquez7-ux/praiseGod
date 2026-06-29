@@ -54,6 +54,10 @@ export function NumberLineInteractive({ params, onAnswer, disabled }) {
 
   // position is the actual VALUE on the number line
   const [position, setPosition] = useState(() => {
+    // In interactive mode, start at middle; in read mode, use dot_value
+    if (is_interactive) {
+      return start + Math.floor(totalDivisions / 2) * safeMinorInterval;
+    }
     const initialDivIndex = dot_value !== undefined ? getDivisionIndex(dot_value) : Math.floor(totalDivisions / 2);
     return start + initialDivIndex * safeMinorInterval;
   });
@@ -326,10 +330,17 @@ export function ClockSetInteractive({ params, onAnswer, disabled }) {
   const [isDraggingHour, setIsDraggingHour] = useState(false);
   const [isDraggingMinute, setIsDraggingMinute] = useState(false);
   const hasInteractedRef = useRef(false);
+  const firstRenderRef = useRef(true);
+
+  useEffect(() => {
+    firstRenderRef.current = false;
+  }, []);
 
   useEffect(() => {
     if (onAnswer && !isReadOnly && hasInteractedRef.current) {
-      onAnswer({ hour: hours, minute: minutes });
+      const hourStr = String(hours).padStart(2, '0');
+      const minStr = String(minutes).padStart(2, '0');
+      onAnswer(`${hourStr}:${minStr}`);
     }
   }, [hours, minutes]);
 
@@ -423,6 +434,7 @@ export function ClockSetInteractive({ params, onAnswer, disabled }) {
   const handleCanvasClick = (e) => {
     if (disabled) return;
     hasInteractedRef.current = true;
+    firstRenderRef.current = false;
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left - canvas.width / 2;
@@ -686,7 +698,7 @@ export function PesoMoneyPicker({ params, onAnswer, disabled }) {
 
   useEffect(() => {
     if (isInteractive && onAnswer && hasInteractedRef.current) {
-      onAnswer({ bills: selectedBills, coins: selectedCoins, total: currentTotal() });
+      onAnswer(currentTotal());
     }
   }, [selectedBills, selectedCoins, isInteractive]);
 
@@ -2439,10 +2451,9 @@ export function GridAreaInteractive({ params, onAnswer, disabled }) {
         textAlign: 'center',
         fontSize: '28px',
         fontWeight: 700,
-        color: (disabled && shaded.size === correct_count) ? '#22c55e' : 'hsl(var(--primary))'
+        color: 'hsl(var(--primary))'
       }}>
         {shaded.size} square unit{shaded.size !== 1 ? 's' : ''}
-        {(disabled && shaded.size === correct_count) && <span style={{ marginLeft: '10px', fontSize: '24px' }}>✓</span>}
       </div>
 
       {/* Grid Container - centers the grid */}
@@ -2735,6 +2746,12 @@ export function CalendarInteractive({ params, onAnswer, disabled }) {
   const [selectedDate, setSelectedDate] = useState(null);
   const [rangeStart, setRangeStart] = useState(null);
   const [rangeEnd, setRangeEnd] = useState(null);
+  const hasInteractedRef = useRef(false);
+  const firstRenderRef = useRef(true);
+
+  useEffect(() => {
+    firstRenderRef.current = false;
+  }, []);
 
   // Get calendar info
   const firstDay = new Date(params.year, params.month - 1, 1).getDay();
@@ -2743,7 +2760,7 @@ export function CalendarInteractive({ params, onAnswer, disabled }) {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   useEffect(() => {
-    if (onAnswer && !disabled) {
+    if (onAnswer && !disabled && hasInteractedRef.current) {
       if (task_type === 'select_date') {
         onAnswer(selectedDate);
       } else {
@@ -2756,6 +2773,7 @@ export function CalendarInteractive({ params, onAnswer, disabled }) {
 
   const handleDateClick = (day) => {
     if (disabled) return;
+    hasInteractedRef.current = true;
     
     if (task_type === 'select_date') {
       setSelectedDate(day);
@@ -3387,12 +3405,15 @@ export function FractionModelInteractive({ params, onAnswer, disabled }) {
     return 0; // Interactive mode starts with 0 shaded parts
   });
   const hasInteractedRef = React.useRef(false);
+  const firstRenderRef = React.useRef(true);
 
   React.useEffect(() => {
-    if (onAnswer && !disabled) {
-      if (hasInteractedRef.current || isReadOnly) {
-        onAnswer(`${clickedParts}/${den}`);
-      }
+    firstRenderRef.current = false;
+  }, []);
+
+  React.useEffect(() => {
+    if (onAnswer && !disabled && hasInteractedRef.current) {
+      onAnswer(`${clickedParts}/${den}`);
     }
   }, [clickedParts, onAnswer, disabled, den]);
 
@@ -3580,7 +3601,7 @@ export function RulerMeasureInteractive({ params, onAnswer, disabled }) {
 
   React.useEffect(() => {
     if (isSetMode && hasInteractedRef.current) {
-      onAnswer(val);
+      onAnswer(`${val} ${unit}`);
     }
   }, [val, isSetMode]);
 
@@ -3706,16 +3727,18 @@ export function ShapeBoardInteractive({ params, onAnswer, disabled }) {
   const shapes = params.shapes || [];
   const isSetMode = onAnswer && !disabled;
   const [order, setOrder] = React.useState([]);
+  const hasInteractedRef = React.useRef(false);
 
   React.useEffect(() => {
-    if (isSetMode) {
-      const ans = order.map(idx => shapes[idx].type).join(", ");
-      onAnswer(ans);
+    if (isSetMode && hasInteractedRef.current) {
+      // Return array of selected shape indices in order
+      onAnswer(order);
     }
   }, [order, isSetMode]);
 
   const handleShapeClick = (idx) => {
     if (!isSetMode) return;
+    hasInteractedRef.current = true;
     setOrder(prev => {
       if (prev.includes(idx)) {
         return prev.filter(x => x !== idx);
