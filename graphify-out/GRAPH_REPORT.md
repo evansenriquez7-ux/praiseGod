@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-06-30)
 
 ## Corpus Check
-- 239 files · ~265,147 words
+- 239 files · ~265,164 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2305 nodes · 3563 edges · 182 communities (174 shown, 8 thin omitted)
+- 2305 nodes · 3563 edges · 183 communities (175 shown, 8 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.54)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `60ed0f0d`
+- Built from commit: `c006b1a4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -177,6 +177,7 @@
 - [[_COMMUNITY_Community 175|Community 175]]
 - [[_COMMUNITY_Community 176|Community 176]]
 - [[_COMMUNITY_Community 177|Community 177]]
+- [[_COMMUNITY_Community 178|Community 178]]
 - [[_COMMUNITY_Community 182|Community 182]]
 
 ## God Nodes (most connected - your core abstractions)
@@ -206,7 +207,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (182 total, 8 thin omitted)
+## Communities (183 total, 8 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.10
@@ -321,8 +322,8 @@ Cohesion: 0.16
 Nodes (5): RedisDict, RedisDict, RedisDict, get_cache(), set_cache()
 
 ### Community 28 - "Community 28"
-Cohesion: 0.10
-Nodes (20): @col, Contents, Core Directives, Customizing Tables, Data Types, @default, Defining Types, Enumerations (+12 more)
+Cohesion: 0.14
+Nodes (13): Contents, Customizing Tables, Data Types, Defining Types, Enumerations, Many-to-Many, One-to-Many (Implicit Foreign Key), One-to-One (+5 more)
 
 ### Community 29 - "Community 29"
 Cohesion: 0.33
@@ -823,6 +824,10 @@ Nodes (5): _build_equation_sentence(), format_cloze(), Textual Formatter — Clo
 ### Community 177 - "Community 177"
 Cohesion: 0.13
 Nodes (18): FormattedProblem, Final output of the practice generation pipeline.      Produced by a formatter o, Serialize to dict for API response., Practice Generation — Hint-Gated Experience Wrapper  Hints unlock one at a time., Apply the hint-gated experience wrapper.      Sets problem.experience to "hint_g, Increment hints_revealed by 1 and return the updated problem.      If the proble, reveal_next_hint(), wrap_hint_gated() (+10 more)
+
+### Community 178 - "Community 178"
+Cohesion: 0.29
+Nodes (7): @col, Core Directives, @default, @index, @searchable, @table, @unique
 
 ### Community 182 - "Community 182"
 Cohesion: 0.50

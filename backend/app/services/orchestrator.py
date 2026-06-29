@@ -40,9 +40,15 @@ class PracticeOrchestrator:
         local_difficulty_profile = dict(difficulty_profile) if difficulty_profile else {}
         
         # If the UI sends multi-select variants as a list, pick one randomly for this generation
+        keys_to_remove = []
         for k, v in local_difficulty_profile.items():
             if isinstance(v, list) and len(v) > 0:
                 local_difficulty_profile[k] = rng.choice(v)
+            elif v in ("", "any", "random", None):
+                keys_to_remove.append(k)
+                
+        for k in keys_to_remove:
+            del local_difficulty_profile[k]
 
         if allowed_difficulties:
             for dim, opts in allowed_difficulties.items():
