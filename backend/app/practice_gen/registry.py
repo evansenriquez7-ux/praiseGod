@@ -244,6 +244,8 @@ def _parse_competency_bounds(competency: str, dna_name: str) -> Dict[str, Tuple[
         bounds["regrouping"] = False
     elif "with regrouping" in text:
         bounds["regrouping"] = True
+    elif dna_name == "fractions" and ("add" in text or "subtract" in text or "sum" in text or "difference" in text):
+        bounds["operation"] = "add_subtract"
     elif "with and without regrouping" in text:
         # Don't strictly bound it, let the catalog dictate options
         pass
@@ -1100,7 +1102,7 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     "mat_g3_na_q4_4": ["division", "rounding"],
     "mat_g3_na_q4_5": ["division"],
     "mat_g3_na_q4_6": ["fractions"],
-    "mat_g3_na_q4_7": ["fractions", "addition"],
+    "mat_g3_na_q4_7": ["fractions"],
 
     # ────────────────────────────────────────────────────────────────────────
     # GRADE 3 — Measurement & Geometry

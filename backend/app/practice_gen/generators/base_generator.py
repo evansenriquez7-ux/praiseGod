@@ -466,10 +466,18 @@ def _build_symbolic_question(
         seq_str = ", ".join(str(x) for x in seq) if seq else f"{a}, ..."
         return f"What is the next number in the pattern: {seq_str}?"
 
-    # ── Fractions ─────────────────────────────────────────────────────────────
     if concept == "fractions":
         numer = values.get("numerator", a)
         denom = values.get("denominator", b)
+        operation = values.get("operation")
+        if operation == "add_subtract":
+            a_num = values.get("a_num", numer)
+            b_num = values.get("b_num", 0)
+            a_den = values.get("a_den", denom)
+            b_den = values.get("b_den", denom)
+            # Check if this is addition or subtraction (or support both)
+            # We can check values.get("result") calculation or default to '+'
+            return f"What is \\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}}?"
         return f"What fraction does {numer} out of {denom} equal parts represent?"
 
     # ── Money ────────────────────────────────────────────────────────────────
