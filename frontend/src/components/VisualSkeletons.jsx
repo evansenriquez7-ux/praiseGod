@@ -3272,32 +3272,81 @@ export function PatternSequenceInteractive({ params, disabled }) {
 // ============================================================================
 //  FRACTION MODEL & SHADE
 // ============================================================================
-export function FractionModelInteractive({ params }) {
-  const den = params.denominator || params.parts || 1;
+export function FractionModelInteractive({ params, disabled }) {
+  const den = params.denominator || params.total_parts || params.parts || 1;
   const num = params.numerator !== undefined ? params.numerator : (params.shaded_parts || 0);
+  const modelType = params.model_type || 'area';
   
+  const wholeUnits = Math.max(1, Math.ceil(num / den));
+
+  if (modelType === 'number_line') {
+    return (
+      <div style={{ padding: '20px', width: '100%', maxWidth: '400px', margin: '0 auto' }}>
+        <NumberLineInteractive 
+          params={{
+            start: 0,
+            end: wholeUnits,
+            minor_interval: 1 / den,
+            major_interval: 1,
+            dot_value: num / den,
+            is_interactive: false
+          }} 
+          disabled={disabled}
+        />
+      </div>
+    );
+  }
+
+  if (modelType === 'set') {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', width: '100%' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center' }}>
+          {Array.from({ length: wholeUnits }).map((_, unitIdx) => (
+            <div key={unitIdx} style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', maxWidth: '200px', justifyContent: 'center', border: '2px dashed rgba(255,255,255,0.2)', padding: '10px', borderRadius: '8px' }}>
+              {Array.from({ length: den }).map((_, i) => {
+                const globalIdx = unitIdx * den + i;
+                return (
+                  <div key={i} style={{
+                    width: '35px',
+                    height: '35px',
+                    borderRadius: '50%',
+                    border: '3px solid hsl(var(--primary))',
+                    background: globalIdx < num ? 'rgba(99,102,241,0.5)' : 'transparent',
+                  }} />
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Default 'area'
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', width: '100%' }}>
-      <div style={{ 
-        display: 'flex', 
-        width: '100%', 
-        maxWidth: '400px', 
-        height: '60px', 
-        border: '3px solid hsl(var(--primary))', 
-        borderRadius: '8px', 
-        overflow: 'hidden' 
-      }}>
-        {Array.from({ length: den }).map((_, i) => (
-          <div key={i} style={{
-            flex: 1,
-            background: i < num ? 'rgba(99,102,241,0.5)' : 'transparent',
-            borderRight: i < den - 1 ? '2px solid hsl(var(--primary))' : 'none'
-          }} />
-        ))}
-      </div>
-      <div style={{ marginTop: '15px', fontSize: '18px', fontWeight: 700, color: '#f1f5f9' }}>
-        {num} / {den}
-      </div>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', width: '100%', gap: '15px' }}>
+      {Array.from({ length: wholeUnits }).map((_, unitIdx) => (
+        <div key={unitIdx} style={{ 
+          display: 'flex', 
+          width: '100%', 
+          maxWidth: '400px', 
+          height: '60px', 
+          border: '3px solid hsl(var(--primary))', 
+          borderRadius: '8px', 
+          overflow: 'hidden' 
+        }}>
+          {Array.from({ length: den }).map((_, i) => {
+            const globalIdx = unitIdx * den + i;
+            return (
+              <div key={i} style={{
+                flex: 1,
+                background: globalIdx < num ? 'rgba(99,102,241,0.5)' : 'transparent',
+                borderRight: i < den - 1 ? '2px solid hsl(var(--primary))' : 'none'
+              }} />
+            );
+          })}
+        </div>
+      ))}
     </div>
   );
 }
