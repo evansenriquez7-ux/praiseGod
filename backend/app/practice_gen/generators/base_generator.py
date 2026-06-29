@@ -190,7 +190,8 @@ def generate_context(
                 elif isinstance(profile_to_use[dim], (int, float)) and profile_to_use[dim] > max_val:
                     profile_to_use[dim] = max_val
             else:
-                profile_to_use[dim] = bound_val
+                if dim not in profile_to_use:
+                    profile_to_use[dim] = bound_val
     else:
         # For lab manual testing, do NOT cap/override with competency bounds!
         # But still fill in any omitted dimensions using their bounds/defaults.
