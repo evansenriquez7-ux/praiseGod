@@ -33,6 +33,7 @@ def run(
     allowed_formatters: Optional[List[str]] = None,
     allowed_difficulties: Optional[Dict[str, List[Any]]] = None,
     allowed_contexts: Optional[Dict[str, List[str]]] = None,
+    is_lab: bool = False,
 ) -> Dict[str, Any]:
     """
     Generate a single practice problem and return it as a dict.
@@ -48,6 +49,7 @@ def run(
         formatter: Optional formatter name. If None, picked automatically.
         experience: Experience wrapper name.
         seed: Reproducibility seed. If None, random.
+        is_lab: Whether this is called from the lab to bypass curriculum bounds.
 
     Returns:
         problem.to_dict() — a fully serialised FormattedProblem dict.
@@ -63,6 +65,7 @@ def run(
         allowed_formatters=allowed_formatters,
         allowed_difficulties=allowed_difficulties,
         allowed_contexts=allowed_contexts,
+        is_lab=is_lab,
     )
     return problem.model_dump()
 

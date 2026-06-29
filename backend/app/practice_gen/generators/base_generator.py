@@ -119,6 +119,7 @@ def generate_context(
     seed: int,
     difficulty_profile: Optional[Dict[str, Any]] = None,
     interest_theme: Optional[str] = None,
+    is_lab: bool = False,
 ) -> QuestionContext:
     """
     Generate a format-agnostic QuestionContext from a DNA + node.
@@ -146,6 +147,7 @@ def generate_context(
         difficulty_profile: Optional axis → level mapping,
             e.g. {"regrouping": "ones", "structure": "result_unknown"}.
         interest_theme: Optional interest ID from interest_bank.json.
+        is_lab: Whether this is called from the lab to bypass curriculum bounds.
 
     Returns:
         Fully populated QuestionContext.
@@ -178,16 +180,26 @@ def generate_context(
     # ── c. Inject competency bounds into difficulty_profile ───────────────────
     bounds = get_node_competency_bounds(node_id, dna.concept)
     profile_to_use = dict(difficulty_profile) if difficulty_profile else {}
-    for dim, bound_val in bounds.items():
-        if isinstance(bound_val, tuple) and len(bound_val) == 2:
-            min_val, max_val = bound_val
-            # Override profile with strict max bounds from curriculum
-            if dim not in profile_to_use or profile_to_use[dim] == "continuous":
-                profile_to_use[dim] = max_val
-            elif isinstance(profile_to_use[dim], (int, float)) and profile_to_use[dim] > max_val:
-                profile_to_use[dim] = max_val
-        else:
-            profile_to_use[dim] = bound_val
+    if not is_lab:
+        for dim, bound_val in bounds.items():
+            if isinstance(bound_val, tuple) and len(bound_val) == 2:
+                min_val, max_val = bound_val
+                # Override profile with strict max bounds from curriculum
+                if dim not in profile_to_use or profile_to_use[dim] == "continuous":
+                    profile_to_use[dim] = max_val
+                elif isinstance(profile_to_use[dim], (int, float)) and profile_to_use[dim] > max_val:
+                    profile_to_use[dim] = max_val
+            else:
+                profile_to_use[dim] = bound_val
+    else:
+        # For lab manual testing, do NOT cap/override with competency bounds!
+        # But still fill in any omitted dimensions using their bounds/defaults.
+        for dim, bound_val in bounds.items():
+            if dim not in profile_to_use:
+                if isinstance(bound_val, tuple) and len(bound_val) == 2:
+                    profile_to_use[dim] = bound_val[1] # use max bounds
+                else:
+                    profile_to_use[dim] = bound_val
 
     # ── d. Generate params (DNA-specific) ────────────────────────────────────
     dna_module = _import_dna_module(dna.concept)

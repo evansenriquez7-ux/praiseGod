@@ -940,17 +940,17 @@ function App() {
           const allowedCtxs = confData.allowed_contexts && Object.keys(confData.allowed_contexts).length > 0 ? confData.allowed_contexts : {};
           const allowedFmts = confData.allowed_formatters && confData.allowed_formatters.length > 0 ? confData.allowed_formatters : [];
           
-          // Seed defaults for empty arrays from the capabilities
-          if (Object.keys(allowedDiffs).length === 0) {
-            (data.difficulty_dimensions || []).forEach(dim => {
+          // Seed defaults for missing/empty arrays from the capabilities
+          (data.difficulty_dimensions || []).forEach(dim => {
+            if (!allowedDiffs[dim.name] || allowedDiffs[dim.name].length === 0) {
               allowedDiffs[dim.name] = dim.options.map(o => o.scalar);
-            });
-          }
-          if (Object.keys(allowedCtxs).length === 0) {
-            (data.contextual_variants || []).forEach(v => {
+            }
+          });
+          (data.contextual_variants || []).forEach(v => {
+            if (!allowedCtxs[v.name] || allowedCtxs[v.name].length === 0) {
               allowedCtxs[v.name] = [...v.options];
-            });
-          }
+            }
+          });
           if (allowedFmts.length === 0) {
             const allFmtNames = (data.formatters || []).map(f => f.name);
             allowedFmts.push(...allFmtNames);

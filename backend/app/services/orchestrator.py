@@ -31,6 +31,7 @@ class PracticeOrchestrator:
         allowed_formatters: Optional[List[str]] = None,
         allowed_difficulties: Optional[Dict[str, List[Any]]] = None,
         allowed_contexts: Optional[Dict[str, List[str]]] = None,
+        is_lab: bool = False,
     ) -> FormattedProblem:
         if seed is None:
             seed = random.randint(10000, 99999)
@@ -60,13 +61,18 @@ class PracticeOrchestrator:
             if axis.get("dim_type") == "continuous" and axis["name"] in local_difficulty_profile:
                 val = local_difficulty_profile[axis["name"]]
                 if isinstance(val, (float, int)) and val <= 2.0:
-                    competency_bounds = get_node_competency_bounds(node_id)
-                    bounds = competency_bounds.get(axis["name"])
-                    if bounds:
-                        min_val, max_val = bounds
-                    else:
+                    if is_lab:
+                        # For lab manual testing, use axis default bounds
                         min_val = axis.get("default_min", 1)
                         max_val = axis.get("default_max", 100)
+                    else:
+                        competency_bounds = get_node_competency_bounds(node_id)
+                        bounds = competency_bounds.get(axis["name"])
+                        if bounds:
+                            min_val, max_val = bounds
+                        else:
+                            min_val = axis.get("default_min", 1)
+                            max_val = axis.get("default_max", 100)
                     
                     scale_type = axis.get("scale", "linear")
                     if scale_type == "logarithmic":
@@ -111,7 +117,7 @@ class PracticeOrchestrator:
                     if variant_name not in local_difficulty_profile and allowed_vals:
                         local_difficulty_profile[variant_name] = rng.choice(allowed_vals)
 
-        ctx = generate_context(dna, node_id, grade, seed, local_difficulty_profile, interest_theme)
+        ctx = generate_context(dna, node_id, grade, seed, local_difficulty_profile, interest_theme, is_lab=is_lab)
 
         if formatter is None:
             available = get_formatters_for_dna(dna_name)

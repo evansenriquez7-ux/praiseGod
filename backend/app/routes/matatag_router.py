@@ -315,25 +315,16 @@ def get_matatag_difficulty_axes(node_id: str):
         )
     primary_concept = dnas[0]
     axes = _get_axes_for_concept(primary_concept)
-    competency_bounds = _pg_registry.get_node_competency_bounds(node_id)
 
     resolved_axes = []
     for axis in axes:
         axis_name = axis["name"]
-        
-        # Dynamic axis filtering: Drop discrete axes that are strictly locked by curriculum constraints
-        if axis_name in competency_bounds and isinstance(competency_bounds[axis_name], bool):
-            continue
-
         dim_type = axis.get("dim_type", "discrete")
         
         if dim_type == "continuous":
-            bounds = competency_bounds.get(axis_name)
-            if bounds:
-                min_val, max_val = bounds
-            else:
-                min_val = axis.get("default_min", 1)
-                max_val = axis.get("default_max", 100)
+            # For lab manual testing, use full default bounds of the axis
+            min_val = axis.get("default_min", 1)
+            max_val = axis.get("default_max", 100)
             
             divisions = axis.get("divisions", 5)
             options = []
@@ -375,19 +366,7 @@ def get_matatag_difficulty_axes(node_id: str):
             })
         else:
             options = axis.get("options", [])
-            if axis_name == "skip_interval" and "skip_pool" in competency_bounds:
-                skip_pool = competency_bounds["skip_pool"]
-                filtered_options = []
-                for opt in options:
-                    val = opt["value"]
-                    if val == "by_1" and 1 in skip_pool:
-                        filtered_options.append(opt)
-                    elif val == "by_2_5_10" and any(x in skip_pool for x in (2, 5, 10)):
-                        filtered_options.append(opt)
-                    elif val == "by_20_50_100" and any(x in skip_pool for x in (20, 50, 100)):
-                        filtered_options.append(opt)
-                options = filtered_options
-
+            # For lab manual testing, do not filter skip_interval options by skip_pool
             resolved_axes.append({
                 "name": axis_name,
                 "label": axis["label"],
@@ -487,22 +466,12 @@ def get_matatag_lab_config(node_id: str):
     difficulty_dimensions = []
     for axis in axes:
         axis_name = axis["name"]
-        
-        # Dynamic axis filtering: Drop discrete axes that are strictly locked by curriculum constraints
-        if axis_name in competency_bounds and isinstance(competency_bounds[axis_name], bool):
-            continue
-            
         dim_type = axis.get("dim_type", "discrete")
         
         if dim_type == "continuous":
-            # Continuous dimension: scalar 0-1 maps to numeric range
-            # Use competency bounds if available, otherwise use defaults
-            bounds = competency_bounds.get(axis_name)
-            if bounds:
-                min_val, max_val = bounds
-            else:
-                min_val = axis.get("default_min", 1)
-                max_val = axis.get("default_max", 100)
+            # For lab manual testing, use full default bounds of the axis
+            min_val = axis.get("default_min", 1)
+            max_val = axis.get("default_max", 100)
             
             divisions = axis.get("divisions", 5)
             
@@ -561,22 +530,8 @@ def get_matatag_lab_config(node_id: str):
                 "default_scalar": axis.get("default", 0.0),
             })
         else:
-            # Discrete dimension: filter by competency bounds if applicable
-            all_levels = axis.get("options", [])
-            levels = all_levels  # Default to all levels
-            
-            if axis_name == "skip_interval" and "skip_pool" in competency_bounds:
-                skip_pool = competency_bounds["skip_pool"]
-                filtered_options = []
-                for opt in levels:
-                    val = opt["value"]
-                    if val == "by_1" and 1 in skip_pool:
-                        filtered_options.append(opt)
-                    elif val == "by_2_5_10" and any(x in skip_pool for x in (2, 5, 10)):
-                        filtered_options.append(opt)
-                    elif val == "by_20_50_100" and any(x in skip_pool for x in (20, 50, 100)):
-                        filtered_options.append(opt)
-                levels = filtered_options
+            # Discrete dimension: show all levels for manual testing in the lab
+            levels = axis.get("options", [])
             
             d = len(levels)
             options = []
@@ -1186,6 +1141,7 @@ def matatag_lab_v2_generate(req: LabV2GenerateRequest, db: Session = Depends(get
             seed=seed,
             student_interest=req.interest_theme,
             allowed_formatters=allowed_formatters,
+            is_lab=True,
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Generation failed: {str(e)}")

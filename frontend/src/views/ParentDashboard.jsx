@@ -930,25 +930,40 @@ export default function ParentDashboard(props) {
                                       })}
                                   </div>
 
-                                  {/* Spine dropdown rendered below context dropdown */}
+                                  {/* Spine checkboxes rendered below context checkboxes when word_problem is allowed */}
                                   {(() => {
                                     const spineVariant = labConfig.contextual_variants.find(v => v.name === 'spine');
-                                    const contextVariant = labConfig.contextual_variants.find(v => v.name === 'context');
-                                    const contextVal = contextVariant ? (labVariantValues['context'] || contextVariant.default) : null;
-                                    const showSpine = spineVariant && contextVal === 'word_problem';
+                                    const showSpine = spineVariant && (labAllowedContexts['context'] || []).includes('word_problem');
                                     if (!showSpine) return null;
 
-                                    const selectedFormatter = labConfig.formatters?.find(f => f.name === labSelectedFormatter);
-                                    const restrictions = selectedFormatter?.variant_restrictions;
-                                    const spineVal = labVariantValues[spineVariant.name] || spineVariant.default;
-                                    const isSpineRestricted = restrictions && restrictions[spineVariant.name] && !restrictions[spineVariant.name].includes(spineVal);
-
                                     return (
-                                      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxWidth: '200px' }}>
+                                      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '12px' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                           <label style={{ fontSize: '11px', fontWeight: 700, color: 'hsl(var(--text-muted))', letterSpacing: '0.06em' }}>
-                                            {spineVariant.label.toUpperCase()}
+                                            {spineVariant.label.toUpperCase()} (STORY SPINES)
                                           </label>
+                                        </div>
+                                        <div style={{ marginTop: '8px', padding: '8px', background: 'rgba(0,0,0,0.1)', borderRadius: '6px' }}>
+                                          <div style={{ fontSize: '9px', fontWeight: 700, color: '#f59e0b', marginBottom: '6px' }}>ALLOWED IN PORTAL</div>
+                                          {(labAllowedContexts[spineVariant.name] || []).length === 0 && (
+                                            <div style={{ fontSize: '11px', color: '#ef4444', marginBottom: '6px' }}>Warning: No spines selected. Check at least one.</div>
+                                          )}
+                                          {spineVariant.options.map(opt => (
+                                            <label key={opt} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: 'hsl(var(--text-muted))', marginBottom: '4px' }}>
+                                              <input 
+                                                type="checkbox" 
+                                                checked={(labAllowedContexts[spineVariant.name] || []).includes(opt)}
+                                                onChange={(e) => {
+                                                  const isChecked = e.target.checked;
+                                                  setLabAllowedContexts(prev => {
+                                                    const curr = prev[spineVariant.name] || [];
+                                                    return { ...prev, [spineVariant.name]: isChecked ? [...curr, opt] : curr.filter(x => x !== opt) };
+                                                  });
+                                                }}
+                                              />
+                                              {opt.replace(/_/g, ' ')}
+                                            </label>
+                                          ))}
                                         </div>
                                       </div>
                                     );
