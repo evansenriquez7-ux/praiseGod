@@ -552,10 +552,34 @@ def format_number_line(
 
     vp["is_interactive"] = (interaction_mode == "set")
     vp.setdefault("show_labels", True)
-    if "dot_value" not in vp:
-        vp["dot_value"] = vp.get("value", vp.get("correct_position"))
 
     correct_val = _correct_value(vp)
+
+    # Compute correct float value for grading compatibility in practice_router.py
+    ct = vp.get("content_type", "whole_number")
+    if ct == "fraction":
+        target_val = vp["numerator"] / vp["denominator"]
+    elif ct == "improper_fraction":
+        parts = vp["fraction_display"].split("/")
+        target_val = int(parts[0]) / int(parts[1])
+    elif ct == "mixed_number":
+        whole, frac = vp["fraction_display"].split(" ")
+        num, den = frac.split("/")
+        target_val = int(whole) + int(num) / int(den)
+    elif ct == "decimal":
+        target_val = float(vp["decimal_value"])
+    else:
+        target_val = float(vp.get("value", vp.get("correct_position", 0)))
+
+    vp["correct_answer"] = target_val
+    vp["target"] = target_val
+
+    if interaction_mode == "set":
+        # In set mode, start the dot at the start of the range to prevent answer leak
+        vp["dot_value"] = vp.get("start", 0)
+    else:
+        if "dot_value" not in vp:
+            vp["dot_value"] = vp.get("value", vp.get("correct_position"))
     
     # For addition/subtraction, use context distractors; otherwise build from traps
     if ctx.dna_concept in ("addition", "subtraction") and ctx.distractors:

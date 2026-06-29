@@ -58,9 +58,10 @@ export function NumberLineInteractive({ params, onAnswer, disabled }) {
     return start + initialDivIndex * safeMinorInterval;
   });
   const [isDragging, setIsDragging] = useState(false);
+  const hasInteractedRef = useRef(false);
   
   useEffect(() => {
-    if (onAnswer && !disabled && !isDragging) {
+    if (onAnswer && !disabled && !isDragging && hasInteractedRef.current) {
       onAnswer(Math.round(position * 100) / 100);
     }
   }, [position, disabled]);
@@ -81,6 +82,7 @@ export function NumberLineInteractive({ params, onAnswer, disabled }) {
   }, [start, end, totalDivisions, safeMinorInterval, dot_value, totalRange]);
 
   const handlePositionChange = (snappedPosIndex) => {
+    hasInteractedRef.current = true;
     const clampedPosIndex = Math.max(0, Math.min(totalDivisions, snappedPosIndex));
     const actualValue = start + clampedPosIndex * safeMinorInterval;
     setPosition(actualValue);
@@ -306,15 +308,29 @@ export function NumberLineInteractive({ params, onAnswer, disabled }) {
 // ============================================================================
 export function ClockSetInteractive({ params, onAnswer, disabled }) {
   const { target_time, use_24_hour, show_minutes, hours: targetHours, minutes: targetMinutes } = params;
-  const [hours, setHours] = useState(targetHours !== undefined ? targetHours : 3);
-  const [minutes, setMinutes] = useState(targetMinutes !== undefined ? targetMinutes : 0);
+  const isReadOnly = params.interaction_mode === 'read' || params.is_read_only || !onAnswer;
+  const [hours, setHours] = useState(() => {
+    if (isReadOnly) {
+      return targetHours !== undefined ? targetHours : 3;
+    }
+    return 12; // In set mode, start at 12:00 to prevent answer leak
+  });
+  const [minutes, setMinutes] = useState(() => {
+    if (isReadOnly) {
+      return targetMinutes !== undefined ? targetMinutes : 0;
+    }
+    return 0; // In set mode, start at 12:00 to prevent answer leak
+  });
   const [selectedHand, setSelectedHand] = useState('minute'); // 'hour' or 'minute'
   const canvasRef = useRef(null);
   const [isDraggingHour, setIsDraggingHour] = useState(false);
   const [isDraggingMinute, setIsDraggingMinute] = useState(false);
+  const hasInteractedRef = useRef(false);
 
   useEffect(() => {
-    if (onAnswer) onAnswer({ hours, minutes });
+    if (onAnswer && !isReadOnly && hasInteractedRef.current) {
+      onAnswer({ hour: hours, minute: minutes });
+    }
   }, [hours, minutes]);
 
   useEffect(() => {
@@ -406,6 +422,7 @@ export function ClockSetInteractive({ params, onAnswer, disabled }) {
 
   const handleCanvasClick = (e) => {
     if (disabled) return;
+    hasInteractedRef.current = true;
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left - canvas.width / 2;
@@ -435,6 +452,7 @@ export function ClockSetInteractive({ params, onAnswer, disabled }) {
   };
 
   const adjustTime = (hourDelta, minuteDelta) => {
+    hasInteractedRef.current = true;
     let newMinutes = minutes + minuteDelta;
     let newHours = hours + hourDelta;
 
@@ -649,6 +667,7 @@ export function PesoMoneyPicker({ params, onAnswer, disabled }) {
   
   const [selectedBills, setSelectedBills] = useState({});
   const [selectedCoins, setSelectedCoins] = useState({});
+  const hasInteractedRef = useRef(false);
 
   const denominations = available_denominations || [1000, 500, 200, 100, 50, 20, 10, 5, 1];
   const bills = denominations.filter(d => d >= 20);
@@ -666,13 +685,14 @@ export function PesoMoneyPicker({ params, onAnswer, disabled }) {
   };
 
   useEffect(() => {
-    if (isInteractive && onAnswer) {
+    if (isInteractive && onAnswer && hasInteractedRef.current) {
       onAnswer({ bills: selectedBills, coins: selectedCoins, total: currentTotal() });
     }
   }, [selectedBills, selectedCoins, isInteractive]);
 
   const addDenomination = (denom, isBill) => {
     if (disabled) return;
+    hasInteractedRef.current = true;
     if (isBill) {
       setSelectedBills(prev => ({ ...prev, [denom]: (prev[denom] || 0) + 1 }));
     } else {
@@ -682,6 +702,7 @@ export function PesoMoneyPicker({ params, onAnswer, disabled }) {
 
   const removeDenomination = (denom, isBill) => {
     if (disabled) return;
+    hasInteractedRef.current = true;
     if (isBill) {
       setSelectedBills(prev => {
         const count = prev[denom] || 0;
@@ -704,6 +725,8 @@ export function PesoMoneyPicker({ params, onAnswer, disabled }) {
   };
 
   const resetSelection = () => {
+    if (disabled) return;
+    hasInteractedRef.current = true;
     setSelectedBills({});
     setSelectedCoins({});
   };
@@ -1104,6 +1127,7 @@ export function EstimationGateInteractive({ params, onAnswer, disabled }) {
 export function FillInTableInteractive({ params, onAnswer, disabled }) {
   const { columns, rows, rule_description } = params;
   const [inputs, setInputs] = useState({});
+  const hasInteractedRef = useRef(false);
 
   // Find blank indices
   const blankIndices = rows
@@ -1111,7 +1135,7 @@ export function FillInTableInteractive({ params, onAnswer, disabled }) {
     .filter(idx => idx !== null);
 
   useEffect(() => {
-    if (onAnswer) {
+    if (onAnswer && hasInteractedRef.current) {
       // Collect answers in order
       const answers = blankIndices.map(idx => {
         const val = inputs[idx];
@@ -1125,6 +1149,7 @@ export function FillInTableInteractive({ params, onAnswer, disabled }) {
     if (disabled) return;
     // Allow only numbers and minus sign
     if (value === '' || value === '-' || /^-?\d+$/.test(value)) {
+      hasInteractedRef.current = true;
       setInputs(prev => ({ ...prev, [rowIdx]: value }));
     }
   };
@@ -2358,15 +2383,17 @@ export function GridAreaInteractive({ params, onAnswer, disabled }) {
     }
     return initial;
   });
+  const hasInteractedRef = useRef(false);
 
   useEffect(() => {
-    if (onAnswer) {
+    if (onAnswer && hasInteractedRef.current) {
       onAnswer(shaded.size);
     }
   }, [shaded]);
 
   const toggleCell = (row, col) => {
     if (disabled) return;
+    hasInteractedRef.current = true;
     const key = `${row}-${col}`;
     setShaded(prev => {
       const next = new Set(prev);
@@ -2381,6 +2408,7 @@ export function GridAreaInteractive({ params, onAnswer, disabled }) {
 
   const clearAll = () => {
     if (disabled) return;
+    hasInteractedRef.current = true;
     setShaded(new Set());
   };
 
@@ -2411,10 +2439,10 @@ export function GridAreaInteractive({ params, onAnswer, disabled }) {
         textAlign: 'center',
         fontSize: '28px',
         fontWeight: 700,
-        color: shaded.size === correct_count ? '#22c55e' : 'hsl(var(--primary))'
+        color: (disabled && shaded.size === correct_count) ? '#22c55e' : 'hsl(var(--primary))'
       }}>
         {shaded.size} square unit{shaded.size !== 1 ? 's' : ''}
-        {shaded.size === correct_count && <span style={{ marginLeft: '10px', fontSize: '24px' }}>✓</span>}
+        {(disabled && shaded.size === correct_count) && <span style={{ marginLeft: '10px', fontSize: '24px' }}>✓</span>}
       </div>
 
       {/* Grid Container - centers the grid */}
@@ -3100,6 +3128,24 @@ export function PlaceValueBlocksInteractive({ params, onAnswer, disabled }) {
   const [hundreds, setHundreds] = useState(0);
   const [tens, setTens] = useState(0);
   const [ones, setOnes] = useState(0);
+  const hasInteractedRef = useRef(false);
+
+  const handleThChange = (fn) => {
+    hasInteractedRef.current = true;
+    setThousands(fn);
+  };
+  const handleHChange = (fn) => {
+    hasInteractedRef.current = true;
+    setHundreds(fn);
+  };
+  const handleTenChange = (fn) => {
+    hasInteractedRef.current = true;
+    setTens(fn);
+  };
+  const handleOChange = (fn) => {
+    hasInteractedRef.current = true;
+    setOnes(fn);
+  };
 
   useEffect(() => {
     if (is_interactive) {
@@ -3118,7 +3164,7 @@ export function PlaceValueBlocksInteractive({ params, onAnswer, disabled }) {
   }, [is_interactive, targetT, targetH, targetTen, targetO]);
 
   useEffect(() => {
-    if (is_interactive && onAnswer) {
+    if (is_interactive && onAnswer && hasInteractedRef.current) {
       const currentTotal = thousands * 1000 + hundreds * 100 + tens * 10 + ones;
       onAnswer(currentTotal);
     }
@@ -3188,9 +3234,9 @@ export function PlaceValueBlocksInteractive({ params, onAnswer, disabled }) {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', padding: '8px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: `1px solid ${colorT}20` }}>
               <span style={{ fontSize: '11px', color: colorT, fontWeight: 600 }}>1000s</span>
               <div style={{ display: 'flex', gap: '6px' }}>
-                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => setThousands(prev => Math.max(0, prev - 1))}>-</button>
+                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => handleThChange(prev => Math.max(0, prev - 1))}>-</button>
                 <span style={{ fontSize: '14px', fontWeight: 700 }}>{thousands}</span>
-                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => setThousands(prev => Math.min(9, prev + 1))}>+</button>
+                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => handleThChange(prev => Math.min(9, prev + 1))}>+</button>
               </div>
             </div>
           )}
@@ -3199,9 +3245,9 @@ export function PlaceValueBlocksInteractive({ params, onAnswer, disabled }) {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', padding: '8px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: `1px solid ${colorH}20` }}>
               <span style={{ fontSize: '11px', color: colorH, fontWeight: 600 }}>100s</span>
               <div style={{ display: 'flex', gap: '6px' }}>
-                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => setHundreds(prev => Math.max(0, prev - 1))}>-</button>
+                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => handleHChange(prev => Math.max(0, prev - 1))}>-</button>
                 <span style={{ fontSize: '14px', fontWeight: 700 }}>{hundreds}</span>
-                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => setHundreds(prev => Math.min(9, prev + 1))}>+</button>
+                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => handleHChange(prev => Math.min(9, prev + 1))}>+</button>
               </div>
             </div>
           )}
@@ -3210,9 +3256,9 @@ export function PlaceValueBlocksInteractive({ params, onAnswer, disabled }) {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', padding: '8px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: `1px solid ${colorTen}20` }}>
               <span style={{ fontSize: '11px', color: colorTen, fontWeight: 600 }}>10s</span>
               <div style={{ display: 'flex', gap: '6px' }}>
-                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => setTens(prev => Math.max(0, prev - 1))}>-</button>
+                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => handleTenChange(prev => Math.max(0, prev - 1))}>-</button>
                 <span style={{ fontSize: '14px', fontWeight: 700 }}>{tens}</span>
-                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => setTens(prev => Math.min(9, prev + 1))}>+</button>
+                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => handleTenChange(prev => Math.min(9, prev + 1))}>+</button>
               </div>
             </div>
           )}
@@ -3221,9 +3267,9 @@ export function PlaceValueBlocksInteractive({ params, onAnswer, disabled }) {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', padding: '8px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: `1px solid ${colorO}20` }}>
               <span style={{ fontSize: '11px', color: colorO, fontWeight: 600 }}>1s</span>
               <div style={{ display: 'flex', gap: '6px' }}>
-                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => setOnes(prev => Math.max(0, prev - 1))}>-</button>
+                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => handleOChange(prev => Math.max(0, prev - 1))}>-</button>
                 <span style={{ fontSize: '14px', fontWeight: 700 }}>{ones}</span>
-                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => setOnes(prev => Math.min(9, prev + 1))}>+</button>
+                <button type="button" className="btn-secondary" style={{ padding: '2px 8px', fontSize: '12px', minWidth: '24px' }} onClick={() => handleOChange(prev => Math.min(9, prev + 1))}>+</button>
               </div>
             </div>
           )}
@@ -3240,16 +3286,64 @@ export function PlaceValueBlocksInteractive({ params, onAnswer, disabled }) {
 // ============================================================================
 //  PATTERN SEQUENCE (READ MODE)
 // ============================================================================
-export function PatternSequenceInteractive({ params, disabled }) {
+export function PatternSequenceInteractive({ params, onAnswer, disabled }) {
   const sequence = params.sequence || [];
   const missingIndices = params.missing_indices || [];
+  const isInteractive = params.is_interactive !== false && onAnswer !== undefined;
   
+  const [inputs, setInputs] = useState({});
+  const hasInteractedRef = useRef(false);
+
+  useEffect(() => {
+    if (isInteractive && onAnswer) {
+      if (hasInteractedRef.current) {
+        if (missingIndices.length === 1) {
+          const val = inputs[missingIndices[0]] ?? '';
+          const isNumber = typeof sequence[missingIndices[0]] === 'number';
+          onAnswer(isNumber ? (parseInt(val) || 0) : val);
+        } else {
+          const arr = missingIndices.map(idx => {
+            const val = inputs[idx] ?? '';
+            const isNumber = typeof sequence[idx] === 'number';
+            return isNumber ? (parseInt(val) || 0) : val;
+          });
+          onAnswer(arr);
+        }
+      }
+    }
+  }, [inputs, isInteractive]);
+
+  const handleChange = (idx, val) => {
+    hasInteractedRef.current = true;
+    setInputs(prev => ({ ...prev, [idx]: val }));
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '20px', width: '100%' }}>
       <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
         {sequence.map((item, idx) => {
           const isMissing = missingIndices.includes(idx);
-          return (
+          return isMissing && isInteractive ? (
+            <input
+              key={idx}
+              type="text"
+              value={inputs[idx] ?? ''}
+              onChange={e => handleChange(idx, e.target.value)}
+              disabled={disabled}
+              style={{
+                width: '60px',
+                height: '60px',
+                borderRadius: '12px',
+                border: '2px solid hsl(var(--primary))',
+                background: 'rgba(255,255,255,0.05)',
+                color: '#fff',
+                textAlign: 'center',
+                fontSize: '18px',
+                fontWeight: 700,
+                outline: 'none'
+              }}
+            />
+          ) : (
             <div 
               key={idx}
               style={{
@@ -3280,19 +3374,29 @@ export function PatternSequenceInteractive({ params, disabled }) {
 //  FRACTION MODEL & SHADE
 // ============================================================================
 export function FractionModelInteractive({ params, onAnswer, disabled }) {
-  const isClickable = onAnswer && !disabled;
-  const [clickedParts, setClickedParts] = React.useState(params.numerator !== undefined ? params.numerator : (params.shaded_parts || 0));
-
-  React.useEffect(() => {
-    if (onAnswer && !disabled) {
-      onAnswer(clickedParts);
-    }
-  }, [clickedParts, onAnswer, disabled]);
-
+  const isReadOnly = params.interaction_mode === 'read' || params.is_read_only || !onAnswer;
   const den = params.denominator || params.total_parts || params.parts || 1;
   const num = params.numerator !== undefined ? params.numerator : (params.shaded_parts || 0);
   const modelType = params.model_type || 'area';
   const wholeUnits = Math.max(1, Math.ceil(num / den));
+
+  const [clickedParts, setClickedParts] = React.useState(() => {
+    if (isReadOnly) {
+      return num;
+    }
+    return 0; // Interactive mode starts with 0 shaded parts
+  });
+  const hasInteractedRef = React.useRef(false);
+
+  React.useEffect(() => {
+    if (onAnswer && !disabled) {
+      if (hasInteractedRef.current || isReadOnly) {
+        onAnswer(`${clickedParts}/${den}`);
+      }
+    }
+  }, [clickedParts, onAnswer, disabled, den]);
+
+  const isClickable = onAnswer && !disabled;
 
   if (modelType === 'number_line') {
     return (
@@ -3303,9 +3407,13 @@ export function FractionModelInteractive({ params, onAnswer, disabled }) {
             end: wholeUnits,
             minor_interval: 1 / den,
             major_interval: 1,
-            dot_value: num / den,
-            is_interactive: false
+            dot_value: isReadOnly ? (num / den) : 0,
+            is_interactive: !isReadOnly
           }} 
+          onAnswer={(val) => {
+            hasInteractedRef.current = true;
+            setClickedParts(Math.round(val * den));
+          }}
           disabled={disabled}
         />
       </div>
@@ -3321,15 +3429,23 @@ export function FractionModelInteractive({ params, onAnswer, disabled }) {
               {Array.from({ length: den }).map((_, i) => {
                 const globalIdx = unitIdx * den + i;
                 return (
-                  <div key={i} style={{
-                    width: '35px',
-                    height: '35px',
-                    borderRadius: '50%',
-                    border: '3px solid hsl(var(--primary))',
-                    cursor: isClickable ? "pointer" : "default",
-                    onClick: () => { if (isClickable) setClickedParts(globalIdx + 1) },
-                    background: globalIdx < clickedParts ? 'rgba(99,102,241,0.5)' : 'transparent',
-                  }} />
+                  <div 
+                    key={i} 
+                    onClick={() => {
+                      if (isClickable) {
+                        hasInteractedRef.current = true;
+                        setClickedParts(globalIdx + 1);
+                      }
+                    }}
+                    style={{
+                      width: '35px',
+                      height: '35px',
+                      borderRadius: '50%',
+                      border: '3px solid hsl(var(--primary))',
+                      cursor: isClickable ? "pointer" : "default",
+                      background: globalIdx < clickedParts ? 'rgba(99,102,241,0.5)' : 'transparent',
+                    }} 
+                  />
                 );
               })}
             </div>
@@ -3349,21 +3465,28 @@ export function FractionModelInteractive({ params, onAnswer, disabled }) {
           maxWidth: '400px', 
           height: '60px', 
           border: '3px solid hsl(var(--primary))',
-                    cursor: isClickable ? "pointer" : "default", 
+          cursor: isClickable ? "pointer" : "default", 
           borderRadius: '8px', 
           overflow: 'hidden' 
         }}>
           {Array.from({ length: den }).map((_, i) => {
             const globalIdx = unitIdx * den + i;
             return (
-              <div key={i} style={{
-                flex: 1,
-                onClick: () => { if (isClickable) setClickedParts(globalIdx + 1) },
-                    background: globalIdx < clickedParts ? 'rgba(99,102,241,0.5)' : 'transparent',
-                cursor: isClickable ? "pointer" : "default",
-                onClick: () => { if (isClickable) setClickedParts(globalIdx + 1) },
-                borderRight: i < den - 1 ? '2px solid hsl(var(--primary))' : 'none'
-              }} />
+              <div 
+                key={i} 
+                onClick={() => {
+                  if (isClickable) {
+                    hasInteractedRef.current = true;
+                    setClickedParts(globalIdx + 1);
+                  }
+                }}
+                style={{
+                  flex: 1,
+                  background: globalIdx < clickedParts ? 'rgba(99,102,241,0.5)' : 'transparent',
+                  cursor: isClickable ? "pointer" : "default",
+                  borderRight: i < den - 1 ? '2px solid hsl(var(--primary))' : 'none'
+                }} 
+              />
             );
           })}
         </div>
@@ -3379,10 +3502,33 @@ export function FractionShadeInteractive({ params, onAnswer, disabled }) {
 // ============================================================================
 //  TEN FRAME
 // ============================================================================
-export function TenFrameInteractive({ params }) {
-  const filled = params.filled || 0;
+export function TenFrameInteractive({ params, onAnswer, disabled }) {
+  const targetFilled = params.filled || 0;
   const total = params.total || 10;
-  
+  const isInteractive = params.query_type === 'show_number' || params.is_interactive || (onAnswer !== undefined && !disabled);
+
+  const [filledCount, setFilledCount] = useState(() => {
+    if (isInteractive) return 0;
+    return targetFilled;
+  });
+  const hasInteractedRef = useRef(false);
+
+  useEffect(() => {
+    if (isInteractive && onAnswer && hasInteractedRef.current) {
+      onAnswer(filledCount);
+    }
+  }, [filledCount, isInteractive]);
+
+  const handleCellClick = (index) => {
+    if (disabled || !isInteractive) return;
+    hasInteractedRef.current = true;
+    if (filledCount === index + 1) {
+      setFilledCount(index);
+    } else {
+      setFilledCount(index + 1);
+    }
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', width: '100%' }}>
       <div style={{
@@ -3395,16 +3541,21 @@ export function TenFrameInteractive({ params }) {
         borderRadius: '12px'
       }}>
         {Array.from({ length: total }).map((_, i) => (
-          <div key={i} style={{
-            width: '50px',
-            height: '50px',
-            border: '2px solid rgba(255,255,255,0.2)',
-            borderRadius: '8px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}>
-            {i < filled && (
+          <div 
+            key={i} 
+            onClick={() => handleCellClick(i)}
+            style={{
+              width: '50px',
+              height: '50px',
+              border: '2px solid rgba(255,255,255,0.2)',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: (isInteractive && !disabled) ? 'pointer' : 'default'
+            }}
+          >
+            {i < filledCount && (
               <div style={{ width: '30px', height: '30px', borderRadius: '50%', background: '#ef4444' }} />
             )}
           </div>
@@ -3425,9 +3576,10 @@ export function RulerMeasureInteractive({ params, onAnswer, disabled }) {
   const max = params.max_val || Math.max(10, Math.ceil(length + startOffset + 2));
   
   const [val, setVal] = React.useState(0);
+  const hasInteractedRef = React.useRef(false);
 
   React.useEffect(() => {
-    if (isSetMode) {
+    if (isSetMode && hasInteractedRef.current) {
       onAnswer(val);
     }
   }, [val, isSetMode]);
@@ -3453,7 +3605,10 @@ export function RulerMeasureInteractive({ params, onAnswer, disabled }) {
             max={max} 
             step={1} 
             value={val} 
-            onChange={(e) => setVal(parseInt(e.target.value))}
+            onChange={(e) => {
+              hasInteractedRef.current = true;
+              setVal(parseInt(e.target.value));
+            }}
             style={{ width: '100%' }}
           />
           <span style={{ marginLeft: '10px', fontWeight: 'bold' }}>{val} {unit}</span>
@@ -3550,13 +3705,25 @@ export function BalanceScaleInteractive({ params }) {
 export function ShapeBoardInteractive({ params, onAnswer, disabled }) {
   const shapes = params.shapes || [];
   const isSetMode = onAnswer && !disabled;
-  const [selected, setSelected] = React.useState(null);
+  const [order, setOrder] = React.useState([]);
 
   React.useEffect(() => {
-    if (isSetMode && selected !== null) {
-      onAnswer(selected);
+    if (isSetMode) {
+      const ans = order.map(idx => shapes[idx].type).join(", ");
+      onAnswer(ans);
     }
-  }, [selected, isSetMode]);
+  }, [order, isSetMode]);
+
+  const handleShapeClick = (idx) => {
+    if (!isSetMode) return;
+    setOrder(prev => {
+      if (prev.includes(idx)) {
+        return prev.filter(x => x !== idx);
+      } else {
+        return [...prev, idx];
+      }
+    });
+  };
   
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '25px', justifyContent: 'center', padding: '20px', width: '100%' }}>
@@ -3568,11 +3735,12 @@ export function ShapeBoardInteractive({ params, onAnswer, disabled }) {
         const isHighlighted = params.highlighted_shape && (
           s.id ? s.id === params.highlighted_shape.id : JSON.stringify(s) === JSON.stringify(params.highlighted_shape)
         );
+        const rank = order.indexOf(i) + 1;
         
         return (
           <div 
             key={i} 
-            onClick={() => isSetMode && setSelected(i)}
+            onClick={() => handleShapeClick(i)}
             style={{ 
               display: 'flex', 
               flexDirection: 'column', 
@@ -3580,10 +3748,31 @@ export function ShapeBoardInteractive({ params, onAnswer, disabled }) {
               gap: '8px', 
               opacity: (params.highlighted_shape && !isHighlighted) ? 0.3 : 1,
               cursor: isSetMode ? "pointer" : "default",
-              outline: selected === i ? "2px solid #3b82f6" : "none",
+              outline: order.includes(i) ? "2px solid #3b82f6" : "none",
               padding: "5px",
-              borderRadius: "8px"
+              borderRadius: "8px",
+              position: "relative"
             }}>
+            {isSetMode && rank > 0 && (
+              <span style={{ 
+                position: 'absolute', 
+                top: '-10px', 
+                right: '-10px', 
+                background: '#3b82f6', 
+                color: '#fff', 
+                borderRadius: '50%', 
+                width: '20px', 
+                height: '20px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center', 
+                fontSize: '12px',
+                fontWeight: 'bold',
+                zIndex: 20
+              }}>
+                {rank}
+              </span>
+            )}
             <div style={{
               filter: isHighlighted ? 'drop-shadow(0 0 15px #f59e0b) drop-shadow(0 0 5px #f59e0b)' : 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))',
               transform: `rotate(${s.orientation_deg || 0}deg) ${isHighlighted ? 'scale(1.3)' : 'scale(1)'}`,
@@ -3618,9 +3807,10 @@ export function NumberBondInteractive({ params, onAnswer, disabled }) {
   const { whole, part1, part2, blank_position } = params;
   
   const [val, setVal] = React.useState('');
+  const hasInteractedRef = React.useRef(false);
 
   React.useEffect(() => {
-    if (onAnswer && !disabled) {
+    if (onAnswer && !disabled && hasInteractedRef.current) {
       if (val !== '') {
         onAnswer(parseInt(val, 10));
       } else {
@@ -3641,7 +3831,10 @@ export function NumberBondInteractive({ params, onAnswer, disabled }) {
         <input 
           type="number"
           value={val}
-          onChange={(e) => setVal(e.target.value)}
+          onChange={(e) => {
+            hasInteractedRef.current = true;
+            setVal(e.target.value);
+          }}
           style={{ width: '80%', height: '80%', textAlign: 'center', background: 'transparent', border: 'none', color: 'inherit', fontSize: '24px', outline: 'none' }}
         />
       ) : (

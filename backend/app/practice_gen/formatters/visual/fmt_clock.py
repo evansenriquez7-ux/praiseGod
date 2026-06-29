@@ -255,6 +255,7 @@ def format_clock(
     visual_params = {
         "hours": hours,
         "minutes": minutes,
+        "correct_time": {"hour": hours, "minute": minutes},
         "display_hours": vp.get("display_hours", hours % 12 or 12),
         "target_time": time_str,
         "use_24_hour": use_24,
