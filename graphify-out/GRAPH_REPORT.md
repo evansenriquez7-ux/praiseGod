@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-06-30)
 
 ## Corpus Check
-- 239 files · ~264,991 words
+- 239 files · ~265,030 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2305 nodes · 3563 edges · 183 communities (175 shown, 8 thin omitted)
+- 2305 nodes · 3563 edges · 182 communities (174 shown, 8 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.54)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `101d0550`
+- Built from commit: `447fe952`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -177,7 +177,6 @@
 - [[_COMMUNITY_Community 175|Community 175]]
 - [[_COMMUNITY_Community 176|Community 176]]
 - [[_COMMUNITY_Community 177|Community 177]]
-- [[_COMMUNITY_Community 178|Community 178]]
 - [[_COMMUNITY_Community 182|Community 182]]
 
 ## God Nodes (most connected - your core abstractions)
@@ -207,7 +206,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (183 total, 8 thin omitted)
+## Communities (182 total, 8 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.10
@@ -239,7 +238,7 @@ Nodes (48): DNA, Specification of a mathematical concept for practice generation
 
 ### Community 7 - "Community 7"
 Cohesion: 0.08
-Nodes (35): Any, generate_hints(), generate_hints(), _count_decimal_places(), generate_number_by_window(), Choose a number randomly from the candidates list within the difficulty range wi, generate_hints(), Return 2–4 step-by-step hint strings for the given division problem. (+27 more)
+Nodes (32): Any, generate_hints(), generate_hints(), _count_decimal_places(), generate_number_by_window(), Choose a number randomly from the candidates list within the difficulty range wi, generate_hints(), generate_params() (+24 more)
 
 ### Community 8 - "Community 8"
 Cohesion: 0.14
@@ -322,8 +321,8 @@ Cohesion: 0.16
 Nodes (5): RedisDict, RedisDict, RedisDict, get_cache(), set_cache()
 
 ### Community 28 - "Community 28"
-Cohesion: 0.14
-Nodes (13): Contents, Customizing Tables, Data Types, Defining Types, Enumerations, Many-to-Many, One-to-Many (Implicit Foreign Key), One-to-One (+5 more)
+Cohesion: 0.10
+Nodes (20): @col, Contents, Core Directives, Customizing Tables, Data Types, @default, Defining Types, Enumerations (+12 more)
 
 ### Community 29 - "Community 29"
 Cohesion: 0.33
@@ -462,8 +461,8 @@ Cohesion: 0.29
 Nodes (9): _build_pure_equation(), _distractor_label(), _distractor_value(), format_error_detect(), _pick_actor(), Textual Formatter — Error Detection ("Check the Work")  Presents a worked proble, Deterministically pick an actor name from the rotation using the seed., Build a pure equation string for the actor's work display. (+1 more)
 
 ### Community 65 - "Community 65"
-Cohesion: 0.08
-Nodes (22): A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params(), DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile., generate_hints(), generate_params() (+14 more)
+Cohesion: 0.09
+Nodes (18): A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params(), DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile., generate_hints(), generate_params() (+10 more)
 
 ### Community 66 - "Community 66"
 Cohesion: 0.15
@@ -562,8 +561,8 @@ Cohesion: 0.15
 Nodes (12): 1. Logarithmic Ranges (Exponential Growth), 2. Linear Ranges (Constant Growth), Bridging to the Next Competency (Scalar > 1), Calculation Logic, Core Concepts, Difficulty Dimensions in Practice Generation, Discrete Dimensions, Linear vs Logarithmic Scales (+4 more)
 
 ### Community 92 - "Community 92"
-Cohesion: 0.40
-Nodes (4): generate_hints(), generate_params(), DNA: 2D Shapes (Measurement & Geometry)  Covers MATATAG grades 1–2 2D shape comp, Sample one item from the static pool filtered by grade and difficulty_profile.
+Cohesion: 0.28
+Nodes (8): _build_expression_str(), _evaluate_left_to_right(), generate_hints(), generate_params(), DNA: Order of Operations (Number & Algebra)  G3 only — addition and subtraction, Generate an order-of-operations problem (G3 only, + and − left to right).      R, Return 2–4 step-by-step hints for an order-of-operations problem., Evaluate an expression left to right given operands and operator list.
 
 ### Community 93 - "Community 93"
 Cohesion: 0.15
@@ -686,8 +685,8 @@ Cohesion: 0.22
 Nodes (8): 1. Initialization, 2. Decision Framework: Pipelines vs. Standard Queries, 3. Pipeline Examples, 4. Real-Time Listener & Document Operations, Full-Text Search, Relational Joins Pattern, Rules & Accountability, Web SDK Usage (Enterprise Native Mode)
 
 ### Community 123 - "Community 123"
-Cohesion: 0.11
-Nodes (19): generate_hints(), generate_params(), DNA: Geometric Lines (Measurement & Geometry)  Covers MATATAG grade 3 lines comp, Sample one item from the static pool filtered by grade and difficulty profile., _close_pair(), _compare_symbol(), generate_hints(), generate_params() (+11 more)
+Cohesion: 0.10
+Nodes (22): _close_pair(), _compare_symbol(), generate_hints(), generate_params(), DNA: Comparing and Ordering Numbers (Number & Algebra)  Covers MATATAG grades 1–, Return 2–4 step-by-step hints for a comparison/ordering problem., Return two numbers that differ by at most 5% of max_val (min gap 1)., Generate a comparison/ordering problem. (+14 more)
 
 ### Community 124 - "Community 124"
 Cohesion: 0.50
@@ -806,8 +805,8 @@ Cohesion: 0.40
 Nodes (3): A reusable story template with named slots.      Slots are filled from the stude, Fill template with interest slots and numeric values.                  Handles s, Spine
 
 ### Community 160 - "Community 160"
-Cohesion: 0.29
-Nodes (7): @col, Core Directives, @default, @index, @searchable, @table, @unique
+Cohesion: 0.40
+Nodes (4): generate_hints(), generate_params(), DNA: Calendar (Measurement & Geometry)  Covers MATATAG grades 1–2 calendar compe, Returns visual_params for the Calendar formatter and an answer value.       {"mo
 
 ### Community 174 - "Community 174"
 Cohesion: 0.29
@@ -824,10 +823,6 @@ Nodes (5): _build_equation_sentence(), format_cloze(), Textual Formatter — Clo
 ### Community 177 - "Community 177"
 Cohesion: 0.13
 Nodes (18): FormattedProblem, Final output of the practice generation pipeline.      Produced by a formatter o, Serialize to dict for API response., Practice Generation — Hint-Gated Experience Wrapper  Hints unlock one at a time., Apply the hint-gated experience wrapper.      Sets problem.experience to "hint_g, Increment hints_revealed by 1 and return the updated problem.      If the proble, reveal_next_hint(), wrap_hint_gated() (+10 more)
-
-### Community 178 - "Community 178"
-Cohesion: 0.40
-Nodes (4): generate_hints(), generate_params(), DNA: Symmetry and Slides (Measurement & Geometry)  Covers MATATAG grades 2–3 sym, Sample one item from the static pool filtered by grade and difficulty profile.
 
 ### Community 182 - "Community 182"
 Cohesion: 0.50

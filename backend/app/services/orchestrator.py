@@ -55,6 +55,13 @@ class PracticeOrchestrator:
             
         primary_concept = dna_names[0]
 
+        # Inject non-continuous variants from competency bounds
+        # This ensures variants like 'operation'='add_subtract' are applied even in lab mode
+        competency_bounds = get_node_competency_bounds(node_id)
+        for k, v in competency_bounds.items():
+            if not isinstance(v, tuple) and k not in local_difficulty_profile:
+                local_difficulty_profile[k] = v
+
         # Single source of truth for normalizing scalars (0.0-1.0) into proper dimension values
         axes = get_axes_for_concept(primary_concept)
         for axis in axes:
