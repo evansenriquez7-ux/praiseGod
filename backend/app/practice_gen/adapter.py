@@ -312,7 +312,6 @@ def _weighted_choice(rng: random.Random, formatters: List[str]) -> str:
 
 def generate_problem(
     node_id: str,
-    grade: int,
     seed: Optional[int] = None,
     difficulty_profile: Optional[Dict[str, Any]] = None,
     interest_theme: Optional[str] = None,
@@ -364,7 +363,12 @@ def generate_problem(
     dna = _get_dna_instance(dna_name)
 
     # 4. Generate context
-    ctx = generate_context(dna, node_id, grade, seed, difficulty_profile, interest_theme)
+    # Parse grade level from node ID
+    import re
+    grade_match = re.search(r"mat_g(\d+)", node_id)
+    effective_grade = int(grade_match.group(1)) if grade_match else 1
+    
+    ctx = generate_context(dna, node_id, effective_grade, seed, difficulty_profile, interest_theme)
 
     # 5. Pick formatter
     if formatter is None:
@@ -488,10 +492,9 @@ def apply_experience(
 
 def generate_batch(
     node_id: str,
-    grade: int,
     count: int = 5,
     difficulty_profile: Optional[Dict[str, Any]] = None,
-    interest_theme: Optional[str] = None,
+    student_interest: Optional[str] = None,
     experience: str = "standard",
 ) -> List[FormattedProblem]:
     """
@@ -502,10 +505,9 @@ def generate_batch(
 
     Args:
         node_id: MATATAG node identifier.
-        grade: Student grade (1–3).
         count: Number of problems to generate.
         difficulty_profile: Shared difficulty profile for the batch.
-        interest_theme: Shared interest theme.
+        student_interest: Shared interest theme.
         experience: Experience wrapper for all problems.
 
     Returns:
@@ -544,10 +546,9 @@ def generate_batch(
 
         problem = generate_problem(
             node_id=node_id,
-            grade=grade,
             seed=seed,
             difficulty_profile=difficulty_profile,
-            interest_theme=interest_theme,
+            interest_theme=student_interest,
             formatter=formatter,
             experience=experience,
         )

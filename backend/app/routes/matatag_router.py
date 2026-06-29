@@ -763,7 +763,6 @@ def matatag_lab_generate(
     try:
         skeleton = pipeline.run(
             node_id=node_id,
-            student_grade=grade,
             difficulty_profile=parsed_axes if parsed_axes else {"range": effective_difficulty},
             seed=seed,
             allowed_formatters=final_fmts,

@@ -21,7 +21,6 @@ class PracticeOrchestrator:
     @staticmethod
     def generate_problem(
         node_id: str,
-        grade: int,
         seed: Optional[int] = None,
         difficulty_profile: Optional[Dict[str, Any]] = None,
         interest_theme: Optional[str] = None,
@@ -124,7 +123,12 @@ class PracticeOrchestrator:
                     if variant_name not in local_difficulty_profile and allowed_vals:
                         local_difficulty_profile[variant_name] = rng.choice(allowed_vals)
 
-        ctx = generate_context(dna, node_id, grade, seed, local_difficulty_profile, interest_theme, is_lab=is_lab)
+        # Parse grade level from node ID
+        import re
+        grade_match = re.search(r"mat_g(\d+)", node_id)
+        effective_grade = int(grade_match.group(1)) if grade_match else 1
+
+        ctx = generate_context(dna, node_id, effective_grade, seed, local_difficulty_profile, interest_theme, is_lab=is_lab)
 
         if formatter is None:
             available = get_formatters_for_dna(dna_name)
@@ -145,7 +149,6 @@ class PracticeOrchestrator:
     @staticmethod
     def generate_batch(
         node_id: str,
-        grade: int,
         count: int = 5,
         difficulty_profile: Optional[Dict[str, Any]] = None,
         interest_theme: Optional[str] = None,
@@ -186,7 +189,6 @@ class PracticeOrchestrator:
 
             problem = PracticeOrchestrator.generate_problem(
                 node_id=node_id,
-                grade=grade,
                 seed=seed,
                 difficulty_profile=difficulty_profile,
                 interest_theme=interest_theme,

@@ -477,7 +477,7 @@ def _build_symbolic_question(
             b_den = values.get("b_den", denom)
             # Check if this is addition or subtraction (or support both)
             # We can check values.get("result") calculation or default to '+'
-            return f"What is \\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}}?"
+            return f"What is {a_num}/{a_den} + {b_num}/{b_den}?"
         return f"What fraction does {numer} out of {denom} equal parts represent?"
 
     # ── Money ────────────────────────────────────────────────────────────────

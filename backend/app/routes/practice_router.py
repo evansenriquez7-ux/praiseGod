@@ -515,10 +515,15 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
         
         interest_theme = _combined_interests(student, "math")
         
+        # Parse grade level from node ID or default to student's nominal grade
+        # This prevents the generator from downgrading a 3rd grade node if a 1st grader is playing it!
+        import re
+        grade_match = re.search(r"mat_g(\d+)", skill_id)
+        effective_grade = int(grade_match.group(1)) if grade_match else (student.grade if student else 1)
+        
         try:
             problem_dict = _pg_run(
                 node_id=skill_id,
-                student_grade=student.grade,
                 student_interest=interest_theme,
                 allowed_formatters=_allowed_fmt,
                 allowed_difficulties=_allowed_diff,
@@ -750,7 +755,6 @@ def get_practice_question_batch(
         if additional_count > 0:
             new_problems = _pg_batch(
                 node_id=q1.skill_id,
-                grade=student.grade if student else 5,
                 count=additional_count,
                 student_interest=interest_theme,
                 experience="standard",
@@ -873,10 +877,7 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
             
             from backend.app.practice_gen.pipeline import run as _pg_run
             try:
-                # Parse grade level from node ID or default to student's grade
-                grade_match = re.search(r"mat_g(\d+)", node_id)
-                grade_val = int(grade_match.group(1)) if grade_match else (student.grade if student else 1)
-                skeleton = _pg_run(node_id=node_id, student_grade=grade_val, seed=seed_val)
+                skeleton = _pg_run(node_id=node_id, seed=seed_val)
             except Exception as e:
                 raise HTTPException(status_code=400, detail=f"MATATAG question session expired or invalid: {e}")
     elif req.skeleton_id.startswith("ai_"):
@@ -890,10 +891,14 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
         if match:
             seed_val = int(match.group(1))
 
+        # Extract grade from skill_id to prevent generator downgrading
+        import re
+        grade_match = re.search(r"mat_g(\d+)", req.skill_id)
+        effective_grade = int(grade_match.group(1)) if grade_match else (student.grade if student else 1)
+
         from backend.app.practice_gen.pipeline import run as _pg_run
         skeleton = _pg_run(
             node_id=req.skill_id,
-            student_grade=student.grade,
             seed=seed_val,
             student_interest=_combined_interests(student, "math")
         )

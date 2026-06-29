@@ -24,7 +24,6 @@ from .registry import get_all_node_ids, get_node_dnas
 
 def run(
     node_id: str,
-    student_grade: int,
     student_interest: Optional[str] = None,
     difficulty_profile: Optional[Dict[str, Any]] = None,
     formatter: Optional[str] = None,
@@ -43,7 +42,6 @@ def run(
 
     Args:
         node_id: MATATAG node identifier, e.g. "mat_g1_na_q1_7".
-        student_grade: Student grade level (1–3).
         student_interest: Optional interest theme ID.
         difficulty_profile: Optional axis → level mapping.
         formatter: Optional formatter name. If None, picked automatically.
@@ -56,7 +54,6 @@ def run(
     """
     problem = PracticeOrchestrator.generate_problem(
         node_id=node_id,
-        grade=student_grade,
         seed=seed,
         difficulty_profile=difficulty_profile,
         interest_theme=student_interest,
@@ -72,7 +69,6 @@ def run(
 
 def run_batch(
     node_id: str,
-    grade: int,
     count: int = 5,
     difficulty_profile: Optional[Dict[str, Any]] = None,
     student_interest: Optional[str] = None,
@@ -86,7 +82,6 @@ def run_batch(
 
     Args:
         node_id: MATATAG node identifier.
-        grade: Student grade level (1–3).
         count: Number of problems to generate (default 5).
         difficulty_profile: Optional shared difficulty profile.
         student_interest: Optional shared interest theme.
@@ -97,7 +92,6 @@ def run_batch(
     """
     problems = PracticeOrchestrator.generate_batch(
         node_id=node_id,
-        grade=grade,
         count=count,
         difficulty_profile=difficulty_profile,
         interest_theme=student_interest,
