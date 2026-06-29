@@ -38,6 +38,12 @@ class PracticeOrchestrator:
         
         # Merge allowed configs into a local difficulty_profile
         local_difficulty_profile = dict(difficulty_profile) if difficulty_profile else {}
+        
+        # If the UI sends multi-select variants as a list, pick one randomly for this generation
+        for k, v in local_difficulty_profile.items():
+            if isinstance(v, list) and len(v) > 0:
+                local_difficulty_profile[k] = rng.choice(v)
+
         if allowed_difficulties:
             for dim, opts in allowed_difficulties.items():
                 if opts and isinstance(opts, list) and len(opts) > 0:
