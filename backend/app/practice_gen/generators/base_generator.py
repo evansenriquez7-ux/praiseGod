@@ -471,15 +471,14 @@ def _build_symbolic_question(
         numer = values.get("numerator", a)
         denom = values.get("denominator", b)
         operation = values.get("operation")
-        if operation == "add_subtract":
+        if operation in ("add_subtract", "add", "subtract"):
             a_num = values.get("a_num", numer)
             b_num = values.get("b_num", 0)
             a_den = values.get("a_den", denom)
             b_den = values.get("b_den", denom)
-            # Check if this is addition or subtraction (or support both)
-            # We can check values.get("result") calculation or default to '+'
-            return f"What is {a_num}/{a_den} + {b_num}/{b_den}?"
-        return f"What fraction does {numer} out of {denom} equal parts represent?"
+            op_sym = "+" if operation in ("add_subtract", "add") else "-"
+            return f"What is \\(\\frac{{{a_num}}}{{{a_den}}} {op_sym} \\frac{{{b_num}}}{{{b_den}}}\\)?"
+        return f"What fraction does \\(\\frac{{{numer}}}{{{denom}}}\\) equal parts represent?"
 
     # ── Money ────────────────────────────────────────────────────────────────
     if concept == "money_peso":

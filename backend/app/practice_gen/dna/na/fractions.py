@@ -145,20 +145,20 @@ def generate_params(
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
     # Grade guard: demote unsupported axes
-    if not allow_mixed and frac_type == "mixed_number":
-        frac_type = "similar_proper"
-    if not allow_ops and operation == "add_subtract":
+    if not allow_mixed and frac_type in ("mixed", "improper", "mixed_number"):
+        frac_type = "proper"
+    if not allow_ops and operation in ("add", "subtract", "add_subtract"):
         operation = "compare"
 
     candidate_params = []
 
     for den in denom_pool:
         # Gather possibilities for num
-        if frac_type == "unit_fraction":
+        if frac_type in ("unit_fraction", "unit"):
             num_choices = [1]
-        elif frac_type == "similar_proper":
+        elif frac_type in ("similar_proper", "proper"):
             num_choices = list(range(1, den))
-        else:  # mixed_number
+        else:  # mixed or improper
             num_choices = []
             for whole in range(1, 4):  # keeping max whole 3
                 if den > 1:
@@ -173,7 +173,7 @@ def generate_params(
 
             frac_s = _fraction_str(num, den)
 
-            if operation != "add_subtract":
+            if operation not in ("add", "subtract", "add_subtract"):
                 b_num = min(den - 1, num + 1) if den > 1 else num + 1
                 if operation == "compare":
                     ans = "=" if num == b_num else (">" if num > b_num else "<")
@@ -197,7 +197,14 @@ def generate_params(
                     if b_num == 0:
                         continue
                     
-                    result_num_raw = num + b_num
+                    if operation == "subtract":
+                        # For subtract, a_num must be larger than b_num to avoid negative fractions in early grades
+                        if num <= b_num:
+                            continue
+                        result_num_raw = num - b_num
+                    else:
+                        result_num_raw = num + b_num
+                        
                     r_num, r_den   = _simplify(result_num_raw, den)
 
                     candidate_params.append({

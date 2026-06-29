@@ -106,3 +106,9 @@ To ensure Large Language Models (LLMs) and autonomous agents can dynamically und
 
 ### Agent Environment
 Any agent initialized in this repository must use its Graphify MCP connection to map, plan, and execute adjustments purely derived from the live GitHub repository graph.
+
+---
+
+## 7. Matatag Lab and Student Portal Practice Problems
+
+The matatag lab displays all learning competencies. Each of those learning competencies displays all the available difficulty dimensions, contextual variants, and formatters specific to each learning competency. Each of these options can be enabled/disabled from the checkbox options. The Generate Preview randomly chooses from the enabled difficulty dimension options, contextual variants, and formatters, then generates a practice problem. The student portal should only display learning competency practice problems according to the enabled options in the matatag lab. From this single source of truth, agents will be able to accurately test the UI outputs. 
