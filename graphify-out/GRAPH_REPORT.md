@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-06-29)
 
 ## Corpus Check
-- 238 files · ~263,285 words
+- 238 files · ~263,295 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2285 nodes · 3544 edges · 174 communities (167 shown, 7 thin omitted)
+- 2285 nodes · 3544 edges · 175 communities (168 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.54)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `94581f42`
+- Built from commit: `6bf85df6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -121,6 +121,7 @@
 - [[_COMMUNITY_Community 104|Community 104]]
 - [[_COMMUNITY_Community 105|Community 105]]
 - [[_COMMUNITY_Community 106|Community 106]]
+- [[_COMMUNITY_Community 107|Community 107]]
 - [[_COMMUNITY_Community 108|Community 108]]
 - [[_COMMUNITY_Community 109|Community 109]]
 - [[_COMMUNITY_Community 110|Community 110]]
@@ -199,7 +200,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (174 total, 7 thin omitted)
+## Communities (175 total, 7 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.31
@@ -486,7 +487,7 @@ Cohesion: 0.29
 Nodes (7): @col, Core Directives, @default, @index, @searchable, @table, @unique
 
 ### Community 73 - "Community 73"
-Cohesion: 0.12
+Cohesion: 0.13
 Nodes (15): 1. High Write Rates (Sequential Values), 2. Large String/Map/Array Fields, 3. TTL Fields, Automatic vs. Manual Management, Best Practices & Exemptions, CLI Commands, Composite Indexes, Config files (+7 more)
 
 ### Community 74 - "Community 74"
@@ -550,8 +551,8 @@ Cohesion: 0.14
 Nodes (14): 1. Define Data Model (`schema/schema.gql`), 2. Define Authorized Operations (`connector/queries.gql`, `connector/mutations.gql`), 3. Use type-safe SDK in your apps, Deployment & CLI, Development Workflow, Examples, Feature Capability Map, Firebase SQL Connect (+6 more)
 
 ### Community 90 - "Community 90"
-Cohesion: 0.14
-Nodes (14): 1. Generate Firestore Rules, 3. Strict Path and Relationship Scoping, 4. Secure Counter Updates, 5. **CRITICAL** Ensure Application Validity, Advanced Validation for Business Logic, Critical Constraints, Critical Directives for Secure Generation, **CRITICAL** RBAC Guidelines (+6 more)
+Cohesion: 0.33
+Nodes (6): 3. Strict Path and Relationship Scoping, 4. Secure Counter Updates, 5. **CRITICAL** Ensure Application Validity, Advanced Validation for Business Logic, Phase-3: Devil's Advocate Attack, Phase-4: Syntactic Validation
 
 ### Community 91 - "Community 91"
 Cohesion: 0.15
@@ -616,6 +617,10 @@ Nodes (7): _detect_input_type(), format_numeric_input(), _numeric_bounds(), Text
 ### Community 106 - "Community 106"
 Cohesion: 0.18
 Nodes (6): 2. Production: Admin SDK Bulk Operations, 3. Production: Bulk Operations via raw SQL, 🚨 Critical SQL Operations Constraint, Data Seeding & Bulk Operations Reference, SDK Bulk APIs Features:, SDK Bulk Operations Example
+
+### Community 107 - "Community 107"
+Cohesion: 0.33
+Nodes (6): Critical Directives for Secure Generation, **CRITICAL** RBAC Guidelines, Mandatory: User Data Separation (The "No Mixed Content" Rule), Phase-1: Codebase Analysis, Phase-2: Security Rules Generation, Workflow
 
 ### Community 108 - "Community 108"
 Cohesion: 0.18
@@ -742,8 +747,8 @@ Cohesion: 0.29
 Nodes (6): 1. Setup, 2. Best Practices: Type-Safe Models, 3. The Service Layer, 4. Listening to Streams in the UI (`StreamBuilder`), Cloud Firestore in Flutter, Initialization & References
 
 ### Community 139 - "Community 139"
-Cohesion: 0.19
-Nodes (7): 1. Create `firebase.json`, 2. Create `firestore.rules`, 3. Create `firestore.indexes.json`, Deploy database, rules and indexes, Local Emulation, Manual Initialization, Provisioning Cloud Firestore
+Cohesion: 0.16
+Nodes (9): 1. Create `firebase.json`, 2. Create `firestore.rules`, 3. Create `firestore.indexes.json`, Deploy database, rules and indexes, Local Emulation, Manual Initialization, Provisioning Cloud Firestore, 1. Generate Firestore Rules (+1 more)
 
 ### Community 140 - "Community 140"
 Cohesion: 0.33

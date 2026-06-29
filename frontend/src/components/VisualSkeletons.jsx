@@ -3290,8 +3290,9 @@ export function FractionModelInteractive({ params, onAnswer, disabled }) {
   }, [clickedParts, onAnswer, disabled]);
 
   const den = params.denominator || params.total_parts || params.parts || 1;
+  const num = params.numerator !== undefined ? params.numerator : (params.shaded_parts || 0);
   const modelType = params.model_type || 'area';
-  const wholeUnits = Math.max(1, Math.ceil((params.numerator || 0) / den));
+  const wholeUnits = Math.max(1, Math.ceil(num / den));
 
   if (modelType === 'number_line') {
     return (
