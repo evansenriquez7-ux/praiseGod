@@ -156,12 +156,13 @@ export function NumberLineInteractive({ params, onAnswer, disabled }) {
 
   // Build tick marks with major/minor intervals
   const ticks = [];
+  const ticksPerMajor = Math.round(safeMajorInterval / safeMinorInterval);
   for (let i = 0; i <= totalDivisions; i++) {
     const val = start + i * (totalRange / totalDivisions);
     const pct = (i / totalDivisions) * 100;
     
     // Check if it is a major tick
-    const isMajor = (safeMajorInterval > 0 && Math.round(val - start) % safeMajorInterval === 0) || i === 0 || i === totalDivisions;
+    const isMajor = (ticksPerMajor > 0 && i % ticksPerMajor === 0) || i === 0 || i === totalDivisions;
     
     ticks.push({ value: Math.round(val * 100) / 100, pct, isMajor });
   }
