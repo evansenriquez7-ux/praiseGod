@@ -152,7 +152,7 @@ class QuestionFlag(Base):
     __tablename__ = "question_flags"
 
     id = Column(Integer, primary_key=True, index=True)
-    student_id = Column(Integer, ForeignKey("student_profiles.id", ondelete="CASCADE"), nullable=False)
+    student_id = Column(Integer, ForeignKey("student_profiles.id", ondelete="CASCADE"), nullable=True)
     skill_id = Column(String, ForeignKey("skill_nodes.id", ondelete="CASCADE"), nullable=False)
     skeleton_id = Column(String, nullable=False)
     stem = Column(Text, nullable=False)

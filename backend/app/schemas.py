@@ -135,7 +135,7 @@ class AnswerSubmitResponse(BaseModel):
     mastery_status: str # "locked", "active", "mastered", "review"
 
 class QuestionFlagRequest(BaseModel):
-    student_id: int
+    student_id: Optional[int] = None
     skill_id: str
     skeleton_id: str
     stem: str

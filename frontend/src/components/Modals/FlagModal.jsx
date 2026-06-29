@@ -116,7 +116,7 @@ export default function FlagModal({
                       method: 'POST',
                       headers: { 'Content-Type': 'application/json' },
                       body: JSON.stringify({
-                        student_id: selectedStudent?.id || 0,
+                        student_id: selectedStudent?.id || null,
                         skill_id: activeQuestion?.skill_id || activeQuestion?.node_id || '',
                         skeleton_id: activeQuestion?.skeleton_id || activeQuestion?.problem_id || '',
                         stem: activeQuestion?.stem || activeQuestion?.question_text || '',
