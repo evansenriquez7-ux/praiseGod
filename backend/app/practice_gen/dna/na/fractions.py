@@ -40,46 +40,45 @@ _PARAM_BOUNDS: Dict[str, Dict[str, Any]] = {
 }
 
 
-# ─── error patterns ───────────────────────────────────────────────────────────
 _ERROR_PATTERNS: List[ErrorPattern] = [
     ErrorPattern(
-        formula="denominator",
+        formula="f'{denominator}/{numerator}'",
         required_concept="fractions",
         label="fr_swap_nd",
         description="Swapped numerator and denominator.",
     ),
     ErrorPattern(
-        formula="(a_num + b_num) / (a_den + b_den)",
+        formula="f'{a_num + b_num}/{a_den + b_den}'",
         required_concept="fractions",
         label="fr_add_both",
         description="Added numerators AND denominators separately.",
     ),
     ErrorPattern(
-        formula="max(a_num, b_num)",
+        formula="f'{(a_num if a_num > b_num else b_num)}/{a_den}'",
         required_concept="fractions",
         label="fr_big_num",
         description="Compared only numerators; chose the larger numerator as the bigger fraction.",
     ),
     ErrorPattern(
-        formula="1 / min(a_den, b_den)",
+        formula="f'1/{(a_den if a_den < b_den else b_den)}'",
         required_concept="fractions",
         label="fr_big_den",
         description="Assumed a larger denominator means a larger fraction.",
     ),
     ErrorPattern(
-        formula="(a_num + b_num) / (a_den + 1)",
+        formula="f'{a_num + b_num}/{a_den + 1}'",
         required_concept="fractions",
         label="fr_not_simp",
         description="Added numerators correctly but used wrong denominator (off by one).",
     ),
     ErrorPattern(
-        formula="denominator + numerator",
+        formula="f'{numerator + denominator}/{denominator}'",
         required_concept="fractions",
         label="fr_unit_rev",
         description="Confused unit fraction ordering; added numerator and denominator instead of computing correctly.",
     ),
     ErrorPattern(
-        formula="numerator - 1",
+        formula="f'{numerator - 1}/{denominator}'",
         required_concept="mixed_number",
         label="fr_imp_mix",
         description="Wrong improper-to-mixed conversion; subtracted 1 from numerator.",

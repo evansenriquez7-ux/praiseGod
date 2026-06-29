@@ -46,7 +46,7 @@ class PracticeOrchestrator:
 
         if allowed_difficulties:
             for dim, opts in allowed_difficulties.items():
-                if opts and isinstance(opts, list) and len(opts) > 0:
+                if opts and isinstance(opts, list) and len(opts) > 0 and dim not in local_difficulty_profile:
                     local_difficulty_profile[dim] = rng.choice(opts)
         
         if allowed_contexts:

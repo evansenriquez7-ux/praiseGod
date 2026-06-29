@@ -107,11 +107,12 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
 
     # Collect candidate distractors — deduplicate and exclude correct answer
     candidates: List = []
-    seen = {correct}
+    seen = {str(correct).strip().lower()}
     for d in ctx.distractors:
-        if d not in seen:
+        d_str = str(d).strip().lower()
+        if d_str not in seen:
             candidates.append(d)
-            seen.add(d)
+            seen.add(d_str)
 
     # Fill up to 3 using arithmetic fallbacks when candidates are insufficient
     if len(candidates) < 3 and isinstance(correct, (int, float)):
