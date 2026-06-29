@@ -19,7 +19,8 @@ import {
   TenFrameInteractive,
   RulerMeasureInteractive,
   BalanceScaleInteractive,
-  ShapeBoardInteractive
+  ShapeBoardInteractive,
+  NumberBondInteractive
 } from '../components/VisualSkeletons.jsx';
 
 export function renderVisualInner(vt, vp, onAnswer, disabled, uniqueKey) {
@@ -49,19 +50,21 @@ export function renderVisualInner(vt, vp, onAnswer, disabled, uniqueKey) {
     case 'BarChart':
       return <BarChartInteractive key={uniqueKey} params={vp} onAnswer={onAnswer} disabled={disabled} />;
     case 'PatternSequence':
-      return <PatternSequenceInteractive key={uniqueKey} params={vp} disabled={disabled} />;
+      return <PatternSequenceInteractive key={uniqueKey} params={vp} onAnswer={onAnswer} disabled={disabled} />;
     case 'FractionModel':
-      return <FractionModelInteractive key={uniqueKey} params={vp} disabled={disabled} />;
+      return <FractionModelInteractive key={uniqueKey} params={vp} onAnswer={onAnswer} disabled={disabled} />;
     case 'FractionShade':
-      return <FractionShadeInteractive key={uniqueKey} params={vp} disabled={disabled} />;
+      return <FractionShadeInteractive key={uniqueKey} params={vp} onAnswer={onAnswer} disabled={disabled} />;
     case 'TenFrame':
       return <TenFrameInteractive key={uniqueKey} params={vp} disabled={disabled} />;
     case 'RulerMeasure':
-      return <RulerMeasureInteractive key={uniqueKey} params={vp} disabled={disabled} />;
+      return <RulerMeasureInteractive key={uniqueKey} params={vp} onAnswer={onAnswer} disabled={disabled} />;
     case 'BalanceScale':
       return <BalanceScaleInteractive key={uniqueKey} params={vp} disabled={disabled} />;
     case 'ShapeBoard':
-      return <ShapeBoardInteractive key={uniqueKey} params={vp} disabled={disabled} />;
+      return <ShapeBoardInteractive key={uniqueKey} params={vp} onAnswer={onAnswer} disabled={disabled} />;
+    case 'NumberBond':
+      return <NumberBondInteractive key={uniqueKey} params={vp} onAnswer={onAnswer} disabled={disabled} />;
     default:
       return <div style={{ padding: '20px', background: 'rgba(239,68,68,0.1)', borderRadius: '8px', color: '#f87171' }}>Unknown visual type: {vt}</div>;
   }

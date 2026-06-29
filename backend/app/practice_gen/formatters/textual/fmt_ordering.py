@@ -83,7 +83,7 @@ def format_ordering(ctx: QuestionContext, rng: random.Random) -> FormattedProble
             correct_order = sorted(sequence)
     except TypeError:
         # Non-comparable types: preserve sequence as correct order
-        correct_order = list(sequence)
+        correct_order = sorted(sequence, key=lambda x: str(x.get("value") if isinstance(x, dict) else x))
 
     # Shuffle for display — ensure it's actually shuffled (retry if identical)
     items = list(sequence)
@@ -97,6 +97,7 @@ def format_ordering(ctx: QuestionContext, rng: random.Random) -> FormattedProble
         "direction": direction,
         "correct_order": correct_order,
     }
+    format_data.pop("correct_order", None)
 
     # Generate appropriate question text for ordering
     direction_word = "smallest to largest" if direction == "ascending" else "largest to smallest"

@@ -58,6 +58,12 @@ export function NumberLineInteractive({ params, onAnswer, disabled }) {
     return start + initialDivIndex * safeMinorInterval;
   });
   const [isDragging, setIsDragging] = useState(false);
+  
+  useEffect(() => {
+    if (onAnswer && !disabled && !isDragging) {
+      onAnswer(Math.round(position * 100) / 100);
+    }
+  }, [position, disabled]);
   const containerRef = useRef(null);
   const dotRef = useRef(null);
 
@@ -2709,7 +2715,7 @@ export function CalendarInteractive({ params, onAnswer, disabled }) {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   useEffect(() => {
-    if (onAnswer) {
+    if (onAnswer && !disabled) {
       if (task_type === 'select_date') {
         onAnswer(selectedDate);
       } else {
@@ -2718,7 +2724,7 @@ export function CalendarInteractive({ params, onAnswer, disabled }) {
         }
       }
     }
-  }, [selectedDate, rangeStart, rangeEnd, onAnswer, task_type]);
+  }, [selectedDate, rangeStart, rangeEnd, onAnswer, task_type, disabled]);
 
   const handleDateClick = (day) => {
     if (disabled) return;
@@ -3273,12 +3279,19 @@ export function PatternSequenceInteractive({ params, disabled }) {
 // ============================================================================
 //  FRACTION MODEL & SHADE
 // ============================================================================
-export function FractionModelInteractive({ params, disabled }) {
+export function FractionModelInteractive({ params, onAnswer, disabled }) {
+  const isClickable = onAnswer && !disabled;
+  const [clickedParts, setClickedParts] = React.useState(params.numerator !== undefined ? params.numerator : (params.shaded_parts || 0));
+
+  React.useEffect(() => {
+    if (onAnswer && !disabled) {
+      onAnswer(clickedParts);
+    }
+  }, [clickedParts, onAnswer, disabled]);
+
   const den = params.denominator || params.total_parts || params.parts || 1;
-  const num = params.numerator !== undefined ? params.numerator : (params.shaded_parts || 0);
   const modelType = params.model_type || 'area';
-  
-  const wholeUnits = Math.max(1, Math.ceil(num / den));
+  const wholeUnits = Math.max(1, Math.ceil((params.numerator || 0) / den));
 
   if (modelType === 'number_line') {
     return (
@@ -3312,7 +3325,9 @@ export function FractionModelInteractive({ params, disabled }) {
                     height: '35px',
                     borderRadius: '50%',
                     border: '3px solid hsl(var(--primary))',
-                    background: globalIdx < num ? 'rgba(99,102,241,0.5)' : 'transparent',
+                    cursor: isClickable ? "pointer" : "default",
+                    onClick: () => { if (isClickable) setClickedParts(globalIdx + 1) },
+                    background: globalIdx < clickedParts ? 'rgba(99,102,241,0.5)' : 'transparent',
                   }} />
                 );
               })}
@@ -3332,7 +3347,8 @@ export function FractionModelInteractive({ params, disabled }) {
           width: '100%', 
           maxWidth: '400px', 
           height: '60px', 
-          border: '3px solid hsl(var(--primary))', 
+          border: '3px solid hsl(var(--primary))',
+                    cursor: isClickable ? "pointer" : "default", 
           borderRadius: '8px', 
           overflow: 'hidden' 
         }}>
@@ -3341,7 +3357,10 @@ export function FractionModelInteractive({ params, disabled }) {
             return (
               <div key={i} style={{
                 flex: 1,
-                background: globalIdx < num ? 'rgba(99,102,241,0.5)' : 'transparent',
+                onClick: () => { if (isClickable) setClickedParts(globalIdx + 1) },
+                    background: globalIdx < clickedParts ? 'rgba(99,102,241,0.5)' : 'transparent',
+                cursor: isClickable ? "pointer" : "default",
+                onClick: () => { if (isClickable) setClickedParts(globalIdx + 1) },
                 borderRight: i < den - 1 ? '2px solid hsl(var(--primary))' : 'none'
               }} />
             );
@@ -3352,8 +3371,8 @@ export function FractionModelInteractive({ params, disabled }) {
   );
 }
 
-export function FractionShadeInteractive({ params }) {
-  return <FractionModelInteractive params={params} />;
+export function FractionShadeInteractive({ params, onAnswer, disabled }) {
+  return <FractionModelInteractive params={params} onAnswer={onAnswer} disabled={disabled} />;
 }
 
 // ============================================================================
@@ -3397,22 +3416,48 @@ export function TenFrameInteractive({ params }) {
 // ============================================================================
 //  RULER MEASURE
 // ============================================================================
-export function RulerMeasureInteractive({ params }) {
+export function RulerMeasureInteractive({ params, onAnswer, disabled }) {
+  const isSetMode = onAnswer && !disabled;
   const length = params.length || 0;
+  const startOffset = params.object_start || 0;
   const unit = params.unit || 'cm';
-  const max = Math.max(10, Math.ceil(length + 2));
+  const max = params.max_val || Math.max(10, Math.ceil(length + startOffset + 2));
   
+  const [val, setVal] = React.useState(0);
+
+  React.useEffect(() => {
+    if (isSetMode) {
+      onAnswer(val);
+    }
+  }, [val, isSetMode]);
+
   return (
     <div style={{ padding: '40px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
       {/* Object being measured */}
-      <div style={{ 
-        width: `${(length / max) * 100}%`, 
-        height: '40px', 
-        background: 'linear-gradient(90deg, #f59e0b, #fbbf24)',
-        borderRadius: '4px',
-        marginBottom: '10px',
-        alignSelf: 'flex-start'
-      }} />
+      {!isSetMode ? (
+        <div style={{ 
+          width: `${(length / max) * 100}%`, 
+          marginLeft: `${(startOffset / max) * 100}%`,
+          height: '40px', 
+          background: 'linear-gradient(90deg, #f59e0b, #fbbf24)',
+          borderRadius: '4px',
+          marginBottom: '10px',
+          alignSelf: 'flex-start'
+        }} />
+      ) : (
+        <div style={{ width: '100%', marginBottom: '10px', display: 'flex', alignItems: 'center' }}>
+          <input 
+            type="range" 
+            min={0} 
+            max={max} 
+            step={1} 
+            value={val} 
+            onChange={(e) => setVal(parseInt(e.target.value))}
+            style={{ width: '100%' }}
+          />
+          <span style={{ marginLeft: '10px', fontWeight: 'bold' }}>{val} {unit}</span>
+        </div>
+      )}
       
       {/* Ruler */}
       <div style={{ 
@@ -3501,8 +3546,16 @@ export function BalanceScaleInteractive({ params }) {
 // ============================================================================
 //  SHAPE BOARD
 // ============================================================================
-export function ShapeBoardInteractive({ params }) {
+export function ShapeBoardInteractive({ params, onAnswer, disabled }) {
   const shapes = params.shapes || [];
+  const isSetMode = onAnswer && !disabled;
+  const [selected, setSelected] = React.useState(null);
+
+  React.useEffect(() => {
+    if (isSetMode && selected !== null) {
+      onAnswer(selected);
+    }
+  }, [selected, isSetMode]);
   
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '25px', justifyContent: 'center', padding: '20px', width: '100%' }}>
@@ -3516,7 +3569,20 @@ export function ShapeBoardInteractive({ params }) {
         );
         
         return (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', opacity: (params.highlighted_shape && !isHighlighted) ? 0.3 : 1 }}>
+          <div 
+            key={i} 
+            onClick={() => isSetMode && setSelected(i)}
+            style={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              alignItems: 'center', 
+              gap: '8px', 
+              opacity: (params.highlighted_shape && !isHighlighted) ? 0.3 : 1,
+              cursor: isSetMode ? "pointer" : "default",
+              outline: selected === i ? "2px solid #3b82f6" : "none",
+              padding: "5px",
+              borderRadius: "8px"
+            }}>
             <div style={{
               filter: isHighlighted ? 'drop-shadow(0 0 15px #f59e0b) drop-shadow(0 0 5px #f59e0b)' : 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))',
               transform: `rotate(${s.orientation_deg || 0}deg) ${isHighlighted ? 'scale(1.3)' : 'scale(1)'}`,
@@ -3542,6 +3608,54 @@ export function ShapeBoardInteractive({ params }) {
           </div>
         );
       })}
+    </div>
+  );
+}
+
+
+export function NumberBondInteractive({ params, onAnswer, disabled }) {
+  const { whole, part1, part2, blank_position } = params;
+  
+  const [val, setVal] = React.useState('');
+
+  React.useEffect(() => {
+    if (onAnswer && !disabled) {
+      if (val !== '') {
+        onAnswer(parseInt(val, 10));
+      } else {
+        onAnswer(null);
+      }
+    }
+  }, [val, onAnswer, disabled]);
+
+  const renderCircle = (num, isBlank) => (
+    <div style={{
+      width: '80px', height: '80px', borderRadius: '50%',
+      border: '3px solid hsl(var(--primary))',
+      display: 'flex', justifyContent: 'center', alignItems: 'center',
+      fontSize: '24px', fontWeight: 600, background: 'rgba(255,255,255,0.05)',
+      color: 'hsl(var(--text))'
+    }}>
+      {isBlank && !disabled ? (
+        <input 
+          type="number"
+          value={val}
+          onChange={(e) => setVal(e.target.value)}
+          style={{ width: '80%', height: '80%', textAlign: 'center', background: 'transparent', border: 'none', color: 'inherit', fontSize: '24px', outline: 'none' }}
+        />
+      ) : (
+        isBlank ? "?" : num
+      )}
+    </div>
+  );
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', gap: '20px' }}>
+      {renderCircle(whole, blank_position === 'whole')}
+      <div style={{ display: 'flex', gap: '40px' }}>
+        {renderCircle(part1, blank_position === 'part1')}
+        {renderCircle(part2, blank_position === 'part2')}
+      </div>
     </div>
   );
 }

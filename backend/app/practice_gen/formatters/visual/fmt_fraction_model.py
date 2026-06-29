@@ -85,7 +85,7 @@ def _build_traps(numer: int, denom: int) -> list:
     seen = {correct}
 
     # Swap numerator and denominator
-    swap = f"{denom}/{numer}"
+    swap = f"{denom}/{numer}" if numer > 0 else None
     if swap not in seen and numer != denom:
         traps.append(swap)
         seen.add(swap)

@@ -76,7 +76,7 @@ def _build_ruler_params(grade: int, diff_level: int, rng: random.Random) -> dict
             unit = "cm"
             unit_name = "cm"
             ruler_end = 30
-            object_start = rng.randint(0, 10)
+            object_start = rng.randint(1, 10)
             length = rng.randint(2, ruler_end - object_start - 1)
         object_end = object_start + length
 

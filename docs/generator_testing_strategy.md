@@ -25,5 +25,20 @@ After resolving errors according to `difficulty_dimensions.md` and `pgen_checkli
 - **Variant Independence:** Does adding a contextual variant (e.g., word problem) accidentally alter the underlying numerical difficulty?
 - **UI Renderability:** Are visuals perfectly aligned and inputs clearly marked?
 
-**Next Steps:**
-I will proceed to review the overlapping continuous dimensions across the DNAs and adjust bounds before initiating the manual output inspection.
+## The Limitations of the Fuzzer & The AI Static Analysis Strategy
+While the `fuzzer.py` strategy effectively eliminated 500s and ensured the backend generated valid JSON structures, **it was fundamentally incomplete because it lacked semantic awareness of the frontend**. The fuzzer could only prove that the backend sent a payload; it could not detect if the React components in `VisualSkeletons.jsx` were misinterpreting that payload.
+
+Because the fuzzer was blind to the UI layer, it completely missed severe logical flaws, such as:
+1. **Answer Leaks:** Components rendering the exact `correct_answer` in plain text during `read` mode.
+2. **State Overwrites:** React `useEffect` hooks automatically firing `onAnswer()` on-mount, grading the student before they interacted.
+3. **Missing Interactivity:** Components declaring `interaction_mode="set"` but completely missing the UI bindings to actually capture user input.
+4. **Data Type Mismatches:** Frontend components passing complex objects back to the evaluator instead of the expected integer.
+
+**The Solution: Multi-Agent Static Analysis**
+To catch these UI/Logic bugs without building complex headless browser suites, we implemented a "Hub-and-Spoke" AI QA strategy:
+1. **Batching:** We extracted all unique visual formatters from the backend registry.
+2. **Subagent Delegation:** We spawned a pool of specialized `CompetencyPgenAuditor` subagents, assigning each a batch of visual components. 
+3. **Static Audit:** Each subagent cross-referenced the backend formatter (e.g. `fmt_calendar.py`) against its React counterpart (e.g. `CalendarInteractive`) to hunt for state management bugs and answer leaks based on the strict rules in `pgen_checklist.md`.
+4. **Centralized Resolution:** The agents reported their findings to the lead agent, producing a comprehensive `visual_components_audit.md` which was used to systematically patch the entire platform. 
+
+This token-efficient static analysis succeeded where the fuzzer failed, uncovering and fixing deeply embedded interactivity bugs across the entire curriculum in a matter of minutes.

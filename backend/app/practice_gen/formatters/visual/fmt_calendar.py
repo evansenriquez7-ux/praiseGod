@@ -254,8 +254,10 @@ def format_calendar(
     else:
         correct_answer = raw_correct
 
-    # Strip internal keys before returning vp
+    # Strip internal keys and answer leaks before returning vp
     clean_vp = {k: v for k, v in vp.items() if not k.startswith("_")}
+    clean_vp.pop("correct_date", None)
+    clean_vp.pop("correct_duration", None)
 
     format_data: dict = {"visual_params": clean_vp}
     if mcq_options is not None:

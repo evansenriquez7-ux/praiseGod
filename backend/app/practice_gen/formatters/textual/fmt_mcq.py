@@ -120,6 +120,8 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
             if len(candidates) >= 3:
                 break
             candidate = correct + offset
+            if ctx.grade <= 6 and candidate < 0:
+                candidate = 0
             if candidate not in seen:
                 candidates.append(candidate)
                 seen.add(candidate)
