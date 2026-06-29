@@ -1149,20 +1149,52 @@ export default function ParentDashboard(props) {
                             {matatagQuestion.skeleton_id}
                           </span>
                           <span style={{ fontSize: '11px', padding: '2px 8px', borderRadius: '10px', background: 'rgba(255,255,255,0.06)', color: 'hsl(var(--text-muted))', fontWeight: 600 }}>
-difficulty: {Math.round(matatagQuestion.difficulty * 100)}%
+                            difficulty: {Math.round(matatagQuestion.difficulty * 100)}%
                           </span>
                         </div>
 
-                        {/* Active axis values summary */}
-                        {Object.keys(matatagAxisValues).length > 0 && (
-                          <div style={{ marginBottom: '16px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-                            {Object.entries(matatagAxisValues).map(([k, v]) => (
-                              <span key={k} style={{ fontSize: '10px', padding: '2px 8px', borderRadius: '10px', background: 'rgba(255,255,255,0.06)', color: 'hsl(var(--text-muted))' }}>
-                                {k}: <strong style={{ color: 'hsl(var(--text))' }}>{v}</strong>
-                              </span>
-                            ))}
-                          </div>
-                        )}
+                        {/* Active axis values summary (v1 fallback) */}
+                        {!labConfig && Object.keys(matatagAxisValues).length > 0 && (
+                           <div style={{ marginBottom: '16px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                             {Object.entries(matatagAxisValues).map(([k, v]) => (
+                               <span key={k} style={{ fontSize: '10px', padding: '2px 8px', borderRadius: '10px', background: 'rgba(255,255,255,0.06)', color: 'hsl(var(--text-muted))' }}>
+                                 {k}: <strong style={{ color: 'hsl(var(--text))' }}>{v}</strong>
+                               </span>
+                             ))}
+                           </div>
+                         )}
+
+                         {/* Active difficulty profile & variant values summary (v2) */}
+                         {labConfig && matatagQuestion && (
+                           <div style={{ marginBottom: '16px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                             {/* Render Formatter */}
+                             <span style={{ fontSize: '10px', padding: '2px 8px', borderRadius: '10px', background: 'rgba(99,102,241,0.15)', color: '#818cf8', fontWeight: 600 }}>
+                               formatter: <strong style={{ color: '#a78bfa' }}>{matatagQuestion.format}</strong>
+                             </span>
+                             
+                             {/* Render Difficulty Dimensions */}
+                             {labConfig.difficulty_dimensions?.map(dim => {
+                               const val = matatagQuestion.difficulty_axes_served?.[dim.name] ?? matatagQuestion.difficulty_profile?.[dim.name];
+                               if (val === undefined) return null;
+                               return (
+                                 <span key={dim.name} style={{ fontSize: '10px', padding: '2px 8px', borderRadius: '10px', background: 'rgba(16,185,129,0.1)', color: '#10b981' }}>
+                                   {dim.label}: <strong style={{ color: 'hsl(var(--text))' }}>{val}</strong>
+                                 </span>
+                               );
+                             })}
+
+                             {/* Render Contextual Variants */}
+                             {labConfig.contextual_variants?.map(v => {
+                               const val = matatagQuestion.difficulty_profile?.[v.name];
+                               if (val === undefined) return null;
+                               return (
+                                 <span key={v.name} style={{ fontSize: '10px', padding: '2px 8px', borderRadius: '10px', background: 'rgba(245,158,11,0.1)', color: '#f59e0b' }}>
+                                   {v.label}: <strong style={{ color: 'hsl(var(--text))' }}>{val}</strong>
+                                 </span>
+                               );
+                             })}
+                           </div>
+                         )}
 
                         {/* Competency text */}
                         {matatagQuestion.competency_text && (

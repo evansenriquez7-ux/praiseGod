@@ -1023,11 +1023,14 @@ from pydantic import BaseModel as PydanticBaseModel
 class LabV2GenerateRequest(PydanticBaseModel):
     """Request body for /api/matatag/lab/v2/generate"""
     node_id: str
-    formatter: Optional[str] = "mcq"
+    formatter: Optional[str] = None
     difficulty_profile: Optional[Dict[str, Any]] = None  # {axis: level_or_value}
     variant_values: Optional[Dict[str, Any]] = None      # {variant: value}
     interest_theme: Optional[str] = None                 # Interest ID for word problem personalization
     seed: Optional[int] = None
+    allowed_difficulties: Optional[Dict[str, List[Any]]] = None
+    allowed_contexts: Optional[Dict[str, List[Any]]] = None
+    allowed_formatters: Optional[List[str]] = None
 
 class LabV2SubmitRequest(PydanticBaseModel):
     """Request body for /api/matatag/lab/v2/submit"""
@@ -1130,8 +1133,6 @@ def matatag_lab_v2_generate(req: LabV2GenerateRequest, db: Session = Depends(get
     if seed is None:
         import random as _rand
         seed = _rand.randint(10000, 999999)
-    allowed_formatters = None
-
     try:
         problem_dict = run(
             node_id=req.node_id,
@@ -1140,7 +1141,9 @@ def matatag_lab_v2_generate(req: LabV2GenerateRequest, db: Session = Depends(get
             difficulty_profile=combined_profile if combined_profile else None,
             seed=seed,
             student_interest=req.interest_theme,
-            allowed_formatters=allowed_formatters,
+            allowed_formatters=req.allowed_formatters,
+            allowed_difficulties=req.allowed_difficulties,
+            allowed_contexts=req.allowed_contexts,
             is_lab=True,
         )
     except Exception as e:

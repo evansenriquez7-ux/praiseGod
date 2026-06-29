@@ -1014,43 +1014,19 @@ function App() {
     try {
       // Use v2 endpoint when lab config is loaded
       if (labConfig) {
-        // 1. Pick a random allowed difficulty for each dimension
-        const difficultyProfile = {};
-        labConfig.difficulty_dimensions?.forEach(dim => {
-          const allowedScalars = labAllowedDifficulties[dim.name] || [];
-          const chosenScalar = allowedScalars.length > 0 
-            ? allowedScalars[Math.floor(Math.random() * allowedScalars.length)]
-            : (dim.default_scalar ?? 0.0);
-          difficultyProfile[dim.name] = chosenScalar;
-        });
-
-        // 2. Pick a random allowed variant for each context
-        const variantValues = {};
-        labConfig.contextual_variants?.forEach(v => {
-          const allowedOpts = labAllowedContexts[v.name] || [];
-          if (allowedOpts.length > 0) {
-            variantValues[v.name] = allowedOpts[Math.floor(Math.random() * allowedOpts.length)];
-          }
-        });
-
-        // 3. Pick a random allowed formatter
-        const safeFormatters = labAllowedFormatters?.length > 0 
-          ? labAllowedFormatters 
-          : (labConfig.formatters?.map(f => f.name) || []);
-        const chosenFormatter = safeFormatters.length > 0 
-          ? safeFormatters[Math.floor(Math.random() * safeFormatters.length)] 
-          : null;
-
         const res = await fetch(`${API_BASE}/matatag/lab/v2/generate`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             node_id: matatagNodeId,
-            formatter: chosenFormatter,
-            difficulty_profile: Object.keys(difficultyProfile).length > 0 ? difficultyProfile : null,
-            variant_values: Object.keys(variantValues).length > 0 ? variantValues : null,
+            formatter: null,
+            difficulty_profile: null,
+            variant_values: null,
             interest_theme: labSelectedInterest || null,
             seed: Math.floor(Math.random() * 1_000_000),
+            allowed_difficulties: labAllowedDifficulties,
+            allowed_contexts: labAllowedContexts,
+            allowed_formatters: labAllowedFormatters?.length > 0 ? labAllowedFormatters : (labConfig.formatters?.map(f => f.name) || []),
           }),
         });
 
@@ -1088,7 +1064,13 @@ function App() {
             }
             return [];
           })(),
-          difficulty: 0.5,  // v2 doesn't return a scalar difficulty yet
+          difficulty: (() => {
+            const axes = data.difficulty_axes_served || data.difficulty_profile || {};
+            const vals = Object.values(axes);
+            if (vals.length === 0) return 0.5;
+            const sum = vals.reduce((acc, v) => acc + (typeof v === 'number' ? v : parseFloat(v) || 0), 0);
+            return sum / vals.length;
+          })(),
         });
       } else {
         // Fall back to old v1 endpoint
