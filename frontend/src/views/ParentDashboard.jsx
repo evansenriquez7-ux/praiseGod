@@ -1148,9 +1148,6 @@ export default function ParentDashboard(props) {
                           <span style={{ fontSize: '11px', color: 'hsl(var(--text-muted))', fontFamily: 'monospace' }}>
                             {matatagQuestion.skeleton_id}
                           </span>
-                          <span style={{ fontSize: '11px', padding: '2px 8px', borderRadius: '10px', background: 'rgba(255,255,255,0.06)', color: 'hsl(var(--text-muted))', fontWeight: 600 }}>
-                            difficulty: {Math.round(matatagQuestion.difficulty * 100)}%
-                          </span>
                         </div>
 
                         {/* Active axis values summary (v1 fallback) */}
