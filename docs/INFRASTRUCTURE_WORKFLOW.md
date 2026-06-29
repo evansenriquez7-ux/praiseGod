@@ -32,11 +32,24 @@ The application leverages GitHub Actions for modern automated deployment upon pu
 
 ## 3. Required Secrets & Configuration Keys
 
-To enable automated pipelines, configure the following under **GitHub Settings > Secrets and variables > Actions**:
+Because the backend dynamically routes all database queries based on the `DATABASE_URL` environment variable, you must configure it properly across your different environments to ensure you are connecting to the live Neon database instead of a local fallback.
 
+### A. Production CI/CD (GitHub Actions)
+To enable automated pipelines, configure the following under **GitHub Settings > Secrets and variables > Actions**:
 *   `FIREBASE_SERVICE_ACCOUNT_PRAISEGOD_EDU`: Service account JSON credential possessing authorization roles for: *Cloud Run Admin*, *Firebase Hosting Admin*, *Service Account User*, and *Artifact Registry Writer*.
 *   `PROJECT_ID`: Set to `praisegod-edu`.
 *   `DATABASE_URL`: Connection string containing full secure parameters pointing to the live Neon production instance.
+
+### B. GitHub Codespaces Environment
+If you are developing inside GitHub Codespaces, any AI agents or backend services running in the container will fail to see the database unless the URL is injected.
+*   Go to **GitHub Settings > Secrets and variables > Codespaces**.
+*   Add the `DATABASE_URL` secret. This ensures that any new Codespace spun up will automatically connect to your Neon DB instead of an empty local Postgres fallback.
+
+### C. Local Development (Mac/Windows)
+If you are developing locally on your own machine:
+*   Create a `.env` file in the root of the project (or `backend/.env`).
+*   Add `DATABASE_URL="postgresql://<user>:<password>@<neon-host>..."`.
+*   *(Note: The `.env` file is intentionally ignored by git to protect your credentials).*
 
 ---
 

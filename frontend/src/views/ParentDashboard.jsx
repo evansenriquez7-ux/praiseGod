@@ -22,7 +22,7 @@ export default function ParentDashboard(props) {
     renderIntroViewer, introNodes, introInterests, introSelectedNode, setIntroSelectedNode, introSelectedInterest, setIntroSelectedInterest, generateIntroContent, introLoading,
     setSelectedStudent, setTelemetrySessionId, setParentLoggedIn, setParentError,
     matatagNodeId, matatagNodes, handleRunMatatagTest, matatagTestResults, testLoading, clearMatatagTests,
-    activeSubject, activeDomain, activeSubdomain, renderMapOverlay, fetchMatatagNodes, fetchIntroNodes, fetchIntroInterests, modelsLoading, modelFilter, setModelFilter, setAnalyticsData, _resetMatatagState, labAllowedDifficulties, labVariantValues, labSelectedFormatter, setLabSelectedInterest, fetchParentGraph, opencodeModel, parentAuthRequired, matatagNodeSearch, setLabAllowedContexts, fetchParentAnalytics, labDifficultyScalars, setEditTelemetryEnabled, fetchProfiles, fetchMatatagQuestion, opencodeModels, fetchMatatagAxes, labAllowedFormatters, saveLabConfig, labInterests, handleUpdateSettings, setLabAllowedFormatters, matatagAxisValues, activeQuestion, parentSelectedGrade, setMatatagNodeId, setParentSubjectFilter, setParentSelectedGrade, setLabAllowedDifficulties, matatagQuestion, handleToggleParentAuth, matatagResult, parentSubjectFilter, labSelectedInterest, setMatatagNodeSearch, analyticsData, matatagLoading, labConfig, labConfigLoading, setMatatagAnswer, matatagAnswer, editTelemetryEnabled, labAllowedContexts, submitMatatagAnswer, handleOpencodeModelChange, parentGraphData, fetchLabConfig
+    activeSubject, activeDomain, activeSubdomain, renderMapOverlay, fetchMatatagNodes, fetchIntroNodes, fetchIntroInterests, modelsLoading, modelFilter, setModelFilter, setAnalyticsData, _resetMatatagState, labAllowedDifficulties, labVariantValues, labSelectedFormatter, setLabSelectedInterest, fetchParentGraph, opencodeModel, parentAuthRequired, matatagNodeSearch, setLabAllowedContexts, fetchParentAnalytics, labDifficultyScalars, setEditTelemetryEnabled, fetchProfiles, fetchMatatagQuestion, opencodeModels, fetchMatatagAxes, labAllowedFormatters, saveLabConfig, labInterests, handleUpdateSettings, setLabAllowedFormatters, matatagAxisValues, activeQuestion, parentSelectedGrade, setMatatagNodeId, setParentSubjectFilter, setParentSelectedGrade, setLabAllowedDifficulties, matatagQuestion, handleToggleParentAuth, matatagResult, parentSubjectFilter, labSelectedInterest, setMatatagNodeSearch, analyticsData, matatagLoading, labConfig, labConfigLoading, setMatatagAnswer, matatagAnswer, editTelemetryEnabled, labAllowedContexts, submitMatatagAnswer, handleOpencodeModelChange, parentGraphData, fetchLabConfig, setShowFlagModal
   } = props;
 
   return (
@@ -1229,6 +1229,18 @@ difficulty: {Math.round(matatagQuestion.difficulty * 100)}%
                             </button>
                           </div>
                         )}
+
+                        {/* Flag Question button */}
+                        <div style={{ marginTop: '16px', display: 'flex', justifyContent: 'center' }}>
+                          <button 
+                            className="btn-secondary" 
+                            onClick={() => setShowFlagModal(true)}
+                            style={{ padding: '6px 12px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', borderRadius: '10px', background: 'rgba(239, 68, 68, 0.1)', color: '#f87171', border: '1px solid rgba(239, 68, 68, 0.2)' }}
+                          >
+                            <AlertTriangle className="w-4 h-4" />
+                            <span>🚩 Flag</span>
+                          </button>
+                        </div>
 
                       </div>
                     )}

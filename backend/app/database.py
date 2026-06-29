@@ -6,8 +6,10 @@ from dotenv import load_dotenv
 # Load environmental variables
 load_dotenv()
 
-# Default to local PostgreSQL database created on the machine
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://localhost/ccmed")
+# Require DATABASE_URL to be set explicitly to prevent accidental local database fallbacks
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL environment variable is not set. Please provide a valid Neon connection string.")
 
 _engine = None
 _SessionFactory = None
