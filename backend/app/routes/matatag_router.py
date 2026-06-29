@@ -867,7 +867,7 @@ def matatag_lab_submit(
             # Parse grade level from node ID
             grade_match = re.search(r"mat_g(\d+)", node_id)
             grade_val = int(grade_match.group(1)) if grade_match else 1
-            skeleton = _pg_run(node_id=node_id, student_grade=grade_val, seed=seed_val)
+            skeleton = _pg_run(node_id=node_id, seed=seed_val)
         except Exception:
             raise HTTPException(status_code=404, detail="Question session expired. Please generate a new problem.")
 
@@ -1135,7 +1135,6 @@ def matatag_lab_v2_generate(req: LabV2GenerateRequest, db: Session = Depends(get
     try:
         problem_dict = run(
             node_id=req.node_id,
-            student_grade=grade,
             formatter=req.formatter,
             difficulty_profile=combined_profile if combined_profile else None,
             seed=seed,
