@@ -132,11 +132,21 @@ class PracticeOrchestrator:
 
         if formatter is None:
             available = get_formatters_for_dna(dna_name)
-            task_type = ctx.values.get("task_type")
-            if task_type:
-                compatible = get_compatible_formatters_for_variant(dna_name, "task_type", task_type)
+            from backend.app.practice_gen.compatibility import FORMATTER_VARIANT_SUPPORT
+            caps = FORMATTER_VARIANT_SUPPORT.get(dna_name, {})
+            filtered_available = []
+            for fmt in available:
+                fmt_caps = caps.get(fmt, {})
+                compatible = True
+                for variant_name, allowed_vals in fmt_caps.items():
+                    ctx_val = ctx.values.get(variant_name)
+                    if ctx_val and allowed_vals and ctx_val not in allowed_vals:
+                        compatible = False
+                        break
                 if compatible:
-                    available = [fmt for fmt in available if fmt in compatible]
+                    filtered_available.append(fmt)
+            available = filtered_available or available
+            
             if allowed_formatters:
                 available = [fmt for fmt in available if fmt in allowed_formatters]
             if not available:

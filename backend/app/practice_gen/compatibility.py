@@ -548,8 +548,8 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         "fraction_type": ["proper", "improper", "mixed"],
         "operation": ["add", "subtract"],
         # visual models support specific task types
-        "fraction_model_read": {"task_type": ["identify", "compare"]},
-        "fraction_shade": {"task_type": ["identify", "equivalent"]},
+        "fraction_model_read": {"operation": ["identify_name", "compare"]},
+        "fraction_shade": {"operation": ["identify_name", "equivalent"]},
     },
 
     "money_peso": {
