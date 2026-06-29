@@ -37,7 +37,7 @@ export default function LoginView({
                       <button 
                         key={std.id}
                         onClick={() => handleSelectStudent(std)}
-                        className={`option-btn ${selectedStudent?.id === std.id ? 'correct' : ''}`}
+                        className={`option-btn ${selectedStudent?.id === std.id ? 'selected' : ''}`}
                         style={{ padding: '12px 18px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '4px' }}
                       >
                         <span style={{ fontWeight: 700 }}>{std.name}</span>

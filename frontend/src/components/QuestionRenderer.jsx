@@ -83,7 +83,7 @@ export default function QuestionRenderer({ question, answer, setAnswer, answerRe
                     return (
                       <button
                         key={opt.key}
-                        className={`option-btn ${isWrong ? 'incorrect' : isCorrectOpt ? 'correct' : isSelected ? 'correct' : ''}`}
+                        className={`option-btn ${isWrong ? 'incorrect' : isCorrectOpt ? 'correct' : isSelected ? (answerResult ? 'correct' : 'selected') : ''}`}
                         onClick={() => { if (!answerResult) setAnswer(opt.key); }}
                         disabled={!!answerResult}
                         style={{ textAlign: 'left' }}
@@ -236,7 +236,7 @@ export default function QuestionRenderer({ question, answer, setAnswer, answerRe
                 return (
                   <button
                     key={opt.key}
-                    className={`option-btn ${isWrong ? 'incorrect' : isCorrectOpt ? 'correct' : isSelected ? 'correct' : ''}`}
+                    className={`option-btn ${isWrong ? 'incorrect' : isCorrectOpt ? 'correct' : isSelected ? (answerResult ? 'correct' : 'selected') : ''}`}
                     onClick={() => { if (!answerResult) setAnswer(opt.key); }}
                     disabled={!!answerResult}
                     style={{ textAlign: 'left' }}
