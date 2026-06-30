@@ -386,7 +386,7 @@ def generate_problem(
         if allowed_formatters:
             available = [fmt for fmt in available if fmt in allowed_formatters]
         if not available:
-            available = ["mcq"]
+            raise ValueError(f"No compatible formatters available for DNA '{dna_name}'")
         formatter = _weighted_choice(rng, available)
 
     # 6. Apply formatter
@@ -417,8 +417,6 @@ def apply_formatter(
     """
     import importlib
 
-    # If emoji_pictorial is selected but values exceed 100, fall back to mcq
-    # to avoid rendering a large number of emojis (even as grouped items).
     if formatter_name == "emoji_pictorial":
         vals = [
             ctx.values.get("a"),
@@ -430,12 +428,11 @@ def apply_formatter(
         int_vals = [v for v in vals if isinstance(v, (int, float))]
         max_val = max(int_vals) if int_vals else 0
         if max_val > 100:
-            formatter_name = "mcq"
+            raise ValueError(f"emoji_pictorial requested but max_val ({max_val}) > 100")
 
     route = _FORMATTER_ROUTES.get(formatter_name)
     if route is None:
-        # Unknown formatter — fall back to MCQ
-        route = _FORMATTER_ROUTES["mcq"]
+        raise ValueError(f"Unknown formatter requested: '{formatter_name}'")
 
     module_path, func_name, extra_kwargs = route
     module = importlib.import_module(module_path)

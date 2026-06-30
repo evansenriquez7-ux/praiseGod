@@ -129,8 +129,7 @@ class PracticeOrchestrator:
             valid_dnas.append(d)
             
         if not valid_dnas:
-            # Fallback if filters are too strict
-            valid_dnas = dna_names
+            raise ValueError(f"Formatter '{formatter}' is not supported by any DNA for node '{node_id}'")
 
         dna_name = rng.choice(valid_dnas)
         dna = _get_dna_instance(dna_name)
@@ -168,12 +167,12 @@ class PracticeOrchestrator:
                         break
                 if compatible:
                     filtered_available.append(fmt)
-            available = filtered_available or available
+            available = filtered_available
             
             if allowed_formatters:
                 available = [fmt for fmt in available if fmt in allowed_formatters]
             if not available:
-                available = ["mcq"]
+                raise ValueError(f"No compatible formatters available for DNA '{dna_name}'")
             formatter = _weighted_choice(rng, available)
 
         problem = apply_formatter(ctx, formatter, rng)
@@ -207,7 +206,7 @@ class PracticeOrchestrator:
                     seen.add(fmt)
                     available_formatters.append(fmt)
         if not available_formatters:
-            available_formatters = ["mcq"]
+            raise ValueError(f"No valid formatters found for node '{node_id}' across any of its DNAs")
 
         problems: List[FormattedProblem] = []
         last_formatter: Optional[str] = None

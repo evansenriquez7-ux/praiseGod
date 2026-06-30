@@ -18,3 +18,9 @@ When writing, modifying, or debugging code for this project, you must follow str
    - Store all temporary markdown files, buildtime logs, temporary test, helper, and verification scripts in the `local_only/scratch` directory of the workspace (use `docs/scratch ` when using github codespaces).
    - Store all permanent markdown files in the `/docs` directory of the workspace.
    - Keep the root directory clean and tidy.
+
+## Terminology
+gh - github
+node - matatag curriculum subject grade subdomain quarter (ex. mat_g3_na_q4). Contains a related bundle of learning competencies
+lc - learning competency: specific component of a node
+pg - practice problem generator
