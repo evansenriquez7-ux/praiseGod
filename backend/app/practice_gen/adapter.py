@@ -233,6 +233,11 @@ _FORMATTER_ROUTES: Dict[str, tuple] = {
         "format_number_bond",
         {"interaction_mode": "read", "answer_collection": "fill_in_blank"},
     ),
+    "pattern_sequence": (
+        "backend.app.practice_gen.formatters.visual.fmt_pattern_sequence",
+        "format_pattern_sequence",
+        {"interaction_mode": "read", "answer_collection": "mcq"},
+    ),
     # ── Emoji Pictorial (pictorial model for addition/subtraction) ────────────
     "emoji_pictorial": (
         "backend.app.practice_gen.formatters.visual.fmt_emoji_pictorial",

@@ -203,7 +203,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "any",
-      "community": 7,
+      "community": 65,
       "norm_label": "any"
     },
     {
@@ -2210,7 +2210,7 @@
       "label": "_get_dna_instance()",
       "file_type": "code",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L281",
+      "source_location": "L286",
       "_origin": "ast",
       "id": "practice_gen_adapter_get_dna_instance",
       "community": 52,
@@ -2220,7 +2220,7 @@
       "label": "_weighted_choice()",
       "file_type": "code",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L296",
+      "source_location": "L301",
       "_origin": "ast",
       "id": "practice_gen_adapter_weighted_choice",
       "community": 52,
@@ -2230,7 +2230,7 @@
       "label": "generate_problem()",
       "file_type": "code",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L313",
+      "source_location": "L318",
       "_origin": "ast",
       "id": "practice_gen_adapter_generate_problem",
       "community": 52,
@@ -2240,7 +2240,7 @@
       "label": "apply_formatter()",
       "file_type": "code",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L394",
+      "source_location": "L399",
       "_origin": "ast",
       "id": "practice_gen_adapter_apply_formatter",
       "community": 52,
@@ -2250,7 +2250,7 @@
       "label": "apply_experience()",
       "file_type": "code",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L451",
+      "source_location": "L456",
       "_origin": "ast",
       "id": "practice_gen_adapter_apply_experience",
       "community": 52,
@@ -2260,7 +2260,7 @@
       "label": "generate_batch()",
       "file_type": "code",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L493",
+      "source_location": "L498",
       "_origin": "ast",
       "id": "practice_gen_adapter_generate_batch",
       "community": 52,
@@ -2270,7 +2270,7 @@
       "label": "to_legacy_dict()",
       "file_type": "code",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L560",
+      "source_location": "L565",
       "_origin": "ast",
       "id": "practice_gen_adapter_to_legacy_dict",
       "community": 52,
@@ -2290,9 +2290,9 @@
       "label": "Import the DNA module and return its DNA instance.",
       "file_type": "rationale",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L282",
+      "source_location": "L287",
       "_origin": "ast",
-      "id": "practice_gen_adapter_rationale_282",
+      "id": "practice_gen_adapter_rationale_287",
       "community": 52,
       "norm_label": "import the dna module and return its dna instance."
     },
@@ -2300,9 +2300,9 @@
       "label": "Pick a formatter from the list, weighted toward mcq and numeric_input.",
       "file_type": "rationale",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L297",
+      "source_location": "L302",
       "_origin": "ast",
-      "id": "practice_gen_adapter_rationale_297",
+      "id": "practice_gen_adapter_rationale_302",
       "community": 52,
       "norm_label": "pick a formatter from the list, weighted toward mcq and numeric_input."
     },
@@ -2310,9 +2310,9 @@
       "label": "Generate a single FormattedProblem for the given node.      Steps:         1. Ge",
       "file_type": "rationale",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L323",
+      "source_location": "L328",
       "_origin": "ast",
-      "id": "practice_gen_adapter_rationale_323",
+      "id": "practice_gen_adapter_rationale_328",
       "community": 52,
       "norm_label": "generate a single formattedproblem for the given node.      steps:         1. ge"
     },
@@ -2320,9 +2320,9 @@
       "label": "Route a QuestionContext to the correct formatter function.      Args:         ct",
       "file_type": "rationale",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L399",
+      "source_location": "L404",
       "_origin": "ast",
-      "id": "practice_gen_adapter_rationale_399",
+      "id": "practice_gen_adapter_rationale_404",
       "community": 52,
       "norm_label": "route a questioncontext to the correct formatter function.      args:         ct"
     },
@@ -2330,9 +2330,9 @@
       "label": "Apply an experience wrapper to a FormattedProblem.      Args:         problem: F",
       "file_type": "rationale",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L456",
+      "source_location": "L461",
       "_origin": "ast",
-      "id": "practice_gen_adapter_rationale_456",
+      "id": "practice_gen_adapter_rationale_461",
       "community": 52,
       "norm_label": "apply an experience wrapper to a formattedproblem.      args:         problem: f"
     },
@@ -2340,9 +2340,9 @@
       "label": "Generate a batch of varied problems for a node.      Uses different seeds (base_",
       "file_type": "rationale",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L500",
+      "source_location": "L505",
       "_origin": "ast",
-      "id": "practice_gen_adapter_rationale_500",
+      "id": "practice_gen_adapter_rationale_505",
       "community": 52,
       "norm_label": "generate a batch of varied problems for a node.      uses different seeds (base_"
     },
@@ -2350,9 +2350,9 @@
       "label": "Translate a FormattedProblem to the legacy skeleton dict format.      This shim",
       "file_type": "rationale",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L561",
+      "source_location": "L566",
       "_origin": "ast",
-      "id": "practice_gen_adapter_rationale_561",
+      "id": "practice_gen_adapter_rationale_566",
       "community": 52,
       "norm_label": "translate a formattedproblem to the legacy skeleton dict format.      this shim"
     },
@@ -3063,7 +3063,7 @@
       "source_location": "L218",
       "_origin": "ast",
       "id": "dp_bar_graphs_generate_hints",
-      "community": 7,
+      "community": 65,
       "norm_label": "generate_hints()"
     },
     {
@@ -3113,7 +3113,7 @@
       "source_location": "L257",
       "_origin": "ast",
       "id": "dp_pictographs_generate_hints",
-      "community": 7,
+      "community": 65,
       "norm_label": "generate_hints()"
     },
     {
@@ -3303,7 +3303,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "mg_geometric_lines",
-      "community": 7,
+      "community": 65,
       "norm_label": "geometric_lines.py"
     },
     {
@@ -3313,7 +3313,7 @@
       "source_location": "L309",
       "_origin": "ast",
       "id": "mg_geometric_lines_generate_params",
-      "community": 7,
+      "community": 65,
       "norm_label": "generate_params()"
     },
     {
@@ -3323,7 +3323,7 @@
       "source_location": "L344",
       "_origin": "ast",
       "id": "mg_geometric_lines_generate_hints",
-      "community": 7,
+      "community": 65,
       "norm_label": "generate_hints()"
     },
     {
@@ -3333,7 +3333,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "mg_geometric_lines_rationale_1",
-      "community": 7,
+      "community": 65,
       "norm_label": "dna: geometric lines (measurement & geometry)  covers matatag grade 3 lines comp"
     },
     {
@@ -3343,7 +3343,7 @@
       "source_location": "L314",
       "_origin": "ast",
       "id": "mg_geometric_lines_rationale_314",
-      "community": 7,
+      "community": 65,
       "norm_label": "sample one item from the static pool filtered by grade and difficulty profile."
     },
     {
@@ -3503,7 +3503,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "mg_shapes_2d",
-      "community": 7,
+      "community": 65,
       "norm_label": "shapes_2d.py"
     },
     {
@@ -3513,7 +3513,7 @@
       "source_location": "L264",
       "_origin": "ast",
       "id": "mg_shapes_2d_generate_params",
-      "community": 7,
+      "community": 65,
       "norm_label": "generate_params()"
     },
     {
@@ -3523,7 +3523,7 @@
       "source_location": "L307",
       "_origin": "ast",
       "id": "mg_shapes_2d_generate_hints",
-      "community": 7,
+      "community": 65,
       "norm_label": "generate_hints()"
     },
     {
@@ -3533,7 +3533,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "mg_shapes_2d_rationale_1",
-      "community": 7,
+      "community": 65,
       "norm_label": "dna: 2d shapes (measurement & geometry)  covers matatag grades 1\u20132 2d shape comp"
     },
     {
@@ -3543,7 +3543,7 @@
       "source_location": "L269",
       "_origin": "ast",
       "id": "mg_shapes_2d_rationale_269",
-      "community": 7,
+      "community": 65,
       "norm_label": "sample one item from the static pool filtered by grade and difficulty_profile."
     },
     {
@@ -3783,7 +3783,7 @@
       "source_location": "L207",
       "_origin": "ast",
       "id": "na_comparing_ordering_generate_hints",
-      "community": 7,
+      "community": 65,
       "norm_label": "generate_hints()"
     },
     {
@@ -3823,7 +3823,7 @@
       "source_location": "L211",
       "_origin": "ast",
       "id": "na_comparing_ordering_rationale_211",
-      "community": 7,
+      "community": 65,
       "norm_label": "return 2\u20134 step-by-step hints for a comparison/ordering problem."
     },
     {
@@ -3873,7 +3873,7 @@
       "source_location": "L228",
       "_origin": "ast",
       "id": "na_counting_generate_hints",
-      "community": 7,
+      "community": 65,
       "norm_label": "generate_hints()"
     },
     {
@@ -3903,7 +3903,7 @@
       "source_location": "L232",
       "_origin": "ast",
       "id": "na_counting_rationale_232",
-      "community": 7,
+      "community": 65,
       "norm_label": "return 2\u20134 step-by-step hint strings for the given counting problem."
     },
     {
@@ -3953,7 +3953,7 @@
       "source_location": "L196",
       "_origin": "ast",
       "id": "na_division_generate_hints",
-      "community": 7,
+      "community": 65,
       "norm_label": "generate_hints()"
     },
     {
@@ -3983,7 +3983,7 @@
       "source_location": "L200",
       "_origin": "ast",
       "id": "na_division_rationale_200",
-      "community": 7,
+      "community": 65,
       "norm_label": "return 2\u20134 step-by-step hint strings for the given division problem."
     },
     {
@@ -4033,7 +4033,7 @@
       "source_location": "L254",
       "_origin": "ast",
       "id": "na_fractions_generate_hints",
-      "community": 7,
+      "community": 65,
       "norm_label": "generate_hints()"
     },
     {
@@ -4063,7 +4063,7 @@
       "source_location": "L258",
       "_origin": "ast",
       "id": "na_fractions_rationale_258",
-      "community": 7,
+      "community": 65,
       "norm_label": "return 2\u20134 step-by-step hint strings for the given fractions problem."
     },
     {
@@ -4183,7 +4183,7 @@
       "source_location": "L367",
       "_origin": "ast",
       "id": "na_money_peso_generate_hints",
-      "community": 7,
+      "community": 65,
       "norm_label": "generate_hints()"
     },
     {
@@ -4223,7 +4223,7 @@
       "source_location": "L371",
       "_origin": "ast",
       "id": "na_money_peso_rationale_371",
-      "community": 7,
+      "community": 65,
       "norm_label": "return 2\u20134 step-by-step hints for the given money problem."
     },
     {
@@ -4653,7 +4653,7 @@
       "source_location": "L211",
       "_origin": "ast",
       "id": "na_patterns_generate_hints",
-      "community": 7,
+      "community": 65,
       "norm_label": "generate_hints()"
     },
     {
@@ -4693,7 +4693,7 @@
       "source_location": "L215",
       "_origin": "ast",
       "id": "na_patterns_rationale_215",
-      "community": 7,
+      "community": 65,
       "norm_label": "return 2\u20134 step-by-step hints for the given pattern problem."
     },
     {
@@ -7583,7 +7583,7 @@
       "source_location": "L613",
       "_origin": "ast",
       "id": "generators_base_generator_detect_axes_served",
-      "community": 7,
+      "community": 65,
       "norm_label": "_detect_axes_served()"
     },
     {
@@ -7653,7 +7653,7 @@
       "source_location": "L614",
       "_origin": "ast",
       "id": "generators_base_generator_rationale_614",
-      "community": 7,
+      "community": 65,
       "norm_label": "back-infer which difficulty axis levels were actually produced.      checks the"
     },
     {
@@ -7713,7 +7713,7 @@
       "source_location": "L215",
       "_origin": "ast",
       "id": "generators_difficulty_make_predicates",
-      "community": 7,
+      "community": 6,
       "norm_label": "_make_predicates()"
     },
     {
@@ -7723,7 +7723,7 @@
       "source_location": "L297",
       "_origin": "ast",
       "id": "generators_difficulty_sample_params",
-      "community": 7,
+      "community": 6,
       "norm_label": "_sample_params()"
     },
     {
@@ -7733,7 +7733,7 @@
       "source_location": "L325",
       "_origin": "ast",
       "id": "generators_difficulty_sample_for_difficulty",
-      "community": 7,
+      "community": 6,
       "norm_label": "sample_for_difficulty()"
     },
     {
@@ -7803,7 +7803,7 @@
       "source_location": "L218",
       "_origin": "ast",
       "id": "generators_difficulty_rationale_218",
-      "community": 7,
+      "community": 6,
       "norm_label": "build a list of constraint predicate callables for a difficulty_profile.      ar"
     },
     {
@@ -7813,7 +7813,7 @@
       "source_location": "L301",
       "_origin": "ast",
       "id": "generators_difficulty_rationale_301",
-      "community": 7,
+      "community": 6,
       "norm_label": "draw one uniform sample from param_bounds.      args:         bounds: mapping of"
     },
     {
@@ -7823,7 +7823,7 @@
       "source_location": "L332",
       "_origin": "ast",
       "id": "generators_difficulty_rationale_332",
-      "community": 7,
+      "community": 6,
       "norm_label": "rejection-sample a param dict that satisfies the difficulty_profile.      draws"
     },
     {
@@ -8903,7 +8903,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "validation_validate_interest",
-      "community": 6,
+      "community": 7,
       "norm_label": "validate_interest.py"
     },
     {
@@ -8913,7 +8913,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "validation_validate_interest_load_dna",
-      "community": 6,
+      "community": 7,
       "norm_label": "_load_dna()"
     },
     {
@@ -8923,7 +8923,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "validation_validate_interest_validate_interest_invariance",
-      "community": 6,
+      "community": 7,
       "norm_label": "validate_interest_invariance()"
     },
     {
@@ -8933,7 +8933,7 @@
       "source_location": "L137",
       "_origin": "ast",
       "id": "validation_validate_interest_validate_all_interest_invariance",
-      "community": 6,
+      "community": 7,
       "norm_label": "validate_all_interest_invariance()"
     },
     {
@@ -8943,7 +8943,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "validation_validate_interest_rationale_1",
-      "community": 6,
+      "community": 7,
       "norm_label": "practice generation \u2014 interest invariance validation  verifies that interest-the"
     },
     {
@@ -8953,7 +8953,7 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "validation_validate_interest_rationale_61",
-      "community": 6,
+      "community": 7,
       "norm_label": "import the dna module and return its dna instance, or none on failure."
     },
     {
@@ -8963,7 +8963,7 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "validation_validate_interest_rationale_82",
-      "community": 6,
+      "community": 7,
       "norm_label": "verify that interest theme does not alter the correct answer.      for each of `"
     },
     {
@@ -8973,7 +8973,7 @@
       "source_location": "L138",
       "_origin": "ast",
       "id": "validation_validate_interest_rationale_138",
-      "community": 6,
+      "community": 7,
       "norm_label": "run interest invariance checks for all requires_context=true formula dnas."
     },
     {
@@ -30793,11 +30793,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L282",
+      "source_location": "L287",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "practice_gen_adapter_rationale_282",
-      "target": "practice_gen_adapter_get_dna_instance"
+      "source": "practice_gen_adapter_rationale_287",
+      "target": "practice_gen_adapter_get_dna_instance",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -30847,11 +30847,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L297",
+      "source_location": "L302",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "practice_gen_adapter_rationale_297",
-      "target": "practice_gen_adapter_weighted_choice"
+      "source": "practice_gen_adapter_rationale_302",
+      "target": "practice_gen_adapter_weighted_choice",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -30978,11 +30978,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L323",
+      "source_location": "L328",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "practice_gen_adapter_rationale_323",
-      "target": "practice_gen_adapter_generate_problem"
+      "source": "practice_gen_adapter_rationale_328",
+      "target": "practice_gen_adapter_generate_problem",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -31032,11 +31032,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L399",
+      "source_location": "L404",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "practice_gen_adapter_rationale_399",
-      "target": "practice_gen_adapter_apply_formatter"
+      "source": "practice_gen_adapter_rationale_404",
+      "target": "practice_gen_adapter_apply_formatter",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -31119,11 +31119,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L456",
+      "source_location": "L461",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "practice_gen_adapter_rationale_456",
-      "target": "practice_gen_adapter_apply_experience"
+      "source": "practice_gen_adapter_rationale_461",
+      "target": "practice_gen_adapter_apply_experience",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -31184,11 +31184,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L500",
+      "source_location": "L505",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "practice_gen_adapter_rationale_500",
-      "target": "practice_gen_adapter_generate_batch"
+      "source": "practice_gen_adapter_rationale_505",
+      "target": "practice_gen_adapter_generate_batch",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -31216,11 +31216,11 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/app/practice_gen/adapter.py",
-      "source_location": "L561",
+      "source_location": "L566",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "practice_gen_adapter_rationale_561",
-      "target": "practice_gen_adapter_to_legacy_dict"
+      "source": "practice_gen_adapter_rationale_566",
+      "target": "practice_gen_adapter_to_legacy_dict",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -36583,9 +36583,9 @@
       "source_file": "backend/app/practice_gen/dna/na/fractions.py",
       "source_location": "L258",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "na_fractions_rationale_258",
-      "target": "na_fractions_generate_hints",
-      "confidence_score": 1.0
+      "target": "na_fractions_generate_hints"
     },
     {
       "relation": "imports",
@@ -41407,9 +41407,9 @@
       "source_file": "backend/app/practice_gen/generators/base_generator.py",
       "source_location": "L614",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "generators_base_generator_rationale_614",
-      "target": "generators_base_generator_detect_axes_served",
-      "confidence_score": 1.0
+      "target": "generators_base_generator_detect_axes_served"
     },
     {
       "relation": "rationale_for",
@@ -41417,9 +41417,9 @@
       "source_file": "backend/app/practice_gen/generators/base_generator.py",
       "source_location": "L729",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "generators_base_generator_rationale_729",
-      "target": "generators_base_generator_eval_error_formula",
-      "confidence_score": 1.0
+      "target": "generators_base_generator_eval_error_formula"
     },
     {
       "relation": "contains",
@@ -58664,9 +58664,9 @@
       "source_file": "docs/INFRASTRUCTURE_WORKFLOW.md",
       "source_location": "L112",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_infrastructure_workflow_ccmed_serverless_infrastructure_deployment_playbook",
-      "target": "docs_infrastructure_workflow_7_matatag_lab_and_student_portal_practice_problems",
-      "confidence_score": 1.0
+      "target": "docs_infrastructure_workflow_7_matatag_lab_and_student_portal_practice_problems"
     },
     {
       "relation": "contains",
@@ -60090,5 +60090,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "dd1678828ae15f220c5f83ced9884aefc850cd2b"
+  "built_at_commit": "5105080c130c015313872b58b4cb76a3fcc85d97"
 }

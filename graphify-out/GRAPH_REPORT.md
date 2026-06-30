@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-06-30)
 
 ## Corpus Check
-- 239 files · ~265,329 words
+- 239 files · ~265,338 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `dd167882`
+- Built from commit: `5105080c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -240,12 +240,12 @@ Cohesion: 0.05
 Nodes (37): _gen_g3_dp_q3_bar_graphs(), _gen_g3_dp_q3_probability(), _gen_g3_mg_q1_area(), _gen_g3_mg_q1_lines(), _gen_g3_mg_q2_capacity(), _gen_g3_mg_q2_mass(), _gen_g3_mg_q4_symmetry(), _gen_g3_na_q1_comparing() (+29 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.06
-Nodes (43): DNA, Specification of a mathematical concept for practice generation.      dna_type:, Return param_bounds for grade, falling back to nearest defined grade., Return the index of a level within an axis (0 = easiest)., Return a 0.0–1.0 scalar for a given axis level., build_scaffold_sequence(), Practice Generation — Scaffolded Experience Wrapper  Ascending-difficulty sequen, Build an ordered list of difficulty profiles for a scaffold sequence.      Each (+35 more)
+Cohesion: 0.07
+Nodes (42): DNA, Specification of a mathematical concept for practice generation.      dna_type:, Return param_bounds for grade, falling back to nearest defined grade., Return the index of a level within an axis (0 = easiest)., Return a 0.0–1.0 scalar for a given axis level., build_scaffold_sequence(), Practice Generation — Scaffolded Experience Wrapper  Ascending-difficulty sequen, Build an ordered list of difficulty profiles for a scaffold sequence.      Each (+34 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.07
-Nodes (31): Any, generate_hints(), generate_hints(), _detect_axes_served(), Back-infer which difficulty axis levels were actually produced.      Checks the, _make_predicates(), Build a list of constraint predicate callables for a difficulty_profile.      Ar, Draw one uniform sample from param_bounds.      Args:         bounds: Mapping of (+23 more)
+Cohesion: 0.32
+Nodes (7): _load_dna(), Practice Generation — Interest Invariance Validation  Verifies that interest-the, Run interest invariance checks for all requires_context=True formula DNAs., Import the DNA module and return its DNA instance, or None on failure., Verify that interest theme does not alter the correct answer.      For each of `, validate_all_interest_invariance(), validate_interest_invariance()
 
 ### Community 8 - "Community 8"
 Cohesion: 0.14
@@ -468,8 +468,8 @@ Cohesion: 0.29
 Nodes (9): _build_pure_equation(), _distractor_label(), _distractor_value(), format_error_detect(), _pick_actor(), Textual Formatter — Error Detection ("Check the Work")  Presents a worked proble, Deterministically pick an actor name from the rotation using the seed., Build a pure equation string for the actor's work display. (+1 more)
 
 ### Community 65 - "Community 65"
-Cohesion: 0.07
-Nodes (28): ErrorPattern, A pedagogically meaningful wrong answer.      formula:          SymPy expression, A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params(), DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile. (+20 more)
+Cohesion: 0.04
+Nodes (53): Any, ErrorPattern, A pedagogically meaningful wrong answer.      formula:          SymPy expression, A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_hints(), generate_hints() (+45 more)
 
 ### Community 66 - "Community 66"
 Cohesion: 0.40
@@ -863,7 +863,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **Why does `QuestionContext` connect `Community 84` to `Community 135`, `Community 13`, `Community 157`, `Community 30`, `Community 35`, `Community 39`, `Community 48`, `Community 176`, `Community 50`, `Community 51`, `Community 52`, `Community 54`, `Community 55`, `Community 61`, `Community 64`, `Community 69`, `Community 70`, `Community 76`, `Community 79`, `Community 80`, `Community 81`, `Community 82`, `Community 83`, `Community 98`, `Community 105`?**
   _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **Why does `get_cache()` connect `Community 27` to `Community 1`, `Community 22`, `Community 7`?**
+- **Why does `get_cache()` connect `Community 27` to `Community 65`, `Community 1`, `Community 22`?**
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **What connects `graphify`, `PackageDescription`, `Foundation` to the rest of the system?**
   _1206 weakly-connected nodes found - possible documentation gaps or missing edges._
