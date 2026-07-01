@@ -291,16 +291,43 @@ def format_emoji_pictorial(
 ) -> FormattedProblem:
     """
     Format a problem using emoji pictorial model.
-    
+
     Args:
         ctx: QuestionContext with DNA values
         rng: Random number generator
         interaction_mode: "read" (count emojis) - set mode not yet implemented
         answer_collection: "mcq" | "fill_in_blank"
-    
+
     Returns:
         FormattedProblem with emoji visual representation
+
+    Raises:
+        ValueError: If any of (a, b, number, answer, start) > 100. The
+            emoji_pictorial formatter cannot represent groups larger
+            than 100 (the per-item emoji would explode the JSON payload
+            and the UI would be unreadable). This is fail-fast per
+            AGENTS.md rule #4: surface the incompatibility, do not
+            silently degrade to a placeholder.
     """
+    # Numeric limit check: emoji_pictorial cannot represent groups > 100.
+    # (Moved here from adapter.py so the formatter owns its own constraints.)
+    vals = [
+        ctx.values.get("a"),
+        ctx.values.get("b"),
+        ctx.values.get("number"),
+        ctx.values.get("answer"),
+        ctx.values.get("start"),
+    ]
+    int_vals = [v for v in vals if isinstance(v, (int, float))]
+    max_val = max(int_vals) if int_vals else 0
+    if max_val > 100:
+        raise ValueError(
+            f"emoji_pictorial: cannot represent max_val ({max_val}) > 100; "
+            f"this profile produces a group too large for emoji display. "
+            f"Use a different formatter (e.g. place_value_blocks_set) for "
+            f"values > 100."
+        )
+
     # Build parameters
     params = _build_params(ctx, rng)
     correct = _correct_answer(params)

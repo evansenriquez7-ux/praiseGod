@@ -417,19 +417,6 @@ def apply_formatter(
     """
     import importlib
 
-    if formatter_name == "emoji_pictorial":
-        vals = [
-            ctx.values.get("a"),
-            ctx.values.get("b"),
-            ctx.values.get("number"),
-            ctx.values.get("answer"),
-            ctx.values.get("start")
-        ]
-        int_vals = [v for v in vals if isinstance(v, (int, float))]
-        max_val = max(int_vals) if int_vals else 0
-        if max_val > 100:
-            raise ValueError(f"emoji_pictorial requested but max_val ({max_val}) > 100")
-
     route = _FORMATTER_ROUTES.get(formatter_name)
     if route is None:
         raise ValueError(f"Unknown formatter requested: '{formatter_name}'")
