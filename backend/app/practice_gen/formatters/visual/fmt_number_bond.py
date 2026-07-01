@@ -43,6 +43,7 @@ Traps:
 import random
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -256,6 +257,10 @@ def format_number_bond(
     # ── 4. MCQ options ────────────────────────────────────────────────────────
     mcq_options = None
     if answer_collection == "mcq":
+        if len(traps) < 3:
+            traps = augment_distractors(traps, answer, target=3, max_delta=5)
+            if len(traps) < 3:
+                raise ValueError(f"Formatter 'number_bond' requires at least 3 unique distractors, but got {len(traps)}")
         all_opts = [answer] + traps[:3]
         rng.shuffle(all_opts)
         mcq_options = [

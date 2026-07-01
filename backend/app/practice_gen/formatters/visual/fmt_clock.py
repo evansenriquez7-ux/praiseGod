@@ -18,6 +18,7 @@ import random
 from typing import Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -100,22 +101,10 @@ def _trap_time_strings(
             options.append(s)
         if len(options) == 3:
             break
-    # Pad with synthetic distractors if needed
-    h0, m0 = correct_tuple
-    offsets = [(-1, 0), (1, 0), (0, -5), (0, 5), (-2, 0), (2, 0)]
-    for dh, dm in offsets:
-        if len(options) >= 3:
-            break
-        nh = (h0 + dh) % (24 if use_24 else 12)
-        if not use_24 and nh == 0:
-            nh = 12
-        nm = m0 + dm
-        if not (0 <= nm <= 59):
-            continue
-        s = _time_str(nh, nm, use_24)
-        if s not in seen:
-            seen.add(s)
-            options.append(s)
+    if len(options) < 3:
+        options = augment_distractors(options, _time_str(*correct_tuple, use_24), target=3, max_delta=5)
+        if len(options) < 3:
+            raise ValueError(f"Formatter 'clock' requires at least 3 unique distractors, but got {len(options)}")
     return options
 
 

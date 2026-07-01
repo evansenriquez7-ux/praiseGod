@@ -42,6 +42,7 @@ import random
 from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -186,23 +187,23 @@ def _generate_distractors(
     # Count only one group
     distractors.add(a)
     distractors.add(b)
-    
+
     # Off by one
     if correct > 0:
         distractors.add(correct - 1)
     distractors.add(correct + 1)
-    
+
     # Wrong operation
     if operation == "addition":
         if a >= b:
             distractors.add(a - b)
     else:
         distractors.add(a + b)
-    
+
     # Count all (for subtraction, count including crossed out)
     if operation == "subtraction":
         distractors.add(a)
-    
+
     # Remove correct answer and invalid values
     distractors.discard(correct)
     distractors = {d for d in distractors if d >= 0}
@@ -211,13 +212,11 @@ def _generate_distractors(
     distractor_list = list(distractors)
     rng.shuffle(distractor_list)
     
-    # Need exactly 3 distractors
-    while len(distractor_list) < 3:
-        # Add random nearby values
-        candidate = correct + rng.choice([-2, 2, 3, -3])
-        if candidate >= 0 and candidate != correct and candidate not in distractor_list:
-            distractor_list.append(candidate)
-    
+    if len(distractor_list) < 3:
+        distractor_list = augment_distractors(distractor_list, correct, target=3, max_delta=5)
+        if len(distractor_list) < 3:
+            raise ValueError(f"Formatter 'emoji_pictorial' requires at least 3 unique distractors, but got {len(distractor_list)}")
+
     return distractor_list[:3]
 
 

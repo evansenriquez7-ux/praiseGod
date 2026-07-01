@@ -38,6 +38,7 @@ Traps:
 import random
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -133,6 +134,20 @@ def _build_traps(params: dict, answer: int, rng: random.Random) -> list:
     if opposite not in seen and 0 < opposite <= capacity:
         traps.append(opposite)
 
+    # Pad traps if needed
+    offset_mult = 1
+    while len(traps) < 3:
+        for sign in [1, -1]:
+            candidate = answer + (offset_mult * sign)
+            # Expand capacity bounds if we really need to find 3 traps, 
+            # but ideally keep it > 0. A ten-frame answer might be 10, so candidate 11 is ok as a trap.
+            if candidate >= 0 and candidate not in seen:
+                traps.append(candidate)
+                seen.add(candidate)
+                if len(traps) >= 3:
+                    break
+        offset_mult += 1
+
     rng.shuffle(traps)
     return traps[:3]
 
@@ -220,6 +235,10 @@ def format_ten_frame(
     # ── 4. MCQ options ────────────────────────────────────────────────────────
     mcq_options = None
     if answer_collection == "mcq" and params["query_type"] != "show_number":
+        if len(traps) < 3:
+            traps = augment_distractors(traps, correct_answer, target=3, max_delta=5)
+            if len(traps) < 3:
+                raise ValueError(f"Formatter 'ten_frame' requires at least 3 unique distractors, but got {len(traps)}")
         all_opts = [correct_answer] + traps[:3]
         rng.shuffle(all_opts)
         mcq_options = [

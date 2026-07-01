@@ -23,6 +23,7 @@ import random
 from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -265,6 +266,10 @@ def format_pattern_sequence(
     # ── 4. MCQ options ───────────────────────────────────────────────────────
     mcq_options = None
     if answer_collection == "mcq" and len(missing_indices) == 1:
+        if len(traps) < 3:
+            traps = augment_distractors(traps, correct_answer, target=3, max_delta=5)
+            if len(traps) < 3:
+                raise ValueError(f"Formatter 'pattern_sequence' requires at least 3 unique distractors, but got {len(traps)}")
         all_opts = [correct_answer] + traps[:3]
         rng.shuffle(all_opts)
         mcq_options = [

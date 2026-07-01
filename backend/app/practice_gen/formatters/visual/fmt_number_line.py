@@ -24,6 +24,7 @@ import random
 from typing import Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -494,13 +495,13 @@ def format_number_line(
     if "number" in values:
         try:
             target_num = int(values["number"])
-        except (ValueError, TypeError):
-            pass
+        except (ValueError, TypeError) as e:
+            raise ValueError(f"Invalid 'number' value in context: {values['number']}") from e
     elif "answer" in values:
         try:
             target_num = int(values["answer"])
-        except (ValueError, TypeError):
-            pass
+        except (ValueError, TypeError) as e:
+            raise ValueError(f"Invalid 'answer' value in context: {values['answer']}") from e
 
     # ── 1. Resolve visual_params ───────────────────────────────────────────────
     if ctx.visual_params and "correct_position" in ctx.visual_params:
@@ -582,12 +583,14 @@ def format_number_line(
             vp["dot_value"] = vp.get("value", vp.get("correct_position"))
     
     # For addition/subtraction, use context distractors; otherwise build from traps
+    seen = {str(correct_val)}
     if ctx.dna_concept in ("addition", "subtraction") and ctx.distractors:
         distractor_vals = [d for d in ctx.distractors if d != correct_val][:3]
+        for d in distractor_vals:
+            seen.add(str(d))
     else:
         traps = _build_traps(vp, rng)
         distractor_vals = []
-        seen = {str(correct_val)}
         for t in traps.values():
             pos = t.get("position")
             if pos is None:
@@ -609,18 +612,45 @@ def format_number_line(
                 distractor_vals.append(display)
             if len(distractor_vals) == 3:
                 break
+                
+    # Fill in if we don't have enough distractors
+    offset_mult = 1
+    while len(distractor_vals) < 3:
+        for sign in [1, -1]:
+            offset = offset_mult * sign
+            ct = vp.get("content_type", "whole_number")
+            
+            if ct == "fraction":
+                d = vp.get("denominator", 1)
+                pos = vp.get("correct_position", 0) + offset
+                if pos < 0: pos = 0
+                display = f"{pos}/{d}"
+            elif ct == "decimal":
+                divs = vp.get("divisions", 10)
+                pos = vp.get("correct_position", 0) + offset
+                if pos < 0: pos = 0
+                display = pos / divs
+            elif ct == "integer":
+                display = vp.get("correct_position", 0) - vp.get("divisions", 10) // 2 + offset
+            else:
+                display = vp.get("correct_position", 0) + offset * vp.get("interval", 1)
+                
+            sv = str(display)
+            if sv not in seen and display != correct_val:
+                seen.add(sv)
+                distractor_vals.append(display)
+                if len(distractor_vals) >= 3:
+                    break
+        offset_mult += 1
 
     # ── 2. Answer collection ──────────────────────────────────────────────────
     mcq_options = None
     if answer_collection == "mcq":
-        # Pad distractors if needed
-        if len(distractor_vals) < 3 and isinstance(correct_val, (int, float)):
-            fallbacks = [correct_val - 1, correct_val + 1, correct_val - 2, correct_val + 2]
-            for fb in fallbacks:
-                if fb not in distractor_vals and fb != correct_val and fb >= 0:
-                    distractor_vals.append(fb)
-                if len(distractor_vals) >= 3:
-                    break
+        # Check distractor count
+        if len(distractor_vals) < 3:
+            distractor_vals = augment_distractors(distractor_vals, correct_val, target=3, max_delta=5)
+            if len(distractor_vals) < 3:
+                raise ValueError(f"NumberLine MCQ requires at least 3 unique distractors, but got {len(distractor_vals)}")
         
         all_opts = [correct_val] + distractor_vals[:3]
         rng.shuffle(all_opts)

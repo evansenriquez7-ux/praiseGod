@@ -29,6 +29,7 @@ Traps:
 import random
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -110,9 +111,11 @@ def _build_traps(numer: int, denom: int) -> list:
 # Question text
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _stem(ask_type: str, fraction_str: str, interaction_mode: str) -> str:
+def _stem(ask_type: str, fraction_str: str, interaction_mode: str, operation: str = None) -> str:
     if interaction_mode == "set" or ask_type == "shade_this_fraction":
-        return f"Shade {fraction_str} of the shape."
+        return f"Shade the shape to show the result of {fraction_str}." if operation else f"Shade {fraction_str} of the shape."
+    if operation in ("add", "subtract", "add_subtract"):
+        return "What is the result of the fraction operation shown?"
     if ask_type == "compare":
         return "Which fraction is larger?"
     return "What fraction of the shape is shaded?"
@@ -177,8 +180,24 @@ def format_fraction_shade(
         "ask_type": ask_type,
     }
 
-    # ── 2. Correct answer ─────────────────────────────────────────────────────
     correct_answer = fraction_str
+
+    if ctx.values and ctx.values.get("operation") in ("add", "subtract", "add_subtract"):
+        op = ctx.values["operation"]
+        if op == "add_subtract":
+            op = "add"
+        vp["operation"] = op
+        vp["a_numerator"] = ctx.values.get("a_num", numer)
+        vp["a_denominator"] = ctx.values.get("a_den", denom)
+        vp["b_numerator"] = ctx.values.get("b_num", numer)
+        vp["b_denominator"] = ctx.values.get("b_den", denom)
+        if "result_num" in ctx.values and "result_den" in ctx.values:
+            numer = ctx.values["result_num"]
+            denom = ctx.values["result_den"]
+        correct_answer = ctx.values.get("result", fraction_str)
+        vp["fraction_str"] = f"{vp['a_numerator']}/{vp['a_denominator']} {'+' if op == 'add' else '-'} {vp['b_numerator']}/{vp['b_denominator']}"
+        vp["shaded_parts"] = numer
+        vp["total_parts"] = denom
 
     # ── 3. Traps ──────────────────────────────────────────────────────────────
     traps = _build_traps(numer, denom)
@@ -186,6 +205,10 @@ def format_fraction_shade(
     # ── 4. MCQ options ────────────────────────────────────────────────────────
     mcq_options = None
     if answer_collection == "mcq":
+        if len(traps) < 3:
+            traps = augment_distractors(traps, correct_answer, target=3, max_delta=5)
+            if len(traps) < 3:
+                raise ValueError(f"Formatter 'fraction_shade' requires at least 3 unique distractors, but got {len(traps)}")
         all_opts = [correct_answer] + traps[:3]
         rng.shuffle(all_opts)
         mcq_options = [
@@ -196,7 +219,7 @@ def format_fraction_shade(
     else:
         final_answer = correct_answer
 
-    question_text = _stem(ask_type, fraction_str, interaction_mode)
+    question_text = _stem(ask_type, vp.get("fraction_str", fraction_str), interaction_mode, vp.get("operation"))
 
     format_data: dict = {"visual_params": vp}
     if mcq_options:

@@ -34,6 +34,7 @@ from datetime import datetime
 from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -236,13 +237,10 @@ def format_calendar(
                 if v is not None and v not in seen and v > 0:
                     seen.add(v)
                     distractor_vals.append(v)
-            for off in [2, 3, -2]:
-                if len(distractor_vals) >= 3:
-                    break
-                c = dur + off
-                if c > 0 and c not in seen:
-                    seen.add(c)
-                    distractor_vals.append(c)
+            if len(distractor_vals) < 3:
+                distractor_vals = augment_distractors(distractor_vals, dur, target=3, max_delta=5)
+                if len(distractor_vals) < 3:
+                    raise ValueError(f"Formatter 'calendar' requires at least 3 unique distractors, but got {len(distractor_vals)}")
             all_opts = [dur] + distractor_vals[:3]
 
         rng.shuffle(all_opts)

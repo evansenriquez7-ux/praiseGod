@@ -32,6 +32,7 @@ Traps:
 import random
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -132,6 +133,10 @@ def _build_traps(params: dict, rng: random.Random) -> list:
         traps.append(ruler_end)
 
     rng.shuffle(traps)
+    if len(traps) < 3:
+        traps = augment_distractors(traps, length, target=3, max_delta=5)
+        if len(traps) < 3:
+            raise ValueError(f"Formatter 'ruler_measure' requires at least 3 unique distractors, but got {len(traps)}")
     return traps[:3]
 
 

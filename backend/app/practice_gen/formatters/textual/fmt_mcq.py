@@ -16,6 +16,7 @@ import random
 from typing import List
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 def _build_pure_question(ctx: QuestionContext) -> str:
@@ -114,18 +115,31 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
             candidates.append(d)
             seen.add(d_str)
 
-    # Fill up to 3 using arithmetic fallbacks when candidates are insufficient
-    if len(candidates) < 3 and isinstance(correct, (int, float)):
-        fallback_offsets = [-1, 1, 2, -2, 10, -10]
-        for offset in fallback_offsets:
-            if len(candidates) >= 3:
-                break
-            candidate = correct + offset
-            if ctx.grade <= 6 and candidate < 0:
-                candidate = 0
+    # Pad distractors if needed (arithmetic fallbacks)
+    offset_mult = 1
+    while len(candidates) < 3:
+        if isinstance(correct, (int, float)):
+            for sign in [1, -1]:
+                candidate = correct + (offset_mult * sign)
+                # Keep numeric fallbacks >= 0 if possible, but allow negatives if needed to reach 3
+                if candidate >= 0 and str(candidate) not in seen:
+                    candidates.append(candidate)
+                    seen.add(str(candidate))
+                    if len(candidates) >= 3:
+                        break
+            offset_mult += 1
+        else:
+            # If string, we can't easily guess. Just add a generic string
+            candidate = f"{correct} (alternate {offset_mult})"
             if candidate not in seen:
                 candidates.append(candidate)
                 seen.add(candidate)
+            offset_mult += 1
+
+    if len(candidates) < 3:
+        candidates = augment_distractors(candidates, correct, target=3, max_delta=5)
+        if len(candidates) < 3:
+            raise ValueError(f"MCQ formatter requires at least 3 unique distractors, but got {len(candidates)}: {candidates}")
 
     distractors = candidates[:3]
 
@@ -133,18 +147,6 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
     pool = [{"value": correct, "is_correct": True}] + [
         {"value": d, "is_correct": False} for d in distractors
     ]
-
-    # Pad to exactly 4 if still short (edge case: non-numeric correct with few distractors)
-    pad_index = 1
-    while len(pool) < 4:
-        if isinstance(correct, (int, float)):
-            pad_val = correct + pad_index * 3
-        else:
-            pad_val = f"{correct} (alt {pad_index})"
-        if pad_val not in seen:
-            pool.append({"value": pad_val, "is_correct": False})
-            seen.add(pad_val)
-        pad_index += 1
 
     # Shuffle and assign keys
     rng.shuffle(pool)

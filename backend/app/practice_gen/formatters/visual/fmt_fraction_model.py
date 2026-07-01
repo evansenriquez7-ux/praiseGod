@@ -33,6 +33,7 @@ Traps: swap numerator/denominator, count total parts, count unshaded parts.
 import random
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -108,7 +109,21 @@ def _build_traps(numer: int, denom: int) -> list:
         ob1 = f"{numer - 1}/{denom}"
         if ob1 not in seen:
             traps.append(ob1)
+            seen.add(ob1)
 
+    offset_mult = 1
+    while len(traps) < 3:
+        for sign in [1, -1]:
+            cand_num = numer + (offset_mult * sign)
+            if cand_num > 0:
+                cand = f"{cand_num}/{denom}"
+                if cand not in seen:
+                    traps.append(cand)
+                    seen.add(cand)
+                    if len(traps) >= 3:
+                        break
+        offset_mult += 1
+        
     return traps[:3]
 
 
@@ -116,9 +131,11 @@ def _build_traps(numer: int, denom: int) -> list:
 # Question text
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _stem(model_type: str, fraction_str: str, interaction_mode: str) -> str:
+def _stem(model_type: str, fraction_str: str, interaction_mode: str, operation: str = None) -> str:
     if interaction_mode == "set":
         return f"Shade the model to show {fraction_str}."
+    if operation in ("add", "subtract", "add_subtract"):
+        return "What is the result of the fraction operation shown?"
     model_names = {"area": "area model", "set": "set model", "number_line": "number line"}
     name = model_names.get(model_type, "model")
     return f"What fraction does the {name} show?"
@@ -181,9 +198,27 @@ def format_fraction_model(
         "shaded_parts": numer,
         "fraction_str": fraction_str,
     }
-
-    # ── 2. Correct answer ─────────────────────────────────────────────────────
+    
     correct_answer = fraction_str
+
+    if ctx.values and ctx.values.get("operation") in ("add", "subtract", "add_subtract"):
+        op = ctx.values["operation"]
+        if op == "add_subtract":
+            op = "add" # fallback if not explicitly chosen
+        vp["operation"] = op
+        vp["a_numerator"] = ctx.values.get("a_num", numer)
+        vp["a_denominator"] = ctx.values.get("a_den", denom)
+        vp["b_numerator"] = ctx.values.get("b_num", numer)
+        vp["b_denominator"] = ctx.values.get("b_den", denom)
+        if "result_num" in ctx.values and "result_den" in ctx.values:
+            numer = ctx.values["result_num"]
+            denom = ctx.values["result_den"]
+        correct_answer = ctx.values.get("result", fraction_str)
+        vp["fraction_str"] = f"{vp['a_numerator']}/{vp['a_denominator']} {'+' if op == 'add' else '-'} {vp['b_numerator']}/{vp['b_denominator']}"
+        vp["numerator"] = numer
+        vp["denominator"] = denom
+        vp["shaded_parts"] = numer
+        vp["total_parts"] = denom
 
     # ── 3. Traps ──────────────────────────────────────────────────────────────
     traps = _build_traps(numer, denom)
@@ -191,6 +226,10 @@ def format_fraction_model(
     # ── 4. MCQ options ────────────────────────────────────────────────────────
     mcq_options = None
     if answer_collection == "mcq":
+        if len(traps) < 3:
+            traps = augment_distractors(traps, correct_answer, target=3, max_delta=5)
+            if len(traps) < 3:
+                raise ValueError(f"Formatter 'fraction_model' requires at least 3 unique distractors, but got {len(traps)}")
         all_opts = [correct_answer] + traps[:3]
         rng.shuffle(all_opts)
         mcq_options = [
@@ -201,7 +240,7 @@ def format_fraction_model(
     else:
         final_answer = correct_answer
 
-    question_text = _stem(model_type, fraction_str, interaction_mode)
+    question_text = _stem(model_type, vp.get("fraction_str", fraction_str), interaction_mode, vp.get("operation"))
 
     format_data: dict = {"visual_params": vp}
     if mcq_options:

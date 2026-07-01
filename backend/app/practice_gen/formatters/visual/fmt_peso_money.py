@@ -26,6 +26,7 @@ import random
 from typing import List, Optional, Tuple
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -123,10 +124,7 @@ def _build_visual_params(
 
     coins_list, bills_list = _greedy(target, coin_faces, bill_faces)
     if coins_list is None:
-        # Fallback: use a single bill or coin
-        target = rng.choice(coin_faces + bill_faces)
-        coins_list = [target] if target in coin_faces else []
-        bills_list = [target] if target in bill_faces else []
+        raise ValueError(f"Could not build target ₱{target} using denominations.")
 
     # Aggregate into {denomination: count}
     from collections import Counter
@@ -284,18 +282,10 @@ def format_peso_money(
                 distractor_amounts.append(v)
             if len(distractor_amounts) == 3:
                 break
-        # Pad if needed
-        offsets = [5, 10, 20, 50, 100, 2, 1]
-        for off in offsets:
-            if len(distractor_amounts) >= 3:
-                break
-            for sign in (-1, 1):
-                candidate = total + sign * off
-                if candidate > 0 and candidate not in seen:
-                    seen.add(candidate)
-                    distractor_amounts.append(candidate)
-                if len(distractor_amounts) >= 3:
-                    break
+        if len(distractor_amounts) < 3:
+            distractor_amounts = augment_distractors(distractor_amounts, total, target=3, max_delta=5)
+            if len(distractor_amounts) < 3:
+                raise ValueError(f"Formatter 'peso_money' requires at least 3 unique distractors, but got {len(distractor_amounts)}")
 
         all_opts = [total] + distractor_amounts[:3]
         rng.shuffle(all_opts)

@@ -32,6 +32,7 @@ Grade constraints:
 import random
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -123,6 +124,19 @@ def _build_traps(blocks: dict, rng: random.Random) -> list:
         traps.add(block_count)
 
     traps_list = [t for t in traps if t != total]
+    
+    # Fill in if we don't have enough traps
+    # Fill in if we don't have enough traps
+    offset_mult = 1
+    while len(traps_list) < 3:
+        for sign in [1, -1]:
+            candidate = total + offset_mult * sign
+            if candidate > 0 and candidate != total and candidate not in traps_list:
+                traps_list.append(candidate)
+                if len(traps_list) >= 3:
+                    break
+        offset_mult += 1
+            
     rng.shuffle(traps_list)
     return traps_list[:3]
 
@@ -179,11 +193,11 @@ def format_place_value_blocks(
                 try:
                     target_num = int(ctx.values[key])
                     break
-                except (ValueError, TypeError):
-                    pass
+                except (ValueError, TypeError) as e:
+                    raise ValueError(f"Invalid numeric value for '{key}': {ctx.values[key]}") from e
         if target_num is not None:
             blocks = _decompose(target_num, ctx.grade)
-            question_type = ctx.values.get("question_type", "read_blocks")
+            question_type = ctx.values.get("question_type", ctx.values.get("task_type", "read_blocks"))
         else:
             limit = None
             if ctx.difficulty_profile:
@@ -193,8 +207,8 @@ def format_place_value_blocks(
                         try:
                             limit = int(float(val))
                             break
-                        except (ValueError, TypeError):
-                            pass
+                        except (ValueError, TypeError) as e:
+                            raise ValueError(f"Invalid limit value for '{limit_key}': {val}") from e
             lo = _grade_min(ctx.grade)
             hi = _grade_max(ctx.grade)
             if limit is not None:
@@ -215,8 +229,8 @@ def format_place_value_blocks(
                     try:
                         limit = int(float(val))
                         break
-                    except (ValueError, TypeError):
-                        pass
+                    except (ValueError, TypeError) as e:
+                        raise ValueError(f"Invalid limit value for '{limit_key}': {val}") from e
         lo = _grade_min(ctx.grade)
         hi = _grade_max(ctx.grade)
         if limit is not None:
@@ -253,12 +267,9 @@ def format_place_value_blocks(
     mcq_options = None
     if answer_collection == "mcq":
         if len(traps) < 3:
-            fallbacks = [correct_answer - 1, correct_answer + 1, correct_answer - 2, correct_answer + 2, correct_answer + 10]
-            for fb in fallbacks:
-                if fb not in traps and fb != correct_answer and fb >= 0:
-                    traps.append(fb)
-                if len(traps) >= 3:
-                    break
+            traps = augment_distractors(traps, correct_answer, target=3, max_delta=5)
+            if len(traps) < 3:
+                raise ValueError(f"PlaceValueBlocks MCQ requires at least 3 unique traps, but got {len(traps)}")
         all_opts = [correct_answer] + traps[:3]
         rng.shuffle(all_opts)
         mcq_options = [

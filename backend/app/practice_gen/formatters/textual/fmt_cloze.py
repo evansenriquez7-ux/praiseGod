@@ -13,6 +13,7 @@ For word problems: Uses spine-generated text with blank inserted
 import random
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 def _build_equation_sentence(ctx: QuestionContext) -> str:
@@ -66,8 +67,9 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             return f"___ ÷ {divisor} = {quotient}"
     
     else:
-        # Fallback: use question_text_with_blank or construct from question_text
-        return ctx.question_text_with_blank or f"{ctx.question_text} = ___"
+        if ctx.question_text_with_blank:
+            return ctx.question_text_with_blank
+        raise ValueError(f"Formatter 'cloze' cannot build pure equation for concept '{concept}'.")
 
 
 def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
@@ -101,8 +103,7 @@ def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
         elif ctx.question_text_with_blank:
             sentence = ctx.question_text_with_blank
         else:
-            # Fallback: append ___ to question
-            sentence = f"{ctx.question_text} ___"
+            raise ValueError("Formatter 'cloze' requires 'question_with_blank' or 'question_text_with_blank' for word problems.")
     else:
         # Pure equation: "5 + 3 = ___"
         sentence = _build_equation_sentence(ctx)
@@ -125,14 +126,29 @@ def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
             candidates.append(d)
             seen.add(d)
 
-    if len(candidates) < 3 and isinstance(correct, (int, float)):
-        for offset in [-1, 1, 2, -2, 10, -10]:
-            if len(candidates) >= 3:
-                break
-            candidate = correct + offset
+    # Pad distractors if needed
+    offset_mult = 1
+    while len(candidates) < 3:
+        if isinstance(correct, (int, float)):
+            for sign in [1, -1]:
+                candidate = correct + (offset_mult * sign)
+                if candidate >= 0 and candidate not in seen:
+                    candidates.append(candidate)
+                    seen.add(candidate)
+                    if len(candidates) >= 3:
+                        break
+            offset_mult += 1
+        else:
+            candidate = f"{correct}_{offset_mult}"
             if candidate not in seen:
                 candidates.append(candidate)
                 seen.add(candidate)
+            offset_mult += 1
+
+    if len(candidates) < 3:
+        candidates = augment_distractors(candidates, correct, target=3, max_delta=5)
+        if len(candidates) < 3:
+            raise ValueError(f"Formatter 'cloze' requires at least 3 unique distractors, but got {len(candidates)}. Correct answer: {correct}")
 
     mcq_options = None
     if len(candidates) > 0:
@@ -140,16 +156,6 @@ def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
         pool = [{"value": correct, "is_correct": True}] + [
             {"value": d, "is_correct": False} for d in distractors
         ]
-        pad_index = 1
-        while len(pool) < 4:
-            if isinstance(correct, (int, float)):
-                pad_val = correct + pad_index * 3
-            else:
-                pad_val = f"{correct} (alt {pad_index})"
-            if pad_val not in seen:
-                pool.append({"value": pad_val, "is_correct": False})
-                seen.add(pad_val)
-            pad_index += 1
         
         rng.shuffle(pool)
         keys = ["A", "B", "C", "D"]
@@ -161,8 +167,8 @@ def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
         format_data["mcq_options"] = mcq_options
 
     # Set format properties
-    format_type = "mcq" if mcq_options else "cloze"
-    answer_collection = "mcq" if mcq_options else "fill_in_blank"
+    format_type = "cloze"
+    answer_collection = "fill_in_blank"
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_cloze",

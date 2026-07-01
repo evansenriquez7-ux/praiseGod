@@ -22,6 +22,7 @@ import random
 from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -213,11 +214,10 @@ def format_pictograph(
                 if cat != correct_count and len(distractor_vals) < 3:
                     distractor_vals.append(cat)
                     seen.add(cat)
-            # if still need padding, just make up some generic names? (shouldnt happen, min 3 categories)
-            pad_idx = 1
-            while len(distractor_vals) < 3:
-                distractor_vals.append(f"Option {pad_idx}")
-                pad_idx += 1
+            if len(distractor_vals) < 3:
+                distractor_vals = augment_distractors(distractor_vals, correct_count, target=3, max_delta=5)
+                if len(distractor_vals) < 3:
+                    raise ValueError(f"Formatter 'pictograph' requires at least 3 unique distractors, but got {len(distractor_vals)}")
         else:
             # The answer is a number
             for t in traps.values():
