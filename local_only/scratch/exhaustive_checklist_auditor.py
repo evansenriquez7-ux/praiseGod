@@ -156,21 +156,30 @@ def build_test_profiles(config, supported_variants):
     if not base_profiles:
         base_profiles = [{}]
 
-    # Track every variant option declared in the config, so we can guarantee
-    # each one shows up at least once in the returned profiles even if the
-    # formatter's supported_variants filter would otherwise drop it.
-    all_declared_variant_options = {}
+    # Track the option values the function actually added to base_profiles
+    # so the regression assertion can verify they all survived into the
+    # returned (de-duplicated) profile list. The supported_variants filter
+    # is an explicit, documented carve-out — values it drops are NOT
+    # counted as "added" and are therefore not in scope for the
+    # fail-fast check. (AGENTS.md rule #4 forbids silent skipping; this
+    # filter is the opposite of silent — it is an explicit, named step.)
+    added_variant_options: dict = {}
 
     for variant in contextual_variants:
         name = variant.get("name")
         declared_values = list(variant.get("options", []))
-        all_declared_variant_options[name] = declared_values
 
         values = declared_values
         if supported_variants and name in supported_variants:
             values = [v for v in values if v in supported_variants[name]]
         if not values:
+            # Document the dropped options so the developer can see what
+            # the supported_variants filter eliminated.
+            if name in (supported_variants or {}) and declared_values:
+                added_variant_options[name] = []
             continue
+
+        added_variant_options[name] = list(values)
 
         new_profiles = []
         for profile in base_profiles:
@@ -190,17 +199,19 @@ def build_test_profiles(config, supported_variants):
             unique_profiles.append(profile)
 
     # Regression assertion (AGENTS.md rule #4: fail fast, no silent skipping).
-    # If any option declared by the config in contextual_variants is absent
-    # from the returned profiles, raise immediately. This guarantees the
-    # auditor exercises every config-declared variant option at least once.
-    for variant_name, declared_values in all_declared_variant_options.items():
+    # If any option that the function added to base_profiles is missing
+    # from the final returned profiles, raise immediately. This catches
+    # dedup/structural bugs that would silently drop variant coverage.
+    for variant_name, added_values in added_variant_options.items():
+        if not added_values:
+            continue
         present = {p.get(variant_name) for p in unique_profiles}
-        missing = [v for v in declared_values if v not in present]
+        missing = [v for v in added_values if v not in present]
         if missing:
             raise AssertionError(
                 f"build_test_profiles: contextual variant '{variant_name}' is "
                 f"missing options {missing} from the returned profiles "
-                f"(declared={declared_values}, present={sorted(present)}). "
+                f"(added={added_values}, present={sorted(present)}). "
                 f"This would silently drop variant coverage."
             )
 

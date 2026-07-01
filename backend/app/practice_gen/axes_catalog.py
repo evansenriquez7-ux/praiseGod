@@ -44,6 +44,14 @@ CONCEPT_AXES_CATALOG: Dict[str, List[dict]] = {
                                   'default_max': 10000,
                                   'divisions': 5,
                                   'default': 0.5},
+                              {   'name': 'value_max',
+                                  'label': 'Maximum Value',
+                                  'dim_type': 'continuous',
+                                  'scale': 'logarithmic',
+                                  'default_min': 5,
+                                  'default_max': 50,
+                                  'divisions': 5,
+                                  'default': 0.5},
                               {   'name': 'number_difficulty',
                                   'label': 'Number Difficulty',
                                   'dim_type': 'continuous',
@@ -56,6 +64,7 @@ CONCEPT_AXES_CATALOG: Dict[str, List[dict]] = {
             'name': 'ordinal_range',
             'label': 'Ordinal Range',
             'dim_type': 'continuous',
+            'scale': 'logarithmic',
             'default_min': 1,
             'default_max': 100,
             'divisions': 5,
@@ -306,6 +315,7 @@ CONCEPT_AXES_CATALOG: Dict[str, List[dict]] = {
                        {   'name': 'value_max',
                            'label': 'Maximum Value per Category',
                            'dim_type': 'continuous',
+                           'scale': 'logarithmic',
                            'default_min': 5,
                            'default_max': 50,
                            'divisions': 5,
@@ -326,7 +336,15 @@ def compute_difficulty_scalar(concept: str, axis_values: dict) -> float:
         selected_index / (num_options - 1)
 
     Return the average across all axes. Falls back to 0.5 if nothing matches.
+
+    For continuous axes declared with ``scale: 'logarithmic'`` and
+    ``default_max / default_min >= 10``, the 0.5 scalar maps to the
+    geometric mean of the range (not the arithmetic mean). This keeps
+    on-grade vocabulary at the mid-difficulty for K-12 ranges that span
+    orders of magnitude (e.g. ordinal 1–100, value_max 5–50).
     """
+    import math
+
     axes = CONCEPT_AXES_CATALOG.get(concept, [])
     if not axes:
         return 0.5
@@ -337,7 +355,7 @@ def compute_difficulty_scalar(concept: str, axis_values: dict) -> float:
         if name not in axis_values:
             continue
         selected = axis_values[name]
-        
+
         if "options" not in axis:
             min_val = axis.get("default_min", 0.0)
             max_val = axis.get("default_max", min_val + 1.0)
@@ -345,10 +363,31 @@ def compute_difficulty_scalar(concept: str, axis_values: dict) -> float:
                 scalars.append(0.5)
             else:
                 try:
-                    s = (float(selected) - min_val) / (max_val - min_val)
-                    scalars.append(max(0.0, min(1.0, s)))
+                    s_val = float(selected)
                 except (ValueError, TypeError):
                     scalars.append(0.5)
+                    continue
+                # Honor the declarative `scale` field. When set to
+                # 'logarithmic' on a range whose endpoints span ≥ 10x,
+                # invert via geometric-mean mapping. (AGENTS.md rule #4:
+                # no silent fallback — if the scale field is missing on
+                # a wide range, this still maps linearly rather than
+                # silently switching to log.)
+                scale = axis.get("scale")
+                if (
+                    scale == "logarithmic"
+                    and min_val > 0
+                    and max_val / min_val >= 10
+                    and s_val > 0
+                ):
+                    log_min = math.log10(min_val)
+                    log_max = math.log10(max_val)
+                    if log_max > log_min:
+                        s = (math.log10(s_val) - log_min) / (log_max - log_min)
+                        scalars.append(max(0.0, min(1.0, s)))
+                        continue
+                s = (s_val - min_val) / (max_val - min_val)
+                scalars.append(max(0.0, min(1.0, s)))
             continue
 
         option_values = [o["value"] for o in axis["options"]]
