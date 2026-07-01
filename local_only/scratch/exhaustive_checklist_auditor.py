@@ -392,10 +392,31 @@ def _profile_violates_numeric_limit(profile, config, competency_bounds, formatte
 
 def formatter_supports_profile(dna_name, formatter, profile):
     """Mirror the orchestrator's per-DNA×formatter compatibility check
-    (backend/app/services/orchestrator.py:130-141): the formatter is only
-    accepted for the DNA if every requested variant value is in
-    FORMATTER_VARIANT_SUPPORT[dna_name][formatter]. Returns True if the
-    combination is acceptable."""
+    (backend/app/services/orchestrator.py:120-132): the formatter is only
+    accepted for the DNA if `formatter in get_formatters_for_dna(dna_name)`.
+    If the DNA is in FORMATTER_VARIANT_SUPPORT and the formatter has an
+    entry, also check that every requested variant value is in the
+    allowed set.
+
+    Previously this function returned True when FORMATTER_VARIANT_SUPPORT
+    had no entry for the (DNA, formatter) pair, which allowed the audit
+    to request combinations the orchestrator would have rejected. This
+    was the root cause of the v-final "Fractions DNA concept overridden"
+    violations: the audit requested (fractions, ordering), the formatter
+    'ordering' is not in fractions' compatible_formatters list, so the
+    orchestrator would skip fractions and pick 'comparing_ordering' — but
+    the audit treated this as a fractions-DNA override because it
+    expected fractions to be the chosen DNA.
+    """
+    # Gate 1: per-DNA compatible_formatters list (matches orchestrator's
+    # `if formatter and formatter not in available_for_d: continue` at
+    # services/orchestrator.py:125).
+    dna_formatters = set(get_formatters_for_dna(dna_name))
+    if dna_formatters and formatter not in dna_formatters:
+        return False
+
+    # Gate 2: FORMATTER_VARIANT_SUPPORT caps (matches the orchestrator's
+    # variant-compatibility check at services/orchestrator.py:140-148).
     caps = FORMATTER_VARIANT_SUPPORT.get(dna_name, {}).get(formatter)
     if caps is None:
         return True

@@ -176,6 +176,22 @@ class PracticeOrchestrator:
             formatter = _weighted_choice(rng, available)
 
         problem = apply_formatter(ctx, formatter, rng)
+        # Annotate the problem with the DNA concept that was actually chosen.
+        # Without this, the auditor cannot do per-DNA content checks (it would
+        # fall back to the first DNA in the node's list, which is not
+        # necessarily the one the orchestrator picked). This was the root
+        # cause of the v-final "Fractions DNA concept overridden" violations:
+        # the audit thought 'fractions' was picked, but the orchestrator
+        # actually picked 'comparing_ordering' (because 'fractions' doesn't
+        # support the 'ordering' formatter). See Phase 4 in
+        # generator_testing_strategy.md.
+        try:
+            problem.dna_name = dna_name
+        except Exception:
+            # Some FormattedProblem subclasses may not allow attribute
+            # assignment; fall back silently. The audit's check still works
+            # via the orchestrator's run-time filter, just less precisely.
+            pass
         return apply_experience(problem, experience, experience_config)
 
     @staticmethod

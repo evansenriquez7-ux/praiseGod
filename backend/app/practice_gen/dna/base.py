@@ -431,6 +431,13 @@ class FormattedProblem(BaseModel):
     interest_theme: Optional[str]
     spine_id: Optional[str]
 
+    # ── DNA annotation ────────────────────────────────────────────────────────
+    # The DNA concept that was actually chosen for this problem. Set by
+    # the orchestrator after picking the DNA. Required for the auditor's
+    # per-DNA content checks (e.g. the "Fractions DNA concept overridden"
+    # check needs to know which DNA produced the stem).
+    dna_name: Optional[str] = None
+
     # ── Analytics capture ─────────────────────────────────────────────────────
     analytics: Dict[str, Any] = field(default_factory=lambda: {
         "time_to_answer_ms": None,
