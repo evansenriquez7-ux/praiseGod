@@ -227,11 +227,29 @@ def generate_params(
 
     if not candidate_pairs:
         # Fallback: simple pair (still exclude trivial a - 0 = a and
-        # a - b == b cases)
-        a = rng.randint(2, max_minuend)
-        b = rng.randint(1, a)
-        while b == 0 or a == 2 * b or a == b:
+        # a - b == b cases). If max_minuend is too small to have any valid
+        # (a, b) pair (a >= 3 AND b in [1, a-1] AND a != 2b), re-roll
+        # both a and b. The previous version only re-rolled b, which
+        # caused an infinite loop when max_minuend <= 2.
+        attempts = 0
+        while attempts < 1000:
+            attempts += 1
+            a = rng.randint(2, max_minuend)
             b = rng.randint(1, a)
+            if b == 0 or a == 2 * b or a == b:
+                continue
+            break
+        else:
+            # No valid pair exists for this max_minuend; surface the
+            # problem rather than spinning forever. The orchestrator
+            # will catch this as a pipeline crash and the audit will
+            # report it as a known-incompatibility for this profile.
+            raise RuntimeError(
+                f"generate_params (subtraction): no valid (a, b) pair "
+                f"exists for max_minuend={max_minuend} with the given "
+                f"regrouping/structure constraints. This profile is too "
+                f"small to generate a non-degenerate problem."
+            )
         candidate_pairs = [(a, b)]
 
     # Sample a pair from the candidate pool using the continuous difficulty window

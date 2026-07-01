@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-07-01)
 
 ## Corpus Check
-- 241 files · ~268,496 words
+- 241 files · ~268,695 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d3ddec1b`
+- Built from commit: `9d885ca0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -241,7 +241,7 @@ Nodes (37): _gen_g3_dp_q3_bar_graphs(), _gen_g3_dp_q3_probability(), _gen_g3_mg_
 
 ### Community 6 - "Community 6"
 Cohesion: 0.07
-Nodes (36): DNA, Specification of a mathematical concept for practice generation.      dna_type:, Return param_bounds for grade, falling back to nearest defined grade., Return the index of a level within an axis (0 = easiest)., Return a 0.0–1.0 scalar for a given axis level., build_scaffold_sequence(), Practice Generation — Scaffolded Experience Wrapper  Ascending-difficulty sequen, Build an ordered list of difficulty profiles for a scaffold sequence.      Each (+28 more)
+Nodes (42): DNA, Specification of a mathematical concept for practice generation.      dna_type:, Return param_bounds for grade, falling back to nearest defined grade., Return the index of a level within an axis (0 = easiest)., Return a 0.0–1.0 scalar for a given axis level., build_scaffold_sequence(), Practice Generation — Scaffolded Experience Wrapper  Ascending-difficulty sequen, Build an ordered list of difficulty profiles for a scaffold sequence.      Each (+34 more)
 
 ### Community 7 - "Community 7"
 Cohesion: 0.31
@@ -436,8 +436,8 @@ Cohesion: 0.10
 Nodes (19): 10. PlaceValueBlocksInteractive & RulerMeasureInteractive, 1. ClockSetInteractive, 1. State Overwrites (Immediate `onAnswer` on Mount), 2. FractionModelInteractive & FractionShadeInteractive, 2. Visual & Logic Answer Leaks, 3. Missing Interactivity in `"set"` Mode, 3. NumberLineInteractive, 4. Data Type Mismatches (+11 more)
 
 ### Community 55 - "Community 55"
-Cohesion: 0.07
-Nodes (37): DimensionSpec, ErrorPattern, extract_continuous_scalar(), extract_discrete_level(), interpolate(), linear_interpolate(), Practice Generation — DNA Base Definitions  All dataclasses, enums, and shared u, Compute the dimension value at difficulty scalar t.          If override_min/ove (+29 more)
+Cohesion: 0.08
+Nodes (33): DimensionSpec, ErrorPattern, extract_continuous_scalar(), extract_discrete_level(), interpolate(), linear_interpolate(), Practice Generation — DNA Base Definitions  All dataclasses, enums, and shared u, Compute the dimension value at difficulty scalar t.          If override_min/ove (+25 more)
 
 ### Community 56 - "Community 56"
 Cohesion: 0.11
@@ -445,7 +445,7 @@ Nodes (17): 1. Query Formats (`queryFormat` argument), 1. Vector Similarity Sear
 
 ### Community 57 - "Community 57"
 Cohesion: 0.11
-Nodes (14): A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params(), DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile., generate_hints(), generate_params() (+6 more)
+Nodes (14): A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params(), DNA: Calendar (Measurement & Geometry)  Covers MATATAG grades 1–2 calendar compe, Returns visual_params for the Calendar formatter and an answer value.       {"mo, generate_hints(), generate_params() (+6 more)
 
 ### Community 59 - "Community 59"
 Cohesion: 0.12
@@ -473,7 +473,7 @@ Nodes (9): _build_pure_equation(), _distractor_label(), _distractor_value(), for
 
 ### Community 65 - "Community 65"
 Cohesion: 0.06
-Nodes (35): Any, generate_hints(), generate_hints(), _detect_axes_served(), Back-infer which difficulty axis levels were actually produced.      Checks the, _make_predicates(), Build a list of constraint predicate callables for a difficulty_profile.      Ar, Draw one uniform sample from param_bounds.      Args:         bounds: Mapping of (+27 more)
+Nodes (33): Any, generate_hints(), generate_hints(), generate_hints(), generate_params(), DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile., _detect_axes_served() (+25 more)
 
 ### Community 66 - "Community 66"
 Cohesion: 0.15
