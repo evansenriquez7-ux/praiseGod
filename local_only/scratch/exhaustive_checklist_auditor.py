@@ -5,7 +5,7 @@ import re
 import itertools
 import traceback
 from collections import defaultdict
-from typing import Tuple, List, Dict, Any
+from typing import Tuple, List, Dict, Any, Optional
 
 # Add project root to python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
@@ -382,357 +382,362 @@ def _strict_scalar_endpoint_violates(actual_val, expected):
     return abs(actual_val - expected) > 1
 
 
-def run_audit() -> Tuple[Dict[str, List[str]], List[Dict[str, Any]]]:
-    """Run the full checklist audit and return (failures, repro_crashes)
-    without writing to disk or exiting. Used by the test suite as the CI guard.
+def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]], int]:
+    """Run the checklist audit for a single node. Returns
+    (failures_for_node, repro_for_node, total_checked_for_node).
 
-    Per AGENTS.md rule #4 (no silent fallbacks): this function does not
-    swallow exceptions and does not skip nodes. Every node either contributes
-    its results to the returned dicts or raises AuditHarnessError.
+    Module-level so ProcessPoolExecutor can pickle it across processes.
+    Per AGENTS.md rule #4 (no silent fallbacks): does not swallow
+    exceptions, does not skip nodes. AuditHarnessError propagates.
+
+    This is the per-node body that previously lived inline in
+    run_audit(); extracted so it can be called from a worker process.
     """
-    print("Praise God! Starting Unified Checklist Auditor for all matatag nodes...")
-    node_ids = [n for n in get_all_node_ids() if "mat_g" in n]
+    print(f"[auditor] {node_id} ...", flush=True)
+    failures: Dict[str, List[str]] = {}
+    repro_crashes: List[Dict[str, Any]] = []
     total_checked = 0
-    failures = defaultdict(list)
-    repro_crashes = []
 
-    for node_id in node_ids:
+    try:
+        config = get_lab_config(node_id)
+    except AuditHarnessError:
+        raise
+    except Exception as e:
+        failures[node_id] = [f"Lab Config Fetch Crash: {str(e)}"]
+        return failures, repro_crashes, total_checked
 
-        print(f"[auditor] {node_id} ...", flush=True)
-        try:
-            config = get_lab_config(node_id)
-        except AuditHarnessError:
-            # Harness problem, not a per-node content problem. Re-raise so
-            # the run aborts loudly instead of poisoning 100% of node results.
-            raise
-        except Exception as e:
-            failures[node_id].append(f"Lab Config Fetch Crash: {str(e)}")
-            continue
+    grade = config.get("grade", 1)
+    dnas = get_node_dnas(node_id)
+    if not dnas:
+        failures[node_id] = ["No DNA mappings found."]
+        return failures, repro_crashes, total_checked
 
-        grade = config.get("grade", 1)
-        dnas = get_node_dnas(node_id)
-        if not dnas:
-            failures[node_id].append("No DNA mappings found.")
-            continue
+    primary_concept = dnas[0]
+    supported_formatters = sorted(
+        set(itertools.chain.from_iterable(get_formatters_for_dna(d) for d in dnas))
+    )
+    if not supported_formatters:
+        supported_formatters = ["mcq"]
 
-        primary_concept = dnas[0]
-        supported_formatters = sorted(
-            set(itertools.chain.from_iterable(get_formatters_for_dna(d) for d in dnas))
+    config_formatters = [fmt["name"] for fmt in config.get("formatters", [])]
+    if not config_formatters:
+        config_formatters = supported_formatters
+
+    if set(config_formatters) != set(supported_formatters):
+        failures.setdefault(node_id, []).append(
+            f"Formatter mismatch: config has {config_formatters} but supported formatters are {supported_formatters}"
         )
-        if not supported_formatters:
-            supported_formatters = ["mcq"]
 
-        config_formatters = [fmt["name"] for fmt in config.get("formatters", [])]
-        if not config_formatters:
-            config_formatters = supported_formatters
+    validate_dimension_config(node_id, config, failures)
+    validate_variant_config(node_id, config, failures)
 
-        if set(config_formatters) != set(supported_formatters):
-            failures[node_id].append(
-                f"Formatter mismatch: config has {config_formatters} but supported formatters are {supported_formatters}"
-            )
+    # Per-node hoists: cache values that the inner loop would otherwise
+    # re-fetch per profile.
+    dim_names = {d["name"] for d in config.get("difficulty_dimensions", [])}
+    dna_formatters = {d: set(get_formatters_for_dna(d)) for d in dnas}
+    competency_bounds = get_node_competency_bounds(node_id)
 
-        validate_dimension_config(node_id, config, failures)
-        validate_variant_config(node_id, config, failures)
+    variant_coverages = defaultdict(lambda: defaultdict(int))
+    scalar_coverages = defaultdict(int)
+    context_state_by_context = {}
 
-        variant_coverages = defaultdict(lambda: defaultdict(int))
-        scalar_coverages = defaultdict(int)
-        context_state_by_context = {}
-
-        # Per the orchestrator (orchestrator.py:120-141), a formatter is only
-        # accepted for a node if it is supported by at least one of the node's
-        # DNAs AND the requested profile satisfies that DNA's variant caps.
-        # We mirror that here so the auditor never requests a (formatter,
-        # profile) the orchestrator will refuse.
-
-        for formatter in supported_formatters:
-            # Union supported_variants across all DNAs that support this formatter
-            sv_union = {}
-            for d in dnas:
-                if formatter in get_formatters_for_dna(d):
-                    sv_for_d = get_supported_variants(d, formatter) or {}
-                    for k, v in sv_for_d.items():
-                        sv_union.setdefault(k, set()).update(v)
-            # Normalize to lists (sorted for determinism)
-            supported_variants = {k: sorted(v) for k, v in sv_union.items()}
-            profiles = build_test_profiles(config, supported_variants)
-            # Filter to profiles supported by SOME DNA of this node
+    for formatter in supported_formatters:
+        sv_union: Dict[str, set] = {}
+        for d in dnas:
+            if formatter in dna_formatters[d]:
+                sv_for_d = get_supported_variants(d, formatter) or {}
+                for k, v in sv_for_d.items():
+                    sv_union.setdefault(k, set()).update(v)
+        supported_variants = {k: sorted(v) for k, v in sv_union.items()}
+        profiles = build_test_profiles(config, supported_variants)
+        profiles = [
+            p for p in profiles
+            if any(formatter_supports_profile(d, formatter, p) for d in dnas)
+        ]
+        limits = FORMATTER_NUMERIC_LIMITS.get(formatter, {})
+        fmt_max = limits.get("max_val")
+        if fmt_max is not None:
             profiles = [
                 p for p in profiles
-                if any(formatter_supports_profile(d, formatter, p) for d in dnas)
+                if not _profile_violates_numeric_limit(p, config, competency_bounds, fmt_max)
             ]
-            # Filter to profiles that don't violate the formatter's numeric
-            # limits. The orchestrator raises IncompatibleConfigurationError
-            # when a per-axis value (e.g. range) maps above the formatter's
-            # max_val. The audit should not request such profiles.
-            limits = FORMATTER_NUMERIC_LIMITS.get(formatter, {})
-            fmt_max = limits.get("max_val")
-            if fmt_max is not None:
-                cb = get_node_competency_bounds(node_id)
-                profiles = [
-                    p for p in profiles
-                    if not _profile_violates_numeric_limit(p, config, cb, fmt_max)
-                ]
 
-            for profile in profiles:
-                raw_profile = profile.copy()
+        for profile in profiles:
+            raw_profile = profile.copy()
 
-                for key, value in raw_profile.items():
-                    if key in supported_variants:
-                        variant_coverages[key][value] += 1
-                    if any(dim["name"] == key for dim in config.get("difficulty_dimensions", [])):
-                        scalar_coverages[key] += 1
+            for key, value in raw_profile.items():
+                if key in supported_variants:
+                    variant_coverages[key][value] += 1
+                if key in dim_names:
+                    scalar_coverages[key] += 1
 
-                for sample_index in range(SAMPLES_PER_PROFILE):
-                    total_checked += 1
-                    seed = 1000 + sample_index + (1000 * len(profiles))
+            for sample_index in range(SAMPLES_PER_PROFILE):
+                total_checked += 1
+                seed = 1000 + sample_index + (1000 * len(profiles))
 
-                    try:
-                        prob = PracticeOrchestrator.generate_problem(
-                            node_id=node_id,
-                            seed=seed,
-                            difficulty_profile=raw_profile,
-                            formatter=formatter,
-                            is_lab=False,
-                        )
-                    except Exception as e:
-                        failures[node_id].append(
-                            f"Pipeline Crash (Formatter={formatter}, Profile={raw_profile}, Seed={seed}): {str(e)}\n{traceback.format_exc()}"
-                        )
-                        repro_crashes.append({
-                            "node_id": node_id,
-                            "seed": seed,
-                            "formatter": formatter,
-                            "difficulty_profile": raw_profile,
-                            "error_message": str(e)
-                        })
-                        continue
+                try:
+                    prob = PracticeOrchestrator.generate_problem(
+                        node_id=node_id,
+                        seed=seed,
+                        difficulty_profile=raw_profile,
+                        formatter=formatter,
+                        is_lab=False,
+                    )
+                except Exception as e:
+                    failures.setdefault(node_id, []).append(
+                        f"Pipeline Crash (Formatter={formatter}, Profile={raw_profile}, Seed={seed}): {str(e)}\n{traceback.format_exc()}"
+                    )
+                    repro_crashes.append({
+                        "node_id": node_id,
+                        "seed": seed,
+                        "formatter": formatter,
+                        "difficulty_profile": raw_profile,
+                        "error_message": str(e)
+                    })
+                    continue
 
-                    # The orchestrator chose a DNA stochastically; use it for
-                    # content checks that depend on the active DNA.
-                    dna_name = getattr(prob, "dna_name", None) or primary_concept
+                dna_name = getattr(prob, "dna_name", None) or primary_concept
 
-                    legacy = to_legacy_dict(prob)
-                    question_text = legacy.get("stem", "")
-                    correct_answer = legacy.get("correct_answer")
-                    options = legacy.get("options", {})
-                    hints = legacy.get("hints", [])
-                    prob_profile = getattr(prob, "difficulty_profile", {}) or {}
-                    context_value = raw_profile.get("context")
+                legacy = to_legacy_dict(prob)
+                question_text = legacy.get("stem", "")
+                correct_answer = legacy.get("correct_answer")
+                options = legacy.get("options", {})
+                hints = legacy.get("hints", [])
+                prob_profile = getattr(prob, "difficulty_profile", {}) or {}
+                context_value = raw_profile.get("context")
 
-                    q_violations = scan_text(question_text, FORBIDDEN_WORDS)
-                    if q_violations:
-                        failures[node_id].append(
-                            f"Sample {seed} Vocabulary violation in Question Text: {q_violations} in '{question_text}'"
-                        )
-
-                    for h_idx, hint in enumerate(hints):
-                        h_violations = scan_text(hint, FORBIDDEN_WORDS)
-                        if h_violations:
-                            failures[node_id].append(
-                                f"Sample {seed} Vocabulary violation in Hint {h_idx+1}: {h_violations} in '{hint}'"
-                            )
-
-                    if isinstance(correct_answer, (int, float)) and not isinstance(correct_answer, bool):
-                        if "comparing_ordering" != dna_name:
-                            # Skip visual-prompt formatters where the target is
-                            # necessarily stated in the prompt (e.g. "Move the
-                            # dot to show 5" or "Read aloud: 5"). The student
-                            # does not derive the answer from the prompt; the
-                            # prompt IS the task. Flagging these as leaks is
-                            # a false positive.
-                            if is_prompt_target_formatter(formatter):
-                                pass
-                            else:
-                                pattern = rf"\b{correct_answer}\b"
-                                if re.search(pattern, question_text):
-                                    failures[node_id].append(
-                                        f"Sample {seed} Semantic Leak: Answer '{correct_answer}' appears in stem: '{question_text}'"
-                                    )
-
-                    # Check for Formatter Fallback
-                    # `sort_order` is declared as a visual formatter in the
-                    # node registry but is currently routed to the textual
-                    # `fmt_ordering.format_ordering` (see
-                    # backend/app/practice_gen/adapter.py:150). It is not
-                    # truly a visual interaction yet, so we exclude it from
-                    # the "expected visual" set until a real visual
-                    # implementation exists.
-                    textual_formatters = ("mcq", "cloze", "ordering", "true_false", "error_detect", "sort_order")
-                    requested_is_visual = not (formatter in textual_formatters)
-                    if requested_is_visual and not getattr(prob, "is_visual", False):
-                        failures[node_id].append(
-                            f"Sample {seed} Formatter Fallback: Requested visual formatter '{formatter}', but pipeline degraded to textual format '{prob.format}'"
-                        )
-
-                    if options:
-                        opts_list = list(options.values()) if isinstance(options, dict) else options
-                        if formatter == "mcq":
-                            if len(opts_list) != 4:
-                                failures[node_id].append(
-                                    f"Sample {seed} MCQ formatter generated {len(opts_list)} options, expected 4"
-                                )
-                            unique_opts = set()
-                            for opt in opts_list:
-                                opt_val = str(opt.get("value") if isinstance(opt, dict) else opt).strip()
-                                unique_opts.add(opt_val)
-                            if len(unique_opts) < len(opts_list) and len(opts_list) > 0:
-                                failures[node_id].append(
-                                    f"Sample {seed} Formatter '{formatter}' generated duplicate options: {[str(o.get('value') if isinstance(o, dict) else o) for o in opts_list]}"
-                                )
-
-                        for opt in opts_list:
-                            opt_val = str(opt.get("value") if isinstance(opt, dict) else opt).strip()
-                            if not opt_val:
-                                failures[node_id].append(
-                                    f"Sample {seed} Formatter '{formatter}' generated a blank option."
-                                )
-                            elif "alt #" in opt_val.lower():
-                                failures[node_id].append(
-                                    f"Sample {seed} Formatter '{formatter}' generated a fallback 'alt #' option: {opt_val}"
-                                )
-
-                    if dna_name == "fractions" and "fractions" in dnas and getattr(prob, "visual_type", None) is None:
-                        if "fraction" not in question_text.lower() and "\\" not in question_text:
-                            failures[node_id].append(
-                                f"Sample {seed} Fractions DNA concept overridden: Question stem '{question_text}' does not mention fractions or equations"
-                            )
-
-                    # Strict Schema Contracts for Visual Formatters
-                    if getattr(prob, "is_visual", False) and hasattr(prob, "visual_params"):
-                        vp = prob.visual_params or {}
-                        if prob.visual_type in ("FractionModel", "fraction_model_read", "fraction_shade"):
-                            required_keys = {"model_type", "numerator", "denominator", "total_parts", "shaded_parts"}
-                            missing = required_keys - set(vp.keys())
-                            if missing:
-                                failures[node_id].append(f"Sample {seed} Visual Schema Error: {formatter} missing required visual_params keys: {missing}")
-                            if vp.get("denominator", 0) <= 0:
-                                failures[node_id].append(f"Sample {seed} Visual Schema Error: {formatter} denominator must be > 0, got {vp.get('denominator')}")
-                        elif formatter == "emoji_pictorial":
-                            required_keys = {"operation", "emoji"}
-                            missing = required_keys - set(vp.keys())
-                            if missing:
-                                failures[node_id].append(f"Sample {seed} Visual Schema Error: {formatter} missing required visual_params keys: {missing}")
-                            has_groups = ("groups" in vp or ("group_a" in vp and "group_b" in vp))
-                            if not has_groups:
-                                failures[node_id].append(f"Sample {seed} Visual Schema Error: {formatter} missing group data (groups or group_a/group_b)")
-                            if "groups" in vp and not isinstance(vp["groups"], list):
-                                failures[node_id].append(f"Sample {seed} Visual Schema Error: {formatter} 'groups' must be a list")
-
-                    bounds_dict = get_node_competency_bounds(node_id)
-                    for key, req_val in raw_profile.items():
-                        if key in prob_profile:
-                            act_val = prob_profile[key]
-                            if act_val != req_val and type(req_val) == type(act_val):
-                                failures[node_id].append(
-                                    f"Sample {seed} Profile Mismatch: Requested {key}={req_val}, but got {act_val}."
-                                )
-                    for dim_name, bounds in bounds_dict.items():
-                        if isinstance(bounds, tuple) and len(bounds) == 2:
-                            min_val, max_val = bounds
-                            actual_val = prob_profile.get(dim_name)
-                            if actual_val is not None and (actual_val < min_val or actual_val > max_val):
-                                failures[node_id].append(
-                                    f"Sample {seed} Strict Scalar Violation: {dim_name}={actual_val} is outside strict bounds [{min_val}, {max_val}] for formatter {formatter}"
-                                )
-
-                    for dim in config.get("difficulty_dimensions", []):
-                        if dim.get("dim_type") == "continuous":
-                            scalar = raw_profile.get(dim["name"])
-                            # The orchestrator's continuous axis mapping is
-                            # bounded by `get_node_competency_bounds(node_id)`
-                            # (not the UI lab range stored in `min_value`/
-                            # `max_value`). For student-facing generation
-                            # (is_lab=False), the mapping at scalar=0.0 should
-                            # hit the competency lower bound and at scalar=1.0
-                            # the competency upper bound.
-                            cb = bounds_dict.get(dim["name"])
-                            if isinstance(cb, tuple) and len(cb) == 2:
-                                min_val, max_val = cb
-                            else:
-                                min_val = dim.get("min_value")
-                                max_val = dim.get("max_value")
-                            actual_val = prob_profile.get(dim["name"])
-                            if scalar in (0.0, 1.0):
-                                expected = min_val if scalar == 0.0 else max_val
-                                if _strict_scalar_endpoint_violates(actual_val, expected):
-                                    failures[node_id].append(
-                                        f"Sample {seed} Strict scalar endpoint mapping failed for {dim['name']} at scalar={scalar}: expected {expected}, got {actual_val}"
-                                    )
-                            elif scalar == 0.5:
-                                if min_val > 0 and max_val >= 10 * min_val:
-                                    import math
-                                    geometric_mean = math.sqrt(min_val * max_val)
-                                    arithmetic_mean = (min_val + max_val) / 2
-                                    if actual_val is not None:
-                                        dist_to_geo = abs(actual_val - geometric_mean)
-                                        dist_to_arith = abs(actual_val - arithmetic_mean)
-                                        if dist_to_arith < dist_to_geo and dist_to_arith < (max_val - min_val) * 0.2:
-                                            failures[node_id].append(
-                                                f"Sample {seed} Scale Appropriateness Violation: Dimension '{dim['name']}' has wide range [{min_val}, {max_val}], but scalar=0.5 mapped linearly to {actual_val} instead of logarithmically (~{geometric_mean:.1f})"
-                                            )
-
-                    if context_value == "word_problem" and is_visual_formatter(formatter):
-                        # Some visual formatters (e.g. number_line_read) emit
-                        # an instructional prompt that includes both the visual
-                        # task ("Move the dot...") and a brief verbal cue
-                        # for the word-problem context. These are not visual
-                        # degradation — they are valid K-1 instructional
-                        # prompts. Flag only when the stem is excessively
-                        # long (>= 200 chars), indicating actual verbosity
-                        # beyond what's needed for the visual context.
-                        if len(question_text) >= 200:
-                            failures[node_id].append(
-                                f"Sample {seed} Visual Degradation Issue: Visual formatter '{formatter}' generated long word_problem stem ({len(question_text)} chars)."
-                            )
-
-                    if context_value == "pure":
-                        context_state_by_context["pure"] = extract_numeric_state(prob, legacy)
-                    elif context_value == "word_problem":
-                        current_state = extract_numeric_state(prob, legacy)
-                        if "pure" in context_state_by_context and "word" not in context_state_by_context:
-                            reference_state = context_state_by_context["pure"]
-                            if reference_state and current_state and reference_state != current_state:
-                                # Separation of Concerns: the word_problem wrapper
-                                # may introduce extra text numbers (e.g. object names
-                                # like "1 mystery novel"), so the word_problem state
-                                # is allowed to be a superset of the pure state. The
-                                # core numbers from the pure state must all still
-                                # appear in the word_problem state with at least
-                                # the same multiplicity — if any pure number is
-                                # missing or reduced, that is a real separation-
-                                # of-concerns violation.
-                                ref_nums = reference_state.get("_extracted_numbers") or ()
-                                cur_nums = current_state.get("_extracted_numbers") or ()
-                                ref_counter = dict(ref_nums)
-                                cur_counter = dict(cur_nums)
-                                missing = {n: c for n, c in ref_counter.items() if cur_counter.get(n, 0) < c}
-                                if missing:
-                                    failures[node_id].append(
-                                        f"Sample {seed} Separation of Concerns Violation: core numbers from pure state are missing or reduced in word_problem for formatter {formatter}: missing={missing} pure={ref_nums} word={cur_nums}"
-                                    )
-                        context_state_by_context["word"] = current_state
-
-        for variant in config.get("contextual_variants", []):
-            name = variant.get("name")
-            values = variant.get("options", [])
-            for value in values:
-                if variant_coverages[name].get(value, 0) == 0:
-                    failures[node_id].append(
-                        f"Variant '{name}' value '{value}' was never exercised for node {node_id}."
+                q_violations = scan_text(question_text, FORBIDDEN_WORDS)
+                if q_violations:
+                    failures.setdefault(node_id, []).append(
+                        f"Sample {seed} Vocabulary violation in Question Text: {q_violations} in '{question_text}'"
                     )
 
-        for dim in config.get("difficulty_dimensions", []):
-            if scalar_coverages[dim["name"]] == 0:
-                failures[node_id].append(
-                    f"Difficulty dimension '{dim['name']}' was never exercised for node {node_id}."
+                for h_idx, hint in enumerate(hints):
+                    h_violations = scan_text(hint, FORBIDDEN_WORDS)
+                    if h_violations:
+                        failures.setdefault(node_id, []).append(
+                            f"Sample {seed} Vocabulary violation in Hint {h_idx+1}: {h_violations} in '{hint}'"
+                        )
+
+                if isinstance(correct_answer, (int, float)) and not isinstance(correct_answer, bool):
+                    if "comparing_ordering" != dna_name:
+                        if is_prompt_target_formatter(formatter):
+                            pass
+                        else:
+                            pattern = rf"\b{correct_answer}\b"
+                            if re.search(pattern, question_text):
+                                failures.setdefault(node_id, []).append(
+                                    f"Sample {seed} Semantic Leak: Answer '{correct_answer}' appears in stem: '{question_text}'"
+                                )
+
+                textual_formatters = ("mcq", "cloze", "ordering", "true_false", "error_detect", "sort_order")
+                requested_is_visual = not (formatter in textual_formatters)
+                if requested_is_visual and not getattr(prob, "is_visual", False):
+                    failures.setdefault(node_id, []).append(
+                        f"Sample {seed} Formatter Fallback: Requested visual formatter '{formatter}', but pipeline degraded to textual format '{prob.format}'"
+                    )
+
+                if options:
+                    opts_list = list(options.values()) if isinstance(options, dict) else options
+                    if formatter == "mcq":
+                        if len(opts_list) != 4:
+                            failures.setdefault(node_id, []).append(
+                                f"Sample {seed} MCQ formatter generated {len(opts_list)} options, expected 4"
+                            )
+                        unique_opts = set()
+                        for opt in opts_list:
+                            opt_val = str(opt.get("value") if isinstance(opt, dict) else opt).strip()
+                            unique_opts.add(opt_val)
+                        if len(unique_opts) < len(opts_list) and len(opts_list) > 0:
+                            failures.setdefault(node_id, []).append(
+                                f"Sample {seed} Formatter '{formatter}' generated duplicate options: {[str(o.get('value') if isinstance(o, dict) else o) for o in opts_list]}"
+                            )
+
+                    for opt in opts_list:
+                        opt_val = str(opt.get("value") if isinstance(opt, dict) else opt).strip()
+                        if not opt_val:
+                            failures.setdefault(node_id, []).append(
+                                f"Sample {seed} Formatter '{formatter}' generated a blank option."
+                            )
+                        elif "alt #" in opt_val.lower():
+                            failures.setdefault(node_id, []).append(
+                                f"Sample {seed} Formatter '{formatter}' generated a fallback 'alt #' option: {opt_val}"
+                            )
+
+                if dna_name == "fractions" and "fractions" in dnas and getattr(prob, "visual_type", None) is None:
+                    if "fraction" not in question_text.lower() and "\\" not in question_text:
+                        failures.setdefault(node_id, []).append(
+                            f"Sample {seed} Fractions DNA concept overridden: Question stem '{question_text}' does not mention fractions or equations"
+                        )
+
+                if getattr(prob, "is_visual", False) and hasattr(prob, "visual_params"):
+                    vp = prob.visual_params or {}
+                    if prob.visual_type in ("FractionModel", "fraction_model_read", "fraction_shade"):
+                        required_keys = {"model_type", "numerator", "denominator", "total_parts", "shaded_parts"}
+                        missing = required_keys - set(vp.keys())
+                        if missing:
+                            failures.setdefault(node_id, []).append(f"Sample {seed} Visual Schema Error: {formatter} missing required visual_params keys: {missing}")
+                        if vp.get("denominator", 0) <= 0:
+                            failures.setdefault(node_id, []).append(f"Sample {seed} Visual Schema Error: {formatter} denominator must be > 0, got {vp.get('denominator')}")
+                    elif formatter == "emoji_pictorial":
+                        required_keys = {"operation", "emoji"}
+                        missing = required_keys - set(vp.keys())
+                        if missing:
+                            failures.setdefault(node_id, []).append(f"Sample {seed} Visual Schema Error: {formatter} missing required visual_params keys: {missing}")
+                        has_groups = ("groups" in vp or ("group_a" in vp and "group_b" in vp))
+                        if not has_groups:
+                            failures.setdefault(node_id, []).append(f"Sample {seed} Visual Schema Error: {formatter} missing group data (groups or group_a/group_b)")
+                        if "groups" in vp and not isinstance(vp["groups"], list):
+                            failures.setdefault(node_id, []).append(f"Sample {seed} Visual Schema Error: {formatter} 'groups' must be a list")
+
+                for key, req_val in raw_profile.items():
+                    if key in prob_profile:
+                        act_val = prob_profile[key]
+                        if act_val != req_val and type(req_val) == type(act_val):
+                            failures.setdefault(node_id, []).append(
+                                f"Sample {seed} Profile Mismatch: Requested {key}={req_val}, but got {act_val}."
+                            )
+                for dim_name, bounds in competency_bounds.items():
+                    if isinstance(bounds, tuple) and len(bounds) == 2:
+                        min_val, max_val = bounds
+                        actual_val = prob_profile.get(dim_name)
+                        if actual_val is not None and (actual_val < min_val or actual_val > max_val):
+                            failures.setdefault(node_id, []).append(
+                                f"Sample {seed} Strict Scalar Violation: {dim_name}={actual_val} is outside strict bounds [{min_val}, {max_val}] for formatter {formatter}"
+                            )
+
+                for dim in config.get("difficulty_dimensions", []):
+                    if dim.get("dim_type") == "continuous":
+                        scalar = raw_profile.get(dim["name"])
+                        cb = competency_bounds.get(dim["name"])
+                        if isinstance(cb, tuple) and len(cb) == 2:
+                            min_val, max_val = cb
+                        else:
+                            min_val = dim.get("min_value")
+                            max_val = dim.get("max_value")
+                        actual_val = prob_profile.get(dim["name"])
+                        if scalar in (0.0, 1.0):
+                            expected = min_val if scalar == 0.0 else max_val
+                            if _strict_scalar_endpoint_violates(actual_val, expected):
+                                failures.setdefault(node_id, []).append(
+                                    f"Sample {seed} Strict scalar endpoint mapping failed for {dim['name']} at scalar={scalar}: expected {expected}, got {actual_val}"
+                                )
+                        elif scalar == 0.5:
+                            if min_val > 0 and max_val >= 10 * min_val:
+                                import math
+                                geometric_mean = math.sqrt(min_val * max_val)
+                                arithmetic_mean = (min_val + max_val) / 2
+                                if actual_val is not None:
+                                    dist_to_geo = abs(actual_val - geometric_mean)
+                                    dist_to_arith = abs(actual_val - arithmetic_mean)
+                                    if dist_to_arith < dist_to_geo and dist_to_arith < (max_val - min_val) * 0.2:
+                                        failures.setdefault(node_id, []).append(
+                                            f"Sample {seed} Scale Appropriateness Violation: Dimension '{dim['name']}' has wide range [{min_val}, {max_val}], but scalar=0.5 mapped linearly to {actual_val} instead of logarithmically (~{geometric_mean:.1f})"
+                                        )
+
+                if context_value == "word_problem" and is_visual_formatter(formatter):
+                    if len(question_text) >= 200:
+                        failures.setdefault(node_id, []).append(
+                            f"Sample {seed} Visual Degradation Issue: Visual formatter '{formatter}' generated long word_problem stem ({len(question_text)} chars)."
+                        )
+
+                if context_value == "pure":
+                    context_state_by_context["pure"] = extract_numeric_state(prob, legacy)
+                elif context_value == "word_problem":
+                    current_state = extract_numeric_state(prob, legacy)
+                    if "pure" in context_state_by_context and "word" not in context_state_by_context:
+                        reference_state = context_state_by_context["pure"]
+                        if reference_state and current_state and reference_state != current_state:
+                            ref_nums = reference_state.get("_extracted_numbers") or ()
+                            cur_nums = current_state.get("_extracted_numbers") or ()
+                            ref_counter = dict(ref_nums)
+                            cur_counter = dict(cur_nums)
+                            missing = {n: c for n, c in ref_counter.items() if cur_counter.get(n, 0) < c}
+                            if missing:
+                                failures.setdefault(node_id, []).append(
+                                    f"Sample {seed} Separation of Concerns Violation: core numbers from pure state are missing or reduced in word_problem for formatter {formatter}: missing={missing} pure={ref_nums} word={cur_nums}"
+                                )
+                    context_state_by_context["word"] = current_state
+
+    for variant in config.get("contextual_variants", []):
+        name = variant.get("name")
+        values = variant.get("options", [])
+        for value in values:
+            if variant_coverages[name].get(value, 0) == 0:
+                failures.setdefault(node_id, []).append(
+                    f"Variant '{name}' value '{value}' was never exercised for node {node_id}."
                 )
 
+    for dim in config.get("difficulty_dimensions", []):
+        if scalar_coverages[dim["name"]] == 0:
+            failures.setdefault(node_id, []).append(
+                f"Difficulty dimension '{dim['name']}' was never exercised for node {node_id}."
+            )
+
+    return failures, repro_crashes, total_checked
+
+
+def run_audit(
+    node_ids: Optional[List[str]] = None,
+    parallel: bool = True,
+    max_workers: Optional[int] = None,
+) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]]]:
+    """Run the checklist audit on the given nodes (default: all mat_g
+    nodes) and return (failures, repro_crashes) without writing to disk
+    or exiting. Used by the test suite as the CI guard.
+
+    Args:
+        node_ids: List of node IDs to audit. If None, audits all mat_g
+            nodes.
+        parallel: If True (default), run nodes across multiple worker
+            processes via ProcessPoolExecutor. If False, run serially.
+        max_workers: Number of worker processes when parallel=True. If
+            None, defaults to multiprocessing.cpu_count().
+
+    Per AGENTS.md rule #4 (no silent fallbacks): this function does not
+    swallow exceptions and does not skip nodes. Every node either
+    contributes its results to the returned dicts or raises
+    AuditHarnessError.
+    """
+    if node_ids is None:
+        print("Praise God! Starting Unified Checklist Auditor for all matatag nodes...")
+        node_ids = [n for n in get_all_node_ids() if "mat_g" in n]
+    else:
+        print(f"Praise God! Starting Checklist Auditor on {len(node_ids)} sample nodes...")
+
+    total_checked = 0
+    failures: Dict[str, List[str]] = {}
+    repro_crashes: List[Dict[str, Any]] = []
+
+    if not parallel:
+        for node_id in node_ids:
+            node_failures, node_repro, node_checked = _audit_node(node_id)
+            if node_failures:
+                failures.update(node_failures)
+            repro_crashes.extend(node_repro)
+            total_checked += node_checked
+    else:
+        import multiprocessing
+        from concurrent.futures import ProcessPoolExecutor
+
+        workers = max_workers if max_workers and max_workers > 0 else multiprocessing.cpu_count()
+        workers = min(workers, len(node_ids)) if node_ids else workers
+        chunksize = max(1, -(-len(node_ids) // workers)) if node_ids else 1
+
+        with ProcessPoolExecutor(max_workers=workers) as pool:
+            for node_failures, node_repro, node_checked in pool.map(
+                _audit_node, node_ids, chunksize=chunksize,
+            ):
+                if node_failures:
+                    failures.update(node_failures)
+                repro_crashes.extend(node_repro)
+                total_checked += node_checked
 
     print("\n" + "=" * 80)
     print(f"Checklist Audit Finished: Checked {total_checked} generated problems across all nodes. {len(failures)} nodes have violations.")
     print("=" * 80)
 
-    return dict(failures), repro_crashes
+    return failures, repro_crashes
 
 
 def check_checklist_compliance():
@@ -742,8 +747,39 @@ def check_checklist_compliance():
     exit codes. The test suite calls run_audit() directly so it can
     assert on the returned (failures, repro_crashes) without touching
     disk or terminating the process.
+
+    CLI flags:
+        --max-workers N    Number of parallel workers (default: cpu_count)
+        --no-parallel      Run single-threaded (useful for debugging)
+        --node-ids ID1,ID2 Restrict to a comma-separated node list
     """
-    failures, repro_crashes = run_audit()
+    import argparse
+    parser = argparse.ArgumentParser(
+        description="Exhaustive checklist auditor for MATATAG nodes"
+    )
+    parser.add_argument(
+        "--max-workers", type=int, default=0,
+        help="Number of parallel workers (0 = cpu_count)"
+    )
+    parser.add_argument(
+        "--no-parallel", action="store_true",
+        help="Run single-threaded (useful for debugging)"
+    )
+    parser.add_argument(
+        "--node-ids", type=str, default="",
+        help="Comma-separated node IDs to audit (default: all mat_g nodes)"
+    )
+    args = parser.parse_args()
+
+    node_ids = None
+    if args.node_ids:
+        node_ids = [n.strip() for n in args.node_ids.split(",") if n.strip()]
+
+    failures, repro_crashes = run_audit(
+        node_ids=node_ids,
+        parallel=not args.no_parallel,
+        max_workers=args.max_workers if args.max_workers > 0 else None,
+    )
 
     report_path = "checklist_audit_report.json"
     with open(report_path, "w") as f:
