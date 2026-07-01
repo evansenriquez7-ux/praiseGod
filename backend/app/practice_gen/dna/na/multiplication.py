@@ -155,6 +155,13 @@ def generate_params(
         for a in range(a_lo, a_hi + 1):
             if a * b > max_prod_val:
                 continue
+            # Exclude a == b: "2 * 2 = ___" doesn't leak the *result* (4 is
+            # new), but if the blank is one factor (e.g. "2 * ___ = 4" or
+            # "___ * 2 = 4") the answer equals the visible factor. Excluded
+            # across all blank positions for safety. Also exclude b == 1
+            # (would make result == a, leaking when blank is "b").
+            if a == b or b == 1:
+                continue
             if _satisfies_number_type(a, num_level):
                 candidate_pairs.append((a, b))
 

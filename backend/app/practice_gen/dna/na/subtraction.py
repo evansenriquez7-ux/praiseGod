@@ -168,6 +168,8 @@ def generate_params(
 
     # Ensure reasonable bounds
     max_minuend = max(2, min(max_minuend, 10000))
+    if "formatter_max_val" in profile:
+        max_minuend = min(max_minuend, profile["formatter_max_val"])
 
     reg_level = profile.get("regrouping", "none")
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
@@ -196,6 +198,20 @@ def generate_params(
     if max_minuend <= 100:
         for a in candidates_a:
             for b in range(0, a + 1):
+                # Exclude (a, 0): a - 0 = a makes the answer identical to
+                # the minuend, which the student can read directly (semantic
+                # leak). MATATAG requires problems that exercise the
+                # subtraction competency, not trivial read-the-minuend tasks.
+                #
+                # Also exclude (a, b) where a == 2*b — this makes a - b == b,
+                # so the answer equals the visible subtrahend when the blank
+                # is "result" (e.g. "4 - 2 = ___" with answer 2).
+                #
+                # Also exclude (a, b) where a == b — this makes a - b == 0,
+                # and when the blank is the minuend (e.g. "___ - 3 = 0"),
+                # the answer (3) equals the visible subtrahend.
+                if b == 0 or a == 2 * b or a == b:
+                    continue
                 if _satisfies_regrouping(a, b, reg_level):
                     candidate_pairs.append((a, b))
     else:
@@ -203,14 +219,19 @@ def generate_params(
         while len(candidate_pairs) < 2000 and attempts < 50000:
             attempts += 1
             a = rng.randint(min_a, max_minuend)
-            b = rng.randint(0, a)
+            b = rng.randint(1, a)  # b >= 1 excludes trivial a - 0 = a
+            if a == 2 * b or a == b:
+                continue
             if _satisfies_regrouping(a, b, reg_level):
                 candidate_pairs.append((a, b))
 
     if not candidate_pairs:
-        # Fallback: simple pair
+        # Fallback: simple pair (still exclude trivial a - 0 = a and
+        # a - b == b cases)
         a = rng.randint(2, max_minuend)
-        b = rng.randint(0, a)
+        b = rng.randint(1, a)
+        while b == 0 or a == 2 * b or a == b:
+            b = rng.randint(1, a)
         candidate_pairs = [(a, b)]
 
     # Sample a pair from the candidate pool using the continuous difficulty window

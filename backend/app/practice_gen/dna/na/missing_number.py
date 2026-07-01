@@ -167,6 +167,12 @@ def generate_params(
         if max_result <= 100:
             for a in range(1, a_hi + 1):
                 for b in range(1, max_result - a + 1):
+                    # Exclude a == b: missing_number has a blank that is
+                    # one of the operands or the result. With a == b, the
+                    # result equals one of the operands (e.g. "3 + __ = 6"
+                    # with answer 3 leaks the visible 3).
+                    if a == b:
+                        continue
                     candidate_pairs.append((a, b))
         else:
             attempts = 0
@@ -174,6 +180,8 @@ def generate_params(
                 attempts += 1
                 a = rng.randint(1, a_hi)
                 b = rng.randint(1, max_result - a)
+                if a == b:
+                    continue
                 candidate_pairs.append((a, b))
     else:
         op = rng.choice(["multiplication", "division"])
@@ -181,6 +189,12 @@ def generate_params(
             tables = [2, 3, 4, 5, 10] if grade == 2 else [2, 3, 4, 5, 6, 7, 8, 9]
         for factor in tables:
             for b in range(1, 11):
+                # Exclude factor == 1 (a*1 = a leaks when blank is the
+                # factor), factor == b (result == b or a, leaks), and
+                # b == 1 (in the division branch, b=1 combined with the
+                # random swap produces a==b after the swap).
+                if factor == 1 or factor == b or b == 1:
+                    continue
                 if factor * b <= max_result * 10:  # loose cap
                     candidate_pairs.append((factor, b))
 

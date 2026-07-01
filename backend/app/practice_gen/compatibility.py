@@ -61,6 +61,23 @@ from typing import Dict, List, Optional, Any
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# FORMATTER NUMERIC LIMITS
+# Defines absolute minimum/maximum values a visual formatter can handle.
+# If a generated context exceeds these limits, the orchestrator should clamp
+# or reject it *before* generation.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+FORMATTER_NUMERIC_LIMITS: Dict[str, Dict[str, Any]] = {
+    "emoji_pictorial": {"max_val": 100},
+    "place_value_blocks_read": {"max_val": 9999},
+    "place_value_blocks_set": {"max_val": 9999},
+    "array_grid_read": {"max_val": 400},
+    "array_grid_set": {"max_val": 400},
+    "ten_frame": {"max_val": 100},
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # COMPATIBILITY TABLE
 # Each entry mirrors the compatible_formatters list of the DNA instance.
 # ═══════════════════════════════════════════════════════════════════════════════
