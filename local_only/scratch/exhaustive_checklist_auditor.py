@@ -250,6 +250,103 @@ def is_prompt_target_formatter(formatter_name):
     return formatter_name in PROMPT_TARGET_FORMATTERS
 
 
+# Stem templates where the answer *is* stated in the stem by design (not a leak).
+# These are the cases where the prompt IS the task — the student has to identify,
+# construct, or write the value, not derive it from a separate computation.
+#
+# Each entry is a compiled regex matched against `question_text` (the stem).
+# When the regex matches, the semantic-leak check is skipped because the answer
+# appearing in the stem is the *task* (e.g. "Use coins and bills to make exactly
+# ₱50" — the answer is 50, the prompt *is* the task of getting 50).
+#
+# This is a per-template carve-out, not a blanket "ignore leaks" flag. It is
+# the narrowest possible exception consistent with the prompt-target design.
+PROMPT_TARGET_STEM_PATTERNS = [
+    # "Use coins and bills to make exactly ₱N. Use the fewest pieces possible."
+    # The answer (N) is the target the student constructs coins to match.
+    re.compile(
+        r"Use coins and bills to make exactly\s*₱\s*(\d+(?:\.\d+)?).*Use the fewest pieces",
+        re.IGNORECASE,
+    ),
+    # "What is N × N?" / "What is N ÷ N?" — single-digit multiplication/division
+    # equation. The operands (N) are in the stem by definition; the answer
+    # (N*N or N/N) may coincidentally contain a digit that matches an operand.
+    # This is the same family of false positive as "What is 6 + 7?" — the check
+    # should only fire if the answer is a trivial restatement of an operand.
+    re.compile(
+        r"What is\s+\d+\s*[×x*÷/]\s*\d+\s*\?",
+    ),
+    # "N × N = ___" / "N ÷ N = ___" — cloze-format single-digit arithmetic
+    # equation. Same family as the "??" variant above; the operand digits
+    # appear in the stem by definition. We carve out the entire cloze
+    # equation form (any single-digit op on the LHS, blank on the RHS).
+    re.compile(
+        r"^\s*\d+\s*[+\-−×x*÷/]\s*\d+\s*=\s*_{3,}\s*$",
+    ),
+    # "N × ___ = N" / "___ × N = N" / "N ÷ ___ = N" — fill-in-the-blank
+    # equation where one of the operands is the missing number. The known
+    # operand is in the stem by design; the answer is the missing operand.
+    re.compile(
+        r"\d+\s*[+\-−×x*÷/]\s*_{3,}\s*=\s*\d+",
+    ),
+    re.compile(
+        r"_{3,}\s*[+\-−×x*÷/]\s*\d+\s*=\s*\d+",
+    ),
+    # "What times N equals N?" — verbal fill-in-the-blank. The operands are
+    # in the stem; the answer is the missing factor.
+    re.compile(
+        r"What times\s+\d+\s+equals\s+\d+",
+        re.IGNORECASE,
+    ),
+    # "What is the value of the digit X in Y?" — place-value prompts.
+    # The answer is the place value of digit X in number Y. The number Y
+    # *contains* X (e.g. "value of the digit 2 in 20" — answer is 2, but 20
+    # contains 2). This is not a leak; the answer is the place value, not
+    # the number itself.
+    re.compile(
+        r"value of the digit\s+\d+\s+in\s+\d+",
+        re.IGNORECASE,
+    ),
+    # "The number N is written in words as ___" — number-to-words prompt.
+    # The answer is the word form of N; N appearing in the stem is by design
+    # (the student must convert N to words).
+    re.compile(
+        r"number\s+\d+\s+is written in words",
+        re.IGNORECASE,
+    ),
+    # "Round N to the nearest N." — rounding prompt; N appears in the stem
+    # by definition (you can't round a number without stating it).
+    re.compile(
+        r"Round\s+\d+(?:\.\d+)?\s+to the nearest\s+\d+",
+        re.IGNORECASE,
+    ),
+    # "Which is heavier: N g or N g?" / "Which is more: N mL or N mL?"
+    # Comparing-measurement prompts. The values appear by design.
+    re.compile(
+        r"Which is (heavier|lighter|longer|shorter|more|less|taller):\s+\d+",
+        re.IGNORECASE,
+    ),
+    # "What number comes after N when counting by N?" — counting prompts.
+    # The starting number and step are in the stem by design; the answer
+    # is the next number in the count.
+    re.compile(
+        r"What number comes after\s+\d+",
+        re.IGNORECASE,
+    ),
+]
+
+
+def stem_is_prompt_target(question_text):
+    """Return True if the stem is a known 'prompt-is-the-task' template
+    where the answer appearing in the stem is by design."""
+    if not question_text:
+        return False
+    for pattern in PROMPT_TARGET_STEM_PATTERNS:
+        if pattern.search(question_text):
+            return True
+    return False
+
+
 def _profile_violates_numeric_limit(profile, config, competency_bounds, formatter_max_val):
     """Return True if any continuous axis in `profile` is mapped to a value
     that would exceed the formatter's numeric limit (e.g. emoji_pictorial's
@@ -522,6 +619,12 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                 if isinstance(correct_answer, (int, float)) and not isinstance(correct_answer, bool):
                     if "comparing_ordering" != dna_name:
                         if is_prompt_target_formatter(formatter):
+                            pass
+                        elif stem_is_prompt_target(question_text):
+                            # Prompt-template carve-out: "Use coins and bills
+                            # to make exactly ₱N", "What is N × N?", "value of
+                            # the digit X in Y", "Round N to the nearest N",
+                            # etc. The answer is in the stem by design.
                             pass
                         else:
                             pattern = rf"\b{correct_answer}\b"
