@@ -133,15 +133,16 @@ def generate_params(
 
     g_key        = f"g{max(2, min(grade, 3))}"
     bounds       = _PARAM_BOUNDS[g_key]
-    
+
     from backend.app.practice_gen.dna.base import extract_discrete_level, extract_continuous_scalar
 
-    q_max_bound = bounds["q_max"]
-    q_max_value = profile.get("max_quotient")
-    if q_max_value is not None and isinstance(q_max_value, (int, float)):
-        q_max = int(q_max_value)
-    else:
-        q_max = q_max_bound
+    # Quotient bound: the per-grade `_PARAM_BOUNDS[grade]["q_max"]`
+    # already aligns with the LCs' operand-bound language (g2: 50,
+    # g3: 100, bounded by table-level). The `max_quotient` axis was
+    # removed from the catalog on 2026-07-01 because no MATATAG K-3
+    # LC specifies a result ceiling for division — see
+    # axes_catalog.py header.
+    q_max = bounds["q_max"]
 
     rem_level    = extract_discrete_level(profile, "remainder", ["none", "with_remainder"], "none")
     table_level  = extract_discrete_level(profile, "table", ["2_3_4_5_10", "6_7_8_9"], "2_3_4_5_10")

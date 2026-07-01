@@ -16,6 +16,43 @@ Each entry is a list of axis dicts:
     ],
     "default": str            # value of the easiest / most common option
   }
+
+================================================================================
+Axis policy (2026-07-01)
+================================================================================
+
+The catalog distinguishes between two kinds of axis bounds:
+
+  1. RESULT-BOUND axes (kept):
+     `max_sum` (addition), `max_product` (multiplication), `max_total` (money).
+     These bound the *result* of the operation. KEEP them on a node only if
+     the LC explicitly says "sums up to N", "products up to N", or "total up
+     to N" — i.e. the result ceiling is the curriculum's pedagogical target.
+
+  2. OPERAND-BOUND competencies (no axis needed):
+     Most MATATAG K-3 LCs say "operands less than N" (e.g. "Subtract numbers
+     where both numbers are less than 100"). The operand bound is already
+     enforced by the DNA's per-grade `_PARAM_BOUNDS[grade]` (g1: < 100,
+     g2: < 1000, g3: < 10000). Adding a result-bound axis on top of this
+     is redundant and causes the audit to enumerate 5x the profile space
+     for the same generated problems.
+
+     Specifically removed in this refactor:
+       - `max_difference` from all subtraction nodes (9 nodes, all 9 LCs
+         say "less than N" / "up to 20" — operand-bound, not result-bound)
+       - `max_quotient` from all division nodes (10 nodes, all 10 LCs
+         say "2,3,4,5,10 tables" or "2- to 3-digit" — operand-bound via
+         per-grade bounds and table-level variants)
+
+     If a future LC says "differences up to N" or "quotients up to N",
+     re-add the axis to that node's lab config and update the DNA's
+     `profile.get("max_*")` lookup to use it.
+
+  3. `number_difficulty` is a per-number cognitive score (digit sum +
+     divisibility + magnitude) — kept on all operational nodes. It does
+     real work for some LCs (e.g. "identify the place value of the digit
+     7 in 873") and noise for others. Decided per-LC as needed.
+================================================================================
 """
 
 from __future__ import annotations
@@ -98,15 +135,7 @@ CONCEPT_AXES_CATALOG: Dict[str, List[dict]] = {
                         'default_max': 1.0,
                         'divisions': 5,
                         'default': 0.5}],
-    'subtraction': [   {   'name': 'max_difference',
-                           'label': 'Maximum Difference (Minuend)',
-                           'dim_type': 'continuous',
-                           'scale': 'logarithmic',
-                           'default_min': 2,
-                           'default_max': 1000,
-                           'divisions': 5,
-                           'default': 0.5},
-                       {   'name': 'regrouping',
+    'subtraction': [   {   'name': 'regrouping',
                            'label': 'Regrouping (Borrowing)',
                            'dim_type': 'discrete',
                            'options': [   {   'value': 'none',
@@ -193,15 +222,7 @@ CONCEPT_AXES_CATALOG: Dict[str, List[dict]] = {
                               'default_max': 1.0,
                               'divisions': 5,
                               'default': 0.5}],
-    'division': [   {   'name': 'max_quotient',
-                        'label': 'Maximum Quotient',
-                        'dim_type': 'continuous',
-                        'scale': 'logarithmic',
-                        'default_min': 2,
-                        'default_max': 100,
-                        'divisions': 5,
-                        'default': 0.5},
-                    {   'name': 'number_difficulty',
+    'division': [   {   'name': 'number_difficulty',
                         'label': 'Number Difficulty',
                         'dim_type': 'continuous',
                         'default_min': 0.0,

@@ -201,7 +201,7 @@ def format_place_value_blocks(
         else:
             limit = None
             if ctx.difficulty_profile:
-                for limit_key in ["max_sum", "max_difference", "max_value", "max_total", "range"]:
+                for limit_key in ["max_sum", "max_value", "max_total", "range"]:
                     val = ctx.difficulty_profile.get(limit_key)
                     if val is not None:
                         try:
@@ -223,7 +223,7 @@ def format_place_value_blocks(
     else:
         limit = None
         if ctx.difficulty_profile:
-            for limit_key in ["max_sum", "max_difference", "max_value", "max_total", "range"]:
+            for limit_key in ["max_sum", "max_value", "max_total", "range"]:
                 val = ctx.difficulty_profile.get(limit_key)
                 if val is not None:
                     try:

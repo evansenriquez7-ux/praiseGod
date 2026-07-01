@@ -92,12 +92,12 @@ def _parse_competency_bounds(competency: str, dna_name: str) -> Dict[str, Tuple[
             max_val = int(match.group(1))
             bounds["max_sum"] = (1, max_val)
     
-    # Subtraction: "differences up to X", "minuends up to X"
-    elif dna_name == "subtraction":
-        match = re.search(r'(?:differences?|minuends?)\s+(?:up\s+to|of\s+up\s+to|to)\s+(\d+)', text)
-        if match:
-            max_val = int(match.group(1))
-            bounds["max_difference"] = (1, max_val)
+    # Subtraction: operand bound is enforced by the DNA's per-grade
+    # _PARAM_BOUNDS[grade] (g1: a<100, g2: a<1000, g3: a<10000). All
+    # MATATAG K-3 subtraction LCs use operand-bound language
+    # ("both numbers are less than N"), not result-bound language
+    # ("differences up to N"). The `max_difference` axis was removed
+    # from the catalog on 2026-07-01 — see axes_catalog.py header.
     
     # Multiplication: "products up to X"
     elif dna_name == "multiplication":
@@ -122,13 +122,13 @@ def _parse_competency_bounds(competency: str, dna_name: str) -> Dict[str, Tuple[
         if "missing number" in text or "missing term" in text:
             bounds["structure"] = "factor_unknown"
     
-    # Division: "quotients up to X", "dividends up to X"
+    # Division: operand bound is enforced by the DNA's per-grade
+    # _PARAM_BOUNDS[grade] (q_max: g2=50, g3=100). All MATATAG K-3
+    # division LCs use operand-bound language ("2,3,4,5,10 tables" or
+    # "2- to 3-digit numbers"), not result-bound language
+    # ("quotients up to N"). The `max_quotient` axis was removed from
+    # the catalog on 2026-07-01 — see axes_catalog.py header.
     elif dna_name == "division":
-        match = re.search(r'(?:quotients?|dividends?)\s+(?:up\s+to|of\s+up\s+to|to)\s+(\d+)', text)
-        if match:
-            max_val = int(match.group(1))
-            bounds["max_quotient"] = (1, max_val)
-            
         # Parse table level
         if "6, 7, 8, and 9" in text or "6, 7, 8, 9" in text or "6, 7, 8, or 9" in text:
             bounds["table"] = "6_7_8_9"
@@ -203,7 +203,10 @@ def _parse_competency_bounds(competency: str, dna_name: str) -> Dict[str, Tuple[
             bounds["range"] = (10, max_val)
             
     # Generic fallback if no range/limit key was parsed
-    limit_keys = ["range", "max_value", "max_total", "max_sum", "max_difference", "num_digits"]
+    # NOTE: `max_difference` was removed from this list on 2026-07-01.
+    # Subtraction LCs are all operand-bound ("both numbers are less
+    # than N"), not result-bound, so the DNA's per-grade bounds suffice.
+    limit_keys = ["range", "max_value", "max_total", "max_sum", "max_product", "num_digits"]
     if not any(key in bounds for key in limit_keys):
         limits = []
         
@@ -229,8 +232,6 @@ def _parse_competency_bounds(competency: str, dna_name: str) -> Dict[str, Tuple[
                 bounds["max_total"] = (1, limit)
             elif dna_name == "addition":
                 bounds["max_sum"] = (1, limit)
-            elif dna_name == "subtraction":
-                bounds["max_difference"] = (1, limit)
             elif dna_name == "place_value":
                 if limit >= 1000:
                     bounds["num_digits"] = (1, 4)

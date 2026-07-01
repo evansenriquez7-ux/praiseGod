@@ -78,7 +78,6 @@ This results in the following discrete scalar mapping:
 3. **Scalar `1.0`**: Maps to the 3rd difficulty (e.g., counting by 10s)
 
 ## The `number_difficulty` Dimension
-
 The `number_difficulty` dimension controls the cognitive complexity of the specific numbers chosen within a given boundary. It acts as an independent scale from the maximum range, preventing a computationally "hard" math problem (like 3-digit addition) from accidentally selecting cognitively easy numbers (like `100 + 100`).
 
 > [!NOTE]
@@ -101,6 +100,41 @@ Currently, the `number_difficulty` score (a normalized scalar from `0.0` to `1.0
    - **Simplification State (20% weight)**: Unsimplified fractions (`gcd(n, d) > 1`) receive a penalty as they require reduction.
 
 4. **Pairs (Two Operands)**:
-   - When generating an operation involving two numbers (e.g., `a + b`), the difficulty scores of both candidates are combined using a Root Mean Square (RMS) formula: `sqrt((score_a² + score_b²) / 2.0)`.
+   - When generating an operation involving two numbers (e.g. `a + b`), the difficulty scores of both candidates are combined using a Root Mean Square (RMS) formula: `sqrt((score_a² + score_b²) / 2.0)`.
 
 Once the scores are calculated for all candidate numbers within the bounds, the engine uses the **Windowed Sampling** logic to randomly select a number that falls exactly into the active difficulty window.
+
+## Axis Policy: Result-Bound vs. Operand-Bound (2026-07-01)
+
+The catalog distinguishes between two kinds of axis bounds, and the policy is: **only add an axis if the LC explicitly requires it.**
+
+### Result-bound axes (kept only when the LC requires them)
+
+| Axis | DNA | Bound | Required by |
+|---|---|---|---|
+| `max_sum` | addition | The result `a + b` | LCs that say "sums up to N" |
+| `max_product` | multiplication | The result `a × b` | LCs that say "products up to N" |
+| `max_total` | money | The total of coins/bills | LCs that say "up to ₱N" (money-domain result) |
+
+**Removed in this refactor:**
+- `max_difference` from **all 9 subtraction nodes** (no MATATAG K-3 LC says "differences up to N" — all say "both numbers are less than N", which is operand-bound)
+- `max_quotient` from **all 10 division nodes** (no MATATAG K-3 LC says "quotients up to N" — all say "2,3,4,5,10 tables" or "2- to 3-digit numbers", which is operand-bound)
+
+### Operand-bound competencies (no axis needed)
+
+Most MATATAG K-3 LCs say "operands less than N" (e.g. "Subtract numbers where both numbers are less than 100"). The operand bound is already enforced by the DNA's per-grade `_PARAM_BOUNDS[grade]` (g1: a<100, g2: a<1000, g3: a<10000 for subtraction; q_max varies for division).
+
+**Why the previous `max_difference` axis was wrong:** the axis bounds the *minuend* (a), not both operands. For an LC like "Subtract numbers where both numbers are less than 100", the axis value of 100 would allow `a=100, b=99` (minuend OK) but not `a=100, b=200` (minuend OK, b > a anyway). In practice the DNA's `a > b` constraint made it accidentally correct for operand-bound LCs, but the axis name did not match its semantic intent. Removing it eliminates the redundancy and the audit's 5x profile-count bloat.
+
+### `number_difficulty`
+
+Kept on all operational nodes. It does real work for some LCs (e.g. "identify the place value of the digit 7 in 873") and noise for others. Decided per-LC as needed.
+
+### How to add a new axis
+
+If a future LC says "differences up to N" or "quotients up to N":
+
+1. Add the axis back to the concept's entry in `axes_catalog.py` (under that DNA's key)
+2. Add a `profile.get("max_X")` lookup in the corresponding DNA, falling back to the per-grade `_PARAM_BOUNDS` when not present
+3. Update the competency-text parser in `registry.py` to extract the bound from the LC text
+4. Document the rationale in this file and in `axes_catalog.py`'s header

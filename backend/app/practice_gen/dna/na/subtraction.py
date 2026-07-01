@@ -128,14 +128,14 @@ def generate_params(
     Generate (a, b) with a >= b that satisfy the difficulty_profile constraints.
 
     Uses smart candidate generation:
-    1. Build candidate pool based on max_difference and number_type
+    1. Build candidate pool from per-grade _PARAM_BOUNDS (operand ceiling)
     2. Filter pairs by regrouping constraint
     3. Randomly select from valid pairs
 
     Supports difficulty dimensions:
-    - max_difference: numeric value (e.g., 20) - continuous dimension
     - regrouping: "none", "ones", "tens", "double" - discrete
     - number_type: "non_round", "round" - discrete
+    - number_difficulty: continuous (0.0-1.0)
 
     Supports contextual variants:
     - context: "pure" (default) or "word_problem"
@@ -154,17 +154,14 @@ def generate_params(
     g_key = f"g{max(1, min(grade, 3))}"
     bounds = _PARAM_BOUNDS[g_key]
     max_minuend_bound = bounds["a"][1]
-    
-    # Retrieve explicitly set maximum bound from profile, fallback to curriculum absolute maximum
-    max_diff_value = profile.get("max_difference") or profile.get("max_sum")
-    if max_diff_value is not None:
-        if isinstance(max_diff_value, (int, float)):
-            max_minuend = int(max_diff_value)
-        elif isinstance(max_diff_value, str):
-            legacy_map = {"up_to_10": 10, "up_to_20": 20, "up_to_50": 50, "up_to_100": 100, "up_to_1000": 1000}
-            max_minuend = legacy_map.get(max_diff_value, max_minuend_bound)
-    else:
-        max_minuend = max_minuend_bound
+
+    # Operand bound: the per-grade `_PARAM_BOUNDS[grade]["a"][1]` already
+    # aligns with the LCs' operand-bound language ("both numbers are
+    # less than N" → g1: a<100, g2: a<1000, g3: a<10000). The
+    # `max_difference` axis was removed from the catalog on 2026-07-01
+    # because no MATATAG K-3 LC specifies a result ceiling for
+    # subtraction — see axes_catalog.py header.
+    max_minuend = max_minuend_bound
 
     # Ensure reasonable bounds
     max_minuend = max(2, min(max_minuend, 10000))
@@ -270,7 +267,7 @@ def generate_params(
         "blank_target": blank_target,
         "context": context,
         "structure": structure,
-        "max_difference": max_minuend,
+        "max_minuend": max_minuend,
     }
 
     return result_dict
