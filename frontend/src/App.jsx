@@ -146,6 +146,7 @@ function App() {
 
   // Enhanced Lab v2: difficulty dimensions, variants, formatters
   const [labConfig,            setLabConfig]            = useState(null); // full config from /api/matatag/lab/config/{node_id}
+  const [labConfigError,       setLabConfigError]       = useState(''); // error message from failed fetchLabConfig (AGENTS.md rule #4: surface failures honestly)
   const [labDifficultyScalars, setLabDifficultyScalars] = useState({}); // {dimension_name: scalar}
   const [labVariantValues,     setLabVariantValues]     = useState({}); // {variant_name: value}
   const [labSelectedFormatter, setLabSelectedFormatter] = useState('mcq');
@@ -901,15 +902,17 @@ function App() {
     if (!nodeId) return;
     setLabConfigLoading(true);
     setLabConfig(null);
+    setLabConfigError('');
     setLabDifficultyScalars({});
     setLabVariantValues({});
     setLabSelectedFormatter('mcq');
     _resetMatatagState();
     try {
       const res = await fetch(`${API_BASE}/matatag/lab/config/${nodeId}`);
-      if (!res.ok) throw new Error('Failed to load lab config');
+      if (!res.ok) throw new Error(`Failed to load lab config (HTTP ${res.status})`);
       const data = await res.json();
       setLabConfig(data);
+      setLabConfigError('');
 
       // Seed defaults for difficulty scalars (all at 0.0 = easiest)
       const defaultScalars = {};
@@ -976,6 +979,7 @@ function App() {
       }
     } catch (err) {
       console.error('fetchLabConfig failed:', err);
+      setLabConfigError(err && err.message ? err.message : String(err));
     } finally {
       setLabConfigLoading(false);
     }
@@ -2789,7 +2793,7 @@ function App() {
             setSelectedStudent, setTelemetrySessionId, setParentLoggedIn, setParentError,
             matatagNodeId, matatagNodes,
             fetchMatatagNodes, fetchIntroNodes, fetchIntroInterests,
-            modelsLoading, modelFilter, setModelFilter, setAnalyticsData, _resetMatatagState, labAllowedDifficulties, labVariantValues, labSelectedFormatter, setLabSelectedInterest, fetchParentGraph, opencodeModel, parentAuthRequired, matatagNodeSearch, setLabAllowedContexts, fetchParentAnalytics, labDifficultyScalars, setEditTelemetryEnabled, fetchProfiles, fetchMatatagQuestion, opencodeModels, fetchMatatagAxes, labAllowedFormatters, saveLabConfig, labInterests, handleUpdateSettings, setLabAllowedFormatters, matatagAxisValues, activeQuestion, parentSelectedGrade, setMatatagNodeId, setParentSubjectFilter, setParentSelectedGrade, setLabAllowedDifficulties, matatagQuestion, handleToggleParentAuth, matatagResult, parentSubjectFilter, labSelectedInterest, setMatatagNodeSearch, analyticsData, matatagLoading, labConfig, labConfigLoading, setMatatagAnswer, matatagAnswer, editTelemetryEnabled, labAllowedContexts, submitMatatagAnswer, handleOpencodeModelChange, parentGraphData, fetchLabConfig, setShowFlagModal}}
+            modelsLoading, modelFilter, setModelFilter, setAnalyticsData, _resetMatatagState, labAllowedDifficulties, labVariantValues, labSelectedFormatter, setLabSelectedInterest, fetchParentGraph, opencodeModel, parentAuthRequired, matatagNodeSearch, setLabAllowedContexts, fetchParentAnalytics, labDifficultyScalars, setEditTelemetryEnabled, fetchProfiles, fetchMatatagQuestion, opencodeModels, fetchMatatagAxes, labAllowedFormatters, saveLabConfig, labInterests, handleUpdateSettings, setLabAllowedFormatters, matatagAxisValues, activeQuestion, parentSelectedGrade, setMatatagNodeId, setParentSubjectFilter, setParentSelectedGrade, setLabAllowedDifficulties, matatagQuestion, handleToggleParentAuth, matatagResult, parentSubjectFilter, labSelectedInterest, setMatatagNodeSearch, analyticsData, matatagLoading, labConfig, labConfigLoading, labConfigError, setLabConfigError, setMatatagAnswer, matatagAnswer, editTelemetryEnabled, labAllowedContexts, submitMatatagAnswer, handleOpencodeModelChange, parentGraphData, fetchLabConfig, setShowFlagModal}}
           />
         )}
       </main>
