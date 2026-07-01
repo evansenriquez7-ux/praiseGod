@@ -126,3 +126,71 @@ def test_carveout_empty_stem():
 def test_carveout_set_is_nonempty():
     # Regression net: if someone accidentally clears the set, fail loud.
     assert len(PROMPT_TARGET_STEM_PATTERNS) >= 6
+
+
+"""
+Standalone-number semantic-leak check (separate from PROMPT_TARGET_STEM_PATTERNS).
+The audit's check uses `(?<!\d)N(?!\d)` to ensure N is a standalone number in
+the stem, not a digit within a multi-digit number like "12" or "100".
+"""
+
+import re
+
+
+def _is_standalone_number_in_stem(answer, stem):
+    """Re-implements the audit's semantic-leak check."""
+    pattern = rf"(?<!\d){re.escape(str(answer))}(?!\d)"
+    return bool(re.search(pattern, stem))
+
+
+def test_standalone_number_check_positive_when_actually_standalone():
+    # "3" appears as a standalone number (not part of a larger number)
+    stem = "Maria has 3 apples. She buys 2 more. How many in all?"
+    assert _is_standalone_number_in_stem(3, stem) is True
+
+
+def test_standalone_number_check_negative_when_part_of_larger_number():
+    # "2" is part of "12" (the blank) — should NOT be flagged
+    stem = "Mika has 1___ colored pencils. Mika gives away 10 colored pencils. How many colored pencils does Mika have left?"
+    assert _is_standalone_number_in_stem(2, stem) is False
+
+
+def test_standalone_number_check_negative_when_part_of_larger_number_2():
+    # "5" is part of "15" — should NOT be flagged
+    stem = "There are 15 mystery novels on the table. Kuya Dex takes away 1. How many are left?"
+    # answer is 14, not 5; this is just testing the pattern
+    assert _is_standalone_number_in_stem(5, "There are 15 mystery novels. She gives away 1. How many are left?") is False
+
+
+def test_standalone_number_check_positive_for_larger_answer():
+    # "12" is the answer and appears standalone in the stem
+    stem = "Maria has 5 apples and gets 7 more. How many in all? 12"
+    assert _is_standalone_number_in_stem(12, stem) is True
+
+
+def test_standalone_number_check_negative_for_larger_answer_part_of_larger():
+    # "12" is part of "120" — should NOT be flagged
+    stem = "The number is 120. Subtract 108. What is the result."
+    assert _is_standalone_number_in_stem(12, stem) is False
+
+
+def test_standalone_number_check_handles_negative_answer():
+    # Negative numbers (e.g. -3) — the dash is a non-digit, so the check works
+    stem = "The temperature is -3 degrees."
+    assert _is_standalone_number_in_stem(-3, stem) is True
+
+
+def test_standalone_number_check_handles_zero():
+    stem = "0 apples are left."
+    assert _is_standalone_number_in_stem(0, stem) is True
+    stem = "100 apples are left."
+    assert _is_standalone_number_in_stem(0, stem) is False
+
+
+def test_standalone_number_check_word_boundary_at_punctuation():
+    # "3" at the end of a sentence (followed by period) should still match
+    stem = "The answer is 3."
+    assert _is_standalone_number_in_stem(3, stem) is True
+    # "3" followed by another number "3" — should NOT match
+    stem = "The answer is 33."
+    assert _is_standalone_number_in_stem(3, stem) is False

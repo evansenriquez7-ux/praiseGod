@@ -648,7 +648,15 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                             # etc. The answer is in the stem by design.
                             pass
                         else:
-                            pattern = rf"\b{correct_answer}\b"
+                            # Match the answer as a STANDALONE number in the
+                            # stem, not as a digit within a multi-digit number.
+                            # E.g. for "Mika has 1___ pencils. Gives away 10.
+                            # How many left?" with answer=2, the '2' is part
+                            # of '12' (the blank), not a standalone operand.
+                            # The lookbehind (?<!\d) and lookahead (?!\d)
+                            # ensure the answer digits are not adjacent to
+                            # other digits in the stem.
+                            pattern = rf"(?<!\d){re.escape(str(correct_answer))}(?!\d)"
                             if re.search(pattern, question_text):
                                 failures.setdefault(node_id, []).append(
                                     f"Sample {seed} Semantic Leak: Answer '{correct_answer}' appears in stem: '{question_text}'"
