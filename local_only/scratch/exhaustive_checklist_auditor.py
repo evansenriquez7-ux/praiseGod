@@ -5,6 +5,7 @@ import re
 import itertools
 import traceback
 from collections import defaultdict
+from typing import Tuple, List, Dict, Any
 
 # Add project root to python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
@@ -381,7 +382,14 @@ def _strict_scalar_endpoint_violates(actual_val, expected):
     return abs(actual_val - expected) > 1
 
 
-def check_checklist_compliance():
+def run_audit() -> Tuple[Dict[str, List[str]], List[Dict[str, Any]]]:
+    """Run the full checklist audit and return (failures, repro_crashes)
+    without writing to disk or exiting. Used by the test suite as the CI guard.
+
+    Per AGENTS.md rule #4 (no silent fallbacks): this function does not
+    swallow exceptions and does not skip nodes. Every node either contributes
+    its results to the returned dicts or raises AuditHarnessError.
+    """
     print("Praise God! Starting Unified Checklist Auditor for all matatag nodes...")
     node_ids = [n for n in get_all_node_ids() if "mat_g" in n]
     total_checked = 0
@@ -723,6 +731,19 @@ def check_checklist_compliance():
     print("\n" + "=" * 80)
     print(f"Checklist Audit Finished: Checked {total_checked} generated problems across all nodes. {len(failures)} nodes have violations.")
     print("=" * 80)
+
+    return dict(failures), repro_crashes
+
+
+def check_checklist_compliance():
+    """CLI entry point: runs the audit, writes JSON reports, exits 0/1.
+
+    Thin wrapper around run_audit() that handles file I/O and process
+    exit codes. The test suite calls run_audit() directly so it can
+    assert on the returned (failures, repro_crashes) without touching
+    disk or terminating the process.
+    """
+    failures, repro_crashes = run_audit()
 
     report_path = "checklist_audit_report.json"
     with open(report_path, "w") as f:
