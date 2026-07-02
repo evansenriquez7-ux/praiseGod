@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-07-02)
 
 ## Corpus Check
-- 245 files · ~1,706,559 words
+- 245 files · ~1,706,779 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2362 nodes · 3650 edges · 180 communities (170 shown, 10 thin omitted)
+- 2362 nodes · 3649 edges · 181 communities (171 shown, 10 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.54)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1a057316`
+- Built from commit: `55fb8885`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -176,6 +176,7 @@
 - [[_COMMUNITY_Community 160|Community 160]]
 - [[_COMMUNITY_Community 174|Community 174]]
 - [[_COMMUNITY_Community 175|Community 175]]
+- [[_COMMUNITY_Community 176|Community 176]]
 - [[_COMMUNITY_Community 177|Community 177]]
 
 ## God Nodes (most connected - your core abstractions)
@@ -205,7 +206,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (180 total, 10 thin omitted)
+## Communities (181 total, 10 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.17
@@ -224,16 +225,16 @@ Cohesion: 0.08
 Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.10
-Nodes (30): _count_decimal_places(), generate_number_by_window(), generate_pair_by_window(), Choose a number randomly from the candidates list within the difficulty range wi, Choose an operand pair randomly from candidate_pairs within the difficulty range, Score signed integers, adding a small penalty for negative numbers., Score a fraction n/d based on:     - Denominator size (40%)     - Numerator/Deno, Ordinal difficulty scales linearly with magnitude (1st is easiest, 100th is hard (+22 more)
+Cohesion: 0.12
+Nodes (26): _count_decimal_places(), generate_number_by_window(), generate_pair_by_window(), Choose a number randomly from the candidates list within the difficulty range wi, Choose an operand pair randomly from candidate_pairs within the difficulty range, Score signed integers, adding a small penalty for negative numbers., Score a fraction n/d based on:     - Denominator size (40%)     - Numerator/Deno, Ordinal difficulty scales linearly with magnitude (1st is easiest, 100th is hard (+18 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.05
 Nodes (37): _gen_g3_dp_q3_bar_graphs(), _gen_g3_dp_q3_probability(), _gen_g3_mg_q1_area(), _gen_g3_mg_q1_lines(), _gen_g3_mg_q2_capacity(), _gen_g3_mg_q2_mass(), _gen_g3_mg_q4_symmetry(), _gen_g3_na_q1_comparing() (+29 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.10
-Nodes (24): DNA, Specification of a mathematical concept for practice generation.      dna_type:, Return param_bounds for grade, falling back to nearest defined grade., Return the index of a level within an axis (0 = easiest)., Return a 0.0–1.0 scalar for a given axis level., build_scaffold_sequence(), Build an ordered list of difficulty profiles for a scaffold sequence.      Each, _detect_axes_served() (+16 more)
+Cohesion: 0.07
+Nodes (43): DNA, Specification of a mathematical concept for practice generation.      dna_type:, Return param_bounds for grade, falling back to nearest defined grade., Return the index of a level within an axis (0 = easiest)., Return a 0.0–1.0 scalar for a given axis level., build_scaffold_sequence(), Build an ordered list of difficulty profiles for a scaffold sequence.      Each, _detect_axes_served() (+35 more)
 
 ### Community 7 - "Community 7"
 Cohesion: 0.21
@@ -320,8 +321,8 @@ Cohesion: 0.16
 Nodes (5): RedisDict, RedisDict, RedisDict, get_cache(), set_cache()
 
 ### Community 28 - "Community 28"
-Cohesion: 0.10
-Nodes (20): @col, Contents, Core Directives, Customizing Tables, Data Types, @default, Defining Types, Enumerations (+12 more)
+Cohesion: 0.14
+Nodes (13): Contents, Customizing Tables, Data Types, Defining Types, Enumerations, Many-to-Many, One-to-Many (Implicit Foreign Key), One-to-One (+5 more)
 
 ### Community 29 - "Community 29"
 Cohesion: 0.08
@@ -436,8 +437,8 @@ Cohesion: 0.11
 Nodes (17): 1. Query Formats (`queryFormat` argument), 1. Vector Similarity Search (Semantic), 2. Full-Text Search (Lexical), 2. Relevance Thresholding (`relevanceThreshold` and `_metadata.relevance`), A. Auto-Embedding Search, A. Generation on Insert, Automatic Embedding Generation (`_embed` server value), B. Custom Vector Search (+9 more)
 
 ### Community 57 - "Community 57"
-Cohesion: 0.07
-Nodes (34): Any, Fill template with interest slots and numeric values.                  Handles s, Serialize to dict for API response., generate_hints(), generate_hints(), enumerate_profiles(), extract_numerical_limits(), get_dimension_ranges() (+26 more)
+Cohesion: 0.33
+Nodes (6): generate_hints(), generate_params(), _inverse_op(), DNA: Missing Number (Number & Algebra)  Covers MATATAG grades 1–3 missing-number, Rejection-sample a missing-number equation matching difficulty_profile.      Ret, Return 2–4 step-by-step hint strings for the given missing-number problem.
 
 ### Community 59 - "Community 59"
 Cohesion: 0.12
@@ -460,8 +461,8 @@ Cohesion: 0.22
 Nodes (9): _expanded_form(), generate_hints(), generate_params(), DNA: Place Value (Number & Algebra)  Refactored from:   - matatag_skeletons.py, Insert a zero into a middle position (not leading, not trailing)., Rejection-sample a number and target position that satisfy difficulty_profile., Return 2–4 step-by-step hint strings for the given place value problem., Return expanded form string, e.g. 3_digit 253 → '200 + 50 + 3'. (+1 more)
 
 ### Community 65 - "Community 65"
-Cohesion: 0.09
-Nodes (18): A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params(), DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile., generate_hints(), generate_params() (+10 more)
+Cohesion: 0.05
+Nodes (37): Any, Fill template with interest slots and numeric values.                  Handles s, A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, Serialize to dict for API response., VocabGated, generate_hints(), generate_hints(), generate_hints() (+29 more)
 
 ### Community 66 - "Community 66"
 Cohesion: 0.50
@@ -537,7 +538,7 @@ Nodes (9): _build_params(), _build_traps(), _correct_answer(), format_ten_frame(
 
 ### Community 84 - "Community 84"
 Cohesion: 0.29
-Nodes (6): generate_hints(), generate_params(), DNA: Counting (Number & Algebra)  Refactored from:   - matatag_skeletons.py  (co, Generate counting parameters satisfying difficulty_profile., Return 2–4 step-by-step hint strings for the given counting problem., _select_skip()
+Nodes (7): @col, Core Directives, @default, @index, @searchable, @table, @unique
 
 ### Community 85 - "Community 85"
 Cohesion: 0.33
@@ -556,8 +557,8 @@ Cohesion: 0.14
 Nodes (14): 1. Define Data Model (`schema/schema.gql`), 2. Define Authorized Operations (`connector/queries.gql`, `connector/mutations.gql`), 3. Use type-safe SDK in your apps, Deployment & CLI, Development Workflow, Examples, Feature Capability Map, Firebase SQL Connect (+6 more)
 
 ### Community 90 - "Community 90"
-Cohesion: 0.14
-Nodes (14): 1. Generate Firestore Rules, 3. Strict Path and Relationship Scoping, 4. Secure Counter Updates, 5. **CRITICAL** Ensure Application Validity, Advanced Validation for Business Logic, Critical Constraints, Critical Directives for Secure Generation, **CRITICAL** RBAC Guidelines (+6 more)
+Cohesion: 0.33
+Nodes (6): 3. Strict Path and Relationship Scoping, 4. Secure Counter Updates, 5. **CRITICAL** Ensure Application Validity, Advanced Validation for Business Logic, Phase-3: Devil's Advocate Attack, Phase-4: Syntactic Validation
 
 ### Community 91 - "Community 91"
 Cohesion: 0.11
@@ -680,7 +681,7 @@ Cohesion: 0.22
 Nodes (8): Collection Group Support, Collections, Document Data Model, Documents, Examples, Firestore Data Model Reference, Subcollections, Use Cases
 
 ### Community 121 - "Community 121"
-Cohesion: 0.20
+Cohesion: 0.22
 Nodes (9): CLI Commands, Config files, Firestore Indexes Reference, Index Density, Index Ordering, Index Structure, Management, Query Support Examples (+1 more)
 
 ### Community 122 - "Community 122"
@@ -688,7 +689,7 @@ Cohesion: 0.22
 Nodes (8): 1. Initialization, 2. Decision Framework: Pipelines vs. Standard Queries, 3. Pipeline Examples, 4. Real-Time Listener & Document Operations, Full-Text Search, Relational Joins Pattern, Rules & Accountability, Web SDK Usage (Enterprise Native Mode)
 
 ### Community 123 - "Community 123"
-Cohesion: 0.11
+Cohesion: 0.10
 Nodes (20): log_interpolate(), Logarithmic interpolation between min_val and max_val at position t.      Produc, generate_hints(), generate_params(), DNA: Mass and Capacity (Measurement & Geometry)  Covers MATATAG grade 3 mass and, Returns measurement value(s) and the answer.     For 'convert' task: produces va, generate_hints(), generate_params() (+12 more)
 
 ### Community 124 - "Community 124"
@@ -712,7 +713,7 @@ Cohesion: 0.25
 Nodes (7): Add Swift Package Dependencies, Follow up Steps, Initialize Firebase in App Code, Project and App Setup, Fetch and Activate Values, Firebase Remote Config iOS Setup Guide, Set In-App Defaults
 
 ### Community 129 - "Community 129"
-Cohesion: 0.18
+Cohesion: 0.25
 Nodes (8): 1. Create a Firestore Enterprise Database, 2. Create `firebase.json`, 2. Create `firestore.rules`, 3. Create `firestore.indexes.json`, Deploy rules and indexes, Local Emulation, Manual Initialization, Provisioning Firestore Enterprise Native Mode
 
 ### Community 130 - "Community 130"
@@ -797,7 +798,7 @@ Nodes (3): Android Studio Setup, MCP Setup, Skills Installation
 
 ### Community 156 - "Community 156"
 Cohesion: 0.25
-Nodes (8): generate_hints(), generate_params(), DNA: Addition (Number & Algebra)  Refactored from:   - matatag_skeletons.py  (ar, Check if a pair satisfies regrouping difficulty based on COUNT of places.      D, Generate (a, b) that satisfy the difficulty_profile constraints.      Uses smart, Return 2–4 step-by-step hint strings for the given addition problem., # NOTE: "structure" is a contextual variant, not a difficulty dimension., _satisfies_regrouping()
+Nodes (8): generate_hints(), generate_params(), DNA: Addition (Number & Algebra)  Refactored from:   - matatag_skeletons.py  (ar, Check if a pair satisfies regrouping difficulty based on COUNT of places.      C, Generate (a, b) that satisfy the difficulty_profile constraints.      Uses smart, Return 2–4 step-by-step hint strings for the given addition problem., # NOTE: "structure" is a contextual variant, not a difficulty dimension., _satisfies_regrouping()
 
 ### Community 157 - "Community 157"
 Cohesion: 0.36
@@ -808,8 +809,12 @@ Cohesion: 0.27
 Nodes (9): generate_hints(), generate_params(), _ordinal_suffix(), _ordinal_word(), DNA: Ordinal Numbers (Number & Algebra)  Static-bank DNA. Item pool is authored, Static-bank generator: pick a template and fill in a random ordinal value., Return 2–4 step-by-step hints for an ordinal number problem., Return '1st', '2nd', '3rd', '4th', … for any positive integer. (+1 more)
 
 ### Community 174 - "Community 174"
-Cohesion: 0.29
-Nodes (7): 1. Create `firebase.json`, 2. Create `firestore.rules`, 3. Create `firestore.indexes.json`, Deploy database, rules and indexes, Local Emulation, Manual Initialization, Provisioning Cloud Firestore
+Cohesion: 0.16
+Nodes (9): 1. Create `firebase.json`, 2. Create `firestore.rules`, 3. Create `firestore.indexes.json`, Deploy database, rules and indexes, Local Emulation, Manual Initialization, Provisioning Cloud Firestore, 1. Generate Firestore Rules (+1 more)
+
+### Community 176 - "Community 176"
+Cohesion: 0.33
+Nodes (6): Critical Directives for Secure Generation, **CRITICAL** RBAC Guidelines, Mandatory: User Data Separation (The "No Mixed Content" Rule), Phase-1: Codebase Analysis, Phase-2: Security Rules Generation, Workflow
 
 ### Community 177 - "Community 177"
 Cohesion: 0.24
@@ -823,17 +828,17 @@ Nodes (9): _boundary_distance(), generate_hints(), generate_params(), DNA: Round
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `get_cache()` connect `Community 27` to `Community 36`, `Community 76`, `Community 20`, `Community 22`, `Community 57`?**
+- **Why does `get_cache()` connect `Community 27` to `Community 65`, `Community 36`, `Community 76`, `Community 20`, `Community 22`?**
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **Why does `DNA` connect `Community 6` to `Community 160`, `Community 65`, `Community 64`, `Community 4`, `Community 71`, `Community 72`, `Community 7`, `Community 74`, `Community 78`, `Community 92`, `Community 177`, `Community 52`, `Community 84`, `Community 55`, `Community 57`, `Community 123`, `Community 156`?**
+- **Why does `DNA` connect `Community 6` to `Community 160`, `Community 65`, `Community 64`, `Community 4`, `Community 71`, `Community 72`, `Community 7`, `Community 74`, `Community 78`, `Community 92`, `Community 177`, `Community 52`, `Community 55`, `Community 57`, `Community 123`, `Community 156`?**
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **Why does `FormattedProblem` connect `Community 52` to `Community 35`, `Community 69`, `Community 70`, `Community 39`, `Community 105`, `Community 139`, `Community 13`, `Community 141`, `Community 79`, `Community 80`, `Community 81`, `Community 50`, `Community 51`, `Community 61`, `Community 83`, `Community 22`, `Community 57`, `Community 157`?**
+- **Why does `FormattedProblem` connect `Community 52` to `Community 65`, `Community 35`, `Community 69`, `Community 70`, `Community 39`, `Community 105`, `Community 139`, `Community 13`, `Community 141`, `Community 79`, `Community 80`, `Community 81`, `Community 50`, `Community 51`, `Community 61`, `Community 83`, `Community 22`, `Community 157`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **What connects `graphify`, `PackageDescription`, `Foundation` to the rest of the system?**
-  _1245 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1246 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `Community 3` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `Community 4` be split into smaller, more focused modules?**
-  _Cohesion score 0.09659090909090909 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11576354679802955 - nodes in this community are weakly interconnected._

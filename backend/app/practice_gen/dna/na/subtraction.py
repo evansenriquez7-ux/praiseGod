@@ -92,17 +92,28 @@ def _satisfies_regrouping(a: int, b: int, level: str) -> bool:
     """Check if a pair satisfies borrowing difficulty based on COUNT of places.
 
     For subtraction, borrowing (regrouping) occurs when a digit in b > corresponding digit in a.
+    Counts borrows across all digit places (ones, tens, hundreds, thousands, etc).
+
     Difficulty levels:
     - "none": 0 places require borrowing
     - "one_place": exactly 1 place requires borrowing
-    - "two_places": both places require borrowing
+    - "two_places": exactly 2 places require borrowing
+    - "three_places": exactly 3 places require borrowing
+    - "four_places": 4+ places require borrowing
     """
-    ones_needs_borrow = (a % 10) < (b % 10)
-    # After potential ones borrow, adjusted tens digit of a
-    a_tens = (a // 10 % 10) - (1 if ones_needs_borrow else 0)
-    tens_needs_borrow = a_tens < (b // 10 % 10)
+    borrow_count = 0
+    borrow = 0
 
-    borrow_count = int(ones_needs_borrow) + int(tens_needs_borrow)
+    # Process each digit place from ones to ten-thousands
+    for place_value in [1, 10, 100, 1000]:
+        digit_a = (a // place_value) % 10 - borrow
+        digit_b = (b // place_value) % 10
+
+        if digit_a < digit_b:
+            borrow_count += 1
+            borrow = 1
+        else:
+            borrow = 0
 
     if level == "none":
         return borrow_count == 0
@@ -110,11 +121,19 @@ def _satisfies_regrouping(a: int, b: int, level: str) -> bool:
         return borrow_count == 1
     if level == "two_places":
         return borrow_count == 2
+    if level == "three_places":
+        return borrow_count == 3
+    if level == "four_places":
+        return borrow_count >= 4
     # Legacy support for old naming
     if level == "ones":
-        return borrow_count == 1 and ones_needs_borrow
+        ones_needs = (a % 10) < (b % 10)
+        return borrow_count == 1 and ones_needs
     if level == "tens":
-        return borrow_count == 1 and tens_needs_borrow
+        ones_needs = (a % 10) < (b % 10)
+        a_tens = (a // 10 % 10) - (1 if ones_needs else 0)
+        tens_needs = a_tens < (b // 10 % 10)
+        return borrow_count == 1 and tens_needs
     if level == "double":
         return borrow_count == 2
     return True

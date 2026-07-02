@@ -103,17 +103,29 @@ VOCAB_REGROUP   = VocabGated(requires_vocab="regroup", preferred="regroup",     
 def _satisfies_regrouping(a: int, b: int, level: str) -> bool:
     """Check if a pair satisfies regrouping difficulty based on COUNT of places.
 
-    Difficulty levels:
-    - "none": 0 places require regrouping (both sums < 10)
-    - "one_place": exactly 1 place requires regrouping
-    - "two_places": both places require regrouping (both sums >= 10)
-    """
-    ones_sum = (a % 10) + (b % 10)
-    tens_sum = (a // 10 % 10) + (b // 10 % 10)
+    Counts carries across all digit places (ones, tens, hundreds, thousands, etc).
 
-    ones_needs_carry = ones_sum >= 10
-    tens_needs_carry = tens_sum >= 10
-    carry_count = int(ones_needs_carry) + int(tens_needs_carry)
+    Difficulty levels:
+    - "none": 0 places require regrouping
+    - "one_place": exactly 1 place requires regrouping
+    - "two_places": exactly 2 places require regrouping
+    - "three_places": exactly 3 places require regrouping
+    - "four_places": 4+ places require regrouping
+    """
+    carry_count = 0
+    carry = 0
+
+    # Process each digit place from ones to ten-thousands
+    for place_value in [1, 10, 100, 1000]:
+        digit_a = (a // place_value) % 10
+        digit_b = (b // place_value) % 10
+        digit_sum = digit_a + digit_b + carry
+
+        if digit_sum >= 10:
+            carry_count += 1
+            carry = 1
+        else:
+            carry = 0
 
     if level == "none":
         return carry_count == 0
@@ -121,11 +133,19 @@ def _satisfies_regrouping(a: int, b: int, level: str) -> bool:
         return carry_count == 1
     if level == "two_places":
         return carry_count == 2
+    if level == "three_places":
+        return carry_count == 3
+    if level == "four_places":
+        return carry_count >= 4
     # Legacy support for old naming
     if level == "ones":
-        return carry_count == 1 and ones_needs_carry
+        ones_needs = ((a % 10) + (b % 10)) >= 10
+        tens_needs = ((a // 10 % 10) + (b // 10 % 10)) >= 10
+        return carry_count == 1 and ones_needs
     if level == "tens":
-        return carry_count == 1 and tens_needs_carry
+        ones_needs = ((a % 10) + (b % 10)) >= 10
+        tens_needs = ((a // 10 % 10) + (b // 10 % 10)) >= 10
+        return carry_count == 1 and tens_needs
     if level == "double":
         return carry_count == 2
     return True
