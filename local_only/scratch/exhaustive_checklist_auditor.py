@@ -676,18 +676,25 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                             # etc. The answer is in the stem by design.
                             pass
                         else:
-                            # Match the answer as a STANDALONE number in the
-                            # stem, not as a digit within a multi-digit number.
-                            # E.g. for "Mika has 1___ pencils. Gives away 10.
-                            # How many left?" with answer=2, the '2' is part
-                            # of '12' (the blank), not a standalone operand.
-                            # The lookbehind (?<!\d) and lookahead (?!\d)
-                            # ensure the answer digits are not adjacent to
-                            # other digits in the stem.
-                            pattern = rf"(?<!\d){re.escape(str(correct_answer))}(?!\d)"
-                            if re.search(pattern, question_text):
+                            # Count-based semantic leak detection:
+                            # Only flag if the answer appears MORE times in the stem
+                            # than can be explained by given (non-answer) operands.
+                            # This distinguishes genuine leaks from coincidental-equality
+                            # cases where a given operand's value happens to match the answer.
+                            answer_str = str(correct_answer)
+                            pattern = rf"(?<!\d){re.escape(answer_str)}(?!\d)"
+                            stem_occurrences = len(re.findall(pattern, question_text))
+
+                            given_values = legacy.get("given_values") or {}
+                            # Count how many given operands equal the answer
+                            explainable_occurrences = sum(
+                                1 for v in given_values.values() if str(v) == answer_str
+                            )
+
+                            if stem_occurrences > explainable_occurrences:
+                                # Genuine leak: answer appears more times than given operands can explain
                                 failures.setdefault(node_id, []).append(
-                                    f"Sample {seed} Semantic Leak: Answer '{correct_answer}' appears in stem: '{question_text}'"
+                                    f"Sample {seed} Semantic Leak: Answer '{correct_answer}' appears {stem_occurrences} times in stem (more than {explainable_occurrences} given operands): '{question_text}'"
                                 )
 
                 textual_formatters = ("mcq", "cloze", "ordering", "true_false", "error_detect", "sort_order")

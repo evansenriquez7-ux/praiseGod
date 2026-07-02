@@ -525,7 +525,14 @@ def _build_symbolic_question(
     # ── Number reading ────────────────────────────────────────────────────────
     if concept == "number_reading":
         number = values.get("number", a)
-        return f"Read aloud or write in words: {number}."
+        word_form = values.get("word_form")
+        task_type = values.get("task_type", "numeral_to_word")
+        if task_type == "word_to_numeral" and word_form:
+            return f"Write the number: {word_form}."
+        elif task_type == "numeral_to_expanded":
+            return f"Write {number} in expanded form."
+        else:
+            return f"Write {number} in words."
 
     # ── Time reading ──────────────────────────────────────────────────────────
     if concept == "time_reading":

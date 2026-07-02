@@ -122,6 +122,8 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
         experience_config=None,
         interest_theme=ctx.interest_theme,
         spine_id=ctx.spine_id,
+        given_values={k: v for k, v in ctx.values.items() if k != ctx.blank_target} if ctx.values else None,
+        blank_target=ctx.blank_target,
         analytics={
             "time_to_answer_ms": None,
             "trap_triggered": None,

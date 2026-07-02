@@ -639,4 +639,7 @@ def to_legacy_dict(problem: FormattedProblem) -> Dict[str, Any]:
         "format_data": problem.format_data,
         "experience": problem.experience,
         "interest_theme": problem.interest_theme,
+        # Audit fields for semantic-leak detection
+        "given_values": problem.given_values,
+        "blank_target": problem.blank_target,
     }

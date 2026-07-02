@@ -438,6 +438,15 @@ class FormattedProblem(BaseModel):
     # check needs to know which DNA produced the stem).
     dna_name: Optional[str] = None
 
+    # ── Semantic leak detection (for audit) ────────────────────────────────────
+    # For formatters that receive a QuestionContext with numeric operands:
+    # - given_values: dict of all operands EXCEPT the blank_target (non-answer values)
+    # - blank_target: the key in original ctx.values that is the unknown/answer
+    # These allow the audit to distinguish between answers that appear in the stem
+    # because they're legitimate givens vs. genuine leaks.
+    given_values: Optional[Dict[str, Any]] = None
+    blank_target: Optional[str] = None
+
     # ── Analytics capture ─────────────────────────────────────────────────────
     analytics: Dict[str, Any] = field(default_factory=lambda: {
         "time_to_answer_ms": None,

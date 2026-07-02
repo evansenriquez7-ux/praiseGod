@@ -309,4 +309,6 @@ def format_place_value_blocks(
         experience_config=None,
         interest_theme=ctx.interest_theme,
         spine_id=ctx.spine_id,
+        given_values={k: v for k, v in ctx.values.items() if k != ctx.blank_target} if ctx.values else None,
+        blank_target=ctx.blank_target,
     )
