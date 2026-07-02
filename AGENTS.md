@@ -11,7 +11,7 @@ When writing generator code, DNA files, or student-facing content, you must rigi
 3. **Direct Competency Mapping:** The practice problems you generate must *directly* and *exclusively* address the exact MATATAG learning competencies prescribed for that specific node. Do not overcomplicate or stretch beyond the curriculum's explicit scope.
 
 ## Engineering & Verification Constraints
-When writing, modifying, or debugging code for this project, you must follow strict engineering protocols:
+When writing, modifyinor debugging code for this project, you must follow strict engineering protocols:
 1. **Never Assume Success:** Do NOT inform the user that a bug is fixed or a feature is resolved until you have rigorously verified it yourself. When the user finds a bug, always ensure you find the root cause and then fix for the entire web app.
 2. **Mandatory Testing:** Always ensure everything is working from a UI perspective before reporting positively. A fix is only confirmed when you have inspected the output, and proven that the pipeline produces the correct results.
 3. **File Management:** 
@@ -22,5 +22,5 @@ When writing, modifying, or debugging code for this project, you must follow str
 ## Terminology
 gh - github
 node - matatag curriculum subject grade subdomain quarter (ex. mat_g3_na_q4). Contains a related bundle of learning competencies
-lc - learning competency: specific component of a node
-pg - practice problem generator
+lc - learning competency: specific component of a node (ex. mat_g3_na_q4_1).
+pg - practice problem generatorg, 

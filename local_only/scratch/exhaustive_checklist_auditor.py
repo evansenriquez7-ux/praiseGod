@@ -59,6 +59,7 @@ from backend.app.practice_gen.compatibility import (  # noqa: E402
     FORMATTER_VARIANT_SUPPORT,
     FORMATTER_NUMERIC_LIMITS,
 )
+from backend.app.practice_gen.axes_catalog import CONCEPT_AXES_CATALOG  # noqa: E402
 from backend.app.services.orchestrator import PracticeOrchestrator  # noqa: E402
 
 # Number of randomly seeded problems to generate per profile+formatter combination.
@@ -125,13 +126,40 @@ def scan_text(text, forbidden):
     return found
 
 
-def normalize_dim_value(dim, opt):
+def normalize_dim_value(dim, opt, primary_concept=None):
+    """
+    Convert dimension option to profile value.
+
+    For continuous dimensions: interpolate scalar with min/max bounds from axes catalog.
+    For discrete dimensions: return the level/value as-is.
+    """
     if dim.get("dim_type") == "continuous":
-        return opt.get("scalar")
+        scalar = opt.get("scalar", 0.0)
+
+        # Get bounds from axes catalog
+        min_val = dim.get("default_min", 1)
+        max_val = dim.get("default_max", 100)
+        scale = dim.get("scale", "linear")
+
+        # Interpolate: value = min + scalar * (max - min)
+        if scale == "logarithmic":
+            # For log scale: value = min * (max/min)^scalar
+            if min_val > 0 and max_val > 0:
+                import math
+                ratio = max_val / min_val
+                interpolated = min_val * (ratio ** scalar)
+            else:
+                interpolated = min_val + scalar * (max_val - min_val)
+        else:
+            # Linear interpolation
+            interpolated = min_val + scalar * (max_val - min_val)
+
+        return int(round(interpolated))
+
     return opt.get("level")
 
 
-def build_test_profiles(config, supported_variants):
+def build_test_profiles(config, supported_variants, primary_concept=None):
     difficulty_dimensions = config.get("difficulty_dimensions", [])
     contextual_variants = config.get("contextual_variants", [])
 
@@ -150,7 +178,7 @@ def build_test_profiles(config, supported_variants):
                 if isinstance(scalar, (int, float)) and scalar > 1.0:
                     continue
                 new_profile = profile.copy()
-                new_profile[dim["name"]] = normalize_dim_value(dim, opt)
+                new_profile[dim["name"]] = normalize_dim_value(dim, opt, primary_concept)
                 new_profiles.append(new_profile)
         base_profiles = new_profiles
 
@@ -567,7 +595,7 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                 for k, v in sv_for_d.items():
                     sv_union.setdefault(k, set()).update(v)
         supported_variants = {k: sorted(v) for k, v in sv_union.items()}
-        profiles = build_test_profiles(config, supported_variants)
+        profiles = build_test_profiles(config, supported_variants, primary_concept=dnas[0] if dnas else None)
         profiles = [
             p for p in profiles
             if any(formatter_supports_profile(d, formatter, p) for d in dnas)

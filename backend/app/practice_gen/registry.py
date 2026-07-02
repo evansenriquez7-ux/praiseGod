@@ -119,9 +119,9 @@ def _parse_competency_bounds(
     Returns dict mapping dimension names to (min, max) tuples.
     Scalar 0.0 maps to min, scalar 1.0 maps to max.
 
-    Min values are DNA-specific:
-    - addition: min=3 (requires a > 0, b > 0, a ≠ b, so min sum is 1+2=3)
-    - multiplication: min=2 (tables start at 1×1, but we require distinct operands)
+    Min values are curriculum-appropriate:
+    - addition: min=0 (allows 0+0, 0+X, etc. as valid addition problems)
+    - multiplication: min=1 (allows 1×1, 1×2, etc. as valid multiplication problems)
     - other: min=1
 
     When no explicit numeric bound is found in the LC text, a
@@ -131,9 +131,9 @@ def _parse_competency_bounds(
     which would crash the DNA.
 
     Examples:
-        "sums up to 20" → {"max_sum": (3, 20)}
-        "sums up to 100 without regrouping" → {"max_sum": (3, 100)}
-        "products up to 100" → {"max_product": (2, 100)}
+        "sums up to 20" → {"max_sum": (0, 20)}
+        "sums up to 100 without regrouping" → {"max_sum": (0, 100)}
+        "products up to 100" → {"max_product": (1, 100)}
     """
     bounds = {}
     # Strip spaces between digits (e.g. "10 000" -> "10000")
@@ -144,7 +144,7 @@ def _parse_competency_bounds(
         match = re.search(r'sums?\s+(?:up\s+to|of\s+up\s+to|to)\s+(\d+)', text)
         if match:
             max_val = int(match.group(1))
-            bounds["max_sum"] = (3, max_val)
+            bounds["max_sum"] = (0, max_val)
         else:
             # Special case: "X-digit and Y-digit numbers" (e.g., "2-digit and 1-digit")
             # Max sum is (10^X - 1) + (10^Y - 1)
@@ -172,7 +172,7 @@ def _parse_competency_bounds(
         match = re.search(r'products?\s+(?:up\s+to|of\s+up\s+to|to)\s+(\d+)', text)
         if match:
             max_val = int(match.group(1))
-            bounds["max_product"] = (2, max_val)
+            bounds["max_product"] = (0, max_val)
         
         # Parse table level
         if "6, 7, 8, and 9" in text or "6, 7, 8, 9" in text or "6, 7, 8, or 9" in text:
@@ -301,7 +301,7 @@ def _parse_competency_bounds(
             elif dna_name == "money_peso":
                 bounds["max_total"] = (1, limit)
             elif dna_name == "addition":
-                bounds["max_sum"] = (3, limit)
+                bounds["max_sum"] = (0, limit)
             elif dna_name == "place_value":
                 if limit >= 1000:
                     bounds["num_digits"] = (1, 4)
@@ -318,13 +318,13 @@ def _parse_competency_bounds(
     if not any(key in bounds for key in limit_keys):
         grade_defaults = _GRADE_DEFAULT_BOUNDS.get(dna_name, {}).get(grade, {})
         if "max_sum" in grade_defaults and dna_name == "addition":
-            bounds["max_sum"] = (3, grade_defaults["max_sum"])
+            bounds["max_sum"] = (0, grade_defaults["max_sum"])
         elif "max_value" in grade_defaults and dna_name in ("comparing_ordering", "rounding"):
             bounds["max_value"] = (1, grade_defaults["max_value"])
         elif "range_max" in grade_defaults and dna_name in ("counting", "number_reading"):
             bounds["range"] = (10, grade_defaults["range_max"])
         elif "max_product" in grade_defaults and dna_name == "multiplication":
-            bounds["max_product"] = (2, grade_defaults["max_product"])
+            bounds["max_product"] = (0, grade_defaults["max_product"])
         elif "max_total" in grade_defaults and dna_name == "money_peso":
             bounds["max_total"] = (1, grade_defaults["max_total"])
 
