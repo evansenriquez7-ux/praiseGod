@@ -586,15 +586,15 @@ BINDINGS = {
     },
     "mat_g2_na_q1_1": {
         "dna": "number_reading",
-        "visual": "emoji_pictorial"
+        "visual": "place_value_blocks_read"
     },
     "mat_g2_na_q1_2": {
         "dna": "number_reading",
-        "visual": "emoji_pictorial"
+        "visual": "place_value_blocks_read"
     },
     "mat_g2_na_q1_3": {
         "dna": "counting",
-        "visual": "emoji_pictorial"
+        "visual": "bar_chart_read"
     },
     "mat_g2_na_q1_4": {
         "dna": "comparing_ordering",
@@ -798,7 +798,7 @@ BINDINGS = {
     },
     "mat_g3_na_q1_1": {
         "dna": "number_reading",
-        "visual": "emoji_pictorial"
+        "visual": "place_value_blocks_read"
     },
     "mat_g3_na_q1_2": {
         "dna": "ordinal_numbers",
