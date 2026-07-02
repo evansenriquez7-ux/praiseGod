@@ -89,23 +89,34 @@ VOCAB_REGROUP      = VocabGated(requires_vocab="regroup",     preferred="regroup
 # ─── constraint predicates ────────────────────────────────────────────────────
 
 def _satisfies_regrouping(a: int, b: int, level: str) -> bool:
-    """
-    For subtraction, regrouping (borrowing) occurs when a digit in b > corresponding digit in a.
-    We check the ones and tens columns.
+    """Check if a pair satisfies borrowing difficulty based on COUNT of places.
+
+    For subtraction, borrowing (regrouping) occurs when a digit in b > corresponding digit in a.
+    Difficulty levels:
+    - "none": 0 places require borrowing
+    - "one_place": exactly 1 place requires borrowing
+    - "two_places": both places require borrowing
     """
     ones_needs_borrow = (a % 10) < (b % 10)
     # After potential ones borrow, adjusted tens digit of a
     a_tens = (a // 10 % 10) - (1 if ones_needs_borrow else 0)
     tens_needs_borrow = a_tens < (b // 10 % 10)
 
+    borrow_count = int(ones_needs_borrow) + int(tens_needs_borrow)
+
     if level == "none":
-        return not ones_needs_borrow and not tens_needs_borrow
+        return borrow_count == 0
+    if level == "one_place":
+        return borrow_count == 1
+    if level == "two_places":
+        return borrow_count == 2
+    # Legacy support for old naming
     if level == "ones":
-        return ones_needs_borrow and not tens_needs_borrow
+        return borrow_count == 1 and ones_needs_borrow
     if level == "tens":
-        return not ones_needs_borrow and tens_needs_borrow
+        return borrow_count == 1 and tens_needs_borrow
     if level == "double":
-        return ones_needs_borrow and tens_needs_borrow
+        return borrow_count == 2
     return True
 
 

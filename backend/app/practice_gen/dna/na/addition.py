@@ -101,16 +101,33 @@ VOCAB_REGROUP   = VocabGated(requires_vocab="regroup", preferred="regroup",     
 # ─── constraint predicates ────────────────────────────────────────────────────
 
 def _satisfies_regrouping(a: int, b: int, level: str) -> bool:
+    """Check if a pair satisfies regrouping difficulty based on COUNT of places.
+
+    Difficulty levels:
+    - "none": 0 places require regrouping (both sums < 10)
+    - "one_place": exactly 1 place requires regrouping
+    - "two_places": both places require regrouping (both sums >= 10)
+    """
     ones_sum = (a % 10) + (b % 10)
     tens_sum = (a // 10 % 10) + (b // 10 % 10)
+
+    ones_needs_carry = ones_sum >= 10
+    tens_needs_carry = tens_sum >= 10
+    carry_count = int(ones_needs_carry) + int(tens_needs_carry)
+
     if level == "none":
-        return ones_sum < 10 and tens_sum < 10
+        return carry_count == 0
+    if level == "one_place":
+        return carry_count == 1
+    if level == "two_places":
+        return carry_count == 2
+    # Legacy support for old naming
     if level == "ones":
-        return ones_sum >= 10 and tens_sum < 10
+        return carry_count == 1 and ones_needs_carry
     if level == "tens":
-        return ones_sum < 10 and tens_sum >= 10
+        return carry_count == 1 and tens_needs_carry
     if level == "double":
-        return ones_sum >= 10 and tens_sum >= 10
+        return carry_count == 2
     return True
 
 
@@ -176,12 +193,10 @@ def generate_params(
 
     # Difficulty axes
     reg_level  = profile.get("regrouping", "none")
-    if reg_level == "double":
-        max_result = max(110, max_result)
-    elif reg_level == "tens":
-        max_result = max(100, max_result)
-    elif reg_level == "ones":
-        max_result = max(20, max_result)
+    # Note: Regrouping constraint is now based on COUNT of places,
+    # not which place. No min_result enforcement needed; the constraint
+    # itself ensures sufficient variety (one_place and two_places require
+    # multi-digit operands naturally).
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
     # Contextual variants
