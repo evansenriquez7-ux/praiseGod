@@ -78,6 +78,22 @@ FORMATTER_NUMERIC_LIMITS: Dict[str, Dict[str, Any]] = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# GRADE-BASED VARIANT GATING (Vocabulary Gating / Progression Rules)
+# These variants must be filtered at generation time based on grade/quarter.
+# See pgen_checklist.md "Vocabulary Gating" principle.
+# ═══════════════════════════════════════════════════════════════════════════════
+
+GRADE_BASED_VARIANT_GATES = {
+    # (lc, variant_name, variant_value): (min_grade, min_quarter)
+    # Restrict word_problem contexts until Q2+ (after pure skill mastery)
+    ("counting", "context", "word_problem"): (1, 2),
+    ("addition", "context", "word_problem"): (1, 2),
+    ("subtraction", "context", "word_problem"): (1, 4),
+    ("comparing_ordering", "context", "word_problem"): (1, 2),
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # COMPATIBILITY TABLE
 # Each entry mirrors the compatible_formatters list of the DNA instance.
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -131,7 +147,6 @@ COMPATIBILITY: Dict[str, List[str]] = {
         "ordering",           # Ordering makes sense for counting sequences
         "number_line_read",
         "ten_frame",
-        "bar_chart_read",
         "emoji_pictorial",
     ],
 
@@ -141,9 +156,6 @@ COMPATIBILITY: Dict[str, List[str]] = {
         "true_false",
         "number_line_read",
         "number_line_set",
-        "place_value_blocks_read",
-        "place_value_blocks_set",
-        "bar_chart_read",
         "emoji_pictorial",
     ],
 
@@ -260,6 +272,7 @@ COMPATIBILITY: Dict[str, List[str]] = {
     "pictographs": [
         "pictograph_read",
         "pictograph_set",
+        "fill_in_table",
     ],
 
     "bar_graphs": [
@@ -351,7 +364,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     "multiplication": {
         "table": ["2", "3", "4", "5", "10"],
         "structure": ["result_unknown"],
-        "number_type": ["single_digit", "multi_digit"],
+        "number_type": ["single_digit"],
         "context": ["pure", "word_problem"],
     },
 
@@ -402,7 +415,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "fractions": {
-        "fraction_type": ["proper", "improper", "mixed"],
+        "fraction_type": ["proper"],
         "operation": ["add", "subtract"],
         "fraction_model": ["area_model", "set_model", "number_line"],
     },
@@ -562,7 +575,7 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
 
     "fractions": {
         "context": ["pure", "word_problem"],
-        "fraction_type": ["proper", "improper", "mixed"],
+        "fraction_type": ["proper"],
         "operation": ["add", "subtract"],
         # visual models support specific task types
         "fraction_model_read": {"operation": ["identify_name", "compare"]},
@@ -790,5 +803,46 @@ def validate_lab_selection(
             f"Will fall back to 'mcq'."
         )
         result["effective_formatter"] = "mcq"
+
+    return result
+
+
+def get_grade_gated_variants(
+    dna_concept: str,
+    grade: int,
+    quarter: int
+) -> Dict[str, List[str]]:
+    """
+    Return allowed variant values for a DNA concept based on grade/quarter.
+
+    Applies GRADE_BASED_VARIANT_GATES to filter out variants not yet available
+    at the student's current curriculum position.
+
+    Args:
+        dna_concept: DNA concept name, e.g. "addition".
+        grade: Student's grade level (1-3).
+        quarter: Student's quarter (1-4).
+
+    Returns:
+        Dict mapping variant_name → allowed_values for this grade/quarter.
+        Variants not yet gated are unrestricted (all values allowed).
+    """
+    base_variants = get_variants_for_dna(dna_concept)
+    result = {}
+
+    for variant_name, all_values in base_variants.items():
+        allowed = []
+        for value in all_values:
+            gate_key = (dna_concept, variant_name, value)
+            min_gate = GRADE_BASED_VARIANT_GATES.get(gate_key)
+
+            # If this value is gated and student hasn't reached it yet, skip it
+            if min_gate and (grade < min_gate[0] or (grade == min_gate[0] and quarter < min_gate[1])):
+                continue
+
+            allowed.append(value)
+
+        # If no values pass the gate, fall back to all values (don't break generation)
+        result[variant_name] = allowed if allowed else all_values
 
     return result
