@@ -154,27 +154,14 @@ def generate_params(
 
     candidate_pairs = []
     for b in allowed_divisors:
-        # Exclude b == 1: a / 1 = a, so the answer equals the visible
-        # dividend. (semantic leak)
-        if b == 1:
-            continue
         for q in range(1, q_max + 1):
             if rem_level == "none":
                 a = b * q
-                # Exclude a == b: degenerate (q == 1, result == 1).
-                # Exclude a == b*b: then result == b, leaks when the
-                # blank is "result" (e.g. "9 / 3 = ___" with answer 3).
-                if a == b or a == b * b:
-                    continue
                 if _satisfies_remainder(a, b, rem_level):
                     candidate_pairs.append((a, b))
             else:
                 for r in range(1, b):
                     a = b * q + r
-                    # With remainder, a > b*b (since r >= 1 and q >= 1),
-                    # so a == b*b is impossible. Still exclude a == b.
-                    if a == b:
-                        continue
                     if _satisfies_remainder(a, b, rem_level):
                         candidate_pairs.append((a, b))
 

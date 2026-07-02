@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-07-02)
 
 ## Corpus Check
-- 245 files · ~1,706,768 words
+- 245 files · ~1,706,418 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2361 nodes · 3648 edges · 180 communities (171 shown, 9 thin omitted)
+- 2361 nodes · 3648 edges · 180 communities (172 shown, 8 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.54)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7d54a93d`
+- Built from commit: `8510b9a8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -191,8 +191,6 @@
 10. `20. Lessons Learned & Implementation Pitfalls` - 25 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `RedisDict` --uses--> `CompetencyConfiguration`  [INFERRED]
-  backend/app/routes/matatag_router.py → backend/app/models.py
 - `replenish_question_cache()` --calls--> `SessionLocal()`  [EXTRACTED]
   backend/app/routes/matatag_router.py → backend/app/database.py
 - `replenish_question_cache()` --calls--> `SessionLocal()`  [EXTRACTED]
@@ -201,11 +199,13 @@
   backend/app/services/placement.py → backend/app/models.py
 - `PlacementEngine` --uses--> `SkillNode`  [INFERRED]
   backend/app/services/placement.py → backend/app/models.py
+- `PlacementEngine` --uses--> `MasteryState`  [INFERRED]
+  backend/app/services/placement.py → backend/app/models.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (180 total, 9 thin omitted)
+## Communities (180 total, 8 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.17
@@ -284,8 +284,8 @@ Cohesion: 0.07
 Nodes (25): App Hosting Basics, Automated deployment via GitHub (CI/CD), Deploy from Source, Deploying to App Hosting, Description, Emulation, Hosting vs App Hosting, App Hosting CLI Commands (+17 more)
 
 ### Community 19 - "Community 19"
-Cohesion: 0.05
-Nodes (44): load_matatag_curriculum_endpoint(), Load MATATAG (Philippine K-10 Math) curriculum into the skill_nodes table., get_intro_status(), get_matatag_progress(), get_node_config(), mark_intro_viewed(), matatag_lab_generate(), Read the enabled checkboxes for a node. (+36 more)
+Cohesion: 0.06
+Nodes (40): load_matatag_curriculum_endpoint(), Load MATATAG (Philippine K-10 Math) curriculum into the skill_nodes table., get_intro_status(), get_node_config(), mark_intro_viewed(), Read the enabled checkboxes for a node., Mark the intro for a node as viewed by a student., Check whether a student has viewed the intro for a node. (+32 more)
 
 ### Community 20 - "Community 20"
 Cohesion: 0.33
@@ -316,8 +316,8 @@ Cohesion: 0.08
 Nodes (24): Access Levels, Anti-Patterns, @auth Directive, auth.token Fields, Authorization Data Lookup, Authorization Patterns, Available Bindings, CEL Expressions (+16 more)
 
 ### Community 27 - "Community 27"
-Cohesion: 0.14
-Nodes (7): RedisDict, RedisDict, get_matatag_lab_config(), Return full lab configuration for a MATATAG node.      Includes:     - difficult, RedisDict, get_cache(), set_cache()
+Cohesion: 0.16
+Nodes (5): RedisDict, RedisDict, RedisDict, get_cache(), set_cache()
 
 ### Community 28 - "Community 28"
 Cohesion: 0.10
@@ -352,8 +352,8 @@ Cohesion: 0.25
 Nodes (10): _build_sequence(), _build_traps(), _choose_missing_indices(), format_pattern_sequence(), fmt_pattern_sequence.py — PatternSequence visual formatter  Refactored from visu, Select which indices to blank out.     Never blank the first two terms (anchors), Return list of distractor values for the primary missing term.      Traps:, Build a PatternSequence FormattedProblem from a QuestionContext.      interactio (+2 more)
 
 ### Community 36 - "Community 36"
-Cohesion: 0.05
-Nodes (54): CompetencyConfiguration, _generate_addition_examples(), _generate_comparing_examples(), _generate_counting_examples(), _generate_decompose_examples(), generate_intro_content(), get_available_intro_nodes(), get_interest_themes() (+46 more)
+Cohesion: 0.08
+Nodes (28): _generate_addition_examples(), _generate_comparing_examples(), _generate_counting_examples(), _generate_decompose_examples(), generate_intro_content(), get_available_intro_nodes(), get_interest_themes(), _get_introduction() (+20 more)
 
 ### Community 37 - "Community 37"
 Cohesion: 0.33
@@ -499,6 +499,10 @@ Nodes (9): generate_hints(), generate_params(), _make_expanded_form(), num_to_ta
 Cohesion: 0.50
 Nodes (3): For /graphify add, For --watch, graphify reference: add a URL and watch a folder
 
+### Community 76 - "Community 76"
+Cohesion: 0.08
+Nodes (33): CompetencyConfiguration, PydanticBaseModel, _get_available_formats(), get_matatag_difficulty_axes(), get_matatag_lab_config(), get_matatag_lab_interests(), get_matatag_nodes(), get_matatag_progress() (+25 more)
+
 ### Community 77 - "Community 77"
 Cohesion: 0.13
 Nodes (14): 1. The Anti-Ruby Mandate, 2. Modern Xcode Folder Synchronization, 3. Allowed Scripting Languages, 4. Toolchain Verification, 5. Mandatory Linker Flags for Static Frameworks (Firebase), **CRITICAL: Always Use Latest SDK Version**, ⛔️ CRITICAL RULES & ENVIRONMENT CHECKS, Empty Directory Workflow (+6 more)
@@ -529,7 +533,7 @@ Nodes (9): _build_params(), _build_traps(), _correct_answer(), format_ten_frame(
 
 ### Community 84 - "Community 84"
 Cohesion: 0.15
-Nodes (14): augment_distractors(), _distractor_fallback.py — Distractor Augmentation Helper  Per AGENTS.md rule #4:, Return a list of distractors padded to at least ``target`` items.      Parameter, _build_equation_sentence(), format_cloze(), Textual Formatter — Cloze (Fill-in-the-Blank)  Unified formatter for fill-in-the, Build pure equation with blank based on concept and blank_target., Format a QuestionContext as a cloze (fill-in-the-blank) problem.      Respects t (+6 more)
+Nodes (14): augment_distractors(), _distractor_fallback.py — Distractor Augmentation Helper  Per AGENTS.md rule #4:, Return a list of distractors padded to at least ``target`` items.      Parameter, _build_pure_question(), format_mcq(), Textual Formatter — Multiple Choice (MCQ)  Refactored from matatag_skeletons.py, Build a pure equation question based on concept., Format a QuestionContext as a 4-option MCQ.      Respects the 'context' variant: (+6 more)
 
 ### Community 85 - "Community 85"
 Cohesion: 0.33
@@ -745,7 +749,7 @@ Nodes (6): 1. Setup, 2. Best Practices: Type-Safe Models, 3. The Service Layer, 
 
 ### Community 139 - "Community 139"
 Cohesion: 0.15
-Nodes (16): QuestionContext, Format-agnostic intermediate produced by the context generator.      Everything, _build_pure_question(), format_mcq(), Textual Formatter — Multiple Choice (MCQ)  Refactored from matatag_skeletons.py, Build a pure equation question based on concept., Format a QuestionContext as a 4-option MCQ.      Respects the 'context' variant:, _build_balance_params() (+8 more)
+Nodes (16): QuestionContext, Format-agnostic intermediate produced by the context generator.      Everything, _build_equation_sentence(), format_cloze(), Textual Formatter — Cloze (Fill-in-the-Blank)  Unified formatter for fill-in-the, Build pure equation with blank based on concept and blank_target., Format a QuestionContext as a cloze (fill-in-the-blank) problem.      Respects t, _build_balance_params() (+8 more)
 
 ### Community 140 - "Community 140"
 Cohesion: 0.33
@@ -822,7 +826,7 @@ Nodes (9): _boundary_distance(), generate_hints(), generate_params(), DNA: Round
 ## Knowledge Gaps
 - **783 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `Config` (+778 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -831,7 +835,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `DNA` connect `Community 6` to `Community 160`, `Community 65`, `Community 4`, `Community 71`, `Community 135`, `Community 7`, `Community 74`, `Community 78`, `Community 92`, `Community 48`, `Community 177`, `Community 20`, `Community 52`, `Community 55`, `Community 57`, `Community 123`, `Community 156`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **Why does `get_cache()` connect `Community 27` to `Community 66`, `Community 36`, `Community 9`, `Community 76`, `Community 22`, `Community 57`?**
+- **Why does `get_cache()` connect `Community 27` to `Community 66`, `Community 9`, `Community 76`, `Community 22`, `Community 57`?**
   _High betweenness centrality (0.015) - this node is a cross-community bridge._
 - **What connects `graphify`, `PackageDescription`, `Foundation` to the rest of the system?**
   _1245 weakly-connected nodes found - possible documentation gaps or missing edges._

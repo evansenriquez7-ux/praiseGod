@@ -169,8 +169,8 @@ def generate_params(
     else:
         max_result = max_result_bound
     
-    # Ensure reasonable bounds
-    max_result = max(2, min(max_result, 10000))
+    # Ensure reasonable bounds (allow min=0 for 0+0, but cap at 10000)
+    max_result = min(max_result, 10000)
     if "formatter_max_val" in profile:
         max_result = min(max_result, profile["formatter_max_val"])
 
@@ -210,21 +210,6 @@ def generate_params(
             for b in candidates_b:
                 if a + b > max_result:
                     continue
-                # Exclude degenerate cases where the answer is unambiguously
-                # the value of the other operand (semantic leak). For example
-                # (0, 0) → "0 + 0 = ___" with answer 0, and (9, 0) → "9 + 0 = ___"
-                # with answer 9. The student can read the answer directly from
-                # the prompt. MATATAG requires problems that exercise the
-                # target addition competency, not trivial read-the-other-
-                # operand tasks.
-                #
-                # Also exclude (a, a) — "2 + 2 = ___" with answer 4 doesn't
-                # leak the *result* (4 is new), but if the blank is one
-                # operand (e.g. "2 + ___ = 4" or "___ + 2 = 4"), the answer
-                # equals the visible operand. Excluded across all blank
-                # positions for safety.
-                if a == 0 or b == 0 or a == b:
-                    continue
                 if _satisfies_regrouping(a, b, reg_level):
                     candidate_pairs.append((a, b))
     else:
@@ -233,8 +218,6 @@ def generate_params(
             attempts += 1
             a = rng.randint(min_a, a_hi)
             b = rng.randint(0, max_result - a)
-            if a == 0 or b == 0 or a == b:
-                continue
             if _satisfies_regrouping(a, b, reg_level):
                 candidate_pairs.append((a, b))
 
