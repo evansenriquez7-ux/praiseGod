@@ -647,19 +647,30 @@ def get_matatag_lab_config(node_id: str):
                 "default_scalar": 0.0,
             })
 
-    # Build contextual_variants from compatibility.py
+    # Build contextual_variants from compatibility.py, filtered by curriculum gates
+    from backend.app.practice_gen.compatibility import is_variant_available_at
+
     variants = VARIANTS_BY_DNA.get(primary_concept, {})
     contextual_variants = []
     for var_name, var_options in variants.items():
         # Skip if this is already a difficulty dimension
         if any(d["name"] == var_name for d in difficulty_dimensions):
             continue
-        contextual_variants.append({
-            "name": var_name,
-            "label": var_name.replace("_", " ").title(),
-            "options": var_options,
-            "default": var_options[0] if var_options else None,
-        })
+
+        # Filter variant options by curriculum availability at this grade/quarter
+        available_options = [
+            opt for opt in var_options
+            if is_variant_available_at(primary_concept, var_name, opt, grade, quarter)
+        ]
+
+        # Only include variant if at least one option is available
+        if available_options:
+            contextual_variants.append({
+                "name": var_name,
+                "label": var_name.replace("_", " ").title(),
+                "options": available_options,
+                "default": available_options[0] if available_options else None,
+            })
 
     # Build formatters list from compatibility table (union across all DNAs)
     available_formatters = sorted(set(itertools.chain.from_iterable(
@@ -1167,20 +1178,53 @@ def get_node_capabilities(node_id: str):
 
 @router.post("/api/matatag/node/{node_id}/config")
 def save_node_config(node_id: str, req: LabV2ConfigSaveRequest, db: Session = Depends(get_db)):
-    """Save the enabled checkboxes for a node."""
+    """Save the enabled checkboxes for a node, with curriculum validation."""
     from backend.app.models import CompetencyConfiguration
+    from backend.app.practice_gen.compatibility import is_variant_available_at
+    import re
+
+    # Extract grade/quarter from node_id
+    match = re.match(r"mat_g(\d+)_[a-z]+_q(\d+)_\d+", node_id)
+    if not match:
+        raise HTTPException(status_code=400, detail=f"Invalid node_id format: {node_id}")
+
+    grade = int(match.group(1))
+    quarter = int(match.group(2))
+
+    # Get node info to know which LC this is
+    info = _pg_registry.get_node_info(node_id)
+    if not info:
+        raise HTTPException(status_code=404, detail=f"Node '{node_id}' not found.")
+
+    dnas = _pg_registry.get_node_dnas(node_id)
+    if not dnas:
+        raise HTTPException(status_code=404, detail=f"No DNA found for node '{node_id}'.")
+
+    primary_concept = dnas[0]
+
+    # Validate allowed_contexts against curriculum gates
+    if req.allowed_contexts is not None:
+        for var_name, opts in req.allowed_contexts.items():
+            if opts and isinstance(opts, list):
+                for opt in opts:
+                    if not is_variant_available_at(primary_concept, var_name, opt, grade, quarter):
+                        raise HTTPException(
+                            status_code=400,
+                            detail=f"Variant '{var_name}={opt}' is not available until Grade {grade} Quarter {quarter} in the curriculum."
+                        )
+
     config = db.query(CompetencyConfiguration).filter_by(node_id=node_id).first()
     if not config:
         config = CompetencyConfiguration(node_id=node_id)
         db.add(config)
-    
+
     if req.allowed_difficulties is not None:
         config.allowed_difficulties = req.allowed_difficulties
     if req.allowed_contexts is not None:
         config.allowed_contexts = req.allowed_contexts
     if req.allowed_formatters is not None:
         config.allowed_formatters = req.allowed_formatters
-        
+
     db.commit()
     return {"status": "success"}
 

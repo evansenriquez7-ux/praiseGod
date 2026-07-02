@@ -78,23 +78,63 @@ FORMATTER_NUMERIC_LIMITS: Dict[str, Dict[str, Any]] = {
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# GRADE-BASED VARIANT GATING (Vocabulary Gating / Progression Rules)
-# These variants must be filtered at generation time based on grade/quarter.
-# See pgen_checklist.md "Vocabulary Gating" principle.
+# CURRICULUM VARIANT GATES
+# Maps (lc, variant_name, variant_value) → (min_grade, min_quarter)
+# Indicates when each variant is first introduced in the MATATAG curriculum.
+# Used by MATATAG Lab to filter checkbox options (source of truth for what's allowed).
+# Used by auditors to verify no variants appear before curriculum introduction.
 # ═══════════════════════════════════════════════════════════════════════════════
 
-CURRICULUM_VARIANT_GATES = {
-    # (lc, variant_name, variant_value): (min_grade, min_quarter)
-    # Reference only: Indicates when each variant is first introduced in curriculum.
-    # NOT automatically enforced in the pipeline (see section #7-8 of INFRASTRUCTURE_WORKFLOW.md).
-    # Instead, MATATAG Lab checkboxes are the single source of truth for variant availability.
-    # The auditor script uses this table to identify variants appearing before curriculum introduction.
-    #
-    # Fractions: keep proper-only in VARIANTS_BY_DNA (G1Q4 is pre-notation conceptual: halves/quarters)
-    # Word problems: available from G1Q1 per curriculum ("solve problems given orally or in pictures")
-    # Multiplication: multi_digit introduced in G3Q3 (2-3 digit × 1-2 digit operations)
+CURRICULUM_VARIANT_GATES: Dict[tuple, tuple] = {
+    # Fractions: keep proper-only (G1Q4 is pre-notation conceptual: halves/quarters only)
+    # No gate entries for improper/mixed (not in curriculum for G1-G3)
+
+    # Multiplication: multi_digit introduced in G3Q3 (2-3 digit × 1-digit operations)
     ("multiplication", "number_type", "multi_digit"): (3, 3),
+
+    # Word problems: available from G1Q1 per curriculum ("solve problems given orally or in pictures")
+    # No gate entries (all LCs with word_problem context available from Q1)
 }
+
+
+def get_variant_curriculum_gate(lc: str, variant_name: str, variant_value: str) -> Optional[tuple]:
+    """
+    Return the curriculum introduction point for a variant, or None if no gate.
+
+    Args:
+        lc: Learning competency name (e.g., "multiplication")
+        variant_name: Variant name (e.g., "number_type")
+        variant_value: Variant value (e.g., "multi_digit")
+
+    Returns:
+        (min_grade, min_quarter) if gated, None if no gate (available from G1Q1)
+    """
+    return CURRICULUM_VARIANT_GATES.get((lc, variant_name, variant_value))
+
+
+def is_variant_available_at(lc: str, variant_name: str, variant_value: str, grade: int, quarter: int) -> bool:
+    """
+    Check if a variant is available at a specific grade/quarter per curriculum.
+
+    Used by MATATAG Lab to filter checkbox options based on curriculum progression.
+
+    Args:
+        lc: Learning competency name
+        variant_name: Variant name
+        variant_value: Variant value
+        grade: Student grade (1-3)
+        quarter: Student quarter (1-4)
+
+    Returns:
+        True if variant is available at this curriculum point, False otherwise
+    """
+    gate = get_variant_curriculum_gate(lc, variant_name, variant_value)
+    if gate is None:
+        # No gate = available from G1Q1
+        return True
+
+    min_grade, min_quarter = gate
+    return grade > min_grade or (grade == min_grade and quarter >= min_quarter)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -811,19 +851,3 @@ def validate_lab_selection(
     return result
 
 
-def get_curriculum_variant_gates() -> Dict:
-    """
-    Return the curriculum variant gates table (reference only).
-
-    This table documents when each variant is first introduced in the MATATAG curriculum.
-    It is NOT used for automatic enforcement in the pipeline (per INFRASTRUCTURE_WORKFLOW.md #7-8).
-
-    Instead:
-    1. MATATAG Lab checkboxes define the single source of truth for variant availability
-    2. Auditor scripts use this table to verify no variants appear before curriculum introduction
-    3. Variant enforcement is explicit via CompetencyConfiguration checkboxes, never silent/automatic
-
-    Returns:
-        Dict mapping (lc, variant_name, variant_value) → (min_grade, min_quarter)
-    """
-    return dict(CURRICULUM_VARIANT_GATES)
