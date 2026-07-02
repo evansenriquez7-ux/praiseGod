@@ -50,7 +50,7 @@ Modified `get_matatag_lab_config()` discrete axis handling:
 | mat_g1_na_q1_8 | sums up to 20 | 20 | 1 | none, one_place |
 | mat_g2_na_q2_2 | sums up to 1000 | 1000 | 2 | none, one_place, two_places |
 
-## Fix 2: Discrete Max_Minuend Axis for Subtraction
+## Fix 2: Discrete Number_Range Axis for Subtraction
 
 ### Implementation
 
@@ -63,18 +63,40 @@ Modified `get_matatag_lab_config()` discrete axis handling:
            bounds["max_minuend"] = (1, max_val)
    ```
 
-2. **Added axis creation in get_matatag_lab_config()**:
-   - Detect when subtraction LC has explicit max_minuend
-   - Compare to per-grade default (_PARAM_BOUNDS)
-   - If LC bound < grade default (e.g., G2 "up to 100" vs. default 999)
-   - Create discrete "max_minuend" axis with relevant range options
+2. **Added number_range axis to axes_catalog**:
+   Added a standard discrete "number_range" axis to the subtraction concept (similar to how "place_value" has "digit_count"):
+   ```python
+   {
+       'name': 'number_range',
+       'label': 'Number Range',
+       'dim_type': 'discrete',
+       'options': [
+           {'value': 20, 'label': 'Numbers up to 20'},
+           {'value': 100, 'label': 'Numbers up to 100'},
+           {'value': 1000, 'label': 'Numbers up to 1000'},
+           {'value': 10000, 'label': 'Numbers up to 10,000'}
+       ],
+       'default': 10000
+   }
+   ```
+
+3. **Filtering in get_matatag_lab_config()**:
+   - For subtraction LCs with explicit max_minuend from competency text
+   - Filter number_range options to show only values ≥ the specified bound
+   - User pattern: "reuse existing axes when specified" (like mat_g1_na_q1_1's "range" axis)
 
 ### Impact
 
-Subtraction LCs with explicit small bounds now have a discrete difficulty dimension:
-- mat_g2_na_q2_4 (less than 100, G2): Shows max_minuend axis with options [20, 100]
-- Captures pedagogical intent: "practice with 2-digit numbers" vs. "practice with up to 1000"
-- Lab UI can present this as "Number Range" control alongside "Regrouping (Borrowing)"
+Subtraction LCs now use the standard "number_range" discrete axis, filtered by competency bounds:
+- mat_g1_na_q3_4 (less than 100): Shows options [100, 1000, 10000] ✓
+- mat_g2_na_q2_4 (less than 100): Shows options [100, 1000, 10000] ✓
+- mat_g2_na_q2_6 (less than 1000): Shows options [1000, 10000] ✓
+- mat_g3_na_q2_4 (less than 10000): Shows options [10000] ✓
+
+Advantages:
+- Consistent with axes_catalog design pattern
+- No dynamic axis creation needed
+- Same approach as number_reading (which has "range" axis)
 
 ## Files Modified
 
@@ -97,10 +119,16 @@ mat_g1_na_q1_8 (sum up to 20): regrouping=[none, one_place] ✓
 mat_g2_na_q2_2 (sum up to 1000): regrouping=[none, one_place, two_places] ✓
 ```
 
-## Commit
+## Commits
 
-- **Hash**: 500714d
-- **Message**: "fix: dynamically limit regrouping axis options by competency bounds"
+1. **500714d** - fix: dynamically limit regrouping axis options by competency bounds
+   - Added `_get_max_regrouping_places()` helper
+   - Initial implementation with dynamic axis creation
+
+2. **aa3f8ae** - refactor: use standard number_range axis for subtraction instead of dynamic axis
+   - Cleaner approach using standard discrete axis pattern
+   - Added number_range axis to axes_catalog for subtraction
+   - Filtering in get_matatag_lab_config() instead of dynamic creation
 
 ## Future Work
 
