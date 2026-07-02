@@ -154,13 +154,13 @@ def generate_params(
 
     candidate_pairs = []
     for b in allowed_divisors:
-        for q in range(1, q_max + 1):
+        for q in range(0, q_max + 1):
             if rem_level == "none":
                 a = b * q
                 if _satisfies_remainder(a, b, rem_level):
                     candidate_pairs.append((a, b))
             else:
-                for r in range(1, b):
+                for r in range(0 if q == 0 else 1, b):
                     a = b * q + r
                     if _satisfies_remainder(a, b, rem_level):
                         candidate_pairs.append((a, b))

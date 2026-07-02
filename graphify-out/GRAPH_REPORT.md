@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-07-02)
 
 ## Corpus Check
-- 245 files · ~1,706,418 words
+- 245 files · ~1,706,443 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2361 nodes · 3648 edges · 180 communities (172 shown, 8 thin omitted)
+- 2361 nodes · 3648 edges · 180 communities (171 shown, 9 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.54)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8510b9a8`
+- Built from commit: `f3691f4c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -191,6 +191,8 @@
 10. `20. Lessons Learned & Implementation Pitfalls` - 25 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `RedisDict` --uses--> `CompetencyConfiguration`  [INFERRED]
+  backend/app/routes/matatag_router.py → backend/app/models.py
 - `replenish_question_cache()` --calls--> `SessionLocal()`  [EXTRACTED]
   backend/app/routes/matatag_router.py → backend/app/database.py
 - `replenish_question_cache()` --calls--> `SessionLocal()`  [EXTRACTED]
@@ -199,13 +201,11 @@
   backend/app/services/placement.py → backend/app/models.py
 - `PlacementEngine` --uses--> `SkillNode`  [INFERRED]
   backend/app/services/placement.py → backend/app/models.py
-- `PlacementEngine` --uses--> `MasteryState`  [INFERRED]
-  backend/app/services/placement.py → backend/app/models.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (180 total, 8 thin omitted)
+## Communities (180 total, 9 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.17
@@ -233,7 +233,7 @@ Nodes (37): _gen_g3_dp_q3_bar_graphs(), _gen_g3_dp_q3_probability(), _gen_g3_mg_
 
 ### Community 6 - "Community 6"
 Cohesion: 0.07
-Nodes (36): DNA, Specification of a mathematical concept for practice generation.      dna_type:, Return param_bounds for grade, falling back to nearest defined grade., Return the index of a level within an axis (0 = easiest)., Return a 0.0–1.0 scalar for a given axis level., build_scaffold_sequence(), Practice Generation — Scaffolded Experience Wrapper  Ascending-difficulty sequen, Build an ordered list of difficulty profiles for a scaffold sequence.      Each (+28 more)
+Nodes (42): DNA, Specification of a mathematical concept for practice generation.      dna_type:, Return param_bounds for grade, falling back to nearest defined grade., Return the index of a level within an axis (0 = easiest)., Return a 0.0–1.0 scalar for a given axis level., build_scaffold_sequence(), Practice Generation — Scaffolded Experience Wrapper  Ascending-difficulty sequen, Build an ordered list of difficulty profiles for a scaffold sequence.      Each (+34 more)
 
 ### Community 7 - "Community 7"
 Cohesion: 0.21
@@ -284,8 +284,8 @@ Cohesion: 0.07
 Nodes (25): App Hosting Basics, Automated deployment via GitHub (CI/CD), Deploy from Source, Deploying to App Hosting, Description, Emulation, Hosting vs App Hosting, App Hosting CLI Commands (+17 more)
 
 ### Community 19 - "Community 19"
-Cohesion: 0.06
-Nodes (40): load_matatag_curriculum_endpoint(), Load MATATAG (Philippine K-10 Math) curriculum into the skill_nodes table., get_intro_status(), get_node_config(), mark_intro_viewed(), Read the enabled checkboxes for a node., Mark the intro for a node as viewed by a student., Check whether a student has viewed the intro for a node. (+32 more)
+Cohesion: 0.05
+Nodes (44): load_matatag_curriculum_endpoint(), Load MATATAG (Philippine K-10 Math) curriculum into the skill_nodes table., get_intro_status(), get_matatag_progress(), get_node_config(), mark_intro_viewed(), matatag_lab_generate(), Read the enabled checkboxes for a node. (+36 more)
 
 ### Community 20 - "Community 20"
 Cohesion: 0.33
@@ -316,8 +316,8 @@ Cohesion: 0.08
 Nodes (24): Access Levels, Anti-Patterns, @auth Directive, auth.token Fields, Authorization Data Lookup, Authorization Patterns, Available Bindings, CEL Expressions (+16 more)
 
 ### Community 27 - "Community 27"
-Cohesion: 0.16
-Nodes (5): RedisDict, RedisDict, RedisDict, get_cache(), set_cache()
+Cohesion: 0.14
+Nodes (7): RedisDict, RedisDict, get_matatag_lab_config(), Return full lab configuration for a MATATAG node.      Includes:     - difficult, RedisDict, get_cache(), set_cache()
 
 ### Community 28 - "Community 28"
 Cohesion: 0.10
@@ -352,8 +352,8 @@ Cohesion: 0.25
 Nodes (10): _build_sequence(), _build_traps(), _choose_missing_indices(), format_pattern_sequence(), fmt_pattern_sequence.py — PatternSequence visual formatter  Refactored from visu, Select which indices to blank out.     Never blank the first two terms (anchors), Return list of distractor values for the primary missing term.      Traps:, Build a PatternSequence FormattedProblem from a QuestionContext.      interactio (+2 more)
 
 ### Community 36 - "Community 36"
-Cohesion: 0.08
-Nodes (28): _generate_addition_examples(), _generate_comparing_examples(), _generate_counting_examples(), _generate_decompose_examples(), generate_intro_content(), get_available_intro_nodes(), get_interest_themes(), _get_introduction() (+20 more)
+Cohesion: 0.05
+Nodes (54): CompetencyConfiguration, _generate_addition_examples(), _generate_comparing_examples(), _generate_counting_examples(), _generate_decompose_examples(), generate_intro_content(), get_available_intro_nodes(), get_interest_themes() (+46 more)
 
 ### Community 37 - "Community 37"
 Cohesion: 0.33
@@ -428,8 +428,8 @@ Cohesion: 0.10
 Nodes (19): 10. PlaceValueBlocksInteractive & RulerMeasureInteractive, 1. ClockSetInteractive, 1. State Overwrites (Immediate `onAnswer` on Mount), 2. FractionModelInteractive & FractionShadeInteractive, 2. Visual & Logic Answer Leaks, 3. Missing Interactivity in `"set"` Mode, 3. NumberLineInteractive, 4. Data Type Mismatches (+11 more)
 
 ### Community 55 - "Community 55"
-Cohesion: 0.07
-Nodes (37): DimensionSpec, ErrorPattern, extract_continuous_scalar(), extract_discrete_level(), interpolate(), linear_interpolate(), Practice Generation — DNA Base Definitions  All dataclasses, enums, and shared u, Compute the dimension value at difficulty scalar t.          If override_min/ove (+29 more)
+Cohesion: 0.08
+Nodes (33): DimensionSpec, ErrorPattern, extract_continuous_scalar(), extract_discrete_level(), interpolate(), linear_interpolate(), Practice Generation — DNA Base Definitions  All dataclasses, enums, and shared u, Compute the dimension value at difficulty scalar t.          If override_min/ove (+25 more)
 
 ### Community 56 - "Community 56"
 Cohesion: 0.11
@@ -437,7 +437,7 @@ Nodes (17): 1. Query Formats (`queryFormat` argument), 1. Vector Similarity Sear
 
 ### Community 57 - "Community 57"
 Cohesion: 0.06
-Nodes (35): Any, generate_hints(), generate_hints(), _detect_axes_served(), Back-infer which difficulty axis levels were actually produced.      Checks the, _make_predicates(), Build a list of constraint predicate callables for a difficulty_profile.      Ar, Draw one uniform sample from param_bounds.      Args:         bounds: Mapping of (+27 more)
+Nodes (33): Any, generate_hints(), generate_hints(), _detect_axes_served(), Back-infer which difficulty axis levels were actually produced.      Checks the, generate_hints(), generate_params(), DNA: Calendar (Measurement & Geometry)  Covers MATATAG grades 1–2 calendar compe (+25 more)
 
 ### Community 59 - "Community 59"
 Cohesion: 0.12
@@ -499,17 +499,13 @@ Nodes (9): generate_hints(), generate_params(), _make_expanded_form(), num_to_ta
 Cohesion: 0.50
 Nodes (3): For /graphify add, For --watch, graphify reference: add a URL and watch a folder
 
-### Community 76 - "Community 76"
-Cohesion: 0.08
-Nodes (33): CompetencyConfiguration, PydanticBaseModel, _get_available_formats(), get_matatag_difficulty_axes(), get_matatag_lab_config(), get_matatag_lab_interests(), get_matatag_nodes(), get_matatag_progress() (+25 more)
-
 ### Community 77 - "Community 77"
 Cohesion: 0.13
 Nodes (14): 1. The Anti-Ruby Mandate, 2. Modern Xcode Folder Synchronization, 3. Allowed Scripting Languages, 4. Toolchain Verification, 5. Mandatory Linker Flags for Static Frameworks (Firebase), **CRITICAL: Always Use Latest SDK Version**, ⛔️ CRITICAL RULES & ENVIRONMENT CHECKS, Empty Directory Workflow (+6 more)
 
 ### Community 78 - "Community 78"
 Cohesion: 0.28
-Nodes (8): generate_hints(), generate_params(), DNA: Multiplication (Number & Algebra)  Refactored from:   - matatag_skeletons.p, Rejection-sample (a, b) that satisfy the difficulty_profile constraints.      Re, Return 2–4 step-by-step hint strings for the given multiplication problem., Return the allowed factor-b values for the given table axis level., _satisfies_number_type(), _table_for_level()
+Nodes (8): generate_hints(), generate_params(), DNA: Multiplication (Number & Algebra)  Refactored from:   - matatag_skeletons.p, Rejection-sample (a, b) that satisfy the difficulty_profile constraints.      Re, Return 2–4 step-by-step hint strings for the given multiplication problem., Return the allowed factor-b values for the given table axis level.      Includes, _satisfies_number_type(), _table_for_level()
 
 ### Community 79 - "Community 79"
 Cohesion: 0.29
@@ -826,7 +822,7 @@ Nodes (9): _boundary_distance(), generate_hints(), generate_params(), DNA: Round
 ## Knowledge Gaps
 - **783 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `Config` (+778 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -835,7 +831,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `DNA` connect `Community 6` to `Community 160`, `Community 65`, `Community 4`, `Community 71`, `Community 135`, `Community 7`, `Community 74`, `Community 78`, `Community 92`, `Community 48`, `Community 177`, `Community 20`, `Community 52`, `Community 55`, `Community 57`, `Community 123`, `Community 156`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **Why does `get_cache()` connect `Community 27` to `Community 66`, `Community 9`, `Community 76`, `Community 22`, `Community 57`?**
+- **Why does `get_cache()` connect `Community 27` to `Community 66`, `Community 36`, `Community 9`, `Community 76`, `Community 22`, `Community 57`?**
   _High betweenness centrality (0.015) - this node is a cross-community bridge._
 - **What connects `graphify`, `PackageDescription`, `Foundation` to the rest of the system?**
   _1245 weakly-connected nodes found - possible documentation gaps or missing edges._

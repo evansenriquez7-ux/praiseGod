@@ -81,8 +81,8 @@ _DIFFICULTY_AXES: Dict[str, Any] = {"number_difficulty": "continuous"}
 
 # Tables allowed per axis level
 _TABLE_SETS: Dict[str, List[int]] = {
-    "2_3_4_5_10": [2, 3, 4, 5, 10],
-    "6_7_8_9":    [6, 7, 8, 9],
+    "2_3_4_5_10": [0, 1, 2, 3, 4, 5, 10],
+    "6_7_8_9":    [0, 1, 6, 7, 8, 9],
 }
 
 
@@ -96,11 +96,14 @@ VOCAB_TIMES    = VocabGated(requires_vocab="times",    preferred="times",       
 # ─── constraint predicates ────────────────────────────────────────────────────
 
 def _table_for_level(level: str, grade: int) -> List[int]:
-    """Return the allowed factor-b values for the given table axis level."""
+    """Return the allowed factor-b values for the given table axis level.
+
+    Includes 0 (multiplicative identity) and 1 for all grades.
+    """
     if grade <= 2:
-        # Grade 2 always restricts to basic tables regardless of level
-        return [2, 3, 4, 5, 10]
-    return _TABLE_SETS.get(level, [2, 3, 4, 5, 10])
+        # Grade 2 uses 0, 1, 2, 3, 4, 5, 10 tables
+        return [0, 1, 2, 3, 4, 5, 10]
+    return _TABLE_SETS.get(level, [0, 1, 2, 3, 4, 5, 10])
 
 
 def _satisfies_number_type(a: int, level: str) -> bool:
