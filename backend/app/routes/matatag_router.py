@@ -4,6 +4,7 @@ import math
 import json
 import re
 import random as _random
+import itertools
 from pathlib import Path
 from fastapi import FastAPI, Depends, HTTPException, status, BackgroundTasks, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -660,8 +661,10 @@ def get_matatag_lab_config(node_id: str):
             "default": var_options[0] if var_options else None,
         })
 
-    # Build formatters list from compatibility table
-    available_formatters = COMPATIBILITY.get(primary_concept, ["mcq"])
+    # Build formatters list from compatibility table (union across all DNAs)
+    available_formatters = sorted(set(itertools.chain.from_iterable(
+        COMPATIBILITY.get(dna, ["mcq"]) for dna in dnas
+    )))
     formatters = []
 
     # Formatter display names

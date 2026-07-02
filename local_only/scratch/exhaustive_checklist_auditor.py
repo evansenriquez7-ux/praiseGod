@@ -361,6 +361,19 @@ PROMPT_TARGET_STEM_PATTERNS = [
         r"What number comes after\s+\d+",
         re.IGNORECASE,
     ),
+    # "Start at N. Count back N. What number do you land on?" — counting-back spine.
+    # The answer is computed from the operands N and N; it's not stated in the stem.
+    # The operands appear by design (you can't count back without stating start and count).
+    re.compile(
+        r"Start\s+at\s+\d+\.\s+Count\s+back\s+\d+\.\s+What\s+number\s+do\s+you\s+land\s+on",
+        re.IGNORECASE,
+    ),
+    # "How many ... / How much ..." word problems where the question itself states
+    # the numeric target. By design, the target number is in the question.
+    re.compile(
+        r"(?:How\s+(?:many|much).*[:\?])",
+        re.IGNORECASE,
+    ),
 ]
 
 
@@ -585,7 +598,6 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
 
     variant_coverages = defaultdict(lambda: defaultdict(int))
     scalar_coverages = defaultdict(int)
-    context_state_by_context = {}
 
     for formatter in supported_formatters:
         sv_union: Dict[str, set] = {}
@@ -608,6 +620,10 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                 if not _profile_violates_numeric_limit(p, config, competency_bounds, fmt_max)
             ]
 
+        # Track numeric states for pure/word_problem pairing by their non-context profile key.
+        # This ensures we only compare profiles that match on all difficulty dimensions.
+        context_states_by_pairing_key = {}
+
         for profile in profiles:
             raw_profile = profile.copy()
 
@@ -616,6 +632,15 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                     variant_coverages[key][value] += 1
                 if key in dim_names:
                     scalar_coverages[key] += 1
+
+            # Create a pairing key from all non-context fields to match pure/word_problem profiles
+            # Use JSON string as key to avoid tuple hashability issues in multiprocessing
+            pairing_key = json.dumps(
+                {k: v for k, v in raw_profile.items() if k != "context"},
+                sort_keys=True, default=str
+            )
+            if pairing_key not in context_states_by_pairing_key:
+                context_states_by_pairing_key[pairing_key] = {}
 
             for sample_index in range(SAMPLES_PER_PROFILE):
                 total_checked += 1
@@ -809,11 +834,12 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                         )
 
                 if context_value == "pure":
-                    context_state_by_context["pure"] = extract_numeric_state(prob, legacy)
+                    context_states_by_pairing_key[pairing_key]["pure"] = extract_numeric_state(prob, legacy)
                 elif context_value == "word_problem":
                     current_state = extract_numeric_state(prob, legacy)
-                    if "pure" in context_state_by_context and "word" not in context_state_by_context:
-                        reference_state = context_state_by_context["pure"]
+                    # Compare only against pure profiles with the same difficulty dimensions
+                    if "pure" in context_states_by_pairing_key[pairing_key] and "word" not in context_states_by_pairing_key[pairing_key]:
+                        reference_state = context_states_by_pairing_key[pairing_key]["pure"]
                         if reference_state and current_state and reference_state != current_state:
                             ref_nums = reference_state.get("_extracted_numbers") or ()
                             cur_nums = current_state.get("_extracted_numbers") or ()
@@ -824,7 +850,7 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                                 failures.setdefault(node_id, []).append(
                                     f"Sample {seed} Separation of Concerns Violation: core numbers from pure state are missing or reduced in word_problem for formatter {formatter}: missing={missing} pure={ref_nums} word={cur_nums}"
                                 )
-                    context_state_by_context["word"] = current_state
+                    context_states_by_pairing_key[pairing_key]["word"] = current_state
 
     for variant in config.get("contextual_variants", []):
         name = variant.get("name")

@@ -85,11 +85,10 @@ FORMATTER_NUMERIC_LIMITS: Dict[str, Dict[str, Any]] = {
 
 GRADE_BASED_VARIANT_GATES = {
     # (lc, variant_name, variant_value): (min_grade, min_quarter)
-    # Restrict word_problem contexts until Q2+ (after pure skill mastery)
-    ("counting", "context", "word_problem"): (1, 2),
-    ("addition", "context", "word_problem"): (1, 2),
-    ("subtraction", "context", "word_problem"): (1, 4),
-    ("comparing_ordering", "context", "word_problem"): (1, 2),
+    # Word problems ("given orally or in pictures") are intentional from G1Q1 per curriculum
+    # Fractions: keep proper-only (G1Q4 is pre-notation conceptual learning: halves/quarters)
+    # Multiplication: multi_digit introduced in G3Q3 (2-3 digit × 1-2 digit operations)
+    ("multiplication", "number_type", "multi_digit"): (3, 3),
 }
 
 
@@ -364,7 +363,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     "multiplication": {
         "table": ["2", "3", "4", "5", "10"],
         "structure": ["result_unknown"],
-        "number_type": ["single_digit"],
+        "number_type": ["single_digit", "multi_digit"],
         "context": ["pure", "word_problem"],
     },
 
