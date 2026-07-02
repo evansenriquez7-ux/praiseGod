@@ -469,9 +469,17 @@ def get_matatag_lab_config(node_id: str):
         dim_type = axis.get("dim_type", "discrete")
         
         if dim_type == "continuous":
-            # For lab manual testing, use full default bounds of the axis
-            min_val = axis.get("default_min", 1)
-            max_val = axis.get("default_max", 100)
+            # Use competency-specific bounds when available so that scalar=1.0
+            # matches the LC's actual numeric ceiling (e.g. "sums up to 20" →
+            # max=20, not the catalog's generic default_max=1000).
+            # Fall back to catalog defaults for lab exploration beyond the LC.
+            bounds_for_axis = competency_bounds.get(axis_name)
+            if isinstance(bounds_for_axis, tuple) and len(bounds_for_axis) == 2:
+                min_val = bounds_for_axis[0]
+                max_val = bounds_for_axis[1]
+            else:
+                min_val = axis.get("default_min", 1)
+                max_val = axis.get("default_max", 100)
             
             divisions = axis.get("divisions", 5)
             

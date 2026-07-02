@@ -66,31 +66,99 @@ except (FileNotFoundError, json.JSONDecodeError):
 import re
 from typing import Tuple
 
-def _parse_competency_bounds(competency: str, dna_name: str) -> Dict[str, Tuple[int, int]]:
+# ── MATATAG grade-appropriate ceiling per DNA concept ────────────────────────
+# When a competency text has no explicit numeric bound (e.g. "Illustrate
+# addition of 2-digit and 1-digit numbers as counting up on the number
+# line"), we fall back to the MATATAG curriculum's per-grade ceiling.
+# These values are derived directly from the official K-3 MATATAG scope:
+#   G1 addition/subtraction: sums/differences ≤ 20 (Q1-Q2), ≤ 100 (Q3-Q4)
+#   G2 addition/subtraction: sums/differences ≤ 1000
+#   G3 addition/subtraction: sums/differences ≤ 10000
+#   G1-G3 comparing/ordering: same number ceiling as their grade range
+_GRADE_DEFAULT_BOUNDS: Dict[str, Dict[int, Dict[str, int]]] = {
+    "addition": {
+        1: {"max_sum": 20},
+        2: {"max_sum": 1000},
+        3: {"max_sum": 10000},
+    },
+    "comparing_ordering": {
+        1: {"max_value": 100},
+        2: {"max_value": 1000},
+        3: {"max_value": 10000},
+    },
+    "counting": {
+        1: {"range_max": 100},
+        2: {"range_max": 1000},
+        3: {"range_max": 10000},
+    },
+    "number_reading": {
+        1: {"range_max": 100},
+        2: {"range_max": 10000},
+        3: {"range_max": 10000},
+    },
+    "multiplication": {
+        2: {"max_product": 100},
+        3: {"max_product": 1000},
+    },
+    "money_peso": {
+        1: {"max_total": 20},
+        2: {"max_total": 1000},
+        3: {"max_total": 10000},
+    },
+}
+
+
+def _parse_competency_bounds(
+    competency: str,
+    dna_name: str,
+    grade: int = 1,
+) -> Dict[str, Tuple[int, int]]:
     """
     Parse competency text to extract bounds for difficulty dimensions.
-    
+
     Returns dict mapping dimension names to (min, max) tuples.
     Scalar 0.0 maps to min, scalar 1.0 maps to max.
-    
-    Min is always 1 to allow full remediation range.
-    
+
+    Min values are DNA-specific:
+    - addition: min=3 (requires a > 0, b > 0, a ≠ b, so min sum is 1+2=3)
+    - multiplication: min=2 (tables start at 1×1, but we require distinct operands)
+    - other: min=1
+
+    When no explicit numeric bound is found in the LC text, a
+    grade-appropriate MATATAG curriculum ceiling is applied as a
+    fallback (see _GRADE_DEFAULT_BOUNDS). This guarantees that scalar
+    1.0 ALWAYS maps to a sensible maximum — never to the raw float 1.0
+    which would crash the DNA.
+
     Examples:
-        "sums up to 20" → {"max_sum": (1, 20)}
-        "sums up to 100 without regrouping" → {"max_sum": (1, 100)}
-        "differences up to 18" → {"max_difference": (1, 18)}
-        "products up to 100" → {"max_product": (1, 100)}
+        "sums up to 20" → {"max_sum": (3, 20)}
+        "sums up to 100 without regrouping" → {"max_sum": (3, 100)}
+        "products up to 100" → {"max_product": (2, 100)}
     """
     bounds = {}
     # Strip spaces between digits (e.g. "10 000" -> "10000")
     text = re.sub(r'(\d)\s+(\d)', r'\1\2', competency.lower())
-    
+
     # Addition: "sums up to X", "sums of up to X", "sums to X"
     if dna_name == "addition":
         match = re.search(r'sums?\s+(?:up\s+to|of\s+up\s+to|to)\s+(\d+)', text)
         if match:
             max_val = int(match.group(1))
-            bounds["max_sum"] = (1, max_val)
+            bounds["max_sum"] = (3, max_val)
+        else:
+            # Special case: "X-digit and Y-digit numbers" (e.g., "2-digit and 1-digit")
+            # Max sum is (10^X - 1) + (10^Y - 1)
+            # e.g., 2-digit and 1-digit → (99 + 9) = 108, round to 100
+            digit_match = re.search(r'(\d)-digit\s+and\s+(\d)-digit', text)
+            if digit_match:
+                larger_digits = int(digit_match.group(1))
+                smaller_digits = int(digit_match.group(2))
+                max_larger = (10 ** larger_digits) - 1
+                max_smaller = (10 ** smaller_digits) - 1
+                max_val = max_larger + max_smaller
+                # Round to nearest 10 for cleaner bounds
+                max_val = ((max_val + 5) // 10) * 10
+                bounds["max_sum"] = (3, max_val)
     
     # Subtraction: operand bound is enforced by the DNA's per-grade
     # _PARAM_BOUNDS[grade] (g1: a<100, g2: a<1000, g3: a<10000). All
@@ -104,7 +172,7 @@ def _parse_competency_bounds(competency: str, dna_name: str) -> Dict[str, Tuple[
         match = re.search(r'products?\s+(?:up\s+to|of\s+up\s+to|to)\s+(\d+)', text)
         if match:
             max_val = int(match.group(1))
-            bounds["max_product"] = (1, max_val)
+            bounds["max_product"] = (2, max_val)
         
         # Parse table level
         if "6, 7, 8, and 9" in text or "6, 7, 8, 9" in text or "6, 7, 8, or 9" in text:
@@ -202,7 +270,9 @@ def _parse_competency_bounds(competency: str, dna_name: str) -> Dict[str, Tuple[
             max_val = int(match.group(1))
             bounds["range"] = (10, max_val)
             
-    # Generic fallback if no range/limit key was parsed
+    # Generic text-scrape fallback if no primary limit key was found.
+    # Attempt to extract any number >= 10 from the LC text and use it
+    # as the bound for dimension-bearing DNA concepts.
     # NOTE: `max_difference` was removed from this list on 2026-07-01.
     # Subtraction LCs are all operand-bound ("both numbers are less
     # than N"), not result-bound, so the DNA's per-grade bounds suffice.
@@ -231,7 +301,7 @@ def _parse_competency_bounds(competency: str, dna_name: str) -> Dict[str, Tuple[
             elif dna_name == "money_peso":
                 bounds["max_total"] = (1, limit)
             elif dna_name == "addition":
-                bounds["max_sum"] = (1, limit)
+                bounds["max_sum"] = (3, limit)
             elif dna_name == "place_value":
                 if limit >= 1000:
                     bounds["num_digits"] = (1, 4)
@@ -239,6 +309,24 @@ def _parse_competency_bounds(competency: str, dna_name: str) -> Dict[str, Tuple[
                     bounds["num_digits"] = (1, 3)
                 elif limit >= 10:
                     bounds["num_digits"] = (1, 2)
+
+    # ── Grade-aware curriculum fallback ──────────────────────────────────────
+    # If after all text parsing we STILL have no primary bound for a
+    # dimension-bearing DNA concept, apply the MATATAG per-grade ceiling.
+    # This ensures scalar 1.0 ALWAYS resolves to a curriculum-valid integer
+    # and never crashes the DNA with an impossibly small max.
+    if not any(key in bounds for key in limit_keys):
+        grade_defaults = _GRADE_DEFAULT_BOUNDS.get(dna_name, {}).get(grade, {})
+        if "max_sum" in grade_defaults and dna_name == "addition":
+            bounds["max_sum"] = (3, grade_defaults["max_sum"])
+        elif "max_value" in grade_defaults and dna_name in ("comparing_ordering", "rounding"):
+            bounds["max_value"] = (1, grade_defaults["max_value"])
+        elif "range_max" in grade_defaults and dna_name in ("counting", "number_reading"):
+            bounds["range"] = (10, grade_defaults["range_max"])
+        elif "max_product" in grade_defaults and dna_name == "multiplication":
+            bounds["max_product"] = (2, grade_defaults["max_product"])
+        elif "max_total" in grade_defaults and dna_name == "money_peso":
+            bounds["max_total"] = (1, grade_defaults["max_total"])
 
     # Extract regrouping booleans
     if "without regrouping" in text:
@@ -258,21 +346,26 @@ def get_node_competency_bounds(node_id: str, dna_name: Optional[str] = None) -> 
     """
     Get competency-specific bounds for a node's difficulty dimensions.
     
-    Returns dict mapping dimension names to (min, max) tuples.
-    Returns empty dict if node not found or no bounds extractable.
+    Returns dict mapping dimension names to (min, max) tuples, derived
+    from the LC text. When the LC text has no explicit numeric ceiling,
+    falls back to the MATATAG grade-appropriate default so that scalar
+    1.0 always maps to a valid maximum (never crashes the DNA).
+    
+    Returns empty dict if node not found or no DNA mappings exist.
     """
     node_info = _KG_NODES.get(node_id)
     if not node_info:
         return {}
     
     competency = node_info.get("competency", "")
+    grade = node_info.get("grade", 1)
     dnas = NODE_TO_DNA.get(node_id, [])
     if not dnas:
         return {}
     
     # Use selected DNA if provided and valid, otherwise fallback to primary DNA
     selected_dna = dna_name if (dna_name and dna_name in dnas) else dnas[0]
-    return _parse_competency_bounds(competency, selected_dna)
+    return _parse_competency_bounds(competency, selected_dna, grade)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
