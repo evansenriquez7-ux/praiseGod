@@ -83,10 +83,15 @@ FORMATTER_NUMERIC_LIMITS: Dict[str, Dict[str, Any]] = {
 # See pgen_checklist.md "Vocabulary Gating" principle.
 # ═══════════════════════════════════════════════════════════════════════════════
 
-GRADE_BASED_VARIANT_GATES = {
+CURRICULUM_VARIANT_GATES = {
     # (lc, variant_name, variant_value): (min_grade, min_quarter)
-    # Word problems ("given orally or in pictures") are intentional from G1Q1 per curriculum
-    # Fractions: keep proper-only (G1Q4 is pre-notation conceptual learning: halves/quarters)
+    # Reference only: Indicates when each variant is first introduced in curriculum.
+    # NOT automatically enforced in the pipeline (see section #7-8 of INFRASTRUCTURE_WORKFLOW.md).
+    # Instead, MATATAG Lab checkboxes are the single source of truth for variant availability.
+    # The auditor script uses this table to identify variants appearing before curriculum introduction.
+    #
+    # Fractions: keep proper-only in VARIANTS_BY_DNA (G1Q4 is pre-notation conceptual: halves/quarters)
+    # Word problems: available from G1Q1 per curriculum ("solve problems given orally or in pictures")
     # Multiplication: multi_digit introduced in G3Q3 (2-3 digit × 1-2 digit operations)
     ("multiplication", "number_type", "multi_digit"): (3, 3),
 }
@@ -806,42 +811,19 @@ def validate_lab_selection(
     return result
 
 
-def get_grade_gated_variants(
-    dna_concept: str,
-    grade: int,
-    quarter: int
-) -> Dict[str, List[str]]:
+def get_curriculum_variant_gates() -> Dict:
     """
-    Return allowed variant values for a DNA concept based on grade/quarter.
+    Return the curriculum variant gates table (reference only).
 
-    Applies GRADE_BASED_VARIANT_GATES to filter out variants not yet available
-    at the student's current curriculum position.
+    This table documents when each variant is first introduced in the MATATAG curriculum.
+    It is NOT used for automatic enforcement in the pipeline (per INFRASTRUCTURE_WORKFLOW.md #7-8).
 
-    Args:
-        dna_concept: DNA concept name, e.g. "addition".
-        grade: Student's grade level (1-3).
-        quarter: Student's quarter (1-4).
+    Instead:
+    1. MATATAG Lab checkboxes define the single source of truth for variant availability
+    2. Auditor scripts use this table to verify no variants appear before curriculum introduction
+    3. Variant enforcement is explicit via CompetencyConfiguration checkboxes, never silent/automatic
 
     Returns:
-        Dict mapping variant_name → allowed_values for this grade/quarter.
-        Variants not yet gated are unrestricted (all values allowed).
+        Dict mapping (lc, variant_name, variant_value) → (min_grade, min_quarter)
     """
-    base_variants = get_variants_for_dna(dna_concept)
-    result = {}
-
-    for variant_name, all_values in base_variants.items():
-        allowed = []
-        for value in all_values:
-            gate_key = (dna_concept, variant_name, value)
-            min_gate = GRADE_BASED_VARIANT_GATES.get(gate_key)
-
-            # If this value is gated and student hasn't reached it yet, skip it
-            if min_gate and (grade < min_gate[0] or (grade == min_gate[0] and quarter < min_gate[1])):
-                continue
-
-            allowed.append(value)
-
-        # If no values pass the gate, fall back to all values (don't break generation)
-        result[variant_name] = allowed if allowed else all_values
-
-    return result
+    return dict(CURRICULUM_VARIANT_GATES)

@@ -112,3 +112,7 @@ Any agent initialized in this repository must use its Graphify MCP connection to
 ## 7. Matatag Lab and Student Portal Practice Problems
 
 The matatag lab displays all learning competencies. Each of those learning competencies displays all the available difficulty dimensions, contextual variants, and formatters specific to each learning competency. Each of these options can be enabled/disabled from the checkbox options. The Generate Preview randomly chooses from the enabled difficulty dimension options, contextual variants, and formatters, then generates a practice problem. The student portal should only display learning competency practice problems according to the enabled options in the matatag lab. From this single source of truth, agents will be able to accurately test the UI outputs. 
+
+## 8. Avoid Graceful Fallbacks and Silent Defaulting Behavior
+
+The pg pipeline must avoid graceful fallbacks and silent defaulting behavior. When the auditor script tests the pg's to check for compliance with the pgen_checklist, these behaviors hide bugs. The pg pipeline is meant for failing fast and loud, this way the auditor script can recognize the issue so it can be fixed.

@@ -6,7 +6,6 @@ from backend.app.practice_gen.registry import get_node_dnas, get_node_competency
 from backend.app.practice_gen.compatibility import (
     get_formatters_for_dna,
     get_compatible_formatters_for_variant,
-    get_grade_gated_variants,
 )
 from backend.app.practice_gen.axes_catalog import get_axes_for_concept
 from backend.app.practice_gen.adapter import _get_dna_instance, _weighted_choice, apply_formatter, apply_experience
@@ -77,26 +76,6 @@ class PracticeOrchestrator:
             raise ValueError(f"No DNA mappings found for node_id '{node_id}'")
 
         primary_concept = dna_names[0]
-
-        # Extract grade and quarter from node_id for vocabulary gating
-        import re
-        match = re.match(r"mat_g(\d+)_[a-z]+_q(\d+)_\d+", node_id)
-        grade, quarter = None, None
-        if match:
-            grade, quarter = int(match.group(1)), int(match.group(2))
-
-        # Apply grade-based variant gating (vocabulary gating per pgen_checklist)
-        if grade and quarter and not is_lab:
-            gated_variants = get_grade_gated_variants(primary_concept, grade, quarter)
-            # Filter local_difficulty_profile to only include allowed variant values
-            keys_to_remove = []
-            for var_name, var_value in local_difficulty_profile.items():
-                if var_name in gated_variants:
-                    if var_value not in gated_variants[var_name]:
-                        # This variant value is gated - remove it to allow fallback
-                        keys_to_remove.append(var_name)
-            for k in keys_to_remove:
-                del local_difficulty_profile[k]
 
         # Inject non-continuous variants from competency bounds
         # This ensures variants like 'operation'='add_subtract' are applied even in lab mode
