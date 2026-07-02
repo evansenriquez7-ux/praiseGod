@@ -131,6 +131,32 @@ from backend.app.services.curriculum import check_and_advance_subject_frontier
 # --- Elo Rating Helper ---
 from backend.app.services.scoring import update_elo
 
+
+def _get_max_regrouping_places(max_operand: int) -> int:
+    """
+    Infer max regrouping/borrowing places from the maximum operand value.
+
+    Regrouping places = number of digit places - 1.
+    - max_operand <= 20 → 2 digits → max 1 place
+    - max_operand <= 100 → 2 digits → max 1 place
+    - max_operand <= 1000 → 3 digits → max 2 places
+    - max_operand <= 10000 → 4 digits → max 3 places
+
+    Args:
+        max_operand: Maximum operand value allowed by the LC (e.g., 20, 100, 1000)
+
+    Returns:
+        Maximum number of places that can require regrouping (1-3)
+    """
+    if max_operand <= 100:
+        return 1  # 2-digit max: only ones→tens place
+    elif max_operand <= 1000:
+        return 2  # 3-digit max: ones→tens, tens→hundreds
+    elif max_operand <= 10000:
+        return 3  # 4-digit max: ones→tens, tens→hundreds, hundreds→thousands
+    else:
+        return 4  # 5+ digits: up to 4 places
+
 # --- ROUTERS ---
 from backend.app.routes import parent
 
@@ -464,6 +490,65 @@ def get_matatag_lab_config(node_id: str):
 
     # Build difficulty_dimensions with proper handling of continuous vs discrete
     difficulty_dimensions = []
+
+    # Issue 2: For subtraction LCs with explicit bounds, consider adding a discrete max_minuend axis
+    should_add_max_minuend_axis = False
+    max_minuend_axis = None
+
+    if primary_concept == "subtraction":
+        # Extract the max minuend from competency text or per-grade bounds
+        info_competency = info.get("competency", "").lower()
+        max_minuend_value = None
+
+        # Check for explicit bounds in the competency text
+        if "less than 20" in info_competency or "up to 20" in info_competency:
+            max_minuend_value = 20
+        elif "less than 100" in info_competency or "up to 100" in info_competency:
+            max_minuend_value = 100
+        elif "less than 1000" in info_competency or "up to 1000" in info_competency:
+            max_minuend_value = 1000
+        elif "less than 10000" in info_competency or "up to 10000" in info_competency:
+            max_minuend_value = 10000
+
+        # If an explicit bound was found AND it's different from the per-grade default,
+        # add a discrete axis to capture this constraint
+        if max_minuend_value:
+            from backend.app.practice_gen.dna.na.subtraction import _PARAM_BOUNDS
+            g_key = f"g{max(1, min(grade, 3))}"
+            grade_default = _PARAM_BOUNDS[g_key]["a"][1]
+
+            if max_minuend_value < grade_default:
+                # This LC has a more restrictive bound than the grade default
+                # Add a discrete axis showing the available range options
+                should_add_max_minuend_axis = True
+
+                # Determine what options to show (e.g., 20, 100, 1000, 10000)
+                available_ranges = []
+                if max_minuend_value == 20:
+                    available_ranges = [
+                        {"value": 20, "label": "Numbers up to 20"},
+                        {"value": 100, "label": "Numbers up to 100"},
+                    ]
+                elif max_minuend_value == 100:
+                    available_ranges = [
+                        {"value": 20, "label": "Numbers up to 20"},
+                        {"value": 100, "label": "Numbers up to 100"},
+                    ]
+                elif max_minuend_value == 1000:
+                    available_ranges = [
+                        {"value": 100, "label": "Numbers up to 100"},
+                        {"value": 1000, "label": "Numbers up to 1000"},
+                    ]
+
+                if available_ranges:
+                    max_minuend_axis = {
+                        "name": "max_minuend",
+                        "label": "Number Range",
+                        "dim_type": "discrete",
+                        "options": available_ranges,
+                        "default": max_minuend_value,
+                    }
+
     for axis in axes:
         axis_name = axis["name"]
         dim_type = axis.get("dim_type", "discrete")
@@ -538,9 +623,56 @@ def get_matatag_lab_config(node_id: str):
                 "default_scalar": axis.get("default", 0.0),
             })
         else:
-            # Discrete dimension: show all levels for manual testing in the lab
+            # Discrete dimension: filter options based on competency bounds when applicable
             levels = axis.get("options", [])
-            
+
+            # Issue 1: Filter regrouping options by max operand value from competency
+            if axis_name == "regrouping" and primary_concept in ("addition", "subtraction"):
+                # Determine the max operand value from competency bounds
+                # For addition: use max_sum if available (operands sum to this)
+                # For subtraction: use max_minuend if available
+                max_operand = None
+
+                if primary_concept == "addition":
+                    if "max_sum" in competency_bounds:
+                        bounds_tuple = competency_bounds["max_sum"]
+                        if isinstance(bounds_tuple, tuple) and len(bounds_tuple) == 2:
+                            # For addition, the max sum is ~2x the max operand, so divide by 1.5
+                            max_operand = bounds_tuple[1]
+                elif primary_concept == "subtraction":
+                    if "max_minuend" in competency_bounds:
+                        bounds_tuple = competency_bounds["max_minuend"]
+                        if isinstance(bounds_tuple, tuple) and len(bounds_tuple) == 2:
+                            max_operand = bounds_tuple[1]
+                    else:
+                        # Fall back: extract from grade defaults or per-grade bounds
+                        from backend.app.practice_gen.dna.na.subtraction import _PARAM_BOUNDS
+                        g_key = f"g{max(1, min(grade, 3))}"
+                        if g_key in _PARAM_BOUNDS:
+                            max_operand = _PARAM_BOUNDS[g_key]["a"][1]
+
+                # Filter levels to only include viable regrouping places
+                if max_operand:
+                    max_places = _get_max_regrouping_places(max_operand)
+                    # Map option labels to place counts
+                    place_count_map = {
+                        "none": 0,
+                        "one_place": 1,
+                        "two_places": 2,
+                        "three_places": 3,
+                        "four_places": 4,
+                        # Legacy names for backwards compatibility
+                        "ones": 1,
+                        "tens": 1,
+                        "double": 2,
+                    }
+                    filtered_levels = [
+                        lv for lv in levels
+                        if place_count_map.get(lv["value"], 0) <= max_places
+                    ]
+                    if filtered_levels:
+                        levels = filtered_levels
+
             d = len(levels)
             options = []
 
@@ -559,6 +691,26 @@ def get_matatag_lab_config(node_id: str):
                 "options": options,
                 "default_scalar": 0.0,
             })
+
+    # Issue 2: Add max_minuend axis for subtraction LCs with explicit bounds
+    if should_add_max_minuend_axis and max_minuend_axis:
+        d = len(max_minuend_axis["options"])
+        options = []
+        for i, opt in enumerate(max_minuend_axis["options"]):
+            scalar = i / (d - 1) if d > 1 else 0.0
+            options.append({
+                "scalar": round(scalar, 2),
+                "level": opt["value"],
+                "label": f"{opt['label']} (scalar={scalar:.2f})",
+            })
+
+        difficulty_dimensions.append({
+            "name": max_minuend_axis["name"],
+            "label": max_minuend_axis["label"],
+            "dim_type": "discrete",
+            "options": options,
+            "default_scalar": 0.0,
+        })
 
     # Build contextual_variants from compatibility.py
     variants = VARIANTS_BY_DNA.get(primary_concept, {})

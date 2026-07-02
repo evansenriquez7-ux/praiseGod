@@ -166,6 +166,14 @@ def _parse_competency_bounds(
     # ("both numbers are less than N"), not result-bound language
     # ("differences up to N"). The `max_difference` axis was removed
     # from the catalog on 2026-07-01 — see axes_catalog.py header.
+    # However, we still parse and store max_minuend for UI purposes
+    # (to show a discrete "max_minuend" axis when the LC has an explicit bound).
+    elif dna_name == "subtraction":
+        # Parse explicit operand bounds
+        match = re.search(r'(?:less than|up to)\s+(\d+)', text)
+        if match:
+            max_val = int(match.group(1))
+            bounds["max_minuend"] = (1, max_val)
     
     # Multiplication: "products up to X"
     elif dna_name == "multiplication":
