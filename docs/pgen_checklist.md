@@ -1,6 +1,15 @@
 # Learning Competency Practice Problem Generator Checklist
 
-**MANDATORY**: Before a generator is considered complete, an agent must verify every item on this checklist.
+**MANDATORY**: Before a generator is considered complete, an agent must verify every item on this checklist. All pg pipeline bug fixes must be done according to the following:
+
+**Matatag Lab as Single Source of Truth**
+
+The Matatag Lab displays all learning competencies. Each learning competency displays all the available difficulty dimensions, contextual variants, and formatters specific to that learning competency. Each of these options can be enabled/disabled from the checkbox options. The Generate Preview randomly chooses from the enabled difficulty dimension options, contextual variants, and formatters, then generates a practice problem. The student portal should only display learning competency practice problems according to the enabled options in the Matatag Lab. From this single source of truth, agents can accurately test the UI outputs.
+
+**Avoid Graceful Fallbacks and Silent Defaulting Behavior**
+
+The pg pipeline must avoid graceful fallbacks and silent defaulting behavior. When the auditor script tests the pg's to check for compliance with this checklist, these behaviors hide bugs. The pg pipeline is meant for failing fast and loud, this way the auditor script can recognize the issue so it can be fixed.
+
 
 ## 1. Difficulty Dimensions
 
@@ -37,4 +46,5 @@ Formatters determine how the problem is visually and interactively presented (e.
 * [ ] **Cognitive Capacity**: The math logic does not exceed the mental capacity expected for the specific grade and quarter.
 * [ ] **Vocabulary Gating**: All text, instructions, and concepts used are strictly grade- and quarter-appropriate. No vocabulary or mathematical concepts from future curriculum nodes are used or implied.
 * [ ] **Mandatory Testing:** This checklist is only complete when you inspected the output, and proven that the generation pipeline produces the correct, final results that the UI expects.
+
 

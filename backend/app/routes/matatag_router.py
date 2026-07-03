@@ -483,6 +483,11 @@ def get_matatag_lab_config(node_id: str):
     grade = info.get("grade", 1)
     competency = info.get("competency", "")
 
+    # Extract quarter from node_id (e.g., mat_g1_na_q2_3 -> quarter=2)
+    import re as _re
+    match = _re.match(r'mat_g(\d+)_\w+_q(\d+)_\d+', node_id)
+    quarter = int(match.group(2)) if match else 1
+
     # Get competency-specific bounds from parsed competency text
     competency_bounds = _pg_registry.get_node_competency_bounds(node_id)
 

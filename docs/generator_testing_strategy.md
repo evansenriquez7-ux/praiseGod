@@ -1,496 +1,233 @@
 # Generator Testing Strategy
 
-> **"Praise God" is your catchphrase. Use it appropriately.**
-> *(AGENTS.md: this is the project's catchphrase. Use it as a celebration
-> when a node passes the audit or a category drops to zero, not as
-> decorative noise.)*
+> **"Praise God" is your catchphrase.** Use it as a celebration when a node
+> passes the audit or a category drops to zero, not as decorative noise.
 
 ## What this document is
 
-The current strategy for catching practice-problem-generator (PG) bugs
-in this repo has three components. They were built and hardened across
-two sessions (2026-06-30 → 2026-07-01) and replaced the previous
-"backend fuzzer + AI static analysis" approach that the
-`fuzzer.py` + `visual_components_audit.md` strategy in
-`local_only/scratch/oc/visual_components_audit.md` originally used.
+The strategy for catching practice-problem-generator (PG) bugs has **three
+components**: a fail-fast pipeline, an exhaustive checklist auditor, and a
+parallelized test runner. This document is the operating manual for all three.
 
-If you are a new agent, the previous UI-fuzzer + visual audit strategy
-described in the bottom of this file is **historical context only**.
-Do not rebuild it. Use the three-component strategy below. It is
-strictly more complete and is now the source of truth for "did this
-generator follow the checklist?".
+`docs/pgen_checklist.md` is the checklist the auditor enforces — read it before
+fixing any finding. This file tells you how to run the audit, how to read its
+output, and which traps to avoid.
 
 ## The three components
 
 ### 1. Fail-fast PG pipeline
 
-Every DNA, generator, and formatter in `backend/app/practice_gen/`
-must surface problems that violate `docs/pgen_checklist.md` as an
-**exception**, never as a silently-degraded problem.
+Every DNA, generator, and formatter in `backend/app/practice_gen/` must surface
+checklist-violating problems as an **exception**, never as a silently-degraded
+problem (see `pgen_checklist.md` §6).
 
-- `PracticeOrchestrator.generate_problem()` (in
-  `backend/app/services/orchestrator.py`) lets any
-  `RuntimeError`/`ValueError` raised by the DNA, the formatter, or
-  the visual layer propagate to the caller. It does not catch and
-  return a default.
-- DNAs that cannot produce a non-degenerate problem for the requested
-  profile (e.g. subtraction fallback when `max_minuend <= 2`) raise
-  `RuntimeError` with a descriptive message — see
-  `backend/app/practice_gen/dna/na/subtraction.py:228-253` for the
-  canonical pattern.
-- Formatters that cannot build `len(distractors) >= 3` raise
-  `ValueError` rather than padding with placeholder strings. See
-  `backend/app/practice_gen/generators/_operand_guard.py` for the
-  candidate-pool rules that prevent this from being hit in normal
-  profiles.
+- `PracticeOrchestrator.generate_problem()` (`backend/app/services/orchestrator.py`)
+  lets any `RuntimeError`/`ValueError` from the DNA, formatter, or visual layer
+  propagate. It does not catch and return a default.
+- DNAs that cannot produce a non-degenerate problem raise `RuntimeError` with a
+  descriptive message — canonical pattern at
+  `backend/app/practice_gen/dna/na/subtraction.py:228-253`.
+- Formatters that cannot build `len(distractors) >= 3` raise `ValueError` rather
+  than padding with placeholders. Candidate-pool rules that prevent this in
+  normal profiles live in `backend/app/practice_gen/generators/_operand_guard.py`.
 
-**Why this matters for the audit:** if a profile makes a node
-*crash*, the auditor catches the exception, records the
-`(node_id, seed, formatter, profile)` tuple in
-`repro_crashes.json`, and moves to the next combination. If a profile
-makes a node *silently degrade* (return a near-empty problem), the
-auditor's downstream content checks flag it as a violation, but it is
-much harder to reproduce and root-cause.
-
-**Rule:** when fixing a generator bug, do not add a "graceful default"
-that returns a near-empty problem when inputs are bad. Raise. The
-audit's job is to surface these failures; the orchestrator's job is
-to filter bad profiles out *before* they reach the DNA. If the
-orchestrator is letting a bad profile through, that is the bug to
-fix, not the DNA's behavior.
+**Rule:** when fixing a generator bug, do not add a "graceful default" that
+returns a near-empty problem for bad inputs. **Raise.** If a bad profile is
+reaching the DNA at all, the bug is that the orchestrator failed to pre-filter
+it — fix the orchestrator, not the DNA's behavior.
 
 ### 2. The exhaustive checklist auditor
 
-`local_only/scratch/exhaustive_checklist_auditor.py` is the source
-of truth for "does this generator follow
-`docs/pgen_checklist.md`?". It enumerates **every (node, profile,
-formatter) combination** the UI is allowed to send and checks the
-output against the checklist rules.
+`local_only/scratch/exhaustive_checklist_auditor.py` is the source of truth for
+"does this generator follow `docs/pgen_checklist.md`?". It enumerates **every
+(node, profile, formatter) combination** the UI is allowed to send and checks
+the output against the checklist rules.
 
 Key design points:
 
-- **Profile builder is mirrored from the orchestrator.** The auditor
-  uses `build_test_profiles()`, `formatter_supports_profile()`, and
-  `_profile_violates_numeric_limit()` to ensure it never requests a
-  profile the orchestrator would reject with
-  `IncompatibleConfigurationError`. This means a violation reported
-  by the auditor is a real bug, not a "the auditor asked for
-  something invalid" false positive.
-- **Per-DNA×formatter compatibility is mirrored from
-  `FORMATTER_VARIANT_SUPPORT`**, not recomputed. If the orchestrator
-  rejects a (DNA, formatter, variant) combination at runtime
-  (see `services/orchestrator.py:140-148` for the runtime filter),
-  the audit does not test it.
-- **Per-formatter numeric limits** are enforced via
-  `FORMATTER_NUMERIC_LIMITS` (in
-  `backend/app/practice_gen/compatibility.py`) and
-  `_profile_violates_numeric_limit()`. A profile whose mapped value
-  exceeds the formatter's `max_val` is filtered out before
-  generation. Example: `emoji_pictorial`'s `max_val=100` prevents
-  the audit from requesting a profile that would map to 1000.
-- **Strict scalar endpoint check** uses
-  `get_node_competency_bounds()` (the actual range the orchestrator
-  respects) and tolerates **±1 rounding** at `scalar in {0.0, 1.0}`
-  because the log mapping `int(pow(10, …))` is inherently lossy at
-  the upper boundary. Anything beyond ±1 is a real violation.
-- **Fail-fast on harness import errors** (e.g. missing
-  `fastapi` in the interpreter). `_import_harness_dependencies()`
-  raises `AuditHarnessError` which is a distinct exception type from
-  per-node content failures — so a broken venv is never mislabeled
-  as 151 distinct per-node bugs. (We hit this in the v3 baseline:
-  `Lab Config Fetch Crash: No module named 'fastapi'` × 151 nodes
-  was actually a single environment bug.)
-- **The auditor writes two JSON files** at the workspace root:
-  - `checklist_audit_report.json`: `{node_id: [error_messages]}`
-  - `repro_crashes.json`: `[{node_id, seed, formatter,
-    difficulty_profile, error_message}, …]` — every crash the audit
-    can deterministically re-trigger. This is the bug queue.
+- **Profile builder is mirrored from the orchestrator.** It uses
+  `build_test_profiles()`, `formatter_supports_profile()`, and
+  `_profile_violates_numeric_limit()` so it never requests a profile the
+  orchestrator would reject. A reported violation is therefore a real bug, not a
+  "the auditor asked for something invalid" false positive. (This mirror is a
+  contract — see Trap 3.)
+- **Per-DNA×formatter compatibility is mirrored from `FORMATTER_VARIANT_SUPPORT`**
+  (in `compatibility.py`), not recomputed. Combinations the orchestrator rejects
+  at runtime (`orchestrator.py:140-148`) are not tested.
+- **Per-formatter numeric limits** via `FORMATTER_NUMERIC_LIMITS` +
+  `_profile_violates_numeric_limit()`: a profile whose mapped value exceeds a
+  formatter's `max_val` is filtered before generation (e.g. `emoji_pictorial`'s
+  `max_val=100` blocks a profile that would map to 1000).
+- **Strict scalar endpoint check** uses `get_node_competency_bounds()` (the range
+  the orchestrator actually respects) and tolerates **±1 rounding** at
+  `scalar in {0.0, 1.0}` because the log mapping is lossy at the boundary.
+  Anything beyond ±1 is a real violation.
+- **`dna_name` annotation** (`FormattedProblem.dna_name`, set by the orchestrator
+  after DNA selection) is what enables per-DNA content checks like the Fractions
+  override. **Whenever you add a new DNA, set `problem.dna_name` in its
+  generator** or those checks can't run.
+- **Two output files** at the workspace root:
+  - `checklist_audit_report.json` — `{node_id: [error_messages]}`
+  - `repro_crashes.json` — `[{node_id, seed, formatter, difficulty_profile,
+    error_message}, …]`, every crash the audit can deterministically re-trigger.
+    This is the bug queue.
 
-**Per AGENTS.md rule #4** (no silent skipping): the auditor asserts
-that every variant option it added to `base_profiles` is present in
-the returned (de-duplicated) profile list. If a dedup bug drops a
-variant, the auditor raises `AssertionError` immediately rather than
-producing a misleadingly-clean report.
+  Both files are **overwritten in place** on every run (no rotation) — snapshot
+  them if you need to compare runs, and verify their timestamps before trusting a
+  report. See Troubleshooting.
+
+Per AGENTS.md rule #4 (no silent skipping): the auditor asserts every variant it
+added to `base_profiles` survives de-duplication, raising `AssertionError`
+immediately if a dedup bug drops one.
 
 ### 3. The parallelized test pipeline
 
-`run_audit(parallel=True)` distributes nodes across
-`ProcessPoolExecutor` worker processes. The per-node body is the
-module-level `_audit_node()` (extracted from the old inline `run_audit`
-body specifically so `ProcessPoolExecutor` can pickle it).
+**Why parallelize.** Serial audit: ~151 nodes × ~15 formatters × ~5 profiles × ~10 samples ≈ 1.1M+ problems ≈ 4-6 hours. Parallel (4 cores): ~30-60 min. Problem generation is single-threaded per node; budget a full hour.
 
-- **Default: `multiprocessing.cpu_count()` workers** (4 on the Mac
-  mini 2018 build target). Override with `--max-workers N`.
-- **`chunksize = ceil(N_nodes / N_workers)`** (e.g. 38 for
-  151 nodes × 4 workers). This amortizes the ~5-10s per-process
-  import cost over ~38 node audits per worker invocation.
-- **Correctness gate:** `tests/test_parallel_audit.py` runs the
-  audit on 5 sample nodes both serially and in parallel, and asserts
-  byte-identical output. This test was the regression net when the
-  per-node body was extracted — if you change `_audit_node()` or the
-  aggregation, this test must still pass.
-- **Slow mark:** the full audit takes ~20-40 min on 4 cores. All
-  full-audit tests are marked `@pytest.mark.slow` and excluded from
-  the default pytest run. Run them with `-m slow` before opening a PR
-  that touches a DNA, formatter, or the auditor.
+**How it works.** `run_audit(parallel=True)` uses `ProcessPoolExecutor` with **module-level** `_audit_node()` as the worker (for pickling). Defaults: 4 workers (`multiprocessing.cpu_count()`), chunksize = ⌈151/4⌉ ≈ 38 nodes/worker (amortizes 5-10s import cost). Override workers with `--max-workers N`.
+
+**Rules:**
+1. `_audit_node()` MUST stay module-level, never a closure. `ProcessPoolExecutor` pickles it; closures fail silently. `tests/test_parallel_audit.py` is the regression gate — run before/after any parallelization change.
+2. Always use `bash local_only/scratch/run_checklist_audit.sh` (venv wrapper), never bare `python`. Bare python causes "No module named 'fastapi'" × 151 nodes (Trap 1).
+3. Imports inside `_audit_node()` are preferred over module-level (sidesteps circular imports under `spawn`).
+4. **First 5 min: 3 active workers, 1 at 0% CPU is normal** (spawn re-imports `backend.app` per worker). Do not kill — it will pick up. Only past ~1 hour is a stuck worker a real hang: check `ps` for a runaway DNA loop (Trap 2, a DNA bug, not the audit).
+
+Every invocation (full audit, single node, worker override, pytest) is listed in
+the **How to use it** table below. **Pytest alternative** (for CI integration):
+`pytest tests/test_checklist_audit.py -v -m slow` — same audit, integrated output.
 
 ## How to use it
 
-### Run the full audit (CLI)
+| Task | Command |
+|------|---------|
+| Full audit (parallel) | `bash local_only/scratch/run_checklist_audit.sh` |
+| Single node (debug) | `venv/bin/python -m local_only.scratch.exhaustive_checklist_auditor --no-parallel --node-ids mat_g1_na_q1_0` |
+| Multiple nodes | `venv/bin/python -m local_only.scratch.exhaustive_checklist_auditor --node-ids mat_g1_na_q1_0,mat_g2_na_q1_0` |
+| Override workers | `venv/bin/python -m local_only.scratch.exhaustive_checklist_auditor --max-workers 2` |
+| Full audit (pytest) | `cd local_only/scratch && ../../venv/bin/python -m pytest tests/test_checklist_audit.py -v -m slow` |
+| Phase unit tests | `cd local_only/scratch && ../../venv/bin/python -m pytest tests/ -v -m "not slow"` |
 
-```bash
-local_only/scratch/run_checklist_audit.sh
-```
+**Output files** (overwritten each run, no rotation): `checklist_audit_report.json`, `repro_crashes.json`. Snapshot before re-running if you need to compare: `cp checklist_audit_report.json checklist_audit_report.$(date +%s).json`.
 
-This is the venv wrapper — use it instead of bare `python`. It
-runs `venv/bin/python -m local_only.scratch.exhaustive_checklist_auditor`
-and writes `checklist_audit_report.json` + `repro_crashes.json` at
-the workspace root. The wrapper exits non-zero if any node has
-violations.
+## Troubleshooting
 
-CLI flags:
-
-```bash
-venv/bin/python -m local_only.scratch.exhaustive_checklist_auditor \
-    --max-workers 4    # default 0 (= cpu_count)
-    --no-parallel      # run serially (useful for debugging)
-    --node-ids mat_g1_na_q1_0,mat_g2_na_q1_0  # restrict to a subset
-```
-
-### Run the full audit (pytest)
-
-```bash
-cd local_only/scratch
-../../venv/bin/python -m pytest tests/test_checklist_audit.py -v -m slow
-```
-
-`test_checklist_audit.py` calls `run_audit(parallel=True)` directly
-and asserts zero violations. The advantage over the CLI is that it
-integrates with the test runner — failures show up in the pytest
-output and you can iterate without re-importing the auditor.
-
-### Run a single-node smoke test
-
-```bash
-venv/bin/python -m local_only.scratch.exhaustive_checklist_auditor \
-    --node-ids mat_g1_na_q1_0 --no-parallel
-```
-
-Use `--no-parallel` so the output is deterministic and you can read
-the print statements in order.
-
-### Run the unit tests for individual phases
-
-```bash
-cd local_only/scratch
-../../venv/bin/python -m pytest tests/ -v -m "not slow"
-```
-
-This runs the 5 unit-test files (`test_axes_log_scale`,
-`test_distractor_fallback`, `test_separation_of_concerns`,
-`test_semantic_leak_guards`, `test_strict_scalar_tolerance`)
-without the slow full-audit test. Run this before committing any
-DNA, formatter, or auditor change.
+| Problem | Diagnosis | Fix |
+|---------|-----------|-----|
+| Code change not loading | Run `ls -l checklist_audit_report.json` to check if report is fresh. If fresh but change didn't apply, suspect bytecode cache. | `find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null` then re-run. |
+| Report seems stale | Killed/restarted runs leave previous report files. Check timestamp. | `ls -l checklist_audit_report.json` — mtime should match this run. Snapshot before re-running if comparing: `cp checklist_audit_report.json checklist_audit_report.$(date +%s).json` |
+| Audit hangs >1 hour | A first-5-min idle worker is normal (spawn re-import); a full run legitimately takes up to ~1 hour. Only beyond that is it a real hang. | `ps -p <pid> -o pcpu,etime,command` — 100% CPU + climbing etime = runaway DNA loop (Trap 2). Fix the DNA's re-roll logic, not the audit. |
+| Same error on 100+ nodes (e.g., "No module named 'fastapi'") | This is a harness bug, not 100+ content bugs. | Always use `bash local_only/scratch/run_checklist_audit.sh` (venv wrapper). Never bare `python`. |
 
 ## File layout
 
 | Path | Purpose |
 |---|---|
-| `docs/pgen_checklist.md` | The checklist the audit enforces. Read this before fixing any audit finding. |
+| `docs/pgen_checklist.md` | The checklist the audit enforces. Read before fixing any finding. |
 | `docs/generator_testing_strategy.md` | This file. |
-| `local_only/scratch/exhaustive_checklist_auditor.py` | The auditor. 805 lines. Module-level `_audit_node()` is the per-process worker entry point. |
+| `local_only/scratch/exhaustive_checklist_auditor.py` | The auditor. Module-level `_audit_node()` is the per-process worker entry point. |
 | `local_only/scratch/run_checklist_audit.sh` | Venv wrapper. Use this, not bare `python`. |
 | `local_only/scratch/pytest.ini` | Pytest config. Defines `slow` marker. |
-| `local_only/scratch/tests/test_parallel_audit.py` | Comparison test: serial vs parallel on 5 sample nodes. **The** correctness gate for the parallelization refactor. |
-| `local_only/scratch/tests/test_checklist_audit.py` | Full-audit test. Asserts 0 violations. Marked `@pytest.mark.slow`. |
+| `local_only/scratch/tests/test_parallel_audit.py` | Serial-vs-parallel comparison on 5 nodes. **The** correctness gate for the module-level-worker requirement (Rules #1). |
+| `local_only/scratch/tests/test_checklist_audit.py` | Full-audit test. Asserts 0 violations. `@pytest.mark.slow`. |
 | `local_only/scratch/tests/test_*_*.py` | Phase-specific unit tests. Not slow. |
 | `checklist_audit_report.json` | Output: `{node_id: [error_messages]}`. |
 | `repro_crashes.json` | Output: `[{node_id, seed, formatter, difficulty_profile, error_message}, …]`. |
-| `local_only/scratch/oc/CHECKLIST_AUDIT_BUG_FIXES.md` | Session log: which categories were fixed and how. Read this when adding a new category. |
-| `backend/app/practice_gen/dna/na/*.py` | The DNAs. Each one has its own candidate-pool rules and (for the ones fixed in Phase 1A) `dna_name` annotation. |
-| `backend/app/practice_gen/compatibility.py` | `FORMATTER_VARIANT_SUPPORT` + `FORMATTER_NUMERIC_LIMITS`. The auditor mirrors both — if you change one, the other is auto-consistent. |
-| `backend/app/services/orchestrator.py` | The orchestrator. Sets `problem.dna_name = dna_name` so the auditor can do per-DNA content checks. |
-| `backend/app/practice_gen/dna/base.py` | `FormattedProblem.dna_name: Optional[str]`. The field the orchestrator annotates. |
+| `local_only/scratch/oc/CHECKLIST_AUDIT_BUG_FIXES.md` | Session log: which categories were fixed and how. Read when adding a new category. |
+| `backend/app/practice_gen/dna/na/*.py` | The DNAs. Each has its own candidate-pool rules and `dna_name` annotation. |
+| `backend/app/practice_gen/compatibility.py` | `FORMATTER_VARIANT_SUPPORT` + `FORMATTER_NUMERIC_LIMITS`. The auditor mirrors both. |
+| `backend/app/services/orchestrator.py` | The orchestrator. Sets `problem.dna_name` for per-DNA checks. |
+| `backend/app/practice_gen/dna/base.py` | `FormattedProblem.dna_name: Optional[str]`. |
 
 ## What the auditor checks (the categories)
 
-These are the failure categories the audit currently surfaces. When
-adding a new category, also add a unit test in
-`local_only/scratch/tests/` and document it here.
+When adding a new category, also add a unit test in `local_only/scratch/tests/`
+and document it here.
 
-1. **Pipeline Crash** — `PracticeOrchestrator.generate_problem()` raised
-   an exception. Captured with full traceback in the report. Captured
-   in `repro_crashes.json` for deterministic re-trigger.
-2. **Semantic Leak** — the answer (`correct_answer`) appears as a
-   standalone number in the stem. Skipped for
-   `PROMPT_TARGET_FORMATTERS` (visual formatters whose prompt *is* the
-   task, like `number_line_read`). Skipped for the `comparing_ordering`
-   DNA.
-3. **Vocabulary Violation** — the stem or any hint contains a word from
-   `FORBIDDEN_WORDS` (`sequence`, `minuend`, `subtrahend`, `addend`,
-   `multiplicand`, `multiplier`, `divisor`, `dividend`, `expression`,
-   `evaluate`). Words that are explicit MATATAG curriculum verbs at
-   G1-G3 (e.g. `identify`) are intentionally NOT forbidden.
-4. **Formatter Fallback** — the user requested a visual formatter
-   (`pictograph_set`, `bar_chart_read`, etc.) but the pipeline
-   degraded to a textual format. Indicates the DNA is missing
-   `format_used` logic for that formatter/variant combination.
-5. **Visual Degradation** — `context=word_problem` was combined with a
-   visual formatter and the stem exceeded 200 chars (the threshold;
-   K-1 instructional visual prompts routinely run 120-150 chars and
-   are valid).
-6. **Fractions DNA override** — the DNA picked was `fractions` but
-   the stem doesn't mention fractions or use `\\` notation. Indicates
-   `fractions` is being selected for ordering/comparing contexts when
-   it shouldn't be.
-7. **Strict Scalar Endpoint** — at `scalar in {0.0, 1.0}` the mapped
-   value is more than ±1 from the expected endpoint. Verified against
-   `get_node_competency_bounds()`, not the UI's `min_value`/`max_value`.
+1. **Pipeline Crash** — `generate_problem()` raised. Full traceback in the report;
+   captured in `repro_crashes.json` for deterministic re-trigger.
+2. **Semantic Leak** — the answer appears as a standalone number in the stem.
+   Skipped for `PROMPT_TARGET_FORMATTERS` (visual formatters whose prompt *is* the
+   task, e.g. `number_line_read`) and for the `comparing_ordering` DNA.
+3. **Vocabulary Violation** — the stem or a hint contains a `FORBIDDEN_WORDS` term
+   (`sequence`, `minuend`, `subtrahend`, `addend`, `multiplicand`, `multiplier`,
+   `divisor`, `dividend`, `expression`, `evaluate`). Explicit MATATAG G1-G3
+   curriculum verbs (e.g. `identify`) are intentionally allowed.
+4. **Formatter Fallback** — a visual formatter was requested but the pipeline
+   degraded to a textual format. The DNA is missing `format_used` logic for that
+   formatter/variant.
+5. **Visual Degradation** — `context=word_problem` + a visual formatter produced a
+   stem over 200 chars (K-1 instructional visual prompts run 120-150 chars and are
+   valid).
+6. **Fractions DNA override** — DNA was `fractions` but the stem doesn't mention
+   fractions or use `\\` notation. `fractions` is being selected for
+   ordering/comparing contexts where it shouldn't be.
+7. **Strict Scalar Endpoint** — at `scalar in {0.0, 1.0}` the mapped value is more
+   than ±1 from the expected endpoint. Verified against
+   `get_node_competency_bounds()`.
 8. **Scale Appropriateness** — for wide ranges (`max_val / min_val >= 10`),
-   `scalar=0.5` mapped linearly instead of logarithmically. Indicates
-   the axis is missing `scale: 'logarithmic'`.
-9. **Separation of Concerns** — switching from `context=pure` to
-   `context=word_problem` changed the underlying numeric state.
-   Captured by comparing the `Counter` of numbers in the stems.
-10. **Variant/Dim never exercised** — a contextual variant option or
-    difficulty dimension had no coverage in the test profiles.
-    Indicates a config bug.
-11. **Profile Mismatch** — the value the orchestrator actually used
-    differs from the value the auditor requested. Indicates a
-    silent-default bug (violates AGENTS.md rule #4).
-12. **Strict Scalar Violation** — the mapped value is outside the
-    strict `[min, max]` bounds for the dimension. The strict version
-    of #7 (uses `get_node_competency_bounds()` directly).
-13. **Visual Schema Error** — a visual formatter's output is missing
-    required `visual_params` keys (e.g. `FractionModel` requires
-    `model_type`, `numerator`, `denominator`, `total_parts`,
-    `shaded_parts`).
-14. **Formatter mismatch** — the formatters declared in
-    `lab_config['formatters']` don't match the union of
-    `get_formatters_for_dna(d)` across all DNAs. Indicates a config
-    bug.
-15. **Invalid dimension type / empty options** — a
-    `difficulty_dimensions` or `contextual_variants` entry is
-    malformed. Indicates a config bug.
+   `scalar=0.5` mapped linearly instead of logarithmically. The axis is missing
+   `scale: 'logarithmic'`.
+9. **Separation of Concerns** — switching `context=pure` → `context=word_problem`
+   changed the underlying numeric state (compared via `Counter` of stem numbers).
+10. **Variant/Dim never exercised** — a variant option or dimension had no test
+    coverage. A config bug.
+11. **Profile Mismatch** — the value the orchestrator used differs from what the
+    auditor requested. A silent-default bug (violates AGENTS.md rule #4).
+12. **Strict Scalar Violation** — the mapped value is outside the strict
+    `[min, max]` bounds (the strict version of #7).
+13. **Visual Schema Error** — a visual formatter's output is missing required
+    `visual_params` keys (e.g. `FractionModel` needs `model_type`, `numerator`,
+    `denominator`, `total_parts`, `shaded_parts`).
+14. **Formatter mismatch** — `lab_config['formatters']` doesn't match the union of
+    `get_formatters_for_dna(d)` across all DNAs. A config bug.
+15. **Invalid dimension type / empty options** — a malformed
+    `difficulty_dimensions` or `contextual_variants` entry. A config bug.
 
-## Lessons learned (read these before touching the audit)
+## Traps (read first if audit result looks strange)
 
-These are the failure modes the previous strategy hit and which the
-new strategy is specifically designed to prevent. **If you are
-debugging a "weird" audit result, check the lesson list first.**
+**Trap 1 — Uniform failure × 100+ nodes = harness bug, not content bugs.** Example: `Lab Config Fetch Crash: No module named 'fastapi'` × 151 nodes. That is **one** environment bug (bare `python` instead of venv wrapper), not 151 per-node bugs. `_import_harness_dependencies()` raises `AuditHarnessError` (distinct type) on import failure to make this clear. Always use `bash local_only/scratch/run_checklist_audit.sh`.
 
-### Lesson 1: Always run the auditor under the project's venv
+**Trap 2 — Runaway DNA loop, not slow profile.** A full run legitimately takes up to ~1 hour, so only past that is a worker pinned at 100% CPU a real hang — a DNA with an infinite re-roll loop (e.g., `subtraction.py` re-rolling only `b` for `max_minuend=2`). Diagnose: `ps -p <pid> -o pcpu,etime,command` (100% CPU + climbing etime = runaway). Fix: make the DNA re-roll *both* operands and raise `RuntimeError` if no valid pair exists. Do not add silent defaults like `max_attempts`/`sleep` — the audit surfaces that bug.
 
-The single most common false-positive cascade we've hit:
-`Lab Config Fetch Crash: No module named 'fastapi'` × 151 nodes.
-This is a **harness** failure, not a content failure, but the
-auditor can't tell the difference unless you run it under
-`venv/bin/python` (which has `fastapi`, `sqlalchemy`, etc. installed).
+**Trap 3 — The auditor's compatibility checks must mirror the orchestrator exactly.**
+`formatter_supports_profile()` is a 1:1 mirror of `orchestrator.py:142-148`;
+`_profile_violates_numeric_limit()` mirrors `orchestrator.py:88-119`. **The mirror
+is the contract, and the orchestrator is the source of truth.** If you change the
+orchestrator's continuous-axis mapping or compatibility check, update the auditor
+in the *same commit*, or the two diverge and the audit produces:
+- (a) profiles the orchestrator rejects → spurious Pipeline Crash counts; or
+- (b) skipped profiles the orchestrator accepts → false-negative coverage gaps.
 
-**Use `local_only/scratch/run_checklist_audit.sh`, never bare
-`python`.** The shell wrapper exists for exactly this reason.
+**Trap 4 — An implausibly high category count usually means the rule is too strict.**
+When a category's count seems impossibly large, suspect the *check*, not the
+backend. Past examples:
+- **Strict scalar endpoint** checked against the UI's full axis range instead of
+  `get_node_competency_bounds()` → 88,126 false positives. Fix: use competency
+  bounds.
+- **Semantic leak** flagged the answer-in-stem for *all* formatters, but for
+  `number_line_read` the prompt *is* the answer → 25,148 false positives. Fix:
+  `PROMPT_TARGET_FORMATTERS` carve-out.
+- **Visual degradation** flagged any word_problem stem over 120 chars, but valid
+  K-1 visual prompts run 120-150 → 16,766 false positives. Fix: threshold 200.
 
-If you see the *same* `Lab Config Fetch Crash` string across most or
-all nodes, that is the venv bug, not a real finding.
+Compare the auditor's check against the orchestrator's runtime filter and look
+for divergence before "fixing" the backend.
 
-### Lesson 2: If the audit hangs, the DNA has a runaway loop — not a slow profile
+**Trap 5 — Non-reproducible repro_crashes = a DNA using the global `random`.**
+`repro_crashes.json` records `(node_id, seed, formatter, difficulty_profile)` with
+seed `1000 + sample_index + (1000 * len(profiles))`. For a crash to re-trigger, the
+DNA must be deterministic given seed + profile + formatter. If a repro can't be
+re-triggered, a `practice_gen` module is reaching for `random.random()` /
+`random.randint()` instead of the passed-in `rng`. **Always use the `rng`
+parameter; never the global `random` module.**
 
-We hit this with `mat_g1_na_q3_3` hanging at 100% CPU for 40+
-minutes. The cause was a `while` loop in
-`backend/app/practice_gen/dna/na/subtraction.py:228-235` that only
-re-rolled `b` (not `a`) when no valid `(a, b)` pair existed. For
-`max_minuend=2` there is no valid pair, so the loop ran forever.
+## Historical note
 
-How to diagnose:
-
-1. `top` or `ps -p <pid> -o pcpu,etime,command` — confirms the
-   process is at 100% CPU (not blocked on I/O).
-2. `py-spy dump --pid <pid>` if available (samples the Python
-   call stack without killing the process).
-3. As a fallback: `kill -SIGALRM <pid>` while a
-   `faulthandler.enable()` is active — `faulthandler` writes a
-   Python traceback to stderr on `SIGALRM`. See
-   `local_only/scratch/oc/CHECKLIST_AUDIT_BUG_FIXES.md` for the
-   exact recipe used.
-4. **Then fix the DNA**, not the audit. The audit's job is to
-   surface the failure; the DNA's job is to fail fast. Re-rolling
-   both `a` and `b` and raising `RuntimeError` if no valid pair
-   exists is the correct pattern.
-
-**Per AGENTS.md rule #4:** do not add a `time.sleep(0.01)` or
-`max_attempts` silent-default that returns a near-empty problem.
-Raise. Surface. The audit will report it as a Pipeline Crash, which
-is the right outcome — the orchestrator should pre-filter the
-profile.
-
-### Lesson 3: When parallelization "loses" a node, the function is not module-level
-
-`ProcessPoolExecutor` pickles the worker function and its
-dependencies. If `_audit_node()` is a closure or a local function
-inside `run_audit()`, the pool will fail to pickle it and either
-crash the whole run or silently drop the node.
-
-The auditor got this wrong on the first refactor: `_audit_node`
-was originally inline. The fix was to extract it to the module
-level. The regression net is
-`local_only/scratch/tests/test_parallel_audit.py` — it runs the
-audit on 5 sample nodes both serially and in parallel and asserts
-byte-identical output. Run this test before and after any
-parallelization refactor.
-
-### Lesson 4: Mirror the orchestrator's compatibility checks exactly
-
-The auditor's `formatter_supports_profile()` is a 1:1 mirror of
-`backend/app/services/orchestrator.py:142-148`. The auditor's
-`_profile_violates_numeric_limit()` is a 1:1 mirror of
-`orchestrator.py:88-119`. **If you change the orchestrator's
-continuous-axis mapping or compatibility check, you must update
-the auditor in the same commit, or the audit will start
-generating false positives (or, worse, false negatives).**
-
-The mirror functions exist to make the audit's profile builder
-behave identically to the orchestrator's runtime filter. If the
-two diverge, the audit either:
-- (a) requests a profile the orchestrator rejects → spurious
-  Pipeline Crash counts; or
-- (b) skips a profile the orchestrator accepts → false-negative
-  coverage gap.
-
-**The mirror is the contract.** The orchestrator's logic is the
-source of truth; the audit's mirror must follow.
-
-### Lesson 5: When adding a new check, the failure mode is usually "the rule is too strict"
-
-A common cause of runaway violation counts is a check that flags a
-case the orchestrator's own runtime filter would have rejected. We
-hit this with:
-
-- **Strict scalar endpoint** initially checked against the UI's
-  `min_value`/`max_value` (the full axis range), but the
-  orchestrator uses `get_node_competency_bounds()` (a tighter
-  competency-specific range). 88,126 false positives. Fix: use
-  `competency_bounds`.
-- **Semantic leak** initially flagged the answer appearing in the
-  stem for *all* formatters, but for `number_line_read` and
-  similar visual formatters the prompt *is* the answer. 25,148
-  false positives. Fix: add `PROMPT_TARGET_FORMATTERS` carve-out.
-- **Visual degradation** initially flagged any word_problem stem
-  over 120 chars, but K-1 instructional visual prompts routinely
-  run 120-150 chars and are valid. 16,766 false positives. Fix:
-  raise threshold to 200.
-
-**When a category's count seems implausibly high, suspect the rule
-is too strict, not that the backend is implausibly buggy.** Compare
-the auditor's check against the orchestrator's runtime filter and
-look for divergence.
-
-### Lesson 6: `dna_name` annotation unlocks per-DNA content checks
-
-`FormattedProblem.dna_name: Optional[str] = None` was added in Phase
-1A, and the orchestrator sets `problem.dna_name = dna_name` after
-choosing the DNA. This is what made the `Fractions DNA override`
-check possible: without knowing which DNA the orchestrator picked
-(it is selected stochastically), the auditor cannot check whether
-the stem matches the DNA's expected structure.
-
-**Whenever you add a new DNA, set `problem.dna_name` in the
-corresponding generator.** The auditor relies on it.
-
-### Lesson 7: One environment bug can masquerade as 151 distinct bugs
-
-The v3 baseline had every single node failing with the same
-`Lab Config Fetch Crash: No module named 'fastapi'` error. This
-was a single bug (running the audit under bare `python` instead of
-`venv/bin/python`) mislabeled as 151 distinct per-node failures.
-
-When investigating an audit run, **first check whether the
-violation pattern is implausibly uniform.** If 100+ nodes all fail
-with the same string, the bug is in the harness, not the backend.
-
-The fix was `_import_harness_dependencies()` which raises
-`AuditHarnessError` (distinct from any per-node content failure)
-on transitive import failure. The auditor's `run_audit()` does
-not catch `AuditHarnessError` — it propagates and kills the run
-with a clear message.
-
-### Lesson 8: Stable seeds are required for repro_crashes
-
-`repro_crashes.json` records `(node_id, seed, formatter,
-difficulty_profile)`. The seed is `1000 + sample_index + (1000 *
-len(profiles))`. For this to be reproducible:
-
-- The DNA must be deterministic given the same seed, the same
-  `difficulty_profile`, and the same `formatter`.
-- The `build_test_profiles()` function must produce the same
-  profile list across runs (it does — see Lesson 4).
-- The `practice_gen` modules must not reach for
-  `random.random()` or `random.randint()` at module level (only
-  inside a function that takes an `rng` parameter).
-
-If you see repro_crashes that can't be re-triggered, check
-whether the DNA is using the global `random` module. **Always use
-the `rng` parameter.**
-
-### Lesson 9: macOS `spawn` start method quirks
-
-On macOS, `multiprocessing` defaults to the `spawn` start method.
-This means each worker re-imports the entire `backend.app` module
-tree, which takes 5-10 seconds. We observed that **3 workers
-typically run actively while the 4th is at 0% CPU for the first
-few minutes** (it has been spawned but the OS hasn't scheduled it
-yet). This is normal, not a bug. The audit's `chunksize` math
-accounts for it: `chunksize = ceil(N / workers)` means each
-worker is invoked only ~4 times, so the 5-10s import cost is
-amortized over 38 nodes per call.
-
-If you see "1 worker at 0% CPU" for the first few minutes of a
-4-worker run, do not kill the run. It will pick up.
-
-### Lesson 10: Cleanup is part of the strategy
-
-`local_only/scratch/` is the temporary-scripts directory per
-`AGENTS.md` file-placement rules. The diagnostic scripts created
-during the runaway-loop investigation
-(`diagnose_slow_nodes.py`, `diagnose_slow_nodes_v2.py`,
-`diagnose_runaway.py`, `diagnose_combination.py`,
-`trace_hang.py`, `verify_remaining_nodes.py`) were temporary and
-were deleted at the end of the session. **The audit log files
-(`audit_run_*.log`) and the workspace-root report files
-(`checklist_audit_report.json`, `repro_crashes.json`) are
-regenerated on every audit run, so keep the latest one only.**
-
-## What the previous strategy looked like (historical)
-
-The previous strategy combined:
-
-1. A **HTTP fuzzer** (`fuzzer.py`) that hit the
-   `/api/matatag/lab/generate` endpoint with random
-   `(node_id, format_preference, axis_values)` permutations and
-   asserted the response was valid JSON. This caught 500s and
-   empty `mcq_options`, but was blind to the React layer.
-2. A **multi-agent static analysis** ("Hub-and-Spoke" AI QA) that
-   spawned `CompetencyPgenAuditor` subagents, each auditing a
-   batch of visual components by cross-referencing the backend
-   formatter (e.g. `fmt_calendar.py`) against its React
-   counterpart (e.g. `CalendarInteractive`). This caught
-   answer-leaks, state overwrites, and missing interactivity
-   bindings.
-
-The static analysis produced `visual_components_audit.md` in
-`local_only/scratch/oc/`, which is **still the source of truth
-for visual-component bugs** (formatter-side React issues that the
-backend auditor cannot see).
-
-The fuzzer's job has been superseded by the exhaustive
-checklist auditor. The static-analysis job is still useful for
-visual-component bugs but is no longer the only check. If you are
-debugging a React rendering bug that the audit doesn't catch,
-the static-analysis strategy is still applicable — but use the
-checklist auditor's `repro_crashes.json` to get a deterministic
-backend payload first, then hand the payload to a visual
-auditor.
-
-**Do not rebuild `fuzzer.py` from scratch.** If the
-checklist auditor misses something the fuzzer used to catch,
-file an issue against the auditor (or add a new category to
-it) — that is the path forward.
+The previous strategy (an HTTP `fuzzer.py` against `/api/matatag/lab/generate`
+plus a multi-agent visual static analysis) has been **superseded by the checklist
+auditor — do not rebuild `fuzzer.py`.** If the auditor misses something the fuzzer
+caught, add a category to the auditor instead. The one still-live artifact is
+`local_only/scratch/oc/visual_components_audit.md`, which remains the source of
+truth for **React-side visual-component bugs** the backend auditor cannot see. To
+debug one, pull a deterministic payload from `repro_crashes.json` first, then hand
+it to a visual audit.
