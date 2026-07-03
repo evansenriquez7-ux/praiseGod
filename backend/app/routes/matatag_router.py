@@ -134,29 +134,17 @@ from backend.app.services.scoring import update_elo
 
 
 def _get_max_regrouping_places(max_operand: int) -> int:
+    """Max regrouping/borrowing places feasible for a given number range.
+
+    Thin wrapper over the DNA's `max_regrouping_places` (single source of truth,
+    verified exhaustively against `_satisfies_regrouping`). The previous local
+    table was off by one at the 100 and 1000 boundaries (e.g. it returned 1 for
+    max_operand=100 where 2 carries are actually achievable, and 2 for 1000 where
+    3 are), which let infeasible (range, regrouping) combinations reach the
+    generator and spin its rejection loop.
     """
-    Infer max regrouping/borrowing places from the maximum operand value.
-
-    Regrouping places = number of digit places - 1.
-    - max_operand <= 20 → 2 digits → max 1 place
-    - max_operand <= 100 → 2 digits → max 1 place
-    - max_operand <= 1000 → 3 digits → max 2 places
-    - max_operand <= 10000 → 4 digits → max 3 places
-
-    Args:
-        max_operand: Maximum operand value allowed by the LC (e.g., 20, 100, 1000)
-
-    Returns:
-        Maximum number of places that can require regrouping (1-3)
-    """
-    if max_operand <= 100:
-        return 1  # 2-digit max: only ones→tens place
-    elif max_operand <= 1000:
-        return 2  # 3-digit max: ones→tens, tens→hundreds
-    elif max_operand <= 10000:
-        return 3  # 4-digit max: ones→tens, tens→hundreds, hundreds→thousands
-    else:
-        return 4  # 5+ digits: up to 4 places
+    from backend.app.practice_gen.dna.na.addition import max_regrouping_places
+    return max_regrouping_places(max_operand)
 
 # --- ROUTERS ---
 from backend.app.routes import parent
@@ -681,6 +669,25 @@ def get_matatag_lab_config(node_id: str):
     available_formatters = sorted(set(itertools.chain.from_iterable(
         COMPATIBILITY.get(dna, ["mcq"]) for dna in dnas
     )))
+
+    # Drop formatters whose display ceiling is below this node's number range.
+    # E.g. emoji_pictorial renders quantities as literal emoji and cannot show
+    # values > 100 (FORMATTER_NUMERIC_LIMITS), so it must NOT be offered on a
+    # grade-3 node whose sums reach 9999 — it would only ever raise. The node's
+    # ceiling is the largest upper bound across its numeric competency axes.
+    from backend.app.practice_gen.compatibility import FORMATTER_NUMERIC_LIMITS
+    node_max_value = max(
+        (b[1] for b in competency_bounds.values()
+         if isinstance(b, tuple) and len(b) == 2),
+        default=0,
+    )
+    available_formatters = [
+        fmt for fmt in available_formatters
+        if FORMATTER_NUMERIC_LIMITS.get(fmt, {}).get("max_val", float("inf")) >= node_max_value
+    ]
+    if not available_formatters:
+        available_formatters = ["mcq"]  # mcq is always renderable (no numeric limit)
+
     formatters = []
 
     # Formatter display names

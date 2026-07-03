@@ -139,6 +139,46 @@ def _satisfies_regrouping(a: int, b: int, level: str) -> bool:
     return True
 
 
+# Number of borrow places each regrouping level *requires*. Mirror of the
+# addition table; used by max_regrouping_places to decide feasibility.
+REGROUP_LEVEL_PLACES = {
+    "none": 0,
+    "one_place": 1,
+    "two_places": 2,
+    "three_places": 3,
+    "four_places": 4,
+    # legacy names
+    "ones": 1,
+    "tens": 1,
+    "double": 2,
+}
+
+
+def max_regrouping_places(max_minuend: int) -> int:
+    """Largest borrow count achievable for any (a, b) with a <= max_minuend, a >= b.
+
+    A subtraction whose minuend is bounded by an N-digit `max_minuend` can borrow
+    at most N-1 times: the top digit has no higher place to borrow from. Verified
+    exhaustively against `_satisfies_regrouping`:
+        max_minuend   20 (2 digits) -> 1
+        max_minuend  100 (3 digits) -> 2
+        max_minuend  999 (3 digits) -> 2
+        max_minuend 1000 (4 digits) -> 3
+
+    Single source of truth for borrow feasibility (mirrors addition's carry
+    version). The lab-config builder, orchestrator pre-filter, auditor mirror,
+    and the DNA guard all defer to it.
+    """
+    if max_minuend < 10:
+        return 0
+    return len(str(int(max_minuend))) - 1
+
+
+def regrouping_is_feasible(level: str, max_minuend: int) -> bool:
+    """True if `level` can be satisfied by some (a, b) with a <= max_minuend."""
+    return REGROUP_LEVEL_PLACES.get(level, 0) <= max_regrouping_places(max_minuend)
+
+
 def _satisfies_number_type(a: int, b: int, level: str) -> bool:
     if level == "round":
         return a % 10 == 0 and b % 10 == 0
@@ -201,6 +241,19 @@ def generate_params(
     reg_level = profile.get("regrouping", "none")
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
+    # Fail fast on infeasible (range, regrouping) combinations. A minuend bounded
+    # by `max_minuend` can borrow at most `max_regrouping_places(max_minuend)`
+    # times, so a level demanding more places has no valid pair. Raise instead of
+    # exhausting the rejection loop below (defense in depth — the
+    # orchestrator/auditor pre-filter should keep these from reaching here).
+    if not regrouping_is_feasible(reg_level, max_minuend):
+        raise RuntimeError(
+            f"generate_params (subtraction): regrouping level '{reg_level}' requires "
+            f"{REGROUP_LEVEL_PLACES.get(reg_level, 0)} borrow places but max_minuend="
+            f"{max_minuend} allows at most {max_regrouping_places(max_minuend)}. "
+            f"Infeasible combination (grade={grade}, profile={difficulty_profile})."
+        )
+
     # Contextual variants
     context = profile.get("context", "pure")
     spine = profile.get("spine", None)
@@ -222,62 +275,44 @@ def generate_params(
 
     # Build valid pairs with rejection sampling
     candidate_pairs = []
+    # Generate the full, curriculum-accurate pair space (b in [0, a] so the
+    # result a-b is non-negative — K-3 has no negative results). Pairs like
+    # (a, 0) = "a - 0 = a", (a, a) = "a - a = 0", and (2b, b) = "a - b = b" are
+    # LEGITIMATE MATATAG problems (subtracting zero, subtracting a number from
+    # itself, etc.) and are NOT excluded here. Whether the answer appears
+    # verbatim in the stem is a SEMANTIC-LEAK concern handled at render time via
+    # FormattedProblem.given_values / blank_target and the auditor's
+    # explainable-count check — not by dropping valid number pairs.
     if max_minuend <= 100:
         for a in candidates_a:
             for b in range(0, a + 1):
-                # Exclude (a, 0): a - 0 = a makes the answer identical to
-                # the minuend, which the student can read directly (semantic
-                # leak). MATATAG requires problems that exercise the
-                # subtraction competency, not trivial read-the-minuend tasks.
-                #
-                # Also exclude (a, b) where a == 2*b — this makes a - b == b,
-                # so the answer equals the visible subtrahend when the blank
-                # is "result" (e.g. "4 - 2 = ___" with answer 2).
-                #
-                # Also exclude (a, b) where a == b — this makes a - b == 0,
-                # and when the blank is the minuend (e.g. "___ - 3 = 0"),
-                # the answer (3) equals the visible subtrahend.
-                if b == 0 or a == 2 * b or a == b:
-                    continue
                 if _satisfies_regrouping(a, b, reg_level):
                     candidate_pairs.append((a, b))
     else:
+        # Feasible level (guard above): the pool fills in far fewer than 2000
+        # draws, so a low cap suffices.
         attempts = 0
-        while len(candidate_pairs) < 2000 and attempts < 50000:
+        while len(candidate_pairs) < 2000 and attempts < 5000:
             attempts += 1
             a = rng.randint(min_a, max_minuend)
-            b = rng.randint(1, a)  # b >= 1 excludes trivial a - 0 = a
-            if a == 2 * b or a == b:
-                continue
+            b = rng.randint(0, a)
             if _satisfies_regrouping(a, b, reg_level):
                 candidate_pairs.append((a, b))
 
     if not candidate_pairs:
-        # Fallback: simple pair (still exclude trivial a - 0 = a and
-        # a - b == b cases). If max_minuend is too small to have any valid
-        # (a, b) pair (a >= 3 AND b in [1, a-1] AND a != 2b), re-roll
-        # both a and b. The previous version only re-rolled b, which
-        # caused an infinite loop when max_minuend <= 2.
-        attempts = 0
-        while attempts < 1000:
-            attempts += 1
-            a = rng.randint(2, max_minuend)
-            b = rng.randint(1, a)
-            if b == 0 or a == 2 * b or a == b:
-                continue
-            break
-        else:
-            # No valid pair exists for this max_minuend; surface the
-            # problem rather than spinning forever. The orchestrator
-            # will catch this as a pipeline crash and the audit will
-            # report it as a known-incompatibility for this profile.
-            raise RuntimeError(
-                f"generate_params (subtraction): no valid (a, b) pair "
-                f"exists for max_minuend={max_minuend} with the given "
-                f"regrouping/structure constraints. This profile is too "
-                f"small to generate a non-degenerate problem."
-            )
-        candidate_pairs = [(a, b)]
+        # No pair satisfies the requested regrouping constraint within the
+        # range. Fail fast — do NOT silently return a pair that ignores the
+        # constraint (that was the previous behaviour and it emitted off-spec
+        # problems, violating AGENTS.md #4 / fail-fast). The feasibility guard
+        # above already rejects structurally-impossible levels; reaching here
+        # means the constraint is satisfiable in principle but not for this
+        # exact range/exclusion set, which is still a real incompatibility.
+        raise RuntimeError(
+            f"generate_params (subtraction): no valid (a, b) pair exists for "
+            f"max_minuend={max_minuend}, regrouping='{reg_level}' with the "
+            f"non-degenerate exclusions (b>=1, a!=2b, a!=b). "
+            f"Constraints are incompatible (grade={grade}, profile={difficulty_profile})."
+        )
 
     # Sample a pair from the candidate pool using the continuous difficulty window
     from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window

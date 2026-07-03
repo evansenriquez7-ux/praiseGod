@@ -151,6 +151,49 @@ def _satisfies_regrouping(a: int, b: int, level: str) -> bool:
     return True
 
 
+# Number of carry places each regrouping level *requires*. Used to decide
+# whether a level is feasible for a given number range (see
+# max_regrouping_places) so we never ask the generator to search for a pair
+# that cannot exist.
+REGROUP_LEVEL_PLACES = {
+    "none": 0,
+    "one_place": 1,
+    "two_places": 2,
+    "three_places": 3,
+    "four_places": 4,
+    # legacy names
+    "ones": 1,
+    "tens": 1,
+    "double": 2,
+}
+
+
+def max_regrouping_places(max_result: int) -> int:
+    """Largest carry count physically achievable for any (a, b) with a + b <= max_result.
+
+    Adding two operands whose sum is bounded by an N-digit `max_result` can carry
+    at most N-1 times: each carry propagates one place left, and the final carry
+    is what creates the top (Nth) digit. Verified exhaustively against
+    `_satisfies_regrouping`:
+        max_result   20 (2 digits) -> 1
+        max_result  100 (3 digits) -> 2
+        max_result  999 (3 digits) -> 2
+        max_result 1000 (4 digits) -> 3
+
+    This is the single source of truth for regrouping feasibility; the lab-config
+    builder, orchestrator pre-filter, auditor mirror, and the DNA guard all defer
+    to it so an infeasible (range, regrouping) combination is never generated.
+    """
+    if max_result < 10:
+        return 0
+    return len(str(int(max_result))) - 1
+
+
+def regrouping_is_feasible(level: str, max_result: int) -> bool:
+    """True if `level` can be satisfied by some (a, b) with a + b <= max_result."""
+    return REGROUP_LEVEL_PLACES.get(level, 0) <= max_regrouping_places(max_result)
+
+
 # ─── parameter generator ──────────────────────────────────────────────────────
 
 # Word problem templates for context="word_problem"
@@ -234,6 +277,20 @@ def generate_params(
     if grade >= 4 and max_result >= 1000:
         min_a = 100
         
+    # Fail fast on infeasible (range, regrouping) combinations instead of
+    # discovering it by exhausting the rejection loop below. A sum bounded by
+    # `max_result` can carry at most `max_regrouping_places(max_result)` times,
+    # so a level demanding more places has no valid pair — raise immediately.
+    # (The orchestrator/auditor pre-filter should keep such profiles from ever
+    # reaching here; this guard is defense in depth.)
+    if not regrouping_is_feasible(reg_level, max_result):
+        raise RuntimeError(
+            f"generate_params (addition): regrouping level '{reg_level}' requires "
+            f"{REGROUP_LEVEL_PLACES.get(reg_level, 0)} carry places but max_result="
+            f"{max_result} allows at most {max_regrouping_places(max_result)}. "
+            f"Infeasible combination (grade={grade}, profile={difficulty_profile})."
+        )
+
     a_hi = max(1, max_result - 1)
     candidates_a = list(range(min_a, a_hi + 1))
     candidates_b = candidates_a.copy()
@@ -248,8 +305,12 @@ def generate_params(
                 if _satisfies_regrouping(a, b, reg_level):
                     candidate_pairs.append((a, b))
     else:
+        # Feasible level (guard above): a satisfiable constraint fills the pool
+        # in far fewer than 2000 draws, so a low cap suffices. If the pool is
+        # still empty after the cap, treat it as infeasible and raise rather
+        # than silently returning a degraded pair.
         attempts = 0
-        while len(candidate_pairs) < 2000 and attempts < 50000:
+        while len(candidate_pairs) < 2000 and attempts < 5000:
             attempts += 1
             a = rng.randint(min_a, a_hi)
             b = rng.randint(0, max_result - a)

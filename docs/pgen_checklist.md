@@ -15,6 +15,8 @@ The pg pipeline must avoid graceful fallbacks and silent defaulting behavior. Wh
 
 Difficulty dimensions control the core progression of a problem's complexity. They represent an ordered path from easiest to hardest (e.g., numerical ranges, regrouping levels, spatial orientation, or analytical depth). Dimensions must represent an ordered progression of difficulty. Do NOT use difficulty dimensions for unordered categorical variations.
 
+> For dd internals — continuous vs. discrete scales, windowed sampling, log-vs-linear interpolation, and `axes_catalog.py` — see [`DIFFICULTY_DIMENSIONS.md`](./DIFFICULTY_DIMENSIONS.md). You need it only when fixing a complex dd bug or creating/modifying a dimension; for routine findings the rules below suffice.
+
 * [ ] **Strict Scalar Mapping**: A scalar of `0.0` MUST map to the exact minimum bound prescribed by the competency. A scalar of `1.0` MUST map to the exact maximum bound.
 * [ ] **Numerical Nature**: Dimensions must be mathematical/numerical. Do NOT use difficulty dimensions for language variations or problem presentation (use Contextual Variants for that).
 * [ ] **Scale Appropriateness**: For continuous ranges (`d=5`), use a **logarithmic scale** for wide ranges (e.g., >= 10x jump, like 10 to 1000) and a **linear scale** for narrow ranges.

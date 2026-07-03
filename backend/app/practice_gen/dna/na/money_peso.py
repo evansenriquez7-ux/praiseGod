@@ -200,17 +200,16 @@ def generate_params(
         chosen = [rng.choice(denom_pool) for _ in range(n)]
         t = sum(chosen)
         if t <= max_total:
-            # Exclude all-1 picks: when every coin is ₱1, the sum equals
-            # the count (e.g. "3 ₱1 coins" → answer 3), so the student
-            # can read the answer directly from the count in the prompt.
-            if all(c == 1 for c in chosen):
-                continue
+            # All-₱1 picks (e.g. "3 ₱1 coins" → total 3) are LEGITIMATE
+            # counting problems and are kept. Whether the total coincides with
+            # a count stated in the prompt is a render-time semantic-leak
+            # concern (handled via given_values/blank_target + the auditor's
+            # explainable-count check), not a reason to drop the combination.
             candidates.append((t, chosen))
 
     if not candidates:
-        # Fallback: two of the second-smallest denom (not 1, to avoid
-        # the count-equals-sum leak).
-        fallback_denom = denom_pool[1] if len(denom_pool) > 1 and denom_pool[0] == 1 else denom_pool[0]
+        # Fallback: two of the smallest available denomination.
+        fallback_denom = denom_pool[0]
         t = fallback_denom * 2
         candidates.append((t, [fallback_denom, fallback_denom]))
 

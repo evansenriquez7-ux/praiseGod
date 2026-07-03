@@ -130,20 +130,22 @@ def normalize_dim_value(dim, opt, primary_concept=None):
     """
     Convert dimension option to profile value.
 
-    For continuous dimensions: interpolate scalar with min/max bounds from axes catalog.
+    For continuous dimensions: use the pre-computed value from the config.
     For discrete dimensions: return the level/value as-is.
     """
     if dim.get("dim_type") == "continuous":
-        scalar = opt.get("scalar", 0.0)
+        # The config already has the computed value for each option
+        value = opt.get("value")
+        if value is not None:
+            return value
 
-        # Get bounds from axes catalog
-        min_val = dim.get("default_min", 1)
-        max_val = dim.get("default_max", 100)
+        # Fallback: interpolate (should not be needed if config is correct)
+        scalar = opt.get("scalar", 0.0)
+        min_val = dim.get("min_value", dim.get("default_min", 1))
+        max_val = dim.get("max_value", dim.get("default_max", 100))
         scale = dim.get("scale", "linear")
 
-        # Interpolate: value = min + scalar * (max - min)
         if scale == "logarithmic":
-            # For log scale: value = min * (max/min)^scalar
             if min_val > 0 and max_val > 0:
                 import math
                 ratio = max_val / min_val
@@ -151,7 +153,6 @@ def normalize_dim_value(dim, opt, primary_concept=None):
             else:
                 interpolated = min_val + scalar * (max_val - min_val)
         else:
-            # Linear interpolation
             interpolated = min_val + scalar * (max_val - min_val)
 
         return int(round(interpolated))
@@ -368,12 +369,11 @@ PROMPT_TARGET_STEM_PATTERNS = [
         r"Start\s+at\s+\d+\.\s+Count\s+back\s+\d+\.\s+What\s+number\s+do\s+you\s+land\s+on",
         re.IGNORECASE,
     ),
-    # "How many ... / How much ..." word problems where the question itself states
-    # the numeric target. By design, the target number is in the question.
-    re.compile(
-        r"(?:How\s+(?:many|much).*[:\?])",
-        re.IGNORECASE,
-    ),
+    # NOTE: a broad "How many ... / How much ...?" pattern was removed here. It
+    # matched essentially every addition/subtraction word problem and thereby
+    # DISABLED leak detection for all of them. Whether a "how many" word problem
+    # actually leaks is decided correctly by the explainable-count check
+    # (answer vs. given_values) at the point of use — not by a stem regex.
 ]
 
 
@@ -429,6 +429,33 @@ def _profile_violates_numeric_limit(profile, config, competency_bounds, formatte
         if mapped_val > formatter_max_val:
             return True
     return False
+
+
+def _regrouping_profile_is_feasible(dna_name, profile):
+    """Mirror the addition/subtraction DNA feasibility guard.
+
+    A `regrouping` level that demands more carry/borrow places than the number
+    range in the profile can physically produce has no valid pair — the DNA
+    raises on it (fast). The auditor must not *request* such a combination, or
+    it would report it as a Pipeline Crash. Feasibility depends on the specific
+    (range, regrouping) pair in the profile, not the node's global ceiling, so
+    it must be checked per-profile here.
+
+    Defers to the DNA's `regrouping_is_feasible` (single source of truth). For
+    addition the range key is the profile's mapped `max_sum`; subtraction's DNA
+    derives its operand ceiling from the grade bounds (it ignores `number_range`),
+    so no auditor-side gate is needed there — the DNA guard covers it.
+    """
+    reg = profile.get("regrouping")
+    if reg is None:
+        return True
+    if dna_name == "addition":
+        from backend.app.practice_gen.dna.na.addition import regrouping_is_feasible
+        max_sum = profile.get("max_sum")
+        if not isinstance(max_sum, (int, float)):
+            return True  # can't evaluate without a concrete range; let it through
+        return regrouping_is_feasible(reg, int(max_sum))
+    return True
 
 
 def formatter_supports_profile(dna_name, formatter, profile):
@@ -572,9 +599,24 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
         return failures, repro_crashes, total_checked
 
     primary_concept = dnas[0]
+    competency_bounds = get_node_competency_bounds(node_id)
     supported_formatters = sorted(
         set(itertools.chain.from_iterable(get_formatters_for_dna(d) for d in dnas))
     )
+    # Mirror the lab-config builder: drop formatters whose display ceiling is
+    # below this node's number range (e.g. emoji_pictorial max_val=100 on a
+    # grade-3 node reaching 9999). Keeps the audit from testing — and the
+    # Formatter-mismatch check below from flagging — a formatter the node no
+    # longer offers. Single source of truth is FORMATTER_NUMERIC_LIMITS.
+    _node_max_value = max(
+        (b[1] for b in competency_bounds.values()
+         if isinstance(b, tuple) and len(b) == 2),
+        default=0,
+    )
+    supported_formatters = [
+        fmt for fmt in supported_formatters
+        if FORMATTER_NUMERIC_LIMITS.get(fmt, {}).get("max_val", float("inf")) >= _node_max_value
+    ]
     if not supported_formatters:
         supported_formatters = ["mcq"]
 
@@ -594,7 +636,6 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
     # re-fetch per profile.
     dim_names = {d["name"] for d in config.get("difficulty_dimensions", [])}
     dna_formatters = {d: set(get_formatters_for_dna(d)) for d in dnas}
-    competency_bounds = get_node_competency_bounds(node_id)
 
     variant_coverages = defaultdict(lambda: defaultdict(int))
     scalar_coverages = defaultdict(int)
@@ -611,6 +652,14 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
         profiles = [
             p for p in profiles
             if any(formatter_supports_profile(d, formatter, p) for d in dnas)
+        ]
+        # Drop profiles whose (range, regrouping) combination is infeasible for
+        # every DNA on the node — the DNA guard would raise on these, and they
+        # are a config cross-product artifact, not a real bug. Mirrors the DNA's
+        # regrouping_is_feasible (single source of truth).
+        profiles = [
+            p for p in profiles
+            if any(_regrouping_profile_is_feasible(d, p) for d in dnas)
         ]
         limits = FORMATTER_NUMERIC_LIMITS.get(formatter, {})
         fmt_max = limits.get("max_val")
