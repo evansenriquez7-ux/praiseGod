@@ -194,9 +194,14 @@ def generate_params(
 
     candidates = []
     for _ in range(500):
+        # Item count must NOT depend on `context`: the old
+        # `if context == "word_problem": n = 2` override both (a) desynced the
+        # RNG stream (the discarded randint draw shifted every later
+        # rng.choice, so pure and word_problem drew different denominations
+        # from the same seed) and (b) altered the core math across a variant,
+        # violating pgen_checklist.md §2 (Separation of Concerns). Draw `n`
+        # identically for every context so the operands match.
         n = rng.randint(2, max_items)
-        if context == "word_problem":
-            n = 2
         chosen = [rng.choice(denom_pool) for _ in range(n)]
         t = sum(chosen)
         if t <= max_total:

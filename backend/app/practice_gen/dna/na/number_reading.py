@@ -145,6 +145,12 @@ def generate_params(
 
     lo = int(profile.get("min_value", lo))
     hi = int(profile.get("max_value", hi))
+    # Respect the display ceiling of the chosen formatter (e.g. emoji_pictorial
+    # can only render groups <= 100). The orchestrator injects
+    # `formatter_max_val` from FORMATTER_NUMERIC_LIMITS; clamp `hi` to it so a
+    # number-reading value never exceeds what the formatter can show.
+    if "formatter_max_val" in profile:
+        hi = min(hi, int(profile["formatter_max_val"]))
     if lo > hi:
         lo = hi
 

@@ -22,7 +22,7 @@ import pytest
 _REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
 sys.path.insert(0, _REPO_ROOT)
 
-from local_only.scratch.exhaustive_checklist_auditor import (  # noqa: E402
+from tests.exhaustive_checklist_auditor import (  # noqa: E402
     _strict_scalar_endpoint_violates,
 )
 

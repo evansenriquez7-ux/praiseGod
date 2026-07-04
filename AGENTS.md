@@ -23,8 +23,9 @@ When writing, modifyinor debugging code for this project, you must follow strict
 2. **Mandatory Testing:** Always ensure everything is working from a UI perspective before reporting positively. A fix is only confirmed when you have inspected the output, and proven that the pipeline produces the correct results.
 3. **Graphify-First Diagnosis:** For any non-trivial bug or fix — anything touching multiple files, call paths, or the pg pipeline (axes → DNA → compatibility → Lab → portal) — query the Graphify MCP first to get a bird's-eye view of the affected code and its dependents. Diagnose from the graph's structure, not isolated file reads, and use it to verify your fix is clean across every dependent (no orphaned callers, no missed call sites). Trivial, self-contained edits may skip this.
 4. **File Management:** 
-   - Store all temporary markdown files, buildtime logs, temporary test, helper, and verification scripts in the `local_only/scratch` directory of the workspace (use `docs/scratch ` when using github codespaces).
-   - Store all permanent markdown files in the `/docs` directory of the workspace.
+   - Store all temporary markdown files, buildtime logs, scratch test scripts in the `local_only/scratch` directory of the workspace (use `docs/scratch ` when using github codespaces).
+   - Store all permanent audit files which are re-used to diagnose and debug the pg pipeline in the `tests` dir 
+   - Store all permanent markdown files in the `docs` directory of the workspace. These md files are meant for every agent to ready
    - Keep the root directory clean and tidy.
 
 ## Must Examine Docs

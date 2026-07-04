@@ -40,31 +40,31 @@ class TestFormatterSupportsProfileGate1:
     DNA's compatible_formatters list (matches orchestrator.py:125)."""
 
     def test_fractions_rejects_ordering(self):
-        from local_only.scratch.exhaustive_checklist_auditor import (
+        from tests.exhaustive_checklist_auditor import (
             formatter_supports_profile,
         )
         assert formatter_supports_profile("fractions", "ordering", {}) is False
 
     def test_fractions_rejects_sort_order(self):
-        from local_only.scratch.exhaustive_checklist_auditor import (
+        from tests.exhaustive_checklist_auditor import (
             formatter_supports_profile,
         )
         assert formatter_supports_profile("fractions", "sort_order", {}) is False
 
     def test_fractions_accepts_mcq(self):
-        from local_only.scratch.exhaustive_checklist_auditor import (
+        from tests.exhaustive_checklist_auditor import (
             formatter_supports_profile,
         )
         assert formatter_supports_profile("fractions", "mcq", {}) is True
 
     def test_fractions_accepts_cloze(self):
-        from local_only.scratch.exhaustive_checklist_auditor import (
+        from tests.exhaustive_checklist_auditor import (
             formatter_supports_profile,
         )
         assert formatter_supports_profile("fractions", "cloze", {}) is True
 
     def test_fractions_accepts_fraction_model_read(self):
-        from local_only.scratch.exhaustive_checklist_auditor import (
+        from tests.exhaustive_checklist_auditor import (
             formatter_supports_profile,
         )
         assert formatter_supports_profile(
@@ -72,7 +72,7 @@ class TestFormatterSupportsProfileGate1:
         ) is True
 
     def test_comparing_ordering_accepts_ordering(self):
-        from local_only.scratch.exhaustive_checklist_auditor import (
+        from tests.exhaustive_checklist_auditor import (
             formatter_supports_profile,
         )
         assert (
@@ -81,7 +81,7 @@ class TestFormatterSupportsProfileGate1:
         )
 
     def test_addition_rejects_fraction_model_read(self):
-        from local_only.scratch.exhaustive_checklist_auditor import (
+        from tests.exhaustive_checklist_auditor import (
             formatter_supports_profile,
         )
         assert (
@@ -94,7 +94,7 @@ class TestFormatterSupportsProfileGate1:
         # is empty) and the function falls through to gate 2 (the
         # FORMATTER_VARIANT_SUPPORT caps, which will also be empty for an
         # unknown DNA). Result: True (defensive: don't filter unknown DNAs).
-        from local_only.scratch.exhaustive_checklist_auditor import (
+        from tests.exhaustive_checklist_auditor import (
             formatter_supports_profile,
         )
         assert (

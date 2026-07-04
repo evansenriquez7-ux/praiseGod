@@ -217,6 +217,10 @@ def generate_context(
             grade=grade,
             rng=rng,
             prior_concepts=cumulative_concepts,  # all known = prior for now
+            # Keep the narrative's unknown aligned with the DNA's unknown; a
+            # result-unknown spine cannot voice a change_unknown (unknown=b)
+            # problem without leaking b into the stem.
+            required_blank_target=values.get("blank_target"),
         )
         if spine is not None:
             spine_id = spine.id
@@ -241,9 +245,21 @@ def generate_context(
     blank_target: str = values.get("blank_target", "result")
     blank_value = values.get(blank_target)
     if blank_value is not None and spine is not None and "___" not in question_text:
-        question_text_with_blank = question_text.replace(
-            str(blank_value), "___", 1
-        )
+        # Replace the blank value only where it appears as a standalone
+        # number — NOT as a substring inside a larger number. A naive
+        # str.replace("0", …) turns "10" into "1___"; a digit-boundary
+        # match ((?<!\d)…(?!\d), also guarding a trailing decimal) blanks
+        # only the intended operand.
+        import re as _re
+        pattern = _re.compile(rf"(?<!\d){_re.escape(str(blank_value))}(?!\d)(?!\.\d)")
+        question_text_with_blank, _n = pattern.subn("___", question_text, count=1)
+        if _n == 0:
+            # The blank value is not present as a standalone number (e.g. it
+            # is inside a larger number or spelled as a word). Leave the stem
+            # unblanked; the formatter's own no-blank guard decides whether
+            # this context is usable. Never fall back to a substring replace,
+            # which is what produced "1___" from "10".
+            question_text_with_blank = question_text
     else:
         question_text_with_blank = question_text
 

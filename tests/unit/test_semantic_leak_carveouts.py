@@ -13,7 +13,7 @@ and negative matches (carve-out does NOT apply to unrelated stems).
 
 import pytest
 
-from exhaustive_checklist_auditor import (
+from tests.exhaustive_checklist_auditor import (
     stem_is_prompt_target,
     PROMPT_TARGET_STEM_PATTERNS,
 )

@@ -145,6 +145,18 @@ class PracticeOrchestrator:
                     if variant_name not in local_difficulty_profile and allowed_vals:
                         local_difficulty_profile[variant_name] = rng.choice(allowed_vals)
 
+            # Feed the formatter's display ceiling to the DNA so it clamps its
+            # generated magnitudes to what the formatter can actually render.
+            # e.g. emoji_pictorial (max_val=100) cannot show a group of 744 —
+            # the addition/subtraction DNAs already honor `formatter_max_val`
+            # (they clamp max_result/max_minuend), but nothing was setting it,
+            # so an emoji-served subtraction generated 3-digit minuends and the
+            # formatter raised. Inject it from FORMATTER_NUMERIC_LIMITS.
+            from backend.app.practice_gen.compatibility import FORMATTER_NUMERIC_LIMITS
+            fmt_limit = FORMATTER_NUMERIC_LIMITS.get(formatter, {}).get("max_val")
+            if fmt_limit is not None:
+                local_difficulty_profile["formatter_max_val"] = fmt_limit
+
         # Parse grade level from node ID
         import re
         grade_match = re.search(r"mat_g(\d+)", node_id)

@@ -211,7 +211,7 @@ def format_number_bond(
         
         # Check if it's subtraction (a - b = result implies a is the whole)
         # We can safely assume if result < a, it's subtraction, but better to check exactly
-        is_subtraction = (result == a - b) and (result != a + b or (b == 0 and ctx.node_id and "sub" in ctx.spine_id))
+        is_subtraction = (result == a - b) and (result != a + b or (b == 0 and ctx.spine_id and "sub" in ctx.spine_id))
         if not is_subtraction and ctx.spine_id and "sub" in ctx.spine_id:
              is_subtraction = True
              

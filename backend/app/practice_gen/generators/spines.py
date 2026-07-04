@@ -597,13 +597,20 @@ def select_spine(
     grade: int,
     rng: random.Random,
     prior_concepts: Set[str],
+    required_blank_target: Optional[str] = None,
 ) -> Optional[Spine]:
     """
     Choose the best narrative Spine for the current problem context.
 
-    Eligibility rules (both must pass):
+    Eligibility rules (all must pass):
       1. spine.required_concepts ⊆ node_cumulative_concepts
       2. spine.grade_band[0] <= grade <= spine.grade_band[1]
+      3. if required_blank_target is given, spine.blank_target must equal it —
+         a spine whose unknown is the `result` cannot render a `change_unknown`
+         (unknown=b) problem: it would print b's value literally, leaking the
+         answer and asking the wrong question ("...gives away 0... how many
+         left?" for answer b=0). Blank-target agreement keeps the narrative's
+         unknown aligned with the DNA's unknown.
 
     Scoring (higher = more preferred):
       score = len(spine.required_concepts & prior_concepts)
@@ -626,6 +633,14 @@ def select_spine(
         spine for spine in ALL_SPINES
         if spine.is_eligible(node_cumulative_concepts, grade)
     ]
+
+    if required_blank_target is not None:
+        matched = [s for s in eligible if s.blank_target == required_blank_target]
+        # Only narrow when a matching spine exists. If none matches the
+        # requested blank_target, returning None lets the caller fall back to
+        # the symbolic question builder (which blanks the correct operand)
+        # rather than silently rendering a mismatched narrative.
+        eligible = matched
 
     if not eligible:
         return None

@@ -38,7 +38,7 @@ def _import_harness_dependencies():
     except Exception as exc:
         raise AuditHarnessError(
             "Audit harness failed to import its dependencies. "
-            "Run via local_only/scratch/run_checklist_audit.sh so the project's "
+            "Run via tests/run_checklist_audit.sh so the project's "
             "venv (with fastapi, sqlalchemy, etc.) is used. Original error: "
             f"{type(exc).__name__}: {exc}"
         ) from exc
@@ -134,28 +134,26 @@ def normalize_dim_value(dim, opt, primary_concept=None):
     For discrete dimensions: return the level/value as-is.
     """
     if dim.get("dim_type") == "continuous":
-        # The config already has the computed value for each option
+        # Feed the SCALAR (0.0–1.0), not the pre-mapped value. The
+        # orchestrator (source of truth, orchestrator.py:90-119) treats a
+        # continuous-axis profile value <= 2.0 as a scalar and maps it to
+        # the competency's [min, max] range itself. Feeding the mapped value
+        # (e.g. 0 or 9999) desyncs the auditor from the orchestrator: small
+        # values get re-mapped (Profile Mismatch / infeasible-combo crashes),
+        # large ones bypass the numeric-limit and strict-bound checks — the
+        # auditor's own _profile_violates_numeric_limit / strict-scalar
+        # checks already assume a [0,1] scalar. Mirror the orchestrator.
+        scalar = opt.get("scalar")
+        if scalar is not None:
+            return scalar
+        # No scalar recorded — fall back to deriving it from the mapped
+        # value so we still emit a [0,1] scalar rather than a raw value.
         value = opt.get("value")
-        if value is not None:
-            return value
-
-        # Fallback: interpolate (should not be needed if config is correct)
-        scalar = opt.get("scalar", 0.0)
         min_val = dim.get("min_value", dim.get("default_min", 1))
         max_val = dim.get("max_value", dim.get("default_max", 100))
-        scale = dim.get("scale", "linear")
-
-        if scale == "logarithmic":
-            if min_val > 0 and max_val > 0:
-                import math
-                ratio = max_val / min_val
-                interpolated = min_val * (ratio ** scalar)
-            else:
-                interpolated = min_val + scalar * (max_val - min_val)
-        else:
-            interpolated = min_val + scalar * (max_val - min_val)
-
-        return int(round(interpolated))
+        if value is not None and isinstance(value, (int, float)) and max_val != min_val:
+            return max(0.0, min(1.0, (value - min_val) / (max_val - min_val)))
+        return 0.0
 
     return opt.get("level")
 
@@ -272,6 +270,10 @@ PROMPT_TARGET_FORMATTERS = {
     "ruler_measure",
     "fill_in_table",
     "categorize",
+    # error_detect presents a fully worked problem ("Carlo solved: N − M =
+    # K. Is it right?") — the operands AND the shown answer appear in the
+    # stem by design, so answer-in-stem is not a leak here.
+    "error_detect",
 }
 
 
@@ -431,7 +433,50 @@ def _profile_violates_numeric_limit(profile, config, competency_bounds, formatte
     return False
 
 
-def _regrouping_profile_is_feasible(dna_name, profile):
+def _map_scalar_to_range(axis_name, scalar, competency_bounds, scale=None):
+    """Map a [0,1] scalar to the concrete value the orchestrator would
+    produce for `axis_name`, using the competency range. This is a 1:1 mirror
+    of the orchestrator's continuous-axis mapping (orchestrator.py:106-118):
+    logarithmic for axes flagged `scale='logarithmic'` (with the min==0 shift
+    and int(pow(10,·)) truncation), linear otherwise. Returns None if no
+    bounds are available. The `scale` MUST be passed from the axis catalog —
+    a linear guess diverges from the orchestrator for wide ranges (e.g. scalar
+    0.25 on [0,9999] is 9 under log, 2499 under linear) and lets infeasible
+    profiles through (Trap 3)."""
+    if not isinstance(scalar, (int, float)):
+        return None
+    bounds = competency_bounds.get(axis_name)
+    if not (isinstance(bounds, tuple) and len(bounds) == 2):
+        return None
+    min_val, max_val = bounds
+    if scale == "logarithmic":
+        import math
+        shift = 1 if min_val == 0 else 0
+        log_min = math.log10(min_val + shift)
+        log_max = math.log10(max_val + shift)
+        log_val = log_min + scalar * (log_max - log_min)
+        return int(math.pow(10, log_val)) - shift
+    mapped = min_val + scalar * (max_val - min_val)
+    if isinstance(min_val, int) and isinstance(max_val, int):
+        return int(mapped)
+    return mapped
+
+
+def _axis_scale(axis_name, primary_concept):
+    """Return the scale ('logarithmic'/'linear'/None) the orchestrator uses
+    for `axis_name`, read from the same axis catalog the orchestrator reads
+    (get_axes_for_concept) so the auditor mirror cannot drift."""
+    try:
+        from backend.app.services.orchestrator import get_axes_for_concept
+        for ax in get_axes_for_concept(primary_concept):
+            if ax.get("name") == axis_name:
+                return ax.get("scale")
+    except Exception:
+        return None
+    return None
+
+
+def _regrouping_profile_is_feasible(dna_name, profile, competency_bounds, grade=None):
     """Mirror the addition/subtraction DNA feasibility guard.
 
     A `regrouping` level that demands more carry/borrow places than the number
@@ -445,16 +490,41 @@ def _regrouping_profile_is_feasible(dna_name, profile):
     addition the range key is the profile's mapped `max_sum`; subtraction's DNA
     derives its operand ceiling from the grade bounds (it ignores `number_range`),
     so no auditor-side gate is needed there — the DNA guard covers it.
+
+    `max_sum` in the profile is a [0,1] SCALAR (see normalize_dim_value), so it
+    must be mapped to the concrete competency range before feasibility is
+    judged — `int(0.75)` would floor to 0 and wrongly mark every mid-range
+    profile infeasible. `competency_bounds` supplies that range.
     """
     reg = profile.get("regrouping")
     if reg is None:
         return True
     if dna_name == "addition":
         from backend.app.practice_gen.dna.na.addition import regrouping_is_feasible
-        max_sum = profile.get("max_sum")
-        if not isinstance(max_sum, (int, float)):
+        max_sum_scalar = profile.get("max_sum")
+        if not isinstance(max_sum_scalar, (int, float)):
             return True  # can't evaluate without a concrete range; let it through
-        return regrouping_is_feasible(reg, int(max_sum))
+        scale = _axis_scale("max_sum", dna_name)
+        mapped_max_sum = _map_scalar_to_range("max_sum", max_sum_scalar, competency_bounds, scale)
+        if mapped_max_sum is None:
+            return True
+        return regrouping_is_feasible(reg, int(mapped_max_sum))
+    if dna_name == "subtraction":
+        # Subtraction's operand ceiling comes from per-grade _PARAM_BOUNDS
+        # (a<100/1000/10000 for G1/2/3), NOT from a profile axis. A regrouping
+        # level demanding more borrow places than that ceiling's digit count
+        # can produce (e.g. four_places on G3's 4-digit 9999) is infeasible for
+        # every seed — the DNA raises on it. Gate it here using the same
+        # grade-derived max_minuend the DNA uses.
+        from backend.app.practice_gen.dna.na.subtraction import (
+            _PARAM_BOUNDS,
+            regrouping_is_feasible as sub_regrouping_is_feasible,
+        )
+        if grade is None:
+            return True  # cannot resolve the grade ceiling; let the DNA guard it
+        g_key = f"g{max(1, min(int(grade), 3))}"
+        max_minuend = _PARAM_BOUNDS[g_key]["a"][1]
+        return sub_regrouping_is_feasible(reg, int(max_minuend))
     return True
 
 
@@ -515,7 +585,26 @@ def extract_numeric_state(problem, legacy_dict=None):
         numbers = re.findall(r'\b\d+(?:\.\d+)?\b', text_to_scan)
         num_counts = Counter(float(n) if '.' in n else int(n) for n in numbers)
         state["_extracted_numbers"] = tuple(sorted(num_counts.items()))
-        
+
+        # Semantic-operand multiset for the Separation-of-Concerns check.
+        # The regex-on-stem set above is the wrong signal for SoC: a value
+        # that is blanked (the ``blank_target``) or rendered as a word by a
+        # word_problem spine legitimately disappears from the visible stem,
+        # even though the underlying math is unchanged across contexts. The
+        # authoritative operands live in ``given_values`` (plus the answer),
+        # so compare those instead. Non-numeric meta keys (blank_target,
+        # context, structure, strategy, max_sum, …) are ignored.
+        semantic = Counter()
+        given_values = legacy_dict.get("given_values") or {}
+        if isinstance(given_values, dict):
+            for k, v in given_values.items():
+                if isinstance(v, (int, float)) and not isinstance(v, bool):
+                    semantic[v] += 1
+        answer = legacy_dict.get("correct_answer")
+        if isinstance(answer, (int, float)) and not isinstance(answer, bool):
+            semantic[answer] += 1
+        state["_semantic_operands"] = tuple(sorted(semantic.items()))
+
     return state
 
 
@@ -635,6 +724,15 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
     # Per-node hoists: cache values that the inner loop would otherwise
     # re-fetch per profile.
     dim_names = {d["name"] for d in config.get("difficulty_dimensions", [])}
+    # Continuous dims are fed as a [0,1] scalar and intentionally remapped to
+    # the competency range by the orchestrator, so requested (scalar) != actual
+    # (mapped) is expected, not a Profile Mismatch. Only discrete/categorical
+    # values must round-trip unchanged.
+    continuous_dim_names = {
+        d["name"]
+        for d in config.get("difficulty_dimensions", [])
+        if d.get("dim_type") == "continuous"
+    }
     dna_formatters = {d: set(get_formatters_for_dna(d)) for d in dnas}
 
     variant_coverages = defaultdict(lambda: defaultdict(int))
@@ -654,12 +752,18 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
             if any(formatter_supports_profile(d, formatter, p) for d in dnas)
         ]
         # Drop profiles whose (range, regrouping) combination is infeasible for
-        # every DNA on the node — the DNA guard would raise on these, and they
-        # are a config cross-product artifact, not a real bug. Mirrors the DNA's
-        # regrouping_is_feasible (single source of truth).
+        # ANY DNA that serves THIS formatter. The orchestrator picks the DNA via
+        # rng.choice(valid_dnas) where valid_dnas = DNAs supporting the formatter
+        # (orchestrator.py:122-134), so a combo infeasible for even one of them
+        # is a latent crash that fires whenever that DNA is chosen. Using `any`
+        # over all node DNAs masked this: a regrouping-ignoring DNA (e.g.
+        # `rounding`) trivially "passed", letting an addition-infeasible profile
+        # through to crash ~50% of the time. Gate on the formatter's DNAs with
+        # `all`. Mirrors the DNA's regrouping_is_feasible (single source of truth).
+        formatter_dnas = [d for d in dnas if formatter in dna_formatters[d]] or list(dnas)
         profiles = [
             p for p in profiles
-            if any(_regrouping_profile_is_feasible(d, p) for d in dnas)
+            if all(_regrouping_profile_is_feasible(d, p, competency_bounds, grade) for d in formatter_dnas)
         ]
         limits = FORMATTER_NUMERIC_LIMITS.get(formatter, {})
         fmt_max = limits.get("max_val")
@@ -832,6 +936,12 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                             failures.setdefault(node_id, []).append(f"Sample {seed} Visual Schema Error: {formatter} 'groups' must be a list")
 
                 for key, req_val in raw_profile.items():
+                    if key in continuous_dim_names:
+                        # Scalar in → mapped value out, by design. The strict
+                        # scalar-endpoint and strict-bound checks below verify
+                        # the mapping is correct; an equality check here would
+                        # false-positive on every continuous dim.
+                        continue
                     if key in prob_profile:
                         act_val = prob_profile[key]
                         if act_val != req_val and type(req_val) == type(act_val):
@@ -890,14 +1000,20 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                     if "pure" in context_states_by_pairing_key[pairing_key] and "word" not in context_states_by_pairing_key[pairing_key]:
                         reference_state = context_states_by_pairing_key[pairing_key]["pure"]
                         if reference_state and current_state and reference_state != current_state:
-                            ref_nums = reference_state.get("_extracted_numbers") or ()
-                            cur_nums = current_state.get("_extracted_numbers") or ()
+                            # Compare the authoritative semantic operands
+                            # (given_values + answer), NOT regex-scraped stem
+                            # digits. A blanked or word-rendered operand
+                            # legitimately leaves the visible stem while the
+                            # math is preserved; only a genuine change to the
+                            # operand multiset is a real SoC violation.
+                            ref_nums = reference_state.get("_semantic_operands") or ()
+                            cur_nums = current_state.get("_semantic_operands") or ()
                             ref_counter = dict(ref_nums)
                             cur_counter = dict(cur_nums)
                             missing = {n: c for n, c in ref_counter.items() if cur_counter.get(n, 0) < c}
                             if missing:
                                 failures.setdefault(node_id, []).append(
-                                    f"Sample {seed} Separation of Concerns Violation: core numbers from pure state are missing or reduced in word_problem for formatter {formatter}: missing={missing} pure={ref_nums} word={cur_nums}"
+                                    f"Sample {seed} Separation of Concerns Violation: core operands from pure state are missing or reduced in word_problem for formatter {formatter}: missing={missing} pure={ref_nums} word={cur_nums}"
                                 )
                     context_states_by_pairing_key[pairing_key]["word"] = current_state
 

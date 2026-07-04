@@ -151,7 +151,7 @@ class TestBuildTestProfilesVariantCoverage:
     def _build_profiles(self, config, supported_variants=None):
         # Import here so harness-level import errors surface only when
         # the test is actually executed.
-        from local_only.scratch.exhaustive_checklist_auditor import (
+        from tests.exhaustive_checklist_auditor import (
             build_test_profiles,
         )
         return build_test_profiles(config, supported_variants or {})
@@ -223,7 +223,7 @@ class TestBuildTestProfilesVariantCoverage:
         # test mirrors the auditor's own per-formatter supported_variants
         # union: it iterates the node's formatters and unions the
         # variant caps across the node's DNAs.
-        from local_only.scratch.exhaustive_checklist_auditor import (
+        from tests.exhaustive_checklist_auditor import (
             build_test_profiles,
         )
         from backend.app.practice_gen.compatibility import (

@@ -168,6 +168,10 @@ def generate_params(
     max_target = int(math.pow(10, log_val)) - shift
     
     max_num = max(10, min(max_num_limit, max_target))
+    # Respect the chosen formatter's display ceiling (e.g. emoji_pictorial
+    # renders groups <= 100). The orchestrator injects `formatter_max_val`.
+    if "formatter_max_val" in profile:
+        max_num = min(max_num, int(profile["formatter_max_val"]))
 
     current_lo = lo
     if num_diff_scalar > 0:

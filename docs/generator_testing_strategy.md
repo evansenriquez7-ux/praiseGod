@@ -38,7 +38,7 @@ it — fix the orchestrator, not the DNA's behavior.
 
 ### 2. The exhaustive checklist auditor
 
-`local_only/scratch/exhaustive_checklist_auditor.py` is the source of truth for
+`tests/exhaustive_checklist_auditor.py` is the source of truth for
 "does this generator follow `docs/pgen_checklist.md`?". It enumerates **every
 (node, profile, formatter) combination** the UI is allowed to send and checks
 the output against the checklist rules.
@@ -88,7 +88,7 @@ immediately if a dedup bug drops one.
 
 **Rules:**
 1. `_audit_node()` MUST stay module-level, never a closure. `ProcessPoolExecutor` pickles it; closures fail silently. `tests/test_parallel_audit.py` is the regression gate — run before/after any parallelization change.
-2. Always use `bash local_only/scratch/run_checklist_audit.sh` (venv wrapper), never bare `python`. Bare python causes "No module named 'fastapi'" × 151 nodes (Trap 1).
+2. Always use `bash tests/run_checklist_audit.sh` (venv wrapper), never bare `python`. Bare python causes "No module named 'fastapi'" × 151 nodes (Trap 1).
 3. Imports inside `_audit_node()` are preferred over module-level (sidesteps circular imports under `spawn`).
 4. **First 5 min: 3 active workers, 1 at 0% CPU is normal** (spawn re-imports `backend.app` per worker). Do not kill — it will pick up. Only past ~1 hour is a stuck worker a real hang: check `ps` for a runaway DNA loop (Trap 2, a DNA bug, not the audit).
 
@@ -100,12 +100,12 @@ the **How to use it** table below. **Pytest alternative** (for CI integration):
 
 | Task | Command |
 |------|---------|
-| Full audit (parallel) | `bash local_only/scratch/run_checklist_audit.sh` |
+| Full audit (parallel) | `bash tests/run_checklist_audit.sh` |
 | Single node (debug) | `venv/bin/python -m local_only.scratch.exhaustive_checklist_auditor --no-parallel --node-ids mat_g1_na_q1_0` |
 | Multiple nodes | `venv/bin/python -m local_only.scratch.exhaustive_checklist_auditor --node-ids mat_g1_na_q1_0,mat_g2_na_q1_0` |
 | Override workers | `venv/bin/python -m local_only.scratch.exhaustive_checklist_auditor --max-workers 2` |
-| Full audit (pytest) | `cd local_only/scratch && ../../venv/bin/python -m pytest tests/test_checklist_audit.py -v -m slow` |
-| Phase unit tests | `cd local_only/scratch && ../../venv/bin/python -m pytest tests/ -v -m "not slow"` |
+| Full audit (pytest) | `.venv/bin/python -m pytest tests/unit/test_checklist_audit.py -v -m slow` |
+| Phase unit tests | `.venv/bin/python -m pytest tests/unit/ -v -m "not slow"` |
 
 **Output files** (overwritten each run, no rotation): `checklist_audit_report.json`, `repro_crashes.json`. Snapshot before re-running if you need to compare: `cp checklist_audit_report.json checklist_audit_report.$(date +%s).json`.
 
@@ -116,7 +116,7 @@ the **How to use it** table below. **Pytest alternative** (for CI integration):
 | Code change not loading | Run `ls -l checklist_audit_report.json` to check if report is fresh. If fresh but change didn't apply, suspect bytecode cache. | `find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null` then re-run. |
 | Report seems stale | Killed/restarted runs leave previous report files. Check timestamp. | `ls -l checklist_audit_report.json` — mtime should match this run. Snapshot before re-running if comparing: `cp checklist_audit_report.json checklist_audit_report.$(date +%s).json` |
 | Audit hangs >1 hour | A first-5-min idle worker is normal (spawn re-import); a full run legitimately takes up to ~1 hour. Only beyond that is it a real hang. | `ps -p <pid> -o pcpu,etime,command` — 100% CPU + climbing etime = runaway DNA loop (Trap 2). Fix the DNA's re-roll logic, not the audit. |
-| Same error on 100+ nodes (e.g., "No module named 'fastapi'") | This is a harness bug, not 100+ content bugs. | Always use `bash local_only/scratch/run_checklist_audit.sh` (venv wrapper). Never bare `python`. |
+| Same error on 100+ nodes (e.g., "No module named 'fastapi'") | This is a harness bug, not 100+ content bugs. | Always use `bash tests/run_checklist_audit.sh` (venv wrapper). Never bare `python`. |
 
 ## File layout
 
@@ -124,12 +124,12 @@ the **How to use it** table below. **Pytest alternative** (for CI integration):
 |---|---|
 | `docs/pgen_checklist.md` | The checklist the audit enforces. Read before fixing any finding. |
 | `docs/generator_testing_strategy.md` | This file. |
-| `local_only/scratch/exhaustive_checklist_auditor.py` | The auditor. Module-level `_audit_node()` is the per-process worker entry point. |
-| `local_only/scratch/run_checklist_audit.sh` | Venv wrapper. Use this, not bare `python`. |
-| `local_only/scratch/pytest.ini` | Pytest config. Defines `slow` marker. |
-| `local_only/scratch/tests/test_parallel_audit.py` | Serial-vs-parallel comparison on 5 nodes. **The** correctness gate for the module-level-worker requirement (Rules #1). |
-| `local_only/scratch/tests/test_checklist_audit.py` | Full-audit test. Asserts 0 violations. `@pytest.mark.slow`. |
-| `local_only/scratch/tests/test_*_*.py` | Phase-specific unit tests. Not slow. |
+| `tests/exhaustive_checklist_auditor.py` | The auditor. Module-level `_audit_node()` is the per-process worker entry point. |
+| `tests/run_checklist_audit.sh` | Venv wrapper. Use this, not bare `python`. |
+| `tests/pytest.ini` | Pytest config. Defines `slow` marker. |
+| `tests/unit/test_parallel_audit.py` | Serial-vs-parallel comparison on 5 nodes. **The** correctness gate for the module-level-worker requirement (Rules #1). |
+| `tests/unit/test_checklist_audit.py` | Full-audit test. Asserts 0 violations. `@pytest.mark.slow`. |
+| `tests/unit/test_*_*.py` | Phase-specific unit tests. Not slow. |
 | `checklist_audit_report.json` | Output: `{node_id: [error_messages]}`. |
 | `repro_crashes.json` | Output: `[{node_id, seed, formatter, difficulty_profile, error_message}, …]`. |
 | `local_only/scratch/oc/CHECKLIST_AUDIT_BUG_FIXES.md` | Session log: which categories were fixed and how. Read when adding a new category. |
@@ -140,7 +140,7 @@ the **How to use it** table below. **Pytest alternative** (for CI integration):
 
 ## What the auditor checks (the categories)
 
-When adding a new category, also add a unit test in `local_only/scratch/tests/`
+When adding a new category, also add a unit test in `tests/unit/`
 and document it here.
 
 1. **Pipeline Crash** — `generate_problem()` raised. Full traceback in the report;
@@ -185,7 +185,7 @@ and document it here.
 
 ## Traps (read first if audit result looks strange)
 
-**Trap 1 — Uniform failure × 100+ nodes = harness bug, not content bugs.** Example: `Lab Config Fetch Crash: No module named 'fastapi'` × 151 nodes. That is **one** environment bug (bare `python` instead of venv wrapper), not 151 per-node bugs. `_import_harness_dependencies()` raises `AuditHarnessError` (distinct type) on import failure to make this clear. Always use `bash local_only/scratch/run_checklist_audit.sh`.
+**Trap 1 — Uniform failure × 100+ nodes = harness bug, not content bugs.** Example: `Lab Config Fetch Crash: No module named 'fastapi'` × 151 nodes. That is **one** environment bug (bare `python` instead of venv wrapper), not 151 per-node bugs. `_import_harness_dependencies()` raises `AuditHarnessError` (distinct type) on import failure to make this clear. Always use `bash tests/run_checklist_audit.sh`.
 
 **Trap 2 — Runaway DNA loop, not slow profile.** A full run legitimately takes up to ~1 hour, so only past that is a worker pinned at 100% CPU a real hang — a DNA with an infinite re-roll loop (e.g., `subtraction.py` re-rolling only `b` for `max_minuend=2`). Diagnose: `ps -p <pid> -o pcpu,etime,command` (100% CPU + climbing etime = runaway). Fix: make the DNA re-roll *both* operands and raise `RuntimeError` if no valid pair exists. Do not add silent defaults like `max_attempts`/`sleep` — the audit surfaces that bug.
 
