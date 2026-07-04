@@ -66,7 +66,7 @@ Key design points:
   after DNA selection) is what enables per-DNA content checks like the Fractions
   override. **Whenever you add a new DNA, set `problem.dna_name` in its
   generator** or those checks can't run.
-- **Two output files** at the workspace root:
+- **Two output files** in `local_only/scratch/` (gitignored — never the repo root):
   - `checklist_audit_report.json` — `{node_id: [error_messages]}`
   - `repro_crashes.json` — `[{node_id, seed, formatter, difficulty_profile,
     error_message}, …]`, every crash the audit can deterministically re-trigger.
@@ -107,14 +107,14 @@ the **How to use it** table below. **Pytest alternative** (for CI integration):
 | Full audit (pytest) | `.venv/bin/python -m pytest tests/unit/test_checklist_audit.py -v -m slow` |
 | Phase unit tests | `.venv/bin/python -m pytest tests/unit/ -v -m "not slow"` |
 
-**Output files** (overwritten each run, no rotation): `checklist_audit_report.json`, `repro_crashes.json`. Snapshot before re-running if you need to compare: `cp checklist_audit_report.json checklist_audit_report.$(date +%s).json`.
+**Output files** (overwritten each run, no rotation): `checklist_audit_report.json`, `repro_crashes.json`. Snapshot before re-running if you need to compare: `cp local_only/scratch/checklist_audit_report.json local_only/scratch/checklist_audit_report.$(date +%s).json`.
 
 ## Troubleshooting
 
 | Problem | Diagnosis | Fix |
 |---------|-----------|-----|
-| Code change not loading | Run `ls -l checklist_audit_report.json` to check if report is fresh. If fresh but change didn't apply, suspect bytecode cache. | `find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null` then re-run. |
-| Report seems stale | Killed/restarted runs leave previous report files. Check timestamp. | `ls -l checklist_audit_report.json` — mtime should match this run. Snapshot before re-running if comparing: `cp checklist_audit_report.json checklist_audit_report.$(date +%s).json` |
+| Code change not loading | Run `ls -l local_only/scratch/checklist_audit_report.json` to check if report is fresh. If fresh but change didn't apply, suspect bytecode cache. | `find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null` then re-run. |
+| Report seems stale | Killed/restarted runs leave previous report files. Check timestamp. | `ls -l local_only/scratch/checklist_audit_report.json` — mtime should match this run. Snapshot before re-running if comparing: `cp local_only/scratch/checklist_audit_report.json local_only/scratch/checklist_audit_report.$(date +%s).json` |
 | Audit hangs >1 hour | A first-5-min idle worker is normal (spawn re-import); a full run legitimately takes up to ~1 hour. Only beyond that is it a real hang. | `ps -p <pid> -o pcpu,etime,command` — 100% CPU + climbing etime = runaway DNA loop (Trap 2). Fix the DNA's re-roll logic, not the audit. |
 | Same error on 100+ nodes (e.g., "No module named 'fastapi'") | This is a harness bug, not 100+ content bugs. | Always use `bash tests/run_checklist_audit.sh` (venv wrapper). Never bare `python`. |
 

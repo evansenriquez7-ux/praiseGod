@@ -1139,11 +1139,19 @@ def check_checklist_compliance():
         max_workers=args.max_workers if args.max_workers > 0 else None,
     )
 
-    report_path = "checklist_audit_report.json"
+    # Write generated outputs into local_only/scratch (the gitignored
+    # temp-artifact dir), never the repo root — AGENTS.md requires the root
+    # stay clean and these are regenerated on every run. Anchor to the repo
+    # root so the path is stable regardless of CWD.
+    from pathlib import Path
+    scratch_dir = Path(__file__).resolve().parents[1] / "local_only" / "scratch"
+    scratch_dir.mkdir(parents=True, exist_ok=True)
+
+    report_path = scratch_dir / "checklist_audit_report.json"
     with open(report_path, "w") as f:
         json.dump(failures, f, indent=2)
 
-    crashes_path = "repro_crashes.json"
+    crashes_path = scratch_dir / "repro_crashes.json"
     with open(crashes_path, "w") as f:
         json.dump(repro_crashes, f, indent=2)
 
