@@ -14,7 +14,6 @@ Covers MATATAG grades 1–3 fractions competencies:
 from __future__ import annotations
 
 import random
-from math import gcd
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 from backend.app.practice_gen.dna.base import (
@@ -104,11 +103,6 @@ VOCAB_IMPROPER    = VocabGated(requires_vocab="improper fraction",preferred="imp
 
 def _fraction_str(num: int, den: int) -> str:
     return f"{num}/{den}"
-
-
-def _simplify(num: int, den: int) -> Tuple[int, int]:
-    g = gcd(num, den)
-    return num // g, den // g
 
 
 # ─── parameter generator ──────────────────────────────────────────────────────
@@ -204,8 +198,15 @@ def generate_params(
                         result_num_raw = num - b_num
                     else:
                         result_num_raw = num + b_num
-                        
-                    r_num, r_den   = _simplify(result_num_raw, den)
+
+                    # Adding/subtracting SIMILAR (like-denominator) fractions
+                    # keeps the common denominator: 1/6 + 3/6 = 4/6, NOT 2/3.
+                    # Reducing to lowest terms is a later competency (G4) and
+                    # would (a) change the denominator the student works in and
+                    # (b) redraw the visual model in a different number of
+                    # parts than the operation shows. Leave the result over the
+                    # common denominator.
+                    r_num, r_den = result_num_raw, den
 
                     candidate_params.append({
                         "numerator":    num,
@@ -291,7 +292,7 @@ def generate_hints(
         f"When adding {frac_lbl}s with the same {den_lbl}, keep the {den_lbl} the same.",
         f"Add only the {num_lbl}s: {a_num} + {b_num} = {a_num + b_num}.",
         f"Write the result over the same {den_lbl}: {a_num + b_num}/{den}.",
-        f"Simplify if needed: the answer is {r_num}/{r_den}.",
+        f"The answer is {r_num}/{r_den}.",
     ]
 
 
