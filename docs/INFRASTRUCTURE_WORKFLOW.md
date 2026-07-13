@@ -112,3 +112,21 @@ Any agent initialized in this repository must use its Graphify MCP connection to
 ## 7. Practice Problem Generation Rules
 
 The pg pipeline rules — the Matatag Lab as single source of truth, and the fail-fast / no-silent-fallback requirement — now live with the generator checklist in [`pgen_checklist.md`](./pgen_checklist.md) (sections 5 and 6). See that document when debugging or auditing generators.
+
+---
+
+## 8. Remote Development Environment (VS Code SSH)
+
+To ensure a seamless development experience across devices while keeping the source code consolidated, the developer accesses the host machine locally via **VS Code Remote-SSH**.
+
+### Connection Methods
+1. **LAN SSH:** Used when the developer is on the same local network as the host machine.
+2. **Tailscale SSH (IP Fallback):** Used when the developer is accessing the host remotely over the Tailscale VPN.
+
+### Configuring Full Disk Access (FDA)
+A frequent issue with macOS remote hosts is that the hidden `node` daemon spawned by the VS Code server does not inherit the Terminal's permissions, leading to **Full Disk Access (FDA) denials** when attempting to edit or save files.
+
+To fix this natively—without relying on brittle symlinks or constant browser auth prompts—the environment was configured as follows:
+1. **Disabled Tailscale's Custom SSH Interceptor:** Running `tailscale up --ssh=false` on the host machine turns off Tailscale's internal SSH proxy.
+2. **Fallback to Native macOS `sshd`:** With Tailscale SSH disabled, incoming connections over the Tailscale IP now route directly to the standard, built-in macOS `sshd` daemon (exactly like LAN connections do).
+3. **Inherited FDA:** Because the native macOS `/usr/sbin/sshd` service can be granted Full Disk Access in the host's System Settings, **all remote VS Code sessions (whether over LAN or Tailscale) automatically inherit Full Disk Access** with zero prompts or permission errors.

@@ -95,6 +95,30 @@ def _combined_interests(student, fallback: str = "general") -> str:
     combined = ", ".join(filter(None, [parent, child]))
     return combined or fallback
 
+
+def _build_all_enabled_config(node_id: str):
+    """Build the (formatters, difficulties, contexts) triple mirroring the
+    Matatag Lab's "all checkboxes ON" default (App.jsx:947-960) for a node
+    with no saved CompetencyConfiguration. This keeps the student portal's
+    default problem-type distribution identical to the Lab's Generate Preview
+    when no config has been saved yet (single source of truth,
+    docs/pgen_checklist.md §"Matatag Lab as Single Source of Truth").
+    """
+    try:
+        from backend.app.routes.matatag_router import get_matatag_lab_config
+        cfg = get_matatag_lab_config(node_id)
+    except Exception:
+        return None, None, None
+    allowed_fmt = [f["name"] for f in cfg.get("formatters", [])]
+    allowed_diff = {}
+    for dim in cfg.get("difficulty_dimensions", []):
+        allowed_diff[dim["name"]] = [o.get("scalar") for o in dim.get("options", [])]
+    allowed_ctx = {}
+    for v in cfg.get("contextual_variants", []):
+        allowed_ctx[v["name"]] = list(v.get("options", []))
+    return allowed_fmt or None, allowed_diff or None, allowed_ctx or None
+
+
 from backend.app.services.telemetry import load_previous_questions as _load_previous_questions, save_practice_question as _save_practice_question, clear_student_history as _clear_student_history
 
 def replenish_question_cache(student_id: int, subject: str, subdomain: Optional[str], count: int):
@@ -512,6 +536,11 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
             except Exception as db_err:
                 print(f"[DB Warning] Unable to fetch CompetencyConfiguration: {db_err}. Using defaults.")
                 _cfg = None
+            # Single source of truth: when no config is saved yet, mirror the
+            # Lab's "all checkboxes ON" default (App.jsx:947-960) so the portal
+            # serves the same problem-type distribution the Lab previews.
+            if _allowed_fmt is None and _allowed_diff is None and _allowed_ctx is None:
+                _allowed_fmt, _allowed_diff, _allowed_ctx = _build_all_enabled_config(skill_id)
         
         interest_theme = _combined_interests(student, "math")
         
@@ -521,40 +550,33 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
         grade_match = re.search(r"mat_g(\d+)", skill_id)
         effective_grade = int(grade_match.group(1)) if grade_match else (student.grade if student else 1)
         
-        try:
-            problem_dict = _pg_run(
-                node_id=skill_id,
-                student_interest=interest_theme,
-                allowed_formatters=_allowed_fmt,
-                allowed_difficulties=_allowed_diff,
-                allowed_contexts=_allowed_ctx,
-                experience="standard"
-            )
-            # Normalise to legacy keys for router compatibility
-            skeleton = problem_dict
-            skeleton["skeleton_id"] = problem_dict.get("problem_id")
-            skeleton["stem_template"] = problem_dict.get("question_text")
-            question_mode = problem_dict.get("format", "mcq")
-            is_visual = problem_dict.get("is_visual", False)
-            
-            # Map complex formats to legacy question_mode for frontend compatibility
-            if question_mode == "numeric_input":
-                question_mode = "mcq"
-            
-        except Exception as _e:
-            print(f"[V2 Pipeline Error] Node {skill_id} failed: {_e}. Falling back to minimal.")
-            skeleton = {
-                "skill_id": skill_id,
-                "skeleton_id": f"fallback_{skill_id}",
-                "stem_template": f"Practice problem for {skill_id}",
-                "options": {"A": {"text": "No options available", "value": "N/A"}},
-                "correct_key": "A",
-                "correct_answer": "N/A",
-                "is_visual": False
-            }
+        # Fail fast and loud (AGENTS.md §"Avoid Graceful Fallbacks and Silent
+        # Defaulting Behavior"). The previous try/except substituted a bogus
+        # {"A": {"text": "No options available", "value": "N/A"}} skeleton and
+        # hardcoded question_mode="mcq", disguising every pipeline crash as a
+        # valid MCQ. That hid the q4_7 "No compatible formatters available"
+        # bug from every observer (Lab surfaced it; portal hid it). Let the
+        # ValueError propagate so the student sees an honest error and the
+        # bug is reproducible from the portal path too.
+        problem_dict = _pg_run(
+            node_id=skill_id,
+            student_interest=interest_theme,
+            allowed_formatters=_allowed_fmt,
+            allowed_difficulties=_allowed_diff,
+            allowed_contexts=_allowed_ctx,
+            experience="standard"
+        )
+        # Normalise to legacy keys for router compatibility
+        skeleton = problem_dict
+        skeleton["skeleton_id"] = problem_dict.get("problem_id")
+        skeleton["stem_template"] = problem_dict.get("question_text")
+        question_mode = problem_dict.get("format", "mcq")
+        is_visual = problem_dict.get("is_visual", False)
+
+        # Map complex formats to legacy question_mode for frontend compatibility
+        if question_mode == "numeric_input":
             question_mode = "mcq"
-            is_visual = False
-            
+
         # Cache for answer validation
         if is_matatag:
             MATATAG_SKELETON_CACHE[skeleton["skeleton_id"]] = skeleton
@@ -746,6 +768,9 @@ def get_practice_question_batch(
             _allowed_fmt = _cfg.allowed_formatters
             _allowed_diff = _cfg.allowed_difficulties
             _allowed_ctx = _cfg.allowed_contexts
+        # Single source of truth: mirror Lab's all-on default when unsaved.
+        if _allowed_fmt is None and _allowed_diff is None and _allowed_ctx is None:
+            _allowed_fmt, _allowed_diff, _allowed_ctx = _build_all_enabled_config(q1.skill_id)
     
     try:
         # We already have q1, so we generate count-1 more problems

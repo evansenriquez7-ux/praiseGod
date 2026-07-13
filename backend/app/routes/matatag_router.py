@@ -1225,6 +1225,32 @@ def save_node_config(node_id: str, req: LabV2ConfigSaveRequest, db: Session = De
                             detail=f"Variant '{var_name}={opt}' is not available until Grade {grade} Quarter {quarter} in the curriculum."
                         )
 
+    # Validate formatter-variant compatibility: every enabled formatter must
+    # support every enabled (variant, value) combo per FORMATTER_VARIANT_SUPPORT.
+    # This prevents saving a config that would crash the orchestrator at
+    # generate time (e.g. enabling fraction_shade + operation=subtract when the
+    # cap restricts fraction_shade to identify_name/equivalent). Without this
+    # check, the q4_7 bug was saved silently and only surfaced as a crash
+    # (Lab) or a silent "No options available" fallback (portal).
+    from backend.app.practice_gen.compatibility import FORMATTER_VARIANT_SUPPORT
+    if req.allowed_formatters and req.allowed_contexts:
+        fmt_caps = FORMATTER_VARIANT_SUPPORT.get(primary_concept, {})
+        for fmt_name in req.allowed_formatters:
+            caps = fmt_caps.get(fmt_name)
+            if not caps:
+                continue
+            for var_name, allowed_vals in caps.items():
+                if not allowed_vals:
+                    continue
+                enabled_vals = req.allowed_contexts.get(var_name, [])
+                for val in enabled_vals:
+                    if val not in allowed_vals:
+                        raise HTTPException(
+                            status_code=400,
+                            detail=f"Formatter '{fmt_name}' does not support variant '{var_name}={val}'. "
+                                   f"Supported values: {allowed_vals}. Disable '{fmt_name}' or unselect '{var_name}={val}'."
+                        )
+
     config = db.query(CompetencyConfiguration).filter_by(node_id=node_id).first()
     if not config:
         config = CompetencyConfiguration(node_id=node_id)
@@ -1286,6 +1312,16 @@ def matatag_lab_v2_generate(req: LabV2GenerateRequest, db: Session = Depends(get
         import random as _rand
         seed = _rand.randint(10000, 999999)
     try:
+        # Single source of truth (docs/pgen_checklist.md §"Matatag Lab as
+        # Single Source of Truth"): the Lab's Generate Preview MUST render
+        # exactly what the student portal will serve for the same enabled
+        # options. The previous is_lab=True widened the Lab beyond the LC's
+        # competency bounds (e.g. G1 addition scalar=1.0 → 1000 in the Lab
+        # vs 20 in the portal for 47 nodes), so the preview lied about what
+        # students see. Drop is_lab so the Lab runs through the same
+        # competency-bound clamp as the portal. The is_lab parameter is
+        # retained in the orchestrator for a future opt-in "explore beyond
+        # LC" toggle, but no caller exercises it now.
         problem_dict = run(
             node_id=req.node_id,
             formatter=req.formatter,
@@ -1295,7 +1331,6 @@ def matatag_lab_v2_generate(req: LabV2GenerateRequest, db: Session = Depends(get
             allowed_formatters=req.allowed_formatters,
             allowed_difficulties=req.allowed_difficulties,
             allowed_contexts=req.allowed_contexts,
-            is_lab=True,
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Generation failed: {str(e)}")

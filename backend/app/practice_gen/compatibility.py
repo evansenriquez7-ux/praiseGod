@@ -621,9 +621,14 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         "context": ["pure", "word_problem"],
         "fraction_type": ["proper"],
         "operation": ["add", "subtract"],
-        # visual models support specific task types
-        "fraction_model_read": {"operation": ["identify_name", "compare"]},
-        "fraction_shade": {"operation": ["identify_name", "equivalent"]},
+        # Visual formatters render every operation the fractions DNA emits,
+        # including add/subtract (fmt_fraction_model.py:204-243,
+        # fmt_fraction_shade.py:185-198). The previous cap restricted these
+        # to identify_name/compare (resp. equivalent), which silently
+        # rejected every add/subtract profile for mat_g3_na_q4_7 and caused
+        # the orchestrator to raise "No compatible formatters available".
+        "fraction_model_read": {"operation": ["identify_name", "compare", "add", "subtract", "add_subtract"]},
+        "fraction_shade":      {"operation": ["identify_name", "equivalent", "add", "subtract", "add_subtract"]},
     },
 
     "money_peso": {

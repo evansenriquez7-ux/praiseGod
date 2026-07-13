@@ -52,10 +52,11 @@ from backend.app.practice_gen.registry import (  # noqa: E402
     get_node_competency_bounds,
     get_node_info,
 )
-from backend.app.practice_gen.adapter import to_legacy_dict  # noqa: E402
+from backend.app.practice_gen.adapter import to_legacy_dict, _get_dna_instance, apply_formatter  # noqa: E402
 from backend.app.practice_gen.compatibility import (  # noqa: E402
     get_formatters_for_dna,
     get_supported_variants,
+    VARIANTS_BY_DNA,
     FORMATTER_VARIANT_SUPPORT,
     FORMATTER_NUMERIC_LIMITS,
 )
@@ -1032,7 +1033,112 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                 f"Difficulty dimension '{dim['name']}' was never exercised for node {node_id}."
             )
 
+    # ── Category 16: Cap-vs-Formatter-Code Consistency ───────────────────
+    # Probes every (DNA, formatter, variant, value) that the cap EXCLUDES
+    # by calling generate_context + apply_formatter directly (bypassing
+    # the orchestrator's cap filter). If the formatter code SUCCEEDS, the
+    # cap was wrong to exclude it. This would have caught the q4_7 bug
+    # where fraction_shade's cap excluded operation=add/subtract but the
+    # formatter code (fmt_fraction_shade.py:185-198) handled them fine.
+    _check_cap_vs_formatter_code(node_id, dnas, grade, config, failures)
+
     return failures, repro_crashes, total_checked
+
+
+def _check_cap_vs_formatter_code(
+    node_id: str,
+    dnas: List[str],
+    grade: int,
+    config: dict,
+    failures: Dict[str, List[str]],
+) -> None:
+    """Flag caps that exclude variant values the formatter code explicitly handles.
+
+    For each (DNA, formatter) pair with a cap, for each variant the cap
+    restricts, for each value the cap EXCLUDES, statically inspect the
+    formatter's source code. If the excluded value appears as a string literal
+    in the formatter module, the formatter has explicit handling for it and
+    the cap was wrong to exclude it.
+
+    This static approach avoids false positives from formatters that silently
+    ignore unsupported variants (returning their default behavior without
+    raising), which a runtime probe would misinterpret as "supports it."
+    """
+    import inspect
+    import importlib
+    from backend.app.practice_gen.adapter import _FORMATTER_ROUTES
+
+    for dna_name in dnas:
+        fmt_caps = FORMATTER_VARIANT_SUPPORT.get(dna_name, {})
+        all_variants = VARIANTS_BY_DNA.get(dna_name, {})
+
+        for formatter in get_formatters_for_dna(dna_name):
+            caps = fmt_caps.get(formatter)
+            if not caps:
+                continue
+
+            route = _FORMATTER_ROUTES.get(formatter)
+            if not route:
+                continue
+            module_path = route[0]
+
+            try:
+                mod = importlib.import_module(module_path)
+            except Exception:
+                continue
+
+            for variant_name, allowed_vals in caps.items():
+                if not allowed_vals:
+                    continue
+                all_vals = all_variants.get(variant_name, [])
+                excluded = [v for v in all_vals if v not in allowed_vals]
+                if not excluded:
+                    continue
+
+                for excluded_val in excluded:
+                    # Check if the formatter's entry function EXPLICITLY handles the
+                    # excluded value in a top-level conditional branch (if/elif
+                    # at function-body indent of the entry function itself),
+                    # not nested inside an interaction_mode gate, and not in
+                    # a helper function. This distinguishes:
+                    #   - genuine support (fraction_shade.py:
+                    #       if operation in ("add","subtract"): ...  # indent=4)
+                    #   - unreachable-for-this-formatter branches (pictograph:
+                    #       if interaction_mode == "read":
+                    #           if task_type in ("compare_two",...): ...  # indent=8)
+                    #     where pictograph_set (interaction_mode="set") never
+                    #     reaches the nested branch.
+                    # and from default-fallback mentions (else: # read_value).
+                    val_str = str(excluded_val)
+                    val_quoted = f'"{val_str}"'
+                    val_quoted_sq = f"'{val_str}'"
+                    # Inspect ONLY the route's entry function, not helpers.
+                    func_name = route[1]
+                    try:
+                        func = getattr(mod, func_name)
+                        func_src = inspect.getsource(func)
+                    except Exception:
+                        continue
+                    body_indent = 4
+                    for ln in func_src.splitlines()[1:]:
+                        if ln.strip():
+                            body_indent = len(ln) - len(ln.lstrip())
+                            break
+                    for line in func_src.splitlines():
+                        stripped = line.strip()
+                        if not (stripped.startswith("if ") or stripped.startswith("elif ")):
+                            continue
+                        indent = len(line) - len(line.lstrip())
+                        if indent != body_indent:
+                            continue
+                        if val_quoted in line or val_quoted_sq in line:
+                            failures.setdefault(node_id, []).append(
+                                f"Cap-vs-Formatter-Code: formatter '{formatter}' source "
+                                f"explicitly handles variant '{variant_name}={excluded_val}' "
+                                f"in a top-level conditional branch but cap restricts to {allowed_vals}. "
+                                f"The cap excludes a supported variant value — widen the cap."
+                            )
+                            break
 
 
 def run_audit(

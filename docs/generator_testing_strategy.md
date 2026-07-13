@@ -137,6 +137,9 @@ the **How to use it** table below. **Pytest alternative** (for CI integration):
 | `backend/app/practice_gen/compatibility.py` | `FORMATTER_VARIANT_SUPPORT` + `FORMATTER_NUMERIC_LIMITS`. The auditor mirrors both. |
 | `backend/app/services/orchestrator.py` | The orchestrator. Sets `problem.dna_name` for per-DNA checks. |
 | `backend/app/practice_gen/dna/base.py` | `FormattedProblem.dna_name: Optional[str]`. |
+| `backend/app/routes/practice_router.py` | Portal router. `_build_all_enabled_config()` mirrors Lab all-on default when no saved config. No silent fallback. |
+| `backend/app/routes/matatag_router.py` | Lab router. `save_node_config` validates formatter-variant compatibility at save time. |
+| `local_only/scratch/enumerate_cap_violations.py` | Fast static scan for Cap-vs-Formatter-Code violations across all 151 nodes (mirrors Category 16). Run after wiring a new DNA/formatter. |
 
 ## What the auditor checks (the categories)
 
@@ -182,6 +185,16 @@ and document it here.
     `get_formatters_for_dna(d)` across all DNAs. A config bug.
 15. **Invalid dimension type / empty options** — a malformed
     `difficulty_dimensions` or `contextual_variants` entry. A config bug.
+16. **Cap-vs-Formatter-Code Consistency** — `FORMATTER_VARIANT_SUPPORT` excludes
+    a variant value (e.g. `operation=add`) for a (DNA, formatter) pair, but the
+    formatter's entry function explicitly handles that value in a top-level
+    `if`/`elif` branch. Statically inspects `inspect.getsource(format_<name>)`
+    (only the route's entry function, only branches at function-body indent) —
+    a runtime probe was rejected because formatters that silently ignore
+    unsupported variants return their default behavior without raising, producing
+    false positives. Catches caps that are too restrictive — the root cause of
+    the `mat_g3_na_q4_7` bug where `fraction_shade`'s cap excluded
+    `operation=add/subtract` though `fmt_fraction_shade.py:117` handles them.
 
 ## Traps (read first if audit result looks strange)
 
@@ -220,6 +233,176 @@ DNA must be deterministic given seed + profile + formatter. If a repro can't be
 re-triggered, a `practice_gen` module is reaching for `random.random()` /
 `random.randint()` instead of the passed-in `rng`. **Always use the `rng`
 parameter; never the global `random` module.**
+
+## Why the auditor missed the `mat_g3_na_q4_7` bug — and how to prevent recurrence
+
+The `mat_g3_na_q4_7` LC ("Add and subtract similar fractions using models")
+crashed 100% of the time in production with the saved Neon config
+(`allowed_formatters: [fraction_model_read, fraction_shade]`,
+`allowed_contexts: {operation: [subtract, add]}`), yet the auditor
+passed it on every prior run. Three compounding blind spots let the bug
+through; this section explains each and the structural fix in place so the
+same class does not recur as more LC pgs are added.
+
+### Blind spot 1 — The auditor mirrors the buggy source of truth
+
+The auditor's profile builder reads `get_supported_variants()`, which returns
+exactly the values listed in `FORMATTER_VARIANT_SUPPORT` (the caps). When a cap
+is wrong (excludes values the formatter code actually supports), the auditor
+inherits the same blind spot — it never requests the excluded values, so it
+cannot notice the formatter handles them. The cap and the auditor were both
+_authoritative_ in the same direction, so a disagreement between the cap and
+the formatter code was invisible by construction.
+
+**Structural fix (Category 16): Cap-vs-Formatter-Code Consistency.** The
+auditor now statically inspects each formatter's **entry function source** for
+top-level `if`/`elif` branches that explicitly handle values the cap excludes.
+If the formatter source handles an excluded value, the cap is flagged. The
+check deliberately uses **static source inspection** rather than a runtime probe
+because formatters that silently ignore unsupported variants return their
+default behavior without raising — a runtime probe would misinterpret that as
+"supports it" (false positive). The check is restricted to the route's entry
+function (`format_<name>`) at function-body indent, which filters out:
+- branches in helper functions (e.g. `_stem`),
+- branches nested inside `interaction_mode` gates that a sibling formatter
+  (`_set` vs `_read`) never reaches, and
+- default-fallback mentions (`else: # read_value`).
+
+**When adding a new LC pg:** run `venv/bin/python -m
+local_only.scratch.enumerate_cap_violations` (fast, no `generate_problem`
+calls) to confirm the new node's caps do not exclude values its formatter
+explicitly handles. This script mirrors the Category 16 logic and exits with
+`Total unique violations: 0` when clean.
+
+### Blind spot 2 — The auditor never read the saved UI config
+
+The auditor built profiles from the _catalog_ of everything that _could_ be
+enabled (`GET /api/matatag/lab/config/{node_id}`), not from the checkboxes the
+user actually saved in the `CompetencyConfiguration` table. The q4_7 crash
+required the specific saved combo (`fraction_model_read` + `fraction_shade`
+formatters with `operation=[subtract, add]`), which the catalog-only builder
+never constructed because the caps excluded `operation=add/subtract` for those
+formatters. So the exact request shape that crashed in production was never
+sent by the auditor.
+
+**Structural fix (save-time validation in `matatag_router.py:save_node_config`):**
+The config-save endpoint now rejects `(formatter, variant, value)` combos the
+caps declare incompatible, returning HTTP 400 with the specific unsupported
+combo. A bad config can no longer reach the database, so the auditor's
+catalog-based profile builder is sufficient — every saved config is, by
+construction, a subset of what the caps allow.
+
+**When adding a new LC pg:** after wiring a new DNA/formatter, save the
+intended all-on config via the Lab UI (or `POST /api/matatag/node/{node_id}/config`).
+If the save returns 400, the cap excludes a supported variant — widen the cap
+in `compatibility.py` (and re-run the enumerate script). Do not bypass the
+validation.
+
+### Blind spot 3 — Router-layer silent fallback hid the crash
+
+The portal's `get_practice_question` (`practice_router.py`) wrapped the
+pipeline call in a `try/except` that, on any exception, substituted a bogus
+skeleton `{"A": {"text": "No options available", "value": "N/A"}}` with
+`question_mode="mcq"` — disguising every pipeline crash as a valid MCQ. The
+auditor calls `PracticeOrchestrator.generate_problem()` directly (never the
+router), so it would have flagged the crash as a Pipeline Crash (Category 1)
+_if_ it had constructed the crashing profile (see blind spot 2). But the
+router fallback meant that even in production, the only signal was the student
+seeing "No options available" as a selectable answer — silent defaulting,
+which AGENTS.md §"Avoid Graceful Fallbacks and Silent Defaulting Behavior"
+explicitly forbids.
+
+**Structural fix:** the silent fallback in `practice_router.py:524-554` was
+removed. Pipeline exceptions now propagate (HTTP 500 or whatever the Lab v2
+endpoint raises), so Lab and Portal fail identically and loud. The Lab v2
+endpoint always did this — it was the portal's silent catch that diverged.
+
+**When adding a new LC pg or router path:** never wrap a `pipeline.run()` call
+in a `try/except` that substitutes a fake skeleton. If generation fails, the
+student should see an honest error and the bug should be reproducible from
+either the Lab or the Portal. The fail-fast rule in §1 of this doc applies to
+routers as well as DNAs/formatters.
+
+## Why the Matatag Lab was not showing the same output as the Student Portal
+
+The Lab is contractually the **single source of truth** for what the portal
+serves (`docs/pgen_checklist.md` §"Matatag Lab as Single Source of Truth"):
+"The student portal should only display learning competency practice problems
+according to the enabled options in the Matatag Lab." Three independent bugs
+broke this contract; this section explains each and the structural fix in
+place so agents building out more LC pgs do not reintroduce them.
+
+### Bug 1 — `is_lab=True` widened the Lab preview beyond the LC's competency bounds
+
+The orchestrator and context generator had an `is_lab: bool` parameter that,
+when `True`, mapped continuous-axis difficulty scalars to the axis _default_
+bounds (`default_min`/`default_max`, e.g. addition → 1–1000) rather than the
+LC's competency bounds (e.g. addition → 0–20). The Lab v2 endpoint
+(`matatag_router.py:matatag_lab_v2_generate`) was the only caller passing
+`is_lab=True`; the portal passed `is_lab=False`. Result: for 47 nodes, the Lab's
+"Generate Preview" rendered problems at magnitudes the portal could never
+produce — e.g. `mat_g1_na_q1_7` scalar=1.0 → 1000 (Lab) vs 20 (portal).
+
+**Structural fix:** `matatag_router.py:matatag_lab_v2_generate` no longer
+passes `is_lab=True`. The `is_lab` parameter is retained in the orchestrator
+and base_generator for a future opt-in "explore beyond LC" toggle (if ever
+needed), but no caller exercises it now. Both Lab and Portal run through
+`is_lab=False` (competency bounds), so the preview == what students see.
+
+**When adding a new LC pg:** do not pass `is_lab=True` from any caller. If a
+developer wants an "explore beyond LC" feature later, gate it behind an
+explicit, off-by-default frontend toggle that is labeled as such, so the
+default Lab preview always mirrors the portal.
+
+### Bug 2 — No-saved-config divergence: Lab seeded all-on, Portal seeded None
+
+When a node has no saved `CompetencyConfiguration` row, the Lab's
+`fetchLabConfig` (`frontend/src/App.jsx:947-960`) seeds every checkbox to **ON**
+and sends the full `allowed_difficulties/contexts/formatters` lists to
+`/api/matatag/lab/v2/generate`. The orchestrator then `rng.choice()`s across
+those lists each generation. The portal, however, passed `None` for all three
+when no saved config existed (`practice_router.py:505-514`), so the orchestrator
+fell back to competency-bounds defaults and the DNA's hard-coded defaults —
+producing a different problem-type distribution than the Lab for the same LC.
+
+**Structural fix:** the portal now calls `_build_all_enabled_config(node_id)`
+(`practice_router.py:~90-110`) when no `CompetencyConfiguration` row exists,
+mirroring the Lab's all-on seeding: it fetches `get_matatag_lab_config(node_id)`
+and returns the full `allowed_formatters`, `allowed_difficulties` (every option
+scalar), and `allowed_contexts` (every option). Both portal paths (single
+`get_practice_question` and batch `get_practice/{student_id}/batch`) use it.
+
+**When adding a new LC pg or new portal entrypoint:** any code path that calls
+`pipeline.run()` or `pipeline.run_batch()` must pass either (a) the saved
+`CompetencyConfiguration` row, or (b) `_build_all_enabled_config(node_id)` when
+no row exists. Never pass `None` for all three — that diverges from the Lab.
+
+### Bug 3 — Router-layer silent fallback (see auditor blind spot 3 above)
+
+The portal's `try/except` substituted `{"A": {"text": "No options available"}}`
+for any pipeline crash, with `question_mode="mcq"` — disguising a hard crash
+as a valid MCQ. The Lab v2 endpoint propagated the same exception (HTTP 500),
+so the Lab showed errors while the portal showed a fake question. This is the
+same root cause as auditor blind spot 3 — see that section for the fix and the
+"never wrap pipeline.run in a silent fallback" rule.
+
+### How to verify Lab == Portal parity for any node
+
+```bash
+# Same seed + same saved config → identical outputs
+DATABASE_URL="…" venv/bin/python -c "
+from backend.app.services.orchestrator import PracticeOrchestrator
+n='mat_g3_na_q4_7'; mism=0
+for s in range(3000,3030):
+  a=PracticeOrchestrator.generate_problem(node_id=n,seed=s,allowed_difficulties={'number_difficulty':[0.0,0.25,0.5,0.75,1.0,1.25]},allowed_contexts={'fraction_type':['proper'],'operation':['subtract','add'],'fraction_model':['area_model','set_model','number_line']},allowed_formatters=['fraction_model_read','fraction_shade']).model_dump()
+  b=PracticeOrchestrator.generate_problem(node_id=n,seed=s,allowed_difficulties={'number_difficulty':[0.0,0.25,0.5,0.75,1.0,1.25]},allowed_contexts={'fraction_type':['proper'],'operation':['subtract','add'],'fraction_model':['area_model','set_model','number_line']},allowed_formatters=['fraction_model_read','fraction_shade']).model_dump()
+  if a.get('question_text')!=b.get('question_text') or a.get('correct_answer')!=b.get('correct_answer'): mism+=1
+print('Lab==Portal: %d/%d match (mism=%d)'%(30-mism,30,mism))
+"
+```
+
+A non-zero `mism` means a new divergence was introduced — investigate before
+shipping.
 
 ## Historical note
 
