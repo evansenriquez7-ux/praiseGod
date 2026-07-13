@@ -1096,27 +1096,36 @@ def matatag_lab_submit(
             is_correct = str(parsed) == str(correct_raw)
             correct_answer_str = str(correct_raw)
     else:
-        # MCQ: compare selected key to correct_key
-        raw_opts = skeleton.get("options", {})
-        correct_key = skeleton.get("correct_key")
-        if not correct_key:
-            for k, v in raw_opts.items():
-                if isinstance(v, dict) and v.get("trap") is None:
-                    correct_key = k
-                    break
-        is_correct = student_answer.upper() == (correct_key or "A").upper()
-
-        # Get the text of the correct option for display
-        correct_opt = raw_opts.get(correct_key, {})
-        if isinstance(correct_opt, dict):
-            correct_answer_str = str(correct_opt.get("text", correct_opt.get("value", correct_key)))
+        # Non-visual: check format before defaulting to MCQ key compare.
+        fmt = skeleton.get("format", "mcq")
+        if fmt in ("cloze", "fill_in_blank"):
+            # Cloze / fill-in-blank: the student submits a typed answer string
+            # (e.g. "1/2", "<").  Compare case-insensitively against
+            # correct_answer, NOT the MCQ correct_key.
+            is_correct = str(student_answer).strip().lower() == str(skeleton.get("correct_answer", "")).strip().lower()
+            correct_answer_str = str(skeleton.get("correct_answer", ""))
         else:
-            correct_answer_str = str(correct_opt)
+            # MCQ: compare selected key to correct_key
+            raw_opts = skeleton.get("options", {})
+            correct_key = skeleton.get("correct_key")
+            if not correct_key:
+                for k, v in raw_opts.items():
+                    if isinstance(v, dict) and v.get("trap") is None:
+                        correct_key = k
+                        break
+            is_correct = student_answer.upper() == (correct_key or "A").upper()
 
-        # Check if student triggered a trap
-        selected_opt = raw_opts.get(student_answer.upper(), {})
-        if not is_correct and isinstance(selected_opt, dict):
-            trap_triggered = selected_opt.get("trap")
+            # Get the text of the correct option for display
+            correct_opt = raw_opts.get(correct_key, {})
+            if isinstance(correct_opt, dict):
+                correct_answer_str = str(correct_opt.get("text", correct_opt.get("value", correct_key)))
+            else:
+                correct_answer_str = str(correct_opt)
+
+            # Check if student triggered a trap
+            selected_opt = raw_opts.get(student_answer.upper(), {})
+            if not is_correct and isinstance(selected_opt, dict):
+                trap_triggered = selected_opt.get("trap")
 
     explanation = (
         f"Correct! The answer is {correct_answer_str}."
@@ -1381,30 +1390,20 @@ def matatag_lab_v2_submit(req: LabV2SubmitRequest):
     student_answer = req.student_answer
 
     if fmt == "mcq" or answer_collection == "mcq":
-        # MCQ: compare selected key OR value to correct answer
+        # MCQ: compare selected key to correct_key.
         # Also handles visual formats with MCQ answer collection (e.g., read_mcq)
         mcq_options = format_data.get("options") or format_data.get("mcq_options") or []
         correct_key = format_data.get("correct_key", "")
-        
+
         # If no correct_key in format_data, derive from correct_answer
         if not correct_key and isinstance(correct_answer, str) and len(correct_answer) == 1:
             correct_key = correct_answer
-        
-        # Accept either:
-        # 1. The key (A/B/C/D)
-        # 2. The value itself
+
+        # Accept ONLY the key (A/B/C/D) — matching the portal and lab v1
+        # graders.  Accepting the option value too produced a divergence
+        # (portal=False, v1=False, v2=True for value submissions).
         if correct_key and str(student_answer).strip().upper() == str(correct_key).upper():
             is_correct = True
-        elif str(student_answer).strip() == str(correct_answer):
-            is_correct = True
-        else:
-            # Check if student submitted the value directly
-            for opt in mcq_options:
-                if opt.get("is_correct"):
-                    correct_value = opt.get("value")
-                    if str(student_answer).strip() == str(correct_value):
-                        is_correct = True
-                    break
 
         # Check if student triggered a trap (distractor)
         if not is_correct:

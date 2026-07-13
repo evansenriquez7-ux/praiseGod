@@ -1073,6 +1073,13 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                         )
                     except:
                         is_correct = False
+                elif skeleton.get("answer_collection") == "click":
+                    # Set-mode visual formatters (e.g. FractionShade) where the
+                    # student clicks/shades parts and the component emits a string
+                    # (e.g. "2/4").  Compare against correct_answer, not the MCQ
+                    # correct_key — these formatters have no MCQ options.
+                    correct_answer = skeleton.get("correct_answer")
+                    is_correct = str(req.selected_answer).strip() == str(correct_answer)
                 else:
                     is_correct = (str(req.selected_answer).upper() == skeleton.get("correct_key", "A").upper())
             else:

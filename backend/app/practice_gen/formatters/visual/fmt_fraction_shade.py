@@ -221,6 +221,14 @@ def format_fraction_shade(
 
     question_text = _stem(ask_type, vp.get("fraction_str", fraction_str), interaction_mode, vp.get("operation"))
 
+    # In "set" mode the student must shade the shape themselves, so
+    # shaded_parts (the answer count) and fraction_str (the answer string)
+    # must not be shipped to the frontend payload — they would be visible in
+    # the DevTools Network response. The stem already tells the student what
+    # to shade, and the component initialises clickedParts=0 in set mode.
+    if interaction_mode == "set":
+        vp = {k: v for k, v in vp.items() if k not in ("shaded_parts", "fraction_str")}
+
     format_data: dict = {"visual_params": vp}
     if mcq_options:
         format_data["mcq_options"] = mcq_options
