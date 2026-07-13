@@ -221,11 +221,27 @@ def format_fraction_shade(
 
     question_text = _stem(ask_type, vp.get("fraction_str", fraction_str), interaction_mode, vp.get("operation"))
 
+    # Mode-signal propagation: the React component reads from `params`
+    # (visual_params), so interaction_mode must be shipped inside vp.
+    # Without this, FractionShadeInteractive cannot detect read vs set mode
+    # from the MCQ-over-visual path (frontend audit gap G2).
+    vp["interaction_mode"] = interaction_mode
+    vp["is_read_only"] = interaction_mode == "read"
+    # total_wholes: count of whole shapes the React component should
+    # pre-render.  For improper fractions like 33/10 the component must
+    # draw 4 bars so the student has enough cells to shade.  Without
+    # this, wholeUnits collapses to 1 in the React component after the
+    # shaded_parts strip below (frontend audit gap G3).
+    import math as _math
+    vp["total_wholes"] = max(1, _math.ceil(numer / denom)) if denom else 1
+
     # In "set" mode the student must shade the shape themselves, so
     # shaded_parts (the answer count) and fraction_str (the answer string)
     # must not be shipped to the frontend payload — they would be visible in
     # the DevTools Network response. The stem already tells the student what
     # to shade, and the component initialises clickedParts=0 in set mode.
+    # total_wholes is preserved because the React component needs it to
+    # pre-render enough bars for improper fractions.
     if interaction_mode == "set":
         vp = {k: v for k, v in vp.items() if k not in ("shaded_parts", "fraction_str")}
 

@@ -88,6 +88,74 @@ The harness structure is specified in §8.
 
 ---
 
+## Section 0: Pre-audit run rules (MANDATORY)
+
+These rules gate every audit run. Skipping any rule produces false PASSes —
+the 3 `mat_g3_na_q4_7` bugs flagged on 2026-07-13 each trace to a run-rule
+violation below.
+
+### 0.1 Use the SAVED DB config, not an assumed default
+
+The MATATAG Lab's single-source-of-truth is the live `CompetencyConfiguration`
+row in the Neon DB. The student portal reads that row at serve-time
+(`practice_router.py:530,766`); the audit must consume the same row before
+generating any payload.
+
+```python
+from backend.app.models import CompetencyConfiguration
+from backend.app.database import SessionLocal
+db = SessionLocal()
+cfg = db.query(CompetencyConfiguration).filter_by(node_id=node_id).first()
+allowed_formatters = cfg.allowed_formatters
+allowed_difficulties = cfg.allowed_difficulties
+allowed_contexts    = cfg.allowed_contexts
+db.close()
+```
+
+**If the audit ran with an assumed config (e.g. `[cloze, mcq, ...]` when the
+saved row has only `[fraction_model_read, fraction_shade]`), the audit is
+invalid** — the orchestrator's formatter selection and the contextual-variant
+filtering diverge from what the student actually exercises. The
+`mat_g3_na_q4_7` audit on 2026-07-14 passed with `fraction_type=['proper']`,
+but the saved row has `['proper','improper','mixed']`; the improper-fraction
+regression (Bug #57) was invisible until a student flagged it.
+
+If no row exists, fall back to `_build_all_enabled_config(node_id)`
+(`practice_router.py:99`) — the same function the portal uses — and record
+"default-config audit" in the pass register.
+
+### 0.2 Re-audit after ANY `visual_params` schema change
+
+When a fix strips, renames, or adds a `visual_params` key, the React
+component's dependents on that key must be re-verified. Run rule 0.3 below
+against the formatters touched AND every formatter sharing the same React
+component.
+
+### 0.3 Run the schema-render contract check
+
+For every formatter × every enabled contextual-variant combination, render
+the generated `visual_params` through the React component's exact derivation
+lines (see Appendix D). Assert that every value the component reads from
+`params.*` resolves to a valid (non-`undefined`, non-`NaN`) JavaScript value.
+A missing key in `visual_params` that the component reads silently collapses
+to `undefined` / `0` / `false` — which is exactly the failure mode behind
+Bugs #56 / #57 / #58.
+
+### 0.4 Audit must run for every distinct `fraction_type` and `model_type`
+
+When the formatter supports improper and mixed fractions, the audit must
+exercise all three flavors with seeds chosen to surface the
+multi-whole-rendering branch:
+
+- proper: `numer < denom` (single whole)
+- improper: `numer > denom` (multiple wholes — exercises `wholeUnits ≥ 2`)
+- mixed: integer + fractional part (multiple wholes — when applicable)
+
+And every `model_type` (`area`, `set` / `set_model`, `number_line`) MUST be
+audited independently — they take distinct render branches in
+`FractionModelInteractive` (`:3422`, `:3444`, `:3480`). Skipping any branch
+leaves a class of bugs unverified.
+
 ## Section 1: Visual component coverage matrix
 
 This is the authoritative list of every visual component the frontend ships.
@@ -182,6 +250,27 @@ Failure categories (carry over from the older audits and extended):
   the React component ignores (e.g. pictograph `symbol`).
 - **H** — Quality / math / curriculum violation: backend produces a visually
   contradictory or curriculum-inappropriate visual.
+- **I** — Mode-Signal Propagation: `interaction_mode` / `is_read_only` lives
+  at top-level `FormattedProblem` but the React component reads from
+  `params` (visual_params). Without explicit propagation into `vp`, the
+  component cannot detect read vs set mode and renders an empty visual or a
+  dot at position 0. Affects every visual formatter in §3 that branches on
+  `isReadOnly` derived from `params`.
+- **J** — Multi-Whole Rendering: for improper / mixed fractions, the
+  component computes `wholeUnits = Math.ceil(num/den)`. When the formatter
+  strips `shaded_parts` (answer-leak fix), `num` collapses to 0 and
+  `wholeUnits` collapses to 1 — the student sees 1 bar where 4 are needed.
+  The audit must verify `wholeUnits ≥ ceil(correct_num/correct_den)` for
+  every improper/mixed payload.
+- **K** — Post-Fix Render Regression: any fix that strips or renames a
+  `visual_params` key MUST be re-audited across every formatter sharing
+  that React component AND every `fraction_type` / `model_type`
+  combination. Skipping this is how the answer-leak fix (#001) shipped
+  a multi-whole rendering regression (Bug #57).
+- **L** — Model-Type Naming Coercion: backend emits `model_type='set_model'`
+  but the React component checks `=== 'set'`; the strict equality silently
+  falls through to the area branch. Audit each `model_type` string the
+  formatter emits vs the equality check the component performs.
 
 ### 3.1 `NumberLineInteractive` (`:18`)
 
@@ -352,27 +441,67 @@ Failure categories (carry over from the older audits and extended):
 
 ### 3.16 `FractionModelInteractive` (`:3394`)
 
-- [ ] **B — Critical** — pre-shades the model on mount using
-  `params.numerator`/`params.shaded_parts`. The student sees the answer.
-- [ ] **E — Critical** — click handlers are wired inside the `style` object
-  (e.g. `style={{ ..., onClick: () => {...} }}`), NOT as JSX attributes.
-  The model is fully non-interactive. Verify by attempting a click in the
-  harness and asserting no `onAnswer` fires.
-- [ ] **D** `model_type==='number_line'` is hardcoded as `is_interactive:false`,
-  blocking interaction in `set` mode for number-line fraction models.
-- [ ] **F** Returns the shaded-parts integer; backend expects `"n/d"`
-  fraction string (`fmt_fraction_model.py:262`).
+**STALE findings (cleared 2026-07-14, commit 9b334b4)** — kept read-only for
+diffing:
+- Old **B** (pre-shade on mount): STALE — `clickedParts` initializer at
+  `:3401-3406` returns `num` only when `isReadOnly`, otherwise `0`.
+- Old **E** (`onClick` inside `style`): STALE — `onClick` is a JSX attribute
+  at `:3455` and `:3498`.
+- Old **D** (`number_line` hardcoded as non-interactive): STALE — line `:3432`
+  is `is_interactive: !isReadOnly`.
+
+**ACTIVE findings (post-fix, 2026-07-14)**:
+
+- [ ] **I — Critical** — `FractionModelInteractive` derives read-only state
+  from `params.interaction_mode === 'read' || params.is_read_only || !onAnswer`
+  (`:3395`). The formatter's `interaction_mode` was originally a TOP-LEVEL
+  `FormattedProblem` field, NOT inside `visual_params`. Fix applied
+  2026-07-14: `fmt_fraction_model.py` now emits `vp["interaction_mode"]`
+  and `vp["is_read_only"]`. Audit: render a `read_mcq` payload through the
+  MCQ-over-visual dispatch path at `QuestionRenderer.jsx:62-68` (which
+  spreads `visual_params` only) and assert the component renders the
+  pre-shaded model, NOT an empty one. If `params.is_read_only` is missing,
+  this is a **FAIL (mode-signal propagation)**.
+- [ ] **J — Critical** — Multi-whole rendering. For improper fractions
+  (e.g. `18/6`, `40/10`, `33/10`) the component must render
+  `wholeUnits = ceil(num/den) ≥ 2`. Fix applied: `fmt_fraction_model.py`
+  and `fmt_fraction_shade.py` now emit `vp["total_wholes"]`; the component
+  reads it as `Math.max(1, params.total_wholes)` at `:3399`. Audit: for
+  every improper/mixed payload, assert the rendered bar count is
+  `ceil(correct_numerator/correct_denominator)`. If `wholeUnits === 1`
+  for an improper fraction, **FAIL (multi-whole rendering)**.
+- [ ] **L — High** — Model-type naming coercion. `fmt_fraction_model.py`
+  emits `model_type='set_model'` but the React check at `:3444` was strict
+  `=== 'set'` — fell through to the area branch silently. Fix applied: the
+  check now accepts `'set' || 'set_model'`. Audit: enumerate every
+  `model_type` string the formatter emits and verify the component has a
+  matching `if` branch; new emit strings must add a matching branch.
+- [ ] **F** Returns `"${clickedParts}/${den}"` at `:3416`; portal grader
+  added `answer_collection=="click"` arm (`practice_router.py:1076`).
+  Verify the grader contract holds for all 3 routes (see §5).
 - [ ] **H — Backend** `fmt_fraction_model.py` flips `0/4` to `4/0`
   (division-by-zero distractor). Frontend should also guard against
   rendering `total_parts===0`; surface the backend fix.
+- [ ] **K** Post-fix regression gate: any change to `vp` keys for this
+  formatter MUST re-run the improper / mixed / proper matrix × all 3
+  `model_type` values. The 2026-07-14 answer-leak fix (#001) shipped a
+  wholeUnits regression because the verification matrix was `proper`-only.
+  See §0.4.
 
 ### 3.17 `FractionShadeInteractive` (`:3519`)
 
-- [ ] Shares the broken `style.onClick` pattern with §3.16 — verify the
-  component is a thin wrapper around `FractionModelInteractive` and audit
-  both branches together.
-- [ ] Confirm `shape`, `total_parts`, `shaded_parts`, `fraction_str`,
-  `ask_type` keys render.
+- [ ] Thin wrapper around `FractionModelInteractive` (`:3519-3521`) — share
+  every check in §3.16.
+- [ ] **B / I — Critical** — In `set` mode, `shaded_parts` and
+  `fraction_str` are STRIPPED from `visual_params` (answer-leak fix
+  applied 2026-07-14). Confirm: render a `set_click` payload and assert
+  `visual_params` does NOT include `shaded_parts` or `fraction_str`.
+- [ ] **J — Critical** — `total_wholes` MUST be present in `set` mode so
+  the component can render enough bars. Without it, improper-fraction
+  shades collapse to 1 bar (Bug #57). Audit: for `set_click` with an
+  improper result, assert `vp.total_wholes === ceil(result_n/den)`.
+- [ ] **K** Regression gate: any change to the strip-set must re-verify
+  multi-whole rendering (proper + improper + mixed × all 3 shapes).
 
 ### 3.18 `TenFrameInteractive` (`:3526`)
 

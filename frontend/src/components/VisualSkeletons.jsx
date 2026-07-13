@@ -3396,7 +3396,12 @@ export function FractionModelInteractive({ params, onAnswer, disabled }) {
   const den = params.denominator || params.total_parts || params.parts || 1;
   const num = params.numerator !== undefined ? params.numerator : (params.shaded_parts || 0);
   const modelType = params.model_type || 'area';
-  const wholeUnits = Math.max(1, Math.ceil(num / den));
+  // Use total_wholes if the formatter provided it (handles improper
+  // fractions in set mode where shaded_parts is stripped for answer-leak
+  // protection — without this, wholeUnits would collapse to 1).
+  const wholeUnits = Math.max(1, Math.ceil(
+    (params.total_wholes !== undefined ? params.total_wholes * den : num) / den
+  ));
 
   const [clickedParts, setClickedParts] = React.useState(() => {
     if (isReadOnly) {
@@ -3441,7 +3446,7 @@ export function FractionModelInteractive({ params, onAnswer, disabled }) {
     );
   }
 
-  if (modelType === 'set') {
+  if (modelType === 'set' || modelType === 'set_model') {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', width: '100%' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center' }}>

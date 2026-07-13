@@ -220,6 +220,18 @@ def format_fraction_model(
         vp["shaded_parts"] = numer
         vp["total_parts"] = denom
 
+    # Mode-signal propagation: the React component reads from `params`
+    # (visual_params), so interaction_mode must be shipped inside vp. Without
+    # this, components like FractionModelInteractive cannot detect read mode
+    # and render an empty/non-shaded visual (frontend audit gap G2).
+    vp["interaction_mode"] = interaction_mode
+    vp["is_read_only"] = interaction_mode == "read"
+    # total_wholes lets the React component pre-render enough bars/circles
+    # for improper fractions (e.g. 33/10 → 4 wholes) without leaking the
+    # exact answer count (frontend audit gap G3).
+    import math as _math
+    vp["total_wholes"] = max(1, _math.ceil(numer / denom)) if denom else 1
+
     # ── 3. Traps ──────────────────────────────────────────────────────────────
     traps = _build_traps(numer, denom)
 
