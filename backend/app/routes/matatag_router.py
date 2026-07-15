@@ -977,7 +977,6 @@ def matatag_lab_submit(
     if not skeleton:
         # Attempt to regenerate from skeleton_id using v2 pipeline
         try:
-            import re
             # Extract seed from format "{node_id}_{seed}"
             match = re.search(r"_(\d+)$", skeleton_id)
             seed_val = int(match.group(1)) if match else None
@@ -991,7 +990,7 @@ def matatag_lab_submit(
         except Exception:
             raise HTTPException(status_code=404, detail="Question session expired. Please generate a new problem.")
 
-    is_visual = skeleton.get("is_visual", False)
+    is_visual = skeleton.get("is_visual", False) and skeleton.get("answer_collection") != "mcq"
     is_correct = False
     correct_answer_str = ""
     trap_triggered = None
@@ -1002,8 +1001,8 @@ def matatag_lab_submit(
         question_mode = skeleton.get("question_mode", "")
 
         try:
-            parsed = json.loads(student_answer)
-        except (json.JSONDecodeError, ValueError):
+            parsed = json.loads(student_answer) if isinstance(student_answer, str) else student_answer
+        except (json.JSONDecodeError, ValueError, TypeError):
             parsed = student_answer
 
         # Validate against the CACHED skeleton's correct_answer (not a regenerated one)
@@ -1104,6 +1103,60 @@ def matatag_lab_submit(
             # correct_answer, NOT the MCQ correct_key.
             is_correct = str(student_answer).strip().lower() == str(skeleton.get("correct_answer", "")).strip().lower()
             correct_answer_str = str(skeleton.get("correct_answer", ""))
+        elif fmt == "numeric_input":
+            try:
+                student_val = float(str(student_answer).strip().replace(",", "").replace("₱", ""))
+                correct_val = float(str(skeleton.get("correct_answer")).replace(",", "").replace("₱", ""))
+                is_correct = abs(student_val - correct_val) < 0.001
+            except (ValueError, TypeError):
+                is_correct = str(student_answer).strip() == str(skeleton.get("correct_answer"))
+            correct_answer_str = str(skeleton.get("correct_answer"))
+        elif fmt == "ordering":
+            import ast as _ast
+            try:
+                if isinstance(student_answer, str):
+                    try:
+                        student_seq = json.loads(student_answer)
+                    except json.JSONDecodeError:
+                        student_seq = _ast.literal_eval(student_answer)
+                else:
+                    student_seq = student_answer
+                correct_seq = skeleton.get("correct_answer")
+                if isinstance(correct_seq, str):
+                    try:
+                        correct_seq = json.loads(correct_seq)
+                    except json.JSONDecodeError:
+                        correct_seq = _ast.literal_eval(correct_seq)
+                is_correct = [str(x) for x in student_seq] == [str(x) for x in correct_seq]
+            except:
+                is_correct = str(student_answer).strip() == str(skeleton.get("correct_answer"))
+            correct_answer_str = str(skeleton.get("correct_answer"))
+        elif fmt == "true_false":
+            student_bool = str(student_answer).strip().lower() in ("true", "yes", "t", "1")
+            correct_bool = str(skeleton.get("correct_answer")).lower() in ("true", "yes", "t", "1")
+            is_correct = student_bool == correct_bool
+            correct_answer_str = str(skeleton.get("correct_answer"))
+        elif fmt == "error_detect":
+            try:
+                student_parsed = json.loads(student_answer) if isinstance(student_answer, str) else student_answer
+            except:
+                student_parsed = {"has_error": True, "correct_value": student_answer}
+            correct_ans = skeleton.get("correct_answer")
+            expected_has_error = correct_ans.get("has_error", True) if isinstance(correct_ans, dict) else True
+            expected_value = correct_ans.get("correct_value") if isinstance(correct_ans, dict) else correct_ans
+            student_has_error = student_parsed.get("has_error", True) if isinstance(student_parsed, dict) else True
+            student_value = student_parsed.get("correct_value", student_answer) if isinstance(student_parsed, dict) else student_answer
+            if expected_has_error:
+                if student_has_error:
+                    try:
+                        is_correct = abs(float(str(student_value)) - float(str(expected_value))) < 0.001
+                    except:
+                        is_correct = str(student_value) == str(expected_value)
+                else:
+                    is_correct = False
+            else:
+                is_correct = not student_has_error
+            correct_answer_str = str(correct_ans)
         else:
             # MCQ: compare selected key to correct_key
             raw_opts = skeleton.get("options", {})
@@ -1483,8 +1536,8 @@ def matatag_lab_v2_submit(req: LabV2SubmitRequest):
         if is_visual:
             visual_type = problem.get("visual_type", "")
             try:
-                parsed = json.loads(student_answer)
-            except (json.JSONDecodeError, ValueError):
+                parsed = json.loads(student_answer) if isinstance(student_answer, str) else student_answer
+            except (json.JSONDecodeError, ValueError, TypeError):
                 parsed = student_answer
 
             # Handle specific visual types

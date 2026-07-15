@@ -301,6 +301,12 @@ def format_peso_money(
     if mcq_options is not None:
         format_data["mcq_options"] = mcq_options
 
+    # NOTE on answer-leak: target_amount IS the answer for peso_money_set, but
+    # it's also intentionally visible in the question_text ("make exactly
+    # ₱{total}"). The frontend's Target display is by design (the student
+    # needs to know what to build). The auditor's "answer_leak" flag is a
+    # false positive for peso_money_set — the answer is not secret.
+
     fmt = f"{interaction_mode}_{answer_collection}"
 
     return FormattedProblem(

@@ -891,14 +891,13 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
             import re
             match = re.search(r"_(\d+)(?:_[a-z_]+)?$", req.skeleton_id)
             seed_val = int(match.group(1)) if match else None
-            node_id = req.skeleton_id.rsplit('_', 1)[0] if match else req.skill_id
             
-            # If the node_id ends with _pictograph (etc) due to rsplit taking only the suffix, we need to extract the actual node_id
-            if node_id.endswith("_pictograph") or not node_id.startswith("mat_"):
-                # robust extraction
-                node_match = re.match(r"(mat_g\d+_.*?_q\d+_\d+)", req.skeleton_id)
-                if node_match:
-                    node_id = node_match.group(1)
+            # Robust extraction of MATATAG node ID (e.g. mat_g3_na_q4_7) from skeleton_id
+            node_match = re.search(r"(mat_g\d+_[a-z0-9_]+?_q\d+_\d+)", req.skeleton_id)
+            if node_match:
+                node_id = node_match.group(1)
+            else:
+                node_id = req.skeleton_id.rsplit('_', 1)[0] if match else req.skill_id
             
             from backend.app.practice_gen.pipeline import run as _pg_run
             try:
@@ -976,7 +975,7 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
     elif is_matatag:
         # MATATAG — check format type
         fmt = skeleton.get("format", "mcq")
-        if fmt == "mcq":
+        if fmt == "mcq" or skeleton.get("answer_collection") == "mcq":
             is_correct = (str(req.selected_answer).upper() == skeleton.get("correct_key", "A").upper())
         elif fmt in ["cloze", "numeric_input", "ordering", "true_false", "error_detect", "fill_in_blank"]:
             student_answer = req.selected_answer
@@ -1080,6 +1079,24 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                     # correct_key — these formatters have no MCQ options.
                     correct_answer = skeleton.get("correct_answer")
                     is_correct = str(req.selected_answer).strip() == str(correct_answer)
+                elif skeleton.get("answer_collection") == "fill_in_blank":
+                    try:
+                        student_parsed = json.loads(req.selected_answer) if isinstance(req.selected_answer, str) else req.selected_answer
+                    except:
+                        student_parsed = req.selected_answer
+                    
+                    correct_answer = skeleton.get("correct_answer")
+                    if isinstance(correct_answer, str):
+                        try:
+                            correct_answer = json.loads(correct_answer)
+                        except:
+                            pass
+                    
+                    if isinstance(student_parsed, list) and isinstance(correct_answer, list):
+                        is_correct = (len(student_parsed) == len(correct_answer) and
+                                      all(str(a).strip().lower() == str(b).strip().lower() for a, b in zip(student_parsed, correct_answer)))
+                    else:
+                        is_correct = str(student_parsed).strip().lower() == str(correct_answer).strip().lower()
                 else:
                     is_correct = (str(req.selected_answer).upper() == skeleton.get("correct_key", "A").upper())
             else:
@@ -1224,7 +1241,7 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                 db.add(sr_card)
             else:
                 sr_card.repetitions += 1
-                sr_card.interval_days *= 2.0 # Double review interval
+                sr_card.interval_days = min(sr_card.interval_days * 2.0, 365.0) # Double review interval, capped at 1 year
                 sr_card.due_date = datetime.datetime.utcnow() + datetime.timedelta(days=sr_card.interval_days)
     else:
         state.consecutive_incorrect += 1
