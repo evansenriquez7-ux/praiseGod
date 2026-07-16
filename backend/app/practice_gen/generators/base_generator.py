@@ -271,11 +271,13 @@ def generate_context(
         ep for ep in dna.error_patterns
         if ep.required_concept in cumulative_concepts
     ]
-    distractors: List[Any] = list(values.get("distractors", []))
+    distractors: List[Any] = [d for d in values.get("distractors", []) if d is not None]
     for ep in filtered_patterns:
+        if ep.formula == "None":
+            continue
         try:
             distractor = _eval_error_formula(ep.formula, values)
-            if distractor != correct_answer and distractor not in distractors:
+            if distractor is not None and distractor != correct_answer and distractor not in distractors:
                 distractors.append(distractor)
         except Exception:
             continue

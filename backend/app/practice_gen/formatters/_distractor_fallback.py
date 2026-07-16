@@ -78,7 +78,7 @@ def augment_distractors(
         return True
 
     for d in distractor_set:
-        if d == correct:
+        if d is None or str(d).strip().lower() in ("none", "null") or d == correct:
             continue
         if d in seen:
             continue
@@ -100,10 +100,9 @@ def augment_distractors(
                     candidate = int(candidate)
                 _add(candidate)
     else:
-        for i in range(1, max_delta + 1):
-            if len(result) >= target:
-                return result[:target]
-            candidate = f"{correct}_{i}"
-            _add(candidate)
+        raise ValueError(
+            f"Cannot generate enough unique distractors for non-numeric correct answer: {correct!r}. "
+            f"Got {len(result)} distractors, but needed {target}."
+        )
 
     return result

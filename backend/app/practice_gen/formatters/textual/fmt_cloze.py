@@ -122,6 +122,8 @@ def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
     candidates = []
     seen = {correct}
     for d in ctx.distractors:
+        if d is None or str(d).strip().lower() in ("none", "null"):
+            continue
         if d not in seen:
             candidates.append(d)
             seen.add(d)
@@ -139,11 +141,9 @@ def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
                         break
             offset_mult += 1
         else:
-            candidate = f"{correct}_{offset_mult}"
-            if candidate not in seen:
-                candidates.append(candidate)
-                seen.add(candidate)
-            offset_mult += 1
+            raise ValueError(
+                f"Cloze formatter could not generate enough distractors for string correct answer {correct!r}."
+            )
 
     if len(candidates) < 3:
         candidates = augment_distractors(candidates, correct, target=3, max_delta=5)

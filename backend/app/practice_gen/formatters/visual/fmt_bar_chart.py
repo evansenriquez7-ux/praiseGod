@@ -302,10 +302,36 @@ def format_bar_chart(
                 if cat != correct_value and len(distractor_vals) < 3:
                     distractor_vals.append(cat)
                     seen.add(cat)
-            pad_idx = 1
-            while len(distractor_vals) < 3:
-                distractor_vals.append(f"Option {pad_idx}")
-                pad_idx += 1
+            
+            # Find a bank of categories to draw extra distractors from
+            flat_bank = []
+            for grade_list in _CATEGORY_BANKS.values():
+                for sublist in grade_list:
+                    flat_bank.extend(sublist)
+            # Add English names as well just in case they are used
+            flat_bank.extend(["cats", "dogs", "birds", "fish", "rabbits", "turtles", "apples", "bananas", "mangoes", "grapes", "oranges", "strawberries"])
+            
+            # De-duplicate flat_bank while preserving order
+            clean_bank = []
+            for item in flat_bank:
+                if item not in clean_bank:
+                    clean_bank.append(item)
+            
+            # Shuffle to draw randomly
+            shuffled_bank = clean_bank[:]
+            rng.shuffle(shuffled_bank)
+            
+            for item in shuffled_bank:
+                if len(distractor_vals) >= 3:
+                    break
+                if item not in seen and item.lower() != correct_value.lower():
+                    distractor_vals.append(item)
+                    seen.add(item)
+
+            if len(distractor_vals) < 3:
+                raise ValueError(
+                    f"Bar chart MCQ formatter requires 3 distractors, but only found {len(distractor_vals)} for correct_value={correct_value}."
+                )
         else:
             for t in traps.values():
                 tv = t.get("values")

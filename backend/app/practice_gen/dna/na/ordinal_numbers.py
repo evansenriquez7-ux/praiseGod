@@ -233,6 +233,40 @@ def generate_params(
     except KeyError:
         question_text = tpl
 
+    # Generate 3 unique distractors of the same type/domain
+    distractors = []
+    other_ns = []
+    for candidate_n in range(min_ord, max_ord + 1):
+        if candidate_n != n:
+            other_ns.append(candidate_n)
+    
+    # If the range is too narrow, widen it to guarantee distractors exist
+    ext_max = max_ord
+    while len(other_ns) < 5:
+        ext_max += 1
+        other_ns.append(ext_max)
+        
+    rng.shuffle(other_ns)
+    
+    for candidate_n in other_ns:
+        if len(distractors) >= 3:
+            break
+        if answer_key == "n":
+            cand = candidate_n
+        elif answer_key == "word":
+            cand = _ordinal_word(candidate_n)
+        elif answer_key == "symbol":
+            cand = _ordinal_suffix(candidate_n)
+        elif answer_key == "earlier_symbol":
+            cand = _ordinal_suffix(candidate_n)
+        elif answer_key == "next_symbol":
+            cand = _ordinal_suffix(candidate_n + 1)
+        else:
+            cand = _ordinal_suffix(candidate_n)
+            
+        if cand != answer and cand not in distractors:
+            distractors.append(cand)
+
     return {
         "blank_target": "answer",
         "n":             n,
@@ -241,6 +275,7 @@ def generate_params(
         "question_text": question_text,
         "answer":        answer,
         "task_type":     task_type,
+        "distractors":   distractors,
     }
 
 

@@ -64,7 +64,7 @@ from backend.app.practice_gen.axes_catalog import CONCEPT_AXES_CATALOG  # noqa: 
 from backend.app.services.orchestrator import PracticeOrchestrator  # noqa: E402
 
 # Number of randomly seeded problems to generate per profile+formatter combination.
-SAMPLES_PER_PROFILE = 1
+SAMPLES_PER_PROFILE = 10
 
 # Checklist: Vocabulary gating forbidden list.
 # Only words that are NOT in any MATATAG K-3 competency language go here.
@@ -794,7 +794,7 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                 sort_keys=True, default=str
             )
             if pairing_key not in context_states_by_pairing_key:
-                context_states_by_pairing_key[pairing_key] = {}
+                context_states_by_pairing_key[pairing_key] = {"pure": {}, "word": {}}
 
             for sample_index in range(SAMPLES_PER_PROFILE):
                 total_checked += 1
@@ -900,14 +900,19 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                             )
 
                     for opt in opts_list:
-                        opt_val = str(opt.get("value") if isinstance(opt, dict) else opt).strip()
-                        if not opt_val:
+                        opt_raw = opt.get("value") if isinstance(opt, dict) else opt
+                        opt_val = str(opt_raw).strip()
+                        if opt_raw is None or opt_val.lower() in ("none", "null") or not opt_val:
                             failures.setdefault(node_id, []).append(
-                                f"Sample {seed} Formatter '{formatter}' generated a blank option."
+                                f"Sample {seed} Formatter '{formatter}' generated a None, null, or blank option: {opt_raw}"
                             )
                         elif "alt #" in opt_val.lower():
                             failures.setdefault(node_id, []).append(
                                 f"Sample {seed} Formatter '{formatter}' generated a fallback 'alt #' option: {opt_val}"
+                            )
+                        elif re.match(r"^option\s+\d+", opt_val.lower()):
+                            failures.setdefault(node_id, []).append(
+                                f"Sample {seed} Formatter '{formatter}' generated a placeholder 'Option #' option: {opt_val}"
                             )
 
                 if dna_name == "fractions" and "fractions" in dnas and getattr(prob, "visual_type", None) is None:
@@ -994,12 +999,12 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                         )
 
                 if context_value == "pure":
-                    context_states_by_pairing_key[pairing_key]["pure"] = extract_numeric_state(prob, legacy)
+                    context_states_by_pairing_key[pairing_key]["pure"][sample_index] = extract_numeric_state(prob, legacy)
                 elif context_value == "word_problem":
                     current_state = extract_numeric_state(prob, legacy)
-                    # Compare only against pure profiles with the same difficulty dimensions
-                    if "pure" in context_states_by_pairing_key[pairing_key] and "word" not in context_states_by_pairing_key[pairing_key]:
-                        reference_state = context_states_by_pairing_key[pairing_key]["pure"]
+                    # Compare only against pure profiles with the same difficulty dimensions and same sample_index
+                    if sample_index in context_states_by_pairing_key[pairing_key]["pure"]:
+                        reference_state = context_states_by_pairing_key[pairing_key]["pure"][sample_index]
                         if reference_state and current_state and reference_state != current_state:
                             # Compare the authoritative semantic operands
                             # (given_values + answer), NOT regex-scraped stem
@@ -1016,7 +1021,7 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                                 failures.setdefault(node_id, []).append(
                                     f"Sample {seed} Separation of Concerns Violation: core operands from pure state are missing or reduced in word_problem for formatter {formatter}: missing={missing} pure={ref_nums} word={cur_nums}"
                                 )
-                    context_states_by_pairing_key[pairing_key]["word"] = current_state
+                    context_states_by_pairing_key[pairing_key]["word"][sample_index] = current_state
 
     for variant in config.get("contextual_variants", []):
         name = variant.get("name")

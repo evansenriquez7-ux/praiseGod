@@ -110,7 +110,11 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
     candidates: List = []
     seen = {str(correct).strip().lower()}
     for d in ctx.distractors:
+        if d is None:
+            continue
         d_str = str(d).strip().lower()
+        if d_str in ("none", "null"):
+            continue
         if d_str not in seen:
             candidates.append(d)
             seen.add(d_str)
@@ -129,12 +133,9 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
                         break
             offset_mult += 1
         else:
-            # If string, we can't easily guess. Just add a generic string
-            candidate = f"{correct} (alternate {offset_mult})"
-            if candidate not in seen:
-                candidates.append(candidate)
-                seen.add(candidate)
-            offset_mult += 1
+            raise ValueError(
+                f"MCQ formatter could not generate enough distractors for string correct answer {correct!r}."
+            )
 
     if len(candidates) < 3:
         candidates = augment_distractors(candidates, correct, target=3, max_delta=5)

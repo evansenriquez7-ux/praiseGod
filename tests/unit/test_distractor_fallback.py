@@ -297,11 +297,9 @@ class TestAugmentDistractors:
         result = augment_distractors([1, 1, 2, 2], correct=10, target=3, max_delta=5)
         assert len(result) == len(set(result))
 
-    def test_string_correct_uses_parametric_variants(self):
-        result = augment_distractors(set(), correct="cat", target=3, max_delta=5)
-        assert len(result) == 3
-        assert all(v != "cat" for v in result)
-        assert all(isinstance(v, str) for v in result)
+    def test_string_correct_raises_value_error(self):
+        with pytest.raises(ValueError, match="Cannot generate enough unique distractors"):
+            augment_distractors(set(), correct="cat", target=3, max_delta=5)
 
     def test_bool_correct_uses_negation(self):
         result = augment_distractors(set(), correct=True, target=3, max_delta=5)

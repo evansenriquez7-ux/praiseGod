@@ -8,7 +8,7 @@ The Matatag Lab displays all learning competencies. Each learning competency dis
 
 **Avoid Graceful Fallbacks and Silent Defaulting Behavior**
 
-The pg pipeline must avoid graceful fallbacks and silent defaulting behavior. When the auditor script tests the pg's to check for compliance with this checklist, these behaviors hide bugs. The pg pipeline is meant for failing fast and loud, this way the auditor script can recognize the issue so it can be fixed.
+The pg pipeline must avoid graceful fallbacks and silent defaulting behavior. When the auditor script tests the pg's to check for compliance with this checklist, these behaviors hide bugs. The pg pipeline is meant for failing fast and loud, this way the auditor script can recognize the issue so it can be fixed. This also applies to pg answer choices, which must display valid options, not fallback options.
 
 
 ## 1. Difficulty Dimensions

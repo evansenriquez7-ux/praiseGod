@@ -253,6 +253,33 @@ def check_payload(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
             "message": "total_parts=0 → division by zero in FractionModel/Shade component",
         })
 
+    # ── (e) MCQ options check (catches None/null options) ────────────────────
+    options = payload.get("options")
+    format_data = payload.get("format_data") or {}
+    if not options and isinstance(format_data, dict):
+        options = format_data.get("options")
+    if options:
+        opts_list = list(options.values()) if isinstance(options, dict) else options
+        for opt in opts_list:
+            opt_raw = opt.get("value") if isinstance(opt, dict) else opt
+            opt_val = str(opt_raw).strip()
+            if opt_raw is None or opt_val.lower() in ("none", "null") or not opt_val:
+                findings.append({
+                    **common,
+                    "check": "invalid_option_value",
+                    "severity": "critical",
+                    "message": f"MCQ option contains invalid None, null, or blank value: {opt_raw!r}",
+                })
+                break
+            elif re.match(r"^option\s+\d+", opt_val.lower()):
+                findings.append({
+                    **common,
+                    "check": "invalid_option_value",
+                    "severity": "critical",
+                    "message": f"MCQ option contains placeholder Option # value: {opt_val!r}",
+                })
+                break
+
     return findings
 
 

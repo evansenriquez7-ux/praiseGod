@@ -214,10 +214,46 @@ def format_pictograph(
                 if cat != correct_count and len(distractor_vals) < 3:
                     distractor_vals.append(cat)
                     seen.add(cat)
+            
             if len(distractor_vals) < 3:
-                distractor_vals = augment_distractors(distractor_vals, correct_count, target=3, max_delta=5)
-                if len(distractor_vals) < 3:
-                    raise ValueError(f"Formatter 'pictograph' requires at least 3 unique distractors, but got {len(distractor_vals)}")
+                # Find a bank of categories to draw extra distractors from
+                flat_bank = []
+                for _, _, theme_cats in _PICTOGRAPH_THEMES:
+                    flat_bank.extend(theme_cats)
+                
+                # Also add the English category set names
+                flat_bank.extend([
+                    "apples", "bananas", "mangoes", "grapes", "oranges", "strawberries",
+                    "cats", "dogs", "birds", "fish", "rabbits", "turtles",
+                    "red", "blue", "green", "yellow", "purple", "orange",
+                    "Math", "Science", "English", "Art", "PE", "Music",
+                    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
+                    "basketball", "volleyball", "swimming", "running", "soccer", "tennis",
+                    "roses", "sunflowers", "tulips", "daisies", "orchids", "lilies",
+                    "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6"
+                ])
+                
+                # De-duplicate while preserving order
+                clean_bank = []
+                for item in flat_bank:
+                    if item not in clean_bank:
+                        clean_bank.append(item)
+                
+                # Shuffle clean_bank with rng
+                shuffled_bank = clean_bank[:]
+                rng.shuffle(shuffled_bank)
+                
+                for item in shuffled_bank:
+                    if len(distractor_vals) >= 3:
+                        break
+                    if item not in seen and item.lower() != correct_count.lower():
+                        distractor_vals.append(item)
+                        seen.add(item)
+
+            if len(distractor_vals) < 3:
+                raise ValueError(
+                    f"Formatter 'pictograph' requires at least 3 unique distractors, but got {len(distractor_vals)} for correct_count={correct_count}"
+                )
         else:
             # The answer is a number
             for t in traps.values():
