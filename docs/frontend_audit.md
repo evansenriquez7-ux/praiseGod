@@ -1124,3 +1124,15 @@ interaction (click, drag, change), and gated inside the `useEffect` before
 fires `onAnswer` on the first render. The first-written audit doc
 (`local_only/scratch/oc/visual_components_audit.md:82-83`) mistakenly
 suggested `useRef(true)`; the canonical pattern is `useRef(false)`.
+
+## Appendix D: Cleaning up test data
+
+During the grader round-trip or frontend integration audits, test students are committed to the database under the pattern `GraderAudit_{node_id}` to satisfy portal endpoint constraints.
+
+To clean up these test student profiles and keep the database tidy, run the following command:
+
+```bash
+PYTHONPATH=. .venv/bin/python -c 'from backend.app.database import SessionLocal; from backend.app.models import StudentProfile; db = SessionLocal(); deleted = db.query(StudentProfile).filter(StudentProfile.name.like("GraderAudit_%")).delete(synchronize_session=False); db.commit(); print(f"Deleted {deleted} test students."); db.close()'
+```
+
+This will locate and delete all `GraderAudit_*` student profiles from the database.
