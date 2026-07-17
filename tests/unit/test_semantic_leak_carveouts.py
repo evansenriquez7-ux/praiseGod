@@ -59,8 +59,11 @@ def test_single_digit_arith_carveout_positive(stem):
     "What number comes after 2 when counting by 1?",
     "What number comes after 10 when counting by 5?",
     "What number comes after 0?",
+    "What number comes before 2 when counting by 1?",
+    "What number comes before 10 when counting by 5?",
+    "What number comes before 20?",
 ])
-def test_what_number_comes_after_carveout_positive(stem):
+def test_what_number_comes_after_before_carveout_positive(stem):
     assert stem_is_prompt_target(stem), f"Expected carve-out for: {stem!r}"
 
 

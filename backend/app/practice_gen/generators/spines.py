@@ -234,7 +234,19 @@ _SUB_START_UNKNOWN = Spine(
     ),
     required_concepts={"subtraction", "missing_number"},
     blank_target="a",
-    grade_band=(2, 3),
+    grade_band=(1, 3),
+)
+
+_SUB_CHANGE_UNKNOWN = Spine(
+    id="sub_change_unknown",
+    template=(
+        "{actor} had {a} {objects}. After giving away some, "
+        "{actor} had {result} left. "
+        "How many {objects} did {actor} give away?"
+    ),
+    required_concepts={"subtraction", "missing_number"},
+    blank_target="b",
+    grade_band=(1, 3),
 )
 
 # Aligned with competency: "describes subtraction as 'taking away,' 'counting back,' and 'comparing'"
@@ -530,11 +542,64 @@ _DATA_BAR_READ = Spine(
 )
 
 
+_COUNTING_STORY = Spine(
+    id="counting_story",
+    template=(
+        "{actor} is counting {dir_word} by {skip_by} starting from {seq_a}. "
+        "The count is: {seq_a}, {seq_b}, {seq_c}, {seq_d}. "
+        "What is the next number {actor} should say?"
+    ),
+    required_concepts={"counting"},
+    blank_target="answer",
+    grade_band=(1, 3),
+)
+
+
+_COMP_SYMBOL_STORY = Spine(
+    id="comp_symbol_story",
+    template=(
+        "{actor} has {a} {objects}. Another classmate has {b} {objects}. "
+        "Which comparison is correct: {a} ___ {b}?"
+    ),
+    required_concepts={"comparing_ordering"},
+    blank_target="answer",
+    grade_band=(1, 3),
+)
+
+_COMP_BETWEEN_STORY = Spine(
+    id="comp_between_story",
+    template=(
+        "{actor} is thinking of a number of {objects} that is greater than {a} but less than {b}. "
+        "What is the number?"
+    ),
+    required_concepts={"comparing_ordering"},
+    blank_target="answer",
+    grade_band=(1, 3),
+)
+
+_COMP_ORDER_STORY = Spine(
+    id="comp_order_story",
+    template=(
+        "{actor} has cards with numbers: {numbers_str}. "
+        "Arrange the numbers from smallest to largest."
+    ),
+    required_concepts={"comparing_ordering"},
+    blank_target="answer",
+    grade_band=(1, 3),
+)
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # MASTER LIST
 # ═══════════════════════════════════════════════════════════════════════════════
 
 ALL_SPINES: List[Spine] = [
+    # Counting
+    _COUNTING_STORY,
+    # Comparison - comparing_ordering
+    _COMP_SYMBOL_STORY,
+    _COMP_BETWEEN_STORY,
+    _COMP_ORDER_STORY,
     # Addition - counting up (competency-aligned)
     _ADD_COUNTING_UP,
     _ADD_COUNTING_UP_STORY,
@@ -562,6 +627,7 @@ ALL_SPINES: List[Spine] = [
     _SUB_GIVE_AWAY,
     _SUB_HOW_MANY_LEFT,
     _SUB_START_UNKNOWN,
+    _SUB_CHANGE_UNKNOWN,
     # Comparison
     _COMP_WHO_HAS_MORE,
     _COMP_DIFFERENCE,

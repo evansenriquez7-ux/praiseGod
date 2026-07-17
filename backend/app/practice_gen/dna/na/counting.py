@@ -222,6 +222,11 @@ def generate_params(
         "answer":         answer,
         "sequence":       visible,
         "context":        context,
+        "seq_a":          visible[0],
+        "seq_b":          visible[1],
+        "seq_c":          visible[2],
+        "seq_d":          visible[3],
+        "dir_word":       "forward" if direction == "forward" else "backward",
     }
 
     return result_dict

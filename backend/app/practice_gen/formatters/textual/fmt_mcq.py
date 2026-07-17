@@ -69,6 +69,26 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         else:
             return f"What divided by {divisor} equals {quotient}?"
     
+    elif concept == "counting":
+        seq = values.get("sequence") or []
+        direction = values.get("direction", "forward")
+        seq_str = ", ".join(str(x) for x in seq)
+        if direction == "backward":
+            return f"What number comes next when counting backward: {seq_str}, ___?"
+        else:
+            return f"What number comes next when counting: {seq_str}, ___?"
+    elif concept == "comparing_ordering":
+        task_type = values.get("task_type", "compare_pair")
+        a = values.get("a")
+        b = values.get("b")
+        if task_type in ("order_set", "order_sequence"):
+            nums = values.get("numbers", [])
+            nums_str = ", ".join(str(x) for x in nums)
+            return f"Order these numbers from least to greatest: {nums_str}"
+        elif task_type == "find_between":
+            return f"What number is between {a} and {b}?"
+        else:
+            return f"Which is greater: {a} or {b}?"
     else:
         # Fallback: use the question_text
         return ctx.question_text

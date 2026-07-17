@@ -174,7 +174,13 @@ def generate_params(
 
     max_total = max(20, min(max_total, 10000))
 
-    operation = profile.get("operation", "add_amounts")
+    operation_profile = profile.get("operation", "add_amounts")
+    if operation_profile == "add":
+        operation = "add_amounts"
+    elif operation_profile == "subtract":
+        operation = "find_change"
+    else:
+        operation = operation_profile
     denom_type = profile.get("denomination_type", "mixed")
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 

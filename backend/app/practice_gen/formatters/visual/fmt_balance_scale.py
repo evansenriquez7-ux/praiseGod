@@ -48,6 +48,7 @@ def _build_balance_params(ctx: QuestionContext, rng: random.Random) -> dict:
     b = vals.get("b")
     result = vals.get("result")
     blank_target = vals.get("blank_target", "result")
+    operation = vals.get("operation", "addition")
 
     # If values are missing, generate grade-appropriate numbers
     if a is None or b is None or result is None:
@@ -57,21 +58,21 @@ def _build_balance_params(ctx: QuestionContext, rng: random.Random) -> dict:
         result = a + b
         blank_target = rng.choice(["a", "b", "result"])
 
+    op_char = "-" if operation == "subtraction" else "+"
+
     # Build the two sides
     if blank_target == "result":
-        left_side = f"{a} + {b}"
+        left_side = f"{a} {op_char} {b}"
         right_side = "?"
         blank_side = "right"
         missing_value = result
     elif blank_target == "a":
-        left_side = "?"
-        right_side = f"{b} + {result - b}" if result > b else f"{result} - {b - result}"
-        # Simpler: left side is blank, right side is the total
+        left_side = f"? {op_char} {b}"
         right_side = str(result)
         blank_side = "left"
         missing_value = a
     else:  # blank_target == "b"
-        left_side = f"{a} + ?"
+        left_side = f"{a} {op_char} ?"
         right_side = str(result)
         blank_side = "left"
         missing_value = b

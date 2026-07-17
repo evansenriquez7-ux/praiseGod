@@ -107,11 +107,14 @@ def _build_params(
     Build emoji pictorial parameters from DNA context.
     """
     values = ctx.values
-    a = values.get("a", 3)
-    b = values.get("b", 2)
-    
-    # Determine operation from DNA concept
-    operation = ctx.dna_concept if ctx.dna_concept in ("addition", "subtraction") else "addition"
+    if ctx.dna_concept == "counting":
+        operation = "counting"
+        a = ctx.correct_answer
+        b = 0
+    else:
+        operation = ctx.dna_concept if ctx.dna_concept in ("addition", "subtraction") else "addition"
+        a = values.get("a", 3)
+        b = values.get("b", 2)
     
     # Select random emoji
     emoji = rng.choice(_ALL_EMOJIS)
@@ -166,8 +169,10 @@ def _correct_answer(params: dict) -> int:
     b = params["group_b"]
     if params["operation"] == "addition":
         return a + b
-    else:
+    elif params["operation"] == "subtraction":
         return a - b
+    else:  # counting
+        return a
 
 
 def _generate_distractors(
@@ -220,15 +225,18 @@ def _generate_distractors(
     return distractor_list[:3]
 
 
-def _build_question_text(params: dict) -> str:
+def _build_question_text(params: dict, context_variant: str = "word_problem") -> str:
     """
     Build the question text with emoji representation.
-    
-    Format:
-    Line 1: Show and state how many items there are
-    Line 2: Show and state how many are added/taken away  
-    Line 3: Ask the question
     """
+    if context_variant == "pure":
+        operation = params["operation"]
+        if operation == "addition":
+            return "How many items are there in total?"
+        elif operation == "subtraction":
+            return "How many items are left?"
+        else:
+            return "How many items are there?"
     emoji = params["emoji"]
     a = params["group_a"]
     b = params["group_b"]
@@ -260,7 +268,7 @@ def _build_question_text(params: dict) -> str:
         # Line 3: Question
         line3 = f"How many total {name_plural} are there?"
         
-    else:  # subtraction
+    elif operation == "subtraction":
         # Line 1: Show starting amount
         if a == 0:
             line1 = f"There are 0 {name_plural}."
@@ -275,7 +283,14 @@ def _build_question_text(params: dict) -> str:
         
         # Line 3: Question
         line3 = f"How many {name_plural} are left?"
-    
+        
+    else:  # counting
+        if a == 0:
+            line1 = f"There are 0 {name_plural}."
+        else:
+            line1 = f"{group_a_str} — There {'is' if a == 1 else 'are'} {a} {name_a}."
+        line2 = f"Count the {name_plural}."
+        line3 = f"How many {name_plural} are there in all?"
     return f"{line1}\n{line2}\n{line3}"
 
 
@@ -332,8 +347,14 @@ def format_emoji_pictorial(
     params = _build_params(ctx, rng)
     correct = _correct_answer(params)
     
+    context_variant = ctx.values.get("context")
+    if context_variant is None and ctx.difficulty_profile:
+        context_variant = ctx.difficulty_profile.get("context")
+    if context_variant is None:
+        context_variant = "pure"
+
     # Build question text
-    question_text = _build_question_text(params)
+    question_text = _build_question_text(params, context_variant)
     
     # Build distractors and MCQ options
     distractors = _generate_distractors(correct, params, rng)

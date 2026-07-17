@@ -66,6 +66,25 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
         else:
             return f"___ ÷ {divisor} = {quotient}"
     
+    elif concept == "counting":
+        seq = values.get("sequence") or []
+        if seq:
+            return ", ".join(str(x) for x in seq) + ", ___"
+        if ctx.question_text_with_blank:
+            return ctx.question_text_with_blank
+        raise ValueError("Formatter 'cloze' has no sequence for counting.")
+    elif concept == "comparing_ordering":
+        task_type = values.get("task_type", "compare_pair")
+        a = values.get("a")
+        b = values.get("b")
+        if task_type in ("order_set", "order_sequence"):
+            nums = values.get("numbers", [])
+            nums_str = ", ".join(str(x) for x in nums)
+            return f"Order these numbers from least to greatest: {nums_str} ___"
+        elif task_type == "find_between":
+            return f"What number is between {a} and {b}? ___"
+        else:
+            return f"Which is greater: {a} or {b}? ___"
     else:
         if ctx.question_text_with_blank:
             return ctx.question_text_with_blank

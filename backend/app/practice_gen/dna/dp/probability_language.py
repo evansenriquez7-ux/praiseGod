@@ -112,6 +112,22 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     # ── likely / unlikely ─────────────────────────────────────────────────────
     {
+        "question": "If you flip a coin 10 times, getting heads at least once is ___.",
+        "answer": "likely",
+        "distractors": ["unlikely", "impossible", "certain"],
+        "scenario_type": "likely_unlikely",
+        "context": "coins",
+        "probability_term": "likely",
+    },
+    {
+        "question": "If you flip a coin 10 times, getting heads 10 times in a row is ___.",
+        "answer": "unlikely",
+        "distractors": ["likely", "certain", "impossible"],
+        "scenario_type": "likely_unlikely",
+        "context": "coins",
+        "probability_term": "unlikely",
+    },
+    {
         "question": "A bag has 8 red balls and 2 blue balls. What is the chance of picking a red ball?",
         "answer": "likely",
         "distractors": ["unlikely", "impossible", "certain"],
@@ -291,6 +307,7 @@ def generate_params(
     chosen = dict(rng.choice(candidates))
     return {
         "blank_target": "answer",
+        "question": chosen["question"],
         "scenario": chosen["question"],
         "answer": chosen["answer"],
         "probability_term": chosen["probability_term"],

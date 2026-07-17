@@ -358,11 +358,11 @@ PROMPT_TARGET_STEM_PATTERNS = [
         r"Which is (heavier|lighter|longer|shorter|more|less|taller):\s+\d+",
         re.IGNORECASE,
     ),
-    # "What number comes after N when counting by N?" — counting prompts.
+    # "What number comes after/before N when counting by N?" — counting prompts.
     # The starting number and step are in the stem by design; the answer
     # is the next number in the count.
     re.compile(
-        r"What number comes after\s+\d+",
+        r"What number comes (after|before)\s+\d+",
         re.IGNORECASE,
     ),
     # "Start at N. Count back N. What number do you land on?" — counting-back spine.
@@ -658,6 +658,153 @@ def _strict_scalar_endpoint_violates(actual_val, expected):
     return abs(actual_val - expected) > 1
 
 
+def _check_visual_capacity(prob, failures, seed, node_id, formatter):
+    # Only run on visual problems
+    if not getattr(prob, "is_visual", False):
+        return
+
+    vp = getattr(prob, "visual_params", None)
+    if not vp:
+        return
+
+    # Helper to convert correct answer and options to float values
+    def to_float(val):
+        if isinstance(val, (int, float)):
+            return float(val)
+        if isinstance(val, str):
+            val = val.strip()
+            # Fraction format like "33/10" or "3 3/10"
+            if "/" in val:
+                try:
+                    if " " in val: # mixed number
+                        whole, frac = val.split(" ")
+                        num, den = frac.split("/")
+                        return float(whole) + float(num) / float(den)
+                    num, den = val.split("/")
+                    return float(num) / float(den)
+                except Exception:
+                    pass
+            try:
+                return float(val)
+            except ValueError:
+                pass
+        return None
+
+    correct_val = to_float(prob.correct_answer)
+    if correct_val is None:
+        return
+
+    # Check capacity based on visual type
+    vt = getattr(prob, "visual_type", None) or formatter
+    vt_lower = str(vt).lower()
+
+    if "fraction" in vt_lower:
+        # E.g. FractionModel, fraction_model_read, fraction_shade
+        # Capacity is determined by total_wholes or (numerator/denominator)
+        den = vp.get("denominator") or vp.get("total_parts") or vp.get("parts")
+        total_wholes = vp.get("total_wholes")
+        
+        if den:
+            try:
+                den = int(den)
+                if total_wholes:
+                    capacity = float(total_wholes)
+                else:
+                    capacity = 1.0 # default to 1 whole unit if total_wholes is not specified
+                
+                # If capacity < correct_val, it's a visual capacity violation!
+                if capacity < correct_val - 1e-5:
+                    failures.setdefault(node_id, []).append(
+                        f"Sample {seed} Visual Capacity Violation (Visual={vt}): Capacity is {capacity} wholes, but correct answer is {prob.correct_answer} ({correct_val})"
+                    )
+            except Exception:
+                pass
+
+    elif "number_line" in vt_lower or "numberline" in vt_lower:
+        # E.g. NumberLine, number_line_read
+        start = to_float(vp.get("start"))
+        end = to_float(vp.get("end"))
+        
+        if start is not None and end is not None:
+            if correct_val < start - 1e-5 or correct_val > end + 1e-5:
+                failures.setdefault(node_id, []).append(
+                    f"Sample {seed} Visual Capacity Violation (Visual={vt}): Range is [{start}, {end}], but correct answer is {prob.correct_answer} ({correct_val})"
+                )
+
+    elif "tenframe" in vt_lower or "ten_frame" in vt_lower:
+        # E.g. TenFrame
+        frame_count = int(vp.get("frame_count") or 1)
+        capacity = frame_count * 10
+        if correct_val < 0 or correct_val > capacity:
+            failures.setdefault(node_id, []).append(
+                f"Sample {seed} Visual Capacity Violation (Visual={vt}): Capacity is {capacity} units, but correct answer is {prob.correct_answer} ({correct_val})"
+            )
+
+
+def _check_variant_sensitivity(formatter, seed, probs, failures, node_id, dna_name):
+    # Rule 1 stem alteration checks:
+    # Context must alter stem:
+    by_context_key = defaultdict(list)
+    for p in probs:
+        key = (p.get("dna_name"), tuple(sorted((k, v) for k, v in p["profile"].items() if k != "context")))
+        by_context_key[key].append(p)
+    for key, group in by_context_key.items():
+        if len(group) > 1:
+            p0 = group[0]
+            for p_other in group[1:]:
+                if p0["stem"] == p_other["stem"] and p0["profile"].get("context") != p_other["profile"].get("context"):
+                    failures.setdefault(node_id, []).append(
+                        f"Sensitivity Violation: Toggling 'context' for formatter '{formatter}' "
+                        f"(seed={seed}) failed to alter the question stem. Both produced: '{p0['stem']}'."
+                    )
+
+    # Direction in counting must alter stem for textual formatters:
+    if dna_name == "counting" and formatter in ("mcq", "cloze", "numeric_input"):
+        by_dir_key = defaultdict(list)
+        for p in probs:
+            key = (p.get("dna_name"), tuple(sorted((k, v) for k, v in p["profile"].items() if k != "direction")))
+            by_dir_key[key].append(p)
+        for key, group in by_dir_key.items():
+            if len(group) > 1:
+                p0 = group[0]
+                for p_other in group[1:]:
+                    if p0["stem"] == p_other["stem"] and p0["profile"].get("direction") != p_other["profile"].get("direction"):
+                        failures.setdefault(node_id, []).append(
+                            f"Sensitivity Violation: Toggling 'direction' for formatter '{formatter}' "
+                            f"(seed={seed}) failed to alter the question stem. Both produced: '{p0['stem']}'."
+                        )
+
+    # Rule 2 general check for any variant (Zero-Sensitivity):
+    for variant in ["direction", "operation", "context", "fraction_type", "query_type", "ask_type"]:
+        by_var_key = defaultdict(list)
+        for p in probs:
+            if variant in p["profile"]:
+                dna_name = p.get("dna_name")
+                if variant != "context" and dna_name and variant not in VARIANTS_BY_DNA.get(dna_name, {}):
+                    continue
+                key = (dna_name, tuple(sorted((k, v) for k, v in p["profile"].items() if k != variant)))
+                by_var_key[key].append(p)
+                
+        for key, group in by_var_key.items():
+            if len(group) > 1:
+                p0 = group[0]
+                all_identical = True
+                for p_other in group[1:]:
+                    if not (p0["stem"] == p_other["stem"] and 
+                            p0["answer"] == p_other["answer"] and 
+                            p0["options"] == p_other["options"] and 
+                            p0["vp"] == p_other["vp"] and
+                            p0.get("math_values") == p_other.get("math_values")):
+                        all_identical = False
+                        break
+                if all_identical:
+                    vals = [p["profile"][variant] for p in group]
+                    failures.setdefault(node_id, []).append(
+                        f"Silent Default / Zero-Sensitivity Error: Changing variant '{variant}' across values {vals} "
+                        f"for formatter '{formatter}' (seed={seed}) had absolutely zero effect on the generated problem payload."
+                    )
+
+
 def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]], int]:
     """Run the checklist audit for a single node. Returns
     (failures_for_node, repro_for_node, total_checked_for_node).
@@ -740,6 +887,7 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
     scalar_coverages = defaultdict(int)
 
     for formatter in supported_formatters:
+        problems_for_sensitivity = []
         sv_union: Dict[str, set] = {}
         for d in dnas:
             if formatter in dna_formatters[d]:
@@ -787,19 +935,12 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                 if key in dim_names:
                     scalar_coverages[key] += 1
 
-            # Create a pairing key from all non-context fields to match pure/word_problem profiles
-            # Use JSON string as key to avoid tuple hashability issues in multiprocessing
-            pairing_key = json.dumps(
-                {k: v for k, v in raw_profile.items() if k != "context"},
-                sort_keys=True, default=str
-            )
-            if pairing_key not in context_states_by_pairing_key:
-                context_states_by_pairing_key[pairing_key] = {"pure": {}, "word": {}}
+            # Store base profile dictionary to create pairing key after DNA selection
+            base_profile_dict = {k: v for k, v in raw_profile.items() if k != "context"}
 
             for sample_index in range(SAMPLES_PER_PROFILE):
                 total_checked += 1
                 seed = 1000 + sample_index + (1000 * len(profiles))
-
                 try:
                     prob = PracticeOrchestrator.generate_problem(
                         node_id=node_id,
@@ -830,6 +971,20 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                 hints = legacy.get("hints", [])
                 prob_profile = getattr(prob, "difficulty_profile", {}) or {}
                 context_value = raw_profile.get("context")
+
+                opts_list = list(options.values()) if isinstance(options, dict) else (options if isinstance(options, list) else [])
+                problems_for_sensitivity.append({
+                    "profile": raw_profile,
+                    "seed": seed,
+                    "stem": question_text,
+                    "answer": correct_answer,
+                    "options": sorted([str(opt.get("value") if isinstance(opt, dict) else opt) for opt in opts_list]) if opts_list else [],
+                    "vp": prob.visual_params or {},
+                    "math_values": {**(prob.given_values or {}), "correct_answer": correct_answer},
+                    "dna_name": dna_name
+                })
+
+                _check_visual_capacity(prob, failures, seed, node_id, formatter)
 
                 q_violations = scan_text(question_text, FORBIDDEN_WORDS)
                 if q_violations:
@@ -865,9 +1020,20 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                             stem_occurrences = len(re.findall(pattern, question_text))
 
                             given_values = legacy.get("given_values") or {}
-                            # Count how many given operands equal the answer
+                            def _extract_scalars(val):
+                                if isinstance(val, (int, float)):
+                                    yield val
+                                elif isinstance(val, str):
+                                    yield val
+                                elif isinstance(val, dict):
+                                    for sub_val in val.values():
+                                        yield from _extract_scalars(sub_val)
+                                elif isinstance(val, (list, tuple, set)):
+                                    for sub_val in val:
+                                        yield from _extract_scalars(sub_val)
+                            given_scalars = list(_extract_scalars(given_values))
                             explainable_occurrences = sum(
-                                1 for v in given_values.values() if str(v) == answer_str
+                                1 for v in given_scalars if str(v) == answer_str
                             )
 
                             if stem_occurrences > explainable_occurrences:
@@ -919,6 +1085,23 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                     if "fraction" not in question_text.lower() and "\\" not in question_text:
                         failures.setdefault(node_id, []).append(
                             f"Sample {seed} Fractions DNA concept overridden: Question stem '{question_text}' does not mention fractions or equations"
+                        )
+
+                if dna_name == "counting":
+                    direction = raw_profile.get("direction", "forward")
+                    if direction == "backward" and "after" in question_text.lower():
+                        failures.setdefault(node_id, []).append(
+                            f"Sample {seed} Counting Wording Error: Direction is 'backward' but question stem uses 'after': '{question_text}'"
+                        )
+                    elif direction == "forward" and "before" in question_text.lower():
+                        failures.setdefault(node_id, []).append(
+                            f"Sample {seed} Counting Wording Error: Direction is 'forward' but question stem uses 'before': '{question_text}'"
+                        )
+
+                if formatter == "ten_frame":
+                    if "empty circles" in question_text.lower() or "circles total" in question_text.lower():
+                        failures.setdefault(node_id, []).append(
+                            f"Sample {seed} TenFrame Wording Error: Question stem uses incorrect visual terminology (e.g. 'empty circles' or 'circles total'): '{question_text}'"
                         )
 
                 if getattr(prob, "is_visual", False) and hasattr(prob, "visual_params"):
@@ -998,11 +1181,19 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                             f"Sample {seed} Visual Degradation Issue: Visual formatter '{formatter}' generated long word_problem stem ({len(question_text)} chars)."
                         )
 
+                # Create a pairing key including the actual dna_name to only match same-DNA profiles
+                pairing_key = json.dumps(
+                    {**base_profile_dict, "_dna_name": dna_name},
+                    sort_keys=True, default=str
+                )
+                if pairing_key not in context_states_by_pairing_key:
+                    context_states_by_pairing_key[pairing_key] = {"pure": {}, "word": {}}
+
                 if context_value == "pure":
                     context_states_by_pairing_key[pairing_key]["pure"][sample_index] = extract_numeric_state(prob, legacy)
                 elif context_value == "word_problem":
                     current_state = extract_numeric_state(prob, legacy)
-                    # Compare only against pure profiles with the same difficulty dimensions and same sample_index
+                    # Compare only against pure profiles with the same difficulty dimensions, DNA, and same sample_index
                     if sample_index in context_states_by_pairing_key[pairing_key]["pure"]:
                         reference_state = context_states_by_pairing_key[pairing_key]["pure"][sample_index]
                         if reference_state and current_state and reference_state != current_state:
@@ -1022,6 +1213,13 @@ def _audit_node(node_id: str) -> Tuple[Dict[str, List[str]], List[Dict[str, Any]
                                     f"Sample {seed} Separation of Concerns Violation: core operands from pure state are missing or reduced in word_problem for formatter {formatter}: missing={missing} pure={ref_nums} word={cur_nums}"
                                 )
                     context_states_by_pairing_key[pairing_key]["word"][sample_index] = current_state
+
+        # Group and check variant sensitivity
+        grouped_problems = defaultdict(list)
+        for p in problems_for_sensitivity:
+            grouped_problems[p["seed"]].append(p)
+        for seed, probs in grouped_problems.items():
+            _check_variant_sensitivity(formatter, seed, probs, failures, node_id, primary_concept)
 
     for variant in config.get("contextual_variants", []):
         name = variant.get("name")

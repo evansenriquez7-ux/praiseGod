@@ -108,7 +108,13 @@ def generate_params(
         effective_max = 100
 
     effective_max = max(2, min(effective_max, 10000))
-    task_type = profile.get("task_type", "compare_two")
+    raw_task_type = profile.get("task_type", "compare_pair")
+    task_type = raw_task_type
+    if task_type == "compare_pair":
+        task_type = "compare_two"
+    elif task_type == "order_sequence":
+        task_type = "order_set"
+
     proximity = profile.get("proximity", "far_apart")
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
@@ -191,8 +197,9 @@ def generate_params(
     result_dict = {
         "blank_target": "answer",
         "numbers": numbers,
+        "numbers_str": ", ".join(map(str, numbers)),
         "answer": answer,
-        "task_type": task_type,
+        "task_type": raw_task_type,
         "context": context,
         "a": numbers[0] if len(numbers) > 0 else None,
         "b": numbers[1] if len(numbers) > 1 else None,
@@ -219,7 +226,7 @@ def generate_hints(
 
     hints: List[str] = []
 
-    if task_type == "compare_two":
+    if task_type in ("compare_two", "compare_pair"):
         a, b = numbers[0], numbers[1]
         hints.append(f"Compare {a} and {b}.")
         hints.append(f"Start from the largest place value and compare each digit.")
@@ -230,7 +237,7 @@ def generate_hints(
         else:
             hints.append(f"{a} is {eq} {b}, so we write {a} = {b}.")
 
-    elif task_type == "order_set":
+    elif task_type in ("order_set", "order_sequence"):
         hints.append(f"Numbers to order: {numbers}.")
         hints.append(f"Find the smallest number first, then the next smallest.")
         hints.append(f"Ordered from least to greatest: {sorted(numbers)}.")
@@ -259,7 +266,7 @@ COMPARING_ORDERING_DNA = DNA(
         "sort_order",
         "true_false",
     ],
-    requires_context=False,
+    requires_context=True,
     visual_home="SortOrder",
     difficulty_axes=_DIFFICULTY_AXES,
 )

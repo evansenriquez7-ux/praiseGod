@@ -88,6 +88,9 @@ FORMATTER_NUMERIC_LIMITS: Dict[str, Dict[str, Any]] = {
 CURRICULUM_VARIANT_GATES: Dict[tuple, tuple] = {
     # Fractions: keep proper-only (G1Q4 is pre-notation conceptual: halves/quarters only)
     # No gate entries for improper/mixed (not in curriculum for G1-G3)
+    ("fractions", "operation", "add"): (3, 4),
+    ("fractions", "operation", "subtract"): (3, 4),
+    ("fractions", "operation", "add_subtract"): (3, 4),
 
     # Multiplication: multi_digit introduced in G3Q3 (2-3 digit × 1-digit operations)
     ("multiplication", "number_type", "multi_digit"): (3, 3),
@@ -128,6 +131,12 @@ def is_variant_available_at(lc: str, variant_name: str, variant_value: str, grad
     Returns:
         True if variant is available at this curriculum point, False otherwise
     """
+    if lc == "missing_number" and variant_name == "operation":
+        if grade >= 3:
+            return variant_value in ("multiplication", "division")
+        else:
+            return variant_value in ("addition", "subtraction")
+
     gate = get_variant_curriculum_gate(lc, variant_name, variant_value)
     if gate is None:
         # No gate = available from G1Q1
@@ -445,7 +454,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "missing_number": {
-        "operation": ["addition", "subtraction"],
+        "operation": ["addition", "subtraction", "multiplication", "division"],
         "equation_type": ["standard", "non_standard"],
         "blank_position": ["start", "middle", "end"],
         "context": ["pure", "word_problem"],
@@ -563,50 +572,60 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
 
     "addition": {
         # number_line only supports find_sum (can't show missing addend well)
-        "number_line_read": {"task_type": ["find_sum"]},
-        "number_line_set": {"task_type": ["find_sum"]},
+        "number_line_read": {"task_type": ["find_sum"], "context": ["pure"]},
+        "number_line_set": {"task_type": ["find_sum"], "context": ["pure"]},
         # number_bond supports all task_types
-        "number_bond": {},  # all variants supported
+        "number_bond": {"context": ["pure"]},
     },
 
     "subtraction": {
-        "number_line_read": {"task_type": ["find_difference"]},
-        "number_bond": {},
+        "number_line_read": {"task_type": ["find_difference"], "context": ["pure"]},
+        "number_bond": {"context": ["pure"]},
     },
 
     "multiplication": {
         "table": ["2", "3", "4", "5", "10"],
         "structure": ["result_unknown"],
         # array grid naturally shows product, not missing factor
-        "array_grid_read": {"task_type": ["find_product"]},
-        "array_grid_set": {"task_type": ["find_product"]},
+        "array_grid_read": {"task_type": ["find_product"], "context": ["pure"]},
+        "array_grid_set": {"task_type": ["find_product"], "context": ["pure"]},
     },
 
     "division": {
         "remainder": ["none", "some"],
         "table": ["2", "3", "4", "5", "10"],
         "structure": ["result_unknown"],
-        "array_grid_read": {"task_type": ["find_quotient"]},
-        "array_grid_set": {"task_type": ["find_quotient"]},
+        "array_grid_read": {"task_type": ["find_quotient"], "context": ["pure"]},
+        "array_grid_set": {"task_type": ["find_quotient"], "context": ["pure"]},
+    },
+
+    "missing_number": {
+        "balance_scale": {"context": ["pure"]},
     },
 
     "counting": {
         # ten_frame only works for forward counting
-        "ten_frame": {"direction": ["forward"]},
-        "number_line_read": {},  # both directions work
+        "ten_frame": {"direction": ["forward"], "context": ["pure"]},
+        # emoji_pictorial only works for forward counting
+        "emoji_pictorial": {"direction": ["forward"]},
+        "number_line_read": {"context": ["pure"]},
+        "ordering": {"context": ["pure"]},
     },
 
     "place_value": {
         "include_zeros": ["yes", "no"],
         # blocks work best for compose/decompose
-        "place_value_blocks_read": {"task_type": ["identify_value", "compose"]},
-        "place_value_blocks_set": {"task_type": ["compose", "decompose"]},
+        "place_value_blocks_read": {"task_type": ["identify_value", "compose"], "context": ["pure"]},
+        "place_value_blocks_set": {"task_type": ["compose", "decompose"], "context": ["pure"]},
     },
 
     "comparing_ordering": {
         "proximity": ["close", "far"],
-        "sort_order": {"task_type": ["order_sequence"]},
-        "ordering": {"task_type": ["order_sequence"]},
+        "sort_order": {"task_type": ["order_sequence"], "context": ["pure"]},
+        "ordering": {"task_type": ["order_sequence"], "context": ["pure"]},
+        "mcq": {"task_type": ["compare_pair", "find_between"]},
+        "cloze": {"task_type": ["compare_pair", "find_between"]},
+        "true_false": {"task_type": ["compare_pair", "find_between"]},
     },
 
     "patterns": {
@@ -639,9 +658,18 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         "peso_money_build": {"task_type": ["count_total", "make_change"], "context": ["pure"]},
     },
 
+    "number_reading": {
+        "mcq": {"context": ["pure"]},
+        "cloze": {"context": ["pure"]},
+        "true_false": {"context": ["pure"]},
+        "number_line_read": {"context": ["pure"]},
+        "number_line_set": {"context": ["pure"]},
+        "emoji_pictorial": {"context": ["pure"]},
+    },
+
     "rounding": {
         # number line good for showing rounding visually
-        "number_line_read": {"task_type": ["round_to_place"]},
+        "number_line_read": {"task_type": ["round_to_place"], "context": ["pure"]},
     },
 
     # ── Measurement & Geometry ────────────────────────────────────────────────

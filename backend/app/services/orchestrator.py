@@ -118,7 +118,8 @@ class PracticeOrchestrator:
                             mapped_val = int(min_val + val * (max_val - min_val))
                     local_difficulty_profile[axis["name"]] = mapped_val
 
-        # Filter DNAs by requested formatter or allowed_formatters
+        # Filter DNAs by requested formatter or allowed_formatters and variant compatibility
+        from backend.app.practice_gen.compatibility import VARIANTS_BY_DNA, is_variant_supported
         valid_dnas = []
         for d in dna_names:
             available_for_d = get_formatters_for_dna(d)
@@ -126,6 +127,29 @@ class PracticeOrchestrator:
                 continue
             if allowed_formatters and not any(f in available_for_d for f in allowed_formatters):
                 continue
+            
+            # Ensure the DNA is compatible with the requested variant profile
+            dna_compatible = True
+            if formatter:
+                dim_names = {axis["name"] for axis in get_axes_for_concept(d)}
+                for var_name, var_val in local_difficulty_profile.items():
+                    if var_name in dim_names:
+                        continue  # Skip difficulty dimensions
+                    
+                    # If this is a registered variant for the concept, check if it's supported
+                    if var_name in VARIANTS_BY_DNA.get(d, {}):
+                        if not is_variant_supported(d, formatter, var_name, var_val):
+                            dna_compatible = False
+                            break
+                    else:
+                        # DNA doesn't register this variant.
+                        # For context, non-pure values require a word problem/story capability.
+                        if var_name == "context" and var_val != "pure":
+                            dna_compatible = False
+                            break
+            if not dna_compatible:
+                continue
+
             valid_dnas.append(d)
             
         if not valid_dnas:

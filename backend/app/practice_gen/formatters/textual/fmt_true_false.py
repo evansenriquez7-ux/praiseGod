@@ -42,56 +42,74 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             fill_value = ctx.correct_answer
             is_true = True
     
-    # Build equation-style statement based on concept
-    if concept == "addition":
-        a = values.get("a")
-        b = values.get("b")
-        result = values.get("result")
-        if blank_target == "result":
-            statement = f"{a} + {b} = {fill_value}"
-        elif blank_target == "b":
-            statement = f"{a} + {fill_value} = {result}"
-        else:
-            statement = f"{fill_value} + {b} = {result}"
-    elif concept == "subtraction":
-        a = values.get("a")
-        b = values.get("b")
-        result = values.get("result")
-        if blank_target == "result":
-            statement = f"{a} − {b} = {fill_value}"
-        elif blank_target == "b":
-            statement = f"{a} − {fill_value} = {result}"
-        else:
-            statement = f"{fill_value} − {b} = {result}"
-    elif concept == "multiplication":
-        a = values.get("a", values.get("groups"))
-        b = values.get("b", values.get("n"))
-        result = values.get("result", values.get("total"))
-        if blank_target in ("result", "total"):
-            statement = f"{a} × {b} = {fill_value}"
-        else:
-            statement = f"{fill_value} × {b} = {result}"
-    elif concept == "division":
-        dividend = values.get("dividend", values.get("a"))
-        divisor = values.get("divisor", values.get("b"))
-        quotient = values.get("quotient", values.get("result"))
-        if blank_target in ("result", "quotient"):
-            statement = f"{dividend} ÷ {divisor} = {fill_value}"
-        else:
-            statement = f"{fill_value} ÷ {divisor} = {quotient}"
-    elif concept == "number_reading":
-        number = values.get("number")
-        task_type = values.get("task_type", "numeral_to_word")
-        if task_type == "numeral_to_word":
-            statement = f"The number {number} is written in words as '{fill_value}'"
-        elif task_type == "numeral_to_expanded":
-            statement = f"The expanded form of {number} is {fill_value}"
-        else:
-            word = values.get("word_form")
-            statement = f"The number written as '{word}' is {fill_value}"
-    else:
-        # Fallback
+    # Get context variant
+    context_variant = values.get("context")
+    if context_variant is None and ctx.difficulty_profile:
+        context_variant = ctx.difficulty_profile.get("context")
+    if context_variant is None:
+        context_variant = "pure"  # default to pure
+    
+    # Build equation-style statement based on concept and context
+    if context_variant == "word_problem":
         statement = f"{ctx.question_text} The answer is {fill_value}."
+    else:
+        # Pure: use symbolic/equation format
+        if concept == "addition":
+            a = values.get("a")
+            b = values.get("b")
+            result = values.get("result")
+            if blank_target == "result":
+                statement = f"{a} + {b} = {fill_value}"
+            elif blank_target == "b":
+                statement = f"{a} + {fill_value} = {result}"
+            else:
+                statement = f"{fill_value} + {b} = {result}"
+        elif concept == "subtraction":
+            a = values.get("a")
+            b = values.get("b")
+            result = values.get("result")
+            if blank_target == "result":
+                statement = f"{a} − {b} = {fill_value}"
+            elif blank_target == "b":
+                statement = f"{a} − {fill_value} = {result}"
+            else:
+                statement = f"{fill_value} − {b} = {result}"
+        elif concept == "multiplication":
+            a = values.get("a", values.get("groups"))
+            b = values.get("b", values.get("n"))
+            result = values.get("result", values.get("total"))
+            if blank_target in ("result", "total"):
+                statement = f"{a} × {b} = {fill_value}"
+            else:
+                statement = f"{fill_value} × {b} = {result}"
+        elif concept == "division":
+            dividend = values.get("dividend", values.get("a"))
+            divisor = values.get("divisor", values.get("b"))
+            quotient = values.get("quotient", values.get("result"))
+            if blank_target in ("result", "quotient"):
+                statement = f"{dividend} ÷ {divisor} = {fill_value}"
+            else:
+                statement = f"{fill_value} ÷ {divisor} = {quotient}"
+        elif concept == "number_reading":
+            number = values.get("number")
+            task_type = values.get("task_type", "numeral_to_word")
+            if task_type == "numeral_to_word":
+                statement = f"The number {number} is written in words as '{fill_value}'"
+            elif task_type == "numeral_to_expanded":
+                statement = f"The expanded form of {number} is {fill_value}"
+            else:
+                word = values.get("word_form")
+                statement = f"The number written as '{word}' is {fill_value}"
+        elif concept == "comparing_ordering":
+            task_type = values.get("task_type", "compare_pair")
+            a = values.get("a")
+            b = values.get("b")
+            if task_type == "find_between":
+                statement = f"The number {fill_value} is between {a} and {b}"
+            else:
+                statement = f"{a} {fill_value} {b}"
+        else:
+            statement = f"{ctx.question_text} The answer is {fill_value}."
 
     format_data = {
         "statement": statement,

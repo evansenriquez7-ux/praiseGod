@@ -161,8 +161,11 @@ def generate_params(
 
     candidate_pairs = []
 
-    if op_axis == "addition_subtraction":
-        op = rng.choice(["addition", "subtraction"])
+    if op_axis in ("addition_subtraction", "addition", "subtraction"):
+        if op_axis in ("addition", "subtraction"):
+            op = op_axis
+        else:
+            op = rng.choice(["addition", "subtraction"])
         a_hi = max(1, max_result - 1)
         # Generate the full pair space. Pairs like a == b (e.g. "3 + __ = 6")
         # are LEGITIMATE — whether the blanked value coincides with a visible
@@ -182,7 +185,10 @@ def generate_params(
                 b = rng.randint(1, max_result - a)
                 candidate_pairs.append((a, b))
     else:
-        op = rng.choice(["multiplication", "division"])
+        if op_axis in ("multiplication", "division"):
+            op = op_axis
+        else:
+            op = rng.choice(["multiplication", "division"])
         if not tables:
             tables = [2, 3, 4, 5, 10] if grade == 2 else [2, 3, 4, 5, 6, 7, 8, 9]
         # Full table space, incl. factor==1 (×1 identity), factor==b (squares),
@@ -202,7 +208,7 @@ def generate_params(
     from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
     x, y = generate_pair_by_window(candidate_pairs, num_diff_scalar, d=5, rng=rng)
 
-    if op_axis == "addition_subtraction":
+    if op_axis in ("addition_subtraction", "addition", "subtraction"):
         if op == "addition":
             a, b = x, y
             result = a + b
@@ -245,6 +251,16 @@ def generate_params(
         "equation_type": equation_type,
         "context":       context,
     }
+
+    if op in ("multiplication", "division"):
+        if op == "multiplication":
+            result_dict["total"] = result
+            result_dict["groups"] = a
+            result_dict["n"] = b
+        else:
+            result_dict["total"] = a
+            result_dict["groups"] = b
+            result_dict["n"] = result
 
     return result_dict
 

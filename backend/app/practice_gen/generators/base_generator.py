@@ -173,6 +173,8 @@ def generate_context(
     # Always include the current DNA concept in cumulative_concepts
     # This ensures error patterns for the current topic can generate distractors
     cumulative_concepts.add(dna.concept)
+    for vocab in cumulative_vocab:
+        cumulative_concepts.add(vocab)
 
     # ── b. Seeded RNG ─────────────────────────────────────────────────────────
     rng = random.Random(seed)
@@ -208,10 +210,23 @@ def generate_context(
         grade, profile_to_use, seed
     )
 
+    # Add the active operation concept to cumulative_concepts so matching story spines are eligible
+    op = values.get("operation")
+    if op:
+        cumulative_concepts.add(op)
+
     # ── d. Select spine ───────────────────────────────────────────────────────
     spine = None
     spine_id: Optional[str] = None
-    if dna.requires_context:
+    if dna.requires_context and values.get("context", "pure") == "word_problem":
+        blank_pos = values.get("blank_position") or values.get("blank_target")
+        if values.get("operation") in ("multiplication", "division"):
+            blank_map = {"result": "total", "start": "groups", "change": "n"}
+            blank_pos = blank_map.get(blank_pos, blank_pos)
+        elif values.get("operation") in ("addition", "subtraction"):
+            blank_map = {"start": "a", "change": "b", "result": "result"}
+            blank_pos = blank_map.get(blank_pos, blank_pos)
+
         spine = select_spine(
             node_cumulative_concepts=cumulative_concepts,
             grade=grade,
@@ -220,7 +235,7 @@ def generate_context(
             # Keep the narrative's unknown aligned with the DNA's unknown; a
             # result-unknown spine cannot voice a change_unknown (unknown=b)
             # problem without leaking b into the stem.
-            required_blank_target=values.get("blank_target"),
+            required_blank_target=blank_pos,
         )
         if spine is not None:
             spine_id = spine.id
@@ -447,7 +462,11 @@ def _build_symbolic_question(
 
     # ── Counting / ordinal ────────────────────────────────────────────────────
     if concept == "counting":
-        return f"What number comes after {a} when counting by {b}?"
+        direction = values.get("direction", "forward")
+        if direction == "backward":
+            return f"What number comes before {a} when counting by {b}?"
+        else:
+            return f"What number comes after {a} when counting by {b}?"
 
     if concept == "ordinal_numbers":
         n = values.get("n", a)
@@ -659,6 +678,10 @@ def _detect_axes_served(dna: DNA, values: Dict[str, Any]) -> Dict[str, Any]:
 
     a = values.get("a", 0)
     b = values.get("b", 0)
+    if a is None:
+        a = 0
+    if b is None:
+        b = 0
 
     # ── regrouping axis ───────────────────────────────────────────────────────
     if "regrouping" in axes:

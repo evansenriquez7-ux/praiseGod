@@ -164,11 +164,11 @@ def _stem(params: dict, interaction_mode: str) -> str:
     if interaction_mode == "set" or qt == "show_number":
         return f"Fill in the ten-frame to show {params['filled']}."
     if qt == "count_filled":
-        return "How many circles are filled?"
+        return "How many circles are there?"
     if qt == "count_empty":
-        return f"How many circles are empty? (There are {capacity} circles total.)"
+        return f"How many empty boxes are there? (There are {capacity} boxes total.)"
     if qt == "make_ten":
-        return "How many more circles do you need to fill to make 10?"
+        return "How many more circles do you need to add to make 10?"
     return "Answer the question about the ten-frame."
 
 

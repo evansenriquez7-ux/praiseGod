@@ -119,8 +119,15 @@ def generate_params(
 
     num_diff_scalar = diff_scalar
 
-    pattern_type = profile.get("pattern_type", "arithmetic_increasing")
-    ask_type     = profile.get("ask_type", "next_term")
+    pattern_type = profile.get("pattern_type", "growing")
+    if pattern_type == "growing":
+        pattern_type = "arithmetic_increasing"
+
+    ask_type = profile.get("ask_type", "next")
+    if ask_type == "next":
+        ask_type = "next_term"
+    elif ask_type == "missing":
+        ask_type = "missing_middle"
 
     seq_length = 6  # always show 6-term window
 
@@ -203,6 +210,7 @@ def generate_params(
         "first":             first_val,
         "position":          position,
         "pattern_kind":      pattern_type,
+        "given_values":      {f"term_{i}": val for i, val in enumerate(visible)},
     }
 
 
