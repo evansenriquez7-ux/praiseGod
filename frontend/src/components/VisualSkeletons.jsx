@@ -3081,6 +3081,17 @@ export function EmojiPictorialInteractive({ params, disabled }) {
     );
   }
 
+  if (operation === 'counting') {
+    const displayA = renderEmojiNumber(group_a, emoji) || <span style={{ opacity: 0.3 }}>Empty</span>;
+    return (
+      <div style={{ padding: '20px', textAlign: 'center' }}>
+        <div style={{ fontSize: '48px', letterSpacing: '4px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px' }}>
+          {displayA}
+        </div>
+      </div>
+    );
+  }
+
   // Addition layouts
   const displayA = renderEmojiNumber(group_a, emoji) || <span style={{ opacity: 0.3 }}>Empty</span>;
   const displayB = renderEmojiNumber(group_b, emoji) || <span style={{ opacity: 0.3 }}>Empty</span>;

@@ -69,7 +69,7 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
     elif concept == "counting":
         seq = values.get("sequence") or []
         if seq:
-            return ", ".join(str(x) for x in seq) + ", ___"
+            return f"Find the missing number: {', '.join(str(x) for x in seq)}, ___"
         if ctx.question_text_with_blank:
             return ctx.question_text_with_blank
         raise ValueError("Formatter 'cloze' has no sequence for counting.")
