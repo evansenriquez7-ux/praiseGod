@@ -1,26 +1,30 @@
 # Metamorphic Testing Pipeline & Checklist Compliance Auditor
 
-Praise God! This document serves as the master operational guide for any agentic coder building, modifying, or auditing practice problem generators (PGs) in this repository. 
+> **Celebration Rule**: "Praise God" is our celebration catchphrase when a node passes the audit or a category drops to zero!
 
-Our testing philosophy is built on **failing fast and loud** rather than silent defaulting. This document outlines the architecture, checks, execution CLI, and troubleshooting steps for the metamorphic testing pipeline.
+This document serves as the master operational guide for any agentic coder building, modifying, or auditing practice problem generators (PGs) in this repository. 
 
----
-
-## 1. Core Philosophy
-
-Unlike standard unit testing, which only verifies that code runs without raising exceptions, our testing pipeline enforces **metamorphic testing**. It validates the *relationship* between generated outputs across toggled inputs (variants, difficulty scales, and formatters). 
-
-If a PG falls back silently to a default setting or fails to alter its mathematical presentation when parameters change, the pipeline flags a violation immediately.
+Our testing philosophy is built on **failing fast and loud** rather than silent defaulting. When the auditor script runs, it verifies that no code degradations, zero-sensitivity mappings, or answer leaks escape.
 
 ---
 
-## 2. The Core Verification Checkpoints
+## 1. Pipeline Layout & Architecture
 
-The checklist auditor ([exhaustive_checklist_auditor.py](file:///Users/enrichmentcap/Documents/antigravity/ccmed/tests/exhaustive_checklist_auditor.py)) runs four distinct metamorphic checks across all generated question variants:
+The testing framework consists of three automated pipeline components under the `tests/` directory:
+
+| Component File | CLI Command | Purpose & Checks |
+|---|---|---|
+| **Exhaustive Checklist Auditor**<br>[exhaustive_checklist_auditor.py](file:///Users/enrichmentcap/Documents/antigravity/ccmed/tests/exhaustive_checklist_auditor.py) | `bash tests/run_checklist_audit.sh` | Enumerates every `(node, profile, formatter)` allowed by `compatibility.py` and checks boundaries, operator sensitivity, formatting rules, and semantic leaks. |
+| **Frontend Contract Auditor**<br>[frontend_contract_auditor.py](file:///Users/enrichmentcap/Documents/antigravity/ccmed/tests/frontend_contract_auditor.py) | `PYTHONPATH=. .venv/bin/python -m tests.frontend_contract_auditor` | Evaluates React render-schema payload contracts: checks that required `visual_params` keys are present, improper fraction units are calculated correctly, and answer fields don't leak to client payload parameters. |
+| **Grader Round-Trip Auditor**<br>[grader_roundtrip_auditor.py](file:///Users/enrichmentcap/Documents/antigravity/ccmed/tests/grader_roundtrip_auditor.py) | `PYTHONPATH=. .venv/bin/python -m tests.grader_roundtrip_auditor` | Exercises route paths via FastAPI's `TestClient`. Checks that portal, lab v1, and lab v2 grader routes agree that correct student submissions are marked correct. |
+
+---
+
+## 2. Core Metamorphic Checkpoints
 
 ### A. Strict Scalar Mapping (Boundary Checks)
 - **Rule**: A difficulty scalar of `0.0` must map strictly to the easiest curriculum bounds, and `1.0` must map strictly to the hardest bounds.
-- **Verification**: The auditor generates problems at `0.0`, `0.5`, and `1.0`. It asserts that the output values are bounded correctly inside the difficulty windows without any overlap or out-of-bounds parameter leakage.
+- **Verification**: The auditor generates problems at `0.0`, `0.5`, and `1.0`. It asserts that the output values are bounded correctly inside the difficulty windows without any overlap or out-of-bounds parameter leakage (with a strict $\pm 1$ rounding tolerance due to lossy log-linear mappings).
 
 ### B. Metamorphic Sensitivity Checks
 - **Rule**: Changing a conceptual variant (e.g. context, operator, blank position) must result in a distinct question stem.
@@ -36,40 +40,34 @@ The checklist auditor ([exhaustive_checklist_auditor.py](file:///Users/enrichmen
 
 ---
 
-## 3. CLI Execution Guide
+## 3. CLI Execution Reference Table
 
-### Run Full Curriculum Audit
-To audit all 151 curriculum nodes across Grade 1 to 3 (which checks over 1.5 million problem variants):
-```bash
-bash tests/run_checklist_audit.sh
-```
-
-### Run Targeted Node Audits
-To debug a specific set of nodes during development:
-```bash
-bash tests/run_checklist_audit.sh --node-ids mat_g1_na_q1_6,mat_g3_na_q4_2,mat_g3_dp_q3_4
-```
-
-### Command Location
-The auditor is run via the wrapper shell script [run_checklist_audit.sh](file:///Users/enrichmentcap/Documents/antigravity/ccmed/tests/run_checklist_audit.sh) which sets up the proper Python environment and invokes the underlying runner.
+| Goal | Command |
+|---|---|
+| **Run Full Checklist Audit** (Parallel) | `bash tests/run_checklist_audit.sh` |
+| **Run Targeted Checklist Audit** (Node list) | `bash tests/run_checklist_audit.sh --node-ids mat_g1_na_q1_6,mat_g3_na_q4_2` |
+| **Run Frontend Contract Audit** | `PYTHONPATH=. .venv/bin/python -m tests.frontend_contract_auditor` |
+| **Run Grader Round-Trip Audit** | `PYTHONPATH=. .venv/bin/python -m tests.grader_roundtrip_auditor` |
+| **Fast Pytest suite** (Skips slow full-audit) | `PYTHONPATH=. .venv/bin/python -m pytest tests/unit/ -m "not slow"` |
+| **Full Pytest suite** | `PYTHONPATH=. .venv/bin/python -m pytest tests/unit/` |
+| **Clean Up DB Grader Test Students** | `PYTHONPATH=. .venv/bin/python -c 'from backend.app.database import SessionLocal; from backend.app.models import StudentProfile; db = SessionLocal(); deleted = db.query(StudentProfile).filter(StudentProfile.name.like("GraderAudit_%")).delete(synchronize_session=False); db.commit(); print(f"Deleted {deleted} test students."); db.close()'` |
 
 ---
 
-## 4. Diagnostics & Troubleshooting Guide
+## 4. Diagnostics & Troubleshooting Traps
 
-When the auditor flags a compliance failure, follow these step-by-step diagnostic paths to find the root cause:
+When running the audits, keep these core troubleshooting tips in mind:
 
-### Case A: Sensitivity Violation on `context` (Stem did not change)
-* **Symptom**: Both `"pure"` and `"word_problem"` contexts generated the exact same symbolic equation stem.
-* **Root Cause 1**: The DNA registers `requires_context=False`. Story spines will not be selected unless `requires_context=True` is set on the DNA object.
-* **Root Cause 2**: Story spine lookup returned `None`. This happens when `cumulative_concepts` in the node doesn't match the concepts required by the story spines, or the `blank_position` is not mapped to the target fields inside [base_generator.py](file:///Users/enrichmentcap/Documents/antigravity/ccmed/backend/app/practice_gen/generators/base_generator.py) (e.g., `"start"` must map to `"a"`, `"change"` to `"b"`, `"result"` to `"total"`, etc.).
+### Trap 1: Pickle Errors under Process Worker Spawns
+- **Issue**: Parallel execution worker crashes with pickle exceptions.
+- **Reason**: The process pool worker function `_audit_node()` must remain a module-level function. It cannot be wrapped in a closure or nested function because Python's `spawn` start method cannot pickle closures.
 
-### Case B: Sensitivity Violation on `operation` (Operator did not change)
-* **Symptom**: Toggling `"addition"` vs `"subtraction"` (or `"multiplication"` vs `"division"`) produced identical parameter sets.
-* **Root Cause**: The active DNA's `generate_params()` logic has a hardcoded operator or locks parameters without reading the selected variant from the profile. Inspect the DNA file's `generate_params` loop.
+### Trap 2: Bare Python Invocation vs. Shell Wrapper
+- **Issue**: Running the script with bare `python` outputs `ModuleNotFoundError: No module named 'fastapi'`.
+- **Reason**: The virtual environment wrapper script matches library namespaces for FastAPI/SQLAlchemy. Always run using the `.venv/bin/python` binary, `PYTHONPATH=.`, or the wrapper scripts.
 
-### Case C: Formatter Compat Crash
-* **Symptom**: Auditor exits with a `ValueError` saying `Formatter 'x' is not supported by any DNA for node 'y'`.
-* **Root Cause**: A multi-DNA node has registered a formatter that is incompatible with the variants enabled by one of its DNAs. Restrain the formatter to `"context": ["pure"]` in `FORMATTER_VARIANT_SUPPORT` inside [compatibility.py](file:///Users/enrichmentcap/Documents/antigravity/ccmed/backend/app/practice_gen/compatibility.py).
+### Trap 3: Runaway Worker Processes
+- **Issue**: CPU cores sit at 100% indefinitely on a single node.
+- **Reason**: Infinite loop inside a DNA's parameter generation loop (e.g. subtraction min/max condition that can never be met for a specific scalar). Inspect the log outputs to find the active node, and fix the bounds selection logic in the DNA module.
 
 ---
