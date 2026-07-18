@@ -3433,6 +3433,32 @@ export function FractionModelInteractive({ params, onAnswer, disabled }) {
     }
   }, [clickedParts, onAnswer, disabled, den]);
 
+  if (params.operation === 'add' || params.operation === 'subtract' || params.operation === 'add_subtract') {
+    const opSign = params.operation === 'subtract' ? '-' : '+';
+
+    // Render 3 models: A {opSign} B = Result. Operands are always read-only —
+    // only the result model is interactive (that's what the student answers).
+    const aParams = { ...params, operation: undefined, numerator: params.a_numerator, denominator: params.a_denominator, interaction_mode: 'read' };
+    const bParams = { ...params, operation: undefined, numerator: params.b_numerator, denominator: params.b_denominator, interaction_mode: 'read' };
+    const resParams = { ...params, operation: undefined }; // inherits interaction_mode
+
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px', width: '100%', flexWrap: 'wrap' }}>
+        <div style={{ flex: '1 1 auto', minWidth: '150px' }}>
+          <FractionModelInteractive params={aParams} disabled={true} />
+        </div>
+        <div style={{ fontSize: '3rem', fontWeight: 'bold', color: 'white' }}>{opSign}</div>
+        <div style={{ flex: '1 1 auto', minWidth: '150px' }}>
+          <FractionModelInteractive params={bParams} disabled={true} />
+        </div>
+        <div style={{ fontSize: '3rem', fontWeight: 'bold', color: 'white' }}>=</div>
+        <div style={{ flex: '1 1 auto', minWidth: '150px' }}>
+          <FractionModelInteractive params={resParams} onAnswer={onAnswer} disabled={disabled} />
+        </div>
+      </div>
+    );
+  }
+
   const isClickable = onAnswer && !disabled;
 
   if (modelType === 'number_line') {

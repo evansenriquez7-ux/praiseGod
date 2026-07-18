@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-07-19)
 
 ## Corpus Check
-- 427 files · ~380,267 words
+- 427 files · ~380,716 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2846 nodes · 4612 edges · 219 communities (208 shown, 11 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 86 edges (avg confidence: 0.57)
+- 2846 nodes · 4610 edges · 221 communities (209 shown, 12 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 85 edges (avg confidence: 0.56)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `52972124`
+- Built from commit: `f27345ea`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -166,6 +166,7 @@
 - [[_COMMUNITY_Community 148|Community 148]]
 - [[_COMMUNITY_Community 149|Community 149]]
 - [[_COMMUNITY_Community 150|Community 150]]
+- [[_COMMUNITY_SKILL|SKILL.md]]
 - [[_COMMUNITY_Community 152|Community 152]]
 - [[_COMMUNITY_Community 153|Community 153]]
 - [[_COMMUNITY_Community 154|Community 154]]
@@ -218,11 +219,13 @@
 - [[_COMMUNITY_5. Common Pitfalls & Solutions|5. Common Pitfalls & Solutions]]
 - [[_COMMUNITY_CCMed — Adaptive K-12 Mastery Engine|CCMed — Adaptive K-12 Mastery Engine]]
 - [[_COMMUNITY_AuditHarnessError|AuditHarnessError]]
+- [[_COMMUNITY_Queries|Queries]]
+- [[_COMMUNITY_Workflow|Workflow]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `QuestionContext` - 85 edges
 2. `FormattedProblem` - 75 edges
-3. `DNA` - 57 edges
+3. `DNA` - 55 edges
 4. `augment_distractors()` - 49 edges
 5. `VocabGated` - 36 edges
 6. `get_cache()` - 32 edges
@@ -234,19 +237,19 @@
 ## Surprising Connections (you probably didn't know these)
 - `main()` --references--> `path`  [INFERRED]
   .agents/skills/xcode-project-setup/scripts/xcode_spm_setup/Sources/main.swift → frontend/run_servers_and_test.js
+- `_audit_node()` --indirect_call--> `CompetencyConfiguration`  [INFERRED]
+  tests/frontend_contract_auditor.py → backend/app/models.py
+- `_audit_node_grader()` --indirect_call--> `CompetencyConfiguration`  [INFERRED]
+  tests/grader_roundtrip_auditor.py → backend/app/models.py
 - `_audit_node()` --indirect_call--> `FormattedProblem`  [INFERRED]
   tests/frontend_contract_auditor.py → backend/app/practice_gen/dna/base.py
 - `validate_kg_monotonicity()` --indirect_call--> `chronological_sort_key()`  [INFERRED]
   backend/app/practice_gen/validation/validate_compat.py → scripts/rebuild_knowledge_graph.py
-- `AuditHarnessError` --uses--> `PracticeOrchestrator`  [INFERRED]
-  tests/exhaustive_checklist_auditor.py → backend/app/services/orchestrator.py
-- `TestFormatterSupportsProfileGate1` --uses--> `PracticeOrchestrator`  [INFERRED]
-  tests/unit/test_formatter_supports_profile.py → backend/app/services/orchestrator.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (219 total, 11 thin omitted)
+## Communities (221 total, 12 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
@@ -282,7 +285,7 @@ Nodes (38): _gen_g3_dp_q3_bar_graphs(), _gen_g3_dp_q3_probability(), _gen_g3_mg_
 
 ### Community 8 - "Community 8"
 Cohesion: 0.09
-Nodes (45): get_db(), FastAPI dependency that yields a database session.     Guarantees session closur, SessionLocal(), _combined_interests(), Merge parent-set interest_tags and student-set student_interest_tags into a, Background task to pre-generate questions into the cache.     Uses parallel exec, replenish_question_cache(), matatag_loader.py ----------------- Loads MATATAG (Philippine K-10 Math Curricul (+37 more)
+Nodes (44): get_db(), FastAPI dependency that yields a database session.     Guarantees session closur, SessionLocal(), _combined_interests(), Merge parent-set interest_tags and student-set student_interest_tags into a, Background task to pre-generate questions into the cache.     Uses parallel exec, replenish_question_cache(), matatag_loader.py ----------------- Loads MATATAG (Philippine K-10 Math Curricul (+36 more)
 
 ### Community 9 - "Community 9"
 Cohesion: 0.13
@@ -317,8 +320,8 @@ Cohesion: 0.17
 Nodes (17): get_node(), Return the raw knowledge-graph node dict for node_id, or None.      Args:, load_dna(), Practice Generation — Validation Manifest  Central source of truth for the valid, Import the DNA module and return its DNA instance.     Raises ImportError if loa, lint_all_vocab_gated_instances(), Practice Generation — Vocabulary & Concept Constraint Validation  Verifies that, Verify that distractors don't presuppose unknown concepts.      For each distrac (+9 more)
 
 ### Community 17 - "Community 17"
-Cohesion: 0.11
-Nodes (28): CompetencyConfiguration, get_pipeline_status(), Any, Return a health-check dict for the pipeline.      Checks:       - Whether each o, Generate a single practice problem and return it as a dict.      This is the sin, Generate a batch of varied practice problems and return them as dicts.      Args, run(), run_batch() (+20 more)
+Cohesion: 0.26
+Nodes (12): _all_node_ids(), _audit_node(), check_payload(), _leak_keys_for(), main(), _parse_fraction_str(), Any, Frontend render-schema contract auditor.  Catches the class of bugs the user-fla (+4 more)
 
 ### Community 18 - "Community 18"
 Cohesion: 0.25
@@ -337,8 +340,8 @@ Cohesion: 0.12
 Nodes (15): 12. Database Model, 15. Data Dependencies, 16. File Structure, 19. Open Questions (To Resolve During Implementation), 1. Philosophy, 2. Core Architecture, 3. Content Types, 9. Runtime Generation Pipeline (+7 more)
 
 ### Community 22 - "Community 22"
-Cohesion: 0.07
-Nodes (26): Aliases, Basic Query, Contents, Create, Create with Server Values, Delete, Embedded Queries, Expression Operators (Compare with Server Values) (+18 more)
+Cohesion: 0.11
+Nodes (18): Contents, Create, Create with Server Values, Delete, Embedded Queries, Filtered Updates/Deletes (User-Owned), Generated Fields, Key Scalars (+10 more)
 
 ### Community 23 - "Community 23"
 Cohesion: 0.17
@@ -509,8 +512,8 @@ Cohesion: 0.14
 Nodes (14): 1. Generate Firestore Rules, 3. Strict Path and Relationship Scoping, 4. Secure Counter Updates, 5. **CRITICAL** Ensure Application Validity, Advanced Validation for Business Logic, Critical Constraints, Critical Directives for Secure Generation, **CRITICAL** RBAC Guidelines (+6 more)
 
 ### Community 65 - "Community 65"
-Cohesion: 0.15
-Nodes (12): Blog with Permissions, E-Commerce Store, Examples, Movie Review App, Mutations, Operations, Operations with Role Checks, Queries (+4 more)
+Cohesion: 0.10
+Nodes (20): Advanced aggregation with RANK, Advanced CTE with upserts (atomic get-or-create), Basic SELECT with field aliasing, Basic UPDATE, Blog with Permissions, E-Commerce Store, Examples, Movie Review App (+12 more)
 
 ### Community 66 - "Community 66"
 Cohesion: 0.15
@@ -541,7 +544,7 @@ Cohesion: 0.17
 Nodes (11): 1. Re-running `flutterfire configure` Upon Renaming, 2. Platform-Specific Build Requirements, 3. Web CORS Best Practices, 4. Elaborating on `WidgetsFlutterBinding.ensureInitialized()`, Flutter & Firebase Setup Guide, Prerequisites, Step 1: Create a Flutter Project, Step 2: Configure Firebase (+3 more)
 
 ### Community 73 - "Community 73"
-Cohesion: 0.17
+Cohesion: 0.15
 Nodes (12): Basic Query, Best Practices for Agents, Calling Operations, Client-Side Caching, Data Type Mapping Reference, Flutter SDK, Imports, Initialization (+4 more)
 
 ### Community 74 - "Community 74"
@@ -689,7 +692,7 @@ Cohesion: 0.22
 Nodes (8): 1. Create a Firebase Project and App (Automated), 2. Installation (Automated via Swift Package Manager CLI), 3. Initialization, AppDelegate (Traditional / UIKit), ⛔️ CRITICAL RULE: INITIALIZATION ORDER ⛔️, ⛔️ CRITICAL RULE: STATE MANAGEMENT (OBSERVATION VS COMBINE) ⛔️, Firebase iOS Setup Guide, SwiftUI (Modern - SAFE PATTERN)
 
 ### Community 110 - "Community 110"
-Cohesion: 0.14
+Cohesion: 0.15
 Nodes (8): Core Agent Constraints, Mutation Fields (DML), Native SQL Operations, Native SQL Root Fields, PostgreSQL Extensions, Query Fields (Read-Only), ⚠️ Security: Stored Procedures & Dynamic SQL, Syntax rules & limitations
 
 ### Community 111 - "Community 111"
@@ -742,7 +745,7 @@ Nodes (7): 1. Configure and Verify Firebase MCP Server, 1. Install and Verify Fi
 
 ### Community 123 - "Community 123"
 Cohesion: 0.07
-Nodes (30): get_intro_status(), get_matatag_difficulty_axes(), get_matatag_lab_interests(), get_matatag_progress(), get_node_config(), LabV2ConfigSaveRequest, LabV2GenerateRequest, LabV2SubmitRequest (+22 more)
+Nodes (32): CompetencyConfiguration, _get_available_formats(), get_intro_status(), get_matatag_difficulty_axes(), get_matatag_lab_interests(), get_matatag_nodes(), get_matatag_progress(), get_node_config() (+24 more)
 
 ### Community 124 - "Community 124"
 Cohesion: 0.25
@@ -825,8 +828,8 @@ Cohesion: 0.33
 Nodes (5): 1. Create a Firebase Project and App, 2. Installation, 3. Initialization, 4. Using Services, Firebase Web Setup Guide
 
 ### Community 144 - "Community 144"
-Cohesion: 0.13
-Nodes (14): 1. Generate Firestore Rules, 3. Strict Path and Relationship Scoping, 4. Secure Counter Updates, 5. **CRITICAL** Ensure Application Validity, Advanced Validation for Business Logic, Critical Constraints, Critical Directives for Secure Generation, **CRITICAL** RBAC Guidelines (+6 more)
+Cohesion: 0.33
+Nodes (6): 3. Strict Path and Relationship Scoping, 4. Secure Counter Updates, 5. **CRITICAL** Ensure Application Validity, Advanced Validation for Business Logic, Phase-3: Devil's Advocate Attack, Phase-4: Syntactic Validation
 
 ### Community 145 - "Community 145"
 Cohesion: 0.14
@@ -921,8 +924,8 @@ Cohesion: 0.22
 Nodes (9): check_checklist_compliance(), Any, Run the checklist audit on the given nodes (default: all mat_g     nodes) and re, CLI entry point: runs the audit, writes JSON reports, exits 0/1.      Thin wrapp, run_audit(), test_checklist_audit.py ======================= Slow pytest entry that runs the, test_full_audit_zero_violations(), test_parallel_audit.py ======================= Verifies that run_audit(parallel= (+1 more)
 
 ### Community 191 - "Native SQL Examples"
-Cohesion: 0.07
-Nodes (45): is_variant_available_at(), Check if a variant is available at a specific grade/quarter per curriculum., find_node_id(), get_all_node_ids(), get_node_dnas(), get_node_formatters(), get_node_info(), Practice Generation — Node Registry ======================================  Maps (+37 more)
+Cohesion: 0.06
+Nodes (52): is_variant_available_at(), Check if a variant is available at a specific grade/quarter per curriculum., get_pipeline_status(), Any, Practice Generation — Pipeline Coordinator =====================================, Return a health-check dict for the pipeline.      Checks:       - Whether each o, Generate a single practice problem and return it as a dict.      This is the sin, Generate a batch of varied practice problems and return them as dicts.      Args (+44 more)
 
 ### Community 192 - "counting.py"
 Cohesion: 0.20
@@ -949,12 +952,12 @@ Cohesion: 0.22
 Nodes (8): 1. Competency Fulfillment, 2. Comprehensive Coverage, 3. Cognitive Capacity, 4. Variant Comprehensiveness, 5. Competency Alignment, 6. Scale Appropriateness, Judgment Checklist Items, PG Pipeline Judgment Guide
 
 ### Community 199 - "fmt_ordering.py"
-Cohesion: 0.25
-Nodes (8): Advanced aggregation with RANK, Advanced CTE with upserts (atomic get-or-create), Basic SELECT with field aliasing, Basic UPDATE, Multi-statement Transactions, Native SQL Examples, UPDATE with RETURNING and Auth Context, Use of extensions (e.g. PostGIS for geospatial data)
+Cohesion: 0.39
+Nodes (8): _all_node_ids(), _audit_node_grader(), _emit_correct(), main(), Any, Frontend grader-contract round-trip auditor.  Catches the class of bugs where th, Return the known-correct submission shape per answer_collection., _summarize()
 
 ### Community 200 - "_combined_interests"
 Cohesion: 0.25
-Nodes (7): Content Rules (student-facing text, DNA files, generators), Definition of Done (memorize this), Engineering Protocols, File Management, Mission, Reporting Style, Terminology
+Nodes (8): CLAUDE.md, Content Rules (student-facing text, DNA files, generators), Definition of Done (memorize this), Engineering Protocols, File Management, Mission, Reporting Style, Terminology
 
 ### Community 201 - "PG Pipeline Test Infrastructure"
 Cohesion: 0.40
@@ -1016,20 +1019,28 @@ Nodes (4): CCMed — Adaptive K-12 Mastery Engine, Definition of done (pg pipeli
 Cohesion: 0.50
 Nodes (4): AuditHarnessError, _import_harness_dependencies(), Raised when the audit harness itself cannot run (e.g. transitive import     fail, Import every module the auditor depends on. Any failure here is a     HARNESS pr
 
+### Community 219 - "Queries"
+Cohesion: 0.25
+Nodes (8): Aliases, Basic Query, Expression Operators (Compare with Server Values), Filter Operators, List with Filtering, Logical Operators, Queries, Relational Queries
+
+### Community 220 - "Workflow"
+Cohesion: 0.33
+Nodes (6): Critical Directives for Secure Generation, **CRITICAL** RBAC Guidelines, Mandatory: User Data Separation (The "No Mixed Content" Rule), Phase-1: Codebase Analysis, Phase-2: Security Rules Generation, Workflow
+
 ## Knowledge Gaps
 - **811 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+806 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `FormattedProblem` connect `Community 99` to `Community 4`, `Community 8`, `Community 13`, `Community 14`, `Community 17`, `Community 153`, `Community 41`, `Community 50`, `Community 51`, `Spine`, `SKILL.md`, `get_node_competency_bounds`, `generator.py`, `Community 59`, `Community 60`, `get_gemini_models`, `fmt_ordering.py`, `Community 70`, `Community 77`, `Community 78`, `fmt_array_grid.py`, `Community 79`, `Community 90`, `Community 92`, `Community 93`, `Community 94`, `Community 95`, `Community 104`, `validate_compat.py`, `Community 118`?**
   _High betweenness centrality (0.050) - this node is a cross-community bridge._
-- **Why does `DNA` connect `time_reading.py` to `Community 3`, `Community 11`, `Community 14`, `Community 16`, `Community 18`, `Community 24`, `Community 26`, `mastery_drill.py`, `counting.py`, `Community 75`, `Section 5: Grader-contract round-trip`, `Section 6: Lab → portal config propagation`, `Community 86`, `Community 87`, `Community 89`, `Community 99`, `Community 100`, `Community 101`, `Community 103`, `Community 117`, `Community 127`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
 - **Why does `QuestionContext` connect `Community 50` to `Community 3`, `Community 13`, `Community 14`, `Community 16`, `Community 153`, `Community 41`, `Community 51`, `Spine`, `SKILL.md`, `Community 59`, `generator.py`, `Community 60`, `get_gemini_models`, `fmt_ordering.py`, `Community 70`, `Community 77`, `Community 78`, `fmt_array_grid.py`, `Community 79`, `Community 90`, `Community 92`, `Community 93`, `Community 94`, `Community 95`, `Community 99`, `Community 104`, `Community 118`?**
   _High betweenness centrality (0.026) - this node is a cross-community bridge._
+- **Why does `DNA` connect `time_reading.py` to `Community 3`, `Community 11`, `Community 14`, `Community 16`, `Community 18`, `Community 24`, `Community 26`, `mastery_drill.py`, `counting.py`, `Community 75`, `Section 5: Grader-contract round-trip`, `Section 6: Lab → portal config propagation`, `Community 86`, `Community 87`, `Community 89`, `Community 99`, `Community 100`, `Community 101`, `Community 103`, `Community 117`, `Community 127`?**
+  _High betweenness centrality (0.024) - this node is a cross-community bridge._
 - **What connects `graphify`, `PackageDescription`, `Foundation` to the rest of the system?**
   _1355 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**

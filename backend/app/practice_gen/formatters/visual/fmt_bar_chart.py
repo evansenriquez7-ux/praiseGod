@@ -354,14 +354,20 @@ def format_bar_chart(
                 if len(distractor_vals) == 3:
                     break
             scale = vp.get("scale", 1)
-            offsets_steps = [1, 2, 3, -1, -2]
-            for off in offsets_steps:
-                if len(distractor_vals) >= 3:
-                    break
-                candidate = correct_value + off * scale
-                if candidate >= 0 and candidate not in seen:
-                    seen.add(candidate)
-                    distractor_vals.append(candidate)
+            offset_mult = 1
+            while len(distractor_vals) < 3 and offset_mult <= 20:
+                for sign in (1, -1):
+                    if len(distractor_vals) >= 3:
+                        break
+                    candidate = correct_value + (offset_mult * sign * scale)
+                    if candidate >= 0 and candidate not in seen:
+                        seen.add(candidate)
+                        distractor_vals.append(candidate)
+                offset_mult += 1
+            if len(distractor_vals) < 3:
+                raise ValueError(
+                    f"Bar chart MCQ formatter requires 3 distractors, but only found {len(distractor_vals)} for correct_value={correct_value}."
+                )
 
         all_opts = [correct_value] + distractor_vals[:3]
         rng.shuffle(all_opts)

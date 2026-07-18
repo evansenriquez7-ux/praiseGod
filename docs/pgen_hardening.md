@@ -154,4 +154,4 @@ A phase without verbatim command output in this log is **not complete**, regardl
 ## Explicit non-goals
 - Do not redesign difficulty dimensions, variants, or formatters. This plan verifies existing contracts; it does not change pedagogy.
 - Do not add new formatters/variants "while you're in there."
-- Do not modify `pgen_checklist.md` or other docs — that is handled by `DOCS_REMEDIATION.md`.
+- Do not modify `pgen_checklist.md` or other docs — that is handled by `doc_rem.md`.

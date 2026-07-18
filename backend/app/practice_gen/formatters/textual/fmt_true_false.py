@@ -38,9 +38,17 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
         if distractors:
             fill_value = rng.choice(distractors)
         else:
-            # No distractors available - make it True
-            fill_value = ctx.correct_answer
-            is_true = True
+            if isinstance(ctx.correct_answer, (int, float)):
+                # Force a positive offset when correct_answer is small enough
+                # that a negative offset would clamp back to it at 0 (e.g.
+                # correct_answer=0, offset=-3 -> 0), which would silently
+                # turn a "False" statement into a numerically true one.
+                sign = 1 if ctx.correct_answer < 10 else rng.choice([-1, 1])
+                offset = rng.randint(1, 10) * sign
+                fill_value = ctx.correct_answer + offset
+                if fill_value < 0: fill_value = 0
+            else:
+                fill_value = f"not {ctx.correct_answer}"
     
     # Get context variant
     context_variant = values.get("context")
@@ -108,6 +116,18 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 statement = f"The number {fill_value} is between {a} and {b}"
             else:
                 statement = f"{a} {fill_value} {b}"
+        elif concept == "place_value" and values.get("task_type") == "identify_value":
+            # Only "identify_value" has a statement worth specializing: the DNA's
+            # blank_target is always value_at_position (see place_value.py), so
+            # for other task_types (identify_place/compose/decompose) fill_value
+            # wouldn't correspond to what a task-specific phrasing implies —
+            # fall through to the generic statement below instead.
+            _place_names = ["ones", "tens", "hundreds", "thousands"]
+            number = values.get("number")
+            digit = values.get("digit_at_position")
+            pos = values.get("target_digit_position", 0)
+            place = _place_names[pos] if pos < len(_place_names) else f"10^{pos}"
+            statement = f"In the number {number}, the value of the digit {digit} in the {place} place is {fill_value}"
         else:
             statement = f"{ctx.question_text} The answer is {fill_value}."
 

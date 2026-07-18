@@ -291,12 +291,6 @@ def _get_dna_instance(dna_name: str):
     attr = _DNA_INSTANCE_ATTR.get(dna_name)
     if attr and hasattr(module, attr):
         return getattr(module, attr)
-    # Fallback: scan module for DNA instances
-    from .dna.base import DNA
-    for name in dir(module):
-        obj = getattr(module, name)
-        if isinstance(obj, DNA):
-            return obj
     raise ImportError(f"No DNA instance found in module for concept '{dna_name}'")
 
 
@@ -501,9 +495,7 @@ def apply_experience(
         total_steps = (config or {}).get("total_steps", 1)
         return wrap_scaffolded(problem, step_index, total_steps)
 
-    # Unknown experience — degrade to standard
-    from .experiences.standard import wrap_standard
-    return wrap_standard(problem)
+    raise ValueError(f"Unknown experience requested: '{experience}'")
 
 
 def generate_batch(
@@ -545,7 +537,7 @@ def generate_batch(
                 seen.add(fmt)
                 available_formatters.append(fmt)
     if not available_formatters:
-        available_formatters = ["mcq"]
+        raise ValueError(f"No valid formatters found for node '{node_id}' across any of its DNAs")
 
     problems: List[FormattedProblem] = []
     last_formatter: Optional[str] = None
@@ -593,7 +585,9 @@ def to_legacy_dict(problem: FormattedProblem) -> Dict[str, Any]:
     # Map question_mode based on visual type for proper grading in main.py
     # If the visual is in read mode, use its answer collection so the frontend renders MCQ or inputs
     if problem.interaction_mode == "read" or not problem.is_visual:
-        question_mode = problem.answer_collection or "mcq"
+        if problem.answer_collection is None:
+            raise ValueError(f"Legacy dict conversion failed: problem {problem.problem_id} has no answer_collection defined")
+        question_mode = problem.answer_collection
     else:
         question_mode = problem.interaction_mode
 
@@ -623,7 +617,7 @@ def to_legacy_dict(problem: FormattedProblem) -> Dict[str, Any]:
                     break
         if correct_key is None:
             if problem.answer_collection == "mcq":
-                correct_key = "A"
+                raise ValueError(f"Problem {problem.problem_id} is missing a correct_key or an option with is_correct=True")
             else:
                 if isinstance(problem.correct_answer, dict) and "correct_value" in problem.correct_answer:
                     # For error_detect, correct_key might just need to be the actual value or a JSON string,

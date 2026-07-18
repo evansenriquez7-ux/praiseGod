@@ -842,8 +842,7 @@ def get_practice_question_batch(
         return batch
         
     except Exception as _e:
-        print(f"[Batch Pipeline Error] Node {q1.skill_id} failed: {_e}. Falling back to single q1.")
-        return [q1]
+        raise HTTPException(status_code=500, detail=f"Batch generation failed for node {q1.skill_id}: {str(_e)}")
 
 
 @router.post("/api/practice/placement/skip")

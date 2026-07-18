@@ -45,8 +45,8 @@ def _numeric_bounds(correct_answer, distractors) -> tuple:
             lo = lo - max(1, abs(lo) * 0.5)
             hi = hi + max(1, abs(hi) * 0.5)
         return lo, hi
-    except (TypeError, ValueError):
-        return 0, 100
+    except (TypeError, ValueError) as e:
+        raise ValueError(f"numeric_input formatter cannot process non-numeric candidates: {candidates}") from e
 
 
 def format_numeric_input(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:

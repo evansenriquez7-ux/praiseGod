@@ -617,8 +617,8 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     "place_value": {
         "include_zeros": ["yes", "no"],
         # blocks work best for compose/decompose
-        "place_value_blocks_read": {"task_type": ["identify_value", "compose"], "context": ["pure"]},
-        "place_value_blocks_set": {"task_type": ["compose", "decompose"], "context": ["pure"]},
+        "place_value_blocks_read": {"task_type": ["identify_value", "compose", "identify_place"], "context": ["pure"]},
+        "place_value_blocks_set": {"task_type": ["compose", "decompose", "identify_value"], "context": ["pure"]},
     },
 
     "comparing_ordering": {

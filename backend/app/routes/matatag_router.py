@@ -729,9 +729,20 @@ def get_matatag_lab_config(node_id: str):
         "fill_in_table": "Fill in Table",
     }
 
-    dna_restrictions = FORMATTER_VARIANT_SUPPORT.get(primary_concept, {})
+    # Map formatter → the DNA that actually contributes it (first DNA wins),
+    # so a multi-DNA node's variant restrictions come from the DNA that
+    # declares the formatter, not always primary_concept — a formatter only
+    # supported by a non-primary DNA would otherwise look up an empty
+    # restriction set and be shown as "supports all variants" when it doesn't.
+    fmt_to_dna: dict = {}
+    for dna_name in dnas:
+        for fmt in COMPATIBILITY.get(dna_name, []):
+            if fmt not in fmt_to_dna:
+                fmt_to_dna[fmt] = dna_name
 
     for fmt in available_formatters:
+        source_dna = fmt_to_dna.get(fmt, primary_concept)
+        dna_restrictions = FORMATTER_VARIANT_SUPPORT.get(source_dna, {})
         fmt_restrictions = dna_restrictions.get(fmt)
         if fmt_restrictions is None:
             # No restrictions - supports all variants
