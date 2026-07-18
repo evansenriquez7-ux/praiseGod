@@ -48,28 +48,28 @@ _PARAM_BOUNDS: Dict[str, Dict[str, Any]] = {
 # ─── error patterns ───────────────────────────────────────────────────────────
 _ERROR_PATTERNS: List[ErrorPattern] = [
     ErrorPattern(
-        formula="start - skip_by",
+        formula="start - dir_mult * skip_by",
         required_concept="counting",
         label="cnt_prev",
-        description="Went backward instead of forward (subtracted skip interval).",
+        description="Went the wrong direction (subtracted the skip interval instead of continuing the sequence's direction).",
     ),
     ErrorPattern(
-        formula="start + 1",
+        formula="start + dir_mult * 1",
         required_concept="counting",
         label="cnt_skip",
         description="Used +1 instead of the actual skip interval.",
     ),
     ErrorPattern(
-        formula="start - skip_by * 2",
+        formula="start - dir_mult * skip_by * 2",
         required_concept="counting",
         label="cnt_back",
-        description="Subtracted two skip intervals instead of adding one (went backward by double).",
+        description="Went the wrong direction by double the skip interval.",
     ),
     ErrorPattern(
-        formula="start + skip_by * 2",
+        formula="start + dir_mult * skip_by * 2",
         required_concept="counting",
         label="cnt_wrong_interval",
-        description="Applied the skip interval twice (doubled jump).",
+        description="Applied the skip interval twice in the correct direction (doubled jump).",
     ),
 ]
 
@@ -82,7 +82,7 @@ _DIFFICULTY_AXES: Dict[str, Any] = {    "range":           "continuous",
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
 VOCAB_SKIP_COUNT  = VocabGated(requires_vocab="skip count",  preferred="skip count",   fallback="count by a number")
 VOCAB_COUNTING_BY = VocabGated(requires_vocab="counting by", preferred="counting by",  fallback="jumping by")
-VOCAB_SEQUENCE    = VocabGated(requires_vocab="sequence",    preferred="number pattern",     fallback="number pattern")
+VOCAB_SEQUENCE    = VocabGated(requires_vocab="sequence",    preferred="number sequence",    fallback="list of numbers")
 
 
 # ─── helpers ──────────────────────────────────────────────────────────────────
@@ -218,6 +218,7 @@ def generate_params(
         "blank_target": "answer",
         "start":          last_visible,
         "skip_by":        skip_by,
+        "dir_mult":       1 if direction == "forward" else -1,
         "direction":      direction,
         "answer":         answer,
         "sequence":       visible,
@@ -254,7 +255,7 @@ def generate_hints(
     return [
         f"Look at the {seq_lbl}: {visible_str}, ___",
         f"Find the rule by comparing neighbours: {sequence[1]} − {sequence[0]} = {abs(sequence[1] - sequence[0])}.",
-        f"The pattern is {cnt_lbl} {skip_by}s ({action} {skip_by} each time).",
+        f"This {seq_lbl} shows {cnt_lbl} {skip_by}s ({action} {skip_by} each time).",
         f"{action.capitalize()} {skip_by} to {sequence[3]}: {sequence[3]} {'+ ' if direction == 'forward' else '- '}{skip_by} = {answer}.",
     ]
 
@@ -264,16 +265,15 @@ def generate_hints(
 COUNTING_DNA = DNA(
     concept="counting",
     dna_type="formula",
-    answer_formula="start + skip_by",
+    answer_formula="start + dir_mult * skip_by",
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,
     compatible_formatters=[
         "mcq",
         "cloze",
-        "numeric_input",
         "ordering",
         "number_line_read",
-        "ten_frame",
+        "emoji_pictorial",
     ],
     requires_context=True,
     visual_home="NumberLine",

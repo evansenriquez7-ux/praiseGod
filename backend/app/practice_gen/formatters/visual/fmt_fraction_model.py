@@ -136,7 +136,7 @@ def _stem(model_type: str, fraction_str: str, interaction_mode: str, operation: 
         return f"Shade the model to show {fraction_str}."
     if operation in ("add", "subtract", "add_subtract"):
         return "What is the result of the fraction operation shown?"
-    model_names = {"area": "area model", "set": "set model", "number_line": "number line"}
+    model_names = {"area": "shaded picture", "set": "set model", "number_line": "number line"}
     name = model_names.get(model_type, "model")
     return f"What fraction does the {name} show?"
 

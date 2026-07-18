@@ -18,56 +18,10 @@ from typing import Any, Dict, List, Optional
 
 from ..dna.base import DNA, QuestionContext
 from ..generators.base_generator import generate_context, get_node
-from ..registry import NODE_TO_DNA
+from ..registry import NODE_TO_DNA, get_all_node_ids, get_node_info
 
 
-# ─── DNA module map ───────────────────────────────────────────────────────────
-
-_DNA_MODULE_MAP: Dict[str, str] = {
-    "addition":            "backend.app.practice_gen.dna.na.addition",
-    "subtraction":         "backend.app.practice_gen.dna.na.subtraction",
-    "multiplication":      "backend.app.practice_gen.dna.na.multiplication",
-    "division":            "backend.app.practice_gen.dna.na.division",
-    "counting":            "backend.app.practice_gen.dna.na.counting",
-    "number_reading":      "backend.app.practice_gen.dna.na.number_reading",
-    "ordinal_numbers":     "backend.app.practice_gen.dna.na.ordinal_numbers",
-    "place_value":         "backend.app.practice_gen.dna.na.place_value",
-    "comparing_ordering":  "backend.app.practice_gen.dna.na.comparing_ordering",
-    "missing_number":      "backend.app.practice_gen.dna.na.missing_number",
-    "patterns":            "backend.app.practice_gen.dna.na.patterns",
-    "fractions":           "backend.app.practice_gen.dna.na.fractions",
-    "money_peso":          "backend.app.practice_gen.dna.na.money_peso",
-    "rounding":            "backend.app.practice_gen.dna.na.rounding",
-    "order_of_operations": "backend.app.practice_gen.dna.na.order_of_operations",
-    "shapes_2d":           "backend.app.practice_gen.dna.mg.shapes_2d",
-    "length_measurement":  "backend.app.practice_gen.dna.mg.length_measurement",
-    "mass_capacity":       "backend.app.practice_gen.dna.mg.mass_capacity",
-    "time_reading":        "backend.app.practice_gen.dna.mg.time_reading",
-    "calendar":            "backend.app.practice_gen.dna.mg.calendar",
-    "perimeter":           "backend.app.practice_gen.dna.mg.perimeter",
-    "area":                "backend.app.practice_gen.dna.mg.area",
-    "geometric_lines":     "backend.app.practice_gen.dna.mg.geometric_lines",
-    "symmetry_slides":     "backend.app.practice_gen.dna.mg.symmetry_slides",
-    "pictographs":         "backend.app.practice_gen.dna.dp.pictographs",
-    "bar_graphs":          "backend.app.practice_gen.dna.dp.bar_graphs",
-    "probability_language":"backend.app.practice_gen.dna.dp.probability_language",
-}
-
-
-def _load_dna(concept: str) -> Optional[DNA]:
-    """Import the DNA module and return its DNA instance, or None on failure."""
-    module_path = _DNA_MODULE_MAP.get(concept)
-    if module_path is None:
-        return None
-    try:
-        mod = importlib.import_module(module_path)
-    except ImportError:
-        return None
-    for attr in dir(mod):
-        obj = getattr(mod, attr)
-        if isinstance(obj, DNA) and obj.concept == concept:
-            return obj
-    return None
+from ._manifest import DNA_MODULE_MAP, load_dna
 
 
 def _text_contains_term(text: str, term: str) -> bool:
@@ -112,9 +66,26 @@ def validate_vocab_constraints(ctx: QuestionContext, node: Dict) -> List[str]:
     not_yet_known: List[str] = node.get("NOT_YET_KNOWN", [])
     cumulative_vocab: List[str] = node.get("cumulative_vocab", [])
 
+    def _is_subtoken_only_of_known_compound(term: str, known: List[str], text: str) -> bool:
+        """True if `term` appears in `text` ONLY inside known compound vocab, never standalone."""
+        import re
+        t_lower = term.lower()
+        containing_knowns = [k for k in known if t_lower in k.lower() and k.lower() != t_lower]
+        if not containing_knowns:
+            return False
+        # Replace every known compound phrase with a placeholder, then check for term alone
+        modified = text.lower()
+        for known_compound in containing_knowns:
+            modified = modified.replace(known_compound.lower(), " __KNOWN__ ")
+        standalone_pattern = r'(?<![A-Za-z])' + re.escape(t_lower) + r'(?![A-Za-z])'
+        return not bool(re.search(standalone_pattern, modified))
+
     # 1. Forbidden terms (NOT_YET_KNOWN)
     for term in not_yet_known:
         if _text_contains_term(text, term):
+            # Exempt: term only appears as sub-token of a known compound (e.g. "line" in "number line")
+            if _is_subtoken_only_of_known_compound(term, cumulative_vocab, text):
+                continue
             violations.append(
                 f"[NOT_YET_KNOWN] '{term}' found in question text for "
                 f"{ctx.node_id}: \"{text[:80]}\""
@@ -163,33 +134,25 @@ def validate_concept_constraints(ctx: QuestionContext, node: Dict) -> List[str]:
     cumulative_concepts.update(node.get("introduces_concepts", []))
     cumulative_concepts.add(ctx.dna_concept)
 
-    dna = _load_dna(ctx.dna_concept)
-    if dna is None:
+    try:
+        dna = load_dna(ctx.dna_concept)
+    except ImportError:
         return violations
 
-    # Build the set of distractor values that should have been filtered out.
     forbidden_patterns = [
         ep for ep in dna.error_patterns
         if ep.required_concept not in cumulative_concepts
-        and ep.formula not in ("None", None)
     ]
-
-    if not forbidden_patterns or not ctx.distractors:
+    forbidden_labels = {ep.label for ep in forbidden_patterns}
+    if not forbidden_labels or not ctx.distractors:
         return violations
 
-    # Evaluate each forbidden pattern against ctx.values.
-    for ep in forbidden_patterns:
-        try:
-            safe_ns = {k: v for k, v in ctx.values.items() if isinstance(v, (int, float))}
-            forbidden_val = eval(ep.formula, {"__builtins__": {}}, safe_ns)  # noqa: S307
-        except Exception:
-            continue
-
-        if forbidden_val in ctx.distractors:
+    distractors_provenance = getattr(ctx, "distractors_provenance", {}) or {}
+    for d, source in distractors_provenance.items():
+        if source in forbidden_labels:
             violations.append(
-                f"[CONCEPT_GATE] Distractor {forbidden_val} from ErrorPattern "
-                f"'{ep.label}' (requires_concept='{ep.required_concept}') "
-                f"appeared in ctx.distractors but concept is not yet known "
+                f"[CONCEPT_GATE] Distractor {d} from ErrorPattern "
+                f"'{source}' appeared in ctx.distractors but concept is not yet known "
                 f"at {ctx.node_id}."
             )
 
@@ -232,11 +195,12 @@ def run_vocab_audit(
             "pass_rate": 0.0,
         }
 
-    dna = _load_dna(concepts[0])
-    if dna is None:
+    try:
+        dna = load_dna(concepts[0])
+    except ImportError as e:
         return {
             "node_id": node_id,
-            "violations": [f"Could not import DNA for concept '{concepts[0]}'."],
+            "violations": [f"Could not import DNA for concept '{concepts[0]}': {e}"],
             "pass_rate": 0.0,
         }
 
@@ -277,6 +241,127 @@ def run_vocab_audit(
     }
 
 
+def lint_all_vocab_gated_instances() -> List[str]:
+    from backend.app.practice_gen.validation._manifest import DNA_MODULE_MAP
+    from backend.app.practice_gen.adapter import FORMATTER_ROUTES
+    from backend.app.practice_gen.dna.base import VocabGated
+    import importlib
+
+    violations: List[str] = []
+
+    # 1. Collect all VocabGated instances and their source modules
+    vocab_gated_by_concept: Dict[str, List[VocabGated]] = {}
+
+    # Gather from DNA modules
+    for concept, module_path in DNA_MODULE_MAP.items():
+        try:
+            mod = importlib.import_module(module_path)
+            instances = []
+            for name in dir(mod):
+                val = getattr(mod, name)
+                if isinstance(val, VocabGated):
+                    instances.append(val)
+            if instances:
+                vocab_gated_by_concept[concept] = instances
+        except Exception as e:
+            violations.append(f"Failed to import DNA module {module_path}: {e}")
+
+    # Gather from formatter modules
+    formatter_gated_instances: List[VocabGated] = []
+    for fmt_name, route in FORMATTER_ROUTES.items():
+        module_path, _, _ = route
+        try:
+            mod = importlib.import_module(module_path)
+            for name in dir(mod):
+                val = getattr(mod, name)
+                if isinstance(val, VocabGated):
+                    formatter_gated_instances.append(val)
+        except Exception as e:
+            violations.append(f"Failed to import formatter module {module_path}: {e}")
+
+    # 2. Audit against knowledge graph nodes
+    # For DNA-specific instances: check against every node mapped to that DNA concept
+    for concept, instances in vocab_gated_by_concept.items():
+        nodes_for_concept = [nid for nid, concepts in NODE_TO_DNA.items() if concepts and concepts[0] == concept]
+        for nid in nodes_for_concept:
+            node = get_node(nid)
+            if not node:
+                continue
+            not_yet_known = node.get("NOT_YET_KNOWN", [])
+            cumulative_vocab = set(node.get("cumulative_vocab", []))
+            for inst in instances:
+                # If requires_vocab is known, preferred is resolved; otherwise, fallback is resolved
+                if inst.requires_vocab in cumulative_vocab:
+                    resolved_text = inst.preferred
+                else:
+                    resolved_text = inst.fallback
+
+                for term in not_yet_known:
+                    if _text_contains_term(resolved_text, term):
+                        violations.append(
+                            f"[VOCAB_GATED_LINT] DNA '{concept}' instance resolved text '{resolved_text}' "
+                            f"contains forbidden term '{term}' for node '{nid}'."
+                        )
+
+    # For formatter-level instances: check against every node
+    for inst in formatter_gated_instances:
+        for nid, concepts in NODE_TO_DNA.items():
+            if not concepts:
+                continue
+            node = get_node(nid)
+            if not node:
+                continue
+            not_yet_known = node.get("NOT_YET_KNOWN", [])
+            cumulative_vocab = set(node.get("cumulative_vocab", []))
+            # Determine resolved branch
+            if inst.requires_vocab in cumulative_vocab:
+                resolved_text = inst.preferred
+            else:
+                resolved_text = inst.fallback
+
+            for term in not_yet_known:
+                if _text_contains_term(resolved_text, term):
+                    violations.append(
+                        f"[VOCAB_GATED_LINT] Formatter instance resolved text '{resolved_text}' "
+                        f"contains forbidden term '{term}' for node '{nid}'."
+                    )
+
+    return violations
+
+
+def run_all_vocab_audits(sample_count: int = 5) -> Dict[str, Dict]:
+    """
+    Run run_vocab_audit for every node in the knowledge graph (full-node mode),
+    not just a handful of spot-checked nodes.
+
+    Returns:
+        Dict mapping node_id -> audit result dict (node_id, violations, pass_rate).
+    """
+    results: Dict[str, Dict] = {}
+
+    # Run static VocabGated linter
+    lint_violations = lint_all_vocab_gated_instances()
+    if lint_violations:
+        results["static_vocab_gated_lint"] = {
+            "node_id": "static_vocab_gated_lint",
+            "violations": lint_violations,
+            "pass_rate": 0.0
+        }
+        print("  FAIL static_vocab_gated_lint:")
+        for v in lint_violations:
+            print(f"    - {v}")
+
+    for node_id in get_all_node_ids():
+        node = get_node_info(node_id)
+        if node is None:
+            raise ValueError(f"Node '{node_id}' is in NODE_TO_DNA but missing from the knowledge graph.")
+        grade = node.get("grade")
+        if grade is None:
+            raise ValueError(f"Node '{node_id}' has no 'grade' field in the knowledge graph.")
+        results[node_id] = run_vocab_audit(node_id, grade, sample_count=sample_count)
+    return results
+
+
 # ─── entry point ──────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
@@ -290,6 +375,15 @@ if __name__ == "__main__":
     ]
 
     any_failures = False
+
+    # Run static linter
+    lint_violations = lint_all_vocab_gated_instances()
+    if lint_violations:
+        print("  FAIL static_vocab_gated_lint:")
+        for v in lint_violations:
+            print(f"    - {v}")
+        any_failures = True
+
     for nid, gr in _SAMPLE_NODES:
         result = run_vocab_audit(nid, gr, sample_count=5)
         rate = result["pass_rate"]

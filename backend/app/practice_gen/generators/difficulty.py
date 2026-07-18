@@ -228,36 +228,24 @@ def _make_predicates(
 
     for axis, level in difficulty_profile.items():
 
-        # ── addition / subtraction regrouping ────────────────────────────
+        # ── addition regrouping (carry) ───────────────────────────────────
+        # param_bounds only samples raw "a"/"b" — decompose digits here rather
+        # than expecting precomputed "ones_a"/"tens_a" keys the sampler never produces.
         if axis == "regrouping":
+            def _ones_sum(p: Dict[str, Any]) -> int:
+                return (p.get("a", 0) % 10) + (p.get("b", 0) % 10)
+
+            def _tens_sum(p: Dict[str, Any]) -> int:
+                return ((p.get("a", 0) // 10) % 10) + ((p.get("b", 0) // 10) % 10)
+
             if level == "none":
-                predicates.append(
-                    lambda p: (
-                        p.get("ones_a", 0) + p.get("ones_b", 0) < 10
-                        and p.get("tens_a", 0) + p.get("tens_b", 0) < 10
-                    )
-                )
+                predicates.append(lambda p: _ones_sum(p) < 10 and _tens_sum(p) < 10)
             elif level == "ones":
-                predicates.append(
-                    lambda p: (
-                        p.get("ones_a", 0) + p.get("ones_b", 0) >= 10
-                        and p.get("tens_a", 0) + p.get("tens_b", 0) < 10
-                    )
-                )
+                predicates.append(lambda p: _ones_sum(p) >= 10 and _tens_sum(p) < 10)
             elif level == "tens":
-                predicates.append(
-                    lambda p: (
-                        p.get("ones_a", 0) + p.get("ones_b", 0) < 10
-                        and p.get("tens_a", 0) + p.get("tens_b", 0) >= 10
-                    )
-                )
+                predicates.append(lambda p: _ones_sum(p) < 10 and _tens_sum(p) >= 10)
             elif level == "double":
-                predicates.append(
-                    lambda p: (
-                        p.get("ones_a", 0) + p.get("ones_b", 0) >= 10
-                        and p.get("tens_a", 0) + p.get("tens_b", 0) >= 10
-                    )
-                )
+                predicates.append(lambda p: _ones_sum(p) >= 10 and _tens_sum(p) >= 10)
 
         # ── number_type ───────────────────────────────────────────────────
         elif axis == "number_type":
@@ -302,15 +290,23 @@ def _sample_params(
     Draw one uniform sample from param_bounds.
 
     Args:
-        bounds: Mapping of param_name → (min, max).
-                Supports int and float bounds.
+        bounds: Mapping of param_name → (min, max) for sample-able ranges.
+                Supports int and float bounds. Entries that are not a
+                2-tuple of numbers (scalar constants, lists of allowed
+                values, etc.) are not sampled — they pass through as-is,
+                since DNA param_bounds dicts mix true ranges with fixed
+                generation constants (e.g. "max_result": 100).
         rng: Seeded Random instance.
 
     Returns:
-        Dict of param_name → sampled value.
+        Dict of param_name → sampled (or passed-through) value.
     """
     params: Dict[str, Any] = {}
-    for name, (lo, hi) in bounds.items():
+    for name, bound in bounds.items():
+        if not (isinstance(bound, tuple) and len(bound) == 2 and all(isinstance(v, (int, float)) for v in bound)):
+            params[name] = bound
+            continue
+        lo, hi = bound
         if isinstance(lo, int) and isinstance(hi, int):
             params[name] = rng.randint(lo, hi)
         else:
@@ -402,11 +398,25 @@ def enumerate_profiles(dna: DNA) -> List[Dict[str, Any]]:
         >>> profiles[0]
         {"regrouping": "none", "number_type": "round", "structure": "result_unknown"}
     """
-    if not dna.difficulty_axes:
+    if not dna.difficulty_axes or not isinstance(dna.difficulty_axes, dict):
+        # Non-dict schemas (e.g. pictographs/bar_graphs' list-of-descriptor
+        # axes) are entirely continuous and have no discrete levels to enumerate.
         return [{}]
 
-    axes = list(dna.difficulty_axes.keys())
-    level_lists = [dna.difficulty_axes[ax] for ax in axes]
+    # Only genuinely discrete axes (a list of level strings) participate in
+    # profile enumeration. Continuous axes are marked with the sentinel string
+    # "continuous" and are sampled via log_interpolate elsewhere, not through
+    # discrete rejection-sampling profiles — itertools.product over a raw
+    # string would silently iterate its characters instead.
+    discrete_axes = {
+        name: levels for name, levels in dna.difficulty_axes.items()
+        if isinstance(levels, list)
+    }
+    if not discrete_axes:
+        return [{}]
+
+    axes = list(discrete_axes.keys())
+    level_lists = [discrete_axes[ax] for ax in axes]
 
     return [
         dict(zip(axes, combo))

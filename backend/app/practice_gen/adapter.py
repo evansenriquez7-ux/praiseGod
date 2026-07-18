@@ -20,6 +20,8 @@ from typing import Any, Dict, List, Optional
 from backend.app.practice_gen.compatibility import (
     get_formatters_for_dna,
     get_compatible_formatters_for_variant,
+    get_variants_for_dna,
+    is_variant_supported,
 )
 from .dna.base import FormattedProblem, QuestionContext
 from .generators.base_generator import _import_dna_module, generate_context
@@ -57,7 +59,7 @@ _DEFAULT_WEIGHT = 0.6   # weight for any formatter not explicitly listed above
 # ═══════════════════════════════════════════════════════════════════════════════
 
 # fmt: (module_attr_path, func_name, kwargs)
-_FORMATTER_ROUTES: Dict[str, tuple] = {
+FORMATTER_ROUTES: Dict[str, tuple] = {
     # ── Textual ───────────────────────────────────────────────────────────────
     "mcq": (
         "backend.app.practice_gen.formatters.textual.fmt_mcq",
@@ -150,7 +152,7 @@ _FORMATTER_ROUTES: Dict[str, tuple] = {
     "sort_order": (
         "backend.app.practice_gen.formatters.textual.fmt_ordering",
         "format_ordering",
-        {},
+        {"format_name": "sort_order"},
     ),
     "shape_board": (
         "backend.app.practice_gen.formatters.visual.fmt_shape_board",
@@ -216,7 +218,7 @@ _FORMATTER_ROUTES: Dict[str, tuple] = {
     "fraction_shade": (
         "backend.app.practice_gen.formatters.visual.fmt_fraction_shade",
         "format_fraction_shade",
-        {"interaction_mode": "set", "answer_collection": "fill_in_blank"},
+        {"interaction_mode": "set", "answer_collection": "click"},
     ),
     "pictograph_set": (
         "backend.app.practice_gen.formatters.visual.fmt_pictograph",
@@ -389,6 +391,27 @@ def generate_problem(
             raise ValueError(f"No compatible formatters available for DNA '{dna_name}'")
         formatter = _weighted_choice(rng, available)
 
+    # 5b. Enforce formatter/variant compatibility (FORMATTER_VARIANT_SUPPORT).
+    # This only ran for auto-picked formatters (via task_type filtering above);
+    # an explicitly-requested formatter previously skipped it entirely, letting
+    # unsupported combos (e.g. a number-line formatter asked to show a
+    # word-form answer) silently generate mismatched content instead of
+    # rejecting the request.
+    if difficulty_profile:
+        # Only validate keys that are actual contextual variants for this DNA
+        # (VARIANTS_BY_DNA) — difficulty_profile also carries continuous/discrete
+        # axis values (e.g. "regrouping", "number_difficulty") which are not
+        # variants and aren't tracked in this table.
+        known_variants = get_variants_for_dna(dna_name)
+        for var_name, var_value in difficulty_profile.items():
+            if var_name not in known_variants:
+                continue
+            if not is_variant_supported(dna_name, formatter, var_name, str(var_value)):
+                raise ValueError(
+                    f"generate_problem: variant {var_name}='{var_value}' is not supported "
+                    f"by formatter '{formatter}' for DNA '{dna_name}'."
+                )
+
     # 6. Apply formatter
     problem = apply_formatter(ctx, formatter, rng)
 
@@ -417,7 +440,7 @@ def apply_formatter(
     """
     import importlib
 
-    route = _FORMATTER_ROUTES.get(formatter_name)
+    route = FORMATTER_ROUTES.get(formatter_name)
     if route is None:
         raise ValueError(f"Unknown formatter requested: '{formatter_name}'")
 
@@ -430,6 +453,10 @@ def apply_formatter(
     else:
         problem = func(ctx, rng)
     
+    # Copy distractors provenance
+    if hasattr(ctx, "distractors_provenance") and ctx.distractors_provenance:
+        problem.distractors_provenance = {str(k): v for k, v in ctx.distractors_provenance.items()}
+
     # Contract Validation
     if problem.is_visual and problem.visual_params:
         VisualSchemaRegistry.validate(problem.visual_type, problem.visual_params)

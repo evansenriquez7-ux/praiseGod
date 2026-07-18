@@ -220,6 +220,18 @@ def format_array_grid(
             "correct_count": rows * cols,
             "grid_size": [rows + 1, cols + 1],
         }
+    elif ctx.values and "a" in ctx.values and "b" in ctx.values:
+        rows = ctx.values["a"]
+        cols = ctx.values["b"]
+        vp = {
+            "rows": rows,
+            "cols": cols,
+            "shaded": True,
+            "highlight_groups": [],
+            "shape_type": "rectangle",
+            "correct_count": rows * cols,
+            "grid_size": [rows + 1, cols + 1],
+        }
     else:
         diff_profile = ctx.difficulty_profile or {}
         diff_level = min(len(diff_profile) + 1, 4) if diff_profile else 2
@@ -241,19 +253,19 @@ def format_array_grid(
             )
         else:
             question_text = (
-                "Look at the shaded shape. How many square units is the area?"
+                "Look at the shaded shape. How many squares are shaded in all?"
             )
     else:
         vp["shaded"] = False
         if shape_type == "rectangle" and rows and cols:
             question_text = (
                 f"Shade all the squares inside the {rows}×{cols} rectangle. "
-                f"How many square units is the area?"
+                f"How many squares did you shade in all?"
             )
         else:
             question_text = (
                 "Shade all the squares inside the shape. "
-                "How many square units is the area?"
+                "How many squares did you shade in all?"
             )
 
     # ── 3. Answer collection ──────────────────────────────────────────────────

@@ -58,6 +58,7 @@ def _ctx(values: Dict[str, Any], **overrides: Any) -> QuestionContext:
         "blank_target": "result",
         "hints": [],
         "competency_text": "Test competency",
+        "cumulative_vocab": [],
         "visual_type": None,
         "visual_params": None,
         "node_id": overrides.get("node_id", "test_node_1"),

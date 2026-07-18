@@ -216,7 +216,7 @@ def generate_hints(
 
 PERIMETER_DNA = DNA(
     concept="perimeter",
-    dna_type="formula",
+    dna_type="algorithmic",
     answer_formula="answer",
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,

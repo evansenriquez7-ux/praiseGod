@@ -211,7 +211,7 @@ def generate_hints(
 
 ORDER_OF_OPERATIONS_DNA = DNA(
     concept="order_of_operations",
-    dna_type="formula",
+    dna_type="algorithmic",
     answer_formula="answer",
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,

@@ -205,7 +205,7 @@ def generate_params(
         # RNG stream (the discarded randint draw shifted every later
         # rng.choice, so pure and word_problem drew different denominations
         # from the same seed) and (b) altered the core math across a variant,
-        # violating pgen_checklist.md §2 (Separation of Concerns). Draw `n`
+        # violating pgen_contract.md (variant sensitivity). Draw `n`
         # identically for every context so the operands match.
         n = rng.randint(2, max_items)
         chosen = [rng.choice(denom_pool) for _ in range(n)]
@@ -433,7 +433,7 @@ def generate_hints(
 
 MONEY_PESO_DNA = DNA(
     concept="money_peso",
-    dna_type="formula",
+    dna_type="algorithmic",
     answer_formula="sum(amounts)",
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,

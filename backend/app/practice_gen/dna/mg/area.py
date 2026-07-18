@@ -185,7 +185,7 @@ def generate_hints(
 
 AREA_DNA = DNA(
     concept="area",
-    dna_type="formula",
+    dna_type="algorithmic",
     answer_formula="answer",
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,

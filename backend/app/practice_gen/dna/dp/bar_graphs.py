@@ -94,7 +94,12 @@ VOCAB_BAR_GRAPH = VocabGated(
 VOCAB_SCALE = VocabGated(
     requires_vocab="scale",
     preferred="scale",
-    fallback="the numbers along the axis",
+    fallback="numbers along the line",
+)
+VOCAB_AXIS = VocabGated(
+    requires_vocab="axis",
+    preferred="axis",
+    fallback="line",
 )
 
 
@@ -226,7 +231,12 @@ def generate_hints(
     task_type   = values.get("task_type", "read_value")
     orientation = vp.get("orientation", "vertical")
 
-    axis = "vertical (y-axis)" if orientation == "vertical" else "horizontal (x-axis)"
+    vocab_axis = VOCAB_AXIS.resolve(cumulative_vocab)
+    if "axis" in cumulative_vocab:
+        axis = "vertical (y-axis)" if orientation == "vertical" else "horizontal (x-axis)"
+    else:
+        axis = f"vertical {vocab_axis}" if orientation == "vertical" else f"horizontal {vocab_axis}"
+
     hints = [
         f"Look at the {bg_label} carefully.",
         f"The {scale_label} on the {axis} goes up by {scale}.",

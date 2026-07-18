@@ -39,6 +39,43 @@ _DIFFICULTY_AXES: Dict[str, Any] = {
 
 # ─── static item pool ─────────────────────────────────────────────────────────
 _ITEM_POOL: List[Dict[str, Any]] = [
+    # ── rotation / turn (Grade 1) ─────────────────────────────────────────────
+    {
+        "question": "An arrow faces UP. It does a quarter turn clockwise. Which direction does it face now?",
+        "answer": "right",
+        "distractors": ["left", "down", "up"],
+        "concept": "rotation",
+        "directions": "one_direction",
+        "grade_min": 1,
+    },
+    {
+        "question": "An arrow faces UP. It does a half turn. Which direction does it face now?",
+        "answer": "down",
+        "distractors": ["up", "left", "right"],
+        "concept": "rotation",
+        "directions": "one_direction",
+        "grade_min": 1,
+    },
+    {
+        "question": "An arrow faces UP. It does a quarter turn counter-clockwise. Which direction does it face now?",
+        "answer": "left",
+        "distractors": ["right", "down", "up"],
+        "concept": "rotation",
+        "directions": "one_direction",
+        "grade_min": 1,
+    },
+    {
+        "question": "Which direction is clockwise?",
+        "answer": "the direction clock hands move",
+        "distractors": [
+            "the opposite direction clock hands move",
+            "straight up",
+            "to the left",
+        ],
+        "concept": "rotation",
+        "directions": "one_direction",
+        "grade_min": 1,
+    },
     # ── slide / translation ────────────────────────────────────────────────────
     {
         "question": "A shape moves 3 spaces to the right without turning or flipping. What is this called?",
@@ -224,7 +261,7 @@ def generate_params(
     rng = random.Random(seed)
     profile = difficulty_profile or {}
 
-    concept    = profile.get("concept", "slide_translation")
+    concept    = profile.get("concept", "rotation" if grade == 1 else "slide_translation")
     directions = profile.get("directions", "one_direction")
 
     candidates = [
@@ -261,6 +298,12 @@ def generate_hints(
             "The shape looks the same — only its position changes.",
             "Count how many spaces it moved in each direction.",
         ]
+    if concept == "rotation":
+        return [
+            "A turn (rotation) moves a shape around a point.",
+            "A quarter turn moves it like 15 minutes on a clock.",
+            "A half turn points it in the opposite direction.",
+        ]
     if concept == "line_symmetry":
         return [
             "A line of symmetry splits a shape into two mirror-image halves.",
@@ -280,6 +323,7 @@ SYMMETRY_SLIDES_DNA = DNA(
     dna_type="static_bank",
     answer_formula=None,
     param_bounds={
+        "g1": {},
         "g2": {},
         "g3": {},
     },

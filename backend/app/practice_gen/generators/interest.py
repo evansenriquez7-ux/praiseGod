@@ -22,8 +22,9 @@ from __future__ import annotations
 
 import json
 import random
+import re
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Set
 
 # ---------------------------------------------------------------------------
 # Load interest_bank.json at import time.
@@ -35,16 +36,30 @@ _INTEREST_BANK_PATH: Path = (
     / "interest_bank.json"
 )
 
-_BANK: Dict = {}
-_INTERESTS: Dict[str, Dict] = {}
+with _INTEREST_BANK_PATH.open(encoding="utf-8") as _f:
+    _BANK: Dict = json.load(_f)
+_INTERESTS: Dict[str, Dict] = _BANK.get("interests", {})
 
-try:
-    with _INTEREST_BANK_PATH.open(encoding="utf-8") as _f:
-        _BANK = json.load(_f)
-    _INTERESTS = _BANK.get("interests", {})
-except (FileNotFoundError, json.JSONDecodeError):
-    # Graceful degradation: all helpers fall back to NEUTRAL_SLOTS.
-    _INTERESTS = {}
+
+def _contains_forbidden_term(text: str, not_yet_known: Set[str]) -> bool:
+    """
+    Whole-word, case-insensitive check of `text` against `not_yet_known` terms.
+
+    Also checks the naive singular form (trailing "s" stripped) because
+    Spine.render() collapses "1 {objects}" to its singular ("1 coins" ->
+    "1 coin") — an option that looks safe in plural form can still leak
+    a forbidden singular term once rendered.
+    """
+    candidates = [text]
+    if text.endswith("s"):
+        candidates.append(text[:-1])
+    for candidate in candidates:
+        candidate_lower = candidate.lower()
+        for term in not_yet_known:
+            pattern = r"(?<![A-Za-z])" + re.escape(term.lower()) + r"(?![A-Za-z])"
+            if re.search(pattern, candidate_lower):
+                return True
+    return False
 
 
 # ---------------------------------------------------------------------------
@@ -99,6 +114,7 @@ def get_interest_slots(
     interest_id: str,
     grade: int,
     rng: random.Random,
+    not_yet_known: Optional[Set[str]] = None,
 ) -> Dict[str, str]:
     """
     Build a single-problem slot dict for the given interest theme.
@@ -108,13 +124,16 @@ def get_interest_slots(
     a fresh surface-level variation while staying on-theme.
 
     Falls back to NEUTRAL_SLOTS when interest_id is not in the bank.
-    
+
     Note: Grade bands are ignored - all interests are available for all grades.
 
     Args:
         interest_id: Key from interest_bank.json, e.g. "basketball".
         grade: Student grade level (unused, kept for API compatibility).
         rng: Seeded Random instance for reproducibility.
+        not_yet_known: Vocabulary terms the node hasn't introduced yet. Any
+            slot option containing one of these terms (e.g. "coins" when
+            "coin" is a later money_peso term) is excluded from selection.
 
     Returns:
         Dict with keys: "actor", "objects", "place", "item1", "item2".
@@ -131,6 +150,8 @@ def get_interest_slots(
 
     def _pick(key: str) -> str:
         options = data.get(key, [])
+        if not_yet_known:
+            options = [o for o in options if not _contains_forbidden_term(o, not_yet_known)]
         if not options:
             return NEUTRAL_SLOTS.get(key, "")
         return rng.choice(options)

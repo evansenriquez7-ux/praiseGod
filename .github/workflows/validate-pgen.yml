@@ -1,0 +1,62 @@
+name: Practice Generator Validation
+
+on:
+  push:
+    paths:
+      - 'backend/**'
+      - 'data/**'
+      - 'docs/**'
+      - '.github/workflows/validate-pgen.yml'
+  pull_request:
+    paths:
+      - 'backend/**'
+      - 'data/**'
+      - 'docs/**'
+      - '.github/workflows/validate-pgen.yml'
+
+jobs:
+  validate:
+    name: Run Practice Gen Hardening Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Lint docs/ for un-enforced MUSTs (doc_rem.md R1/§3.5)
+        run: |
+          # Speed bump, not perfection (doc_rem.md §3.5): only pgen_contract.md and
+          # pgen_judgment.md may state a binding "MUST" — every other pg-pipeline doc
+          # must describe, not command. DOC_RULES.md/doc_rem.md are meta-docs about
+          # this very rule (self-referential, exempt); INTRO_CONTENT.md/core.md govern
+          # unrelated content, not the pg pipeline.
+          violations=$(grep -rl '\bMUST\b' docs/*.md 2>/dev/null \
+            | grep -v -E 'docs/(pgen_contract|pgen_judgment|DOC_RULES|doc_rem|INTRO_CONTENT|core|pgen_hardening)\.md' \
+            || true)
+          if [ -n "$violations" ]; then
+            echo "Found un-enforced 'MUST' outside pgen_contract.md/pgen_judgment.md:"
+            echo "$violations"
+            echo "Move binding rules into pgen_contract.md with a named enforcer, or rephrase as descriptive."
+            exit 1
+          fi
+
+      - name: Run Practice Gen Hardening Harness
+        run: python -m backend.app.practice_gen.validation.run_all
+
+      - name: Upload Matrix Validation Report on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pgen-matrix-report
+          path: validation_reports/
+          retention-days: 7

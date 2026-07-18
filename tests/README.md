@@ -5,8 +5,11 @@ the consolidated home for the exhaustive checklist auditor and its regression
 tests. (One-off, throwaway debug scripts stay in the gitignored
 `local_only/scratch/`.)
 
-See `docs/generator_testing_strategy.md` for the full operating manual and
-`docs/pgen_checklist.md` for the checklist the auditor enforces.
+See `docs/testing_pipeline.md` for the full operating manual and
+`docs/pgen_contract.md` for the contract the pipeline is held to. This
+auditor predates `backend/app/practice_gen/validation/` (the harness
+`run_all` is the current definition of done — see `docs/pgen_contract.md`);
+this suite remains as a supplementary regression check.
 
 ## Layout
 
@@ -41,4 +44,4 @@ bash tests/run_checklist_audit.sh
    `spawn`; a closure fails silently). `unit/test_parallel_audit.py` is the gate.
 2. Always run through the venv (`run_checklist_audit.sh` or `.venv/bin/python`).
 3. When you add an audit category, add a `unit/test_*.py` for it and document it
-   in `docs/generator_testing_strategy.md`.
+   in `docs/testing_pipeline.md`.

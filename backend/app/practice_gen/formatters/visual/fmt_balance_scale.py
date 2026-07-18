@@ -30,6 +30,7 @@ Traps derived from missing_number DNA error patterns:
 import random
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -129,6 +130,11 @@ def _build_traps(params: dict, rng: random.Random) -> list:
         traps.append(result)
 
     rng.shuffle(traps)
+    traps = augment_distractors(traps, mv, target=3, max_delta=10)
+    if len(traps) < 3:
+        raise ValueError(
+            f"Formatter 'balance_scale' requires at least 3 unique distractors, but got {len(traps)}"
+        )
     return traps[:3]
 
 
@@ -139,7 +145,7 @@ def _build_traps(params: dict, rng: random.Random) -> list:
 def _stem(params: dict) -> str:
     left = params["left_side"]
     right = params["right_side"]
-    return f"The scale is balanced. {left} = {right}. What is the missing value?"
+    return f"Both sides balance evenly. {left} = {right}. What is the missing value?"
 
 
 # ─────────────────────────────────────────────────────────────────────────────

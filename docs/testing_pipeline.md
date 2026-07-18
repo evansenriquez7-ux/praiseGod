@@ -1,7 +1,5 @@
 # Metamorphic Testing Pipeline & Checklist Compliance Auditor
 
-> **Celebration Rule**: "Praise God" is our celebration catchphrase when a node passes the audit or a category drops to zero!
-
 This document serves as the master operational guide for any agentic coder building, modifying, or auditing practice problem generators (PGs) in this repository. 
 
 Our testing philosophy is built on **failing fast and loud** rather than silent defaulting. When the auditor script runs, it verifies that no code degradations, zero-sensitivity mappings, or answer leaks escape.

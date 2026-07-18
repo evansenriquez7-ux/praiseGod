@@ -45,7 +45,7 @@ _DIFFICULTY_AXES: Dict[str, Any] = {
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
 VOCAB_SIDES    = VocabGated(requires_vocab="sides",    preferred="sides",    fallback="straight edges")
-VOCAB_CORNERS  = VocabGated(requires_vocab="corners",  preferred="corners",  fallback="points")
+VOCAB_CORNERS  = VocabGated(requires_vocab="corners",  preferred="corners",  fallback="pointed parts")
 VOCAB_VERTICES = VocabGated(requires_vocab="vertices", preferred="vertices", fallback="corners")
 
 
@@ -56,7 +56,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "What shape has 3 sides and 3 corners?",
         "answer": "triangle",
-        "distractors": ["rectangle", "square", "circle"],
+        "distractors": ["rectangle", "square", "pentagon"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "standard",
@@ -65,7 +65,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "What shape has 4 equal sides and 4 corners?",
         "answer": "square",
-        "distractors": ["triangle", "rectangle", "circle"],
+        "distractors": ["triangle", "rectangle", "pentagon"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "standard",
@@ -74,7 +74,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "What shape has 4 sides where opposite sides are equal?",
         "answer": "rectangle",
-        "distractors": ["triangle", "square", "circle"],
+        "distractors": ["triangle", "square", "pentagon"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "standard",
@@ -146,7 +146,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     # ── rotated orientation ────────────────────────────────────────────────────
     {
-        "question": "A triangle is tilted on its side. How many sides does it still have?",
+        "question": "A triangle is turned at an angle. How many sides does it still have?",
         "answer": "3",
         "distractors": ["4", "2", "5"],
         "shape_set": "basic_triangles_rectangles_squares",
@@ -185,7 +185,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Which shape has the same number of sides as a square?",
         "answer": "rectangle",
-        "distractors": ["triangle", "circle", "pentagon"],
+        "distractors": ["triangle", "hexagon", "pentagon"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compare_shapes",
         "orientation": "standard",
@@ -202,27 +202,27 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     # ── compose_decompose ──────────────────────────────────────────────────────
     {
-        "question": "Two triangles are placed together along their longest side. What shape do they form?",
+        "question": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
         "answer": "rectangle",
-        "distractors": ["square", "circle", "pentagon"],
+        "distractors": ["square", "hexagon", "pentagon"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "standard",
         "grade_min": 1,
     },
     {
-        "question": "A rectangle is cut in half along its length. What two shapes are made?",
+        "question": "A rectangle is cut into two equal pieces down the middle. What two shapes are made?",
         "answer": "two squares",
-        "distractors": ["two triangles", "two rectangles", "two circles"],
+        "distractors": ["two triangles", "two rectangles", "two pentagons"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "standard",
         "grade_min": 1,
     },
     {
-        "question": "A square is cut from one corner to the opposite corner. What two shapes are made?",
+        "question": "A square is cut on a slant, from one edge to another. What two shapes are made?",
         "answer": "two triangles",
-        "distractors": ["two rectangles", "two squares", "two circles"],
+        "distractors": ["two rectangles", "two squares", "two pentagons"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "standard",
@@ -238,7 +238,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
     {
-        "question": "Four quarter-circles are arranged around a center point. What shape do they make?",
+        "question": "Four quarter-circles are put together to make one shape. What shape do they make?",
         "answer": "circle",
         "distractors": ["square", "rectangle", "triangle"],
         "shape_set": "extended_with_circles",
@@ -312,11 +312,12 @@ def generate_hints(
     corners_label = VOCAB_CORNERS.resolve(cumulative_vocab)
     hints = [
         f"Think about the {sides_label} and {corners_label} of each shape.",
-        "A triangle has 3 sides and 3 corners.",
-        "A square has 4 equal sides and 4 corners.",
-        "A rectangle has 4 sides (opposite sides are equal) and 4 corners.",
-        "A circle has no straight sides and no corners.",
+        f"A triangle has 3 {sides_label} and 3 {corners_label}.",
+        f"A square has 4 equal {sides_label} and 4 {corners_label}.",
+        f"A rectangle has 4 {sides_label} (opposite {sides_label} are equal) and 4 {corners_label}.",
     ]
+    if "circle" in cumulative_vocab:
+        hints.append(f"A circle has no straight {sides_label} and no {corners_label}.")
     return hints
 
 

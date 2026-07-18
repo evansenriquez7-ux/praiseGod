@@ -232,10 +232,15 @@ def generate_hints(
 
     # Step 4: final answer
     if remainder > 0:
-        hints.append(
-            f"{quotient_label.capitalize()} is {result} remainder {remainder} "
-            f"(written as {result} R{remainder})."
-        )
+        if "remainder" in cumulative_vocab:
+            hints.append(
+                f"{quotient_label.capitalize()} is {result} remainder {remainder} "
+                f"(written as {result} R{remainder})."
+            )
+        else:
+            hints.append(
+                f"{quotient_label.capitalize()} is {result} with {remainder} left over."
+            )
     else:
         hints.append(f"{quotient_label.capitalize()} of {a} ÷ {b} = {result}.")
 

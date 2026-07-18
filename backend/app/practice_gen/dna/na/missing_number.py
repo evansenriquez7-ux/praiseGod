@@ -81,6 +81,13 @@ VOCAB_MISSING     = VocabGated(requires_vocab="missing number",   preferred="mis
 VOCAB_SENTENCE    = VocabGated(requires_vocab="number sentence",  preferred="number sentence",  fallback="math equation")
 VOCAB_EQUATION    = VocabGated(requires_vocab="equation",         preferred="equation",         fallback="number statement")
 
+_VOCAB_OP_NAME = {
+    "addition":       VocabGated(requires_vocab="addition",       preferred="addition",       fallback="putting together"),
+    "subtraction":    VocabGated(requires_vocab="subtraction",    preferred="subtraction",    fallback="taking away"),
+    "multiplication": VocabGated(requires_vocab="multiplication", preferred="multiplication", fallback="repeated joining"),
+    "division":       VocabGated(requires_vocab="division",       preferred="division",       fallback="sharing equally"),
+}
+
 
 # ─── helpers ──────────────────────────────────────────────────────────────────
 
@@ -119,11 +126,21 @@ def generate_params(
     allowed_ops    = bounds["ops"]
 
     op_axis        = profile.get("operation")
+    explicit_op_requested = op_axis is not None
     if op_axis is None:
         op_axis = rng.choice(allowed_ops) if allowed_ops else "addition_subtraction"
 
-    # Grade guard: demote mul/div to add/sub if grade doesn't support it
-    if op_axis == "multiplication_division" and "multiplication_division" not in allowed_ops:
+    mul_div_requested = op_axis in ("multiplication", "division", "multiplication_division")
+    if mul_div_requested and "multiplication_division" not in allowed_ops:
+        if explicit_op_requested:
+            # Curriculum-gated: multiplication/division missing-factor problems are not
+            # part of this grade's competency (see is_variant_available_at). Fail loudly
+            # instead of silently demoting, which would otherwise leak the operation's
+            # vocabulary into a node that hasn't been introduced to it yet.
+            raise ValueError(
+                f"generate_params (missing_number): operation='{op_axis}' is not available "
+                f"for grade={grade} (allowed: {allowed_ops})."
+            )
         op_axis = "addition_subtraction"
 
     blank_pos      = profile.get("blank_position")
@@ -282,6 +299,7 @@ def generate_hints(
     miss_lbl = VOCAB_MISSING.resolve(cumulative_vocab)
     eq_lbl   = VOCAB_EQUATION.resolve(cumulative_vocab)
     inv_op   = _inverse_op(op)
+    inv_op_lbl = _VOCAB_OP_NAME[inv_op].resolve(cumulative_vocab)
 
     op_symbol = {"addition": "+", "subtraction": "−",
                  "multiplication": "×", "division": "÷"}
@@ -298,7 +316,7 @@ def generate_hints(
     if blank_pos == "change":
         return [
             f"The {eq_lbl} is: {a} {sym} ___ = {result}",
-            f"To find the {miss_lbl}, use the inverse operation ({inv_op}).",
+            f"To find the {miss_lbl}, use the opposite operation ({inv_op_lbl}).",
             f"{result} {op_symbol.get(inv_op, '?')} {a} = {missing}.",
             f"Check: {a} {sym} {missing} = {result}. ✓",
         ]
@@ -306,7 +324,7 @@ def generate_hints(
     # start
     return [
         f"The {eq_lbl} is: ___ {sym} {b} = {result}",
-        f"Use {inv_op} to undo the operation.",
+        f"Use {inv_op_lbl} to undo the operation.",
         f"{result} {op_symbol.get(inv_op, '?')} {b} = {missing}.",
         f"Check: {missing} {sym} {b} = {result}. ✓",
     ]
@@ -316,7 +334,7 @@ def generate_hints(
 
 MISSING_NUMBER_DNA = DNA(
     concept="missing_number",
-    dna_type="formula",
+    dna_type="algorithmic",
     answer_formula="missing_value",
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,

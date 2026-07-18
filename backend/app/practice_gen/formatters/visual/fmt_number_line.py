@@ -313,20 +313,27 @@ def _build_visual_params(
 # Question-text builder
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _stem(params: dict, interaction_mode: str) -> str:
+def _stem(params: dict, interaction_mode: str, cumulative_vocab: set) -> str:
+    # "number line" (and its bare substring "line") may not be introduced yet at
+    # early nodes. Rather than guess a fallback phrase that could itself collide
+    # with some other gated term, drop the visual's name entirely when unknown —
+    # the visual itself is self-explanatory without it.
+    known = "number line" in cumulative_vocab
+    suffix = " on the number line" if known else ""
+
     ct = params.get("content_type", "whole_number")
     if interaction_mode == "set":
         if ct == "improper_fraction":
-            return f"Move the dot to show {params['fraction_display']} on the number line."
+            return f"Move the dot to show {params['fraction_display']}{suffix}."
         if ct == "mixed_number":
-            return f"Move the dot to show {params['fraction_display']} on the number line."
+            return f"Move the dot to show {params['fraction_display']}{suffix}."
         if ct == "fraction":
-            return f"Move the dot to show {params['numerator']}/{params['denominator']} on the number line."
+            return f"Move the dot to show {params['numerator']}/{params['denominator']}{suffix}."
         if ct == "decimal":
-            return f"Move the dot to show {params['decimal_value']} on the number line."
-        return f"Move the dot to show {params['value']} on the number line."
+            return f"Move the dot to show {params['decimal_value']}{suffix}."
+        return f"Move the dot to show {params['value']}{suffix}."
     else:  # read
-        return "What number is marked on the number line?"
+        return f"What number is marked{suffix}?"
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -679,7 +686,7 @@ def format_number_line(
         else:
             question_text = f"Show {a} − {b} on the number line."
     else:
-        question_text = _stem(vp, interaction_mode)
+        question_text = _stem(vp, interaction_mode, set(ctx.cumulative_vocab))
 
     format_data: dict = {"visual_params": vp}
     if mcq_options is not None:

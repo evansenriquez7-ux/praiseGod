@@ -95,6 +95,12 @@ CURRICULUM_VARIANT_GATES: Dict[tuple, tuple] = {
     # Multiplication: multi_digit introduced in G3Q3 (2-3 digit × 1-digit operations)
     ("multiplication", "number_type", "multi_digit"): (3, 3),
 
+    # Length measurement: standard units (cm/m) are a G2 competency — G1 uses
+    # non-standard units only (paperclips, hands, steps).
+    ("length_measurement", "unit_type", "cm"): (2, 1),
+    ("length_measurement", "unit_type", "m"): (2, 1),
+    ("length_measurement", "task_type", "convert"): (2, 1),
+
     # Word problems: available from G1Q1 per curriculum ("solve problems given orally or in pictures")
     # No gate entries (all LCs with word_problem context available from Q1)
 }
@@ -199,7 +205,6 @@ COMPATIBILITY: Dict[str, List[str]] = {
         "cloze",
         "ordering",           # Ordering makes sense for counting sequences
         "number_line_read",
-        "ten_frame",
         "emoji_pictorial",
     ],
 
@@ -209,7 +214,6 @@ COMPATIBILITY: Dict[str, List[str]] = {
         "true_false",
         "number_line_read",
         "number_line_set",
-        "emoji_pictorial",
     ],
 
     "ordinal_numbers": [
@@ -469,7 +473,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
 
     "fractions": {
         "fraction_type": ["proper"],
-        "operation": ["add", "subtract"],
+        "operation": ["add", "subtract", "add_subtract"],
         "fraction_model": ["area_model", "set_model", "number_line"],
     },
 
@@ -604,8 +608,6 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     },
 
     "counting": {
-        # ten_frame only works for forward counting
-        "ten_frame": {"direction": ["forward"], "context": ["pure"]},
         # emoji_pictorial only works for forward counting
         "emoji_pictorial": {"direction": ["forward"]},
         "number_line_read": {"context": ["pure"]},
@@ -662,9 +664,11 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         "mcq": {"context": ["pure"]},
         "cloze": {"context": ["pure"]},
         "true_false": {"context": ["pure"]},
-        "number_line_read": {"context": ["pure"]},
-        "number_line_set": {"context": ["pure"]},
-        "emoji_pictorial": {"context": ["pure"]},
+        # A number line can only ever show a numeral position — it cannot
+        # represent a word-form answer. Restrict to word_to_numeral (numeral
+        # is the answer); numeral_to_word doesn't fit this visual formatter.
+        "number_line_read": {"context": ["pure"], "task_type": ["word_to_numeral"]},
+        "number_line_set": {"context": ["pure"], "task_type": ["word_to_numeral"]},
     },
 
     "rounding": {

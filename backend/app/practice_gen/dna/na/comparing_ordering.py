@@ -229,7 +229,10 @@ def generate_hints(
     if task_type in ("compare_two", "compare_pair"):
         a, b = numbers[0], numbers[1]
         hints.append(f"Compare {a} and {b}.")
-        hints.append(f"Start from the largest place value and compare each digit.")
+        if "place value" in cumulative_vocab and "digit" in cumulative_vocab:
+            hints.append("Start from the largest place value and compare each digit.")
+        else:
+            hints.append("Start from the leftmost number and compare one at a time.")
         if a > b:
             hints.append(f"{a} is {gt} {b}, so we write {a} > {b}.")
         elif a < b:
@@ -255,7 +258,7 @@ def generate_hints(
 
 COMPARING_ORDERING_DNA = DNA(
     concept="comparing_ordering",
-    dna_type="formula",
+    dna_type="algorithmic",
     answer_formula="answer",
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,

@@ -31,10 +31,17 @@ def format_fill_in_table(
         "rows": rows,
     }
 
+    table_known = "table" in ctx.cumulative_vocab
+    scale_known = "scale" in ctx.cumulative_vocab
+    table_word = "table" if table_known else "chart"
+
     if "scale" in vp and vp["scale"] > 1:
-        question_text = f"Fill in the table. Note: Each symbol meant {vp['scale']} items."
+        if scale_known:
+            question_text = f"Fill in the {table_word}. Note: Each symbol meant {vp['scale']} items."
+        else:
+            question_text = f"Fill in the {table_word}. Note: Each symbol stands for {vp['scale']} items."
     else:
-        question_text = "Fill in the table with the correct counts."
+        question_text = f"Fill in the {table_word} with the correct counts."
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_table",

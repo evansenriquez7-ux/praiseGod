@@ -189,8 +189,15 @@ def max_regrouping_places(max_result: int) -> int:
     return len(str(int(max_result))) - 1
 
 
-def regrouping_is_feasible(level: str, max_result: int) -> bool:
+def regrouping_is_feasible(level: Any, max_result: int, grade: Optional[int] = None) -> bool:
     """True if `level` can be satisfied by some (a, b) with a + b <= max_result."""
+    if level is False:
+        level = "none"
+    elif level is True:
+        level = "ones"
+    if grade == 1 or (grade is None and max_result <= 100):
+        # For Grade 1, a and b are bounded by 50, so tens/double regrouping are not feasible
+        return level in ("none", "ones")
     return REGROUP_LEVEL_PLACES.get(level, 0) <= max_regrouping_places(max_result)
 
 
@@ -256,6 +263,10 @@ def generate_params(
 
     # Difficulty axes
     reg_level  = profile.get("regrouping", "none")
+    if reg_level is False:
+        reg_level = "none"
+    elif reg_level is True:
+        reg_level = "ones"
     # Note: Regrouping constraint is now based on COUNT of places,
     # not which place. No min_result enforcement needed; the constraint
     # itself ensures sufficient variety (one_place and two_places require
@@ -283,7 +294,7 @@ def generate_params(
     # so a level demanding more places has no valid pair — raise immediately.
     # (The orchestrator/auditor pre-filter should keep such profiles from ever
     # reaching here; this guard is defense in depth.)
-    if not regrouping_is_feasible(reg_level, max_result):
+    if not regrouping_is_feasible(reg_level, max_result, grade=grade):
         raise RuntimeError(
             f"generate_params (addition): regrouping level '{reg_level}' requires "
             f"{REGROUP_LEVEL_PLACES.get(reg_level, 0)} carry places but max_result="
@@ -365,33 +376,53 @@ def generate_hints(
     add_label  = VOCAB_ADDEND.resolve(cumulative_vocab)
     reg_phrase = VOCAB_REGROUP.resolve(cumulative_vocab)
 
+    # Whether place-value column terminology is known to the student
+    knows_place_value = "ones" in cumulative_vocab and "tens" in cumulative_vocab
+
     hints: List[str] = []
 
     # Step 1: identify the operation
     hints.append(f"We are adding two numbers: {a} and {b}.")
 
-    # Step 2: ones column
+    # Step 2: ones column (rightmost digit)
     ones_a, ones_b = a % 10, b % 10
     ones_sum = ones_a + ones_b
-    if ones_sum >= 10:
-        hints.append(
-            f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. "
-            f"Write {ones_sum % 10} in the ones place and {reg_phrase} 1 ten."
-        )
+    if knows_place_value:
+        if ones_sum >= 10:
+            hints.append(
+                f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. "
+                f"Write {ones_sum % 10} in the ones place and {reg_phrase} 1 ten."
+            )
+        else:
+            hints.append(f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. Write {ones_sum} in the ones place.")
     else:
-        hints.append(f"Add the ones: {ones_a} + {ones_b} = {ones_sum}. Write {ones_sum} in the ones place.")
+        # Position-neutral language for students who haven't learned place value yet
+        if ones_sum >= 10:
+            hints.append(
+                f"Add the last digits: {ones_a} + {ones_b} = {ones_sum}. "
+                f"Write {ones_sum % 10} and {reg_phrase} 1."
+            )
+        else:
+            hints.append(f"Add the last digits: {ones_a} + {ones_b} = {ones_sum}.")
 
-    # Step 3: tens column (only shown when both numbers have tens)
+    # Step 3: leading column (only shown when both numbers have more than one digit)
     if a >= 10 or b >= 10:
         carry    = 1 if ones_sum >= 10 else 0
         tens_a   = a // 10 % 10
         tens_b   = b // 10 % 10
         tens_sum = tens_a + tens_b + carry
-        hints.append(
-            f"Add the tens: {tens_a} + {tens_b}"
-            + (f" + {carry} (carried)" if carry else "")
-            + f" = {tens_sum}."
-        )
+        if knows_place_value:
+            hints.append(
+                f"Add the tens: {tens_a} + {tens_b}"
+                + (f" + {carry} (carried)" if carry else "")
+                + f" = {tens_sum}."
+            )
+        else:
+            hints.append(
+                f"Add the first digits: {tens_a} + {tens_b}"
+                + (f" + {carry}" if carry else "")
+                + f" = {tens_sum}."
+            )
 
     # Step 4: final answer
     hints.append(f"{sum_label.capitalize()} is {a} + {b} = {result}.")

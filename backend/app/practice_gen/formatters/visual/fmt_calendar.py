@@ -190,6 +190,7 @@ def format_calendar(
     month = vp["month"]
     year = vp["year"]
     month_name = datetime(year, month, 1).strftime("%B")
+    cal_word = "calendar" if "calendar" in ctx.cumulative_vocab else "date chart"
 
     traps = _build_traps(vp, rng)
 
@@ -200,7 +201,7 @@ def format_calendar(
 
         if interaction_mode in ("read", "set"):
             question_text = (
-                f"Look at the {month_name} {year} calendar. "
+                f"Look at the {month_name} {year} {cal_word}. "
                 f"What day of the week is {month_name} {date}?"
             )
         raw_correct = weekday
@@ -213,7 +214,7 @@ def format_calendar(
         duration = vp["correct_duration"]
 
         question_text = (
-            f"Look at the {month_name} {year} calendar. "
+            f"Look at the {month_name} {year} {cal_word}. "
             f"How many days are there from {month_name} {day1} "
             f"to {month_name} {day2}, inclusive?"
         )

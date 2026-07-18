@@ -95,20 +95,6 @@ class QuestionResponse(BaseModel):
     answer_collection: str = "mcq" # How the frontend should collect the answer
     interaction_mode: Optional[str] = "read" # "read" or "set"
 
-class VisualQuestionResponse(BaseModel):
-    """Extended response for visual skeleton problems with interactive UI params"""
-    skill_id: str                        # Competency text (truncated for display)
-    skeleton_id: str                     # Stateless ID: e.g., "nl_4_12345_m"
-    stem: str                            # Problem statement
-    visual_type: str                     # "NumberLine", "ClockSet", "PesoMoney", etc.
-    visual_params: Dict[str, Any]        # Type-specific rendering parameters
-    question_mode: str                   # UI routing: "number_line", "clock_set", etc.
-    all_traps: Dict[str, Any]            # Comprehensive trap catalog (3-4 selected by frontend)
-    competency_text: Optional[str] = None  # Full MATATAG competency
-    grade: Optional[int] = None          # Inferred grade
-    difficulty: float = 0.5              # Scalar difficulty: 0.0-1.5+ (or legacy int 1-4)
-    is_testy: bool = True                # Always True for visual skeletons
-
 class PlacementSkipRequest(BaseModel):
     student_id: int
     subject: str

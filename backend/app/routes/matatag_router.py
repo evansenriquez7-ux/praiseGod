@@ -21,6 +21,7 @@ from backend.app.database import get_db, engine, Base
 from backend.app import models, schemas, subagents
 from backend.app.services import placement
 from backend.app.practice_gen import pipeline
+from backend.app.practice_gen.dna.base import FormattedProblem
 
 from backend.app.practice_gen import registry as _pg_registry
 
@@ -353,8 +354,9 @@ def get_matatag_difficulty_axes(node_id: str):
                     "value": value,
                     "label": f"Up to {value} (scalar={scalar:.2f})",
                 })
-            # Add advanced (bridge zone) scalar of 1.25 for all continuous dimensions
-            bridge_scalar = 1.25
+            # Add advanced (bridge zone) scalar from DIFFICULTY_LEVEL_MAP for all continuous dimensions
+            from backend.app.practice_gen.dna.base import DIFFICULTY_LEVEL_MAP
+            bridge_scalar = DIFFICULTY_LEVEL_MAP[4]
             scale_type = axis.get("scale", "linear")
             if scale_type == "logarithmic":
                 shift = 1 if min_val == 0 else 0
@@ -528,8 +530,9 @@ def get_matatag_lab_config(node_id: str):
                     "label": f"Up to {value} (scalar={scalar:.2f})",
                 })
             
-            # Add advanced (bridge zone) scalar of 1.25 for all continuous dimensions
-            bridge_scalar = 1.25
+            # Add advanced (bridge zone) scalar from DIFFICULTY_LEVEL_MAP for all continuous dimensions
+            from backend.app.practice_gen.dna.base import DIFFICULTY_LEVEL_MAP
+            bridge_scalar = DIFFICULTY_LEVEL_MAP[4]
             if scale_type == "logarithmic":
                 shift = 1 if min_val == 0 else 0
                 log_min = math.log10(min_val + shift)
@@ -887,7 +890,8 @@ def matatag_lab_generate(
             seed=seed,
             allowed_formatters=final_fmts,
             allowed_difficulties=_allowed_diff,
-            allowed_contexts=_allowed_ctx
+            allowed_contexts=_allowed_ctx,
+            is_student_path=True
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Generation failed: {str(e)}")
@@ -986,7 +990,7 @@ def matatag_lab_submit(
             # Parse grade level from node ID
             grade_match = re.search(r"mat_g(\d+)", node_id)
             grade_val = int(grade_match.group(1)) if grade_match else 1
-            skeleton = _pg_run(node_id=node_id, seed=seed_val)
+            skeleton = _pg_run(node_id=node_id, seed=seed_val, is_student_path=True)
         except Exception:
             raise HTTPException(status_code=404, detail="Question session expired. Please generate a new problem.")
 
@@ -1343,14 +1347,11 @@ def get_node_config(node_id: str, db: Session = Depends(get_db)):
     }
 
 
-@router.post("/api/matatag/lab/v2/generate")
+@router.post("/api/matatag/lab/v2/generate", response_model=FormattedProblem)
 def matatag_lab_v2_generate(req: LabV2GenerateRequest, db: Session = Depends(get_db)):
     """
     Generate a practice problem using the new practice_gen pipeline.
     """
-    with open("/tmp/last_request.json", "w") as f:
-        f.write(req.json())
-
     from backend.app.practice_gen.pipeline import run
     from backend.app.practice_gen.registry import get_node_info
 
@@ -1374,7 +1375,7 @@ def matatag_lab_v2_generate(req: LabV2GenerateRequest, db: Session = Depends(get
         import random as _rand
         seed = _rand.randint(10000, 999999)
     try:
-        # Single source of truth (docs/pgen_checklist.md §"Matatag Lab as
+        # Single source of truth (docs/pgen_contract.md "Matatag Lab as
         # Single Source of Truth"): the Lab's Generate Preview MUST render
         # exactly what the student portal will serve for the same enabled
         # options. The previous is_lab=True widened the Lab beyond the LC's

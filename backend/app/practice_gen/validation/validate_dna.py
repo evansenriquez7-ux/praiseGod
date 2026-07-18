@@ -23,54 +23,7 @@ from ..generators.difficulty import (
 )
 
 
-# ─── DNA module registry (mirrors base_generator._DNA_MODULE_MAP) ─────────────
-
-_DNA_MODULE_MAP: Dict[str, str] = {
-    "addition":            "backend.app.practice_gen.dna.na.addition",
-    "subtraction":         "backend.app.practice_gen.dna.na.subtraction",
-    "multiplication":      "backend.app.practice_gen.dna.na.multiplication",
-    "division":            "backend.app.practice_gen.dna.na.division",
-    "counting":            "backend.app.practice_gen.dna.na.counting",
-    "number_reading":      "backend.app.practice_gen.dna.na.number_reading",
-    "ordinal_numbers":     "backend.app.practice_gen.dna.na.ordinal_numbers",
-    "place_value":         "backend.app.practice_gen.dna.na.place_value",
-    "comparing_ordering":  "backend.app.practice_gen.dna.na.comparing_ordering",
-    "missing_number":      "backend.app.practice_gen.dna.na.missing_number",
-    "patterns":            "backend.app.practice_gen.dna.na.patterns",
-    "fractions":           "backend.app.practice_gen.dna.na.fractions",
-    "money_peso":          "backend.app.practice_gen.dna.na.money_peso",
-    "rounding":            "backend.app.practice_gen.dna.na.rounding",
-    "order_of_operations": "backend.app.practice_gen.dna.na.order_of_operations",
-    "shapes_2d":           "backend.app.practice_gen.dna.mg.shapes_2d",
-    "length_measurement":  "backend.app.practice_gen.dna.mg.length_measurement",
-    "mass_capacity":       "backend.app.practice_gen.dna.mg.mass_capacity",
-    "time_reading":        "backend.app.practice_gen.dna.mg.time_reading",
-    "calendar":            "backend.app.practice_gen.dna.mg.calendar",
-    "perimeter":           "backend.app.practice_gen.dna.mg.perimeter",
-    "area":                "backend.app.practice_gen.dna.mg.area",
-    "geometric_lines":     "backend.app.practice_gen.dna.mg.geometric_lines",
-    "symmetry_slides":     "backend.app.practice_gen.dna.mg.symmetry_slides",
-    "pictographs":         "backend.app.practice_gen.dna.dp.pictographs",
-    "bar_graphs":          "backend.app.practice_gen.dna.dp.bar_graphs",
-    "probability_language":"backend.app.practice_gen.dna.dp.probability_language",
-}
-
-
-def _load_dna(concept: str) -> Optional[DNA]:
-    """Import the DNA module and return its DNA instance, or None on failure."""
-    module_path = _DNA_MODULE_MAP.get(concept)
-    if module_path is None:
-        return None
-    try:
-        mod = importlib.import_module(module_path)
-    except ImportError:
-        return None
-    # Convention: the DNA instance is the only DNA object at module level.
-    for attr in dir(mod):
-        obj = getattr(mod, attr)
-        if isinstance(obj, DNA) and obj.concept == concept:
-            return obj
-    return None
+from ._manifest import DNA_MODULE_MAP, load_dna
 
 
 def _sample_params_for_grade(dna: DNA, grade: int, seed: int = 42) -> Optional[Dict[str, Any]]:
@@ -78,7 +31,7 @@ def _sample_params_for_grade(dna: DNA, grade: int, seed: int = 42) -> Optional[D
     Call the DNA module's generate_params with a neutral profile.
     Returns the params dict, or None if generation fails.
     """
-    module_path = _DNA_MODULE_MAP.get(dna.concept)
+    module_path = DNA_MODULE_MAP.get(dna.concept)
     if module_path is None:
         return None
     try:
@@ -106,6 +59,34 @@ def _eval_formula(formula: str, values: Dict[str, Any]) -> Any:
     }
     ns = {**_safe_ns, **values}
     return eval(formula, {"__builtins__": {}}, ns)  # noqa: S307
+
+
+def _are_values_equal(v1: Any, v2: Any) -> bool:
+    """Check if two math values are equal, supporting fraction strings vs float comparison."""
+    if v1 == v2:
+        return True
+    def to_float(v):
+        if isinstance(v, (int, float)):
+            return float(v)
+        if isinstance(v, str):
+            if "/" in v:
+                try:
+                    parts = v.split("/")
+                    return float(parts[0]) / float(parts[1])
+                except Exception:
+                    pass
+            else:
+                try:
+                    return float(v)
+                except Exception:
+                    pass
+        return None
+    
+    f1 = to_float(v1)
+    f2 = to_float(v2)
+    if f1 is not None and f2 is not None:
+        return math.isclose(f1, f2)
+    return False
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -186,7 +167,7 @@ def validate_formula_dna(dna: DNA) -> List[str]:
 
             if correct is not None:
                 # 4. Distractor != correct (runtime filter handles edge cases — WARN only)
-                if d_val == correct:
+                if _are_values_equal(d_val, correct):
                     errors.append(
                         f"WARN {concept}: ErrorPattern '{ep.label}' produces "
                         f"distractor == correct answer ({d_val}) for sample seed. "
@@ -197,7 +178,7 @@ def validate_formula_dna(dna: DNA) -> List[str]:
                     continue
 
             # 5. Distractors mutually distinct
-            if d_val in distractor_values:
+            if any(_are_values_equal(d_val, val) for val in distractor_values):
                 errors.append(
                     f"{concept}: ErrorPattern '{ep.label}' produces a duplicate "
                     f"distractor value ({d_val})."
@@ -284,6 +265,86 @@ def validate_static_bank_dna(dna: DNA) -> List[str]:
     return errors
 
 
+def validate_algorithmic_dna(dna: DNA) -> List[str]:
+    """
+    Validate an algorithmic-type DNA for structural correctness.
+    Similar to validate_formula_dna since it evaluates formulas/error patterns against generated values.
+    """
+    errors: List[str] = []
+    concept = dna.concept
+
+    # 1. answer_formula present
+    if dna.answer_formula is None:
+        errors.append(f"{concept}: answer_formula is None for algorithmic-type DNA.")
+        return errors
+
+    # 2. param_bounds lo < hi
+    for grade_key, bounds in dna.param_bounds.items():
+        for param_name, bound in bounds.items():
+            if not isinstance(bound, (list, tuple)) or len(bound) < 2:
+                continue
+            lo, hi = bound[0], bound[1]
+            if not (isinstance(lo, (int, float)) and isinstance(hi, (int, float))):
+                continue
+            if lo >= hi:
+                errors.append(
+                    f"{concept} [{grade_key}]: param '{param_name}' has "
+                    f"lo={lo} >= hi={hi} — randint would crash."
+                )
+
+    # 3–5. Evaluate error patterns against sample params
+    grade_keys = list(dna.param_bounds.keys())
+    sample_grade_key = grade_keys[0] if grade_keys else None
+    sample_grade = int(sample_grade_key[1]) if sample_grade_key else 1
+    sample_values = _sample_params_for_grade(dna, sample_grade, seed=42)
+
+    if sample_values is not None:
+        # Compute correct answer
+        try:
+            correct = _eval_formula(dna.answer_formula, sample_values)
+        except Exception as exc:
+            errors.append(
+                f"{concept}: answer_formula '{dna.answer_formula}' failed to "
+                f"evaluate for sample values {sample_values}: {exc}"
+            )
+            correct = None
+
+        distractor_values: List[Any] = []
+        for ep in dna.error_patterns:
+            # 3. Formula evaluates without error
+            if ep.formula in ("None", None):
+                continue
+            try:
+                d_val = _eval_formula(ep.formula, sample_values)
+            except Exception as exc:
+                errors.append(
+                    f"{concept}: ErrorPattern '{ep.label}' formula "
+                    f"'{ep.formula}' raised: {exc}"
+                )
+                continue
+
+            if correct is not None:
+                # 4. Distractor != correct (runtime filter handles edge cases — WARN only)
+                if _are_values_equal(d_val, correct):
+                    errors.append(
+                        f"WARN {concept}: ErrorPattern '{ep.label}' produces "
+                        f"distractor == correct answer ({d_val}) for sample seed. "
+                        f"Runtime distractor filter handles this."
+                    )
+                    continue
+
+            # 5. Distractors mutually distinct
+            if any(_are_values_equal(d_val, val) for val in distractor_values):
+                errors.append(
+                    f"{concept}: ErrorPattern '{ep.label}' produces a duplicate "
+                    f"distractor value ({d_val})."
+                )
+            else:
+                distractor_values.append(d_val)
+
+    return errors
+
+
 def validate_all_dnas() -> Dict[str, List[str]]:
     """
     Import and validate all 27 DNA instances.
@@ -296,10 +357,11 @@ def validate_all_dnas() -> Dict[str, List[str]]:
     """
     results: Dict[str, List[str]] = {}
 
-    for concept in _DNA_MODULE_MAP:
-        dna = _load_dna(concept)
-        if dna is None:
-            results[concept] = [f"{concept}: could not import DNA module."]
+    for concept in DNA_MODULE_MAP:
+        try:
+            dna = load_dna(concept)
+        except ImportError as e:
+            results[concept] = [f"{concept}: could not import DNA module: {e}"]
             continue
 
         if dna.dna_type == "formula":
@@ -308,6 +370,8 @@ def validate_all_dnas() -> Dict[str, List[str]]:
             errors = validate_visual_dna(dna)
         elif dna.dna_type == "static_bank":
             errors = validate_static_bank_dna(dna)
+        elif dna.dna_type == "algorithmic":
+            errors = validate_algorithmic_dna(dna)
         else:
             errors = [f"{concept}: unknown dna_type '{dna.dna_type}'."]
 
@@ -356,7 +420,28 @@ def validate_difficulty_feasibility(
     """
     errors: List[str] = []
 
+    module_path = DNA_MODULE_MAP.get(dna.concept)
+    mod = importlib.import_module(module_path) if module_path else None
+    bounds = dna.param_bounds_for_grade(grade)
+
     for profile in enumerate_profiles(dna):
+        # Some DNAs pre-declare certain (axis, grade-range) combinations as
+        # infeasible and gate them at the config layer (e.g. addition's
+        # regrouping_is_feasible, consulted by the Lab config router) so that
+        # combination is never actually requested from the generator. Skip
+        # those here too instead of flagging a sampler viability problem
+        # that can never occur on the serving path.
+        if "regrouping" in profile and mod is not None and hasattr(mod, "regrouping_is_feasible"):
+            max_result = bounds.get("max_result") or (bounds.get("a")[1] if "a" in bounds and isinstance(bounds["a"], tuple) else None)
+            if max_result is not None:
+                import inspect
+                sig = inspect.signature(mod.regrouping_is_feasible)
+                kwargs = {}
+                if "grade" in sig.parameters:
+                    kwargs["grade"] = grade
+                if not mod.regrouping_is_feasible(profile["regrouping"], max_result, **kwargs):
+                    continue
+
         rng = random.Random(rng_seed)
         rate = measure_acceptance_rate(dna, grade, profile, rng)
         if rate < MIN_ACCEPTANCE_RATE:
@@ -368,9 +453,49 @@ def validate_difficulty_feasibility(
     return errors
 
 
+def run_all_feasibility_checks() -> Dict[str, List[str]]:
+    """
+    Run validate_difficulty_feasibility for every DNA x every grade present
+    in that DNA's param_bounds. Returns concept -> list of error strings
+    (empty list = all profiles viable for that DNA across its grades).
+    """
+    results: Dict[str, List[str]] = {}
+    for concept in DNA_MODULE_MAP:
+        try:
+            dna = load_dna(concept)
+        except ImportError as e:
+            results[concept] = [f"{concept}: could not import DNA module: {e}"]
+            continue
+
+        grades = sorted(
+            int(key[1:]) for key in dna.param_bounds if key.startswith("g") and key[1:].isdigit()
+        )
+        errors: List[str] = []
+        for grade in grades:
+            errors.extend(validate_difficulty_feasibility(dna, grade))
+        results[concept] = errors
+
+    total = len(results)
+    failed_concepts = [c for c, errs in results.items() if errs]
+    print(f"\nDifficulty feasibility validation: {total - len(failed_concepts)}/{total} passed, {len(failed_concepts)} failed.")
+    for concept, errs in results.items():
+        if errs:
+            print(f"  FAIL {concept}:")
+            for e in errs:
+                print(f"    - {e}")
+        else:
+            print(f"  PASS {concept}")
+
+    return results
+
+
 # ─── entry point ──────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     results = validate_all_dnas()
-    failed = [c for c, errs in results.items() if errs]
-    sys.exit(1 if failed else 0)
+    failed = [c for c, errs in results.items() if any(not e.startswith("WARN") for e in errs)]
+
+    feasibility_results = run_all_feasibility_checks()
+    feasibility_failed = [c for c, errs in feasibility_results.items() if errs]
+
+    sys.exit(1 if (failed or feasibility_failed) else 0)

@@ -21,56 +21,12 @@ from ..generators.base_generator import generate_context
 
 # ─── DNA module registry (same as validate_dna) ───────────────────────────────
 
-_DNA_MODULE_MAP: Dict[str, str] = {
-    "addition":            "backend.app.practice_gen.dna.na.addition",
-    "subtraction":         "backend.app.practice_gen.dna.na.subtraction",
-    "multiplication":      "backend.app.practice_gen.dna.na.multiplication",
-    "division":            "backend.app.practice_gen.dna.na.division",
-    "counting":            "backend.app.practice_gen.dna.na.counting",
-    "number_reading":      "backend.app.practice_gen.dna.na.number_reading",
-    "ordinal_numbers":     "backend.app.practice_gen.dna.na.ordinal_numbers",
-    "place_value":         "backend.app.practice_gen.dna.na.place_value",
-    "comparing_ordering":  "backend.app.practice_gen.dna.na.comparing_ordering",
-    "missing_number":      "backend.app.practice_gen.dna.na.missing_number",
-    "patterns":            "backend.app.practice_gen.dna.na.patterns",
-    "fractions":           "backend.app.practice_gen.dna.na.fractions",
-    "money_peso":          "backend.app.practice_gen.dna.na.money_peso",
-    "rounding":            "backend.app.practice_gen.dna.na.rounding",
-    "order_of_operations": "backend.app.practice_gen.dna.na.order_of_operations",
-    "shapes_2d":           "backend.app.practice_gen.dna.mg.shapes_2d",
-    "length_measurement":  "backend.app.practice_gen.dna.mg.length_measurement",
-    "mass_capacity":       "backend.app.practice_gen.dna.mg.mass_capacity",
-    "time_reading":        "backend.app.practice_gen.dna.mg.time_reading",
-    "calendar":            "backend.app.practice_gen.dna.mg.calendar",
-    "perimeter":           "backend.app.practice_gen.dna.mg.perimeter",
-    "area":                "backend.app.practice_gen.dna.mg.area",
-    "geometric_lines":     "backend.app.practice_gen.dna.mg.geometric_lines",
-    "symmetry_slides":     "backend.app.practice_gen.dna.mg.symmetry_slides",
-    "pictographs":         "backend.app.practice_gen.dna.dp.pictographs",
-    "bar_graphs":          "backend.app.practice_gen.dna.dp.bar_graphs",
-    "probability_language":"backend.app.practice_gen.dna.dp.probability_language",
-}
+from ._manifest import DNA_MODULE_MAP, load_dna
 
 # Three representative interest themes used for invariance testing.
 # These must exist in interest_bank.json; if not found the generator falls back
 # to the neutral theme — which is still fine for invariance checking.
 _TEST_THEMES: List[str] = ["animals", "sports", "food"]
-
-
-def _load_dna(concept: str) -> Optional[DNA]:
-    """Import the DNA module and return its DNA instance, or None on failure."""
-    module_path = _DNA_MODULE_MAP.get(concept)
-    if module_path is None:
-        return None
-    try:
-        mod = importlib.import_module(module_path)
-    except ImportError:
-        return None
-    for attr in dir(mod):
-        obj = getattr(mod, attr)
-        if isinstance(obj, DNA) and obj.concept == concept:
-            return obj
-    return None
 
 
 def validate_interest_invariance(
@@ -154,11 +110,12 @@ def validate_all_interest_invariance() -> Dict[str, List[str]]:
 
     results: Dict[str, List[str]] = {}
 
-    for concept, module_path in _DNA_MODULE_MAP.items():
-        dna = _load_dna(concept)
-        if dna is None:
+    for concept in DNA_MODULE_MAP:
+        try:
+            dna = load_dna(concept)
+        except ImportError:
             continue
-        if not (dna.dna_type == "formula" and dna.requires_context):
+        if not (dna.dna_type in ("formula", "algorithmic") and dna.requires_context):
             continue
 
         node_id = concept_to_node.get(concept)

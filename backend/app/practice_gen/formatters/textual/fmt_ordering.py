@@ -53,7 +53,7 @@ def _infer_direction(sequence: List) -> str:
     return "ascending"
 
 
-def format_ordering(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
+def format_ordering(ctx: QuestionContext, rng: random.Random, format_name: str = "ordering") -> FormattedProblem:
     """
     Format a QuestionContext as an ordering problem.
 
@@ -113,7 +113,7 @@ def format_ordering(ctx: QuestionContext, rng: random.Random) -> FormattedProble
         correct_answer=correct_order,
         distractors=ctx.distractors,
         hints=ctx.hints,
-        format="ordering",
+        format=format_name,
         format_data=format_data,
         is_visual=bool(ctx.visual_params),
         visual_type=ctx.visual_type,

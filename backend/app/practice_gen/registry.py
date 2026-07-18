@@ -277,6 +277,27 @@ def _parse_competency_bounds(
         if match:
             max_val = int(match.group(1))
             bounds["range"] = (10, max_val)
+
+    # Symmetry and slides: restrict to slides if symmetry isn't mentioned
+    elif dna_name == "symmetry_slides":
+        if "symmetry" in text or "symmetric" in text:
+            pass
+        else:
+            bounds["concept"] = "slide_translation"
+
+    # Mass and capacity: restrict to mass if capacity/volume/liter is not mentioned
+    elif dna_name == "mass_capacity":
+        if "capacity" in text or "liter" in text or "milliliter" in text or "volume" in text:
+            pass
+        else:
+            bounds["measurement_type"] = "mass"
+
+    # Geometric lines: restrict to point/line/segment/ray if parallel/intersecting/perpendicular is not mentioned
+    elif dna_name == "geometric_lines":
+        if "parallel" in text or "intersecting" in text or "perpendicular" in text:
+            pass
+        else:
+            bounds["concept_type"] = "point_line_segment_ray"
             
     # Generic text-scrape fallback if no primary limit key was found.
     # Attempt to extract any number >= 10 from the LC text and use it

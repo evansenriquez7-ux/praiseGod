@@ -185,15 +185,16 @@ def _build_traps(seq_info: dict, missing_indices: List[int]) -> List:
 # Question text
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _stem(seq_info: dict, missing_indices: List[int], interaction_mode: str) -> str:
+def _stem(seq_info: dict, missing_indices: List[int], interaction_mode: str, cumulative_vocab) -> str:
     rule = seq_info["rule"]
+    term_word = "term" if "missing term" in cumulative_vocab else "piece"
     if interaction_mode == "set":
-        return f"Fill in the missing terms. Pattern: {rule}."
+        return f"Fill in the missing {term_word}s. Pattern: {rule}."
     # read mode
     if len(missing_indices) == 1:
         pos_label = missing_indices[0] + 1  # 1-indexed for students
-        return f"What is the missing term (position {pos_label}) in the pattern?"
-    return "What are the missing terms in the pattern?"
+        return f"What is the missing {term_word} (position {pos_label}) in the pattern?"
+    return f"What are the missing {term_word}s in the pattern?"
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -280,7 +281,7 @@ def format_pattern_sequence(
     else:
         final_answer = correct_answer
 
-    question_text = _stem(seq_info, missing_indices, interaction_mode)
+    question_text = _stem(seq_info, missing_indices, interaction_mode, ctx.cumulative_vocab)
 
     format_data: dict = {"visual_params": vp}
     if mcq_options:

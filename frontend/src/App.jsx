@@ -1041,40 +1041,45 @@ function App() {
           return;
         }
         const data = await res.json();
+
+        // The backend's FormattedProblem is a strict schema (extra="forbid"):
+        // MCQ-family formats always carry their options at format_data.mcq_options
+        // or format_data.options (never as a top-level `data.options`, array or
+        // object). A single accessor for the canonical shape — no cascade, no
+        // silent empty-array fallback. If an mcq-family format arrives without a
+        // valid options array, that's a malformed payload, not a render-as-empty.
+        const rawOpts = data.format_data?.mcq_options ?? data.format_data?.options;
+        const isMcqFamily = data.answer_collection === 'mcq';
+        if (isMcqFamily && !Array.isArray(rawOpts)) {
+          alert('Malformed problem payload — see console');
+          console.error('MATATAG Lab v2: expected format_data.mcq_options/options array, got:', data);
+          setMatatagLoading(false);
+          return;
+        }
+        const mcqOptions = Array.isArray(rawOpts)
+          ? rawOpts.map(o => ({
+              key: o.key,
+              text: String(o.value !== undefined && o.value !== null ? o.value : (o.text ?? ''))
+            }))
+          : [];
+
+        // difficulty_axes_served is back-inferred from the generated values and
+        // can legitimately come back empty (e.g. static-bank content, or a
+        // scalar the detector couldn't map to a named level) — that's a known,
+        // common case, not a schema violation. Report it as unknown (null)
+        // rather than fabricating a misleading "medium" 0.5.
+        const axisVals = Object.values(data.difficulty_axes_served || {});
+        const difficulty = axisVals.length === 0
+          ? null
+          : axisVals.reduce((acc, v) => acc + (typeof v === 'number' ? v : parseFloat(v) || 0), 0) / axisVals.length;
+
         // Map v2 response to expected structure for rendering
         setMatatagQuestion({
           ...data,
           skeleton_id: data.problem_id,  // Map problem_id to skeleton_id for compatibility
           stem: data.question_text,
-          mcq_options: (() => {
-            const rawOpts = data.format_data?.mcq_options || data.format_data?.options;
-            if (Array.isArray(rawOpts)) {
-              return rawOpts.map(o => ({
-                key: o.key,
-                text: String(o.value !== undefined && o.value !== null ? o.value : (o.text ?? ''))
-              }));
-            }
-            if (Array.isArray(data.options)) {
-              return data.options.map(o => ({
-                key: o.key,
-                text: String(o.value !== undefined && o.value !== null ? o.value : (o.text ?? ''))
-              }));
-            }
-            if (data.options && typeof data.options === 'object') {
-              return Object.entries(data.options).map(([key, val]) => ({
-                key,
-                text: String(val !== undefined && val !== null ? val : '')
-              }));
-            }
-            return [];
-          })(),
-          difficulty: (() => {
-            const axes = data.difficulty_axes_served || data.difficulty_profile || {};
-            const vals = Object.values(axes);
-            if (vals.length === 0) return 0.5;
-            const sum = vals.reduce((acc, v) => acc + (typeof v === 'number' ? v : parseFloat(v) || 0), 0);
-            return sum / vals.length;
-          })(),
+          mcq_options: mcqOptions,
+          difficulty,
         });
       } else {
         // Fall back to old v1 endpoint

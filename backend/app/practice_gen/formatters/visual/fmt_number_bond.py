@@ -152,15 +152,16 @@ def _build_traps(bond: dict, answer: int, rng: random.Random) -> list:
 # Question text
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _stem(bond: dict, interaction_mode: str) -> str:
+def _stem(bond: dict, interaction_mode: str, cumulative_vocab) -> str:
     bp = bond["blank_position"]
     if interaction_mode == "set":
-        return "Fill in the missing number in the number bond."
+        return "Fill in the blank in the number bond."
     if bp == "whole":
-        return f"The two parts are {bond['part1']} and {bond['part2']}. What is the whole?"
+        sum_word = "sum" if "sum" in cumulative_vocab else "total"
+        return f"The two parts are {bond['part1']} and {bond['part2']}. What is the {sum_word}?"
     known_whole = bond["whole"]
     known_part = bond["part2"] if bp == "part1" else bond["part1"]
-    return f"The whole is {known_whole} and one part is {known_part}. What is the missing part?"
+    return f"The total is {known_whole} and one part is {known_part}. What is the other part?"
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -271,7 +272,7 @@ def format_number_bond(
     else:
         final_answer = answer
 
-    question_text = _stem(bond, interaction_mode)
+    question_text = _stem(bond, interaction_mode, ctx.cumulative_vocab)
 
     format_data: dict = {"visual_params": vp}
     if mcq_options:

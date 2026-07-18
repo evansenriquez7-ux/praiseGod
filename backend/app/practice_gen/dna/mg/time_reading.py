@@ -133,25 +133,48 @@ def generate_hints(
     values: Dict[str, Any],
     cumulative_vocab: Set[str],
 ) -> List[str]:
-    hints = [
-        "The short hand shows the hour. The long hand shows the minutes.",
-        f"The short (hour) hand points near {values['hour']}.",
-    ]
+    minute_known = "minute" in cumulative_vocab
+    hour = values["hour"]
     minute = values.get("minute", 0)
-    if minute == 0:
-        hints.append("The long (minute) hand points to 12, so the minutes are 00.")
-    elif minute == 30:
-        hints.append("The long (minute) hand points to 6, so the minutes are 30.")
-    elif minute == 15:
-        hints.append("The long (minute) hand points to 3, so the minutes are 15.")
-    elif minute == 45:
-        hints.append("The long (minute) hand points to 9, so the minutes are 45.")
+
+    if minute_known:
+        hints = [
+            "The short hand shows the hour. The long hand shows the minutes.",
+            f"The short (hour) hand points near {hour}.",
+        ]
+        if minute == 0:
+            hints.append("The long (minute) hand points to 12, so the minutes are 00.")
+        elif minute == 30:
+            hints.append("The long (minute) hand points to 6, so the minutes are 30.")
+        elif minute == 15:
+            hints.append("The long (minute) hand points to 3, so the minutes are 15.")
+        elif minute == 45:
+            hints.append("The long (minute) hand points to 9, so the minutes are 45.")
+        else:
+            marks = minute // 5
+            hints.append(
+                f"Count by 5s from 12: the long hand has passed {marks} marks, "
+                f"so the minutes are {minute}."
+            )
     else:
-        marks = minute // 5
-        hints.append(
-            f"Count by 5s from 12: the long hand has passed {marks} marks, "
-            f"so the minutes are {minute}."
-        )
+        # G1: 'minute' hasn't been introduced yet — describe hand position with
+        # 'half'/'quarter' (already known) instead of naming minutes directly.
+        hints = [
+            "The short hand shows the hour. The long hand shows how far past the hour it is.",
+            f"The short (hour) hand points near {hour}.",
+        ]
+        if minute == 0:
+            hints.append("The long hand points to 12, so it is exactly on the hour.")
+        elif minute == 30:
+            hints.append("The long hand points to 6 — that is half past the hour.")
+        elif minute == 15:
+            hints.append("The long hand points to 3 — that is a quarter past the hour.")
+        elif minute == 45:
+            hints.append("The long hand points to 9 — that is a quarter before the next hour.")
+        else:
+            marks = minute // 5
+            hints.append(f"Count by 5s from 12: the long hand has passed {marks} marks.")
+
     hints.append(f"The time shown is {values['time_str']}.")
     return hints
 

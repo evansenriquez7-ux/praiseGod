@@ -31,6 +31,8 @@ class PracticeOrchestrator:
         allowed_difficulties: Optional[Dict[str, List[Any]]] = None,
         allowed_contexts: Optional[Dict[str, List[str]]] = None,
         is_lab: bool = False,
+        is_student_path: bool = False,
+        forced_dna: Optional[str] = None,
     ) -> FormattedProblem:
         if seed is None:
             seed = random.randint(10000, 99999)
@@ -75,17 +77,50 @@ class PracticeOrchestrator:
         if not dna_names:
             raise ValueError(f"No DNA mappings found for node_id '{node_id}'")
 
-        primary_concept = dna_names[0]
+        primary_concept = forced_dna if (forced_dna and forced_dna in dna_names) else dna_names[0]
+
+        # Vocabulary gating injection
+        from backend.app.practice_gen.registry import _KG_NODES
+        node_kg = _KG_NODES.get(node_id, {})
+        not_yet_known = node_kg.get("NOT_YET_KNOWN", [])
+        if "remainder" in not_yet_known and "remainder" not in local_difficulty_profile:
+            local_difficulty_profile["remainder"] = "none"
 
         # Inject non-continuous variants from competency bounds
         # This ensures variants like 'operation'='add_subtract' are applied even in lab mode
-        competency_bounds = get_node_competency_bounds(node_id)
+        competency_bounds = get_node_competency_bounds(node_id, primary_concept)
+        if not is_student_path and not is_lab and difficulty_profile:
+            for k, v in difficulty_profile.items():
+                if k in competency_bounds:
+                    bound_val = competency_bounds[k]
+                    if isinstance(bound_val, tuple) and len(bound_val) == 2:
+                        continue  # Continuous bounds
+                    # Discrete bounds check
+                    if k == "regrouping":
+                        if bound_val is False and v not in ("none", False):
+                            raise ValueError(f"Boundary violation: requesting out-of-bounds discrete variant regrouping='{v}' on non-student path.")
+                        if bound_val is True and v not in ("ones", True, "one_place"):
+                            raise ValueError(f"Boundary violation: requesting out-of-bounds discrete variant regrouping='{v}' on non-student path.")
+                    else:
+                        if isinstance(bound_val, list):
+                            if v not in bound_val:
+                                raise ValueError(f"Boundary violation: requesting out-of-bounds discrete variant {k}='{v}' on non-student path.")
+                        else:
+                            if v != bound_val:
+                                raise ValueError(f"Boundary violation: requesting out-of-bounds discrete variant {k}='{v}' on non-student path.")
+
         for k, v in competency_bounds.items():
             if not isinstance(v, tuple) and k not in local_difficulty_profile:
                 local_difficulty_profile[k] = v
 
         # Single source of truth for normalizing scalars (0.0-1.0) into proper dimension values
         axes = get_axes_for_concept(primary_concept)
+        for axis in axes:
+            if axis.get("dim_type") == "continuous":
+                axis_name = axis["name"]
+                if axis_name not in local_difficulty_profile:
+                    local_difficulty_profile[axis_name] = axis.get("default", 0.5)
+
         for axis in axes:
             if axis.get("dim_type") == "continuous" and axis["name"] in local_difficulty_profile:
                 val = local_difficulty_profile[axis["name"]]
@@ -95,7 +130,7 @@ class PracticeOrchestrator:
                         min_val = axis.get("default_min", 1)
                         max_val = axis.get("default_max", 100)
                     else:
-                        competency_bounds = get_node_competency_bounds(node_id)
+                        competency_bounds = get_node_competency_bounds(node_id, primary_concept)
                         bounds = competency_bounds.get(axis["name"])
                         if bounds:
                             min_val, max_val = bounds
@@ -104,25 +139,58 @@ class PracticeOrchestrator:
                             max_val = axis.get("default_max", 100)
                     
                     scale_type = axis.get("scale", "linear")
+                    # Calculate window ceiling t_hi if not number_difficulty
+                    if axis["name"] != "number_difficulty":
+                        divisions = axis.get("divisions", 5)
+                        w = 1.0 / divisions
+                        t_val = val * (1.0 - w) + w
+                    else:
+                        t_val = val
+
                     if scale_type == "logarithmic":
                         import math
                         shift = 1 if min_val == 0 else 0
                         log_min = math.log10(min_val + shift)
                         log_max = math.log10(max_val + shift)
-                        log_val = log_min + val * (log_max - log_min)
+                        log_val = log_min + t_val * (log_max - log_min)
                         mapped_val = int(math.pow(10, log_val)) - shift
                     else:
                         if isinstance(min_val, float) or isinstance(max_val, float) or (max_val - min_val <= 2):
-                            mapped_val = round(min_val + val * (max_val - min_val), 2)
+                            mapped_val = round(min_val + t_val * (max_val - min_val), 2)
                         else:
-                            mapped_val = int(min_val + val * (max_val - min_val))
+                            mapped_val = int(min_val + t_val * (max_val - min_val))
                     local_difficulty_profile[axis["name"]] = mapped_val
 
         # Filter DNAs by requested formatter or allowed_formatters and variant compatibility
-        from backend.app.practice_gen.compatibility import VARIANTS_BY_DNA, is_variant_supported
+        from backend.app.practice_gen.compatibility import VARIANTS_BY_DNA, is_variant_supported, FORMATTER_NUMERIC_LIMITS
+        node_max_value = max(
+            (b[1] for b in competency_bounds.values()
+             if isinstance(b, tuple) and len(b) == 2),
+            default=0,
+        )
         valid_dnas = []
         for d in dna_names:
             available_for_d = get_formatters_for_dna(d)
+            # node_max_value comes from competency_bounds, which can be empty
+            # for nodes relying purely on axis-scalar defaults (no explicit
+            # per-node override) — that must not silently disable the numeric
+            # filter (default=0 would let a >100 emoji_pictorial group through).
+            # Fall back to this DNA's own param_bounds ceiling for the grade.
+            d_max_value = node_max_value
+            if d_max_value <= 0:
+                import re as _re
+                _grade_match = _re.search(r"mat_g(\d+)", node_id)
+                _grade = int(_grade_match.group(1)) if _grade_match else 1
+                d_bounds = _get_dna_instance(d).param_bounds.get(f"g{_grade}", {})
+                d_max_value = max(
+                    (b[1] for b in d_bounds.values() if isinstance(b, tuple) and len(b) == 2),
+                    default=0,
+                )
+            # Filter by numeric limit
+            available_for_d = [
+                fmt for fmt in available_for_d
+                if FORMATTER_NUMERIC_LIMITS.get(fmt, {}).get("max_val", float("inf")) >= d_max_value
+            ]
             if formatter and formatter not in available_for_d:
                 continue
             if allowed_formatters and not any(f in available_for_d for f in allowed_formatters):
@@ -152,6 +220,10 @@ class PracticeOrchestrator:
 
             valid_dnas.append(d)
             
+        if forced_dna:
+            if forced_dna not in valid_dnas:
+                raise ValueError(f"Forced DNA '{forced_dna}' not compatible or supported for node '{node_id}'")
+            valid_dnas = [forced_dna]
         if not valid_dnas:
             raise ValueError(f"Formatter '{formatter}' is not supported by any DNA for node '{node_id}'")
 
@@ -186,10 +258,25 @@ class PracticeOrchestrator:
         grade_match = re.search(r"mat_g(\d+)", node_id)
         effective_grade = int(grade_match.group(1)) if grade_match else 1
 
-        ctx = generate_context(dna, node_id, effective_grade, seed, local_difficulty_profile, interest_theme, is_lab=is_lab)
+        ctx = generate_context(dna, node_id, effective_grade, seed, local_difficulty_profile, interest_theme, is_lab=is_lab, is_student_path=is_student_path)
 
         if formatter is None:
             available = get_formatters_for_dna(dna_name)
+            # Same node_max_value=0 fallback as the candidate-DNA filter above:
+            # an empty competency_bounds must not silently disable the numeric
+            # filter and let e.g. emoji_pictorial through for a >100 value.
+            picked_max_value = node_max_value
+            if picked_max_value <= 0:
+                picked_bounds = dna.param_bounds.get(f"g{effective_grade}", {})
+                picked_max_value = max(
+                    (b[1] for b in picked_bounds.values() if isinstance(b, tuple) and len(b) == 2),
+                    default=0,
+                )
+            # Filter by numeric limit
+            available = [
+                fmt for fmt in available
+                if FORMATTER_NUMERIC_LIMITS.get(fmt, {}).get("max_val", float("inf")) >= picked_max_value
+            ]
             from backend.app.practice_gen.compatibility import FORMATTER_VARIANT_SUPPORT
             caps = FORMATTER_VARIANT_SUPPORT.get(dna_name, {})
             filtered_available = []
@@ -219,8 +306,7 @@ class PracticeOrchestrator:
         # cause of the v-final "Fractions DNA concept overridden" violations:
         # the audit thought 'fractions' was picked, but the orchestrator
         # actually picked 'comparing_ordering' (because 'fractions' doesn't
-        # support the 'ordering' formatter). See Phase 4 in
-        # generator_testing_strategy.md.
+        # support the 'ordering' formatter). See docs/testing_pipeline.md.
         try:
             problem.dna_name = dna_name
         except Exception:

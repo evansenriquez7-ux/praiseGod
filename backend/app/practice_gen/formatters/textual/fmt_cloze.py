@@ -69,7 +69,8 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
     elif concept == "counting":
         seq = values.get("sequence") or []
         if seq:
-            return f"Find the missing number: {', '.join(str(x) for x in seq)}, ___"
+            stem = "Find the missing number" if "missing number" in ctx.cumulative_vocab else "What comes next"
+            return f"{stem}: {', '.join(str(x) for x in seq)}, ___"
         if ctx.question_text_with_blank:
             return ctx.question_text_with_blank
         raise ValueError("Formatter 'cloze' has no sequence for counting.")
@@ -105,7 +106,7 @@ def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
         context            — "pure" or "word_problem"
     """
     values = ctx.values or {}
-    
+
     # Get context variant - check values first, then difficulty_profile
     context_variant = values.get("context") 
     if context_variant is None and ctx.difficulty_profile:

@@ -102,7 +102,7 @@ def _build_all_enabled_config(node_id: str):
     with no saved CompetencyConfiguration. This keeps the student portal's
     default problem-type distribution identical to the Lab's Generate Preview
     when no config has been saved yet (single source of truth,
-    docs/pgen_checklist.md §"Matatag Lab as Single Source of Truth").
+    docs/pgen_contract.md "Matatag Lab as Single Source of Truth").
     """
     try:
         from backend.app.routes.matatag_router import get_matatag_lab_config
@@ -564,7 +564,8 @@ def get_practice_question(student_id: int, subject: str = "Math", subdomain: Opt
             allowed_formatters=_allowed_fmt,
             allowed_difficulties=_allowed_diff,
             allowed_contexts=_allowed_ctx,
-            experience="standard"
+            experience="standard",
+            is_student_path=True
         )
         # Normalise to legacy keys for router compatibility
         skeleton = problem_dict
@@ -901,7 +902,7 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
             
             from backend.app.practice_gen.pipeline import run as _pg_run
             try:
-                skeleton = _pg_run(node_id=node_id, seed=seed_val)
+                skeleton = _pg_run(node_id=node_id, seed=seed_val, is_student_path=True)
             except Exception as e:
                 raise HTTPException(status_code=400, detail=f"MATATAG question session expired or invalid: {e}")
     elif req.skeleton_id.startswith("ai_"):
@@ -924,7 +925,8 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
         skeleton = _pg_run(
             node_id=req.skill_id,
             seed=seed_val,
-            student_interest=_combined_interests(student, "math")
+            student_interest=_combined_interests(student, "math"),
+            is_student_path=True
         )
 
     # Normalize skeleton dictionary to support both legacy and native v2 formats

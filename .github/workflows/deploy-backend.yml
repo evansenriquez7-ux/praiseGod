@@ -10,7 +10,29 @@ on:
       - '.github/workflows/deploy-backend.yml'
 
 jobs:
+  validate:
+    name: Run Practice Gen Hardening Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Practice Gen Hardening Harness
+        run: python -m backend.app.practice_gen.validation.run_all
+
   deploy:
+    needs: validate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

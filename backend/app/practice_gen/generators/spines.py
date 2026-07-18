@@ -345,6 +345,7 @@ _COMP_DIFFERENCE = Spine(
     required_concepts={"subtraction", "comparing_ordering"},
     blank_target="result",
     grade_band=(1, 3),
+    required_vocab={"difference"},
 )
 
 
@@ -663,6 +664,7 @@ def select_spine(
     grade: int,
     rng: random.Random,
     prior_concepts: Set[str],
+    cumulative_vocab: Set[str],
     required_blank_target: Optional[str] = None,
 ) -> Optional[Spine]:
     """
@@ -697,7 +699,7 @@ def select_spine(
     """
     eligible = [
         spine for spine in ALL_SPINES
-        if spine.is_eligible(node_cumulative_concepts, grade)
+        if spine.is_eligible(node_cumulative_concepts, grade, cumulative_vocab)
     ]
 
     if required_blank_target is not None:

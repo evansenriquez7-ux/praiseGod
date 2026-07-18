@@ -36,6 +36,11 @@ _DIFFICULTY_AXES: Dict[str, Any] = {
 }
 
 
+# ─── vocab-gated terms ────────────────────────────────────────────────────────
+VOCAB_EXPANDED_FORM = VocabGated("expanded form", "expanded form", "broken apart form")
+VOCAB_PLACE_VALUE   = VocabGated("place value", "place value", "value of each part")
+
+
 # ─── number-to-words helper ───────────────────────────────────────────────────
 
 _ONES = [
@@ -277,11 +282,14 @@ def generate_hints(
             hints.append(f"Thousands: {th} → '{num_to_tagalog_style_english_words(th)} thousand'.")
         if (number % 1000) >= 100:
             hd = (number % 1000) // 100
-            hints.append(f"Hundreds: {hd} → '{num_to_tagalog_style_english_words(hd)} hundred'.")
+            hundreds_label = "Hundreds" if "hundreds" in cumulative_vocab else "The 3rd part from the right"
+            hints.append(f"{hundreds_label}: {hd} → '{num_to_tagalog_style_english_words(hd)} hundred'.")
         hints.append(f"The full word form is: '{word_form}'.")
     else:
-        hints.append(f"Identify each word part and its place value.")
-        hints.append(f"Expanded form: {expanded_form}.")
+        pv_label = VOCAB_PLACE_VALUE.resolve(cumulative_vocab)
+        hints.append(f"Identify each word part and its {pv_label}.")
+        expanded_label = VOCAB_EXPANDED_FORM.resolve(cumulative_vocab)
+        hints.append(f"{expanded_label.capitalize()}: {expanded_form}.")
         hints.append(f"Add the parts together to get {number}.")
 
     return hints

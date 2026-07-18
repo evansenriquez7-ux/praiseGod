@@ -174,8 +174,12 @@ def max_regrouping_places(max_minuend: int) -> int:
     return len(str(int(max_minuend))) - 1
 
 
-def regrouping_is_feasible(level: str, max_minuend: int) -> bool:
+def regrouping_is_feasible(level: Any, max_minuend: int, grade: Optional[int] = None) -> bool:
     """True if `level` can be satisfied by some (a, b) with a <= max_minuend."""
+    if level is False:
+        level = "none"
+    elif level is True:
+        level = "ones"
     return REGROUP_LEVEL_PLACES.get(level, 0) <= max_regrouping_places(max_minuend)
 
 
@@ -231,7 +235,11 @@ def generate_params(
     # `max_difference` axis was removed from the catalog on 2026-07-01
     # because no MATATAG K-3 LC specifies a result ceiling for
     # subtraction — see axes_catalog.py header.
-    max_minuend = max_minuend_bound
+    max_minuend_val = profile.get("max_minuend")
+    if max_minuend_val is not None:
+        max_minuend = int(max_minuend_val)
+    else:
+        max_minuend = max_minuend_bound
 
     # Ensure reasonable bounds
     max_minuend = max(2, min(max_minuend, 10000))
@@ -239,6 +247,10 @@ def generate_params(
         max_minuend = min(max_minuend, profile["formatter_max_val"])
 
     reg_level = profile.get("regrouping", "none")
+    if reg_level is False:
+        reg_level = "none"
+    elif reg_level is True:
+        reg_level = "ones"
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
     # Fail fast on infeasible (range, regrouping) combinations. A minuend bounded

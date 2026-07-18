@@ -16,55 +16,56 @@ The system is hosted on a highly-available, fully serverless stack on Google Clo
 
 ---
 
-## 2. Automated CI/CD (GitHub Actions Workflow)
+## 2. Automated CI/CD (GitHub Actions Workflows)
 
-The application leverages GitHub Actions for modern automated deployment upon pushing code to the `main` branch.
+The application leverages GitHub Actions for automated testing and deployment.
 
-### Frontend Flow (`.github/workflows/firebase-hosting-merge.yml`)
+### A. Validation Gate (`.github/workflows/validate-pgen.yml`)
+*   **Triggers:** Every PR and push targeting `backend/**` or `data/**`.
+*   **Pipeline:** Installs dependencies and runs the validation harness:
+    ```bash
+    python -m backend.app.practice_gen.validation.run_all
+    ```
+*   **No Fallbacks:** Unlike the hosting workflow, this pipeline has **no `|| true` fallbacks or `continue-on-error` options**. If a single validation fails, the job must fail, blocking deployments.
+
+### B. Frontend Flow (`.github/workflows/firebase-hosting-merge.yml`)
 *   **Triggers:** Pushes targeting the `main` branch.
-*   **Pipeline:** Installs dependencies and builds the bundle (`cd frontend && npm install && npm run build`), then automatically pushes the static directory to Firebase Hosting.
+*   **Pipeline:** Installs dependencies and builds the bundle (`cd frontend && npm install && npm run build`), then pushes to Firebase Hosting.
 
-### Backend Flow (`.github/workflows/deploy-backend.yml`)
+### C. Backend Flow (`.github/workflows/deploy-backend.yml`)
 *   **Triggers:** Pushes containing modifications inside `backend/` or to the root `Dockerfile`.
-*   **Pipeline:** Builds a fresh Docker container image using the explicit `Dockerfile` configuration and updates the Google Cloud Run server instances.
+*   **Pipeline:** Builds a fresh Docker container image using the `Dockerfile` configuration and updates Google Cloud Run. **Requires the Validation Gate to pass successfully.**
 
 ---
 
 ## 3. Required Secrets & Configuration Keys
 
-Because the backend dynamically routes all database queries based on the `DATABASE_URL` environment variable, you must configure it properly across your different environments to ensure you are connecting to the live Neon database instead of a local fallback.
+Because the backend dynamically routes all database queries based on the `DATABASE_URL` environment variable, configure it properly across environments.
 
 ### A. Production CI/CD (GitHub Actions)
-To enable automated pipelines, configure the following under **GitHub Settings > Secrets and variables > Actions**:
-*   `FIREBASE_SERVICE_ACCOUNT_PRAISEGOD_EDU`: Service account JSON credential possessing authorization roles for: *Cloud Run Admin*, *Firebase Hosting Admin*, *Service Account User*, and *Artifact Registry Writer*.
+Configure the following under **GitHub Settings > Secrets and variables > Actions**:
+*   `FIREBASE_SERVICE_ACCOUNT_PRAISEGOD_EDU`: Service account JSON credential.
 *   `PROJECT_ID`: Set to `praisegod-edu`.
-*   `DATABASE_URL`: Connection string containing full secure parameters pointing to the live Neon production instance.
+*   `DATABASE_URL`: Live Neon production database connection string.
 
 ### B. GitHub Codespaces Environment
-If you are developing inside GitHub Codespaces, any AI agents or backend services running in the container will fail to see the database unless the URL is injected.
-*   Go to **GitHub Settings > Secrets and variables > Codespaces**.
-*   Add the `DATABASE_URL` secret. This ensures that any new Codespace spun up will automatically connect to your Neon DB instead of an empty local Postgres fallback.
+*   Configure `DATABASE_URL` under **GitHub Settings > Secrets and variables > Codespaces**.
 
 ### C. Local Development (Mac/Windows)
-If you are developing locally on your own machine:
-*   Create a `.env` file in the root of the project (or `backend/.env`).
-*   Add `DATABASE_URL="postgresql://<user>:<password>@<neon-host>..."`.
-*   *(Note: The `.env` file is intentionally ignored by git to protect your credentials).*
+*   Create a `.env` file in the root of the project with `DATABASE_URL="..."`.
 
 ---
 
 ## 4. Operational Playbook & Maintenance
 
 ### Manual Backend Deployment (Fallback)
-If manual deployment or updating environment strings is ever required, run the command below from the workspace root:
-
 ```bash
 gcloud run deploy ccmed-api \
   --source . \
   --region asia-southeast1 \
   --allow-unauthenticated \
   --project praisegod-edu \
-  --set-env-vars="DATABASE_URL=postgresql://neondb_owner:<YOUR_PASSWORD>@ep-winter-bird-ao6aql6n.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
+  --set-env-vars="DATABASE_URL=..."
 ```
 
 ### Manual Frontend Deployment (Fallback)
@@ -80,53 +81,28 @@ firebase deploy --only hosting
 ## 5. Common Pitfalls & Solutions
 
 ### Cold Start Timeouts
-Because both Cloud Run and Neon Serverless Database scale down to zero during idle periods to eliminate resource costs, initial wake-up connections can consume up to 10–20 seconds. The frontend client connection check timeout is explicitly set to `30000ms` (30 seconds) to wait out database wakes cleanly.
+Cloud Run and Neon scale to zero on idle. Initial wake-up connections can consume up to 10–20 seconds. The frontend timeout is set to `30000ms`.
 
 ### CORS Mismatches
-If registering or adding a new subdomain or custom domain for your Firebase deployment, you **MUST** whitelist it in the `allow_origin_regex` inside `backend/app/main.py`. Unlisted origins will result in silent preflight `OPTIONS` blocks.
-
-### Data Dependency Copies
-When adding new data configurations or knowledge graph models, verify that the `Dockerfile` specifies the target subdirectory (e.g., `data/`) so it correctly copies files inside the runtime container context.
+Whitelist new subdomains/custom domains in `allow_origin_regex` in `backend/app/main.py`.
 
 ### Firebase Hosting "Current Active Version" (400 Error)
-When alternating between GitHub Codespaces and a local machine, the `firebase-hosting-merge.yml` Action may fail with an `HTTP Error: 400 ... supplied version is the current active version`. 
-This happens when you push commits that do not change the frontend source code (e.g., modifying only backend logic), but the frontend was already built and deployed previously. Vite generates an identical bundle hash, and Firebase Hosting aborts the redundant upload, causing the CLI to exit with code `1` and incorrectly fail the CI pipeline.
-
-**Solution:** The deployment command in `.github/workflows/firebase-hosting-merge.yml` has been updated with an appended `|| true`. This ensures the Action fails gracefully and keeps the pipeline green if the identical version is already active.
+When pushing commits that don't change the frontend code, the deploy step in `firebase-hosting-merge.yml` may fail with a `400` error because Vite generates an identical bundle hash.
+*   **Solution:** The deployment command has an appended `|| true`. This is acceptable because a redundant deployment contains no code changes, so keeping the pipeline green is safe. **Do not copy this `|| true` pattern into validation gates**, where actual code verification is running.
 
 ---
 
-## 6. AI Agent Workflow (Graphify & MCP)
+## 6. Practice Problem Generation Rules
 
-To ensure Large Language Models (LLMs) and autonomous agents can dynamically understand and navigate this entire repository efficiently, the project is integrated with **Graphify** via the **Model Context Protocol (MCP)**.
-
-### The Pipeline
-1. **Automated Graphing (Git Hook):** A local `.git/hooks/pre-commit` script is installed. Every time a developer commits code, Graphify automatically scans the repository, builds a new semantic AST graph, and overwrites `graphify-out/graph.json`. This JSON graph is instantly bundled with the commit.
-2. **Optimized Inference:** Instead of parsing hundreds of raw files, the agent queries the Graphify server dynamically for shortest-paths and community summaries, significantly increasing context window efficiency and precision.
-
-### Agent Environment
-Any agent initialized in this repository must use its Graphify MCP connection to map, plan, and execute adjustments purely derived from the live GitHub repository graph.
+The pg pipeline contract (and the machine-enforced test validations) now live in [`pgen_contract.md`](./pgen_contract.md). See that document for all binding generation constraints.
 
 ---
 
-## 7. Practice Problem Generation Rules
+## 7. Remote Development Environment (VS Code SSH)
 
-The pg pipeline rules — the Matatag Lab as single source of truth, and the fail-fast / no-silent-fallback requirement — now live with the generator checklist in [`pgen_checklist.md`](./pgen_checklist.md) (sections 5 and 6). See that document when debugging or auditing generators.
-
----
-
-## 8. Remote Development Environment (VS Code SSH)
-
-To ensure a seamless development experience across devices while keeping the source code consolidated, the developer accesses the host machine locally via **VS Code Remote-SSH**.
-
-### Connection Methods
-1. **LAN SSH:** Used when the developer is on the same local network as the host machine.
-2. **Tailscale SSH (IP Fallback):** Used when the developer is accessing the host remotely over the Tailscale VPN.
+Access the host machine locally via **VS Code Remote-SSH**.
 
 ### Configuring Full Disk Access (FDA)
-A frequent issue with macOS remote hosts is that the hidden `node` daemon spawned by the VS Code server does not inherit the Terminal's permissions, leading to **Full Disk Access (FDA) denials** when attempting to edit or save files.
-
-To fix this natively—without relying on brittle symlinks or constant browser auth prompts—the environment was configured as follows:
-1. **Disabled Tailscale's Custom SSH Interceptor:** Running `tailscale up --ssh=false` on the host machine turns off Tailscale's internal SSH proxy.
-2. **Fallback to Native macOS `sshd`:** With Tailscale SSH disabled, incoming connections over the Tailscale IP now route directly to the standard, built-in macOS `sshd` daemon (exactly like LAN connections do).
-3. **Inherited FDA:** Because the native macOS `/usr/sbin/sshd` service can be granted Full Disk Access in the host's System Settings, **all remote VS Code sessions (whether over LAN or Tailscale) automatically inherit Full Disk Access** with zero prompts or permission errors.
+1. **Disabled Tailscale's Custom SSH Interceptor:** Run `tailscale up --ssh=false`.
+2. **Fallback to Native macOS `sshd`:** Routes directly to the standard macOS `sshd`.
+3. **Inherited FDA:** Grant full disk access to `/usr/sbin/sshd` in System Settings.

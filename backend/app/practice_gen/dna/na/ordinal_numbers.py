@@ -150,8 +150,8 @@ _DIFFICULTY_AXES: Dict[str, Any] = {"number_difficulty": "continuous"}
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
 VOCAB_FIRST   = VocabGated(requires_vocab="1st",      preferred="1st",      fallback="number one")
-VOCAB_ORDINAL = VocabGated(requires_vocab="ordinal",  preferred="ordinal",  fallback="position word")
-VOCAB_POSITION= VocabGated(requires_vocab="position", preferred="position", fallback="place in line")
+VOCAB_ORDINAL = VocabGated(requires_vocab="ordinal",  preferred="ordinal",  fallback="order word")
+VOCAB_POSITION= VocabGated(requires_vocab="position", preferred="position", fallback="order")
 
 
 # ─── parameter generator ──────────────────────────────────────────────────────

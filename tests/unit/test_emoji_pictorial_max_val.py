@@ -38,6 +38,7 @@ def _make_ctx(values, dna_concept="addition", grade=1, seed=1):
         blank_target="result",
         hints=[],
         competency_text="Test competency",
+        cumulative_vocab=[],
         visual_type="EmojiPictorial",
         visual_params=None,
         node_id="mat_g1_na_q1_0",

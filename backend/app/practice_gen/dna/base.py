@@ -13,6 +13,8 @@ DNA types:
   "formula"     — SymPy-computable answer. Standard type.
   "visual_read" — Answer from generated visual state. Correctness by construction.
   "static_bank" — Categorical answer. Hand-authored item pool.
+  "algorithmic" — Procedurally generated answer. Param generator returns 'answer' key.
+
 """
 
 from __future__ import annotations
@@ -160,9 +162,12 @@ class Spine:
     A reusable story template with named slots.
 
     Slots are filled from the student's interest theme in interest_bank.json.
-    Eligibility is gated on two independent conditions:
+    Eligibility is gated on three independent conditions:
       1. required_concepts ⊆ node.cumulative_concepts  (math gate)
       2. grade_band[0] <= student_grade <= grade_band[1]  (language gate)
+      3. required_vocab ⊆ node.cumulative_vocab  (vocabulary gate — for
+         templates that name a formal math term, e.g. "difference", which
+         can lag behind the underlying operation being practiced)
 
     blank_target: which slot in the template holds the unknown value.
                   Must match a key in the QuestionContext.values dict.
@@ -172,11 +177,13 @@ class Spine:
     required_concepts: Set[str]
     blank_target: str
     grade_band: Tuple[int, int]
+    required_vocab: Set[str] = field(default_factory=set)
 
-    def is_eligible(self, cumulative_concepts: Set[str], grade: int) -> bool:
+    def is_eligible(self, cumulative_concepts: Set[str], grade: int, cumulative_vocab: Set[str]) -> bool:
         return (
             self.required_concepts.issubset(cumulative_concepts)
             and self.grade_band[0] <= grade <= self.grade_band[1]
+            and self.required_vocab.issubset(cumulative_vocab)
         )
 
     def render(self, slots: Dict[str, Any], values: Dict[str, Any]) -> str:
@@ -328,7 +335,7 @@ class DNA:
         return idx / (len(levels) - 1)
 
 
-from pydantic import BaseModel, Field, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # QUESTION CONTEXT
@@ -347,6 +354,7 @@ class QuestionContext(BaseModel):
     values: Dict[str, Any]          # {"a": 5, "b": 3, "result": 8}
     correct_answer: Any             # 8
     distractors: List[Any]          # [7, 9, 2]  — from filtered error patterns
+    distractors_provenance: Dict[Any, str] = Field(default_factory=dict)  # maps value -> error pattern label
     answer_formula: Optional[str]   # "a + b"    — for SymPy validation record
 
     # ── Language content ──────────────────────────────────────────────────────
@@ -355,6 +363,7 @@ class QuestionContext(BaseModel):
     blank_target: str               # Which value is the blank ("result")
     hints: List[str]                # Step-by-step worked solution
     competency_text: str            # The learning competency from knowledge graph
+    cumulative_vocab: List[str]     # Terms the student has been introduced to (for formatter-level VocabGated text)
 
     # ── Visual content (None if DNA has no visual_home) ───────────────────────
     visual_type: Optional[str]      # "NumberLine"
@@ -396,7 +405,14 @@ class FormattedProblem(BaseModel):
 
     Produced by a formatter operating on a QuestionContext,
     then optionally wrapped by an experience wrapper.
+
+    extra="forbid": this is the strict response schema (pgen_contract.md
+    "Response payload matches strict schema"). Any formatter that starts
+    emitting an undeclared field must fail loudly at construction time,
+    not silently pass an inconsistent payload downstream.
     """
+    model_config = ConfigDict(extra="forbid")
+
     # ── Identity ──────────────────────────────────────────────────────────────
     problem_id: str                 # "{node_id}_{seed}"
     node_id: str
@@ -408,6 +424,7 @@ class FormattedProblem(BaseModel):
     question_text: str
     correct_answer: Any
     distractors: List[Any]
+    distractors_provenance: Dict[str, str] = Field(default_factory=dict)
     hints: List[str]
 
     # ── Format ────────────────────────────────────────────────────────────────

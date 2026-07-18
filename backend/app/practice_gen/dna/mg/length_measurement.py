@@ -9,7 +9,7 @@ Covers MATATAG grades 1–2 length measurement competencies.
 from __future__ import annotations
 
 import random
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 from backend.app.practice_gen.dna.base import (
     DNA,
@@ -93,6 +93,13 @@ VOCAB_LENGTH = VocabGated(
 
 # ─── parameter generator ──────────────────────────────────────────────────────
 
+def _standard_unit_bounds(bounds: Dict[str, Any], unit: str, scalar: float) -> Tuple[int, int]:
+    lo_key, hi_key = ("cm_min", "cm_max") if unit == "cm" else ("m_min", "m_max")
+    lo, hi = bounds.get(lo_key, 1), bounds.get(hi_key, 100)
+    hi = max(lo, int(log_interpolate(lo, hi, scalar)))
+    return lo, hi
+
+
 def generate_params(
     grade: int,
     difficulty_profile: Optional[Dict[str, Any]],
@@ -107,32 +114,86 @@ def generate_params(
     profile = difficulty_profile or {}
     g_key = f"g{max(1, min(grade, 2))}"
     bounds = _PARAM_BOUNDS[g_key]
-    unit_type = profile.get("unit_type", "non_standard" if grade == 1 else "centimeters")
-    task_type = profile.get("task_type", "read_measurement")
-    scalar = float(profile.get("difficulty_scalar", 0.5))
 
-    if unit_type == "non_standard":
+    # unit_type variant values are "cm" / "m" (see VARIANTS_BY_DNA) — standard
+    # units are a G2+ competency; requesting them at G1 must fail loudly rather
+    # than silently falling through to a mismatched branch (the previous bug:
+    # "centimeters"/"meters" never matched "cm"/"m" and fell through to
+    # convert_between regardless of what was requested).
+    requested_unit_type = profile.get("unit_type")
+    if requested_unit_type is not None and requested_unit_type not in ("cm", "m"):
+        raise ValueError(
+            f"generate_params (length_measurement): unknown unit_type '{requested_unit_type}'."
+        )
+    if requested_unit_type is not None and grade < 2:
+        raise ValueError(
+            f"generate_params (length_measurement): unit_type='{requested_unit_type}' (standard units) "
+            f"is not available for grade={grade} (G1 uses non-standard units only)."
+        )
+
+    task_type = profile.get("task_type", "read_measurement")
+    if task_type not in ("read_measurement", "compare", "convert"):
+        raise ValueError(
+            f"generate_params (length_measurement): unknown task_type '{task_type}'."
+        )
+    if task_type == "convert" and grade < 2:
+        raise ValueError(
+            f"generate_params (length_measurement): task_type='convert' is not available for grade={grade}."
+        )
+
+    scalar = float(profile.get("difficulty_scalar", 0.5))
+    unit_mode = "non_standard" if grade < 2 else (requested_unit_type or "cm")
+
+    if task_type == "compare":
+        if unit_mode == "non_standard":
+            unit = rng.choice(_NON_STANDARD_UNITS)
+            l_min, l_max = bounds.get("length_min", 1), bounds.get("length_max", 100)
+            l_max_current = max(l_min, int(log_interpolate(l_min, l_max, scalar)))
+            val_a = rng.randint(l_min, l_max_current)
+            val_b = rng.randint(l_min, l_max_current)
+            while val_b == val_a:
+                val_b = rng.randint(l_min, l_max_current)
+        else:
+            unit = unit_mode
+            lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
+            val_a = rng.randint(lo, hi)
+            val_b = rng.randint(lo, hi)
+            while val_b == val_a:
+                val_b = rng.randint(lo, hi)
+        answer = max(val_a, val_b)
+        return {
+            "blank_target": "answer",
+            "value_a": val_a,
+            "value_b": val_b,
+            "unit": unit,
+            "unit_type": unit_mode,
+            "task_type": "compare",
+            "answer": answer,
+            "distractors": [val_a, val_b, min(val_a, val_b)],
+        }
+
+    if unit_mode == "non_standard":
         unit = rng.choice(_NON_STANDARD_UNITS)
         l_min, l_max = bounds.get("length_min", 1), bounds.get("length_max", 100)
-        
+
         # We use log interpolate so we spend a good amount of time in 1-20 range before jumping to 100
         l_max_current = max(l_min, int(log_interpolate(l_min, l_max, scalar)))
-        
+
         # Calculate tick step based on difficulty (1 to 10)
         tick_options = [1, 2, 5, 10]
         tick_step = tick_options[min(3, int(scalar * 4))]
-        
+
         # Ensure UX is visually clear for larger numbers (prevent too many tiny ticks)
         if l_max_current > 50:
             tick_step = max(tick_step, 10)
         elif l_max_current > 20:
             tick_step = max(tick_step, 5)
-            
+
         # Snap the length to a multiple of tick_step so it always lands exactly on a tick mark
         min_mult = max(1, (l_min + tick_step - 1) // tick_step)
         max_mult = max(min_mult, l_max_current // tick_step)
         length = rng.randint(min_mult, max_mult) * tick_step
-            
+
         return {
             "blank_target": "answer",
             "length": length,
@@ -143,28 +204,14 @@ def generate_params(
             "answer": length,
         }
 
-    if unit_type == "centimeters":
-        lo, hi = bounds.get("cm_min", 1), bounds.get("cm_max", 500)
-        hi = max(lo, int(log_interpolate(lo, hi, scalar)))
+    if task_type != "convert":
+        lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
         length = rng.randint(lo, hi)
         return {
-        "blank_target": "answer",
+            "blank_target": "answer",
             "length": length,
-            "unit": "cm",
-            "unit_type": "centimeters",
-            "task_type": task_type,
-            "answer": length,
-        }
-
-    if unit_type == "meters":
-        lo, hi = bounds.get("m_min", 1), bounds.get("m_max", 100)
-        hi = max(lo, int(linear_interpolate(lo, hi, scalar)))
-        length = rng.randint(lo, hi)
-        return {
-        "blank_target": "answer",
-            "length": length,
-            "unit": "m",
-            "unit_type": "meters",
+            "unit": unit_mode,
+            "unit_type": unit_mode,
             "task_type": task_type,
             "answer": length,
         }
@@ -210,6 +257,7 @@ def generate_hints(
     unit_type = values.get("unit_type", "non_standard")
     cm_label = VOCAB_CENTIMETER.resolve(cumulative_vocab)
     m_label  = VOCAB_METER.resolve(cumulative_vocab)
+    unit_label = {"cm": cm_label, "m": m_label}
 
     if unit_type == "non_standard":
         unit = values.get("unit", "units")
@@ -219,19 +267,28 @@ def generate_hints(
             f"The length is {values['answer']} {unit}.",
         ]
 
+    if values.get("task_type") == "compare":
+        val_a, val_b = values["value_a"], values["value_b"]
+        unit_word = unit_label.get(unit_type, values.get("unit", "units"))
+        return [
+            f"Compare {val_a} {unit_word} and {val_b} {unit_word}.",
+            f"{max(val_a, val_b)} is more than {min(val_a, val_b)}.",
+            f"The longer length is {values['answer']} {unit_word}.",
+        ]
+
     if unit_type == "convert_between":
         direction = values.get("direction", "m_to_cm")
         if direction == "m_to_cm":
             return [
                 f"1 {m_label} = 100 {cm_label}.",
-                f"Multiply {values['length']} × 100 to convert meters to centimeters.",
-                f"Answer: {values['answer']} cm.",
+                f"Multiply {values['length']} × 100 to convert {m_label} to {cm_label}.",
+                f"Answer: {values['answer']} {cm_label}.",
             ]
         else:
             return [
                 f"100 {cm_label} = 1 {m_label}.",
-                f"Divide {values['length']} ÷ 100 to convert centimeters to meters.",
-                f"Answer: {values['answer']} m.",
+                f"Divide {values['length']} ÷ 100 to convert {cm_label} to {m_label}.",
+                f"Answer: {values['answer']} {m_label}.",
             ]
 
     return [
@@ -244,7 +301,7 @@ def generate_hints(
 
 LENGTH_MEASUREMENT_DNA = DNA(
     concept="length_measurement",
-    dna_type="formula",
+    dna_type="algorithmic",
     answer_formula="answer",
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,

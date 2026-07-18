@@ -238,9 +238,10 @@ def generate_hints(
     ef_phrase  = VOCAB_EXPANDED_FORM.resolve(cumulative_vocab)
 
     if task == "identify_place":
+        relevant_places = ", ".join(PLACE_NAMES[:pos + 1])
         return [
             f"Write out {number} with each digit in its own column.",
-            f"Count from the right: ones, tens, hundreds, thousands.",
+            f"Count from the right: {relevant_places}.",
             f"The digit in the {place_name} column is {digit}.",
         ]
 
@@ -272,7 +273,7 @@ def generate_hints(
 
 PLACE_VALUE_DNA = DNA(
     concept="place_value",
-    dna_type="formula",
+    dna_type="algorithmic",
     answer_formula="value_at_position",
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,

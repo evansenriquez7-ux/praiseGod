@@ -120,6 +120,7 @@ def generate_context(
     difficulty_profile: Optional[Dict[str, Any]] = None,
     interest_theme: Optional[str] = None,
     is_lab: bool = False,
+    is_student_path: bool = False,
 ) -> QuestionContext:
     """
     Generate a format-agnostic QuestionContext from a DNA + node.
@@ -169,6 +170,8 @@ def generate_context(
         cumulative_vocab = set(node.get("cumulative_vocab", []))
         cumulative_concepts = set(node.get("cumulative_concepts", []))
         competency_text = node.get("competency", "")
+
+    not_yet_known: Set[str] = set(node.get("NOT_YET_KNOWN", [])) if node else set()
     
     # Always include the current DNA concept in cumulative_concepts
     # This ensures error patterns for the current topic can generate distractors
@@ -182,7 +185,7 @@ def generate_context(
     # ── c. Inject competency bounds into difficulty_profile ───────────────────
     bounds = get_node_competency_bounds(node_id, dna.concept)
     profile_to_use = dict(difficulty_profile) if difficulty_profile else {}
-    if not is_lab:
+    if is_student_path:
         for dim, bound_val in bounds.items():
             if isinstance(bound_val, tuple) and len(bound_val) == 2:
                 min_val, max_val = bound_val
@@ -192,17 +195,43 @@ def generate_context(
                 elif isinstance(profile_to_use[dim], (int, float)) and profile_to_use[dim] > max_val:
                     profile_to_use[dim] = max_val
             else:
-                if dim not in profile_to_use:
-                    profile_to_use[dim] = bound_val
+                # Override profile with strict discrete bounds from curriculum
+                profile_to_use[dim] = bound_val
     else:
-        # For lab manual testing, do NOT cap/override with competency bounds!
-        # But still fill in any omitted dimensions using their bounds/defaults.
+        # For non-student paths (harness/Lab/audit): do NOT clamp/override, use profile as-is
+        # but still fill in any omitted dimensions using their bounds/defaults.
         for dim, bound_val in bounds.items():
             if dim not in profile_to_use:
                 if isinstance(bound_val, tuple) and len(bound_val) == 2:
                     profile_to_use[dim] = bound_val[1] # use max bounds
                 else:
                     profile_to_use[dim] = bound_val
+
+    # ── c2. Curriculum-gate check (grade/quarter) ─────────────────────────────
+    # Some variant values are curriculum-gated to a later grade/quarter than
+    # their DNA is otherwise reachable at (e.g. multiplication number_type=
+    # multi_digit is G3Q3+, fractions operation=add/subtract is G3Q4+). This
+    # cannot be checked inside generate_params() — it only receives `grade`,
+    # not quarter. Reject loudly here rather than let the DNA silently
+    # generate content the node hasn't reached yet.
+    quarter_match = re.search(r"mat_g\d+_[a-z]+_q(\d+)", node_id)
+    quarter = int(quarter_match.group(1)) if quarter_match else 1
+    if difficulty_profile:
+        from ..compatibility import is_variant_available_at, get_variants_for_dna
+        known_variants = get_variants_for_dna(dna.concept)
+        for var_name, opt_val in difficulty_profile.items():
+            # Only validate genuine, individually-selectable variant values
+            # (VARIANTS_BY_DNA). difficulty_profile is also auto-filled from
+            # competency-bounds ground truth, which can carry composite/scope
+            # values (e.g. missing_number operation="addition_subtraction")
+            # that were never meant to be checked as a single Lab-UI option.
+            if str(opt_val) not in known_variants.get(var_name, []):
+                continue
+            if not is_variant_available_at(dna.concept, var_name, str(opt_val), grade, quarter):
+                raise ValueError(
+                    f"generate_context: variant {var_name}='{opt_val}' for DNA '{dna.concept}' "
+                    f"is not available at node '{node_id}' (grade={grade}, quarter={quarter})."
+                )
 
     # ── d. Generate params (DNA-specific) ────────────────────────────────────
     dna_module = _import_dna_module(dna.concept)
@@ -232,6 +261,7 @@ def generate_context(
             grade=grade,
             rng=rng,
             prior_concepts=cumulative_concepts,  # all known = prior for now
+            cumulative_vocab=cumulative_vocab,
             # Keep the narrative's unknown aligned with the DNA's unknown; a
             # result-unknown spine cannot voice a change_unknown (unknown=b)
             # problem without leaking b into the stem.
@@ -242,7 +272,7 @@ def generate_context(
 
     # ── e. Interest slots ─────────────────────────────────────────────────────
     resolved_theme = pick_interest(interest_theme, grade, rng)
-    slots = get_interest_slots(resolved_theme, grade, rng)
+    slots = get_interest_slots(resolved_theme, grade, rng, not_yet_known=not_yet_known)
 
     # ── f. Question text ──────────────────────────────────────────────────────
     if values.get("question") is not None:
@@ -287,6 +317,7 @@ def generate_context(
         if ep.required_concept in cumulative_concepts
     ]
     distractors: List[Any] = [d for d in values.get("distractors", []) if d is not None]
+    distractors_provenance: Dict[Any, str] = {d: "base" for d in distractors}
     for ep in filtered_patterns:
         if ep.formula == "None":
             continue
@@ -294,6 +325,7 @@ def generate_context(
             distractor = _eval_error_formula(ep.formula, values)
             if distractor is not None and distractor != correct_answer and distractor not in distractors:
                 distractors.append(distractor)
+                distractors_provenance[distractor] = ep.label
         except Exception:
             continue
 
@@ -322,12 +354,14 @@ def generate_context(
         values=values,
         correct_answer=correct_answer,
         distractors=distractors,
+        distractors_provenance=distractors_provenance,
         answer_formula=dna.answer_formula,
         question_text=question_text,
         question_text_with_blank=question_text_with_blank,
         blank_target=blank_target,
         hints=hints,
         competency_text=competency_text,
+        cumulative_vocab=sorted(cumulative_vocab),
         visual_type=visual_type,
         visual_params=visual_params,
         node_id=node_id,
@@ -407,29 +441,32 @@ def _build_symbolic_question(
     b = values.get("b", values.get("skip_by"))
     blank = values.get("blank_target", "result")
 
+    missing_lbl = VocabGated("missing number", "missing number", "unknown number").resolve(cumulative_vocab)
+    expanded_lbl = VocabGated("expanded form", "expanded form", "broken apart form").resolve(cumulative_vocab)
+
     # ── Arithmetic operations ─────────────────────────────────────────────────
     if concept == "addition":
         strategy = values.get("strategy", "standard")
-        prefix = "Solve using expanded form. " if strategy == "expanded_form" else ""
+        prefix = f"Solve using {expanded_lbl}. " if strategy == "expanded_form" else ""
         
         if blank == "result":
             return f"{prefix}What is {a} + {b}?"
         elif blank == "b":
             result = values.get("result")
-            return f"{prefix}{a} + ___ = {result}. What is the missing number?"
+            return f"{prefix}{a} + ___ = {result}. What is the {missing_lbl}?"
         else:
             result = values.get("result")
-            return f"{prefix}___ + {b} = {result}. What is the missing number?"
+            return f"{prefix}___ + {b} = {result}. What is the {missing_lbl}?"
 
     if concept == "subtraction":
         if blank == "result":
             return f"What is {a} − {b}?"
         elif blank == "b":
             result = values.get("result")
-            return f"{a} − ___ = {result}. What is the missing number?"
+            return f"{a} − ___ = {result}. What is the {missing_lbl}?"
         else:
             result = values.get("result")
-            return f"___ − {b} = {result}. What is the missing number?"
+            return f"___ − {b} = {result}. What is the {missing_lbl}?"
 
     if concept == "multiplication":
         n = values.get("n", b)
@@ -438,9 +475,9 @@ def _build_symbolic_question(
         if blank in ["total", "result"]:
             return f"What is {groups} × {n}?"
         elif blank in ["b", "n"]:
-            return f"{groups} × ___ = {total}. What is the missing number?"
+            return f"{groups} × ___ = {total}. What is the {missing_lbl}?"
         else:
-            return f"___ × {n} = {total}. What is the missing number?"
+            return f"___ × {n} = {total}. What is the {missing_lbl}?"
 
     if concept == "division":
         total = values.get("total", a)
@@ -449,9 +486,9 @@ def _build_symbolic_question(
         if blank in ["result", "groups"]:
             return f"What is {total} ÷ {n}?"
         elif blank in ["b", "n"]:
-            return f"{total} ÷ ___ = {groups}. What is the missing number?"
+            return f"{total} ÷ ___ = {groups}. What is the {missing_lbl}?"
         else:
-            return f"___ ÷ {n} = {groups}. What is the missing number?"
+            return f"___ ÷ {n} = {groups}. What is the {missing_lbl}?"
 
     # ── Place value ───────────────────────────────────────────────────────────
     if concept == "place_value":
@@ -492,11 +529,11 @@ def _build_symbolic_question(
         blank_pos = values.get("blank_position", "result")
         result = values.get("result", values.get("total"))
         if blank_pos == "start":
-            return f"___ {op_symbol} {b} = {result}. What is the missing number?"
+            return f"___ {op_symbol} {b} = {result}. What is the {missing_lbl}?"
         elif blank_pos == "change":
-            return f"{a} {op_symbol} ___ = {result}. What is the missing number?"
+            return f"{a} {op_symbol} ___ = {result}. What is the {missing_lbl}?"
         else:
-            return f"{a} {op_symbol} {b} = ___. What is the missing number?"
+            return f"{a} {op_symbol} {b} = ___. What is the {missing_lbl}?"
 
     # ── Patterns ─────────────────────────────────────────────────────────────
     if concept == "patterns":
@@ -611,7 +648,12 @@ def _build_symbolic_question(
             u = values.get("unit")
             return f"Which is {'heavier' if mtype == 'mass' else 'more'}: {val_a} {u} or {val_b} {u}?"
         unit = values.get("unit", "kg")
-        return f"What is the mass/capacity of the object in {unit}?"
+        mtype = values.get("measurement_type", "mass")
+        if mtype == "mass":
+            mc_lbl = VocabGated("mass", "mass", "weight").resolve(cumulative_vocab)
+        else:
+            mc_lbl = VocabGated("capacity", "capacity", "amount of liquid").resolve(cumulative_vocab)
+        return f"What is the {mc_lbl} of the object in {unit}?"
 
     if concept == "perimeter":
         shape = values.get("shape", "rectangle")
@@ -629,17 +671,20 @@ def _build_symbolic_question(
         return "Identify the type of line shown."
 
     if concept == "symmetry_slides":
-        return "Does this figure have a line of symmetry?"
+        sym_lbl = VocabGated("line of symmetry", "line of symmetry", "symmetry line").resolve(cumulative_vocab)
+        return f"Does this figure have a {sym_lbl}?"
 
     # ── Data / probability ────────────────────────────────────────────────────
     if concept == "pictographs":
         category = values.get("category", "item")
         count = values.get("count", a)
-        return f"How many {category} does the pictograph show?"
+        pg_lbl = VocabGated("pictograph", "pictograph", "picture graph").resolve(cumulative_vocab)
+        return f"How many {category} does the {pg_lbl} show?"
 
     if concept == "bar_graphs":
         category = values.get("category", "item")
-        return f"Read the bar graph. How many {category} are shown?"
+        bg_lbl = VocabGated("bar graph", "bar graph", "graph").resolve(cumulative_vocab)
+        return f"Read the {bg_lbl}. How many {category} are shown?"
 
     if concept == "probability_language":
         event = values.get("event", "this event")

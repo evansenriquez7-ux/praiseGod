@@ -1,5 +1,8 @@
 # Difficulty Dimensions in Practice Generation
 
+> [!IMPORTANT]
+> Reference only. Binding rules live in [pgen_contract.md](./pgen_contract.md).
+
 Difficulty dimensions control the core progression of a problem's complexity across various problem generators (Math DNA). This document outlines how difficulty dimensions work, using the first three MATATAG Grade 1 learning competencies as an example.
 
 ## Core Concepts
@@ -11,14 +14,14 @@ Difficulty dimensions are defined in `backend/app/practice_gen/axes_catalog.py` 
 
 ## Linear vs Logarithmic Scales
 
-When defining a continuous difficulty dimension, you must choose whether the scalar interpolates the bounds **linearly** or **logarithmically**. This is crucial for maintaining an evenly distributed difficulty curve for the student.
+When defining a continuous difficulty dimension, choose whether the scalar interpolates the bounds **linearly** or **logarithmically** to maintain an evenly distributed difficulty curve for the student.
 
 ### 1. Logarithmic Ranges (Exponential Growth)
 Use a logarithmic scale (`scale: "logarithmic"`) when the boundary spans multiple orders of magnitude (e.g., 10 to 10,000) across grade levels. 
 If you used a linear scale from 10 to 10,000, a scalar of `0.1` (10% difficulty) would jump straight to 1,000, completely skipping the 100s. A logarithmic scale guarantees the scalar spends proportional time in the 10s, 100s, and 1,000s tiers.
 
 **Examples (First 3 Competencies):**
-- **`number_reading`**: The range scales from 1-100 (G1) up to 1-10,000 (G3). This must be logarithmic so early scalars appropriately hover in the tens and hundreds.
+- **`number_reading`**: The range scales from 1-100 (G1) up to 1-10,000 (G3). This is configured as logarithmic so early scalars appropriately hover in the tens and hundreds.
 - **`counting`**: The max number skips from 100 (G1) to 10,000 (G3). This uses `log_interpolate` so difficulty increases multiplicatively, pacing the student's exposure to larger bounds.
 - **`ordinal_numbers`**: The maximum ordinal value jumps from 10th (G1) to 100th (G3). This also uses `log_interpolate` to ensure students get sufficient practice in the 10s and 20s before hitting 99th.
 
@@ -27,19 +30,19 @@ Use a linear scale (`scale: "linear"`) when the dimension has a tight bound or r
 Linear scales simply take a percentage of the difference between the min and max bounds.
 
 **Examples:**
-- **`num_categories` (Bar Graphs / Pictographs)**: Bounded between 3 and 6 categories. A linear interpolation is perfectly suited here.
-- **`number_difficulty`**: A bounded complexity score explicitly defined from `0.0` to `1.0`.
+- **`num_categories` (Bar Graphs / Pictographs)**: Bounded between 3 and 6 categories. A linear interpolation is suited here.
+- **`number_difficulty`**: A bounded complexity score defined from `0.0` to `1.0`.
 
 ## Understanding the Continuous Scalar and `d=5`
 
-The correct way to think about difficulty dimensions is that the scalar value `0.0` to `1.0` represents the complete bounds/range specified in the learning competency. `0.0` maps to the minimum bound specified by the competency, and `1.0` maps to the maximum bound.
+The continuous scalar value `0.0` to `1.0` represents the complete bounds/range specified in the learning competency. `0.0` maps to the minimum bound specified by the competency, and `1.0` maps to the maximum bound.
 
 ### Windowed Sampling (`d=5`) and Non-Overlapping Bounds
-When a dimension specifies `divisions: 5` (often referred to as `d=5`), it means splitting the bounds/range into 5 separate divisions which are mapped to the continuous scalar value. 
+When a dimension specifies `divisions: 5` (referred to as `d=5`), it means splitting the bounds/range into 5 separate divisions which are mapped to the continuous scalar value. 
 
-**CRITICAL REQUIREMENT**: These divisions must be completely isolated and **non-overlapping** to ensure that testing and validation can guarantee the generated difficulty is exactly in the targeted range (i.e. no "Leaky Windows"). For example, it is incorrect to use overlapping bounds like `[0, .2)`, `[0, .4)`, `[0, .6)`. 
+To ensure that testing and validation can guarantee the generated difficulty is exactly in the targeted range (i.e. no "Leaky Windows"), these divisions are designed to be completely isolated and **non-overlapping**. For example, avoid overlapping bounds like `[0, .2)`, `[0, .4)`, `[0, .6)`. 
 
-The proper mapping for `d=5` must strictly separate the bounds:
+The mapping for `d=5` strictly separates the bounds:
 1. **Scalar `0`**: Maps to window `[0, 0.2)`
 2. **Scalar `0.25`**: Maps to window `[0.2, 0.4)`
 3. **Scalar `0.5`**: Maps to window `[0.4, 0.6)`
@@ -58,24 +61,14 @@ For example, if an arbitrary scalar of `0.3` is provided:
 - `t_lo = 0.3 * (1.0 - 0.2) = 0.24`
 - `t_hi = 0.24 + 0.2 = 0.44`
 
-This produces an exact, continuous target difficulty window of **`[0.24, 0.44]`**. The engine evaluates all candidate problems and strictly filters them down to those whose complexity scores fall exactly within this sliding window, falling back to the closest candidate if the window is completely empty.
+This produces an exact, continuous target difficulty window of **`[0.24, 0.44]`**. The engine evaluates all candidate problems and filters them down to those whose complexity scores fall exactly within this sliding window, falling back to the closest candidate if the window is completely empty.
 
 ### Bridging to the Next Competency (Scalar > 1)
-A scalar value greater than `1.0` represents advanced difficulty for bridging to the next learning competency. For example, a scalar value of `1.25` is mapped to the bounds/range `(1.0, 1.2)`, where `1.2` represents 1.2 times the maximum bounds specified by the learning competency. 
+A scalar value greater than `1.0` represents advanced difficulty for bridging to the next learning competency. To prevent functional drift, the bridge scalar is dynamically linked and imported from `DIFFICULTY_LEVEL_MAP` in `base.py` (level 4). 
 
-The point is to have a scalar that can be fine-tuned and adjusted dynamically according to the precise needs of the student. 
-
-### Discrete Dimensions
-Some learning competencies specify discrete, categorical difficulties (e.g., counting by 2s, 5s, 10s). In these cases, the continuous scalar will have to traverse certain threshold bounds before changing the difficulty to the next categorical tier.
-
-To properly map discrete difficulties to a continuous scalar, use the formula `1 / (d - 1)`, where `d` is the number of discrete difficulty options. 
-
-For example, if a competency specifies **3 discrete difficulties** (counting by 2s, 5s, 10s), then `d = 3`. 
-The required scalar options evaluate to `1 / (3 - 1) = 0.5`. 
-This results in the following discrete scalar mapping:
-1. **Scalar `0.0`**: Maps to the 1st difficulty (e.g., counting by 2s)
-2. **Scalar `0.5`**: Maps to the 2nd difficulty (e.g., counting by 5s)
-3. **Scalar `1.0`**: Maps to the 3rd difficulty (e.g., counting by 10s)
+The target difficulty window shifts depending on the value configured in `DIFFICULTY_LEVEL_MAP[4]`:
+* **If Scalar = 1.1**: The window is `[0.88, 1.08]`. It overlaps slightly with the standard range.
+* **If Scalar = 1.25**: The window is `[1.0, 1.2]`. It starts exactly where the standard range ends, providing a clean contiguous progression.
 
 ## The `number_difficulty` Dimension
 The `number_difficulty` dimension controls the cognitive complexity of the specific numbers chosen within a given boundary. It acts as an independent scale from the maximum range, preventing a computationally "hard" math problem (like 3-digit addition) from accidentally selecting cognitively easy numbers (like `100 + 100`).

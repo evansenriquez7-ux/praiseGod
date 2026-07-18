@@ -287,7 +287,8 @@ def generate_hints(
     elif task_type in ("compare", "compare_two"):
         hints.append("Compare the two category values. The one with more pictures has more items.")
     elif task_type == "organize_table":
-        hints.append(f"Count the items for each category and record them in the table.")
+        chart_word = "table" if "table" in cumulative_vocab else "chart"
+        hints.append(f"Count the items for each category and record them in the {chart_word}.")
 
     return hints
 

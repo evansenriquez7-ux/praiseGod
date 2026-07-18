@@ -84,6 +84,11 @@ VOCAB_ELAPSED = VocabGated(
     preferred="elapsed time",
     fallback="how much time has passed",
 )
+VOCAB_CALENDAR = VocabGated(
+    requires_vocab="calendar",
+    preferred="calendar",
+    fallback="date chart",
+)
 
 
 # ─── parameter generator ──────────────────────────────────────────────────────
@@ -222,11 +227,12 @@ def generate_hints(
     days_label    = VOCAB_DAYS_WEEK.resolve(cumulative_vocab)
     months_label  = VOCAB_MONTHS.resolve(cumulative_vocab)
     elapsed_label = VOCAB_ELAPSED.resolve(cumulative_vocab)
+    cal_label     = VOCAB_CALENDAR.resolve(cumulative_vocab)
 
     if task_type == "read_day_of_week":
         return [
             f"The {days_label} are: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday.",
-            "Find the date on the calendar and look at which column it is in.",
+            f"Find the date on the {cal_label} and look at which column it is in.",
             f"Answer: {values.get('answer', '?')}",
         ]
     if task_type == "read_month":
@@ -240,11 +246,11 @@ def generate_hints(
         end   = values.get("end_date", "?")
         unit  = "days" if task_type == "elapsed_days" else "weeks"
         return [
-            f"Count the {unit} between {start} and {end} on the calendar.",
+            f"Count the {unit} between {start} and {end} on the {cal_label}.",
             f"Subtract: {end} - {start} = {values.get('answer', '?')} {unit}.",
         ]
     return [
-        "Use the calendar to find the answer.",
+        f"Use the {cal_label} to find the answer.",
         f"The {elapsed_label} is the number of days or weeks that have passed.",
     ]
 
