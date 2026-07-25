@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g2_mg_q4_6",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-4 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,48 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "A rectangular garden is 11 cm long and 2 cm wide. How much fencing is needed to go all the way around it?",
+      "correct_answer": 26
+    },
+    {
+      "seed": 44,
+      "question_text": "A class survey showed 661 students like costume sash and 120 students like wristband. How many students were surveyed in all?",
+      "correct_answer": 781
+    },
+    {
+      "seed": 47,
+      "question_text": "What is 900 + 19?",
+      "correct_answer": 919
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "Only 3 of 7 seeds (42, 43, 46) are genuine perimeter word problems ('rectangular garden ... how much fencing'), all correctly computed as 2*(length+width); the other 4 seeds are generic addition unconnected to any shape or perimeter."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "Seeds 44, 45, 47, 48 render a student-survey addition problem and three bare addition facts ('900 + 19', '210 + 436') with no fence, garden, shape, or perimeter framing at all, despite this being a perimeter-branch node."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The garden-fencing sentences and the bare addition sentences are each short and grade-2-appropriate in isolation, independent of the topical mismatch found elsewhere."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "Like its sibling perimeter-computation lc, this node's addition DNA is injecting unrelated survey and bare-fact addition items instead of perimeter word problems that merely use addition as the underlying operation."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "'What is 900 + 19?' and the costume-sash survey problem do not involve triangles, squares, rectangles, or perimeter in any way, directly failing 'solve problems involving perimeter of triangles, squares, and rectangles'."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Where perimeter is actually tested, side lengths of 1-11 cm are appropriately scaled for a grade-2 quarter-4 word problem context."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

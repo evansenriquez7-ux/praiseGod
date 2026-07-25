@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q1_0",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What number comes next when counting: 4, 5, 6, 7, ___?",
+      "correct_answer": 8
+    },
+    {
+      "seed": 43,
+      "question_text": "What number comes next when counting: 3, 4, 5, 6, ___?",
+      "correct_answer": 7
+    },
+    {
+      "seed": 44,
+      "question_text": "What comes next: 9, 10, 11, 12, ___",
+      "correct_answer": 13
+    },
+    {
+      "seed": 45,
+      "question_text": "What number comes next when counting: 7, 8, 9, 10, ___?",
+      "correct_answer": 11
+    },
+    {
+      "seed": 46,
+      "question_text": "What number comes next when counting: 4, 5, 6, 7, ___?",
+      "correct_answer": 8
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency requires counting up OR down and identifying 1-more/1-less, but all five samples (seeds 42-46) only show ascending counting-by-1 sequences like '4, 5, 6, 7, ___'; none demonstrate backward counting or explicit 1-more/1-less phrasing."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The counting DNA registers 28 combos across 3 axes, so backward-counting and 1-more/1-less variants likely exist outside this 5-sample window; validate_matrix separately confirms exhaustive execution of that registry."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Question text such as 'What number comes next when counting: 4, 5, 6, 7, ___?' is a single short clause well under the 15-word cap, appropriate for a Grade 1 Quarter 1 reader."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "With only forward, ascending-by-1 sequences shown across all five seeds, the sampled variant space does not visibly exercise the descending or 1-more/1-less framing named directly in the competency."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The difficulty stays within counting to a modest range (up to 13), an appropriate entry point before the Q2 skip-counting node, so the observed progression does not overreach the competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Sample sequences top out at 13, a sensible early-Q1 range for a competency that ultimately extends counting up to 100."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

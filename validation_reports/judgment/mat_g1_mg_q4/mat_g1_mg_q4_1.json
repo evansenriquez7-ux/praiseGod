@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_mg_q4_1",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What time does the clock show?",
+      "correct_answer": "C"
+    },
+    {
+      "seed": 43,
+      "question_text": "What time does the clock show?",
+      "correct_answer": "A"
+    },
+    {
+      "seed": 44,
+      "question_text": "Set the clock to show 7:00.",
+      "correct_answer": "7:00"
+    },
+    {
+      "seed": 45,
+      "question_text": "What time does the clock show?",
+      "correct_answer": "C"
+    },
+    {
+      "seed": 46,
+      "question_text": "What time does the clock show?",
+      "correct_answer": "B"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Samples cover both halves of the competency: 'read_mcq' items ('What time does the clock show?') test reading, and the 'set_fill_in_blank' item ('Set the clock to show 7:00.') tests writing/setting, matching 'read and write time' precisely."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "time_reading registers 3 axes/20 combos per variant_registry, machine-verified exhaustively by validate_matrix; the 5 sampled seeds are only illustrative of that larger space."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Both observed prompt types are extremely short, e.g. 'What time does the clock show?' is 5 words, well under the 15-word cap, appropriate for grade 1."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "20 registered combos across 3 axes plausibly supports the three named time granularities, hour, half hour, quarter hour, combined with both read and write/set interaction formats observed in the samples."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The two observed formats, reading a clock face and setting a clock to a stated time, map exactly onto the competency's two named verbs, without reaching into elapsed-time or AM/PM distinctions that belong to a later competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The one concrete time value shown (7:00) is a simple on-the-hour value appropriate as an entry point; there is no larger numeric scale concern for a clock-reading competency."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "PASS"
 }

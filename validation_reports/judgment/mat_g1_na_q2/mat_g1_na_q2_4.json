@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q2_4",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is the place value of the digit 5 in 45?",
+      "correct_answer": 5
+    },
+    {
+      "seed": 43,
+      "question_text": "What is the place value of the digit 1 in 10?",
+      "correct_answer": 10
+    },
+    {
+      "seed": 44,
+      "question_text": "3 + 10 = 13. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 45,
+      "question_text": "1 + 15 = ___",
+      "correct_answer": 16
+    },
+    {
+      "seed": 46,
+      "question_text": "What is the place value of the digit 1 in 10?",
+      "correct_answer": 10
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency asks students to add by expressing addends in expanded tens-and-ones form, but the samples mix place-value-of-a-digit questions (identical to q2_2/q2_3) with plain addition facts ('3 + 10 = 13. True or False?'); no sample shows the explicit expanded-form process such as 10+3 combined with 1+5."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "This node combines place_value (8 combos) and addition (8 combos) registries; the five samples show both digit-value and addition-fact content, suggesting both DNAs are being drawn from, with exhaustive execution confirmed separately by validate_matrix."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Prompts such as '1 + 15 = ___' are extremely short and appropriate for Grade 1 Quarter 2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Blending unrelated place-value-digit questions with simple addition facts, rather than an integrated expanded-form addition task, suggests the variant space may not yet fuse the two DNAs into the single 'expanded form addition' skill this node names."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Correctly computed sums like '1 + 15 = 16' are accurate, but without seeing the addends actually expressed in tens-and-ones form in the text, it is unclear the sampled content teaches the specific expanded-form method rather than ordinary addition."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numbers used (10, 13, 15, 16) are 2-digit values consistent with introducing tens-and-ones addition at this stage."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

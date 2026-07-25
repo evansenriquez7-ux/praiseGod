@@ -1,7 +1,7 @@
 # Vocabulary and Concept Gating Strategy
 
 > [!NOTE]
-> **Reference only.** Binding rules live in [pgen_contract.md](docs/pgen_contract.md).
+> **Reference only.** Binding rules live in [pgen_contract.md](pgen_contract.md).
 
 ## 1. Objectives & Context
 
@@ -30,8 +30,8 @@ label = VOCAB_EXPANDED_FORM.resolve(cumulative_vocab)
 ```
 
 ### 2.2 Shared and Formatter-Level Gating
-* **In question generation:** Stems inside [base_generator.py](backend/app/practice_gen/generators/base_generator.py) use resolved terms dynamically (e.g. resolving `missing number` to `unknown number` for early Grade 1 addition/subtraction nodes).
-* **In layout rendering:** Visual formatters (like [fmt_bar_chart.py](backend/app/practice_gen/formatters/visual/fmt_bar_chart.py)) inspect `cumulative_vocab` at render-time to substitute appropriate strings (e.g., swapping `bar graph` for `graph` where the term is unintroduced).
+* **In question generation:** Stems inside [base_generator.py](../backend/app/practice_gen/generators/base_generator.py) use resolved terms dynamically (e.g. resolving `missing number` to `unknown number` for early Grade 1 addition/subtraction nodes).
+* **In layout rendering:** Visual formatters (like [fmt_bar_chart.py](../backend/app/practice_gen/formatters/visual/fmt_bar_chart.py)) inspect `cumulative_vocab` at render-time to substitute appropriate strings (e.g., swapping `bar graph` for `graph` where the term is unintroduced).
 
 ---
 
@@ -40,7 +40,7 @@ label = VOCAB_EXPANDED_FORM.resolve(cumulative_vocab)
 When a single DNA module covers multiple sequential concepts (e.g., `symmetry_slides` covers both slides and symmetry; `mass_capacity` covers both mass and capacity), earlier nodes mapping to that DNA restrict generation to only the introduced concept subset.
 
 ### 3.1 Competency Parsing
-In [registry.py](backend/app/practice_gen/registry.py), `_parse_competency_bounds` inspects the node's learning competency text. If a concept is not mentioned (e.g., symmetry is absent from the slide competency), a discrete constraint is added:
+In [registry.py](../backend/app/practice_gen/registry.py), `_parse_competency_bounds` inspects the node's learning competency text. If a concept is not mentioned (e.g., symmetry is absent from the slide competency), a discrete constraint is added:
 ```python
 elif dna_name == "symmetry_slides":
     if "symmetry" in text or "symmetric" in text:

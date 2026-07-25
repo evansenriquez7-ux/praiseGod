@@ -1,8 +1,11 @@
 # Metamorphic Testing Pipeline & Checklist Compliance Auditor
 
-This document serves as the master operational guide for any agentic coder building, modifying, or auditing practice problem generators (PGs) in this repository. 
+> [!NOTE]
+> **Reference only. Not part of `run_all`/CI.** This document describes the supplementary `tests/` auditors — dev-tooling for exploring the pipeline by hand. They are **not** wired into `.github/workflows/validate-pgen.yml` or `run_all.py`; the binding, CI-enforced contract lives in [`pgen_contract.md`](pgen_contract.md). None of the checks below are a second enforcement path — where they overlap with the contract table, the contract table is authoritative and this file links to it rather than restating the rule.
 
-Our testing philosophy is built on **failing fast and loud** rather than silent defaulting. When the auditor script runs, it verifies that no code degradations, zero-sensitivity mappings, or answer leaks escape.
+This document is a supplementary operational guide for any agentic coder exploring or auditing practice problem generators (PGs) with the `tests/` dev-tooling in this repository.
+
+The `tests/` auditors share the harness's **fail fast and loud** philosophy (see [`pgen_contract.md`](pgen_contract.md)) but are manually invoked, not CI-gated.
 
 ---
 
@@ -20,21 +23,23 @@ The testing framework consists of three automated pipeline components under the 
 
 ## 2. Core Metamorphic Checkpoints
 
+These auditors independently re-check, by a different code path, several properties the CI-enforced harness already binds and enforces (`validate_matrix` §1A–§1C in [`pgen_contract.md`](pgen_contract.md)) — useful as a second opinion during manual debugging, not as a second source of the rule itself.
+
 ### A. Strict Scalar Mapping (Boundary Checks)
-- **Rule**: A difficulty scalar of `0.0` must map strictly to the easiest curriculum bounds, and `1.0` must map strictly to the hardest bounds.
-- **Verification**: The auditor generates problems at `0.0`, `0.5`, and `1.0`. It asserts that the output values are bounded correctly inside the difficulty windows without any overlap or out-of-bounds parameter leakage (with a strict $\pm 1$ rounding tolerance due to lossy log-linear mappings).
+- **Cross-checks:** `pgen_contract.md`'s scalar-boundary row (`validate_matrix` §1A).
+- **How:** The auditor generates problems at `0.0`, `0.5`, and `1.0` and asserts the output values are bounded correctly inside the difficulty windows without overlap or out-of-bounds leakage (strict $\pm 1$ rounding tolerance due to lossy log-linear mappings).
 
 ### B. Metamorphic Sensitivity Checks
-- **Rule**: Changing a conceptual variant (e.g. context, operator, blank position) must result in a distinct question stem.
-- **Verification**: The auditor generates problems using the exact same seed while toggling the target variant. If the stems produced are identical (e.g., word problem stem matches pure symbolic stem), it flags a `Sensitivity Violation`.
+- **Cross-checks:** `pgen_contract.md`'s variant×formatter execution row (`validate_matrix` §1C).
+- **How:** The auditor generates problems using the exact same seed while toggling the target variant (context, operator, blank position, …). If the stems produced are identical, it flags a `Sensitivity Violation`.
 
 ### C. Semantic Leak Safeguards
-- **Rule**: The correct answer or distractors must not be leaked inside the question stem.
-- **Verification**: The auditor recursively extracts all scalar numbers, strings, and floats from the generated answer and checks them against the text of the question stem. Any matches (except registered curriculum carve-outs) raise a `Semantic Leak` error.
+- **Cross-checks:** `pgen_contract.md`'s answer-key-integrity row (`validate_matrix` §1E).
+- **How:** The auditor recursively extracts all scalar numbers, strings, and floats from the generated answer and checks them against the question stem text. Any match (except registered curriculum carve-outs) raises a `Semantic Leak` error.
 
 ### D. Formatter and Choice Validity Checks
-- **Rule**: Formatters (like MCQ, True/False, Balance Scale) must generate valid structures without duplicates or hardcoded default selections.
-- **Verification**: The auditor checks MCQ options to ensure they are unique, contains the correct answer exactly once, and have no duplicate choices.
+- **Cross-checks:** `pgen_contract.md`'s variant×formatter execution row (`validate_matrix` §1C).
+- **How:** The auditor checks MCQ options for uniqueness, exactly one correct answer, and no duplicate choices.
 
 ---
 
@@ -58,7 +63,7 @@ When running the audits, keep these core troubleshooting tips in mind:
 
 ### Trap 1: Pickle Errors under Process Worker Spawns
 - **Issue**: Parallel execution worker crashes with pickle exceptions.
-- **Reason**: The process pool worker function `_audit_node()` must remain a module-level function. It cannot be wrapped in a closure or nested function because Python's `spawn` start method cannot pickle closures.
+- **Reason**: The process pool worker function `_audit_node()` has to stay a module-level function. It cannot be wrapped in a closure or nested function because Python's `spawn` start method cannot pickle closures.
 
 ### Trap 2: Bare Python Invocation vs. Shell Wrapper
 - **Issue**: Running the script with bare `python` outputs `ModuleNotFoundError: No module named 'fastapi'`.

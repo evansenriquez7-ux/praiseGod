@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q3_5",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 64 − 30?",
+      "correct_answer": 34
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 5 − 0?",
+      "correct_answer": 5
+    },
+    {
+      "seed": 44,
+      "question_text": "What is the place value of the digit 0 in 20?",
+      "correct_answer": 0
+    },
+    {
+      "seed": 45,
+      "question_text": "What is the place value of the digit 1 in 15?",
+      "correct_answer": 10
+    },
+    {
+      "seed": 46,
+      "question_text": "12 − 1 = ___",
+      "correct_answer": 11
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency wants subtraction taught by expressing minuend/subtrahend in expanded tens-and-ones form, but two of five samples ('What is the place value of the digit 0 in 20?', '...digit 1 in 15?') are not subtraction at all — they are the same digit-value questions as q2_2/q2_3, unrelated to the subtraction task."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "This node blends subtraction (12 combos) and place_value (8 combos) registries, but only 3 of 5 samples are actually subtraction, and none show the minuend or subtrahend explicitly decomposed into tens+ones notation in the visible text."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Sample text stays short, e.g. 'What is 64 − 30?', within the word cap for Grade 1 Quarter 3."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Injecting unrelated place-value-digit questions into a subtraction-focused node (as also seen in q2_4) suggests the two combined DNAs are not yet fused into a single 'expanded-form subtraction' task, just alternating between two separate question types."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Where subtraction is shown ('64 − 30 = 34'), it is a clean tens-only subtraction (no regrouping, consistent with the competency), but the expanded-form decomposition step itself, e.g. 60+4 minus 30+0, is never made visible in the text."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Minuends used (12, 20, 64) are 2-digit values consistent with the competency's tens-and-ones scope."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

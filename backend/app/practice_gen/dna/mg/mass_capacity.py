@@ -65,6 +65,34 @@ VOCAB_CAPACITY = VocabGated(requires_vocab="capacity",  preferred="capacity",   
 
 # ─── parameter generator ──────────────────────────────────────────────────────
 
+def _round_unit_for(val: int) -> int:
+    """Pick a sensible rounding granularity for an estimate task by magnitude."""
+    if val < 100:
+        return 10
+    if val < 1000:
+        return 100
+    return 500
+
+
+def _round_for_estimate(val: int) -> int:
+    # A bare `max(unit, ...)` floor here was mathematically wrong: small
+    # values (e.g. 2, rounding to the nearest 10) correctly round DOWN to
+    # 0, not up to the rounding unit itself. Found by a blind judgment
+    # review hand-verifying the rounding arithmetic.
+    #
+    # Python's builtin round() uses round-half-to-even ("banker's
+    # rounding"): round(0.5) == 0, round(3.5) == 4. Elementary curricula
+    # teach round-half-UP unconditionally (a value exactly at the midpoint
+    # always rounds up), so round(5, nearest 10) must be 10, not 0 --
+    # round() silently gave 0 for exactly this case. A second blind review
+    # caught this: 5g rounded to 0 while 35g rounded to 40 in the same
+    # sample set, an inconsistency traceable to 5 and 35 landing on
+    # opposite sides of Python's even/odd tie-breaking.
+    unit = _round_unit_for(val)
+    import math
+    return math.floor(val / unit + 0.5) * unit
+
+
 def generate_params(
     grade: int,
     difficulty_profile: Optional[Dict[str, Any]],
@@ -134,7 +162,27 @@ def generate_params(
                 "answer_label": f"{heavier} g",
             }
 
-        # read_measurement or estimate
+        if task_type == "estimate":
+            # "read_measurement" and "estimate" previously returned
+            # byte-identical structure (only the task_type label differed,
+            # which nothing downstream branched on) -- the two competencies
+            # ("measure mass using appropriate tools" vs. "estimate mass")
+            # rendered indistinguishable content. Estimation is framed here
+            # as rounding a precise reading to the nearest round unit
+            # (a legitimate G3 interpretation that doesn't require an
+            # external object-reference database the way "estimate a
+            # paperclip's mass" would).
+            rounded = _round_for_estimate(val_g)
+            return {
+        "blank_target": "answer",
+                "measurement_type": "mass",
+                "task_type": "estimate",
+                "value": val_g,
+                "round_to": _round_unit_for(val_g),
+                "unit": "g",
+                "answer": rounded,
+            }
+        # read_measurement
         return {
         "blank_target": "answer",
             "measurement_type": "mass",
@@ -176,6 +224,18 @@ def generate_params(
             "unit": "mL",
             "answer": larger,
             "answer_label": f"{larger} mL",
+        }
+
+    if task_type == "estimate":
+        rounded = _round_for_estimate(val_ml)
+        return {
+        "blank_target": "answer",
+            "measurement_type": "capacity",
+            "task_type": "estimate",
+            "value": val_ml,
+            "round_to": _round_unit_for(val_ml),
+            "unit": "mL",
+            "answer": rounded,
         }
 
     return {

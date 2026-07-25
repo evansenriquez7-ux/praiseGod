@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_mg_q1_0",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What shape has 4 sides where opposite sides are equal?",
+      "correct_answer": "rectangle"
+    },
+    {
+      "seed": 43,
+      "question_text": "What shape has 3 sides and 3 corners?",
+      "correct_answer": "triangle"
+    },
+    {
+      "seed": 44,
+      "question_text": "What shape has 4 equal sides and 4 corners?",
+      "correct_answer": "square"
+    },
+    {
+      "seed": 45,
+      "question_text": "What shape has 4 equal sides and 4 corners?",
+      "correct_answer": "square"
+    },
+    {
+      "seed": 46,
+      "question_text": "What shape has 3 sides and 3 corners?",
+      "correct_answer": "triangle"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Samples directly test shape identification by defining attributes, e.g. 'What shape has 4 equal sides and 4 corners?' -> square, and 'What shape has 3 sides and 3 corners?' -> triangle, matching the three named shapes in the competency."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "shapes_2d registers 3 axes and 24 combos per variant_registry, exhaustively checked separately by validate_matrix; the 5 sampled seeds are illustrative only."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Each question is one short clause ('What shape has 4 sides where opposite sides are equal?' at 10 words), well under the 15-word grade-1 limit and single-step reasoning appropriate for the earliest grade-1 quarter."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The competency explicitly calls out shapes 'of different size and in different orientation', but none of the 5 text-based attribute questions demonstrate size or orientation variation; a visual/image-based variant would be needed to actually test that named sub-skill, and it is not evident from these text samples."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty stays confined to the three named shapes and their basic side/corner counts, without drifting into composition, area, or angle concepts that belong to later shape competencies."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "There is no numeric magnitude to this competency beyond small side counts of 3-4, which is appropriately minimal for a grade-1 quarter-1 introduction to shapes."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

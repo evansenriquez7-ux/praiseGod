@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_na_q4_3",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 670 ÷ 10?",
+      "correct_answer": 67
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 30 ÷ 2?",
+      "correct_answer": 15
+    },
+    {
+      "seed": 44,
+      "question_text": "300 ÷ 5 = ___",
+      "correct_answer": 60
+    },
+    {
+      "seed": 45,
+      "question_text": "200 ÷ 4 = ___",
+      "correct_answer": 50
+    },
+    {
+      "seed": 46,
+      "question_text": "What is 108 ÷ 2?",
+      "correct_answer": 54
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "This node explicitly introduces the vocabulary term 'remainder' and requires demonstrating division with remainder for 2-digit by 1-digit cases, but none of the 5 samples ('670÷10'=67, '30÷2'=15, '300÷5'=60, '200÷4'=50, '108÷2'=54) produce a remainder -- every quotient divides evenly."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "variant_registry lists 20 combos for division, but the 5 illustrative samples given completely fail to surface the with-remainder case central to this competency's own newly introduced vocabulary."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The individual quotient questions are short and simply worded, appropriate for grade 3 reading level."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "Dividing-by-10 cases are shown (matching the '2-4 digit by 10, 100, 1000' clause) but no 2-digit-by-1-digit-with-remainder case appears anywhere in the sample set, despite that being this node's namesake new concept."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The without-remainder and divide-by-10 cases shown are legitimately part of this competency's scope, but the complete absence of the with-remainder case is a meaningful gap given the node introduces that exact vocabulary."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Dividend magnitudes (30-670) are reasonable for the stated 2-3 digit ÷ 1-digit and 2-4 digit ÷ 10/100/1000 ranges."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

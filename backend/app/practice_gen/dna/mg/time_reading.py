@@ -117,7 +117,7 @@ def generate_params(
     else:
         period = None
 
-    return {
+    result = {
         "blank_target": "time_str",
         "hour": hour,
         "minute": minute,
@@ -125,6 +125,22 @@ def generate_params(
         "precision": precision,
         "period": period,
     }
+    if profile.get("context") == "word_problem":
+        # "Solve problems involving time" (mat_g1_mg_q4_4) previously had
+        # no word-problem framing at all -- this DNA has no "context"
+        # handling anywhere, so it always rendered the bare clock-reading
+        # stem ("What time does the clock show?") regardless of the
+        # competency asking for solved *problems*. A self-contained
+        # narrative here (as with length_measurement's equivalent fix)
+        # avoids routing through the shared spine system for a single-value
+        # read that has no second quantity to combine/compare.
+        activity = rng.choice([
+            "wakes up", "eats breakfast", "leaves for school",
+            "starts homework", "goes to sleep", "has lunch",
+        ])
+        actor = rng.choice(["Maria", "Jose", "Ana", "Ben", "Liza"])
+        result["question"] = f"{actor} {activity} at {time_str}. What time is that?"
+    return result
 
 
 # ─── hint generator ───────────────────────────────────────────────────────────

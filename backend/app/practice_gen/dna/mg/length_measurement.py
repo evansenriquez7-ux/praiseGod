@@ -132,13 +132,17 @@ def generate_params(
         )
 
     task_type = profile.get("task_type", "read_measurement")
-    if task_type not in ("read_measurement", "compare", "convert"):
+    if task_type not in ("read_measurement", "compare", "convert", "estimate", "choose_unit"):
         raise ValueError(
             f"generate_params (length_measurement): unknown task_type '{task_type}'."
         )
     if task_type == "convert" and grade < 2:
         raise ValueError(
             f"generate_params (length_measurement): task_type='convert' is not available for grade={grade}."
+        )
+    if task_type == "choose_unit" and grade < 2:
+        raise ValueError(
+            f"generate_params (length_measurement): task_type='choose_unit' (m vs cm) is not available for grade={grade}."
         )
 
     scalar = float(profile.get("difficulty_scalar", 0.5))
@@ -172,6 +176,73 @@ def generate_params(
             "distractors": [val_a, val_b, min(val_a, val_b)],
         }
 
+    if task_type == "choose_unit":
+        # "Identify and use the appropriate unit (m or cm)" (mat_g2_mg_q2_1)
+        # had no matching task_type at all -- this DNA only ever measured
+        # in a unit already chosen for it, never asked the student to
+        # choose one. cm-scale items are short objects; m-scale items are
+        # longer distances/rooms -- picking between them is the actual
+        # skill this competency names.
+        cm_scale_items = ["a pencil", "a crayon", "a book", "a shoe", "a spoon"]
+        m_scale_items = ["a classroom", "a hallway", "a garden", "a basketball court", "a road"]
+        use_cm = rng.random() < 0.5
+        item = rng.choice(cm_scale_items if use_cm else m_scale_items)
+        answer_unit = "cm" if use_cm else "m"
+        return {
+            "blank_target": "answer",
+            "item": item,
+            "unit_type": "non_standard",  # no numeric measurement generated for this task
+            "task_type": "choose_unit",
+            "answer": answer_unit,
+            # fmt_mcq requires 3 distractors and has no numeric fallback for
+            # string answers -- the only genuine wrong unit choice here is
+            # the other of cm/m, so pad with plausible-sounding but
+            # non-numeric "reasoning" distractors rather than inventing
+            # additional units this curriculum hasn't introduced yet.
+            "distractors": [
+                "cm" if answer_unit == "m" else "m",
+                "either works",
+                "neither works",
+            ],
+            "question": f"Which unit would you use to measure the length of {item}: centimeters or meters?",
+        }
+
+    if task_type == "estimate":
+        # "Estimate length using meters or centimeters" (mat_g2_mg_q2_2)
+        # also had no matching task_type -- same rounding-based estimation
+        # framing already used for mass_capacity.py's fix this session.
+        lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
+        length = rng.randint(lo, hi)
+        round_unit = 10 if length < 100 else 50
+        # A `max(round_unit, ...)` floor here was mathematically wrong:
+        # small values (e.g. 2 cm, rounding to the nearest 10) correctly
+        # round DOWN to 0, not up to the rounding unit itself. Found by a
+        # blind judgment review hand-verifying the rounding arithmetic
+        # (seeds where length=2 and length=3 both wrongly gave 10).
+        #
+        # Python's round() uses round-half-to-even, not the round-half-up
+        # convention elementary curricula teach (an exact-midpoint value
+        # like 5, rounding to the nearest 10, must round UP to 10 -- round()
+        # silently gives 0). The identical bug was caught in
+        # mass_capacity.py's copy of this logic by a blind review hand-
+        # verifying an exact-5 sample; fixed the same way here pre-emptively
+        # rather than waiting to hit it by chance.
+        import math
+        rounded = math.floor(length / round_unit + 0.5) * round_unit
+        return {
+            "blank_target": "answer",
+            "length": length,
+            "unit": unit_mode,
+            "unit_type": unit_mode,
+            "task_type": "estimate",
+            "round_to": round_unit,
+            "answer": rounded,
+            "question": (
+                f"An object measures {length} {unit_mode}. "
+                f"About how many {unit_mode} is that, rounded to the nearest {round_unit}?"
+            ),
+        }
+
     if unit_mode == "non_standard":
         unit = rng.choice(_NON_STANDARD_UNITS)
         l_min, l_max = bounds.get("length_min", 1), bounds.get("length_max", 100)
@@ -194,7 +265,7 @@ def generate_params(
         max_mult = max(min_mult, l_max_current // tick_step)
         length = rng.randint(min_mult, max_mult) * tick_step
 
-        return {
+        result = {
             "blank_target": "answer",
             "length": length,
             "unit": unit,
@@ -203,11 +274,34 @@ def generate_params(
             "tick_step": tick_step,
             "answer": length,
         }
+        if profile.get("context") == "word_problem":
+            # "Solve problems involving lengths ... using non-standard
+            # units" (mat_g1_mg_q2_2) previously had no word-problem
+            # framing at all -- this DNA has no "context" handling
+            # anywhere, so it always rendered the bare read-measurement
+            # stem ("Measure the object. Its length is ___ paperclips.")
+            # regardless of the competency asking for solved *problems*.
+            # A self-contained narrative here (rather than routing through
+            # the shared spine system, whose length spines expect a second
+            # compared/summed value this single-measurement task doesn't
+            # have) keeps this fix narrow and avoids the blank_target /
+            # slot-alias mismatches that pattern has caused elsewhere this
+            # session.
+            # "a table" deliberately excluded: "table" is reserved
+            # NOT_YET_KNOWN vocabulary (data-table terminology introduced
+            # later), unrelated to this furniture sense but still caught by
+            # the vocab-gating checker's literal word match.
+            obj = rng.choice(["a pencil", "a book", "a notebook", "a ruler", "a shoe", "a crayon"])
+            result["question"] = (
+                f"Ben used {unit} to measure {obj}. It measured {length} {unit} long. "
+                f"How long is {obj} in {unit}?"
+            )
+        return result
 
     if task_type != "convert":
         lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
         length = rng.randint(lo, hi)
-        return {
+        result = {
             "blank_target": "answer",
             "length": length,
             "unit": unit_mode,
@@ -215,6 +309,17 @@ def generate_params(
             "task_type": task_type,
             "answer": length,
         }
+        if profile.get("context") == "word_problem":
+            # Same fix as the non_standard branch above, applied to the
+            # G2 standard-units (cm/m) path -- "Solve problems involving
+            # length and distance" (mat_g2_mg_q2_3) is G2-only (standard
+            # units), so it never reached the non_standard branch's fix.
+            obj = rng.choice(["a pencil", "a book", "a notebook", "a ruler", "a garden path", "a crayon"])
+            result["question"] = (
+                f"Ana used a {unit_mode} ruler to measure {obj}. It measured {length} {unit_mode} long. "
+                f"How long is {obj} in {unit_mode}?"
+            )
+        return result
 
     # convert_between: give meters, ask for centimeters (or vice versa)
     lo, hi = bounds.get("m_min", 1), min(bounds.get("m_max", 100), 20)

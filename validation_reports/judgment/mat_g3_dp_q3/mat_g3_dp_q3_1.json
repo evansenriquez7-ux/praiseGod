@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_dp_q3_1",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 5",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,63 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Look at the graph. What is the value for dogs?",
+      "correct_answer": "D"
+    },
+    {
+      "seed": 43,
+      "question_text": "Look at the graph. What is the value for grapes?",
+      "correct_answer": "B"
+    },
+    {
+      "seed": 44,
+      "question_text": "Create a graph to show: Grade 1: 45, Grade 2: 45, Grade 3: 60, Grade 4: 70.",
+      "correct_answer": [
+        45,
+        45,
+        60,
+        70
+      ]
+    },
+    {
+      "seed": 45,
+      "question_text": "Look at the graph. What is the value for swimming?",
+      "correct_answer": "D"
+    },
+    {
+      "seed": 46,
+      "question_text": "Look at the graph. What is the value for dogs?",
+      "correct_answer": "D"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Competency: \"Present data in tables and single bar graphs (horizontal and vertical).\" Three of five samples ask students to read an already-built graph rather than present/construct one; only the \"Create a graph to show...\" item matches the present-data action the competency names."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "bar_graphs registers 3 axes / 30 combos for this node; the majority of this 5-sample slice leans toward reading rather than presenting, which, if representative, would under-serve the present half of the competency."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Stems like \"Look at the graph. What is the value for swimming?\" are about 8 words, comfortably under the 22-word cap and readable at G3 Q3 level."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "A 30-combo bar_graphs registry gives ample room for horizontal/vertical and table/graph variants, and this sample slice at least demonstrates the fill-in-values construction format for one item."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The 4-of-5 skew toward reading over constructing risks blurring this node's identity against q3_2's interpret-data competency, even though MATATAG treats presenting and interpreting as sequential but separate skills."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Data values of 45, 45, 60, and 70 form a sensible, evenly-scaled range for a G3 bar graph exercise, neither too granular nor too large for bar comparison."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

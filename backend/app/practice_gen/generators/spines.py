@@ -339,7 +339,12 @@ _COMP_WHO_HAS_MORE = Spine(
 _COMP_DIFFERENCE = Spine(
     id="comp_difference",
     template=(
-        "Team A scored {a} points and Team B scored {b} points at the {place}. "
+        # "points" (game score) is deliberately avoided here -- it collides
+        # with the NOT_YET_KNOWN vocab check for the unrelated geometric
+        # term "point" (introduced at mat_g3_mg_q1_4), which the checker
+        # cannot distinguish from this everyday-English homograph. This
+        # spine's grade_band starts at 1, well before that G3 node.
+        "Team A scored {a} in the {place} and Team B scored {b}. "
         "What is the difference in their scores?"
     ),
     required_concepts={"subtraction", "comparing_ordering"},
@@ -503,6 +508,22 @@ _MEAS_OBJECT = Spine(
     grade_band=(1, 3),
 )
 
+_AREA_SOLVE = Spine(
+    id="area_solve",
+    template=(
+        # A fixed noun ("garden") rather than the {objects} interest slot:
+        # {objects} is a plural countable-item filler ("ribbons", "coins")
+        # meant for counting-context spines, and reads ungrammatically after
+        # "a rectangular ___" ("a rectangular ribbons").
+        "{actor} wants to cover a rectangular garden that is {l} "
+        "{length_unit} long and {w} {length_unit} wide with square tiles. "
+        "How many tiles are needed to cover it completely?"
+    ),
+    required_concepts={"area"},
+    blank_target="answer",
+    grade_band=(3, 3),
+)
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # DATA SPINES — reading results / collecting data
@@ -648,6 +669,8 @@ ALL_SPINES: List[Spine] = [
     _MEAS_COMPARE_LENGTHS,
     _MEAS_DIFFERENCE,
     _MEAS_OBJECT,
+    # Area
+    _AREA_SOLVE,
     # Data
     _DATA_READ_RESULTS,
     _DATA_COMPARE,
@@ -666,6 +689,7 @@ def select_spine(
     prior_concepts: Set[str],
     cumulative_vocab: Set[str],
     required_blank_target: Optional[str] = None,
+    current_operation: Optional[str] = None,
 ) -> Optional[Spine]:
     """
     Choose the best narrative Spine for the current problem context.
@@ -701,6 +725,28 @@ def select_spine(
         spine for spine in ALL_SPINES
         if spine.is_eligible(node_cumulative_concepts, grade, cumulative_vocab)
     ]
+
+    if current_operation is not None:
+        # Every spine names the DNA domain(s) it narrates via
+        # required_concepts (e.g. mul_equal_groups requires
+        # "multiplication"; money_total requires {"money_peso","addition"}).
+        # Eligibility above only checks that a spine's concepts are a subset
+        # of everything the student has cumulatively seen -- it does NOT
+        # check that the spine's domain matches what's actually being
+        # computed right now. By G2+, a node's cumulative concepts already
+        # include e.g. subtraction/comparing_ordering/oral_problem from
+        # earlier quarters, so a multiplication problem could silently get
+        # narrated with a "how many more" (subtraction-comparison) spine
+        # while the DNA still computes and grades a product, and a
+        # money_peso problem could get narrated with an unrelated survey or
+        # comparison spine -- actively mismatched, misleading content.
+        # Narrow to spines that name the current DNA (dna.concept) among
+        # their required_concepts, falling back to the unfiltered set only
+        # if no such spine exists (e.g. a DNA with no dedicated spines of
+        # its own still gets a generic eligible one rather than nothing).
+        op_matched = [s for s in eligible if current_operation in s.required_concepts]
+        if op_matched:
+            eligible = op_matched
 
     if required_blank_target is not None:
         matched = [s for s in eligible if s.blank_target == required_blank_target]

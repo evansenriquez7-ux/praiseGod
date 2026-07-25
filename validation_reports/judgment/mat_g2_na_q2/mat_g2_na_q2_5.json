@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g2_na_q2_5",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "In a pictograph, Daniel's group collected 64 coins and another group collected 0 coins. How many more did Daniel's group collect?",
+      "correct_answer": 64
+    },
+    {
+      "seed": 43,
+      "question_text": "In a pictograph, Kuya Bien's group collected 5 story chapters and another group collected 0 story chapters. How many more did Kuya Bien's group collect?",
+      "correct_answer": 5
+    },
+    {
+      "seed": 44,
+      "question_text": "In a pictograph, Lara's group collected ___ ribbons and another group collected 0 ribbons. How many more did Lara's group collect?",
+      "correct_answer": 41
+    },
+    {
+      "seed": 45,
+      "question_text": "In a pictograph, Coach Roel's group collected 25 water bottles and another group collected 15 water bottles. How many more did Coach Roel's group collect?",
+      "correct_answer": 10
+    },
+    {
+      "seed": 46,
+      "question_text": "In a pictograph, Ate Cara's group collected 12 photo albums and another group collected 1 photo albums. How many more did Ate Cara's group collect?",
+      "correct_answer": 11
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Seed 45's '25 water bottles' vs '15 water bottles' (25-15=10, correct) genuinely tests subtraction, but 3 of 5 samples (42,43,44) subtract 0, a degenerate case."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The pictograph-comparison framing is applied to varied item types (coins, story chapters, ribbons, water bottles, photo albums) across the seeds."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The 'In a pictograph, X's group collected...how many more' phrasing is a reasonable, consistent template for Grade 2 Q2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Competency explicitly requires 'with and without regrouping', but none of the 5 samples requires borrowing (e.g. 25-15 and 12-1 both need no regrouping), so the regrouping variant is unevidenced here."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All samples are genuine 'how many more' comparative subtraction word problems, matching problem_solving_subtraction_with_regrouping in framing."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Values reach into the 60s (seed 42: 64), an appropriate spread under the stated 'less than 100' ceiling."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

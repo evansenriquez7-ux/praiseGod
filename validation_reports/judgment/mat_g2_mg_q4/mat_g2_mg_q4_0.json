@@ -1,21 +1,55 @@
 {
   "node_id": "mat_g2_mg_q4_0",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
-    43,
     44,
-    45,
-    46
+    45
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What time does the clock show?",
+      "correct_answer": "C"
+    },
+    {
+      "seed": 44,
+      "question_text": "Look at the July 2025 calendar. What day of the week is July 17?",
+      "correct_answer": "C"
+    },
+    {
+      "seed": 45,
+      "question_text": "Look at the May 2025 calendar. What day of the week is May 14?",
+      "correct_answer": "D"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The lc is about describing *duration* in days/weeks using a calendar, but 2 of 5 samples ('What time does the clock show?') test analog clock reading, an unrelated skill, and the calendar items ('What day of the week is July 17?') test date lookup, not duration."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "time_reading (20 combos) and calendar (8 combos) are registered, but neither DNA's sampled output computes a span between two dates -- the core 'duration' skill -- so the coverage that matters most for this lc is not evidenced."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Reading a single date's weekday ('What day of the week is May 14?') is a lookup task, while computing a duration in days or weeks between two events is an arithmetic/reasoning task -- the sampled items sit at a lower cognitive tier than the competency requires."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "None of the 5 samples names a start and end point for an event, so the variant space cannot be confirmed to support 'describe the duration ... in terms of number of days and/or weeks' as the lc specifically states."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "Clock-reading items belong to the neighboring lc mat_g2_mg_q4_1 ('read and write time'), not to calendar duration; mixing them into this node dilutes alignment with this lc's exact, narrower wording about days and weeks."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "The calendar samples reference single dates (July 17, May 14) with no second date to compute a span from, so there is no observable duration magnitude to judge for grade-2 appropriateness."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g2_na_q3_0",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 1 × 3?",
+      "correct_answer": 3
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 2 × 0?",
+      "correct_answer": 0
+    },
+    {
+      "seed": 44,
+      "question_text": "Find the missing number: 80, 81, 82, 83, ___",
+      "correct_answer": 84
+    },
+    {
+      "seed": 45,
+      "question_text": "What number comes next when counting: 62, 63, 64, 65, ___?",
+      "correct_answer": 66
+    },
+    {
+      "seed": 46,
+      "question_text": "What is 3 × 0?",
+      "correct_answer": 0
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The competency asks students to count objects via repeated addition and use language like '5 groups of 3'/'5 threes' -- explicitly not the multiplication symbol, which this node's own vocab list confirms is not introduced until the next node q3_1 (which lists 'multiplication' and 'product' as newly introduced); yet three of the five samples here use bare multiplication-sign notation, e.g. 'What is 1 x 3?', 'What is 2 x 0?'."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "multiplication (4 axes/20 combos) and counting (3 axes/28 combos) combine for 48 combos; the multiplication-sign items appearing here suggest the multiplication DNA's symbolic-notation combos are not gated behind this node's vocabulary-introduction boundary, though validate_matrix checks exhaustive combo execution rather than vocabulary sequencing."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Stems are minimal ('What is 1 x 3?') and well under the word cap, appropriate reading level for grade 2 quarter 3, though the notation itself is the concern, not the sentence complexity."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "None of the five samples use the 'N groups of M' or repeated-addition ('3+3+3+3+3') language the competency explicitly names as the required representation at this stage; the multiplication-symbol samples jump straight past the intended concrete/pictorial-then-symbolic sequencing."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "Introducing the multiplication symbol at this node pre-empts the vocabulary-gated introduction that this node's own metadata says happens one node later at q3_1, a direct sequencing violation of the curriculum's own stated scope for this node."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Factors observed (1x3, 2x0, 3x0) are trivially small, which is at least appropriately scaled for grade 2 quarter 3 even though the notation itself is premature."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

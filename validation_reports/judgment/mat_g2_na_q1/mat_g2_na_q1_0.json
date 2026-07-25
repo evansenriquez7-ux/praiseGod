@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g2_na_q1_0",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What number comes next when counting: 7, 8, 9, 10, ___?",
+      "correct_answer": 11
+    },
+    {
+      "seed": 43,
+      "question_text": "What number comes next when counting: 5, 6, 7, 8, ___?",
+      "correct_answer": 9
+    },
+    {
+      "seed": 44,
+      "question_text": "Find the missing number: 17, 18, 19, 20, ___",
+      "correct_answer": 21
+    },
+    {
+      "seed": 45,
+      "question_text": "What number comes next when counting: 12, 13, 14, 15, ___?",
+      "correct_answer": 16
+    },
+    {
+      "seed": 46,
+      "question_text": "What number comes next when counting: 6, 7, 8, 9, ___?",
+      "correct_answer": 10
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The competency's entire point is counting UP TO 1000, but seeds 42-46 only render tiny ranges (7-8-9-10, 5-6-7-8, 17-18-19-20, 12-13-14-15, 6-7-8-9), never approaching hundreds."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "All 5 samples are simple +1 sequences confined to single digits and low teens; none demonstrates counting through a hundreds boundary like 198,199,200."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The 'What number comes next when counting: ...' template itself is appropriately simple for Grade 2 Q1 phrasing."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Only consecutive +1 counting in the 5-21 range is shown; no sample exercises counting near 999 or across a hundreds/tens rollover that 'up to 1000' implies."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "As rendered, these samples are indistinguishable from a Grade 1 'count to 20' item; nothing in the text evidences the extended 1000 range this node's vocab (thousand, up to 1000) implies."
+    },
+    "scale_appropriateness": {
+      "verdict": "FAIL",
+      "rationale": "The highest number appearing in any of the 5 samples is 21, a severe under-sampling of the stated up-to-1000 range for this competency."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

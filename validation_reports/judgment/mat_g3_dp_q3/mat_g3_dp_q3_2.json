@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_dp_q3_2",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 5",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,63 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Look at the bar graph. What is the value for dogs?",
+      "correct_answer": "D"
+    },
+    {
+      "seed": 43,
+      "question_text": "Look at the bar graph. What is the value for grapes?",
+      "correct_answer": "B"
+    },
+    {
+      "seed": 44,
+      "question_text": "Create a bar graph to show: Grade 1: 45, Grade 2: 45, Grade 3: 60, Grade 4: 70.",
+      "correct_answer": [
+        45,
+        45,
+        60,
+        70
+      ]
+    },
+    {
+      "seed": 45,
+      "question_text": "Look at the bar graph. What is the value for swimming?",
+      "correct_answer": "D"
+    },
+    {
+      "seed": 46,
+      "question_text": "Look at the bar graph. What is the value for dogs?",
+      "correct_answer": "D"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Competency: \"Interpret data in tables and single bar graphs (horizontal and vertical).\" Four of five samples correctly ask students to read a value off a bar graph, a direct test of interpretation, matching the competency's core action."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "bar_graphs registers 3 axes / 30 combos for this node, matching q3_1's registry; the 5 samples are illustrative and full combo execution is separately checked by validate_matrix."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Stems are short and consistent, e.g. \"What is the value for grapes?\" at 7 words, well under the 22-word cap and appropriately concrete for a G3 Q3 data-reading task."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The registry's 30 combos plausibly support varied graph orientations and categories for interpretation practice, and the four read-focused samples show reasonable variety in categories asked about."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "This node logically follows q3_1 by shifting from constructing to reading graphs, and most samples reflect that shift, though one construction-style item, \"Create a bar graph to show...\", slightly muddies the boundary with q3_1's competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The values referenced (45, 45, 60, 70) are the same evenly-spaced, moderate range as q3_1's, appropriate for consistent difficulty within the same data strand at this grade."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

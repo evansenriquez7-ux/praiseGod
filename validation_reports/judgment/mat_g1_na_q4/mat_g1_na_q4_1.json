@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q4_1",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What fraction does \\(\\frac{1}{2}\\) equal parts represent?",
+      "correct_answer": "1/2"
+    },
+    {
+      "seed": 43,
+      "question_text": "What fraction does \\(\\frac{1}{2}\\) equal parts represent?",
+      "correct_answer": "1/2"
+    },
+    {
+      "seed": 44,
+      "question_text": "Which is greater: 10 or 6?",
+      "correct_answer": ">"
+    },
+    {
+      "seed": 45,
+      "question_text": "Which is greater: 18 or 30?",
+      "correct_answer": "<"
+    },
+    {
+      "seed": 46,
+      "question_text": "What fraction does \\(\\frac{1}{2}\\) equal parts represent?",
+      "correct_answer": "1/2"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Competency requires comparing 1/2 and 1/4 using models, but none of the 5 samples ask a comparison between the two fractions; three ask students to name what fraction '1/2 equal parts' represents, and two ('Which is greater: 10 or 6?') compare whole numbers with no fraction or model in sight."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "fractions registers 3 axes/9 combos and comparing_ordering registers 3 axes/8 combos per variant_registry; validate_matrix machine-verifies exhaustive execution of that combo space, and these 5 seeds are only an illustrative slice of it."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Both observed question types are single, direct sentences well under the 15-word grade-1 cap ('What fraction does 1/2 equal parts represent?' is 8 words), appropriate single-step recall for grade 1 quarter 4."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The comparing_ordering axis appears to drive plain integer comparisons (10 vs 6, 18 vs 30) rather than fraction-vs-fraction comparisons, so the registered variant space as sampled does not obviously exercise the 1/2-vs-1/4 model comparison this competency names."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "None of the sampled content reaches beyond grade-1 scope, but the fraction item tests bare identification of 1/2 rather than the comparative judgment (which is bigger, half or a quarter) the competency wording specifically demands."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The whole-number magnitudes seen (6-30) and the single denominator pair (halves, quarters) are both well within an early grade-1 range, so scale itself is not the issue for this node."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

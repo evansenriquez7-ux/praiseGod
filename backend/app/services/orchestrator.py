@@ -196,9 +196,36 @@ class PracticeOrchestrator:
             if allowed_formatters and not any(f in available_for_d for f in allowed_formatters):
                 continue
             
-            # Ensure the DNA is compatible with the requested variant profile
+            # Ensure the DNA is compatible with the requested variant profile.
+            # This must run even when no formatter was requested: a node with
+            # multiple candidate DNAs (e.g. shapes_2d + comparing_ordering)
+            # can have a competency-bound value in local_difficulty_profile
+            # (e.g. task_type="compare_shapes") that is meaningless -- and a
+            # generation-time crash, not silently ignored -- for a sibling
+            # DNA that reuses the same variant *name* with a disjoint set of
+            # values. Reject any candidate DNA whose own registered variant
+            # vocabulary doesn't recognize a value it's about to receive,
+            # regardless of whether a specific formatter was requested.
             dna_compatible = True
-            if formatter:
+            for var_name, var_val in local_difficulty_profile.items():
+                registered_values = VARIANTS_BY_DNA.get(d, {}).get(var_name)
+                if registered_values is not None and var_val not in registered_values:
+                    # Only a real cross-DNA incompatibility if var_val is a
+                    # genuine, enumerable variant value for *some other*
+                    # candidate DNA on this node -- not a composite/scope
+                    # ground-truth value (e.g. missing_number's operation=
+                    # "addition_subtraction") that was never a literal
+                    # Lab-selectable option for any DNA in the first place.
+                    # base_generator.py's own curriculum-gate check exempts
+                    # these same composite values for the same reason.
+                    is_enumerable_elsewhere = any(
+                        var_val in VARIANTS_BY_DNA.get(other, {}).get(var_name, [])
+                        for other in dna_names if other != d
+                    )
+                    if is_enumerable_elsewhere:
+                        dna_compatible = False
+                        break
+            if dna_compatible and formatter:
                 dim_names = {axis["name"] for axis in get_axes_for_concept(d)}
                 for var_name, var_val in local_difficulty_profile.items():
                     if var_name in dim_names:

@@ -29,7 +29,7 @@ import json
 from pathlib import Path
 from typing import Dict, List, Optional, Set
 
-from .compatibility import COMPATIBILITY
+from .compatibility import COMPATIBILITY, VARIANTS_BY_DNA
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -230,25 +230,140 @@ def _parse_competency_bounds(
             max_val = int(match.group(1))
             min_val = 10
             bounds["range"] = (min_val, max_val)
-        
-        # Parse skip pool from text
-        allowed = []
-        if "1 more or 1 less" in text:
-            allowed = [1]
-        elif not any(f"{x}s" in text for x in [2, 5, 10, 20, 50, 100]):
-            allowed = [1]
-        else:
-            if "1s" in text or "count" in text:
-                allowed.append(1)
-            for skip in [2, 5, 10, 20, 50, 100]:
-                if f"{skip}s" in text:
-                    allowed.append(skip)
-        bounds["skip_pool"] = allowed
+
+        # Parse skip pool + skip_interval from text. counting.py's
+        # generate_params() has TWO axes: skip_pool (eligible skip values)
+        # and skip_interval (which BAND of that pool _select_skip() actually
+        # draws from). skip_interval was never bound here, so it always
+        # defaulted to "by_1" -- and _select_skip()'s "by_1" branch
+        # unconditionally returns 1 whenever 1 is anywhere in skip_pool.
+        # The old logic below added 1 to skip_pool via a bare "count" in
+        # text substring check, which matches almost every counting
+        # competency (nearly all contain the word "count") -- so every
+        # "count by 2s/5s/10s" competency silently degraded to plain +1
+        # counting, 100% of the time, regardless of seed.
+        skip_10_100 = [x for x in (20, 50, 100, 250, 1000) if f"{x}s" in text]
+        skip_2_5_10 = [x for x in (2, 5, 10) if f"{x}s" in text]
+        if skip_10_100:
+            bounds["skip_pool"] = skip_2_5_10 + skip_10_100
+            bounds["skip_interval"] = "by_20_50_100"
+        elif skip_2_5_10:
+            bounds["skip_pool"] = skip_2_5_10
+            bounds["skip_interval"] = "by_2_5_10"
+        elif "1 more or 1 less" in text:
+            bounds["skip_pool"] = [1]
+            bounds["skip_interval"] = "by_1"
+        # else: leave unbound -- plain counting nodes (recognize/represent
+        # numbers, count-up-as-addition-strategy, repeated-addition groups)
+        # correctly use the DNA's own by_1 default without a bound.
     
+    # Area: bind task_type per node -- the DNA's own default
+    # (task_type="find_area") silently governed every unbound node, so
+    # "illustrate ... using square tile units" (mat_g3_mg_q1_0) and
+    # "explore inductively the derivation of the formula[s]"
+    # (mat_g3_mg_q1_1) rendered indistinguishably from the plain
+    # "find the area" competency (mat_g3_mg_q1_2), and the symbolic
+    # fallback question text didn't even show the shape's dimensions.
+    elif dna_name == "area":
+        if "derivation" in text or "derive" in text:
+            bounds["task_type"] = "derive_formula"
+        elif "illustrate" in text or "estimate" in text:
+            bounds["task_type"] = "illustrate_tiles"
+
+    # Comparing/ordering: bind task_type per node -- the DNA's own default
+    # (task_type="compare_pair") silently governed every unbound node, so
+    # every "Order numbers ... from smallest to largest" competency
+    # (mat_g1_na_q1_4, mat_g1_na_q2_0, mat_g2_na_q1_4, mat_g3_na_q1_6)
+    # rendered a pairwise >/</= comparison instead of ordering a full set.
+    # Calendar: "Give the days of the week and months of the year in the
+    # correct order" has no matching task_type in the DNA's own default
+    # (task_type="read_day", which reads a date off a calendar grid, not a
+    # recitation/sequencing task) -- bind the new "sequence" task_type.
+    elif dna_name == "calendar" and "correct order" in text:
+        bounds["task_type"] = "sequence"
+
+    # Length measurement: bind task_type per node -- "identify and use the
+    # appropriate unit" and "estimate length" had no matching task_type in
+    # this DNA at all (it only ever measured in a unit already chosen for
+    # it, and read_measurement/estimate were never differentiated), so both
+    # competencies silently rendered the same "Measure the object..."
+    # read_measurement stem.
+    elif dna_name == "length_measurement":
+        if "appropriate unit" in text or "identify and use" in text:
+            bounds["task_type"] = "choose_unit"
+        elif "estimate" in text:
+            bounds["task_type"] = "estimate"
+        elif "equal length" in text:
+            bounds["task_type"] = "compare"
+
+    # Pictographs: bind task_type per node -- the DNA's own default
+    # (task_type="read_value") silently governed every unbound node, and
+    # "present_data"/"organize_table" are already correctly wired to their
+    # own dedicated formatters (pictograph_set / fill_in_table, see
+    # compatibility.py FORMATTER_VARIANT_SUPPORT) -- that routing just
+    # never activated because task_type was never bound to those values.
+    # "Collect data ... through a simple interview" (mat_g1_dp_q3_0) has no
+    # matching task_type in this DNA at all (collecting raw responses is a
+    # different action from presenting/organizing already-collected data);
+    # routed to "organize_table" as the closest available proxy -- a
+    # student who can organize interview-style tally data into a table is
+    # exercising a real component of this competency, though not the
+    # "conduct the interview" part itself, which this DNA has no way to
+    # represent.
+    elif dna_name == "pictographs":
+        if "organize" in text or "into a table" in text or "collect" in text:
+            bounds["task_type"] = "organize_table"
+        elif "present" in text:
+            bounds["task_type"] = "present_data"
+        if "without a scale" in text or "without scale" in text:
+            bounds["scale_type"] = "no_scale"
+
+    elif dna_name == "comparing_ordering":
+        if "order" in text:
+            bounds["task_type"] = "order_sequence"
+        elif "compare" in text:
+            bounds["task_type"] = "compare_pair"
+
+    # Patterns: bind pattern_type/ask_type per node -- patterns.py's own
+    # default (pattern_type="growing" -> arithmetic_increasing, ask_type=
+    # "next") silently governed every unbound node, so a "repeating
+    # pattern" competency (mat_g1_na_q3_6) rendered plain +1/skip counting
+    # instead of a cyclical repeat unit, and a "missing term in a
+    # repeating+increasing pattern" competency (mat_g3_na_q3_5) never
+    # showed the required combined/cyclical structure. "Create ..."
+    # competencies (mat_g1_na_q3_7, mat_g2_na_q2_9) and "Explain how to
+    # generate ..." (mat_g3_na_q3_6) are deliberately left unbound here --
+    # this DNA only produces fill-in-the-blank "next/missing term" items,
+    # it has no construct-your-own-pattern or explain-the-rule task type,
+    # so those 3 nodes need new DNA content, not just a routing fix.
+    elif dna_name == "patterns":
+        if "repeating and increasing" in text or "repeating and decreasing" in text or "increasing components" in text:
+            bounds["pattern_type"] = "combined"
+        elif "repeating" in text:
+            bounds["pattern_type"] = "repeating"
+        elif "increasing" in text and "decreasing" in text:
+            bounds["pattern_type"] = "increasing_or_decreasing"
+        if "missing term" in text:
+            bounds["ask_type"] = "missing"
+        elif "next term" in text:
+            bounds["ask_type"] = "next"
+        elif "create" in text:
+            # "Create ... patterns" (mat_g1_na_q3_7, mat_g2_na_q2_9) has no
+            # free-form construction UI in this pipeline; routed to
+            # ask_type="identify_valid" (patterns.py: pick which candidate
+            # sequence actually satisfies the pattern rule vs. ones that
+            # break it partway through) as the closest machine-gradable
+            # proxy for "can construct a valid pattern of this type".
+            bounds["ask_type"] = "identify_valid"
+        elif "explain how to generate" in text:
+            bounds["ask_type"] = "explain"
+
     # Missing Number: "missing number in addition or subtraction... / multiplication or division..."
     elif dna_name == "missing_number":
         # Parse operation
-        if "multiplication" in text or "division" in text:
+        if "equivalent" in text:
+            bounds["operation"] = "equivalent"
+        elif "multiplication" in text or "division" in text:
             bounds["operation"] = "multiplication_division"
         elif "addition" in text or "subtraction" in text:
             bounds["operation"] = "addition_subtraction"
@@ -266,11 +381,37 @@ def _parse_competency_bounds(
             
     # Place value: "X-digit numbers"
     elif dna_name == "place_value":
+        # place_value.py's generate_params() reads a *discrete* string
+        # profile key "digit_count" (values "2_digit"/"3_digit"/"4_digit",
+        # per axes_catalog.py) -- this used to bind a differently-named,
+        # differently-shaped key "num_digits" as a (min,max) tuple, which
+        # matches nothing generate_params() reads and nothing
+        # axes_catalog.py registers, so it was silently dropped by the
+        # orchestrator's continuous-axis mapping step (tuple bounds only
+        # resolve for axes actually registered under that exact name).
+        # Every place_value node was capped at generate_params()'s own
+        # "2_digit" default regardless of the competency's stated digit
+        # count (e.g. mat_g3_na_q1_3: "place value in a 4-digit number"
+        # rendered only 2-digit numbers like 45, 20, 15).
         match = re.search(r'(\d+)-digit', text)
         if match:
             digits = int(match.group(1))
-            bounds["num_digits"] = (1, digits)
-            
+            bounds["digit_count"] = f"{digits}_digit"
+        # task_type was previously pure metadata in generate_params() (every
+        # value produced identical output), so "decompose" competencies
+        # rendered indistinguishably from "identify the place value"
+        # (mat_g1_na_q2_3 vs. mat_g1_na_q2_2). Bind it now that
+        # generate_params() genuinely branches on it.
+        if "decompose" in text:
+            bounds["task_type"] = "decompose"
+        elif "value of a digit" in text and "digit of" in text and "given its place value" in text:
+            # This competency explicitly names all 3 place-value sub-skills
+            # (name the place, compute the value, reverse-lookup the digit)
+            # -- alternate across all three rather than defaulting to just
+            # one (see place_value.py's "any_place_value_skill" composite
+            # value).
+            bounds["task_type"] = "any_place_value_skill"
+
     # Number reading: "numerals/numbers up to X"
     elif dna_name == "number_reading":
         match = re.search(r'(?:numerals?|numbers?)\s+(?:up\s+to|to)\s+(\d+)', text)
@@ -278,24 +419,95 @@ def _parse_competency_bounds(
             max_val = int(match.group(1))
             bounds["range"] = (10, max_val)
 
-    # Symmetry and slides: restrict to slides if symmetry isn't mentioned
+    # Symmetry and slides: this DNA's item pool spans four disjoint curriculum
+    # scopes (rotation/turns; slide/translation; line symmetry; completing a
+    # symmetric figure) and every node bound to it must pin exactly one via
+    # concept -- leaving concept unbound ("pass") does NOT mean "the DNA
+    # shows relevant content regardless" as the old comment assumed; it means
+    # the DNA's own hardcoded default governs, which is "slide_translation"
+    # for grade>1, so every unbound G2/G3 node here silently defaulted to
+    # slide/translation content regardless of its actual competency (only
+    # mat_g1_mg_q4_0 coincidentally showed correct rotation content, because
+    # slide_translation has no grade_min=1 items so its own fallback cascade
+    # happened to land back on the only grade-eligible concept, rotation).
     elif dna_name == "symmetry_slides":
-        if "symmetry" in text or "symmetric" in text:
-            pass
-        else:
+        if "complete" in text and ("symmetric" in text or "symmetry" in text):
+            bounds["concept"] = "complete_symmetric_figure"
+        elif "symmetry" in text or "symmetric" in text:
+            bounds["concept"] = "line_symmetry"
+        elif "turn" in text or "clockwise" in text:
+            bounds["concept"] = "rotation"
+        elif "slide" in text or "translation" in text:
             bounds["concept"] = "slide_translation"
+            if "two-direction" in text or "two direction" in text:
+                bounds["directions"] = "two_directions"
+            elif "one-direction" in text or "one direction" in text:
+                bounds["directions"] = "one_direction"
 
-    # Mass and capacity: restrict to mass if capacity/volume/liter is not mentioned
+    # Mass and capacity: this DNA's default measurement_type is always
+    # "mass" (mass_capacity.py's generate_params) regardless of what's
+    # bound -- leaving it "unrestricted" (the old `pass` branch here) does
+    # NOT mean the DNA shows capacity content, it means the DNA's own mass
+    # default silently governs. This left all 3 capacity-competency nodes
+    # (measure/estimate/compare capacity in L/mL) rendering 100% mass-in-
+    # grams content. Bind explicitly both ways, plus task_type from
+    # estimate/compare keywords (same silent-default risk applies there).
     elif dna_name == "mass_capacity":
-        if "capacity" in text or "liter" in text or "milliliter" in text or "volume" in text:
-            pass
+        # "capacit" stem catches both "capacity" and the plural "capacities"
+        # (mat_g3_mg_q2_5: "Compare capacities of two containers" -- the
+        # literal substring "capacity" does not appear in "capacities").
+        if "capacit" in text or "liter" in text or "milliliter" in text or "volume" in text:
+            bounds["measurement_type"] = "capacity"
         else:
             bounds["measurement_type"] = "mass"
+        if "estimate" in text:
+            bounds["task_type"] = "estimate"
+        elif "compare" in text:
+            bounds["task_type"] = "compare"
+        elif "measure" in text:
+            bounds["task_type"] = "read_measurement"
 
-    # Geometric lines: restrict to point/line/segment/ray if parallel/intersecting/perpendicular is not mentioned
+    # 2D shapes: this DNA's item pool spans multiple task types (name a
+    # shape, count sides/corners, compare shapes, compose/decompose) and
+    # shape sets (basic triangles/rectangles/squares vs. circles/half/quarter
+    # circles vs. composite figures) -- every node must pin both, or the
+    # DNA's own default (basic_triangles_rectangles_squares / identify_name)
+    # silently governs regardless of what the node's competency actually
+    # asks for (this silently dropped circles/composite figures entirely
+    # for the two G2 nodes that introduce them).
+    elif dna_name == "shapes_2d":
+        if "composite figure" in text:
+            bounds["shape_set"] = "composite_figures"
+        elif "circle" in text:
+            bounds["shape_set"] = "extended_with_circles"
+        if "compose" in text and "decompose" in text:
+            bounds["task_type"] = "compose_decompose"
+        elif "compare" in text or "distinguish" in text:
+            bounds["task_type"] = "compare_shapes"
+
+    # Geometric lines: this DNA's item pool spans three disjoint curriculum
+    # scopes (straight/curved lines & surfaces; parallel/intersecting/
+    # perpendicular lines; point/line/segment/ray naming) and every node
+    # bound to it must pin exactly one via concept_type -- generate_params()
+    # raises rather than substituting a different scope's content when the
+    # bound concept_type has no grade-eligible items, so an unmatched branch
+    # here is a loud failure, not a silent content swap.
+    # Money peso: bind operation when a competency explicitly requires
+    # BOTH addition and subtraction of money (e.g. mat_g1_na_q4_6:
+    # "addition of money ... or subtraction of money") -- money_peso.py
+    # otherwise always defaults to "add_amounts" (never varies), so the
+    # "or subtraction" half of the competency was never exercised, and
+    # once word-problem framing turned on, spine selection could still
+    # narrate the always-addition computation with a subtraction spine
+    # (see base_generator.py's money_peso operation->domain mapping).
+    elif dna_name == "money_peso" and "addition" in text and "subtraction" in text:
+        bounds["operation"] = "add_or_subtract"
+
     elif dna_name == "geometric_lines":
-        if "parallel" in text or "intersecting" in text or "perpendicular" in text:
-            pass
+        if "straight" in text and "curved" in text:
+            bounds["concept_type"] = "straight_curved"
+        elif "parallel" in text or "intersecting" in text or "perpendicular" in text:
+            bounds["concept_type"] = "parallel_intersecting_perpendicular"
         else:
             bounds["concept_type"] = "point_line_segment_ray"
             
@@ -331,13 +543,16 @@ def _parse_competency_bounds(
                 bounds["max_total"] = (1, limit)
             elif dna_name == "addition":
                 bounds["max_sum"] = (0, limit)
-            elif dna_name == "place_value":
+            elif dna_name == "place_value" and "digit_count" not in bounds:
+                # Same key-name fix as the primary place_value branch above
+                # ("num_digits" -> "digit_count") applied to this
+                # generic-number-extraction fallback path.
                 if limit >= 1000:
-                    bounds["num_digits"] = (1, 4)
+                    bounds["digit_count"] = "4_digit"
                 elif limit >= 100:
-                    bounds["num_digits"] = (1, 3)
+                    bounds["digit_count"] = "3_digit"
                 elif limit >= 10:
-                    bounds["num_digits"] = (1, 2)
+                    bounds["digit_count"] = "2_digit"
 
     # ── Grade-aware curriculum fallback ──────────────────────────────────────
     # If after all text parsing we STILL have no primary bound for a
@@ -367,7 +582,19 @@ def _parse_competency_bounds(
     elif "with and without regrouping" in text:
         # Don't strictly bound it, let the catalog dictate options
         pass
-        
+
+    # Cross-cutting: "Solve problems ..." competencies require word-problem
+    # framing, not a bare number sentence -- but "context" defaults to
+    # "pure" in every arithmetic DNA (addition/subtraction/multiplication/
+    # division all register context=["pure","word_problem"] yet nothing
+    # ever bound it), so ~20 "solve problems" competencies across the
+    # curriculum silently rendered plain arithmetic facts with zero
+    # narrative. Only apply when this DNA genuinely registers
+    # "word_problem" as a context option (VARIANTS_BY_DNA is the source of
+    # truth), so this never fires for DNAs with no such variant.
+    if "solve" in text and "problem" in text and "word_problem" in VARIANTS_BY_DNA.get(dna_name, {}).get("context", []):
+        bounds.setdefault("context", "word_problem")
+
     return bounds
 
 
@@ -1234,11 +1461,34 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     # Q1: Area (sq, rect), geometric lines, equal-length segments
     "mat_g3_mg_q1_0": ["area"],
     "mat_g3_mg_q1_1": ["area"],
-    "mat_g3_mg_q1_2": ["area", "multiplication"],
-    "mat_g3_mg_q1_3": ["area", "multiplication"],
+    # Ground Rule 2 correction (docs/pgen_hardening.md judgment review):
+    # "multiplication" was previously a co-mapped DNA for both nodes below.
+    # When picked, it renders generic multiplication word problems with
+    # zero connection to area/rectangles/tiles (verified: e.g. "puts 1
+    # ribbon in each of N bags" for a "find the area of a rectangle"
+    # competency) -- multiplication *underlies* area's formula, but that is
+    # already computed internally by area.py itself; testing bare
+    # multiplication facts is not what "find/solve problems involving
+    # areas of squares and rectangles" asks for. No commit message or doc
+    # justified the mapping. Removed as a mistaken node_id->DNA mapping,
+    # not a bounds/routing issue.
+    "mat_g3_mg_q1_2": ["area"],
+    "mat_g3_mg_q1_3": ["area"],
     "mat_g3_mg_q1_4": ["geometric_lines"],
     "mat_g3_mg_q1_5": ["geometric_lines"],
-    "mat_g3_mg_q1_6": ["geometric_lines", "length_measurement"],
+    # Ground Rule 2 correction (docs/pgen_hardening.md judgment review):
+    # "geometric_lines" was previously a co-mapped DNA here. Its 3 concept
+    # scopes (straight/curved; parallel/intersecting/perpendicular;
+    # point/line/segment/ray naming) are all naming/classification tasks --
+    # none of them represent "identify and draw line segments of equal
+    # length using a ruler", which is a measurement/comparison skill.  When
+    # geometric_lines was picked, it fell to its point_line_segment_ray
+    # default and rendered "What do we call an exact location in space..."
+    # -- an off-topic vocabulary question. length_measurement's own
+    # "compare" task_type is the closer (if imperfect -- it compares two
+    # *different* lengths rather than verifying/drawing equal ones) match
+    # for this competency's ruler-based measurement skill.
+    "mat_g3_mg_q1_6": ["length_measurement"],
 
     # Q2: Mass (g/kg/mg), capacity (L/mL)
     "mat_g3_mg_q2_0": ["mass_capacity"],

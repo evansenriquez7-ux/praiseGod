@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g2_na_q1_9",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 1 + 12?",
+      "correct_answer": 13
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 0 + 25?",
+      "correct_answer": 25
+    },
+    {
+      "seed": 44,
+      "question_text": "24 + 20 = ___",
+      "correct_answer": 44
+    },
+    {
+      "seed": 45,
+      "question_text": "12 + 12 = ___",
+      "correct_answer": 24
+    },
+    {
+      "seed": 46,
+      "question_text": "0 + 46 = ___",
+      "correct_answer": 46
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "regrouping is this node's newly introduced vocabulary word and the competency's central point ('with or without regrouping'), yet all five samples report difficulty_axes_served.regrouping as 'none' and the sums observed (13, 25, 44, 24, 46) are all comfortably under 100, let alone the 1000 ceiling the competency states."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "addition registers 4 axes with 8 combos; if regrouping is one binary axis among four, roughly half of the 8 combos should require regrouping, so 5-for-5 samples landing on 'none' is a fairly low-probability draw worth flagging even though validate_matrix separately checks exhaustive combo execution."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Stems such as '12 + 12 = ___' are minimal-length cloze/mcq items well under the 18-word cap, appropriate for grade 2 quarter 1 reading level."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The registered 8-combo addition space should in principle support both regrouping and non-regrouping items up to 1000, but none of that variety is evidenced in this sample, so mastery of the 'with regrouping' half of the competency is not demonstrated here."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Because the introduced vocabulary word for this node is literally 'regrouping', a healthy sample set should show at least one item exercising it; seeing zero regrouping cases across 5 draws makes it hard to confirm this node teaches the skill it is named for."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Sums observed max at 46 while the competency states sums up to 1000; even accounting for early-node ramp-up, this leaves the top of the range untested in this sample and is worth monitoring against exhaustive matrix runs."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

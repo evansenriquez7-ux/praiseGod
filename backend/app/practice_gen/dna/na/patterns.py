@@ -122,16 +122,95 @@ def generate_params(
     pattern_type = profile.get("pattern_type", "growing")
     if pattern_type == "growing":
         pattern_type = "arithmetic_increasing"
+    elif pattern_type == "increasing_or_decreasing":
+        # Composite scope value (registry.py binds this for competencies
+        # that explicitly name BOTH directions, e.g. "Determine the next
+        # term in increasing or decreasing patterns") -- resolved here via
+        # the generation seed, same pattern as missing_number.py resolving
+        # its own "addition_subtraction" composite scope value.
+        pattern_type = "arithmetic_increasing" if rng.random() < 0.5 else "arithmetic_decreasing"
 
     ask_type = profile.get("ask_type", "next")
     if ask_type == "next":
         ask_type = "next_term"
     elif ask_type == "missing":
         ask_type = "missing_middle"
+    elif ask_type == "explain":
+        ask_type = "state_rule"
 
     seq_length = 6  # always show 6-term window
 
     from backend.app.practice_gen.generators.number_difficulty import generate_number_by_window, generate_pair_by_window
+
+    if ask_type == "identify_valid":
+        # "Create a pattern" competencies (mat_g1_na_q3_7, mat_g2_na_q2_9)
+        # have no free-form construction UI in this pipeline -- an MCQ/cloze
+        # generator can't literally ask a student to build something. The
+        # closest genuine, machine-gradable proxy is recognition: does the
+        # student recognize which of several candidate sequences actually
+        # satisfies the target pattern type, vs. sequences that look similar
+        # but break the rule partway through? That's the same judgment
+        # "create a valid pattern" requires, just probed via selection
+        # instead of construction.
+        if pattern_type == "repeating":
+            cycle_len = rng.randint(cyc_lo, cyc_hi)
+            candidates = list(range(1, max_val + 1))
+            cycle = [generate_number_by_window(candidates, num_diff_scalar, d=5, rng=rng) for _ in range(cycle_len)]
+            valid_seq = _make_repeating_sequence(0, cycle, seq_length)
+            pattern_label = "repeating pattern"
+            rule = f"Repeat the group: {cycle}"
+        else:
+            increasing = pattern_type != "arithmetic_decreasing"
+            if increasing:
+                # `first` must stay small enough that first + step*(n-1)
+                # doesn't exceed max_val while climbing.
+                pairs = [(f, s) for s in range(step_lo, step_hi + 1) for f in range(1, max(2, max_val - s * seq_length) + 1)]
+                if not pairs:
+                    pairs = [(1, step_lo)]
+            else:
+                # `first` must start large enough that first - step*(n-1)
+                # never goes negative while descending (mirrors the
+                # existing, already-correct arithmetic_decreasing branch
+                # above -- reusing the increasing branch's pair formula
+                # here previously let decreasing sequences start small and
+                # go negative, e.g. "1, 0, -1, -2, -3, -4", which G1-G3
+                # students haven't been introduced to negative numbers for).
+                pairs = [(f, s) for s in range(step_lo, step_hi + 1) for f in range(s * seq_length + 1, max_val + 1)]
+                if not pairs:
+                    pairs = [(max_val, step_lo)]
+            first, step = generate_pair_by_window(pairs, num_diff_scalar, d=5, rng=rng)
+            valid_seq = _make_arithmetic_sequence(first, step, seq_length, increasing=increasing)
+            pattern_label = "increasing pattern" if increasing else "decreasing pattern"
+            rule = f"{'Add' if increasing else 'Subtract'} {step} each time"
+
+        distractor_seqs = []
+        seen = {tuple(valid_seq)}
+        attempts = 0
+        while len(distractor_seqs) < 3 and attempts < 50:
+            attempts += 1
+            corrupted = list(valid_seq)
+            break_idx = rng.randint(1, len(corrupted) - 1)
+            corrupted[break_idx] = max(0, corrupted[break_idx] + rng.choice([-3, -2, -1, 1, 2, 3]))
+            if tuple(corrupted) not in seen:
+                seen.add(tuple(corrupted))
+                distractor_seqs.append(corrupted)
+        while len(distractor_seqs) < 3:
+            # Extremely small ranges can run out of distinct corruptions;
+            # fall back to a fully-random same-length sequence rather than
+            # loop forever or ship fewer than 3 options.
+            distractor_seqs.append([rng.randint(1, max(2, max_val)) for _ in valid_seq])
+
+        answer_str = ", ".join(map(str, valid_seq))
+        distractor_strs = [", ".join(map(str, d)) for d in distractor_seqs]
+        return {
+            "blank_target": "answer",
+            "task_type": "identify_valid_pattern",
+            "pattern_kind": pattern_type,
+            "answer": answer_str,
+            "distractors": distractor_strs,
+            "question": f"Which of these number sequences shows {'an' if pattern_label[0] in 'aeiou' else 'a'} {pattern_label}?",
+            "rule_description": rule,
+        }
 
     if pattern_type == "repeating":
         cycle_len = rng.randint(cyc_lo, cyc_hi)

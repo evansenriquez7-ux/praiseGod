@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_na_q3_2",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 90 × 1?",
+      "correct_answer": 90
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 17 × 0?",
+      "correct_answer": 0
+    },
+    {
+      "seed": 44,
+      "question_text": "75 × 0 = ___",
+      "correct_answer": 0
+    },
+    {
+      "seed": 45,
+      "question_text": "What is 51 × 0?",
+      "correct_answer": 0
+    },
+    {
+      "seed": 46,
+      "question_text": "What is 11 × 10?",
+      "correct_answer": 110
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "Four of five samples are trivial ×0/×1 facts ('90×1'=90, '17×0'=0, '75×0'=0, '51×0'=0) and only one ('11×10'=110) shows a genuine 2-digit-by-multiple-of-10 case; none demonstrate 2-3 digit by 1-digit multiplication requiring actual regrouping/carrying, which this competency explicitly names."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "variant_registry lists 20 combos, but the 5 illustrative samples don't include a single case of true multi-digit regrouping multiplication (e.g. 47×6), so the specific regrouping requirement central to this competency is unconfirmed."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "The trivial ×0 facts shown are well below the cognitive demand grade-3-Q3 multi-digit multiplication with regrouping should require."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "The variant space as illustrated shows the 'leading digit only non-zero' multiple-of-10 case only once and no regrouping case at all, so the registered combos cannot be confirmed to cover this competency's stated scope."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The ×0/×1 identity facts are more appropriate to q3_0/q3_1's table-fluency and properties content than to this node's regrouping-multiplication competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "FAIL",
+      "rationale": "Products observed top out at 110, far short of the 'products up to 10 000' ceiling this competency states."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

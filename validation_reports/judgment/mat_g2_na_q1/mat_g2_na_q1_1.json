@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g2_na_q1_1",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Write 57 in words.",
+      "correct_answer": "fifty-seven"
+    },
+    {
+      "seed": 43,
+      "question_text": "Write 38 in words.",
+      "correct_answer": "thirty-eight"
+    },
+    {
+      "seed": 44,
+      "question_text": "Write 133 in words.",
+      "correct_answer": "one hundred thirty-three"
+    },
+    {
+      "seed": 45,
+      "question_text": "Write 98 in words.",
+      "correct_answer": "ninety-eight"
+    },
+    {
+      "seed": 46,
+      "question_text": "Write 48 in words.",
+      "correct_answer": "forty-eight"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Samples directly test reading/writing numerals as words: 'Write 133 in words.' -> 'one hundred thirty-three' exercises exactly the 3-digit numeral-to-word skill this competency requires, alongside simpler 2-digit examples like 57, 38, 98, 48."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "number_reading registers only 1 axis and 2 combos per variant_registry, a notably thin combo space for a competency spanning numbers all the way to 1000; validate_matrix checks that space exhaustively, but 2 combos is a narrow foundation for this range."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Each prompt, e.g. 'Write 133 in words.', is extremely short, well under the grade-2 18-word cap, and the cognitive task, numeral-to-word conversion, is appropriately single-step for grade 2 quarter 1."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Only 1 of the 5 samples reaches 3 digits (133); the other four are all 2-digit (38-98), so on this evidence the higher end of the stated 1000 range is underrepresented relative to the competency's full scope."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The word-form conversion task stays correctly scoped to reading/writing numerals without drifting into place-value decomposition or arithmetic, matching this node's narrow wording."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "With 4 of 5 samples under 100 and the sole 3-digit example only reaching 133, the samples don't clearly demonstrate progression toward the full 1000 ceiling the competency states."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

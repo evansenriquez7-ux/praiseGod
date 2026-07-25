@@ -1,21 +1,55 @@
 {
   "node_id": "mat_g3_na_q1_2",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
-    43,
     44,
-    45,
-    46
+    45
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is the ordinal name for position 13?",
+      "correct_answer": "thirteenth"
+    },
+    {
+      "seed": 44,
+      "question_text": "What is the ordinal name for position 17?",
+      "correct_answer": "17th"
+    },
+    {
+      "seed": 45,
+      "question_text": "What is the ordinal name for position 16?",
+      "correct_answer": "16th"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The lc is about ordinal position naming, and all 5 stems correctly ask 'What is the ordinal name for position N?', but the answer key is inconsistent: position 13/15 answer in words ('thirteenth') while position 17/16 sometimes answer as digits+suffix ('17th')."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "ordinal_numbers registers only 1 axis / 2 combos, which seems thin for a competency spanning positions 1st through 100th; my 5 samples only cover positions 13-17, nowhere near the stated ceiling."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The stems ('What is the ordinal name for position 15?') are 8 words, well under the 22-word cap for grade 3 quarter 1, and the single-step recall task fits this grade level."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "With only 2 registered combos, it's unclear whether the variant space distinguishes word-form ('sixteenth') from digit-suffix-form ('16th') answers intentionally as two separate formats, or whether this is an unintended inconsistency in a single format."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Testing positions only in the teens (13-17) is a correct but narrow slice of a competency explicitly scoped 'up to 100th'; this sample gives no evidence the difficulty progresses toward the higher end (e.g. 50th, 99th) the lc requires."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Positions 13-17 are a reasonable easy starting point, but with the competency's ceiling at 100th and only 2 registered combos, there's a real risk the generator never reaches the higher ordinal range this grade-3 lc is scoped to."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

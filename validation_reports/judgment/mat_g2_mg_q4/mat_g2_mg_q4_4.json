@@ -1,21 +1,55 @@
 {
   "node_id": "mat_g2_mg_q4_4",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
-    43,
     44,
-    45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Find the perimeter of the rectangle.",
+      "correct_answer": 26
+    },
+    {
+      "seed": 44,
+      "question_text": "Measure the object. Its length is ___ cm.",
+      "correct_answer": 14
+    },
+    {
+      "seed": 46,
+      "question_text": "Find the perimeter of the rectangle.",
+      "correct_answer": 18
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Samples directly test 'Find the perimeter of the rectangle' and 'Measure the object. Its length is ___ cm.', which together plausibly build toward the lc's pairing of identifying perimeter with using a measuring tool (ruler/cm)."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "perimeter (6 combos) and length_measurement (4 combos) are both registered for this node; my 5 samples are illustrative and exhaustive execution is handled by validate_matrix, not this review."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "'Find the perimeter of the rectangle.' is a 6-word stem, well under the 18-word cap, and keeps the reading load light so cognitive effort goes toward the geometry/measurement task itself rather than parsing text."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The lc says 'using appropriate tools' but no sample text names or shows a tool (ruler, tape measure); the measuring items just state 'Measure the object' without an explicit tool reference, so that specific phrase in the competency is only weakly evidenced."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Pairing perimeter-finding with plain length measurement is a sensible scope for 'identify and measure the perimeter', without overreaching into perimeter word-problems, which correctly belongs to the later lc mat_g2_mg_q4_6."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Observed perimeters (12, 18, 26) and lengths (9, 14 cm) are small, hand-computable numbers appropriate for grade 2 quarter 4 perimeter work without requiring large-number arithmetic."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

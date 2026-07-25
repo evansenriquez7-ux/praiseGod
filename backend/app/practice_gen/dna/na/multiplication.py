@@ -181,6 +181,15 @@ def generate_params(
         "blank_target": blank_target,
         "context": context,
         "structure": structure,
+        # Aliases for the mul_* word-problem spines (spines.py), whose
+        # templates use "groups"/"n"/"total" rather than this DNA's own
+        # "a"/"b"/"result" -- Spine.render() does a raw str.format() over
+        # {**slots, **values}, so a missing alias raises KeyError and
+        # silently falls back to the plain symbolic question, even though
+        # a spine was already selected (spine_id would say otherwise).
+        "groups": a,
+        "n": b,
+        "total": a * b,
     }
 
     return result_dict

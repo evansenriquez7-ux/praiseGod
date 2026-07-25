@@ -1,21 +1,41 @@
 {
   "node_id": "mat_g1_na_q2_2",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-5 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
+  "sample_seeds": [42, 43, 44, 45, 46, 47, 48, 49],
+  "samples_reviewed": [
+    {"seed": 42, "question_text": "In 10, what digit is in the ones place?", "correct_answer": 0},
+    {"seed": 43, "question_text": "What place is the digit 5 in, in the number 15?", "correct_answer": "ones"},
+    {"seed": 44, "question_text": "What is the value of the digit 0 in 40?", "correct_answer": 0},
+    {"seed": 45, "question_text": "What is the value of the digit 2 in 20?", "correct_answer": 20},
+    {"seed": 48, "question_text": "In 15, what digit is in the ones place?", "correct_answer": 5}
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "I hand-checked all 8 seeds: 10 has 0 in ones (42, 48-analog), 15's digit 5 is indeed in ones place (43), 40's digit 0 has value 0 (44), 20's digit 2 has value 20 (45), 10's digit 1 has value 10 (47); every answer is correct place-value arithmetic for a 2-digit number."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Unlike the stale prior review of this node (which found only the 'value of a digit' clause tested), this batch now genuinely covers all three named sub-skills: reverse lookup 'what digit is in the ones place' (seeds 42, 48), place naming 'what place is digit X in' (43, 46, 49), and numeric value 'what is the value of digit X' (44, 45, 47)."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Each prompt is a single short question ('In 10, what digit is in the ones place?') well within the reading level and vocabulary expected of a Grade 1 Quarter 2 student newly meeting 'tens' and 'ones'."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The new reverse-lookup task type genuinely closes the gap flagged in the prior stale review of this node, and across the 8 seeds both tens-digit and ones-digit positions are exercised in all three question directions."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Content stays entirely within 2-digit numbers (10, 15, 20, 40) as this lc requires, never drifting into 3-digit hundreds place value that belongs to the grade-2 sibling node mat_g2_na_q1_6."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numbers used (10, 15, 20, 40) are all small 2-digit values appropriate for grade-1 quarter-2, with no accidental leakage into larger magnitudes or negative values."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "PASS"
 }

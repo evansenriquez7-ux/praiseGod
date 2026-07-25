@@ -1,21 +1,41 @@
 {
   "node_id": "mat_g1_na_q3_2",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-5 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
+  "sample_seeds": [42, 43, 44, 45, 46, 47, 48, 49],
+  "samples_reviewed": [
+    {"seed": 42, "question_text": "Complete the equivalent expression: 2 + 1 = 1 + ___", "correct_answer": 2},
+    {"seed": 44, "question_text": "4 + 0 = 4. True or False?", "correct_answer": true},
+    {"seed": 46, "question_text": "Complete the equivalent expression: 2 + 2 = 1 + ___", "correct_answer": 3},
+    {"seed": 47, "question_text": "What is 3 + 0?", "correct_answer": 3},
+    {"seed": 49, "question_text": "Complete the equivalent expression: 2 + 2 = 3 + ___", "correct_answer": 1}
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Unlike the stale round-0 review (which found no two-sided equation prompts at all), the new 'Complete the equivalent expression: 2 + 2 = 3 + ___' items genuinely show two expressions being equated and the missing values are correct (2+2=4=3+1), but the competency's own paired example '10-5 = 6-1' is never once tested."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "2 of 8 seeds (47: 'What is 3 + 0?', 48: 'What is 2 + 2?') are single-fact addition recall with no second expression to compare, diluting a quarter of this batch away from the equivalent-expression skill the node was built for."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The prompts 'Complete the equivalent expression: 2 + 1 = 1 + ___' and '4 + 0 = 4. True or False?' are short single sentences using only sums under 5, matching Grade 1 Quarter 3 reading and number expectations."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "The dnas field lists only 'missing_number' and 'addition' with no subtraction-equivalence generator, so the subtraction half of the competency, explicitly named via '10-5 = 6-1' in its own wording, is structurally unreachable by any seed of this node."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The mcq items phrased 'Complete the equivalent expression' land exactly on target for writing an equivalent addition expression, but seeds 47 and 48 test bare single-fact recall, a different and already-covered skill from an earlier addition node."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All operands stay within 0-4 (2+1, 4+0, 2+2, 2+0, 3+0), well inside the Grade 1 Quarter 3 single-digit addition range taught up to this point in the year."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

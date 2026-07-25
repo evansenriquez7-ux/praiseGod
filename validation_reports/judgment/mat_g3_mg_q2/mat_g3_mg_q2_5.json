@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_mg_q2_5",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Which is more: 15 mL or 4 mL?",
+      "correct_answer": 15
+    },
+    {
+      "seed": 43,
+      "question_text": "Which is more: 5 mL or 37 mL?",
+      "correct_answer": 37
+    },
+    {
+      "seed": 44,
+      "question_text": "Which is more: 53 mL or 67 mL?",
+      "correct_answer": 67
+    },
+    {
+      "seed": 45,
+      "question_text": "Which is more: 35 mL or 54 mL?",
+      "correct_answer": 54
+    },
+    {
+      "seed": 46,
+      "question_text": "Which is more: 10 mL or 52 mL?",
+      "correct_answer": 52
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "'Which is more: 15 mL or 4 mL?' directly exercises comparing the capacities of two containers as the competency requires."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Operand pairs vary across seeds 42-46 (15/4, 5/37, 53/67, 35/54, 10/52), giving reasonable diversity of comparison magnitudes."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The 'Which is more: X mL or Y mL?' template is concise and appropriate for Grade 3 comprehension."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Competency says 'two containers' implying a container context, but the rendered text is pure numeric comparison with no container framing or visual reference in the text."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Comparing mL quantities to find which is greater matches 'Compare capacities of two containers' well."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "mL magnitudes (4-67) are reasonable for Grade 3 capacity comparison, neither trivially small nor unrealistically large."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "PASS"
 }

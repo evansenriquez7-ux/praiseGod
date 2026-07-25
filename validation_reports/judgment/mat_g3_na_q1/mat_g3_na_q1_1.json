@@ -1,21 +1,55 @@
 {
   "node_id": "mat_g3_na_q1_1",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
-    43,
     44,
-    45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Write 178 in words.",
+      "correct_answer": "one hundred seventy-eight"
+    },
+    {
+      "seed": 44,
+      "question_text": "Write 482 in words.",
+      "correct_answer": "four hundred eighty-two"
+    },
+    {
+      "seed": 46,
+      "question_text": "Write 142 in words.",
+      "correct_answer": "one hundred forty-two"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The lc asks students to read/write numbers up to 10,000 in numerals and words, and every sample correctly tests exactly that skill: 'Write 342 in words.' -> 'three hundred forty-two'."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "number_reading registers 2 combos (1 axis) for this node; my 5 samples are illustrative only, and exhaustive combo execution is machine-verified separately via validate_matrix."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Stems like 'Write 103 in words.' are 4 words, comfortably under the 22-word cap for grade 3 quarter 1, appropriate for a direct numeral-to-words conversion task."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "With only 1 axis / 2 combos registered, and all 5 sampled numbers landing in the 100-499 range, I can't confirm the variant space actually exercises 4-digit or near-10,000 values this lc's 'up to 10 000' wording requires."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The word-form task directly matches 'read and write ... in numerals and in words' without drifting into place-value or pictorial-model territory that belongs to the sibling lc mat_g3_na_q1_0."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "All 5 sampled values (103, 142, 178, 342, 482) are 3-digit numbers well below 1,000; the competency's explicit ceiling is 10,000, and this small sample gives no evidence the range ever climbs into the thousands as grade 3 quarter 1 should demand."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

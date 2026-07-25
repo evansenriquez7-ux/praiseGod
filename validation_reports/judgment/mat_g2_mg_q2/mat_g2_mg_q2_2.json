@@ -1,21 +1,41 @@
 {
   "node_id": "mat_g2_mg_q2_2",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-5 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
+  "sample_seeds": [42, 43, 44, 45, 46, 47, 48, 49],
+  "samples_reviewed": [
+    {"seed": 42, "question_text": "An object measures 21 cm. About how many cm is that, rounded to the nearest 10?", "correct_answer": 20},
+    {"seed": 43, "question_text": "An object measures 2 cm. About how many cm is that, rounded to the nearest 10?", "correct_answer": 0},
+    {"seed": 44, "question_text": "An object measures 14 cm. About how many cm is that, rounded to the nearest 10?", "correct_answer": 10},
+    {"seed": 46, "question_text": "An object measures 3 cm. About how many cm is that, rounded to the nearest 10?", "correct_answer": 0},
+    {"seed": 48, "question_text": "An object measures 18 cm. About how many cm is that, rounded to the nearest 10?", "correct_answer": 20}
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "I hand-verified all 8 seeds: 21->20, 2->0, 14->10, 9->10, 3->0, 12->10, 18->20, 3->0; every one matches standard round-half-up, and critically the seed-43 case (2 cm) previously reported wrong (answered 10) now correctly answers 0."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "All 8 seeds (42-49) use centimeters only ('An object measures X cm'); the competency explicitly names both meters and centimeters for length plus meters for distance, and none of those appear anywhere in this batch."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The sentence 'An object measures 21 cm. About how many cm is that, rounded to the nearest 10?' is two short clauses, matching the reading level expected of a Grade 2 Quarter 2 student who has already met nearest-ten rounding."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Only one dna ('length_measurement') and one item shape back this node; combined with the missing meter/distance items noted above, the registered variant space does not yet plausibly cover the full 'meters or centimeters, and distance using meters' scope of this lc."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Framing a measured centimeter value and asking the student to round it to the nearest ten is a legitimate estimation task and does align with 'Estimate length using meters or centimeters', it just under-represents the meters half of that same sentence."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Object lengths of 2-21 cm are small, everyday classroom-object magnitudes appropriate for Grade 2, and the previously-reported small-value rounding bug (values under 5 wrongly rounding up to 10 instead of down to 0) is confirmed fixed in seeds 43 and 46."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

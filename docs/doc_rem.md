@@ -2,15 +2,9 @@
 
 **Audience:** autonomous coding agent (and human maintainer).
 **Scope:** all `.md` files in `docs/` that govern the pg pipeline, plus the rules for writing any future agent-facing doc in this repo.
-**Prerequisite:** execute only **after** `PGEN_HARDENING_PLAN.md` Phase 2 is complete, because the restructured docs point at harness checks that must exist first.
+**Prerequisite:** execute only **after** `pgen_hardening.md` Phase 2 is complete, because the restructured docs point at harness checks that must exist first.
 
-> **Status: Part 4 done-criteria met.**
-> (a) `docs/` contains no binding rule without a named enforcer — `pgen_contract.md`/`pgen_judgment.md` are the only docs permitted a "MUST", enforced by a CI lint (`.github/workflows/validate-pgen.yml`, "Lint docs/ for un-enforced MUSTs").
-> (b) No fact stated in two places — formatter/DNA names live in `compatibility.py`/`_manifest.py`; `DIFFICULTY_DIMENSIONS.md` and `INFRASTRUCTURE_WORKFLOW.md` link out rather than restate; three stale inline comments pointing at the deleted `pgen_checklist.md` (in `matatag_router.py`, `practice_router.py`, `money_peso.py`, `orchestrator.py`, `tests/README.md`) were repointed to `pgen_contract.md`/`testing_pipeline.md`.
-> (c) `run_all` cross-checks the contract table — `run_all.py` now parses `docs/pgen_contract.md`'s `§`-refs at runtime (`_parse_contract_section_refs()`) and asserts they match the harness's own `CONTRACT_CHECKS` registry exactly (`PASS contract_doc_matches_registry`), catching drift in either direction, not just a hardcoded shadow copy of the doc.
-> (d) `DOC_RULES.md` exists and is linked from the README — the repo had no root `README.md` at all; created one linking `DOC_RULES.md`, `pgen_contract.md`, `INFRASTRUCTURE_WORKFLOW.md`, and `AGENT_ENVIRONMENT.md`.
->
-> One item remains a deliberate, explicit open question rather than a defect: the Advanced/bridge-tier scalar value (`1.1` vs `1.25`, `docs/BUG_BRIDGE_SCALAR.md`) is a pedagogical judgment call escalated to the maintainer — the single-source-of-truth *mechanism* is fixed, the *value* is not this agent's to pick.
+> Completion status for this plan — including a re-audit that corrected two over-claimed done-criteria — is tracked separately in [`IMPLEMENTATION_STATUS.md`](./IMPLEMENTATION_STATUS.md). This file stays a pristine spec.
 
 ---
 
@@ -105,7 +99,7 @@ Ten lines. States R1–R5 verbatim, plus: "Before creating any new .md in docs/,
 
 ## Part 4 — Ordering & definition of done
 
-1. Complete `PGEN_HARDENING_PLAN.md` Phases 0–2 (harness exists and passes).
+1. Complete `pgen_hardening.md` Phases 0–2 (harness exists and passes).
 2. Apply §3.1–§3.4 above; delete `pgen_checklist.md` only after both replacement files exist and the contract table's every row names a real, running check.
 3. Add §3.5 tripwires to CI.
 4. Done when: (a) `docs/` contains no binding rule without a named enforcer, (b) no fact is stated in two places, (c) `run_all` cross-checks the contract table, and (d) `DOC_RULES.md` exists and is linked from the README.

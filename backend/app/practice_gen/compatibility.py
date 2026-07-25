@@ -141,7 +141,12 @@ def is_variant_available_at(lc: str, variant_name: str, variant_value: str, grad
         if grade >= 3:
             return variant_value in ("multiplication", "division")
         else:
-            return variant_value in ("addition", "subtraction")
+            # "equivalent" (equivalent-expressions task, e.g. mat_g1_na_q3_2)
+            # is a G1 addition/subtraction-family variant, not a new
+            # operation -- it must be allowed alongside addition/subtraction
+            # here or the curriculum gate rejects it outright regardless of
+            # what registry.py binds.
+            return variant_value in ("addition", "subtraction", "equivalent")
 
     gate = get_variant_curriculum_gate(lc, variant_name, variant_value)
     if gate is None:
@@ -302,6 +307,11 @@ COMPATIBILITY: Dict[str, List[str]] = {
 
     "calendar": [
         "calendar_read",
+        # task_type="sequence" (recite/order day or month names) has no
+        # calendar grid to show and is excluded from calendar_read's own
+        # FORMATTER_VARIANT_SUPPORT entry above -- mcq is its only
+        # compatible formatter.
+        "mcq",
     ],
 
     "perimeter": [
@@ -448,7 +458,12 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
 
     "place_value": {
         "include_zeros": ["yes", "no"],
-        "task_type": ["identify_place", "identify_value", "compose", "decompose"],
+        # "compose" was registered but never a real branch in
+        # generate_params() (fell through to the identify_value default);
+        # replaced with "identify_digit", the genuine reverse-lookup
+        # sub-skill ("the digit of a number given its place value") this
+        # competency names but the DNA never implemented.
+        "task_type": ["identify_place", "identify_value", "identify_digit", "decompose"],
     },
 
     "comparing_ordering": {
@@ -458,7 +473,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "missing_number": {
-        "operation": ["addition", "subtraction", "multiplication", "division"],
+        "operation": ["addition", "subtraction", "multiplication", "division", "equivalent"],
         "equation_type": ["standard", "non_standard"],
         "blank_position": ["start", "middle", "end"],
         "context": ["pure", "word_problem"],
@@ -502,12 +517,13 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
 
     "length_measurement": {
         "unit_type": ["cm", "m"],
-        "task_type": ["compare", "convert"],
+        "task_type": ["compare", "convert", "read_measurement", "choose_unit", "estimate"],
+        "context": ["pure", "word_problem"],
     },
 
     "mass_capacity": {
         "unit": ["g", "kg", "ml", "l"],
-        "task_type": ["compare", "convert"],
+        "task_type": ["compare", "convert", "read_measurement", "estimate"],
         "measurement_type": ["mass", "capacity"],
     },
 
@@ -515,32 +531,52 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         "precision": ["hour", "half_hour", "quarter_hour", "five_minutes", "one_minute"],
         "include_ampm": ["yes", "no"],
         "mode": ["read", "set"],
+        "context": ["pure", "word_problem"],
     },
 
     "calendar": {
-        "task_type": ["read_calendar", "elapsed_time"],
+        # Must match calendar.py's real internal task_type strings.
+        "task_type": ["read_day", "read_month", "find_date", "elapsed_days", "elapsed_weeks", "sequence"],
         "calendar_feature": ["days", "weeks", "months", "dates"],
     },
 
     "perimeter": {
+        # Must match perimeter.py's real internal task_type strings -- the
+        # previous "calculate"/"missing_side" values matched neither the
+        # DNA's actual "find_perimeter"/"find_missing_side" values.
         "shape": ["square", "rectangle", "triangle"],
-        "task_type": ["calculate", "missing_side"],
+        "task_type": ["find_perimeter", "find_missing_side"],
+        "context": ["pure", "word_problem"],
     },
 
     "area": {
+        # Must match area.py's real internal task_type strings -- the
+        # previous "calculate"/"missing_side" values matched neither the
+        # DNA's actual "find_area"/"find_missing_dimension" values nor its
+        # newer "illustrate_tiles"/"derive_formula" values, so this table
+        # never restricted anything meaningfully for area.
         "shape": ["square", "rectangle"],
-        "task_type": ["calculate", "missing_side"],
-        "unit": ["sq_cm", "sq_m"],
+        "task_type": ["find_area", "find_missing_dimension", "illustrate_tiles", "derive_formula"],
+        "unit": ["square_cm", "square_m"],
+        "context": ["pure", "word_problem"],
     },
 
     "geometric_lines": {
-        "task_type": ["identify", "draw"],
-        "concept_type": ["straight_curved", "parallel_intersecting"],
+        # Must match geometric_lines.py's _ITEM_POOL concept_type/task_type
+        # values exactly -- generate_params() raises (no silent fallback)
+        # when a requested combination has zero grade-eligible items, so a
+        # registered variant value that doesn't exist in the pool is a hard
+        # failure at generation time, not a quietly-wrong substitution.
+        "task_type": ["identify_name", "identify_property"],
+        "concept_type": ["straight_curved", "parallel_intersecting_perpendicular", "point_line_segment_ray"],
     },
 
     "symmetry_slides": {
-        "concept": ["symmetry", "slides"],
-        "directions": ["horizontal", "vertical", "both"],
+        # Must match symmetry_slides.py's _ITEM_POOL concept/directions
+        # values exactly -- generate_params() raises (no silent fallback)
+        # when a requested combination has zero grade-eligible items.
+        "concept": ["rotation", "slide_translation", "line_symmetry", "complete_symmetric_figure"],
+        "directions": ["one_direction", "two_directions"],
     },
 
     "pictographs": {
@@ -690,7 +726,21 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     "calendar": {
         "context": ["pure", "word_problem"],
         "calendar_feature": ["days", "weeks", "months", "dates"],
-        "calendar_read": {},  # all task types work
+        # task_type="sequence" (recite/order day or month names) has no
+        # calendar grid to show -- generate_params() doesn't populate
+        # visual_params meaningfully for it, so the visual formatter must
+        # not claim to support it (an empty dict here previously meant
+        # "all task types work", which let the calendar_read formatter get
+        # picked for "sequence" and silently render an unrelated
+        # date-lookup grid instead).
+        "calendar_read": {"task_type": ["read_day", "read_month", "find_date", "elapsed_days", "elapsed_weeks"]},
+        # mcq is calendar's other newly-added compatible formatter (see
+        # COMPATIBILITY["calendar"] below) but is scoped to task_type=
+        # "sequence" only -- the other task_types' string answers (e.g. a
+        # bare day-of-week name) hit a pre-existing MCQ distractor-count
+        # bug that was never reachable before mcq became compatible with
+        # this DNA at all; fixing that generically is out of scope here.
+        "mcq": {"task_type": ["sequence"]},
     },
 
     "area": {

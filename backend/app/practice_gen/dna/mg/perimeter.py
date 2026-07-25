@@ -112,6 +112,7 @@ def generate_params(
             "task_type": "find_perimeter",
             "answer": perimeter,
             "answer_formula": answer_formula_used,
+            "context": profile.get("context", "pure"),
         }
 
     if shape == "rectangle":
@@ -143,6 +144,7 @@ def generate_params(
             "task_type": "find_perimeter",
             "answer": perimeter,
             "answer_formula": "2 * (l + w)",
+            "context": profile.get("context", "pure"),
         }
 
     # triangle
@@ -172,6 +174,7 @@ def generate_params(
         "task_type": "find_perimeter",
         "answer": perimeter,
         "answer_formula": "a + b + c",
+        "context": profile.get("context", "pure"),
     }
 
 

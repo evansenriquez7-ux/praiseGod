@@ -7,7 +7,7 @@ Runs all validators in the practice problem generation pipeline:
   3. validate_interest (interest invariance check)
   4. validate_vocab (vocabulary gating and concept constraints check in full-node mode)
   5. validate_matrix (exhaustive behavioral matrix check)
-  6. verify_judgment_completeness (verifies that judgment reports exist for all nodes)
+  6. validate_judgment (genuine, non-boilerplate per-node judgment reviews — hard gate)
 
 Exit code is 0 if and only if all tests pass.
 """
@@ -17,16 +17,16 @@ from __future__ import annotations
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List, Set
+from typing import Dict, Set
 
 from backend.app.practice_gen.validation import (
     validate_compat,
     validate_dna,
     validate_interest,
+    validate_judgment,
     validate_vocab,
 )
 from backend.app.practice_gen.validation.validate_matrix import run_matrix_validation
-from backend.app.practice_gen.registry import get_all_node_ids, get_node_info
 
 _PGEN_CONTRACT_PATH = Path(__file__).resolve().parents[4] / "docs" / "pgen_contract.md"
 
@@ -62,30 +62,6 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§3": "validate_dna: structural checks and difficulty profiles feasibility",
     "§4": "validate_matrix: response schema validation",
 }
-
-def verify_judgment_completeness() -> List[str]:
-    """
-    Ensure every registered node in the knowledge graph has a corresponding
-    judgment evidence file under validation_reports/judgment/<group_dir>/<node_id>.json (or .md).
-    """
-    errors: List[str] = []
-    node_ids = get_all_node_ids()
-    base_dir = Path("validation_reports/judgment")
-    
-    if not base_dir.exists():
-        errors.append(f"Judgment validation directory '{base_dir}' does not exist.")
-        return errors
-        
-    for nid in node_ids:
-        parts = nid.split("_")
-        group_dir = "_".join(parts[:-1])  # e.g., "mat_g1_na_q1"
-        node_file_json = base_dir / group_dir / f"{nid}.json"
-        node_file_md = base_dir / group_dir / f"{nid}.md"
-        
-        if not node_file_json.exists() and not node_file_md.exists():
-            errors.append(f"Missing judgment evidence file for node '{nid}' (expected under '{base_dir / group_dir}').")
-            
-    return errors
 
 def run_all() -> int:
     print("======================================================================")
@@ -150,18 +126,29 @@ def run_all() -> int:
         executed_checks.add("§1E")
         executed_checks.add("§4")
 
-    # 6. Judgment Reviews Completeness
-    print("\n--- 6/6: Judgment Reviews Completeness Checks ---")
-    judgment_errors = verify_judgment_completeness()
+    # 6. Judgment Reviews (genuine, non-boilerplate — hard gate)
+    print("\n--- 6/6: Judgment Reviews (genuine per-node artifacts) ---")
+    judgment_errors = validate_judgment.validate_judgment_reviews()
     judgment_ok = len(judgment_errors) == 0
     if judgment_ok:
-        print("  PASS judgment_completeness")
+        print("  PASS judgment_reviews (all nodes have genuine, complete reviews)")
+        # Surface the verdicts loudly: a genuine review that says FAIL is
+        # documented pedagogical debt, not a passing grade. "Reviews exist"
+        # (the machine-checkable gate) is not "content is clean".
+        v = validate_judgment.summarize_verdicts()
+        print(
+            f"  NOTE verdict tally over {v['reviewed']} genuine reviews: "
+            f"PASS={v['PASS']} CONCERN={v['CONCERN']} FAIL={v['FAIL']} "
+            f"(FAIL/CONCERN = curriculum-fidelity debt for maintainer triage; "
+            f"see validation_reports/judgment/ and IMPLEMENTATION_STATUS.md)"
+        )
     else:
-        print("  FAIL judgment_completeness:")
+        print(f"  FAIL judgment_reviews ({len(judgment_errors)} problem(s) — the judgment layer is")
+        print("       not machine-checkable; a blind reviewer-agent must file genuine reviews):")
         for err in judgment_errors[:10]:
             print(f"    - {err}")
         if len(judgment_errors) > 10:
-            print(f"    ... and {len(judgment_errors) - 10} more missing files.")
+            print(f"    ... and {len(judgment_errors) - 10} more.")
 
     # Two-direction contract enforcement check
     print("\n--- Two-Direction Contract Verification ---")

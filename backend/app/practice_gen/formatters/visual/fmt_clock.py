@@ -215,7 +215,15 @@ def format_clock(
     traps = _build_traps(hours, minutes, use_24, rng)
 
     # ── 2. Build question text ────────────────────────────────────────────────
-    if interaction_mode == "read":
+    # This formatter previously always built its own text, ignoring
+    # ctx.values["question"] entirely -- so time_reading.py's new
+    # word-problem narrative (set only when context=="word_problem") was
+    # silently discarded and every "read" mode question rendered the bare
+    # "What time does the clock show?" stem regardless.
+    dna_question = (ctx.values or {}).get("question") if interaction_mode == "read" else None
+    if dna_question:
+        question_text = dna_question
+    elif interaction_mode == "read":
         if use_24:
             question_text = "What time does the clock show? Give the time in 24-hour format."
         else:

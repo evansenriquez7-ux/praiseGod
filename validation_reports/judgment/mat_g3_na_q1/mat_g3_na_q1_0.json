@@ -1,21 +1,55 @@
 {
   "node_id": "mat_g3_na_q1_0",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
-    43,
     44,
-    45,
-    46
+    45
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Write 178 in words.",
+      "correct_answer": "one hundred seventy-eight"
+    },
+    {
+      "seed": 44,
+      "question_text": "Write 482 in words.",
+      "correct_answer": "four hundred eighty-two"
+    },
+    {
+      "seed": 45,
+      "question_text": "Write 342 in words.",
+      "correct_answer": "three hundred forty-two"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The lc is 'Represent numbers up to 10 000 using pictorial models and numerals', but every sample is a 'Write ### in words' task ('Write 482 in words' -> 'four hundred eighty-two') -- word-form writing, not pictorial/model representation, and no numeral-only item either."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "number_reading's 2 registered combos, as sampled here, only produce number-to-words items, never a pictorial-model or block/place-value-chart style representation that this lc specifically calls for."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The stems ('Write 178 in words.') are 4 words, far under the 22-word cap for grade 3 quarter 1, so whatever the skill mismatch, the reading level itself is appropriately light."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "None of the 5 samples shows a pictorial model (base-ten blocks, place-value chart, etc.), so the registered variant space cannot be confirmed to reach the specific representation method this lc names."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "'Write X in words' is exactly the skill of the neighboring lc mat_g3_na_q1_1 ('Read and write numbers ... in numerals and in words'); reusing it here means this node's own distinct competency (pictorial representation) is not being tested at all."
+    },
+    "scale_appropriateness": {
+      "verdict": "FAIL",
+      "rationale": "Sampled numbers max out at 482, all 3-digit; the competency explicitly requires numbers 'up to 10 000', so the observed range never even reaches four digits, let alone the ten-thousands scale this grade-3 quarter-1 lc targets."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

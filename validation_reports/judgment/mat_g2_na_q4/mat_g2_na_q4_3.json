@@ -1,21 +1,55 @@
 {
   "node_id": "mat_g2_na_q4_3",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
-    43,
     44,
-    45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 44,
+      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 46,
+      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "correct_answer": "1/8"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency names 'similar fractions ... using groups of objects, fraction charts, fraction tiles, and the number line', but every sample is the single-fraction stem 'What fraction does 1/8 equal parts represent?' with no second same-denominator fraction shown for comparison."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "All 5 seeds (42-46) render the byte-identical 1/8 item, giving zero visible variety even though variant_registry claims 9 combos across 3 axes for the fractions DNA on this node."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "The stem is short enough for the 18-word cap, but its awkward phrasing ('does 1/8 equal parts represent') repeats the same readability problem seen on the sibling node mat_g2_na_q4_0, which is concerning since this node targets the more advanced 'similar fractions' vocabulary."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Nothing in the 5 samples demonstrates a fraction chart, tile array, or number-line model as named explicitly in the competency text, so I cannot confirm the registered combos actually reach those representation modes for this lc."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The content does not overreach into equivalence or operations, which is good, but it also undershoots by never pairing two same-denominator fractions, so it does not clearly demonstrate the 'similar fractions' relationship the lc specifically names."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The one denominator shown, 8, is inside the {2,3,4,5,6,8} set this node group is scoped to, so nothing in the sample exceeds the intended numeric range even if the sample lacks variety."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

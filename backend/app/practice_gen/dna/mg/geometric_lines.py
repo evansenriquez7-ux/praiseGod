@@ -1,11 +1,22 @@
 """
 DNA: Geometric Lines (Measurement & Geometry)
 
-Covers MATATAG grade 3 lines competencies, plus G1-MG-Q4 rotation.
-  G3: points, lines, line segments, rays; parallel / intersecting / perpendicular lines
-  G1-MG-Q4: half/quarter turns, clockwise/counter-clockwise rotation
+Covers MATATAG grade 2-3 lines/surfaces competencies.
+  G2 (mat_g2_mg_q4_3): straight vs. curved lines; flat vs. curved surfaces
+    of 3-dimensional objects (solid figures).
+  G3: points, lines, line segments, rays; parallel / intersecting /
+    perpendicular lines.
 
 dna_type="static_bank": generate_params() samples from an inline item pool.
+
+Every node bound to this DNA (registry.py's geometric_lines branch of
+_parse_competency_bounds) sets an explicit concept_type bound, and
+generate_params() never silently substitutes a different concept_type's
+items when the requested one has no grade-eligible candidates — it raises
+instead (AGENTS.md rule #3, no graceful fallbacks). A prior version fell
+through to whatever concept_type happened to have grade-eligible items,
+which silently served G1 rotation-degree trivia to G2 students on the
+straight/curved-lines node; see docs/pgen_hardening.md judgment findings.
 """
 
 from __future__ import annotations
@@ -171,94 +182,86 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "task_type": "identify_property",
         "grade_min": 3,
     },
-    # ── rotation turns (G1-MG-Q4) ─────────────────────────────────────────────
+    # ── straight vs. curved lines / flat vs. curved surfaces (G2-MG-Q4) ───────
     {
-        "question": "A shape is turned a half turn clockwise. How many degrees is that?",
-        "answer": "180°",
-        "distractors": ["90°", "270°", "360°"],
-        "concept_type": "rotation_turns",
-        "task_type": "identify_property",
-        "grade_min": 1,
-    },
-    {
-        "question": "A shape is turned a quarter turn. How many degrees is that?",
-        "answer": "90°",
-        "distractors": ["45°", "180°", "360°"],
-        "concept_type": "rotation_turns",
-        "task_type": "identify_property",
-        "grade_min": 1,
-    },
-    {
-        "question": "A shape is turned a full turn. How many degrees is that?",
-        "answer": "360°",
-        "distractors": ["90°", "180°", "270°"],
-        "concept_type": "rotation_turns",
-        "task_type": "identify_property",
-        "grade_min": 1,
-    },
-    {
-        "question": "If you turn a shape clockwise a quarter turn, which direction does it move?",
-        "answer": "to the right",
-        "distractors": ["to the left", "upward", "downward"],
-        "concept_type": "rotation_turns",
-        "task_type": "apply_rotation",
-        "grade_min": 1,
-    },
-    {
-        "question": "A square is turned half a turn counter-clockwise. What does it look like now?",
-        "answer": "It looks the same as before.",
-        "distractors": [
-            "It now looks like a diamond.",
-            "It is flipped upside down.",
-            "One side is now longer.",
-        ],
-        "concept_type": "rotation_turns",
-        "task_type": "apply_rotation",
-        "grade_min": 1,
-    },
-    {
-        "question": "How many quarter turns equal one full turn?",
-        "answer": "4",
-        "distractors": ["2", "3", "6"],
-        "concept_type": "rotation_turns",
-        "task_type": "identify_property",
-        "grade_min": 1,
-    },
-    {
-        "question": "How many half turns equal one full turn?",
-        "answer": "2",
-        "distractors": ["3", "4", "1"],
-        "concept_type": "rotation_turns",
-        "task_type": "identify_property",
-        "grade_min": 1,
-    },
-    {
-        "question": "A shape pointing right is given a quarter turn counter-clockwise. Where does it point now?",
-        "answer": "upward",
-        "distractors": ["downward", "to the left", "to the right"],
-        "concept_type": "rotation_turns",
-        "task_type": "apply_rotation",
-        "grade_min": 1,
-    },
-    {
-        "question": "Clockwise rotation is the same direction as ___.",
-        "answer": "the hands of a clock moving",
-        "distractors": [
-            "the sun rising in the east",
-            "counter-clockwise",
-            "a straight line",
-        ],
-        "concept_type": "rotation_turns",
+        "question": "It never bends or changes direction. Is it a straight line or a curved line?",
+        "answer": "straight line",
+        "distractors": ["curved line", "flat surface", "curved surface"],
+        "concept_type": "straight_curved",
         "task_type": "identify_name",
-        "grade_min": 1,
+        "grade_min": 2,
     },
     {
-        "question": "A shape is turned three quarter turns clockwise. This is the same as how many quarter turns counter-clockwise?",
-        "answer": "1",
-        "distractors": ["2", "3", "4"],
-        "concept_type": "rotation_turns",
-        "task_type": "apply_rotation",
-        "grade_min": 1,
+        "question": "It bends smoothly and changes direction. Is it a straight line or a curved line?",
+        "answer": "curved line",
+        "distractors": ["straight line", "flat surface", "curved surface"],
+        "concept_type": "straight_curved",
+        "task_type": "identify_name",
+        "grade_min": 2,
+    },
+    {
+        "question": "The edge of a ruler never bends. Is it a straight line or a curved line?",
+        "answer": "straight line",
+        "distractors": ["curved line", "flat surface", "curved surface"],
+        "concept_type": "straight_curved",
+        "task_type": "identify_property",
+        "grade_min": 2,
+    },
+    {
+        "question": "The rim of a circle bends all the way around. Is it a straight line or a curved line?",
+        "answer": "curved line",
+        "distractors": ["straight line", "flat surface", "curved surface"],
+        "concept_type": "straight_curved",
+        "task_type": "identify_property",
+        "grade_min": 2,
+    },
+    {
+        "question": "A solid figure has a surface with no bumps or curves, like a tabletop. What kind of surface is that?",
+        "answer": "flat surface",
+        "distractors": ["curved surface", "straight line", "curved line"],
+        "concept_type": "straight_curved",
+        "task_type": "identify_name",
+        "grade_min": 2,
+    },
+    {
+        "question": "A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?",
+        "answer": "curved surface",
+        "distractors": ["flat surface", "straight line", "curved line"],
+        "concept_type": "straight_curved",
+        "task_type": "identify_name",
+        "grade_min": 2,
+    },
+    {
+        "question": "A box has six faces that are each a flat square. What kind of surface does a box have?",
+        "answer": "flat surface",
+        "distractors": ["curved surface", "straight line", "curved line"],
+        "concept_type": "straight_curved",
+        "task_type": "identify_property",
+        "grade_min": 2,
+    },
+    {
+        "question": "A ball has a surface that bends smoothly in every direction. What kind of surface does a ball have?",
+        "answer": "curved surface",
+        "distractors": ["flat surface", "straight line", "curved line"],
+        "concept_type": "straight_curved",
+        "task_type": "identify_property",
+        "grade_min": 2,
+    },
+    {
+        "question": "A can has both flat surfaces (its ends) and one other kind of surface. What kind is it?",
+        "answer": "curved surface",
+        "distractors": ["flat surface", "straight line", "curved line"],
+        "concept_type": "straight_curved",
+        "task_type": "identify_property",
+        "grade_min": 2,
+    },
+    {
+        "question": "Which best describes the side of a solid figure that you could trace with a straight ruler?",
+        "answer": "flat surface",
+        "distractors": ["curved surface", "straight line", "curved line"],
+        "concept_type": "straight_curved",
+        "task_type": "identify_property",
+        "grade_min": 2,
     },
     # extra G3 items to reach 30+
     {
@@ -325,14 +328,24 @@ def generate_params(
         and item["task_type"] == task_type
     ]
     if not candidates:
+        # Relax only task_type -- concept_type is the node's bound curriculum
+        # scope (registry.py's _parse_competency_bounds) and must never be
+        # silently swapped for a different one. A prior version of this
+        # function fell through to "any concept_type at this grade", which
+        # silently served mat_g2_mg_q4_3 (straight/curved lines) unrelated
+        # G1 rotation-degree trivia whenever no exact task_type match
+        # existed. Fail loud instead (AGENTS.md rule #3).
         candidates = [
             item for item in _ITEM_POOL
             if item["grade_min"] <= grade and item["concept_type"] == concept_type
         ]
     if not candidates:
-        candidates = [item for item in _ITEM_POOL if item["grade_min"] <= grade]
-    if not candidates:
-        candidates = _ITEM_POOL
+        raise ValueError(
+            f"geometric_lines: no item pool entries for concept_type={concept_type!r} "
+            f"at grade<={grade} (seed={seed}). This is a content-coverage gap in "
+            f"_ITEM_POOL, not a condition to silently substitute a different "
+            f"concept_type's content for."
+        )
 
     item = dict(rng.choice(candidates))
     item["result"] = item["answer"]
@@ -346,11 +359,12 @@ def generate_hints(
     cumulative_vocab: Set[str],
 ) -> List[str]:
     concept_type = values.get("concept_type", "point_line_segment_ray")
-    if concept_type == "rotation_turns":
+    if concept_type == "straight_curved":
         return [
-            "A quarter turn = 90°. A half turn = 180°. A full turn = 360°.",
-            "Clockwise follows the direction of clock hands.",
-            "Counter-clockwise is the opposite direction.",
+            "A straight line never bends.",
+            "A curved line bends smoothly.",
+            "A flat surface has no bumps or curves, like a tabletop.",
+            "A curved surface bends, like the outside of a ball or a can.",
         ]
     if concept_type == "parallel_intersecting_perpendicular":
         return [
@@ -373,7 +387,7 @@ GEOMETRIC_LINES_DNA = DNA(
     dna_type="static_bank",
     answer_formula=None,
     param_bounds={
-        "g1": {},
+        "g2": {},
         "g3": {},
     },
     error_patterns=_ERROR_PATTERNS,

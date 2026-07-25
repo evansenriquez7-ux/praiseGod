@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q2_1",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What number comes next when counting: 0, 10, 20, 30, ___?",
+      "correct_answer": 40
+    },
+    {
+      "seed": 43,
+      "question_text": "What number comes next when counting: 4, 6, 8, 10, ___?",
+      "correct_answer": 12
+    },
+    {
+      "seed": 44,
+      "question_text": "What comes next: 0, 5, 10, 15, ___",
+      "correct_answer": 20
+    },
+    {
+      "seed": 45,
+      "question_text": "What number comes next when counting: 0, 5, 10, 15, ___?",
+      "correct_answer": 20
+    },
+    {
+      "seed": 46,
+      "question_text": "What number comes next when counting: 6, 8, 10, 12, ___?",
+      "correct_answer": 14
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Samples cover all three required skip counts: by 10s (0,10,20,30->40), by 2s (4,6,8,10->12), and by 5s (0,5,10,15->20), matching 'Count by 2s, 5s and 10s'."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Across seeds 42-46 the batch exercises 2s, 5s and 10s in both mcq and cloze formats rather than repeating one increment."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The 'What number comes next when counting: ...' stem is short and formulaic, fitting Grade 1 Q2 reading ability."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Both mcq (seed 42,43,45,46) and cloze (seed 44) formats are present, showing the registered variants exercise more than one response mode."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All samples are pure skip-counting sequences, directly matching the skip_counting_by_2/5/10 concepts this node introduces."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Sequences stay under 40, a sensible entry point within the 'up to 100' ceiling for an early Grade 1 Q2 skip-counting item."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "PASS"
 }

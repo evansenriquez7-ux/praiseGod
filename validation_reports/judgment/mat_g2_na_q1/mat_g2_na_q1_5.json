@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g2_na_q1_5",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is the ordinal name for position 7?",
+      "correct_answer": "seventh"
+    },
+    {
+      "seed": 43,
+      "question_text": "What is the ordinal name for position 8?",
+      "correct_answer": "eighth"
+    },
+    {
+      "seed": 44,
+      "question_text": "What is the ordinal name for position 7?",
+      "correct_answer": "7th"
+    },
+    {
+      "seed": 45,
+      "question_text": "What is the ordinal name for position 8?",
+      "correct_answer": "8th"
+    },
+    {
+      "seed": 46,
+      "question_text": "What is the ordinal name for position 8?",
+      "correct_answer": "eighth"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency asks students to describe object POSITION with ordinal numbers to 20th; samples only go to 8th and drop the 'objects' framing, testing 'position N' in the abstract. Also seed 42 and seed 44 ask the identical question 'ordinal name for position 7' but grade 'seventh' as correct in one and '7th' as correct in the other, an answer-key inconsistency for the same prompt."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "ordinal_numbers registers 1 axis with only 2 combos; five samples span two axis positions already touching both word-form and numeral-form answers, broadly consistent with the small registered combo space, though exhaustive execution is validated separately by validate_matrix."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Question stems are 8 words or fewer, well under the 18-word sentence cap for grade 2 quarter 1, and asking for a single ordinal name is a one-step recall task appropriate for early grade 2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "With only 2 registered combos for ordinal_numbers, the variant space cannot plausibly cover the full 1st-20th range implied by the competency; the samples themselves never exceed 8th, suggesting the higher ordinals (13th-20th, including irregular 'first/second/third') may be under-represented."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency targets describing POSITION OF OBJECTS, but the sampled items are stripped of any object or scene context (no 'the 7th book on the shelf'), so difficulty progresses along ordinal-number recall rather than the applied positional-description skill the wording specifies."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Observed positions (7th, 8th) sit in the low-middle of the 1st-20th range appropriate for a grade 2 quarter 1 introduction; nothing in the samples suggests numbers beyond the competency's stated ceiling."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

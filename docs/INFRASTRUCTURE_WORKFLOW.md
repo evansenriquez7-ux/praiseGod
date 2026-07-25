@@ -21,12 +21,12 @@ The system is hosted on a highly-available, fully serverless stack on Google Clo
 The application leverages GitHub Actions for automated testing and deployment.
 
 ### A. Validation Gate (`.github/workflows/validate-pgen.yml`)
-*   **Triggers:** Every PR and push targeting `backend/**` or `data/**`.
+*   **Triggers:** Every PR and push touching `backend/**`, `data/**`, `docs/**`, or the workflow file itself (`docs/**` is included so the un-enforced-imperative doc lint runs on documentation edits).
 *   **Pipeline:** Installs dependencies and runs the validation harness:
     ```bash
     python -m backend.app.practice_gen.validation.run_all
     ```
-*   **No Fallbacks:** Unlike the hosting workflow, this pipeline has **no `|| true` fallbacks or `continue-on-error` options**. If a single validation fails, the job must fail, blocking deployments.
+*   **No Fallbacks:** Unlike the hosting workflow, this pipeline has **no `|| true` fallbacks or `continue-on-error` options**. If a single validation fails, the job fails, which blocks deployments.
 
 ### B. Frontend Flow (`.github/workflows/firebase-hosting-merge.yml`)
 *   **Triggers:** Pushes targeting the `main` branch.

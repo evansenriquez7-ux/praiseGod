@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g2_na_q3_8",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 70 ÷ 10?",
+      "correct_answer": 7
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 10 ÷ 2?",
+      "correct_answer": 5
+    },
+    {
+      "seed": 44,
+      "question_text": "Which is greater: 307 or 270?",
+      "correct_answer": ">"
+    },
+    {
+      "seed": 45,
+      "question_text": "Which is greater: 92 or 930?",
+      "correct_answer": "<"
+    },
+    {
+      "seed": 46,
+      "question_text": "What is 12 ÷ 2?",
+      "correct_answer": 6
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The competency is specifically about distinguishing EVEN AND ODD numbers using division by 2, but not one of the five samples asks a student to classify a number as even or odd; two are generic division facts (70 div 10, 10 div 2) and two are unrelated magnitude comparisons of 3-digit numbers ('Which is greater: 307 or 270?') that have nothing to do with even/odd classification."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "division (4 axes/20 combos) and comparing_ordering (3 axes/8 combos) combine for 28 combos; an even/odd-classification item type should exist in that space for this competency to be met at all, but it did not appear in any of the 5 samples, and exhaustive execution is checked separately by validate_matrix."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Stems are short and under the word cap, but none of them actually require the classification reasoning ('does this divide evenly by 2?') the competency specifies, so cognitive demand cannot be assessed against the intended skill."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "The comparing_ordering DNA here produces generic 3-digit magnitude comparisons (307 vs 270, 92 vs 930) that are entirely unrelated to even/odd classification, suggesting the registered variant space for this node is not actually wired to the even/odd concept the competency requires."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "None of the five samples reference even or odd numbers at all; this node's content as sampled is indistinguishable from a mix of q3_6 (plain division facts) and an unrelated magnitude-comparison node, missing this competency's distinguishing concept entirely."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "The comparison samples use 3-digit numbers (307, 270, 92, 930) which, if intended as even/odd examples, would be appropriately scoped for grade 2 quarter 3, but since they are not framed as even/odd questions this cannot be confirmed."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

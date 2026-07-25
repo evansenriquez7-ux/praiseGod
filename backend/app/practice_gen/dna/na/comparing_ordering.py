@@ -149,12 +149,23 @@ def generate_params(
                 val = int(effective_max * num_diff_scalar) + rng.randint(-10, 10)
                 numbers.append(max(1, min(effective_max, val)))
         
-        numbers = list(sorted(set(numbers)))
-        if len(numbers) < 3:
-            while len(numbers) < 3:
-                numbers.append(rng.randint(1, effective_max))
-            numbers = list(sorted(set(numbers)))
-            
+        numbers = set(numbers)
+        # Ordering a set is only a genuine ordering task with >= 3 distinct
+        # values (2 values is just a comparison, already covered by
+        # task_type="compare_two"). The previous version padded by
+        # appending to the raw list and only de-duplicating once *after*
+        # the loop exited, so its `while len(numbers) < 3` condition
+        # checked list length, not distinct count -- when effective_max was
+        # small (e.g. a low-difficulty-scalar G1 draw), the appended values
+        # frequently duplicated existing ones and the final set could still
+        # have fewer than 3 distinct numbers. Guarantee distinctness
+        # directly instead of hoping padding-then-dedup lands on >= 3.
+        attempts = 0
+        while len(numbers) < 3 and attempts < 200:
+            numbers.add(rng.randint(1, max(3, effective_max)))
+            attempts += 1
+        numbers = list(sorted(numbers))
+
         answer = ", ".join(map(str, sorted(numbers)))
         d1 = ", ".join(map(str, sorted(numbers, reverse=True)))
         
@@ -205,6 +216,18 @@ def generate_params(
         "b": numbers[1] if len(numbers) > 1 else None,
         "distractors": distractors,
     }
+    if task_type == "order_set":
+        # fmt_ordering.py's primary sequence-resolution path reads
+        # ctx.values["sequence"] (a plain list of the raw numbers to sort).
+        # Without it, the formatter fell back to `[correct_answer] +
+        # distractors` -- but for this task_type, correct_answer and each
+        # distractor are already comma-joined STRINGS representing a full
+        # permutation (e.g. "1, 2, 6"), so the fallback re-joined those
+        # strings together into one garbled, repeated-numbers question
+        # ("Arrange these numbers...: 1, 2, 6, 6, 2, 1, 1, 6, 2 (reversed)").
+        # This task_type was effectively dead code before registry.py
+        # started binding it, so the mismatch was never exercised.
+        result_dict["sequence"] = numbers
 
     return result_dict
 

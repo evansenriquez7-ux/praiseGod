@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_mg_q1_4",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 5",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What do we call an exact location in space with no length or width?",
+      "correct_answer": "point"
+    },
+    {
+      "seed": 43,
+      "question_text": "What do we call an exact location in space with no length or width?",
+      "correct_answer": "point"
+    },
+    {
+      "seed": 44,
+      "question_text": "What figure has no endpoints and extends forever in both directions?",
+      "correct_answer": "line"
+    },
+    {
+      "seed": 45,
+      "question_text": "What figure has one endpoint and extends forever in one direction?",
+      "correct_answer": "ray"
+    },
+    {
+      "seed": 46,
+      "question_text": "What do we call an exact location in space with no length or width?",
+      "correct_answer": "point"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Competency: \"Recognize, using models, and draws a point, line, line segment, and ray.\" The MCQs correctly test point, line, and ray by definition, but \"line segment\" never appears across the five samples, leaving one of the four named terms untested in this batch."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "geometric_lines registers 2 axes / 6 combos; this 5-sample slice covers point (3x), line (1x), and ray (1x) but never line segment, so the specific line-segment coverage this competency names is unverified here."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Definitional stems such as \"What figure has no endpoints and extends forever in both directions?\" run 8-11 words, comfortably under the 22-word cap and phrased at a concrete, testable G3 reading level."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "With only 6 total combos registered, there is limited headroom to guarantee all four vocabulary terms rotate evenly, and the 3-of-4 coverage observed here doesn't confirm line-segment coverage exists elsewhere."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The recognition-by-definition format matches the \"recognize\" half of the competency, but the \"draws\" half using models is never demonstrated in any MCQ sample, since multiple choice can't natively assess drawing."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "There is no numeric scale involved in this vocabulary node, so the relevant dimension is term coverage rather than numeric range, and nothing in the observed numbers (none present) raises a concern."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

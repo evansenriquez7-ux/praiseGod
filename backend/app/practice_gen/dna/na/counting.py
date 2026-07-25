@@ -108,7 +108,16 @@ def _to_number_word(n: int) -> str:
 
 def _select_skip(grade: int, interval_level: str, pool: List[int], rng: random.Random) -> int:
     if interval_level == "by_1":
-        return 1 if 1 in pool else rng.choice(pool)
+        # "by_1" unambiguously means step-by-1 counting -- it is not
+        # conditional on 1 being in `pool` (the per-grade default skip_pool
+        # for G2/G3 never includes 1, since skip_pool enumerates which
+        # *skip-counting* multiples are curriculum-eligible, not whether
+        # plain sequential counting is allowed). The old
+        # "1 if 1 in pool else rng.choice(pool)" meant every unbound G2/G3
+        # "count up to N" node (no explicit skip multiple in its
+        # competency, so skip_interval stays at its "by_1" default)
+        # silently rendered random skip-counting instead of plain counting.
+        return 1
     if interval_level == "by_2_5_10":
         candidates = [s for s in pool if s in (2, 5, 10)]
         return rng.choice(candidates) if candidates else rng.choice(pool)

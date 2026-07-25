@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q3_3",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Daniel has 5 scrolls. A classmate has 0 scrolls. Who has more, and by how many?",
+      "correct_answer": 5
+    },
+    {
+      "seed": 43,
+      "question_text": "Kuya Bien has 2 story chapters. A classmate has 1 story chapters. Who has more, and by how many?",
+      "correct_answer": 1
+    },
+    {
+      "seed": 44,
+      "question_text": "Team A scored ___ in the school stage and Team B scored 0. What is the difference in their scores?",
+      "correct_answer": 17
+    },
+    {
+      "seed": 45,
+      "question_text": "Team A scored 13 in the barangay court and Team B scored 0. What is the difference in their scores?",
+      "correct_answer": 13
+    },
+    {
+      "seed": 46,
+      "question_text": "Ate Cara has 3 photo albums. A classmate has 0 photo albums. Who has more, and by how many?",
+      "correct_answer": 3
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "3 of 5 samples (seeds 42, 44, 45) subtract 0, e.g. 'Team A scored 13...Team B scored 0', a degenerate case that doesn't exercise real subtraction mechanics."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Contexts vary across scrolls, story chapters, competition scores, and photo albums, giving genuine narrative diversity."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "'Who has more, and by how many?' is a reasonable comparative-subtraction phrasing for Grade 1 Q3, slightly more advanced than a bare 'how many left' but still accessible."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Seeds 43 (2-1) and 46 (3-0) show only small single-digit operands; the two larger-value seeds (44: 17-0, 45: 13-0) still both subtract zero rather than a genuine near-20 minuend/subtrahend pair."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample is a genuine subtraction word problem with a comparative framing, matching problem_solving_subtraction for Grade 1 Q3."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Seeds 44 and 45 do reach 17 and 13 respectively, staying safely under the 'both numbers less than 20' ceiling, even if the subtrahend is trivial."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

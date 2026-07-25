@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q3_4",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 64 − 0?",
+      "correct_answer": 64
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 5 − 0?",
+      "correct_answer": 5
+    },
+    {
+      "seed": 44,
+      "question_text": "41 − 0 = ___",
+      "correct_answer": 41
+    },
+    {
+      "seed": 45,
+      "question_text": "25 − 15 = ___",
+      "correct_answer": 10
+    },
+    {
+      "seed": 46,
+      "question_text": "12 − 1 = ___",
+      "correct_answer": 11
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The competency names 2-digit-minus-1-digit and 2-digit-minus-2-digit forms, and the samples show both: '64 − 0' and '12 − 1' are 2-digit-minus-1-digit style, while '25 − 15 = 10' is a genuine 2-digit-minus-2-digit computation, all correct."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "subtraction registers 12 combos across 3 axes; the five samples already surface both named digit-count combinations, a reasonable slice of a modest registry, with exhaustive execution confirmed separately."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Prompts like 'What is 64 − 0?' are short and clear, appropriate for Grade 1 Quarter 3."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Observing both a 2-digit-minus-2-digit case (25 − 15) and 2-digit-minus-1-digit cases (64 − 0, 12 − 1) within five samples is good evidence the registry covers the digit-count combinations this competency names."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All computations avoid regrouping (e.g., 25 − 15 = 10 needs no borrowing), consistent with the competency's explicit 'without regrouping' constraint."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Minuends reach into the 40s and 60s (41, 64), a meaningfully larger range than the Grade 1 Q1 subtraction node, appropriately progressing toward the up-to-100 scope."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "PASS"
 }

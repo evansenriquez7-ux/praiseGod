@@ -198,6 +198,37 @@ def generate_params(
             ),
         }
 
+    if task_type == "sequence":
+        # "Give the days of the week and months of the year in the correct
+        # order" (mat_g1_mg_q4_2) has no matching task_type at all -- every
+        # existing task_type reads a specific date FROM a calendar grid,
+        # none test reciting/sequencing the day or month names themselves.
+        # Direction ("next"/"previous") and unit (days vs. months) are both
+        # varied by seed so a Lab-forced sample set still shows both.
+        use_days = rng.random() < 0.5
+        names = DAYS_OF_WEEK if use_days else MONTHS_OF_YEAR
+        unit_label = "day of the week" if use_days else "month of the year"
+        idx = rng.randint(0, len(names) - 1)
+        forward = rng.random() < 0.5
+        if forward:
+            answer = names[(idx + 1) % len(names)]
+            question = f"What {unit_label} comes right after {names[idx]}?"
+        else:
+            answer = names[(idx - 1) % len(names)]
+            question = f"What {unit_label} comes right before {names[idx]}?"
+        return {
+            "blank_target": "answer",
+            "month": month,
+            "year": year,
+            "reference_name": names[idx],
+            "direction": "next" if forward else "previous",
+            "unit": "days" if use_days else "months",
+            "answer": answer,
+            "task_type": "sequence",
+            "question": question,
+            "distractors": [n for n in names if n != answer and n != names[idx]][:3],
+        }
+
     # elapsed_weeks
     start_date = rng.randint(1, days_in_this_month - 14)
     weeks      = rng.randint(1, min(4, (days_in_this_month - start_date) // 7))

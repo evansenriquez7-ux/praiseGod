@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_dp_q3_0",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 5",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,63 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Look at the picture graph. Each 🍎 = 2. How many are in dogs?",
+      "correct_answer": "C"
+    },
+    {
+      "seed": 43,
+      "question_text": "Look at the picture graph. Each 🍎 = 2. How many are in grapes?",
+      "correct_answer": "B"
+    },
+    {
+      "seed": 44,
+      "question_text": "Create a graph to show: Grade 1: 15, Grade 2: 15, Grade 3: 15, Grade 4: 5.",
+      "correct_answer": [
+        15,
+        15,
+        15,
+        5
+      ]
+    },
+    {
+      "seed": 45,
+      "question_text": "Look at the graph. What is the value for swimming?",
+      "correct_answer": "D"
+    },
+    {
+      "seed": 46,
+      "question_text": "Look at the picture graph. Each 🍎 = 2. How many are in dogs?",
+      "correct_answer": "B"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Competency: \"Collect data from experiments with a small number of possible outcomes (e.g., rolling a die or tossing a coin).\" None of the five samples involve an actual chance experiment, die, or coin; they ask students to read pictograph/bar-graph values or fill in given totals instead."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "This node registers pictographs (2 axes/24 combos) and bar_graphs (3 axes/30 combos), a large combined space, but every sample shown draws from graph-reading/building content rather than an experiment-outcome-collection variant."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Question stems such as \"Look at the picture graph. Each apple = 2. How many are in dogs?\" run about 12-13 words, within the 22-word cap and readable for G3 Q3."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "pictographs and bar_graphs are presentation/interpretation DNAs, not experiment-simulation DNAs, so even a large 54-combo registry doesn't obviously support the small-number-of-outcomes experiment skill named here."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "This node's competency, data collection from chance experiments, is foundational and distinct from the graph-reading skills belonging to q3_1/q3_2; using graph-reading content skips the experiment step."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Values like 15/15/15/5 and pictograph counts scaled by 2 per icon are reasonable magnitudes for G3 graph work generally, but don't reflect the small 2-6 outcome scale a die/coin experiment would produce."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

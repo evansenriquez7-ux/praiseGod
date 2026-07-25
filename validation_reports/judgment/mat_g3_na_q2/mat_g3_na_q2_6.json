@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_na_q2_6",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 4 + 0?",
+      "correct_answer": 4
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 0 + 3?",
+      "correct_answer": 3
+    },
+    {
+      "seed": 44,
+      "question_text": "2 − 0 = ___",
+      "correct_answer": 2
+    },
+    {
+      "seed": 45,
+      "question_text": "2 − 0 = ___",
+      "correct_answer": 2
+    },
+    {
+      "seed": 46,
+      "question_text": "12 + 1 = ___",
+      "correct_answer": 13
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The competency explicitly requires combining 3 to 4 numbers with correct order of operations, but every sample ('4 + 0', '0 + 3', '2 − 0', '12 + 1') is a plain two-operand sentence; no sample chains three or more addends/subtrahends or exercises order-of-operations reasoning."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Two DNAs are registered (addition 8 combos, subtraction 12 combos), but both appear to emit their standard two-number forms rather than a multi-addend composite specific to this node."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "The observed problems are simpler than grade-3-Q2 order-of-operations content should be; introducing the vocabulary term 'order of operations' while only showing single binary operations undersells the stated target."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "None of the five samples show a 3-or-4-number combined expression, so the variant space as illustrated does not visibly support this node's specific multi-addend requirement."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "Two-operand addition/subtraction is the correct competency for earlier nodes q2_1/q2_4, not this node, which specifically requires 3-4 number combinations."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Individual operand sizes (single/double digit) are appropriately scaled for grade 3, independent of the operand-count issue."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

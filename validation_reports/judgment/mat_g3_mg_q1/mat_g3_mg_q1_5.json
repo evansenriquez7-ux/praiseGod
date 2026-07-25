@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_mg_q1_5",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 5",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Two lines that never meet, no matter how far they extend, are called ___.",
+      "correct_answer": "parallel lines"
+    },
+    {
+      "seed": 43,
+      "question_text": "Two lines that never meet, no matter how far they extend, are called ___.",
+      "correct_answer": "parallel lines"
+    },
+    {
+      "seed": 44,
+      "question_text": "Two intersecting lines that do NOT form a right angle are called ___.",
+      "correct_answer": "intersecting lines (not perpendicular)"
+    },
+    {
+      "seed": 45,
+      "question_text": "Two lines that meet at a right angle (90°) are called ___.",
+      "correct_answer": "perpendicular lines"
+    },
+    {
+      "seed": 46,
+      "question_text": "Two lines that never meet, no matter how far they extend, are called ___.",
+      "correct_answer": "parallel lines"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Competency: \"Recognize and draw parallel, intersecting, and perpendicular lines.\" All three named relationships appear: \"never meet\" -> parallel lines, \"meet at a right angle (90deg)\" -> perpendicular lines, and \"intersecting... do NOT form a right angle\" -> intersecting lines, directly matching the wording."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "geometric_lines registers 2 axes / 6 combos for this node; the 5 samples happen to cover all three named terms, a reasonable illustrative slice, and full 6-combo execution is verified by validate_matrix."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The longest stem, about lines that never meet no matter how far they extend, is 14 words, well under the 22-word cap, and the 90-degree callout is a concrete, grade-appropriate anchor for perpendicularity."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The variant space plausibly supports mastery since all three relationship types are independently testable as cloze-style fill-ins, letting the Lab vary phrasing per relationship type."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "This node's difficulty (three related but distinct line-relationship terms) logically follows q1_4's simpler point/line/ray recognition, building vocabulary depth without reaching into unrelated topics."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "There is no numeric magnitude to assess beyond the 90-degree angle reference, itself a fixed, curriculum-appropriate constant for defining perpendicularity at this grade."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "PASS"
 }

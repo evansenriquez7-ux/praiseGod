@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q2_5",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 4 + 0?",
+      "correct_answer": 4
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 0 + 3?",
+      "correct_answer": 3
+    },
+    {
+      "seed": 44,
+      "question_text": "2 + 0 = 2. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 45,
+      "question_text": "1 + 1 = ___",
+      "correct_answer": 2
+    },
+    {
+      "seed": 46,
+      "question_text": "12 + 1 = ___",
+      "correct_answer": 13
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency specifically names '2-digit and 1-digit' and '2-digit and 2-digit' addition, but four of five samples ('4+0', '0+3', '2+0=2', '1+1=2') use only single-digit addends, and only '12 + 1 = 13' involves a 2-digit number — no 2-digit-plus-2-digit example appears at all."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "addition registers 8 combos across 4 axes; the 2-digit+2-digit variant presumably exists elsewhere in that space even though it did not surface in these five seeds, with exhaustive execution confirmed separately by validate_matrix."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Prompts like 'What is 4 + 0?' are extremely short, well under the word cap for Grade 1 Quarter 2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "With only one of five samples reaching a 2-digit addend and none showing 2-digit+2-digit, this slice under-represents the specific magnitude combinations the competency names explicitly."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Where a 2-digit example does appear ('12 + 1 = 13'), it correctly avoids regrouping, consistent with the competency's 'without regrouping' constraint."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Sums observed max out at 13, far short of the stated up-to-100 ceiling, and the addend sizes skew toward trivial single-digit combinations rather than the 2-digit-heavy range this competency targets."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g2_na_q2_3",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 702 − 100?",
+      "correct_answer": 602
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 570 − 320?",
+      "correct_answer": 250
+    },
+    {
+      "seed": 44,
+      "question_text": "12 − 2 = ___",
+      "correct_answer": 10
+    },
+    {
+      "seed": 45,
+      "question_text": "3 − 2 = ___",
+      "correct_answer": 1
+    },
+    {
+      "seed": 46,
+      "question_text": "What is 511 − 0?",
+      "correct_answer": 511
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The competency explicitly scopes this node to subtraction of a 2-DIGIT number by a 1-DIGIT number, but three of the five samples use 3-digit numbers (702 minus 100 = 602, 570 minus 320 = 250, 511 minus 0 = 511), directly exceeding the stated scope, and none reference a number line or explicitly frame subtraction as addition's inverse."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "subtraction registers 3 axes with 12 combos; with such a small combo count, seeing 3-digit-minus-3-digit items in 3 of 5 draws suggests the magnitude axis is not properly constrained to this node's 2-digit-by-1-digit scope, though validate_matrix separately checks exhaustive combo execution rather than magnitude bounds."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Stems are minimal ('12 minus 2 = ___') and well under the word cap, but subtracting 3-digit numbers like 570 minus 320 is a materially harder cognitive task than the 2-digit-by-1-digit ceiling this competency sets for grade 2 quarter 2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "Whatever variant space produced 702 minus 100 and 570 minus 320 is generating magnitudes well beyond what this competency's number-line and inverse-of-addition pedagogy is designed for at this stage; a 2-digit-by-1-digit ceiling should exclude 3-digit minuends entirely."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Only two of five samples (12 minus 2, 3 minus 2) actually fit the stated 2-digit-by-1-digit-or-smaller scope; the other three overshoot into full 3-digit subtraction territory that belongs to a later node (q2_6, subtraction to 1000)."
+    },
+    "scale_appropriateness": {
+      "verdict": "FAIL",
+      "rationale": "Minuends observed include 702, 570, and 511 -- all 3-digit values -- against a competency that caps this node at 2-digit-by-1-digit subtraction; this is a direct, unambiguous scale violation visible in the raw sample data."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

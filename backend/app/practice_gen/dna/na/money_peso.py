@@ -179,6 +179,13 @@ def generate_params(
         operation = "add_amounts"
     elif operation_profile == "subtract":
         operation = "find_change"
+    elif operation_profile == "add_or_subtract":
+        # Composite scope value (registry.py binds this for competencies
+        # that explicitly name BOTH -- e.g. mat_g1_na_q4_6: "addition of
+        # money ... or subtraction of money") -- resolved here via the
+        # generation seed, same pattern as missing_number.py resolving its
+        # own "addition_subtraction" composite scope value.
+        operation = "add_amounts" if rng.random() < 0.5 else "find_change"
     else:
         operation = operation_profile
     denom_type = profile.get("denomination_type", "mixed")

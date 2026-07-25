@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_na_q2_4",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 14 − 2?",
+      "correct_answer": 12
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 75 − 60?",
+      "correct_answer": 15
+    },
+    {
+      "seed": 44,
+      "question_text": "94 − 60 = ___",
+      "correct_answer": 34
+    },
+    {
+      "seed": 45,
+      "question_text": "2335 − 1230 = ___",
+      "correct_answer": 1105
+    },
+    {
+      "seed": 46,
+      "question_text": "What is 3463 − 60?",
+      "correct_answer": 3403
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Samples show a genuine magnitude range from small facts ('14 − 2') to a 4-digit subtraction ('2335 − 1230 = 1105') and a mixed-digit case ('3463 − 60'), matching the 'both numbers less than 10 000' framing reasonably well."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "variant_registry lists 12 combos across 3 axes for subtraction; the 5 samples span single through quadruple-digit minuends, a fair illustrative slice of that space."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "All question texts are short single sentences ('What is 75 − 60?'), well under the 22-word cap, single-step computation suitable for grade 3."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Both mcq and cloze formats are exercised, and number_difficulty varies from 0.5 to 0.67 across samples, suggesting the registered axes are actually moving between draws."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Operand sizes and the absence of any multiplication/estimation content keep this squarely on the subtraction-to-10000 competency without overreach."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The spread from 14 − 2 up to 2335 − 1230 plausibly reflects an appropriate progression for a node whose ceiling is just under 10 000."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "PASS"
 }

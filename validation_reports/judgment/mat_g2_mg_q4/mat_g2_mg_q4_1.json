@@ -1,21 +1,55 @@
 {
   "node_id": "mat_g2_mg_q4_1",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
-    43,
     44,
-    45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What time does the clock show?",
+      "correct_answer": "C"
+    },
+    {
+      "seed": 44,
+      "question_text": "Set the clock to show 7:00.",
+      "correct_answer": "7:00"
+    },
+    {
+      "seed": 46,
+      "question_text": "What time does the clock show?",
+      "correct_answer": "B"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "4 of 5 samples directly test reading an analog clock ('What time does the clock show?') and one tests writing/setting a time ('Set the clock to show 7:00.'), which squarely matches 'Read and write time in hours and minutes ... using an analog clock.'"
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "time_reading registers 20 combos across 3 axes for this node; my 5 samples are illustrative only, with exhaustive combo execution handled separately by validate_matrix."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Both stems ('What time does the clock show?', 'Set the clock to show 7:00.') are short, concrete, and well under the 18-word cap, matching grade 2 quarter 4 reading level for a clock-based task."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The competency explicitly names 'a.m. and p.m.', a vocab term this node itself introduces, but none of the 5 sampled question texts mentions a.m./p.m. at all, leaving that half of the lc unverified even if it's handled visually on the clock face."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Reading and setting clock times is exactly the read/write pairing this lc asks for, and the items don't reach into elapsed-time computation, which correctly stays reserved for the later lc mat_g2_mg_q4_2."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "A single whole-hour target (7:00) is a sensible easy anchor point for the 'set the clock' task, appropriate as part of a progression that should also include minute-level times per the lc's 'hours and minutes' wording."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

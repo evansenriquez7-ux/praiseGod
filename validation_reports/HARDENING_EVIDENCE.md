@@ -325,3 +325,333 @@ All 7 mutations re-verified detected after the harness fixes; full clean `run_al
 ### Ground Rule 2 note — no ground-truth (KG/competency-bounds) corrections were made
 
 Every fix above was a pipeline or harness bug fix. The one open judgment call inherited from the prior session — the Advanced/bridge-tier scalar value (`1.1` vs `1.25`, see `docs/BUG_BRIDGE_SCALAR.md`) — remains explicitly escalated to the maintainer; the *mechanism* is fixed (both call sites derive from the single `DIFFICULTY_LEVEL_MAP[4]`), but the *value* is a pedagogical decision this session did not make unilaterally.
+
+---
+
+## Session: Judgment-Layer Completion — Fixed 3 Real Generator Defects via Genuine Blind Review
+
+**Context:** the user asked for `docs/pgen_hardening.md` and `docs/doc_rem.md` to be critiqued and thoroughly completed. A concurrent engineering-agent session was independently working the same finding at the same time (both sessions found, without prompting each other, that all 151 `validation_reports/judgment/*.json` files were byte-identical fabricated stubs — same reviewer, same seeds, same one-sentence "evidence", all auto-`PASS`). That session hardened the completeness gate into `backend/app/practice_gen/validation/validate_judgment.py` (schema validation + cross-file anti-boilerplate check) and deleted the 151 stubs; this session did the actual review work the new gate demands.
+
+### Verifying the harness was genuinely green before touching anything
+
+```
+$ .venv/bin/python3 -m backend.app.practice_gen.validation.run_all
+...
+Nodes Checked: 151
+Nodes Passed:  151
+Nodes Failed:  0
+ALL TESTS PASSED SUCCESSFULLY! Praise God!
+```
+Reproduced twice independently at session start, before any edits — confirming the machine-checkable phases (0–6) were genuinely complete, not merely asserted.
+
+### Finding the judgment layer was hollow
+
+```
+$ python3 -c "
+import json, glob
+files = glob.glob('validation_reports/judgment/**/*.json', recursive=True)
+evid = set(); seeds = set()
+for f in files:
+    d = json.load(open(f))
+    evid.add(d.get('evidence')); seeds.add(tuple(d.get('sample_seeds', [])))
+print('files:', len(files), 'unique evidence:', len(evid), 'unique seed tuples:', len(seeds))
+"
+files: 151 unique evidence: 1 unique seed tuples: 1
+```
+All 151 files carried the exact same evidence string ("All mathematical constraints and visual outputs verified against MATATAG curriculum specs.") and the exact same seeds `[42,43,44,45,46]`, regardless of grade, subdomain, or DNA — a template stub, not a review.
+
+### Generating real samples for genuine review — and a methodology bug found along the way
+
+First attempt generated samples with `is_lab=True`, which (per `pgen_contract.md`'s own "Matatag Lab as Single Source of Truth" principle) *bypasses* the competency-bound clamp for manual Lab testing. Result: `mat_g1_na_q1_3` ("Compare two numbers up to 20") rendered `"Which is greater: 610 or 70?"` — a 3-digit comparison for a "numbers up to 20" competency. This was **my own sampling-script bug**, not a pipeline bug: switching to `is_student_path=True` (the actual student-serving path) reproduced correctly-clamped content (`"Which is greater: 3 or 1?"`). Documented here because it's exactly the kind of methodology error a genuine review process must catch in itself before trusting its own output.
+
+### Dispatching blind review (6 batches, ~26 nodes each) + verifying they stayed blind
+
+Each batch agent was given only `local_only/scratch/review_batch_{0..5}.json` — per-node competency text, grade/quarter/vocab metadata, DNA variant-registry counts, and 5 rendered samples — explicitly instructed not to read any file under `backend/app/practice_gen/dna/`, `formatters/`, `generators/`, `adapter.py`, or `orchestrator.py`. All 6 completed and each independently ran:
+```
+PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.validate_judgment
+```
+confirming their own batch's files passed schema + anti-boilerplate checks before reporting back.
+
+**Final tally across all 151 genuine reviews:** PASS 20 · CONCERN 66 · FAIL 65 (see `docs/IMPLEMENTATION_STATUS.md` for the breakdown and the prioritized list of unfixed findings). This is the honest baseline the fabricated stubs hid.
+
+### Root-caused and fixed 3 of the FAIL findings
+
+**1. `mat_g2_mg_q4_3` / `mat_g3_mg_q1_5` (geometric_lines DNA).**
+```
+$ PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.validate_matrix --node mat_g2_mg_q4_3
+[1/1] Checking mat_g2_mg_q4_3 ...  FAIL
+    - vocabulary_gating (seed 42): [NOT_YET_KNOWN] Forbidden term 'line' found in "...A straight line never bends..."
+```
+(This FAIL surfaced only *after* adding real content — investigated and found to be a harness bug, see below — not evidence the content itself was wrong.) Root cause of the original defect: `geometric_lines.py`'s item pool has 3 disjoint scopes (`point_line_segment_ray`, `parallel_intersecting_perpendicular`, and — before this fix — an orphaned `rotation_turns` scope belonging to no mapped node), and `registry.py`'s `_parse_competency_bounds` never bound a `concept_type` for either of these two nodes, so `generate_params()`'s 3-layer fallback cascade always landed on whichever scope had grade-eligible items — `rotation_turns` for `mat_g2_mg_q4_3` (G2), and the DNA's hardcoded `point_line_segment_ray` default for `mat_g3_mg_q1_5` (G3, never actually reaching parallel/perpendicular content despite that being its whole competency). Fixed:
+- Added 10 real `straight_curved` item-pool entries to `geometric_lines.py`, removed the orphaned `rotation_turns` scope.
+- `registry.py`: explicit `concept_type` binding per competency-text keyword (`straight`+`curved` → `straight_curved`; `parallel`/`intersecting`/`perpendicular` → `parallel_intersecting_perpendicular`; else → `point_line_segment_ray`).
+- `compatibility.py`: `FORMATTER_VARIANT_SUPPORT["geometric_lines"]` previously listed `concept_type: ["straight_curved", "parallel_intersecting"]` — neither matched the DNA's real internal strings (typo'd `"parallel_intersecting"` vs. real `"parallel_intersecting_perpendicular"`, and `"straight_curved"` had zero backing content until this fix). Corrected to match the DNA exactly.
+- `generate_params()`: removed the 2 silent fallback tiers that ignored `concept_type`; now raises `ValueError` naming the requested `concept_type`/grade/seed if no items match, per AGENTS.md rule #3.
+
+Verified:
+```
+$ PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.validate_matrix --node mat_g2_mg_q4_3
+[1/1] Checking mat_g2_mg_q4_3 ...  PASS
+$ PYTHONPATH=. .venv/bin/python3 -c "
+from backend.app.practice_gen.pipeline import run
+p = run('mat_g3_mg_q1_5', seed=42, is_student_path=True); print(p['question_text'])"
+Two lines that never meet, no matter how far they extend, are called ___.
+```
+
+**Harness bug found in the process (fixed in both copies):** the new content failed vocabulary gating with `[NOT_YET_KNOWN] 'line'` even fully inside the node's own approved compound term "straight line". Root cause: `validate_vocab.py`'s and `validate_matrix.py`'s compound-vocab exemption (`_is_subtoken_only_of_known_compound`) checks the term against `cumulative_vocab` only — which excludes the *current* node's own `introduces_vocab` — so a node could never use the exact new compound vocabulary it exists to introduce. Fixed by merging `introduces_vocab` into the exemption's "known compounds" list in both places (the comment in `validate_matrix.py`'s sibling `cumulative_concepts` merge already does this correctly for concepts — the vocab check just hadn't matched that pattern).
+
+**2. `mat_g2_mg_q1_0` / `mat_g2_mg_q1_1` (shapes_2d DNA).** Identical root cause: `registry.py` had no branch for `shapes_2d` at all, so `shape_set`/`task_type` were never bound for any node — `mat_g2_mg_q1_0` ("circles, half/quarter circles") and `mat_g2_mg_q1_1` ("composite figures") silently defaulted to the G1 `basic_triangles_rectangles_squares` pool.
+```
+$ PYTHONPATH=. .venv/bin/python3 -c "
+from backend.app.practice_gen.pipeline import run
+for s in (42,43,44):
+    print(run('mat_g2_mg_q1_0', seed=s, is_student_path=True)['question_text'])"
+A shape is made from exactly one quarter of a circle. What is it called?
+What shape has no corners and no straight sides?
+A shape is made from exactly half of a circle. What is it called?
+```
+Fixed: added a `shapes_2d` branch to `registry.py` (binds `shape_set` from `"circle"`/`"composite figure"` keywords, `task_type` from `"compose"+"decompose"`/`"compare"`/`"distinguish"` keywords).
+
+**Regression surfaced by this fix, root-caused and fixed:** `mat_g1_mg_q1_1` (shapes_2d + comparing_ordering, multi-DNA) started crashing —
+```
+ValueError: No compatible formatters available for DNA 'comparing_ordering'
+```
+because binding `task_type="compare_shapes"` (a real shapes_2d value) leaked into `local_difficulty_profile` regardless of which DNA a given seed ultimately used, and `comparing_ordering`'s own `task_type` vocabulary (`["compare_pair","order_sequence"]`) doesn't recognize `"compare_shapes"`. Root-caused to `orchestrator.py`'s DNA-candidate filter only checking variant-value compatibility `if formatter:` was explicitly requested (never for the common case of no formatter specified). Fixed by making the check unconditional, but scoped narrowly via `is_enumerable_elsewhere` so it does **not** reject `missing_number`'s own `operation="addition_subtraction"` (a synthesized ground-truth scope value, never a literal Lab-selectable option for any DNA) — this exact false-positive class was already documented as a fixed bug in the Phase 1 root-cause table (row 11) for a *different* check; this is the same class of mistake in a second location, caught by re-running the full matrix and reading the failure closely rather than assuming the fix was correct.
+
+```
+$ .venv/bin/python3 -m backend.app.practice_gen.validation.run_all
+...
+Nodes Checked: 151
+Nodes Passed:  151
+Nodes Failed:  0
+ALL TESTS PASSED SUCCESSFULLY! Praise God!
+```
+
+**3. `mat_g3_mg_q4_0`/`_1`/`_2` (symmetry_slides DNA).** Same root cause pattern, with a subtlety: the old registry logic's `pass` branch ("leave `concept` unrestricted if 'symmetry' is mentioned in the competency") does not mean the DNA shows symmetry content — "unrestricted" just means the DNA's own grade-based default (`"rotation" if grade==1 else "slide_translation"`) governs. `mat_g1_mg_q4_0` "worked" only by a second, masking bug: `slide_translation` has zero `grade_min=1` items, so its own fallback cascade (ignore concept, match grade only) happened to land back on `rotation`, the *only* grade-1-eligible concept in the pool — two bugs cancelling out for exactly one node, while `mat_g3_mg_q4_0`/`_1`/`_2` (grade 3, where `slide_translation` *does* have grade-3 items) had no such accidental rescue and always served slide content regardless of competency. Fixed: explicit `concept`/`directions` keyword-routing in `registry.py`, matching `compatibility.py`'s `FORMATTER_VARIANT_SUPPORT["symmetry_slides"]` corrected from `{"symmetry","slides"}`/`{"horizontal","vertical","both"}` (matching *no* real internal value) to the DNA's actual 4-way `concept` and 2-way `directions` vocabulary, and the same fail-loud `generate_params()` hardening. Also fixed the rotation hint text (`"A turn (rotation) moves a shape around a point."` — used the NOT_YET_KNOWN term "point" for G1), a latent vocabulary-gating bug this fix's re-verification surfaced.
+
+Verified: `validate_matrix --node mat_g3_mg_q4_0/mat_g3_mg_q4_1/mat_g3_mg_q4_2` → PASS, 0 failures each; full `run_all` → 151/151, exit 0.
+
+### Ground-truth test-fixture corrections (Ground Rule 2)
+
+`validate_compat.py`'s `validate_competency_bounds_parsing()` unit-test table encoded the *pre-fix, buggy* expected bounds for several of the nodes above (e.g. asserting `mat_g3_mg_q1_5` should be "unrestricted", `mat_g1_mg_q4_0` should bind `"slide_translation"`). These were golden-value fixtures for a harness unit test, not KG/competency-bounds ground truth — corrected to the verified-correct post-fix bounds, with the reasoning for each correction inlined as a comment in the fixture table itself.
+
+### Final state
+
+```
+$ .venv/bin/python3 -m backend.app.practice_gen.validation.validate_judgment
+Judgment review validation: all nodes have genuine, complete reviews.
+
+$ .venv/bin/python3 -m backend.app.practice_gen.validation.run_all
+...
+--- 6/6: Judgment Reviews (genuine per-node artifacts) ---
+  PASS judgment_reviews (all nodes have genuine, complete reviews)
+
+--- Two-Direction Contract Verification ---
+  PASS contract_doc_matches_registry
+  PASS two_direction_contract_match
+======================================================================
+ALL TESTS PASSED SUCCESSFULLY! Praise God!
+======================================================================
+```
+
+---
+
+## Session: Round 2 — Working the Judgment-Review Punch List
+
+**Context:** after the judgment layer went from fabricated stubs to 151 genuine blind reviews (20 PASS / 66 CONCERN / 65 FAIL), the user asked to proceed against that punch list rather than stop at documentation. This section covers 5 more root-caused generator fixes, all following the same architectural pattern already established (`registry.py`'s `_parse_competency_bounds` never binding a DNA's internal sub-concept per node, so a silent default or fallback cascade governs instead) plus three deeper bugs the fixes exposed in shared infrastructure (word-problem spine selection, spine template rendering, and a distinct-value generation bug).
+
+### 1. `mass_capacity` — 6 nodes (`mat_g3_mg_q2_0..5`)
+
+Same "leaving a value unrestricted doesn't mean the DNA shows the right content" bug as symmetry_slides/geometric_lines: `measurement_type` was never bound, so all 3 capacity competencies (`q2_3/_4/_5`, measure/estimate/compare capacity in L/mL) rendered 100% mass-in-grams content, matching the blind reviewers' finding exactly. A second bug: the "capacity" keyword match used the literal substring `"capacity"`, which is not present in `"capacities"` (the plural form `mat_g3_mg_q2_5`'s competency actually uses), missing that node even after the first fix pass — caught by testing the fix, not assuming it worked. Fixed: explicit `measurement_type`/`task_type` binding using a `"capacit"` stem match; `compatibility.py`'s `task_type` list corrected to include `"read_measurement"`/`"estimate"` (previously only listed `"compare"`/`"convert"`, silently excluding the other two from Lab UI).
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -c "
+from backend.app.practice_gen.pipeline import run
+for n in ('mat_g3_mg_q2_3','mat_g3_mg_q2_5'):
+    print(n, run(n, seed=42, is_student_path=True)['question_text'])"
+mat_g3_mg_q2_3 What is the amount of liquid of the object in mL? 15
+mat_g3_mg_q2_5 Which is more: 15 mL or 4 mL?
+```
+
+### 2. `counting` — skip-counting routing + a masked DNA-level default bug
+
+`registry.py` bound `skip_pool` but never `skip_interval` (a *separate* axis `counting.py`'s `_select_skip()` actually reads), and its "does this competency mention 'count'" check added `1` to `skip_pool` for nearly every counting competency (all of them say "count"). Net effect: `mat_g1_na_q2_1`/`mat_g2_na_q1_3` ("count by 2s/5s/10s...") always rendered plain +1 counting — exactly what the reviewer flagged ("every sample counts by 1s — wrong skill entirely"). Fixing the registry binding surfaced a second, independent bug: `_select_skip()`'s `"by_1"` branch returned `1 if 1 in pool else rng.choice(pool)` — but G2/G3's own per-grade default `skip_pool` never includes `1` (it only lists genuine skip multiples), so *every unbound* G2/G3 counting node (e.g. plain "Count up to 1000", no skip mentioned) was silently rendering **random skip-counting** instead of correct +1 counting, because the "by_1" fallback misfired to `rng.choice(pool)`. Fixed both: real keyword-driven `skip_pool`+`skip_interval` binding in `registry.py`, and `_select_skip()`'s `"by_1"` branch now unconditionally returns `1` (that's what "by_1" means, regardless of pool contents).
+
+```
+mat_g1_na_q2_1 (before): "What number comes next when counting: 4, 5, 6, 7, ___?" (always +1)
+mat_g1_na_q2_1 (after):  "What number comes next when counting: 0, 5, 10, 15, ___?"
+mat_g2_na_q1_0 (before, unbound "Count up to 1000"): random skip content, e.g. by-20s
+mat_g2_na_q1_0 (after):  "What number comes next when counting: 7, 8, 9, 10, ___?" (correct +1)
+```
+
+### 3. `patterns` — pattern_type/ask_type routing + a new composite value
+
+`pattern_type`/`ask_type` were never bound; every unbound node defaulted to `arithmetic_increasing`/`next_term`, so `mat_g1_na_q3_6` ("repeating pattern") rendered plain arithmetic sequences, and `mat_g2_na_q2_8` ("increasing OR decreasing") only ever showed increasing. `mat_g3_na_q3_5` ("missing term in a repeating+increasing pattern") never showed the required combined/cyclical structure. Fixed with explicit `pattern_type`/`ask_type` binding, plus a new `"increasing_or_decreasing"` composite value resolved inside `patterns.py` itself via the generation seed (same established pattern as `missing_number.py` resolving its own `"addition_subtraction"` composite scope — composite/scope values are resolved by the DNA, never by the orchestrator's list-random-choice mechanism, which only runs on values already present *before* `competency_bounds` are merged in). Nodes requiring an actual "create your own pattern" or "explain the rule" task type (`mat_g1_na_q3_7`, `mat_g2_na_q2_9`, `mat_g3_na_q3_6`) were left unbound — this DNA has no such task type at all; that's a content gap, not a routing bug, and is out of this round's scope.
+
+### 4. `comparing_ordering` — task_type routing + a distinct-values generation bug + a formatter payload-shape bug
+
+`task_type` defaulted to `compare_pair`, so every unbound "Order numbers ... from smallest to largest" competency (`mat_g1_na_q1_4`, `mat_g1_na_q2_0`, `mat_g2_na_q1_4`, `mat_g3_na_q1_6`) rendered a pairwise `>/</=` comparison instead of ordering a set — again matching the reviewers' finding. Binding `task_type="order_sequence"` exposed two further bugs in code that had been effectively dead until now:
+  - `order_set`'s padding-to-3-distinct-values logic checked list *length*, not distinct *count*, after appending possibly-duplicate values — at a low difficulty scalar the final set could still have fewer than 3 distinct numbers (`numbers=[1,2]` observed). Fixed to guarantee distinctness directly.
+  - The DNA never populated `ctx.values["sequence"]` (the ordering formatter's primary read path); the formatter's fallback treated the already-comma-joined `correct_answer`/`distractors` *strings* (each a full permutation) as if they were individual list items, re-joining them into a garbled, duplicated-numbers question (`"Arrange these numbers...: 1, 2, 6, 6, 2, 1, 1, 6, 2 (reversed)"`). Fixed by having the DNA emit `"sequence": numbers` for this task_type.
+
+```
+mat_g1_na_q1_4 (before): "Which is greater: 3 or 1?" (pairwise compare, wrong task)
+mat_g1_na_q1_4 (after):  "Arrange these numbers from smallest to largest: 6, 1, 2" -> [1, 2, 6]
+```
+
+### 5. Cross-cutting: "Solve problems ..." competencies never got word-problem framing — and a 3-layer bug chain underneath it
+
+`context` defaults to `"pure"` in every arithmetic/money DNA that registers `context=["pure","word_problem"]`, and nothing ever bound it, so ~13 "Solve problems ..." competencies (addition/subtraction/multiplication/division/money_peso) rendered bare number-fact drills with zero narrative — the single most common FAIL/CONCERN pattern across the whole judgment review. Fixed with one general rule in `registry.py` (not a per-DNA branch): when a competency says "solve" + "problem" and the primary DNA genuinely registers `"word_problem"` as a context option, bind it. Turning this on for real exposed three further, previously-dead-code bugs:
+
+  a. **Wrong-operation narration.** `select_spine()`'s eligibility only checks whether a spine's `required_concepts` is a *subset of everything the student has cumulatively learned*, not whether the spine's narrated operation matches what's actually being computed *right now*. By G2+, `subtraction`/`comparing_ordering` are already cumulative, so a multiplication problem could get narrated with a subtraction "how many more" spine while the DNA still computed and graded a product (`mat_g2_na_q3_3` observed: question asked "how many more", hints said "product of 1×3=3", answer=3 — actively misleading). Fixed: narrow spine candidates to those whose `required_concepts` names the *current* DNA's domain (`dna.concept`), falling back to the unfiltered set only when no domain match exists.
+
+  b. **Multiplication/division word-problem spines were unreachable.** The blank-target remap that translates a DNA's own blank_target naming (`"result"`) into a spine's naming (`"total"`) was gated on `values.get("operation") in (...)` — a field only `missing_number.py` ever populates; the plain multiplication/division DNAs never set it, so the remap silently never fired and no multiplication/division word-problem spine could ever pass the `required_blank_target` filter. Fixed to key off `dna.concept` instead (always reliably set).
+
+  c. **Slot-name mismatch.** Even with (a) and (b) fixed, `multiplication.py`'s own values (`a`, `b`, `result`) don't match the spine templates' placeholder names (`groups`, `n`, `total`) — `Spine.render()` does a raw `str.format(**{**slots, **values})`, so a missing placeholder raised `KeyError` and silently fell back to a plain symbolic question while `spine_id` metadata still recorded the (unrendered) spine, an inconsistency that made this bug non-obvious from the output alone. Fixed by adding the three alias keys to `multiplication.py`'s return dict. (Division's two word-problem spines use conflicting placeholder-naming conventions for the same semantic slot depending on which of two equally-valid narrative framings is picked — `n` vs `groups` for the same quotient — and cannot be resolved with a single alias the way multiplication could; left as a safe symbolic fallback, not a further-scoped fix this round.)
+
+  Separately, turning on word-problem framing surfaced one live vocabulary-gating violation: the `comp_difference` spine's template used the word "points" (game score) — an everyday-English homograph that collides with the reserved geometric term "point" (`mat_g3_mg_q1_4`, G3). Reworded the spine to avoid the collision rather than touch the vocab checker (this was a genuine content wording issue, not a checker bug).
+
+```
+mat_g2_na_q3_3 (before fix a):  "...collected 1 coin and another group collected 3 coins. How many more..." -> answer 3, hints say "product of 1×3=3" (WRONG narration, correct math)
+mat_g2_na_q3_3 (after a+b+c):   "Daniel puts 3 coins in each of 1 bag. How many coins are in all the bags?" -> answer 3 (matches)
+mat_g1_na_q1_9 (before):        "What is 0 + 3?" (bare fact)
+mat_g1_na_q1_9 (after):         "Lara has 2 ribbons. A friend has 1 ribbon. If they put all their ribbons together, how many ribbons do they have in all?"
+```
+
+### Verification discipline this round
+
+Every one of the ~9 individual fixes above was re-verified with the full `run_all` harness before moving to the next; three iterations surfaced real regressions from an earlier fix in the same round (a cross-DNA variant-value crash from the `shapes_2d` fix — already documented in round 1 — plus the vocabulary-gating "points" collision from turning on word-problem framing), all caught by the harness rather than assumed fixed. Final state after all round-2 fixes:
+
+```
+$ .venv/bin/python3 -m backend.app.practice_gen.validation.run_all
+...
+Nodes Checked: 151 / Nodes Passed: 151 / Nodes Failed: 0
+PASS judgment_reviews (all nodes have genuine, complete reviews)
+ALL TESTS PASSED SUCCESSFULLY! Praise God!
+```
+
+
+### 6. A genuinely wrong-answer bug found by the round-2 blind re-review, and fixed
+
+The round-2 blind reviewer caught something the harness cannot: for `mat_g1_na_q4_6` ("addition of money ... or subtraction of money"), a sample read *"Daniel had ₱5 and spent ₱1... How much money does Daniel have left?"* with stated answer **6** — 5+1, not 5−1. Root cause, in three parts:
+
+1. `money_peso.py`'s `operation` never varied — it always defaulted to `"add_amounts"` (nothing ever bound it), so this competency's "or subtraction" half was never exercised.
+2. Spine selection's `money_peso` domain-match (added earlier this round) only checked "is this a money spine at all", not "does its narrated operation match add vs. subtract" — so a subtraction-narrated spine (`money_spending`: *"had X, spent Y, how much left?"*) could still be picked for an addition-computed problem.
+3. Separately, `mat_g2_na_q2_2` showed *"has ₱5 in bills and ₱500 in coins... in all?"* → **506**, not 505 — `money_peso.py`'s `add_amounts` operation can legitimately sum 2-5 amounts (by design, and that item count must not vary by context — see the code comment this session found and respected, from a prior fix that fixed a *different* RNG-desync bug), but the 2-slot `money_total` spine template only narrates the first two amounts while `total`/`result` still reflects the full N-way sum, silently dropping a 3rd (or 4th) amount from the story.
+
+Fixed: (1) a new `"add_or_subtract"` composite operation value in `money_peso.py`, resolved via the generation seed (registry.py binds it only for competencies naming both); (2) `select_spine`'s money-domain match now maps `money_peso`'s resolved operation to `"addition"`/`"subtraction"` before matching, so it lines up with `money_total` (`{"money_peso","addition"}`) vs. `money_spending`/`money_change` (`{"money_peso","subtraction"}`) precisely; (3) a `money_peso_narratable` gate in `base_generator.py` that skips spine narration entirely (falling back to an explicit itemized listing, e.g. *"What is the total value of 1 ₱500 bill, 1 ₱5 coin, and 1 ₱1 coin?"*) whenever the amount count isn't exactly 2, rather than narrating a subset.
+
+A second bug from the same review pass: `mat_g3_na_q3_5` (a "missing term" pattern competency, newly reachable this round via the `patterns` `ask_type` binding) rendered *"What is the next number in the pattern: 25, 24, 35, 34, 45?"* with answer **24** — a value already visible in the prompt, under "next number" phrasing that implies continuing past the end. Root cause: `_build_symbolic_question()`'s `patterns` branch had exactly one phrasing, written for the (previously only-ever-exercised) `ask_type="next_term"` case, and never masked `missing_index` for the `ask_type="missing_middle"` case newly reachable this round. Fixed: the pattern branch now blanks the masked position (`"25, ___, 35, 34, 45"`) and asks *"What number is missing..."* when `missing_index` points inside the visible range.
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -c "
+from backend.app.practice_gen.pipeline import run
+for s in (42,53,56,58):
+    p = run('mat_g1_na_q4_6', seed=s, is_student_path=True)
+    print(p['question_text'], '->', p['correct_answer'])"
+Hiro had ₱5 and spent ₱1... left? -> 4
+Kris had ₱10 and spent ₱1... left? -> 9
+Paul had ₱10 and spent ₱1... left? -> 9
+Sora had ₱10 and spent ₱1... left? -> 9
+
+$ PYTHONPATH=. .venv/bin/python3 -c "
+from backend.app.practice_gen.pipeline import run
+p = run('mat_g3_na_q3_5', seed=42, is_student_path=True)
+print(p['question_text'], '->', p['correct_answer'])"
+What number is missing in the pattern: 25, ___, 35, 34, 45? -> 24
+```
+
+Full `run_all` re-verified clean (151/151, exit 0) after each of these three fixes individually.
+
+**Note on review-cycle discipline:** this bug shipped past the *first* round-2 blind review pass (which reviewed samples generated before this fix existed) and was only caught because the review was re-run against fresh samples after the fix landed, and the reviewer was explicitly instructed to verify arithmetic from the text rather than trust the stated answer. A blind review that doesn't re-verify computed values line-by-line would have missed it — this is exactly the class of defect the judgment layer exists to catch that the machine-checkable harness structurally cannot (the harness checks internal consistency of the DNA's own values, not whether a *spine's narrative* correctly represents those values).
+
+---
+
+## Session: Round 3+ — Working the Punch List to Completion (user directive: "proceed till done fixing")
+
+Continuing from round 2, the user asked to keep working the remaining FAIL/CONCERN punch list rather than stop. This section covers roughly 20 more root-caused fixes across nearly every remaining DNA module with unbound sub-concepts, plus 4 more deep bugs (2 of them genuine wrong-answer bugs) that direct testing and blind re-review caught along the way. As in prior rounds, every fix was re-verified with a full `run_all` pass before moving to the next, and every touched node went through at least one fresh blind judgment re-review afterward (several went through two, when a later fix in the same DNA module changed their content again).
+
+### `area` — 4 nodes, a genuinely broken fallback, and a mistaken DNA mapping
+
+All 4 area competencies (illustrate/estimate with tiles, derive the formula inductively, find the area in sq cm/sq m, solve area word problems) rendered the *identical* text — `"Find the area of the rectangle."` — with **no dimensions shown at all**, silently unanswerable for any non-visual formatter. Root cause: `_build_symbolic_question()`'s `area` branch never read `values["sides"]`. Fixed: added real `illustrate_tiles`/`derive_formula` task types to `area.py`, a proper dimension-showing symbolic fallback for all 4 task types, a real word-problem spine (`area_solve`), and `context` propagation. Separately: `mat_g3_mg_q1_2`/`mat_g3_mg_q1_3` had `multiplication` as a co-mapped DNA that, when picked, rendered generic multiplication word problems (e.g. *"puts 1 ribbon in each of N bags"*) with zero connection to area — removed as a Ground-Rule-2 mistaken mapping (multiplication already underlies `area.py`'s own formula computation; testing it standalone isn't what "find/solve problems involving areas" asks for).
+
+### `patterns` — "create" and "explain" competencies had no matching content
+
+`mat_g1_na_q3_7`/`mat_g2_na_q2_9` ("Create ... patterns") and `mat_g3_na_q3_6` ("Explain how to generate ...") had no task type that could produce constructive or explanatory content — this pipeline has no free-form-construction UI, so "create" was implemented as the closest genuine machine-gradable proxy: `identify_valid_pattern`, an MCQ where the student picks which of 4 candidate sequences actually satisfies the target pattern rule vs. three that break it partway through. "Explain" was routed to the DNA's pre-existing but never-invoked `state_rule` ask_type. Implementing this surfaced a **live bug** in the pre-existing `arithmetic_decreasing` pair-generation math when reused for the new task type: it reused the *increasing* branch's "start small" pair formula, so decreasing sequences could go negative (`"1, 0, -1, -2, -3, -4"`) — negative numbers G1-G3 students haven't been introduced to. Fixed with the correct "start large enough to not go negative" formula (matching the DNA's own pre-existing, correct `arithmetic_decreasing` branch).
+
+### `mass_capacity` / `length_measurement` — "estimate" task type, and a genuine rounding bug
+
+`mat_g3_mg_q2_1`/`_4` ("estimate mass"/"estimate capacity") and `mat_g2_mg_q2_2` ("estimate length") rendered byte-identical output to their "measure exactly" sibling nodes — `task_type="estimate"` was accepted but never actually varied the computation. Fixed by framing estimation as rounding a precise reading to a sensible unit. **A round-3 blind review then caught a genuine wrong-answer bug in that very fix**: both `_round_for_estimate()` helpers used a `max(round_unit, ...)` floor that forced small values to round *up* to the rounding unit instead of down to 0 (e.g. `"An object measures 2 cm ... rounded to nearest 10"` answered **10**, when 2 correctly rounds to **0**). Fixed by removing the incorrect floor in both copies. A second, independent blind pass hand-verified the corrected rounding arithmetic across both DNAs.
+
+### `length_measurement` — 2 more missing task types + word-problem framing
+
+`mat_g2_mg_q2_1` ("identify the appropriate unit, m or cm") had no `choose_unit` task type at all — this DNA only ever measured in a unit already chosen for it. Added it (item-based cm-scale vs. m-scale scenario, e.g. "a pencil" vs. "a basketball court"). `mat_g1_mg_q2_2`/`mat_g2_mg_q2_3` ("solve problems involving length") got the same word-problem-context treatment as the arithmetic DNAs in round 2 (context was never propagated into this DNA's return values at all).
+
+### `place_value` — digit_count key mismatch, a decompose gap, an ambiguity bug, and a missing reverse-lookup sub-skill
+
+`registry.py` bound a key named `num_digits` as a `(min,max)` tuple — `place_value.py` reads a *discrete string* key named `digit_count` (values `"2_digit"`/`"3_digit"`/`"4_digit"`, per `axes_catalog.py`). The mismatch meant every place_value node silently used the DNA's own `"2_digit"` default regardless of what the competency actually asked for (`mat_g3_na_q1_3`: "place value in a *4-digit* number" rendered only 2-digit numbers). Fixed the key name in both places registry.py set it. Separately, `task_type="decompose"` (`mat_g1_na_q2_3`: "decompose into tens and ones") was pure metadata that never changed the DNA's output; added a real decomposition branch, itself using an explicit expansion that always shows both terms (the DNA's existing `_expanded_form()` helper skips zero digits, degenerating "10" into a non-decomposition "10" instead of "10 + 0"). **A blind review then caught a real ambiguity bug this fix exposed**: with 3-4 digit numbers now reachable, "What is the place value of the digit 5 in 255?" is genuinely ambiguous (5 is both the tens digit, worth 50, and the ones digit, worth 5) — fixed by requiring all-unique digits for every task type except decompose (a pre-existing partial version of this guard only covered one of the four task types). Finally: this competency explicitly names 3 sub-skills (name the place, compute the digit's value, and the reverse — *given* a place name, identify the digit there) but the DNA only ever exercised the first two, and did so under *identical* output for both `identify_place` and `identify_value` despite the different names. Added a genuine `identify_digit` reverse-lookup task type and fixed `identify_place` to actually ask for and grade the position name rather than silently falling back to the numeric-value question. A composite `any_place_value_skill` scope value (registry-bound for competencies naming all three) alternates across all three via the seed.
+
+### `pictographs` — task_type never bound at all
+
+Every pictograph node defaulted to `task_type="read_value"` regardless of competency — "Present data in a pictograph" (`mat_g1_dp_q3_1`, `mat_g2_dp_q3_0`) and "Organize data ... into a table" (`mat_g1_dp_q3_0`, `mat_g1_dp_q3_3`) both silently rendered read-only interpretation questions. The infrastructure for the correct behavior already existed and was correctly wired (`present_data` → the `pictograph_set` formatter, a real drag-and-place construction task; `organize_table` → `fill_in_table`) — it just never activated because `task_type` was never bound. One-line registry fix activated both, correctly routing to student-*constructs*-the-graph and student-*fills*-the-table formatters respectively.
+
+### `perimeter` — same dimension-less fallback as area, plus word-problem framing
+
+Identical bug to area's original state: `"Find the perimeter of the {shape}."` with no dimensions shown, for all task types uniformly. Fixed with a dimension-showing fallback differentiated by shape and task type, plus word-problem framing for `mat_g2_mg_q4_6` ("solve problems involving perimeter").
+
+### `calendar` — a "sequence" task type, and a formatter compatibility gap it exposed
+
+"Give the days of the week and months of the year in the correct order" (`mat_g1_mg_q4_2`) had no matching task type — every existing one reads a specific date off a calendar grid; none test reciting/sequencing the names themselves. Added `task_type="sequence"` (asks "what comes after/before X"). This required expanding `calendar`'s compatible-formatter list (previously *only* the visual `calendar_read` formatter was registered, which cannot render a grid-less sequencing question) to include `mcq`, scoped via `FORMATTER_VARIANT_SUPPORT` to just the new task type so the exhaustive matrix check doesn't newly exercise `mcq` against calendar's other (string-answer, distractor-fragile) task types.
+
+### `time_reading` — word-problem framing, blocked by a formatter that ignored the DNA's own question text
+
+"Solve problems involving time" (`mat_g1_mg_q4_4`) rendered the bare `"What time does the clock show?"` stem regardless. Adding `context`/word-problem narrative to `time_reading.py` alone wasn't sufficient: `fmt_clock.py`'s visual "read" formatter hardcoded its own question text unconditionally, discarding whatever `ctx.values["question"]` the DNA supplied. Fixed both — the DNA now sets a narrative question when `context=="word_problem"`, and the formatter now prefers it over its own hardcoded phrasing when present.
+
+### `geometric_lines` / `length_measurement` — another mistaken DNA mapping
+
+`mat_g3_mg_q1_6` ("Identify and draw line segments of equal length using a ruler") had `geometric_lines` as a co-mapped DNA. All 3 of that DNA's concept scopes are naming/classification tasks (straight/curved; parallel/intersecting/perpendicular; point/line/segment/ray) — none represent measuring or drawing to a specific length, so it fell to its `point_line_segment_ray` default and rendered an unrelated vocabulary question ("What do we call an exact location in space..."). Removed as a Ground-Rule-2 mistaken mapping; `length_measurement`'s own `compare` task type is a closer (if imperfect — it compares two *different* lengths rather than verifying/drawing equal ones, documented as a remaining gap) fit for the ruler-measurement skill this competency actually names.
+
+### `missing_number` — a documented-but-never-implemented capability
+
+The module's own docstring claims `"equivalent expressions (balance)"` as a G1 capability; nothing in the code ever generated one. `mat_g1_na_q3_2` ("Write an equivalent expression ... e.g. 2+3 = 1+4") rendered single missing-operand facts or true/false checks instead. Implemented a genuine `operation="equivalent"` composite value: generates two different operand pairs summing to the same target, presented as `"{a} + {b} = {c} + ___"`. Required also updating `is_variant_available_at()`'s missing_number-specific curriculum gate, which hardcoded only `("addition","subtraction")` as valid G1 operation values and rejected `"equivalent"` outright regardless of what registry.py bound.
+
+### Final verdict tally (151 genuine, independently blind-reviewed nodes)
+
+```
+$ .venv/bin/python3 -m backend.app.practice_gen.validation.run_all
+...
+Nodes Checked: 151 / Nodes Passed: 151 / Nodes Failed: 0
+PASS judgment_reviews (all nodes have genuine, complete reviews)
+NOTE verdict tally over 151 genuine reviews: PASS=29 CONCERN=80 FAIL=42
+ALL TESTS PASSED SUCCESSFULLY! Praise God!
+```
+
+Movement across this extended session: **20 PASS / 66 CONCERN / 65 FAIL → 29 PASS / 80 CONCERN / 42 FAIL**. Note CONCERN grew alongside FAIL shrinking — this is expected and correct: many nodes moved from "wrong topic entirely" (FAIL) to "right topic, narrower gap remaining" (CONCERN) rather than jumping straight to a clean PASS, and the CONCERN pool also picked up newly-discovered, more precisely-characterized coverage gaps (e.g. "sq. m never appears", "distance between two locations never sampled") that a genuinely working generator now makes visible to name, where a completely-wrong generator didn't even reach that level of specificity.
+
+### Two systemic patterns intentionally left as documented remaining work, not fixed
+
+1. **Difficulty-windowing clustering.** Several `comparing_ordering`/`missing_number` nodes render values clustered in a narrow band even when their stated range is much larger (e.g. "order numbers up to 10000" showing only values in the 115-133 range). Traced to `generators/number_difficulty.py`'s `generate_pair_by_window()`/`generate_number_by_window()` — a deliberate, extensively-used difficulty-scaling mechanism (at the default `number_difficulty=0.5` scalar, it selects *medium*-magnitude candidates from the available range, by design) used identically across most of this codebase's arithmetic DNAs. This is calibrated, intentional behavior, not a bug specific to any one DNA; "fixing" it would mean redesigning a cross-cutting mechanism relied on for consistent difficulty progression everywhere else, a much larger and riskier undertaking than this session's node-by-node content fixes.
+2. **Multi-DNA secondary-content leak.** Many "solve problems" / competency-specific nodes are mapped to 2 DNAs (e.g. `length_measurement` + `addition`), and the secondary DNA — while a legitimate candidate in its own right — has no awareness that it's serving a length/perimeter/money/time-flavored node, so some fraction of generations (whichever seeds pick the secondary DNA) render generic, correctly-computed but topically-unrelated content. This was accepted and documented as a limitation in round 2 for money_peso specifically, and the round-3/4/5 blind reviews confirmed the identical pattern recurring across `length_measurement`, `perimeter`, `pictographs` (via `comparing_ordering`), and others. A full fix would mean either removing secondary DNAs broadly (reducing legitimate content variety for nodes where the secondary DNA *is* genuinely relevant) or making every secondary DNA competency-aware (a materially larger architecture change) — out of scope for incremental content fixes.
+
+Both are named explicitly, with concrete examples, in `docs/IMPLEMENTATION_STATUS.md` for the maintainer, rather than being silently absorbed into a "mostly fixed" claim.
+
+### Addendum: a round-2-of-the-rounding-bug bug, caught by a second independent blind pass
+
+The `max(unit, ...)` floor fix (above, in the "mass_capacity / length_measurement" section) was itself re-reviewed by a *second*, independent blind pass rather than assumed correct — which caught a **second, different rounding bug in the same fix**: `_round_for_estimate()` used Python's built-in `round()`, which implements *round-half-to-even* ("banker's rounding" — `round(0.5) == 0`, `round(3.5) == 4`). Elementary curricula teach *round-half-up* unconditionally — a value exactly at the midpoint always rounds up. The bug was invisible in the first review pass's sample seeds (none landed on an exact midpoint) and was only caught because the second pass's 10-seed batch happened to include `5 g` (which `round()` sends to 0) alongside `35 g` (which `round()` happens to send to 40) — the *inconsistency* between the two, both midpoint cases, was the tell. Fixed in both `mass_capacity.py` and (pre-emptively, since it shares the identical logic) `length_measurement.py` by replacing `round()` with an explicit `math.floor(x + 0.5)` round-half-up implementation. Re-verified against 20 hand-computed cases (10 per DNA) by a third independent blind pass.
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -c "
+from backend.app.practice_gen.dna.mg.mass_capacity import _round_for_estimate
+for v in [2,3,5,15,25,35,45,55]:
+    print(v, '->', _round_for_estimate(v))"
+2 -> 0
+3 -> 0
+5 -> 10
+15 -> 20
+25 -> 30
+35 -> 40
+45 -> 50
+55 -> 60
+```
+
+Full `run_all` re-verified clean (151/151, exit 0) after this fix. Final judgment tally for this extended session: **20/66/65 (PASS/CONCERN/FAIL) at round-2 start → 31/78/42 at final count.**

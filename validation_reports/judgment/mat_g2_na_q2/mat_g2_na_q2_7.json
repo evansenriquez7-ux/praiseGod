@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g2_na_q2_7",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "In a pictograph, Daniel's group collected 473 coins and another group collected 60 coins. How many more did Daniel's group collect?",
+      "correct_answer": 413
+    },
+    {
+      "seed": 43,
+      "question_text": "In a pictograph, Kuya Bien's group collected 11 story chapters and another group collected 11 story chapters. How many more did Kuya Bien's group collect?",
+      "correct_answer": 0
+    },
+    {
+      "seed": 44,
+      "question_text": "A class survey showed 661 students like costume sash and 120 students like wristband. How many students were surveyed in all?",
+      "correct_answer": 781
+    },
+    {
+      "seed": 45,
+      "question_text": "What is 822 + 15?",
+      "correct_answer": 837
+    },
+    {
+      "seed": 46,
+      "question_text": "In a pictograph, Ate Cara's group collected 416 photo albums and another group collected 0 photo albums. How many more did Ate Cara's group collect?",
+      "correct_answer": 416
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "Seed 44 ('A class survey showed 661...232 total') and seed 45 ('What is 822 + 15?') are pure ADDITION problems, but this competency is specifically about SUBTRACTION -- 2 of 5 samples test the wrong operation entirely."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "None of the 5 samples includes a peso amount despite the competency explicitly saying 'including problems involving money'; every sample is either a pictograph count or a bare number fact."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Sentence structures like 'In a pictograph, Daniel's group collected 473 coins...how many more' are readable and appropriately concrete for Grade 2 Q2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "No sample demonstrates a genuine 2-step subtraction chain (e.g. subtract twice or subtract-then-add), which the competency's '1- and 2-step' wording implies should be tested."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "The competency text is explicitly about subtraction, but seeds 44 and 45 render addition word problems with no subtraction at all, a direct mismatch to the node's stated skill."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Values like 473 and 822 stay safely under the stated 1000 ceiling, an appropriate magnitude for Grade 2 Q2 regardless of the operation-mismatch issue above."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

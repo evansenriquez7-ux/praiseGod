@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_na_q4_7",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is \\(\\frac{1}{8} + \\frac{7}{8}\\)?",
+      "correct_answer": "8/8"
+    },
+    {
+      "seed": 43,
+      "question_text": "What is \\(\\frac{1}{4} + \\frac{2}{4}\\)?",
+      "correct_answer": "3/4"
+    },
+    {
+      "seed": 44,
+      "question_text": "What is \\(\\frac{1}{8} + \\frac{2}{8}\\)?",
+      "correct_answer": "3/8"
+    },
+    {
+      "seed": 45,
+      "question_text": "What is \\(\\frac{1}{6} + \\frac{4}{6}\\)?",
+      "correct_answer": "5/6"
+    },
+    {
+      "seed": 46,
+      "question_text": "What is \\(\\frac{1}{10} + \\frac{7}{10}\\)?",
+      "correct_answer": "8/10"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Competency requires both addition AND subtraction of similar (same-denominator) fractions, but all 5 samples show only addition (1/8+7/8, 1/4+2/4, 1/8+2/8, 1/6+4/6, 1/10+7/10); no subtraction example appears anywhere."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "variant_registry lists 9 combos across 3 axes for fractions, but the 5 samples given are addition-only, so subtraction coverage within those combos can't be confirmed from what was shown."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The fraction-addition prompts are short single-expression questions well within grade-3 reading level and represent a single-step computation."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Denominators vary nicely (4, 6, 8, 10) showing same-denominator ('similar') fraction addition, but the complete absence of a subtraction sample limits confidence the registered variant space covers the full add-and-subtract scope."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All fractions shown share a common denominator (i.e. 'similar' fractions) and never introduce unlike-denominator addition, correctly scoping this node below unlike-fraction operations that belong to a later grade/quarter."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The fraction denominators (4 through 10) and simple numerators are an appropriate progression for grade-3 quarter-4 introductory fraction operations."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

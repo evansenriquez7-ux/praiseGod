@@ -1,21 +1,55 @@
 {
   "node_id": "mat_g2_mg_q4_2",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
-    43,
     44,
-    45,
-    46
+    45
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What time does the clock show?",
+      "correct_answer": "C"
+    },
+    {
+      "seed": 44,
+      "question_text": "12 − 2 = ___",
+      "correct_answer": 10
+    },
+    {
+      "seed": 45,
+      "question_text": "3 − 2 = ___",
+      "correct_answer": 1
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The lc is 'Solve problems involving elapsed time ... including timetables', but samples 44 and 45 ('12 - 2 = ___' -> 10, '3 - 2 = ___' -> 1) are bare subtraction facts with no clock, time unit, or timetable context whatsoever."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "subtraction (12 combos) and time_reading (20 combos) are both registered, but in this sample they never merge into an elapsed-time word problem, so the coverage that matters for this specific lc -- time-span arithmetic -- is not evidenced."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "'3 - 2 = ___' is a single-digit fact with no narrative, far below the multi-step reasoning ('minutes in an hour, hours in a day, days in a week') this lc's wording explicitly requires students to apply."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "None of the 5 samples includes a timetable or a start/end time pair to subtract, so the registered variant space does not demonstrably reach the 'including timetables' scope this lc names."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "Clock reading and bare subtraction are each simpler prerequisite skills; combining them without a time-unit narrative does not constitute 'solving problems involving elapsed time', so the sampled difficulty does not track this lc's exact scope."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "The subtraction operands (12, 3, 2) are small enough to plausibly represent hours on a clock face, but with no units or context stated, there is no way to confirm the scale is actually tied to an elapsed-time scenario."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

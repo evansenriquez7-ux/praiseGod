@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_mg_q2_0",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is the weight of the object in g?",
+      "correct_answer": 15
+    },
+    {
+      "seed": 43,
+      "question_text": "What is the weight of the object in g?",
+      "correct_answer": 5
+    },
+    {
+      "seed": 44,
+      "question_text": "What is the weight of the object in g?",
+      "correct_answer": 53
+    },
+    {
+      "seed": 45,
+      "question_text": "What is the weight of the object in g?",
+      "correct_answer": 35
+    },
+    {
+      "seed": 46,
+      "question_text": "What is the weight of the object in g?",
+      "correct_answer": 10
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Competency requires mass in g, kg, AND/OR mg, but all 5 samples ask 'What is the weight of the object in g?' -- kg and mg never appear across seeds 42-46."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Every one of the 5 rendered seeds (42-46) uses grams only with answers 15,5,53,35,10; no kilogram or milligram variant is exercised in this batch."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The stem 'What is the weight of the object in g?' is a short, single-clause sentence well within Grade 3 Q2 reading level."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Registered dna 'mass_capacity' plausibly supports kg/mg variants elsewhere, but nothing in this specific batch demonstrates the tool switching units as the competency requires."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The node's own taught vocabulary list is 'mass', but every question stem says 'weight' instead, a term never introduced by this node's vocab list."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Answer magnitudes (5-53) are sensible small-object gram readings appropriate for a Grade 3 introductory mass-measurement item."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

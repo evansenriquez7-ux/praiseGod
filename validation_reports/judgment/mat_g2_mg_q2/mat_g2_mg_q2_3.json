@@ -1,21 +1,57 @@
 {
   "node_id": "mat_g2_mg_q2_3",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-4 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
-    43,
     44,
     45,
-    46
+    47,
+    48
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Ana used a cm ruler to measure a pencil. It measured 21 cm long. How long is a pencil in cm?",
+      "correct_answer": 21
+    },
+    {
+      "seed": 44,
+      "question_text": "A class survey showed 661 students like costume sash and 120 students like wristband. How many students were surveyed in all?",
+      "correct_answer": 781
+    },
+    {
+      "seed": 45,
+      "question_text": "What is 822 + 15?",
+      "correct_answer": 837
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The 'Ana measured a pencil at 21 cm, how long is the pencil in cm?' items (seeds 42, 43, 46) require zero computation -- the answer is simply the number already stated in the sentence -- so they do not exercise 'solve problems involving length' at all, and the remaining seeds are unrelated addition facts."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "4 of the 7 seeds (44, 45, 47, 48) are either a survey word problem about students liking a costume sash/wristband or bare addition facts like '822 + 15', containing no mention of length, distance, or measurement anywhere in the text."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Reading level of both the trivial-restatement items and the addition items is appropriate for grade-2, though that is irrelevant to whether the content teaches the intended skill."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "The registered dnas are length_measurement plus addition, and the addition DNA is clearly generating standalone arithmetic and unrelated survey-count word problems (661+120 students) rather than length-and-distance problems that happen to require addition (e.g. combining two measured segments)."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "'A class survey showed 661 students like costume sash...' has nothing to do with length or distance, directly contradicting the 'solve problems involving length and distance' competency wording for this lc."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numeric magnitudes (2-21 cm for the length items, up to 900+ for the addition items) are within grade-2 numeracy range even though several items are topically off-target."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

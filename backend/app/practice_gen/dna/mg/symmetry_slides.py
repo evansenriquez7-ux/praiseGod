@@ -271,14 +271,24 @@ def generate_params(
         and item["directions"] == directions
     ]
     if not candidates:
+        # Relax only directions -- concept is the node's bound curriculum
+        # scope (registry.py's _parse_competency_bounds) and must never be
+        # silently swapped for a different one (AGENTS.md rule #3). A prior
+        # version of this function fell through to "any concept at this
+        # grade", which silently served slide/translation content to the
+        # G3 line-symmetry nodes (mat_g3_mg_q4_1/_2) whenever concept was
+        # left unbound.
         candidates = [
             item for item in _ITEM_POOL
             if item["grade_min"] <= grade and item["concept"] == concept
         ]
     if not candidates:
-        candidates = [item for item in _ITEM_POOL if item["grade_min"] <= grade]
-    if not candidates:
-        candidates = _ITEM_POOL
+        raise ValueError(
+            f"symmetry_slides: no item pool entries for concept={concept!r} "
+            f"at grade<={grade} (seed={seed}). This is a content-coverage gap in "
+            f"_ITEM_POOL, not a condition to silently substitute a different "
+            f"concept's content for."
+        )
 
     item = dict(rng.choice(candidates))
     item["result"] = item["answer"]
@@ -300,9 +310,9 @@ def generate_hints(
         ]
     if concept == "rotation":
         return [
-            "A turn (rotation) moves a shape around a point.",
+            "A turn (rotation) spins a shape in place without sliding it.",
             "A quarter turn moves it like 15 minutes on a clock.",
-            "A half turn points it in the opposite direction.",
+            "A half turn faces it the opposite way.",
         ]
     if concept == "line_symmetry":
         return [

@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q1_9",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "There are 0 resin in one basket and 3 resin in another basket. How many resin are there in all?",
+      "correct_answer": 3
+    },
+    {
+      "seed": 43,
+      "question_text": "Start at 0. Count up 2 more. What number do you land on?",
+      "correct_answer": 2
+    },
+    {
+      "seed": 44,
+      "question_text": "Lara has 2 ribbons. A friend has 1 ribbon. If they put all their ribbons together, how many ribbons do they have in all?",
+      "correct_answer": 3
+    },
+    {
+      "seed": 45,
+      "question_text": "One basket has 1 water bottles. Another basket has 2 water bottles. If you put all the water bottles together, how many water bottles are there?",
+      "correct_answer": 3
+    },
+    {
+      "seed": 46,
+      "question_text": "Start at 0. Count up 3 more. What number do you land on?",
+      "correct_answer": 3
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Word-problem framing is present ('There are 0 resin in one basket and 3 resin in another basket...'), matching 'solve problems...involving addition', but every sum shown is 2 or 3, far under the 'sums up to 20' ceiling."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Multiple contexts appear (baskets of resin, counting-on number line, ribbons, water bottles), giving genuine narrative variety rather than one repeated scenario."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "'One basket has 1 water bottles' has a singular/plural grammar mismatch that could confuse an early Grade 1 reader; otherwise sentence length is appropriate."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Both a 'count up' number-line framing (seed 43) and 'put together' basket/ribbon framings (seeds 42,44,45) are represented, covering more than one addition model."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample is phrased as a real narrative scenario ending in a question, matching the word_problem/pictorial_problem concepts this node introduces."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Sums across all 5 seeds are 2 or 3; the competency's 'sums up to 20' is never meaningfully exercised in this batch, e.g. no sample sums to double digits."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

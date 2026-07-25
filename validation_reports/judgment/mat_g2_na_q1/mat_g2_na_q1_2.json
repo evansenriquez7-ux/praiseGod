@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g2_na_q1_2",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Write 57 in words.",
+      "correct_answer": "fifty-seven"
+    },
+    {
+      "seed": 43,
+      "question_text": "Write 38 in words.",
+      "correct_answer": "thirty-eight"
+    },
+    {
+      "seed": 44,
+      "question_text": "Find the missing number: 80, 81, 82, 83, ___",
+      "correct_answer": 84
+    },
+    {
+      "seed": 45,
+      "question_text": "What number comes next when counting: 62, 63, 64, 65, ___?",
+      "correct_answer": 66
+    },
+    {
+      "seed": 46,
+      "question_text": "Write 48 in words.",
+      "correct_answer": "forty-eight"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency explicitly requires concrete and pictorial models, e.g. base-ten blocks or place-value charts, alongside numerals, but all 5 samples are either numeral-to-word conversion ('Write 57 in words.') or plain number sequences ('80, 81, 82, 83, ___'); none shows any concrete or pictorial representation."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "number_reading (1 axis/2 combos) and counting (3 axes/28 combos) together register 30 combos per variant_registry, exhaustively checked by validate_matrix separately from this illustrative 5-seed sample."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Sample sentences are all short and well under the grade-2 18-word cap, e.g. 'What number comes next when counting: 62, 63, 64, 65, ___?' is 11 words, appropriate reading demand for grade 2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Neither of the two sampled DNAs, number_reading or counting, produced a pictorial/concrete-model item across 5 draws, so the 'variety of concrete and pictorial models' language in the competency is not evidenced in the observed variant space."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The sampled skill, word-form conversion and sequence continuation, is narrower than the competency's explicit multi-representation scope of numerals plus concrete plus pictorial, so the observed content under-serves the full breadth this node claims to address."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Values observed (48-133) are a reasonable low-to-mid range appropriate as an early step toward the 1000 ceiling, so scale by itself is not the primary concern here."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

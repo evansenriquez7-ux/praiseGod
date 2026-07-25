@@ -1,21 +1,57 @@
 {
   "node_id": "mat_g3_mg_q1_6",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-4 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
-    45,
-    46
+    46,
+    48
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Which is longer: 21 cm or 4 cm?",
+      "correct_answer": 21
+    },
+    {
+      "seed": 44,
+      "question_text": "Which is longer: 14 cm or 17 cm?",
+      "correct_answer": 17
+    },
+    {
+      "seed": 48,
+      "question_text": "Which is longer: 18 cm or 11 cm?",
+      "correct_answer": 18
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency is 'identify and draw line segments of equal length using a ruler', but every one of the 7 seeds is a 'which is longer' comparison between two unequal cm values -- the word 'equal' never appears and no drawing/construction action is asked for."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Across seeds 42-48 the two compared lengths are always different (e.g. 21 vs 4, 14 vs 17, 18 vs 11), so a student could pass every sampled item without ever needing to recognize or produce two segments of equal length."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The 'Which is longer: X cm or Y cm?' sentence is very short and low-complexity, arguably below grade-3 quarter-1 expectations but not inappropriate given the underlying length-comparison content."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "This is a topical repair (previous content was an unrelated vocabulary question) that moves the lc into ruler-measured length territory, but as currently sampled it tests general length comparison rather than the specific 'equal length' identification and ruler-drawing skill this lc names."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Comparing two different lengths (which is longer) is a distinct skill from identifying whether two segments are equal and then drawing a matching one, so this content is adjacent to but not a direct match for the stated competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Length values from 2 to 21 cm are a reasonable range for grade-3 ruler-based measurement tasks."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

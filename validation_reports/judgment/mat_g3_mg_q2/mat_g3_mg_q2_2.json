@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_mg_q2_2",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Which is heavier: 15 g or 4 g?",
+      "correct_answer": 15
+    },
+    {
+      "seed": 43,
+      "question_text": "Which is heavier: 5 g or 37 g?",
+      "correct_answer": 37
+    },
+    {
+      "seed": 44,
+      "question_text": "Which is heavier: 53 g or 67 g?",
+      "correct_answer": 67
+    },
+    {
+      "seed": 45,
+      "question_text": "Which is heavier: 35 g or 54 g?",
+      "correct_answer": 54
+    },
+    {
+      "seed": 46,
+      "question_text": "Which is heavier: 10 g or 52 g?",
+      "correct_answer": 52
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Stems like 'Which is heavier: 15 g or 4 g?' directly test comparing two masses, matching the competency's core comparison verb."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Seeds 42-46 vary both operands (15/4, 5/37, 53/67, 35/54, 10/52) giving a reasonable spread of comparison pairs rather than one repeated pair."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The short 'Which is heavier: X g or Y g?' template is well matched to Grade 3 reading demands."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Competency explicitly calls out 'including the use of a balance scale' but no sample text references a scale, tool, or visual balance context, only bare numeric comparisons."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Comparing gram quantities to identify the heavier one is exactly what 'Compare masses of objects' asks for."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Two-digit gram values (4-67) are an appropriate magnitude for Grade 3 mass comparison without being trivially close or absurdly large."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "PASS"
 }

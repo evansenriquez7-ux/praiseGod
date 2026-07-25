@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q2_6",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "There are 4 resin in one basket and 0 resin in another basket. How many resin are there in all?",
+      "correct_answer": 4
+    },
+    {
+      "seed": 43,
+      "question_text": "Start at 0. Count up 3 more. What number do you land on?",
+      "correct_answer": 3
+    },
+    {
+      "seed": 44,
+      "question_text": "Lara has ___ ribbons. A friend has 0 ribbons. If they put all their ribbons together, how many ribbons do they have in all?",
+      "correct_answer": 2
+    },
+    {
+      "seed": 45,
+      "question_text": "One basket has 1 water bottles. Another basket has 1 water bottles. If you put all the water bottles together, how many water bottles are there?",
+      "correct_answer": 2
+    },
+    {
+      "seed": 46,
+      "question_text": "Start at 12. Count up 1 more. What number do you land on?",
+      "correct_answer": 13
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The addend structure ('4 resin...0 resin...how many in all') matches the competency's addition-problem framing but sums shown top out at 13, well under the 'sums up to 100' scope."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Contexts vary (baskets, counting-on, ribbons cloze, water bottles), avoiding a single repeated scenario across the 5 seeds."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "The same singular/plural error appears again ('One basket has 1 water bottles'), a readability defect for Grade 1 that should be fixed."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Both mcq and cloze formats appear, and the cloze sample (seed 44) tests solving for a missing addend rather than only the sum, a useful additional variant."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All samples are genuine addition word problems, matching problem_solving_addition_to_100."
+    },
+    "scale_appropriateness": {
+      "verdict": "FAIL",
+      "rationale": "The largest sum shown is 13 (seed 46: 12+1); nothing in the batch approaches sums near 100 or exercises the two-digit-plus-two-digit regime this node adds over Grade 1 Q1."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

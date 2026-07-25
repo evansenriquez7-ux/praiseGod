@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_na_q2_5",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 1 − 1?",
+      "correct_answer": 0
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 1 − 1?",
+      "correct_answer": 0
+    },
+    {
+      "seed": 44,
+      "question_text": "Round 1002 to the nearest 10.",
+      "correct_answer": 1000
+    },
+    {
+      "seed": 45,
+      "question_text": "Round 1002 to the nearest 10.",
+      "correct_answer": 1000
+    },
+    {
+      "seed": 46,
+      "question_text": "1 − 1 = ___",
+      "correct_answer": 0
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "Three of five samples are the trivial fact '1 − 1 = 0' repeated verbatim across seeds 42, 43, and 46, which is not a 4-digit estimation task; the other two are bare 'Round 1002 to the nearest 10.' with no subtraction attached -- no sample shows the composite estimate-the-difference workflow."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The illustrative samples given are dominated by a single degenerate case (1 − 1), which does not demonstrate the breadth implied by the registered 12+6 combos across subtraction and rounding."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "'1 − 1 = 0' is far below grade-3 cognitive demand for this competency; a Q2 grade-3 estimation task should not degenerate to a trivial single-digit fact."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "Nothing in the samples shows the subtraction and rounding DNAs combined into one estimation prompt, so the registered variant space cannot be confirmed to support this specific competency."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "The actual rendered content (trivial 1 − 1 facts and standalone rounding) does not logically build toward 'estimate the difference of two numbers of up to 4 digits.'"
+    },
+    "scale_appropriateness": {
+      "verdict": "FAIL",
+      "rationale": "Operands of 1 and 1 are wildly below the stated 4-digit scope; even the rounding sample (1002) isn't paired with a subtraction to demonstrate the actual estimation skill."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

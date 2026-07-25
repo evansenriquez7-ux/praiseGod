@@ -1,21 +1,55 @@
 {
   "node_id": "mat_g2_na_q4_4",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
-    43,
     44,
-    45,
-    46
+    45
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 44,
+      "question_text": "Write 596 in words.",
+      "correct_answer": "five hundred ninety-six"
+    },
+    {
+      "seed": 45,
+      "question_text": "Write 456 in words.",
+      "correct_answer": "four hundred fifty-six"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The lc is 'Read and write similar fractions in fraction notation', but samples 44 and 45 are 'Write 596 in words' and 'Write 456 in words' -- whole-number-to-words conversions with no similar-fraction pair and no fraction notation at all."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "As with mat_g2_na_q4_1, the number_reading DNA's 2 registered combos supply content that has nothing to do with fraction notation, so a chunk of this node's coverage is off-topic by construction rather than by sampling bad luck."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Writing 'five hundred ninety-six' from 596 is a 3-digit place-value word-naming task, cognitively unrelated to writing a fraction like 1/8 in notation, so the node mixes two different skill demands under one competency label."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "The number_reading axis contributes variants that cannot serve 'similar fractions' at all, so the registered variant space for this node includes combos structurally incapable of testing the stated lc."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "Three-digit number-to-words items belong to a numeration strand, not to fraction reading and writing, so part of the sampled content sits entirely outside -- not just beyond -- the exact wording of this competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "456 and 596 have no defined relationship to the denominator set {2,3,4,5,6,8} this fraction node is scoped to, so there is no coherent 'scale' to judge for that half of the sampled items."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

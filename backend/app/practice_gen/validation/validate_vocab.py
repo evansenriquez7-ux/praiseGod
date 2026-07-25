@@ -65,6 +65,14 @@ def validate_vocab_constraints(ctx: QuestionContext, node: Dict) -> List[str]:
 
     not_yet_known: List[str] = node.get("NOT_YET_KNOWN", [])
     cumulative_vocab: List[str] = node.get("cumulative_vocab", [])
+    # The compound-vocab exemption below must also honor terms THIS node
+    # itself introduces (node["introduces_vocab"]), not only vocab already
+    # known from prior nodes. A node's job is to teach its own new compound
+    # terms (e.g. mat_g2_mg_q4_3 introduces "straight line"/"curved line"
+    # while bare "line" stays NOT_YET_KNOWN until the G3 point/line/segment/
+    # ray node) -- excluding introduces_vocab here made it structurally
+    # impossible for a node to ever use its own defining vocabulary.
+    known_compounds_source: List[str] = list(cumulative_vocab) + list(node.get("introduces_vocab", []))
 
     def _is_subtoken_only_of_known_compound(term: str, known: List[str], text: str) -> bool:
         """True if `term` appears in `text` ONLY inside known compound vocab, never standalone."""
@@ -84,7 +92,7 @@ def validate_vocab_constraints(ctx: QuestionContext, node: Dict) -> List[str]:
     for term in not_yet_known:
         if _text_contains_term(text, term):
             # Exempt: term only appears as sub-token of a known compound (e.g. "line" in "number line")
-            if _is_subtoken_only_of_known_compound(term, cumulative_vocab, text):
+            if _is_subtoken_only_of_known_compound(term, known_compounds_source, text):
                 continue
             violations.append(
                 f"[NOT_YET_KNOWN] '{term}' found in question text for "

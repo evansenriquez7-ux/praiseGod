@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q1_2",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Write 33 in words.",
+      "correct_answer": "thirty-three"
+    },
+    {
+      "seed": 43,
+      "question_text": "Write 14 in words.",
+      "correct_answer": "fourteen"
+    },
+    {
+      "seed": 44,
+      "question_text": "What comes next: 23, 24, 25, 26, ___",
+      "correct_answer": 27
+    },
+    {
+      "seed": 45,
+      "question_text": "What number comes next when counting: 18, 19, 20, 21, ___?",
+      "correct_answer": 22
+    },
+    {
+      "seed": 46,
+      "question_text": "Write 15 in words.",
+      "correct_answer": "fifteen"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency explicitly calls for number line, block/bar model, and numeral representations, but the five samples are just numeral-to-word conversion ('Write 33 in words') and count-sequence cloze items, with no number-line or bar-model content visible in the text."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "student_vocab_introduced_by_this_node lists 'number line' yet not one of the five samples references a number line, so the specific representation the node is meant to introduce is unverified in this batch."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Sample text such as 'What comes next: 23, 24, 25, 26, ___' stays short and single-step, appropriate for Grade 1 Quarter 1 reading demands."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The registered variants (number_reading axes=1/combos=2, counting axes=3/combos=28) reuse two other nodes' DNAs wholesale without any dedicated number-line or block-model variant appearing in the samples shown."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Recognizing and representing numbers 'using a variety of models' implies visual/pictorial variety, but the observed sample mix (word-form and count-sequence only) does not clearly demonstrate the multi-model aspect central to this competency's wording."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numeral values used (14 to 33) and count sequences (up to 27) fall within the up-to-100 range specified, a reasonable magnitude for this stage."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

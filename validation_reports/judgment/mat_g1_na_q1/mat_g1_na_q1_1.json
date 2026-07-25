@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q1_1",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Write 33 in words.",
+      "correct_answer": "thirty-three"
+    },
+    {
+      "seed": 43,
+      "question_text": "Write 14 in words.",
+      "correct_answer": "fourteen"
+    },
+    {
+      "seed": 44,
+      "question_text": "Write 26 in words.",
+      "correct_answer": "twenty-six"
+    },
+    {
+      "seed": 45,
+      "question_text": "Write 21 in words.",
+      "correct_answer": "twenty-one"
+    },
+    {
+      "seed": 46,
+      "question_text": "Write 15 in words.",
+      "correct_answer": "fifteen"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency is bidirectional ('read AND write numerals'), but every sample ('Write 33 in words' -> 'thirty-three') only exercises reading a numeral into words; no sample shows the reverse task of writing digits from a spoken or word number."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "variant_registry lists only 1 axis and 2 combos for number_reading, a strikingly small space for a competency needing both read and write directions, so exhaustive machine coverage should be checked for the write-numerals direction specifically."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Prompts like 'Write 14 in words.' are four words long, far under the 15-word ceiling, and use vocabulary appropriate for Grade 1 Quarter 1."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Two combos is a narrow variant space to plausibly support mastery of both reading digits aloud and writing numerals from dictation, given only one direction appears in the samples."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Since the sampled task ('numeral to word') is only half of 'read and write numerals', the observed difficulty progression cannot be judged to support the full competency without seeing the write-digits direction."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Sampled numerals (14, 15, 21, 26, 33) sit comfortably within the up-to-100 range and increase gradually across the five seeds, a reasonable spread for this stage."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

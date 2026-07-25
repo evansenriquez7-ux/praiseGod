@@ -247,12 +247,36 @@ def generate_context(
     # ── d. Select spine ───────────────────────────────────────────────────────
     spine = None
     spine_id: Optional[str] = None
-    if dna.requires_context and values.get("context", "pure") == "word_problem":
+    # money_peso's own amount count must NOT depend on context (a prior fix
+    # removed a "cap to 2 for word_problem" override specifically because
+    # varying draws by context desyncs the RNG stream -- pgen_contract.md's
+    # variant-sensitivity rule), so add_amounts can legitimately produce
+    # 2-5 amounts regardless of context. But every money_* spine template
+    # (money_total, money_spending, money_change) narrates exactly 2
+    # amounts (a, b) while blank_target="result"/"change" still reflects
+    # the sum/difference of ALL of them -- with 3+ amounts, the story
+    # silently omits one and the stated answer no longer matches what the
+    # story describes (e.g. "has ₱5 in bills and ₱500 in coins, how much in
+    # all?" -> 506, silently including a 3rd, unmentioned ₱1). Skip the
+    # narrative spine entirely rather than narrate a mismatched subset; the
+    # symbolic/pure fallback still shows the true full computation.
+    money_peso_amounts = values.get("amounts") if dna.concept == "money_peso" else None
+    money_peso_narratable = money_peso_amounts is None or len(money_peso_amounts) == 2
+    if money_peso_narratable and dna.requires_context and values.get("context", "pure") == "word_problem":
         blank_pos = values.get("blank_position") or values.get("blank_target")
-        if values.get("operation") in ("multiplication", "division"):
+        # `values.get("operation")` is only ever populated by missing_number.py
+        # -- the plain multiplication/division/addition/subtraction DNAs never
+        # set an "operation" key, so this remap was silently dead code for
+        # every one of them; dna.concept (the DNA's own name) is the reliable
+        # signal. multiplication/division's blank_target naming ("result",
+        # "start"/factor_unknown->"b") doesn't match their spines' blank_target
+        # naming ("total"/"groups"/"n") without this remap, so no word-problem
+        # spine could ever pass the required_blank_target filter for them.
+        current_op = values.get("operation") or dna.concept
+        if current_op in ("multiplication", "division"):
             blank_map = {"result": "total", "start": "groups", "change": "n"}
             blank_pos = blank_map.get(blank_pos, blank_pos)
-        elif values.get("operation") in ("addition", "subtraction"):
+        elif current_op in ("addition", "subtraction"):
             blank_map = {"start": "a", "change": "b", "result": "result"}
             blank_pos = blank_map.get(blank_pos, blank_pos)
 
@@ -266,6 +290,28 @@ def generate_context(
             # result-unknown spine cannot voice a change_unknown (unknown=b)
             # problem without leaking b into the stem.
             required_blank_target=blank_pos,
+            # Ensure the narrated operation matches what's actually being
+            # computed (e.g. a multiplication DNA must not get narrated
+            # with a subtraction-comparison "how many more" spine just
+            # because subtraction is also in this node's cumulative
+            # concepts by this grade).
+            # dna.concept alone is the reliable domain signal for most
+            # DNAs, but money_peso can compute EITHER addition
+            # ("add_amounts") or subtraction ("find_change") depending on
+            # its own resolved operation, and its 4 spines split along
+            # that same line (money_total requires "addition";
+            # money_spending/money_change require "subtraction") -- using
+            # "money_peso" alone would let a subtraction-narrated spine
+            # (e.g. "had X, spent Y, how much left?") get selected for an
+            # add_amounts-computed problem, presenting a sum as if it were
+            # a difference. Map to the finer-grained operation when known.
+            current_operation=(
+                {"add_amounts": "addition", "find_change": "subtraction"}.get(
+                    values.get("operation"), dna.concept
+                )
+                if dna.concept == "money_peso"
+                else dna.concept
+            ),
         )
         if spine is not None:
             spine_id = spine.id
@@ -493,8 +539,22 @@ def _build_symbolic_question(
     # ── Place value ───────────────────────────────────────────────────────────
     if concept == "place_value":
         number = values.get("number", a)
+        task_type = values.get("task_type", "identify_place")
+        if task_type == "decompose":
+            # "e.g." avoided deliberately: the vocab-gating checker tokenizes
+            # on non-alphanumeric characters, so "e.g." was being split into
+            # standalone tokens "e" and "g" -- and bare "g" is reserved
+            # NOT_YET_KNOWN vocabulary (the gram abbreviation, introduced
+            # later in mass_capacity), so this collided every time despite
+            # having nothing to do with grams.
+            return f"Write {number} as tens and ones, for example 45 = 40 + 5."
         digit = values.get("digit", values.get("digit_at_position", b))
         pv_label = VocabGated("place value", "place value", "value").resolve(cumulative_vocab)
+        if task_type == "identify_place":
+            return f"What place is the digit {digit} in, in the number {number}?"
+        if task_type == "identify_digit":
+            place_name = values.get("place_name", "tens")
+            return f"In {number}, what digit is in the {place_name} place?"
         return f"What is the {pv_label} of the digit {digit} in {number}?"
 
     # ── Counting / ordinal ────────────────────────────────────────────────────
@@ -538,6 +598,34 @@ def _build_symbolic_question(
     # ── Patterns ─────────────────────────────────────────────────────────────
     if concept == "patterns":
         seq = values.get("sequence", [])
+        missing_index = values.get("missing_index", -1)
+        rule_desc = values.get("rule_description")
+        if missing_index == -1 and rule_desc is not None and "common_difference" in values:
+            # ask_type="state_rule" (bound for "Explain how to generate ..."
+            # competencies): the answer is the numeric step/common
+            # difference, not a sequence term -- this branch previously
+            # fell through to the "next number" default unconditionally
+            # (missing_index==-1 also happens to be this task_type's
+            # sentinel), asking for "the next number" when the actual
+            # expected answer is the rule's step size, which doesn't even
+            # continue the visible sequence.
+            seq_str = ", ".join(str(x) for x in seq) if seq else f"{a}, ..."
+            return (
+                f"This pattern follows a rule: {seq_str}, ... "
+                f"What number is added or subtracted each time to generate it?"
+            )
+        if missing_index is not None and 0 <= missing_index < len(seq):
+            # ask_type="missing_middle": the answer (visible[missing_index])
+            # is one of the ALREADY-SHOWN terms, not a continuation past the
+            # end of the sequence -- rendering every value unmasked and
+            # phrasing it as "next number" (the next_term-only phrasing this
+            # branch used unconditionally) asked the student to name a value
+            # they could already see in the prompt, under the wrong verb
+            # ("next" implies continuing past the end). Blank the masked
+            # position and phrase it as finding a missing term instead.
+            display = [("___" if i == missing_index else str(x)) for i, x in enumerate(seq)]
+            seq_str = ", ".join(display)
+            return f"What number is missing in the pattern: {seq_str}?"
         seq_str = ", ".join(str(x) for x in seq) if seq else f"{a}, ..."
         return f"What is the next number in the pattern: {seq_str}?"
 
@@ -653,15 +741,114 @@ def _build_symbolic_question(
             mc_lbl = VocabGated("mass", "mass", "weight").resolve(cumulative_vocab)
         else:
             mc_lbl = VocabGated("capacity", "capacity", "amount of liquid").resolve(cumulative_vocab)
+        if task_type == "estimate":
+            # "estimate" and "read_measurement" previously rendered
+            # byte-identical text ("What is the mass of the object in g?")
+            # -- estimation is now framed as rounding a precise reading to
+            # the nearest round_to unit, which needs different phrasing and
+            # must show the reading being rounded (read_measurement's own
+            # phrasing doesn't give the student anything to round).
+            val = values.get("value", "?")
+            round_to = values.get("round_to", 10)
+            # "Estimate" avoided in the literal text: it's vocab-gated to
+            # the specific node that introduces it, and the exhaustive
+            # matrix check tests this task_type against every node this
+            # DNA is mapped to, including ones earlier in the curriculum
+            # that haven't introduced the word yet (an actual collision
+            # hit for length_measurement's equivalent fix).
+            return (
+                f"An object's {mc_lbl} measures {val} {unit}. "
+                f"About how many {unit} is that, rounded to the nearest {round_to}?"
+            )
         return f"What is the {mc_lbl} of the object in {unit}?"
 
     if concept == "perimeter":
+        # Same bug as area's prior fallback: never showed the dimensions
+        # needed to compute the answer, silently unanswerable for every
+        # textual formatter.
         shape = values.get("shape", "rectangle")
-        return f"Find the perimeter of the {shape}."
+        sides = values.get("sides", {})
+        task_type = values.get("task_type", "find_perimeter")
+        if task_type == "find_missing_side":
+            perimeter = values.get("perimeter", "?")
+            if shape == "triangle":
+                known = values.get("known_sides", {})
+                known_str = " and ".join(f"{v} cm" for v in known.values())
+                return f"A triangle has a perimeter of {perimeter} cm. Two of its sides are {known_str}. What is the length of the third side?"
+            known_side = values.get("known_side", "l")
+            known_value = values.get("known_value", "?")
+            other = "width" if known_side == "l" else "length"
+            return (
+                f"A {shape} has a perimeter of {perimeter} cm and a "
+                f"{'length' if known_side == 'l' else 'width'} of {known_value} cm. What is its {other}?"
+            )
+        if values.get("context") == "word_problem":
+            # "Solve problems involving perimeter" (mat_g2_mg_q4_6)
+            # previously had no word-problem framing at all.
+            if shape == "square":
+                return (
+                    f"A square garden has a side of {sides.get('s', '?')} cm. "
+                    f"How much fencing is needed to go all the way around it?"
+                )
+            if shape == "triangle":
+                return (
+                    f"A triangular flower bed has sides {sides.get('a', '?')} cm, "
+                    f"{sides.get('b', '?')} cm, and {sides.get('c', '?')} cm. "
+                    f"How much edging is needed to go all the way around it?"
+                )
+            return (
+                f"A rectangular garden is {sides.get('l', '?')} cm long and "
+                f"{sides.get('w', '?')} cm wide. How much fencing is needed to go all the way around it?"
+            )
+        if shape == "square":
+            return f"A square has a side of {sides.get('s', '?')} cm. What is its perimeter?"
+        if shape == "triangle":
+            return f"A triangle has sides {sides.get('a', '?')} cm, {sides.get('b', '?')} cm, and {sides.get('c', '?')} cm. What is its perimeter?"
+        return f"A {shape} has sides {sides.get('l', '?')} cm and {sides.get('w', '?')} cm. What is its perimeter?"
 
     if concept == "area":
+        # The prior version ("Find the area of {shape}.") never showed the
+        # actual dimensions needed to compute the answer at all -- correct
+        # only by coincidence for a visual formatter that renders the grid
+        # separately (grid_area), but silently unanswerable for every
+        # textual formatter (mcq/cloze/numeric_input) that renders this
+        # fallback, and identical across all 4 area competencies regardless
+        # of task_type.
         shape = values.get("shape", "rectangle")
-        return f"Find the area of the {shape}."
+        unit = values.get("unit", "sq cm")
+        sides = values.get("sides", {})
+        task_type = values.get("task_type", "find_area")
+        if shape == "square":
+            s = sides.get("s", "?")
+            dims = f"a side of {s} {unit.replace('sq ', '')}"
+            rows_cols = f"{s} rows and {s} columns"
+        else:
+            l, w = sides.get("l", "?"), sides.get("w", "?")
+            dims = f"sides {l} {unit.replace('sq ', '')} and {w} {unit.replace('sq ', '')}"
+            rows_cols = f"{l} rows and {w} columns"
+        if task_type == "find_missing_dimension":
+            area = values.get("area", "?")
+            known_dim = values.get("known_dimension", "l")
+            known_val = values.get("known_value", "?")
+            other = "width" if known_dim == "l" else "length"
+            return (
+                f"A {shape} has an area of {area} {unit} and a "
+                f"{'length' if known_dim == 'l' else 'width'} of {known_val} "
+                f"{unit.replace('sq ', '')}. What is its {other}?"
+            )
+        if task_type == "illustrate_tiles":
+            return (
+                f"A {shape} is covered edge-to-edge with unit square tiles, "
+                f"arranged in {rows_cols}. Estimate how many unit tiles cover "
+                f"the {shape} in all."
+            )
+        if task_type == "derive_formula":
+            return (
+                f"A {shape} is arranged in {rows_cols} of unit square tiles. "
+                f"Using the formula rows × columns, what is the total number "
+                f"of tiles?"
+            )
+        return f"A {shape} has {dims}. What is its area in {unit}?"
 
     # ── Geometry ──────────────────────────────────────────────────────────────
     if concept == "shapes_2d":

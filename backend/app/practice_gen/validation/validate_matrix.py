@@ -212,7 +212,13 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
     from backend.app.practice_gen.registry import _KG_NODES
     node_kg = _KG_NODES.get(node_id, {})
     not_yet_known = node_kg.get("NOT_YET_KNOWN", [])
-    cumulative_vocab_list = node_kg.get("cumulative_vocab", [])
+    # Merge introduces_vocab the same way cumulative_concepts merges
+    # introduces_concepts below: a node's own newly-introduced compound
+    # vocab (e.g. mat_g2_mg_q4_3's "straight line"/"curved line") must be
+    # allowed to exempt its NOT_YET_KNOWN substring (bare "line", reserved
+    # for the later G3 point/line/segment/ray node) -- otherwise no node
+    # could ever use the exact vocabulary it exists to introduce.
+    cumulative_vocab_list = node_kg.get("cumulative_vocab", []) + node_kg.get("introduces_vocab", [])
     cumulative_concepts = set(node_kg.get("cumulative_concepts", [])) | set(node_kg.get("introduces_concepts", []))
 
     for dna_name in dna_names:

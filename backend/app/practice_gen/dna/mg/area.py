@@ -78,6 +78,7 @@ def generate_params(
     shape     = profile.get("shape", "rectangle")
     unit      = profile.get("unit", "square_cm")
     task_type = profile.get("task_type", "find_area")
+    context   = profile.get("context", "pure")
     scalar    = float(profile.get("difficulty_scalar", 0.5))
 
     if unit == "square_cm":
@@ -106,15 +107,25 @@ def generate_params(
                 "answer": s,
                 "answer_formula": "sqrt(area)",
                 "sides": {"s": s},
+                "context": context,
             }
+        # illustrate_tiles / derive_formula reuse find_area's computation --
+        # they differ only in framing (tile-counting vs. formula-derivation
+        # narration), not in the underlying math, matching the competency
+        # wording exactly (mat_g3_mg_q1_0: "Illustrate and estimate the area
+        # ... using square tile units"; mat_g3_mg_q1_1: "Explore inductively
+        # the derivation of the formula[] ... using square tile units").
         return {
         "blank_target": "answer",
             "shape": "square",
             "sides": {"s": s},
+            "s": s,  # top-level alias for the area_solve spine template
+            "length_unit": unit_label.replace("sq ", ""),
             "unit": unit_label,
-            "task_type": "find_area",
+            "task_type": task_type if task_type in ("illustrate_tiles", "derive_formula") else "find_area",
             "answer": area,
             "answer_formula": "s * s",
+            "context": context,
         }
 
     # rectangle
@@ -136,15 +147,19 @@ def generate_params(
             "answer": missing_val,
             "answer_formula": "area / known_value",
             "sides": {"l": l, "w": w},
+            "context": context,
         }
     return {
         "blank_target": "answer",
         "shape": "rectangle",
         "sides": {"l": l, "w": w},
+        "l": l, "w": w,  # top-level aliases for the area_solve spine template
+        "length_unit": unit_label.replace("sq ", ""),
         "unit": unit_label,
-        "task_type": "find_area",
+        "task_type": task_type if task_type in ("illustrate_tiles", "derive_formula") else "find_area",
         "answer": area,
         "answer_formula": "l * w",
+        "context": context,
     }
 
 

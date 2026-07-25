@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_dp_q3_3",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 5",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Look at the bar graph. What is the value for dogs?",
+      "correct_answer": "D"
+    },
+    {
+      "seed": 43,
+      "question_text": "Look at the bar graph. What is the value for grapes?",
+      "correct_answer": "B"
+    },
+    {
+      "seed": 44,
+      "question_text": "5220 + 2200 = ___",
+      "correct_answer": 7420
+    },
+    {
+      "seed": 45,
+      "question_text": "8500 + 225 = ___",
+      "correct_answer": 8725
+    },
+    {
+      "seed": 46,
+      "question_text": "Look at the bar graph. What is the value for dogs?",
+      "correct_answer": "D"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Competency: \"Solve problems using data presented in a single bar graph (horizontal and vertical).\" The samples pair a graph-reading MCQ with a separate, decontextualized addition cloze (5220 + 2200 = ___) that never references the bar graph's values or categories."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "This node registers bar_graphs (30 combos) and addition (8 combos); the addition DNA's combos, as rendered here, produce generic arithmetic unconnected to the graph values shown elsewhere in the batch."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Both the graph-reading stem (8 words) and the arithmetic cloze are short and within the 22-word cap, appropriate for G3 Q3, though a true solve-using-data item would need a connecting sentence neither sample provides."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "For a solve-problems-using-data competency, the variant space would ideally compose one item (read the graph, then compute with its values); instead the two DNAs appear to fire independently here."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "This capstone data competency should build on q3_2's interpretation skill by adding arithmetic on graph-derived numbers, but the disconnect between graph values and addition operands doesn't show that composition."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "The addition operands (5220+2200, 8500+225) are large four-digit values that don't correspond to the two-digit bar-graph totals seen elsewhere in this batch (45-70), undercutting the using-this-data framing."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

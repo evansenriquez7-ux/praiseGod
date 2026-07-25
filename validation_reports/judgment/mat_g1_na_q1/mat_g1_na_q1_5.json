@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q1_5",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is the ordinal name for position 5?",
+      "correct_answer": "fifth"
+    },
+    {
+      "seed": 43,
+      "question_text": "What is the ordinal name for position 6?",
+      "correct_answer": "sixth"
+    },
+    {
+      "seed": 44,
+      "question_text": "What is the ordinal name for position 5?",
+      "correct_answer": "5th"
+    },
+    {
+      "seed": 45,
+      "question_text": "What is the ordinal name for position 6?",
+      "correct_answer": "6th"
+    },
+    {
+      "seed": 46,
+      "question_text": "What is the ordinal name for position 6?",
+      "correct_answer": "sixth"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency is to 'describe the position of objects' using ordinals, but samples are decontextualized ('What is the ordinal name for position 5?') with no objects, row, or scene referenced anywhere in the text."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "ordinal_numbers registers only 1 axis/2 combos, consistent with the two answer formats seen (word form 'fifth' vs suffix form '5th') across the five samples; validate_matrix separately confirms exhaustive execution."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Prompts such as 'What is the ordinal name for position 6?' are seven words, comfortably under the cap and use vocabulary matching the node's own introduced terms (1st through 10th)."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "With just 2 combos, the variant space appears limited to switching answer format (word vs. abbreviation) rather than varying context or object type, which may under-support the 'position of objects' framing."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Ordinal values sampled (5th, 6th) stay well within the stated 1st-10th range appropriate for this competency's scope."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Positions 5 and 6 are mid-range within the 1-10 ordinal scope, a reasonable sampling window for five seeds."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

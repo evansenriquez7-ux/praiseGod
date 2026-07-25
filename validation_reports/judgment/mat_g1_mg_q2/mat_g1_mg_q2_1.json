@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_mg_q2_1",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Measure the object. Its length is ___ paperclips.",
+      "correct_answer": 5
+    },
+    {
+      "seed": 43,
+      "question_text": "Measure the object. Its length is ___ paperclips.",
+      "correct_answer": 10
+    },
+    {
+      "seed": 44,
+      "question_text": "Which is greater: 10 or 6?",
+      "correct_answer": ">"
+    },
+    {
+      "seed": 45,
+      "question_text": "Which is greater: 18 or 30?",
+      "correct_answer": "<"
+    },
+    {
+      "seed": 46,
+      "question_text": "Measure the object. Its length is ___ paperclips.",
+      "correct_answer": 10
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency requires comparing two measured lengths/distances, but the comparing_ordering samples strip out any unit context ('Which is greater: 10 or 6?') and the length_measurement samples only measure a single object ('Its length is ___ paperclips.'); no sampled item asks the student to compare two measured lengths against each other."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "length_measurement (2 axes/4 combos) plus comparing_ordering (3 axes/8 combos) register 12 combos total per variant_registry, checked exhaustively by validate_matrix; the 5 seeds here are illustrative only."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "All observed prompts are short, single-clause, and under the 15-word grade-1 cap, appropriate reading demand for this grade/quarter."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The comparing_ordering variant as sampled produces bare-integer comparisons unconnected to any measured unit, so the registered 8-combo space does not visibly demonstrate coverage of the actual 'compare two measured lengths' skill this node names."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Comparing raw integers (10 vs 6) is a numeracy skill from a different competency strand, not the measurement-comparison skill, e.g. 'this pencil is longer, measured in paperclips', that this specific node's wording requires."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The magnitudes involved (5-30) are all small and grade-1-appropriate regardless of the framing mismatch, so scale is not the driver of the concern."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

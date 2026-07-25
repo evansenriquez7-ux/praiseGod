@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_mg_q2_0",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Measure the object. Its length is ___ paperclips.",
+      "correct_answer": 5
+    },
+    {
+      "seed": 43,
+      "question_text": "Measure the object. Its length is ___ paperclips.",
+      "correct_answer": 10
+    },
+    {
+      "seed": 44,
+      "question_text": "Measure the object. Its length is ___ blocks.",
+      "correct_answer": 5
+    },
+    {
+      "seed": 45,
+      "question_text": "Measure the object. Its length is ___ steps.",
+      "correct_answer": 10
+    },
+    {
+      "seed": 46,
+      "question_text": "Measure the object. Its length is ___ paperclips.",
+      "correct_answer": 10
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Samples directly instantiate non-standard-unit measurement as named in the competency: 'Measure the object. Its length is ___ paperclips.', '___ blocks.', and '___ steps.' cover multiple non-standard unit types."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "length_measurement registers 2 axes/4 combos per variant_registry, machine-verified exhaustively by validate_matrix separately; these 5 seeds only sample that small space."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Each prompt is a two-sentence, single-digit-answer task ('Measure the object. Its length is ___ blocks.') well under the 15-word grade-1 ceiling and appropriately single-step."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "With only 2 axes and 4 combos registered, the variant space is thin relative to the competency's two named skills, length of an object AND distance between two objects; the 5 samples only show 'length of an object' phrasing, with no distance-between-two-objects variant observed."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The difficulty stays correctly confined to counting non-standard units (paperclips, blocks, steps) without drifting into standard units like cm or inches that belong to a later measurement competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Observed answers (5, 10) are small, countable magnitudes appropriate for a grade-1 non-standard-unit measuring task at this early quarter."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

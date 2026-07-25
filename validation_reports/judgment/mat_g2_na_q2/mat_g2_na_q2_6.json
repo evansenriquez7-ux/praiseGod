@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g2_na_q2_6",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 473 − 60?",
+      "correct_answer": 413
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 11 − 11?",
+      "correct_answer": 0
+    },
+    {
+      "seed": 44,
+      "question_text": "4 − 2 = ___",
+      "correct_answer": 2
+    },
+    {
+      "seed": 45,
+      "question_text": "2 − 1 = ___",
+      "correct_answer": 1
+    },
+    {
+      "seed": 46,
+      "question_text": "What is 416 − 0?",
+      "correct_answer": 416
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The competency simply asks students to subtract numbers under 1000 with or without regrouping, and the samples (473-60=413, 11-11=0, 416-0=416) directly exercise 3-digit subtraction at varying regrouping difficulty, matching the stated scope without the narrative/context requirements later nodes add."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "subtraction registers 3 axes with 12 combos, and the samples already show both 3-digit (473-60) and small-number (4-2) cases spanning much of that range; validate_matrix separately confirms exhaustive combo execution."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Stems are minimal ('4 minus 2 = ___') and well under the 18-word cap; this node correctly keeps sentence complexity flat while raising numeric magnitude, appropriate for grade 2 quarter 2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The observed spread from single-digit (4-2) to 3-digit (473-60, 416-0) subtraction plausibly exercises the full sub-1000 range the competency requires across the 12 registered combos."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Unlike q2_3, which overshot its 2-digit-by-1-digit cap, this node's higher magnitudes are actually licensed by its own competency wording ('less than 1000'), so the 3-digit items here are correctly scoped rather than a violation."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Minuends range from 2 up to 473, comfortably inside the sub-1000 ceiling this competency states, with no overshoot observed."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "PASS"
 }

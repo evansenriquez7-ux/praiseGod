@@ -5,6 +5,8 @@
 
 Read this entire document before writing any code. Execute the phases **in order**. Each phase has acceptance criteria that must pass before you move to the next phase.
 
+> Completion status for this plan is tracked separately in [`IMPLEMENTATION_STATUS.md`](./IMPLEMENTATION_STATUS.md) — this file stays a pristine spec.
+
 ---
 
 ## Ground Rules (read first, these override your habits)
@@ -13,7 +15,7 @@ Read this entire document before writing any code. Execute the phases **in order
 2. **Never weaken an assertion to make it pass.** If a harness assertion fails, the bug is in the generator/DNA/formatter layer, not the assertion — fix the pipeline. The only permitted reason to change an assertion is a documented error in the ground-truth spec (competency bounds or KG vocab fields), and that change must be called out explicitly in your final report with the node ID and justification.
 3. **No graceful fallbacks anywhere in the harness.** If a node is missing bounds, a DNA fails to import, a formatter isn't routable — that is a loud FAIL with a named error, never a skip, warn-and-continue, or default value. Skipping is how bugs hide.
 4. **Fixed seeds everywhere.** All harness sampling uses deterministic seeds so failures are reproducible. Print the seed in every failure message.
-5. **Do not touch these files except as this plan directs:** `pgen_checklist.md` and other docs (handled separately by DOCS_REMEDIATION.md), and once Phase 1 lands, `validation/_manifest.py` is append-only for you.
+5. **Do not touch these files except as this plan directs:** `pgen_checklist.md` and other docs (handled separately by `doc_rem.md`), and once Phase 1 lands, `validation/_manifest.py` is append-only for you.
 
 ---
 

@@ -1,21 +1,41 @@
 {
   "node_id": "mat_g2_na_q1_6",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-5 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
+  "sample_seeds": [42, 43, 44, 45, 46, 47, 48, 49],
+  "samples_reviewed": [
+    {"seed": 42, "question_text": "In 135, what digit is in the ones place?", "correct_answer": 5},
+    {"seed": 43, "question_text": "What place is the digit 1 in, in the number 195?", "correct_answer": "hundreds"},
+    {"seed": 44, "question_text": "What is the place value of the digit 3 in 320?", "correct_answer": 300},
+    {"seed": 45, "question_text": "What is the place value of the digit 8 in 285?", "correct_answer": 80},
+    {"seed": 48, "question_text": "In 230, what digit is in the ones place?", "correct_answer": 0}
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "I hand-verified every one of the 8 answers: digit 1 in 195 is hundreds (43), digit 3 in 320 has place value 300 (44), digit 8 in 285 has place value 80 (45), digit 0 in 260 is ones (46), digit 5 in 250 is tens (49); all check out for a 3-digit number."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Unlike the stale prior review (which flagged the reverse-lookup clause as entirely untested), this batch now includes seeds 42 and 48 ('In 135/230, what digit is in the ones place?'), genuinely exercising all three sub-skills named in the competency across the 8 seeds."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The repeated frames ('In N, what digit is in the ones place?', 'What place is the digit D in, in the number N?') are concise and appropriate for grade-2 quarter-1 students newly introduced to 3-digit numbers and the hundreds place."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Across the 8 seeds the answers span all three positions (hundreds via 43, tens via 47/49, ones via 42/46/48) and both directions (name-the-place and identify-the-digit), a meaningfully fuller variant space than the prior stale review found."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All numbers used (135-320) are genuine 3-digit values that correctly exercise the newly-introduced hundreds place, matching the grade-2 scope of this lc rather than the 2-digit grade-1 or 4-digit grade-3 siblings."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "3-digit numbers (135 to 320) with place values up to 300 are appropriately scaled to grade-2 quarter-1 place-value expectations, matching the newly-introduced 'hundreds' vocabulary for this node."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "PASS"
 }

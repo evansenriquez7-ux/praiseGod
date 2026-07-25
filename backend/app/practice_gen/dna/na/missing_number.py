@@ -125,6 +125,37 @@ def generate_params(
     bounds = _PARAM_BOUNDS[g_key]
     allowed_ops    = bounds["ops"]
 
+    if profile.get("operation") == "equivalent":
+        # "Write an equivalent expression to a given addition or subtraction
+        # expression (e.g., 2+3 = 1+4)" (mat_g1_na_q3_2) had no matching
+        # content in this DNA at all -- this module's own docstring claims
+        # "equivalent expressions (balance)" as a G1 capability, but nothing
+        # ever generated one; every sample was a single missing-operand
+        # fact or true/false check instead of two expressions being
+        # equated. Generates two DIFFERENT operand pairs with the SAME
+        # sum, presented as "{a} + {b} = {c} + ___" so completing it
+        # requires recognizing/constructing an equivalent expression.
+        max_result = bounds["max_result"]
+        target = rng.randint(2, min(max_result, 20))
+        a = rng.randint(1, target - 1)
+        b = target - a
+        pair2_candidates = [
+            (c, target - c) for c in range(1, target) if c != a or target - c != b
+        ]
+        if not pair2_candidates:
+            pair2_candidates = [(1, target - 1)]
+        c, d = rng.choice(pair2_candidates)
+        return {
+            "blank_target": "d",
+            "a": a, "b": b, "c": c, "d": d,
+            "result": target,
+            "operation": "equivalent",
+            "answer": d,
+            "answer_formula": f"{target} - {c}",
+            "context": "pure",
+            "question": f"Complete the equivalent expression: {a} + {b} = {c} + ___",
+        }
+
     op_axis        = profile.get("operation")
     explicit_op_requested = op_axis is not None
     if op_axis is None:

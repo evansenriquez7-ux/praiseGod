@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_na_q2_7",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Daniel has ₱4 in bills and ₱0 in coins. How much money does Daniel have in all?",
+      "correct_answer": 4
+    },
+    {
+      "seed": 43,
+      "question_text": "Kuya Bien has ₱0 in bills and ₱3 in coins. How much money does Kuya Bien have in all?",
+      "correct_answer": 3
+    },
+    {
+      "seed": 44,
+      "question_text": "In a pictograph, Lara's group collected ___ ribbons and another group collected 0 ribbons. How many more did Lara's group collect?",
+      "correct_answer": 2
+    },
+    {
+      "seed": 45,
+      "question_text": "In a pictograph, Coach Roel's group collected 2 water bottles and another group collected 0 water bottles. How many more did Coach Roel's group collect?",
+      "correct_answer": 2
+    },
+    {
+      "seed": 46,
+      "question_text": "Ate Cara has ₱12 in bills and ₱1 in coins. How much money does Ate Cara have in all?",
+      "correct_answer": 13
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The competency explicitly requires '3 to 4 numbers', but every one of the 5 samples (e.g. 'Daniel has ₱4 in bills and ₱0 in coins') combines only two numbers, never three or four."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "Across all 5 seeds the operand count never varies from two, so the batch gives zero evidence the generator can produce the 3-4 number combinations this competency is named for."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The individual sentence templates ('X has ₱A in bills and ₱B in coins') are clear and appropriately concrete for Grade 3 Q2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "Mixing addition and subtraction across 3-4 operands (the defining feature of this competency vs. the simpler 2-number addition node) is not demonstrated anywhere in this batch."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "As rendered, these 5 samples are structurally identical to a plain 2-number addition/subtraction node and do not distinguish themselves as testing the '3 to 4 numbers' skill this competency specifically names."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Individual peso values (0-13) are appropriately small 2-digit amounts, but this is secondary to the missing 3-4 number structure that defines the competency."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

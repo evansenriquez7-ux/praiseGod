@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g2_na_q1_10",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 1 + 12?",
+      "correct_answer": 13
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 0 + 25?",
+      "correct_answer": 25
+    },
+    {
+      "seed": 44,
+      "question_text": "24 + 20 = ___",
+      "correct_answer": 44
+    },
+    {
+      "seed": 45,
+      "question_text": "12 + 12 = ___",
+      "correct_answer": 24
+    },
+    {
+      "seed": 46,
+      "question_text": "0 + 46 = ___",
+      "correct_answer": 46
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The competency requires illustrating three specific properties (add-zero identity, commutative reordering, associative regrouping) with sums to 1000, but the five samples are generic two-addend facts (1+12, 0+25, 24+20, 12+12, 0+46) with no paired reorder-and-compare item and no three-addend regrouping item, so none of the three named properties is actually illustrated."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "addition registers 4 axes and 8 combos; a properties-of-addition node needs combos that pair equivalent expressions (a+b vs b+a, or (a+b)+c vs a+(b+c)), and it is unclear from only 8 combos whether such paired-comparison items exist, though exhaustive combo execution is separately validated by validate_matrix."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Stems are short single-fact items under the 18-word cap, appropriate reading level for grade 2, though structurally too simple to require the comparative reasoning ('does order matter?') the competency actually asks for."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "8 registered combos seems light for a properties node that conceptually needs at least three distinct item shapes (identity, commutative, associative) each with several examples; nothing in the 5 samples confirms even one property is being explicitly tested."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "This node's content is indistinguishable from a plain addition-fact node -- compare q1_9's samples, several of which are identical here ('0 + 46 = ___' appears in both); as sampled it does not demonstrate the property-illustration skill that differentiates this competency from ordinary addition practice."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Sums observed (13-46) are well under the 1000 ceiling named for this property-illustration competency, consistent with q1_9's undershoot and worth checking against the exhaustive matrix run."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

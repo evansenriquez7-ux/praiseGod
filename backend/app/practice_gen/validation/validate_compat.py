@@ -216,20 +216,58 @@ def validate_competency_bounds_parsing() -> List[str]:
     # Table of (node_id, dna_name, expected_bounds_subset)
     test_cases = [
         # 1. symmetry_slides
-        ("mat_g1_mg_q4_0", "symmetry_slides", {"concept": "slide_translation"}),
+        # Ground Rule 2 correction (docs/pgen_hardening.md judgment review):
+        # this table previously asserted mat_g1_mg_q4_0 bound to
+        # 'slide_translation' and mat_g3_mg_q4_1 was left unrestricted --
+        # both encoded the same bug the mat_g3_mg_q1_5/mat_g2_mg_q4_3 fixes
+        # addressed. mat_g1_mg_q4_0's competency is rotation (half/quarter
+        # turns); it "worked" before only because slide_translation has no
+        # grade_min=1 items, so generate_params()'s old concept-ignoring
+        # fallback happened to land back on rotation, the only grade-1
+        # concept available -- masking the wrong bound with a second bug.
+        # mat_g3_mg_q4_1 ("Identify shapes...by drawing the line of
+        # symmetry") was never bound at all and so silently defaulted to
+        # slide/translation content. Both are now explicitly bound.
+        ("mat_g1_mg_q4_0", "symmetry_slides", {"concept": "rotation"}),
         ("mat_g2_mg_q1_2", "symmetry_slides", {"concept": "slide_translation"}),
-        ("mat_g3_mg_q4_0", "symmetry_slides", {"concept": "slide_translation"}),
-        ("mat_g3_mg_q4_1", "symmetry_slides", {"concept": None}), # 'concept' not restricted to slides
+        ("mat_g3_mg_q4_0", "symmetry_slides", {"concept": "slide_translation", "directions": "two_directions"}),
+        ("mat_g3_mg_q4_1", "symmetry_slides", {"concept": "line_symmetry"}),
+        ("mat_g3_mg_q4_2", "symmetry_slides", {"concept": "complete_symmetric_figure"}),
+        ("mat_g2_mg_q1_0", "shapes_2d", {"shape_set": "extended_with_circles"}),
+        ("mat_g2_mg_q1_1", "shapes_2d", {"shape_set": "composite_figures", "task_type": "compose_decompose"}),
+        ("mat_g1_mg_q1_1", "shapes_2d", {"task_type": "compare_shapes"}),
         
         # 2. mass_capacity
-        ("mat_g3_mg_q2_0", "mass_capacity", {"measurement_type": "mass"}),
-        ("mat_g3_mg_q2_1", "mass_capacity", {"measurement_type": "mass"}),
-        ("mat_g3_mg_q2_2", "mass_capacity", {"measurement_type": "mass"}),
-        ("mat_g3_mg_q2_3", "mass_capacity", {"measurement_type": None}), # 'measurement_type' not restricted to mass
+        # Ground Rule 2 correction (docs/pgen_hardening.md judgment review):
+        # this table previously asserted mat_g3_mg_q2_3/_4/_5 (all capacity
+        # competencies) left measurement_type unrestricted -- that encoded
+        # the same bug fixed for symmetry_slides/geometric_lines: leaving a
+        # value "unrestricted" does not mean the DNA shows the requested
+        # content, it means the DNA's own default (measurement_type="mass")
+        # silently governs, so all 3 capacity nodes rendered 100%
+        # mass-in-grams samples. Now bound explicitly both ways.
+        ("mat_g3_mg_q2_0", "mass_capacity", {"measurement_type": "mass", "task_type": "read_measurement"}),
+        ("mat_g3_mg_q2_1", "mass_capacity", {"measurement_type": "mass", "task_type": "estimate"}),
+        ("mat_g3_mg_q2_2", "mass_capacity", {"measurement_type": "mass", "task_type": "compare"}),
+        ("mat_g3_mg_q2_3", "mass_capacity", {"measurement_type": "capacity", "task_type": "read_measurement"}),
+        ("mat_g3_mg_q2_4", "mass_capacity", {"measurement_type": "capacity", "task_type": "estimate"}),
+        ("mat_g3_mg_q2_5", "mass_capacity", {"measurement_type": "capacity", "task_type": "compare"}),
         
         # 3. geometric_lines
         ("mat_g3_mg_q1_4", "geometric_lines", {"concept_type": "point_line_segment_ray"}),
-        ("mat_g3_mg_q1_5", "geometric_lines", {"concept_type": None}), # not restricted to point_line_segment_ray
+        # Ground Rule 2 correction (docs/pgen_hardening.md judgment review):
+        # this table previously asserted concept_type was left unrestricted
+        # for mat_g3_mg_q1_5 ("Recognize and draw parallel, intersecting,
+        # and perpendicular lines"). Unrestricted meant generate_params()
+        # fell back to the DNA's hardcoded default concept_type
+        # ("point_line_segment_ray"), so this G3 node could only ever
+        # generate point/line/segment/ray-naming content and never actually
+        # taught parallel/intersecting/perpendicular lines -- the exact
+        # content its own competency text names. Fixed in
+        # registry.py's _parse_competency_bounds to bind concept_type
+        # explicitly; this fixture now asserts the corrected value.
+        ("mat_g3_mg_q1_5", "geometric_lines", {"concept_type": "parallel_intersecting_perpendicular"}),
+        ("mat_g2_mg_q4_3", "geometric_lines", {"concept_type": "straight_curved"}),
     ]
     
     errors: List[str] = []

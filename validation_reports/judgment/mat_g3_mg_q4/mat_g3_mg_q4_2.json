@@ -1,21 +1,41 @@
 {
   "node_id": "mat_g3_mg_q4_2",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, fix-verification batch",
+  "review_date": "2026-07-22",
+  "blind": true,
+  "sample_seeds": [42, 43, 44, 45, 46],
+  "samples_reviewed": [
+    {"seed": 42, "question_text": "When completing a symmetric figure, the two halves must be ___.", "correct_answer": "mirror images of each other"},
+    {"seed": 43, "question_text": "Half of a shape is shown. The line of symmetry is vertical. To complete the shape, what do you do?", "correct_answer": "Draw the mirror image on the other side of the line."},
+    {"seed": 44, "question_text": "A symmetric figure has a horizontal line of symmetry. If the top half has 3 squares, how many squares are in the bottom half?", "correct_answer": 3},
+    {"seed": 45, "question_text": "A symmetric figure has a horizontal line of symmetry. If the top half has 3 squares, how many squares are in the bottom half?", "correct_answer": 3},
+    {"seed": 46, "question_text": "Half of a shape is shown. The line of symmetry is vertical. To complete the shape, what do you do?", "correct_answer": "Draw the mirror image on the other side of the line."}
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The competency asks students to complete a symmetric figure; the samples test that completed halves must be mirror images, that completing across a vertical line means drawing the mirror image on the other side, and that a horizontal-line figure with 3 squares on top requires 3 on the bottom -- squarely on this node's 'complete a figure with respect to a line' task."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "3 distinct question patterns appeared across the 5 sampled seeds (mirror-image definition, vertical-line completion instruction, horizontal-line square-count matching), a reasonable illustrative spread from the 2-axis/8-combo symmetry_slides registry rather than a single repeated stub."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Grade 3 Quarter 4's 22-word cap is comfortably met -- the longest sample, 'A symmetric figure has a horizontal line of symmetry. If the top half has 3 squares, how many squares are in the bottom half?', splits into two sentences of about 8 and 12 words."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The 8-combo symmetry_slides space, varying line orientation (vertical versus horizontal) and figure content (abstract mirror-image rule versus concrete square-counting), plausibly gives enough variety to build the figure-completion skill this competency targets."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All three sample patterns are specifically about completing a figure around a stated line of symmetry, distinguishing this node from mat_g3_mg_q4_1's identification-only focus and mat_g3_mg_q4_0's slide/translation focus despite the shared DNA registry."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Content is discrete (small square counts, directional/mirror description), not a continuous numeric range, so scale appropriateness is a clean PASS for this figure-completion node."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "PASS"
 }

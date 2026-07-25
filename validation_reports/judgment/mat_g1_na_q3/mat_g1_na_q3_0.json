@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_na_q3_0",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 5 − 0?",
+      "correct_answer": 5
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 2 − 1?",
+      "correct_answer": 1
+    },
+    {
+      "seed": 44,
+      "question_text": "17 − 0 = ___",
+      "correct_answer": 17
+    },
+    {
+      "seed": 45,
+      "question_text": "13 − 0 = ___",
+      "correct_answer": 13
+    },
+    {
+      "seed": 46,
+      "question_text": "3 − 0 = ___",
+      "correct_answer": 3
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency wants subtraction 'illustrated' as taking away, but four of the five samples subtract zero ('5 − 0', '17 − 0', '13 − 0', '3 − 0'), which trivially returns the original number and poorly illustrates the taking-away action; only '2 − 1 = 1' shows an actual quantity being removed."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "subtraction registers 12 combos across 3 axes; a wider mix of non-zero subtrahends presumably exists elsewhere in that space even though this five-sample window is zero-heavy, with exhaustive execution confirmed separately."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Prompts like 'What is 5 − 0?' are extremely short and appropriate for Grade 1 Quarter 3 reading level."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Four of five samples use a zero subtrahend, a degenerate case for illustrating 'taking away'; a variant space that surfaces this proportion of zero-subtraction problems risks under-teaching the core concept."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Numbers used (2, 3, 5, 13, 17) stay within the stated up-to-20 range, and where a genuine subtraction occurs ('2 − 1 = 1') it is computed correctly."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The range of minuends sampled (2 to 17) appropriately spans toward the competency's 20-ceiling even though the subtrahends used are mostly trivial."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

@@ -1,21 +1,55 @@
 {
   "node_id": "mat_g2_na_q4_5",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
-    43,
     44,
-    45,
-    46
+    45
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 44,
+      "question_text": "Which is greater: 307 or 270?",
+      "correct_answer": ">"
+    },
+    {
+      "seed": 45,
+      "question_text": "Which is greater: 92 or 930?",
+      "correct_answer": "<"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "This lc asks students to order similar (same-denominator) fractions, but samples 44 and 45 ('Which is greater: 307 or 270?', 'Which is greater: 92 or 930?') are whole-number comparisons with no fractions present at all."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The comparing_ordering DNA's 8 registered combos produce whole-number magnitude comparisons for this node instead of fraction-pair orderings, mirroring the same defect found on the sibling node mat_g2_na_q4_2 that shares this DNA pairing."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Determining 92 vs 930 requires digit-count and place-value reasoning well beyond comparing two same-denominator fractions like 3/8 vs 5/8, so the sampled cognitive demand does not match what 'order similar fractions' implies for grade 2 quarter 4."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "No sampled seed shows two similar fractions being ranked, so the variant space this competency needs -- multiple same-denominator fractions in one item -- is entirely absent from this 5-sample batch."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "Whole-number greater-than/less-than comparison is a distinct competency from ordering similar fractions, so this content reaches into an unrelated topic rather than deepening difficulty within the stated lc."
+    },
+    "scale_appropriateness": {
+      "verdict": "FAIL",
+      "rationale": "Numbers as large as 930 have no place in a similar-fractions node scoped to denominators 2-8, so the observed scale is not a progression toward this competency but a different numeric domain."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

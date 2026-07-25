@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_na_q4_5",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What is 670 ÷ 10?",
+      "correct_answer": 67
+    },
+    {
+      "seed": 43,
+      "question_text": "What is 30 ÷ 2?",
+      "correct_answer": 15
+    },
+    {
+      "seed": 44,
+      "question_text": "What is 300 ÷ 5?",
+      "correct_answer": 60
+    },
+    {
+      "seed": 45,
+      "question_text": "What is 200 ÷ 4?",
+      "correct_answer": 50
+    },
+    {
+      "seed": 46,
+      "question_text": "What is 108 ÷ 2?",
+      "correct_answer": 54
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "Competency requires dividing by a 1-DIGIT number, but seed 42 asks 'What is 670 ÷ 10?' where 10 is a two-digit divisor, directly exceeding the stated scope."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The other 4 seeds (30÷2, 300÷5, 200÷4, 108÷2) do stay within the 1-digit-divisor scope, so only 1 of 5 samples is out of bounds, but that one is a clear scope violation."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The bare 'What is X ÷ Y?' phrasing is clear and appropriate reading-level for Grade 3 Q4."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "No sample includes any word-problem or money framing despite 'including problems involving money' being explicit in the competency text; all 5 are bare division facts."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "Dividing 670 by 10 (seed 42) is a different, easier skill (dividing by a power of ten) than the 1-digit-divisor long-division skill this competency targets, so it does not test the intended concept."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Dividends (30-670) appropriately span the stated 2- to 3-digit range for Grade 3 Q4 division."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

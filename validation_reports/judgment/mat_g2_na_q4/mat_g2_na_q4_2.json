@@ -1,21 +1,55 @@
 {
   "node_id": "mat_g2_na_q4_2",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
-    43,
     44,
-    45,
-    46
+    45
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 44,
+      "question_text": "Which is greater: 307 or 270?",
+      "correct_answer": ">"
+    },
+    {
+      "seed": 45,
+      "question_text": "Which is greater: 92 or 930?",
+      "correct_answer": "<"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The competency is ordering unit fractions, yet 2 of 5 samples ('Which is greater: 307 or 270?', 'Which is greater: 92 or 930?') compare 2- and 3-digit whole numbers -- no fraction ever appears alongside another fraction to be ordered."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "comparing_ordering's registered 8 combos (3 axes) apparently generate whole-number magnitude comparisons for this node rather than fraction-vs-fraction comparisons, so none of that DNA's coverage actually exercises 'order unit fractions' as worded."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Comparing 92 vs 930 requires reasoning about digit count and place value, a heavier cognitive load than comparing two unit fractions like 1/3 vs 1/5, so the observed items overshoot the intended reasoning target for this fraction-ordering lc."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "None of the 5 sampled seeds shows two unit fractions placed in relative order, so the variant space that should support 'smallest to largest, and vice versa' has no observed representative in this batch despite comparing_ordering being listed as a DNA here."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "'Which is greater: 307 or 270?' maps to whole-number comparison competencies, not to unit fraction ordering, so the sampled content reaches well beyond -- and outside -- the exact scope of this lc."
+    },
+    "scale_appropriateness": {
+      "verdict": "FAIL",
+      "rationale": "The numbers observed (up to 930) fall completely outside the denominator set {2,3,4,5,6,8} this node is scoped to, which is not a pedagogical progression for unit fractions but a different number range entirely."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

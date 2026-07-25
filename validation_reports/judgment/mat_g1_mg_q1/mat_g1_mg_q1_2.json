@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g1_mg_q1_2",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What shape has 4 sides where opposite sides are equal?",
+      "correct_answer": "rectangle"
+    },
+    {
+      "seed": 43,
+      "question_text": "What shape has 3 sides and 3 corners?",
+      "correct_answer": "triangle"
+    },
+    {
+      "seed": 44,
+      "question_text": "What shape has 4 equal sides and 4 corners?",
+      "correct_answer": "square"
+    },
+    {
+      "seed": 45,
+      "question_text": "What shape has 4 equal sides and 4 corners?",
+      "correct_answer": "square"
+    },
+    {
+      "seed": 46,
+      "question_text": "What shape has 3 sides and 3 corners?",
+      "correct_answer": "triangle"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The competency requires composing/decomposing shapes, e.g. combining two triangles into a rectangle or splitting a square into triangles, but all 5 samples are static attribute-identification questions like 'What shape has 4 equal sides and 4 corners?' with no composition or decomposition action anywhere in the sampled content."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "shapes_2d registers 3 axes/24 combos per variant_registry, but nothing in the 5 sampled seeds evidences a composition/decomposition-specific axis, raising doubt about whether that skill is represented in the registered combo space at all."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The sampled sentences themselves are short and under the 15-word cap, so whatever content is served is at least readable at grade-1 level, independent of the topic mismatch."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "None of the shapes_2d variants sampled here produce a compose/decompose interaction such as choosing which two shapes combine to form a third; the registered 24-combo space, as observed, appears to only serve identification-style items for this node."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "Composing and decomposing shapes is a materially harder spatial-reasoning skill than naming a shape from its side count, so serving identification items both misses the required skill and under-serves the cognitive demand this competency actually sets."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "There's no numeric scale dimension to this shape-composition competency, so scale itself is not the issue; the mismatch is entirely one of task type."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "FAIL"
 }

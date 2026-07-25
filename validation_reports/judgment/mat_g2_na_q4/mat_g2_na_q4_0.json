@@ -1,21 +1,55 @@
 {
   "node_id": "mat_g2_na_q4_0",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
+  "review_date": "2026-07-22",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
-    44,
-    45,
-    46
+    44
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 43,
+      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 44,
+      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "correct_answer": "1/8"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency asks students to 'represent and identify unit fractions'; the sample 'What fraction does \\(\\frac{1}{8}\\) equal parts represent?' is grammatically garbled -- it embeds the answer (1/8) inside the question stem in a confusing way rather than asking the student to identify a fraction from a picture of 8 equal parts."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "variant_registry lists 9 combos across 3 axes for the fractions DNA, which is plausible for denominators {2,3,4,5,6,8} crossed with format/model type; exhaustive execution across all 9 combos is machine-verified by validate_matrix, my 5 samples are only illustrative."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "At 12 words the stem fits the 18-word cap for grade 2 quarter 4, but the awkward double reference to '1/8' (once in LaTeX, once implied by 'equal parts') asks a second-grader to parse a sentence structure that does not read as natural English."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "All five sampled seeds (42-46) returned the byte-identical 1/8 item, so this sample batch gives no direct evidence the registered 9 combos actually rotate through denominators 2,3,4,5,6 as the competency also requires, even though the registry claims that coverage."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The item stays within 'represent and identify' scope -- it never asks the student to add, compare, or find equivalents, which correctly avoids reaching into the ordering competency (mat_g2_na_q4_2) that comes later in this same node group."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Denominator 8 sits inside the explicit set {2,3,4,5,6,8} named in the competency text, so the single observed value is in-range even though the 5-sample slice never shows the smaller denominators 2 or 3 that would round out a full progression."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

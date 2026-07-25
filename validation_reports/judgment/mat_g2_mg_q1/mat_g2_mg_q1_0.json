@@ -1,21 +1,41 @@
 {
   "node_id": "mat_g2_mg_q1_0",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, fix-verification batch",
+  "review_date": "2026-07-22",
+  "blind": true,
+  "sample_seeds": [42, 43, 44, 45, 46],
+  "samples_reviewed": [
+    {"seed": 42, "question_text": "A shape is made from exactly one quarter of a circle. What is it called?", "correct_answer": "quarter-circle"},
+    {"seed": 43, "question_text": "What shape has no corners and no straight sides?", "correct_answer": "circle"},
+    {"seed": 44, "question_text": "A shape is made from exactly half of a circle. What is it called?", "correct_answer": "half-circle"},
+    {"seed": 45, "question_text": "A shape is made from exactly half of a circle. What is it called?", "correct_answer": "half-circle"},
+    {"seed": 46, "question_text": "What shape has no corners and no straight sides?", "correct_answer": "circle"}
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The competency asks students to represent and describe circles, half circles, and quarter circles; the samples directly test all three via 'no corners and no straight sides' for circle, 'exactly one quarter of a circle' for quarter-circle, and 'exactly half of a circle' for half-circle."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "variant_registry declares shapes_2d with 3 axes and 24 combos; the 5 sampled seeds surfaced 3 distinct question patterns (quarter-circle naming, circle description, half-circle naming), a reasonable illustrative spread rather than the byte-identical repetition seen in mat_g2_mg_q1_1 -- exhaustive combo execution is validate_matrix's job, not this sample."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Grade 2 Quarter 1 caps sentences at 18 words; the longest sample, 'A shape is made from exactly one quarter of a circle. What is it called?', splits into two short clauses of about 11 and 4 words, well within a 7-year-old's reading capacity."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "A 3-axis/24-combo shapes_2d registry plausibly supports repeated practice describing circle-family shapes from multiple angles (naming, property description, comparison), enough combinatorial room for mastery of this narrow, single-DNA competency."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample stays inside the circle/half-circle/quarter-circle family named in this node's competency text and never strays into the composite-figure composition content that belongs to sibling node mat_g2_mg_q1_1."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "This is a discrete named-shape identification competency (circle, half-circle, quarter-circle), not a continuous numeric range, so scale/magnitude concerns do not apply here; PASS is the correct default for this shapes_2d DNA."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "PASS"
 }

@@ -1,21 +1,41 @@
 {
   "node_id": "mat_g2_mg_q1_1",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, fix-verification batch",
+  "review_date": "2026-07-22",
+  "blind": true,
+  "sample_seeds": [42, 43, 44, 45, 46],
+  "samples_reviewed": [
+    {"seed": 42, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": 2},
+    {"seed": 43, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": 2},
+    {"seed": 44, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": 2},
+    {"seed": 45, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": 2},
+    {"seed": 46, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": 2}
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency requires composing AND decomposing figures built from six shape types (squares, rectangles, triangles, circles, half circles, quarter circles) via cut-outs and square grids, but the only visible pattern -- counting shapes in a fixed rectangle-plus-triangle figure -- exercises just the decompose-by-counting slice and never shows circles, half/quarter-circles, cut-outs, or square-grid framing."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "All 5 sampled seeds (42 through 46) returned the exact byte-identical question 'A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?' with answer 2 every time, despite a registered shapes_2d space of 3 axes and 24 combos -- a genuine low-diversity signal, not just a thin illustrative subset."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The two sentences making up the prompt run about 12 and 7 words respectively, comfortably inside the Grade 2 Quarter 1 18-word cap, so reading load itself is appropriate even though sample variety is the problem here, not sentence length."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "A 24-combo registry ought to rotate through different shape pairings (squares with triangles, circles with rectangles, and so on) and both compose and decompose directions, but since every one of 5 seeds returned the identical rectangle-triangle pairing, that breadth cannot be confirmed from the evidence given."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The single visible question type addresses only the 'decompose by counting parts' slice of a competency that explicitly names six shape types and two operations (compose and decompose) plus two tools (cut-outs, square grids), so alignment is partial rather than the full scope of this node's wording."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Content here is discrete shape-counting (2 shapes making up a figure), not a continuous numeric range, so scale/magnitude is not the concern for this node -- the concern lies in sample diversity instead."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }

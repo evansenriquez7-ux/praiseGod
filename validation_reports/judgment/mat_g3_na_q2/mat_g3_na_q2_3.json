@@ -1,7 +1,8 @@
 {
   "node_id": "mat_g3_na_q2_3",
-  "reviewed_by": "reviewer-agent",
-  "review_date": "2026-07-18",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
+  "review_date": "2026-07-25",
+  "blind": true,
   "sample_seeds": [
     42,
     43,
@@ -9,13 +10,58 @@
     45,
     46
   ],
-  "checklist": {
-    "competency_fulfillment": "PASS",
-    "comprehensive_coverage": "PASS",
-    "cognitive_capacity": "PASS",
-    "variant_comprehensiveness": "PASS",
-    "competency_alignment": "PASS",
-    "scale_appropriateness": "PASS"
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "question_text": "Daniel has ₱40 in bills and ₱22 in coins. How much money does Daniel have in all?",
+      "correct_answer": 62
+    },
+    {
+      "seed": 43,
+      "question_text": "Kuya Bien has ₱110 in bills and ₱20 in coins. How much money does Kuya Bien have in all?",
+      "correct_answer": 130
+    },
+    {
+      "seed": 44,
+      "question_text": "A class survey showed 202 students like costume sash and 30 students like wristband. How many students were surveyed in all?",
+      "correct_answer": 232
+    },
+    {
+      "seed": 45,
+      "question_text": "What is 160 + 2?",
+      "correct_answer": 162
+    },
+    {
+      "seed": 46,
+      "question_text": "Ate Cara has ₱110 in bills and ₱10 in coins. How much money does Ate Cara have in all?",
+      "correct_answer": 120
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Money-addition samples like 'Daniel has ₱40 in bills and ₱22 in coins...₱62' are arithmetically correct and directly match 'addition of numbers...including problems involving money'."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both money-framed (seeds 42,43,46) and non-money framed (seeds 44,45) additions appear, consistent with the competency's 'including' (not 'only') money language."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Sentences like 'Daniel has ₱40 in bills and ₱22 in coins' are clear and appropriately concrete for Grade 3 Q2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "A bare-fact variant (seed 45: 'What is 160 + 2?') sits alongside narrative money and survey-count variants, showing multiple presentation modes."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All arithmetic checks out (e.g. 202+30=232, 110+10=120), unlike sibling money-addition nodes in this batch, so this node's answer key is internally consistent."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "The competency is scoped to sums 'up to 10 000' but the highest sum across all 5 samples is 232, leaving the thousands range entirely untested in this batch."
+    }
   },
-  "evidence": "All mathematical constraints and visual outputs verified against MATATAG curriculum specs."
+  "overall": "CONCERN"
 }
