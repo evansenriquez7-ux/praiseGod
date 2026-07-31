@@ -82,6 +82,15 @@ jobs:
       # all — enforcement that ships but never executes is the drift this
       # workflow's own doc lint exists to prevent.
       - name: Run Unit Suite
+        # Five tests reach get_matatag_lab_config, whose module imports
+        # backend/app/database.py, which refuses to import without DATABASE_URL
+        # (deliberately — it exists to stop a silent fallback to a local DB).
+        # Nothing here touches a database: create_engine is lazy inside
+        # get_engine(), so only the import-time presence check is being
+        # satisfied. This runs locally only because of an untracked .env, which
+        # is exactly why it passed here and failed on the runner.
+        env:
+          DATABASE_URL: sqlite+pysqlite:///:memory:
         run: PYTHONPATH=. python -m pytest tests/unit/ -q -m "not slow"
 
       # Phase 4's artifact: plants seven known bugs and asserts the harness
