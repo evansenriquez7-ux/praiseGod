@@ -647,6 +647,20 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         "number_bond": {"context": ["pure"]},
     },
 
+    "length_measurement": {
+        # ruler_measure draws a ruler with an object laid against it and asks
+        # "How long is the object?" — that is read_measurement and nothing else.
+        # length_measurement had no entry in this table at all, so the formatter
+        # was offered for every task_type: mat_g2_mg_q2_1 is bound
+        # task_type="choose_unit" ("Which unit would you use to measure a
+        # book: centimeters or meters?") and served a ruler-reading item whose
+        # answer key came from invented visual params, with the DNA's actual
+        # choose_unit item discarded. compare ("which is longer?") and estimate
+        # are equally undrawable on a single ruler — estimate especially, since
+        # a ruler hands over the measurement the student is meant to estimate.
+        "ruler_measure": {"task_type": ["read_measurement"]},
+    },
+
     "multiplication": {
         "table": ["2", "3", "4", "5", "10"],
         "structure": ["result_unknown"],

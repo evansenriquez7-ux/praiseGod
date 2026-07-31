@@ -1171,3 +1171,85 @@ that the magnitude fixes did not address — `mat_g3_na_q2_5` still answers exac
 estimates; `_6`/`_7` still combine two numbers where the competency names three to four;
 `mat_g3_na_q4_1`/`_2` never generate the 7 or 9 tables. Two of those findings were not in the review
 brief and were produced by the reviewers independently. Tally moved 30/52/69 → **29/51/71**.
+
+---
+
+# Phase C — formatter fabrication — 2026-07-31
+
+## Correction to the review pass above
+
+The review section records "nine visual formatters discard the DNA's problem and
+author their own ... 43 of 1,810 naturally generated items". Forcing each
+(formatter, DNA) pair rather than counting natural selection showed that figure
+was measuring two different things at once, and one of its components was an
+instrumentation artifact:
+
+| pair | forced result | verdict |
+|---|---|---|
+| `shape_board` + `shapes_2d` | 20/20 fabricated | real, and total |
+| `shape_board` + `symmetry_slides` | 20/20 fabricated | real, and total |
+| `balance_scale` + `missing_number` | **0/60 invented** | **not a defect** |
+| `ruler_measure` + `length_measurement` | 0/20 forced; fires on `choose_unit`/`compare` | real, task-specific |
+| `number_bond`, `pattern_sequence`, `ten_frame` | 0/20 | not defects |
+
+`balance_scale` was a false positive of my own making. The probe wrapped
+`_build_balance_params`, but that function *is* the normal resolution path — it
+reads `a`/`b`/`result`/`blank_target` straight off `ctx.values` and only invents
+when they are absent, which for `missing_number` never happens. Wrapping the
+outer resolver counted every ordinary call as a fabrication. `_build_shapes` and
+`_build_ruler_params`, by contrast, are reached only from the `else:` branch, so
+those counts were sound.
+
+The lesson is the one this log keeps recording: an instrument that has not itself
+been checked will report whatever its author expected to see.
+
+## Fixed
+
+* **`shape_board` now illustrates the DNA's item.** `shapes_2d` emits
+  `{question, answer, distractors, orientation}` and the formatter wanted a
+  `shapes` list; sharing no contract, it fell through to `_build_shapes` on every
+  generation, drew random polygons, invented a question type and wrote its own
+  stem. A Grade 1 node naming "triangle, rectangle, square" served boards
+  containing circles under *"Look at the shapes. Tell how many corners does the
+  highlighted shape have."* The stem is now the DNA's question, the key its
+  answer, and the board is built from the shapes the item names. Where no
+  catalogue shape is named it raises rather than inventing one.
+  The board is deliberately **unhighlighted**: an earlier revision highlighted the
+  answer's shape, handing the answer over visually — §1F's leak class in a form
+  §1F cannot see, because it reads only stem text.
+
+* **`symmetry_slides` loses `shape_board`.** Its items are arrows turning and
+  figures sliding across a grid, none of which is in the shape catalogue. The
+  table asserted a capability the formatter does not have; removing a false entry
+  is a ground-truth correction. Those nodes keep `mcq`.
+
+* **`ruler_measure` restricted to `task_type="read_measurement"`.**
+  `length_measurement` had no `FORMATTER_VARIANT_SUPPORT` entry at all, so a
+  ruler was offered for every task type — `mat_g2_mg_q2_1` is bound
+  `choose_unit` and served a ruler-reading item with an invented answer key while
+  its real item was discarded. `compare` and `estimate` are equally undrawable on
+  one ruler; `estimate` especially, since the ruler supplies the measurement the
+  student is asked to estimate.
+
+Evidence:
+
+```
+forced shape_board + shapes_2d, 100 generations -> 0 fabrications (was 20/20)
+mat_g2_mg_q2_1 formats after the ruler fix      -> {mcq, cloze}, 0 ruler items
+natural generation, 151 nodes x 12 seeds        -> 1812 ok, 0 failed,
+                                                   0 fabrications from any formatter
+pytest tests/unit -q -m "not slow"              -> 282 passed
+```
+
+## The judgment layer did not see any of this
+
+No review went stale when `shape_board`'s behaviour changed. That is not
+reassurance. On `mat_g1_mg_q1_0`, `mat_g1_mg_q1_1`, `mat_g2_mg_q1_0` and
+`mat_g1_mg_q4_0` the five review seeds render `mcq` five times out of five, while
+`read_mcq` — the shape-board visual — is about 23% of what a student actually
+receives across a wider seed range. The layer never once observed the path that
+was serving fabricated boards, for as long as it existed, and could not have
+flagged it. The 39%-coverage sampling gap recorded above is therefore not a
+process nicety: it demonstrably hides student-facing defects. Stratifying the
+packet seeds so each node's distinct rendered formats are represented is the
+cheap half of the fix; the 151 re-reviews are the expensive half.
