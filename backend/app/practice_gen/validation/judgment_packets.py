@@ -51,18 +51,67 @@ def _render_sample(node_id: str, seed: int) -> Dict[str, Any]:
     return sample
 
 
+# How far past REVIEW_SEEDS to look for rendering paths the base seeds miss, and
+# how many extra samples to add. Both fixed so a packet stays reproducible.
+_STRATIFY_SCAN = range(47, 147)
+_MAX_EXTRA_SAMPLES = 5
+
+
+def _stratified_seeds(node_id: str) -> List[int]:
+    """
+    REVIEW_SEEDS, plus one seed per rendering path those five happen to miss.
+
+    Five fixed draws do not cover a node's formatter mix, and the gap is not
+    theoretical. On mat_g1_mg_q1_0, mat_g1_mg_q1_1, mat_g2_mg_q1_0 and
+    mat_g1_mg_q4_0 the base seeds render `mcq` five times out of five, while
+    `read_mcq` — the ShapeBoard visual — is about 23% of what a student actually
+    receives. That visual spent its entire existence discarding the DNA's item
+    and drawing an unrelated board of random polygons, and no review ever saw it:
+    across all 151 nodes the base seeds observed 233 of 598 distinct rendered
+    formats, 39%. A judgment layer that cannot see a path cannot judge it, and
+    the staleness gate then pins that blind spot in place, because it only
+    re-renders the seeds a review already cites.
+
+    Scanning for *distinct rendered format* is a proxy for "distinct rendering
+    path", not a guarantee of one — two formats can share a code path and one
+    format can hide several. It is, however, mechanical and reproducible, which
+    a reviewer's intuition about what to sample is not.
+    """
+    seen = {}
+    for seed in REVIEW_SEEDS:
+        try:
+            fmt = _render_sample(node_id, seed).get("formatter")
+        except Exception:
+            continue  # a base seed that cannot render is reported by the gate, not here
+        seen.setdefault(fmt, seed)
+
+    extra: List[int] = []
+    for seed in _STRATIFY_SCAN:
+        if len(extra) >= _MAX_EXTRA_SAMPLES:
+            break
+        try:
+            fmt = _render_sample(node_id, seed).get("formatter")
+        except Exception:
+            continue
+        if fmt not in seen:
+            seen[fmt] = seed
+            extra.append(seed)
+    return list(REVIEW_SEEDS) + extra
+
+
 def build_packet(node_id: str) -> Dict[str, Any]:
     info = get_node_info(node_id)
     if info is None:
         raise ValueError(f"Unknown node '{node_id}' — cannot build a review packet.")
-    samples = [_render_sample(node_id, s) for s in REVIEW_SEEDS]
+    seeds = _stratified_seeds(node_id)
+    samples = [_render_sample(node_id, s) for s in seeds]
     return {
         "node_id": node_id,
         "grade": info.get("grade"),
         "quarter": info.get("quarter"),
         "subdomain": info.get("subdomain") or info.get("domain"),
         "competency_text": info.get("competency", ""),
-        "sample_seeds": REVIEW_SEEDS,
+        "sample_seeds": seeds,
         "samples": samples,
     }
 
