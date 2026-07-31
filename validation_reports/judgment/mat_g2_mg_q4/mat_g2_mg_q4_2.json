@@ -1,54 +1,66 @@
 {
   "node_id": "mat_g2_mg_q4_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude Opus 5 (Claude Code session 2026-07-26), blind packet-only re-review triggered by the validate_judgment staleness gate",
+  "review_date": "2026-07-26",
   "blind": true,
   "sample_seeds": [
     42,
+    43,
     44,
-    45
+    45,
+    46
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What time does the clock show?",
+      "question_text": "Maria wakes up at 11:00. What time is that?",
       "correct_answer": "C"
     },
     {
+      "seed": 43,
+      "question_text": "Jose leaves for school at 1:00. What time is that?",
+      "correct_answer": "A"
+    },
+    {
       "seed": 44,
-      "question_text": "12 − 2 = ___",
+      "question_text": "In a pictograph, Lara's group collected 12 ribbons and another group collected 2 ribbons. How many more did Lara's group collect?",
       "correct_answer": 10
     },
     {
       "seed": 45,
-      "question_text": "3 − 2 = ___",
+      "question_text": "In a pictograph, Coach Roel's group collected 3 water bottles and another group collected 2 water bottles. How many more did Coach Roel's group collect?",
       "correct_answer": 1
+    },
+    {
+      "seed": 46,
+      "question_text": "Maria starts homework at 2:00. What time is that?",
+      "correct_answer": "B"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The lc is 'Solve problems involving elapsed time ... including timetables', but samples 44 and 45 ('12 - 2 = ___' -> 10, '3 - 2 = ___' -> 1) are bare subtraction facts with no clock, time unit, or timetable context whatsoever."
+      "rationale": "The competency is solving elapsed-time problems including timetables, but seeds 42, 43 and 46 render clock-reading items and seeds 44 and 45 render pictograph comparison items; no sampled generation asks how much time passes between two moments."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "subtraction (12 combos) and time_reading (20 combos) are both registered, but in this sample they never merge into an elapsed-time word problem, so the coverage that matters for this specific lc -- time-span arithmetic -- is not evidenced."
+      "rationale": "None of the three units the competency enumerates - minutes in an hour, hours in a day, days in a week - is exercised in the sampled window, and no timetable is presented in any of the five generations."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "'3 - 2 = ___' is a single-digit fact with no narrative, far below the multi-step reasoning ('minutes in an hour, hours in a day, days in a week') this lc's wording explicitly requires students to apply."
+      "verdict": "FAIL",
+      "rationale": "'Maria wakes up at 11:00. What time is that?' states the answer in the stem and then offers 11:00 among the options, so the item is self-answering; a Grade 2 student can score it correctly without reading a clock or reasoning about time at all."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "None of the 5 samples includes a timetable or a start/end time pair to subtract, so the registered variant space does not demonstrably reach the 'including timetables' scope this lc names."
+      "rationale": "Two of five sampled generations leave the measurement domain entirely for pictograph how-many-more problems about ribbons and water bottles, so the sampled variant pool contains content from an unrelated competency rather than elapsed-time variants."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Clock reading and bare subtraction are each simpler prerequisite skills; combining them without a time-unit narrative does not constitute 'solving problems involving elapsed time', so the sampled difficulty does not track this lc's exact scope."
+      "rationale": "The observed difficulty varies the hour shown on a clock face and the size of pictograph counts, neither of which is the interval-computation skill this competency progresses toward."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The subtraction operands (12, 3, 2) are small enough to plausibly represent hours on a clock face, but with no units or context stated, there is no way to confirm the scale is actually tied to an elapsed-time scenario."
+      "rationale": "Times shown stay within a plausible twelve-hour day and the pictograph counts stay small, so the magnitudes are not themselves inappropriate for Grade 2 - the problem is that the quantity being scaled is not elapsed time."
     }
   },
   "overall": "FAIL"

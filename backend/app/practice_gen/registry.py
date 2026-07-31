@@ -169,11 +169,28 @@ def _parse_competency_bounds(
     # However, we still parse and store max_minuend for UI purposes
     # (to show a discrete "max_minuend" axis when the LC has an explicit bound).
     elif dna_name == "subtraction":
-        # Parse explicit operand bounds
-        match = re.search(r'(?:less than|up to)\s+(\d+)', text)
-        if match:
-            max_val = int(match.group(1))
-            bounds["max_minuend"] = (1, max_val)
+        # "up to N digits" states an operand *width*, not a magnitude. The
+        # magnitude regex below captured the digit count itself, so
+        # mat_g3_na_q2_6 ("... 3 to 4 numbers of up to 2 digits") bound
+        # max_minuend=(1, 2) and served "2 - 2 = 0" at scalar 1.0 -- and both
+        # §1A and §1A-reach passed, because they assert against the *parsed*
+        # ceiling, so a mis-parsed bound immunises the node from the only
+        # checks that could expose it. Same digit-width idiom as the generic
+        # number extraction further down (see "Check for digit limits first").
+        digit_match = re.search(r'(?:up\s+to|to)\s+(\d+)\s*-?\s*digits?', text)
+        if digit_match:
+            bounds["max_minuend"] = (1, (10 ** int(digit_match.group(1))) - 1)
+        else:
+            # Parse explicit operand bounds. A capture below 10 is a digit
+            # count, an operand count or a step count -- never a minuend
+            # ceiling in MATATAG K-3 phrasing -- so it is rejected rather
+            # than believed, matching the `val >= 10` floor the generic
+            # extraction below applies for exactly this reason. With no
+            # parse the DNA's own per-grade _PARAM_BOUNDS governs, which is
+            # what the comment above describes.
+            match = re.search(r'(?:less than|up to)\s+(\d+)', text)
+            if match and int(match.group(1)) >= 10:
+                bounds["max_minuend"] = (1, int(match.group(1)))
     
     # Multiplication: "products up to X"
     elif dna_name == "multiplication":
@@ -368,9 +385,14 @@ def _parse_competency_bounds(
         elif "addition" in text or "subtraction" in text:
             bounds["operation"] = "addition_subtraction"
 
-        # Parse limit / max_result
+        # Parse limit / max_result. Same >= 10 floor as the subtraction branch
+        # and the generic extraction below: this pattern has no digit-width
+        # guard either, so "up to 2 digits"-style phrasing would otherwise bind
+        # max_result=2. No current node trips it (the live parses are 10, 20 and
+        # three Nones), so this closes the latent instance of the same root
+        # cause without changing any bound.
         match = re.search(r'(?:numbers|sums?|differences?|up\s+to|to)\s+(\d+)', text)
-        if match:
+        if match and int(match.group(1)) >= 10:
             bounds["max_result"] = int(match.group(1))
 
         # Parse tables
@@ -568,7 +590,28 @@ def _parse_competency_bounds(
         elif "range_max" in grade_defaults and dna_name in ("counting", "number_reading"):
             bounds["range"] = (10, grade_defaults["range_max"])
         elif "max_product" in grade_defaults and dna_name == "multiplication":
-            bounds["max_product"] = (0, grade_defaults["max_product"])
+            # A competency that names specific multiplication tables states its
+            # own ceiling: the largest table times the largest single-digit
+            # multiplicand the tables are practised against. The grade default
+            # (1000 at G3) described a range those nodes can never reach —
+            # "Multiply numbers using the 6, 7, 8, and 9 multiplication tables"
+            # tops out at 9 x 10 = 90 — so scalar 1.0 pointed at a ceiling ten
+            # times beyond the curriculum's actual scope (validate_matrix
+            # §1A-reach). Ground-truth correction, Ground Rule 2.
+            # Table language is parsed into bounds["tables"] only on the
+            # missing_number branch, so read it from the competency text here
+            # too rather than silently falling back to the grade default.
+            tables = bounds.get("tables")
+            if not tables:
+                if "6, 7, 8, and 9" in text or "6, 7, 8, 9" in text or "6, 7, 8, or 9" in text:
+                    tables = [6, 7, 8, 9]
+                elif ("2, 3, 4, 5, and 10" in text or "2, 3, 4, 5, 10" in text
+                      or "2, 3, 4, 5, or 10" in text):
+                    tables = [2, 3, 4, 5, 10]
+            if tables:
+                bounds["max_product"] = (0, max(tables) * 10)
+            else:
+                bounds["max_product"] = (0, grade_defaults["max_product"])
         elif "max_total" in grade_defaults and dna_name == "money_peso":
             bounds["max_total"] = (1, grade_defaults["max_total"])
 
@@ -1370,10 +1413,16 @@ NODE_TO_DNA: Dict[str, List[str]] = {
 
     # Q4: Fractions (unit, similar) with denominators 2-4
     "mat_g2_na_q4_0": ["fractions"],
-    "mat_g2_na_q4_1": ["fractions", "number_reading"],
+    # number_reading removed from _1 and _4 (Ground Rule 2, mistaken mapping):
+    # "Read and write unit/similar fractions in fraction notation" is about
+    # fraction notation, but number_reading reads whole numbers and rendered
+    # "Write 227 in words." on these nodes. It also dragged in a range bound of
+    # (10, 10000) that no fraction competency states, which is what
+    # validate_matrix §1A-reach flagged.
+    "mat_g2_na_q4_1": ["fractions"],
     "mat_g2_na_q4_2": ["fractions", "comparing_ordering"],
     "mat_g2_na_q4_3": ["fractions"],
-    "mat_g2_na_q4_4": ["fractions", "number_reading"],
+    "mat_g2_na_q4_4": ["fractions"],
     "mat_g2_na_q4_5": ["fractions", "comparing_ordering"],
 
     # ────────────────────────────────────────────────────────────────────────

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q3_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,12 +13,12 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "Daniel has 5 scrolls. A classmate has 0 scrolls. Who has more, and by how many?",
+      "question_text": "Daniel has 5 scrolls. A classmate has 0 scrolls. How many more scrolls does Daniel have?",
       "correct_answer": 5
     },
     {
       "seed": 43,
-      "question_text": "Kuya Bien has 2 story chapters. A classmate has 1 story chapters. Who has more, and by how many?",
+      "question_text": "Kuya Bien has 2 story chapters. A classmate has 1 story chapters. How many more story chapters does Kuya Bien have?",
       "correct_answer": 1
     },
     {
@@ -33,35 +33,35 @@
     },
     {
       "seed": 46,
-      "question_text": "Ate Cara has 3 photo albums. A classmate has 0 photo albums. Who has more, and by how many?",
+      "question_text": "Ate Cara has 3 photo albums. A classmate has 0 photo albums. How many more photo albums does Ate Cara have?",
       "correct_answer": 3
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "3 of 5 samples (seeds 42, 44, 45) subtract 0, e.g. 'Team A scored 13...Team B scored 0', a degenerate case that doesn't exercise real subtraction mechanics."
+      "verdict": "FAIL",
+      "rationale": "Seed 44 is unanswerable as written: 'Team A scored ___ in the school stage and Team B scored 0. What is the difference in their scores?' leaves the minuend blank and supplies only the subtrahend 0, so no subtraction can be performed and the keyed 17 is unrecoverable from the stem. The stem asks for a difference while the blank sits on Team A's score - two different quantities, one key. Arithmetic on the answerable items is sound (5-0=5 seed 42, 2-1=1 seed 43, 13-0=13 seed 45, 3-0=3 seed 46), but four of those five hand the student a zero subtrahend, so the competency verb 'solve subtraction problems' is satisfied only nominally."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Contexts vary across scrolls, story chapters, competition scores, and photo albums, giving genuine narrative diversity."
+      "verdict": "FAIL",
+      "rationale": "The competency covers all subtraction with both numbers under 20, yet the only genuine take-away in the packet is seed 43's 2-1. Seeds 42, 44, 45 and 46 all subtract 0 ('A classmate has 0 scrolls', 'Team B scored 0'), which is the identity case. Nothing crosses a ten (e.g. 15-8), nothing uses a two-digit minuend with a real subtrahend, and the clause 'given orally or in pictures' is never realised - every sample is text-only mcq or cloze with no pictorial or counted-object rendering."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "'Who has more, and by how many?' is a reasonable comparative-subtraction phrasing for Grade 1 Q3, slightly more advanced than a bare 'how many left' but still accessible."
+      "verdict": "CONCERN",
+      "rationale": "Sentence length is right for Grade 1 Quarter 3, but seed 43 prints 'A classmate has 1 story chapters', a plural-agreement error in student-facing text, and 'story chapters' is an odd countable noun for a six-year-old. Seeds 44 and 45 ask for 'the difference in their scores' in a scoreboard setting ('in the barangay court', 'in the school stage') with no picture support, which is a more abstract framing than the oral/pictorial delivery the competency assumes at this stage."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Seeds 43 (2-1) and 46 (3-0) show only small single-digit operands; the two larger-value seeds (44: 17-0, 45: 13-0) still both subtract zero rather than a genuine near-20 minuend/subtrahend pair."
+      "rationale": "Only two situation types appear across the five seeds: a comparison frame ('How many more scrolls does Daniel have?', seeds 42/43/46) and a score-difference frame (seeds 44/45). The classic Grade 1 separate/take-away story (had some, gave away some, how many left), part-part-whole with a missing part, and any comparison where the second person has more are all absent, so contextual variation is much narrower than the competency's open wording implies."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every sample is a genuine subtraction word problem with a comparative framing, matching problem_solving_subtraction for Grade 1 Q3."
+      "verdict": "CONCERN",
+      "rationale": "Seed order shows no build: 5-0, then 2-1, then 17-0, then 13-0, then 3-0. Magnitude moves up and down at random while the operation stays degenerate, so a student progressing through these seeds never advances from subtracting zero to subtracting a real quantity, and never meets the harder within-20 facts (teens minus single digits) that this competency exists to develop."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Seeds 44 and 45 do reach 17 and 13 respectively, staying safely under the 'both numbers less than 20' ceiling, even if the subtrahend is trivial."
+      "rationale": "Every operand and every keyed answer stays under 20 as the competency requires: the largest values are seed 44's 17 and seed 45's 13, and the widest distractor is 19 on seed 44. No option is negative, no two options within any item are equal (18/16/19/17 and 15/12/13/14 are all distinct), so the stated ceiling of 20 is respected throughout."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

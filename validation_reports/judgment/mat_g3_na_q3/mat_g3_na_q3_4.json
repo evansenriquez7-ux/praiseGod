@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q3_4",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,12 +13,12 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "Daniel puts 3 coins in each of 1 bag. How many coins are in all the bags?",
-      "correct_answer": 3
+      "question_text": "Daniel puts 4 coins in each of 1 bag. How many coins are in all the bags?",
+      "correct_answer": 4
     },
     {
       "seed": 43,
-      "question_text": "Kuya Bien puts 0 story chapters in each of 2 bags. How many story chapters are in all the bags?",
+      "question_text": "Kuya Bien puts 0 story chapters in each of 6 bags. How many story chapters are in all the bags?",
       "correct_answer": 0
     },
     {
@@ -28,39 +28,39 @@
     },
     {
       "seed": 45,
-      "question_text": "Coach Roel puts 0 water bottles in each of 6 bags. How many water bottles are in all the bags?",
+      "question_text": "Coach Roel puts 0 water bottles in each of 41 bags. How many water bottles are in all the bags?",
       "correct_answer": 0
     },
     {
       "seed": 46,
-      "question_text": "Ate Cara puts 0 photo albums in each of 3 bags. How many photo albums are in all the bags?",
+      "question_text": "Ate Cara puts 0 photo albums in each of 13 bags. How many photo albums are in all the bags?",
       "correct_answer": 0
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "This Grade 3 '1- to 2-step multiplication' competency renders samples byte-for-byte identical to the Grade 2 single-step node mat_g2_na_q3_3 (e.g. 'Daniel puts 3 coins in each of 1 bag'), showing no 2-step problem is ever produced."
+      "rationale": "Seed 44's cloze is broken: 'Lara puts 1 ribbon in each of ___ bags. How many ribbons are in all the bags?' blanks out the bag count while the question asks for the total, so the item is underdetermined and the pupil cannot solve it. The key 2 is the missing factor, not a computable total; it only looks plausible because 1 x 2 also equals 2. The stem asks for one quantity and the key supplies another."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "All 5 seeds again use degenerate factors of 0 or 1 (3x1, 0x2, 1x2, 0x6, 0x3), identical to the Grade 2 node's coverage gap, never exercising a real times-table product."
+      "rationale": "The clause 'including problems involving money' has no representation: no peso amount, price, cost, or change appears in any seed. The 'coins' in seed 42 are counted as objects, not valued as money. Equally, no 2-step problem is generated - every item is a single multiplication."
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "A Grade 3 Q3 node should show a meaningful step-up in complexity from Grade 2, but the identical trivial phrasing and 0/1 factors give no evidence of grade-appropriate difficulty progression."
+      "verdict": "CONCERN",
+      "rationale": "Reading level suits Grade 3, but the situations are semantically incoherent: 'Kuya Bien puts 0 story chapters in each of 6 bags' (seed 43) and 'Coach Roel puts 0 water bottles in each of 41 bags' (seed 45) describe placing nothing into bags, which a child cannot model mentally even though 0 x 6 = 0 and 0 x 41 = 0 are arithmetically right."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Nothing in this batch demonstrates a 2-step multiplication chain (e.g. multiply then add), which is the specific new skill this competency adds over the Grade 2 single-step node."
+      "rationale": "All five seeds reuse a single 'puts N items in each of M bags' template with only the name and noun swapped (Daniel/coins, Kuya Bien/story chapters, Lara/ribbons, Coach Roel/water bottles, Ate Cara/photo albums). There is no array, rate, price-per-item, comparison, or buy-then-total two-step variation."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Despite 'including problems involving money' in the competency text, none of the 5 samples mentions pesos; the content is indistinguishable from a different grade's different competency."
+      "rationale": "Difficulty runs backwards rather than building: seed 42 uses 1 bag so 4 x 1 = 4 returns the given number, and seeds 43, 45 and 46 all multiply by 0 so the answer is 0. Four of five items can be answered without multiplying anything, so the ladder never rehearses genuine 1- or 2-step multiplication."
     },
     "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "Products never exceed 3 across the batch, far too trivial for a Grade 3 node that should be demonstrating harder 1-2 step multiplication than its Grade 2 prerequisite."
+      "verdict": "CONCERN",
+      "rationale": "The magnitudes 4, 6, 13 and 41 sit within a defensible Grade 3 range, but the only sizable quantity, the 41 bags of seed 45, is paired with 0 bottles, so the product collapses to 0 and the numeric reach of the competency is never actually exercised."
     }
   },
   "overall": "FAIL"

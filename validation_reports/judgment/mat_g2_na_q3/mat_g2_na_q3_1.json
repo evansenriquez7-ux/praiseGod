@@ -1,67 +1,41 @@
 {
   "node_id": "mat_g2_na_q3_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only), 2026-07-30 post-fix re-review batch",
+  "review_date": "2026-07-30",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 1 × 3?",
-      "correct_answer": 3
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 2 × 0?",
-      "correct_answer": 0
-    },
-    {
-      "seed": 44,
-      "question_text": "661 + 120 = 781. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 45,
-      "question_text": "822 + 15 = ___",
-      "correct_answer": 837
-    },
-    {
-      "seed": 46,
-      "question_text": "What is 3 × 0?",
-      "correct_answer": 0
-    }
+    {"seed": 42, "question_text": "What is 2 × 2?", "correct_answer": 4},
+    {"seed": 43, "question_text": "What is 2 × 0?", "correct_answer": 0},
+    {"seed": 44, "question_text": "661 + 120 = ___", "correct_answer": 781},
+    {"seed": 45, "question_text": "822 + 15 = ___", "correct_answer": 837},
+    {"seed": 46, "question_text": "What is 3 × 0?", "correct_answer": 0}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency wants multiplication illustrated as repeated addition using arrays, counting by multiples, and number-line jumps, but the samples are bare multiplication facts (1x3, 2x0, 3x0) with no array, repeated-addition-string, or number-line framing, plus two of five samples (661+120=781 true/false; 822+15=837 cloze) are unrelated plain addition with no multiplication tie-in at all."
+      "verdict": "FAIL",
+      "rationale": "The competency's verbs are 'illustrate and write multiplication as repeated addition' using groups of equal quantities, arrays, counting by multiples and equal jumps on a number line. No sample does this. Seeds 42/43/46 are bare symbolic facts ('What is 2 × 2?', 'What is 2 × 0?', 'What is 3 × 0?') with no repeated-addition expression, model or bridge (e.g. nothing of the form '2 + 2 = ___ so 2 × 2 = ___'). Worse, seeds 44 and 45 ('661 + 120 = ___', '822 + 15 = ___') are plain 3-digit column addition with no multiplicative structure at all — 661 and 120 are not equal groups — so 2 of 5 items serve a different competency entirely."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "multiplication (4 axes/20 combos) and addition (4 axes/8 combos) combine for 28 combos; a repeated-addition-illustration format may exist in that space even though it did not surface here, and exhaustive execution is checked separately by validate_matrix."
+      "verdict": "FAIL",
+      "rationale": "The competency names five representations explicitly: concrete/pictorial models, numerals, groups of equal quantities, arrays, counting by multiples, and equal jumps on a number line. Only the bare numeral case appears, and only as 'What is 2 × 2?'. There is no array item, no skip-counting item (e.g. 3, 6, 9, ...), no number-line-jumps item, and no pictorial grouping item anywhere in the five samples. Additionally, two of the three multiplication items use 0 as a factor ('2 × 0', '3 × 0'), the one case that cannot be illustrated as repeated addition of equal groups, so even the numeral sub-case is covered by essentially a single usable item."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Stems are short and under the 18-word cap; the true/false item ('661 + 120 = 781. True or False?') is a reasonable grade-2-appropriate format shift, though its content is unrelated to multiplication."
+      "verdict": "CONCERN",
+      "rationale": "Vocabulary and sentence structure are simple and never reach past Grade 2 ('What is 2 × 2?' is four words), so there is no over-reach. The problem is demand that is too low and mis-targeted for G2 Q3: 2 × 2 = 4, 2 × 0 = 0 and 3 × 0 = 0 require no equal-group reasoning or skip counting whatsoever, while 661 + 120 and 822 + 15 demand only regroup-free place-value addition. Not one sample requires the multi-step act of building or reading a repeated-addition/array/number-line representation, which is the actual cognitive work this quarter's competency asks for."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Pairing multiplication with addition DNAs makes sense for a 'multiplication-as-repeated-addition' competency, but the samples show them firing as unrelated, separate items rather than one illustrating the other, e.g. no '3+3+3 = 3x3' style item."
+      "verdict": "FAIL",
+      "rationale": "Only two surface templates appear across five seeds: 'What is a × b?' (seeds 42, 43, 46) and 'a + b = ___' (seeds 44, 45). There is no word problem or real-world context (no 'There are 3 baskets with 4 mangoes each...'), no visual/array or number-line orientation, and no reversed variant asking the student to write the multiplication sentence for a given repeated addition (e.g. '4 + 4 + 4 = ___ × ___'). The second template is not a legitimate contextual variation of this competency but an unrelated addition item."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "This node introduces the vocabulary 'multiplication' and 'product', appropriately using the multiplication symbol unlike q3_0, but the illustration methods the competency specifically names -- arrays, number-line jumps, counting by multiples -- are absent from all five samples."
+      "verdict": "FAIL",
+      "rationale": "The visible difficulty variation is addend magnitude on an unrelated axis: seeds 44 and 45 jump to three-digit sums (661 + 120 = 781, 822 + 15 = 837) while the multiplication items stay pinned at trivial single-digit factors (2 × 2, 2 × 0, 3 × 0). Progression therefore scales addition place value, not the multiplicative variables this competency builds — number of groups, size of each group, or the multiple being counted by. Moving from '2 × 2' to '2 × 0' is a decrease in multiplicative demand, not a build."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Factors and addends observed (1x3, 2x0, plus addition up to 822+15) are appropriately scaled for a grade 2 quarter 3 introduction to multiplication."
+      "verdict": "FAIL",
+      "rationale": "Scale is wrong in both directions. The multiplication items sit far below the expected repeated-addition range (largest product is 2 × 2 = 4; the other two products are 0), never touching the 2s/3s/4s/5s/10s multiples a G2 Q3 repeated-addition competency is written around. Meanwhile the addition items use operands of 661, 120, 822 and 15 with sums of 781 and 837 — magnitudes that no repeated-addition or equal-groups model at this node could plausibly represent, and which come from a different number range entirely."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

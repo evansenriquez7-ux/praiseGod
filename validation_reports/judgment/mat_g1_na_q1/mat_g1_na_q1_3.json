@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q1_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,54 +13,54 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "Which is greater: 3 or 1?",
+      "question_text": "Compare the numbers: 3 ___ 1. Which sign is correct: >, <, or =?",
       "correct_answer": ">"
     },
     {
       "seed": 43,
-      "question_text": "Which is greater: 3 or 1?",
+      "question_text": "Compare the numbers: 3 ___ 1. Which sign is correct: >, <, or =?",
       "correct_answer": ">"
     },
     {
       "seed": 44,
-      "question_text": "Which is greater: 1 or 1?",
+      "question_text": "Compare the numbers: 1 ___ 1. Which sign is correct: >, <, or =?",
       "correct_answer": "="
     },
     {
       "seed": 45,
-      "question_text": "Which is greater: 1 or 3?",
+      "question_text": "Compare the numbers: 1 ___ 3. Which sign is correct: >, <, or =?",
       "correct_answer": "<"
     },
     {
       "seed": 46,
-      "question_text": "Which is greater: 1 or 2?",
+      "question_text": "Compare the numbers: 1 ___ 2. Which sign is correct: >, <, or =?",
       "correct_answer": "<"
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Competency is 'Compare two numbers up to 20', but all 5 rendered operand pairs (3/1, 3/1, 1/1, 1/3, 1/2) never use a number above 3, far short of the stated range."
+      "verdict": "PASS",
+      "rationale": "Each sample directly performs the named act of comparing two numbers, e.g. seed 45 'Compare the numbers: 1 ___ 3. Which sign is correct: >, <, or =?' keyed '<'. The task asks for a relational symbol between exactly two quantities, which is precisely the verb and object of the competency, and every key I checked is relationally correct."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Seeds 42 and 43 render the byte-identical question 'Which is greater: 3 or 1?' with the same answer, showing no variety was actually exercised between those two seeds."
+      "verdict": "CONCERN",
+      "rationale": "All three relational outcomes are represented, greater at seeds 42 and 43, equal at seed 44 with '1 ___ 1', and less at seeds 45 and 46, which is good. What is missing is any comparison involving the teen numbers the wording explicitly licenses; no sample places 11 through 20 on either side of the blank, so the pedagogically hard half of the stated domain is never exercised."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The 'Which is greater: X or Y?' template is short and clear, appropriate for Grade 1 Q1 reading level."
+      "verdict": "CONCERN",
+      "rationale": "The stem is short and the symbol legend '>, <, or =' is helpfully restated, which suits Quarter 1 of Grade 1. However every item carries the distractor 'cannot be determined', an abstract logic-test phrase that a Grade 1 pupil in the first quarter cannot decode and that is never a valid answer, so it functions as noise rather than as a diagnostic distractor."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The equal case (1 vs 1 -> '=') and both orderings (1 vs 3 -> '<', 3 vs 1 -> '>') are represented, showing the three comparison symbols are all reachable."
+      "verdict": "CONCERN",
+      "rationale": "Seeds 42 and 43 emit the byte-identical stem 'Compare the numbers: 3 ___ 1' and differ only in the shuffle of the option keys, so two of five draws are the same item. There is also a single presentation mode throughout: no 'which number is greater' wording, no comparison of two counted sets of objects, and no number-line or block-model framing."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Each sample correctly asks the student to identify greater/lesser/equal between two numbers, matching the number_comparison concept."
+      "verdict": "CONCERN",
+      "rationale": "There is no observable difficulty gradient across seeds 42 to 46; every operand is drawn from the set {1, 2, 3}, so an item comparing 1 and 2 sits at the same trivial level as one comparing 3 and 1. A competency that reaches to 20 should progress from small single digits to crossing ten and then to teen-versus-teen, and none of that ladder is present."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "Operands used are only 1, 2 and 3 across the entire batch; a competency scoped to 'up to 20' should exercise numbers much closer to that ceiling, e.g. comparing 17 and 12."
+      "rationale": "The competency's stated ceiling is 20 but the largest number appearing anywhere in the five samples is 3. Operands are confined to 1, 2 and 3, so roughly eighty-five percent of the licensed numeric range is never generated and a student could master this bank without ever comparing a two-digit number."
     }
   },
   "overall": "FAIL"

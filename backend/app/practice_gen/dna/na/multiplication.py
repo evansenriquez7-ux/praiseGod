@@ -135,7 +135,18 @@ def generate_params(
     bounds = _PARAM_BOUNDS[g_key]
 
     table_level = profile.get("table", "2_3_4_5_10")
-    num_level   = profile.get("number_type", "single_digit")
+    # An *unbound* number_type is not the same as an explicit "single_digit"
+    # selection. Defaulting to single_digit capped every G3 competency at
+    # a<=9, so "Solve 1- to 2-step multiplication problems" could never produce
+    # a product above max(table)*9 = 90 however high its ceiling
+    # (validate_matrix §1A-reach). None means "unrestricted — let max_product
+    # govern"; an explicit value is still honoured exactly.
+    # A competency that names specific tables ("the 6, 7, 8, and 9 tables") is
+    # about single-digit facts, so single_digit stays the default there. Where no
+    # table is bound the ceiling governs instead.
+    num_level   = profile.get("number_type") or (
+        "single_digit" if profile.get("table") else "any"
+    )
     structure   = profile.get("structure", "result_unknown")
     context     = profile.get("context", "pure")
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
@@ -157,8 +168,36 @@ def generate_params(
         for a in range(a_lo, a_hi + 1):
             if a * b > max_prod_val:
                 continue
+            # b of 0 or 1 makes the product test vacuous, letting a multiplicand
+            # sail past the competency's own magnitude ceiling (92 x 0 = 0 slips
+            # through a "products up to 90" bound). Hold those operands to the
+            # ceiling too — but only for b <= 1, since for b >= 2 the product
+            # test already implies it, and applying it unconditionally emptied
+            # the pool for multi-digit competencies at low scalars.
+            if b <= 1 and a > max_prod_val and num_level != "multi_digit":
+                continue
             if _satisfies_number_type(a, num_level):
                 candidate_pairs.append((a, b))
+
+    # "... and 2- to 4-digit numbers by a number whose leading digit is the only
+    # non-zero digit, with products up to 10 000" (mat_g3_na_q3_2). Multiplying by
+    # a round number (20, 300, 2000) is a sub-skill the competency names outright,
+    # and it is the only way products reach that stated ceiling: the table list
+    # tops out at 10 and `a` at 99, so the pool above could never exceed 990.
+    ceiling_from_tables = max(allowed_tables) * a_hi if allowed_tables else 0
+    if num_level in ("any", "multi_digit") and max_prod_val > ceiling_from_tables:
+        round_multipliers = [d * (10 ** k) for k in (1, 2, 3) for d in range(1, 10)]
+        for b in round_multipliers:
+            a_max_for_b = min(9999, max_prod_val // b)
+            if a_max_for_b < 10:
+                continue
+            # Sample the range rather than enumerating it — a few dozen
+            # candidates per multiplier is plenty for the windowed picker and
+            # keeps the pool from exploding into six figures.
+            step = max(1, (a_max_for_b - 10) // 40)
+            for a in range(10, a_max_for_b + 1, step):
+                if _satisfies_number_type(a, num_level):
+                    candidate_pairs.append((a, b))
 
     if not candidate_pairs:
         raise RuntimeError(

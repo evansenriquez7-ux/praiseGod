@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_dp_q3_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 5",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude Opus 5 (Claude Code session 2026-07-26), blind packet-only re-review triggered by the validate_judgment staleness gate",
+  "review_date": "2026-07-26",
   "blind": true,
   "sample_seeds": [
     42,
@@ -23,12 +23,12 @@
     },
     {
       "seed": 44,
-      "question_text": "5220 + 2200 = ___",
+      "question_text": "A class survey showed 5220 students like costume sash and 2200 students like wristband. How many students were surveyed in all?",
       "correct_answer": 7420
     },
     {
       "seed": 45,
-      "question_text": "8500 + 225 = ___",
+      "question_text": "What is 8500 + 225?",
       "correct_answer": 8725
     },
     {
@@ -39,29 +39,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Competency: \"Solve problems using data presented in a single bar graph (horizontal and vertical).\" The samples pair a graph-reading MCQ with a separate, decontextualized addition cloze (5220 + 2200 = ___) that never references the bar graph's values or categories."
+      "verdict": "FAIL",
+      "rationale": "The competency asks the student to solve problems using bar-graph data, but seeds 42, 43 and 46 only read a single value off the graph ('Look at the bar graph. What is the value for dogs?') with no computation, and seeds 44 and 45 compute without any graph at all."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "This node registers bar_graphs (30 combos) and addition (8 combos); the addition DNA's combos, as rendered here, produce generic arithmetic unconnected to the graph values shown elsewhere in the batch."
+      "verdict": "FAIL",
+      "rationale": "The competency explicitly names both horizontal and vertical bar graphs; nothing in the sampled question text distinguishes orientation, and no sample requires combining or comparing two bars, which is what 'solve problems using data' entails."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Both the graph-reading stem (8 words) and the arithmetic cloze are short and within the 22-word cap, appropriate for G3 Q3, though a true solve-using-data item would need a connecting sentence neither sample provides."
+      "verdict": "CONCERN",
+      "rationale": "Seed 44's 'A class survey showed 5220 students like costume sash and 2200 students like wristband' places implausibly large survey counts on a class-sized context and uses accessory names as survey categories, which reads oddly to a Grade 3 student even though the arithmetic is sound."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "For a solve-problems-using-data competency, the variant space would ideally compose one item (read the graph, then compute with its values); instead the two DNAs appear to fire independently here."
+      "verdict": "FAIL",
+      "rationale": "Two of five sampled generations are plain multi-digit addition with no graph reference ('What is 8500 + 225?'), so the sampled variant pool contains bare computation from a different competency rather than graph-based problem variants."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "This capstone data competency should build on q3_2's interpretation skill by adding arithmetic on graph-derived numbers, but the disconnect between graph values and addition operands doesn't show that composition."
+      "verdict": "FAIL",
+      "rationale": "The difficulty that does vary is the size of the addends in the non-graph items, reaching into the thousands, while the graph-reading items stay at single- and double-digit values; neither axis progresses the graph-interpretation skill the competency targets."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The addition operands (5220+2200, 8500+225) are large four-digit values that don't correspond to the two-digit bar-graph totals seen elsewhere in this batch (45-70), undercutting the using-this-data framing."
+      "rationale": "Bar values of 5 to 60 are appropriate for a Grade 3 graph, but the off-graph arithmetic reaches 8725, so the window mixes two unrelated magnitude regimes without either being tied to the competency's own range."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

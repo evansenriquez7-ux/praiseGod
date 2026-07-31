@@ -268,6 +268,21 @@ def validate_competency_bounds_parsing() -> List[str]:
         # explicitly; this fixture now asserts the corrected value.
         ("mat_g3_mg_q1_5", "geometric_lines", {"concept_type": "parallel_intersecting_perpendicular"}),
         ("mat_g2_mg_q4_3", "geometric_lines", {"concept_type": "straight_curved"}),
+
+        # 4. subtraction — digit-width phrasing is not a magnitude.
+        # The magnitude regex used to capture the digit count itself, so
+        # "up to 2 digits" bound max_minuend=(1, 2) and mat_g3_na_q2_5 served
+        # "2 - 2 = 0" at scalar 1.0 on a Grade 3 node. Nothing detected it:
+        # §1A and §1A-reach both assert against the *parsed* ceiling, so a
+        # mis-parsed bound immunises the node from the only checks that could
+        # expose it. These three cases pin the width-vs-magnitude distinction,
+        # which is the whole defect class rather than the three symptoms.
+        ("mat_g3_na_q2_5", "subtraction", {"max_minuend": (1, 9999)}),   # "up to 4 digits"
+        ("mat_g3_na_q2_6", "subtraction", {"max_minuend": (1, 99)}),     # "up to 2 digits"
+        ("mat_g3_na_q2_7", "subtraction", {"max_minuend": (1, 99)}),     # "up to 2 digits"
+        # ...and the magnitude phrasings that must keep parsing as magnitudes.
+        ("mat_g3_na_q2_4", "subtraction", {"max_minuend": (1, 10000)}),  # "less than 10 000"
+        ("mat_g1_na_q3_4", "subtraction", {"max_minuend": (1, 100)}),    # "less than 100"
     ]
     
     errors: List[str] = []

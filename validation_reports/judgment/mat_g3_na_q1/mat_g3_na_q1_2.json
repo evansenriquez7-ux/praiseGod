@@ -1,55 +1,67 @@
 {
   "node_id": "mat_g3_na_q1_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
+    43,
     44,
-    45
+    45,
+    46
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What is the ordinal name for position 13?",
+      "question_text": "Which word describes the 13th position?",
       "correct_answer": "thirteenth"
     },
     {
+      "seed": 43,
+      "question_text": "Which word describes the 15th position?",
+      "correct_answer": "fifteenth"
+    },
+    {
       "seed": 44,
-      "question_text": "What is the ordinal name for position 17?",
+      "question_text": "Write the symbol for the seventeenth position.",
       "correct_answer": "17th"
     },
     {
       "seed": 45,
-      "question_text": "What is the ordinal name for position 16?",
+      "question_text": "Write the symbol for the sixteenth position.",
       "correct_answer": "16th"
+    },
+    {
+      "seed": 46,
+      "question_text": "Which word describes the 16th position?",
+      "correct_answer": "sixteenth"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The lc is about ordinal position naming, and all 5 stems correctly ask 'What is the ordinal name for position N?', but the answer key is inconsistent: position 13/15 answer in words ('thirteenth') while position 17/16 sometimes answer as digits+suffix ('17th')."
+      "rationale": "The competency is to 'describe the position of objects using ordinal numbers', yet no object appears in any sample. Seed 42 asks 'Which word describes the 13th position?' and seed 44 asks 'Write the symbol for the seventeenth position.' These are numeral-to-word translations in the abstract; nothing asks which child is thirteenth in the line or which book is seventeenth on the shelf."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "ordinal_numbers registers only 1 axis / 2 combos, which seems thin for a competency spanning positions 1st through 100th; my 5 samples only cover positions 13-17, nowhere near the stated ceiling."
+      "rationale": "Only two sub-skills appear across seeds 42-46: symbol to word (13th, 15th, 16th) and word to symbol (seventeenth, sixteenth). Identifying an object at a named position in an ordered set, and naming the position of a given object in a sequence, are both part of the competency's wording and neither is generated."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The stems ('What is the ordinal name for position 15?') are 8 words, well under the 22-word cap for grade 3 quarter 1, and the single-step recall task fits this grade level."
+      "rationale": "The one-clause stems and the ordinal vocabulary on offer - 'thirteenth', 'sixteenth', 'twenty-ninth', 'thirtieth' - are well matched to a Grade 3 Quarter 1 reader, and the word-to-symbol direction at seed 45 ('sixteenth' to 16th) is a reasonable single-step demand."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "With only 2 registered combos, it's unclear whether the variant space distinguishes word-form ('sixteenth') from digit-suffix-form ('16th') answers intentionally as two separate formats, or whether this is an unintended inconsistency in a single format."
+      "rationale": "Beyond the two translation directions there is no variation at all: no ordered list to read positions from, no left-versus-right or front-versus-back starting-point variation, and no ordinals attached to real contexts such as race placings or calendar dates."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Testing positions only in the teens (13-17) is a correct but narrow slice of a competency explicitly scoped 'up to 100th'; this sample gives no evidence the difficulty progresses toward the higher end (e.g. 50th, 99th) the lc requires."
+      "rationale": "All five seeds sit within the 13th-to-17th band, so no progression exists from the irregular low ordinals (first, second, third, fifth, ninth, twelfth) through the -teenth family to the decade forms (twentieth, thirtieth) and the compound forms (twenty-first, forty-third). The genuinely hard ordinal spellings are never practised."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Positions 13-17 are a reasonable easy starting point, but with the competency's ceiling at 100th and only 2 registered combos, there's a real risk the generator never reaches the higher ordinal range this grade-3 lc is scoped to."
+      "verdict": "FAIL",
+      "rationale": "The competency's stated ceiling is 100th, but the keyed positions are only 13th, 15th, 16th, 16th and 17th, and even the distractors stop at 'thirtieth' and '30th' (seeds 43 and 45). Nothing above 30 is exercised, so more than two thirds of the stated range - including 100th itself and the compound ordinals 21st, 42nd, 53rd - is untested."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

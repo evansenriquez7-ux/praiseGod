@@ -207,6 +207,36 @@ def generate_context(
                 else:
                     profile_to_use[dim] = bound_val
 
+    # ── c1. Scalar-vs-magnitude guard for bounds that are not catalog axes ────
+    # A registry tuple bound whose key is NOT a registered continuous axis is
+    # never scalar-mapped by the orchestrator (that loop iterates the axes
+    # catalog), but the injection above hands whatever the caller supplied
+    # straight to the DNA as a raw ceiling. Two such keys exist today:
+    # subtraction's `max_minuend` (11 nodes) and rounding's `max_value` (4).
+    # So `difficulty_profile={"max_minuend": 1.0}` -- the 0-1 scalar every
+    # registered axis uses -- silently became a ceiling of 1, and
+    # mat_g3_na_q2_5 ("up to 4 digits") served "2 - 2 = 0" while reporting a
+    # competency maximum of 9999. Fail loudly instead of generating content
+    # against a ceiling the caller did not mean (AGENTS.md rule #3); an int is
+    # still honoured as the genuine magnitude it is.
+    from ..axes_catalog import get_axes_for_concept as _axes_for
+    _registered_axes = {a["name"] for a in _axes_for(dna.concept)}
+    for dim, bound_val in bounds.items():
+        if not (isinstance(bound_val, tuple) and len(bound_val) == 2):
+            continue
+        if dim in _registered_axes:
+            continue  # scalar-mapped upstream; already an absolute value here
+        supplied = profile_to_use.get(dim)
+        if isinstance(supplied, float) and bound_val[1] > 2 and supplied <= 1.0:
+            raise ValueError(
+                f"'{dim}'={supplied!r} looks like a 0-1 difficulty scalar, but '{dim}' is not a "
+                f"registered continuous axis for DNA '{dna.concept}', so nothing maps it onto the "
+                f"competency bound {bound_val} — the DNA would receive a ceiling of "
+                f"{int(supplied)}. Pass an absolute magnitude, or register '{dim}' in "
+                f"axes_catalog.CONCEPT_AXES_CATALOG so it is scalar-mapped. "
+                f"Reproduce: node={node_id} dna={dna.concept} seed={seed}."
+            )
+
     # ── c2. Curriculum-gate check (grade/quarter) ─────────────────────────────
     # Some variant values are curriculum-gated to a later grade/quarter than
     # their DNA is otherwise reachable at (e.g. multiplication number_type=
@@ -321,8 +351,14 @@ def generate_context(
     slots = get_interest_slots(resolved_theme, grade, rng, not_yet_known=not_yet_known)
 
     # ── f. Question text ──────────────────────────────────────────────────────
-    if values.get("question") is not None:
-        question_text = values["question"]
+    # Accept either key: every other DNA returns "question", but ordinal_numbers
+    # returns "question_text". That mismatch silently discarded the DNA's own
+    # rendered template and fell through to the generic stem below, which asks
+    # "What is the ordinal name for position 6?" while the DNA had computed the
+    # answer for "A runner finished in sixth place. What position number is
+    # that?" — a stem asking for a word, answered with a number.
+    if values.get("question") is not None or values.get("question_text") is not None:
+        question_text = values.get("question") or values["question_text"]
     elif spine is not None:
         try:
             question_text = spine.render(slots, values)
@@ -362,14 +398,64 @@ def generate_context(
         ep for ep in dna.error_patterns
         if ep.required_concept in cumulative_concepts
     ]
-    distractors: List[Any] = [d for d in values.get("distractors", []) if d is not None]
+    # Grades 1-3 have not met numbers below zero, so a negative option is
+    # unreadable rather than tempting. Several ErrorPatterns legitimately
+    # evaluate negative (reversed operands, "b - a"), and blind reviewers found
+    # -34, -14, -3 and -1 on offer across money, addition and multiplication
+    # items. Filtering here rather than in each formatter covers all 17 of them
+    # from one place; the formatters' own padding refills the slot in range.
+    def _as_fraction(value: Any):
+        """Parse 'a/b' (or a bare int) into a Fraction; None if not numeric."""
+        from fractions import Fraction
+
+        if isinstance(value, bool):
+            return None
+        if isinstance(value, int):
+            return Fraction(value)
+        if isinstance(value, str) and "/" in value:
+            num, _, den = value.partition("/")
+            try:
+                return Fraction(int(num.strip()), int(den.strip()))
+            except (ValueError, ZeroDivisionError):
+                return None
+        return None
+
+    def _is_equivalent_to_answer(value: Any) -> bool:
+        """
+        True when a distractor is mathematically equal to the answer even though
+        its string form differs — "2/4" offered against a keyed "1/2" gives the
+        item two correct options, and the uniqueness check compares strings so it
+        sails through. Found by blind review of mat_g1_na_q4_2 seed 42.
+        """
+        fv, fa = _as_fraction(value), _as_fraction(correct_answer)
+        return fv is not None and fa is not None and fv == fa
+
+    def _is_out_of_grade_negative(value: Any) -> bool:
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            return False
+        if isinstance(correct_answer, (int, float)) and not isinstance(correct_answer, bool):
+            return value < 0 <= correct_answer
+        return value < 0
+
+    distractors: List[Any] = [
+        d for d in values.get("distractors", [])
+        if d is not None
+        and not _is_out_of_grade_negative(d)
+        and not _is_equivalent_to_answer(d)
+    ]
     distractors_provenance: Dict[Any, str] = {d: "base" for d in distractors}
     for ep in filtered_patterns:
         if ep.formula == "None":
             continue
         try:
             distractor = _eval_error_formula(ep.formula, values)
-            if distractor is not None and distractor != correct_answer and distractor not in distractors:
+            if (
+                distractor is not None
+                and distractor != correct_answer
+                and distractor not in distractors
+                and not _is_out_of_grade_negative(distractor)
+                and not _is_equivalent_to_answer(distractor)
+            ):
                 distractors.append(distractor)
                 distractors_provenance[distractor] = ep.label
         except Exception:
@@ -579,7 +665,13 @@ def _build_symbolic_question(
         elif task_type == "find_between":
             return f"What number is between {a} and {b}?"
         else:
-            return f"Which is greater: {a} or {b}?"
+            # compare_two's answer is a relation symbol (">", "<", "="), but this
+            # stem used to ask "Which is greater: 18 or 30?" — a question whose
+            # answer is a *number*. Three independent blind reviewers flagged it:
+            # a pupil answering "30" is marked wrong, and a pupil reading the key
+            # literally is taught that "<" means greater. Ask for what is
+            # actually keyed.
+            return f"Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?"
 
     # ── Missing number ────────────────────────────────────────────────────────
     if concept == "missing_number":
@@ -640,7 +732,16 @@ def _build_symbolic_question(
             b_den = values.get("b_den", denom)
             op_sym = "+" if operation in ("add_subtract", "add") else "-"
             return f"What is \\(\\frac{{{a_num}}}{{{a_den}}} {op_sym} \\frac{{{b_num}}}{{{b_den}}}\\)?"
-        return f"What fraction does \\(\\frac{{{numer}}}{{{denom}}}\\) equal parts represent?"
+        # The previous phrasing — "What fraction does \(\frac{n}{d}\) equal parts
+        # represent?" — was both ungrammatical and self-answering: it displayed
+        # the very fraction it asked the student to name, so the item measured
+        # nothing (validate_matrix §1F). Describe the partitioning in words and
+        # let the student express it as a fraction, which is the actual skill.
+        part_word = "part is" if numer == 1 else "parts are"
+        return (
+            f"A shape is divided into {denom} equal parts. {numer} {part_word} shaded. "
+            f"What fraction of the shape is shaded?"
+        )
 
     # ── Money ────────────────────────────────────────────────────────────────
     if concept == "money_peso":

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q4_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,55 +13,55 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What fraction does \\(\\frac{1}{2}\\) equal parts represent?",
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/2"
     },
     {
       "seed": 43,
-      "question_text": "What fraction does \\(\\frac{1}{2}\\) equal parts represent?",
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/2"
     },
     {
       "seed": 44,
-      "question_text": "Find the missing number: 23, 24, 25, 26, ___",
-      "correct_answer": 27
+      "question_text": "Find the missing number: 62, 63, 64, 65, ___",
+      "correct_answer": 66
     },
     {
       "seed": 45,
-      "question_text": "What number comes next when counting: 18, 19, 20, 21, ___?",
-      "correct_answer": 22
+      "question_text": "What number comes next when counting: 44, 45, 46, 47, ___?",
+      "correct_answer": 48
     },
     {
       "seed": 46,
-      "question_text": "What fraction does \\(\\frac{1}{2}\\) equal parts represent?",
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/2"
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency is about counting halves and quarters (e.g., how many quarters make a whole), yet the samples show either 'what fraction does 1/2 equal parts represent' (identification, not counting) or plain integer sequences like 23,24,25,26,__ that never mention halves or quarters at all."
+      "verdict": "FAIL",
+      "rationale": "Seeds 44 and 45 abandon fractions entirely: 'Find the missing number: 62, 63, 64, 65, ___' (key 66) and 'What number comes next when counting: 44, 45, 46, 47, ___?' (key 48) are whole-number sequencing, not counting halves or quarters. Worse, on seed 42 the distractor '2/4' is numerically equal to the key '1/2', so that MCQ has two mathematically correct choices."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "fractions carries 3 axes/9 combos and counting carries 3 axes/28 combos in variant_registry; the harness's validate_matrix exhaustively exercises that space separately, these 5 seeds only sample it."
+      "verdict": "FAIL",
+      "rationale": "The noun 'quarters' is never realized. Seeds 42, 43 and 46 all emit the byte-identical stem 'A shape is divided into 2 equal parts. 1 part is shaded', so fourths are absent, and so is any actual counting of multiple unit fractions (two halves, three quarters, four quarters making a whole)."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Sample sentences are short single-clause prompts ('What number comes next when counting: 18, 19, 20, 21, ___?' is 10 words), comfortably under the 15-word grade-1 ceiling and single-step in structure."
+      "verdict": "CONCERN",
+      "rationale": "The seed 42 option list offers '2/1' and '2/3'. An improper fraction and a fraction in thirds are notations a Grade 1 Quarter 4 learner has not met under a halves-and-quarters lc, so the distractors require concepts the stem never taught."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "counting's 28 combos appear, from the samples, to be generating ordinary +1 integer sequences rather than fractional-part counting sequences such as 1/4, 2/4, 3/4, so as sampled the variant space does not visibly support this node's specific fractional-counting skill."
+      "verdict": "FAIL",
+      "rationale": "Three of the five seeds return one and the same sentence with only the A-D option ordering shuffled; there is no set-partition context (half of 4 cookies), no 'which shape shows one fourth', and no word-form ('one half') variant anywhere in the sample."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The node asks students to count fractional units, but the observed items either test static fraction identification or ordinary whole-number counting, neither of which is the counting-of-fractional-parts skill this exact competency names."
+      "verdict": "FAIL",
+      "rationale": "There is no difficulty ladder toward halves and quarters at all: the three fraction items are the identical single-half case, and the only 'progression' present is the drift into counting on by ones from 62 and from 44, which belongs to a Quarter 1 number-sense lc."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Whole numbers used top out at 27 and fraction denominators stay at halves, both squarely age-appropriate for grade 1 quarter 4, so scale is not the concern for this node."
+      "verdict": "CONCERN",
+      "rationale": "Counting values 44 through 66 are inside a Grade 1 range, but the fraction denominators drift to 3 ('2/3') when this lc caps denominators at 2 and 4, and the numerator 2 over denominator 1 exceeds a whole."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

@@ -24,6 +24,7 @@ from backend.app.practice_gen.validation import (
     validate_dna,
     validate_interest,
     validate_judgment,
+    validate_matrix,
     validate_vocab,
 )
 from backend.app.practice_gen.validation.validate_matrix import run_matrix_validation
@@ -54,13 +55,17 @@ def _parse_contract_section_refs() -> Set[str]:
 CONTRACT_CHECKS: Dict[str, str] = {
     "§1A": "validate_matrix: boundary exactness (0.0/1.0)",
     "§1B": "validate_matrix: containment sweep (monotonicity and window bounds)",
+    "§1A-reach": "validate_matrix: scalar 1.0 reaches the competency maximum region",
     "§1C": "validate_matrix: execution matrix (variant x formatter combinations)",
     "§1C-reverse": "validate_matrix: reverse check (excluded combinations raise clear errors)",
+    "§1C-coverage": "validate_matrix: every node/DNA/formatter has a non-empty execution matrix",
     "§1D": "validate_matrix: vocabulary/concept lint on final formatted output",
     "§1E": "validate_matrix: answer-key & interest theme invariance on formatted output",
+    "§1F": "validate_matrix: question stem does not leak its own answer",
     "§2": "validate_compat: registry/compatibility coverage & monotonicity",
     "§3": "validate_dna: structural checks and difficulty profiles feasibility",
     "§4": "validate_matrix: response schema validation",
+    "§5": "validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews",
 }
 
 def run_all() -> int:
@@ -117,21 +122,20 @@ def run_all() -> int:
     # We pass fail_fast=False to gather complete failures.
     matrix_code = run_matrix_validation(fail_fast=False, workers=0)
     matrix_ok = matrix_code == 0
-    if matrix_ok:
-        executed_checks.add("§1A")
-        executed_checks.add("§1B")
-        executed_checks.add("§1C")
-        executed_checks.add("§1C-reverse")
-        executed_checks.add("§1D")
-        executed_checks.add("§1E")
-        executed_checks.add("§4")
+    # The matrix's §-refs are *observed*, not assumed: validate_matrix records an
+    # id at each check site when that site actually evaluates an assertion. Adding
+    # them here on the strength of a 0 exit code (the previous behaviour) made the
+    # comparison below tautological — a check that silently stopped running still
+    # looked executed. See validate_matrix.LAST_EXECUTED_CHECKS.
+    executed_checks |= validate_matrix.LAST_EXECUTED_CHECKS
 
     # 6. Judgment Reviews (genuine, non-boilerplate — hard gate)
     print("\n--- 6/6: Judgment Reviews (genuine per-node artifacts) ---")
     judgment_errors = validate_judgment.validate_judgment_reviews()
     judgment_ok = len(judgment_errors) == 0
     if judgment_ok:
-        print("  PASS judgment_reviews (all nodes have genuine, complete reviews)")
+        executed_checks.add("§5")
+        print("  PASS judgment_reviews (all nodes have genuine, complete, fresh reviews)")
         # Surface the verdicts loudly: a genuine review that says FAIL is
         # documented pedagogical debt, not a passing grade. "Reviews exist"
         # (the machine-checkable gate) is not "content is clean".
@@ -167,16 +171,29 @@ def run_all() -> int:
             )
         print("  PASS contract_doc_matches_registry")
 
-        # Check matching set between executed and registered checks
-        # (Ignore §2 and §3 if their prior steps failed, to prevent redundant assertion crashes)
+        # Compare the checks the contract table claims are binding against the
+        # checks the harness *observed itself* running. A §-ref that is registered
+        # and did not run is a silently-dead contract row — the failure mode this
+        # tripwire exists for (doc_rem.md §3.5).
+        #
+        # A stage that already failed is excluded from BOTH sides: its own failure
+        # is the signal, and a partially-executed stage would otherwise emit
+        # confusing drift noise on top of the real error.
         expected_subset = set(CONTRACT_CHECKS.keys())
+        matrix_refs = {"§1A", "§1A-reach", "§1B", "§1C", "§1C-reverse", "§1C-coverage",
+                   "§1D", "§1E", "§1F", "§4"}
         if not dna_ok:
             expected_subset.discard("§3")
+            executed_checks.discard("§3")
         if not compat_ok:
             expected_subset.discard("§2")
+            executed_checks.discard("§2")
         if not matrix_ok:
-            for s in ("§1A", "§1B", "§1C", "§1C-reverse", "§1D", "§1E", "§4"):
-                expected_subset.discard(s)
+            expected_subset -= matrix_refs
+            executed_checks -= matrix_refs
+        if not judgment_ok:
+            expected_subset.discard("§5")
+            executed_checks.discard("§5")
 
         if executed_checks != expected_subset:
             raise AssertionError(

@@ -180,7 +180,7 @@ def generate_params(
     g_key = f"g{max(1, min(grade, 3))}"
     bounds = _PARAM_BOUNDS[g_key]
     min_ord = bounds["min_ordinal"]
-    diff_scalar = float(profile.get("difficulty_scalar", 0.5))
+    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
     from backend.app.practice_gen.dna.base import log_interpolate
     max_ord = int(log_interpolate(10, bounds["max_ordinal"], diff_scalar))
 

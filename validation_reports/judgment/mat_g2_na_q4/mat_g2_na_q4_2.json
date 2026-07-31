@@ -1,54 +1,77 @@
 {
   "node_id": "mat_g2_na_q4_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
+    43,
     44,
-    45
+    45,
+    46
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 43,
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/8"
     },
     {
       "seed": 44,
-      "question_text": "Which is greater: 307 or 270?",
-      "correct_answer": ">"
+      "question_text": "Arrange these numbers from smallest to largest: 502, 507, 506, 495, 493",
+      "correct_answer": [
+        493,
+        495,
+        502,
+        506,
+        507
+      ]
     },
     {
       "seed": 45,
-      "question_text": "Which is greater: 92 or 930?",
-      "correct_answer": "<"
+      "question_text": "Arrange these numbers from smallest to largest: 505, 498, 492, 503",
+      "correct_answer": [
+        492,
+        498,
+        503,
+        505
+      ]
+    },
+    {
+      "seed": 46,
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency is ordering unit fractions, yet 2 of 5 samples ('Which is greater: 307 or 270?', 'Which is greater: 92 or 930?') compare 2- and 3-digit whole numbers -- no fraction ever appears alongside another fraction to be ordered."
+      "rationale": "Not one sample orders fractions. Seeds 42, 43 and 46 serve the unrelated 'A shape is divided into 8 equal parts' identification MCQ, while seeds 44 and 45 order three-digit whole numbers: 'Arrange these numbers from smallest to largest: 502, 507, 506, 495, 493'. The competency's noun, unit fractions, appears in no ordering task."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "comparing_ordering's registered 8 combos (3 axes) apparently generate whole-number magnitude comparisons for this node rather than fraction-vs-fraction comparisons, so none of that DNA's coverage actually exercises 'order unit fractions' as worded."
+      "rationale": "The clause 'and vice versa' requires a largest-to-smallest prompt, yet both ordering seeds (44 and 45) are smallest-to-largest only. Neither uses unit fractions such as 1/2, 1/4 or 1/8, so both directions of the named skill are uncovered."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Comparing 92 vs 930 requires reasoning about digit count and place value, a heavier cognitive load than comparing two unit fractions like 1/3 vs 1/5, so the observed items overshoot the intended reasoning target for this fraction-ordering lc."
+      "rationale": "The two ordering keys are arithmetically sound (493, 495, 502, 506, 507 and 492, 498, 503, 505), but comparing five three-digit numbers is Grade 2 place-value work from an earlier quarter, not the inverse-denominator reasoning a Quarter 4 fraction-ordering node should demand."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "None of the 5 sampled seeds shows two unit fractions placed in relative order, so the variant space that should support 'smallest to largest, and vice versa' has no observed representative in this batch despite comparing_ordering being listed as a DNA here."
+      "rationale": "Two of the three distinct templates are off-topic. Missing are ordering with a common numerator of 1, number-line placement of unit fractions, and any pairwise comparison such as 'which is larger, 1/3 or 1/6?'."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "'Which is greater: 307 or 270?' maps to whole-number comparison competencies, not to unit fraction ordering, so the sampled content reaches well beyond -- and outside -- the exact scope of this lc."
+      "rationale": "The mix of a fraction-identification MCQ and whole-number sorting builds neither skill. Seeds 44 and 45 differ only in list length, five numbers versus four, which is not progression in ordering unit fractions by denominator."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "The numbers observed (up to 930) fall completely outside the denominator set {2,3,4,5,6,8} this node is scoped to, which is not a pedagogical progression for unit fractions but a different number range entirely."
+      "rationale": "Quantities reach 507 in a competency whose only values should be unit fractions with denominators no greater than 8. The generated numeric range belongs to a whole-number comparison node and is off by two orders of magnitude and the wrong number type."
     }
   },
   "overall": "FAIL"

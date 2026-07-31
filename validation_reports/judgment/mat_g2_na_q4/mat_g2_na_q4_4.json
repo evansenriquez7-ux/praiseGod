@@ -1,54 +1,66 @@
 {
   "node_id": "mat_g2_na_q4_4",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
+    43,
     44,
-    45
+    45,
+    46
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 43,
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/8"
     },
     {
       "seed": 44,
-      "question_text": "Write 596 in words.",
-      "correct_answer": "five hundred ninety-six"
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
     },
     {
       "seed": 45,
-      "question_text": "Write 456 in words.",
-      "correct_answer": "four hundred fifty-six"
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 46,
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The lc is 'Read and write similar fractions in fraction notation', but samples 44 and 45 are 'Write 596 in words' and 'Write 456 in words' -- whole-number-to-words conversions with no similar-fraction pair and no fraction notation at all."
+      "rationale": "The node asks pupils to read and write similar fractions such as 3/5 or 4/5, but seeds 42-46 all reproduce the unit-fraction stem 'A shape is divided into 8 equal parts. 1 part is shaded' with key 1/8. No numerator other than 1 is ever read or written."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "As with mat_g2_na_q4_1, the number_reading DNA's 2 registered combos supply content that has nothing to do with fraction notation, so a chunk of this node's coverage is off-topic by construction rather than by sampling bad luck."
+      "verdict": "FAIL",
+      "rationale": "Absent entirely: the name-to-symbol direction (three-fifths becoming 3/5), the symbol-to-name direction, and any family of same-denominator fractions that the word 'similar' in the competency refers to. Coverage is limited to a single symbol."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Writing 'five hundred ninety-six' from 596 is a 3-digit place-value word-naming task, cognitively unrelated to writing a fraction like 1/8 in notation, so the node mixes two different skill demands under one competency label."
+      "verdict": "PASS",
+      "rationale": "Two short declarative sentences followed by one question, with 'equal parts' as the only technical phrase, is a reasonable reading load for Grade 2 Quarter 4 and does not require multi-step reasoning."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "The number_reading axis contributes variants that cannot serve 'similar fractions' at all, so the registered variant space for this node includes combos structurally incapable of testing the stated lc."
+      "rationale": "One template, one denominator and one numerator across five seeds. There is no partitioned-set version, no missing-numerator cloze that would force the pupil to write, and no item showing two similar fractions from the same whole."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Three-digit number-to-words items belong to a numeration strand, not to fraction reading and writing, so part of the sampled content sits entirely outside -- not just beyond -- the exact wording of this competency."
+      "rationale": "Since these items are indistinguishable from those served for mat_g2_na_q4_1, the distinct skill of writing non-unit similar fractions is never practised, and the key stays at 1/8 for every seed so difficulty is constant."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "456 and 596 have no defined relationship to the denominator set {2,3,4,5,6,8} this fraction node is scoped to, so there is no coherent 'scale' to judge for that half of the sampled items."
+      "rationale": "The only fraction written is 1/8, and sixteenths appear via the distractor '3/16', which is outside the Grade 2 denominator set of 2, 3, 4, 5, 6 and 8 that bounds this reading-and-writing node."
     }
   },
   "overall": "FAIL"

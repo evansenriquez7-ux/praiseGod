@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q4_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -18,8 +18,8 @@
     },
     {
       "seed": 43,
-      "question_text": "What is the total value of 1 ₱10 coin, 1 ₱5 coin, and 2 ₱1 coins?",
-      "correct_answer": 17
+      "question_text": "What is the total value of 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin?",
+      "correct_answer": 16
     },
     {
       "seed": 44,
@@ -33,35 +33,35 @@
     },
     {
       "seed": 46,
-      "question_text": "What is the total value of 1 ₱5 coin and 1 ₱1 coin?",
-      "correct_answer": 6
+      "question_text": "What is the total value of 1 ₱10 coin and 2 ₱5 coins?",
+      "correct_answer": 20
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "This node is about recognizing individual coins/bills and their notation, e.g. naming a peso-5 coin, but every sample instead asks students to sum multiple denominations ('What is the total value of 1 peso-5 coin and 1 peso-1 coin?'), which is an addition task, not a recognition/notation task."
+      "verdict": "FAIL",
+      "rationale": "All five seeds (42-46) ask 'What is the total value of ...', which is an addition task. The competency's verb is 'Recognize' and its object includes 'their notations'; no sampled item shows a coin or bill and asks the learner to name it, match it to its ₱ notation, or read a notation aloud."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "money_peso registers 4 axes/36 combos in variant_registry, a substantial combo space that validate_matrix checks exhaustively; these 5 seeds are only illustrative of that space."
+      "verdict": "FAIL",
+      "rationale": "'bills up to ₱100' is wholly unrealized. Across every seed only ₱1, ₱5 and ₱10 coins are used, so the ₱20, ₱50 and ₱100 bills that the wording explicitly names are never once presented to the learner."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The observed sentence ('What is the total value of 1 peso-10 coin, 1 peso-5 coin, and 2 peso-1 coins?' at 14 words) stays under the 15-word grade-1 cap, though it is arguably a multi-step addition task rather than the single-step recognition this competency implies."
+      "rationale": "Each stem is a single short clause and the sums 6, 16, 13, 7 and 20 sit inside Grade 1 addition fluency; the ten-times distractors (60 at seed 42, 160 at seed 43) model a realistic place-value slip rather than a random number."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "With 36 registered combos across 4 axes for money_peso, the space plausibly could support pure recognition/notation items such as 'which coin is this', but none of the 5 sampled seeds actually surface that recognition framing; all are summation prompts."
+      "verdict": "FAIL",
+      "rationale": "One sentence frame is reused verbatim five times with only the piece counts changed. There is no picture-of-a-coin identification item, no 'which of these is a ₱10 coin', and no notation-to-word matching, so the recognition variants this lc implies are entirely missing."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency scope is narrowly 'recognize... and their notations', but the sampled items require computing sums, which is the skill named explicitly in the neighboring node mat_g1_na_q4_4, suggesting scope drift beyond what q4_3 asks for."
+      "verdict": "FAIL",
+      "rationale": "The only movement in the set is from two coins (seed 42) to three coins (seed 43), which strengthens additive fluency; nothing in the sequence incrementally builds a learner's ability to recognize denominations or their written notation."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Coin values used (peso 1, 5, 10) and totals (6-17) stay well inside the peso-100 ceiling stated in the competency, so the numeric scale itself is appropriate for grade 1."
+      "verdict": "CONCERN",
+      "rationale": "The stated ceiling is ₱100 but the largest quantity produced anywhere is ₱20 (seed 46, one ₱10 coin plus two ₱5 coins), so roughly four fifths of the mandated range is never exercised."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

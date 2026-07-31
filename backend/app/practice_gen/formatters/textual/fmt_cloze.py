@@ -85,7 +85,11 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
         elif task_type == "find_between":
             return f"What number is between {a} and {b}? ___"
         else:
-            return f"Which is greater: {a} or {b}? ___"
+            # compare_two is keyed to a relation symbol; asking "which is
+            # greater" invites a numeric answer and marks the correct one
+            # wrong. Same defect and same fix as base_generator's copy of
+            # this stem (three copies of one sentence — see doc_rem.md R2).
+            return f"Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?"
     else:
         if ctx.question_text_with_blank:
             return ctx.question_text_with_blank
@@ -141,8 +145,24 @@ def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
     correct = ctx.correct_answer
     candidates = []
     seen = {correct}
+    # Same out-of-grade guard as fmt_mcq: a Grade 1-3 pupil has not met numbers
+    # below zero, so a negative ErrorPattern value (reversed operands, "b - a")
+    # is unreadable rather than tempting. This copy was missed on the first pass
+    # and blind reviewers duly found "-14" still on offer for "0 + 14 = ___".
+    correct_is_non_negative = (
+        isinstance(correct, (int, float))
+        and not isinstance(correct, bool)
+        and correct >= 0
+    )
     for d in ctx.distractors:
         if d is None or str(d).strip().lower() in ("none", "null"):
+            continue
+        if (
+            correct_is_non_negative
+            and isinstance(d, (int, float))
+            and not isinstance(d, bool)
+            and d < 0
+        ):
             continue
         if d not in seen:
             candidates.append(d)

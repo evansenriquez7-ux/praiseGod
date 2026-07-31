@@ -211,9 +211,15 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 1,
     },
     {
+        # Was keyed "two squares" with "two rectangles" as a distractor — the
+        # reverse of the truth. Halving a rectangle down the middle yields two
+        # rectangles for every rectangle except the one whose length is exactly
+        # twice its width, and this stem specifies no dimensions, so a pupil
+        # reasoning correctly was marked wrong. "two squares" is now the
+        # distractor, which is exactly the misconception worth surfacing.
         "question": "A rectangle is cut into two equal pieces down the middle. What two shapes are made?",
-        "answer": "two squares",
-        "distractors": ["two triangles", "two rectangles", "two pentagons"],
+        "answer": "two rectangles",
+        "distractors": ["two triangles", "two squares", "two pentagons"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "standard",

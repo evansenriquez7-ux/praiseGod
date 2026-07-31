@@ -71,17 +71,20 @@ class TestLogScaleDeclarations:
         assert axis["default_min"] == 5
         assert axis["default_max"] == 50
 
-    def test_comparing_ordering_value_max_declares_logarithmic(self):
-        # Phase 1C added a value_max (5, 50) axis to comparing_ordering
-        # specifically for K-1/G1 pictograph-style comparing tasks.
-        axis = next(
-            (a for a in CONCEPT_AXES_CATALOG["comparing_ordering"] if a["name"] == "value_max"),
-            None,
+    def test_comparing_ordering_does_not_declare_a_phantom_value_max(self):
+        # comparing_ordering used to declare BOTH max_value and value_max, with
+        # the identical "Maximum Value" label — but comparing_ordering.py only
+        # ever reads max_value, so value_max was a Lab slider that did nothing.
+        # validate_matrix's generated-value containment check flagged 10 nodes
+        # producing numbers above that phantom axis's ceiling: values the DNA had
+        # never been asked to respect. Removed 2026-07-26; value_max remains a
+        # real axis for pictographs/bar_graphs, which do consume it.
+        names = [a["name"] for a in CONCEPT_AXES_CATALOG["comparing_ordering"]]
+        assert "value_max" not in names, (
+            "comparing_ordering re-declared value_max; it reads max_value, so this "
+            "axis would again be an inert duplicate slider"
         )
-        assert axis is not None, "comparing_ordering is missing a value_max axis"
-        assert axis.get("scale") == "logarithmic"
-        assert axis["default_min"] == 5
-        assert axis["default_max"] == 50
+        assert "max_value" in names
 
 
 # ─── axes_catalog.py: compute_difficulty_scalar honors the scale field ──────

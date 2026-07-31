@@ -112,6 +112,15 @@ def generate_params(
     precision_label = profile.get("precision", "nearest_ten")
     round_to = precision_map.get(precision_label, 10)
 
+    # A rounding task needs a range wide enough to contain a number that is not
+    # already a multiple of the precision. At the bottom of the difficulty window
+    # the mapped range collapses (scalar 0.0 yielded [10, 10] at precision 10),
+    # which contains only a perfectly-round number and therefore no rounding
+    # question at all. Widen to one full precision interval: that is the domain
+    # minimum for the task to exist, not a difficulty preference.
+    if max_val - min_val < round_to:
+        max_val = min_val + round_to
+
     boundary_prox = profile.get("boundary_proximity", "far_from_boundary")
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
@@ -135,8 +144,22 @@ def generate_params(
         candidates.append(number)
 
     if not candidates:
-        # Fallback: any number
-        candidates = list(range(min_val, max_val + 1))
+        # Relaxing the boundary-proximity *preference* is fine; reintroducing
+        # already-rounded numbers is not. The old fallback took any number in
+        # range, so "Round 10 to the nearest 10." reached students with the
+        # answer printed in the stem (validate_matrix §1F). Keep the invariant
+        # (dist != 0) and drop only the difficulty shaping; if even that is
+        # empty the profile is infeasible and says so rather than degrading.
+        candidates = [
+            n for n in range(min_val, max_val + 1) if _boundary_distance(n, round_to) != 0
+        ]
+    if not candidates:
+        raise RuntimeError(
+            f"generate_params (rounding): no number in [{min_val}, {max_val}] is unrounded "
+            f"at precision {round_to} — every candidate is already a multiple of it, so a "
+            f"rounding question would print its own answer. "
+            f"(grade={grade}, profile={difficulty_profile})"
+        )
 
     from backend.app.practice_gen.generators.number_difficulty import generate_number_by_window
     number = generate_number_by_window(candidates, num_diff_scalar, d=5, rng=rng)

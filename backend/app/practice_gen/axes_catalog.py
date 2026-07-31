@@ -81,14 +81,16 @@ CONCEPT_AXES_CATALOG: Dict[str, List[dict]] = {
                                   'default_max': 10000,
                                   'divisions': 5,
                                   'default': 0.5},
-                              {   'name': 'value_max',
-                                  'label': 'Maximum Value',
-                                  'dim_type': 'continuous',
-                                  'scale': 'logarithmic',
-                                  'default_min': 5,
-                                  'default_max': 50,
-                                  'divisions': 5,
-                                  'default': 0.5},
+                              # 'value_max' removed: comparing_ordering.py never
+                              # reads it (it reads 'max_value', declared above),
+                              # so it was a Lab slider with no effect and a second
+                              # control carrying the identical "Maximum Value"
+                              # label. The generated-value containment check in
+                              # validate_matrix flagged 10 nodes whose numbers
+                              # exceeded this phantom axis's ceiling — values the
+                              # DNA had never been asked to respect. 'value_max'
+                              # remains a real axis for pictographs/bar_graphs,
+                              # which do consume it.
                               {   'name': 'number_difficulty',
                                   'label': 'Number Difficulty',
                                   'dim_type': 'continuous',

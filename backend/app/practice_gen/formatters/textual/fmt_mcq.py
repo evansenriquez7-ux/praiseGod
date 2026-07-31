@@ -88,7 +88,11 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         elif task_type == "find_between":
             return f"What number is between {a} and {b}?"
         else:
-            return f"Which is greater: {a} or {b}?"
+            # compare_two is keyed to a relation symbol; asking "which is
+            # greater" invites a numeric answer and marks the correct one
+            # wrong. Same defect and same fix as base_generator's copy of
+            # this stem (three copies of one sentence — see doc_rem.md R2).
+            return f"Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?"
     else:
         # Fallback: use the question_text
         return ctx.question_text
@@ -129,11 +133,29 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
     # Collect candidate distractors — deduplicate and exclude correct answer
     candidates: List = []
     seen = {str(correct).strip().lower()}
+    correct_is_non_negative = (
+        isinstance(correct, (int, float))
+        and not isinstance(correct, bool)
+        and correct >= 0
+    )
     for d in ctx.distractors:
         if d is None:
             continue
         d_str = str(d).strip().lower()
         if d_str in ("none", "null"):
+            continue
+        # Drop negative distractors when the answer itself is non-negative. Some
+        # ErrorPattern misconceptions (reversed operands, "b - a") legitimately
+        # evaluate below zero, but a Grade 1-3 pupil has not met negative numbers,
+        # so the option is unreadable rather than tempting — blind reviewers
+        # flagged -34, -14 and -3 across money, addition and multiplication items.
+        # The padding below refills the slot with an in-range value.
+        if (
+            correct_is_non_negative
+            and isinstance(d, (int, float))
+            and not isinstance(d, bool)
+            and d < 0
+        ):
             continue
         if d_str not in seen:
             candidates.append(d)

@@ -82,7 +82,7 @@ def generate_params(
     shape     = profile.get("shape", "rectangle")
     task_type = profile.get("task_type", "find_perimeter")
     num_size  = profile.get("number_size", "small_numbers")
-    scalar    = float(profile.get("difficulty_scalar", 0.5))
+    scalar    = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
 
     lo = bounds["side_min"]
     hi_bound = bounds["side_max"] // 2 if num_size == "small_numbers" else bounds["side_max"]

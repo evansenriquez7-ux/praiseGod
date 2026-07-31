@@ -100,6 +100,17 @@ CURRICULUM_VARIANT_GATES: Dict[tuple, tuple] = {
     ("length_measurement", "unit_type", "cm"): (2, 1),
     ("length_measurement", "unit_type", "m"): (2, 1),
     ("length_measurement", "task_type", "convert"): (2, 1),
+    # missing_number's param_bounds give G2 the 2/3/4/5/10 tables and only G3 the
+    # full 2-9 set, so the 6-9 tables are not selectable before Grade 3.
+    ("missing_number", "tables", "6"): (3, 1),
+    ("missing_number", "tables", "7"): (3, 1),
+    ("missing_number", "tables", "8"): (3, 1),
+    ("missing_number", "tables", "9"): (3, 1),
+    # length_measurement.generate_params raises for choose_unit below grade 2
+    # ("m vs cm" presupposes standard units, which G1 does not use), but the gate
+    # was never registered here — so the Lab offered the option at G1 and every
+    # generation crashed. The gate mirrors the DNA's own rule.
+    ("length_measurement", "task_type", "choose_unit"): (2, 1),
 
     # Word problems: available from G1Q1 per curriculum ("solve problems given orally or in pictures")
     # No gate entries (all LCs with word_problem context available from Q1)
@@ -477,7 +488,11 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         "equation_type": ["standard", "non_standard"],
         "blank_position": ["start", "middle", "end"],
         "context": ["pure", "word_problem"],
-        "tables": ["2", "3", "4", "5", "10"],
+        # missing_number.py supports tables 2-9 at G3 (its own param_bounds say so)
+        # and registry.py binds mat_g3_na_q4_2 to tables [6,7,8,9] — but 6-9 were
+        # never declared here, so the Lab could not offer them and that competency
+        # had no representable option at all. Gated to G3 below.
+        "tables": ["2", "3", "4", "5", "6", "7", "8", "9", "10"],
     },
 
     "patterns": {
@@ -670,7 +685,12 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         "element_type": ["numbers", "shapes"],
         "ask_type": ["next", "missing"],
         # visual pattern sequence works for find_next
-        "pattern_sequence": {"task_type": ["find_next"]},
+        # ask_type is restricted too: this visual renders one sequence with blanked
+        # positions, so it can express "what comes next/what is missing" but not
+        # ask_type="identify_valid" (choose which of four candidate sequences follows
+        # the rule) or "state_rule" — those have no blank to render and produced a
+        # zero-option problem when routed here.
+        "pattern_sequence": {"task_type": ["find_next"], "ask_type": ["next", "missing"]},
         "fill_in_table": {"task_type": ["find_missing", "find_rule"]},
     },
 

@@ -1,15 +1,9 @@
 {
   "node_id": "mat_g3_na_q4_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only), 2026-07-30 post-fix re-review batch",
+  "review_date": "2026-07-30",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46],
   "samples_reviewed": [
     {
       "seed": 42,
@@ -28,7 +22,7 @@
     },
     {
       "seed": 45,
-      "question_text": "480 ÷ ___ = 80",
+      "question_text": "480 divided by what equals 80?",
       "correct_answer": 6
     },
     {
@@ -39,29 +33,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples show missing-number division sentences ('6÷6=___', '120÷___=15', '480÷___=80') matching the 'find the missing number' framing, using divisors/quotients within the 6-9 family for some cases."
+      "verdict": "CONCERN",
+      "rationale": "The items do perform the competency verb 'find the missing number in a number sentence' — seed 44 '120 ÷ ___ = 15' and seed 45 '480 divided by what equals 80?' both leave a genuine blank in a division sentence and require the inverse relation to solve. But the dominant item, rendered by three of five seeds (42, 43, 46), is '6 ÷ 6 = ___. What is the missing number?' whose answer is 1 — a degenerate identity that is recalled, not solved by any missing-number reasoning, and that does not exercise division 'by 6' in any meaningful fact sense. Half the competency's stated operation set (multiplication) is never touched by any of the five samples."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "variant_registry lists a large 240-combo missing_number DNA plus a 20-combo division DNA, but 3 of the 5 samples are the identical trivial '6÷6=___. What is the missing number?' (seeds 42, 43, 46), so this illustrative slice is heavily skewed toward one degenerate case."
+      "verdict": "FAIL",
+      "rationale": "The competency names 'multiplication or division by 6, 7, 8, and 9' and the sampled set covers only a sliver of it. All five samples are division; not a single multiplication number sentence (e.g. 7 × ___ = 56) appears. Of the four required divisor families, only 6 (seeds 42/43/46 '6 ÷ 6', seed 45 answer 6) and 8 (seed 44 answer 8) appear — the 7 and 9 tables are entirely absent. Furthermore three of the five seeds render the identical item '6 ÷ 6 = ___. What is the missing number?' with only the A-D option order shuffled, so the effective distinct-item count is three, not five, which makes the coverage hole larger than the seed count suggests."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Short single-sentence prompts with an explicit 'What is the missing number?' cue are appropriate for grade 3 quarter 4 reading level."
+      "verdict": "CONCERN",
+      "rationale": "Sentence structure and vocabulary are appropriately plain for Grade 3 — 'What is the missing number?' and 'divided by what equals 80?' use no gated terms and no multi-clause phrasing. The problem is that required reasoning is wildly uneven rather than grade-calibrated: '6 ÷ 6 = ___' demands nothing beyond knowing a number divided by itself is 1, while '480 divided by what equals 80?' asks a Grade 3 Q4 pupil to work with a three-digit dividend and a two-digit quotient (480 ÷ 80), and '120 ÷ ___ = 15' pairs a three-digit dividend with the two-digit quotient 15. Neither of those is a basic 6-9 fact recall; both push toward multi-digit division reasoning that sits above this quarter's missing-number-in-a-basic-fact demand."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Three of five samples are byte-identical; more variety in which position (dividend, divisor, or quotient) is blanked would better demonstrate the registered 240-combo space."
+      "rationale": "Two real presentation variants are present and that is a genuine strength: a bare symbolic cloze, '120 ÷ ___ = 15', and a prose-phrased pure-math item, '480 divided by what equals 80?', alongside the MCQ symbolic-with-prompt form '6 ÷ 6 = ___. What is the missing number?'. Two unknown positions also appear — missing quotient (seeds 42/43/46) and missing divisor (seeds 44, 45). Missing, however, are any contextual word problem (no items, pesos, groups, or sharing scenario anywhere in the five samples), the missing-dividend orientation (___ ÷ 8 = 9), and any multiplication orientation such as ___ × 7 = 42 or 9 × ___ = 63."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Missing-number division sentences correctly target algebraic pre-thinking within the 6-9 table range without drifting into other operations."
+      "verdict": "FAIL",
+      "rationale": "The axis that actually varies across the samples is dividend magnitude — 6, then 120, then 480 — not the thing this competency is about, which is the 6/7/8/9 fact families and the position of the unknown. Progressing from '6 ÷ 6 = ___' (answer 1) to '480 divided by what equals 80?' builds place-value and multi-digit division facility while leaving the 7 and 9 tables and all multiplication sentences unexercised. Compounding this, three of five seeds produce the same '6 ÷ 6 = ___. What is the missing number?' item, so there is little usable progression at all: the observed ladder is one trivial identity repeated three times plus two large-dividend items."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The quotient/divisor magnitudes shown (6, 8, 15, 80) are consistent with 6-9-table-based missing-number problems for grade 3."
+      "verdict": "FAIL",
+      "rationale": "A competency scoped to multiplication/division 'by 6, 7, 8, and 9' implies operands inside the basic fact family, with products and dividends topping out around 81-90 (9 × 9, 9 × 10). Seed 44 uses a dividend of 120 with quotient 15, and seed 45 uses a dividend of 480 with quotient 80 — both far past that ceiling, and neither 15 nor 80 is a member of the 6-9 tables, so these are not simply larger versions of the target facts. Distractors reinforce the scale problem: seed 45 offers 2880 (480 × 6) and 474 (480 − 6), four- and three-digit values well outside Grade 3 Q4 basic-fact range. At the other extreme the repeated '6 ÷ 6 = ___' sits below the intended range, so the sampled scale straddles the correct band without landing in it."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

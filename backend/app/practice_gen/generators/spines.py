@@ -327,9 +327,15 @@ _SUB_COMPARING_FEWER = Spine(
 
 _COMP_WHO_HAS_MORE = Spine(
     id="comp_who_has_more",
+    # The answer this spine is keyed to is the *difference* (blank_target
+    # "result"), but the stem used to ask "Who has more, and by how many?" —
+    # a two-part question whose first part names a person. A pupil answering
+    # "Ate Cara" was marked wrong against a key of 5. Ask only for the quantity
+    # that is actually keyed; which of the two is larger is already implied by
+    # the phrasing "how many more".
     template=(
         "{actor} has {a} {objects}. A classmate has {b} {objects}. "
-        "Who has more, and by how many?"
+        "How many more {objects} does {actor} have?"
     ),
     required_concepts={"subtraction", "comparing_ordering"},
     blank_target="result",

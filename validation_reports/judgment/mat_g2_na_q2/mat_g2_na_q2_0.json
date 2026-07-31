@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q2_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,7 +13,7 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What is the total value of 2 ₱20 bills, 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin?",
+      "question_text": "What is the total value of 1 ₱50 bill, 1 ₱5 coin, and 1 ₱1 coin?",
       "correct_answer": 56
     },
     {
@@ -40,28 +40,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every sample directly asks for the total value of a mix of peso bills and coins, e.g. '2 P20 bills, 1 P10 coin, 1 P5 coin, and 1 P1 coin' = 56, matching the competency's core ask of determining and writing the value of a combination of bills and coins."
+      "rationale": "The money stems do what the verb asks and every total hand-checks: seed 42 gives 50 + 5 + 1 = 56, seed 43 gives 10 + 1 = 11, seed 44 gives 5 + 1 = 6, seed 45 gives 1 + 1 = 2, and seed 46 gives 20 + 20 + 5 = 45, all keyed correctly."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "money_peso registers 4 axes with 36 combos, the largest combo count reviewed in this batch so far, giving ample room for the centavo-only, peso-coin-only, peso-bill-only, and combined variants the competency lists; validate_matrix separately confirms exhaustive execution of that space."
+      "verdict": "FAIL",
+      "rationale": "The wording explicitly enumerates four sub-cases and only two are generated: peso coins only (seeds 43, 44, 45) and combined coins with bills (seeds 42, 46). No centavo-coins-only item and no peso-bills-only item appears anywhere in the packet."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Stems like 'What is the total value of 2 P20 bills, 1 P10 coin, 1 P5 coin, and 1 P1 coin?' run about 15 words, near but under the 18-word cap, and require a multi-item sum which is an appropriately stretched but grade-2-quarter-2-suitable task."
+      "rationale": "Piece counts stay at one or two per denomination and totals stay under 60 pesos, so a Grade 2 Quarter 2 pupil adds at most three friendly addends (50 + 5 + 1) with no regrouping and a single short sentence to read."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The 36-combo money_peso registry plausibly supports the four listed denomination combinations, and the samples already show both bill-plus-coin and multi-coin combinations."
+      "verdict": "CONCERN",
+      "rationale": "Every stem is the identical 'What is the total value of ...' frame. There is no wallet or shopping context, no 'write the amount using the peso sign', and no item using several pieces of one denomination beyond the two 20-peso bills of seed 46."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The samples target exactly value-determination of bill/coin combinations without drifting into comparison or arithmetic-word-problem territory, matching this competency's narrower 'determine and write the value' wording precisely."
+      "verdict": "CONCERN",
+      "rationale": "The five seeds cluster between 2 and 56 pesos with the same one-step summing demand, so there is no ladder from single-denomination counting up through mixed sets toward the 1000-peso combinations the competency envisions."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "Observed totals (56, 11, 6, 2, 45) are all well under 100 despite the competency's P1000 ceiling and the vocabulary word 'centavo' being introduced here; none of the 5 samples show a P100+ bill or a centavo coin, so the higher end and the centavo denomination specifically are unconfirmed."
+      "rationale": "The stated ceiling is 1000 pesos but the largest total shown is 56 pesos and no denomination above the 50-peso bill of seed 42 ever appears; 100, 200, 500 and 1000-peso bills are entirely untested in this sample."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

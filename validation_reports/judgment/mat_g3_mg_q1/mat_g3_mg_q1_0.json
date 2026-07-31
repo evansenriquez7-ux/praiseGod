@@ -1,22 +1,67 @@
 {
   "node_id": "mat_g3_mg_q1_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-3 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 47, 48],
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
   "samples_reviewed": [
-    {"seed": 42, "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 21 rows and 4 columns. Estimate how many unit tiles cover the rectangle in all.", "correct_answer": 84},
-    {"seed": 43, "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 2 rows and 10 columns. Estimate how many unit tiles cover the rectangle in all.", "correct_answer": 20},
-    {"seed": 44, "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 14 rows and 17 columns. Estimate how many unit tiles cover the rectangle in all.", "correct_answer": 238},
-    {"seed": 48, "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 18 rows and 11 columns. Estimate how many unit tiles cover the rectangle in all.", "correct_answer": 198}
+    {
+      "seed": 42,
+      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 22 rows and 5 columns. Estimate how many unit tiles cover the rectangle in all.",
+      "correct_answer": 110
+    },
+    {
+      "seed": 43,
+      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 3 rows and 11 columns. Estimate how many unit tiles cover the rectangle in all.",
+      "correct_answer": 33
+    },
+    {
+      "seed": 44,
+      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 15 rows and 18 columns. Estimate how many unit tiles cover the rectangle in all.",
+      "correct_answer": 270
+    },
+    {
+      "seed": 45,
+      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 10 rows and 15 columns. Estimate how many unit tiles cover the rectangle in all.",
+      "correct_answer": 150
+    },
+    {
+      "seed": 46,
+      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 4 rows and 14 columns. Estimate how many unit tiles cover the rectangle in all.",
+      "correct_answer": 56
+    }
   ],
   "findings": {
-    "competency_fulfillment": {"verdict": "PASS", "rationale": "The fix visibly worked: unlike the stale review's generic 'Find the area of the rectangle.' stem, every current sample names the tile arrangement explicitly ('covered edge-to-edge with unit square tiles, arranged in N rows and M columns'), matching 'illustrate ... using square tile units' directly."},
-    "comprehensive_coverage": {"verdict": "PASS", "rationale": "Rows/columns vary widely across the 7 seeds (2x10 up to 21x4 and 14x17), giving genuine numeric diversity rather than one repeated grid shape being re-skinned."},
-    "cognitive_capacity": {"verdict": "PASS", "rationale": "Sentence structure is a single short imperative clause naming rows and columns, well within grade-3 quarter-1 reading demand and free of extraneous clauses."},
-    "variant_comprehensiveness": {"verdict": "CONCERN", "rationale": "I recomputed 21x4=84, 14x17=238, 18x11=198 and all match, but every sample is the identical rows-times-columns prose template, so the variant space doesn't yet include a version paired with an actual drawn tile grid image."},
-    "competency_alignment": {"verdict": "PASS", "rationale": "The task stays on illustrating area via unit tiles rather than drifting into perimeter or the formula-naming lc that follows it later in this same quarter's sequence."},
-    "scale_appropriateness": {"verdict": "CONCERN", "rationale": "A 14x17 or 21x4 tile grid (238 and 84 tiles respectively) is large for a first hands-on 'illustrate with square tiles' activity; a grade-3 quarter-1 introduction to counting tiles would more plausibly stay under a 10x10 grid a child could visualize."}
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The stem says 'Estimate how many unit tiles cover the rectangle in all', but the key demands the exact product and every distractor sits within two of it (seed 42 keys 110 against 109, 111 and 112). A genuine estimate cannot discriminate those options, so the item covertly grades exact multiplication. The verb 'Illustrate' is never exercised - no tile diagram, drawing or partially covered figure appears."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The competency covers 'a square or rectangle', yet all five seeds use unequal dimensions - 22 by 5, 3 by 11, 15 by 18, 10 by 15 and 4 by 14. The square sub-case, where rows equal columns, is never generated in the sample."
+    },
+    "cognitive_capacity": {
+      "verdict": "FAIL",
+      "rationale": "Seed 44's '15 rows and 18 columns' needs two-digit by two-digit multiplication and seed 42's '22 rows and 5 columns' needs two-digit by one-digit, both beyond Grade 3 Quarter 1 where multiplication is only being introduced. Counting or estimating 270 individual tiles is likewise not a Q1 task."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "A single frozen sentence frame is reused at every seed with only the two dimensions changing. There is no inverse variant giving the tile count and one side, no partially tiled rectangle to complete, and no labelling of the tile unit in square centimetres or metres."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Areas run 33, 56, 110, 150 and 270 with no ordering by difficulty, and because the distractors are always off-by-one neighbours of the key, the practice trains exact product recall rather than the tiling-and-estimating reasoning the competency names."
+    },
+    "scale_appropriateness": {
+      "verdict": "FAIL",
+      "rationale": "Hand-checking confirms all five keys are arithmetically correct (22x5=110, 3x11=33, 15x18=270, 10x15=150, 4x14=56), but a 15 by 18 array yielding 270 tiles far exceeds what a Grade 3 Quarter 1 pupil can tile, count or estimate; dimensions should stay near 10 by 10 or below."
+    }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

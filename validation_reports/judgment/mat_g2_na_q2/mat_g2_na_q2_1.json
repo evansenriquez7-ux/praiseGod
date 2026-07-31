@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q2_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,7 +13,7 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What is the total value of 2 ₱20 bills, 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin?",
+      "question_text": "What is the total value of 1 ₱50 bill, 1 ₱5 coin, and 1 ₱1 coin?",
       "correct_answer": 56
     },
     {
@@ -23,12 +23,12 @@
     },
     {
       "seed": 44,
-      "question_text": "Which is greater: 307 or 270?",
+      "question_text": "Compare the numbers: 307 ___ 270. Which sign is correct: >, <, or =?",
       "correct_answer": ">"
     },
     {
       "seed": 45,
-      "question_text": "Which is greater: 92 or 930?",
+      "question_text": "Compare the numbers: 92 ___ 930. Which sign is correct: >, <, or =?",
       "correct_answer": "<"
     },
     {
@@ -40,27 +40,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency asks students to compare the VALUES OF DIFFERENT DENOMINATIONS of peso coins and bills, but none of the 5 samples do this -- 2 samples ask for a total value (not a comparison) and the 2 comparison samples ('Which is greater: 307 or 270?', 'Which is greater: 92 or 930?') compare bare abstract numbers with no peso symbol or denomination framing at all."
+      "rationale": "The verb is 'compare the values of different denominations', but seeds 42, 43 and 46 ask for totals (50 + 5 + 1 = 56, 10 + 1 = 11, 20 + 20 + 5 = 45) and seeds 44/45 compare bare numerals. No sample ever sets two money amounts side by side to be compared."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "money_peso (4 axes/36 combos) plus comparing_ordering (3 axes/8 combos) give 44 combined combos; a denomination-comparison item type should exist somewhere in that space, but it did not surface in these 5 samples, and exhaustive execution is separately checked by validate_matrix."
+      "verdict": "FAIL",
+      "rationale": "None of the expected comparisons appear: coin against coin, bill against bill, coin against bill, or equal-value sets such as five 20-peso coins against one 100-peso bill. The '=' relation shows up only as a distractor in seeds 44 and 45."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The comparison stems ('Which is greater: 307 or 270?') are short and under the word cap, but comparing 3-digit abstract numbers is a different and arguably harder cognitive task than comparing two named sets of coins/bills, which is what the competency actually specifies."
+      "verdict": "PASS",
+      "rationale": "'Compare the numbers: 92 ___ 930. Which sign is correct: >, <, or =?' is readable at Grade 2 Quarter 2 and the >, <, = symbol set is age-appropriate, even though the content it is applied to is the wrong content for this node."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The comparing_ordering DNA appears to produce generic magnitude comparisons rather than denomination-specific ones in this sample; for this competency the variant space needs to pair two coin/bill descriptions, not two bare numbers, and that pairing is not evidenced here."
+      "verdict": "FAIL",
+      "rationale": "Three of the five stems (seeds 42, 43, 46) are word-for-word the same items served under mat_g2_na_q2_0, so this node has no distinct variant pool of its own, and no money-comparison context of any kind is offered."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "This node's competency is a strict subset of general magnitude comparison -- comparing named money denominations -- but the sampled comparison items are indistinguishable from a generic number-comparison node and do not reference money at all, over-generalizing beyond the stated scope."
+      "rationale": "The only genuine difficulty axis present is place-value comparison of abstract numerals (307 versus 270, 92 versus 930), which develops a different competency and leaves comparison of peso denominations at zero exposure across all five seeds."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The abstract comparison numbers (307, 270, 92, 930) reach into the hundreds, appropriately under the P1000 ceiling if these represented peso values, but since they carry no peso symbol it cannot be confirmed they are money amounts at all."
+      "rationale": "The comparison numerals (92 to 930) sit inside 1000 and the money totals (11 to 56 pesos) sit far below it, so nothing in the sample approaches or tests the 1000-peso boundary the competency explicitly names."
     }
   },
   "overall": "FAIL"

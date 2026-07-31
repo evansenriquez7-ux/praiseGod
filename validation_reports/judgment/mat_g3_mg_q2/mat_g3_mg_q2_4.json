@@ -1,46 +1,67 @@
 {
   "node_id": "mat_g3_mg_q2_4",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-6 rounding-fix verification",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51],
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
   "samples_reviewed": [
-    {"seed": 42, "question_text": "An object's capacity measures 15 mL. About how many mL is that, rounded to the nearest 10?", "correct_answer": 20},
-    {"seed": 43, "question_text": "An object's capacity measures 5 mL. About how many mL is that, rounded to the nearest 10?", "correct_answer": 10},
-    {"seed": 44, "question_text": "An object's capacity measures 53 mL. About how many mL is that, rounded to the nearest 10?", "correct_answer": 50},
-    {"seed": 45, "question_text": "An object's capacity measures 35 mL. About how many mL is that, rounded to the nearest 10?", "correct_answer": 40},
-    {"seed": 46, "question_text": "An object's capacity measures 10 mL. About how many mL is that, rounded to the nearest 10?", "correct_answer": 10},
-    {"seed": 47, "question_text": "An object's capacity measures 46 mL. About how many mL is that, rounded to the nearest 10?", "correct_answer": 50},
-    {"seed": 48, "question_text": "An object's capacity measures 41 mL. About how many mL is that, rounded to the nearest 10?", "correct_answer": 40},
-    {"seed": 49, "question_text": "An object's capacity measures 9 mL. About how many mL is that, rounded to the nearest 10?", "correct_answer": 10},
-    {"seed": 50, "question_text": "An object's capacity measures 64 mL. About how many mL is that, rounded to the nearest 10?", "correct_answer": 60},
-    {"seed": 51, "question_text": "An object's capacity measures 32 mL. About how many mL is that, rounded to the nearest 10?", "correct_answer": 30}
+    {
+      "seed": 42,
+      "question_text": "An object's capacity measures 15 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 20
+    },
+    {
+      "seed": 43,
+      "question_text": "An object's capacity measures 5 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 10
+    },
+    {
+      "seed": 44,
+      "question_text": "An object's capacity measures 53 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 50
+    },
+    {
+      "seed": 45,
+      "question_text": "An object's capacity measures 35 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 40
+    },
+    {
+      "seed": 46,
+      "question_text": "An object's capacity measures 11 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 10
+    }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Recomputed all 10 mL answer keys by round-half-up and every one matches: notably seed 43's 5 mL now keys to 10 (was wrongly 0 in the prior review round), resolving the midpoint bug that previously made this node's own answer key internally inconsistent."
+      "verdict": "FAIL",
+      "rationale": "'Estimate capacity' is not what seed 44 does: 'An object's capacity measures 53 mL. About how many mL is that, rounded to the nearest 10?' states the capacity outright and then asks for a rounding. No judgment of how much a container holds is required, so the capacity competency is discharged as a nearest-ten rounding exercise. The phrase 'an object's capacity' is also wrong register - capacity belongs to containers, not to objects generally."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The lc text names both 'liters and/or milliliters', yet all 10 samples in this batch are exclusively milliliters (5 to 64); no liter-scale item, which would involve a larger container, appears anywhere here."
+      "verdict": "FAIL",
+      "rationale": "The competency names 'liters and/or milliliters', but seeds 42-46 are milliliters in every case (15 mL, 5 mL, 53 mL, 35 mL, 11 mL). Not one litre item exists, so the larger unit that most real capacity estimation depends on - pitchers, pails, bottles - is entirely missing."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "'An object's capacity measures 46 mL. About how many mL is that, rounded to the nearest 10?' is two short plain sentences with a single arithmetic step, well within grade-3 quarter-2 reading and reasoning demand."
+      "verdict": "CONCERN",
+      "rationale": "A Grade 3 pupil has no way to picture 'an object' holding 5 mL (seed 43); capacity at this level must be tied to familiar vessels such as a spoon, a glass, or a soft-drink bottle before abstract millilitre figures carry any meaning."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The batch mixes round-down cases (41, 64, 32), round-up-from-below-half cases (46, 9), a value already at a tens multiple (10), and two genuine midpoints (5, 35) that both now round up consistently, covering the full behavior space of the round-half-up rule."
+      "verdict": "FAIL",
+      "rationale": "All five seeds share a single sentence frame with only the number changed, and it is the same frame used for the mass competency with the unit swapped. Absent are: which unit suits this container, which of these estimates is most reasonable for a drinking glass, comparing the capacity of two containers, and estimate-then-measure items."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The item structure mirrors the sibling mass node with only the unit swapped to mL, and every question supplies an exact known volume to round rather than asking the student to judge an unmeasured container's capacity by benchmark comparison as 'estimate capacity' implies."
+      "rationale": "The seeds progress only from 5 mL to 53 mL with an identical single rounding step; there is no escalation from millilitres to litres or from single containers to combined capacity, so the sequence does not deepen capacity understanding as the competency intends."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The mL magnitudes (5 through 64) describe a small container-sized volume, an appropriately modest two-digit scale for a grade-3 quarter-2 introduction to capacity estimation."
+      "verdict": "FAIL",
+      "rationale": "The range 5 mL to 53 mL is minute for a competency that reaches litres, and the option sets are mathematically unsound: seed 42 lists 21, 22, 19 against the key 20 and seed 46 lists 12, 9, 11 against the key 10. A value rounded to the nearest 10 cannot be 21 or 9, so the distractors are eliminable on form alone and the item measures nothing."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

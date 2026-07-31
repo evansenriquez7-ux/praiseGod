@@ -1,46 +1,67 @@
 {
   "node_id": "mat_g3_mg_q2_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-6 rounding-fix verification",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51],
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
   "samples_reviewed": [
-    {"seed": 42, "question_text": "An object's mass measures 15 g. About how many g is that, rounded to the nearest 10?", "correct_answer": 20},
-    {"seed": 43, "question_text": "An object's mass measures 5 g. About how many g is that, rounded to the nearest 10?", "correct_answer": 10},
-    {"seed": 44, "question_text": "An object's mass measures 53 g. About how many g is that, rounded to the nearest 10?", "correct_answer": 50},
-    {"seed": 45, "question_text": "An object's mass measures 35 g. About how many g is that, rounded to the nearest 10?", "correct_answer": 40},
-    {"seed": 46, "question_text": "An object's mass measures 10 g. About how many g is that, rounded to the nearest 10?", "correct_answer": 10},
-    {"seed": 47, "question_text": "An object's mass measures 46 g. About how many g is that, rounded to the nearest 10?", "correct_answer": 50},
-    {"seed": 48, "question_text": "An object's mass measures 41 g. About how many g is that, rounded to the nearest 10?", "correct_answer": 40},
-    {"seed": 49, "question_text": "An object's mass measures 9 g. About how many g is that, rounded to the nearest 10?", "correct_answer": 10},
-    {"seed": 50, "question_text": "An object's mass measures 64 g. About how many g is that, rounded to the nearest 10?", "correct_answer": 60},
-    {"seed": 51, "question_text": "An object's mass measures 32 g. About how many g is that, rounded to the nearest 10?", "correct_answer": 30}
+    {
+      "seed": 42,
+      "question_text": "An object's mass measures 15 g. About how many g is that, rounded to the nearest 10?",
+      "correct_answer": 20
+    },
+    {
+      "seed": 43,
+      "question_text": "An object's mass measures 5 g. About how many g is that, rounded to the nearest 10?",
+      "correct_answer": 10
+    },
+    {
+      "seed": 44,
+      "question_text": "An object's mass measures 53 g. About how many g is that, rounded to the nearest 10?",
+      "correct_answer": 50
+    },
+    {
+      "seed": 45,
+      "question_text": "An object's mass measures 35 g. About how many g is that, rounded to the nearest 10?",
+      "correct_answer": 40
+    },
+    {
+      "seed": 46,
+      "question_text": "An object's mass measures 11 g. About how many g is that, rounded to the nearest 10?",
+      "correct_answer": 10
+    }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Hand-checked all 10 rendered answer keys by round-half-up: the prior seed-43 defect (5 g keyed to 0) is gone -- 5 g now keys to 10, and the paired midpoint case 35 g still correctly keys to 40, so both exact-midpoint samples now agree on rounding up rather than one going down and one going up."
+      "verdict": "FAIL",
+      "rationale": "The verb is 'estimate mass of an object', but seed 42 reads 'An object's mass measures 15 g. About how many g is that, rounded to the nearest 10?' - the exact mass is already supplied, so no estimation of mass occurs. What remains is pure rounding to the nearest ten, a number-and-algebra skill, wearing a mass label. Genuine estimation would name a real object (a mango, a bag of rice) and ask the pupil to judge its mass without a scale."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The lc text names three units, 'grams, kilograms, and/or milligrams', but this 10-sample batch is exclusively grams (5 g to 64 g); no kilogram or milligram magnitude appears, so unit breadth cannot be confirmed from this batch alone."
+      "verdict": "FAIL",
+      "rationale": "The competency lists 'grams, kilograms, and/or milligrams', yet every one of seeds 42-46 uses grams only (15 g, 5 g, 53 g, 35 g, 11 g). No kilogram item and no milligram item is generated, so two of the three named units never appear."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Each item is a single two-clause sentence stating a given mass and asking for its nearest-10 value, e.g. 'An object's mass measures 41 g...', which is a short, single-step arithmetic task fitting grade-3 quarter-2 reading load."
+      "verdict": "CONCERN",
+      "rationale": "The phrase 'An object's mass measures 15 g' is abstract and referent-free for an 8-year-old; Grade 3 mass work should be anchored to nameable classroom objects so the pupil can attach a felt sense of heaviness to the number rather than manipulating a bare numeral."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The 10 magnitudes span both rounding directions and the boundary case: values needing round-down (41, 64, 32), round-up from below-half (46, 9), an exact tens multiple (10), and two true midpoints (5, 35), giving a well-distributed sample of the round-half-up rule rather than only easy cases."
+      "verdict": "FAIL",
+      "rationale": "One frame covers all five seeds. Missing are the standard estimation variants: choosing the sensible unit for a given object, picking the most reasonable estimate from a list of masses, comparing two objects by estimated mass, and estimating then checking against a stated actual mass."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Every item hands the student an exact known measurement and asks only for its rounded value, which is a place-value rounding skill; the lc's own vocab term 'estimate mass' implies judging an unmeasured object's mass by benchmark or comparison, a distinct skill this batch never actually samples."
+      "rationale": "Difficulty moves only from 5 g to 53 g, all still one rounding step to the nearest ten; nothing progresses toward estimating in kilograms for heavier objects or converting between units, so the ramp does not build the mass-sense this competency names."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Gram magnitudes here run from 5 to 64, a small two-digit range that stays well within what a grade-3 quarter-2 learner would plausibly encounter for a single handheld object's mass."
+      "verdict": "FAIL",
+      "rationale": "Two independent scale defects. The values span only 5 g to 53 g, far too narrow for a competency spanning milligrams to kilograms. Worse, the distractors are not valid roundings at all: seed 42 offers 21, 22 and 19 alongside the key 20, and seed 45 offers 42, 41 and 39 alongside 40. Since any answer 'rounded to the nearest 10' must be a multiple of 10, a pupil can score the item correctly without ever looking at the number 15 or 35."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

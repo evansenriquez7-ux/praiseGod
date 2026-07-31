@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q3_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -28,7 +28,7 @@
     },
     {
       "seed": 45,
-      "question_text": "What is 6 × 0?",
+      "question_text": "6 × 0 = ___",
       "correct_answer": 0
     },
     {
@@ -40,27 +40,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Samples are dominated by ×0 and ×1 facts ('3×0', '2×0', '6×0', '3×0', cloze '2×1=2'); only one sample even includes a factor from the 6-9 range (the 6 in '6×0'), and none show a genuine 6, 7, 8, or 9 times-table fact like 7×8 or 9×6."
+      "rationale": "The competency names the 6, 7, 8 and 9 tables, yet seeds 42, 43 and 46 render 'What is 3 x 0?', 'What is 2 x 0?' and 'What is 3 x 0?' again, and seed 44 renders '2 x 1 = ___'. Only seed 45 ('6 x 0 = ___') involves a named table, and its product is the trivial 0. Every keyed answer checks out arithmetically (0, 0, 2, 0, 0) but none exercises the stated tables."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "variant_registry lists 20 combos across 4 axes for multiplication, but the 5 samples given cluster almost entirely on the trivial zero-property branch, so table-fact coverage for 6-9 cannot be confirmed from what was shown."
+      "verdict": "FAIL",
+      "rationale": "Not one 7-table, 8-table or 9-table fact is generated across the five sampled seeds, and no non-trivial 6-table product (6 x 7 = 42, 6 x 9 = 54) ever appears. Four of the five keyed answers are 0, so the sub-cases the wording explicitly enumerates are almost entirely unbuilt."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The single-clause 'What is 3×0?' style questions are short and simple, appropriate reading level for grade 3 quarter 3."
+      "verdict": "FAIL",
+      "rationale": "Seed 45's option D is the value -1 rendered as text '-1'; negative integers are far outside the Grade 3 Quarter 3 number system and give the pupil a distractor they have no vocabulary to reject. Separately, 'What is 2 x 0?' (seed 43) is a Grade 2 zero-property recall, pitched well below this quarter's demand."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Both mcq and cloze formats appear, but the sampled factor values (0,0,1,0,0 on one operand) don't exercise the stated 6-9 table range this node is meant to build fluency in."
+      "verdict": "FAIL",
+      "rationale": "Seeds 42 and 46 emit a byte-identical stem, 'What is 3 x 0?', differing only in option order, so the effective sample count is four. Only two shapes exist (direct 'What is a x b?' mcq and 'a x b = ___' cloze); no equal-groups array, skip-counting, missing-factor or table-completion variant is present."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Repeatedly landing on the zero-multiplication identity is closer to the properties-of-multiplication node q3_1 than to plain 6-7-8-9 table fluency, suggesting content overlap between these two nodes."
+      "rationale": "There is no progression from seed 42 to seed 46 at all: the ladder stays pinned to zero facts and the single identity fact 2 x 1. Nothing in the observed sequence moves a pupil toward automaticity with the 6 through 9 facts, which is the whole point of this competency."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Products observed (0, 0, 2, 0, 0) are trivially small but not out of range for grade 3; the concern here is factor selection, not magnitude."
+      "verdict": "FAIL",
+      "rationale": "The largest product produced anywhere in the packet for this node is 2 (seed 44, '2 x 1 = ___'), while the 6-9 tables require products spanning 6 up to 81 (9 x 9). Both the factor range (2, 3, 6, 0, 1) and the product ceiling fall an order of magnitude short of the stated scope."
     }
   },
   "overall": "FAIL"

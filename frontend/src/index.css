@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
-/* Premium Layout & Glassmorphism */
+/* Premium Layout & Glassmorphism with Mobile Hardware Optimizations */
 .app-container {
   min-height: 100vh;
   display: flex;
@@ -60,13 +60,11 @@ h1, h2, h3, h4, h5, h6 {
     radial-gradient(at 0% 0%, hsla(263, 70%, 50%, 0.08) 0px, transparent 50%),
     radial-gradient(at 100% 0%, hsla(190, 95%, 39%, 0.06) 0px, transparent 50%),
     radial-gradient(at 50% 100%, hsla(263, 70%, 50%, 0.04) 0px, transparent 50%);
-  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
 .glass-card {
-  background: rgba(13, 20, 38, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(13, 20, 38, 0.92);
   border: var(--glass-border);
   box-shadow: var(--glass-shadow);
   border-radius: 20px;
@@ -85,12 +83,30 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: rgba(13, 20, 38, 0.4);
-  backdrop-filter: blur(12px);
+  background: rgba(13, 20, 38, 0.95);
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+/* Enable heavy backdrop-filter blur effects only on larger desktop screens */
+@media (min-width: 769px) {
+  .app-container {
+    background-attachment: fixed;
+  }
+  
+  .glass-card {
+    background: rgba(13, 20, 38, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  
+  .nav-bar {
+    background: rgba(13, 20, 38, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }
 
 .nav-brand {

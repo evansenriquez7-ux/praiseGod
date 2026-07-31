@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q4_6",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,54 +13,54 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What fraction does \\(\\frac{1}{10}\\) equal parts represent?",
+      "question_text": "A shape is divided into 10 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/10"
     },
     {
       "seed": 43,
-      "question_text": "What fraction does \\(\\frac{1}{10}\\) equal parts represent?",
+      "question_text": "A shape is divided into 10 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/10"
     },
     {
       "seed": 44,
-      "question_text": "What fraction does \\(\\frac{1}{10}\\) equal parts represent?",
+      "question_text": "A shape is divided into 10 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/10"
     },
     {
       "seed": 45,
-      "question_text": "What fraction does \\(\\frac{1}{10}\\) equal parts represent?",
+      "question_text": "A shape is divided into 10 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/10"
     },
     {
       "seed": 46,
-      "question_text": "What fraction does \\(\\frac{1}{10}\\) equal parts represent?",
+      "question_text": "A shape is divided into 10 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/10"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency is about fractions EQUAL TO or GREATER THAN one (improper fractions such as 5/4 or 8/8), but all 5 samples show the identical proper fraction 1/10 (less than one) with an oddly-phrased question ('What fraction does 1/10 equal parts represent?') that doesn't test the stated concept at all."
+      "rationale": "The competency targets fractions equal to one and greater than one, yet every one of the five seeds keys 1/10 from 'A shape is divided into 10 equal parts. 1 part is shaded. What fraction of the shape is shaded?'. 1/10 is a proper fraction far below one - the exact opposite of the named scope. The key is arithmetically right and curricularly wrong."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "All 5 samples are byte-identical across every seed (42-46), giving zero evidence that the registered 9-combo fractions DNA ever produces an improper-fraction or equal-to-one case as this competency requires."
+      "rationale": "Neither named sub-case is generated. No item shows a whole fully shaded to give 10/10 or 4/4 (equal to one), and no item shows more than one whole to give an improper fraction such as 13/10 or a mixed number such as 1 and 3/10 (greater than one). Coverage of this competency is zero."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "The question wording itself is grammatically awkward ('What fraction does 1/10 equal parts represent?'), which could confuse a grade-3 reader independent of the underlying math concept."
+      "rationale": "The sentence is short and readable, but identifying one shaded part in ten is a Grade 2 partitioning task, not Grade 3 Quarter 4 work. The distractor '10/1' (seed 42 option A) additionally asks a pupil to reject a symbol meaning ten wholes while no model is shown to reason from."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Identical output across 5 different seeds strongly suggests the variant space is not actually varying for this node, or the samples were drawn from a single degenerate combo; either way it fails to demonstrate the 'greater than or equal to one' scope."
+      "rationale": "Seeds 42, 43, 44, 45 and 46 emit a byte-identical stem, varying only which letter carries the key. The denominator is always 10, the shaded count always 1, and the distractor set is always the same four strings 1/10, 2/10, 3/20, 10/1. Model type never varies across region, set or number line."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "A proper fraction (1/10, less than one) is the opposite of what this node's competency addresses (fractions ≥ 1); this looks like the wrong sample content for this node."
+      "rationale": "The competency says 'using models', but the item is plain mcq prose with no diagram, region drawing or number line rendered - the pupil is told about a model rather than shown one. With difficulty flat across all five seeds, nothing progresses toward representing quantities at or beyond one whole."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "Since no sample ever shows a fraction ≥ 1 (e.g. 4/4, 5/3), there is no evidence of appropriate scale/progression for this specific improper-fraction introduction."
+      "rationale": "The numerator is locked at 1 and the denominator at 10 in every sample, so the numerator never equals the denominator and never exceeds it. The competency's ceiling is precisely fractions where numerator is greater than or equal to denominator, and that region of the number range is never reached."
     }
   },
   "overall": "FAIL"

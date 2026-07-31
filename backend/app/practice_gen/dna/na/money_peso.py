@@ -205,6 +205,15 @@ def generate_params(
         if not denom_pool:
             denom_pool = [20, 50, 100]
 
+    # The competency's stated ceiling has to be reachable. With ₱1000 as the
+    # largest note and a 6-item cap, no pile could exceed ₱6000 against
+    # "money ... up to ₱10 000" (mat_g3_na_q2_0), so the top of the range was
+    # never exercised (validate_matrix §1A-reach). Allow just enough notes to
+    # reach the ceiling, bounded so the pile stays countable.
+    if denom_pool:
+        notes_needed = -(-max_total // max(denom_pool))  # ceil division
+        max_items = max(max_items, min(notes_needed, 12))
+
     candidates = []
     for _ in range(500):
         # Item count must NOT depend on `context`: the old
@@ -224,6 +233,22 @@ def generate_params(
             # concern (handled via given_values/blank_target + the auditor's
             # explainable-count check), not a reason to drop the combination.
             candidates.append((t, chosen))
+
+    # Uniform denomination draws cluster far below the ceiling — ten picks from
+    # ₱1–₱1000 average about ₱2000 — so the top of the range was never even
+    # offered to the window picker and scalar 1.0 could not select it. Build a
+    # few deliberate near-ceiling piles greedily from the largest note down.
+    if denom_pool:
+        for target_frac in (1.0, 0.9, 0.8):
+            target = int(max_total * target_frac)
+            pile: List[int] = []
+            remaining = target
+            for d in sorted(denom_pool, reverse=True):
+                while remaining >= d and len(pile) < 12:
+                    pile.append(d)
+                    remaining -= d
+            if len(pile) >= 2 and sum(pile) <= max_total:
+                candidates.append((sum(pile), pile))
 
     if not candidates:
         # Fallback: two of the smallest available denomination.

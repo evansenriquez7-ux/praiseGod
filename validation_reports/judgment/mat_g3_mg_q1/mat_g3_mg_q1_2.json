@@ -1,22 +1,67 @@
 {
   "node_id": "mat_g3_mg_q1_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-3 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 47, 48],
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
   "samples_reviewed": [
-    {"seed": 42, "question_text": "A rectangle has sides 21 cm and 4 cm. What is its area in sq cm?", "correct_answer": 84},
-    {"seed": 44, "question_text": "A rectangle has sides 14 cm and 17 cm. What is its area in sq cm?", "correct_answer": 238},
-    {"seed": 46, "question_text": "A rectangle has sides 3 cm and 13 cm. What is its area in sq cm?", "correct_answer": 39},
-    {"seed": 48, "question_text": "A rectangle has sides 18 cm and 11 cm. What is its area in sq cm?", "correct_answer": 198}
+    {
+      "seed": 42,
+      "question_text": "A rectangle has sides 22 cm and 5 cm. What is its area in sq cm?",
+      "correct_answer": 110
+    },
+    {
+      "seed": 43,
+      "question_text": "A rectangle has sides 3 cm and 11 cm. What is its area in sq cm?",
+      "correct_answer": 33
+    },
+    {
+      "seed": 44,
+      "question_text": "A rectangle has sides 15 cm and 18 cm. What is its area in sq cm?",
+      "correct_answer": 270
+    },
+    {
+      "seed": 45,
+      "question_text": "A rectangle has sides 10 cm and 15 cm. What is its area in sq cm?",
+      "correct_answer": 150
+    },
+    {
+      "seed": 46,
+      "question_text": "A rectangle has sides 4 cm and 14 cm. What is its area in sq cm?",
+      "correct_answer": 56
+    }
   ],
   "findings": {
-    "competency_fulfillment": {"verdict": "CONCERN", "rationale": "The competency text explicitly names both 'sq. cm and sq. m', but all 7 samples use only centimeter sides and sq cm answers; not one sample exercises the square-meter unit half of this lc's own stated scope."},
-    "comprehensive_coverage": {"verdict": "CONCERN", "rationale": "Side lengths vary well (2-21) across the 7 seeds, giving good numeric diversity within cm, but the complete absence of any sq. m sample across all 7 seeds is a real gap given the lc explicitly names that unit."},
-    "cognitive_capacity": {"verdict": "PASS", "rationale": "'A rectangle has sides 21 cm and 4 cm. What is its area in sq cm?' is a short, direct 12-word sentence appropriate for grade-3 quarter-1 reading level."},
-    "variant_comprehensiveness": {"verdict": "CONCERN", "rationale": "I recomputed all 7 answers (21x4=84, 2x10=20, 14x17=238, 9x14=126, 3x13=39, 12x3=36, 18x11=198) and every one is correct, but the variant space as sampled never demonstrates a meters-based item, which this lc's wording requires alongside centimeters."},
-    "competency_alignment": {"verdict": "PASS", "rationale": "Where it does appear, the content directly matches 'find the areas of squares and rectangles in sq. cm' via multiplication of two side lengths, staying clear of the earlier tile-counting and later word-problem lcs."},
-    "scale_appropriateness": {"verdict": "PASS", "rationale": "Side lengths of 2 to 21 cm and resulting areas up to 238 sq cm are sensible magnitudes for a grade-3 standard-unit area computation task."}
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every stem asks exactly what the competency asks: 'A rectangle has sides 22 cm and 5 cm. What is its area in sq cm?' with key 110, and the sq cm unit is named explicitly in both the stem and the requested answer, so the verb 'find the area' and the noun 'sq. cm' are both honoured."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The wording names two shapes and two units - 'squares and rectangles in sq. cm and sq. m' - but seeds 42-46 are 100 percent rectangles and 100 percent centimetres. Neither the square case (side x side) nor a single sq. m item is produced, so half the named sub-cases are absent from the pool."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Seed 44 ('sides 15 cm and 18 cm', key 270) demands a 2-digit by 2-digit multiplication, which outruns the 2-digit by 1-digit multiplication a Grade 3 Quarter 1 learner has been taught; the area concept is then gated behind arithmetic the pupil cannot yet perform."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "The only frame present is 'A rectangle has sides A cm and B cm. What is its area in sq cm?'. There is no inverse item (area and one side given, find the other side), no unit-choice item asking whether sq cm or sq m suits a classroom floor, and no diagram-based item."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Progression across the five seeds is purely numeric (33, 56, 110, 150, 270); nothing escalates the area reasoning itself, for instance moving from a labelled grid, to bare side lengths, to choosing the appropriate square unit, so the ramp trains multiplication rather than area measurement."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Side lengths top out at 22 cm and areas at 270 sq cm, which is reasonable for centimetres, but because no sq. m item exists the metre half of the competency's stated range is entirely untested at any scale."
+    }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

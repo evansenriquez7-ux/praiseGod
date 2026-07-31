@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q4_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,55 +13,55 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What fraction does \\(\\frac{1}{2}\\) equal parts represent?",
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/2"
     },
     {
       "seed": 43,
-      "question_text": "What fraction does \\(\\frac{1}{2}\\) equal parts represent?",
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/2"
     },
     {
       "seed": 44,
-      "question_text": "What fraction does \\(\\frac{1}{4}\\) equal parts represent?",
+      "question_text": "A shape is divided into 4 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/4"
     },
     {
       "seed": 45,
-      "question_text": "What fraction does \\(\\frac{1}{4}\\) equal parts represent?",
+      "question_text": "A shape is divided into 4 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/4"
     },
     {
       "seed": 46,
-      "question_text": "What fraction does \\(\\frac{1}{2}\\) equal parts represent?",
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/2"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The samples restrict content correctly to only 1/2 and 1/4 as the competency requires, but the phrasing 'What fraction does 1/2 equal parts represent?' is circular, stating the fraction 1/2 in the question and then asking for it back as the answer, which does not clearly test understanding of parts-of-a-whole without an accompanying visual not shown in this text."
+      "rationale": "Both target fractions are named correctly, with seeds 42, 43 and 46 keying 1/2 for two equal parts and seeds 44 and 45 keying 1/4 for four equal parts. The weakness is that the verb is 'Illustrate', while the stem 'A shape is divided into 4 equal parts. 1 part is shaded.' hands the child both the numerator and the denominator in words, so the answer can be transcribed straight out of the stem without any part-whole reasoning."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "fractions registers 9 combos across 3 axes; the five samples show both 1/2 and 1/4 values, a reasonable slice of a small registry, with exhaustive execution confirmed separately by validate_matrix."
+      "verdict": "CONCERN",
+      "rationale": "Both halves and fourths are present, which covers the two fractions named. Not generated are the reverse direction, 'Which picture shows 1/4 shaded', the non-example check that parts must be equal, the whole-to-parts direction of dividing a shape yourself, and the set model of halving a group of objects, all of which 'as parts of a whole' fairly implies."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Prompt length is short and the vocabulary (fraction, half, quarter) matches the terms this node itself introduces, appropriate for Grade 1 Quarter 4."
+      "verdict": "CONCERN",
+      "rationale": "The stems themselves are two short declaratives plus a question, well matched to Grade 1 Quarter 4. The distractors are the problem: '3/8' at seeds 44 and 45 requires reading eighths, and '2/1' at seeds 42, 43 and 46 is an improper fraction denoting a quantity greater than one whole. Neither notation exists in a Grade 1 pupil's vocabulary at this point, so the option set demands symbols the node has not taught."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Only two distinct fraction values (1/2, 1/4) and one repeating question template appear across the five samples; if the LaTeX rendering is meant to substitute for a genuine pictorial model, that model is not visible in the text provided to this review."
+      "verdict": "FAIL",
+      "rationale": "One template carries the entire node with only the denominator changing, and seeds 42, 43 and 46 emit the byte-identical stem 'A shape is divided into 2 equal parts. 1 part is shaded.' so three of five draws are the same question. No shape is ever named, so circles, rectangles and squares are indistinguishable in the rendered text, and no partitioning or shading-the-model variation appears."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Restricting every sample strictly to halves and quarters, never thirds or other fractions, correctly matches the competency's explicit scope of '1/2 and 1/4 as parts of a whole', neither more nor less."
+      "verdict": "CONCERN",
+      "rationale": "The 1/2 items and the 1/4 items are structurally identical and differ only in a single numeral, so nothing in the sequence builds from the easier halving idea toward the harder fourth. A sound progression would move from equal-parts recognition, to naming the unit fraction, to constructing the illustration, and only the middle rung is present."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Using only the two simplest unit fractions (1/2, 1/4) is an appropriately narrow scale for a first fractions node in Grade 1."
+      "rationale": "The denominators generated are exactly 2 and 4, matching the competency's explicit statement of 1/2 and 1/4 with no drift into thirds, fifths or sixths in the keyed answers, and every numerator is 1 as the unit-fraction framing requires. No quantity in any stem falls outside the whole being partitioned."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

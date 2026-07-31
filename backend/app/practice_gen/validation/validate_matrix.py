@@ -20,6 +20,7 @@ import json
 import math
 import multiprocessing
 import os
+import re
 import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
@@ -80,6 +81,155 @@ def get_expected_mapped_value(axis: dict, val: float, min_val: float, max_val: f
             return round(min_val + t_val * (max_val - min_val), 2)
         else:
             return int(min_val + t_val * (max_val - min_val))
+
+
+# Continuous axes that express a *magnitude ceiling* on the numbers a problem may
+# contain (as opposed to a count of categories, or a 0-1 difficulty scalar). Only
+# these support the generated-value containment assertion in 1A/1B.
+# How close to the competency maximum the largest sample at scalar 1.0 has to get
+# for the range to count as "exercised" (§1A's "reaches the maximum region").
+# Deliberately not 100%: sampling is random and some DNAs round to a friendly
+# value, so demanding the exact ceiling would flag correct generators. At 60% a
+# generator serving sums of 46 against a stated ceiling of 1000 fails, which is
+# the class of gap this exists to catch.
+_REACH_FRACTION = 0.6
+
+MAGNITUDE_CAP_AXES: Set[str] = {
+    "max_sum",
+    "max_product",
+    "max_total",
+    "max_value",
+    "value_max",
+    "ordinal_range",
+    "range",
+}
+
+
+def _numeric_payload_values(problem: Dict[str, Any]) -> List[Tuple[str, float]]:
+    """
+    Every plain number a generated problem exposes to the student, labelled for
+    the failure message. Booleans are excluded (True == 1 in Python and a
+    true/false answer carries no magnitude); non-numeric answers and nested
+    structures are skipped rather than coerced.
+    """
+    out: List[Tuple[str, float]] = []
+
+    def _add(label: str, v: Any) -> None:
+        if isinstance(v, bool) or not isinstance(v, (int, float)):
+            return
+        out.append((label, float(v)))
+
+    for k, v in (problem.get("given_values") or {}).items():
+        if isinstance(v, (list, tuple)):
+            for i, item in enumerate(v):
+                _add(f"given_values.{k}[{i}]", item)
+        else:
+            _add(f"given_values.{k}", v)
+
+    answer = problem.get("correct_answer")
+    if isinstance(answer, (list, tuple)):
+        for i, item in enumerate(answer):
+            _add(f"correct_answer[{i}]", item)
+    else:
+        _add("correct_answer", answer)
+
+    return out
+
+
+def _normalize_stem(text: str) -> str:
+    """Lowercase the stem and render LaTeX fractions as 'a/b' so an option like
+    '1/8' can be matched against a stem that displays \\(\\frac{1}{8}\\)."""
+    t = str(text or "").lower()
+    t = re.sub(r"\\d?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}", r"\1/\2", t)
+    return t
+
+
+def _option_in_stem(value: Any, stem: str) -> bool:
+    """
+    Whether an option value appears in the stem as a *whole* token.
+
+    Substring matching is wrong here: '1' occurs inside '10', and '11' inside
+    '0:11', which would make almost every arithmetic item look like a leak.
+    """
+    s = str(value).strip().lower()
+    if not s:
+        return False
+    # Trailing ':' or '.' only blocks a match when a digit follows it, so "11:00."
+    # at the end of a sentence matches while "11" inside "0:11" does not, and "1"
+    # inside "1.5" does not.
+    return re.search(
+        rf"(?<![\w/:.]){re.escape(s)}(?![\w/])(?![:.]\d)", stem
+    ) is not None
+
+
+def _answer_leaks_into_stem(problem: Dict[str, Any]) -> Optional[str]:
+    """
+    Return a description of the leak, or None.
+
+    A stem that contains its own answer is only a defect when the answer is
+    thereby *uniquely* identifiable. Two families of item legitimately restate
+    their answer and are deliberately not flagged:
+
+      * comparison and ordering items, which name every candidate they ask about
+        ("Which shape has more sides — a triangle or a rectangle?") — caught by
+        requiring that exactly one option appear in the stem;
+      * items whose task *is* to restate a value under an operation, where the
+        answer coincides with an operand ("2 + 1 = 1 + ___" for commutativity,
+        "2 + 0 = ___", "4 x 1 = ___") — caught by requiring that the answer be
+        the *only* datum in the stem. An item with a second number is asking the
+        student to combine them, however trivially; whether such degenerate
+        operands are good pedagogy is a separate question from answer leakage,
+        and conflating the two made this check fire on 3,702 samples, nearly all
+        of them well-formed identity facts.
+
+    What remains is the genuine defect: the stem presents exactly one value, that
+    value is the answer, and the student need only copy it — "Jose has lunch at
+    1:30. What time is that?", or "What fraction does 2/5 equal parts represent?".
+    """
+    answer = problem.get("correct_answer")
+    if isinstance(answer, (list, tuple, dict, bool)) or answer is None:
+        return None  # ordering/true-false/structured answers: nothing to give away
+
+    fmt_data = problem.get("format_data") or {}
+    options = fmt_data.get("mcq_options") or fmt_data.get("options")
+    if not isinstance(options, list) or len(options) < 2:
+        return None  # no distractors to compare against
+
+    stem = _normalize_stem(problem.get("question_text", ""))
+    if not stem:
+        return None
+
+    present = []
+    correct_present = False
+    for opt in options:
+        if not isinstance(opt, dict):
+            return None
+        value = opt.get("value")
+        if value is None:
+            continue
+        if _option_in_stem(value, stem):
+            present.append(value)
+            if opt.get("is_correct"):
+                correct_present = True
+
+    if not (correct_present and len(present) == 1):
+        return None
+
+    # Mirroring tasks are the one family where answer == given is the *correct*
+    # mathematics rather than a leak: a symmetric figure's second half has, by
+    # definition, the same number of squares as its first. Copying the value is
+    # the skill being assessed, so these are exempt.
+    if re.search(r"\bsymmetr(?:y|ic|ical)\b|\bline of symmetry\b|\bmirror\b", stem):
+        return None
+
+    # The answer is the stem's only datum → nothing to compute, just copy it.
+    stem_values = set(re.findall(r"\d+(?::\d+|/\d+|\.\d+)?", stem))
+    if stem_values and stem_values == {str(answer).strip().lower()}:
+        return (
+            f"the answer {answer!r} is the only value in the stem, so it can be copied "
+            f"rather than derived"
+        )
+    return None
 
 
 def score_problem_operands(problem: Dict[str, Any], axis_name: str) -> List[float]:
@@ -189,8 +339,32 @@ def verify_discrete_dimension(problem: Dict[str, Any], axis_name: str, option_va
     return True
 
 
-def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
+# ─────────────────────────────────────────────────────────────────────────────
+# Executed-check instrumentation (doc_rem.md §3.5 drift tripwire).
+#
+# run_all.py cross-checks docs/pgen_contract.md's rule table against the set of
+# checks that actually ran. For that comparison to mean anything, the executed
+# set has to be *observed*, not asserted by the caller: an earlier version had
+# run_all add "§1A".."§1E" to the executed set simply because the matrix exited
+# 0, which made the comparison tautological — it could never detect a check
+# whose loop body stopped running (an axis filter that matches nothing, a
+# formatter list that comes back empty, a section commented out). Each check
+# site below records its own id when it actually evaluates an assertion, so a
+# silently-dead check now shows up as contract drift and fails the run.
+#
+# LAST_EXECUTED_CHECKS is populated by run_matrix_validation(); it is a module
+# global because multiprocessing workers return their sets for the parent to
+# union rather than sharing state.
+LAST_EXECUTED_CHECKS: Set[str] = set()
+
+# node_id -> sorted list of §-refs that node actually exercised (written to the
+# JSON report alongside the failures).
+_EXECUTED_BY_NODE: Dict[str, List[str]] = {}
+
+
+def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, Any]], Set[str]]:
     failures = []
+    executed: Set[str] = set()
 
     # Get mapped DNAs
     dna_names = get_node_dnas(node_id)
@@ -202,7 +376,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
             "seed": 0,
             "error": f"Node '{node_id}' has no entry in NODE_TO_DNA."
         })
-        return failures
+        return failures, executed
 
     node_info = get_node_info(node_id)
     grade = node_info.get("grade", 1)
@@ -233,7 +407,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                 "error": f"Could not import DNA module for concept '{dna_name}': {e}"
             })
             if fail_fast:
-                return failures
+                return failures, executed
             continue
 
         # A node's own DNA concept is available to itself the moment it's introduced —
@@ -278,7 +452,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                             "error": f"Failed to generate problem for axis '{axis_name}' at scalar {scalar}: {e}"
                         })
                         if fail_fast:
-                            return failures
+                            return failures, executed
 
             # --- 1A. Scalar boundary exactness ---
             expected_0_0 = get_expected_mapped_value(axis, 0.0, min_val, max_val)
@@ -286,6 +460,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
 
             # 1A - 0.0 ceiling assertion
             if axis_name != "number_difficulty":
+                executed.add("§1A")
                 observed_vals_0_0 = [g.get("difficulty_profile", {}).get(axis_name) for g in generations[0.0]]
                 max_obs_0_0 = max(observed_vals_0_0) if observed_vals_0_0 else None
                 if max_obs_0_0 != expected_0_0:
@@ -297,7 +472,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                         "error": f"At 0.0, governed parameter maximum observed value ({max_obs_0_0}) != minimum window ceiling ({expected_0_0})."
                     })
                     if fail_fast:
-                        return failures
+                        return failures, executed
 
                 # 1A - 1.0 boundary assertion (no sample exceeds max_val)
                 observed_vals_1_0 = [g.get("difficulty_profile", {}).get(axis_name) for g in generations[1.0]]
@@ -311,7 +486,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                         "error": f"At 1.0, sample maximum observed value ({max_obs_1_0}) exceeds competency maximum ({max_val}). Leaky window!"
                     })
                     if fail_fast:
-                        return failures
+                        return failures, executed
 
                 if max_obs_1_0 != expected_1_0:
                     failures.append({
@@ -322,7 +497,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                         "error": f"At 1.0, governed parameter maximum observed value ({max_obs_1_0}) != maximum window ceiling ({expected_1_0})."
                     })
                     if fail_fast:
-                        return failures
+                        return failures, executed
 
             # --- 1B. Window containment sweep (containment & monotonicity) ---
             ceilings = []
@@ -331,6 +506,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                 ceilings.append(expected_ceil)
                 
                 if axis_name != "number_difficulty":
+                    executed.add("§1B")
                     for p in generations[scalar]:
                         val = p.get("difficulty_profile", {}).get(axis_name)
                         if val is not None and val > expected_ceil:
@@ -342,7 +518,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                                 "error": f"Generated parameter {val} exceeds ceiling {expected_ceil} defined by scalar {scalar}."
                             })
                             if fail_fast:
-                                return failures
+                                return failures, executed
 
             # Monotonicity check
             for i in range(len(ceilings) - 1):
@@ -355,7 +531,140 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                         "error": f"Monotonicity violation for axis '{axis_name}': ceiling at index {i+1} ({ceilings[i+1]}) < index {i} ({ceilings[i]})."
                     })
                     if fail_fast:
-                        return failures
+                        return failures, executed
+
+            # --- 1A/1B. Generated-value containment (the actual leaky-window check) ---
+            #
+            # Everything above verifies the scalar -> parameter *mapping*: that the
+            # difficulty_profile echoed back carries the right ceiling. It never
+            # looked at the numbers the DNA actually produced, so a generator that
+            # was handed max_sum=20 and then sampled sums up to 30 passed cleanly.
+            # That is precisely the "classic leaky window" Phase 1 §1A names ("no
+            # sample exceeds the competency maximum") and Phase 4's first planted
+            # mutation targets — and it survived until this check existed.
+            #
+            # Scoped to scalar 1.0, matching §1A's wording exactly ("no sample
+            # exceeds the competency maximum"). It deliberately does NOT assert
+            # containment at lower scalars: a window ceiling below a task's
+            # structural minimum is routine and legitimate (ordering three distinct
+            # numbers needs values above a scalar-0.0 ceiling of 1), so asserting
+            # there would flag correct generators rather than leaky ones.
+            if axis_name in MAGNITUDE_CAP_AXES:
+                # Containment runs FIRST, and unconditionally. It used to sit
+                # below the `axis_name not in comp_bounds` guard that narrows
+                # *reach*, so that one `continue` also switched off this check —
+                # the §1B "no leaky windows" row — for every magnitude axis a
+                # competency does not explicitly bind: 14 (node, dna, axis)
+                # triples across 13 nodes, 11 of which then had no magnitude
+                # containment coverage at all. Verified by inflating every
+                # generated integer by 10 000: mat_g1_mg_q2_2 (bound) raised 110
+                # value_containment failures, mat_g1_na_q1_5 and mat_g1_dp_q3_0
+                # (unbound) raised none. Narrowing reach to competency-bound
+                # axes is sound and is preserved below; narrowing containment
+                # was never intended — "the DNA exceeded the ceiling it was
+                # handed" is a defect whether that ceiling came from the
+                # competency or from the axis catalog's default.
+                for p in generations[1.0]:
+                    cap = p.get("difficulty_profile", {}).get(axis_name)
+                    if not isinstance(cap, (int, float)) or isinstance(cap, bool):
+                        continue
+                    for label, value in _numeric_payload_values(p):
+                        if value > cap:
+                            failures.append({
+                                "dna": dna_name,
+                                "formatter": p.get("format", "unknown"),
+                                "check": f"value_containment_{axis_name}",
+                                "seed": p.get("seed", 0),
+                                "error": (
+                                    f"Leaky window on axis '{axis_name}' at scalar 1.0: "
+                                    f"{label}={value} exceeds the competency maximum {cap} the "
+                                    f"DNA was given. Reproduce: node={node_id} dna={dna_name} "
+                                    f"seed={p.get('seed')} profile={{'{axis_name}': 1.0}}."
+                                ),
+                            })
+                            if fail_fast:
+                                return failures, executed
+
+                # §1A's other half: "at 1.0, at least one sample *reaches* the
+                # competency maximum region". Without it a generator can sit far
+                # below its own ceiling forever and still pass — e.g. a "sums up
+                # to 1000" competency serving nothing above 46. That was the
+                # single largest cluster of FAIL verdicts in the judgment
+                # reviews (25 of 44 nodes), i.e. a machine-checkable rule that
+                # had been left to human opinion.
+                # Only assert reach where the node's *competency* states the
+                # ceiling. With no bound the ceiling comes from the axis catalog's
+                # default, which is a UI range rather than a curriculum claim:
+                # mat_g1_na_q1_5 reads "ordinal numbers 1st ... up to 10th" but
+                # binds no ordinal_range, so the default 100 would be asserted
+                # against a competency that stops at 10. Asserting against a
+                # default is the same mistake as sweeping one axis while another
+                # sits at 0.5, and it produces failures no generator change can
+                # honestly fix.
+                if axis_name not in comp_bounds:
+                    continue
+
+                # A magnitude-cap axis sets the *ceiling*; `number_difficulty` is
+                # the separate axis that decides where inside that ceiling values
+                # are drawn. Sweeping only the cap axis therefore measures the
+                # co-axis's 0.5 default — multiplication looked stuck at 30/100
+                # until number_difficulty was raised too, at which point it
+                # reached 90. Drive both to 1.0 so this asserts the generator's
+                # true reach rather than a default's.
+                reach_profile: Dict[str, Any] = {axis_name: 1.0, "number_difficulty": 1.0}
+                reach_samples = []
+                for idx in range(10):
+                    seed = int(900 + idx)
+                    try:
+                        reach_samples.append(
+                            run(node_id=node_id, difficulty_profile=reach_profile,
+                                seed=seed, forced_dna=dna_name)
+                        )
+                    except Exception as exc:
+                        failures.append({
+                            "dna": dna_name,
+                            "formatter": "unknown",
+                            "check": f"reach_generation_{axis_name}",
+                            "seed": seed,
+                            "error": f"Failed to generate at {reach_profile}: {exc}",
+                        })
+                        if fail_fast:
+                            return failures, executed
+                        break
+
+                reach_floor = cap_reach_floor = None
+                observed_peak = None
+                for p in reach_samples:
+                    cap = p.get("difficulty_profile", {}).get(axis_name)
+                    if not isinstance(cap, (int, float)) or isinstance(cap, bool):
+                        continue
+                    executed.add("§1A-reach")
+                    cap_reach_floor = cap * _REACH_FRACTION
+                    reach_floor = cap
+                    for _, value in _numeric_payload_values(p):
+                        if observed_peak is None or value > observed_peak:
+                            observed_peak = value
+                if (
+                    cap_reach_floor is not None
+                    and observed_peak is not None
+                    and observed_peak < cap_reach_floor
+                ):
+                    failures.append({
+                        "dna": dna_name,
+                        "formatter": "unknown",
+                        "check": f"value_reaches_max_{axis_name}",
+                        "seed": 200,
+                        "error": (
+                            f"Ceiling never approached on axis '{axis_name}': at scalar 1.0 the "
+                            f"largest value generated across {len(reach_samples)} samples was "
+                            f"{observed_peak}, below {_REACH_FRACTION:.0%} of the competency "
+                            f"maximum {reach_floor}. The competency's stated range is not being "
+                            f"exercised. Reproduce: node={node_id} dna={dna_name} "
+                            f"profile={{'{axis_name}': 1.0}}."
+                        ),
+                    })
+                    if fail_fast:
+                        return failures, executed
 
         # ─── 1B Discrete dimensions check
         comp_bounds = get_node_competency_bounds(node_id, dna_name)
@@ -395,7 +704,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                                 "error": f"Generated problem does not reflect discrete option '{opt_val}' (values: {p.get('given_values')})."
                             })
                             if fail_fast:
-                                return failures
+                                return failures, executed
                     except RuntimeError as e:
                         # Infeasible combination (e.g. regrouping=two_places but max_sum=20) —
                         # this is expected for constrained nodes, not a harness failure.
@@ -409,7 +718,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                             "error": f"Failed to generate discrete problem for '{axis_name}' = '{opt_val}': {e}"
                         })
                         if fail_fast:
-                            return failures
+                            return failures, executed
 
         # ─── 1C. Variant × formatter execution matrix
         # Use COMPATIBILITY[dna_name] — the same set the orchestrator and serving path use.
@@ -434,6 +743,27 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
             fmt for fmt in formatters
             if FORMATTER_NUMERIC_LIMITS.get(fmt, {}).get("max_val", float("inf")) >= node_max_value
         ]
+
+        # A formatter that explicitly restricts a variant this node's competency
+        # binds to an unsupported value is not available for this node — the
+        # serving path rejects that DNA/formatter pair (see orchestrator's
+        # explicitly_restricted check), so forward-testing it as "should succeed"
+        # asserts the opposite of the contract. Example: patterns bound to
+        # ask_type="identify_valid" cannot route to the pattern_sequence visual,
+        # which restricts ask_type to next/missing. Such pairs are covered by the
+        # reverse check ("must raise"), not by the execution matrix.
+        available_formatters = []
+        for fmt in formatters:
+            restrictions = FORMATTER_VARIANT_SUPPORT.get(dna_name, {}).get(fmt)
+            if isinstance(restrictions, dict) and any(
+                var_name in restrictions
+                and not isinstance(bound_val, list)
+                and not any(str(v) == str(bound_val) for v in restrictions[var_name])
+                for var_name, bound_val in comp_bounds.items()
+            ):
+                continue
+            available_formatters.append(fmt)
+        formatters = available_formatters
         for formatter in formatters:
             supported_variants = get_supported_variants(dna_name, formatter)
             combinations = get_variant_combinations(supported_variants)
@@ -449,11 +779,55 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                     if not is_variant_available_at(dna_name, var_name, opt_val, grade, quarter):
                         curriculum_excluded.add((var_name, opt_val))
 
+            # Two situations legitimately leave a variant axis with nothing for the
+            # caller to select, and both must remove that axis from the combination
+            # space rather than annihilating every combination:
+            #
+            #  1. The competency binds a *synthesized scope* that is not a
+            #     Lab-selectable option — patterns' pattern_type="increasing_or_decreasing",
+            #     counting's skip_interval="by_1". The registry applies these
+            #     internally; the serving path never passes them in a difficulty
+            #     profile, so neither may the harness (doing so makes the
+            #     orchestrator reject the DNA outright).
+            #  2. Every option of the variant is curriculum-gated out at this
+            #     node's grade/quarter, so the Lab offers the axis no values at all.
+            #
+            # Intersecting either case against the option list matched nothing and
+            # silently emptied the whole execution matrix for 22 of 151 nodes — all
+            # of which still reported PASS, because "no failures" was being read as
+            # "verified" (Phase 1: "Any skipped combination is a failure").
+            # Competency bounds and the compatibility table disagree on scalar type
+            # for some axes — registry.py binds missing_number's `tables` as ints
+            # [2,3,4,5,10] while VARIANTS_BY_DNA declares them as strings
+            # ['2','3','4','5','10']. Comparing those directly makes every option
+            # look out-of-bounds and emptied the matrix for 2 nodes. Matching on the
+            # string form restores the check's intent ("is this Lab option inside the
+            # competency's allowed set?") without loosening it; the underlying type
+            # drift is flagged in IMPLEMENTATION_STATUS.md.
+            def _matches(opt_val: Any, bound_val: Any) -> bool:
+                if isinstance(bound_val, list):
+                    return str(opt_val) in {str(b) for b in bound_val}
+                return str(opt_val) == str(bound_val)
+
+            omitted_axes: Dict[str, str] = {}
+            for var_name, opt_vals in supported_variants.items():
+                if all((var_name, v) in curriculum_excluded for v in opt_vals):
+                    omitted_axes[var_name] = "every option curriculum-gated at this grade/quarter"
+            for var_name, bound_val in comp_bounds.items():
+                if var_name not in supported_variants or var_name == "regrouping":
+                    continue
+                if isinstance(bound_val, list):
+                    continue
+                if not any(_matches(v, bound_val) for v in supported_variants[var_name]):
+                    omitted_axes[var_name] = f"competency binds synthesized scope {bound_val!r}"
+
             # Filter combinations by competency bounds and curriculum grade/quarter gates
             filtered_combinations = []
             for assignment in combinations:
                 allowed = True
                 for var_name, opt_val in assignment.items():
+                    if var_name in omitted_axes:
+                        continue  # dropped below; the registry governs this axis
                     if (var_name, opt_val) in curriculum_excluded:
                         allowed = False
                         break
@@ -466,19 +840,41 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                             if bound_val is True and opt_val not in ("ones", True, "one_place"):
                                 allowed = False
                                 break
-                        else:
-                            if isinstance(bound_val, list):
-                                if opt_val not in bound_val:
-                                    allowed = False
-                                    break
-                            else:
-                                if opt_val != bound_val:
-                                    allowed = False
-                                    break
+                        elif not _matches(opt_val, bound_val):
+                            allowed = False
+                            break
                 if allowed:
-                    filtered_combinations.append(assignment)
-            combinations = filtered_combinations
-            
+                    filtered_combinations.append(
+                        {k: v for k, v in assignment.items() if k not in omitted_axes}
+                    )
+
+            # Dropping an axis collapses several assignments onto the same reduced
+            # one, so dedupe rather than re-running an identical assignment N times.
+            combinations = []
+            for a in filtered_combinations:
+                if a not in combinations:
+                    combinations.append(a)
+
+            executed.add("§1C-coverage")
+            if not combinations:
+                failures.append({
+                    "dna": dna_name,
+                    "formatter": formatter,
+                    "check": "empty_execution_matrix",
+                    "seed": 0,
+                    "error": (
+                        f"No variant combination survives filtering for node '{node_id}', DNA "
+                        f"'{dna_name}', formatter '{formatter}' — the execution matrix would be "
+                        f"skipped entirely and the node would report PASS without generating a "
+                        f"single problem. comp_bounds={comp_bounds}, "
+                        f"supported_variants={supported_variants}, "
+                        f"curriculum_excluded={sorted(curriculum_excluded)}, "
+                        f"omitted_axes={omitted_axes}."
+                    ),
+                })
+                if fail_fast:
+                    return failures, executed
+
             for assignment in combinations:
                 generations_1c = []
                 # 1C - Run pipeline over 5 seeds
@@ -486,7 +882,8 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                     try:
                         p = run(node_id=node_id, formatter=formatter, difficulty_profile=assignment, seed=seed, forced_dna=dna_name)
                         generations_1c.append(p)
-                        
+                        executed.add("§1C")
+
                         # Assertions on FormattedProblem
                         # Correct formatter used. For visual formatters the `format` field encodes
                         # "{interaction_mode}_{answer_collection}" — e.g. "read_mcq" for emoji_pictorial.
@@ -592,6 +989,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                                     
                         # Visual validation
                         if p.get("is_visual"):
+                            executed.add("§4")
                             try:
                                 VisualSchemaRegistry.validate(p.get("visual_type"), p.get("visual_params"))
                             except Exception as exc:
@@ -605,6 +1003,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
 
                         # --- 1E. Answer-key integrity (formula checks) ---
                         if dna.dna_type == "formula" and dna.answer_formula:
+                            executed.add("§1E")
                             served = p["correct_answer"]
                             if isinstance(served, list):
                                 # "ordering"-family formatters answer a different question
@@ -709,10 +1108,11 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                             "error": f"Pipeline run crashed for variants {assignment}: {e}"
                         })
                         if fail_fast:
-                            return failures
+                            return failures, executed
 
                 # --- 1E. Interest-theme invariance (formatted output) ---
                 if generations_1c and dna.dna_type in ("formula", "algorithmic") and dna.requires_context:
+                    executed.add("§1E")
                     # Take the first clean generation
                     ref_p = generations_1c[0]
                     ref_ans = ref_p["correct_answer"]
@@ -737,8 +1137,36 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                                 "error": f"Failed to generate problem with theme '{theme}': {e}"
                             })
 
+                # --- 1F. Answer-leak lint (the stem may not give away its own answer) ---
+                #
+                # Blind reviewers kept flagging self-answering items by eye —
+                # "Maria wakes up at 11:00. What time is that?" with 11:00 among
+                # the options, or "What fraction does 1/8 equal parts represent?"
+                # answered 1/8. A student scores those without doing the skill,
+                # so the item measures nothing. This is mechanical, so it belongs
+                # in the harness rather than in a reviewer's judgment.
+                for p in generations_1c:
+                    executed.add("§1F")
+                    leak = _answer_leaks_into_stem(p)
+                    if leak is not None:
+                        failures.append({
+                            "dna": dna_name,
+                            "formatter": formatter,
+                            "check": "answer_leak_in_stem",
+                            "seed": p["seed"],
+                            "error": (
+                                f"Question stem gives away its own answer: {leak}. A student can "
+                                f"answer without exercising the competency. question_text="
+                                f"{p.get('question_text','')!r}, correct_answer="
+                                f"{p.get('correct_answer')!r}."
+                            ),
+                        })
+                        if fail_fast:
+                            return failures, executed
+
                 # --- 1D. Vocabulary & Concept Gating on FORMATTED output ---
                 for p in generations_1c:
+                    executed.add("§1D")
                     # Formatted text block
                     text_blocks = [p["question_text"]] + p.get("hints", [])
                     # MCQ options
@@ -796,6 +1224,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                 full_vals = all_dna_variants.get(var_name, [])
                 excluded_vals = set(full_vals) - set(allowed_vals)
                 if excluded_vals:
+                    executed.add("§1C-reverse")
                     excluded_val = list(excluded_vals)[0]
                     # Request this excluded option
                     bad_profile = {var_name: excluded_val}
@@ -846,7 +1275,7 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> List[Dict[str, Any]]:
                         "error": f"Requesting curriculum-gated variant {var_name}='{excluded_val}' raised wrong exception: {exc}"
                     })
 
-    return failures
+    return failures, executed
 
 
 def val_to_seed_offset(val: float) -> int:
@@ -866,11 +1295,11 @@ def val_to_seed_offset(val: float) -> int:
 def _worker(node_id: str) -> tuple:
     """Top-level worker so multiprocessing can pickle it."""
     try:
-        failures = run_matrix_for_node(node_id, fail_fast=False)
-        return node_id, failures
+        failures, executed = run_matrix_for_node(node_id, fail_fast=False)
+        return node_id, failures, executed
     except Exception as exc:
         return node_id, [{"dna": "unknown", "formatter": "unknown", "check": "worker_crash",
-                          "seed": 0, "error": str(exc)}]
+                          "seed": 0, "error": str(exc)}], set()
 
 
 def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, workers: int = 0) -> int:
@@ -889,6 +1318,10 @@ def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, w
     print(f"STARTING BEHAVIORAL MATRIX VALIDATION OVER {len(node_ids)} NODES")
     print("======================================================================\n")
 
+    global LAST_EXECUTED_CHECKS
+    LAST_EXECUTED_CHECKS = set()
+    _EXECUTED_BY_NODE.clear()
+
     report: Dict[str, list] = {}
     total_failures_count = 0
     passed_count = 0
@@ -897,14 +1330,16 @@ def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, w
 
     def _flush_report():
         with report_path.open("w", encoding="utf-8") as fh:
-            json.dump(report, fh, indent=2, ensure_ascii=False)
+            json.dump({**report, "_executed_checks": _EXECUTED_BY_NODE},
+                      fh, indent=2, ensure_ascii=False)
 
     if len(node_ids) == 1 or workers == 1:
         # Single-node or forced-sequential mode
         for idx, node_id in enumerate(node_ids, 1):
             print(f"[{idx}/{len(node_ids)}] Checking {node_id} ...", end="", flush=True)
-            node_failures = run_matrix_for_node(node_id, fail_fast)
-            _record(report, node_id, node_failures)
+            node_failures, node_executed = run_matrix_for_node(node_id, fail_fast)
+            LAST_EXECUTED_CHECKS |= node_executed
+            _record(report, node_id, node_failures, node_executed)
             if node_failures:
                 print("  FAIL")
                 total_failures_count += len(node_failures)
@@ -923,9 +1358,10 @@ def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, w
         print(f"Using {n_workers} parallel workers.\n")
         completed = 0
         with multiprocessing.Pool(processes=n_workers) as pool:
-            for node_id, node_failures in pool.imap_unordered(_worker, node_ids):
+            for node_id, node_failures, node_executed in pool.imap_unordered(_worker, node_ids):
                 completed += 1
-                _record(report, node_id, node_failures)
+                LAST_EXECUTED_CHECKS |= node_executed
+                _record(report, node_id, node_failures, node_executed)
                 if node_failures:
                     print(f"[{completed}/{len(node_ids)}] {node_id}  FAIL ({len(node_failures)} failures)")
                     for f in node_failures[:3]:  # print first 3 per node to avoid flooding
@@ -945,6 +1381,7 @@ def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, w
     print(f"Nodes Passed:  {passed_count}")
     print(f"Nodes Failed:  {len(report) - passed_count}")
     print(f"Total Failures Observed: {total_failures_count}")
+    print(f"Contract checks actually executed: {sorted(LAST_EXECUTED_CHECKS)}")
     print(f"Detailed report saved to: {report_path}")
     print("======================================================================")
 
@@ -961,8 +1398,14 @@ def main() -> int:
     return run_matrix_validation(node=args.node, fail_fast=args.fail_fast, workers=args.workers)
 
 
-def _record(report: dict, node_id: str, failures: list):
+def _record(report: dict, node_id: str, failures: list, executed: Optional[Set[str]] = None):
+    # `report` stays a pure node -> failure-list map (node counts are derived from
+    # its length). Per-node executed-check coverage rides in a parallel dict that
+    # is merged in only at flush time, so a reviewer can see not just which nodes
+    # failed but which contract checks each node actually exercised — an empty
+    # coverage set is a node the matrix walked past without asserting anything.
     report[node_id] = failures
+    _EXECUTED_BY_NODE[node_id] = sorted(executed or ())
 
 
 if __name__ == "__main__":

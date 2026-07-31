@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q3_6",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -23,12 +23,12 @@
     },
     {
       "seed": 44,
-      "question_text": "What is the next number in the pattern: 10, 10, 10, 10, 10, 10?",
+      "question_text": "What is the next number in the pattern: 10, 1, 10, 1, 10, 1?",
       "correct_answer": 10
     },
     {
       "seed": 45,
-      "question_text": "What is the next number in the pattern: 2, 2, 2, 2, 2, 2?",
+      "question_text": "What is the next number in the pattern: 2, 10, 2, 10, 2, 10?",
       "correct_answer": 2
     },
     {
@@ -40,28 +40,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Samples like '1, 10, 1, 10, 1, 10 -> 1' correctly test extending a repeating pattern, but 2 of 5 seeds (44: all 10s, 45: all 2s) are degenerate constant runs rather than genuine alternation."
+      "rationale": "Determining the next term is genuinely performed, and I verified each continuation: seed 44's '10, 1, 10, 1, 10, 1' correctly keys 10, and seed 46's '2, 1, 2, 1, 2, 1' correctly keys 2. However the competency says 'next term/s' with an explicit plural option, and no sample ever asks for two following terms even though the competency's own example writes two blanks, '2, 4, 2, 4__, __'."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Only two distinct two-term repeat units appear (1/10 and 2/10 and 2/1), plus two trivial constant sequences, giving thin coverage of the pattern-unit variety implied by the competency's a,b,c example."
+      "verdict": "FAIL",
+      "rationale": "The competency text itself supplies a three-element core example, 'letters: a, b, c, a, b, c, a, __, __', and no sample generates a repeating core longer than two elements; every one of seeds 42 through 46 is a plain ABAB alternation. The letter sub-case named verbatim in the competency is never produced, nor are rhythmic or artistic visual patterns despite both being named in the parenthetical."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The 'What is the next number in the pattern: ...' stem with six visible terms is appropriately concrete for Grade 1 Q3."
+      "rationale": "A six-term display followed by 'What is the next number in the pattern' gives the Grade 1 Quarter 3 child three full repetitions of the core before the blank, which is generous scaffolding, and the terms used are 1, 2 and 10, all firmly inside the numbers already known by the third quarter. No option is negative and no arithmetic rule must be inferred, only repetition."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The competency explicitly allows letter and rhythmic patterns as examples, but this batch shows only numeric two-value alternations and constant runs, a narrow slice of the intended pattern space."
+      "verdict": "FAIL",
+      "rationale": "All five samples share one shape: a numeric two-element alternation with the blank at the end. Missing are letter patterns, shape or colour patterns, rhythmic clap-stomp patterns, cores of length three or four, patterns of the AABB form, and items with the blank placed in the middle of the sequence rather than after the last shown term. Seeds 43 and 45 are additionally the identical sequence '2, 10, 2, 10, 2, 10'."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Each sample asks for the term following a shown repeating cycle, which is exactly what 'determine the next term in a repeating pattern' requires."
+      "verdict": "CONCERN",
+      "rationale": "Because every item is a two-element alternation shown three times, there is no difficulty ladder at all; a student who solves seed 42 has solved every remaining item by the same one-step rule of 'say the one before last'. Progression should extend the core length and the number of requested terms, and neither dimension varies."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Values used (1,2,10) are small and appropriate for a Grade 1 Q3 pattern-recognition task."
+      "rationale": "The pattern terms 1, 2 and 10 and the distractor values 0, 3, 4, 9, 11 and 12 all sit comfortably within the counting range a Grade 1 pupil owns by the third quarter, and no option is below zero. Because the competency names no numeric ceiling, the modest values used are appropriate and never distract from the repetition rule."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

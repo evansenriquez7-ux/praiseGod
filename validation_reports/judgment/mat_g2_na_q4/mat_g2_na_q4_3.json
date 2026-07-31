@@ -1,55 +1,67 @@
 {
   "node_id": "mat_g2_na_q4_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
+    43,
     44,
+    45,
     46
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 43,
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/8"
     },
     {
       "seed": 44,
-      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 45,
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/8"
     },
     {
       "seed": 46,
-      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/8"
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency names 'similar fractions ... using groups of objects, fraction charts, fraction tiles, and the number line', but every sample is the single-fraction stem 'What fraction does 1/8 equal parts represent?' with no second same-denominator fraction shown for comparison."
+      "verdict": "FAIL",
+      "rationale": "Similar fractions are fractions sharing a denominator, such as 2/8, 3/8 and 5/8, yet all five seeds shade exactly '1 part' of 8 and key 1/8, a unit fraction. None of the four representations the competency names - groups of objects, fraction charts, fraction tiles, the number line - appears in any stem."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "All 5 seeds (42-46) render the byte-identical 1/8 item, giving zero visible variety even though variant_registry claims 9 combos across 3 axes for the fractions DNA on this node."
+      "verdict": "FAIL",
+      "rationale": "The wording names four representation modes crossed with six denominators. Seeds 42-46 deliver a single generic 'shape' at denominator 8 with one shaded part, so effectively one narrow slice of the named space is generated and the rest never appears."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The stem is short enough for the 18-word cap, but its awkward phrasing ('does 1/8 equal parts represent') repeats the same readability problem seen on the sibling node mat_g2_na_q4_0, which is concerning since this node targets the more advanced 'similar fractions' vocabulary."
+      "verdict": "PASS",
+      "rationale": "The phrasing 'divided into 8 equal parts' with a single follow-up question is simple enough for Grade 2 Quarter 4 and asks for one count-and-name step, so the reading and reasoning load is age-appropriate even though the target skill is wrong."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Nothing in the 5 samples demonstrates a fraction chart, tile array, or number-line model as named explicitly in the competency text, so I cannot confirm the registered combos actually reach those representation modes for this lc."
+      "verdict": "FAIL",
+      "rationale": "There is no set model with grouped objects, no linear model on a number line, and no chart or tile model. The shaded count is frozen at 1 at every seed, so no non-unit similar fraction such as 3/8 or 5/8 is ever displayed."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The content does not overreach into equivalence or operations, which is good, but it also undershoots by never pairing two same-denominator fractions, so it does not clearly demonstrate the 'similar fractions' relationship the lc specifically names."
+      "verdict": "FAIL",
+      "rationale": "Nothing progresses toward recognising that 2/6 and 5/6 share a denominator and are therefore similar. The repeated item is the same one served for mat_g2_na_q4_0, so this node contributes no distinct skill development."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The one denominator shown, 8, is inside the {2,3,4,5,6,8} set this node group is scoped to, so nothing in the sample exceeds the intended numeric range even if the sample lacks variety."
+      "verdict": "CONCERN",
+      "rationale": "Denominator 8 lies inside the allowed set but is the hardest single option, offered with no easier halves or thirds to anchor it, and the 3/16 distractor exceeds the stated denominator ceiling of 8."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

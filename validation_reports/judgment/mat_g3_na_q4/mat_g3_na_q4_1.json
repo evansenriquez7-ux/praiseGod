@@ -1,67 +1,41 @@
 {
   "node_id": "mat_g3_na_q4_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only), 2026-07-30 post-fix re-review batch",
+  "review_date": "2026-07-30",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 180 ÷ 6?",
-      "correct_answer": 30
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 30 ÷ 6?",
-      "correct_answer": 5
-    },
-    {
-      "seed": 44,
-      "question_text": "120 ÷ 8 = ___",
-      "correct_answer": 15
-    },
-    {
-      "seed": 45,
-      "question_text": "480 ÷ 6 = ___",
-      "correct_answer": 80
-    },
-    {
-      "seed": 46,
-      "question_text": "What is 90 ÷ 6?",
-      "correct_answer": 15
-    }
+    {"seed": 42, "question_text": "What is 180 ÷ 6?", "correct_answer": 30},
+    {"seed": 43, "question_text": "What is 30 ÷ 6?", "correct_answer": 5},
+    {"seed": 44, "question_text": "120 ÷ 8 = ___", "correct_answer": 15},
+    {"seed": 45, "question_text": "What is 480 ÷ 6?", "correct_answer": 80},
+    {"seed": 46, "question_text": "What is 90 ÷ 6?", "correct_answer": 15}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples use divisors 6 and 8 across the 5 items ('180÷6'=30, '120÷8'=15, '480÷6'=80, '90÷6'=15, '30÷6'=5), directly matching the 6-9 table-fluency requirement, though 7 and 9 aren't represented in this particular slice."
+      "verdict": "CONCERN",
+      "rationale": "The verb 'divide' is satisfied — every sample is a division sentence ('What is 180 ÷ 6?', '120 ÷ 8 = ___'). But the competency's noun phrase is 'using the 6, 7, 8, and 9 multiplication tables', i.e. recall of basic facts. Only seed 43 ('What is 30 ÷ 6?', answer 5) is an actual table fact. 180 ÷ 6 = 30, 90 ÷ 6 = 15, 120 ÷ 8 = 15 and 480 ÷ 6 = 80 all require quotients (15, 30, 80) far outside any 6/7/8/9 table, so the student is doing multi-digit division by a one-digit divisor rather than the table-based division named here."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "variant_registry lists 20 combos across 4 axes; the 5 samples plausibly represent a small slice of that larger space, with exhaustive coverage separately verified by validate_matrix."
+      "verdict": "FAIL",
+      "rationale": "The competency explicitly names four fact families — 6, 7, 8 and 9. Across all five sampled seeds the divisor is 6 four times (180 ÷ 6, 30 ÷ 6, 480 ÷ 6, 90 ÷ 6) and 8 once (120 ÷ 8). The 7 table and the 9 table are never exercised at all, so half the sub-cases the wording enumerates are missing from the sample set, and the 6 table is heavily over-weighted."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Single-clause quotient questions are short and appropriately worded for grade 3 quarter 4."
+      "verdict": "CONCERN",
+      "rationale": "Sentence structure and vocabulary are appropriately spare for Grade 3 ('What is 90 ÷ 6?'), and the ÷ symbol with MCQ/cloze presentation is fine for Q4. The reasoning demand, however, drifts past fact recall: 'What is 480 ÷ 6?' (answer 80) and 'What is 180 ÷ 6?' (answer 30) require place-value decomposition or a written long-division procedure, a heavier step than the table recall this competency asks for. Distractors are at least pedagogically sensible (2880 = 480 × 6, 474 = 480 − 6, and 6 = the divisor echoed back)."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Only divisors 6 and 8 surface in this 5-sample slice of a 20-combo space; since exhaustive combo execution is separately verified by validate_matrix, this small-sample gap for 7 and 9 is expected rather than concerning."
+      "verdict": "FAIL",
+      "rationale": "There is essentially one item template. Four of five samples are identical in shape — 'What is 180 ÷ 6?', 'What is 30 ÷ 6?', 'What is 480 ÷ 6?', 'What is 90 ÷ 6?' — and the fifth is the same computation in a cloze skin ('120 ÷ 8 = ___'). No word-problem context (sharing, grouping, equal rows), no missing-divisor or missing-dividend orientation (e.g. 42 ÷ ___ = 7), and no quotient-as-multiplication-check framing appears anywhere in the set."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The plain division-fact format cleanly matches this node's fluency-building competency without pulling in remainder or estimation content that belongs to later nodes."
+      "verdict": "CONCERN",
+      "rationale": "The axis that visibly varies across the seeds is dividend magnitude — 30, 90, 120, 180, 480 — while the divisor stays pinned at 6 for four of the five items. Growing the dividend to 480 builds general one-digit-divisor division, not mastery of the 6/7/8/9 tables; the axis that should progress for THIS competency (moving the student across the 6, then 7, then 8, then 9 families) is the one held nearly constant."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Dividends (30-480) divided by 6-8 produce grade-appropriate quotients (5-80) for this stage of grade 3."
+      "verdict": "FAIL",
+      "rationale": "The stated ceiling is the 6, 7, 8 and 9 tables, whose facts top out at dividends of 60/70/80/90 (81 for 9 × 9). Four of five sampled dividends breach that ceiling: 90 ÷ 6 (quotient 15), 120 ÷ 8 (quotient 15), 180 ÷ 6 (quotient 30) and especially 480 ÷ 6 (quotient 80). A quotient of 80 appears nowhere in the 6 table, so the numeric range runs well past the competency's scope."
     }
   },
-  "overall": "PASS"
+  "overall": "FAIL"
 }

@@ -1,18 +1,25 @@
 {
   "node_id": "mat_g2_mg_q4_4",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude Opus 5 (Claude Code session 2026-07-26), blind packet-only re-review triggered by the validate_judgment staleness gate",
+  "review_date": "2026-07-26",
   "blind": true,
   "sample_seeds": [
     42,
+    43,
     44,
+    45,
     46
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "Find the perimeter of the rectangle.",
+      "question_text": "A rectangle has sides 11 cm and 2 cm. What is its perimeter?",
       "correct_answer": 26
+    },
+    {
+      "seed": 43,
+      "question_text": "A rectangle has sides 1 cm and 5 cm. What is its perimeter?",
+      "correct_answer": 12
     },
     {
       "seed": 44,
@@ -20,35 +27,40 @@
       "correct_answer": 14
     },
     {
+      "seed": 45,
+      "question_text": "Measure the object. Its length is ___ cm.",
+      "correct_answer": 9
+    },
+    {
       "seed": 46,
-      "question_text": "Find the perimeter of the rectangle.",
+      "question_text": "A rectangle has sides 2 cm and 7 cm. What is its perimeter?",
       "correct_answer": 18
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples directly test 'Find the perimeter of the rectangle' and 'Measure the object. Its length is ___ cm.', which together plausibly build toward the lc's pairing of identifying perimeter with using a measuring tool (ruler/cm)."
+      "verdict": "CONCERN",
+      "rationale": "Three of five seeds ask for the perimeter of a rectangle from stated side lengths and compute it correctly (11 cm and 2 cm giving 26, 1 cm and 5 cm giving 12, 2 cm and 7 cm giving 18), but the competency's 'measure ... using appropriate tools' half is not exercised because the dimensions are handed to the student rather than measured."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "perimeter (6 combos) and length_measurement (4 combos) are both registered for this node; my 5 samples are illustrative and exhaustive execution is handled by validate_matrix, not this review."
+      "verdict": "CONCERN",
+      "rationale": "Only rectangles appear as the plane figure across the whole window; the competency says 'a plane figure' without restriction, so triangles and other polygons whose perimeter is a sum of unequal sides are never sampled."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "'Find the perimeter of the rectangle.' is a 6-word stem, well under the 18-word cap, and keeps the reading load light so cognitive effort goes toward the geometry/measurement task itself rather than parsing text."
+      "rationale": "The perimeter stems are one sentence with two small whole-number dimensions and a directly computable answer under 30, which sits comfortably in Grade 2 Quarter 4 range for a student who has just met perimeter."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "The lc says 'using appropriate tools' but no sample text names or shows a tool (ruler, tape measure); the measuring items just state 'Measure the object' without an explicit tool reference, so that specific phrase in the competency is only weakly evidenced."
+      "rationale": "Seeds 44 and 45 render 'Measure the object. Its length is ___ cm', which is a single-dimension length-measurement task rather than a perimeter task, so two of five sampled generations serve a neighbouring competency instead of this one."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Pairing perimeter-finding with plain length measurement is a sensible scope for 'identify and measure the perimeter', without overreaching into perimeter word-problems, which correctly belongs to the later lc mat_g2_mg_q4_6."
+      "rationale": "Among the on-topic samples the difficulty moves by side magnitude (from a 1-by-5 rectangle up to an 11-by-2 rectangle), which is a reasonable progression for perimeter computation and stays inside the competency's scope."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Observed perimeters (12, 18, 26) and lengths (9, 14 cm) are small, hand-computable numbers appropriate for grade 2 quarter 4 perimeter work without requiring large-number arithmetic."
+      "rationale": "Side lengths of 1 to 11 cm and perimeters of 12 to 26 give a linear, tightly bounded range appropriate to a Grade 2 measurement competency where the student is expected to work with a ruler-scale object."
     }
   },
   "overall": "CONCERN"

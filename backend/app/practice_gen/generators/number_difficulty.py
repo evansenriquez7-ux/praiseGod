@@ -108,6 +108,48 @@ def _count_decimal_places(v: Any) -> int:
     return 0
 
 
+def _magnitude_key(num_type: str):
+    """Order candidates by magnitude. Fractions compare by value, not by the
+    tuple's lexicographic order (which would rank 1/2 below 1/10)."""
+    if num_type == "fraction":
+        return lambda v: v[0] / v[1]
+    return lambda v: v
+
+
+def _magnitude_edge_band(magnitudes: dict, scalar: float, w: float) -> List[Any]:
+    """
+    The top (scalar 1.0) or bottom (scalar 0.0) `w`-fraction of the pool by
+    magnitude, as a list of candidate keys.
+
+    Why the endpoints need this at all: `score_candidate` scores *awkwardness*,
+    not size — 99 scores 0.95 while 100 scores 0.54, because a round number is
+    the easier item. For some pools the two are anti-correlated, so the top score
+    band can sit far below the pool ceiling: mat_g2_na_q3_0's hardest band is
+    products 27-45 against a competency maximum of 100, whose 10 x 10 is too
+    round to score high. Sampling the score band alone therefore made the top of
+    the competency's stated range unreachable at *any* setting, which is exactly
+    the gap §1A-reach exists to catch — it had been masked by the old argmax
+    short-circuit, which passed reach for the wrong reason (it maximised size,
+    not difficulty). Injecting the single extreme was not enough either: one
+    member among seven gives a 74% chance of being drawn across the 10 samples
+    §1A-reach takes, and seven multiplication nodes duly failed.
+
+    So the difficulty maximum is "hardest OR largest", and near-ceiling items are
+    a substantial share of the band rather than a lottery ticket. `w` is the
+    window width already in use for interior scalars; no new constant.
+    """
+    if not magnitudes:
+        return []
+    lo, hi = min(magnitudes.values()), max(magnitudes.values())
+    if hi <= lo:
+        return list(magnitudes.keys())
+    if scalar == 1.0:
+        cut = hi - w * (hi - lo)
+        return [k for k, m in magnitudes.items() if m >= cut]
+    cut = lo + w * (hi - lo)
+    return [k for k, m in magnitudes.items() if m <= cut]
+
+
 # ─── UNIFIED WINDOW SAMPLING GENERATORS ────────────────────────────────────────
 
 def generate_number_by_window(
@@ -145,16 +187,23 @@ def generate_number_by_window(
             score = score_candidate(val, max_val, num_type, decimal_places=decimal_places)
             scored_candidates.append((val, score))
             
-    # Strict Scalar Mapping
-    if scalar == 1.0:
-        if num_type == "fraction":
-            return max(unique_candidates, key=lambda x: x[0]/x[1])
-        return max(unique_candidates)
-    elif scalar == 0.0:
-        if num_type == "fraction":
-            return min(unique_candidates, key=lambda x: x[0]/x[1])
-        return min(unique_candidates)
-            
+    # The endpoints deliberately go through the same window + rng.choice as
+    # every other scalar. They used to short-circuit to argmax/argmin, which
+    # ignored `rng` entirely and made the endpoint a single fixed item: over 30
+    # seeds at scalar 1.0, 37 of 81 (node, dna, magnitude-axis) combinations
+    # produced <= 2 distinct operand sets, and addition produced exactly 1
+    # against 29 at scalar 0.5 — a teacher who set difficulty to maximum got
+    # the identical question every time. §1A-reach could not see it: a pool
+    # whose only near-ceiling member is always chosen satisfies "the peak
+    # reaches the ceiling" perfectly. The window below already resolves
+    # scalar 1.0 to [1-w, 1.0] and scalar 0.0 to [0.0, w], i.e. exactly the
+    # endpoint bands. Those bands are not a drop-in replacement, though: they
+    # are bands in *score* space, and the fast paths were maximising magnitude,
+    # so the endpoints also need the magnitude widening applied below — see
+    # _magnitude_edge_band.
+    # §1A boundary exactness is unaffected: it asserts on the mapped
+    # difficulty_profile ceiling, not on which operand the picker returns.
+
     # Compute window bounds
     w = 1.0 / d
     t_lo = scalar * (1.0 - w)
@@ -167,10 +216,18 @@ def generate_number_by_window(
     for val, score in scored_candidates:
         if t_lo <= score <= t_hi:
             window_candidates.append(val)
-            
+
+    # At the endpoints, widen the band to "hardest OR largest" (see
+    # _magnitude_edge_band for why the score band alone leaves the competency
+    # ceiling unreachable).
+    if scalar in (0.0, 1.0):
+        key = _magnitude_key(num_type)
+        edge = _magnitude_edge_band({v: key(v) for v in unique_candidates}, scalar, w)
+        window_candidates.extend(v for v in edge if v not in window_candidates)
+
     if window_candidates:
         return rng.choice(window_candidates)
-        
+
     # Fallback: Closest to window center
     t_mid = (t_lo + t_hi) / 2.0
     scored_candidates.sort(key=lambda item: abs(item[1] - t_mid))
@@ -214,16 +271,11 @@ def generate_pair_by_window(
             score = round(math.sqrt((s_a**2 + s_b**2) / 2.0), 4)
             scored_pairs.append(((a, b), score))
             
-    # Strict Scalar Mapping
-    if scalar == 1.0:
-        if num_type == "fraction":
-            return max(candidate_pairs, key=lambda p: (p[0][0]/p[0][1], p[1][0]/p[1][1]))
-        return max(candidate_pairs, key=lambda p: (p[0], p[1]))
-    elif scalar == 0.0:
-        if num_type == "fraction":
-            return min(candidate_pairs, key=lambda p: (p[0][0]/p[0][1], p[1][0]/p[1][1]))
-        return min(candidate_pairs, key=lambda p: (p[0], p[1]))
-            
+    # Same removal as generate_by_window above, same reasoning: the endpoints
+    # resolve through the window and `rng` rather than collapsing to the single
+    # argmax/argmin pair. This is the branch responsible for "What is 10 x 10?"
+    # being the only item a max-difficulty multiplication node ever served.
+
     # Compute window bounds
     w = 1.0 / d
     t_lo = scalar * (1.0 - w)
@@ -236,10 +288,21 @@ def generate_pair_by_window(
     for pair, score in scored_pairs:
         if t_lo <= score <= t_hi:
             window_pairs.append(pair)
-            
+
+    # Same endpoint widening as generate_number_by_window. A pair's magnitude is
+    # the sum of its operands' magnitudes: monotone in both, and so a proxy for
+    # whatever the DNA finally computes from them (product, sum, difference)
+    # without this module needing to know which.
+    if scalar in (0.0, 1.0):
+        key = _magnitude_key(num_type)
+        edge = _magnitude_edge_band(
+            {p: key(p[0]) + key(p[1]) for p in candidate_pairs}, scalar, w
+        )
+        window_pairs.extend(p for p in edge if p not in window_pairs)
+
     if window_pairs:
         return rng.choice(window_pairs)
-        
+
     t_mid = (t_lo + t_hi) / 2.0
     scored_pairs.sort(key=lambda item: abs(item[1] - t_mid))
     return scored_pairs[0][0]

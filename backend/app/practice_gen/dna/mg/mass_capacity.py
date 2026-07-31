@@ -74,6 +74,22 @@ def _round_unit_for(val: int) -> int:
     return 500
 
 
+def _nudge_off_round(val: int) -> int:
+    """
+    Shift a value that is already an exact multiple of its rounding unit.
+
+    "An object's mass measures 10 g. About how many g is that, rounded to the
+    nearest 10?" answers itself — the value is printed in the stem and rounding
+    changes nothing (validate_matrix §1F). Estimation is only a skill when there
+    is something to estimate, so an already-round reading is moved one unit off
+    the boundary (upward, so the value stays positive and inside its range).
+    """
+    unit = _round_unit_for(val)
+    if unit and val % unit == 0:
+        return val + 1
+    return val
+
+
 def _round_for_estimate(val: int) -> int:
     # A bare `max(unit, ...)` floor here was mathematically wrong: small
     # values (e.g. 2, rounding to the nearest 10) correctly round DOWN to
@@ -110,7 +126,7 @@ def generate_params(
     mtype     = profile.get("measurement_type", "mass")
     unit      = profile.get("unit", "grams_kilograms")
     task_type = profile.get("task_type", "read_measurement")
-    scalar = float(profile.get("difficulty_scalar", 0.5))
+    scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
 
     if mtype == "mass":
         g_min, g_max = bounds["mass_g_min"], bounds["mass_g_max"]
@@ -172,6 +188,7 @@ def generate_params(
             # (a legitimate G3 interpretation that doesn't require an
             # external object-reference database the way "estimate a
             # paperclip's mass" would).
+            val_g = _nudge_off_round(val_g)
             rounded = _round_for_estimate(val_g)
             return {
         "blank_target": "answer",
@@ -227,6 +244,7 @@ def generate_params(
         }
 
     if task_type == "estimate":
+        val_ml = _nudge_off_round(val_ml)
         rounded = _round_for_estimate(val_ml)
         return {
         "blank_target": "answer",

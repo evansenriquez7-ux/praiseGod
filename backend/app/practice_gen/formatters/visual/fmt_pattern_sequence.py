@@ -225,6 +225,19 @@ def format_pattern_sequence(
 
     if ctx.visual_params and "sequence" in ctx.visual_params:
         vp = ctx.visual_params.copy()
+        # PatternSequenceParams requires pattern_kind. A DNA that supplies
+        # visual_params typically carries the kind in ctx.values instead (the
+        # patterns DNA sets given_values["pattern_kind"]), so pull it across
+        # rather than emitting a payload the visual schema rejects.
+        if "pattern_kind" not in vp:
+            kind = (ctx.values or {}).get("pattern_kind")
+            if not kind:
+                raise ValueError(
+                    "format_pattern_sequence: visual_params supplied a 'sequence' but no "
+                    "'pattern_kind', and ctx.values carries none either. PatternSequenceParams "
+                    "requires pattern_kind; the DNA must name the kind of pattern it built."
+                )
+            vp["pattern_kind"] = kind
         seq_info = vp
     elif ctx.values and "sequence" in ctx.values:
         seq = ctx.values["sequence"]
@@ -248,6 +261,9 @@ def format_pattern_sequence(
             "missing_indices": missing_indices,
             "element_type": seq_info["element_type"],
             "rule": seq_info["rule"],
+            # _build_sequence always names the kind; dropping it here produced a
+            # payload the visual schema rejects (same defect as the branch above).
+            "pattern_kind": seq_info["pattern_kind"],
         }
         # Keep aux keys for trap generation
         seq_info.update(vp)

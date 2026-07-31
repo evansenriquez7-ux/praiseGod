@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_8",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude Opus 5 (Claude Code session 2026-07-26), blind packet-only re-review triggered by the validate_judgment staleness gate",
+  "review_date": "2026-07-26",
   "blind": true,
   "sample_seeds": [
     42,
@@ -23,13 +23,13 @@
     },
     {
       "seed": 44,
-      "question_text": "What is the place value of the digit 0 in 20?",
-      "correct_answer": 0
+      "question_text": "What place is the digit 5 in, in the number 4905?",
+      "correct_answer": "ones"
     },
     {
       "seed": 45,
-      "question_text": "What is the place value of the digit 1 in 15?",
-      "correct_answer": 10
+      "question_text": "What place is the digit 3 in, in the number 3140?",
+      "correct_answer": "thousands"
     },
     {
       "seed": 46,
@@ -40,27 +40,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency requires adding numbers with sums up to 1000 IN EXPANDED FORM, but none of the five samples show expanded-form notation at all -- they are plain facts ('What is 1 + 12?') or unrelated place-value cloze items ('place value of the digit 0 in 20'), and the largest observed sum is only 46, nowhere near the stated 1000 ceiling."
+      "rationale": "The competency is addition with sums up to 1000 in expanded form; the sampled additions are 1 + 12, 0 + 25 and 0 + 46, none of which is written in expanded form and none of which produces a sum above 46, roughly five percent of the stated ceiling."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "addition (4 axes/8 combos) and place_value (2 axes/8 combos) give 16 combined combos; an expanded-form-specific combo may exist elsewhere in that space, and exhaustive execution is validated separately by validate_matrix, but none of the 5 illustrative samples surfaced it."
+      "verdict": "FAIL",
+      "rationale": "Seed 44 renders 'What place is the digit 5 in, in the number 4905?' and seed 45 renders the same task for 3140 - four-digit numbers that exceed this node's own stated ceiling of 1000, on a sub-skill (place naming) the competency does not ask for."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Stems are short (under 10 words) and single-step, appropriate reading level for grade 2 quarter 1, though the content itself is not testing the more demanding expanded-form skill the competency names."
+      "verdict": "CONCERN",
+      "rationale": "The arithmetic itself is well within Grade 2 reach, but presenting four-digit numerals such as 4905 in a Quarter 1 node whose scope stops at 1000 asks the student to read a place value that has not yet been introduced at this point in the sequence."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Pulling in the place_value DNA alongside addition is a sensible pairing for expanded-form work, but nothing in the 5 samples demonstrates the two DNAs combining into an actual expanded-form addition item, raising doubt that the registered combos actually produce the target format."
+      "rationale": "mcq and cloze presentations both appear, but every sampled item is a single-step lookup or sum; no variant renders the addend decomposition (for example 234 + 152 as 200+30+4 plus 100+50+2) that defines this competency."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "A node meant to bridge basic addition into expanded-form addition to 1000 should show a clear progression toward decomposed place-value addends; instead the samples regress to trivial add-zero-or-near-zero facts (1+12, 0+25, 0+46) more at home in an earlier node."
+      "rationale": "Two of the five sampled additions use zero as an addend, which removes the carrying and place-alignment work entirely, so the observed difficulty progression does not track the competency's expanded-form skill in any direction."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "Observed sums top out at 46 against a stated ceiling of 1000 -- a two order-of-magnitude gap that, if representative, means the harder end of this node's intended range is essentially untested by these samples."
+      "rationale": "The competency's range is explicitly up to 1000 yet no sampled sum exceeds 46, while the off-topic place-value items reach 4905; the magnitudes are simultaneously far below the stated ceiling for the target skill and far above it for the intruding one."
     }
   },
   "overall": "FAIL"

@@ -148,7 +148,12 @@ def generate_params(
 
     from backend.app.practice_gen.dna.base import log_interpolate
 
-    diff_scalar = float(profile.get("difficulty_scalar", 0.5))
+    # Nothing in the pipeline sets "difficulty_scalar"; the axis that carries
+    # magnitude is "number_difficulty" (rounding.py already reads it this way).
+    # Left at the 0.5 default, log_interpolate(10, 100, 0.5) pinned max_num_limit
+    # at ~31, so a "Count up to 100" competency could never count past the low
+    # thirties no matter what its range axis said (validate_matrix §1A-reach).
+    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
 
     max_num_limit = int(log_interpolate(10, bounds["max_num"], diff_scalar))
     lo = bounds.get("min_value", 1)
@@ -176,7 +181,14 @@ def generate_params(
     log_val = log_min + num_diff_scalar * (log_max - log_min)
     max_target = int(math.pow(10, log_val)) - shift
     
-    max_num = max(10, min(max_num_limit, max_target))
+    if range_val > 1.0:
+        # `range` arrived already mapped — it *is* the competency's stated
+        # ceiling, injected by the orchestrator from the node's bounds. Clamping
+        # it by a scalar-derived limit meant the competency's own maximum was
+        # unreachable; the grade cap still applies.
+        max_num = max(10, min(int(bounds["max_num"]), int(range_val)))
+    else:
+        max_num = max(10, min(max_num_limit, max_target))
     # Respect the chosen formatter's display ceiling (e.g. emoji_pictorial
     # renders groups <= 100). The orchestrator injects `formatter_max_val`.
     if "formatter_max_val" in profile:

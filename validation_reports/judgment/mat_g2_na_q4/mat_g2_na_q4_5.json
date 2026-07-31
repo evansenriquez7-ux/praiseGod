@@ -1,54 +1,77 @@
 {
   "node_id": "mat_g2_na_q4_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
+    43,
     44,
-    45
+    45,
+    46
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 43,
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/8"
     },
     {
       "seed": 44,
-      "question_text": "Which is greater: 307 or 270?",
-      "correct_answer": ">"
+      "question_text": "Arrange these numbers from smallest to largest: 502, 507, 506, 495, 493",
+      "correct_answer": [
+        493,
+        495,
+        502,
+        506,
+        507
+      ]
     },
     {
       "seed": 45,
-      "question_text": "Which is greater: 92 or 930?",
-      "correct_answer": "<"
+      "question_text": "Arrange these numbers from smallest to largest: 505, 498, 492, 503",
+      "correct_answer": [
+        492,
+        498,
+        503,
+        505
+      ]
+    },
+    {
+      "seed": 46,
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "This lc asks students to order similar (same-denominator) fractions, but samples 44 and 45 ('Which is greater: 307 or 270?', 'Which is greater: 92 or 930?') are whole-number comparisons with no fractions present at all."
+      "rationale": "Ordering similar fractions never occurs. Seeds 44 and 45 order whole numbers ('Arrange these numbers from smallest to largest: 505, 498, 492, 503'), while seeds 42, 43 and 46 are the eighths-shading MCQ keyed 1/8, which involves no ordering and no non-unit fraction."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The comparing_ordering DNA's 8 registered combos produce whole-number magnitude comparisons for this node instead of fraction-pair orderings, mirroring the same defect found on the sibling node mat_g2_na_q4_2 that shares this DNA pairing."
+      "rationale": "No sample presents fractions with a shared denominator to be sequenced, and the 'vice versa' largest-to-smallest direction is missing from both ordering seeds, so neither the noun nor the second half of the verb phrase is covered."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Determining 92 vs 930 requires digit-count and place-value reasoning well beyond comparing two same-denominator fractions like 3/8 vs 5/8, so the sampled cognitive demand does not match what 'order similar fractions' implies for grade 2 quarter 4."
+      "rationale": "The whole-number sorts are correct (492, 498, 503, 505) and undemanding, but three-digit comparison sits well below the reasoning needed to order 2/6, 4/6 and 5/6, so the items understate what this Quarter 4 node requires of a pupil."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "No sampled seed shows two similar fractions being ranked, so the variant space this competency needs -- multiple same-denominator fractions in one item -- is entirely absent from this 5-sample batch."
+      "rationale": "Only two task shapes exist and neither is on topic. Missing are same-denominator ordering by numerator, number-line placement of similar fractions, and descending-order prompts that the competency's 'and vice versa' clause explicitly names."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Whole-number greater-than/less-than comparison is a distinct competency from ordering similar fractions, so this content reaches into an unrelated topic rather than deepening difficulty within the stated lc."
+      "rationale": "Across seeds 42-46 difficulty varies only by list length - five numbers at seed 44 and four at seed 45 - which cannot scaffold the numerator-comparison insight that ordering fractions with a common denominator depends on."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "Numbers as large as 930 have no place in a similar-fractions node scoped to denominators 2-8, so the observed scale is not a progression toward this competency but a different numeric domain."
+      "rationale": "Values run as high as 507 whereas this competency's ceiling is fractions with denominators of at most 8. The generated range belongs to a whole-number place-value competency, not to a similar-fractions ordering node."
     }
   },
   "overall": "FAIL"

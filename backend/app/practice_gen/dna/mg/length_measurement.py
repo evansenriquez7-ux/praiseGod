@@ -145,14 +145,19 @@ def generate_params(
             f"generate_params (length_measurement): task_type='choose_unit' (m vs cm) is not available for grade={grade}."
         )
 
-    scalar = float(profile.get("difficulty_scalar", 0.5))
+    scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
     unit_mode = "non_standard" if grade < 2 else (requested_unit_type or "cm")
 
     if task_type == "compare":
+        # Comparing two lengths needs at least two distinct values to draw from.
+        # At the bottom of the difficulty window the mapped ceiling collapses onto
+        # the floor (log_interpolate(1, 100, 0.0) == 1), and the "keep drawing
+        # until they differ" loops below then spin forever — a real hang, not a
+        # slow path. One unit of headroom is the domain minimum for the task.
         if unit_mode == "non_standard":
             unit = rng.choice(_NON_STANDARD_UNITS)
             l_min, l_max = bounds.get("length_min", 1), bounds.get("length_max", 100)
-            l_max_current = max(l_min, int(log_interpolate(l_min, l_max, scalar)))
+            l_max_current = max(l_min + 1, int(log_interpolate(l_min, l_max, scalar)))
             val_a = rng.randint(l_min, l_max_current)
             val_b = rng.randint(l_min, l_max_current)
             while val_b == val_a:
@@ -160,6 +165,7 @@ def generate_params(
         else:
             unit = unit_mode
             lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
+            hi = max(hi, lo + 1)
             val_a = rng.randint(lo, hi)
             val_b = rng.randint(lo, hi)
             while val_b == val_a:
@@ -291,10 +297,32 @@ def generate_params(
             # NOT_YET_KNOWN vocabulary (data-table terminology introduced
             # later), unrelated to this furniture sense but still caught by
             # the vocab-gating checker's literal word match.
-            obj = rng.choice(["a pencil", "a book", "a notebook", "a ruler", "a shoe", "a crayon"])
+            # "a ruler" excluded for a stronger reason: this branch is the G1
+            # non-standard-units path, and "ruler" is genuinely NOT_YET_KNOWN
+            # at mat_g1_mg_q2_0 — a G1 pupil measuring in steps/paperclips has
+            # not met the ruler yet. It stays available on the G2 standard-units
+            # branch below, where the node introduces it.
+            # The first version of this narrative stated the measurement and then
+            # asked for it back ("It measured 5 paperclips long. How long is a
+            # book in paperclips?"), so the answer was the only number on the
+            # page and could be copied without measuring or reasoning
+            # (validate_matrix §1F). Give the student two measured objects and
+            # ask for the difference: that needs the stated lengths *and* an
+            # operation, and "solve problems involving lengths" is what the
+            # competency asks for in the first place.
+            obj_a, obj_b = rng.sample(
+                ["a pencil", "a book", "a notebook", "a shoe", "a crayon"], 2
+            )
+            if length < 2:
+                length = 2
+                result["length"] = length
+            shorter = rng.randint(1, length - 1)
+            result["length_b"] = shorter
+            result["answer"] = length - shorter
             result["question"] = (
-                f"Ben used {unit} to measure {obj}. It measured {length} {unit} long. "
-                f"How long is {obj} in {unit}?"
+                f"{obj_a[0].upper()}{obj_a[1:]} is {length} {unit} long. "
+                f"{obj_b[0].upper()}{obj_b[1:]} is {shorter} {unit} long. "
+                f"How many {unit} longer is {obj_a} than {obj_b}?"
             )
         return result
 
@@ -314,10 +342,21 @@ def generate_params(
             # G2 standard-units (cm/m) path -- "Solve problems involving
             # length and distance" (mat_g2_mg_q2_3) is G2-only (standard
             # units), so it never reached the non_standard branch's fix.
-            obj = rng.choice(["a pencil", "a book", "a notebook", "a ruler", "a garden path", "a crayon"])
+            # Same self-answering defect as the non_standard branch above, and
+            # the same fix: two measured objects and a difference to compute.
+            obj_a, obj_b = rng.sample(
+                ["a pencil", "a book", "a notebook", "a ruler", "a garden path", "a crayon"], 2
+            )
+            if length < 2:
+                length = 2
+                result["length"] = length
+            shorter = rng.randint(1, length - 1)
+            result["length_b"] = shorter
+            result["answer"] = length - shorter
             result["question"] = (
-                f"Ana used a {unit_mode} ruler to measure {obj}. It measured {length} {unit_mode} long. "
-                f"How long is {obj} in {unit_mode}?"
+                f"{obj_a[0].upper()}{obj_a[1:]} is {length} {unit_mode} long. "
+                f"{obj_b[0].upper()}{obj_b[1:]} is {shorter} {unit_mode} long. "
+                f"How many {unit_mode} longer is {obj_a} than {obj_b}?"
             )
         return result
 

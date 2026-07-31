@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q4_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,55 +13,55 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What fraction does \\(\\frac{1}{2}\\) equal parts represent?",
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/2"
     },
     {
       "seed": 43,
-      "question_text": "What fraction does \\(\\frac{1}{2}\\) equal parts represent?",
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/2"
     },
     {
       "seed": 44,
-      "question_text": "Which is greater: 10 or 6?",
+      "question_text": "Compare the numbers: 10 ___ 6. Which sign is correct: >, <, or =?",
       "correct_answer": ">"
     },
     {
       "seed": 45,
-      "question_text": "Which is greater: 18 or 30?",
+      "question_text": "Compare the numbers: 18 ___ 30. Which sign is correct: >, <, or =?",
       "correct_answer": "<"
     },
     {
       "seed": 46,
-      "question_text": "What fraction does \\(\\frac{1}{2}\\) equal parts represent?",
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/2"
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Competency requires comparing 1/2 and 1/4 using models, but none of the 5 samples ask a comparison between the two fractions; three ask students to name what fraction '1/2 equal parts' represents, and two ('Which is greater: 10 or 6?') compare whole numbers with no fraction or model in sight."
+      "verdict": "FAIL",
+      "rationale": "Not a single sample compares 1/2 with 1/4. Seeds 42, 43 and 46 ask 'A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?', which is fraction identification and duplicates the neighbouring illustrate competency, while seeds 44 and 45 render whole-number items, 'Compare the numbers: 10 ___ 6' and 'Compare the numbers: 18 ___ 30'. The word 'compare' is honoured only by comparing integers, never fractions."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "fractions registers 3 axes/9 combos and comparing_ordering registers 3 axes/8 combos per variant_registry; validate_matrix machine-verifies exhaustive execution of that combo space, and these 5 seeds are only an illustrative slice of it."
+      "verdict": "FAIL",
+      "rationale": "Neither direction of the intended comparison is ever generated: no item keys that 1/2 is greater than 1/4, none keys that 1/4 is less than 1/2, and none establishes the essential precondition that the two wholes must be the same size. The phrase 'using models' names a required representation, and no shaded-strip or partitioned-circle comparison of the two fractions is produced anywhere in seeds 42 to 46."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Both observed question types are single, direct sentences well under the 15-word grade-1 cap ('What fraction does 1/2 equal parts represent?' is 8 words), appropriate single-step recall for grade 1 quarter 4."
+      "verdict": "CONCERN",
+      "rationale": "The fraction stems are pitched fine for Quarter 4, but the injected integer items are not: seed 45 compares 18 with 30, a two-digit magnitude comparison that has nothing to do with fractional parts and that a child working on halves and fourths will find contextually bewildering, and the 'cannot be determined' option in both integer items is abstract test-taking language rather than a plausible Grade 1 misconception."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The comparing_ordering axis appears to drive plain integer comparisons (10 vs 6, 18 vs 30) rather than fraction-vs-fraction comparisons, so the registered variant space as sampled does not obviously exercise the 1/2-vs-1/4 model comparison this competency names."
+      "verdict": "FAIL",
+      "rationale": "The node contains just two stem shapes, one repeated fraction-naming template drawn three times and one repeated integer-comparison template drawn twice. The variations a comparison competency needs, comparing shaded area in two pictures, comparing shares of the same cake between two and four children, and ordering the unit fractions, are wholly absent."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "None of the sampled content reaches beyond grade-1 scope, but the fraction item tests bare identification of 1/2 rather than the comparative judgment (which is bigger, half or a quarter) the competency wording specifically demands."
+      "verdict": "FAIL",
+      "rationale": "The apparent difficulty progression runs from naming 1/2 at seeds 42 and 43 to comparing 10 with 6 and then 18 with 30 at seeds 44 and 45, meaning difficulty is escalated by enlarging whole numbers. That builds symbolic integer comparison, a Quarter 1 number-sense skill, and moves directly away from comparing fractional parts of a whole using models."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The whole-number magnitudes seen (6-30) and the single denominator pair (halves, quarters) are both well within an early grade-1 range, so scale itself is not the issue for this node."
+      "verdict": "FAIL",
+      "rationale": "This competency's entire numeric world is the denominators 2 and 4 and the single whole they partition, yet seed 45 places 30 in a stem and seed 44 places 10 and 6. Those magnitudes exceed anything this fraction competency licenses and confirm that a foreign number-comparison generator is supplying items to a fractions node."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

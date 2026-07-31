@@ -655,3 +655,519 @@ for v in [2,3,5,15,25,35,45,55]:
 ```
 
 Full `run_all` re-verified clean (151/151, exit 0) after this fix. Final judgment tally for this extended session: **20/66/65 (PASS/CONCERN/FAIL) at round-2 start → 31/78/42 at final count.**
+
+---
+
+# 2026-07-26 — Audit of the `pgen_hardening.md` / `doc_rem.md` implementations
+
+Interpreter: `.venv/bin/python` (3.12.13), run from the repo root with `PYTHONPATH=.`.
+Every claim below is the verbatim tail of an executed command.
+
+## Baseline (before any change this session)
+
+```
+$ .venv/bin/python -m backend.app.practice_gen.validation.run_all
+--- 6/6: Judgment Reviews (genuine per-node artifacts) ---
+  PASS judgment_reviews (all nodes have genuine, complete reviews)
+  NOTE verdict tally over 151 genuine reviews: PASS=31 CONCERN=80 FAIL=40 ...
+--- Two-Direction Contract Verification ---
+  PASS contract_doc_matches_registry
+  PASS two_direction_contract_match
+ALL TESTS PASSED SUCCESSFULLY! Praise God!
+EXIT=0
+```
+
+Green — while, as the checks below show, 11 judgment reviews described content the generator no
+longer produced, 22 nodes generated nothing at all, and §1A had never inspected a generated number.
+
+## Finding 1 — judgment reviews were stale and nothing noticed
+
+Re-rendering every seed each review cites, before adding the gate:
+
+```
+FRESH=140 STALE=11 RENDER_ERRORS=0
+
+mat_g1_na_q2_4: 3 drifted sample(s)
+   seed 42
+     reviewed: 'What is the place value of the digit 5 in 45?'
+     current : 'What place is the digit 5 in, in the number 45?'
+...
+STALE NODE IDS: ['mat_g1_na_q2_4', 'mat_g1_na_q3_5', 'mat_g1_mg_q1_1', 'mat_g1_mg_q1_2',
+ 'mat_g2_na_q1_8', 'mat_g2_na_q4_2', 'mat_g2_na_q4_5', 'mat_g2_mg_q4_2', 'mat_g2_mg_q4_4',
+ 'mat_g3_dp_q3_0', 'mat_g3_dp_q3_3']
+```
+
+After adding the freshness gate to `validate_judgment.py` and re-reviewing all 11 blind
+(packet-only: competency text + rendered samples, no generator source):
+
+```
+$ .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment
+Verdicts over 151 reviewed nodes: PASS=31 CONCERN=76 FAIL=44 UNKNOWN=0
+Judgment review validation: all nodes have genuine, complete reviews.
+```
+
+The gate then proved itself: a later content fix in this same session (removing the `ruler` vocab
+leak) changed `mat_g1_mg_q2_2`'s output, and `run_all` failed with
+
+```
+- mat_g1_mg_q2_2: STALE review — seed 42 no longer renders the content that was judged.
+  Reviewed: 'Ben used paperclips to measure a crayon. ...'; now renders:
+  'Ben used paperclips to measure a notebook. ...'
+```
+
+which was resolved by a fresh blind review of that node.
+
+## Finding 2 — 22 of 151 nodes ran no execution matrix, all reporting PASS
+
+Per-node coverage, from the instrumented matrix report:
+
+```
+nodes total: 151
+EMPTY coverage: 6 ['mat_g1_na_q3_7', 'mat_g1_mg_q2_0', 'mat_g2_na_q2_8', 'mat_g2_na_q2_9',
+                   'mat_g3_na_q3_5', 'mat_g3_na_q3_6']
+no 1C (execution matrix never ran): 22
+per-check node counts: {'§1A': 80, '§1B': 80, '§1C-reverse': 105, '§1C': 129, '§1D': 129,
+                        '§1E': 98, '§4': 98}
+```
+
+## Finding 3 — those nodes could not serve any formatter-constrained request
+
+```
+mat_g1_na_q1_0       mcq      RAISE ValueError: Formatter 'mcq' is not supported by any DNA for node 'mat_g1_na_q1_0'
+mat_g1_na_q3_7       mcq      RAISE ValueError: Formatter 'mcq' is not supported by any DNA for node 'mat_g1_na_q3_7'
+mat_g2_na_q2_8       cloze    RAISE ValueError: Formatter 'cloze' is not supported by any DNA for node 'mat_g2_na_q2_8'
+```
+
+After the `orchestrator.py` fix:
+
+```
+mat_g1_na_q1_0       mcq      OK  'What number comes next when counting: 4, 5, 6, 7, ___?'
+mat_g1_na_q3_7       mcq      OK  'Which of these number sequences shows a repeating pattern?'
+mat_g2_na_q2_8       mcq      OK  'What is the next number in the pattern: 10, 9, 8, 7, 6, 5?'
+mat_g3_na_q3_5       mcq      OK  'What number is missing in the pattern: 25, ___, 35, 34, 45?'
+mat_g3_na_q3_6       mcq      OK  'This pattern follows a rule: 25, 24, 35, 34, 45, ... What nu'
+mat_g1_mg_q2_0       mcq      OK  'Measure the object. Its length is ___ paperclips.'
+```
+
+## Finding 4 — Phase 4 mutation testing: 4/7 on first honest execution
+
+`tests/mutation_harness.py`, first run:
+
+```
+  FAIL  leaky_window             §1A/§1B (scalar boundary exactness / window containment)
+  FAIL  boundary_off_by_one      §1A (maximum never reached at scalar 1.0)
+  PASS  broken_formatter_combo   §1C (variant x formatter execution matrix)
+  PASS  answer_corruption        §1E (answer-key integrity)
+  PASS  vocab_leak               §1D (vocabulary lint on formatted output)
+  FAIL  silent_substitution      §1C-reverse (excluded combinations must raise)
+  PASS  registry_drift           _manifest.py import-time registry assertion
+
+4/7 mutations detected.
+EXIT=1
+```
+
+`boundary_off_by_one` and `silent_substitution` were mis-aimed mutations (see IMPLEMENTATION_STATUS
+item 4) and were retargeted at the governing code. `leaky_window` was a real harness hole: §1A/§1B
+compared only the echoed `difficulty_profile` value, never a generated number. After adding
+generated-value containment at scalar 1.0:
+
+```
+  PASS  leaky_window             §1A/§1B (scalar boundary exactness / window containment)
+  PASS  boundary_off_by_one      §1A (maximum never reached at scalar 1.0)
+  PASS  broken_formatter_combo   §1C (variant x formatter execution matrix)
+  PASS  answer_corruption        §1E (answer-key integrity)
+  PASS  vocab_leak               §1D (vocabulary lint on formatted output)
+  PASS  silent_substitution      §1C-reverse (excluded combinations must raise)
+  PASS  registry_drift           _manifest.py import-time registry assertion
+
+7/7 mutations detected.
+Praise God — the verifier verifies.
+EXIT=0
+```
+
+Reproduce with `PYTHONPATH=. python -m tests.mutation_harness` (add `--only <name>` for one).
+
+## Finding 5 — the new containment check found a phantom axis
+
+Scoped to scalar 1.0 (matching §1A's wording), the containment assertion left exactly one class of
+genuine failure across 151 nodes:
+
+```
+[('value_containment_value_max', 774)]
+nodes failing: 10
+mat_g2_na_q1_4 | Leaky window on axis 'value_max' at scalar 1.0: given_values.numbers[2]=62.0
+                 exceeds the competency maximum 49 the DNA was given.
+```
+
+`comparing_ordering` declares `value_max` but never reads it (`grep -c value_max
+.../comparing_ordering.py` → `0`); it reads `max_value`, declared alongside it with the identical
+"Maximum Value" label. Removed from the axis catalog.
+
+## Ground Rule 2 disclosures (assertions changed, with justification)
+
+* **`validate_matrix` competency-bound comparison is now string-normalised.** `registry.py` binds
+  `missing_number`'s `tables` as ints `[2,3,4,5,10]` while `VARIANTS_BY_DNA` declares them as strings
+  `['2',...]`; an identity comparison made every option look out-of-bounds and emptied the matrix for
+  2 nodes. The same normalisation was applied to `orchestrator.py`'s boundary check, which rejected
+  the Lab's own valid selection (`tables='2'` "out of bounds" against a list containing `2`). The
+  check still requires the value to lie inside the competency's set; only the type coercion changed.
+* **Generated-value containment asserts at scalar 1.0 only.** An earlier draft asserted at every
+  scalar and produced 10,376 failures across 37 nodes, nearly all spurious: a window ceiling below a
+  task's structural minimum is legitimate (ordering three distinct numbers cannot respect a
+  scalar-0.0 ceiling of 1). Scalar 1.0 against the competency maximum is what §1A actually specifies.
+
+## Final state
+
+```
+$ .venv/bin/python -m backend.app.practice_gen.validation.run_all
+Nodes Checked: 151
+Nodes Passed:  151
+Nodes Failed:  0
+Total Failures Observed: 0
+Contract checks actually executed: ['§1A', '§1B', '§1C', '§1C-coverage', '§1C-reverse', '§1D', '§1E', '§4']
+
+--- 6/6: Judgment Reviews (genuine per-node artifacts) ---
+  PASS judgment_reviews (all nodes have genuine, complete, fresh reviews)
+  NOTE verdict tally over 151 genuine reviews: PASS=31 CONCERN=76 FAIL=44 ...
+
+--- Two-Direction Contract Verification ---
+  PASS contract_doc_matches_registry
+  PASS two_direction_contract_match
+
+ALL TESTS PASSED SUCCESSFULLY! Praise God!
+EXIT=0
+```
+
+The verdict tally is unchanged as a headline but is now *earned*: every review is schema-complete,
+non-boilerplate, and demonstrably about content the pipeline currently serves.
+
+---
+
+# 2026-07-27 — Track 1: converting judgment debt into enforcement
+
+Two contract rows added (`§1A-reach`, `§1F`), each mutation-tested. Verbatim progression of the
+matrix as their findings were worked:
+
+```
+after adding both rules (unfixed):   Nodes Passed: 57/151   Total Failures: 3730
+after narrowing §1F to true leaks:   Nodes Passed: 104/151  Total Failures:  480
+after template fixes (fraction/     Nodes Passed: 117/151  Total Failures:   96
+  measurement/ordinal/pattern):
+after reach-check fix + degenerate:  Nodes Passed: 125/151  Total Failures:  218
+after counting + rounding fixes:     Nodes Passed: 136/151  Total Failures:   29
+after max_product ground truth:      Nodes Passed: 146/151  Total Failures:    5
+```
+
+`§1F` was deliberately narrowed after its first run: firing on 3,702 samples, it was conflating three
+different things. Only one is answer leakage.
+
+```
+LEAK  'Jose has lunch at 1:30. What time is that?'                  -> answer 1:30
+LEAK  'What fraction does \(\frac{2}{5}\) equal parts represent?'   -> answer 2/5
+OK    'Which shape has more sides — a triangle or a rectangle?'     (comparison names its candidates)
+OK    'Complete the equivalent expression: 2 + 1 = 1 + ___'         (commutativity restates an operand)
+OK    '2 + 0 = ___'                                                 (identity fact, not a leak)
+```
+
+The final rule fires only when the answer is the stem's *only* datum. Detector unit-checked 11/11 on
+the cases above plus symmetry (`answer == given` is correct mathematics there, and is exempted).
+
+`§1A-reach` was likewise corrected twice, both times because it was asserting against a **default**
+rather than a curriculum claim — the same error in two guises:
+
+```
+counting  range=1.0 alone                        -> max value 29   (number_difficulty sat at 0.5)
+counting  range=1.0 + number_difficulty=1.0      -> max value 29   (genuine defect)
+multiply  max_product=1.0 alone                  -> max product 30 (check artifact)
+multiply  max_product=1.0 + number_difficulty=1.0 -> max product 90 (passes)
+```
+
+and then scoped to axes the competency explicitly binds, since `mat_g1_na_q1_5` reads "ordinal
+numbers 1st, 2nd, 3rd, up to 10th" while binding no `ordinal_range` — the ceiling of 100 was an axis
+default no generator change could honestly satisfy.
+
+Representative before/after of the fixed content:
+
+```
+counting   before: max sequence value 29 against a stated ceiling of 100
+           after:  'What comes next: 83, 84, 85, 86, ___'   (max 98)
+
+fractions  before: 'What fraction does \(\frac{1}{2}\) equal parts represent?' -> 1/2
+           after:  'A shape is divided into 2 equal parts. 1 part is shaded.
+                    What fraction of the shape is shaded?'                     -> 1/2
+
+length     before: 'Ben used paperclips to measure a book. It measured 10 paperclips
+                    long. How long is a book in paperclips?'                   -> 10
+           after:  'A book is 10 paperclips long. A shoe is 6 paperclips long.
+                    How many paperclips longer is a book than a shoe?'         -> 4
+
+ordinal    before: 'What is the ordinal name for position 6?'                  -> 6
+           after:  'Which word describes the 6th position?'                    -> 'sixth'
+                   'Write the symbol for the sixth position.'                  -> '6th'
+
+rounding   before: 'Round 10 to the nearest 10.'                               -> 10
+           after:  'Round 11 to the nearest 10.'                               -> 10
+
+patterns   before: 'What is the next number in the pattern: 2, 2, 2, 2, 2, 2?' -> 2
+           after:  'What is the next number in the pattern: 2, 10, 2, 10, 2, 10?'
+```
+
+Phase 4 re-verified after every harness change:
+
+```
+$ PYTHONPATH=. .venv/bin/python -m tests.mutation_harness
+7/7 mutations detected.
+Praise God — the verifier verifies.
+```
+
+## Ground Rule 2 disclosure
+
+**`mat_g3_na_q3_0`, `mat_g3_na_q3_1` — `max_product` bound corrected from (0, 1000) to (0, 90).**
+"Multiply numbers using the 6, 7, 8, and 9 multiplication tables" has no numeral in its text, so it
+fell through to the G3 grade default of 1000. The largest product those tables generate is 9x10=90;
+the 1000 ceiling described a range the competency does not cover. Table language was previously
+parsed only on the `missing_number` branch of `registry.py`, so multiplication nodes never saw it.
+
+## Final state (RED, itemised)
+
+```
+$ .venv/bin/python -m backend.app.practice_gen.validation.validate_matrix
+Nodes Checked: 151   Nodes Passed: 146   Nodes Failed: 5   Total Failures: 5
+Contract checks actually executed: ['§1A', '§1A-reach', '§1B', '§1C', '§1C-coverage',
+                                    '§1C-reverse', '§1D', '§1E', '§1F', '§4']
+
+  mat_g2_na_q4_1: 'range' reached 906 of 10000
+  mat_g2_na_q4_4: 'range' reached 906 of 10000
+  mat_g3_na_q2_0: 'max_total' reached 4600 of 10000
+  mat_g3_na_q3_4: 'max_product' reached 90 of 1000
+  mat_g3_na_q3_2: 'max_product' reached 990 of 10000
+```
+
+Plus 25 nodes whose judgment reviews the freshness gate now rejects, because the content fixes above
+changed what they render. Those re-reviews are outstanding and were **not** written by the agent that
+authored the fixes — see IMPLEMENTATION_STATUS.md.
+
+---
+
+# 2026-07-27 (cont.) — closing the reach gaps and re-reviewing the judgment layer
+
+## Behavioural matrix restored to green
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+Nodes Checked: 151   Nodes Passed: 151   Nodes Failed: 0   Total Failures: 0
+Contract checks actually executed: ['§1A', '§1A-reach', '§1B', '§1C', '§1C-coverage',
+                                    '§1C-reverse', '§1D', '§1E', '§1F', '§4']
+  PASS judgment_reviews (all nodes have genuine, complete, fresh reviews)
+  NOTE verdict tally over 151 genuine reviews: PASS=30 CONCERN=52 FAIL=69
+  PASS contract_doc_matches_registry
+  PASS two_direction_contract_match
+ALL TESTS PASSED SUCCESSFULLY! Praise God!
+EXIT=0
+```
+
+Phase 4 re-verified after every harness change in this session:
+
+```
+$ PYTHONPATH=. .venv/bin/python -m tests.mutation_harness
+7/7 mutations detected.
+```
+
+Unit suite (includes new `tests/unit/test_answer_leak_and_reach.py`, 17 cases pinning §1F's
+boundary — the legitimate-restatement cases are the part most likely to regress):
+
+```
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit/ -q -m "not slow"
+270 passed, 2 deselected
+```
+
+## A latent infinite loop, exposed by fixing a dead key
+
+`difficulty_scalar` is read by 15 DNA modules and written by none, so all 15 silently used 0.5.
+Pointing it at `number_difficulty` (which is what actually carries magnitude) made
+`length_measurement`'s compare task reachable at scalar 0.0, where the mapped range collapses to a
+single value:
+
+```
+scalar 0.0 -> l_max_current = 1
+scalar 0.5 -> l_max_current = 10
+```
+
+`while val_b == val_a: val_b = rng.randint(l_min, l_max_current)` then never terminates. The matrix
+run hung on `mat_g3_mg_q1_6` for 30+ minutes at 0% CPU with 150/151 nodes recorded. Both compare
+branches now guarantee one unit of headroom. (Two orphaned worker processes from a previous session
+were also found still alive — the runaway-worker trap `testing_pipeline.md` documents.)
+
+## Content reaching its stated ceiling
+
+```
+counting     before: max sequence value 29 against a stated ceiling of 100
+             after:  'What comes next: 83, 84, 85, 86, ___'            (max 98)
+money        before: max total ₱4600 against ₱10 000
+             after:  'What is the total value of 10 ₱1000 bills?'      -> 10000
+multiply     before: max product 90 against 10 000
+             after:  'What is 994 × 10?'                               -> 9940
+fractions    before: co-mapped number_reading served 'Write 227 in words.'
+             after:  'A shape is divided into 8 equal parts. 1 part is shaded...'
+```
+
+## Blind re-review: what the reviewers caught that the machine could not
+
+Two rounds of packet-only subagent review (40 nodes, then 2 whose content moved mid-round). Reviewers
+hand-verified every keyed answer. Defects found and fixed:
+
+```
+'Which is greater: 18 or 30?'                     -> keyed '<'   (stem asks for a number)
+'0 + 14 = ___'  options [..., -14]                              (negative, out of grade)
+'A shape divided into 2 parts, 1 shaded' options ['2/4', '1/2'] (two correct answers)
+'Who has more, and by how many?'                  -> keyed 5     (first half names a person)
+```
+
+After the fixes:
+
+```
+'Compare the numbers: 10 ___ 6. Which sign is correct: >, <, or =?'  -> '>'
+'0 + 14 = ___'  options [24, 13, 14, 15]
+options ['3/2', '2/1', '2/3', '1/2']  key '1/2'
+'Ate Cara has 10 photo albums... How many more photo albums does Ate Cara have?' -> 5
+```
+
+The `Which is greater` stem existed in three copies (`base_generator`, `fmt_mcq`, `fmt_cloze`); the
+first fix corrected one and the reviewers found the other two still shipping. The negative-option
+filter was likewise applied to `fmt_mcq` first and missed `fmt_cloze`; it now lives in
+`base_generator`'s distractor assembly, the single point all 17 formatters draw from.
+
+## Ground Rule 2 disclosures
+
+* **`mat_g3_na_q3_0`, `mat_g3_na_q3_1`** — `max_product` corrected from the G3 grade default
+  `(0, 1000)` to `(0, 90)`. "Multiply numbers using the 6, 7, 8, and 9 multiplication tables" has no
+  numeral in its text so it inherited the default; those tables reach at most 9×10.
+* **`mat_g2_na_q4_1`, `mat_g2_na_q4_4`** — `number_reading` removed as a co-mapped DNA. It rendered
+  `"Write 227 in words."` on "Read and write unit/similar fractions in fraction notation", and
+  dragged in a `range` bound of (10, 10000) that no fraction competency states.
+* **`tests/unit/test_axes_log_scale.py`** — the test asserting `comparing_ordering` declares a
+  `value_max` axis now asserts the opposite. That axis was an inert duplicate of `max_value` (same
+  "Maximum Value" label, never read by the DNA); the test encoded the defect.
+
+## Known remaining debt (documented, not hidden)
+
+69 nodes carry a FAIL verdict (71 after the 2026-07-30 review pass below). The dominant cause, named
+independently by every reviewer, is
+**co-mapped secondary DNAs bleeding off-topic content into a node** — the multi-DNA leak pattern.
+It is a mapping-level decision, not a generator patch, and every instance is cited with node id and
+sample text in the per-node artifacts.
+
+---
+
+# Adversarial review pass — 2026-07-30
+
+An independent pass over this branch, tasked with finding what the hardening got wrong. The three
+headline claims above reproduced exactly (`run_all` exit 0 / 151-151 / ten checks observed,
+mutation harness 7/7, 270 unit tests). The defects below were found underneath them, and the
+Phase A+B subset was fixed in this change.
+
+## Fixed
+
+1. **`max_minuend` parsed a digit *width* as a magnitude** (`registry.py`). `re.search(r'(?:less than|up
+   to)\s+(\d+)')` matched "up to **2** digits", so three Grade 3 nodes bound a minuend ceiling of 2 or 4
+   and served `2 − 2 = 0` at maximum difficulty. Neither §1A nor §1A-reach could see it: both assert
+   against the *parsed* ceiling, so a mis-parsed bound immunises the node from the only checks that
+   would expose it. Fixed by handling the digit-width idiom (already handled correctly in the generic
+   extraction path 350 lines below) and rejecting sub-10 captures. The same missing guard on
+   `missing_number.max_result` was closed too; no live node was affected by that one.
+
+2. **`formatter_max_val` was never injected on the portal's call shape** (`orchestrator.py`). It is set
+   only inside `if formatter:`, but on the student path the formatter is chosen *after*
+   `generate_context`, so nothing clamped anything; and `node_max_value` is computed from the *primary*
+   DNA's bounds only, so `mat_g2_na_q3_0` (`['multiplication', 'counting']`) admitted `emoji_pictorial`
+   on multiplication's `max_product=100` while `counting` generated 578. Five hard `ValueError`s in
+   9,060 portal-shape generations. Fixed by filtering the post-context formatter list on the magnitude
+   the DNA actually produced. Now 9,060/9,060.
+
+3. **§1B containment was silently disabled for 13 nodes** (`validate_matrix.py`). The `continue` added to
+   narrow §1A-reach to competency-bound axes sat *above* the generated-value containment sweep, so it
+   switched that off too — 14 (node, dna, axis) triples, 11 nodes with no magnitude containment coverage
+   at all. Narrowing reach was sound and is preserved; narrowing containment was not intended. This is a
+   deliberate edit to `validation/` that strengthens a check: verified by inflating every generated
+   integer by 10,000, which raised 0 failures on `mat_g1_na_q1_5` / `mat_g1_dp_q3_0` before and 30 each
+   after, with the bound control (`mat_g1_mg_q2_2`) unchanged at 110.
+
+4. **Difficulty endpoints were single fixed items** (`number_difficulty.py`). `generate_number_by_window`
+   and `generate_pair_by_window` short-circuited scalars 0.0 and 1.0 to argmin/argmax, ignoring `rng`:
+   37 of 81 (node, dna, magnitude-axis) combinations produced ≤2 distinct operand sets over 30 seeds at
+   scalar 1.0, and addition produced exactly **1** against 29 at scalar 0.5. §1A-reach could not see it —
+   a pool whose only near-ceiling member is always chosen satisfies "the peak reaches the ceiling"
+   perfectly. Removing the short-circuit alone then *broke* reach on seven multiplication nodes, which
+   exposed the real relationship: `score_candidate` scores awkwardness, not size (99 → 0.95, 100 → 0.54),
+   so for those pools the hardest band is products 27-45 against a ceiling of 100 and the old argmax had
+   been passing reach for the wrong reason. The endpoint band is now "hardest OR largest", reusing the
+   existing window width. Result: 0 reach violations under §1A-reach's own 10-seed protocol, and 1 of 77
+   combos still low-variety (`mat_g3_na_q2_0`, whose cause is the content debt below).
+
+5. **A 0-1 scalar reaching a DNA as a raw ceiling** (`base_generator.py`). `subtraction.max_minuend` and
+   `rounding.max_value` are registry tuple bounds that are *not* catalog axes, so nothing scalar-maps
+   them, but the bounds injection passes any caller value straight through — `{"max_minuend": 1.0}`
+   became a ceiling of 1. Now a named `ValueError`; ints still honoured. Registering the two keys as real
+   axes would be the fuller fix and would drift 15 nodes' content, so it is left open.
+
+6. **Evidence artifacts were untracked and unexercised.** `tests/mutation_harness.py` and
+   `tests/unit/test_answer_leak_and_reach.py` were never added to git, so "7/7 via a re-runnable
+   artifact" was unreproducible on a clean clone; and CI ran neither, since its only test step was
+   `run_all` and its `paths:` filter excluded `tests/**`. Both files are now tracked and the workflow
+   runs the unit suite and the mutation harness, the latter asserting `backend/` is restored afterwards.
+
+## Ground Rule 2 disclosure
+
+* **`mat_g3_na_q2_5`, `mat_g3_na_q2_6`, `mat_g3_na_q2_7`** — `max_minuend` corrected from the digit-count
+  misparse to the width the competency states: `(1, 4)` → `(1, 9999)` for "two numbers of up to 4
+  digits", and `(1, 2)` → `(1, 99)` for "3 to 4 numbers of up to 2 digits". Every other subtraction
+  bound is byte-identical. Pinned by five cases in `validate_compat.validate_competency_bounds_parsing`
+  (§2), which assert both the width phrasings and the magnitude phrasings that must keep parsing as
+  magnitudes.
+
+## Deliberately not added
+
+A **bound-plausibility** contract row (flag a parsed bound an order of magnitude below its grade
+default) was prototyped and dropped: at 10× it flagged four bounds, all legitimate, including this
+log's own `max_product=90` correction. A **ceiling-variety** row was dropped for the same reason — after
+fix 4 the residual low-variety combos are small-cap addition nodes where one near-ceiling item is
+defensible. Any threshold that separates those from real defects needs an exception list, which is the
+tuning Ground Rule 5 forbids. The fixes shipped; the checks would have been theatre.
+
+## Found and left open
+
+* **Nine visual formatters discard the DNA's problem and author their own** when `ctx.values` lacks their
+  keys (`fmt_ruler_measure.py:199`, `fmt_shape_board.py:199`, `fmt_balance_scale.py:180`, and 6 more) —
+  43 of 1,810 naturally generated items, 5 of 12 on the G1/G2 shape nodes. `mat_g2_mg_q2_1` is bound
+  `task_type='choose_unit'` and serves a ruler read-measurement item; `mat_g1_mg_q1_0` renders "Look at
+  the shapes. Tell how many corners does the highlighted shape have." This survives DNA selection
+  because the `is_registry_scope` exemption only re-arms when the compatibility table explicitly
+  restricts the variant, and 9 of 27 DNAs have no `FORMATTER_VARIANT_SUPPORT` entry at all.
+* **§1F was narrowed past most of its value.** Over 1,032 sampled MCQ items the shipped rule flags 7; the
+  rule before the final narrowing flags 154. Nothing checks operand degeneracy, so 30% of
+  addition/subtraction items at the default profile still carry a zero operand. Three function-level
+  false negatives: the `\bmirror\b` symmetry exemption fires on "Ana bought a mirror for 45 pesos"; one
+  incidental second number in the stem defeats the rule; a float answer never matches an integer stem.
+* **The judgment layer's 5 fixed seeds see 39% of what a node serves** (233 of 598 distinct rendered
+  formats over 65 seeds; worst nodes 1 of 6). The freshness gate then pins that narrow sample
+  permanently. `mat_g2_mg_q2_1` was filed `competency_fulfillment: PASS` on five seeds that all render
+  the same template, while its ruler path serves an off-competency item.
+* **9 of 151 reviews name the authoring session as reviewer**, against `validate_judgment`'s own "the
+  verifier is not the author". Their verdicts are 7 FAIL / 2 CONCERN — harsher than the corpus, so
+  nothing was whitewashed, but `blind: true` is an unverifiable self-attestation.
+* **`validation_reports/matrix_report.json` is overwritten by any single-node run**, including the
+  `--node` command this log tells readers to reproduce with, and including the mutation harness. It was
+  found containing one node mid-review.
+* **`mat_g2_na_q4_1` / `mat_g2_na_q4_4`** — after the `number_reading` removal above, both nodes produce 3
+  distinct items over 40 seeds, 34 of them the identical "1 of 8 parts shaded → 1/8", and `_4`'s
+  competency (*similar* fractions) is never exercised.
+
+## Re-reviews filed
+
+Fixes 1, 2 and 4 drifted six nodes' cited seeds. Fresh packet-only reviews were dispatched to
+independent subagents, prompted neutrally (the earlier batches' "hunt defects / do not be generous"
+framing was dropped as verdict-biasing). All six returned FAIL on quotable, competency-level grounds
+that the magnitude fixes did not address — `mat_g3_na_q2_5` still answers exact differences rather than
+estimates; `_6`/`_7` still combine two numbers where the competency names three to four;
+`mat_g3_na_q4_1`/`_2` never generate the 7 or 9 tables. Two of those findings were not in the review
+brief and were produced by the reviewers independently. Tally moved 30/52/69 → **29/51/71**.

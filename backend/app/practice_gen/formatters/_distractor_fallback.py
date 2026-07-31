@@ -91,6 +91,12 @@ def augment_distractors(
     if isinstance(correct, bool):
         _add(not correct)
     elif isinstance(correct, (int, float)):
+        # Never manufacture a negative option for a non-negative answer. Grades
+        # 1-3 have not met numbers below zero, and blind reviewers repeatedly
+        # flagged options like -3 and -14 in Grade 1 money and addition items as
+        # out-of-grade notation. The search simply walks further outward on the
+        # positive side to make up the shortfall.
+        allow_negative = correct < 0
         for delta in range(1, max_delta + 1):
             for sign in (1, -1):
                 if len(result) >= target:
@@ -98,6 +104,8 @@ def augment_distractors(
                 candidate = correct + (delta * sign)
                 if isinstance(correct, int) and not isinstance(candidate, int):
                     candidate = int(candidate)
+                if not allow_negative and candidate < 0:
+                    continue
                 _add(candidate)
     else:
         raise ValueError(

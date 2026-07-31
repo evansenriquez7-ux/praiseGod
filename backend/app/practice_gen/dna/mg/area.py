@@ -20,10 +20,15 @@ from backend.app.practice_gen.dna.base import (
 
 # ─── param bounds ─────────────────────────────────────────────────────────────
 _PARAM_BOUNDS: Dict[str, Dict[str, Any]] = {
+    # Minimum side is 2, not 1: a 1x1 square has an area numerically equal to its
+    # own side, so "A square has a side of 1 m. What is its area in sq m?" prints
+    # its answer in the stem (validate_matrix §1F), and the tiled phrasing renders
+    # the ungrammatical "arranged in 1 rows and 1 columns". A single tile is not
+    # an area exercise in any case.
     "g3": {
-        "side_cm_min": 1,
+        "side_cm_min": 2,
         "side_cm_max": 50,
-        "side_m_min":  1,
+        "side_m_min":  2,
         "side_m_max":  20,
     },
 }
@@ -79,7 +84,7 @@ def generate_params(
     unit      = profile.get("unit", "square_cm")
     task_type = profile.get("task_type", "find_area")
     context   = profile.get("context", "pure")
-    scalar    = float(profile.get("difficulty_scalar", 0.5))
+    scalar    = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
 
     if unit == "square_cm":
         lo, hi = bounds["side_cm_min"], bounds["side_cm_max"]

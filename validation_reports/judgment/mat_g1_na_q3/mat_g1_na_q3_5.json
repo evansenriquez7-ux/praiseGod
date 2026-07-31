@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q3_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude Opus 5 (Claude Code session 2026-07-26), blind packet-only re-review triggered by the validate_judgment staleness gate",
+  "review_date": "2026-07-26",
   "blind": true,
   "sample_seeds": [
     42,
@@ -23,13 +23,13 @@
     },
     {
       "seed": 44,
-      "question_text": "What is the place value of the digit 0 in 20?",
-      "correct_answer": 0
+      "question_text": "What place is the digit 0 in, in the number 20?",
+      "correct_answer": "ones"
     },
     {
       "seed": 45,
-      "question_text": "What is the place value of the digit 1 in 15?",
-      "correct_answer": 10
+      "question_text": "What place is the digit 1 in, in the number 15?",
+      "correct_answer": "tens"
     },
     {
       "seed": 46,
@@ -39,29 +39,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency wants subtraction taught by expressing minuend/subtrahend in expanded tens-and-ones form, but two of five samples ('What is the place value of the digit 0 in 20?', '...digit 1 in 15?') are not subtraction at all — they are the same digit-value questions as q2_2/q2_3, unrelated to the subtraction task."
+      "verdict": "FAIL",
+      "rationale": "The competency names subtraction with minuend and subtrahend expressed as tens and ones without regrouping; the sampled items are bare differences ('What is 64 - 30?', 'What is 5 - 0?', '12 - 1 = ___') that never show or request the tens-and-ones expansion."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "This node blends subtraction (12 combos) and place_value (8 combos) registries, but only 3 of 5 samples are actually subtraction, and none show the minuend or subtrahend explicitly decomposed into tens+ones notation in the visible text."
+      "verdict": "FAIL",
+      "rationale": "Seeds 44 and 45 leave subtraction entirely and render place-value naming items ('What place is the digit 0 in, in the number 20?'), so two of five sampled generations do not exercise subtraction at all, let alone the expanded-form version."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Sample text stays short, e.g. 'What is 64 − 30?', within the word cap for Grade 1 Quarter 3."
+      "verdict": "FAIL",
+      "rationale": "Multiple items offer negative-number distractors to a Grade 1 audience: seed 42 lists -34 among the options for 64 - 30, and seed 46 lists -11 for 12 - 1. Negative integers are far outside a Grade 1 Quarter 3 student's introduced vocabulary and make the option set unreadable rather than merely hard."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Injecting unrelated place-value-digit questions into a subtraction-focused node (as also seen in q2_4) suggests the two combined DNAs are not yet fused into a single 'expanded-form subtraction' task, just alternating between two separate question types."
+      "rationale": "The mcq and cloze presentations both appear, but no sampled variant frames the subtraction in a word-problem or place-value-chart context, which is the framing the expanded-form competency implies."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Where subtraction is shown ('64 − 30 = 34'), it is a clean tens-only subtraction (no regrouping, consistent with the competency), but the expanded-form decomposition step itself, e.g. 60+4 minus 30+0, is never made visible in the text."
+      "verdict": "FAIL",
+      "rationale": "Samples span a very wide difficulty spread with no relation to the competency's own progression: '5 - 0' and '12 - 1' are trivial one-step facts while '64 - 30' is the only item near two-digit expanded-form territory, so the axis does not build toward the stated skill."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Minuends used (12, 20, 64) are 2-digit values consistent with the competency's tens-and-ones scope."
+      "verdict": "CONCERN",
+      "rationale": "Minuends range from 5 to 64, which straddles the Grade 1 ceiling appropriately at the top end, but the low-end samples fall below the two-digit range where a tens-and-ones expansion is even meaningful."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

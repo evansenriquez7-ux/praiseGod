@@ -1,22 +1,67 @@
 {
   "node_id": "mat_g3_mg_q1_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-3 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 47, 48],
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
   "samples_reviewed": [
-    {"seed": 42, "question_text": "A rectangle is arranged in 21 rows and 4 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?", "correct_answer": 84},
-    {"seed": 44, "question_text": "A rectangle is arranged in 14 rows and 17 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?", "correct_answer": 238},
-    {"seed": 46, "question_text": "A rectangle is arranged in 3 rows and 13 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?", "correct_answer": 39},
-    {"seed": 48, "question_text": "A rectangle is arranged in 18 rows and 11 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?", "correct_answer": 198}
+    {
+      "seed": 42,
+      "question_text": "A rectangle is arranged in 22 rows and 5 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
+      "correct_answer": 110
+    },
+    {
+      "seed": 43,
+      "question_text": "A rectangle is arranged in 3 rows and 11 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
+      "correct_answer": 33
+    },
+    {
+      "seed": 44,
+      "question_text": "A rectangle is arranged in 15 rows and 18 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
+      "correct_answer": 270
+    },
+    {
+      "seed": 45,
+      "question_text": "A rectangle is arranged in 10 rows and 15 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
+      "correct_answer": 150
+    },
+    {
+      "seed": 46,
+      "question_text": "A rectangle is arranged in 4 rows and 14 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
+      "correct_answer": 56
+    }
   ],
   "findings": {
-    "competency_fulfillment": {"verdict": "CONCERN", "rationale": "This lc's verb is 'explore inductively the derivation' of rows x columns, but the stem hands the formula to the student outright ('Using the formula rows x columns, what is the total number of tiles?') rather than having them notice the pattern by counting, so it tests formula application, not inductive discovery."},
-    "comprehensive_coverage": {"verdict": "CONCERN", "rationale": "The seven row/column pairs (21x4, 2x10, 14x17, 9x14, 3x13, 12x3, 18x11) are identical to those in the sibling mat_g3_mg_q1_0 node, so coverage is really just a wording change over the same numeric space rather than a distinct derivation-focused item bank."},
-    "cognitive_capacity": {"verdict": "PASS", "rationale": "The added clause 'Using the formula rows x columns' is only four extra words over q1_0's phrasing, still a single readable sentence well within grade-3 quarter-1 reading demand."},
-    "variant_comprehensiveness": {"verdict": "CONCERN", "rationale": "Because the answer is always literally rows times columns stated in the prompt, none of the 7 samples requires the student to notice or generalize the multiplicative relationship themselves, which is the whole point of an 'explore inductively' competency."},
-    "competency_alignment": {"verdict": "CONCERN", "rationale": "Verified 3x13=39 and 18x11=198 are arithmetically correct, but stating the formula in the question text collapses this lc into the later 'find the area in sq. cm' lc rather than the discovery-of-formula step it is meant to be."},
-    "scale_appropriateness": {"verdict": "PASS", "rationale": "Row/column magnitudes (2 to 21) are reasonable for a grade-3 multiplication-of-two-factors task even though the discovery framing is undermined by naming the formula outright."}
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "The competency asks students to 'explore inductively the derivation of the formulas', but seed 42 hands the rule over in the stem: 'Using the formula rows x columns, what is the total number of tiles?'. Being told the formula and applying it is deductive practice, not inductive derivation; no sample asks the student to count a tile array and notice the rows-times-columns pattern for themselves."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The competency names 'a square and a rectangle', yet all five samples (seeds 42-46) open with the fixed phrase 'A rectangle is arranged in' and every pair is unequal (22x5, 3x11, 15x18, 10x15, 4x14). The square sub-case, where rows equal columns and side x side emerges, is never generated once."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Seed 44's '15 rows and 18 columns' forces a 2-digit by 2-digit product (270) that sits beyond a Grade 3 Quarter 1 pupil's multiplication repertoire, and the array is far too large to actually tile or count, which is the whole point of a square-tile-unit exploration."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "FAIL",
+      "rationale": "All five seeds are the identical sentence frame with only the two numbers swapped; there is no missing-dimension variant ('120 tiles in 10 rows, how many columns?'), no compare-two-arrays variant, and no draw/count-the-tiles variant, so the item pool is a single template rather than a set of contextual variations."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Difficulty across seeds 42-46 varies only by how big the two factors are (33 up to 270); nothing in the progression moves the learner from counting tiles, to grouping rows, to stating the formula, so it builds multiplication fluency rather than the area-formula derivation this competency targets."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Tile counts of 110 (seed 42), 150 (seed 45) and 270 (seed 44) exceed what a Grade 3 pupil can lay out or verify with concrete square tiles; a derivation activity should stay in the roughly 3x4 to 10x10 range where the array is visible and countable."
+    }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

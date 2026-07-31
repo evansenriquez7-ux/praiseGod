@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q1_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,54 +13,54 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "Which is greater: 108 or 100?",
+      "question_text": "Compare the numbers: 108 ___ 100. Which sign is correct: >, <, or =?",
       "correct_answer": ">"
     },
     {
       "seed": 43,
-      "question_text": "Which is greater: 10 or 190?",
+      "question_text": "Compare the numbers: 10 ___ 190. Which sign is correct: >, <, or =?",
       "correct_answer": "<"
     },
     {
       "seed": 44,
-      "question_text": "Which is greater: 150 or 50?",
+      "question_text": "Compare the numbers: 150 ___ 50. Which sign is correct: >, <, or =?",
       "correct_answer": ">"
     },
     {
       "seed": 45,
-      "question_text": "Which is greater: 25 or 45?",
+      "question_text": "Compare the numbers: 25 ___ 45. Which sign is correct: >, <, or =?",
       "correct_answer": "<"
     },
     {
       "seed": 46,
-      "question_text": "Which is greater: 210 or 176?",
+      "question_text": "Compare the numbers: 210 ___ 176. Which sign is correct: >, <, or =?",
       "correct_answer": ">"
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "'Which is greater: 108 or 100?' correctly tests the >,<,= comparison skill, but the competency's stated range of up to 10,000 is never approached."
+      "verdict": "PASS",
+      "rationale": "The stems match the competency verb and symbols directly: 'Compare the numbers: 210 ___ 176. Which sign is correct: >, <, or =?' with key '>' at seed 46, and each of seeds 42-45 likewise requires the pupil to select a relational symbol rather than compute, which is exactly what comparing numbers demands."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All three outcomes (>, <, and none exactly equal but close pairs like 108/100) and both orderings of operands appear across the 5 seeds."
+      "verdict": "FAIL",
+      "rationale": "The competency explicitly names three symbols, '=, >, and <', but no sample ever keys '='. Seeds 42, 44 and 46 key '>' and seeds 43 and 45 key '<'; equality appears only as a distractor. The equal-numbers case, which is the one pupils most often misjudge when digit counts differ in appearance, is never generated."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The 'Which is greater: X or Y?' phrasing is concise and appropriate for Grade 3 Q1."
+      "rationale": "Two-number comparisons stated in one short line are appropriate for Grade 3 Quarter 1, and pairs like 108 versus 100 (seed 42) and 210 versus 176 (seed 46) usefully require place-value reasoning rather than mere digit counting."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "No sample includes an exactly-equal pair (e.g. 150 vs 150) to exercise the '=' symbol this node's vocab explicitly introduces, only > and < outcomes are shown."
+      "rationale": "Only the fill-in-the-symbol frame is present. Missing are ordering three or more numbers, comparing a number written in words against one in figures, and comparing numbers with different digit counts at the four-digit level. The distractor 'cannot be determined' appears in all five seeds and is never a legitimate response when two whole numbers are both given, so it wastes an option slot in every item."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Each sample directly compares two multi-digit numbers, matching 'Compare numbers up to 10 000 using the symbols =, >, and <' in structure."
+      "verdict": "CONCERN",
+      "rationale": "The seeds show no ordered build: seed 45 compares 25 with 45, a Grade 1 level pair, while the hardest item, seed 46's 210 versus 176, is still a 3-digit comparison. Difficulty never advances toward the 4-digit place-value discrimination (for example 4 508 versus 4 580) that this competency exists to develop."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "The largest number in any sample is 210; a competency scoped to 10,000 should include comparisons like 8,340 vs 8,403, which never appear in this batch."
+      "rationale": "The competency ceiling is 10 000, yet the largest number in any sample is 210 (seed 46) and three of the five seeds stay under 200. No 4-digit number appears at all, so the pool tests roughly two percent of the stated range and never exercises comparison at thousands place value."
     }
   },
   "overall": "FAIL"

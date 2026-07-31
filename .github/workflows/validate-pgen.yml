@@ -6,12 +6,16 @@ on:
       - 'backend/**'
       - 'data/**'
       - 'docs/**'
+      # tests/ was absent, so a change to the unit suite or to
+      # tests/mutation_harness.py did not even trigger this workflow.
+      - 'tests/**'
       - '.github/workflows/validate-pgen.yml'
   pull_request:
     paths:
       - 'backend/**'
       - 'data/**'
       - 'docs/**'
+      - 'tests/**'
       - '.github/workflows/validate-pgen.yml'
 
 jobs:
@@ -34,25 +38,67 @@ jobs:
           pip install -r requirements.txt
 
       - name: Lint docs/ for un-enforced imperatives (doc_rem.md R1/§3.5)
+        shell: bash
         run: |
+          set -euo pipefail
           # Speed bump, not perfection (doc_rem.md §3.5): only pgen_contract.md and
           # pgen_judgment.md may state a binding "must" — every other pg-pipeline doc
-          # must describe, not command. DOC_RULES.md/doc_rem.md/IMPLEMENTATION_STATUS.md
+          # describes, it does not command. DOC_RULES.md/doc_rem.md/IMPLEMENTATION_STATUS.md
           # are meta-docs about this very rule (self-referential, exempt);
           # INTRO_CONTENT.md/core.md govern unrelated content, not the pg pipeline.
-          # Case-insensitive: an earlier version of this lint matched only the
-          # literal uppercase token "MUST" and missed lowercase "must" imperatives
-          # (testing_pipeline.md carried 7 before its Part-3 rewrite) -- fixed
-          # during the docs judgment review, see docs/IMPLEMENTATION_STATUS.md.
-          violations=$(grep -ril '\bmust\b' docs/*.md 2>/dev/null \
-            | grep -v -E 'docs/(pgen_contract|pgen_judgment|DOC_RULES|doc_rem|INTRO_CONTENT|core|pgen_hardening|IMPLEMENTATION_STATUS)\.md' \
-            || true)
+          # Case-insensitive: an earlier version matched only the literal uppercase
+          # token "MUST" and missed lowercase imperatives.
+          #
+          # Exit codes are handled explicitly rather than with `|| true`. grep exits
+          # 1 for "no match" (the success case here) but >=2 for a real error such as
+          # an unreadable file; the old `|| true` collapsed both into "clean", which
+          # is precisely the silent-pass pattern Phase 3 forbids in a validation gate.
+          # `find` also replaces the `docs/*.md` glob so files in future subdirectories
+          # cannot slip past the lint unexamined.
+          exempt='docs/(pgen_contract|pgen_judgment|DOC_RULES|doc_rem|INTRO_CONTENT|core|pgen_hardening|IMPLEMENTATION_STATUS)\.md$'
+          violations=""
+          while IFS= read -r f; do
+            if printf '%s' "$f" | grep -qE "$exempt"; then continue; fi
+            rc=0
+            grep -qi '\bmust\b' "$f" || rc=$?
+            case "$rc" in
+              0) violations="${violations}${f}"$'\n' ;;
+              1) ;;
+              *) echo "doc lint aborted: grep exited $rc on '$f'"; exit 1 ;;
+            esac
+          done < <(find docs -type f -name '*.md' | sort)
           if [ -n "$violations" ]; then
             echo "Found un-enforced 'must' outside pgen_contract.md/pgen_judgment.md:"
-            echo "$violations"
+            printf '%s' "$violations"
             echo "Move binding rules into pgen_contract.md with a named enforcer, or rephrase as descriptive."
             exit 1
           fi
+          echo "doc lint: clean"
+
+      # The unit suite was never run in CI. That matters most for the checks
+      # written specifically to be cheap: test_answer_leak_and_reach.py exists
+      # "so the boundaries of §1F can be re-verified in a second rather than by
+      # sitting through a full 151-node matrix run", and it had no CI step at
+      # all — enforcement that ships but never executes is the drift this
+      # workflow's own doc lint exists to prevent.
+      - name: Run Unit Suite
+        run: PYTHONPATH=. python -m pytest tests/unit/ -q -m "not slow"
+
+      # Phase 4's artifact: plants seven known bugs and asserts the harness
+      # catches each. Cited as evidence by HARDENING_EVIDENCE.md and
+      # IMPLEMENTATION_STATUS.md, but never executed by CI. It mutates tracked
+      # source in place and restores it in a finally, so it runs after the
+      # suites above and its restoration is verified.
+      - name: Mutation-test the Validation Harness
+        run: |
+          set -euo pipefail
+          PYTHONPATH=. python -m tests.mutation_harness
+          if ! git diff --quiet -- backend/; then
+            echo "mutation_harness did not restore backend/ — refusing to pass:"
+            git diff --stat -- backend/
+            exit 1
+          fi
+          echo "mutation harness: backend/ restored clean"
 
       - name: Run Practice Gen Hardening Harness
         run: python -m backend.app.practice_gen.validation.run_all

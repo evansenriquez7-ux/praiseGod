@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q3_8",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
@@ -23,12 +23,12 @@
     },
     {
       "seed": 44,
-      "question_text": "Which is greater: 307 or 270?",
+      "question_text": "Compare the numbers: 307 ___ 270. Which sign is correct: >, <, or =?",
       "correct_answer": ">"
     },
     {
       "seed": 45,
-      "question_text": "Which is greater: 92 or 930?",
+      "question_text": "Compare the numbers: 92 ___ 930. Which sign is correct: >, <, or =?",
       "correct_answer": "<"
     },
     {
@@ -40,27 +40,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency is specifically about distinguishing EVEN AND ODD numbers using division by 2, but not one of the five samples asks a student to classify a number as even or odd; two are generic division facts (70 div 10, 10 div 2) and two are unrelated magnitude comparisons of 3-digit numbers ('Which is greater: 307 or 270?') that have nothing to do with even/odd classification."
+      "rationale": "Distinguishing even from odd requires a classification answer, but not one stem contains the words even or odd. Seeds 42, 43 and 46 key quotients (70 / 10 = 7, 10 / 2 = 5, 12 / 2 = 6) and seeds 44 and 45 key comparison signs instead."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "division (4 axes/20 combos) and comparing_ordering (3 axes/8 combos) combine for 28 combos; an even/odd-classification item type should exist in that space for this competency to be met at all, but it did not appear in any of the 5 samples, and exhaustive execution is checked separately by validate_matrix."
+      "verdict": "FAIL",
+      "rationale": "The 'using division by 2' mechanism is never tied to a leftover or remainder: no sample shows an odd number failing to split into two equal parts, and no sorting, true/false, or classify-this-number item of any kind is generated."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Stems are short and under the word cap, but none of them actually require the classification reasoning ('does this divide evenly by 2?') the competency specifies, so cognitive demand cannot be assessed against the intended skill."
+      "rationale": "Seed 42's 'What is 70 / 10?' introduces division by 10, outside the division-by-2 focus this competency names, and the two 3-digit comparison stems (307 versus 270, 92 versus 930) add unrelated place-value load to a Quarter 3 parity node."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "The comparing_ordering DNA here produces generic 3-digit magnitude comparisons (307 vs 270, 92 vs 930) that are entirely unrelated to even/odd classification, suggesting the registered variant space for this node is not actually wired to the even/odd concept the competency requires."
+      "rationale": "Missing are 'Is 15 even or odd?', pairing or sharing pictures, sorting a list into two boxes, and odd numbers altogether - every division sample (10 / 2, 12 / 2, 70 / 10) divides exactly, so an odd dividend never occurs."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "None of the five samples reference even or odd numbers at all; this node's content as sampled is indistinguishable from a mix of q3_6 (plain division facts) and an unrelated magnitude-comparison node, missing this competency's distinguishing concept entirely."
+      "rationale": "Seeds 44 and 45 are number-comparison items reused verbatim from mat_g2_na_q2_1, leaving just three even-quotient division facts, none of which asks the learner to draw a parity conclusion or builds toward one."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The comparison samples use 3-digit numbers (307, 270, 92, 930) which, if intended as even/odd examples, would be appropriately scoped for grade 2 quarter 3, but since they are not framed as even/odd questions this cannot be confirmed."
+      "rationale": "Dividends stay tiny (10, 12 and 70) while the intruding comparison items reach 930; neither band is calibrated to the range of numbers a Grade 2 Quarter 3 pupil should be classifying as even or odd."
     }
   },
   "overall": "FAIL"

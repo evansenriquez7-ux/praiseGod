@@ -1,55 +1,67 @@
 {
   "node_id": "mat_g2_na_q4_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
     43,
-    44
+    44,
+    45,
+    46
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/8"
     },
     {
       "seed": 43,
-      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/8"
     },
     {
       "seed": 44,
-      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 45,
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 46,
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/8"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency asks students to 'represent and identify unit fractions'; the sample 'What fraction does \\(\\frac{1}{8}\\) equal parts represent?' is grammatically garbled -- it embeds the answer (1/8) inside the question stem in a confusing way rather than asking the student to identify a fraction from a picture of 8 equal parts."
+      "rationale": "Seeds 42-46 all ask 'A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?', which exercises the verb 'identify' but never 'represent' - the pupil selects a printed symbol rather than partitioning or shading a region. The key 1/8 is itself correct."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "variant_registry lists 9 combos across 3 axes for the fractions DNA, which is plausible for denominators {2,3,4,5,6,8} crossed with format/model type; exhaustive execution across all 9 combos is machine-verified by validate_matrix, my 5 samples are only illustrative."
+      "verdict": "FAIL",
+      "rationale": "The wording explicitly names denominators 2, 3, 4, 5, 6 and 8, yet every one of the five seeds (42, 43, 44, 45, 46) fixes the denominator at 8. Halves, thirds, fourths, fifths and sixths are never generated, so five of the six named sub-cases are missing."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "At 12 words the stem fits the 18-word cap for grade 2 quarter 4, but the awkward double reference to '1/8' (once in LaTeX, once implied by 'equal parts') asks a second-grader to parse a sentence structure that does not read as natural English."
+      "rationale": "Sentence length and the vocabulary 'equal parts' and 'shaded' suit Grade 2 Quarter 4, but the distractor '8/1' puts an improper fraction greater than one in front of pupils who have only met unit fractions less than one, inviting a misconception this node cannot resolve."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "All five sampled seeds (42-46) returned the byte-identical 1/8 item, so this sample batch gives no direct evidence the registered 9 combos actually rotate through denominators 2,3,4,5,6 as the competency also requires, even though the registry claims that coverage."
+      "verdict": "FAIL",
+      "rationale": "All five seeds emit a byte-identical stem; only the A-D option order rotates (the key 1/8 sits at C, A, D, C, then B). There is no area-model versus set-model versus number-line variation and no shaded-versus-unshaded rephrasing anywhere in the sample."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The item stays within 'represent and identify' scope -- it never asks the student to add, compare, or find equivalents, which correctly avoids reaching into the ordering competency (mat_g2_na_q4_2) that comes later in this same node group."
+      "verdict": "FAIL",
+      "rationale": "Because seeds 42 through 46 are the same item with the same answer, there is no progression from an easy denominator such as halves toward eighths. Difficulty is perfectly flat, so repeated practice cannot build unit-fraction understanding across the named denominator set."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Denominator 8 sits inside the explicit set {2,3,4,5,6,8} named in the competency text, so the single observed value is in-range even though the 5-sample slice never shows the smaller denominators 2 or 3 that would round out a full progression."
+      "verdict": "CONCERN",
+      "rationale": "The distractor '3/16' uses denominator 16, outside this competency's explicit ceiling set of {2, 3, 4, 5, 6, 8}, exposing Grade 2 pupils to sixteenths the node never teaches; it is also not a unit fraction."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

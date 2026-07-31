@@ -45,10 +45,17 @@ These auditors independently re-check, by a different code path, several propert
 
 ## 3. CLI Execution Reference Table
 
+`tests/mutation_harness.py` is the `pgen_hardening.md` Phase 4 artifact: it plants each of the seven
+specified bugs in real pipeline source, runs the validator meant to catch it, asserts a non-zero exit,
+and restores the file. It edits tracked files in place while running, so it is kept out of CI and off
+concurrent harness runs; run it after changing anything in `backend/app/practice_gen/validation/`.
+
 | Goal | Command |
 |---|---|
 | **Run Full Checklist Audit** (Parallel) | `bash tests/run_checklist_audit.sh` |
 | **Run Targeted Checklist Audit** (Node list) | `bash tests/run_checklist_audit.sh --node-ids mat_g1_na_q1_6,mat_g3_na_q4_2` |
+| **Mutation-test the validation harness** (verify the verifier) | `PYTHONPATH=. .venv/bin/python -m tests.mutation_harness` |
+| **Mutation-test a single planted bug** | `PYTHONPATH=. .venv/bin/python -m tests.mutation_harness --only leaky_window` (`--list` to see all seven) |
 | **Run Frontend Contract Audit** | `PYTHONPATH=. .venv/bin/python -m tests.frontend_contract_auditor` |
 | **Run Grader Round-Trip Audit** | `PYTHONPATH=. .venv/bin/python -m tests.grader_roundtrip_auditor` |
 | **Fast Pytest suite** (Skips slow full-audit) | `PYTHONPATH=. .venv/bin/python -m pytest tests/unit/ -m "not slow"` |

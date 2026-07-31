@@ -1,54 +1,66 @@
 {
   "node_id": "mat_g2_na_q4_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
+    43,
     44,
-    45
+    45,
+    46
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What fraction does \\(\\frac{1}{8}\\) equal parts represent?",
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 43,
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/8"
     },
     {
       "seed": 44,
-      "question_text": "Write 596 in words.",
-      "correct_answer": "five hundred ninety-six"
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
     },
     {
       "seed": 45,
-      "question_text": "Write 456 in words.",
-      "correct_answer": "four hundred fifty-six"
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
+    },
+    {
+      "seed": 46,
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Competency is 'Read and write unit fractions in fraction notation' but 2 of 5 samples ('Write 596 in words' -> 'five hundred ninety-six', 'Write 456 in words') are whole-number word-form tasks with no fraction, numerator, or denominator anywhere in the item."
+      "rationale": "'Read and write unit fractions in fraction notation' requires translating between the spoken name 'one-eighth' and the symbol 1/8, but every seed 42-46 serves the shape-shading identification item copied verbatim from mat_g2_na_q4_0. No sample asks the pupil to read a fraction name or write notation from words."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The number_reading DNA (1 axis, 2 combos per variant_registry) is paired onto this node and appears to inject the off-topic 3-digit word-form items; the fractions DNA's 9 combos are the only ones actually relevant to 'fraction notation' here."
+      "verdict": "FAIL",
+      "rationale": "Neither direction of the read/write pair is generated across seeds 42-46: there is no words-to-symbol prompt and no symbol-to-words prompt, and the only notation the node ever produces is 1/8, so the writing half of the competency has no representation at all."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "'Write 596 in words' demands multi-digit place-value-to-words conversion, a materially different and arguably harder skill than reading '1/8', so the two DNAs pull the item's cognitive target in inconsistent directions within one node."
+      "verdict": "PASS",
+      "rationale": "The two short declaratives plus one question ('1 part is shaded. What fraction of the shape is shaded?') are within Grade 2 Quarter 4 decoding range and require exactly one reasoning step, counting the shaded part against the total of 8."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "The number_reading axis contributes zero variants that touch fraction notation, so roughly 40% of the registered variant space for this node (its 2 number_reading combos) cannot possibly serve the stated competency of reading/writing fractions."
+      "rationale": "Every seed reuses one context, a nameless 'shape'. There is no halves-versus-thirds contrast, no concrete framing such as a bibingka or ribbon, and no fill-in-the-blank writing task, so the notation-production variant is entirely absent."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "'Write 456 in words' belongs to place-value/number-naming competencies from a different strand entirely, not to fraction notation, so the difficulty progression does not track the exact wording of this lc and instead drifts outside it."
+      "rationale": "Difficulty never moves: seeds 42-46 share an identical stem and an identical key of 1/8, so nothing scaffolds a learner from reading a symbol that is given to writing one independently, which is the intended arc of this competency."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The fraction denominator (8) is within the allowed range for this node group, but the whole numbers 456 and 596 injected by number_reading have no defined scale relationship to a unit-fraction competency at all, making 'appropriate range' unanswerable for that half."
+      "rationale": "Only eighths are ever written, and the distractor 3/16 puts a sixteenth on the page - notation outside the Grade 2 unit-fraction range that this reading-and-writing node is bounded by."
     }
   },
   "overall": "FAIL"

@@ -1,16 +1,14 @@
 {
   "node_id": "mat_g2_dp_q3_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-4 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46,
-    47,
-    48
+    46
   ],
   "samples_reviewed": [
     {
@@ -19,45 +17,50 @@
       "correct_answer": "C"
     },
     {
+      "seed": 43,
+      "question_text": "Look at the picture graph. How many are in grapes?",
+      "correct_answer": "B"
+    },
+    {
       "seed": 44,
-      "question_text": "Which is greater: 307 or 270?",
+      "question_text": "Compare the numbers: 307 ___ 270. Which sign is correct: >, <, or =?",
       "correct_answer": ">"
     },
     {
       "seed": 45,
-      "question_text": "Which is greater: 92 or 930?",
+      "question_text": "Compare the numbers: 92 ___ 930. Which sign is correct: >, <, or =?",
       "correct_answer": "<"
     },
     {
-      "seed": 48,
-      "question_text": "Which is greater: 33 or 405?",
-      "correct_answer": "<"
+      "seed": 46,
+      "question_text": "Look at the picture graph. How many are in dogs?",
+      "correct_answer": "B"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "4 of the 7 samples (seeds 44, 45, 47, 48) are bare 3-digit number comparisons ('Which is greater: 307 or 270?') with no pictograph, table, or dataset in sight, so they do not exercise 'interpret data in tabular form and in a pictograph' at all."
+      "rationale": "Seeds 44 and 45 are place-value comparisons ('Compare the numbers: 307 ___ 270' and '92 ___ 930'), not data interpretation. The word 'tabular' is never realized either: every on-topic seed opens 'Look at the picture graph'. The graph data is also absent from the sample payload, so keys such as 10 at seed 42 cannot be checked against any displayed pictograph."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "Only seeds 42 and 46 ('Look at the picture graph. How many are in dogs?') actually reference a pictograph; the remaining majority of the sampled seeds are generic magnitude-comparison items with numbers up to 930 unrelated to any dataset."
+      "rationale": "Only a single retrieval question type is generated, 'How many are in dogs?' and 'How many are in grapes?'. There is no 'how many more', no total across categories, no most/least identification, and no scaled pictograph in which one symbol stands for 2 or 5, despite 'with or without scale' being in the wording."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Both the pictograph-reading stems and the numeric comparison stems are short single-clause sentences appropriate for grade-2 quarter-3 reading level."
+      "verdict": "CONCERN",
+      "rationale": "'Look at the picture graph. How many are in dogs?' at seeds 42 and 46 is ungrammatical; a Grade 2 reader needs 'How many dogs are there?'. The magnitudes themselves, 3 through 13, are well matched to Quarter 3."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The registered dnas list 'comparing_ordering' alongside 'pictographs', and the observed output shows that DNA is generating off-topic 3-digit magnitude comparisons instead of pictograph-derived comparisons (e.g. 'which category has more'), so the variant pool leaks unrelated content."
+      "verdict": "FAIL",
+      "rationale": "The 'dogs' stem recurs at seeds 42 and 46 with conflicting keys of 10 and then 3, and only one alternate category (grapes) is ever produced. No table, tally chart, or legend/key variant appears anywhere in the five samples."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "'Which is greater: 92 or 930?' tests raw numeral comparison, a skill from the number-and-algebra strand, not 'interpret data in tabular form and in a pictograph' which is the explicit wording of this dp-branch competency."
+      "rationale": "Interleaving three-digit numeral comparison (seed 44, key '>') with pictograph reading provides no ladder from unscaled one-to-one counting up to scaled interpretation, which is the actual progression this competency describes."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Where a pictograph is actually shown the answer options (A/B/C) and where comparisons are numeric, the values (up to 930) are consistent with grade-2 3-digit number familiarity, so scale itself is not the problem here."
+      "verdict": "CONCERN",
+      "rationale": "Pictograph counts between 3 and 13 are appropriate for Grade 2, but seeds 44 and 45 inject 307, 270, 92 and 930, magnitudes that belong to a number-sense comparison lc rather than to a Quarter 3 data-handling item."
     }
   },
   "overall": "FAIL"

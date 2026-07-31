@@ -101,7 +101,7 @@ def generate_params(
 
     g_key = f"g{max(1, min(grade, 3))}"
     bounds = _PARAM_BOUNDS[g_key]
-    diff_scalar = float(profile.get("difficulty_scalar", 0.5))
+    diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
     from backend.app.practice_gen.dna.base import log_interpolate, linear_interpolate
     
     max_val_bound = int(log_interpolate(10, bounds["max_value"], diff_scalar))
@@ -213,9 +213,24 @@ def generate_params(
         }
 
     if pattern_type == "repeating":
-        cycle_len = rng.randint(cyc_lo, cyc_hi)
+        cycle_len = max(2, rng.randint(cyc_lo, cyc_hi))
         candidates = list(range(1, max_val + 1))
         cycle = [generate_number_by_window(candidates, num_diff_scalar, d=5, rng=rng) for _ in range(cycle_len)]
+        # A cycle whose members are all equal renders as "2, 2, 2, 2, 2, 2" — a
+        # constant run with no repeating structure to notice, where the answer is
+        # simply the number already on the page (validate_matrix §1F). Force at
+        # least two distinct members so there is a cycle to perceive; a
+        # single-element cycle is degenerate for the same reason, hence the
+        # max(2, ...) on cycle_len above.
+        if len(set(cycle)) < 2:
+            alternatives = [c for c in candidates if c != cycle[0]]
+            if not alternatives:
+                raise RuntimeError(
+                    f"generate_params (patterns): cannot build a repeating cycle with two "
+                    f"distinct values — max_val={max_val} leaves no alternative to {cycle[0]}. "
+                    f"(grade={grade}, profile={difficulty_profile})"
+                )
+            cycle[-1] = generate_number_by_window(alternatives, num_diff_scalar, d=5, rng=rng)
         sequence = _make_repeating_sequence(0, cycle, seq_length + 1)
         step = 0
         rule = f"Repeat the group: {cycle}"

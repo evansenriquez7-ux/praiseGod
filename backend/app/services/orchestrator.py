@@ -102,11 +102,20 @@ class PracticeOrchestrator:
                         if bound_val is True and v not in ("ones", True, "one_place"):
                             raise ValueError(f"Boundary violation: requesting out-of-bounds discrete variant regrouping='{v}' on non-student path.")
                     else:
+                        # Compare on the string form. The competency bounds and the
+                        # Lab's variant vocabulary disagree on scalar type for some
+                        # axes — registry.py binds missing_number's `tables` as ints
+                        # [2,3,4,5,10] while VARIANTS_BY_DNA declares them as strings
+                        # — so an identity comparison rejected the Lab's own valid
+                        # selection ("tables='2' is out of bounds" against a bound
+                        # list that contains 2). This restores the intended check
+                        # rather than relaxing it: the value must still be inside the
+                        # competency's allowed set.
                         if isinstance(bound_val, list):
-                            if v not in bound_val:
+                            if str(v) not in {str(b) for b in bound_val}:
                                 raise ValueError(f"Boundary violation: requesting out-of-bounds discrete variant {k}='{v}' on non-student path.")
                         else:
-                            if v != bound_val:
+                            if str(v) != str(bound_val):
                                 raise ValueError(f"Boundary violation: requesting out-of-bounds discrete variant {k}='{v}' on non-student path.")
 
         for k, v in competency_bounds.items():
@@ -161,8 +170,23 @@ class PracticeOrchestrator:
                             mapped_val = int(min_val + t_val * (max_val - min_val))
                     local_difficulty_profile[axis["name"]] = mapped_val
 
+        # Grade/quarter parsed up front: the candidate-DNA filter below needs them
+        # to apply curriculum availability, and they were previously derived only
+        # further down (after DNA selection had already happened).
+        import re as _re
+        _g_match = _re.search(r"mat_g(\d+)", node_id)
+        _node_grade = int(_g_match.group(1)) if _g_match else 1
+        _q_match = _re.search(r"_q(\d+)", node_id)
+        _node_quarter = int(_q_match.group(1)) if _q_match else 1
+
         # Filter DNAs by requested formatter or allowed_formatters and variant compatibility
-        from backend.app.practice_gen.compatibility import VARIANTS_BY_DNA, is_variant_supported, FORMATTER_NUMERIC_LIMITS
+        from backend.app.practice_gen.compatibility import (
+            VARIANTS_BY_DNA,
+            is_variant_supported,
+            is_variant_available_at,
+            FORMATTER_NUMERIC_LIMITS,
+            FORMATTER_VARIANT_SUPPORT,
+        )
         node_max_value = max(
             (b[1] for b in competency_bounds.values()
              if isinstance(b, tuple) and len(b) == 2),
@@ -231,9 +255,58 @@ class PracticeOrchestrator:
                     if var_name in dim_names:
                         continue  # Skip difficulty dimensions
                     
-                    # If this is a registered variant for the concept, check if it's supported
-                    if var_name in VARIANTS_BY_DNA.get(d, {}):
+                    # If this is a registered variant for the concept, check if it's supported.
+                    #
+                    # Only *Lab-selectable* values are checked against
+                    # FORMATTER_VARIANT_SUPPORT. local_difficulty_profile also carries
+                    # the registry's competency bindings, and some of those are
+                    # composite ground-truth scopes the DNA resolves internally rather
+                    # than literal options (counting's skip_interval="by_1", patterns'
+                    # pattern_type="increasing_or_decreasing", ask_type="identify_valid").
+                    # FORMATTER_VARIANT_SUPPORT enumerates only literal options, so such
+                    # a scope was never "supported" for any formatter and rejected every
+                    # candidate DNA — meaning any request that named a formatter (i.e.
+                    # every Lab preview) raised "Formatter 'X' is not supported by any
+                    # DNA" for the 22 nodes bound this way. Same exemption, and same
+                    # reasoning, as the composite-value carve-out just above.
+                    #
+                    # A synthesized scope is still checked when the compatibility
+                    # table *explicitly restricts this variant for this formatter* —
+                    # that is the table author declaring "this formatter can only
+                    # render these values of this axis", which is exactly how a
+                    # visual formatter refuses a scope it cannot draw (see
+                    # patterns/pattern_sequence restricting ask_type).
+                    registered_values = VARIANTS_BY_DNA.get(d, {}).get(var_name)
+                    if registered_values is not None:
+                        formatter_restrictions = FORMATTER_VARIANT_SUPPORT.get(d, {}).get(formatter)
+                        explicitly_restricted = (
+                            isinstance(formatter_restrictions, dict)
+                            and var_name in formatter_restrictions
+                        )
+                        # The exemption covers only values the *registry* injected
+                        # from this node's competency bounds and that no DNA lists
+                        # as a literal option. A caller-supplied value (the Lab
+                        # sending operation='add' to `fractions` at G1Q4) is still
+                        # checked, so a sibling DNA can serve the request rather
+                        # than the pipeline raising further downstream.
+                        bound_val = competency_bounds.get(var_name)
+                        is_registry_scope = (
+                            bound_val is not None
+                            and str(var_val) == str(bound_val)
+                            and var_val not in registered_values
+                        )
+                        if is_registry_scope and not explicitly_restricted:
+                            continue
                         if not is_variant_supported(d, formatter, var_name, var_val):
+                            dna_compatible = False
+                            break
+                        # Curriculum availability is part of "can this DNA serve
+                        # this request", not just formatter support: `fractions`
+                        # registers operation='add', but base_generator's gate
+                        # rejects it at G1Q4, so selecting the DNA here only moved
+                        # the failure downstream. Disqualifying it lets a sibling
+                        # DNA on the node serve the request instead.
+                        if not is_variant_available_at(d, var_name, str(var_val), _node_grade, _node_quarter):
                             dna_compatible = False
                             break
                     else:
@@ -303,6 +376,36 @@ class PracticeOrchestrator:
             available = [
                 fmt for fmt in available
                 if FORMATTER_NUMERIC_LIMITS.get(fmt, {}).get("max_val", float("inf")) >= picked_max_value
+            ]
+            # `picked_max_value` is what the DNA was *allowed* to produce; the
+            # formatter has to render what it actually *did* produce, and those
+            # differ whenever a node's DNAs disagree. node_max_value is derived
+            # from `primary_concept`'s bounds only, so on mat_g2_na_q3_0
+            # (['multiplication', 'counting']) it was multiplication's
+            # max_product=100 — which admits emoji_pictorial (max_val 100) even
+            # though the co-mapped `counting` DNA had already generated a
+            # sequence ending at 578. `formatter_max_val`, the hook that lets a
+            # DNA clamp itself to the formatter, is only injected when the
+            # caller *names* a formatter (see above), and on this path the
+            # formatter is not chosen until after generate_context — so nothing
+            # clamped anything and emoji_pictorial raised at render time for
+            # ~3% of seeds on that node. Filter on the generated magnitude.
+            def _magnitudes(val):
+                if isinstance(val, bool):
+                    return
+                if isinstance(val, (int, float)):
+                    yield abs(val)
+                elif isinstance(val, (list, tuple)):
+                    for item in val:
+                        yield from _magnitudes(item)
+
+            generated_peak = max(
+                (m for v in (ctx.values or {}).values() for m in _magnitudes(v)),
+                default=0,
+            )
+            available = [
+                fmt for fmt in available
+                if FORMATTER_NUMERIC_LIMITS.get(fmt, {}).get("max_val", float("inf")) >= generated_peak
             ]
             from backend.app.practice_gen.compatibility import FORMATTER_VARIANT_SUPPORT
             caps = FORMATTER_VARIANT_SUPPORT.get(dna_name, {})

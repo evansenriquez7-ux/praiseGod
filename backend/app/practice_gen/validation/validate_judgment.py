@@ -15,19 +15,36 @@ the actual samples it claims to have judged. A run of 151 byte-identical stub fi
 (same reviewer, same seeds, all-PASS, same one-sentence evidence) — the exact thing
 this replaces — fails here loudly.
 
-No graceful fallbacks: a missing, unparseable, incomplete, or boilerplate review is
-a loud FAIL naming the node, never a skip (Ground Rule 3).
+It also enforces **freshness**, which is what keeps the artifact from decaying back
+into a checkbox. A review is a judgment about *specific rendered content*; the moment
+a DNA/registry/formatter change alters what a cited seed renders, that judgment is
+about content the pipeline no longer serves. Filed-once-green-forever is exactly the
+doc_rem.md §1.4 failure mechanism ("the code implements something adjacent; nothing
+detects the gap") reproduced one level up. So every review's cited seeds are
+re-rendered through the live pipeline and compared against the `question_text` the
+reviewer recorded; drift is a loud FAIL demanding a fresh blind re-review. This is
+doc_rem.md R4 ("doc changes ship with their enforcement, atomically") applied to the
+judgment species: generator content and its review move together or CI stops.
+
+No graceful fallbacks: a missing, unparseable, incomplete, boilerplate, or stale
+review is a loud FAIL naming the node, never a skip (Ground Rule 3).
 """
 
 from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Dict, List, Set
+from typing import Any, Dict, List, Set
 
 from backend.app.practice_gen.registry import get_all_node_ids
+from backend.app.practice_gen.validation.judgment_packets import _render_sample
 
-JUDGMENT_DIR = Path("validation_reports/judgment")
+# Anchored to the repo root from this file's location, not the process CWD.
+# A CWD-relative path made the gate's verdict depend on where it was invoked
+# from (from any other directory it reported "directory does not exist" rather
+# than validating), which is a determinism defect in a determinism harness.
+_REPO_ROOT = Path(__file__).resolve().parents[4]
+JUDGMENT_DIR = _REPO_ROOT / "validation_reports" / "judgment"
 
 # The six judgment items from docs/pgen_judgment.md. Every genuine review must
 # carry a finding for each, with a node-specific rationale.
@@ -105,6 +122,15 @@ def _validate_one(node_id: str, path: Path) -> List[str]:
             if not isinstance(s, dict) or not str(s.get("question_text", "")).strip():
                 errs.append(f"{node_id}: samples_reviewed[{i}] missing non-empty 'question_text'.")
                 break
+            # Without a seed the sample cannot be re-rendered, so its freshness
+            # can never be verified — that is the loophole the staleness gate
+            # below exists to close, so an unseeded sample is itself an error.
+            if not isinstance(s.get("seed"), int):
+                errs.append(
+                    f"{node_id}: samples_reviewed[{i}] missing an integer 'seed'; a sample that "
+                    f"cannot be re-rendered cannot be checked for staleness."
+                )
+                break
 
     findings = data.get("findings")
     if not isinstance(findings, dict):
@@ -136,6 +162,53 @@ def _validate_one(node_id: str, path: Path) -> List[str]:
     return errs
 
 
+def _normalize(text: Any) -> str:
+    """Collapse whitespace so re-rendered text compares on content, not layout."""
+    return " ".join(str(text or "").split())
+
+
+def _validate_freshness(node_id: str, data: Dict[str, Any]) -> List[str]:
+    """
+    Re-render every seed the review cites and assert the review is still about
+    the content the pipeline actually serves.
+
+    A review is a judgment about specific rendered problems. Once a DNA, registry
+    binding, or formatter changes what a cited seed produces, the filed verdict
+    describes content that no longer exists — the review is stale and its verdict
+    is unearned, whatever it says. Detecting that is the only thing standing
+    between "genuine review artifact" and "checkbox with more fields".
+
+    Render failures are hard errors, never skips (Ground Rule 3): a seed the
+    pipeline can no longer generate is a strictly worse form of drift than one
+    that renders differently.
+    """
+    errs: List[str] = []
+    for i, s in enumerate(data.get("samples_reviewed") or []):
+        if not isinstance(s, dict) or not isinstance(s.get("seed"), int):
+            continue  # already reported as a schema error by _validate_one
+        seed = s["seed"]
+        try:
+            current = _render_sample(node_id, seed)
+        except Exception as exc:  # noqa: BLE001 — re-raised as a named harness failure
+            errs.append(
+                f"{node_id}: samples_reviewed[{i}] cites seed {seed}, which the live pipeline "
+                f"can no longer render ({type(exc).__name__}: {exc}). Reproduce with: "
+                f"python -m backend.app.practice_gen.validation.judgment_packets --node {node_id}"
+            )
+            continue
+        reviewed_text = _normalize(s.get("question_text"))
+        current_text = _normalize(current.get("question_text"))
+        if reviewed_text != current_text:
+            errs.append(
+                f"{node_id}: STALE review — seed {seed} no longer renders the content that was "
+                f"judged. Reviewed: {reviewed_text!r}; now renders: {current_text!r}. The "
+                f"generator changed after this review was filed, so its verdict is unearned; "
+                f"a fresh blind re-review is required. Rebuild the packet with: "
+                f"python -m backend.app.practice_gen.validation.judgment_packets --node {node_id}"
+            )
+    return errs
+
+
 def validate_judgment_reviews() -> List[str]:
     """
     Validate every registered node's judgment review. Returns a flat list of
@@ -144,6 +217,10 @@ def validate_judgment_reviews() -> List[str]:
     Cross-file anti-boilerplate: no rationale string may be reused verbatim
     across two different nodes. That single check defeats the identical-stub
     farm regardless of how many fields a stub fills in.
+
+    Per-node freshness: every cited seed is re-rendered through the live
+    pipeline and compared to the text the reviewer recorded, so a review cannot
+    outlive the content it judged.
     """
     errors: List[str] = []
     node_ids = get_all_node_ids()
@@ -163,6 +240,9 @@ def validate_judgment_reviews() -> List[str]:
             data = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
             continue
+
+        errors.extend(_validate_freshness(nid, data))
+
         for item, f in (data.get("findings") or {}).items():
             if not isinstance(f, dict):
                 continue

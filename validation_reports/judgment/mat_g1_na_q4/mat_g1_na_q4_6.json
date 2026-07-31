@@ -1,9 +1,15 @@
 {
   "node_id": "mat_g1_na_q4_6",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2c fix-verification batch",
-  "review_date": "2026-07-23",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
+  "review_date": "2026-07-27",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 47, 48],
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
   "samples_reviewed": [
     {
       "seed": 42,
@@ -16,41 +22,46 @@
       "correct_answer": 6
     },
     {
-      "seed": 46,
-      "question_text": "Ate Cara has 5 photo albums. A classmate has 1 photo albums. Who has more, and by how many?",
-      "correct_answer": 4
+      "seed": 44,
+      "question_text": "A class survey showed 40 students like costume sash and 1 student like wristband. How many students were surveyed in all?",
+      "correct_answer": 41
     },
     {
-      "seed": 47,
-      "question_text": "What is 30 + 34?",
-      "correct_answer": 64
+      "seed": 45,
+      "question_text": "What is 20 + 25?",
+      "correct_answer": 45
+    },
+    {
+      "seed": 46,
+      "question_text": "Ate Cara has 10 photo albums. A classmate has 5 photo albums. How many more photo albums does Ate Cara have?",
+      "correct_answer": 5
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Seed 42's 'had ₱5 and spent ₱1, how much left' correctly resolves to 5-1=4 matching correct_answer 4, and seed 43's 'has ₱1 in bills and ₱5 in coins, in all' correctly resolves to 1+5=6, so the money-subtraction wrong-answer bug previously documented for this node is no longer reproducible in this batch."
+      "verdict": "FAIL",
+      "rationale": "The competency is explicitly about money, but three of five samples contain no money at all. Seed 44 asks 'A class survey showed 40 students like costume sash and 1 student like wristband. How many students were surveyed in all?', seed 45 is the bare drill 'What is 20 + 25?' with no context or peso sign, and seed 46 counts photo albums ('Ate Cara has 10 photo albums'). Only seed 42 (5-1=4) and seed 43 (1+5=6) involve pesos. All five keys are arithmetically correct, but 60% of the packet is off-topic for a money competency."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Of the 7 seeds only 42 and 43 render as money-flavored (peso sign) content; seeds 44-48 are a non-money survey addition, a bare '20+25' fact, a non-money photo-album comparison, and two more bare addition facts, so the sample set barely exercises the money scenario this node exists to teach."
+      "rationale": "Both named sub-cases technically appear but only once each and only in miniature: addition of money is seed 43's 1 peso plus 5 pesos, subtraction of money is seed 42's 5 pesos minus 1 peso. There is no problem where a sum approaches the 100-peso ceiling, no change-from-a-payment case, and the 'given orally or in pictures' delivery - which for money would mean showing coins and bills - never appears in any sample."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Sentence length and vocabulary in the money samples (seeds 42, 43) are simple one-clause statements suited to Grade 1 Q4 readers, e.g. 'Hiro had ₱5 and spent ₱1 ... how much money does Hiro have left?'"
+      "verdict": "CONCERN",
+      "rationale": "Seed 43 states 'Kuya Bien has 1 peso in bills and 5 pesos in coins', which is factually wrong about Philippine currency in the exact domain the competency teaches: 1 peso is a coin and the smallest banknote is 20 pesos. Seed 42's context 'spent 1 peso on resin at the gaming convention' uses vocabulary far outside a Grade 1 Filipino learner's experience, and seed 44's 'and 1 student like wristband' is ungrammatical."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "The registered dnas list both money_peso and addition, and this batch shows the addition dna dominating (5 of 7 samples), so the variant space as sampled here does not reliably reach the money_peso content needed for mastery of 'addition of money' / 'subtraction of money'."
+      "rationale": "The money items offer just two frames - spend-and-have-left (seed 42) and combine-bills-and-coins (seed 43). Missing are the everyday one-step money situations this competency names: buying two items and totalling the cost, computing change owed, comparing the prices of two goods, or saving over two days. The remaining seeds fill the variety slot with non-money contexts rather than new money situations."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency specifically targets 1-step money addition/subtraction up to ₱100, but seed 44 (student survey counts) and seed 46 (comparing photo album counts) are unrelated non-money 'how many in all' / 'who has more' problems that belong to a different competency, not this one."
+      "verdict": "FAIL",
+      "rationale": "Difficulty rises only by abandoning the competency. The two largest-number items, seed 45 'What is 20 + 25?' and seed 44's 40 + 1 survey, are precisely the ones stripped of the peso context, while the two items that keep the money framing stay at single-peso amounts. That inverts the intended progression: a student who works through these seeds gets harder arithmetic exactly where the money reasoning disappears, so nothing in the sequence builds toward one-step money problems near 100 pesos."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The peso amounts actually shown (₱1, ₱5, ₱6) are far below the stated ₱100 ceiling, so while nothing is out of range, this small batch gives no evidence the generator ever approaches the upper bound of the competency's scale."
+      "verdict": "FAIL",
+      "rationale": "The competency sets a 100-peso ceiling for sums and requires both subtraction amounts below 100, yet the largest money value anywhere in the packet is 6 pesos (seed 43's 1 + 5), roughly 6% of the stated range - the two-digit peso arithmetic the competency exists to test is never exercised. Worse, seed 46 offers 200 as option A, a value double the competency's entire ceiling, and seeds 42 and 43 both use 60 as a distractor on problems whose answers are 4 and 6, giving implausible options that are trivially eliminable."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }
