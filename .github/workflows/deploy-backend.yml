@@ -28,8 +28,82 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # Ordered cheapest-first so a broken doc or a failing unit test stops the
+      # job in seconds rather than after the ~15-minute matrix below. These
+      # three moved here from validate-pgen.yml, which ran the same run_all a
+      # second time on every branch push and was deleted: this job already gates
+      # `deploy` via `needs: validate`, so it is the one place where being
+      # strict actually prevents something reaching Cloud Run.
+      - name: Lint docs/ for un-enforced imperatives (doc_rem.md R1/§3.5)
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Only pgen_contract.md and pgen_judgment.md may state a binding
+          # "must" — every other pg-pipeline doc describes, it does not command.
+          # DOC_RULES.md/doc_rem.md/IMPLEMENTATION_STATUS.md are meta-docs about
+          # this very rule (self-referential, exempt); INTRO_CONTENT.md/core.md
+          # govern unrelated content.
+          #
+          # Exit codes are handled explicitly rather than with `|| true`: grep
+          # exits 1 for "no match" (the success case) but >=2 for a real error
+          # such as an unreadable file, and `|| true` would collapse both into
+          # "clean" — the silent-pass pattern this gate exists to forbid.
+          exempt='docs/(pgen_contract|pgen_judgment|DOC_RULES|doc_rem|INTRO_CONTENT|core|pgen_hardening|IMPLEMENTATION_STATUS)\.md$'
+          violations=""
+          while IFS= read -r f; do
+            if printf '%s' "$f" | grep -qE "$exempt"; then continue; fi
+            rc=0
+            grep -qi '\bmust\b' "$f" || rc=$?
+            case "$rc" in
+              0) violations="${violations}${f}"$'\n' ;;
+              1) ;;
+              *) echo "doc lint aborted: grep exited $rc on '$f'"; exit 1 ;;
+            esac
+          done < <(find docs -type f -name '*.md' | sort)
+          if [ -n "$violations" ]; then
+            echo "Found un-enforced 'must' outside pgen_contract.md/pgen_judgment.md:"
+            printf '%s' "$violations"
+            echo "Move binding rules into pgen_contract.md with a named enforcer, or rephrase as descriptive."
+            exit 1
+          fi
+          echo "doc lint: clean"
+
+      - name: Run Unit Suite
+        # Five tests reach get_matatag_lab_config, whose module imports
+        # backend/app/database.py, which refuses to import without DATABASE_URL
+        # (deliberately — it stops a silent fallback to a local DB). Nothing
+        # here touches a database: create_engine is lazy inside get_engine(), so
+        # only the import-time presence check is satisfied. Quoted because the
+        # value ends in a colon, which YAML would read as a nested mapping.
+        env:
+          DATABASE_URL: "sqlite+pysqlite:///:memory:"
+        run: PYTHONPATH=. python -m pytest tests/unit/ -q -m "not slow"
+
+      # Plants seven known bugs one at a time and asserts the harness catches
+      # each — it tests the tests. It mutates tracked source in place and
+      # restores it in a finally, so it runs before run_all and its restoration
+      # is verified rather than assumed.
+      - name: Mutation-test the Validation Harness
+        run: |
+          set -euo pipefail
+          PYTHONPATH=. python -m tests.mutation_harness
+          if ! git diff --quiet -- backend/; then
+            echo "mutation_harness did not restore backend/ — refusing to pass:"
+            git diff --stat -- backend/
+            exit 1
+          fi
+          echo "mutation harness: backend/ restored clean"
+
       - name: Run Practice Gen Hardening Harness
         run: python -m backend.app.practice_gen.validation.run_all
+
+      - name: Upload Validation Reports on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pgen-validation-reports
+          path: validation_reports/
+          retention-days: 7
 
   deploy:
     needs: validate
