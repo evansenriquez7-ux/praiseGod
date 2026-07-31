@@ -90,7 +90,9 @@ jobs:
         # satisfied. This runs locally only because of an untracked .env, which
         # is exactly why it passed here and failed on the runner.
         env:
-          DATABASE_URL: sqlite+pysqlite:///:memory:
+          # Quoted: the value ends in a colon, which YAML would otherwise read
+          # as the start of a nested mapping.
+          DATABASE_URL: "sqlite+pysqlite:///:memory:"
         run: PYTHONPATH=. python -m pytest tests/unit/ -q -m "not slow"
 
       # Phase 4's artifact: plants seven known bugs and asserts the harness
