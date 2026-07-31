@@ -27,6 +27,7 @@ Traps: misidentify by side count, confuse regular/irregular, orientation confusi
 """
 
 import random
+import re
 from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
@@ -50,6 +51,77 @@ _SHAPE_CATALOGUE = [
 ]
 
 _ORIENTATIONS = [0, 45, 90, 135]
+
+
+_SHAPE_WORDS = {
+    "triangle": "triangle", "triangles": "triangle",
+    "square": "square", "squares": "square",
+    "rectangle": "rectangle", "rectangles": "rectangle",
+    "rhombus": "rhombus", "diamond": "rhombus",
+    "trapezoid": "trapezoid",
+    "pentagon": "pentagon", "pentagons": "pentagon",
+    "hexagon": "hexagon", "hexagons": "hexagon",
+    "octagon": "octagon", "octagons": "octagon",
+    "circle": "circle", "circles": "circle",
+    "half-circle": "circle", "half-circles": "circle",
+    "quarter-circle": "circle", "quarter-circles": "circle",
+}
+
+
+def _catalogue_entry(type_name: str) -> Optional[dict]:
+    for s in _SHAPE_CATALOGUE:
+        if s["type"] == type_name:
+            return s
+    return None
+
+
+def _shapes_from_item(values: dict, rng: random.Random) -> List[dict]:
+    """
+    Build the board out of the shapes the DNA's own item talks about.
+
+    shapes_2d emits a text item -- {question, answer, distractors, orientation} --
+    and never a `shapes` list, so this formatter's `_build_shapes` fallback fired
+    on 20 of 20 forced generations and rendered a board of randomly chosen shapes
+    with a question of its own invention, discarding the DNA's. A Grade 1 node
+    whose competency names "triangle, rectangle, square" was serving boards
+    containing circles, under the stem "Look at the shapes. Tell how many corners
+    does the highlighted shape have." -- content the competency never asked for,
+    in broken English.
+
+    Every item in the pool names its shapes in the question text ("How many sides
+    does a rectangle have?", "Which shape has more sides -- a triangle or a
+    rectangle?"), and the shape-valued options name more, so the board is
+    assembled from both: question first (that is what the item is about), then
+    any option that is itself a shape name.
+    """
+    found: List[str] = []
+    text = str(values.get("question", "")).lower()
+    for word, type_name in _SHAPE_WORDS.items():
+        if re.search(rf"\b{re.escape(word)}\b", text) and type_name not in found:
+            found.append(type_name)
+    for opt in [values.get("answer")] + list(values.get("distractors") or []):
+        type_name = _SHAPE_WORDS.get(str(opt).strip().lower())
+        if type_name and type_name not in found:
+            found.append(type_name)
+
+    shapes: List[dict] = []
+    # "rotated" is the DNA's own orientation field; it is the difficulty knob the
+    # competency names ("of different size and in different orientation"), so it
+    # drives the rendered angle rather than a formatter-local difficulty guess.
+    varied = str(values.get("orientation", "standard")).lower() != "standard"
+    for i, type_name in enumerate(found):
+        entry = _catalogue_entry(type_name)
+        if entry is None:
+            continue
+        shapes.append({
+            "id": f"shape_{i}",
+            "type": entry["type"],
+            "sides": entry["sides"],
+            "corners": entry["corners"],
+            "is_regular": entry["is_regular"],
+            "orientation_deg": rng.choice(_ORIENTATIONS[1:]) if varied else 0,
+        })
+    return shapes
 
 
 def _build_shapes(grade: int, diff_level: int, rng: random.Random, count: int = 4) -> List[dict]:
@@ -186,6 +258,79 @@ def format_shape_board(
     diff_level = 2
     if ctx.difficulty_profile:
         diff_level = min(len(ctx.difficulty_profile) + 1, 4)
+
+    # ── 0. A DNA-authored item is rendered as itself, not replaced ────────────
+    # When ctx.values carries shapes_2d's item contract, this formatter's job is
+    # to *illustrate* that item: its question is the stem, its answer is the key,
+    # and the board shows the shapes it names. Previously this path did not
+    # exist, so the fallback below invented an unrelated board and stem and threw
+    # the DNA's item away on every single generation.
+    _vals = ctx.values or {}
+    if _vals.get("question") and _vals.get("answer") is not None and "distractors" in _vals:
+        shapes = _shapes_from_item(_vals, rng)
+        if len(shapes) < 1:
+            raise ValueError(
+                f"shape_board cannot illustrate this item: no catalogue shape is named in "
+                f"question={_vals.get('question')!r} or in its options "
+                f"{[_vals.get('answer')] + list(_vals.get('distractors') or [])!r}. "
+                f"Either the item belongs on a text formatter or the shape vocabulary needs "
+                f"extending — it is not something to paper over with an invented board. "
+                f"Reproduce: node={ctx.node_id} seed={ctx.seed}."
+            )
+        correct_answer = _vals["answer"]
+        traps = [d for d in (_vals.get("distractors") or []) if d != correct_answer]
+        vp = {
+            "shapes": shapes,
+            # The board is an illustration of a stated question, so it carries no
+            # question_type of its own for the frontend to re-interrogate.
+            "question_type": "illustrate",
+            # Deliberately unhighlighted. The board's shapes include the answer
+            # ("What shape has 4 equal sides and 4 corners?" is drawn alongside a
+            # square), so highlighting the correct one would hand the answer to
+            # the student visually -- §1F's leak, in a form §1F cannot see
+            # because it only reads the stem text. The question names its own
+            # subject, so no highlight is needed to make it answerable.
+            "highlighted_shape": None,
+        }
+        mcq_options = None
+        final_answer = correct_answer
+        if answer_collection == "mcq":
+            all_opts = [correct_answer] + traps[:3]
+            rng.shuffle(all_opts)
+            mcq_options = [
+                {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
+                for i, v in enumerate(all_opts)
+            ]
+            final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        format_data: dict = {"visual_params": vp}
+        if mcq_options:
+            format_data["mcq_options"] = mcq_options
+        return FormattedProblem(
+            problem_id=f"{ctx.node_id}_{ctx.seed}_shapeboard",
+            node_id=ctx.node_id,
+            competency_text=ctx.competency_text,
+            grade=ctx.grade,
+            seed=ctx.seed,
+            question_text=str(_vals["question"]),
+            correct_answer=final_answer,
+            distractors=traps,
+            hints=ctx.hints,
+            format=f"{interaction_mode}_{answer_collection}",
+            format_data=format_data,
+            is_visual=True,
+            visual_type="ShapeBoard",
+            visual_params=vp,
+            interaction_mode=interaction_mode,
+            answer_collection="mcq" if mcq_options else answer_collection,
+            difficulty_profile=ctx.difficulty_profile or {},
+            difficulty_axes_served=ctx.difficulty_axes_served,
+            experience="standard",
+            experience_config=None,
+            interest_theme=ctx.interest_theme,
+            spine_id=ctx.spine_id,
+            given_values={k: v for k, v in _vals.items() if k != ctx.blank_target},
+            blank_target=ctx.blank_target,
+        )
 
     # ── 1. Resolve shapes ─────────────────────────────────────────────────────
     if ctx.visual_params and "shapes" in ctx.visual_params:

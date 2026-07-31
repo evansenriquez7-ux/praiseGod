@@ -342,7 +342,16 @@ COMPATIBILITY: Dict[str, List[str]] = {
 
     "symmetry_slides": [
         "mcq",
-        "shape_board",
+        # shape_board removed: it cannot illustrate these items and never could.
+        # symmetry_slides asks about arrows turning ("An arrow faces UP. It does
+        # a quarter turn counter-clockwise...") and shapes sliding across a grid;
+        # none of that is a member of shape_board's shape catalogue, so the
+        # formatter fell straight through to its _build_shapes fallback and drew
+        # an unrelated board of random polygons on every single generation
+        # (20/20 when forced), discarding the DNA's question and answer. The
+        # table asserted a capability the formatter does not have. Rendering
+        # these properly needs a formatter that can draw an oriented arrow or a
+        # translated figure; until one exists, mcq states the item honestly.
     ],
 
     # ── Data & Probability ────────────────────────────────────────────────────
