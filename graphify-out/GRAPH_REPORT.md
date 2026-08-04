@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-08-05)
 
 ## Corpus Check
-- 433 files · ~492,155 words
+- 433 files · ~532,113 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3026 nodes · 4892 edges · 234 communities (217 shown, 17 thin omitted)
+- 3026 nodes · 4891 edges · 240 communities (223 shown, 17 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 87 edges (avg confidence: 0.57)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d3656a22`
+- Built from commit: `a4bba708`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -232,6 +232,12 @@
 - [[_COMMUNITY_get_node_capabilities|get_node_capabilities]]
 - [[_COMMUNITY_get_gemini_models|get_gemini_models]]
 - [[_COMMUNITY__combined_interests|_combined_interests]]
+- [[_COMMUNITY_CLAUDE|CLAUDE.md]]
+- [[_COMMUNITY_Phase 0 — Consolidate duplicated registries (prerequisite)|Phase 0 — Consolidate duplicated registries (prerequisite)]]
+- [[_COMMUNITY_IMPLEMENTATION_STATUS|IMPLEMENTATION_STATUS.md]]
+- [[_COMMUNITY_Part 3 — Concrete restructuring of the current docs|Part 3 — Concrete restructuring of the current docs/]]
+- [[_COMMUNITY_Axis Policy Result-Bound vs. Operand-Bound (2026-07-01)|Axis Policy: Result-Bound vs. Operand-Bound (2026-07-01)]]
+- [[_COMMUNITY_5. Common Pitfalls & Solutions|5. Common Pitfalls & Solutions]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `QuestionContext` - 85 edges
@@ -260,7 +266,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (234 total, 17 thin omitted)
+## Communities (240 total, 17 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
@@ -355,8 +361,8 @@ Cohesion: 0.07
 Nodes (26): Aliases, Basic Query, Contents, Create, Create with Server Values, Delete, Embedded Queries, Expression Operators (Compare with Server Values) (+18 more)
 
 ### Community 23 - "Community 23"
-Cohesion: 0.12
-Nodes (16): 1. Logarithmic Ranges (Exponential Growth), 2. Linear Ranges (Constant Growth), Axis Policy: Result-Bound vs. Operand-Bound (2026-07-01), Bridging to the Next Competency (Scalar > 1), Calculation Logic, Core Concepts, Difficulty Dimensions in Practice Generation, How to add a new axis (+8 more)
+Cohesion: 0.17
+Nodes (11): 1. Logarithmic Ranges (Exponential Growth), 2. Linear Ranges (Constant Growth), Bridging to the Next Competency (Scalar > 1), Calculation Logic, Core Concepts, Difficulty Dimensions in Practice Generation, Linear vs Logarithmic Scales, Sliding Window Interpolation for Arbitrary Scalars (+3 more)
 
 ### Community 24 - "Community 24"
 Cohesion: 0.32
@@ -379,8 +385,8 @@ Cohesion: 0.14
 Nodes (21): call_ai(), DummyElaLoader, _format_age_grade_constraints(), GenAIBridge, generate_ela_batch_subagent(), generate_ela_skeleton_subagent(), generate_math_question_ai(), _get_bridge_pool() (+13 more)
 
 ### Community 29 - "Community 29"
-Cohesion: 0.12
-Nodes (16): 1.1 The docs issue commands to the agent's judgment, not to a machine, 1.2 Unverifiable and verifiable items are interleaved, so everything gets the same (low) rigor, 1.3 Duplication has already drifted, 1.4 The docs describe intent; the code implements something adjacent; nothing detects the gap, 1.5 Docs grow by accretion into context-window poison, 1.6 The docs assign the agent tests it cannot run, 3.1 Rewrite `pgen_checklist.md` → contract + judgment split, 3.2 `DIFFICULTY_DIMENSIONS.md` — keep, but demote MUSTs (+8 more)
+Cohesion: 0.29
+Nodes (7): 1.1 The docs issue commands to the agent's judgment, not to a machine, 1.2 Unverifiable and verifiable items are interleaved, so everything gets the same (low) rigor, 1.3 Duplication has already drifted, 1.4 The docs describe intent; the code implements something adjacent; nothing detects the gap, 1.5 Docs grow by accretion into context-window poison, 1.6 The docs assign the agent tests it cannot run, Part 1 — Diagnosis: how the current docs cause bugs
 
 ### Community 30 - "Community 30"
 Cohesion: 0.10
@@ -567,8 +573,8 @@ Cohesion: 0.23
 Nodes (11): _expanded_form(), generate_hints(), generate_params(), Any, Random, DNA: Place Value (Number & Algebra)  Refactored from:   - matatag_skeletons.py, Insert a zero into a middle position (not leading, not trailing)., Rejection-sample a number and target position that satisfy difficulty_profile. (+3 more)
 
 ### Community 76 - "Community 76"
-Cohesion: 0.12
-Nodes (16): 1A. Scalar boundary exactness (checklist §1 "Strict Scalar Mapping"), 1B. Window containment sweep (checklist §1 "Functional Integrity"), 1C. Variant × formatter execution matrix (checklist §2 & §3 "Functional Integrity"), 1D. Vocabulary lint on FORMATTED output (checklist §4 "Vocabulary Gating"), 1E. Answer-key integrity, Explicit non-goals, Ground Rules (read first, these override your habits), Output contract (+8 more)
+Cohesion: 0.22
+Nodes (9): Explicit non-goals, Ground Rules (read first, these override your habits), PG Pipeline Hardening — Implementation Plan, Phase 2 — Wire feasibility + all validators into one gate, Phase 3 — CI enforcement, Phase 4 — Mutation-test the harness (verify the verifier), Phase 5 — Strict response schema; kill frontend fallbacks, Phase 6 — LLM-path audit (+1 more)
 
 ### Community 77 - "Community 77"
 Cohesion: 0.32
@@ -627,8 +633,8 @@ Cohesion: 0.33
 Nodes (10): _build_traps(), _build_visual_params(), format_bar_chart(), _grade_scale(), _pick_categories(), Random, fmt_bar_chart.py — BarChart visual formatter  Produces a FormattedProblem with b, Build BarChart visual_params.      visual_params keys:         categories     — (+2 more)
 
 ### Community 91 - "Community 91"
-Cohesion: 0.10
-Nodes (20): 1. Architecture Overview, 2. Automated CI/CD (GitHub Actions Workflows), 3. Required Secrets & Configuration Keys, 4. Operational Playbook & Maintenance, 5. Common Pitfalls & Solutions, 6. Practice Problem Generation Rules, 7. Remote Development Environment (VS Code SSH), A. Production CI/CD (GitHub Actions) (+12 more)
+Cohesion: 0.12
+Nodes (16): 1. Architecture Overview, 2. Automated CI/CD (GitHub Actions Workflows), 3. Required Secrets & Configuration Keys, 4. Operational Playbook & Maintenance, 6. Practice Problem Generation Rules, 7. Remote Development Environment (VS Code SSH), A. Production CI/CD (GitHub Actions), A. Validation Gate (`.github/workflows/validate-pgen.yml`) (+8 more)
 
 ### Community 92 - "Community 92"
 Cohesion: 0.33
@@ -959,8 +965,8 @@ Cohesion: 0.12
 Nodes (10): compute_difficulty_scalar(), Practice Generation — Difficulty Axes Catalog ==================================, Compute a 0.0–1.0 difficulty scalar from the selected axis values.      For each, _continuous_axes_with_default_range(), Tests for the axes-catalog logarithmic scale and the auditor's ``build_test_prof, Yield (concept, axis) for every continuous axis that has both     default_min an, Every continuous axis whose range spans >= 10x must declare     ``scale: 'logari, When ``scale == 'logarithmic'``, scalar 0.5 must map to the     geometric mean o (+2 more)
 
 ### Community 195 - "_distractor_fallback.py"
-Cohesion: 0.13
-Nodes (12): Contract Rules Table, Core Principles, PG Pipeline Contract, 1. Objectives & Context, 2.1 The `VocabGated` Helper, 2.2 Shared and Formatter-Level Gating, 2. Dynamic Phrasing via `VocabGated`, 3.1 Competency Parsing (+4 more)
+Cohesion: 0.20
+Nodes (9): 1. Objectives & Context, 2.1 The `VocabGated` Helper, 2.2 Shared and Formatter-Level Gating, 2. Dynamic Phrasing via `VocabGated`, 3.1 Competency Parsing, 3.2 Gated Overrides, 3. Registry-Level Concept Constraints, 4. Provenance-Based Concept Gating (+1 more)
 
 ### Community 196 - "fmt_ordering.py"
 Cohesion: 0.31
@@ -968,7 +974,7 @@ Nodes (8): format_ordering(), _infer_direction(), Random, Textual Formatter — 
 
 ### Community 197 - "Queries"
 Cohesion: 0.25
-Nodes (6): Documentation Rules (meta-rules), PG Pipeline Judgment Guide, The six items, What the enforcer accepts, What this gate does not do, Who reviews, and how
+Nodes (6): Documentation Rules (meta-rules), Enforcement, PG Pipeline Judgment Guide, The six items, What the enforcer accepts, Who reviews, and how
 
 ### Community 198 - "get_engine"
 Cohesion: 0.22
@@ -983,7 +989,7 @@ Cohesion: 0.40
 Nodes (4): Layout, PG Pipeline Test Infrastructure, Rules, Running
 
 ### Community 202 - "_combined_interests"
-Cohesion: 0.22
+Cohesion: 0.29
 Nodes (6): 1. Description of Inconsistency, 2. Window-Design Math Evidence, 3. Temporary Mitigation, Live Bug: Bridge-Scalar Inconsistency, Option A: Scalar = 1.1 (Current Portal Level 4), Option B: Scalar = 1.25 (Current Lab UI)
 
 ### Community 203 - "get_interest_themes"
@@ -1027,8 +1033,8 @@ Cohesion: 0.24
 Nodes (13): _apply(), _first_failure_line(), main(), Mutation, Path, Mutation harness — verify the verifier (pgen_hardening.md Phase 4).  The validat, Apply every edit, returning original contents for restoration., Apply, run, restore. Returns (detected, evidence-line).      Detection means the (+5 more)
 
 ### Community 217 - "CLAUDE.md"
-Cohesion: 0.12
-Nodes (15): CLAUDE.md, Content Rules (student-facing text, DNA files, generators), Definition of Done (memorize this), Engineering Protocols, File Management, Mission, Reporting Style, Terminology (+7 more)
+Cohesion: 0.15
+Nodes (10): Agent Environment, AI Agent Workflow (Graphify & MCP), The Pipeline, Contract Rules Table, Core Principles, PG Pipeline Contract, CCMed — Adaptive K-12 Mastery Engine, Definition of done (pg pipeline) (+2 more)
 
 ### Community 218 - "AuditHarnessError"
 Cohesion: 0.22
@@ -1061,6 +1067,30 @@ Nodes (3): Any, Generate a batch of varied practice problems and return them as 
 ### Community 225 - "_get_max_regrouping_places"
 Cohesion: 0.50
 Nodes (4): Correction to the review pass above, Fixed, Phase C — formatter fabrication — 2026-07-31, The judgment layer did not see any of this
+
+### Community 234 - "CLAUDE.md"
+Cohesion: 0.25
+Nodes (8): CLAUDE.md, Content Rules (student-facing text, DNA files, generators), Definition of Done (memorize this), Engineering Protocols, File Management, Mission, Reporting Style, Terminology
+
+### Community 235 - "Phase 0 — Consolidate duplicated registries (prerequisite)"
+Cohesion: 0.29
+Nodes (7): 1A. Scalar boundary exactness (checklist §1 "Strict Scalar Mapping"), 1B. Window containment sweep (checklist §1 "Functional Integrity"), 1C. Variant × formatter execution matrix (checklist §2 & §3 "Functional Integrity"), 1D. Vocabulary lint on FORMATTED output (checklist §4 "Vocabulary Gating"), 1E. Answer-key integrity, Output contract, Phase 0 — Consolidate duplicated registries (prerequisite)
+
+### Community 236 - "IMPLEMENTATION_STATUS.md"
+Cohesion: 0.33
+Nodes (3): Docs Remediation — Making the docs/ Directory Stop Producing Bugs, Part 2 — The doctrine (rules for every agent-facing doc, permanent), Part 4 — Ordering & definition of done
+
+### Community 237 - "Part 3 — Concrete restructuring of the current docs/"
+Cohesion: 0.33
+Nodes (6): 3.1 Rewrite `pgen_checklist.md` → contract + judgment split, 3.2 `DIFFICULTY_DIMENSIONS.md` — keep, but demote MUSTs, 3.3 `INFRASTRUCTURE_WORKFLOW.md` — split and de-poison, 3.4 New file: `docs/DOC_RULES.md`, 3.5 Drift tripwires (cheap, do them), Part 3 — Concrete restructuring of the current docs/
+
+### Community 238 - "Axis Policy: Result-Bound vs. Operand-Bound (2026-07-01)"
+Cohesion: 0.40
+Nodes (5): Axis Policy: Result-Bound vs. Operand-Bound (2026-07-01), How to add a new axis, `number_difficulty`, Operand-bound competencies (no axis needed), Result-bound axes (kept only when the LC requires them)
+
+### Community 239 - "5. Common Pitfalls & Solutions"
+Cohesion: 0.50
+Nodes (4): 5. Common Pitfalls & Solutions, Cold Start Timeouts, CORS Mismatches, Firebase Hosting "Current Active Version" (400 Error)
 
 ## Knowledge Gaps
 - **884 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+879 more)

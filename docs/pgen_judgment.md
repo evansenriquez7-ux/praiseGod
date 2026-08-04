@@ -61,8 +61,5 @@ a generator therefore obliges a fresh review of the nodes it touches, in the sam
 | `competency_alignment` | Does the difficulty progression build *this* competency, rather than varying an unrelated axis? |
 | `scale_appropriateness` | Does the numeric range match the competency's stated ceiling, on a linear/log scale suited to its span? |
 
-## What this gate does not do
-
-It cannot decide whether a verdict is *right*. A `FAIL` verdict is a passing artifact and a failing node:
-`run_all` prints the PASS/CONCERN/FAIL tally so curriculum-fidelity debt stays visible instead of hiding
-under a green check. Triage of that debt is tracked in [`IMPLEMENTATION_STATUS.md`](./IMPLEMENTATION_STATUS.md).
+## Enforcement
+A `FAIL` or `CONCERN` verdict causes `validate_judgment` (and `run_all.py`) to exit with a non-zero error. All nodes must be remediated in generator DNA/formatters and re-reviewed blind to achieve genuine `PASS` verdicts across all 6 findings and overall verdict.

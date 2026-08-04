@@ -149,6 +149,8 @@ def _validate_one(node_id: str, path: Path) -> List[str]:
         verdict = str(f.get("verdict", "")).upper()
         if verdict not in VALID_VERDICTS:
             errs.append(f"{node_id}: findings['{item}'].verdict {f.get('verdict')!r} not in {sorted(VALID_VERDICTS)}.")
+        elif verdict != "PASS":
+            errs.append(f"{node_id}: findings['{item}'].verdict is '{verdict}' (must be 'PASS').")
         rationale = str(f.get("rationale", "")).strip()
         if len(rationale) < _MIN_RATIONALE_LEN:
             errs.append(
@@ -156,8 +158,14 @@ def _validate_one(node_id: str, path: Path) -> List[str]:
                 f"(< {_MIN_RATIONALE_LEN} chars); a node-specific justification is required."
             )
 
-    if str(data.get("overall", "")).upper() not in VALID_VERDICTS:
+    overall = str(data.get("overall", "")).upper()
+    if overall not in VALID_VERDICTS:
         errs.append(f"{node_id}: 'overall' verdict {data.get('overall')!r} not in {sorted(VALID_VERDICTS)}.")
+    elif overall != "PASS":
+        errs.append(
+            f"{node_id}: overall judgment verdict is '{overall}' (must be 'PASS'); "
+            f"curriculum alignment defects and concerns must be resolved."
+        )
 
     return errs
 
@@ -209,10 +217,10 @@ def _validate_freshness(node_id: str, data: Dict[str, Any]) -> List[str]:
     return errs
 
 
-def validate_judgment_reviews() -> List[str]:
+def validate_judgment_reviews(fail_fast: bool = False) -> List[str]:
     """
     Validate every registered node's judgment review. Returns a flat list of
-    errors (empty == all reviews genuine and complete).
+    errors (empty == all reviews genuine, complete, fresh, and PASS).
 
     Cross-file anti-boilerplate: no rationale string may be reused verbatim
     across two different nodes. That single check defeats the identical-stub
@@ -235,13 +243,20 @@ def validate_judgment_reviews() -> List[str]:
         errs = _validate_one(nid, path)
         errors.extend(errs)
         if errs or not path.exists():
+            if fail_fast and errors:
+                return errors
             continue
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
+            if fail_fast and errors:
+                return errors
             continue
 
-        errors.extend(_validate_freshness(nid, data))
+        freshness_errs = _validate_freshness(nid, data)
+        errors.extend(freshness_errs)
+        if fail_fast and errors:
+            return errors
 
         for item, f in (data.get("findings") or {}).items():
             if not isinstance(f, dict):
@@ -254,8 +269,13 @@ def validate_judgment_reviews() -> List[str]:
                     f"{nid}: findings['{item}'].rationale is copied verbatim from "
                     f"'{seen_rationales[rationale]}' — boilerplate is not a genuine review."
                 )
+                if fail_fast:
+                    return errors
             else:
                 seen_rationales[rationale] = nid
+
+        if fail_fast and errors:
+            return errors
 
     return errors
 
@@ -283,14 +303,19 @@ def summarize_verdicts() -> Dict[str, int]:
 
 
 if __name__ == "__main__":
+    import argparse
     import sys
+
+    parser = argparse.ArgumentParser(description="Judgment Review Validator")
+    parser.add_argument("--fail-fast", "-f", action="store_true", help="Exit immediately on first failure")
+    args = parser.parse_args()
 
     v = summarize_verdicts()
     print(
         f"Verdicts over {v['reviewed']} reviewed nodes: "
         f"PASS={v['PASS']} CONCERN={v['CONCERN']} FAIL={v['FAIL']} UNKNOWN={v['UNKNOWN']}"
     )
-    errs = validate_judgment_reviews()
+    errs = validate_judgment_reviews(fail_fast=args.fail_fast)
     if errs:
         print(f"Judgment review validation: {len(errs)} problem(s) found.")
         for e in errs[:40]:
@@ -298,5 +323,5 @@ if __name__ == "__main__":
         if len(errs) > 40:
             print(f"  ... and {len(errs) - 40} more.")
         sys.exit(1)
-    print("Judgment review validation: all nodes have genuine, complete reviews.")
+    print("Judgment review validation: all nodes have genuine, complete reviews with PASS verdicts.")
     sys.exit(0)

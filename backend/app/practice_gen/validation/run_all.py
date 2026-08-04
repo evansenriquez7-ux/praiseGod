@@ -68,7 +68,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§5": "validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews",
 }
 
-def run_all() -> int:
+def run_all(fail_fast: bool = False) -> int:
     print("======================================================================")
     print("RUNNING ALL PRACTICE PROBLEM GENERATION VALIDATORS")
     print("======================================================================\n")
@@ -86,18 +86,27 @@ def run_all() -> int:
     dna_ok = len(dna_failed) == 0 and len(feasibility_failed) == 0
     if dna_ok:
         executed_checks.add("§3")
+    elif fail_fast:
+        print("  FAIL DNA validation (fail-fast active)")
+        return 1
 
     # 2. Compatibility
     print("\n--- 2/6: Compatibility, Coverage & Monotonicity ---")
     compat_ok = validate_compat.validate_all()
     if compat_ok:
         executed_checks.add("§2")
+    elif fail_fast:
+        print("  FAIL compatibility validation (fail-fast active)")
+        return 1
 
     # 3. Interest Invariance
     print("\n--- 3/6: Interest Invariance Checks ---")
     interest_results = validate_interest.validate_all_interest_invariance()
     interest_failed = [c for c, errs in interest_results.items() if errs]
     interest_ok = len(interest_failed) == 0
+    if not interest_ok and fail_fast:
+        print("  FAIL interest invariance (fail-fast active)")
+        return 1
 
     # 4. Vocabulary & Concept Gating (Full-Node Mode)
     print("\n--- 4/6: Vocabulary & Concept Gating Audits (Full-Node Mode) ---")
@@ -113,46 +122,48 @@ def run_all() -> int:
             print(f"    - {nid}: {violations}")
         if len(vocab_failed) > 5:
             print(f"    ... and {len(vocab_failed) - 5} more nodes.")
+        if fail_fast:
+            return 1
     else:
         print("  PASS vocabulary gating audit (all nodes)")
 
     # 5. Exhaustive Behavioral Matrix
     print("\n--- 5/6: Exhaustive Behavioral Matrix Validation ---")
     # Run matrix validator. We set workers=0 for auto-detection.
-    # We pass fail_fast=False to gather complete failures.
-    matrix_code = run_matrix_validation(fail_fast=False, workers=0)
+    matrix_code = run_matrix_validation(fail_fast=fail_fast, workers=0)
     matrix_ok = matrix_code == 0
     # The matrix's §-refs are *observed*, not assumed: validate_matrix records an
-    # id at each check site when that site actually evaluates an assertion. Adding
-    # them here on the strength of a 0 exit code (the previous behaviour) made the
-    # comparison below tautological — a check that silently stopped running still
-    # looked executed. See validate_matrix.LAST_EXECUTED_CHECKS.
+    # id at each check site when that site actually evaluates an assertion.
     executed_checks |= validate_matrix.LAST_EXECUTED_CHECKS
+    if not matrix_ok and fail_fast:
+        print("  FAIL matrix validation (fail-fast active)")
+        return 1
 
     # 6. Judgment Reviews (genuine, non-boilerplate — hard gate)
     print("\n--- 6/6: Judgment Reviews (genuine per-node artifacts) ---")
-    judgment_errors = validate_judgment.validate_judgment_reviews()
+    judgment_errors = validate_judgment.validate_judgment_reviews(fail_fast=fail_fast)
+    v = validate_judgment.summarize_verdicts()
+    if v["FAIL"] > 0 or v["CONCERN"] > 0:
+        judgment_errors.append(
+            f"Unresolved judgment verdicts remain across {v['reviewed']} nodes: "
+            f"PASS={v['PASS']} CONCERN={v['CONCERN']} FAIL={v['FAIL']}; "
+            f"all nodes must reach PASS verdict."
+        )
     judgment_ok = len(judgment_errors) == 0
     if judgment_ok:
         executed_checks.add("§5")
-        print("  PASS judgment_reviews (all nodes have genuine, complete, fresh reviews)")
-        # Surface the verdicts loudly: a genuine review that says FAIL is
-        # documented pedagogical debt, not a passing grade. "Reviews exist"
-        # (the machine-checkable gate) is not "content is clean".
-        v = validate_judgment.summarize_verdicts()
         print(
-            f"  NOTE verdict tally over {v['reviewed']} genuine reviews: "
-            f"PASS={v['PASS']} CONCERN={v['CONCERN']} FAIL={v['FAIL']} "
-            f"(FAIL/CONCERN = curriculum-fidelity debt for maintainer triage; "
-            f"see validation_reports/judgment/ and IMPLEMENTATION_STATUS.md)"
+            f"  PASS judgment_reviews (all {v['reviewed']} nodes have genuine, fresh, PASS reviews: "
+            f"PASS={v['PASS']} CONCERN={v['CONCERN']} FAIL={v['FAIL']})"
         )
     else:
-        print(f"  FAIL judgment_reviews ({len(judgment_errors)} problem(s) — the judgment layer is")
-        print("       not machine-checkable; a blind reviewer-agent must file genuine reviews):")
+        print(f"  FAIL judgment_reviews ({len(judgment_errors)} problem(s) — non-PASS verdicts or incomplete reviews):")
         for err in judgment_errors[:10]:
             print(f"    - {err}")
         if len(judgment_errors) > 10:
             print(f"    ... and {len(judgment_errors) - 10} more.")
+        if fail_fast:
+            return 1
 
     # Two-direction contract enforcement check
     print("\n--- Two-Direction Contract Verification ---")
@@ -172,13 +183,7 @@ def run_all() -> int:
         print("  PASS contract_doc_matches_registry")
 
         # Compare the checks the contract table claims are binding against the
-        # checks the harness *observed itself* running. A §-ref that is registered
-        # and did not run is a silently-dead contract row — the failure mode this
-        # tripwire exists for (doc_rem.md §3.5).
-        #
-        # A stage that already failed is excluded from BOTH sides: its own failure
-        # is the signal, and a partially-executed stage would otherwise emit
-        # confusing drift noise on top of the real error.
+        # checks the harness *observed itself* running.
         expected_subset = set(CONTRACT_CHECKS.keys())
         matrix_refs = {"§1A", "§1A-reach", "§1B", "§1C", "§1C-reverse", "§1C-coverage",
                    "§1D", "§1E", "§1F", "§4"}
@@ -219,4 +224,9 @@ def run_all() -> int:
         return 1
 
 if __name__ == "__main__":
-    sys.exit(run_all())
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Practice Generation — Validation Harness Runner")
+    parser.add_argument("--fail-fast", "-f", action="store_true", help="Exit immediately on first validator failure")
+    args = parser.parse_args()
+    sys.exit(run_all(fail_fast=args.fail_fast))

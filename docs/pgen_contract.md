@@ -18,7 +18,7 @@ A generator is done when `python -m backend.app.practice_gen.validation.run_all`
 | Registry/compatibility bidirectional coverage | `validate_compat` §2 | CI, blocks deploy |
 | Difficulty profiles meet MIN_ACCEPTANCE_RATE | `validate_dna` §3 (feasibility) | CI, blocks deploy |
 | Response payload matches strict schema | Pydantic model + `validate_matrix` §4 | runtime + CI |
-| Every node carries a genuine, non-boilerplate, non-stale blind judgment review | `validate_judgment` §5 | CI, blocks deploy |
+| Every node carries a genuine, non-boilerplate, non-stale blind judgment review with a PASS verdict | `validate_judgment` §5 | CI, blocks deploy |
 
 ## Core Principles
 
