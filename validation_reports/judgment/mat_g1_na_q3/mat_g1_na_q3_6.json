@@ -1,67 +1,44 @@
 {
   "node_id": "mat_g1_na_q3_6",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 1, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 72],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is the next number in the pattern: 1, 10, 1, 10, 1, 10?",
-      "correct_answer": 1
-    },
-    {
-      "seed": 43,
-      "question_text": "What is the next number in the pattern: 2, 10, 2, 10, 2, 10?",
-      "correct_answer": 2
-    },
-    {
-      "seed": 44,
-      "question_text": "What is the next number in the pattern: 10, 1, 10, 1, 10, 1?",
-      "correct_answer": 10
-    },
-    {
-      "seed": 45,
-      "question_text": "What is the next number in the pattern: 2, 10, 2, 10, 2, 10?",
-      "correct_answer": 2
-    },
-    {
-      "seed": 46,
-      "question_text": "What is the next number in the pattern: 2, 1, 2, 1, 2, 1?",
-      "correct_answer": 2
-    }
+    {"seed": 42, "question_text": "What is the next number in the pattern: 1, 10, 1, 10, 1, 10?", "correct_answer": 1},
+    {"seed": 43, "question_text": "What is the next number in the pattern: 2, 10, 2, 10, 2, 10?", "correct_answer": 2},
+    {"seed": 44, "question_text": "What is the next number in the pattern: 10, 13, 10, 13, 10, 13?", "correct_answer": 10},
+    {"seed": 45, "question_text": "What is the next number in the pattern: 2, 6, 2, 6, 2, 6?", "correct_answer": 2},
+    {"seed": 46, "question_text": "What is the next number in the pattern: 2, 1, 2, 1, 2, 1?", "correct_answer": 2},
+    {"seed": 50, "question_text": "What is the missing piece (position 6) in the pattern?", "correct_answer": "B"},
+    {"seed": 55, "question_text": "Fill in the chart with the correct counts.", "correct_answer": [1, 2, 3]},
+    {"seed": 72, "question_text": "What is the next number in the pattern: 10, 3, 10, 3, 10, 3?", "correct_answer": 10}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Determining the next term is genuinely performed, and I verified each continuation: seed 44's '10, 1, 10, 1, 10, 1' correctly keys 10, and seed 46's '2, 1, 2, 1, 2, 1' correctly keys 2. However the competency says 'next term/s' with an explicit plural option, and no sample ever asks for two following terms even though the competency's own example writes two blanks, '2, 4, 2, 4__, __'."
+      "rationale": "Six of eight samples correctly ask to determine the next term, e.g. \"What is the next number in the pattern: 10, 13, 10, 13, 10, 13?\", but seed 55's \"Fill in the chart with the correct counts.\" never mentions a pattern, sequence, or next term, so its connection to the competency's verb 'determine the next term' is not evidenced by its text."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The competency text itself supplies a three-element core example, 'letters: a, b, c, a, b, c, a, __, __', and no sample generates a repeating core longer than two elements; every one of seeds 42 through 46 is a plain ABAB alternation. The letter sub-case named verbatim in the competency is never produced, nor are rhythmic or artistic visual patterns despite both being named in the parenthetical."
+      "rationale": "Every numeric pattern in the packet is a two-element alternation -- \"1, 10, 1, 10, 1, 10\" (42), \"2, 6, 2, 6, 2, 6\" (45), \"2, 1, 2, 1, 2, 1\" (46), \"10, 3, 10, 3, 10, 3\" (72) -- while the competency's own worked example is a three-letter cycle (a, b, c, a, b, c, a, __, __); no letter-based or 3+-term-cycle pattern appears anywhere."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "A six-term display followed by 'What is the next number in the pattern' gives the Grade 1 Quarter 3 child three full repetitions of the core before the blank, which is generous scaffolding, and the terms used are 1, 2 and 10, all firmly inside the numbers already known by the third quarter. No option is negative and no arithmetic rule must be inferred, only repetition."
+      "rationale": "Prompts stay short and formulaic across the board, e.g. \"What is the next number in the pattern: 2, 6, 2, 6, 2, 6?\", comfortably within Grade 1 Q3 reading demand."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "All five samples share one shape: a numeric two-element alternation with the blank at the end. Missing are letter patterns, shape or colour patterns, rhythmic clap-stomp patterns, cores of length three or four, patterns of the AABB form, and items with the blank placed in the middle of the sequence rather than after the last shown term. Seeds 43 and 45 are additionally the identical sequence '2, 10, 2, 10, 2, 10'."
+      "verdict": "CONCERN",
+      "rationale": "All six 'next number' items share the identical AB-alternation template with only the two numeral values changed (1&10, 2&10, 10&13, 2&6, 2&1, 10&3), so despite four different formatter shells (mcq, cloze, read_mcq, set_fill_in_blank) the underlying pattern structure never varies."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Because every item is a two-element alternation shown three times, there is no difficulty ladder at all; a student who solves seed 42 has solved every remaining item by the same one-step rule of 'say the one before last'. Progression should extend the core length and the number of requested terms, and neither dimension varies."
+      "rationale": "Where the task is legibly posed, the variation (which two values alternate) stays on pattern-continuation, but seed 55's undirected \"Fill in the chart with the correct counts.\" cannot be confirmed from its text to build the repeating-pattern skill rather than a counting or tallying skill."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The pattern terms 1, 2 and 10 and the distractor values 0, 3, 4, 9, 11 and 12 all sit comfortably within the counting range a Grade 1 pupil owns by the third quarter, and no option is below zero. Because the competency names no numeric ceiling, the modest values used are appropriate and never distract from the repetition rule."
+      "rationale": "Values used in the patterns (1, 2, 3, 6, 10, 12, 13) stay small and simple, appropriate for a Grade 1 Q3 pattern-recognition task."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

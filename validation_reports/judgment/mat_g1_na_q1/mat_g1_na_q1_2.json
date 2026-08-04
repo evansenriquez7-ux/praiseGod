@@ -1,14 +1,17 @@
 {
   "node_id": "mat_g1_na_q1_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 1, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    110
   ],
   "samples_reviewed": [
     {
@@ -35,32 +38,52 @@
       "seed": 46,
       "question_text": "Write 15 in words.",
       "correct_answer": "fifteen"
+    },
+    {
+      "seed": 50,
+      "question_text": "What number is marked?",
+      "correct_answer": "B"
+    },
+    {
+      "seed": 51,
+      "question_text": "The number 20 is written in words as 'twenty'. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 110,
+      "question_text": "Arrange these numbers from largest to smallest: 22, 24, 25, 23",
+      "correct_answer": [
+        22,
+        23,
+        24,
+        25
+      ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency explicitly calls for number line, block/bar model, and numeral representations, but the five samples are just numeral-to-word conversion ('Write 33 in words') and count-sequence cloze items, with no number-line or bar-model content visible in the text."
+      "rationale": "The competency names number line, block/bar model, and numeral representations, but of the eight widened samples only seed 50's 'What number is marked?' visibly uses a model; the rest are word-conversion ('Write 33 in words.'), count-sequence, or ordering text with no block/bar representation at all."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "student_vocab_introduced_by_this_node lists 'number line' yet not one of the five samples references a number line, so the specific representation the node is meant to introduce is unverified in this batch."
+      "rationale": "Block or bar models, one of the three representations the competency explicitly names alongside number line and numerals, never appears across any of the eight seeds, including the two extra seeds (51, 110) added specifically to catch alternate formatter paths."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Sample text such as 'What comes next: 23, 24, 25, 26, ___' stays short and single-step, appropriate for Grade 1 Quarter 1 reading demands."
+      "rationale": "Prompts like seed 45's 'What number comes next when counting: 18, 19, 20, 21, ___?' and seed 110's 'Arrange these numbers from largest to smallest: 22, 24, 25, 23' are short, single-instruction sentences fitting Grade 1 Quarter 1."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "The registered variants (number_reading axes=1/combos=2, counting axes=3/combos=28) reuse two other nodes' DNAs wholesale without any dedicated number-line or block-model variant appearing in the samples shown."
+      "rationale": "Beyond the single number-line item at seed 50, the remaining seven samples split between numeral-to-word conversion and count-sequence/ordering tasks, so the 'variety of concrete and pictorial models' the competency calls for is represented by exactly one sample out of eight."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Recognizing and representing numbers 'using a variety of models' implies visual/pictorial variety, but the observed sample mix (word-form and count-sequence only) does not clearly demonstrate the multi-model aspect central to this competency's wording."
+      "rationale": "Seed 110's 'Arrange these numbers from largest to smallest: 22, 24, 25, 23' tests numeric ordering, a distinct skill from 'recognize and represent numbers using models', showing the sampled variation drifting into an unrelated ordering axis rather than building this node's representation competency."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numeral values used (14 to 33) and count sequences (up to 27) fall within the up-to-100 range specified, a reasonable magnitude for this stage."
+      "verdict": "CONCERN",
+      "rationale": "Numeral values across all eight seeds range only from 14 to 29 (seed 50's marked value), never approaching the competency's stated up-to-100 ceiling."
     }
   },
   "overall": "CONCERN"

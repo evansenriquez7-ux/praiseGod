@@ -1,41 +1,41 @@
 {
   "node_id": "mat_g3_mg_q4_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, fix-verification batch",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 7, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
   "sample_seeds": [42, 43, 44, 45, 46],
   "samples_reviewed": [
-    {"seed": 42, "question_text": "A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?", "correct_answer": 2},
-    {"seed": 43, "question_text": "A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?", "correct_answer": 2},
+    {"seed": 42, "question_text": "A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?", "correct_answer": "2"},
+    {"seed": 43, "question_text": "A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?", "correct_answer": "2"},
     {"seed": 44, "question_text": "A shape slides 5 spaces to the left and 2 spaces down. What type of movement is this?", "correct_answer": "two-direction slide (translation)"},
     {"seed": 45, "question_text": "A shape slides 5 spaces to the left and 2 spaces down. What type of movement is this?", "correct_answer": "two-direction slide (translation)"},
-    {"seed": 46, "question_text": "A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?", "correct_answer": 2}
+    {"seed": 46, "question_text": "A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?", "correct_answer": "2"}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The competency names a 'two-direction multi-step slide'; both sampled patterns explicitly combine two directions in one move (2 right AND 3 up; 5 left and 2 down), which is exactly the two-direction slide concept, though the 'draw the effect' half of the wording is not testable in MCQ text form."
+      "verdict": "CONCERN",
+      "rationale": "The competency pairs two verbs, 'describe and draw'; every sample tests only the describing half (counting directions in seed 42, naming the movement type in seed 44), and none of the 5 rendered items requires or evidences the drawing action the competency also names."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Only 2 distinct question patterns appeared across the 5 sampled seeds (right/up direction-counting shown 3 times, left/down movement-naming shown twice) against an 8-combo symmetry_slides registry -- a narrower illustrative spread than sibling nodes but not the flat single-question repetition seen in mat_g2_mg_q1_1, and exhaustive coverage is validate_matrix's job."
+      "verdict": "CONCERN",
+      "rationale": "All 5 seeds refer only to a generic 'a shape' rather than naming any specific basic shape or figure (square, triangle, rectangle), so whether the tool exercises the 'basic shapes and figures' plural the competency states cannot be confirmed from this batch."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Grade 3 Quarter 4 allows up to 22 words per sentence; the longest sample sentence, 'A shape slides 5 spaces to the left and 2 spaces down', runs about 11 words, leaving ample headroom for an 8-9 year old reader at this grade and quarter."
+      "rationale": "The longest sample, seed 44's 'A shape slides 5 spaces to the left and 2 spaces down. What type of movement is this?', is about 16 words across two clauses, comfortably inside grade 3 quarter 4 reading demand."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "An 8-combo symmetry_slides space across 2 axes is modest but plausible for a competency scoped narrowly to two-direction multi-step slides, since those axes likely vary direction-pairs and travel distances rather than needing a large combinatorial space."
+      "verdict": "CONCERN",
+      "rationale": "Only two frames repeat across the 5 seeds -- direction-counting (42, 43, 46) and movement-naming (44, 45) -- with no item varying distance magnitudes beyond '2/3' and '5/2' or requiring the pupil to plot coordinates."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Both observed patterns test the two-direction-slide concept specifically (never a single-direction slide, rotation, or symmetry), correctly distinguishing this node from siblings mat_g3_mg_q4_1 and mat_g3_mg_q4_2, which share the symmetry_slides DNA but cover line symmetry instead of translation."
+      "rationale": "Seed 44's distractor set -- 'flip (reflection)', 'one-direction slide', 'turn (rotation)' against the key 'two-direction slide (translation)' -- correctly isolates the two-direction-slide concept from adjacent but distinct transformation types."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The content is discrete count/type content (number of directions moved, name of the movement type), not a continuous numeric magnitude, so scale concerns do not apply to this translation-focused node."
+      "rationale": "Content is discrete small counts (2 spaces right, 3 up, 5 left, 2 down) suited to a grid-based grade 3 translation exercise, not a continuous numeric magnitude, so no scale-ceiling concern applies."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

@@ -1,14 +1,18 @@
 {
   "node_id": "mat_g2_na_q3_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 3, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    55,
+    85
   ],
   "samples_reviewed": [
     {
@@ -35,33 +39,56 @@
       "seed": 46,
       "question_text": "What is 12 ÷ 2?",
       "correct_answer": 6
+    },
+    {
+      "seed": 50,
+      "question_text": "Look at the 5×6 array. How many squares are shaded in all?",
+      "correct_answer": "A"
+    },
+    {
+      "seed": 51,
+      "question_text": "Ana says: 15 ÷ 3 = 12. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 5
+      }
+    },
+    {
+      "seed": 55,
+      "question_text": "Shade all the squares inside the 2×6 rectangle. How many squares did you shade in all?",
+      "correct_answer": 12
+    },
+    {
+      "seed": 85,
+      "question_text": "12 ÷ 3 = 4. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "This node introduces the vocabulary word 'quotient' and asks for division illustrated via equal sharing, grouping, AND repeated subtraction, but the samples are identical bare division facts to q3_4 (70 div 10, 10 div 2, 15 div 5, 30 div 3, 12 div 2) with no repeated-subtraction working shown and no explicit labeling of dividend/divisor/quotient."
+      "verdict": "FAIL",
+      "rationale": "The competency demands illustrating division as equal sharing, equal-group formation, or repeated subtraction, yet every sample is a bare numeral fact such as seed 44's '15 ÷ 5 = ___' or an unrelated array count like seed 50's '5×6 array' — no sample shows objects being shared or grouped."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "division registers 4 axes with 20 combos; a repeated-subtraction or labeled-quotient format should be reachable in that space, but the 5 samples here exactly match q3_4's samples rather than showing this node's distinct pedagogy, and exhaustive execution is checked separately by validate_matrix."
+      "verdict": "FAIL",
+      "rationale": "None of the three named sub-cases appear: no sample shares objects into groups, forms equal groups, or shows repeated subtraction (e.g. 15−5−5−5=0) for seed 44's 15÷5 fact."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Stems are minimal and well under the word cap; however a repeated-subtraction illustration, e.g. '15 minus 5 minus 5 minus 5 = 0', would need more sentence real estate than these bare equation stems provide, none of which is shown."
+      "verdict": "PASS",
+      "rationale": "Symbolic prompts like seed 43's 'What is 10 ÷ 2?' and seed 85's '12 ÷ 3 = 4. True or False?' use short, grade-2-appropriate sentence structure regardless of the modelling gap."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Because this node's samples duplicate q3_4's exactly, the variant space as sampled does not differentiate the three distinct models (sharing, grouping, repeated subtraction) this competency asks for from the simpler 'illustrate division' competency of q3_4."
+      "verdict": "FAIL",
+      "rationale": "Seed 50 ('Look at the 5×6 array. How many squares are shaded in all?') and seed 55 ('Shade all the squares inside the 2×6 rectangle...') are the only pictorial items, and both count array totals rather than illustrate division as sharing or subtraction."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The newly introduced vocabulary term 'quotient' does not appear or get referenced in any of the five sample question texts, so this node's distinguishing content -- explicit division-term vocabulary -- is not evidenced."
+      "verdict": "FAIL",
+      "rationale": "Seed 50's array item computes 5×6=30 (a multiplication total) and seed 55's computes 2×6=12, so the pictorial variation present builds array-multiplication recognition, not the division models this competency names."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividend and divisor magnitudes observed (70 div 10 through 12 div 2) are consistent with an early grade 2 quarter 3 division introduction."
+      "rationale": "Dividends span 12 to 70 (e.g. seed 42's 70÷10) which is a reasonable ceiling for a grade 2 quarter 3 division-expression introduction."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

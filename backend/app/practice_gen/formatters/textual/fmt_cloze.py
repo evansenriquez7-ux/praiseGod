@@ -26,6 +26,14 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
         a = values.get("a")
         b = values.get("b")
         result = values.get("result")
+        if values.get("task_type") == "estimate":
+            # See fmt_cloze.py's subtraction branch below (this DNA's
+            # original estimate-aware fix) and fmt_mcq.py's copy of the
+            # same fix -- this formatter also rebuilds its own pure-context
+            # text independently.
+            real_a = values.get("real_a", a)
+            real_b = values.get("real_b", b)
+            return f"Estimate: {real_a} + {real_b} ≈ ___"
         if blank_target == "result":
             return f"{a} + {b} = ___"
         elif blank_target == "b":
@@ -37,6 +45,13 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
         a = values.get("a")
         b = values.get("b")
         result = values.get("result")
+        if values.get("task_type") == "estimate":
+            # See fmt_mcq.py's identical fix and base_generator's copy of the
+            # same branch (this formatter also rebuilds its own pure-context
+            # text independently).
+            real_a = values.get("real_a", a)
+            real_b = values.get("real_b", b)
+            return f"Estimate: {real_a} − {real_b} ≈ ___"
         if blank_target == "result":
             return f"{a} − {b} = ___"
         elif blank_target == "b":
@@ -48,6 +63,16 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
         a = values.get("a", values.get("groups"))
         b = values.get("b", values.get("n"))
         result = values.get("result", values.get("total"))
+        if values.get("task_type") == "estimate":
+            real_a = values.get("real_a", a)
+            real_b = values.get("real_b", b)
+            return f"Estimate: {real_a} × {real_b} ≈ ___"
+        if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total") and 2 <= b <= 5:
+            # See base_generator._build_symbolic_question's identical branch
+            # and fmt_mcq.py's copy of this same fix -- this formatter also
+            # rebuilds its own pure-context question text independently.
+            terms = " + ".join([str(a)] * b)
+            return f"{terms} = ___"
         if blank_target in ("result", "total"):
             return f"{a} × {b} = ___"
         elif blank_target in ("b", "n"):
@@ -59,6 +84,10 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
         dividend = values.get("dividend", values.get("a"))
         divisor = values.get("divisor", values.get("b"))
         quotient = values.get("quotient", values.get("result"))
+        if values.get("task_type") == "estimate":
+            real_a = values.get("real_a", dividend)
+            real_b = values.get("real_b", divisor)
+            return f"Estimate: {real_a} ÷ {real_b} ≈ ___"
         if blank_target in ("result", "quotient"):
             return f"{dividend} ÷ {divisor} = ___"
         elif blank_target in ("b", "divisor", "n"):

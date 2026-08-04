@@ -1,14 +1,18 @@
 {
   "node_id": "mat_g3_na_q4_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 5, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    55,
+    85
   ],
   "samples_reviewed": [
     {
@@ -35,32 +39,55 @@
       "seed": 46,
       "question_text": "What is 108 ÷ 2?",
       "correct_answer": 54
+    },
+    {
+      "seed": 50,
+      "question_text": "Look at the 10×13 array. How many squares are shaded in all?",
+      "correct_answer": "A"
+    },
+    {
+      "seed": 51,
+      "question_text": "Ana says: 20 ÷ 4 = 16. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 5
+      }
+    },
+    {
+      "seed": 55,
+      "question_text": "Shade all the squares inside the 2×63 rectangle. How many squares did you shade in all?",
+      "correct_answer": 126
+    },
+    {
+      "seed": 85,
+      "question_text": "165 ÷ 3 = 55. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "This node explicitly introduces the vocabulary term 'remainder' and requires demonstrating division with remainder for 2-digit by 1-digit cases, but none of the 5 samples ('670÷10'=67, '30÷2'=15, '300÷5'=60, '200÷4'=50, '108÷2'=54) produce a remainder -- every quotient divides evenly."
+      "verdict": "CONCERN",
+      "rationale": "Direct quotient items are arithmetically sound throughout — '300 ÷ 5 = ___' resolves to 60 and '165 ÷ 3 = 55. True or False?' correctly confirms the equation — but two of nine items, the '10×13 array' and '2×63 rectangle' tasks, key their answer to a product (130, 126) rather than any quotient, so those two never exercise the 'divide' verb the competency names."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "variant_registry lists 20 combos for division, but the 5 illustrative samples given completely fail to surface the with-remainder case central to this competency's own newly introduced vocabulary."
+      "rationale": "The competency names three explicit sub-cases, but 'with remainder' never occurs once — every division in the set resolves evenly ('300 ÷ 5 = ___'=60, '200 ÷ 4 = ___'=50, '20 ÷ 4'→5 for Ana's error) — and the '10,100,1000' sub-case only ever shows a divisor of 10 ('670 ÷ 10'), never 100 or 1000."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The individual quotient questions are short and simply worded, appropriate for grade 3 reading level."
+      "rationale": "Every stem stays a short single clause appropriate to grade 3 quarter 4, from 'What is 108 ÷ 2?' to the cloze '200 ÷ 4 = ___', with no compound or multi-part sentences layering extra reading demand onto the arithmetic."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Dividing-by-10 cases are shown (matching the '2-4 digit by 10, 100, 1000' clause) but no 2-digit-by-1-digit-with-remainder case appears anywhere in the sample set, despite that being this node's namesake new concept."
+      "verdict": "CONCERN",
+      "rationale": "mcq, cloze, read_mcq, error_detect, set_fill_in_blank and true_false formatters all appear, but the read_mcq and set_fill_in_blank slots ('10×13 array', '2×63 rectangle') are multiplication-counting tasks rather than a genuine division variant, so real division-specific format breadth is narrower than the six formatter names suggest."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The without-remainder and divide-by-10 cases shown are legitimately part of this competency's scope, but the complete absence of the with-remainder case is a meaningful gap given the node introduces that exact vocabulary."
+      "rationale": "The '10×13 array' (130) and '2×63 rectangle' (126) items ask students to count a product of two displayed dimensions, pulling two of nine samples onto array-multiplication rather than the division skill '300 ÷ 5 = ___' and '165 ÷ 3 = 55' correctly target."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Dividend magnitudes (30-670) are reasonable for the stated 2-3 digit ÷ 1-digit and 2-4 digit ÷ 10/100/1000 ranges."
+      "verdict": "CONCERN",
+      "rationale": "The competency's stated ceiling reaches 4-digit dividends divided by 100 or 1000, but the largest dividend anywhere in the set is 670 and no three-digit divisor case ever appears — the observed range (2- to 3-digit ÷ 1-2-digit) sits well under the node's own stated top end."
     }
   },
   "overall": "FAIL"

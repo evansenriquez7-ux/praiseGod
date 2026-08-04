@@ -1,67 +1,44 @@
 {
   "node_id": "mat_g2_na_q2_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 4, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 72],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is the total value of 1 ₱50 bill, 1 ₱5 coin, and 1 ₱1 coin?",
-      "correct_answer": 56
-    },
-    {
-      "seed": 43,
-      "question_text": "What is the total value of 1 ₱10 coin and 1 ₱1 coin?",
-      "correct_answer": 11
-    },
-    {
-      "seed": 44,
-      "question_text": "What is the total value of 1 ₱5 coin and 1 ₱1 coin?",
-      "correct_answer": 6
-    },
-    {
-      "seed": 45,
-      "question_text": "What is the total value of 2 ₱1 coins?",
-      "correct_answer": 2
-    },
-    {
-      "seed": 46,
-      "question_text": "What is the total value of 2 ₱20 bills and 1 ₱5 coin?",
-      "correct_answer": 45
-    }
+    {"seed": 42, "question_text": "What is the total value of 1 ₱50 bill, 1 ₱5 coin, and 1 ₱1 coin?", "correct_answer": 56},
+    {"seed": 43, "question_text": "What is the total value of 1 ₱10 coin and 1 ₱1 coin?", "correct_answer": 11},
+    {"seed": 44, "question_text": "What is the total value of 1 ₱5 coin and 1 ₱1 coin?", "correct_answer": 6},
+    {"seed": 45, "question_text": "What is the total value of 2 ₱1 coins?", "correct_answer": 2},
+    {"seed": 46, "question_text": "What is the total value of 2 ₱20 bills and 1 ₱5 coin?", "correct_answer": 45},
+    {"seed": 50, "question_text": "Count the coins and bills shown. What is the total amount?", "correct_answer": "A"},
+    {"seed": 55, "question_text": "Use coins and bills to make exactly ₱21. Use the fewest pieces possible.", "correct_answer": 21},
+    {"seed": 72, "question_text": "What is the total value of 2 ₱10 coins and 1 ₱1 coin?", "correct_answer": 21}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The money stems do what the verb asks and every total hand-checks: seed 42 gives 50 + 5 + 1 = 56, seed 43 gives 10 + 1 = 11, seed 44 gives 5 + 1 = 6, seed 45 gives 1 + 1 = 2, and seed 46 gives 20 + 20 + 5 = 45, all keyed correctly."
+      "verdict": "CONCERN",
+      "rationale": "The competency names four cases (centavo coins only, peso coins only, peso bills only, combined); peso-coins-only (43, 44, 45, 72) and combined bills-and-coins (42, 46, 50) are both well represented, but centavo-only and peso-bills-only never appear."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The wording explicitly enumerates four sub-cases and only two are generated: peso coins only (seeds 43, 44, 45) and combined coins with bills (seeds 42, 46). No centavo-coins-only item and no peso-bills-only item appears anywhere in the packet."
+      "rationale": "'Centavo coins only,' one of four cases explicitly named in the competency text, never appears in any of the 8 samples -- every value shown is a whole-peso denomination (₱50, ₱20, ₱10, ₱5, ₱1); 'peso bills only' also never appears, since every bill-containing sample (42, 46) mixes in a coin."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Piece counts stay at one or two per denomination and totals stay under 60 pesos, so a Grade 2 Quarter 2 pupil adds at most three friendly addends (50 + 5 + 1) with no regrouping and a single short sentence to read."
+      "rationale": "Totals like 56, 45, and 21 pesos, computed from named bill/coin counts such as '2 ₱20 bills and 1 ₱5 coin' (seed 46), fit G2Q2 money-arithmetic demand."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Every stem is the identical 'What is the total value of ...' frame. There is no wallet or shopping context, no 'write the amount using the peso sign', and no item using several pieces of one denomination beyond the two 20-peso bills of seed 46."
+      "verdict": "PASS",
+      "rationale": "Formats span direct computation (mcq/cloze), visual counting (seed 50's 'Count the coins and bills shown'), and construction (seed 55's 'make exactly ₱21 ... fewest pieces possible'), giving genuine framing variety."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The five seeds cluster between 2 and 56 pesos with the same one-step summing demand, so there is no ladder from single-denomination counting up through mixed sets toward the 1000-peso combinations the competency envisions."
+      "verdict": "PASS",
+      "rationale": "The variation across different denomination combinations and formats, e.g. seed 45's '2 ₱1 coins' versus seed 42's mixed bill-and-coin set, targets the actual money-valuation skill named by the competency."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The stated ceiling is 1000 pesos but the largest total shown is 56 pesos and no denomination above the 50-peso bill of seed 42 ever appears; 100, 200, 500 and 1000-peso bills are entirely untested in this sample."
+      "rationale": "The ceiling is ₱1000, but the highest total across all 8 samples is ₱56 (seed 42); no sample approaches even ₱100, and higher-denomination bills like ₱100 or ₱500 never appear here."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

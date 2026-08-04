@@ -1,66 +1,41 @@
 {
   "node_id": "mat_g3_mg_q2_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 7, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Which is heavier: 15 g or 4 g?",
-      "correct_answer": 15
-    },
-    {
-      "seed": 43,
-      "question_text": "Which is heavier: 5 g or 37 g?",
-      "correct_answer": 37
-    },
-    {
-      "seed": 44,
-      "question_text": "Which is heavier: 53 g or 67 g?",
-      "correct_answer": 67
-    },
-    {
-      "seed": 45,
-      "question_text": "Which is heavier: 35 g or 54 g?",
-      "correct_answer": 54
-    },
-    {
-      "seed": 46,
-      "question_text": "Which is heavier: 10 g or 52 g?",
-      "correct_answer": 52
-    }
+    {"seed": 42, "question_text": "Which is heavier: 15 g or 4 g?", "correct_answer": 15},
+    {"seed": 43, "question_text": "Which is heavier: 5 g or 37 g?", "correct_answer": 37},
+    {"seed": 44, "question_text": "Which is heavier: 53 g or 67 g?", "correct_answer": 67},
+    {"seed": 45, "question_text": "Which is heavier: 35 g or 54 g?", "correct_answer": 54},
+    {"seed": 46, "question_text": "Which is heavier: 10 g or 52 g?", "correct_answer": 52},
+    {"seed": 50, "question_text": "Which is heavier: 64 g or 35 g?", "correct_answer": 64}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Stems like 'Which is heavier: 15 g or 4 g?' directly test comparing two masses, matching the competency's core comparison verb."
+      "rationale": "Stems like seed 50's 'Which is heavier: 64 g or 35 g?' directly test comparing two masses, matching the competency's core comparison verb across all 6 rendered seeds."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Seeds 42-46 vary both operands (15/4, 5/37, 53/67, 35/54, 10/52) giving a reasonable spread of comparison pairs rather than one repeated pair."
+      "rationale": "Operand pairs vary meaningfully across the widened sample (15/4, 5/37, 53/67, 35/54, 10/52, and the new cloze seed's 64/35), giving a real spread of comparison magnitudes rather than one repeated pair."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The short 'Which is heavier: X g or Y g?' template is well matched to Grade 3 reading demands."
+      "rationale": "The 8-word template 'Which is heavier: X g or Y g?' repeats cleanly across mcq and cloze formatters and stays well within grade 3 quarter 2 reading demand."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Competency explicitly calls out 'including the use of a balance scale' but no sample text references a scale, tool, or visual balance context, only bare numeric comparisons."
+      "rationale": "The competency explicitly names 'including the use of a balance scale', but not one of the 6 samples, including the newly sampled cloze seed 50 ('Which is heavier: 64 g or 35 g?'), references a scale, tilt, or any visual balance context -- every item is a bare numeric comparison."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Comparing gram quantities to identify the heavier one is exactly what 'Compare masses of objects' asks for."
+      "rationale": "Comparing gram quantities to identify the heavier object across all 6 seeds is exactly what 'Compare masses of objects' asks for, without drifting into unrelated arithmetic."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Two-digit gram values (4-67) are an appropriate magnitude for Grade 3 mass comparison without being trivially close or absurdly large."
+      "rationale": "Gram values across the widened sample (4 to 67) are an appropriate magnitude for Grade 3 mass comparison, neither trivially close nor unrealistically large."
     }
   },
   "overall": "PASS"

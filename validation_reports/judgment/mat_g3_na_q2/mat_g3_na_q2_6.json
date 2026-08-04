@@ -1,61 +1,42 @@
 {
   "node_id": "mat_g3_na_q2_6",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only), 2026-07-30 post-fix re-review batch",
-  "review_date": "2026-07-30",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 4, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 4 + 0?",
-      "correct_answer": 4
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 0 + 3?",
-      "correct_answer": 3
-    },
-    {
-      "seed": 44,
-      "question_text": "41 − 30 = ___",
-      "correct_answer": 11
-    },
-    {
-      "seed": 45,
-      "question_text": "25 − 20 = ___",
-      "correct_answer": 5
-    },
-    {
-      "seed": 46,
-      "question_text": "12 + 1 = ___",
-      "correct_answer": 13
-    }
+    {"seed": 42, "question_text": "4 + 95 + 36 = ___", "correct_answer": 135},
+    {"seed": 43, "question_text": "37 + 90 - 98 = ___", "correct_answer": 29},
+    {"seed": 44, "question_text": "67 + 70 - 90 + 15 = ___", "correct_answer": 62},
+    {"seed": 45, "question_text": "96 + 84 + 5 - 80 = ___", "correct_answer": 105},
+    {"seed": 46, "question_text": "52 + 6 + 76 = ___", "correct_answer": 134},
+    {"seed": 50, "question_text": "69 + 41 + 29 - 87 = ___", "correct_answer": 52}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The competency requires 'addition and subtraction of 3 to 4 numbers of up to 2 digits, observing correct order of operations,' but every one of the five samples combines only TWO numbers: 'What is 4 + 0?', 'What is 0 + 3?', '41 − 30 = ___', '25 − 20 = ___', '12 + 1 = ___'. No item presents a 3- or 4-term expression, so the 'observing correct order of operations' clause is never exercised at all — there is no second operator anywhere in the sample set. The task the competency names (chaining three or four addends/subtrahends left-to-right) is not performed by any sampled item."
+      "verdict": "PASS",
+      "rationale": "Every sample chains 3 or 4 numbers as the competency requires, e.g. '67 + 70 - 90 + 15 = ___' (4 numbers) and '37 + 90 - 98 = ___' (3 numbers), with correct left-to-right order of operations (37+90=127, 127-98=29)."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The wording names two sub-case dimensions: term count (3 numbers vs 4 numbers) and operation mix (addition, subtraction, and mixed add/subtract in one expression). The samples cover none of these: term count is fixed at 2 for all five seeds, and each expression is single-operation only — pure addition ('12 + 1 = ___', 'What is 4 + 0?', 'What is 0 + 3?') or pure subtraction ('41 − 30 = ___', '25 − 20 = ___'). The mixed case such as 24 + 13 − 8 that the competency's order-of-operations clause exists to cover is entirely absent."
+      "verdict": "PASS",
+      "rationale": "Both structural sub-cases named by '3 to 4 numbers' appear: 3-term all-addition ('4 + 95 + 36'), 3-term mixed ('37 + 90 - 98'), and 4-term mixed ('96 + 84 + 5 - 80', '69 + 41 + 29 - 87')."
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "Demand is far below Grade 3 Quarter 2. 'What is 4 + 0?' is an additive-identity fact with single-digit operands, and 'What is 0 + 3?' is the same fact mirrored — these are Grade 1 (or earlier) recall items, not Grade 3 multi-term computation. The two subtractions '41 − 30 = ___' and '25 − 20 = ___' both subtract a multiple of ten with no regrouping, and '12 + 1 = ___' is a count-on-by-one. Every item is one step; a Grade 3 Q2 learner who should be tracking three or four numbers through a chain is asked to combine only two, and in three of five cases the second number is 0 or 1."
+      "verdict": "PASS",
+      "rationale": "The bare chained expressions require multi-step left-to-right evaluation appropriate for grade 3 quarter 2 without any narrative overhead that would obscure the arithmetic."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Only two surface variants appear and both are bare symbolic arithmetic: the mcq phrasing 'What is 4 + 0?' / 'What is 0 + 3?' and the cloze equation form '41 − 30 = ___' / '25 − 20 = ___' / '12 + 1 = ___'. There is no word-problem context (no shop, no pupils, no pesos), no missing-addend or missing-subtrahend orientation, and no vertical or multi-step chained presentation. For a competency about accumulating 3 to 4 quantities, the contextual variation that would make the order of operations visible is missing entirely."
+      "verdict": "CONCERN",
+      "rationale": "Across all 6 samples only two formatters appear (mcq for 42-46, cloze for 50); no true_false, error_detect, or read_* variant of the chained-expression task is present in this sample set."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "The only visible progression across seeds is operand magnitude and operation sign — from '4 + 0' and '0 + 3' (single digit) up to '41 − 30' and '25 − 20' (two digit) — which varies an axis (number size, add vs subtract) that belongs to the earlier 2-number computation competencies. The axis THIS competency is built on, the number of terms to be combined (3 then 4) and the sequencing of mixed operators, never changes: it stays pinned at 2 terms and 1 operator across all five samples. Difficulty therefore builds a different, prerequisite skill."
+      "verdict": "PASS",
+      "rationale": "All variation observed -- term count (3 vs 4), operator mix (all-add vs add/subtract) -- stays on the exact axis this competency names, with no drift into unrelated skills like money framing or estimation."
     },
     "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "The stated ceiling is 'up to 2 digits' per number, yet two of five samples use single-digit operands only ('What is 4 + 0?' with 4 and 0; 'What is 0 + 3?' with 0 and 3), and a third pairs 12 with 1. The largest number appearing anywhere is 41 and the largest result is 13, so the two-digit band is barely touched on the addition side. Compounding this, because only two numbers are ever combined, the totals never approach the range a legitimate 3-to-4-term two-digit sum would reach (e.g. 30 + 25 + 41 = 96). The realized numeric range does not match the competency's stated scale."
+      "verdict": "PASS",
+      "rationale": "Every operand across all 6 samples is at most 2 digits (largest is 96 in '96 + 84 + 5 - 80'), matching the competency's stated 'up to 2 digits' ceiling exactly."
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }

@@ -66,7 +66,17 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             a = values.get("a")
             b = values.get("b")
             result = values.get("result")
-            if blank_target == "result":
+            if values.get("task_type") == "estimate":
+                # Show the REAL (unrounded) operands with "≈" -- showing the
+                # already-rounded a/b as if they were the literal operands
+                # ("100 + 100 = 200") loses the estimate framing entirely
+                # and reads as an ordinary round-number fact. fill_value
+                # still keys against the rounded computation (ctx.correct_answer
+                # / distractors), which is the correct "estimate" answer.
+                real_a = values.get("real_a", a)
+                real_b = values.get("real_b", b)
+                statement = f"{real_a} + {real_b} ≈ {fill_value}"
+            elif blank_target == "result":
                 statement = f"{a} + {b} = {fill_value}"
             elif blank_target == "b":
                 statement = f"{a} + {fill_value} = {result}"
@@ -76,7 +86,15 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             a = values.get("a")
             b = values.get("b")
             result = values.get("result")
-            if blank_target == "result":
+            if values.get("task_type") == "estimate":
+                # Same rationale as addition's estimate branch above --
+                # this formatter had no estimate-aware branch at all before
+                # (a pre-existing gap, not introduced here; see doc_rem.md R2
+                # on this duplication pattern across formatters).
+                real_a = values.get("real_a", a)
+                real_b = values.get("real_b", b)
+                statement = f"{real_a} − {real_b} ≈ {fill_value}"
+            elif blank_target == "result":
                 statement = f"{a} − {b} = {fill_value}"
             elif blank_target == "b":
                 statement = f"{a} − {fill_value} = {result}"
@@ -86,7 +104,11 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             a = values.get("a", values.get("groups"))
             b = values.get("b", values.get("n"))
             result = values.get("result", values.get("total"))
-            if blank_target in ("result", "total"):
+            if values.get("task_type") == "estimate":
+                real_a = values.get("real_a", a)
+                real_b = values.get("real_b", b)
+                statement = f"{real_a} × {real_b} ≈ {fill_value}"
+            elif blank_target in ("result", "total"):
                 statement = f"{a} × {b} = {fill_value}"
             else:
                 statement = f"{fill_value} × {b} = {result}"
@@ -94,7 +116,11 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             dividend = values.get("dividend", values.get("a"))
             divisor = values.get("divisor", values.get("b"))
             quotient = values.get("quotient", values.get("result"))
-            if blank_target in ("result", "quotient"):
+            if values.get("task_type") == "estimate":
+                real_a = values.get("real_a", dividend)
+                real_b = values.get("real_b", divisor)
+                statement = f"{real_a} ÷ {real_b} ≈ {fill_value}"
+            elif blank_target in ("result", "quotient"):
                 statement = f"{dividend} ÷ {divisor} = {fill_value}"
             else:
                 statement = f"{fill_value} ÷ {divisor} = {quotient}"

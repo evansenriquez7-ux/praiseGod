@@ -1,67 +1,43 @@
 {
   "node_id": "mat_g3_na_q3_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "claude-blind-reviewer-subagent",
+  "review_date": "2026-08-04",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 15 × 2?",
-      "correct_answer": 30
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 17 × 0?",
-      "correct_answer": 0
-    },
-    {
-      "seed": 44,
-      "question_text": "Round 12 to the nearest 10.",
-      "correct_answer": 10
-    },
-    {
-      "seed": 45,
-      "question_text": "Round 12 to the nearest 10.",
-      "correct_answer": 10
-    },
-    {
-      "seed": 46,
-      "question_text": "What is 23 × 0?",
-      "correct_answer": 0
-    }
+    {"seed": 42, "question_text": "Estimate the product: 12 × 11", "correct_answer": 100},
+    {"seed": 43, "question_text": "Estimate the product: 12 × 23", "correct_answer": 200},
+    {"seed": 44, "question_text": "Estimate: 32 × 10 ≈ ___", "correct_answer": 300},
+    {"seed": 45, "question_text": "Estimate the product: 10 × 24", "correct_answer": 200},
+    {"seed": 46, "question_text": "Estimate the product: 13 × 10", "correct_answer": 100},
+    {"seed": 50, "question_text": "23 × 12 ≈ 10. True or False?", "correct_answer": false},
+    {"seed": 55, "question_text": "Grace says: 13 × 19 ≈ 180. Is Grace correct?", "correct_answer": {"has_error": true, "correct_value": 200}}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The competency asks for an estimated product obtained by rounding factors to multiples of 10, but seed 42 asks 'What is 15 x 2?' and keys the exact value 30 - the competency-correct estimate would be 20 x 2 = 40. Seeds 44 and 45 ask only 'Round 12 to the nearest 10.' (keyed 10, correct in isolation), which is a place-value sub-skill, not an estimated product."
+      "verdict": "PASS",
+      "rationale": "All 7 samples say 'estimate the product' and each correct_answer is the product of both factors independently rounded to the nearest 10 (e.g. 12x11 -> 10x10=100; 13x19 -> 10x20=200, not the exact 247), matching the competency's stated method exactly."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The composite skill named by the wording - round both factors, then multiply the rounded values - is never rendered in any of the five seeds. There is no 3-digit factor, no 2-digit multiplier, and no item that chains the rounding step to a multiplication step."
+      "verdict": "CONCERN",
+      "rationale": "13 of 14 individual factor-roundings across the 7 samples round DOWN (12->10, 23->20, 32->30, 24->20, 13->10, 23->20, 12->10, 13->10); only seed 55's 19->20 rounds up, and no sample exercises a ones-digit-5 tie case."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Sentence structure and vocabulary are readable, but 'What is 17 x 0?' (seed 43) and 'What is 23 x 0?' (seed 46) are zero-property recall from Grade 1-2 and demand no estimation reasoning at all, leaving the cognitive load far under what a Grade 3 Quarter 3 estimation lesson should carry."
+      "verdict": "PASS",
+      "rationale": "Sentence forms are short and direct for grade 3, e.g. 'Estimate the product: 12 x 11' and 'Grace says: 13 x 19 ~ 180. Is Grace correct?', with no multi-clause word-problem language beyond a plain estimate-then-verify structure."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Seeds 44 and 45 produce the same stem, 'Round 12 to the nearest 10.', and seeds 43 and 46 are the same 'two-digit x 0' template. No 'about how many' phrasing, no real-world estimation context, and no compare-the-estimate-to-the-exact variant appears anywhere."
+      "verdict": "CONCERN",
+      "rationale": "Four formatter types appear (mcq, cloze, true_false, error_detect) which is good structural variety, but all 7 samples are bare numeric expressions like '12 x 23' with zero word-problem or real-world context anywhere in the packet."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "The sampled items split into two unrelated skills - isolated rounding (seeds 44, 45) and exact multiplication (seeds 42, 43, 46) - with no item joining them. A pupil working this ladder never practises the target behaviour, so the progression cannot build this competency."
+      "verdict": "PASS",
+      "rationale": "Progression moves from direct recall (mcq seeds 42/43/45/46, cloze seed 44) to judging a stated estimate (true_false seed 50) to locating someone else's arithmetic error (error_detect seed 55), deepening the same rounding-and-multiplying skill rather than an unrelated axis."
     },
     "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "The stated range is 2- to 3-digit numbers multiplied by 1- to 2-digit numbers. Observed factor pairs are 15 x 2, 17 x 0 and 23 x 0: no 3-digit number ever appears, the multiplier never exceeds 2, and two of three multipliers are 0, which collapses the estimation task entirely."
+      "verdict": "CONCERN",
+      "rationale": "The competency names '2- to 3-digit numbers by 1- to 2-digit numbers' but the largest factor shown across all 7 samples is 32 (seed 44); no sample rounds and multiplies a 3-digit number such as 120 or 350."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

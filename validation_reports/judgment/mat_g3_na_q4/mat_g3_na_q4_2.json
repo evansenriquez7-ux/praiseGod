@@ -1,61 +1,94 @@
 {
   "node_id": "mat_g3_na_q4_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only), 2026-07-30 post-fix re-review batch",
-  "review_date": "2026-07-30",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, final stale drift re-review batch, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46],
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    51,
+    68,
+    110
+  ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "6 ÷ 6 = ___. What is the missing number?",
-      "correct_answer": 1
+      "question_text": "60 ÷ 10 = ___. What is the missing number?",
+      "correct_answer": 6
     },
     {
       "seed": 43,
-      "question_text": "6 ÷ 6 = ___. What is the missing number?",
-      "correct_answer": 1
+      "question_text": "60 ÷ 10 = ___. What is the missing number?",
+      "correct_answer": 6
     },
     {
       "seed": 44,
-      "question_text": "120 ÷ ___ = 15",
+      "question_text": "72 ÷ ___ = 9",
       "correct_answer": 8
     },
     {
       "seed": 45,
-      "question_text": "480 divided by what equals 80?",
-      "correct_answer": 6
+      "question_text": "63 ÷ ___ = 9",
+      "correct_answer": 7
     },
     {
       "seed": 46,
-      "question_text": "6 ÷ 6 = ___. What is the missing number?",
-      "correct_answer": 1
+      "question_text": "18 ÷ 6 = ___. What is the missing number?",
+      "correct_answer": 3
+    },
+    {
+      "seed": 50,
+      "question_text": "Look at the 9×5 array. How many squares are shaded in all?",
+      "correct_answer": "A"
+    },
+    {
+      "seed": 51,
+      "question_text": "7 × 6 = ___. What is the missing number? The answer is 42.. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 68,
+      "question_text": "Shade all the squares inside the 9×3 rectangle. How many squares did you shade in all?",
+      "correct_answer": 27
+    },
+    {
+      "seed": 110,
+      "question_text": "Jose says: 56 ÷ 7 = 7. Is Jose correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 8
+      }
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The items do perform the competency verb 'find the missing number in a number sentence' — seed 44 '120 ÷ ___ = 15' and seed 45 '480 divided by what equals 80?' both leave a genuine blank in a division sentence and require the inverse relation to solve. But the dominant item, rendered by three of five seeds (42, 43, 46), is '6 ÷ 6 = ___. What is the missing number?' whose answer is 1 — a degenerate identity that is recalled, not solved by any missing-number reasoning, and that does not exercise division 'by 6' in any meaningful fact sense. Half the competency's stated operation set (multiplication) is never touched by any of the five samples."
+      "rationale": "Seven of nine samples present a genuine blank-in-equation or verification task (e.g. seed44's '72 ÷ ___ = 9'), but seed50's 'Look at the 9×5 array. How many squares are shaded in all?' and seed68's 'Shade all the squares inside the 9×3 rectangle...' contain no number sentence or blank."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency names 'multiplication or division by 6, 7, 8, and 9' and the sampled set covers only a sliver of it. All five samples are division; not a single multiplication number sentence (e.g. 7 × ___ = 56) appears. Of the four required divisor families, only 6 (seeds 42/43/46 '6 ÷ 6', seed 45 answer 6) and 8 (seed 44 answer 8) appear — the 7 and 9 tables are entirely absent. Furthermore three of the five seeds render the identical item '6 ÷ 6 = ___. What is the missing number?' with only the A-D option order shuffled, so the effective distinct-item count is three, not five, which makes the coverage hole larger than the seed count suggests."
+      "verdict": "CONCERN",
+      "rationale": "All four named tables 6, 7, 8, 9 do appear across the samples (72÷8=9, 63÷7=9, 18÷6=3, 7×6=42, 56÷7=7→correct 8), but seeds 42 and 43 both render '60 ÷ 10 = ___', using divisor 10 which falls outside the named set and adds nothing new."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Sentence structure and vocabulary are appropriately plain for Grade 3 — 'What is the missing number?' and 'divided by what equals 80?' use no gated terms and no multi-clause phrasing. The problem is that required reasoning is wildly uneven rather than grade-calibrated: '6 ÷ 6 = ___' demands nothing beyond knowing a number divided by itself is 1, while '480 divided by what equals 80?' asks a Grade 3 Q4 pupil to work with a three-digit dividend and a two-digit quotient (480 ÷ 80), and '120 ÷ ___ = 15' pairs a three-digit dividend with the two-digit quotient 15. Neither of those is a basic 6-9 fact recall; both push toward multi-digit division reasoning that sits above this quarter's missing-number-in-a-basic-fact demand."
+      "rationale": "Seed51's '7 × 6 = ___. What is the missing number? The answer is 42.. True or False?' again shows the double-period artifact and stacks three task types into one sentence, heavier than seed46's plain '18 ÷ 6 = ___.'"
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Two real presentation variants are present and that is a genuine strength: a bare symbolic cloze, '120 ÷ ___ = 15', and a prose-phrased pure-math item, '480 divided by what equals 80?', alongside the MCQ symbolic-with-prompt form '6 ÷ 6 = ___. What is the missing number?'. Two unknown positions also appear — missing quotient (seeds 42/43/46) and missing divisor (seeds 44, 45). Missing, however, are any contextual word problem (no items, pesos, groups, or sharing scenario anywhere in the five samples), the missing-dividend orientation (___ ÷ 8 = 9), and any multiplication orientation such as ___ × 7 = 42 or 9 × ___ = 63."
+      "rationale": "Seeds 42 and 43 are byte-identical, '60 ÷ 10 = ___. What is the missing number?', contributing no new variation, even though genuine blank-position variety exists elsewhere via missing-divisor forms like seed44's '72 ÷ ___ = 9' and seed45's '63 ÷ ___ = 9'."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "The axis that actually varies across the samples is dividend magnitude — 6, then 120, then 480 — not the thing this competency is about, which is the 6/7/8/9 fact families and the position of the unknown. Progressing from '6 ÷ 6 = ___' (answer 1) to '480 divided by what equals 80?' builds place-value and multi-digit division facility while leaving the 7 and 9 tables and all multiplication sentences unexercised. Compounding this, three of five seeds produce the same '6 ÷ 6 = ___. What is the missing number?' item, so there is little usable progression at all: the observed ladder is one trivial identity repeated three times plus two large-dividend items."
+      "verdict": "CONCERN",
+      "rationale": "The repeated '60 ÷ 10 = ___' in seeds 42 and 43 pulls in a divisor of 10 outside the named 6, 7, 8, 9 family, drifting two of nine samples to an adjacent table instead of deepening this competency, while the remaining seven (e.g. '56 ÷ 7 = 7' keyed to correct_value 8) stay on-topic."
     },
     "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "A competency scoped to multiplication/division 'by 6, 7, 8, and 9' implies operands inside the basic fact family, with products and dividends topping out around 81-90 (9 × 9, 9 × 10). Seed 44 uses a dividend of 120 with quotient 15, and seed 45 uses a dividend of 480 with quotient 80 — both far past that ceiling, and neither 15 nor 80 is a member of the 6-9 tables, so these are not simply larger versions of the target facts. Distractors reinforce the scale problem: seed 45 offers 2880 (480 × 6) and 474 (480 − 6), four- and three-digit values well outside Grade 3 Q4 basic-fact range. At the other extreme the repeated '6 ÷ 6 = ___' sits below the intended range, so the sampled scale straddles the correct band without landing in it."
+      "verdict": "CONCERN",
+      "rationale": "Most values reach a plausible ceiling for tables 6-9, e.g. seed44's dividend 72 reflects the near-maximal fact 8×9=72, but the divisor 10 used in seeds 42 and 43's '60 ÷ 10 = ___' exceeds the competency's stated 6, 7, 8, 9 ceiling."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

@@ -1,67 +1,25 @@
 {
   "node_id": "mat_g3_mg_q1_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 6, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Daniel wants to cover a rectangular garden that is 22 cm long and 5 cm wide with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 110
-    },
-    {
-      "seed": 43,
-      "question_text": "Kuya Bien wants to cover a rectangular garden that is 3 cm long and 11 cm wide with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 33
-    },
-    {
-      "seed": 44,
-      "question_text": "Lara wants to cover a rectangular garden that is 15 cm long and 18 cm wide with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 270
-    },
-    {
-      "seed": 45,
-      "question_text": "Coach Roel wants to cover a rectangular garden that is 10 cm long and 15 cm wide with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 150
-    },
-    {
-      "seed": 46,
-      "question_text": "Ate Cara wants to cover a rectangular garden that is 4 cm long and 14 cm wide with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 56
-    }
+    {"seed": 42, "question_text": "Daniel wants to cover a rectangular garden that is 22 cm long and 5 cm wide with square tiles. How many tiles are needed to cover it completely?", "correct_answer": 110},
+    {"seed": 43, "question_text": "Kuya Bien wants to cover a rectangular garden that is 3 cm long and 11 cm wide with square tiles. How many tiles are needed to cover it completely?", "correct_answer": 33},
+    {"seed": 44, "question_text": "Lara wants to cover a rectangular garden that is 15 cm long and 18 cm wide with square tiles. How many tiles are needed to cover it completely?", "correct_answer": 270},
+    {"seed": 45, "question_text": "Coach Roel wants to cover a rectangular garden that is 10 cm long and 15 cm wide with square tiles. How many tiles are needed to cover it completely?", "correct_answer": 150},
+    {"seed": 46, "question_text": "Ate Cara wants to cover a rectangular garden that is 4 cm long and 14 cm wide with square tiles. How many tiles are needed to cover it completely?", "correct_answer": 56},
+    {"seed": 50, "question_text": "Mia wants to cover a rectangular garden that is 17 cm long and 10 cm wide with square tiles. How many tiles are needed to cover it completely?", "correct_answer": 170},
+    {"seed": 55, "question_text": "Look at the 4×8 array. How many squares are shaded in all?", "correct_answer": "C"}
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Seed 42 asks 'How many tiles are needed to cover it completely?' for a garden '22 cm long and 5 cm wide', but the stem never states the size of the square tiles. As written the tile count is indeterminate; the key 110 is the area in sq cm, so the stem asks for one quantity (a count of tiles) while the key supplies another (an area), correct only under an unstated 1 cm tile assumption. The same defect recurs in all five seeds."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency covers 'areas of squares and rectangles', yet seeds 42-46 all say 'a rectangular garden'; no square garden or square-region problem is generated, and no problem works backwards from a known area, so the square half of the competency is unrepresented."
-    },
-    "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "The contexts are physically absurd for a Grade 3 reader: seed 43 has 'Kuya Bien' covering 'a rectangular garden that is 3 cm long and 11 cm wide', a garden the size of a matchbox, and seed 46 gives a 4 cm by 14 cm garden. Word problems that contradict a child's real-world sense of a garden undermine the measurement reasoning they are meant to develop; gardens belong in metres."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "'Solve problems involving areas' implies varied problem types, but all five seeds are one template with only the character name changed (Daniel, Kuya Bien, Lara, Coach Roel, Ate Cara). There is no find-the-missing-side problem, no compare-two-areas problem, no cost-per-tile or paint-coverage problem, and no multi-step problem."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Because every seed is the same tiling frame, the only thing that changes with difficulty is the size of the product (33 at seed 43 up to 270 at seed 44); the problem-solving demand - identify the operation, apply it, interpret the result - never increases, so the ramp does not build problem-solving in area."
-    },
-    "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 44 requires 15 x 18 = 270, a 2-digit by 2-digit product above Grade 3 Quarter 1 computation limits, and 270 individual tiles is an unrealistic quantity for the concrete tiling context the stem describes."
-    }
+    "competency_fulfillment": {"verdict": "PASS", "rationale": "Six of seven samples pose genuine word problems with named characters solving for tile counts, e.g. seed 43's 'Kuya Bien wants to cover a rectangular garden that is 3 cm long and 11 cm wide with square tiles', matching 'solve problems involving areas' well."},
+    "comprehensive_coverage": {"verdict": "FAIL", "rationale": "The competency covers 'squares AND rectangles', but all six word problems use unequal length/width pairs (22&5, 3&11, 15&18, 10&15, 4&14, 17&10), so a square garden is never posed; seed 55's 'Look at the 4×8 array...' is also a non-square, non-word-problem duplicate of the earlier area node's content."},
+    "cognitive_capacity": {"verdict": "PASS", "rationale": "Single-step length-times-width garden-tiling word problems with familiar Filipino names such as Daniel, Kuya Bien, and Mia fit grade-3 quarter-1 problem-solving demand well."},
+    "variant_comprehensiveness": {"verdict": "CONCERN", "rationale": "Every one of the six word problems reuses the identical '[Name] wants to cover a rectangular garden that is X cm long and Y cm wide with square tiles' scenario; only the character name and dimensions change, with no alternate object such as a wall or a mat ever appearing."},
+    "competency_alignment": {"verdict": "PASS", "rationale": "The dimension variation across the six garden problems, from 3x11 up to 22x5, directly builds the area-problem-solving skill this node targets."},
+    "scale_appropriateness": {"verdict": "CONCERN", "rationale": "Side lengths stay within 3-22 cm for every sample, never scaling up to a meter-based real-world area despite 'garden' being an object more naturally measured in meters."}
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

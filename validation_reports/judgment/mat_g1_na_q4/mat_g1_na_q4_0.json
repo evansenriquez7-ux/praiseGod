@@ -1,14 +1,17 @@
 {
   "node_id": "mat_g1_na_q4_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 2, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    55,
+    72
   ],
   "samples_reviewed": [
     {
@@ -35,33 +38,48 @@
       "seed": 46,
       "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/2"
+    },
+    {
+      "seed": 50,
+      "question_text": "What fraction does the shaded picture show?",
+      "correct_answer": "B"
+    },
+    {
+      "seed": 55,
+      "question_text": "Shade 1/2 of the shape.",
+      "correct_answer": "1/2"
+    },
+    {
+      "seed": 72,
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/2"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Both target fractions are named correctly, with seeds 42, 43 and 46 keying 1/2 for two equal parts and seeds 44 and 45 keying 1/4 for four equal parts. The weakness is that the verb is 'Illustrate', while the stem 'A shape is divided into 4 equal parts. 1 part is shaded.' hands the child both the numerator and the denominator in words, so the answer can be transcribed straight out of the stem without any part-whole reasoning."
+      "rationale": "Only seed 55's \"Shade 1/2 of the shape.\" is a genuine illustrate/construct task; the other seven samples, e.g. \"A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?\", ask the student to read and name a fraction from an already-shaded model rather than illustrate one."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Both halves and fourths are present, which covers the two fractions named. Not generated are the reverse direction, 'Which picture shows 1/4 shaded', the non-example check that parts must be equal, the whole-to-parts direction of dividing a shape yourself, and the set model of halving a group of objects, all of which 'as parts of a whole' fairly implies."
+      "rationale": "Seeds 42, 43, 46, and 72 all render the identical \"A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?\" item, and seeds 44/45 duplicate the quarter-shaded version, leaving only two distinct content templates plus seeds 50 and 55 across eight samples."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The stems themselves are two short declaratives plus a question, well matched to Grade 1 Quarter 4. The distractors are the problem: '3/8' at seeds 44 and 45 requires reading eighths, and '2/1' at seeds 42, 43 and 46 is an improper fraction denoting a quantity greater than one whole. Neither notation exists in a Grade 1 pupil's vocabulary at this point, so the option set demands symbols the node has not taught."
+      "verdict": "PASS",
+      "rationale": "Sentence structure stays plain and short throughout, e.g. \"A shape is divided into 4 equal parts. 1 part is shaded. What fraction of the shape is shaded?\", well matched to Grade 1 Q4 reading level."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "One template carries the entire node with only the denominator changing, and seeds 42, 43 and 46 emit the byte-identical stem 'A shape is divided into 2 equal parts. 1 part is shaded.' so three of five draws are the same question. No shape is ever named, so circles, rectangles and squares are indistinguishable in the rendered text, and no partitioning or shading-the-model variation appears."
+      "verdict": "CONCERN",
+      "rationale": "Formatter shells vary (mcq, cloze, read_mcq, set_click) but the underlying visual model is always 'a shape divided into equal parts, one shaded' with no alternate concrete model (e.g. grouped objects) ever appearing."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The 1/2 items and the 1/4 items are structurally identical and differ only in a single numeral, so nothing in the sequence builds from the easier halving idea toward the harder fourth. A sound progression would move from equal-parts recognition, to naming the unit fraction, to constructing the illustration, and only the middle rung is present."
+      "verdict": "PASS",
+      "rationale": "Every sample stays strictly on 1/2 or 1/4 with no drift to another fraction or an unrelated axis, matching the competency's exact scope."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The denominators generated are exactly 2 and 4, matching the competency's explicit statement of 1/2 and 1/4 with no drift into thirds, fifths or sixths in the keyed answers, and every numerator is 1 as the unit-fraction framing requires. No quantity in any stem falls outside the whole being partitioned."
+      "rationale": "Only the two named fractions, 1/2 and 1/4, ever appear as targets across all eight samples, with no unrelated fraction like 1/3 introduced."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

@@ -1,20 +1,24 @@
 {
   "node_id": "mat_g2_na_q3_6",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 3, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    55,
+    85
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What is 70 ÷ 10?",
-      "correct_answer": 7
+      "question_text": "What is 3 ÷ 3?",
+      "correct_answer": 1
     },
     {
       "seed": 43,
@@ -23,45 +27,68 @@
     },
     {
       "seed": 44,
-      "question_text": "15 ÷ 5 = ___",
-      "correct_answer": 3
+      "question_text": "40 ÷ 10 = ___",
+      "correct_answer": 4
     },
     {
       "seed": 45,
-      "question_text": "30 ÷ 3 = ___",
-      "correct_answer": 10
+      "question_text": "15 ÷ 5 = ___",
+      "correct_answer": 3
     },
     {
       "seed": 46,
       "question_text": "What is 12 ÷ 2?",
       "correct_answer": 6
+    },
+    {
+      "seed": 50,
+      "question_text": "Look at the 10×7 array. How many squares are shaded in all?",
+      "correct_answer": "A"
+    },
+    {
+      "seed": 51,
+      "question_text": "Ana says: 10 ÷ 5 = 5. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 2
+      }
+    },
+    {
+      "seed": 55,
+      "question_text": "Shade all the squares inside the 2×6 rectangle. How many squares did you shade in all?",
+      "correct_answer": 12
+    },
+    {
+      "seed": 85,
+      "question_text": "20 ÷ 4 = 5. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The competency simply asks for division fluency using the 2, 3, 4, 5, and 10 tables, and the samples (70 div 10=7, 15 div 5=3, 30 div 3=10, 12 div 2=6) directly exercise those named tables without requiring the additional illustration/vocabulary scaffolding q3_4 and q3_5 ask for."
+      "rationale": "Direct division facts like seed 44's '40 ÷ 10 = ___' and seed 85's '20 ÷ 4 = 5. True or False?' use divisors squarely inside the named 2, 3, 4, 5, 10 tables, matching the competency's verb 'divide' precisely."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "division registers 4 axes with 20 combos, and the samples already touch four of the five named divisors (10, 5, 3, 2); exhaustive combo execution across the full 20-combo space is checked separately by validate_matrix."
+      "rationale": "All five required tables surface across the divisors used: 3 in seed 42's '3 ÷ 3', 2 in seed 43's '10 ÷ 2', 10 in seed 44's '40 ÷ 10', 5 in seed 45's '15 ÷ 5', and 4 in seed 85's '20 ÷ 4'."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Stems are minimal ('12 div 2 = ___') and well under the 18-word cap, appropriate single-step fluency practice for grade 2 quarter 3."
+      "rationale": "Each fact is a one-line prompt (e.g. seed 46's 'What is 12 ÷ 2?'), well within grade 2 quarter 3 reading demand."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The observed divisors (10, 2, 5, 3) reasonably sample across the five named tables, and 20 registered combos gives room for the remaining table (4) and higher dividends to appear elsewhere in the space."
+      "verdict": "CONCERN",
+      "rationale": "Formats span mcq, cloze, error_detect and true_false, but seed 50's '10×7 array' and seed 55's '2×6 rectangle' substitute array-total counting for an actual division item, weakening the variant set."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "This node correctly reduces to bare fact fluency without illustration or word-problem scaffolding, matching its narrower 'divide numbers using tables' wording as distinct from q3_4's illustration-focused competency."
+      "verdict": "CONCERN",
+      "rationale": "Seed 50 asks for the total of a 10×7 array (70, a multiplication product) and seed 55 asks for a 2×6 rectangle's total (12), neither of which is a division computation, so two of nine samples drift onto an unrelated skill."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividends (70, 10, 15, 30, 12) and divisors (10, 2, 5, 3, 2) are appropriately scoped for grade 2 quarter 3 division-table practice."
+      "rationale": "Excluding the two off-topic array items, dividends run from 3 (seed 42) to 40 (seed 44), consistent with facts drawn from the 2-5-and-10 tables."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

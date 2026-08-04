@@ -1,14 +1,17 @@
 {
   "node_id": "mat_g1_na_q4_4",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 2, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    55,
+    72
   ],
   "samples_reviewed": [
     {
@@ -35,33 +38,48 @@
       "seed": 46,
       "question_text": "What is the total value of 1 ₱10 coin and 2 ₱5 coins?",
       "correct_answer": 20
+    },
+    {
+      "seed": 50,
+      "question_text": "Count the coins and bills shown. What is the total amount?",
+      "correct_answer": "A"
+    },
+    {
+      "seed": 55,
+      "question_text": "Use coins and bills to make exactly ₱20. Use the fewest pieces possible.",
+      "correct_answer": 20
+    },
+    {
+      "seed": 72,
+      "question_text": "What is the total value of 1 ₱5 coin and 1 ₱1 coin?",
+      "correct_answer": 6
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "'What is the total value of 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin?' (seed 43, key 16) is a direct realization of 'determine the value of a number of coins'. I recomputed every key by hand: 6, 16, 13, 7 and 20 are all arithmetically correct."
+      "rationale": "Every sample genuinely asks the student to total stated coins and bills, e.g. seed 43's \"What is the total value of 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin?\", matching the competency's 'determine the value of a number of bills and/or coins' exactly."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The wording is 'bills and/or coins', yet not one seed presents a bill. Coins-only sets appear in five of five samples, leaving both the bills-only case and the mixed bills-plus-coins case, which is the harder and more realistic sub-case, ungenerated."
+      "rationale": "All eight samples use only ₱1, ₱5, and ₱10 denominations; ₱20, ₱50, and ₱100 bills, clearly implied by the competency's 'up to ₱100' ceiling, never appear in any sample."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Piece counts stay at one to three per stem and the phrasing '1 ₱5 coin and 2 ₱1 coins' (seed 45) keeps the objects concrete and countable, which suits a learner at the close of Grade 1 Quarter 4."
+      "rationale": "Prompts stay short and direct, e.g. \"What is the total value of 1 ₱10 coin and 3 ₱1 coins?\", well matched to Grade 1 Q4 reading demand."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Only the denomination counts change between samples. There is no purse or wallet picture, no 'how much money is shown here', and no reverse task such as 'show ₱13 using coins', so the contextual variation stays one-dimensional."
+      "verdict": "PASS",
+      "rationale": "The packet includes direct summation (mcq/cloze), a visual counting task (seed 50), and a reverse composition task (\"Use coins and bills to make exactly ₱20. Use the fewest pieces possible.\", 'make exactly ₱20 with fewest pieces'), giving real framing diversity."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The ladder is nearly flat: seeds 42 and 45 are both two-denomination sums under ₱10, and even the hardest sample (seed 46) totals only ₱20, so a learner never meets a step that requires composing tens of pesos."
+      "verdict": "PASS",
+      "rationale": "All variation stays on summing or composing peso amounts, directly building the 'determine value' competency with no drift to an unrelated skill."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 46 offers 200 as a distractor and seed 43 offers 160, both above the competency's own ₱100 limit; meanwhile no denomination larger than ₱10 is ever used, so the numeric band sits far below the ceiling while the distractors sit above it."
+      "verdict": "FAIL",
+      "rationale": "The highest total reached across all eight samples is ₱20 (seeds 46 and 55), only a fifth of the competency's explicit ₱100 ceiling, with no sample testing values anywhere in the ₱21-₱100 range."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

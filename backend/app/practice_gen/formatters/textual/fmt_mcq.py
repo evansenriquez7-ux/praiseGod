@@ -29,6 +29,10 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         a = values.get("a")
         b = values.get("b")
         result = values.get("result")
+        if values.get("task_type") == "estimate":
+            real_a = values.get("real_a", a)
+            real_b = values.get("real_b", b)
+            return f"Estimate the sum: {real_a} + {real_b}"
         if blank_target == "result":
             return f"What is {a} + {b}?"
         elif blank_target == "b":
@@ -40,6 +44,14 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         a = values.get("a")
         b = values.get("b")
         result = values.get("result")
+        if values.get("task_type") == "estimate":
+            # See base_generator._build_symbolic_question's identical branch:
+            # this formatter rebuilds its own pure-context question text
+            # independently (a pre-existing duplication -- see doc_rem.md
+            # R2), so the same estimate-aware fix has to be applied here too.
+            real_a = values.get("real_a", a)
+            real_b = values.get("real_b", b)
+            return f"Estimate the difference: {real_a} − {real_b}"
         if blank_target == "result":
             return f"What is {a} − {b}?"
         elif blank_target == "b":
@@ -51,6 +63,20 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         a = values.get("a", values.get("groups"))
         b = values.get("b", values.get("n"))
         result = values.get("result", values.get("total"))
+        if values.get("task_type") == "estimate":
+            real_a = values.get("real_a", a)
+            real_b = values.get("real_b", b)
+            return f"Estimate the product: {real_a} × {real_b}"
+        if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total") and 2 <= b <= 5:
+            # See base_generator._build_symbolic_question's identical branch:
+            # "What is 4 x 3?" doesn't illustrate repeated addition, it just
+            # states the fact. This formatter rebuilds its own pure-context
+            # question text independently of that function (a pre-existing
+            # duplication -- see doc_rem.md R2), so the same fix has to be
+            # applied here too or "pure"-context mcq items (the majority
+            # formatter for this node) never show it.
+            terms = " + ".join([str(a)] * b)
+            return f"{terms} = ___. What is {a} × {b}?"
         if blank_target in ("result", "total"):
             return f"What is {a} × {b}?"
         elif blank_target in ("b", "n"):
@@ -62,6 +88,10 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         dividend = values.get("dividend", values.get("a"))
         divisor = values.get("divisor", values.get("b"))
         quotient = values.get("quotient", values.get("result"))
+        if values.get("task_type") == "estimate":
+            real_a = values.get("real_a", dividend)
+            real_b = values.get("real_b", divisor)
+            return f"Estimate the quotient: {real_a} ÷ {real_b}"
         if blank_target in ("result", "quotient"):
             return f"What is {dividend} ÷ {divisor}?"
         elif blank_target in ("b", "divisor", "n"):

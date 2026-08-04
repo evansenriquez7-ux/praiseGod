@@ -143,18 +143,112 @@ def generate_params(
     # LC specifies a result ceiling for division — see
     # axes_catalog.py header.
     q_max = bounds["q_max"]
+    q_min = 0
+
+    # "Divide numbers using the 6, 7, 8, and 9 multiplication tables" (and the
+    # equivalent grade-2 2/3/4/5/10-table competencies) is a table-facts
+    # competency: the quotient must itself be a single-digit table number, the
+    # same restriction multiplication.py already applies to its multiplier
+    # when `table` is bound (`number_type="single_digit"`, 1-9). Without this,
+    # q_max stayed at the grade default (g3: 99) even when a table was
+    # requested, so mat_g3_na_q4_1 served quotients like 15, 30, 80 that are
+    # not table facts, with dividends (b * q, up to 9*99) that had nothing to
+    # do with the named tables. `profile.get("table")` is None for nodes that
+    # never bind a table (the general 2-to-3-digit-by-1-digit competencies),
+    # so this narrows only the table-restricted nodes.
+    if profile.get("table") is not None:
+        q_max = min(q_max, 9)
+        q_min = 1
 
     rem_level    = extract_discrete_level(profile, "remainder", ["none", "with_remainder"], "none")
     table_level  = extract_discrete_level(profile, "table", ["2_3_4_5_10", "6_7_8_9"], "2_3_4_5_10")
     structure    = extract_discrete_level(profile, "structure", ["result_unknown", "divisor_unknown"], "result_unknown")
     context      = extract_discrete_level(profile, "context", ["pure", "word_problem"], "pure")
     num_diff_scalar = extract_continuous_scalar(profile, "number_difficulty", extract_continuous_scalar(profile, "difficulty_scalar", 0.5))
+    task_type    = profile.get("task_type")
+
+    if task_type == "estimate":
+        # "Estimate the quotient of 2- to 3-digit numbers divided by 1- to
+        # 2-digit numbers, using multiples of 10 or 100 as appropriate"
+        # (mat_g3_na_q4_4): round the DIVIDEND to the nearest 10 (if it is
+        # 2-digit) or nearest 100 (if 3-digit) -- "as appropriate" maps
+        # directly to the dividend's own magnitude, matching
+        # addition/subtraction's front-end-rounding convention. The
+        # divisor (1- to 2-digit) is left unrounded: rounding a small
+        # divisor to the nearest 10 can hit 0 (divide-by-zero) and real
+        # elementary quotient-estimation technique rounds the larger
+        # number, not the small one. The co-mapped `rounding` DNA rounds
+        # ONE number in isolation with no division step attached at all,
+        # so it cannot express this competency regardless of which node
+        # maps to it (see registry.py's "estimate" text match). The DNA's
+        # own answer_formula "a // b" (floor division, remainder dropped)
+        # governs the served answer, exactly as it does for the exact
+        # (non-estimate) path -- an estimate is not expected to divide
+        # evenly.
+        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
+        candidates = []
+        attempts = 0
+        while len(candidates) < 500 and attempts < 5000:
+            attempts += 1
+            x = rng.randint(10, 999)
+            y = rng.randint(2, 99)
+            candidates.append((x, y))
+        if not candidates:
+            raise RuntimeError(
+                f"generate_params (division): no valid estimate pair for "
+                f"grade={grade}, profile={difficulty_profile}."
+            )
+
+        def _round_half_up(n: int, precision: int) -> int:
+            remainder = n % precision
+            if remainder >= precision / 2:
+                return n - remainder + precision
+            return n - remainder
+
+        # A dividend that already sits on its own rounding boundary (e.g.
+        # 300, already a multiple of 100) rounds to itself, so the served
+        # "estimate" is identical to the exact-division answer -- the
+        # divisor is deliberately never rounded (see above), so this is the
+        # ONLY source of degeneracy here, and it's the worst-affected of the
+        # four estimate DNAs (~16% of samples, since a 2-digit dividend need
+        # only be a multiple of 10 to collide). Same thin-don't-exclude
+        # convention as addition/subtraction/multiplication's identical fix.
+        def _is_degenerate_estimate(pair: tuple) -> bool:
+            x, _y = pair
+            rt = 10 if x < 100 else 100
+            return _round_half_up(x, rt) == x
+
+        _meaningful = [p for p in candidates if not _is_degenerate_estimate(p)]
+        _degenerate = [p for p in candidates if _is_degenerate_estimate(p)]
+        if _meaningful and _degenerate:
+            cap = max(1, len(_meaningful) // 10)
+            candidates = _meaningful + _degenerate[:cap]
+        elif _meaningful:
+            candidates = _meaningful
+
+        real_a, real_b = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
+
+        round_to = 10 if real_a < 100 else 100
+        rounded_a = max(round_to, _round_half_up(real_a, round_to))
+
+        return {
+            "a": rounded_a,
+            "b": real_b,
+            "result": rounded_a // real_b,
+            "remainder": rounded_a % real_b,
+            "real_a": real_a,
+            "real_b": real_b,
+            "task_type": "estimate",
+            "blank_target": "result",
+            "context": "pure",
+            "structure": "result_unknown",
+        }
 
     allowed_divisors = _table_for_level(table_level, grade)
 
     candidate_pairs = []
     for b in allowed_divisors:
-        for q in range(0, q_max + 1):
+        for q in range(q_min, q_max + 1):
             if rem_level == "none":
                 a = b * q
                 if _satisfies_remainder(a, b, rem_level):

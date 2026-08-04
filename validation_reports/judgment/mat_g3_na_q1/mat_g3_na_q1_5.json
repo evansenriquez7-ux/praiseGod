@@ -1,66 +1,42 @@
 {
   "node_id": "mat_g3_na_q1_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 7, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 72],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Compare the numbers: 108 ___ 100. Which sign is correct: >, <, or =?",
-      "correct_answer": ">"
-    },
-    {
-      "seed": 43,
-      "question_text": "Compare the numbers: 10 ___ 190. Which sign is correct: >, <, or =?",
-      "correct_answer": "<"
-    },
-    {
-      "seed": 44,
-      "question_text": "Compare the numbers: 150 ___ 50. Which sign is correct: >, <, or =?",
-      "correct_answer": ">"
-    },
-    {
-      "seed": 45,
-      "question_text": "Compare the numbers: 25 ___ 45. Which sign is correct: >, <, or =?",
-      "correct_answer": "<"
-    },
-    {
-      "seed": 46,
-      "question_text": "Compare the numbers: 210 ___ 176. Which sign is correct: >, <, or =?",
-      "correct_answer": ">"
-    }
+    {"seed": 42, "question_text": "Compare the numbers: 108 ___ 100. Which sign is correct: >, <, or =?", "correct_answer": ">"},
+    {"seed": 43, "question_text": "Compare the numbers: 10 ___ 190. Which sign is correct: >, <, or =?", "correct_answer": "<"},
+    {"seed": 44, "question_text": "Compare the numbers: 150 ___ 50. Which sign is correct: >, <, or =?", "correct_answer": ">"},
+    {"seed": 45, "question_text": "Compare the numbers: 25 ___ 45. Which sign is correct: >, <, or =?", "correct_answer": "<"},
+    {"seed": 46, "question_text": "Compare the numbers: 210 ___ 176. Which sign is correct: >, <, or =?", "correct_answer": ">"},
+    {"seed": 50, "question_text": "1 cannot be determined 200. True or False?", "correct_answer": false},
+    {"seed": 72, "question_text": "Compare the numbers: 240 ___ 208. Which sign is correct: >, <, or =?", "correct_answer": ">"}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The stems match the competency verb and symbols directly: 'Compare the numbers: 210 ___ 176. Which sign is correct: >, <, or =?' with key '>' at seed 46, and each of seeds 42-45 likewise requires the pupil to select a relational symbol rather than compute, which is exactly what comparing numbers demands."
+      "verdict": "FAIL",
+      "rationale": "Seed 50's rendered question text is '1 cannot be determined 200. True or False?' -- a distractor string appears to have been substituted into the comparison-symbol slot instead of an actual <, >, or = sign, so this item presents no coherent comparison claim for the pupil to evaluate at all."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The competency explicitly names three symbols, '=, >, and <', but no sample ever keys '='. Seeds 42, 44 and 46 key '>' and seeds 43 and 45 key '<'; equality appears only as a distractor. The equal-numbers case, which is the one pupils most often misjudge when digit counts differ in appearance, is never generated."
+      "rationale": "None of the 7 rendered seeds, including the new true_false seed 50 and cloze seed 72, ever keys an equals sign; every well-formed comparison item resolves to > or <, so the competency's explicitly named '=' case is never generated."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Two-number comparisons stated in one short line are appropriate for Grade 3 Quarter 1, and pairs like 108 versus 100 (seed 42) and 210 versus 176 (seed 46) usefully require place-value reasoning rather than mere digit counting."
+      "verdict": "CONCERN",
+      "rationale": "Most stems are short and clear, but seed 50's '1 cannot be determined 200. True or False?' is not parseable prose and would confuse rather than test a grade 3 reader."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Only the fill-in-the-symbol frame is present. Missing are ordering three or more numbers, comparing a number written in words against one in figures, and comparing numbers with different digit counts at the four-digit level. The distractor 'cannot be determined' appears in all five seeds and is never a legitimate response when two whole numbers are both given, so it wastes an option slot in every item."
+      "rationale": "Formatter diversity (mcq, true_false, cloze) is present, but content is limited to the fill-in-the-symbol frame throughout, and the true_false format's actual implementation is broken at seed 50 rather than offering a genuine new variant."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The seeds show no ordered build: seed 45 compares 25 with 45, a Grade 1 level pair, while the hardest item, seed 46's 210 versus 176, is still a 3-digit comparison. Difficulty never advances toward the 4-digit place-value discrimination (for example 4 508 versus 4 580) that this competency exists to develop."
+      "rationale": "Even the well-formed items never progress toward 4-digit place-value discrimination this 'up to 10 000' competency should build -- seed 72's 240 vs 208 is still a 3-digit comparison -- and the malformed seed 50 tests no comparison skill at all."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "The competency ceiling is 10 000, yet the largest number in any sample is 210 (seed 46) and three of the five seeds stay under 200. No 4-digit number appears at all, so the pool tests roughly two percent of the stated range and never exercises comparison at thousands place value."
+      "rationale": "The largest number across all 7 seeds, including the new cloze seed 72's 240, is still under 300; the competency's stated ceiling is 10 000 and no 4-digit number appears anywhere in this widened sample."
     }
   },
   "overall": "FAIL"

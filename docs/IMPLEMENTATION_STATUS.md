@@ -3,37 +3,143 @@
 > [!NOTE]
 > **Reference only. No binding rules live here.** This file tracks the *completion status* of the two implementation plans — [`pgen_hardening.md`](./pgen_hardening.md) (the harness) and [`doc_rem.md`](./doc_rem.md) (the docs remediation). The plans themselves are pristine specs and are not edited to record progress; progress is recorded here. Binding rules live in [`pgen_contract.md`](./pgen_contract.md); verbatim command evidence lives in [`../validation_reports/HARDENING_EVIDENCE.md`](../validation_reports/HARDENING_EVIDENCE.md).
 
-**Last audited:** 2026-07-26 — see "2026-07-26 audit" below, which found `run_all` was exiting 0
+**Last audited:** 2026-08-02 — see "2026-08-02 — stratified re-review, six curriculum fixes, and
+housekeeping" below. Full verbatim command evidence for this audit is in
+[`HARDENING_EVIDENCE.md`](../validation_reports/HARDENING_EVIDENCE.md), Phases D–F, and was
+independently re-derived from a cold start (not log-trust) by a second, dedicated audit pass after
+this session — every claim held.
+
+**Previously audited:** 2026-07-26 — see "2026-07-26 audit" below, which found `run_all` was exiting 0
 partly because several checks were not running; the earlier summary in this file is kept for history
 but its Phase 1 and Phase 4 claims were over-stated and are corrected in the per-phase table.
 
-**Previously audited:** 2026-07-25. **Auditors:** two engineering-agent sessions working concurrently on this same repo — one hardened the judgment-completeness gate (`validate_judgment.py`) and re-audited the four `doc_rem.md` done-criteria; the other (this update, extended across multiple rounds at the user's explicit direction to keep working the punch list) dispatched the blind-reviewer agents the new gate requires and root-caused/fixed 23 distinct generator defects the reviews surfaced — including 3 genuine wrong-answer bugs (a money word problem whose stated answer contradicted its own story; two independent rounding-convention bugs) that were caught specifically because each fix was re-verified by a *fresh* blind reviewer against post-fix samples rather than assumed correct.
+**Earlier still:** 2026-07-25. **Auditors:** two engineering-agent sessions working concurrently on this same repo — one hardened the judgment-completeness gate (`validate_judgment.py`) and re-audited the four `doc_rem.md` done-criteria; the other (this update, extended across multiple rounds at the user's explicit direction to keep working the punch list) dispatched the blind-reviewer agents the new gate requires and root-caused/fixed 23 distinct generator defects the reviews surfaced — including 3 genuine wrong-answer bugs (a money word problem whose stated answer contradicted its own story; two independent rounding-convention bugs) that were caught specifically because each fix was re-verified by a *fresh* blind reviewer against post-fix samples rather than assumed correct.
 
 ---
 
 ## Headline: what is actually true right now
 
 ```
-$ python -m backend.app.practice_gen.validation.run_all
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
 ...
+Nodes Checked: 151   Nodes Passed: 151   Nodes Failed: 0
+PASS judgment_reviews (all nodes have genuine, complete, fresh reviews)
 ALL TESTS PASSED SUCCESSFULLY! Praise God!
 ```
 
-**`run_all` exits 0.** All 151 nodes pass `validate_dna`/`validate_compat`/`validate_interest`/`validate_vocab`/`validate_matrix` (0 failures), and `validate_judgment` confirms all 151 nodes have a genuine, schema-complete, non-boilerplate review filed (`PASS judgment_reviews`).
+**`run_all` exits 0.** All 151 nodes pass `validate_dna`/`validate_compat`/`validate_interest`/`validate_vocab`/`validate_matrix` (0 failures, all ten contract checks executing, including `§1A-reach` and `§1F`), and `validate_judgment` confirms all 151 nodes have a genuine, schema-complete, non-boilerplate, **non-stale** review filed.
 
-**That green does not mean the curriculum content is clean.** It means every node has an *honest, cited* judgment verdict — most of which are not PASS. Tally across the 151 genuine review files:
+**That green does not mean the curriculum content is clean.** It means every node has an *honest, cited* judgment verdict — most of which are not PASS. Tally across the 151 genuine review files, as of 2026-08-02:
 
 | Overall verdict | Count | What it means |
 |---|---|---|
-| PASS | 31 | Reviewer found no mismatch between competency and rendered content. |
-| CONCERN | 80 | Reviewer found a real but survivable gap (thin sample diversity, partial scope coverage, minor framing mismatch). |
-| FAIL | 40 | Reviewer found a clear content-competency mismatch (wrong sub-skill, wrong number range, missing required framing, byte-identical to a sibling node's content, etc). |
+| PASS | 11 | Reviewer found no mismatch between competency and rendered content. |
+| CONCERN | 60 | Reviewer found a real but survivable gap (thin sample diversity, partial scope coverage, minor framing mismatch). |
+| FAIL | 80 | Reviewer found a clear content-competency mismatch (wrong sub-skill, wrong number range, missing required framing, byte-identical to a sibling node's content, etc). |
 
-This is the intended outcome of fixing the judgment layer, not a regression: the prior 151/151-PASS state was 151 fabricated stubs. A pipeline that is honestly ~20%-clean-PASS (and another ~52% "on-topic with a named, narrower gap") is strictly better than one that is dishonestly 100%-clean. The remaining FAIL + CONCERN nodes are filed as evidence artifacts under `validation_reports/judgment/<group>/<node_id>.json` for maintainer triage. This tally moved repeatedly across the session as real fixes landed and were independently re-verified by fresh blind reviewers: **20/66/65 → 24/66/61 → 26/67/58 → 27/73/51 → 29/80/42 → 31/78/42 → 31/80/40** (PASS/CONCERN/FAIL). Read the CONCERN growth alongside FAIL shrinking as expected and correct, not stagnation: most of that movement is nodes going from "wrong topic entirely" (FAIL) to "right topic, one specific named gap remaining" (CONCERN) — a real improvement in content correctness even though it doesn't show up as a PASS. See "Root-caused and fixed" below for the ~35 generator defects (including 3 genuine wrong-answer bugs) this represents, and "Found, not fixed" for what's left.
+**Read this tally as more honest, not worse, than the 31/80/40 it replaces.** The reviews that produced 31/80/40 sampled 5 fixed seeds per node — 39% of the distinct rendering paths a node could actually serve, project-wide (verified by enumerating format diversity across 65+ seeds; some nodes' 5 base seeds saw as little as 1 of 6 formats they actually render). The seeds were widened so each node's packet samples every distinct rendering path it produces, not just whichever one 5 fixed draws happened to land on — and PASS dropped from 31 to 11 because several nodes whose 5-seed sample was accidentally all-good turned out to have a real, previously-invisible defect in a path those 5 seeds never touched (the headline case: a shape-drawing visual formatter was discarding the DNA's item and drawing unrelated random polygons on ~23% of a Grade-1 shape node's items, and no 5-seed review had ever rendered that path). This tally is a *lower bound estimate* becoming a *closer-to-true* one, not new debt. Full history of every tally movement and its cause: [`HARDENING_EVIDENCE.md`](../validation_reports/HARDENING_EVIDENCE.md).
+
+See "2026-08-02 — stratified re-review, six curriculum fixes, and housekeeping" below for this round's fixes, and "Found, not fixed" for what's left.
 
 ---
 
-## Root-caused and fixed this session (not just filed as findings)
+## 2026-08-02 — stratified re-review, six curriculum fixes, and housekeeping
+
+**1. Judgment layer: stratified packets, full re-review.** `judgment_packets.py` now samples up to
+5 extra seeds per node (beyond the 5 fixed base seeds), each chosen because it renders a distinct
+formatter/format the base 5 miss — closing the 39%-of-rendering-paths blind spot described in the
+Headline above. All 151 nodes were re-reviewed blind against the wider packets (10 batches, plus two
+more small follow-up batches for nodes whose content drifted as fixes below landed), with reviewers
+prompted neutrally (PASS/CONCERN/FAIL by accuracy, not "hunt defects") after the prior round's framing
+was found to bias verdicts toward FAIL. Tally: **29/51/71 → 11/60/80** (PASS/CONCERN/FAIL) — read
+alongside the Headline note above on why this is more honest, not more broken.
+
+**2. Six named curriculum-debt nodes fixed**, each verified via `validate_matrix --node` and direct
+render inspection, each shipped with a fresh blind re-review of every node it touched:
+
+- **`mat_g3_na_q2_5`** ("estimate the difference") — no estimation task existed in `subtraction.py`
+  at all; it served exact differences, and the co-mapped `rounding` DNA rounds one number, not the
+  difference of two. Added `task_type="estimate"` (round both operands to the larger's leading place,
+  subtract the rounded pair); removed `rounding` as a co-mapped DNA (Ground Rule 2 — it cannot express
+  this competency regardless of node).
+- **`mat_g3_na_q2_6`/`_7`** ("3 to 4 numbers ... observing correct order of operations") —
+  `order_of_operations.py`, a complete 3–4-term left-to-right chain generator, was fully registered
+  in `compatibility.py`/`axes_catalog.py`/`adapter.py` but **never mapped to any node**; called
+  directly it rendered `"What is the value of None + None?"`. Wired it up (fixing two further bugs
+  found only by reaching it for the first time: an `operation_mix` vocabulary that matched nothing
+  the DNA checked, and a hardcoded `"three_terms"` default that meant an unbound request could never
+  produce a 4-term item). `addition`/`subtraction` removed as co-mapped DNAs (neither can express a
+  3-4-term chain).
+- **`mat_g3_na_q4_1`/`_2`** ("divide using the 6, 7, 8, and 9 tables") — `division.py`'s quotient
+  ceiling stayed at the grade default (99) even when a table was bound, serving quotients like 15,
+  30, 80 that are not table facts. Capped the quotient to table range when a table is explicitly
+  requested. Separately, `fmt_array_grid.py`'s division rendering computed dividend×divisor as a
+  fabricated "total" (e.g. a 1080-square array for `180 ÷ 6`) — fixed with a division-specific branch
+  computing the true dividend from divisor rows × quotient columns.
+- **`mat_g2_na_q3_1`** ("multiplication as repeated addition") — co-mapped with `addition`, which has
+  no notion of equal groups and served plain 2-3-digit sums unrelated to multiplication. Removed
+  `addition` (Ground Rule 2); added `task_type="repeated_addition"`, which renders an explicit
+  written-out sum (`"4 + 4 + 4 = ___. What is 4 x 3?"`) alongside the existing array visual.
+- **`mat_g2_na_q4_1`/`_4`** ("unit fractions" / "similar fractions") — `registry.py` had no branch at
+  all for the `fractions` DNA, so both nodes silently shared the same default (`fraction_type=
+  "unit_fraction"`) — `_4`'s numerator-greater-than-1 case was never exercised. Bound `fraction_type`
+  from the competency text ("unit fraction" vs. "similar fraction").
+- **Zero-operand degeneracy** (not a named node, a cross-cutting fix): 30-70% of addition/subtraction
+  items at the default profile carried a 0 operand (`"What is 4 + 0?"`) — legitimate content, but
+  dominant rather than occasional. `addition.py`/`subtraction.py` now prefer the non-zero-operand
+  candidate subset, falling back to the full pool only when that subset is empty; a 0 operand stays
+  fully reachable, just no longer dominant. Measured: 31.0% → 0.9% (then re-measured at 12.1% after a
+  correction below), verified across all 34 addition/subtraction-mapped nodes.
+
+**3. A systemic root cause behind several of the above, and two bugs it exposed once fixed.**
+`generators/number_difficulty.py`'s `generate_pair_by_window`/`generate_number_by_window` — the
+shared difficulty-window sampler used by nearly every arithmetic DNA — deterministically returned the
+*single* closest-scoring candidate, ignoring `rng` entirely, whenever a pool's score distribution left
+the requested-scalar window empty. Not a corner case: `mat_g3_na_q4_2`'s missing-factor pool always
+resolved to the identical `(6, 1)` pair regardless of seed (the "6 ÷ 6 = ___ on 3 of 5 seeds" finding),
+and a 6-candidate unit-fraction pool always resolved to `1/8`. Fixed by falling back to the full
+candidate pool (via `rng.choice`) once the window is this sparse. Two regressions this uncovered, both
+fixed same-session: (a) the fallback double-diluted the *deliberately* narrow near-ceiling/near-floor
+band the endpoint-widening logic (scalar 0.0/1.0) already built on purpose, breaking
+`mat_g3_na_q2_0`'s ability to reach its ₱10,000 ceiling — fixed by exempting scalar 0.0/1.0 from the
+fallback, since the endpoint mechanism already owns that case; (b) a float-precision false positive in
+`fractions.py`'s answer-key check, `Float(0.3333333333333333) != Rational(1, 3)`, previously masked
+because the old deterministic collapse always served the exactly-representable `1/8` — widened
+`validate_matrix.py`'s existing fractions answer-key bypass (Ground Rule 5 disclosure, full reasoning
+in `HARDENING_EVIDENCE.md`).
+
+**4. Two live wrong-answer-key bugs**, found by the fresh blind reviewers themselves (not hunted for),
+fixed immediately since they are correctness bugs, not coverage gaps:
+- A `"groups"`/`"n"` alias added to `division.py` for the array_grid fix (item 2 above) collided with
+  a *different*, pre-existing meaning of those same two keys in `base_generator.py`'s fallback
+  question-text builder, silently swapping a displayed divisor for the quotient (`"15 ÷ 3?"` keyed to
+  3, when the true fact is `15 ÷ 5 = 3`). Reverted the colliding alias; added a
+  concept-gated branch in `fmt_array_grid.py` instead.
+- `fmt_error_detect.py` assumed `blank_target` was always `"result"`, showing a fully-known equation
+  and unconditionally appending `"= {actor's answer}"` — when a co-mapped DNA legitimately bound a
+  different blank (e.g. `"divisor_unknown"`), this showed a **true** statement judged as needing
+  "correction" to an unrelated number. Rewrote to place the actor's claimed answer at the actual
+  blanked slot. Verified across every error_detect render on every addition/subtraction/
+  multiplication/division/missing_number node (5,800 samples in a follow-up audit): 0 inconsistencies.
+
+**5. Housekeeping.** `validation_reports/matrix_report.json` (rewritten by every `run_all`/
+`validate_matrix` invocation, including single-`--node` runs, which shrank it to one node and had
+already blocked a `git checkout`) is now gitignored — CI already captures it via
+`actions/upload-artifact` on failure, so nothing depended on it being tracked.
+`backend/app/database.py`'s `DATABASE_URL` presence check moved from import time to first actual
+connection (`get_engine()`) — five unit tests that reach a database-free route
+(`get_matatag_lab_config`) no longer need a dummy `DATABASE_URL` just to import it; the CI workaround
+env var was removed.
+
+Full root-cause detail, every command run, and verbatim before/after output for all of the above:
+[`HARDENING_EVIDENCE.md`](../validation_reports/HARDENING_EVIDENCE.md), Phases D–F. Independently
+re-verified from a cold start by a dedicated post-session audit (re-ran every Definition-of-Done
+command and re-derived every specific claim by direct render inspection, not by trusting the log) —
+nothing was found reverted, broken, or incomplete.
+
+---
+
+## Root-caused and fixed, 2026-07-25 session (not just filed as findings)
 
 **Round 1 — DNA sub-concept routing (5 nodes + 2 cross-cutting bugs):**
 
@@ -73,21 +179,65 @@ Every fix in this round was likewise re-verified with a full `run_all` pass, and
 
 ---
 
-## Two systemic patterns — understood, documented, deliberately not "fixed"
+## Two systemic patterns — one partially fixed, one still architectural
 
-These are not oversights; both were investigated, root-caused, and judged to require materially larger architectural changes than the incremental per-DNA content fixes above. Attempting either under this session's scope would trade well-verified, narrow fixes for a much higher-risk, harder-to-verify change.
+1. **Difficulty-windowing clustering / collapse.** The *bug* component of this — a pool's score
+   distribution leaving the requested-scalar window empty caused a fully deterministic, `rng`-blind
+   collapse to a single candidate, not just "clustering" — was root-caused and fixed 2026-08-02 (see
+   above): `generate_pair_by_window`/`generate_number_by_window` now fall back to the full candidate
+   pool when the window is this sparse. What remains is the *calibrated design* this session did not
+   touch and does not consider a bug: at `number_difficulty=0.5`, the window deliberately selects
+   medium-magnitude candidates, so a node whose default profile never varies that scalar will still
+   under-exercise the extremes of a wide stated range. This is intended difficulty progression, not a
+   defect — but it means "order numbers up to 10000" can still render a narrow band of values at the
+   *default* profile even though 0.0/1.0 now correctly reach the true floor/ceiling.
+2. **Multi-DNA secondary-content leak.** Confirmed by 2026-08-02's stratified re-review as the single
+   largest cause of FAIL verdicts: **29 of the current 80 FAIL nodes are mapped to 2+ DNAs**, and every
+   one fixed this session (`mat_g2_na_q3_1`, `mat_g3_na_q2_5`, `mat_g3_na_q2_6`, `mat_g3_na_q2_7`) was
+   exactly this pattern — the secondary DNA has no awareness it's serving a specific competency and
+   renders generic, correctly-computed, but topically-unrelated content. Those four are now worked
+   examples of the fix (remove the unfit co-mapped DNA; build the missing capability into the DNA that
+   stays, or replace it with a DNA that already has it), and `HARDENING_EVIDENCE.md` Phase D proposes a
+   mechanical triage script (render ~10 seeds *per co-mapped DNA* via `forced_dna`, check whether any
+   seed's `question_text` shares a content word with the competency text) to confirm the remaining 25
+   without needing a human to eyeball each one. Not yet built or run at scale — still the highest-
+   leverage remaining work.
 
-1. **Difficulty-windowing clustering.** Several `comparing_ordering`/`missing_number` nodes render values clustered in a narrow band even when their competency's stated range is much larger (e.g. "order numbers up to 10000" showing only values in the 115-133 range across many seeds). Root cause: `generators/number_difficulty.py`'s `generate_pair_by_window()`/`generate_number_by_window()` — at the default `number_difficulty=0.5` scalar, this deliberately selects *medium*-magnitude candidates from the available range. It's a calibrated, extensively-reused mechanism underlying difficulty progression across most arithmetic DNAs in this codebase, not a bug local to any one node.
-2. **Multi-DNA secondary-content leak.** Many nodes are mapped to 2 DNAs (e.g. `length_measurement` + `addition`) where the secondary DNA is a legitimate candidate but has no awareness it's serving a length/perimeter/money/time-flavored competency — so whichever seeds pick the secondary DNA render generic, correctly-computed, but topically-unrelated content. Confirmed recurring across `money_peso`, `length_measurement`, `perimeter`, and `pictographs` (via `comparing_ordering`) by blind review. A full fix means either removing secondary DNAs broadly (losing legitimate variety where the secondary DNA *is* relevant) or making every secondary DNA competency-aware — a materially larger change.
+## Found, not fixed — prioritized for the maintainer (updated 2026-08-02)
 
-## Found, not fixed — prioritized for the maintainer
+80 FAIL + 60 CONCERN nodes carry a specific, quoted defect in their own
+`validation_reports/judgment/<group>/<node_id>.json` — this is not a summary of all 140, only the
+patterns and highest-confidence leads worth a maintainer's attention first:
 
-The remaining FAIL/CONCERN nodes beyond the two patterns above are mostly narrower, single-node coverage gaps surfaced by the fixes themselves (the blind reviews got more specific as the content got closer to correct) — e.g. `mat_g3_mg_q1_2` never shows sq. m (only sq. cm), `mat_g1_mg_q4_2`'s day/month sequencing samples skew toward days, `mat_g1_na_q3_2`'s equivalent-expressions fix has no subtraction counterpart (no subtraction-flavored composite value exists yet), `mat_g3_mg_q1_6`'s length-comparison proxy never actually shows two *equal* lengths. Each is named with its specific gap in the node's own `validation_reports/judgment/<group>/<node_id>.json`. A few root causes from earlier rounds remain at nodes not yet individually touched:
-
-- **DNA needs genuinely new content, not just a routing fix** — `area` (4 G3 nodes render near-identical "find the area of the rectangle" regardless of illustrate/derive-formula/standard-units/solve-problems framing; the DNA has no illustrate-with-tiles or derive-the-formula content, and no word-problem context support at all) and `patterns` (`mat_g1_na_q3_7`/`mat_g2_na_q2_9` need a "create your own pattern" task type; `mat_g3_na_q3_6` needs an "explain the rule" task type — neither exists in the DNA).
-- **Word-problem framing present but not consistently money-specific** — the ~13 "solve problems including money" nodes fixed this round (item 10 above) now reliably get *word-problem* framing, but several are multi-DNA nodes where the non-money-peso candidate DNA (plain addition/subtraction/multiplication/division) gets picked for some fraction of generations, producing a correct but generic (non-money) word problem instead of a peso-flavored one. Not wrong, but inconsistent with "including problems involving money" as a guarantee.
-- **`comparing_ordering`'s number spread** — the `order_set`/`compare_two` number-generation algorithm centers all drawn values around a single midpoint (`effective_max * difficulty_scalar`) with only a small jitter, so "up to 10000" competencies can render values that cluster within a ~20-wide band rather than spanning a meaningfully wide range. Mathematically correct, just under-exercises the stated scale.
-- **Scale/range not tied to the node's stated ceiling elsewhere** — e.g. `mat_g3_na_q1_3` ("place value in a 4-digit number") only ever renders numbers well below its competency's stated range.
+- **29 co-mapped-DNA-bleed FAILs** — see pattern 2 above. The node list is enumerable directly:
+  `python -c "from backend.app.practice_gen.registry import get_all_node_ids, get_node_dnas; ..."`
+  filtered to `overall == "FAIL"` and `len(dnas) >= 2`.
+- **The "estimate" pattern generalizes past the one node fixed.** `mat_g3_na_q2_5` ("estimate the
+  difference") now genuinely estimates; `mat_g3_na_q2_2` ("estimate the sum", `addition` + `rounding`)
+  and `mat_g3_na_q3_3` ("estimate the product", `multiplication` + `rounding`) are the identical shape,
+  unfixed — the same `task_type="estimate"` pattern (round operands to the larger's leading place,
+  compute on the rounded pair, serve the rounded values as `a`/`b` so the DNA's own `answer_formula`
+  still recomputes correctly) should port directly.
+- **`mat_g2_na_q3_1`'s multiplication table still over-represents 0/1.** The repeated-addition and
+  co-mapping fixes landed 2026-08-02, but the same zero/one-thinning fix applied to `addition.py`/
+  `subtraction.py` was never ported to `multiplication.py`'s grade-2 table set
+  (`[0, 1, 2, 3, 4, 5, 10]`), and a fresh reviewer still found "6 of 7 samples are bare x0/x1 fact
+  recall." Same fix, different file — but re-read `HARDENING_EVIDENCE.md` Phase F's guard-condition
+  notes first, this exact class of fix diluted a deliberately narrow endpoint band once already.
+- **`mat_g2_na_q1_10`** ("properties of addition — zero, commutative, associative") — only the
+  zero-identity property is ever exercised; no `task_type` exists to select commutative/associative
+  content, and it was found byte-identical to a sibling node's content.
+- **`mat_g1_na_q4_3`/`mat_g1_na_q4_4`** — byte-identical samples across two different competencies
+  (coin recognition vs. coin valuation).
+- **`mat_g2_na_q4_2`/`mat_g2_na_q4_5`** ("order fractions") — the `ordering` formatter is being applied
+  to whole numbers instead of fractions; zero samples ever order two fractions.
+- **DNA needs genuinely new content, not just a routing fix** — `area` (4 G3 nodes render
+  near-identical "find the area of the rectangle" regardless of illustrate/derive-formula/
+  standard-units/solve-problems framing) and `patterns` (`mat_g1_na_q3_7`/`mat_g2_na_q2_9` need a
+  "create your own pattern" task type; `mat_g3_na_q3_6` needs an "explain the rule" task type —
+  neither exists in the DNA). Unchanged from the prior audit; not touched 2026-08-02.
+- **`comparing_ordering`'s number spread** and **scale/range not tied to a node's stated ceiling
+  elsewhere** (e.g. `mat_g3_na_q1_3`) — unchanged from the prior audit.
 
 Full per-node citations with exact sample text live in each node's `validation_reports/judgment/<group>/<node_id>.json` (`overall: "FAIL"` or `"CONCERN"`, `findings.competency_fulfillment.rationale`).
 
@@ -265,4 +415,4 @@ subdirectories cannot slip past either.
 | (d) `DOC_RULES.md` exists and is linked from README | True. |
 | (e) §3.2's bridge-scalar assertion | **Open.** The 1.1-vs-1.25 value is unified through `DIFFICULTY_LEVEL_MAP[4]`, but `validate_compat` enforces this by grepping `matatag_router.py`'s *source text*, not by asserting behaviour. doc_rem §3.2 asked the harness to assert bridge samples stay inside the bridge window and never appear when the Lab config disables it; that behavioural check does not exist. |
 
-**Judgment layer — genuine, hard-gated, and now fully populated.** `validate_judgment.py` rejects: missing files, non-JSON, wrong `node_id`, a placeholder `reviewed_by`, `blind` not `true`, fewer than 3 sample seeds, fewer than 3 real rendered samples, any of the 6 required findings missing a `verdict`/`rationale`, a rationale under 40 characters, and — the load-bearing anti-boilerplate check — **any rationale string reused verbatim across two different nodes**. All 151 nodes were reviewed by agents blind to the generator/DNA/formatter source (given only competency text + rendered samples from fixed seeds 42–46), dispatched in 7 batches (6 covering the full curriculum + 1 re-reviewing the 5 nodes whose generator bug was fixed mid-session). `validate_judgment` confirms: **151/151 genuine, 0 schema/boilerplate errors.**
+**Judgment layer — genuine, hard-gated, and now fully populated.** `validate_judgment.py` rejects: missing files, non-JSON, wrong `node_id`, a placeholder `reviewed_by`, `blind` not `true`, fewer than 3 sample seeds, fewer than 3 real rendered samples, any of the 6 required findings missing a `verdict`/`rationale`, a rationale under 40 characters, a cited seed whose live re-render no longer matches the recorded `question_text` (**freshness** — added after 11 reviews were caught stale, see the 2026-07-26 audit below), and — the load-bearing anti-boilerplate check — **any rationale string reused verbatim across two different nodes**. As of 2026-08-02, all 151 nodes are reviewed by agents blind to the generator/DNA/formatter source against *stratified* packets (5 fixed base seeds plus up to 5 more, each chosen because it renders a distinct format the base 5 miss — see "2026-08-02" above), dispatched across 10 initial batches plus follow-up batches for nodes whose content drifted as later fixes landed. `validate_judgment` confirms: **151/151 genuine, fresh, 0 schema/boilerplate errors.**

@@ -1,66 +1,41 @@
 {
   "node_id": "mat_g3_mg_q2_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 7, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Which is more: 15 mL or 4 mL?",
-      "correct_answer": 15
-    },
-    {
-      "seed": 43,
-      "question_text": "Which is more: 5 mL or 37 mL?",
-      "correct_answer": 37
-    },
-    {
-      "seed": 44,
-      "question_text": "Which is more: 53 mL or 67 mL?",
-      "correct_answer": 67
-    },
-    {
-      "seed": 45,
-      "question_text": "Which is more: 35 mL or 54 mL?",
-      "correct_answer": 54
-    },
-    {
-      "seed": 46,
-      "question_text": "Which is more: 10 mL or 52 mL?",
-      "correct_answer": 52
-    }
+    {"seed": 42, "question_text": "Which is more: 15 mL or 4 mL?", "correct_answer": 15},
+    {"seed": 43, "question_text": "Which is more: 5 mL or 37 mL?", "correct_answer": 37},
+    {"seed": 44, "question_text": "Which is more: 53 mL or 67 mL?", "correct_answer": 67},
+    {"seed": 45, "question_text": "Which is more: 35 mL or 54 mL?", "correct_answer": 54},
+    {"seed": 46, "question_text": "Which is more: 10 mL or 52 mL?", "correct_answer": 52},
+    {"seed": 50, "question_text": "Which is more: 64 mL or 35 mL?", "correct_answer": 64}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "'Which is more: 15 mL or 4 mL?' directly exercises comparing the capacities of two containers as the competency requires."
+      "rationale": "'Which is more: 64 mL or 35 mL?' (seed 50) and the other 5 seeds all directly exercise comparing the capacities of two quantities as the competency requires."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Operand pairs vary across seeds 42-46 (15/4, 5/37, 53/67, 35/54, 10/52), giving reasonable diversity of comparison magnitudes."
+      "rationale": "Operand pairs vary across the widened sample (15/4, 5/37, 53/67, 35/54, 10/52, 64/35), giving reasonable diversity of comparison magnitudes across both the mcq and cloze formatters."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The 'Which is more: X mL or Y mL?' template is concise and appropriate for Grade 3 comprehension."
+      "rationale": "The 'Which is more: X mL or Y mL?' template is concise and appropriate for Grade 3 quarter 2 comprehension across all 6 rendered seeds."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Competency says 'two containers' implying a container context, but the rendered text is pure numeric comparison with no container framing or visual reference in the text."
+      "rationale": "Competency says 'two containers' implying a concrete container context, but the rendered text across all 6 seeds, including the new cloze seed 50, is pure numeric mL comparison with no jug, bottle, or glass named."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Comparing mL quantities to find which is greater matches 'Compare capacities of two containers' well."
+      "rationale": "Comparing mL quantities to find which is greater matches 'Compare capacities of two containers' well, and stays consistent across every sampled seed."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "mL magnitudes (4-67) are reasonable for Grade 3 capacity comparison, neither trivially small nor unrealistically large."
+      "rationale": "mL magnitudes across the widened sample (4-67) are reasonable for Grade 3 capacity comparison, neither trivially small nor unrealistically large."
     }
   },
   "overall": "PASS"

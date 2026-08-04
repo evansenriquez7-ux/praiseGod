@@ -1,20 +1,22 @@
 {
   "node_id": "mat_g2_na_q3_9",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, final stale drift re-review batch, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    55
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What is 70 ÷ 10?",
-      "correct_answer": 7
+      "question_text": "What is 3 ÷ 3?",
+      "correct_answer": 1
     },
     {
       "seed": 43,
@@ -23,45 +25,58 @@
     },
     {
       "seed": 44,
-      "question_text": "What is 15 ÷ 5?",
-      "correct_answer": 3
+      "question_text": "What is 40 ÷ 10?",
+      "correct_answer": 4
     },
     {
       "seed": 45,
-      "question_text": "What is 30 ÷ 3?",
-      "correct_answer": 10
+      "question_text": "What is 15 ÷ 5?",
+      "correct_answer": 3
     },
     {
       "seed": 46,
       "question_text": "What is 12 ÷ 2?",
       "correct_answer": 6
+    },
+    {
+      "seed": 50,
+      "question_text": "What is 70 ÷ 10? The answer is 700.. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
+      "question_text": "Grace solved this problem: \"What is 12 ÷ 2?\" Grace says the answer is 10. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 6
+      }
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Facts like '70 ÷ 10 = 7' and '15 ÷ 5 = 3' correctly exercise the named tables, but every sample is a bare equation with zero word-problem framing."
+      "rationale": "Division facts are correctly solved and keyed, e.g. seed46's 'What is 12 ÷ 2?' correctly answers 6 and seed55 correctly flags Grace's wrong '10' with correct_value 6, but the competency's explicit noun 'money' is not addressed by any of the seven samples."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Divisors 10, 2, 5, 3, and 2 all appear across the 5 seeds, giving reasonable table coverage even though presentation is repetitive."
+      "verdict": "FAIL",
+      "rationale": "None of the seven samples, including seed44's 'What is 40 ÷ 10?' and seed55's Grace check, present a peso amount or purchase scenario, so the competency's explicit 'problems involving money' sub-case is entirely unrepresented; divisor 4 also never appears (divisors used are 3, 2, 10, 5, 2, 10, 2)."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "'What is 70 ÷ 10?' is arithmetically simple but offers no contextual scaffolding, which is a step down in engagement from the addition/subtraction nodes' narrative framing at the same grade."
+      "rationale": "Seed50's 'What is 70 ÷ 10? The answer is 700.. True or False?' carries a doubled-period typographic artifact and asks the student to judge a stated wrong answer within the same sentence, a harder read than the plain 'What is 12 ÷ 2?' items."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "No sample uses a 4-times-table fact (only 10,2,5,3,2 appear), and no cloze/word-problem variant is shown despite the format field listing cloze as available for this node."
+      "verdict": "FAIL",
+      "rationale": "All seven items are either a bare 'What is X ÷ Y?' fact or a Grace error-detect check on one; no money word problem or any other real-world sharing/grouping context appears anywhere, despite the competency explicitly naming money problems."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "The competency explicitly says 'including problems involving money', but none of the 5 samples mentions pesos or any narrative context at all, only bare division facts."
+      "verdict": "PASS",
+      "rationale": "Every sample correctly and consistently tests dividing by a 2/3/5/10-table number, e.g. seed43's 10 ÷ 2 = 5 and seed46's 12 ÷ 2 = 6 both check out arithmetically, so the observed variation builds genuine division-table recall rather than an unrelated axis."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividends (10-70) and quotients (3-10) are appropriate magnitudes for Grade 2 Q3 division within the 2/3/4/5/10 tables."
+      "rationale": "Dividends and divisors observed, spanning seed42's '3 ÷ 3' up to seed44's '40 ÷ 10' and seed50's '70 ÷ 10', stay within plausible grade-2 quarter-3 bounds for the 2, 3, 4, 5, 10 tables, with all quotients (1 through 7) single-digit."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

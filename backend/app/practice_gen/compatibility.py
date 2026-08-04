@@ -529,8 +529,16 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "order_of_operations": {
-        "operation_mix": ["add_sub", "mult_div", "all"],
+        # Matches order_of_operations.py's own generate_params check exactly
+        # ("add_only" vs. anything else defaulting to mixed) -- the previous
+        # ["add_sub", "mult_div", "all"] never matched any string the DNA
+        # actually compares against (and "mult_div" is fiction: this DNA only
+        # ever implements + and -, per its own "G3 Q2 ... MDAS subset" scope,
+        # i.e. left-to-right + and - only). Caught only now because this DNA
+        # was never mapped to a node before.
+        "operation_mix": ["add_only", "mixed_add_sub"],
         "num_operands": ["three_terms", "four_terms"],
+        "context": ["pure", "word_problem"],
     },
 
     "shapes_2d": {

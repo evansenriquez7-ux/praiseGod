@@ -1,66 +1,44 @@
 {
   "node_id": "mat_g3_na_q3_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 8, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 55, 85],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 3 × 0?",
-      "correct_answer": 0
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 2 × 0?",
-      "correct_answer": 0
-    },
-    {
-      "seed": 44,
-      "question_text": "2 × 1 = ___",
-      "correct_answer": 2
-    },
-    {
-      "seed": 45,
-      "question_text": "6 × 0 = ___",
-      "correct_answer": 0
-    },
-    {
-      "seed": 46,
-      "question_text": "What is 3 × 0?",
-      "correct_answer": 0
-    }
+    {"seed": 42, "question_text": "What is 3 × 0?", "correct_answer": 0},
+    {"seed": 43, "question_text": "What is 2 × 0?", "correct_answer": 0},
+    {"seed": 44, "question_text": "2 × 1 = ___", "correct_answer": 2},
+    {"seed": 45, "question_text": "6 × 0 = ___", "correct_answer": 0},
+    {"seed": 46, "question_text": "What is 3 × 0?", "correct_answer": 0},
+    {"seed": 50, "question_text": "Look at the 3×1 array. How many squares are shaded in all?", "correct_answer": "A"},
+    {"seed": 51, "question_text": "Ana says: 5 × 0 = 5. Is Ana correct?", "correct_answer": {"has_error": true, "correct_value": 0}},
+    {"seed": 55, "question_text": "Shade all the squares inside the shape. How many squares did you shade in all?", "correct_answer": 0},
+    {"seed": 85, "question_text": "5 × 0 = 0. True or False?", "correct_answer": true}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency names the 6, 7, 8 and 9 tables, yet seeds 42, 43 and 46 render 'What is 3 x 0?', 'What is 2 x 0?' and 'What is 3 x 0?' again, and seed 44 renders '2 x 1 = ___'. Only seed 45 ('6 x 0 = ___') involves a named table, and its product is the trivial 0. Every keyed answer checks out arithmetically (0, 0, 2, 0, 0) but none exercises the stated tables."
+      "rationale": "The competency requires multiplying 'using the 6, 7, 8, and 9 multiplication tables', but 8 of 9 samples use factors 2, 3, or 5 (e.g. '3 × 0', '2 × 1 = ___', 'Ana says: 5 × 0 = 5', a '3×1 array'), which are outside {6,7,8,9}; only seed 45 ('6 × 0 = ___') touches a table-6 fact, and even that multiplies by zero."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "Not one 7-table, 8-table or 9-table fact is generated across the five sampled seeds, and no non-trivial 6-table product (6 x 7 = 42, 6 x 9 = 54) ever appears. Four of the five keyed answers are 0, so the sub-cases the wording explicitly enumerates are almost entirely unbuilt."
+      "rationale": "No genuine non-trivial 6-, 7-, 8-, or 9-table fact (e.g. 7×8, 9×6) appears anywhere across all 9 samples; the entire set is dominated by ×0/×1 identity facts using out-of-range factors."
     },
     "cognitive_capacity": {
       "verdict": "FAIL",
-      "rationale": "Seed 45's option D is the value -1 rendered as text '-1'; negative integers are far outside the Grade 3 Quarter 3 number system and give the pupil a distractor they have no vocabulary to reject. Separately, 'What is 2 x 0?' (seed 43) is a Grade 2 zero-property recall, pitched well below this quarter's demand."
+      "rationale": "'What is 3 × 0?', 'What is 2 × 0?', and '2 × 1 = ___' are trivial identity-property facts far below the grade 3 quarter 3 demand of recalling 6-9 times-table products such as 7×9=63."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Seeds 42 and 46 emit a byte-identical stem, 'What is 3 x 0?', differing only in option order, so the effective sample count is four. Only two shapes exist (direct 'What is a x b?' mcq and 'a x b = ___' cloze); no equal-groups array, skip-counting, missing-factor or table-completion variant is present."
+      "rationale": "Formatters vary (mcq, cloze, read_mcq array, error_detect, set_fill_in_blank, true_false) but the underlying content is uniform trivial ×0/×1 facts with out-of-range factors; no variant demonstrates an actual 6-9 table fact."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "There is no progression from seed 42 to seed 46 at all: the ladder stays pinned to zero facts and the single identity fact 2 x 1. Nothing in the observed sequence moves a pupil toward automaticity with the 6 through 9 facts, which is the whole point of this competency."
+      "rationale": "This node's samples are near-identical to sibling node mat_g3_na_q3_1's content (e.g. both render 'What is 3 × 0?' for seed 42 and '6 × 0 = ___' for seed 45), meaning the observed variation builds the properties-of-multiplication competency, not the '6,7,8,9 tables' competency this node claims to serve."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "The largest product produced anywhere in the packet for this node is 2 (seed 44, '2 x 1 = ___'), while the 6-9 tables require products spanning 6 up to 81 (9 x 9). Both the factor range (2, 3, 6, 0, 1) and the product ceiling fall an order of magnitude short of the stated scope."
+      "rationale": "Products observed are 0, 0, 2, 0, 0, 3, (error case: 5), 0, 0 -- every single product is 0, 1, 2, or 3, nowhere near the scale of genuine 6-9 times-table products, which range from 36 to 81."
     }
   },
   "overall": "FAIL"

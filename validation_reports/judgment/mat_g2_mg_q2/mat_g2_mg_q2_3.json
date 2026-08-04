@@ -1,66 +1,43 @@
 {
   "node_id": "mat_g2_mg_q2_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 1, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 68],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "A pencil is 21 cm long. A crayon is 9 cm long. How many cm longer is a pencil than a crayon?",
-      "correct_answer": 12
-    },
-    {
-      "seed": 43,
-      "question_text": "A notebook is 2 cm long. A book is 1 cm long. How many cm longer is a notebook than a book?",
-      "correct_answer": 1
-    },
-    {
-      "seed": 44,
-      "question_text": "A class survey showed 661 students like costume sash and 120 students like wristband. How many students were surveyed in all?",
-      "correct_answer": 781
-    },
-    {
-      "seed": 45,
-      "question_text": "What is 822 + 15?",
-      "correct_answer": 837
-    },
-    {
-      "seed": 46,
-      "question_text": "A ruler is 3 cm long. A pencil is 1 cm long. How many cm longer is a ruler than a pencil?",
-      "correct_answer": 2
-    }
+    {"seed": 42, "question_text": "A pencil is 21 cm long. A crayon is 9 cm long. How many cm longer is a pencil than a crayon?", "correct_answer": 12},
+    {"seed": 43, "question_text": "A notebook is 2 cm long. A book is 1 cm long. How many cm longer is a notebook than a book?", "correct_answer": 1},
+    {"seed": 44, "question_text": "A class survey showed 0 students like costume sash and ___ students like wristband. How many students were surveyed in all?", "correct_answer": 605},
+    {"seed": 45, "question_text": "What is 440 + 40?", "correct_answer": 480},
+    {"seed": 46, "question_text": "A ruler is 3 cm long. A pencil is 1 cm long. How many cm longer is a ruler than a pencil?", "correct_answer": 2},
+    {"seed": 50, "question_text": "A class survey showed 22 students like fan shirt and 315 students like tote bag. How many students were surveyed in all? The answer is 336.. True or False?", "correct_answer": false},
+    {"seed": 55, "question_text": "How long is the object? Give your answer in cm.", "correct_answer": "C"},
+    {"seed": 68, "question_text": "Rico solved this problem: \"A class survey showed 10 students like USB drive and 822 students like solar toy. How many students were surveyed in all?\" Rico says the answer is 831. Is Rico correct?", "correct_answer": {"has_error": true, "correct_value": 832}}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Seed 44 ('A class survey showed 661 students like costume sash and 120 students like wristband', key 781) and seed 45 ('What is 822 + 15?', key 837) contain no length or distance at all; both are plain three-digit addition, and seed 44's premise of a 661-pupil class is not credible either."
+      "rationale": "Four of eight samples never mention length or distance: seed 44's \"A class survey showed 0 students like costume sash and ___ students like wristband. How many students were surveyed in all?\", seed 45's bare \"What is 440 + 40?\", seed 50's fan-shirt/tote-bag survey total, and seed 68's USB-drive/solar-toy survey error-check."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The noun pair 'length and distance' is half covered at best. Every on-topic seed is a 'how many cm longer' difference; there is no combined-length addition, no journey or travelled-distance context, and no metre or kilometre unit anywhere in the sample."
+      "rationale": "Every on-topic sample (42, 43, 46, 55) tests object LENGTH via 'how many cm longer' comparisons or a ruler reading; the competency also explicitly names 'distance,' but no distance-between-places or travel-distance word problem appears anywhere in the packet."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Sentence structure suits Grade 2, but the referents do not: seed 43 states 'A notebook is 2 cm long. A book is 1 cm long' and seed 46 states 'A ruler is 3 cm long', describing objects no child could recognize, which actively undermines the measurement sense this lc should build."
+      "rationale": "Seed 43's \"A notebook is 2 cm long. A book is 1 cm long.\" and seed 46's \"A ruler is 3 cm long.\" use physically unrealistic object sizes that could mislead a Grade 2 student's real-world sense of scale, even though the subtraction itself is grade-appropriate."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "All three measurement items reuse a single frame, 'How many cm longer is A than B?', swapping only the object pair (pencil/crayon, notebook/book, ruler/pencil). There is no 'how much shorter', no total-length question, and no missing-part item where the difference is given."
+      "rationale": "The apparent additional 'variants' beyond the four on-topic length items are actually unrelated survey-addition and error-detection content (seeds 44, 45, 50, 68) spliced in, not legitimate length or distance contextual variants."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The progression is inverted: seed 42 demands the regrouping subtraction 21 - 9 = 12, then seeds 43 and 46 fall back to 2 - 1 and 3 - 1, so the later items are markedly easier than the first rather than building on it."
+      "verdict": "FAIL",
+      "rationale": "Half the sample pool (44, 45, 50, 68) builds addition/survey-total skills using items like 'costume sash' and 'USB drive,' an axis unrelated to solving length or distance problems, and seed 44's text is additionally broken -- it reads \"___ students like wristband\" with a literal, unsubstituted blank left inside the sentence itself rather than a number."
     },
     "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "A 1 cm book, a 2 cm notebook and a 3 cm ruler are physically impossible measurements, while seeds 44 and 45 swing to 661, 822 and 837 with no unit attached; neither band reflects the realistic centimetre magnitudes a Grade 2 length-and-distance problem should use."
+      "verdict": "CONCERN",
+      "rationale": "On-topic length differences (1, 2, 12 cm) are small and plausible, but the contaminating seed 45 injects an unrelated three-digit sum, \"What is 440 + 40?\", foreign to this length/distance competency's expected classroom-object scale."
     }
   },
   "overall": "FAIL"

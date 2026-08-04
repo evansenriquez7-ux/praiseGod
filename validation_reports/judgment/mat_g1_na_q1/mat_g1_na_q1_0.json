@@ -1,67 +1,43 @@
 {
   "node_id": "mat_g1_na_q1_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 0, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 72],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What number comes next when counting: 4, 5, 6, 7, ___?",
-      "correct_answer": 8
-    },
-    {
-      "seed": 43,
-      "question_text": "What number comes next when counting: 3, 4, 5, 6, ___?",
-      "correct_answer": 7
-    },
-    {
-      "seed": 44,
-      "question_text": "What comes next: 9, 10, 11, 12, ___",
-      "correct_answer": 13
-    },
-    {
-      "seed": 45,
-      "question_text": "What number comes next when counting: 7, 8, 9, 10, ___?",
-      "correct_answer": 11
-    },
-    {
-      "seed": 46,
-      "question_text": "What number comes next when counting: 4, 5, 6, 7, ___?",
-      "correct_answer": 8
-    }
+    {"seed": 42, "question_text": "What number comes next when counting: 4, 5, 6, 7, ___?", "correct_answer": 8},
+    {"seed": 43, "question_text": "What number comes next when counting: 3, 4, 5, 6, ___?", "correct_answer": 7},
+    {"seed": 44, "question_text": "What comes next: 9, 10, 11, 12, ___", "correct_answer": 13},
+    {"seed": 45, "question_text": "What number comes next when counting: 7, 8, 9, 10, ___?", "correct_answer": 11},
+    {"seed": 46, "question_text": "What number comes next when counting: 4, 5, 6, 7, ___?", "correct_answer": 8},
+    {"seed": 50, "question_text": "What number is marked?", "correct_answer": "B"},
+    {"seed": 72, "question_text": "Arrange these numbers from largest to smallest: 4, 6, 7, 5", "correct_answer": [4, 5, 6, 7]}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency requires counting up OR down and identifying 1-more/1-less, but all five samples (seeds 42-46) only show ascending counting-by-1 sequences like '4, 5, 6, 7, ___'; none demonstrate backward counting or explicit 1-more/1-less phrasing."
+      "rationale": "Five of seven samples, seeds 42-46, directly test 'count up...from a given number' via ascending next-number sequences, and seed 50's 'What number is marked?' plausibly ties to counting on a number line, but seed 72's 'Arrange these numbers from largest to smallest' tests numerical ordering/sorting, a related but distinct skill this competency's wording does not name."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The counting DNA registers 28 combos across 3 axes, so backward-counting and 1-more/1-less variants likely exist outside this 5-sample window; validate_matrix separately confirms exhaustive execution of that registry."
+      "verdict": "FAIL",
+      "rationale": "'Counting up OR down' is explicit in the competency wording, but every counting sample, seeds 42, 43, 44, 45, 46, only counts UP in ascending 'comes next' sequences; no sample shows a descending count-down sequence, and '1 more or 1 less than a given number' phrasing never appears either."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Question text such as 'What number comes next when counting: 4, 5, 6, 7, ___?' is a single short clause well under the 15-word cap, appropriate for a Grade 1 Quarter 1 reader."
+      "verdict": "FAIL",
+      "rationale": "Seed 72's keyed correct_answer [4, 5, 6, 7] is ascending order, but the question text explicitly asks to 'Arrange these numbers from largest to smallest' for the input 4, 6, 7, 5, which should key [7, 6, 5, 4] -- the item's own answer key contradicts its own instruction, so a student who correctly sorts descending would be marked wrong."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "With only forward, ascending-by-1 sequences shown across all five seeds, the sampled variant space does not visibly exercise the descending or 1-more/1-less framing named directly in the competency."
+      "rationale": "Formatter variety exists, mcq, cloze, read_mcq, ordering, but every counting-specific sample only shows ascending 'comes next' sequences, seeds 42-46; no sample uses a 'comes before' or descending sequence framing."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The difficulty stays within counting to a modest range (up to 13), an appropriate entry point before the Q2 skip-counting node, so the observed progression does not overreach the competency."
+      "verdict": "CONCERN",
+      "rationale": "Seed 72 varies a sort-four-unordered-numbers-by-magnitude axis rather than the sequential counting or 1-more/1-less neighbor-identification axis this competency specifically names, pulling the sampled difficulty progression away from the stated skill."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Sample sequences top out at 13, a sensible early-Q1 range for a competency that ultimately extends counting up to 100."
+      "rationale": "All counting and ordering values observed across the seven seeds, 4 through 14, are well within the competency's 'up to 100' ceiling and consistent with an early Grade 1 Quarter 1 entry point."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

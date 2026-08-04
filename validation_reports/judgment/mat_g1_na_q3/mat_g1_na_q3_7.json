@@ -1,22 +1,73 @@
 {
   "node_id": "mat_g1_na_q3_7",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-3 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 2, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 47, 48],
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50
+  ],
   "samples_reviewed": [
-    {"seed": 42, "question_text": "Which of these number sequences shows a repeating pattern?", "correct_answer": "1, 10, 1, 10, 1, 10"},
-    {"seed": 44, "question_text": "Which of these number sequences shows a repeating pattern?", "correct_answer": "10, 10, 10, 10, 10, 10"},
-    {"seed": 46, "question_text": "Which of these number sequences shows a repeating pattern?", "correct_answer": "2, 1, 2, 1, 2, 1"},
-    {"seed": 48, "question_text": "Which of these number sequences shows a repeating pattern?", "correct_answer": "1, 10, 1, 10, 1, 10"}
+    {
+      "seed": 42,
+      "question_text": "Which of these number sequences shows a repeating pattern?",
+      "correct_answer": "1, 10, 1, 10, 1, 10"
+    },
+    {
+      "seed": 43,
+      "question_text": "Which of these number sequences shows a repeating pattern?",
+      "correct_answer": "2, 10, 2, 10, 2, 10"
+    },
+    {
+      "seed": 44,
+      "question_text": "Which of these number sequences shows a repeating pattern?",
+      "correct_answer": "10, 10, 10, 10, 10, 10"
+    },
+    {
+      "seed": 45,
+      "question_text": "Which of these number sequences shows a repeating pattern?",
+      "correct_answer": "2, 2, 2, 2, 2, 2"
+    },
+    {
+      "seed": 46,
+      "question_text": "Which of these number sequences shows a repeating pattern?",
+      "correct_answer": "2, 1, 2, 1, 2, 1"
+    },
+    {
+      "seed": 50,
+      "question_text": "Which of these number sequences shows a repeating pattern?",
+      "correct_answer": "2, 2, 2, 2, 2, 2"
+    }
   ],
   "findings": {
-    "competency_fulfillment": {"verdict": "CONCERN", "rationale": "The fix is a real improvement over the stale review's generic 'find the next number' stems, since these now clearly test whether a sequence exhibits a repeating structure, but the verb in 'Create repeating patterns' still implies student-generated output, while an MCQ selecting among given sequences tests recognition rather than creation."},
-    "comprehensive_coverage": {"verdict": "PASS", "rationale": "Across the 7 seeds the ABAB-style answers vary in both digits used (1/10, 2/10, 2/1) and one seed (44) uses a constant AAAA sequence, giving reasonable structural diversity for a first exposure to repeating patterns."},
-    "cognitive_capacity": {"verdict": "PASS", "rationale": "'Which of these number sequences shows a repeating pattern?' is a single 9-word question, well within grade-1 quarter-3 reading demand."},
-    "variant_comprehensiveness": {"verdict": "CONCERN", "rationale": "Seed 44's correct answer '10, 10, 10, 10, 10, 10' is a degenerate constant run rather than the alternating ABAB structure typically meant by 'repeating pattern' at this grade, which could confuse a first grader about what counts as a pattern versus a plain unchanging list."},
-    "competency_alignment": {"verdict": "CONCERN", "rationale": "Selecting the correct option among distractors is a recognition task, not the generative 'create' skill this lc names; a fill-in or drag-to-build format would more directly match 'create repeating patterns using ... numbers.'"},
-    "scale_appropriateness": {"verdict": "PASS", "rationale": "The number values used (1, 2, 10) are small and appropriate for grade-1 quarter-3 pattern work, well within the counting range students have already mastered by this point."}
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "The competency's verb is 'Create', but all six samples are recognition tasks, e.g. \"Which of these number sequences shows a repeating pattern?\" ('Which of these number sequences shows a repeating pattern?'), never asking the student to construct or extend a pattern themselves."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The competency names 'objects, images, or numbers' as valid pattern materials, but all six samples use numeric sequences only, e.g. \"Which of these number sequences shows a repeating pattern?\"; no object- or image-based pattern-creation item appears."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Sentence and option structure stay simple and readable for Grade 1 Q3 regardless of the task-type mismatch."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Formatter shell varies between mcq and cloze, but seed 45 (\"Which of these number sequences shows a repeating pattern?\") and seed 50 both render the identical trivial constant sequence '2, 2, 2, 2, 2, 2', and the underlying task never varies from four-option recognition."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "The distractor-vs-correct-sequence variation stays on the topic of patterns generally, but never approaches the generative 'create' skill the competency names, so the axis being exercised is recognition rather than construction."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numbers used in the sequences (1, 2, 8, 10) are small and simple, fitting Grade 1 Q3 even though the task type itself is mismatched."
+    }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

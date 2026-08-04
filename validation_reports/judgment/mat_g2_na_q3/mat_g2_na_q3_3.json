@@ -1,14 +1,16 @@
 {
   "node_id": "mat_g2_na_q3_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 5, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    55
   ],
   "samples_reviewed": [
     {
@@ -35,32 +37,45 @@
       "seed": 46,
       "question_text": "Ate Cara puts 0 photo albums in each of 3 bags. How many photo albums are in all the bags?",
       "correct_answer": 0
+    },
+    {
+      "seed": 50,
+      "question_text": "Mia puts 1 merchandise shirts in each of 3 bags. How many merchandise shirts are in all the bags? The answer is 4.. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
+      "question_text": "Grace solved this problem: \"Sora puts 0 concert tickets in each of 3 bags. How many concert tickets are in all the bags?\" Grace says the answer is 3. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 0
+      }
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Competency requires the 2, 3, 4, 5, and 10 multiplication tables, but every sample multiplies by 0 or 1 (3x1=3, 0x2=0, 1x2=2, 0x6=0, 0x3=0), never exercising an actual times-table fact."
+      "verdict": "CONCERN",
+      "rationale": "All seven word problems use the 'X puts N objects in each of M bags' template (e.g. seed 42 'Daniel puts 3 coins in each of 1 bag'), but every one of the seven has a per-group quantity of 0 or 1, so genuine multiplication recall is never required to solve them."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "All 5 seeds (42-46) use degenerate factors of 0 or 1; not a single sample shows a non-trivial product like 4x5=20 that would demonstrate times-table mastery."
+      "rationale": "Zero of the seven samples involve money despite the competency's explicit '(including problems involving money)' clause, and tables 4, 5, and 10 never appear as a factor across any sample."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The 'X puts N items in each of M bags, how many in all' template is a reasonable multiplication-as-repeated-groups framing for Grade 2 Q3."
+      "rationale": "The bag-and-item word-problem sentences, e.g. seed 46's 'Ate Cara puts 0 photo albums in each of 3 bags. How many photo albums are in all the bags?', are short and single-step, matching grade 2 quarter 3 level."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Because every factor pair involves 0 or 1, the sample set cannot demonstrate coverage of the 2, 3, 4, 5, 10 tables that this competency is named after."
+      "rationale": "Formats vary (mcq, cloze, true_false, error_detect) but the money-problem variant the competency names is entirely absent, and the numeric content stays fixed at 0 or 1 items per bag across every seed."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "Despite the competency explicitly saying 'including problems involving money', none of the 5 samples mentions pesos or any money context; all use coins/chapters/ribbons/bottles/albums as plain countable objects."
+      "verdict": "CONCERN",
+      "rationale": "The bag-counting context does stay on the multiplication-word-problem axis, but seed 45's 'Coach Roel puts 0 water bottles in each of 6 bags' uses a 0 multiplicand, making the answer trivially 0 regardless of the bag count and not exercising the named tables."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "Products across the batch never exceed 3, far too trivial to represent mastery of tables that should reach products like 5x10=50."
+      "rationale": "Item-per-bag counts never exceed 1 across all seven samples (3,1 / 0,2 / 1,2 / 0,6 / 0,3 / 1,3 / 0,3), so the sample set never demonstrates a non-trivial product within the 2, 3, 4, 5, 10 table range."
     }
   },
   "overall": "FAIL"

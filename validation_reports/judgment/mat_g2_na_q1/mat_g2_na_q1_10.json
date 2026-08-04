@@ -1,66 +1,45 @@
 {
   "node_id": "mat_g2_na_q1_10",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 1, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 55, 75, 82],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 1 + 12?",
-      "correct_answer": 13
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 0 + 25?",
-      "correct_answer": 25
-    },
-    {
-      "seed": 44,
-      "question_text": "24 + 20 = ___",
-      "correct_answer": 44
-    },
-    {
-      "seed": 45,
-      "question_text": "12 + 12 = ___",
-      "correct_answer": 24
-    },
-    {
-      "seed": 46,
-      "question_text": "0 + 46 = ___",
-      "correct_answer": 46
-    }
+    {"seed": 42, "question_text": "What is 10 + 12?", "correct_answer": 22},
+    {"seed": 43, "question_text": "What is 2 + 10?", "correct_answer": 12},
+    {"seed": 44, "question_text": "0 + 22 = ___", "correct_answer": 22},
+    {"seed": 45, "question_text": "24 + 15 = ___", "correct_answer": 39},
+    {"seed": 46, "question_text": "4 + 15 = ___", "correct_answer": 19},
+    {"seed": 50, "question_text": "Show 16 + 0 on the number line.", "correct_answer": 16},
+    {"seed": 51, "question_text": "The dot is at 20 and it moves forward 20 numbers. Starting from 20, just count up 20 numbers. Which number will the dot land on?", "correct_answer": "C"},
+    {"seed": 55, "question_text": "The two parts are 6 and 10. What is the sum?", "correct_answer": 16},
+    {"seed": 75, "question_text": "0 + 44 = 54. True or False?", "correct_answer": false},
+    {"seed": 82, "question_text": "Dante says: 11 + 20 = 31. Is Dante correct?", "correct_answer": {"has_error": false, "correct_value": 31}}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency requires illustrating three specific properties (add-zero identity, commutative reordering, associative regrouping) with sums to 1000, but the five samples are generic two-addend facts (1+12, 0+25, 24+20, 12+12, 0+46) with no paired reorder-and-compare item and no three-addend regrouping item, so none of the three named properties is actually illustrated."
+      "rationale": "The competency names three specific properties (zero-identity, order-changing, grouping-changing), but items like \"What is 10 + 12?\" (42) and \"24 + 15 = ___\" (45) are plain addition facts with no side-by-side reordering or regrouping shown, so no property is actually illustrated by most of the packet."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "addition registers 4 axes and 8 combos; a properties-of-addition node needs combos that pair equivalent expressions (a+b vs b+a, or (a+b)+c vs a+(b+c)), and it is unclear from only 8 combos whether such paired-comparison items exist, though exhaustive combo execution is separately validated by validate_matrix."
+      "verdict": "FAIL",
+      "rationale": "Of the three named sub-cases, only the zero-identity property appears, via seed 44's \"0 + 22 = ___\", seed 50's \"Show 16 + 0 on the number line.\", and seed 75's \"0 + 44 = 54. True or False?\"; the order-changing (commutative) and grouping-changing (associative) sub-cases never appear in any of the ten samples."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Stems are short single-fact items under the 18-word cap, appropriate reading level for grade 2, though structurally too simple to require the comparative reasoning ('does order matter?') the competency actually asks for."
+      "rationale": "Numbers stay small and single-step throughout, e.g. \"4 + 15 = ___\" and \"The two parts are 6 and 10. What is the sum?\", fitting Grade 2 Q1 arithmetic demand regardless of the property-illustration gap noted elsewhere."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "8 registered combos seems light for a properties node that conceptually needs at least three distinct item shapes (identity, commutative, associative) each with several examples; nothing in the 5 samples confirms even one property is being explicitly tested."
+      "verdict": "FAIL",
+      "rationale": "Formats vary (mcq, cloze, number-line, read_fill_in_blank, true_false, error_detect) but every variant renders a generic addition fact; the order-changing and grouping-changing contextual variants this competency specifically names are absent from all ten seeds."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "This node's content is indistinguishable from a plain addition-fact node -- compare q1_9's samples, several of which are identical here ('0 + 46 = ___' appears in both); as sampled it does not demonstrate the property-illustration skill that differentiates this competency from ordinary addition practice."
+      "rationale": "Seeds like 42's \"What is 10 + 12?\" and 82's \"Dante says: 11 + 20 = 31. Is Dante correct?\" vary only the numbers being added, not the order or grouping of addends, so the sampled variation builds generic addition fluency rather than the properties-of-addition skill this node names."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Sums observed (13-46) are well under the 1000 ceiling named for this property-illustration competency, consistent with q1_9's undershoot and worth checking against the exhaustive matrix run."
+      "verdict": "FAIL",
+      "rationale": "The competency states sums up to 1000, but the largest value shown across all ten samples is 40 (seed 51, counting up 20 from 20); nothing approaches even the low hundreds, let alone the stated 1000 ceiling."
     }
   },
   "overall": "FAIL"

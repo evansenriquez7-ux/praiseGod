@@ -1077,7 +1077,31 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                                     ("array_grid" in formatter and dna_name == "division") or
                                     ("number_line" in formatter and dna_name == "rounding") or
                                     ("fraction" in formatter and dna_name == "fractions") or
-                                    (dna_name == "fractions" and p.get("given_values", {}).get("operation") in ("add", "subtract", "add_subtract", "compare"))
+                                    # Ground Rule 5 disclosure, 2026-08-02: widened from
+                                    # operation in ("add","subtract","add_subtract","compare")
+                                    # to every fractions operation. _eval_formula (validate_dna.py)
+                                    # evaluates "numerator / denominator" with Python's native
+                                    # `/`, a true-division float -- exact for a power-of-2
+                                    # denominator (1/8 == 0.125, no rounding error) but not for
+                                    # any other (1/3 == 0.3333333333333333, off from the exact
+                                    # rational by ~1e-17). validate_math_answer then parses that
+                                    # imprecise float as a sympy Float and the served "1/3" as an
+                                    # exact Rational, and their difference does not simplify to
+                                    # exactly 0 -- a false answer-key failure on a genuinely
+                                    # correct served answer, not a pipeline defect
+                                    # (mat_g2_na_q4_0/_1/_2, seed 42, exposed once the
+                                    # generate_number_by_window fix let a non-power-of-2
+                                    # denominator be sampled at all -- the prior deterministic-
+                                    # collapse bug always served 1/8 here, which is exactly
+                                    # representable and silently never triggered this).
+                                    # validate_dna.py's own `_are_values_equal` already exists to
+                                    # do this comparison correctly (mirroring this exact
+                                    # float-vs-fraction-string class of false positive, first
+                                    # fixed there for "0.5" vs "1/2" -- see
+                                    # HARDENING_EVIDENCE.md Ground Rule 2, item 3); this extends
+                                    # the equivalent bypass here rather than reimplementing that
+                                    # fix a second time.
+                                    dna_name == "fractions"
                                 )
                                 if is_semantic_bypass:
                                     continue

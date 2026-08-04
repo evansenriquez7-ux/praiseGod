@@ -1,14 +1,28 @@
 {
   "node_id": "mat_g2_na_q2_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2c fix-verification batch",
-  "review_date": "2026-07-23",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 2, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 47, 48],
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    51,
+    55
+  ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "Daniel has ₱1 in bills and ₱12 in coins. How much money does Daniel have in all?",
-      "correct_answer": 13
+      "question_text": "Daniel has ₱10 in bills and ₱12 in coins. How much money does Daniel have in all?",
+      "correct_answer": 22
+    },
+    {
+      "seed": 43,
+      "question_text": "Kuya Bien has ₱2 in bills and ₱10 in coins. How much money does Kuya Bien have in all?",
+      "correct_answer": 12
     },
     {
       "seed": 44,
@@ -16,41 +30,59 @@
       "correct_answer": 506
     },
     {
-      "seed": 47,
-      "question_text": "What is the total value of 1 ₱500 bill, 1 ₱5 coin, and 2 ₱1 coins?",
-      "correct_answer": 507
+      "seed": 45,
+      "question_text": "What is the total value of 1 ₱100 bill, 1 ₱20 bill, and 1 ₱1 coin?",
+      "correct_answer": 121
     },
     {
-      "seed": 48,
-      "question_text": "What is the total value of 3 ₱20 bills, 1 ₱10 coin, and 1 ₱5 coin?",
-      "correct_answer": 75
+      "seed": 46,
+      "question_text": "Ate Cara has ₱4 in bills and ₱15 in coins. How much money does Ate Cara have in all?",
+      "correct_answer": 19
+    },
+    {
+      "seed": 50,
+      "question_text": "A class survey showed 5 students like fan shirt and 200 students like tote bag. How many students were surveyed in all?",
+      "correct_answer": 205
+    },
+    {
+      "seed": 51,
+      "question_text": "What is 20 + 20? The answer is 40.. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 55,
+      "question_text": "Grace solved this problem: \"Sora has ₱6 in bills and ₱10 in coins. How much money does Sora have in all?\" Grace says the answer is 15. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 16
+      }
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Seed 44's '1 ₱500 bill, 1 ₱5 coin, and 1 ₱1 coin' sums to 500+5+1=506, matching the recorded answer, and seed 48's '3 ₱20 bills, 1 ₱10 coin, and 1 ₱5 coin' sums to 60+10+5=75, also matching -- the arithmetic error previously found in this bills-and-coins template (505 vs 506) is fixed."
+      "rationale": "Money word problems genuinely appear, e.g. seed 44's 'total value of 1 ₱500 bill, 1 ₱5 coin, and 1 ₱1 coin' and seed 42's 'Daniel has ₱10 in bills and ₱12 in coins', matching the 'including problems involving money' clause."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All 7 seeds are money-flavored, and unlike the prior stale review the batch now shows two distinct templates (the 'has ₱A in bills and ₱B in coins' phrasing in seeds 42/43/46, and the 'total value of N bills/coins' enumeration in seeds 44/45/47/48), giving real scenario variety."
+      "verdict": "FAIL",
+      "rationale": "The 'with and without regrouping' clause is only half-covered: none of the 8 samples require a carry, e.g. seed 44's 500+5+1=506 and seed 46's 4+15=19 both sum digit-by-digit with no regrouping anywhere in the batch."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Both templates are single, direct sentences appropriate for Grade 2 Q2, e.g. seed 48's 'What is the total value of 3 ₱20 bills, 1 ₱10 coin, and 1 ₱5 coin?' requires only counting and adding named denominations, not multi-step reasoning."
+      "rationale": "Sentence lengths and vocabulary (bills, coins, 'in all') match grade-2 quarter-2 reading demand, and the three-addend seed 44 problem adds only one extra reasoning step appropriate to this stage."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The competency calls for addition sums up to 1000 with and without regrouping, and this batch spans amounts from 13 up to 507, plausibly covering both simple two-addend sums and multi-denomination regrouping cases."
+      "rationale": "Both money contexts (seed 42's peso bills/coins) and non-money contexts (seed 50's class survey 'fan shirt' vs 'tote bag') are represented, alongside true_false (seed 51) and error_detect (seed 55) formats."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample is an addition-of-money 'how much in all' / 'total value' problem, directly matching the wording 'Solve problems involving addition with sums up to 1000, including problems involving money.'"
+      "rationale": "Every sample is a genuine addition-with-sum word problem; none drift to an unrelated skill, keeping the variation on the intended addition/money axis."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Sums observed (13, 25, 46, 75, 121, 506, 507) span from small two-digit totals to values well past a hundred, a sensible spread beneath the competency's 1000 ceiling for Grade 2 Q2."
+      "verdict": "CONCERN",
+      "rationale": "Only seed 44 (₱506) approaches the stated sums-up-to-1000 ceiling; the other 7 samples stay under ₱205 (seed 50's 205), leaving the 500-1000 band almost entirely unexercised."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

@@ -1,25 +1,30 @@
 {
   "node_id": "mat_g2_na_q1_8",
-  "reviewed_by": "Claude Opus 5 (Claude Code session 2026-07-26), blind packet-only re-review triggered by the validate_judgment staleness gate",
-  "review_date": "2026-07-26",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 2, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    55,
+    82,
+    101
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What is 1 + 12?",
-      "correct_answer": 13
+      "question_text": "What is 10 + 12?",
+      "correct_answer": 22
     },
     {
       "seed": 43,
-      "question_text": "What is 0 + 25?",
-      "correct_answer": 25
+      "question_text": "What is 2 + 10?",
+      "correct_answer": 12
     },
     {
       "seed": 44,
@@ -33,34 +38,62 @@
     },
     {
       "seed": 46,
-      "question_text": "0 + 46 = ___",
-      "correct_answer": 46
+      "question_text": "4 + 15 = ___",
+      "correct_answer": 19
+    },
+    {
+      "seed": 50,
+      "question_text": "What place is the digit 2 in, in the number 8205? The answer is 2000.. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 51,
+      "question_text": "The dot is at 20 and it moves forward 20 numbers. Starting from 20, just count up 20 numbers. Which number will the dot land on?",
+      "correct_answer": "C"
+    },
+    {
+      "seed": 55,
+      "question_text": "The two parts are 6 and 10. What is the sum?",
+      "correct_answer": 16
+    },
+    {
+      "seed": 82,
+      "question_text": "Dante says: 11 + 20 = 31. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 31
+      }
+    },
+    {
+      "seed": 101,
+      "question_text": "Show 15 + 11 on the number line.",
+      "correct_answer": 26
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency is addition with sums up to 1000 in expanded form; the sampled additions are 1 + 12, 0 + 25 and 0 + 46, none of which is written in expanded form and none of which produces a sum above 46, roughly five percent of the stated ceiling."
+      "rationale": "None of the 10 samples show addition in expanded form (e.g. decomposing into hundreds/tens/ones); seed 46 is a bare '4 + 15 = ___' and seed 101 is 'Show 15 + 11 on the number line', neither is the expanded-form method the competency names."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "Seed 44 renders 'What place is the digit 5 in, in the number 4905?' and seed 45 renders the same task for 3140 - four-digit numbers that exceed this node's own stated ceiling of 1000, on a sub-skill (place naming) the competency does not ask for."
+      "rationale": "The competency's defining representation, expanded form, is absent from all 10 samples; instead seeds 44, 45 and 50 substitute place-value identification questions like 'What place is the digit 5 in, in the number 4905?'"
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The arithmetic itself is well within Grade 2 reach, but presenting four-digit numerals such as 4905 in a Quarter 1 node whose scope stops at 1000 asks the student to read a place value that has not yet been introduced at this point in the sequence."
+      "verdict": "FAIL",
+      "rationale": "Seeds 44, 45 and 50 ask a grade-2 Q1 student to name the place value of a digit in 4-digit numbers (4905, 3140, 8205), which exceeds the numbers-to-1000 scope grade 2 curriculum uses and outpaces the named expanded-form skill."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "mcq and cloze presentations both appear, but every sampled item is a single-step lookup or sum; no variant renders the addend decomposition (for example 234 + 152 as 200+30+4 plus 100+50+2) that defines this competency."
+      "verdict": "FAIL",
+      "rationale": "Variation spans mcq, cloze, true_false and read_mcq formatters but never produces the expanded-form variant itself; seed 51's number-line jump and seed 55's 'two parts... what is the sum' framing still skip expanded form entirely."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Two of the five sampled additions use zero as an addend, which removes the carrying and place-alignment work entirely, so the observed difficulty progression does not track the competency's expanded-form skill in any direction."
+      "rationale": "Seed 44 ('What place is the digit 5 in, in the number 4905?') and seed 50 ('What place is the digit 2 in, in the number 8205?') build place-value identification, a distinct skill from adding numbers in expanded form."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "The competency's range is explicitly up to 1000 yet no sampled sum exceeds 46, while the off-topic place-value items reach 4905; the magnitudes are simultaneously far below the stated ceiling for the target skill and far above it for the intruding one."
+      "rationale": "The competency caps sums at 1000, but seed 45 uses the number 3140 and seed 50 uses 8205 for place-value questions, both far beyond the stated ceiling, while the addition samples (10+12, 2+10, 4+15) never approach it."
     }
   },
   "overall": "FAIL"

@@ -1,67 +1,45 @@
 {
   "node_id": "mat_g3_na_q4_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 4, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 55, 85],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 670 ÷ 10?",
-      "correct_answer": 67
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 30 ÷ 2?",
-      "correct_answer": 15
-    },
-    {
-      "seed": 44,
-      "question_text": "300 ÷ 5 = ___",
-      "correct_answer": 60
-    },
-    {
-      "seed": 45,
-      "question_text": "200 ÷ 4 = ___",
-      "correct_answer": 50
-    },
-    {
-      "seed": 46,
-      "question_text": "What is 108 ÷ 2?",
-      "correct_answer": 54
-    }
+    {"seed": 42, "question_text": "What is 670 ÷ 10?", "correct_answer": 67},
+    {"seed": 43, "question_text": "What is 30 ÷ 2?", "correct_answer": 15},
+    {"seed": 44, "question_text": "300 ÷ 5 = ___", "correct_answer": 60},
+    {"seed": 45, "question_text": "200 ÷ 4 = ___", "correct_answer": 50},
+    {"seed": 46, "question_text": "What is 108 ÷ 2?", "correct_answer": 54},
+    {"seed": 50, "question_text": "Look at the 10×13 array. How many squares are shaded in all?", "correct_answer": "A"},
+    {"seed": 51, "question_text": "Ana says: 20 ÷ 4 = 16. Is Ana correct?", "correct_answer": {"has_error": true, "correct_value": 5}},
+    {"seed": 55, "question_text": "Shade all the squares inside the 2×63 rectangle. How many squares did you shade in all?", "correct_answer": 126},
+    {"seed": 85, "question_text": "165 ÷ 3 = 55. True or False?", "correct_answer": true}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency asks students to ILLUSTRATE division via number-line jumps and via its multiplication-inverse relationship, but the samples are plain quotient-computation questions ('What is 670÷10?', '300÷5=___') with no number-line reference in the text and no explicit multiplication-inverse framing (e.g. '6×7=42, so 42÷7=?')."
+      "verdict": "FAIL",
+      "rationale": "No sample among the 9 shows 'equal jumps on the number line' -- no 'dot', 'jump', or number-line language appears anywhere -- and the two array items (seed 50: 'Look at the 10×13 array...', seed 55: 'Shade all the squares inside the 2×63 rectangle...') ask for a multiplication total (130, 126), not a division fact."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "variant_registry lists 20 combos for division, but none of the 5 samples given demonstrate the number-line or inverse-multiplication illustration this competency specifically names; a visual/model component may exist outside the text field though."
+      "verdict": "FAIL",
+      "rationale": "Neither of the two explicitly named illustration methods (equal jumps on a number line; division as inverse of multiplication) is demonstrated by any sample; the remaining 7 samples are bare 'X ÷ Y = ___' or 'What is X ÷ Y?' facts with no representational scaffold at all."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The quotient questions are short single-step computations appropriate for grade 3 quarter 4 reading level."
+      "verdict": "CONCERN",
+      "rationale": "The bare division facts ('What is 670 ÷ 10?', '300 ÷ 5 = ___') fit grade 3 quarter 4 reasonably, but the two array-shading items (seeds 50, 55) would confuse a student expecting division content mid-node, since they ask for a product total instead."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Both mcq and cloze formats appear, but no sample text links a division fact back to its multiplication counterpart, which the competency requires students to connect."
+      "verdict": "FAIL",
+      "rationale": "Across mcq, cloze, read_mcq, error_detect, set_fill_in_blank, and true_false, no variant ever illustrates division through jumps or through an explicit inverse-of-multiplication framing (e.g. relating 670÷10=67 back to 67×10=670); all are terminal answer facts."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Plain quotient computation is a reasonable building block but doesn't by itself demonstrate the 'illustrate...as inverse of multiplication' concept this specific competency emphasizes over q4_1's plain fact fluency."
+      "rationale": "Seeds 50 and 55 build multiplication-array computation ('10×13 array', '2×63 rectangle', both asking for a total product) rather than reinforcing division, so their variation drifts toward a related but distinct axis instead of this node's stated skill."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Dividend/divisor magnitudes (30-670 divided by single/double-digit numbers) are a reasonable early-Q4 range for grade 3 division."
+      "rationale": "Dividends and divisors (670÷10=67, 300÷5=60, 200÷4=50, 108÷2=54, 165÷3=55) use reasonably scaled 2-3 digit dividends appropriate for a grade 3 quarter 4 division introduction."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

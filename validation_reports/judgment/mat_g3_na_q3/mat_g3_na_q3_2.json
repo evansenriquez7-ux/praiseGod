@@ -1,66 +1,42 @@
 {
   "node_id": "mat_g3_na_q3_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 8, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 90 × 1?",
-      "correct_answer": 90
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 17 × 0?",
-      "correct_answer": 0
-    },
-    {
-      "seed": 44,
-      "question_text": "75 × 0 = ___",
-      "correct_answer": 0
-    },
-    {
-      "seed": 45,
-      "question_text": "What is 51 × 0?",
-      "correct_answer": 0
-    },
-    {
-      "seed": 46,
-      "question_text": "What is 11 × 10?",
-      "correct_answer": 110
-    }
+    {"seed": 42, "question_text": "What is 90 × 1?", "correct_answer": 90},
+    {"seed": 43, "question_text": "What is 17 × 0?", "correct_answer": 0},
+    {"seed": 44, "question_text": "75 × 0 = ___", "correct_answer": 0},
+    {"seed": 45, "question_text": "What is 51 × 0?", "correct_answer": 0},
+    {"seed": 46, "question_text": "What is 11 × 10?", "correct_answer": 110},
+    {"seed": 50, "question_text": "10 × 1 = 11. True or False?", "correct_answer": false},
+    {"seed": 55, "question_text": "Grace says: 25 × 0 = 25. Is Grace correct?", "correct_answer": {"has_error": true, "correct_value": 0}}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Four of five samples are trivial ×0/×1 facts ('90×1'=90, '17×0'=0, '75×0'=0, '51×0'=0) and only one ('11×10'=110) shows a genuine 2-digit-by-multiple-of-10 case; none demonstrate 2-3 digit by 1-digit multiplication requiring actual regrouping/carrying, which this competency explicitly names."
+      "rationale": "The competency requires 2-3 digit × 1-digit and 2-4 digit × leading-digit-only multiplication 'with and without regrouping', but every 1-digit multiplier shown is 0 or 1 (90×1, 17×0, 75×0, 51×0, 10×1, 25×0) -- never 2 through 9 -- so no sample can require regrouping at all."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "variant_registry lists 20 combos, but the 5 illustrative samples don't include a single case of true multi-digit regrouping multiplication (e.g. 47×6), so the specific regrouping requirement central to this competency is unconfirmed."
+      "rationale": "The 'with regrouping' sub-case is entirely absent, and genuine non-trivial 1-digit multipliers (2-9) never appear across all 7 samples."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The trivial ×0 facts shown are well below the cognitive demand grade-3-Q3 multi-digit multiplication with regrouping should require."
+      "verdict": "FAIL",
+      "rationale": "'What is 17 × 0?' and '10 × 1 = 11. True or False?' are trivial identity/zero-property facts, well below the reasoning demand of genuine 2-3 digit by 1-digit multiplication with carrying expected at grade 3 quarter 3."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "The variant space as illustrated shows the 'leading digit only non-zero' multiple-of-10 case only once and no regrouping case at all, so the registered combos cannot be confirmed to cover this competency's stated scope."
+      "verdict": "CONCERN",
+      "rationale": "Seed 46 ('What is 11 × 10?') correctly instantiates the 'leading-digit-only-nonzero' multiplier type named by the competency, but the 2-3 digit by 1-digit type never rises above ×0/×1, so genuine variant coverage across both named multiplication types is incomplete."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The ×0/×1 identity facts are more appropriate to q3_0/q3_1's table-fluency and properties content than to this node's regrouping-multiplication competency."
+      "verdict": "FAIL",
+      "rationale": "The sampled variation is confined to the zero/identity properties, which belong to sibling node mat_g3_na_q3_1's competency, rather than the regrouping-focused multiplication this node is supposed to test."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "Products observed top out at 110, far short of the 'products up to 10 000' ceiling this competency states."
+      "rationale": "The competency states 'products up to 10 000', but the products observed are 90, 0, 0, 0, 110, and (claimed) 25, all far short -- the largest genuine product (110) is roughly 1% of the stated ceiling."
     }
   },
   "overall": "FAIL"

@@ -1,14 +1,18 @@
 {
   "node_id": "mat_g2_na_q3_4",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 2, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    55,
+    85
   ],
   "samples_reviewed": [
     {
@@ -35,33 +39,56 @@
       "seed": 46,
       "question_text": "What is 12 ÷ 2?",
       "correct_answer": 6
+    },
+    {
+      "seed": 50,
+      "question_text": "Look at the 5×6 array. How many squares are shaded in all?",
+      "correct_answer": "A"
+    },
+    {
+      "seed": 51,
+      "question_text": "Ana says: 15 ÷ 3 = 12. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 5
+      }
+    },
+    {
+      "seed": 55,
+      "question_text": "Shade all the squares inside the 2×6 rectangle. How many squares did you shade in all?",
+      "correct_answer": 12
+    },
+    {
+      "seed": 85,
+      "question_text": "12 ÷ 3 = 4. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency asks students to illustrate division through EQUAL DISTRIBUTION of objects into groups, but the samples are bare division facts ('What is 70 div 10?', '15 div 5 = ___') with no object, sharing, or distribution context described in the text."
+      "verdict": "FAIL",
+      "rationale": "The competency is 'illustrate division through equal distribution of objects,' but no sample shows objects being distributed; seed 42's 'What is 70 ÷ 10?' is a bare numeral fact and seed 50 is actually a multiplication array question."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "division registers 4 axes with 20 combos, large enough to plausibly include an equal-distribution word/picture format; exhaustive combo execution is checked separately by validate_matrix, though this sample did not surface that format."
+      "verdict": "FAIL",
+      "rationale": "Equal-distribution illustration never renders across all 9 samples; the closest visual content, seed 50's 'Look at the 5×6 array' and seed 55's 'Shade all the squares inside the 2×6 rectangle,' are multiplication array tasks, not division."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Stems are minimal ('12 div 2 = ___') and well under the 18-word cap, an appropriate single-step reading level for grade 2 quarter 3."
+      "verdict": "CONCERN",
+      "rationale": "Seed 50 and seed 55 require array-shading/counting reasoning (5×6, 2×6) that is cognitively a different skill from the bare division-fact recall in seed 42's '70 ÷ 10', so the batch's reasoning demand is inconsistent."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The observed divisors (10, 2, 5, 3, 2) do cover a spread consistent with grade 2 division introduction, but none of the five samples demonstrate the specific 'equal distribution into groups' framing the competency names as its illustration method."
+      "verdict": "FAIL",
+      "rationale": "Variation is limited to bare 'X ÷ Y' equations (seeds 42-46, 51, 85) plus two off-topic multiplication-array items (50, 55); no word-problem or picture variant showing a set of objects split into groups ever appears."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The dividends and divisors used are appropriately basic (70 div 10, 10 div 2, 12 div 2) for a first introduction to division, correctly sitting below the harder multi-table fluency work of q3_6."
+      "verdict": "FAIL",
+      "rationale": "Seed 50 ('Look at the 5×6 array. How many squares are shaded in all?') and seed 55 ('Shade all the squares inside the 2×6 rectangle') build multiplication-array counting, a distinct operation from division-by-equal-distribution."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Dividends observed (70, 10, 15, 30, 12) and divisors (10, 2, 5, 3, 2) are appropriately small for a grade 2 quarter 3 introduction to division."
+      "verdict": "CONCERN",
+      "rationale": "Division facts stay in a reasonable grade-2 range (seed 42's 70÷10=7 up to seed 45's 30÷3=10), but 2 of 9 samples test unrelated multiplication magnitudes (30, 12) instead of any division scale at all."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

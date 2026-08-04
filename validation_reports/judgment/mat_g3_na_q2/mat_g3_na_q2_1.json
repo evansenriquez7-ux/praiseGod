@@ -1,67 +1,46 @@
 {
   "node_id": "mat_g3_na_q2_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 4, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 55, 75, 82],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 40 + 22?",
-      "correct_answer": 62
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 110 + 20?",
-      "correct_answer": 130
-    },
-    {
-      "seed": 44,
-      "question_text": "202 + 30 = ___",
-      "correct_answer": 232
-    },
-    {
-      "seed": 45,
-      "question_text": "160 + 2 = ___",
-      "correct_answer": 162
-    },
-    {
-      "seed": 46,
-      "question_text": "110 + 10 = ___",
-      "correct_answer": 120
-    }
+    {"seed": 42, "question_text": "What is 146 + 0?", "correct_answer": 146},
+    {"seed": 43, "question_text": "What is 114 + 10?", "correct_answer": 124},
+    {"seed": 44, "question_text": "110 + 45 = ___", "correct_answer": 155},
+    {"seed": 45, "question_text": "109 + 30 = ___", "correct_answer": 139},
+    {"seed": 46, "question_text": "240 + 4 = ___", "correct_answer": 244},
+    {"seed": 50, "question_text": "Show 90 + 108 on the number line.", "correct_answer": 198},
+    {"seed": 51, "question_text": "The dot is at 150 and it moves forward 7 numbers. Starting from 150, just count up 7 numbers. Which number will the dot land on?", "correct_answer": "C"},
+    {"seed": 55, "question_text": "The two parts are 10 and 115. What is the sum?", "correct_answer": 125},
+    {"seed": 75, "question_text": "44 + 0 = 54. True or False?", "correct_answer": false},
+    {"seed": 82, "question_text": "Dante says: 13 + 210 = 223. Is Dante correct?", "correct_answer": {"has_error": false, "correct_value": 223}}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Competency explicitly requires addition 'with and without regrouping,' but all 5 samples carry difficulty_axes_served regrouping:'none' -- not a single sample demonstrates a regrouping (carrying) case."
+      "verdict": "FAIL",
+      "rationale": "The competency explicitly requires sums 'with and without regrouping', but none of the 10 samples ever carry a digit: 110+45, 109+30, 240+4, 90+108, and 13+210 all add place-by-place with no column exceeding 9."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "variant_registry lists 8 combos across 4 axes for addition, but the 5 illustrative samples cluster entirely on the no-regrouping branch, so regrouping coverage cannot be confirmed from what was shown."
+      "verdict": "FAIL",
+      "rationale": "The 'with regrouping' sub-case named in the competency text is completely absent across all 10 seeds and every formatter, including the 5 extra seeds chosen to probe additional rendering paths."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "'What is 40 + 22?' style single-step addition sentences are short and appropriate reading level for grade 3 quarter 2."
+      "verdict": "CONCERN",
+      "rationale": "Two of ten samples, '146 + 0' and '44 + 0 = 54. True or False?', are identity-property freebies that add nothing to the multi-digit reasoning a grade 3 quarter 2 sums-up-to-10,000 competency should exercise."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Both mcq and cloze formats appear (good format variety), but the consistently absent regrouping axis value limits confidence the full registered variant space is exercised."
+      "verdict": "PASS",
+      "rationale": "Presentation genuinely varies across mcq, cloze, a number-line set_fill_in_blank ('Show 90 + 108 on the number line'), a read_mcq dot-jump, read_fill_in_blank parts-and-sum, true_false, and error_detect."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Straightforward addition-sentence content is correctly scoped to this addition competency without drifting into estimation or multi-addend material."
+      "verdict": "FAIL",
+      "rationale": "The observed variation stays confined to presentation format and small magnitude changes; none of it ever crosses the with/without-regrouping axis this competency's wording explicitly names."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The competency states sums 'up to 10 000,' but the five observed sums max out at 232 -- nothing approaches even 1,000, so no progression toward the stated ceiling is shown."
+      "verdict": "FAIL",
+      "rationale": "The competency states sums 'up to 10 000', but the largest sum across all 10 samples is 244 (from '240 + 4 = ___'), roughly 40 times short of the stated ceiling."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

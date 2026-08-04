@@ -1,55 +1,43 @@
 {
   "node_id": "mat_g2_mg_q2_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 3, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    44,
-    45
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 21
-    },
-    {
-      "seed": 44,
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 14
-    },
-    {
-      "seed": 45,
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 9
-    }
+    {"seed": 42, "question_text": "Measure the object. Its length is ___ cm.", "correct_answer": 21},
+    {"seed": 43, "question_text": "Measure the object. Its length is ___ cm.", "correct_answer": 2},
+    {"seed": 44, "question_text": "Measure the object. Its length is ___ cm.", "correct_answer": 14},
+    {"seed": 45, "question_text": "Measure the object. Its length is ___ cm.", "correct_answer": 9},
+    {"seed": 46, "question_text": "Measure the object. Its length is ___ cm.", "correct_answer": 3},
+    {"seed": 50, "question_text": "Measure the object. Its length is ___ cm.", "correct_answer": 16},
+    {"seed": 55, "question_text": "How long is the object? Give your answer in cm.", "correct_answer": "C"}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The lc covers measuring AND comparing lengths in m or cm, plus distance in meters, but all 5 samples are the identical single-object cm-measuring stem ('Measure the object. Its length is ___ cm.') -- meters and comparison between two objects never appear."
+      "rationale": "Measuring an object's length is exercised repeatedly, e.g. seed 42's 'Measure the object. Its length is ___ cm.' answering 21, but the 'compare' verb in 'Measure and compare lengths of objects' is never realized -- no sample presents two objects for the student to compare."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "length_measurement registers only 2 axes / 4 combos, and the sample set shows only the cm sub-case with varying answers (21,14,9,3,2 cm), leaving the meters case and the comparison case entirely unobserved in this batch."
+      "verdict": "FAIL",
+      "rationale": "All 7 samples measure in centimeters only; meters, explicitly named in the competency ('in meters (m) or centimeters (cm)'), never appears, and 'distance in meters' between two locations is likewise absent from every seed."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The 7-word stem 'Measure the object. Its length is ___ cm.' is well inside the 18-word cap and matches the concrete, single-step measurement task appropriate for grade 2 quarter 2."
+      "rationale": "The repeated short instruction 'Measure the object. Its length is ___ cm.' and its read_mcq variant 'How long is the object? Give your answer in cm.' at seed 55 are both simple, direct, and grade-appropriate."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "With only 4 registered combos across 2 axes it is plausible meters and comparison items exist elsewhere in the space, but none of my 5 samples demonstrates them, so I cannot confirm the full 'measure and compare ... in meters or centimeters' scope is reached."
+      "rationale": "mcq, cloze, and read_mcq formatters are all present, but they all wrap the same single-object cm-measurement task; no comparison-of-two-objects or distance-in-meters variant exists across the 7 seeds."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Single-object cm measurement is a correct subset of this lc but does not by itself demonstrate the comparison skill ('compare lengths of objects') the wording explicitly requires alongside plain measuring."
+      "rationale": "The variation across seeds 42-55 is purely in the measured length value (21, 2, 14, 9, 3, 16, 3 cm), which drills reading a ruler but not the comparing or meter-distance skills the competency also names."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Observed lengths (2 to 21 cm) are sensible, hand-measurable classroom-object sizes for grade 2, a reasonable progression before distances in meters would be introduced."
+      "verdict": "CONCERN",
+      "rationale": "Lengths of 2 cm (seed 43) and 3 cm (seeds 46, 55) are implausibly small for a physical classroom object, and combined with the total absence of meter-scale values, the competency's stated m/cm range is only partly represented."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

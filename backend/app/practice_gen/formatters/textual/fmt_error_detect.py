@@ -54,27 +54,78 @@ def _distractor_value(distractor: Any) -> Any:
 
 
 def _build_pure_equation(ctx: QuestionContext) -> str:
-    """Build a pure equation string for the actor's work display."""
+    """
+    Build a full "a op b = result" equation string for the actor's work
+    display, with the ONE slot ctx.blank_target names rendered as "___" and
+    every other slot (including the result) shown as its real value.
+
+    For the ordinary case (blank_target == "result"/"total"/"quotient") this
+    is equivalent to the old "{a} op {b}" text plus format_error_detect's own
+    "= {actors_answer}" suffix, since the result slot is exactly where that
+    suffix went. But a co-mapped DNA can bind a different structure (e.g.
+    missing_number's "divisor_unknown" text match on division.py, when
+    division -- not missing_number -- ends up the concept actually
+    generating a given item): blank_target becomes "b", and the old code
+    showed "56 / 8" (the divisor's real value, with the true quotient 7
+    nowhere in the string) then unconditionally appended "= {actors_answer}"
+    after it -- producing "Jose says: 56 / 8 = 7", a TRUE statement, while
+    correct_value stayed 8 (the divisor) and the item was marked wrong. The
+    reader had no way to know 8, not 7, was the actual unknown being quizzed.
+    Now the blank tracks the real unknown and the given result stays visible:
+    "56 / ___ = 7", filled with the actor's claimed divisor.
+    """
     values = ctx.values or {}
     concept = ctx.dna_concept
     blank_target = ctx.blank_target or "result"
 
+    def slot(*keys, value):
+        return "___" if blank_target in keys else value
+
+    # For task_type=="estimate" (addition/subtraction/multiplication/
+    # division), "a"/"b" carry the ROUNDED values used for the answer key,
+    # not the numbers being estimated -- showing them directly as the
+    # "actor's work" ("Rico says: 100 + 100 = 200") loses the estimate
+    # framing and reads as an ordinary round-number fact. Show the REAL
+    # (unrounded) operands with "≈" before the blank instead; the blank
+    # still fills with the actor's claimed answer, still keyed against the
+    # rounded computation (ctx.correct_answer), so grading is unaffected.
+    is_estimate = values.get("task_type") == "estimate"
+
     if concept == "addition":
-        a = values.get("a")
-        b = values.get("b")
-        return f"{a} + {b}"
+        a, b, r = values.get("a"), values.get("b"), values.get("result")
+        if is_estimate:
+            real_a, real_b = values.get("real_a", a), values.get("real_b", b)
+            return f"{real_a} + {real_b} ≈ {slot('result', value=r)}"
+        return f"{slot('a', value=a)} + {slot('b', value=b)} = {slot('result', value=r)}"
     elif concept == "subtraction":
-        a = values.get("a")
-        b = values.get("b")
-        return f"{a} − {b}"
+        a, b, r = values.get("a"), values.get("b"), values.get("result")
+        if is_estimate:
+            real_a, real_b = values.get("real_a", a), values.get("real_b", b)
+            return f"{real_a} − {real_b} ≈ {slot('result', value=r)}"
+        return f"{slot('a', value=a)} − {slot('b', value=b)} = {slot('result', value=r)}"
     elif concept == "multiplication":
         a = values.get("a", values.get("groups"))
         b = values.get("b", values.get("n"))
-        return f"{a} × {b}"
+        r = values.get("result", values.get("total"))
+        if is_estimate:
+            real_a, real_b = values.get("real_a", a), values.get("real_b", b)
+            return f"{real_a} × {real_b} ≈ {slot('result', 'total', value=r)}"
+        return (
+            f"{slot('a', 'groups', value=a)} × {slot('b', 'n', value=b)} "
+            f"= {slot('result', 'total', value=r)}"
+        )
     elif concept == "division":
         dividend = values.get("dividend", values.get("a"))
         divisor = values.get("divisor", values.get("b"))
-        return f"{dividend} ÷ {divisor}"
+        quotient = values.get("quotient", values.get("result"))
+        if is_estimate:
+            real_a = values.get("real_a", dividend)
+            real_b = values.get("real_b", divisor)
+            return f"{real_a} ÷ {real_b} ≈ {slot('result', 'quotient', value=quotient)}"
+        return (
+            f"{slot('a', 'dividend', value=dividend)} ÷ {slot('b', 'divisor', value=divisor)} "
+            f"= {slot('result', 'quotient', value=quotient)}"
+        )
     else:
         return ctx.question_text
 
@@ -136,10 +187,19 @@ def format_error_detect(ctx: QuestionContext, rng: random.Random) -> FormattedPr
         actors_answer = ctx.correct_answer
         error_label = "none"
 
-    # Build display text
+    # problem_text is now a full "a op b = result" equation with exactly one
+    # slot (whichever ctx.blank_target names) rendered as "___" -- fill it
+    # with the actor's claimed answer. For a plain word_problem context (no
+    # equation), _build_pure_equation returns ctx.question_text unchanged,
+    # which never contains "___"; keep the old append behaviour for that case.
+    if "___" in problem_text:
+        actor_statement = problem_text.replace("___", str(actors_answer), 1)
+    else:
+        actor_statement = f"{problem_text} = {actors_answer}"
+
     if context_variant == "pure":
         question_text = (
-            f"{actor} says: {problem_text} = {actors_answer}. "
+            f"{actor} says: {actor_statement}. "
             f"Is {actor} correct?"
         )
     else:

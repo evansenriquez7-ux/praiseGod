@@ -2,6 +2,11 @@ import math
 import random
 from typing import Tuple, List, Union, Optional, Any
 
+# Minimum number of candidates a window draw must offer `rng.choice` before it
+# is allowed to fall back to a nearest-score top-up (see the fallback comments
+# in generate_number_by_window / generate_pair_by_window below).
+_MIN_WINDOW_CANDIDATES = 3
+
 # ─── DIFFICULTY SCORING FOR DIFFERENT TYPES ───────────────────────────────────
 
 def score_whole_or_decimal(x: Union[int, float], max_val: Union[int, float], decimal_places: int = 0) -> float:
@@ -225,13 +230,39 @@ def generate_number_by_window(
         edge = _magnitude_edge_band({v: key(v) for v in unique_candidates}, scalar, w)
         window_candidates.extend(v for v in edge if v not in window_candidates)
 
-    if window_candidates:
-        return rng.choice(window_candidates)
+    # A window (or endpoint band) that catches fewer than a handful of
+    # candidates collapses variety across every seed: this used to fall
+    # straight to a fallback that deterministically returned the single
+    # closest-scoring item, ignoring `rng` entirely, whenever the pool's score
+    # distribution left a gap at the requested scalar. That is not a corner
+    # case — six unit-fraction candidates score 0.28-0.45, all missing the
+    # scalar-0.5 window of [0.4, 0.6], so every seed served the same 1/8
+    # forever. A small nearest-by-score top-up is not a robust fix either: for
+    # a skewed pool whose lowest scores all share one sub-group (every 6-x
+    # missing-factor pair scores below every 7-x/8-x/9-x pair, because
+    # score_whole_or_decimal favours 6's extra factors of 30), the nearest few
+    # candidates by score can *all* be that one sub-group, reproducing the
+    # collapse one level up — tables 7/8/9 would still never be drawn. Once
+    # the window is this sparse, the score signal is not meaningfully
+    # differentiating difficulty for this pool anyway, so fall back to the
+    # entire candidate space and let `rng` pick genuinely — trading fine
+    # difficulty tiering (which this pool shape can't support regardless) for
+    # guaranteed reachability of every valid value. A window that already has
+    # enough members is untouched.
+    #
+    # NOT at the 0.0/1.0 endpoints, though: the edge-band widening just above
+    # already built a deliberately small, curated near-ceiling/near-floor
+    # band for exactly those scalars (as few as 1-2 members by design -- "the
+    # exact extreme, not a lottery ticket", per _magnitude_edge_band's own
+    # docstring). This fallback's size check can't tell a *sparse* window
+    # from a *deliberately narrow* one, and firing on the latter dilutes it
+    # straight back into the full pool -- see generate_pair_by_window's
+    # identical guard for the live case this caused (money_peso's
+    # near-ceiling pile, mat_g3_na_q2_0).
+    if scalar not in (0.0, 1.0) and len(window_candidates) < min(_MIN_WINDOW_CANDIDATES, len(unique_candidates)):
+        window_candidates = list(unique_candidates)
 
-    # Fallback: Closest to window center
-    t_mid = (t_lo + t_hi) / 2.0
-    scored_candidates.sort(key=lambda item: abs(item[1] - t_mid))
-    return scored_candidates[0][0]
+    return rng.choice(window_candidates)
 
 
 def generate_pair_by_window(
@@ -300,9 +331,35 @@ def generate_pair_by_window(
         )
         window_pairs.extend(p for p in edge if p not in window_pairs)
 
-    if window_pairs:
-        return rng.choice(window_pairs)
+    # Same fallback as generate_number_by_window, and for the same reason: a
+    # sparse/skewed score distribution (e.g. a table-restricted factor pool)
+    # can leave the window empty or a singleton at an ordinary interior
+    # scalar, not just at 0.0/1.0, and the old fallback returned that single
+    # nearest-score pair with no `rng` involvement at all — every seed drew
+    # the identical operand pair. mat_g3_na_q4_2's missing-factor pool ((6-9)
+    # x (1-10), scores 0.65-0.94) is exactly this shape: at scalar 0.5 the
+    # window [0.4, 0.6] is empty, so every single seed resolved to the same
+    # (6, 1) pair regardless of rng state. A small nearest-by-score top-up
+    # isn't robust here either — every 6-x pair scores below every
+    # 7-x/8-x/9-x pair, so the nearest candidates by score can all be that one
+    # factor, reproducing the collapse for just that sub-group (tables 7/8/9
+    # would still never be drawn). Fall back to the whole pool instead: this
+    # pool shape's score signal isn't meaningfully differentiating difficulty
+    # anyway, so trade fine tiering for guaranteed reachability of every pair.
+    #
+    # NOT at the 0.0/1.0 endpoints, though: the edge-band widening just above
+    # already built a deliberately small, curated near-ceiling/near-floor
+    # band for exactly those scalars (as few as 1-2 members by design -- "the
+    # exact extreme, not a lottery ticket", per _magnitude_edge_band's own
+    # docstring). This fallback's size check can't tell a *sparse* window
+    # from a *deliberately narrow* one: money_peso's near-ceiling pile (a
+    # single (10000, 0) candidate among 503, for "money problems up to
+    # PHP10,000", mat_g3_na_q2_0) was correctly surfaced by the edge band (2
+    # members), then diluted straight back into the full 503-pair pool by
+    # this fallback firing on top of it -- 10 samples at scalar 1.0 never
+    # once landed on it again (§1A-reach: "largest value ... 2318 ... below
+    # 60% of ... 10000").
+    if scalar not in (0.0, 1.0) and len(window_pairs) < min(_MIN_WINDOW_CANDIDATES, len(candidate_pairs)):
+        window_pairs = list(dict.fromkeys(candidate_pairs))
 
-    t_mid = (t_lo + t_hi) / 2.0
-    scored_pairs.sort(key=lambda item: abs(item[1] - t_mid))
-    return scored_pairs[0][0]
+    return rng.choice(window_pairs)

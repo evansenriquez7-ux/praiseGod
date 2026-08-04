@@ -1,66 +1,43 @@
 {
   "node_id": "mat_g1_na_q1_6",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 0, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 84],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "2 + ___ = 3. What is the unknown number?",
-      "correct_answer": 1
-    },
-    {
-      "seed": 43,
-      "question_text": "2 + ___ = 3. What is the unknown number?",
-      "correct_answer": 1
-    },
-    {
-      "seed": 44,
-      "question_text": "4 + 0 = 4. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 45,
-      "question_text": "2 + 0 = ___",
-      "correct_answer": 2
-    },
-    {
-      "seed": 46,
-      "question_text": "2 + ___ = 4. What is the unknown number?",
-      "correct_answer": 2
-    }
+    {"seed": 42, "question_text": "2 + ___ = 3. What is the unknown number?", "correct_answer": 1},
+    {"seed": 43, "question_text": "2 + ___ = 3. What is the unknown number?", "correct_answer": 1},
+    {"seed": 44, "question_text": "0 + 2 = 2. True or False?", "correct_answer": true},
+    {"seed": 45, "question_text": "2 + 2 = ___", "correct_answer": 4},
+    {"seed": 46, "question_text": "2 + ___ = 4. What is the unknown number?", "correct_answer": 2},
+    {"seed": 50, "question_text": "Show 0 + 3 on the number line.", "correct_answer": 3},
+    {"seed": 55, "question_text": "Both sides balance evenly. 3 + ? = 4. What is the missing value?", "correct_answer": "A"},
+    {"seed": 84, "question_text": "The two parts are 2 and 2. What is the total?", "correct_answer": 4}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The competency's example format (e.g. '5 is 5 and 0; 4 and 1...') matches the missing-addend structure seen in samples like '2 + ___ = 3', which directly asks students to find a part given the whole and another part."
+      "rationale": "The missing-addend items (seed 42/43's '2 + ___ = 3', seed 46's '2 + ___ = 4') and the explicit part-whole framing at seed 84, 'The two parts are 2 and 2. What is the total?', directly mirror the competency's own worked example of naming a whole's part-pairs."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "missing_number registers 240 combos across 5 axes, a large space, and addition adds 8 more combos; the five illustrative samples are a small slice, with exhaustiveness confirmed separately by validate_matrix."
+      "verdict": "CONCERN",
+      "rationale": "Every total produced across the eight samples is 2, 3, or 4 (seeds 42-46, 50, 55, 84); the competency's own examples enumerate decompositions up to 5, '5 is 5 and 0', and no sample in this packet ever composes or decomposes a number of 5 or higher."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Prompts like '2 + ___ = 3. What is the unknown number?' are short (8 words) and appropriate for Grade 1 Quarter 1."
+      "rationale": "Prompts like seed 55's 'Both sides balance evenly. 3 + ? = 4. What is the missing value?' stay to one short sentence plus a simple equation, matching Grade 1 Quarter 1 demand."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The registered space is large (240 combos) but every one of the five observed samples stays at or below 4, so this slice alone does not show the composition space reaching the full 0-10 range named in the competency."
+      "verdict": "PASS",
+      "rationale": "Multiple concrete/pictorial representations named implicitly by the competency's 'using concrete materials' appear: a balance scale at seed 55, a number line at seed 50 ('Show 0 + 3 on the number line'), a true/false check at seed 44, and the explicit parts-framing at seed 84."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The task structure (finding a missing part of a whole) matches 'compose and decompose numbers' conceptually, independent of the specific magnitudes sampled."
+      "rationale": "Whether rendered as the balance-scale item at seed 55 or the bare equation at seed 45 ('2 + 2 = ___'), every sample targets the same part-part-whole relationship the competency names, with no drift into an unrelated arithmetic skill."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The competency's own example spans the whole number 5 with all its part-pairs up to 5, and the stated cap is 10, but the largest value in any of the five samples is 4, so this batch under-represents the upper part of the intended 0-10 range."
+      "verdict": "FAIL",
+      "rationale": "Totals sampled top out at 4 across all eight seeds (e.g. seed 45's '2 + 2 = ___' and seed 84's parts '2 and 2'), so the competency's explicit example decomposition of 5, '5 is 5 and 0', and its stated ceiling of 10 are never demonstrated anywhere in this packet."
     }
   },
   "overall": "CONCERN"

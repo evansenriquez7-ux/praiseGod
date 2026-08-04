@@ -1,67 +1,45 @@
 {
   "node_id": "mat_g3_na_q2_4",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 4, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 55, 85],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 14 − 2?",
-      "correct_answer": 12
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 75 − 60?",
-      "correct_answer": 15
-    },
-    {
-      "seed": 44,
-      "question_text": "94 − 60 = ___",
-      "correct_answer": 34
-    },
-    {
-      "seed": 45,
-      "question_text": "2335 − 1230 = ___",
-      "correct_answer": 1105
-    },
-    {
-      "seed": 46,
-      "question_text": "What is 3463 − 60?",
-      "correct_answer": 3403
-    }
+    {"seed": 42, "question_text": "What is 14 − 2?", "correct_answer": 12},
+    {"seed": 43, "question_text": "What is 35 − 1?", "correct_answer": 34},
+    {"seed": 44, "question_text": "94 − 60 = ___", "correct_answer": 34},
+    {"seed": 45, "question_text": "1333 − 1230 = ___", "correct_answer": 103},
+    {"seed": 46, "question_text": "What is 3463 − 60?", "correct_answer": 3403},
+    {"seed": 50, "question_text": "The dot is at 8251 and it moves backward 30 numbers. Starting from 8251, just count back 30 numbers. Which number will the dot land on?", "correct_answer": "B"},
+    {"seed": 51, "question_text": "Ana says: 4990 − 330 = 5320. Is Ana correct?", "correct_answer": {"has_error": true, "correct_value": 4660}},
+    {"seed": 55, "question_text": "The total is 348 and one part is 130. What is the other part?", "correct_answer": 218},
+    {"seed": 85, "question_text": "2930 − 2320 = 610. True or False?", "correct_answer": true}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples show a genuine magnitude range from small facts ('14 − 2') to a 4-digit subtraction ('2335 − 1230 = 1105') and a mixed-digit case ('3463 − 60'), matching the 'both numbers less than 10 000' framing reasonably well."
+      "verdict": "FAIL",
+      "rationale": "The competency explicitly requires 'with and without regrouping', but none of the 9 samples ever borrow: 1333−1230, 3463−60, 4990−330, and 2930−2320 each have every minuend digit at least as large as the corresponding subtrahend digit."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "variant_registry lists 12 combos across 3 axes for subtraction; the 5 samples span single through quadruple-digit minuends, a fair illustrative slice of that space."
+      "verdict": "FAIL",
+      "rationale": "The 'with regrouping' sub-case is entirely absent across all 9 samples and every formatter used (mcq, cloze, read_mcq, error_detect, read_fill_in_blank, true_false), including the 4 extra seeds chosen to probe other rendering paths."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "All question texts are short single sentences ('What is 75 − 60?'), well under the 22-word cap, single-step computation suitable for grade 3."
+      "rationale": "Sentence stems like 'The total is 348 and one part is 130. What is the other part?' and 'Ana says: 4990 − 330 = 5320. Is Ana correct?' use vocabulary and structure appropriate for grade 3 quarter 2."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Both mcq and cloze formats are exercised, and number_difficulty varies from 0.5 to 0.67 across samples, suggesting the registered axes are actually moving between draws."
+      "rationale": "Formats genuinely vary: mcq, cloze, a number-line read_mcq dot-jump ('The dot is at 8251...'), error_detect, read_fill_in_blank parts-and-total, and true_false all appear across the 9 samples."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Operand sizes and the absence of any multiplication/estimation content keep this squarely on the subtraction-to-10000 competency without overreach."
+      "verdict": "FAIL",
+      "rationale": "All sampled variation stays within presentation format and operand magnitude; '4990 − 330' and '2930 − 2320' both subtract without a single borrow, so the with/without-regrouping axis this competency names is never actually varied."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The spread from 14 − 2 up to 2335 − 1230 plausibly reflects an appropriate progression for a node whose ceiling is just under 10 000."
+      "rationale": "Minuends reach 8251 ('The dot is at 8251...'), close to the 'less than 10 000' ceiling, and other samples span from 2-digit (14−2) to 4-digit (3463−60), covering the stated magnitude range."
     }
   },
-  "overall": "PASS"
+  "overall": "FAIL"
 }

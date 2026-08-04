@@ -220,6 +220,33 @@ def format_array_grid(
             "correct_count": rows * cols,
             "grid_size": [rows + 1, cols + 1],
         }
+    elif ctx.dna_concept == "division" and ctx.values and "a" in ctx.values and "b" in ctx.values:
+        # Division's own branch, checked before the generic a/b fallback
+        # below (which multiplies them together -- correct for multiplication,
+        # but for division a=dividend and b=divisor, so "rows=a, cols=b,
+        # correct_count=a*b" fabricated e.g. a 1080-square array for
+        # "180 / 6" with no connection to the actual quotient). Divisor equal
+        # rows of quotient-per-row makes correct_count the real dividend.
+        # Deliberately NOT reusing the "groups"/"n" keys the multiplication
+        # branch above reads: base_generator._build_symbolic_question's own
+        # division branch already treats "n" as an alias for the DIVISOR (b)
+        # and "groups" as an alias for the RESULT -- an earlier version of
+        # this fix stored the quotient under "n" and the divisor under
+        # "groups", which collided with that and silently swapped the
+        # divisor shown in the question text with the quotient (e.g. "What
+        # is 15 / 3?" for the fact 15 / 5 = 3). A concept-gated branch here
+        # avoids the shared-key collision entirely.
+        divisor = ctx.values["b"]
+        quotient = ctx.values["a"] // divisor if divisor else 0
+        vp = {
+            "rows": divisor,
+            "cols": quotient,
+            "shaded": True,
+            "highlight_groups": [],
+            "shape_type": "rectangle",
+            "correct_count": ctx.values["a"],
+            "grid_size": [divisor + 1, quotient + 1],
+        }
     elif ctx.values and "a" in ctx.values and "b" in ctx.values:
         rows = ctx.values["a"]
         cols = ctx.values["b"]

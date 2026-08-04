@@ -1,67 +1,41 @@
 {
   "node_id": "mat_g1_mg_q4_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 0, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Look at the November 2025 date chart. What day of the week is November 4?",
-      "correct_answer": "D"
-    },
-    {
-      "seed": 43,
-      "question_text": "Look at the January 2025 date chart. What day of the week is January 10?",
-      "correct_answer": "A"
-    },
-    {
-      "seed": 44,
-      "question_text": "Look at the July 2025 date chart. What day of the week is July 17?",
-      "correct_answer": "C"
-    },
-    {
-      "seed": 45,
-      "question_text": "Look at the May 2025 date chart. What day of the week is May 14?",
-      "correct_answer": "D"
-    },
-    {
-      "seed": 46,
-      "question_text": "Look at the February 2025 date chart. What day of the week is February 13?",
-      "correct_answer": "D"
-    }
+    {"seed": 42, "question_text": "Look at the November 2025 date chart. What day of the week is November 4?", "correct_answer": "D"},
+    {"seed": 43, "question_text": "Look at the January 2025 date chart. What day of the week is January 10?", "correct_answer": "A"},
+    {"seed": 44, "question_text": "Look at the July 2025 date chart. What day of the week is July 17?", "correct_answer": "C"},
+    {"seed": 45, "question_text": "Look at the May 2025 date chart. What day of the week is May 14?", "correct_answer": "D"},
+    {"seed": 46, "question_text": "Look at the February 2025 date chart. What day of the week is February 13?", "correct_answer": "D"}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "This node's samples are a direct match: 'Look at the January 2025 date chart. What day of the week is January 10?' requires the student to read a real calendar to determine a day, exactly as the competency states."
+      "rationale": "Every sample requires reading a specific calendar chart to determine a day of the week for a stated date, e.g. seed 43's 'Look at the January 2025 date chart. What day of the week is January 10?', directly matching 'determine the day...of the year using a calendar'."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "calendar registers 2 axes/8 combos per variant_registry, exhaustively checked by validate_matrix separately; the 5 illustrative seeds here span 5 different months (November, January, July, May, February), showing reasonable breadth."
+      "verdict": "CONCERN",
+      "rationale": "The competency names determining both 'day and month' using a calendar, but all five samples only ask 'what day of the week is [date]'; none asks the student to determine or state a month from the chart, so only half the named pairing is exercised."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Sentences stay at or under 13 words ('Look at the February 2025 date chart. What day of the week is February 13?'), within the 15-word grade-1 cap, and the task is a single calendar-lookup step appropriate for grade 1 quarter 4."
+      "rationale": "The recurring stem 'Look at the [Month] [Year] date chart. What day of the week is [Month] [Day]?' stays under 15 words in every sample, e.g. seed 46's 13-word version, and is a single calendar-lookup step appropriate for Grade 1 Quarter 4."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "8 registered combos across 2 axes, evidenced here by 5 different months and dates queried, plausibly supports the calendar-navigation mastery this node targets."
+      "verdict": "CONCERN",
+      "rationale": "All five samples share the identical sentence template and differ only in the substituted month/day/year values; no alternate framing, such as asking what date falls on a given weekday, appears across the sample set."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The task stays confined to locating a specific day from a given date on a calendar, without drifting into date arithmetic, e.g. days-until, that would belong to a later competency."
+      "rationale": "Variation is confined to different months, November, January, July, May, February, and target dates, directly building calendar-lookup skill without drifting into date arithmetic."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Using specific real 2025 calendar months/dates is an appropriate, concrete real-world scale for a grade-1 calendar-reading competency."
+      "rationale": "Real calendar dates spanning five different months of 2025, days 4 through 17, are concrete, grade-appropriate real-world values for a Grade 1 calendar-reading competency."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

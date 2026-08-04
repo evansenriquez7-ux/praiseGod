@@ -1,54 +1,42 @@
 {
   "node_id": "mat_g3_na_q1_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 7, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    44,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 72],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Write 178 in words.",
-      "correct_answer": "one hundred seventy-eight"
-    },
-    {
-      "seed": 44,
-      "question_text": "Write 482 in words.",
-      "correct_answer": "four hundred eighty-two"
-    },
-    {
-      "seed": 46,
-      "question_text": "Write 142 in words.",
-      "correct_answer": "one hundred forty-two"
-    }
+    {"seed": 42, "question_text": "Write 178 in words.", "correct_answer": "one hundred seventy-eight"},
+    {"seed": 43, "question_text": "Write 103 in words.", "correct_answer": "one hundred three"},
+    {"seed": 44, "question_text": "Write 482 in words.", "correct_answer": "four hundred eighty-two"},
+    {"seed": 45, "question_text": "Write 342 in words.", "correct_answer": "three hundred forty-two"},
+    {"seed": 46, "question_text": "Write 142 in words.", "correct_answer": "one hundred forty-two"},
+    {"seed": 50, "question_text": "The number 573 is written in words as 'five hundred sixty-three'. True or False?", "correct_answer": false},
+    {"seed": 72, "question_text": "Write 139 in words.", "correct_answer": "one hundred thirty-nine"}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The lc asks students to read/write numbers up to 10,000 in numerals and words, and every sample correctly tests exactly that skill: 'Write 342 in words.' -> 'three hundred forty-two'."
+      "rationale": "Every one of the 7 samples tests the numeral-words correspondence the competency names; seed 50's true/false check 'The number 573 is written in words as five hundred sixty-three' (correctly false, since 573 is five hundred seventy-three) exercises reading/verification alongside the writing tasks."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "number_reading registers 2 combos (1 axis) for this node; my 5 samples are illustrative only, and exhaustive combo execution is machine-verified separately via validate_matrix."
+      "verdict": "CONCERN",
+      "rationale": "Numeral-to-words translation is well covered by all 7 varied-format seeds, but the reverse direction (given words, produce or select the numeral) never appears anywhere in this widened sample, even though the competency names both directions symmetrically."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Stems like 'Write 103 in words.' are 4 words, comfortably under the 22-word cap for grade 3 quarter 1, appropriate for a direct numeral-to-words conversion task."
+      "rationale": "Stems stay short (4-6 words, e.g. seed 72's 'Write 139 in words.') and vocabulary-light across all three formatters (mcq, true_false, cloze), appropriate for grade 3 quarter 1."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "With only 1 axis / 2 combos registered, and all 5 sampled numbers landing in the 100-499 range, I can't confirm the variant space actually exercises 4-digit or near-10,000 values this lc's 'up to 10 000' wording requires."
+      "verdict": "PASS",
+      "rationale": "The widened packet shows genuine format diversity: mcq selection (42-46), true/false verification (50), and cloze fill-in (72), giving the pupil multiple interaction modes for the same underlying numeral-words skill."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The word-form task directly matches 'read and write ... in numerals and in words' without drifting into place-value or pictorial-model territory that belongs to the sibling lc mat_g3_na_q1_0."
+      "rationale": "The numeral-words correspondence task matches this competency precisely across all 7 seeds and correctly avoids drifting into the place-value or pictorial-model territory that belongs to sibling lc mat_g3_na_q1_0."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "All 5 sampled values (103, 142, 178, 342, 482) are 3-digit numbers well below 1,000; the competency's explicit ceiling is 10,000, and this small sample gives no evidence the range ever climbs into the thousands as grade 3 quarter 1 should demand."
+      "verdict": "FAIL",
+      "rationale": "Across all 7 seeds, including the two extra seeds chosen specifically to surface different rendering paths (true_false at 50, cloze at 72), the largest value that ever appears is 573; the competency's ceiling is 10 000 and no 4-digit numeral is ever produced."
     }
   },
   "overall": "CONCERN"

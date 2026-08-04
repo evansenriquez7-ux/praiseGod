@@ -1,66 +1,84 @@
 {
   "node_id": "mat_g3_na_q4_6",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 5, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    55,
+    72
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "A shape is divided into 10 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/10"
+      "question_text": "A shape is divided into 6 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/6"
     },
     {
       "seed": 43,
-      "question_text": "A shape is divided into 10 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/10"
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/2"
     },
     {
       "seed": 44,
-      "question_text": "A shape is divided into 10 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/10"
+      "question_text": "A shape is divided into 4 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/4"
     },
     {
       "seed": 45,
-      "question_text": "A shape is divided into 10 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/10"
+      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/8"
     },
     {
       "seed": 46,
-      "question_text": "A shape is divided into 10 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/10"
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/2"
+    },
+    {
+      "seed": 50,
+      "question_text": "What fraction does the model show?",
+      "correct_answer": "B"
+    },
+    {
+      "seed": 55,
+      "question_text": "Shade 1/2 of the shape.",
+      "correct_answer": "1/2"
+    },
+    {
+      "seed": 72,
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/2"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency targets fractions equal to one and greater than one, yet every one of the five seeds keys 1/10 from 'A shape is divided into 10 equal parts. 1 part is shaded. What fraction of the shape is shaded?'. 1/10 is a proper fraction far below one - the exact opposite of the named scope. The key is arithmetically right and curricularly wrong."
+      "rationale": "The competency names fractions 'equal to one and greater than one,' yet the target fraction in every sample — 1/6, 1/2, 1/4, 1/8 — is a proper fraction strictly less than one, so the exact quantity the competency asks students to represent never appears as a correct answer."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "Neither named sub-case is generated. No item shows a whole fully shaded to give 10/10 or 4/4 (equal to one), and no item shows more than one whole to give an improper fraction such as 13/10 or a mixed number such as 1 and 3/10 (greater than one). Coverage of this competency is zero."
+      "rationale": "Of the two named sub-cases, none of the eight samples asks a student to model a fraction equal to one (like 6/6) or greater than one (like 3/2); the closest any correct_answer gets to one is seed43's '1/2'."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The sentence is short and readable, but identifying one shaded part in ten is a Grade 2 partitioning task, not Grade 3 Quarter 4 work. The distractor '10/1' (seed 42 option A) additionally asks a pupil to reject a symbol meaning ten wholes while no model is shown to reason from."
+      "verdict": "PASS",
+      "rationale": "The repeated template 'A shape is divided into N equal parts. 1 part is shaded. What fraction of the shape is shaded?' with small denominators (2, 4, 6, 8) is short, concrete and well within grade-3 reading and reasoning demand, independent of the scope problem flagged elsewhere."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Seeds 42, 43, 44, 45 and 46 emit a byte-identical stem, varying only which letter carries the key. The denominator is always 10, the shaded count always 1, and the distractor set is always the same four strings 1/10, 2/10, 3/20, 10/1. Model type never varies across region, set or number line."
+      "rationale": "Four formatters appear (mcq, read_mcq, set_click, cloze) but the underlying model shown never changes shape — every sample is exactly one part shaded out of N — so no variant ever shows a fully-shaded whole (N/N) or a model spanning more than one whole."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "The competency says 'using models', but the item is plain mcq prose with no diagram, region drawing or number line rendered - the pupil is told about a model rather than shown one. With difficulty flat across all five seeds, nothing progresses toward representing quantities at or beyond one whole."
+      "rationale": "Values at or above one surface only as rejected distractors, e.g. seed42's own option list offers '6/1' as wrong and seed43 offers '2/1' and '3/2' as wrong, meaning the variation actually trained is 'pick the proper fraction,' the opposite of what 'represent ... equal to one and greater than one' asks for."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "The numerator is locked at 1 and the denominator at 10 in every sample, so the numerator never equals the denominator and never exceeds it. The competency's ceiling is precisely fractions where numerator is greater than or equal to denominator, and that region of the number range is never reached."
+      "rationale": "Across all eight rendered samples the largest correct_answer value is 1/2 (seed43, seed46, seed55, seed72) — the observed range never touches the competency's own floor of one, let alone extends above it."
     }
   },
   "overall": "FAIL"

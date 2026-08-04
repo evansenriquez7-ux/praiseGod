@@ -1,57 +1,42 @@
 {
   "node_id": "mat_g2_mg_q4_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-4 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 3, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    46,
-    48
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "A rectangle has sides 11 cm and 2 cm. What is its perimeter?",
-      "correct_answer": 26
-    },
-    {
-      "seed": 44,
-      "question_text": "A rectangle has sides 7 cm and 9 cm. What is its perimeter?",
-      "correct_answer": 32
-    },
-    {
-      "seed": 48,
-      "question_text": "A rectangle has sides 9 cm and 6 cm. What is its perimeter?",
-      "correct_answer": 30
-    }
+    {"seed": 42, "question_text": "A rectangle has sides 11 cm and 2 cm. What is its perimeter?", "correct_answer": 26},
+    {"seed": 43, "question_text": "A rectangle has sides 1 cm and 5 cm. What is its perimeter?", "correct_answer": 12},
+    {"seed": 44, "question_text": "A rectangle has sides 7 cm and 9 cm. What is its perimeter?", "correct_answer": 32},
+    {"seed": 45, "question_text": "A rectangle has sides 5 cm and 7 cm. What is its perimeter?", "correct_answer": 24},
+    {"seed": 46, "question_text": "A rectangle has sides 2 cm and 7 cm. What is its perimeter?", "correct_answer": 18},
+    {"seed": 50, "question_text": "A rectangle has sides 8 cm and 5 cm. What is its perimeter?", "correct_answer": 26}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "I recomputed perimeter as 2*(length+width) for every seed (e.g. 11+2 doubled is 26, 7+9 doubled is 32) and every stated correct_answer matches exactly, so the core perimeter arithmetic is sound for the rectangle case."
+      "verdict": "CONCERN",
+      "rationale": "Every sample correctly computes a rectangle's perimeter from two given side lengths, e.g. seed 44's 'A rectangle has sides 7 cm and 9 cm. What is its perimeter?' answering 32, which is a real subset of the competency, but only the arithmetic mechanic is ever exercised."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "This competency explicitly names three shapes (triangles, squares, and rectangles) but all 7 seeds (42-48) render only rectangles with two distinct side lengths -- no triangle or square perimeter item appears anywhere in the sample."
+      "verdict": "FAIL",
+      "rationale": "The competency names 'triangles, squares, and rectangles' explicitly, yet all 6 samples (42-46, 50) are rectangles only; not a single triangle or square perimeter problem is generated."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The single-sentence stem 'A rectangle has sides X cm and Y cm. What is its perimeter?' is straightforward for grade-2 quarter-4 readers who have already met basic shape vocabulary."
+      "rationale": "The two-sided-length arithmetic (e.g. 8 cm and 5 cm doubled to 26 at seed 50) is an appropriate single-topic reasoning load for Grade 2."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Because squares are a degenerate rectangle case (equal sides) and triangles require a third side value entirely, their complete absence from this 7-seed sample suggests the variant space may not actually generate those two of the three named shapes."
+      "verdict": "FAIL",
+      "rationale": "mcq and cloze formatters both appear, but they wrap the identical 'A rectangle has sides X cm and Y cm. What is its perimeter?' template every time across all 6 seeds; no triangle or square framing exists."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Content correctly targets 'find the perimeter of ... rectangles' but as sampled gives no evidence of covering the 'triangles' and 'squares' clauses that are equally part of this lc's explicit wording."
+      "verdict": "PASS",
+      "rationale": "The six seeds' side-length pairs (11&2, 1&5, 7&9, 5&7, 2&7, 8&5) do progress the rectangle-perimeter skill itself rather than drifting to an unrelated axis."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Side lengths of 1-11 cm producing perimeters up to 32 cm are well within grade-2 quarter-4 arithmetic capability (simple two-digit addition doubled)."
+      "rationale": "Side lengths from 1 to 11 cm, giving perimeters of 12 to 32, sit within a sensible Grade 2 numeric range for this skill."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

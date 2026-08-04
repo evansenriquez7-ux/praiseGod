@@ -1,66 +1,42 @@
 {
   "node_id": "mat_g2_na_q1_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 4, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What number comes next when counting: 0, 100, 200, 300, ___?",
-      "correct_answer": 400
-    },
-    {
-      "seed": 43,
-      "question_text": "What number comes next when counting: 0, 20, 40, 60, ___?",
-      "correct_answer": 80
-    },
-    {
-      "seed": 44,
-      "question_text": "Find the missing number: 0, 50, 100, 150, ___",
-      "correct_answer": 200
-    },
-    {
-      "seed": 45,
-      "question_text": "What number comes next when counting: 0, 50, 100, 150, ___?",
-      "correct_answer": 200
-    },
-    {
-      "seed": 46,
-      "question_text": "What number comes next when counting: 0, 20, 40, 60, ___?",
-      "correct_answer": 80
-    }
+    {"seed": 42, "question_text": "What number comes next when counting: 0, 100, 200, 300, ___?", "correct_answer": 400},
+    {"seed": 43, "question_text": "What number comes next when counting: 0, 20, 40, 60, ___?", "correct_answer": 80},
+    {"seed": 44, "question_text": "Find the missing number: 0, 50, 100, 150, ___", "correct_answer": 200},
+    {"seed": 45, "question_text": "What number comes next when counting: 0, 50, 100, 150, ___?", "correct_answer": 200},
+    {"seed": 46, "question_text": "What number comes next when counting: 0, 20, 40, 60, ___?", "correct_answer": 80},
+    {"seed": 50, "question_text": "Arrange these numbers from largest to smallest: 50, 0, 150, 100", "correct_answer": [0, 50, 100, 150]},
+    {"seed": 55, "question_text": "What number is marked on the number line?", "correct_answer": "C"}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples exercise the newly introduced increments of 100s (0,100,200,300->400), 20s (0,20,40,60->80) and 50s (0,50,100,150->200), matching this node's vocab of count by 20s/50s/100s."
+      "verdict": "CONCERN",
+      "rationale": "The competency names six increments (2s, 5s, 10s, 20s, 50s, 100s); the samples only ever exercise 20s (seeds 43, 46), 50s (44, 45), and 100s (42), so half the named increments are never demonstrated."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Seeds 43 and 46 render the exact identical question 'What number comes next when counting: 0, 20, 40, 60, ___?' with the same answer, showing low entropy across seeds for this batch."
+      "verdict": "FAIL",
+      "rationale": "Counting by 2s, 5s, and 10s -- three of the six increments explicitly named in the competency -- do not appear in any of the 7 samples; only 20s (seeds 43, 46), 50s (seeds 44, 45), and 100s (seed 42) are exercised, with 20s and 50s each repeated across two seeds."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The counting-sequence stem is a familiar template already used in Grade 1, an appropriate incremental step for Grade 2 Q1."
+      "rationale": "Sequences like '0, 100, 200, 300, ___' and the ordering task in seed 50 are short, single-step, and fit grade 2 quarter 1 counting demand."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Every sequence in this batch starts at 0; no sample begins mid-sequence (e.g. starting at 200 or 350), so only the trivial from-zero case is evidenced."
+      "rationale": "Formats vary (mcq, cloze, ordering, read_mcq) but all of them test the same three increments repeatedly (20s, 50s, 100s) rather than surfacing the missing 2s, 5s, or 10s cases."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The 20s/50s/100s increments shown directly match the extended skip-counting vocabulary this node introduces beyond the Grade 1 node."
+      "rationale": "Where increments are tested, the variation legitimately targets the skip-counting skill named, e.g. seed 42's '0, 100, 200, 300, ___' correctly isolates the by-100s pattern."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Values reach 400, staying safely within the competency's stated 'not beyond 1000' ceiling for Grade 2 Q1."
+      "verdict": "CONCERN",
+      "rationale": "The competency caps this node 'not beyond 1000,' but the largest number across all 7 samples is 400 (seed 42); nothing approaches the stated ceiling even in the by-100s sequence."
     }
   },
   "overall": "CONCERN"

@@ -1,56 +1,41 @@
 {
   "node_id": "mat_g2_mg_q2_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-4 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 3, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    46,
-    48
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Which unit would you use to measure the length of a classroom: centimeters or meters?",
-      "correct_answer": "m"
-    },
-    {
-      "seed": 43,
-      "question_text": "Which unit would you use to measure the length of a crayon: centimeters or meters?",
-      "correct_answer": "cm"
-    },
-    {
-      "seed": 46,
-      "question_text": "Which unit would you use to measure the length of a basketball court: centimeters or meters?",
-      "correct_answer": "m"
-    }
+    {"seed": 42, "question_text": "Which unit would you use to measure the length of a classroom: centimeters or meters?", "correct_answer": "m"},
+    {"seed": 43, "question_text": "Which unit would you use to measure the length of a crayon: centimeters or meters?", "correct_answer": "cm"},
+    {"seed": 44, "question_text": "Which unit would you use to measure the length of a spoon: centimeters or meters?", "correct_answer": "cm"},
+    {"seed": 45, "question_text": "Which unit would you use to measure the length of a shoe: centimeters or meters?", "correct_answer": "cm"},
+    {"seed": 46, "question_text": "Which unit would you use to measure the length of a basketball court: centimeters or meters?", "correct_answer": "m"},
+    {"seed": 50, "question_text": "Which unit would you use to measure the length of a book: centimeters or meters?", "correct_answer": "cm"}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every sample asks the student to pick between cm and m for a real object (crayon, spoon, classroom, hallway), directly matching 'identify and use the appropriate unit to measure the length of an object', with sensible unit answers (small items get cm, large spaces get m)."
+      "rationale": "Each sample directly asks the student to choose between cm and m for a real object, e.g. seed 42's 'Which unit would you use to measure the length of a classroom: centimeters or meters?' with correct_answer 'm', matching 'identify and use the appropriate unit' precisely."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "None of the 7 seeds (42-48) present the 'distance between two locations' half of this competency (e.g. distance from home to school); every sample is an object-length judgment, so that explicit clause of the competency text is untested in this sample set."
+      "rationale": "The competency also names 'the distance between two locations', but none of the 6 objects (classroom, crayon, spoon, shoe, basketball court, book) is framed as a distance-between-two-places scenario; all 6 are single-object length choices."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The fixed sentence frame 'Which unit would you use to measure the length of [object]: centimeters or meters?' is a short, repeated, easy-to-parse structure suitable for grade-2 quarter-2 readers."
+      "rationale": "The everyday objects used (crayon, spoon, shoe, book) are concrete and familiar to a Grade 2 learner, and the sentence template stays short and consistent across all 6 seeds."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Object choices (classroom, crayon, spoon, shoe, basketball court, hallway) plausibly cover both the cm-appropriate small-object case and the m-appropriate large-space case, giving the two-way discrimination the competency needs even if the distance-between-locations case is missing."
+      "rationale": "Both plausible answers are represented: classroom and basketball court correctly answer 'm' at seeds 42 and 46, while crayon, spoon, shoe, and book correctly answer 'cm' at seeds 43, 44, 45, and 50, and both mcq and cloze formatters appear."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The content is squarely about choosing between m and cm for real-world lengths, matching the unit-appropriateness focus of this lc rather than drifting into estimation or computation."
+      "rationale": "Every seed's variation is strictly the choice of measuring unit for a differently-sized object, which is exactly the discrimination this competency targets."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Object choices span from a crayon to a basketball court, giving a genuine small-vs-large contrast that makes the unit choice meaningful rather than trivial for a grade-2 student."
+      "rationale": "The object set spans from a crayon and spoon up to a basketball court, giving a reasonable real-world size range for a Grade 2 unit-selection task even though no numeric magnitude is graded."
     }
   },
   "overall": "CONCERN"

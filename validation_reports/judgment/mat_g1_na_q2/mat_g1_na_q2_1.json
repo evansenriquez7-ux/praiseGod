@@ -1,14 +1,16 @@
 {
   "node_id": "mat_g1_na_q2_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 1, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    72
   ],
   "samples_reviewed": [
     {
@@ -35,33 +37,48 @@
       "seed": 46,
       "question_text": "What number comes next when counting: 6, 8, 10, 12, ___?",
       "correct_answer": 14
+    },
+    {
+      "seed": 50,
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "B"
+    },
+    {
+      "seed": 72,
+      "question_text": "Arrange these numbers from largest to smallest: 2, 6, 8, 4",
+      "correct_answer": [
+        2,
+        4,
+        6,
+        8
+      ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples cover all three required skip counts: by 10s (0,10,20,30->40), by 2s (4,6,8,10->12), and by 5s (0,5,10,15->20), matching 'Count by 2s, 5s and 10s'."
+      "verdict": "CONCERN",
+      "rationale": "Six of the seven samples correctly test skip-counting (e.g. seed 42's '0, 10, 20, 30, ___?' -> 40 for counting by 10s), but seed 72 renders as 'Arrange these numbers from largest to smallest: 2, 6, 8, 4', a numeric-ordering task that has nothing to do with counting by 2s, 5s or 10s."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Across seeds 42-46 the batch exercises 2s, 5s and 10s in both mcq and cloze formats rather than repeating one increment."
+      "rationale": "All three named skip intervals are directly represented: by 10s at seed 42 ('0, 10, 20, 30'), by 2s at seed 43 and 46 ('4, 6, 8, 10'; '6, 8, 10, 12'), and by 5s at seeds 44 and 45 ('0, 5, 10, 15')."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The 'What number comes next when counting: ...' stem is short and formulaic, fitting Grade 1 Q2 reading ability."
+      "rationale": "The 'What number comes next when counting: ...' template stays short and formulaic across every seed, matching Grade 1 Quarter 2 reading demand."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Both mcq (seed 42,43,45,46) and cloze (seed 44) formats are present, showing the registered variants exercise more than one response mode."
+      "rationale": "Formats span mcq, cloze, and a pictorial number-line item at seed 50 ('What number is marked on the number line?'), giving genuine format variety on top of the three skip-count intervals."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All samples are pure skip-counting sequences, directly matching the skip_counting_by_2/5/10 concepts this node introduces."
+      "verdict": "FAIL",
+      "rationale": "Seed 72's 'Arrange these numbers from largest to smallest: 2, 6, 8, 4' tests descending numeric order, a distinctly different skill from skip-counting by 2s, 5s and 10s, so this sampled variation drifts onto an unrelated axis rather than building the stated competency."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Sequences stay under 40, a sensible entry point within the 'up to 100' ceiling for an early Grade 1 Q2 skip-counting item."
+      "rationale": "Sequences reach up to 40 in the by-10s item (seed 42) and the number-line item marks 20 (seed 50), a reasonable early sample of the up-to-100 skip-counting progression for Grade 1 Quarter 2."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

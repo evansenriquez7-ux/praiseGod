@@ -1,61 +1,42 @@
 {
   "node_id": "mat_g3_na_q2_7",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only), 2026-07-30 post-fix re-review batch",
-  "review_date": "2026-07-30",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 4, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Daniel has ₱4 in bills and ₱0 in coins. How much money does Daniel have in all?",
-      "correct_answer": 4
-    },
-    {
-      "seed": 43,
-      "question_text": "Kuya Bien has ₱0 in bills and ₱3 in coins. How much money does Kuya Bien have in all?",
-      "correct_answer": 3
-    },
-    {
-      "seed": 44,
-      "question_text": "In a pictograph, Lara's group collected 41 ribbons and another group collected 30 ribbons. How many more did Lara's group collect?",
-      "correct_answer": 11
-    },
-    {
-      "seed": 45,
-      "question_text": "In a pictograph, Coach Roel's group collected 25 water bottles and another group collected 20 water bottles. How many more did Coach Roel's group collect?",
-      "correct_answer": 5
-    },
-    {
-      "seed": 46,
-      "question_text": "Ate Cara has ₱12 in bills and ₱1 in coins. How much money does Ate Cara have in all?",
-      "correct_answer": 13
-    }
+    {"seed": 42, "question_text": "Fidel starts with ₱36. Then Fidel receives ₱32. Then Fidel receives ₱29. How much money does Fidel have now?", "correct_answer": 97},
+    {"seed": 43, "question_text": "Dina starts with ₱98. Then Dina gives away ₱19. Then Dina receives ₱60. How much money does Dina have now?", "correct_answer": 139},
+    {"seed": 44, "question_text": "Ben starts with 90 mangoes. Then Ben receives 15 mangoes. Then Ben gives away 23 mangoes. Then Ben receives 49 mangoes. How many mangoes does Ben have now?", "correct_answer": 131},
+    {"seed": 45, "question_text": "Ana starts with ₱33. Then Ana receives ₱11. Then Ana receives ₱39. Then Ana gives away ₱44. How much money does Ana have now?", "correct_answer": 39},
+    {"seed": 46, "question_text": "Ana starts with ₱76. Then Ana receives ₱76. Then Ana receives ₱30. How much money does Ana have now?", "correct_answer": 182},
+    {"seed": 50, "question_text": "Ana starts with 69 stickers. Then Ana receives 41 stickers. Then Ana receives 29 stickers. Then Ana gives away 87 stickers. How many stickers does Ana have now?", "correct_answer": 52}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The competency requires addition and subtraction 'with 3 to 4 numbers of up to 2 digits', but every one of the five samples combines exactly TWO numbers: seed 42 is ₱4 + ₱0, seed 46 is ₱12 + ₱1, seed 44 is 41 - 30, seed 45 is 25 - 20. Not a single item asks the student to combine three or four quantities, so the defining requirement of this lc is never exercised. Seeds 42 and 43 are weaker still: with a ₱0 operand ('Daniel has ₱4 in bills and ₱0 in coins', answer 4) the item degenerates to reading one number off the page and no addition is actually performed."
+      "verdict": "PASS",
+      "rationale": "Every sample narrates 3 or 4 sequential amounts as required, e.g. Ben's mango story chains four steps (starts 90, +15, -23, +49) and Dina's money story chains three (starts ₱98, -₱19, +₱60), both correctly resolved."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The wording names three sub-cases that must appear: 3-number problems, 4-number problems, and money problems. Only the money sub-case is generated (seeds 42, 43, 46, all in pesos). The 3-number and 4-number cases are entirely absent across all five seeds - the maximum operand count observed is 2. There is also no mixed add-and-subtract item: each sample is purely additive ('How much money does Ate Cara have in all?') or purely subtractive ('How many more did Lara's group collect?'), yet mixing is the natural multi-number case this competency implies."
+      "verdict": "PASS",
+      "rationale": "Money contexts (Fidel, Dina, Ana with ₱) and non-money contexts (Ben's mangoes, Ana's stickers) both appear, and both 3-step (Fidel, Dina, Ana ₱76) and 4-step (Ben, Ana ₱33, Ana stickers) chains are represented."
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "Demand is far below Grade 3 Quarter 2. 'Daniel has ₱4 in bills and ₱0 in coins. How much money does Daniel have in all?' (answer 4) and 'Kuya Bien has ₱0 in bills and ₱3 in coins' (answer 3) are single-digit or no-op computations a Grade 1 learner would find trivial. Even the hardest sampled item, 41 - 30 = 11, is a one-step two-digit subtraction with no regrouping. Sentence structure and vocabulary are appropriately simple and readable for Grade 3, but the reasoning required - one operation on two small numbers - falls well short of combining 3 to 4 numbers."
+      "verdict": "PASS",
+      "rationale": "The sequential narrative structure ('starts with... then receives... then gives away...') matches the grade 3 quarter 2 word-problem demand without introducing extraneous vocabulary."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Only two templates recur across five seeds, and both are word problems: a bills-plus-coins money frame (seeds 42, 43, 46, identical apart from names and amounts) and a pictograph comparison frame (seeds 44, 45, likewise identical apart from names and objects). There is no pure-computation or number-sentence variant, no missing-addend orientation, and no change/take-away money situation such as paying and receiving change. The contexts that do appear are coherent and use natural Filipino register (Kuya Bien, Ate Cara, Coach Roel, peso amounts), which is a genuine strength."
+      "rationale": "Only two formatters appear across the 6 samples (mcq for 42-46, cloze for 50); no true_false, error_detect, or read_* narrative variant of this multi-step money/word-problem task is present here."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "Progression across the seeds varies only operand magnitude - ₱4 + ₱0 up to ₱12 + ₱1, and 25 - 20 up to 41 - 30 - never the operand count this competency is built on. Harder seeds are harder only because the numerals are larger, so the axis being exercised is 'size of a 2-digit number', which belongs to earlier addition/subtraction lcs rather than 'solve problems with 3 to 4 numbers'. The pictograph framing ('In a pictograph, Coach Roel's group collected 25 water bottles') also leans toward a data-representation competency while supplying no actual pictograph, adding words without adding the targeted reasoning."
+      "verdict": "PASS",
+      "rationale": "The variation exercised -- money vs. object context, 3-step vs. 4-step, all-receive vs. mixed receive/give-away (as in Ana's ₱33 story: +₱11, +₱39, -₱44) -- builds exactly the chained addition/subtraction word-problem skill this competency names."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The 2-digit ceiling is respected - the largest operand is 41 and the largest answer 13 - so nothing exceeds the stated range, but the floor is badly underused. Three of five items use single-digit or zero operands (₱4, ₱0, ₱3, ₱1), and ₱0 is not a legitimate value for 'up to 2 digits' money work because it removes the computation entirely. Since no item combines 3 to 4 two-digit numbers, totals never reach the larger sums such problems would produce, leaving the effective numeric range well below the competency's intent."
+      "verdict": "PASS",
+      "rationale": "All amounts stay at or under 2 digits (largest is ₱98 for Dina), matching the competency's stated 'up to 2 digits' ceiling for both the money and non-money contexts."
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }

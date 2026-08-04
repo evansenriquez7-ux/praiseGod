@@ -1,56 +1,44 @@
 {
   "node_id": "mat_g3_na_q3_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2c fix-verification batch",
-  "review_date": "2026-07-23",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 8, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 47, 48],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 72],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What number is missing in the pattern: 25, ___, 35, 34, 45?",
-      "correct_answer": 24
-    },
-    {
-      "seed": 44,
-      "question_text": "What number is missing in the pattern: 33, ___, 34, 43, 47, 44, 53, 57?",
-      "correct_answer": 37
-    },
-    {
-      "seed": 45,
-      "question_text": "What number is missing in the pattern: 38, 35, 32, ___, 135, 132, 238, 235?",
-      "correct_answer": 138
-    },
-    {
-      "seed": 48,
-      "question_text": "What number is missing in the pattern: 59, 59, ___, 79, 79, 75, 99, 99?",
-      "correct_answer": 55
-    }
+    {"seed": 42, "question_text": "What number is missing in the pattern: 25, ___, 35, 34, 45?", "correct_answer": 24},
+    {"seed": 43, "question_text": "What number is missing in the pattern: 33, 38, 83, ___, 133?", "correct_answer": 88},
+    {"seed": 44, "question_text": "What number is missing in the pattern: 33, ___, 34, 43, 47, 44, 53, 57?", "correct_answer": 37},
+    {"seed": 45, "question_text": "What number is missing in the pattern: 38, 35, 32, ___, 135, 132, 238, 235?", "correct_answer": 138},
+    {"seed": 46, "question_text": "What number is missing in the pattern: 51, ___, 151, 154, 251?", "correct_answer": 54},
+    {"seed": 50, "question_text": "What is the missing piece (position 8) in the pattern?", "correct_answer": "B"},
+    {"seed": 55, "question_text": "Fill in the table with the correct counts.", "correct_answer": [1, 2, 3]},
+    {"seed": 72, "question_text": "What number is missing in the pattern: 56, 59, ___, 79, 96?", "correct_answer": 76}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Seed 42's blank sits inside a repeating pair (odd terms 25,35,45 step +10; even terms pair as term-1) so the missing term is 25-1=24, matching the answer, and this is now a genuine 'fill the interior blank' item rather than the previous 'next number' phrasing that duplicated an already-shown value."
+      "rationale": "Sequences genuinely require identifying a missing term inside a repeating-with-arithmetic-step structure, e.g. seed 45's '38, 35, 32, ___, 135, 132, 238, 235' correctly requires 138 to fit the +100-between-groups/-3-within-group structure, matching the competency's core action."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The 7 seeds split between compact 5-term pair patterns (seeds 42, 43, 46) and longer 8-term triplet patterns explicitly matching the competency's 1a,1b,1c,2a,2b,2c style (seeds 44, 45, 47, 48), giving real structural diversity rather than one repeated shape."
+      "verdict": "CONCERN",
+      "rationale": "All 8 samples show overall-increasing macro patterns (group bases always rising, e.g. 25→35→45 in seed 42, 51→151→251 in seed 46); no sample demonstrates an overall-decreasing pattern, though the competency explicitly names 'repeating and decreasing components' as an equally valid case."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The prompts are a single short instruction ('What number is missing in the pattern: ...') with no extraneous narrative, appropriate for Grade 3 Q3 where the cognitive load should sit in the pattern reasoning itself, not the reading."
+      "rationale": "Multi-term patterns with 5-8 given terms and 2-3-term repeating cycles suit grade 3 quarter 3 pattern-recognition demand; e.g. seed 43's '33, 38, 83, ___, 133' requires tracking an alternating +5/+45 step, appropriately challenging without being convoluted."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Seed 45's triplet pattern (38,35,32 / decreasing by 3, each triplet's start jumping +100) verifiably demonstrates the 'repeating and decreasing components' half of the competency, complementing the increasing-component seeds, so both named pattern types are exercised."
+      "verdict": "CONCERN",
+      "rationale": "Formatter variety exists (mcq, read_mcq visual, set_fill_in_blank, cloze), but every numeric variant follows the same increasing-only macro shape; no decreasing-pattern variant appears to complete the competency's stated 'OR repeating and decreasing' alternative."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample asks the student to determine a missing term inside a repeating/growing or repeating/shrinking numeric pattern, which is precisely the competency's wording, with no drift into an unrelated pattern or arithmetic skill."
+      "rationale": "The difficulty progression, from 2-term repeating steps in seeds 42/46 up to 3-term repeating cycles with two alternating step sizes in seeds 44/72, legitimately builds the pattern-recognition skill this competency names, not an unrelated axis."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Values span two to three digits (24 up to 238), a magnitude consistent with Grade 3 Q3 number sense without requiring computation beyond what a combined-pattern item should demand."
+      "rationale": "Values span small two-digit numbers (24-45) up to three-digit numbers (235-251), giving reasonable numeric range variety appropriate for grade 3 quarter 3."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

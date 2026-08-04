@@ -1,19 +1,23 @@
 {
   "node_id": "mat_g2_na_q3_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 2, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    55,
+    68
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What is 2 × 2?",
+      "question_text": "2 + 2 = ___. What is 2 × 2?",
       "correct_answer": 4
     },
     {
@@ -35,32 +39,60 @@
       "seed": 46,
       "question_text": "What is 3 × 0?",
       "correct_answer": 0
+    },
+    {
+      "seed": 50,
+      "question_text": "Arrange these numbers from largest to smallest: 538, 537, 540, 539",
+      "correct_answer": [
+        537,
+        538,
+        539,
+        540
+      ]
+    },
+    {
+      "seed": 51,
+      "question_text": "5 × 0 = 0. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 55,
+      "question_text": "Grace says: 3 × 0 = 3. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 0
+      }
+    },
+    {
+      "seed": 68,
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "D"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency asks pupils to count concrete objects by repeated addition and to use language like '5 groups of 3' and '5 threes'; every sample is bare symbolic notation such as 'What is 2 x 2?' with no objects, no grouping language, and no repeated-addition sentence."
+      "rationale": "The competency names the language '5 groups of 3' and '5 threes' explicitly, yet that phrasing never appears in any of the 9 samples; the closest is seed 42's '2 + 2 = ___. What is 2 × 2?', which has no 'groups of' language at all."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "Neither phrasing named in the wording ('groups of', 'threes') occurs in any stem, and no sample asks the pupil to create equal groups. Seeds 44 and 45 are counting-by-ones sequences (446...450 and 306...310) belonging to a different node entirely."
+      "rationale": "Grouping language and concrete-object counting never render: seeds 44, 45, 50 and 68 are entirely unrelated (a '446, 447, 448, 449, ___' sequence, a '306, 307, 308, 309, ___' sequence, an ordering task, and a number-line reading task)."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Jumping straight to the multiplication symbol skips the concrete and repeated-addition stage this Quarter 3 competency exists to build, and the 3-digit sequence items ('306, 307, 308, 309, ___') sit incongruously beside a 2 x 2 fact."
+      "rationale": "Seeds 43, 46 and 51 all multiply by zero ('What is 2 × 0?', 'What is 3 × 0?', '5 × 0 = 0'), a degenerate case requiring no real reasoning about equal groups, undershooting the counting-by-groups demand this competency targets."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "There is no array picture, no counters-in-groups scenario, no 'how many groups of 4 can you make from 12', and no translation between '4 twos' and 4 + 4; only two-factor products drawn from 0, 2 and 3 appear across the whole sample."
+      "rationale": "Instead of varying contextual framings of equal-group counting, the batch spends its variety on unrelated tasks: seed 50's number ordering ('538, 537, 540, 539') and seed 68's number-line reading share nothing with grouping or repeated addition."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Two of five seeds are counting-sequence items and the remaining three are degenerate products (2 x 0 = 0, 3 x 0 = 0, 2 x 2 = 4), so nothing in the set escalates toward forming, naming and counting equal groups of concrete objects."
+      "rationale": "Seed 44's sequence-completion ('446, 447, 448, 449, ___') and seed 50's ordering task build number-sequencing skill, a different axis entirely from counting objects in equal groups by repeated addition."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The largest product keyed is 4 while the unrelated sequence items reach 450 - an inconsistent range that neither matches the group sizes this competency illustrates nor keeps the whole item set inside one coherent number band."
+      "verdict": "FAIL",
+      "rationale": "The competency's own example, '5 groups of 3,' implies products around 15, but every rendered multiplication stays at or near zero (seed 43's 2×0, seed 46's 3×0, seed 51's 5×0), never reaching a magnitude resembling the named example."
     }
   },
   "overall": "FAIL"

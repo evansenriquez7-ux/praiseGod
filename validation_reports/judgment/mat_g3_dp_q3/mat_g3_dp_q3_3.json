@@ -1,14 +1,17 @@
 {
   "node_id": "mat_g3_dp_q3_3",
-  "reviewed_by": "Claude Opus 5 (Claude Code session 2026-07-26), blind packet-only re-review triggered by the validate_judgment staleness gate",
-  "review_date": "2026-07-26",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 3, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    68
   ],
   "samples_reviewed": [
     {
@@ -23,8 +26,8 @@
     },
     {
       "seed": 44,
-      "question_text": "A class survey showed 5220 students like costume sash and 2200 students like wristband. How many students were surveyed in all?",
-      "correct_answer": 7420
+      "question_text": "A class survey showed 2305 students like costume sash and 5250 students like wristband. How many students were surveyed in all?",
+      "correct_answer": 7555
     },
     {
       "seed": 45,
@@ -35,33 +38,56 @@
       "seed": 46,
       "question_text": "Look at the bar graph. What is the value for dogs?",
       "correct_answer": "D"
+    },
+    {
+      "seed": 50,
+      "question_text": "A class survey showed 9540 students like fan shirt and 219 students like tote bag. How many students were surveyed in all? The answer is 9769.. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 51,
+      "question_text": "Create a bar graph to show: Monday: 70, Tuesday: 45, Wednesday: 45, Thursday: 15.",
+      "correct_answer": [
+        70,
+        45,
+        45,
+        15
+      ]
+    },
+    {
+      "seed": 68,
+      "question_text": "Rico solved this problem: \"A class survey showed 9033 students like USB drive and 150 students like solar toy. How many students were surveyed in all?\" Rico says the answer is 9033. Is Rico correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 9183
+      }
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The competency asks the student to solve problems using bar-graph data, but seeds 42, 43 and 46 only read a single value off the graph ('Look at the bar graph. What is the value for dogs?') with no computation, and seeds 44 and 45 compute without any graph at all."
+      "verdict": "CONCERN",
+      "rationale": "Seeds 42, 43 and 46 correctly read values off a described bar graph (e.g. seed 42's 'What is the value for dogs?' = 60), but seed 45's 'What is 8500 + 225?' has no data, graph, or category reference at all, so it doesn't fulfill 'using data presented in a...bar graph'."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency explicitly names both horizontal and vertical bar graphs; nothing in the sampled question text distinguishes orientation, and no sample requires combining or comparing two bars, which is what 'solve problems using data' entails."
+      "verdict": "CONCERN",
+      "rationale": "The competency names both 'horizontal and vertical' bar graphs, but the text-only samples (e.g. seed 42's 'Look at the bar graph...') give no indication either orientation is actually rendered or distinguished."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Seed 44's 'A class survey showed 5220 students like costume sash and 2200 students like wristband' places implausibly large survey counts on a class-sized context and uses accessory names as survey categories, which reads oddly to a Grade 3 student even though the arithmetic is sound."
+      "rationale": "Seed 44's 'A class survey showed 2305 students like costume sash and 5250 students like wristband' describes a single class with thousands of respondents, an implausible scenario that undercuts the real-world sense-making grade 3 word problems should model."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Two of five sampled generations are plain multi-digit addition with no graph reference ('What is 8500 + 225?'), so the sampled variant pool contains bare computation from a different competency rather than graph-based problem variants."
+      "verdict": "PASS",
+      "rationale": "The eight samples span read_mcq, cloze, mcq, true_false, set_fill_in_blank and error_detect formats, e.g. seed 68's error-detect item about Rico's USB-drive survey, giving solid structural variety."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "The difficulty that does vary is the size of the addends in the non-graph items, reaching into the thousands, while the graph-reading items stay at single- and double-digit values; neither axis progresses the graph-interpretation skill the competency targets."
+      "verdict": "CONCERN",
+      "rationale": "Seed 51 ('Create a bar graph to show: Monday: 70, Tuesday: 45...') tests graph construction and seed 45 tests bare addition, both drifting from the stated skill of solving problems using data already presented in a graph."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "Bar values of 5 to 60 are appropriate for a Grade 3 graph, but the off-graph arithmetic reaches 8725, so the window mixes two unrelated magnitude regimes without either being tied to the competency's own range."
+      "rationale": "Direct graph-reading values stay small and bar-chart-plausible (5 to 60, seeds 42/43/46), but the 'solve' word problems jump to four-digit figures like seed 50's '9540 students,' an inconsistent scale for a single bar graph's typical data range."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

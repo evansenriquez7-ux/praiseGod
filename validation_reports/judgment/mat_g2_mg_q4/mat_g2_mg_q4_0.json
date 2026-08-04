@@ -1,54 +1,41 @@
 {
   "node_id": "mat_g2_mg_q4_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 3, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    44,
-    45
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 51],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What time does the clock show?",
-      "correct_answer": "C"
-    },
-    {
-      "seed": 44,
-      "question_text": "Look at the July 2025 calendar. What day of the week is July 17?",
-      "correct_answer": "C"
-    },
-    {
-      "seed": 45,
-      "question_text": "Look at the May 2025 calendar. What day of the week is May 14?",
-      "correct_answer": "D"
-    }
+    {"seed": 42, "question_text": "What time does the clock show?", "correct_answer": "C"},
+    {"seed": 43, "question_text": "What time does the clock show?", "correct_answer": "A"},
+    {"seed": 44, "question_text": "Look at the July 2025 calendar. What day of the week is July 17?", "correct_answer": "C"},
+    {"seed": 45, "question_text": "Look at the May 2025 calendar. What day of the week is May 14?", "correct_answer": "D"},
+    {"seed": 46, "question_text": "What time does the clock show?", "correct_answer": "B"},
+    {"seed": 51, "question_text": "Set the clock to show 4:00.", "correct_answer": "4:00"}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The lc is about describing *duration* in days/weeks using a calendar, but 2 of 5 samples ('What time does the clock show?') test analog clock reading, an unrelated skill, and the calendar items ('What day of the week is July 17?') test date lookup, not duration."
+      "rationale": "Not one of the 6 samples computes a duration in days or weeks; seeds 42, 43, and 46 are plain clock-reading ('What time does the clock show?'), seeds 44 and 45 ask only a single day-of-week lookup ('What day of the week is July 17?'), and seed 51 is clock-setting."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "time_reading (20 combos) and calendar (8 combos) are registered, but neither DNA's sampled output computes a span between two dates -- the core 'duration' skill -- so the coverage that matters most for this lc is not evidenced."
+      "rationale": "The competency's core phrase 'duration of an event in terms of number of days and/or weeks' never appears; there is no 'how many days between July 3 and July 17' or 'how many weeks did the event last' item anywhere in the 6-sample packet."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Reading a single date's weekday ('What day of the week is May 14?') is a lookup task, while computing a duration in days or weeks between two events is an arithmetic/reasoning task -- the sampled items sit at a lower cognitive tier than the competency requires."
+      "rationale": "The calendar day-of-week lookups at seeds 44 and 45 ('Look at the July 2025 calendar. What day of the week is July 17?') are grade-appropriate reading tasks, but they demand a different, simpler skill than the multi-step subtraction reasoning a duration-in-days problem requires."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "None of the 5 samples names a start and end point for an event, so the variant space cannot be confirmed to support 'describe the duration ... in terms of number of days and/or weeks' as the lc specifically states."
+      "rationale": "The six samples split into clock-time reading (42, 43, 46), calendar day-lookup (44, 45), and clock-setting (51) -- three unrelated skills, none of which is the duration-counting task the competency names."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Clock-reading items belong to the neighboring lc mat_g2_mg_q4_1 ('read and write time'), not to calendar duration; mixing them into this node dilutes alignment with this lc's exact, narrower wording about days and weeks."
+      "rationale": "The sampled variation moves along a 'tell/set time on a clock' axis (11:00, 1:00, 2:00, 4:00) rather than the 'count days/weeks on a calendar' axis this competency is actually about."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The calendar samples reference single dates (July 17, May 14) with no second date to compute a span from, so there is no observable duration magnitude to judge for grade-2 appropriateness."
+      "verdict": "FAIL",
+      "rationale": "Since no sample ever states a start and end date or event span, there is no observable duration magnitude in days or weeks to judge against the competency at all."
     }
   },
   "overall": "FAIL"

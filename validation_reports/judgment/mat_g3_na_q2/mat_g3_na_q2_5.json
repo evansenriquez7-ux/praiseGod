@@ -1,66 +1,43 @@
 {
   "node_id": "mat_g3_na_q2_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only), 2026-07-30 post-fix re-review batch",
-  "review_date": "2026-07-30",
+  "reviewed_by": "claude-blind-reviewer-subagent",
+  "review_date": "2026-08-04",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 72],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 14 − 2?",
-      "correct_answer": 12
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 35 − 1?",
-      "correct_answer": 34
-    },
-    {
-      "seed": 44,
-      "question_text": "Round 1002 to the nearest 10.",
-      "correct_answer": 1000
-    },
-    {
-      "seed": 45,
-      "question_text": "Round 1002 to the nearest 10.",
-      "correct_answer": 1000
-    },
-    {
-      "seed": 46,
-      "question_text": "What is 3463 − 60?",
-      "correct_answer": 3403
-    }
+    {"seed": 42, "question_text": "Estimate the difference: 1950 − 1152", "correct_answer": 1000},
+    {"seed": 43, "question_text": "Estimate the difference: 4380 − 4095", "correct_answer": 0},
+    {"seed": 44, "question_text": "Estimate: 4566 − 2520 ≈ ___", "correct_answer": 2000},
+    {"seed": 45, "question_text": "Estimate the difference: 3240 − 3092", "correct_answer": 0},
+    {"seed": 46, "question_text": "Estimate the difference: 6116 − 2430", "correct_answer": 4000},
+    {"seed": 50, "question_text": "Jose says: 7902 − 480 ≈ 8000. Is Jose correct?", "correct_answer": {"has_error": false, "correct_value": 8000}},
+    {"seed": 55, "question_text": "The total is 5000 and one part is 1000. What is the other part?", "correct_answer": 4000},
+    {"seed": 72, "question_text": "1656 − 870 ≈ 1000. True or False?", "correct_answer": true}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency verb is 'Estimate the difference of two numbers of up to 4 digits', but no sample asks the student to estimate. Seeds 42, 43 and 46 ('What is 14 − 2?', 'What is 35 − 1?', 'What is 3463 − 60?') demand exact differences and score only the exact value correct (12, 34, 3403). Seeds 44 and 45 ('Round 1002 to the nearest 10.') ask for rounding of a single number and involve no difference at all. No item uses 'about', 'approximately' or 'estimated difference', and none presents two numbers to round and then subtract."
+      "rationale": "7 of 8 samples correctly round both operands to the nearest thousand before subtracting (e.g. 1950→2000, 1152→1000, diff 1000), but the seed-55 read_fill_in_blank item 'The total is 5000 and one part is 1000. What is the other part?' never asks for an estimate, uses already-round numbers, and its answer 4000 is the exact difference, not a rounded estimate."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency's wording implies two coupled sub-cases: rounding to a suitable place and then differencing the two rounded values, over operands up to 4 digits. The packet generates only the halves in isolation and never the composite: rounding alone at seeds 44 and 45, exact subtraction alone at seeds 42, 43, 46. Rounding appears at a single place value ('to the nearest 10') on a single number, 1002; nearest 100 and nearest 1000, which 4-digit estimation requires, never appear."
+      "verdict": "CONCERN",
+      "rationale": "Rounding-up (1950→2000), rounding-down (6116→6000, 2430→2000) and same-thousand zero-estimate cases (4380−4095≈0, 3240−3092≈0) are all generated, but the exact-subtraction part-whole sub-case at seed 55 does not belong to an estimation competency and crowds out a true word-problem variant."
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "Sentence structure and vocabulary are clean and readable, but the reasoning demand is far below Grade 3 Quarter 2 in most items. 'What is 14 − 2?' and 'What is 35 − 1?' are single-step basic facts within 40 with a 1-digit subtrahend and no regrouping, which is Grade 1 work; 'What is 3463 − 60?' is a single tens-place decrement. The multi-step estimation reasoning this node should demand (choose a place, round both numbers, subtract, judge reasonableness) is absent from every sample, so load sits at recall rather than estimation judgment."
+      "verdict": "PASS",
+      "rationale": "Sentence frames like 'Estimate the difference: 1950 − 1152', 'Estimate: 4566 − 2520 ≈ ___', and 'Jose says... Is Jose correct?' use short, literal syntax and grade-3-safe vocabulary (estimate, ≈, part, total) with no multi-step reasoning beyond round-then-subtract."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "All five samples use the 'mcq' formatter and only two bare stem shapes: 'What is A − B?' and 'Round N to the nearest 10.' There is no word-problem context (no peso amounts, no 'about how many more', no comparison story), no cloze or fill-in variant, and no reversed orientation asking which estimate is reasonable. Seeds 44 and 45 are byte-identical stems ('Round 1002 to the nearest 10.') with the same answer 1000 and only reshuffled option keys, so 5 seeds yield effectively 4 distinct items."
+      "verdict": "CONCERN",
+      "rationale": "Formatter spread covers mcq (x3), cloze, error_detect, and true_false all genuinely testing round-then-subtract now that error_detect and true_false show real pre-rounding operands (7902−480, 1656−870), but read_fill_in_blank still substitutes an unrelated exact part-whole question instead of an estimation variant."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "Progression across seeds varies operand magnitude (14 → 35 → 1002 → 3463) and swaps in an unrelated skill axis (rounding one number, seeds 44 and 45) instead of deepening estimation of a difference. Difficulty never advances along this competency's own axis: no larger rounding place, no pair where both operands need rounding, no regrouping-sensitive pair where an estimate is actually useful. Moving from 'What is 35 − 1?' to 'Round 1002 to the nearest 10.' is a change of task, not an increase in estimation demand."
+      "verdict": "CONCERN",
+      "rationale": "Seeds 42-46/50/72 vary which operand rounds up or down and whether the estimate lands on a round or zero difference, all building the same round-to-nearest-thousand-then-subtract skill, but seed 55's part-whole framing swaps in a completely different exact-arithmetic skill that does not belong in this progression."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The stated ceiling is 'up to 4 digits' and the range does reach it: 3463 at seed 46 and 1002 at seeds 44/45 are 4-digit, so the top of the band is respected. But no sample presents two numbers near the ceiling — subtrahends are 2, 1 and 60, making the largest pair 3463 − 60 — and seeds 42 and 43 (14 − 2, 35 − 1) sit two orders of magnitude below it. The distribution is skewed to trivially small operands with 4 digits appearing only on the minuend side."
+      "verdict": "PASS",
+      "rationale": "Operands span 480 to 7902, staying within the competency's 'up to 4 digits' ceiling, and estimates correctly use nearest-thousand rounding suited to that 4-digit span (e.g. 6116−2430 estimates to 4000)."
     }
   },
   "overall": "FAIL"

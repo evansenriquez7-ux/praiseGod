@@ -1,25 +1,29 @@
 {
   "node_id": "mat_g2_na_q4_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 3, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    55,
+    72
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/8"
+      "question_text": "A shape is divided into 3 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/3"
     },
     {
       "seed": 43,
-      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/8"
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/2"
     },
     {
       "seed": 44,
@@ -44,34 +48,60 @@
     },
     {
       "seed": 46,
-      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/8"
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/2"
+    },
+    {
+      "seed": 50,
+      "question_text": "Arrange these numbers from smallest to largest: 497, 505, 510, 498, 501",
+      "correct_answer": [
+        497,
+        498,
+        501,
+        505,
+        510
+      ]
+    },
+    {
+      "seed": 51,
+      "question_text": "What fraction does the model show?",
+      "correct_answer": "C"
+    },
+    {
+      "seed": 55,
+      "question_text": "Shade 1/2 of the shape.",
+      "correct_answer": "1/2"
+    },
+    {
+      "seed": 72,
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/2"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Not one sample orders fractions. Seeds 42, 43 and 46 serve the unrelated 'A shape is divided into 8 equal parts' identification MCQ, while seeds 44 and 45 order three-digit whole numbers: 'Arrange these numbers from smallest to largest: 502, 507, 506, 495, 493'. The competency's noun, unit fractions, appears in no ordering task."
+      "rationale": "The competency is 'Order unit fractions from smallest to largest, and vice versa,' yet the three ordering-formatted samples order whole numbers, e.g. seed 44's 'Arrange these numbers from smallest to largest: 502, 507, 506, 495, 493' — no sample orders any fractions."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The clause 'and vice versa' requires a largest-to-smallest prompt, yet both ordering seeds (44 and 45) are smallest-to-largest only. Neither uses unit fractions such as 1/2, 1/4 or 1/8, so both directions of the named skill are uncovered."
+      "rationale": "Neither direction the competency names (smallest-to-largest or its 'vice versa') is ever applied to a fraction; seed 50's ordering task ('497, 505, 510, 498, 501') and the other two ordering seeds are all whole-number lists."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The two ordering keys are arithmetically sound (493, 495, 502, 506, 507 and 492, 498, 503, 505), but comparing five three-digit numbers is Grade 2 place-value work from an earlier quarter, not the inverse-denominator reasoning a Quarter 4 fraction-ordering node should demand."
+      "verdict": "PASS",
+      "rationale": "The whole-number ordering prompts, e.g. seed 45's 'Arrange these numbers from smallest to largest: 505, 498, 492, 503', are grammatically simple enough for grade 2 quarter 4, independent of their content mismatch with the fraction competency."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Two of the three distinct templates are off-topic. Missing are ordering with a common numerator of 1, number-line placement of unit fractions, and any pairwise comparison such as 'which is larger, 1/3 or 1/6?'."
+      "rationale": "The nine samples split between single-fraction identification (seed 42's 1/3, seed 51's 1/5) and whole-number ordering (seeds 44, 45, 50); no sample combines the two into an actual fraction-ordering task."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "The mix of a fraction-identification MCQ and whole-number sorting builds neither skill. Seeds 44 and 45 differ only in list length, five numbers versus four, which is not progression in ordering unit fractions by denominator."
+      "rationale": "Seed 44 through 50's ordering items build sequencing of three-digit whole numbers (e.g. '493' through '507'), an axis entirely separate from comparing unit fraction sizes, which this competency is specifically about."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "Quantities reach 507 in a competency whose only values should be unit fractions with denominators no greater than 8. The generated numeric range belongs to a whole-number comparison node and is off by two orders of magnitude and the wrong number type."
+      "rationale": "Ordered values run up to 510 (seed 50), far beyond any sensible scale for unit fractions with denominators capped at 8, showing the ordering mechanic was never actually parameterized with fraction values."
     }
   },
   "overall": "FAIL"

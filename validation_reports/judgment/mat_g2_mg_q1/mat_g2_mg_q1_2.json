@@ -1,54 +1,40 @@
 {
   "node_id": "mat_g2_mg_q1_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 3, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    44,
-    45
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "A shape moves 3 spaces to the right without turning or flipping. What is this called?",
-      "correct_answer": "slide (translation)"
-    },
-    {
-      "seed": 44,
-      "question_text": "After a slide, the shape looks exactly the same — only its position changed. True or false?",
-      "correct_answer": "True"
-    },
-    {
-      "seed": 45,
-      "question_text": "A triangle slides 4 spaces down. Which direction did it move?",
-      "correct_answer": "downward"
-    }
+    {"seed": 42, "question_text": "A shape moves 3 spaces to the right without turning or flipping. What is this called?", "correct_answer": "slide (translation)"},
+    {"seed": 43, "question_text": "A shape moves 3 spaces to the right without turning or flipping. What is this called?", "correct_answer": "slide (translation)"},
+    {"seed": 44, "question_text": "After a slide, the shape looks exactly the same — only its position changed. True or false?", "correct_answer": "True"},
+    {"seed": 45, "question_text": "A triangle slides 4 spaces down. Which direction did it move?", "correct_answer": "downward"},
+    {"seed": 46, "question_text": "A shape moves 3 spaces to the right without turning or flipping. What is this called?", "correct_answer": "slide (translation)"}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The lc specifically asks for 'multi-step slide (or translation)', but every sample shows one single movement ('moves 3 spaces to the right', 'slides 4 spaces down') -- none chains two or more slides together as 'multi-step' implies."
+      "rationale": "The core 'slide (translation)' vocabulary and single-step directional movement are well tested, e.g. seed 45's 'A triangle slides 4 spaces down. Which direction did it move?', but the competency's own qualifier 'multi-step' is never realized by any of the 5 samples."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "symmetry_slides registers 6 combos over 2 axes; my 5 samples are illustrative only, and exhaustive combo execution is the job of validate_matrix, not this blind review."
+      "verdict": "FAIL",
+      "rationale": "Every movement described is a single, one-direction slide ('moves 3 spaces to the right', 'slides 4 spaces down'); no sample chains two or more slide steps together, so the 'multi-step' sub-case literally named in the competency title is entirely absent."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Sentences like 'A triangle slides 4 spaces down. Which direction did it move?' are short, concrete, and well within the 18-word cap for grade 2 quarter 1 -- appropriate reading load for describing a single transformation."
+      "rationale": "Vocabulary such as 'turning or flipping' and 'looks exactly the same — only its position changed' at seed 44 is concrete and grade-appropriate, and the true/false framing keeps reasoning load light for Grade 2 Quarter 1."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "With only 2 axes and 6 combos registered, and every sampled item being a single-direction, single-step slide, I can't confirm the variant space plausibly reaches the 'multi-step' case this specific lc names in its title."
+      "rationale": "3 of 5 samples (42, 43, 46) repeat the identical stem 'A shape moves 3 spaces to the right without turning or flipping. What is this called?' word for word, leaving only seeds 44 and 45 to supply distinct framings."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The observed single-step items are a reasonable prerequisite but undershoot the lc's exact wording, which requires describing the effect of a *multi-step* slide, not just a single movement in one direction."
+      "verdict": "PASS",
+      "rationale": "All five samples build the slide/translation concept itself (identification, direction, invariance of shape) rather than drifting to an unrelated transformation like rotation or reflection."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Distances of 3-4 grid spaces are a sensible, small-number progression for grade 2 quarter 1 spatial reasoning, well matched to a student just learning what a slide/translation is."
+      "verdict": "CONCERN",
+      "rationale": "Slide distances used (3 spaces at seeds 42/43/46, 4 spaces at seed 45) are small and reasonable, but because no sample ever composes two slides in sequence, the complexity ceiling implied by 'multi-step' is never reached."
     }
   },
   "overall": "CONCERN"

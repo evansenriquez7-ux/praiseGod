@@ -1,66 +1,41 @@
 {
   "node_id": "mat_g3_mg_q2_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 7, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is the weight of the object in g?",
-      "correct_answer": 15
-    },
-    {
-      "seed": 43,
-      "question_text": "What is the weight of the object in g?",
-      "correct_answer": 5
-    },
-    {
-      "seed": 44,
-      "question_text": "What is the weight of the object in g?",
-      "correct_answer": 53
-    },
-    {
-      "seed": 45,
-      "question_text": "What is the weight of the object in g?",
-      "correct_answer": 35
-    },
-    {
-      "seed": 46,
-      "question_text": "What is the weight of the object in g?",
-      "correct_answer": 10
-    }
+    {"seed": 42, "question_text": "What is the weight of the object in g?", "correct_answer": 15},
+    {"seed": 43, "question_text": "What is the weight of the object in g?", "correct_answer": 5},
+    {"seed": 44, "question_text": "What is the weight of the object in g?", "correct_answer": 53},
+    {"seed": 45, "question_text": "What is the weight of the object in g?", "correct_answer": 35},
+    {"seed": 46, "question_text": "What is the weight of the object in g?", "correct_answer": 10},
+    {"seed": 50, "question_text": "What is the weight of the object in g?", "correct_answer": 64}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Competency requires mass in g, kg, AND/OR mg, but all 5 samples ask 'What is the weight of the object in g?' -- kg and mg never appear across seeds 42-46."
+      "rationale": "Every one of the 6 samples asks 'What is the weight of the object in g?' -- 'weight' is used where the competency's own noun is 'mass', and only the gram unit of the three named units (g, kg, mg) is ever exercised."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Every one of the 5 rendered seeds (42-46) uses grams only with answers 15,5,53,35,10; no kilogram or milligram variant is exercised in this batch."
+      "rationale": "Across mcq seeds 42-46 and the cloze-formatted seed 50, the answer values are 15, 5, 53, 35, 10 and 64 grams -- six data points, zero of which are in kilograms or milligrams despite the competency naming all three units."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The stem 'What is the weight of the object in g?' is a short, single-clause sentence well within Grade 3 Q2 reading level."
+      "rationale": "The stem 'What is the weight of the object in g?' is a single 8-word clause with no subordinate structure, comfortably within grade 3 quarter 2 reading demand across all 6 seeds including the cloze variant at seed 50."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Registered dna 'mass_capacity' plausibly supports kg/mg variants elsewhere, but nothing in this specific batch demonstrates the tool switching units as the competency requires."
+      "rationale": "The competency requires measuring 'using appropriate measuring tools', but none of the 6 rendered stems names or references a scale, balance, or any specific tool -- the reading device stays entirely implicit behind the phrase 'the object'."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The node's own taught vocabulary list is 'mass', but every question stem says 'weight' instead, a term never introduced by this node's vocab list."
+      "rationale": "The competency's stated noun is 'mass', yet the rendered vocabulary in all 6 samples is 'weight' ('What is the weight of the object in g?'), a term this node's competency text never uses, so the observed wording drifts from the exact vocabulary being taught."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Answer magnitudes (5-53) are sensible small-object gram readings appropriate for a Grade 3 introductory mass-measurement item."
+      "rationale": "The sampled gram values (5, 10, 15, 35, 53, 64 across seeds 42-46 and 50) are sensible small-object readings for an introductory grams-only presentation, appropriate in magnitude for what is actually shown."
     }
   },
   "overall": "CONCERN"

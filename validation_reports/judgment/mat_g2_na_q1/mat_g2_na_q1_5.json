@@ -1,66 +1,41 @@
 {
   "node_id": "mat_g2_na_q1_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 1, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Which word describes the 7th position?",
-      "correct_answer": "seventh"
-    },
-    {
-      "seed": 43,
-      "question_text": "Which word describes the 8th position?",
-      "correct_answer": "eighth"
-    },
-    {
-      "seed": 44,
-      "question_text": "Write the symbol for the seventh position.",
-      "correct_answer": "7th"
-    },
-    {
-      "seed": 45,
-      "question_text": "Write the symbol for the eighth position.",
-      "correct_answer": "8th"
-    },
-    {
-      "seed": 46,
-      "question_text": "Which word describes the 8th position?",
-      "correct_answer": "eighth"
-    }
+    {"seed": 42, "question_text": "Which word describes the 1st position?", "correct_answer": "first"},
+    {"seed": 43, "question_text": "Which word describes the 5th position?", "correct_answer": "fifth"},
+    {"seed": 44, "question_text": "Write the symbol for the ninth position.", "correct_answer": "9th"},
+    {"seed": 45, "question_text": "Write the symbol for the seventh position.", "correct_answer": "7th"},
+    {"seed": 46, "question_text": "Which word describes the 7th position?", "correct_answer": "seventh"},
+    {"seed": 50, "question_text": "Write the symbol for the fourteenth position.", "correct_answer": "14th"}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Seeds 42-46 are numeral-to-word translation drills ('Which word describes the 7th position?', 'Write the symbol for the eighth position.'); not one sample places an object anywhere - no line of children, no shelf, no race - so the competency's noun phrase 'position of objects' is never exercised."
+      "rationale": "The competency requires describing 'the position of objects' using ordinal numbers, but none of the six samples references any object or context (a race, a line, a shelf) -- every item is an abstract 'which word/symbol describes position N' translation such as \"Which word describes the 1st position?\", with nothing actually being positioned."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Across all five seeds only the 7th and 8th ordinals are ever keyed (seventh, eighth, 7th, 8th); 1st through 6th and 9th through 20th never appear as targets, and the upper half of the stated range is touched only by distractors such as 'eleventh' and '14th'."
+      "verdict": "CONCERN",
+      "rationale": "The packet does cover both directions of the ordinal skill -- word-given-number (42, 43, 46: 'first', 'fifth', 'seventh') and symbol-given-word (44, 45, 50: '9th', '7th', '14th') -- but values below 1st through 4th and between 10th and 13th, and any value from 15th-20th, never appear despite the competency's stated ceiling of 20th."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Stems are single clauses of six to eight words using grade-2 vocabulary ('word', 'symbol', 'position'), and the task is one-step recall of a single ordinal name, which is well within a Grade 2 Quarter 1 reading and reasoning load."
+      "rationale": "The vocabulary tested ('first', 'fifth', 'ninth', 'seventh', '9th', '14th') is grade-appropriate reading demand for G2 Q1, with short, single-clause prompts throughout."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Only two templates exist - word given the symbol, and symbol given the word. There is no ordering-from-the-left/right item, no 'who is 3rd in line', and no identification of a named object's place in a pictured row, which are the natural contextual variants here."
+      "rationale": "Formatter and direction vary (word-given-number in 42/43/46, symbol-given-word in 44/45/50), but no sample ever embeds the ordinal in an object scenario or word-problem context, so the only real variant axis is 'word vs symbol,' never 'abstract vs applied.'"
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "All five seeds sit at the identical trivial-recall level around 7th/8th, so the set shows no progression from small ordinals toward the 20th ceiling, and no progression from naming an ordinal to applying it to describe where something sits."
+      "rationale": "The word/symbol translation drilled in \"Write the symbol for the ninth position.\" is a legitimate ordinal sub-skill, but without any object being positioned it builds ordinal-notation recall rather than the full 'describe the position of objects' competency this node names."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The competency ceiling is 20th but the largest keyed ordinal in the packet is 8th; the only values approaching the ceiling ('fourteenth' in seed 43, '14th' in seed 44) are wrong options, so the stated range is never actually reached by a correct answer."
+      "rationale": "Values sampled (1st, 5th, 7th, 9th, 14th) climb only as high as 14th, e.g. \"Write the symbol for the fourteenth position.\", leaving 15th through the competency's stated ceiling of 20th completely unexercised."
     }
   },
   "overall": "FAIL"

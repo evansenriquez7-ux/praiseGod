@@ -1,67 +1,45 @@
 {
   "node_id": "mat_g1_na_q3_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 0, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 75, 82],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 5 − 0?",
-      "correct_answer": 5
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 2 − 1?",
-      "correct_answer": 1
-    },
-    {
-      "seed": 44,
-      "question_text": "17 − 0 = ___",
-      "correct_answer": 17
-    },
-    {
-      "seed": 45,
-      "question_text": "13 − 0 = ___",
-      "correct_answer": 13
-    },
-    {
-      "seed": 46,
-      "question_text": "3 − 0 = ___",
-      "correct_answer": 3
-    }
+    {"seed": 42, "question_text": "What is 5 − 0?", "correct_answer": 5},
+    {"seed": 43, "question_text": "What is 2 − 1?", "correct_answer": 1},
+    {"seed": 44, "question_text": "15 − 12 = ___", "correct_answer": 3},
+    {"seed": 45, "question_text": "12 − 10 = ___", "correct_answer": 2},
+    {"seed": 46, "question_text": "2 − 2 = ___", "correct_answer": 0},
+    {"seed": 50, "question_text": "The total is 20 and one part is 10. What is the other part?", "correct_answer": 10},
+    {"seed": 51, "question_text": "The dot is at 12 and it moves backward 2 numbers. Starting from 12, just count back 2 numbers. Which number will the dot land on?", "correct_answer": "C"},
+    {"seed": 75, "question_text": "15 − 15 = 30. True or False?", "correct_answer": false},
+    {"seed": 82, "question_text": "Dante says: 10 − 10 = 0. Is Dante correct?", "correct_answer": {"has_error": false, "correct_value": 0}}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency wants subtraction 'illustrated' as taking away, but four of the five samples subtract zero ('5 − 0', '17 − 0', '13 − 0', '3 − 0'), which trivially returns the original number and poorly illustrates the taking-away action; only '2 − 1 = 1' shows an actual quantity being removed."
+      "verdict": "PASS",
+      "rationale": "Genuine take-away and count-back models both appear: seed 43's 'What is 2 − 1?' directly removes a quantity, and seed 51's 'The dot is at 12 and it moves backward 2 numbers... Which number will the dot land on?' illustrates subtraction as counting backward, matching the competency's 'taking away' description."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "subtraction registers 12 combos across 3 axes; a wider mix of non-zero subtrahends presumably exists elsewhere in that space even though this five-sample window is zero-heavy, with exhaustive execution confirmed separately."
+      "rationale": "The samples cover subtracting a small amount (seed 43's 2 − 1), subtracting a number from itself (seed 46's 2 − 2 = 0 and seed 82's 10 − 10 = 0), a part-whole missing-part scenario (seed 50's total 20, part 10), and a count-back model (seed 51), giving genuine breadth across the subtraction task."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Prompts like 'What is 5 − 0?' are extremely short and appropriate for Grade 1 Quarter 3 reading level."
+      "rationale": "Sentence forms stay minimal and concrete for Grade 1 Quarter 3, e.g. seed 42's four-word 'What is 5 − 0?' and seed 82's short narrative 'Dante says: 10 − 10 = 0. Is Dante correct?', both readable without extra reasoning load."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Four of five samples use a zero subtrahend, a degenerate case for illustrating 'taking away'; a variant space that surfaces this proportion of zero-subtraction problems risks under-teaching the core concept."
+      "verdict": "PASS",
+      "rationale": "Framings span pure math facts (mcq at seeds 42/43, cloze at seeds 44-46), a part-whole narrative (seed 50's 'total is 20 and one part is 10'), a number-line count-back (seed 51), true/false (seed 75), and error-detection (seed 82), giving genuine format variety."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Numbers used (2, 3, 5, 13, 17) stay within the stated up-to-20 range, and where a genuine subtraction occurs ('2 − 1 = 1') it is computed correctly."
+      "rationale": "All nine samples stay on subtraction itself with no drift to addition or an unrelated skill; seed 75's trap statement '15 − 15 = 30. True or False?' is correctly keyed false, keeping the variation on-topic and testing genuine subtraction reasoning."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The range of minuends sampled (2 to 17) appropriately spans toward the competency's 20-ceiling even though the subtrahends used are mostly trivial."
+      "rationale": "Minuends sampled span from 2 (seed 43) up to 20 (seed 50's 'The total is 20 and one part is 10'), reaching the competency's full 0-to-20 ceiling, with seed 44's 15 − 12 also exercising a mid-range two-digit subtraction."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

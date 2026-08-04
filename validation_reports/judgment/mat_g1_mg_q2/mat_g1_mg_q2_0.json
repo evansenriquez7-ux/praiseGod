@@ -1,66 +1,42 @@
 {
   "node_id": "mat_g1_mg_q2_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 0, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Measure the object. Its length is ___ paperclips.",
-      "correct_answer": 5
-    },
-    {
-      "seed": 43,
-      "question_text": "Measure the object. Its length is ___ paperclips.",
-      "correct_answer": 10
-    },
-    {
-      "seed": 44,
-      "question_text": "Measure the object. Its length is ___ blocks.",
-      "correct_answer": 5
-    },
-    {
-      "seed": 45,
-      "question_text": "Measure the object. Its length is ___ steps.",
-      "correct_answer": 10
-    },
-    {
-      "seed": 46,
-      "question_text": "Measure the object. Its length is ___ paperclips.",
-      "correct_answer": 10
-    }
+    {"seed": 42, "question_text": "Measure the object. Its length is ___ paperclips.", "correct_answer": 5},
+    {"seed": 43, "question_text": "Measure the object. Its length is ___ paperclips.", "correct_answer": 10},
+    {"seed": 44, "question_text": "Measure the object. Its length is ___ blocks.", "correct_answer": 5},
+    {"seed": 45, "question_text": "Measure the object. Its length is ___ steps.", "correct_answer": 10},
+    {"seed": 46, "question_text": "Measure the object. Its length is ___ paperclips.", "correct_answer": 10},
+    {"seed": 50, "question_text": "Measure the object. Its length is ___ blocks.", "correct_answer": 10},
+    {"seed": 55, "question_text": "How long is the object? Give your answer in paperclips.", "correct_answer": "C"}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples directly instantiate non-standard-unit measurement as named in the competency: 'Measure the object. Its length is ___ paperclips.', '___ blocks.', and '___ steps.' cover multiple non-standard unit types."
+      "verdict": "CONCERN",
+      "rationale": "All seven samples measure 'the length of an object' using non-standard units, paperclips in seeds 42/43/46/55, blocks in 44/50, steps in 45, matching the first half of the competency well, but not one sample measures 'the distance between two objects', the competency's explicitly named second task."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "length_measurement registers 2 axes/4 combos per variant_registry, machine-verified exhaustively by validate_matrix separately; these 5 seeds only sample that small space."
+      "verdict": "FAIL",
+      "rationale": "The competency names two sub-tasks, object length and distance between two objects; 'distance between two objects' has zero representation across all seven seeds -- no sample places two objects and asks for the gap between them."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each prompt is a two-sentence, single-digit-answer task ('Measure the object. Its length is ___ blocks.') well under the 15-word grade-1 ceiling and appropriately single-step."
+      "rationale": "The recurring stem 'Measure the object. Its length is ___ [unit].' is a short, two-clause instruction appropriate for Grade 1 Quarter 2."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "With only 2 axes and 4 combos registered, the variant space is thin relative to the competency's two named skills, length of an object AND distance between two objects; the 5 samples only show 'length of an object' phrasing, with no distance-between-two-objects variant observed."
+      "verdict": "PASS",
+      "rationale": "Three distinct non-standard units appear, paperclips, blocks, steps, across four different formatters, mcq, cloze, read_mcq, giving reasonable presentation variety for the length-measuring half of the competency."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The difficulty stays correctly confined to counting non-standard units (paperclips, blocks, steps) without drifting into standard units like cm or inches that belong to a later measurement competency."
+      "rationale": "All variation is in unit type and target length, 5 vs 10 units across seeds 42-55, directly building the 'measure using non-standard units' skill without drifting into standard units like centimeters."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Observed answers (5, 10) are small, countable magnitudes appropriate for a grade-1 non-standard-unit measuring task at this early quarter."
+      "rationale": "Measured lengths of 5 and 10 units across all seven samples are small, easily countable magnitudes appropriate to Grade 1 Quarter 2 non-standard measurement."
     }
   },
   "overall": "CONCERN"

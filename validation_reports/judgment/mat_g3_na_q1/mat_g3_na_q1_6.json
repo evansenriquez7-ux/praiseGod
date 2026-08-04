@@ -1,91 +1,41 @@
 {
   "node_id": "mat_g3_na_q1_6",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 7, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Arrange these numbers from smallest to largest: 123, 115, 122",
-      "correct_answer": [
-        115,
-        122,
-        123
-      ]
-    },
-    {
-      "seed": 43,
-      "question_text": "Arrange these numbers from smallest to largest: 129, 124, 119",
-      "correct_answer": [
-        119,
-        124,
-        129
-      ]
-    },
-    {
-      "seed": 44,
-      "question_text": "Arrange these numbers from smallest to largest: 122, 131, 127, 120, 118, 132",
-      "correct_answer": [
-        118,
-        120,
-        122,
-        127,
-        131,
-        132
-      ]
-    },
-    {
-      "seed": 45,
-      "question_text": "Arrange these numbers from smallest to largest: 128, 130, 123, 117, 124",
-      "correct_answer": [
-        117,
-        123,
-        124,
-        128,
-        130
-      ]
-    },
-    {
-      "seed": 46,
-      "question_text": "Arrange these numbers from smallest to largest: 127, 116, 133",
-      "correct_answer": [
-        116,
-        127,
-        133
-      ]
-    }
+    {"seed": 42, "question_text": "Arrange these numbers from smallest to largest: 123, 115, 122", "correct_answer": [115, 122, 123]},
+    {"seed": 43, "question_text": "Arrange these numbers from smallest to largest: 129, 124, 119", "correct_answer": [119, 124, 129]},
+    {"seed": 44, "question_text": "Arrange these numbers from smallest to largest: 122, 131, 127, 120, 118, 132", "correct_answer": [118, 120, 122, 127, 131, 132]},
+    {"seed": 45, "question_text": "Arrange these numbers from smallest to largest: 128, 130, 123, 117, 124", "correct_answer": [117, 123, 124, 128, 130]},
+    {"seed": 46, "question_text": "Arrange these numbers from smallest to largest: 127, 116, 133", "correct_answer": [116, 127, 133]},
+    {"seed": 50, "question_text": "Arrange these numbers from smallest to largest: 135, 122, 130, 126, 123, 125", "correct_answer": [122, 123, 125, 126, 130, 135]}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Ordering a 6-item list in seed 44 (122,131,127,120,118,132 -> 118,120,122,127,131,132) is structurally strong, but every value clusters in the 115-133 band."
+      "rationale": "Ascending ordering is well tested -- seed 44's 6-item list '122, 131, 127, 120, 118, 132' correctly resolves to '118, 120, 122, 127, 131, 132' -- but the competency's explicit 'and vice versa' clause is never exercised in any of the 6 samples, including the new sort_order-formatted seed 50."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "List sizes vary across seeds (3, 5, and 6 items), giving good structural diversity in this batch."
+      "verdict": "FAIL",
+      "rationale": "Every one of the 6 seeds, across both the 'ordering' formatter (42-46) and the newly sampled 'sort_order' formatter (50, '135, 122, 130, 126, 123, 125'), asks to arrange 'from smallest to largest' only; the descending-order half the competency names is completely absent."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The instruction and comma-separated lists remain readable and appropriate for Grade 3 Q1."
+      "rationale": "The comma-separated number lists and consistent instruction phrasing remain readable at grade 3 quarter 1 level even at the largest list size, seed 44's 6 items."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The 6-item ordering list in seed 44 shows the tool can push well beyond the 3-item baseline, a meaningful step up appropriate for Grade 3."
+      "verdict": "CONCERN",
+      "rationale": "List length varies helpfully (3, 5, and 6 items across the seeds) and a second formatter (sort_order at seed 50) is exercised, but the direction of ordering never varies, so format diversity does not translate into task diversity."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Each sample is a genuine ascending-order task matching 'Order numbers up to 10 000 from smallest to largest'."
+      "rationale": "Every sample, including the new sort_order seed 50, is a genuine number-ordering task using values in a consistent, readable magnitude band, matching the core ordering skill this competency names."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "All values across every seed stay between 115 and 133; nothing approaches even 1,000 let alone the stated 10,000 ceiling for this node."
+      "rationale": "Values across all 6 seeds, including the new sort_order seed 50 (122-135), stay clustered between 115 and 135; nothing approaches even 1,000, let alone the stated 10,000 ceiling for this grade-3 quarter-1 competency."
     }
   },
   "overall": "FAIL"

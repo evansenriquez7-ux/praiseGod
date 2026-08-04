@@ -1,14 +1,17 @@
 {
   "node_id": "mat_g1_na_q4_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 2, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    55,
+    110
   ],
   "samples_reviewed": [
     {
@@ -35,32 +38,52 @@
       "seed": 46,
       "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
       "correct_answer": "1/2"
+    },
+    {
+      "seed": 50,
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "B"
+    },
+    {
+      "seed": 55,
+      "question_text": "Shade 1/2 of the shape.",
+      "correct_answer": "1/2"
+    },
+    {
+      "seed": 110,
+      "question_text": "Arrange these numbers from largest to smallest: 59, 61, 62, 60",
+      "correct_answer": [
+        59,
+        60,
+        61,
+        62
+      ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Seeds 44 and 45 abandon fractions entirely: 'Find the missing number: 62, 63, 64, 65, ___' (key 66) and 'What number comes next when counting: 44, 45, 46, 47, ___?' (key 48) are whole-number sequencing, not counting halves or quarters. Worse, on seed 42 the distractor '2/4' is numerically equal to the key '1/2', so that MCQ has two mathematically correct choices."
+      "rationale": "Four of eight samples involve no fraction at all: seed 44 (\"Find the missing number: 62, 63, 64, 65, ___\"), seed 45, seed 50, and seed 110 (\"Arrange these numbers from largest to smallest: 59, 61, 62, 60\") are whole-number sequencing, number-line reading, and ordering tasks, not counting halves or quarters."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The noun 'quarters' is never realized. Seeds 42, 43 and 46 all emit the byte-identical stem 'A shape is divided into 2 equal parts. 1 part is shaded', so fourths are absent, and so is any actual counting of multiple unit fractions (two halves, three quarters, four quarters making a whole)."
+      "rationale": "No sample asks the student to count a number of half or quarter units toward a whole; the fraction-related items (seeds 42, 43, 46, 55) are single-fraction identification or shading reused from a different node, and 'quarters' never appears as a counted unit."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The seed 42 option list offers '2/1' and '2/3'. An improper fraction and a fraction in thirds are notations a Grade 1 Quarter 4 learner has not met under a halves-and-quarters lc, so the distractors require concepts the stem never taught."
+      "verdict": "PASS",
+      "rationale": "In isolation the sentences are readable for Grade 1 Q4, e.g. \"What number comes next when counting: 44, 45, 46, 47, ___?\", though several are off-topic as noted above."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Three of the five seeds return one and the same sentence with only the A-D option ordering shuffled; there is no set-partition context (half of 4 cookies), no 'which shape shows one fourth', and no word-form ('one half') variant anywhere in the sample."
+      "rationale": "Half the samples drift entirely off the fraction axis into whole-number skip-counting (\"Find the missing number: 62, 63, 64, 65, ___\") and ordering (\"Arrange these numbers from largest to smallest: 59, 61, 62, 60\"), sharing no content connection with counting halves and quarters."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "There is no difficulty ladder toward halves and quarters at all: the three fraction items are the identical single-half case, and the only 'progression' present is the drift into counting on by ones from 62 and from 44, which belongs to a Quarter 1 number-sense lc."
+      "rationale": "Seeds 44, 45, 50, and 110 vary along an unrelated axis (whole-number sequencing, number-line reading, and ordering as in \"Arrange these numbers from largest to smallest: 59, 61, 62, 60\") instead of building the fraction-counting competency this node names."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "Counting values 44 through 66 are inside a Grade 1 range, but the fraction denominators drift to 3 ('2/3') when this lc caps denominators at 2 and 4, and the numerator 2 over denominator 1 exceeds a whole."
+      "rationale": "Only the 1/2 fraction appears anywhere in the packet; despite the competency explicitly naming 'quarters', no 1/4 counting item is present, and the off-topic whole numbers (44-77, 59-65) bear no relation to a fraction scale."
     }
   },
   "overall": "FAIL"

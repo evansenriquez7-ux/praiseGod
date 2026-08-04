@@ -13,7 +13,7 @@ Covers MATATAG grades 2–3 multiplication competencies.
 from __future__ import annotations
 
 import random
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 from backend.app.practice_gen.dna.base import (
     DIFFICULTY_LEVEL_MAP,
@@ -149,9 +149,19 @@ def generate_params(
     )
     structure   = profile.get("structure", "result_unknown")
     context     = profile.get("context", "pure")
+    task_type   = profile.get("task_type")
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
     allowed_tables = _table_for_level(table_level, grade)
+    # NOTE on task_type == "repeated_addition" (mat_g2_na_q3_1): restricting
+    # `allowed_tables` here to exclude trivial (0, 1) facts or cap the top end
+    # was tried and reverted -- both broke real §1A/§1A-reach contracts this
+    # DNA must keep: max_product=1 at the low end needs a 1x1-shaped product
+    # to exist, and the competency's stated ceiling (100) needs a_hi*max(table)
+    # to reach it. The candidate pool stays exactly what it always was; the
+    # repeated-addition framing is applied at render time instead (see the
+    # b <= 5 gate in the formatters and base_generator._build_symbolic_question),
+    # which does not change what this DNA is able to generate or its reach.
     a_lo = bounds["a"][0]
     if num_level == "multi_digit":
         a_lo = max(10, a_lo)
@@ -162,6 +172,102 @@ def generate_params(
         max_prod_val = int(max_prod_val)
     else:
         max_prod_val = 999999 # Rely on bounds["a"]
+
+    if task_type == "estimate":
+        # "Estimate the product of 2- to 3-digit numbers by 1- to 2-digit
+        # numbers by estimating the factors using multiples of 10"
+        # (mat_g3_na_q3_3): round EACH factor to the nearest 10 (the
+        # competency names "multiples of 10" explicitly, not front-end
+        # rounding to varying precision like addition/subtraction's
+        # estimate), then multiply the rounded factors. The co-mapped
+        # `rounding` DNA rounds ONE number, not two factors of a product,
+        # so it cannot express this competency regardless of which node
+        # maps to it (see registry.py's "estimate" text match).
+        # Both factors are preferably drawn from >=10 rather than the full
+        # "1- to 2-digit" range: rounding a single-digit factor (1-9) to
+        # the nearest 10 collapses it to 0 or 10, and a 0 factor makes the
+        # "estimate" trivially 0 -- not a meaningful exercise of this
+        # skill. Restricting both factors to >=10 keeps every generated
+        # item a genuine two-multi-digit-factor estimate whenever the
+        # ceiling allows it (the minimum non-degenerate rounded product
+        # with both factors >=10 is 10*10=100).
+        def _round_half_up(n: int, precision: int = 10) -> int:
+            remainder = n % precision
+            if remainder >= precision / 2:
+                return n - remainder + precision
+            return n - remainder
+
+        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
+
+        def _build_estimate_candidates(min_a: int, min_b: int) -> List[Tuple[int, int]]:
+            cands: List[Tuple[int, int]] = []
+            attempts = 0
+            while len(cands) < 500 and attempts < 5000:
+                attempts += 1
+                x = rng.randint(min_a, 999)
+                y = rng.randint(min_b, 99)
+                if _round_half_up(x) * _round_half_up(y) > max_prod_val:
+                    continue
+                cands.append((x, y))
+            return cands
+
+        candidates = _build_estimate_candidates(10, 10)
+        if not candidates:
+            # max_prod_val < 100: no two-multi-digit-factor product can fit
+            # under the ceiling at all (the harness's own default-scalar
+            # interpolation can drive max_product this low for some node/
+            # combination pairs). Fall back to the full 1- to 2-digit
+            # range -- a factor rounding to 0 is a legitimate, if less
+            # illustrative, front-end-rounding example, and the only way
+            # to serve *any* item under such a tight ceiling. Same "thin,
+            # don't exclude; fall back to the full pool only when the
+            # preferred subset is empty" convention as addition.py/
+            # subtraction.py's 0-operand handling.
+            candidates = _build_estimate_candidates(1, 1)
+        if not candidates:
+            raise RuntimeError(
+                f"generate_params (multiplication): no valid estimate pair "
+                f"for grade={grade}, profile={difficulty_profile}."
+            )
+
+        # A pair where BOTH factors already sit on a multiple of 10 (e.g.
+        # 20 x 30 -> rounds to itself, "estimate" == exact product) renders
+        # as a front-end-rounding item that never exercises rounding -- the
+        # same shape addition.py's identical fix thins (~4% of samples
+        # here). Same convention: thin to a ~10% cap of the meaningful pool
+        # rather than exclude, so it stays reachable when it's the only
+        # option a tight max_prod_val leaves.
+        def _is_degenerate_estimate(pair: tuple) -> bool:
+            x, y = pair
+            return _round_half_up(x) == x and _round_half_up(y) == y
+
+        _meaningful = [p for p in candidates if not _is_degenerate_estimate(p)]
+        _degenerate = [p for p in candidates if _is_degenerate_estimate(p)]
+        if _meaningful and _degenerate:
+            cap = max(1, len(_meaningful) // 10)
+            candidates = _meaningful + _degenerate[:cap]
+        elif _meaningful:
+            candidates = _meaningful
+
+        real_a, real_b = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
+
+        rounded_a = _round_half_up(real_a)
+        rounded_b = _round_half_up(real_b)
+
+        return {
+            "a": rounded_a,
+            "b": rounded_b,
+            "result": rounded_a * rounded_b,
+            "real_a": real_a,
+            "real_b": real_b,
+            "task_type": "estimate",
+            "blank_target": "result",
+            "context": "pure",
+            "structure": "result_unknown",
+            "groups": rounded_a,
+            "n": rounded_b,
+            "total": rounded_a * rounded_b,
+        }
 
     candidate_pairs = []
     for b in allowed_tables:
@@ -220,6 +326,7 @@ def generate_params(
         "blank_target": blank_target,
         "context": context,
         "structure": structure,
+        "task_type": task_type,
         # Aliases for the mul_* word-problem spines (spines.py), whose
         # templates use "groups"/"n"/"total" rather than this DNA's own
         # "a"/"b"/"result" -- Spine.render() does a raw str.format() over

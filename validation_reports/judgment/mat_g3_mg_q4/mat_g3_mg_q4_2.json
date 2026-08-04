@@ -1,41 +1,41 @@
 {
   "node_id": "mat_g3_mg_q4_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, fix-verification batch",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 7, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
   "sample_seeds": [42, 43, 44, 45, 46],
   "samples_reviewed": [
     {"seed": 42, "question_text": "When completing a symmetric figure, the two halves must be ___.", "correct_answer": "mirror images of each other"},
     {"seed": 43, "question_text": "Half of a shape is shown. The line of symmetry is vertical. To complete the shape, what do you do?", "correct_answer": "Draw the mirror image on the other side of the line."},
-    {"seed": 44, "question_text": "A symmetric figure has a horizontal line of symmetry. If the top half has 3 squares, how many squares are in the bottom half?", "correct_answer": 3},
-    {"seed": 45, "question_text": "A symmetric figure has a horizontal line of symmetry. If the top half has 3 squares, how many squares are in the bottom half?", "correct_answer": 3},
+    {"seed": 44, "question_text": "A symmetric figure has a horizontal line of symmetry. If the top half has 3 squares, how many squares are in the bottom half?", "correct_answer": "3"},
+    {"seed": 45, "question_text": "A symmetric figure has a horizontal line of symmetry. If the top half has 3 squares, how many squares are in the bottom half?", "correct_answer": "3"},
     {"seed": 46, "question_text": "Half of a shape is shown. The line of symmetry is vertical. To complete the shape, what do you do?", "correct_answer": "Draw the mirror image on the other side of the line."}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The competency asks students to complete a symmetric figure; the samples test that completed halves must be mirror images, that completing across a vertical line means drawing the mirror image on the other side, and that a horizontal-line figure with 3 squares on top requires 3 on the bottom -- squarely on this node's 'complete a figure with respect to a line' task."
+      "verdict": "CONCERN",
+      "rationale": "'Complete a figure' implies a production task, but seed 43's correct answer is only the description 'Draw the mirror image on the other side of the line' rather than an actual completed figure -- every sample asks about the completion process rather than performing it."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "3 distinct question patterns appeared across the 5 sampled seeds (mirror-image definition, vertical-line completion instruction, horizontal-line square-count matching), a reasonable illustrative spread from the 2-axis/8-combo symmetry_slides registry rather than a single repeated stub."
+      "rationale": "Both orientations named by figure-completion problems appear: vertical line of symmetry at seeds 43/46 and horizontal line of symmetry at seeds 44/45, plus an abstract definitional item at seed 42, giving reasonable structural coverage."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Grade 3 Quarter 4's 22-word cap is comfortably met -- the longest sample, 'A symmetric figure has a horizontal line of symmetry. If the top half has 3 squares, how many squares are in the bottom half?', splits into two sentences of about 8 and 12 words."
+      "rationale": "The longest stem, seed 44's 'A symmetric figure has a horizontal line of symmetry. If the top half has 3 squares, how many squares are in the bottom half?', splits into two clauses of about 8 and 12 words, fitting grade 3 quarter 4 comfortably."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The 8-combo symmetry_slides space, varying line orientation (vertical versus horizontal) and figure content (abstract mirror-image rule versus concrete square-counting), plausibly gives enough variety to build the figure-completion skill this competency targets."
+      "verdict": "CONCERN",
+      "rationale": "Only 3 distinct frames repeat across the 5 seeds (definition, procedure-description, square-counting), and the closest proxy to actual figure completion, the square-count items at 44/45, reduces 'completing a figure' to a numeric parity count rather than spatial completion."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "All three sample patterns are specifically about completing a figure around a stated line of symmetry, distinguishing this node from mat_g3_mg_q4_1's identification-only focus and mat_g3_mg_q4_0's slide/translation focus despite the shared DNA registry."
+      "rationale": "All 5 samples specifically concern completing a figure around a stated line of symmetry, correctly distinct from mat_g3_mg_q4_1's identification focus and mat_g3_mg_q4_0's translation focus despite the shared item pool."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Content is discrete (small square counts, directional/mirror description), not a continuous numeric range, so scale appropriateness is a clean PASS for this figure-completion node."
+      "rationale": "The square count of 3 (seeds 44/45) is a small discrete value appropriate to grade 3 figure-completion content, not a numeric-range item."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

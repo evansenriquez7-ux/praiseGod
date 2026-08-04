@@ -1,66 +1,43 @@
 {
   "node_id": "mat_g2_na_q1_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 4, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 68],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Write 57 in words.",
-      "correct_answer": "fifty-seven"
-    },
-    {
-      "seed": 43,
-      "question_text": "Write 38 in words.",
-      "correct_answer": "thirty-eight"
-    },
-    {
-      "seed": 44,
-      "question_text": "Find the missing number: 80, 81, 82, 83, ___",
-      "correct_answer": 84
-    },
-    {
-      "seed": 45,
-      "question_text": "What number comes next when counting: 62, 63, 64, 65, ___?",
-      "correct_answer": 66
-    },
-    {
-      "seed": 46,
-      "question_text": "Write 48 in words.",
-      "correct_answer": "forty-eight"
-    }
+    {"seed": 42, "question_text": "Write 57 in words.", "correct_answer": "fifty-seven"},
+    {"seed": 43, "question_text": "Write 38 in words.", "correct_answer": "thirty-eight"},
+    {"seed": 44, "question_text": "Find the missing number: 80, 81, 82, 83, ___", "correct_answer": 84},
+    {"seed": 45, "question_text": "What number comes next when counting: 62, 63, 64, 65, ___?", "correct_answer": 66},
+    {"seed": 46, "question_text": "Write 48 in words.", "correct_answer": "forty-eight"},
+    {"seed": 50, "question_text": "Arrange these numbers from largest to smallest: 92, 91, 94, 93", "correct_answer": [91, 92, 93, 94]},
+    {"seed": 51, "question_text": "The number 91 is written in words as 'ninety-one'. True or False?", "correct_answer": true},
+    {"seed": 68, "question_text": "What number is marked on the number line?", "correct_answer": "D"}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency explicitly requires concrete and pictorial models, e.g. base-ten blocks or place-value charts, alongside numerals, but all 5 samples are either numeral-to-word conversion ('Write 57 in words.') or plain number sequences ('80, 81, 82, 83, ___'); none shows any concrete or pictorial representation."
+      "rationale": "'Recognize and represent...using concrete and pictorial models, and numerals' is only served on the numerals side (seeds 42, 43, 46, 51 all write/verify words for a numeral); seed 68's number line is the sole pictorial item and no concrete model appears anywhere."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "number_reading (1 axis/2 combos) and counting (3 axes/28 combos) together register 30 combos per variant_registry, exhaustively checked by validate_matrix separately from this illustrative 5-seed sample."
+      "verdict": "FAIL",
+      "rationale": "No concrete-model representation (e.g. base-10 blocks or counters) appears in any of the 8 samples, and only seed 68 ('What number is marked on the number line?') is pictorial; the competency explicitly names both 'concrete and pictorial models' as required representation types."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Sample sentences are all short and well under the grade-2 18-word cap, e.g. 'What number comes next when counting: 62, 63, 64, 65, ___?' is 11 words, appropriate reading demand for grade 2."
+      "rationale": "Tasks like ordering '92, 91, 94, 93' and reading the number line at seed 68 (options 125-128) fit grade 2 quarter 1 demand without extra reasoning steps."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Neither of the two sampled DNAs, number_reading or counting, produced a pictorial/concrete-model item across 5 draws, so the 'variety of concrete and pictorial models' language in the competency is not evidenced in the observed variant space."
+      "rationale": "Formatter variety exists (mcq, cloze, ordering, true_false, read_mcq) but the specific 'concrete model' representation format never appears among the 8 samples."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The sampled skill, word-form conversion and sequence continuation, is narrower than the competency's explicit multi-representation scope of numerals plus concrete plus pictorial, so the observed content under-serves the full breadth this node claims to address."
+      "rationale": "Half the samples (seeds 42, 43, 46, 51 -- 'Write 57 in words.', 'The number 91 is written in words as...') reproduce the numeral-literacy skill of a separate competency rather than the 'represent using models' half this node specifically adds."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Values observed (48-133) are a reasonable low-to-mid range appropriate as an early step toward the 1000 ceiling, so scale by itself is not the primary concern here."
+      "verdict": "CONCERN",
+      "rationale": "The competency ceiling is 1000, but the highest number sampled is 126 (seed 68's number line); nothing in the 8 samples approaches the hundreds range beyond 126, let alone numbers near 1000."
     }
   },
   "overall": "CONCERN"

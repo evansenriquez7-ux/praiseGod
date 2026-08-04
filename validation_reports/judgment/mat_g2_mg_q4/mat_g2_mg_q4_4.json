@@ -1,67 +1,43 @@
 {
   "node_id": "mat_g2_mg_q4_4",
-  "reviewed_by": "Claude Opus 5 (Claude Code session 2026-07-26), blind packet-only re-review triggered by the validate_judgment staleness gate",
-  "review_date": "2026-07-26",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 3, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 68],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "A rectangle has sides 11 cm and 2 cm. What is its perimeter?",
-      "correct_answer": 26
-    },
-    {
-      "seed": 43,
-      "question_text": "A rectangle has sides 1 cm and 5 cm. What is its perimeter?",
-      "correct_answer": 12
-    },
-    {
-      "seed": 44,
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 14
-    },
-    {
-      "seed": 45,
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 9
-    },
-    {
-      "seed": 46,
-      "question_text": "A rectangle has sides 2 cm and 7 cm. What is its perimeter?",
-      "correct_answer": 18
-    }
+    {"seed": 42, "question_text": "A rectangle has sides 11 cm and 2 cm. What is its perimeter?", "correct_answer": 26},
+    {"seed": 43, "question_text": "A rectangle has sides 1 cm and 5 cm. What is its perimeter?", "correct_answer": 12},
+    {"seed": 44, "question_text": "Measure the object. Its length is ___ cm.", "correct_answer": 14},
+    {"seed": 45, "question_text": "Measure the object. Its length is ___ cm.", "correct_answer": 9},
+    {"seed": 46, "question_text": "A rectangle has sides 2 cm and 7 cm. What is its perimeter?", "correct_answer": 18},
+    {"seed": 50, "question_text": "Measure the object. Its length is ___ cm.", "correct_answer": 16},
+    {"seed": 68, "question_text": "How long is the object? Give your answer in cm.", "correct_answer": "A"}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Three of five seeds ask for the perimeter of a rectangle from stated side lengths and compute it correctly (11 cm and 2 cm giving 26, 1 cm and 5 cm giving 12, 2 cm and 7 cm giving 18), but the competency's 'measure ... using appropriate tools' half is not exercised because the dimensions are handed to the student rather than measured."
+      "verdict": "FAIL",
+      "rationale": "4 of 7 samples (44, 45, 50, 68) are the generic single-object prompt 'Measure the object. Its length is ___ cm.' or 'How long is the object?', which never mentions perimeter or a multi-sided figure at all."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Only rectangles appear as the plane figure across the whole window; the competency says 'a plane figure' without restriction, so triangles and other polygons whose perimeter is a sum of unequal sides are never sampled."
+      "verdict": "FAIL",
+      "rationale": "The 3 on-topic samples (42, 43, 46) all compute perimeter arithmetically from two given side lengths, e.g. seed 42's 'A rectangle has sides 11 cm and 2 cm. What is its perimeter?'; none shows the student using a measuring tool on a drawn figure, the 'measure ... using appropriate tools' half of the competency."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The perimeter stems are one sentence with two small whole-number dimensions and a directly computable answer under 30, which sits comfortably in Grade 2 Quarter 4 range for a student who has just met perimeter."
+      "rationale": "Both the perimeter-arithmetic items and the length-reading items use short, direct sentences appropriate for Grade 2 Quarter 4."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Seeds 44 and 45 render 'Measure the object. Its length is ___ cm', which is a single-dimension length-measurement task rather than a perimeter task, so two of five sampled generations serve a neighbouring competency instead of this one."
+      "verdict": "FAIL",
+      "rationale": "The length-measurement samples (44, 45, 50, 68) are copied from the plain object-length-measuring competency rather than being genuine perimeter-tool variants of this node."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Among the on-topic samples the difficulty moves by side magnitude (from a 1-by-5 rectangle up to an 11-by-2 rectangle), which is a reasonable progression for perimeter computation and stays inside the competency's scope."
+      "verdict": "FAIL",
+      "rationale": "Over half the sample pool (seeds 44, 45, 50, 68) builds single-object length-reading skill, an axis distinct from identifying/measuring the perimeter of a plane figure."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Side lengths of 1 to 11 cm and perimeters of 12 to 26 give a linear, tightly bounded range appropriate to a Grade 2 measurement competency where the student is expected to work with a ruler-scale object."
+      "rationale": "Where perimeter is actually tested, side lengths (1-11 cm, totals 12-26 cm at seeds 42, 43, 46) are a reasonable Grade 2 magnitude."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

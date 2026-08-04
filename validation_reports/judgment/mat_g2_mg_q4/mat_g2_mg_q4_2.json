@@ -1,66 +1,43 @@
 {
   "node_id": "mat_g2_mg_q4_2",
-  "reviewed_by": "Claude Opus 5 (Claude Code session 2026-07-26), blind packet-only re-review triggered by the validate_judgment staleness gate",
-  "review_date": "2026-07-26",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 1, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 68],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Maria wakes up at 11:00. What time is that?",
-      "correct_answer": "C"
-    },
-    {
-      "seed": 43,
-      "question_text": "Jose leaves for school at 1:00. What time is that?",
-      "correct_answer": "A"
-    },
-    {
-      "seed": 44,
-      "question_text": "In a pictograph, Lara's group collected 12 ribbons and another group collected 2 ribbons. How many more did Lara's group collect?",
-      "correct_answer": 10
-    },
-    {
-      "seed": 45,
-      "question_text": "In a pictograph, Coach Roel's group collected 3 water bottles and another group collected 2 water bottles. How many more did Coach Roel's group collect?",
-      "correct_answer": 1
-    },
-    {
-      "seed": 46,
-      "question_text": "Maria starts homework at 2:00. What time is that?",
-      "correct_answer": "B"
-    }
+    {"seed": 42, "question_text": "Maria wakes up at 11:00. What time is that?", "correct_answer": "C"},
+    {"seed": 43, "question_text": "Jose leaves for school at 1:00. What time is that?", "correct_answer": "A"},
+    {"seed": 44, "question_text": "In a pictograph, Lara's group collected 1 ribbon and another group collected 1 ribbon. How many more did Lara's group collect?", "correct_answer": 0},
+    {"seed": 45, "question_text": "In a pictograph, Coach Roel's group collected 440 water bottles and another group collected 220 water bottles. How many more did Coach Roel's group collect?", "correct_answer": 220},
+    {"seed": 46, "question_text": "Maria starts homework at 2:00. What time is that?", "correct_answer": "B"},
+    {"seed": 50, "question_text": "In a pictograph, Mia's group collected 3 merchandise shirts and another group collected 0 merchandise shirts. How many more did Mia's group collect? The answer is 2.. True or False?", "correct_answer": false},
+    {"seed": 51, "question_text": "Set the clock to show 4:00.", "correct_answer": "4:00"},
+    {"seed": 68, "question_text": "Rico solved this problem: \"In a pictograph, Celso's group collected 178 science fair boards and another group collected 0 science fair boards. How many more did Celso's group collect?\" Rico says the answer is 177. Is Rico correct?", "correct_answer": {"has_error": true, "correct_value": 178}}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency is solving elapsed-time problems including timetables, but seeds 42, 43 and 46 render clock-reading items and seeds 44 and 45 render pictograph comparison items; no sampled generation asks how much time passes between two moments."
+      "rationale": "No sample computes elapsed time: seeds 42, 43, and 46 are single-clock-reading questions (\"Maria wakes up at 11:00. What time is that?\"), seeds 44, 45, 50, and 68 are pictograph subtraction word problems about ribbons, water bottles, shirts, and boards, and seed 51 is clock-setting (\"Set the clock to show 4:00.\")."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "None of the three units the competency enumerates - minutes in an hour, hours in a day, days in a week - is exercised in the sampled window, and no timetable is presented in any of the five generations."
+      "rationale": "None of 'minutes in an hour,' 'hours in a day,' 'days in a week,' or 'timetables,' all explicitly named in the competency, appears in any of the eight samples; not one item presents two time points with a gap to compute."
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "'Maria wakes up at 11:00. What time is that?' states the answer in the stem and then offers 11:00 among the options, so the item is self-answering; a Grade 2 student can score it correctly without reading a clock or reasoning about time at all."
+      "verdict": "CONCERN",
+      "rationale": "The pictograph items, e.g. seed 45's \"Coach Roel's group collected 440 water bottles and another group collected 220 water bottles. How many more did Coach Roel's group collect?\", are internally coherent and grade-appropriate but measure data-comparison subtraction, not time reasoning, and are cognitively unrelated to what the competency demands."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Two of five sampled generations leave the measurement domain entirely for pictograph how-many-more problems about ribbons and water bottles, so the sampled variant pool contains content from an unrelated competency rather than elapsed-time variants."
+      "rationale": "The eight samples split into three unrelated task types -- named-clock-reading (42, 43, 46), pictograph subtraction (44, 45, 50, 68), and clock-setting (51) -- with no sample presenting a start-time/end-time gap, a timetable, or a days-in-a-week count."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "The observed difficulty varies the hour shown on a clock face and the size of pictograph counts, neither of which is the interval-computation skill this competency progresses toward."
+      "rationale": "The sampled variation tracks either single clock times (11:00, 1:00, 2:00, 4:00) or pictograph item counts (1 vs 1 ribbon, 440 vs 220 water bottles, 178 vs 0 boards), neither of which is the elapsed-time axis this competency names."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Times shown stay within a plausible twelve-hour day and the pictograph counts stay small, so the magnitudes are not themselves inappropriate for Grade 2 - the problem is that the quantity being scaled is not elapsed time."
+      "verdict": "FAIL",
+      "rationale": "Because no sample ever presents two time points or a span of minutes, hours, or days, there is no elapsed-time magnitude in the packet to assess against the competency's minutes/hours/days-in-a-week ceiling at all."
     }
   },
   "overall": "FAIL"

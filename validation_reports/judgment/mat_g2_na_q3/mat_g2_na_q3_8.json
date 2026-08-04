@@ -1,14 +1,19 @@
 {
   "node_id": "mat_g2_na_q3_8",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 3, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    53,
+    55,
+    101
   ],
   "samples_reviewed": [
     {
@@ -35,32 +40,60 @@
       "seed": 46,
       "question_text": "What is 12 ÷ 2?",
       "correct_answer": 6
+    },
+    {
+      "seed": 50,
+      "question_text": "270 cannot be determined 205. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 51,
+      "question_text": "Ana says: 15 ÷ 3 = 12. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 5
+      }
+    },
+    {
+      "seed": 53,
+      "question_text": "50 ÷ 10 = ___",
+      "correct_answer": 5
+    },
+    {
+      "seed": 55,
+      "question_text": "Shade all the squares inside the 2×6 rectangle. How many squares did you shade in all?",
+      "correct_answer": 12
+    },
+    {
+      "seed": 101,
+      "question_text": "Look at the 10×4 array. How many squares are shaded in all?",
+      "correct_answer": "C"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Distinguishing even from odd requires a classification answer, but not one stem contains the words even or odd. Seeds 42, 43 and 46 key quotients (70 / 10 = 7, 10 / 2 = 5, 12 / 2 = 6) and seeds 44 and 45 key comparison signs instead."
+      "rationale": "Not one of the ten samples asks a student to divide a number by 2 and classify it as even or odd; instead seed 44 compares '307 ___ 270' and seed 42 computes '70 ÷ 10', neither of which touches evenness or oddness."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The 'using division by 2' mechanism is never tied to a leftover or remainder: no sample shows an odd number failing to split into two equal parts, and no sorting, true/false, or classify-this-number item of any kind is generated."
+      "rationale": "The sub-cases this competency implies — classifying a number as even, classifying one as odd, and doing so via division by 2 — never appear; seed 53's '50 ÷ 10 = ___' divides by 10, not 2, and reaches a quotient with no even/odd follow-up."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 42's 'What is 70 / 10?' introduces division by 10, outside the division-by-2 focus this competency names, and the two 3-digit comparison stems (307 versus 270, 92 versus 930) add unrelated place-value load to a Quarter 3 parity node."
+      "verdict": "FAIL",
+      "rationale": "Seed 50's rendered text, '270 cannot be determined 205. True or False?', is not a parseable sentence for any grade, let alone grade 2 quarter 3, since a comparison-operator label was substituted directly into prose."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Missing are 'Is 15 even or odd?', pairing or sharing pictures, sorting a list into two boxes, and odd numbers altogether - every division sample (10 / 2, 12 / 2, 70 / 10) divides exactly, so an odd dividend never occurs."
+      "rationale": "The ten samples split between division facts (e.g. seed 46's 'What is 12 ÷ 2?'), number comparisons (seed 45's '92 ___ 930'), and array totals (seed 101's '10×4 array'), none of which is the even/odd-via-division-by-2 variant the competency requires."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Seeds 44 and 45 are number-comparison items reused verbatim from mat_g2_na_q2_1, leaving just three even-quotient division facts, none of which asks the learner to draw a parity conclusion or builds toward one."
+      "rationale": "The observed variation across samples builds comparison-operator selection (seeds 44, 45) and array-multiplication totals (seeds 55, 101), both unrelated axes to distinguishing even and odd numbers."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Dividends stay tiny (10, 12 and 70) while the intruding comparison items reach 930; neither band is calibrated to the range of numbers a Grade 2 Quarter 3 pupil should be classifying as even or odd."
+      "verdict": "FAIL",
+      "rationale": "Comparison items reach into the hundreds (seed 45's '92 ___ 930'), a scale far beyond what an even/odd-by-division-by-2 task would need for grade 2 quarter 3."
     }
   },
   "overall": "FAIL"

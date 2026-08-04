@@ -1,41 +1,44 @@
 {
   "node_id": "mat_g1_na_q3_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-5 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 1, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 47, 48, 49],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 84],
   "samples_reviewed": [
     {"seed": 42, "question_text": "Complete the equivalent expression: 2 + 1 = 1 + ___", "correct_answer": 2},
-    {"seed": 44, "question_text": "4 + 0 = 4. True or False?", "correct_answer": true},
+    {"seed": 43, "question_text": "Complete the equivalent expression: 2 + 1 = 1 + ___", "correct_answer": 2},
+    {"seed": 44, "question_text": "0 + 2 = 2. True or False?", "correct_answer": true},
+    {"seed": 45, "question_text": "2 + 2 = ___", "correct_answer": 4},
     {"seed": 46, "question_text": "Complete the equivalent expression: 2 + 2 = 1 + ___", "correct_answer": 3},
-    {"seed": 47, "question_text": "What is 3 + 0?", "correct_answer": 3},
-    {"seed": 49, "question_text": "Complete the equivalent expression: 2 + 2 = 3 + ___", "correct_answer": 1}
+    {"seed": 50, "question_text": "Show 0 + 3 on the number line.", "correct_answer": 3},
+    {"seed": 55, "question_text": "Both sides balance evenly. 1 + ? = 4. What is the missing value?", "correct_answer": "A"},
+    {"seed": 84, "question_text": "The two parts are 2 and 2. What is the sum?", "correct_answer": 4}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Unlike the stale round-0 review (which found no two-sided equation prompts at all), the new 'Complete the equivalent expression: 2 + 2 = 3 + ___' items genuinely show two expressions being equated and the missing values are correct (2+2=4=3+1), but the competency's own paired example '10-5 = 6-1' is never once tested."
+      "verdict": "FAIL",
+      "rationale": "Only seeds 42, 43, and 46 present two full expressions set equal, e.g. \"Complete the equivalent expression: 2 + 2 = 1 + ___\"; the other five samples -- \"0 + 2 = 2. True or False?\" (44), \"2 + 2 = ___\" (45), \"Show 0 + 3 on the number line.\" (50), \"Both sides balance evenly. 1 + ? = 4. What is the missing value?\" (55), and \"The two parts are 2 and 2. What is the sum?\" (84) -- each present only a single expression, never asking the student to write or complete a second, equivalent one."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "2 of 8 seeds (47: 'What is 3 + 0?', 48: 'What is 2 + 2?') are single-fact addition recall with no second expression to compare, diluting a quarter of this batch away from the equivalent-expression skill the node was built for."
+      "verdict": "FAIL",
+      "rationale": "The competency's own worked example pairs an addition equivalence (\"2+3 = 1+4\") with a subtraction one (\"10-5 = 6-1\"), but every genuine equivalent-expression sample in this packet -- \"Complete the equivalent expression: 2 + 1 = 1 + ___\" (42, 43) and \"Complete the equivalent expression: 2 + 2 = 1 + ___\" (46) -- is addition only; no subtraction equivalence such as 6-2 = 5-1 ever appears."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The prompts 'Complete the equivalent expression: 2 + 1 = 1 + ___' and '4 + 0 = 4. True or False?' are short single sentences using only sums under 5, matching Grade 1 Quarter 3 reading and number expectations."
+      "rationale": "Every sample keeps operands at single digits and sentences short, e.g. \"2 + 2 = ___\" and \"The two parts are 2 and 2. What is the sum?\", which fits Grade 1 Q3 reading and number demand regardless of the topic mismatches noted elsewhere."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "The dnas field lists only 'missing_number' and 'addition' with no subtraction-equivalence generator, so the subtraction half of the competency, explicitly named via '10-5 = 6-1' in its own wording, is structurally unreachable by any seed of this node."
+      "verdict": "CONCERN",
+      "rationale": "Six distinct formatter shells appear (mcq, true_false, cloze, set_fill_in_blank, read_mcq, read_fill_in_blank) giving surface variety, but the equivalent-expression structure itself only survives in two of those shells (seeds 42/43 and 46), so the formatter variety does not translate into content variety for this specific skill."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The mcq items phrased 'Complete the equivalent expression' land exactly on target for writing an equivalent addition expression, but seeds 47 and 48 test bare single-fact recall, a different and already-covered skill from an earlier addition node."
+      "verdict": "FAIL",
+      "rationale": "Seed 55's balance framing (\"Both sides balance evenly. 1 + ? = 4. What is the missing value?\") and seed 84's part-whole framing (\"The two parts are 2 and 2. What is the sum?\") both test finding one missing number in a single equation, which is the missing-addend skill, not writing an equivalent second expression as this competency's title names."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All operands stay within 0-4 (2+1, 4+0, 2+2, 2+0, 3+0), well inside the Grade 1 Quarter 3 single-digit addition range taught up to this point in the year."
+      "verdict": "CONCERN",
+      "rationale": "Every operand in the packet is 4 or smaller (the largest value shown is in \"2 + 2 = ___\" = 4), well below the competency's own worked example which reaches 10 (\"2+3 = 1+4\"; \"10-5 = 6-1\"), so the tested range sits under the ceiling the competency itself demonstrates."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

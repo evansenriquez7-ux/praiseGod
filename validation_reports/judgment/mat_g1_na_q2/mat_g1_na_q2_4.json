@@ -1,66 +1,43 @@
 {
   "node_id": "mat_g1_na_q2_4",
-  "reviewed_by": "Claude Opus 5 (Claude Code session 2026-07-26), blind packet-only re-review triggered by the validate_judgment staleness gate",
-  "review_date": "2026-07-26",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 0, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 84],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What place is the digit 5 in, in the number 45?",
-      "correct_answer": "ones"
-    },
-    {
-      "seed": 43,
-      "question_text": "What place is the digit 1 in, in the number 10?",
-      "correct_answer": "tens"
-    },
-    {
-      "seed": 44,
-      "question_text": "3 + 10 = 13. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 45,
-      "question_text": "1 + 15 = ___",
-      "correct_answer": 16
-    },
-    {
-      "seed": 46,
-      "question_text": "What place is the digit 1 in, in the number 10?",
-      "correct_answer": "tens"
-    }
+    {"seed": 42, "question_text": "What place is the digit 5 in, in the number 45?", "correct_answer": "ones"},
+    {"seed": 43, "question_text": "What place is the digit 1 in, in the number 10?", "correct_answer": "tens"},
+    {"seed": 44, "question_text": "10 + 1 = 11. True or False?", "correct_answer": true},
+    {"seed": 45, "question_text": "2 + 10 = ___", "correct_answer": 12},
+    {"seed": 46, "question_text": "What place is the digit 1 in, in the number 10?", "correct_answer": "tens"},
+    {"seed": 50, "question_text": "Show 10 + 3 on the number line.", "correct_answer": 13},
+    {"seed": 55, "question_text": "What is the value of the underlined digit in the number shown by the blocks?", "correct_answer": "C"},
+    {"seed": 84, "question_text": "The two parts are 0 and 4. What is the sum?", "correct_answer": 4}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency requires adding by expressing addends as tens and ones (expanded form), but not one of the five samples decomposes an addend: seeds 44/45/46 render bare sums ('3 + 10 = 13. True or False?', '1 + 15 = ___', '0 + 46 = ___') with no tens-and-ones step shown or asked for."
+      "rationale": "None of the eight samples demonstrates 'adding numbers by expressing addends as tens and ones' -- seeds 42, 43, and 46 are pure place-value identification with no addition at all, e.g. seed 42's 'What place is the digit 5 in, in the number 45?', while the addition items that do appear (seed 44's '10 + 1 = 11', seed 45's '2 + 10 = ___') are bare sums with no expanded-form decomposition step shown."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "Two of the five seeds (42, 46) render a place-value identification item ('What place is the digit 5 in, in the number 45?') which tests naming a place, not adding in expanded form; the expanded-form addition sub-skill this node exists to teach appears in zero of the five sampled generations."
+      "rationale": "Three of eight samples (seeds 42, 43, 46) test place-value naming rather than addition, and the expanded-form addition sub-skill this node is named for -- decomposing both addends into tens and ones before summing them -- appears in zero of the eight samples, including seed 55's block-reading item which asks for a digit's value, not a sum."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Sentence length and number size (sums 13-46) suit Grade 1 Quarter 2, but 'What place is the digit 5 in, in the number 45?' asks for the place-name vocabulary 'ones'/'tens' as a stand-alone abstraction rather than in the concrete addition setting the competency frames it in."
+      "verdict": "PASS",
+      "rationale": "Individually, each sentence is short and simple, e.g. seed 43's 'What place is the digit 1 in, in the number 10?', appropriate reading load for Grade 1 Quarter 2 even though the content is off-target for this competency."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Three formatters appear across the window (mcq, true_false, cloze), so formatter variety is real, but every variant renders the same two underlying task shapes — plain sum or place-name lookup — so the variation is presentational rather than pedagogical for this competency."
+      "rationale": "Six formatters appear (mcq, true_false, cloze, number line, read_mcq, read_fill_in_blank), but none of them instantiates the specific 'expressing addends as tens and ones' technique the competency requires; they only alternate between place-value naming and plain, undecomposed sums."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Difficulty here varies the addends' magnitude (1+12 up to 0+46) while the competency's actual progression is about the decomposition step; a harder sum does not move a student closer to mastering expanded-form addition, so the axis is not aligned to this competency."
+      "rationale": "Three of the eight samples (seeds 42, 43, 46) test place-value recognition, e.g. 'What place is the digit 1 in, in the number 10?' appearing twice at seeds 43 and 46, an adjacent but distinct skill from expanded-form addition, rather than building the tens-and-ones addition strategy this node is supposed to isolate."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "Sums stay in the 13-46 band across all five seeds, which is a reasonable Grade 1 range, but several samples use a zero or one addend ('0 + 46', '1 + 15') that makes the tens-and-ones decomposition degenerate and therefore unexercisable."
+      "rationale": "The values used (10, 11, 12, 13, 45) never exceed two digits, which is reasonable for Grade 1 Quarter 2, but since only seeds 44 and 45 involve actual addition and neither shows a tens-plus-tens and ones-plus-ones decomposition, the 'tens and ones' scale this competency names is never exercised."
     }
   },
   "overall": "FAIL"

@@ -1,54 +1,42 @@
 {
   "node_id": "mat_g3_na_q1_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 7, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    44,
-    45
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 72],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Write 178 in words.",
-      "correct_answer": "one hundred seventy-eight"
-    },
-    {
-      "seed": 44,
-      "question_text": "Write 482 in words.",
-      "correct_answer": "four hundred eighty-two"
-    },
-    {
-      "seed": 45,
-      "question_text": "Write 342 in words.",
-      "correct_answer": "three hundred forty-two"
-    }
+    {"seed": 42, "question_text": "Write 178 in words.", "correct_answer": "one hundred seventy-eight"},
+    {"seed": 43, "question_text": "Write 103 in words.", "correct_answer": "one hundred three"},
+    {"seed": 44, "question_text": "Write 482 in words.", "correct_answer": "four hundred eighty-two"},
+    {"seed": 45, "question_text": "Write 342 in words.", "correct_answer": "three hundred forty-two"},
+    {"seed": 46, "question_text": "Write 142 in words.", "correct_answer": "one hundred forty-two"},
+    {"seed": 50, "question_text": "The number 573 is written in words as 'five hundred sixty-three'. True or False?", "correct_answer": false},
+    {"seed": 72, "question_text": "Write 139 in words.", "correct_answer": "one hundred thirty-nine"}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The lc is 'Represent numbers up to 10 000 using pictorial models and numerals', but every sample is a 'Write ### in words' task ('Write 482 in words' -> 'four hundred eighty-two') -- word-form writing, not pictorial/model representation, and no numeral-only item either."
+      "rationale": "The competency requires representing numbers 'using pictorial models and numerals', but all 7 samples, including the new true_false seed 50 and cloze seed 72, are numeral-to-words tasks; no pictorial model (blocks, place-value chart, array) appears anywhere in the widened sample."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "number_reading's 2 registered combos, as sampled here, only produce number-to-words items, never a pictorial-model or block/place-value-chart style representation that this lc specifically calls for."
+      "rationale": "Across all 7 seeds and 3 different formatters (mcq, true_false, cloze), not one item produces a pictorial-model representation; the specific sub-case the competency's own wording names is entirely absent even after widening the sample."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The stems ('Write 178 in words.') are 4 words, far under the 22-word cap for grade 3 quarter 1, so whatever the skill mismatch, the reading level itself is appropriately light."
+      "rationale": "Stems such as 'Write 139 in words.' (seed 72) are 4 words and well within grade 3 quarter 1 reading demand, whatever the mismatch to the named skill."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "None of the 5 samples shows a pictorial model (base-ten blocks, place-value chart, etc.), so the registered variant space cannot be confirmed to reach the specific representation method this lc names."
+      "rationale": "Formatter varies across the 7 seeds (mcq, true_false at seed 50, cloze at seed 72) but the underlying task content stays identical throughout -- numeral-to-words conversion or a words-form true/false check -- with no pictorial or place-value-chart variant in any format."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "'Write X in words' is exactly the skill of the neighboring lc mat_g3_na_q1_1 ('Read and write numbers ... in numerals and in words'); reusing it here means this node's own distinct competency (pictorial representation) is not being tested at all."
+      "rationale": "'Write 139 in words' (seed 72) is precisely the skill named by sibling competency mat_g3_na_q1_1 ('read and write numbers ... in numerals and in words'), so this node's own distinct pictorial-representation mandate goes untested even at 7 seeds."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "Sampled numbers max out at 482, all 3-digit; the competency explicitly requires numbers 'up to 10 000', so the observed range never even reaches four digits, let alone the ten-thousands scale this grade-3 quarter-1 lc targets."
+      "rationale": "The highest value across all 7 samples, including the new true_false seed's 573, is still 3 digits; the competency's stated ceiling is 10 000, and the observed range never reaches even four digits."
     }
   },
   "overall": "FAIL"

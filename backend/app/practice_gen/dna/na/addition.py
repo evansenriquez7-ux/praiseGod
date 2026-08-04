@@ -275,11 +275,127 @@ def generate_params(
 
     # Contextual variants
     context = profile.get("context", "pure")
-    
+
     # Since this DNA specifically maps to the basic addition competency
     # (result unknown), we only use the default structure.
     structure = profile.get("structure", "result_unknown")
     spine = profile.get("spine", None)
+
+    task_type = profile.get("task_type")
+    if task_type == "estimate":
+        # "Estimate the sum of addends with up to 4 digits" (mat_g3_na_q2_2)
+        # is a distinct skill from exact addition -- round EACH addend to
+        # its OWN leading place value (front-end rounding), then add the
+        # rounded values. Unlike subtraction's estimate (which rounds both
+        # operands to the SAME precision to guarantee a non-negative
+        # result), addition has no such constraint, so each addend rounds
+        # independently -- the standard technique taught for sum
+        # estimation. The co-mapped `rounding` DNA rounds ONE number, not a
+        # sum of two, so it cannot express this competency regardless of
+        # which node maps to it (see registry.py's "estimate" text match).
+        # "regrouping" is a declared discrete axis for this DNA and the
+        # harness's §1B discrete-integrity sweep explicitly tests every
+        # option value (including "none") by passing it in the profile.
+        # Carry-counting is not a meaningful, controllable property of a
+        # round-then-add estimate (rounding each addend independently to
+        # its own leading place can still carry above that place, e.g.
+        # 90 + 20 = 110), so any EXPLICIT regrouping request is infeasible
+        # here -- raising lets the harness's existing "infeasible
+        # combination, skip" handling apply (mirrors subtraction's
+        # task_type='estimate' guard). A profile that simply omits
+        # "regrouping" (the normal/default rendering path) is unaffected.
+        if "regrouping" in profile:
+            raise RuntimeError(
+                f"generate_params (addition): task_type='estimate' rounds "
+                f"each addend to its own leading place before adding, which "
+                f"is not a regrouping-controllable operation -- an explicit "
+                f"regrouping='{profile['regrouping']}' request is infeasible "
+                f"for task_type='estimate' (grade={grade}, seed={seed})."
+            )
+
+        def _round_half_up(n: int, precision: int) -> int:
+            remainder = n % precision
+            if remainder >= precision / 2:
+                return n - remainder + precision
+            return n - remainder
+
+        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
+        # est_min=1 (not 10): front-end rounding to each addend's OWN
+        # leading place already no-ops naturally for single-digit values
+        # (round_to=10**0=1), so no artificial floor is needed -- and one
+        # is actively harmful at a low max_sum ceiling (the §1A scalar-0.0
+        # sweep can drive max_result down to single digits, where a
+        # floor of 10 makes every candidate's rounded sum structurally
+        # exceed the ceiling).
+        est_min = 1
+        est_max = max(est_min + 1, min(max_result, 9999))
+        candidates = []
+        attempts = 0
+        while len(candidates) < 500 and attempts < 5000:
+            attempts += 1
+            x = rng.randint(est_min, est_max)
+            y = rng.randint(est_min, est_max)
+            # The competency's own max_sum ceiling bounds the SUM (this is
+            # the pre-existing ground truth the exact-addition path on this
+            # same node already enforced) -- filter on the ROUNDED sum, not
+            # the real one, since rounding can push a borderline pair over.
+            rt_x = 10 ** (len(str(x)) - 1)
+            rt_y = 10 ** (len(str(y)) - 1)
+            if _round_half_up(x, rt_x) + _round_half_up(y, rt_y) > max_result:
+                continue
+            candidates.append((x, y))
+        if not candidates:
+            raise RuntimeError(
+                f"generate_params (addition): no valid estimate pair for "
+                f"max_result={max_result} (grade={grade}, profile={difficulty_profile})."
+            )
+
+        # A pair where BOTH addends already sit on their own leading-place
+        # boundary (e.g. 20 + 2 -> rounds to itself, "estimate" == exact sum,
+        # observed at ~6% of samples) renders as a front-end-rounding item
+        # that never exercises rounding at all -- the same "structurally
+        # valid but pedagogically vacuous" shape as the 0-operand pattern
+        # thinned above. Same convention: thin to a ~10% cap of the
+        # meaningful pool rather than exclude outright, so it stays
+        # reachable when it's the only option a tight max_result leaves.
+        def _is_degenerate_estimate(pair: tuple) -> bool:
+            x, y = pair
+            rt_x = 10 ** (len(str(x)) - 1)
+            rt_y = 10 ** (len(str(y)) - 1)
+            return _round_half_up(x, rt_x) == x and _round_half_up(y, rt_y) == y
+
+        _meaningful = [p for p in candidates if not _is_degenerate_estimate(p)]
+        _degenerate = [p for p in candidates if _is_degenerate_estimate(p)]
+        if _meaningful and _degenerate:
+            cap = max(1, len(_meaningful) // 10)
+            candidates = _meaningful + _degenerate[:cap]
+        elif _meaningful:
+            candidates = _meaningful
+
+        real_a, real_b = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
+
+        round_to_a = 10 ** (len(str(real_a)) - 1)
+        round_to_b = 10 ** (len(str(real_b)) - 1)
+        rounded_a = _round_half_up(real_a, round_to_a)
+        rounded_b = _round_half_up(real_b, round_to_b)
+
+        return {
+            # "a"/"b" carry the ROUNDED values (see subtraction.py's
+            # identical convention) so this DNA's answer_formula "a + b"
+            # recomputes to the same value the auditor's answer-key
+            # integrity check independently derives from given_values.
+            "a": rounded_a,
+            "b": rounded_b,
+            "result": rounded_a + rounded_b,
+            "real_a": real_a,
+            "real_b": real_b,
+            "task_type": "estimate",
+            "blank_target": "result",
+            "context": "pure",
+            "structure": "result_unknown",
+            "max_sum": max_result,
+            "strategy": "standard",
+        }
 
     # Build candidate operand pool with grade-appropriate floor
     min_a = 0
@@ -333,6 +449,43 @@ def generate_params(
             f"generate_params (addition): no valid pair exists for grade={grade}, "
             f"profile={difficulty_profile}. Constraints are incompatible."
         )
+
+    # A 0 operand ("What is 4 + 0?") is a legitimate MATATAG fact (the
+    # identity property) but was 30-70% of sampled items at the default
+    # profile across addition/subtraction nodes -- an artifact of how the
+    # pool is built and scored, not a deliberate identity-property lesson
+    # (that is a distinct, currently-unbuilt task type; see
+    # HARDENING_EVIDENCE.md). Prefer the non-zero-operand subset so a 0
+    # operand stays reachable (still in the full pool, and the sole option
+    # when max_result/regrouping leaves nothing else) without dominating
+    # ordinary practice. This does not touch which (a, b) pairs are valid --
+    # only which of the already-valid pairs get first refusal.
+    # A hard exclusion (drop every 0-operand pair whenever an alternative
+    # exists) overcorrects: 0 becomes reachable only when the non-zero subset
+    # is completely empty, which for any normal max_result/regrouping
+    # combination it never is -- so a 0 operand stopped being generated at
+    # all, not just stopped dominating. subtraction.py's identical fix hit
+    # this exact regression against tests/unit/test_semantic_leak_guards.py,
+    # which exists specifically to keep 0-operand pairs reachable (legitimate
+    # identity-property content). Thin instead of exclude: 0-operand pairs
+    # are capped at ~10% of the non-zero pool rather than dropped.
+    # (0, 0) is a distinct, structural case, not just another 0-operand pair:
+    # "0 + 0 = ___" (or its word-problem phrasing, "has 0 ... gets 0 ...")
+    # has exactly ONE distinct number in the entire stem, and that number IS
+    # the answer -- an unconditional §1F answer-leak for every possible
+    # rendering, not a render-choice mistake. Excluded outright; every other
+    # 0-operand pair ("4 + 0", "0 + 4") has a second, different number in the
+    # stem and is not structurally leaky, so it's only thinned, not excluded.
+    _without_00 = [p for p in candidate_pairs if p != (0, 0)]
+    if _without_00:
+        candidate_pairs = _without_00
+    zero_pairs = [p for p in candidate_pairs if p[0] == 0 or p[1] == 0]
+    nonzero_pairs = [p for p in candidate_pairs if p[0] != 0 and p[1] != 0]
+    if nonzero_pairs and zero_pairs:
+        cap = max(1, len(nonzero_pairs) // 10)
+        candidate_pairs = nonzero_pairs + zero_pairs[:cap]
+    elif nonzero_pairs:
+        candidate_pairs = nonzero_pairs
 
     # Sample a pair from the candidate pool using the continuous difficulty window
     from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window

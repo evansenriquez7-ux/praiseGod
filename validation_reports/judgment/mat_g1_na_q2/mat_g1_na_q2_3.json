@@ -1,22 +1,79 @@
 {
   "node_id": "mat_g1_na_q2_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-3 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 1, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 47, 48],
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55
+  ],
   "samples_reviewed": [
-    {"seed": 42, "question_text": "Write 45 as tens and ones, for example 45 = 40 + 5.", "correct_answer": "40 + 5"},
-    {"seed": 43, "question_text": "Write 10 as tens and ones, for example 45 = 40 + 5.", "correct_answer": "10 + 0"},
-    {"seed": 44, "question_text": "Write 20 as tens and ones, for example 45 = 40 + 5.", "correct_answer": "20 + 0"},
-    {"seed": 45, "question_text": "Write 15 as tens and ones, for example 45 = 40 + 5.", "correct_answer": "10 + 5"}
+    {
+      "seed": 42,
+      "question_text": "Write 45 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "40 + 5"
+    },
+    {
+      "seed": 43,
+      "question_text": "Write 10 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "10 + 0"
+    },
+    {
+      "seed": 44,
+      "question_text": "Write 20 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "20 + 0"
+    },
+    {
+      "seed": 45,
+      "question_text": "Write 15 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "10 + 5"
+    },
+    {
+      "seed": 46,
+      "question_text": "Write 10 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "10 + 0"
+    },
+    {
+      "seed": 50,
+      "question_text": "Write 20 as tens and ones, for example 45 = 40 + 5. The answer is 22.. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
+      "question_text": "Use base-10 blocks to show the number 10.",
+      "correct_answer": 10
+    }
   ],
   "findings": {
-    "competency_fulfillment": {"verdict": "PASS", "rationale": "This is a clear fix over the stale review's single-digit-value stems: 'Write 45 as tens and ones, for example 45 = 40 + 5' asks the student to output the full tens+ones decomposition, exactly what 'Decompose any 2-digit number into tens and ones' requires."},
-    "comprehensive_coverage": {"verdict": "CONCERN", "rationale": "The 7 target numbers are 45, 10, 20, 15, 10, 15, 40, with 10 and 15 each repeated; a wider spread including numbers with a nonzero-nonfive ones digit and higher tens digits (e.g. 68, 92) would better demonstrate the full range this lc is meant to cover."},
-    "cognitive_capacity": {"verdict": "PASS", "rationale": "The worked example embedded in every stem ('for example 45 = 40 + 5') scaffolds the expected answer format, appropriate support for grade-1 quarter-2 students encountering decomposition notation for the first time."},
-    "variant_comprehensiveness": {"verdict": "PASS", "rationale": "I verified all 7 decompositions by hand (45=40+5, 10=10+0, 20=20+0, 15=10+5, 10=10+0, 15=10+5, 40=40+0) and each correctly separates the tens and ones components with no arithmetic errors."},
-    "competency_alignment": {"verdict": "PASS", "rationale": "The output format 'tens_value + ones_value' matches the decomposition skill precisely, correctly distinct from the sibling node's 'name a single digit's value' task."},
-    "scale_appropriateness": {"verdict": "PASS", "rationale": "Target numbers (10-45) are appropriately within the 2-digit range for grade-1 quarter-2, including zero-ones-digit cases (10, 20, 40) that test the edge case of decomposing a round number."}
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every sample asks the student to output a full tens-plus-ones decomposition, e.g. seed 42's 'Write 45 as tens and ones, for example 45 = 40 + 5.' keyed '40 + 5', exactly matching 'decompose any 2-digit number into tens and ones'."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Five of the seven target numbers are multiples of ten with a zero ones-digit (10 at seeds 43 and 46, 20 at seeds 44 and 50, plus seed 55's blocks item), and only two samples (45's '15' and 42's '45') show a non-zero ones digit, under-representing the harder mixed-digit decomposition case."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The worked example embedded in every stem, 'for example 45 = 40 + 5', scaffolds the expected answer format appropriately for Grade 1 Quarter 2 students meeting this notation."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Formats vary across mcq, cloze, true_false (seed 50, though with a stray double period before 'True or False?'), and a concrete base-10 block task at seed 55."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The 'tens + ones' output format matches the decomposition skill precisely and stays distinct from the sibling node's single-digit place-value-naming task."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Target numbers across the seven widened seeds never exceed 45 (seed 42), so genuinely larger 2-digit numbers in the 60s through 90s, which 'any 2-digit number' implies, are never decomposed."
+    }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

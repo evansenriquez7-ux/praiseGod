@@ -1,66 +1,43 @@
 {
   "node_id": "mat_g1_na_q2_6",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 0, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 72],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "There are 4 resin in one basket and 0 resin in another basket. How many resin are there in all?",
-      "correct_answer": 4
-    },
-    {
-      "seed": 43,
-      "question_text": "Start at 0. Count up 3 more. What number do you land on?",
-      "correct_answer": 3
-    },
-    {
-      "seed": 44,
-      "question_text": "Lara has ___ ribbons. A friend has 0 ribbons. If they put all their ribbons together, how many ribbons do they have in all?",
-      "correct_answer": 2
-    },
-    {
-      "seed": 45,
-      "question_text": "One basket has 1 water bottles. Another basket has 1 water bottles. If you put all the water bottles together, how many water bottles are there?",
-      "correct_answer": 2
-    },
-    {
-      "seed": 46,
-      "question_text": "Start at 12. Count up 1 more. What number do you land on?",
-      "correct_answer": 13
-    }
+    {"seed": 42, "question_text": "There are 1 resin in one basket and 10 resin in another basket. How many resin are there in all?", "correct_answer": 11},
+    {"seed": 43, "question_text": "Start at 1. Count up 2 more. What number do you land on?", "correct_answer": 3},
+    {"seed": 44, "question_text": "Lara has 12 ribbons. A friend has 1 ribbon. If they put all their ribbons together, how many ribbons do they have in all?", "correct_answer": 13},
+    {"seed": 45, "question_text": "One basket has 3 water bottles. Another basket has 1 water bottles. If you put all the water bottles together, how many water bottles are there?", "correct_answer": 4},
+    {"seed": 46, "question_text": "Start at 1. Count up 3 more. What number do you land on?", "correct_answer": 4},
+    {"seed": 50, "question_text": "Jose solved this problem: \"Mia has 0 merchandise shirts. A friend has 3 merchandise shirts. If they put all their merchandise shirts together, how many merchandise shirts do they have in all?\" Jose says the answer is 3. Is Jose correct?", "correct_answer": {"has_error": false, "correct_value": 3}},
+    {"seed": 55, "question_text": "🐸 — There is 1 frog.\n🐸🐸🐸 — 3 more frogs are added.\nHow many total frogs are there?", "correct_answer": "D"},
+    {"seed": 72, "question_text": "Start at 1. Count up 3 more. What number do you land on? The answer is 4.. True or False?", "correct_answer": true}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The addend structure ('4 resin...0 resin...how many in all') matches the competency's addition-problem framing but sums shown top out at 13, well under the 'sums up to 100' scope."
+      "verdict": "PASS",
+      "rationale": "Genuine addition word problems and pictorial problems appear, e.g. seed 42's 'There are 1 resin in one basket and 10 resin in another basket. How many resin are there in all?' and seed 55's frog-emoji visual, both matching 'solve problems... involving addition' directly."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Contexts vary (baskets, counting-on, ribbons cloze, water bottles), avoiding a single repeated scenario across the 5 seeds."
+      "verdict": "CONCERN",
+      "rationale": "Both the 'given orally' and 'in pictures' sub-cases are present, but the competency's 'sums up to 100 without regrouping' scope is barely reached -- the largest addend across all eight samples is 12 (seed 44's ribbons), and no sample sums two 2-digit numbers or approaches even half of the stated 100 ceiling."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "The same singular/plural error appears again ('One basket has 1 water bottles'), a readability defect for Grade 1 that should be fixed."
+      "rationale": "Seed 45 repeats a singular/plural grammar mismatch, 'One basket has 3 water bottles. Another basket has 1 water bottles...', and seed 50's 'merchandise shirts' phrasing remains stilted, both potentially confusing for an early Grade 1 reader."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Both mcq and cloze formats appear, and the cloze sample (seed 44) tests solving for a missing addend rather than only the sum, a useful additional variant."
+      "rationale": "Framings span object word problems (resin at seed 42, ribbons at seed 44, water bottles at seed 45, merchandise shirts at seed 50), a counting-up number-line narration (seeds 43, 46, 72), a pictorial frog-emoji model (seed 55), and error-detection (seed 50)."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "All samples are genuine addition word problems, matching problem_solving_addition_to_100."
+      "rationale": "Every sample, including the counting-up narration at seed 46 ('Start at 1. Count up 3 more. What number do you land on?'), is a genuine addition-in-context scenario matching this competency's word-problem scope."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "The largest sum shown is 13 (seed 46: 12+1); nothing in the batch approaches sums near 100 or exercises the two-digit-plus-two-digit regime this node adds over Grade 1 Q1."
+      "rationale": "The largest sum across all eight samples is 13 (seed 44's '12 ribbons... 1 ribbon... how many in all'), nowhere near the stated ceiling of 100, and no sample exercises the larger two-digit-plus-two-digit range this Quarter 2 node is meant to add beyond its Quarter 1 counterpart."
     }
   },
   "overall": "CONCERN"

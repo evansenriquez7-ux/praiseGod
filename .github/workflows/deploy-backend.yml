@@ -69,14 +69,11 @@ jobs:
           echo "doc lint: clean"
 
       - name: Run Unit Suite
-        # Five tests reach get_matatag_lab_config, whose module imports
-        # backend/app/database.py, which refuses to import without DATABASE_URL
-        # (deliberately — it stops a silent fallback to a local DB). Nothing
-        # here touches a database: create_engine is lazy inside get_engine(), so
-        # only the import-time presence check is satisfied. Quoted because the
-        # value ends in a colon, which YAML would read as a nested mapping.
-        env:
-          DATABASE_URL: "sqlite+pysqlite:///:memory:"
+        # database.py now checks DATABASE_URL lazily, inside get_engine()
+        # (first actual connection attempt), not at import time -- so
+        # importing a database-free route (e.g. get_matatag_lab_config, pure
+        # formatter-gating logic with no `db` parameter) no longer requires
+        # it. No dummy DATABASE_URL needed here anymore.
         run: PYTHONPATH=. python -m pytest tests/unit/ -q -m "not slow"
 
       # Plants seven known bugs one at a time and asserts the harness catches

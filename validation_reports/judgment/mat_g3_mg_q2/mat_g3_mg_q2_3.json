@@ -1,66 +1,41 @@
 {
   "node_id": "mat_g3_mg_q2_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 7, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is the amount of liquid of the object in mL?",
-      "correct_answer": 15
-    },
-    {
-      "seed": 43,
-      "question_text": "What is the amount of liquid of the object in mL?",
-      "correct_answer": 5
-    },
-    {
-      "seed": 44,
-      "question_text": "What is the amount of liquid of the object in mL?",
-      "correct_answer": 53
-    },
-    {
-      "seed": 45,
-      "question_text": "What is the amount of liquid of the object in mL?",
-      "correct_answer": 35
-    },
-    {
-      "seed": 46,
-      "question_text": "What is the amount of liquid of the object in mL?",
-      "correct_answer": 10
-    }
+    {"seed": 42, "question_text": "What is the amount of liquid of the object in mL?", "correct_answer": 15},
+    {"seed": 43, "question_text": "What is the amount of liquid of the object in mL?", "correct_answer": 5},
+    {"seed": 44, "question_text": "What is the amount of liquid of the object in mL?", "correct_answer": 53},
+    {"seed": 45, "question_text": "What is the amount of liquid of the object in mL?", "correct_answer": 35},
+    {"seed": 46, "question_text": "What is the amount of liquid of the object in mL?", "correct_answer": 10},
+    {"seed": 50, "question_text": "What is the amount of liquid of the object in mL?", "correct_answer": 64}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Competency requires capacity in L and/or mL, but every sample asks in mL only; no liters variant appears across seeds 42-46."
+      "rationale": "All 6 samples ask 'What is the amount of liquid of the object in mL?' -- only the mL unit of the competency's stated 'L and/or mL' is ever exercised, and the phrase 'amount of liquid of the object' does not use the competency's own word 'capacity'."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "All 5 seeds share the identical mL-only phrasing pattern and never demonstrate the liter unit that the competency text explicitly names."
+      "rationale": "Answer values across mcq seeds 42-46 and cloze seed 50 are 15, 5, 53, 35, 10 and 64 mL -- six data points and not one is expressed in liters, though the competency explicitly names liters as a valid unit."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "The phrase 'the amount of liquid of the object' is grammatically confusing for a Grade 3 reader -- liquid amount belongs to a container, not 'of the object'."
+      "rationale": "'The amount of liquid of the object' (identical in all 6 seeds) is an awkward double-possessive construction for a grade 3 reader -- liquid amount belongs to a container, not grammatically 'of the object'."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Only the mL branch of the mass_capacity dna is evidenced here; the liter branch implied by 'L and/or mL' in the competency is not shown in this batch."
+      "rationale": "Formatter switches from mcq (42-46) to cloze (50) but the sentence template and unit (mL) never change, so the liter branch implied by 'L and/or mL' in the competency text is not demonstrated anywhere in this widened 6-sample set."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The awkward 'amount of liquid of the object' phrasing does not clearly map onto the taught vocabulary term 'capacity' from this node's vocab list."
+      "rationale": "The rendered phrase 'amount of liquid of the object' does not map onto the competency's own term 'capacity' in any of the 6 samples, so the exact vocabulary this node is meant to teach never actually appears in the question text."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "mL values 5-53 are sensible small-container readings appropriate for a Grade 3 capacity-measurement task."
+      "rationale": "mL values across the widened sample (5, 10, 15, 35, 53, 64) are sensible small-container readings appropriate for a Grade 3 introductory capacity task, even though the liter scale is untested."
     }
   },
   "overall": "CONCERN"

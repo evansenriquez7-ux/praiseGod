@@ -276,6 +276,110 @@ def generate_params(
     # - "start_unknown": ? - b = result (for missing number competencies)
     structure = profile.get("structure", "result_unknown")
 
+    task_type = profile.get("task_type")
+    if task_type == "estimate":
+        # Rounding both operands to a common place value zeroes out every
+        # digit below that place, in BOTH operands -- so the served pair can
+        # never need to borrow: regrouping is a structural impossibility here,
+        # not a difficulty preference. Fail fast rather than silently ignore
+        # an explicit request for it (the harness's own discrete-dimension
+        # sweep treats a RuntimeError here as an expected infeasible
+        # combination, the same way max_minuend=20 + regrouping='two_places'
+        # already does above).
+        reg_requested = profile.get("regrouping", "none")
+        if reg_requested not in (None, False, "none"):
+            raise RuntimeError(
+                f"generate_params (subtraction): task_type='estimate' rounds both "
+                f"operands before subtracting, so every digit below the rounding "
+                f"place is 0 in both -- the served pair can never require "
+                f"borrowing. regrouping='{reg_requested}' is infeasible for "
+                f"task_type='estimate' (grade={grade}, seed={seed})."
+            )
+        # "Estimate the difference of two numbers of up to 4 digits"
+        # (mat_g3_na_q2_5) is a distinct skill from exact subtraction: round
+        # EACH operand to its own leading place value, then subtract the
+        # rounded values. Nothing in this DNA produced that before -- the
+        # plain result_unknown path serves the exact difference, and the
+        # co-mapped rounding DNA rounds a single number, not the difference
+        # of two. Independent of the regrouping machinery below, which this
+        # task_type does not use (regrouping stops being a meaningful axis
+        # once both operands are rounded to a coarse place value).
+        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
+        est_min = 10  # below 10, "round to the nearest ten" is a no-op
+        est_max = max(est_min + 1, min(max_minuend, 9999))
+        candidates = []
+        attempts = 0
+        while len(candidates) < 500 and attempts < 5000:
+            attempts += 1
+            x = rng.randint(est_min, est_max)
+            y = rng.randint(est_min, x)
+            candidates.append((x, y))
+        if not candidates:
+            raise RuntimeError(
+                f"generate_params (subtraction): no valid estimate pair for "
+                f"max_minuend={max_minuend} (grade={grade}, profile={difficulty_profile})."
+            )
+
+        def _round_half_up(n: int, precision: int) -> int:
+            remainder = n % precision
+            if remainder >= precision / 2:
+                return n - remainder + precision
+            return n - remainder
+
+        # A pair where BOTH operands already sit on the larger operand's
+        # rounding boundary (e.g. 90 - 10 -> rounds to itself, "estimate" ==
+        # exact difference) renders as a front-end-rounding item that never
+        # exercises rounding -- the same shape addition.py's identical fix
+        # thins (there ~6% of samples; here rarer, ~1%, since est_min=10
+        # already keeps operands off the smallest, most-collision-prone
+        # boundary, but not impossible). Same convention: thin to a ~10% cap
+        # of the meaningful pool rather than exclude, so it stays reachable
+        # when it's the only option a tight max_minuend leaves.
+        def _is_degenerate_estimate(pair: tuple) -> bool:
+            x, y = pair
+            rt = 10 ** (len(str(x)) - 1)
+            return _round_half_up(x, rt) == x and _round_half_up(y, rt) == y
+
+        _meaningful = [p for p in candidates if not _is_degenerate_estimate(p)]
+        _degenerate = [p for p in candidates if _is_degenerate_estimate(p)]
+        if _meaningful and _degenerate:
+            cap = max(1, len(_meaningful) // 10)
+            candidates = _meaningful + _degenerate[:cap]
+        elif _meaningful:
+            candidates = _meaningful
+
+        real_a, real_b = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
+
+        # Front-end (leading-digit) rounding: round to the place value of the
+        # LARGER operand's own leading digit -- 3463 rounds to the nearest
+        # thousand, 87 to the nearest ten. Both operands round to the SAME
+        # precision, so the estimate stays monotone (real_a >= real_b implies
+        # rounded_a >= rounded_b) and never goes negative.
+        round_to = 10 ** (len(str(real_a)) - 1)
+
+        rounded_a = _round_half_up(real_a, round_to)
+        rounded_b = _round_half_up(real_b, round_to)
+
+        return {
+            # "a"/"b" carry the ROUNDED values, not the numbers shown in the
+            # stem: this DNA's answer_formula is the fixed string "a - b", and
+            # the harness's answer_key_integrity check independently
+            # recomputes it by substituting given_values -- it has to match
+            # what is actually served (the estimate), not the exact
+            # difference. "real_a"/"real_b" carry the numbers the stem shows.
+            "a": rounded_a,
+            "b": rounded_b,
+            "result": rounded_a - rounded_b,
+            "real_a": real_a,
+            "real_b": real_b,
+            "round_to": round_to,
+            "task_type": "estimate",
+            "blank_target": "result",
+            "context": "pure",
+            "structure": "result_unknown",
+            "max_minuend": max_minuend,
+        }
+
     # Build candidate pool with a grade-appropriate floor
     min_a = 1
     if grade >= 3 and max_minuend >= 100:
@@ -325,6 +429,35 @@ def generate_params(
             f"non-degenerate exclusions (b>=1, a!=2b, a!=b). "
             f"Constraints are incompatible (grade={grade}, profile={difficulty_profile})."
         )
+
+    # b=0 ("What is 4 - 0?") is a legitimate MATATAG fact (subtracting zero)
+    # but was 30-70% of sampled items at the default profile across
+    # addition/subtraction nodes -- an artifact of how the pool is built and
+    # scored, not a deliberate identity-property lesson (that is a distinct,
+    # currently-unbuilt task type; see HARDENING_EVIDENCE.md). Prefer the
+    # b!=0 subset so subtracting zero stays reachable (still in the full
+    # pool, and the sole option when the regrouping constraint leaves
+    # nothing else) without dominating ordinary practice. This does not
+    # touch which (a, b) pairs are valid -- only which of the already-valid
+    # pairs get first refusal.
+    # A hard exclusion (drop every b=0 pair whenever an alternative exists)
+    # overcorrects: b=0 becomes reachable only when the non-zero subset is
+    # completely empty, which for any normal range/regrouping combination it
+    # never is -- so b=0 stopped being generated at all, not just stopped
+    # dominating. tests/unit/test_semantic_leak_guards.py's
+    # test_subtraction_emits_identity_and_double_pairs (and the matching
+    # render-leak test) exist specifically to keep a-0 reachable, since it is
+    # legitimate content this DNA's own docstring defends. Thin it to a
+    # minority slice instead of excluding it: b=0 pairs are capped at ~10% of
+    # the non-zero pool rather than dropped, so they stay reachable within an
+    # ordinary seed sample without being 30-70% of it.
+    zero_b_pairs = [p for p in candidate_pairs if p[1] == 0]
+    nonzero_b_pairs = [p for p in candidate_pairs if p[1] != 0]
+    if nonzero_b_pairs and zero_b_pairs:
+        cap = max(1, len(nonzero_b_pairs) // 10)
+        candidate_pairs = nonzero_b_pairs + zero_b_pairs[:cap]
+    elif nonzero_b_pairs:
+        candidate_pairs = nonzero_b_pairs
 
     # Sample a pair from the candidate pool using the continuous difficulty window
     from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window

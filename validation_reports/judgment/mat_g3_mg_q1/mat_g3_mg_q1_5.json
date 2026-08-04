@@ -1,67 +1,23 @@
 {
   "node_id": "mat_g3_mg_q1_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 5",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 6, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Two lines that never meet, no matter how far they extend, are called ___.",
-      "correct_answer": "parallel lines"
-    },
-    {
-      "seed": 43,
-      "question_text": "Two lines that never meet, no matter how far they extend, are called ___.",
-      "correct_answer": "parallel lines"
-    },
-    {
-      "seed": 44,
-      "question_text": "Two intersecting lines that do NOT form a right angle are called ___.",
-      "correct_answer": "intersecting lines (not perpendicular)"
-    },
-    {
-      "seed": 45,
-      "question_text": "Two lines that meet at a right angle (90°) are called ___.",
-      "correct_answer": "perpendicular lines"
-    },
-    {
-      "seed": 46,
-      "question_text": "Two lines that never meet, no matter how far they extend, are called ___.",
-      "correct_answer": "parallel lines"
-    }
+    {"seed": 42, "question_text": "Two lines that never meet, no matter how far they extend, are called ___.", "correct_answer": "parallel lines"},
+    {"seed": 43, "question_text": "Two lines that never meet, no matter how far they extend, are called ___.", "correct_answer": "parallel lines"},
+    {"seed": 44, "question_text": "Two intersecting lines that do NOT form a right angle are called ___.", "correct_answer": "intersecting lines (not perpendicular)"},
+    {"seed": 45, "question_text": "Two lines that meet at a right angle (90°) are called ___.", "correct_answer": "perpendicular lines"},
+    {"seed": 46, "question_text": "Two lines that never meet, no matter how far they extend, are called ___.", "correct_answer": "parallel lines"}
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Competency: \"Recognize and draw parallel, intersecting, and perpendicular lines.\" All three named relationships appear: \"never meet\" -> parallel lines, \"meet at a right angle (90deg)\" -> perpendicular lines, and \"intersecting... do NOT form a right angle\" -> intersecting lines, directly matching the wording."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "geometric_lines registers 2 axes / 6 combos for this node; the 5 samples happen to cover all three named terms, a reasonable illustrative slice, and full 6-combo execution is verified by validate_matrix."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The longest stem, about lines that never meet no matter how far they extend, is 14 words, well under the 22-word cap, and the 90-degree callout is a concrete, grade-appropriate anchor for perpendicularity."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The variant space plausibly supports mastery since all three relationship types are independently testable as cloze-style fill-ins, letting the Lab vary phrasing per relationship type."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "This node's difficulty (three related but distinct line-relationship terms) logically follows q1_4's simpler point/line/ray recognition, building vocabulary depth without reaching into unrelated topics."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "There is no numeric magnitude to assess beyond the 90-degree angle reference, itself a fixed, curriculum-appropriate constant for defining perpendicularity at this grade."
-    }
+    "competency_fulfillment": {"verdict": "PASS", "rationale": "All three named line relationships appear at least once: parallel in seed 42's 'Two lines that never meet, no matter how far they extend', intersecting in seed 44, and perpendicular in seed 45's 'meet at a right angle (90°)', though 'draw' is never tested since all five items are definitional MCQs."},
+    "comprehensive_coverage": {"verdict": "CONCERN", "rationale": "While all three terms appear, coverage is skewed: parallel is tested in 3 of 5 seeds (42, 43, 46) versus one each for intersecting and perpendicular, and no sample asks the student to draw or identify lines from a diagram."},
+    "cognitive_capacity": {"verdict": "CONCERN", "rationale": "Seed 44's correct answer, 'intersecting lines (not perpendicular)', bakes an unusual parenthetical qualifier into the answer text itself rather than using the clean term 'intersecting lines' a grade-3 student would actually select or write."},
+    "variant_comprehensiveness": {"verdict": "CONCERN", "rationale": "Only three distinct question stems exist across five samples, with the parallel-lines question from seed 42 repeated verbatim in seeds 43 and 46 aside from option reordering."},
+    "competency_alignment": {"verdict": "PASS", "rationale": "Unlike the sibling point/line/ray node, every named term here, parallel, intersecting, and perpendicular, does get exercised at least once, so the variation does build toward this competency's full stated scope even if unevenly."},
+    "scale_appropriateness": {"verdict": "PASS", "rationale": "As a qualitative geometry competency there's no numeric ceiling at stake, and the 90° angle reference in seed 45 is standard, unembellished vocabulary for the grade."}
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

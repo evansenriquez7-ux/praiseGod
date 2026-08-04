@@ -100,6 +100,31 @@ def _build_expression_str(operands: List[int], operators: List[str]) -> str:
 
 # ─── parameter generator ──────────────────────────────────────────────────────
 
+# Word-problem narration is self-built here (not via generators/spines.py):
+# this DNA has requires_context=False and no registered spine, matching
+# missing_number.py's "equivalent" branch precedent of setting "question"
+# directly in the returned dict. base_generator.py picks up values["question"]
+# ahead of both the spine path and _build_symbolic_question's generic
+# fallback -- which has no branch at all for this concept, and previously
+# rendered "What is the value of None + None?" for every seed once this DNA
+# was actually wired to a node (it had never been reachable before).
+_WP_ACTORS = ["Ana", "Ben", "Carlo", "Dina", "Elena", "Fidel"]
+_WP_OBJECTS = ["mangoes", "notebooks", "stickers", "marbles", "eggs", "storybooks"]
+_WP_VERBS = {"+": "receives", "-": "gives away"}
+
+
+def _build_word_problem(actor: str, obj: str, operands: List[int], operators: List[str], money: bool) -> str:
+    unit = f"₱{operands[0]}" if money else f"{operands[0]} {obj}"
+    parts = [f"{actor} starts with {unit}."]
+    for op, val in zip(operators, operands[1:]):
+        verb = _WP_VERBS[op]
+        amount = f"₱{val}" if money else f"{val} {obj}"
+        parts.append(f"Then {actor} {verb} {amount}.")
+    question = f"How much money does {actor} have now?" if money else f"How many {obj} does {actor} have now?"
+    parts.append(question)
+    return " ".join(parts)
+
+
 def generate_params(
     grade: int,
     difficulty_profile: Optional[Dict[str, Any]],
@@ -114,6 +139,7 @@ def generate_params(
             "operators":       list of "+" or "-" strings,
             "expression_str":  str (e.g. "12 + 7 - 4 + 3"),
             "answer":          int,
+            "question":        str (the rendered stem — pure or word problem),
         }
     """
     rng = random.Random(seed)
@@ -123,12 +149,45 @@ def generate_params(
     bounds = _PARAM_BOUNDS["g3"]
     min_op = bounds["min_operand"]
 
-    num_operands_label = profile.get("num_operands", "three_terms")
+    # "3 to 4 numbers" names a range, not a fixed count -- defaulting to a
+    # single hardcoded value ("three_terms") when unbound would mean every
+    # unbound generation is 3 terms and 4-term items never appear at all.
+    # Randomize via this call's own seeded rng so an unbound request still
+    # covers both, the same way a continuous axis's own candidate pool spans
+    # its whole range instead of collapsing to one point.
+    num_operands_label = profile.get("num_operands") or rng.choice(["three_terms", "four_terms"])
     operation_mix      = profile.get("operation_mix", "mixed_add_sub")
     number_size        = profile.get("number_size", "2_digit")
+    context            = profile.get("context", "pure")
+    # "including problems involving money" (mat_g3_na_q2_7) -- money framing
+    # is a sub-case of word_problem context, not its own axis; roughly half
+    # of word-problem items use it so the money sub-case is exercised without
+    # making every non-money "3 to 4 numbers" item disappear.
+    money = profile.get("money")
+    if money is None:
+        money = context == "word_problem" and rng.random() < 0.5
 
     n_terms  = 3 if num_operands_label == "three_terms" else 4
     max_op   = 9 if number_size == "1_digit" else 99
+
+    def _finish(operands: List[int], operators: List[str], result: int) -> Dict[str, Any]:
+        expression_str = _build_expression_str(operands, operators)
+        if context == "word_problem":
+            actor = rng.choice(_WP_ACTORS)
+            obj = rng.choice(_WP_OBJECTS)
+            question = _build_word_problem(actor, obj, operands, operators, money)
+        else:
+            question = f"{expression_str} = ___"
+        return {
+            "blank_target":   "answer",
+            "operands":       operands,
+            "operators":      operators,
+            "expression_str": expression_str,
+            "answer":         result,
+            "context":        context,
+            "money":          money,
+            "question":       question,
+        }
 
     for _ in range(200):
         operands = [rng.randint(min_op, max_op) for _ in range(n_terms)]
@@ -154,26 +213,12 @@ def generate_params(
         if not ok:
             continue
 
-        expression_str = _build_expression_str(operands, operators)
-
-        return {
-        "blank_target": "answer",
-            "operands":       operands,
-            "operators":      operators,
-            "expression_str": expression_str,
-            "answer":         result,
-        }
+        return _finish(operands, operators, result)
 
     # Fallback: safe add-only expression
     operands = [rng.randint(min_op, 9) for _ in range(n_terms)]
     operators = ["+"] * (n_terms - 1)
-    return {
-        "blank_target": "answer",
-        "operands":       operands,
-        "operators":      operators,
-        "expression_str": _build_expression_str(operands, operators),
-        "answer":         _evaluate_left_to_right(operands, operators),
-    }
+    return _finish(operands, operators, _evaluate_left_to_right(operands, operators))
 
 
 # ─── hint generator ───────────────────────────────────────────────────────────

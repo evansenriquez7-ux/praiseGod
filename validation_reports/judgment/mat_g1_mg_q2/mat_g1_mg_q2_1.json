@@ -1,66 +1,43 @@
 {
   "node_id": "mat_g1_mg_q2_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 0, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 55],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Measure the object. Its length is ___ paperclips.",
-      "correct_answer": 5
-    },
-    {
-      "seed": 43,
-      "question_text": "Measure the object. Its length is ___ paperclips.",
-      "correct_answer": 10
-    },
-    {
-      "seed": 44,
-      "question_text": "Compare the numbers: 10 ___ 6. Which sign is correct: >, <, or =?",
-      "correct_answer": ">"
-    },
-    {
-      "seed": 45,
-      "question_text": "Compare the numbers: 18 ___ 30. Which sign is correct: >, <, or =?",
-      "correct_answer": "<"
-    },
-    {
-      "seed": 46,
-      "question_text": "Measure the object. Its length is ___ paperclips.",
-      "correct_answer": 10
-    }
+    {"seed": 42, "question_text": "Measure the object. Its length is ___ paperclips.", "correct_answer": 5},
+    {"seed": 43, "question_text": "Measure the object. Its length is ___ paperclips.", "correct_answer": 10},
+    {"seed": 44, "question_text": "Compare the numbers: 10 ___ 6. Which sign is correct: >, <, or =?", "correct_answer": ">"},
+    {"seed": 45, "question_text": "Compare the numbers: 18 ___ 30. Which sign is correct: >, <, or =?", "correct_answer": "<"},
+    {"seed": 46, "question_text": "Measure the object. Its length is ___ paperclips.", "correct_answer": 10},
+    {"seed": 50, "question_text": "20 cannot be determined 13. True or False?", "correct_answer": false},
+    {"seed": 51, "question_text": "Measure the object. Its length is ___ hands.", "correct_answer": 5},
+    {"seed": 55, "question_text": "How long is the object? Give your answer in paperclips.", "correct_answer": "C"}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency verb is 'Compare lengths and distances', yet not one of the five samples compares two lengths. Seeds 42, 43 and 46 render 'Measure the object. Its length is ___ paperclips.' which is a unit-iteration counting task with no second object to compare against, and seeds 44 and 45 render bare numeral comparisons ('Compare the numbers: 10 ___ 6') that mention no length, no object and no non-standard unit at all. Zero samples ask 'Which is longer?'."
+      "rationale": "The competency verb is 'Compare lengths and distances', yet none of the eight samples compares two lengths side by side: seeds 42, 43, 46, and 51 are single-object unit-counting tasks like 'Measure the object. Its length is ___ hands.', seeds 44 and 45 are bare numeral comparisons with no object or unit at all, and seed 50 renders the broken sentence '20 cannot be determined 13. True or False?' -- no sample ever asks which of two measured objects is longer."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The wording names two nouns, 'lengths' and 'distances', and 'distances' is never generated: nothing about steps walked, string laid end to end, or how far one place is from another appears in seeds 42-46. Only one non-standard unit, the paperclip, is ever used; handspans, footsteps, blocks and pencils are absent. The longer/shorter/same-length trio of comparison outcomes is likewise never produced."
+      "rationale": "'Distance between two objects', explicitly named in the competency, has zero representation across all eight seeds, and only two non-standard units ever appear, paperclips and hands; the longer/shorter/same-length comparison outcomes the word 'compare' implies are also never generated."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Sentence length and vocabulary suit Grade 1 Quarter 2, but seed 45's 'Compare the numbers: 18 ___ 30' pushes an abstract two-digit symbolic comparison with no concrete referent into a measurement node, and the recurring distractor 'cannot be determined' is metacognitive test-taking language a six-year-old cannot parse. The stem 'Measure the object' also names no object, leaving the child nothing to hold onto if the picture fails to render."
+      "verdict": "FAIL",
+      "rationale": "Seed 50's rendered text, '20 cannot be determined 13. True or False?', is a broken, ungrammatical sentence -- the phrase 'cannot be determined', a distractor label from the sign-comparison MCQ, has been substituted where a comparison sign or verb belongs, leaving a Grade 1 reader nothing parseable to evaluate."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Only two templates exist across the whole sample set: a paperclip count and a naked numeral comparison. Missing are the obvious contextual variations this competency demands: comparing two objects directly, ordering three objects shortest to longest, measuring the same object with two different units, and comparing distances travelled. Seeds 43 and 46 even key the identical value 10 paperclips with the same stem."
+      "verdict": "CONCERN",
+      "rationale": "Four formatters appear, mcq, true_false, cloze, read_mcq, but the underlying content only ever takes two shapes, a single-object unit count or a bare numeral comparison, so no genuine two-object length-comparison variant exists across the eight seeds."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "The progression across seeds 42 to 46 moves from counting paperclips to comparing the bare numerals 10 and 6, then 18 and 30. That trajectory builds symbolic whole-number comparison, which belongs to mat_g1_na_q1_3, not the ability to compare lengths using non-standard units. Difficulty is being added by enlarging numbers rather than by deepening measurement reasoning."
+      "rationale": "Seeds 44 and 45 vary abstract numeral magnitude, 10 vs 6, then 18 vs 30, with no object, unit, or length referenced at all, building symbolic number comparison rather than the 'compare lengths...using non-standard units' skill this node claims to serve."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "Measured lengths of 5 and 10 paperclips are sensible for Grade 1 unit iteration, but seed 45 introduces 30, a magnitude that has no measurement frame in this node and that no child is laying out as thirty paperclips. The numeric ceiling drifts because the injected number-comparison items carry their own unrelated range."
+      "rationale": "Seed 45's raw numerals 18 and 30 break from the 1-10 non-standard-unit range used everywhere else in this node's samples, e.g. seed 51's 5 hands, introducing a two-digit magnitude with no measurement context grounding it."
     }
   },
   "overall": "FAIL"

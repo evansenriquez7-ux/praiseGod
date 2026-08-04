@@ -1,66 +1,43 @@
 {
   "node_id": "mat_g1_na_q4_6",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 1, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 68, 110],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Hiro had ₱5 and spent ₱1 on resin at the gaming convention. How much money does Hiro have left?",
-      "correct_answer": 4
-    },
-    {
-      "seed": 43,
-      "question_text": "Kuya Bien has ₱1 in bills and ₱5 in coins. How much money does Kuya Bien have in all?",
-      "correct_answer": 6
-    },
-    {
-      "seed": 44,
-      "question_text": "A class survey showed 40 students like costume sash and 1 student like wristband. How many students were surveyed in all?",
-      "correct_answer": 41
-    },
-    {
-      "seed": 45,
-      "question_text": "What is 20 + 25?",
-      "correct_answer": 45
-    },
-    {
-      "seed": 46,
-      "question_text": "Ate Cara has 10 photo albums. A classmate has 5 photo albums. How many more photo albums does Ate Cara have?",
-      "correct_answer": 5
-    }
+    {"seed": 42, "question_text": "Hiro had ₱5 and spent ₱1 on resin at the gaming convention. How much money does Hiro have left?", "correct_answer": 4},
+    {"seed": 43, "question_text": "Kuya Bien has ₱1 in bills and ₱5 in coins. How much money does Kuya Bien have in all?", "correct_answer": 6},
+    {"seed": 44, "question_text": "A class survey showed 90 students like costume sash and 6 students like wristband. How many students were surveyed in all?", "correct_answer": 96},
+    {"seed": 45, "question_text": "What is 30 + 45?", "correct_answer": 75},
+    {"seed": 46, "question_text": "Ate Cara has 10 photo albums. A classmate has 5 photo albums. How many more photo albums does Ate Cara have?", "correct_answer": 5},
+    {"seed": 50, "question_text": "Jose solved this problem: \"A class survey showed 27 students like fan shirt and 0 students like tote bag. How many students were surveyed in all?\" Jose says the answer is 27. Is Jose correct?", "correct_answer": {"has_error": false, "correct_value": 27}},
+    {"seed": 68, "question_text": "There are 0 cookies.\n(Large group of 74 cookies) — 74 more cookies are added.\nHow many total cookies are there?", "correct_answer": "A"},
+    {"seed": 110, "question_text": "A class survey showed 63 students like marker set and 30 students like tarpaulin print. How many students were surveyed in all? The answer is 93.. True or False?", "correct_answer": true}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency is explicitly about money, but three of five samples contain no money at all. Seed 44 asks 'A class survey showed 40 students like costume sash and 1 student like wristband. How many students were surveyed in all?', seed 45 is the bare drill 'What is 20 + 25?' with no context or peso sign, and seed 46 counts photo albums ('Ate Cara has 10 photo albums'). Only seed 42 (5-1=4) and seed 43 (1+5=6) involve pesos. All five keys are arithmetically correct, but 60% of the packet is off-topic for a money competency."
+      "rationale": "Six of eight samples contain no money at all: seed 44's \"A class survey showed 90 students like costume sash and 6 students like wristband. How many students were surveyed in all?\", seed 45's bare \"What is 30 + 45?\", and seed 68's \"There are 0 cookies.\n(Large group of 74 cookies) — 74 more cookies are added.\nHow many total cookies are there?\" all replace the ₱ money context this competency is entirely about."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Both named sub-cases technically appear but only once each and only in miniature: addition of money is seed 43's 1 peso plus 5 pesos, subtraction of money is seed 42's 5 pesos minus 1 peso. There is no problem where a sum approaches the 100-peso ceiling, no change-from-a-payment case, and the 'given orally or in pictures' delivery - which for money would mean showing coins and bills - never appears in any sample."
+      "rationale": "Both named money sub-cases do appear -- subtraction in seed 42 (\"Hiro had ₱5 and spent ₱1 on resin at the gaming convention. How much money does Hiro have left?\") and addition in seed 43 (\"Kuya Bien has ₱1 in bills and ₱5 in coins. How much money does Kuya Bien have in all?\") -- but they are only 2 of 8 samples, so the required coverage exists but is thin."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 43 states 'Kuya Bien has 1 peso in bills and 5 pesos in coins', which is factually wrong about Philippine currency in the exact domain the competency teaches: 1 peso is a coin and the smallest banknote is 20 pesos. Seed 42's context 'spent 1 peso on resin at the gaming convention' uses vocabulary far outside a Grade 1 Filipino learner's experience, and seed 44's 'and 1 student like wristband' is ungrammatical."
+      "verdict": "PASS",
+      "rationale": "Sentence structures stay short and grade-appropriate throughout, e.g. \"Ate Cara has 10 photo albums. A classmate has 5 photo albums. How many more photo albums does Ate Cara have?\", regardless of the topic mismatch noted elsewhere."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The money items offer just two frames - spend-and-have-left (seed 42) and combine-bills-and-coins (seed 43). Missing are the everyday one-step money situations this competency names: buying two items and totalling the cost, computing change owed, comparing the prices of two goods, or saving over two days. The remaining seeds fill the variety slot with non-money contexts rather than new money situations."
+      "verdict": "FAIL",
+      "rationale": "The apparent 'variation' across the eight samples is mostly a swap to entirely different non-money topics -- student surveys (44, 50, 110), bare arithmetic (45), photo albums (46), and cookies (68) -- rather than varied money-problem framings such as buying, saving, or making change."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Difficulty rises only by abandoning the competency. The two largest-number items, seed 45 'What is 20 + 25?' and seed 44's 40 + 1 survey, are precisely the ones stripped of the peso context, while the two items that keep the money framing stay at single-peso amounts. That inverts the intended progression: a student who works through these seeds gets harder arithmetic exactly where the money reasoning disappears, so nothing in the sequence builds toward one-step money problems near 100 pesos."
+      "rationale": "Seeds 44, 45, 46, 50, 68, and 110 vary along unrelated axes, e.g. seed 68's cookie count (\"There are 0 cookies.\n(Large group of 74 cookies) — 74 more cookies are added.\") and seed 110's marker-set/tarpaulin survey, instead of building the money addition/subtraction competency."
     },
     "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "The competency sets a 100-peso ceiling for sums and requires both subtraction amounts below 100, yet the largest money value anywhere in the packet is 6 pesos (seed 43's 1 + 5), roughly 6% of the stated range - the two-digit peso arithmetic the competency exists to test is never exercised. Worse, seed 46 offers 200 as option A, a value double the competency's entire ceiling, and seeds 42 and 43 both use 60 as a distractor on problems whose answers are 4 and 6, giving implausible options that are trivially eliminable."
+      "verdict": "CONCERN",
+      "rationale": "The two genuine money samples use only tiny amounts -- ₱5-₱1=₱4 in seed 42 and ₱1+₱5=₱6 in seed 43 -- far short of testing anywhere near the competency's stated ₱100 addition ceiling."
     }
   },
   "overall": "FAIL"

@@ -1,66 +1,44 @@
 {
   "node_id": "mat_g3_na_q2_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 8, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 55, 72],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is the total value of 1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin?",
-      "correct_answer": 85
-    },
-    {
-      "seed": 43,
-      "question_text": "What is the total value of 1 ₱100 bill and 1 ₱1 coin?",
-      "correct_answer": 101
-    },
-    {
-      "seed": 44,
-      "question_text": "Write 7694 in words.",
-      "correct_answer": "seven thousand six hundred ninety-four"
-    },
-    {
-      "seed": 45,
-      "question_text": "Write 5455 in words.",
-      "correct_answer": "five thousand four hundred fifty-five"
-    },
-    {
-      "seed": 46,
-      "question_text": "What is the total value of 1 ₱50 bill, 1 ₱20 bill, and 2 ₱5 coins?",
-      "correct_answer": 80
-    }
+    {"seed": 42, "question_text": "What is the total value of 1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin?", "correct_answer": 85},
+    {"seed": 43, "question_text": "What is the total value of 1 ₱100 bill and 1 ₱1 coin?", "correct_answer": 101},
+    {"seed": 44, "question_text": "Write 7694 in words.", "correct_answer": "seven thousand six hundred ninety-four"},
+    {"seed": 45, "question_text": "Write 5455 in words.", "correct_answer": "five thousand four hundred fifty-five"},
+    {"seed": 46, "question_text": "What is the total value of 1 ₱50 bill, 1 ₱20 bill, and 2 ₱5 coins?", "correct_answer": 80},
+    {"seed": 50, "question_text": "The number 9152 is written in words as 'nine thousand one hundred forty-two'. True or False?", "correct_answer": false},
+    {"seed": 51, "question_text": "Count the coins and bills shown. What is the total amount?", "correct_answer": "C"},
+    {"seed": 55, "question_text": "Use coins and bills to make exactly ₱101. Use the fewest pieces possible.", "correct_answer": 101},
+    {"seed": 72, "question_text": "What is the total value of 1 ₱20 bill, 3 ₱10 coins, and 1 ₱5 coin?", "correct_answer": 55}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples directly show peso bill/coin total-value questions ('total value of 1 ₱50 bill, 1 ₱20 bill...') and 'Write 7694 in words' number-to-words tasks, matching the 'read and write money in words and using currency symbols' wording well."
+      "verdict": "CONCERN",
+      "rationale": "6 of 9 samples correctly price money using ₱ (e.g. '1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin'), but seeds 44, 45, and 50 ('Write 7694 in words', 'Write 5455 in words', 'The number 9152...') drop all money framing and just convert bare integers."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "variant_registry shows money_peso at 36 combos (4 axes) and number_reading at 2 combos; the 5 samples draw from both DNAs (coin totals and word-form writing), a reasonable illustrative cross-section."
+      "verdict": "FAIL",
+      "rationale": "The competency names both 'PhP' and 'the centavo sign' explicitly, but neither appears in any of the 9 samples; every amount is a whole-peso value shown only with the ₱ glyph, never PhP notation or centavos."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "'What is the total value of 1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin?' is under 22 words and a single summation step, appropriate for grade 3 quarter 2."
+      "rationale": "Vocabulary such as 'bill', 'coin', and 'fewest pieces possible' plus 2-4 digit magnitudes (₱80 to 9152) fit grade 3 quarter 2 reading and number-sense levels."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "No sample shows the centavo sign or an amount printed with a decimal centavo component, so that specific clause of the competency ('...and the centavo sign') isn't illustrated in this slice."
+      "verdict": "PASS",
+      "rationale": "Formats span mcq counting, true_false on number-words, a visual read_mcq coin count, a set_fill_in_blank change-making task ('make exactly ₱101 ... fewest pieces'), and cloze, giving genuine representational variety."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Reading/writing money in both numeral-to-words and coin/bill-counting forms logically builds toward the stated competency without drifting into money-addition content that belongs to a later node."
+      "verdict": "CONCERN",
+      "rationale": "Seeds 44, 45, and 50 test converting bare numbers like 7694 or 9152 to words with zero mention of pesos or coins, which builds a generic place-value-to-words skill rather than this node's money-reading competency."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Observed amounts (80 to 7694) plausibly progress toward the stated ₱10 000 ceiling for this competency."
+      "verdict": "CONCERN",
+      "rationale": "The numbers approaching the stated ₱10,000 ceiling (7694, 5455, 9152) only occur in the money-free 'write in words' items, while every genuine money-labeled sample (coin/bill totals) tops out at ₱101."
     }
   },
   "overall": "CONCERN"

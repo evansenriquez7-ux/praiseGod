@@ -159,6 +159,16 @@ def _parse_competency_bounds(
                 # Round to nearest 10 for cleaner bounds
                 max_val = ((max_val + 5) // 10) * 10
                 bounds["max_sum"] = (3, max_val)
+
+        # "Estimate the sum of addends with up to 4 digits" (mat_g3_na_q2_2)
+        # is a distinct skill from exact addition -- round each addend to
+        # its own leading place, then add -- that nothing in this DNA
+        # produced before task_type="estimate" was added (see
+        # addition.py generate_params). The co-mapped `rounding` DNA
+        # rounds ONE number, not a sum of two, so it cannot express this
+        # competency regardless of which node maps to it.
+        if "estimate" in text:
+            bounds["task_type"] = "estimate"
     
     # Subtraction: operand bound is enforced by the DNA's per-grade
     # _PARAM_BOUNDS[grade] (g1: a<100, g2: a<1000, g3: a<10000). All
@@ -191,7 +201,15 @@ def _parse_competency_bounds(
             match = re.search(r'(?:less than|up to)\s+(\d+)', text)
             if match and int(match.group(1)) >= 10:
                 bounds["max_minuend"] = (1, int(match.group(1)))
-    
+
+        # "Estimate the difference of two numbers ..." (mat_g3_na_q2_5) names
+        # a distinct skill from exact subtraction -- round both operands,
+        # then subtract the rounded values -- that nothing in this DNA
+        # produced before task_type="estimate" was added (see subtraction.py
+        # generate_params).
+        if "estimate" in text:
+            bounds["task_type"] = "estimate"
+
     # Multiplication: "products up to X"
     elif dna_name == "multiplication":
         match = re.search(r'products?\s+(?:up\s+to|of\s+up\s+to|to)\s+(\d+)', text)
@@ -214,7 +232,44 @@ def _parse_competency_bounds(
         # Parse missing structure
         if "missing number" in text or "missing term" in text:
             bounds["structure"] = "factor_unknown"
-    
+
+        # "Illustrate and write multiplication as repeated addition ... using
+        # groups of equal quantities" (mat_g2_na_q3_1): the intro-to-
+        # multiplication node, whose whole point is the equal-groups model,
+        # not a bare fact. Bind task_type so generate_params keeps the
+        # repeat-count small enough to write out (see multiplication.py) and
+        # the symbolic question renders as an explicit repeated sum instead
+        # of "What is 4 x 2?".
+        if "repeated addition" in text:
+            bounds["task_type"] = "repeated_addition"
+
+        # "Estimate the product of 2- to 3-digit numbers by 1- to 2-digit
+        # numbers by estimating the factors using multiples of 10"
+        # (mat_g3_na_q3_3) -- round both factors to the nearest 10, then
+        # multiply, a skill nothing in this DNA produced before
+        # task_type="estimate" was added (see multiplication.py
+        # generate_params). The co-mapped `rounding` DNA rounds ONE
+        # number, not two factors of a product, so it cannot express this
+        # competency regardless of which node maps to it.
+        elif "estimate" in text:
+            bounds["task_type"] = "estimate"
+            # Ground-truth correction (Ground Rule 5): this competency has
+            # no explicit "products up to X" phrase, so without this it
+            # falls to the generic G3 grade-default ceiling (0, 1000) --
+            # and the orchestrator's own default-scalar interpolation of
+            # that range resolves to ~62 for ordinary (unconfigured)
+            # rendering. Rounding TWO factors to the nearest 10 has a hard
+            # mathematical floor: the smallest non-degenerate product with
+            # both rounded factors >=10 is 10*10=100, so a ceiling of 62
+            # makes every default render degenerate (one factor forced to
+            # round to 0, "estimate" always 0 -- verified: 10/10 sampled
+            # seeds before this fix). "2- to 3-digit numbers by 1- to
+            # 2-digit numbers" itself implies operands in the tens-to-
+            # hundreds range, so 100 is this competency's own natural
+            # floor, not an arbitrary widening -- the ceiling (1000, the
+            # grade default) is unchanged.
+            bounds["max_product"] = (100, 1000)
+
     # Division: operand bound is enforced by the DNA's per-grade
     # _PARAM_BOUNDS[grade] (q_max: g2=50, g3=100). All MATATAG K-3
     # division LCs use operand-bound language ("2,3,4,5,10 tables" or
@@ -239,7 +294,20 @@ def _parse_competency_bounds(
         # Parse missing structure
         if "missing number" in text or "missing term" in text:
             bounds["structure"] = "divisor_unknown"
-    
+
+        # "Estimate the quotient of 2- to 3-digit numbers divided by 1- to
+        # 2-digit numbers, using multiples of 10 or 100 as appropriate"
+        # (mat_g3_na_q4_4) -- round the dividend to the nearest 10/100
+        # (matching its own magnitude), keep the divisor exact, then
+        # divide -- a skill nothing in this DNA produced before
+        # task_type="estimate" was added (see division.py
+        # generate_params). The co-mapped `rounding` DNA rounds ONE
+        # number in isolation with no division step attached at all, so
+        # it cannot express this competency regardless of which node
+        # maps to it.
+        if "estimate" in text:
+            bounds["task_type"] = "estimate"
+
     # Counting: "count up to X", "numbers up to X"
     elif dna_name == "counting":
         match = re.search(r'(?:count|numbers?)\s+(?:up\s+to|to)\s+(\d+)', text)
@@ -374,6 +442,24 @@ def _parse_competency_bounds(
             bounds["ask_type"] = "identify_valid"
         elif "explain how to generate" in text:
             bounds["ask_type"] = "explain"
+
+    # Order of operations: "Perform/solve ... addition and subtraction of 3 to
+    # 4 numbers ... observing correct order of operations" (mat_g3_na_q2_6/_7)
+    # -- was registered end-to-end (compatibility.py, axes_catalog.py,
+    # adapter.py) but never mapped to a node, so it was unreachable and its
+    # only output was "What is the value of None + None?" (no branch existed
+    # for this concept in either question-text builder). "solve problems" +
+    # "money" (q2_7) both drive this DNA's own context/money framing.
+    elif dna_name == "order_of_operations":
+        if "solve" in text and "problem" in text:
+            bounds["context"] = "word_problem"
+        # "money" is deliberately left unbound, not forced True: "including
+        # problems involving money" names money as ONE sub-case of "solve
+        # problems ... with 3 to 4 numbers", not the whole scope. Binding it
+        # True would make every item money-themed and the plain-object
+        # word problems this same sentence also covers would never appear.
+        # The DNA's own generate_params randomizes money ~50/50 per seed
+        # when this stays unbound (see order_of_operations.py).
 
     # Missing Number: "missing number in addition or subtraction... / multiplication or division..."
     elif dna_name == "missing_number":
@@ -532,6 +618,20 @@ def _parse_competency_bounds(
             bounds["concept_type"] = "parallel_intersecting_perpendicular"
         else:
             bounds["concept_type"] = "point_line_segment_ray"
+
+    # Fractions: "unit fraction" (numerator fixed at 1) and "similar fraction"
+    # (same-denominator, numerator > 1) are two different competencies sharing
+    # this DNA -- mat_g2_na_q4_1 ("read and write unit fractions") and
+    # mat_g2_na_q4_4 ("read and write similar fractions") had identical bounds
+    # ({}), so both silently fell through to generate_params' own default
+    # (fraction_type="unit_fraction"). The "similar" node never exercised a
+    # numerator > 1, which is the entire point that distinguishes it from the
+    # "unit" node. Bind explicitly from the LC wording.
+    elif dna_name == "fractions":
+        if "unit fraction" in text:
+            bounds["fraction_type"] = "unit_fraction"
+        elif "similar fraction" in text:
+            bounds["fraction_type"] = "similar_proper"
             
     # Generic text-scrape fallback if no primary limit key was found.
     # Attempt to extract any number >= 10 from the LC text and use it
@@ -1136,12 +1236,12 @@ BINDINGS = {
         "visual": "number_line_read"
     },
     "mat_g3_na_q2_6": {
-        "dna": "addition",
-        "visual": "number_line_read"
+        "dna": "order_of_operations",
+        "visual": "mcq"
     },
     "mat_g3_na_q2_7": {
-        "dna": "addition",
-        "visual": "number_line_read"
+        "dna": "order_of_operations",
+        "visual": "mcq"
     },
     "mat_g3_na_q3_0": {
         "dna": "multiplication",
@@ -1321,7 +1421,16 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     # Q3: Subtraction intro, missing number, patterns
     "mat_g1_na_q3_0": ["subtraction"],
     "mat_g1_na_q3_1": ["missing_number"],
-    "mat_g1_na_q3_2": ["missing_number", "addition"],
+    # "addition" removed 2026-08-04 (Ground Rule 2): "Write an equivalent
+    # expression to a given addition or subtraction expression" is already
+    # fully covered by missing_number's operation="equivalent" (bound above
+    # from the "equivalent" text match) -- verified 9/10 seeds genuinely
+    # present a two-sided equivalent-expression task. The co-mapped
+    # addition DNA has no notion of "equivalent expression" at all; when
+    # picked it rendered a bare "x + y = ___" fact with no second
+    # expression to compare against (0/10 content-word hit in the
+    # co-mapped-DNA triage).
+    "mat_g1_na_q3_2": ["missing_number"],
     "mat_g1_na_q3_3": ["subtraction"],
     "mat_g1_na_q3_4": ["subtraction"],
     "mat_g1_na_q3_5": ["subtraction", "place_value"],
@@ -1335,7 +1444,15 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     "mat_g1_na_q4_3": ["money_peso"],
     "mat_g1_na_q4_4": ["money_peso"],
     "mat_g1_na_q4_5": ["money_peso", "comparing_ordering"],
-    "mat_g1_na_q4_6": ["money_peso", "addition"],
+    # "addition" removed 2026-08-04 (Ground Rule 2): "Solve 1-step problems
+    # ... involving addition of money ... or subtraction of money" is fully
+    # covered by money_peso's own operation="add_or_subtract" (bound above
+    # from the "addition"+"subtraction" text match) plus its existing
+    # word-problem framing -- the plain addition DNA has no money framing
+    # at all; when picked it rendered bare survey-style sums with zero ₱
+    # symbols (the filed FAIL finding quoted 6 of 8 samples with no money
+    # content whatsoever, e.g. "What is 30 + 45?").
+    "mat_g1_na_q4_6": ["money_peso"],
 
     # ────────────────────────────────────────────────────────────────────────
     # GRADE 1 — Measurement & Geometry
@@ -1348,15 +1465,40 @@ NODE_TO_DNA: Dict[str, List[str]] = {
 
     # Q2: Length with non-standard units
     "mat_g1_mg_q2_0": ["length_measurement"],
-    "mat_g1_mg_q2_1": ["length_measurement", "comparing_ordering"],
-    "mat_g1_mg_q2_2": ["length_measurement", "addition"],
+    # "comparing_ordering" removed 2026-08-04 (Ground Rule 2): "Compare
+    # lengths and distances using non-standard units" is fully covered by
+    # length_measurement's own task_type="compare" (see the new "compare"
+    # text match added to this DNA's branch below), which already compares
+    # two measured lengths in the SAME non-standard unit. comparing_ordering
+    # has no unit awareness at all -- when picked it rendered bare whole-
+    # number comparisons with no object or unit (0/10 content-word hit,
+    # e.g. "Compare the numbers: 18 ___ 30").
+    "mat_g1_mg_q2_1": ["length_measurement"],
+    # "addition" removed 2026-08-04 (Ground Rule 2): "Solve problems
+    # involving lengths and distances using non-standard units" is already
+    # fully covered by length_measurement's own word-problem framing (see
+    # this DNA's non_standard branch, context=="word_problem" -- gives two
+    # measured objects and asks for the difference). The plain addition DNA
+    # has no unit/object awareness; when picked it rendered bare survey-
+    # style sums with no length content (0/10 content-word hit, e.g.
+    # "What is 10 + 1?").
+    "mat_g1_mg_q2_2": ["length_measurement"],
 
     # Q4: Symmetry/slides, time, calendar
     "mat_g1_mg_q4_0": ["symmetry_slides"],
     "mat_g1_mg_q4_1": ["time_reading"],
     "mat_g1_mg_q4_2": ["calendar"],
     "mat_g1_mg_q4_3": ["calendar"],
-    "mat_g1_mg_q4_4": ["time_reading", "addition"],
+    # "addition" removed 2026-08-04 (Ground Rule 2): "Solve problems
+    # involving time (hour, half hour, quarter hour, days in a week, and
+    # months in a year)" is already fully covered by time_reading's own
+    # word-problem framing (context=="word_problem" -- narrates an actor's
+    # daily activity at a clock time and asks "what time is that?"). The
+    # plain addition DNA has no clock/time awareness at all; when picked it
+    # rendered bare survey-style sums with no time content (0/10 content-
+    # word hit, e.g. a student-count addition problem with no hour/day/
+    # month mentioned).
+    "mat_g1_mg_q4_4": ["time_reading"],
 
     # ────────────────────────────────────────────────────────────────────────
     # GRADE 1 — Data & Probability
@@ -1394,20 +1536,45 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     "mat_g2_na_q2_4": ["subtraction"],
     "mat_g2_na_q2_5": ["subtraction"],
     "mat_g2_na_q2_6": ["subtraction"],
-    "mat_g2_na_q2_7": ["subtraction", "addition"],
+    # "addition" removed 2026-08-04 (Ground Rule 2): this competency's verb
+    # is exclusively subtraction ("Solve ... problems involving subtraction
+    # where both numbers are less than 1000"); the co-mapped addition DNA
+    # actively contradicted the node's own scope when picked -- e.g. seed
+    # 45's literal "What is 440 + 40?" inside a subtraction-only node. This
+    # is a stronger case than the usual off-topic-bleed pattern: it isn't
+    # just irrelevant content, it demonstrates the WRONG operation for a
+    # competency that names one operation exclusively.
+    "mat_g2_na_q2_7": ["subtraction"],
     "mat_g2_na_q2_8": ["patterns"],
     "mat_g2_na_q2_9": ["patterns"],
 
     # Q3: Repeated addition → multiplication, tables 2-5-10,
     #     division intro, missing number in mult/div, even/odd
     "mat_g2_na_q3_0": ["multiplication", "counting"],
-    "mat_g2_na_q3_1": ["multiplication", "addition"],
+    # "addition" removed 2026-08-01 (Ground Rule 2): the plain addition DNA
+    # has no notion of equal groups, so co-mapping it here served generic
+    # 2-3-digit sums ("661 + 120") with zero connection to multiplication —
+    # not "repeated addition" in the sense this LC names, which requires the
+    # SAME addend repeated a table-factor number of times. That is now
+    # multiplication's own task_type="repeated_addition" (see registry.py's
+    # "repeated addition" text match and multiplication.py generate_params).
+    "mat_g2_na_q3_1": ["multiplication"],
     "mat_g2_na_q3_2": ["multiplication"],
     "mat_g2_na_q3_3": ["multiplication"],
     "mat_g2_na_q3_4": ["division"],
     "mat_g2_na_q3_5": ["division"],
     "mat_g2_na_q3_6": ["division"],
-    "mat_g2_na_q3_7": ["missing_number", "multiplication"],
+    # "multiplication" removed 2026-08-04 (Ground Rule 2): "Find the missing
+    # number in a number sentence involving multiplication or division" is
+    # already fully covered by missing_number's own
+    # operation="multiplication_division" (bound below from the
+    # "multiplication"/"division" text match) -- 7 of 9 sampled seeds
+    # already presented a genuine blank-in-equation task. The co-mapped
+    # multiplication DNA renders its own array-visual question types
+    # ("Shade all the squares inside the 1x10 rectangle...") that contain
+    # no number sentence or blank at all -- structurally incapable of
+    # expressing "find the missing number".
+    "mat_g2_na_q3_7": ["missing_number"],
     "mat_g2_na_q3_8": ["division", "comparing_ordering"],
     "mat_g2_na_q3_9": ["division"],
 
@@ -1475,19 +1642,47 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     #     (with regroup, estimate), subtraction, combined ops
     "mat_g3_na_q2_0": ["money_peso", "number_reading"],
     "mat_g3_na_q2_1": ["addition"],
-    "mat_g3_na_q2_2": ["addition", "rounding"],
+    # "rounding" removed 2026-08-04 (Ground Rule 2, same reasoning as
+    # mat_g3_na_q2_5's subtraction fix): rounding.py rounds ONE number;
+    # "estimate the sum of addends" is a two-operand skill (round each
+    # addend, then add), which rounding alone cannot express regardless
+    # of which node maps to it. That capability now lives in addition.py's
+    # task_type="estimate" (see the "estimate" text match in
+    # _parse_competency_bounds above), so addition covers this
+    # competency's full scope on its own.
+    "mat_g3_na_q2_2": ["addition"],
     "mat_g3_na_q2_3": ["addition"],
     "mat_g3_na_q2_4": ["subtraction"],
-    "mat_g3_na_q2_5": ["subtraction", "rounding"],
-    "mat_g3_na_q2_6": ["addition", "subtraction"],
-    "mat_g3_na_q2_7": ["addition", "subtraction"],
+    # "rounding" removed 2026-08-01 (Ground Rule 2): rounding.py rounds ONE
+    # number; "estimate the difference of two numbers" is a two-operand
+    # skill (round both, then subtract), which rounding alone cannot express
+    # regardless of which node maps to it. That capability now lives in
+    # subtraction.py's task_type="estimate" (see the "estimate" text match
+    # in _parse_competency_bounds above), so subtraction covers this
+    # competency's full scope on its own.
+    "mat_g3_na_q2_5": ["subtraction"],
+    # "addition"/"subtraction" removed 2026-08-01 (Ground Rule 2): neither
+    # 2-operand DNA can express "3 to 4 numbers ... observing correct order
+    # of operations" -- the orchestrator picked one or the other per
+    # generation and served a plain 2-operand fact every time, so the
+    # defining multi-term clause was never exercised on any sampled seed.
+    # order_of_operations.py (previously built but unreachable, see the
+    # registry.py binding above and the DNA module itself) is a genuine
+    # 3-4-term chain and covers this competency's full scope on its own.
+    "mat_g3_na_q2_6": ["order_of_operations"],
+    "mat_g3_na_q2_7": ["order_of_operations"],
 
     # Q3: Multiplication tables 6-9, properties, 2-3 digit × 1-2 digit,
     #     estimate product, patterns (repeating + increasing)
     "mat_g3_na_q3_0": ["multiplication"],
     "mat_g3_na_q3_1": ["multiplication"],
     "mat_g3_na_q3_2": ["multiplication"],
-    "mat_g3_na_q3_3": ["multiplication", "rounding"],
+    # "rounding" removed 2026-08-04 (Ground Rule 2, same reasoning as
+    # mat_g3_na_q2_5): rounding.py rounds ONE number; "estimate the
+    # product" is a two-factor skill (round both factors to the nearest
+    # 10, then multiply), which rounding alone cannot express. That
+    # capability now lives in multiplication.py's task_type="estimate".
+    "mat_g3_na_q3_3": ["multiplication"],
     "mat_g3_na_q3_4": ["multiplication"],
     "mat_g3_na_q3_5": ["patterns"],
     "mat_g3_na_q3_6": ["patterns"],
@@ -1498,7 +1693,12 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     "mat_g3_na_q4_1": ["division"],
     "mat_g3_na_q4_2": ["missing_number", "division"],
     "mat_g3_na_q4_3": ["division"],
-    "mat_g3_na_q4_4": ["division", "rounding"],
+    # "rounding" removed 2026-08-04 (Ground Rule 2, same reasoning as
+    # mat_g3_na_q2_5): rounding.py rounds ONE number; "estimate the
+    # quotient" requires rounding the dividend to a multiple of 10/100
+    # and then dividing, which rounding alone cannot express. That
+    # capability now lives in division.py's task_type="estimate".
+    "mat_g3_na_q4_4": ["division"],
     "mat_g3_na_q4_5": ["division"],
     "mat_g3_na_q4_6": ["fractions"],
     "mat_g3_na_q4_7": ["fractions"],

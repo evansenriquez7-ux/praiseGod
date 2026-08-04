@@ -1,67 +1,43 @@
 {
   "node_id": "mat_g3_na_q1_4",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 4",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 4, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Round 102 to the nearest 10.",
-      "correct_answer": 100
-    },
-    {
-      "seed": 43,
-      "question_text": "Round 102 to the nearest 10.",
-      "correct_answer": 100
-    },
-    {
-      "seed": 44,
-      "question_text": "Round 102 to the nearest 10.",
-      "correct_answer": 100
-    },
-    {
-      "seed": 45,
-      "question_text": "Round 102 to the nearest 10.",
-      "correct_answer": 100
-    },
-    {
-      "seed": 46,
-      "question_text": "Round 102 to the nearest 10.",
-      "correct_answer": 100
-    }
+    {"seed": 42, "question_text": "Round 234 to the nearest 10.", "correct_answer": 230},
+    {"seed": 43, "question_text": "Round 42 to the nearest 10.", "correct_answer": 40},
+    {"seed": 44, "question_text": "Round 161 to the nearest 10.", "correct_answer": 160},
+    {"seed": 45, "question_text": "Round 117 to the nearest 10.", "correct_answer": 120},
+    {"seed": 46, "question_text": "Round 314 to the nearest 10.", "correct_answer": 310},
+    {"seed": 50, "question_text": "Round 189 to the nearest 10.", "correct_answer": 190},
+    {"seed": 55, "question_text": "What number is marked on the number line?", "correct_answer": "C"}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Competency covers rounding to nearest ten, hundred, AND thousand, but all 5 samples are the identical prompt 'Round 102 to the nearest 10.' -- nearest hundred and nearest thousand are never illustrated across any seed."
+      "verdict": "FAIL",
+      "rationale": "The competency names three units -- ten, hundred, thousand -- but all 6 rounding samples (234, 42, 161, 117, 314, 189) round only to the nearest 10; 'nearest hundred' and 'nearest thousand' are never the stated target unit once."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "variant_registry lists 6 combos across 2 axes for rounding, but the 5 illustrative samples are byte-identical, so I cannot confirm the hundred/thousand rounding combos are actually reachable; validate_matrix separately checks exhaustiveness."
+      "verdict": "FAIL",
+      "rationale": "Across 7 seeds spanning mcq, cloze, and read_mcq, two of the three named sub-cases ('nearest hundred', 'nearest thousand') never appear; only 'Round X to the nearest 10' phrasing is ever generated."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The single sentence 'Round 102 to the nearest 10.' is far under the 22-word cap and a single-step operation, appropriate reading level for grade 3 quarter 1."
+      "rationale": "Stems like 'Round 314 to the nearest 10.' are short, single-clause imperatives appropriate for grade 3 quarter 1 reading level."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Only the nearest-ten unit variant is observed in these 5 samples; without a nearest-hundred or nearest-thousand instance shown, the registered 2-axis variant space is not demonstrated to cover the full competency."
+      "rationale": "Three formatters appear (mcq for 42-46, cloze for 50, read_mcq for 55), but seed 55's variant, 'What number is marked on the number line?', never asks the student to round anything, so it does not add a genuine rounding-task variant."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The task stays cleanly within pure rounding, with no addition or comparison content mixed in, so it does not overreach into later-node operations."
+      "verdict": "CONCERN",
+      "rationale": "Seed 55 keys option C (the value 59) for simply identifying a marked position, which builds number-line reading rather than the rounding skill this node is meant to teach."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Rounding 102 to 100 is a reasonable magnitude for an early grade-3 rounding introduction, well within a 3-digit range appropriate to this quarter."
+      "verdict": "FAIL",
+      "rationale": "Numbers rounded range only from 42 to 314; nothing in the 7 samples reaches a scale (e.g. a 3-4 digit value with a non-trivial hundreds/thousands digit) where rounding to the nearest hundred or thousand would even be meaningfully distinct from rounding to the nearest ten."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

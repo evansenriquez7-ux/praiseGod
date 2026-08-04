@@ -1,14 +1,16 @@
 {
   "node_id": "mat_g1_na_q1_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 1, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    72
   ],
   "samples_reviewed": [
     {
@@ -35,32 +37,42 @@
       "seed": 46,
       "question_text": "Write 15 in words.",
       "correct_answer": "fifteen"
+    },
+    {
+      "seed": 50,
+      "question_text": "The number 28 is written in words as 'eighteen'. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 72,
+      "question_text": "Write 15 in words.",
+      "correct_answer": "fifteen"
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency is bidirectional ('read AND write numerals'), but every sample ('Write 33 in words' -> 'thirty-three') only exercises reading a numeral into words; no sample shows the reverse task of writing digits from a spoken or word number."
+      "rationale": "The competency requires both reading and writing numerals, but across all seven seeds -- including the widened true_false item at seed 50 ('The number 28 is written in words as 'eighteen'. True or False?') and the seed 72 cloze repeat of 'Write 15 in words.' -- every task converts a numeral to its word form; none asks a student to write the numeral given only its word form."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "variant_registry lists only 1 axis and 2 combos for number_reading, a strikingly small space for a competency needing both read and write directions, so exhaustive machine coverage should be checked for the write-numerals direction specifically."
+      "rationale": "Adding formatters (true_false at seed 50, cloze at seed 72) still only rewraps the numeral-to-word direction; the reverse sub-case named by 'write numerals' -- producing digits from a dictated or worded number -- never appears in any of the seven widened samples."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Prompts like 'Write 14 in words.' are four words long, far under the 15-word ceiling, and use vocabulary appropriate for Grade 1 Quarter 1."
+      "rationale": "Stems such as seed 43's 'Write 14 in words.' and seed 50's true/false sentence are short, single-clause, and use only number-word vocabulary appropriate for Grade 1 Quarter 1 readers."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Two combos is a narrow variant space to plausibly support mastery of both reading digits aloud and writing numerals from dictation, given only one direction appears in the samples."
+      "rationale": "Three response formats now appear (mcq, true_false, cloze) but they all wrap the identical underlying task of naming a numeral's word form; seed 72's cloze repeats seed 46's exact stem 'Write 15 in words.' with only the answer format changed."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Since the sampled task ('numeral to word') is only half of 'read and write numerals', the observed difficulty progression cannot be judged to support the full competency without seeing the write-digits direction."
+      "verdict": "PASS",
+      "rationale": "Every rendered variation, from the mcq numeral prompts to the seed 50 true/false verification of '28... eighteen', stays on the read/write-numerals topic without drifting into an unrelated skill like comparison or counting."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Sampled numerals (14, 15, 21, 26, 33) sit comfortably within the up-to-100 range and increase gradually across the five seeds, a reasonable spread for this stage."
+      "verdict": "CONCERN",
+      "rationale": "The seven sampled numerals are 33, 14, 26, 21, 15, 28 and 15 again -- none exceeds 33, so almost none of the competency's stated up-to-100 range beyond the thirties is ever exercised."
     }
   },
   "overall": "CONCERN"

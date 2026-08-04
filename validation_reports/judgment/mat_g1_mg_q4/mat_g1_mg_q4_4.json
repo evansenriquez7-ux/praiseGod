@@ -1,22 +1,44 @@
 {
   "node_id": "mat_g1_mg_q4_4",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-3 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 0, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 47, 48],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 110],
   "samples_reviewed": [
     {"seed": 42, "question_text": "Maria wakes up at 11:00. What time is that?", "correct_answer": "C"},
-    {"seed": 44, "question_text": "A class survey showed 3 students like costume sash and 10 students like wristband. How many students were surveyed in all?", "correct_answer": 13},
-    {"seed": 45, "question_text": "What is 1 + 15?", "correct_answer": 16},
-    {"seed": 47, "question_text": "What is 2 + 12?", "correct_answer": 14}
+    {"seed": 43, "question_text": "Jose leaves for school at 1:00. What time is that?", "correct_answer": "A"},
+    {"seed": 44, "question_text": "A class survey showed 10 students like costume sash and 1 student like wristband. How many students were surveyed in all?", "correct_answer": 11},
+    {"seed": 45, "question_text": "What is 2 + 10?", "correct_answer": 12},
+    {"seed": 46, "question_text": "Maria starts homework at 2:00. What time is that?", "correct_answer": "B"},
+    {"seed": 50, "question_text": "Jose solved this problem: \"A class survey showed 10 students like fan shirt and 3 students like tote bag. How many students were surveyed in all?\" Jose says the answer is 13. Is Jose correct?", "correct_answer": {"has_error": false, "correct_value": 13}},
+    {"seed": 51, "question_text": "Set the clock to show 4:00.", "correct_answer": "4:00"},
+    {"seed": 110, "question_text": "A class survey showed 3 students like marker set and 15 students like tarpaulin print. How many students were surveyed in all? The answer is 18.. True or False?", "correct_answer": true}
   ],
   "findings": {
-    "competency_fulfillment": {"verdict": "FAIL", "rationale": "None of the 7 samples solves a problem involving time, days in a week, or months in a year as this lc requires: 3 are trivial clock-time restatements ('Maria wakes up at 11:00. What time is that?'), and 4 are generic word/number problems (a costume-sash survey, bare sums) with no time or calendar content whatsoever."},
-    "comprehensive_coverage": {"verdict": "FAIL", "rationale": "The lc's own vocab list is 'days in a week' and 'months in a year', but not one of the 7 samples touches either topic; every sample is either clock-time or unrelated arithmetic, leaving the entire days/months half of this competency untested."},
-    "cognitive_capacity": {"verdict": "PASS", "rationale": "Sentences stay short across all sample types, e.g. the survey word problem is 20 words, within grade-1 quarter-4 reading demand, so wording length is not the source of the alignment problem."},
-    "variant_comprehensiveness": {"verdict": "FAIL", "rationale": "The costume-sash survey item (seed 44) is a plain two-addend sum dressed as a word problem but shares no connection to time at all, showing the addition DNA paired with this node is not being embedded in a time-relevant scenario as the competency needs."},
-    "competency_alignment": {"verdict": "FAIL", "rationale": "'Maria wakes up at 11:00. What time is that?' restates the given time back as a question rather than posing an elapsed-time or scheduling problem (e.g. 'class starts at 9:00 and lasts an hour, when does it end?'), so even the on-topic samples fail to be a 'problem' in the sense this lc names."},
-    "scale_appropriateness": {"verdict": "PASS", "rationale": "I verified the arithmetic in the off-topic samples (3+10=13, 1+15=16, 2+12=14) is all correct and the magnitudes are grade-1 appropriate, though this doesn't offset the complete absence of genuine time/day/month content."}
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "Three of eight samples are student-survey addition problems with no time content at all: seed 44's 'A class survey showed 10 students like costume sash and 1 student like wristband,' seed 50's Jose check on a fan-shirt/tote-bag survey, and seed 110's marker-set/tarpaulin-print survey -- none involves an hour, day, or month."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "The competency names hour, half hour, quarter hour, days in a week, and months in a year, but every clock sample (seeds 42, 43, 46) shows only a whole hour like '11:00' or '2:00'; half hour, quarter hour, days of the week, and months of the year never appear anywhere in the eight samples."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Seed 51's 'Set the clock to show 4:00' is an appropriately concrete Grade 1 task, but the off-topic seed 44's survey wording, 'A class survey showed 10 students like costume sash and 1 student like wristband,' introduces retail vocabulary ('costume sash', 'wristband') unrelated to any time concept this node is meant to teach."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Direct time-reading (seeds 42, 43, 46) and clock-setting (seed 51) variants exist, but the 'problem-solving' framing that does appear, seeds 44, 50, and 110, is a student-merchandise survey count entirely unrelated to time, so no elapsed-time or calendar word problem is ever produced."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "The three survey samples vary student counts and item names, e.g. seed 110's 'marker set' versus 'tarpaulin print' totaling 18, an axis that has nothing to do with 'problems involving time'; even the on-topic samples never progress beyond restating a stated whole-hour time."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "The time samples stay within a simple 1:00-11:00 whole-hour range fit for Grade 1, e.g. seed 42's 11:00, but the survey items introduce unrelated totals up to 18 (seed 110) that map to no hour, day, or month scale this node is supposed to teach."
+    }
   },
   "overall": "FAIL"
 }

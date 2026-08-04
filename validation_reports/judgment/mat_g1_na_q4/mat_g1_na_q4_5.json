@@ -1,14 +1,18 @@
 {
   "node_id": "mat_g1_na_q4_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 2, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    55,
+    72
   ],
   "samples_reviewed": [
     {
@@ -35,32 +39,52 @@
       "seed": 46,
       "question_text": "What is the total value of 1 ₱10 coin and 2 ₱5 coins?",
       "correct_answer": 20
+    },
+    {
+      "seed": 50,
+      "question_text": "20 cannot be determined 13. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 51,
+      "question_text": "Count the coins and bills shown. What is the total amount?",
+      "correct_answer": "C"
+    },
+    {
+      "seed": 55,
+      "question_text": "Use coins and bills to make exactly ₱20. Use the fewest pieces possible.",
+      "correct_answer": 20
+    },
+    {
+      "seed": 72,
+      "question_text": "What is the total value of 1 ₱5 coin and 1 ₱1 coin?",
+      "correct_answer": 6
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Three of five seeds (42, 43, 46) ask 'What is the total value of ...', which is addition rather than comparison. The two seeds that do compare, 'Compare the numbers: 10 ___ 6' (seed 44) and 'Compare the numbers: 18 ___ 30' (seed 45), strip the money context out completely and compare bare numerals."
+      "rationale": "No sample compares two peso denominations; seeds 44 and 45 (\"Compare the numbers: 10 ___ 6. Which sign is correct: >, <, or =?\", \"Compare the numbers: 18 ___ 30. Which sign is correct: >, <, or =?\") compare bare whole numbers with no money units at all, while seeds 42, 43, 46, 51, and 72 ask the student to sum coins instead of compare them."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "No sampled item ever sets two denominations side by side, for example a ₱5 coin against a ₱10 coin, or two ₱5 coins against one ₱10 bill. The '=' relation is never keyed in any sample, and bills up to ₱100 appear nowhere in the set."
+      "rationale": "The specific comparison-of-denominations sub-case this competency names (e.g. which is worth more, a ₱10 coin or a ₱5 coin) never appears across all nine samples."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The distractor 'cannot be determined' at seeds 44 and 45 is an abstract metacognitive phrase pitched well above Grade 1 reading level, and it is transparently implausible since both numerals are printed in the stem."
+      "verdict": "FAIL",
+      "rationale": "Seed 50's text (\"20 cannot be determined 13. True or False?\") is not a coherent sentence, embedding 'cannot be determined' where a comparison symbol belongs between 20 and 13, unreadable as a math statement for a Grade 1 student."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Only the > and < relations are exercised, with no equal-value case, no 'which is worth more' phrasing, and no ordering of three denominations from least to greatest, so most logical variations of a comparison task are simply not produced."
+      "rationale": "Content splits only between unrelated coin-summing tasks and unrelated bare-number comparisons; no sample ever frames the denomination-vs-denomination comparison the competency requires."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Interleaving money-addition items with abstract numeral comparison builds neither skill cleanly, and nothing in the seed sequence moves a learner from comparing like denominations toward comparing unlike coin-and-bill sets, which is what this lc requires."
+      "rationale": "Seeds 44 and 45 drift to an axis stripped of any money context (\"Compare the numbers: 18 ___ 30. Which sign is correct: >, <, or =?\"), while the money-context samples build the 'determine value' skill from q4_3/q4_4 rather than this node's 'compare denominations' competency."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The values compared at seed 45, 18 and 30, are not Philippine denominations at all; there is no ₱18 coin and no ₱30 bill, so the numbers fall outside the denomination set the competency names even before the ₱100 ceiling is considered."
+      "rationale": "Peso amounts that do appear stay within the ₱100 ceiling (max ₱20), but since no sample is a genuine denomination comparison, the actual scale this competency targets is never exercised."
     }
   },
   "overall": "FAIL"

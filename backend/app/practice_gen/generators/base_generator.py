@@ -578,9 +578,13 @@ def _build_symbolic_question(
 
     # ── Arithmetic operations ─────────────────────────────────────────────────
     if concept == "addition":
+        if values.get("task_type") == "estimate":
+            real_a = values.get("real_a", a)
+            real_b = values.get("real_b", b)
+            return f"Estimate the sum: {real_a} + {real_b}"
         strategy = values.get("strategy", "standard")
         prefix = f"Solve using {expanded_lbl}. " if strategy == "expanded_form" else ""
-        
+
         if blank == "result":
             return f"{prefix}What is {a} + {b}?"
         elif blank == "b":
@@ -591,6 +595,10 @@ def _build_symbolic_question(
             return f"{prefix}___ + {b} = {result}. What is the {missing_lbl}?"
 
     if concept == "subtraction":
+        if values.get("task_type") == "estimate":
+            real_a = values.get("real_a", a)
+            real_b = values.get("real_b", b)
+            return f"Estimate the difference: {real_a} − {real_b}"
         if blank == "result":
             return f"What is {a} − {b}?"
         elif blank == "b":
@@ -604,6 +612,20 @@ def _build_symbolic_question(
         n = values.get("n", b)
         groups = values.get("groups", a)
         total = values.get("total", values.get("result"))
+        if values.get("task_type") == "estimate":
+            real_a = values.get("real_a", a)
+            real_b = values.get("real_b", b)
+            return f"Estimate the product: {real_a} × {real_b}"
+        if values.get("task_type") == "repeated_addition" and blank in ["total", "result"] and 2 <= b <= 5:
+            # "Illustrate and write multiplication as repeated addition ...
+            # using ... numerals" (mat_g2_na_q3_1) -- "What is 4 x 3?" is a
+            # bare fact, not an illustration of repeated addition. Write out
+            # the actual repeated sum (b terms of a, per generate_hints'
+            # identical breakdown), so the numeral form of the illustration
+            # is the question itself, not just a hint the student may never
+            # open.
+            terms = " + ".join([str(a)] * b)
+            return f"{terms} = ___. What is {a} × {b}?"
         if blank in ["total", "result"]:
             return f"What is {groups} × {n}?"
         elif blank in ["b", "n"]:
@@ -615,6 +637,10 @@ def _build_symbolic_question(
         total = values.get("total", a)
         n = values.get("n", b)
         groups = values.get("groups", values.get("result"))
+        if values.get("task_type") == "estimate":
+            real_a = values.get("real_a", a)
+            real_b = values.get("real_b", b)
+            return f"Estimate the quotient: {real_a} ÷ {real_b}"
         if blank in ["result", "groups"]:
             return f"What is {total} ÷ {n}?"
         elif blank in ["b", "n"]:

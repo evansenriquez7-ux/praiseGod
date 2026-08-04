@@ -1,66 +1,93 @@
 {
   "node_id": "mat_g2_na_q2_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 2, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    55,
+    85
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What is 702 − 100?",
-      "correct_answer": 602
+      "question_text": "What is 41 − 20?",
+      "correct_answer": 21
     },
     {
       "seed": 43,
-      "question_text": "What is 570 − 320?",
-      "correct_answer": 250
+      "question_text": "What is 135 − 14?",
+      "correct_answer": 121
     },
     {
       "seed": 44,
-      "question_text": "12 − 2 = ___",
-      "correct_answer": 10
+      "question_text": "1 − 1 = ___",
+      "correct_answer": 0
     },
     {
       "seed": 45,
-      "question_text": "3 − 2 = ___",
-      "correct_answer": 1
+      "question_text": "440 − 220 = ___",
+      "correct_answer": 220
     },
     {
       "seed": 46,
-      "question_text": "What is 511 − 0?",
-      "correct_answer": 511
+      "question_text": "What is 80 − 40?",
+      "correct_answer": 40
+    },
+    {
+      "seed": 50,
+      "question_text": "The dot is at 3 and it moves backward 0 numbers. Starting from 3, just count back 0 numbers. Which number will the dot land on?",
+      "correct_answer": "B"
+    },
+    {
+      "seed": 51,
+      "question_text": "Ana says: 152 − 150 = 302. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 2
+      }
+    },
+    {
+      "seed": 55,
+      "question_text": "The total is 380 and one part is 210. What is the other part?",
+      "correct_answer": 170
+    },
+    {
+      "seed": 85,
+      "question_text": "265 − 210 = 55. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency explicitly scopes this node to subtraction of a 2-DIGIT number by a 1-DIGIT number, but three of the five samples use 3-digit numbers (702 minus 100 = 602, 570 minus 320 = 250, 511 minus 0 = 511), directly exceeding the stated scope, and none reference a number line or explicitly frame subtraction as addition's inverse."
+      "rationale": "The competency names 2-digit by 1-digit subtraction, but seed 43's '135 − 14' subtracts a 3-digit minuend and seed 45's '440 − 220' subtracts two 3-digit numbers, neither matching the stated digit sizes."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "subtraction registers 3 axes with 12 combos; with such a small combo count, seeing 3-digit-minus-3-digit items in 3 of 5 draws suggests the magnitude axis is not properly constrained to this node's 2-digit-by-1-digit scope, though validate_matrix separately checks exhaustive combo execution rather than magnitude bounds."
+      "verdict": "FAIL",
+      "rationale": "Of 9 samples, only seed 50 illustrates counting on a number line ('The dot is at 3 and it moves backward 0 numbers') and only seed 55 gestures at inverse-of-addition ('The total is 380 and one part is 210'); both named methods are otherwise absent."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Stems are minimal ('12 minus 2 = ___') and well under the word cap, but subtracting 3-digit numbers like 570 minus 320 is a materially harder cognitive task than the 2-digit-by-1-digit ceiling this competency sets for grade 2 quarter 2."
+      "rationale": "Seeds 51, 55 and 85 use 3-digit minuends (152, 380, 265), a magnitude leap beyond the '2-digit by 1-digit' introductory framing the competency specifies for this quarter."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Whatever variant space produced 702 minus 100 and 570 minus 320 is generating magnitudes well beyond what this competency's number-line and inverse-of-addition pedagogy is designed for at this stage; a 2-digit-by-1-digit ceiling should exclude 3-digit minuends entirely."
+      "rationale": "Nearly every sample (42, 43, 44, 45, 46, 51, 85) is a bare 'X − Y' equation; the number-line and inverse-of-addition contextual variants the competency names appear only once each and in degenerate form (subtracting 0)."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Only two of five samples (12 minus 2, 3 minus 2) actually fit the stated 2-digit-by-1-digit-or-smaller scope; the other three overshoot into full 3-digit subtraction territory that belongs to a later node (q2_6, subtraction to 1000)."
+      "verdict": "FAIL",
+      "rationale": "Seed 45's '440 − 220 = ___' and seed 85's '265 − 210 = 55' build large 3-digit subtraction fluency, an axis well beyond the 2-digit-by-1-digit number-line introduction this competency targets."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "Minuends observed include 702, 570, and 511 -- all 3-digit values -- against a competency that caps this node at 2-digit-by-1-digit subtraction; this is a direct, unambiguous scale violation visible in the raw sample data."
+      "rationale": "6 of 9 samples use minuends or subtrahends of 3 digits (135, 440, 220, 152, 150, 380, 210, 265), directly violating the competency's stated '2-digit by 1-digit' scale."
     }
   },
   "overall": "FAIL"

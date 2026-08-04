@@ -1,66 +1,43 @@
 {
   "node_id": "mat_g1_mg_q2_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 0, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 110],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "A notebook is 5 paperclips long. A book is 2 paperclips long. How many paperclips longer is a notebook than a book?",
-      "correct_answer": 3
-    },
-    {
-      "seed": 43,
-      "question_text": "A book is 10 paperclips long. A shoe is 6 paperclips long. How many paperclips longer is a book than a shoe?",
-      "correct_answer": 4
-    },
-    {
-      "seed": 44,
-      "question_text": "What is 3 + 10?",
-      "correct_answer": 13
-    },
-    {
-      "seed": 45,
-      "question_text": "What is 1 + 15?",
-      "correct_answer": 16
-    },
-    {
-      "seed": 46,
-      "question_text": "A pencil is 10 paperclips long. A book is 9 paperclips long. How many paperclips longer is a pencil than a book?",
-      "correct_answer": 1
-    }
+    {"seed": 42, "question_text": "A notebook is 5 paperclips long. A book is 2 paperclips long. How many paperclips longer is a notebook than a book?", "correct_answer": 3},
+    {"seed": 43, "question_text": "A book is 10 paperclips long. A shoe is 6 paperclips long. How many paperclips longer is a book than a shoe?", "correct_answer": 4},
+    {"seed": 44, "question_text": "What is 10 + 1?", "correct_answer": 11},
+    {"seed": 45, "question_text": "What is 2 + 10?", "correct_answer": 12},
+    {"seed": 46, "question_text": "A pencil is 10 paperclips long. A book is 9 paperclips long. How many paperclips longer is a pencil than a book?", "correct_answer": 1},
+    {"seed": 50, "question_text": "Jose solved this problem: \"What is 10 + 3?\" Jose says the answer is 13. Is Jose correct?", "correct_answer": {"has_error": false, "correct_value": 13}},
+    {"seed": 55, "question_text": "How long is the object? Give your answer in paperclips.", "correct_answer": "C"},
+    {"seed": 110, "question_text": "What is 3 + 15? The answer is 18.. True or False?", "correct_answer": true}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Seeds 42, 43 and 46 genuinely solve length problems ('A notebook is 5 paperclips long. A book is 2 paperclips long. How many paperclips longer is a notebook than a book?', key 3, correct). But seed 44 renders the context-free cloze 'What is 3 + 10?' and seed 45 renders 'What is 1 + 15?'. Two of five items contain no length, no object and no non-standard unit, so they cannot address a competency about solving problems involving lengths."
+      "rationale": "Four of eight samples have no length or measurement content whatsoever: seed 44 asks 'What is 10 + 1?', seed 45 asks 'What is 2 + 10?', seed 50's Jose check is about 'What is 10 + 3?', and seed 110 asks 'What is 3 + 15?' -- none mentions paperclips, an object, or a distance."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Every contextual item asks the same single sub-case, 'How many paperclips longer is X than Y'. The competency's word 'problems' plainly covers combining two lengths into a total, finding how much shorter something is, and finding an unknown addend length; none of those is generated in context. 'Distances' is absent entirely, so no walking-steps or how-far item exists across seeds 42-46."
+      "verdict": "CONCERN",
+      "rationale": "Every contextual length sample (seeds 42, 43, 46) asks the identical sub-case of how many paperclips longer one object is than another, e.g. seed 46's pencil-vs-book comparison; a 'shorter than', equal-length, or combined-length sub-case never appears, and seed 55 is the only direct measurement-reading item."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The two-sentence setups such as 'A pencil is 10 paperclips long. A book is 9 paperclips long.' use concrete classroom objects, present-tense declaratives and one comparative per stem, which is well matched to a Grade 1 Quarter 2 reader. Operands stay at or below 16 and every subtraction resolves to a small positive difference, so no borrowing or negative result is implied."
+      "verdict": "CONCERN",
+      "rationale": "The genuine length items keep sentences short and concrete, e.g. seed 42's 'A notebook is 5 paperclips long. A book is 2 paperclips long,' appropriate for Grade 1 Quarter 2, though the four off-topic seeds abandon this object-based scaffolding entirely for bare number sentences."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "The unit is paperclips in all three contextual samples and the comparative is 'longer' in all three; 'shorter' never appears, nor does a third object, nor an equal-length case. Seeds 44 and 45 supply variation only by stripping the context away rather than by changing the story, so the item bank offers one narrative shape total."
+      "verdict": "CONCERN",
+      "rationale": "All three contextual comparisons (seeds 42, 43, 46) use the same 'longer than' relation and the same unit, paperclips; no 'shorter than', equal-length, or alternate non-standard unit like hand spans or footsteps ever appears across the eight samples."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Difficulty ordering runs backwards for this competency: the contextual subtraction items at seeds 42, 43 and 46 are richer than the decontextualised sums at seeds 44 and 45, which are pure number-fact recall. Practising '3 + 10' strengthens addition within 20, an mat_g1_na competency, and contributes nothing to measurement problem solving."
+      "rationale": "Seeds 44, 45, 50, and 110 vary only bare addition-fact magnitude, from 'What is 10 + 1?' up to 'What is 3 + 15? The answer is 18..', which strengthens whole-number addition fluency rather than the lengths-and-distances problem-solving this node is named for."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Object lengths of 2, 5, 6, 9 and 10 paperclips are physically plausible for classroom items and keep all differences within single digits, and the largest number anywhere in the node is 16 from seed 45. Nothing exceeds a Grade 1 Quarter 2 numeric ceiling and no option dips below zero."
+      "verdict": "CONCERN",
+      "rationale": "The genuine length comparisons stay within a tight 1-10 paperclip band, e.g. seed 43's book at 10 paperclips versus a shoe at 6, while the unrelated seed 110 reaches a sum of 18 with no paperclip or distance value attached to ground that magnitude."
     }
   },
   "overall": "FAIL"

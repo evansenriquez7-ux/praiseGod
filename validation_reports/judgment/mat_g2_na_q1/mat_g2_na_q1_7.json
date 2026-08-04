@@ -1,25 +1,30 @@
 {
   "node_id": "mat_g2_na_q1_7",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 2, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    55,
+    82,
+    86
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What is 24 + 0?",
-      "correct_answer": 24
+      "question_text": "What is 15 + 10?",
+      "correct_answer": 25
     },
     {
       "seed": 43,
-      "question_text": "What is 0 + 6?",
-      "correct_answer": 6
+      "question_text": "What is 1 + 3?",
+      "correct_answer": 4
     },
     {
       "seed": 44,
@@ -33,34 +38,67 @@
     },
     {
       "seed": 46,
-      "question_text": "0 + 14 = ___",
-      "correct_answer": 14
+      "question_text": "0 + 17 = ___",
+      "correct_answer": 17
+    },
+    {
+      "seed": 50,
+      "question_text": "Arrange these numbers from largest to smallest: 538, 537, 540, 539",
+      "correct_answer": [
+        537,
+        538,
+        539,
+        540
+      ]
+    },
+    {
+      "seed": 51,
+      "question_text": "The dot is at 3 and it moves forward 1 number. Starting from 3, just count up 1 number. Which number will the dot land on?",
+      "correct_answer": "C"
+    },
+    {
+      "seed": 55,
+      "question_text": "The two parts are 1 and 12. What is the sum?",
+      "correct_answer": 13
+    },
+    {
+      "seed": 82,
+      "question_text": "Dante says: 2 + 2 = 4. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 4
+      }
+    },
+    {
+      "seed": 86,
+      "question_text": "0 + 7 = 17. True or False?",
+      "correct_answer": false
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency demands illustrating addition as 'counting up' on the number line, yet seed 42 is a bare 'What is 24 + 0?' and seeds 44/45 are counting-sequence items ('446, 447, 448, 449, ___'). No number line or jump appears, and seed 43's '0 + 6' is not even a 2-digit plus 1-digit sum."
+      "rationale": "Only seed 51 ('The dot is at 3 and it moves forward 1 number... land on?') shows counting up on a number line; seed 42 ('What is 15 + 10?') and seed 82 ('Dante says: 2 + 2 = 4') are bare facts with no counting-up or number-line framing at all."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The defining case - bridging a ten while counting up, e.g. 27 + 5 crossing into the 30s - never appears. Every addition sample uses 0 as one addend (24 + 0, 0 + 6, 0 + 14), so no genuine counting-up of one or more steps is ever demonstrated."
+      "rationale": "The competency's core sub-case, counting up on a number line, renders in only 1 of 10 samples (seed 51); the other 9 substitute bare addition facts, an unrelated sequence ('446, 447, 448, 449, ___') and unrelated ordering ('538, 537, 540, 539')."
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "Seed 46 ('0 + 14 = ___') offers option D with value -14; negative integers are outside Grade 2 MATATAG scope entirely and must not appear as a choice. Seeds 44 and 45 also push 3-digit counting (446-450, 306-310) into a 2-digit-plus-1-digit competency."
+      "verdict": "CONCERN",
+      "rationale": "Sentence structure is simple grade-2 reading level, but seed 44 and seed 45 demand recognizing a hundreds-boundary crossing (449 to 450, 309 to 310), a heavier reasoning step than the 'counting up' by a single digit the competency names."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "There is no number-line illustration, no story context such as 'Ana had 24 shells and found 5 more', and no start-unknown or jump-size-unknown variant. The packet only shows plain sums with a zero addend plus next-number-in-sequence items."
+      "rationale": "Formatter names vary (mcq, cloze, ordering, true_false) but the substantive variation is spent on off-topic sequence and ordering tasks like 'Arrange these numbers from largest to smallest: 538, 537, 540, 539' rather than counting-up variants."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Difficulty moves from 24 + 0 straight to a 306-310 counting sequence, which is a different skill from representing addition as forward hops. Nothing in the ordering of seeds 42 through 46 builds toward counting up on a number line."
+      "rationale": "Seeds 44, 45 and 50 build 3-digit sequencing/ordering skill ('306, 307, 308, 309, ___' and '538, 537, 540, 539'), an axis unrelated to illustrating 2-digit-plus-1-digit addition as counting up on a number line."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "Operands should stay within a 2-digit number plus a 1-digit number, but seed 44 operates at 446-450 and seed 45 at 306-310, three-digit territory far above the operand size this competency names."
+      "rationale": "The competency specifies 2-digit and 1-digit addends, yet seed 43 uses two 1-digit addends ('What is 1 + 3?') and seeds 44/45/50 use 3-digit numbers (446-450, 306-310, 538-540) entirely outside the addition-fact scope."
     }
   },
   "overall": "FAIL"

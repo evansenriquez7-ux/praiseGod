@@ -1,66 +1,43 @@
 {
   "node_id": "mat_g1_na_q1_9",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 0, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 72],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "There are 0 resin in one basket and 3 resin in another basket. How many resin are there in all?",
-      "correct_answer": 3
-    },
-    {
-      "seed": 43,
-      "question_text": "Start at 0. Count up 2 more. What number do you land on?",
-      "correct_answer": 2
-    },
-    {
-      "seed": 44,
-      "question_text": "Lara has 2 ribbons. A friend has 1 ribbon. If they put all their ribbons together, how many ribbons do they have in all?",
-      "correct_answer": 3
-    },
-    {
-      "seed": 45,
-      "question_text": "One basket has 1 water bottles. Another basket has 2 water bottles. If you put all the water bottles together, how many water bottles are there?",
-      "correct_answer": 3
-    },
-    {
-      "seed": 46,
-      "question_text": "Start at 0. Count up 3 more. What number do you land on?",
-      "correct_answer": 3
-    }
+    {"seed": 42, "question_text": "There are 2 resin in one basket and 1 resin in another basket. How many resin are there in all?", "correct_answer": 3},
+    {"seed": 43, "question_text": "Start at 1. Count up 1 more. What number do you land on?", "correct_answer": 2},
+    {"seed": 44, "question_text": "Lara has 1 ribbon. A friend has 2 ribbons. If they put all their ribbons together, how many ribbons do they have in all?", "correct_answer": 3},
+    {"seed": 45, "question_text": "One basket has 1 water bottles. Another basket has 2 water bottles. If you put all the water bottles together, how many water bottles are there?", "correct_answer": 3},
+    {"seed": 46, "question_text": "Start at 1. Count up 1 more. What number do you land on?", "correct_answer": 2},
+    {"seed": 50, "question_text": "Jose solved this problem: \"Mia has 1 merchandise shirts. A friend has 2 merchandise shirts. If they put all their merchandise shirts together, how many merchandise shirts do they have in all?\" Jose says the answer is 3. Is Jose correct?", "correct_answer": {"has_error": false, "correct_value": 3}},
+    {"seed": 55, "question_text": "🐸 — There is 1 frog.\n🐸 — 1 more frog is added.\nHow many total frogs are there?", "correct_answer": "D"},
+    {"seed": 72, "question_text": "Start at 1. Count up 1 more. What number do you land on? The answer is 2.. True or False?", "correct_answer": true}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Word-problem framing is present ('There are 0 resin in one basket and 3 resin in another basket...'), matching 'solve problems...involving addition', but every sum shown is 2 or 3, far under the 'sums up to 20' ceiling."
+      "verdict": "PASS",
+      "rationale": "Both delivery modes the competency's parenthetical names are present: an oral-style word problem at seed 44, 'Lara has 1 ribbon. A friend has 2 ribbons... how many ribbons do they have in all?', and a pictorial problem at seed 55 built from frog emoji, both posing genuine addition-in-context questions."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Multiple contexts appear (baskets of resin, counting-on number line, ribbons, water bottles), giving genuine narrative variety rather than one repeated scenario."
+      "rationale": "The 'given orally' narrative sub-case (baskets of resin, ribbons, water bottles, merchandise shirts) and the 'in pictures' sub-case (seed 55's frog-emoji row) both appear across the eight samples, matching both halves of the competency's parenthetical scope."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "'One basket has 1 water bottles' has a singular/plural grammar mismatch that could confuse an early Grade 1 reader; otherwise sentence length is appropriate."
+      "rationale": "Seed 45 reads 'One basket has 1 water bottles. Another basket has 2 water bottles...', a singular/plural grammar mismatch, and seed 50's 'merchandise shirts' phrasing is stilted for a Grade 1 word problem, both of which could confuse an early reader even though sentence length itself stays short."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Both a 'count up' number-line framing (seed 43) and 'put together' basket/ribbon framings (seeds 42,44,45) are represented, covering more than one addition model."
+      "rationale": "Distinct framings appear across the eight seeds: object word problems (resin at seed 42, ribbons at seed 44), a 'counting up' number-line narration (seeds 43, 46, 72), a pictorial frog-emoji model (seed 55), and an error-detection format (seed 50)."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample is phrased as a real narrative scenario ending in a question, matching the word_problem/pictorial_problem concepts this node introduces."
+      "rationale": "Every sample, from the basket word problem at seed 42 to the frog-emoji visual at seed 55, is a genuine addition-in-context scenario ending in a question, directly matching 'solve problems... involving addition'."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Sums across all 5 seeds are 2 or 3; the competency's 'sums up to 20' is never meaningfully exercised in this batch, e.g. no sample sums to double digits."
+      "verdict": "FAIL",
+      "rationale": "Every sum produced across all eight samples is at most 3 (e.g. seed 42's 2 resin plus 1 resin, seed 55's 1 frog plus 1 more frog), so the competency's stated ceiling of sums up to 20 is never approached anywhere in this packet."
     }
   },
   "overall": "CONCERN"

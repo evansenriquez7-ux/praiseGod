@@ -1,41 +1,42 @@
 {
   "node_id": "mat_g2_mg_q1_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, fix-verification batch",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 3, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {"seed": 42, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": 2},
-    {"seed": 43, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": 2},
-    {"seed": 44, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": 2},
-    {"seed": 45, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": 2},
-    {"seed": 46, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": 2}
+    {"seed": 42, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": "2"},
+    {"seed": 43, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": "2"},
+    {"seed": 44, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": "2"},
+    {"seed": 45, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": "2"},
+    {"seed": 46, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": "2"},
+    {"seed": 50, "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?", "correct_answer": "B"}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency requires composing AND decomposing figures built from six shape types (squares, rectangles, triangles, circles, half circles, quarter circles) via cut-outs and square grids, but the only visible pattern -- counting shapes in a fixed rectangle-plus-triangle figure -- exercises just the decompose-by-counting slice and never shows circles, half/quarter-circles, cut-outs, or square-grid framing."
+      "verdict": "FAIL",
+      "rationale": "All 6 samples use the identical stem 'A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?', which only exercises decomposition-by-counting of a fixed 2-shape figure; 'compose' is never tested and circles, half circles, or quarter circles named in the competency never appear."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "All 5 sampled seeds (42 through 46) returned the exact byte-identical question 'A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?' with answer 2 every time, despite a registered shapes_2d space of 3 axes and 24 combos -- a genuine low-diversity signal, not just a thin illustrative subset."
+      "verdict": "FAIL",
+      "rationale": "The question_text is byte-for-byte identical across all 6 seeds (42, 43, 44, 45, 46, 50); only which answer key (A-D) holds the value '2' changes, so no other composite figure, shape combination, or shape count is ever generated."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The two sentences making up the prompt run about 12 and 7 words respectively, comfortably inside the Grade 2 Quarter 1 18-word cap, so reading load itself is appropriate even though sample variety is the problem here, not sentence length."
+      "verdict": "CONCERN",
+      "rationale": "The single repeated sentence is simple enough for Grade 2, but its total invariance across all 6 seeds means the item never shows whether students can reason about figures with more than two parts or with curved pieces."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "A 24-combo registry ought to rotate through different shape pairings (squares with triangles, circles with rectangles, and so on) and both compose and decompose directions, but since every one of 5 seeds returned the identical rectangle-triangle pairing, that breadth cannot be confirmed from the evidence given."
+      "verdict": "FAIL",
+      "rationale": "There is no cut-outs framing, no square-grid framing, and no composition task anywhere in the 6 samples; every seed is the same 'rectangle with a triangle on top' decomposition-counting question in mcq or read_mcq dress."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The single visible question type addresses only the 'decompose by counting parts' slice of a competency that explicitly names six shape types and two operations (compose and decompose) plus two tools (cut-outs, square grids), so alignment is partial rather than the full scope of this node's wording."
+      "verdict": "FAIL",
+      "rationale": "The only variation across seeds 42-50 is which answer key (A-D) holds the correct value '2', which tests MCQ-option scanning rather than composing or decomposing figures made of squares, rectangles, triangles, circles, half circles, or quarter circles."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Content here is discrete shape-counting (2 shapes making up a figure), not a continuous numeric range, so scale/magnitude is not the concern for this node -- the concern lies in sample diversity instead."
+      "verdict": "FAIL",
+      "rationale": "The figure always has exactly 2 component shapes (one rectangle, one triangle) across all 6 seeds; the competency's implied range of composite complexity involving up to six named shape types is never scaled up."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

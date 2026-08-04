@@ -1,89 +1,41 @@
 {
   "node_id": "mat_g2_na_q1_4",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 4, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Arrange these numbers from smallest to largest: 29, 16, 21",
-      "correct_answer": [
-        16,
-        21,
-        29
-      ]
-    },
-    {
-      "seed": 43,
-      "question_text": "Arrange these numbers from smallest to largest: 62, 30, 25",
-      "correct_answer": [
-        25,
-        30,
-        62
-      ]
-    },
-    {
-      "seed": 44,
-      "question_text": "Arrange these numbers from smallest to largest: 33, 38, 37, 26, 24",
-      "correct_answer": [
-        24,
-        26,
-        33,
-        37,
-        38
-      ]
-    },
-    {
-      "seed": 45,
-      "question_text": "Arrange these numbers from smallest to largest: 36, 29, 23, 34",
-      "correct_answer": [
-        23,
-        29,
-        34,
-        36
-      ]
-    },
-    {
-      "seed": 46,
-      "question_text": "Arrange these numbers from smallest to largest: 33, 22, 38",
-      "correct_answer": [
-        22,
-        33,
-        38
-      ]
-    }
+    {"seed": 42, "question_text": "Arrange these numbers from smallest to largest: 29, 16, 21", "correct_answer": [16, 21, 29]},
+    {"seed": 43, "question_text": "Arrange these numbers from smallest to largest: 62, 30, 25", "correct_answer": [25, 30, 62]},
+    {"seed": 44, "question_text": "Arrange these numbers from smallest to largest: 33, 38, 37, 26, 24", "correct_answer": [24, 26, 33, 37, 38]},
+    {"seed": 45, "question_text": "Arrange these numbers from smallest to largest: 36, 29, 23, 34", "correct_answer": [23, 29, 34, 36]},
+    {"seed": 46, "question_text": "Arrange these numbers from smallest to largest: 33, 22, 38", "correct_answer": [22, 33, 38]},
+    {"seed": 50, "question_text": "Arrange these numbers from smallest to largest: 28, 36, 41, 29, 32", "correct_answer": [28, 29, 32, 36, 41]}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Ordering sets like '33, 38, 37, 26, 24 -> 24, 26, 33, 37, 38' with five items is a good structural match to the ordering skill, but values never leave the two-digit range."
+      "verdict": "FAIL",
+      "rationale": "The competency explicitly requires ordering 'from smallest to largest, and vice versa,' but every one of the 6 samples (seeds 42-46, 50) uses only the instruction 'Arrange these numbers from smallest to largest' -- the largest-to-smallest direction never appears in this node's own packet."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "List length varies meaningfully (3, 4, and 5-item lists appear across seeds 42-46), giving structural diversity beyond a fixed triple."
+      "verdict": "FAIL",
+      "rationale": "The 'vice versa' sub-case named in the competency text is 0 for 6: not one of seeds 42, 43, 44, 45, 46, or 50 asks the student to order from largest to smallest, even though set sizes vary from 3 to 5 numbers."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The instruction wording is unchanged from the Grade 1 node and remains readable for Grade 2 Q1 students."
+      "rationale": "Sets of 3-5 two-digit numbers, e.g. '33, 38, 37, 26, 24' in seed 44, fit grade 2 quarter 1 ordering demand without excess cognitive load."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The 5-item list in seed 44 (33,38,37,26,24) shows the tool can scale list length, a meaningful variant beyond the fixed 3-item lists seen in earlier grade nodes."
+      "verdict": "CONCERN",
+      "rationale": "List size genuinely varies (3 numbers in seed 42, 5 numbers in seed 44) and formatter varies (ordering vs sort_order in seed 50), but the ordering direction never varies across any sample."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Each sample is a genuine smallest-to-largest ordering exercise, matching 'Order numbers up to 1000' in task structure."
+      "rationale": "Where tested, correctly ordering '28, 36, 41, 29, 32' into '28, 29, 32, 36, 41' (seed 50) directly targets this competency's smallest-to-largest ordering skill."
     },
     "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "The maximum value across all 5 samples is 62; a competency scoped to 'up to 1000' never gets a single sample into the hundreds, let alone near 1000."
+      "verdict": "CONCERN",
+      "rationale": "The competency ceiling is 1000, but the highest number across all 6 samples is 62 (seed 43); every sample stays two-digit, with nothing approaching the hundreds."
     }
   },
   "overall": "FAIL"

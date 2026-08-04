@@ -1,66 +1,44 @@
 {
   "node_id": "mat_g2_na_q2_4",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 4, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 75, 82],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 30 − 3?",
-      "correct_answer": 27
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 20 − 1?",
-      "correct_answer": 19
-    },
-    {
-      "seed": 44,
-      "question_text": "60 − 51 = ___",
-      "correct_answer": 9
-    },
-    {
-      "seed": 45,
-      "question_text": "60 − 2 = ___",
-      "correct_answer": 58
-    },
-    {
-      "seed": 46,
-      "question_text": "20 − 15 = ___",
-      "correct_answer": 5
-    }
+    {"seed": 42, "question_text": "What is 30 − 3?", "correct_answer": 27},
+    {"seed": 43, "question_text": "What is 20 − 1?", "correct_answer": 19},
+    {"seed": 44, "question_text": "60 − 51 = ___", "correct_answer": 9},
+    {"seed": 45, "question_text": "60 − 2 = ___", "correct_answer": 58},
+    {"seed": 46, "question_text": "20 − 15 = ___", "correct_answer": 5},
+    {"seed": 50, "question_text": "The total is 90 and one part is 18. What is the other part?", "correct_answer": 72},
+    {"seed": 51, "question_text": "The dot is at 50 and it moves backward 1 number. Starting from 50, just count back 1 number. Which number will the dot land on?", "correct_answer": "C"},
+    {"seed": 75, "question_text": "90 − 2 = 92. True or False?", "correct_answer": false},
+    {"seed": 82, "question_text": "Dante says: 30 − 14 = 16. Is Dante correct?", "correct_answer": {"has_error": false, "correct_value": 16}}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "All five samples subtract within the stated bounds (numbers under 100, e.g. 30-3, 60-51, 20-15) and include genuine regrouping cases like 30-3 (borrowing across the tens digit) and 60-51, matching the competency's 2-digit-minus-1-digit and 2-digit-minus-2-digit framing."
+      "rationale": "Both named sub-cases are exercised with genuine regrouping: 2-digit-minus-1-digit at seeds 42 (30−3, borrows across the tens digit), 43 (20−1), and 45 (60−2); 2-digit-minus-2-digit at seeds 44 (60−51), 46 (20−15), and 82 (30−14)."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "subtraction registers 3 axes with 12 combos, and the 5 samples already show a spread of regrouping and non-regrouping cases within that space; exhaustive combo execution is separately validated by validate_matrix."
+      "rationale": "Both named operand shapes are represented in reasonable balance: five 2-digit-minus-1-digit items (42, 43, 45, 51, 75) and four 2-digit-minus-2-digit items (44, 46, 50, 82), each requiring a borrow across the tens digit."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Stems such as '60 minus 51 = ___' are minimal length, well under the 18-word cap, and represent a single borrow-and-subtract step appropriate for grade 2 quarter 2."
+      "rationale": "Stems such as '60 − 51 = ___' and the part-part-whole framing of seed 50 ('The total is 90 and one part is 18') are single-step and appropriate for grade 2 quarter 2 regrouping practice."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The 12-combo subtraction registry plausibly covers both 2-digit-minus-1-digit and 2-digit-minus-2-digit item shapes with and without regrouping, both represented across the 5 samples shown, e.g. 30-3 vs 60-51."
+      "rationale": "Formats genuinely differ: mcq, cloze, read_fill_in_blank (part-part-whole), read_mcq (number line hop backward in seed 51), true_false, and error_detect all appear across the 9 samples."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty here (numbers under 100, explicit regrouping) sits exactly one step past the number-line/inverse framing of q2_3, matching the intended progression from illustrating subtraction to executing it with borrowing."
+      "rationale": "Every sample requires borrowing given the digit values involved (e.g. seed 43's 20−1 needs a ten borrowed for the ones place), correctly targeting the 'with regrouping' skill this competency names rather than trivial no-carry subtraction."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All observed minuends and subtrahends stay under 100 (30, 20, 60, 60, 20) as the competency requires, with no overshoot into 3-digit territory."
+      "rationale": "Every operand across all 9 samples stays under 100 as required (largest is 90 in seed 50), correctly matching the competency's 'less than 100' ceiling."
     }
   },
   "overall": "PASS"

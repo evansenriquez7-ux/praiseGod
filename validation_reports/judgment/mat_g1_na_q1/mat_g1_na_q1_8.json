@@ -1,67 +1,45 @@
 {
   "node_id": "mat_g1_na_q1_8",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 0",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 0, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 84, 85],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 0 + 3?",
-      "correct_answer": 3
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 0 + 2?",
-      "correct_answer": 2
-    },
-    {
-      "seed": 44,
-      "question_text": "2 + 1 = 3. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 45,
-      "question_text": "1 + 2 = ___",
-      "correct_answer": 3
-    },
-    {
-      "seed": 46,
-      "question_text": "0 + 3 = ___",
-      "correct_answer": 3
-    }
+    {"seed": 42, "question_text": "What is 2 + 1?", "correct_answer": 3},
+    {"seed": 43, "question_text": "What is 1 + 1?", "correct_answer": 2},
+    {"seed": 44, "question_text": "1 + 2 = 3. True or False?", "correct_answer": true},
+    {"seed": 45, "question_text": "1 + 2 = ___", "correct_answer": 3},
+    {"seed": 46, "question_text": "1 + 1 = ___", "correct_answer": 2},
+    {"seed": 50, "question_text": "Show 1 + 2 on the number line.", "correct_answer": 3},
+    {"seed": 55, "question_text": "How many items are there in total?", "correct_answer": "D"},
+    {"seed": 84, "question_text": "The two parts are 2 and 1. What is the sum?", "correct_answer": 3},
+    {"seed": 85, "question_text": "Maria says: 1 + 1 = 1. Is Maria correct?", "correct_answer": {"has_error": true, "correct_value": 2}}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples directly demonstrate both named properties: '0 + 3 = 3' and '0 + 2 = 2' show the zero-identity property, while '2 + 1 = 3' (seed 44) and '1 + 2 = ___' (seed 45) form a genuine commuted pair confirming order-invariance of the sum."
+      "verdict": "FAIL",
+      "rationale": "Neither property the competency names is directly illustrated: no sample uses 0 as an addend, and no sample pairs an addend order-swap for comparison; seed 44's '1 + 2 = 3' and seed 46's '1 + 1 = ___' are generic facts with no zero-identity or commutativity framing attached to them."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "addition registers 8 combos across 4 axes; the pairing of a fact and its commuted reverse within just five samples suggests the registry is structured to exercise the commutative property specifically."
+      "verdict": "FAIL",
+      "rationale": "Of the two properties this competency names -- adding zero leaves a number unchanged, and swapping addend order preserves the sum -- zero as an operand never appears across all nine samples, and no sample poses a direct 'is a+b the same as b+a' comparison."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Prompts like '4 + 0 = 4. True or False?' are six words, well under the cap, and the true/false format is developmentally appropriate for verifying a stated property at Grade 1."
+      "rationale": "Stems such as seed 44's six-word '1 + 2 = 3. True or False?' are short and clearly worded for Grade 1 Quarter 1 verification tasks."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Seeing both the identity example (add zero) and a commuted addend pair within five samples indicates the variant space deliberately covers the two named properties rather than generic addition facts."
+      "verdict": "FAIL",
+      "rationale": "Six rendering formats appear (mcq, true_false, cloze, number line, item-count visual, error-detection at seeds 42-85), but none of them instantiates either named property as a distinct task shape -- there is no zero-addend item and no order-swap comparison item anywhere in the packet."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The difficulty stays at single-digit addends, appropriate for illustrating a property conceptually rather than testing computational fluency at the sum-20 ceiling, matching the competency's focus on 'illustrate... properties' over raw computation."
+      "verdict": "FAIL",
+      "rationale": "Eight of the nine samples are word-for-word identical in content to the sibling addition node mat_g1_na_q1_7's packet at the same seeds (e.g. seed 42's 'What is 2 + 1?' and seed 85's Maria error-check both render verbatim the same way), showing the variation reflects a shared generic-addition pool rather than this node's zero/commutative properties."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Small sums (2-3) are pedagogically sensible here since the goal is to make the property visible and verifiable, not to stress-test large-number addition."
+      "verdict": "FAIL",
+      "rationale": "Every sum across the nine samples tops out at 3 (e.g. seed 42's '2 + 1', seed 84's parts '2 and 1'), far short of the competency's stated ceiling of 20, so even a correct property illustration would have no room to show a nontrivial case."
     }
   },
-  "overall": "PASS"
+  "overall": "FAIL"
 }

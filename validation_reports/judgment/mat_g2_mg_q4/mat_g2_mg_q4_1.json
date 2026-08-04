@@ -1,55 +1,41 @@
 {
   "node_id": "mat_g2_mg_q4_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 3",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 3, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    44,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What time does the clock show?",
-      "correct_answer": "C"
-    },
-    {
-      "seed": 44,
-      "question_text": "Set the clock to show 7:00.",
-      "correct_answer": "7:00"
-    },
-    {
-      "seed": 46,
-      "question_text": "What time does the clock show?",
-      "correct_answer": "B"
-    }
+    {"seed": 42, "question_text": "What time does the clock show?", "correct_answer": "C"},
+    {"seed": 43, "question_text": "What time does the clock show?", "correct_answer": "A"},
+    {"seed": 44, "question_text": "Set the clock to show 7:00.", "correct_answer": "7:00"},
+    {"seed": 45, "question_text": "What time does the clock show?", "correct_answer": "C"},
+    {"seed": 46, "question_text": "What time does the clock show?", "correct_answer": "B"}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "4 of 5 samples directly test reading an analog clock ('What time does the clock show?') and one tests writing/setting a time ('Set the clock to show 7:00.'), which squarely matches 'Read and write time in hours and minutes ... using an analog clock.'"
+      "verdict": "CONCERN",
+      "rationale": "Reading exact-hour times ('What time does the clock show?' answering 11:00, 1:00, 5:00, 2:00) and setting a clock (seed 44's 'Set the clock to show 7:00.') both test analog-clock literacy, but neither 'minutes' nor 'a.m./p.m.' named in the competency is ever produced."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "time_reading registers 20 combos across 3 axes for this node; my 5 samples are illustrative only, with exhaustive combo execution handled separately by validate_matrix."
+      "verdict": "FAIL",
+      "rationale": "Every correct answer across all 5 seeds (11:00, 1:00, 7:00, 5:00, 2:00) is an exact o'clock time; no sample shows a non-zero minute value and none labels a time as a.m. or p.m., despite both being named in the competency text."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Both stems ('What time does the clock show?', 'Set the clock to show 7:00.') are short, concrete, and well under the 18-word cap, matching grade 2 quarter 4 reading level for a clock-based task."
+      "rationale": "The vocabulary and single-step 'read/set the clock' task, such as 'Set the clock to show 7:00.', are well matched to Grade 2 Quarter 4 reasoning demands."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "The competency explicitly names 'a.m. and p.m.', a vocab term this node itself introduces, but none of the 5 sampled question texts mentions a.m./p.m. at all, leaving that half of the lc unverified even if it's handled visually on the clock face."
+      "rationale": "read_mcq (4 seeds) and set_fill_in_blank (1 seed) formatters both appear, but they wrap the identical exact-hour task; there is no minute-reading or a.m./p.m.-labeling variant across the 5 seeds."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Reading and setting clock times is exactly the read/write pairing this lc asks for, and the items don't reach into elapsed-time computation, which correctly stays reserved for the later lc mat_g2_mg_q4_2."
+      "verdict": "CONCERN",
+      "rationale": "The variation across seeds is only which hour is shown (11, 1, 7, 5, 2), not a progression toward the minute-hand or a.m./p.m. discrimination the competency specifically calls for."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "A single whole-hour target (7:00) is a sensible easy anchor point for the 'set the clock' task, appropriate as part of a progression that should also include minute-level times per the lc's 'hours and minutes' wording."
+      "verdict": "FAIL",
+      "rationale": "The full stated scope is 'hours and minutes, with a.m. and p.m.'; restricting every sample to whole hours only covers roughly a third of that named scope and omits the minute and period distinction entirely."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

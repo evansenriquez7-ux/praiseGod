@@ -1,66 +1,81 @@
 {
   "node_id": "mat_g2_na_q2_7",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 2, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    55
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "In a pictograph, Daniel's group collected 473 coins and another group collected 60 coins. How many more did Daniel's group collect?",
-      "correct_answer": 413
+      "question_text": "In a pictograph, Daniel's group collected 48 coins and another group collected 20 coins. How many more did Daniel's group collect?",
+      "correct_answer": 28
     },
     {
       "seed": 43,
-      "question_text": "In a pictograph, Kuya Bien's group collected 11 story chapters and another group collected 11 story chapters. How many more did Kuya Bien's group collect?",
+      "question_text": "In a pictograph, Kuya Bien's group collected 10 story chapters and another group collected 10 story chapters. How many more did Kuya Bien's group collect?",
       "correct_answer": 0
     },
     {
       "seed": 44,
-      "question_text": "A class survey showed 661 students like costume sash and 120 students like wristband. How many students were surveyed in all?",
-      "correct_answer": 781
+      "question_text": "A class survey showed 0 students like costume sash and ___ students like wristband. How many students were surveyed in all?",
+      "correct_answer": 605
     },
     {
       "seed": 45,
-      "question_text": "What is 822 + 15?",
-      "correct_answer": 837
+      "question_text": "What is 440 + 40?",
+      "correct_answer": 480
     },
     {
       "seed": 46,
-      "question_text": "In a pictograph, Ate Cara's group collected 416 photo albums and another group collected 0 photo albums. How many more did Ate Cara's group collect?",
-      "correct_answer": 416
+      "question_text": "In a pictograph, Ate Cara's group collected 666 photo albums and another group collected 0 photo albums. How many more did Ate Cara's group collect?",
+      "correct_answer": 666
+    },
+    {
+      "seed": 50,
+      "question_text": "A class survey showed 22 students like fan shirt and 315 students like tote bag. How many students were surveyed in all? The answer is 336.. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
+      "question_text": "Grace solved this problem: \"In a pictograph, Sora's group collected 3 concert tickets and another group collected 0 concert tickets. How many more did Sora's group collect?\" Grace says the answer is 2. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 3
+      }
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Seed 44 ('A class survey showed 661...232 total') and seed 45 ('What is 822 + 15?') are pure ADDITION problems, but this competency is specifically about SUBTRACTION -- 2 of 5 samples test the wrong operation entirely."
+      "rationale": "Seed 45 ('What is 440 + 40?') and seed 50 ('...How many students were surveyed in all? The answer is 336..') are literal addition problems inside a node whose competency is exclusively about subtraction."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "None of the 5 samples includes a peso amount despite the competency explicitly saying 'including problems involving money'; every sample is either a pictograph count or a bare number fact."
+      "rationale": "Neither of the competency's explicit sub-cases appears once: no sample is a 2-step problem (all 7 are single computations) and no sample involves money, despite '1- and 2-step' and 'involving money' both being named directly."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Sentence structures like 'In a pictograph, Daniel's group collected 473 coins...how many more' are readable and appropriately concrete for Grade 2 Q2."
+      "verdict": "FAIL",
+      "rationale": "Seed 44's stem reads 'A class survey showed 0 students like costume sash and ___ students like wristband,' leaving an unfilled template blank in the rendered question text that a grade-2 student cannot parse as written."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "No sample demonstrates a genuine 2-step subtraction chain (e.g. subtract twice or subtract-then-add), which the competency's '1- and 2-step' wording implies should be tested."
+      "verdict": "FAIL",
+      "rationale": "Formatter names vary (mcq, cloze, true_false, error_detect) but the substantive contextual variants the competency requires, a money problem and a 2-step problem, never occur across any of the 7 samples."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "The competency text is explicitly about subtraction, but seeds 44 and 45 render addition word problems with no subtraction at all, a direct mismatch to the node's stated skill."
+      "rationale": "Seed 45 asks a bare addition fact ('What is 440 + 40?') and seed 50 asks a 'how many surveyed in all' addition total, both building the addition operation rather than the subtraction this node is scoped to."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Values like 473 and 822 stay safely under the stated 1000 ceiling, an appropriate magnitude for Grade 2 Q2 regardless of the operation-mismatch issue above."
+      "verdict": "FAIL",
+      "rationale": "Because 3 of 7 samples are actually addition rather than subtraction, and none involve money or two steps as required, the rendered set cannot be said to cover the competency's subtraction scale at all."
     }
   },
   "overall": "FAIL"

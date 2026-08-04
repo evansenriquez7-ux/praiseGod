@@ -1,67 +1,94 @@
 {
   "node_id": "mat_g2_na_q2_6",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 2",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 2, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    51,
+    55,
+    85
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "What is 473 − 60?",
-      "correct_answer": 413
+      "question_text": "What is 48 − 20?",
+      "correct_answer": 28
     },
     {
       "seed": 43,
-      "question_text": "What is 11 − 11?",
+      "question_text": "What is 10 − 10?",
       "correct_answer": 0
     },
     {
       "seed": 44,
-      "question_text": "4 − 2 = ___",
-      "correct_answer": 2
+      "question_text": "610 − 410 = ___",
+      "correct_answer": 200
     },
     {
       "seed": 45,
-      "question_text": "2 − 1 = ___",
-      "correct_answer": 1
+      "question_text": "44 − 10 = ___",
+      "correct_answer": 34
     },
     {
       "seed": 46,
-      "question_text": "What is 416 − 0?",
-      "correct_answer": 416
+      "question_text": "What is 666 − 0?",
+      "correct_answer": 666
+    },
+    {
+      "seed": 50,
+      "question_text": "The dot is at 575 and it moves backward 240 numbers. Starting from 575, just count back 240 numbers. Which number will the dot land on?",
+      "correct_answer": "B"
+    },
+    {
+      "seed": 51,
+      "question_text": "Ana says: 96 − 60 = 156. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 36
+      }
+    },
+    {
+      "seed": 55,
+      "question_text": "The two parts are 3 and 0. What is the sum?",
+      "correct_answer": 3
+    },
+    {
+      "seed": 85,
+      "question_text": "265 − 210 = 55. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The competency simply asks students to subtract numbers under 1000 with or without regrouping, and the samples (473-60=413, 11-11=0, 416-0=416) directly exercise 3-digit subtraction at varying regrouping difficulty, matching the stated scope without the narrative/context requirements later nodes add."
+      "verdict": "CONCERN",
+      "rationale": "8 of 9 samples are genuine subtraction (e.g. seed 44's '610 − 410 = ___'), but seed 55 breaks the subtraction verb entirely, asking 'The two parts are 3 and 0. What is the sum?' inside a subtraction-only node."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "subtraction registers 3 axes with 12 combos, and the samples already show both 3-digit (473-60) and small-number (4-2) cases spanning much of that range; validate_matrix separately confirms exhaustive combo execution."
+      "verdict": "FAIL",
+      "rationale": "No sample among the 9 requires regrouping: seed 44's 610-410=200 and seed 51's 96-60=36 both subtract digit-by-digit without a borrow, leaving the competency's 'with ... regrouping' clause completely uncovered."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Stems are minimal ('4 minus 2 = ___') and well under the 18-word cap; this node correctly keeps sentence complexity flat while raising numeric magnitude, appropriate for grade 2 quarter 2."
+      "rationale": "Numeral-only equations (seed 45's '44 − 10 = ___') and the number-line jump in seed 50 ('The dot is at 575 and it moves backward 240 numbers') match grade-2 quarter-2 reasoning load without excess complexity."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The observed spread from single-digit (4-2) to 3-digit (473-60, 416-0) subtraction plausibly exercises the full sub-1000 range the competency requires across the 12 registered combos."
+      "rationale": "Bare equations, a number-line countback (seed 50), error_detect (seed 51) and true_false (seed 85) formats give genuine contextual range across the batch."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Unlike q2_3, which overshot its 2-digit-by-1-digit cap, this node's higher magnitudes are actually licensed by its own competency wording ('less than 1000'), so the 3-digit items here are correctly scoped rather than a violation."
+      "verdict": "CONCERN",
+      "rationale": "Seed 55 ('The two parts are 3 and 0. What is the sum?') is an addition part-whole item, not subtraction, so this one sample builds an unrelated operation inside an otherwise on-topic subtraction set."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Minuends range from 2 up to 473, comfortably inside the sub-1000 ceiling this competency states, with no overshoot observed."
+      "rationale": "Values stay under 1000 as required and span a reasonable range from seed 43's 10-10=0 to seed 44's 610-410=200."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

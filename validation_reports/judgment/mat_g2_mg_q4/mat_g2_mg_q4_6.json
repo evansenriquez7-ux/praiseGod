@@ -1,56 +1,42 @@
 {
   "node_id": "mat_g2_mg_q4_6",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-4 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 1, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 68],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "A rectangular garden is 11 cm long and 2 cm wide. How much fencing is needed to go all the way around it?",
-      "correct_answer": 26
-    },
-    {
-      "seed": 44,
-      "question_text": "A class survey showed 661 students like costume sash and 120 students like wristband. How many students were surveyed in all?",
-      "correct_answer": 781
-    },
-    {
-      "seed": 47,
-      "question_text": "What is 900 + 19?",
-      "correct_answer": 919
-    }
+    {"seed": 42, "question_text": "A rectangular garden is 11 cm long and 2 cm wide. How much fencing is needed to go all the way around it?", "correct_answer": 26},
+    {"seed": 43, "question_text": "A rectangular garden is 1 cm long and 5 cm wide. How much fencing is needed to go all the way around it?", "correct_answer": 12},
+    {"seed": 44, "question_text": "A class survey showed 0 students like costume sash and ___ students like wristband. How many students were surveyed in all?", "correct_answer": 605},
+    {"seed": 45, "question_text": "What is 440 + 40?", "correct_answer": 480},
+    {"seed": 46, "question_text": "A rectangular garden is 2 cm long and 7 cm wide. How much fencing is needed to go all the way around it?", "correct_answer": 18},
+    {"seed": 50, "question_text": "A class survey showed 22 students like fan shirt and 315 students like tote bag. How many students were surveyed in all? The answer is 336.. True or False?", "correct_answer": false},
+    {"seed": 68, "question_text": "Rico solved this problem: \"A class survey showed 10 students like USB drive and 822 students like solar toy. How many students were surveyed in all?\" Rico says the answer is 831. Is Rico correct?", "correct_answer": {"has_error": true, "correct_value": 832}}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Only 3 of 7 seeds (42, 43, 46) are genuine perimeter word problems ('rectangular garden ... how much fencing'), all correctly computed as 2*(length+width); the other 4 seeds are generic addition unconnected to any shape or perimeter."
+      "rationale": "Four of seven samples never mention perimeter, a garden, or fencing at all: seed 44's \"A class survey showed 0 students like costume sash and ___ students like wristband. How many students were surveyed in all?\", seed 45's bare \"What is 440 + 40?\", seed 50's fan-shirt/tote-bag survey total, and seed 68's USB-drive/solar-toy survey error-check."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "Seeds 44, 45, 47, 48 render a student-survey addition problem and three bare addition facts ('900 + 19', '210 + 436') with no fence, garden, shape, or perimeter framing at all, despite this being a perimeter-branch node."
+      "rationale": "The three on-topic samples (42, 43, 46) are all 'how much fencing' rectangular-garden problems, e.g. \"A rectangular garden is 2 cm long and 7 cm wide. How much fencing is needed to go all the way around it?\"; the competency's explicitly named 'triangles' and 'squares' perimeter cases never appear anywhere in the packet."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The garden-fencing sentences and the bare addition sentences are each short and grade-2-appropriate in isolation, independent of the topical mismatch found elsewhere."
+      "verdict": "CONCERN",
+      "rationale": "The on-topic fencing problems are well-pitched for Grade 2, but seed 44's text is broken -- \"A class survey showed 0 students like costume sash and ___ students like wristband\" -- leaving a literal, unresolved blank inside the sentence that a student cannot read as a coherent question."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Like its sibling perimeter-computation lc, this node's addition DNA is injecting unrelated survey and bare-fact addition items instead of perimeter word problems that merely use addition as the underlying operation."
+      "rationale": "The apparent variety in the packet is actually two unrelated topics spliced together -- garden-fencing perimeter problems (42, 43, 46) and survey/arithmetic problems (44, 45, 50, 68) -- not legitimate contextual variants of a single perimeter-solving competency, and no triangle or square variant exists among the genuine perimeter items."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "'What is 900 + 19?' and the costume-sash survey problem do not involve triangles, squares, rectangles, or perimeter in any way, directly failing 'solve problems involving perimeter of triangles, squares, and rectangles'."
+      "rationale": "Over half the sample pool (44, 45, 50, 68) builds addition/survey-total skills unrelated to solving perimeter problems for triangles, squares, and rectangles, and even the on-topic subset never varies the shape away from rectangles."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Where perimeter is actually tested, side lengths of 1-11 cm are appropriately scaled for a grade-2 quarter-4 word problem context."
+      "verdict": "CONCERN",
+      "rationale": "The on-topic fencing totals (12 to 26 cm from dimensions like \"11 cm long and 2 cm wide\") are grade-appropriate but use physically tiny 'garden' dimensions (as small as 1 cm), while the contaminating seed 45 injects an unrelated \"What is 440 + 40?\" foreign to this perimeter competency's expected scale."
     }
   },
   "overall": "FAIL"

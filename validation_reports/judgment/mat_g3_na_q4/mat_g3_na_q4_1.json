@@ -1,41 +1,45 @@
 {
   "node_id": "mat_g3_na_q4_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only), 2026-07-30 post-fix re-review batch",
-  "review_date": "2026-07-30",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 4, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 55, 85],
   "samples_reviewed": [
-    {"seed": 42, "question_text": "What is 180 ÷ 6?", "correct_answer": 30},
-    {"seed": 43, "question_text": "What is 30 ÷ 6?", "correct_answer": 5},
-    {"seed": 44, "question_text": "120 ÷ 8 = ___", "correct_answer": 15},
-    {"seed": 45, "question_text": "What is 480 ÷ 6?", "correct_answer": 80},
-    {"seed": 46, "question_text": "What is 90 ÷ 6?", "correct_answer": 15}
+    {"seed": 42, "question_text": "What is 48 ÷ 6?", "correct_answer": 8},
+    {"seed": 43, "question_text": "What is 18 ÷ 6?", "correct_answer": 3},
+    {"seed": 44, "question_text": "72 ÷ 8 = ___", "correct_answer": 9},
+    {"seed": 45, "question_text": "63 ÷ 7 = ___", "correct_answer": 9},
+    {"seed": 46, "question_text": "What is 30 ÷ 6?", "correct_answer": 5},
+    {"seed": 50, "question_text": "Look at the 9×5 array. How many squares are shaded in all?", "correct_answer": "A"},
+    {"seed": 51, "question_text": "Ana says: 49 ÷ 7 = 42. Is Ana correct?", "correct_answer": {"has_error": true, "correct_value": 7}},
+    {"seed": 55, "question_text": "Shade all the squares inside the 6×6 rectangle. How many squares did you shade in all?", "correct_answer": 36},
+    {"seed": 85, "question_text": "28 ÷ 7 = 4. True or False?", "correct_answer": true}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The verb 'divide' is satisfied — every sample is a division sentence ('What is 180 ÷ 6?', '120 ÷ 8 = ___'). But the competency's noun phrase is 'using the 6, 7, 8, and 9 multiplication tables', i.e. recall of basic facts. Only seed 43 ('What is 30 ÷ 6?', answer 5) is an actual table fact. 180 ÷ 6 = 30, 90 ÷ 6 = 15, 120 ÷ 8 = 15 and 480 ÷ 6 = 80 all require quotients (15, 30, 80) far outside any 6/7/8/9 table, so the student is doing multi-digit division by a one-digit divisor rather than the table-based division named here."
+      "rationale": "7 of 9 samples are genuine division facts from the named tables ('What is 48 ÷ 6?', '63 ÷ 7 = ___', '72 ÷ 8 = ___'), but seed 50's '9×5 array' and seed 55's '6×6 rectangle' key their answers to a product (45, 36), not a quotient, so they don't divide at all."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The competency explicitly names four fact families — 6, 7, 8 and 9. Across all five sampled seeds the divisor is 6 four times (180 ÷ 6, 30 ÷ 6, 480 ÷ 6, 90 ÷ 6) and 8 once (120 ÷ 8). The 7 table and the 9 table are never exercised at all, so half the sub-cases the wording enumerates are missing from the sample set, and the 6 table is heavily over-weighted."
+      "rationale": "The competency names four fact families -- 6, 7, 8, and 9 -- and this sample set covers divisor 6 three times (48÷6, 18÷6, 30÷6), 7 three times (63÷7, 49÷7, 28÷7), and 8 once (72÷8), but the 9 table never appears in any of the 9 samples."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Sentence structure and vocabulary are appropriately spare for Grade 3 ('What is 90 ÷ 6?'), and the ÷ symbol with MCQ/cloze presentation is fine for Q4. The reasoning demand, however, drifts past fact recall: 'What is 480 ÷ 6?' (answer 80) and 'What is 180 ÷ 6?' (answer 30) require place-value decomposition or a written long-division procedure, a heavier step than the table recall this competency asks for. Distractors are at least pedagogically sensible (2880 = 480 × 6, 474 = 480 − 6, and 6 = the divisor echoed back)."
+      "verdict": "PASS",
+      "rationale": "Every quotient produced (8, 3, 9, 9, 5, 7, 4) is a single-digit multiplication-table fact, keeping the reasoning demand appropriate for grade 3 quarter 4 rather than requiring long division."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "There is essentially one item template. Four of five samples are identical in shape — 'What is 180 ÷ 6?', 'What is 30 ÷ 6?', 'What is 480 ÷ 6?', 'What is 90 ÷ 6?' — and the fifth is the same computation in a cloze skin ('120 ÷ 8 = ___'). No word-problem context (sharing, grouping, equal rows), no missing-divisor or missing-dividend orientation (e.g. 42 ÷ ___ = 7), and no quotient-as-multiplication-check framing appears anywhere in the set."
+      "verdict": "CONCERN",
+      "rationale": "Formats span mcq, cloze, read_mcq, error_detect, set_fill_in_blank, and true_false, but the read_mcq and set_fill_in_blank instances (seeds 50, 55) are array-counting items, not genuine division-task variants."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The axis that visibly varies across the seeds is dividend magnitude — 30, 90, 120, 180, 480 — while the divisor stays pinned at 6 for four of the five items. Growing the dividend to 480 builds general one-digit-divisor division, not mastery of the 6/7/8/9 tables; the axis that should progress for THIS competency (moving the student across the 6, then 7, then 8, then 9 families) is the one held nearly constant."
+      "rationale": "Seed 50's '9×5 array' (answer 45) and seed 55's '6×6 rectangle' (answer 36) both reward multiplication reasoning rather than division, pulling those two samples onto an axis unrelated to 'divide numbers using the... multiplication tables'."
     },
     "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "The stated ceiling is the 6, 7, 8 and 9 tables, whose facts top out at dividends of 60/70/80/90 (81 for 9 × 9). Four of five sampled dividends breach that ceiling: 90 ÷ 6 (quotient 15), 120 ÷ 8 (quotient 15), 180 ÷ 6 (quotient 30) and especially 480 ÷ 6 (quotient 80). A quotient of 80 appears nowhere in the 6 table, so the numeric range runs well past the competency's scope."
+      "verdict": "PASS",
+      "rationale": "All genuine division quotients (48÷6=8, 18÷6=3, 72÷8=9, 63÷7=9, 30÷6=5, 49÷7=7, 28÷7=4) land within the true 1-9 table-fact range appropriate to the named 6/7/8/9 multiplication tables."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

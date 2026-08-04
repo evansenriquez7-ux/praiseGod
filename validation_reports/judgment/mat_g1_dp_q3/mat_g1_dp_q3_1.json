@@ -1,72 +1,41 @@
 {
   "node_id": "mat_g1_dp_q3_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-4 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 0, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Make a picture graph to show: cats: 1, dogs: 5, birds: 4, fish: 4. Draw one \ud83c\udf4e for each item.",
-      "correct_answer": [
-        1,
-        5,
-        4,
-        4
-      ]
-    },
-    {
-      "seed": 45,
-      "question_text": "Make a picture graph to show: Monday: 7, Tuesday: 8, Wednesday: 5, Thursday: 2. Draw one \ud83c\udf4e for each item.",
-      "correct_answer": [
-        7,
-        8,
-        5,
-        2
-      ]
-    },
-    {
-      "seed": 47,
-      "question_text": "Make a picture graph to show: basketball: 2, volleyball: 7, swimming: 9, running: 8. Draw one \ud83c\udf4e for each item.",
-      "correct_answer": [
-        2,
-        7,
-        9,
-        8
-      ]
-    }
+    {"seed": 42, "question_text": "Make a picture graph to show: cats: 1, dogs: 5, birds: 4, fish: 4. Draw one 🍎 for each item.", "correct_answer": [1, 5, 4, 4]},
+    {"seed": 43, "question_text": "Make a picture graph to show: apples: 5, bananas: 3, mangoes: 8, grapes: 6. Draw one 🍎 for each item.", "correct_answer": [5, 3, 8, 6]},
+    {"seed": 44, "question_text": "Make a picture graph to show: roses: 9, sunflowers: 9, tulips: 2, daisies: 3. Draw one 🍎 for each item.", "correct_answer": [9, 9, 2, 3]},
+    {"seed": 45, "question_text": "Make a picture graph to show: Monday: 7, Tuesday: 8, Wednesday: 5, Thursday: 2. Draw one 🍎 for each item.", "correct_answer": [7, 8, 5, 2]},
+    {"seed": 46, "question_text": "Make a picture graph to show: cats: 7, dogs: 1, birds: 10, fish: 10. Draw one 🍎 for each item.", "correct_answer": [7, 1, 10, 10]}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "'Draw one icon for each item' with an explicit 1-to-1 mapping between given counts and icons drawn is exactly what 'present data in a pictograph without a scale' requires -- no scale factor is introduced anywhere in the 7 samples."
+      "rationale": "The instruction 'Make a picture graph to show: cats: 1, dogs: 5, birds: 4, fish: 4. Draw one apple for each item' establishes an explicit one-icon-per-unit mapping with no scale factor, exactly matching 'present data in a pictograph without a scale'."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The 7 seeds span animals, fruits, flowers, weekday attendance, and sports categories, giving good topical variety while keeping the underlying skill (build a 1-unit-per-icon graph) constant across all seeds."
+      "rationale": "Category domains vary meaningfully across the five seeds -- animals (cats/dogs/birds/fish), fruits (apples/bananas/mangoes/grapes), flowers (roses/sunflowers/tulips/daisies), and weekdays (Monday-Thursday) -- so the pictograph-building task is exercised across distinct real-world subjects rather than one repeated dataset."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The sentence structure ('Make a picture graph to show: X: n, Y: n...') is simple enumerated data appropriate for grade-1 quarter-3 readers, with no multi-clause reasoning required."
+      "verdict": "CONCERN",
+      "rationale": "Seed 45's stem 'Monday: 7, Tuesday: 8, Wednesday: 5, Thursday: 2' gives no noun for what is being counted on each day, unlike the other four seeds where the counted item is explicit (cats, apples, roses), making this an unexplained quantity for a Grade 1 reader."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Category counts range from 1 to 10 across seeds 42-48, giving enough spread that a student would need to actually draw varying icon quantities rather than memorize one fixed pattern."
+      "rationale": "The four-category structure recurs, but the subject domain shifts convincingly between animals, fruit, flowers, and days across seeds 42-46, giving real contextual variety to what is otherwise a fixed pictograph-construction template."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Content is squarely about constructing a no-scale pictograph from given category counts, matching this lc and not bleeding into the scaled-pictograph or table-organizing lcs in the same node."
+      "rationale": "Every seed varies only the category set and the four counts to be graphed, e.g. seed 44's roses:9, sunflowers:9, tulips:2, daisies:3, which is precisely the 'given data, build an unscaled pictograph' skill this lc names."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Counts of 1 to 10 per category are drawable by hand as individual icons by a grade-1 student without becoming tedious or error-prone."
+      "rationale": "Counts to be drawn range from 1, seed 42's cats:1, to 10, seed 46's birds:10 and fish:10, a hand-drawable one-icon-per-unit range appropriate for a Grade 1 no-scale pictograph."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

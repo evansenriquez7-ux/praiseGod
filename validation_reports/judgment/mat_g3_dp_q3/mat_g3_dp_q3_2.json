@@ -1,72 +1,23 @@
 {
   "node_id": "mat_g3_dp_q3_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 5",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 6, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Look at the bar graph. What is the value for dogs?",
-      "correct_answer": "D"
-    },
-    {
-      "seed": 43,
-      "question_text": "Look at the bar graph. What is the value for grapes?",
-      "correct_answer": "B"
-    },
-    {
-      "seed": 44,
-      "question_text": "Create a bar graph to show: Grade 1: 45, Grade 2: 45, Grade 3: 60, Grade 4: 70.",
-      "correct_answer": [
-        45,
-        45,
-        60,
-        70
-      ]
-    },
-    {
-      "seed": 45,
-      "question_text": "Look at the bar graph. What is the value for swimming?",
-      "correct_answer": "D"
-    },
-    {
-      "seed": 46,
-      "question_text": "Look at the bar graph. What is the value for dogs?",
-      "correct_answer": "D"
-    }
+    {"seed": 42, "question_text": "Look at the bar graph. What is the value for dogs?", "correct_answer": "D"},
+    {"seed": 43, "question_text": "Look at the bar graph. What is the value for grapes?", "correct_answer": "B"},
+    {"seed": 44, "question_text": "Create a bar graph to show: Grade 1: 45, Grade 2: 45, Grade 3: 60, Grade 4: 70.", "correct_answer": [45, 45, 60, 70]},
+    {"seed": 45, "question_text": "Look at the bar graph. What is the value for swimming?", "correct_answer": "D"},
+    {"seed": 46, "question_text": "Look at the bar graph. What is the value for dogs?", "correct_answer": "D"}
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Competency: \"Interpret data in tables and single bar graphs (horizontal and vertical).\" Four of five samples correctly ask students to read a value off a bar graph, a direct test of interpretation, matching the competency's core action."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "bar_graphs registers 3 axes / 30 combos for this node, matching q3_1's registry; the 5 samples are illustrative and full combo execution is separately checked by validate_matrix."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Stems are short and consistent, e.g. \"What is the value for grapes?\" at 7 words, well under the 22-word cap and appropriately concrete for a G3 Q3 data-reading task."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The registry's 30 combos plausibly support varied graph orientations and categories for interpretation practice, and the four read-focused samples show reasonable variety in categories asked about."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "This node logically follows q3_1 by shifting from constructing to reading graphs, and most samples reflect that shift, though one construction-style item, \"Create a bar graph to show...\", slightly muddies the boundary with q3_1's competency."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The values referenced (45, 45, 60, 70) are the same evenly-spaced, moderate range as q3_1's, appropriate for consistent difficulty within the same data strand at this grade."
-    }
+    "competency_fulfillment": {"verdict": "CONCERN", "rationale": "Four of five samples correctly test interpretation, e.g. 'Look at the bar graph. What is the value for swimming?', but seed 44's 'Create a bar graph to show: Grade 1: 45, Grade 2: 45, Grade 3: 60, Grade 4: 70.' is a construction task, not an interpretation task, inside this 'interpret' node."},
+    "comprehensive_coverage": {"verdict": "CONCERN", "rationale": "Only bar-graph reading is exercised, with 'Look at the bar graph. What is the value for dogs?' appearing twice (seeds 42 and 46); no sample frames a plain data table to be read, so the 'tables' half of the competency wording is never covered."},
+    "cognitive_capacity": {"verdict": "PASS", "rationale": "Reading a single value off a labeled bar graph, such as identifying that grapes = 15 in seed 43, is a direct, grade-3 quarter-3 appropriate interpretation step."},
+    "variant_comprehensiveness": {"verdict": "CONCERN", "rationale": "The four interpret-type samples all share the identical 'Look at the bar graph. What is the value for X?' template with only the category swapped between dogs, grapes, and swimming, so no comparison-style or multi-step interpretation question appears anywhere."},
+    "competency_alignment": {"verdict": "CONCERN", "rationale": "Seed 44's graph-construction task pulls the node's variation toward the sibling 'present' competency's axis rather than staying purely on 'interpret'."},
+    "scale_appropriateness": {"verdict": "PASS", "rationale": "The read values (5, 15, 25, 60) and the graph-build values (45, 45, 60, 70) both sit within a sensible grade-3 bar-graph range."}
   },
   "overall": "CONCERN"
 }

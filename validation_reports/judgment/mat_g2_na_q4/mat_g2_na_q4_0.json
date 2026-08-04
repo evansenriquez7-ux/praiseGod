@@ -1,30 +1,33 @@
 {
   "node_id": "mat_g2_na_q4_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 3, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    55,
+    72
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/8"
+      "question_text": "A shape is divided into 3 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/3"
     },
     {
       "seed": 43,
-      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/8"
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/2"
     },
     {
       "seed": 44,
-      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/8"
+      "question_text": "A shape is divided into 4 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/4"
     },
     {
       "seed": 45,
@@ -33,35 +36,50 @@
     },
     {
       "seed": 46,
-      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/8"
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/2"
+    },
+    {
+      "seed": 50,
+      "question_text": "What fraction does the model show?",
+      "correct_answer": "B"
+    },
+    {
+      "seed": 55,
+      "question_text": "Shade 1/2 of the shape.",
+      "correct_answer": "1/2"
+    },
+    {
+      "seed": 72,
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/2"
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Seeds 42-46 all ask 'A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?', which exercises the verb 'identify' but never 'represent' - the pupil selects a printed symbol rather than partitioning or shading a region. The key 1/8 is itself correct."
+      "verdict": "PASS",
+      "rationale": "Seed 55's 'Shade 1/2 of the shape' exercises 'represent', while seed 42's 'A shape is divided into 3 equal parts. 1 part is shaded. What fraction...is shaded?' (answer 1/3) exercises 'identify' — both verbs the competency names are directly present."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The wording explicitly names denominators 2, 3, 4, 5, 6 and 8, yet every one of the five seeds (42, 43, 44, 45, 46) fixes the denominator at 8. Halves, thirds, fourths, fifths and sixths are never generated, so five of the six named sub-cases are missing."
+      "verdict": "CONCERN",
+      "rationale": "Denominators 2 (seeds 43/46/55/72), 3 (seed 42), 4 (seed 44) and 8 (seed 45) all appear, but denominators 5 and 6, both explicitly named in the competency's list of 2, 3, 4, 5, 6, 8, never occur in any of the eight samples."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Sentence length and the vocabulary 'equal parts' and 'shaded' suit Grade 2 Quarter 4, but the distractor '8/1' puts an improper fraction greater than one in front of pupils who have only met unit fractions less than one, inviting a misconception this node cannot resolve."
+      "verdict": "PASS",
+      "rationale": "Sentences like seed 44's 'A shape is divided into 4 equal parts. 1 part is shaded.' use short, literal phrasing suited to grade 2 quarter 4."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "All five seeds emit a byte-identical stem; only the A-D option order rotates (the key 1/8 sits at C, A, D, C, then B). There is no area-model versus set-model versus number-line variation and no shaded-versus-unshaded rephrasing anywhere in the sample."
+      "verdict": "PASS",
+      "rationale": "The set covers naming a fraction from a description (seed 42), from a picture (seed 50's 'What fraction does the model show?'), and producing a shaded region from a fraction (seed 55), a good spread of representational directions."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "Because seeds 42 through 46 are the same item with the same answer, there is no progression from an easy denominator such as halves toward eighths. Difficulty is perfectly flat, so repeated practice cannot build unit-fraction understanding across the named denominator set."
+      "verdict": "PASS",
+      "rationale": "Every sample stays on the unit-fraction representation/identification task named by the competency, with no drift into an unrelated computation like addition or comparison."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The distractor '3/16' uses denominator 16, outside this competency's explicit ceiling set of {2, 3, 4, 5, 6, 8}, exposing Grade 2 pupils to sixteenths the node never teaches; it is also not a unit fraction."
+      "verdict": "PASS",
+      "rationale": "The denominators actually used (2, 3, 4, 8) all fall within the competency's stated ceiling of 8, and numerators are consistently 1 as required for unit fractions."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

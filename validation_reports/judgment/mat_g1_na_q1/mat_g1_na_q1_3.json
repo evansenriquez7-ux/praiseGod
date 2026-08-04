@@ -1,14 +1,16 @@
 {
   "node_id": "mat_g1_na_q1_3",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 1, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    72
   ],
   "samples_reviewed": [
     {
@@ -35,33 +37,43 @@
       "seed": 46,
       "question_text": "Compare the numbers: 1 ___ 2. Which sign is correct: >, <, or =?",
       "correct_answer": "<"
+    },
+    {
+      "seed": 50,
+      "question_text": "1 cannot be determined 1. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 72,
+      "question_text": "Compare the numbers: 2 ___ 1. Which sign is correct: >, <, or =?",
+      "correct_answer": ">"
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Each sample directly performs the named act of comparing two numbers, e.g. seed 45 'Compare the numbers: 1 ___ 3. Which sign is correct: >, <, or =?' keyed '<'. The task asks for a relational symbol between exactly two quantities, which is precisely the verb and object of the competency, and every key I checked is relationally correct."
+      "verdict": "CONCERN",
+      "rationale": "Six of the seven samples correctly pose a numeral comparison, e.g. seed 45's '1 ___ 3. Which sign is correct: >, <, or =?' keyed '<', but seed 50's true/false item reads '1 cannot be determined 1. True or False?' -- the comparison-symbol slot was filled with the distractor label 'cannot be determined' instead of a sign, so that item does not present an intelligible comparison."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "All three relational outcomes are represented, greater at seeds 42 and 43, equal at seed 44 with '1 ___ 1', and less at seeds 45 and 46, which is good. What is missing is any comparison involving the teen numbers the wording explicitly licenses; no sample places 11 through 20 on either side of the blank, so the pedagogically hard half of the stated domain is never exercised."
+      "verdict": "PASS",
+      "rationale": "All three relational outcomes appear correctly: greater-than at seeds 42, 43 and 72 ('3 ___ 1', '2 ___ 1'), equal-to at seed 44 ('1 ___ 1'), and less-than at seeds 45 and 46 ('1 ___ 3', '1 ___ 2')."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The stem is short and the symbol legend '>, <, or =' is helpfully restated, which suits Quarter 1 of Grade 1. However every item carries the distractor 'cannot be determined', an abstract logic-test phrase that a Grade 1 pupil in the first quarter cannot decode and that is never a valid answer, so it functions as noise rather than as a diagnostic distractor."
+      "verdict": "FAIL",
+      "rationale": "Seed 50's rendered sentence, '1 cannot be determined 1. True or False?', is not a parseable statement for any grade -- the numeral-comparison template inserted the wrong-answer label 'cannot be determined' where a comparison symbol belongs, producing text a Grade 1 reader cannot make sense of."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Seeds 42 and 43 emit the byte-identical stem 'Compare the numbers: 3 ___ 1' and differ only in the shuffle of the option keys, so two of five draws are the same item. There is also a single presentation mode throughout: no 'which number is greater' wording, no comparison of two counted sets of objects, and no number-line or block-model framing."
+      "verdict": "PASS",
+      "rationale": "Format variety spans mcq (seeds 42-46), true_false (seed 50), and cloze (seed 72), and the cloze item at seed 72 introduces a fresh operand pair, '2 ___ 1', not seen in the mcq set."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "There is no observable difficulty gradient across seeds 42 to 46; every operand is drawn from the set {1, 2, 3}, so an item comparing 1 and 2 sits at the same trivial level as one comparing 3 and 1. A competency that reaches to 20 should progress from small single digits to crossing ten and then to teen-versus-teen, and none of that ladder is present."
+      "verdict": "PASS",
+      "rationale": "Every operand pair sampled, from '1 ___ 1' to '3 ___ 1', targets the >, <, = relation directly with no drift toward an unrelated skill such as addition or ordering."
     },
     "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "The competency's stated ceiling is 20 but the largest number appearing anywhere in the five samples is 3. Operands are confined to 1, 2 and 3, so roughly eighty-five percent of the licensed numeric range is never generated and a student could master this bank without ever comparing a two-digit number."
+      "verdict": "CONCERN",
+      "rationale": "The competency's ceiling is 20, but the largest operand appearing anywhere across all seven widened samples, including the two extra seeds 50 and 72, is 3 -- teens and twenties are never compared."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

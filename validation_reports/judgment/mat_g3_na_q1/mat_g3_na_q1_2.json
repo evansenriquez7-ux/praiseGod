@@ -1,66 +1,41 @@
 {
   "node_id": "mat_g3_na_q1_2",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 7, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Which word describes the 13th position?",
-      "correct_answer": "thirteenth"
-    },
-    {
-      "seed": 43,
-      "question_text": "Which word describes the 15th position?",
-      "correct_answer": "fifteenth"
-    },
-    {
-      "seed": 44,
-      "question_text": "Write the symbol for the seventeenth position.",
-      "correct_answer": "17th"
-    },
-    {
-      "seed": 45,
-      "question_text": "Write the symbol for the sixteenth position.",
-      "correct_answer": "16th"
-    },
-    {
-      "seed": 46,
-      "question_text": "Which word describes the 16th position?",
-      "correct_answer": "sixteenth"
-    }
+    {"seed": 42, "question_text": "Which word describes the 13th position?", "correct_answer": "thirteenth"},
+    {"seed": 43, "question_text": "Which word describes the 15th position?", "correct_answer": "fifteenth"},
+    {"seed": 44, "question_text": "Write the symbol for the seventeenth position.", "correct_answer": "17th"},
+    {"seed": 45, "question_text": "Write the symbol for the sixteenth position.", "correct_answer": "16th"},
+    {"seed": 46, "question_text": "Which word describes the 16th position?", "correct_answer": "sixteenth"},
+    {"seed": 50, "question_text": "Write the symbol for the nineteenth position.", "correct_answer": "19th"}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency is to 'describe the position of objects using ordinal numbers', yet no object appears in any sample. Seed 42 asks 'Which word describes the 13th position?' and seed 44 asks 'Write the symbol for the seventeenth position.' These are numeral-to-word translations in the abstract; nothing asks which child is thirteenth in the line or which book is seventeenth on the shelf."
+      "rationale": "The competency asks to 'describe the position of objects' but no sample across all 6 seeds names an actual object; seed 50's 'Write the symbol for the nineteenth position.' asks about an abstract position number with no book, child, or item described as occupying it."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Only two sub-skills appear across seeds 42-46: symbol to word (13th, 15th, 16th) and word to symbol (seventeenth, sixteenth). Identifying an object at a named position in an ordered set, and naming the position of a given object in a sequence, are both part of the competency's wording and neither is generated."
+      "rationale": "Only two translation directions appear across the widened 6 seeds (symbol-to-word at 42/43/46, word-to-symbol at 44/45/50); locating an object at a named position, or naming an object's position in an ordered set, never appears."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The one-clause stems and the ordinal vocabulary on offer - 'thirteenth', 'sixteenth', 'twenty-ninth', 'thirtieth' - are well matched to a Grade 3 Quarter 1 reader, and the word-to-symbol direction at seed 45 ('sixteenth' to 16th) is a reasonable single-step demand."
+      "rationale": "The ordinal vocabulary sampled, including the newly added 'nineteenth' at seed 50, is squarely within grade 3 quarter 1 demand, and every stem is a single short clause."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Beyond the two translation directions there is no variation at all: no ordered list to read positions from, no left-versus-right or front-versus-back starting-point variation, and no ordinals attached to real contexts such as race placings or calendar dates."
+      "rationale": "Even with the added cloze-format seed 50, the item bank shows only the two translation directions, with no ordered-list context, no directional framing, and no real-world ordinal scenario anywhere in this widened sample."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "All five seeds sit within the 13th-to-17th band, so no progression exists from the irregular low ordinals (first, second, third, fifth, ninth, twelfth) through the -teenth family to the decade forms (twentieth, thirtieth) and the compound forms (twenty-first, forty-third). The genuinely hard ordinal spellings are never practised."
+      "rationale": "All 6 seeds, including the new seed 50's 'nineteenth', sit within the 13th-to-19th band, so no progression exists toward the decade forms (twentieth, thirtieth) or compound forms (forty-third, ninety-ninth) that a 100th-ceiling competency should build toward."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "The competency's stated ceiling is 100th, but the keyed positions are only 13th, 15th, 16th, 16th and 17th, and even the distractors stop at 'thirtieth' and '30th' (seeds 43 and 45). Nothing above 30 is exercised, so more than two thirds of the stated range - including 100th itself and the compound ordinals 21st, 42nd, 53rd - is untested."
+      "rationale": "The stated ceiling is the 100th position, yet across all 6 samples including the newly sampled cloze seed, the highest keyed position is 19th (seed 50) -- nothing near 50th or 100th is ever exercised."
     }
   },
   "overall": "FAIL"

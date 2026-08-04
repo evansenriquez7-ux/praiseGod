@@ -1,14 +1,15 @@
 {
   "node_id": "mat_g1_na_q2_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 1, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50
   ],
   "samples_reviewed": [
     {
@@ -55,33 +56,42 @@
         9,
         10
       ]
+    },
+    {
+      "seed": 50,
+      "question_text": "Arrange these numbers from smallest to largest: 15, 5, 8",
+      "correct_answer": [
+        5,
+        8,
+        15
+      ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Ordering tasks like '13, 1, 14 -> 1, 13, 14' correctly test smallest-to-largest sequencing, but the range explored is much narrower than the stated 'up to 100' ceiling."
+      "rationale": "As with the parallel Grade 1 Quarter 1 ordering node, the competency requires ordering 'from smallest to largest, and vice versa', but all six widened samples, including the sort_order-formatted seed 50 ('Arrange these numbers from smallest to largest: 15, 5, 8'), only ever pose the ascending direction."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Values across seeds 42-46 span only 1 to 14; no sample shows two-digit numbers in the 20-99 band that the competency's 'up to 100' wording implies should be tested."
+      "rationale": "The descending, 'vice versa' sub-case named explicitly in the competency wording never appears across any of the six seeds, even the extra seed 50 chosen to sample the alternate sort_order formatter."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The ordering instruction and three-item lists are appropriately concrete and readable for Grade 1 Q2."
+      "rationale": "Instructions like seed 44's 'Arrange these numbers from smallest to largest: 13, 1, 14' stay to a single clear sentence with three numbers, appropriate for Grade 1 Quarter 2."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Three-number lists with mixed single- and double-digit values (e.g. 12, 5, 10) show the format can mix digit lengths, a good structural variant."
+      "rationale": "The sampled triples mix single- and double-digit values (e.g. seed 45's '12, 5, 10'), a meaningful structural variant that the Grade 1 Quarter 1 sibling node's narrower 1-6 pool did not show."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "All samples are genuine ascending-order tasks, matching 'Order numbers up to 100 from smallest to largest' in structure."
+      "rationale": "All six samples are genuine ascending-sequence tasks that build the ordering skill directly, with no drift into an unrelated axis."
     },
     "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "The highest number across all 5 samples is 14, well under a fifth of the stated 100 ceiling, so the extended range this node is meant to add over the Grade 1 Q1 node is not evidenced."
+      "verdict": "CONCERN",
+      "rationale": "The largest value across all six samples, including seed 50's '15, 5, 8', is 15 -- well under the competency's stated up-to-100 ceiling, so numbers in the 16-100 band are never ordered."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

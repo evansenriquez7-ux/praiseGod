@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_dp_q3_0",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-4 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 2, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,7 +13,7 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "Make a picture graph to show: cats: 2, dogs: 10, birds: 8, fish: 8. Each \ud83c\udf4e equals 2.",
+      "question_text": "Make a picture graph to show: cats: 2, dogs: 10, birds: 8, fish: 8. Each 🍎 equals 2.",
       "correct_answer": [
         2,
         10,
@@ -23,7 +23,7 @@
     },
     {
       "seed": 43,
-      "question_text": "Make a picture graph to show: apples: 10, bananas: 6, mangoes: 16, grapes: 12. Each \ud83c\udf4e equals 2.",
+      "question_text": "Make a picture graph to show: apples: 10, bananas: 6, mangoes: 16, grapes: 12. Each 🍎 equals 2.",
       "correct_answer": [
         10,
         6,
@@ -33,40 +33,60 @@
     },
     {
       "seed": 44,
-      "question_text": "Make a picture graph to show: roses: 18, sunflowers: 18, tulips: 4, daisies: 6. Each \ud83c\udf4e equals 2.",
+      "question_text": "Make a picture graph to show: roses: 18, sunflowers: 18, tulips: 4, daisies: 6. Each 🍎 equals 2.",
       "correct_answer": [
         18,
         18,
         4,
         6
       ]
+    },
+    {
+      "seed": 45,
+      "question_text": "Make a picture graph to show: Monday: 14, Tuesday: 16, Wednesday: 10, Thursday: 4. Each 🍎 equals 2.",
+      "correct_answer": [
+        14,
+        16,
+        10,
+        4
+      ]
+    },
+    {
+      "seed": 46,
+      "question_text": "Make a picture graph to show: cats: 14, dogs: 2, birds: 8, fish: 18. Each 🍎 equals 2.",
+      "correct_answer": [
+        14,
+        2,
+        8,
+        18
+      ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "'Each icon equals 2' with counts to represent is a direct rendering of 'present raw data in a pictograph with a scale' -- I verified every given count (e.g. 18, 16, 12) divides evenly by the stated scale of 2, so no fractional-icon situation is ever presented to the student."
+      "verdict": "CONCERN",
+      "rationale": "All five samples correctly test 'raw data to pictograph' construction, e.g. \"Make a picture graph to show: cats: 2, dogs: 10, birds: 8, fish: 8. Each 🍎 equals 2.\", but the competency's explicit 'or vice versa' direction (reading a pictograph back into data) is never tested."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Categories span animals, fruit, flowers, weekdays, and sports across seeds 42-48, and count magnitudes climb into the teens (up to 18), giving reasonable range for a scaled pictograph."
+      "verdict": "FAIL",
+      "rationale": "The vice-versa sub-case named directly in the competency text, extracting tabular data from a given pictograph, is completely absent across all five samples in the packet."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Sentence structure is a short data list plus a one-clause scale statement, appropriate for grade-2 quarter-3 readers who have already met multiplication-adjacent grouping ideas."
+      "rationale": "Instructions stay direct and clear, e.g. \"Make a picture graph to show: Monday: 14, Tuesday: 16, Wednesday: 10, Thursday: 4. Each 🍎 equals 2.\", appropriate for Grade 2 Q3 data-handling vocabulary."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Every one of the 7 seeds uses a scale of exactly 2; the competency text says 'pictograph with a scale' generically, and I would expect to see other common scales (5, 10) exercised somewhere in this lc's variant space to build the general skill rather than one fixed multiplier."
+      "verdict": "FAIL",
+      "rationale": "Every sample uses the identical set_fill_in_blank formatter, the identical scale of 2, and the identical apple icon; only the category labels and counts change, with no alternate direction or scale ever appearing."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Content matches the 'present ... in a pictograph with a scale' half of the competency; the reciprocal 'vice versa' (reading a scaled pictograph back to raw/tabular data) is presumably covered by the sibling interpret lc, which is an acceptable division of labor within the node."
+      "rationale": "All variation (category sets like cats/dogs/birds/fish in seed 42 versus roses/sunflowers/tulips/daisies in seed 44) stays on-topic for pictograph data presentation with no drift to an unrelated skill."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Values up to 18 with a scale of 2 (i.e. up to 9 icons) are manageable for a grade-2 student to draw and count, consistent with quarter-3 numeracy expectations."
+      "verdict": "CONCERN",
+      "rationale": "Counts across the five samples range from 2 to 18, a reasonable Grade 2 span, but the pictograph's own scale factor is fixed at 'each symbol equals 2' in every single sample, never varying to another scale value the competency's phrasing 'with a scale' implies should be exercised."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }

@@ -1,66 +1,87 @@
 {
   "node_id": "mat_g2_na_q2_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, round-2 fix-verification batch",
-  "review_date": "2026-07-25",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 2, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    55,
+    72
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "In a pictograph, Daniel's group collected 64 coins and another group collected 0 coins. How many more did Daniel's group collect?",
-      "correct_answer": 64
+      "question_text": "In a pictograph, Daniel's group collected 19 coins and another group collected 0 coins. How many more did Daniel's group collect?",
+      "correct_answer": 19
     },
     {
       "seed": 43,
-      "question_text": "In a pictograph, Kuya Bien's group collected 5 story chapters and another group collected 0 story chapters. How many more did Kuya Bien's group collect?",
-      "correct_answer": 5
-    },
-    {
-      "seed": 44,
-      "question_text": "In a pictograph, Lara's group collected ___ ribbons and another group collected 0 ribbons. How many more did Lara's group collect?",
-      "correct_answer": 41
-    },
-    {
-      "seed": 45,
-      "question_text": "In a pictograph, Coach Roel's group collected 25 water bottles and another group collected 15 water bottles. How many more did Coach Roel's group collect?",
+      "question_text": "In a pictograph, Kuya Bien's group collected 11 story chapters and another group collected 1 story chapters. How many more did Kuya Bien's group collect?",
       "correct_answer": 10
     },
     {
+      "seed": 44,
+      "question_text": "In a pictograph, Lara's group collected 60 ribbons and another group collected 20 ribbons. How many more did Lara's group collect?",
+      "correct_answer": 40
+    },
+    {
+      "seed": 45,
+      "question_text": "In a pictograph, Coach Roel's group collected 40 water bottles and another group collected 20 water bottles. How many more did Coach Roel's group collect?",
+      "correct_answer": 20
+    },
+    {
       "seed": 46,
-      "question_text": "In a pictograph, Ate Cara's group collected 12 photo albums and another group collected 1 photo albums. How many more did Ate Cara's group collect?",
-      "correct_answer": 11
+      "question_text": "In a pictograph, Ate Cara's group collected 14 photo albums and another group collected 10 photo albums. How many more did Ate Cara's group collect?",
+      "correct_answer": 4
+    },
+    {
+      "seed": 50,
+      "question_text": "Jose solved this problem: \"In a pictograph, Mia's group collected 75 merchandise shirts and another group collected 1 merchandise shirts. How many more did Mia's group collect?\" Jose says the answer is 74. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 74
+      }
+    },
+    {
+      "seed": 55,
+      "question_text": "🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸 — There are 15 frogs.\n4 frogs are taken away.\nHow many frogs are left?",
+      "correct_answer": "C"
+    },
+    {
+      "seed": 72,
+      "question_text": "In a pictograph, Sir Dave's group collected 14 speech scripts and another group collected 1 speech scripts. How many more did Sir Dave's group collect? The answer is 13.. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 45's '25 water bottles' vs '15 water bottles' (25-15=10, correct) genuinely tests subtraction, but 3 of 5 samples (42,43,44) subtract 0, a degenerate case."
+      "verdict": "PASS",
+      "rationale": "'Given ... in pictures' is genuinely met: 7 of 8 samples use pictograph framing (e.g. seed 42's 'In a pictograph, Daniel's group collected 19 coins') and seed 55 uses an emoji frog picture directly in the stem."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The pictograph-comparison framing is applied to varied item types (coins, story chapters, ribbons, water bottles, photo albums) across the seeds."
+      "verdict": "FAIL",
+      "rationale": "The competency requires 'with and without regrouping,' but all 8 subtractions are borrow-free: seed 42's 19-0, seed 46's 14-10, and seed 55's 15-4 each have a ones digit in the minuend at least as large as the subtrahend's."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The 'In a pictograph, X's group collected...how many more' phrasing is a reasonable, consistent template for Grade 2 Q2."
+      "rationale": "The 'How many more did [name]'s group collect?' comparison phrasing and the 15-frog emoji subtraction in seed 55 match grade-2 quarter-2 picture-based reasoning without added complexity."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Competency explicitly requires 'with and without regrouping', but none of the 5 samples requires borrowing (e.g. 25-15 and 12-1 both need no regrouping), so the regrouping variant is unevidenced here."
+      "verdict": "PASS",
+      "rationale": "Pictograph comparison word problems, an emoji picture-count problem (seed 55's 15 frogs, 4 taken away), error_detect (seed 50) and true_false (seed 72) framings together give genuine contextual range."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "All samples are genuine 'how many more' comparative subtraction word problems, matching problem_solving_subtraction_with_regrouping in framing."
+      "rationale": "Every sample stays on the 'how many more' comparison-subtraction axis; none drift into an unrelated operation or skill."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Values reach into the 60s (seed 42: 64), an appropriate spread under the stated 'less than 100' ceiling."
+      "rationale": "All values stay under 100 as specified, spanning from single digits (seed 46's 14-10=4) to seed 50's 75-1=74, giving reasonable coverage of the stated range."
     }
   },
   "overall": "CONCERN"

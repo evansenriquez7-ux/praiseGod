@@ -1,66 +1,44 @@
 {
   "node_id": "mat_g1_na_q3_5",
-  "reviewed_by": "Claude Opus 5 (Claude Code session 2026-07-26), blind packet-only re-review triggered by the validate_judgment staleness gate",
-  "review_date": "2026-07-26",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 1, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 82, 101],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 64 − 30?",
-      "correct_answer": 34
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 5 − 0?",
-      "correct_answer": 5
-    },
-    {
-      "seed": 44,
-      "question_text": "What place is the digit 0 in, in the number 20?",
-      "correct_answer": "ones"
-    },
-    {
-      "seed": 45,
-      "question_text": "What place is the digit 1 in, in the number 15?",
-      "correct_answer": "tens"
-    },
-    {
-      "seed": 46,
-      "question_text": "12 − 1 = ___",
-      "correct_answer": 11
-    }
+    {"seed": 42, "question_text": "What is 24 − 0?", "correct_answer": 24},
+    {"seed": 43, "question_text": "What is 11 − 1?", "correct_answer": 10},
+    {"seed": 44, "question_text": "What place is the digit 0 in, in the number 20?", "correct_answer": "ones"},
+    {"seed": 45, "question_text": "What place is the digit 1 in, in the number 15?", "correct_answer": "tens"},
+    {"seed": 46, "question_text": "14 − 10 = ___", "correct_answer": 4},
+    {"seed": 50, "question_text": "What place is the digit 2 in, in the number 20? The answer is 22.. True or False?", "correct_answer": false},
+    {"seed": 51, "question_text": "The dot is at 36 and it moves backward 15 numbers. Starting from 36, just count back 15 numbers. Which number will the dot land on?", "correct_answer": "C"},
+    {"seed": 82, "question_text": "Dante says: 21 − 1 = 20. Is Dante correct?", "correct_answer": {"has_error": false, "correct_value": 20}},
+    {"seed": 101, "question_text": "The two parts are 5 and 0. What is the sum?", "correct_answer": 5}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency names subtraction with minuend and subtrahend expressed as tens and ones without regrouping; the sampled items are bare differences ('What is 64 - 30?', 'What is 5 - 0?', '12 - 1 = ___') that never show or request the tens-and-ones expansion."
+      "rationale": "Not one of nine samples expresses a minuend or subtrahend in tens-and-ones expanded form; \"What is 24 − 0?\" (42) and \"14 − 10 = ___\" (46) are bare subtraction, while \"What place is the digit 0 in, in the number 20?\" (44) and \"What place is the digit 1 in, in the number 15?\" (45) test place-value naming, a different skill entirely."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "Seeds 44 and 45 leave subtraction entirely and render place-value naming items ('What place is the digit 0 in, in the number 20?'), so two of five sampled generations do not exercise subtraction at all, let alone the expanded-form version."
+      "rationale": "The expanded-form decomposition the competency's own title names -- treating a number like 24 as '2 tens 4 ones' before subtracting -- never appears in any of the nine rendered samples; subtraction and place-value naming are shown, but never combined."
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "Multiple items offer negative-number distractors to a Grade 1 audience: seed 42 lists -34 among the options for 64 - 30, and seed 46 lists -11 for 12 - 1. Negative integers are far outside a Grade 1 Quarter 3 student's introduced vocabulary and make the option set unreadable rather than merely hard."
+      "verdict": "CONCERN",
+      "rationale": "Seed 50's stem, \"What place is the digit 2 in, in the number 20? The answer is 22.. True or False?\", is incoherent: it asks for a place-value word like 'tens' but supplies the numeral '22' as the claimed answer, and the doubled period is a rendering glitch a Grade 1 reader cannot make sense of."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The mcq and cloze presentations both appear, but no sampled variant frames the subtraction in a word-problem or place-value-chart context, which is the framing the expanded-form competency implies."
+      "verdict": "FAIL",
+      "rationale": "Six formatter shells appear (mcq, cloze, true_false, read_mcq, error_detect, read_fill_in_blank) but none of them ever varies toward the expanded-form content this competency requires; the true content variety is only 'subtract' vs 'name the place value,' neither of which is the named skill."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Samples span a very wide difficulty spread with no relation to the competency's own progression: '5 - 0' and '12 - 1' are trivial one-step facts while '64 - 30' is the only item near two-digit expanded-form territory, so the axis does not build toward the stated skill."
+      "rationale": "Seed 101, \"The two parts are 5 and 0. What is the sum?\", asks for a sum -- addition, not subtraction -- and seeds 44/45 test place-value identification, so four of nine samples build skills unrelated to tens-and-ones subtraction."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Minuends range from 5 to 64, which straddles the Grade 1 ceiling appropriately at the top end, but the low-end samples fall below the two-digit range where a tens-and-ones expansion is even meaningful."
+      "verdict": "PASS",
+      "rationale": "Operands used (0 to 36) stay within a plausible small two-digit range for Grade 1 tens/ones work, e.g. \"The dot is at 36 and it moves backward 15 numbers,\" with nothing exceeding two digits."
     }
   },
   "overall": "FAIL"

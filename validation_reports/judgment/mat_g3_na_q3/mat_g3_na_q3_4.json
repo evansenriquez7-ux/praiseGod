@@ -1,66 +1,42 @@
 {
   "node_id": "mat_g3_na_q3_4",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 8, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Daniel puts 4 coins in each of 1 bag. How many coins are in all the bags?",
-      "correct_answer": 4
-    },
-    {
-      "seed": 43,
-      "question_text": "Kuya Bien puts 0 story chapters in each of 6 bags. How many story chapters are in all the bags?",
-      "correct_answer": 0
-    },
-    {
-      "seed": 44,
-      "question_text": "Lara puts 1 ribbon in each of ___ bags. How many ribbons are in all the bags?",
-      "correct_answer": 2
-    },
-    {
-      "seed": 45,
-      "question_text": "Coach Roel puts 0 water bottles in each of 41 bags. How many water bottles are in all the bags?",
-      "correct_answer": 0
-    },
-    {
-      "seed": 46,
-      "question_text": "Ate Cara puts 0 photo albums in each of 13 bags. How many photo albums are in all the bags?",
-      "correct_answer": 0
-    }
+    {"seed": 42, "question_text": "Daniel puts 4 coins in each of 1 bag. How many coins are in all the bags?", "correct_answer": 4},
+    {"seed": 43, "question_text": "Kuya Bien puts 0 story chapters in each of 6 bags. How many story chapters are in all the bags?", "correct_answer": 0},
+    {"seed": 44, "question_text": "Lara puts 1 ribbon in each of ___ bags. How many ribbons are in all the bags?", "correct_answer": 2},
+    {"seed": 45, "question_text": "Coach Roel puts 0 water bottles in each of 41 bags. How many water bottles are in all the bags?", "correct_answer": 0},
+    {"seed": 46, "question_text": "Ate Cara puts 0 photo albums in each of 13 bags. How many photo albums are in all the bags?", "correct_answer": 0},
+    {"seed": 50, "question_text": "Mia puts 1 merchandise shirts in each of 40 bags. How many merchandise shirts are in all the bags? The answer is 41.. True or False?", "correct_answer": false},
+    {"seed": 55, "question_text": "Grace solved this problem: \"Sora puts 0 concert tickets in each of 16 bags. How many concert tickets are in all the bags?\" Grace says the answer is 16. Is Grace correct?", "correct_answer": {"has_error": true, "correct_value": 0}}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Seed 44's cloze is broken: 'Lara puts 1 ribbon in each of ___ bags. How many ribbons are in all the bags?' blanks out the bag count while the question asks for the total, so the item is underdetermined and the pupil cannot solve it. The key 2 is the missing factor, not a computable total; it only looks plausible because 1 x 2 also equals 2. The stem asks for one quantity and the key supplies another."
+      "rationale": "The competency requires 'including problems involving money', but zero of 7 samples reference a peso amount or ₱ symbol; contexts are non-money objects (story chapters, ribbons, water bottles, photo albums, merchandise shirts, concert tickets), and every sample's multiplier is trivially 0 or 1."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The clause 'including problems involving money' has no representation: no peso amount, price, cost, or change appears in any seed. The 'coins' in seed 42 are counted as objects, not valued as money. Equally, no 2-step problem is generated - every item is a single multiplication."
+      "rationale": "Money-context problems (explicitly named) never appear, and 2-step problems (explicitly named '1- to 2-step') never appear; only trivial 1-step ×0/×1 problems are shown, e.g. 'Coach Roel puts 0 water bottles in each of 41 bags'."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Reading level suits Grade 3, but the situations are semantically incoherent: 'Kuya Bien puts 0 story chapters in each of 6 bags' (seed 43) and 'Coach Roel puts 0 water bottles in each of 41 bags' (seed 45) describe placing nothing into bags, which a child cannot model mentally even though 0 x 6 = 0 and 0 x 41 = 0 are arithmetically right."
+      "verdict": "FAIL",
+      "rationale": "Quote: 'Coach Roel puts 0 water bottles in each of 41 bags' and 'Ate Cara puts 0 photo albums in each of 13 bags' reduce to zero-property recall, far below the genuine multiplicative reasoning grade 3 quarter 3 'solve multiplication problems' should require."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "All five seeds reuse a single 'puts N items in each of M bags' template with only the name and noun swapped (Daniel/coins, Kuya Bien/story chapters, Lara/ribbons, Coach Roel/water bottles, Ate Cara/photo albums). There is no array, rate, price-per-item, comparison, or buy-then-total two-step variation."
+      "rationale": "Despite formatter variety (mcq, cloze, true_false, error_detect), all content is 1-step, non-money, trivial-factor multiplication; no money variant and no 2-step variant appear."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Difficulty runs backwards rather than building: seed 42 uses 1 bag so 4 x 1 = 4 returns the given number, and seeds 43, 45 and 46 all multiply by 0 so the answer is 0. Four of five items can be answered without multiplying anything, so the ladder never rehearses genuine 1- or 2-step multiplication."
+      "rationale": "The variation observed (different objects: coins, chapters, ribbons, bottles, albums, shirts, tickets) is superficial context-swapping around a uniformly trivial ×0/×1 operation, never building toward genuine problem-solving with meaningful products or money."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The magnitudes 4, 6, 13 and 41 sit within a defensible Grade 3 range, but the only sizable quantity, the 41 bags of seed 45, is paired with 0 bottles, so the product collapses to 0 and the numeric reach of the competency is never actually exercised."
+      "rationale": "Bag counts reach into double digits (41, 13, 16, 40), a reasonable magnitude, but since the per-bag quantity is always 0 or 1, actual products never exceed 40, understating what '1- to 2-step multiplication problems' should scale to."
     }
   },
   "overall": "FAIL"

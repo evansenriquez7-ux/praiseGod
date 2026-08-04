@@ -278,12 +278,26 @@ def validate_competency_bounds_parsing() -> List[str]:
         # expose it. These three cases pin the width-vs-magnitude distinction,
         # which is the whole defect class rather than the three symptoms.
         ("mat_g3_na_q2_5", "subtraction", {"max_minuend": (1, 9999)}),   # "up to 4 digits"
-        ("mat_g3_na_q2_6", "subtraction", {"max_minuend": (1, 99)}),     # "up to 2 digits"
-        ("mat_g3_na_q2_7", "subtraction", {"max_minuend": (1, 99)}),     # "up to 2 digits"
         # ...and the magnitude phrasings that must keep parsing as magnitudes.
         ("mat_g3_na_q2_4", "subtraction", {"max_minuend": (1, 10000)}),  # "less than 10 000"
         ("mat_g1_na_q3_4", "subtraction", {"max_minuend": (1, 100)}),    # "less than 100"
     ]
+    # Ground Rule 2 correction, 2026-08-02 (docs/pgen_hardening.md judgment
+    # review, Phase D): mat_g3_na_q2_6/_7's ("up to 2 digits") cases above were
+    # removed. This function's `dna_name` override only applies when it is
+    # still one of the node's OWN registered DNAs (`registry.py`'s
+    # get_node_competency_bounds: "dna_name if dna_name in dnas else
+    # dnas[0]") -- and both nodes were remapped from ["addition",
+    # "subtraction"] to ["order_of_operations"] (neither 2-operand DNA can
+    # express "3 to 4 numbers ... observing correct order of operations"; see
+    # HARDENING_EVIDENCE.md Phase D item 3). Requesting dna_name="subtraction"
+    # for either node therefore silently falls back to dnas[0]
+    # ("order_of_operations"), which has no "max_minuend" key at all --
+    # correctly reproducing this test's own failure ("expected ... got
+    # 'None'") once the mapping changed, not a parser regression. The
+    # width-vs-magnitude regex fix this table exists to pin is still verified
+    # by mat_g3_na_q2_5 ("up to 4 digits") and the two magnitude-phrasing
+    # cases below, all still genuinely subtraction-mapped.
     
     errors: List[str] = []
     for node_id, dna_name, expected in test_cases:

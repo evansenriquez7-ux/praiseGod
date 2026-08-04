@@ -1,66 +1,44 @@
 {
   "node_id": "mat_g3_na_q3_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 8, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 55, 85],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is 3 × 0?",
-      "correct_answer": 0
-    },
-    {
-      "seed": 43,
-      "question_text": "What is 2 × 0?",
-      "correct_answer": 0
-    },
-    {
-      "seed": 44,
-      "question_text": "2 × 1 = ___",
-      "correct_answer": 2
-    },
-    {
-      "seed": 45,
-      "question_text": "6 × 0 = ___",
-      "correct_answer": 0
-    },
-    {
-      "seed": 46,
-      "question_text": "What is 3 × 0?",
-      "correct_answer": 0
-    }
+    {"seed": 42, "question_text": "What is 3 × 0?", "correct_answer": 0},
+    {"seed": 43, "question_text": "What is 2 × 0?", "correct_answer": 0},
+    {"seed": 44, "question_text": "2 × 1 = ___", "correct_answer": 2},
+    {"seed": 45, "question_text": "6 × 0 = ___", "correct_answer": 0},
+    {"seed": 46, "question_text": "What is 3 × 0?", "correct_answer": 0},
+    {"seed": 50, "question_text": "Look at the 3×1 array. How many squares are shaded in all?", "correct_answer": "A"},
+    {"seed": 51, "question_text": "Ana says: 5 × 0 = 5. Is Ana correct?", "correct_answer": {"has_error": true, "correct_value": 0}},
+    {"seed": 55, "question_text": "Shade all the squares inside the shape. How many squares did you shade in all?", "correct_answer": 0},
+    {"seed": 85, "question_text": "5 × 0 = 0. True or False?", "correct_answer": true}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency verbs are 'illustrate and apply properties', but no sampled item asks the pupil to demonstrate or use a property. Seed 43 simply asks 'What is 2 x 0?' and seed 44 asks '2 x 1 = ___' - these are bare product recalls; nothing asks whether 7 x 8 equals 8 x 7, or to regroup, or to distribute."
+      "rationale": "The competency names five properties (identity, zero, commutative, associative, distributive), but the samples only ever show the zero property (6 of 9: seeds 42,43,45,46,51,85) and the identity property (2 of 9: seeds 44,50); commutative, associative, and distributive properties never appear once."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "Five properties are named. Only the zero property (seeds 42, 43, 45, 46) and the identity property (seed 44) appear, and both only implicitly. The commutative property, the associative regrouping property, and the distributive property over a sum of two addends have zero generated samples in this packet."
+      "rationale": "3 of the 5 explicitly named properties -- commutative ('changing the order... does not change the product'), associative ('changing the grouping...'), and distributive ('multiplying the sum of two addends...') -- are entirely absent from all 9 samples."
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "Seed 45 offers option D with value -1 and text '-1' as a distractor for '6 x 0 = ___'; a Grade 3 pupil in Quarter 3 has never met a number below zero, so this option is unreadable to the intended learner. The remaining items also under-shoot, demanding single-digit zero recall rather than property reasoning."
+      "verdict": "CONCERN",
+      "rationale": "The zero/identity facts shown ('3 × 0', '2 × 1 = ___') are simply pitched for illustrating those two properties, but since the harder properties (associative, distributive) that would demand multi-step reasoning never appear, overall cognitive demand sits well below what grade 3 quarter 3 'illustrate and apply' should require."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "No structural variety exists for property work: there is no true/false judgement, no 'which property is shown' item, no equation-pair comparison, and no distributive form such as 6 x (4 + 3) = 6 x 4 + 6 x 3. Seeds 42 and 46 even repeat the same stem 'What is 3 x 0?'."
+      "rationale": "Formatter variety exists (mcq, cloze, read_mcq array, error_detect, set_fill_in_blank, true_false) but content variety is narrow: only zero/identity properties, never commutative, associative, or distributive."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "The five items generated here are identical, item for item and option for option, to those generated for the sibling node mat_g3_na_q3_0 (same seeds 42-46, same stems, same keys). Two distinct competencies producing the same content is direct evidence the generator is not keyed to this node's property focus."
+      "verdict": "CONCERN",
+      "rationale": "The two properties actually shown (zero, identity) are correctly aligned to this competency's wording, but the near-total absence of the other three named properties means the sampled variation only builds a fraction of the competency."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "Illustrating properties on the 6-9 tables needs factors drawn from 6 through 9 and triples for the associative case. The largest number appearing in any stem is 6 ('6 x 0 = ___', seed 45), no item has three factors, and no sum of two addends is present for the distributive case."
+      "rationale": "Almost every factor used (2, 3, 5) falls outside the explicitly named '6, 7, 8, and 9' tables; only seed 45 ('6 × 0') touches an in-range factor, and even that is trivialized by the ×0 zero-property framing."
     }
   },
   "overall": "FAIL"

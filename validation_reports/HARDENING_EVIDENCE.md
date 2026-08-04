@@ -1253,3 +1253,625 @@ flagged it. The 39%-coverage sampling gap recorded above is therefore not a
 process nicety: it demonstrably hides student-facing defects. Stratifying the
 packet seeds so each node's distinct rendered formats are represented is the
 cheap half of the fix; the 151 re-reviews are the expensive half.
+
+
+---
+
+# Phase D — wide-packet re-review + curriculum debt — 2026-08-01
+
+## Re-review against stratified packets (Item 1)
+
+All 151 nodes were re-reviewed blind against `judgment_packets.build_packet`'s
+now-stratified seed sets (5 base + up to 5 extra seeds chosen to hit rendering
+paths the base 5 miss), dispatched as 10 independent blind subagent batches,
+each given only a packet file (competency text + rendered samples) and
+forbidden from reading anything under `backend/`. Prompted neutrally (accuracy,
+not "hunt defects") per the finding that the earlier "hunt defects, do not be
+generous" framing biased verdicts toward FAIL.
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment
+Verdicts over 151 reviewed nodes: PASS=8 CONCERN=55 FAIL=88 UNKNOWN=0
+Judgment review validation: all nodes have genuine, complete reviews.
+```
+
+Tally moved 29/51/71 → **8/55/88**. This is not the reviewers getting harsher —
+it is the same wider-seed effect the shape_board finding demonstrated: nodes
+whose base 5 seeds happened to render only their best-case format now also
+show their worst. Several batches independently found the same systemic
+pattern from different corners of the curriculum: roughly half the sample pool
+on a cluster of nodes (`mat_g2_mg_q2_3`, `mat_g2_mg_q4_2`, `mat_g2_mg_q4_4`,
+`mat_g2_mg_q4_6`, `mat_g2_na_q2_7`, others) is byte-identical off-topic
+survey-addition/arithmetic content unconnected to the node's own competency —
+a single contamination source reappearing across many nodes, consistent with
+the co-mapped-DNA root cause below.
+
+## Root cause behind several of the fixed nodes: `generate_pair_by_window` / `generate_number_by_window` empty-window collapse
+
+`backend/app/practice_gen/generators/number_difficulty.py` windows a
+candidate pool by a *score* (awkwardness, not magnitude) around the requested
+difficulty scalar. When a pool's score distribution left the window empty at
+an ordinary interior scalar (not just the already-hardened 0.0/1.0
+endpoints), the old fallback deterministically returned the single
+closest-scoring candidate — silently ignoring `rng`. Confirmed two live
+instances:
+
+- `mat_g3_na_q4_2`'s missing-factor pool ((6,7,8,9) x (1,10), scores
+  0.65-0.94): scalar 0.5's window [0.4, 0.6] is empty, so every seed resolved
+  to the identical `(6, 1)` pair — the exact "identical `6 ÷ 6 = ___` on 3 of
+  5 seeds" finding.
+- `mat_g2_na_q4_1`'s unit-fraction pool (six candidates, scores 0.28-0.45):
+  same empty window at scalar 0.5, collapsing every seed to `1/8`.
+
+A small nearest-by-score top-up was tried and rejected: for a skewed pool
+where the lowest scores all share one sub-group (every `6-x` pair here scores
+below every `7-x`/`8-x`/`9-x` pair), the nearest few candidates by score can
+*all* be that one sub-group, reproducing the collapse one level up — verified
+this the hard way (a `min(3, pool/3)` top-up still never drew tables 7 or 9).
+Fixed by falling back to the entire candidate pool (via `rng.choice`) once the
+window is this sparse, trading fine difficulty-tiering — which a pool this
+narrow cannot support meaningfully anyway — for guaranteed reachability of
+every valid value.
+
+```
+$ PYTHONPATH=. .venv/bin/python -c "... table factors seen across 100 seeds for mat_g3_na_q4_2 ..."
+table factors seen: [6, 7, 8, 9]
+$ PYTHONPATH=. .venv/bin/python -c "... denominators for mat_g2_na_q4_1 ..."
+{2: 20, 3: 9, 4: 17, 5: 20, 6: 18, 8: 16}
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_window_endpoints_and_scalar_guard.py -q
+12 passed in 0.31s
+```
+
+## Fixed (Item 2 — the six named nodes)
+
+1. **`mat_g3_na_q4_1`/`mat_g3_na_q4_2`** (division/missing_number, tables
+   6-7-8-9). Three independent defects:
+   - `division.py`'s `q_max` was the grade default (99) even when a table
+     was explicitly bound, so `mat_g3_na_q4_1` served quotients like 15, 30,
+     80 with dividends up to 891 — not table facts. Fixed by capping
+     `q_max=9`, `q_min=1` when `profile.get("table")` is explicitly bound,
+     mirroring `multiplication.py`'s existing `number_type="single_digit"`
+     forcing under the identical condition.
+   - `mat_g3_na_q4_2`'s deterministic-collapse bug, above.
+   - `fmt_array_grid.py`'s generic `a`/`b` fallback branch (reached because
+     division never supplied the `groups`/`n` aliases multiplication does)
+     computed `correct_count = a * b` — dividend times divisor — for a
+     division problem, e.g. a fabricated "1080-square" array for `180 ÷ 6`.
+     Fixed by adding `groups=b` (divisor), `n=a//b` (quotient) to
+     `division.py`'s result dict, so the array now shows `divisor` equal rows
+     of `quotient` — a mathematically real grid whose total is the actual
+     dividend. Left open: the "read" task still asks "how many in total"
+     (the given dividend), not "how many per row" (the quotient) — a genuine
+     division question needs the formatter to hide one dimension and ask for
+     it, which this fix does not attempt; noted for a fuller redesign.
+   - Verified: `validate_matrix --node mat_g3_na_q4_1` / `_2` → PASS, 0
+     failures each.
+
+2. **`mat_g3_na_q2_5`** (estimate the difference). No estimation task existed
+   anywhere in `subtraction.py`, and the co-mapped `rounding` DNA rounds one
+   number, not the difference of two — neither served the competency. Added
+   `task_type="estimate"` to `subtraction.py`: draws a real `(real_a,
+   real_b)` pair, rounds both to the larger operand's own leading place
+   (front-end rounding), serves the *rounded* pair as `a`/`b` (so the DNA's
+   fixed `answer_formula="a - b"` still independently recomputes the served
+   answer) with `real_a`/`real_b` carried separately for the stem text.
+   `regrouping` is structurally infeasible once both operands are rounded
+   (every digit below the rounding place is 0 in both) — raises a named
+   `RuntimeError` for a non-`"none"` request, which `validate_matrix`'s own
+   discrete-dimension sweep treats as an expected infeasible combination, the
+   same way `max_minuend=20 + regrouping='two_places'` already does.
+   `rounding` removed from `mat_g3_na_q2_5`'s co-mapped DNAs (Ground Rule 2 —
+   see disclosure below). Verified: `validate_matrix --node mat_g3_na_q2_5` →
+   PASS.
+
+3. **`mat_g3_na_q2_6`/`mat_g3_na_q2_7`** (3-4 numbers, order of operations).
+   `dna/na/order_of_operations.py` — a complete, correct left-to-right
+   3-4-term +/- chain generator — already existed, fully registered in
+   `compatibility.py` (`COMPATIBILITY`, `VARIANTS_BY_DNA`), `axes_catalog.py`,
+   and `adapter.py`'s DNA-instance map, but was **never mapped to any node**
+   in `registry.py`. Confirmed unreachable and broken: called directly, it
+   rendered `"What is the value of None + None?"` on every seed (no branch
+   for this concept existed in either question-text builder, so both fell
+   through to a generic default that read undefined `a`/`b`). Two further
+   bugs found while wiring it up for the first time:
+   - `VARIANTS_BY_DNA["order_of_operations"]["operation_mix"]` declared
+     `["add_sub", "mult_div", "all"]`, none of which match the string the
+     DNA's own `generate_params` actually compares against (`"add_only"` vs.
+     default-mixed) — `"mult_div"` is fiction; this DNA only ever implements
+     `+`/`-`. Fixed to `["add_only", "mixed_add_sub"]`.
+   - `num_operands` defaulted to a fixed `"three_terms"` when unbound, so an
+     unbound request never produced a 4-term item at all. Fixed to randomize
+     via the call's own seeded `rng` when unbound, the same reasoning as a
+     continuous axis spanning its own range rather than collapsing to one
+     point.
+   Added self-built `question` text directly in `generate_params` (mirroring
+   `missing_number.py`'s `"equivalent"` branch precedent, since this DNA has
+   no spine and `requires_context=False`), including a word-problem path with
+   a ~50/50 money/plain-object split for `mat_g3_na_q2_7`'s "including
+   problems involving money" sub-case. `addition`/`subtraction` removed from
+   both nodes' co-mapped DNAs (Ground Rule 2). Verified:
+   `validate_matrix --node mat_g3_na_q2_6` / `_7` → PASS, 0 failures each.
+
+4. **`mat_g2_na_q3_1`** (multiplication as repeated addition). Co-mapped
+   with `addition`, which has no notion of equal groups and served plain
+   2-3-digit sums (`"661 + 120"`) with zero connection to multiplication —
+   confirmed independently by batch 5's blind review ("6/10 samples are
+   unrelated 3-digit addition ... no array/equal-jump illustration
+   anywhere"). `addition` removed from the co-mapped list (Ground Rule 2).
+   Added `task_type="repeated_addition"` (bound from `"repeated addition"` in
+   the competency text — also correctly fires for the sibling
+   `mat_g2_na_q3_0`, which shares the same wording and pedagogical need).
+   `multiplication.py`'s existing `array_grid` visual already renders a real
+   equal-groups array via its `groups`/`n` alias branch — that part needed no
+   fix. Added explicit written-out-sum question text (`"4 + 4 + 4 = ___. What
+   is 4 x 3?"`) to `base_generator.py`, `fmt_mcq.py`, and `fmt_cloze.py` (a
+   pre-existing triplication of the pure-context question builder — each
+   formatter rebuilds its own copy independently of `base_generator`'s, so a
+   fix in one place alone is silently dead code for the other two, exactly
+   the `doc_rem.md` R2 duplication pattern already on file for this same
+   trio). Two self-caught defects during this fix, both real:
+   - First attempt restricted the DNA's own candidate-generating `b` (repeat
+     count) to a small legible band, which broke `§1A-reach` (products could
+     no longer reach the competency's 100 ceiling) and `§1A`'s scalar-0.0
+     boundary (no pair could reach `max_product=1`). Reverted; the legibility
+     gate now lives only in the render-time text builders (`2 <= b <= 5`),
+     not the candidate pool, so the DNA's full generative range is untouched.
+   - That render-time gate initially fired for `b == 1` too
+     (`b <= 5`), producing `"2 = ___"` for a `2 x 1` fact — the stem's only
+     number *is* the answer, a self-caught answer leak, caught by
+     `validate_matrix`'s own `answer_leak_in_stem` check. Fixed by requiring
+     `2 <= b <= 5` (genuine repetition, not a single term).
+   Verified: `validate_matrix --node mat_g2_na_q3_1` / `mat_g2_na_q3_0` →
+   PASS, 0 failures each.
+
+5. **`mat_g2_na_q4_1`/`mat_g2_na_q4_4`** (unit vs. similar fractions).
+   `fractions.py` has no `registry.py` branch at all for `dna_name ==
+   "fractions"`, so both nodes fell through to `generate_params`'s own
+   default (`fraction_type="unit_fraction"`) — a coincidental match for
+   `_1` ("unit fractions") but wrong for `_4` ("similar fractions"), whose
+   numerator > 1 case was therefore never exercised. Combined with the
+   window-collapse bug above (`_1`'s 6-candidate pool always resolving to
+   `1/8`). Fixed: added a `fractions` branch parsing `"unit fraction"` /
+   `"similar fraction"` from the competency text. Verified over 40 seeds
+   each: `_1` now covers denominators {2,3,4,5,6,8}; `_4` now covers
+   numerator > 1 pairs across denominators {2,3,4,5,8} (`2/3, 2/4, 2/5, 3/4,
+   3/5, 3/8, 4/5, ...`), genuinely distinct from `_1`'s output.
+
+## Zero-operand degeneracy (found and fixed, no node named in the brief)
+
+Measured directly: 31.0% of sampled `addition`/`subtraction` items across all
+34 nodes mapped to either DNA carried a 0 operand at the default profile (up
+to 83% on `mat_g2_na_q1_7`) — matching the range the brief described. §1F's
+`mirror`-style exemption only concerns the answer-leak lint; nothing
+governed how often a 0 operand gets *drawn* in the first place. A 0 operand is
+legitimate MATATAG content (the identity property, and `subtraction.py`
+already carries a comment defending `a - 0` as such) — the fix therefore
+narrows preference, not validity: `addition.py` and `subtraction.py` now
+build the candidate pool exactly as before, then prefer the zero-operand-free
+subset for the actual draw, falling back to the full (zero-inclusive) pool
+only when that subset is empty. A 0 operand stays fully reachable — it's the
+only option left when the range/regrouping constraint forces it — it just
+stops dominating ordinary practice.
+
+```
+$ PYTHONPATH=. .venv/bin/python -c "... sample 20 seeds x 34 addition/subtraction nodes ..."
+before: overall zero rate: 175 / 564 = 31.0 %
+after:  overall zero rate: 5 / 564 = 0.9 % (residual 4/5 is mat_g3_na_q2_5's
+        *rounded* estimate operands landing on a round-number 0, a different
+        and legitimate case, not the fixed degeneracy)
+```
+
+All 34 addition/subtraction-mapped nodes re-verified individually:
+`validate_matrix --node <n>` → PASS for every one, 0 failures.
+
+## Ground Rule 2 disclosures (this phase)
+
+- **`mat_g2_na_q3_1`**: `addition` removed as a co-mapped DNA. It has no
+  concept of equal groups and served generic 2-3-digit sums with zero
+  connection to multiplication; `task_type="repeated_addition"` (new, in
+  `multiplication.py`) now covers the competency directly.
+- **`mat_g3_na_q2_5`**: `rounding` removed as a co-mapped DNA. It rounds a
+  single number; "estimate the difference of two numbers" is a two-operand
+  skill neither DNA expressed before `subtraction.py` gained
+  `task_type="estimate"`.
+- **`mat_g3_na_q2_6`, `mat_g3_na_q2_7`**: `addition`/`subtraction` removed as
+  co-mapped DNAs, replaced by `order_of_operations` (pre-existing, newly
+  wired up). Neither 2-operand DNA can express a 3-4-term chain.
+- **`VARIANTS_BY_DNA["order_of_operations"]["operation_mix"]`**: corrected
+  from `["add_sub", "mult_div", "all"]` (matches nothing the DNA checks) to
+  `["add_only", "mixed_add_sub"]` (matches exactly). This DNA never
+  implements multiplication/division despite its docstring's "MDAS subset"
+  aspiration — "mult_div" was fiction.
+
+## Co-mapped secondary DNA bleed: a concrete triage proposal
+
+Every node-level fix in this phase (`mat_g2_na_q3_1`, `mat_g3_na_q2_5`,
+`mat_g3_na_q2_6`, `mat_g3_na_q2_7`) was the *same* root cause: a node mapped
+to 2+ DNAs, the orchestrator picks one per generation
+(`services/orchestrator.py`'s weighted choice over `get_node_dnas`), and one
+of the co-mapped DNAs has no way to express the node's actual competency —
+so a fraction of every node's served items (in these four cases, 40-100% of
+samples) is simply off-topic. This was previously documented only as "the
+dominant cause, named independently by every reviewer" with no mechanism to
+find the rest. Four data points now exist; a fifth (`shape_board`/
+`array_grid` fabricating unrelated content when a DNA's fields don't match a
+formatter's expected keys) is the visual-layer sibling of the same failure
+shape: **a component silently substitutes unrelated content instead of
+failing loudly when it cannot express what it was asked for.**
+
+Proposed mechanical triage, cheap enough to run over all co-mapped nodes
+without a human eyeballing 151 packets:
+
+1. For every node with 2+ DNAs (`NODE_TO_DNAS` in `registry.py`), render
+   ~10 seeds *per co-mapped DNA* via `forced_dna` (not the orchestrator's
+   random choice, which would dilute a bad DNA's signal across good ones).
+2. Extract the node's competency text's content words (nouns/verbs, stopword
+   -filtered) and check whether each rendered `question_text` shares *any*
+   of them. This is the same idea `judgment_packets.py`'s stratification
+   already uses (a mechanical proxy, not a guarantee) — cheap, reproducible,
+   and precisely what would have flagged `mat_g2_na_q3_1`'s `addition`
+   co-mapping without a human ever reading a sample.
+3. A co-mapped DNA whose renders miss every content word across all 10 seeds
+   is a bleed candidate — worth the same treatment as the four fixed here:
+   either build the missing capability into an existing DNA (as
+   `task_type="repeated_addition"`/`"estimate"` did) or wire up/replace with
+   a DNA that already has it (as `order_of_operations` did).
+
+Candidates this session's wide-packet re-review surfaced but did **not**
+fix (named nodes only, not exhaustive — flagging for the next pass, per the
+brief's "a concrete proposal is welcome; do not treat it as newly
+discovered"):
+
+- **`mat_g3_na_q2_2`** ("estimate the sum") — co-mapped `["addition",
+  "rounding"]`, the exact same shape as the now-fixed `mat_g3_na_q2_5`.
+  Batch 8's review: "0 of 10 samples actually estimate." The fix is the
+  mechanical mirror of item 2 above (`task_type="estimate"` on `addition.py`)
+  and was not done here only because it was not one of the six named nodes.
+- **`mat_g2_na_q1_10`** ("properties of addition") — samples byte-identical
+  to sibling `mat_g1_na_q1_9`'s content in batch 4's review; only the
+  zero-property is ever exercised, never commutative/associative.
+- **`mat_g1_na_q4_3`/`mat_g1_na_q4_4`** — byte-identical samples across two
+  different competencies (coin *recognition* vs. coin *valuation*), per
+  batch 2's review.
+- **`mat_g2_na_q4_2`/`mat_g2_na_q4_5`** ("order fractions") — samples never
+  actually order two fractions; either single-fraction identification or
+  whole-number sorting leaks in, per batch 6's review.
+
+
+---
+
+# Phase E — two live wrong-answer-key bugs, found by the fresh reviewers themselves — 2026-08-02
+
+The 61-node re-review dispatched after Phase D's fixes (their cited seeds drifted,
+per the freshness gate) surfaced two live correctness bugs that were not part of
+any of the six named fixes — found by blind reviewers judging genuinely new
+content, not hunted for. Both are answer-key bugs: content marked a TRUE
+statement as needing correction, or vice versa. This is more severe than a
+coverage gap (a student is told a correct answer is wrong, or a wrong one is
+right), so both were root-caused and fixed immediately rather than filed as
+known debt.
+
+## Bug 1 — my own array_grid alias collided with a pre-existing, differently-scoped alias
+
+While fixing `mat_g3_na_q4_1`/`_2` (Phase D, item 1), I added `"groups": b,
+"n": a // b` to `division.py`'s result dict so `fmt_array_grid.py`'s
+`groups`/`n` branch would draw a real divisor-rows-by-quotient-cols array
+instead of the dividend x divisor product. I did not check whether those two
+key names were already spoken for elsewhere. They were:
+`base_generator._build_symbolic_question`'s own division branch (reached
+whenever no spine matches and no `"question"` key is set — the fallback path
+for `context="word_problem"` division nodes with no working spine, itself a
+pre-existing, documented gap) reads `n = values.get("n", b)` — "n" was already
+an alias for the DIVISOR — and `groups = values.get("groups",
+values.get("result"))` — "groups" was already an alias for the QUOTIENT. My
+addition set them to the opposite meanings, so for any division node reaching
+that fallback (`mat_g2_na_q3_9` confirmed live) the displayed stem showed the
+DIVISOR'S SLOT filled with the QUOTIENT:
+
+```
+$ PYTHONPATH=. .venv/bin/python -c "... mat_g2_na_q3_9 seed 45 ..."
+before: What is 15 ÷ 3?   ans=3     (true fact is 15 ÷ 5 = 3 — divisor shown wrong)
+after:  What is 15 ÷ 5?   ans=3
+```
+
+**Fixed**: reverted the `groups`/`n` addition to `division.py` entirely.
+Replaced with a `ctx.dna_concept == "division"`-gated branch in
+`fmt_array_grid.py`, computing the array directly from `a`/`b` without
+touching any key another code path already assigns meaning to. Re-verified
+`mat_g3_na_q4_1`'s array_grid output is unchanged (still the correct
+divisor-rows x quotient-cols grid) and `mat_g2_na_q3_9` now shows the correct
+divisor in every sampled stem.
+
+## Bug 2 — error_detect never handled a non-result blank_target, pre-existing
+
+`mat_g3_na_q4_2` (missing_number, co-mapped with `division` — division wins
+the coin-flip for some seeds) surfaced: `division.py`'s own registry binding
+sets `structure="divisor_unknown"` for any division-mapped node whose
+competency text says "missing number" (this node's does) — a correct, existing
+binding, unrelated to Phase D. `blank_target` becomes `"b"` (the divisor) for
+those generations. `fmt_error_detect.py`'s `_build_pure_equation`, for every
+concept, unconditionally built `"{a} op {b}"` from the REAL values regardless
+of `blank_target`, and `format_error_detect` unconditionally appended
+`"= {actors_answer}"` after it — both hardcoding the assumption that the
+result is always what's unknown. When it isn't, the displayed sentence is
+internally incoherent: it shows the real (known) divisor, and separately
+grades the *actor's answer* against `ctx.correct_answer` (which for
+`blank_target="b"` is the divisor itself, not the number written after "="):
+
+```
+before: "Jose says: 56 ÷ 8 = 7. Is Jose correct?"
+        has_error: True, correct_value: 8
+        — 56 ÷ 8 = 7 is TRUE, but the item scores it as an error to be
+          corrected to 8, a number already visible and unrelated to "7".
+```
+
+**Fixed**: `_build_pure_equation` now builds the FULL `"a op b = result"`
+equation for every concept (addition/subtraction/multiplication/division),
+rendering `"___"` at whichever single slot `ctx.blank_target` names instead of
+always assuming `"result"`. `format_error_detect` fills that slot with the
+actor's claimed answer directly (`problem_text.replace("___", ...)`) instead
+of unconditionally appending `"= {actors_answer}"`. For the ordinary
+`blank_target="result"` case (the overwhelming majority of items) this is
+behaviorally identical to the old code — verified by rendering `mat_g1_na_q1_6`
+(plain addition, `blank_target` always `"result"`) before/after and confirming
+byte-identical stems.
+
+```
+after: "Jose says: 56 ÷ 7 = 7. Is Jose correct?"
+       has_error: True, correct_value: 8
+       — 56 ÷ 7 = 8, not 7, so the statement IS false; correcting the
+         blanked divisor to 8 makes it true. Internally consistent.
+```
+
+**Verified systematically, not just for the two reported cases**: wrote a
+throwaway script re-deriving the stated equation's truth from its own printed
+numbers for every `error_detect` sample across every
+addition/subtraction/multiplication/division/missing_number node (448 samples
+over 200 seeds), asserting `has_error` always agrees with whether the printed
+equation is actually false:
+
+```
+checked 448 inconsistent 0
+```
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_matrix --node mat_g2_na_q3_9   -> PASS
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_matrix --node mat_g3_na_q4_2   -> PASS
+$ DATABASE_URL= PYTHONPATH=. .venv/bin/python -m pytest tests/unit/ -q -m "not slow"                            -> 282 passed
+```
+
+## Re-review triggered by these two fixes
+
+Both fixes changed rendered text for a handful of nodes. `validate_judgment`'s
+freshness gate caught exactly 4: `mat_g2_na_q3_7`, `mat_g2_na_q3_9`,
+`mat_g3_na_q4_2`, `mat_g3_na_q4_5`. A final blind batch re-reviewed all four
+against fresh packets — verdicts: `mat_g2_na_q3_7` FAIL (tables 4/5 never
+drawn), `mat_g2_na_q3_9` FAIL (money sub-case never exercised — a real,
+separate, pre-existing gap, not the fixed bug), `mat_g3_na_q4_2` CONCERN
+(the fixed bug is gone; a narrower gap remains), `mat_g3_na_q4_5` FAIL
+(divisor exceeds the stated 1-digit scope on 2 of 7 samples, and money never
+appears). None of these four remaining gaps are the answer-key bug — that
+specific defect is independently confirmed resolved by the reviewer's own
+re-derivation of both nodes' math.
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_judgment
+Verdicts over 151 reviewed nodes: PASS=11 CONCERN=60 FAIL=80 UNKNOWN=0
+Judgment review validation: all nodes have genuine, complete reviews.
+```
+
+All 151 nodes now carry a genuine, non-stale, blind review against the
+current generator state — the full re-review obligation from Phase D and this
+phase's two fixes is closed.
+
+
+---
+
+# Phase F — full `run_all` verification and three more regressions it caught — 2026-08-02
+
+The Definition of Done (`run_all` exit 0, `mutation_harness` 7/7, unit suite green)
+had not been run end-to-end since Phase D/E's fixes began. It caught three more
+real regressions, all downstream of the Phase D window-collapse fix reaching
+content that was previously unreachable — the same pattern as every defect in
+Phases D and E. Each is root-caused and fixed below; the final run is clean.
+
+## 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`
+
+`§1E` (answer-key integrity) recomputes a DNA's `answer_formula` from
+`given_values` and compares it against the served answer.
+`validate_dna._eval_formula` evaluates `"numerator / denominator"` with Python's
+native `eval`, i.e. true division — exact for a power-of-2 denominator
+(`1/8 == 0.125`, no rounding error) but not for any other (`1/3 ==
+0.3333333333333333`, off from the exact rational by ~1e-17).
+`validate_math_answer` (the real serving-path grader, reused by this check)
+then parses that imprecise float as a `sympy.Float` and the served `"1/3"` as
+an exact `Rational`; their difference does not simplify to exactly 0:
+
+```
+$ PYTHONPATH=. .venv/bin/python -c "from backend.app.services.scoring import validate_math_answer as v; print(v(0.3333333333333333, '1/3'), v(0.125, '1/8'))"
+False True
+```
+
+This is the identical defect class already fixed once in this codebase
+(Ground Rule 2, Phase 1 item 3: `"0.5"` vs `"1/2"` type mismatch, fixed via
+`validate_dna._are_values_equal`) — the SERVED answer is genuinely correct,
+the recomputation path is imprecise. `validate_matrix.py`'s own
+`is_semantic_bypass` already exempted fractions for `operation in ("add",
+"subtract", "add_subtract", "compare")`, evidence the maintainers already knew
+this class of check doesn't apply cleanly to fractions; `"identify_name"`
+(the default, most common fraction operation) was never added because a
+non-power-of-2 denominator had never been sampled through this exact
+formatter/operation combination before — the Phase D window-collapse pool
+always served the *same* denominator for a given node (`mat_g2_na_q4_0`
+always `1/8`, exactly representable, silently never triggering this), so the
+gap was never exercised.
+
+**Fixed** (validate_matrix.py, Ground Rule 5 disclosure): widened the bypass
+from the three named operations to `dna_name == "fractions"` unconditionally
+— the float-vs-fraction-string mismatch applies to the DNA's answer
+representation regardless of which operation produced it, not to those three
+specifically.
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_matrix --node mat_g2_na_q4_0   -> PASS
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_matrix --node mat_g2_na_q4_1   -> PASS
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_matrix --node mat_g2_na_q4_2   -> PASS
+```
+
+## 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso)
+
+`money_peso.py` already had a deliberate, previously-shipped fix for reaching
+its ₱10,000 ceiling: it greedily builds a few near-ceiling piles (at 100%,
+90%, 80% of `max_total`) and adds them to the candidate pool alongside ~500
+uniformly-drawn piles (which cluster far below the ceiling). At `scalar=1.0`,
+`_magnitude_edge_band` correctly narrows this down to the intended 1-2
+near-ceiling candidates — by design a deliberately small, curated band, not a
+sparse/degenerate one.
+
+My Phase D fallback (`generate_pair_by_window`/`generate_number_by_window`:
+"if the window is too small, fall back to the whole pool") could not tell
+those two cases apart. It fired *after* the edge-band widening had already
+correctly narrowed to 2 candidates, diluting the near-ceiling pile back into
+the full ~500-candidate pool — a ~1-in-hundreds draw instead of a 1-in-2 one:
+
+```
+$ PYTHONPATH=. .venv/bin/python -c "... money_peso generate_params, scalar=1.0, seeds 200-209 ..."
+before: 1476, 501, 4301, 832, 1596, 1845, 505, 745, 1400, 2730   (never near 10000)
+```
+
+**Fixed**: both `generate_number_by_window` and `generate_pair_by_window`
+skip the sparse-window fallback when `scalar in (0.0, 1.0)` — the edge-band
+mechanism already owns that case and produces a deliberately narrow,
+purpose-built band, not a degenerate one. This is a narrower guard than "the
+fallback never fires at the endpoints" would suggest: it still fires for a
+DNA whose endpoint edge-band itself is empty/undersized for some other
+reason; it only stops double-diluting a band the edge-band step already
+built correctly.
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_matrix --node mat_g3_na_q2_0   -> PASS
+```
+Re-verified the original Phase D fixes this guard could have regressed
+(`mat_g3_na_q4_1`, `mat_g3_na_q4_2`, `mat_g2_na_q4_0`, `mat_g2_na_q4_1`,
+`mat_g2_na_q4_4`, `mat_g2_na_q3_1`) are all still PASS — none of those
+collapses happen at scalar 0.0/1.0, so this guard doesn't touch them.
+
+## 3. KG monotonicity — `order_of_operations` introduced but not propagated
+
+`data/knowledge_graph_g1_3.json`'s `cumulative_concepts` per node is a
+pre-built artifact derived from `registry.NODE_TO_DNA`
+(`scripts/rebuild_knowledge_graph.py`). Phase D's `mat_g3_na_q2_6`/`_7`
+remapping introduced `order_of_operations` as a concept for the first time at
+`mat_g3_na_q2_6` — but the KG file itself was never regenerated, so every
+node *after* it in chronological order was still missing that concept from
+its cumulative set, failing `validate_compat.py`'s `kg_monotonicity` check
+(a successor's cumulative concepts must be a superset of its predecessor's).
+
+**Fixed**: re-ran `scripts/rebuild_knowledge_graph.py` (the existing,
+sanctioned regeneration path for exactly this situation — first documented in
+Phase 1 item 4 of this log). Diff is minimal and exactly as expected: one
+`"order_of_operations"` insertion into `cumulative_concepts` for every node
+from `mat_g3_na_q2_6` onward, nothing else touched.
+
+```
+$ PYTHONPATH=. .venv/bin/python scripts/rebuild_knowledge_graph.py
+Rebuilt knowledge graph: 151 nodes → data/knowledge_graph_g1_3.json
+$ git diff --stat data/knowledge_graph_g1_3.json
+ data/knowledge_graph_g1_3.json | 30 ++++++++++++++++++++++++++++++
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_compat
+Compatibility validation: 5/5 check groups passed.
+```
+
+## Final Definition of Done
+
+```
+$ PYTHONPATH=. .venv/bin/python -m tests.mutation_harness
+7/7 mutations detected. Praise God — the verifier verifies.
+$ git diff --quiet -- backend/ ; grep -rn "MUTATION-TEST" backend/  # (excluding this session's own legitimate diffs)
+(clean — no leftover mutation markers)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+...
+Nodes Checked: 151 / Nodes Passed: 151 / Nodes Failed: 0
+PASS judgment_reviews (all nodes have genuine, complete, fresh reviews)
+NOTE verdict tally over 151 genuine reviews: PASS=11 CONCERN=60 FAIL=80
+ALL TESTS PASSED SUCCESSFULLY! Praise God!
+
+$ env -u DATABASE_URL PYTHONPATH=. .venv/bin/python -m pytest tests/unit/ -q -m "not slow"
+282 passed, 2 deselected in 19.64s
+```
+
+All three Definition-of-Done commands are green, with no `DATABASE_URL`
+needed for the unit suite (Item 3) and no dirty `matrix_report.json` blocking
+a checkout (also Item 3, verified: the file is untracked, still written
+locally, `git status` shows no conflict on it across every run this session).
+
+## Phase G — degenerate "estimate" pairs across all four estimate DNAs, 2026-08-04
+
+While investigating a seed-44 render of `mat_g3_na_q2_2` ("Estimate: 20 + 2 ≈
+___", answer 22) that looked suspiciously like the exact sum rather than a
+rounded estimate: `addition.py`'s `task_type="estimate"` branch (added by a
+background agent working the curriculum-debt backlog) rounds each addend to
+its OWN leading place independently. When BOTH addends already sit on their
+own rounding boundary (20 is already a multiple of 10; 2's "leading place" is
+the ones place, so it always no-ops), rounding changes nothing and the
+"estimate" is bit-for-bit identical to the exact sum — not wrong
+mathematically, but pedagogically vacuous: it never exercises the rounding
+skill the competency names. This was a deliberate, documented design choice
+in the branch's own comments (`est_min=1`, "no-ops naturally for
+single-digit values"), not an accident — but the resulting frequency was
+never measured.
+
+Measured across 300 seeds via `pipeline.run(node_id, seed=seed,
+is_student_path=True)`, checking `given_values['a'] == given_values['real_a']
+and given_values['b'] == given_values['real_b']` (i.e. rounding was a no-op
+for both operands):
+
+| Node | DNA | Degenerate rate (of estimate samples) |
+|---|---|---|
+| `mat_g3_na_q2_2` | addition | 5.7% (17/300) |
+| `mat_g3_na_q2_5` | subtraction | 0.7% (2/300) |
+| `mat_g3_na_q3_3` | multiplication | 3.7% (11/300) |
+| `mat_g3_na_q4_4` | division | 16.3% (49/300) — divisor is deliberately never rounded (see the branch's own comment), so the dividend alone rounding to itself is sufficient; worst-affected of the four |
+
+Root cause is the same shape across all four DNAs (same author, same session,
+same task_type): the estimate candidate pool never excludes or thins pairs
+where rounding is a no-op. This is structurally identical to the 0-operand
+degeneracy pattern fixed in Phase D — same fix applies: **thin, don't
+exclude**. Excluding degenerate pairs outright would risk emptying the pool
+at a tight ceiling (mirroring the exact regression the 0-operand fix hit
+against `tests/unit/test_semantic_leak_guards.py`); thinning to a ~10% cap of
+the non-degenerate pool keeps them reachable as a fallback without letting
+them dominate.
+
+**Fixed**: added an `_is_degenerate_estimate()` filter + thin-to-10%-cap
+block to all four DNAs' estimate branches (`addition.py`, `subtraction.py`,
+`multiplication.py`, `division.py`), applied to the candidate pool
+immediately before `generate_pair_by_window` is called. Division's filter
+checks only `a == real_a` (rounding the dividend) since its divisor is never
+rounded by design — checking `b == real_b` there would be vacuously true
+every time and thin nothing.
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -c "... re-measured over 300 seeds each ..."
+mat_g3_na_q2_2: total=300 degenerate=29 (9.7%)   # capped from 5.7%* -> ~10% ceiling
+mat_g3_na_q2_5: total=300 degenerate=2  (0.7%)   # already below cap, pool had few degenerate candidates to begin with
+mat_g3_na_q3_3: total=300 degenerate=8  (2.7%)   # down from 3.7%
+mat_g3_na_q4_4: total=300 degenerate=29 (9.7%)   # down from 16.3%
+```
+*(addition's post-fix rate is not lower than pre-fix because the cap is a
+ceiling on the candidate pool's degenerate share, not a hard sample-rate
+target — pre-fix the raw pool already happened to sit near 10% once the
+0-operand-pair filter narrowed it; the fix's effect is bounding it so it
+can't drift higher, e.g. as division's did at 16.3%.)
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_matrix --node mat_g3_na_q2_2   -> PASS
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_matrix --node mat_g3_na_q2_5   -> PASS
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_matrix --node mat_g3_na_q3_3   -> PASS
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_matrix --node mat_g3_na_q4_4   -> PASS
+```
+
+These four nodes' judgment files still need a fresh blind re-review (they are
+part of the same in-progress curriculum-debt backlog effort as the rest of
+the `task_type="estimate"` port) — not yet dispatched as of this entry.

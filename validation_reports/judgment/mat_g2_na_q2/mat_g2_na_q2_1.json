@@ -1,66 +1,44 @@
 {
   "node_id": "mat_g2_na_q2_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 4, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 55, 72],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What is the total value of 1 ₱50 bill, 1 ₱5 coin, and 1 ₱1 coin?",
-      "correct_answer": 56
-    },
-    {
-      "seed": 43,
-      "question_text": "What is the total value of 1 ₱10 coin and 1 ₱1 coin?",
-      "correct_answer": 11
-    },
-    {
-      "seed": 44,
-      "question_text": "Compare the numbers: 307 ___ 270. Which sign is correct: >, <, or =?",
-      "correct_answer": ">"
-    },
-    {
-      "seed": 45,
-      "question_text": "Compare the numbers: 92 ___ 930. Which sign is correct: >, <, or =?",
-      "correct_answer": "<"
-    },
-    {
-      "seed": 46,
-      "question_text": "What is the total value of 2 ₱20 bills and 1 ₱5 coin?",
-      "correct_answer": 45
-    }
+    {"seed": 42, "question_text": "What is the total value of 1 ₱50 bill, 1 ₱5 coin, and 1 ₱1 coin?", "correct_answer": 56},
+    {"seed": 43, "question_text": "What is the total value of 1 ₱10 coin and 1 ₱1 coin?", "correct_answer": 11},
+    {"seed": 44, "question_text": "Compare the numbers: 307 ___ 270. Which sign is correct: >, <, or =?", "correct_answer": ">"},
+    {"seed": 45, "question_text": "Compare the numbers: 92 ___ 930. Which sign is correct: >, <, or =?", "correct_answer": "<"},
+    {"seed": 46, "question_text": "What is the total value of 2 ₱20 bills and 1 ₱5 coin?", "correct_answer": 45},
+    {"seed": 50, "question_text": "270 cannot be determined 205. True or False?", "correct_answer": false},
+    {"seed": 51, "question_text": "Count the coins and bills shown. What is the total amount?", "correct_answer": "C"},
+    {"seed": 55, "question_text": "Use coins and bills to make exactly ₱21. Use the fewest pieces possible.", "correct_answer": 21},
+    {"seed": 72, "question_text": "What is the total value of 2 ₱10 coins and 1 ₱1 coin?", "correct_answer": 21}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The verb is 'compare the values of different denominations', but seeds 42, 43 and 46 ask for totals (50 + 5 + 1 = 56, 10 + 1 = 11, 20 + 20 + 5 = 45) and seeds 44/45 compare bare numerals. No sample ever sets two money amounts side by side to be compared."
+      "rationale": "The verb is 'compare the values of different denominations,' but 6 of 9 samples (42, 43, 46, 51, 55, 72) are pure valuation tasks with no comparison at all -- e.g. seed 42's 'What is the total value of 1 ₱50 bill...' -- and the two that do compare (44, 45) compare bare numbers ('307 ___ 270', '92 ___ 930') with no peso sign or coin/bill context whatsoever."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "None of the expected comparisons appear: coin against coin, bill against bill, coin against bill, or equal-value sets such as five 20-peso coins against one 100-peso bill. The '=' relation shows up only as a distractor in seeds 44 and 45."
+      "rationale": "No sample presents a coherent comparison of two different peso denomination combinations (e.g. '3 ₱20 bills' vs '5 ₱10 coins'); the one sample that attempts a money-flavored true/false comparison, seed 50, is grammatically broken ('270 cannot be determined 205')."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "'Compare the numbers: 92 ___ 930. Which sign is correct: >, <, or =?' is readable at Grade 2 Quarter 2 and the >, <, = symbol set is age-appropriate, even though the content it is applied to is the wrong content for this node."
+      "verdict": "FAIL",
+      "rationale": "Seed 50's question text reads '270 cannot be determined 205. True or False?' -- a nonsensical sentence a grade 2 student cannot parse, since the comparison relation between the two numbers was replaced by the distractor phrase 'cannot be determined' instead of an actual comparison statement."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "Three of the five stems (seeds 42, 43, 46) are word-for-word the same items served under mat_g2_na_q2_0, so this node has no distinct variant pool of its own, and no money-comparison context of any kind is offered."
+      "rationale": "Seeds 42, 43, and 46 are word-for-word the same question text as the same seeds in the separate valuation node mat_g2_na_q2_0, so this node shows no distinct variant pool of its own, and no coherent money-comparison framing appears anywhere in the 9 samples."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "The only genuine difficulty axis present is place-value comparison of abstract numerals (307 versus 270, 92 versus 930), which develops a different competency and leaves comparison of peso denominations at zero exposure across all five seeds."
+      "rationale": "The sample-to-sample variation mirrors node mat_g2_na_q2_0's valuation competency almost exactly (seeds 42, 43, 46, 72 share identical question text with that node), meaning this node's variation builds 'determine the value' rather than 'compare the values,' the skill it's supposed to serve."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The comparison numerals (92 to 930) sit inside 1000 and the money totals (11 to 56 pesos) sit far below it, so nothing in the sample approaches or tests the 1000-peso boundary the competency explicitly names."
+      "rationale": "The comparisons that do occur (307 vs 270, 92 vs 930) stay under 1000 as required, but the valuation totals mixed in top out at ₱56, far short of the stated ₱1000 ceiling."
     }
   },
   "overall": "FAIL"

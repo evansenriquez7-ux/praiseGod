@@ -1,92 +1,23 @@
 {
   "node_id": "mat_g3_dp_q3_0",
-  "reviewed_by": "Claude Opus 5 (Claude Code session 2026-07-26), blind packet-only re-review triggered by the validate_judgment staleness gate",
-  "review_date": "2026-07-26",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 6, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Fill in the table. Note: Each symbol meant 2 items.",
-      "correct_answer": [
-        2,
-        10,
-        8,
-        8
-      ]
-    },
-    {
-      "seed": 43,
-      "question_text": "Fill in the table. Note: Each symbol meant 2 items.",
-      "correct_answer": [
-        10,
-        6,
-        16,
-        12
-      ]
-    },
-    {
-      "seed": 44,
-      "question_text": "Fill in the table. Note: Each symbol meant 2 items.",
-      "correct_answer": [
-        18,
-        18,
-        4,
-        6
-      ]
-    },
-    {
-      "seed": 45,
-      "question_text": "Fill in the table. Note: Each symbol meant 2 items.",
-      "correct_answer": [
-        14,
-        16,
-        10,
-        4
-      ]
-    },
-    {
-      "seed": 46,
-      "question_text": "Fill in the table. Note: Each symbol meant 2 items.",
-      "correct_answer": [
-        14,
-        2,
-        8,
-        18
-      ]
-    }
+    {"seed": 42, "question_text": "Fill in the table. Note: Each symbol meant 2 items.", "correct_answer": [2, 10, 8, 8]},
+    {"seed": 43, "question_text": "Fill in the table. Note: Each symbol meant 2 items.", "correct_answer": [10, 6, 16, 12]},
+    {"seed": 44, "question_text": "Fill in the table. Note: Each symbol meant 2 items.", "correct_answer": [18, 18, 4, 6]},
+    {"seed": 45, "question_text": "Fill in the table. Note: Each symbol meant 2 items.", "correct_answer": [14, 16, 10, 4]},
+    {"seed": 46, "question_text": "Fill in the table. Note: Each symbol meant 2 items.", "correct_answer": [14, 2, 8, 18]}
   ],
   "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The competency is collecting data from experiments with a small number of outcomes, naming dice and coins as examples; all five sampled generations instead render 'Fill in the table' from a pre-existing pictograph, so the student is transcribing data that already exists rather than collecting any."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Neither example the competency gives is present in the window: no sample involves rolling a die, tossing a coin, or any repeated trial with enumerable outcomes, and no sample asks the student to record results as they occur."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The task itself - multiplying symbol counts by two to fill four table cells - is within Grade 3 reach, but the note 'Each symbol meant 2 items' is written in the past tense where the present tense is required, which reads as an error to a Grade 3 student."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "All five seeds render the identical question text with only the four answer values changing, so there is effectively one variant in the sampled window and no alternative framing of data collection at all."
-    },
-    "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "The only quantity that varies across seeds is the magnitude of the table values (2 through 18); a data-collection competency should progress by the number of outcomes or trials being tracked, which never varies here."
-    },
-    "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The values 2 to 18 are all small even multiples of the stated symbol value, which is a sensible magnitude for Grade 3, but 'a small number of possible outcomes' refers to the outcome space rather than the counts, and that dimension is not scaled at all."
-    }
+    "competency_fulfillment": {"verdict": "FAIL", "rationale": "The competency names conducting an experiment such as 'rolling a die or tossing a coin', but every one of the 5 samples is instead 'Fill in the table. Note: Each symbol meant 2 items.' with no die, coin, or trial of any kind referenced."},
+    "comprehensive_coverage": {"verdict": "FAIL", "rationale": "Neither named example outcome space (a 6-sided die or a 2-sided coin) is ever generated; the four-slot pictograph-style answers, e.g. [18, 18, 4, 6] for seed 44, don't correspond to any small, enumerable experimental outcome set at all."},
+    "cognitive_capacity": {"verdict": "CONCERN", "rationale": "Doubling a symbol count to fill a table (values up to 18 for seed 44) is grade-3 quarter-3 appropriate arithmetic, but it exercises pictograph scale-reading, not the 'collect/record trial outcomes' reasoning the competency actually names."},
+    "variant_comprehensiveness": {"verdict": "FAIL", "rationale": "All 5 samples use the identical 'Fill in the table. Note: Each symbol meant 2 items.' sentence with only the four target numbers changing; there is no coin-toss framing, no die-roll framing, and no alternate wording anywhere in the batch."},
+    "competency_alignment": {"verdict": "FAIL", "rationale": "The variation across seeds is purely which four numbers, e.g. [14, 16, 10, 4] for seed 45 versus [14, 2, 8, 18] for seed 46, populate a symbol-key table, an axis unrelated to designing or recording a small-outcome experiment."},
+    "scale_appropriateness": {"verdict": "FAIL", "rationale": "A die has 6 outcomes and a coin has 2, but every sample presents four unlabeled categories with counts running as high as 18, a scale and structure that never matches either named 'small number of possible outcomes' example."}
   },
   "overall": "FAIL"
 }

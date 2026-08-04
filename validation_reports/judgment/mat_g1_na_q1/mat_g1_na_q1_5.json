@@ -1,66 +1,41 @@
 {
   "node_id": "mat_g1_na_q1_5",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 0, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Which word describes the 5th position?",
-      "correct_answer": "fifth"
-    },
-    {
-      "seed": 43,
-      "question_text": "Which word describes the 6th position?",
-      "correct_answer": "sixth"
-    },
-    {
-      "seed": 44,
-      "question_text": "Write the symbol for the fifth position.",
-      "correct_answer": "5th"
-    },
-    {
-      "seed": 45,
-      "question_text": "Write the symbol for the sixth position.",
-      "correct_answer": "6th"
-    },
-    {
-      "seed": 46,
-      "question_text": "Which word describes the 6th position?",
-      "correct_answer": "sixth"
-    }
+    {"seed": 42, "question_text": "Which word describes the 1st position?", "correct_answer": "first"},
+    {"seed": 43, "question_text": "Which word describes the 5th position?", "correct_answer": "fifth"},
+    {"seed": 44, "question_text": "Write the symbol for the ninth position.", "correct_answer": "9th"},
+    {"seed": 45, "question_text": "Write the symbol for the seventh position.", "correct_answer": "7th"},
+    {"seed": 46, "question_text": "Which word describes the 7th position?", "correct_answer": "seventh"},
+    {"seed": 50, "question_text": "Write the symbol for the fifth position.", "correct_answer": "5th"}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The samples exercise ordinal vocabulary correctly, e.g. seed 44 'Write the symbol for the fifth position.' keyed '5th', but the competency's core phrase is 'Describe the position of objects', and no object appears in any of the five items. Nothing is placed in a line, a row or a queue, so the task reduces to a numeral-to-word translation drill rather than describing where something sits."
+      "verdict": "FAIL",
+      "rationale": "All six samples ask the student to recall a word-symbol pairing in isolation, e.g. seed 42's 'Which word describes the 1st position?' and seed 44's 'Write the symbol for the ninth position.' -- not one sample places an object in a line, row, or queue for the student to describe, despite the competency's core phrase 'position of objects'."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency enumerates '1st, 2nd, 3rd, up to 10th', yet only two ordinals are ever keyed across the whole set: fifth or 5th at seeds 42 and 44, sixth or 6th at seeds 43, 45 and 46. The three ordinals named verbatim in the competency text, 1st, 2nd and 3rd, are never the answer, and 10th appears only as a distractor at seed 45."
+      "verdict": "CONCERN",
+      "rationale": "The six samples cover only 1st, 5th (seeds 43, 50), 7th (seeds 45, 46), and 9th, so more than half of the 1st-to-10th span named in the competency -- 2nd, 3rd, 4th, 6th, 8th, and 10th itself -- is never generated in this packet."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Both stem forms are single short imperatives or questions with no embedded clauses, and the answer options are single words or two-character symbols, which is appropriate load for the first quarter of Grade 1. Ordinal words such as 'ninth' and 'eighth' sit inside the 1 to 10 band the competency itself introduces, so no later-grade vocabulary is smuggled in."
+      "rationale": "Both templates, 'Which word describes the Nth position?' and 'Write the symbol for the Nth position.', stay to a single short clause with vocabulary well within Grade 1 Quarter 1 reading ability."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Only two templates exist, 'Which word describes the Nth position?' and 'Write the symbol for the Nth position.', and seeds 43 and 46 emit the same stem for the sixth position with only reshuffled options. Absent are the contextual variations this competency implies: identifying who is third in a line of children, counting from the left versus the right, and naming the position of a specific pictured object."
+      "verdict": "CONCERN",
+      "rationale": "Only two task directions appear across all six seeds -- word-given-symbol (seeds 42, 43, 46) and symbol-given-word (seeds 44, 45, 50) -- and no picture-of-a-line, object-in-a-row, or real-world position scenario is ever rendered."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "The two templates are mirror images of one another at identical difficulty, word to symbol and symbol to word, so there is no progression from recognising a position, to naming it, to describing an object's place in an ordered set. Every item is a paired-associate recall of the same two ordinals, which cannot build the full competency."
+      "rationale": "The observed variation, e.g. seed 45's 'Write the symbol for the seventh position' versus seed 46's 'Which word describes the 7th position?', is a mirror-image vocabulary drill rather than a progression toward describing where an actual object sits, which is the applied skill the competency names."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "All values stay within the stated 1st to 10th ceiling and no option falls outside it, which is correct, but the keyed answers cluster entirely on 5th and 6th. The effective range being practised is two ordinals wide against a competency that explicitly spans ten, so the ceiling is respected while the span is not."
+      "verdict": "PASS",
+      "rationale": "No ordinal exceeds the competency's 10th ceiling, and the six samples span from 1st (seed 42) up to 9th (seed 44), covering most of the required 1st-to-10th range even though 10th itself is not among these six seeds."
     }
   },
   "overall": "FAIL"

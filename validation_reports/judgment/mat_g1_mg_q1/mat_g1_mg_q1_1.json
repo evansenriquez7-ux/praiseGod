@@ -1,67 +1,42 @@
 {
   "node_id": "mat_g1_mg_q1_1",
-  "reviewed_by": "Claude Opus 5 (Claude Code session 2026-07-26), blind packet-only re-review triggered by the validate_judgment staleness gate",
-  "review_date": "2026-07-26",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 0, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Which shape has the same number of sides as a square?",
-      "correct_answer": "rectangle"
-    },
-    {
-      "seed": 43,
-      "question_text": "Which shape has more sides — a triangle or a rectangle?",
-      "correct_answer": "rectangle"
-    },
-    {
-      "seed": 44,
-      "question_text": "Which shape has fewer corners — a square or a triangle?",
-      "correct_answer": "triangle"
-    },
-    {
-      "seed": 45,
-      "question_text": "Which shape has fewer corners — a square or a triangle?",
-      "correct_answer": "triangle"
-    },
-    {
-      "seed": 46,
-      "question_text": "Which shape has more sides — a triangle or a rectangle?",
-      "correct_answer": "rectangle"
-    }
+    {"seed": 42, "question_text": "Which shape has the same number of sides as a square?", "correct_answer": "rectangle"},
+    {"seed": 43, "question_text": "Which shape has more sides — a triangle or a rectangle?", "correct_answer": "rectangle"},
+    {"seed": 44, "question_text": "Which shape has fewer corners — a square or a triangle?", "correct_answer": "triangle"},
+    {"seed": 45, "question_text": "Which shape has fewer corners — a square or a triangle?", "correct_answer": "triangle"},
+    {"seed": 46, "question_text": "Which shape has more sides — a triangle or a rectangle?", "correct_answer": "rectangle"},
+    {"seed": 50, "question_text": "Which shape has fewer corners — a square or a triangle?", "correct_answer": "B"}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every sampled item compares two-dimensional shapes on exactly the two features the competency names: seed 42 compares side counts ('Which shape has the same number of sides as a square?') and seed 44 compares corner counts ('Which shape has fewer corners - a square or a triangle?')."
+      "rationale": "Stems like seed 43's 'Which shape has more sides — a triangle or a rectangle?' and seed 44's 'Which shape has fewer corners — a square or a triangle?' directly compare two named shapes by the exact features, sides and corners, the competency lists."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "Both named features (sides, corners) do appear, and both comparison directions (more/fewer, same-as) are present, but the shape vocabulary sampled is limited to triangle, square and rectangle in the stems; pentagon and hexagon appear only as distractors and are never the subject of a comparison."
+      "rationale": "Only three shape pairings ever appear across the six seeds -- square-vs-rectangle (same-sides), triangle-vs-rectangle (sides), and square-vs-triangle (corners) -- so rectangle-vs-square by corners never appears."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each stem is a single short comparative clause naming two familiar shapes, and the answer is a shape name rather than a computed value, which is well matched to a Grade 1 Quarter 1 reader who is still building shape vocabulary."
+      "rationale": "Comparative stems such as 'Which shape has fewer corners — a square or a triangle?' are single-clause, concrete, and appropriately short for Grade 1 Quarter 1."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "The five seeds produce only three distinct stems, with 'Which shape has fewer corners - a square or a triangle?' repeating across seeds 44 and 45 and the triangle-rectangle side comparison repeating across seeds 43 and 46; the sampled variant pool is thinner than the competency's comparison space."
+      "rationale": "Seeds 44 and 45 duplicate the exact same stem, and seeds 43 and 46 duplicate a second stem, so across six samples only three distinct comparison questions actually occur, with the seed 50 read_mcq repeating seed 44's stem a third time."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The observed progression moves from a same-as identification to explicit more/fewer comparisons, which is a sensible pedagogical order for distinguishing shapes by feature counts and stays inside the competency's scope."
+      "rationale": "The observed variation squarely targets side-count and corner-count comparisons between named shapes, seed 42's same-sides check and seed 43's more-sides check, which is exactly the feature-comparison axis this lc names."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "This competency has no numeric magnitude axis to scale; the relevant range is the shape set, and the sampled shapes stay within the small set of plane figures a Grade 1 Quarter 1 student has been introduced to."
+      "rationale": "No numeric ceiling applies to a shape-comparison competency; the shape set exercised, triangle, square, rectangle, is the correct and complete named scope for Grade 1 Quarter 1."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

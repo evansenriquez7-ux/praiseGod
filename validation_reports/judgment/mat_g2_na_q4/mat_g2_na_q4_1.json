@@ -1,30 +1,33 @@
 {
   "node_id": "mat_g2_na_q4_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, post-fix stale re-review batch 3, 2026-08-02",
+  "review_date": "2026-08-02",
   "blind": true,
   "sample_seeds": [
     42,
     43,
     44,
     45,
-    46
+    46,
+    50,
+    55,
+    72
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/8"
+      "question_text": "A shape is divided into 3 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/3"
     },
     {
       "seed": 43,
-      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/8"
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/2"
     },
     {
       "seed": 44,
-      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/8"
+      "question_text": "A shape is divided into 4 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/4"
     },
     {
       "seed": 45,
@@ -33,35 +36,50 @@
     },
     {
       "seed": 46,
-      "question_text": "A shape is divided into 8 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
-      "correct_answer": "1/8"
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/2"
+    },
+    {
+      "seed": 50,
+      "question_text": "What fraction does the model show?",
+      "correct_answer": "B"
+    },
+    {
+      "seed": 55,
+      "question_text": "Shade 1/2 of the shape.",
+      "correct_answer": "1/2"
+    },
+    {
+      "seed": 72,
+      "question_text": "A shape is divided into 2 equal parts. 1 part is shaded. What fraction of the shape is shaded?",
+      "correct_answer": "1/2"
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "'Read and write unit fractions in fraction notation' requires translating between the spoken name 'one-eighth' and the symbol 1/8, but every seed 42-46 serves the shape-shading identification item copied verbatim from mat_g2_na_q4_0. No sample asks the pupil to read a fraction name or write notation from words."
+      "verdict": "CONCERN",
+      "rationale": "Only seed 55's 'Shade 1/2 of the shape' asks the student to read a written fraction and act on it; the other seven samples (e.g. seed 44's 'A shape is divided into 4 equal parts...') all go picture-to-notation, which is thin coverage of the paired 'read and write' verbs."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Neither direction of the read/write pair is generated across seeds 42-46: there is no words-to-symbol prompt and no symbol-to-words prompt, and the only notation the node ever produces is 1/8, so the writing half of the competency has no representation at all."
+      "verdict": "CONCERN",
+      "rationale": "Of the eight samples, seven exercise deriving notation from a picture (e.g. seed 45's 1/8 item) while only seed 55 requires reading a given fraction ('1/2') and producing a matching representation — an unbalanced split for a competency naming both reading and writing."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The two short declaratives plus one question ('1 part is shaded. What fraction of the shape is shaded?') are within Grade 2 Quarter 4 decoding range and require exactly one reasoning step, counting the shaded part against the total of 8."
+      "rationale": "Prompts stay to one short sentence, e.g. seed 43's 'A shape is divided into 2 equal parts. 1 part is shaded.', appropriate for grade 2 quarter 4."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Every seed reuses one context, a nameless 'shape'. There is no halves-versus-thirds contrast, no concrete framing such as a bibingka or ribbon, and no fill-in-the-blank writing task, so the notation-production variant is entirely absent."
+      "verdict": "PASS",
+      "rationale": "Formats span mcq, read_mcq, set_click and cloze (seeds 42-72), giving reasonable surface variety even though the underlying task repeats."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "Difficulty never moves: seeds 42-46 share an identical stem and an identical key of 1/8, so nothing scaffolds a learner from reading a symbol that is given to writing one independently, which is the intended arc of this competency."
+      "verdict": "CONCERN",
+      "rationale": "This node's eight samples are byte-for-byte identical to sibling node mat_g2_na_q4_0's ('Represent and identify unit fractions...') samples, so nothing in the rendered content distinctly targets 'read and write...fraction notation' as opposed to the neighboring represent/identify competency."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Only eighths are ever written, and the distractor 3/16 puts a sixteenth on the page - notation outside the Grade 2 unit-fraction range that this reading-and-writing node is bounded by."
+      "verdict": "PASS",
+      "rationale": "Denominators stay at 2, 3, 4, and 8, all within the grade's expected unit-fraction range, with numerators fixed at 1."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

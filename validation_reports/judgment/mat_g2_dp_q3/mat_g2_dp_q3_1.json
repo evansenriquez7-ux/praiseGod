@@ -1,66 +1,42 @@
 {
   "node_id": "mat_g2_dp_q3_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer (packet-only: competency text + rendered samples, no generator source), 2026-07-27 re-review batch",
-  "review_date": "2026-07-27",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 3, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 75],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "Look at the picture graph. How many are in dogs?",
-      "correct_answer": "C"
-    },
-    {
-      "seed": 43,
-      "question_text": "Look at the picture graph. How many are in grapes?",
-      "correct_answer": "B"
-    },
-    {
-      "seed": 44,
-      "question_text": "Compare the numbers: 307 ___ 270. Which sign is correct: >, <, or =?",
-      "correct_answer": ">"
-    },
-    {
-      "seed": 45,
-      "question_text": "Compare the numbers: 92 ___ 930. Which sign is correct: >, <, or =?",
-      "correct_answer": "<"
-    },
-    {
-      "seed": 46,
-      "question_text": "Look at the picture graph. How many are in dogs?",
-      "correct_answer": "B"
-    }
+    {"seed": 42, "question_text": "Look at the picture graph. How many are in dogs?", "correct_answer": "C"},
+    {"seed": 43, "question_text": "Look at the picture graph. How many are in grapes?", "correct_answer": "B"},
+    {"seed": 44, "question_text": "Compare the numbers: 307 ___ 270. Which sign is correct: >, <, or =?", "correct_answer": ">"},
+    {"seed": 45, "question_text": "Compare the numbers: 92 ___ 930. Which sign is correct: >, <, or =?", "correct_answer": "<"},
+    {"seed": 46, "question_text": "Look at the picture graph. How many are in dogs?", "correct_answer": "B"},
+    {"seed": 50, "question_text": "270 cannot be determined 205. True or False?", "correct_answer": false},
+    {"seed": 75, "question_text": "Compare the numbers: 634 ___ 120. Which sign is correct: >, <, or =?", "correct_answer": ">"}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Seeds 44 and 45 are place-value comparisons ('Compare the numbers: 307 ___ 270' and '92 ___ 930'), not data interpretation. The word 'tabular' is never realized either: every on-topic seed opens 'Look at the picture graph'. The graph data is also absent from the sample payload, so keys such as 10 at seed 42 cannot be checked against any displayed pictograph."
+      "rationale": "Only seeds 42, 43, and 46 ('Look at the picture graph. How many are in dogs/grapes?') interpret a pictograph at all; seeds 44, 45, and 75 are pure numeral comparisons ('Compare the numbers: 307 ___ 270') with no table or graph involved."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "Only a single retrieval question type is generated, 'How many are in dogs?' and 'How many are in grapes?'. There is no 'how many more', no total across categories, no most/least identification, and no scaled pictograph in which one symbol stands for 2 or 5, despite 'with or without scale' being in the wording."
+      "rationale": "The competency names both 'tabular form' and 'pictograph', but no sample across all 7 seeds ever renders a table; only single-category pictograph counts (dogs, grapes) appear, so tabular interpretation is entirely unrepresented."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "'Look at the picture graph. How many are in dogs?' at seeds 42 and 46 is ungrammatical; a Grade 2 reader needs 'How many dogs are there?'. The magnitudes themselves, 3 through 13, are well matched to Quarter 3."
+      "verdict": "FAIL",
+      "rationale": "Seed 50's rendered sentence, '270 cannot be determined 205. True or False?', is not a parseable sentence for a Grade 2 reader; the phrase 'cannot be determined' appears to have been substituted for a comparison symbol, producing gibberish."
     },
     "variant_comprehensiveness": {
       "verdict": "FAIL",
-      "rationale": "The 'dogs' stem recurs at seeds 42 and 46 with conflicting keys of 10 and then 3, and only one alternate category (grapes) is ever produced. No table, tally chart, or legend/key variant appears anywhere in the five samples."
+      "rationale": "Seeds 44, 45, 50, and 75 are all variants of a numeral-comparison task (>, <, =, or 'cannot be determined' as the answer key) rather than contextual variants of data-table or pictograph interpretation."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Interleaving three-digit numeral comparison (seed 44, key '>') with pictograph reading provides no ladder from unscaled one-to-one counting up to scaled interpretation, which is the actual progression this competency describes."
+      "rationale": "4 of 7 samples (44, 45, 50, 75) build numeral-magnitude comparison skill using values like 307, 634, and 930, an axis unrelated to reading data from a table or pictograph, which this competency is actually about."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "Pictograph counts between 3 and 13 are appropriate for Grade 2, but seeds 44 and 45 inject 307, 270, 92 and 930, magnitudes that belong to a number-sense comparison lc rather than to a Quarter 3 data-handling item."
+      "rationale": "The on-topic pictograph counts (10, 13, 3) fit Grade 2 Quarter 3 data-handling scale, but the contaminating comparison seeds inject 3-digit magnitudes (307, 634, 930) that belong to a different competency's numeric range entirely."
     }
   },
   "overall": "FAIL"

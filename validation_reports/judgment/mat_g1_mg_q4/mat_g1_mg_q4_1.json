@@ -1,67 +1,41 @@
 {
   "node_id": "mat_g1_mg_q4_1",
-  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, batch 1",
-  "review_date": "2026-07-22",
+  "reviewed_by": "Claude general-purpose subagent, blind judgment reviewer, wide-packet re-review batch 0, 2026-08-01",
+  "review_date": "2026-08-01",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "question_text": "What time does the clock show?",
-      "correct_answer": "C"
-    },
-    {
-      "seed": 43,
-      "question_text": "What time does the clock show?",
-      "correct_answer": "A"
-    },
-    {
-      "seed": 44,
-      "question_text": "Set the clock to show 7:00.",
-      "correct_answer": "7:00"
-    },
-    {
-      "seed": 45,
-      "question_text": "What time does the clock show?",
-      "correct_answer": "C"
-    },
-    {
-      "seed": 46,
-      "question_text": "What time does the clock show?",
-      "correct_answer": "B"
-    }
+    {"seed": 42, "question_text": "What time does the clock show?", "correct_answer": "C"},
+    {"seed": 43, "question_text": "What time does the clock show?", "correct_answer": "A"},
+    {"seed": 44, "question_text": "Set the clock to show 7:00.", "correct_answer": "7:00"},
+    {"seed": 45, "question_text": "What time does the clock show?", "correct_answer": "C"},
+    {"seed": 46, "question_text": "What time does the clock show?", "correct_answer": "B"}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples cover both halves of the competency: 'read_mcq' items ('What time does the clock show?') test reading, and the 'set_fill_in_blank' item ('Set the clock to show 7:00.') tests writing/setting, matching 'read and write time' precisely."
+      "verdict": "FAIL",
+      "rationale": "The competency requires reading and writing time 'by the hour, half hour, AND quarter hour', but every single one of the five samples uses only on-the-hour times, 11:00, 1:00, 7:00, 5:00, 2:00 across seeds 42-46 -- no half-hour or quarter-hour time appears anywhere in the sample set."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "time_reading registers 3 axes/20 combos per variant_registry, machine-verified exhaustively by validate_matrix; the 5 sampled seeds are only illustrative of that larger space."
+      "verdict": "FAIL",
+      "rationale": "Half-hour and quarter-hour, both explicitly named sub-cases, are completely absent across all five seeds; only whole-hour reading, seeds 42, 43, 45, 46, and whole-hour writing, seed 44's 'Set the clock to show 7:00', are ever generated."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Both observed prompt types are extremely short, e.g. 'What time does the clock show?' is 5 words, well under the 15-word cap, appropriate for grade 1."
+      "rationale": "Both the read prompt 'What time does the clock show?' and the write prompt 'Set the clock to show 7:00.' are short, direct, and appropriate for Grade 1 Quarter 4."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "20 registered combos across 3 axes plausibly supports the three named time granularities, hour, half hour, quarter hour, combined with both read and write/set interaction formats observed in the samples."
+      "verdict": "CONCERN",
+      "rationale": "Both read, 4 of 5 samples, and write, seed 44, directions appear, which is good directional coverage, but with no half-hour or quarter-hour variant to pair with either direction, the variant space only spans one of the three named time granularities."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The two observed formats, reading a clock face and setting a clock to a stated time, map exactly onto the competency's two named verbs, without reaching into elapsed-time or AM/PM distinctions that belong to a later competency."
+      "verdict": "CONCERN",
+      "rationale": "All variation across the five seeds is in which whole hour is displayed, 11, 1, 7, 5, 2, which only exercises the 'hour' portion of the named scale and never touches the half-hour or quarter-hour distinctions the competency explicitly calls out."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The one concrete time value shown (7:00) is a simple on-the-hour value appropriate as an entry point; there is no larger numeric scale concern for a clock-reading competency."
+      "verdict": "FAIL",
+      "rationale": "The competency's stated scope spans three time granularities, hour, half hour, quarter hour; the observed sample range covers only whole hours, missing two-thirds of the named granularity scale entirely."
     }
   },
-  "overall": "PASS"
+  "overall": "FAIL"
 }
