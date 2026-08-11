@@ -26,17 +26,29 @@ reviewer recorded; drift is a loud FAIL demanding a fresh blind re-review. This 
 doc_rem.md R4 ("doc changes ship with their enforcement, atomically") applied to the
 judgment species: generator content and its review move together or CI stops.
 
-No graceful fallbacks: a missing, unparseable, incomplete, boilerplate, or stale
-review is a loud FAIL naming the node, never a skip (Ground Rule 3).
+Freshness alone proved insufficient, and the way it failed is worth stating: it
+re-renders `samples_reviewed` and never reads the rationale. A set of 151 reviews
+was filed in which the samples block WAS regenerated fresh from the live pipeline
+and a template rationale — one sentence frame with the node ID and seed list
+substituted in — was stapled to it. Freshness passed all 151; the verbatim-reuse
+check passed them too, because substituting the node ID makes no two rationales
+byte-identical. 115 of them quoted question stems that appear nowhere in their own
+samples. Three cross-file/structural checks close that hole (thresholds below):
+quote provenance, rationale-skeleton clustering, and reviewer plurality.
+
+No graceful fallbacks: a missing, unparseable, incomplete, boilerplate, templated,
+or stale review is a loud FAIL naming the node, never a skip (Ground Rule 3).
 """
 
 from __future__ import annotations
 
+import collections
 import json
+import re
 from pathlib import Path
 from typing import Any, Dict, List, Set
 
-from backend.app.practice_gen.registry import get_all_node_ids
+from backend.app.practice_gen.registry import get_all_node_ids, get_node_info
 from backend.app.practice_gen.validation.judgment_packets import _render_sample
 
 # Anchored to the repo root from this file's location, not the process CWD.
@@ -68,6 +80,36 @@ _MIN_RATIONALE_LEN = 40
 
 # Minimum distinct sample seeds a genuine review must have looked at.
 _MIN_SEEDS = 3
+
+# --- Anti-template thresholds -------------------------------------------------
+# The verbatim-reuse check below defeats byte-identical stubs, but not a template
+# with the node ID and seed list substituted in — which is exactly how a set of
+# 151 fabricated all-PASS reviews passed this gate. Three structural checks close
+# that hole; each threshold is stated here so weakening one is a visible diff.
+
+# How many nodes may share one *normalized* rationale skeleton (node IDs, quoted
+# spans, and digits stripped) before it is a template rather than a coincidence.
+# Sibling nodes legitimately produce similar prose; a skeleton spanning more than
+# a handful of nodes is a fill-in-the-blank form, not independent judgment.
+_MAX_SKELETON_CLUSTER = 3
+
+# How many nodes one `reviewed_by` identity may cover. A blind review is dispatched
+# in batches of <= 25 nodes (docs/pgen_judgment.md review protocol); one identity
+# stamped across the whole tree means one pass, not 151 independent judgments.
+_MAX_NODES_PER_REVIEWER = 25
+
+# Quoted spans shorter than this are too generic to trace to a source.
+_MIN_QUOTE_LEN = 4
+
+# A quoted span: an opening quote at a word boundary, a closing quote followed by
+# whitespace/punctuation/end. The boundary anchors keep intra-word apostrophes
+# ("student's") from being read as quote delimiters.
+_QUOTE_RE = re.compile(r"""(?:(?<=^)|(?<=[\s(\[]))(['"])(.+?)\1(?=[\s.,;:)\]]|$)""")
+
+# Node-ID-ish tokens, quoted spans, and digit runs are the three things a template
+# substitutes per node. Stripping them collapses a template to a constant string.
+_NODE_ID_RE = re.compile(r"\bmat_g\d+_[a-z]+_q\d+(?:_\d+)?\b")
+_DIGITS_RE = re.compile(r"\d+")
 
 
 def _node_file(node_id: str) -> Path:
@@ -217,6 +259,113 @@ def _validate_freshness(node_id: str, data: Dict[str, Any]) -> List[str]:
     return errs
 
 
+def _rationale_skeleton(rationale: str) -> str:
+    """
+    Collapse a rationale to the structure that survives per-node substitution.
+
+    A template review is written once and filled in per node: the node ID, the
+    seed numbers, and the quoted competency/sample text change; the sentence
+    frame does not. Strip exactly those three and two genuinely independent
+    rationales still read differently, while 151 instances of one form collapse
+    to a single identical string.
+    """
+    s = _NODE_ID_RE.sub("<NODE>", rationale.strip().lower())
+    s = _QUOTE_RE.sub("<QUOTED>", s)
+    s = _DIGITS_RE.sub("#", s)
+    return " ".join(s.split())
+
+
+def _provenance_corpus(node_id: str, data: Dict[str, Any]) -> str:
+    """
+    Everything a rationale for this node is entitled to quote: the samples the
+    review itself carries (stems, answers, options, formatter names) plus the
+    node's own MATATAG competency text. Anything else quoted as if observed was
+    not observed here.
+    """
+    parts: List[str] = [node_id, str(get_node_info(node_id).get("competency", ""))]
+    for s in data.get("samples_reviewed") or []:
+        if not isinstance(s, dict):
+            continue
+        parts.append(str(s.get("question_text", "")))
+        parts.append(str(s.get("correct_answer", "")))
+        parts.append(str(s.get("formatter", "")))
+        for opt in s.get("options") or []:
+            if isinstance(opt, dict):
+                parts.append(str(opt.get("value", "")))
+            else:
+                parts.append(str(opt))
+    return " ".join(" ".join(p.split()).lower() for p in parts)
+
+
+def _validate_quote_provenance(node_id: str, data: Dict[str, Any]) -> List[str]:
+    """
+    Every span a rationale puts in quotes must exist in the review's own packet.
+
+    The freshness gate re-renders `samples_reviewed` and proves *the samples block*
+    is current — but it never reads the rationale, so a template rationale stapled
+    onto a freshly-rendered samples block passes it untouched. That is the precise
+    mechanism by which 115 of 151 filed reviews quoted stems that appear nowhere in
+    the samples they claim to have judged. A quoted stem with no source in the
+    packet is fabricated evidence, which is a harder failure than a wrong verdict.
+    """
+    errs: List[str] = []
+    corpus = _provenance_corpus(node_id, data)
+    for item, f in (data.get("findings") or {}).items():
+        if not isinstance(f, dict):
+            continue
+        rationale = str(f.get("rationale", ""))
+        for _, span in _QUOTE_RE.findall(rationale):
+            probe = " ".join(span.split()).lower().strip().rstrip(".")
+            if len(probe) < _MIN_QUOTE_LEN:
+                continue
+            if probe not in corpus:
+                errs.append(
+                    f"{node_id}: findings['{item}'].rationale quotes {span!r}, which appears "
+                    f"nowhere in this review's own samples_reviewed or competency text — the "
+                    f"reviewer cited content it was never shown. Rebuild the packet and "
+                    f"re-review blind: python -m backend.app.practice_gen.validation."
+                    f"judgment_packets --node {node_id}"
+                )
+    return errs
+
+
+def _validate_reviewer_plurality(reviewers: Dict[str, List[str]]) -> List[str]:
+    """
+    One reviewer identity may not stamp the whole tree.
+
+    Blind review is dispatched in batches of <= _MAX_NODES_PER_REVIEWER nodes, each
+    to a separate agent that sees only that batch's packets. A single `reviewed_by`
+    string spanning more nodes than a batch therefore did not come from the review
+    protocol — it came from one pass writing files, which is the shape a fabricated
+    set has and a genuine one cannot.
+    """
+    errs: List[str] = []
+    for name, nodes in sorted(reviewers.items()):
+        if len(nodes) > _MAX_NODES_PER_REVIEWER:
+            errs.append(
+                f"reviewer plurality: 'reviewed_by' identity {name!r} covers {len(nodes)} nodes "
+                f"(max {_MAX_NODES_PER_REVIEWER} — one blind batch). A single identity spanning "
+                f"more than one batch is one pass, not independent per-node judgment. "
+                f"First nodes: {sorted(nodes)[:5]}."
+            )
+    return errs
+
+
+def _validate_skeleton_clusters(skeletons: Dict[tuple, List[str]]) -> List[str]:
+    """Fail any normalized rationale skeleton shared by more than _MAX_SKELETON_CLUSTER nodes."""
+    errs: List[str] = []
+    for (item, skeleton), nodes in sorted(skeletons.items(), key=lambda kv: -len(kv[1])):
+        if len(nodes) > _MAX_SKELETON_CLUSTER:
+            errs.append(
+                f"template rationale: {len(nodes)} nodes share one findings['{item}'] skeleton "
+                f"(max {_MAX_SKELETON_CLUSTER}) — node IDs, quoted spans, and digits stripped, the "
+                f"rationales are the same sentence frame, which is a fill-in-the-blank form rather "
+                f"than independent judgment. Skeleton: {skeleton[:160]!r}. "
+                f"Nodes: {sorted(nodes)[:5]}{' ...' if len(nodes) > 5 else ''}."
+            )
+    return errs
+
+
 def validate_judgment_reviews(fail_fast: bool = False) -> List[str]:
     """
     Validate every registered node's judgment review. Returns a flat list of
@@ -237,6 +386,8 @@ def validate_judgment_reviews(fail_fast: bool = False) -> List[str]:
         return [f"Judgment review directory '{JUDGMENT_DIR}' does not exist."]
 
     seen_rationales: Dict[str, str] = {}  # rationale -> first node_id that used it
+    skeletons: Dict[tuple, List[str]] = collections.defaultdict(list)  # (item, skeleton) -> nodes
+    reviewers: Dict[str, List[str]] = collections.defaultdict(list)  # reviewed_by -> nodes
 
     for nid in node_ids:
         path = _node_file(nid)
@@ -258,12 +409,19 @@ def validate_judgment_reviews(fail_fast: bool = False) -> List[str]:
         if fail_fast and errors:
             return errors
 
+        errors.extend(_validate_quote_provenance(nid, data))
+        if fail_fast and errors:
+            return errors
+
+        reviewers[str(data.get("reviewed_by", "")).strip()].append(nid)
+
         for item, f in (data.get("findings") or {}).items():
             if not isinstance(f, dict):
                 continue
             rationale = str(f.get("rationale", "")).strip().lower()
             if len(rationale) < _MIN_RATIONALE_LEN:
                 continue
+            skeletons[(item, _rationale_skeleton(rationale))].append(nid)
             if rationale in seen_rationales and seen_rationales[rationale] != nid:
                 errors.append(
                     f"{nid}: findings['{item}'].rationale is copied verbatim from "
@@ -276,6 +434,12 @@ def validate_judgment_reviews(fail_fast: bool = False) -> List[str]:
 
         if fail_fast and errors:
             return errors
+
+    # Cross-file structure. These are the checks a per-node pass structurally
+    # cannot make: a template is only visible against its siblings, and a single
+    # reviewer identity is only visible across the whole tree.
+    errors.extend(_validate_skeleton_clusters(skeletons))
+    errors.extend(_validate_reviewer_plurality(reviewers))
 
     return errors
 

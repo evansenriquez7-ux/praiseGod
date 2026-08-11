@@ -16,6 +16,25 @@ six findings missing, any `verdict` outside `PASS`/`CONCERN`/`FAIL`, any `ration
 any `rationale` reused verbatim across two nodes, and any cited seed whose live re-render no longer
 matches the `question_text` recorded (a **stale** review).
 
+### Anti-template checks
+
+The list above was satisfied in full by 151 fabricated all-PASS reviews written from one template with
+the node ID and seed list substituted in. The freshness check did not catch them because it re-renders
+`samples_reviewed` and never reads the rationale — so a template rationale stapled onto a freshly
+rendered samples block passed cleanly, and 115 of the 151 quoted question stems that appear nowhere in
+their own samples. Three further checks are therefore binding (enforced in `validate_judgment.py`,
+tested in `tests/unit/test_judgment_antitemplate.py`):
+
+| Check | Rule | Rejected because |
+|---|---|---|
+| **Quote provenance** | every quoted span of ≥ 4 chars in a rationale must appear in that review's own `samples_reviewed` (stem, answer, option value, formatter) or in the node's MATATAG competency text | a stem quoted but never shown is fabricated evidence, which is worse than a wrong verdict |
+| **Skeleton clustering** | with node IDs, quoted spans, and digits stripped, no rationale frame may recur across more than **3** nodes for the same finding | a frame spanning many nodes is a fill-in-the-blank form, not independent judgment |
+| **Reviewer plurality** | no single `reviewed_by` identity may cover more than **25** nodes — one blind batch | one identity across the tree is one pass, not per-node judgment |
+
+These are cross-file properties: a template is only visible against its siblings, and a single reviewer
+identity is only visible across the whole tree. Reviews are dispatched in blind batches of ≤ 25 nodes,
+each batch naming its own reviewer, which is what makes the 25-node quota satisfiable.
+
 ```json
 {
   "node_id": "mat_g1_na_q1_0",
