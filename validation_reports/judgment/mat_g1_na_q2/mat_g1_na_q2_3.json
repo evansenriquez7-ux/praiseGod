@@ -1,0 +1,150 @@
+{
+  "node_id": "mat_g1_na_q2_3",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B3 remediation (re-review of voided nodes), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 500, 501, 502, 601],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "Write 45 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "40 + 5",
+      "options": [
+        {"key": "A", "value": "4 + 5", "is_correct": false},
+        {"key": "B", "value": "10 + 5", "is_correct": false},
+        {"key": "C", "value": "40 + 5", "is_correct": true},
+        {"key": "D", "value": "50 + 4", "is_correct": false}
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Write 10 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "10 + 0",
+      "options": [
+        {"key": "A", "value": "10 + 0", "is_correct": true},
+        {"key": "B", "value": "1 + 0", "is_correct": false},
+        {"key": "C", "value": "30 + 8", "is_correct": false},
+        {"key": "D", "value": "1", "is_correct": false}
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "Write 20 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "20 + 0",
+      "options": [
+        {"key": "A", "value": "2 + 0", "text": "2 + 0", "is_correct": false},
+        {"key": "B", "value": "2", "text": "2", "is_correct": false},
+        {"key": "C", "value": "30 + 7", "text": "30 + 7", "is_correct": false},
+        {"key": "D", "value": "20 + 0", "text": "20 + 0", "is_correct": true}
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Write 15 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "10 + 5",
+      "options": [
+        {"key": "A", "value": "80 + 5", "is_correct": false},
+        {"key": "B", "value": "50 + 1", "is_correct": false},
+        {"key": "C", "value": "10 + 5", "is_correct": true},
+        {"key": "D", "value": "1 + 5", "is_correct": false}
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Write 10 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "10 + 0",
+      "options": [
+        {"key": "A", "value": "10 + 4", "is_correct": false},
+        {"key": "B", "value": "10 + 0", "is_correct": true},
+        {"key": "C", "value": "1 + 0", "is_correct": false},
+        {"key": "D", "value": "1", "is_correct": false}
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "true_false",
+      "question_text": "Write 20 as tens and ones, for example 45 = 40 + 5. The answer is 60 + 4. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use base-10 blocks to show the number 10.",
+      "correct_answer": 10
+    },
+    {
+      "seed": 500,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use base-10 blocks to show the number 50.",
+      "correct_answer": 50
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "Write 45 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "40 + 5",
+      "options": [
+        {"key": "A", "value": "40 + 5", "text": "40 + 5", "is_correct": true},
+        {"key": "B", "value": "60 + 4", "text": "60 + 4", "is_correct": false},
+        {"key": "C", "value": "50 + 4", "text": "50 + 4", "is_correct": false},
+        {"key": "D", "value": "4 + 5", "text": "4 + 5", "is_correct": false}
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Write 40 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "40 + 0",
+      "options": [
+        {"key": "A", "value": "4 + 0", "is_correct": false},
+        {"key": "B", "value": "40 + 0", "is_correct": true},
+        {"key": "C", "value": "30 + 6", "is_correct": false},
+        {"key": "D", "value": "4", "is_correct": false}
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Write 12 as tens and ones, for example 45 = 40 + 5.",
+      "correct_answer": "10 + 2",
+      "options": [
+        {"key": "A", "value": "1 + 2", "text": "1 + 2", "is_correct": false},
+        {"key": "B", "value": "20 + 1", "text": "20 + 1", "is_correct": false},
+        {"key": "C", "value": "20 + 8", "text": "20 + 8", "is_correct": false},
+        {"key": "D", "value": "10 + 2", "text": "10 + 2", "is_correct": true}
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every sampled item asks the student to express a two-digit number as tens and ones, e.g. the stem 'Write 45 as tens and ones, for example 45 = 40 + 5.' directly mirrors the competency's verb 'Decompose' and its object 'tens and ones.'"
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The competency says 'any 2-digit number' but across all eleven samples the largest number decomposed is in 'Use base-10 blocks to show the number 50.' and no sample's tens digit exceeds 5, so numbers like 67 or 89 are never exercised."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Each stem supplies a built-in worked model, 'for example 45 = 40 + 5', before asking the question, which is an appropriate grade 1 quarter 2 scaffold for a first encounter with place-value decomposition."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples cross several task framings: production ('Write 15 as tens and ones'), representation ('Use base-10 blocks to show the number 10.'), and verification ('The answer is 60 + 4. True or False?'), giving genuine variety beyond a single question type."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The distractors in every mcq/cloze sample manipulate only the tens/ones split itself, e.g. option '4 + 5' and '50 + 4' set against the correct '40 + 5', so difficulty tracks the decomposition skill rather than an unrelated axis."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "All values sampled sit in the bottom half of the two-digit range implied by 'any 2-digit number': the highest is 'the number 50' and the lowest is 'Write 10 as tens and ones', so the packet never verifies decomposition near the competency's true ceiling of 99."
+    }
+  },
+  "overall": "CONCERN"
+}

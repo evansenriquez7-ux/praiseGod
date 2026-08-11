@@ -1,0 +1,199 @@
+{
+  "node_id": "mat_g2_dp_q3_0",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Make a picture graph to show: cats: 10, dogs: 10, birds: 10, fish: 10. Each 🍎 equals 10.",
+      "correct_answer": [
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Make a picture graph to show: apples: 10, bananas: 6, mangoes: 16, grapes: 12. Each 🍎 equals 2.",
+      "correct_answer": [
+        10,
+        6,
+        16,
+        12
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Make a picture graph to show: roses: 15, sunflowers: 15, tulips: 15, daisies: 5. Each 🍎 equals 5.",
+      "correct_answer": [
+        15,
+        15,
+        15,
+        5
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Make a picture graph to show: Monday: 10, Tuesday: 10, Wednesday: 10, Thursday: 5. Each 🍎 equals 5.",
+      "correct_answer": [
+        10,
+        10,
+        10,
+        5
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Make a picture graph to show: cats: 14, dogs: 2, birds: 8, fish: 18. Each 🍎 equals 2.",
+      "correct_answer": [
+        14,
+        2,
+        8,
+        18
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Make a picture graph to show: Grade 1: 45, Grade 2: 40, Grade 3: 25, Grade 4: 35, Grade 5: 20, Grade 6: 10. Each 🍎 equals 5.",
+      "correct_answer": [
+        45,
+        40,
+        25,
+        35,
+        20,
+        10
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Make a picture graph to show: Monday: 30, Tuesday: 20, Wednesday: 30, Thursday: 30, Friday: 30, Saturday: 20. Each 🍎 equals 10.",
+      "correct_answer": [
+        30,
+        20,
+        30,
+        30,
+        30,
+        20
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Make a picture graph to show: basketball: 20, volleyball: 30, swimming: 20, running: 40, soccer: 10, tennis: 40. Each 🍎 equals 10.",
+      "correct_answer": [
+        20,
+        30,
+        20,
+        40,
+        10,
+        40
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Make a picture graph to show: Monday: 13, Tuesday: 16, Wednesday: 6, Thursday: 5. Draw one 🍎 for each item.",
+      "correct_answer": [
+        13,
+        16,
+        6,
+        5
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Make a picture graph to show: Math: 10, Science: 10, English: 10, Art: 10. Each 🍎 equals 10.",
+      "correct_answer": [
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Make a picture graph to show: roses: 6, sunflowers: 12, tulips: 18, daisies: 10. Each 🍎 equals 2.",
+      "correct_answer": [
+        6,
+        12,
+        18,
+        10
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Make a picture graph to show: red: 15, blue: 15, green: 10, yellow: 10. Each 🍎 equals 5.",
+      "correct_answer": [
+        15,
+        15,
+        10,
+        10
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Make a picture graph to show: cats: 8, dogs: 14, birds: 12, fish: 12. Each 🍎 equals 2.",
+      "correct_answer": [
+        8,
+        14,
+        12,
+        12
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every stem asks the student to build a picture graph from raw category counts, 'Make a picture graph to show: cats: 10, dogs: 10, birds: 10, fish: 10. Each 🍎 equals 10.', matching the 'in a pictograph with a scale' half of the competency."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "All thirteen sampled items go the same single direction, raw data into a pictograph; none tests the 'vice versa' direction the competency text explicitly names, where a pictograph would need to be read back into tabular or raw form."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Category counts stay small (4 to 6 categories, values up to 45) and the scale is stated plainly, matching what a Grade 2 Quarter 3 learner is expected to plot."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Scale factors of 2, 5, and 10 all occur, and one item drops to a 1-to-1 scale ('Draw one 🍎 for each item'), giving several distinct construction sub-tasks even though the overall direction never varies."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty rises through the number of categories and the size of the scale factor rather than shifting to an unrelated skill, keeping every item about pictograph construction."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Scale factors of 2, 5, and 10 and category totals up to 45 fit comfortably within what Grade 2 data work expects, without inflating past reasonable classroom counts."
+    }
+  },
+  "overall": "FAIL"
+}

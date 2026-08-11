@@ -1,0 +1,385 @@
+{
+  "node_id": "mat_g1_na_q4_3",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    72,
+    500,
+    501,
+    502,
+    600,
+    602,
+    607
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "How is ₱50 written using the currency code PhP?",
+      "correct_answer": "PhP 50",
+      "options": [
+        {
+          "key": "A",
+          "value": "₱50",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "50 PhP",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "PhP 50",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "PhP50c",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "How is ₱100 written using the currency code PhP?",
+      "correct_answer": "PhP 100",
+      "options": [
+        {
+          "key": "A",
+          "value": "PhP 100",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "PhP100c",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "100 PhP",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "₱100",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "How is ₱5 written in words?",
+      "correct_answer": "five pesos",
+      "options": [
+        {
+          "key": "A",
+          "value": "fifty-five pesos",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "twenty-five pesos",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "five centavos",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "five pesos",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "How is ₱20 written using the currency code PhP?",
+      "correct_answer": "PhP 20",
+      "options": [
+        {
+          "key": "A",
+          "value": "20 PhP",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "₱20",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "PhP 20",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "PhP20c",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "How is ₱5 written using the currency code PhP?",
+      "correct_answer": "PhP 5",
+      "options": [
+        {
+          "key": "A",
+          "value": "5 PhP",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "PhP 5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "PhP5c",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "₱5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "read_mcq",
+      "question_text": "Count the coins and bills shown. What is the total amount?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 100,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 120,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 90,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 105,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 55,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use coins and bills to make exactly ₱10. Use the fewest pieces possible.",
+      "correct_answer": 10
+    },
+    {
+      "seed": 72,
+      "formatter": "cloze",
+      "question_text": "How is ₱5 written using the currency code PhP?",
+      "correct_answer": "PhP 5",
+      "options": [
+        {
+          "key": "A",
+          "value": "PhP 5",
+          "text": "PhP 5",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "PhP5c",
+          "text": "PhP5c",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "5 PhP",
+          "text": "5 PhP",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "₱5",
+          "text": "₱5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use coins and bills to make exactly ₱10. Use the fewest pieces possible.",
+      "correct_answer": 10
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "How is ₱5 written in words?",
+      "correct_answer": "five pesos",
+      "options": [
+        {
+          "key": "A",
+          "value": "five pesos",
+          "text": "five pesos",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "five centavos",
+          "text": "five centavos",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "fifty-five pesos",
+          "text": "fifty-five pesos",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "twenty-five pesos",
+          "text": "twenty-five pesos",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "How is ₱20 written using the currency code PhP?",
+      "correct_answer": "PhP 20",
+      "options": [
+        {
+          "key": "A",
+          "value": "₱20",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "PhP 20",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "20 PhP",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "PhP20c",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "How is 'five pesos' written using the peso symbol?",
+      "correct_answer": "₱5",
+      "options": [
+        {
+          "key": "A",
+          "value": "₱50",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "₱10",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "₱5",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "5¢",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "How is ₱10 written in words?",
+      "correct_answer": "ten pesos",
+      "options": [
+        {
+          "key": "A",
+          "value": "ten pesos",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "ten centavos",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "twenty pesos",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "sixty pesos",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 607,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use coins and bills to make exactly ₱50. Use the fewest pieces possible.",
+      "correct_answer": 50
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "A handful of items step past notation recognition into a different skill — 'Use coins and bills to make exactly ₱10. Use the fewest pieces possible.' asks the student to assemble a total from pieces, which the competency's own wording, 'Recognize coins (excluding centavo coins) and bills up to ₱100', never asks for."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Where notation is actually being tested, all three forms appear — the PhP currency code, the peso symbol, and words ('five pesos') — so the notations named in the competency are each represented."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Converting a single named amount between symbol, code, and word form is a single-step recognition task appropriate for this grade and quarter."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "mcq, cloze, read_mcq, and set_fill_in_blank formats all appear, giving several distinct surfaces even though some of that variety drifts off the notation-recognition target."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Where the notation skill is tested, difficulty tracks which denomination is named rather than swapping to an unrelated money skill."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The largest denomination named, ₱100, matches the competency's stated ceiling exactly, and nothing in the sample goes past it."
+    }
+  },
+  "overall": "CONCERN"
+}

@@ -1,0 +1,335 @@
+{
+  "node_id": "mat_g1_na_q1_5",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    500,
+    501,
+    502,
+    600
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "Who arrived earlier: the student in 1st place or 3rd place?",
+      "correct_answer": "1st",
+      "options": [
+        {
+          "key": "A",
+          "value": "5th",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2nd",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1st",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "6th",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Write the symbol for the third position.",
+      "correct_answer": "3rd",
+      "options": [
+        {
+          "key": "A",
+          "value": "3rd",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "1st",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "6th",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4th",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "A runner finished in first place. What position number is that?",
+      "correct_answer": 1,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "What ordinal describes position number 2?",
+      "correct_answer": "2nd",
+      "options": [
+        {
+          "key": "A",
+          "value": "3rd",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "5th",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2nd",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "6th",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Write the symbol for the first position.",
+      "correct_answer": "1st",
+      "options": [
+        {
+          "key": "A",
+          "value": "4th",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1st",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "2nd",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5th",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "cloze",
+      "question_text": "What ordinal describes position number 2?",
+      "correct_answer": "2nd",
+      "options": [
+        {
+          "key": "A",
+          "value": "4th",
+          "text": "4th",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2nd",
+          "text": "2nd",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "6th",
+          "text": "6th",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1st",
+          "text": "1st",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "cloze",
+      "question_text": "What ordinal describes position number 5?",
+      "correct_answer": "5th",
+      "options": [
+        {
+          "key": "A",
+          "value": "5th",
+          "text": "5th",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "6th",
+          "text": "6th",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2nd",
+          "text": "2nd",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "9th",
+          "text": "9th",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "Which position comes after 6th?",
+      "correct_answer": "7th",
+      "options": [
+        {
+          "key": "A",
+          "value": "7th",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "10th",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "11th",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "2nd",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Which position comes after 3rd?",
+      "correct_answer": "4th",
+      "options": [
+        {
+          "key": "A",
+          "value": "3rd",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4th",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "10th",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "7th",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "A runner finished in second place. What position number is that?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "\"Write the symbol for the third position.\" and \"What ordinal describes position number 2?\" both directly test using ordinal numbers."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The competency states ordinals up to 10th, but the highest ordinal reached as a correct answer among the ten sampled seeds is 7th, from \"Which position comes after 6th?\"; 8th, 9th, and 10th never appear."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Ordinal vocabulary through 7th and the short prompts used fit Grade 1 Quarter 1."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Symbol-writing, cardinal-to-ordinal, ordinal-to-cardinal, and \"comes after\" framings are all represented."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sampled item stays inside describing a position with an ordinal number, with no unrelated skill mixed in."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Since no sample exercises an ordinal above 7th, the sampled range under-represents the 1st-to-10th ceiling this competency states."
+    }
+  },
+  "overall": "CONCERN"
+}

@@ -1,0 +1,394 @@
+{
+  "node_id": "mat_g1_na_q2_5",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    84,
+    85,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is 1 + 10?",
+      "correct_answer": 11,
+      "options": [
+        {
+          "key": "A",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 1 + 2?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "true_false",
+      "question_text": "12 + 1 = 13. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 45,
+      "formatter": "cloze",
+      "question_text": "3 + 1 = ___",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "text": "14",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "text": "4",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "cloze",
+      "question_text": "1 + 3 = ___",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "text": "4",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "text": "14",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 0 + 3 on the number line.",
+      "correct_answer": 3
+    },
+    {
+      "seed": 55,
+      "formatter": "read_mcq",
+      "question_text": "How many items are there in total?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 84,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 3 and 10. What is the sum?",
+      "correct_answer": 13
+    },
+    {
+      "seed": 85,
+      "formatter": "error_detect",
+      "question_text": "Maria says: 2 + 2 = 5. Is Maria correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 4
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "How many items are there in total?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 83,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 87,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 88,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "52 + 30 = 82. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 84 + 0?",
+      "correct_answer": 84,
+      "options": [
+        {
+          "key": "A",
+          "value": 94,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 84,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 85,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 83,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "What is 3 + 1?",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "true_false",
+      "question_text": "Pia is on step 2. Pia climbs up 2 more steps. What step is Pia on now? The answer is 4. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 10 + 3?",
+      "correct_answer": 13,
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 23,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "true_false",
+      "question_text": "2 + 1 = 2. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "What is 1 + 3?",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 2 and 1. What is the sum?",
+      "correct_answer": 3
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Both required addend pairings appear — 2-digit-plus-1-digit ('What is 10 + 3?') and 2-digit-plus-2-digit ('52 + 30 = 82. True or False?') — matching the competency's explicit pairing list."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Sums stretch from small single-digit totals up to 'How many items are there in total?' with an answer of 87, so the sub-cases named in the competency text are all represented in the sample."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "None of the sampled sums require carrying, keeping the reasoning load at simple column addition appropriate for this grade and quarter."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The set mixes bare number sentences, true_false judgments, read_mcq item-counting, and read_fill_in_blank part-part-whole prompts ('The two parts are 3 and 10. What is the sum?'), giving several angles on the same no-regroup addition."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "A handful of items, such as 'What is 1 + 2?' and '3 + 1 = ___', are single-digit-plus-single-digit facts, a pairing the competency text never names alongside its stated '2-digit and 1-digit' and '2-digit and 2-digit' combinations."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Totals reach as high as 87 within the sample without any item requiring regrouping, consistent with 'sums up to 100 without regrouping'."
+    }
+  },
+  "overall": "CONCERN"
+}

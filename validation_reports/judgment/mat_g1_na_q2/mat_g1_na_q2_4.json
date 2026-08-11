@@ -1,0 +1,317 @@
+{
+  "node_id": "mat_g1_na_q2_4",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    84,
+    85,
+    500,
+    501,
+    502,
+    601,
+    603,
+    608,
+    611
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is 1 + 1?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 1 + 2?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "true_false",
+      "question_text": "2 + 1 = 3. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 45,
+      "formatter": "cloze",
+      "question_text": "1 + 2 = ___",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "text": "13",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "text": "3",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "cloze",
+      "question_text": "1 + 2 = ___",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "text": "3",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "text": "13",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 1 + 2 on the number line.",
+      "correct_answer": 3
+    },
+    {
+      "seed": 55,
+      "formatter": "read_mcq",
+      "question_text": "How many items are there in total?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 84,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 1 and 1. What is the sum?",
+      "correct_answer": 2
+    },
+    {
+      "seed": 85,
+      "formatter": "error_detect",
+      "question_text": "Maria says: 2 + 1 = 2. Is Maria correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 3
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "How many items are there in total?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 19,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "15 is 1 ten and 5 ones. 5 is 5 ones. Add the place values, then find the total: 15 + 5 = 20. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "12 is 1 ten and 2 ones. 8 is 8 ones. Add the place values, then find the total: what is 12 + 8?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 19,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "true_false",
+      "question_text": "Pia is on step 2. Pia climbs up 1 more steps. What step is Pia on now? The answer is 3. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 603,
+      "formatter": "true_false",
+      "question_text": "1 + 1 = 1. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 608,
+      "formatter": "error_detect",
+      "question_text": "Rico says: 2 + 1 = 4. Is Rico correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 3
+      }
+    },
+    {
+      "seed": 611,
+      "formatter": "true_false",
+      "question_text": "2 + 1 = 4. True or False?",
+      "correct_answer": false
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "Fourteen of sixteen sampled items are bare single-digit facts with no tens/ones framing at all — 'What is 1 + 1?', '1 + 2 = ___', '2 + 1 = 3. True or False?' — and never mention a ten or a one. Only seeds 501 and 502 use the competency's defining method, 'Add the place values, then find the total: 15 + 5 = 20', so the node mostly tests raw addition recall rather than 'expressing addends as tens and ones (expanded form)'."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The expanded-form framing itself only shows up twice across sixteen seeds, both a 2-digit-plus-1-digit pairing, 'Add the place values, then find the total: what is 12 + 8?'; no sample exercises the method on a pair where both addends carry a nonzero tens digit."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Where present, the two-clause place-value narration ('12 is 1 ten and 2 ones. 8 is 8 ones.') is appropriately short for a first exposure to expanded-form addition in Grade 1."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Formatter variety is wide — mcq, true_false, cloze, set_fill_in_blank on a number line, read_fill_in_blank ('The two parts are 1 and 1. What is the sum?'), and error_detect ('Maria says: 2 + 1 = 2. Is Maria correct?') — even though most of that variety is spent on facts outside the competency's method."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Difficulty here tracks the size of a generic sum (1+1 versus 15+5) rather than the presence or complexity of the expanded-form technique the competency is actually about, so the progression varies the wrong axis."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "No sampled sum exceeds 20 ('12 + 8' tops the set), which is comfortably inside the up-to-100 ceiling shared with the sibling addition competency."
+    }
+  },
+  "overall": "FAIL"
+}

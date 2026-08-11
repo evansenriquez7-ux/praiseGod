@@ -1,0 +1,385 @@
+{
+  "node_id": "mat_g2_dp_q3_1",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "read_mcq",
+      "question_text": "Look at the picture graph. Each 🍎 = 10. How many are in bananas?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "read_mcq",
+      "question_text": "Look at the picture graph. Each 🍎 = 2. How many are in Thursday?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "read_mcq",
+      "question_text": "Look at the picture graph. Which has more: cats or fish?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": "dogs",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "cats",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "birds",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "fish",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "read_mcq",
+      "question_text": "Look at the picture graph. Which has more: tulips or roses?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": "daisies",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "tulips",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "sunflowers",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "roses",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "read_mcq",
+      "question_text": "Look at the picture graph. Each 🍎 = 2. How many are in sunflowers?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "Look at the picture graph. Which has more: Grade 1 or Grade 2?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": "Grade 2",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Grade 3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Grade 1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Grade 4",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "read_mcq",
+      "question_text": "Look at the picture graph. Which has more: swimming or running?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": "swimming",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "running",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "basketball",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "volleyball",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "read_mcq",
+      "question_text": "Look at the picture graph. Which has more: blue or green?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": "blue",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "green",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "yellow",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "red",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "read_mcq",
+      "question_text": "Look at the picture graph. Which has more: running or volleyball?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": "swimming",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "running",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "volleyball",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "basketball",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "read_mcq",
+      "question_text": "Look at the picture graph. Each 🍎 = 10. How many are in apples?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "read_mcq",
+      "question_text": "Look at the picture graph. Which has more: yellow or blue?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": "blue",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "yellow",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "red",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "green",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "read_mcq",
+      "question_text": "Look at the picture graph. Each 🍎 = 5. How many are in running?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "is_correct": true
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Value-reading ('Each 🍎 = 2. How many are in Thursday?') and comparison ('Which has more: cats or fish?') questions both directly interpret a pictograph, matching the pictograph half of 'Interpret data in tabular form and in a pictograph'."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "Every one of the twelve sampled items opens with 'Look at the picture graph'; none references reading a table, even though the competency explicitly requires interpreting data 'in tabular form and in a pictograph', leaving the tabular half untested in this sample."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Each item asks one value-lookup or one two-way comparison from a graph already shown, matching a Grade 2 Quarter 3 data-reading task."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Every sampled item uses the read_mcq formatter; no cloze, mcq, or true_false variant tests interpretation here, unlike the construction node this competency pairs with."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty shifts between a single value lookup and a two-category comparison rather than a different skill, keeping every item about reading the graph correctly."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Scale factors of 2, 5, and 10 appear in the value-reading items, matching the range already established for this grade's pictograph work."
+    }
+  },
+  "overall": "FAIL"
+}

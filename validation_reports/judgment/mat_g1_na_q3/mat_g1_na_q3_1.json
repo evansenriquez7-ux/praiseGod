@@ -1,0 +1,473 @@
+{
+  "node_id": "mat_g1_na_q3_1",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "7 − 5 = ___. What is the unknown number?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "7 − 5 = ___. What is the unknown number?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "20 − ___ = 12. What is the unknown number?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "text": "20",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 32,
+          "text": "32",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "text": "8",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "15 − ___ = 1. What is the unknown number?",
+      "correct_answer": 14,
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "19 + 1 = ___. What is the unknown number?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 39,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "true_false",
+      "question_text": "13 − ___ = 3. What is the unknown number? The answer is 13. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
+      "formatter": "read_mcq",
+      "question_text": "Both sides balance evenly. 10 + ? = 20. What is the missing value?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "Both sides balance evenly. 13 + ? = 20. What is the missing value?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "___ − 13 = 7. What is the unknown number?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "text": "20",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 19,
+          "text": "19",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 27,
+          "text": "27",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "___ + 8 = 20. What is the unknown number?",
+      "correct_answer": 12,
+      "options": [
+        {
+          "key": "A",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 28,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "20 − 10 = ___. What is the unknown number?",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "15 + ___ = 16. What is the unknown number?",
+      "correct_answer": 1,
+      "options": [
+        {
+          "key": "A",
+          "value": 17,
+          "text": "17",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 31,
+          "text": "31",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "text": "1",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "___ − 3 = 17. What is the unknown number?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 37,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 21,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "20 − 15 = ___. What is the unknown number?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 25,
+          "text": "25",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "text": "20",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "5 + 15 = ___. What is the unknown number?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 21,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "true_false",
+      "question_text": "17 − 1 = ___. What is the unknown number? The answer is 15. True or False?",
+      "correct_answer": false
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Missing values appear in every legal slot of a number sentence — as the difference ('7 − 5 = ___'), the subtrahend ('20 − ___ = 12'), and the minuend ('___ − 13 = 7') — which is exactly what 'Find the missing number in addition or subtraction sentences' asks for."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both operations are represented with the unknown in each position, including an addition sentence with the missing addend at the front ('___ + 8 = 20'), so the sub-cases the wording implies are not limited to subtraction alone."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Every number sentence stays within 20 and asks for a single unknown, matching the reasoning a Grade 1 Quarter 3 student is expected to manage."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "A balance-scale read_mcq ('Both sides balance evenly. 10 + ? = 20.') sits alongside standard cloze and true_false phrasing, giving a visual model in addition to the symbolic one."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Harder items change which position holds the blank rather than introducing an unrelated skill, so the missing-number concept itself is what gets harder."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Every sentence sampled stays at or under 20, matching 'numbers up to 20' without exception in this set."
+    }
+  },
+  "overall": "PASS"
+}

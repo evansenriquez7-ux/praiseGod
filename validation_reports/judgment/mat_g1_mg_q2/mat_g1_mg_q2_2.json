@@ -1,0 +1,517 @@
+{
+  "node_id": "mat_g1_mg_q2_2",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    500,
+    501,
+    502,
+    600,
+    602,
+    603,
+    605,
+    606,
+    607
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "A notebook is 5 paperclips long. A book is 2 paperclips long. How many paperclips longer is a notebook than a book?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "A book is 10 paperclips long. A shoe is 6 paperclips long. How many paperclips longer is a book than a shoe?",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "A book is 5 blocks long. A shoe is 2 blocks long. How many blocks longer is a book than a shoe?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "A shoe is 10 steps long. A notebook is 2 steps long. How many steps longer is a shoe than a notebook?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "A pencil is 10 paperclips long. A book is 9 paperclips long. How many paperclips longer is a pencil than a book?",
+      "correct_answer": 1,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "cloze",
+      "question_text": "A notebook is 10 blocks long. A book is 8 blocks long. How many blocks longer is a notebook than a book?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 55,
+      "formatter": "read_mcq",
+      "question_text": "A book is 5 paperclips long. A notebook is 1 paperclip long. How many paperclips longer is a book than a notebook?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "A crayon is 90 blocks long. A shoe is 33 blocks long. How many blocks longer is a crayon than a shoe?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 57,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 56,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 58,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 59,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "A book is 60 steps long. A notebook is 22 steps long. How many steps longer is a book than a notebook?",
+      "correct_answer": 38,
+      "options": [
+        {
+          "key": "A",
+          "value": 38,
+          "text": "38",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "text": "40",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 37,
+          "text": "37",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 39,
+          "text": "39",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "A book is 60 crayons long. A notebook is 47 crayons long. How many crayons longer is a book than a notebook?",
+      "correct_answer": 13,
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "A shoe is 10 steps long. A book is 2 steps long. How many steps longer is a shoe than a book?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Which is longer: 3 blocks or 6 blocks?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "The distance from the bench to the tree is 9 hands. The distance from the gate to the tree is 10 hands. Which distance is longer?",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "cloze",
+      "question_text": "A toy and a bag are placed apart. The distance between them is ___ hands.",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Segment A is 6 paperclips long. Segment B is 7 paperclips long. Are Segment A and Segment B equal in length?",
+      "correct_answer": "No",
+      "options": [
+        {
+          "key": "A",
+          "value": "No",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Yes",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "only if they are the same color",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "only if they are drawn in the same direction",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 607,
+      "formatter": "cloze",
+      "question_text": "An object measures 2 non_standard. About how many non_standard is that, rounded to the nearest 10?",
+      "correct_answer": 0,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 0,
+          "text": "0",
+          "is_correct": true
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "FAIL",
+      "rationale": "Seed 607 in this node also renders \"An object measures 2 non_standard. About how many non_standard is that, rounded to the nearest 10?\", the same broken placeholder text found in the sibling measure-length node, so this item likewise fails to present a real problem to solve."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Apart from the broken item, subtraction-style \"How many paperclips longer\" word problems are well represented across paperclips, blocks, steps, and crayons."
+    },
+    "cognitive_capacity": {
+      "verdict": "FAIL",
+      "rationale": "\"Rounded to the nearest 10\" again asks for a rounding operation this grade's measurement competency does not call for and Grade 1 has not yet taught."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "mcq, cloze, read_mcq, and an equality check (\"Are Segment A and Segment B equal in length?\") together give solid format range."
+    },
+    "competency_alignment": {
+      "verdict": "FAIL",
+      "rationale": "As in the sibling node, the broken seed tests rounding rather than solving a length or distance problem, pulling that one item off the competency's own axis."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Where the items are functioning correctly, computed differences such as 57, 38, and 13 stay in a range a Grade 1 Quarter 2 learner could reasonably work with."
+    }
+  },
+  "overall": "FAIL"
+}

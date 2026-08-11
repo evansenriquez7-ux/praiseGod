@@ -1,0 +1,479 @@
+{
+  "node_id": "mat_g1_na_q3_3",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    72,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    606
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "Daniel has 1 scroll. A classmate has 1 scroll. How many more scrolls does Daniel have?",
+      "correct_answer": 0,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Kuya Bien has 15 story chapters. A classmate has 1 story chapters. How many more story chapters does Kuya Bien have?",
+      "correct_answer": 14,
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 16,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "Team A scored 10 in the school stage and Team B scored 2. What is the difference in their scores?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "text": "8",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Team A scored 20 in the barangay court and Team B scored 12. What is the difference in their scores?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Ate Cara has 15 photo albums. A classmate has 10 photo albums. How many more photo albums does Ate Cara have?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 25,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "error_detect",
+      "question_text": "Jose solved this problem: \"Team A scored 20 in the music store and Team B scored 2. What is the difference in their scores?\" Jose says the answer is 18. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 18
+      }
+    },
+    {
+      "seed": 55,
+      "formatter": "read_mcq",
+      "question_text": "🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸 — There are 12 frogs.\n1 frog is taken away.\nHow many frogs are left?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 72,
+      "formatter": "true_false",
+      "question_text": "Sir Dave has 13 speech scripts. A classmate has 0 speech scripts. How many more speech scripts does Sir Dave have? The answer is 13. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤 — There are 20 drinks.\n18 drinks are taken away.\nHow many drinks are left?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "Team A scored 20 in the bakery and Team B scored 15. What is the difference in their scores?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 35,
+          "text": "35",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Team A scored 16 in the music store and Team B scored 8. What is the difference in their scores?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Team A scored 20 in the home stream setup and Team B scored 3. What is the difference in their scores?",
+      "correct_answer": 17,
+      "options": [
+        {
+          "key": "A",
+          "value": 23,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 17,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "true_false",
+      "question_text": "Pia has 6 leashes. A classmate has 0 leashes. How many more leashes does Pia have? The answer is 6. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Team A scored 10 in the school canteen and Team B scored 3. What is the difference in their scores?",
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "Yna has ___ sketchpads. A classmate has 0 sketchpads. How many more sketchpads does Yna have?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "Kris has 12 lightsticks. A classmate has 1 lightstick. How many more lightsticks does Kris have?",
+      "correct_answer": 11,
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Jomar has 11 clip highlights. A classmate has 0 clip highlights. How many more clip highlights does Jomar have?",
+      "correct_answer": 11,
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Comparison subtraction ('What is the difference in their scores?') and take-away subtraction ('1 frog is taken away. How many frogs are left?') both appear, covering the ways the competency's 'solve subtraction problems' phrasing can be realized."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Contexts range from sports scores to collectible counts to a pictorial frog scenario, so the sample is not narrowed to one story type."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Each stem is a single short sentence pair followed by one question, matching what a Grade 1 Quarter 3 learner is expected to parse orally."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "mcq, cloze, true_false, error_detect, and an emoji-based read_mcq together give symbolic, verification, and pictorial task shapes for the same skill."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "What changes between easier and harder samples is the size of the two quantities being compared, not a shift to a different arithmetic operation."
+    },
+    "scale_appropriateness": {
+      "verdict": "FAIL",
+      "rationale": "The competency states both numbers must be 'less than 20', yet five sampled items use 20 as an operand — 'Team A scored 20 in the barangay court and Team B scored 12', 'There are 20 drinks. 18 drinks are taken away', 'Team A scored 20 in the bakery and Team B scored 15', 'Team A scored 20 in the home stream setup and Team B scored 3', and the error_detect stem 'Team A scored 20 in the music store and Team B scored 2' — all placing an operand at, not under, the stated ceiling."
+    }
+  },
+  "overall": "FAIL"
+}

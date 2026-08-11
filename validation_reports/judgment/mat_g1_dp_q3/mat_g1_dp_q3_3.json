@@ -1,0 +1,139 @@
+{
+  "node_id": "mat_g1_dp_q3_3",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    500,
+    501,
+    502
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Fill in the chart with the correct counts.",
+      "correct_answer": [
+        1,
+        5,
+        4,
+        4
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Fill in the chart with the correct counts.",
+      "correct_answer": [
+        5,
+        3,
+        8,
+        6
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Fill in the chart with the correct counts.",
+      "correct_answer": [
+        9,
+        9,
+        2,
+        3
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Fill in the chart with the correct counts.",
+      "correct_answer": [
+        7,
+        8,
+        5,
+        2
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Fill in the chart with the correct counts.",
+      "correct_answer": [
+        7,
+        1,
+        10,
+        10
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Fill in the chart with the correct counts.",
+      "correct_answer": [
+        9,
+        10,
+        8,
+        5,
+        7,
+        4
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Fill in the chart with the correct counts.",
+      "correct_answer": [
+        6,
+        4,
+        6,
+        6,
+        9,
+        6
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Fill in the chart with the correct counts.",
+      "correct_answer": [
+        3,
+        6,
+        3,
+        7,
+        1,
+        7
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "\"Fill in the chart with the correct counts\" matches organizing a pictograph's values into a table, which is precisely what the competency describes."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The answer arrays behind the eight seeds range from four-category to six-category datasets, mirroring the range seen in the sibling present/interpret nodes for this quarter."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "A single short instruction sentence with no extra clauses is appropriately simple for a Grade 1 table-filling task."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "All eight sampled seeds share the exact same stem \"Fill in the chart with the correct counts\" with no context sentence or alternate wording separating any one sample from another."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Since the stem text never changes, the difficulty axis here is entirely the underlying dataset the student must transcribe, which stays inside the organize-into-a-table skill."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Counts in the correct_answer arrays run from 1 to 10 per category, matching the ceiling used by this quarter's unscaled pictograph work."
+    }
+  },
+  "overall": "CONCERN"
+}

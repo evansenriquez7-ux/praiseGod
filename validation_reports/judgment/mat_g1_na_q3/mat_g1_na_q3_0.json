@@ -1,0 +1,446 @@
+{
+  "node_id": "mat_g1_na_q3_0",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    51,
+    75,
+    82,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is 1 − 1?",
+      "correct_answer": 0,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 15 − 1?",
+      "correct_answer": 14,
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 16,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "10 − 2 = ___",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "text": "8",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "cloze",
+      "question_text": "20 − 12 = ___",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 32,
+          "text": "32",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "cloze",
+      "question_text": "15 − 10 = ___",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 25,
+          "text": "25",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 20 and one part is 2. What is the other part?",
+      "correct_answer": 18
+    },
+    {
+      "seed": 51,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 14 and it moves backward 0 numbers. Starting from 14, just count back 0 numbers. Which number will the dot land on?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 75,
+      "formatter": "true_false",
+      "question_text": "20 − 12 = 32. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 82,
+      "formatter": "error_detect",
+      "question_text": "Dante says: 12 − 0 = 12. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 12
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "How many items are left?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "20 − 15 = 5. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 16 − 8?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "What is 20 − 3?",
+      "correct_answer": 17,
+      "options": [
+        {
+          "key": "A",
+          "value": 23,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 17,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "true_false",
+      "question_text": "Pia has 6 leashes. A classmate has 0 leashes. How many more leashes does Pia have? The answer is 6. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 10 − 3?",
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "2 − 0 = ___",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "What is 12 − 1?",
+      "correct_answer": 11,
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 3 and 0. What is the sum?",
+      "correct_answer": 3
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The take-away framing the competency names appears directly in 'How many items are left?', while bare subtraction sentences and a number-line item ('Starting from 14, just count back 0 numbers') cover the rest of the wording."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Concrete and pictorial models both show up — a base-10-style number line and a visual left-over-items read_mcq — alongside symbolic minus signs, so 'a variety of concrete and pictorial models' is not reduced to one format."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Subtrahends and minuends stay small enough for direct counting-back or take-away reasoning, matching a Grade 1 Quarter 3 learner just meeting subtraction."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "true_false, error_detect ('Dante says: 12 − 0 = 12. Is Dante correct?'), and a part-part-whole read_fill_in_blank ('The total is 20 and one part is 2. What is the other part?') sit alongside plain minus-sign items, giving several distinct task shapes."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty rises through the size of the minuend and subtrahend rather than switching to a different operation, keeping every item anchored to subtraction itself."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "No value in the sample exceeds 20 ('20 − 12 = ___'), matching the stated ceiling for this competency exactly."
+    }
+  },
+  "overall": "PASS"
+}

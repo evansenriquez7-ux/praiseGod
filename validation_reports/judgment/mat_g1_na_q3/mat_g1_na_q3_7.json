@@ -1,0 +1,306 @@
+{
+  "node_id": "mat_g1_na_q3_7",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    500,
+    501,
+    502
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "You want to create a repeating pattern using: e, d. Which sequence correctly creates it?",
+      "correct_answer": "e, d, e, d, e, d",
+      "options": [
+        {
+          "key": "A",
+          "value": "e, d, c, d, e, d",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "e, d, e, d, e, b",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "e, d, e, d, e, d",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "e, o, e, d, e, d",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "You want to create a repeating pattern using: p, c. Which sequence correctly creates it?",
+      "correct_answer": "p, c, p, c, p, c",
+      "options": [
+        {
+          "key": "A",
+          "value": "p, c, p, c, p, c",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "p, j, p, c, p, c",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "p, c, p, c, p, j",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "p, c, p, c, f, c",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "You want to create a repeating pattern using: 10, 1. Which sequence correctly creates it?",
+      "correct_answer": "10, 1, 10, 1, 10, 1",
+      "options": [
+        {
+          "key": "A",
+          "value": "10, 1, 9, 1, 10, 1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "10, 1, 11, 1, 10, 1",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "10, 0, 10, 1, 10, 1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "10, 1, 10, 1, 10, 1",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "You want to create a repeating pattern using: 2, 1. Which sequence correctly creates it?",
+      "correct_answer": "2, 1, 2, 1, 2, 1",
+      "options": [
+        {
+          "key": "A",
+          "value": "2, 1, 2, 1, 0, 1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2, 1, 2, 0, 2, 1",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2, 1, 2, 1, 2, 1",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "2, 0, 2, 1, 2, 1",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "You want to create a repeating pattern using: 10, 10. Which sequence correctly creates it?",
+      "correct_answer": "10, 10, 10, 10, 10, 10",
+      "options": [
+        {
+          "key": "A",
+          "value": "10, 10, 10, 10, 10, 12",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "10, 10, 10, 10, 10, 10",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "10, 10, 10, 10, 10, 8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "10, 10, 13, 10, 10, 10",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "cloze",
+      "question_text": "You want to create a repeating pattern using: 2, 10. Which sequence correctly creates it?",
+      "correct_answer": "2, 10, 2, 10, 2, 10",
+      "options": [
+        {
+          "key": "A",
+          "value": "2, 10, 5, 10, 2, 10",
+          "text": "2, 10, 5, 10, 2, 10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2, 10, 2, 10, 2, 10",
+          "text": "2, 10, 2, 10, 2, 10",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "2, 12, 2, 10, 2, 10",
+          "text": "2, 12, 2, 10, 2, 10",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "2, 10, 2, 10, 1, 10",
+          "text": "2, 10, 2, 10, 1, 10",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "cloze",
+      "question_text": "You want to create a repeating pattern using: 19, 17, 9. Which sequence correctly creates it?",
+      "correct_answer": "19, 17, 9, 19, 17, 9",
+      "options": [
+        {
+          "key": "A",
+          "value": "19, 17, 9, 19, 17, 9",
+          "text": "19, 17, 9, 19, 17, 9",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "19, 16, 9, 19, 17, 9",
+          "text": "19, 16, 9, 19, 17, 9",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "19, 17, 9, 19, 15, 9",
+          "text": "19, 17, 9, 19, 15, 9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "19, 17, 9, 19, 17, 12",
+          "text": "19, 17, 9, 19, 17, 12",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "You want to create a repeating pattern using: 8, 18, 20. Which sequence correctly creates it?",
+      "correct_answer": "8, 18, 20, 8, 18, 20",
+      "options": [
+        {
+          "key": "A",
+          "value": "8, 18, 20, 8, 18, 20",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "8, 18, 23, 8, 18, 20",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "8, 18, 20, 8, 18, 19",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "8, 18, 20, 7, 18, 20",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "You want to create a repeating pattern using: f, o, c. Which sequence correctly creates it?",
+      "correct_answer": "f, o, c, f, o, c",
+      "options": [
+        {
+          "key": "A",
+          "value": "f, o, c, f, p, c",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "f, o, c, f, o, c",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "f, o, c, f, j, c",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "f, n, c, f, o, c",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Every sampled item hands the student a set of already-built sequences and asks which one is correct, e.g. 'Which sequence correctly creates it?' with options like 'e, d, c, d, e, d' as distractors; the competency's verb is 'Create repeating patterns', which calls for the student to build the sequence, not select the one someone else already built."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Two-unit patterns ('p, c') and three-unit patterns ('19, 17, 9') are both generated, and both letters and numbers serve as the repeating unit, matching the range the competency text names."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The four-option recognition format keeps the reasoning load light, appropriate for a first encounter with pattern construction at this grade and quarter."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Only mcq and cloze recognition formats appear across the sample; nothing here has the student place or arrange units directly, so the construction side of 'create' has no distinct task shape of its own in this set."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Distractors break the pattern at a single position (e.g. 'e, d, e, d, e, b') rather than testing an unrelated skill, so recognizing the break still exercises pattern understanding."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Pattern units stay within small numbers and single letters throughout, matching what this grade and quarter already handles for repeating patterns."
+    }
+  },
+  "overall": "CONCERN"
+}

@@ -1,0 +1,475 @@
+{
+  "node_id": "mat_g1_na_q1_9",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    72,
+    500,
+    501,
+    502,
+    600,
+    602,
+    606,
+    607,
+    608,
+    609
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "There are 1 resin in one basket and 1 resin in another basket. How many resin are there in all?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Start at 1. Count up 2 more. What number do you land on?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "Lara has 2 ribbons. A friend has 1 ribbon. If they put all their ribbons together, how many ribbons do they have in all?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "text": "13",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "text": "3",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "One basket has 1 water bottles. Another basket has 2 water bottles. If you put all the water bottles together, how many water bottles are there?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Start at 1. Count up 2 more. What number do you land on?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "error_detect",
+      "question_text": "Jose solved this problem: \"Mia has 1 merchandise shirts. A friend has 2 merchandise shirts. If they put all their merchandise shirts together, how many merchandise shirts do they have in all?\" Jose says the answer is 3. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 3
+      }
+    },
+    {
+      "seed": 55,
+      "formatter": "read_mcq",
+      "question_text": "🐸 — There is 1 frog.\n🐸 — 1 more frog is added.\nHow many total frogs are there?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 72,
+      "formatter": "true_false",
+      "question_text": "Start at 2. Count up 1 more. What number do you land on? The answer is 3. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤 — There are 12 drinks.\n🥤🥤🥤🥤🥤🥤🥤 — 7 more drinks are added.\nHow many total drinks are there?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 19,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "There are 15 book covers in one basket and 2 book covers in another basket. How many book covers are there in all?",
+      "correct_answer": 17,
+      "options": [
+        {
+          "key": "A",
+          "value": 17,
+          "text": "17",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "text": "18",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "text": "16",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 27,
+          "text": "27",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Ate Mags had 4 merch shirts. Then Ate Mags got 14 more. How many merch shirts does Ate Mags have now?",
+      "correct_answer": 18,
+      "options": [
+        {
+          "key": "A",
+          "value": 28,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "One basket has 1 clip highlights. Another basket has 2 clip highlights. If you put all the clip highlights together, how many clip highlights are there?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Janna has 1 fan shirts. A friend has 2 fan shirts. If they put all their fan shirts together, how many fan shirts do they have in all?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "There are 1 headset in one basket and 2 headsets in another basket. How many headsets are there in all?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 607,
+      "formatter": "read_mcq",
+      "question_text": "🍒 — There is 1 cherry.\n🍒 — 1 more cherry is added.\nHow many total cherries are there?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 608,
+      "formatter": "true_false",
+      "question_text": "Kuya Tads is on step 2. Kuya Tads climbs up 1 more steps. What step is Kuya Tads on now? The answer is 3. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 609,
+      "formatter": "mcq",
+      "question_text": "There are 1 guitar picks in one basket and 1 guitar picks in another basket. How many guitar picks are there in all?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Most items are genuine addition word problems, such as \"Lara has 2 ribbons. A friend has 1 ribbon. If they put all their ribbons together, how many ribbons do they have in all?\", but the grammar in several stems is broken, e.g. \"One basket has 1 water bottles. Another basket has 2 water bottles.\", pairing the singular quantity 1 with a plural noun."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Pictorial word problems using emoji, giving totals such as \"How many total frogs are there?\", satisfy the given-in-pictures half of the competency alongside the plain-text word problems."
+    },
+    "cognitive_capacity": {
+      "verdict": "FAIL",
+      "rationale": "Repeated grammar errors -- \"There are 1 resin in one basket and 1 resin in another basket.\" and \"Janna has 1 fan shirts.\" among them -- model incorrect English number agreement to students who are concurrently learning English sentence structure at this grade."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Pictorial, narrative word-problem, counting-up, and error-detection formats are all present across the seventeen sampled seeds."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "What varies across seeds is the object being counted and the numbers involved, staying inside solving addition problems rather than an unrelated axis."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Sums sampled stay within 20, for example 15 + 2 = 17 and 4 + 14 = 18."
+    }
+  },
+  "overall": "FAIL"
+}

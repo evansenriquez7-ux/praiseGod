@@ -1,0 +1,368 @@
+{
+  "node_id": "mat_g1_mg_q2_1",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    500,
+    501,
+    502,
+    600,
+    601
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "Which is longer: 1 paperclip or 5 paperclips?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Which is longer: 5 paperclips or 3 paperclips?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "The distance from the bench to the tree is 9 blocks. The distance from the gate to the tree is 2 blocks. Which distance is longer?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "The distance from the bench to the tree is 7 steps. The distance from the gate to the tree is 8 steps. Which distance is longer?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Which is longer: 7 paperclips or 1 paperclip?",
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "cloze",
+      "question_text": "The distance from the bench to the tree is 5 blocks. The distance from the gate to the tree is 6 blocks. Which distance is longer?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "text": "6",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "cloze",
+      "question_text": "The distance from the bench to the tree is 68 blocks. The distance from the gate to the tree is 75 blocks. Which distance is longer?",
+      "correct_answer": 75,
+      "options": [
+        {
+          "key": "A",
+          "value": 75,
+          "text": "75",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 76,
+          "text": "76",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 68,
+          "text": "68",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 74,
+          "text": "74",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "The distance from the bench to the tree is 81 steps. The distance from the gate to the tree is 46 steps. Which distance is longer?",
+      "correct_answer": 81,
+      "options": [
+        {
+          "key": "A",
+          "value": 81,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 82,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 46,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "The distance from the bench to the tree is 47 crayons. The distance from the gate to the tree is 22 crayons. Which distance is longer?",
+      "correct_answer": 47,
+      "options": [
+        {
+          "key": "A",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 47,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 46,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 48,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "The distance from the bench to the tree is 6 steps. The distance from the gate to the tree is 8 steps. Which distance is longer?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Which is longer: 10 hands or 9 hands?",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "\"Which is longer: 5 paperclips or 3 paperclips?\" and the bench-to-tree distance items directly compare two non-standard-unit measurements, matching the competency."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both a same-unit-count comparison (paperclips vs. paperclips) and a named-distance comparison (bench-to-tree vs. gate-to-tree) sub-case are generated."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Comparative sentence structure throughout stays consistent with what a Grade 1 Quarter 2 learner would encounter."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "cloze, mcq, and a plain \"which is longer\" phrasing together cover the comparison task from several angles."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The unit changes (paperclips, blocks, steps, hands, crayons) but the underlying task -- deciding which measurement is greater -- never drifts."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numbers scale from single digits up through the eighties (seed 501's 81 vs. 46 steps), a believable span given this grade also counts to 100."
+    }
+  },
+  "overall": "PASS"
+}

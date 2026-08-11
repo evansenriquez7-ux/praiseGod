@@ -1,0 +1,231 @@
+{
+  "node_id": "mat_g1_mg_q4_1",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    500,
+    501,
+    502,
+    601,
+    605,
+    607,
+    608
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "read_mcq",
+      "question_text": "What time does the clock show?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": "3:00",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2:05",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2:00",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "1:00",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "read_mcq",
+      "question_text": "What time does the clock show?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": "5:00",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "4:00",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "5:05",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "6:00",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Set the clock to show 9:00.",
+      "correct_answer": "9:00"
+    },
+    {
+      "seed": 45,
+      "formatter": "read_mcq",
+      "question_text": "What time does the clock show?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": "7:25",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "8:30",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "7:30",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "6:30",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "read_mcq",
+      "question_text": "What time does the clock show?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": "7:05",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "7:00",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "6:00",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "8:00",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Set the clock to show 9:30.",
+      "correct_answer": "9:30"
+    },
+    {
+      "seed": 501,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Set the clock to show 5:30.",
+      "correct_answer": "5:30"
+    },
+    {
+      "seed": 502,
+      "formatter": "read_mcq",
+      "question_text": "What time does the clock show?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": "7:15",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "6:15",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "6:10",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5:15",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Set the clock to show 11:00.",
+      "correct_answer": "11:00"
+    },
+    {
+      "seed": 605,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Set the clock to show 10:00.",
+      "correct_answer": "10:00"
+    },
+    {
+      "seed": 607,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Set the clock to show 12:00.",
+      "correct_answer": "12:00"
+    },
+    {
+      "seed": 608,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Set the clock to show 3:00.",
+      "correct_answer": "3:00"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "\"What time does the clock show?\" covers reading, and \"Set the clock to show 9:30.\" covers writing, matching the competency's two verbs directly."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Reading items cover hour, half hour, and quarter hour (2:00, 7:30, and 6:15 respectively), but every writing item -- 9:00, 9:30, 5:30, 11:00, 10:00, 12:00, 3:00 -- lands on the hour or half hour, never a quarter-hour target."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Clock-time vocabulary and short instructions throughout suit Grade 1 Quarter 4."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Both the reading direction (mcq) and the writing direction (set_fill_in_blank) are represented, just unevenly across the three time sub-cases."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty varies by which specific time is shown or requested, staying entirely inside the clock-reading-and-setting skill."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All sampled times sit within an ordinary 12-hour clock face, matching what a Grade 1 analog clock lesson would use."
+    }
+  },
+  "overall": "CONCERN"
+}

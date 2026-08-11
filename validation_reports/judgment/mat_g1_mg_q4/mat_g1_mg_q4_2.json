@@ -1,0 +1,443 @@
+{
+  "node_id": "mat_g1_mg_q4_2",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    500,
+    501,
+    502,
+    600,
+    601,
+    603,
+    604,
+    605,
+    606
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What day of the week comes right after Friday?",
+      "correct_answer": "Saturday",
+      "options": [
+        {
+          "key": "A",
+          "value": "Sunday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Tuesday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Saturday",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Monday",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What day of the week comes right after Saturday?",
+      "correct_answer": "Sunday",
+      "options": [
+        {
+          "key": "A",
+          "value": "Sunday",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Tuesday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Wednesday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Monday",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "What month of the year comes right before December?",
+      "correct_answer": "November",
+      "options": [
+        {
+          "key": "A",
+          "value": "February",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "January",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "March",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "November",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "What day of the week comes right after Tuesday?",
+      "correct_answer": "Wednesday",
+      "options": [
+        {
+          "key": "A",
+          "value": "Thursday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Sunday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Wednesday",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Monday",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What day of the week comes right before Thursday?",
+      "correct_answer": "Wednesday",
+      "options": [
+        {
+          "key": "A",
+          "value": "Tuesday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Wednesday",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Sunday",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "mcq",
+      "question_text": "What month of the year comes right after October?",
+      "correct_answer": "November",
+      "options": [
+        {
+          "key": "A",
+          "value": "November",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "February",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "January",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "March",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "What day of the week comes right after Tuesday?",
+      "correct_answer": "Wednesday",
+      "options": [
+        {
+          "key": "A",
+          "value": "Wednesday",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Thursday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Sunday",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What day of the week comes right after Friday?",
+      "correct_answer": "Saturday",
+      "options": [
+        {
+          "key": "A",
+          "value": "Sunday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Saturday",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Tuesday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Monday",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "What day of the week comes right after Wednesday?",
+      "correct_answer": "Thursday",
+      "options": [
+        {
+          "key": "A",
+          "value": "Sunday",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Thursday",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Tuesday",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "What month of the year comes right before September?",
+      "correct_answer": "August",
+      "options": [
+        {
+          "key": "A",
+          "value": "February",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "January",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "March",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "August",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "What month of the year comes right after June?",
+      "correct_answer": "July",
+      "options": [
+        {
+          "key": "A",
+          "value": "March",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "July",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "January",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "February",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "What day of the week comes right before Wednesday?",
+      "correct_answer": "Tuesday",
+      "options": [
+        {
+          "key": "A",
+          "value": "Tuesday",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Monday",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Sunday",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Thursday",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "mcq",
+      "question_text": "What month of the year comes right before July?",
+      "correct_answer": "June",
+      "options": [
+        {
+          "key": "A",
+          "value": "June",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "January",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "February",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "March",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "What month of the year comes right before June?",
+      "correct_answer": "May",
+      "options": [
+        {
+          "key": "A",
+          "value": "May",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "January",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "February",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "March",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "\"What day of the week comes right after Friday?\" and \"What month of the year comes right before December?\" both test sequencing directly, matching the competency's own phrasing."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both days-of-the-week and months-of-the-year sub-cases appear, and both are asked using the \"comes right after\" and \"comes right before\" directions."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Day and month names paired with a simple \"right after\" or \"right before\" phrasing suit Grade 1 Quarter 4."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The day-versus-month axis and the after-versus-before axis both vary across the fourteen sampled seeds."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "No sampled item strays from ordering days or months; nothing tests calendar lookup or elapsed time here."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Sampled days span from Tuesday through Saturday and months span from January through November, covering a healthy portion of each full cycle."
+    }
+  },
+  "overall": "PASS"
+}
