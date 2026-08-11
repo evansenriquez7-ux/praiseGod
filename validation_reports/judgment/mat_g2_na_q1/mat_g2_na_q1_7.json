@@ -1,0 +1,413 @@
+{
+  "node_id": "mat_g2_na_q1_7",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    72,
+    500,
+    501,
+    502,
+    600,
+    601,
+    603,
+    604,
+    608,
+    610
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "Start at 2. Count up 30 more. What number do you land on?",
+      "correct_answer": 32,
+      "options": [
+        {
+          "key": "A",
+          "value": 42,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 33,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 32,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 31,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Start at 12. Count up 2 more. What number do you land on?",
+      "correct_answer": 14,
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "Start at 1. Count up 10 more. You land on ___",
+      "correct_answer": 11,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "text": "11",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Start at 3. Count up 12 more. What number do you land on?",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Start at 6. Count up 30 more. What number do you land on?",
+      "correct_answer": 36,
+      "options": [
+        {
+          "key": "A",
+          "value": 37,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 36,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 46,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "error_detect",
+      "question_text": "Jose says: Start at 11. Count up 1 more. You land on 12. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 12
+      }
+    },
+    {
+      "seed": 55,
+      "formatter": "read_fill_in_blank",
+      "question_text": "Start at 30. Count up 6 more. What number do you land on?",
+      "correct_answer": 36
+    },
+    {
+      "seed": 72,
+      "formatter": "true_false",
+      "question_text": "Start at 2. Count up 15 more. You land on 17. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "read_fill_in_blank",
+      "question_text": "Start at 4. Count up 92 more. What number do you land on?",
+      "correct_answer": 96
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "Start at 90. Count up 8 more. You land on ___",
+      "correct_answer": 98,
+      "options": [
+        {
+          "key": "A",
+          "value": 98,
+          "text": "98",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 97,
+          "text": "97",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 108,
+          "text": "108",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 82,
+          "text": "82",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Start at 9. Count up 98 more. What number do you land on?",
+      "correct_answer": 107,
+      "options": [
+        {
+          "key": "A",
+          "value": 117,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 107,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 108,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 106,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Start at 6. Count up 10 more. What number do you land on?",
+      "correct_answer": 16,
+      "options": [
+        {
+          "key": "A",
+          "value": 26,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "true_false",
+      "question_text": "Start at 12. Count up 1 more. You land on 13. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "Start at 21. Count up 1 more. You land on ___",
+      "correct_answer": 22,
+      "options": [
+        {
+          "key": "A",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "text": "22",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "text": "20",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 32,
+          "text": "32",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "Start at 7. Count up 23 more. What number do you land on?",
+      "correct_answer": 30,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 29,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 31,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 608,
+      "formatter": "true_false",
+      "question_text": "Start at 6. Count up 10 more. You land on 16. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 610,
+      "formatter": "mcq",
+      "question_text": "Start at 4. Count up 30 more. What number do you land on?",
+      "correct_answer": 34,
+      "options": [
+        {
+          "key": "A",
+          "value": 34,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 44,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 33,
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The recurring phrasing, e.g. seed 43 \"Start at 12. Count up 2 more. What number do you land on?\", directly models the counting-up-on-a-number-line strategy the competency names."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both orderings of which addend is 2-digit and which is 1-digit occur across the seventeen samples, and true_false/error_detect verification items (seed 72, seed 50) supplement the direct count-up prompts."
+    },
+    "cognitive_capacity": {
+      "verdict": "CONCERN",
+      "rationale": "Seed 502, \"Start at 9. Count up 98 more. What number do you land on?\", and seed 500, \"Start at 4. Count up 92 more.\", ask a Grade 2 student to count up nearly a hundred individual steps on a number line, which is impractical for the counting-up strategy the competency is meant to illustrate."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "mcq, cloze, error_detect, true_false, and read_fill_in_blank formatters are all exercised for the same underlying skill."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Several items, e.g. seed 42 \"Start at 2. Count up 30 more.\" and seed 610 \"Start at 4. Count up 30 more.\", start at the small 1-digit number and count up by the large 2-digit amount, inverting the efficient counting-up-from-the-larger-addend approach the competency is illustrating."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Within any single item the numbers stay under 110, respecting a 2-digit-plus-1-digit sum range."
+    }
+  },
+  "overall": "CONCERN"
+}

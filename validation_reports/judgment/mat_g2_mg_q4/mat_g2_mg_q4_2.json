@@ -1,0 +1,488 @@
+{
+  "node_id": "mat_g2_mg_q4_2",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "A class started at 11:05 p.m. and ended at 11:10 p.m. How many minutes did it last?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 55,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "A bus ride started at 1:20 a.m. and lasted 90 minutes. What time did it end?",
+      "correct_answer": "2:50 a.m.",
+      "options": [
+        {
+          "key": "A",
+          "value": "2:50 a.m.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "1:20 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "3:50 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "2:00 a.m.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "A class started at 7:40 a.m. and lasted 50 minutes. What time did it end?",
+      "correct_answer": "8:30 a.m.",
+      "options": [
+        {
+          "key": "A",
+          "value": "9:30 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "8:40 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "7:40 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "8:30 a.m.",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "A recess started at 5:30 p.m. and lasted 45 minutes. What time did it end?",
+      "correct_answer": "6:15 p.m.",
+      "options": [
+        {
+          "key": "A",
+          "value": "5:30 p.m.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "7:15 p.m.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "6:15 p.m.",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "6:25 p.m.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "A swimming lesson started at 2:30 a.m. and ended at 2:35 a.m. How many minutes did it last?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 55,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "cloze",
+      "question_text": "A swimming lesson started at 8:20 a.m. and lasted 30 minutes. What time did it end?",
+      "correct_answer": "8:50 a.m.",
+      "options": [
+        {
+          "key": "A",
+          "value": "8:00 a.m.",
+          "text": "8:00 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "8:50 a.m.",
+          "text": "8:50 a.m.",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "8:20 a.m.",
+          "text": "8:20 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "9:50 a.m.",
+          "text": "9:50 a.m.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "cloze",
+      "question_text": "A movie started at 8:40 p.m. and lasted 60 minutes. What time did it end?",
+      "correct_answer": "9:40 p.m.",
+      "options": [
+        {
+          "key": "A",
+          "value": "9:40 p.m.",
+          "text": "9:40 p.m.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "9:50 p.m.",
+          "text": "9:50 p.m.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "10:40 p.m.",
+          "text": "10:40 p.m.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "8:40 p.m.",
+          "text": "8:40 p.m.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "A class started at 11:20 p.m. and lasted 75 minutes. What time did it end?",
+      "correct_answer": "12:35 a.m.",
+      "options": [
+        {
+          "key": "A",
+          "value": "12:35 a.m.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "11:20 p.m.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "12:45 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1:35 a.m.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "A swimming lesson started at 9:25 p.m. and ended at 9:40 p.m. How many minutes did it last?",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "A class started at 5:25 p.m. and ended at 6:40 p.m. How many minutes did it last?",
+      "correct_answer": 75,
+      "options": [
+        {
+          "key": "A",
+          "value": 70,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 75,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 135,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "A recess started at 4:50 a.m. and lasted 60 minutes. What time did it end?",
+      "correct_answer": "5:50 a.m.",
+      "options": [
+        {
+          "key": "A",
+          "value": "4:50 a.m.",
+          "text": "4:50 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "5:00 a.m.",
+          "text": "5:00 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "6:50 a.m.",
+          "text": "6:50 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5:50 a.m.",
+          "text": "5:50 a.m.",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "A bus ride started at 7:10 p.m. and lasted 30 minutes. What time did it end?",
+      "correct_answer": "7:40 p.m.",
+      "options": [
+        {
+          "key": "A",
+          "value": "7:40 p.m.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "7:10 p.m.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "8:40 p.m.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "7:50 p.m.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "A bus ride started at 3:40 p.m. and ended at 4:40 p.m. How many minutes did it last?",
+      "correct_answer": 60,
+      "options": [
+        {
+          "key": "A",
+          "value": 120,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 60,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 55,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 65,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "A soccer practice started at 2:15 p.m. and lasted 40 minutes. What time did it end?",
+      "correct_answer": "2:55 p.m.",
+      "options": [
+        {
+          "key": "A",
+          "value": "2:55 p.m.",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "2:15 p.m.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2:05 p.m.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3:55 p.m.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "cloze",
+      "question_text": "A recess started at 3:45 p.m. and ended at 4:25 p.m. How many minutes did it last?",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 40,
+          "text": "40",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "text": "20",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 35,
+          "text": "35",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 45,
+          "text": "45",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sampled items are genuine elapsed-time word problems, e.g. seed 44 \"A class started at 7:40 a.m. and lasted 50 minutes. What time did it end?\""
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "Fifteen elapsed-time items, fifteen minute-based answers -- hours across a day, days across a week, and any timetable-reading task are absent from the sample pool despite being explicitly listed alongside minutes in the competency's own parenthetical."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The start-time/duration/end-time structure is short and single-step, matching the grade level."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Both an end-time direction (seed 43 \"A bus ride started at 1:20 a.m. and lasted 90 minutes. What time did it end?\") and a duration direction (seed 42 \"A class started at 11:05 p.m. and ended at 11:10 p.m. How many minutes did it last?\") are present, and several items cross an hour boundary, e.g. seed 501's 11:20 p.m. plus 75 minutes."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The varying element is start time and duration length, staying on the elapsed-time skill itself."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Durations stay in a believable 5-to-90-minute range for a single class period or activity."
+    }
+  },
+  "overall": "FAIL"
+}

@@ -1,0 +1,213 @@
+{
+  "node_id": "mat_g2_na_q1_4",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from largest to smallest: 29, 15, 28",
+      "correct_answer": [
+        29,
+        28,
+        15
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "ordering",
+      "question_text": "Maria counted seashells collected by 3 friends: 24, 32, 35. Arrange the counts from largest to smallest.",
+      "correct_answer": [
+        35,
+        32,
+        24
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from smallest to largest: 26, 15, 33",
+      "correct_answer": [
+        15,
+        26,
+        33
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "ordering",
+      "question_text": "Ben counted seashells collected by 5 friends: 21, 23, 29, 30, 31. Arrange the counts from smallest to largest.",
+      "correct_answer": [
+        21,
+        23,
+        29,
+        30,
+        31
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from smallest to largest: 41, 22, 39, 28",
+      "correct_answer": [
+        22,
+        28,
+        39,
+        41
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from smallest to largest: 32, 28, 41, 36",
+      "correct_answer": [
+        28,
+        32,
+        36,
+        41
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from smallest to largest: 993, 998, 996, 1000",
+      "correct_answer": [
+        993,
+        996,
+        998,
+        1000
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from largest to smallest: 1000, 544, 997",
+      "correct_answer": [
+        1000,
+        997,
+        544
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from smallest to largest: 1000, 982, 995",
+      "correct_answer": [
+        982,
+        995,
+        1000
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from largest to smallest: 32, 35, 25, 41",
+      "correct_answer": [
+        41,
+        35,
+        32,
+        25
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "sort_order",
+      "question_text": "Ben counted storybooks collected by 3 friends: 22, 38, 39. Arrange the counts from smallest to largest.",
+      "correct_answer": [
+        22,
+        38,
+        39
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from smallest to largest: 30, 40, 35, 37",
+      "correct_answer": [
+        30,
+        35,
+        37,
+        40
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "ordering",
+      "question_text": "Kuya Pat counted stickers collected by 4 friends: 21, 35, 37, 39. Arrange the counts from largest to smallest.",
+      "correct_answer": [
+        39,
+        37,
+        35,
+        21
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "ordering",
+      "question_text": "Liza counted seashells collected by 4 friends: 21, 22, 23, 24. Arrange the counts from largest to smallest.",
+      "correct_answer": [
+        24,
+        23,
+        22,
+        21
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "sort_order",
+      "question_text": "Ana counted marbles collected by 5 friends: 22, 24, 32, 36, 38. Arrange the counts from largest to smallest.",
+      "correct_answer": [
+        38,
+        36,
+        32,
+        24,
+        22
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every sample presents a list of numbers to arrange, e.g. seed 44 \"Arrange these numbers from smallest to largest: 26, 15, 33\", directly matching the ordering verb."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The vice-versa clause is honored: largest-to-smallest (seed 42, seed 600) and smallest-to-largest (seed 44, seed 502) are each generated multiple times."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Both bare number lists and short named contexts, \"Maria counted seashells collected by 3 friends: 24, 32, 35\", are simple, single-clause sentences."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Pure numeral lists sit alongside contextual word problems (seashells, stickers, marbles) and list lengths vary from three to five numbers."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The varying element is list length and value magnitude, both on the ordering skill."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Seed 500 uses values up to 1000 (\"993, 998, 996, 1000\") and seed 501 uses \"1000, 544, 997\", reaching the competency's stated ceiling."
+    }
+  },
+  "overall": "PASS"
+}

@@ -1,0 +1,435 @@
+{
+  "node_id": "mat_g2_na_q1_9",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    51,
+    55,
+    75,
+    82,
+    500,
+    501,
+    502,
+    600,
+    601,
+    603,
+    604,
+    607,
+    608
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is 1 + 40?",
+      "correct_answer": 41,
+      "options": [
+        {
+          "key": "A",
+          "value": 51,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 42,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 41,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 40,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 28 + 30?",
+      "correct_answer": 58,
+      "options": [
+        {
+          "key": "A",
+          "value": 58,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 57,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 59,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 68,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "18 + 15 = ___",
+      "correct_answer": 33,
+      "options": [
+        {
+          "key": "A",
+          "value": 43,
+          "text": "43",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 32,
+          "text": "32",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 33,
+          "text": "33",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "cloze",
+      "question_text": "15 + 25 = ___",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 41,
+          "text": "41",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 50,
+          "text": "50",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 40,
+          "text": "40",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 39,
+          "text": "39",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "cloze",
+      "question_text": "0 + 16 = ___",
+      "correct_answer": 16,
+      "options": [
+        {
+          "key": "A",
+          "value": 17,
+          "text": "17",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "text": "16",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "text": "15",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 26,
+          "text": "26",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 15 + 15 on the number line.",
+      "correct_answer": 30
+    },
+    {
+      "seed": 51,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 19 and it moves forward 0 numbers. Starting from 19, just count up 0 numbers. Which number will the dot land on?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 19,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 29,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 55,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 15 and 12. What is the sum?",
+      "correct_answer": 27
+    },
+    {
+      "seed": 75,
+      "formatter": "true_false",
+      "question_text": "25 + 15 = 10. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 82,
+      "formatter": "error_detect",
+      "question_text": "Dante says: 11 + 0 = 11. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 11
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 727 and 59. What is the sum?",
+      "correct_answer": 786
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "748 + 95 = 843. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 689 + 158?",
+      "correct_answer": 847,
+      "options": [
+        {
+          "key": "A",
+          "value": 531,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 847,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 846,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 857,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "What is 15 + 18?",
+      "correct_answer": 33,
+      "options": [
+        {
+          "key": "A",
+          "value": 43,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 33,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 34,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "What is ___ + 0?",
+      "correct_answer": 43,
+      "options": [
+        {
+          "key": "A",
+          "value": 42,
+          "text": "42",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 53,
+          "text": "53",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 44,
+          "text": "44",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 43,
+          "text": "43",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "12 + 40 = ___",
+      "correct_answer": 52,
+      "options": [
+        {
+          "key": "A",
+          "value": 53,
+          "text": "53",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 52,
+          "text": "52",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 62,
+          "text": "62",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 51,
+          "text": "51",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "What is 6 + 15?",
+      "correct_answer": 21,
+      "options": [
+        {
+          "key": "A",
+          "value": 21,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 31,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 22,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 607,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 10 and 11. What is the sum?",
+      "correct_answer": 21
+    },
+    {
+      "seed": 608,
+      "formatter": "true_false",
+      "question_text": "15 + 21 = 36. True or False?",
+      "correct_answer": true
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The samples are straightforward addition facts and sum prompts, e.g. seed 500 \"The two parts are 727 and 59. What is the sum?\", matching add numbers with sums up to 1000."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The with-or-without-regrouping clause is honored: seed 44 \"18 + 15 = ___\" and seed 502 \"689 + 158\" both require carrying into a new place, while seed 43 \"28 + 30\" and seed 603 \"12 + 40 = ___\" do not."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The plain \"What is 1 + 40?\" and \"The two parts are 15 and 12. What is the sum?\" phrasings are simple and grade-appropriate."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "mcq, cloze, true_false, error_detect, read_fill_in_blank, and set_fill_in_blank formatters are all present."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The varying element is addend size and whether the ones digits carry, both squarely on the regrouping skill."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Sums reach 847 (seed 502) and 843 (seed 501), staying under the stated 1000 ceiling."
+    }
+  },
+  "overall": "PASS"
+}
