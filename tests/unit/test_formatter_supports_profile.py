@@ -109,12 +109,10 @@ class TestOrchestratorAnnotatesDnaName:
     def test_orchestrator_sets_dna_name_for_ordering(self):
         from backend.app.services.orchestrator import PracticeOrchestrator
         prob = PracticeOrchestrator.generate_problem(
-            node_id="mat_g1_na_q4_1",
+            node_id="mat_g2_na_q4_2",
             seed=91000,
             difficulty_profile={
-                "fraction_type": "proper",
-                "operation": "add",
-                "fraction_model": "area_model",
+                "fraction_type": "unit_fraction",
                 "number_difficulty": 0.5,
                 "context": "pure",
             },
@@ -135,12 +133,10 @@ class TestOrchestratorAnnotatesDnaName:
         # orchestrator may still pick the other DNA. We just need to verify
         # the annotation is set (not None and not the fallback).
         prob = PracticeOrchestrator.generate_problem(
-            node_id="mat_g1_na_q4_1",
+            node_id="mat_g2_na_q4_2",
             seed=91000,
             difficulty_profile={
-                "fraction_type": "proper",
-                "operation": "add",
-                "fraction_model": "area_model",
+                "fraction_type": "unit_fraction",
                 "number_difficulty": 0.5,
                 "context": "pure",
             },
