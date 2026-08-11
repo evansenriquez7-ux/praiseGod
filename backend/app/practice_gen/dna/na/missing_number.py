@@ -126,34 +126,58 @@ def generate_params(
     allowed_ops    = bounds["ops"]
 
     if profile.get("operation") == "equivalent":
-        # "Write an equivalent expression to a given addition or subtraction
-        # expression (e.g., 2+3 = 1+4)" (mat_g1_na_q3_2) had no matching
-        # content in this DNA at all -- this module's own docstring claims
-        # "equivalent expressions (balance)" as a G1 capability, but nothing
-        # ever generated one; every sample was a single missing-operand
-        # fact or true/false check instead of two expressions being
-        # equated. Generates two DIFFERENT operand pairs with the SAME
-        # sum, presented as "{a} + {b} = {c} + ___" so completing it
-        # requires recognizing/constructing an equivalent expression.
+        # "Write an equivalent expression to a given addition OR
+        # SUBTRACTION expression (e.g., 2+3 = 1+4; 10-5 = 6-1)" (mat_g1_
+        # na_q3_2) had no matching content in this DNA at all -- this
+        # module's own docstring claims "equivalent expressions
+        # (balance)" as a G1 capability, but nothing ever generated one;
+        # every sample was a single missing-operand fact or true/false
+        # check instead of two expressions being equated. Generates two
+        # DIFFERENT operand pairs with the SAME result, presented as two
+        # equated expressions so completing it requires recognizing/
+        # constructing an equivalent expression. Alternates addition and
+        # subtraction (the competency's own worked example names both --
+        # blind review of the addition-only first version: "All 16
+        # samples are addition-only, even though the competency's own
+        # example includes a subtraction case").
         max_result = bounds["max_result"]
         target = rng.randint(2, min(max_result, 20))
-        a = rng.randint(1, target - 1)
-        b = target - a
-        pair2_candidates = [
-            (c, target - c) for c in range(1, target) if c != a or target - c != b
-        ]
-        if not pair2_candidates:
-            pair2_candidates = [(1, target - 1)]
-        c, d = rng.choice(pair2_candidates)
+        eq_op = rng.choice(["add", "subtract"])
+        if eq_op == "add":
+            a = rng.randint(1, target - 1)
+            b = target - a
+            pair2_candidates = [
+                (c, target - c) for c in range(1, target) if c != a or target - c != b
+            ]
+            if not pair2_candidates:
+                pair2_candidates = [(1, target - 1)]
+            c, d = rng.choice(pair2_candidates)
+            symbol = "+"
+            answer_formula = f"{target} - {c}"
+            question = f"Complete the equivalent expression: {a} + {b} = {c} + ___"
+        else:
+            # a - b = target and c - d = target: two different minuends,
+            # both greater than the shared difference and within this
+            # node's own max_result ceiling.
+            minuend_choices = list(range(target + 1, max_result + 1))
+            if len(minuend_choices) < 2:
+                minuend_choices = [target + 1, target + 2]
+            a, c = rng.sample(minuend_choices, 2) if len(minuend_choices) >= 2 else (minuend_choices[0], minuend_choices[0] + 1)
+            b = a - target
+            d = c - target
+            symbol = "−"
+            answer_formula = f"{c} - {target}"
+            question = f"Complete the equivalent expression: {a} − {b} = {c} − ___"
         return {
             "blank_target": "d",
             "a": a, "b": b, "c": c, "d": d,
             "result": target,
             "operation": "equivalent",
+            "equivalent_symbol": symbol,
             "answer": d,
-            "answer_formula": f"{target} - {c}",
+            "answer_formula": answer_formula,
             "context": "pure",
-            "question": f"Complete the equivalent expression: {a} + {b} = {c} + ___",
+            "question": question,
         }
 
     op_axis        = profile.get("operation")
@@ -225,6 +249,36 @@ def generate_params(
             for a in range(1, a_hi + 1):
                 for b in range(1, max_result - a + 1):
                     candidate_pairs.append((a, b))
+            # d=3 alone still capped the observed sum well below max_result
+            # for small ceilings (verified live: max sum 7 across 100
+            # seeds at the default scalar for max_result=10, mat_g1_na_
+            # q1_6's own ceiling; blind review: "none of the samples touch
+            # 8, 9, or 10"). Force a pair summing to exactly max_result
+            # directly a third of the time, the same probability-boost
+            # pattern used for fractions.py's "equal to one" fix earlier
+            # this session, rather than continuing to tune the generic
+            # windowing algorithm for an edge case it isn't well suited to.
+            if max_result <= 20 and rng.random() < 0.33:
+                ceiling_pairs = [(a, b) for (a, b) in candidate_pairs if a + b == max_result]
+                if ceiling_pairs:
+                    a, b = rng.choice(ceiling_pairs)
+                    op = op_axis if op_axis in ("addition", "subtraction") else rng.choice(["addition", "subtraction"])
+                    x, y = a, b
+                    if op == "addition":
+                        a, b = x, y
+                        result = a + b
+                    else:
+                        a = x + y
+                        b = rng.choice([x, y])
+                        result = a - b
+                    missing_value = {"result": result, "change": b, "start": a}[blank_pos]
+                    result_dict = {
+                        "a": a, "b": b, "result": result, "operation": op,
+                        "blank_position": blank_pos, "missing_value": missing_value,
+                        "blank_target": "missing_value", "equation_type": equation_type,
+                        "context": context,
+                    }
+                    return result_dict
         else:
             attempts = 0
             while len(candidate_pairs) < 2000 and attempts < 20000:
@@ -254,7 +308,27 @@ def generate_params(
         )
 
     from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
-    x, y = generate_pair_by_window(candidate_pairs, num_diff_scalar, d=5, rng=rng)
+    # The multiplication/division table pool (5-10 tables x 10 operands)
+    # is small and coarse-scored -- d=5's narrower window (width 0.2) can
+    # miss 1-2 named tables entirely at the default scalar even though
+    # the pool contains every one (verified live: at scalar=0.5 the
+    # window held tables {10,2,3} but not {4,5} at all across 300 raw
+    # seeds -- table 5 literally never appeared; blind review of
+    # mat_g2_na_q3_7: "Tables 4 and 5 never occur... two of the five
+    # named tables... completely absent"). Same fix and same magnitude as
+    # multiplication.py's identical "2_3_4_5_10_named" widening.
+    # "Compose and decompose numbers up to 10" (mat_g1_na_q1_6, max_result=
+    # 10) has the same small/coarse-pool problem as the multiplication/
+    # division table pool above -- d=5's narrower window never reached the
+    # pool's own ceiling at the default scalar (verified live: max sum
+    # observed was 4 across 100 seeds at scalar=0.5, vs. reaching the full
+    # 10 at scalar>=0.7; blind review: "the maximum sum/total across every
+    # sample is 4... no sample ever decomposes numbers 5 through 10").
+    # Scoped to small max_result (<=20) so larger-ceiling addition/
+    # subtraction nodes, whose candidate pools are already fine-grained
+    # enough for d=5, are unaffected.
+    pair_d = 3 if op_axis in ("multiplication", "division", "multiplication_division") or max_result <= 20 else 5
+    x, y = generate_pair_by_window(candidate_pairs, num_diff_scalar, d=pair_d, rng=rng)
 
     if op_axis in ("addition_subtraction", "addition", "subtraction"):
         if op == "addition":
@@ -276,11 +350,23 @@ def generate_params(
             a, b = x, y
             result = a * b
         else:
+            # x is always the constrained value (drawn from `tables`, e.g.
+            # {6,7,8,9} for "missing number in a multiplication or
+            # division sentence BY 6,7,8,9" -- mat_g3_na_q4_2/mat_g2_
+            # na_q3_7), y is the free 1-10 count/multiplier. "b" is the
+            # DIVISOR in the rendered equation, and the competency scopes
+            # the divisor specifically to `tables`, not "some operand
+            # somewhere in the fact" -- a 50/50 swap here used to put the
+            # unconstrained y into the divisor slot half the time (blind
+            # review: "___ ÷ 6 = 5" using divisor 6 was fine, but other
+            # samples showed divisors like 2, 5, 10, entirely outside the
+            # named {6,7,8,9} scope). b=x keeps the divisor always in
+            # scope; blank_pos already provides positional variety
+            # (which of start/change/result gets blanked) without needing
+            # to also randomize which value plays which role.
             a = x * y
-            b = y
-            result = x
-            if rng.choice([True, False]):
-                b, result = result, b
+            b = x
+            result = y
 
         missing_value = {
             "result": result,

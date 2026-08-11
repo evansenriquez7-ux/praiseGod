@@ -17,27 +17,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 120 + 136",
-      "correct_answer": 200,
+      "question_text": "Estimate the sum: 60 + 130",
+      "correct_answer": 160,
       "options": [
         {
           "key": "A",
-          "value": 0,
+          "value": 170,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 199,
+          "value": 161,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 200,
+          "value": 160,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 210,
+          "value": 159,
           "is_correct": false
         }
       ]
@@ -45,73 +45,13 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 30 + 3",
-      "correct_answer": 33,
-      "options": [
-        {
-          "key": "A",
-          "value": 33,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 43,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 32,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 27,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "cloze",
-      "question_text": "Estimate: 34 + 60 ≈ ___",
-      "correct_answer": 90,
-      "options": [
-        {
-          "key": "A",
-          "value": 89,
-          "text": "89",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 100,
-          "text": "100",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 91,
-          "text": "91",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 90,
-          "text": "90",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Estimate the sum: 35 + 180",
+      "question_text": "Estimate the sum: 180 + 35",
       "correct_answer": 240,
       "options": [
         {
           "key": "A",
-          "value": 241,
-          "is_correct": false
+          "value": 240,
+          "is_correct": true
         },
         {
           "key": "B",
@@ -120,12 +60,68 @@
         },
         {
           "key": "C",
+          "value": 239,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 160,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "Estimate the sum: 195 + 40",
+      "correct_answer": 240,
+      "options": [
+        {
+          "key": "A",
+          "value": 250,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 160,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 239,
+          "is_correct": false
+        },
+        {
+          "key": "D",
           "value": 240,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Estimate the sum: 114 + 60",
+      "correct_answer": 160,
+      "options": [
+        {
+          "key": "A",
+          "value": 159,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 160,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 239,
+          "value": 170,
           "is_correct": false
         }
       ]
@@ -133,51 +129,70 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Estimate the sum: 20 + 42",
-      "correct_answer": 60,
+      "question_text": "Estimate the sum: 156 + 30",
+      "correct_answer": 230,
       "options": [
         {
           "key": "A",
-          "value": 61,
+          "value": 229,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 60,
+          "value": 230,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 59,
+          "value": 240,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 70,
+          "value": 170,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 50,
-      "formatter": "error_detect",
-      "question_text": "Jose says: 180 + 24 ≈ 220. Is Jose correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 220
-      }
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 100 and 100. What is the sum?",
+      "correct_answer": 200
     },
     {
       "seed": 55,
       "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 80 and 90. What is the sum?",
-      "correct_answer": 170
+      "question_text": "The two parts are 20 and 200. What is the sum?",
+      "correct_answer": 220
     },
     {
       "seed": 72,
-      "formatter": "true_false",
-      "question_text": "110 + 105 ≈ 200. True or False?",
-      "correct_answer": true
+      "formatter": "mcq",
+      "question_text": "Estimate the sum: 120 + 116",
+      "correct_answer": 200,
+      "options": [
+        {
+          "key": "A",
+          "value": 200,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 210,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 199,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 0,
+          "is_correct": false
+        }
+      ]
     }
   ],
   "findings": {

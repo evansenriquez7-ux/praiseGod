@@ -16,27 +16,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "2 + 2 = ___. What is 2 × 2?",
-      "correct_answer": 4,
+      "question_text": "3 + 3 + 3 + 3 = ___. What is 3 \u00d7 4?",
+      "correct_answer": 12,
       "options": [
         {
           "key": "A",
-          "value": 0,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 4,
+          "value": 12,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 2,
+          "value": 8,
           "is_correct": false
         }
       ]
@@ -44,17 +44,17 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 2 × 0?",
-      "correct_answer": 0,
+      "question_text": "2 + 2 = ___. What is 2 \u00d7 2?",
+      "correct_answer": 4,
       "options": [
         {
           "key": "A",
-          "value": 0,
+          "value": 4,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 1,
+          "value": 2,
           "is_correct": false
         },
         {
@@ -64,39 +64,35 @@
         },
         {
           "key": "D",
-          "value": 2,
+          "value": 0,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "2 × 1 = ___",
-      "correct_answer": 2,
+      "formatter": "mcq",
+      "question_text": "2 + 2 + 2 = ___. What is 2 \u00d7 3?",
+      "correct_answer": 6,
       "options": [
         {
           "key": "A",
-          "value": 1,
-          "text": "1",
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
-          "text": "3",
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 4,
-          "text": "4",
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 2,
-          "text": "2",
+          "value": 6,
           "is_correct": true
         }
       ]
@@ -104,27 +100,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What is 6 × 0?",
-      "correct_answer": 0,
+      "question_text": "6 + 6 = ___. What is 6 \u00d7 2?",
+      "correct_answer": 12,
       "options": [
         {
           "key": "A",
-          "value": 2,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 6,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 0,
+          "value": 12,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 1,
+          "value": 4,
           "is_correct": false
         }
       ]
@@ -132,17 +128,17 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is 3 × 0?",
-      "correct_answer": 0,
+      "question_text": "3 + 3 = ___. What is 3 \u00d7 2?",
+      "correct_answer": 6,
       "options": [
         {
           "key": "A",
-          "value": 2,
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 0,
+          "value": 6,
           "is_correct": true
         },
         {
@@ -152,31 +148,72 @@
         },
         {
           "key": "D",
-          "value": 3,
+          "value": 5,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 50,
-      "formatter": "true_false",
-      "question_text": "3 × 1 = 4. True or False?",
-      "correct_answer": false
+      "formatter": "mcq",
+      "question_text": "3 + 3 + 3 = ___. What is 3 \u00d7 3?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 0,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 55,
-      "formatter": "error_detect",
-      "question_text": "Grace says: 3 × 0 = 3. Is Grace correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 0
-      }
+      "formatter": "mcq",
+      "question_text": "3 + 3 = ___. What is 3 \u00d7 2?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "For node mat_g2_na_q3_1 (Grade 2 Quarter 3 curriculum), the sampled problems directly fulfill the MATATAG competency 'Illustrate and write multiplication as repeated addition, using a variety of concrete and pictorial models and numerals, and using groups of equal quantities, arrays, counting by multiples, and equal jumps on a number line.'. Across seeds 42, 43, 44, 45, 46, 50, 55, the rendered questions (such as '2 + 2 = ___. What is 2 × 2?') require students to demonstrate the target concept."
+      "rationale": "For node mat_g2_na_q3_1 (Grade 2 Quarter 3 curriculum), the sampled problems directly fulfill the MATATAG competency 'Illustrate and write multiplication as repeated addition, using a variety of concrete and pictorial models and numerals, and using groups of equal quantities, arrays, counting by multiples, and equal jumps on a number line.'. Across seeds 42, 43, 44, 45, 46, 50, 55, the rendered questions (such as '2 + 2 = ___. What is 2 \u00d7 2?') require students to demonstrate the target concept."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
@@ -184,7 +221,7 @@
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g2_na_q3_1 fit Grade 2 Quarter 3 cognitive limits. Stems like '2 + 2 = ___. What is 2 × 2?' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
+      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g2_na_q3_1 fit Grade 2 Quarter 3 cognitive limits. Stems like '2 + 2 = ___. What is 2 \u00d7 2?' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",

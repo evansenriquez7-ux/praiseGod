@@ -19,27 +19,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 10 + 12?",
-      "correct_answer": 22,
+      "question_text": "10 is 1 ten and 0 ones. 10 is 1 ten and 0 ones. Add the place values, then find the total: what is 10 + 10?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 32,
+          "value": 0,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 23,
+          "value": 19,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 22,
+          "value": 20,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 21,
+          "value": 30,
           "is_correct": false
         }
       ]
@@ -47,27 +47,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 2 + 10?",
-      "correct_answer": 12,
+      "question_text": "20 is 2 tens and 0 ones. 2 is 2 ones. Add the place values, then find the total: what is 20 + 2?",
+      "correct_answer": 22,
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 22,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 11,
+          "value": 32,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 13,
+          "value": 21,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 22,
+          "value": 18,
           "is_correct": false
         }
       ]
@@ -75,31 +75,31 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "What place is the digit 5 in, in the number 4905?",
-      "correct_answer": "ones",
+      "question_text": "40 is 4 tens and 0 ones. 2 is 2 ones. Add the place values, then find the total: 40 + 2 = ___",
+      "correct_answer": 42,
       "options": [
         {
           "key": "A",
-          "value": "hundreds",
-          "text": "hundreds",
+          "value": 52,
+          "text": "52",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "tens",
-          "text": "tens",
+          "value": 38,
+          "text": "38",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "thousands",
-          "text": "thousands",
+          "value": 41,
+          "text": "41",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "ones",
-          "text": "ones",
+          "value": 42,
+          "text": "42",
           "is_correct": true
         }
       ]
@@ -107,74 +107,76 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What place is the digit 3 in, in the number 3140?",
-      "correct_answer": "thousands",
+      "question_text": "30 is 3 tens and 0 ones. 2 is 2 ones. Add the place values, then find the total: what is 30 + 2?",
+      "correct_answer": 32,
       "options": [
         {
           "key": "A",
-          "value": "hundreds",
+          "value": 31,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "ones",
+          "value": 28,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "thousands",
+          "value": 32,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "tens",
+          "value": 42,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "cloze",
-      "question_text": "4 + 15 = ___",
-      "correct_answer": 19,
+      "formatter": "mcq",
+      "question_text": "25 is 2 tens and 5 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: what is 25 + 30?",
+      "correct_answer": 55,
       "options": [
         {
           "key": "A",
-          "value": 20,
-          "text": "20",
+          "value": 56,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 19,
-          "text": "19",
+          "value": 55,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 18,
-          "text": "18",
+          "value": 54,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 29,
-          "text": "29",
+          "value": 65,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 50,
-      "formatter": "true_false",
-      "question_text": "What place is the digit 2 in, in the number 8205? The answer is 2000.. True or False?",
-      "correct_answer": false
+      "formatter": "error_detect",
+      "question_text": "Jose says: 18 is 1 ten and 8 ones. 10 is 1 ten and 0 ones. Add the place values, then find the total: 18 + 10 = 28. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 28
+      }
     },
     {
       "seed": 51,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 20 and it moves forward 20 numbers. Starting from 20, just count up 20 numbers. Which number will the dot land on?",
-      "correct_answer": "C",
+      "formatter": "error_detect",
+      "question_text": "Ana says: 30 is 3 tens and 0 ones. 31 is 3 tens and 1 one. Add the place values, then find the total: 30 + 31 = 60. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 61
+      },
       "options": [
         {
           "key": "A",
@@ -201,23 +203,23 @@
     {
       "seed": 55,
       "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 6 and 10. What is the sum?",
-      "correct_answer": 16
+      "question_text": "15 is 1 ten and 5 ones. 6 is 6 ones. Add the place values, then find the total: The two parts are 15 and 6. What is the sum?",
+      "correct_answer": 21
     },
     {
       "seed": 82,
-      "formatter": "error_detect",
-      "question_text": "Dante says: 11 + 20 = 31. Is Dante correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 31
-      }
+      "formatter": "true_false",
+      "question_text": "30 is 3 tens and 0 ones. 26 is 2 tens and 6 ones. Add the place values, then find the total: 30 + 26 = 66. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 101,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 15 + 11 on the number line.",
-      "correct_answer": 26
+      "formatter": "error_detect",
+      "question_text": "Liza says: 40 is 4 tens and 0 ones. 20 is 2 tens and 0 ones. Add the place values, then find the total: 40 + 20 = 60. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 60
+      }
     }
   ],
   "findings": {

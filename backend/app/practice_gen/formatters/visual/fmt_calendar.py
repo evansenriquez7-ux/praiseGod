@@ -212,10 +212,14 @@ def format_calendar(
         )
         day2 = vp.get("_day2") or (day1 + vp["correct_duration"] - 1)
         duration = vp["correct_duration"]
+        # "unit" lets a caller ask this in weeks instead of days (e.g.
+        # calendar.py's task_type="elapsed_weeks") -- omitted, this
+        # defaults to the original days-only phrasing.
+        unit_word = vp.get("unit", "days")
 
         question_text = (
             f"Look at the {month_name} {year} {cal_word}. "
-            f"How many days are there from {month_name} {day1} "
+            f"How many {unit_word} are there from {month_name} {day1} "
             f"to {month_name} {day2}, inclusive?"
         )
         raw_correct = duration

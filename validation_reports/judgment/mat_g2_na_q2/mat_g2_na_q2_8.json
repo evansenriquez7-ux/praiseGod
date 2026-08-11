@@ -17,27 +17,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is the next number in the pattern: 10, 9, 8, 7, 6, 5?",
-      "correct_answer": 4,
+      "question_text": "What is the next term in the pattern: e, d, e, d, e, d?",
+      "correct_answer": "e",
       "options": [
         {
           "key": "A",
-          "value": 3,
+          "value": "f",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 16,
+          "value": "b",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 4,
+          "value": "e",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 5,
+          "value": "c",
           "is_correct": false
         }
       ]
@@ -45,27 +45,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is the next number in the pattern: 11, 12, 13, 14, 15, 16?",
-      "correct_answer": 17,
+      "question_text": "What is the next number in the pattern: 2, 4, 6, 8, 10, 12?",
+      "correct_answer": 14,
       "options": [
         {
           "key": "A",
-          "value": 17,
+          "value": 14,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 18,
+          "value": 16,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 19,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 16,
+          "value": 12,
           "is_correct": false
         }
       ]
@@ -73,61 +73,33 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What is the next number in the pattern: 10, 11, 12, 13, 14, 15?",
-      "correct_answer": 16,
+      "question_text": "What is the next number in the pattern: 30, 28, 26, 24, 22, 20?",
+      "correct_answer": 18,
       "options": [
         {
           "key": "A",
-          "value": 17,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 15,
+          "value": 16,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 18,
+          "value": 42,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 16,
+          "value": 18,
           "is_correct": true
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "What is the next number in the pattern: 2, 5, 8, 11, 14, 17?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 21,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 17,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 23,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
       "formatter": "mcq",
       "question_text": "What is the next number in the pattern: 15, 13, 11, 9, 7, 5?",
       "correct_answer": 3,
@@ -139,57 +111,107 @@
         },
         {
           "key": "B",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 3,
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "D",
           "value": 5,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What is the next number in the pattern: 12, 14, 16, 18, 20, 22?",
+      "correct_answer": 24,
+      "options": [
+        {
+          "key": "A",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 24,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 26,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 1,
+          "value": 22,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "What is the missing piece (position 6) in the pattern?",
-      "correct_answer": "B",
+      "formatter": "cloze",
+      "question_text": "What is the next number in the pattern: 20, 19, 18, 17, 16, 15?",
+      "correct_answer": 14,
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 13,
+          "text": "13",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 11,
+          "value": 14,
+          "text": "14",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 8,
+          "value": 26,
+          "text": "26",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 15,
+          "text": "15",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Fill in the table with the correct counts.",
-      "correct_answer": [
-        1,
-        2,
-        3
+      "formatter": "read_mcq",
+      "question_text": "What is the missing piece (position 6) in the pattern?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 21,
+          "is_correct": false
+        }
       ]
     },
     {

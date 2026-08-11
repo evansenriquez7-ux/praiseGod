@@ -18,36 +18,36 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 70 ÷ 10?",
-      "correct_answer": 7,
+      "question_text": "What is 20 \u00f7 2?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 60,
+          "value": 18,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 700,
+          "value": 40,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 7,
+          "value": 10,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 2,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is 10 ÷ 2?",
-      "correct_answer": 5,
+      "formatter": "true_false",
+      "question_text": "Starting from 0 and subtracting 4 repeatedly, you subtract 0 times before reaching 0. True or False?",
+      "correct_answer": true,
       "options": [
         {
           "key": "A",
@@ -74,31 +74,31 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "15 ÷ 5 = ___",
-      "correct_answer": 3,
+      "question_text": "10 \u00f7 10 = ___",
+      "correct_answer": 1,
       "options": [
         {
           "key": "A",
-          "value": 5,
-          "text": "5",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 10,
           "text": "10",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 0,
+          "text": "0",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 75,
-          "text": "75",
+          "value": 100,
+          "text": "100",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 3,
-          "text": "3",
+          "value": 1,
+          "text": "1",
           "is_correct": true
         }
       ]
@@ -106,40 +106,40 @@
     {
       "seed": 45,
       "formatter": "cloze",
-      "question_text": "30 ÷ 3 = ___",
-      "correct_answer": 10,
+      "question_text": "15 \u00f7 5 = ___",
+      "correct_answer": 3,
       "options": [
         {
           "key": "A",
-          "value": 90,
-          "text": "90",
+          "value": 75,
+          "text": "75",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 27,
-          "text": "27",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 10,
-          "text": "10",
+          "value": 3,
+          "text": "3",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 3,
-          "text": "3",
+          "value": 5,
+          "text": "5",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 12 ÷ 2?",
-      "correct_answer": 6,
+      "formatter": "true_false",
+      "question_text": "Starting from 10 and subtracting 5 repeatedly, you subtract 2 times before reaching 0. True or False?",
+      "correct_answer": true,
       "options": [
         {
           "key": "A",
@@ -166,57 +166,54 @@
     {
       "seed": 50,
       "formatter": "read_mcq",
-      "question_text": "Look at the 5×6 array. How many squares are shaded in all?",
+      "question_text": "This array has 30 squares split into 3 equal rows. How many squares are in each row?",
       "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 30,
+          "value": 10,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 22,
+          "value": 26,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 33,
+          "value": 13,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 28,
+          "value": 8,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 51,
-      "formatter": "error_detect",
-      "question_text": "Ana says: 15 ÷ 3 = 12. Is Ana correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 5
-      }
+      "formatter": "true_false",
+      "question_text": "Starting from 10 and subtracting 10 repeatedly, you subtract 1 times before reaching 0. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 2×6 rectangle. How many squares did you shade in all?",
-      "correct_answer": 12
+      "formatter": "true_false",
+      "question_text": "Starting from 12 and subtracting 3 repeatedly, you subtract 4 times before reaching 0. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 85,
       "formatter": "true_false",
-      "question_text": "12 ÷ 3 = 4. True or False?",
+      "question_text": "Starting from 90 and subtracting 10 repeatedly, you subtract 9 times before reaching 0. True or False?",
       "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "For node mat_g2_na_q3_5 (Grade 2 Quarter 3 curriculum), the sampled problems directly fulfill the MATATAG competency 'Illustrate and write division expressions using a variety of concrete and pictorial models and numerals, in modelling division as equal sharing or formation of equal groups of objects, and repeated subtraction.'. Across seeds 42, 43, 44, 45, 46, 50, 51, 55, 85, the rendered questions (such as 'What is 70 ÷ 10?') require students to demonstrate the target concept."
+      "rationale": "For node mat_g2_na_q3_5 (Grade 2 Quarter 3 curriculum), the sampled problems directly fulfill the MATATAG competency 'Illustrate and write division expressions using a variety of concrete and pictorial models and numerals, in modelling division as equal sharing or formation of equal groups of objects, and repeated subtraction.'. Across seeds 42, 43, 44, 45, 46, 50, 51, 55, 85, the rendered questions (such as 'What is 70 \u00f7 10?') require students to demonstrate the target concept."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
@@ -224,7 +221,7 @@
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g2_na_q3_5 fit Grade 2 Quarter 3 cognitive limits. Stems like 'What is 70 ÷ 10?' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
+      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g2_na_q3_5 fit Grade 2 Quarter 3 cognitive limits. Stems like 'What is 70 \u00f7 10?' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",

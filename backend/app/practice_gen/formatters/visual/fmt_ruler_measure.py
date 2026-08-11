@@ -144,11 +144,20 @@ def _build_traps(params: dict, rng: random.Random) -> list:
 # Question text
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _stem(params: dict, interaction_mode: str) -> str:
+def _stem(params: dict, interaction_mode: str, custom_question: str = None) -> str:
     unit_name = params["unit_name"]
     length = params["length"]
     if interaction_mode == "set":
         return f"Drag the end of the object to show a length of {length} {unit_name}."
+    if custom_question:
+        # The DNA already computed a specific question (e.g. word-problem
+        # framing for "solve problems involving lengths" nodes) -- the
+        # generic ruler-reading stem below discarded it unconditionally,
+        # so a "solve problems" node could still render a bare "how long
+        # is the object" reading task with no problem-solving content
+        # whenever this formatter got picked (blind review of
+        # mat_g1_mg_q2_2 seed 55).
+        return custom_question
     return f"How long is the object? Give your answer in {unit_name}."
 
 
@@ -200,11 +209,34 @@ def format_ruler_measure(
 
     vp = {k: params[k] for k in ("ruler_start", "ruler_end", "unit", "object_start", "object_end", "length", "unit_name")}
 
+    custom_question = (ctx.values or {}).get("question")
+    dna_answer = (ctx.values or {}).get("answer")
+
     # ── 2. Correct answer ─────────────────────────────────────────────────────
-    correct_answer = params["length"]
+    # A custom question (word-problem framing, e.g. "how many longer is a
+    # book than a notebook?") can ask something other than "how long is the
+    # object" -- params["length"] is always the raw ruler reading, not
+    # necessarily what that question is asking for. When the DNA has already
+    # computed a different answer for its own question, that answer is the
+    # one actually being asked about (found by blind review: the "book is 5,
+    # notebook is 1, how many longer" question kept serving 5 as "correct"
+    # instead of the true 5-1=4).
+    uses_dna_answer = (
+        custom_question is not None
+        and dna_answer is not None
+        and dna_answer != params["length"]
+    )
+    correct_answer = dna_answer if uses_dna_answer else params["length"]
 
     # ── 3. Traps ──────────────────────────────────────────────────────────────
-    traps = _build_traps(params, rng)
+    # The ruler-specific traps (misread the start, read the ruler's end
+    # value) are misreadings of *the ruler*, meaningless for a question that
+    # isn't "how long is the object" -- fall back to generic near-neighbor
+    # distractors around the actual answer instead.
+    if uses_dna_answer:
+        traps = augment_distractors([], correct_answer, target=3, max_delta=5)
+    else:
+        traps = _build_traps(params, rng)
 
     # ── 4. MCQ options ────────────────────────────────────────────────────────
     mcq_options = None
@@ -219,7 +251,7 @@ def format_ruler_measure(
     else:
         final_answer = correct_answer
 
-    question_text = _stem(params, interaction_mode)
+    question_text = _stem(params, interaction_mode, custom_question=custom_question)
 
     format_data: dict = {"visual_params": vp}
     if mcq_options:

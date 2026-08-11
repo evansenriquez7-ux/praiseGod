@@ -246,11 +246,36 @@ def generate_params(
     if "formatter_max_val" in profile:
         max_minuend = min(max_minuend, profile["formatter_max_val"])
 
-    reg_level = profile.get("regrouping", "none")
-    if reg_level is False:
-        reg_level = "none"
-    elif reg_level is True:
-        reg_level = "ones"
+    if "regrouping" in profile:
+        reg_level = profile.get("regrouping", "none")
+        if reg_level is False:
+            reg_level = "none"
+        elif reg_level is True:
+            reg_level = "ones"
+    else:
+        # Truly unbound (key absent): registry.py now correctly leaves
+        # "with and without regrouping" competencies unbound rather than
+        # wrongly forcing regrouping=False, but this DNA's own default
+        # here was still the fixed string "none" -- so those competencies
+        # still never demonstrated a single borrow, just via a different
+        # mechanism (blind review confirmed 0 regrouping cases across
+        # dozens of samples for several "with and without regrouping"
+        # subtraction nodes). Vary across every level actually feasible at
+        # this max_minuend instead.
+        # "three_places"/"four_places" excluded from this pool even when
+        # regrouping_is_feasible's arithmetic bound allows them: at large
+        # max_minuend the pair-builder below falls back to rejection
+        # sampling with a fixed attempt cap, and a 3-or-4-place-borrow pair
+        # is rare enough within that cap to intermittently raise "no valid
+        # pair exists" for some seeds (a real, pre-existing sampling-
+        # density limitation, not a feasibility one) -- reproduced by the
+        # matrix validator's own scalar=1.0 sweep at max_minuend=1000/10000.
+        # "two_places" is exercised by that same exhaustive sweep clean.
+        feasible_levels = [
+            lvl for lvl in ("none", "one_place", "two_places")
+            if regrouping_is_feasible(lvl, max_minuend, grade)
+        ]
+        reg_level = rng.choice(feasible_levels) if feasible_levels else "none"
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
     # Fail fast on infeasible (range, regrouping) combinations. A minuend bounded
@@ -378,6 +403,62 @@ def generate_params(
             "context": "pure",
             "structure": "result_unknown",
             "max_minuend": max_minuend,
+        }
+
+    if task_type == "expanded_form" and max_minuend >= 11:
+        # "Subtract numbers by expressing minuends and subtrahends as tens
+        # and ones (expanded form)" (mat_g1_na_q3_5) had no task_type
+        # implementing it at all -- the node fell through to plain,
+        # undecomposed subtraction facts every time, and its co-mapped
+        # place_value DNA produced unrelated "what place is digit X"
+        # content and even a stray addition "sum" question from a spine
+        # collision (blind review: competency_fulfillment/
+        # comprehensive_coverage FAIL, "the expanded-form decomposition...
+        # never appears in any of the nine rendered samples"). Mirrors
+        # addition.py's identical task_type (same threshold reasoning: the
+        # branch always needs a two-digit `a`, so the smallest
+        # representable minuend is 10, plus at least 1 for a nonzero `b`).
+        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
+        lo = 10
+        hi = max(lo + 1, max_minuend - 1)
+        if hi <= 200:
+            candidates = [(x, y) for x in range(lo, hi + 1) for y in range(0, x) if _satisfies_regrouping(x, y, reg_level)]
+        else:
+            candidates = []
+            attempts = 0
+            seen_pairs = set()
+            while len(candidates) < 500 and attempts < 5000:
+                attempts += 1
+                x = rng.randint(lo, hi)
+                y = rng.randint(0, x)
+                if (x, y) not in seen_pairs and _satisfies_regrouping(x, y, reg_level):
+                    seen_pairs.add((x, y))
+                    candidates.append((x, y))
+        if not candidates:
+            raise RuntimeError(
+                f"generate_params (subtraction, task_type=expanded_form): regrouping "
+                f"level '{reg_level}' has no satisfying pair within max_minuend="
+                f"{max_minuend} (grade={grade}, seed={seed})."
+            )
+        a_val, b_val = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
+        from backend.app.practice_gen.dna.na.addition import decompose_to_places
+        a_hundreds, a_rem = divmod(a_val, 100)
+        a_tens, a_ones = divmod(a_rem, 10)
+        b_hundreds, b_rem = divmod(b_val, 100)
+        b_tens, b_ones = divmod(b_rem, 10)
+        return {
+            "a": a_val, "b": b_val, "result": a_val - b_val,
+            "a_tens": a_tens, "a_ones": a_ones, "b_tens": b_tens, "b_ones": b_ones,
+            "a_hundreds": a_hundreds, "b_hundreds": b_hundreds,
+            "task_type": "expanded_form",
+            "blank_target": "result",
+            "context": "pure",
+            "structure": "result_unknown",
+            "max_minuend": max_minuend,
+            "question": (
+                f"{decompose_to_places(a_val)} {decompose_to_places(b_val)} "
+                f"Subtract the place values, then find what's left: what is {a_val} − {b_val}?"
+            ),
         }
 
     # Build candidate pool with a grade-appropriate floor

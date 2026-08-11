@@ -36,10 +36,10 @@ _ERROR_PATTERNS: List[ErrorPattern] = [
         description="Off by one position when ordering — picked the adjacent value.",
     ),
     ErrorPattern(
-        formula="numbers[0] % 10",
+        formula="numbers[0] // 10",
         required_concept="comparing_ordering",
         label="pv_dig_val",
-        description="Compared the ones digit only instead of full place value.",
+        description="Compared the tens digit value instead of full place value.",
     ),
 ]
 
@@ -91,7 +91,17 @@ def generate_params(
     g_key = f"g{max(1, min(grade, 3))}"
     bounds = _PARAM_BOUNDS[g_key]
 
-    context = profile.get("context", "pure")
+    # "context" is declared as a variant axis (VARIANTS_BY_DNA) but the
+    # orchestrator only auto-varies a declared axis when the CALLER passes
+    # allowed_contexts/allowed_difficulties explicitly (Lab UI) -- an
+    # ordinary generation call never does, so this always defaulted to
+    # "pure" and every sample used the identical bare stem regardless of
+    # what VARIANTS_BY_DNA claims is possible (blind review: "11 of 12
+    # samples reuse the identical bare stem... the only contextualized
+    # item... originates from a different (spine) mechanism"). Auto-vary
+    # here, weighted toward "pure" since bare-number comparison/ordering
+    # is still this competency's core skill.
+    context = profile.get("context") or ("word_problem" if rng.random() < 0.3 else "pure")
     spine = profile.get("spine", None)
 
     max_val_prof = profile.get("max_value")
@@ -119,17 +129,31 @@ def generate_params(
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
     if task_type == "compare_two":
-        candidates = []
-        for _ in range(500):
-            if proximity == "close_together":
-                a, b = _close_pair(rng, effective_max)
-            else:
-                a = rng.randint(1, effective_max)
-                b = rng.randint(1, effective_max)
-            candidates.append((a, b))
-        
-        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
-        a, b = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
+        # "=" as a genuine correct answer (not just a wrong-answer option
+        # inside a False claim) requires a == b, but the two draws below
+        # are independent random ints over a range up to 10000 -- the odds
+        # of landing on a==b by pure chance are ~1/effective_max, so "="
+        # essentially never appeared as the correct symbol even though the
+        # competency explicitly names "=, >, and <" as three required
+        # symbols (blind review of mat_g3_na_q1_5: "'=' never appears as a
+        # correct answer in any of the 16 samples"). Force it deliberately
+        # a fraction of the time instead of leaving it to chance.
+        force_equal = rng.random() < 0.2
+        if force_equal:
+            a = rng.randint(1, effective_max)
+            b = a
+        else:
+            candidates = []
+            for _ in range(500):
+                if proximity == "close_together":
+                    x, y = _close_pair(rng, effective_max)
+                else:
+                    x = rng.randint(1, effective_max)
+                    y = rng.randint(1, effective_max)
+                if x != y:
+                    candidates.append((x, y))
+            from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
+            a, b = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
         numbers = [a, b]
         answer = _compare_symbol(a, b)
         distractors = [o for o in [">", "<", "="] if o != answer]
@@ -228,6 +252,63 @@ def generate_params(
         # This task_type was effectively dead code before registry.py
         # started binding it, so the mismatch was never exercised.
         result_dict["sequence"] = numbers
+        # Every "order numbers ... from smallest to largest, and vice
+        # versa" competency names BOTH directions explicitly, but nothing
+        # ever set "direction" -- fmt_ordering.py defaults it to
+        # "ascending" whenever the key is absent, so the descending half
+        # was never once generated (blind review of mat_g1_na_q1_4,
+        # mat_g2_na_q1_4, mat_g2_na_q4_2, and others). Vary it by seed
+        # unless a caller explicitly pins one.
+        result_dict["direction"] = profile.get("direction") or rng.choice(["ascending", "descending"])
+
+    if context == "word_problem":
+        # This DNA had no word-problem framing generation anywhere --
+        # `context` was stored but never used to vary the rendered text,
+        # so every sample (aside from the rare item routed through the
+        # separate spine system) used the identical bare "Compare the
+        # numbers: X ___ Y"/"Arrange these numbers..." stem regardless of
+        # context (blind review: variant_comprehensiveness FAIL/CONCERN
+        # across mat_g1_na_q1_3/_4, mat_g1_na_q2_0, mat_g2_na_q1_4,
+        # mat_g3_na_q1_5/_6 -- "11 of 12 samples reuse the identical bare
+        # stem"). fmt_mcq.py/fmt_cloze.py/fmt_ordering.py were updated to
+        # prefer this "question" key when present, same pattern as every
+        # other word-problem DNA fix this session.
+        actor = rng.choice(["Ana", "Ben", "Liza", "Jose", "Maria", "Kuya Pat"])
+        # (singular, plural) -- word-problem items reference specific
+        # counts that can legitimately be 1, and "1 marbles" is the same
+        # missing-pluralization defect blind review flagged repeatedly
+        # elsewhere this session ("1 clip highlights", "1 water bottles").
+        item_pairs = [
+            ("marble", "marbles"), ("sticker", "stickers"),
+            ("seashell", "seashells"), ("storybook", "storybooks"),
+            ("pencil", "pencils"),
+        ]
+        if task_type == "order_set":
+            singular, plural = rng.choice(item_pairs)
+            item_word = singular if len(numbers) == 1 else plural
+            direction_word = "smallest to largest" if result_dict["direction"] == "ascending" else "largest to smallest"
+            result_dict["question"] = (
+                f"{actor} counted {item_word} collected by {len(numbers)} friends: "
+                f"{', '.join(map(str, numbers))}. Arrange the counts from {direction_word}."
+            )
+        elif task_type != "find_between":
+            singular, plural = rng.choice(item_pairs)
+            a_word = singular if a == 1 else plural
+            b_word = singular if b == 1 else plural
+            friend = rng.choice([n for n in ("Ben", "Liza", "Jose", "Maria") if n != actor])
+            # Deliberately doesn't restate ">, <, or =" inline: fmt_cloze.py's
+            # shared blank-insertion step finds the correct answer's own
+            # string value ANYWHERE in the question text and replaces it --
+            # when the answer happens to be "<" (a character that can
+            # legitimately appear in this sentence's own wording), it
+            # corrupted "...>, <, or =?" into "...>, ___, or =?" (found live
+            # testing seed 72/603). Each formatter already presents its own
+            # options/blank separately; the narrative doesn't need to list
+            # them.
+            result_dict["question"] = (
+                f"{actor} has {a} {a_word}. {friend} has {b} {b_word}. "
+                f"Which sign correctly compares the two amounts?"
+            )
 
     return result_dict
 

@@ -352,7 +352,14 @@ def generate_params(
                 f"{total_rw}¢"
             ]
         else: # symbols
-            if grade == 3:
+            # "...Philippine currency symbols (₱ AND PhP)... and the
+            # centavo sign" (mat_g3_na_q2_0): grade==3 only ever took the
+            # centavo-decimal branch, so PhP -- one of the two explicitly
+            # named symbols -- never appeared in any grade-3 sample at all
+            # (blind review: "'PhP' never appears in any of 15 samples").
+            # Alternate between both G3 sub-cases instead of picking one
+            # by grade.
+            if grade == 3 and rng.random() < 0.5:
                 cent_choice = rng.choice([25, 50])
                 question = f"How is {cent_choice} centavos written as a decimal of a peso using the ₱ symbol?"
                 correct_ans = f"₱0.{cent_choice}"

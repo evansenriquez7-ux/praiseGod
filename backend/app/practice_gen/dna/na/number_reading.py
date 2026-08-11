@@ -159,9 +159,47 @@ def generate_params(
     if lo > hi:
         lo = hi
 
-    task_type = profile.get("task_type", "numeral_to_word")
+    # "Read AND write numbers ... in numerals and in words" (most nodes
+    # mapped to this DNA) names both directions, but an unbound task_type
+    # always defaulted to "numeral_to_word" -- the reverse (given a word
+    # form, produce/select the numeral) was never once demonstrated across
+    # any node in blind review, even at seeds specifically added to probe
+    # alternate rendering paths. Vary between the two "read and write"
+    # directions when not explicitly requested; "numeral_to_expanded" stays
+    # opt-in only (it belongs to a different, expanded-form-specific
+    # competency, not the generic read/write pairing).
+    task_type = profile.get("task_type") or rng.choice(["numeral_to_word", "word_to_numeral"])
+    if isinstance(task_type, list):
+        # registry.py binds a rotation list (not a single value) for
+        # "represent numbers using... concrete and pictorial models"
+        # (mat_g1_na_q1_2/mat_g2_na_q1_2/mat_g3_na_q1_0) -- same
+        # list-resolution pattern as multiplication.py/patterns.py/
+        # probability_language.py's identical fix; the orchestrator only
+        # auto-resolves CALLER-supplied difficulty_profile list values,
+        # not ones injected later from registry bounds.
+        task_type = rng.choice(task_type)
     if grade == 1 and task_type == "numeral_to_expanded":
         task_type = "numeral_to_word"
+
+    if task_type == "identify_value":
+        # "...using a variety of concrete and pictorial models (e.g.,
+        # number line, block or bar models, and numerals)" names a
+        # representation this DNA never had at all -- reading a number's
+        # magnitude from base-10 blocks, as opposed to converting between
+        # numeral/word/expanded forms (blind review: "block/bar models...
+        # never appear anywhere"). Reuses place_value.py's own task_type
+        # name for the identical underlying skill; fmt_place_value_blocks.py
+        # is wired to this DNA's compatible_formatters for it (see
+        # compatibility.py).
+        number = rng.randint(lo, hi)
+        return {
+            "number":        number,
+            "word_form":     num_to_tagalog_style_english_words(number),
+            "expanded_form": _make_expanded_form(number),
+            "task_type":     "identify_value",
+            "blank_target":  "number",
+            "answer":        number,
+        }
 
     # If no range difficulty is specified, use full grade-appropriate range (scalar=1.0)
     # A scalar of 0.0 would pin every question to the minimum of the range (e.g. 1-9),
@@ -215,7 +253,14 @@ def generate_params(
     
     # helper to add distinct items
     def _add_distractor(d_val):
-        if d_val != number and d_val > 0 and d_val not in distractors:
+        # "number * 10" (a place-value-shift misconception distractor) was
+        # never range-checked -- for a number already near the competency
+        # ceiling (e.g. 9337 with hi=10000), it produces 93370, over 9x the
+        # stated maximum. Invisible for numeral_to_word (whose distractors
+        # get word-formatted, not exposed as raw numeric values) but a real
+        # §1B leaky-window violation for word_to_numeral, which was simply
+        # never selected before to expose it.
+        if d_val != number and 0 < d_val <= hi and d_val not in distractors:
             distractors.append(d_val)
             
     # common numeric errors
@@ -275,6 +320,31 @@ def generate_hints(
 
     hints: List[str] = []
 
+    if task_type == "identify_value":
+        # "hundreds"/"ones" as bare place-value TERMS, and ordinal
+        # fallbacks like "3rd"/"1st", aren't introduced at every grade
+        # this task_type can be requested at (G1's own "read and write
+        # numerals up to 100" competency has BOTH still on its own
+        # NOT_YET_KNOWN list) -- naming either unconditionally tripped
+        # §1D vocabulary_gating the moment §1C's exhaustive sweep tried
+        # this task_type against a G1 node. Stay fully generic instead of
+        # trying to label individual places at all.
+        hints = [
+            "Count how many of each size of block there are.",
+            "Multiply each block's own value by how many there are, then add all the totals together.",
+        ]
+        place_terms = [
+            (number // 1000, "thousands"),
+            ((number % 1000) // 100, "hundreds"),
+            ((number % 100) // 10, "tens"),
+            (number % 10, "ones"),
+        ]
+        for digit, term in place_terms:
+            if digit > 0 and term in cumulative_vocab:
+                hints.append(f"{term.capitalize()}: {digit} block{'s' if digit != 1 else ''}.")
+        hints.append(f"Add the value of every block together to get the total, {number}.")
+        return hints
+
     if task_type == "numeral_to_word":
         hints.append(f"Read the number {number} one place at a time, starting from the largest place.")
         if number >= 1000:
@@ -307,6 +377,8 @@ NUMBER_READING_DNA = DNA(
         "mcq",
         "cloze",
         "numeric_input",
+        "place_value_blocks_read",
+        "place_value_blocks_set",
     ],
     requires_context=False,
     visual_home=None,

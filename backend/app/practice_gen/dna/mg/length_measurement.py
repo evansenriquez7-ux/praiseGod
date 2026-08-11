@@ -132,10 +132,24 @@ def generate_params(
         )
 
     task_type = profile.get("task_type", "read_measurement")
-    if task_type not in ("read_measurement", "compare", "convert", "estimate", "choose_unit"):
+    if task_type not in (
+        "read_measurement", "compare", "convert", "estimate", "choose_unit",
+        "distance_between", "equal_length", "length_or_distance",
+        "compare_distance", "compare_length_or_distance",
+    ):
         raise ValueError(
             f"generate_params (length_measurement): unknown task_type '{task_type}'."
         )
+    if task_type == "length_or_distance":
+        # registry.py sentinel for "measure the length of an object AND
+        # the distance between two objects" (mat_g1_mg_q2_0): the
+        # competency names two sub-tasks, so alternate between them per
+        # seed rather than locking to one.
+        task_type = random.Random(seed).choice(["read_measurement", "distance_between"])
+    if task_type == "compare_length_or_distance":
+        # registry.py sentinel for "Compare lengths AND distances"
+        # (mat_g1_mg_q2_1): alternate between the two framings per seed.
+        task_type = random.Random(seed).choice(["compare", "compare_distance"])
     if task_type == "convert" and grade < 2:
         raise ValueError(
             f"generate_params (length_measurement): task_type='convert' is not available for grade={grade}."
@@ -182,6 +196,55 @@ def generate_params(
             "distractors": [val_a, val_b, min(val_a, val_b)],
         }
 
+    if task_type == "compare_distance":
+        # "Compare lengths AND distances" (mat_g1_mg_q2_1) -- "compare"
+        # above only ever renders "Which is longer: X or Y?" (object-length
+        # framing), so the "distances" half of the competency was never
+        # once exercised in any sample. Same value/answer shape as
+        # "compare", distance-between-two-things framing instead.
+        if unit_mode == "non_standard":
+            unit = rng.choice(_NON_STANDARD_UNITS)
+            l_min, l_max = bounds.get("length_min", 1), bounds.get("length_max", 100)
+            l_max_current = max(l_min + 1, int(log_interpolate(l_min, l_max, scalar)))
+            val_a = rng.randint(l_min, l_max_current)
+            val_b = rng.randint(l_min, l_max_current)
+            while val_b == val_a:
+                val_b = rng.randint(l_min, l_max_current)
+        else:
+            unit = unit_mode
+            lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
+            # This frames a distance *between two landmarks* (bench/tree/
+            # gate), not an object's own length -- a real-world floor of
+            # 20cm is far more plausible than the object-length "compare"
+            # branch's 1cm floor (nobody describes a bench and a tree as
+            # 6cm apart). Blind review of mat_g2_mg_q2_3 flagged exactly
+            # this: "distance from the bench to the tree is 6 cm".
+            if unit_mode == "cm":
+                lo = max(lo, 20)
+            hi = max(hi, lo + 1)
+            val_a = rng.randint(lo, hi)
+            val_b = rng.randint(lo, hi)
+            while val_b == val_a:
+                val_b = rng.randint(lo, hi)
+        answer = max(val_a, val_b)
+        unit_a = unit[:-1] if val_a == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
+        unit_b = unit[:-1] if val_b == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
+        return {
+            "blank_target": "answer",
+            "value_a": val_a,
+            "value_b": val_b,
+            "unit": unit,
+            "unit_type": unit_mode,
+            "task_type": "compare_distance",
+            "answer": answer,
+            "distractors": [val_a, val_b, min(val_a, val_b)],
+            "question": (
+                f"The distance from the bench to the tree is {val_a} {unit_a}. "
+                f"The distance from the gate to the tree is {val_b} {unit_b}. "
+                f"Which distance is longer?"
+            ),
+        }
+
     if task_type == "choose_unit":
         # "Identify and use the appropriate unit (m or cm)" (mat_g2_mg_q2_1)
         # had no matching task_type at all -- this DNA only ever measured
@@ -211,6 +274,36 @@ def generate_params(
                 "neither works",
             ],
             "question": f"Which unit would you use to measure the length of {item}: centimeters or meters?",
+        }
+
+    if task_type == "convert":
+        # VARIANTS_BY_DNA declares "convert" and the grade<2 guard above
+        # already gates it, but no branch ever built its params -- the
+        # DNA fell straight through to the read_measurement default at the
+        # bottom, which sets "length"/"unit", not the "value"/"from_unit"/
+        # "to_unit" keys _build_symbolic_question's convert stem reads, so
+        # every convert render literally said "Convert None None to None."
+        # (blind review of mat_g2_mg_q2_3 seed 604). m->cm is always exact
+        # (x100); cm->m only draws cm values that are already a multiple of
+        # 100, since K-3 hasn't met decimal lengths, so the answer stays a
+        # whole number of meters either direction.
+        m_to_cm = rng.random() < 0.5
+        lo, hi = 1, max(2, int(log_interpolate(1, 20, scalar)))
+        if m_to_cm:
+            val = rng.randint(lo, hi)
+            from_u, to_u, answer = "m", "cm", val * 100
+        else:
+            val_m = rng.randint(lo, hi)
+            val, from_u, to_u, answer = val_m * 100, "cm", "m", val_m
+        return {
+            "blank_target": "answer",
+            "value": val,
+            "from_unit": from_u,
+            "to_unit": to_u,
+            "unit_type": from_u,
+            "task_type": "convert",
+            "answer": answer,
+            "question": f"Convert {val} {from_u} to {to_u}.",
         }
 
     if task_type == "estimate":
@@ -246,6 +339,109 @@ def generate_params(
             "question": (
                 f"An object measures {length} {unit_mode}. "
                 f"About how many {unit_mode} is that, rounded to the nearest {round_unit}?"
+            ),
+        }
+
+    if task_type == "distance_between" and grade >= 2:
+        # The branch below is hardcoded to non-standard units ("hands",
+        # "paperclips", etc), a genuinely G1-only framing per MATATAG (G2
+        # moves to standard cm/m units). Nothing gated this for higher
+        # grades, so mat_g2_mg_q2_3's variant-coverage seed 605 (which pins
+        # task_type='distance_between' purely to demonstrate every declared
+        # task_type at least once) rendered a G1-style non-standard-unit
+        # item on a G2 node: "The distance between them is ___ hands." --
+        # ungrounded (no visual/object to count against) and regressive for
+        # the grade (blind review: cognitive_capacity FAIL, "unsolvable/
+        # broken item with no derivable answer"). Redirecting to
+        # compare_distance (the standard-units, G2+ version of the same
+        # "distance between two objects" skill, already implemented and
+        # already exercised successfully by this node at other seeds)
+        # keeps the declared task_type renderable -- raising instead would
+        # make validate_matrix's own exhaustive §1C sweep fail, since it
+        # expects every VARIANTS_BY_DNA-declared combination to succeed for
+        # every node mapped to this DNA, regardless of grade.
+        task_type = "compare_distance"
+
+    if task_type == "distance_between":
+        # "the distance between two objects" (mat_g1_mg_q2_0's second named
+        # sub-task) is the same non-standard-unit counting skill as
+        # read_measurement, applied to the gap between two objects rather
+        # than a single object's length -- MATATAG G1 doesn't distinguish
+        # them numerically, only by what is being measured. G1-only, so
+        # unit_mode is always non_standard here.
+        unit = rng.choice(_NON_STANDARD_UNITS)
+        l_min, l_max = bounds.get("length_min", 1), bounds.get("length_max", 100)
+        l_max_current = max(l_min, int(log_interpolate(l_min, l_max, scalar)))
+        tick_options = [1, 2, 5, 10]
+        tick_step = tick_options[min(3, int(scalar * 4))]
+        if l_max_current > 50:
+            tick_step = max(tick_step, 10)
+        elif l_max_current > 20:
+            tick_step = max(tick_step, 5)
+        min_mult = max(1, (l_min + tick_step - 1) // tick_step)
+        max_mult = max(min_mult, l_max_current // tick_step)
+        length = rng.randint(min_mult, max_mult) * tick_step
+        obj_a, obj_b = rng.sample(["a ball", "a box", "a chair", "a bag", "a toy"], 2)
+        unit_word = unit[:-1] if length == 1 and unit.endswith("s") else unit
+        return {
+            "blank_target": "answer",
+            "length": length,
+            "unit": unit,
+            "unit_type": "non_standard",
+            "task_type": "distance_between",
+            "tick_step": tick_step,
+            "answer": length,
+            "question": (
+                f"{obj_a[0].upper()}{obj_a[1:]} and {obj_b} are placed apart. "
+                f"The distance between them is ___ {unit_word}."
+            ),
+        }
+
+    if task_type == "equal_length":
+        # "Identify ... line segments of equal length" (mat_g3_mg_q1_6) needs
+        # the complement of "compare": able to present a genuinely EQUAL
+        # pair, which "compare" structurally forbids (its own loop below
+        # forces val_b != val_a). Present a reference segment and a second
+        # segment that matches it exactly half the time.
+        if unit_mode == "non_standard":
+            unit = rng.choice(_NON_STANDARD_UNITS)
+            lo, hi = bounds.get("length_min", 1), bounds.get("length_max", 100)
+            hi = max(lo + 1, int(log_interpolate(lo, hi, scalar)))
+        else:
+            unit = unit_mode
+            lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
+            hi = max(hi, lo + 1)
+        ref = rng.randint(lo, hi)
+        is_equal = rng.random() < 0.5
+        if is_equal:
+            candidate = ref
+        else:
+            deltas = [d for d in range(-5, 6) if d != 0 and lo <= ref + d <= hi]
+            candidate = ref + rng.choice(deltas) if deltas else ref + 1
+        answer = "Yes" if is_equal else "No"
+        # "cannot tell without measuring" is a guaranteed-wrong distractor
+        # here -- both lengths are already stated in the question, so a
+        # student never actually needs to eliminate it by reasoning about
+        # the task (blind review of mat_g3_mg_q1_6). Swap for a distractor
+        # that is wrong for a reason unrelated to information being given.
+        unit_a = unit[:-1] if ref == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
+        unit_b = unit[:-1] if candidate == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
+        return {
+            "blank_target": "answer",
+            "value_a": ref,
+            "value_b": candidate,
+            "unit": unit,
+            "unit_type": unit_mode,
+            "task_type": "equal_length",
+            "answer": answer,
+            "distractors": [
+                "No" if answer == "Yes" else "Yes",
+                "only if they are the same color",
+                "only if they are drawn in the same direction",
+            ],
+            "question": (
+                f"Segment A is {ref} {unit_a} long. Segment B is {candidate} {unit_b} long. "
+                f"Are Segment A and Segment B equal in length?"
             ),
         }
 
@@ -319,9 +515,13 @@ def generate_params(
             shorter = rng.randint(1, length - 1)
             result["length_b"] = shorter
             result["answer"] = length - shorter
+            # length is guaranteed >= 2 above, but shorter (1..length-1) can
+            # be exactly 1 -- "1 paperclips" is a plural-agreement error a
+            # Grade 1 reader stumbles on (blind review of mat_g1_mg_q2_2).
+            shorter_unit = unit[:-1] if shorter == 1 and unit.endswith("s") else unit
             result["question"] = (
                 f"{obj_a[0].upper()}{obj_a[1:]} is {length} {unit} long. "
-                f"{obj_b[0].upper()}{obj_b[1:]} is {shorter} {unit} long. "
+                f"{obj_b[0].upper()}{obj_b[1:]} is {shorter} {shorter_unit} long. "
                 f"How many {unit} longer is {obj_a} than {obj_b}?"
             )
         return result
@@ -347,17 +547,55 @@ def generate_params(
             obj_a, obj_b = rng.sample(
                 ["a pencil", "a book", "a notebook", "a ruler", "a garden path", "a crayon"], 2
             )
-            if length < 2:
-                length = 2
-                result["length"] = length
-            shorter = rng.randint(1, length - 1)
-            result["length_b"] = shorter
-            result["answer"] = length - shorter
-            result["question"] = (
-                f"{obj_a[0].upper()}{obj_a[1:]} is {length} {unit_mode} long. "
-                f"{obj_b[0].upper()}{obj_b[1:]} is {shorter} {unit_mode} long. "
-                f"How many {unit_mode} longer is {obj_a} than {obj_b}?"
-            )
+            # Small classroom objects (pencil, book, notebook, ruler, crayon)
+            # are realistically 5-50cm; "a garden path" gets its own,
+            # higher floor (30cm) but no cap, since it plausibly reaches
+            # this unit's full difficulty-scaled ceiling (no cap/floor for
+            # the "m" unit at all). Applied per-object and via an
+            # INDEPENDENT second draw rather than deriving obj_b's length
+            # from obj_a's (a prior version drew "shorter = randint(1,
+            # length-1)", which ties obj_b's scale to obj_a's and breaks
+            # down whenever obj_a is the uncapped garden path) -- blind
+            # review round 2 found an oversized ruler this way, round 3 an
+            # undersized notebook, round 4 an undersized garden path
+            # ("6 cm long", shorter than a pencil).
+            def _plausible(v: int, obj: str) -> int:
+                if unit_mode != "cm":
+                    return v
+                if obj == "a garden path":
+                    return max(v, 30)
+                return min(max(v, 5), 50)
+
+            val_a = _plausible(length, obj_a)
+            val_b = _plausible(rng.randint(lo, hi), obj_b)
+            if val_a == val_b:
+                val_b = max(1, val_b - 1)
+            result["length"] = val_a
+            result["length_b"] = val_b
+            # "Solve problems involving length and distance" names both a
+            # difference sub-case ("how many cm longer") and an additive one
+            # implicitly (combining two measured lengths) -- 12/16 samples
+            # reusing the identical difference template was flagged as a
+            # variant_comprehensiveness FAIL (blind review, round 2/3).
+            # Alternate between the two framings instead of always asking
+            # for the difference.
+            if rng.random() < 0.5:
+                result["answer"] = val_a + val_b
+                result["question"] = (
+                    f"{obj_a[0].upper()}{obj_a[1:]} is {val_a} {unit_mode} long. "
+                    f"{obj_b[0].upper()}{obj_b[1:]} is {val_b} {unit_mode} long. "
+                    f"If they are placed end to end, what is their combined length in {unit_mode}?"
+                )
+            else:
+                longer_obj, longer_val, shorter_obj, shorter_val = (
+                    (obj_a, val_a, obj_b, val_b) if val_a > val_b else (obj_b, val_b, obj_a, val_a)
+                )
+                result["answer"] = longer_val - shorter_val
+                result["question"] = (
+                    f"{longer_obj[0].upper()}{longer_obj[1:]} is {longer_val} {unit_mode} long. "
+                    f"{shorter_obj[0].upper()}{shorter_obj[1:]} is {shorter_val} {unit_mode} long. "
+                    f"How many {unit_mode} longer is {longer_obj} than {shorter_obj}?"
+                )
         return result
 
     # convert_between: give meters, ask for centimeters (or vice versa)
@@ -399,9 +637,45 @@ def generate_hints(
     cumulative_vocab: Set[str],
 ) -> List[str]:
     unit_type = values.get("unit_type", "non_standard")
+    task_type = values.get("task_type")
     cm_label = VOCAB_CENTIMETER.resolve(cumulative_vocab)
     m_label  = VOCAB_METER.resolve(cumulative_vocab)
     unit_label = {"cm": cm_label, "m": m_label}
+
+    def _sing(unit: str, count: Any) -> str:
+        """Non-standard units are all regular '-s' plurals; singularize for count==1."""
+        return unit[:-1] if count == 1 and isinstance(unit, str) and unit.endswith("s") and unit not in ("cm", "m") else unit
+
+    # task_type-specific branches must be checked before the generic
+    # unit_type=="non_standard" fallback below -- "compare"/"equal_length"/
+    # "distance_between" can all report unit_type="non_standard" (G1) too,
+    # and the generic branch's "Count how many X fit along the object..."
+    # hint doesn't match what those task types actually ask.
+    if task_type in ("compare", "compare_distance"):
+        val_a, val_b = values["value_a"], values["value_b"]
+        unit_word = unit_label.get(unit_type, values.get("unit", "units"))
+        return [
+            f"Compare {val_a} {_sing(unit_word, val_a)} and {val_b} {_sing(unit_word, val_b)}.",
+            f"{max(val_a, val_b)} is more than {min(val_a, val_b)}.",
+            f"The longer {'distance' if task_type == 'compare_distance' else 'length'} is {values['answer']} {_sing(unit_word, values['answer'])}.",
+        ]
+
+    if task_type == "equal_length":
+        val_a, val_b = values["value_a"], values["value_b"]
+        unit_word = unit_label.get(unit_type, values.get("unit", "units"))
+        return [
+            f"Compare {val_a} {_sing(unit_word, val_a)} and {val_b} {_sing(unit_word, val_b)}.",
+            "Equal length means the same number of units, not just a similar look.",
+            f"{val_a} {_sing(unit_word, val_a)} {'equals' if val_a == val_b else 'does not equal'} {val_b} {_sing(unit_word, val_b)}, so the answer is {values['answer']}.",
+        ]
+
+    if task_type == "distance_between":
+        unit = values.get("unit", "units")
+        return [
+            f"Count how many {unit} fit in the gap between the two objects.",
+            "Make sure no gaps or overlaps between the units.",
+            f"The distance between them is {values['answer']} {_sing(unit, values['answer'])}.",
+        ]
 
     if unit_type == "non_standard":
         unit = values.get("unit", "units")
@@ -409,15 +683,6 @@ def generate_hints(
             f"Count how many {unit} fit along the object from end to end.",
             "Make sure no gaps or overlaps between the units.",
             f"The length is {values['answer']} {unit}.",
-        ]
-
-    if values.get("task_type") == "compare":
-        val_a, val_b = values["value_a"], values["value_b"]
-        unit_word = unit_label.get(unit_type, values.get("unit", "units"))
-        return [
-            f"Compare {val_a} {unit_word} and {val_b} {unit_word}.",
-            f"{max(val_a, val_b)} is more than {min(val_a, val_b)}.",
-            f"The longer length is {values['answer']} {unit_word}.",
         ]
 
     if unit_type == "convert_between":

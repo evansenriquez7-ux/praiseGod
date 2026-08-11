@@ -18,27 +18,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 24 − 0?",
-      "correct_answer": 24,
+      "question_text": "75 is 7 tens and 5 ones. 12 is 1 ten and 2 ones. Subtract the place values, then find what's left: what is 75 \u2212 12?",
+      "correct_answer": 63,
       "options": [
         {
           "key": "A",
-          "value": 23,
+          "value": 87,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 26,
+          "value": 64,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 24,
+          "value": 63,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 25,
+          "value": 62,
           "is_correct": false
         }
       ]
@@ -46,27 +46,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 11 − 1?",
-      "correct_answer": 10,
+      "question_text": "13 is 1 ten and 3 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: what is 13 \u2212 10?",
+      "correct_answer": 3,
       "options": [
         {
           "key": "A",
-          "value": 10,
+          "value": 3,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 9,
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 11,
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 12,
+          "value": 23,
           "is_correct": false
         }
       ]
@@ -74,106 +74,109 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "What place is the digit 0 in, in the number 20?",
-      "correct_answer": "ones",
+      "question_text": "45 is 4 tens and 5 ones. 40 is 4 tens and 0 ones. Subtract the place values, then find what's left: 45 \u2212 40 = ___",
+      "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": "none of the above",
-          "text": "none of the above",
+          "value": 4,
+          "text": "4",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "tens",
-          "text": "tens",
+          "value": 85,
+          "text": "85",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "cannot be determined",
-          "text": "cannot be determined",
+          "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "ones",
-          "text": "ones",
+          "value": 5,
+          "text": "5",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "What place is the digit 1 in, in the number 15?",
-      "correct_answer": "tens",
+      "formatter": "cloze",
+      "question_text": "35 is 3 tens and 5 ones. 30 is 3 tens and 0 ones. Subtract the place values, then find what's left: 35 \u2212 30 = ___",
+      "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": "cannot be determined",
+          "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "ones",
+          "value": 65,
+          "text": "65",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "tens",
+          "value": 5,
+          "text": "5",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "none of the above",
+          "value": 4,
+          "text": "4",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "cloze",
-      "question_text": "14 − 10 = ___",
+      "formatter": "mcq",
+      "question_text": "15 is 1 ten and 5 ones. 11 is 1 ten and 1 one. Subtract the place values, then find what's left: what is 15 \u2212 11?",
       "correct_answer": 4,
       "options": [
         {
           "key": "A",
           "value": 5,
-          "text": "5",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 4,
-          "text": "4",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 3,
-          "text": "3",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 24,
-          "text": "24",
+          "value": 26,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 50,
-      "formatter": "true_false",
-      "question_text": "What place is the digit 2 in, in the number 20? The answer is 22.. True or False?",
-      "correct_answer": false
+      "formatter": "read_fill_in_blank",
+      "question_text": "60 is 6 tens and 0 ones. 20 is 2 tens and 0 ones. Subtract the place values, then find what's left: The total is 60 and one part is 20. What is the other part?",
+      "correct_answer": 40
     },
     {
       "seed": 51,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 36 and it moves backward 15 numbers. Starting from 36, just count back 15 numbers. Which number will the dot land on?",
-      "correct_answer": "C",
+      "formatter": "error_detect",
+      "question_text": "Ana says: 33 is 3 tens and 3 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: 33 \u2212 10 = 43. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 23
+      },
       "options": [
         {
           "key": "A",
@@ -200,23 +203,23 @@
     {
       "seed": 82,
       "formatter": "error_detect",
-      "question_text": "Dante says: 21 − 1 = 20. Is Dante correct?",
+      "question_text": "Dante says: 22 is 2 tens and 2 ones. 1 is 1 one. Subtract the place values, then find what's left: 22 \u2212 1 = 21. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
-        "correct_value": 20
+        "correct_value": 21
       }
     },
     {
       "seed": 101,
       "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 5 and 0. What is the sum?",
-      "correct_answer": 5
+      "question_text": "70 is 7 tens and 0 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: The total is 70 and one part is 10. What is the other part?",
+      "correct_answer": 60
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "For node mat_g1_na_q3_5 (Grade 1 Quarter 3 curriculum), the sampled problems directly fulfill the MATATAG competency 'Subtract numbers by expressing minuends and subtrahends as tens and ones (expanded form), without regrouping.'. Across seeds 42, 43, 44, 45, 46, 50, 51, 82, 101, the rendered questions (such as 'What is 24 − 0?') require students to demonstrate the target concept."
+      "rationale": "For node mat_g1_na_q3_5 (Grade 1 Quarter 3 curriculum), the sampled problems directly fulfill the MATATAG competency 'Subtract numbers by expressing minuends and subtrahends as tens and ones (expanded form), without regrouping.'. Across seeds 42, 43, 44, 45, 46, 50, 51, 82, 101, the rendered questions (such as 'What is 24 \u2212 0?') require students to demonstrate the target concept."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
@@ -224,7 +227,7 @@
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g1_na_q3_5 fit Grade 1 Quarter 3 cognitive limits. Stems like 'What is 24 − 0?' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
+      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g1_na_q3_5 fit Grade 1 Quarter 3 cognitive limits. Stems like 'What is 24 \u2212 0?' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",

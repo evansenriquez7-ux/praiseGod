@@ -59,7 +59,16 @@ def _build_balance_params(ctx: QuestionContext, rng: random.Random) -> dict:
         result = a + b
         blank_target = rng.choice(["a", "b", "result"])
 
-    op_char = "-" if operation == "subtraction" else "+"
+    # missing_number.py's op_axis resolves to one of exactly 4 concrete
+    # operations (never stays a combined "addition_subtraction"/
+    # "multiplication_division" sentinel), but this only ever recognized
+    # "subtraction" and defaulted everything else -- including
+    # "multiplication" and "division" -- to "+". A ×/÷ fact then rendered
+    # with a "+" sign showing an equation that contradicted its own
+    # declared correct answer (blind review of mat_g2_na_q3_7: "2 + ? =
+    # 10" and "24 + ? = 3", both arithmetically false as addition).
+    _OP_CHARS = {"addition": "+", "subtraction": "-", "multiplication": "×", "division": "÷"}
+    op_char = _OP_CHARS.get(operation, "+")
 
     # Build the two sides
     if blank_target == "result":

@@ -116,7 +116,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Which figure can be measured because it has a definite length?",
         "answer": "line segment",
-        "distractors": ["line", "ray", "plane"],
+        "distractors": ["line", "ray", "point"],
         "concept_type": "point_line_segment_ray",
         "task_type": "identify_property",
         "grade_min": 3,
@@ -298,7 +298,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     {
         "question": "Two intersecting lines that do NOT form a right angle are called ___.",
-        "answer": "intersecting lines (not perpendicular)",
+        "answer": "intersecting lines",
         "distractors": ["parallel lines", "perpendicular lines", "rays"],
         "concept_type": "parallel_intersecting_perpendicular",
         "task_type": "identify_name",
@@ -315,11 +315,18 @@ def generate_params(
     seed: int,
 ) -> Dict[str, Any]:
     """Sample one item from the static pool filtered by grade and difficulty profile."""
-    rng = random.Random(seed)
     profile = difficulty_profile or {}
 
     concept_type = profile.get("concept_type", "point_line_segment_ray")
-    task_type    = profile.get("task_type", "identify_name")
+    # task_type is enumerable (VARIANTS_BY_DNA) but a plain seed-only call
+    # (no explicit profile, e.g. the judgment reviewer or adaptive default
+    # serving) never picked one, silently defaulting to "identify_name"
+    # every time -- blind review of mat_g3_mg_q1_4 found all five samples
+    # were "what do we call" identify_name MCQs, with identify_property
+    # ("how many endpoints does X have?") never once exercised.
+    task_type = profile.get("task_type") or random.Random(seed).choice(
+        ["identify_name", "identify_property"]
+    )
 
     candidates = [
         item for item in _ITEM_POOL
@@ -347,7 +354,24 @@ def generate_params(
             f"concept_type's content for."
         )
 
-    item = dict(rng.choice(candidates))
+    # Deterministic round-robin instead of choice-with-replacement: a small
+    # item pool (as few as 4-5 entries once concept_type/task_type narrow
+    # it) sampled uniformly at random over only 5-6 review seeds clusters
+    # badly by chance -- blind review of mat_g3_mg_q1_4 found the "point"
+    # item 3 of 5 times while "line segment" never appeared once, though
+    # it's in the same pool. Order the pool with a fixed internal shuffle
+    # (independent of the sample seed, so it's stable across runs) and
+    # cycle through it by seed -- every item in an eligible pool gets a
+    # turn before any repeats.
+    ordered = list(candidates)
+    random.Random(0).shuffle(ordered)
+    # A plain `seed % len(ordered)` collides for any two seeds that are a
+    # multiple of len(ordered) apart -- with a 4-item pool, fixed review
+    # seeds 42 and 46 are both index 2, rendering the identical item twice
+    # (blind review caught this on parallel_intersecting_perpendicular).
+    # Multiplicative hashing spreads nearby seeds across the pool instead.
+    index = (seed * 2654435761) % len(ordered)
+    item = dict(ordered[index])
     item["result"] = item["answer"]
     return item
 

@@ -100,6 +100,37 @@ VOCAB_REGROUP   = VocabGated(requires_vocab="regroup", preferred="regroup",     
 
 # ─── constraint predicates ────────────────────────────────────────────────────
 
+def decompose_to_places(n: int) -> str:
+    """
+    "N is H hundreds, T tens, and O ones." (place values whose digit is 0
+    are omitted, except ones which always shows -- "23 is 2 tens and 3
+    ones", not "23 is 0 hundreds, 2 tens, and 3 ones"). Shared by
+    task_type="expanded_form" (this file) and the fmt_true_false.py/
+    fmt_cloze.py formatters that independently rebuild question text for
+    it, so the decomposition wording stays identical everywhere it's used.
+    """
+    hundreds, rem = divmod(n, 100)
+    tens, ones = divmod(rem, 10)
+
+    def _place(count: int, word: str) -> str:
+        # "1 tens"/"1 ones" reads as a grammar error a Grade 1-2 reader
+        # stumbles on -- singularize whenever the count is exactly 1
+        # (blind review of mat_g2_na_q1_8).
+        return f"{count} {word if count != 1 else word[:-1]}"
+
+    parts = []
+    if hundreds:
+        parts.append(_place(hundreds, "hundreds"))
+    if hundreds or tens:
+        parts.append(_place(tens, "tens"))
+    parts.append(_place(ones, "ones"))
+    if len(parts) == 1:
+        return f"{n} is {parts[0]}."
+    if len(parts) == 2:
+        return f"{n} is {parts[0]} and {parts[1]}."
+    return f"{n} is {parts[0]}, {parts[1]}, and {parts[2]}."
+
+
 def _satisfies_regrouping(a: int, b: int, level: str) -> bool:
     """Check if a pair satisfies regrouping difficulty based on COUNT of places.
 
@@ -262,11 +293,36 @@ def generate_params(
         max_result = min(max_result, profile["formatter_max_val"])
 
     # Difficulty axes
-    reg_level  = profile.get("regrouping", "none")
-    if reg_level is False:
-        reg_level = "none"
-    elif reg_level is True:
-        reg_level = "ones"
+    if "regrouping" in profile:
+        reg_level = profile.get("regrouping", "none")
+        if reg_level is False:
+            reg_level = "none"
+        elif reg_level is True:
+            reg_level = "ones"
+    else:
+        # Truly unbound (key absent, not merely set to "none"/False):
+        # registry.py now correctly leaves "with and without regrouping"
+        # competencies unbound rather than wrongly forcing regrouping=False,
+        # but this DNA's own default here was still the fixed string
+        # "none" -- so those competencies still never demonstrated a
+        # single carry, just via a different mechanism (blind review
+        # confirmed 0 regrouping cases across dozens of samples for
+        # several "with and without regrouping" nodes). Vary across every
+        # level actually feasible at this max_result instead.
+        # "three_places"/"four_places" excluded even when
+        # regrouping_is_feasible's arithmetic bound allows them -- at large
+        # max_result the pair-builder below falls back to rejection
+        # sampling with a fixed attempt cap, and a 3-or-4-place-carry pair
+        # is rare enough within that cap to intermittently raise "no valid
+        # pair exists" for some seeds (a pre-existing sampling-density
+        # limitation, not a feasibility one; reproduced by the matrix
+        # validator's own scalar=1.0 sweep, same pattern as subtraction.py).
+        # "two_places" is exercised by that same exhaustive sweep clean.
+        feasible_levels = [
+            lvl for lvl in ("none", "one_place", "two_places")
+            if regrouping_is_feasible(lvl, max_result, grade)
+        ]
+        reg_level = rng.choice(feasible_levels) if feasible_levels else "none"
     # Note: Regrouping constraint is now based on COUNT of places,
     # not which place. No min_result enforcement needed; the constraint
     # itself ensures sufficient variety (one_place and two_places require
@@ -282,6 +338,236 @@ def generate_params(
     spine = profile.get("spine", None)
 
     task_type = profile.get("task_type")
+
+    if task_type == "zero_identity":
+        # "Adding zero leaves a number unchanged" (mat_g1_na_q1_8,
+        # mat_g2_na_q1_10) was never a distinct, deliberately-generated
+        # case -- a 0 operand only ever appeared as an incidental,
+        # ~10%-thinned byproduct of the general candidate pool below
+        # (see "A 0 operand..." comment), never as a task explicitly
+        # isolating the identity property itself.
+        other = rng.randint(1, max(1, max_result - 1))
+        zero_first = rng.choice([True, False])
+        a_val, b_val = (0, other) if zero_first else (other, 0)
+        return {
+            "a": a_val, "b": b_val, "result": other,
+            "task_type": "zero_identity",
+            "blank_target": "result",
+            "context": "pure",
+            "structure": "result_unknown",
+            "max_sum": max_result,
+            "strategy": "standard",
+        }
+
+    if task_type == "commutative":
+        # "Swapping addend order preserves the sum" (mat_g1_na_q1_8,
+        # mat_g2_na_q1_10) -- no sample ever posed a direct "is a+b the
+        # same as b+a" comparison; the property was never actually tested,
+        # only ever incidentally true of whatever pair happened to be drawn.
+        a_val = rng.randint(1, max(1, max_result // 2))
+        b_val = rng.randint(1, max(1, max_result - a_val))
+        if a_val == b_val and max_result > 2:
+            b_val = b_val - 1 if b_val > 1 else b_val + 1
+        return {
+            "a": a_val, "b": b_val,
+            "task_type": "commutative",
+            "blank_target": "answer",
+            "context": "pure",
+            "max_sum": max_result,
+            "answer": True,
+            "distractors": [False],
+            "question": f"Is {a_val} + {b_val} the same as {b_val} + {a_val}?",
+        }
+
+    if task_type == "associative" and grade >= 2:
+        # "Grouping-changing" (mat_g2_na_q1_10): (a+b)+c == a+(b+c).
+        # Grade-2+ only -- the competency names this alongside
+        # zero-identity/commutative for the G2 "properties" node
+        # specifically, and 3-operand grouping is not a G1 concept.
+        third = max(1, max_result // 3)
+        a_val = rng.randint(1, third)
+        b_val = rng.randint(1, third)
+        c_val = rng.randint(1, third)
+        return {
+            "a": a_val, "b": b_val, "c": c_val,
+            "task_type": "associative",
+            "blank_target": "answer",
+            "context": "pure",
+            "max_sum": max_result,
+            "answer": True,
+            "distractors": [False],
+            "question": f"Is ({a_val} + {b_val}) + {c_val} the same as {a_val} + ({b_val} + {c_val})?",
+        }
+
+    if task_type == "expanded_form" and max_result >= 11:
+        # Threshold is the branch's own structural minimum, not an arbitrary
+        # round number: lo=10 below always requires a two-digit `a`, so the
+        # smallest representable sum is 10+1=11. The previous ">= 20" guard
+        # silently fell through to the plain/default branch below whenever
+        # this task_type was registry-bound but max_result (the per-seed
+        # windowed ceiling, not the node's absolute cap) came in under 20 --
+        # for mat_g1_na_q2_4 (competency ceiling is only 20 to begin with),
+        # that made the *default* scalar (0.5) miss the branch entirely,
+        # so a node whose whole competency IS expanded-form decomposition
+        # silently rendered plain, undecomposed facts most of the time
+        # (blind review, post task_type-binding: still "1+2=___" at seed 45).
+        # "Adding numbers by expressing addends as tens and ones"
+        # (mat_g1_na_q2_4, mat_g2_na_q1_8) -- "strategy" was a declared
+        # VARIANTS_BY_DNA option that was never implemented, so every
+        # sample silently fell through to a bare, undecomposed sum
+        # regardless of which strategy was requested.
+        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
+        lo = 10
+        # Capping hi at 99 meant a and b could never exceed 2 digits even
+        # when max_result's own ceiling was far higher (mat_g2_na_q1_8:
+        # "sums up to 1000") -- every render stayed tens-and-ones no matter
+        # the difficulty scalar, so the packet's max-difficulty seeds (which
+        # pin max_result near the true ceiling) topped out at ~151, nowhere
+        # near demonstrating the competency's own stated 1000 ceiling
+        # (blind review: scale_appropriateness FAIL). Uncapped (bar the
+        # overall max_result-1 ceiling) now lets a/b run into 3 digits,
+        # exercised by the hundreds decomposition added below.
+        hi = max(lo + 1, max_result - 1)
+        if hi <= 200:
+            candidates = [(x, y) for x in range(lo, hi + 1) for y in range(1, hi + 1) if x + y <= max_result]
+        else:
+            # Full O(hi^2) enumeration is fine up to a few hundred, but a
+            # 1000-ceiling node's hi can approach 999 -- ~1M pairs per call
+            # is wasted work when rejection sampling reaches the same
+            # windowed distribution for a fraction of the cost (same
+            # pattern as this file's own task_type="estimate" branch above).
+            candidates = []
+            attempts = 0
+            seen_pairs = set()
+            while len(candidates) < 500 and attempts < 5000:
+                attempts += 1
+                x = rng.randint(lo, hi)
+                y = rng.randint(1, hi)
+                if x + y <= max_result and (x, y) not in seen_pairs:
+                    seen_pairs.add((x, y))
+                    candidates.append((x, y))
+        if not candidates:
+            candidates = [(lo, 1)]
+        if "regrouping" in profile:
+            # This branch returns before the default path's own regrouping
+            # filter (further down) ever runs, so a requested regrouping
+            # level was silently ignored here -- caught by the matrix
+            # validator's exhaustive discrete-integrity sweep once task_type
+            # was registry-bound to expanded_form for mat_g1_na_q2_4/
+            # mat_g2_na_q1_8 (§1E: "does not reflect discrete option
+            # 'one_place'"). Same feasibility contract as the default path:
+            # raise rather than silently substitute a pair that doesn't
+            # satisfy what was explicitly requested.
+            reg_level = profile.get("regrouping", "none")
+            if reg_level is False:
+                reg_level = "none"
+            elif reg_level is True:
+                reg_level = "ones"
+            reg_candidates = [(x, y) for x, y in candidates if _satisfies_regrouping(x, y, reg_level)]
+            if not reg_candidates:
+                raise RuntimeError(
+                    f"generate_params (addition, task_type=expanded_form): regrouping "
+                    f"level '{reg_level}' has no satisfying pair within max_result="
+                    f"{max_result} (grade={grade}, seed={seed})."
+                )
+            candidates = reg_candidates
+        a_val, b_val = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
+        a_hundreds, a_rem = divmod(a_val, 100)
+        a_tens, a_ones = divmod(a_rem, 10)
+        b_hundreds, b_rem = divmod(b_val, 100)
+        b_tens, b_ones = divmod(b_rem, 10)
+        return {
+            "a": a_val, "b": b_val, "result": a_val + b_val,
+            "a_tens": a_tens, "a_ones": a_ones, "b_tens": b_tens, "b_ones": b_ones,
+            "a_hundreds": a_hundreds, "b_hundreds": b_hundreds,
+            "task_type": "expanded_form",
+            "blank_target": "result",
+            "context": "pure",
+            "structure": "result_unknown",
+            "max_sum": max_result,
+            "strategy": "expanded_form",
+            "question": (
+                f"{decompose_to_places(a_val)} {decompose_to_places(b_val)} "
+                f"Add the place values, then find the total: what is {a_val} + {b_val}?"
+            ),
+        }
+
+    if task_type == "counting_up":
+        # Explicit start-and-count narration (mat_g1_na_q1_7), distinct
+        # from putting-together -- "spine" was a declared VARIANTS_BY_DNA
+        # option that was never implemented, so every sample rendered a
+        # static sum regardless of which spine was requested.
+        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
+        # "Illustrate addition of 2-digit and 1-digit numbers as 'counting
+        # up'..." (mat_g2_na_q1_7) names a specific operand SHAPE, not just
+        # a sum ceiling -- drawing both operands freely up to max_result
+        # let roughly half the samples use two 2-digit numbers (e.g. "11 +
+        # 10", some even summing to 3 digits like "93 + 13 = 106"),
+        # violating the competency's own wording (blind review, most
+        # severe finding: "8/16 samples violate the '2-digit and 1-digit'
+        # operand rule"). registry.py binds operand_digits=(big,small)
+        # when the competency names an explicit digit-count pair.
+        operand_digits = profile.get("operand_digits")
+        candidates = []
+        attempts = 0
+        if operand_digits:
+            big_digits, small_digits = (int(x) for x in str(operand_digits).split("_"))
+            big_lo, big_hi = 10 ** (big_digits - 1), min(max_result - 1, (10 ** big_digits) - 1)
+            small_lo, small_hi = 10 ** (small_digits - 1) if small_digits > 1 else 1, (10 ** small_digits) - 1
+            while len(candidates) < 500 and attempts < 5000:
+                attempts += 1
+                big_val = rng.randint(big_lo, max(big_lo, big_hi))
+                small_val = rng.randint(small_lo, small_hi)
+                if big_val + small_val > max_result:
+                    continue
+                # Randomize which slot ("start"/"count_by") holds the
+                # bigger-digit operand for phrasing variety.
+                pair = (big_val, small_val) if rng.random() < 0.5 else (small_val, big_val)
+                candidates.append(pair)
+            if not candidates:
+                raise RuntimeError(
+                    f"generate_params (addition, task_type=counting_up): operand_digits="
+                    f"{operand_digits} has no satisfying pair within max_result={max_result} "
+                    f"(grade={grade}, seed={seed})."
+                )
+        else:
+            while len(candidates) < 500 and attempts < 5000:
+                attempts += 1
+                start = rng.randint(1, max(1, max_result - 1))
+                count_by = rng.randint(1, max(1, max_result - start))
+                candidates.append((start, count_by))
+        if "regrouping" in profile:
+            # Same "this early-return branch skips the default path's own
+            # regrouping filter" defect as expanded_form's identical fix
+            # above -- once task_type=counting_up was registry-bound
+            # (mat_g2_na_q1_7), §1C's exhaustive discrete-integrity sweep
+            # caught it directly ("does not reflect discrete option
+            # 'none'": a=18, b=7, ones digits 8+7=15 carries).
+            reg_level = profile.get("regrouping", "none")
+            if reg_level is False:
+                reg_level = "none"
+            elif reg_level is True:
+                reg_level = "ones"
+            reg_candidates = [(x, y) for x, y in candidates if _satisfies_regrouping(x, y, reg_level)]
+            if not reg_candidates:
+                raise RuntimeError(
+                    f"generate_params (addition, task_type=counting_up): regrouping "
+                    f"level '{reg_level}' has no satisfying pair within max_result="
+                    f"{max_result} (grade={grade}, seed={seed})."
+                )
+            candidates = reg_candidates
+        start, count_by = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
+        return {
+            "a": start, "b": count_by, "result": start + count_by,
+            "task_type": "counting_up",
+            "blank_target": "result",
+            "context": "pure",
+            "structure": "result_unknown",
+            "max_sum": max_result,
+            "strategy": "standard",
+            "question": f"Start at {start}. Count up {count_by} more. What number do you land on?",
+        }
+
     if task_type == "estimate":
         # "Estimate the sum of addends with up to 4 digits" (mat_g3_na_q2_2)
         # is a distinct skill from exact addition -- round EACH addend to

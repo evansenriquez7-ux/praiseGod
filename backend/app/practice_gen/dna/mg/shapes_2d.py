@@ -253,8 +253,74 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
     # ── composite figures ──────────────────────────────────────────────────────
+    # "Compose and decompose composite figures made up of squares, rectangles,
+    # triangles, circles, half circles, and quarter circles" (mat_g2_mg_q1_1)
+    # is bound to shape_set="composite_figures" specifically, but only ONE
+    # item in the whole pool carried that exact tag -- generate_params's
+    # filter is an exact match with no relaxation once >=1 candidate exists,
+    # so every single render picked that one item (blind review:
+    # comprehensive_coverage/variant_comprehensiveness FAIL, "question_text
+    # is byte-for-byte identical across all 6 seeds"). The five items above
+    # already compose/decompose exactly the shapes this competency names --
+    # duplicated here under "composite_figures" (not relabeled, so
+    # mat_g1_mg_q1_2's own "basic_triangles_rectangles_squares" pool for its
+    # narrower "triangles, squares, and rectangles" scope stays intact).
+    {
+        "question": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
+        "answer": "rectangle",
+        "distractors": ["square", "hexagon", "pentagon"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "A rectangle is cut into two equal pieces down the middle. What two shapes are made?",
+        "answer": "two rectangles",
+        "distractors": ["two triangles", "two squares", "two pentagons"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "A square is cut on a slant, from one edge to another. What two shapes are made?",
+        "answer": "two triangles",
+        "distractors": ["two rectangles", "two squares", "two pentagons"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "Two half-circles are put together to make one shape. What shape is formed?",
+        "answer": "circle",
+        "distractors": ["rectangle", "square", "triangle"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "Four quarter-circles are put together to make one shape. What shape do they make?",
+        "answer": "circle",
+        "distractors": ["square", "rectangle", "triangle"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
     {
         "question": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?",
+        "answer": "2",
+        "distractors": ["1", "3", "4"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "A figure is made of a square with a half-circle on top. How many shapes make up this figure?",
         "answer": "2",
         "distractors": ["1", "3", "4"],
         "shape_set": "composite_figures",

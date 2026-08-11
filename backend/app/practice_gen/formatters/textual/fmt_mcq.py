@@ -29,10 +29,23 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         a = values.get("a")
         b = values.get("b")
         result = values.get("result")
-        if values.get("task_type") == "estimate":
+        task_type = values.get("task_type")
+        if task_type == "estimate":
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
             return f"Estimate the sum: {real_a} + {real_b}"
+        if task_type in ("commutative", "associative", "expanded_form", "counting_up") and values.get("question"):
+            # These task types don't fit the "a + b = ?" / "a + ? = result"
+            # equation shapes below at all -- commutative/associative ask a
+            # yes/no claim (blank_target="answer", no "result" key set at
+            # all), so falling through to the blank_target=="b"/"a" branches
+            # substituted the missing "result" as the literal string "None"
+            # ("What number plus 2 equals None?" -- found by blind review of
+            # mat_g1_na_q1_7 seed 613). base_generator.py's question-text
+            # resolution already prefers values["question"] when the DNA
+            # sets one; this "pure"-context rebuild has its own separate
+            # equation-building path and needs the same preference.
+            return values["question"]
         if blank_target == "result":
             return f"What is {a} + {b}?"
         elif blank_target == "b":
@@ -52,6 +65,11 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
             return f"Estimate the difference: {real_a} − {real_b}"
+        if values.get("task_type") == "expanded_form" and values.get("question"):
+            # Same root cause as addition's identical fix: this formatter
+            # rebuilds its own pure-context question independently of
+            # base_generator's values["question"] preference.
+            return values["question"]
         if blank_target == "result":
             return f"What is {a} − {b}?"
         elif blank_target == "b":
@@ -63,10 +81,19 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         a = values.get("a", values.get("groups"))
         b = values.get("b", values.get("n"))
         result = values.get("result", values.get("total"))
-        if values.get("task_type") == "estimate":
+        mul_task_type = values.get("task_type")
+        if mul_task_type == "estimate":
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
             return f"Estimate the product: {real_a} × {real_b}"
+        if mul_task_type in ("commutative", "associative", "distributive") and values.get("question"):
+            # These render a yes/no claim (blank_target="answer", no
+            # "result"/"total" key set at all) -- falling through to the
+            # blank_target branches below substituted the missing result as
+            # the literal string "None" ("What times 2 equals None?"), the
+            # same root cause as addition.py's identical task types (see
+            # that fix for the full explanation).
+            return values["question"]
         if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total") and 2 <= b <= 5:
             # See base_generator._build_symbolic_question's identical branch:
             # "What is 4 x 3?" doesn't illustrate repeated addition, it just
@@ -92,6 +119,13 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             real_a = values.get("real_a", dividend)
             real_b = values.get("real_b", divisor)
             return f"Estimate the quotient: {real_a} ÷ {real_b}"
+        if values.get("task_type") == "even_odd" and values.get("question"):
+            # blank_target="answer" (a categorical "even"/"odd" string, not
+            # a quotient) doesn't fit any of the branches below -- same root
+            # cause as addition/multiplication's identical fix: this
+            # formatter rebuilds its own pure-context question independently
+            # of base_generator's values["question"] preference.
+            return values["question"]
         if blank_target in ("result", "quotient"):
             return f"What is {dividend} ÷ {divisor}?"
         elif blank_target in ("b", "divisor", "n"):
@@ -111,6 +145,18 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         task_type = values.get("task_type", "compare_pair")
         a = values.get("a")
         b = values.get("b")
+        if values.get("context") == "word_problem" and values.get("question"):
+            # This branch always built its own bare "Compare the numbers:
+            # X ___ Y"/"Order these numbers..." stem, ignoring
+            # values["question"] entirely -- comparing_ordering.py's new
+            # word-problem narrative (set only when context==
+            # "word_problem") was silently discarded, so every sample
+            # rendered the identical template regardless of context
+            # (blind review: variant_comprehensiveness FAIL/CONCERN
+            # across mat_g1_na_q1_3/_4, mat_g1_na_q2_0, mat_g2_na_q1_4,
+            # mat_g3_na_q1_5/_6, "11 of 12 samples reuse the identical
+            # bare stem").
+            return values["question"]
         if task_type in ("order_set", "order_sequence"):
             nums = values.get("numbers", [])
             nums_str = ", ".join(str(x) for x in nums)

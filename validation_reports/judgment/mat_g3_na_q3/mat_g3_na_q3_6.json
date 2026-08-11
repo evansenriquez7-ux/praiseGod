@@ -17,7 +17,7 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "This pattern follows a rule: 25, 24, 35, 34, 45, ... What number is added or subtracted each time to generate it?",
+      "question_text": "This pattern follows a rule: 24, 24, 34, 34, 44, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
       "correct_answer": 10,
       "options": [
         {
@@ -27,7 +27,7 @@
         },
         {
           "key": "B",
-          "value": 75,
+          "value": 74,
           "is_correct": false
         },
         {
@@ -45,7 +45,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "This pattern follows a rule: 33, 38, 83, 88, 133, ... What number is added or subtracted each time to generate it?",
+      "question_text": "This pattern follows a rule: 33, 38, 83, 88, 133, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
       "correct_answer": 50,
       "options": [
         {
@@ -73,12 +73,12 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "This pattern follows a rule: 33, 37, 34, 43, 47, 44, 53, 57, ... What number is added or subtracted each time to generate it?",
-      "correct_answer": 10,
+      "question_text": "This pattern follows a rule: 44, 45, 41, 34, 35, 31, 24, 25, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+      "correct_answer": -10,
       "options": [
         {
           "key": "A",
-          "value": 20,
+          "value": -20,
           "is_correct": false
         },
         {
@@ -88,12 +88,12 @@
         },
         {
           "key": "C",
-          "value": 113,
+          "value": -36,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
+          "value": -10,
           "is_correct": true
         }
       ]
@@ -101,12 +101,12 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "This pattern follows a rule: 38, 35, 32, 138, 135, 132, 238, 235, ... What number is added or subtracted each time to generate it?",
-      "correct_answer": 100,
+      "question_text": "This pattern follows a rule: 212, 215, 216, 112, 115, 116, 12, 15, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+      "correct_answer": -100,
       "options": [
         {
           "key": "A",
-          "value": 838,
+          "value": -588,
           "is_correct": false
         },
         {
@@ -116,12 +116,12 @@
         },
         {
           "key": "C",
-          "value": 100,
+          "value": -100,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 200,
+          "value": -200,
           "is_correct": false
         }
       ]
@@ -129,22 +129,22 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "This pattern follows a rule: 51, 54, 151, 154, 251, ... What number is added or subtracted each time to generate it?",
-      "correct_answer": 100,
+      "question_text": "This pattern follows a rule: 224, 229, 124, 129, 24, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+      "correct_answer": -100,
       "options": [
         {
           "key": "A",
-          "value": 551,
+          "value": -276,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 100,
+          "value": -100,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 200,
+          "value": -200,
           "is_correct": false
         },
         {
@@ -156,64 +156,86 @@
     },
     {
       "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "What is the missing term (position 8) in the pattern?",
-      "correct_answer": "B",
+      "formatter": "cloze",
+      "question_text": "This pattern follows a rule: 114, 118, 116, 64, 68, 66, 14, 18, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+      "correct_answer": -50,
       "options": [
         {
           "key": "A",
-          "value": 135,
+          "value": 0,
+          "text": "0",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 134,
+          "value": -50,
+          "text": "-50",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 136,
+          "value": -286,
+          "text": "-286",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 133,
+          "value": -100,
+          "text": "-100",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Fill in the table with the correct counts.",
-      "correct_answer": [
-        1,
-        2,
-        3
+      "formatter": "read_mcq",
+      "question_text": "This pattern follows a rule: 65, 62, 45, 42, 25, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": -40,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": -35,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": -20,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 0,
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 72,
       "formatter": "cloze",
-      "question_text": "This pattern follows a rule: 56, 59, 76, 79, 96, ... What number is added or subtracted each time to generate it?",
-      "correct_answer": 20,
+      "question_text": "This pattern follows a rule: 79, 76, 59, 56, 39, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+      "correct_answer": -20,
       "options": [
         {
           "key": "A",
-          "value": 20,
-          "text": "20",
+          "value": -20,
+          "text": "-20",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 40,
-          "text": "40",
+          "value": -40,
+          "text": "-40",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 156,
-          "text": "156",
+          "value": -21,
+          "text": "-21",
           "is_correct": false
         },
         {

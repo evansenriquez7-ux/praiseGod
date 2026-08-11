@@ -141,6 +141,7 @@ def _parse_competency_bounds(
 
     # Addition: "sums up to X", "sums of up to X", "sums to X"
     if dna_name == "addition":
+        digit_match = None
         match = re.search(r'sums?\s+(?:up\s+to|of\s+up\s+to|to)\s+(\d+)', text)
         if match:
             max_val = int(match.group(1))
@@ -169,7 +170,65 @@ def _parse_competency_bounds(
         # competency regardless of which node maps to it.
         if "estimate" in text:
             bounds["task_type"] = "estimate"
-    
+
+        # "Add numbers by expressing addends as tens and ones (expanded
+        # form)" (mat_g1_na_q2_4) / "...in expanded form" (mat_g2_na_q1_8):
+        # task_type was left unbound, so rng.choice among
+        # zero_identity/commutative/associative/expanded_form/counting_up/
+        # plain gave expanded_form only a ~1-in-6 chance, and the plain
+        # branch's own bare "what is X+Y?" never shows the decomposition
+        # the competency names (blind review: comprehensive_coverage FAIL,
+        # "the actual expanded-form addition procedure... never appears").
+        if "expanded form" in text:
+            bounds["task_type"] = "expanded_form"
+
+        # "Illustrate addition of 2-digit and 1-digit numbers as 'counting
+        # up' on the number line" (mat_g2_na_q1_7): task_type was left
+        # unbound, so ordinary (non-variant-coverage) generation never set
+        # it at all and every sample fell through to the plain "what is
+        # X+Y?" default -- the competency's one named strategy, "counting
+        # up," almost never appeared (blind review: "at most 1-2 samples,"
+        # with the rest a severe multi-source leak from the co-mapped
+        # `counting` DNA's own unrelated skip-counting/backward-counting
+        # content). "number line" distinguishes this from mat_g1_na_q1_7's
+        # text, which also says "counting up" but alongside "putting
+        # together" and never mentions a number line -- that sibling node
+        # names BOTH strategies, so it correctly keeps the plain default
+        # mix rather than being pinned to counting_up alone.
+        elif "counting up" in text and "number line" in text:
+            bounds["task_type"] = "counting_up"
+            # The competency names ONE 2-digit number AND one 1-digit
+            # number specifically, not just "a sum up to 110" -- binding
+            # only max_sum let both operands range freely up to 109, so
+            # roughly half of samples used two 2-digit numbers (e.g.
+            # "11 + 10", "93 + 13", some even producing 3-digit sums like
+            # "93 + 13 = 106") and violated the competency's own explicit
+            # operand-shape wording (blind review, most severe finding on
+            # this node: "8/16 samples violate the '2-digit and 1-digit'
+            # operand rule"). digit_match already parsed "2-digit and
+            # 1-digit" above; thread that shape through explicitly.
+            if digit_match:
+                # A 2-tuple here would be silently treated as a continuous
+                # axis range by the orchestrator's own bound-handling
+                # (tuples of length 2 are reserved for that -- confirmed
+                # live: the DNA received a bare int instead of a pair).
+                # Use a "big_small" string sentinel instead, matching the
+                # same convention multiplication.py's table-set sentinels
+                # use for non-continuous discrete bounds.
+                bounds["operand_digits"] = f"{digit_match.group(1)}_{digit_match.group(2)}"
+                # The generic digit_match max_sum floor above is 3 -- but
+                # the smallest possible genuine 2-digit + 1-digit sum is
+                # 10 + 1 = 11, so scalar 0.0 (which maps to this floor)
+                # made the operand-shape constraint infeasible outright
+                # (confirmed live: "governed parameter maximum observed
+                # value (None)" -- generate_params raised RuntimeError on
+                # every scalar-0.0 sample since no pair could satisfy both
+                # the shape and a max_sum below 11).
+                big_digits = int(digit_match.group(1))
+                small_digits = int(digit_match.group(2))
+                min_feasible = (10 ** (big_digits - 1)) + (10 ** (small_digits - 1) if small_digits > 1 else 1)
+                bounds["max_sum"] = (min_feasible, bounds["max_sum"][1])
+
     # Subtraction: operand bound is enforced by the DNA's per-grade
     # _PARAM_BOUNDS[grade] (g1: a<100, g2: a<1000, g3: a<10000). All
     # MATATAG K-3 subtraction LCs use operand-bound language
@@ -210,19 +269,43 @@ def _parse_competency_bounds(
         if "estimate" in text:
             bounds["task_type"] = "estimate"
 
+        # "Subtract numbers by expressing minuends and subtrahends as tens
+        # and ones (expanded form)" (mat_g1_na_q3_5) -- same text-match
+        # rule as addition's identical binding above.
+        elif "expanded form" in text:
+            bounds["task_type"] = "expanded_form"
+
     # Multiplication: "products up to X"
     elif dna_name == "multiplication":
         match = re.search(r'products?\s+(?:up\s+to|of\s+up\s+to|to)\s+(\d+)', text)
         if match:
             max_val = int(match.group(1))
             bounds["max_product"] = (0, max_val)
-        
-        # Parse table level
+
+        # Parse table level. "2_3_4_5_10_named" (distinct from the DNA's own
+        # bare default "2_3_4_5_10", used when no node binds "table" at all,
+        # e.g. mat_g2_na_q3_1's repeated-addition intro) tells
+        # multiplication.py this competency explicitly names its tables --
+        # see that DNA's _TABLE_SETS for why the distinction matters (0/1
+        # dilution the bare-default path must still tolerate).
         if "6, 7, 8, and 9" in text or "6, 7, 8, 9" in text or "6, 7, 8, or 9" in text:
             bounds["table"] = "6_7_8_9"
         elif "2, 3, 4, 5, and 10" in text or "2, 3, 4, 5, 10" in text:
-            bounds["table"] = "2_3_4_5_10"
-            
+            bounds["table"] = "2_3_4_5_10_named"
+        # "2- to 3-digit numbers by a 1-digit number, AND 2- to 4-digit
+        # numbers by a number whose leading digit is the only non-zero
+        # digit" (mat_g3_na_q3_2) is two genuinely different (multiplicand,
+        # multiplier) shapes under one competency -- the DNA's default
+        # table pool [0,1,2,3,4,5,10] only coincidentally contains "10",
+        # so every sample collapsed onto that one x10 fact and neither a
+        # true leading-digit multiplier (100, 2000, ...) nor a 4-digit
+        # multiplicand ever appeared (blind review: "the only leading-
+        # digit-only multiplier used is x10... no 4-digit multiplicand
+        # ever appears"). New sentinel alternates between the two named
+        # shapes per seed (see multiplication.py).
+        elif "leading digit is the only non-zero digit" in text:
+            bounds["table"] = "one_digit_or_leading_digit"
+
         # Parse number type
         if "2- to 3-digit" in text or "2- to 4-digit" in text:
             bounds["number_type"] = "multi_digit"
@@ -266,9 +349,73 @@ def _parse_competency_bounds(
             # seeds before this fix). "2- to 3-digit numbers by 1- to
             # 2-digit numbers" itself implies operands in the tens-to-
             # hundreds range, so 100 is this competency's own natural
-            # floor, not an arbitrary widening -- the ceiling (1000, the
-            # grade default) is unchanged.
-            bounds["max_product"] = (100, 1000)
+            # floor.
+            #
+            # Revised ceiling (2026-08-06, same Ground Rule 5 correction):
+            # the first pass left the ceiling at 1000 (the untouched grade
+            # default), but multiplication.py's estimate branch filters
+            # candidate (x, y) pairs on their ROUNDED product exceeding
+            # max_product, and a 1000 ceiling forces the 3-digit factor
+            # (x up to 999) toward its own low end whenever y rounds to
+            # >=10 -- verified live: the largest factor ever drawn across
+            # 16 review-packet samples was 98, so the competency's own
+            # named "2- to 3-digit" factor range never actually reached 3
+            # digits (blind review: comprehensive_coverage FAIL,
+            # scale_appropriateness FAIL). Raised to the sibling G3
+            # multiplication node's own ceiling (10 000) so a genuine
+            # 3-digit-by-2-digit pair (e.g. rounded 300 x 30 = 9000) fits.
+            bounds["max_product"] = (100, 10000)
+
+        # Every other multiplication competency (table facts, word
+        # problems, illustrate-as-repeated-addition, multi-digit
+        # regrouping) left task_type completely unbound, so
+        # _variant_coverage_candidates (judgment_packets.py) could pin
+        # commutative/associative/distributive for ANY of them -- content
+        # that only actually belongs to mat_g3_na_q3_1, the one node whose
+        # competency text names these properties explicitly. Blind review
+        # of mat_g2_na_q3_2/mat_g2_na_q3_3/mat_g3_na_q3_0/mat_g3_na_q3_4
+        # flagged this as competency_alignment drift ("tests a different
+        # competency (multiplication properties) rather than deepening
+        # [table facts]"). "find_product" is the same inert sentinel
+        # FORMATTER_VARIANT_SUPPORT already uses for "not one of the named
+        # property task_types" -- it isn't a literal VARIANTS_BY_DNA value,
+        # so binding it here excludes all three property values without
+        # forcing any real behavior change on the default/table-fact path.
+        elif "properties" not in text:
+            bounds["task_type"] = "find_product"
+        else:
+            # mat_g3_na_q3_1 itself: left unbound, this node had no
+            # auto-vary of its own (unlike most other DNAs' task_type
+            # dimensions, which fall back to rng.choice when unbound) --
+            # every render silently used multiplication.py's plain/default
+            # path, rendering identical content to the sibling table-facts
+            # node instead of the three properties (commutative,
+            # associative, distributive) this node exists to demonstrate.
+            # A list bound here is resolved by multiplication.py's own
+            # rng.choice (see that file's identical-pattern comment).
+            # "find_product" (the plain-facts sentinel) is included
+            # alongside the three properties, not just them alone --
+            # omitting it broke two things at once: cloze/true_false/
+            # error_detect are restricted to ["find_product", "estimate"]
+            # (they can't render a yes/no property claim, see that
+            # restriction's own comment), so with no "find_product" in the
+            # rotation those formatters had zero valid content at all
+            # (§1C empty_execution_matrix); and the property branches
+            # deliberately use small illustrative factors regardless of
+            # max_product, so with no plain-facts path ever selected, nothing
+            # ever exercised this node's true 90 ceiling (§1A-reach). The
+            # competency's own "for the 6, 7, 8, 9 multiplication tables"
+            # scope also implies genuine table facts belong alongside the
+            # properties, not just illustrative small numbers.
+            # "zero_identity" added (2026-08-07, Ground Rule 5 disclosure):
+            # the competency's own wording names FIVE properties (identity,
+            # zero, commutative, associative, distributive) but this list
+            # previously bound only three of them -- "one multiplied by any
+            # number is equal to the number; zero multiplied by any number
+            # is zero" never had a dedicated task_type at all (blind
+            # review: "identity property...entirely absent"). See
+            # multiplication.py's new zero_identity branch.
+            bounds["task_type"] = ["find_product", "commutative", "associative", "distributive", "zero_identity"]
 
     # Division: operand bound is enforced by the DNA's per-grade
     # _PARAM_BOUNDS[grade] (q_max: g2=50, g3=100). All MATATAG K-3
@@ -277,23 +424,98 @@ def _parse_competency_bounds(
     # ("quotients up to N"). The `max_quotient` axis was removed from
     # the catalog on 2026-07-01 — see axes_catalog.py header.
     elif dna_name == "division":
+        # "2- to 3-digit numbers by 1-digit number WITHOUT remainder,
+        # 2-digit numbers by 1-digit number WITH remainder, and 2- to
+        # 4-digit numbers by 10, 100, and 1000" (mat_g3_na_q4_3) names
+        # THREE distinct (dividend, divisor, remainder) shapes in one
+        # competency -- checked first because it contains both "without
+        # remainder" and "with remainder" as substrings, and the plain
+        # if/elif below (matching whichever phrase it finds first) would
+        # otherwise always resolve to "without remainder" and permanently
+        # force remainder="none", silently dropping both the with-
+        # remainder sub-case AND the power-of-ten sub-case entirely
+        # (blind review: "None of 18 samples ever produce a remainder, and
+        # none divide by 100 or 1000 -- two of the competency's three named
+        # sub-cases are entirely absent").
+        if "without remainder" in text and "with remainder" in text and "10,100" in text.replace(" ", ""):
+            bounds["table"] = "one_digit_mixed_or_power_of_ten"
+
         # Parse table level
-        if "6, 7, 8, and 9" in text or "6, 7, 8, 9" in text or "6, 7, 8, or 9" in text:
+        elif "6, 7, 8, and 9" in text or "6, 7, 8, 9" in text or "6, 7, 8, or 9" in text:
             bounds["table"] = "6_7_8_9"
         elif "2, 3" in text and "5, and 10" in text:
             bounds["table"] = "2_3_4_5_10"
         elif "2, 3, 4, 5, and 10" in text or "2, 3, 4, 5, 10" in text:
             bounds["table"] = "2_3_4_5_10"
-            
+
+        # "Solve division problems involving 2- to 3-digit numbers by A
+        # 1-DIGIT number, including problems involving money" (mat_g3_
+        # na_q3_5... mat_g3_na_q4_5): the DNA's bare-default divisor pool
+        # [2,3,4,5,10] includes 10, a 2-digit divisor -- directly violating
+        # this competency's own explicit "1-digit number" scope (blind
+        # review: "6 of 16 samples divide by 10 -- a 2-digit divisor --
+        # directly violating 'by a 1-digit number'"). "6_7_8_9" already
+        # excludes 10 but also excludes 2-5, which this competency does not
+        # restrict away.
+        elif "1-digit number" in text and "1- to 2-digit" not in text:
+            bounds["table"] = "one_digit_2_9"
+
         # Parse remainder
         if "without remainder" in text:
             bounds["remainder"] = "none"
         elif "with remainder" in text:
             bounds["remainder"] = "with_remainder"
 
+        # "Illustrate division through equal jumps on the number line and
+        # AS INVERSE OF MULTIPLICATION" (mat_g3_na_q4_0): neither named
+        # model has a meaningful reading when the division doesn't come
+        # out even -- a remainder breaks the "inverse of multiplication"
+        # framing entirely (19÷10 has no multiplication fact it inverts),
+        # and this competency, unlike mat_g3_na_q4_3, never names a
+        # remainder sub-case at all. The "remainder" axis was left
+        # completely unbound here, so it auto-varied 50/50 with the DNA's
+        # own default (blind review/harness: "19 ÷ 10 = ___" served with
+        # correct_answer=1, silently dropping the remainder of 9).
+        elif "inverse of multiplication" in text:
+            bounds["remainder"] = "none"
+        elif bounds.get("table"):
+            # VARIANTS_BY_DNA["division"]["remainder"] = ["none","some"] has
+            # no per-node scoping, so judgment_packets.py's variant-coverage
+            # stratification and validate_matrix's §1C sweep can both
+            # request remainder="with_remainder" against ANY division node,
+            # including a plain "Divide numbers using the 6, 7, 8, and 9
+            # multiplication tables" competency that never mentions
+            # remainders at all. A table-facts competency is tied 1:1 to
+            # its multiplication counterpart (42÷6=7 exactly, because
+            # 6×7=42) -- there is no "with remainder" reading of it. A
+            # formatter that renders only the quotient as "the answer"
+            # (e.g. "15 ÷ 6 = 2") without surfacing the dropped remainder
+            # then keys an incomplete statement as fully correct (blind
+            # review of mat_g3_na_q4_1 seed 603: 15÷6 is 2 remainder 3, not
+            # a clean 2). Binding remainder="none" here closes the leak the
+            # same way "estimate"/"even_odd" are already closed elsewhere
+            # in this function.
+            bounds["remainder"] = "none"
+
+        # "...modelling division as equal sharing or formation of equal
+        # groups of objects, and repeated subtraction" (mat_g2_na_q3_5):
+        # repeated subtraction is one of three named models, but nothing
+        # in this DNA ever produced it (blind review: "repeated
+        # subtraction... is modeled in zero of 18 samples"). Independent
+        # of the remainder chain above -- this node binds no table, so
+        # that chain never touches it either way.
+        if "repeated subtraction" in text:
+            bounds["task_type"] = "repeated_subtraction_or_default"
+
         # Parse missing structure
         if "missing number" in text or "missing term" in text:
-            bounds["structure"] = "divisor_unknown"
+            # divisor_unknown alone never produces a missing-DIVIDEND item
+            # via the division DNA specifically (mat_g3_na_q4_2 is also
+            # co-mapped with missing_number, whose OWN blank-position
+            # rotation already covers it when THAT DNA gets picked, but
+            # division's own renders never did -- blind review: "no
+            # sample shows the 'dividend-missing' blank position").
+            bounds["structure"] = "divisor_or_dividend_unknown"
 
         # "Estimate the quotient of 2- to 3-digit numbers divided by 1- to
         # 2-digit numbers, using multiples of 10 or 100 as appropriate"
@@ -307,6 +529,13 @@ def _parse_competency_bounds(
         # maps to it.
         if "estimate" in text:
             bounds["task_type"] = "estimate"
+
+        # "Distinguish even and odd numbers using division by 2"
+        # (mat_g2_na_q3_8) is a classification skill, not a quotient-finding
+        # one -- nothing else in this text-match ladder would ever bind it,
+        # so it fell through to plain quotient facts every time.
+        elif "even" in text and "odd" in text:
+            bounds["task_type"] = "even_odd"
 
     # Counting: "count up to X", "numbers up to X"
     elif dna_name == "counting":
@@ -329,8 +558,23 @@ def _parse_competency_bounds(
         # counting, 100% of the time, regardless of seed.
         skip_10_100 = [x for x in (20, 50, 100, 250, 1000) if f"{x}s" in text]
         skip_2_5_10 = [x for x in (2, 5, 10) if f"{x}s" in text]
-        if skip_10_100:
+        if skip_10_100 and skip_2_5_10:
+            # "Count by 2s, 5s, 10s, 20s, 50s, and 100s" (mat_g2_na_q1_3)
+            # names all six -- the old logic always forced skip_interval=
+            # "by_20_50_100" whenever ANY of 20/50/100 appeared, regardless
+            # of whether 2/5/10 were ALSO named. skip_pool correctly held
+            # all six values, but _select_skip's "by_20_50_100" branch
+            # filters the pool down to `s >= 20` before choosing, so 2/5/10
+            # sat in the pool yet could never actually be selected (blind
+            # review: "Counting by 2s, 5s, and 10s... do not appear in any
+            # of the 7 samples"). "by_all" isn't one of _select_skip's
+            # three named levels, so it falls through to that function's
+            # own unfiltered `rng.choice(pool)` default -- every named
+            # increment reachable.
             bounds["skip_pool"] = skip_2_5_10 + skip_10_100
+            bounds["skip_interval"] = "by_all"
+        elif skip_10_100:
+            bounds["skip_pool"] = skip_10_100
             bounds["skip_interval"] = "by_20_50_100"
         elif skip_2_5_10:
             bounds["skip_pool"] = skip_2_5_10
@@ -341,7 +585,35 @@ def _parse_competency_bounds(
         # else: leave unbound -- plain counting nodes (recognize/represent
         # numbers, count-up-as-addition-strategy, repeated-addition groups)
         # correctly use the DNA's own by_1 default without a bound.
-    
+
+    # Ordinal numbers: no gate here at all previously -- this DNA's own
+    # "ordinal_range" axis (axes_catalog.py) had no per-node ceiling to map
+    # against, so every node fell to the axis's generic default_max=100
+    # regardless of its own stated scope ("...up to 10th" /"...up to 20th"
+    # /"...up to 100th"). Combined with a separate bug in ordinal_numbers.py
+    # (it read the wrong profile keys and never varied magnitude at all,
+    # coincidentally keeping every render low), fixing that bug without
+    # this gate let a G1 "up to 10th" node render "49th"/"52nd" -- a real
+    # curriculum-scope violation, not just a coverage gap.
+    elif dna_name == "ordinal_numbers":
+        match = re.search(r'up\s+to\s+(\d+)(?:st|nd|rd|th)', text)
+        if match:
+            bounds["ordinal_range"] = (1, int(match.group(1)))
+
+    # "Describe and compare outcomes... using: equally likely, less/least
+    # likely, more/most likely, certain, and impossible" (mat_g3_dp_q3_4)
+    # names only comparative/superlative vocabulary plus certain/
+    # impossible -- the DNA's "likely_unlikely" scenario_type produces
+    # bare "likely"/"unlikely" (no "more/less" qualifier at all), which
+    # isn't in this competency's own named term list and was diluting the
+    # comparative content this competency actually needs (blind review:
+    # 6/14 samples used bare likely/unlikely, "bleeding in from an
+    # adjacent basic-probability LC"). Excludes that scenario_type via an
+    # explicit 2-item allow-list (registry bounds accept lists, not just
+    # single values -- same mechanism as missing_number's "tables" bound).
+    elif dna_name == "probability_language" and "compare" in text and "less" in text and "more" in text:
+        bounds["scenario_type"] = ["certain_impossible", "comparative"]
+
     # Area: bind task_type per node -- the DNA's own default
     # (task_type="find_area") silently governed every unbound node, so
     # "illustrate ... using square tile units" (mat_g3_mg_q1_0) and
@@ -367,6 +639,51 @@ def _parse_competency_bounds(
     elif dna_name == "calendar" and "correct order" in text:
         bounds["task_type"] = "sequence"
 
+    # "Describe the duration of an event in terms of number of days and/or
+    # weeks using a calendar" (mat_g2_mg_q4_0) has no matching default
+    # either (task_type="read_day" reads a single date off the grid, not a
+    # duration) -- the DNA already implements "elapsed_days"/
+    # "elapsed_weeks" but nothing ever requested them. Sentinel resolved by
+    # calendar.py's own seeded rng (registry bounds are computed once per
+    # node, not per-seed, so resolving the choice here would freeze it to
+    # one fixed value forever -- same pattern as pictographs'
+    # "read_or_compare" sentinel).
+    elif dna_name == "calendar" and "duration" in text and ("days" in text or "weeks" in text):
+        bounds["task_type"] = "elapsed_days_or_weeks"
+
+    # "Solve problems involving time (hour, half hour, quarter hour, days
+    # in a week, and months in a year)" (mat_g1_mg_q4_4): time_reading (its
+    # other co-mapped DNA) has no day/month concept, so this competency's
+    # day/month sub-case never appeared at all (blind review: "Zero
+    # samples touch 'days in a week' or 'months in a year'"). Matched on
+    # "in a week"/"in a year" specifically, not "of the week"/"of the
+    # year", to stay distinct from mat_g1_mg_q4_2's "days of the week and
+    # months of the year in the correct order" (bound to "sequence" above).
+    elif dna_name == "calendar" and "days in a week" in text and "months in a year" in text:
+        bounds["task_type"] = "days_and_months"
+
+    # "Solve problems involving elapsed time (minutes in an hour, hours in
+    # a day, days in a week), including timetables" (mat_g2_mg_q4_2):
+    # time_reading has no duration-between-two-times concept at all (every
+    # other task_type reads/sets a single clock), so the co-mapped
+    # `subtraction` DNA (a bare whole-number skill, no time/clock
+    # awareness) filled the gap with off-topic content instead (blind
+    # review: "9 of 17 samples are off-topic pictograph subtraction-
+    # comparison word problems... zero connection to minutes/hours/days/
+    # timetables").
+    elif dna_name == "time_reading" and "elapsed time" in text:
+        bounds["task_type"] = "elapsed_time"
+
+    # "Read and write time in hours and minutes, WITH a.m. and p.m."
+    # (mat_g2_mg_q4_1): the DNA's own default lets include_ampm auto-vary
+    # 50/50, so roughly half the samples never showed a.m./p.m. at all --
+    # fine for a node where it's optional, but this competency names it as
+    # a defining, non-optional feature of the skill (blind review: "~38%
+    # of samples omit a.m./p.m. entirely... the exact clause that
+    # differentiates this Grade 2 competency from Grade 1").
+    elif dna_name == "time_reading" and "with a.m. and p.m." in text:
+        bounds["include_ampm"] = "yes"
+
     # Length measurement: bind task_type per node -- "identify and use the
     # appropriate unit" and "estimate length" had no matching task_type in
     # this DNA at all (it only ever measured in a unit already chosen for
@@ -379,7 +696,33 @@ def _parse_competency_bounds(
         elif "estimate" in text:
             bounds["task_type"] = "estimate"
         elif "equal length" in text:
-            bounds["task_type"] = "compare"
+            # "Identify ... line segments of EQUAL length" (mat_g3_mg_q1_6)
+            # was bound to "compare", whose own generation loop explicitly
+            # FORCES its two values apart (while val_b == val_a: redraw) --
+            # structurally incapable of ever presenting an equal pair, the
+            # entire point of this competency. Bind the dedicated task_type.
+            bounds["task_type"] = "equal_length"
+        elif "distance between two objects" in text:
+            # "Measure the length of an object AND the distance between two
+            # objects" (mat_g1_mg_q2_0) names two distinct sub-tasks; without
+            # this, task_type always defaulted to read_measurement and
+            # "distance between two objects" was never once exercised.
+            # length_or_distance is a generate_params-level sentinel that
+            # alternates between the two per seed rather than picking one.
+            bounds["task_type"] = "length_or_distance"
+        elif "compare lengths and distances" in text:
+            # mat_g1_mg_q2_1 matched none of the conditions above, so it
+            # also silently defaulted to read_measurement and never once
+            # compared two values. Matched on the specific phrase rather
+            # than a bare "compare" substring: mat_g2_mg_q2_0 ("Measure
+            # and compare lengths...") also contains "compare" but names a
+            # dual measure-and-compare skill this single-value binding
+            # would only half-cover, and it is out of scope for this fix.
+            # "compare" alone only ever renders "Which is longer: X or Y?"
+            # (object-length framing) -- the "distances" half of this
+            # competency's own name was never once exercised. Alternate
+            # between the length- and distance-framed comparisons per seed.
+            bounds["task_type"] = "compare_length_or_distance"
 
     # Pictographs: bind task_type per node -- the DNA's own default
     # (task_type="read_value") silently governed every unbound node, and
@@ -396,11 +739,40 @@ def _parse_competency_bounds(
     # "conduct the interview" part itself, which this DNA has no way to
     # represent.
     elif dna_name == "pictographs":
-        if "organize" in text or "into a table" in text or "collect" in text:
+        if "organize" in text or "into a table" in text:
             bounds["task_type"] = "organize_table"
         elif "present" in text:
             bounds["task_type"] = "present_data"
-        if "without a scale" in text or "without scale" in text:
+        # "interpret" (mat_g2_dp_q3_1: "Interpret data in tabular form and
+        # in a pictograph...") wants genuine data reading/comparison, not a
+        # single frozen task_type -- unbound, this DNA's own default
+        # ("read_value") never varies, so nothing but the plainest read
+        # was ever demonstrated. Vary between reading a single category
+        # and comparing two (pictographs.py's own "compare_two", which
+        # genuinely interprets the dataset -- unlike the bare whole-number
+        # comparing_ordering DNA this node used to be co-mapped to and was
+        # removed from; see NODE_TO_DNA).
+        elif "interpret" in text:
+            # Sentinel resolved per-seed inside pictographs.py's own
+            # generate_params (registry bounds are computed once per node,
+            # not per render, so a random.choice() here would freeze to one
+            # fixed value for every sample instead of genuinely varying).
+            bounds["task_type"] = "read_or_compare"
+        # "collect" ("Collect data ... through a simple interview",
+        # mat_g1_dp_q3_0) previously matched the "organize" branch above,
+        # routing it to task_type="organize_table" -- the exact same
+        # task_type mat_g1_dp_q3_3 uses for its own, genuinely different
+        # "organize data into a table" competency, so the two nodes
+        # rendered byte-identical content (blind review). This DNA has no
+        # interview-simulation task_type at all (a real, disclosed gap,
+        # not a routing bug) -- leaving it unbound at least stops the
+        # duplicate-content collision with mat_g1_dp_q3_3.
+        # "with or without scale" (mat_g2_dp_q3_1) contains "without scale"
+        # as a literal substring, so this used to match and force
+        # scale_type="no_scale" for a competency that explicitly wants
+        # BOTH to vary -- same substring-collision class as "with and
+        # without regrouping"/"without regrouping" elsewhere in this file.
+        if ("without a scale" in text or "without scale" in text) and "with or without" not in text:
             bounds["scale_type"] = "no_scale"
 
     elif dna_name == "comparing_ordering":
@@ -426,6 +798,15 @@ def _parse_competency_bounds(
             bounds["pattern_type"] = "combined"
         elif "repeating" in text:
             bounds["pattern_type"] = "repeating"
+        elif "increasing" in text and "decreasing" in text and "repetitions" in text:
+            # "...numbers, letters and rhythmic properties, visual elements
+            # in arts, and repetitions" (mat_g2_na_q2_8) names "repetitions"
+            # as one of its own sub-cases alongside increasing/decreasing --
+            # checked before the plain increasing_or_decreasing branch below
+            # so this node also reaches the "repeating" pattern_type (the
+            # only one that can use letters -- see patterns.py's identical
+            # comment).
+            bounds["pattern_type"] = "increasing_decreasing_or_repeating"
         elif "increasing" in text and "decreasing" in text:
             bounds["pattern_type"] = "increasing_or_decreasing"
         if "missing term" in text:
@@ -470,6 +851,17 @@ def _parse_competency_bounds(
             bounds["operation"] = "multiplication_division"
         elif "addition" in text or "subtraction" in text:
             bounds["operation"] = "addition_subtraction"
+        elif "compose and decompose" in text:
+            # "Compose and decompose numbers up to 10... (e.g., 5 is 5 and
+            # 0; 4 and 1; 3 and 2...)" (mat_g1_na_q1_6) names no operation
+            # word at all, so it fell through to the DNA's own unbound
+            # default (op_axis = rng.choice(allowed_ops), 50/50 addition/
+            # subtraction) -- but composing/decomposing a whole into two
+            # parts is inherently additive (X = A + B); subtraction facts
+            # like "4 - 3 = ___" don't express decomposition at all (blind
+            # review: "three samples use subtraction... that belong to the
+            # later mat_g1_na_q3_1 competency").
+            bounds["operation"] = "addition"
 
         # Parse limit / max_result. Same >= 10 floor as the subtraction branch
         # and the generic extraction below: this pattern has no digit-width
@@ -526,6 +918,42 @@ def _parse_competency_bounds(
         if match:
             max_val = int(match.group(1))
             bounds["range"] = (10, max_val)
+
+        # "Recognize and represent numbers... using a variety of concrete
+        # and pictorial models (e.g., number line, block or bar models,
+        # and numerals)" (mat_g1_na_q1_2/mat_g2_na_q1_2): this DNA's own
+        # task_type vocabulary (numeral_to_word/word_to_numeral/numeral_to
+        # _expanded) covers the "numerals" representation this text ALSO
+        # names, but has no concept of "block or bar models" at all --
+        # the co-mapped `counting` DNA filled the gap with unrelated
+        # counting-sequence content instead of any genuine model-based
+        # representation (blind review: "block/bar models... never appear
+        # anywhere across all 17 seeds"; "5/17 samples... test sequence
+        # fluency, an axis unrelated to represent numbers using models").
+        # "identify_value" reuses place_value.py's own task_type name for
+        # the identical underlying skill (read a magnitude from base-10
+        # blocks) -- see number_reading.py's new branch and the
+        # "place_value_blocks_read"/"_set" formatter wiring below. Also
+        # matches "represent numbers... using pictorial models and
+        # numerals" (mat_g3_na_q1_0, no "concrete and"/"block or bar"
+        # wording but the identical underlying gap: blind review found it
+        # "text-for-text identical to sibling node mat_g3_na_q1_1['s]...
+        # read/write packet" with zero pictorial-model content anywhere).
+        if "pictorial models" in text or "block or bar" in text:
+            # Equal-weight rng.choice over 3 options gave identify_value
+            # (the ONLY task_type this node doesn't share with its "read
+            # and write" sibling) just 1/3 odds -- the other 2/3 produced
+            # task_type/seed/range combinations IDENTICAL to what the
+            # sibling's own unbound default (rng.choice(["numeral_to_word",
+            # "word_to_numeral"])) generates, so most samples were
+            # byte-for-byte duplicates of the sibling node (blind review:
+            # "8 of 12 samples are word-for-word identical... the defining
+            # 'concrete/pictorial models' clause is tested in only 4 of
+            # 12"). List repetition biases the DNA's own rng.choice toward
+            # the model-based task_type this competency is actually about,
+            # while keeping some numeral-notation variety since the
+            # competency also lists "numerals" as one representation type.
+            bounds["task_type"] = ["identify_value"] * 3 + ["numeral_to_word", "word_to_numeral"]
 
     # Symmetry and slides: this DNA's item pool spans four disjoint curriculum
     # scopes (rotation/turns; slide/translation; line symmetry; completing a
@@ -611,6 +1039,43 @@ def _parse_competency_bounds(
     elif dna_name == "money_peso" and "addition" in text and "subtraction" in text:
         bounds["operation"] = "add_or_subtract"
 
+    # "Compare different denominations of peso coins..." (mat_g1_na_q4_5,
+    # mat_g2_na_q2_1) -- money_peso.py already implements a real
+    # operation="compare" (asks "which has a greater value", built from
+    # two distinct coin/bill descriptions), but nothing ever bound it, so
+    # these nodes always defaulted to "add_amounts" and never once posed
+    # a comparison (blind review: money samples computed totals/change,
+    # never compared two denominations).
+    elif dna_name == "money_peso" and "compare" in text:
+        bounds["operation"] = "compare"
+
+    # "Recognize coins... and bills... and their notations" (mat_g1_na_q4_3)
+    # is a naming/notation competency, distinct from its sibling
+    # mat_g1_na_q4_4's "Determine the value of a number of bills/coins"
+    # (a summing competency) -- both left "operation" unbound, so both
+    # defaulted to the same "add_amounts" and rendered text-for-text
+    # identical packets (blind review: competency_alignment FAIL,
+    # "word-for-word identical to node mat_g1_na_q4_4's samples"). Money's
+    # own "read_write" operation (numeral<->words<->symbol notation) is
+    # the closest existing match for the "notations" half of this
+    # competency; recognizing a coin/bill purely by physical appearance
+    # (not notation) remains a separate, undisclosed gap this doesn't
+    # cover.
+    elif dna_name == "money_peso" and "recognize" in text and "notation" in text:
+        bounds["operation"] = "read_write"
+
+    # "Read and write money in words and using: Philippine currency
+    # symbols (₱ and PhP)... and the centavo sign" (mat_g3_na_q2_0):
+    # operation was left completely unbound, so it defaulted to whatever
+    # this DNA's own generate_params() falls back to (not "read_write" --
+    # the one operation that actually covers words/PhP/centavo notation),
+    # and the co-mapped `number_reading` DNA (no money concept at all)
+    # filled a large share of samples with plain numeral content instead
+    # (blind review: "9 of 17 samples... zero money content... no ₱
+    # symbol, no pesos, nothing"; "the centavo sign never appears").
+    elif dna_name == "money_peso" and "read and write" in text and "money" in text:
+        bounds["operation"] = "read_write"
+
     elif dna_name == "geometric_lines":
         if "straight" in text and "curved" in text:
             bounds["concept_type"] = "straight_curved"
@@ -632,7 +1097,105 @@ def _parse_competency_bounds(
             bounds["fraction_type"] = "unit_fraction"
         elif "similar fraction" in text:
             bounds["fraction_type"] = "similar_proper"
-            
+
+        # "Represent and identify..." (mat_g2_na_q4_0/_3) vs "Read and
+        # write... in fraction notation" (mat_g2_na_q4_1/_4): both pairs
+        # share the same identify_name operation and produce the exact
+        # same numerator/denominator content, so nothing distinguished
+        # which formatter rendered them -- most samples ended up byte-
+        # identical between the two sibling nodes regardless of which one
+        # explicitly names a visual model vs pure notation (blind review:
+        # "the entire packet is byte-identical to sibling node q4_1",
+        # "byte-identical duplicate of q4_3's packet"). New axis restricts
+        # fraction_shade/fraction_model_read to the "represent" nodes and
+        # mcq/cloze to the "read and write in notation" nodes (see
+        # FORMATTER_VARIANT_SUPPORT["fractions"] in compatibility.py).
+        if "represent and identify" in text:
+            bounds["fraction_task_mode"] = "model"
+        elif "read and write" in text and "notation" in text:
+            bounds["fraction_task_mode"] = "notation"
+        elif "equal to one" in text or "greater than one" in text:
+            # "Represent fractions that are equal to one and greater than
+            # one using models" (mat_g3_na_q4_6) matched neither "unit
+            # fraction" nor "similar fraction", so fraction_type stayed
+            # unbound and the DNA's own default ("unit_fraction", always
+            # numerator=1 over a denominator >=2, i.e. always <1) governed
+            # -- every sample rendered a proper fraction strictly less
+            # than one, the opposite of what this competency names (blind
+            # review: "the target fraction... is a proper fraction
+            # strictly less than one" for all 8 samples).
+            bounds["fraction_type"] = "improper"
+            # "Represent fractions... using models" names no arithmetic
+            # operation at all, but leaving "operation" unbound left it
+            # vulnerable to VARIANTS_BY_DNA["fractions"]["operation"] =
+            # ["add","subtract","add_subtract"] (declared for the sibling
+            # add/subtract node, mat_g3_na_q4_7, with no per-node scoping)
+            # -- judgment_packets.py's variant-coverage stratification
+            # probes those values against every fractions node regardless,
+            # so a plain "represent this model" competency got fraction-
+            # addition items mixed in (blind review: "Seeds 603, 604, and
+            # 605 are fraction-addition problems... competency leakage
+            # from node 7").
+            bounds["operation"] = "identify_name"
+        if False and "order" in text:
+            # fractions.py has a working "order" operation (draws N
+            # distinct unit/similar fractions, sorts them correctly using
+            # real fraction values) and fmt_ordering.py was fixed
+            # alongside it to compare "N/D" strings numerically instead of
+            # lexicographically ("1/10" < "1/2" as plain strings). BUT
+            # validate_matrix.py's own §1E answer_key_integrity check
+            # independently recomputes "correctly sorted" via a bare
+            # `sorted(items, reverse=...)` with no fraction-aware key, so
+            # it disagrees with the DNA's genuinely correct answer for
+            # UNIT fractions (varying denominators: ascending fraction
+            # VALUE is denominator-DEScending, which is lex-ascending-
+            # reversed -- confirmed live, "1/2,1/3,1/4,1/5" numeric-
+            # ascending sorts lexicographically to itself only by
+            # accident of a 2026-08-10 attempt; the general case
+            # disagrees, e.g. served ['1/6','1/5','1/4','1/3']
+            # (ascending) vs checker-expected ['1/3','1/4','1/5','1/6']).
+            #
+            # 2026-08-10: tried scoping this to SIMILAR fractions only
+            # (mat_g2_na_q4_5), where same-denominator + single-digit
+            # numerator DOES make lex order == numeric order by
+            # construction. That is NOT enough: declaring "ordering" as a
+            # compatible formatter for the fractions DNA at all exposes
+            # operation="order" to validate_matrix's §1C exhaustive sweep
+            # against EVERY fractions node regardless of registry
+            # scoping (the orchestrator's formatter-forcing path injects
+            # operation=rng.choice(["order"]) whenever "ordering" is
+            # force-tested) -- confirmed live: forcing it onto
+            # mat_g2_na_q4_0/_1 (both fraction_type="unit_fraction") hit
+            # the exact lex-mismatch above. Reverted; validate_matrix.py
+            # is read-only for generator work (CLAUDE.md) and there is no
+            # way to expose "order" to only the nodes where it's safe.
+            # mat_g2_na_q4_2/mat_g2_na_q4_5 stay on their pre-existing
+            # co-mapped comparing_ordering DNA fallback -- see
+            # NODE_TO_DNA's comment there.
+            bounds["operation"] = "order"
+        elif "compare" in text:
+            # "Compare 1/2 and 1/4 using models" (mat_g1_na_q4_1) is also
+            # co-mapped to comparing_ordering, a bare whole-number DNA that
+            # cannot express a fraction comparison at all -- whenever the
+            # orchestrator picked it as the active DNA, the node rendered
+            # unrelated whole-number comparisons instead (blind review).
+            # Bind operation="compare" so this node's own fractions DNA
+            # render reliably produces the comparison itself.
+            bounds["operation"] = "compare"
+
+        # "Count halves and quarters" (mat_g1_na_q4_2) is a counting-
+        # SEQUENCE skill, not identify/compare/order/add -- the co-mapped
+        # `counting` DNA has no fraction concept whatsoever and rendered
+        # whole-number skip-counting instead (blind review: "10/17
+        # samples (59%) are plain whole-number counting with zero
+        # fraction content -- this is active off-topic substitution, not
+        # just an absent nice-to-have"). fractions.py's new
+        # "count_sequence" operation counts by a fixed unit fraction
+        # (1/2 or 1/4) the way counting.py counts by a fixed whole-number
+        # skip interval.
+        if text.strip().startswith("count") and ("half" in text or "quarter" in text):
+            bounds["operation"] = "count_sequence"
+
     # Generic text-scrape fallback if no primary limit key was found.
     # Attempt to extract any number >= 10 from the LC text and use it
     # as the bound for dimension-bearing DNA concepts.
@@ -709,22 +1272,54 @@ def _parse_competency_bounds(
                       or "2, 3, 4, 5, or 10" in text):
                     tables = [2, 3, 4, 5, 10]
             if tables:
-                bounds["max_product"] = (0, max(tables) * 10)
+                # Ground-truth correction (Ground Rule 5, 2026-08-07): a
+                # (0, max(tables)*10) range starts the log-scale
+                # interpolation (orchestrator.py's continuous-axis mapping)
+                # from a floor of 0/1, but every genuine fact from a
+                # named-tables competency already has a hard floor of
+                # min(tables), and the log scale compresses so heavily
+                # toward its own low end that the DEFAULT difficulty scalar
+                # (0.5, used whenever no difficulty_profile is supplied)
+                # resolved to a ceiling of just 13 for the 6-9 set -- below
+                # which only b=6 could pair with a=2 at all; 7/8/9 could
+                # only ever appear as a degenerate a=1 fact, and even that
+                # was thinned to a single deterministic slot. Verified
+                # live: 200 raw seeds against mat_g3_na_q3_0 (unbound
+                # difficulty_profile) collapsed to exactly 2 distinct (a,b)
+                # pairs, (2,6) and (1,6) -- 7's table never appeared once
+                # (blind review: comprehensive_coverage FAIL). The
+                # identical shape hit the "2,3,4,5,10" set: table 10
+                # appeared 0/499 times, table 2 dominated ~50%. Flooring at
+                # 2x the highest named table gives every table room for at
+                # least an a=2 fact even at the interpolation's own low end.
+                bounds["max_product"] = (2 * max(tables), max(tables) * 10)
             else:
                 bounds["max_product"] = (0, grade_defaults["max_product"])
         elif "max_total" in grade_defaults and dna_name == "money_peso":
             bounds["max_total"] = (1, grade_defaults["max_total"])
 
-    # Extract regrouping booleans
-    if "without regrouping" in text:
+    # Extract regrouping booleans. "with and/or without regrouping" must be
+    # checked before "without regrouping" -- it contains "without
+    # regrouping" as a literal substring, so the more specific case was
+    # unreachable and every "with and without regrouping" competency (e.g.
+    # mat_g3_na_q2_1: "sums up to 10 000, with and without regrouping")
+    # was silently bound regrouping=False, permanently hiding the
+    # "with regrouping" half the competency explicitly names. "with OR
+    # without" (mat_g2_na_q1_9: "sums up to 1000, with or without
+    # regrouping") is the identical two-sided requirement phrased with
+    # "or" instead of "and" -- the original fix only matched the "and"
+    # wording, so this variant still silently forced regrouping=False
+    # (blind review: comprehensive_coverage FAIL, "'with regrouping' ...
+    # only the 'without regrouping' case is ever generated").
+    if "with and without regrouping" in text or "with or without regrouping" in text:
+        # Don't strictly bound it, let the catalog dictate options
+        pass
+    elif "without regrouping" in text:
         bounds["regrouping"] = False
     elif "with regrouping" in text:
         bounds["regrouping"] = True
     elif dna_name == "fractions" and ("add" in text or "subtract" in text or "sum" in text or "difference" in text):
         bounds["operation"] = "add_subtract"
-    elif "with and without regrouping" in text:
-        # Don't strictly bound it, let the catalog dictate options
-        pass
 
     # Cross-cutting: "Solve problems ..." competencies require word-problem
     # framing, not a bare number sentence -- but "context" defaults to
@@ -1399,7 +1994,17 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     #     compose/decompose, addition intro, properties of addition
     "mat_g1_na_q1_0": ["counting"],
     "mat_g1_na_q1_1": ["number_reading"],
-    "mat_g1_na_q1_2": ["number_reading", "counting"],
+    # counting removed (Ground Rule 2, 2026-08-07): competency is
+    # "Recognize and represent numbers... using a variety of concrete and
+    # pictorial models (e.g., number line, block or bar models, and
+    # numerals)" -- a representation skill, not a counting-sequence one.
+    # The co-mapped bare counting DNA rendered unrelated skip-count/
+    # next-number content instead (blind review: "5/17 samples... test
+    # sequence fluency, an axis unrelated to represent numbers using
+    # models"). number_reading.py now covers numerals (numeral_to_word/
+    # word_to_numeral), block/bar models (identify_value ->
+    # place_value_blocks), and number_line is already wired too.
+    "mat_g1_na_q1_2": ["number_reading"],
     "mat_g1_na_q1_3": ["comparing_ordering"],
     "mat_g1_na_q1_4": ["comparing_ordering"],
     "mat_g1_na_q1_5": ["ordinal_numbers"],
@@ -1414,7 +2019,13 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     "mat_g1_na_q2_1": ["counting"],
     "mat_g1_na_q2_2": ["place_value"],
     "mat_g1_na_q2_3": ["place_value"],
-    "mat_g1_na_q2_4": ["place_value", "addition"],
+    # place_value removed (Ground Rule 2, 2026-08-06): the competency verb is
+    # "Add" (expanded-form addition), but co-mapping place_value let the
+    # orchestrator's rng.choice(valid_dnas) render bare "What place is the
+    # digit X in?" facts with zero addition content roughly half the time
+    # (blind review of mat_g1_na_q2_4: comprehensive_coverage FAIL, "not one
+    # of the 17 samples shows the actual expanded-form addition procedure").
+    "mat_g1_na_q2_4": ["addition"],
     "mat_g1_na_q2_5": ["addition"],
     "mat_g1_na_q2_6": ["addition"],
 
@@ -1433,17 +2044,42 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     "mat_g1_na_q3_2": ["missing_number"],
     "mat_g1_na_q3_3": ["subtraction"],
     "mat_g1_na_q3_4": ["subtraction"],
-    "mat_g1_na_q3_5": ["subtraction", "place_value"],
+    # place_value removed (Ground Rule 2, 2026-08-06): competency verb is
+    # "Subtract" (expanded-form subtraction) -- subtraction alone now
+    # carries this (task_type bound to expanded_form above). place_value
+    # had no restriction, so rng.choice(valid_dnas) let bare "what place is
+    # digit X" facts and even an unrelated addition "sum" spine collision
+    # render with zero subtraction content (blind review: competency_
+    # fulfillment/comprehensive_coverage FAIL, competency_alignment FAIL
+    # "seed 101... asks for a sum -- addition, not subtraction").
+    "mat_g1_na_q3_5": ["subtraction"],
     "mat_g1_na_q3_6": ["patterns"],
     "mat_g1_na_q3_7": ["patterns"],
 
     # Q4: Fractions (1/2, 1/4), money (coins/bills to ₱100)
     "mat_g1_na_q4_0": ["fractions"],
-    "mat_g1_na_q4_1": ["fractions", "comparing_ordering"],
-    "mat_g1_na_q4_2": ["fractions", "counting"],
+    # "comparing_ordering" removed 2026-08-05 (Ground Rule 2): "Compare 1/2
+    # and 1/4 using models" cannot be expressed by a bare whole-number
+    # comparison DNA at all -- whenever the orchestrator picked it as the
+    # active DNA, the node rendered an unrelated whole-number comparison
+    # (blind review). fractions.py's own operation="compare" now covers
+    # this competency directly.
+    "mat_g1_na_q4_1": ["fractions"],
+    # counting removed (Ground Rule 2, 2026-08-07): "Count halves and
+    # quarters" is a fraction-counting-sequence skill; the co-mapped bare
+    # whole-number counting DNA has no fraction concept and rendered
+    # off-topic whole-number sequences (blind review: "active off-topic
+    # substitution, not just an absent nice-to-have"). fractions.py's new
+    # "count_sequence" operation (registry-bound above) covers it
+    # directly now.
+    "mat_g1_na_q4_2": ["fractions"],
     "mat_g1_na_q4_3": ["money_peso"],
     "mat_g1_na_q4_4": ["money_peso"],
-    "mat_g1_na_q4_5": ["money_peso", "comparing_ordering"],
+    # "comparing_ordering" removed 2026-08-05 (Ground Rule 2): a bare
+    # whole-number comparison DNA cannot express "which coin/bill is
+    # worth more" -- money_peso.py's own operation="compare" (registry.py
+    # money_peso block) now covers this competency directly.
+    "mat_g1_na_q4_5": ["money_peso"],
     # "addition" removed 2026-08-04 (Ground Rule 2): "Solve 1-step problems
     # ... involving addition of money ... or subtraction of money" is fully
     # covered by money_peso's own operation="add_or_subtract" (bound above
@@ -1498,7 +2134,14 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     # rendered bare survey-style sums with no time content (0/10 content-
     # word hit, e.g. a student-count addition problem with no hour/day/
     # month mentioned).
-    "mat_g1_mg_q4_4": ["time_reading"],
+    # "calendar" added (2026-08-10): "days in a week, and months in a
+    # year" is one of this competency's three named sub-cases, but
+    # time_reading has no day/month concept at all -- co-map calendar
+    # (task_type bound to the new "days_and_months" sentinel above) so
+    # that sub-case actually gets generated instead of never appearing
+    # (blind review: "Zero samples touch 'days in a week' or 'months in a
+    # year,' both explicitly named in the competency").
+    "mat_g1_mg_q4_4": ["time_reading", "calendar"],
 
     # ────────────────────────────────────────────────────────────────────────
     # GRADE 1 — Data & Probability
@@ -1517,20 +2160,40 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     #     addition (expanded form, to 1000, properties)
     "mat_g2_na_q1_0":  ["counting"],
     "mat_g2_na_q1_1":  ["number_reading"],
-    "mat_g2_na_q1_2":  ["number_reading", "counting"],
+    # counting removed (Ground Rule 2, 2026-08-07): identical reasoning to
+    # mat_g1_na_q1_2 above.
+    "mat_g2_na_q1_2":  ["number_reading"],
     "mat_g2_na_q1_3":  ["counting"],
     "mat_g2_na_q1_4":  ["comparing_ordering"],
     "mat_g2_na_q1_5":  ["ordinal_numbers"],
     "mat_g2_na_q1_6":  ["place_value"],
-    "mat_g2_na_q1_7":  ["addition", "counting"],
-    "mat_g2_na_q1_8":  ["addition", "place_value"],
+    # counting removed (Ground Rule 2, 2026-08-07): competency is
+    # "Illustrate addition of 2-digit and 1-digit numbers as 'counting up'
+    # on the number line" -- a specific ADDITION strategy, not a general
+    # counting/skip-counting skill. The co-mapped bare counting DNA has no
+    # concept of "counting up as an addition strategy" at all; it just
+    # rendered unrelated skip-counting and backward-counting sequences
+    # (blind review: "severe multi-source content leak... a counting-
+    # BACKWARD item, which is conceptually the inverse of this competency
+    # and belongs to subtraction"). addition.py's own task_type=
+    # "counting_up" (now bound above) expresses the real skill directly.
+    "mat_g2_na_q1_7":  ["addition"],
+    # place_value removed (Ground Rule 2, 2026-08-06): same root cause as
+    # mat_g1_na_q2_4 -- competency is "Add ... in expanded form", but
+    # co-mapping place_value let bare digit-position facts (up to 4-digit
+    # numbers, ~9x over the competency's own 1000 ceiling) render instead of
+    # expanded-form addition (blind review: comprehensive_coverage FAIL,
+    # scale_appropriateness FAIL).
+    "mat_g2_na_q1_8":  ["addition"],
     "mat_g2_na_q1_9":  ["addition"],
     "mat_g2_na_q1_10": ["addition"],
 
     # Q2: Money (to ₱1000), addition problems, subtraction (to 1000),
     #     patterns (increasing/decreasing)
     "mat_g2_na_q2_0": ["money_peso"],
-    "mat_g2_na_q2_1": ["money_peso", "comparing_ordering"],
+    # "comparing_ordering" removed 2026-08-05 (Ground Rule 2), same
+    # reasoning as mat_g1_na_q4_5.
+    "mat_g2_na_q2_1": ["money_peso"],
     "mat_g2_na_q2_2": ["addition", "money_peso"],
     "mat_g2_na_q2_3": ["subtraction"],
     "mat_g2_na_q2_4": ["subtraction"],
@@ -1550,7 +2213,18 @@ NODE_TO_DNA: Dict[str, List[str]] = {
 
     # Q3: Repeated addition → multiplication, tables 2-5-10,
     #     division intro, missing number in mult/div, even/odd
-    "mat_g2_na_q3_0": ["multiplication", "counting"],
+    # counting removed (Ground Rule 2, 2026-08-06): competency is "Count
+    # objects in a group by repeated addition and create equal groups,
+    # using language such as '5 groups of 3'" -- multiplication alone
+    # already carries this (task_type bound to repeated_addition above).
+    # counting had no restriction at all, so rng.choice(valid_dnas) let
+    # generic skip-counting/backward-counting sequences ("994, 995...")
+    # render with zero equal-groups framing, especially at the seed>=500
+    # max-difficulty tier where counting's much larger range (10-1000 vs
+    # multiplication's 0-100 max_product) dominated (blind review:
+    # competency_alignment FAIL, "content shifts entirely to skip-counting
+    # near 994-995... rather than deepening equal-groups reasoning").
+    "mat_g2_na_q3_0": ["multiplication"],
     # "addition" removed 2026-08-01 (Ground Rule 2): the plain addition DNA
     # has no notion of equal groups, so co-mapping it here served generic
     # 2-3-digit sums ("661 + 120") with zero connection to multiplication —
@@ -1575,7 +2249,14 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     # no number sentence or blank at all -- structurally incapable of
     # expressing "find the missing number".
     "mat_g2_na_q3_7": ["missing_number"],
-    "mat_g2_na_q3_8": ["division", "comparing_ordering"],
+    # comparing_ordering removed (Ground Rule 2, 2026-08-06): competency is
+    # "Distinguish even and odd numbers using division by 2" -- division
+    # alone now carries this (task_type bound to even_odd above).
+    # comparing_ordering had no restriction, so rng.choice(valid_dnas) let
+    # bare whole-number comparisons ("307 ___ 270") render with zero
+    # even/odd content (blind review: comprehensive_coverage FAIL, "the
+    # central named sub-case... never appears in any of the 19 samples").
+    "mat_g2_na_q3_8": ["division"],
     "mat_g2_na_q3_9": ["division"],
 
     # Q4: Fractions (unit, similar) with denominators 2-4
@@ -1587,9 +2268,18 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     # (10, 10000) that no fraction competency states, which is what
     # validate_matrix §1A-reach flagged.
     "mat_g2_na_q4_1": ["fractions"],
+    # comparing_ordering kept for now (see "order" binding's `False and`
+    # guard above): fractions.py's "order" operation is written and
+    # correct, but disabled pending a fraction-aware sort key in
+    # validate_matrix.py's §1E check, which is read-only for generator
+    # work. Reverting this mapping too would leave these two nodes with
+    # NO ordering content at all rather than the pre-existing (off-topic
+    # but at least present) comparing_ordering fallback.
     "mat_g2_na_q4_2": ["fractions", "comparing_ordering"],
     "mat_g2_na_q4_3": ["fractions"],
     "mat_g2_na_q4_4": ["fractions"],
+    # comparing_ordering kept for now: identical reasoning to
+    # mat_g2_na_q4_2 above, for "Order similar fractions...".
     "mat_g2_na_q4_5": ["fractions", "comparing_ordering"],
 
     # ────────────────────────────────────────────────────────────────────────
@@ -1605,24 +2295,69 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     "mat_g2_mg_q2_0": ["length_measurement"],
     "mat_g2_mg_q2_1": ["length_measurement"],
     "mat_g2_mg_q2_2": ["length_measurement"],
-    "mat_g2_mg_q2_3": ["length_measurement", "addition"],
+    # addition removed (Ground Rule 2, 2026-08-06): length_measurement
+    # already self-narrates its own word problems via its "question" field
+    # (its blank_target="answer" never matches a spine's required
+    # blank_target, so it never reaches spine selection at all). When
+    # addition was picked instead, the only spines whose required_concepts
+    # matched this node's own domain (meas_object/meas_compare_lengths) use
+    # {len_a}/{len_b}/{unit} slots that no DNA populates -- spine.render
+    # KeyErrors and silently falls back to a bare, context-free arithmetic
+    # fact ("What is 390 + 312?"), losing all length/distance framing
+    # (blind review: comprehensive_coverage FAIL, "zero mention of length,
+    # distance, or centimeters"; identical content to unrelated sibling
+    # mat_g2_mg_q4_6 at the same seeds, confirming the addition DNA carried
+    # no node-specific framing at all).
+    "mat_g2_mg_q2_3": ["length_measurement"],
 
     # Q4: Duration/elapsed time, time in hours+minutes,
     #     straight vs curved lines, perimeter
-    "mat_g2_mg_q4_0": ["time_reading", "calendar"],
+    # time_reading removed (Ground Rule 2, 2026-08-06): competency is
+    # "Describe the duration of an event in ... days and/or weeks using a
+    # calendar" -- calendar alone now carries this (task_type bound to
+    # elapsed_days_or_weeks above). time_reading had no restriction, so
+    # rng.choice(valid_dnas) let plain clock-reading/-setting content
+    # render with zero calendar-duration content (blind review:
+    # competency_fulfillment/comprehensive_coverage/variant_
+    # comprehensiveness/competency_alignment/scale_appropriateness all
+    # FAIL, "not one of the 6 samples computes a duration in days or
+    # weeks").
+    "mat_g2_mg_q4_0": ["calendar"],
     "mat_g2_mg_q4_1": ["time_reading"],
-    "mat_g2_mg_q4_2": ["time_reading", "subtraction"],
+    # "subtraction" removed (Ground Rule 2, 2026-08-10): competency is
+    # "Solve problems involving elapsed time... including timetables" --
+    # subtraction has no time/clock awareness at all; when picked it
+    # rendered off-topic pictograph-themed word problems with zero
+    # connection to time (blind review: "9 of 17 samples... zero
+    # connection to minutes/hours/days/timetables"). time_reading now
+    # implements a real elapsed_time task_type (registry-bound above)
+    # instead of relying on a mismatched co-mapped DNA.
+    "mat_g2_mg_q4_2": ["time_reading"],
     "mat_g2_mg_q4_3": ["geometric_lines"],
     "mat_g2_mg_q4_4": ["perimeter", "length_measurement"],
     "mat_g2_mg_q4_5": ["perimeter"],
-    "mat_g2_mg_q4_6": ["perimeter", "addition"],
+    # addition removed (Ground Rule 2, 2026-08-06): same root cause as
+    # mat_g2_mg_q2_3 -- perimeter already self-narrates via
+    # base_generator._build_symbolic_question's dedicated "fencing" template
+    # (blank_target="answer" never matches any spine, so it never needs one).
+    # addition being co-mapped only let rng.choice(valid_dnas) render bare
+    # facts with zero perimeter content (blind review: comprehensive_coverage
+    # FAIL, "not one triangle... rectangular-garden fencing" template only;
+    # off-domain seeds identical to unrelated sibling mat_g2_mg_q2_3).
+    "mat_g2_mg_q4_6": ["perimeter"],
 
     # ────────────────────────────────────────────────────────────────────────
     # GRADE 2 — Data & Probability
     # ────────────────────────────────────────────────────────────────────────
 
     "mat_g2_dp_q3_0": ["pictographs"],
-    "mat_g2_dp_q3_1": ["pictographs", "comparing_ordering"],
+    # "comparing_ordering" removed 2026-08-05 (Ground Rule 2): "Interpret
+    # data in tabular form and in a pictograph" cannot be expressed by a
+    # bare whole-number comparison DNA -- whenever the orchestrator picked
+    # it as the active DNA, the node rendered unrelated large-magnitude
+    # number comparisons (blind review: 9 of 16 samples). pictographs.py's
+    # own "compare_two" task_type genuinely interprets the dataset instead.
+    "mat_g2_dp_q3_1": ["pictographs"],
 
     # ────────────────────────────────────────────────────────────────────────
     # GRADE 3 — Number & Algebra
@@ -1640,7 +2375,15 @@ NODE_TO_DNA: Dict[str, List[str]] = {
 
     # Q2: Money (write in words/symbols), addition to 10 000
     #     (with regroup, estimate), subtraction, combined ops
-    "mat_g3_na_q2_0": ["money_peso", "number_reading"],
+    # "number_reading" removed (Ground Rule 2, 2026-08-10): competency is
+    # "Read and write money in words and using: Philippine currency
+    # symbols (₱ and PhP)... and the centavo sign" -- number_reading has
+    # no money/currency concept at all; when picked it rendered plain
+    # numeral content with zero peso context (blind review: "9 of 17
+    # samples... zero money content -- no ₱ symbol, no pesos, nothing").
+    # money_peso's own operation="read_write" (registry-bound above) now
+    # covers words/symbols/centavo notation directly.
+    "mat_g3_na_q2_0": ["money_peso"],
     "mat_g3_na_q2_1": ["addition"],
     # "rounding" removed 2026-08-04 (Ground Rule 2, same reasoning as
     # mat_g3_na_q2_5's subtraction fix): rounding.py rounds ONE number;

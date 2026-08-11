@@ -113,7 +113,22 @@ def _build_traps(numer: int, denom: int) -> list:
 
 def _stem(ask_type: str, fraction_str: str, interaction_mode: str, operation: str = None) -> str:
     if interaction_mode == "set" or ask_type == "shade_this_fraction":
-        return f"Shade the shape to show the result of {fraction_str}." if operation else f"Shade {fraction_str} of the shape."
+        if operation:
+            return f"Shade the shape to show the result of {fraction_str}."
+        # An improper fraction (numerator > denominator, e.g.
+        # mat_g3_na_q4_6's "equal to one and greater than one") can't be
+        # shaded on a single shape -- "Shade 17/5 of the shape" has no
+        # valid single-shape rendering. Name how many identical shapes are
+        # needed, matching base_generator.py's identical multi-shape
+        # phrasing for the read-direction of this same competency.
+        num_str, _, den_str = fraction_str.partition("/")
+        if num_str.isdigit() and den_str.isdigit() and int(num_str) > int(den_str):
+            num_wholes = -(-int(num_str) // int(den_str))  # ceiling division
+            return (
+                f"Shade {fraction_str} using {num_wholes} identical shapes, "
+                f"each divided into {den_str} equal parts."
+            )
+        return f"Shade {fraction_str} of the shape."
     if operation in ("add", "subtract", "add_subtract"):
         return "What is the result of the fraction operation shown?"
     if ask_type == "compare":

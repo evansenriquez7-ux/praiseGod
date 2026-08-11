@@ -34,6 +34,19 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
             return f"Estimate: {real_a} + {real_b} ≈ ___"
+        if values.get("task_type") == "expanded_form" and "a_tens" in values:
+            # Bare "{a} + {b} = ___" drops the place-value decomposition
+            # this task_type exists to demonstrate -- same root cause as the
+            # identical fix in fmt_true_false.py (see that file's comment).
+            from backend.app.practice_gen.dna.na.addition import decompose_to_places
+            return (
+                f"{decompose_to_places(a)} {decompose_to_places(b)} "
+                f"Add the place values, then find the total: {a} + {b} = ___"
+            )
+        if values.get("task_type") == "counting_up" and blank_target == "result":
+            # Same root cause as expanded_form above -- drops the "start at /
+            # count up" narration values["question"] states.
+            return f"Start at {a}. Count up {b} more. You land on ___"
         if blank_target == "result":
             return f"{a} + {b} = ___"
         elif blank_target == "b":
@@ -52,6 +65,14 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
             return f"Estimate: {real_a} − {real_b} ≈ ___"
+        if values.get("task_type") == "expanded_form" and "a_tens" in values:
+            # Same root cause as addition's identical fix (see that
+            # branch's comment).
+            from backend.app.practice_gen.dna.na.addition import decompose_to_places
+            return (
+                f"{decompose_to_places(a)} {decompose_to_places(b)} "
+                f"Subtract the place values, then find what's left: {a} − {b} = ___"
+            )
         if blank_target == "result":
             return f"{a} − {b} = ___"
         elif blank_target == "b":
@@ -107,6 +128,11 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
         task_type = values.get("task_type", "compare_pair")
         a = values.get("a")
         b = values.get("b")
+        if values.get("context") == "word_problem" and values.get("question"):
+            # Same "formatter rebuilds its own text, discarding
+            # values['question']" defect as fmt_mcq.py's identical fix --
+            # this branch always built a bare stem regardless of context.
+            return values["question"]
         if task_type in ("order_set", "order_sequence"):
             nums = values.get("numbers", [])
             nums_str = ", ".join(str(x) for x in nums)

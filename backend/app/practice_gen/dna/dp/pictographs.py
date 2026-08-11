@@ -128,8 +128,26 @@ def generate_params(
     bounds = _PARAM_BOUNDS[g_key]
     from backend.app.practice_gen.dna.base import linear_interpolate, extract_discrete_level, extract_continuous_scalar
     
-    scale_type    = extract_discrete_level(profile, "scale_type", ["no_scale", "scale_2", "scale_5", "scale_10"], "no_scale" if grade == 1 else "scale_2")
+    # G2's own default ("scale_2") was fixed regardless of what the node's
+    # profile requested, so "...with or without scale" (mat_g2_dp_q3_1) and
+    # "...using a scale" (mat_g2_dp_q3_0) both silently rendered scale=2
+    # every single sample (blind review: 0 of 5+ samples ever varied the
+    # scale factor). Vary across the declared scale options when unbound --
+    # extract_discrete_level only falls back to this default when
+    # "scale_type" is absent from profile entirely, so an explicit request
+    # still wins.
+    _scale_default = "no_scale" if grade == 1 else random.Random(seed).choice(["scale_2", "scale_5", "scale_10"])
+    scale_type    = extract_discrete_level(profile, "scale_type", ["no_scale", "scale_2", "scale_5", "scale_10"], _scale_default)
     task_type     = extract_discrete_level(profile, "task_type", ["read_single", "compare_two", "find_total", "find_difference", "organize_table", "present_data"], "read_value")
+    if task_type == "read_or_compare":
+        # registry.py sentinel for "Interpret data in tabular form and in
+        # a pictograph..." (mat_g2_dp_q3_1): alternate between reading a
+        # single category and genuinely comparing two, per seed.
+        # "read_value" (not VARIANTS_BY_DNA's declared "read_single",
+        # which no formatter in FORMATTER_VARIANT_SUPPORT actually
+        # recognizes -- a separate pre-existing name mismatch) is this
+        # DNA's real default/fallthrough branch.
+        task_type = rng.choice(["read_value", "compare_two"])
 
     # Determine scale
     if scale_type == "no_scale" or grade == 1:

@@ -15,9 +15,9 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Estimate the quotient: 120 ÷ 76",
-      "correct_answer": 1,
+      "formatter": "true_false",
+      "question_text": "120 \u00f7 76 \u2248 20. True or False?",
+      "correct_answer": false,
       "options": [
         {
           "key": "A",
@@ -43,9 +43,9 @@
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Estimate the quotient: 320 ÷ 18",
-      "correct_answer": 16,
+      "formatter": "true_false",
+      "question_text": "320 \u00f7 18 \u2248 15. True or False?",
+      "correct_answer": true,
       "options": [
         {
           "key": "A",
@@ -71,9 +71,9 @@
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "Estimate: 505 ÷ 60 ≈ ___",
-      "correct_answer": 8,
+      "formatter": "true_false",
+      "question_text": "505 \u00f7 60 \u2248 8. True or False?",
+      "correct_answer": true,
       "options": [
         {
           "key": "A",
@@ -103,9 +103,9 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Estimate the quotient: 100 ÷ 22",
-      "correct_answer": 4,
+      "formatter": "true_false",
+      "question_text": "100 \u00f7 22 \u2248 80. True or False?",
+      "correct_answer": false,
       "options": [
         {
           "key": "A",
@@ -131,9 +131,9 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Estimate the quotient: 150 ÷ 16",
-      "correct_answer": 12,
+      "formatter": "true_false",
+      "question_text": "150 \u00f7 16 \u2248 10. True or False?",
+      "correct_answer": true,
       "options": [
         {
           "key": "A",
@@ -160,23 +160,20 @@
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "450 ÷ 54 ≈ 27000. True or False?",
+      "question_text": "450 \u00f7 54 \u2248 25000. True or False?",
       "correct_answer": false
     },
     {
       "seed": 55,
-      "formatter": "error_detect",
-      "question_text": "Grace says: 170 ÷ 40 ≈ 160. Is Grace correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 5
-      }
+      "formatter": "true_false",
+      "question_text": "170 \u00f7 40 \u2248 5. True or False?",
+      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "For node mat_g3_na_q4_4 (Grade 3 Quarter 4 curriculum), the sampled problems directly fulfill the MATATAG competency 'Estimate the quotient of 2- to 3-digit numbers divided by 1- to 2-digit numbers, using multiples of 10 or 100 as appropriate.'. Across seeds 42, 43, 44, 45, 46, 50, 55, the rendered questions (such as 'Estimate the quotient: 120 ÷ 76') require students to demonstrate the target concept."
+      "rationale": "For node mat_g3_na_q4_4 (Grade 3 Quarter 4 curriculum), the sampled problems directly fulfill the MATATAG competency 'Estimate the quotient of 2- to 3-digit numbers divided by 1- to 2-digit numbers, using multiples of 10 or 100 as appropriate.'. Across seeds 42, 43, 44, 45, 46, 50, 55, the rendered questions (such as 'Estimate the quotient: 120 \u00f7 76') require students to demonstrate the target concept."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
@@ -184,7 +181,7 @@
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g3_na_q4_4 fit Grade 3 Quarter 4 cognitive limits. Stems like 'Estimate the quotient: 120 ÷ 76' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
+      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g3_na_q4_4 fit Grade 3 Quarter 4 cognitive limits. Stems like 'Estimate the quotient: 120 \u00f7 76' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",

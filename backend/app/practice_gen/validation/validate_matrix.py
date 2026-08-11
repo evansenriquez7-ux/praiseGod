@@ -1064,6 +1064,31 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                                 else:
                                     recomputed = _eval_formula(dna.answer_formula, p.get("given_values", {}))
 
+                                # fractions' add/subtract/add_subtract operations store operand A
+                                # alone under given_values["numerator"]/["denominator"] (fractions.py
+                                # generate_params: "numerator": num, i.e. a_num, not the combined
+                                # result) -- the DNA's single shared answer_formula
+                                # ("numerator / denominator") can only ever express operand A for
+                                # these operations, never the sum/difference actually served.
+                                # Recompute the real result independently from a_num/b_num instead
+                                # of trusting a formula that structurally cannot apply here.
+                                gv = p.get("given_values", {})
+                                if dna_name == "fractions" and gv.get("operation") in ("add", "subtract", "add_subtract"):
+                                    a_num, a_den, b_num = gv.get("a_num"), gv.get("a_den"), gv.get("b_num")
+                                    if a_num is not None and a_den is not None and b_num is not None:
+                                        result_num = (a_num - b_num) if gv["operation"] == "subtract" else (a_num + b_num)
+                                        recomputed = f"{result_num}/{a_den}"
+                                elif dna_name == "fractions" and gv.get("operation") == "compare":
+                                    # "compare" serves a symbol (">"/"<"/"=") as correct_answer,
+                                    # not the raw numerator/denominator value the shared
+                                    # answer_formula computes -- independently recompute the
+                                    # comparison itself from a_num/a_den vs b_num/b_den.
+                                    a_num, a_den = gv.get("a_num"), gv.get("a_den")
+                                    b_num, b_den = gv.get("b_num"), gv.get("b_den")
+                                    if None not in (a_num, a_den, b_num, b_den):
+                                        av, bv = a_num / a_den, b_num / b_den
+                                        recomputed = "=" if av == bv else (">" if av > bv else "<")
+
                                 served = unpacked_served
                                 if isinstance(p.get("correct_answer"), bool):
                                     # true_false — skip numeric integrity check
@@ -1076,37 +1101,28 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                                     "ordering" in formatter or
                                     ("array_grid" in formatter and dna_name == "division") or
                                     ("number_line" in formatter and dna_name == "rounding") or
-                                    ("fraction" in formatter and dna_name == "fractions") or
-                                    # Ground Rule 5 disclosure, 2026-08-02: widened from
-                                    # operation in ("add","subtract","add_subtract","compare")
-                                    # to every fractions operation. _eval_formula (validate_dna.py)
-                                    # evaluates "numerator / denominator" with Python's native
-                                    # `/`, a true-division float -- exact for a power-of-2
-                                    # denominator (1/8 == 0.125, no rounding error) but not for
-                                    # any other (1/3 == 0.3333333333333333, off from the exact
-                                    # rational by ~1e-17). validate_math_answer then parses that
-                                    # imprecise float as a sympy Float and the served "1/3" as an
-                                    # exact Rational, and their difference does not simplify to
-                                    # exactly 0 -- a false answer-key failure on a genuinely
-                                    # correct served answer, not a pipeline defect
-                                    # (mat_g2_na_q4_0/_1/_2, seed 42, exposed once the
-                                    # generate_number_by_window fix let a non-power-of-2
-                                    # denominator be sampled at all -- the prior deterministic-
-                                    # collapse bug always served 1/8 here, which is exactly
-                                    # representable and silently never triggered this).
-                                    # validate_dna.py's own `_are_values_equal` already exists to
-                                    # do this comparison correctly (mirroring this exact
-                                    # float-vs-fraction-string class of false positive, first
-                                    # fixed there for "0.5" vs "1/2" -- see
-                                    # HARDENING_EVIDENCE.md Ground Rule 2, item 3); this extends
-                                    # the equivalent bypass here rather than reimplementing that
-                                    # fix a second time.
-                                    dna_name == "fractions"
+                                    ("fraction" in formatter and dna_name == "fractions")
                                 )
                                 if is_semantic_bypass:
                                     continue
 
-                                if not validate_math_answer(recomputed, served):
+                                # _eval_formula (validate_dna.py) evaluates "numerator /
+                                # denominator" with Python's native `/`, a true-division float --
+                                # exact for a power-of-2 denominator (1/8 == 0.125) but not for
+                                # any other (1/3 == 0.3333333333333333, off from the exact
+                                # rational by ~1e-17). validate_math_answer then parses that
+                                # imprecise float as a sympy Float and the served "1/3" as an
+                                # exact Rational, so their difference never simplifies to exactly
+                                # 0 -- a false answer-key failure on a genuinely correct served
+                                # answer (mat_g2_na_q4_0/_1/_2, seed 42). Ground Rule 3 forbids
+                                # skipping the check for this; instead, fall back to
+                                # validate_dna._are_values_equal, which already exists to compare
+                                # a numeric/fraction-string value against another with tolerance
+                                # (the identical fix already applied once for "0.5" vs "1/2" --
+                                # HARDENING_EVIDENCE.md Ground Rule 2, item 3). A genuine
+                                # answer-key corruption (wrong numerator, wrong operation) is
+                                # still caught: the two values are not numerically close.
+                                if not validate_math_answer(recomputed, served) and not _are_values_equal(recomputed, served):
                                     failures.append({
                                         "dna": dna_name,
                                         "formatter": formatter,

@@ -25,10 +25,11 @@ from backend.app.practice_gen.formatters._distractor_fallback import augment_dis
 # Helpers
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _time_str(hours: int, minutes: int, use_24: bool) -> str:
+def _time_str(hours: int, minutes: int, use_24: bool, period: Optional[str] = None) -> str:
     if use_24:
         return f"{hours:02d}:{minutes:02d}"
-    return f"{hours}:{minutes:02d}"
+    base = f"{hours}:{minutes:02d}"
+    return f"{base} {period}" if period and not use_24 else base
 
 
 def _build_traps(hours: int, minutes: int, use_24: bool, rng: random.Random) -> dict:
@@ -41,8 +42,13 @@ def _build_traps(hours: int, minutes: int, use_24: bool, rng: random.Random) -> 
     traps = {}
     display_hours = hours % 12 or 12  # 1-12 face value
 
-    # Hour-minute swap (only when minutes ≤ 12)
-    if minutes <= 12:
+    # Hour-minute swap (only when minutes is itself a plausible clock hour,
+    # 1-12). "minutes <= 12" let minutes=0 through too -- an analog/12-hour
+    # clock face never shows an hour of 0, so swapping a 0-minute reading
+    # (e.g. "7:00") produced a nonsensical "0:07" trap option (blind review
+    # of mat_g2_mg_q4_1: "0:01"/"0:05 p.m."/"0:07 a.m." -- an hour a student
+    # could never actually read off a clock face).
+    if 1 <= minutes <= 12:
         traps["hour_minute_swap"] = (minutes, hours)
 
     # Off by one hour on the clock face
@@ -85,24 +91,25 @@ def _build_traps(hours: int, minutes: int, use_24: bool, rng: random.Random) -> 
 
 
 def _trap_time_strings(
-    traps: dict, use_24: bool, correct_tuple: tuple, rng: random.Random
+    traps: dict, use_24: bool, correct_tuple: tuple, rng: random.Random,
+    period: Optional[str] = None,
 ) -> list:
     """
     Extract up to 3 distinct trap time-strings (excluding the correct answer).
     """
-    seen = {_time_str(*correct_tuple, use_24)}
+    seen = {_time_str(*correct_tuple, use_24, period)}
     options = []
     for h, m in traps.values():
         if not (0 <= m <= 59):
             continue
-        s = _time_str(h, m, use_24)
+        s = _time_str(h, m, use_24, period)
         if s not in seen:
             seen.add(s)
             options.append(s)
         if len(options) == 3:
             break
     if len(options) < 3:
-        options = augment_distractors(options, _time_str(*correct_tuple, use_24), target=3, max_delta=5)
+        options = augment_distractors(options, _time_str(*correct_tuple, use_24, period), target=3, max_delta=5)
         if len(options) < 3:
             raise ValueError(f"Formatter 'clock' requires at least 3 unique distractors, but got {len(options)}")
     return options
@@ -210,8 +217,16 @@ def format_clock(
         minutes = vp["minutes"]
         use_24 = vp["use_24_hour"]
 
+    # time_reading.py's own generate_params already computes "period"
+    # ("a.m."/"p.m.") when include_ampm resolves true, but this formatter
+    # built time_str purely from hours/minutes and never read it -- so
+    # "Read and write time... with a.m. and p.m." (mat_g2_mg_q4_1) never
+    # showed a.m./p.m. anywhere regardless of what the DNA generated
+    # (blind review: comprehensive_coverage FAIL, "none labels a time as
+    # a.m. or p.m.").
+    period = (ctx.values or {}).get("period")
     correct_tuple = (hours, minutes)
-    time_str = _time_str(hours, minutes, use_24)
+    time_str = _time_str(hours, minutes, use_24, period)
     traps = _build_traps(hours, minutes, use_24, rng)
 
     # ── 2. Build question text ────────────────────────────────────────────────
@@ -229,15 +244,19 @@ def format_clock(
         else:
             question_text = "What time does the clock show?"
     else:  # "set"
+        # time_str now sometimes ends in "a.m."/"p.m." (its own trailing
+        # period) -- appending a sentence-final "." unconditionally
+        # produced "Set the clock to show 9:40 a.m.." (double period).
+        trailing = "" if time_str.endswith(".") else "."
         if use_24:
             question_text = f"Set the clock to show {time_str} (24-hour time)."
         else:
-            question_text = f"Set the clock to show {time_str}."
+            question_text = f"Set the clock to show {time_str}{trailing}"
 
     # ── 3. Answer collection ──────────────────────────────────────────────────
     mcq_options = None
     if answer_collection == "mcq":
-        distractor_strings = _trap_time_strings(traps, use_24, correct_tuple, rng)
+        distractor_strings = _trap_time_strings(traps, use_24, correct_tuple, rng, period)
         all_options = [time_str] + distractor_strings[:3]
         rng.shuffle(all_options)
         mcq_options = [

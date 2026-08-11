@@ -424,6 +424,30 @@ _DIV_HOW_MANY_GROUPS = Spine(
     grade_band=(2, 3),
 )
 
+_DIV_MONEY_SHARE = Spine(
+    id="div_money_share",
+    template=(
+        # "{b} friends" (hardcoded), not "{b} {objects}" -- {objects} is a
+        # plural countable-ITEM filler ("ribbons", "coins") meant for what
+        # gets shared (see _DIV_SHARE_EQUALLY above), not who it's shared
+        # among; using it for the recipient slot read as "share among 3
+        # coins" instead of "among 3 friends".
+        "{actor} has ₱{a} and wants to share it equally among {b} friends. "
+        "How much does each friend get?"
+    ),
+    # Several G2/G3 division competencies explicitly name "problems
+    # involving money" (mat_g2_na_q3_9, mat_g3_na_q4_5) but no division
+    # spine required money_peso, so context="word_problem" always fell
+    # through to a generic non-money sharing scenario -- the money
+    # sub-case those competencies name was never once demonstrated.
+    required_concepts={"money_peso", "division"},
+    # base_generator.py remaps division's blank_target "result" -> "total"
+    # before spine selection (division/multiplication use "total"/"groups"/
+    # "n" spine naming, not the DNA's own "result"/"start"/"change").
+    blank_target="total",
+    grade_band=(2, 3),
+)
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # MONEY SPINES — buying / spending / change
@@ -432,11 +456,26 @@ _DIV_HOW_MANY_GROUPS = Spine(
 _MONEY_BUYING = Spine(
     id="money_buying",
     template=(
-        "{actor} wants to buy {a} {objects} that cost ₱{price} each. "
+        # {groups}/{n} match multiplication.py's own alias keys for its
+        # word-problem spines (see that file's "Aliases for the mul_*
+        # word-problem spines" comment) -- {a}/{price} were never populated
+        # by any DNA, so this spine also KeyError'd on render and silently
+        # fell back to the bare symbolic question (same root cause as the
+        # blank_target fix above).
+        "{actor} wants to buy {groups} {objects} that cost ₱{n} each. "
         "How much does {actor} need to pay in all?"
     ),
     required_concepts={"money_peso", "multiplication"},
-    blank_target="amount",
+    # Every other multiplication spine uses blank_target="total" (see
+    # mul_equal_groups/mul_repeated_add above) -- base_generator.py's
+    # blank_target remap maps multiplication's "result" to "total" only,
+    # never to "amount", so this spine's required_blank_target check never
+    # matched and it was silently unreachable. "Solve multiplication
+    # problems... including problems involving money" (mat_g2_na_q3_3,
+    # mat_g3_na_q3_4) never showed money content as a result (blind
+    # review: comprehensive_coverage FAIL, "not a single one of the 16
+    # samples uses a peso value").
+    blank_target="total",
     grade_band=(2, 3),
 )
 
@@ -521,9 +560,15 @@ _AREA_SOLVE = Spine(
         # {objects} is a plural countable-item filler ("ribbons", "coins")
         # meant for counting-context spines, and reads ungrammatically after
         # "a rectangular ___" ("a rectangular ribbons").
-        "{actor} wants to cover a rectangular garden that is {l} "
-        "{length_unit} long and {w} {length_unit} wide with square tiles. "
-        "How many tiles are needed to cover it completely?"
+        # {shape_noun}/{dims_phrase} (set by area.py's generate_params for
+        # both square and rectangle) rather than the rectangle-only {l}/{w}
+        # pair this template used to require: a square sample has no {l}/{w}
+        # in its values, so it raised KeyError and silently fell back to the
+        # plain non-narrative question -- "solve problems involving areas of
+        # squares and rectangles" (mat_g3_mg_q1_3) never posed a genuine
+        # square word problem as a result (blind review).
+        "{actor} wants to cover a {shape_noun} garden {dims_phrase} "
+        "with square tiles. How many tiles are needed to cover it completely?"
     ),
     required_concepts={"area"},
     blank_target="answer",
@@ -666,6 +711,7 @@ ALL_SPINES: List[Spine] = [
     # Division
     _DIV_SHARE_EQUALLY,
     _DIV_HOW_MANY_GROUPS,
+    _DIV_MONEY_SHARE,
     # Money
     _MONEY_BUYING,
     _MONEY_SPENDING,
@@ -696,6 +742,7 @@ def select_spine(
     cumulative_vocab: Set[str],
     required_blank_target: Optional[str] = None,
     current_operation: Optional[str] = None,
+    node_own_concepts: Optional[Set[str]] = None,
 ) -> Optional[Spine]:
     """
     Choose the best narrative Spine for the current problem context.
@@ -723,6 +770,11 @@ def select_spine(
         rng: Seeded Random instance for reproducible tie-breaking.
         prior_concepts: Subset of cumulative_concepts the student has
             already practiced (used to prefer richer spines).
+        node_own_concepts: The full set of DNA concepts this node itself is
+            mapped to (e.g. {"length_measurement", "addition"} for a node
+            co-mapped to both). When given, spines are preferred that also
+            relate to one of these -- not just whichever DNA happens to be
+            active for this particular render.
 
     Returns:
         The selected Spine, or None if no eligible spine exists.
@@ -753,6 +805,34 @@ def select_spine(
         op_matched = [s for s in eligible if current_operation in s.required_concepts]
         if op_matched:
             eligible = op_matched
+
+    if node_own_concepts:
+        # op_matched above only guarantees a spine narrates the CURRENTLY
+        # ACTIVE dna.concept -- for a node co-mapped to multiple DNAs (e.g.
+        # ["length_measurement", "addition"]), when the orchestrator's
+        # active DNA for this render is the generic "addition" half,
+        # current_operation="addition" alone is satisfied by *any* spine
+        # that happens to also use addition (money_total, data_read_results
+        # survey spines, etc.), not just this node's own domain. Every one
+        # of those then ties on the scoring step below (they all score by
+        # overlap with the student's entire concept history, not by
+        # relevance to this node), so a "solve problems involving length
+        # and distance" node could get narrated with an unrelated class-
+        # survey spine roughly as often as a real length spine (confirmed:
+        # mat_g2_mg_q2_3 blind review found "A class survey showed ...
+        # students like costume sash" rendered for a length/distance node).
+        # Narrow to spines that also relate to one of this node's OTHER
+        # mapped DNAs (excluding current_operation itself, which every
+        # surviving spine already requires by construction of op_matched
+        # above -- intersecting against it unexcluded would trivially
+        # match everything and narrow nothing), falling back to the
+        # unfiltered set only if none do.
+        other_concepts = node_own_concepts - {current_operation}
+        own_matched = [
+            s for s in eligible if s.required_concepts & other_concepts
+        ]
+        if own_matched:
+            eligible = own_matched
 
     if required_blank_target is not None:
         matched = [s for s in eligible if s.blank_target == required_blank_target]

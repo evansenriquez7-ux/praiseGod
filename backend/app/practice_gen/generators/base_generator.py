@@ -30,7 +30,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 
 from ..dna.base import DNA, QuestionContext, VocabGated
-from ..registry import get_node_competency_bounds
+from ..registry import get_node_competency_bounds, get_node_dnas
 from .interest import get_interest_slots, pick_interest
 from .spines import select_spine
 
@@ -292,7 +292,20 @@ def generate_context(
     # symbolic/pure fallback still shows the true full computation.
     money_peso_amounts = values.get("amounts") if dna.concept == "money_peso" else None
     money_peso_narratable = money_peso_amounts is None or len(money_peso_amounts) == 2
-    if money_peso_narratable and dna.requires_context and values.get("context", "pure") == "word_problem":
+    # div_money_share (spines.py) narrates "has PN, shares equally among M
+    # friends, how much does each get?" and answers with the floor
+    # quotient -- correct only when the division is exact. When remainder
+    # != 0 the true story is "each gets Q, with R left over", which this
+    # spine's blank_target="total" (the bare quotient) cannot express;
+    # rendering it anyway serves an answer that silently drops the
+    # remainder as if the money split evenly (reproduced at
+    # mat_g2_na_q3_9/mat_g3_na_q4_5 seed 603 via the variant-coverage
+    # stratification seed range: "PHP10 among 4 friends" keyed to 2,
+    # dropping the PHP2 left over). Skip narration for any division render
+    # with a nonzero remainder; the symbolic "a / b = ?" fallback still
+    # shows the true computation without implying an even split.
+    division_narratable = dna.concept != "division" or values.get("remainder", 0) == 0
+    if money_peso_narratable and division_narratable and dna.requires_context and values.get("context", "pure") == "word_problem":
         blank_pos = values.get("blank_position") or values.get("blank_target")
         # `values.get("operation")` is only ever populated by missing_number.py
         # -- the plain multiplication/division/addition/subtraction DNAs never
@@ -342,6 +355,7 @@ def generate_context(
                 if dna.concept == "money_peso"
                 else dna.concept
             ),
+            node_own_concepts=set(get_node_dnas(node_id) or []),
         )
         if spine is not None:
             spine_id = spine.id
@@ -444,6 +458,28 @@ def generate_context(
         and not _is_equivalent_to_answer(d)
     ]
     distractors_provenance: Dict[Any, str] = {d: "base" for d in distractors}
+    # _eval_error_formula evaluates a pure-arithmetic formula (e.g. "a - b")
+    # against every *numeric* key in `values`, regardless of what the DNA's
+    # own blank_target actually answers with. For a categorical/string
+    # answer (e.g. place_value's "identify_place" answering a place name
+    # like "tens"), `values` can still incidentally hold numeric fields the
+    # formula happily evaluates (place_value.py's own "number"/
+    # "digit_at_position"/"value_at_position") -- appending that numeric
+    # result as a "distractor" alongside the real string ones let
+    # fmt_true_false.py's fill_value draw a number ("The answer is 22")
+    # for a question asking for a place name, a nonsensical statement
+    # (blind review of mat_g1_na_q3_5 seed 50). A numeric distractor is
+    # only ever meaningful when the real answer is itself numeric.
+    correct_is_str = isinstance(correct_answer, str)
+    # A comparison-symbol answer (">", "<", "=") has a fixed 3-value domain
+    # unrelated to any DNA's arithmetic ErrorPattern formulas -- fractions.py's
+    # patterns evaluate numerator/denominator into fraction-NOTATION strings
+    # (e.g. "2/1"), which pass the bare str-vs-str type check above and were
+    # offered as "which sign is correct?" options alongside the real signs
+    # (blind review of mat_g1_na_q4_1). A distractor for a sign answer must
+    # itself be one of the other two signs, never a formula result of a
+    # completely different shape.
+    correct_is_comparison_symbol = correct_answer in (">", "<", "=")
     for ep in filtered_patterns:
         if ep.formula == "None":
             continue
@@ -451,6 +487,8 @@ def generate_context(
             distractor = _eval_error_formula(ep.formula, values)
             if (
                 distractor is not None
+                and not (correct_is_str and not isinstance(distractor, str))
+                and not (correct_is_comparison_symbol and distractor not in (">", "<", "="))
                 and distractor != correct_answer
                 and distractor not in distractors
                 and not _is_out_of_grade_negative(distractor)
@@ -728,6 +766,24 @@ def _build_symbolic_question(
             # expected answer is the rule's step size, which doesn't even
             # continue the visible sequence.
             seq_str = ", ".join(str(x) for x in seq) if seq else f"{a}, ..."
+            # "combined" patterns (mat_g3_na_q3_6: "repeating and
+            # increasing/decreasing components") answer with the BLOCK-
+            # to-block step, not a per-term difference -- same root cause
+            # and identical fix as fmt_pattern_sequence.py's own copy of
+            # this branch (see that file's comment for the full
+            # explanation). This is a SEPARATE fallback code path (used
+            # when a generic mcq/cloze formatter renders patterns content
+            # via ctx.question_text instead of fmt_pattern_sequence.py's
+            # own dedicated state_rule branch), so the same fix has to be
+            # applied here too -- confirmed by blind review still finding
+            # the mismatched phrasing on 8 of 10 samples after the first
+            # fix, all via mcq/cloze specifically.
+            if values.get("pattern_kind") == "combined":
+                return (
+                    f"This pattern follows a rule: {seq_str}, ... Each group of numbers repeats, "
+                    f"then the next group changes by the same amount. What number is added or "
+                    f"subtracted from one group to the next?"
+                )
             return (
                 f"This pattern follows a rule: {seq_str}, ... "
                 f"What number is added or subtracted each time to generate it?"
@@ -743,14 +799,39 @@ def _build_symbolic_question(
             # position and phrase it as finding a missing term instead.
             display = [("___" if i == missing_index else str(x)) for i, x in enumerate(seq)]
             seq_str = ", ".join(display)
-            return f"What number is missing in the pattern: {seq_str}?"
+            # "number" was hardcoded regardless of sequence content --
+            # patterns.py can now generate letter cycles too ("letters:
+            # a, b, c, a, b, c...", mat_g1_na_q3_6's own worked example),
+            # and "What number is missing" is simply wrong for those.
+            # "term" is accurate for both and matches this DNA's own
+            # VOCAB_TERM vocabulary.
+            unit = "term" if any(isinstance(x, str) for x in seq) else "number"
+            return f"What {unit} is missing in the pattern: {seq_str}?"
         seq_str = ", ".join(str(x) for x in seq) if seq else f"{a}, ..."
-        return f"What is the next number in the pattern: {seq_str}?"
+        unit = "term" if any(isinstance(x, str) for x in seq) else "number"
+        return f"What is the next {unit} in the pattern: {seq_str}?"
 
     if concept == "fractions":
         numer = values.get("numerator", a)
         denom = values.get("denominator", b)
         operation = values.get("operation")
+        if operation == "compare":
+            # "compare" set values["result"] to a comparison symbol
+            # (>, <, =) but no question-text branch ever asked a
+            # comparison question -- every sample fell through to the
+            # single-fraction "what fraction is shaded" phrasing below
+            # regardless of operation, so a served "=" or "<" answer keyed
+            # against a stem that never posed a comparison (blind review
+            # of mat_g1_na_q4_1: "compare 1/2 to 1/4" competency never
+            # once rendered as an actual comparison).
+            a_num = values.get("a_num", numer)
+            a_den = values.get("a_den", denom)
+            b_num = values.get("b_num", numer)
+            b_den = values.get("b_den", denom)
+            return (
+                f"Compare the fractions: \\(\\frac{{{a_num}}}{{{a_den}}}\\) ___ "
+                f"\\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?"
+            )
         if operation in ("add_subtract", "add", "subtract"):
             a_num = values.get("a_num", numer)
             b_num = values.get("b_num", 0)
@@ -764,6 +845,21 @@ def _build_symbolic_question(
         # nothing (validate_matrix §1F). Describe the partitioning in words and
         # let the student express it as a fraction, which is the actual skill.
         part_word = "part is" if numer == 1 else "parts are"
+        if numer > denom:
+            # An improper fraction (mat_g3_na_q4_6: "fractions... greater
+            # than one") can't be shaded on a single shape -- you cannot
+            # shade more parts than the shape has. The single-shape
+            # phrasing silently asked students to "shade 4 parts" of a
+            # shape "divided into 3 equal parts" with no second shape ever
+            # mentioned, which isn't representable at all. The standard
+            # model for a fraction greater than one is several identical
+            # shapes, each divided the same way, with the total shaded
+            # count spread across them.
+            num_wholes = -(-numer // denom)  # ceiling division
+            return (
+                f"There are {num_wholes} identical shapes, each divided into {denom} equal parts. "
+                f"{numer} {part_word} shaded in total. What fraction is shaded?"
+            )
         return (
             f"A shape is divided into {denom} equal parts. {numer} {part_word} shaded. "
             f"What fraction of the shape is shaded?"
@@ -808,7 +904,15 @@ def _build_symbolic_question(
     # ── Rounding ──────────────────────────────────────────────────────────────
     if concept == "rounding":
         number = values.get("number", a)
-        precision = values.get("precision", 10)
+        # rounding.py's generate_params returns the numeric ceiling under
+        # the key "round_to" (10/100/1000), never "precision" -- this read
+        # the wrong key and silently fell back to its own default (10)
+        # every time, so "Round X to the nearest 10" rendered regardless
+        # of the DNA's actual computed precision (blind review of
+        # mat_g3_na_q1_4: scale_appropriateness FAIL, "nearest hundred"
+        # and "nearest thousand" never once appear in the rendered text,
+        # even on samples whose own values already reflect them).
+        precision = values.get("round_to", 10)
         return f"Round {number} to the nearest {precision}."
 
     # ── Number reading ────────────────────────────────────────────────────────
@@ -844,9 +948,17 @@ def _build_symbolic_question(
         if task_type == "compare":
             val_a = values.get("value_a")
             val_b = values.get("value_b")
-            u = values.get("unit")
-            return f"Which is longer: {val_a} {u} or {val_b} {u}?"
+            u = values.get("unit", "")
+            # Non-standard units (paperclips, hands, steps, blocks, crayons)
+            # are all regular "-s" plurals -- "1 paperclips" reads as a
+            # grammar error a Grade 1 reader stumbles on (blind review of
+            # mat_g1_mg_q2_1). cm/m have no plural form to strip.
+            u_a = u[:-1] if val_a == 1 and u.endswith("s") and u not in ("cm", "m") else u
+            u_b = u[:-1] if val_b == 1 and u.endswith("s") and u not in ("cm", "m") else u
+            return f"Which is longer: {val_a} {u_a} or {val_b} {u_b}?"
         unit = values.get("unit", "cm")
+        length = values.get("length")
+        unit = unit[:-1] if length == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
         return f"Measure the object. Its length is ___ {unit}."
 
     if concept == "mass_capacity":
@@ -964,16 +1076,33 @@ def _build_symbolic_question(
                 f"{unit.replace('sq ', '')}. What is its {other}?"
             )
         if task_type == "illustrate_tiles":
+            # Two phrasings alternated by a value already fixed by the seed
+            # (parity of the answer) so the choice is deterministic without
+            # threading a new rng parameter through this shared builder --
+            # blind review flagged that every sample reused one frozen
+            # sentence with only the numbers changing.
+            area_val = values.get("answer", 0)
+            if isinstance(area_val, (int, float)) and int(area_val) % 2 == 0:
+                return (
+                    f"A {shape} is covered edge-to-edge with unit square tiles, "
+                    f"arranged in {rows_cols}. Estimate how many unit tiles cover "
+                    f"the {shape} in all."
+                )
             return (
-                f"A {shape} is covered edge-to-edge with unit square tiles, "
-                f"arranged in {rows_cols}. Estimate how many unit tiles cover "
-                f"the {shape} in all."
+                f"You are laying unit square tiles over a {shape}, fitting "
+                f"{rows_cols} exactly. About how many tiles in total will you use?"
             )
         if task_type == "derive_formula":
+            area_val = values.get("answer", 0)
+            if isinstance(area_val, (int, float)) and int(area_val) % 2 == 0:
+                return (
+                    f"A {shape} is arranged in {rows_cols} of unit square tiles. "
+                    f"Using the formula rows × columns, what is the total number "
+                    f"of tiles?"
+                )
             return (
-                f"A {shape} is arranged in {rows_cols} of unit square tiles. "
-                f"Using the formula rows × columns, what is the total number "
-                f"of tiles?"
+                f"Tiling a {shape} takes {rows_cols}. Applying the rows × "
+                f"columns formula, how many unit tiles cover it in all?"
             )
         return f"A {shape} has {dims}. What is its area in {unit}?"
 

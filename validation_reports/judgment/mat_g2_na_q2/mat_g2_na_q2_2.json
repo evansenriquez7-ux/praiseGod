@@ -17,27 +17,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Daniel has ₱10 in bills and ₱12 in coins. How much money does Daniel have in all?",
-      "correct_answer": 22,
+      "question_text": "Daniel has \u20b11 in bills and \u20b140 in coins. How much money does Daniel have in all?",
+      "correct_answer": 41,
       "options": [
         {
           "key": "A",
-          "value": 32,
+          "value": 51,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 23,
+          "value": 42,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 22,
+          "value": 41,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 21,
+          "value": 40,
           "is_correct": false
         }
       ]
@@ -45,27 +45,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Kuya Bien has ₱2 in bills and ₱10 in coins. How much money does Kuya Bien have in all?",
-      "correct_answer": 12,
+      "question_text": "Kuya Bien has \u20b128 in bills and \u20b130 in coins. How much money does Kuya Bien have in all?",
+      "correct_answer": 58,
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 58,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 11,
+          "value": 57,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 13,
+          "value": 59,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 22,
+          "value": 68,
           "is_correct": false
         }
       ]
@@ -73,7 +73,7 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 ₱500 bill, 1 ₱5 coin, and 1 ₱1 coin?",
+      "question_text": "What is the total value of 1 \u20b1500 bill, 1 \u20b15 coin, and 1 \u20b11 coin?",
       "correct_answer": 506,
       "options": [
         {
@@ -101,7 +101,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 ₱100 bill, 1 ₱20 bill, and 1 ₱1 coin?",
+      "question_text": "What is the total value of 1 \u20b1100 bill, 1 \u20b120 bill, and 1 \u20b11 coin?",
       "correct_answer": 121,
       "options": [
         {
@@ -129,27 +129,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Ate Cara has ₱4 in bills and ₱15 in coins. How much money does Ate Cara have in all?",
-      "correct_answer": 19,
+      "question_text": "Ate Cara has \u20b10 in bills and \u20b116 in coins. How much money does Ate Cara have in all?",
+      "correct_answer": 16,
       "options": [
         {
           "key": "A",
-          "value": 20,
+          "value": 17,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 19,
+          "value": 16,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 18,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 29,
+          "value": 26,
           "is_correct": false
         }
       ]
@@ -157,7 +157,7 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "A class survey showed 5 students like fan shirt and 200 students like tote bag. How many students were surveyed in all?",
+      "question_text": "Mia has \u20b15 in bills and \u20b1200 in coins. How much money does Mia have in all?",
       "correct_answer": 205,
       "options": [
         {
@@ -189,23 +189,23 @@
     {
       "seed": 51,
       "formatter": "true_false",
-      "question_text": "What is 20 + 20? The answer is 40.. True or False?",
+      "question_text": "Lara has \u20b119 in bills and \u20b10 in coins. How much money does Lara have in all? The answer is 19. True or False?",
       "correct_answer": true
     },
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Sora has ₱6 in bills and ₱10 in coins. How much money does Sora have in all?\" Grace says the answer is 15. Is Grace correct?",
+      "question_text": "Grace solved this problem: \"Sora has \u20b115 in bills and \u20b112 in coins. How much money does Sora have in all?\" Grace says the answer is 37. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
-        "correct_value": 16
+        "correct_value": 27
       }
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "For node mat_g2_na_q2_2 (Grade 2 Quarter 2 curriculum), the sampled problems directly fulfill the MATATAG competency 'Solve problems involving addition with sums up to 1000, including problems involving money, with and without regrouping.'. Across seeds 42, 43, 44, 45, 46, 50, 51, 55, the rendered questions (such as 'Daniel has ₱10 in bills and ₱12 in coins. How much money ...') require students to demonstrate the target concept."
+      "rationale": "For node mat_g2_na_q2_2 (Grade 2 Quarter 2 curriculum), the sampled problems directly fulfill the MATATAG competency 'Solve problems involving addition with sums up to 1000, including problems involving money, with and without regrouping.'. Across seeds 42, 43, 44, 45, 46, 50, 51, 55, the rendered questions (such as 'Daniel has \u20b110 in bills and \u20b112 in coins. How much money ...') require students to demonstrate the target concept."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
@@ -213,7 +213,7 @@
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g2_na_q2_2 fit Grade 2 Quarter 2 cognitive limits. Stems like 'Daniel has ₱10 in bills and ₱12 in coins. How much money ...' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
+      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g2_na_q2_2 fit Grade 2 Quarter 2 cognitive limits. Stems like 'Daniel has \u20b110 in bills and \u20b112 in coins. How much money ...' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",

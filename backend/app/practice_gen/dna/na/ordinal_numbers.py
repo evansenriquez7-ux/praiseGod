@@ -180,12 +180,42 @@ def generate_params(
     g_key = f"g{max(1, min(grade, 3))}"
     bounds = _PARAM_BOUNDS[g_key]
     min_ord = bounds["min_ordinal"]
+    # axes_catalog.py declares this DNA's only continuous axis as
+    # "ordinal_range" (not "difficulty_scalar"/"number_difficulty", which
+    # this line used to read) -- the orchestrator's own continuous-axis
+    # pipeline already maps "ordinal_range" from a 0-1 scalar into a real
+    # ordinal ceiling using this axis's min/max before generate_params ever
+    # runs, so reading the wrong keys here meant diff_scalar silently sat
+    # at its hardcoded 0.5 default for every single render, regardless of
+    # seed or requested difficulty -- max_ord never moved, so no sample
+    # ever approached a node's stated ceiling (blind review of
+    # mat_g2_na_q1_5/mat_g3_na_q1_2: scale_appropriateness FAIL/CONCERN,
+    # "climb only as high as 14th" against a stated 20th/100th ceiling).
+    # generate_number_by_window below also needs a 0-1 scalar (for where
+    # *within* [min_ord, max_ord] to bias sampling), independent of which
+    # branch computed the ceiling itself.
     diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
-    from backend.app.practice_gen.dna.base import log_interpolate
-    max_ord = int(log_interpolate(10, bounds["max_ordinal"], diff_scalar))
+    ordinal_range_val = profile.get("ordinal_range")
+    if ordinal_range_val is not None:
+        max_ord = int(ordinal_range_val)
+    else:
+        from backend.app.practice_gen.dna.base import log_interpolate
+        max_ord = int(log_interpolate(10, bounds["max_ordinal"], diff_scalar))
 
     range_level = profile.get("range", "1st_to_10th")
-    task_type   = profile.get("task_type", "identify_ordinal")
+    # Every "Describe the position of objects using ordinal numbers" node
+    # left task_type unbound, so it silently defaulted to "identify_ordinal"
+    # every single render -- "find_position"'s object-in-context templates
+    # ("A runner finished in {word} place...") and "compare_positions"'s
+    # ("Who arrived earlier...") never once appeared, even though they're
+    # the templates that actually name an object being positioned (blind
+    # review: competency_fulfillment FAIL/CONCERN across mat_g1_na_q1_5,
+    # mat_g2_na_q1_5, mat_g3_na_q1_2, "none of the samples references any
+    # object or context"). Vary across all three implemented task_types
+    # when unbound.
+    task_type = profile.get("task_type") or rng.choice(
+        ["identify_ordinal", "find_position", "compare_positions"]
+    )
 
     # Filter templates matching task_type and grade range
     candidates = [t for t in _ITEM_TEMPLATES if t["task_type"] == task_type]

@@ -72,7 +72,19 @@ CONCEPT_AXES_CATALOG: Dict[str, List[dict]] = {
                         'default_min': 10,
                         'default_max': 10000,
                         'divisions': 5,
-                        'default': 0.0}],
+                        # Every other axis in this catalog defaults to 0.5;
+                        # this was the sole 0.0 (the absolute floor of the
+                        # scalar range). Combined with the window-ceiling
+                        # shift in orchestrator.py's continuous-axis
+                        # mapping, an unbound/default counting generation
+                        # call resolved "range" to a near-constant ~25
+                        # regardless of seed -- so "Count up to 1000"
+                        # (mat_g2_na_q1_0) never rendered anything beyond
+                        # the low twenties under ordinary usage (blind
+                        # review: "the highest number appearing anywhere
+                        # across all 7 samples is 22", "nothing... exercises
+                        # counting into the hundreds").
+                        'default': 0.5}],
     'comparing_ordering': [   {   'name': 'max_value',
                                   'label': 'Maximum Value',
                                   'dim_type': 'continuous',

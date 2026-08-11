@@ -273,6 +273,28 @@ def format_number_bond(
         final_answer = answer
 
     question_text = _stem(bond, interaction_mode, ctx.cumulative_vocab)
+    if ctx.values and ctx.values.get("task_type") == "counting_up" and ctx.values.get("question"):
+        # Same "generic stem drops the task_type's own narration" defect
+        # as expanded_form's identical fix just below -- "counting_up"'s
+        # "Start at X. Count up Y more..." framing (the ONE strategy
+        # mat_g2_na_q1_7's competency names) was silently replaced by this
+        # formatter's generic "the two parts are X and Y" stem (blind
+        # review: 2/17 samples dropped counting-up framing entirely).
+        question_text = ctx.values["question"]
+    elif ctx.values and ctx.values.get("task_type") == "expanded_form" and "a_tens" in ctx.values:
+        # A number-bond's "whole = part1 + part2" shape already matches
+        # expanded_form's a + b = result (part1=a, part2=b) for addition,
+        # or a - b = result as whole=a/part1=b/part2=result for
+        # subtraction, but the generic stems drop the tens-and-ones
+        # decomposition this task_type exists to demonstrate -- same root
+        # cause as the identical fix in fmt_true_false.py/fmt_cloze.py/
+        # fmt_error_detect.py (see those files' comments).
+        from backend.app.practice_gen.dna.na.addition import decompose_to_places
+        prefix = f"{decompose_to_places(ctx.values['a'])} {decompose_to_places(ctx.values['b'])} "
+        if bond.get("blank_position") == "whole":
+            question_text = f"{prefix}Add the place values, then find the total: {question_text}"
+        elif bond.get("blank_position") == "part2" and ctx.dna_concept == "subtraction":
+            question_text = f"{prefix}Subtract the place values, then find what's left: {question_text}"
 
     format_data: dict = {"visual_params": vp}
     if mcq_options:

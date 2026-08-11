@@ -16,88 +16,84 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "read_mcq",
-      "question_text": "Maria wakes up at 11:00. What time is that?",
-      "correct_answer": "C",
+      "formatter": "mcq",
+      "question_text": "A class started at 11:05 p.m. and ended at 11:10 p.m. How many minutes did it last?",
+      "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": "0:11",
+          "value": 1,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "10:00",
+          "value": 55,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "11:00",
+          "value": 5,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "12:00",
+          "value": 10,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "read_mcq",
-      "question_text": "Jose leaves for school at 1:00. What time is that?",
-      "correct_answer": "A",
+      "formatter": "mcq",
+      "question_text": "A bus ride started at 1:20 a.m. and lasted 90 minutes. What time did it end?",
+      "correct_answer": "2:50 a.m.",
       "options": [
         {
           "key": "A",
-          "value": "1:00",
+          "value": "2:50 a.m.",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "2:00",
+          "value": "3:50 a.m.",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "12:00",
+          "value": "1:20 a.m.",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "0:01",
+          "value": "2:00 a.m.",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "In a pictograph, Lara's group collected 1 ribbon and another group collected 1 ribbon. How many more did Lara's group collect?",
-      "correct_answer": 0,
+      "formatter": "mcq",
+      "question_text": "A class started at 7:40 a.m. and lasted 50 minutes. What time did it end?",
+      "correct_answer": "8:30 a.m.",
       "options": [
         {
           "key": "A",
-          "value": 1,
-          "text": "1",
+          "value": "7:40 a.m.",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 2,
-          "text": "2",
+          "value": "8:40 a.m.",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 3,
-          "text": "3",
+          "value": "9:30 a.m.",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 0,
-          "text": "0",
+          "value": "8:30 a.m.",
           "is_correct": true
         }
       ]
@@ -105,79 +101,154 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "In a pictograph, Coach Roel's group collected 440 water bottles and another group collected 220 water bottles. How many more did Coach Roel's group collect?",
-      "correct_answer": 220,
+      "question_text": "A recess started at 5:30 p.m. and lasted 45 minutes. What time did it end?",
+      "correct_answer": "6:15 p.m.",
       "options": [
         {
           "key": "A",
-          "value": 221,
+          "value": "5:30 p.m.",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 660,
+          "value": "6:25 p.m.",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 220,
+          "value": "6:15 p.m.",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 219,
+          "value": "7:15 p.m.",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "read_mcq",
-      "question_text": "Maria starts homework at 2:00. What time is that?",
-      "correct_answer": "B",
+      "formatter": "mcq",
+      "question_text": "A swimming lesson started at 2:30 a.m. and ended at 2:35 a.m. How many minutes did it last?",
+      "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": "1:00",
+          "value": 55,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "2:00",
+          "value": 5,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "3:00",
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "0:02",
+          "value": 1,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 50,
-      "formatter": "true_false",
-      "question_text": "In a pictograph, Mia's group collected 3 merchandise shirts and another group collected 0 merchandise shirts. How many more did Mia's group collect? The answer is 2.. True or False?",
-      "correct_answer": false
+      "formatter": "cloze",
+      "question_text": "A swimming lesson started at 8:20 a.m. and lasted 30 minutes. What time did it end?",
+      "correct_answer": "8:50 a.m.",
+      "options": [
+        {
+          "key": "A",
+          "value": "8:20 a.m.",
+          "text": "8:20 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "8:50 a.m.",
+          "text": "8:50 a.m.",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "8:00 a.m.",
+          "text": "8:00 a.m.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "9:50 a.m.",
+          "text": "9:50 a.m.",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 51,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 4:00.",
-      "correct_answer": "4:00"
+      "formatter": "cloze",
+      "question_text": "A class started at 4:40 a.m. and ended at 5:30 a.m. How many minutes did it last?",
+      "correct_answer": 50,
+      "options": [
+        {
+          "key": "A",
+          "value": 55,
+          "text": "55",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 45,
+          "text": "45",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 50,
+          "text": "50",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 68,
-      "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"In a pictograph, Celso's group collected 178 science fair boards and another group collected 0 science fair boards. How many more did Celso's group collect?\" Rico says the answer is 177. Is Rico correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 178
-      }
+      "formatter": "cloze",
+      "question_text": "A study session started at 12:35 a.m. and ended at 2:05 a.m. How many minutes did it last?",
+      "correct_answer": 90,
+      "options": [
+        {
+          "key": "A",
+          "value": 85,
+          "text": "85",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 150,
+          "text": "150",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 95,
+          "text": "95",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 90,
+          "text": "90",
+          "is_correct": true
+        }
+      ]
     }
   ],
   "findings": {

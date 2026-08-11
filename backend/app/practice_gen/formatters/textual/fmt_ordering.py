@@ -12,9 +12,32 @@ Sequence resolution priority:
 """
 
 import random
+import re
 from typing import List
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+
+_FRACTION_STR_RE = re.compile(r"^\d+/\d+$")
+
+
+def _fraction_sort_key(item):
+    """
+    Numeric sort key for "N/D" fraction-notation strings.
+
+    Plain `sorted(sequence)` on fraction strings compares them
+    lexicographically ("1/10" < "1/2" as text, since '1' < '2'), which
+    never raises -- Python strings ARE comparable -- so the formatter's
+    own TypeError-triggered fallback never fires and the "correct" order
+    is silently wrong. fractions.py needs a real ordering DNA feature
+    (mat_g2_na_q4_2/mat_g2_na_q4_5: "order unit/similar fractions") but a
+    live fractions.Fraction object isn't JSON-serializable through the
+    rest of the pipeline, so it passes plain "N/D" strings instead and
+    this formatter has to know how to compare them.
+    """
+    if isinstance(item, str) and _FRACTION_STR_RE.match(item):
+        num, den = item.split("/")
+        return int(num) / int(den)
+    return item
 
 
 def _resolve_sequence(ctx: QuestionContext) -> List:
@@ -46,7 +69,7 @@ def _infer_direction(sequence: List) -> str:
     unsorted > last item). Defaults to "ascending".
     """
     try:
-        if len(sequence) >= 2 and sequence[0] > sequence[-1]:
+        if len(sequence) >= 2 and _fraction_sort_key(sequence[0]) > _fraction_sort_key(sequence[-1]):
             return "descending"
     except TypeError:
         pass
@@ -68,19 +91,34 @@ def format_ordering(ctx: QuestionContext, rng: random.Random, format_name: str =
     """
     sequence = _resolve_sequence(ctx)
 
-    # Determine direction
-    direction = "ascending"
-    if isinstance(ctx.values, dict) and "direction" in ctx.values:
+    # Determine direction. Only trust ctx.values["direction"] when it's
+    # literally "ascending"/"descending" -- this formatter is shared by
+    # both comparing_ordering (which uses that exact vocabulary) and
+    # counting (whose own "direction" key means "forward"/"backward"
+    # sequence traversal, an unrelated concept that happens to share the
+    # key name). Trusting the raw value regardless of source let
+    # counting's "forward" leak through as this formatter's direction:
+    # "forward" != "descending" so the sort fell through to ascending, but
+    # "forward" != "ascending" so the question text's own separate check
+    # fell through to "largest to smallest" -- two inconsistent-default
+    # comparisons on the same unrecognized value produced a genuinely
+    # wrong answer key (sorted ascending, but asked for largest-to-
+    # smallest). Found by blind review of mat_g1_na_q1_0 seed 72.
+    if isinstance(ctx.values, dict) and ctx.values.get("direction") in ("ascending", "descending"):
         direction = ctx.values["direction"]
     else:
         direction = _infer_direction(sequence)
 
-    # Compute correct order
+    # Compute correct order. "N/D" fraction strings sort lexicographically
+    # under plain sorted() ("1/10" < "1/2"), which never raises TypeError
+    # -- strings ARE comparable -- so the fallback below never catches
+    # this case; _fraction_sort_key is a no-op for every other item type,
+    # so this is safe to apply unconditionally.
     try:
         if direction == "descending":
-            correct_order = sorted(sequence, reverse=True)
+            correct_order = sorted(sequence, key=_fraction_sort_key, reverse=True)
         else:
-            correct_order = sorted(sequence)
+            correct_order = sorted(sequence, key=_fraction_sort_key)
     except TypeError:
         # Non-comparable types: preserve sequence as correct order
         correct_order = sorted(sequence, key=lambda x: str(x.get("value") if isinstance(x, dict) else x))
@@ -99,9 +137,19 @@ def format_ordering(ctx: QuestionContext, rng: random.Random, format_name: str =
     }
     format_data.pop("correct_order", None)
 
-    # Generate appropriate question text for ordering
-    direction_word = "smallest to largest" if direction == "ascending" else "largest to smallest"
-    question_text = f"Arrange these numbers from {direction_word}: {', '.join(str(x) for x in items)}"
+    # Generate appropriate question text for ordering. A DNA-supplied
+    # "question" (comparing_ordering.py's word-problem narrative, which
+    # already states what the numbers represent) takes priority over the
+    # generic bare-list stem -- this formatter previously always built its
+    # own text regardless of context, so "context": "word_problem" never
+    # actually changed anything rendered (blind review: variant_
+    # comprehensiveness FAIL/CONCERN, "identical bare stem" across every
+    # order_set sample).
+    if isinstance(ctx.values, dict) and ctx.values.get("question"):
+        question_text = ctx.values["question"]
+    else:
+        direction_word = "smallest to largest" if direction == "ascending" else "largest to smallest"
+        question_text = f"Arrange these numbers from {direction_word}: {', '.join(str(x) for x in items)}"
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_ordering",

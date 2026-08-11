@@ -16,27 +16,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Estimate the product: 12 × 11",
-      "correct_answer": 100,
+      "question_text": "Estimate the product: 120 \u00d7 14",
+      "correct_answer": 1200,
       "options": [
         {
           "key": "A",
-          "value": 20,
+          "value": 130,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 90,
+          "value": 1190,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 100,
+          "value": 1200,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 0,
+          "value": 110,
           "is_correct": false
         }
       ]
@@ -44,27 +44,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Estimate the product: 12 × 23",
-      "correct_answer": 200,
+      "question_text": "Estimate the product: 10 \u00d7 32",
+      "correct_answer": 300,
       "options": [
         {
           "key": "A",
-          "value": 200,
+          "value": 300,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 180,
+          "value": 270,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 199,
+          "value": 299,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 30,
+          "value": 40,
           "is_correct": false
         }
       ]
@@ -72,31 +72,31 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "Estimate: 32 × 10 ≈ ___",
-      "correct_answer": 300,
+      "question_text": "Estimate: 20 \u00d7 14 \u2248 ___",
+      "correct_answer": 200,
       "options": [
         {
           "key": "A",
-          "value": 20,
-          "text": "20",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 40,
-          "text": "40",
+          "value": 30,
+          "text": "30",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 290,
-          "text": "290",
+          "value": 190,
+          "text": "190",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 300,
-          "text": "300",
+          "value": 200,
+          "text": "200",
           "is_correct": true
         }
       ]
@@ -104,27 +104,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Estimate the product: 10 × 24",
-      "correct_answer": 200,
+      "question_text": "Estimate the product: 32 \u00d7 15",
+      "correct_answer": 600,
       "options": [
         {
           "key": "A",
-          "value": 199,
+          "value": 580,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 30,
+          "value": 50,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 200,
+          "value": 600,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 180,
+          "value": 10,
           "is_correct": false
         }
       ]
@@ -132,27 +132,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Estimate the product: 13 × 10",
-      "correct_answer": 100,
+      "question_text": "Estimate the product: 11 \u00d7 45",
+      "correct_answer": 500,
       "options": [
         {
           "key": "A",
-          "value": 90,
+          "value": 499,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 100,
+          "value": 500,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 0,
+          "value": 450,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 20,
+          "value": 60,
           "is_correct": false
         }
       ]
@@ -160,23 +160,23 @@
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "23 × 12 ≈ 10. True or False?",
+      "question_text": "19 \u00d7 30 \u2248 570. True or False?",
       "correct_answer": false
     },
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace says: 13 × 19 ≈ 180. Is Grace correct?",
+      "question_text": "Grace says: 150 \u00d7 13 \u2248 140. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
-        "correct_value": 200
+        "correct_value": 1500
       }
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "For node mat_g3_na_q3_3 (Grade 3 Quarter 3 curriculum), the sampled problems directly fulfill the MATATAG competency 'Estimate the product of 2- to 3-digit numbers by 1- to 2-digit numbers by estimating the factors using multiples of 10.'. Across seeds 42, 43, 44, 45, 46, 50, 55, the rendered questions (such as 'Estimate the product: 12 × 11') require students to demonstrate the target concept."
+      "rationale": "For node mat_g3_na_q3_3 (Grade 3 Quarter 3 curriculum), the sampled problems directly fulfill the MATATAG competency 'Estimate the product of 2- to 3-digit numbers by 1- to 2-digit numbers by estimating the factors using multiples of 10.'. Across seeds 42, 43, 44, 45, 46, 50, 55, the rendered questions (such as 'Estimate the product: 12 \u00d7 11') require students to demonstrate the target concept."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
@@ -184,7 +184,7 @@
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g3_na_q3_3 fit Grade 3 Quarter 3 cognitive limits. Stems like 'Estimate the product: 12 × 11' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
+      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g3_na_q3_3 fit Grade 3 Quarter 3 cognitive limits. Stems like 'Estimate the product: 12 \u00d7 11' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",

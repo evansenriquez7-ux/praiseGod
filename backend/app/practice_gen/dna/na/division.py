@@ -79,6 +79,10 @@ _DIFFICULTY_AXES: Dict[str, Any] = {    "number_difficulty": "continuous",
 _TABLE_SETS: Dict[str, List[int]] = {
     "2_3_4_5_10": [2, 3, 4, 5, 10],
     "6_7_8_9":    [6, 7, 8, 9],
+    # "...by A 1-DIGIT number..." (mat_g3_na_q4_5): the bare default
+    # [2,3,4,5,10] includes 10, a 2-digit divisor, directly outside this
+    # competency's own stated scope.
+    "one_digit_2_9": [2, 3, 4, 5, 6, 7, 8, 9],
 }
 
 
@@ -163,9 +167,24 @@ def generate_params(
     rem_level    = extract_discrete_level(profile, "remainder", ["none", "with_remainder"], "none")
     table_level  = extract_discrete_level(profile, "table", ["2_3_4_5_10", "6_7_8_9"], "2_3_4_5_10")
     structure    = extract_discrete_level(profile, "structure", ["result_unknown", "divisor_unknown"], "result_unknown")
+    if structure == "divisor_or_dividend_unknown":
+        # "Find the missing number in a ... sentence" (mat_g3_na_q4_2/
+        # mat_g2_na_q3_7): the missing number can be in ANY position --
+        # divisor_unknown alone never produces a missing-DIVIDEND item
+        # (e.g. "__ ÷ 8 = 9"), which this DNA has no structure value for
+        # at all (blind review: "no sample shows the 'dividend-missing'
+        # blank position"). Alternate between the two.
+        structure = rng.choice(["divisor_unknown", "dividend_unknown"])
     context      = extract_discrete_level(profile, "context", ["pure", "word_problem"], "pure")
     num_diff_scalar = extract_continuous_scalar(profile, "number_difficulty", extract_continuous_scalar(profile, "difficulty_scalar", 0.5))
     task_type    = profile.get("task_type")
+    if task_type == "repeated_subtraction_or_default":
+        # registry.py sentinel for mat_g2_na_q3_5's "...equal sharing or
+        # formation of equal groups of objects, and repeated subtraction"
+        # -- repeated subtraction is one of three named models, not the
+        # only one, so mix it with the DNA's normal rendering rather than
+        # replacing it outright.
+        task_type = rng.choice(["repeated_subtraction", None, None])
 
     if task_type == "estimate":
         # "Estimate the quotient of 2- to 3-digit numbers divided by 1- to
@@ -230,18 +249,121 @@ def generate_params(
 
         round_to = 10 if real_a < 100 else 100
         rounded_a = max(round_to, _round_half_up(real_a, round_to))
+        # Leaving a 2-digit divisor completely unrounded while the dividend
+        # rounds to the nearest 10/100 can swing the quotient far from the
+        # true value -- e.g. real 150÷16=9.375 rounded only the dividend to
+        # 200, then floor-divided by the untouched 16 to give "≈12", a 28%
+        # error from a technique meant to produce a plausible ballpark
+        # (blind review of mat_g3_na_q4_4: "no standard tens/hundreds
+        # rounding path reaches 12"). Real "compatible numbers" estimation
+        # rounds BOTH operands -- rounding a 2-digit divisor to the nearest
+        # 10 too (a 1-digit divisor is already as simple as it gets, so
+        # left alone) keeps the estimate proportionally honest: the same
+        # example now rounds to 200÷20=10, much closer to 9.375.
+        rounded_b = _round_half_up(real_b, 10) if real_b >= 10 else real_b
+        rounded_b = max(10, rounded_b) if real_b >= 10 else rounded_b
+
+        # An "estimate" is the served value itself, not a quotient+
+        # remainder pair -- flooring rounded_a/rounded_b (a // b) silently
+        # discards however close the true rounded ratio sits to the NEXT
+        # whole number, which can be the majority of it (blind review of
+        # mat_g3_na_q4_4 seed 601: rounds to 300÷80=3.75, floor-served as
+        # "3" even though 3.75 is closer to 4 -- a worse estimate than the
+        # rounding step that produced it). Round the quotient itself
+        # half-up instead, matching this DNA's own _round_half_up
+        # convention rather than Python's implicit floor division.
+        est_q, est_r = divmod(rounded_a, rounded_b)
+        if est_r * 2 >= rounded_b:
+            est_q += 1
 
         return {
             "a": rounded_a,
-            "b": real_b,
-            "result": rounded_a // real_b,
-            "remainder": rounded_a % real_b,
+            "b": rounded_b,
+            "result": est_q,
+            "remainder": rounded_a % rounded_b,
             "real_a": real_a,
             "real_b": real_b,
             "task_type": "estimate",
             "blank_target": "result",
             "context": "pure",
             "structure": "result_unknown",
+        }
+
+    if task_type == "even_odd":
+        # "Distinguish even and odd numbers using division by 2"
+        # (mat_g2_na_q3_8) is a classification skill, not a quotient-finding
+        # one -- nothing in this DNA produced it before (blind review: 0 of
+        # 19 samples ever classified a number as even/odd; content was
+        # generic ÷2/÷3/÷10 facts and unrelated whole-number comparisons
+        # from a co-mapped comparing_ordering DNA).
+        n_max = max(20, q_max * bounds["b"][1])
+        n = rng.randint(1, n_max)
+        is_even = (n % 2 == 0)
+        label = "even" if is_even else "odd"
+        other = "odd" if is_even else "even"
+        return {
+            # Deliberately NOT "a"/"b"/"result" -- those are the exact
+            # variable names step (h) of generate_context's shared
+            # error-pattern distractor computation evals this DNA's
+            # formulas against ("a - b", "a // b", "a % b + b", "a * b").
+            # A first attempt using "a"/"b" here let those numeric
+            # formulas evaluate successfully and get appended to
+            # ctx.distractors alongside "odd"/"even", so true_false could
+            # render a fill_value like "80" instead of the category label
+            # ("82 is an 80 number"). "dividend" isn't a formula variable
+            # name, so _eval_error_formula raises (safely caught) instead.
+            "dividend": n, "divisor": 2,
+            "task_type": "even_odd",
+            "blank_target": "answer",
+            "context": "pure",
+            "answer": label,
+            "distractors": [other],
+            "question": f"Divide {n} by 2. Is {n} an even or an odd number?",
+        }
+
+    if table_level == "one_digit_mixed_or_power_of_ten":
+        # "2- to 3-digit numbers by 1-digit number WITHOUT remainder,
+        # 2-digit numbers by 1-digit number WITH remainder, and 2- to
+        # 4-digit numbers by 10, 100, and 1000" (mat_g3_na_q4_3): three
+        # genuinely different (dividend, divisor, remainder) shapes under
+        # one competency, none of which the DNA's single table_level/
+        # rem_level pair can express together. Built directly as one
+        # combined candidate pool (rather than routed through the shared
+        # rem_level-filtered loop below, which can only ever apply ONE
+        # remainder policy to ONE divisor pool at a time) so a single
+        # difficulty-scalar window sees all three shapes at once.
+        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
+        candidate_pairs = []
+        for b in range(2, 10):
+            for q in range(2, 100):
+                a = b * q
+                if 10 <= a <= 999:
+                    candidate_pairs.append((a, b))
+        for b in range(2, 10):
+            for q in range(1, 20):
+                for r in range(1, b):
+                    a = b * q + r
+                    if 10 <= a <= 99:
+                        candidate_pairs.append((a, b))
+        for b in (10, 100, 1000):
+            for q in range(1, 999):
+                a = b * q
+                if 10 <= a <= 9999:
+                    candidate_pairs.append((a, b))
+        a, b = generate_pair_by_window(candidate_pairs, num_diff_scalar, d=5, rng=rng)
+        blank_target = {
+            "result_unknown":   "result",
+            "divisor_unknown":  "b",
+            "dividend_unknown": "a",
+        }.get(structure, "result")
+        return {
+            "a":           a,
+            "b":           b,
+            "result":      a // b,
+            "remainder":   a % b,
+            "blank_target": blank_target,
+            "context":     context,
+            "structure":   structure,
         }
 
     allowed_divisors = _table_for_level(table_level, grade)
@@ -282,6 +404,36 @@ def generate_params(
         "context":     context,
         "structure":   structure,
     }
+
+    if task_type == "repeated_subtraction" and structure == "result_unknown" and a % b == 0:
+        # "...modelling division as equal sharing or formation of equal
+        # groups of objects, AND REPEATED SUBTRACTION" (mat_g2_na_q3_5):
+        # one of three explicitly named models, but nothing in this DNA
+        # ever produced it -- every sample rendered a bare "a / b" fact,
+        # an array, or a sharing word problem (blind review: "repeated
+        # subtraction... is modeled in zero of 18 samples"). Only applies
+        # when the pair divides evenly (a % b == 0): repeated subtraction
+        # as taught at this grade counts subtractions down to exactly 0,
+        # not to a leftover remainder.
+        result_dict["question"] = (
+            f"Start with {a}. How many times can you subtract {b} in a "
+            f"row before reaching 0?"
+        )
+        # Must be present for the formatters' own task_type checks (fmt_
+        # true_false.py etc.) to detect this case at all -- it was
+        # previously omitted here (unlike the even_odd/estimate/
+        # zero_identity early-return branches above, which always include
+        # it in their own dicts), so those checks silently never matched
+        # even though "question" itself was set correctly. This also
+        # naturally routes rendering through true_false only, mirroring
+        # even_odd's identical, deliberate mcq/cloze exclusion (see
+        # compatibility.py's FORMATTER_VARIANT_SUPPORT["division"] comment):
+        # mcq/cloze/error_detect/array_grid are all scoped to task_type=
+        # ["find_quotient"], so a present-but-mismatching "repeated_
+        # subtraction" value correctly excludes them instead of exposing
+        # this new task_type to validate_matrix's exhaustive per-node
+        # sweep the way adding it to their allow-lists would.
+        result_dict["task_type"] = "repeated_subtraction"
 
     return result_dict
 

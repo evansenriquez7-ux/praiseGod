@@ -76,6 +76,52 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "directions": "one_direction",
         "grade_min": 1,
     },
+    # Every rotation item above starts from the same initial facing (UP) --
+    # the competency itself says "given an initial facing direction",
+    # implying the START should vary, not just the turn direction (blind
+    # review of mat_g1_mg_q4_0: "the starting direction is always UP...
+    # only the turn direction ever changes"). Same turn types, different
+    # starting facings.
+    {
+        "question": "An arrow faces DOWN. It does a quarter turn clockwise. Which direction does it face now?",
+        "answer": "left",
+        "distractors": ["right", "up", "down"],
+        "concept": "rotation",
+        "directions": "one_direction",
+        "grade_min": 1,
+    },
+    {
+        "question": "An arrow faces LEFT. It does a quarter turn clockwise. Which direction does it face now?",
+        "answer": "up",
+        "distractors": ["down", "right", "left"],
+        "concept": "rotation",
+        "directions": "one_direction",
+        "grade_min": 1,
+    },
+    {
+        "question": "An arrow faces RIGHT. It does a quarter turn counter-clockwise. Which direction does it face now?",
+        "answer": "up",
+        "distractors": ["down", "left", "right"],
+        "concept": "rotation",
+        "directions": "one_direction",
+        "grade_min": 1,
+    },
+    {
+        "question": "An arrow faces LEFT. It does a half turn. Which direction does it face now?",
+        "answer": "right",
+        "distractors": ["left", "up", "down"],
+        "concept": "rotation",
+        "directions": "one_direction",
+        "grade_min": 1,
+    },
+    {
+        "question": "An arrow faces RIGHT. It does a half turn. Which direction does it face now?",
+        "answer": "left",
+        "distractors": ["right", "up", "down"],
+        "concept": "rotation",
+        "directions": "one_direction",
+        "grade_min": 1,
+    },
     # ── slide / translation ────────────────────────────────────────────────────
     {
         "question": "A shape moves 3 spaces to the right without turning or flipping. What is this called?",
@@ -101,6 +147,33 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "question": "A triangle slides 4 spaces down. Which direction did it move?",
         "answer": "downward",
         "distractors": ["upward", "to the right", "to the left"],
+        "concept": "slide_translation",
+        "directions": "one_direction",
+        "grade_min": 2,
+    },
+    {
+        # "one-direction multi-step slide" (mat_g2_mg_q1_2) had no item at
+        # all: every "one_direction" entry above is a single stage, and the
+        # only multi-stage entries are "two_directions" (different
+        # directions, gated to G3), so a node bound to
+        # directions="one_direction" could never surface the "multi-step"
+        # half of its own competency (blind review: comprehensive_coverage
+        # FAIL, "no sample chains two or more slide steps together").
+        "question": "A shape slides 2 spaces right, then slides 3 more spaces right. How far did it move in all?",
+        "answer": "5 spaces to the right",
+        "distractors": ["2 spaces to the right", "3 spaces to the right", "6 spaces to the right"],
+        "concept": "slide_translation",
+        "directions": "one_direction",
+        "grade_min": 2,
+    },
+    {
+        "question": "A shape slides 4 spaces down, then slides 1 more space down. Is this still a one-direction slide?",
+        "answer": "Yes, both steps moved the same direction.",
+        "distractors": [
+            "No, two steps means two directions.",
+            "No, this is a turn (rotation).",
+            "No, this is a flip (reflection).",
+        ],
         "concept": "slide_translation",
         "directions": "one_direction",
         "grade_min": 2,

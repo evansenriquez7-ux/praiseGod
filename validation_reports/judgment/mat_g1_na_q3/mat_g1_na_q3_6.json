@@ -17,27 +17,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is the next number in the pattern: 1, 10, 1, 10, 1, 10?",
-      "correct_answer": 1,
+      "question_text": "What is the next term in the pattern: e, d, e, d, e, d?",
+      "correct_answer": "e",
       "options": [
         {
           "key": "A",
-          "value": 2,
+          "value": "f",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
+          "value": "b",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 1,
+          "value": "e",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 0,
+          "value": "c",
           "is_correct": false
         }
       ]
@@ -45,27 +45,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is the next number in the pattern: 2, 10, 2, 10, 2, 10?",
-      "correct_answer": 2,
+      "question_text": "What is the next term in the pattern: p, c, p, c, p, c?",
+      "correct_answer": "p",
       "options": [
         {
           "key": "A",
-          "value": 2,
+          "value": "p",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 1,
+          "value": "h",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 4,
+          "value": "b",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 3,
+          "value": "j",
           "is_correct": false
         }
       ]
@@ -73,7 +73,7 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What is the next number in the pattern: 10, 13, 10, 13, 10, 13?",
+      "question_text": "What is the next number in the pattern: 10, 1, 10, 1, 10, 1?",
       "correct_answer": 10,
       "options": [
         {
@@ -101,7 +101,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What is the next number in the pattern: 2, 6, 2, 6, 2, 6?",
+      "question_text": "What is the next number in the pattern: 2, 1, 2, 1, 2, 1?",
       "correct_answer": 2,
       "options": [
         {
@@ -129,50 +129,22 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is the next number in the pattern: 2, 1, 2, 1, 2, 1?",
-      "correct_answer": 2,
+      "question_text": "What is the next number in the pattern: 10, 4, 10, 4, 10, 4?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "What is the missing piece (position 6) in the pattern?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 1,
+          "value": 9,
           "is_correct": false
         },
         {
@@ -183,19 +155,69 @@
       ]
     },
     {
+      "seed": 50,
+      "formatter": "cloze",
+      "question_text": "What is the next number in the pattern: 2, 10, 2, 10, 2, 10?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
+        }
+      ]
+    },
+    {
       "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Fill in the chart with the correct counts.",
-      "correct_answer": [
-        1,
-        2,
-        3
+      "formatter": "read_mcq",
+      "question_text": "What is the missing piece (position 6) in the pattern?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 72,
       "formatter": "cloze",
-      "question_text": "What is the next number in the pattern: 10, 3, 10, 3, 10, 3?",
+      "question_text": "What is the next number in the pattern: 10, 1, 10, 1, 10, 1?",
       "correct_answer": 10,
       "options": [
         {
@@ -228,11 +250,11 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "For node mat_g1_na_q3_6 (Grade 1 Quarter 3 curriculum), the sampled problems directly fulfill the MATATAG competency 'Determine the next term/s in a repeating pattern (patterns could use rhythmic properties, visual elements in the arts, …) (e.g., numbers: 2, 4, 2, 4__, __; letters: a, b, c, a, b, c, a, __, __).'. Across seeds 42, 43, 44, 45, 46, 50, 55, 72, the rendered questions (such as 'What is the next number in the pattern: 1, 10, 1, 10, 1, 10?') require students to demonstrate the target concept."
+      "rationale": "For node mat_g1_na_q3_6 (Grade 1 Quarter 3 curriculum), the sampled problems directly fulfill the MATATAG competency 'Determine the next term/s in a repeating pattern (patterns could use rhythmic properties, visual elements in the arts, \u2026) (e.g., numbers: 2, 4, 2, 4__, __; letters: a, b, c, a, b, c, a, __, __).'. Across seeds 42, 43, 44, 45, 46, 50, 55, 72, the rendered questions (such as 'What is the next number in the pattern: 1, 10, 1, 10, 1, 10?') require students to demonstrate the target concept."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Comprehensive coverage for node mat_g1_na_q3_6 is verified across seeds 42, 43, 44, 45, 46, 50, 55, 72 using formatters (cloze, mcq, read_mcq, set_fill_in_blank). The generated problem variations cover essential sub-cases without omitting key curriculum requirements named in 'Determine the next term/s in a repeating pattern (patterns could use rhythmic properties, visual elements in the arts, …) (e.g., numbers: 2, 4, 2, 4__, __; letters: a, b, c, a, b, c, a, __, __).'."
+      "rationale": "Comprehensive coverage for node mat_g1_na_q3_6 is verified across seeds 42, 43, 44, 45, 46, 50, 55, 72 using formatters (cloze, mcq, read_mcq, set_fill_in_blank). The generated problem variations cover essential sub-cases without omitting key curriculum requirements named in 'Determine the next term/s in a repeating pattern (patterns could use rhythmic properties, visual elements in the arts, \u2026) (e.g., numbers: 2, 4, 2, 4__, __; letters: a, b, c, a, b, c, a, __, __).'."
     },
     "cognitive_capacity": {
       "verdict": "PASS",

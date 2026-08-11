@@ -109,8 +109,38 @@ def generate_params(
         "nearest_hundred":  100,
         "nearest_thousand": 1000,
     }
-    precision_label = profile.get("precision", "nearest_ten")
+    if "precision" in profile:
+        precision_label = profile.get("precision", "nearest_ten")
+    else:
+        # Unbound always defaulted to "nearest_ten", so "Round numbers to
+        # the nearest ten, hundred, or thousand" (mat_g3_na_q1_4) never
+        # once rounded to a hundred or thousand across any seed (blind
+        # review: comprehensive_coverage FAIL). Vary across whichever
+        # precisions are actually meaningful at this seed's max_val --
+        # rounding a 234 to the nearest 1000 is a degenerate "always 0"
+        # example, so only offer a precision once max_val can produce a
+        # genuine multi-digit rounding example at that scale.
+        feasible = ["nearest_ten"]
+        if max_val >= 100:
+            feasible.append("nearest_hundred")
+        if max_val >= 1000:
+            feasible.append("nearest_thousand")
+        precision_label = rng.choice(feasible)
     round_to = precision_map.get(precision_label, 10)
+
+    # A precision explicitly requested (e.g. by the judgment-packet builder's
+    # variant-coverage stratification, which pins discrete values directly
+    # regardless of the difficulty-scalar-derived min/max) can outrun the
+    # magnitude window: min_val/max_val default to whatever the *scalar*
+    # mapped, which for an ordinary difficulty setting stays in the tens-to-
+    # hundreds range even when precision="nearest_thousand" was requested,
+    # producing e.g. "Round 75 to the nearest 1000" = 0 -- mathematically
+    # valid but pedagogically degenerate (any number under round_to/2 rounds
+    # to 0 regardless of its actual value, so it never exercises genuine
+    # place-value comparison). Raise the floor so the number is at least in
+    # the ballpark the requested precision is meant to discriminate within.
+    if min_val < round_to // 2:
+        min_val = round_to // 2
 
     # A rounding task needs a range wide enough to contain a number that is not
     # already a multiple of the precision. At the bottom of the difficulty window

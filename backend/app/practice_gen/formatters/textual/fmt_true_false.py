@@ -76,6 +76,28 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 real_a = values.get("real_a", a)
                 real_b = values.get("real_b", b)
                 statement = f"{real_a} + {real_b} ≈ {fill_value}"
+            elif values.get("task_type") == "expanded_form" and "a_tens" in values:
+                # Bare "{a} + {b} = {fill_value}" drops the tens-and-ones
+                # decomposition this task_type exists to demonstrate --
+                # FORMATTER_VARIANT_SUPPORT allows expanded_form on
+                # true_false (it has a real blank_target="result", unlike
+                # commutative/associative's yes/no claim), but this branch
+                # never carried the decomposition prefix values["question"]
+                # states, so the competency's actual named procedure (tens-
+                # and-ones addition) never appeared even when the formatter
+                # rendered successfully (found rendering mat_g1_na_q2_4/
+                # mat_g2_na_q1_8 after binding task_type to expanded_form).
+                from backend.app.practice_gen.dna.na.addition import decompose_to_places
+                statement = (
+                    f"{decompose_to_places(a)} {decompose_to_places(b)} "
+                    f"Add the place values, then find the total: {a} + {b} = {fill_value}"
+                )
+            elif values.get("task_type") == "counting_up" and blank_target == "result":
+                # Same root cause as expanded_form above -- "{a} + {b} =
+                # {fill_value}" drops the "start at / count up" narration
+                # values["question"] states, losing the counting-up framing
+                # this task_type exists to demonstrate.
+                statement = f"Start at {a}. Count up {b} more. You land on {fill_value}"
             elif blank_target == "result":
                 statement = f"{a} + {b} = {fill_value}"
             elif blank_target == "b":
@@ -94,6 +116,14 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 real_a = values.get("real_a", a)
                 real_b = values.get("real_b", b)
                 statement = f"{real_a} − {real_b} ≈ {fill_value}"
+            elif values.get("task_type") == "expanded_form" and "a_tens" in values:
+                # Same root cause as addition's identical fix (see that
+                # branch's comment).
+                from backend.app.practice_gen.dna.na.addition import decompose_to_places
+                statement = (
+                    f"{decompose_to_places(a)} {decompose_to_places(b)} "
+                    f"Subtract the place values, then find what's left: {a} − {b} = {fill_value}"
+                )
             elif blank_target == "result":
                 statement = f"{a} − {b} = {fill_value}"
             elif blank_target == "b":
@@ -120,10 +150,44 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 real_a = values.get("real_a", dividend)
                 real_b = values.get("real_b", divisor)
                 statement = f"{real_a} ÷ {real_b} ≈ {fill_value}"
+            elif values.get("task_type") == "even_odd":
+                # fill_value is "even"/"odd" (a category, not a quotient) --
+                # "an" is grammatically correct for both ("an even number",
+                # "an odd number"), so no a/an branching is needed. "comes
+                # out exactly" avoids the word "remainder", which this
+                # node's own NOT_YET_KNOWN vocabulary list forbids at this
+                # grade/quarter (caught by §1D vocabulary_gating).
+                statement = f"{dividend} ÷ 2 {'comes out exactly' if fill_value == 'even' else 'does not come out exactly'}, so {dividend} is an {fill_value} number"
+            elif values.get("task_type") == "repeated_subtraction":
+                # Same root cause as even_odd above: "{dividend} ÷
+                # {divisor} = {fill_value}" reads identically whether this
+                # came from a repeated-subtraction narration or a plain
+                # fact, silently discarding the "start with N, subtract M
+                # repeatedly" framing (blind review of mat_g2_na_q3_5:
+                # "repeated subtraction... is modeled in zero of 18
+                # samples"). Built as its own claim (not values["question"]
+                # reworded, which is phrased as a question and reads
+                # awkwardly forced into a statement) using the same a/b
+                # this task_type's own generate_params computed.
+                statement = (
+                    f"Starting from {dividend} and subtracting {divisor} "
+                    f"repeatedly, you subtract {fill_value} times before "
+                    f"reaching 0."
+                )
             elif blank_target in ("result", "quotient"):
                 statement = f"{dividend} ÷ {divisor} = {fill_value}"
             else:
-                statement = f"{fill_value} ÷ {divisor} = {quotient}"
+                # blank_target == "b" (divisor_unknown, e.g. "Find the
+                # missing number... 54 ÷ ___ = 6"): fill_value is the
+                # candidate DIVISOR being tested, not the dividend. The
+                # previous version substituted it into the dividend slot
+                # while still printing the real divisor and quotient
+                # unchanged, so a wrong-divisor trap collapsed to a
+                # self-consistent-looking but nonsensical statement (e.g.
+                # divisor=9, quotient=9, fill_value=9 all coincidentally
+                # equal -> "9 ÷ 9 = 9" keyed True; blind review of
+                # mat_g3_na_q4_2 seed 501, actual 9÷9=1).
+                statement = f"{dividend} ÷ {fill_value} = {quotient}"
         elif concept == "number_reading":
             number = values.get("number")
             task_type = values.get("task_type", "numeral_to_word")
@@ -141,7 +205,18 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             if task_type == "find_between":
                 statement = f"The number {fill_value} is between {a} and {b}"
             else:
-                statement = f"{a} {fill_value} {b}"
+                # compare_two's own distractor set includes "cannot be
+                # determined" -- a legitimate MCQ trap option, but not a
+                # symbol that can grammatically fill "{a} ___ {b}"; picked
+                # here it renders "20 cannot be determined 13" (blind
+                # review of mat_g1_na_q1_3 and others). Restrict this
+                # template's fill slot to an actual comparison symbol.
+                sign_fill = fill_value
+                if sign_fill not in (">", "<", "="):
+                    correct_sign = ctx.correct_answer if ctx.correct_answer in (">", "<", "=") else None
+                    wrong_signs = [s for s in (">", "<", "=") if s != correct_sign]
+                    sign_fill = rng.choice(wrong_signs) if wrong_signs else "="
+                statement = f"{a} {sign_fill} {b}"
         elif concept == "place_value" and values.get("task_type") == "identify_value":
             # Only "identify_value" has a statement worth specializing: the DNA's
             # blank_target is always value_at_position (see place_value.py), so
@@ -169,7 +244,12 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
         competency_text=ctx.competency_text,
         grade=ctx.grade,
         seed=ctx.seed,
-        question_text=f"{statement}. True or False?",
+        # The word_problem/context fallback branches above already end
+        # `statement` in its own period ("...The answer is 700."), so
+        # unconditionally appending ". True or False?" produced a doubled
+        # period ("...700.. True or False?") -- strip any trailing
+        # punctuation `statement` already supplied before adding ours.
+        question_text=f"{statement.rstrip('.')}. True or False?",
         correct_answer=is_true,
         distractors=ctx.distractors,
         hints=ctx.hints,

@@ -69,8 +69,17 @@ from typing import Dict, List, Optional, Any
 
 FORMATTER_NUMERIC_LIMITS: Dict[str, Dict[str, Any]] = {
     "emoji_pictorial": {"max_val": 100},
-    "place_value_blocks_read": {"max_val": 9999},
-    "place_value_blocks_set": {"max_val": 9999},
+    # 10000, not 9999: "represent numbers up to 10 000" (mat_g3_na_q1_0)
+    # has a range ceiling of exactly 10000, and this limit is checked
+    # STATICALLY against the node's declared ceiling before any value is
+    # generated (orchestrator.py's formatter-availability pre-filter) --
+    # a 9999 cap excluded this formatter from the node entirely,
+    # regardless of what any specific seed would actually generate
+    # (confirmed live: "No compatible formatters available"). _decompose()
+    # handles exactly 10000 correctly (10 thousand-blocks, thousands=10)
+    # since it's plain divmod with no digit-count assumption baked in.
+    "place_value_blocks_read": {"max_val": 10000},
+    "place_value_blocks_set": {"max_val": 10000},
     "array_grid_read": {"max_val": 400},
     "array_grid_set": {"max_val": 400},
     "ten_frame": {"max_val": 100},
@@ -219,7 +228,17 @@ COMPATIBILITY: Dict[str, List[str]] = {
     "counting": [
         "mcq",
         "cloze",
-        "ordering",           # Ordering makes sense for counting sequences
+        # "ordering" removed (2026-08-06, Ground Rule 5): a counting
+        # sequence (skip-counting, "what comes next") is already in a
+        # fixed, meaningful order -- fmt_ordering.py shuffles it and asks
+        # the student to re-sort it, which is comparing_ordering's skill
+        # (rank an unordered set), not counting's own ("continue this
+        # sequence" / "count up or down from a given number"). Also
+        # exposed a genuine wrong-answer-key bug: counting's own
+        # "direction":"forward"/"backward" vocabulary collided with
+        # fmt_ordering.py's "ascending"/"descending" check, producing
+        # mismatched text/answer pairs (blind review of mat_g1_na_q1_0
+        # seed 72: asked "largest to smallest", keyed ascending).
         "number_line_read",
         "emoji_pictorial",
     ],
@@ -230,6 +249,8 @@ COMPATIBILITY: Dict[str, List[str]] = {
         "true_false",
         "number_line_read",
         "number_line_set",
+        "place_value_blocks_read",
+        "place_value_blocks_set",
     ],
 
     "ordinal_numbers": [
@@ -264,7 +285,9 @@ COMPATIBILITY: Dict[str, List[str]] = {
         "mcq",
         "cloze",
         "pattern_sequence",
-        "fill_in_table",
+        # "fill_in_table" removed -- see patterns.py DNA definition's
+        # identical comment (categorical count-table formatter, no
+        # relation to patterns.py's actual sequence/rule data).
     ],
 
     "fractions": [
@@ -272,6 +295,10 @@ COMPATIBILITY: Dict[str, List[str]] = {
         "cloze",
         "fraction_model_read",
         "fraction_shade",
+        # "ordering" deliberately excluded -- see fractions.py DNA
+        # definition's identical comment and registry.py's "order"
+        # binding comment (§1C's exhaustive sweep defeats any attempt to
+        # scope it to only the nodes where it's mathematically safe).
     ],
 
     "money_peso": [
@@ -314,6 +341,14 @@ COMPATIBILITY: Dict[str, List[str]] = {
     "time_reading": [
         "clock_read",
         "clock_set",
+        # mcq/cloze added for the new elapsed_time task_type (mat_g2_mg_
+        # q4_2): elapsed-time problems are inherently textual word
+        # problems (a start/end time and a duration), not a single-clock
+        # visual read/set -- scoped to task_type=="elapsed_time" only via
+        # FORMATTER_VARIANT_SUPPORT below, so the default clock-reading
+        # path (task_type=="clock_reading") never picks them.
+        "mcq",
+        "cloze",
     ],
 
     "calendar": [
@@ -440,6 +475,10 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         "structure": ["result_unknown"],
         "spine": ["putting_together", "counting_up"],
         "strategy": ["standard", "expanded_form"],
+        "task_type": [
+            "zero_identity", "commutative", "associative",
+            "expanded_form", "counting_up",
+        ],
     },
 
     "subtraction": {
@@ -453,6 +492,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         "structure": ["result_unknown"],
         "number_type": ["single_digit", "multi_digit"],
         "context": ["pure", "word_problem"],
+        "task_type": ["zero_identity", "commutative", "associative", "distributive"],
     },
 
     "division": {
@@ -460,6 +500,26 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         "table": ["2", "3", "4", "5", "10"],
         "structure": ["result_unknown"],
         "context": ["pure", "word_problem"],
+        # Neither "estimate" nor "even_odd" is listed here, deliberately --
+        # both work via the registry-scope exemption instead (like
+        # multiplication's "estimate", also absent from its own
+        # VARIANTS_BY_DNA task_type list), because each is bound directly by
+        # registry.py's text match for the one node whose competency names
+        # it. get_supported_variants has no per-node scoping: it's computed
+        # once per (dna, formatter) pair from this table alone, so declaring
+        # either value here made validate_matrix's §1C exhaustive sweep test
+        # it against *every* division-mapped node's own vocabulary/formatter
+        # set, not just its one intended node -- caught twice: "estimate"'s
+        # "quotient" wording isn't introduced vocabulary at G2Q3
+        # (mat_g2_na_q3_4), and "even_odd"'s "even"/"odd" wording isn't
+        # introduced vocabulary at other G2Q3 division nodes either, plus
+        # its categorical (non-numeric) answer crashes mcq/cloze/
+        # error_detect's numeric-only distractor padding regardless of
+        # vocabulary. Leaving task_type undeclared here sidesteps the
+        # exhaustive sweep for both; real generation still resolves them
+        # correctly because the registry binds task_type directly and the
+        # DNA branch reads it from the profile regardless of any
+        # VARIANTS_BY_DNA declaration.
     },
 
     "counting": {
@@ -490,6 +550,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         "proximity": ["close_together", "far_apart"],
         "task_type": ["compare_pair", "order_sequence"],
         "context": ["pure", "word_problem"],
+        "direction": ["ascending", "descending"],
     },
 
     "missing_number": {
@@ -505,9 +566,22 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "patterns": {
-        "ask_type": ["next", "missing"],
-        "pattern_type": ["repeating", "growing"],
-        "element_type": ["numbers", "shapes", "number_words"],
+        # Every patterns-mapped node binds its own explicit pattern_type
+        # AND ask_type in registry.py (verified: all 6 nodes have both),
+        # so declaring either here serves no real exhaustive-coverage
+        # purpose -- it only lets validate_matrix's §1C sweep and
+        # judgment_packets.py's variant-coverage stratification request
+        # ask_type="next"/"missing" against a node whose own competency is
+        # scoped to "explain"/state_rule instead (mat_g3_na_q3_6: "Explain
+        # how to generate..."), producing a genuinely different skill's
+        # content under this node (blind review: seed 50's "What is the
+        # missing term..." tests sibling node mat_g3_na_q3_5's own named
+        # skill, not this one's). Real generation still resolves correctly
+        # because the registry binds both directly and the DNA reads them
+        # from the profile regardless of any VARIANTS_BY_DNA declaration
+        # (same registry-scope-exemption pattern as division's "estimate"/
+        # "even_odd"). "element_type" is additionally dead: patterns.py's
+        # generate_params never reads it at all.
     },
 
     "fractions": {
@@ -549,7 +623,10 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
 
     "length_measurement": {
         "unit_type": ["cm", "m"],
-        "task_type": ["compare", "convert", "read_measurement", "choose_unit", "estimate"],
+        "task_type": [
+            "compare", "convert", "read_measurement", "choose_unit", "estimate",
+            "distance_between", "equal_length", "compare_distance",
+        ],
         "context": ["pure", "word_problem"],
     },
 
@@ -648,6 +725,34 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         "number_line_set": {"task_type": ["find_sum"], "context": ["pure"]},
         # number_bond supports all task_types
         "number_bond": {"context": ["pure"]},
+        # commutative/associative render a Yes/No claim ("Is a+b the same
+        # as b+a?"), not a numeric fact -- error_detect's "character says
+        # <value>, correct?" framing serves that claim's boolean answer as
+        # the string "True"/"False" rather than a Python bool, which
+        # defeats §1E's isinstance(bool) skip and false-positives as answer
+        # corruption against the raw arithmetic recomputation.
+        "error_detect": {
+            "task_type": ["zero_identity", "expanded_form", "counting_up"]
+        },
+        # true_false wraps a statement in its OWN "...True or False?"
+        # judgment -- commutative/associative's claim ("Is a+b the same as
+        # b+a?") is already that judgment, and its blank_target="answer"
+        # (no "result" key at all) fell through this formatter's
+        # blank_target=="a" default branch to render "{fill} + {b} =
+        # None" (blind review of mat_g1_na_q1_7 seed 613, same root cause
+        # as the fmt_mcq.py fix for this task_type).
+        "true_false": {
+            "task_type": ["zero_identity", "expanded_form", "counting_up"]
+        },
+        # cloze is a fill-in-the-blank formatter -- commutative/associative's
+        # yes/no claim has no blank to fill (blank_target="answer", no
+        # "result" key), so _build_equation_sentence's generic blank_target
+        # branches rendered "___ + {b} = None" (same root cause as the
+        # error_detect/true_false restrictions above, just never applied to
+        # cloze). Same allow-list.
+        "cloze": {
+            "task_type": ["zero_identity", "expanded_form", "counting_up"]
+        },
     },
 
     "subtraction": {
@@ -675,6 +780,21 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # array grid naturally shows product, not missing factor
         "array_grid_read": {"task_type": ["find_product"], "context": ["pure"]},
         "array_grid_set": {"task_type": ["find_product"], "context": ["pure"]},
+        # commutative/associative/distributive render a Yes/No claim, not a
+        # numeric fact -- same class of bug as addition.py's identical fix:
+        # error_detect's "character says <value>, correct?" framing and
+        # true_false's own "...True or False?" wrapper don't compose with an
+        # already-boolean claim (defeats §1E's isinstance(bool) skip, or
+        # double-wraps a judgment in another judgment).
+        # zero_identity is a plain a×b=result fact (like find_product), not a
+        # yes/no claim -- it belongs on this allow-list, not excluded with
+        # commutative/associative/distributive.
+        "error_detect": {"task_type": ["find_product", "estimate", "zero_identity"]},
+        "true_false": {"task_type": ["find_product", "estimate", "zero_identity"]},
+        # Same "fill-in-the-blank has no blank for a yes/no claim" defect as
+        # addition's identical cloze restriction above -- commutative/
+        # associative/distributive rendered "___ × {b} = None" on cloze.
+        "cloze": {"task_type": ["find_product", "estimate", "zero_identity"]},
     },
 
     "division": {
@@ -683,10 +803,47 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         "structure": ["result_unknown"],
         "array_grid_read": {"task_type": ["find_quotient"], "context": ["pure"]},
         "array_grid_set": {"task_type": ["find_quotient"], "context": ["pure"]},
+        # even_odd's answer is a categorical "even"/"odd" string with only
+        # one possible opposite value -- get_supported_variants has no
+        # per-node scoping (it's computed once per (dna, formatter) pair
+        # from VARIANTS_BY_DNA + this table alone), so declaring "even_odd"
+        # in VARIANTS_BY_DNA["division"]["task_type"] makes validate_matrix's
+        # §1C exhaustive sweep test it against every formatter for every
+        # division-mapped node, not just mat_g2_na_q3_8. mcq/cloze/
+        # error_detect all build a 4-option pool from ctx.distractors and
+        # pad missing slots via numeric offsets (isinstance(correct, (int,
+        # float))), which raises for a string correct answer with fewer
+        # than 3 distinct distractors (confirmed: "MCQ formatter could not
+        # generate enough distractors for string correct answer 'even'").
+        # true_false is the only formatter that fits a binary judgment
+        # without needing extra distractors, so it's the only one left
+        # unrestricted. NOTE: don't add "estimate" to this allow-list --
+        # it isn't declared in VARIANTS_BY_DNA (works via the registry-scope
+        # exemption instead, deliberately, see that comment), and adding it
+        # here would make it a discoverable VARIANTS_BY_DNA-equivalent value
+        # too, exhaustively testing division's "quotient"-worded estimate
+        # text against nodes whose vocabulary hasn't introduced that term
+        # (reproduced: mat_g2_na_q3_4 failing §1D on task_type='estimate'
+        # purely from being offered a task_type its own competency never
+        # requested).
+        "mcq": {"task_type": ["find_quotient"]},
+        "cloze": {"task_type": ["find_quotient"]},
+        "error_detect": {"task_type": ["find_quotient"]},
     },
 
     "missing_number": {
-        "balance_scale": {"context": ["pure"]},
+        # operation="equivalent" (mat_g1_na_q3_2: "Write an equivalent
+        # expression...") returns TWO equated expressions (a+b=c+d), a
+        # structure this visual formatter has no concept of at all --
+        # _build_balance_params only ever renders a single "a op b = ?"
+        # equation, _stem() never checks ctx.values["question"] (the
+        # equivalent branch's own narrative), and its op_char lookup has
+        # no "equivalent" entry so it silently defaults to "+" regardless
+        # of whether the underlying expression is add- or subtract-based
+        # (blind review: "19 + ? = 16" served answer 3, which is only
+        # correct for 19 - ? = 16, not addition -- a genuine math error
+        # in what the visual displayed vs. what it graded).
+        "balance_scale": {"context": ["pure"], "operation": ["addition", "subtraction", "multiplication", "division"]},
     },
 
     "counting": {
@@ -705,8 +862,20 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
 
     "comparing_ordering": {
         "proximity": ["close", "far"],
-        "sort_order": {"task_type": ["order_sequence"], "context": ["pure"]},
-        "ordering": {"task_type": ["order_sequence"], "context": ["pure"]},
+        # "context": ["pure"] used to be the only value here because
+        # comparing_ordering.py never generated word-problem framing for
+        # order_set at all -- context was effectively always "pure" in
+        # practice regardless of what was requested. Now that it does
+        # (fmt_ordering.py prefers values["question"] when present), this
+        # restriction has to allow "word_problem" too, or task_type=
+        # "order_sequence" + context="word_problem" has NO compatible
+        # formatter at all (mcq/cloze/true_false below don't support
+        # order_sequence either) -- confirmed live: "No compatible
+        # formatters available for DNA 'comparing_ordering'" at scalar 0.0
+        # for every order_set-bound node once word_problem context could
+        # be drawn.
+        "sort_order": {"task_type": ["order_sequence"], "context": ["pure", "word_problem"]},
+        "ordering": {"task_type": ["order_sequence"], "context": ["pure", "word_problem"]},
         "mcq": {"task_type": ["compare_pair", "find_between"]},
         "cloze": {"task_type": ["compare_pair", "find_between"]},
         "true_false": {"task_type": ["compare_pair", "find_between"]},
@@ -722,7 +891,9 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # the rule) or "state_rule" — those have no blank to render and produced a
         # zero-option problem when routed here.
         "pattern_sequence": {"task_type": ["find_next"], "ask_type": ["next", "missing"]},
-        "fill_in_table": {"task_type": ["find_missing", "find_rule"]},
+        # "fill_in_table" removed -- see patterns.py DNA definition's
+        # comment (that formatter is a categorical count table with no
+        # relation to patterns.py's sequence/rule data).
     },
 
     "fractions": {
@@ -735,8 +906,54 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # to identify_name/compare (resp. equivalent), which silently
         # rejected every add/subtract profile for mat_g3_na_q4_7 and caused
         # the orchestrator to raise "No compatible formatters available".
-        "fraction_model_read": {"operation": ["identify_name", "compare", "add", "subtract", "add_subtract"]},
-        "fraction_shade":      {"operation": ["identify_name", "equivalent", "add", "subtract", "add_subtract"]},
+        # Both visual formatters' schemas model a SINGLE shape
+        # (total_parts/shaded_parts) -- fine for a proper fraction
+        # (shaded <= total), but "improper"/"mixed" fraction_type
+        # (mat_g3_na_q4_6: "equal to one and greater than one") can
+        # produce a numerator bigger than the denominator, which these
+        # single-shape trap/visual builders have no representation for
+        # (count_unshaded goes negative, "shade 17 of 5 parts" has no
+        # valid rendering on one shape). base_generator's own symbolic
+        # question text now handles improper fractions by describing
+        # multiple identical shapes -- restrict these two visual
+        # formatters to the fraction_type values that stay within a
+        # single shape until their schemas gain real multi-shape support.
+        "fraction_model_read": {
+            "operation": ["identify_name", "compare", "add", "subtract", "add_subtract"],
+            "fraction_type": ["unit_fraction", "unit", "similar_proper", "proper"],
+            # "represent and identify" nodes (mat_g2_na_q4_0/_3) vs "read
+            # and write... in fraction notation" siblings (mat_g2_na_q4_1/
+            # _4) -- see registry.py's fraction_task_mode binding comment.
+            # Absent for every OTHER fractions node (compare/add_subtract/
+            # count_sequence never set this axis), so this restriction
+            # only ever excludes the notation-only nodes, never those.
+            "fraction_task_mode": ["model"],
+        },
+        "fraction_shade": {
+            "operation": ["identify_name", "equivalent", "add", "subtract", "add_subtract"],
+            "fraction_type": ["unit_fraction", "unit", "similar_proper", "proper"],
+            "fraction_task_mode": ["model"],
+        },
+        # operation="order" (mat_g2_na_q4_2/mat_g2_na_q4_5) returns a LIST
+        # under blank_target="sequence" -- mcq/cloze/numeric_input expect a
+        # single scalar correct answer and crash against a list (mcq:
+        # "could not generate enough distractors for string correct
+        # answer ['1/8','1/2',...]"). "order" itself is currently disabled
+        # (see registry.py's `False and "order" in text` guard) but these
+        # allow-lists stay as a safety net if it's ever re-enabled.
+        # "count_sequence" (mat_g1_na_q4_2: "Count halves and quarters")
+        # returns a single fraction-string answer (not a list, unlike
+        # "order" above), so it fits mcq/cloze/numeric_input directly --
+        # unlike fraction_model_read/fraction_shade, which model a single
+        # shape and have no way to show 4 sequence terms at once.
+        # fraction_task_mode="model" (mat_g2_na_q4_0/_3, "represent and
+        # identify") is excluded here so those nodes render exclusively
+        # through the visual formatters above -- absent for every other
+        # operation, so this never affects compare/add_subtract/
+        # count_sequence.
+        "mcq":           {"operation": ["identify_name", "compare", "add", "subtract", "add_subtract", "count_sequence"], "fraction_task_mode": ["notation"]},
+        "cloze":         {"operation": ["identify_name", "compare", "add", "subtract", "add_subtract", "count_sequence"], "fraction_task_mode": ["notation"]},
+        "numeric_input": {"operation": ["identify_name", "compare", "add", "subtract", "add_subtract", "count_sequence"]},
     },
 
     "money_peso": {
@@ -748,14 +965,29 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     },
 
     "number_reading": {
-        "mcq": {"context": ["pure"]},
-        "cloze": {"context": ["pure"]},
-        "true_false": {"context": ["pure"]},
+        # "identify_value" (mat_g1_na_q1_2/mat_g2_na_q1_2/mat_g3_na_q1_0's
+        # block/bar-model representation) has no word/expanded form and no
+        # inherent question phrasing of its own -- it exists to be read off
+        # a visual (place_value_blocks). mcq/cloze/true_false's own
+        # "number_reading" text builders don't check task_type at all, so
+        # routing "identify_value" through them produced a mismatched
+        # "Write 5 in words." stem keyed to the bare numeral answer "5"
+        # (confirmed live). Excluded here the same way number_line excludes
+        # numeral_to_word below.
+        "mcq": {"context": ["pure"], "task_type": ["numeral_to_word", "word_to_numeral", "numeral_to_expanded"]},
+        "cloze": {"context": ["pure"], "task_type": ["numeral_to_word", "word_to_numeral", "numeral_to_expanded"]},
+        "true_false": {"context": ["pure"], "task_type": ["numeral_to_word", "word_to_numeral", "numeral_to_expanded"]},
         # A number line can only ever show a numeral position — it cannot
         # represent a word-form answer. Restrict to word_to_numeral (numeral
         # is the answer); numeral_to_word doesn't fit this visual formatter.
         "number_line_read": {"context": ["pure"], "task_type": ["word_to_numeral"]},
         "number_line_set": {"context": ["pure"], "task_type": ["word_to_numeral"]},
+        # "identify_value" is the only task_type this DNA generates with a
+        # shape place_value_blocks expects (a bare number, no word/expanded
+        # form) -- numeral_to_word/word_to_numeral don't fit a base-10-block
+        # visual the same way they don't fit number_line above.
+        "place_value_blocks_read": {"context": ["pure"], "task_type": ["identify_value"]},
+        "place_value_blocks_set": {"context": ["pure"], "task_type": ["identify_value"]},
     },
 
     "rounding": {
@@ -769,9 +1001,21 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         "context": ["pure", "word_problem"],
         "mode": ["analog", "digital"],
         "include_ampm": ["yes", "no"],
-        "clock_read": {"task_type": ["read_time"]},
-        "clock_set": {"task_type": ["set_time"]},
-        # elapsed_time only via mcq/cloze
+        # "read_time"/"set_time" never matched anything time_reading.py
+        # actually set (its default path left task_type unset entirely),
+        # so these were dead restrictions -- clock_read/clock_set passed
+        # unconditionally via the orchestrator's "absent value always
+        # passes" rule regardless of what this dict said. Now that the
+        # default path explicitly sets task_type="clock_reading" (see
+        # time_reading.py), match that real value instead.
+        "clock_read": {"task_type": ["clock_reading"]},
+        "clock_set": {"task_type": ["clock_reading"]},
+        # elapsed_time (mat_g2_mg_q4_2) is a start/end/duration word
+        # problem with no single clock to show -- textual only, and
+        # excluded from the default clock_reading path by the same
+        # task_type match above.
+        "mcq": {"task_type": ["elapsed_time"]},
+        "cloze": {"task_type": ["elapsed_time"]},
     },
 
     "calendar": {

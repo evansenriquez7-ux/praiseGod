@@ -18,9 +18,9 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 70 ÷ 10?",
-      "correct_answer": 7,
+      "formatter": "true_false",
+      "question_text": "82 \u00f7 2 does not come out exactly, so 82 is an odd number. True or False?",
+      "correct_answer": false,
       "options": [
         {
           "key": "A",
@@ -46,9 +46,9 @@
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is 10 ÷ 2?",
-      "correct_answer": 5,
+      "formatter": "true_false",
+      "question_text": "5 \u00f7 2 does not come out exactly, so 5 is an odd number. True or False?",
+      "correct_answer": true,
       "options": [
         {
           "key": "A",
@@ -74,9 +74,9 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "Compare the numbers: 307 ___ 270. Which sign is correct: >, <, or =?",
-      "correct_answer": ">",
+      "formatter": "true_false",
+      "question_text": "53 \u00f7 2 does not come out exactly, so 53 is an odd number. True or False?",
+      "correct_answer": true,
       "options": [
         {
           "key": "A",
@@ -102,9 +102,9 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Compare the numbers: 92 ___ 930. Which sign is correct: >, <, or =?",
-      "correct_answer": "<",
+      "formatter": "true_false",
+      "question_text": "35 \u00f7 2 comes out exactly, so 35 is an even number. True or False?",
+      "correct_answer": false,
       "options": [
         {
           "key": "A",
@@ -130,9 +130,9 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 12 ÷ 2?",
-      "correct_answer": 6,
+      "formatter": "true_false",
+      "question_text": "10 \u00f7 2 comes out exactly, so 10 is an even number. True or False?",
+      "correct_answer": true,
       "options": [
         {
           "key": "A",
@@ -159,23 +159,20 @@
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "270 cannot be determined 205. True or False?",
+      "question_text": "64 \u00f7 2 does not come out exactly, so 64 is an odd number. True or False?",
       "correct_answer": false
     },
     {
       "seed": 51,
-      "formatter": "error_detect",
-      "question_text": "Ana says: 15 ÷ 3 = 12. Is Ana correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 5
-      }
+      "formatter": "true_false",
+      "question_text": "32 \u00f7 2 comes out exactly, so 32 is an even number. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 53,
-      "formatter": "cloze",
-      "question_text": "50 ÷ 10 = ___",
-      "correct_answer": 5,
+      "formatter": "true_false",
+      "question_text": "79 \u00f7 2 comes out exactly, so 79 is an even number. True or False?",
+      "correct_answer": false,
       "options": [
         {
           "key": "A",
@@ -205,15 +202,15 @@
     },
     {
       "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 2×6 rectangle. How many squares did you shade in all?",
-      "correct_answer": 12
+      "formatter": "true_false",
+      "question_text": "12 \u00f7 2 comes out exactly, so 12 is an even number. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 101,
-      "formatter": "read_mcq",
-      "question_text": "Look at the 10×4 array. How many squares are shaded in all?",
-      "correct_answer": "C",
+      "formatter": "true_false",
+      "question_text": "75 \u00f7 2 comes out exactly, so 75 is an even number. True or False?",
+      "correct_answer": false,
       "options": [
         {
           "key": "A",
@@ -241,7 +238,7 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "For node mat_g2_na_q3_8 (Grade 2 Quarter 3 curriculum), the sampled problems directly fulfill the MATATAG competency 'Distinguish even and odd numbers using division by 2.'. Across seeds 42, 43, 44, 45, 46, 50, 51, 53, 55, 101, the rendered questions (such as 'What is 70 ÷ 10?') require students to demonstrate the target concept."
+      "rationale": "For node mat_g2_na_q3_8 (Grade 2 Quarter 3 curriculum), the sampled problems directly fulfill the MATATAG competency 'Distinguish even and odd numbers using division by 2.'. Across seeds 42, 43, 44, 45, 46, 50, 51, 53, 55, 101, the rendered questions (such as 'What is 70 \u00f7 10?') require students to demonstrate the target concept."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
@@ -249,7 +246,7 @@
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g2_na_q3_8 fit Grade 2 Quarter 3 cognitive limits. Stems like 'What is 70 ÷ 10?' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
+      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g2_na_q3_8 fit Grade 2 Quarter 3 cognitive limits. Stems like 'What is 70 \u00f7 10?' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",

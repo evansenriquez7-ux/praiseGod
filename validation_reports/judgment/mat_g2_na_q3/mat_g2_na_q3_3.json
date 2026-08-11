@@ -16,27 +16,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Daniel puts 3 coins in each of 1 bag. How many coins are in all the bags?",
-      "correct_answer": 3,
+      "question_text": "Daniel puts 10 coins in each of 4 bags. How many coins are in all the bags?",
+      "correct_answer": 40,
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": 14,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 2,
+          "value": 39,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 40,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 0,
+          "value": 30,
           "is_correct": false
         }
       ]
@@ -44,17 +44,17 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Kuya Bien puts 0 story chapters in each of 2 bags. How many story chapters are in all the bags?",
-      "correct_answer": 0,
+      "question_text": "Kuya Bien puts 2 story chapters in each of 2 bags. How many story chapters are in all the bags?",
+      "correct_answer": 4,
       "options": [
         {
           "key": "A",
-          "value": 0,
+          "value": 4,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 1,
+          "value": 2,
           "is_correct": false
         },
         {
@@ -64,7 +64,7 @@
         },
         {
           "key": "D",
-          "value": 2,
+          "value": 0,
           "is_correct": false
         }
       ]
@@ -72,31 +72,31 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "Lara puts 1 ribbon in each of ___ bags. How many ribbons are in all the bags?",
-      "correct_answer": 2,
+      "question_text": "Lara wants to buy 2 ribbons that cost \u20b14 each. How much does Lara need to pay in all?",
+      "correct_answer": 8,
       "options": [
         {
           "key": "A",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 4,
           "text": "4",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 2,
-          "text": "2",
+          "value": 8,
+          "text": "8",
           "is_correct": true
         }
       ]
@@ -104,51 +104,23 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Coach Roel puts 0 water bottles in each of 6 bags. How many water bottles are in all the bags?",
-      "correct_answer": 0,
+      "question_text": "Coach Roel wants to buy 2 water bottles that cost \u20b13 each. How much does Coach Roel need to pay in all?",
+      "correct_answer": 6,
       "options": [
         {
           "key": "A",
-          "value": 2,
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 0,
           "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Ate Cara puts 0 photo albums in each of 3 bags. How many photo albums are in all the bags?",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 0,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": false
         },
         {
           "key": "D",
@@ -158,18 +130,46 @@
       ]
     },
     {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Ate Cara puts 4 photo albums in each of 1 bag. How many photo albums are in all the bags?",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
+    },
+    {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "Mia puts 1 merchandise shirts in each of 3 bags. How many merchandise shirts are in all the bags? The answer is 4.. True or False?",
+      "question_text": "Mia wants to buy 2 merchandise shirts that cost \u20b15 each. How much does Mia need to pay in all? The answer is 5. True or False?",
       "correct_answer": false
     },
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Sora puts 0 concert tickets in each of 3 bags. How many concert tickets are in all the bags?\" Grace says the answer is 3. Is Grace correct?",
+      "question_text": "Grace solved this problem: \"Sora puts 2 concert tickets in each of 3 bags. How many concert tickets are in all the bags?\" Grace says the answer is 1. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
-        "correct_value": 0
+        "correct_value": 6
       }
     }
   ],

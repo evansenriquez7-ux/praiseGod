@@ -109,6 +109,20 @@ def generate_params(
     g_key = f"g{max(1, min(grade, 2))}"
     bounds = _PARAM_BOUNDS[g_key]
     task_type = profile.get("task_type", "read_day")
+    if task_type == "elapsed_days_or_weeks":
+        # registry.py sentinel for "duration... in terms of number of days
+        # and/or weeks" (mat_g2_mg_q4_0): the competency names both units,
+        # so alternate between them per seed rather than locking to one.
+        task_type = rng.choice(["elapsed_days", "elapsed_weeks"])
+    elif task_type == "days_and_months":
+        # registry.py sentinel for "Solve problems involving time (...
+        # days in a week, and months in a year)" (mat_g1_mg_q4_4): the
+        # time_reading DNA it's co-mapped with has no day/month concept at
+        # all, so this competency's day/month sub-case never appeared
+        # anywhere (blind review: "Zero samples touch 'days in a week' or
+        # 'months in a year'... both explicitly named"). Alternate between
+        # this DNA's own day-of-week and month-name recall task_types.
+        task_type = rng.choice(["read_day", "read_month"])
 
     month = rng.randint(bounds["month"][0], bounds["month"][1])
     year  = bounds.get("year", 2025)
@@ -181,11 +195,28 @@ def generate_params(
         }
 
     if task_type == "elapsed_days":
-        start_date  = rng.randint(1, days_in_this_month - 7)
-        elapsed     = rng.randint(1, min(7, days_in_this_month - start_date))
-        end_date    = start_date + elapsed
+        # base_generator.py only pulls visual_params from values["visual_params"]
+        # (see its "j. Visual type / params" step) -- this branch never set
+        # that key, so fmt_calendar.py's own ctx.visual_params check always
+        # found nothing and silently fell back to ITS OWN independent
+        # _build_visual_params generator instead (which gates duration
+        # questions to grade>=3, so this G2 "elapsed_days"/"elapsed_weeks"
+        # task_type could never actually reach a student regardless of what
+        # this function computed -- found while fixing mat_g2_mg_q4_0's
+        # "duration... in days and/or weeks" competency: every rendered
+        # sample was plain day-of-week reading, not duration, despite this
+        # branch existing and being correctly selected).
+        # Counted inclusively (day1 through day2 both count), matching
+        # fmt_calendar.py's own "...inclusive?" question phrasing exactly --
+        # an earlier version of this branch counted exclusively (elapsed =
+        # end-start), which would have served an answer one day short of
+        # what that phrasing asks for.
+        start_date = rng.randint(1, days_in_this_month - 7)
+        span       = rng.randint(1, min(6, days_in_this_month - start_date))
+        end_date   = start_date + span
+        elapsed    = end_date - start_date + 1
         return {
-        "blank_target": "answer",
+            "blank_target": "answer",
             "month": month,
             "year": year,
             "target_date": start_date,
@@ -193,9 +224,22 @@ def generate_params(
             "answer": elapsed,
             "task_type": task_type,
             "question": (
-                f"From {MONTHS_OF_YEAR[month - 1]} {start_date} to "
-                f"{MONTHS_OF_YEAR[month - 1]} {end_date}, how many days have passed?"
+                f"Look at the {MONTHS_OF_YEAR[month - 1]} {year} calendar. "
+                f"How many days are there from {MONTHS_OF_YEAR[month - 1]} {start_date} "
+                f"to {MONTHS_OF_YEAR[month - 1]} {end_date}, inclusive?"
             ),
+            "visual_params": {
+                "month": month,
+                "year": year,
+                "highlighted_dates": list(range(start_date, end_date + 1)),
+                "question_date": None,
+                "show_day_names": True,
+                "task_type": "measure_duration",
+                "correct_date": None,
+                "correct_duration": elapsed,
+                "_day1": start_date,
+                "_day2": end_date,
+            },
         }
 
     if task_type == "sequence":
@@ -230,9 +274,21 @@ def generate_params(
         }
 
     # elapsed_weeks
+    # Same visual_params wiring as elapsed_days above (see that branch's
+    # comment) -- without it, fmt_calendar.py's calendar_read formatter
+    # (the DOMINANT one for this DNA) fell back to its own independent,
+    # grade>=3-gated generator, so at G2 this task_type rendered as plain
+    # day-of-week reading via calendar_read even though generate_params had
+    # already correctly resolved it (blind review round 2 confirmed: 7 of
+    # 14 samples were still "what day of the week", tracing to exactly the
+    # elapsed_weeks-selected seeds). end_date is start_date + weeks*7 - 1
+    # (not start_date + weeks*7) so an INCLUSIVE day count spans exactly
+    # weeks*7 days, keeping "weeks" and the inclusive day range consistent
+    # with each other -- fmt_calendar.py's own "unit" param (added
+    # alongside this fix) renders the question in weeks instead of days.
     start_date = rng.randint(1, days_in_this_month - 14)
-    weeks      = rng.randint(1, min(4, (days_in_this_month - start_date) // 7))
-    end_date   = start_date + weeks * 7
+    weeks      = rng.randint(1, min(4, (days_in_this_month - start_date + 1) // 7))
+    end_date   = start_date + weeks * 7 - 1
     return {
         "blank_target": "answer",
         "month": month,
@@ -242,9 +298,23 @@ def generate_params(
         "answer": weeks,
         "task_type": task_type,
         "question": (
-            f"From {MONTHS_OF_YEAR[month - 1]} {start_date} to "
-            f"{MONTHS_OF_YEAR[month - 1]} {end_date}, how many weeks have passed?"
+            f"Look at the {MONTHS_OF_YEAR[month - 1]} {year} calendar. "
+            f"How many weeks are there from {MONTHS_OF_YEAR[month - 1]} {start_date} "
+            f"to {MONTHS_OF_YEAR[month - 1]} {end_date}, inclusive?"
         ),
+        "visual_params": {
+            "month": month,
+            "year": year,
+            "highlighted_dates": list(range(start_date, end_date + 1)),
+            "question_date": None,
+            "show_day_names": True,
+            "task_type": "measure_duration",
+            "correct_date": None,
+            "correct_duration": weeks,
+            "unit": "weeks",
+            "_day1": start_date,
+            "_day2": end_date,
+        },
     }
 
 

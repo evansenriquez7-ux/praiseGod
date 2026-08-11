@@ -16,17 +16,17 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ paperclips.",
+      "question_text": "Which is longer: 1 paperclip or 5 paperclips?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 1,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 7,
+          "value": 4,
           "is_correct": false
         },
         {
@@ -36,7 +36,7 @@
         },
         {
           "key": "D",
-          "value": 4,
+          "value": 6,
           "is_correct": false
         }
       ]
@@ -44,41 +44,13 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ paperclips.",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 11,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ blocks.",
+      "question_text": "Which is longer: 5 paperclips or 3 paperclips?",
       "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": 4,
-          "is_correct": false
+          "value": 5,
+          "is_correct": true
         },
         {
           "key": "B",
@@ -87,12 +59,40 @@
         },
         {
           "key": "C",
-          "value": 7,
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 5,
+          "value": 3,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "The distance from the bench to the tree is 9 blocks. The distance from the gate to the tree is 2 blocks. Which distance is longer?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
           "is_correct": true
         }
       ]
@@ -100,22 +100,22 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ steps.",
-      "correct_answer": 10,
+      "question_text": "The distance from the bench to the tree is 7 steps. The distance from the gate to the tree is 8 steps. Which distance is longer?",
+      "correct_answer": 8,
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 11,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 10,
+          "value": 8,
           "is_correct": true
         },
         {
@@ -128,27 +128,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ paperclips.",
-      "correct_answer": 10,
+      "question_text": "Which is longer: 7 paperclips or 1 paperclip?",
+      "correct_answer": 7,
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 10,
+          "value": 7,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 9,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 11,
+          "value": 1,
           "is_correct": false
         }
       ]
@@ -156,59 +156,63 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "Measure the object. Its length is ___ blocks.",
-      "correct_answer": 10,
+      "question_text": "The distance from the bench to the tree is 5 blocks. The distance from the gate to the tree is 6 blocks. Which distance is longer?",
+      "correct_answer": 6,
       "options": [
         {
           "key": "A",
-          "value": 11,
-          "text": "11",
+          "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 10,
-          "text": "10",
+          "value": 6,
+          "text": "6",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 12,
-          "text": "12",
+          "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 9,
-          "text": "9",
+          "value": 7,
+          "text": "7",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "How long is the object? Give your answer in paperclips.",
-      "correct_answer": "C",
+      "formatter": "cloze",
+      "question_text": "Which is longer: 4 paperclips or 3 paperclips?",
+      "correct_answer": 4,
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 5,
+          "value": 4,
+          "text": "4",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 20,
+          "value": 3,
+          "text": "3",
           "is_correct": false
         }
       ]

@@ -97,12 +97,19 @@ def _build_traps(numer: int, denom: int) -> list:
         traps.append(total_trap)
         seen.add(total_trap)
 
-    # Count unshaded parts
+    # Count unshaded parts -- only meaningful for a proper fraction (a
+    # single shape with some parts shaded, some not). For an improper
+    # fraction (numer > denom, e.g. 11/3 -- "greater than one" models
+    # spanning multiple shapes), every part across every shape IS shaded,
+    # so "unshaded" is negative and meaningless as a trap (blind review of
+    # mat_g3_na_q4_6: "-8/3" offered as an MCQ option, unreadable/
+    # nonsensical for a Grade 3 student who hasn't met negative numbers).
     unshaded = denom - numer
-    unshaded_str = f"{unshaded}/{denom}"
-    if unshaded_str not in seen and unshaded != numer:
-        traps.append(unshaded_str)
-        seen.add(unshaded_str)
+    if unshaded > 0:
+        unshaded_str = f"{unshaded}/{denom}"
+        if unshaded_str not in seen and unshaded != numer:
+            traps.append(unshaded_str)
+            seen.add(unshaded_str)
 
     # Off by one in numerator
     if numer > 1:

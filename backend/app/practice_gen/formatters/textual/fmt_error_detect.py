@@ -96,12 +96,39 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
         if is_estimate:
             real_a, real_b = values.get("real_a", a), values.get("real_b", b)
             return f"{real_a} + {real_b} ≈ {slot('result', value=r)}"
+        if values.get("task_type") == "expanded_form" and "a_tens" in values:
+            # Bare "{a} + {b} = {slot}" drops the place-value decomposition
+            # this task_type exists to demonstrate -- same root cause as
+            # the identical fix in fmt_true_false.py/fmt_cloze.py (see
+            # those files' comments). FORMATTER_VARIANT_SUPPORT already
+            # allows expanded_form on error_detect (blank_target="result"
+            # is a real numeric slot, unlike commutative/associative's
+            # yes/no claim), so this was reachable and silently dropping
+            # the decomposition rather than being rejected outright.
+            from backend.app.practice_gen.dna.na.addition import decompose_to_places
+            return (
+                f"{decompose_to_places(a)} {decompose_to_places(b)} "
+                f"Add the place values, then find the total: "
+                f"{slot('a', value=a)} + {slot('b', value=b)} = {slot('result', value=r)}"
+            )
+        if values.get("task_type") == "counting_up" and blank_target == "result":
+            # Same root cause as expanded_form above.
+            return f"Start at {slot('a', value=a)}. Count up {slot('b', value=b)} more. You land on {slot('result', value=r)}"
         return f"{slot('a', value=a)} + {slot('b', value=b)} = {slot('result', value=r)}"
     elif concept == "subtraction":
         a, b, r = values.get("a"), values.get("b"), values.get("result")
         if is_estimate:
             real_a, real_b = values.get("real_a", a), values.get("real_b", b)
             return f"{real_a} − {real_b} ≈ {slot('result', value=r)}"
+        if values.get("task_type") == "expanded_form" and "a_tens" in values:
+            # Same root cause as addition's identical fix (see that
+            # branch's comment).
+            from backend.app.practice_gen.dna.na.addition import decompose_to_places
+            return (
+                f"{decompose_to_places(a)} {decompose_to_places(b)} "
+                f"Subtract the place values, then find what's left: "
+                f"{slot('a', value=a)} − {slot('b', value=b)} = {slot('result', value=r)}"
+            )
         return f"{slot('a', value=a)} − {slot('b', value=b)} = {slot('result', value=r)}"
     elif concept == "multiplication":
         a = values.get("a", values.get("groups"))

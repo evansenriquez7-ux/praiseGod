@@ -18,22 +18,22 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "60 ÷ 10 = ___. What is the missing number?",
-      "correct_answer": 6,
+      "question_text": "60 \u00f7 6 = ___. What is the missing number?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 66,
+          "value": 70,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 7,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 6,
+          "value": 10,
           "is_correct": true
         },
         {
@@ -46,12 +46,12 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "60 ÷ 10 = ___. What is the missing number?",
-      "correct_answer": 6,
+      "question_text": "60 \u00f7 6 = ___. What is the missing number?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 10,
           "is_correct": true
         },
         {
@@ -61,12 +61,12 @@
         },
         {
           "key": "C",
-          "value": 7,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 66,
+          "value": 70,
           "is_correct": false
         }
       ]
@@ -74,13 +74,45 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "72 ÷ ___ = 9",
-      "correct_answer": 8,
+      "question_text": "63 \u00f7 9 = ___",
+      "correct_answer": 7,
       "options": [
         {
           "key": "A",
           "value": 9,
           "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 54,
+          "text": "54",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 567,
+          "text": "567",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "text": "7",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "cloze",
+      "question_text": "72 \u00f7 8 = ___",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 576,
+          "text": "576",
           "is_correct": false
         },
         {
@@ -91,46 +123,14 @@
         },
         {
           "key": "C",
-          "value": 576,
-          "text": "576",
-          "is_correct": false
+          "value": 9,
+          "text": "9",
+          "is_correct": true
         },
         {
           "key": "D",
           "value": 8,
           "text": "8",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "cloze",
-      "question_text": "63 ÷ ___ = 9",
-      "correct_answer": 7,
-      "options": [
-        {
-          "key": "A",
-          "value": 441,
-          "text": "441",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 56,
-          "text": "56",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 7,
-          "text": "7",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 9,
-          "text": "9",
           "is_correct": false
         }
       ]
@@ -138,7 +138,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "18 ÷ 6 = ___. What is the missing number?",
+      "question_text": "18 \u00f7 6 = ___. What is the missing number?",
       "correct_answer": 3,
       "options": [
         {
@@ -166,27 +166,27 @@
     {
       "seed": 50,
       "formatter": "read_mcq",
-      "question_text": "Look at the 9×5 array. How many squares are shaded in all?",
+      "question_text": "This array has 63 squares split into 7 equal rows. How many squares are in each row?",
       "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 45,
+          "value": 9,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 28,
+          "value": 32,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 48,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 43,
+          "value": 7,
           "is_correct": false
         }
       ]
@@ -194,29 +194,29 @@
     {
       "seed": 51,
       "formatter": "true_false",
-      "question_text": "7 × 6 = ___. What is the missing number? The answer is 42.. True or False?",
+      "question_text": "7 \u00d7 6 = ___. What is the missing number? The answer is 42. True or False?",
       "correct_answer": true
     },
     {
       "seed": 68,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 9×3 rectangle. How many squares did you shade in all?",
-      "correct_answer": 27
+      "question_text": "Shade 54 squares into 9 equal rows. How many squares are in each row?",
+      "correct_answer": 6
     },
     {
       "seed": 110,
       "formatter": "error_detect",
-      "question_text": "Jose says: 56 ÷ 7 = 7. Is Jose correct?",
+      "question_text": "Jose says: 49 \u00f7 7 = 343. Is Jose correct?",
       "correct_answer": {
         "has_error": true,
-        "correct_value": 8
+        "correct_value": 7
       }
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "For node mat_g3_na_q4_2 (Grade 3 Quarter 4 curriculum), the sampled problems directly fulfill the MATATAG competency 'Find the missing number in a number sentence involving multiplication or division by 6, 7, 8, and 9.'. Across seeds 42, 43, 44, 45, 46, 50, 51, 68, 110, the rendered questions (such as '60 ÷ 10 = ___. What is the missing number?') require students to demonstrate the target concept."
+      "rationale": "For node mat_g3_na_q4_2 (Grade 3 Quarter 4 curriculum), the sampled problems directly fulfill the MATATAG competency 'Find the missing number in a number sentence involving multiplication or division by 6, 7, 8, and 9.'. Across seeds 42, 43, 44, 45, 46, 50, 51, 68, 110, the rendered questions (such as '60 \u00f7 10 = ___. What is the missing number?') require students to demonstrate the target concept."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
@@ -224,7 +224,7 @@
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g3_na_q4_2 fit Grade 3 Quarter 4 cognitive limits. Stems like '60 ÷ 10 = ___. What is the missing number?' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
+      "rationale": "The reading complexity, sentence phrasing, and numerical demands for node mat_g3_na_q4_2 fit Grade 3 Quarter 4 cognitive limits. Stems like '60 \u00f7 10 = ___. What is the missing number?' present clear, age-appropriate language without unnecessary lexical or conceptual barriers."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",

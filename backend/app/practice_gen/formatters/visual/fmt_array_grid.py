@@ -264,15 +264,65 @@ def format_array_grid(
         diff_level = min(len(diff_profile) + 1, 4) if diff_profile else 2
         vp = _build_visual_params(ctx.grade, diff_level, random.Random(ctx.seed))
 
-    correct_count: int = vp["correct_count"]
     rows = vp.get("rows")
     cols = vp.get("cols")
     shape_type = vp.get("shape_type", "rectangle")
+    is_division_array = (
+        ctx.dna_concept == "division" and shape_type == "rectangle" and rows and cols
+    )
 
+    # For division, rows=divisor and cols=quotient (see the vp branch
+    # above), and the real answer is the quotient (cols), not vp's own
+    # "correct_count" (rows*cols, the dividend). This must happen BEFORE
+    # _build_traps runs: traps are built from params["correct_count"], so
+    # building them first and only overwriting the local `correct_count`
+    # variable afterward (the previous shape of this fix) left every MCQ
+    # distractor computed as an offset from the DIVIDEND while the
+    # question asked for the much smaller QUOTIENT -- structurally valid
+    # (still 3 unique non-equal numbers) but numerically nonsensical
+    # distractors, e.g. quotient=5 offered alongside dividend-sized
+    # options like 27 or 32.
+    if is_division_array:
+        vp["correct_count"] = cols
+
+    correct_count: int = vp["correct_count"]
     traps = _build_traps(vp, rng)
 
     # ── 2. Question text ──────────────────────────────────────────────────────
-    if interaction_mode == "read":
+    # The generic "how many squares in all" stem below reads identically
+    # whether this array came from a multiplication or a division DNA --
+    # nothing in the text ever named the divisor/quotient roles, so the
+    # item tested array-counting, not division (blind review across the
+    # division node group: "asks for a total... not a division
+    # computation"). Name the divisor/quotient roles explicitly instead.
+    if is_division_array:
+        total = rows * cols
+        if interaction_mode == "read":
+            # A genuine division item gives the TOTAL and the number of
+            # equal rows (the divisor) and asks for how many go in each
+            # row (the quotient) -- the array is still shown in full so
+            # the student can see/count the same total, but the value
+            # they must produce is the quotient.
+            question_text = (
+                f"This array has {total} squares split into {rows} equal rows. "
+                f"How many squares are in each row?"
+            )
+        else:
+            # Same division-vs-multiplication defect as "read", in its
+            # "set" sibling (blind review of the division node group's
+            # "set_fill_in_blank" samples: "asks for the total... a
+            # division node secretly testing multiplication"). "set"
+            # mode's own contract is an active construction task (student
+            # shades an empty grid), so keep it empty and have the
+            # construction itself BE the division: split a given total
+            # into the stated number of equal rows, then state the
+            # quotient -- how many go in each row.
+            vp["shaded"] = False
+            question_text = (
+                f"Shade {total} squares into {rows} equal rows. "
+                f"How many squares are in each row?"
+            )
+    elif interaction_mode == "read":
         if shape_type == "rectangle" and rows and cols:
             question_text = (
                 f"Look at the {rows}×{cols} array. "

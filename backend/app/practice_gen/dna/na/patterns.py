@@ -63,6 +63,19 @@ VOCAB_DECREASING = VocabGated(requires_vocab="decreasing", preferred="decreasing
 VOCAB_REPEATING  = VocabGated(requires_vocab="repeating",  preferred="repeating",  fallback="same group again")
 
 
+# K-3 appropriate letter pool for repeating patterns whose elements are
+# letters rather than numbers -- the competency's own worked example
+# names both ("numbers: 2,4,2,4...; letters: a,b,c,a,b,c...", mat_g1_
+# na_q3_6), but this DNA only ever generated numeric cycles.
+# Excludes g/l/m: single-letter unit abbreviations (gram/liter/meter)
+# that are NOT_YET_KNOWN vocabulary at the grades this DNA serves --
+# a pattern element rendered as a bare "g"/"l"/"m" in the text tripped
+# §1D vocabulary_gating as a false-positive unit reference (confirmed
+# live: seed 43's letter cycle ['e','h',...] still failed on stray 'g'/
+# 'm' pulled from elsewhere in the pool across other seeds).
+_LETTER_POOL = [c for c in "abcdefghijklmnop" if c not in ("g", "l", "m")]
+
+
 # ─── helpers ──────────────────────────────────────────────────────────────────
 
 def _make_repeating_sequence(start: int, cycle: List[int], length: int) -> List[int]:
@@ -129,6 +142,18 @@ def generate_params(
         # the generation seed, same pattern as missing_number.py resolving
         # its own "addition_subtraction" composite scope value.
         pattern_type = "arithmetic_increasing" if rng.random() < 0.5 else "arithmetic_decreasing"
+    elif pattern_type == "increasing_decreasing_or_repeating":
+        # "...numbers, letters and rhythmic properties, visual elements in
+        # arts, AND REPETITIONS" (mat_g2_na_q2_8) names "repetitions" as
+        # one of its own sub-cases, but resolving straight to
+        # increasing_or_decreasing (arithmetic-only) meant this node could
+        # never reach the "repeating" branch below -- the ONLY branch that
+        # can use letters at all (use_letters is scoped entirely inside
+        # `if pattern_type == "repeating":`), so "letters" (also explicitly
+        # named) never appeared either despite an earlier fix adding
+        # letter-cycle support (blind review, twice: "letters... never
+        # appear" and "every sample is a numeric arithmetic sequence").
+        pattern_type = rng.choice(["arithmetic_increasing", "arithmetic_decreasing", "repeating"])
 
     ask_type = profile.get("ask_type", "next")
     if ask_type == "next":
@@ -154,8 +179,20 @@ def generate_params(
         # instead of construction.
         if pattern_type == "repeating":
             cycle_len = rng.randint(cyc_lo, cyc_hi)
-            candidates = list(range(1, max_val + 1))
-            cycle = [generate_number_by_window(candidates, num_diff_scalar, d=5, rng=rng) for _ in range(cycle_len)]
+            # "Create repeating patterns using objects, images, OR
+            # NUMBERS" (mat_g1_na_q3_7) named three modalities, but this
+            # branch only ever drew from a bare number range -- letters
+            # (already used elsewhere in this DNA as the best available
+            # proxy for a non-numeric "object/image" element) never
+            # appeared here at all (blind review: "only the 'numbers'
+            # modality is used... 'objects' and 'images' never appear").
+            use_letters = rng.random() < 0.35
+            if use_letters:
+                candidates = _LETTER_POOL
+                cycle = rng.sample(_LETTER_POOL, min(cycle_len, len(_LETTER_POOL)))
+            else:
+                candidates = list(range(1, max_val + 1))
+                cycle = [generate_number_by_window(candidates, num_diff_scalar, d=5, rng=rng) for _ in range(cycle_len)]
             valid_seq = _make_repeating_sequence(0, cycle, seq_length)
             pattern_label = "repeating pattern"
             rule = f"Repeat the group: {cycle}"
@@ -183,6 +220,7 @@ def generate_params(
             pattern_label = "increasing pattern" if increasing else "decreasing pattern"
             rule = f"{'Add' if increasing else 'Subtract'} {step} each time"
 
+        is_letter_seq = any(isinstance(v, str) for v in valid_seq)
         distractor_seqs = []
         seen = {tuple(valid_seq)}
         attempts = 0
@@ -190,7 +228,14 @@ def generate_params(
             attempts += 1
             corrupted = list(valid_seq)
             break_idx = rng.randint(1, len(corrupted) - 1)
-            corrupted[break_idx] = max(0, corrupted[break_idx] + rng.choice([-3, -2, -1, 1, 2, 3]))
+            if is_letter_seq:
+                # Numeric +/-N corruption crashes on a letter element (can't
+                # add an int to a str) -- swap in a different letter from
+                # the same candidate pool instead.
+                other_letters = [c for c in candidates if c != corrupted[break_idx]]
+                corrupted[break_idx] = rng.choice(other_letters) if other_letters else corrupted[break_idx]
+            else:
+                corrupted[break_idx] = max(0, corrupted[break_idx] + rng.choice([-3, -2, -1, 1, 2, 3]))
             if tuple(corrupted) not in seen:
                 seen.add(tuple(corrupted))
                 distractor_seqs.append(corrupted)
@@ -198,24 +243,60 @@ def generate_params(
             # Extremely small ranges can run out of distinct corruptions;
             # fall back to a fully-random same-length sequence rather than
             # loop forever or ship fewer than 3 options.
-            distractor_seqs.append([rng.randint(1, max(2, max_val)) for _ in valid_seq])
+            if is_letter_seq:
+                distractor_seqs.append([rng.choice(candidates) for _ in valid_seq])
+            else:
+                distractor_seqs.append([rng.randint(1, max(2, max_val)) for _ in valid_seq])
 
         answer_str = ", ".join(map(str, valid_seq))
         distractor_strs = [", ".join(map(str, d)) for d in distractor_seqs]
+        # "CREATE ... patterns" (mat_g1_na_q3_7, mat_g2_na_q2_9): the
+        # previous "Which of these sequences shows a repeating pattern?"
+        # phrasing is pure recognition, with no trace of the competency's
+        # own "create" verb anywhere in the text (blind review, twice:
+        # "the competency verb 'create' is never actually exercised... no
+        # sample ever asks the student to generate a pattern"). This is
+        # still a selection task (this pipeline has no free-form
+        # construction UI -- see the comment above), but naming the rule
+        # to be applied and asking which option correctly CREATES/BUILDS
+        # a sequence that follows it is a closer proxy to "create" than
+        # asking the student to merely recognize an unspecified pattern.
+        elements_str = ", ".join(map(str, cycle)) if pattern_type == "repeating" else None
+        if elements_str:
+            question = (
+                f"You want to create a repeating pattern using: {elements_str}. "
+                f"Which sequence correctly creates it?"
+            )
+        else:
+            question = (
+                f"You want to create {'an' if pattern_label[0] in 'aeiou' else 'a'} "
+                f"{pattern_label} where the rule is: {rule}. Which sequence correctly creates it?"
+            )
         return {
             "blank_target": "answer",
             "task_type": "identify_valid_pattern",
             "pattern_kind": pattern_type,
             "answer": answer_str,
             "distractors": distractor_strs,
-            "question": f"Which of these number sequences shows {'an' if pattern_label[0] in 'aeiou' else 'a'} {pattern_label}?",
+            "question": question,
             "rule_description": rule,
         }
 
     if pattern_type == "repeating":
         cycle_len = max(2, rng.randint(cyc_lo, cyc_hi))
-        candidates = list(range(1, max_val + 1))
-        cycle = [generate_number_by_window(candidates, num_diff_scalar, d=5, rng=rng) for _ in range(cycle_len)]
+        # "letters: a, b, c, a, b, c..." is the competency's own second
+        # worked example alongside the numeric one -- weighted minority so
+        # numeric cycles (the DNA's original, still-primary behavior)
+        # keep dominating, but letters now genuinely appear (blind review
+        # of mat_g1_na_q3_6: "not a single sample across all 14 seeds uses
+        # letters").
+        use_letters = rng.random() < 0.35
+        if use_letters:
+            candidates = _LETTER_POOL
+            cycle = rng.sample(_LETTER_POOL, min(cycle_len, len(_LETTER_POOL)))
+        else:
+            candidates = list(range(1, max_val + 1))
+            cycle = [generate_number_by_window(candidates, num_diff_scalar, d=5, rng=rng) for _ in range(cycle_len)]
         # A cycle whose members are all equal renders as "2, 2, 2, 2, 2, 2" — a
         # constant run with no repeating structure to notice, where the answer is
         # simply the number already on the page (validate_matrix §1F). Force at
@@ -230,10 +311,10 @@ def generate_params(
                     f"distinct values — max_val={max_val} leaves no alternative to {cycle[0]}. "
                     f"(grade={grade}, profile={difficulty_profile})"
                 )
-            cycle[-1] = generate_number_by_window(alternatives, num_diff_scalar, d=5, rng=rng)
+            cycle[-1] = rng.choice(alternatives) if use_letters else generate_number_by_window(alternatives, num_diff_scalar, d=5, rng=rng)
         sequence = _make_repeating_sequence(0, cycle, seq_length + 1)
         step = 0
-        rule = f"Repeat the group: {cycle}"
+        rule = f"Repeat the group: {', '.join(map(str, cycle))}"
     elif pattern_type == "arithmetic_decreasing":
         pairs = []
         for s in range(step_lo, step_hi + 1):
@@ -245,17 +326,34 @@ def generate_params(
         sequence = _make_arithmetic_sequence(first, step, seq_length + 1, increasing=False)
         rule = f"Subtract {step} each time"
     elif pattern_type == "combined":
-        # Create a nested pattern: an inner repeating loop + an outer increasing step
-        # E.g. [11, 12, 13, 21, 22, 23, 31, 32, 33]
+        # Create a nested pattern: an inner repeating loop + an outer
+        # increasing OR decreasing step. E.g. [11, 12, 13, 21, 22, 23, 31,
+        # 32, 33] (increasing) or [51, 52, 53, 41, 42, 43, 31, 32, 33]
+        # (decreasing). The competency explicitly names both directions
+        # ("repeating and increasing components OR repeating and
+        # decreasing components"), but this branch always built an
+        # increasing outer step -- the decreasing half was structurally
+        # impossible to generate, not just unsampled by default.
         inner_cycle_len = rng.randint(2, 3)
-        outer_step = rng.choice([1, 2, 5, 10])
+        outer_step_mag = rng.choice([1, 2, 5, 10])
         
         # Cap sequence length to 9 terms to avoid UI clutter
         total_elements = min(9, inner_cycle_len * 3)
         seq_length = total_elements - 1
+        max_block_idx = (total_elements - 1) // inner_cycle_len
         
+        decreasing = rng.random() < 0.5
         inner_cycle = [rng.randint(1, 9) for _ in range(inner_cycle_len)]
-        outer_start = rng.randint(1, 5) * 10
+        if decreasing:
+            outer_step = -outer_step_mag
+            # Start high enough that even after max_block_idx downward
+            # steps, the smallest term (plus the largest inner-cycle
+            # digit) stays a positive, grade-appropriate number.
+            min_start = (max_block_idx * outer_step_mag + 1) * 10
+            outer_start = min_start + rng.randint(0, 4) * 10
+        else:
+            outer_step = outer_step_mag
+            outer_start = rng.randint(1, 5) * 10
         
         sequence = []
         for i in range(total_elements):
@@ -265,7 +363,7 @@ def generate_params(
             sequence.append(val)
             
         step = outer_step * 10
-        rule = f"Repeat the ones {inner_cycle} and add {step} every group"
+        rule = f"Repeat the ones {inner_cycle} and {'subtract' if decreasing else 'add'} {abs(step)} every group"
     else:  # arithmetic_increasing (default)
         pairs = []
         for s in range(step_lo, step_hi + 1):
@@ -294,7 +392,7 @@ def generate_params(
     first_val = sequence[0]
     position = missing_index + 1 if missing_index >= 0 else seq_length + 1
 
-    return {
+    result_dict = {
         "blank_target": "answer",
         "sequence":          visible,
         "missing_index":     missing_index,
@@ -306,6 +404,26 @@ def generate_params(
         "pattern_kind":      pattern_type,
         "given_values":      {f"term_{i}": val for i, val in enumerate(visible)},
     }
+    if pattern_type == "repeating":
+        # fmt_pattern_sequence.py's trap builder needs the repeating unit
+        # and its length to build cycle-aware distractors (other members
+        # of the cycle, off-by-one-in-cycle) -- without these it indexed
+        # into an empty fallback list ("list index out of range") once
+        # patterns actually reached that formatter's repeating-kind trap
+        # branch (see that file's own fix comment).
+        result_dict["base_pattern"] = cycle
+        result_dict["period"] = len(cycle)
+    if isinstance(answer, str):
+        # A letter answer can't use the shared numeric-offset distractor
+        # padding (base_generator's type-consistency guard correctly
+        # skips it for a string correct_answer), so without explicit
+        # distractors here an MCQ/cloze render would have zero wrong
+        # options to offer. Pick 3 other letters, excluding any already
+        # used in this cycle so a distractor can't coincidentally also be
+        # a valid position in the same pattern.
+        pool = [c for c in _LETTER_POOL if c not in visible and c != answer]
+        result_dict["distractors"] = rng.sample(pool, min(3, len(pool)))
+    return result_dict
 
 
 # ─── hint generator ───────────────────────────────────────────────────────────
@@ -354,7 +472,14 @@ PATTERNS_DNA = DNA(
         "cloze",
         "numeric_input",
         "pattern_sequence",
-        "fill_in_table",
+        # "fill_in_table" removed: that formatter is a categorical
+        # count table (categories + counts, e.g. for pictographs) --
+        # patterns.py never produces "categories"/"values" data, so it
+        # always fell back to a hardcoded, content-free placeholder
+        # ("A, B, C" / "1, 2, 3") regardless of seed or the actual
+        # pattern (blind review of mat_g3_na_q3_6: "Fill in the table
+        # with the correct counts", answer [1, 2, 3], for every seed
+        # that landed on it -- unrelated to any generated pattern).
     ],
     requires_context=False,
     visual_home="PatternSequence",
