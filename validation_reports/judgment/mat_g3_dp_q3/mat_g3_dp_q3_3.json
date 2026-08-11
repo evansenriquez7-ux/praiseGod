@@ -1,0 +1,410 @@
+{
+  "node_id": "mat_g3_dp_q3_3",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    51,
+    68,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "read_mcq",
+      "question_text": "Look at the bar graph. What is the value for dogs?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 61,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 27,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 60,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "read_mcq",
+      "question_text": "Look at the bar graph. What is the value for grapes?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 41,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 25,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "A bar graph shows 2233 costume sash and 6570 wristband sold at the school stage. How many items were sold in total?",
+      "correct_answer": 8803,
+      "options": [
+        {
+          "key": "A",
+          "value": 8802,
+          "text": "8802",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8813,
+          "text": "8813",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8804,
+          "text": "8804",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8803,
+          "text": "8803",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "A bar graph shows 1650 headband and 4444 cap sold at the barangay court. How many items were sold in total?",
+      "correct_answer": 6094,
+      "options": [
+        {
+          "key": "A",
+          "value": 6095,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6104,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6094,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 6093,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "read_mcq",
+      "question_text": "Look at the bar graph. What is the value for dogs?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 50,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "true_false",
+      "question_text": "A bar graph shows 700 fan shirt and 8970 tote bag sold at the music store. How many items were sold in total? The answer is 9669. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 51,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Create a bar graph to show: Monday: 70, Tuesday: 45, Wednesday: 45, Thursday: 15.",
+      "correct_answer": [
+        70,
+        45,
+        45,
+        15
+      ]
+    },
+    {
+      "seed": 68,
+      "formatter": "error_detect",
+      "question_text": "Rico solved this problem: \"A bar graph shows 1485 USB drive and 3560 solar toy sold at the school lab. How many items were sold in total?\" Rico says the answer is 5044. Is Rico correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 5045
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "error_detect",
+      "question_text": "Rico solved this problem: \"A bar graph shows 1 hair tie set and 0 duffel bag sold at the barangay plaza. How many items were sold in total?\" Rico says the answer is 1. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 1
+      }
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "A bar graph shows ___ bread loaf and 0 cooking apron sold at the bakery. How many items were sold in total?",
+      "correct_answer": 1,
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "text": "1",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "text": "0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "A bar graph shows 0 fan shirt and 1 poster sold at the music store. How many items were sold in total?",
+      "correct_answer": 1,
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 0,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "A bar graph shows 1240 streamer merch shirt and 1690 pin badge sold at the home stream setup. How many items were sold in total?",
+      "correct_answer": 2930,
+      "options": [
+        {
+          "key": "A",
+          "value": 2940,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2929,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2930,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2931,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Create a bar graph (horizontal bars) to show: Monday: 55, Tuesday: 50, Wednesday: 45, Thursday: 60.",
+      "correct_answer": [
+        55,
+        50,
+        45,
+        60
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "A bar graph shows 8820 fan shirt and 279 wristband sold at the school canteen. How many items were sold in total?",
+      "correct_answer": 9099,
+      "options": [
+        {
+          "key": "A",
+          "value": 9099,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9098,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8541,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9109,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Create a bar graph to show: Math: 45, Science: 50, English: 30, Art: 40.",
+      "correct_answer": [
+        45,
+        50,
+        30,
+        40
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "read_mcq",
+      "question_text": "Look at the bar graph. What is the value for birds?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 65,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 64,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 37,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Create a bar graph to show: Math: 50, Science: 35, English: 45, Art: 40.",
+      "correct_answer": [
+        50,
+        35,
+        45,
+        40
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Nine of the seventeen samples genuinely solve a problem from graph-implied data (e.g. seed 44's 'A bar graph shows 2233 costume sash and 6570 wristband sold at the school stage. How many items were sold in total?'), but four samples (42, 43, 46, 604) are pure value-reads and four more (51, 601, 603, 605) are 'create a bar graph' tasks, neither of which solves a problem."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "The competency calls for bar graphs '(horizontal and vertical)'; only seed 601's create-graph item ('Create a bar graph (horizontal bars) to show: Monday: 55, Tuesday: 50, Wednesday: 45, Thursday: 60') names an orientation, and it is a presenting task rather than a solving task, so the solve-a-problem items never distinguish horizontal from vertical."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The solving items use additions up to four digits (seed 44's 8803 total), which is within Grade 3 Quarter 3 computational range."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "All nine genuine solve-a-problem items share the same two-item, find-the-total structure seen in seed 44's costume-sash-and-wristband item; there is no difference/comparison word problem using graph data within this node."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Eight of seventeen samples (the pure reads and the create-graph items) vary along a different skill axis than 'solve problems using data', diluting the competency's intended focus."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The largest computed total, seed 602's 9099, is a reasonable scale for Grade 3 addition word problems."
+    }
+  },
+  "overall": "CONCERN"
+}

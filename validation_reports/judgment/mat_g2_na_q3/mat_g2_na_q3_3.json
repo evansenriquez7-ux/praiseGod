@@ -1,0 +1,366 @@
+{
+  "node_id": "mat_g2_na_q3_3",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    500,
+    501,
+    502,
+    600,
+    602,
+    603
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "Daniel puts 10 coins in each of 4 bags. How many coins are in all the bags?",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 39,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 40,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 30,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Kuya Bien puts 2 story chapters in each of 2 bags. How many story chapters are in all the bags?",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 0,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "Lara wants to buy 2 ribbons that cost ₱4 each. How much does Lara need to pay in all?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "text": "8",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Coach Roel wants to buy 2 water bottles that cost ₱3 each. How much does Coach Roel need to pay in all?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Ate Cara puts 4 photo albums in each of 1 bag. How many photo albums are in all the bags?",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "true_false",
+      "question_text": "Mia wants to buy 2 merchandise shirts that cost ₱5 each. How much does Mia need to pay in all? The answer is 5. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
+      "formatter": "error_detect",
+      "question_text": "Grace solved this problem: \"Sora puts 2 concert tickets in each of 3 bags. How many concert tickets are in all the bags?\" Grace says the answer is 1. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 6
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "error_detect",
+      "question_text": "Rico solved this problem: \"Lara wants to buy 8 fan accessories that cost ₱10 each. How much does Lara need to pay in all?\" Rico says the answer is 80. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 80
+      }
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "Lola Ising wants to buy 6 loaves of bread that cost ₱5 each. How much does Lola Ising need to pay in all?",
+      "correct_answer": 30,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "text": "30",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 25,
+          "text": "25",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Kuya Pat wants to buy 9 concert tickets that cost ₱4 each. How much does Kuya Pat need to pay in all?",
+      "correct_answer": 36,
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 36,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Jomar wants to buy 2 clip highlights that cost ₱3 each. How much does Jomar need to pay in all?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Janna wants to buy 2 fan shirts that cost ₱4 each. How much does Janna need to pay in all?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "Yna puts 2 sketchpads in each of 4 bags. How many sketchpads are in all the bags?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "text": "8",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Word problems consistently multiply within the 2, 3, 4, 5, and 10 tables, e.g. seed 502's 'Kuya Pat wants to buy 9 concert tickets that cost ₱4 each' (9×4, part of the 4-times table)."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All five named tables (2, 3, 4, 5, 10) are exercised at least once across the thirteen samples, e.g. seed 42 uses 10, seed 45 uses 3, seed 502 uses 4."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Contexts (bags of items, buying items at a peso price) are concrete and appropriate for Grade 2 Quarter 3."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Both non-money bag-counting problems (seed 42's 'Daniel puts 10 coins in each of 4 bags') and money-priced-purchase problems (seed 44's 'Lara wants to buy 2 ribbons that cost ₱4 each') appear, matching 'including problems involving money'."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample stays within the 2/3/4/5/10-times tables named by the competency; the largest product found, seed 500's 8×10=80, still uses table-10."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Products found top out at 80 (seed 500's '8 fan accessories that cost ₱10 each'), consistent with multiplication tables through 10."
+    }
+  },
+  "overall": "PASS"
+}

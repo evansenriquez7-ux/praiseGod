@@ -1,0 +1,488 @@
+{
+  "node_id": "mat_g3_mg_q1_0",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    500,
+    501,
+    502,
+    601,
+    602,
+    603,
+    604,
+    605,
+    606
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 2 rows and 7 columns. Estimate how many unit tiles cover the rectangle in all.",
+      "correct_answer": 14,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 4 rows and 7 columns. Estimate how many unit tiles cover the rectangle in all.",
+      "correct_answer": 28,
+      "options": [
+        {
+          "key": "A",
+          "value": 28,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 6 rows and 6 columns. Estimate how many unit tiles cover the square in all.",
+      "correct_answer": 36,
+      "options": [
+        {
+          "key": "A",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 37,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 36,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "You are laying unit square tiles over a square, fitting 5 rows and 5 columns exactly. About how many tiles in total will you use?",
+      "correct_answer": 25,
+      "options": [
+        {
+          "key": "A",
+          "value": 26,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 25,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 5 rows and 2 columns. Estimate how many unit tiles cover the rectangle in all.",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "cloze",
+      "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 4 rows and 4 columns. Estimate how many unit tiles cover the square in all.",
+      "correct_answer": 16,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "text": "16",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "text": "15",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "text": "17",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "cloze",
+      "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 10 rows and 10 columns. Estimate how many unit tiles cover the square in all.",
+      "correct_answer": 100,
+      "options": [
+        {
+          "key": "A",
+          "value": 100,
+          "text": "100",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "text": "40",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "text": "20",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 101,
+          "text": "101",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 12 rows and 12 columns. Estimate how many unit tiles cover the square in all.",
+      "correct_answer": 144,
+      "options": [
+        {
+          "key": "A",
+          "value": 144,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 145,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 48,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 24,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 4 rows and 4 columns. Estimate how many unit tiles cover the square in all.",
+      "correct_answer": 16,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Pia wants to cover a rectangular garden that is 7 cm long and 6 cm wide with square tiles. How many tiles are needed to cover it completely?",
+      "correct_answer": 42,
+      "options": [
+        {
+          "key": "A",
+          "value": 26,
+          "text": "26",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "text": "13",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "text": "14",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 42,
+          "text": "42",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "You are laying unit square tiles over a rectangle, fitting 5 rows and 3 columns exactly. About how many tiles in total will you use?",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 16,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "You are laying unit square tiles over a square, fitting 3 rows and 3 columns exactly. About how many tiles in total will you use?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "You are laying unit square tiles over a rectangle, fitting 3 rows and 5 columns exactly. About how many tiles in total will you use?",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "cloze",
+      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 6 rows and 5 columns. Estimate how many unit tiles cover the rectangle in all.",
+      "correct_answer": 30,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "text": "30",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 22,
+          "text": "22",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 7 rows and 8 columns. Estimate how many unit tiles cover the rectangle in all.",
+      "correct_answer": 56,
+      "options": [
+        {
+          "key": "A",
+          "value": 56,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Samples consistently describe a grid of unit tiles and ask for the total, e.g. seed 42's 'A rectangle is covered edge-to-edge with unit square tiles, arranged in 2 rows and 7 columns. Estimate how many unit tiles cover the rectangle in all.', which matches this competency's own 'estimate the area of a square or rectangle using square tile units' wording directly."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both squares (seed 44, 6×6) and rectangles (seed 42, 2×7) are covered, and a garden word-problem variant (seed 601) is included."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Grid sizes stay in the single-to-low-double-digit range for rows and columns (up to 12×12 in seed 501), suitable for a Grade 3 Quarter 1 introductory tiling activity."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Phrasing varies across samples ('is covered edge-to-edge', 'You are laying unit square tiles over...', the garden word problem), avoiding a single rigid template."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample's answer is the tile count from a described grid, directly testing the tile-based estimation skill rather than an unrelated axis."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The largest grid found, 12 rows by 12 columns (seed 501, 144 tiles), remains a countable tile array appropriate for this introductory competency."
+    }
+  },
+  "overall": "PASS"
+}

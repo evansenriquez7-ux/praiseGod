@@ -1,0 +1,479 @@
+{
+  "node_id": "mat_g2_na_q2_5",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    72,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    606
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "In a pictograph, Daniel's group collected 100 coins and another group collected 2 coins. How many more did Daniel's group collect?",
+      "correct_answer": 98,
+      "options": [
+        {
+          "key": "A",
+          "value": 102,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 99,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 98,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 97,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "In a pictograph, Kuya Bien's group collected 42 story chapters and another group collected 1 story chapters. How many more did Kuya Bien's group collect?",
+      "correct_answer": 41,
+      "options": [
+        {
+          "key": "A",
+          "value": 41,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 42,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 43,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "In a pictograph, Lara's group collected 90 ribbons and another group collected 25 ribbons. How many more did Lara's group collect?",
+      "correct_answer": 65,
+      "options": [
+        {
+          "key": "A",
+          "value": 64,
+          "text": "64",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 115,
+          "text": "115",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 66,
+          "text": "66",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 65,
+          "text": "65",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "In a pictograph, Coach Roel's group collected 60 water bottles and another group collected 53 water bottles. How many more did Coach Roel's group collect?",
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 113,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "In a pictograph, Ate Cara's group collected 55 photo albums and another group collected 30 photo albums. How many more did Ate Cara's group collect?",
+      "correct_answer": 25,
+      "options": [
+        {
+          "key": "A",
+          "value": 26,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 25,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 85,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "error_detect",
+      "question_text": "Jose solved this problem: \"In a pictograph, Mia's group collected 60 merchandise shirts and another group collected 1 merchandise shirts. How many more did Mia's group collect?\" Jose says the answer is 59. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 59
+      }
+    },
+    {
+      "seed": 55,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 25 frogs) — There are 25 frogs.\n15 frogs are taken away.\nHow many frogs are left?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 72,
+      "formatter": "true_false",
+      "question_text": "In a pictograph, Sir Dave's group collected 64 speech scripts and another group collected 0 speech scripts. How many more did Sir Dave's group collect? The answer is 64. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 94 drinks) — There are 94 drinks.\n38 drinks are taken away.\nHow many drinks are left?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 38,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 94,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 56,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 132,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "In a pictograph, Lola Ising's group collected 100 loaves of bread and another group collected 91 loaves of bread. How many more did Lola Ising's group collect?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 191,
+          "text": "191",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "In a pictograph, Kuya Pat's group collected 100 concert tickets and another group collected 93 concert tickets. How many more did Kuya Pat's group collect?",
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 193,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "In a pictograph, Jomar's group collected 60 clip highlights and another group collected 26 clip highlights. How many more did Jomar's group collect?",
+      "correct_answer": 34,
+      "options": [
+        {
+          "key": "A",
+          "value": 86,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 33,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 34,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 35,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "true_false",
+      "question_text": "In a pictograph, Pia's group collected 33 leashes and another group collected 0 leashes. How many more did Pia's group collect? The answer is 33. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "In a pictograph, Janna's group collected 30 fan shirts and another group collected 26 fan shirts. How many more did Janna's group collect?",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 56,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "In a pictograph, Yna's group collected 84 sketchpads and another group collected 30 sketchpads. How many more did Yna's group collect?",
+      "correct_answer": 54,
+      "options": [
+        {
+          "key": "A",
+          "value": 55,
+          "text": "55",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 54,
+          "text": "54",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 114,
+          "text": "114",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 53,
+          "text": "53",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "In a pictograph, Kris's group collected 25 lightsticks and another group collected 20 lightsticks. How many more did Kris's group collect?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "In a pictograph, Jomar's group collected 48 clip highlights and another group collected 0 clip highlights. How many more did Jomar's group collect?",
+      "correct_answer": 48,
+      "options": [
+        {
+          "key": "A",
+          "value": 48,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 47,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 49,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 50,
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Fifteen of seventeen samples are pictograph-style word problems asking 'How many more' one group collected than another, e.g. seed 45's Coach Roel water-bottle item, which matches this competency's own 'Solve problems (given orally or in pictures) involving subtraction' wording."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both regrouping and non-regrouping cases appear, e.g. seed 44's 90 − 25 (needs regrouping) versus seed 46's 55 − 30 (no regrouping needed), covering the 'with and without regrouping' clause."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Story contexts (frogs taken away, group collections) stay concrete and age-appropriate for Grade 2 Quarter 2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Multiple formatters are used — mcq, cloze, error_detect, true_false, read_mcq — giving the competency's 'given orally or in pictures' framing several presentation styles."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All samples subtract, matching the competency's operation."
+    },
+    "scale_appropriateness": {
+      "verdict": "FAIL",
+      "rationale": "Seeds 42, 501, and 502 each use exactly 100 as one operand ('Daniel's group collected 100 coins', 'Lola Ising's group collected 100 loaves of bread', 'Kuya Pat's group collected 100 concert tickets'), which is not less than 100 as the competency requires ('both numbers are less than 100')."
+    }
+  },
+  "overall": "FAIL"
+}
