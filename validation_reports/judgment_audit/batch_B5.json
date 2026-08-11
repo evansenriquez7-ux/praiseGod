@@ -1,0 +1,214 @@
+{
+  "batch": "B5",
+  "audited_on": "2026-08-12",
+  "nodes_audited": 25,
+  "independent_rejudge": {
+    "nodes": ["mat_g2_na_q2_1", "mat_g2_na_q2_6", "mat_g2_na_q3_0", "mat_g2_na_q3_5", "mat_g2_na_q4_2"],
+    "my_verdict": {
+      "mat_g2_na_q2_1": "CONCERN",
+      "mat_g2_na_q2_6": "PASS",
+      "mat_g2_na_q3_0": "FAIL",
+      "mat_g2_na_q3_5": "PASS",
+      "mat_g2_na_q4_2": "FAIL"
+    },
+    "filed_verdict": {
+      "mat_g2_na_q2_1": "CONCERN",
+      "mat_g2_na_q2_6": "PASS",
+      "mat_g2_na_q3_0": "FAIL",
+      "mat_g2_na_q3_5": "PASS",
+      "mat_g2_na_q4_2": "FAIL"
+    },
+    "disagreement_rate": 0.0,
+    "note": "All 5 overall verdicts agree with mine on direction (PASS/CONCERN/FAIL). Two of the five (q3_0, q4_2) are nonetheless voided below for false sub-claims inside their rationale -- the ultimate verdict direction survives independently on the other 5 sub-findings, but the specific claim quoted is fabricated/miscounted and must not be trusted as written."
+  },
+  "per_node": {
+    "mat_g2_na_q2_1": {
+      "describes_these_samples": false,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": true,
+      "notes": "cognitive_capacity rationale claims the 'Which has a greater value...' frame repeats 'across all seventeen samples'. False: seed 50 ('Count the coins and bills shown. What is the total amount?'), seed 55 ('Use coins and bills to make exactly ₱21...'), and seed 500 ('Use coins and bills to make exactly ₱770...') use a different frame entirely -- and the review's own competency_fulfillment finding two lines above already flags seed 55 as breaking the comparison pattern, so this is an internal self-contradiction, not just an oversight. Other 5 sub-findings (competency_fulfillment, comprehensive_coverage, variant_comprehensiveness, competency_alignment, scale_appropriateness) check out against the packet; overall CONCERN verdict is independently well-supported."
+    },
+    "mat_g2_na_q2_2": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "scale_appropriateness CONCERN checked: max sum across all 17 samples is 522 (seed 602), confirmed correct, and no sample approaches the ₱1000 ceiling. All other claims verified against packet quotes. Clean review."
+    },
+    "mat_g2_na_q2_3": {
+      "describes_these_samples": false,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": true,
+      "notes": "variant_comprehensiveness rationale claims the two number-line items (seed 50, seed 605) 'both use three-digit starting points'. False for seed 605: packet text is 'The dot is at 28 and it moves backward 15 numbers' -- 28 is two-digit, actually within the competency's 2-digit-by-1-digit scope. The other 5 sub-findings (competency_fulfillment's seed 42/600 quotes, cognitive_capacity's seed 502, competency_alignment, scale_appropriateness's seed 604/601 quotes) are all verified accurate and the packet genuinely is dominated by 3-digit-by-3-digit subtraction far outside the node's stated 2-digit-by-1-digit scope, so the overall FAIL is independently well-supported despite this one false claim."
+    },
+    "mat_g2_na_q2_4": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified every numeric claim: all subtraction operands stay under 100 (largest is seed 502's 93-65), both 2-digit-minus-1-digit and 2-digit-minus-2-digit sub-cases are genuinely present (seed 42/45 vs seed 44/603), and all four cited formatters (pictograph true_false at 601, number-line read_mcq at 51, true_false, error_detect) are present. Clean review, overall PASS correct."
+    },
+    "mat_g2_na_q2_5": {
+      "describes_these_samples": false,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": true,
+      "notes": "comprehensive_coverage rationale cites seed 602's '30 fan shirts and another group collected 26 fan shirts' (30-26) as a 'non-regrouping' difference contrasted with seed 44's regrouping example. This is a math error: 30-26 requires borrowing (ones digit 0 < 6), so it IS a regrouping subtraction, not a non-regrouping one. The broader claim that both sub-cases exist in the packet is still true (e.g. seed 43's 42-1, seed 46's 55-30, seed 55's 25-15 are genuine non-regrouping examples), just not via the cited example. scale_appropriateness's '100' count (seeds 42, 501, 502) was independently verified correct (exactly 3 items). Overall CONCERN verdict still holds on the accurate scale_appropriateness finding alone."
+    },
+    "mat_g2_na_q2_6": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified: max minuend across all 18 samples is 870 (seed 602), all subtractions stay under 1000, regrouping vs non-regrouping example (seed 44's 270-208 vs seed 43's 5-1) checked correct this time (0-8 requires borrow, 5-1 does not), all cited formatters present. Clean review, overall PASS correct."
+    },
+    "mat_g2_na_q2_7": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified none of the 16 samples use a ₱ symbol and none require a second arithmetic step, despite the competency naming both '2-step' and 'money' sub-cases explicitly -- a real, confirmed content gap. All formatter and seed citations check out. Overall FAIL correct."
+    },
+    "mat_g2_na_q2_8": {
+      "describes_these_samples": false,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": true,
+      "notes": "scale_appropriateness claims 'sequence values stay within a 0-91 span across the ten samples'. False: the actual numeric range across all 10 samples (including the read_mcq option values) is 0-88 (seed 500's decoy option D=88 is the max; the correct answer is 86). No sample contains 91 -- that value belongs to the SIBLING node q2_9 (seeds 500/501 there genuinely reach 91), suggesting the figure was carried over from the wrong node. Substantively harmless (30 or 88, either is well within grade-2 range) but it is a fabricated number, not a counted one. Other 5 sub-findings verified accurate (letter/numeric/repeating-cycle pattern types, formatter variety, 6-term length). Overall PASS still correct."
+    },
+    "mat_g2_na_q2_9": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified rule set claim exactly: increasing rules {Add 1, Add 2, Add 3} at seeds 43/44, 50, 45; decreasing rules {Subtract 1, 2, 3, 7} at seeds 42/500, 46, 501, 502 -- matches the claim precisely. variant_comprehensiveness's claim that even the cloze items (50, 500) present 4 options with a single planted error was checked directly against the packet and is accurate. Clean review, overall CONCERN correct."
+    },
+    "mat_g2_na_q3_0": {
+      "describes_these_samples": false,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": true,
+      "notes": "variant_comprehensiveness claims 'All eleven samples are single repeated-addition-to-product conversions'. False: seeds 500 ('What is 7 × 10?'), 501 ('What is 10 × 10?'), and 502 ('What is 8 × 10?') show no repeated-addition step at all -- pure fact recall -- and seed 601 is a grouping word problem, not a repeated-addition-to-product conversion. Only 7 of 11 samples (42,43,44,45,46,603,606) actually fit the described pattern. Despite this, the other 5 sub-findings are independently solid and verified: no sample anywhere uses the competency's own 'X groups of Y' / 'X Ys' language (competency_fulfillment, confirmed by direct text search), the only word problem (seed 601) asks for a total rather than group construction (comprehensive_coverage, confirmed), and every sample introduces the '×' symbol despite this node's wording never mentioning it (cognitive_capacity). Overall FAIL is well-supported independent of the miscounted sub-claim."
+    },
+    "mat_g2_na_q3_1": {
+      "describes_these_samples": false,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": true,
+      "notes": "variant_comprehensiveness claims 'Every sample besides seed 601 follows the pattern of seed 44's \"2+2+2=___. What is 2×3?\"'. False for the same reason as its sibling q3_0 (identical sample set): seeds 500, 501, 502 show no repeated-addition step at all. The comprehensive_coverage FAIL finding (none of arrays, counting-by-multiples, or number-line jumps appear, despite the competency naming all four representations) was independently verified true and is unaffected. Overall FAIL still holds."
+    },
+    "mat_g2_na_q3_2": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified all five named tables (2,3,4,5,10) appear as a factor somewhere in the 16 samples, and the largest product (seed 500's 8×10=80) stays inside the named-table scope. Clean review, overall PASS correct."
+    },
+    "mat_g2_na_q3_3": {
+      "describes_these_samples": false,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": true,
+      "notes": "scale_appropriateness claims products 'top out at seed 502's 9-tickets-at-₱4-each scenario' (36). False: seed 500 ('Lara wants to buy 8 fan accessories that cost ₱10 each... Rico says the answer is 80') has product 80, more than double the cited max. The true max is still inside the 2,3,4,5,10-table scope (8×10=80), so the PASS direction is not disturbed, but the specific 'topping out at 36' claim is wrong. All other sub-findings (money vs. non-money grouping contrast at seed 44/501 vs 42, four formatters present) verified accurate."
+    },
+    "mat_g2_na_q3_4": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified: largest dividend is seed 502/501's 100÷10=10 (confirmed, nothing larger appears), array/shading/pure-fact/money-word-problem variety confirmed present. Clean review, overall PASS correct."
+    },
+    "mat_g2_na_q3_5": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified the repeated-subtraction seed list (43, 46, 601, 604, 605) is exhaustive and correct, and all three named models (equal sharing, array/equal-group formation, repeated subtraction) are genuinely present. Clean review, overall PASS correct."
+    },
+    "mat_g2_na_q3_6": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified all five named divisors (2,3,4,5,10) appear, dividends stay at or below 90. Clean review, overall PASS correct."
+    },
+    "mat_g2_na_q3_7": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified all four missing-slot positions (factor at seed 44, divisor at seed 45, dividend at seed 501, quotient at seed 42) are genuinely present and correctly quoted. Clean review, overall PASS correct."
+    },
+    "mat_g2_na_q3_8": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified both truthful and falsely-labeled even/odd statements are present, the 5-82 numeric span is exact (min=5 at seed 43, max=82 at seeds 42/501), and all 14 samples are indeed identical true_false formatter with no MC variant. Clean review, overall CONCERN correct."
+    },
+    "mat_g2_na_q3_9": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified all 13 samples use a ₱ symbol (no non-monetary sharing scenario exists), and the ₱90 max (seeds 500/501/502) stays inside named-table scope. Clean review, overall CONCERN correct."
+    },
+    "mat_g2_na_q4_0": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified by reading the read_mcq option sets directly: denominators actually present are {2,3,4,5,8}; denominator 6 (named in the competency) genuinely never appears in any of the 9 samples. Clean review, overall CONCERN correct."
+    },
+    "mat_g2_na_q4_1": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified all 10 samples are 'Write [word] in fraction notation' -- the write direction only -- with no 'read' item (e.g. given '1/3', say 'one third') anywhere. Clean review, overall FAIL correct."
+    },
+    "mat_g2_na_q4_2": {
+      "describes_these_samples": false,
+      "verdict_follows_rationale": true,
+      "transplantable_template": true,
+      "void": true,
+      "notes": "variant_comprehensiveness claims 'The only fraction-related items are single-fraction identification (seed 42, seed 43, seed 46, seed 51, seed 605) or shading (seed 55)'. False: seeds 72 ('A shape is divided into 2 equal parts. 1 part is shaded...') and 601 ('...5 equal parts. 1 part is shaded...') are also single-fraction identification items (cloze format) and are omitted from the 'only' list -- undercounts 8 actual fraction items as 6. This exact same seed list (42,43,46,51,605 / 55), word-for-word, appears in sibling node q4_5's variant_comprehensiveness rationale despite the two packets not being identical (q4_2 has seed 610, absent from q4_5; q4_5 has seed 603, absent from q4_2; the actual fraction values differ: 1/3,1/2 vs 2/5,3/4) -- this is a template pasted across siblings that carries the same undercount into both. The other 5 sub-findings are independently verified and damning: literally zero of the 18 samples order two-or-more fractions (all 10 ordering/sort_order items use whole numbers, e.g. seed 44's '495, 231, 502'), the reverse-order sub-case likewise never touches fractions, and a 3-digit whole number (834, seed 610) appears in a unit-fraction-ordering node. Overall FAIL is overwhelmingly correct independent of the templated sub-claim."
+    },
+    "mat_g2_na_q4_3": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified by reading the read_mcq option sets: denominators present are {4,5,6,8} (2/5, 3/4, 3/8, 1/8, 4/5, 7/8, 5/6, 2/4); denominators 2 and 3 genuinely never appear in any of the 9 samples. Note seed 45's correct answer is 1/8, a unit fraction, in a node nominally about non-unit 'similar' fractions -- the review's competency_fulfillment finding cites only a genuine non-unit example (seed 42's 2/5) so this isn't a false claim, but it's a real edge case the review doesn't flag. Overall CONCERN correct on the denominator-coverage finding alone."
+    },
+    "mat_g2_na_q4_4": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Verified all 10 samples are 'Write [word] in fraction notation' -- write direction only, no read item. Denominators tested {3,4,5,6,8} confirmed. Clean review, overall FAIL correct."
+    },
+    "mat_g2_na_q4_5": {
+      "describes_these_samples": false,
+      "verdict_follows_rationale": true,
+      "transplantable_template": true,
+      "void": true,
+      "notes": "variant_comprehensiveness claims 'The only fraction items shown are single-fraction identification (seed 42, seed 43, seed 46, seed 51, seed 605) or shading (seed 55)'. False: seeds 72, 601, and 603 are also single-fraction identification items (cloze format, e.g. seed 72's '5 equal parts, 2 shaded' -> 2/5) omitted from the list -- undercounts 9 actual fraction items as 6. This is the identical seed list, word-for-word, as sibling node q4_2's variant_comprehensiveness rationale, even though q4_5's own packet has a different seed set (603 present here, absent in q4_2; 610 in q4_2, absent here) and different fraction values -- a template copy-pasted across siblings, carrying the same undercount into both. The other 5 sub-findings are independently verified and correct: zero of the 18 samples order two-or-more fractions, all ordering/sort_order items use whole numbers (e.g. seed 602's '499, 509, 504, 506'), and 3-digit whole numbers (e.g. seed 600's 510, seed 44's 502) appear in what should be a fraction-ordering node. Overall FAIL is overwhelmingly correct independent of the templated sub-claim."
+    }
+  },
+  "voided_nodes": [
+    "mat_g2_na_q2_1",
+    "mat_g2_na_q2_3",
+    "mat_g2_na_q2_5",
+    "mat_g2_na_q2_8",
+    "mat_g2_na_q3_0",
+    "mat_g2_na_q3_1",
+    "mat_g2_na_q3_3",
+    "mat_g2_na_q4_2",
+    "mat_g2_na_q4_5"
+  ],
+  "batch_reliable": false,
+  "summary": "9 of 25 filed reviews (36%) contain at least one verifiably false numeric or coverage claim inside their rationale, which is a check-1 failure regardless of whether the node's overall PASS/CONCERN/FAIL verdict happens to be right: q2_1 and q2_3 each mischaracterize one cited sample's digit-count/frame; q2_5 misclassifies a subtraction pair as 'non-regrouping' when it mathematically requires borrowing; q2_8 invents a '0-91' numeric span where the true span is 0-88 (the 91 figure belongs to sibling node q2_9); q3_0 and q3_1 (which share an identical sample set) both claim 'every/all' samples follow a repeated-addition pattern when 3-4 of 11 samples plainly do not; q3_3 understates the true maximum product by more than half (36 vs. the actual 80); and q4_2 and q4_5 (siblings sharing a near-identical but not identical sample set) both carry a word-for-word template rationale in their variant_comprehensiveness finding, listing the identical five seed numbers as 'the only' fraction items in both nodes despite each packet actually containing 2-3 additional fraction-identification items the template omits. Encouragingly, none of these errors flip the underlying verdict direction: in every voided node, the other 4-5 sub-findings independently and correctly justify the overall PASS/CONCERN/FAIL called, and my blind independent re-judgment of 5 pseudo-random nodes (q2_1, q2_6, q3_0, q3_5, q4_2 -- spanning both voided and clean nodes) agreed with the filed overall verdict in all 5 cases (0% disagreement). So the reviewer's judgment about which nodes are broken is trustworthy, but its specific evidentiary claims (counts, spans, 'all/every' assertions) cannot be cited or trusted at face value without independent recount -- exactly the miscounting failure mode flagged going in. Given the void rate clears the 'more than a couple' threshold by a wide margin, the batch is marked unreliable as filed and would need its false sub-claims corrected (not its verdicts reversed) before the evidence trail can be trusted."
+}

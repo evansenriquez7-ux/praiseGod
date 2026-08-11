@@ -1,0 +1,410 @@
+{
+  "node_id": "mat_g2_na_q3_6",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    51,
+    55,
+    85,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is 3 ÷ 3?",
+      "correct_answer": 1,
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 10 ÷ 2?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "40 ÷ 10 = ___",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "text": "30",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 400,
+          "text": "400",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "text": "4",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "cloze",
+      "question_text": "15 ÷ 5 = ___",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 75,
+          "text": "75",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "text": "3",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What is 12 ÷ 2?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "read_mcq",
+      "question_text": "This array has 70 squares split into 10 equal rows. How many squares are in each row?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 34,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 51,
+      "formatter": "error_detect",
+      "question_text": "Ana says: 10 ÷ 5 = 5. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 2
+      }
+    },
+    {
+      "seed": 55,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 12 squares into 2 equal rows. How many squares are in each row?",
+      "correct_answer": 6
+    },
+    {
+      "seed": 85,
+      "formatter": "true_false",
+      "question_text": "20 ÷ 4 = 5. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 90 squares into 10 equal rows. How many squares are in each row?",
+      "correct_answer": 9
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "90 ÷ 10 = 9. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 90 ÷ 10?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 900,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "What is 15 ÷ 5?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 75,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Pia has ₱20 and wants to share it equally among 4 friends. How much does each friend get?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "text": "16",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 80,
+          "text": "80",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 20 ÷ 10?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 200,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "15 ÷ 3 = ___",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 45,
+          "text": "45",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every sample is a direct division fact or word problem built from the 2, 3, 4, 5, or 10 tables, e.g. seed 44's \"40 ÷ 10 = ___\" and seed 601's \"Pia has ₱20 and wants to share it equally among 4 friends.\""
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Every one of the five tables the competency names — 2, 3, 4, 5, and 10 — turns up as a divisor somewhere in the sixteen samples, from seed 44's \"40 ÷ 10\" down to seed 42's \"3 ÷ 3.\""
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Quotients within 2-10 keep the reasoning load appropriate for this grade and quarter."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "mcq, cloze, a read_mcq array, set_fill_in_blank, error_detect, and true_false formats are all represented."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "As with its sibling multiplication node, only the divisor and dividend size change here, e.g. seed 43's \"10 ÷ 2\" against seed 601's ₱20-among-4-friends word problem, keeping every item on the stated tables."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Dividends stay at or below 90, matching the scope of the named tables."
+    }
+  },
+  "overall": "PASS"
+}

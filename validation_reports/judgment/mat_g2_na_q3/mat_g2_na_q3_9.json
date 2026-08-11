@@ -1,0 +1,366 @@
+{
+  "node_id": "mat_g2_na_q3_9",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "Daniel has ₱3 and wants to share it equally among 3 friends. How much does each friend get?",
+      "correct_answer": 1,
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Kuya Bien has ₱10 and wants to share it equally among 2 friends. How much does each friend get?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "Lara has ₱40 and wants to share it equally among 10 friends. How much does each friend get?",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "text": "30",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 400,
+          "text": "400",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "text": "4",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Coach Roel has ₱15 and wants to share it equally among 5 friends. How much does each friend get?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 75,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Ate Cara has ₱12 and wants to share it equally among 2 friends. How much does each friend get?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "true_false",
+      "question_text": "Mia has ₱70 and wants to share it equally among 10 friends. How much does each friend get? The answer is 700. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
+      "formatter": "error_detect",
+      "question_text": "Grace solved this problem: \"Sora has ₱12 and wants to share it equally among 2 friends. How much does each friend get?\" Grace says the answer is 10. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 6
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "error_detect",
+      "question_text": "Rico solved this problem: \"Lara has ₱90 and wants to share it equally among 10 friends. How much does each friend get?\" Rico says the answer is 9. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 9
+      }
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "Lola Ising has ₱90 and wants to share it equally among 10 friends. How much does each friend get?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 900,
+          "text": "900",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 80,
+          "text": "80",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Kuya Pat has ₱90 and wants to share it equally among 10 friends. How much does each friend get?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 900,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Jomar has ₱15 and wants to share it equally among 5 friends. How much does each friend get?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 75,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Pia has ₱20 and wants to share it equally among 4 friends. How much does each friend get?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "text": "16",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 80,
+          "text": "80",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Janna has ₱20 and wants to share it equally among 10 friends. How much does each friend get?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 200,
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every sample is a money-sharing division word problem, e.g. seed 43's \"Kuya Bien has ₱10 and wants to share it equally among 2 friends. How much does each friend get?\""
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Every single one of the thirteen samples is a money context; \"including problems involving money\" implies money is one case among a broader base, but no sharing scenario without pesos appears anywhere in the packet."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Single-step equal-sharing-of-money problems suit grade 2 quarter 3."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "mcq, cloze, error_detect, and true_false formatters vary the presentation, but the underlying scenario — has ₱X, shares among Y friends — never changes, so no non-monetary contextual variant exists."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty is varied by peso amount and friend count within the named tables, e.g. seed 501's \"₱90 and wants to share it equally among 10 friends\" versus seed 42's \"₱3 and wants to share it equally among 3 friends\"."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Amounts stay within the 2, 3, 4, 5, 10-table range, e.g. seed 501's \"₱90\" shared among 10 friends."
+    }
+  },
+  "overall": "CONCERN"
+}

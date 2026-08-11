@@ -1,0 +1,306 @@
+{
+  "node_id": "mat_g2_na_q2_9",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    500,
+    501,
+    502
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "You want to create a decreasing pattern where the rule is: Subtract 1 each time. Which sequence correctly creates it?",
+      "correct_answer": "10, 9, 8, 7, 6, 5",
+      "options": [
+        {
+          "key": "A",
+          "value": "10, 9, 8, 5, 6, 5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "10, 12, 8, 7, 6, 5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "10, 9, 8, 7, 6, 5",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "10, 9, 6, 7, 6, 5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "You want to create an increasing pattern where the rule is: Add 1 each time. Which sequence correctly creates it?",
+      "correct_answer": "11, 12, 13, 14, 15, 16",
+      "options": [
+        {
+          "key": "A",
+          "value": "11, 12, 13, 14, 15, 16",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "11, 13, 13, 14, 15, 16",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "11, 12, 13, 14, 15, 17",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "11, 12, 13, 14, 14, 16",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "You want to create an increasing pattern where the rule is: Add 1 each time. Which sequence correctly creates it?",
+      "correct_answer": "10, 11, 12, 13, 14, 15",
+      "options": [
+        {
+          "key": "A",
+          "value": "10, 11, 11, 13, 14, 15",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "10, 11, 13, 13, 14, 15",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "10, 9, 12, 13, 14, 15",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "10, 11, 12, 13, 14, 15",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "You want to create an increasing pattern where the rule is: Add 3 each time. Which sequence correctly creates it?",
+      "correct_answer": "2, 5, 8, 11, 14, 17",
+      "options": [
+        {
+          "key": "A",
+          "value": "2, 2, 8, 11, 14, 17",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2, 5, 8, 8, 14, 17",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2, 5, 8, 11, 14, 17",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "2, 5, 8, 10, 14, 17",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "You want to create a decreasing pattern where the rule is: Subtract 2 each time. Which sequence correctly creates it?",
+      "correct_answer": "15, 13, 11, 9, 7, 5",
+      "options": [
+        {
+          "key": "A",
+          "value": "15, 13, 11, 9, 7, 7",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "15, 13, 11, 9, 7, 5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "15, 13, 11, 9, 7, 3",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "15, 15, 11, 9, 7, 5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "cloze",
+      "question_text": "You want to create an increasing pattern where the rule is: Add 2 each time. Which sequence correctly creates it?",
+      "correct_answer": "1, 3, 5, 7, 9, 11",
+      "options": [
+        {
+          "key": "A",
+          "value": "1, 3, 5, 10, 9, 11",
+          "text": "1, 3, 5, 10, 9, 11",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1, 3, 5, 7, 9, 11",
+          "text": "1, 3, 5, 7, 9, 11",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "1, 3, 5, 7, 8, 11",
+          "text": "1, 3, 5, 7, 8, 11",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1, 3, 8, 7, 9, 11",
+          "text": "1, 3, 8, 7, 9, 11",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "cloze",
+      "question_text": "You want to create a decreasing pattern where the rule is: Subtract 1 each time. Which sequence correctly creates it?",
+      "correct_answer": "91, 90, 89, 88, 87, 86",
+      "options": [
+        {
+          "key": "A",
+          "value": "91, 90, 89, 88, 87, 86",
+          "text": "91, 90, 89, 88, 87, 86",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "91, 90, 89, 91, 87, 86",
+          "text": "91, 90, 89, 91, 87, 86",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "91, 90, 89, 88, 87, 87",
+          "text": "91, 90, 89, 88, 87, 87",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "91, 90, 89, 88, 85, 86",
+          "text": "91, 90, 89, 88, 85, 86",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "You want to create a decreasing pattern where the rule is: Subtract 3 each time. Which sequence correctly creates it?",
+      "correct_answer": "91, 88, 85, 82, 79, 76",
+      "options": [
+        {
+          "key": "A",
+          "value": "91, 88, 85, 82, 79, 76",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "91, 88, 85, 82, 79, 75",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "91, 88, 85, 81, 79, 76",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "91, 88, 85, 80, 79, 76",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "You want to create a decreasing pattern where the rule is: Subtract 7 each time. Which sequence correctly creates it?",
+      "correct_answer": "89, 82, 75, 68, 61, 54",
+      "options": [
+        {
+          "key": "A",
+          "value": "89, 82, 75, 71, 61, 54",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "89, 82, 75, 68, 61, 54",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "89, 85, 75, 68, 61, 54",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "89, 82, 76, 68, 61, 54",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every item names an explicit rule, such as seed 42's \"Subtract 1 each time\" or seed 45's \"Add 3 each time\", and asks the student to identify the sequence that correctly follows it, matching \"create\" through a selection task."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both increasing rules (Add 1, Add 2, Add 3) and decreasing rules (Subtract 1, Subtract 2, Subtract 3, Subtract 7) appear across the nine samples."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Six-term sequences generated from one constant rule are appropriate to grade 2 quarter 2."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "All nine samples share one task shape — choosing the correctly-built sequence from four options that each contain a single planted error — so no variant asks the student to actually type or extend a sequence."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Whether the rule is add 1 or subtract 7, every item still asks the student to pick the sequence that follows a stated rule, so the difficulty knob is the rule's step size, not a different skill."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Sequence values stay under 100, e.g. seed 500's \"91, 90, 89, 88, 87, 86\", fitting grade 2 quarter 2 magnitude."
+    }
+  },
+  "overall": "CONCERN"
+}

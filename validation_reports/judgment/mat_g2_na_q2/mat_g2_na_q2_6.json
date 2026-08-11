@@ -1,0 +1,468 @@
+{
+  "node_id": "mat_g2_na_q2_6",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    51,
+    55,
+    85,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is 405 − 306?",
+      "correct_answer": 99,
+      "options": [
+        {
+          "key": "A",
+          "value": 711,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 100,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 99,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 98,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 5 − 1?",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "270 − 208 = ___",
+      "correct_answer": 62,
+      "options": [
+        {
+          "key": "A",
+          "value": 61,
+          "text": "61",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 478,
+          "text": "478",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 63,
+          "text": "63",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 62,
+          "text": "62",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "cloze",
+      "question_text": "270 − 205 = ___",
+      "correct_answer": 65,
+      "options": [
+        {
+          "key": "A",
+          "value": 66,
+          "text": "66",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 475,
+          "text": "475",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 65,
+          "text": "65",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 64,
+          "text": "64",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What is 92 − 60?",
+      "correct_answer": 32,
+      "options": [
+        {
+          "key": "A",
+          "value": 33,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 32,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 31,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 152,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 160 and it moves backward 22 numbers. Starting from 160, just count back 22 numbers. Which number will the dot land on?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 182,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 138,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 139,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 137,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 51,
+      "formatter": "error_detect",
+      "question_text": "Ana says: 96 − 60 = 156. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 36
+      }
+    },
+    {
+      "seed": 55,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 3 and 0. What is the sum?",
+      "correct_answer": 3
+    },
+    {
+      "seed": 85,
+      "formatter": "true_false",
+      "question_text": "265 − 210 = 55. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 737 and one part is 166. What is the other part?",
+      "correct_answer": 571
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "754 − 395 = 359. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 823 − 659?",
+      "correct_answer": 164,
+      "options": [
+        {
+          "key": "A",
+          "value": 1482,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 164,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 165,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 163,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "What is 705 − 22?",
+      "correct_answer": 683,
+      "options": [
+        {
+          "key": "A",
+          "value": 727,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 682,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 683,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 684,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "In a pictograph, Pia's group collected ___ leashes and another group collected 0 leashes. How many more did Pia's group collect?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 870 − 535?",
+      "correct_answer": 335,
+      "options": [
+        {
+          "key": "A",
+          "value": 335,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 336,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1405,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 334,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "50 − 40 = ___",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 90,
+          "text": "90",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "What is 233 − 210?",
+      "correct_answer": 23,
+      "options": [
+        {
+          "key": "A",
+          "value": 23,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 443,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 24,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 160 and it moves backward 100 numbers. Starting from 160, just count back 100 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 60,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 260,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 59,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 61,
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every subtraction in the packet stays under 1000 — seed 600's \"What is 705 − 22?\" and seed 502's \"What is 823 − 659?\" are representative — matching the competency directly."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Borrowing shows up in some pairs (seed 44's \"270 − 208\") and not others (seed 43's \"5 − 1\"), and seed 500's \"The total is 737 and one part is 166\" exercises the inverse relationship too, so the packet is not limited to one subtraction style."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Three-digit subtraction with occasional borrowing matches what grade 2 quarter 2 students are expected to handle at this competency."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Number-line items (seed 50, seed 605), true_false, error_detect, cloze, and pictograph formats are all present across the eighteen samples."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "What separates an easy item from a hard one here is digit count and borrowing, not subject matter — seed 43's \"5 − 1\" sits at one extreme and seed 602's \"870 − 535\" at the other, both testing the same skill."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Values reach up to seed 602's \"870 − 535\" without ever crossing the \"less than 1000\" ceiling."
+    }
+  },
+  "overall": "PASS"
+}

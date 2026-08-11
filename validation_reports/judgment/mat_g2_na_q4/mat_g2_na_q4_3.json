@@ -1,0 +1,210 @@
+{
+  "node_id": "mat_g2_na_q4_3",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    500,
+    501,
+    502,
+    601
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "read_mcq",
+      "question_text": "What fraction does the model show?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": "5/2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3/5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2/5",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "5/5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "read_mcq",
+      "question_text": "What fraction does the model show?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": "3/4",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "4/4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4/3",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "set_click",
+      "question_text": "Shade 3/8 of the shape.",
+      "correct_answer": "3/8"
+    },
+    {
+      "seed": 45,
+      "formatter": "read_mcq",
+      "question_text": "What fraction does the model show?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": "7/8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "8/1",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/8",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "8/8",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "read_mcq",
+      "question_text": "What fraction does the model show?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": "3/5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2/5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "5/5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5/2",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "set_click",
+      "question_text": "Shade 4/5 of the shape.",
+      "correct_answer": "4/5"
+    },
+    {
+      "seed": 501,
+      "formatter": "set_click",
+      "question_text": "Shade 7/8 of the shape.",
+      "correct_answer": "7/8"
+    },
+    {
+      "seed": 502,
+      "formatter": "read_mcq",
+      "question_text": "What fraction does the model show?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": "6/5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "5/6",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "1/6",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "6/6",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "set_click",
+      "question_text": "Shade 2/4 of the shape.",
+      "correct_answer": "2/4"
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Items identify a non-unit \"similar\" fraction from a model (seed 42's \"What fraction does the model show?\" → \"2/5\") and shade a stated fraction (seed 44's \"Shade 3/8 of the shape.\"), matching \"represent and identify.\""
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Denominators 4, 5, 6, and 8 appear, including seed 502's \"5/6\", but denominators 2 and 3, both named in the competency, never appear among the nine samples."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Identifying and shading non-unit fractions with small denominators fits grade 2 quarter 4."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Read_mcq identification and set_click shading formats both appear, giving two distinct interaction types."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Numerator and denominator size are the only variables moving between an easy item and a harder one, such as seed 44's \"Shade 3/8 of the shape\" against seed 502's \"5/6\" model, both still representing similar fractions."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Every fraction shown, such as \"3/8\" and \"5/6\", is a proper fraction with a numerator reasonable relative to its denominator."
+    }
+  },
+  "overall": "CONCERN"
+}

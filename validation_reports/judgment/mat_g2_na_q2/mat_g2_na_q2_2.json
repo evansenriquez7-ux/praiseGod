@@ -1,0 +1,486 @@
+{
+  "node_id": "mat_g2_na_q2_2",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    51,
+    55,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "Daniel has ₱1 in bills and ₱40 in coins. How much money does Daniel have in all?",
+      "correct_answer": 41,
+      "options": [
+        {
+          "key": "A",
+          "value": 51,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 42,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 41,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 40,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Kuya Bien has ₱28 in bills and ₱30 in coins. How much money does Kuya Bien have in all?",
+      "correct_answer": 58,
+      "options": [
+        {
+          "key": "A",
+          "value": 58,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 57,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 59,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 68,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "What is the total value of 1 ₱500 bill, 1 ₱5 coin, and 1 ₱1 coin?",
+      "correct_answer": 506,
+      "options": [
+        {
+          "key": "A",
+          "value": 496,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 507,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5060,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 506,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "What is the total value of 1 ₱100 bill, 1 ₱20 bill, and 1 ₱1 coin?",
+      "correct_answer": 121,
+      "options": [
+        {
+          "key": "A",
+          "value": 1210,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 122,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 121,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 111,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Ate Cara has ₱0 in bills and ₱16 in coins. How much money does Ate Cara have in all?",
+      "correct_answer": 16,
+      "options": [
+        {
+          "key": "A",
+          "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 26,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "cloze",
+      "question_text": "Mia has ₱5 in bills and ₱200 in coins. How much money does Mia have in all?",
+      "correct_answer": 205,
+      "options": [
+        {
+          "key": "A",
+          "value": 206,
+          "text": "206",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 205,
+          "text": "205",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2050,
+          "text": "2050",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 195,
+          "text": "195",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 51,
+      "formatter": "true_false",
+      "question_text": "Lara has ₱19 in bills and ₱0 in coins. How much money does Lara have in all? The answer is 19. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 55,
+      "formatter": "error_detect",
+      "question_text": "Grace solved this problem: \"Sora has ₱15 in bills and ₱12 in coins. How much money does Sora have in all?\" Grace says the answer is 37. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 27
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "cloze",
+      "question_text": "What is the total value of 1 ₱10 coin, 1 ₱5 coin, and 3 ₱1 coins?",
+      "correct_answer": 18,
+      "options": [
+        {
+          "key": "A",
+          "value": 18,
+          "text": "18",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 19,
+          "text": "19",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 180,
+          "text": "180",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "What is the total value of 1 ₱10 coin, 1 ₱5 coin, and 3 ₱1 coins?",
+      "correct_answer": 18,
+      "options": [
+        {
+          "key": "A",
+          "value": 18,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 180,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 19,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is the total value of 1 ₱10 coin and 2 ₱5 coins?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 200,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Jomar has ₱5 in bills and ₱50 in coins. How much money does Jomar have in all?",
+      "correct_answer": 55,
+      "options": [
+        {
+          "key": "A",
+          "value": 56,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 55,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 550,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Pia has ₱___ in bills and ₱0 in coins. How much money does Pia have in all?",
+      "correct_answer": 43,
+      "options": [
+        {
+          "key": "A",
+          "value": 42,
+          "text": "42",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 53,
+          "text": "53",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 44,
+          "text": "44",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 43,
+          "text": "43",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is the total value of 1 ₱500 bill, 1 ₱20 bill, and 2 ₱1 coins?",
+      "correct_answer": 522,
+      "options": [
+        {
+          "key": "A",
+          "value": 522,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 5220,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 523,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 512,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "Yna has ₱___ in bills and ₱0 in coins. How much money does Yna have in all?",
+      "correct_answer": 46,
+      "options": [
+        {
+          "key": "A",
+          "value": 47,
+          "text": "47",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 46,
+          "text": "46",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 56,
+          "text": "56",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 45,
+          "text": "45",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "Kris has ₱15 in bills and ₱20 in coins. How much money does Kris have in all?",
+      "correct_answer": 35,
+      "options": [
+        {
+          "key": "A",
+          "value": 35,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 34,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 36,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "error_detect",
+      "question_text": "Liza solved this problem: \"Ching has ₱0 in bills and ₱36 in coins. How much money does Ching have in all?\" Liza says the answer is 36. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 36
+      }
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Seed 42's \"Daniel has ₱1 in bills and ₱40 in coins. How much money does Daniel have in all?\" is a plain addition-of-money scenario, exactly what the competency names."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Bills-plus-coins word problems sit alongside pure \"total value of\" computations (seed 44) and error-checking formats (seed 55's error_detect), giving the addition skill more than one lens."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Each scenario is resolved with a single addition step and short sentences, appropriate for this grade and quarter."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The 17 samples spread across mcq, cloze, true_false, and error_detect formatters."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Item difficulty tracks denomination size and place value — compare seed 46's \"₱0 in bills and ₱16 in coins\" to seed 44's \"1 ₱500 bill, 1 ₱5 coin, and 1 ₱1 coin\" — never an unrelated theme."
+    },
+    "scale_appropriateness": {
+      "verdict": "CONCERN",
+      "rationale": "Across all 17 samples the highest sum is seed 602's \"1 ₱500 bill, 1 ₱20 bill, and 2 ₱1 coins\", which lands well below the sums-up-to-1000 ceiling the competency states; nothing in the packet approaches that limit."
+    }
+  },
+  "overall": "CONCERN"
+}

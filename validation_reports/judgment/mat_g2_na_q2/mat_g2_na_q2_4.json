@@ -1,0 +1,446 @@
+{
+  "node_id": "mat_g2_na_q2_4",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    51,
+    75,
+    82,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is 30 − 3?",
+      "correct_answer": 27,
+      "options": [
+        {
+          "key": "A",
+          "value": 33,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 28,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 27,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 26,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 20 − 1?",
+      "correct_answer": 19,
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 21,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "60 − 51 = ___",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 111,
+          "text": "111",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "cloze",
+      "question_text": "60 − 2 = ___",
+      "correct_answer": 58,
+      "options": [
+        {
+          "key": "A",
+          "value": 59,
+          "text": "59",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 62,
+          "text": "62",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 58,
+          "text": "58",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 57,
+          "text": "57",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "cloze",
+      "question_text": "20 − 15 = ___",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 35,
+          "text": "35",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 90 and one part is 18. What is the other part?",
+      "correct_answer": 72
+    },
+    {
+      "seed": 51,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 50 and it moves backward 1 number. Starting from 50, just count back 1 number. Which number will the dot land on?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 50,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 48,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 49,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 51,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 75,
+      "formatter": "true_false",
+      "question_text": "90 − 2 = 92. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 82,
+      "formatter": "error_detect",
+      "question_text": "Dante says: 30 − 14 = 16. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 16
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "How many items are left?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 38,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 92,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 37,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 36,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "80 − 78 = 2. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 93 − 65?",
+      "correct_answer": 28,
+      "options": [
+        {
+          "key": "A",
+          "value": 158,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 28,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 29,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 27,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "What is 50 − 45?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 95,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "true_false",
+      "question_text": "In a pictograph, Pia's group collected 30 leashes and another group collected 28 leashes. How many more did Pia's group collect? The answer is 2. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 60 − 46?",
+      "correct_answer": 14,
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 106,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "30 − 21 = ___",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 51,
+          "text": "51",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "What is 20 − 12?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 30 and one part is 23. What is the other part?",
+      "correct_answer": 7
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every sampled subtraction keeps both numbers under 100 — seed 42's \"What is 30 − 3?\" and seed 602's \"What is 60 − 46?\" are typical — matching the competency's explicit ceiling."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both named sub-cases show up: 2-digit-minus-1-digit in seed 42 (\"30 − 3\") and seed 45 (\"60 − 2\"), and 2-digit-minus-2-digit in seed 44 (\"60 − 51\") and seed 603 (\"30 − 21\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Single-step subtraction sentences at this magnitude are well within grade 2 quarter 2 reach."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "A pictograph word problem (seed 601), a number-line item (seed 51), true_false, error_detect, and plain computation formats are all represented among the eighteen samples."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The only lever changing across items is regrouping demand and whether the subtrahend has one or two digits — seed 42's clean \"30 − 3\" versus seed 44's \"60 − 51\" — never store size or an unrelated theme."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The largest minuend anywhere in the packet is seed 502's \"93 − 65\", consistent with both numbers staying under 100 as the competency requires."
+    }
+  },
+  "overall": "PASS"
+}

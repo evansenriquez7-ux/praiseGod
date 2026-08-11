@@ -1,0 +1,135 @@
+{
+  "node_id": "mat_g2_na_q3_8",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "true_false",
+      "question_text": "82 ÷ 2 does not come out exactly, so 82 is an odd number. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 43,
+      "formatter": "true_false",
+      "question_text": "5 ÷ 2 does not come out exactly, so 5 is an odd number. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 44,
+      "formatter": "true_false",
+      "question_text": "53 ÷ 2 does not come out exactly, so 53 is an odd number. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 45,
+      "formatter": "true_false",
+      "question_text": "35 ÷ 2 comes out exactly, so 35 is an even number. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 46,
+      "formatter": "true_false",
+      "question_text": "10 ÷ 2 comes out exactly, so 10 is an even number. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "true_false",
+      "question_text": "60 ÷ 2 does not come out exactly, so 60 is an odd number. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "82 ÷ 2 comes out exactly, so 82 is an even number. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 502,
+      "formatter": "true_false",
+      "question_text": "65 ÷ 2 comes out exactly, so 65 is an even number. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 600,
+      "formatter": "true_false",
+      "question_text": "34 ÷ 2 does not come out exactly, so 34 is an odd number. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 601,
+      "formatter": "true_false",
+      "question_text": "25 ÷ 2 does not come out exactly, so 25 is an odd number. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 602,
+      "formatter": "true_false",
+      "question_text": "52 ÷ 2 does not come out exactly, so 52 is an odd number. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 603,
+      "formatter": "true_false",
+      "question_text": "22 ÷ 2 does not come out exactly, so 22 is an odd number. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 604,
+      "formatter": "true_false",
+      "question_text": "9 ÷ 2 comes out exactly, so 9 is an even number. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 605,
+      "formatter": "true_false",
+      "question_text": "23 ÷ 2 comes out exactly, so 23 is an even number. True or False?",
+      "correct_answer": false
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every stem frames the classification through division by 2, e.g. seed 42's \"82 ÷ 2 does not come out exactly, so 82 is an odd number. True or False?\", matching the competency's named method exactly."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both even classifications (seed 46's \"10 ÷ 2 comes out exactly\") and odd classifications (seed 43's \"5 ÷ 2 does not come out exactly\") appear, along with both truthful and falsely-labeled statements."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "A single-sentence true/false check about a number's parity fits grade 2 quarter 3."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "All fourteen samples use the identical true_false sentence frame with only the number and even/odd label swapped, so no multiple-choice or open classification task shape ever shows up."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty is varied only by number size, an axis directly tied to this narrow skill."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numbers stay within a 5-82 span across the fourteen samples, appropriate for grade 2."
+    }
+  },
+  "overall": "CONCERN"
+}

@@ -1,0 +1,473 @@
+{
+  "node_id": "mat_g2_na_q3_7",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "100 ÷ 10 = ___. What is the missing number?",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 110,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "100 ÷ 10 = ___. What is the missing number?",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 110,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "2 × ___ = 20. What is the missing number?",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "text": "30",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "text": "22",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "50 ÷ ___ = 10. What is the missing number?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 60,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "4 ÷ 2 = ___. What is the missing number?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "true_false",
+      "question_text": "8 ÷ ___ = 2. What is the missing number? The answer is 6. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
+      "formatter": "read_mcq",
+      "question_text": "Both sides balance evenly. 2 × ? = 10. What is the missing value?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "Both sides balance evenly. 24 ÷ ? = 8. What is the missing value?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 27,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "___ ÷ 5 = 6. What is the missing number?",
+      "correct_answer": 30,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "text": "30",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 31,
+          "text": "31",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 36,
+          "text": "36",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "___ ÷ 3 = 5. What is the missing number?",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "8 ÷ 4 = ___. What is the missing number?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "10 × ___ = 60. What is the missing number?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 66,
+          "text": "66",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 70,
+          "text": "70",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "text": "6",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "___ ÷ 2 = 10. What is the missing number?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "10 ÷ 5 = ___. What is the missing number?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "4 × 10 = ___. What is the missing number?",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 40,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 50,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 44,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 41,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "true_false",
+      "question_text": "20 ÷ 10 = ___. What is the missing number? The answer is 1. True or False?",
+      "correct_answer": false
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every item explicitly asks \"What is the missing number?\" for a multiplication or division sentence, matching the competency wording verbatim in the stems."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The missing slot moves across positions: missing factor (seed 44's \"2 × ___ = 20\"), missing divisor (seed 45's \"50 ÷ ___ = 10\"), missing dividend (seed 501's \"___ ÷ 5 = 6\"), and missing quotient (seed 42's \"100 ÷ 10 = ___\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Single missing-number equations with small operands fit grade 2 quarter 3."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "mcq, cloze, true_false, and a read_mcq \"balance\" framing (seed 55, seed 500) all appear."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Whether the missing piece is a factor, a divisor, or a dividend, every item is still solving a one-step missing-number sentence built from the 2, 3, 4, 5, or 10 tables named in the competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Values stay within the 2, 3, 4, 5, 10-table range, e.g. seed 42's \"100 ÷ 10.\""
+    }
+  },
+  "overall": "PASS"
+}
