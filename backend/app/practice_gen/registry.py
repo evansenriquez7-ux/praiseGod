@@ -1122,6 +1122,37 @@ def _parse_competency_bounds(
     elif dna_name == "money_peso" and "read and write" in text and "money" in text:
         bounds["operation"] = "read_write"
 
+    # "Determine the value of a number of bills and/or a number of coins"
+    # (mat_g1_na_q4_4) and "Determine and write the value of a number of bills,
+    # or a number of coins, or a combination ..." (mat_g2_na_q2_0). Both fell
+    # through every branch above with `operation` unbound, so nothing pinned
+    # the task to determining a value and variant coverage could serve
+    # change-making instead -- blind review on mat_g2_na_q2_0 flagged seed 606,
+    # "You paid P1 for an item that costs P0. How much change do you receive?",
+    # as "change-making with a nonsensical zero-peso item price rather than the
+    # competency's own task of determining the value of a given set".
+    elif dna_name == "money_peso" and "determine" in text and "value" in text:
+        bounds["operation"] = "add_amounts"
+
+        # mat_g2_na_q2_0's parenthetical enumerates the denomination sub-cases
+        # it wants: "(centavo coins only, peso coins only, peso bills only,
+        # combined peso coins and peso bills)". money_peso.py already supports
+        # coins_only / bills_only / mixed via a `denomination_type` key, but
+        # nothing ever bound it, so every node used the "mixed" default and
+        # blind review found "peso-bills-only shows up in just one item".
+        # A sentinel, not a list: the DNA rotates the sub-cases by seed so one
+        # node's sample set covers each of them.
+        #
+        # NOT handled here: "centavo coins only". money_peso.py stores centavo
+        # denominations as centavo integers (_DENOMS_G2_CENTAVOS = [25, 50],
+        # i.e. P0.25 and P0.50) while the pile/total pipeline is peso-integer,
+        # so dropping them into denom_pool would total them as pesos and label
+        # them wrong. That constant is currently referenced nowhere at all.
+        # Serving centavo piles needs unit-aware render text in the money
+        # formatters, which is its own change.
+        if "peso bills only" in text:
+            bounds["denomination_type"] = "peso_sub_cases"
+
     elif dna_name == "geometric_lines":
         if "straight" in text and "curved" in text:
             bounds["concept_type"] = "straight_curved"

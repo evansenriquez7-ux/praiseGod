@@ -2308,3 +2308,69 @@ distractor-only and confirmed the centavo sign is now genuinely taught. Remainin
   plain numeric answer, exercising no notation at all, and vary difficulty by a "fewest pieces" axis
   the competency never names.
 - Centavo items use only two values, 25¢ and 50¢.
+
+---
+
+## 2026-08-12 — Tick C: money "determine the value" nodes — operation leak, sub-case rotation, coin/bill boundary
+
+**Nodes:** `mat_g2_na_q2_0` (FAIL, target), `mat_g1_na_q4_4` (CONCERN, same root cause).
+
+### The failing rationales
+
+> `mat_g2_na_q2_0` [FAIL] comprehensive_coverage — "Whole-peso denominations (₱1 through ₱500) run
+> through every one of the seventeen items; centavo coins ... do not appear in a single sample, and
+> peso-bills-only shows up in just one item".
+> [CONCERN] competency_fulfillment — seed 606, "You paid ₱1 for an item that costs ₱0. How much change
+> do you receive?" — "change-making with a nonsensical zero-peso item price".
+
+### Three defects, all found by following the binding
+
+1. **`operation` never bound.** Both "Determine the value of..." competencies fell through every branch
+   of the `money_peso` section of `_parse_competency_bounds`, so nothing pinned the task and variant
+   coverage could serve change-making. Bound `operation="add_amounts"` for both.
+2. **`denomination_type` never bound.** The DNA already supported `coins_only` / `bills_only` /
+   `mixed`, but nothing set it, so every node used the `mixed` default. `mat_g2_na_q2_0`'s competency
+   enumerates its sub-cases — "(centavo coins only, peso coins only, peso bills only, combined peso
+   coins and peso bills)" — so a sentinel `peso_sub_cases` is bound and the DNA rotates them by seed.
+3. **The coin/bill boundary was defined twice, with different comparisons.** The render label is
+   `is_bill = denom >= 20` (money_peso.py and base_generator.py), so ₱20 prints as "1 ₱20 bill" — while
+   the `coins_only` filter admitted `d <= 20`, putting ₱20 into the coins-only pool. A "coins only"
+   pile therefore still showed a bill. **This is why the first re-review of this tick still counted
+   zero peso-coins-only samples even after the rotation was bound** — the sub-case was selected and
+   then silently violated by its own pool. Filter now uses `d < 20`, matching the label.
+
+### Before / after
+
+```
+mat_g2_na_q2_0, denomination sub-case counts (classified by each sample's own labels)
+                          BEFORE     AFTER rotation    AFTER boundary fix
+  peso coins only         0          0                 6
+  peso bills only         1          3                 3
+  combined                many       8                 2
+  centavo coins only      0          0                 0     <-- still absent
+change-making samples     1          0                 0
+
+validate_matrix --node, all 8 money_peso nodes   Total Failures Observed: 0 each
+run_all   EXIT_CODE=1   matrix 151/151, 0 failures, 0 non-judgment FAIL lines
+```
+
+### Fresh blind re-review (reviewer never saw the fix)
+
+```
+mat_g2_na_q2_0:  FAIL    -> FAIL      (five of six findings now PASS)
+mat_g1_na_q4_4:  CONCERN -> CONCERN
+```
+
+**`mat_g2_na_q2_0` remains FAIL on exactly one blocker**: "centavo coins only" is one of the four
+sub-cases its competency names, and 0 of 14 samples mention any centavo denomination. Every other
+finding — fulfillment, cognitive capacity, variant comprehensiveness, alignment, scale (reaches the
+₱1000 ceiling exactly at seed 502) — is now PASS.
+
+### Why centavo coins were not done here
+
+`money_peso.py` stores centavo denominations as **centavo integers** (`_DENOMS_G2_CENTAVOS = [25, 50]`,
+i.e. ₱0.25 and ₱0.50) while the pile/total pipeline is **peso-integer**. Dropping them into
+`denom_pool` would total them as pesos and label them wrong ("2 ₱25 coins"). That constant is currently
+referenced **nowhere in the file** — it has always been dead. Serving centavo piles needs unit-aware
+render text in the money formatters (the same three-call-site shape as the array-grid framing), which
+is its own unit of work.

@@ -189,6 +189,15 @@ def generate_params(
     else:
         operation = operation_profile
     denom_type = profile.get("denomination_type", "mixed")
+    if denom_type == "peso_sub_cases":
+        # The registry binds this sentinel for a competency that enumerates the
+        # denomination sub-cases it wants ("peso coins only, peso bills only,
+        # combined peso coins and peso bills"). Pinning one value would leave
+        # the others untested, so rotate them by seed and let a node's sample
+        # set cover each. Centavo-only piles are deliberately absent -- see the
+        # note at the registry binding: this DNA's centavo denominations are
+        # centavo integers and the pile pipeline is peso-integer.
+        denom_type = rng.choice(["coins_only", "bills_only", "mixed"])
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
     if grade == 1 or not allow_centavos:
@@ -197,7 +206,15 @@ def generate_params(
         denom_pool = _DENOMS_G3_PESOS
 
     if denom_type == "coins_only":
-        denom_pool = [d for d in denom_pool if d <= 20]
+        # The coin/bill boundary is defined twice and the two disagreed: the
+        # render label is `is_bill = denom >= 20` (here and in
+        # base_generator), so P20 is written as "1 P20 bill" -- while this
+        # filter admitted `d <= 20`, putting P20 in the coins-only pool. A
+        # "coins only" pile therefore still showed a bill, and blind review
+        # counted zero peso-coins-only samples on mat_g2_na_q2_0 even after
+        # the sub-case rotation was bound. Use the same boundary the label
+        # uses.
+        denom_pool = [d for d in denom_pool if d < 20]
         if not denom_pool:
             denom_pool = [1, 5, 10]
     elif denom_type == "bills_only":

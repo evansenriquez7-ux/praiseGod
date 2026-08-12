@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g1_na_q4_4",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch C9 (post-fix re-review, money value nodes), 2026-08-12",
   "review_date": "2026-08-12",
   "blind": true,
   "sample_seeds": [
@@ -385,12 +385,12 @@
     {
       "seed": 606,
       "formatter": "mcq",
-      "question_text": "You paid ₱10 for an item that costs ₱1. How much change do you receive?",
-      "correct_answer": 9,
+      "question_text": "What is the total value of 1 ₱10 coin and 2 ₱1 coins?",
+      "correct_answer": 12,
       "options": [
         {
           "key": "A",
-          "value": 9,
+          "value": 12,
           "is_correct": true
         },
         {
@@ -419,28 +419,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 606's stem, 'You paid ₱10 for an item that costs ₱1. How much change do you receive?', is a subtraction/change scenario rather than the summation of a fixed set of bills and coins that 'Determine the value of a number of bills and/or a number of coins' describes."
+      "verdict": "PASS",
+      "rationale": "Items directly ask the student to total named bills and coins, e.g. seed 602 \"What is the total value of 1 ₱10 coin and 1 ₱1 coin?\", matching \"Determine the value of a number of bills and/or a number of coins\" without drifting into an unrelated skill."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Single-denomination sets ('What is the total value of 2 ₱10 coins?') and mixed-denomination sets ('What is the total value of 1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin?') both appear, covering the range of set compositions the competency implies."
+      "verdict": "CONCERN",
+      "rationale": "Coins-only combinations dominate at 10 of the 16 seeds (e.g. seeds 42, 43, 44, 600, 601, 606), while a bills-only case appears just once (seed 502, \"2 ₱50 bills\") and a combined bills-and-coins case appears just once (seed 501, \"1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin\") — both present but thin next to the coin-heavy majority the wording \"bills and/or\" implies should be balanced."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Summing two or three named denominations at a time is a manageable single task for this grade and quarter's money unit."
+      "rationale": "Sums stay small and phrasing simple for grade 1 quarter 4, e.g. seed 42 \"What is the total value of 1 ₱5 coin and 1 ₱1 coin?\" resolving to 6, well within first-grade single- and low double-digit addition."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "mcq, cloze, read_mcq, and set_fill_in_blank ('Use coins and bills to make exactly ₱81. Use the fewest pieces possible.') give distinct task shapes for building and reading a total."
+      "rationale": "The seeds cover mcq, read_mcq, set_fill_in_blank, and cloze formatters, and piece counts range from a single coin pairing (seed 606) up to four denominated items (seed 501), so the presentation is not a single repeated template."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Outside the one change-making stem, difficulty tracks the number and size of denominations summed rather than a different money operation."
+      "rationale": "The parenthetical \"(excluding centavo coins)\" is honored throughout — the word \"centavo\" appears in 0 of the 16 question_text strings — and difficulty scales only through denomination and piece count, staying on the competency's own axis."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Totals reach up to ₱100 ('What is the total value of 2 ₱50 bills?') and never exceed it, matching the stated ceiling."
+      "rationale": "The competency caps values at \"up to ₱100\" and seed 502 (\"What is the total value of 2 ₱50 bills?\") reaches that ceiling exactly at correct_answer 100, with seed 607 (\"make exactly ₱2\") anchoring the low end, so the stated range is spanned."
     }
   },
   "overall": "CONCERN"

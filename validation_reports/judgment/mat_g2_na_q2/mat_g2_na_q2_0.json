@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_na_q2_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch C9 (post-fix re-review, money value nodes), 2026-08-12",
   "review_date": "2026-08-12",
   "blind": true,
   "sample_seeds": [
@@ -16,11 +16,8 @@
     501,
     502,
     601,
-    602,
     603,
-    606,
-    607,
-    608
+    604
   ],
   "samples_reviewed": [
     {
@@ -54,27 +51,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 ₱10 coin and 1 ₱1 coin?",
-      "correct_answer": 11,
+      "question_text": "What is the total value of 1 ₱10 coin, 2 ₱5 coins, and 1 ₱1 coin?",
+      "correct_answer": 21,
       "options": [
         {
           "key": "A",
-          "value": 11,
+          "value": 21,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 1,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 110,
+          "value": 210,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 12,
+          "value": 22,
           "is_correct": false
         }
       ]
@@ -82,27 +79,27 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 ₱5 coin and 1 ₱1 coin?",
-      "correct_answer": 6,
+      "question_text": "What is the total value of 2 ₱20 bills?",
+      "correct_answer": 40,
       "options": [
         {
           "key": "A",
-          "value": 60,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 7,
+          "value": 41,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 5,
+          "value": 400,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 6,
+          "value": 40,
           "is_correct": true
         }
       ]
@@ -110,27 +107,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What is the total value of 2 ₱1 coins?",
-      "correct_answer": 2,
+      "question_text": "What is the total value of 2 ₱20 bills?",
+      "correct_answer": 40,
       "options": [
         {
           "key": "A",
-          "value": 1,
+          "value": 400,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
+          "value": 41,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 2,
+          "value": 40,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 20,
+          "value": 30,
           "is_correct": false
         }
       ]
@@ -138,27 +135,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is the total value of 2 ₱20 bills and 1 ₱5 coin?",
-      "correct_answer": 45,
+      "question_text": "What is the total value of 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin?",
+      "correct_answer": 16,
       "options": [
         {
           "key": "A",
-          "value": 450,
+          "value": 160,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 45,
+          "value": 16,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 35,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 46,
+          "value": 17,
           "is_correct": false
         }
       ]
@@ -171,22 +168,22 @@
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 40,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 22,
+          "value": 60,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 2,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 17,
+          "value": 45,
           "is_correct": false
         }
       ]
@@ -194,37 +191,37 @@
     {
       "seed": 55,
       "formatter": "set_fill_in_blank",
-      "question_text": "Use coins and bills to make exactly ₱21. Use the fewest pieces possible.",
-      "correct_answer": 21
+      "question_text": "Use coins and bills to make exactly ₱26. Use the fewest pieces possible.",
+      "correct_answer": 26
     },
     {
       "seed": 72,
       "formatter": "cloze",
-      "question_text": "What is the total value of 2 ₱10 coins and 1 ₱1 coin?",
-      "correct_answer": 21,
+      "question_text": "What is the total value of 4 ₱10 coins and 1 ₱1 coin?",
+      "correct_answer": 41,
       "options": [
         {
           "key": "A",
-          "value": 21,
-          "text": "21",
+          "value": 41,
+          "text": "41",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 11,
-          "text": "11",
+          "value": 31,
+          "text": "31",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 210,
-          "text": "210",
+          "value": 410,
+          "text": "410",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 22,
-          "text": "22",
+          "value": 42,
+          "text": "42",
           "is_correct": false
         }
       ]
@@ -232,8 +229,8 @@
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Use coins and bills to make exactly ₱770. Use the fewest pieces possible.",
-      "correct_answer": 770
+      "question_text": "Use coins and bills to make exactly ₱970. Use the fewest pieces possible.",
+      "correct_answer": 970
     },
     {
       "seed": 501,
@@ -298,157 +295,91 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "What is the total value of 1 ₱20 bill, 1 ₱5 coin, and 1 ₱1 coin?",
-      "correct_answer": 26,
+      "question_text": "What is the total value of 1 ₱10 coin and 3 ₱1 coins?",
+      "correct_answer": 13,
       "options": [
         {
           "key": "A",
-          "value": 16,
-          "text": "16",
+          "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 27,
-          "text": "27",
+          "value": 14,
+          "text": "14",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 260,
-          "text": "260",
+          "value": 130,
+          "text": "130",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 26,
-          "text": "26",
+          "value": 13,
+          "text": "13",
           "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is the total value of 1 ₱50 bill and 1 ₱1 coin?",
-      "correct_answer": 51,
-      "options": [
-        {
-          "key": "A",
-          "value": 51,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 510,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 52,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 41,
-          "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "What is the total value of 1 ₱20 bill, 1 ₱5 coin, and 2 ₱1 coins?",
-      "correct_answer": 27,
+      "question_text": "What is the total value of 2 ₱10 coins and 3 ₱1 coins?",
+      "correct_answer": 23,
       "options": [
         {
           "key": "A",
-          "value": 270,
-          "text": "270",
+          "value": 230,
+          "text": "230",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 27,
-          "text": "27",
+          "value": 23,
+          "text": "23",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 28,
-          "text": "28",
+          "value": 24,
+          "text": "24",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 17,
-          "text": "17",
+          "value": 13,
+          "text": "13",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 606,
+      "seed": 604,
       "formatter": "mcq",
-      "question_text": "You paid ₱1 for an item that costs ₱0. How much change do you receive?",
-      "correct_answer": 1,
+      "question_text": "What is the total value of 1 ₱10 coin, 1 ₱5 coin, and 3 ₱1 coins?",
+      "correct_answer": 18,
       "options": [
         {
           "key": "A",
-          "value": 1,
+          "value": 18,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 3,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 20,
+          "value": 19,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 2,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 607,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Use coins and bills to make exactly ₱51. Use the fewest pieces possible.",
-      "correct_answer": 51
-    },
-    {
-      "seed": 608,
-      "formatter": "cloze",
-      "question_text": "What is the total value of 1 ₱50 bill and 1 ₱5 coin?",
-      "correct_answer": 55,
-      "options": [
-        {
-          "key": "A",
-          "value": 55,
-          "text": "55",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 550,
-          "text": "550",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 45,
-          "text": "45",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 56,
-          "text": "56",
+          "value": 180,
           "is_correct": false
         }
       ]
@@ -456,28 +387,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 606, \"You paid ₱1 for an item that costs ₱0. How much change do you receive?\", tests change-making with a nonsensical zero-peso item price rather than the competency's own task of determining the value of a given set of bills or coins."
+      "verdict": "PASS",
+      "rationale": "Every mcq/cloze/read_mcq item asks a variant of \"What is the total value of\" a named set of bills/coins (e.g. seed 42: \"What is the total value of 1 ₱50 bill, 1 ₱5 coin, and 1 ₱1 coin?\"), which is the exact act the competency names: \"Determine and write the value of a number of bills, or a number of coins.\""
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "Whole-peso denominations (₱1 through ₱500) run through every one of the seventeen items; centavo coins, the first sub-case the competency's parenthetical lists by name, do not appear in a single sample, and peso-bills-only shows up in just one item, seed 502's \"2 ₱500 bills.\""
+      "rationale": "The competency names four sub-cases in parentheses, including \"centavo coins only,\" but 0 of the 14 sampled seeds mention a centavo denomination anywhere in question_text — every item uses only whole-peso coins (₱1, ₱5, ₱10) or peso bills, so this named sub-case is not exercised at all in the packet."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The bill/coin combinations described are short and concrete for the grade."
+      "rationale": "Phrasing stays short and literal (\"What is the total value of 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin?\", seed 46) with at most five denominated items to sum, matching grade 2 quarter 2 arithmetic without introducing multiplication or unrelated wording."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Both reading a given set of bills/coins (seed 42) and constructing an amount from bills/coins (seed 55, \"Use coins and bills to make exactly ₱21. Use the fewest pieces possible.\") are represented."
+      "rationale": "Four distinct formatters appear across the seeds — mcq, read_mcq, set_fill_in_blank, cloze — and piece counts range from a single bill pair (seed 44, \"2 ₱20 bills\") up to five items (seed 42), giving real contextual spread beyond a single template."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Aside from the seed 606 outlier, the varying element is denomination mix and total value, staying on the currency-value skill."
+      "rationale": "Difficulty is varied strictly through the money axis the competency targets — denomination size (₱1 coin up to ₱500 bill) and piece count — not through an unrelated skill like multiplication or measurement."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Seed 502's \"2 ₱500 bills\" reaches exactly the ₱1000 ceiling the competency states."
+      "rationale": "The competency states values \"up to ₱1000\" and seed 502 (\"What is the total value of 2 ₱500 bills?\") lands exactly on that ceiling at correct_answer 1000, with seed 500 (\"make exactly ₱970\") close beneath it, so the range is genuinely exercised near its top."
     }
   },
   "overall": "FAIL"
