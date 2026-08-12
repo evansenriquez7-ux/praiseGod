@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g3_mg_q1_0",
-  "reviewed_by": "claude-opus-5 blind reviewer, area cluster re-review after G3 table gating, 2026-08-13",
+  "reviewed_by": "claude-opus-5 blind reviewer, area cluster re-review after tile-size fix, 2026-08-13",
   "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
@@ -311,7 +311,7 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Pia wants to cover a rectangular garden that is 2 cm long and 3 cm wide with square tiles. How many tiles are needed to cover it completely?",
+      "question_text": "Pia wants to cover a rectangular garden that is 2 cm long and 3 cm wide with square tiles that are 1 cm on each side. How many tiles are needed to cover it completely?",
       "correct_answer": 6,
       "options": [
         {
@@ -427,28 +427,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 50 asks 'Estimate how many unit tiles cover the square in all.' yet keys 16 against 15 and 17, so no actual estimate can pick the key; seed 45 repeats the pattern, asking 'About how many tiles in total will you use?' with 25 sitting beside 26. The tile-covering half of 'Illustrate and estimate' is genuinely done, but the estimating verb is only wording - every item is settled by exact counting."
+      "verdict": "PASS",
+      "rationale": "Seed 42 states the tiling is 'arranged in 2 rows and 7 columns' and then asks 'Estimate how many unit tiles cover the rectangle in all.'; seed 55 asks 'Look at the 4×3 array. How many squares are shaded in all?', which carries the illustrated side. Between the pictured arrays and the tile-count stems, both verbs the competency names, illustrating and estimating with square tile units, are actually exercised."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both shapes the competency names are present and repeated: seed 44 'A square is covered edge-to-edge with unit square tiles, arranged in 2 rows and 2 columns.' and seed 606 'A rectangle is covered edge-to-edge with unit square tiles, arranged in 4 rows and 7 columns.'; the illustrate verb is carried by picture items such as seed 55 'Look at the 4×3 array. How many squares are shaded in all?', and square cases run non-trivially from that 2 by 2 up to seed 45's 5 rows and 5 columns."
+      "rationale": "Both named shapes appear: seed 44 gives 'A square is covered edge-to-edge with unit square tiles, arranged in 2 rows and 2 columns.' and seed 602 gives 'You are laying unit square tiles over a rectangle, fitting 5 rows and 3 columns exactly.'; seed 601 adds 'Pia wants to cover a rectangular garden that is 2 cm long and 3 cm wide with square tiles that are 1 cm on each side.', anchoring the tiling in a measured surface rather than only in bare row-and-column arrays."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Nothing asks a Grade 3 Quarter 1 pupil to hold more than one step: seed 602 'You are laying unit square tiles over a rectangle, fitting 5 rows and 3 columns exactly.' states both counts outright, and the only narrative, seed 601's 'Pia wants to cover a rectangular garden that is 2 cm long and 3 cm wide with square tiles.', carries one actor and two numbers with no intervening arithmetic before the tile count."
+      "verdict": "CONCERN",
+      "rationale": "Seed 500 asks 'Look at the shaded shape. How many squares are shaded in all?' with 100 correct against distractors 97, 101 and 102, whereas seed 605 asks 'Look at the 5×6 array. How many squares are shaded in all?' and hands over its dimensions. Because seed 500 names none, the pupil must enumerate a hundred-square figure precisely enough to reject 101 and 102, a counting load out of proportion to Grade 3 Quarter 1."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Four genuinely different stems appear rather than one skin: the declarative tiling of seed 42 'A rectangle is covered edge-to-edge with unit square tiles, arranged in 2 rows and 7 columns.', the second-person seed 45 'You are laying unit square tiles over a square, fitting 5 rows and 5 columns exactly.', the picture-read seed 605 'Look at the 5×6 array. How many squares are shaded in all?', and seed 601's garden narrative, spread across mcq, cloze and read_mcq."
+      "rationale": "Three genuinely different framings rather than one template renumbered: seed 46 uses 'A rectangle is covered edge-to-edge with unit square tiles, arranged in 2 rows and 5 columns.', seed 45 switches to second person with 'You are laying unit square tiles over a square, fitting 5 rows and 5 columns exactly. About how many tiles in total will you use?', and seed 601 sets a garden context, spread across mcq, cloze and the picture-reading stem of seed 55."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 601 'Pia wants to cover a rectangular garden that is 2 cm long and 3 cm wide with square tiles. How many tiles are needed to cover it completely?' never fixes the side of the square tile, so the keyed 6 follows only if the reader silently assumes a 1 cm tile; it turns on centimetre measures rather than on the 'square tile units' this competency counts. Every other sample, e.g. seed 46's 2 rows and 5 columns, stays squarely on tile arrays."
+      "verdict": "PASS",
+      "rationale": "Every stem stays on covering a surface with square units and reporting the count: seed 606 gives 'A rectangle is covered edge-to-edge with unit square tiles, arranged in 4 rows and 7 columns.' and asks only for the tile total, and seed 502 gives 'You are laying unit square tiles over a square, fitting 3 rows and 3 columns exactly.'. No sample requires a stated formula, a perimeter, or a unit conversion that would belong to a neighbouring competency."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 500 'Look at the shaded shape. How many squares are shaded in all?' keys 100 against 97, 101 and 102, and its stem states no dimensions at all, so the pupil must enumerate a hundred squares from the picture and be exact to within one - the opposite of estimating. Every other item is comfortably sized for this grade, the largest being seed 605's 5×6 array at 30 and seed 43's 7 rows by 4 columns at 28."
+      "verdict": "PASS",
+      "rationale": "The arithmetic actually demanded is single-digit table work: seed 43 gives 'arranged in 7 rows and 4 columns' for 28, seed 45 gives 'fitting 5 rows and 5 columns exactly' for 25, and seed 44 gives 'arranged in 2 rows and 2 columns' for 4; the largest total anywhere is the 100 of seed 500. These magnitudes sit inside the basic facts a Grade 3 pupil carries into Quarter 1."
     }
   },
   "overall": "CONCERN"
