@@ -13,7 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: cd frontend && npm install && npm run build
+
+      # `npm ci` for the same reason as the merge workflow: a preview built from
+      # floating transitive dependencies is not a preview of what merge ships.
+      - name: Build frontend
+        run: cd frontend && npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
