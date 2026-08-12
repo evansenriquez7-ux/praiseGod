@@ -574,7 +574,7 @@ _AREA_SOLVE = Spine(
         # 42 rests on an unstated 1 cm tile"), which is a correctness defect in the
         # item rather than a matter of phrasing. Naming the tile also reinforces
         # the square-tile-unit idea these Grade 3 area competencies are built on.
-        "{actor} wants to cover a {shape_noun} garden {dims_phrase} "
+        "{actor} wants to cover a {shape_noun} {surface_noun} {dims_phrase} "
         "with square tiles that are 1 {length_unit} on each side. "
         "How many tiles are needed to cover it completely?"
     ),

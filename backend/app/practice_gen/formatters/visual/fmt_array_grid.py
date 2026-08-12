@@ -361,7 +361,14 @@ def format_array_grid(
                 f"How many squares are in each row?"
             )
     elif interaction_mode == "read":
-        if shape_type == "rectangle" and rows and cols:
+        # Squares are labelled with their dimensions too. This branch tested only
+        # "rectangle", so once area.py's square figures started reaching this
+        # formatter they fell through to the generic "Look at the shaded shape."
+        # stem -- leaving a 10x10 figure with 100 correct and no dimensions given,
+        # an exact-enumeration task no Grade 3 pupil should be asked to eyeball
+        # (blind review, mat_g3_mg_q1_0 seed 500). A square array names its rows
+        # and columns exactly as a rectangle does.
+        if shape_type in ("rectangle", "square") and rows and cols:
             # An array is the shared picture behind three different grade-2
             # competencies, so the stem has to name which one it is illustrating
             # or the sibling nodes render identical items. mat_g2_na_q3_0 is

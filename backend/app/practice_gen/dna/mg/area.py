@@ -192,9 +192,7 @@ def generate_params(
     # are tile-by-tile counting exercises -- keep those cm-scale, not metres.
     unit = profile.get("unit")
     if unit is None:
-        if task_type in ("illustrate_tiles", "derive_formula"):
-            unit = "square_cm"
-        elif context == "word_problem" and task_type != "find_missing_dimension":
+        if context == "word_problem" and task_type != "find_missing_dimension":
             # Only the *garden* narration is pinned to metres. A garden measured in
             # centimetres is not a garden -- blind review flagged "gardens at
             # 5 cm x 2 cm, 3 cm per side" as unpicturable, next to the same frame
@@ -207,6 +205,14 @@ def generate_params(
             # for no gain. The pure framings below still carry both units, which
             # is what mat_g3_mg_q1_2's "sq. cm and sq. m" requires.
             unit = "square_m"
+        elif task_type in ("illustrate_tiles", "derive_formula"):
+            # Tile-counting exercises stay cm-scale -- but only when they are not
+            # the narrated garden above. This rule used to come FIRST, so a tiling
+            # node's garden was pinned to centimetres before the garden rule could
+            # run, and two blind reviewers independently caught the result
+            # ("a square garden measuring 5 cm on each side", "2 cm long and 3 cm
+            # wide"). Order matters here: the narration decides the unit.
+            unit = "square_cm"
         else:
             unit = rng.choice(["square_cm", "square_m"])
 
@@ -246,6 +252,13 @@ def generate_params(
             "sides": {"s": s},
             "s": s,  # top-level alias for the area_solve spine template
             "shape_noun": "square",
+            # The surface the story tiles follows the unit. A garden measured in
+            # centimetres is not a garden -- blind review caught "a square garden
+            # measuring 5 cm on each side" -- but the item itself is fine, so the
+            # fix is the noun, not the number. A forced `unit` variant bypasses the
+            # metres rule above (that is what a forced variant is for), so the noun
+            # has to derive from the unit actually in play rather than from context.
+            "surface_noun": "garden" if unit_label == "sq m" else "card",
             "dims_phrase": f"measuring {s} {unit_label.replace('sq ', '')} on each side",
             "length_unit": unit_label.replace("sq ", ""),
             "unit": unit_label,
@@ -300,6 +313,7 @@ def generate_params(
         "sides": {"l": l, "w": w},
         "l": l, "w": w, "s": l,  # top-level aliases for spine templates & error formulas
         "shape_noun": "rectangular",
+        "surface_noun": "garden" if unit_label == "sq m" else "card",
         "dims_phrase": f"that is {l} {unit_label.replace('sq ', '')} long and {w} {unit_label.replace('sq ', '')} wide",
         "length_unit": unit_label.replace("sq ", ""),
         "unit": unit_label,

@@ -2889,3 +2889,53 @@ seed 43: Kuya Bien wants to cover a square garden measuring 3 m on each side wit
 
 `validate_matrix --node` PASS on all four area nodes; full `run_all` 151/151, 0 failures, all ten
 contract checks, stages 1–5 green.
+
+### Two defects the tile-size fix's own re-review then caught (same tick)
+
+Re-reviewing after that fix produced two findings, and **both traced to changes made in this
+cluster** — which is the case for doing the re-review rather than assuming a fix is clean.
+
+**1. Squares lost their dimension label.** `fmt_array_grid`'s read-mode stem tested
+`shape_type == "rectangle"`, so once the square branch added earlier in this cluster started
+sending squares through the formatter, they fell through to the generic `"Look at the shaded
+shape. How many squares are shaded in all?"`. Blind review, `mat_g3_mg_q1_0` seed 500:
+
+> "seed 500 asks 'Look at the shaded shape. How many squares are shaded in all?' with 100
+> correct against distractors 97/101/102 and no dimensions in the stem — unlike seeds 55 and 605,
+> which name 'the 4×3 array' / 'the 5×6 array'. Exact enumeration of a hundred-square figure is a
+> counting load out of proportion to G3 Q1."
+
+Fixed by labelling squares as rectangles already were.
+
+```
+seed 500 BEFORE: 'Look at the shaded shape. How many squares are shaded in all?'
+seed 500 AFTER:  'Look at the 10×10 array. How many squares are shaded in all?'
+array items 38 · unlabelled "shaded shape" stems: 0
+```
+
+**2. Centimetre gardens survived in two places.** The metres pin was written *after* the
+tiling branch had already forced `square_cm`, so a tiling node's garden was pinned to
+centimetres before the garden rule could run — and a **forced `unit` variant** bypasses the rule
+entirely, which is what a forced variant is for. Two reviewers caught it independently:
+
+> `mat_g3_mg_q1_0`: "'2 cm long and 3 cm wide'"
+> `mat_g3_mg_q1_3`: "seed 603 tiles 'a square garden measuring 5 cm on each side' with 1 cm
+> tiles — a five-centimetre garden is not a picturable object"
+
+Two fixes, because there were two causes: the branch order was corrected so the narration decides
+the unit; and — for the forced-variant case, where overriding would fight the variant system —
+**the surface noun now follows the unit**. A 5 cm square tiled with 1 cm tiles is a perfectly good
+item; it just is not a garden. The fix is the noun, not the number.
+
+```
+seed 603 BEFORE: Yna wants to cover a square garden measuring 5 cm on each side...
+seed 603 AFTER:  Yna wants to cover a square card measuring 5 cm on each side with square tiles
+                 that are 1 cm on each side. How many tiles are needed to cover it completely?
+seed 601 AFTER:  Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with
+                 square tiles that are 1 m on each side.
+
+tiling-surface items 171 · gardens measured in centimetres: 0
+```
+
+`validate_matrix --node` PASS on all four area nodes plus `mat_g2_na_q3_1`; full `run_all`
+151/151, 0 failures, all ten contract checks, stages 1–5 green.
