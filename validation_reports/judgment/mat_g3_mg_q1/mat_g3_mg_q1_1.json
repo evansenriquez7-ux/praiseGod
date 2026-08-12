@@ -13,8 +13,10 @@
     500,
     501,
     502,
+    600,
     601,
     602,
+    604,
     605,
     606
   ],
@@ -22,27 +24,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "A rectangle is arranged in 2 rows and 7 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
-      "correct_answer": 14,
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 2 rectangle takes 8 tiles, a 7 by 2 rectangle takes 14 tiles, and a 9 by 2 rectangle takes 18 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "length × width",
       "options": [
         {
           "key": "A",
-          "value": 9,
+          "value": "length + width",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 4,
+          "value": "length + length",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 14,
+          "value": "length × width",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 18,
+          "value": "2 × (length + width)",
           "is_correct": false
         }
       ]
@@ -50,27 +52,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "A rectangle is arranged in 7 rows and 4 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
-      "correct_answer": 28,
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 4 rectangle takes 20 tiles, a 6 by 4 rectangle takes 24 tiles, and a 10 by 4 rectangle takes 40 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "length × width",
       "options": [
         {
           "key": "A",
-          "value": 28,
+          "value": "length × width",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 22,
+          "value": "2 × (length + width)",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 14,
+          "value": "length + length",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 11,
+          "value": "length + width",
           "is_correct": false
         }
       ]
@@ -78,27 +80,27 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "A square is arranged in 2 rows and 2 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
-      "correct_answer": 4,
+      "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 3 by 3 square takes 9 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "side × side",
       "options": [
         {
           "key": "A",
-          "value": 5,
+          "value": "4 × side",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 8,
+          "value": "side + side",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 3,
+          "value": "side + 4",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 4,
+          "value": "side × side",
           "is_correct": true
         }
       ]
@@ -106,27 +108,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Tiling a square takes 5 rows and 5 columns. Applying the rows × columns formula, how many unit tiles cover it in all?",
-      "correct_answer": 25,
+      "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 3 by 3 square takes 9 tiles, and a 4 by 4 square takes 16 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "side × side",
       "options": [
         {
           "key": "A",
-          "value": 26,
+          "value": "side + 4",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 10,
+          "value": "side + side",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 25,
+          "value": "side × side",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 20,
+          "value": "4 × side",
           "is_correct": false
         }
       ]
@@ -134,27 +136,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "A rectangle is arranged in 2 rows and 5 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
-      "correct_answer": 10,
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 6 by 5 rectangle takes 30 tiles, a 7 by 5 rectangle takes 35 tiles, and a 8 by 5 rectangle takes 40 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "length × width",
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": "length + length",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 10,
+          "value": "length × width",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 14,
+          "value": "2 × (length + width)",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 7,
+          "value": "length + width",
           "is_correct": false
         }
       ]
@@ -162,31 +164,31 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "A square is arranged in 4 rows and 4 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
-      "correct_answer": 16,
+      "question_text": "Cover each square with unit square tiles and count them: a 3 by 3 square takes 9 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "side × side",
       "options": [
         {
           "key": "A",
-          "value": 8,
-          "text": "8",
+          "value": "side + side",
+          "text": "side + side",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 16,
-          "text": "16",
+          "value": "side × side",
+          "text": "side × side",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 15,
-          "text": "15",
+          "value": "side + 4",
+          "text": "side + 4",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 17,
-          "text": "17",
+          "value": "4 × side",
+          "text": "4 × side",
           "is_correct": false
         }
       ]
@@ -194,31 +196,31 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "A square is arranged in 10 rows and 10 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
-      "correct_answer": 100,
+      "question_text": "Cover each square with unit square tiles and count them: a 3 by 3 square takes 9 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "side × side",
       "options": [
         {
           "key": "A",
-          "value": 100,
-          "text": "100",
+          "value": "side × side",
+          "text": "side × side",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 40,
-          "text": "40",
+          "value": "4 × side",
+          "text": "4 × side",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 20,
-          "text": "20",
+          "value": "side + side",
+          "text": "side + side",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 101,
-          "text": "101",
+          "value": "side + 4",
+          "text": "side + 4",
           "is_correct": false
         }
       ]
@@ -226,27 +228,27 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "A square is arranged in 4 rows and 4 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
-      "correct_answer": 16,
+      "question_text": "Cover each square with unit square tiles and count them: a 3 by 3 square takes 9 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "side × side",
       "options": [
         {
           "key": "A",
-          "value": 16,
+          "value": "side × side",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 15,
+          "value": "side + 4",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 17,
+          "value": "4 × side",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 8,
+          "value": "side + side",
           "is_correct": false
         }
       ]
@@ -254,27 +256,55 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Tiling a square takes 3 rows and 3 columns. Applying the rows × columns formula, how many unit tiles cover it in all?",
-      "correct_answer": 9,
+      "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 3 by 3 square takes 9 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "side × side",
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": "side + side",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 9,
+          "value": "side × side",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 10,
+          "value": "side + 4",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 12,
+          "value": "4 × side",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "side × side",
+      "options": [
+        {
+          "key": "A",
+          "value": "side + side",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4 × side",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "side × side",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "side + 4",
           "is_correct": false
         }
       ]
@@ -282,31 +312,31 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with square tiles that are 1 m on each side. How many tiles are needed to cover it completely?",
-      "correct_answer": 6,
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 6 by 2 rectangle takes 12 tiles, a 8 by 2 rectangle takes 16 tiles, and a 10 by 2 rectangle takes 20 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "length × width",
       "options": [
         {
           "key": "A",
-          "value": 10,
-          "text": "10",
+          "value": "2 × (length + width)",
+          "text": "2 × (length + width)",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 5,
-          "text": "5",
+          "value": "length + width",
+          "text": "length + width",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 4,
-          "text": "4",
+          "value": "length + length",
+          "text": "length + length",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 6,
-          "text": "6",
+          "value": "length × width",
+          "text": "length × width",
           "is_correct": true
         }
       ]
@@ -314,27 +344,55 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Tiling a rectangle takes 5 rows and 3 columns. Applying the rows × columns formula, how many unit tiles cover it in all?",
-      "correct_answer": 15,
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 7 by 5 rectangle takes 35 tiles, a 8 by 5 rectangle takes 40 tiles, and a 10 by 5 rectangle takes 50 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "length × width",
       "options": [
         {
           "key": "A",
-          "value": 15,
+          "value": "length × width",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 10,
+          "value": "length + length",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 8,
+          "value": "length + width",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 16,
+          "value": "2 × (length + width)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 8 by 3 rectangle takes 24 tiles, a 9 by 3 rectangle takes 27 tiles, and a 10 by 3 rectangle takes 30 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "length × width",
+      "options": [
+        {
+          "key": "A",
+          "value": "length × width",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "2 × (length + width)",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "length + width",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "length + length",
           "is_correct": false
         }
       ]
@@ -342,31 +400,31 @@
     {
       "seed": 605,
       "formatter": "cloze",
-      "question_text": "A rectangle is arranged in 5 rows and 6 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
-      "correct_answer": 30,
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 2 by 5 rectangle takes 10 tiles, a 9 by 5 rectangle takes 45 tiles, and a 10 by 5 rectangle takes 50 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "length × width",
       "options": [
         {
           "key": "A",
-          "value": 30,
-          "text": "30",
+          "value": "length × width",
+          "text": "length × width",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 11,
-          "text": "11",
+          "value": "length + width",
+          "text": "length + width",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 22,
-          "text": "22",
+          "value": "2 × (length + width)",
+          "text": "2 × (length + width)",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
-          "text": "10",
+          "value": "length + length",
+          "text": "length + length",
           "is_correct": false
         }
       ]
@@ -374,27 +432,27 @@
     {
       "seed": 606,
       "formatter": "mcq",
-      "question_text": "A rectangle is arranged in 4 rows and 7 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?",
-      "correct_answer": 28,
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 4 rectangle takes 20 tiles, a 8 by 4 rectangle takes 32 tiles, and a 9 by 4 rectangle takes 36 tiles. Which rule always gives the number of tiles?",
+      "correct_answer": "length × width",
       "options": [
         {
           "key": "A",
-          "value": 28,
+          "value": "length × width",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 11,
+          "value": "length + width",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 22,
+          "value": "2 × (length + width)",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 8,
+          "value": "length + length",
           "is_correct": false
         }
       ]
@@ -402,29 +460,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The competency asks the student to explore inductively the derivation of the area formulas, but every stem hands the finished rule over before asking anything. Seed 42 reads 'Using the formula rows × columns, what is the total number of tiles?' and seed 45 reads 'Applying the rows × columns formula, how many unit tiles cover it in all?'. No sample shows two or more tilings and asks what pattern holds across them, none asks which expression gives the tile count, and none asks the student to state a rule of their own. Derivation has been replaced by obedient application of a supplied formula."
+      "verdict": "PASS",
+      "rationale": "These items ask for the derivation itself, not for an answer to one figure. Seed 42 lays out three tiled cases — 'Cover each rectangle with unit square tiles and count them: a 4 by 2 rectangle takes 8 tiles, a 7 by 2 rectangle takes 14 tiles, and a 9 by 2 rectangle takes 18 tiles. Which rule always gives the number of tiles?' — and what the pupil must produce is a general rule rather than a count. The tiles supply the evidence, the three cases supply the pattern, and the word always forces the generalisation across them, which is the inductive move the competency names."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Both figures are tiled — seed 44, 'A square is arranged in 2 rows and 2 columns of unit square tiles', and seed 605, 'A rectangle is arranged in 5 rows and 6 columns of unit square tiles' — but the scope named is the formulas, plural, for a square and for a rectangle, and only one generic phrase ever appears. Every stem says 'rows × columns'; the square is never specialised to side times side even at seed 500, 'A square is arranged in 10 rows and 10 columns of unit square tiles', and no stem connects rows and columns back to a length and a width, so neither named formula is actually reached."
+      "verdict": "PASS",
+      "rationale": "Both formulas named in the competency are derived, each from its own figure. The square case at seed 44, 'Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 3 by 3 square takes 9 tiles, and a 5 by 5 square takes 25 tiles', arrives at side times side, while the rectangle case at seed 605, 'a 2 by 5 rectangle takes 10 tiles, a 9 by 5 rectangle takes 45 tiles, and a 10 by 5 rectangle takes 50 tiles', arrives at length times width. Neither half is a token appearance: seven of the fifteen samples derive the square rule and eight derive the rectangle rule."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Nothing here overreaches Grade 3 Quarter 1: seed 500, 'A square is arranged in 10 rows and 10 columns of unit square tiles', is a single fact-level product, and the stems are one sentence long with no nested condition. Seed 601, 'Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with square tiles that are 1 m on each side', is answerable from the information given — both dimensions and the 1 m tile size are stated, so 2 × 3 = 6 with nothing left to infer. If anything the demand sits below the verb explore inductively rather than above the grade."
+      "verdict": "CONCERN",
+      "rationale": "The inductive task is well pitched in itself — seed 50, 'Cover each square with unit square tiles and count them: a 3 by 3 square takes 9 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles', asks only for a pattern the given numbers already display. Two things sit wrong for Grade 3 Quarter 1. Every rectangle item offers a bracketed candidate rule, 2 × (length + width), which a pupil has to parse and evaluate in order to reject it, while no stem uses grouping symbols anywhere. And article agreement breaks in four stems, seed 601 reading 'a 8 by 2 rectangle takes 16 tiles' and seed 46 reading 'a 8 by 5 rectangle takes 40 tiles', which is careless in text a young reader must decode."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Thirteen samples run on two sentences. Nine share the frame of seed 43, 'A rectangle is arranged in 7 rows and 4 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?', with only the shape word and the two numbers moving; three more are the paraphrase at seed 602, 'Tiling a rectangle takes 5 rows and 3 columns. Applying the rows × columns formula, how many unit tiles cover it in all?'; the garden at seed 601 is the only other shape. For a node whose whole method is inductive exploration with tiles, not one item puts an array in front of the student to examine."
+      "rationale": "Fifteen samples run on a single sentence frame: every stem opens 'Cover each square with unit square tiles and count them' or its rectangle twin, lists three cases, and closes with the same question, 'Which rule always gives the number of tiles?'. The cases themselves also repeat — seeds 50, 500 and 501 render an identical stem, and seed 502 reuses the trio already seen at seed 44, 'a 2 by 2 square takes 4 tiles, a 3 by 3 square takes 9 tiles, and a 5 by 5 square takes 25 tiles'. Nothing asks the pupil to apply the rule just found to a fresh figure, to complete a table of counts, or to explain why the rule holds."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "Because the rule arrives inside the question, each item reduces to multiplying two given numbers, which is the neighbouring tile-counting competency rather than this one. Seed 606, 'A rectangle is arranged in 4 rows and 7 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?', is answered identically whether or not the student has ever derived anything, and seed 601, 'Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with square tiles that are 1 m on each side', is a plain area word problem with no formula language at all. No sample isolates the act of deriving."
+      "verdict": "PASS",
+      "rationale": "No sample slips into counting the tiles of one figure or into an applied area problem; each stops at the rule. Seed 604, 'Cover each rectangle with unit square tiles and count them: a 8 by 3 rectangle takes 24 tiles, a 9 by 3 rectangle takes 27 tiles, and a 10 by 3 rectangle takes 30 tiles. Which rule always gives the number of tiles?', hands over the counts precisely so that arithmetic is not the task and generalisation is. The option sets hold the same line, setting perimeter-shaped candidates such as 4 × side against side × side at seed 45, so the pupil discriminates between rules instead of computing a total."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The products asked for span 2 × 2 = 4 at seed 44, 'A square is arranged in 2 rows and 2 columns of unit square tiles', up to 10 × 10 = 100 at seed 500, all of them basic multiplication facts to ten that a Grade 3 pupil meets in Quarter 1. The 2 × 5 at seed 46 and the 2 m by 3 m garden at seed 601 are small enough to tile mentally, and no arrangement exceeds ten rows or ten columns."
+      "rationale": "Every number the pupil has to check sits inside the multiplication facts to ten. The largest case is at seed 602, 'a 10 by 5 rectangle takes 50 tiles', and the smallest at seed 44, 'a 2 by 2 square takes 4 tiles'; no dimension exceeds ten, and the products at seed 604, 24, 27 and 30, are all reachable by skip counting. Because the counts are supplied rather than demanded, the load is verification rather than computation, which keeps even the ten by five case comfortable in Quarter 1."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }
