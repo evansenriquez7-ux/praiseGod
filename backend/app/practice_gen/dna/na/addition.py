@@ -339,6 +339,74 @@ def generate_params(
 
     task_type = profile.get("task_type")
 
+    if task_type == "properties":
+        # The registry binds this sentinel for the two "properties of addition"
+        # competencies (mat_g1_na_q1_8, mat_g2_na_q1_10). Those competencies
+        # name several properties each, so pinning one task_type would leave
+        # the others untested; cycle them by seed instead, so a node's sample
+        # set covers every property its own competency names.
+        #
+        # Grade gates the set: G1 names the zero identity and commutativity,
+        # G2 adds associativity ("changing the grouping of the addends"), which
+        # is not a G1 concept -- the associative branch below already refuses
+        # grade < 2, so offering it here would silently fall through to plain
+        # addition and reintroduce exactly the defect this fixes.
+        property_tasks = ["zero_identity", "commutative"]
+        if grade >= 2:
+            property_tasks.append("associative")
+        task_type = property_tasks[rng.randrange(len(property_tasks))]
+
+    def _carry_free_addends(count: int, max_total: int) -> List[int]:
+        """
+        Pick `count` positive addends whose column sums never carry.
+
+        The properties nodes pin regrouping to "none" (the property is about
+        structure, not carrying), so the addends these tasks show must actually
+        be carry-free or validate_matrix's discrete integrity check rejects the
+        item -- it caught "Is (18 + 18) + 14 the same as 18 + (18 + 14)?", where
+        18 + 18 carries. Reserving one unit of the ones column per addend keeps
+        every addend >= 1, and capping the tens budget by what the ones column
+        already spent keeps the total inside max_total.
+        """
+        ones_budget = max(0, 9 - count)
+        ones = [1] * count
+        for i in range(count):
+            take = rng.randint(0, ones_budget)
+            ones[i] += take
+            ones_budget -= take
+        tens_budget = min(9, max(0, (max_total - sum(ones)) // 10))
+        tens = []
+        for _ in range(count):
+            take = rng.randint(0, tens_budget)
+            tens.append(take)
+            tens_budget -= take
+        return [t * 10 + o for t, o in zip(tens, ones)]
+
+    if task_type in ("zero_identity", "commutative", "associative"):
+        # Regrouping is not a dimension these tasks can vary. "n + 0 = n"
+        # cannot carry at all, and "Is a + b the same as b + a?" is answered
+        # from the structure of the sentence rather than by computing a sum, so
+        # forcing a carry into it changes nothing a pupil does. Requesting a
+        # specific regrouping level here is therefore an infeasible
+        # combination, in the same sense as regrouping="two_places" with
+        # max_sum=20 -- which validate_matrix already accepts as expected for
+        # constrained nodes (it catches RuntimeError from generation and skips
+        # the pair). Raise rather than silently emitting an item that ignores
+        # the requested level, which is what made the matrix's discrete
+        # integrity check fail on one_place and two_places.
+        # "No regrouping" is spelled three ways across the codebase: absent,
+        # the string "none" (the difficulty axis level), and the boolean False
+        # (how registry bounds encode "...without regrouping" competencies,
+        # e.g. mat_g1_na_q2_5). All three are satisfiable; only a positive
+        # request for a specific carry depth is not.
+        requested_regrouping = profile.get("regrouping")
+        if requested_regrouping not in (None, False, 0, "none"):
+            raise RuntimeError(
+                f"addition: regrouping={requested_regrouping!r} is not expressible by the "
+                f"{task_type!r} property task (grade={grade}, seed={seed}, max_sum={max_result}); "
+                f"property demonstrations do not vary by carrying."
+            )
+
     if task_type == "zero_identity":
         # "Adding zero leaves a number unchanged" (mat_g1_na_q1_8,
         # mat_g2_na_q1_10) was never a distinct, deliberately-generated
@@ -364,8 +432,7 @@ def generate_params(
         # mat_g2_na_q1_10) -- no sample ever posed a direct "is a+b the
         # same as b+a" comparison; the property was never actually tested,
         # only ever incidentally true of whatever pair happened to be drawn.
-        a_val = rng.randint(1, max(1, max_result // 2))
-        b_val = rng.randint(1, max(1, max_result - a_val))
+        a_val, b_val = _carry_free_addends(2, max_result)
         if a_val == b_val and max_result > 2:
             b_val = b_val - 1 if b_val > 1 else b_val + 1
         return {
@@ -384,10 +451,7 @@ def generate_params(
         # Grade-2+ only -- the competency names this alongside
         # zero-identity/commutative for the G2 "properties" node
         # specifically, and 3-operand grouping is not a G1 concept.
-        third = max(1, max_result // 3)
-        a_val = rng.randint(1, third)
-        b_val = rng.randint(1, third)
-        c_val = rng.randint(1, third)
+        a_val, b_val, c_val = _carry_free_addends(3, max_result)
         return {
             "a": a_val, "b": b_val, "c": c_val,
             "task_type": "associative",

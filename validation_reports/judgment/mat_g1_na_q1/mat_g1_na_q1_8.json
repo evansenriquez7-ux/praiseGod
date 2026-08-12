@@ -1,375 +1,55 @@
 {
   "node_id": "mat_g1_na_q1_8",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch C2 (post-fix re-review, properties of addition), 2026-08-12",
   "review_date": "2026-08-12",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46,
-    50,
-    55,
-    84,
-    85,
-    500,
-    501,
-    502,
-    601,
-    603,
-    608,
-    611,
-    613,
-    614
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 53, 55, 85, 500, 501, 502, 600, 601, 602, 603, 604, 605],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 1 + 1?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is 1 + 2?",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "true_false",
-      "question_text": "2 + 1 = 3. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 45,
-      "formatter": "cloze",
-      "question_text": "1 + 2 = ___",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 13,
-          "text": "13",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "cloze",
-      "question_text": "1 + 2 = ___",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "text": "13",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 1 + 2 on the number line.",
-      "correct_answer": 3
-    },
-    {
-      "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "How many items are there in total?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 0,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 84,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 1 and 1. What is the sum?",
-      "correct_answer": 2
-    },
-    {
-      "seed": 85,
-      "formatter": "error_detect",
-      "question_text": "Maria says: 2 + 1 = 2. Is Maria correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 3
-      }
-    },
-    {
-      "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "How many items are there in total?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 19,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "15 + 2 = 17. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 4 + 14?",
-      "correct_answer": 18,
-      "options": [
-        {
-          "key": "A",
-          "value": 28,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 18,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 19,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "true_false",
-      "question_text": "Pia is on step 2. Pia climbs up 1 more steps. What step is Pia on now? The answer is 3. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 603,
-      "formatter": "true_false",
-      "question_text": "1 + 1 = 1. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 608,
-      "formatter": "error_detect",
-      "question_text": "Rico says: 2 + 1 = 4. Is Rico correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 3
-      }
-    },
-    {
-      "seed": 611,
-      "formatter": "true_false",
-      "question_text": "2 + 1 = 4. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 613,
-      "formatter": "mcq",
-      "question_text": "Is 1 + 2 the same as 2 + 1?",
-      "correct_answer": true,
-      "options": [
-        {
-          "key": "A",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": false,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": true,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 614,
-      "formatter": "mcq",
-      "question_text": "Start at 1. Count up 1 more. What number do you land on?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ]
-    }
+    {"seed": 42, "formatter": "mcq", "question_text": "What is 1 + 0?", "correct_answer": 1, "options": [{"key": "A", "value": 11, "is_correct": false}, {"key": "B", "value": 2, "is_correct": false}, {"key": "C", "value": 1, "is_correct": true}, {"key": "D", "value": 0, "is_correct": false}]},
+    {"seed": 43, "formatter": "mcq", "question_text": "What is 0 + 3?", "correct_answer": 3, "options": [{"key": "A", "value": 3, "is_correct": true}, {"key": "B", "value": 2, "is_correct": false}, {"key": "C", "value": 4, "is_correct": false}, {"key": "D", "value": 13, "is_correct": false}]},
+    {"seed": 44, "formatter": "mcq", "question_text": "Is 2 + 1 the same as 1 + 2?", "correct_answer": true, "options": [{"key": "A", "value": 3, "is_correct": false}, {"key": "B", "value": false, "is_correct": false}, {"key": "C", "value": 13, "is_correct": false}, {"key": "D", "value": true, "is_correct": true}]},
+    {"seed": 45, "formatter": "mcq", "question_text": "Is 7 + 2 the same as 2 + 7?", "correct_answer": true, "options": [{"key": "A", "value": 19, "is_correct": false}, {"key": "B", "value": false, "is_correct": false}, {"key": "C", "value": true, "is_correct": true}, {"key": "D", "value": 9, "is_correct": false}]},
+    {"seed": 46, "formatter": "mcq", "question_text": "What is 0 + 4?", "correct_answer": 4, "options": [{"key": "A", "value": 5, "is_correct": false}, {"key": "B", "value": 4, "is_correct": true}, {"key": "C", "value": 3, "is_correct": false}, {"key": "D", "value": 14, "is_correct": false}]},
+    {"seed": 50, "formatter": "read_fill_in_blank", "question_text": "The two parts are 5 and 3. What is the sum?", "correct_answer": 8},
+    {"seed": 51, "formatter": "error_detect", "question_text": "Ana says: 0 + 2 = 1. Is Ana correct?", "correct_answer": {"has_error": true, "correct_value": 2}},
+    {"seed": 53, "formatter": "cloze", "question_text": "4 + 0 = ___", "correct_answer": 4, "options": [{"key": "A", "value": 4, "text": "4", "is_correct": true}, {"key": "B", "value": 14, "text": "14", "is_correct": false}, {"key": "C", "value": 3, "text": "3", "is_correct": false}, {"key": "D", "value": 5, "text": "5", "is_correct": false}]},
+    {"seed": 55, "formatter": "read_mcq", "question_text": "How many items are there in total?", "correct_answer": "D", "options": [{"key": "A", "value": 0, "is_correct": false}, {"key": "B", "value": 3, "is_correct": false}, {"key": "C", "value": 1, "is_correct": false}, {"key": "D", "value": 2, "is_correct": true}]},
+    {"seed": 85, "formatter": "true_false", "question_text": "1 + 0 = 1. True or False?", "correct_answer": true},
+    {"seed": 500, "formatter": "read_mcq", "question_text": "How many items are there in total?", "correct_answer": "C", "options": [{"key": "A", "value": 18, "is_correct": false}, {"key": "B", "value": 17, "is_correct": false}, {"key": "C", "value": 19, "is_correct": true}, {"key": "D", "value": 1, "is_correct": false}]},
+    {"seed": 501, "formatter": "mcq", "question_text": "Is 16 + 1 the same as 1 + 16?", "correct_answer": true, "options": [{"key": "A", "value": true, "is_correct": true}, {"key": "B", "value": 27, "is_correct": false}, {"key": "C", "value": 17, "is_correct": false}, {"key": "D", "value": false, "is_correct": false}]},
+    {"seed": 502, "formatter": "mcq", "question_text": "Is 13 + 6 the same as 6 + 13?", "correct_answer": true, "options": [{"key": "A", "value": false, "is_correct": false}, {"key": "B", "value": true, "is_correct": true}, {"key": "C", "value": 29, "is_correct": false}, {"key": "D", "value": 19, "is_correct": false}]},
+    {"seed": 600, "formatter": "mcq", "question_text": "Is 6 + 3 the same as 3 + 6?", "correct_answer": true, "options": [{"key": "A", "value": false, "is_correct": false}, {"key": "B", "value": 9, "is_correct": false}, {"key": "C", "value": true, "is_correct": true}, {"key": "D", "value": 19, "is_correct": false}]},
+    {"seed": 601, "formatter": "true_false", "question_text": "0 + 1 = 1. True or False?", "correct_answer": true},
+    {"seed": 602, "formatter": "mcq", "question_text": "Is 3 + 2 the same as 2 + 3?", "correct_answer": true, "options": [{"key": "A", "value": true, "is_correct": true}, {"key": "B", "value": 15, "is_correct": false}, {"key": "C", "value": false, "is_correct": false}, {"key": "D", "value": 5, "is_correct": false}]},
+    {"seed": 603, "formatter": "cloze", "question_text": "3 + 0 = ___", "correct_answer": 3, "options": [{"key": "A", "value": 4, "text": "4", "is_correct": false}, {"key": "B", "value": 3, "text": "3", "is_correct": true}, {"key": "C", "value": 13, "text": "13", "is_correct": false}, {"key": "D", "value": 2, "text": "2", "is_correct": false}]},
+    {"seed": 604, "formatter": "mcq", "question_text": "What is 2 + 0?", "correct_answer": 2, "options": [{"key": "A", "value": 2, "is_correct": true}, {"key": "B", "value": 1, "is_correct": false}, {"key": "C", "value": 12, "is_correct": false}, {"key": "D", "value": 3, "is_correct": false}]},
+    {"seed": 605, "formatter": "read_fill_in_blank", "question_text": "The two parts are 4 and 0. What is the sum?", "correct_answer": 4}
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Of the eighteen sampled items, only seed 613, \"Is 1 + 2 the same as 2 + 1?\", actually demonstrates either named property; the rest, such as \"What is 4 + 14?\" and \"15 + 2 = 17. True or False?\", are generic addition facts that never illustrate either the identity or the commutative property."
+      "verdict": "CONCERN",
+      "rationale": "3 of the 19 samples (seeds 50, 55, 500) ask 'What is the sum?' or 'How many items are there in total?' with no zero addend and no order-comparison, so they exercise plain addition rather than 'the sum of zero and any number is equal to the number' or 'changing the order of the addends does not change the sum.'"
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The identity-property example this competency itself gives -- the sum of zero and any number -- is entirely absent from this node's samples; not one of the eighteen items uses 0 as an addend."
+      "verdict": "PASS",
+      "rationale": "Both named sub-cases are generated with real counts: the zero property appears in 10 samples (seeds 42, 43, 46, 51, 53, 85, 601, 603, 604, 605) such as 'What is 0 + 3?', and the order-changing property appears in 6 samples (seeds 44, 45, 501, 502, 600, 602) such as 'Is 2 + 1 the same as 1 + 2?'"
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Where the items do relate to addition, sentence structure and sums up to 18 stay appropriate for Grade 1 Quarter 1."
+      "rationale": "Phrasing stays short and direct, e.g. 'What is 1 + 0?' and 'Ana says: 0 + 2 = 1. Is Ana correct?', and every observed sum stays within the competency's 'sums up to 20' ceiling, with the largest being 13 + 6 = 19 in seed 502."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "mcq, true_false, cloze, error_detect, and set_fill_in_blank formatters are all represented, though the content behind most of them rarely targets a property."
+      "verdict": "CONCERN",
+      "rationale": "The order-changing property is rendered only as mcq comparisons like 'Is 2 + 1 the same as 1 + 2?' across all 6 instances (seeds 44, 45, 501, 502, 600, 602), while the zero property spans five formatters (mcq, read_fill_in_blank, error_detect, cloze, true_false) including 'Ana says: 0 + 2 = 1. Is Ana correct?' and '4 + 0 = ___', leaving commutativity without a true_false, cloze, or error_detect variant."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "This node's own seed 84, \"The two parts are 1 and 1. What is the sum?\", and most of the remaining seventeen seeds are close restatements of plain addition practice, showing the sampled difficulty progression is not distinguishing the properties-of-addition competency from ordinary sums."
+      "verdict": "PASS",
+      "rationale": "Difficulty scales through addend magnitude within each property itself rather than an unrelated skill: the zero property runs from 'What is 0 + 3?' up to 'What is 2 + 0?' with a 0 partner throughout, and the order-changing property runs from 'Is 2 + 1 the same as 1 + 2?' up to 'Is 13 + 6 the same as 6 + 13?', never drifting into subtraction or another operation."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Sums sampled stay within the up-to-20 ceiling this competency states, topping out at 18."
+      "rationale": "Observed sums range from 1 + 0 = 1 in seed 42 up to 13 + 6 = 19 in seed 502 and 16 + 1 = 17 in seed 501, reaching close to the competency's stated 'sums up to 20' ceiling without exceeding it."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

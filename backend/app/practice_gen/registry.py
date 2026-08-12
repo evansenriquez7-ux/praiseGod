@@ -182,6 +182,37 @@ def _parse_competency_bounds(
         if "expanded form" in text:
             bounds["task_type"] = "expanded_form"
 
+        # "Illustrate by applying the following properties of addition, using
+        # sums up to 20: the sum of zero and any number..., changing the order
+        # of the addends..." (mat_g1_na_q1_8) and the grade-2 version that adds
+        # "changing the grouping of the addends" (mat_g2_na_q1_10).
+        #
+        # addition.py implements zero_identity, commutative and associative
+        # task types written for these two nodes specifically -- and nothing
+        # ever bound task_type for them, so ordinary generation left it None
+        # and every sample fell through to the plain "what is X+Y?" default.
+        # The two nodes therefore rendered the same content as their
+        # plain-addition siblings: mat_g2_na_q1_10 was byte-identical to
+        # mat_g2_na_q1_9 on all 19 stratified seeds, and blind review found
+        # that of mat_g1_na_q1_8's eighteen samples "only seed 613, 'Is 1 + 2
+        # the same as 2 + 1?', actually demonstrates either named property"
+        # while "not one of the eighteen items uses 0 as an addend".
+        #
+        # A sentinel string, not a tuple: a 2-tuple bound is always read as a
+        # continuous (min, max) range. The DNA expands this sentinel into the
+        # individual properties, cycling them by seed so one node's sample set
+        # covers every property its own competency names.
+        elif "properties of addition" in text:
+            bounds["task_type"] = "properties"
+            # Regrouping is not a dimension these competencies vary. "n + 0 = n"
+            # cannot carry at all, and "Is a + b the same as b + a?" is answered
+            # from the structure of the sentence, not by computing a sum. Left
+            # unpinned, the difficulty machinery hands these tasks a regrouping
+            # level they cannot express, and validate_matrix's discrete
+            # integrity check correctly fails the item for not reflecting the
+            # requested level.
+            bounds["regrouping"] = "none"
+
         # "Illustrate addition of 2-digit and 1-digit numbers as 'counting
         # up' on the number line" (mat_g2_na_q1_7): task_type was left
         # unbound, so ordinary (non-variant-coverage) generation never set

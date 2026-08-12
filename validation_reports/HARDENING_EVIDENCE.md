@@ -1973,3 +1973,91 @@ mat_g3_mg_q2_5:  CONCERN  ->  PASS
 The remaining CONCERN is unrelated to this binding: `mat_g3_mg_q2_3`'s stem reads "What is the amount
 of liquid of the object in L?" and never uses "capacity", the noun its competency states. That is stem
 wording, not unit coverage, and belongs to a separate fix.
+
+---
+
+## 2026-08-12 — Tick C cluster 1b: properties of addition never bound (2 nodes)
+
+**Nodes:** `mat_g1_na_q1_8`, `mat_g2_na_q1_10`.
+
+### The failing rationales that motivated the fix
+
+> `mat_g1_na_q1_8` [FAIL] competency_fulfillment — "Of the eighteen sampled items, only seed 613, 'Is
+> 1 + 2 the same as 2 + 1?', actually demonstrates either named property; the rest ... are generic
+> addition facts."
+> [FAIL] comprehensive_coverage — "not one of the eighteen items uses 0 as an addend."
+
+> `mat_g2_na_q1_10` [FAIL] comprehensive_coverage — "a side-by-side comparison of two orderings of the
+> same addends, or two groupings of three addends, never turns up at all, leaving two of the three
+> properties named in the competency untested."
+
+### Root cause — the same shape as the mass/capacity fix
+
+`addition.py` **already implements** `zero_identity`, `commutative` and `associative` task types,
+written for these two nodes by name. They were dead code: `task_type` is read via
+`profile.get("task_type")` but `_parse_competency_bounds` never bound it for the properties
+competencies. The registry binds `task_type` for addition's other sub-skills (`estimate`,
+`expanded_form`, `counting_up`) — properties were simply missing from that list. Both nodes therefore
+fell through to the plain "what is X+Y?" default and rendered the same content as their
+plain-addition siblings; `mat_g2_na_q1_10` was byte-identical to `mat_g2_na_q1_9` on all 19 seeds.
+
+### Fix
+
+- `registry.py`: bind `task_type = "properties"` (a **sentinel string**, since a 2-tuple would be read
+  as a continuous `(min, max)` range) when the competency text contains "properties of addition".
+  Also pin `regrouping = "none"` — see below.
+- `addition.py`: expand the sentinel into the individual properties, cycling them by seed so a node
+  covers every property its own competency names. Grade gates the set: G1 gets zero-identity and
+  commutativity, G2 adds associativity.
+
+Two follow-on corrections were needed, both found by running the harness rather than by reading code:
+
+1. **`regrouping` is not expressible by a property task.** `n + 0` cannot carry, and "Is a + b the same
+   as b + a?" is answered from sentence structure, not by computing a sum. Left unpinned, the
+   difficulty machinery handed these tasks a carry depth they could not reflect and
+   `discrete_integrity_regrouping_{one,two}_place` failed 20× per node. Pinned to `"none"` in the
+   registry, with a `RuntimeError` guard in the DNA for any positive carry request (the harness
+   already treats `RuntimeError` from generation as an expected infeasible combination).
+2. **The addends themselves had to be carry-free.** With regrouping pinned to none, the associative
+   branch still emitted `Is (18 + 18) + 14 the same as 18 + (18 + 14)?` — 18 + 18 carries. Added
+   `_carry_free_addends`, which distributes a ones budget and a tens budget so no column ever carries
+   and every addend stays >= 1.
+
+### Two mistakes worth recording
+
+- The first `RuntimeError` guard tested `regrouping not in (None, "none")` and broke two *unrelated*
+  nodes: `mat_g1_na_q2_5` and `mat_g1_na_q2_6` bind `regrouping = False` (the boolean encoding of
+  "...without regrouping"), and reach property task types through variant coverage. 600 matrix
+  failures. **"No regrouping" is spelled three ways in this codebase — absent, `"none"`, and `False`.**
+- Those two nodes were invisible to `validate_matrix --node` on the four nodes I had changed. Only the
+  full `run_all` found them. Scoped runs do not show blast radius.
+
+### Before / after
+
+```
+                                    BEFORE                       AFTER
+mat_g1_na_q1_8   properties shown   1 of 18 (seed 613 only)      zero_identity 10/19, commutative 6/19
+mat_g2_na_q1_10  properties shown   0 of 19                      zero_identity 9/18, commutative 4/18,
+                                                                 associative 3/18
+q1_9 vs q1_10 identical stems       19 of 19                     1 of 18
+carrying pairs in property items    n/a                          0
+
+validate_matrix --node  q1_8, q1_10, and their siblings q1_7, q1_9   Total Failures Observed: 0
+run_all   EXIT_CODE=1   matrix 151/151, 0 failures, 0 non-judgment FAIL lines
+          judgment problems 285 (unchanged; the two nodes moved FAIL -> CONCERN, which the gate
+          still counts)
+```
+
+### Fresh blind re-review (reviewer never saw the fix)
+
+```
+mat_g1_na_q1_8:   FAIL -> CONCERN
+mat_g2_na_q1_10:  FAIL -> CONCERN
+```
+
+Remaining, honestly reported by that review:
+- 3 of 19 (G1) and 2 of 18 (G2) samples are still plain addition demonstrating no property.
+- Commutative and associative render only through `mcq`, while the zero property spans five formatters.
+- **A regression this fix introduced:** `_carry_free_addends` caps the tens column at 9, so the largest
+  sum anywhere in `mat_g2_na_q1_10` is now 97 against a stated ceiling of 1000. Carry-free three-digit
+  addends need a hundreds budget as well; the helper needs a third column.

@@ -1,435 +1,54 @@
 {
   "node_id": "mat_g2_na_q1_10",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch C2 (post-fix re-review, properties of addition), 2026-08-12",
   "review_date": "2026-08-12",
   "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46,
-    50,
-    51,
-    55,
-    75,
-    82,
-    500,
-    501,
-    502,
-    600,
-    601,
-    603,
-    604,
-    607,
-    608
-  ],
+  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 54, 72, 500, 501, 502, 600, 601, 602, 603, 604, 605],
   "samples_reviewed": [
-    {
-      "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 1 + 40?",
-      "correct_answer": 41,
-      "options": [
-        {
-          "key": "A",
-          "value": 51,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 42,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 41,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 40,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is 28 + 30?",
-      "correct_answer": 58,
-      "options": [
-        {
-          "key": "A",
-          "value": 58,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 57,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 59,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 68,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "cloze",
-      "question_text": "18 + 15 = ___",
-      "correct_answer": 33,
-      "options": [
-        {
-          "key": "A",
-          "value": 43,
-          "text": "43",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 32,
-          "text": "32",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 33,
-          "text": "33",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "cloze",
-      "question_text": "15 + 25 = ___",
-      "correct_answer": 40,
-      "options": [
-        {
-          "key": "A",
-          "value": 41,
-          "text": "41",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 50,
-          "text": "50",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 40,
-          "text": "40",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 39,
-          "text": "39",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "cloze",
-      "question_text": "0 + 16 = ___",
-      "correct_answer": 16,
-      "options": [
-        {
-          "key": "A",
-          "value": 17,
-          "text": "17",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "text": "16",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 15,
-          "text": "15",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 26,
-          "text": "26",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 15 + 15 on the number line.",
-      "correct_answer": 30
-    },
-    {
-      "seed": 51,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 19 and it moves forward 0 numbers. Starting from 19, just count up 0 numbers. Which number will the dot land on?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 19,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 29,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 55,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 15 and 12. What is the sum?",
-      "correct_answer": 27
-    },
-    {
-      "seed": 75,
-      "formatter": "true_false",
-      "question_text": "25 + 15 = 10. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 82,
-      "formatter": "error_detect",
-      "question_text": "Dante says: 11 + 0 = 11. Is Dante correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 11
-      }
-    },
-    {
-      "seed": 500,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 727 and 59. What is the sum?",
-      "correct_answer": 786
-    },
-    {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "748 + 95 = 843. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 689 + 158?",
-      "correct_answer": 847,
-      "options": [
-        {
-          "key": "A",
-          "value": 531,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 847,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 846,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 857,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What is 15 + 18?",
-      "correct_answer": 33,
-      "options": [
-        {
-          "key": "A",
-          "value": 43,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 32,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 33,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 34,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "What is ___ + 0?",
-      "correct_answer": 43,
-      "options": [
-        {
-          "key": "A",
-          "value": 42,
-          "text": "42",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 53,
-          "text": "53",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 44,
-          "text": "44",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 43,
-          "text": "43",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "cloze",
-      "question_text": "12 + 40 = ___",
-      "correct_answer": 52,
-      "options": [
-        {
-          "key": "A",
-          "value": 53,
-          "text": "53",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 52,
-          "text": "52",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 62,
-          "text": "62",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 51,
-          "text": "51",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "mcq",
-      "question_text": "What is 6 + 15?",
-      "correct_answer": 21,
-      "options": [
-        {
-          "key": "A",
-          "value": 21,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 31,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 22,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 607,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 10 and 11. What is the sum?",
-      "correct_answer": 21
-    },
-    {
-      "seed": 608,
-      "formatter": "true_false",
-      "question_text": "15 + 21 = 36. True or False?",
-      "correct_answer": true
-    }
+    {"seed": 42, "formatter": "mcq", "question_text": "Is (21 + 11) + 6 the same as 21 + (11 + 6)?", "correct_answer": true, "options": [{"key": "A", "value": false, "is_correct": false}, {"key": "B", "value": 32, "is_correct": false}, {"key": "C", "value": true, "is_correct": true}, {"key": "D", "value": 10, "is_correct": false}]},
+    {"seed": 43, "formatter": "mcq", "question_text": "What is 0 + 19?", "correct_answer": 19, "options": [{"key": "A", "value": 19, "is_correct": true}, {"key": "B", "value": 18, "is_correct": false}, {"key": "C", "value": 20, "is_correct": false}, {"key": "D", "value": 29, "is_correct": false}]},
+    {"seed": 44, "formatter": "mcq", "question_text": "Is 32 + 2 the same as 2 + 32?", "correct_answer": true, "options": [{"key": "A", "value": 30, "is_correct": false}, {"key": "B", "value": false, "is_correct": false}, {"key": "C", "value": 34, "is_correct": false}, {"key": "D", "value": true, "is_correct": true}]},
+    {"seed": 45, "formatter": "mcq", "question_text": "Is 27 + 2 the same as 2 + 27?", "correct_answer": true, "options": [{"key": "A", "value": 29, "is_correct": false}, {"key": "B", "value": false, "is_correct": false}, {"key": "C", "value": true, "is_correct": true}, {"key": "D", "value": 25, "is_correct": false}]},
+    {"seed": 46, "formatter": "mcq", "question_text": "What is 0 + 26?", "correct_answer": 26, "options": [{"key": "A", "value": 27, "is_correct": false}, {"key": "B", "value": 26, "is_correct": true}, {"key": "C", "value": 25, "is_correct": false}, {"key": "D", "value": 36, "is_correct": false}]},
+    {"seed": 50, "formatter": "read_fill_in_blank", "question_text": "The two parts are 55 and 3. What is the sum?", "correct_answer": 58},
+    {"seed": 51, "formatter": "error_detect", "question_text": "Ana says: 0 + 54 = 53. Is Ana correct?", "correct_answer": {"has_error": true, "correct_value": 54}},
+    {"seed": 54, "formatter": "cloze", "question_text": "29 + 0 = ___", "correct_answer": 29, "options": [{"key": "A", "value": 29, "text": "29", "is_correct": true}, {"key": "B", "value": 30, "text": "30", "is_correct": false}, {"key": "C", "value": 39, "text": "39", "is_correct": false}, {"key": "D", "value": 28, "text": "28", "is_correct": false}]},
+    {"seed": 72, "formatter": "true_false", "question_text": "0 + 51 = 51. True or False?", "correct_answer": true},
+    {"seed": 500, "formatter": "read_fill_in_blank", "question_text": "The two parts are 68 and 11. What is the sum?", "correct_answer": 79},
+    {"seed": 501, "formatter": "mcq", "question_text": "Is (53 + 23) + 21 the same as 53 + (23 + 21)?", "correct_answer": true, "options": [{"key": "A", "value": true, "is_correct": true}, {"key": "B", "value": 76, "is_correct": false}, {"key": "C", "value": 30, "is_correct": false}, {"key": "D", "value": false, "is_correct": false}]},
+    {"seed": 502, "formatter": "mcq", "question_text": "Is (23 + 62) + 3 the same as 23 + (62 + 3)?", "correct_answer": true, "options": [{"key": "A", "value": false, "is_correct": false}, {"key": "B", "value": true, "is_correct": true}, {"key": "C", "value": 95, "is_correct": false}, {"key": "D", "value": 85, "is_correct": false}]},
+    {"seed": 600, "formatter": "mcq", "question_text": "Is 36 + 3 the same as 3 + 36?", "correct_answer": true, "options": [{"key": "A", "value": false, "is_correct": false}, {"key": "B", "value": 33, "is_correct": false}, {"key": "C", "value": true, "is_correct": true}, {"key": "D", "value": 39, "is_correct": false}]},
+    {"seed": 601, "formatter": "true_false", "question_text": "0 + 44 = 44. True or False?", "correct_answer": true},
+    {"seed": 602, "formatter": "mcq", "question_text": "Is 43 + 13 the same as 13 + 43?", "correct_answer": true, "options": [{"key": "A", "value": true, "is_correct": true}, {"key": "B", "value": 56, "is_correct": false}, {"key": "C", "value": false, "is_correct": false}, {"key": "D", "value": 30, "is_correct": false}]},
+    {"seed": 603, "formatter": "cloze", "question_text": "36 + 0 = ___", "correct_answer": 36, "options": [{"key": "A", "value": 37, "text": "37", "is_correct": false}, {"key": "B", "value": 36, "text": "36", "is_correct": true}, {"key": "C", "value": 46, "text": "46", "is_correct": false}, {"key": "D", "value": 35, "text": "35", "is_correct": false}]},
+    {"seed": 604, "formatter": "mcq", "question_text": "What is 13 + 0?", "correct_answer": 13, "options": [{"key": "A", "value": 13, "is_correct": true}, {"key": "B", "value": 12, "is_correct": false}, {"key": "C", "value": 23, "is_correct": false}, {"key": "D", "value": 14, "is_correct": false}]},
+    {"seed": 605, "formatter": "error_detect", "question_text": "Liza says: 57 + 0 = 57. Is Liza correct?", "correct_answer": {"has_error": false, "correct_value": 57}}
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Only a handful of the nineteen samples reference a named property; most, like seed 43 \"What is 28 + 30?\" and seed 604 \"What is 6 + 15?\", are plain addition facts with no zero-addend, order-swap, or grouping framing that would illustrate a property."
+      "rationale": "2 of the 18 samples (seeds 50, 500) ask 'What is the sum?' after stating two arbitrary parts (55 and 3, or 68 and 11), with no zero addend, no order-comparison, and no grouping-comparison, so they practice plain addition rather than any of the three named properties."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Zero-addend identity facts turn up three times (seeds 46, 82, 601, e.g. \"0 + 16 = ___\" and \"What is ___ + 0?\"); a side-by-side comparison of two orderings of the same addends, or two groupings of three addends, never turns up at all, leaving two of the three properties named in the competency untested."
+      "verdict": "PASS",
+      "rationale": "All three named sub-cases appear: the zero property in 9 samples (seeds 43, 46, 51, 54, 72, 601, 603, 604, 605) such as 'What is 0 + 19?', the order-changing property in 4 samples (seeds 44, 45, 600, 602) such as 'Is 32 + 2 the same as 2 + 32?', and the grouping property in 3 samples (seeds 42, 501, 502) such as 'Is (21 + 11) + 6 the same as 21 + (11 + 6)?'"
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The individual addition sentences are short and within Grade 2 computation range."
+      "rationale": "Grouping is introduced with parenthesis notation appropriate to Grade 2, e.g. 'Is (53 + 23) + 21 the same as 53 + (23 + 21)?', and 'Ana says: 0 + 54 = 53. Is Ana correct?' keeps the zero-property check in accessible sentence form for the grade."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "mcq, cloze, true_false, error_detect, and read_fill_in_blank formatters are all present."
+      "verdict": "CONCERN",
+      "rationale": "Both the order-changing and grouping sub-cases are rendered only as mcq comparisons, such as 'Is 43 + 13 the same as 13 + 43?' and 'Is (23 + 62) + 3 the same as 23 + (62 + 3)?', while the zero property alone gets error_detect ('Liza says: 57 + 0 = 57. Is Liza correct?'), cloze ('36 + 0 = ___'), and true_false ('0 + 44 = 44. True or False?') treatments."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Within the identity-property items, the varying element, which side has the zero, is on-topic."
+      "rationale": "Difficulty varies through addend size and number of terms within the three named properties themselves, moving from 'What is 0 + 19?' to 'What is 0 + 26?' for the zero case and from 'Is (21 + 11) + 6 the same as 21 + (11 + 6)?' to 'Is (53 + 23) + 21 the same as 53 + (23 + 21)?' for grouping, with no unrelated operation appearing."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Sums reach up to 847 (seed 502), staying under the stated 1000 ceiling."
+      "verdict": "CONCERN",
+      "rationale": "The competency states 'using sums up to 1000', but the largest sum actually produced across all 18 samples is 53 + 23 + 21 = 97 in seed 501, and no sample contains a three-digit addend or sum, leaving the range far short of the stated ceiling."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }
