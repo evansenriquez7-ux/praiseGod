@@ -395,13 +395,39 @@ subdirectories cannot slip past either.
 | 0 — consolidate registries | done | `grep -rn "_DNA_MODULE_MAP" backend/app/practice_gen/validation/` empty; validators import from `_manifest.py`; import-time `set(DNA_MODULE_MAP)==set(COMPATIBILITY)` assertion present. |
 | 1 — `validate_matrix.py` (1A–1E) | done | Full behavioral matrix over 151 nodes through the real pipeline path; 0 failures. **Coverage is now observed, not assumed** — see the 2026-07-26 audit below, which found 22 of 151 nodes were being skipped entirely while reporting PASS. |
 | 2 — single gate | done | `run_all.py` chains dna(+feasibility)→compat→interest→vocab(full-node)→matrix→judgment; no skip flag. |
-| 3 — CI enforcement | done | `validate-pgen.yml` runs `run_all` + the docs `must`-lint, no `\|\| true`/`continue-on-error`; `deploy-backend.yml` deploy job has `needs: validate`. |
+| 3 — CI enforcement | done, with one clause deliberately reversed | `validate-pgen.yml` runs `run_all` + the docs `must`-lint + the unit suite + the mutation harness, no `\|\| true`/`continue-on-error`. **Phase 3's second clause — "deployment *requires* the validation job to succeed (job-level `needs:`)" — was reversed on 2026-08-12 at the maintainer's direction; see below.** |
 | 4 — mutation-test the verifier | done | **7/7 via a re-runnable artifact**, `tests/mutation_harness.py`. The previous "done (re-inherited, not re-run)" entry was an unverified inheritance; when first actually executed on 2026-07-26 it scored **4/7**. See below. |
 | 5 — strict schema; kill fallbacks | done | `FormattedProblem` uses `ConfigDict(extra="forbid")`; App.jsx fallback cascade removed; `/tmp/last_request.json` debug write gone. |
 | 6 — LLM-path audit | done, with a scope note | No live **MATATAG** practice-gen path routes through `subagents.py` (`matatag_router.py` imports it but never calls it). The ELA practice path *does* (`practice_router.py` → `generate_ela_skeleton_subagent`/`generate_ela_batch_subagent`); it is outside this harness's MATATAG scope and has **no runtime vocab gate**. Phase 6's wording is "any live serving path for practice problems", so this is an open item, not a closed one. |
 | 7 — evidence log | done | `HARDENING_EVIDENCE.md` carries verbatim output for every phase, including the 2026-07-26 audit. |
 
 **Open, escalated (not a defect):** the unified Advanced/bridge-tier scalar *value* (`1.1` vs `1.25`, [`BUG_BRIDGE_SCALAR.md`](./BUG_BRIDGE_SCALAR.md)) — mechanism fixed, value is a pedagogical decision for the maintainer.
+
+### 2026-08-12 — Phase 3's deploy gate reversed at the maintainer's direction
+
+`pgen_hardening.md` Phase 3 required `deploy-backend.yml` to gate deployment on the validation job
+(`needs: validate`). That clause is now reversed: `deploy-backend.yml` contains only the `deploy` job,
+and the full suite lives in its own `validate-pgen.yml`, which blocks nothing.
+
+**Why.** `run_all` was doing two unrelated jobs. It exits 0 only at a 100% node PASS rate — that is the
+hardening loop's *stop* signal, and it is correct that it stays red until the last node passes. But
+wiring it to `needs:` also made it the shipping criterion, so a CONCERN verdict on a Grade-2 word
+problem blocked every backend deploy, including the manual testing by which those very verdicts get
+resolved. Run `31595859973` is the illustration: **151/151 nodes passed the behavioral matrix and the
+deploy still failed**, on stage 6/6 alone.
+
+**Evidence that no code check was weakened.** Measured at the time of the change
+(`validate_judgment.validate_judgment_reviews()`): **290 total gate errors, 290 non-PASS curriculum
+verdicts, 0 integrity errors** (tally `PASS=57 CONCERN=61 FAIL=33` across 151 reviewed). Nothing that
+was blocking the deploy was a code defect. Every validator still runs on every push, still fails
+loudly, and no `|| true` or `continue-on-error` was introduced anywhere — the checks moved out of the
+deploy path, they did not relax. `docs/pgen_contract.md`'s "Runs in" column was updated in the same
+commit (Protocol 7).
+
+**Known cost.** `validate-pgen` is now continuously red until the census reaches zero, so a genuine new
+break in the DNA or matrix stages produces the same red X as the expected curriculum debt. The badge is
+uninformative for the duration; the step log and the hardening loop's per-tick `run_all` are where a
+regression actually surfaces. Worth restoring a gate once the census reaches zero.
 
 ---
 

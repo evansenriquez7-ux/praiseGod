@@ -1,0 +1,121 @@
+name: Practice Generator Validation
+
+# The full test pipeline. It is deliberately NOT a deploy gate: `run_all` exits 0
+# only at a 100% node PASS rate, which is the hardening loop's stop signal, not a
+# shipping criterion. A curriculum verdict on a Grade-2 word problem has nothing to
+# say about whether a container image can serve traffic, so `deploy-backend.yml`
+# runs independently of this workflow.
+#
+# Consequence, stated so nobody is surprised by it: this workflow stays red until
+# the last judgment review reaches PASS. A genuine new break in the DNA or matrix
+# stages therefore produces the same red X as the expected curriculum debt — read
+# the step log, not the badge. Once the census reaches zero, red means red again.
+#
+# What this workflow must never do is lie. No `|| true`, no `continue-on-error`
+# (pgen_hardening.md Phase 3). It is allowed to fail; it is not allowed to pass
+# while something is broken.
+
+on:
+  push:
+    paths:
+      - 'backend/**'
+      - 'data/**'
+      - 'docs/**'
+      - 'tests/**'
+      - '.github/workflows/validate-pgen.yml'
+  pull_request:
+    paths:
+      - 'backend/**'
+      - 'data/**'
+      - 'docs/**'
+      - 'tests/**'
+      - '.github/workflows/validate-pgen.yml'
+
+jobs:
+  validate:
+    name: Run Practice Gen Hardening Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Ordered cheapest-first so a broken doc or a failing unit test stops the
+      # job in seconds rather than after the ~4-minute matrix below.
+      - name: Lint docs/ for un-enforced imperatives (doc_rem.md R1/§3.5)
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Only pgen_contract.md and pgen_judgment.md may state a binding
+          # "must" — every other pg-pipeline doc describes, it does not command.
+          # DOC_RULES.md/doc_rem.md/IMPLEMENTATION_STATUS.md are meta-docs about
+          # this very rule (self-referential, exempt); INTRO_CONTENT.md/core.md
+          # govern unrelated content.
+          #
+          # Exit codes are handled explicitly rather than with `|| true`: grep
+          # exits 1 for "no match" (the success case) but >=2 for a real error
+          # such as an unreadable file, and `|| true` would collapse both into
+          # "clean" — the silent-pass pattern this gate exists to forbid.
+          exempt='docs/(pgen_contract|pgen_judgment|DOC_RULES|doc_rem|INTRO_CONTENT|core|pgen_hardening|IMPLEMENTATION_STATUS)\.md$'
+          violations=""
+          while IFS= read -r f; do
+            if printf '%s' "$f" | grep -qE "$exempt"; then continue; fi
+            rc=0
+            grep -qi '\bmust\b' "$f" || rc=$?
+            case "$rc" in
+              0) violations="${violations}${f}"$'\n' ;;
+              1) ;;
+              *) echo "doc lint aborted: grep exited $rc on '$f'"; exit 1 ;;
+            esac
+          done < <(find docs -type f -name '*.md' | sort)
+          if [ -n "$violations" ]; then
+            echo "Found un-enforced 'must' outside pgen_contract.md/pgen_judgment.md:"
+            printf '%s' "$violations"
+            echo "Move binding rules into pgen_contract.md with a named enforcer, or rephrase as descriptive."
+            exit 1
+          fi
+          echo "doc lint: clean"
+
+      - name: Run Unit Suite
+        # database.py now checks DATABASE_URL lazily, inside get_engine()
+        # (first actual connection attempt), not at import time -- so
+        # importing a database-free route (e.g. get_matatag_lab_config, pure
+        # formatter-gating logic with no `db` parameter) no longer requires
+        # it. No dummy DATABASE_URL needed here anymore.
+        run: PYTHONPATH=. python -m pytest tests/unit/ -q -m "not slow"
+
+      # Plants seven known bugs one at a time and asserts the harness catches
+      # each — it tests the tests. It mutates tracked source in place and
+      # restores it in a finally, so it runs before run_all and its restoration
+      # is verified rather than assumed.
+      - name: Mutation-test the Validation Harness
+        run: |
+          set -euo pipefail
+          PYTHONPATH=. python -m tests.mutation_harness
+          if ! git diff --quiet -- backend/; then
+            echo "mutation_harness did not restore backend/ — refusing to pass:"
+            git diff --stat -- backend/
+            exit 1
+          fi
+          echo "mutation harness: backend/ restored clean"
+
+      - name: Run Practice Gen Hardening Harness
+        run: python -m backend.app.practice_gen.validation.run_all
+
+      - name: Upload Validation Reports on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pgen-validation-reports
+          path: validation_reports/
+          retention-days: 7
