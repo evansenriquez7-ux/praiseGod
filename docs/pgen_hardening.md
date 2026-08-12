@@ -1,35 +1,163 @@
-# PG Pipeline Hardening — Implementation Plan
+# PG Pipeline — Engineering Guide & Hardening Record
 
-**Audience:** autonomous coding agent working in this repository.
-**Goal:** make it structurally impossible for a broken problem generator to ship, by replacing checklist-based self-verification with a machine-enforced harness wired into CI.
+**Species: explainer** ([`DOC_RULES.md`](./DOC_RULES.md)). It describes; it does not command. Binding
+rules live in [`pgen_contract.md`](./pgen_contract.md) (machine-enforced, cross-checked by `run_all`)
+and [`pgen_judgment.md`](./pgen_judgment.md) (reviewed). Completion status is in
+[`IMPLEMENTATION_STATUS.md`](./IMPLEMENTATION_STATUS.md).
 
-Read this entire document before writing any code. Execute the phases **in order**. Each phase has acceptance criteria that must pass before you move to the next phase.
+This file has two parts:
 
-> Completion status for this plan is tracked separately in [`IMPLEMENTATION_STATUS.md`](./IMPLEMENTATION_STATUS.md) — this file stays a pristine spec.
+| Part | What it is |
+|---|---|
+| **Part 1 — Extending the pipeline** | **Live guidance.** How to add a formatter, variant, difficulty dimension, or DNA, and how to author a `requires` declaration. Read this. |
+| **Part 2 — The hardening plan** | **Historical record.** The completed 2026-07 plan that built the harness, kept because `IMPLEMENTATION_STATUS.md` and `HARDENING_EVIDENCE.md` cite its phases. Not instructions. |
 
 > [!IMPORTANT]
-> **STATUS as of 2026-08-13: this plan is COMPLETE, and its "Explicit non-goals" (bottom of file) are
-> SUPERSEDED. Do not read them as standing policy.**
+> **The plan in Part 2 is COMPLETE, and its "Explicit non-goals" are SUPERSEDED. Do not follow them.**
 >
 > They said *"do not add new formatters/variants"* and *"this plan verifies existing contracts; it does
-> not change pedagogy."* That scoped **this plan**, whose job was mechanical verification. It is not a
-> rule about the project, and it now contradicts the gate this plan itself built:
+> not change pedagogy."* That scoped **that plan**, whose job was mechanical verification. It is not a
+> rule about the project, and it contradicts the gate that plan itself built:
 > [`pgen_judgment.md`](./pgen_judgment.md)'s six gated items are *entirely* pedagogical — *"Do the
 > problems address the exact **verbs and nouns** of the MATATAG competency?"*, *"Is **every sub-case the
 > competency's wording names** actually generated?"* — and `run_all` cannot exit 0 until all of them
-> reach PASS. The gate requires changing pedagogy; the non-goal forbids it. Both cannot hold.
+> reach PASS. The gate requires changing pedagogy; the non-goal forbade it. Both cannot hold.
 >
-> `CLAUDE.md` Content Rule 3 governs instead: *"nothing beyond the curriculum's explicit scope, **nothing
-> less than its full scope**."* Failing nodes fail the second half. Adding a formatter, variant, difficulty
-> dimension, or DNA **because a MATATAG competency requires it** is in scope and expected. Adding one
-> because it seems pedagogically nice is not — see Content Rule 3a, and
-> [`extending_pgen.md`](./extending_pgen.md) for how.
->
-> A previous agent correctly declined to fix `mat_g3_mg_q1_5` ("Recognize and **draw** parallel,
-> intersecting, and perpendicular lines" — draw exercised 0/10) by citing the non-goals. Under the
-> superseding rule that node is buildable work, and the harness now names the missing capability itself.
+> `AGENTS.md` **Content Rule 4** governs instead. A previous agent correctly declined to fix
+> `mat_g3_mg_q1_5` (*"Recognize and **draw** parallel, intersecting, and perpendicular lines"* — draw
+> exercised 0/10) by citing the non-goals. Under Rule 4 that node is buildable work, and
+> `validate_capability` §6C now names the missing capability itself.
 
 ---
+
+# Part 1 — Extending the pipeline
+
+## When this applies
+
+`validate_capability` (§6) reports a capability with no provider:
+
+```
+mat_g3_mg_q1_5: competency requires 'draw_lines' (from clause 'draw'), but no pipeline
+artifact provides it. Reachable DNAs: ['geometric_lines']. Build the formatter/variant/
+dd/DNA that produces it...
+```
+
+That is a work item, not a judgment call. `AGENTS.md` Content Rule 4 governs: change content freely
+**toward** the written curriculum, never **past** it. A capability a MATATAG competency names is in
+scope to build; one it does not name is invention and stays out of scope, however good the idea.
+
+## Step 1 — check whether it already exists
+
+Most "missing machinery" is machinery gated off the node that needs it — defect shape #3 below.
+Opening a gate costs hours where building a formatter costs a day.
+
+```bash
+ls backend/app/practice_gen/formatters/visual/ backend/app/practice_gen/formatters/textual/
+grep -n "<capability>" backend/app/practice_gen/adapter.py
+grep -n "<capability>" backend/app/practice_gen/compatibility.py
+```
+
+Worked example: the "number-line jump machinery" the hardening ledger deferred twice reads as new
+work, but `formatters/visual/fmt_number_line.py` already exists and `adapter.py` routes it twice
+(`number_line_read`, `number_line_set`). The open question is whether it renders a *jump* and whether
+it is offered to the nodes that need it — a smaller change, and the better one, since two ways to draw
+a number line is itself a defect.
+
+## Step 2 — wire every registry in the same commit
+
+These cross-check each other at import and in the harness, so a partial wiring fails loudly but
+confusingly. Grep the constant name rather than trusting a line number; they drift.
+
+| Adding | Touch |
+|---|---|
+| **formatter** | `adapter.py` `FORMATTER_ROUTES` → `compatibility.py` `COMPATIBILITY` for each DNA that may use it → `FORMATTER_VARIANT_SUPPORT` → `schemas/visuals.py` `VisualSchemaRegistry` if visual → `FORMATTER_NUMERIC_LIMITS` if it cannot render arbitrary magnitudes |
+| **variant** | `compatibility.py` `VARIANTS_BY_DNA` → `FORMATTER_VARIANT_SUPPORT` → `CURRICULUM_VARIANT_GATES` if grade/quarter-gated → a binding in `registry.py`'s `_parse_competency_bounds`, or nothing will ever select it |
+| **DNA** | `dna/<domain>/<name>.py` → `validation/_manifest.py` `DNA_MODULE_MAP` → `compatibility.py` `COMPATIBILITY` (keys asserted equal to `DNA_MODULE_MAP` at import) → `registry.py` `NODE_TO_DNA` → `axes_catalog.py` for its difficulty axes |
+| **any of the above** | `validation/validate_capability.py` `CAPABILITY_PROVIDERS`, mapping the curriculum capability id to the artifact just built |
+
+## Step 3 — three traps that have each cost a day
+
+- **Declaring a formatter exposes it to an exhaustive sweep on every mapped node**, not only the one it
+  was built for. §1C enumerates every supported `(dna, formatter, variant)` combination, so one name
+  added to a DNA's `COMPATIBILITY` list can generate hundreds of new combinations, each of which has to
+  execute cleanly. Add it to the narrowest DNA set that satisfies the competency, then run the **full**
+  `run_all` — a scoped `--node` run hides the blast radius.
+- **A 2-tuple bound in the registry is always read as a continuous `(min, max)` range.** A discrete
+  multi-part value needs a string sentinel instead.
+- **A new difficulty axis needs a defensible `default`.** `axes_catalog`'s counting range axis once
+  carried the file's only `default: 0.0`, which pinned default generation to the scalar floor and
+  looked exactly like a DNA bug.
+
+## Step 4 — verify like any other pipeline change
+
+Scoped `validate_matrix --node` for every affected node, then a full `run_all`, then a fresh blind
+re-review of every node touched. New machinery earns the same evidence bar as a one-line binding fix —
+arguably higher, since nothing has ever exercised it.
+
+## Authoring a `requires` declaration
+
+Declarations live in `data/skeletons/vocab_annotation.json`, the hand-authored source.
+`data/knowledge_graph_g1_3.json` is a build artifact regenerated by
+`scripts/rebuild_knowledge_graph.py`; anything typed into it is destroyed on the next rebuild.
+
+```jsonc
+"requires": [
+  {"kind": "task",   "id": "recognize_lines",     "clause": "Recognize"},
+  {"kind": "task",   "id": "draw_lines",          "clause": "draw"},
+  {"kind": "object", "id": "parallel_lines",      "clause": "parallel"},
+  {"kind": "object", "id": "intersecting_lines",  "clause": "intersecting"},
+  {"kind": "object", "id": "perpendicular_lines", "clause": "perpendicular lines"}
+]
+```
+
+Two checks keep a declaration honest, and they are complementary:
+
+- **§6A provenance** — every `clause` is a literal substring of the node's own `competency`. Blocks
+  *invention*.
+- **§6B coverage** — every content word of `competency` appears in at least one `clause`. Blocks
+  *omission*, the loophole that would otherwise gut the design: a pipeline that cannot render "draw"
+  could simply not declare it, and §6C would pass vacuously. A word genuinely carrying no requirement
+  goes in `requires_ignore`, where the omission stays visible in review and in the diff.
+
+Together the clauses *tile* the competency — Content Rule 3 ("nothing beyond the curriculum's explicit
+scope, nothing less than its full scope") checked by machine rather than by eye.
+`tests/unit/test_capability_contract.py` pins the division of labour: provenance demonstrably *misses*
+an omission and coverage catches it.
+
+**Who authors it matters.** A declaration written by whoever built the generator will agree with the
+generator and drift from MATATAG alongside it — the author-verifying-itself failure that produced 151
+fabricated judgment reviews, twice. Declarations are authored from the competency text by a pass that
+does not read `dna/`, `formatters/`, `generators/`, `adapter.py`, or `orchestrator.py`, using the same
+blind-dispatch discipline as the judgment reviewers.
+
+## The five defect shapes
+
+Read a node's failing rationale, then match it to one of these before diagnosing from scratch:
+
+1. **Key consumed but never bound** — a DNA reads a profile key nothing sets, so a default governs and
+   the real branches are dead code.
+2. **One text match too broad** — two competencies collapse onto one binding and render identically.
+3. **Formatter gated off the node that needs it** — the named model is structurally unreachable.
+   Opening the gate usually *also* needs task-specific stem text in the same change, or you trade a
+   coverage gap for a duplication bug.
+4. **Named form generated only as a distractor** — present in the item, never as the answer. Count
+   correct answers separately from distractors.
+5. **One boundary defined twice with different comparisons** — the pool disagrees with the renderer
+   about where the boundary sits. Verify the *rendered text*; the printed label is ground truth, not
+   the numeric value.
+
+---
+
+# Part 2 — The hardening plan (historical record, completed)
+
+> Everything below is the original 2026-07 plan, preserved because `IMPLEMENTATION_STATUS.md` and
+> `HARDENING_EVIDENCE.md` cite its phases and ground rules by number. Its acceptance criteria are met
+> except where noted. **Phase 3 (CI enforcement) was withdrawn on 2026-08-12** — no GitHub Actions
+> workflow runs the harness; `run_all` is run locally and by the hardening loop. See
+> `IMPLEMENTATION_STATUS.md` for that reversal and its evidence.
+>
+> Ground Rules 1–4 below remain good standing practice and are echoed in `AGENTS.md`. Ground Rule 5 is
+> obsolete: `pgen_checklist.md` no longer exists and doc governance is `DOC_RULES.md`.
 
 ## Ground Rules (read first, these override your habits)
 
@@ -178,7 +306,7 @@ A phase without verbatim command output in this log is **not complete**, regardl
 ## Explicit non-goals — ⛔ SUPERSEDED 2026-08-13, DO NOT FOLLOW
 
 > These are kept only so the two documents that cite them by name (`AGENTS.md` Content Rule 4 and
-> `extending_pgen.md`) point at something a reader can actually check, and so nobody re-derives them
+> Part 1 above) point at something a reader can actually check, and so nobody re-derives them
 > later. **They are not in force.** The governing rule is `AGENTS.md` Content Rule 4. See the banner
 > at the top of this file for why.
 

@@ -4,7 +4,20 @@
 **Scope:** all `.md` files in `docs/` that govern the pg pipeline, plus the rules for writing any future agent-facing doc in this repo.
 **Prerequisite:** execute only **after** `pgen_hardening.md` Phase 2 is complete, because the restructured docs point at harness checks that must exist first.
 
-> Completion status for this plan — including a re-audit that corrected two over-claimed done-criteria — is tracked separately in [`IMPLEMENTATION_STATUS.md`](./IMPLEMENTATION_STATUS.md). This file stays a pristine spec.
+> Completion status for this plan — including a re-audit that corrected two over-claimed done-criteria — is tracked separately in [`IMPLEMENTATION_STATUS.md`](./IMPLEMENTATION_STATUS.md).
+
+> [!IMPORTANT]
+> **STATUS 2026-08-13: this plan is COMPLETE. It is a historical record, not instructions.** Two things
+> inside it are now out of date, and the live artifacts win:
+>
+> - **The proposed contract table in §3.1 says "CI, blocks deploy" on every row.** That was true when
+>   written and is not now — no CI workflow runs the harness (see `IMPLEMENTATION_STATUS.md`, Phase 3
+>   withdrawn 2026-08-12). The live table is [`pgen_contract.md`](./pgen_contract.md), which is
+>   cross-checked against `run_all`'s `CONTRACT_CHECKS` registry in both directions. Read that one.
+> - **`pgen_checklist.md` no longer exists.** This plan's diagnosis of it is why, and reads as history.
+>
+> The plan's *rules* (R1–R5) do still govern new docs and are the live part;
+> [`DOC_RULES.md`](./DOC_RULES.md) is their standing summary.
 
 ---
 

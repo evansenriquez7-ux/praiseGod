@@ -211,7 +211,7 @@ def _validate_provision(node_id: str, requires: List[Dict]) -> List[str]:
                 f"{req.get('clause')!r}), but no pipeline artifact provides it. "
                 f"Reachable DNAs: {dnas or '[]'}. Build the formatter/variant/dd/DNA that "
                 f"produces it and register it in CAPABILITY_PROVIDERS "
-                f"(see docs/extending_pgen.md) -- this is the fix, not a reason to defer "
+                f"(see docs/pgen_hardening.md Part 1) -- this is the fix, not a reason to defer "
                 f"the node (AGENTS.md Content Rule 4)."
             )
             continue
@@ -249,7 +249,7 @@ def validate_capability_declarations(node_ids: List[str] | None = None) -> List[
             errs.append(
                 f"{node_id}: no 'requires' declaration. Add one to "
                 f"data/skeletons/vocab_annotation.json, authored from the competency text "
-                f"alone (see docs/extending_pgen.md). Undeclared nodes are not skipped."
+                f"alone (see docs/pgen_hardening.md Part 1). Undeclared nodes are not skipped."
             )
             continue
         if not isinstance(requires, list) or not requires:
