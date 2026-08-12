@@ -2939,3 +2939,97 @@ tiling-surface items 171 · gardens measured in centimetres: 0
 
 `validate_matrix --node` PASS on all four area nodes plus `mat_g2_na_q3_1`; full `run_all`
 151/151, 0 failures, all ten contract checks, stages 1–5 green.
+
+---
+
+## 2026-08-13 — Tick F: building the inductive derivation (mat_g3_mg_q1_1)
+
+### The gap, named by both the reviewer and §6C
+Competency: *"Explore inductively the derivation of the formulas for the areas of a square and
+a rectangle using square tile units."*
+
+A blind reviewer scored the node **FAIL**:
+
+> "No sample derives anything. The rule is printed in the stem of every array item ('Using the
+> formula rows × columns, what is the total number of tiles?', 'Applying the rows × columns
+> formula...'), so the pupil only applies a supplied formula; no correct answer is ever a formula,
+> and side×side / length×width are never elicited or named."
+
+§6C named the same gap mechanically, from the competency sentence alone:
+
+```
+mat_g3_mg_q1_1: 'explore_pattern_across_cases'   (from clause 'Explore')
+mat_g3_mg_q1_1: 'reason_inductively_from_cases'  (from clause 'inductively')
+mat_g3_mg_q1_1: 'derive_area_formula'            (from clause 'the derivation')
+mat_g3_mg_q1_1: 'area_formula_expression'        (from clause 'the formulas')
+```
+
+Two independent instruments, one from rendered content and one from the curriculum text,
+agreeing on what was missing. Under Rule 8 that is a build item, not a deferral.
+
+### Step 1 — prove it doesn't already exist
+`fmt_fill_in_table.py` exists and is routed as `fill_in_table` (adapter.py:223), currently offered
+only to `pictographs`. But a table was not what the competency needs: induction needs **several
+cases to generalise from** and **a rule as the answer object**, and the existing `mcq` formatter
+already supports a string answer with string distractors (`values["distractors"]`, the mechanism
+`shapes_2d` uses). No new formatter was required — the gap was in the DNA and the stem, not in
+the presentation layer.
+
+### Step 2 — what was built
+`area.py` gains a dedicated `derive_formula` branch that returns three tiled cases and keys the
+**rule**, with shape-appropriate distractors. `base_generator.py`'s stem shows the cases and asks
+for the rule instead of announcing it, and **raises** if a derive_formula item arrives without
+cases rather than falling back to the old application phrasing.
+
+Note the competency says "formula**s**", plural — a square's and a rectangle's are different
+rules, so the shape decides which is keyed. That was the reviewer's `comprehensive_coverage`
+FAIL ("only one rule appears, so the square's side × side is never distinguished").
+
+### Verification — rendered samples
+
+```
+seed 42: Cover each rectangle with unit square tiles and count them: a 4 by 2 rectangle takes
+         8 tiles, a 7 by 2 rectangle takes 14 tiles, and a 9 by 2 rectangle takes 18 tiles.
+         Which rule always gives the number of tiles?
+   answer: 'length × width' | options: length + width, 2 × (length + width), length + length
+
+seed 44: Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles,
+         a 3 by 3 square takes 9 tiles, and a 5 by 5 square takes 25 tiles.
+         Which rule always gives the number of tiles?
+   answer: 'side × side' | options: 4 × side, side + side, side + 4, side × side
+```
+
+```
+answers over 200 student-path seeds: {'length × width': 107, 'side × side': 93}
+items whose stem contains the keyed answer: 0
+```
+
+Both formulas are keyed, roughly evenly; the cases hold one dimension fixed so the pattern is
+visible; every case stays inside the 2/3/4/5/10 tables from the earlier gating work.
+
+### Step 3 — the capability contract
+With rendered evidence for each, the area capabilities are now registered. **The whole cluster
+reaches zero:**
+
+```
+total gaps: 30      (was 59)
+area cluster: {'mat_g3_mg_q1_0': 0, 'mat_g3_mg_q1_1': 0, 'mat_g3_mg_q1_2': 0, 'mat_g3_mg_q1_3': 0}
+```
+
+### A hole this exposed in §6C itself
+`mat_g3_mg_q1_3` is bound to the **sentinel** `find_area_or_missing_dimension`, which the DNA
+resolves per seed and which is deliberately not a Lab-selectable variant value. Because
+`_provided_for_node` intersected `VARIANTS_BY_DNA` with the bound, and the sentinel is in neither,
+§6C reported that node as having **no reachable task_type at all** — the opposite of the truth,
+since the registry names exactly what it runs. A bound the registry pins is now treated as
+reachable by construction.
+
+This does not loosen the clamp: a value the bound *excludes* is still excluded, so the Rule 9
+defeat stays caught. Re-verified by re-introducing the flagged mapping in memory:
+
+```
+unreachable-value defeat still caught: True
+```
+
+Full `run_all`: 151/151, 0 failures, all ten contract checks, stages 1–5 green;
+capability failures 198 → 169.

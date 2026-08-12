@@ -232,6 +232,52 @@ def generate_params(
     # past what G3 Q1 has been taught (see _table_and_cofactor).
     table_side, other_side = _table_and_cofactor(scalar, rng)
 
+    # ── inductive derivation (mat_g3_mg_q1_1) ────────────────────────────────
+    # "Explore inductively the derivation of the formulas for the areas of a
+    # square and a rectangle using square tile units."
+    #
+    # This used to reuse find_area's computation and print the rule in the stem
+    # ("Using the formula rows x columns, what is the total number of tiles?"),
+    # so the pupil only ever APPLIED a supplied rule and the answer was a number.
+    # A blind reviewer scored the node FAIL for exactly that: "No sample derives
+    # anything... no correct answer is ever a formula, and side x side /
+    # length x width are never elicited or named."
+    #
+    # Induction needs two things the old item had neither of: several cases to
+    # generalise from, and a *rule* as the answer object. Note the competency
+    # says "formulas", plural -- a square's side x side and a rectangle's
+    # length x width are different rules, so the shape decides which is keyed.
+    if task_type == "derive_formula":
+        if shape == "square":
+            sides = sorted(rng.sample([t for t in _KNOWN_TABLES if t <= 5], 3))
+            cases = [(v, v, v * v) for v in sides]
+            answer = "side × side"
+            distractors = ["side + side", "4 × side", "side + 4"]
+            dims_word = "side"
+        else:
+            # One dimension held fixed across the cases so the pattern is
+            # visible: the other varies, and the total tracks the product.
+            fixed = table_side
+            varying = sorted(rng.sample([v for v in range(2, _OTHER_SIDE_MAX + 1)
+                                         if v != fixed], 3))
+            cases = [(v, fixed, v * fixed) for v in varying]
+            answer = "length × width"
+            distractors = ["length + width", "2 × (length + width)", "length + length"]
+            dims_word = "length and width"
+        return {
+            "blank_target": "answer",
+            "shape": shape,
+            "shape_noun": shape,
+            "task_type": "derive_formula",
+            "cases": cases,
+            "answer": answer,
+            "distractors": distractors,
+            "dims_word": dims_word,
+            "unit": unit_label,
+            "length_unit": unit_label.replace("sq ", ""),
+            "context": context,
+        }
+
     if shape == "square":
         # s * s must itself be a known-table fact, so the side is the table factor.
         s = table_side

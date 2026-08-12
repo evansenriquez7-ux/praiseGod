@@ -1137,16 +1137,25 @@ def _build_symbolic_question(
                 f"{rows_cols} exactly. About how many tiles in total will you use?"
             )
         if task_type == "derive_formula":
-            area_val = values.get("answer", 0)
-            if isinstance(area_val, (int, float)) and int(area_val) % 2 == 0:
-                return (
-                    f"A {shape} is arranged in {rows_cols} of unit square tiles. "
-                    f"Using the formula rows × columns, what is the total number "
-                    f"of tiles?"
+            # The cases are shown and the RULE is asked for. Printing the rule in
+            # the stem, as this branch used to, turns a derivation into an
+            # application -- the defect a blind reviewer scored FAIL.
+            cases = values.get("cases")
+            if not cases:
+                raise ValueError(
+                    f"area stem: derive_formula has no 'cases' in the generated "
+                    f"values (shape={shape!r}, values={values!r}). An inductive "
+                    f"item needs several tiled cases to generalise from; the DNA "
+                    f"branch that produced this must supply them."
                 )
+            shown = ", ".join(
+                f"a {r} by {c} {shape} takes {t} tiles" for r, c, t in cases[:-1]
+            )
+            r, c, t = cases[-1]
+            shown += f", and a {r} by {c} {shape} takes {t} tiles"
             return (
-                f"Tiling a {shape} takes {rows_cols}. Applying the rows × "
-                f"columns formula, how many unit tiles cover it in all?"
+                f"Cover each {shape} with unit square tiles and count them: "
+                f"{shown}. Which rule always gives the number of tiles?"
             )
         return f"A {shape} has {dims}. What is its area in {unit}?"
 

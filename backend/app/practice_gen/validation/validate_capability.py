@@ -142,6 +142,60 @@ CAPABILITY_PROVIDERS: Dict[str, Dict[str, List[Any]]] = {
     # "data_table" and "data_set" deliberately ABSENT -- the competency says "in tables AND
     # single bar graphs"; COMPATIBILITY["bar_graphs"] offers only the two bar-chart formatters.
 
+    # --- area (mat_g3_mg_q1_0 / _1 / _2 / _3) ---
+    # Every entry here is backed by a rendered sample quoted in
+    # validation_reports/HARDENING_EVIDENCE.md (loop Rule 9: a provider entry is a
+    # claim that the artifact *produces what the clause names*, and carries the
+    # same evidence bar as a code fix).
+    #
+    # The four inductive capabilities became providable in this tick. Before it,
+    # derive_formula printed the rule in the stem and keyed a number, so nothing
+    # explored, generalised or produced a formula; the item now shows three tiled
+    # cases and keys the rule itself:
+    #   "Cover each square with unit square tiles and count them: a 2 by 2 square
+    #    takes 4 tiles, a 3 by 3 square takes 9 tiles, and a 5 by 5 square takes
+    #    25 tiles. Which rule always gives the number of tiles?" -> "side × side"
+    "explore_pattern_across_cases": {"variants": [("task_type", "derive_formula")]},
+    "reason_inductively_from_cases": {"variants": [("task_type", "derive_formula")]},
+    "derive_area_formula": {"variants": [("task_type", "derive_formula")]},
+    # "the formulas" is plural in the competency, and both are keyed: the shape
+    # decides which rule is correct (107 "length × width" / 93 "side × side" over
+    # 200 student-path seeds).
+    "area_formula_expression": {"variants": [("task_type", "derive_formula")]},
+    "square_tile_array": {"variants": [("task_type", "derive_formula"),
+                                       ("task_type", "illustrate_tiles")]},
+    "square_tile_unit": {"variants": [("task_type", "derive_formula"),
+                                      ("task_type", "illustrate_tiles")]},
+    # "A rectangle is covered edge-to-edge with unit square tiles, arranged in
+    #  2 rows and 7 columns. Estimate how many unit tiles cover the rectangle."
+    "illustrate_area_with_tiles": {"variants": [("task_type", "illustrate_tiles")]},
+    "estimate_area": {"variants": [("task_type", "illustrate_tiles")]},
+    "square_tile_covering": {"variants": [("task_type", "illustrate_tiles")]},
+    # "A rectangle has sides 25 cm and 10 cm. What is its area in sq cm?"
+    "compute_area": {"variants": [("task_type", "find_area")]},
+    "square_centimeter": {"variants": [("unit", "square_cm")]},
+    "square_meter": {"variants": [("unit", "square_m")]},
+    # The "sq" abbreviation is rendered by both unit labels ("sq cm" / "sq m").
+    "square_unit_abbreviation": {"variants": [("unit", "square_cm"),
+                                              ("unit", "square_m")]},
+    # "Daniel wants to cover a rectangular garden that is 4 m long and 3 m wide
+    #  with square tiles that are 1 m on each side. How many tiles are needed?"
+    "solve_area_problem": {"variants": [("context", "word_problem")]},
+    "word_problem_context": {"variants": [("context", "word_problem")]},
+    "extract_area_relationship_from_context": {"variants": [("context", "word_problem")]},
+    # Area itself is the subject of every task this DNA serves, so any of them
+    # provides the attribute; the per-node bound decides which is reachable.
+    "area_attribute": {"variants": [("task_type", "find_area"),
+                                    ("task_type", "illustrate_tiles"),
+                                    ("task_type", "derive_formula"),
+                                    ("task_type", "find_missing_dimension"),
+                                    # mat_g3_mg_q1_3 is bound to the sentinel rather
+                                    # than to either task directly; it resolves to
+                                    # find_area or find_missing_dimension per seed.
+                                    ("task_type", "find_area_or_missing_dimension")]},
+    "square_figure": {"variants": [("shape", "square")]},
+    "rectangle_figure": {"variants": [("shape", "rectangle")]},
+
     # --- multiplication (mat_g2_na_q3_1) ---
     "illustrate_multiplication": {"formatters": ["array_grid_set"]},
     "write_multiplication_sentence": {"formatters": ["mcq", "cloze"]},
@@ -244,6 +298,19 @@ def _provided_for_node(node_id: str) -> Dict[str, Set[str]]:
                 if allowed is not None and str(v) not in allowed:
                     continue
                 variants.add(f"{key}={v}")
+            # A bound the registry pins is reachable for this node by construction,
+            # even when VARIANTS_BY_DNA does not list it. That happens for the
+            # *sentinel* bounds this codebase uses where one node serves two tasks
+            # chosen per seed (area's "find_area_or_missing_dimension", calendar's
+            # "elapsed_days_or_weeks"): the DNA resolves them against its own rng, so
+            # they are deliberately not Lab-selectable variant values. Without this,
+            # §6C reported mat_g3_mg_q1_3 as having no reachable task_type at all --
+            # the opposite of the truth, since the registry names exactly what it runs.
+            # This does not loosen the clamp above: a value the bound excludes is still
+            # excluded, which is what keeps the unreachable-value defeat caught.
+            if allowed is not None:
+                for v in allowed:
+                    variants.add(f"{key}={v}")
         formatters.update(COMPATIBILITY.get(dna) or [])
     return {"variants": variants, "formatters": formatters}
 
