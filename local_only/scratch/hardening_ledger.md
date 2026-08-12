@@ -984,3 +984,85 @@ per its protocol...`. Start at §0, and **include the staleness sweep** — it i
 5. **One boundary defined twice, with different comparisons** — binding a sub-case is not enough if the
    pool disagrees with the renderer about where the boundary sits. Verify the *rendered text* satisfies
    the sub-case; the printed label is ground truth, not the numeric value. (coin/bill at ₱20.)
+
+---
+
+## 2026-08-13 — Tick C (unit 1 of the queue: the six fixture re-declarations)
+
+- **Census before:** PASS=57 CONCERN=61 FAIL=33 (151 reviewed, 0 unreviewed)
+  (gate: non-verdict=0 · skeleton cluster=1 · phantom quotes=0)
+  `run_all` EXIT_CODE=1, red only at 6/7 and 7/7. Tick 0 and Tick A correctly did not fire.
+- **Unit of work:** re-declared the six fixture nodes from a blind Declarer (§2b's named first
+  item), diffed against the sighted originals, and re-keyed `CAPABILITY_PROVIDERS` to only the
+  mappings rendered evidence earns.
+- **Root cause:** `_provided_for_node` measured reachability against `VARIANTS_BY_DNA` — what a
+  DNA *declares* — while the student path applies `_parse_competency_bounds`' per-node clamp.
+  On any node whose competency is narrower than its DNA, §6C could report a capability as
+  provided by a variant value the student path can never select.
+- **Machinery built:** none (no new formatter/variant/axis/DNA). Check strengthened:
+  `_provided_for_node` now intersects declared variants with the node's competency bounds, via a
+  new `_bound_restricts_to` that treats a scalar/list bound as a restriction and a 2-tuple as a
+  continuous range (never a discrete pair). Two diagnostic probes promoted to `tests/pgen_probes/`.
+- **Files touched:** `backend/app/practice_gen/validation/validate_capability.py`,
+  `data/skeletons/vocab_annotation.json`, `data/knowledge_graph_g1_3.json`,
+  `validation_reports/HARDENING_EVIDENCE.md`, `tests/pgen_probes/{collapse,variant_binding}_probe.py`
+- **Verification:**
+  - `run_all` → `Nodes Checked: 151 / Nodes Passed: 151 / Nodes Failed: 0 / Total Failures
+    Observed: 0`, all ten contract checks executing, stages 1–5 all PASS, `EXIT_CODE=1` red only
+    at 6/7 (291 judgment) and 7/7 (163 capability). No regression.
+  - Re-introducing the flagged `distinguish_shapes -> task_type=identify_name` mapping in memory
+    now fails §6C unaided: `caught the unreachable-value mapping: True`.
+- **Census after:** PASS=57 CONCERN=61 FAIL=33 (unchanged — no generator content changed).
+  Capability gaps **10 → 18**; undeclared nodes unchanged at 145.
+- **Commit(s):** `63e769e` fix(capability): measure §6C reachability on the student path, not on
+  DNA declarations
+
+### The measurement §2b asked for — is the Declarer separation worth its cost?
+
+**Yes, and it is now measured.** The blind Declarer saw only the six competency sentences (no
+file tools at all) and:
+
+- passed §6A (provenance) and §6B (coverage) with **zero failures**, never having seen the checker;
+- **never declared fewer** requirements than the sighted author;
+- declared **more on four of six nodes** (+5 total: g1_na_q1_0 5→7, g1_mg_q1_1 5→6,
+  g3_mg_q2_3 4→5, g3_dp_q3_1 5→6).
+
+The divergence is entirely one-directional — under-declaration by the sighted author. The two
+nodes where they agreed (g2_na_q3_1, g3_mg_q1_5) are the two whose competency enumerates its own
+list, leaving no room to quietly drop anything. **Every gap §2b listed as provisional survives
+blind re-declaration, so the build queue is confirmed rather than provisional.**
+
+### The wrong turn, recorded on purpose
+
+My first probe forced each declared variant value and called any key whose values all rendered
+identically "dead". On that basis I removed three earned mappings and wrote that `mat_g3_mg_q2_3`
+"hardcodes mL so liters never render". **That was wrong** — the identical renderings were the
+competency-bound clamp working, and a census of *unforced* output shows L in 103 of 200 seeds and
+mL in 97. Mappings restored. `collapse_probe.py` now prints each key's bound and labels results
+`CLAMPED` (expected) vs `!! DEAD` (candidate), so the two cannot be confused again.
+
+Second false alarm, same session: `problem["format"]` is the *interaction* format (`read_mcq`,
+`set_fill_in_blank`), **not** the formatter name. Comparing it to a formatter name made
+array_grid look unreachable for `mat_g2_na_q3_1`; it is reachable (22 of 100 seeds).
+
+### Next tick should:
+
+**Declare-first is now cheap and proven — start every Tick C with a blind Declarer batch.** The
+highest-value next unit is the **`mat_g3_mg_q1_0/_1/_2/_3` duplication cluster** (queue item 1,
+still untouched): three CONCERNs whose rationales name the same cause — sibling nodes rendering
+identical items for the same seed (`q1_1` reuses `q1_0`'s 2×7 grid on seed 42; `q1_2` seed 604
+and `q1_3` seeds 55/500 serve the sibling's item verbatim). That is defect shape #2, one text
+match too broad in `_parse_competency_bounds`, and it is a plain Tick C.
+
+Then the two Tick Fs, both confirmed by blind declaration: `equal_jumps_on_a_number_line`
+(`mat_g2_na_q3_1` + `mat_g3_na_q4_0`) and `draw_line_relationships` (`mat_g3_mg_q1_5`).
+For the number line, **start from `fmt_number_line.py`, which already renders a single hop**
+(`hop_from`/`hop_by`, grade-3 branch at :157) and is routed twice in `adapter.py`
+(`number_line_read` :102, `number_line_set` :188). Extending it to *repeated equal* jumps is the
+change; note the frontend arc renderer at `frontend/src/App.jsx:1435` draws one arc and will need
+the same extension, so budget backend + frontend.
+
+Also live, from `tests/pgen_probes/collapse_probe.py`: **23 unclamped collapsed value pairs**
+across the six fixtures — `mat_g2_na_q3_1`'s `table` key (5 declared values → 1 rendering) and
+`mat_g3_mg_q2_3`'s `unit` key (4 → 1) are the two largest, and both are unclamped, so unlike the
+clamped collapses they are genuine candidates.
