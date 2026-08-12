@@ -2374,3 +2374,89 @@ i.e. ₱0.25 and ₱0.50) while the pile/total pipeline is **peso-integer**. Dro
 referenced **nowhere in the file** — it has always been dead. Serving centavo piles needs unit-aware
 render text in the money formatters (the same three-call-site shape as the array-grid framing), which
 is its own unit of work.
+
+---
+
+## 2026-08-12 — Gate hardening: the content checks were skipping every non-PASS review
+
+**File:** `backend/app/practice_gen/validation/validate_judgment.py`.
+
+### The defect
+
+`validate_judgment_reviews` skipped the rest of the loop for any review that already had an error:
+
+```python
+errs = _validate_one(nid, path)
+errors.extend(errs)
+if errs or not path.exists():
+    continue          # <-- skips freshness, quote provenance, skeleton, reviewer plurality
+```
+
+`_validate_one` reports a non-PASS verdict **as an error** (`findings[...].verdict is 'CONCERN' (must
+be 'PASS')`). So every CONCERN and FAIL review — 94 of 151 — was exempt from **all four** content
+checks: freshness, quote provenance, skeleton clustering, and reviewer plurality. Those are precisely
+the reviews a generator fix is most likely to invalidate, and precisely the ones a fabricated review
+would hide behind.
+
+This was not theoretical. Measured at the start of this tick, with the gate reporting **zero** stale
+reviews:
+
+```
+STALE reviews actually on disk: 1
+   mat_g1_na_q1_7 (overall=CONCERN) — 1 stale sample
+   seed 613 — Reviewed: 'Is 1 + 2 the same as 2 + 1?'; now renders: 'Is 3 + 1 ...'
+```
+
+A generator change of mine had altered what that node's cited seed renders, and the harness said
+nothing, because the review's verdict was CONCERN.
+
+### The fix
+
+Only a review that is **absent or unreadable** is skipped now. A review that parses gets every content
+check regardless of its verdict or its schema errors.
+
+**This does not weaken the rule that `run_all` cannot pass while a CONCERN or FAIL exists.** That rule
+is enforced in two places and both are untouched: `validate_judgment.py` reports every non-PASS verdict
+as an error, and `run_all.py:146` fails the stage on `v["FAIL"] > 0 or v["CONCERN"] > 0`. Verified
+after the change: 286 non-PASS verdict errors still reported.
+
+### What it caught immediately
+
+```
+mat_g3_mg_q1_5: findings['scale_appropriateness'].rationale is copied verbatim from
+                'mat_g3_mg_q1_4' — boilerplate is not a genuine review.
+```
+
+Both nodes are non-PASS, so the verbatim-reuse check had never run on either. That review was deleted
+and the node re-reviewed blind — and the genuine review is **worse** than the boilerplate one it
+replaced: `mat_g3_mg_q1_5` moved **CONCERN → FAIL**, because its competency is "Recognize **and draw**
+parallel, intersecting, and perpendicular lines" and the draw verb is exercised **0 of 10** times
+(recognition 10/10; parallel 4, perpendicular 3, intersecting 3). The boilerplate rationale had been
+masking a real FAIL.
+
+### Regression test
+
+`tests/unit/test_judgment_antitemplate.py::test_concern_review_still_gets_content_checks` builds a
+CONCERN review whose rationale quotes a stem absent from its own packet and asserts the gate catches
+it — and separately asserts the non-PASS verdict error is still reported, so the fix cannot be undone
+in a way that weakens the pass rule. Mutation-checked rather than assumed:
+
+```
+OLD loop: phantom quote caught? False
+NEW loop: phantom quote caught? True
+```
+
+### Verification
+
+```
+pytest tests/unit/ -q            293 passed, 2 failed
+                                 (the 2 are the pre-existing _FORMATTER_ROUTES ImportError
+                                  in test_checklist_audit / test_parallel_audit, unrelated)
+run_all   EXIT_CODE=1            matrix 151/151, 0 failures, 0 non-judgment FAIL lines,
+                                 both contract checks PASS
+gate errors 288, of which non-verdict errors: 0     stale reviews: 0
+census  57 PASS / 60 CONCERN / 34 FAIL
+```
+
+Every remaining gate error is now a non-PASS verdict. Nothing else is hiding: no stale review, no
+boilerplate, no phantom quote, no template skeleton, no reviewer over quota.

@@ -391,21 +391,32 @@ def validate_judgment_reviews(fail_fast: bool = False) -> List[str]:
 
     for nid in node_ids:
         path = _node_file(nid)
-        errs = _validate_one(nid, path)
-        errors.extend(errs)
-        if errs or not path.exists():
-            if fail_fast and errors:
-                return errors
+        errors.extend(_validate_one(nid, path))
+        if fail_fast and errors:
+            return errors
+
+        # Only a review that is absent or unreadable can be skipped here. This
+        # used to `continue` whenever _validate_one returned ANY error -- and a
+        # CONCERN or FAIL verdict always returns one, because a non-PASS verdict
+        # is itself reported as an error. The effect was that freshness, quote
+        # provenance, skeleton clustering and reviewer plurality ran ONLY over
+        # all-PASS reviews: every CONCERN/FAIL review was exempt from all four,
+        # which is backwards, since those are exactly the reviews a generator
+        # fix is most likely to invalidate.
+        #
+        # Measured when this was found: mat_g1_na_q1_7 (CONCERN) had a stale
+        # sample on disk -- a generator change had altered what its cited seed
+        # renders -- while the full gate reported 0 stale reviews.
+        if not path.exists():
             continue
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
-            if fail_fast and errors:
-                return errors
-            continue
+            continue  # already reported by _validate_one
+        if not isinstance(data, dict) or not isinstance(data.get("findings"), dict):
+            continue  # malformed shape, already reported by _validate_one
 
-        freshness_errs = _validate_freshness(nid, data)
-        errors.extend(freshness_errs)
+        errors.extend(_validate_freshness(nid, data))
         if fail_fast and errors:
             return errors
 

@@ -156,3 +156,62 @@ def test_one_reviewer_over_a_batch_fails():
 def test_many_reviewers_each_within_a_batch_passes():
     reviewers = {f"agent-{b}": [f"n{b}_{i}" for i in range(20)] for b in range(8)}
     assert _validate_reviewer_plurality(reviewers) == []
+
+
+# --- The content checks must not skip non-PASS reviews -------------------------
+
+def test_concern_review_still_gets_content_checks(tmp_path, monkeypatch):
+    """
+    A CONCERN or FAIL verdict must not exempt a review from the content checks.
+
+    `validate_judgment_reviews` used to `continue` whenever `_validate_one`
+    returned any error -- and a non-PASS verdict always returns one, because the
+    verdict itself is reported as an error. So freshness, quote provenance,
+    skeleton clustering and reviewer plurality ran only over all-PASS reviews,
+    exempting every CONCERN/FAIL review from all four. Those are precisely the
+    reviews a generator fix is most likely to invalidate: when this was found,
+    mat_g1_na_q1_7 (CONCERN) had a stale sample on disk while the full gate
+    reported zero.
+    """
+    import json as _json
+
+    import backend.app.practice_gen.validation.validate_judgment as VJ
+
+    node = "mat_g1_na_q1_0"
+    group = tmp_path / "mat_g1_na_q1"
+    group.mkdir(parents=True)
+    phantom = "Write 33 in words."
+    review = {
+        "node_id": node,
+        "reviewed_by": "unit-test reviewer",
+        "review_date": "2026-08-12",
+        "blind": True,
+        "sample_seeds": [42, 43, 44],
+        "samples_reviewed": [
+            {"seed": s, "formatter": "mcq", "question_text": f"placeholder stem {s}", "correct_answer": "1"}
+            for s in (42, 43, 44)
+        ],
+        "findings": {
+            item: {
+                "verdict": "CONCERN",
+                "rationale": (
+                    f"The sampled items quote '{phantom}' which does not appear in this "
+                    f"node's own packet anywhere, so the evidence is unsourced."
+                ),
+            }
+            for item in VJ.REQUIRED_FINDINGS
+        },
+        "overall": "CONCERN",
+    }
+    (group / f"{node}.json").write_text(_json.dumps(review), encoding="utf-8")
+
+    monkeypatch.setattr(VJ, "JUDGMENT_DIR", tmp_path)
+    monkeypatch.setattr(VJ, "get_all_node_ids", lambda *a, **k: [node])
+
+    errs = VJ.validate_judgment_reviews()
+
+    # The quote the rationale invents is caught even though the verdict is CONCERN.
+    assert any(phantom in e for e in errs), errs
+    # And the non-PASS verdict is still reported -- this fix must not weaken the
+    # rule that run_all cannot pass while a CONCERN or FAIL review exists.
+    assert any("must be 'PASS'" in e for e in errs), errs
