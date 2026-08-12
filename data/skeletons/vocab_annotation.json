@@ -46,6 +46,33 @@
         "counting up",
         "counting down",
         "given number"
+      ],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "count_up",
+          "clause": "Count up"
+        },
+        {
+          "kind": "range",
+          "id": "max_value_100",
+          "clause": "100"
+        },
+        {
+          "kind": "task",
+          "id": "count_down_from",
+          "clause": "counting up or down from a given number"
+        },
+        {
+          "kind": "task",
+          "id": "identify_one_more",
+          "clause": "identifying a number that is 1 more"
+        },
+        {
+          "kind": "task",
+          "id": "identify_one_less",
+          "clause": "1 less than a given number"
+        }
       ]
     },
     "mat_g1_na_q1_1": {
@@ -835,6 +862,33 @@
         "corners",
         "features",
         "distinguish"
+      ],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "compare_shapes",
+          "clause": "Compare"
+        },
+        {
+          "kind": "task",
+          "id": "distinguish_shapes",
+          "clause": "distinguish"
+        },
+        {
+          "kind": "object",
+          "id": "shape_2d",
+          "clause": "2-dimensional shapes"
+        },
+        {
+          "kind": "attribute",
+          "id": "shape_sides",
+          "clause": "features such as sides"
+        },
+        {
+          "kind": "attribute",
+          "id": "shape_corners",
+          "clause": "corners"
+        }
       ]
     },
     "mat_g1_mg_q1_2": {
@@ -1624,6 +1678,58 @@
         "multiple",
         "equal jumps",
         "factor"
+      ],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "illustrate_multiplication",
+          "clause": "Illustrate"
+        },
+        {
+          "kind": "task",
+          "id": "write_multiplication",
+          "clause": "write multiplication"
+        },
+        {
+          "kind": "object",
+          "id": "repeated_addition",
+          "clause": "repeated addition"
+        },
+        {
+          "kind": "representation",
+          "id": "concrete_model",
+          "clause": "concrete"
+        },
+        {
+          "kind": "representation",
+          "id": "pictorial_model",
+          "clause": "pictorial models"
+        },
+        {
+          "kind": "representation",
+          "id": "numeral_form",
+          "clause": "numerals"
+        },
+        {
+          "kind": "representation",
+          "id": "equal_groups",
+          "clause": "groups of equal quantities"
+        },
+        {
+          "kind": "representation",
+          "id": "array_model",
+          "clause": "arrays"
+        },
+        {
+          "kind": "representation",
+          "id": "skip_counting",
+          "clause": "counting by multiples"
+        },
+        {
+          "kind": "representation",
+          "id": "number_line_jumps",
+          "clause": "equal jumps on a number line"
+        }
       ]
     },
     "mat_g2_na_q3_2": {
@@ -3006,6 +3112,33 @@
         "parallel lines",
         "intersecting lines",
         "perpendicular lines"
+      ],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "recognize_lines",
+          "clause": "Recognize"
+        },
+        {
+          "kind": "task",
+          "id": "draw_lines",
+          "clause": "draw"
+        },
+        {
+          "kind": "object",
+          "id": "parallel_lines",
+          "clause": "parallel"
+        },
+        {
+          "kind": "object",
+          "id": "intersecting_lines",
+          "clause": "intersecting"
+        },
+        {
+          "kind": "object",
+          "id": "perpendicular_lines",
+          "clause": "perpendicular lines"
+        }
       ]
     },
     "mat_g3_mg_q1_6": {
@@ -3132,6 +3265,28 @@
       "curriculum_vocab": [
         "graduated cylinder",
         "measuring cup"
+      ],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "measure_capacity",
+          "clause": "Measure capacity"
+        },
+        {
+          "kind": "unit",
+          "id": "litre",
+          "clause": "liters (L)"
+        },
+        {
+          "kind": "unit",
+          "id": "millilitre",
+          "clause": "milliliters (mL)"
+        },
+        {
+          "kind": "object",
+          "id": "measuring_tool",
+          "clause": "measuring tools"
+        }
       ]
     },
     "mat_g3_mg_q2_4": {
@@ -3296,6 +3451,33 @@
         "horizontal bar graph",
         "vertical bar graph",
         "bar"
+      ],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "present_data",
+          "clause": "Present data"
+        },
+        {
+          "kind": "object",
+          "id": "data_table",
+          "clause": "tables"
+        },
+        {
+          "kind": "object",
+          "id": "single_bar_graph",
+          "clause": "single bar graphs"
+        },
+        {
+          "kind": "orientation",
+          "id": "bar_horizontal",
+          "clause": "horizontal"
+        },
+        {
+          "kind": "orientation",
+          "id": "bar_vertical",
+          "clause": "vertical"
+        }
       ]
     },
     "mat_g3_dp_q3_2": {

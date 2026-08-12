@@ -150,6 +150,13 @@ def rebuild(vocab_path: str, kg_path: str) -> None:
             "next_node_id": next_node_id,
             "sentence_max_words": sentence_max,
             "number_format": number_format,
+            # The capability contract (§6). Authored by hand in vocab_annotation.json
+            # from the competency text alone, and carried through unchanged -- this
+            # script must never synthesize or infer it, since inference is exactly what
+            # the declaration replaces. Absent here means absent there, and
+            # validate_capability fails loudly on it rather than skipping the node.
+            "requires": node.get("requires"),
+            "requires_ignore": node.get("requires_ignore", []),
             "NOT_YET_KNOWN": [],
         }
 

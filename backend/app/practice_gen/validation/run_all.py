@@ -23,6 +23,7 @@ from backend.app.practice_gen.validation import (
     validate_compat,
     validate_dna,
     validate_interest,
+    validate_capability,
     validate_judgment,
     validate_matrix,
     validate_vocab,
@@ -66,6 +67,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§3": "validate_dna: structural checks and difficulty profiles feasibility",
     "§4": "validate_matrix: response schema validation",
     "§5": "validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews",
+    "§6": "validate_capability: competency requirements declared, cited, covered, and provided",
 }
 
 def run_all(fail_fast: bool = False) -> int:
@@ -76,7 +78,7 @@ def run_all(fail_fast: bool = False) -> int:
     executed_checks: Set[str] = set()
 
     # 1. DNA Validation
-    print("--- 1/6: DNA Structural and Parameter Checks ---")
+    print("--- 1/7: DNA Structural and Parameter Checks ---")
     dna_results = validate_dna.validate_all_dnas()
     dna_failed = [c for c, errs in dna_results.items() if any(not e.startswith("WARN") for e in errs)]
 
@@ -91,7 +93,7 @@ def run_all(fail_fast: bool = False) -> int:
         return 1
 
     # 2. Compatibility
-    print("\n--- 2/6: Compatibility, Coverage & Monotonicity ---")
+    print("\n--- 2/7: Compatibility, Coverage & Monotonicity ---")
     compat_ok = validate_compat.validate_all()
     if compat_ok:
         executed_checks.add("§2")
@@ -100,7 +102,7 @@ def run_all(fail_fast: bool = False) -> int:
         return 1
 
     # 3. Interest Invariance
-    print("\n--- 3/6: Interest Invariance Checks ---")
+    print("\n--- 3/7: Interest Invariance Checks ---")
     interest_results = validate_interest.validate_all_interest_invariance()
     interest_failed = [c for c, errs in interest_results.items() if errs]
     interest_ok = len(interest_failed) == 0
@@ -109,7 +111,7 @@ def run_all(fail_fast: bool = False) -> int:
         return 1
 
     # 4. Vocabulary & Concept Gating (Full-Node Mode)
-    print("\n--- 4/6: Vocabulary & Concept Gating Audits (Full-Node Mode) ---")
+    print("\n--- 4/7: Vocabulary & Concept Gating Audits (Full-Node Mode) ---")
     vocab_results = validate_vocab.run_all_vocab_audits(sample_count=2)
     vocab_failed = []
     for nid, audit in vocab_results.items():
@@ -128,7 +130,7 @@ def run_all(fail_fast: bool = False) -> int:
         print("  PASS vocabulary gating audit (all nodes)")
 
     # 5. Exhaustive Behavioral Matrix
-    print("\n--- 5/6: Exhaustive Behavioral Matrix Validation ---")
+    print("\n--- 5/7: Exhaustive Behavioral Matrix Validation ---")
     # Run matrix validator. We set workers=0 for auto-detection.
     matrix_code = run_matrix_validation(fail_fast=fail_fast, workers=0)
     matrix_ok = matrix_code == 0
@@ -140,7 +142,7 @@ def run_all(fail_fast: bool = False) -> int:
         return 1
 
     # 6. Judgment Reviews (genuine, non-boilerplate — hard gate)
-    print("\n--- 6/6: Judgment Reviews (genuine per-node artifacts) ---")
+    print("\n--- 6/7: Judgment Reviews (genuine per-node artifacts) ---")
     judgment_errors = validate_judgment.validate_judgment_reviews(fail_fast=fail_fast)
     v = validate_judgment.summarize_verdicts()
     if v["FAIL"] > 0 or v["CONCERN"] > 0:
@@ -162,6 +164,29 @@ def run_all(fail_fast: bool = False) -> int:
             print(f"    - {err}")
         if len(judgment_errors) > 10:
             print(f"    ... and {len(judgment_errors) - 10} more.")
+        if fail_fast:
+            return 1
+
+    # 7. Capability Contract (§6) — does each node declare what its competency
+    #    requires, cite it, cover it, and can the pipeline actually provide it?
+    print("\n--- 7/7: Capability Contract (competency → pipeline) ---")
+    capability_errors = validate_capability.validate_capability_declarations()
+    capability_ok = len(capability_errors) == 0
+    if capability_ok:
+        executed_checks.add("§6")
+        print("  PASS capability_contract (all nodes declare, cite, cover, and are provided for)")
+    else:
+        undeclared = [e for e in capability_errors if "no 'requires' declaration" in e]
+        unprovided = [e for e in capability_errors if "no pipeline artifact provides it" in e]
+        print(
+            f"  FAIL capability_contract ({len(capability_errors)} problem(s): "
+            f"{len(undeclared)} node(s) undeclared, {len(unprovided)} capability(ies) "
+            f"with no provider):"
+        )
+        for err in capability_errors[:10]:
+            print(f"    - {err}")
+        if len(capability_errors) > 10:
+            print(f"    ... and {len(capability_errors) - 10} more.")
         if fail_fast:
             return 1
 
@@ -199,6 +224,9 @@ def run_all(fail_fast: bool = False) -> int:
         if not judgment_ok:
             expected_subset.discard("§5")
             executed_checks.discard("§5")
+        if not capability_ok:
+            expected_subset.discard("§6")
+            executed_checks.discard("§6")
 
         if executed_checks != expected_subset:
             raise AssertionError(
@@ -213,7 +241,8 @@ def run_all(fail_fast: bool = False) -> int:
         contract_match_ok = False
 
     print("\n======================================================================")
-    all_ok = dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok and judgment_ok and contract_match_ok
+    all_ok = (dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok
+              and judgment_ok and capability_ok and contract_match_ok)
     if all_ok:
         print("ALL TESTS PASSED SUCCESSFULLY! Praise God!")
         print("======================================================================")
