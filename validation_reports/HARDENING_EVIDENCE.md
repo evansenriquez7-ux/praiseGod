@@ -2513,3 +2513,120 @@ the "combined peso coins and peso bills" sub-case now appears only as generic "c
 phrasing without named denominations of both in one problem (3 of 15); seeds 55 and 500 invert the
 task direction (constructing an amount rather than determining a given set's value); seeds 42 and 46
 are an exact duplicate.
+
+---
+
+## 2026-08-13 — Blind re-declaration of the six fixture nodes (Tick C, unit 1)
+
+### Why
+`docs`-side §2b of the hardening loop flagged that the six existing `requires` blocks were
+authored by the Fixer while looking at `VARIANTS_BY_DNA`, not by a blind Declarer — the
+author-verifying-itself pattern that produced 151 fabricated reviews twice. They are the
+precedent 145 more nodes would follow, so correcting them comes before propagating them.
+
+### What was done
+A Declarer subagent was dispatched with **only the six competency sentences** and the §6A/§6B
+rules restated in prose. It was forbidden every file tool, so it never saw the codebase, the
+checker, or the existing declarations.
+
+**Result: the blind declaration passed §6A (provenance) and §6B (coverage) with zero failures**,
+without ever having seen `validate_capability.py`.
+
+### The measurement (this is the point of the exercise)
+
+| Node | sighted | blind | Δ |
+|---|---|---|---|
+| `mat_g1_na_q1_0` | 5 | 7 | **+2** |
+| `mat_g1_mg_q1_1` | 5 | 6 | **+1** |
+| `mat_g2_na_q3_1` | 10 | 10 | 0 (renamed) |
+| `mat_g3_mg_q1_5` | 5 | 5 | 0 (renamed) |
+| `mat_g3_mg_q2_3` | 4 | 5 | **+1** |
+| `mat_g3_dp_q3_1` | 5 | 6 | **+1** |
+
+**The blind Declarer never declared fewer requirements than the sighted one, and declared more
+on four of six nodes.** The divergence is entirely one-directional — under-declaration by the
+sighted author — which is exactly the drift the role separation exists to prevent. The two nodes
+where they agreed are the two where the competency enumerates its own list, leaving no room to
+quietly drop anything.
+
+Every gap §2b listed as *provisional* survives blind re-declaration. The build queue is confirmed.
+
+### The second finding: §6C measured reachability against the wrong thing
+
+Rule 9 says a `CAPABILITY_PROVIDERS` entry is a claim that the artifact *produces what the
+clause names*, carrying the same evidence bar as a code fix. Probing those claims found a hole
+in the check itself.
+
+`_provided_for_node` answered "does some DNA list this variant value" by reading
+`VARIANTS_BY_DNA`. But `VARIANTS_BY_DNA` is what a DNA *declares*, not what a node can serve:
+`_parse_competency_bounds` clamps discrete variant keys per node, and `is_student_path=True`
+applies that clamp. The two diverge exactly on the nodes whose competency is narrower than
+their DNA — so a capability could be reported as provided by a value the student path can
+never select.
+
+`mat_g1_mg_q1_1` is that case, and it is the mapping §2b singled out as suspect. Its bounds
+pin `task_type='compare_shapes'`:
+
+```
+mat_g1_mg_q1_1 -> {'task_type': 'compare_shapes'}
+mat_g1_mg_q1_1 task_type actually selected over 100 student-path seeds: {'compare_shapes': 100}
+```
+
+So `distinguish_shapes -> task_type=identify_name` named a value that exists, is listed, and is
+permanently unreachable *here*. Same for `sides_of_a_shape`/`corners_of_a_shape` ->
+`count_sides_corners`. Those three mappings were removed.
+
+**The fix is in the check, not just the table.** `_provided_for_node` now intersects each DNA's
+declared variants with the node's competency bounds. Proof that this closes the hole unaided —
+re-introducing the exact flagged mapping in memory and re-running:
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -c "
+  from backend.app.practice_gen.validation import validate_capability as VC
+  VC.CAPABILITY_PROVIDERS['distinguish_shapes'] = {'variants': [('task_type','identify_name')]}
+  ..."
+- mat_g1_mg_q1_1: capability 'distinguish_shapes' (clause 'distinguish') has providers
+  registered {'variants': [('task_type', 'identify_name')]}, but none is reachable from this
+  node's DNAs ['shapes_2d', 'comparing_ordering']. Either the node is mapped to the wrong DNA,
+  or the provider is gated off the node that needs it.
+
+caught the unreachable-value mapping: True
+```
+
+Nobody has to remember Rule 9 for this class of defeat any more; the check catches it.
+
+### A wrong turn, recorded so it is not repeated
+
+The first probe forced each declared value of a variant key and reported any key whose values
+all rendered identically as "dead". On that evidence I removed the `measure_capacity`, `litre`
+and `millilitre` mappings for `mat_g3_mg_q2_3`, and wrote that the node "hardcodes mL so liters
+never render at all."
+
+**That was wrong.** The identical renderings were the competency-bound clamp working
+(`{'measurement_type': 'capacity', 'task_type': 'read_measurement'}`), and the DNA selects the
+unit itself rather than from the profile key. A census of *unforced* student-path output:
+
+```
+mat_g3_mg_q2_3 units appearing over 200 student-path seeds: {'mL': 97, 'L': 103}
+```
+
+Both units the competency names render. The mappings were restored. The lesson, now written
+into the probe's own docstring: **a collapse under a forced variant is only evidence of a defect
+when the key is unclamped for that node** — census the unforced output before calling a key dead.
+
+Both probes are kept at `tests/pgen_probes/`. `collapse_probe.py` now prints each key's
+competency bound and labels results `CLAMPED` (expected) or `!! DEAD` (candidate defect), so the
+two cannot be confused again. Its current reading across the six fixtures: 23 unclamped
+collapsed pairs remain as candidates, the largest being `mat_g2_na_q3_1`'s `table` key (5
+declared values, 1 rendering) and `mat_g3_mg_q2_3`'s `unit` key (4 values, 1 rendering).
+
+### Movement
+`capability gaps: 10 -> 18`, undeclared nodes unchanged at 145. A deliberate, honest increase:
+eight real gaps the sighted fixtures were concealing, on top of the ten already named.
+
+### Verified false alarm, recorded so it is not rediscovered
+An initial probe concluded `array_grid_read`/`array_grid_set` were unreachable for
+`mat_g2_na_q3_1`. That was wrong too: `problem["format"]` reports the *interaction* format
+(`read_mcq`, `set_fill_in_blank`), not the formatter name. A 100-seed student-path census shows
+`{'mcq': 78, 'read_mcq': 10, 'set_fill_in_blank': 12}` — array_grid is reachable. Do not compare
+`format` to a formatter name.

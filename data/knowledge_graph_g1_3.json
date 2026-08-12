@@ -73,28 +73,38 @@
       "requires": [
         {
           "kind": "task",
-          "id": "count_up",
-          "clause": "Count up"
+          "id": "count_objects_to_a_total",
+          "clause": "Count"
         },
         {
           "kind": "range",
-          "id": "max_value_100",
-          "clause": "100"
+          "id": "range_up_to_100",
+          "clause": "up to 100"
         },
         {
           "kind": "task",
-          "id": "count_down_from",
-          "clause": "counting up or down from a given number"
+          "id": "count_forward_from_a_given_number",
+          "clause": "counting up"
         },
         {
           "kind": "task",
-          "id": "identify_one_more",
-          "clause": "identifying a number that is 1 more"
+          "id": "count_backward_from_a_given_number",
+          "clause": "down from a given number"
         },
         {
           "kind": "task",
-          "id": "identify_one_less",
-          "clause": "1 less than a given number"
+          "id": "identify_a_number_relative_to_another",
+          "clause": "identifying a number"
+        },
+        {
+          "kind": "task",
+          "id": "identify_one_more_than_a_number",
+          "clause": "1 more"
+        },
+        {
+          "kind": "task",
+          "id": "identify_one_less_than_a_number",
+          "clause": "1 less"
         }
       ],
       "requires_ignore": [],
@@ -2432,17 +2442,22 @@
         },
         {
           "kind": "object",
-          "id": "shape_2d",
+          "id": "two_dimensional_shapes",
           "clause": "2-dimensional shapes"
         },
         {
           "kind": "attribute",
-          "id": "shape_sides",
-          "clause": "features such as sides"
+          "id": "shape_features_as_comparison_basis",
+          "clause": "features"
         },
         {
           "kind": "attribute",
-          "id": "shape_corners",
+          "id": "sides_of_a_shape",
+          "clause": "sides"
+        },
+        {
+          "kind": "attribute",
+          "id": "corners_of_a_shape",
           "clause": "corners"
         }
       ],
@@ -24730,13 +24745,13 @@
         },
         {
           "kind": "task",
-          "id": "write_multiplication",
+          "id": "write_multiplication_sentence",
           "clause": "write multiplication"
         },
         {
           "kind": "object",
-          "id": "repeated_addition",
-          "clause": "repeated addition"
+          "id": "multiplication_as_repeated_addition",
+          "clause": "multiplication as repeated addition"
         },
         {
           "kind": "representation",
@@ -24755,22 +24770,22 @@
         },
         {
           "kind": "representation",
-          "id": "equal_groups",
+          "id": "groups_of_equal_quantities",
           "clause": "groups of equal quantities"
         },
         {
           "kind": "representation",
-          "id": "array_model",
+          "id": "array",
           "clause": "arrays"
         },
         {
           "kind": "representation",
-          "id": "skip_counting",
+          "id": "counting_by_multiples",
           "clause": "counting by multiples"
         },
         {
           "kind": "representation",
-          "id": "number_line_jumps",
+          "id": "equal_jumps_on_a_number_line",
           "clause": "equal jumps on a number line"
         }
       ],
@@ -42737,12 +42752,12 @@
       "requires": [
         {
           "kind": "task",
-          "id": "recognize_lines",
+          "id": "recognize_line_relationships",
           "clause": "Recognize"
         },
         {
           "kind": "task",
-          "id": "draw_lines",
+          "id": "draw_line_relationships",
           "clause": "draw"
         },
         {
@@ -50218,18 +50233,23 @@
           "clause": "Measure capacity"
         },
         {
+          "kind": "attribute",
+          "id": "capacity_of_a_container",
+          "clause": "capacity"
+        },
+        {
           "kind": "unit",
-          "id": "litre",
+          "id": "liters",
           "clause": "liters (L)"
         },
         {
           "kind": "unit",
-          "id": "millilitre",
+          "id": "milliliters",
           "clause": "milliliters (mL)"
         },
         {
           "kind": "object",
-          "id": "measuring_tool",
+          "id": "measuring_tools_for_capacity",
           "clause": "measuring tools"
         }
       ],
@@ -56923,22 +56943,27 @@
         },
         {
           "kind": "object",
+          "id": "data_set",
+          "clause": "data"
+        },
+        {
+          "kind": "representation",
           "id": "data_table",
           "clause": "tables"
         },
         {
-          "kind": "object",
+          "kind": "representation",
           "id": "single_bar_graph",
           "clause": "single bar graphs"
         },
         {
           "kind": "orientation",
-          "id": "bar_horizontal",
+          "id": "horizontal_bar_graph",
           "clause": "horizontal"
         },
         {
           "kind": "orientation",
-          "id": "bar_vertical",
+          "id": "vertical_bar_graph",
           "clause": "vertical"
         }
       ],

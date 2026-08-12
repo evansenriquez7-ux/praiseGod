@@ -82,57 +82,75 @@ _STOPWORDS: Set[str] = {
 # failure -- add one only when the artifact genuinely exists.
 CAPABILITY_PROVIDERS: Dict[str, Dict[str, List[Any]]] = {
     # --- geometric_lines (mat_g3_mg_q1_5) ---
-    "recognize_lines": {"variants": [("task_type", "identify_name")]},
-    # NOTE: one variant value bundles all three line relationships, so §6C can only ask
-    # "can the node reach that value". Whether it actually renders *perpendicular* rather
-    # than only *parallel* is a §6D (exercised) question, not a §6C one.
+    "recognize_line_relationships": {"variants": [("task_type", "identify_name")]},
+    # The node's competency bounds pin concept_type to this one value, which is why forcing
+    # the other two changes nothing -- that is the clamp working, not a dead key. A rendered
+    # sample confirms the content: seed 42 -> "Two lines that cross at exactly one point are
+    # called ___." -> "intersecting lines". One value bundles all three relationships, so
+    # §6C can only ask whether the node reaches it; whether a given seed renders
+    # *perpendicular* rather than only *parallel* is a §6D (exercised) question.
     "parallel_lines": {"variants": [("concept_type", "parallel_intersecting_perpendicular")]},
     "intersecting_lines": {"variants": [("concept_type", "parallel_intersecting_perpendicular")]},
     "perpendicular_lines": {"variants": [("concept_type", "parallel_intersecting_perpendicular")]},
-    # "draw_lines" is deliberately ABSENT -- geometric_lines offers only ["mcq"] and no
-    # drawing formatter exists anywhere. That absence is the point: it is what turns
-    # mat_g3_mg_q1_5 into a named build item instead of a node an agent declines.
+    # "draw_line_relationships" is deliberately ABSENT -- geometric_lines offers only
+    # ["mcq"] and no drawing formatter exists anywhere. That absence is the point: it is
+    # what turns mat_g3_mg_q1_5 into a named build item instead of a node an agent declines.
 
     # --- shapes_2d (mat_g1_mg_q1_1) ---
     "compare_shapes": {"variants": [("task_type", "compare_shapes")]},
-    "distinguish_shapes": {"variants": [("task_type", "identify_name")]},
-    "shape_2d": {"variants": [("shape_set", "basic_triangles_rectangles_squares")]},
-    "shape_sides": {"variants": [("task_type", "count_sides_corners")]},
-    "shape_corners": {"variants": [("task_type", "count_sides_corners")]},
+    "two_dimensional_shapes": {"variants": [("shape_set", "basic_triangles_rectangles_squares")]},
+    # "distinguish_shapes", "sides_of_a_shape" and "corners_of_a_shape" are deliberately
+    # ABSENT, and this is the mapping the loop's §2b singled out as suspect. Earlier
+    # revisions pointed them at `task_type=identify_name` and `task_type=count_sides_corners`.
+    # Both values are declared by the DNA, but this node's competency bounds pin
+    # `task_type='compare_shapes'`, so the student path selects `compare_shapes` on 100/100
+    # seeds and can never reach either one. They named a value that exists and is listed but
+    # is unreachable *here* -- which is precisely the Rule 9 defeat, and precisely what the
+    # clamp intersection in `_provided_for_node` now catches on its own.
+    # "shape_features_as_comparison_basis" is ABSENT because nothing varies features as a
+    # comparison axis; the bound serves one fixed comparison task.
 
     # --- counting (mat_g1_na_q1_0) ---
-    "count_up": {"variants": [("direction", "forward")]},
-    "count_down_from": {"variants": [("direction", "backward")]},
+    "count_forward_from_a_given_number": {"variants": [("direction", "forward")]},
+    "count_backward_from_a_given_number": {"variants": [("direction", "backward")]},
     # `counting` names its ceiling axis "range", not "max_value" -- the bound key is
     # per-DNA, so the provider lists every key that can carry a ceiling.
-    "max_value_100": {"bounds": ["range", "max_value", "max_count", "max_sum"]},
-    # "identify_one_more" / "identify_one_less" deliberately ABSENT -- the competency
-    # names them explicitly ("identifying a number that is 1 more or 1 less") and
-    # `counting` has no task_type for either.
+    "range_up_to_100": {"bounds": ["range", "max_value", "max_count", "max_sum"]},
+    # "count_objects_to_a_total", "identify_a_number_relative_to_another",
+    # "identify_one_more_than_a_number" and "identify_one_less_than_a_number" deliberately
+    # ABSENT -- the competency names one-more/one-less explicitly ("identifying a number
+    # that is 1 more or 1 less") and `counting` has no task_type for either.
 
     # --- mass_capacity (mat_g3_mg_q2_3) ---
+    # Measured over 200 student-path seeds: mL appears in 97 and L in 103, so the node
+    # genuinely serves both units the competency names. (An earlier probe here forced
+    # `unit` and saw one rendering, and briefly read that as a dead key; it was the
+    # competency-bound clamp pinning measurement_type/task_type, and the DNA choosing the
+    # unit itself. Census the rendered output before calling a key dead.)
     "measure_capacity": {"variants": [("task_type", "read_measurement"),
                                       ("measurement_type", "capacity")]},
-    "litre": {"variants": [("unit", "l")]},
-    "millilitre": {"variants": [("unit", "ml")]},
-    # "measuring_tool" deliberately ABSENT -- no tool concept exists in the DNA.
+    "liters": {"variants": [("unit", "l")]},
+    "milliliters": {"variants": [("unit", "ml")]},
+    # "capacity_of_a_container" and "measuring_tools_for_capacity" deliberately ABSENT --
+    # no tool concept exists in the DNA, so "using appropriate measuring tools" is unserved.
 
     # --- bar_graphs (mat_g3_dp_q3_1) ---
     "present_data": {"formatters": ["bar_chart_set"]},
     "single_bar_graph": {"formatters": ["bar_chart_set", "bar_chart_read"]},
-    "bar_horizontal": {"variants": [("orientation", "horizontal")]},
-    "bar_vertical": {"variants": [("orientation", "vertical")]},
-    # "data_table" deliberately ABSENT -- the competency says "in tables AND single bar
-    # graphs"; COMPATIBILITY["bar_graphs"] offers only the two bar-chart formatters.
+    "horizontal_bar_graph": {"variants": [("orientation", "horizontal")]},
+    "vertical_bar_graph": {"variants": [("orientation", "vertical")]},
+    # "data_table" and "data_set" deliberately ABSENT -- the competency says "in tables AND
+    # single bar graphs"; COMPATIBILITY["bar_graphs"] offers only the two bar-chart formatters.
 
     # --- multiplication (mat_g2_na_q3_1) ---
     "illustrate_multiplication": {"formatters": ["array_grid_set"]},
-    "write_multiplication": {"formatters": ["mcq", "cloze"]},
-    "array_model": {"formatters": ["array_grid_read", "array_grid_set"]},
+    "write_multiplication_sentence": {"formatters": ["mcq", "cloze"]},
+    "array": {"formatters": ["array_grid_read", "array_grid_set"]},
     "pictorial_model": {"formatters": ["array_grid_read", "array_grid_set"]},
     "numeral_form": {"formatters": ["mcq", "cloze"]},
-    # "repeated_addition", "concrete_model", "equal_groups", "skip_counting" and
-    # "number_line_jumps" deliberately ABSENT -- the competency enumerates seven
+    # "multiplication_as_repeated_addition", "concrete_model",
+    # "groups_of_equal_quantities", "counting_by_multiples" and
+    # "equal_jumps_on_a_number_line" deliberately ABSENT -- the competency enumerates seven
     # representations and `multiplication` declares variants for none of them.
 }
 
@@ -183,14 +201,48 @@ def _validate_coverage(node_id: str, competency: str, requires: List[Dict],
     ]
 
 
+def _bound_restricts_to(bound: Any) -> Set[str] | None:
+    """
+    The set of values a competency bound permits for a *discrete* variant key, or None
+    when the bound does not restrict a variant that way.
+
+    A scalar bound pins the key to one value; a list bound restricts it to its members.
+    A 2-tuple is always a continuous (min, max) range, never a discrete pair -- see
+    docs/pgen_hardening.md -- so it restricts no variant and returns None.
+    """
+    if isinstance(bound, tuple):
+        return None
+    if isinstance(bound, (str, int)) and not isinstance(bound, bool):
+        return {str(bound)}
+    if isinstance(bound, list):
+        return {str(b) for b in bound}
+    return None
+
+
 def _provided_for_node(node_id: str) -> Dict[str, Set[str]]:
-    """The concrete artifacts reachable for this node: its DNAs' variants and formatters."""
+    """
+    The concrete artifacts reachable for this node **on the student path**.
+
+    `VARIANTS_BY_DNA` is what a DNA *declares*; it is not what the node can serve.
+    `_parse_competency_bounds` clamps discrete variant keys per node, and `is_student_path`
+    applies that clamp -- so a node whose bounds pin `task_type='compare_shapes'` can never
+    select `identify_name`, however loudly its DNA declares that value.
+
+    Intersecting the declaration with the clamp is what stops a capability from being
+    reported as provided by a variant value the student path can never reach. Without it,
+    §6C answers "does some DNA list this value" when the question is "can this node produce
+    it" -- and those diverge exactly on the nodes whose competency is narrower than its DNA.
+    """
     dnas = NODE_TO_DNA.get(node_id) or []
+    bounds = get_node_competency_bounds(node_id) or {}
     variants: Set[str] = set()
     formatters: Set[str] = set()
     for dna in dnas:
         for key, values in (VARIANTS_BY_DNA.get(dna) or {}).items():
+            allowed = _bound_restricts_to(bounds[key]) if key in bounds else None
             for v in values:
+                if allowed is not None and str(v) not in allowed:
+                    continue
                 variants.add(f"{key}={v}")
         formatters.update(COMPATIBILITY.get(dna) or [])
     return {"variants": variants, "formatters": formatters}
