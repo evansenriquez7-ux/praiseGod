@@ -164,6 +164,24 @@ app.include_router(admin_router.router)
 app.include_router(student.router)
 
 
+# --- LIVENESS ---
+
+@app.get("/api/health", tags=["ops"])
+def health():
+    """
+    Liveness probe. Reaching this proves the whole module graph imported and
+    uvicorn bound the port -- which is exactly what the deploy workflow's
+    smoke test needs to know before it pushes an image to Artifact Registry.
+
+    Deliberately touches no database: `database.engine` is an EngineProxy that
+    defers `create_engine` until first use, and nothing here runs at startup,
+    so the container serves this route with no DATABASE_URL set. A probe that
+    needed a database would report the database's health, not the app's, and
+    would fail the smoke test for the wrong reason.
+    """
+    return {"status": "ok"}
+
+
 # --- PARENT ENDPOINTS ---
 
 

@@ -27,6 +27,12 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      # Single source of truth for the tag. It was previously written out twice
+      # (build, push) and the smoke test would have made three -- three copies of
+      # a 90-character string that must agree or the deploy ships an image nobody
+      # tested.
+      IMAGE: asia-southeast1-docker.pkg.dev/praisegod-edu/cloud-run-source-deploy/ccmed-api
     steps:
       - uses: actions/checkout@v4
 
@@ -42,17 +48,53 @@ jobs:
         run: gcloud auth configure-docker asia-southeast1-docker.pkg.dev --quiet
 
       - name: Build Docker image locally on GitHub Runner
+        run: docker build -t "$IMAGE:latest" .
+
+      # Runs BEFORE the push, on purpose. `docker build` proves the image
+      # assembles; it does not prove the app inside it starts. Without this, an
+      # import error or a missing runtime dependency overwrites the :latest tag
+      # in Artifact Registry and is only discovered when Cloud Run refuses to
+      # promote the revision -- production stays safe, but the registry is left
+      # holding a broken :latest and the error arrives slowly and indirectly.
+      #
+      # No DATABASE_URL is passed, deliberately: database.engine is an
+      # EngineProxy that defers create_engine until first use and nothing runs
+      # at startup, so a healthy container serves /api/health without one. A
+      # probe that needed a database would report the database's health rather
+      # than the image's.
+      - name: Smoke-test the built image
         run: |
-          docker build -t asia-southeast1-docker.pkg.dev/praisegod-edu/cloud-run-source-deploy/ccmed-api:latest .
+          set -euo pipefail
+          trap 'docker rm -f ccmed-smoke >/dev/null 2>&1 || true' EXIT
+          docker run -d --name ccmed-smoke -e PORT=8080 -p 8080:8080 "$IMAGE:latest"
+
+          for i in $(seq 1 40); do
+            # Assign 000 on curl failure rather than appending to it: `|| echo 000`
+            # would concatenate with what -w already wrote and print a nonsense code.
+            code=$(curl -s -o /tmp/health.json -w '%{http_code}' http://127.0.0.1:8080/api/health 2>/dev/null) || code=000
+            if [ "$code" = "200" ]; then
+              echo "smoke test: container healthy after ${i} attempt(s) — $(cat /tmp/health.json)"
+              exit 0
+            fi
+            if [ -z "$(docker ps -q -f name=ccmed-smoke)" ]; then
+              echo "smoke test: container exited before serving /api/health."
+              docker logs ccmed-smoke
+              exit 1
+            fi
+            sleep 1
+          done
+
+          echo "smoke test: /api/health never returned 200 (last code=${code}). Container logs:"
+          docker logs ccmed-smoke
+          exit 1
 
       - name: Push Docker image to Artifact Registry
-        run: |
-          docker push asia-southeast1-docker.pkg.dev/praisegod-edu/cloud-run-source-deploy/ccmed-api:latest
+        run: docker push "$IMAGE:latest"
 
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: ccmed-api
-          image: asia-southeast1-docker.pkg.dev/praisegod-edu/cloud-run-source-deploy/ccmed-api
+          image: ${{ env.IMAGE }}
           region: asia-southeast1
           flags: '--allow-unauthenticated --update-env-vars=DATABASE_URL=${{ secrets.DATABASE_URL }}'

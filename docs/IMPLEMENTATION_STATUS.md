@@ -395,7 +395,7 @@ subdirectories cannot slip past either.
 | 0 — consolidate registries | done | `grep -rn "_DNA_MODULE_MAP" backend/app/practice_gen/validation/` empty; validators import from `_manifest.py`; import-time `set(DNA_MODULE_MAP)==set(COMPATIBILITY)` assertion present. |
 | 1 — `validate_matrix.py` (1A–1E) | done | Full behavioral matrix over 151 nodes through the real pipeline path; 0 failures. **Coverage is now observed, not assumed** — see the 2026-07-26 audit below, which found 22 of 151 nodes were being skipped entirely while reporting PASS. |
 | 2 — single gate | done | `run_all.py` chains dna(+feasibility)→compat→interest→vocab(full-node)→matrix→judgment; no skip flag. |
-| 3 — CI enforcement | done, with one clause deliberately reversed | `validate-pgen.yml` runs `run_all` + the docs `must`-lint + the unit suite + the mutation harness, no `\|\| true`/`continue-on-error`. **Phase 3's second clause — "deployment *requires* the validation job to succeed (job-level `needs:`)" — was reversed on 2026-08-12 at the maintainer's direction; see below.** |
+| 3 — CI enforcement | **withdrawn on 2026-08-12 at the maintainer's direction** | No GitHub Actions workflow runs the harness any more. Both of Phase 3's clauses are gone: there is no `validate-pgen.yml`, and `deploy-backend.yml` has no `needs: validate`. The suite is run locally by `run_all`. See below. |
 | 4 — mutation-test the verifier | done | **7/7 via a re-runnable artifact**, `tests/mutation_harness.py`. The previous "done (re-inherited, not re-run)" entry was an unverified inheritance; when first actually executed on 2026-07-26 it scored **4/7**. See below. |
 | 5 — strict schema; kill fallbacks | done | `FormattedProblem` uses `ConfigDict(extra="forbid")`; App.jsx fallback cascade removed; `/tmp/last_request.json` debug write gone. |
 | 6 — LLM-path audit | done, with a scope note | No live **MATATAG** practice-gen path routes through `subagents.py` (`matatag_router.py` imports it but never calls it). The ELA practice path *does* (`practice_router.py` → `generate_ela_skeleton_subagent`/`generate_ela_batch_subagent`); it is outside this harness's MATATAG scope and has **no runtime vocab gate**. Phase 6's wording is "any live serving path for practice problems", so this is an open item, not a closed one. |
@@ -403,11 +403,16 @@ subdirectories cannot slip past either.
 
 **Open, escalated (not a defect):** the unified Advanced/bridge-tier scalar *value* (`1.1` vs `1.25`, [`BUG_BRIDGE_SCALAR.md`](./BUG_BRIDGE_SCALAR.md)) — mechanism fixed, value is a pedagogical decision for the maintainer.
 
-### 2026-08-12 — Phase 3's deploy gate reversed at the maintainer's direction
+### 2026-08-12 — Phase 3 withdrawn: the harness left CI entirely
 
-`pgen_hardening.md` Phase 3 required `deploy-backend.yml` to gate deployment on the validation job
-(`needs: validate`). That clause is now reversed: `deploy-backend.yml` contains only the `deploy` job,
-and the full suite lives in its own `validate-pgen.yml`, which blocks nothing.
+`pgen_hardening.md` Phase 3 required a `validate-pgen.yml` workflow running `run_all` on every push,
+and required `deploy-backend.yml` to gate deployment on it (`needs: validate`). **Both clauses are now
+withdrawn.** `deploy-backend.yml` contains only the `deploy` job; `validate-pgen.yml` is deleted. The
+testing pipeline runs outside GitHub Actions — locally, via `run_all`, by the hardening loop each tick.
+
+This happened in two steps the same day: first the deploy gate was cut (`18a02ab`), then the workflow
+itself was removed at the maintainer's direction, on the reasoning that the testing pipeline and CI
+should be separate concerns entirely.
 
 **Why.** `run_all` was doing two unrelated jobs. It exits 0 only at a 100% node PASS rate — that is the
 hardening loop's *stop* signal, and it is correct that it stays red until the last node passes. But
@@ -424,10 +429,17 @@ loudly, and no `|| true` or `continue-on-error` was introduced anywhere — the 
 deploy path, they did not relax. `docs/pgen_contract.md`'s "Runs in" column was updated in the same
 commit (Protocol 7).
 
-**Known cost.** `validate-pgen` is now continuously red until the census reaches zero, so a genuine new
-break in the DNA or matrix stages produces the same red X as the expected curriculum debt. The badge is
-uninformative for the duration; the step log and the hardening loop's per-tick `run_all` are where a
-regression actually surfaces. Worth restoring a gate once the census reaches zero.
+**Known cost — larger than the first step's.** With the workflow deleted there is no automated tripwire
+at all. `pgen_hardening.md`'s stated goal is "make it structurally impossible for a broken problem
+generator to ship"; that structure was CI, and it is gone. A pipeline change that breaks the matrix now
+reaches production unless a human or the loop runs `run_all` first. The mutation harness
+(`tests/mutation_harness.py`), the docs `must`-lint, and the unit suite likewise no longer execute
+anywhere automatically.
+
+What remains is discipline plus the hardening loop, which does run `run_all` every tick and will catch
+a regression within one tick *while the loop is running*. That is a real mitigation now and not one
+afterwards. Restoring a CI gate — even a narrow one over stages 1–5 only — is the obvious move once the
+census reaches zero and red means red again.
 
 ---
 

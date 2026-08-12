@@ -6,27 +6,35 @@ A generator is done when `python -m backend.app.practice_gen.validation.run_all`
 
 | Rule | Enforced by | Runs in |
 |---|---|---|
-| Scalar 0.0/1.0 map exactly to competency bounds | `validate_matrix` §1A | CI (`validate-pgen`); does not block deploy |
-| No leaky windows; monotonic windows | `validate_matrix` §1B | CI (`validate-pgen`); does not block deploy |
-| Scalar 1.0 actually reaches the competency's stated range | `validate_matrix` §1A-reach | CI (`validate-pgen`); does not block deploy |
-| Every supported variant×formatter executes cleanly with valid answers | `validate_matrix` §1C | CI (`validate-pgen`); does not block deploy |
-| Unsupported combos raise; no silent substitution | `validate_matrix` §1C-reverse | CI (`validate-pgen`); does not block deploy |
-| No NOT_YET_KNOWN vocab in formatted output | `validate_matrix` §1D | CI (`validate-pgen`); does not block deploy |
-| Answer key survives formatting; interest-invariant | `validate_matrix` §1E | CI (`validate-pgen`); does not block deploy |
-| A question stem never gives away its own answer | `validate_matrix` §1F | CI (`validate-pgen`); does not block deploy |
-| Every node generates: no node passes on an empty execution matrix | `validate_matrix` §1C-coverage | CI (`validate-pgen`); does not block deploy |
-| Registry/compatibility bidirectional coverage | `validate_compat` §2 | CI (`validate-pgen`); does not block deploy |
-| Difficulty profiles meet MIN_ACCEPTANCE_RATE | `validate_dna` §3 (feasibility) | CI (`validate-pgen`); does not block deploy |
-| Response payload matches strict schema | Pydantic model + `validate_matrix` §4 | runtime + CI (`validate-pgen`) |
-| Every node carries a genuine, non-boilerplate, non-stale blind judgment review with a PASS verdict | `validate_judgment` §5 | CI (`validate-pgen`); does not block deploy |
+| Scalar 0.0/1.0 map exactly to competency bounds | `validate_matrix` §1A | local `run_all`; not in CI |
+| No leaky windows; monotonic windows | `validate_matrix` §1B | local `run_all`; not in CI |
+| Scalar 1.0 actually reaches the competency's stated range | `validate_matrix` §1A-reach | local `run_all`; not in CI |
+| Every supported variant×formatter executes cleanly with valid answers | `validate_matrix` §1C | local `run_all`; not in CI |
+| Unsupported combos raise; no silent substitution | `validate_matrix` §1C-reverse | local `run_all`; not in CI |
+| No NOT_YET_KNOWN vocab in formatted output | `validate_matrix` §1D | local `run_all`; not in CI |
+| Answer key survives formatting; interest-invariant | `validate_matrix` §1E | local `run_all`; not in CI |
+| A question stem never gives away its own answer | `validate_matrix` §1F | local `run_all`; not in CI |
+| Every node generates: no node passes on an empty execution matrix | `validate_matrix` §1C-coverage | local `run_all`; not in CI |
+| Registry/compatibility bidirectional coverage | `validate_compat` §2 | local `run_all`; not in CI |
+| Difficulty profiles meet MIN_ACCEPTANCE_RATE | `validate_dna` §3 (feasibility) | local `run_all`; not in CI |
+| Response payload matches strict schema | Pydantic model + `validate_matrix` §4 | runtime + local `run_all` |
+| Every node carries a genuine, non-boilerplate, non-stale blind judgment review with a PASS verdict | `validate_judgment` §5 | local `run_all`; not in CI |
 
-**On "does not block deploy".** Every rule above is still enforced, still on every push, and still
-fails loudly — in the `validate-pgen` workflow, which runs independently of `deploy-backend`. The two
-were separated deliberately: `run_all` exits 0 only at a 100% node PASS rate, which is the hardening
-loop's *done* signal, not a shipping criterion. Gating Cloud Run on it meant a curriculum verdict about
-a Grade-2 word problem could block an unrelated backend fix. Nothing here was weakened to make a build
-pass; the checks moved out of the deploy path, they did not relax. A rule that is failing is still a
-rule that must be fixed — the deploy simply no longer waits on it.
+**On "local `run_all`; not in CI".** Every rule above is still enforced and still fails loudly — but
+the enforcement now runs **only** where someone runs it: `python -m backend.app.practice_gen.validation.run_all`,
+executed by the hardening loop each tick and by anyone touching the pipeline. As of 2026-08-12 no
+GitHub Actions workflow runs it.
+
+The reason is that `run_all` exits 0 only at a 100% node PASS rate, which makes it a *done* signal for
+the curriculum work, not a shipping criterion. Wiring it to CI meant a curriculum verdict about a
+Grade-2 word problem blocked unrelated backend deploys, including the manual testing by which those
+verdicts get resolved.
+
+Nothing here was weakened to make a build pass — no assertion changed, no check relaxed, no `|| true`
+introduced. What changed is *where* the checks run, and that carries a real cost worth naming: a rule
+in this table is now only as binding as the discipline of running the harness. There is no longer an
+automated tripwire that stops an unverified pipeline change from reaching production. Restoring one
+once the census reaches zero is the obvious fix; until then, `run_all` before you push is the contract.
 
 ## Core Principles
 
