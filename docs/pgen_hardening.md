@@ -7,6 +7,28 @@ Read this entire document before writing any code. Execute the phases **in order
 
 > Completion status for this plan is tracked separately in [`IMPLEMENTATION_STATUS.md`](./IMPLEMENTATION_STATUS.md) — this file stays a pristine spec.
 
+> [!IMPORTANT]
+> **STATUS as of 2026-08-13: this plan is COMPLETE, and its "Explicit non-goals" (bottom of file) are
+> SUPERSEDED. Do not read them as standing policy.**
+>
+> They said *"do not add new formatters/variants"* and *"this plan verifies existing contracts; it does
+> not change pedagogy."* That scoped **this plan**, whose job was mechanical verification. It is not a
+> rule about the project, and it now contradicts the gate this plan itself built:
+> [`pgen_judgment.md`](./pgen_judgment.md)'s six gated items are *entirely* pedagogical — *"Do the
+> problems address the exact **verbs and nouns** of the MATATAG competency?"*, *"Is **every sub-case the
+> competency's wording names** actually generated?"* — and `run_all` cannot exit 0 until all of them
+> reach PASS. The gate requires changing pedagogy; the non-goal forbids it. Both cannot hold.
+>
+> `CLAUDE.md` Content Rule 3 governs instead: *"nothing beyond the curriculum's explicit scope, **nothing
+> less than its full scope**."* Failing nodes fail the second half. Adding a formatter, variant, difficulty
+> dimension, or DNA **because a MATATAG competency requires it** is in scope and expected. Adding one
+> because it seems pedagogically nice is not — see Content Rule 3a, and
+> [`extending_pgen.md`](./extending_pgen.md) for how.
+>
+> A previous agent correctly declined to fix `mat_g3_mg_q1_5` ("Recognize and **draw** parallel,
+> intersecting, and perpendicular lines" — draw exercised 0/10) by citing the non-goals. Under the
+> superseding rule that node is buildable work, and the harness now names the missing capability itself.
+
 ---
 
 ## Ground Rules (read first, these override your habits)

@@ -37,6 +37,17 @@ GRADE_ORDER = [1, 2, 3]
 QUARTER_ORDER = [1, 2, 3, 4]
 
 
+# MATATAG per-grade constraints. Extend these from the curriculum as grades are
+# added -- an absent grade raises in rebuild() rather than silently defaulting.
+SENTENCE_MAX_WORDS_BY_GRADE: dict[int, int] = {1: 15, 2: 18, 3: 22}
+
+NUMBER_FORMAT_BY_GRADE: dict[int, str] = {
+    1: "no commas, no thousands separator",
+    2: "no commas for numbers up to 1000",
+    3: "space separator for thousands (e.g. 1 000)",
+}
+
+
 def chronological_sort_key(node_id: str) -> tuple:
     """Return a sort key that respects grade → quarter → branch → index ordering."""
     # Format: mat_g{grade}_{branch}_q{quarter}_{index}
@@ -99,13 +110,29 @@ def rebuild(vocab_path: str, kg_path: str) -> None:
         ]
         next_node_id = later_in_branch[0] if later_in_branch else None
 
-        # Grade-level metadata
-        sentence_max = {1: 15, 2: 18, 3: 22}.get(grade, 15)
-        number_format = {
-            1: "no commas, no thousands separator",
-            2: "no commas for numbers up to 1000",
-            3: "space separator for thousands (e.g. 1 000)",
-        }.get(grade, "no commas")
+        # Grade-level metadata.
+        #
+        # These are curriculum ground truth and must be supplied per grade from
+        # MATATAG, never defaulted. The previous `.get(grade, 15)` /
+        # `.get(grade, "no commas")` silently handed every grade 4+ node a
+        # six-year-old's 15-word ceiling and grade-1 number formatting --
+        # `sentence_max_words` feeds cognitive-load gating, so the first thing
+        # that would happen on adding grade 4 is that its nodes get scored
+        # against the wrong limit, invisibly. A silent default in curriculum
+        # ground truth is exactly what AGENTS.md Protocol 3 forbids, so an
+        # unknown grade is a loud failure naming what to supply.
+        if grade not in SENTENCE_MAX_WORDS_BY_GRADE:
+            raise ValueError(
+                f"{node_id}: no MATATAG sentence_max_words defined for grade {grade}. "
+                f"Add it to SENTENCE_MAX_WORDS_BY_GRADE from the curriculum -- do not default it."
+            )
+        if grade not in NUMBER_FORMAT_BY_GRADE:
+            raise ValueError(
+                f"{node_id}: no MATATAG number_format defined for grade {grade}. "
+                f"Add it to NUMBER_FORMAT_BY_GRADE from the curriculum -- do not default it."
+            )
+        sentence_max = SENTENCE_MAX_WORDS_BY_GRADE[grade]
+        number_format = NUMBER_FORMAT_BY_GRADE[grade]
 
         result_nodes[node_id] = {
             "grade": grade,

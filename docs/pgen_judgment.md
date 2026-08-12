@@ -2,7 +2,8 @@
 
 **Species: judgment guide** (see [`DOC_RULES.md`](./DOC_RULES.md) R3). These are the curriculum-fidelity
 questions a machine cannot score. Nothing here is checked by reading it — the *artifact* is checked, by
-`validate_judgment` (step 6/6 of `run_all`; CI, blocks deploy).
+`validate_judgment` (step 6/6 of `run_all`). `run_all` is run locally and by the hardening loop; since
+2026-08-12 no CI workflow runs it, so nothing here blocks a deploy.
 
 Checking a box in this document proves nothing. Every registered node must have a review file at
 `validation_reports/judgment/<group_dir>/<node_id>.json` that passes `validate_judgment`.
