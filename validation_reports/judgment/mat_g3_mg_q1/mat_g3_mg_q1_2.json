@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g3_mg_q1_2",
-  "reviewed_by": "claude-opus-5 blind reviewer, area cluster re-review after task_type binding fix, 2026-08-13",
+  "reviewed_by": "Claude Opus 5 blind reviewer, area cluster re-review after G3 table gating, 2026-08-13",
   "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
@@ -15,7 +15,6 @@
     502,
     601,
     602,
-    603,
     604,
     605,
     606
@@ -24,27 +23,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "A rectangle has sides 25 cm and 10 cm. What is its area in sq cm?",
-      "correct_answer": 250,
+      "question_text": "A rectangle has sides 4 cm and 3 cm. What is its area in sq cm?",
+      "correct_answer": 12,
       "options": [
         {
           "key": "A",
-          "value": 35,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 50,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 250,
+          "value": 12,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 70,
+          "value": 14,
           "is_correct": false
         }
       ]
@@ -52,27 +51,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "A rectangle has sides 4 m and 9 m. What is its area in sq m?",
-      "correct_answer": 36,
+      "question_text": "A rectangle has sides 3 m and 5 m. What is its area in sq m?",
+      "correct_answer": 15,
       "options": [
         {
           "key": "A",
-          "value": 36,
+          "value": 15,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 26,
+          "value": 16,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 8,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 13,
+          "value": 8,
           "is_correct": false
         }
       ]
@@ -80,27 +79,27 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "A square has a side of 7 cm. What is its area in sq cm?",
-      "correct_answer": 49,
+      "question_text": "A square has a side of 3 cm. What is its area in sq cm?",
+      "correct_answer": 9,
       "options": [
         {
           "key": "A",
-          "value": 28,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 14,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 50,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 49,
+          "value": 9,
           "is_correct": true
         }
       ]
@@ -108,27 +107,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "A square has a side of 9 m. What is its area in sq m?",
-      "correct_answer": 81,
+      "question_text": "A square has a side of 5 m. What is its area in sq m?",
+      "correct_answer": 25,
       "options": [
         {
           "key": "A",
-          "value": 82,
+          "value": 26,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 18,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 81,
+          "value": 25,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 36,
+          "value": 20,
           "is_correct": false
         }
       ]
@@ -136,27 +135,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "A rectangle has sides 2 m and 11 m. What is its area in sq m?",
-      "correct_answer": 22,
+      "question_text": "A rectangle has sides 6 m and 2 m. What is its area in sq m?",
+      "correct_answer": 12,
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": 24,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 22,
+          "value": 12,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 26,
+          "value": 16,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 13,
+          "value": 8,
           "is_correct": false
         }
       ]
@@ -164,8 +163,128 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "A square has a side of 7 m. What is its area in sq m?",
-      "correct_answer": 49,
+      "question_text": "A square has a side of 4 m. What is its area in sq m?",
+      "correct_answer": 16,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "text": "16",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "text": "15",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "text": "17",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "cloze",
+      "question_text": "A square has a side of 4 m. What is its area in sq m?",
+      "correct_answer": 16,
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "text": "16",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 17,
+          "text": "17",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "text": "15",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "A square has a side of 3 m. What is its area in sq m?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "A square has a side of 4 cm. What is its area in sq cm?",
+      "correct_answer": 16,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Pia wants to cover a rectangular garden that is 5 cm long and 2 cm wide with square tiles. How many tiles are needed to cover it completely?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
@@ -175,40 +294,8 @@
         },
         {
           "key": "B",
-          "value": 49,
-          "text": "49",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 50,
-          "text": "50",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 28,
-          "text": "28",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 500,
-      "formatter": "cloze",
-      "question_text": "A square has a side of 10 m. What is its area in sq m?",
-      "correct_answer": 100,
-      "options": [
-        {
-          "key": "A",
-          "value": 100,
-          "text": "100",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 40,
-          "text": "40",
+          "value": 7,
+          "text": "7",
           "is_correct": false
         },
         {
@@ -219,102 +306,102 @@
         },
         {
           "key": "D",
-          "value": 101,
-          "text": "101",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "mcq",
-      "question_text": "A square has a side of 9 m. What is its area in sq m?",
-      "correct_answer": 81,
-      "options": [
-        {
-          "key": "A",
-          "value": 81,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 82,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 36,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 18,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "A square has a side of 42 cm. What is its area in sq cm?",
-      "correct_answer": 1764,
-      "options": [
-        {
-          "key": "A",
-          "value": 84,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 1764,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 1765,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 168,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Pia wants to cover a rectangular garden that is 5 cm long and 16 cm wide with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 80,
-      "options": [
-        {
-          "key": "A",
-          "value": 42,
-          "text": "42",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 21,
-          "text": "21",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 10,
           "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 80,
-          "text": "80",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 602,
+      "formatter": "mcq",
+      "question_text": "A rectangle has sides 4 m and 3 m. What is its area in sq m?",
+      "correct_answer": 12,
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "A rectangle has sides 8 cm and 5 cm. What is its area in sq cm?",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 40,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 26,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 16,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "cloze",
+      "question_text": "A rectangle has sides 5 cm and 6 cm. What is its area in sq cm?",
+      "correct_answer": 30,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "text": "30",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 22,
+          "text": "22",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 606,
       "formatter": "mcq",
       "question_text": "A rectangle has sides 4 m and 7 m. What is its area in sq m?",
       "correct_answer": 28,
@@ -326,133 +413,17 @@
         },
         {
           "key": "B",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 11,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "C",
           "value": 22,
           "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "mcq",
-      "question_text": "A square has a side of 19 cm. What is its area in sq cm?",
-      "correct_answer": 361,
-      "options": [
-        {
-          "key": "A",
-          "value": 362,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 361,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 38,
-          "is_correct": false
         },
         {
           "key": "D",
-          "value": 76,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "mcq",
-      "question_text": "A rectangle has sides 14 cm and 26 cm. What is its area in sq cm?",
-      "correct_answer": 364,
-      "options": [
-        {
-          "key": "A",
-          "value": 364,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 80,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 40,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 28,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
-      "formatter": "cloze",
-      "question_text": "A rectangle has sides 20 cm and 15 cm. What is its area in sq cm?",
-      "correct_answer": 300,
-      "options": [
-        {
-          "key": "A",
-          "value": 300,
-          "text": "300",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 35,
-          "text": "35",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 70,
-          "text": "70",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 40,
-          "text": "40",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "A rectangle has sides 7 m and 8 m. What is its area in sq m?",
-      "correct_answer": 56,
-      "options": [
-        {
-          "key": "A",
-          "value": 56,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 14,
+          "value": 8,
           "is_correct": false
         }
       ]
@@ -461,27 +432,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Fourteen of the fifteen samples ask precisely what the competency names. Seed 43 renders 'A rectangle has sides 4 m and 9 m. What is its area in sq m?' keyed at 36, and seed 44 renders 'A square has a side of 7 cm. What is its area in sq cm?' keyed at 49, so side times side and length times width are both computed and the square unit is stated inside the stem."
+      "rationale": "Thirteen of the fourteen samples ask on the face of the stem for an area in one of the two required units: seed 42 'A rectangle has sides 4 cm and 3 cm. What is its area in sq cm?' keys 12, and seed 45 'A square has a side of 5 m. What is its area in sq m?' keys 25. In every one of those the keyed answer is the product of the two given side lengths, never a perimeter or a side, so the samples do the finding the competency sentence asks for."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All four cells of shape by unit appear. Squares in metres at seed 500, 'A square has a side of 10 m. What is its area in sq m?'; squares in centimetres at seed 502, 'A square has a side of 42 cm. What is its area in sq cm?'; rectangles in centimetres at seed 605, 'A rectangle has sides 20 cm and 15 cm. What is its area in sq cm?'; and rectangles in metres at seed 606, 'A rectangle has sides 7 m and 8 m. What is its area in sq m?'."
+      "rationale": "All four cells of shape by unit that the wording names are present: square in sq cm at seed 502 'A square has a side of 4 cm. What is its area in sq cm?' (16), square in sq m at seed 45 (25), rectangle in sq cm at seed 604 'A rectangle has sides 8 cm and 5 cm. What is its area in sq cm?' (40), and rectangle in sq m at seed 606 'A rectangle has sides 4 m and 7 m. What is its area in sq m?' (28). Neither shape is confined to one unit, and the square cases include both the equal-sides-stated form and the single-side form."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Structure is single step throughout, but seed 601 sets its story in an impossible space: 'Pia wants to cover a rectangular garden that is 5 cm long and 16 cm wide with square tiles.' A garden five centimetres by sixteen centimetres, covered by 80 tiles, is not a picture a Grade 3 pupil can form, and it undercuts the metre-scale intuition built by items such as seed 46, 'A rectangle has sides 2 m and 11 m. What is its area in sq m?'."
+      "verdict": "PASS",
+      "rationale": "Each area item is a single step over two one-digit lengths that are handed to the pupil explicitly: seed 605 'A rectangle has sides 5 cm and 6 cm. What is its area in sq cm?' needs only 5x6, and seed 44 'A square has a side of 3 cm. What is its area in sq cm?' needs the extra step of realising the second side is also 3. No item mixes cm and m inside one stem or demands a unit conversion, which suits a first formal exposure to area in Grade 3 Quarter 1."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Seeds 45 and 501 are the same item twice, both reading 'A square has a side of 9 m. What is its area in sq m?' with the identical value set 81, 82, 36, 18 merely reordered, and seed 44 differs from seed 50 only by the unit label, 'A square has a side of 7 cm. What is its area in sq cm?' against 'A square has a side of 7 m. What is its area in sq m?'. Apart from the single tiling story at seed 601, every stem in the packet is one of two fixed frames with new numbers dropped in."
+      "rationale": "Apart from seed 601 the packet runs on exactly two frozen sentence frames, and some samples repeat outright. Seed 50 and seed 500 are word-for-word 'A square has a side of 4 m. What is its area in sq m?' with the same distractor set 8, 15, 17; seed 502 is that same item with cm substituted; seed 42 'A rectangle has sides 4 cm and 3 cm' and seed 602 'A rectangle has sides 4 m and 3 m' likewise differ only by the unit; seed 44 and seed 501 are the 3 cm and 3 m versions of one square. No sample names a person, an object or a diagram, and the cloze renderings at seeds 50, 500 and 605 present the same four keyed choices as the mcq ones, so the formatter split adds no structural difference."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Seed 601 ends 'How many tiles are needed to cover it completely?' and keys 80, a bare tile count carrying no square unit, whereas this competency asks for an area expressed in sq cm and sq m. That item reads as the neighbouring problem-solving competency; the other fourteen stems name the unit and ask for the area directly, as at seed 604, 'A rectangle has sides 14 cm and 26 cm. What is its area in sq cm?'."
+      "rationale": "Seed 601 does not ask for an area in square centimetres or square metres at all: 'Pia wants to cover a rectangular garden that is 5 cm long and 2 cm wide with square tiles. How many tiles are needed to cover it completely?' The keyed answer 10 is a count of tiles whose size is never stated, and the item is an applied tiling task of the sort the neighbouring problem-solving competency owns rather than a direct area calculation named in square units. The other thirteen samples all state the unit in the stem and belong squarely to this node."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 502, 'A square has a side of 42 cm. What is its area in sq cm?', demands 42 times 42 equal to 1764, and seed 604, 'A rectangle has sides 14 cm and 26 cm. What is its area in sq cm?', demands 14 times 26 equal to 364. Both are two-digit by two-digit multiplication, past the Grade 3 Quarter 1 computational range that the majority of the packet respects, for example seed 606 at 'A rectangle has sides 7 m and 8 m. What is its area in sq m?'."
+      "verdict": "PASS",
+      "rationale": "Side lengths run from 2 to 8 and the keyed areas run from 9 at seed 44 (3x3) to 40 at seed 604 'A rectangle has sides 8 cm and 5 cm' (8x5). Every answer is therefore a multiplication fact inside the tables available in Grade 3 Quarter 1; the largest square is seed 45 'A square has a side of 5 m' at 25, and no item requires a two-digit factor or a two-digit by one-digit product."
     }
   },
   "overall": "CONCERN"
