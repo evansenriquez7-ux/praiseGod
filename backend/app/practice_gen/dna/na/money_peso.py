@@ -359,7 +359,18 @@ def generate_params(
             # (blind review: "'PhP' never appears in any of 15 samples").
             # Alternate between both G3 sub-cases instead of picking one
             # by grade.
-            if grade == 3 and rng.random() < 0.5:
+            # The competency names three notations: "₱ and PhP ... and the
+            # centavo sign". Two sub-cases covered ₱ and PhP, but the centavo
+            # sign was only ever a *distractor* -- in this branch, in
+            # words_to_numeral, and in numeral_to_words alike. Blind review:
+            # "not one correct_answer contains a ¢ symbol; the sign shows up
+            # solely as a wrong option ... so the competency's third named
+            # notation ... is a trap and never a taught answer." A notation a
+            # pupil only ever sees marked wrong is being taught against.
+            # Rotate three sub-cases instead of two, so writing the centavo
+            # sign is something the node actually asks for.
+            g3_sub = rng.choice(["peso_decimal", "centavo_sign", "php_code"]) if grade == 3 else "php_code"
+            if g3_sub == "peso_decimal":
                 cent_choice = rng.choice([25, 50])
                 question = f"How is {cent_choice} centavos written as a decimal of a peso using the ₱ symbol?"
                 correct_ans = f"₱0.{cent_choice}"
@@ -367,6 +378,17 @@ def generate_params(
                     f"₱{cent_choice}",
                     f"₱0.0{cent_choice}",
                     f"{cent_choice}¢"
+                ]
+            elif g3_sub == "centavo_sign":
+                # The inverse of the branch above: the centavo sign is the
+                # answer, not the trap.
+                cent_choice = rng.choice([25, 50])
+                question = f"How is ₱0.{cent_choice} written using the centavo sign?"
+                correct_ans = f"{cent_choice}¢"
+                distractors = [
+                    f"₱{cent_choice}",
+                    f"{cent_choice} pesos",
+                    f"₱0.0{cent_choice}",
                 ]
             else:
                 question = f"How is ₱{total_rw} written using the currency code PhP?"

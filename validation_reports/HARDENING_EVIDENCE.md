@@ -2245,3 +2245,66 @@ larger than one tick.
 
 Also still open on `mat_g2_na_q3_0`: the competency names two phrasings and only "groups of" is
 generated (14/15); the "5 threes" plural-number-word form is 0/15.
+
+---
+
+## 2026-08-12 — Tick C cluster 4: a named notation generated only as a wrong answer
+
+**Node:** `mat_g3_na_q2_0` — *"Read and write money in words and using: Philippine currency symbols
+(₱ and PhP) up to ₱10 000, and the centavo sign."*
+
+### The failing rationale
+
+> [FAIL] comprehensive_coverage — "Across all 17 samples, not one correct_answer contains a ¢ symbol;
+> the sign shows up solely as a wrong option in seed 42 ('4410¢'), seed 604 ('25¢'), and several
+> others, so the competency's third named notation, the centavo sign, is a trap and never a taught
+> answer."
+
+### Root cause
+
+A distinct defect family from the duplication cluster: the sub-case *is* generated, but only ever on
+the wrong side of the answer key. `money_peso.py`'s `read_write` operation has three tasks, and `¢`
+appeared in the `distractors` list of all three:
+
+- `numeral_to_words` → distractor `"{words} centavos"`
+- `words_to_numeral` → distractor `"{total_rw}¢"`
+- `symbols`, centavo sub-case → asks for the **decimal** form, correct answer `₱0.25`, with `25¢` as a
+  distractor
+
+So the one sub-case that mentions centavos at all still taught `₱0.25` and marked `25¢` wrong. A
+notation a pupil only ever sees marked wrong is being taught against, not taught.
+
+### Fix
+
+The `symbols` branch rotated two grade-3 sub-cases (peso-decimal, PhP code); it now rotates three,
+adding the inverse of the existing decimal question:
+
+```
+"How is ₱0.25 written using the centavo sign?"  ->  "25¢"
+   distractors: ₱25, 25 pesos, ₱0.025
+```
+
+### Before / after
+
+```
+                                             BEFORE      AFTER
+seeds where ¢ is the CORRECT answer          0 of 17     3 of 17  (seeds 46, 603, 604)
+occurrences of ¢ as a wrong distractor       many        5   (legitimate once the form is also taught)
+
+validate_matrix --node, all 8 money_peso nodes      Total Failures Observed: 0 each
+run_all   EXIT_CODE=1   matrix 151/151, 0 failures, 0 non-judgment FAIL lines
+```
+
+The change is gated on `grade == 3`, so the four G1 and three G2 money nodes re-rendered identically
+(0 stale samples each) and their reviews stayed valid — only `mat_g3_na_q2_0` was re-reviewed.
+
+### Fresh blind re-review (reviewer never saw the fix)
+
+`mat_g3_na_q2_0`: **FAIL → CONCERN**. The reviewer counted each named notation as correct answer versus
+distractor-only and confirmed the centavo sign is now genuinely taught. Remaining, honestly reported:
+
+- **PhP is now the thinnest notation** — correct in 1 of 17 samples, against 6 for ₱ and 4 for words.
+- 4 of 17 samples (seeds 50, 55, 500, 607) are coin/bill counting or fewest-piece composition with a
+  plain numeric answer, exercising no notation at all, and vary difficulty by a "fewest pieces" axis
+  the competency never names.
+- Centavo items use only two values, 25¢ and 50¢.
