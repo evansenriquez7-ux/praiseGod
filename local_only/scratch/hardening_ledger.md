@@ -1140,3 +1140,72 @@ Still open and untouched, both confirmed by blind declaration: `equal_jumps_on_a
 `mat_g3_mg_q1_1`'s real competency gap — "Explore **inductively** the derivation" is still served
 by stems that hand the rule over (`Using the formula rows × columns, ...`), which no binding can
 fix and which needs a genuine multi-case inductive item. That is a Tick F.
+
+---
+
+## 2026-08-13 — Tick C (G3 area magnitudes) — **CUT SHORT BY THE 5-HOUR USAGE LIMIT**
+
+- **Census before:** PASS=56 CONCERN=61 FAIL=34 (gate: non-verdict=0)
+  `run_all` EXIT_CODE=1, red only at 6/7 and 7/7. Tick 0 / A / B correctly did not fire.
+- **Unit of work:** gated the `area` DNA's dimensions to the multiplication tables the student
+  actually holds at G3 Q1, and fixed a second site where the array formatter fabricated its own.
+- **Root cause:** an area is a multiplication, but sides were drawn from a free `randint(2, 50)`
+  band scaled by difficulty, with nothing tying the draw to the taught tables. The harder the
+  item, the more certainly it required an untaught table.
+- **Ground truth (read, not guessed — the previous handoff's instruction):**
+  `mat_g3_mg_q1_2.cumulative_concepts` has `multiplication_tables_2_3_4_5_10` and
+  `division_tables_2_3_4_5_10`; `mat_g3_na_q3_0` **(G3 Q3)** introduces
+  `multiplication_tables_6_7_8_9`; `mat_g3_na_q3_2` (G3 Q3) introduces 2-3 digit × 1-digit.
+  All four area nodes are **G3 Q1**, so the 6/7/8/9 tables are two quarters away and multi-digit
+  × multi-digit is not in Grade 3 at all. This was a Content Rule 1 violation, not a taste call.
+- **Machinery built:** none new. `_table_and_cofactor` in `dna/mg/area.py` (one side always from
+  `_KNOWN_TABLES = (2,3,4,5,10)`, the other 2..10; difficulty widens the pool, never past the
+  curriculum; the inverse task's divisor is pinned to the table factor). Missing **square**
+  branch added to `fmt_array_grid.format_array_grid`.
+- **Files touched:** `dna/mg/area.py`, `formatters/visual/fmt_array_grid.py`,
+  `validation_reports/HARDENING_EVIDENCE.md`, two review JSONs.
+- **Verification:**
+  - violations outside the 2,3,4,5,10 tables: `23/120, 26/120, 28/120, 31/120` → **`0/220` on all four**
+  - fabricating fallback reachability across all 24 array_grid nodes:
+    `NONE — every array now takes its dimensions from the DNA`
+  - `validate_matrix --node` PASS on the four area nodes and on four array_grid consumers
+    spanning the G2Q3 / G3Q3 boundary
+  - `run_all` → 151/151, 0 failures, all ten contract checks, stages 1–5 green, EXIT_CODE=1 red
+    only at 6/7 and 7/7
+  - variety preserved: `mat_g3_mg_q1_3` 89 distinct stem shapes, dimensions [2,3,4,5,6,7,8,10]
+- **Census after:** PASS=56 CONCERN=60 FAIL=35 (q1_1 CONCERN→FAIL under a fresh reviewer).
+- **Commit(s):** see below.
+
+### ⚠️ RESUMPTION POINT — the next tick's FIRST item, before anything else
+
+**`NON-VERDICT` is 29, not 0.** The tick was killed by the usage limit part-way through the
+re-review step. Two of the four reviewers finished, two did not:
+
+```
+mat_g3_mg_q1_0  re-reviewed after G3 table gating   ✓ fresh   (CONCERN)
+mat_g3_mg_q1_1  re-reviewed after G3 table gating   ✓ fresh   (FAIL)
+mat_g3_mg_q1_2  still last tick's review            ✗ STALE  (15 freshness errors)
+mat_g3_mg_q1_3  still last tick's review            ✗ STALE  (14 freshness errors)
+```
+
+The generator change is complete, verified and committed; only the *reviews* of `q1_2` and
+`q1_3` lag the content. **Re-review those two blind before any new content work** — §0 says a
+non-zero NON-VERDICT count must be cleared first, because a review describing content the
+pipeline no longer serves will send you chasing a defect that is not there. Fresh packets are
+already built at `local_only/scratch/`-adjacent scratch paths; rebuild them rather than reusing,
+since the tick may have moved on. Do **not** hand-edit those two files — that is the fabrication
+failure mode this repo has suffered twice.
+
+### Next tick should, after clearing the two stale reviews:
+
+`mat_g3_mg_q1_1` is now **FAIL** on a fresh reviewer, and its competency gap is the real one:
+"Explore **inductively** the derivation of the formulas" is still served by stems that hand the
+rule over (`Using the formula rows × columns, ...`). No binding fixes this — it needs a genuine
+multi-case inductive item, where the student compares several tilings and states the rule. The
+blind Declarer independently said the same ("a generator that shows one tiled rectangle and
+states the formula does not satisfy it; it needs a multi-case sweep"). **That is a Tick F.**
+
+Still open and untouched, both confirmed by blind declaration: `equal_jumps_on_a_number_line`
+(`mat_g2_na_q3_1` + `mat_g3_na_q4_0`, start from `fmt_number_line.py`'s existing single hop at
+:157 and note the frontend arc renderer at `frontend/src/App.jsx:1435`) and
+`draw_line_relationships` (`mat_g3_mg_q1_5`).

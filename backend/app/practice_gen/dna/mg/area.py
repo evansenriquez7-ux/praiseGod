@@ -40,6 +40,49 @@ _PARAM_BOUNDS: Dict[str, Dict[str, Any]] = {
 }
 
 
+# ─── operation gating (CLAUDE.md Content Rule 1) ──────────────────────────────
+# An area is a multiplication, so the sides this DNA may draw are governed by the
+# multiplication the student has actually met. All four area nodes sit at G3 Q1,
+# and the knowledge graph is explicit about what that means:
+#
+#   mat_g3_mg_q1_2.cumulative_concepts  contains multiplication_tables_2_3_4_5_10
+#                                       and division_tables_2_3_4_5_10
+#   mat_g3_na_q3_0 (G3 *Q3*)            introduces multiplication_tables_6_7_8_9
+#   mat_g3_na_q3_2 (G3 Q3)              introduces 2-3 digit x 1-digit
+#
+# So the 6/7/8/9 tables arrive two quarters *after* these nodes, and multi-digit
+# by multi-digit appears nowhere in Grade 3 at all. Drawing sides from a free
+# 2..50 range produced 'A rectangle has sides 25 cm and 26 cm' (25x26) and
+# 'A rectangle has an area of 44 sq cm and a width of 22 cm' (44/22) -- both
+# requiring operations introduced later, which is exactly what Content Rule 1
+# forbids. Three independent blind reviewers flagged the magnitudes without
+# conferring.
+#
+# Every area is therefore a fact from a table the student holds: one side is
+# drawn from the known tables, the other from 2..10. Difficulty widens the pool,
+# never past what has been taught.
+_KNOWN_TABLES = (2, 3, 4, 5, 10)
+_OTHER_SIDE_MAX = 10
+
+
+def _table_and_cofactor(scalar: float, rng: random.Random) -> tuple:
+    """
+    A (table_factor, co_factor) pair whose product is a known-table fact at G3 Q1.
+
+    `table_factor` is always one of _KNOWN_TABLES, so the product is a fact from a
+    table the student has met and -- for the inverse task -- dividing by it is a
+    `division_tables_2_3_4_5_10` fact. Difficulty grows the pool of tables and the
+    size of the co-factor; it never reaches past the curriculum.
+    """
+    if scalar < 0.34:
+        tables, other_max = (2, 3, 4), 5
+    elif scalar < 0.67:
+        tables, other_max = (2, 3, 4, 5), 8
+    else:
+        tables, other_max = _KNOWN_TABLES, _OTHER_SIDE_MAX
+    return rng.choice(tables), rng.randint(2, other_max)
+
+
 # ─── error patterns ───────────────────────────────────────────────────────────
 # Formulas are shape-conditional by construction: "l"/"w" exist only in
 # rectangle samples' values and "s" only in square samples' (area.py never
@@ -165,8 +208,14 @@ def generate_params(
 
     hi = max(lo, int(linear_interpolate(lo, hi, scalar)))
 
+    # The known-table draw governs the dimensions; `lo`/`hi` above still select the
+    # unit label and its magnitude band, but they may not widen the multiplication
+    # past what G3 Q1 has been taught (see _table_and_cofactor).
+    table_side, other_side = _table_and_cofactor(scalar, rng)
+
     if shape == "square":
-        s = rng.randint(lo, hi)
+        # s * s must itself be a known-table fact, so the side is the table factor.
+        s = table_side
         area = s * s
         # No find_missing_dimension branch here: it is redirected to the rectangle
         # path above, because recovering a square's side from its area is a square
@@ -194,18 +243,28 @@ def generate_params(
         }
 
     # rectangle
-    l = rng.randint(lo, hi)
-    w = rng.randint(lo, hi)
     # A "rectangle" sample with l == w renders identically to a square (e.g.
     # "6 rows and 6 columns") -- undermining the very distinction the shape
     # variance above exists to test, and blind review caught it happening
-    # (mat_g3_mg_q1_0 seed 44). Redraw until genuinely unequal, same pattern
-    # already used by this DNA's own "compare" task_type for value_a/value_b.
-    while w == l and hi > lo:
-        w = rng.randint(lo, hi)
+    # (mat_g3_mg_q1_0 seed 44). Walk the co-factor off the table factor rather
+    # than redrawing, so the pair stays inside the known tables either way.
+    if other_side == table_side:
+        other_side = other_side + 1 if other_side < _OTHER_SIDE_MAX else other_side - 1
+    # Which of the two is named "length" varies, so the table factor is not always
+    # the first dimension read out; the product is a known-table fact regardless.
+    if rng.random() < 0.5:
+        l, w = table_side, other_side
+        table_dim = "l"
+    else:
+        l, w = other_side, table_side
+        table_dim = "w"
     area = l * w
     if task_type == "find_missing_dimension":
-        known = rng.choice(["l", "w"])
+        # The divisor must be the table factor: area / table_side is then a
+        # `division_tables_2_3_4_5_10` fact. Choosing the side at random here is
+        # what produced '44 sq cm ... a width of 22 cm' (44/22), a two-digit
+        # divisor that Grade 3 never teaches.
+        known = table_dim
         known_val = l if known == "l" else w
         missing_val = w if known == "l" else l
         return {

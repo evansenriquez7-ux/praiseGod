@@ -222,6 +222,23 @@ def format_array_grid(
             "correct_count": l * w,
             "grid_size": [l + 1, w + 1],
         }
+    elif ctx.values and "sides" in ctx.values and "s" in ctx.values["sides"]:
+        # Squares. Without this branch a square area item fell through to
+        # _build_visual_params, which invents rows/cols from a free 2..10 draw --
+        # so the drawn array had no connection to the DNA's own figure, and its
+        # dimensions escaped the DNA's curriculum gating entirely (a G3 Q1 area
+        # node rendered 'Look at the 9x7 array', needing the 7 and 9 tables that
+        # mat_g3_na_q3_0 does not introduce until G3 Q3).
+        s = ctx.values["sides"]["s"]
+        vp = {
+            "rows": s,
+            "cols": s,
+            "shaded": True,
+            "highlight_groups": [],
+            "shape_type": "square",
+            "correct_count": s * s,
+            "grid_size": [s + 1, s + 1],
+        }
     elif ctx.values and "groups" in ctx.values and "n" in ctx.values:
         rows = ctx.values["groups"]
         cols = ctx.values["n"]

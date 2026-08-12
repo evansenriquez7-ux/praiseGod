@@ -2742,3 +2742,96 @@ the last silently, so the bar-chart route had never run and nothing could say so
 the duplicate is already gone, which is why no runtime check could ever have caught it. Removed
 the dead entry and added `tests/pgen_probes/duplicate_registry_keys.py`, which reads the AST of
 six registry files and exits non-zero on any duplicate.
+
+---
+
+## 2026-08-13 — Grade-3 area magnitudes: an area is a multiplication, and the tables are gated (Tick C)
+
+### The failing rationales
+Three independent blind reviewers, none of whom saw each other's work, marked down all four area
+nodes for magnitude:
+
+> `q1_0`/`q1_1`: seed 501's `12 rows and 12 columns` — "a two-digit × two-digit product past the
+> Grade 3 Q1 table range".
+> `q1_2`: seed 502's 42×42 = 1764 and seed 604's 14×26.
+> `q1_3`: "seed 501 requires 924 ÷ 22 and seed 602 requires 216 ÷ 18 (two-digit divisors)".
+
+### Ground truth, read rather than guessed
+The ledger's handoff said to check the curriculum's table range before choosing a ceiling. The
+knowledge graph settles it:
+
+```
+mat_g3_mg_q1_2.cumulative_concepts   contains multiplication_tables_2_3_4_5_10
+                                     and      division_tables_2_3_4_5_10
+mat_g3_na_q3_0  (G3 Q3)  introduces_concepts: ['multiplication_tables_6_7_8_9', ...]
+                         introduces_vocab:    ['6 times table', '7 times table', ...]
+mat_g3_na_q3_2  (G3 Q3)  introduces 2- to 3-digit by 1-digit multiplication
+mat_g3_mg_q1_2.prior_node_ids  contains no G3 Q3/Q4 multiplication node
+```
+
+All four area nodes sit at **G3 Q1**. The 6/7/8/9 tables arrive **two quarters later**, and
+multi-digit × multi-digit appears nowhere in Grade 3 at all. So this is not a matter of taste
+about "big numbers": it is CLAUDE.md Content Rule 1 — never require an operation introduced in a
+later node — and the generator was violating it.
+
+Measured before the fix, over 120 seeds per node:
+
+```
+mat_g3_mg_q1_0:  23/120 items need a table outside 2,3,4,5,10
+      worst: Look at the 9×7 array. How many squares are shaded in all?
+mat_g3_mg_q1_1:  26/120
+      worst: Tiling a square takes 7 rows and 7 columns. Applying the rows × columns formula...
+mat_g3_mg_q1_2:  28/120
+      worst: A rectangle has sides 25 cm and 26 cm. What is its area in sq cm?
+mat_g3_mg_q1_3:  31/120
+      worst: A rectangle has an area of 44 sq cm and a width of 22 cm. What is its length?
+```
+
+### Root cause, and a second instance of it
+**Site 1 — `dna/mg/area.py`.** Sides were drawn from a free `rng.randint(2, 50)` band scaled by
+difficulty. Nothing tied the draw to the multiplication the student holds, so the harder the
+item, the more certain it was to require an untaught table. Replaced with `_table_and_cofactor`:
+one side is always drawn from `_KNOWN_TABLES = (2,3,4,5,10)` and the other from 2..10, so every
+area is a fact from a table the student has met. Difficulty now widens the *pool* (which tables,
+how large a co-factor) rather than the magnitude, and it cannot reach past the curriculum.
+For `find_missing_dimension` the divisor is pinned to the table factor, so `area ÷ known side` is
+a `division_tables_2_3_4_5_10` fact — that is what 44 ÷ 22 was violating.
+
+**Site 2 — `formatters/visual/fmt_array_grid.py`.** Gating the DNA left 4 violations on `q1_0`,
+all of the form `Look at the 9×7 array`. `format_array_grid` uses the DNA's own dimensions when
+`ctx.values["sides"]` carries `l`/`w`, but the **square** branch of area.py returns
+`sides: {"s": s}` — no `l`. Squares therefore fell through to `_build_visual_params`, which
+invents `rows = rng.randint(2, 10); cols = rng.randint(2, 10)`. The drawn array had no connection
+to the DNA's figure at all, and its dimensions escaped the curriculum gating entirely. Added the
+missing square branch.
+
+### Protocol 2 — all instances, not just the reported one
+`array_grid_read` / `array_grid_set` / `grid_area` are offered by three DNAs (`multiplication`,
+`division`, `area`) reaching **24 nodes**, including nine G2 Q3 nodes that also hold only the
+2,3,4,5,10 tables. Instrumenting the fabricating fallback across all 24:
+
+```
+nodes still reaching the fabricating fallback _build_visual_params:
+   NONE — every array now takes its dimensions from the DNA
+```
+
+### Verification
+```
+mat_g3_mg_q1_0:   0/220 outside the 2,3,4,5,10 tables
+mat_g3_mg_q1_1:   0/220
+mat_g3_mg_q1_2:   0/220
+mat_g3_mg_q1_3:   0/220
+```
+
+Variety is preserved rather than traded away — dimensions 2–8 and 10 are all in use, with
+co-factors such as 7 appearing paired with a known table factor (5×7 is a 5-table fact):
+
+```
+mat_g3_mg_q1_3: 89 distinct stem shapes, dimension values used: [2, 3, 4, 5, 6, 7, 8, 10]
+mat_g3_mg_q1_3 max-difficulty seeds 500-509 use dimensions: [2, 3, 4, 5, 6, 8, 10]
+   sample: A rectangle has an area of 30 sq m and a width of 5 m. What is its length?
+```
+
+`validate_matrix --node` PASS on all four area nodes and on four array_grid consumers spanning
+the boundary (`mat_g2_na_q3_1`, `mat_g2_na_q3_2`, `mat_g3_na_q3_0`, `mat_g3_na_q4_1`).
+Full `run_all`: 151/151, 0 failures, all ten contract checks, stages 1–5 green.
