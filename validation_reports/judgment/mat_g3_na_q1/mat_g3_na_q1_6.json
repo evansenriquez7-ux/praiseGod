@@ -1,0 +1,220 @@
+{
+  "node_id": "mat_g3_na_q1_6",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B7a (g3 mg_q2_4-q4 + na_q1), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from smallest to largest: 123, 36, 122",
+      "correct_answer": [
+        36,
+        122,
+        123
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "ordering",
+      "question_text": "Ana counted marbles collected by 3 friends: 118, 126, 129. Arrange the counts from smallest to largest.",
+      "correct_answer": [
+        118,
+        126,
+        129
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from smallest to largest: 122, 120, 127",
+      "correct_answer": [
+        120,
+        122,
+        127
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "ordering",
+      "question_text": "Ben counted seashells collected by 5 friends: 115, 117, 123, 124, 125. Arrange the counts from smallest to largest.",
+      "correct_answer": [
+        115,
+        117,
+        123,
+        124,
+        125
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from largest to smallest: 133, 116, 131, 122, 135",
+      "correct_answer": [
+        135,
+        133,
+        131,
+        122,
+        116
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from largest to smallest: 122, 130, 135, 125, 126",
+      "correct_answer": [
+        135,
+        130,
+        126,
+        125,
+        122
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from largest to smallest: 9993, 9998, 9996, 10000",
+      "correct_answer": [
+        10000,
+        9998,
+        9996,
+        9993
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "sort_order",
+      "question_text": "Arrange these numbers from largest to smallest: 10000, 5963, 9997",
+      "correct_answer": [
+        10000,
+        9997,
+        5963
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from largest to smallest: 10000, 671, 9995",
+      "correct_answer": [
+        10000,
+        9995,
+        671
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from smallest to largest: 135, 119, 129, 126, 134",
+      "correct_answer": [
+        119,
+        126,
+        129,
+        134,
+        135
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "sort_order",
+      "question_text": "Ben counted storybooks collected by 4 friends: 116, 118, 132, 133. Arrange the counts from smallest to largest.",
+      "correct_answer": [
+        116,
+        118,
+        132,
+        133
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "ordering",
+      "question_text": "Arrange these numbers from smallest to largest: 124, 131, 129, 130, 134",
+      "correct_answer": [
+        124,
+        129,
+        130,
+        131,
+        134
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "ordering",
+      "question_text": "Ana counted stickers collected by 5 friends: 115, 116, 129, 131, 133. Arrange the counts from largest to smallest.",
+      "correct_answer": [
+        133,
+        131,
+        129,
+        116,
+        115
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "ordering",
+      "question_text": "Liza counted seashells collected by 4 friends: 112, 113, 114, 115. Arrange the counts from largest to smallest.",
+      "correct_answer": [
+        115,
+        114,
+        113,
+        112
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "sort_order",
+      "question_text": "Jose counted stickers collected by 6 friends: 116, 118, 122, 126, 130, 132. Arrange the counts from largest to smallest.",
+      "correct_answer": [
+        132,
+        130,
+        126,
+        122,
+        118,
+        116
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every sample asks students to arrange a list of numbers by size, using the \"smallest to largest\" or \"largest to smallest\" phrasing the competency's \"vice versa\" clause implies, as in seed 42's \"Arrange these numbers from smallest to largest.\""
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Both named orderings are generated multiple times: smallest-to-largest in seeds 42, 43, 44, 45, 600, 601, and 602, and largest-to-smallest in seeds 46, 50, 500, 501, 502, 603, 604, and 605, directly covering the competency's \"vice versa\" requirement."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "List lengths range from three numbers in seed 42 to six numbers in seed 605, which stays within reasonable Grade 3 working-memory demands for a sorting task."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Several samples embed the sort inside a short scenario naming a student and counted objects, such as seed 43's \"Ana counted marbles collected by 3 friends: 118, 126, 129.\", while others present bare number lists, such as seed 44's \"Arrange these numbers from smallest to largest: 122, 120, 127\", giving two distinct framings of the same skill."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The difficulty driver across samples is list length and closeness of the values, such as seed 46's close-valued \"133, 116, 131, 122, 135\", which varies the sorting challenge itself rather than an unrelated skill."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The competency's full \"up to 10 000\" ceiling is actually reached in this node, unlike some siblings: seed 500 includes \"9993, 9998, 9996, 10000\" directly, and seeds 501 and 502 both compare against 10000 as well."
+    }
+  },
+  "overall": "PASS"
+}

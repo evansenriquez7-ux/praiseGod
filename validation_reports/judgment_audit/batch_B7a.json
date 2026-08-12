@@ -1,0 +1,109 @@
+{
+  "batch": "B7a",
+  "audited_on": "2026-08-12",
+  "nodes_audited": 12,
+  "independent_rejudge": {
+    "nodes": ["mat_g3_na_q1_2", "mat_g3_na_q1_4", "mat_g3_na_q1_6"],
+    "my_verdict": {
+      "mat_g3_na_q1_2": "CONCERN (max ordinal rendered is 53rd/49th; competency states 'up to 100th', 54th-100th range never a correct answer; seeds 45 and 50 are text-and-answer-identical 'What ordinal describes position number 8?')",
+      "mat_g3_na_q1_4": "CONCERN (formed before reading filed review: flagged for zero word-problem/context framing vs. siblings; on inspection of raw seeds 55/500 the number-line items are pure value-reading with no rounding verb or rounding context at all)",
+      "mat_g3_na_q1_6": "PASS (both smallest->largest and largest->smallest directions covered, competency's 10 000 ceiling actually reached at seeds 500/501/502, genuine word-problem and bare-list variety present)"
+    },
+    "filed_verdict": {
+      "mat_g3_na_q1_2": "CONCERN (scale_appropriateness: max correct target is 53rd, 54th-100th never reached)",
+      "mat_g3_na_q1_4": "CONCERN (competency_fulfillment: seeds 55/500 never use the word 'round' or round anything)",
+      "mat_g3_na_q1_6": "PASS (all six dims PASS, ceiling of 10 000 explicitly reached)"
+    },
+    "disagreement_rate": 0.0,
+    "notes": "All three overall buckets matched. On na_q1_4 I initially reasoned from a different angle (missing context) than the filed review (seeds 55/500 don't test rounding at all), but I independently re-read the raw seed-55/500 JSON and confirmed the filed review's specific claim is accurate: those two items are bare number-line value reads with no rounding language or rounding-relevant visual cue."
+  },
+  "per_node": {
+    "mat_g3_mg_q2_4": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Quotes verified verbatim (seed 42 stem, seed 44 distractor cluster). variant_comprehensiveness CONCERN correctly notes all 15 samples share one template ('An object's capacity measures X mL... rounded to the nearest Y?'), verified by direct count of all 15 question_texts. However competency_fulfillment PASS is questionable on substance: every sample is arithmetic rounding of a given exact value, not capacity estimation, and 0/15 samples ever use liters or any real container/benchmark context -- this is functionally identical in mechanism to sibling node mat_g3_na_q1_4's 'round to nearest 10/100/1000' competency, just relabeled with an mL suffix. The review does not flag this as a competency-mapping concern; I flag it as a likely too-lenient PASS on that one dimension (see summary)."
+    },
+    "mat_g3_mg_q2_5": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "competency_fulfillment CONCERN claim verified by exhaustive read of all 15 question_texts: every one is the bare template 'Which is more: X mL or Y mL?' -- literally zero of 15 mention a container, vessel, or object. Quotes (seed 42, seed 44's distractor set 51/53/54) verified verbatim. variant_comprehensiveness CONCERN explicitly and correctly self-identifies as sibling-similar to mg_q2_4 rather than blindly copying (satisfies the 'genuinely identical underlying pattern' exception, not a template violation). Verdict issue: the rationale under CONCERN literally states the competency's named object ('two containers') never appears in any of the 15 samples -- that describes total non-fulfillment of the competency's stated scope, which reads more like a FAIL than a CONCERN. Flagged as too-lenient in summary."
+    },
+    "mat_g3_mg_q4_0": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Recounted the 8 samples directly: seeds 42/43/46 are byte-identical ('2 spaces right AND 3 spaces up... how many directions'), seeds 44/45/500/501/502 are byte-identical ('5 spaces left and 2 down... what type of movement'). The review's comprehensive_coverage and variant_comprehensiveness CONCERN rationales cite exactly this 3-vs-5 split by seed number and it is accurate. This is a real, well-evidenced finding, not a template."
+    },
+    "mat_g3_mg_q4_1": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "variant_comprehensiveness PASS claims 'seven distinct question angles' across 9 samples; recounted the 9 question_texts directly and there are exactly 7 distinct strings (42=46, 45=501, other 5 unique). Count is accurate. comprehensive_coverage CONCERN ('drawing the line of symmetry' clause never exercised, all items are recall/MCQ) verified true by inspection -- no sample includes a drawing/marking interaction."
+    },
+    "mat_g3_mg_q4_2": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "variant_comprehensiveness PASS claims 3 distinct angles (42/501/502 definition, 43/46 procedure, 44/45/500 count-check); recounted directly and the 3+2+3=8 split matches all 8 samples exactly. comprehensive_coverage CONCERN ('complete' verb never enacted -- no sample actually completes a figure) verified true. Noted independently: the count-check items always use exactly '3 squares' with zero numeric variation across all 3 occurrences (44/45/500) -- a real but minor sub-finding the review did not surface, not severe enough to change the verdict."
+    },
+    "mat_g3_na_q1_0": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "competency_fulfillment CONCERN claims exactly 6/13 samples involve a pictorial model (seeds 42,43,45,46,51,501) vs 7/13 that are pure word-numeral conversion (44,50,53,500,502,600,601). Recounted all 13 samples independently and the 6/7 split is exactly correct. competency_alignment CONCERN also correctly identifies that seeds 600 and 601 in this node are byte-identical in question_text and correct_answer to seeds 600/601 in sibling mat_g3_na_q1_1 -- verified true by direct comparison of both nodes' raw JSON. This is a strong, accurate finding. Verdict concern: 7 of 13 samples (54%) test a different node's competency entirely (word<->numeral conversion, which is mat_g3_na_q1_1's stated scope) rather than 'pictorial models' -- this majority-miss reads closer to FAIL than CONCERN. Flagged as too-lenient in summary."
+    },
+    "mat_g3_na_q1_1": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "Cross-checked the same seed-600/601 duplication independently (matches na_q1_0 finding). variant_comprehensiveness is marked PASS but its own text says the reuse is 'worth flagging' -- a named defect under a PASS verdict, which is borderline against check 2. However the defect named (cross-node content reuse) is a different axis from within-node variant diversity, and within this node alone seeds 600/601 are not duplicates of any other item in the same node (verified: no other 'Write __ in words' or true/false item shares those exact numbers). Judged defensible, not void."
+    },
+    "mat_g3_na_q1_2": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "One of the 3 independently rejudged nodes; my verdict (CONCERN, same root cause) matched. scale_appropriateness CONCERN's claim that the highest correct answer anywhere in the 10 samples is '53rd' verified true by direct scan of all 10 correct_answers. comprehensive_coverage PASS's seed grouping (43/46, 45/50, 44/600, 501/502, 42) omits seed 500 ('What ordinal describes position number 49?', same template as 45/50) from its 'converting position number to ordinal' bucket -- a minor incompleteness in the enumeration, not a false claim (the rationale doesn't assert exhaustiveness), so not void."
+    },
+    "mat_g3_na_q1_3": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "comprehensive_coverage PASS cites three sub-case seed groups (43/46/601 naming-the-place, 44/45/600/602 stating-value, 42/501/502 identify-digit); recounted all 14 samples and each group's membership is exactly correct (3, 4, and 3 samples respectively). scale_appropriateness PASS's claim that every number in this node is 4-digit was checked against all listed values (1695, 3250, 9105, 5210, 4725, 8235, 2385, 9135, 3195, 4210, 4120, 1305, 2360) -- all confirmed 4-digit. No issues found; overall PASS is well-earned."
+    },
+    "mat_g3_na_q1_4": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "One of the 3 independently rejudged nodes; my verdict (CONCERN) matched the filed verdict. competency_fulfillment CONCERN's claim that seeds 55 and 500 never use the word 'round' or ask the student to round was verified by reading the raw seed 55/500 JSON directly: both are bare 'What number is marked on the number line?' MCQs with no rounding language or context. This is an accurate, real finding, not a template."
+    },
+    "mat_g3_na_q1_5": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "scale_appropriateness CONCERN claims the largest value anywhere in the node's 16 samples is 6709 (seed 501), despite the competency stating 'up to 10 000'. Scanned every numeric value across all 16 samples independently; 6709 is indeed the maximum, confirming the claim. Well-evidenced, accurately scoped CONCERN."
+    },
+    "mat_g3_na_q1_6": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "notes": "One of the 3 independently rejudged nodes; my a-priori verdict (PASS) matched the filed verdict exactly. scale_appropriateness PASS's claim that the 10 000 ceiling is actually reached (seed 500: '9993, 9998, 9996, 10000'; seeds 501/502 also include 10000) verified true by direct inspection. comprehensive_coverage's seed lists for both sort directions were recounted and are exhaustive and correct (7 smallest-to-largest + 8 largest-to-smallest = 15 total)."
+    }
+  },
+  "voided_nodes": [],
+  "batch_reliable": true,
+  "summary": "All 12 filed reviews pass the three void checks: every quoted span and every counted claim I spot-checked (seed groupings, max/min values, byte-identical duplicate detection within and across nodes, distinct-template tallies) was verified accurate against the raw packet JSON on direct recount, and no rationale read as a generic template pasted across siblings -- where two sibling nodes' CONCERN rationales are structurally similar (mg_q2_4/mg_q2_5), the reviewer explicitly flagged that similarity as a genuine shared defect pattern rather than reusing boilerplate blindly. Independent re-judgment of 3 nodes (na_q1_2, na_q1_4, na_q1_6) produced 0/3 disagreement with the filed verdicts, including on na_q1_4 where I reasoned toward CONCERN via a different initial angle than the filed review but confirmed the review's specific claim (seeds 55/500 never test rounding) on direct inspection. The batch is reliable on accuracy. On severity calibration, however, three nodes look under-scored: mat_g3_mg_q2_5's own CONCERN rationale states that 0 of 15 samples reference any container for a competency literally titled 'Compare capacities of two containers' -- that is a complete miss of the competency's stated object, not a partial concern, and reads as FAIL. mat_g3_na_q1_0's CONCERN rationale establishes that 7 of 13 samples (54%) are pure word-numeral conversion items belonging to a sibling node's competency rather than 'pictorial models' -- a majority-of-samples miss that also reads as FAIL. mat_g3_mg_q2_4's competency_fulfillment PASS is the weakest cell in the batch: it treats plain numeric rounding of a given exact value as fulfilling 'estimate capacity,' but the mechanism is indistinguishable from mat_g3_na_q1_4's rounding competency wearing an mL suffix, with zero real-world estimation framing or liter usage anywhere in the 15 samples -- I'd have scored this dimension CONCERN or FAIL, not PASS. These three findings support the task's suspicion about the 0-FAIL/9-CONCERN distribution: the reviewer is accurate at the sample level but systematically rounds severe, full-competency misses down into CONCERN rather than FAIL."
+}
