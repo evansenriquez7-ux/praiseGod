@@ -1,0 +1,411 @@
+{
+  "node_id": "mat_g3_na_q4_7",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    72,
+    500,
+    501,
+    502,
+    600,
+    602,
+    603
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is \\(\\frac{3}{4} + \\frac{1}{4}\\)?",
+      "correct_answer": "4/4",
+      "options": [
+        {
+          "key": "A",
+          "value": "4/3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3/4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "4/4",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "4/8",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is \\(\\frac{2}{4} + \\frac{1}{4}\\)?",
+      "correct_answer": "3/4",
+      "options": [
+        {
+          "key": "A",
+          "value": "3/4",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "3/8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2/4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4/2",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "What is \\(\\frac{2}{6} - \\frac{1}{6}\\)?",
+      "correct_answer": "1/6",
+      "options": [
+        {
+          "key": "A",
+          "value": "3/12",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "6/2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2/6",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/6",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "What is \\(\\frac{3}{8} - \\frac{1}{8}\\)?",
+      "correct_answer": "2/8",
+      "options": [
+        {
+          "key": "A",
+          "value": "1/8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "8/3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2/8",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "3/8",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What is \\(\\frac{3}{8} + \\frac{1}{8}\\)?",
+      "correct_answer": "4/8",
+      "options": [
+        {
+          "key": "A",
+          "value": "3/8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4/8",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "4/16",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "8/3",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "read_mcq",
+      "question_text": "What is the result of the fraction operation shown?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": "4/1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "1/4",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "3/4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4/4",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 55,
+      "formatter": "set_click",
+      "question_text": "Shade the shape to show the result of 5/6 + 1/6.",
+      "correct_answer": "6/6"
+    },
+    {
+      "seed": 72,
+      "formatter": "cloze",
+      "question_text": "What is \\(\\frac{1}{10} + \\frac{1}{10}\\)?",
+      "correct_answer": "2/10",
+      "options": [
+        {
+          "key": "A",
+          "value": "2/10",
+          "text": "2/10",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "2/20",
+          "text": "2/20",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/10",
+          "text": "1/10",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "10/1",
+          "text": "10/1",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "set_click",
+      "question_text": "Shade the shape to show the result of 7/8 - 1/8.",
+      "correct_answer": "6/8"
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "What is \\(\\frac{5}{6} - \\frac{1}{6}\\)?",
+      "correct_answer": "4/6",
+      "options": [
+        {
+          "key": "A",
+          "value": "4/6",
+          "text": "4/6",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "5/6",
+          "text": "5/6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "6/12",
+          "text": "6/12",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "6/5",
+          "text": "6/5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is \\(\\frac{6}{10} - \\frac{1}{10}\\)?",
+      "correct_answer": "5/10",
+      "options": [
+        {
+          "key": "A",
+          "value": "10/6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "5/10",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "6/10",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "7/20",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "What is \\(\\frac{3}{5} - \\frac{1}{5}\\)?",
+      "correct_answer": "2/5",
+      "options": [
+        {
+          "key": "A",
+          "value": "5/3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3/5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2/5",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "1/5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is \\(\\frac{4}{5} - \\frac{1}{5}\\)?",
+      "correct_answer": "3/5",
+      "options": [
+        {
+          "key": "A",
+          "value": "3/5",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "4/5",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "5/4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5/10",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "What is \\(\\frac{2}{6} + \\frac{1}{6}\\)?",
+      "correct_answer": "3/6",
+      "options": [
+        {
+          "key": "A",
+          "value": "2/6",
+          "text": "2/6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3/6",
+          "text": "3/6",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "6/2",
+          "text": "6/2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3/12",
+          "text": "3/12",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "11 of the 14 samples show a bare equation such as seed 42's '\\(\\frac{3}{4} + \\frac{1}{4}\\)' with no shape or shading mentioned in the text at all, even though the competency text ends in 'using models' — only seed 50, seed 55, and seed 500 reference anything visual."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Addition (seed 42's 3/4+1/4, seed 603's 2/6+1/6) and subtraction (seed 44's 2/6-1/6, seed 600's 3/5-1/5) of same-denominator fractions both appear, so the competency's two named operations are both generated."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Every fraction pair shares a denominator — never mixed denominators — correctly keeping this inside the 'similar fractions' scope rather than reaching into later unlike-denominator work."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "set_click items (seed 55, seed 500) provide real interactive shading, distinct from the mcq, cloze, and read_mcq items that surround them."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Denominator size (4 through 10) and how close the numerator sits to the denominator are what move difficulty, not an unrelated skill."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Denominators stay at 10 or below and numerators never exceed the denominator by more than would make a whole, keeping scale inside Grade 3 similar-fraction work."
+    }
+  },
+  "overall": "CONCERN"
+}

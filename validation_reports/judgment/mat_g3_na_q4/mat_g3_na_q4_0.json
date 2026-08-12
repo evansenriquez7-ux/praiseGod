@@ -1,0 +1,497 @@
+{
+  "node_id": "mat_g3_na_q4_0",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    51,
+    55,
+    85,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is 670 ÷ 10?",
+      "correct_answer": 67,
+      "options": [
+        {
+          "key": "A",
+          "value": 660,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6700,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 67,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 30 ÷ 2?",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 60,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 28,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "300 ÷ 5 = ___",
+      "correct_answer": 60,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 295,
+          "text": "295",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1500,
+          "text": "1500",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 60,
+          "text": "60",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "cloze",
+      "question_text": "200 ÷ 4 = ___",
+      "correct_answer": 50,
+      "options": [
+        {
+          "key": "A",
+          "value": 800,
+          "text": "800",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 196,
+          "text": "196",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 50,
+          "text": "50",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What is 108 ÷ 2?",
+      "correct_answer": 54,
+      "options": [
+        {
+          "key": "A",
+          "value": 216,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 54,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 106,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "read_mcq",
+      "question_text": "This array has 130 squares split into 10 equal rows. How many squares are in each row?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 46,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 51,
+      "formatter": "error_detect",
+      "question_text": "Ana says: 20 ÷ 4 = 16. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 5
+      }
+    },
+    {
+      "seed": 55,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 126 squares into 2 equal rows. How many squares are in each row?",
+      "correct_answer": 63
+    },
+    {
+      "seed": 85,
+      "formatter": "true_false",
+      "question_text": "165 ÷ 3 = 55. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "error_detect",
+      "question_text": "Rico says: 940 ÷ 10 = 94. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 94
+      }
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "890 ÷ 10 = ___",
+      "correct_answer": 89,
+      "options": [
+        {
+          "key": "A",
+          "value": 89,
+          "text": "89",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 8900,
+          "text": "8900",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 880,
+          "text": "880",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 960 ÷ 10?",
+      "correct_answer": 96,
+      "options": [
+        {
+          "key": "A",
+          "value": 950,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 96,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 9600,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "What is 140 ÷ 4?",
+      "correct_answer": 35,
+      "options": [
+        {
+          "key": "A",
+          "value": 136,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 35,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 560,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Pia has ₱135 and wants to share it equally among 3 friends. How much does each friend get?",
+      "correct_answer": 45,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 132,
+          "text": "132",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 405,
+          "text": "405",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 45,
+          "text": "45",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 255 ÷ 5?",
+      "correct_answer": 51,
+      "options": [
+        {
+          "key": "A",
+          "value": 51,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 1275,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 250,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "75 ÷ 3 = ___",
+      "correct_answer": 25,
+      "options": [
+        {
+          "key": "A",
+          "value": 225,
+          "text": "225",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 25,
+          "text": "25",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 72,
+          "text": "72",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "What is 12 ÷ 2?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 24,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "read_mcq",
+      "question_text": "This array has 15 squares split into 3 equal rows. How many squares are in each row?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 16,
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Division is certainly present (seed 42's 670÷10, seed 601's ₱135 split three ways) but nothing frames it through equal jumps or as an inverse multiplication fact, so 'Illustrate division through equal jumps on the number line and as inverse of multiplication' goes unmet as a teaching method even though the underlying operation is practiced."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "None of the 18 samples contain the words 'jump' or 'number line', and none pair a division with its inverse multiplication fact; the closest visual, an array of rows (seed 50's '130 squares split into 10 equal rows'), is a different representation from either named method."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Divisors of 2 through 10 with dividends under 1000 fit Grade 3 Quarter 4 division-fact expectations."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Six formatters carry the division skill (mcq, cloze, read_mcq, error_detect, set_fill_in_blank, true_false), and a money word problem (seed 601) sits alongside bare number facts."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Dividend and divisor size, plus formatter choice, are what separate easy from hard items here, staying on the division-fact axis."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The largest dividend in the set is seed 502's 960, well within a Grade 3 division-facts scope."
+    }
+  },
+  "overall": "FAIL"
+}

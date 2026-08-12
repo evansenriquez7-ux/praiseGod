@@ -1,0 +1,468 @@
+{
+  "node_id": "mat_g3_na_q2_4",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    51,
+    55,
+    85,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is 1830 − 1744?",
+      "correct_answer": 86,
+      "options": [
+        {
+          "key": "A",
+          "value": 3574,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 87,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 86,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 85,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 3460 − 3140?",
+      "correct_answer": 320,
+      "options": [
+        {
+          "key": "A",
+          "value": 320,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 319,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 321,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6600,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "7222 − 810 = ___",
+      "correct_answer": 6412,
+      "options": [
+        {
+          "key": "A",
+          "value": 6411,
+          "text": "6411",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8032,
+          "text": "8032",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6413,
+          "text": "6413",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6412,
+          "text": "6412",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "cloze",
+      "question_text": "880 − 102 = ___",
+      "correct_answer": 778,
+      "options": [
+        {
+          "key": "A",
+          "value": 779,
+          "text": "779",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 982,
+          "text": "982",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 778,
+          "text": "778",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 777,
+          "text": "777",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What is 3463 − 60?",
+      "correct_answer": 3403,
+      "options": [
+        {
+          "key": "A",
+          "value": 3404,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3403,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3402,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3523,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 7042 and it moves backward 6900 numbers. Starting from 7042, just count back 6900 numbers. Which number will the dot land on?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 13942,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 142,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 143,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 141,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 51,
+      "formatter": "error_detect",
+      "question_text": "Ana says: 542 − 20 = 562. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 522
+      }
+    },
+    {
+      "seed": 55,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 1389 and one part is 1170. What is the other part?",
+      "correct_answer": 219
+    },
+    {
+      "seed": 85,
+      "formatter": "true_false",
+      "question_text": "903 − 300 = 603. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 6398 and one part is 3715. What is the other part?",
+      "correct_answer": 2683
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "3418 − 3379 = 39. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 6706 − 2477?",
+      "correct_answer": 4229,
+      "options": [
+        {
+          "key": "A",
+          "value": 9183,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4229,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4230,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4228,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "What is 5252 − 1800?",
+      "correct_answer": 3452,
+      "options": [
+        {
+          "key": "A",
+          "value": 7052,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3451,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3452,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 3453,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "In a pictograph, Pia's group collected 4425 leashes and another group collected 4310 leashes. How many more did Pia's group collect?",
+      "correct_answer": 115,
+      "options": [
+        {
+          "key": "A",
+          "value": 114,
+          "text": "114",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8735,
+          "text": "8735",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 116,
+          "text": "116",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 115,
+          "text": "115",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 325 − 45?",
+      "correct_answer": 280,
+      "options": [
+        {
+          "key": "A",
+          "value": 280,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 281,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 370,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 279,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "3377 − 210 = ___",
+      "correct_answer": 3167,
+      "options": [
+        {
+          "key": "A",
+          "value": 3168,
+          "text": "3168",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3167,
+          "text": "3167",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3587,
+          "text": "3587",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3166,
+          "text": "3166",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "What is 8460 − 1120?",
+      "correct_answer": 7340,
+      "options": [
+        {
+          "key": "A",
+          "value": 7340,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 7339,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9580,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7341,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 152 and it moves backward 110 numbers. Starting from 152, just count back 110 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 42,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 262,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 41,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 43,
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Bare subtraction sentences (seed 603's '3377 − 210 = ___'), a part-part-whole word problem (seed 55), and number-line count-backs (seed 50, seed 605) all land squarely on subtraction 'with and without regrouping'."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Regrouping is unavoidable in some samples (seed 42's 1830−1744 needs borrowing across three places) and absent in others (seed 46's 3463−60 needs none), so the competency's 'with and without' phrasing is honored on both sides."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "A pictograph word problem about leash counts (seed 601) and a coin-based error check (seed 51) keep reasoning to a single subtraction step, matching Grade 3 expectations."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Six different formatters carry the same subtraction skill — mcq, cloze, read_mcq, error_detect, read_fill_in_blank, true_false — which is unusually broad modality coverage for one node."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "What changes between easy and hard items is digit count and whether borrowing is required, both of which belong to the subtraction competency rather than to some other skill."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "8460 (seed 604) is the largest minuend anywhere in the set, comfortably inside the 'less than 10 000' ceiling stated for both operands."
+    }
+  },
+  "overall": "PASS"
+}

@@ -1,0 +1,135 @@
+{
+  "node_id": "mat_g3_na_q4_4",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "true_false",
+      "question_text": "120 ÷ 76 ≈ 20. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 43,
+      "formatter": "true_false",
+      "question_text": "320 ÷ 18 ≈ 15. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 44,
+      "formatter": "true_false",
+      "question_text": "505 ÷ 60 ≈ 8. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 45,
+      "formatter": "true_false",
+      "question_text": "100 ÷ 22 ≈ 80. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 46,
+      "formatter": "true_false",
+      "question_text": "150 ÷ 16 ≈ 10. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "true_false",
+      "question_text": "933 ÷ 63 ≈ 60. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "979 ÷ 94 ≈ 11. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 502,
+      "formatter": "true_false",
+      "question_text": "942 ÷ 8 ≈ 112. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 600,
+      "formatter": "true_false",
+      "question_text": "40 ÷ 50 ≈ 0. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 601,
+      "formatter": "true_false",
+      "question_text": "330 ÷ 76 ≈ 4. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 602,
+      "formatter": "true_false",
+      "question_text": "180 ÷ 47 ≈ 50. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 603,
+      "formatter": "true_false",
+      "question_text": "180 ÷ 53 ≈ 50. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 604,
+      "formatter": "true_false",
+      "question_text": "390 ÷ 48 ≈ 50. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 605,
+      "formatter": "true_false",
+      "question_text": "312 ÷ 2 ≈ 600. True or False?",
+      "correct_answer": false
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Judging a rounded claim like seed 43's '320 ÷ 18 ≈ 15. True or False?' still requires the student to actually estimate the quotient mentally, which is the core skill this competency names."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Dividends run from 2 digits (seed 42's 120) to 3 digits (seed 500's 933) and divisors from 1 digit (seed 605's 2) to 2 digits (seed 500's 63), covering the ranges the competency states."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Rounding to a nearby ten or hundred before dividing (seed 45 flags 100÷22≈80 as false) is a reasonable Grade 3 mental-math move."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "All 14 of the 14 samples use the true_false formatter; none of them ever ask the student to pick or type an estimate themselves, only to accept or reject one that's already given."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "How far the stated estimate sits from the true rounded quotient is what drives difficulty, an axis specific to this competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Every dividend and divisor stays within the stated 2-3 digit / 1-2 digit bounds; nothing in the set reaches outside them."
+    }
+  },
+  "overall": "CONCERN"
+}

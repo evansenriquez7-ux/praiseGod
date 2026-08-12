@@ -1,0 +1,502 @@
+{
+  "node_id": "mat_g3_na_q2_0",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    72,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    606
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "How is 'four thousand four hundred ten pesos' written using the peso symbol?",
+      "correct_answer": "₱4410",
+      "options": [
+        {
+          "key": "A",
+          "value": "₱44100",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4410¢",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "₱4410",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "₱4405",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "How is ₱3425 written in words?",
+      "correct_answer": "three thousand four hundred twenty-five pesos",
+      "options": [
+        {
+          "key": "A",
+          "value": "three thousand four hundred twenty-five pesos",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "three thousand four hundred fifteen pesos",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "three thousand four hundred twenty-five centavos",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "three thousand four hundred forty-five pesos",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "How is 'four hundred eighty-nine pesos' written using the peso symbol?",
+      "correct_answer": "₱489",
+      "options": [
+        {
+          "key": "A",
+          "value": "₱484",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "₱4890",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "489¢",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "₱489",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "How is ₱4314 written in words?",
+      "correct_answer": "four thousand three hundred fourteen pesos",
+      "options": [
+        {
+          "key": "A",
+          "value": "four thousand three hundred fourteen centavos",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "four thousand three hundred twenty-four pesos",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "four thousand three hundred fourteen pesos",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "four thousand three hundred four pesos",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "How is 50 centavos written as a decimal of a peso using the ₱ symbol?",
+      "correct_answer": "₱0.50",
+      "options": [
+        {
+          "key": "A",
+          "value": "50¢",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "₱0.50",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "₱0.050",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "₱50",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "read_mcq",
+      "question_text": "Count the coins and bills shown. What is the total amount?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 9743,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9763,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9733,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9748,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 55,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use coins and bills to make exactly ₱1286. Use the fewest pieces possible.",
+      "correct_answer": 1286
+    },
+    {
+      "seed": 72,
+      "formatter": "cloze",
+      "question_text": "How is 50 centavos written as a decimal of a peso using the ₱ symbol?",
+      "correct_answer": "₱0.50",
+      "options": [
+        {
+          "key": "A",
+          "value": "₱0.50",
+          "text": "₱0.50",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "₱0.050",
+          "text": "₱0.050",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "50¢",
+          "text": "50¢",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "₱50",
+          "text": "₱50",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Use coins and bills to make exactly ₱7220. Use the fewest pieces possible.",
+      "correct_answer": 7220
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "How is ₱7432 written in words?",
+      "correct_answer": "seven thousand four hundred thirty-two pesos",
+      "options": [
+        {
+          "key": "A",
+          "value": "seven thousand four hundred thirty-two pesos",
+          "text": "seven thousand four hundred thirty-two pesos",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "seven thousand four hundred thirty-two centavos",
+          "text": "seven thousand four hundred thirty-two centavos",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "seven thousand four hundred twenty-two pesos",
+          "text": "seven thousand four hundred twenty-two pesos",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "seven thousand four hundred thirty-seven pesos",
+          "text": "seven thousand four hundred thirty-seven pesos",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "How is ₱1325 written using the currency code PhP?",
+      "correct_answer": "PhP 1325",
+      "options": [
+        {
+          "key": "A",
+          "value": "₱1325",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "PhP 1325",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "1325 PhP",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "PhP1325c",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "How is 'six thousand sixty-eight pesos' written using the peso symbol?",
+      "correct_answer": "₱6068",
+      "options": [
+        {
+          "key": "A",
+          "value": "₱60680",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "₱6063",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "₱6068",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "6068¢",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "How is 'four hundred fourteen pesos' written using the peso symbol?",
+      "correct_answer": "₱414",
+      "options": [
+        {
+          "key": "A",
+          "value": "₱409",
+          "text": "₱409",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "₱4140",
+          "text": "₱4140",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "414¢",
+          "text": "414¢",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "₱414",
+          "text": "₱414",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "How is ₱6809 written in words?",
+      "correct_answer": "six thousand eight hundred nine pesos",
+      "options": [
+        {
+          "key": "A",
+          "value": "six thousand eight hundred nine pesos",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "six thousand eight hundred nine centavos",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "six thousand nine hundred nine pesos",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "six thousand seven hundred ninety-nine pesos",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "How is ₱8969 written using the currency code PhP?",
+      "correct_answer": "PhP 8969",
+      "options": [
+        {
+          "key": "A",
+          "value": "8969 PhP",
+          "text": "8969 PhP",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "PhP 8969",
+          "text": "PhP 8969",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "₱8969",
+          "text": "₱8969",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "PhP8969c",
+          "text": "PhP8969c",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "How is 25 centavos written as a decimal of a peso using the ₱ symbol?",
+      "correct_answer": "₱0.25",
+      "options": [
+        {
+          "key": "A",
+          "value": "₱0.25",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "₱0.025",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "₱25",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "25¢",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "How is ₱6113 written using the currency code PhP?",
+      "correct_answer": "PhP 6113",
+      "options": [
+        {
+          "key": "A",
+          "value": "PhP 6113",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "₱6113",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "PhP6113c",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "6113 PhP",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Peso-symbol and PhP-code conversions are what these samples test — seed 43 turns ₱3425 into words, seed 502 turns ₱1325 into 'PhP 1325' — both squarely inside 'Read and write money in words and using: Philippine currency symbols'."
+    },
+    "comprehensive_coverage": {
+      "verdict": "FAIL",
+      "rationale": "Across all 17 samples, not one correct_answer contains a ¢ symbol; the sign shows up solely as a wrong option in seed 42 ('4410¢'), seed 604 ('25¢'), and several others, so the competency's third named notation, the centavo sign, is a trap and never a taught answer."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Four-digit peso amounts spelled out in words, like seed 43's 'three thousand four hundred twenty-five pesos', sit comfortably within Grade 3 Quarter 2 place-value vocabulary."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Conversion direction flips both ways (words-to-symbol in seed 42, symbol-to-words in seed 43), and coin-counting (seed 50) and exact-change-making (seed 55) add genuinely different task types beyond notation swaps."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Harder items push digit count up (seed 42's four-digit 4410 vs. seed 44's three-digit 489) and swap which currency form is tested, so difficulty tracks the money-notation skill itself, not something unrelated like time."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Seed 50's counted total of 9743 and seed 603's 8969 both sit under the ₱10 000 ceiling the competency states, and nothing in the set crosses it."
+    }
+  },
+  "overall": "FAIL"
+}

@@ -1,0 +1,138 @@
+{
+  "batch": "B8",
+  "audited_on": "2026-08-12",
+  "nodes_audited": 14,
+  "independent_rejudge": {
+    "nodes": ["mat_g3_na_q2_2", "mat_g3_na_q3_5", "mat_g3_na_q4_3", "mat_g3_na_q4_6"],
+    "my_verdict": {
+      "mat_g3_na_q2_2": "CONCERN",
+      "mat_g3_na_q3_5": "PASS",
+      "mat_g3_na_q4_3": "FAIL",
+      "mat_g3_na_q4_6": "PASS"
+    },
+    "filed_verdict": {
+      "mat_g3_na_q2_2": "CONCERN",
+      "mat_g3_na_q3_5": "PASS",
+      "mat_g3_na_q4_3": "FAIL",
+      "mat_g3_na_q4_6": "PASS"
+    },
+    "disagreement_rate": 0.0
+  },
+  "per_node": {
+    "mat_g3_na_q2_0": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "FAIL rests on comprehensive_coverage: 'not one correct_answer contains a ¢ symbol' across 17 samples. Counted directly: 0/17 correct_answer values contain ¢; the centavo sign appears only as a wrong-option decoy (seed42 '4410¢', seed44 '489¢', seed46/72 '50¢', seed604 '25¢', seed601 '414¢'). Competency names three notations (₱, PhP, centavo sign) to read AND write; one is never the produced/correct form. Earned FAIL, not too harsh."
+    },
+    "mat_g3_na_q2_2": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "Counted: 15 samples total, exactly 3 (seeds 500, 501, 502) have a 4-digit addend, matching the filed '3 of 15'. Independent re-judgment: CONCERN, matches filed. The two read_fill_in_blank items (seed50: 100+100, seed500: 2000+7000) are indeed already-round numbers requiring no rounding step, confirmed verbatim."
+    },
+    "mat_g3_na_q2_4": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "PASS. Checked: 6 formatters present as claimed (mcq, cloze, read_mcq, error_detect, read_fill_in_blank, true_false); seed604's 8460 is confirmed the largest minuend across all 18 samples; regrouping (seed42: 1830-1744) and non-regrouping (seed46: 3463-60) both present."
+    },
+    "mat_g3_na_q3_4": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "FAIL rests on comprehensive_coverage: 0 of 16 samples require a second computation step. Manually traced every sample's arithmetic (listed all 16 question/answer pairs) — every one resolves via a single multiplication (quantity × unit-price or quantity × count-per-group). The '2-step' half of 'Solve 1-to 2-step multiplication problems' is a complete, verified miss. Earned FAIL."
+    },
+    "mat_g3_na_q3_5": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "PASS, matches my independent re-judgment. Increasing (seed43 +50) and decreasing (seed44 -10, seed46 -100) shifts both present; read_mcq items (seed55, seed500) genuinely reference a numbered pictorial position distinct from the symbolic items."
+    },
+    "mat_g3_na_q3_6": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "PASS. The quoted recurring question ('What number is added or subtracted from one group to the next?') appears verbatim in every sample. Positive (seed43 +50, seed502 +20) and negative (seed45 -100, seed55 -20) shifts both confirmed present."
+    },
+    "mat_g3_na_q4_0": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "FAIL rests on comprehensive_coverage: none of the 18 samples contain 'jump' or 'number line'. Grepped all 18 question_text strings for both terms — zero hits, confirmed. The competency's core representational method (equal jumps on a number line, or division as inverse multiplication) is never illustrated even though bare division facts are drilled abundantly. Earned FAIL — this is a miss of the competency's defining verb, not just a content-range gap."
+    },
+    "mat_g3_na_q4_1": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "PASS. All four divisors (6,7,8,9) confirmed present across the sample set. Minor inaccuracy found (not vote-changing): scale_appropriateness rationale attributes the value 81 to 'seeds 501/502', but 81 only appears in seed501 (81÷9=9); seed502 is 27÷9. The substantive claim ('81 is the highest content value, matching the 6-9 ceiling') is still true when checked against dividends/divisors/quotients — does not change verdict or invalidate the review."
+    },
+    "mat_g3_na_q4_2": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "CONCERN. Verified the duplication claim exactly: seed42 and seed43 both produce the identical text '60 ÷ 6 = ___. What is the missing number?' with the identical option set {10,11,16,70}, only reordered. Real finding, not a template artifact. Division-side blank position (only ever the quotient, never dividend/divisor) is a legitimate but debatable severity call — defensible as CONCERN since multiplication items do vary blank position and the underlying division-fact skill is otherwise well covered."
+    },
+    "mat_g3_na_q4_3": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "FAIL, matches my independent re-judgment. Traced all 16 samples' divisors: 10 appears 9x, 100 once (seed600), 2/3/4/6/9 as 1-digit divisors; 1000 never appears. Only seed51 (30÷9) is a 2-digit÷1-digit case with an actual remainder, and even there correct_value=3 never surfaces the remainder itself. Two of the competency's three named sub-cases (remainder division; ÷1000) are essentially absent — earned FAIL."
+    },
+    "mat_g3_na_q4_4": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "CONCERN. Confirmed all 14/14 samples use formatter 'true_false' with no exception. This is a total formatter-diversity miss, but content coverage (digit ranges, dividend/divisor spans) is independently PASS, so this reads as a modality gap rather than a skill gap — CONCERN is a defensible severity call, not obviously too lenient."
+    },
+    "mat_g3_na_q4_5": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "FAIL. ADJUDICATED CLAIM: parsed all 13 word-problem stems by hand (dividends: 30,2,20,12,10,10,10,72,81,27,12,3,20). Max dividend = 81 (seed501: '₱81... among ___ friends'), and 0/13 reach 3 digits. The 'max dividend 81, 0 of 13 reach 3 digits' claim is TRUE, verified by direct quantity extraction from the word problems (not a regex artifact). FAIL is earned: the competency's '2- to 3-digit' range is half unmet, and all 13 samples reuse the identical peso-sharing template with no non-money variant."
+    },
+    "mat_g3_na_q4_6": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "PASS, matches my independent re-judgment. Fractions equal to one (seed43 8/8, seed72 6/6, seed55 shade-3/3) and greater than one (seed42 5/3, seed44 9/5, seed500 14/6) both confirmed present; set_click gives genuine interactive shading distinct from mcq/cloze/read_mcq."
+    },
+    "mat_g3_na_q4_7": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_miscalibrated": null,
+      "notes": "CONCERN. Counted formatters exactly: 11/14 samples (seeds 42,43,44,45,46,72,501,502,600,602,603) are bare mcq/cloze equations with no shape or shading reference; only seeds 50 (read_mcq, visual), 55 and 500 (set_click, interactive shading) reference a model. Matches the filed '11 of the 14... only seed 50, seed 55, and seed 500' exactly. CONCERN is defensible over FAIL since real model-based items do exist (unlike the 0%-representation FAIL cases elsewhere in this batch)."
+    }
+  },
+  "voided_nodes": [],
+  "batch_reliable": true,
+  "summary": "All 14 quantitative/coverage claims I re-counted from the packet checked out exactly as stated, including the adjudicated mat_g3_na_q4_5 claim (0 of 13 dividends reach 3 digits, max dividend 81 — confirmed true by manually parsing the word-problem quantities, since a naive regex on the peso-sharing stems would indeed miss them). No node fails the verbatim-quote check, the verdict-follows-rationale check, or the transplant test — every rationale cites node-specific seeds, numbers, and quoted question text that would not survive being pasted onto a sibling. Independent re-judgment on 4 pseudo-randomly chosen nodes (mat_g3_na_q2_2, mat_g3_na_q3_5, mat_g3_na_q4_3, mat_g3_na_q4_6) agreed with the filed verdict in all 4 cases (0% disagreement). On the calibration question, the 5 filed FAILs are all earned: each rests on a 0%-representation gap in a competency-relevant subskill explicitly named in the competency text (centavo sign never a correct answer, 2-step multiplication never occurs, number-line/inverse-multiplication framing never occurs, remainder division essentially absent, 3-digit dividends never occur) — none is a partial-gap case masquerading as a total miss. The 4 filed CONCERNs are also defensible rather than under-called: each describes a real but partial gap (minority-but-present 4-digit addends, one exact duplicate plus a blank-position skew, single-formatter monoculture with otherwise-solid content coverage, and minority-but-present model representation) rather than a 0% total miss that would warrant FAIL. One minor, non-substantive inaccuracy was found (mat_g3_na_q4_1 attributes the value 81 to 'seeds 501/502' when it only appears in seed501) but it does not change the verdict or the underlying true claim. Batch is reliable."
+}

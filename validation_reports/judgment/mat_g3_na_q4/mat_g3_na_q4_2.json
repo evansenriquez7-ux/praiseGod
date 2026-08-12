@@ -1,0 +1,446 @@
+{
+  "node_id": "mat_g3_na_q4_2",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    51,
+    68,
+    110,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "60 ÷ 6 = ___. What is the missing number?",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 70,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 16,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "60 ÷ 6 = ___. What is the missing number?",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 70,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "63 ÷ 9 = ___",
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 54,
+          "text": "54",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 567,
+          "text": "567",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "text": "7",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "cloze",
+      "question_text": "72 ÷ 8 = ___",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 576,
+          "text": "576",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 64,
+          "text": "64",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "18 ÷ 6 = ___. What is the missing number?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 21,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "read_mcq",
+      "question_text": "This array has 63 squares split into 7 equal rows. How many squares are in each row?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 51,
+      "formatter": "true_false",
+      "question_text": "7 × 6 = ___. What is the missing number? The answer is 42. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 68,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 54 squares into 9 equal rows. How many squares are in each row?",
+      "correct_answer": 6
+    },
+    {
+      "seed": 110,
+      "formatter": "error_detect",
+      "question_text": "Jose says: 49 ÷ 7 = 343. Is Jose correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 7
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 27 squares into 9 equal rows. How many squares are in each row?",
+      "correct_answer": 3
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "81 ÷ 9 = 9. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 56 ÷ 7?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 49,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 392,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "What is 40 ÷ 8?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 320,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "9 × ___ = 63. What is the missing number?",
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 70,
+          "text": "70",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 72,
+          "text": "72",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "text": "7",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 21 ÷ 7?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 147,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "72 ÷ 8 = ___. What is the missing number?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 81,
+          "text": "81",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "text": "17",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "8 × 5 = ___. What is the missing number?",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 40,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 48,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 41,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "true_false",
+      "question_text": "45 ÷ 9 = ___. What is the missing number? The answer is 4. True or False?",
+      "correct_answer": false
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Both operations get a missing-number treatment — seed 51's '7 × 6 = ___' for multiplication and seed 42's '60 ÷ 6 = ___' for division — matching 'a number sentence involving multiplication or division'."
+    },
+    "comprehensive_coverage": {
+      "verdict": "CONCERN",
+      "rationale": "Multiplication sentences hide either the factor (seed 601's '9 × ___ = 63') or the product (seed 604's '8 × 5 = ___'), but every division sentence hides only the quotient (seed 44's '63 ÷ 9 = ___', seed 602's 'What is 21 ÷ 7?'); the dividend and divisor positions are never the blank."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Values stay inside the 6-9 fact family (81 is the ceiling, in seeds 501/602), suiting Grade 3."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "CONCERN",
+      "rationale": "Seed 42 and seed 43 generate the exact same sentence, '60 ÷ 6 = ___', with the same four option values and only the option order changed — a duplication rather than a new variant."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty tracks which table is used and which slot is hidden, a lever proper to this competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Nothing in the set exceeds 81, matching the ceiling implied by the 6-9 tables named in the competency text."
+    }
+  },
+  "overall": "CONCERN"
+}

@@ -1,0 +1,410 @@
+{
+  "node_id": "mat_g3_na_q4_1",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    51,
+    55,
+    85,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is 48 ÷ 6?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 42,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 288,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 18 ÷ 6?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 108,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "72 ÷ 8 = ___",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 64,
+          "text": "64",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 576,
+          "text": "576",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "cloze",
+      "question_text": "63 ÷ 7 = ___",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 441,
+          "text": "441",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 56,
+          "text": "56",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What is 30 ÷ 6?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 180,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 24,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "read_mcq",
+      "question_text": "This array has 45 squares split into 9 equal rows. How many squares are in each row?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 28,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 51,
+      "formatter": "error_detect",
+      "question_text": "Ana says: 49 ÷ 7 = 42. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 7
+      }
+    },
+    {
+      "seed": 55,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 36 squares into 6 equal rows. How many squares are in each row?",
+      "correct_answer": 6
+    },
+    {
+      "seed": 85,
+      "formatter": "true_false",
+      "question_text": "28 ÷ 7 = 4. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 72 squares into 9 equal rows. How many squares are in each row?",
+      "correct_answer": 8
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "81 ÷ 9 = 9. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 27 ÷ 9?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 243,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "What is 56 ÷ 7?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 49,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 392,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Pia has ₱28 and wants to share it equally among 7 friends. How much does each friend get?",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 196,
+          "text": "196",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "text": "4",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 64 ÷ 8?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 56,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 512,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "14 ÷ 7 = ___",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 98,
+          "text": "98",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "48÷6 (seed 42), 72÷8 (seed 44), 63÷7 (seed 45), and 27÷9 (seed 502) are drawn straight from the four named tables, matching 'Divide numbers using the 6, 7, 8, and 9 multiplication tables'."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All four divisors the competency names show up: 6 in seeds 42/43/46, 7 in seeds 45/51/600/601/603, 8 in seeds 44/602, and 9 in seeds 50/500/501/502, so no table is left untested."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Quotients never exceed 9 and dividends never exceed 72 (seed 44), keeping this at fact-recall level appropriate to Grade 3 Quarter 4."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Six formatters appear — mcq, cloze, read_mcq's array model, error_detect, set_fill_in_blank's shading, and true_false — plus a money framing in seed 601's ₱28 split among 7 friends."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Which table is being tested and which formatter is used are the two levers for difficulty, both proper to this node."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "81 (9×9, seeds 501/502) is the highest value anywhere, exactly the natural ceiling of the 6-9 tables the competency names."
+    }
+  },
+  "overall": "PASS"
+}
