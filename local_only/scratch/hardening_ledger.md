@@ -1290,10 +1290,14 @@ this same cluster**, which is the argument for re-reviewing rather than assuming
 Verified: array items 38 / unlabelled stems **0**; tiling surfaces 171 / cm gardens **0**;
 matrix 151/151, 0 failures; stages 1–5 green. Commits `2d7ea6a`, `68c5f2f`.
 
-**Revised census after all four fresh reviews: PASS=56 CONCERN=62 FAIL=33.**
-`mat_g3_mg_q1_3` FAIL → CONCERN and `mat_g3_mg_q1_2` CONCERN, both on fresh packets.
+**Measured census after all four fresh reviews: PASS=56 CONCERN=61 FAIL=34.**
+(An earlier draft of this entry stated 56/62/33 and NON-VERDICT=8 — those were written before
+the measurement and were wrong. The figures here are the ones `validate_judgment` actually
+returned. Do not trust a number in this ledger that is not accompanied by the command that
+produced it.)
 
-**NON-VERDICT is 8** (the last two fixes restaled the four reviews again). Same handoff as above,
+**NON-VERDICT is 4**, not 0 — `mat_g3_mg_q1_0` 2, `mat_g3_mg_q1_1` 1, `mat_g3_mg_q1_3` 1
+(the last two fixes restaled those reviews again). Same handoff as above,
 unchanged: **rebuild packets and re-review all four blind before any new content work.** This is
 now the third consecutive tick where a content fix outran its reviews — the lesson is recorded
 above and is worth acting on rather than repeating: for a four-node cluster, plan the fix and its
