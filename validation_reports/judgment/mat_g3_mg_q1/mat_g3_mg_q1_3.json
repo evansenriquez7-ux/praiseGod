@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_mg_q1_3",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "claude-opus-5 blind reviewer, area cluster re-review on fresh packet, 2026-08-13",
+  "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
     42,
@@ -10,7 +10,6 @@
     45,
     46,
     50,
-    55,
     500,
     501,
     502,
@@ -18,34 +17,33 @@
     601,
     602,
     603,
-    604,
-    605
+    604
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Daniel wants to cover a rectangular garden that is 25 cm long and 10 cm wide with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 250,
+      "question_text": "Daniel wants to cover a rectangular garden that is 5 m long and 4 m wide with square tiles. How many tiles are needed to cover it completely?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 35,
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 50,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 250,
+          "value": 20,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 70,
+          "value": 18,
           "is_correct": false
         }
       ]
@@ -53,27 +51,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Kuya Bien wants to cover a rectangular garden that is 4 m long and 9 m wide with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 36,
+      "question_text": "Kuya Bien wants to cover a square garden measuring 16 cm on each side with square tiles. How many tiles are needed to cover it completely?",
+      "correct_answer": 256,
       "options": [
         {
           "key": "A",
-          "value": 36,
+          "value": 256,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 26,
+          "value": 64,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 8,
+          "value": 257,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 13,
+          "value": 32,
           "is_correct": false
         }
       ]
@@ -81,27 +79,27 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Lara wants to cover a square garden measuring 7 cm on each side with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 49,
+      "question_text": "A rectangle has an area of 126 sq cm and a width of 9 cm. What is its length?",
+      "correct_answer": 14,
       "options": [
         {
           "key": "A",
-          "value": 28,
+          "value": 46,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 14,
+          "value": 23,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 50,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 49,
+          "value": 14,
           "is_correct": true
         }
       ]
@@ -109,27 +107,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Coach Roel wants to cover a square garden measuring 9 m on each side with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 81,
+      "question_text": "A rectangle has an area of 18 sq m and a width of 3 m. What is its length?",
+      "correct_answer": 6,
       "options": [
         {
           "key": "A",
-          "value": 82,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 18,
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 81,
+          "value": 6,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 36,
+          "value": 18,
           "is_correct": false
         }
       ]
@@ -137,27 +135,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Ate Cara wants to cover a rectangular garden that is 2 m long and 11 m wide with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 22,
+      "question_text": "Ate Cara wants to cover a square garden measuring 20 cm on each side with square tiles. How many tiles are needed to cover it completely?",
+      "correct_answer": 400,
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": 401,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 22,
+          "value": 400,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 26,
+          "value": 80,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 13,
+          "value": 40,
           "is_correct": false
         }
       ]
@@ -165,8 +163,8 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "Mia wants to cover a square garden measuring 7 m on each side with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 49,
+      "question_text": "A rectangle has an area of 45 sq m and a width of 9 m. What is its length?",
+      "correct_answer": 5,
       "options": [
         {
           "key": "A",
@@ -176,14 +174,14 @@
         },
         {
           "key": "B",
-          "value": 49,
-          "text": "49",
+          "value": 5,
+          "text": "5",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 50,
-          "text": "50",
+          "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
@@ -195,89 +193,61 @@
       ]
     },
     {
-      "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "Look at the 6×25 array. How many squares are shaded in all?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 149,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 62,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 150,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 151,
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "Look at the 9×10 array. How many squares are shaded in all?",
-      "correct_answer": "A",
+      "formatter": "cloze",
+      "question_text": "A rectangle has an area of 112 sq m and a length of 14 m. What is its width?",
+      "correct_answer": 8,
       "options": [
         {
           "key": "A",
-          "value": 90,
+          "value": 8,
+          "text": "8",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 87,
+          "value": 44,
+          "text": "44",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 38,
+          "value": 22,
+          "text": "22",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 92,
+          "value": 9,
+          "text": "9",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Lola Ising wants to cover a square garden measuring 9 m on each side with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 81,
+      "formatter": "mcq",
+      "question_text": "A rectangle has an area of 924 sq cm and a width of 22 cm. What is its length?",
+      "correct_answer": 42,
       "options": [
         {
           "key": "A",
-          "value": 81,
-          "text": "81",
+          "value": 42,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 82,
-          "text": "82",
+          "value": 43,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 36,
-          "text": "36",
+          "value": 128,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 18,
-          "text": "18",
+          "value": 64,
           "is_correct": false
         }
       ]
@@ -285,27 +255,27 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Kuya Pat wants to cover a square garden measuring 42 cm on each side with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 1764,
+      "question_text": "A rectangle has an area of 105 sq m and a length of 7 m. What is its width?",
+      "correct_answer": 15,
       "options": [
         {
           "key": "A",
-          "value": 84,
+          "value": 22,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 1764,
+          "value": 15,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 1765,
+          "value": 16,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 168,
+          "value": 44,
           "is_correct": false
         }
       ]
@@ -313,27 +283,27 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Jomar wants to cover a square garden measuring 9 m on each side with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 81,
+      "question_text": "A rectangle has an area of 44 sq m and a length of 4 m. What is its width?",
+      "correct_answer": 11,
       "options": [
         {
           "key": "A",
-          "value": 18,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 36,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 81,
+          "value": 11,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 82,
+          "value": 12,
           "is_correct": false
         }
       ]
@@ -341,31 +311,31 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Pia wants to cover a rectangular garden that is 23 cm long and 20 cm wide with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 460,
+      "question_text": "Pia wants to cover a rectangular garden that is 5 cm long and 16 cm wide with square tiles. How many tiles are needed to cover it completely?",
+      "correct_answer": 80,
       "options": [
         {
           "key": "A",
-          "value": 86,
-          "text": "86",
+          "value": 42,
+          "text": "42",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 43,
-          "text": "43",
+          "value": 21,
+          "text": "21",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 46,
-          "text": "46",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 460,
-          "text": "460",
+          "value": 80,
+          "text": "80",
           "is_correct": true
         }
       ]
@@ -373,27 +343,27 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Janna wants to cover a square garden measuring 4 m on each side with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 16,
+      "question_text": "A rectangle has an area of 216 sq cm and a width of 18 cm. What is its length?",
+      "correct_answer": 12,
       "options": [
         {
           "key": "A",
-          "value": 16,
+          "value": 12,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 15,
+          "value": 13,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 8,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 17,
+          "value": 60,
           "is_correct": false
         }
       ]
@@ -401,27 +371,27 @@
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "Yna wants to cover a rectangular garden that is 6 cm long and 4 cm wide with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 24,
+      "question_text": "Yna wants to cover a square garden measuring 16 cm on each side with square tiles. How many tiles are needed to cover it completely?",
+      "correct_answer": 256,
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 257,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 24,
+          "value": 256,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 10,
+          "value": 32,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 20,
+          "value": 64,
           "is_correct": false
         }
       ]
@@ -429,59 +399,27 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Kris wants to cover a rectangular garden that is 14 cm long and 26 cm wide with square tiles. How many tiles are needed to cover it completely?",
-      "correct_answer": 364,
+      "question_text": "Kris wants to cover a rectangular garden that is 8 m long and 7 m wide with square tiles. How many tiles are needed to cover it completely?",
+      "correct_answer": 56,
       "options": [
         {
           "key": "A",
-          "value": 364,
+          "value": 56,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 80,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 40,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 28,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
-      "formatter": "cloze",
-      "question_text": "A rectangle has an area of 90 sq m and a length of 10 m. What is its width?",
-      "correct_answer": 9,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "text": "9",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 19,
-          "text": "19",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 38,
-          "text": "38",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "text": "10",
+          "value": 16,
           "is_correct": false
         }
       ]
@@ -490,28 +428,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Fourteen of sixteen samples are named-person garden word problems (e.g. seed 42's 'Daniel wants to cover a rectangular garden that is 25 cm long and 10 cm wide with square tiles. How many tiles are needed to cover it completely?'), which is a direct match for 'Solve problems involving areas of squares and rectangles.'"
+      "rationale": "Every item turns on the area relation the competency names. Seed 42 gives a garden '5 m long and 4 m wide' and asks 'How many tiles are needed to cover it completely?', answer 20 = 5x4; seed 44 runs the same relation backwards with 'A rectangle has an area of 126 sq cm and a width of 9 cm. What is its length?'; and the square rule appears on its own in seed 46, 'a square garden measuring 20 cm on each side', answer 400. Areas are consistently labelled in square units ('sq m', 'sq cm'), so the quantity being solved for is genuinely area or a side recovered from area."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both squares and rectangles appear in cm and m, and an inverse-dimension problem is included (seed 605: 'A rectangle has an area of 90 sq m and a length of 10 m. What is its width?')."
+      "rationale": "Both shapes the competency names are present and both directions of the area relation are exercised. Squares: seed 603 'Yna wants to cover a square garden measuring 16 cm on each side with square tiles'. Rectangles forward: seed 604 'a rectangular garden that is 8 m long and 7 m wide'. Missing side is asked in both roles - length in seed 45 'A rectangle has an area of 18 sq m and a width of 3 m. What is its length?' and width in seed 500 'A rectangle has an area of 112 sq m and a length of 14 m. What is its width?'. The only untouched sub-case, recovering a square's side from its area, would require a square root and is not named by this competency's wording."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Numeric scale progresses reasonably from small gardens (16 sq m, seed 602) to larger ones (1764 sq cm, seed 502), fitting Grade 3 Quarter 1 work."
+      "verdict": "CONCERN",
+      "rationale": "The tiling stories never state how big a tile is. Seed 42 asks a pupil to 'cover a rectangular garden that is 5 m long and 4 m wide with square tiles' and scores 20 as correct, which only follows if each tile is 1 m on a side - a fact the problem withholds, so a careful Grade 3 reader cannot get there from the text. The contexts also strain belief at the small end: seed 43's 'square garden measuring 16 cm on each side' is a garden the size of a postcard being covered with 256 tiles. Separately, the missing-side items such as seed 602, 'A rectangle has an area of 216 sq cm and a width of 18 cm', ask for a division whose divisor has two digits, a demand well past the arithmetic a Grade 3 Quarter 1 pupil has in hand, and they arrive with no story or diagram to lean on."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Named contexts, varied dimensions, and the inverse-width problem give this node good variant range beyond a single fixed scenario."
+      "verdict": "CONCERN",
+      "rationale": "Fourteen samples reduce to three sentence frames. Eight of them are the same bare sentence opening 'A rectangle has an area of' with only the numbers and the words length/width swapped (seeds 44, 45, 50, 500, 501, 502, 600, 602). All six word problems are the identical garden-and-tiles story - 'with square tiles. How many tiles are needed to cover it completely?' - with only the character's name changed across Daniel, Kuya Bien, Ate Cara, Pia, Yna and Kris; no other area setting (floor, cartolina, wall, tabletop) ever appears. Worse, seeds 43 and 603 are the same problem twice: both read 'a square garden measuring 16 cm on each side with square tiles' with answer 256, differing only in the name."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Seeds 55 and 500 ('Look at the 6×25 array. How many squares are shaded in all?') are visual array-counting items identical to the sibling area-in-units node's samples, not word problems, so two of sixteen samples don't actually match this competency's own 'Solve problems' wording."
+      "verdict": "PASS",
+      "rationale": "Nothing drifts to a neighbouring competency. No sample asks for perimeter, for a missing side from a boundary length, or for volume; every stem is either a covering count driven by length times width, as in seed 601 'a rectangular garden that is 5 cm long and 16 cm wide', or an explicit area statement such as seed 502 'A rectangle has an area of 105 sq m and a length of 7 m. What is its width?'. The inverse items still sit inside area rather than becoming bare division drill, because the given quantity is stated in square units."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest area computed, 1764 sq cm (seed 502), stays within a reasonable Grade 3 problem-solving range."
+      "verdict": "FAIL",
+      "rationale": "Several magnitudes sit outside Grade 3 Quarter 1. Seed 501, 'A rectangle has an area of 924 sq cm and a width of 22 cm', requires 924 divided by 22 - a four-digit-ish dividend with a two-digit divisor, an operation introduced years later; seed 602's '216 sq cm and a width of 18 cm' has the same shape. On the forward side, seed 43's '16 cm on each side' needs 16x16 = 256 and seed 46's '20 cm on each side' needs 20x20 = 400, both beyond the basic multiplication facts a Grade 3 Quarter 1 pupil works with, and seed 601's '5 cm long and 16 cm wide' needs 5x16 = 80. Only the small items (seed 45's '18 sq m and a width of 3 m', seed 604's '8 m long and 7 m wide') land in range."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

@@ -1066,3 +1066,77 @@ Also live, from `tests/pgen_probes/collapse_probe.py`: **23 unclamped collapsed 
 across the six fixtures — `mat_g2_na_q3_1`'s `table` key (5 declared values → 1 rendering) and
 `mat_g3_mg_q2_3`'s `unit` key (4 → 1) are the two largest, and both are unclamped, so unlike the
 clamped collapses they are genuine candidates.
+
+---
+
+## 2026-08-13 — Tick C (the g3_mg_q1 area cluster — queue item 1)
+
+- **Census before:** PASS=57 CONCERN=61 FAIL=33 (gate: non-verdict=0, skeleton cluster=1, quotes=0)
+  `run_all` EXIT_CODE=1, red only at 6/7 and 7/7. Tick 0 / A / B correctly did not fire.
+- **Unit(s) of work:** declared the six `mat_g3_mg_q1_*` nodes from a blind Declarer, then fixed
+  the area cluster's sibling duplication at its root and re-reviewed all four nodes blind.
+- **Root cause:** `_parse_competency_bounds` bound `task_type` for only two of the `area` DNA's
+  four nodes. `mat_g3_mg_q1_2` and `mat_g3_mg_q1_3` fell through to `area.py`'s own
+  `profile.get("task_type", "find_area")` default, leaving them differing **only by `context`** —
+  which any context-blind formatter ignores. Defect shape #1.
+- **Machinery built:** none new. Changed: registry bindings for two nodes (one via a per-seed
+  string sentinel, resolved in the DNA); `grid_area` re-routed from `find_area` to
+  `illustrate_tiles`; `find_missing_dimension` restricted to rectangles; two silent defaults
+  deleted in favour of named raises; one duplicate registry key removed; new AST guard at
+  `tests/pgen_probes/duplicate_registry_keys.py`.
+- **Files touched:** `registry.py`, `compatibility.py`, `adapter.py`, `dna/mg/area.py`,
+  `generators/base_generator.py`, `data/skeletons/vocab_annotation.json`,
+  `data/knowledge_graph_g1_3.json`, `tests/pgen_probes/duplicate_registry_keys.py`,
+  `validation_reports/HARDENING_EVIDENCE.md`, four review JSONs.
+- **Verification:**
+  - sibling duplication, all six pairs × 200 seeds → `0 identical of 200` on every pair
+  - `validate_matrix --node` × 4 → PASS, PASS, PASS, PASS
+  - stray `?` placeholders across 400 seeds of `mat_g3_mg_q1_3` → `0`
+  - `run_all` → `Nodes Checked: 151 / Passed: 151 / Failed: 0 / Total Failures Observed: 0`,
+    all ten contract checks executing, 67 PASS stage lines, `EXIT_CODE=1` red only at 6/7 and 7/7
+  - gate → `NON-VERDICT errors: 0`
+- **Census after:** PASS=56 CONCERN=61 FAIL=34. **The count got worse, and that is the system
+  working**: `mat_g3_mg_q1_0` moved PASS→CONCERN under a fresh reviewer that had never seen the
+  old verdict, and `mat_g3_mg_q1_3` stayed FAIL but for an entirely different reason.
+  Capability: undeclared 145→139, gaps 18→59 (the six new declarations, none of them mapped).
+- **Commit(s):** `618bea7` fix(pgen): bind task_type for all four area nodes
+
+### What the blind re-review actually bought
+
+The first pass of reviewers worked from packets built *before* the last generator fix. The gate
+caught it precisely — **only `mat_g3_mg_q1_3` was stale**, on exactly the five seeds the fix
+changed — and rejected nothing else. My own ad-hoc staleness check had flagged all four nodes;
+it was wrong, because `judgment_packets` renders seeds ≥500 under forced difficulty profiles
+that a plain `run(...)` does not reproduce. **Trust the gate's freshness check, not a hand-rolled
+re-render.**
+
+`mat_g3_mg_q1_3` was then re-reviewed on a fresh packet by a reviewer that never saw the old
+review. It is still FAIL — but the old FAIL was the `?` placeholder (now fixed and gone from the
+rationale), and the new FAIL is `scale_appropriateness`: seed 501 needs 924 ÷ 22 and seed 602
+needs 216 ÷ 18, two-digit divisors past Grade 3 Q1.
+
+### Next tick should:
+
+**Grade-3 magnitude control is now the single highest-value cluster, and three independent blind
+reviewers converged on it without conferring.** Every one of the four area nodes was marked down
+for scale:
+- `q1_0` — seed 501's `12 rows and 12 columns` = 144, a two-digit × two-digit product
+- `q1_1` — same 12×12
+- `q1_2` — seed 502's 42×42 = 1764, seed 604's 14×26
+- `q1_3` — 924 ÷ 22, 216 ÷ 18, 16×16, 20×20
+
+These come from `_PARAM_BOUNDS["g3"]` in `dna/mg/area.py` (`side_cm_max`, `side_m_max`,
+`side_cm_max_tiling`), which the max-difficulty seeds (≥500) drive to their ceiling. One bounds
+fix plausibly clears findings on all four nodes at once — the same shape as this tick's fix, one
+level up. Check the G3 Q1 multiplication table range in the knowledge graph before choosing the
+new ceiling; do not guess it.
+
+Second, smaller and also convergent: **the garden word problems never state the tile size**, so
+`q1_0` seed 601 and `q1_3` seed 42 only key correctly if a tile is silently 1 unit square. Two
+reviewers flagged it independently. And `q1_3` seeds 43/603 are the identical 16 cm square item.
+
+Still open and untouched, both confirmed by blind declaration: `equal_jumps_on_a_number_line`
+(`mat_g2_na_q3_1` + `mat_g3_na_q4_0`) and `draw_line_relationships` (`mat_g3_mg_q1_5`), plus
+`mat_g3_mg_q1_1`'s real competency gap — "Explore **inductively** the derivation" is still served
+by stems that hand the rule over (`Using the formula rows × columns, ...`), which no binding can
+fix and which needs a genuine multi-case inductive item. That is a Tick F.

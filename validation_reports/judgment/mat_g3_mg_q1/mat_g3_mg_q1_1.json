@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_mg_q1_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Claude Opus 5 blind reviewer, area cluster re-review after task_type binding fix, 2026-08-13",
+  "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
     42,
@@ -461,27 +461,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency asks students to 'explore inductively the derivation' of the area formula, but every sample states the formula outright (seed 42: 'Using the formula rows × columns, what is the total number of tiles?') and asks only for its application, never for discovering that rows × columns matches a tile count."
+      "rationale": "The competency asks pupils to explore the derivation inductively, but the rule is handed to them in the stem of every item: seed 42 says 'Using the formula rows × columns, what is the total number of tiles?' and seed 45 says 'Applying the rows × columns formula, how many unit tiles cover it in all?'. That is deductive application of a supplied formula. No sample sets two tilings side by side for comparison, and none asks which expression gives the total, so the inductive step is taken for the learner rather than by the learner."
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "No sample shows the inductive step — comparing a counted tile total to the rows×columns product to notice they match — which is what this competency's own phrase 'Explore inductively the derivation of the formulas' implies; the formula is simply handed to the student up front in every item."
+      "rationale": "The competency names formulas in the plural, one for a square and one for a rectangle, yet the square items use exactly the rectangle rule: seed 44 reads 'A square is arranged in 6 rows and 6 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?', identical in rule to seed 606 with 'A rectangle is arranged in 7 rows and 8 columns of unit square tiles.'. Nothing in the fifteen samples surfaces side times side as a special case, and the words long and wide appear only in seed 601 as '7 cm long and 6 cm wide', never attached to a formula."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Grid sizes (up to 12×12 in seed 501) remain appropriate for Grade 3 Quarter 1 multiplication practice."
+      "verdict": "CONCERN",
+      "rationale": "Seed 601 asks 'Pia wants to cover a rectangular garden that is 7 cm long and 6 cm wide with square tiles. How many tiles are needed to cover it completely?' without ever stating the tile size, so the keyed 42 rests on an unstated 1 cm tile, and a 7 cm by 6 cm garden is not a picturable Grade 3 situation. The remaining stems, for instance seed 604 with 'Tiling a rectangle takes 3 rows and 5 columns.', are pitched correctly for the grade and quarter."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Phrasing does vary ('A rectangle is arranged in...', 'Tiling a square takes...'), giving some surface-level variety even though the underlying task stays formula-application throughout."
+      "verdict": "CONCERN",
+      "rationale": "Ten of the fifteen samples (seeds 42, 43, 44, 46, 50, 500, 501, 502, 605 and 606) are the one sentence seen at seed 43, 'A rectangle is arranged in 4 rows and 7 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?', with only the two numbers and the shape word changed, and four more (seeds 45, 602, 603 and 604) are its close paraphrase, seed 602 reading 'Tiling a rectangle takes 5 rows and 3 columns. Applying the rows × columns formula, how many unit tiles cover it in all?'. Seeds 50 and 502 are word-for-word identical, both 'A square is arranged in 4 rows and 4 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?' with the same options 8, 16, 15 and 17. Every item asks for the same product; the task never varies."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "This node reuses the identical row/column values as the sibling node mat_g3_mg_q1_0 for the same seeds (e.g. seed 42's 2 rows by 7 columns appears in both), so it adds a formula label to the same scenarios rather than testing the derivation process distinctly."
+      "rationale": "Seed 601, 'Pia wants to cover a rectangular garden that is 7 cm long and 6 cm wide with square tiles. How many tiles are needed to cover it completely?', contains no formula language at all and is a plain count-the-tiles task, which belongs to the estimate-area-by-tiling competency rather than to deriving the area formulas. The other fourteen at least invoke the rule explicitly, as seed 605 does with 'A rectangle is arranged in 6 rows and 5 columns of unit square tiles. Using the formula rows × columns, what is the total number of tiles?'."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Numeric values (max 144, seed 501) stay within reasonable Grade 3 multiplication range."
+      "verdict": "CONCERN",
+      "rationale": "Seed 501 with 'A square is arranged in 12 rows and 12 columns of unit square tiles.' requires 144, a two-digit by two-digit product beyond the Grade 3 Quarter 1 multiplication range, and its distractor 145 confirms the item is scored on computing rather than counting. Seed 500 with '10 rows and 10 columns' sits right at the ceiling with 100, while the bulk, such as seed 46 giving 10 and seed 604 giving 15, are correctly sized."
     }
   },
   "overall": "CONCERN"

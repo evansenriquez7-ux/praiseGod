@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_mg_q1_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Claude Opus 5 blind reviewer, area cluster re-review after task_type binding fix, 2026-08-13",
+  "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
     42,
@@ -10,6 +10,7 @@
     45,
     46,
     50,
+    55,
     500,
     501,
     502,
@@ -194,61 +195,89 @@
       ]
     },
     {
-      "seed": 500,
-      "formatter": "cloze",
-      "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 10 rows and 10 columns. Estimate how many unit tiles cover the square in all.",
-      "correct_answer": 100,
+      "seed": 55,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 3×7 array. How many squares are shaded in all?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 100,
-          "text": "100",
-          "is_correct": true
+          "value": 20,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 40,
-          "text": "40",
+          "value": 14,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 20,
-          "text": "20",
+          "value": 21,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 22,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 9×10 array. How many squares are shaded in all?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 90,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 87,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 38,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 101,
-          "text": "101",
+          "value": 92,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 501,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "A square is covered edge-to-edge with unit square tiles, arranged in 12 rows and 12 columns. Estimate how many unit tiles cover the square in all.",
       "correct_answer": 144,
       "options": [
         {
           "key": "A",
           "value": 144,
+          "text": "144",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 145,
+          "text": "145",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 48,
+          "text": "48",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 24,
+          "text": "24",
           "is_correct": false
         }
       ]
@@ -399,32 +428,28 @@
     },
     {
       "seed": 605,
-      "formatter": "cloze",
-      "question_text": "A rectangle is covered edge-to-edge with unit square tiles, arranged in 6 rows and 5 columns. Estimate how many unit tiles cover the rectangle in all.",
-      "correct_answer": 30,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 6×5 array. How many squares are shaded in all?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 30,
-          "text": "30",
-          "is_correct": true
+          "value": 28,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 11,
-          "text": "11",
+          "value": 33,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 22,
-          "text": "22",
-          "is_correct": false
+          "value": 30,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 12,
-          "text": "12",
+          "value": 22,
           "is_correct": false
         }
       ]
@@ -461,28 +486,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Samples consistently describe a grid of unit tiles and ask for the total, e.g. seed 42's 'A rectangle is covered edge-to-edge with unit square tiles, arranged in 2 rows and 7 columns. Estimate how many unit tiles cover the rectangle in all.', which matches this competency's own 'estimate the area of a square or rectangle using square tile units' wording directly."
+      "rationale": "Seed 42 fixes the tiling as 'arranged in 2 rows and 7 columns' and then asks 'Estimate how many unit tiles cover the rectangle in all.', so the requested quantity is literally a count of square tile units, which is what the competency means by estimating area in square tile units. Seed 55 supplies the illustrated form of the same question, 'Look at the 3×7 array. How many squares are shaded in all?', so both the illustrate and the estimate verbs are exercised."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both squares (seed 44, 6×6) and rectangles (seed 42, 2×7) are covered, and a garden word-problem variant (seed 601) is included."
+      "rationale": "Both named shapes appear with structurally different dimensions: seed 44 gives 'A square is covered edge-to-edge with unit square tiles, arranged in 6 rows and 6 columns.' with equal side counts, while seed 606 gives 'A rectangle is covered edge-to-edge with unit square tiles, arranged in 7 rows and 8 columns.' with unequal ones. Seed 605 covers the illustrate half with 'Look at the 6×5 array. How many squares are shaded in all?' rather than leaving every array purely verbal."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Grid sizes stay in the single-to-low-double-digit range for rows and columns (up to 12×12 in seed 501), suitable for a Grade 3 Quarter 1 introductory tiling activity."
+      "verdict": "CONCERN",
+      "rationale": "Seed 601 reads 'Pia wants to cover a rectangular garden that is 7 cm long and 6 cm wide with square tiles. How many tiles are needed to cover it completely?' — it switches from tile units to linear centimetres but never states how big a tile is, so the keyed answer 42 follows only if the pupil silently assumes a 1 cm tile, and a garden measuring 7 cm by 6 cm is not a situation a Grade 3 pupil can picture. The rows-and-columns items, for instance seed 603 with 'You are laying unit square tiles over a square, fitting 3 rows and 3 columns exactly.', carry no such gap."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Phrasing varies across samples ('is covered edge-to-edge', 'You are laying unit square tiles over...', the garden word problem), avoiding a single rigid template."
+      "rationale": "Four genuinely different stems appear rather than one frame renumbered: seed 46 with 'A rectangle is covered edge-to-edge with unit square tiles, arranged in 5 rows and 2 columns.', seed 602 in second person with 'You are laying unit square tiles over a rectangle, fitting 5 rows and 3 columns exactly. About how many tiles in total will you use?', seed 500 reading an array with 'Look at the 9×10 array.', and seed 601 in story form with 'Pia wants to cover a rectangular garden'. The one redundancy is that seeds 50 and 502 both carry the identical sentence 'A square is covered edge-to-edge with unit square tiles, arranged in 4 rows and 4 columns.' with the same four options 8, 16, 15 and 17, differing only in formatter."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample's answer is the tile count from a described grid, directly testing the tile-based estimation skill rather than an unrelated axis."
+      "rationale": "No sample drifts into a stated area rule or into perimeter. Seed 602 fixes '5 rows and 3 columns' and then asks only 'About how many tiles in total will you use?', and seed 45 likewise leaves the row-column product to the pupil after 'You are laying unit square tiles over a square, fitting 5 rows and 5 columns exactly.'. The word formula appears in none of the sixteen stems, which keeps the set on estimating with tiles rather than on deriving an area formula."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest grid found, 12 rows by 12 columns (seed 501, 144 tiles), remains a countable tile array appropriate for this introductory competency."
+      "verdict": "CONCERN",
+      "rationale": "Most magnitudes sit in range: seed 46 with 'arranged in 5 rows and 2 columns' gives 10, seed 42 gives 14, and seed 500 with 'Look at the 9×10 array.' gives 90 at the top of the tables. Seed 501, however, sets 'arranged in 12 rows and 12 columns' and demands 144, a two-digit by two-digit product past the Grade 3 Quarter 1 table range, and its near-miss distractor 145 shows the item expects computation rather than a count of 144 tiles."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }
