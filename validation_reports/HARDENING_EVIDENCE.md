@@ -2170,3 +2170,78 @@ Its competency names arrays, counting by multiples, and equal jumps on a number 
 none of the three in any sample, and no pictorial or concrete model at all. The DNA already declares
 `array_grid_read` / `array_grid_set` among its compatible formatters, so the next step is to find why
 they are never selected for this node rather than to author new content.
+
+---
+
+## 2026-08-12 — Tick C cluster 1d: array formatters unreachable on the node that names arrays
+
+**Nodes:** `mat_g2_na_q3_1` (target), `mat_g2_na_q3_0` (co-affected).
+
+### The failing rationale
+
+> `mat_g2_na_q3_1` [FAIL] comprehensive_coverage — "None of the competency's named representations —
+> 'arrays', 'counting by multiples', or 'equal jumps on a number line' — appear anywhere in the eleven
+> samples"; [FAIL] competency_fulfillment — "every sample is a bare text equation ...; no pictorial or
+> concrete model is shown."
+
+### Root cause
+
+`compatibility.py` gated both array formatters to one task type:
+
+```python
+# array grid naturally shows product, not missing factor
+"array_grid_read": {"task_type": ["find_product"], "context": ["pure"]},
+"array_grid_set":  {"task_type": ["find_product"], "context": ["pure"]},
+```
+
+`mat_g2_na_q3_1` binds `task_type="repeated_addition"`, so **the array formatters were structurally
+unreachable on the one node whose competency names arrays outright.** All 11 sampled seeds served
+`mcq`. The comment's stated concern — "shows product, not missing factor" — is about `structure`,
+which the sibling `"structure": ["result_unknown"]` entry already constrains; the `task_type`
+restriction was doing something different and unintended.
+
+### Fix, in two parts
+
+1. Widened the gate to `["find_product", "repeated_addition", "equal_groups"]`. An array is the
+   pictorial model those competencies are about.
+2. **That alone made things worse, and the blind re-review caught it.** With arrays reachable, both
+   sibling nodes rendered the *same* array stems — `Shade all the squares inside the 3×2 rectangle` —
+   because the array formatter's text never named which sub-skill it was illustrating. Duplication went
+   from 0 to 6 of 15 shared samples and `mat_g2_na_q3_0` regressed **CONCERN → FAIL**. So
+   `fmt_array_grid.py` now frames the array by task type:
+   - `equal_groups` → `Look at the array. It shows 3 groups of 3.` / `Shade 3 groups of 2 squares.`
+   - `repeated_addition` → `Look at the 3×3 array. It shows 3 + 3 + 3.` /
+     `Shade 4 rows of 2 squares to show 2 + 2 + 2 + 2.`
+   `_repeated_sum` writes the terms out up to five and states the repetition beyond that
+   ("10 added 7 times"), since grade-2 arrays reach 10 rows.
+
+### Before / after
+
+```
+                                        BEFORE        AFTER widening   AFTER framing
+q3_1 formatters served (11-15 seeds)    mcq only      3 non-mcq        3 non-mcq
+q3_1 samples naming "array"             0             1                1
+q3_0 vs q3_1 identical stems            0 of 11       6 of 15          1 of 15
+q3_0 overall verdict                    CONCERN       FAIL             CONCERN
+
+validate_matrix --node  q3_0, q3_1, q3_2, q3_4, mat_g3_na_q3_1   Total Failures Observed: 0 each
+run_all   EXIT_CODE=1   matrix 151/151, 0 failures, 0 non-judgment FAIL lines
+          judgment problems 285 -> 281
+```
+
+### Fresh blind re-review — and an honest non-result
+
+```
+mat_g2_na_q3_0:  CONCERN -> CONCERN   (regressed to FAIL mid-tick, recovered)
+mat_g2_na_q3_1:  FAIL    -> FAIL
+```
+
+**This tick did not move the FAIL count.** It made arrays reachable, removed the sibling duplication,
+and gave each node its own framing — but `mat_g2_na_q3_1` still fails `comprehensive_coverage` because
+two of its competency's six named representations, **"counting by multiples"** and **"equal jumps on a
+number line"**, appear in 0 of 15 samples. Neither exists anywhere in this DNA or its formatters, so
+they are new content to author, not a binding to repair. That is the honest remaining gap and it is
+larger than one tick.
+
+Also still open on `mat_g2_na_q3_0`: the competency names two phrasings and only "groups of" is
+generated (14/15); the "5 threes" plural-number-word form is 0/15.

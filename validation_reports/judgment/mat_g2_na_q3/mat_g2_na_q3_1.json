@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_na_q3_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch C6 (post-fix re-review, g2 repeated addition pair), 2026-08-12",
   "review_date": "2026-08-12",
   "blind": true,
   "sample_seeds": [
@@ -9,12 +9,16 @@
     44,
     45,
     46,
+    50,
+    55,
     500,
     501,
     502,
     601,
     603,
-    606
+    605,
+    606,
+    607
   ],
   "samples_reviewed": [
     {
@@ -158,32 +162,44 @@
       ]
     },
     {
-      "seed": 500,
-      "formatter": "mcq",
-      "question_text": "What is 7 × 10?",
-      "correct_answer": 70,
+      "seed": 50,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 3×3 array. It shows 3 + 3 + 3. How many squares are shaded in all?",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 70,
+          "value": 9,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 60,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 17,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 69,
+          "value": 7,
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 55,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 3 rows of 2 squares to show 2 + 2 + 2. How many squares did you shade in all?",
+      "correct_answer": 6
+    },
+    {
+      "seed": 500,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 7 rows of 10 squares to show 10 added 7 times. How many squares did you shade in all?",
+      "correct_answer": 70
     },
     {
       "seed": 501,
@@ -298,6 +314,12 @@
       ]
     },
     {
+      "seed": 605,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 4 rows of 2 squares to show 2 + 2 + 2 + 2. How many squares did you shade in all?",
+      "correct_answer": 8
+    },
+    {
       "seed": 606,
       "formatter": "mcq",
       "question_text": "2 + 2 + 2 + 2 + 2 = ___. What is 2 × 5?",
@@ -324,32 +346,38 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 607,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 2 rows of 5 squares to show 5 + 5. How many squares did you shade in all?",
+      "correct_answer": 10
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The competency requires illustrating multiplication 'using a variety of concrete and pictorial models', but every sample is a bare text equation (seed 44's '2 + 2 + 2 = ___. What is 2 × 3?'); no pictorial or concrete model is shown."
+      "verdict": "CONCERN",
+      "rationale": "Twelve of fifteen samples tie an addition expression, symbolic or verbal, to the multiplication or grouping task, from seed 42's \"3 + 3 + 3 + 3 = ___. What is 3 × 4?\" to seed 500's \"to show 10 added 7 times\", but seeds 501 (\"What is 10 × 10?\"), 502 (\"What is 8 × 10?\"), and 601 (\"Pia puts 2 leashes in each of 5 bags...\") ask for a multiplication fact or a plain count with no addition step shown at all."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "None of the competency's named representations — 'arrays', 'counting by multiples', or 'equal jumps on a number line' — appear anywhere in the eleven samples; only repeated-addition-to-product conversions and bare products (seed 501: 'What is 10 × 10?') are generated."
+      "rationale": "Of the competency's six named representations, \"counting by multiples\" and \"equal jumps on a number line\" appear in none of the 15 samples — no sample uses skip-counting language or a number line — so two explicitly named sub-cases are not exercised at all, while \"array\" is named in only seed 50's \"Look at the 3×3 array.\""
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Arithmetic magnitudes (max 100 in seed 501) are within reach for Grade 2 Quarter 3."
+      "rationale": "Addition chains top out at five terms in seed 606's \"2 + 2 + 2 + 2 + 2 = ___\" and factors stay single or low double digit as in seed 501's \"10 × 10\", consistent with a grade 2 quarter 3 introduction to multiplication."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "There is no variant that uses an array, a number line, or skip-counting by multiples; all eleven items follow either the same addition-then-product pattern seen in seed 42 or the bare-fact pattern seen in seed 501."
+      "verdict": "CONCERN",
+      "rationale": "Representation is dominated by the equation-plus-multiplication mcq template (ten of fifteen samples, seeds 42, 43, 44, 45, 46, 501, 502, 603, 606) and the \"rows of\" shading template (seeds 55, 500, 605, 607), with only seed 50 offering an array framing and only seed 601 offering a real-world context."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "Seeds 500–502 ask for products with no repeated-addition expression shown at all (e.g. seed 502's 'What is 8 × 10?'), so the item tests multiplication-fact recall rather than presenting multiplication 'as repeated addition' the way this competency's own wording requires."
+      "verdict": "PASS",
+      "rationale": "Where addition is paired with multiplication, difficulty scales through the number of addends and factor size, from seed 43's \"2 + 2 = ___. What is 2 × 2?\" to seed 606's five-term \"2 + 2 + 2 + 2 + 2 = ___. What is 2 × 5?\", staying on the repeated-addition axis the competency names."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "No sample exceeds a two-digit product, appropriate scale for this quarter."
+      "rationale": "The highest product shown is seed 501's \"What is 10 × 10?\" at 100, matching the grade 2 within-100 ceiling seen elsewhere in the same samples."
     }
   },
   "overall": "FAIL"

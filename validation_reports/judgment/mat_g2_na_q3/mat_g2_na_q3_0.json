@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_na_q3_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch C4 (post-fix re-review, g2 equal groups), 2026-08-12",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch C6 (post-fix re-review, g2 repeated addition pair), 2026-08-12",
   "review_date": "2026-08-12",
   "blind": true,
   "sample_seeds": [
@@ -9,12 +9,16 @@
     44,
     45,
     46,
+    50,
+    55,
     500,
     501,
     502,
     601,
     603,
-    606
+    605,
+    606,
+    607
   ],
   "samples_reviewed": [
     {
@@ -23,10 +27,26 @@
       "question_text": "There are 4 groups of 3. How many in all?",
       "correct_answer": 12,
       "options": [
-        {"key": "A", "value": 7, "is_correct": false},
-        {"key": "B", "value": 11, "is_correct": false},
-        {"key": "C", "value": 12, "is_correct": true},
-        {"key": "D", "value": 8, "is_correct": false}
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
       ]
     },
     {
@@ -35,10 +55,26 @@
       "question_text": "There are 2 groups of 2. How many in all?",
       "correct_answer": 4,
       "options": [
-        {"key": "A", "value": 4, "is_correct": true},
-        {"key": "B", "value": 2, "is_correct": false},
-        {"key": "C", "value": 3, "is_correct": false},
-        {"key": "D", "value": 0, "is_correct": false}
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 0,
+          "is_correct": false
+        }
       ]
     },
     {
@@ -47,10 +83,26 @@
       "question_text": "There are 3 groups of 2. How many in all?",
       "correct_answer": 6,
       "options": [
-        {"key": "A", "value": 3, "is_correct": false},
-        {"key": "B", "value": 5, "is_correct": false},
-        {"key": "C", "value": 9, "is_correct": false},
-        {"key": "D", "value": 6, "is_correct": true}
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": true
+        }
       ]
     },
     {
@@ -59,10 +111,26 @@
       "question_text": "There are 2 groups of 6. How many in all?",
       "correct_answer": 12,
       "options": [
-        {"key": "A", "value": 10, "is_correct": false},
-        {"key": "B", "value": 8, "is_correct": false},
-        {"key": "C", "value": 12, "is_correct": true},
-        {"key": "D", "value": 4, "is_correct": false}
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
       ]
     },
     {
@@ -71,23 +139,67 @@
       "question_text": "There are 2 groups of 3. How many in all?",
       "correct_answer": 6,
       "options": [
-        {"key": "A", "value": 4, "is_correct": false},
-        {"key": "B", "value": 6, "is_correct": true},
-        {"key": "C", "value": 1, "is_correct": false},
-        {"key": "D", "value": 5, "is_correct": false}
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": false
+        }
       ]
     },
     {
-      "seed": 500,
-      "formatter": "mcq",
-      "question_text": "There are 10 groups of 7. How many in all?",
-      "correct_answer": 70,
+      "seed": 50,
+      "formatter": "read_mcq",
+      "question_text": "Look at the array. It shows 3 groups of 3. How many squares are shaded in all?",
+      "correct_answer": "A",
       "options": [
-        {"key": "A", "value": 70, "is_correct": true},
-        {"key": "B", "value": 60, "is_correct": false},
-        {"key": "C", "value": 17, "is_correct": false},
-        {"key": "D", "value": 69, "is_correct": false}
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "is_correct": false
+        }
       ]
+    },
+    {
+      "seed": 55,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 3 groups of 2 squares. How many squares did you shade in all?",
+      "correct_answer": 6
+    },
+    {
+      "seed": 500,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 7 groups of 10 squares. How many squares did you shade in all?",
+      "correct_answer": 70
     },
     {
       "seed": 501,
@@ -95,10 +207,26 @@
       "question_text": "There are 10 groups of 10. How many in all?",
       "correct_answer": 100,
       "options": [
-        {"key": "A", "value": 100, "is_correct": true},
-        {"key": "B", "value": 90, "is_correct": false},
-        {"key": "C", "value": 0, "is_correct": false},
-        {"key": "D", "value": 20, "is_correct": false}
+        {
+          "key": "A",
+          "value": 100,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 90,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": false
+        }
       ]
     },
     {
@@ -107,10 +235,26 @@
       "question_text": "There are 10 groups of 8. How many in all?",
       "correct_answer": 80,
       "options": [
-        {"key": "A", "value": 18, "is_correct": false},
-        {"key": "B", "value": 80, "is_correct": true},
-        {"key": "C", "value": 79, "is_correct": false},
-        {"key": "D", "value": 70, "is_correct": false}
+        {
+          "key": "A",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 80,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 79,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 70,
+          "is_correct": false
+        }
       ]
     },
     {
@@ -119,10 +263,26 @@
       "question_text": "Pia puts 2 leashes in each of 5 bags. How many leashes are in all the bags?",
       "correct_answer": 10,
       "options": [
-        {"key": "A", "value": 3, "is_correct": false},
-        {"key": "B", "value": 7, "is_correct": false},
-        {"key": "C", "value": 8, "is_correct": false},
-        {"key": "D", "value": 10, "is_correct": true}
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": true
+        }
       ]
     },
     {
@@ -131,11 +291,33 @@
       "question_text": "There are 2 groups of 4. How many in all?",
       "correct_answer": 8,
       "options": [
-        {"key": "A", "value": 7, "is_correct": false},
-        {"key": "B", "value": 8, "is_correct": true},
-        {"key": "C", "value": 6, "is_correct": false},
-        {"key": "D", "value": 2, "is_correct": false}
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
       ]
+    },
+    {
+      "seed": 605,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 4 groups of 2 squares. How many squares did you shade in all?",
+      "correct_answer": 8
     },
     {
       "seed": 606,
@@ -143,37 +325,59 @@
       "question_text": "There are 5 groups of 2. How many in all?",
       "correct_answer": 10,
       "options": [
-        {"key": "A", "value": 10, "is_correct": true},
-        {"key": "B", "value": 7, "is_correct": false},
-        {"key": "C", "value": 5, "is_correct": false},
-        {"key": "D", "value": 9, "is_correct": false}
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "is_correct": false
+        }
       ]
+    },
+    {
+      "seed": 607,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 2 groups of 5 squares. How many squares did you shade in all?",
+      "correct_answer": 10
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency requires counting 'concrete objects in a group', but 10 of the 11 samples (seed 42: 'There are 4 groups of 3. How many in all?') name only abstract group counts with no object noun at all; only seed 601 ('Pia puts 2 leashes in each of 5 bags') supplies a concrete referent for the groups being counted."
+      "verdict": "PASS",
+      "rationale": "Fourteen of fifteen samples use the \"groups of\" phrasing that mirrors the competency's own example \"5 groups of 3\" (e.g. seed 42's \"There are 4 groups of 3. How many in all?\"), and the \"create equal groups\" verb is directly enacted by the four set_fill_in_blank items asking the student to build the groups, such as seed 605's \"Shade 4 groups of 2 squares.\""
     },
     "comprehensive_coverage": {
       "verdict": "CONCERN",
-      "rationale": "The competency names two phrasing sub-cases, '5 groups of 3' and '5 threes'; the 'groups of' pattern appears in 10 of the 11 samples (seed 46: 'There are 2 groups of 3. How many in all?'), but the '5 threes' style plural-count phrasing appears in none of them."
+      "rationale": "The competency names two language forms, \"5 groups of 3\" and \"5 threes\"; the \"groups of\" form appears in 14 of the 15 samples, such as seed 42's \"There are 4 groups of 3\", but the plural number-word form \"5 threes\" never appears anywhere in any sample, so one of the two explicitly named phrasings is entirely unrepresented."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each item is one short question per sample (seed 44: 'There are 3 groups of 2. How many in all?'), and both the group count and per-group count stay within 2 to 10, matching Grade 2 Quarter 3 number sense without extra vocabulary load."
+      "rationale": "Group counts and sizes stay within single digits familiar to grade 2 quarter 3, ranging from seed 43's \"2 groups of 2\" up to seed 501's \"10 groups of 10\", with plain sentence structure throughout."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Ten of the eleven samples share one abstract sentence pattern differing only in the two numbers (seed 45: 'There are 2 groups of 6. How many in all?'; seed 603: 'There are 2 groups of 4. How many in all?'), and only seed 601's 'Pia puts 2 leashes in each of 5 bags' supplies a distinct real-world context, so contextual variety is thin."
+      "rationale": "Nine of the ten mcq samples reuse the same sentence frame with only the numbers changed, as in seed 44's \"There are 3 groups of 2. How many in all?\" and seed 606's \"There are 5 groups of 2. How many in all?\", and only seed 601's \"Pia puts 2 leashes in each of 5 bags\" supplies a real-world context, leaving contextual variety thin."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The only values that change across the set are the number of groups and the number per group (e.g. seed 501: 'There are 10 groups of 10. How many in all?'), which is exactly the axis this equal-groups competency targets rather than an unrelated skill."
+      "rationale": "Difficulty is varied purely by the number and size of groups, from seed 43's \"2 groups of 2\" to seed 501's \"10 groups of 10\", which is exactly the counting-by-groups axis the competency targets."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Totals range from 2 groups of 2 (seed 43, total 4) up to seed 501's 'There are 10 groups of 10. How many in all?' (total 100), a spread consistent with introductory equal-groups counting at this grade."
+      "rationale": "The highest total reached is seed 501's \"10 groups of 10\" totaling 100, a ceiling consistent with grade 2's within-100 number range, with no sample exceeding it."
     }
   },
   "overall": "CONCERN"

@@ -121,6 +121,20 @@ def _build_visual_params(
 # Trap builder
 # ─────────────────────────────────────────────────────────────────────────────
 
+def _repeated_sum(terms: int, addend: int) -> str:
+    """
+    Write `terms` copies of `addend` as a repeated sum, or describe it when
+    writing it out would be unwieldy.
+
+    Grade-2 arrays reach 10 rows, and "3 + 3 + 3 + 3 + 3 + 3 + 3 + 3 + 3 + 3"
+    stops being a readable illustration well before that, so past five terms the
+    stem states the repetition instead of spelling it out.
+    """
+    if terms <= 5:
+        return " + ".join([str(addend)] * terms)
+    return f"{addend} added {terms} times"
+
+
 def _build_traps(params: dict, rng: random.Random) -> dict:
     traps: dict = {}
     correct = params["correct_count"]
@@ -288,6 +302,13 @@ def format_array_grid(
     correct_count: int = vp["correct_count"]
     traps = _build_traps(vp, rng)
 
+    # Which multiplication sub-skill this array is illustrating, if any. Only
+    # meaningful for the multiplication DNA; division arrays are handled by
+    # their own branch below.
+    _mul_task_type = (
+        ctx.values.get("task_type") if ctx.dna_concept == "multiplication" else None
+    )
+
     # ── 2. Question text ──────────────────────────────────────────────────────
     # The generic "how many squares in all" stem below reads identically
     # whether this array came from a multiplication or a division DNA --
@@ -324,10 +345,27 @@ def format_array_grid(
             )
     elif interaction_mode == "read":
         if shape_type == "rectangle" and rows and cols:
-            question_text = (
-                f"Look at the {rows}×{cols} array. "
-                f"How many squares are shaded in all?"
-            )
+            # An array is the shared picture behind three different grade-2
+            # competencies, so the stem has to name which one it is illustrating
+            # or the sibling nodes render identical items. mat_g2_na_q3_0 is
+            # stated in group language ("5 groups of 3"); mat_g2_na_q3_1 asks
+            # for the repeated sum itself; a plain product node wants neither.
+            if _mul_task_type == "equal_groups":
+                question_text = (
+                    f"Look at the array. It shows {rows} groups of {cols}. "
+                    f"How many squares are shaded in all?"
+                )
+            elif _mul_task_type == "repeated_addition":
+                question_text = (
+                    f"Look at the {rows}×{cols} array. It shows "
+                    f"{_repeated_sum(rows, cols)}. "
+                    f"How many squares are shaded in all?"
+                )
+            else:
+                question_text = (
+                    f"Look at the {rows}×{cols} array. "
+                    f"How many squares are shaded in all?"
+                )
         else:
             question_text = (
                 "Look at the shaded shape. How many squares are shaded in all?"
@@ -335,10 +373,22 @@ def format_array_grid(
     else:
         vp["shaded"] = False
         if shape_type == "rectangle" and rows and cols:
-            question_text = (
-                f"Shade all the squares inside the {rows}×{cols} rectangle. "
-                f"How many squares did you shade in all?"
-            )
+            if _mul_task_type == "equal_groups":
+                question_text = (
+                    f"Shade {rows} groups of {cols} squares. "
+                    f"How many squares did you shade in all?"
+                )
+            elif _mul_task_type == "repeated_addition":
+                question_text = (
+                    f"Shade {rows} rows of {cols} squares to show "
+                    f"{_repeated_sum(rows, cols)}. "
+                    f"How many squares did you shade in all?"
+                )
+            else:
+                question_text = (
+                    f"Shade all the squares inside the {rows}×{cols} rectangle. "
+                    f"How many squares did you shade in all?"
+                )
         else:
             question_text = (
                 "Shade all the squares inside the shape. "

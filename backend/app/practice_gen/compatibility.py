@@ -777,9 +777,22 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     "multiplication": {
         "table": ["2", "3", "4", "5", "10"],
         "structure": ["result_unknown"],
-        # array grid naturally shows product, not missing factor
-        "array_grid_read": {"task_type": ["find_product"], "context": ["pure"]},
-        "array_grid_set": {"task_type": ["find_product"], "context": ["pure"]},
+        # array grid naturally shows product, not missing factor -- that concern
+        # is about `structure`, which "structure": ["result_unknown"] above
+        # already constrains. Restricting task_type to find_product alone also
+        # excluded repeated_addition and equal_groups, which is backwards: an
+        # array IS the pictorial model those two competencies are about.
+        # mat_g2_na_q3_1 reads "Illustrate and write multiplication as repeated
+        # addition, using a variety of concrete and pictorial models ...,
+        # arrays, counting by multiples, and equal jumps on a number line" --
+        # it names arrays outright, yet this gate made array_grid_read and
+        # array_grid_set unreachable on it, so all 11 sampled seeds served mcq
+        # and blind review scored it FAIL: "no pictorial or concrete model is
+        # shown" and "None of the competency's named representations -- arrays,
+        # counting by multiples, or equal jumps on a number line -- appear
+        # anywhere in the eleven samples."
+        "array_grid_read": {"task_type": ["find_product", "repeated_addition", "equal_groups"], "context": ["pure"]},
+        "array_grid_set": {"task_type": ["find_product", "repeated_addition", "equal_groups"], "context": ["pure"]},
         # commutative/associative/distributive render a Yes/No claim, not a
         # numeric fact -- same class of bug as addition.py's identical fix:
         # error_detect's "character says <value>, correct?" framing and
