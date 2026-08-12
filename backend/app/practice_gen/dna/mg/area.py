@@ -104,7 +104,28 @@ def generate_params(
     profile = difficulty_profile or {}
     bounds = _PARAM_BOUNDS["g3"]
 
-    task_type = profile.get("task_type", "find_area")
+    # No silent default. This key used to fall back to "find_area", which meant a
+    # node the registry never bound still generated -- plausibly, and wrongly --
+    # instead of saying so. mat_g3_mg_q1_2 and mat_g3_mg_q1_3 both rode that
+    # default and collapsed onto each other. If this raises, the fix is a binding
+    # in registry.py's _parse_competency_bounds, never a default here.
+    task_type = profile.get("task_type")
+    if not task_type:
+        raise ValueError(
+            f"area: 'task_type' is not bound for this node "
+            f"(grade={grade}, seed={seed}, profile={profile!r}); "
+            f"bind it in registry.py _parse_competency_bounds for the competency "
+            f"that maps to this node. Expected one of: find_area, "
+            f"find_missing_dimension, illustrate_tiles, derive_formula."
+        )
+    # mat_g3_mg_q1_3 ("Solve problems involving areas") wants both the direct and
+    # the inverse task, varying per seed. The registry binds a sentinel because it
+    # computes bounds once per node; resolving the choice there would freeze every
+    # seed to one task forever. Resolved here against this call's own rng so the
+    # split is deterministic per seed.
+    if task_type == "find_area_or_missing_dimension":
+        task_type = rng.choice(["find_area", "find_missing_dimension"])
+
     context   = profile.get("context", "pure")
     scalar    = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
 
@@ -114,6 +135,15 @@ def generate_params(
     # blind review found zero square samples across any node because nothing
     # ever selected one.
     shape = profile.get("shape") or rng.choice(["rectangle", "square"])
+    # "Given the area and one side, find the other" is a division for a rectangle
+    # but a square ROOT for a square, and square roots are not a Grade 3 skill --
+    # they appear nowhere in this grade's cumulative vocabulary. The square branch
+    # below also never set known_dimension/known_value, so the stem builder fell
+    # back to its "?" placeholder and rendered "A square has an area of 25 sq m and
+    # a length of ? m. What is its width?" (mat_g3_mg_q1_3, seed 45). Both problems
+    # have the same answer: this task is a rectangle task.
+    if task_type == "find_missing_dimension":
+        shape = "rectangle"
     # mat_g3_mg_q1_2's competency names "sq. cm and sq. m" explicitly; vary
     # unit for find_area/word-problem framings. illustrate_tiles/derive_formula
     # are tile-by-tile counting exercises -- keep those cm-scale, not metres.
@@ -138,23 +168,10 @@ def generate_params(
     if shape == "square":
         s = rng.randint(lo, hi)
         area = s * s
-        if task_type == "find_missing_dimension":
-            # Give area (a perfect square), find side length
-            # Re-pick s to keep it a clean integer root
-            s = rng.randint(lo, min(hi, 10))  # keep sq roots manageable
-            area = s * s
-            return {
-                "blank_target": "answer",
-                "shape": "square",
-                "area": area,
-                "unit": unit_label,
-                "task_type": "find_missing_dimension",
-                "answer": s,
-                "answer_formula": "sqrt(area)",
-                "sides": {"s": s},
-                "s": s,
-                "context": context,
-            }
+        # No find_missing_dimension branch here: it is redirected to the rectangle
+        # path above, because recovering a square's side from its area is a square
+        # root. The branch that used to live here returned answer_formula
+        # "sqrt(area)" and omitted known_dimension/known_value entirely.
         # illustrate_tiles / derive_formula reuse find_area's computation --
         # they differ only in framing (tile-counting vs. formula-derivation
         # narration), not in the underlying math, matching the competency

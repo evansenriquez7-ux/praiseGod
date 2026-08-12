@@ -2630,3 +2630,115 @@ An initial probe concluded `array_grid_read`/`array_grid_set` were unreachable f
 (`read_mcq`, `set_fill_in_blank`), not the formatter name. A 100-seed student-path census shows
 `{'mcq': 78, 'read_mcq': 10, 'set_fill_in_blank': 12}` — array_grid is reachable. Do not compare
 `format` to a formatter name.
+
+---
+
+## 2026-08-13 — The g3_mg_q1 area cluster: four siblings, one unbound key (Tick C)
+
+### The failing rationales that motivated the fix
+Blind reviews of `mat_g3_mg_q1_1/_2/_3` all named the same shape:
+
+> `mat_g3_mg_q1_1`: "This node reuses the identical row/column values as the sibling node
+> mat_g3_mg_q1_0 for the same seeds (e.g. seed 42's 2 rows by 7 columns appears in both)."
+>
+> `mat_g3_mg_q1_2`: "seed 604 ... carries no cm/m unit at all and duplicates the sibling
+> formula-derivation node's content instead of testing area in labelled units."
+>
+> `mat_g3_mg_q1_3`: "Seeds 55 and 500 ('Look at the 6×25 array. How many squares are shaded
+> in all?') are visual array-counting items identical to the sibling area-in-units node's
+> samples, not word problems."
+
+Reproduced verbatim before any change — `mat_g3_mg_q1_2` and `mat_g3_mg_q1_3` served the
+byte-identical item on seeds 55 and 500.
+
+### Root cause
+`_parse_competency_bounds` bound `task_type` for only two of the `area` DNA's four nodes:
+
+```
+mat_g3_mg_q1_0 {'task_type': 'illustrate_tiles'}
+mat_g3_mg_q1_1 {'task_type': 'derive_formula'}
+mat_g3_mg_q1_2 {}                                  <- nothing
+mat_g3_mg_q1_3 {'context': 'word_problem'}         <- no task_type
+```
+
+The two unbound nodes fell to `area.py`'s own `profile.get("task_type", "find_area")`, so they
+then differed **only by `context`** — and any formatter that ignores context rendered them
+identically. That is defect shape #1, "key consumed but never bound", the recurring cause.
+
+### A second, opposite defect in the same table
+`FORMATTER_VARIANT_SUPPORT["area"]["grid_area"]` restricted the tiled-array visual to
+`find_area` — the competency that says "in sq. cm and sq. m". But the item it renders ("Look at
+the 6×25 array. How many squares are shaded in all?") names no unit at all, so it cannot satisfy
+that competency; and it was gated *off* `mat_g3_mg_q1_0`, whose competency is literally
+"Illustrate and estimate the area ... using square tile units". Defect shape #3 in both
+directions at once: unreachable where it belonged, serving where it did not.
+
+### The fix
+1. `registry.py` — bind the two unbound nodes. `mat_g3_mg_q1_2` -> `task_type='find_area'`.
+   `mat_g3_mg_q1_3` -> the sentinel `'find_area_or_missing_dimension'`, since "Solve problems"
+   covers the inverse case ("given the area and one side, find the other") that "Find the areas"
+   does not name. A **sentinel, not a list**: registry bounds are computed once per node, so a
+   list would have frozen the choice; `area.py` resolves it against the call's own seeded rng.
+   This is the idiom `calendar` and `pictographs` already use.
+2. `area.py` — deleted the `"find_area"` silent default; it now raises, naming grade, seed and
+   profile, and pointing at the registry as the place to fix it.
+3. `compatibility.py` — `grid_area` moved to `illustrate_tiles`.
+4. `area.py` — `find_missing_dimension` forced to rectangles (below).
+5. `base_generator.py` — the inverse-problem stem no longer defaults its givens to `"?"`.
+
+### Verification
+
+Sibling duplication, all six pairs, 200 seeds each:
+
+```
+mat_g3_mg_q1_0 == mat_g3_mg_q1_1: 0 identical of 200
+mat_g3_mg_q1_0 == mat_g3_mg_q1_2: 0 identical of 200
+mat_g3_mg_q1_0 == mat_g3_mg_q1_3: 0 identical of 200
+mat_g3_mg_q1_1 == mat_g3_mg_q1_2: 0 identical of 200
+mat_g3_mg_q1_1 == mat_g3_mg_q1_3: 0 identical of 200
+mat_g3_mg_q1_2 == mat_g3_mg_q1_3: 0 identical of 200
+```
+
+Each node now serves its own competency's distinctive content, over 200 student-path seeds:
+
+```
+mat_g3_mg_q1_0   tile units 175/200 · squares 43 · rectangles 96 · metric units 0 · formula 0
+mat_g3_mg_q1_1   formula 200/200 · tile units 200/200 · metric units 0
+mat_g3_mg_q1_2   sq cm 113 · sq m 87 · squares 93 · rectangles 107 · tile units 0
+mat_g3_mg_q1_3   word problems 107 · inverse 93 · sq cm 43 · sq m 50
+```
+
+### A trap paid for in this tick, not rediscovered
+Widening `grid_area` to `derive_formula` as well was tried and reverted within the tick:
+`fmt_array_grid` renders one stem regardless of task_type, so offering it to both made
+`mat_g3_mg_q1_0` and `mat_g3_mg_q1_1` byte-identical on seeds 55 and 500 — **trading one
+duplication for another**, exactly the documented hazard in opening a formatter gate. The
+reverted state and the reason are recorded in the table itself.
+
+### A defect the fix exposed, and fixed
+Enabling `find_missing_dimension` for `mat_g3_mg_q1_3` surfaced a latent bug: the *square*
+branch of that task returned `answer_formula: "sqrt(area)"` and never set
+`known_dimension`/`known_value`, so the stem builder's `values.get("known_value", "?")` fallback
+printed a hole:
+
+```
+seed 45 BEFORE: 'A square has an area of 9 sq m and a length of ? m. What is its width?'
+seed 45 AFTER:  'A rectangle has an area of 18 sq m and a width of 3 m. What is its length?'
+```
+
+Two bugs in one: the `"?"` fallback dressed missing data as a rendering quirk, and recovering a
+square's side from its area is a **square root**, which is not a Grade 3 skill and appears
+nowhere in this grade's cumulative vocabulary. `find_missing_dimension` is now a rectangle task
+(area ÷ known side), the square branch is deleted, and the stem builder raises instead of
+defaulting. Over 400 seeds: 196 inverse items, **0 containing a stray `?`**.
+
+An independent blind reviewer, which had never seen the fix, found this same defect on five
+named seeds (45, 50, 500, 501, 602) and scored the node FAIL for it.
+
+### Also fixed: a duplicate registry key
+`FORMATTER_ROUTES` defined `"grid_area"` twice — line 147 routing to
+`fmt_bar_chart.format_bar_chart`, line 172 to `fmt_array_grid.format_array_grid`. Python keeps
+the last silently, so the bar-chart route had never run and nothing could say so: by import time
+the duplicate is already gone, which is why no runtime check could ever have caught it. Removed
+the dead entry and added `tests/pgen_probes/duplicate_registry_keys.py`, which reads the AST of
+six registry files and exits non-zero on any duplicate.

@@ -1054,8 +1054,23 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     "area": {
         "shape": ["rectangle", "square"],
         "unit": ["cm", "m"],
-        # grid_area shows counting squares
-        "grid_area": {"task_type": ["find_area"]},
+        # grid_area draws a tiled figure and asks how many squares cover it.
+        # It was offered to find_area, which is mat_g3_mg_q1_2's competency
+        # ("Find the areas ... in sq. cm and sq. m") and part of q1_3's --
+        # but the item it renders names no unit at all, so it cannot satisfy
+        # either. Counting the tiles that cover a figure is precisely
+        # mat_g3_mg_q1_0's competency ("Illustrate and estimate the area of a
+        # square or rectangle using square tile units"), which is the one node
+        # the formatter was gated off. Defect shape #3, in both directions at
+        # once: unreachable where it belongs, and serving where it does not.
+        # illustrate_tiles ONLY. Widening this to derive_formula as well was tried
+        # and reverted in the same tick: fmt_array_grid renders one stem ("Look at
+        # the 3x7 array. How many squares are shaded in all?") regardless of
+        # task_type, so offering it to both made mat_g3_mg_q1_0 and mat_g3_mg_q1_1
+        # byte-identical on seeds 55 and 500 -- trading one duplication for another,
+        # which is the documented trap in opening a formatter gate. Any future
+        # widening needs task-specific stem text in fmt_array_grid first.
+        "grid_area": {"task_type": ["illustrate_tiles"]},
     },
 
     # ── Data & Probability ────────────────────────────────────────────────────

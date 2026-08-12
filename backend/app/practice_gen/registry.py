@@ -667,11 +667,37 @@ def _parse_competency_bounds(
     # (mat_g3_mg_q1_1) rendered indistinguishably from the plain
     # "find the area" competency (mat_g3_mg_q1_2), and the symbolic
     # fallback question text didn't even show the shape's dimensions.
+    # All four of this DNA's nodes are now bound. The last two were not, and
+    # falling through left task_type unset entirely, so area.py's own
+    # `profile.get("task_type", "find_area")` default governed both -- and
+    # since mat_g3_mg_q1_2 and mat_g3_mg_q1_3 then differed only by `context`,
+    # any formatter that ignores context rendered them identically. A blind
+    # review caught it on seeds 55 and 500, where both nodes served the byte-
+    # identical item "Look at the 6x25 array. How many squares are shaded in
+    # all?" -- an item that satisfies neither competency, since it names no
+    # sq. cm / sq. m unit and poses no problem to solve.
     elif dna_name == "area":
         if "derivation" in text or "derive" in text:
             bounds["task_type"] = "derive_formula"
         elif "illustrate" in text or "estimate" in text:
             bounds["task_type"] = "illustrate_tiles"
+        # "Solve problems involving areas of squares and rectangles."
+        # Problem-solving covers the inverse case the plain "find the areas"
+        # competency does not name -- given an area and one side, find the
+        # other. Both are wanted, varying per seed, so this is a sentinel
+        # resolved by area.py's own seeded rng rather than a list: registry
+        # bounds are computed once per node, so resolving the choice here would
+        # freeze it to one value forever. Same pattern as calendar's
+        # "elapsed_days_or_weeks" and pictographs' "read_or_compare".
+        elif "solve problems" in text:
+            bounds["task_type"] = "find_area_or_missing_dimension"
+        # "Find the areas of squares and rectangles in sq. cm and sq. m."
+        # Computing the area itself, and only that -- the inverse is beyond
+        # what this competency's own wording asks for. The DNA already varies
+        # square_cm/square_m per seed for this task_type, which is what the
+        # competency's two named units require.
+        elif "sq. cm" in text or "sq. m" in text:
+            bounds["task_type"] = "find_area"
 
     # Comparing/ordering: bind task_type per node -- the DNA's own default
     # (task_type="compare_pair") silently governed every unbound node, so

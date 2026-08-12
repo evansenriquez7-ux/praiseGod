@@ -1096,9 +1096,23 @@ def _build_symbolic_question(
             dims = f"sides {l} {unit.replace('sq ', '')} and {w} {unit.replace('sq ', '')}"
             rows_cols = f"{l} rows and {w} columns"
         if task_type == "find_missing_dimension":
-            area = values.get("area", "?")
-            known_dim = values.get("known_dimension", "l")
-            known_val = values.get("known_value", "?")
+            # No "?" placeholders. These three fields are the whole content of the
+            # item; defaulting them printed a well-formed sentence with a hole in
+            # it ("a length of ? m") that read as a rendering quirk rather than the
+            # missing-data bug it was. If this raises, the DNA branch that built
+            # `values` failed to supply them.
+            missing = [k for k in ("area", "known_dimension", "known_value")
+                       if values.get(k) is None]
+            if missing:
+                raise ValueError(
+                    f"area stem: find_missing_dimension is missing {missing} in the "
+                    f"generated values (shape={shape!r}, unit={unit!r}, values={values!r}). "
+                    f"The DNA branch that produced this must set area, known_dimension "
+                    f"('l' or 'w') and known_value."
+                )
+            area = values["area"]
+            known_dim = values["known_dimension"]
+            known_val = values["known_value"]
             other = "width" if known_dim == "l" else "length"
             return (
                 f"A {shape} has an area of {area} {unit} and a "
