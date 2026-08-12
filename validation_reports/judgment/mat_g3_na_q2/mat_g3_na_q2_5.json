@@ -1,0 +1,416 @@
+{
+  "node_id": "mat_g3_na_q2_5",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B7b (g3 na_q2 + na_q3_0-3), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    72,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "Estimate the difference: 1950 − 1152",
+      "correct_answer": 1000,
+      "options": [
+        {
+          "key": "A",
+          "value": 3000,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1001,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1000,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 999,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Estimate the difference: 540 − 137",
+      "correct_answer": 400,
+      "options": [
+        {
+          "key": "A",
+          "value": 400,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 399,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 401,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 600,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "Estimate: 1915 − 870 ≈ ___",
+      "correct_answer": 1000,
+      "options": [
+        {
+          "key": "A",
+          "value": 999,
+          "text": "999",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3000,
+          "text": "3000",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1001,
+          "text": "1001",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1000,
+          "text": "1000",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Estimate the difference: 6195 − 2500",
+      "correct_answer": 3000,
+      "options": [
+        {
+          "key": "A",
+          "value": 3001,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9000,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3000,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2999,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Estimate the difference: 6116 − 2430",
+      "correct_answer": 4000,
+      "options": [
+        {
+          "key": "A",
+          "value": 4001,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4000,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3999,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8000,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "error_detect",
+      "question_text": "Jose says: 7902 − 480 ≈ 8000. Is Jose correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 8000
+      }
+    },
+    {
+      "seed": 55,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 4000 and one part is 1000. What is the other part?",
+      "correct_answer": 3000
+    },
+    {
+      "seed": 72,
+      "formatter": "true_false",
+      "question_text": "1656 − 870 ≈ 1000. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 9000 and one part is 4000. What is the other part?",
+      "correct_answer": 5000
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "Estimate: 8363 − 4649 ≈ ___",
+      "correct_answer": 3000,
+      "options": [
+        {
+          "key": "A",
+          "value": 3000,
+          "text": "3000",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 3001,
+          "text": "3001",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2999,
+          "text": "2999",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13000,
+          "text": "13000",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Estimate the difference: 4783 − 2633",
+      "correct_answer": 2000,
+      "options": [
+        {
+          "key": "A",
+          "value": 8000,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2000,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2001,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1999,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Estimate the difference: 5646 − 5190",
+      "correct_answer": 1000,
+      "options": [
+        {
+          "key": "A",
+          "value": 11000,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 999,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1000,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1001,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "true_false",
+      "question_text": "2061 − 690 ≈ 1000. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Estimate the difference: 4410 − 384",
+      "correct_answer": 4000,
+      "options": [
+        {
+          "key": "A",
+          "value": 4000,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 4002,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 3999,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4001,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "Estimate: 3540 − 1433 ≈ ___",
+      "correct_answer": 3000,
+      "options": [
+        {
+          "key": "A",
+          "value": 3001,
+          "text": "3001",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3000,
+          "text": "3000",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 5000,
+          "text": "5000",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2999,
+          "text": "2999",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "Estimate the difference: 2101 − 90",
+      "correct_answer": 2000,
+      "options": [
+        {
+          "key": "A",
+          "value": 2000,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2001,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1999,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2002,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "error_detect",
+      "question_text": "Liza says: 4890 − 1385 ≈ 4000. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 4000
+      }
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "CONCERN",
+      "rationale": "Two of the seventeen samples, seed55 \"The total is 4000 and one part is 1000. What is the other part?\" and seed500 \"The total is 9000 and one part is 4000. What is the other part?\", ask for an exact missing part using already-round numbers rather than an estimate, so they skip the rounding step the competency names."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The remaining items round each number to its own leading place across 3- and 4-digit spans, e.g. seed42's \"Estimate the difference: 1950 − 1152\" rounds to 1000 and seed502's \"Estimate the difference: 4783 − 2633\" rounds to 2000, covering multiple digit-lengths."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The ≈ notation and rounding-based reasoning, e.g. seed501's \"Estimate: 8363 − 4649 ≈ ___\", match Grade 3 estimation vocabulary."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Formatters include mcq, cloze, true_false, and error_detect, e.g. seed605 \"Liza says: 4890 − 1385 ≈ 4000. Is Liza correct?\", giving several ways to practice the same estimation skill."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Distractors are built from the rounding process itself; seed42 offers 3000 as an un-rounded-magnitude distractor, keeping difficulty tied to estimation."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Minuends reach four digits, e.g. seed42's 1950 and seed45's 6195, matching the competency's \"up to 4 digits\" ceiling."
+    }
+  },
+  "overall": "CONCERN"
+}

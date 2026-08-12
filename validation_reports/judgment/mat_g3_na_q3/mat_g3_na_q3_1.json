@@ -1,0 +1,529 @@
+{
+  "node_id": "mat_g3_na_q3_1",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch B7b (g3 na_q2 + na_q3_0-3), 2026-08-12",
+  "review_date": "2026-08-12",
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    55,
+    72,
+    86,
+    104,
+    113,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is 2 × 6?",
+      "correct_answer": 12,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 5 × 7?",
+      "correct_answer": 35,
+      "options": [
+        {
+          "key": "A",
+          "value": 35,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 28,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 34,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "Is 3 × (6 + 5) the same as (3 × 6) + (3 × 5)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Is (5 × 9) × 4 the same as 5 × (9 × 4)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": 36,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What is 3 × 8?",
+      "correct_answer": 24,
+      "options": [
+        {
+          "key": "A",
+          "value": 23,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 24,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 55,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade all the squares inside the 2×7 rectangle. How many squares did you shade in all?",
+      "correct_answer": 14
+    },
+    {
+      "seed": 72,
+      "formatter": "error_detect",
+      "question_text": "Noel says: 1 × 6 = 5. Is Noel correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 6
+      }
+    },
+    {
+      "seed": 86,
+      "formatter": "cloze",
+      "question_text": "4 × 9 = ___",
+      "correct_answer": 36,
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "text": "13",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 36,
+          "text": "36",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 35,
+          "text": "35",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 27,
+          "text": "27",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 104,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 2×7 array. How many squares are shaded in all?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 113,
+      "formatter": "true_false",
+      "question_text": "4 × 7 = 11. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 500,
+      "formatter": "mcq",
+      "question_text": "Is 6 × (9 + 8) the same as (6 × 9) + (6 × 8)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 45,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "Is (5 × 8) × 7 the same as 5 × (8 × 7)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": false,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 8 × 0?",
+      "correct_answer": 0,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Is (5 × 8) × 3 the same as 5 × (8 × 3)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 32,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "Is 2 × 6 the same as 6 × 2?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Is 4 × (7 + 6) the same as (4 × 7) + (4 × 6)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 11,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "Is 5 × 8 the same as 8 × 5?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": 32,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "What is 2 × 7?",
+      "correct_answer": 14,
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "mcq",
+      "question_text": "Is (6 × 7) × 5 the same as 6 × (7 × 5)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 35,
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Samples explicitly test each property through equivalence framing, e.g. seed44's \"Is 3 × (6 + 5) the same as (3 × 6) + (3 × 5)?\" for distributivity and seed601's \"Is 2 × 6 the same as 6 × 2?\" for commutativity."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All five properties the competency names are exercised at least once: identity via seed72's \"Noel says: 1 × 6 = 5. Is Noel correct?\", zero via seed502's \"What is 8 × 0?\", commutative via seed601 and seed603, associative via seed45, seed501, seed600, and seed605, and distributive via seed44, seed500, and seed602."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Property statements are phrased as direct comparisons, e.g. seed45's \"Is (5 × 9) × 4 the same as 5 × (9 × 4)?\", appropriate to Grade 3 without symbolic algebra notation."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Property items are joined by array-shading (seed55), true_false (seed113), and error_detect (seed72) formatters, giving several ways to engage the same property content."
+    },
+    "competency_alignment": {
+      "verdict": "CONCERN",
+      "rationale": "Seven of the nineteen samples, seed42 \"What is 2 × 6?\", seed43, seed46, seed86, seed104, seed113, and seed604, are plain multiplication-fact recall with no property framing at all, duplicating rote-fact content that belongs to the sibling multiplication-tables competency rather than varying difficulty within \"illustrate and apply properties\"."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Both the plain facts and the property statements stay within single-digit-by-single-digit products from the 6-9 tables, e.g. seed500's \"Is 6 × (9 + 8) the same as (6 × 9) + (6 × 8)?\", matching the grade-level scope."
+    }
+  },
+  "overall": "CONCERN"
+}

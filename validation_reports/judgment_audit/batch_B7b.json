@@ -1,0 +1,120 @@
+{
+  "batch": "B7b",
+  "audited_on": "2026-08-12",
+  "nodes_audited": 12,
+  "independent_rejudge": {
+    "nodes": ["mat_g3_na_q2_2", "mat_g3_na_q2_4", "mat_g3_na_q3_1"],
+    "my_verdict": {
+      "mat_g3_na_q2_2": "CONCERN",
+      "mat_g3_na_q2_4": "PASS",
+      "mat_g3_na_q3_1": "CONCERN"
+    },
+    "filed_verdict": {
+      "mat_g3_na_q2_2": "CONCERN",
+      "mat_g3_na_q2_4": "PASS",
+      "mat_g3_na_q3_1": "CONCERN"
+    },
+    "disagreement_rate": 0.0
+  },
+  "per_node": {
+    "mat_g3_na_q2_0": {
+      "describes_these_samples": false,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": true,
+      "verdict_too_lenient": true,
+      "notes": "comprehensive_coverage (rated PASS) claims 'the centavo sign converted to peso decimals (seed46, seed72, seed604) ... so every sub-case the competency text names is generated.' Verified across all 17 samples: the ¢ symbol never appears as correct_answer anywhere in this node — it appears only as a wrong distractor (seed46/72 wrong option '50¢' vs correct '₱0.50'; seed604 wrong option '25¢' vs correct '₱0.25'). The competency's third named notation form ('the centavo sign') is never actually the object of instruction, only a decoy. competency_alignment's CONCERN (3/17 coin-counting/change-making items off-topic: seed50, seed55, seed500) is independently verified correct, so the node's overall CONCERN still follows from a real defect, but the comprehensive_coverage dimension is falsely rated PASS."
+    },
+    "mat_g3_na_q2_1": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_too_lenient": false,
+      "notes": "All quotes verified verbatim. Scale claim (max sum 9211 at seed500, 9037 at seed502) confirmed as true maximum across all 19 samples, correctly below the 10,000 ceiling. Regrouping/non-regrouping examples (seed42 vs seed603) verified accurate. Clean PASS."
+    },
+    "mat_g3_na_q2_2": {
+      "describes_these_samples": false,
+      "verdict_follows_rationale": true,
+      "transplantable_template": true,
+      "void": true,
+      "verdict_too_lenient": false,
+      "notes": "variant_comprehensiveness (rated PASS) states 'Formatters include mcq, cloze with a fill-in blank, and read_fill_in_blank part-sum items.' Verified by script over all 15 samples: formatters present are mcq (x13) and read_fill_in_blank (x2, seeds 50/500) only — zero cloze-formatted samples exist anywhere in this node. This reads as boilerplate lifted from the sibling q2_1 review (which genuinely has cloze samples) without checking against this node's actual formatter set — fails the transplant test. competency_fulfillment's CONCERN (2/15 exact-sum, non-estimating items at seed50/seed500) is independently verified correct."
+    },
+    "mat_g3_na_q2_3": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_too_lenient": false,
+      "notes": "competency_fulfillment's 'five bare computation prompts' evidence set (seed45, seed502, seed600, seed603, plus the equation embedded in seed605's narrative) omits seed501 ('What is 247 + 7696?'), which is an equally bare, zero-narrative computation prompt — while counting seed605, which does carry narrator framing ('Liza solved this problem... Is Liza correct?'). The headline count of five remains defensible if seed501 replaces seed605 in the list, so the magnitude is not clearly wrong, but the specific enumerated evidence is inaccurate in one slot. Does not change the CONCERN verdict, which is independently supported by the genuinely bare items."
+    },
+    "mat_g3_na_q2_4": {
+      "describes_these_samples": false,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": true,
+      "verdict_too_lenient": false,
+      "notes": "scale_appropriateness (rated PASS) claims 'the largest being seed44's 7222.' Verified by script over all 18 samples: the true maximum operand is 8460, appearing in seed604 ('What is 8460 − 1120?'), which is larger than seed44's 7222 and unmentioned in the review. The PASS verdict itself is not affected (8460 is still below the 10,000 ceiling), but the specific evidentiary claim is factually false."
+    },
+    "mat_g3_na_q2_5": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_too_lenient": false,
+      "notes": "competency_fulfillment's '2 of 17' non-estimation items (seed55, seed500) verified as the only two such items among all 17 samples. Scale claim (minuends reach seed42's 1950, seed45's 6195) verified accurate against the actual maxima. Clean CONCERN, correctly scoped."
+    },
+    "mat_g3_na_q2_6": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_too_lenient": false,
+      "notes": "3-term (seed46) and 4-term (seed600) examples verified accurate; 'largest operand 98' (seed43) verified as the true maximum across all 15 samples' operands. Clean PASS."
+    },
+    "mat_g3_na_q2_7": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_too_lenient": false,
+      "notes": "variant_comprehensiveness CONCERN verified: all 15 samples follow the identical 'X starts with N, then receives/gives-away chain' template with no alternate problem structure. This is a genuine, distinct finding — not a copy from the q2_6 review, whose own note about the same narrative pattern (seed601) is a single positive example within a formatter-diverse node, a materially different situation."
+    },
+    "mat_g3_na_q3_0": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_too_lenient": false,
+      "notes": "Table coverage (6, 7, 8, 9 each cited with a real example) and max-product claim (72 at seed500/seed501) verified accurate against all 16 samples. Clean PASS."
+    },
+    "mat_g3_na_q3_1": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_too_lenient": false,
+      "notes": "competency_alignment's 'seven of nineteen' plain-fact-recall items (seed42, 43, 46, 86, 104, 113, 604) is close but likely undercounts by one: seed55 ('Shade all the squares inside the 2×7 rectangle...') is structurally identical to the counted seed104 array item and also carries no property framing, yet is excluded from this count (cited only positively under variant_comprehensiveness). True count is closer to 8/19. Does not change the CONCERN verdict. Comprehensive_coverage's five-property claim (identity/zero/commutative/associative/distributive) verified fully accurate against the competency text. Duplication-claim adjudication: see report — zero byte-identical question_text values exist across the 13 seeds shared with mat_g3_na_q3_0; the review's wording ('duplicating rote-fact content that belongs to the sibling... competency') asserts content-type overlap, not textual identity, and is defensible in that weaker sense."
+    },
+    "mat_g3_na_q3_2": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_too_lenient": true,
+      "notes": "Verified by script: zero of 14 samples pair a 3-digit multiplicand with a plain 1-digit (2-9) multiplier. The three 3-digit values present (936, 962, 845) are each multiplied only by 10; all plain 1-digit multiplications (×2, ×3, ×5, ×0) use only 2-digit multiplicands (15, 20, 21, 40). The competency explicitly names '2- to 3-digit numbers by a 1-digit number' as a sub-case, and that sub-case is 100% unexercised for its 3-digit half. Per the batch's calibration check, a named sub-case exercised zero times should be filed as FAIL rather than CONCERN; the review's evidence is accurate and well-reasoned but the verdict is one severity level too lenient."
+    },
+    "mat_g3_na_q3_3": {
+      "describes_these_samples": true,
+      "verdict_follows_rationale": true,
+      "transplantable_template": false,
+      "void": false,
+      "verdict_too_lenient": false,
+      "notes": "Rounding-to-leading-place claims and 2-3 digit / 1-2 digit factor range coverage (seed502's 853×12, seed42's 120×14) verified accurate. Clean PASS."
+    }
+  },
+  "voided_nodes": ["mat_g3_na_q2_0", "mat_g3_na_q2_2", "mat_g3_na_q2_4"],
+  "batch_reliable": false,
+  "summary": "Independent re-judgment on 3 pseudo-randomly chosen nodes (mat_g3_na_q2_2, mat_g3_na_q2_4, mat_g3_na_q3_1) produced 0% disagreement with the filed verdicts, but per-quote verification surfaced three void-worthy false claims: mat_g3_na_q2_0 falsely credits 'the centavo sign' as a covered notation when the ¢ symbol is never once the correct answer across its 17 samples (only ever a wrong distractor); mat_g3_na_q2_2 fabricates a 'cloze' formatter that does not exist among its 15 samples (only mcq and read_fill_in_blank appear), reading as boilerplate copied from the q2_1 sibling; and mat_g3_na_q2_4 misstates its own maximum operand as 7222 (seed44) when the true maximum is 8460 (seed604), though this does not flip the PASS verdict. The suspect mat_g3_na_q3_1 duplication claim is not actually a literal-duplication claim on close reading (zero of 13 shared-seed question_text values with mat_g3_na_q3_0 are byte-identical, confirmed by direct comparison) — the rationale's 'duplicating rote-fact content that belongs to the sibling competency' wording asserts content-type overlap, which is defensible and not oversold. On the leniency side, mat_g3_na_q3_2 is a real calibration miss: the competency explicitly names '2- to 3-digit numbers by a 1-digit number,' and verification confirms zero of 14 samples exercise a 3-digit×1-digit product (the only 3-digit values present are each multiplied by 10, not a plain 1-digit factor) — a named sub-case at 0% coverage that should have been filed FAIL, not CONCERN. No unearned/overreaching CONCERN was found elsewhere; all filed CONCERNs are backed by verifiable sample counts. With 3 of 12 nodes void (25%, exceeding 'a couple'), the batch is not reliable as filed, though the disagreement rate on independent re-judgment was 0%."
+}
