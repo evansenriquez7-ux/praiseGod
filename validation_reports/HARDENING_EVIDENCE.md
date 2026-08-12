@@ -2061,3 +2061,35 @@ Remaining, honestly reported by that review:
 - **A regression this fix introduced:** `_carry_free_addends` caps the tens column at 9, so the largest
   sum anywhere in `mat_g2_na_q1_10` is now 97 against a stated ceiling of 1000. Carry-free three-digit
   addends need a hundreds budget as well; the helper needs a third column.
+
+### 2026-08-12 (follow-up) — hundreds column for `_carry_free_addends`
+
+The previous entry closed with a regression this project introduced: `_carry_free_addends` budgeted
+only the ones and tens columns, capping every addend at 99, so `mat_g2_na_q1_10` ("...properties of
+addition using **sums up to 1000**") produced a largest sum of 97. The blind re-review flagged it as a
+`scale_appropriateness` CONCERN.
+
+**Fix:** the helper now walks the place-value columns (`1, 10, 100`), giving each its own budget of 9 —
+a column whose digits sum to 9 or less cannot carry — capped by what the lower columns already spent
+so the total stays inside `max_total`. Adding a further column is now a one-line change.
+
+```
+                              BEFORE          AFTER
+mat_g2_na_q1_10 max operand   97              927
+  largest associative sample  --              553 + 123 + 221 = 897  (seed 501)
+mat_g1_na_q1_8  max operand   16              16   (unchanged: its ceiling of 20
+                                                    leaves the hundreds budget at 0)
+carrying pairs                0               0
+
+validate_matrix --node  q1_8, q1_10, q2_5, q2_6     Total Failures Observed: 0 each
+run_all   EXIT_CODE=1   matrix 151/151, 0 failures, 0 non-judgment FAIL lines
+```
+
+`mat_g1_na_q1_8` re-rendered **identically** (0 stale samples), so its existing review stayed valid and
+was not re-reviewed — only `mat_g2_na_q1_10` needed a fresh packet.
+
+Blind re-review of `mat_g2_na_q1_10` (reviewer never saw the fix): **CONCERN**, unchanged as a verdict
+but for narrower reasons. The scale objection is no longer "capped at 97"; it is now that only the
+associative samples reach toward 1000 while the zero-identity (max addend 57) and commutative (max 43)
+samples stay small. Also still open on that node: 2 of 18 samples are plain two-addend sums
+demonstrating no named property, and commutative/associative render only through `mcq`.

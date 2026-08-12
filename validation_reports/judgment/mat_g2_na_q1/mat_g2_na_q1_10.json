@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_na_q1_10",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch C2 (post-fix re-review, properties of addition), 2026-08-12",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch C3 (post-fix re-review, g2 addition properties), 2026-08-12",
   "review_date": "2026-08-12",
   "blind": true,
   "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 54, 72, 500, 501, 502, 600, 601, 602, 603, 604, 605],
@@ -14,9 +14,9 @@
     {"seed": 51, "formatter": "error_detect", "question_text": "Ana says: 0 + 54 = 53. Is Ana correct?", "correct_answer": {"has_error": true, "correct_value": 54}},
     {"seed": 54, "formatter": "cloze", "question_text": "29 + 0 = ___", "correct_answer": 29, "options": [{"key": "A", "value": 29, "text": "29", "is_correct": true}, {"key": "B", "value": 30, "text": "30", "is_correct": false}, {"key": "C", "value": 39, "text": "39", "is_correct": false}, {"key": "D", "value": 28, "text": "28", "is_correct": false}]},
     {"seed": 72, "formatter": "true_false", "question_text": "0 + 51 = 51. True or False?", "correct_answer": true},
-    {"seed": 500, "formatter": "read_fill_in_blank", "question_text": "The two parts are 68 and 11. What is the sum?", "correct_answer": 79},
-    {"seed": 501, "formatter": "mcq", "question_text": "Is (53 + 23) + 21 the same as 53 + (23 + 21)?", "correct_answer": true, "options": [{"key": "A", "value": true, "is_correct": true}, {"key": "B", "value": 76, "is_correct": false}, {"key": "C", "value": 30, "is_correct": false}, {"key": "D", "value": false, "is_correct": false}]},
-    {"seed": 502, "formatter": "mcq", "question_text": "Is (23 + 62) + 3 the same as 23 + (62 + 3)?", "correct_answer": true, "options": [{"key": "A", "value": false, "is_correct": false}, {"key": "B", "value": true, "is_correct": true}, {"key": "C", "value": 95, "is_correct": false}, {"key": "D", "value": 85, "is_correct": false}]},
+    {"seed": 500, "formatter": "read_fill_in_blank", "question_text": "The two parts are 168 and 511. What is the sum?", "correct_answer": 679},
+    {"seed": 501, "formatter": "mcq", "question_text": "Is (553 + 123) + 221 the same as 553 + (123 + 221)?", "correct_answer": true, "options": [{"key": "A", "value": true, "is_correct": true}, {"key": "B", "value": 676, "is_correct": false}, {"key": "C", "value": 430, "is_correct": false}, {"key": "D", "value": false, "is_correct": false}]},
+    {"seed": 502, "formatter": "mcq", "question_text": "Is (623 + 62) + 103 the same as 623 + (62 + 103)?", "correct_answer": true, "options": [{"key": "A", "value": false, "is_correct": false}, {"key": "B", "value": true, "is_correct": true}, {"key": "C", "value": 685, "is_correct": false}, {"key": "D", "value": 561, "is_correct": false}]},
     {"seed": 600, "formatter": "mcq", "question_text": "Is 36 + 3 the same as 3 + 36?", "correct_answer": true, "options": [{"key": "A", "value": false, "is_correct": false}, {"key": "B", "value": 33, "is_correct": false}, {"key": "C", "value": true, "is_correct": true}, {"key": "D", "value": 39, "is_correct": false}]},
     {"seed": 601, "formatter": "true_false", "question_text": "0 + 44 = 44. True or False?", "correct_answer": true},
     {"seed": 602, "formatter": "mcq", "question_text": "Is 43 + 13 the same as 13 + 43?", "correct_answer": true, "options": [{"key": "A", "value": true, "is_correct": true}, {"key": "B", "value": 56, "is_correct": false}, {"key": "C", "value": false, "is_correct": false}, {"key": "D", "value": 30, "is_correct": false}]},
@@ -27,27 +27,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "2 of the 18 samples (seeds 50, 500) ask 'What is the sum?' after stating two arbitrary parts (55 and 3, or 68 and 11), with no zero addend, no order-comparison, and no grouping-comparison, so they practice plain addition rather than any of the three named properties."
+      "rationale": "16 of 18 samples directly exercise a named property (zero, order, or grouping), but seed 50 ('The two parts are 55 and 3. What is the sum?') and seed 500 ('The two parts are 168 and 511. What is the sum?') are plain two-addend sums with no zero addend, no reordering comparison, and no regrouping comparison, so they do not illustrate or apply any property this competency names."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All three named sub-cases appear: the zero property in 9 samples (seeds 43, 46, 51, 54, 72, 601, 603, 604, 605) such as 'What is 0 + 19?', the order-changing property in 4 samples (seeds 44, 45, 600, 602) such as 'Is 32 + 2 the same as 2 + 32?', and the grouping property in 3 samples (seeds 42, 501, 502) such as 'Is (21 + 11) + 6 the same as 21 + (11 + 6)?'"
+      "rationale": "All three named sub-cases appear with multiple instances: the zero property in 9 samples (e.g. seed 43 'What is 0 + 19?' and seed 605 '57 + 0 = 57'), the order (commutative) property in 4 samples (e.g. seed 44 'Is 32 + 2 the same as 2 + 32?'), and the grouping (associative) property in 3 samples (e.g. seed 42 'Is (21 + 11) + 6 the same as 21 + (11 + 6)?'), and the zero property is shown in both 0+n order (seed 43) and n+0 order (seed 604)."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Grouping is introduced with parenthesis notation appropriate to Grade 2, e.g. 'Is (53 + 23) + 21 the same as 53 + (23 + 21)?', and 'Ana says: 0 + 54 = 53. Is Ana correct?' keeps the zero-property check in accessible sentence form for the grade."
+      "rationale": "Phrasing stays short and literal for Grade 2 Quarter 1, e.g. 'Is 43 + 13 the same as 13 + 43?' and '0 + 44 = 44. True or False?', each requiring a single comparison or one addition step, and the three-digit magnitudes used (e.g. seed 501's 553 + 123 + 221) fall within the competency's own stated ceiling of 'sums up to 1000'."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Both the order-changing and grouping sub-cases are rendered only as mcq comparisons, such as 'Is 43 + 13 the same as 13 + 43?' and 'Is (23 + 62) + 3 the same as 23 + (62 + 3)?', while the zero property alone gets error_detect ('Liza says: 57 + 0 = 57. Is Liza correct?'), cloze ('36 + 0 = ___'), and true_false ('0 + 44 = 44. True or False?') treatments."
+      "rationale": "The order property (4 of 4 samples: seeds 44, 45, 600, 602) and the grouping property (3 of 3 samples: seeds 42, 501, 502) are rendered exclusively through the mcq formatter with 'the same as' phrasing (e.g. seed 44: 'Is 32 + 2 the same as 2 + 32?'), while the zero property alone spans four different formatters (mcq, error_detect, cloze, true_false), leaving commutative and associative with no true_false, cloze, or error_detect treatment in this packet."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty varies through addend size and number of terms within the three named properties themselves, moving from 'What is 0 + 19?' to 'What is 0 + 26?' for the zero case and from 'Is (21 + 11) + 6 the same as 21 + (11 + 6)?' to 'Is (53 + 23) + 21 the same as 53 + (23 + 21)?' for grouping, with no unrelated operation appearing."
+      "rationale": "Difficulty is varied through property type and operand digit count, both proper to this competency, e.g. seed 42 uses small two-digit addends (21, 11, 6) for grouping while seed 501 uses three-digit addends (553, 123, 221) for the same property, with no sample substituting an unrelated skill such as subtraction or multiplication."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "The competency states 'using sums up to 1000', but the largest sum actually produced across all 18 samples is 53 + 23 + 21 = 97 in seed 501, and no sample contains a three-digit addend or sum, leaving the range far short of the stated ceiling."
+      "rationale": "The zero property never uses an addend larger than 57 (seed 605: '57 + 0 = 57') and the order property never exceeds 43 (seed 602: '43 + 13'), so neither reaches near the stated 'sums up to 1000' ceiling; only the grouping-property samples and the two non-property sum problems reach three digits, with the largest sum in the packet being 897 from seed 501's 553 + 123 + 221, still short of 1000."
     }
   },
   "overall": "CONCERN"

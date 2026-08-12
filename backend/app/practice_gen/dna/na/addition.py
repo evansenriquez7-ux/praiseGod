@@ -368,19 +368,38 @@ def generate_params(
         every addend >= 1, and capping the tens budget by what the ones column
         already spent keeps the total inside max_total.
         """
+        # Ones: reserve one unit per addend so every addend is >= 1.
         ones_budget = max(0, 9 - count)
         ones = [1] * count
         for i in range(count):
             take = rng.randint(0, ones_budget)
             ones[i] += take
             ones_budget -= take
-        tens_budget = min(9, max(0, (max_total - sum(ones)) // 10))
-        tens = []
-        for _ in range(count):
-            take = rng.randint(0, tens_budget)
-            tens.append(take)
-            tens_budget -= take
-        return [t * 10 + o for t, o in zip(tens, ones)]
+
+        # Each higher column gets its own budget of 9 -- a column whose digits
+        # sum to 9 or less cannot carry -- capped by what the lower columns have
+        # already spent so the total stays inside max_total.
+        #
+        # The hundreds column matters: budgeting ones and tens alone caps every
+        # addend at 99, which silently shrank mat_g2_na_q1_10 ("...properties of
+        # addition using sums up to 1000") to a largest sum of 97. A blind
+        # re-review caught that as a scale_appropriateness CONCERN.
+        columns: List[List[int]] = [ones]
+        running = sum(ones)
+        for place in (10, 100):
+            budget = min(9, max(0, (max_total - running) // place))
+            column = []
+            for _ in range(count):
+                take = rng.randint(0, budget)
+                column.append(take)
+                budget -= take
+            columns.append(column)
+            running += place * sum(column)
+
+        return [
+            ones[i] + 10 * columns[1][i] + 100 * columns[2][i]
+            for i in range(count)
+        ]
 
     if task_type in ("zero_identity", "commutative", "associative"):
         # Regrouping is not a dimension these tasks can vary. "n + 0 = n"
