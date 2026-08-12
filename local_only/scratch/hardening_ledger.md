@@ -1270,3 +1270,36 @@ Also still open, both confirmed by blind declaration and untouched:
 `equal_jumps_on_a_number_line` (`mat_g2_na_q3_1` + `mat_g3_na_q4_0` — start from
 `fmt_number_line.py`'s existing single hop at :157, and note the frontend arc renderer at
 `frontend/src/App.jsx:1435` draws one arc) and `draw_line_relationships` (`mat_g3_mg_q1_5`).
+
+### Tick addendum — the re-review landed and caught two regressions from this cluster's own fixes
+
+Both reviewers finished after the ledger above was written. Their findings were **not** the
+expected "still CONCERN for known reasons" — both named defects **introduced by fixes made in
+this same cluster**, which is the argument for re-reviewing rather than assuming a fix is clean:
+
+1. **Squares lost their dimension label.** `fmt_array_grid`'s read-mode stem tested
+   `shape_type == "rectangle"`, so the square figures the earlier square branch started sending
+   through fell to the generic "Look at the shaded shape." — `mat_g3_mg_q1_0` seed 500 became a
+   10×10 figure with 100 correct, no dimensions, distractors 97/101/102. Fixed.
+2. **Centimetre gardens survived in two places.** The metres pin ran *after* the tiling branch
+   had forced `square_cm`, and a **forced `unit` variant** bypasses it entirely. Two fixes, since
+   there were two causes: branch order corrected, and the **surface noun now follows the unit**
+   ("a square card measuring 5 cm on each side" rather than a 5 cm garden). Overriding a forced
+   variant would have fought the variant system; renaming the surface does not.
+
+Verified: array items 38 / unlabelled stems **0**; tiling surfaces 171 / cm gardens **0**;
+matrix 151/151, 0 failures; stages 1–5 green. Commits `2d7ea6a`, `68c5f2f`.
+
+**Revised census after all four fresh reviews: PASS=56 CONCERN=62 FAIL=33.**
+`mat_g3_mg_q1_3` FAIL → CONCERN and `mat_g3_mg_q1_2` CONCERN, both on fresh packets.
+
+**NON-VERDICT is 8** (the last two fixes restaled the four reviews again). Same handoff as above,
+unchanged: **rebuild packets and re-review all four blind before any new content work.** This is
+now the third consecutive tick where a content fix outran its reviews — the lesson is recorded
+above and is worth acting on rather than repeating: for a four-node cluster, plan the fix and its
+re-review as one unit, and expect the reviewers to be slow (both took ~55 min this tick).
+
+Known remaining findings on the cluster, from the fresh reviews, for whoever picks this up:
+- `q1_1` **FAIL** — the inductive-derivation gap. Tick F. Unchanged and unaffected by any of this.
+- `q1_2` CONCERN — seeds 50/500 byte-identical; 13 of 14 samples use one of two frames.
+- `q1_0` CONCERN — was the "shaded shape" stem, now fixed; needs re-review to confirm.
