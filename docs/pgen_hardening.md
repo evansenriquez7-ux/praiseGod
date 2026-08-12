@@ -175,7 +175,20 @@ A phase without verbatim command output in this log is **not complete**, regardl
 
 ---
 
-## Explicit non-goals
-- Do not redesign difficulty dimensions, variants, or formatters. This plan verifies existing contracts; it does not change pedagogy.
-- Do not add new formatters/variants "while you're in there."
-- Do not modify `pgen_checklist.md` or other docs — that is handled by `doc_rem.md`.
+## Explicit non-goals — ⛔ SUPERSEDED 2026-08-13, DO NOT FOLLOW
+
+> These are kept only so the two documents that cite them by name (`AGENTS.md` Content Rule 4 and
+> `extending_pgen.md`) point at something a reader can actually check, and so nobody re-derives them
+> later. **They are not in force.** The governing rule is `AGENTS.md` Content Rule 4. See the banner
+> at the top of this file for why.
+
+- ~~Do not redesign difficulty dimensions, variants, or formatters. This plan verifies existing
+  contracts; it does not change pedagogy.~~ — **Reversed.** The judgment gate this plan built asks six
+  purely pedagogical questions and `run_all` cannot exit 0 until all of them pass, so this forbade the
+  work it required. Adding a dd/variant/formatter/DNA that a MATATAG competency names is now the fix;
+  `validate_capability` §6C names them for you.
+- ~~Do not add new formatters/variants "while you're in there."~~ — **Reversed**, same reason. The
+  surviving half of the intent is real and lives on in Content Rule 4: build *toward* the written
+  curriculum, never *past* it. Building something the competency does not name is still invention.
+- ~~Do not modify `pgen_checklist.md` or other docs — that is handled by `doc_rem.md`.~~ — **Moot.**
+  `pgen_checklist.md` no longer exists; doc governance is `DOC_RULES.md`.
