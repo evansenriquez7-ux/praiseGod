@@ -2835,3 +2835,57 @@ mat_g3_mg_q1_3 max-difficulty seeds 500-509 use dimensions: [2, 3, 4, 5, 6, 8, 1
 `validate_matrix --node` PASS on all four area nodes and on four array_grid consumers spanning
 the boundary (`mat_g2_na_q3_1`, `mat_g2_na_q3_2`, `mat_g3_na_q3_0`, `mat_g3_na_q4_1`).
 Full `run_all`: 151/151, 0 failures, all ten contract checks, stages 1–5 green.
+
+---
+
+## 2026-08-13 — The tiling word problem had no determinate answer (Tick C)
+
+### The failing rationale
+Two independent blind reviewers, on different nodes and in different ticks, flagged the same
+thing without conferring:
+
+> `mat_g3_mg_q1_0`: "seed 601's `Pia wants to cover a rectangular garden that is 7 cm long and
+> 6 cm wide with square tiles.` never states the tile size, so the keyed 42 rests on an unstated
+> 1 cm tile in an unpicturable 7 cm garden"
+>
+> `mat_g3_mg_q1_3`: "The tiling items never state a tile size, so 'How many tiles are needed to
+> cover it completely?' is determinate only under a silent unit-tile assumption; and seeds 601,
+> 46 and 603 set gardens at 5 cm x 2 cm, 3 cm per side"
+
+This is a **correctness** defect, not a phrasing preference: without the tile size the question
+has no determinate answer, and the keyed count is only right if the reader guesses the
+convention the generator had in mind.
+
+### The fix
+`spines.py` `_AREA_SOLVE` now states the tile: *"with square tiles that are 1 {length_unit} on
+each side."* Both of area.py's shape branches already set `length_unit`, so the slot resolves for
+squares and rectangles alike. Naming the tile also reinforces the square-tile-unit idea these
+Grade 3 area competencies are built on.
+
+`area.py` pins the **garden narration** to metres — a garden measured in centimetres is not a
+garden.
+
+### A correction made during the fix
+Pinning on `context == "word_problem"` alone was too broad: `mat_g3_mg_q1_3`'s *inverse* items
+render in the plain frame ("A rectangle has an area of 126 sq cm and a width of 9 cm"), not as a
+garden, so the first version made that node render in metres **300 times out of 300**, throwing
+away half its unit variety for no gain. Narrowed to exclude `find_missing_dimension`.
+
+### Verification
+```
+mat_g3_mg_q1_2: units {'cm': 152, 'm': 148} | garden items 0, no tile size 0, in cm 0
+mat_g3_mg_q1_3: units {'m': 231, 'cm': 69} | garden items 156, no tile size 0, in cm 0
+```
+
+Across 300 seeds per node: **156 garden items, 0 without a stated tile size, 0 measured in
+centimetres**, and `mat_g3_mg_q1_2` still carries both units its competency names.
+
+```
+seed 42: Daniel wants to cover a rectangular garden that is 4 m long and 3 m wide with square
+         tiles that are 1 m on each side. How many tiles are needed to cover it completely?
+seed 43: Kuya Bien wants to cover a square garden measuring 3 m on each side with square tiles
+         that are 1 m on each side. How many tiles are needed to cover it completely?
+```
+
+`validate_matrix --node` PASS on all four area nodes; full `run_all` 151/151, 0 failures, all ten
+contract checks, stages 1–5 green.

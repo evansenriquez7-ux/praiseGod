@@ -567,8 +567,16 @@ _AREA_SOLVE = Spine(
         # plain non-narrative question -- "solve problems involving areas of
         # squares and rectangles" (mat_g3_mg_q1_3) never posed a genuine
         # square word problem as a result (blind review).
+        # The tile size is stated. Without it ("with square tiles"), the question
+        # has no determinate answer at all -- the keyed count only follows if the
+        # reader silently assumes a 1-unit tile. Two independent blind reviewers
+        # flagged this on separate nodes ("never states the tile size, so the keyed
+        # 42 rests on an unstated 1 cm tile"), which is a correctness defect in the
+        # item rather than a matter of phrasing. Naming the tile also reinforces
+        # the square-tile-unit idea these Grade 3 area competencies are built on.
         "{actor} wants to cover a {shape_noun} garden {dims_phrase} "
-        "with square tiles. How many tiles are needed to cover it completely?"
+        "with square tiles that are 1 {length_unit} on each side. "
+        "How many tiles are needed to cover it completely?"
     ),
     required_concepts={"area"},
     blank_target="answer",

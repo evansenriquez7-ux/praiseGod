@@ -194,6 +194,19 @@ def generate_params(
     if unit is None:
         if task_type in ("illustrate_tiles", "derive_formula"):
             unit = "square_cm"
+        elif context == "word_problem" and task_type != "find_missing_dimension":
+            # Only the *garden* narration is pinned to metres. A garden measured in
+            # centimetres is not a garden -- blind review flagged "gardens at
+            # 5 cm x 2 cm, 3 cm per side" as unpicturable, next to the same frame
+            # reading naturally in metres.
+            #
+            # The inverse task is excluded because it renders in the plain frame
+            # ("A rectangle has an area of 126 sq cm and a width of 9 cm"), not as
+            # a garden, so pinning it too would have made mat_g3_mg_q1_3 render in
+            # metres 300 times out of 300 and thrown away half its unit variety
+            # for no gain. The pure framings below still carry both units, which
+            # is what mat_g3_mg_q1_2's "sq. cm and sq. m" requires.
+            unit = "square_m"
         else:
             unit = rng.choice(["square_cm", "square_m"])
 
