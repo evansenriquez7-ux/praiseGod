@@ -895,15 +895,26 @@ def _build_symbolic_question(
 
         if amounts:
             from collections import Counter
+            # A centavo pile is denominated in centavos throughout, so every
+            # face is written "50¢" and never "₱50" -- and a centavo piece is
+            # always a coin, so the ₱20 bill/coin threshold must not be applied
+            # to it. money_peso.generate_params sets this key; anything without
+            # it is a peso pile, which is every item that existed before centavo
+            # piles were reachable.
+            is_centavo = values.get("denomination_unit") == "centavo"
             counts = Counter(amounts)
             parts = []
             for denom in sorted(counts.keys(), reverse=True):
                 count = counts[denom]
-                is_bill = denom >= 20
-                unit = "bill" if is_bill else "coin"
+                if is_centavo:
+                    unit = "coin"
+                    face = f"{denom}¢"
+                else:
+                    unit = "bill" if denom >= 20 else "coin"
+                    face = f"₱{denom}"
                 if count > 1:
                     unit += "s"
-                parts.append(f"{count} ₱{denom} {unit}")
+                parts.append(f"{count} {face} {unit}")
 
             if len(parts) == 1:
                 desc = parts[0]
@@ -911,6 +922,9 @@ def _build_symbolic_question(
                 desc = f"{parts[0]} and {parts[1]}"
             else:
                 desc = ", ".join(parts[:-1]) + f", and {parts[-1]}"
+            if is_centavo:
+                # Name the unit the answer is in, so the total is unambiguous.
+                return f"What is the total value of {desc}, in centavos?"
             return f"What is the total value of {desc}?"
         else:
             total = values.get("total", values.get("result", a))

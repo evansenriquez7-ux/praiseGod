@@ -191,13 +191,30 @@ def generate_params(
     denom_type = profile.get("denomination_type", "mixed")
     if denom_type == "peso_sub_cases":
         # The registry binds this sentinel for a competency that enumerates the
-        # denomination sub-cases it wants ("peso coins only, peso bills only,
-        # combined peso coins and peso bills"). Pinning one value would leave
-        # the others untested, so rotate them by seed and let a node's sample
-        # set cover each. Centavo-only piles are deliberately absent -- see the
-        # note at the registry binding: this DNA's centavo denominations are
-        # centavo integers and the pile pipeline is peso-integer.
-        denom_type = rng.choice(["coins_only", "bills_only", "mixed"])
+        # denomination sub-cases it wants: "(centavo coins only, peso coins
+        # only, peso bills only, combined peso coins and peso bills)". Pinning
+        # one value would leave the others untested, so rotate them by seed and
+        # let a node's sample set cover each.
+        denom_type = rng.choice(["centavos_only", "coins_only", "bills_only", "mixed"])
+
+    # A centavo pile is denominated in centavos, not pesos. Mixing the two
+    # integer scales in one pile is what kept this sub-case out of the DNA:
+    # _DENOMS_G2_CENTAVOS stores 25 and 50 meaning P0.25 and P0.50, so dropping
+    # them into a peso pool totals them as pesos and labels them "P25". Keeping
+    # a centavo pile *homogeneous* avoids that entirely -- every denomination,
+    # the total, and every label are centavos -- so the only thing the renderers
+    # need is to know which unit they are printing. That is `denomination_unit`.
+    denomination_unit = "centavo" if denom_type == "centavos_only" else "peso"
+    if denomination_unit == "centavo":
+        # max_total arrives in PESOS (the competency ceiling, after difficulty
+        # interpolation). It has to be re-expressed in centavos before it can
+        # cap a centavo pile: interpolation can hand down a peso ceiling below
+        # 50, and the smallest possible centavo pile is two 25c coins = 50, so
+        # a raw peso cap left `candidates` empty and every centavo item fell to
+        # the "two of the smallest denomination" fallback -- five sampled seeds
+        # all rendered the identical "2 25c coins". Convert, then cap for
+        # countability so a P1000 ceiling does not authorise forty coins.
+        max_total = max(50, min(max_total * 100, 500))
     num_diff_scalar = float(profile.get("number_difficulty", 0.5))
 
     if grade == 1 or not allow_centavos:
@@ -205,7 +222,9 @@ def generate_params(
     else:
         denom_pool = _DENOMS_G3_PESOS
 
-    if denom_type == "coins_only":
+    if denom_type == "centavos_only":
+        denom_pool = list(_DENOMS_G2_CENTAVOS)
+    elif denom_type == "coins_only":
         # The coin/bill boundary is defined twice and the two disagreed: the
         # render label is `is_bill = denom >= 20` (here and in
         # base_generator), so P20 is written as "1 P20 bill" -- while this
@@ -302,11 +321,17 @@ def generate_params(
             parts = []
             for denom in sorted(counts.keys(), reverse=True):
                 count = counts[denom]
-                is_bill = denom >= 20
-                unit = "bill" if is_bill else "coin"
+                # Same unit rule as base_generator's copy of this description:
+                # a centavo piece is always a coin and is written "50¢", so the
+                # P20 bill/coin threshold must not be applied to it.
+                if denomination_unit == "centavo":
+                    unit, face = "coin", f"{denom}¢"
+                else:
+                    unit = "bill" if denom >= 20 else "coin"
+                    face = f"₱{denom}"
                 if count > 1:
                     unit += "s"
-                parts.append(f"{count} ₱{denom} {unit}")
+                parts.append(f"{count} {face} {unit}")
             if len(parts) == 1:
                 return parts[0]
             elif len(parts) == 2:
@@ -433,6 +458,10 @@ def generate_params(
         "total":              total,
         "operation":          operation,
         "context":            context,
+        # Which unit every amount in this item is denominated in. The renderers
+        # print "P50 bill" / "P5 coin" for pesos and "50c coin" for centavos;
+        # without this they would label a 50-centavo coin "P50".
+        "denomination_unit":  denomination_unit,
     }
 
     if operation == "find_change":

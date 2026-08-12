@@ -2460,3 +2460,56 @@ census  57 PASS / 60 CONCERN / 34 FAIL
 
 Every remaining gate error is now a non-PASS verdict. Nothing else is hiding: no stale review, no
 boilerplate, no phantom quote, no template skeleton, no reviewer over quota.
+
+---
+
+## 2026-08-12 — Centavo piles reachable (final tick before the loop was stopped)
+
+**Node:** `mat_g2_na_q2_0`. This closes the single blocker isolated two ticks earlier.
+
+### Root cause
+
+The competency names four denomination sub-cases — "(centavo coins only, peso coins only, peso bills
+only, combined peso coins and peso bills)". The first was unreachable: `_DENOMS_G2_CENTAVOS = [25, 50]`
+stores **centavo integers** (₱0.25, ₱0.50) while the pile/total pipeline is **peso-integer**, so the
+constant was referenced nowhere in the file and had always been dead.
+
+### Fix
+
+A centavo pile is kept **homogeneous** — every denomination, the total, and every label are centavos —
+so the two integer scales never mix. The only thing the renderers needed was to know which unit they
+are printing, carried as a new `denomination_unit` value. Both money description sites were updated
+(`money_peso.get_desc` and `base_generator`'s copy); a centavo piece is always a coin, so the ₱20
+bill/coin threshold is not applied to it, and the stem names the unit: "…, in centavos?".
+
+### The unit-conversion bug this exposed
+
+First attempt produced five sampled seeds all rendering the identical `2 25¢ coins`. Cause: `max_total`
+arrives in **pesos** after difficulty interpolation, which can hand down a ceiling below 50 — and the
+smallest possible centavo pile is two 25¢ coins = 50. Every candidate was filtered out and the
+"two of the smallest denomination" fallback fired every time. The ceiling has to be converted to
+centavos before it can cap a centavo pile: `max_total = max(50, min(max_total * 100, 500))`.
+
+```
+                                  BEFORE      first attempt      after conversion
+centavo samples                   0 of 17     5 (all identical)  6 of 18
+distinct centavo stems            --          1                  5 of 6
+centavo totals                    --          50 only            75, 275, 350, 375, 400
+```
+
+### Verification
+
+```
+validate_matrix --node, all 8 money_peso nodes   Total Failures Observed: 0 each
+run_all   EXIT_CODE=1   matrix 151/151, 0 failures, 0 non-judgment FAIL lines
+census 57 PASS / 61 CONCERN / 33 FAIL | stale 0 | non-verdict gate errors 0
+```
+
+### Fresh blind re-review
+
+`mat_g2_na_q2_0`: **FAIL → CONCERN**. Sub-case counts, classified by each sample's own labels:
+centavo coins only **5**, peso coins only **4**, peso bills only **3**. Remaining, honestly reported:
+the "combined peso coins and peso bills" sub-case now appears only as generic "coins and bills"
+phrasing without named denominations of both in one problem (3 of 15); seeds 55 and 500 invert the
+task direction (constructing an amount rather than determining a given set's value); seeds 42 and 46
+are an exact duplicate.
