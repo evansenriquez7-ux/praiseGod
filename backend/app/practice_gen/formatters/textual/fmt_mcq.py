@@ -94,6 +94,16 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             # same root cause as addition.py's identical task types (see
             # that fix for the full explanation).
             return values["question"]
+        if values.get("task_type") == "equal_groups" and blank_target in ("result", "total"):
+            # See base_generator._build_symbolic_question's identical branch.
+            # mat_g2_na_q3_0's competency states the skill in group language
+            # ("create equal groups, using ... '5 groups of 3'"), and this
+            # formatter rebuilds its own pure-context question text
+            # independently of that function, so the same framing has to be
+            # applied here too -- mcq is the majority formatter for this node,
+            # so without this copy the group language never reaches a student.
+            unit = "group" if b == 1 else "groups"
+            return f"There are {b} {unit} of {a}. How many in all?"
         if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total") and 2 <= b <= 5:
             # See base_generator._build_symbolic_question's identical branch:
             # "What is 4 x 3?" doesn't illustrate repeated addition, it just

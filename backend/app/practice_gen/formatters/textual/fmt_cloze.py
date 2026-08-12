@@ -88,6 +88,13 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
             return f"Estimate: {real_a} × {real_b} ≈ ___"
+        if values.get("task_type") == "equal_groups" and blank_target in ("result", "total"):
+            # See base_generator._build_symbolic_question and fmt_mcq.py's
+            # copies of this same branch. Cloze fills a blank rather than
+            # asking a question, so the group language is stated and the total
+            # is what the student supplies.
+            unit = "group" if b == 1 else "groups"
+            return f"{b} {unit} of {a} makes ___ in all"
         if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total") and 2 <= b <= 5:
             # See base_generator._build_symbolic_question's identical branch
             # and fmt_mcq.py's copy of this same fix -- this formatter also

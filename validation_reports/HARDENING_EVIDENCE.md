@@ -2093,3 +2093,80 @@ but for narrower reasons. The scale objection is no longer "capped at 97"; it is
 associative samples reach toward 1000 while the zero-identity (max addend 57) and commutative (max 43)
 samples stay small. Also still open on that node: 2 of 18 samples are plain two-addend sums
 demonstrating no named property, and commutative/associative render only through `mcq`.
+
+---
+
+## 2026-08-12 — Tick C cluster 1c: two repeated-addition competencies bound identically
+
+**Nodes:** `mat_g2_na_q3_0` (fixed here), `mat_g2_na_q3_1` (diagnosed, not yet fixed).
+
+### The failing rationales
+
+> `mat_g2_na_q3_0` [FAIL] competency_fulfillment — "The competency's own example phrasing, '5 groups of
+> 3' and '5 threes', never appears in any of the eleven samples; instead every sample jumps straight to
+> '×' notation, e.g. seed 42's '3 + 3 + 3 + 3 = ___. What is 3 × 4?'"
+> [FAIL] variant_comprehensiveness — "This node's eleven samples are word-for-word identical to node
+> mat_g2_na_q3_1's eleven samples for the same seeds."
+
+### Root cause — different from the previous two Tick C fixes
+
+Not an unbound key. Both competencies contain the literal phrase "repeated addition", so
+`_parse_competency_bounds`' single text match bound **both** nodes to
+`task_type="repeated_addition"` with the same `max_product`. Identical bindings, identical DNA,
+identical seeds — identical output. They are not the same skill:
+
+- `q3_0` — *"Count the number of concrete objects in a group by repeated addition and **create equal
+  groups**, using language such as '5 groups of 3' and '5 threes'."* → the equal-groups model, stated
+  in group language.
+- `q3_1` — *"Illustrate and write multiplication as repeated addition, using a variety of concrete and
+  pictorial models..."* → writing the repeated sum itself.
+
+`"equal groups"` appears only in `q3_0`'s text, so it discriminates them.
+
+### Fix
+
+- `registry.py`: match `"equal groups"` first, binding `task_type="equal_groups"`; the existing
+  `"repeated addition"` match becomes the `elif` and keeps `q3_1`.
+- Render the new task in group language. **The repeated-addition framing turned out to be duplicated
+  in three places** — `base_generator._build_symbolic_question`, `fmt_mcq.py` and `fmt_cloze.py`, each
+  rebuilding its own question text (a pre-existing duplication the code comments already flag). Editing
+  only `base_generator` changed nothing observable, because `mcq` is this node's formatter for every
+  sampled seed. All three now carry the branch.
+- Deliberately **not** gated on a small `b` the way `repeated_addition` is. That gate exists because
+  writing out `b` terms gets unwieldy; group language does not, and gating it would have left the
+  large-`b` seeds on the bare "What is 7 × 10?" form the review flagged.
+
+### Before / after
+
+```
+                                          BEFORE                     AFTER
+q3_0 samples using group language          0 of 11                    10 of 11
+q3_0 bare "What is A x B?" samples         3 of 11 (seeds 500,501,502) 0 of 11
+q3_0 vs q3_1 identical stems              11 of 11                    1 of 11
+
+seed  42  q3_0  "3 + 3 + 3 + 3 = ___. What is 3 x 4?"  ->  "There are 4 groups of 3. How many in all?"
+seed 500  q3_0  "What is 7 x 10?"                      ->  "There are 10 groups of 7. How many in all?"
+
+validate_matrix --node  q3_0, q3_1, q3_2      Total Failures Observed: 0 each
+run_all   EXIT_CODE=1   matrix 151/151, 0 failures, 0 non-judgment FAIL lines
+```
+
+`mat_g2_na_q3_1` re-rendered **identically** (0 stale samples) — only `q3_0`'s binding changed — so its
+review stayed valid and only `q3_0` was re-reviewed.
+
+### Fresh blind re-review (reviewer never saw the fix)
+
+`mat_g2_na_q3_0`: **FAIL → CONCERN**. Remaining, honestly reported:
+
+- The competency names **two** phrasings, "5 groups of 3" **and** "5 threes". The first now appears in
+  10 of 11 samples; the plural-count "5 threes" form appears in **0 of 11**.
+- 10 of 11 samples state groups abstractly with no object noun ("4 groups of 3"); only seed 601 names a
+  concrete referent ("Pia puts 2 leashes in each of 5 bags"), so "concrete objects" is thinly covered.
+- All 11 sampled items are `mcq`.
+
+### Still open on the sibling — `mat_g2_na_q3_1` remains FAIL
+
+Its competency names arrays, counting by multiples, and equal jumps on a number line; the review found
+none of the three in any sample, and no pictorial or concrete model at all. The DNA already declares
+`array_grid_read` / `array_grid_set` among its compatible formatters, so the next step is to find why
+they are never selected for this node rather than to author new content.

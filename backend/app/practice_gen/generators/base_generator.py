@@ -654,6 +654,22 @@ def _build_symbolic_question(
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
             return f"Estimate the product: {real_a} × {real_b}"
+        if values.get("task_type") == "equal_groups" and blank in ["total", "result"]:
+            # "Count the number of concrete objects in a group by repeated
+            # addition and create equal groups, using ... '5 groups of 3'"
+            # (mat_g2_na_q3_0). The competency states the skill in group
+            # language, so the item has to ask it that way; "What is 3 x 5?" is
+            # the bare fact its sibling node already covers.
+            #
+            # Deliberately not gated on a small b the way repeated_addition is
+            # below. That gate exists because writing out b terms gets unwieldy,
+            # but group language does not -- "There are 10 groups of 7" reads
+            # fine -- and gating it would drop the largest samples back to the
+            # bare "What is 7 x 10?" form that blind review flagged on this node
+            # ("bare multiplication-fact recall with no ... grouping language
+            # shown at all").
+            unit = "group" if b == 1 else "groups"
+            return f"There are {b} {unit} of {a}. How many in all?"
         if values.get("task_type") == "repeated_addition" and blank in ["total", "result"] and 2 <= b <= 5:
             # "Illustrate and write multiplication as repeated addition ...
             # using ... numerals" (mat_g2_na_q3_1) -- "What is 4 x 3?" is a

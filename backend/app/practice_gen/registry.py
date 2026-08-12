@@ -354,7 +354,22 @@ def _parse_competency_bounds(
         # repeat-count small enough to write out (see multiplication.py) and
         # the symbolic question renders as an explicit repeated sum instead
         # of "What is 4 x 2?".
-        if "repeated addition" in text:
+        # Both grade-2 repeated-addition competencies contain the phrase
+        # "repeated addition", so a single match bound them identically and
+        # they rendered word-for-word identical samples on all 11 stratified
+        # seeds. They are not the same skill:
+        #   mat_g2_na_q3_0 "Count the number of concrete objects in a group by
+        #     repeated addition and create equal groups, using ... '5 groups of
+        #     3'" -- the equal-groups model, stated in group language.
+        #   mat_g2_na_q3_1 "Illustrate and write multiplication as repeated
+        #     addition ..." -- writing the repeated sum itself.
+        # Blind review scored both FAIL, q3_0 for "'5 groups of 3' and '5
+        # threes' never appears in any of the eleven samples" and for being
+        # "word-for-word identical to node mat_g2_na_q3_1's eleven samples".
+        # "equal groups" appears only in q3_0's text, so it discriminates.
+        if "equal groups" in text:
+            bounds["task_type"] = "equal_groups"
+        elif "repeated addition" in text:
             bounds["task_type"] = "repeated_addition"
 
         # "Estimate the product of 2- to 3-digit numbers by 1- to 2-digit
