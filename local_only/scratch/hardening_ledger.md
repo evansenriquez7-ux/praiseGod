@@ -1209,3 +1209,64 @@ Still open and untouched, both confirmed by blind declaration: `equal_jumps_on_a
 (`mat_g2_na_q3_1` + `mat_g3_na_q4_0`, start from `fmt_number_line.py`'s existing single hop at
 :157 and note the frontend arc renderer at `frontend/src/App.jsx:1435`) and
 `draw_line_relationships` (`mat_g3_mg_q1_5`).
+
+---
+
+## 2026-08-13 — Tick C (cleared the stale reviews, then the indeterminate word problem)
+
+- **Census before:** PASS=56 CONCERN=60 FAIL=35. **Gate: NON-VERDICT=29** — the previous tick's
+  resumption point, `mat_g3_mg_q1_2` and `_3` describing content the generator no longer served.
+- **Unit 1 — cleared the stale reviews (§0's precondition).** Both re-reviewed blind on freshly
+  built packets by a reviewer that saw neither the generator nor the previous verdicts.
+  **NON-VERDICT 29 → 0.** `mat_g3_mg_q1_3` moved **FAIL → CONCERN**: the reviewer independently
+  confirmed last tick's table gating landed, listing every inverse division in its packet
+  (15/5, 8/4, 21/3, 30/5, 28/4, 24/3, 18/3, 24/4 — all inside the 3/4/5 tables, every quotient
+  single-digit) and scoring `scale_appropriateness` PASS.
+  Commit `6661ec4`.
+- **Unit 2 — the tiling word problem had no determinate answer.**
+  - **Root cause:** `spines.py` `_AREA_SOLVE` read "...with square tiles. How many tiles are
+    needed to cover it completely?" — never stating the tile size. The keyed count is only
+    correct if the reader silently assumes a 1-unit tile. **Two independent blind reviewers
+    flagged this on different nodes in different ticks without conferring**, which is what marks
+    it as a correctness defect in the item rather than a phrasing preference.
+  - **Fix:** the spine now states "with square tiles that are 1 {length_unit} on each side"; both
+    of area.py's shape branches already set `length_unit`. The garden narration is pinned to
+    metres (blind review: "gardens at 5 cm x 2 cm, 3 cm per side" are unpicturable).
+  - **A correction made mid-fix:** pinning on `context == "word_problem"` alone was too broad —
+    `q1_3`'s *inverse* items render in the plain frame, not as a garden, so the first version made
+    that node render metres **300/300** and threw away half its unit variety. Narrowed to exclude
+    `find_missing_dimension`; it now reads 231 m / 69 cm.
+  - **Verification:** across 300 seeds per node — **156 garden items, 0 without a stated tile
+    size, 0 measured in centimetres**; `q1_2` still carries both units its competency names
+    (152 cm / 148 m). `validate_matrix --node` PASS ×4. `run_all` 151/151, 0 failures, all ten
+    contract checks, stages 1–5 green, EXIT_CODE=1 red only at 6/7 and 7/7.
+  - Commit `82d0e8e`.
+- **Census after:** PASS=56 CONCERN=61 FAIL=34.
+
+### ⚠️ RESUMPTION POINT — first item next tick
+
+**NON-VERDICT is 9**, not 0: the Unit 2 spine change made all four area reviews stale
+(`q1_0` 1, `q1_1` 1, `q1_2` 1, `q1_3` 6). Two blind reviewers were dispatched on fresh packets
+(`t5_*.json`) and were still running when the tick ended. **Rebuild the packets and re-review all
+four blind before any new content work** — §0 requires NON-VERDICT to be 0 first. Do **not**
+hand-edit those files.
+
+This is the second tick running where a content fix outran its reviews. The pattern is now clear
+and worth planning around: **any spine or DNA change invalidates every review of every node that
+DNA serves**, so budget the re-review as part of the fix, not after it — a four-node cluster costs
+roughly two reviewer dispatches, and they are slow.
+
+### Next tick should, after clearing the stale reviews:
+
+`mat_g3_mg_q1_1` is **FAIL** on a fresh reviewer and its gap is the real one: "Explore
+**inductively** the derivation of the formulas" is still served by stems that hand the rule over
+(`Using the formula rows × columns, what is the total number of tiles?`). No binding fixes this —
+it needs a genuine multi-case inductive item where the student compares several tilings and states
+the rule, and the answer object is a *formula*, not a number. The blind Declarer said the same
+independently ("it needs a multi-case sweep"). **That is a Tick F**, and it is the last thing
+standing between this cluster and a clean set.
+
+Also still open, both confirmed by blind declaration and untouched:
+`equal_jumps_on_a_number_line` (`mat_g2_na_q3_1` + `mat_g3_na_q4_0` — start from
+`fmt_number_line.py`'s existing single hop at :157, and note the frontend arc renderer at
+`frontend/src/App.jsx:1435` draws one arc) and `draw_line_relationships` (`mat_g3_mg_q1_5`).
