@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g3_mg_q2_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch C1b (post-fix re-review, g3 mass/capacity), 2026-08-12",
   "review_date": "2026-08-12",
   "blind": true,
   "sample_seeds": [
@@ -24,17 +24,101 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Which is heavier: 15 g or 4 g?",
-      "correct_answer": 15,
+      "question_text": "Which is heavier: 19 g or 51 g?",
+      "correct_answer": 51,
       "options": [
         {
           "key": "A",
-          "value": 16,
+          "value": 52,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 53,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 51,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 50,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Which is heavier: 2 g or 22 g?",
+      "correct_answer": 22,
+      "options": [
+        {
+          "key": "A",
+          "value": 22,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 23,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "Which is heavier: 15 kg or 16 kg?",
+      "correct_answer": 16,
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "B",
           "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 16,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Which is heavier: 15 kg or 3 kg?",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
           "is_correct": false
         },
         {
@@ -50,38 +134,10 @@
       ]
     },
     {
-      "seed": 43,
+      "seed": 46,
       "formatter": "mcq",
-      "question_text": "Which is heavier: 5 g or 37 g?",
-      "correct_answer": 37,
-      "options": [
-        {
-          "key": "A",
-          "value": 37,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 36,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 39,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 38,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "mcq",
-      "question_text": "Which is heavier: 53 g or 67 g?",
-      "correct_answer": 67,
+      "question_text": "Which is heavier: 64 mg or 11 mg?",
+      "correct_answer": 64,
       "options": [
         {
           "key": "A",
@@ -90,73 +146,17 @@
         },
         {
           "key": "B",
-          "value": 68,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 69,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 67,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Which is heavier: 35 g or 54 g?",
-      "correct_answer": 54,
-      "options": [
-        {
-          "key": "A",
-          "value": 56,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 55,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 54,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 53,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Which is heavier: 10 g or 52 g?",
-      "correct_answer": 52,
-      "options": [
-        {
-          "key": "A",
-          "value": 54,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 52,
+          "value": 64,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 51,
+          "value": 63,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 53,
+          "value": 65,
           "is_correct": false
         }
       ]
@@ -164,31 +164,31 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "Which is heavier: 64 g or 35 g?",
-      "correct_answer": 64,
+      "question_text": "Which is heavier: 11 g or 33 g?",
+      "correct_answer": 33,
       "options": [
         {
           "key": "A",
-          "value": 65,
-          "text": "65",
+          "value": 34,
+          "text": "34",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 64,
-          "text": "64",
+          "value": 33,
+          "text": "33",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 66,
-          "text": "66",
+          "value": 35,
+          "text": "35",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 63,
-          "text": "63",
+          "value": 32,
+          "text": "32",
           "is_correct": false
         }
       ]
@@ -196,31 +196,31 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "Which is heavier: 3782 g or 4315 g?",
-      "correct_answer": 4315,
+      "question_text": "Which is heavier: 420 kg or 434 kg?",
+      "correct_answer": 434,
       "options": [
         {
           "key": "A",
-          "value": 4315,
-          "text": "4315",
+          "value": 434,
+          "text": "434",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 4314,
-          "text": "4314",
+          "value": 433,
+          "text": "433",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 4316,
-          "text": "4316",
+          "value": 435,
+          "text": "435",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 4317,
-          "text": "4317",
+          "value": 436,
+          "text": "436",
           "is_correct": false
         }
       ]
@@ -228,27 +228,27 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "Which is heavier: 2317 g or 2898 g?",
-      "correct_answer": 2898,
+      "question_text": "Which is heavier: 3200 mg or 4228 mg?",
+      "correct_answer": 4228,
       "options": [
         {
           "key": "A",
-          "value": 2898,
+          "value": 4228,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 2900,
+          "value": 4230,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 2897,
+          "value": 4227,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 2899,
+          "value": 4229,
           "is_correct": false
         }
       ]
@@ -256,27 +256,27 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Which is heavier: 4142 g or 2978 g?",
-      "correct_answer": 4142,
+      "question_text": "Which is heavier: 2351 mg or 2593 mg?",
+      "correct_answer": 2593,
       "options": [
         {
           "key": "A",
-          "value": 4143,
+          "value": 2594,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 4142,
+          "value": 2593,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 4144,
+          "value": 2595,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 4141,
+          "value": 2592,
           "is_correct": false
         }
       ]
@@ -284,27 +284,27 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Which is heavier: 34 g or 45 g?",
-      "correct_answer": 45,
+      "question_text": "Which is heavier: 4 mg or 6 mg?",
+      "correct_answer": 6,
       "options": [
         {
           "key": "A",
-          "value": 46,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 44,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 45,
+          "value": 6,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 47,
+          "value": 8,
           "is_correct": false
         }
       ]
@@ -312,31 +312,31 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Which is heavier: 25 g or 70 g?",
-      "correct_answer": 70,
+      "question_text": "Which is heavier: 2 kg or 19 kg?",
+      "correct_answer": 19,
       "options": [
         {
           "key": "A",
-          "value": 69,
-          "text": "69",
+          "value": 18,
+          "text": "18",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 71,
-          "text": "71",
+          "value": 20,
+          "text": "20",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 72,
-          "text": "72",
+          "value": 21,
+          "text": "21",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 70,
-          "text": "70",
+          "value": 19,
+          "text": "19",
           "is_correct": true
         }
       ]
@@ -344,27 +344,27 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Which is heavier: 52 g or 24 g?",
-      "correct_answer": 52,
+      "question_text": "Which is heavier: 20 mg or 30 mg?",
+      "correct_answer": 30,
       "options": [
         {
           "key": "A",
-          "value": 52,
+          "value": 30,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 54,
+          "value": 32,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 53,
+          "value": 31,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 51,
+          "value": 29,
           "is_correct": false
         }
       ]
@@ -372,27 +372,27 @@
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "Which is heavier: 22 g or 42 g?",
-      "correct_answer": 42,
+      "question_text": "Which is heavier: 2 kg or 3 kg?",
+      "correct_answer": 3,
       "options": [
         {
           "key": "A",
-          "value": 44,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 42,
+          "value": 3,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 43,
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 41,
+          "value": 2,
           "is_correct": false
         }
       ]
@@ -400,27 +400,27 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Which is heavier: 9 g or 26 g?",
-      "correct_answer": 26,
+      "question_text": "Which is heavier: 4 kg or 13 kg?",
+      "correct_answer": 13,
       "options": [
         {
           "key": "A",
-          "value": 26,
+          "value": 13,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 25,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 27,
+          "value": 14,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 28,
+          "value": 15,
           "is_correct": false
         }
       ]
@@ -428,31 +428,31 @@
     {
       "seed": 605,
       "formatter": "cloze",
-      "question_text": "Which is heavier: 23 g or 56 g?",
-      "correct_answer": 56,
+      "question_text": "Which is heavier: 4 g or 28 g?",
+      "correct_answer": 28,
       "options": [
         {
           "key": "A",
-          "value": 56,
-          "text": "56",
+          "value": 28,
+          "text": "28",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 57,
-          "text": "57",
+          "value": 29,
+          "text": "29",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 55,
-          "text": "55",
+          "value": 27,
+          "text": "27",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 58,
-          "text": "58",
+          "value": 30,
+          "text": "30",
           "is_correct": false
         }
       ]
@@ -460,29 +460,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The competency specifically calls for comparing masses 'including the use of a balance scale', but no sample mentions or depicts a scale of any kind — every item is a bare numeric comparison, e.g. seed 42's 'Which is heavier: 15 g or 4 g?'"
+      "verdict": "PASS",
+      "rationale": "Seed 44 asks \"Which is heavier: 15 kg or 16 kg?\", which directly targets the comparison verb in the competency, and the correct option is always the larger magnitude (16 over 15 there, and 51 over 19 at seed 42)."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Balance-scale use, the competency's named method, has zero representation across all fifteen samples, and kilograms/milligrams are likewise absent — only grams are ever compared."
+      "verdict": "PASS",
+      "rationale": "All three mass units are exercised as the compared pair: g (e.g. seed 42, \"19 g or 51 g\"), kg (seed 44, \"15 kg or 16 kg\") and mg (seed 46, \"64 mg or 11 mg\"), and every comparison keeps both quantities in the same unit rather than mixing units."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The numeric comparisons themselves are simple and age-appropriate for Grade 3."
+      "rationale": "The stems are a single clause with no computation required beyond magnitude comparison, matching a Grade 3 reading level, and the numerals stay within whole numbers the grade has already met."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Every sample follows the same structure as seed 42's 'Which is heavier: 15 g or 4 g?' with no balance-scale-based item to add variety."
+      "verdict": "PASS",
+      "rationale": "Gaps between the two compared masses vary from wide (seed 45, 15 kg vs 3 kg) to narrow (seed 44, 15 kg vs 16 kg), which exercises both easy and close-call comparisons rather than only obvious ones."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "Difficulty varies only by how close the two gram values are, never by the balance-scale comparison method the competency specifically names."
+      "verdict": "PASS",
+      "rationale": "The distractors in every item are near-miss numerals close to the two given masses (e.g. seed 601 offers 18, 19, 20, 21 around the true 2 kg vs 19 kg comparison), keeping the tested skill on magnitude judgment rather than an unrelated axis."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The gram values compared (4 g up to about 4300 g) are individually plausible object masses."
+      "rationale": "Compared g values run 2-51, kg values run 2-434, and mg values run 4-4228, and confirmed programmatically none of the 15 pairs in this packet compares two equal quantities."
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }

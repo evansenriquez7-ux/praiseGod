@@ -54,6 +54,40 @@ _DIFFICULTY_AXES: Dict[str, Any] = {
 }
 
 
+# ─── units ────────────────────────────────────────────────────────────────────
+# The units each measurement type may be read in, in the order the MATATAG
+# competency names them. `generate_params` cycles these by seed so a node's
+# sample set covers every unit its competency names.
+#
+# Before this existed, `generate_params` read a `unit` key off the difficulty
+# profile that no axis ever declared and no registry binding ever set, so it was
+# pinned to its default forever: every mass item rendered in grams and every
+# capacity item in millilitres, and the kg->g branch of `convert` was dead code.
+# Blind review caught it on both nodes -- "kilograms and milligrams never
+# appear" (mat_g3_mg_q2_0) and "liters never appear" (mat_g3_mg_q2_3).
+_UNITS_FOR: Dict[str, tuple] = {
+    "mass":     ("g", "kg", "mg"),
+    "capacity": ("mL", "L"),
+}
+
+# Sensible Grade 3 reading magnitudes per unit. Every range sits inside the
+# numeric envelope declared in _PARAM_BOUNDS, so unit variation cannot push a
+# value past the bounds the harness checks.
+_UNIT_RANGE: Dict[str, tuple] = {
+    "g":  (1, 5000),
+    "kg": (1, 500),
+    "mg": (1, 5000),
+    "mL": (1, 5000),
+    "L":  (1, 500),
+}
+
+# Conversion partners, for the `convert` task only.
+_CONVERSION_PAIRS: Dict[str, tuple] = {
+    "mass":     ("g", "kg"),
+    "capacity": ("mL", "L"),
+}
+
+
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
 VOCAB_GRAM     = VocabGated(requires_vocab="gram",      preferred="gram (g)",       fallback="small unit of mass")
 VOCAB_KILOGRAM = VocabGated(requires_vocab="kilogram",  preferred="kilogram (kg)",  fallback="larger unit of mass")
@@ -66,12 +100,22 @@ VOCAB_CAPACITY = VocabGated(requires_vocab="capacity",  preferred="capacity",   
 # ─── parameter generator ──────────────────────────────────────────────────────
 
 def _round_unit_for(val: int) -> int:
-    """Pick a sensible rounding granularity for an estimate task by magnitude."""
+    """
+    Pick a sensible rounding granularity for an estimate task by magnitude.
+
+    Every granularity must be a place-value column. This returned 500 for
+    values >= 1000, which is not a column any elementary curriculum rounds to --
+    "rounded to the nearest 500" is not an instruction a Grade 3 pupil has been
+    taught to follow. It was unreachable while readings were capped low enough,
+    and became visible once a node started reading in milligrams; a blind review
+    caught it on `An object's mass measures 1927 mg. About how many mg is that,
+    rounded to the nearest 500?`.
+    """
     if val < 100:
         return 10
     if val < 1000:
         return 100
-    return 500
+    return 1000
 
 
 def _nudge_off_round(val: int) -> int:
@@ -119,150 +163,137 @@ def generate_params(
     For 'convert' task: produces value in one unit, answer in the other.
     For 'compare': produces two values, answer is the heavier/larger one.
     """
-    rng = random.Random(seed)
     profile = difficulty_profile or {}
     bounds = _PARAM_BOUNDS["g3"]
 
-    mtype     = profile.get("measurement_type", "mass")
-    unit      = profile.get("unit", "grams_kilograms")
-    task_type = profile.get("task_type", "read_measurement")
+    # No silent defaults. Both of these are bound by the registry for every
+    # mapped node; if one is missing the binding is broken and a default would
+    # hide it (Ground Rule 3 / CLAUDE.md Protocol 3). Failing loudly here is
+    # what makes a missing binding findable instead of silently serving mass
+    # content for a capacity competency.
+    mtype = profile.get("measurement_type")
+    if mtype not in _UNITS_FOR:
+        raise ValueError(
+            f"mass_capacity: 'measurement_type' must be bound to one of "
+            f"{sorted(_UNITS_FOR)}, got {mtype!r} (grade={grade}, seed={seed}). "
+            f"The registry competency bounds for this node do not pin it."
+        )
+    task_type = profile.get("task_type")
+    if not task_type:
+        raise ValueError(
+            f"mass_capacity: 'task_type' is not bound for this node "
+            f"(measurement_type={mtype!r}, grade={grade}, seed={seed}); "
+            f"a default would silently serve the wrong competency."
+        )
     scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
 
-    if mtype == "mass":
-        g_min, g_max = bounds["mass_g_min"], bounds["mass_g_max"]
-        g_max = max(g_min, int(log_interpolate(g_min, g_max, scalar)))
-        val_g = rng.randint(g_min, g_max)
+    # Decorrelate the mass and capacity streams. They previously shared one
+    # `random.Random(seed)` over identical bounds (1..5000 for both), so the
+    # same seed produced the same number on both sides and the mass and
+    # capacity nodes rendered identical readings that differed only in the unit
+    # label -- blind review found mat_g3_mg_q2_0 and mat_g3_mg_q2_3 identical
+    # on all nine shared seeds.
+    rng = random.Random(f"{seed}:{mtype}")
 
-        if task_type == "convert":
-            # g to kg (always divide by 1000)
-            if unit == "grams_kilograms":
-                # Pick a clean multiple of 1000 for clean conversion
-                val_g = rng.randint(1, 5) * 1000
-                val_kg = val_g // 1000
-                return {
-        "blank_target": "answer",
-                    "measurement_type": "mass",
-                    "task_type": "convert",
-                    "value": val_g,
-                    "from_unit": "g",
-                    "to_unit": "kg",
-                    "answer": val_kg,
-                    "answer_formula": "value_g / 1000",
-                    "conversion_factor": 1000,
-                }
-            # kg to g
-            val_kg = rng.randint(1, 5)
-            return {
-        "blank_target": "answer",
-                "measurement_type": "mass",
-                "task_type": "convert",
-                "value": val_kg,
-                "from_unit": "kg",
-                "to_unit": "g",
-                "answer": val_kg * 1000,
-                "answer_formula": "value_kg * 1000",
-                "conversion_factor": 1000,
-            }
-
-        if task_type == "compare":
-            val_g2 = rng.randint(g_min, g_max)
-            heavier = max(val_g, val_g2)
-            return {
-        "blank_target": "answer",
-                "measurement_type": "mass",
-                "task_type": "compare",
-                "value_a": val_g,
-                "value_b": val_g2,
-                "unit": "g",
-                "answer": heavier,
-                "answer_label": f"{heavier} g",
-            }
-
-        if task_type == "estimate":
-            # "read_measurement" and "estimate" previously returned
-            # byte-identical structure (only the task_type label differed,
-            # which nothing downstream branched on) -- the two competencies
-            # ("measure mass using appropriate tools" vs. "estimate mass")
-            # rendered indistinguishable content. Estimation is framed here
-            # as rounding a precise reading to the nearest round unit
-            # (a legitimate G3 interpretation that doesn't require an
-            # external object-reference database the way "estimate a
-            # paperclip's mass" would).
-            val_g = _nudge_off_round(val_g)
-            rounded = _round_for_estimate(val_g)
-            return {
-        "blank_target": "answer",
-                "measurement_type": "mass",
-                "task_type": "estimate",
-                "value": val_g,
-                "round_to": _round_unit_for(val_g),
-                "unit": "g",
-                "answer": rounded,
-            }
-        # read_measurement
-        return {
-        "blank_target": "answer",
-            "measurement_type": "mass",
-            "task_type": task_type,
-            "value": val_g,
-            "unit": "g",
-            "answer": val_g,
-        }
-
-    # capacity
-    ml_min, ml_max = bounds["capacity_ml_min"], bounds["capacity_ml_max"]
-    ml_max = max(ml_min, int(log_interpolate(ml_min, ml_max, scalar)))
-    val_ml = rng.randint(ml_min, ml_max)
+    units = _UNITS_FOR[mtype]
+    base_unit = units[0]
 
     if task_type == "convert":
-        val_ml = rng.randint(1, 5) * 1000
-        val_l  = val_ml // 1000
+        small, large = _CONVERSION_PAIRS[mtype]
+        if rng.random() < 0.5:
+            # small -> large (divide): pick a clean multiple for a clean answer
+            val = rng.randint(1, 5) * 1000
+            return {
+                "blank_target": "answer",
+                "measurement_type": mtype,
+                "task_type": "convert",
+                "value": val,
+                "from_unit": small,
+                "to_unit": large,
+                "answer": val // 1000,
+                "answer_formula": f"value_{small} / 1000",
+                "conversion_factor": 1000,
+            }
+        # large -> small (multiply)
+        val = rng.randint(1, 5)
         return {
-        "blank_target": "answer",
-            "measurement_type": "capacity",
+            "blank_target": "answer",
+            "measurement_type": mtype,
             "task_type": "convert",
-            "value": val_ml,
-            "from_unit": "mL",
-            "to_unit": "L",
-            "answer": val_l,
-            "answer_formula": "value_ml / 1000",
+            "value": val,
+            "from_unit": large,
+            "to_unit": small,
+            "answer": val * 1000,
+            "answer_formula": f"value_{large} * 1000",
             "conversion_factor": 1000,
         }
 
+    # Every remaining task reads a magnitude in one of the competency's named
+    # units. Cycling the unit by seed is what gives a node's sample set
+    # coverage of all of them.
+    unit = units[rng.randrange(len(units))]
+    u_min, u_max = _UNIT_RANGE[unit]
+    u_max = max(u_min, int(log_interpolate(u_min, u_max, scalar)))
+    val = rng.randint(u_min, u_max)
+
     if task_type == "compare":
-        val_ml2 = rng.randint(ml_min, ml_max)
-        larger = max(val_ml, val_ml2)
+        # The two readings must differ. A tie renders "Which is heavier: 4 mg or
+        # 4 mg?", which has no correct answer, yet the MCQ formatter still marks
+        # one option correct -- an unanswerable item presented as answerable.
+        # Ties were always possible here (two draws from one range) and became
+        # likely once readings were drawn from the narrower per-unit ranges.
+        #
+        # A comparison also needs a range at least two values wide. At
+        # scalar 0.0 the log interpolation collapses the upper bound onto the
+        # lower one, so the easiest setting had nothing to compare; widening by
+        # one keeps the easiest item well-formed (compare the two smallest
+        # magnitudes) rather than ungenerable.
+        hi = max(u_max, u_min + 1)
+        val_a = rng.randint(u_min, hi)
+        val_b = rng.randint(u_min, hi)
+        if val_b == val_a:
+            val_b = val_a + 1 if val_a < hi else val_a - 1
+        winner = max(val_a, val_b)
         return {
-        "blank_target": "answer",
-            "measurement_type": "capacity",
+            "blank_target": "answer",
+            "measurement_type": mtype,
             "task_type": "compare",
-            "value_a": val_ml,
-            "value_b": val_ml2,
-            "unit": "mL",
-            "answer": larger,
-            "answer_label": f"{larger} mL",
+            "value_a": val_a,
+            "value_b": val_b,
+            "unit": unit,
+            "answer": winner,
+            "answer_label": f"{winner} {unit}",
         }
 
     if task_type == "estimate":
-        val_ml = _nudge_off_round(val_ml)
-        rounded = _round_for_estimate(val_ml)
+        # "read_measurement" and "estimate" previously returned byte-identical
+        # structure (only the task_type label differed, which nothing
+        # downstream branched on) -- the two competencies ("measure mass using
+        # appropriate tools" vs. "estimate mass") rendered indistinguishable
+        # content. Estimation is framed here as rounding a precise reading to
+        # the nearest round unit (a legitimate G3 interpretation that doesn't
+        # require an external object-reference database the way "estimate a
+        # paperclip's mass" would).
+        val = _nudge_off_round(val)
         return {
-        "blank_target": "answer",
-            "measurement_type": "capacity",
+            "blank_target": "answer",
+            "measurement_type": mtype,
             "task_type": "estimate",
-            "value": val_ml,
-            "round_to": _round_unit_for(val_ml),
-            "unit": "mL",
-            "answer": rounded,
+            "value": val,
+            "round_to": _round_unit_for(val),
+            "unit": unit,
+            "answer": _round_for_estimate(val),
         }
 
+    # read_measurement
     return {
         "blank_target": "answer",
-        "measurement_type": "capacity",
+        "measurement_type": mtype,
         "task_type": task_type,
-        "value": val_ml,
-        "unit": "mL",
-        "answer": val_ml,
+        "value": val,
+        "unit": unit,
+        "answer": val,
+        "base_unit": base_unit,
     }
 
 
@@ -318,15 +349,27 @@ def generate_hints(
             f"The larger number is heavier (or holds more): {values['answer']} {unit}.",
         ]
 
+    # The reading hints must name the unit the item actually used. They used to
+    # say "g" and "mL" unconditionally, which was harmless only while every
+    # item was generated in those two units; now that a node cycles through the
+    # units its competency names, a hardcoded label would contradict the stem.
+    unit = values.get("unit")
+    if not unit:
+        raise ValueError(
+            f"mass_capacity.generate_hints: no 'unit' in values for a "
+            f"{task_type!r} {mtype!r} item; cannot write a hint without knowing "
+            f"the unit shown. values={values!r}"
+        )
+
     if mtype == "mass":
         return [
             f"Read the scale carefully.",
-            f"The mass shown is {values['value']} g.",
+            f"The mass shown is {values['value']} {unit}.",
             f"Remember: 1000 {g_label} = 1 {kg_label}.",
         ]
     return [
         f"Read the container's measurement carefully.",
-        f"The capacity shown is {values['value']} mL.",
+        f"The capacity shown is {values['value']} {unit}.",
         f"Remember: 1000 {ml_label} = 1 {l_label}.",
     ]
 

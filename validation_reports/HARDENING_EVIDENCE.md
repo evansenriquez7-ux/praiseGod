@@ -1875,3 +1875,101 @@ $ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_
 These four nodes' judgment files still need a fresh blind re-review (they are
 part of the same in-progress curriculum-debt backlog effort as the rest of
 the `task_type="estimate"` port) — not yet dispatched as of this entry.
+
+---
+
+## 2026-08-12 — Tick C cluster 1: mass/capacity unit axis never bound (6 nodes)
+
+**Nodes:** `mat_g3_mg_q2_0` … `mat_g3_mg_q2_5` (measure / estimate / compare × mass / capacity).
+
+### The failing rationales that motivated the fix
+
+From the blind reviews filed at `881f1fa`:
+
+> `mat_g3_mg_q2_0` [FAIL] competency_fulfillment — "The competency names three units — 'grams (g),
+> kilograms (kg) and/or milligrams (mg)' — but every one of the nine samples asks 'What is the weight
+> of the object in g?'; kilograms and milligrams never appear."
+
+> `mat_g3_mg_q2_3` [FAIL] comprehensive_coverage — "This node's nine correct answers (15, 5, 53, 35,
+> 10, 64, 3782, 2317, 4142) are the identical numbers used in the sibling mass node's gram readings
+> for the same seeds, with only the unit label swapped from 'g' to 'mL'."
+
+### Root cause
+
+`mass_capacity.py` read a `unit` key off the difficulty profile:
+
+```python
+unit = profile.get("unit", "grams_kilograms")     # line 127, before
+```
+
+but `_DIFFICULTY_AXES` declared only `number_difficulty`. **`unit` was never a declared axis, so no
+orchestrator ever varied it and no registry binding ever set it** — it was pinned to its default
+forever. Consequences:
+
+1. `read_measurement`, `estimate` and `compare` never consulted `unit` at all; they hardcoded
+   `"unit": "g"` and `"unit": "mL"`. Kilograms, milligrams and litres were unreachable on every node.
+2. The kg→g branch of `convert` (lines 153–165) was dead code.
+3. `_PARAM_BOUNDS["g3"]` gave mass and capacity the **identical** envelope `1..5000`, and both drew
+   from one `random.Random(seed)`. Same seed → same number → the mass and capacity nodes rendered
+   identical readings differing only in the label.
+
+This is the recurring pattern from the loop protocol §1 rule 5: a sub-concept the competency names is
+never bound, and a silent default governs instead.
+
+### Fix
+
+- Added `_UNITS_FOR` / `_UNIT_RANGE`; `generate_params` now cycles the units a competency names, with
+  per-unit magnitude ranges that stay inside the declared `_PARAM_BOUNDS` envelope.
+- `measurement_type` and `task_type` now **raise** (naming grade and seed) instead of defaulting.
+- RNG seeded `f"{seed}:{mtype}"`, decorrelating the mass and capacity streams.
+- Hints emit the item's actual unit instead of a hardcoded `g` / `mL`, and raise if none is present.
+
+Two further defects surfaced by the post-fix blind review, both fixed in the same change:
+
+- **Unanswerable comparisons.** `Which is heavier: 4 mg or 4 mg?` — a tie, with MCQ still marking one
+  option correct. Ties were always possible (two draws from one range) and became likely at the
+  narrower per-unit ranges. Comparisons now guarantee two distinct values.
+- **Non-place-value rounding.** `_round_unit_for` returned `500` for values ≥ 1000, producing
+  "rounded to the nearest 500" — not a column any elementary curriculum teaches. Now returns `1000`.
+  Unreachable before; visible once a node started reading in milligrams.
+
+The first tie fix raised at `scalar 0.0`, where `log_interpolate` collapses the range to `[1, 1]`.
+That was a real design flaw the guard exposed, not a false alarm: the easiest setting had nothing to
+compare. Comparisons now widen the upper bound by one rather than becoming ungenerable.
+
+### Before / after
+
+```
+rendering, seeds 42-502
+  BEFORE  mat_g3_mg_q2_0 units seen: {g}          answers [15, 5, 53, 35, 10, 64, 3782, 2317, 4142]
+          mat_g3_mg_q2_3 units seen: {mL}         answers [15, 5, 53, 35, 10, 64, 3782, 2317, 4142]
+          IDENTICAL? True
+  AFTER   mat_g3_mg_q2_0 units seen: {g:3, kg:3, mg:3}   answers [7, 31, 18, 20, 62, 26, 307, 1927, 454]
+          mat_g3_mg_q2_3 units seen: {mL:3, L:6}         answers [56, 16, 69, 14, 18, 3, 285, 192, 2893]
+          IDENTICAL? False
+
+validate_matrix --node <each of the 6>      Total Failures Observed: 0   (all six)
+tie sweep, 97 compare items over 58 seeds   0 ties
+rounding bases over the same sweep          {10, 100, 1000} only — no non-place-value base
+
+run_all   EXIT_CODE=1   313 -> 285 judgment problems
+          6 stages ran; matrix 151/151, 0 failures; 0 non-judgment FAIL lines; 0 STALE errors
+          PASS contract_doc_matches_registry   PASS two_direction_contract_match
+```
+
+### Fresh blind re-review (reviewer never saw the fix)
+
+The six filed reviews were deleted and the nodes re-reviewed blind from a rebuilt packet:
+
+```
+mat_g3_mg_q2_0:     FAIL  ->  PASS
+mat_g3_mg_q2_1:     FAIL  ->  PASS
+mat_g3_mg_q2_2:     FAIL  ->  PASS
+mat_g3_mg_q2_3:     FAIL  ->  CONCERN
+mat_g3_mg_q2_4:  CONCERN  ->  PASS
+mat_g3_mg_q2_5:  CONCERN  ->  PASS
+```
+
+The remaining CONCERN is unrelated to this binding: `mat_g3_mg_q2_3`'s stem reads "What is the amount
+of liquid of the object in L?" and never uses "capacity", the noun its competency states. That is stem
+wording, not unit coverage, and belongs to a separate fix.

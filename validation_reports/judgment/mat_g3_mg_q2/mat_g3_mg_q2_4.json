@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g3_mg_q2_4",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B7a (g3 mg_q2_4-q4 + na_q1), 2026-08-12",
+  "reviewed_by": "Claude Sonnet blind reviewer, batch C1b (post-fix re-review, g3 mass/capacity), 2026-08-12",
   "review_date": "2026-08-12",
   "blind": true,
   "sample_seeds": [
@@ -16,35 +16,33 @@
     600,
     601,
     602,
-    603,
-    604,
-    605
+    604
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "An object's capacity measures 15 mL. About how many mL is that, rounded to the nearest 10?",
-      "correct_answer": 20,
+      "question_text": "An object's capacity measures 56 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 60,
       "options": [
         {
           "key": "A",
-          "value": 21,
+          "value": 61,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 22,
+          "value": 62,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 20,
+          "value": 60,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 19,
+          "value": 59,
           "is_correct": false
         }
       ]
@@ -52,27 +50,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "An object's capacity measures 5 mL. About how many mL is that, rounded to the nearest 10?",
-      "correct_answer": 10,
+      "question_text": "An object's capacity measures 16 L. About how many L is that, rounded to the nearest 10?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 10,
+          "value": 20,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 9,
+          "value": 19,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 12,
+          "value": 22,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 11,
+          "value": 21,
           "is_correct": false
         }
       ]
@@ -80,27 +78,27 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "An object's capacity measures 53 mL. About how many mL is that, rounded to the nearest 10?",
-      "correct_answer": 50,
+      "question_text": "An object's capacity measures 69 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 70,
       "options": [
         {
           "key": "A",
-          "value": 49,
+          "value": 69,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 51,
+          "value": 71,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 52,
+          "value": 72,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 50,
+          "value": 70,
           "is_correct": true
         }
       ]
@@ -108,35 +106,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "An object's capacity measures 35 mL. About how many mL is that, rounded to the nearest 10?",
-      "correct_answer": 40,
-      "options": [
-        {
-          "key": "A",
-          "value": 42,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 41,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 40,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 39,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "An object's capacity measures 11 mL. About how many mL is that, rounded to the nearest 10?",
+      "question_text": "An object's capacity measures 14 L. About how many L is that, rounded to the nearest 10?",
       "correct_answer": 10,
       "options": [
         {
@@ -146,233 +116,25 @@
         },
         {
           "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 10,
           "is_correct": true
         },
         {
-          "key": "C",
+          "key": "D",
           "value": 9,
           "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 11,
-          "is_correct": false
         }
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "An object's capacity measures 64 mL. About how many mL is that, rounded to the nearest 10?",
-      "correct_answer": 60,
-      "options": [
-        {
-          "key": "A",
-          "value": 61,
-          "text": "61",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 60,
-          "text": "60",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 62,
-          "text": "62",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 59,
-          "text": "59",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 500,
-      "formatter": "cloze",
-      "question_text": "An object's capacity measures 3782 mL. About how many mL is that, rounded to the nearest 500?",
-      "correct_answer": 4000,
-      "options": [
-        {
-          "key": "A",
-          "value": 4000,
-          "text": "4000",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 3999,
-          "text": "3999",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4001,
-          "text": "4001",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4002,
-          "text": "4002",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 501,
+      "seed": 46,
       "formatter": "mcq",
-      "question_text": "An object's capacity measures 2317 mL. About how many mL is that, rounded to the nearest 500?",
-      "correct_answer": 2500,
-      "options": [
-        {
-          "key": "A",
-          "value": 2500,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 2502,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2499,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 2501,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "An object's capacity measures 4142 mL. About how many mL is that, rounded to the nearest 500?",
-      "correct_answer": 4000,
-      "options": [
-        {
-          "key": "A",
-          "value": 4001,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4000,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 4002,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3999,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "An object's capacity measures 34 mL. About how many mL is that, rounded to the nearest 10?",
-      "correct_answer": 30,
-      "options": [
-        {
-          "key": "A",
-          "value": 31,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 29,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 30,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 32,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "An object's capacity measures 25 mL. About how many mL is that, rounded to the nearest 10?",
-      "correct_answer": 30,
-      "options": [
-        {
-          "key": "A",
-          "value": 29,
-          "text": "29",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 31,
-          "text": "31",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 32,
-          "text": "32",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 30,
-          "text": "30",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "An object's capacity measures 52 mL. About how many mL is that, rounded to the nearest 10?",
-      "correct_answer": 50,
-      "options": [
-        {
-          "key": "A",
-          "value": 50,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 52,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 51,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 49,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "mcq",
-      "question_text": "An object's capacity measures 22 mL. About how many mL is that, rounded to the nearest 10?",
+      "question_text": "An object's capacity measures 18 L. About how many L is that, rounded to the nearest 10?",
       "correct_answer": 20,
       "options": [
         {
@@ -384,6 +146,214 @@
           "key": "B",
           "value": 20,
           "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 21,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "cloze",
+      "question_text": "An object's capacity measures 3 L. About how many L is that, rounded to the nearest 10?",
+      "correct_answer": 0,
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "text": "0",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "cloze",
+      "question_text": "An object's capacity measures 285 L. About how many L is that, rounded to the nearest 100?",
+      "correct_answer": 300,
+      "options": [
+        {
+          "key": "A",
+          "value": 300,
+          "text": "300",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 299,
+          "text": "299",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 301,
+          "text": "301",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 302,
+          "text": "302",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "An object's capacity measures 192 L. About how many L is that, rounded to the nearest 100?",
+      "correct_answer": 200,
+      "options": [
+        {
+          "key": "A",
+          "value": 200,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 202,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 199,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 201,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "An object's capacity measures 2893 mL. About how many mL is that, rounded to the nearest 1000?",
+      "correct_answer": 3000,
+      "options": [
+        {
+          "key": "A",
+          "value": 3001,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3000,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3002,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2999,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "An object's capacity measures 7 L. About how many L is that, rounded to the nearest 10?",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "An object's capacity measures 21 L. About how many L is that, rounded to the nearest 10?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "text": "19",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 22,
+          "text": "22",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "text": "20",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "An object's capacity measures 18 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "is_correct": false
         },
         {
           "key": "C",
@@ -400,59 +370,27 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "An object's capacity measures 9 mL. About how many mL is that, rounded to the nearest 10?",
-      "correct_answer": 10,
+      "question_text": "An object's capacity measures 51 mL. About how many mL is that, rounded to the nearest 10?",
+      "correct_answer": 50,
       "options": [
         {
           "key": "A",
-          "value": 10,
+          "value": 50,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 9,
+          "value": 49,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 11,
+          "value": 51,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
-      "formatter": "cloze",
-      "question_text": "An object's capacity measures 23 mL. About how many mL is that, rounded to the nearest 10?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "text": "20",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 21,
-          "text": "21",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 19,
-          "text": "19",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 22,
-          "text": "22",
+          "value": 52,
           "is_correct": false
         }
       ]
@@ -461,28 +399,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every sample presents a capacity value in milliliters and asks the student to round it, directly exercising the \"estimate capacity\" verb the competency names; seed 42 asks \"About how many mL is that, rounded to the nearest 10?\" and the correct option is a rounded estimate, not the exact reading."
+      "rationale": "Seed 42 reads \"An object's capacity measures 56 mL. About how many mL is that, rounded to the nearest 10?\", using the competency's own noun \"capacity\" and the estimate-by-rounding action it requires."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The competency's \"and/or\" clause between liters and milliliters permits either unit alone, and all fifteen samples consistently use mL, so the milliliters branch of the estimation skill is fully exercised even though liters never appear in this packet."
+      "rationale": "L is the rounded unit at seeds such as 43 (\"16 L\") and mL at seeds such as 44 (\"69 mL\"), and every rounding result in the packet checks out against the stated base by direct recomputation."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The rounding target scales with the number's size, from nearest 10 for a two-digit value like seed 42's \"15 mL\" up to nearest 500 for a four-digit value like seed 500's \"3782 mL\", matching a Grade 3 Quarter 2 progression."
+      "rationale": "The rounding bases used are [10, 100, 1000], all place-value columns (tens, hundreds, thousands) that Grade 3 pupils are taught, with no invented base like nearest 25 or nearest 5."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Every one of the fifteen samples follows the same stem shape as seed 42's \"An object's capacity measures 15 mL. About how many mL is that, rounded to the nearest 10?\", substituting only the number and rounding unit; no word-problem framing, named object, or real-world container is introduced across any seed."
+      "verdict": "PASS",
+      "rationale": "Both mcq and cloze formatters occur, and the rounding base scales with the number's size (nearest 10 for 7 L, nearest 100 for 285 L, nearest 1000 for 2893 mL), so the estimation skill is exercised at more than one column."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Distractors in every sample are near-miss roundings, such as seed 44's wrong options 49, 51, and 52 clustered around the correct 50, so difficulty is driven by rounding precision, the skill the competency targets."
+      "rationale": "Distractor sets are near-miss values around the correctly rounded answer (seed 502 offers 2999, 3000, 3001, 3002 for a true 3000), keeping the tested skill on rounding precision rather than an unrelated capacity skill."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Values progress from single digits, such as seed 43's \"5 mL\", up into the low thousands, such as seed 502's \"4142 mL\", with the rounding unit raised accordingly, keeping magnitude appropriate rather than trivial or overwhelming."
+      "rationale": "L values run 3-285 and mL values run 18-2893; the seed 50 case of 3 L rounding down to 0 is a correct nearest-10 outcome, not an unrealistic magnitude."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }
