@@ -22,6 +22,7 @@ import multiprocessing
 import os
 import re
 import sys
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
@@ -105,6 +106,27 @@ MAGNITUDE_CAP_AXES: Set[str] = {
 }
 
 
+@lru_cache(maxsize=1)
+def _profile_echo_keys() -> frozenset:
+    """
+    Every `given_values` key that is an echo of the request rather than generated
+    content: difficulty-axis names and variant keys. Derived from the registries so
+    a newly added axis or variant is covered without editing this function.
+    """
+    from backend.app.practice_gen.axes_catalog import CONCEPT_AXES_CATALOG
+    from backend.app.practice_gen.compatibility import VARIANTS_BY_DNA
+
+    keys = set()
+    for axes in CONCEPT_AXES_CATALOG.values():
+        for axis in axes:
+            name = axis.get("name") if isinstance(axis, dict) else getattr(axis, "name", None)
+            if name:
+                keys.add(name)
+    for variants in VARIANTS_BY_DNA.values():
+        keys.update(variants.keys())
+    return frozenset(keys)
+
+
 def _numeric_payload_values(problem: Dict[str, Any]) -> List[Tuple[str, float]]:
     """
     Every plain number a generated problem exposes to the student, labelled for
@@ -119,7 +141,21 @@ def _numeric_payload_values(problem: Dict[str, Any]) -> List[Tuple[str, float]]:
             return
         out.append((label, float(v)))
 
+    # `given_values` mixes real generated operands (a, b, ...) with an echo of the
+    # request's own difficulty profile and variant selections (max_sum, context,
+    # structure, ...). Scanning the echo makes a reach check measure its own input:
+    # a "sums up to 20" node echoes `max_sum: 20`, so §1A-reach saw a peak of 20 and
+    # reported 100% of the ceiling reached while no generated value ever exceeded 19.
+    # That is a false green of exactly the kind the 2026-07-26 audit fixed in §1A/§1B
+    # ("only ever compared the echoed difficulty_profile value, never the numbers the
+    # DNA actually generated") -- the same bug had survived in this sibling helper.
+    #
+    # The excluded set is derived, never hand-listed, so a new axis or variant cannot
+    # reintroduce the echo by being forgotten here.
+    echoed = _profile_echo_keys()
     for k, v in (problem.get("given_values") or {}).items():
+        if k in echoed:
+            continue
         if isinstance(v, (list, tuple)):
             for i, item in enumerate(v):
                 _add(f"given_values.{k}[{i}]", item)

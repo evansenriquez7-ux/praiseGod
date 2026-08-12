@@ -78,3 +78,38 @@ def test_unprovided_capability_names_the_node_and_the_clause():
     assert draw, f"expected an unprovided-capability failure for draw_lines, got {errs}"
     assert "mat_g3_mg_q1_5" in draw[0]
     assert "no pipeline artifact provides it" in draw[0]
+
+
+# --- §1A-reach: the payload scanner must not measure its own input ------------
+
+def test_reach_scanner_excludes_the_echoed_difficulty_profile():
+    """
+    `given_values` echoes the request's difficulty profile alongside real operands.
+    Scanning the echo made §1A-reach measure its own input: a "sums up to 20" node
+    echoes `max_sum: 20`, so the check saw a peak of 20 and reported the ceiling
+    reached while no generated value ever exceeded 19.
+
+    This is the same false-green the 2026-07-26 audit fixed in §1A/§1B ("only ever
+    compared the echoed difficulty_profile value, never the numbers the DNA actually
+    generated"), which had survived in this sibling helper.
+    """
+    from backend.app.practice_gen.validation.validate_matrix import (
+        _numeric_payload_values,
+        _profile_echo_keys,
+    )
+
+    problem = {
+        "given_values": {"a": 9, "b": 10, "max_sum": 20, "context": "pure"},
+        "correct_answer": 19,
+    }
+    labels = {lbl for lbl, _ in _numeric_payload_values(problem)}
+    values = {v for _, v in _numeric_payload_values(problem)}
+
+    assert "given_values.max_sum" not in labels, "the echoed bound is being measured as content"
+    assert 20.0 not in values, "peak reflects the echoed ceiling, not generated content"
+    assert labels == {"given_values.a", "given_values.b", "correct_answer"}
+    assert max(values) == 19.0
+
+    # Derived from the registries, not hand-listed, so a new axis cannot reintroduce it.
+    assert "max_sum" in _profile_echo_keys()
+    assert "context" in _profile_echo_keys()
