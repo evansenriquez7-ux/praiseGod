@@ -1634,3 +1634,58 @@ manufacture a concern to look thorough."*
 6. **139 nodes undeclared, 30 capability gaps.**
 
 **State at handoff: tree clean, NON-VERDICT 0, FAIL down to 32.**
+
+---
+
+## 2026-08-13 — Tick C: the distance clause. **FAIL 32 → 30.**
+
+- **Census before:** PASS=58 CONCERN=61 FAIL=32. Gate: NON-VERDICT=0, tree clean.
+- **Unit 1 — three G2 competencies named distance; none served it.** Measured: **0 of 200 items
+  on each of `mat_g2_mg_q2_0/_1/_2` mentioned a distance at all.** Commit `e005c2f`.
+  - `q2_0` was unbound (`{}`), so `read_measurement` governed and it rendered one stem,
+    "Measure the object. Its length is ___ cm.", on every seed. Bound to a sentinel — the idiom
+    its own G1 siblings already use, and which an earlier fix in `registry.py` had explicitly
+    deferred for this node ("out of scope for this fix").
+  - **The real find: binding it was not enough.** The DNA redirects
+    `distance_between → compare_distance` at grade ≥ 2, and **that redirect sat below the
+    `compare_distance` branch it redirects into** — so a redirected task fell past every handler
+    to the `read_measurement` return at the bottom of the function. Moving it up with the other
+    sentinel resolutions is what actually made distance render.
+  - `choose_unit` and `estimate` had no distance framing at all; both now alternate per seed, with
+    `estimate` fixing metres for the distance case because the competency names metres for it.
+  - Result: 0/200 → **60/200, 106/200, 106/200**.
+- **Unit 2 — re-reviewed all five affected nodes** (two reviewers in parallel, both packets fresh,
+  0 structural errors). Commit `d842865`.
+  - `q2_1` **FAIL → CONCERN**, `q2_2` **FAIL → CONCERN**. Reviewer on q2_2: *"Distance items
+    correctly use meters — the distance-clause fix landed here"*, and the estimation is genuine —
+    *"in no seed does the answer equal the stated value (11→10, 13→15, 18→20, 487→500)"*.
+  - `q2_3` CONCERN: *"The distance clause is genuinely fixed ... both named sub-cases are present"*.
+- **Census after: PASS=57 CONCERN=64 FAIL=30.** NON-VERDICT 0. `run_all` 151/151, 0 failures,
+  all ten contract checks, stages 1–5 green throughout.
+
+### Next tick should:
+
+1. **`mat_g2_mg_q2_0` — one line, and the reviewer named it as the highest-value follow-up.**
+   Distance now renders, but in **centimetres**: *"seed 42: `The distance from the bench to the
+   tree is 22 cm.`"* — while the competency says *"distance in **meters**"*. The
+   `distance_between → compare_distance` redirect lands in a branch that uses the node's `cm`
+   `unit_mode`. Force metres for the distance framing (the same override `estimate` already got
+   this tick), then re-review. The reviewer also notes no stem names a measuring tool, though the
+   competency says "using appropriate measuring tools" — that half is still unserved.
+2. **`mat_g2_mg_q4_4` (perimeter) — FAIL with three independent findings, one a real correctness
+   bug.** Seed 604 asks the perimeter of *"A triangle has sides 2 cm, 4 cm, and 7 cm"*, which
+   **violates the triangle inequality** (2+4 < 7) and is not a plane figure. Also: of its two named
+   sub-cases, *identify* is covered but *measure the perimeter* is absent — all seven measuring
+   items measure a single object's length, never a figure's border — and seeds 605/606/607 are
+   unit-choice and distance items templated from the Q2 node, mentioning no plane figure at all.
+   That last part suggests `perimeter` nodes are falling through to `length_measurement`'s tasks.
+3. **Object nouns are decoupled from magnitudes across this DNA** — "crayon" renders at 5, 8, 10,
+   21 and 49 cm; a bench-to-tree gap of 22 cm; a garden path 30 cm long. The arithmetic is sound
+   but the referents train wrong size benchmarks. One shared fix (bind each object noun to a
+   plausible magnitude band) would lift `scale_appropriateness` across several nodes at once.
+4. Then the next DNA clusters by FAIL count: **subtraction (4)**, **pictographs (3)**,
+   **division (3)**.
+5. Still untouched: `equal_jumps_on_a_number_line` and `draw_line_relationships` (both Tick F).
+6. **139 nodes undeclared, 30 capability gaps.**
+
+**State at handoff: tree clean, NON-VERDICT 0, FAIL down to 30.**
