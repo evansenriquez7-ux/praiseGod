@@ -2132,3 +2132,59 @@ re-reviewed.
 6. **139 nodes undeclared, 30 capability gaps.**
 
 **State at handoff: tree clean, NON-VERDICT 0.**
+
+---
+
+## 2026-08-14 — Tick C: a stated width is a floor as well as a ceiling. **FAIL 30 → 29.**
+
+- **Census before:** PASS=58 CONCERN=63 FAIL=30. Gate: NON-VERDICT=0, tree clean.
+- **Unit — the width floor.** Commit `949c51e`.
+  After last tick bound the ceiling, one violation survived: *"seed 42 `What is 2 − 1?` has a
+  one-digit minuend, outside '2-digit by 1-digit'."*
+  - **The first fix was not enough, and measuring is what showed it.** Setting
+    `max_minuend = (10, 99)` looked right; it is not, because **that `(lo, hi)` is the difficulty
+    AXIS range — it caps the ceiling, it does not floor the drawn operand.** Under a sampled
+    ceiling of 25 the DNA still drew `a` from `min_a = 1`:
+    ```
+    after the first attempt: 170 items | outside 2-digit by 1-digit: 60
+                             minuend range 2..93 | subtrahends {0: 42, 1: 45, ...}
+    ```
+    The registry now emits the operand floors themselves as scalars and the DNA honours them, an
+    explicit width floor from the competency outranking the grade heuristic — which guesses the
+    floor from the ceiling rather than reading it from the sentence.
+  - A one-digit subtrahend floors at **1, not 0**: subtracting zero leaves the minuend unchanged.
+  - **Verified: 170 items, 0 outside 2-digit by 1-digit; minuends 10..93, subtrahends 1..9.**
+- **Re-reviewed: FAIL → CONCERN.** The reviewer confirmed the floors by measurement — *"All 18
+  fall in 10-99 ... All 18 fall in 1-9"* — and again excluded non-operands correctly.
+- **Census after: PASS=58 CONCERN=64 FAIL=29.** NON-VERDICT 0. `run_all` 151/151, 0 failures,
+  all ten contract checks, stages 1–5 green.
+
+### Next tick should:
+
+1. **`mat_g2_na_q2_3` — the verb `Illustrate` is now the whole of the shortfall, and the design is
+   already worked out.** *"Illustrate is met in 3 of 18 samples ... the other 15 are bare
+   computation that would read identically under a competency that never mentioned a number line
+   or an inverse."*
+
+   Both illustrations already **exist as formatters** — `number_line_read` renders "The dot is at
+   28 and it moves backward 15", `number_bond` renders "The total is 30 and one part is 3". They
+   are merely rare (14 and 16 of 200 on the student path against 158 bare).
+
+   The fix is the `read_measurement` pattern — restrict the text formatters away from the
+   illustrating task — **but it cannot be applied directly**: `VARIANTS_BY_DNA["subtraction"]` has
+   **no `task_type` axis at all**, and the `task_type` key already sitting in
+   `FORMATTER_VARIANT_SUPPORT["subtraction"]["number_line_read"]` references a variant that does
+   not exist, so it filters nothing today. **Build that variant, bind this node to it, then apply
+   the reverse restriction.** Check the §1C blast radius first, as with `grid_area`.
+2. **Smaller, same node:** seed 601 opens with a pictograph reference but renders through
+   `true_false`, so no diagram is attached — the stem promises a picture it does not deliver.
+   A subtrahend of 1 still carries 7 of 18 items, and `75 − 1` appears twice.
+3. **A cross-node plural defect, one root cause, at least two nodes:** *"A classmate has 1 story
+   chapters"*, *"collected 1 merchandise shirts"* — localised to **multi-word object nouns only**;
+   `1 coin` and `1 lightstick` singularize correctly.
+4. Three nodes with precise diagnoses already recorded: `mat_g3_na_q3_2`, `mat_g3_na_q4_5`,
+   `mat_g3_dp_q3_3`.
+5. **`mat_g2_mg_q4_4`** — the co-mapped-DNA question, open seven ticks. **Escalated to the maintainer.**
+6. **139 nodes undeclared, 30 capability gaps.**
+
+**State at handoff: tree clean, NON-VERDICT 0, FAIL down to 29.**
