@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q2_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the cloze blanking fix, 2026-08-14",
+  "review_date": "2026-08-14",
   "blind": true,
   "sample_seeds": [
     42,
@@ -329,7 +329,7 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Pia has ₱___ in bills and ₱0 in coins. How much money does Pia have in all?",
+      "question_text": "Pia has ₱43 in bills and ₱0 in coins. How much money does Pia have in all?",
       "correct_answer": 43,
       "options": [
         {
@@ -389,7 +389,7 @@
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "Yna has ₱___ in bills and ₱0 in coins. How much money does Yna have in all?",
+      "question_text": "Yna has ₱46 in bills and ₱0 in coins. How much money does Yna have in all?",
       "correct_answer": 46,
       "options": [
         {
@@ -459,27 +459,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Seed 42's \"Daniel has ₱1 in bills and ₱40 in coins. How much money does Daniel have in all?\" is a plain addition-of-money scenario, exactly what the competency names."
+      "rationale": "All 17 samples are addition problems set in a money context and every total is correct: seed 602 'What is the total value of 1 ₱500 bill, 1 ₱20 bill, and 2 ₱1 coins?' keys 522, seed 44 keys 506, seed 50 keys 205, and the error_detect item at seed 55 correctly flags 'Grace says the answer is 37' as wrong with 27 as the true total. Every item is answerable from what is printed: the cloze items at seeds 50, 601 and 603 render the whole sentence with no ___, so no operand is blanked out."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Bills-plus-coins word problems sit alongside pure \"total value of\" computations (seed 44) and error-checking formats (seed 55's error_detect), giving the addition skill more than one lens."
+      "verdict": "CONCERN",
+      "rationale": "The sentence names four things: sums up to 1000, money problems, with regrouping, and without regrouping. Money is present in all 17 samples and the without-regrouping case is abundant, for example seed 43 with 28 and 30. The with-regrouping case is almost absent. Working each sample by column, only seed 502 'What is the total value of 1 ₱10 coin and 2 ₱5 coins?' forces a carry, because 5 plus 5 makes 10; the other 16 are carry-free, including the largest ones such as seed 602 and seed 44. One marginal item is thin evidence for a sub-case the competency names explicitly. Separately, the word including implies money is a subset, yet no non-money addition problem appears in the set."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each scenario is resolved with a single addition step and short sentences, appropriate for this grade and quarter."
+      "rationale": "One-step totals with values a Grade 2 Quarter 2 pupil can hold. The three-addend denomination items, such as seed 44 'What is the total value of 1 ₱500 bill, 1 ₱5 coin, and 1 ₱1 coin?' and seed 500, add counting load without adding any new operation, which is appropriate here. Reading length is short and the question sentence is always last."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The 17 samples spread across mcq, cloze, true_false, and error_detect formatters."
+      "rationale": "Four formatters appear: mcq, cloze (seed 50), true_false (seed 51) and error_detect (seeds 55 and 605). Two problem framings appear: a bills-and-coins total, and a denomination tally such as 'What is the total value of 1 ₱10 coin and 2 ₱5 coins?' at seed 502. Redundancy note: seeds 500 and 501 carry the identical question text 'What is the total value of 1 ₱10 coin, 1 ₱5 coin, and 3 ₱1 coins?' and differ only in formatter, so the effective variety of the set is slightly smaller than the sample count suggests."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Item difficulty tracks denomination size and place value — compare seed 46's \"₱0 in bills and ₱16 in coins\" to seed 44's \"1 ₱500 bill, 1 ₱5 coin, and 1 ₱1 coin\" — never an unrelated theme."
+      "verdict": "CONCERN",
+      "rationale": "The mathematics matches the competency, but the money facts do not always match Philippine currency, which matters on a node whose own sentence names money. Nine samples use a bills-and-coins frame with a peso amount that cannot be formed from any Philippine banknote: seed 42 'has ₱1 in bills and ₱40 in coins', seed 51 'has ₱19 in bills and ₱0 in coins', seed 604 'has ₱15 in bills and ₱20 in coins', and seed 601 'has ₱43 in bills and ₱0 in coins'. The smallest note in circulation is 20 pesos, so 1, 15, 19 and 43 pesos in bills teach a false denomination fact to the same pupils who are learning denominations. The denomination-tally items, seed 44 and seed 602, are accurate and show the correct pattern."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Across all 17 samples the highest sum is seed 602's \"1 ₱500 bill, 1 ₱20 bill, and 2 ₱1 coins\", which lands well below the sums-up-to-1000 ceiling the competency states; nothing in the packet approaches that limit."
+      "verdict": "PASS",
+      "rationale": "The largest operand is 500 pesos, at seed 602 'What is the total value of 1 ₱500 bill, 1 ₱20 bill, and 2 ₱1 coins?', and the largest sum is 522, both inside the sums-up-to-1000 bound. Values above the bound appear only as distractors and never as operands, namely 5220 at seed 602 and 1210 at seed 45. Realism note within range: seed 50 says 'has ₱5 in bills and ₱200 in coins', and 200 pesos entirely in coins is an odd quantity for a child to hold."
     }
   },
   "overall": "CONCERN"

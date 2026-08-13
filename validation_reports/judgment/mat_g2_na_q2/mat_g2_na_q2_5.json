@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q2_5",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the less-than ceiling fix, 2026-08-13",
-  "review_date": "2026-08-13",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the cloze blanking fix, 2026-08-14",
+  "review_date": "2026-08-14",
   "blind": true,
   "sample_seeds": [
     42,
@@ -241,7 +241,7 @@
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "In a pictograph, Lola Ising's group collected 98 loaves of bread and another group collected ___ loaves of bread. How many more did Lola Ising's group collect?",
+      "question_text": "In a pictograph, Lola Ising's group collected 98 loaves of bread and another group collected 49 loaves of bread. How many more did Lola Ising's group collect?",
       "correct_answer": 49,
       "options": [
         {
@@ -451,29 +451,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Sixteen of seventeen items are well posed subtraction word or picture problems with correct arithmetic, such as seed 45 which gives 'collected 60 water bottles and another group collected 53 water bottles' for 7, and seed 500 which states 'There are 94 drinks.' and '27 drinks are taken away.' for 67. Seed 501 cannot be answered: it supplies 'collected 98 loaves of bread' and then 'and another group collected ___ loaves of bread', leaving the subtrahend blank while asking for the difference. The keyed 49 is unreachable, and the distractors 48 and 50 are just as consistent with the text."
+      "verdict": "PASS",
+      "rationale": "All 17 samples are one-step subtraction with both numbers below 100, and every answer recomputes correctly: seed 500 pairs 'There are 94 drinks.' with '27 drinks are taken away.' and keys 67, seed 501 subtracts 49 from 98 and keys 49, seed 502 subtracts 67 from 73 and keys 6, seed 44 subtracts 26 from 90 and keys 64. No arithmetic error found. Every item is answerable from the given text; the cloze items at seeds 44, 501 and 603 print the full question with no ___, so no operand the answer depends on has been blanked."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both halves of the with and without regrouping clause are present and easy to find. Regrouping is required at seed 45 in 'collected 60 water bottles and another group collected 53 water bottles', at seed 502 in 'collected 73 concert tickets and another group collected 67 concert tickets', at seed 602 in 'collected 30 fan shirts and another group collected 26 fan shirts', at seed 44 and at seed 500 with '27 drinks are taken away.'. Cases without regrouping appear at seed 604 in 'collected 31 lightsticks and another group collected 10 lightsticks', at seed 603, at seed 43 and at seed 601 with 'collected 0 leashes'."
+      "rationale": "The sentence names with and without regrouping, plus the oral or picture delivery modes, and all are present. With regrouping: seed 44 takes 26 from 90, seed 500 takes 27 from 94, seed 502 takes 67 from 73, seed 602 takes 26 from 30. Without regrouping: seed 43 takes 10 from 42, seed 603 takes 20 from 90, seed 604 takes 10 from 31. Picture mode is represented at seeds 55 and 500 by a described group, '(Large group of 25 frogs)' and '(Large group of 94 drinks)', rather than a drawn one; because the count is also stated in words the item stays answerable, but the picture channel here is a description rather than a countable image."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "One step comparison in a pictograph setting is appropriate for Grade 2 Quarter 2, and the two picture items keep the count in the text so no counting of many symbols is needed. Two rough edges show in the rendered text: plural agreement fails at seed 50, which prints 'collected 1 merchandise shirts', and the picture items substitute a bracketed description, '(Large group of 94 drinks)' at seed 500 and '(Large group of 25 frogs)' at seed 55, in place of an actual picture."
+      "rationale": "The one-step comparison structure and the two-digit magnitudes fit Grade 2 Quarter 2 well. The problem is in the student-facing wording: seed 50 reads 'collected 1 merchandise shirts', a plural noun after the numeral 1, inside an error_detect item that a pupil must read closely to judge. Seed 42 shows the singular handled correctly with 'collected 1 coin', so the miss is limited to multi-word object names. The arithmetic and the keyed answer are unaffected."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Five formatters appear, including error detection at seed 50 with 'Jose says the answer is 59. Is Jose correct?' and true or false at seed 72 with 'The answer is 70. True or False?'. The underlying situation barely moves, however. Fifteen of the seventeen samples repeat the same pictograph comparison stem, always 'In a pictograph, ' followed by a name and 'group collected '. Only seeds 55 and 500 use a different situation, the take away form '20 frogs are taken away.'."
+      "rationale": "Formatter spread is genuine: mcq, cloze (seed 44), error_detect (seed 50), read_mcq (seed 55) and true_false (seed 72). Semantic spread is not. Fifteen of the 17 samples open with 'In a pictograph,' and close with a how-many-more comparison, for example seed 600 and seed 604; only the two read_mcq items use a different action, '20 frogs are taken away.' at seed 55. A pupil working this set meets one problem story repeated with new nouns, so take-away, missing-part and change-unknown framings are effectively unpractised."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample asks for a subtraction result and nothing beyond it. Comparison by how many more and take away are both squarely inside the competency sentence, the pictograph framing matches the given in pictures clause, and no multiplication, division, three digit value or later Grade 2 concept appears in any of the seventeen samples."
+      "rationale": "Nothing exceeds subtraction of two whole numbers below 100. No addition chains, no money, no multiplication, and no vocabulary past Grade 2. The comparison wording, for example 'How many more did Kris' plus the group phrase, maps directly onto solving subtraction problems, and the true_false item at seed 72 judges a stated value rather than introducing a new operand."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The sentence admits both numbers strictly below 100. The largest operand found is 98, at seed 501 in 'collected 98 loaves of bread', followed by 94 at seed 500 in 'There are 94 drinks.' and 90 at seeds 44 and 603. All comply with the bound. Sums that appear only as distractors, such as 116 and 147, are not operands."
+      "rationale": "The bound is both numbers less than 100 and it holds literally. The largest operand is 98, at seed 501 'collected 98 loaves of bread and another group collected 49 loaves of bread'; nothing reaches 100. Values above 100 occur only as distractors, never as operands: 147 at seed 501, 140 at seed 502, 116 at seed 44, 113 at seed 45 and 110 at seed 603. Distribution note: 3 of 17 use a subtrahend of 0, as at seed 606 and seed 601."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

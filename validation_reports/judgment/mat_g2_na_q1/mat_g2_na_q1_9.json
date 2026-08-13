@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_9",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the cloze blanking fix, 2026-08-14",
+  "review_date": "2026-08-14",
   "blind": true,
   "sample_seeds": [
     42,
@@ -303,7 +303,7 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "What is ___ + 0?",
+      "question_text": "What is 43 + 0?",
       "correct_answer": 43,
       "options": [
         {
@@ -408,27 +408,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The samples are straightforward addition facts and sum prompts, e.g. seed 500 \"The two parts are 727 and 59. What is the sum?\", matching add numbers with sums up to 1000."
+      "rationale": "All 19 samples are addition and every sum I checked is correct: seed 502 'What is 689 + 158?' keys 847, seed 500 'The two parts are 727 and 59. What is the sum?' keys 786, seed 501 '748 + 95 = 843' is keyed true, seed 75 '25 + 15 = 10. True or False?' is keyed false. No arithmetic error found. Every item is answerable from what is given: in the cloze items the blank sits on the sum only, as in seed 44 '18 + 15 = ___' and seed 603 '12 + 40 = ___', never on an addend, so no needed number is hidden."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The with-or-without-regrouping clause is honored: seed 44 \"18 + 15 = ___\" and seed 502 \"689 + 158\" both require carrying into a new place, while seed 43 \"28 + 30\" and seed 603 \"12 + 40 = ___\" do not."
+      "rationale": "The sentence names two sub-cases, with regrouping and without regrouping, and I found both. With regrouping: seed 44 '18 + 15 = ___' carries in the ones, and seed 502 'What is 689 + 158?' carries twice. Without regrouping: seed 43 'What is 28 + 30?' and seed 603 '12 + 40 = ___'. Coverage note rather than a defect: only three samples (seeds 500, 501, 502) reach three digits, so the top of the stated range is represented but thinly."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The plain \"What is 1 + 40?\" and \"The two parts are 15 and 12. What is the sum?\" phrasings are simple and grade-appropriate."
+      "rationale": "Single-step addition throughout, with no structure that belongs to a later competency. Two items deserve a note and neither breaks anything. Seed 51 says 'moves forward 0 numbers', so the dot lands on its starting value 19; this is legitimate practice of adding zero and it is fully answerable. Seed 50 says 'Show 15 + 15 on the number line.' while expecting the numeric sum 30, and the sum is derivable from the text alone even without the number line rendered."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "mcq, cloze, true_false, error_detect, read_fill_in_blank, and set_fill_in_blank formatters are all present."
+      "rationale": "Six distinct formatters appear: mcq, cloze, true_false (seed 75), error_detect (seed 82 'Dante says: 11 + 0 = 11. Is Dante correct?'), read_fill_in_blank (seed 55 'The two parts are 15 and 12. What is the sum?') and set_fill_in_blank (seed 50). Framings vary too: bare equation at seed 44, question form 'What is 6 + 15?' at seed 604, part-and-whole at seed 607, and a number-line landing question at seed 51."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The varying element is addend size and whether the ones digits carry, both squarely on the regrouping skill."
+      "rationale": "Nothing beyond addition of whole numbers appears; no subtraction, no money, no multi-step chains. The ceiling in the sentence is honored: the largest sum in the set is 847 at seed 502 'What is 689 + 158?', well under 1000, and the true_false item at seed 501 states '748 + 95 = 843', a correct equation rather than an out-of-range value."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Sums reach 847 (seed 502) and 843 (seed 501), staying under the stated 1000 ceiling."
+      "rationale": "The largest operand is 748, at seed 501 '748 + 95 = 843'; the largest sum is 847 at seed 502. Both sit inside the stated sums-up-to-1000 bound, and no distractor exceeds the bound either. Distribution note: 4 of the 19 samples use a zero addend, as at seed 46 '0 + 16 = ___' and seed 601 'What is 43 + 0?', and 16 of 19 stay at or below two digits."
     }
   },
   "overall": "PASS"

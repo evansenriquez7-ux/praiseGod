@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_dp_q3_3",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the cloze blanking fix, 2026-08-14",
+  "review_date": "2026-08-14",
   "blind": true,
   "sample_seeds": [
     42,
@@ -205,7 +205,7 @@
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "A bar graph shows ___ bread loaf and 0 cooking apron sold at the bakery. How many items were sold in total?",
+      "question_text": "A bar graph shows 1 bread loaf and 0 cooking apron sold at the bakery. How many items were sold in total?",
       "correct_answer": 1,
       "options": [
         {
@@ -383,28 +383,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Nine of the seventeen samples genuinely solve a problem from graph-implied data (e.g. seed 44's 'A bar graph shows 2233 costume sash and 6570 wristband sold at the school stage. How many items were sold in total?'), but four samples (42, 43, 46, 604) are pure value-reads and four more (51, 601, 603, 605) are 'create a bar graph' tasks, neither of which solves a problem."
+      "rationale": "The graph items do read a single bar graph and are shown with a diagram, for example 'Look at the bar graph. What is the value for dogs?' (seed 42), whose key names option 'D' among four numeric choices. Those four read items only retrieve one bar value, however; they pose no problem to solve. The nine items that do pose a problem, such as 'A bar graph shows 2233 costume sash and 6570 wristband sold at the school stage. How many items were sold in total?' (seed 44), state both data values inside the sentence and render as plain multiple choice or cloze, so the student never reads data off a graph in order to solve."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The competency calls for bar graphs '(horizontal and vertical)'; only seed 601's create-graph item ('Create a bar graph (horizontal bars) to show: Monday: 55, Tuesday: 50, Wednesday: 45, Thursday: 60') names an orientation, and it is a presenting task rather than a solving task, so the solve-a-problem items never distinguish horizontal from vertical."
+      "verdict": "FAIL",
+      "rationale": "The sentence names horizontal and vertical, and I looked for both. Found horizontal exactly once, at seed 601, 'Create a bar graph (horizontal bars) to show: Monday: 55, Tuesday: 50, Wednesday: 45, Thursday: 60.', and that is a construction item rather than a problem solved from a graph. Found no sample naming vertical bars in its text at all. Also absent across all 17 seeds is any comparison drawn from the graph, such as how many more or which category has the most: the only graph question type is the single value lookup at seeds 42, 43, 46 and 604, including 'What is the value for birds?'."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The solving items use additions up to four digits (seed 44's 8803 total), which is within Grade 3 Quarter 3 computational range."
+      "verdict": "CONCERN",
+      "rationale": "Every item is answerable from what it gives and no cloze blank falls on a needed quantity; seed 501 supplies both bar values before asking for the total. The load is uneven, though. Judged as visual items with a diagram, the four bar-reading questions offer numeric choices that sit one unit apart, seed 42 for dogs and seed 604 for birds each pairing two adjacent values, which asks for reading precision a Grade 3 bar graph scale is unlikely to support. At the other extreme seed 502, 'A bar graph shows 0 fan shirt and 1 poster sold at the music store.', is a graph with a bar of height zero and a total of one."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "All nine genuine solve-a-problem items share the same two-item, find-the-total structure seen in seed 44's costume-sash-and-wristband item; there is no difference/comparison word problem using graph data within this node."
+      "verdict": "PASS",
+      "rationale": "Six presentation types appear across the 17 seeds: bar-graph reading at seed 42, multiple choice at seed 45, cloze at seed 44, true or false at seed 50, error detection in both polarities with 'Rico says the answer is 5044. Is Rico correct?' (seed 68) flagged as wrong against the seed 500 version flagged as right, and graph construction at seeds 51, 601, 603 and 605. Settings also vary, from 'the school stage' to 'the home stream setup'."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Eight of seventeen samples (the pure reads and the create-graph items) vary along a different skill axis than 'solve problems using data', diluting the competency's intended focus."
+      "rationale": "Four of the 17 samples ask the student to build a graph rather than to solve a problem using one, for instance 'Create a bar graph to show: Math: 45, Science: 50, English: 30, Art: 40.' (seed 603) and the same shape at seeds 51, 601 and 605. Construction is an activity the sentence does not name; the sentence names solving problems using data already presented. The remaining problem items demand only addition of two stated numbers, which is in grade, but there the phrase 'A bar graph shows' is decorative rather than a presentation of data."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest computed total, seed 602's 9099, is a reasonable scale for Grade 3 addition word problems."
+      "verdict": "CONCERN",
+      "rationale": "The data magnitudes do not hold together inside one Grade 3 Quarter 3 node. Seed 602 puts '8820 fan shirt and 279 wristband' on a bar graph and seed 44 puts 2233 and 6570 on one, which turns the underlying task into 4-digit addition and gives bar heights no Grade 3 graph would plot, while seeds 500, 501 and 502 drop to bars of zero and one, as in 'A bar graph shows 1 bread loaf and 0 cooking apron sold at the bakery.'. Every sum is correct, but a spread from one to nearly nine thousand inside the same node follows no consistent scale."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

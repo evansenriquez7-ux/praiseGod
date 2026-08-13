@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q3_3",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the less-than ceiling fix, 2026-08-13",
-  "review_date": "2026-08-13",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the cloze blanking fix, 2026-08-14",
+  "review_date": "2026-08-14",
   "blind": true,
   "sample_seeds": [
     42,
@@ -363,7 +363,7 @@
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "Yna has ___ sketchpads. A classmate has 0 sketchpads. How many more sketchpads does Yna have?",
+      "question_text": "Yna has 4 sketchpads. A classmate has 0 sketchpads. How many more sketchpads does Yna have?",
       "correct_answer": 4,
       "options": [
         {
@@ -451,29 +451,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Sixteen of seventeen samples are sound subtraction situations posed in words or in a picture row, and every one of those computes correctly: seed 44 gives 'Team A scored 10 in the school stage and Team B scored 3.' for a difference of 7, and seed 55 shows a row of frog pictures with 'There are 12 frogs.' then '1 frog is taken away.' for 11. Seed 603 is not answerable at all. It reads 'Yna has ___ sketchpads. A classmate has 0 sketchpads. How many more sketchpads does Yna have?' The blank hides the minuend while the subtrahend is 0, so the keyed answer 4 cannot be derived from anything the item supplies, and the distractors 3, 5 and 6 are equally consistent with the text."
+      "verdict": "PASS",
+      "rationale": "All 17 samples are one-step subtraction with both numbers below 20, and I recomputed every one: seed 500 gives 'There are 17 drinks.' and '9 drinks are taken away.' with keyed answer 8, seed 502 gives 'Team A scored 14 in the music store and Team B scored 8' with answer 6, seed 46 gives 15 minus 10 with answer 5. No arithmetic error found. Every item is answerable from the text alone: the three cloze items (seeds 44, 501, 603) render the complete sentence with no ___ at all, so no blank falls on a quantity the answer depends on."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Three problem shapes appear: comparison, as in 'A classmate has 10 photo albums.' at seed 46; difference of two scores, as in 'What is the difference in their scores?' at seeds 44, 45, 501, 502, 600 and 602; and pictorial take away at seeds 55 and 500. Subtrahend spread is thin, however. Nine of the seventeen items subtract 0 or 1, including 'A classmate has 0 speech scripts.' at seed 72 and the same zero pattern at seeds 601, 603 and 606, so a large share of the set is answered without any real subtraction work."
+      "verdict": "PASS",
+      "rationale": "The sentence names two delivery modes, orally or in pictures, and both appear. The oral or word-problem mode is everywhere, for example seed 602 'Team A scored 10 in the school canteen and Team B scored 1'. The picture mode appears in seeds 55 and 500, where a symbol row precedes 'There are 12 frogs.' and 'There are 17 drinks.'; I counted the rows and they hold exactly 12 and 17 symbols, matching the stated counts, so the picture does not contradict the text."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Sentence length, names and contexts sit comfortably at Grade 1, and the picture rows at seeds 55 and 500 match the count stated in the text. Plural agreement is inconsistent for a reader this young: seed 43 prints 'A classmate has 1 story chapters' while seed 604 correctly prints 'A classmate has 1 lightstick.' for the same singular case."
+      "rationale": "Problem structure is right for Grade 1 Quarter 3: one step, small numbers, familiar contexts. The defect is in the student-facing wording. Seed 43 reads 'A classmate has 1 story chapters', a plural noun after the numeral 1, which is wrong English in text a Grade 1 child reads or hears read aloud. Single-word nouns are handled correctly, as seed 604 shows with 'A classmate has 1 lightstick', so the miss is confined to multi-word object names. Math and answerability are unaffected, which is why this is a concern and not a failure."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Five formatters are exercised across the seventeen seeds: multiple choice, cloze, picture based choice, error detection at seed 50 with 'Jose says the answer is 8. Is Jose correct?', and true or false at seed 601 with 'The answer is 12. True or False?'. That is a healthy spread of response modes for a single node."
+      "rationale": "Five formatters appear across 17 samples: mcq, cloze (seed 44), error_detect (seed 50, 'Jose says the answer is 8. Is Jose correct?'), read_mcq (seed 55), and true_false (seed 72). Three semantic framings appear as well: comparison 'How many more scrolls does Daniel have?' at seed 42, difference of scores 'What is the difference in their scores?' at seed 45, and take-away '1 frog is taken away.' at seed 55."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every item is subtraction and nothing reaches past the Grade 1 Quarter 3 sentence. No multiplication, no regrouping language, no place value vocabulary and no operation beyond taking away or comparing appears. The two framings used, 'What is the difference in their scores?' and the how many more comparison at seed 606 with 'A classmate has 0 clip highlights.', both sit inside the wording of the competency."
+      "rationale": "Nothing in these samples reaches past subtraction of whole numbers under 20. No multiplication, no place-value naming, no money, no regrouping vocabulary. The true_false item at seed 72 states 'The answer is 6. True or False?', where 6 is the value being judged rather than an operand, and the operands there are 6 and 0. The error_detect item at seed 50 keeps the same shape."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The competency admits numbers strictly below 20. The largest operand found anywhere in the set is 17, at seed 500, which reads 'There are 17 drinks.' followed by '9 drinks are taken away.' Next largest are 15 at seeds 43, 46 and 501 and 14 at seeds 502 and 606. Nothing reaches 20, and no distractor value functions as an operand."
+      "rationale": "The bound is both numbers less than 20 and it holds literally. The largest operand in the set is 17, at seed 500 'There are 17 drinks.'; nothing reaches 20. Values above the bound appear only as distractors and never as operands: 26 in the seed 500 option list and 24 in the seed 501 option list. One distribution note: 9 of the 17 samples use a subtrahend of 0 or 1, for example seed 606 'A classmate has 0 clip highlights' and seed 604 'A classmate has 1 lightstick', which makes over half the set nearly effortless, though genuine bridging work is present at seeds 500, 501 and 502."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q3_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B7b (g3 na_q2 + na_q3_0-3), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the cloze blanking fix, 2026-08-14",
+  "review_date": "2026-08-14",
   "blind": true,
   "sample_seeds": [
     42,
@@ -279,7 +279,7 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Pia puts ___ leashes in each of 44 bags. How many leashes are in all the bags?",
+      "question_text": "Pia puts 0 leashes in each of 44 bags. How many leashes are in all the bags?",
       "correct_answer": 0,
       "options": [
         {
@@ -372,28 +372,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "The competency names \"2- to 3-digit numbers by a 1-digit number\" as one case, but across all fourteen samples no genuine 3-digit number with multiple nonzero digits is multiplied by a plain 1-digit number — the 3-digit values that appear (936, 962, 845) are each multiplied by 10, not a 1-digit factor — so that part of the sub-case is effectively unexercised."
+      "rationale": "Every sample is a single multiplication and all products are correct, so the verb of the sentence is met, but only one of the two named families is exercised at depth. The 1-digit-multiplier family appears as 'What is 15 × 2?' (seed 42), 'What is 20 × 5?' (seed 43) and 'Grace says: 40 × 3 = 37. Is Grace correct?' (seed 55) and never uses a 3-digit multiplicand. The second family collapses to a single multiplier, ten, as in 'What is 845 × 10?' (seed 502)."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The case where a number \"whose leading digit is the only non-zero digit\" (10 or 20) is the multiplier dominates the set — seed44, seed45, seed50, seed500, seed501, seed502, seed600, and seed602 all multiply by 10 or 20 — while true \"2- to 3-digit numbers by a 1-digit number\" regrouping examples are limited to small two-digit cases like seed42's \"What is 15 × 2?\"."
+      "verdict": "FAIL",
+      "rationale": "The sentence names two sub-cases and I looked for each separately. Found, 2-digit by 1-digit: seed 42 'What is 15 × 2?' and seed 55 '40 × 3 = 37'. Found, 2- and 3-digit by ten: seed 44 '11 × 10 = ___' and seed 501 '962 × 10 = ___'. Not found anywhere in the 14 samples: a 3-digit multiplicand with a 1-digit multiplier, a 4-digit multiplicand, or any leading-digit multiplier other than ten such as twenty or three hundred. Half of the stated range is untouched and seven of the 14 seeds repeat the same times-ten pattern."
     },
     "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Seed601's cloze \"Pia puts ___ leashes in each of 44 bags. How many leashes are in all the bags?\" blanks out an input factor to force the answer 0, an inverted problem structure that is confusing for Grade 3 readers compared to the more natural compute-the-product framing used elsewhere in the node."
+      "verdict": "PASS",
+      "rationale": "All items are single-step and read cleanly for Grade 3 Quarter 3. The one word problem, seed 601 'Pia puts 0 leashes in each of 44 bags. How many leashes are in all the bags?', states both factors in one sentence with no nested clause. Every item is answerable from what it gives: each cloze blank falls on the product, as at seed 603 '42 × 0 = ___', never on an operand the answer depends on, so no item admits several values."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Formatters include mcq, cloze, true_false, and error_detect, e.g. seed55's \"Grace says: 40 × 3 = 37. Is Grace correct?\", giving several presentation styles."
+      "rationale": "Five presentation types appear across the 14 seeds: multiple choice 'What is 10 × 20?' (seed 45), cloze '11 × 10 = ___' (seed 44), true or false '20 × 10 = 10. True or False?' (seed 50), error detection in both polarities with 'Grace says: 40 × 3 = 37. Is Grace correct?' (seed 55) flagged as an error and 'Rico says: 936 × 10 = 9360. Is Rico correct?' (seed 500) flagged as accurate, and one contextual word problem at seed 601. Distractors are near misses rather than random values."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Where regrouping does occur, e.g. seed55's 40 × 3 = 120, distractors target the regrouping/carry step itself rather than an unrelated skill."
+      "verdict": "CONCERN",
+      "rationale": "No item demands an operation past multiplication and all arithmetic checks out. But three of the 14 samples put zero in the multiplier slot: 'What is 21 × 0?' (seed 46), '42 × 0 = ___' (seed 603) and the word problem at seed 601. Zero is neither a factor that can produce regrouping nor a number whose leading digit is the only non-zero digit, so these three items exercise the zero property instead of the multiplication with and without regrouping that the sentence names."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Products reach into the thousands and approach the stated ceiling, e.g. seed500's \"Rico says: 936 × 10 = 9360. Is Rico correct?\" and seed501's \"962 × 10 = ___\", without exceeding 10 000."
+      "rationale": "Products stay inside the stated ceiling of ten thousand. The largest is at seed 501 '962 × 10 = ___' with an answer of 9620, and the next largest is seed 500 'Rico says: 936 × 10 = 9360. Is Rico correct?'. Multiplicands run from 10 up to 962, all inside the two to four digit window the sentence allows, and no sample crosses the bound."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

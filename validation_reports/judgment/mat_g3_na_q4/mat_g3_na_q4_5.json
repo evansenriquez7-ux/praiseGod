@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q4_5",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the cloze blanking fix, 2026-08-14",
+  "review_date": "2026-08-14",
   "blind": true,
   "sample_seeds": [
     42,
@@ -190,7 +190,7 @@
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "Lola Ising has ₱81 and wants to share it equally among ___ friends. How much does each friend get?",
+      "question_text": "Lola Ising has ₱81 and wants to share it equally among 9 friends. How much does each friend get?",
       "correct_answer": 9,
       "options": [
         {
@@ -339,27 +339,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Seed 501 reads 'Lola Ising has ₱81 and wants to share it equally among ___ friends. How much does each friend get?' — the blank sits where the friend count belongs, yet the question then asks for the per-friend share, which only works because both quantities happen to equal 9."
+      "rationale": "Every sample is one exact division by a 1-digit divisor and all 13 quotients are correct, including 'Lola Ising has ₱81 and wants to share it equally among 9 friends.' (seed 501) and the check item at seed 500 where 'Rico says the answer is 8. Is Rico correct?' is correctly marked accurate. What is missing is the general half of the sentence: money is named as an included case, yet all 13 items are money, so a division problem outside a peso context never appears."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The competency's stated range is '2- to 3-digit numbers by a 1-digit number', but the largest dividend across all 13 samples is seed 501's 81 — a 3-digit dividend never appears."
+      "rationale": "I looked for each named part. Found, division by a 1-digit number: every seed. Found, problems involving money: every seed, for example 'Daniel has ₱30 and wants to share it equally among 5 friends. How much does each friend get?' (seed 42). Not found: any 3-digit dividend, the largest across all 13 seeds being the 81 at seed 501. Not found: any division problem that is not about money. So one of the two digit-lengths named and the general non-money case are both absent."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Outside of the seed 501 wording issue, the peso-sharing contexts (seed 46's ₱10 among 2 friends) stay within Grade 3 reasoning."
+      "rationale": "Each item is a single sharing step with both quantities stated, which suits Grade 3 Quarter 4, and every item is answerable from what it gives. The cloze items place the blank on the quotient rather than on a given, as at seed 44 'Lara has ₱20 and wants to share it equally among 4 friends. How much does each friend get?', so no needed number is hidden and no item admits several answers. The error-detect stem at seed 55 restates the whole problem before the claim, which keeps it readable."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "All 13 samples repeat the same 'wants to share it equally among' peso template — seed 46, seed 602, and every other sample — with no non-money division scenario anywhere in the set."
+      "rationale": "Four presentation types are present: multiple choice at seed 42, cloze at seed 44, true or false at seed 50 with 'The answer is 5. True or False?', and error detection in both polarities at seeds 55 and 500. The context never varies, though: all 13 stems are the same sentence, in which someone 'wants to share it equally among' a number of friends, with only the name, the peso amount and the divisor swapped. Partition sharing is the only meaning of division shown, with no measurement or grouping phrasing anywhere."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Dividend and divisor size vary within that money template, which is a legitimate lever even though the numeric range never gets very wide."
+      "rationale": "No item requires an operation the sentence does not name. Each one is settled by a single exact division, the divisors are all single digits from 2 to 9, and no remainder, no multi-step chain and no unit conversion appears. The peso amounts divide evenly in every case, for example 'Kuya Pat has ₱27 and wants to share it equally among 9 friends.' (seed 502), so nothing reaches past the stated scope."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "0 of the 13 dividends reach 3 digits; the ceiling in this set is seed 501's 81, well short of what '2- to 3-digit' implies."
+      "rationale": "The sentence sets the dividend at 2 to 3 digits and these samples break the floor and never reach the ceiling. Seed 43 gives 'Kuya Bien has ₱2 and wants to share it equally among 2 friends.' and seed 601 gives 'Pia has ₱3 and wants to share it equally among 3 friends.', both 1-digit dividends below the stated range. The largest dividend in the packet is the 81 at seed 501, so no 3-digit amount is ever divided at all."
     }
   },
   "overall": "FAIL"
