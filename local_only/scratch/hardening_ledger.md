@@ -1749,3 +1749,60 @@ before concluding a sub-case is missing.
 6. **139 nodes undeclared, 30 capability gaps.**
 
 **State at handoff: tree clean, NON-VERDICT 0, FAIL down to 29.**
+
+---
+
+## 2026-08-13 — Tick C: object-to-unit pairing. **PASS 57 → 59.**
+
+- **Census before:** PASS=57 CONCERN=65 FAIL=29. Gate: NON-VERDICT=0, tree clean.
+- **Unit 1 — the numbers were right and the things were wrong.** Commit `b4c7315`.
+  The previous tick's reviewer named this as the one systematic defect left, spanning two DNAs:
+  *"The arithmetic is sound; the referents train wrong size benchmarks."* A pupil met a 49 cm
+  crayon and a 5 cm garden.
+  1. **`perimeter`'s word-problem templates hardcoded `cm`.** The magnitudes were always fine for
+     a garden — only the unit was wrong. Now metres; bare-geometry framings stay in cm, where an
+     abstract figure is meant. Same template also orders its sides, since blind review found
+     gardens whose width exceeded their length.
+  2. **`length_measurement` clamped every classroom object to one shared `[5, 50]` band** with a
+     single special-cased noun — which is how a crayon reached 49 cm. Replaced with per-object
+     bands.
+  - **A leak the first attempt left**, caught by measuring rather than assuming: five values sat
+    exactly one under their floor (a book at 17, a ruler at 14) because the tie-breaker did
+    `max(1, val_b - 1)` and stepped past the band. It now steps *within* it.
+- **Unit 2 — re-reviewed the four affected nodes.** Commit `6d4906a`.
+  **`mat_g2_mg_q4_5` CONCERN → PASS** and **`mat_g2_mg_q4_6` CONCERN → PASS**, the reviewer
+  confirming both this tick's and last tick's fixes: *"All four triangles satisfy the triangle
+  inequality (2-1-2, 2-4-4, 10-21-17, 12-6-17)"*, *"all three named figures well covered"*, and
+  *"Gardens and flower beds are consistently in metres — the object-to-unit fix clearly landed
+  here."*
+- **Census after: PASS=59 CONCERN=62 FAIL=30.** NON-VERDICT 0. `run_all` 151/151, 0 failures,
+  all ten contract checks, stages 1–5 green throughout.
+
+### Next tick should:
+
+1. **Finish the pairing fix — it did not reach the length-and-distance stems.** The reviewer was
+   precise: the same defective family survives in `mat_g2_mg_q2_3` and `mat_g2_mg_q4_4` —
+   *"A garden path is 30 cm long."*, *"The distance from the bench to the tree is 20 cm."* Two
+   specific causes, both mine to finish:
+   - `_OBJECT_CM_BANDS` puts **"a garden path" at (30, 100) cm**. A garden path is an m-scale
+     object; it does not belong in a centimetre table at all. Move it to the metre pool the way
+     `choose_unit` already partitions `cm_scale_items` / `m_scale_items`.
+   - The **`compare_distance` stems render in the node's `unit_mode`, which is cm.** A distance
+     between two landmarks is metres. `mat_g2_mg_q2_3` **contradicts itself** — seed 601 teaches
+     that such a distance is measured in "m" while seed 603 asserts 20 cm. This is the same
+     one-line override still outstanding for `mat_g2_mg_q2_0` (item 3 below); **do both together**,
+     they are the same cause.
+2. **`mat_g2_mg_q4_4` went CONCERN → FAIL on an honest re-read** — *"Only 6 of 16 samples ask for
+   a perimeter ... Neither verb identify nor the appropriate tools clause is exercised anywhere;
+   no tool is ever named."* This is the co-mapped-DNA tension recorded last tick, now scored
+   rather than described. It needs the decision named there: either give `perimeter` a
+   ruler-based formatter (so the co-mapping can go), or bind the length half to serve the figure.
+   **Escalate if neither reading is obviously right** — it is a pedagogical call about what
+   "measure the perimeter using appropriate tools" should render.
+3. **`mat_g2_mg_q2_0`** — still FAIL: distance renders in cm though the competency says metres.
+   Fold into item 1.
+4. Then the next FAIL clusters by DNA: **subtraction (4)**, **pictographs (3)**, **division (3)**.
+5. Still untouched: `equal_jumps_on_a_number_line`, `draw_line_relationships` (both Tick F).
+6. **139 nodes undeclared, 30 capability gaps.**
+
+**State at handoff: tree clean, NON-VERDICT 0, PASS up to 59.**
