@@ -1918,3 +1918,55 @@ before concluding a sub-case is missing.
 5. **139 nodes undeclared, 30 capability gaps.**
 
 **State at handoff: tree clean, NON-VERDICT 0.**
+
+---
+
+## 2026-08-13 — Tick C: the G1 measure items. **FAIL 31 → 29.**
+
+- **Census before:** PASS=59 CONCERN=61 FAIL=31. Gate: NON-VERDICT=0, tree clean.
+- **Unit 1 — gave the G1 distance item its ruler.** Commit `b93081b`.
+  `mat_g1_mg_q2_0` rendered *"A box and a bag are placed apart. The distance between them is ___
+  blocks."* keyed 5 against 4/6/7 on mcq/cloze — **93 of 200 samples** with nothing in the item
+  separating key from distractor.
+  **The handoff's warning was the load-bearing part:** do not copy the G2 fix, because
+  `ruler_measure` supported `read_measurement` only and restricting `distance_between` alone would
+  have left it with no visual and emptied the matrix. Checked in memory first — the ruler renders
+  it correctly, `object_start`/`object_end` spanning the gap — so the task was **given** the ruler
+  and removed from the text formatters. 0 dataless items remain; all nodes PASS.
+- **Unit 2 — the count is the object divided by the unit.** Same commit.
+  Object, unit and count were drawn independently: *"A shoe is 10 steps long."*, *"A book is 60
+  crayons long."*, *"A crayon is 90 blocks long. A shoe is 33 blocks long."* Both are now modelled
+  in cm (nothing renders those numbers) so the count falls out: a book is 8 paperclips, 5 blocks,
+  3 crayons or 2 hands. That also removed the two-digit regrouping subtraction flagged as a Grade 2
+  operation in a Grade 1 node.
+  - **A regression I introduced and caught by measuring:** the first version *raised* when no
+    object pair differed in the chosen unit, which fires for real — every classroom object is one
+    step long, so `steps` crashed **53 of 2700** attempts. The unit is now re-chosen from those
+    that can discriminate; the raise stays only as a true invariant. 2700/2700 generate.
+- **Unit 3 — re-reviewed both nodes.** Both **FAIL → CONCERN**.
+- **Census after: PASS=59 CONCERN=63 FAIL=29.** NON-VERDICT 0. `run_all` 151/151, 0 failures,
+  all ten contract checks, stages 1–5 green.
+
+### Next tick should:
+
+1. **Extend the size model to the `distance_between` branch** — it is the one place it does not
+   reach. `mat_g1_mg_q2_0` seeds 500/501/502 set *ninety blocks, sixty steps and sixty crayons*
+   between two objects: *"counting to ninety off a picture is past G1 Q2"*. The branch still draws
+   its count from the free G1 range. A gap between two classroom objects is a small number of
+   units; derive it the same way `_units_spanning` derives an object length.
+2. **Two small, specific items on `mat_g1_mg_q2_2`:**
+   - seed 501 renders *"A crayon is 1 crayon long."* — exclude the unit from the object pool when
+     they name the same thing.
+   - seed 602 offers 5 and 7 against *"Which is longer: 3 blocks or 6 blocks?"* — a comparison item
+     whose distractors are values the question never puts forward. Its options should be drawn
+     from the two quantities offered.
+   - The reviewer also flags *"Segment A"/"Segment B"* vocabulary at seed 606 as unmet at G1 Q2.
+3. **`mat_g2_mg_q4_4`** — still FAIL, and now three ticks on the same co-mapped-DNA question:
+   8 of 15 samples involve no perimeter, and only computing a perimeter is covered of
+   identify / measure / appropriate tools. **This needs a maintainer decision, not another
+   guess** — give `perimeter` a measuring formatter so the co-mapping can go, or bind the length
+   half to the figure.
+4. Then the next FAIL clusters by DNA: **subtraction (4)**, **pictographs (3)**, **division (3)**.
+5. **139 nodes undeclared, 30 capability gaps.**
+
+**State at handoff: tree clean, NON-VERDICT 0, FAIL down to 29.**
