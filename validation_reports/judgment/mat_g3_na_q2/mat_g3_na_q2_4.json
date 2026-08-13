@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q2_4",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the less-than ceiling fix, 2026-08-14",
+  "review_date": "2026-08-14",
   "blind": true,
   "sample_seeds": [
     42,
@@ -55,27 +55,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 3460 − 3140?",
-      "correct_answer": 320,
+      "question_text": "What is 8413 − 4110?",
+      "correct_answer": 4303,
       "options": [
         {
           "key": "A",
-          "value": 320,
+          "value": 4303,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 319,
+          "value": 4302,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 321,
+          "value": 4304,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 6600,
+          "value": 12523,
           "is_correct": false
         }
       ]
@@ -236,27 +236,27 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 6706 − 2477?",
-      "correct_answer": 4229,
+      "question_text": "What is 5609 − 1839?",
+      "correct_answer": 3770,
       "options": [
         {
           "key": "A",
-          "value": 9183,
+          "value": 7448,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 4229,
+          "value": 3770,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 4230,
+          "value": 3771,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 4228,
+          "value": 3769,
           "is_correct": false
         }
       ]
@@ -292,31 +292,31 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "In a pictograph, Pia's group collected 4425 leashes and another group collected 4310 leashes. How many more did Pia's group collect?",
-      "correct_answer": 115,
+      "question_text": "In a pictograph, Pia's group collected 18 leashes and another group collected 10 leashes. How many more did Pia's group collect?",
+      "correct_answer": 8,
       "options": [
         {
           "key": "A",
-          "value": 114,
-          "text": "114",
+          "value": 7,
+          "text": "7",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 8735,
-          "text": "8735",
+          "value": 28,
+          "text": "28",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 116,
-          "text": "116",
+          "value": 9,
+          "text": "9",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 115,
-          "text": "115",
+          "value": 8,
+          "text": "8",
           "is_correct": true
         }
       ]
@@ -324,27 +324,27 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is 325 − 45?",
-      "correct_answer": 280,
+      "question_text": "What is 912 − 570?",
+      "correct_answer": 342,
       "options": [
         {
           "key": "A",
-          "value": 280,
+          "value": 342,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 281,
+          "value": 343,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 370,
+          "value": 1482,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 279,
+          "value": 341,
           "is_correct": false
         }
       ]
@@ -384,27 +384,27 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 8460 − 1120?",
-      "correct_answer": 7340,
+      "question_text": "What is 5325 − 4220?",
+      "correct_answer": 1105,
       "options": [
         {
           "key": "A",
-          "value": 7340,
+          "value": 1105,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 7339,
+          "value": 1104,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 9580,
+          "value": 9545,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 7341,
+          "value": 1106,
           "is_correct": false
         }
       ]
@@ -441,27 +441,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Bare subtraction sentences (seed 603's '3377 − 210 = ___'), a part-part-whole word problem (seed 55), and number-line count-backs (seed 50, seed 605) all land squarely on subtraction 'with and without regrouping'."
+      "rationale": "All 18 samples are subtractions of two whole numbers below 10 000, and the arithmetic verifies in every case: seed 43 'What is 8413 − 4110?' gives 4303, seed 502 'What is 5609 − 1839?' gives 3770, seed 500 'The total is 6398 and one part is 3715. What is the other part?' gives 2683, and seed 51 'Ana says: 542 − 20 = 562. Is Ana correct?' is flagged wrong with the corrected value 522. Nothing asks for an operation outside the sentence."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Regrouping is unavoidable in some samples (seed 42's 1830−1744 needs borrowing across three places) and absent in others (seed 46's 3463−60 needs none), so the competency's 'with and without' phrasing is honored on both sides."
+      "rationale": "Both regrouping cases are present and easy to point at. With regrouping: seed 42 'What is 1830 − 1744?' answering 86, seed 45 '880 − 102 = ___' answering 778, and seed 501 '3418 − 3379 = 39. True or False?'. Without regrouping: seed 46 'What is 3463 − 60?', seed 603 '3377 − 210 = ___', seed 604 'What is 5325 − 4220?', and seed 85 '903 − 300 = 603. True or False?'. Part-whole and count-back framings also appear."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "A pictograph word problem about leash counts (seed 601) and a coin-based error check (seed 51) keep reasoning to a single subtraction step, matching Grade 3 expectations."
+      "rationale": "Four-digit subtraction is the right load for grade 3 quarter 2, and each item stays at one operation. Seed 50 'The dot is at 7042 and it moves backward 6900 numbers. Starting from 7042, just count back 6900 numbers. Which number will the dot land on?' keeps the count manageable by using a round jump, and seed 55 'The total is 1389 and one part is 1170. What is the other part?' uses part and whole wording without any symbolic unknown."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Six different formatters carry the same subtraction skill — mcq, cloze, read_mcq, error_detect, read_fill_in_blank, true_false — which is unusually broad modality coverage for one node."
+      "rationale": "Six formatters are represented: mcq (seed 43), cloze (seed 44 '7222 − 810 = ___'), true_false (seed 501), error_detect (seed 51 'Ana says: 542 − 20 = 562. Is Ana correct?'), read_mcq (seed 605 'The dot is at 152 and it moves backward 110 numbers.') and read_fill_in_blank (seed 500). One contextual item, seed 601, adds a comparison framing with 'collected 18 leashes and another group collected 10 leashes'. Distractors combine near neighbours with a sum trap."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "What changes between easy and hard items is digit count and whether borrowing is required, both of which belong to the subtraction competency rather than to some other skill."
+      "rationale": "Every sample sits on the subtraction verb and never reaches past it into multiplication or algebraic notation. Answerability is intact: the two fill-in items, seed 55 'The total is 1389 and one part is 1170. What is the other part?' and seed 500, both state the whole and one part before asking for the other, and each cloze blank falls on the result, as in seed 603 '3377 − 210 = ___', never on a number the solver needs."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "8460 (seed 604) is the largest minuend anywhere in the set, comfortably inside the 'less than 10 000' ceiling stated for both operands."
+      "rationale": "The largest operand found is 8413 in seed 43 'What is 8413 − 4110?', followed by 7222 in seed 44 and 7042 in seed 50; all are below 10 000, so the literal bound holds. Numbers above the ceiling appear only as distractor options, namely 13942 in seed 50, 12523 in seed 43 and 9545 in seed 604, none of which is an operand. The small end, seed 601 with 'collected 18 leashes and another group collected 10 leashes' and seed 605 'The dot is at 152 and it moves backward 110 numbers.', is light for grade 3 but is two items out of eighteen across a ladder that reaches 8413."
     }
   },
   "overall": "PASS"
