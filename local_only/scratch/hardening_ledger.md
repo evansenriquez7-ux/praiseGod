@@ -2188,3 +2188,54 @@ re-reviewed.
 6. **139 nodes undeclared, 30 capability gaps.**
 
 **State at handoff: tree clean, NON-VERDICT 0, FAIL down to 29.**
+
+---
+
+## 2026-08-14 — Tick C: "or vice versa" names two directions. **FAIL 29 → 28.**
+
+- **Census before:** PASS=58 CONCERN=64 FAIL=29. Gate: NON-VERDICT=0, tree clean.
+- **Cluster choice:** `mat_g2_na_q2_3` is now CONCERN, so FAIL-before-CONCERN sent me back to the
+  DNA census. Three DNAs tie at 3 FAILs (pictographs, multiplication, division), but the
+  data-display area (pictographs + bar_graphs) spans **7 FAIL nodes** together — the largest
+  coherent region — so pictographs it was.
+- **Unit — bind both directions.** Commit `e5efd85`.
+  `mat_g2_dp_q3_0` reads *"Present raw data, or data in tabular form, in a pictograph with a scale,
+  **or vice versa**"* and was bound to `present_data` — half its own sentence.
+  - **Step 1 paid off again: nothing needed building.** `task_type='organize_table'` already
+    renders *"Fill in the chart with the correct counts."* against a displayed pictograph via
+    `fill_in_table`, and `mat_g1_dp_q3_3` had been using it all along. The machinery sat one line
+    away. **Check before reaching for new machinery** — that is now three ticks in a row where the
+    "missing" capability existed.
+  - Bound to a **sentinel**, not a list, for the reason this codebase keeps re-learning: registry
+    bounds are computed once per node, so a choice made there freezes to one direction forever.
+  - Verified: **107 raw → pictograph, 93 pictograph → table** over 200 seeds.
+- **Re-reviewed: FAIL → CONCERN.** The reviewer counted the split independently (4 and 7 in its
+  packet) and scored both `competency_fulfillment` and `comprehensive_coverage` PASS.
+- **Census after: PASS=58 CONCERN=65 FAIL=28.** NON-VERDICT 0. `run_all` 151/151, 0 failures,
+  all ten contract checks, stages 1–5 green.
+
+### Next tick should:
+
+1. **`mat_g2_dp_q3_0`'s remaining concern is a symbol/category clash, and it is cheap:** seed 42
+   keys an **apple** picture over categories *"apples, bananas, mangoes, grapes"*, so apples is
+   both the symbol and one of the rows; the same apple key is pinned to weekdays, flowers and
+   sports elsewhere. **Pick the symbol from the category theme, and never from the categories
+   themselves.** Also: seed 42 gives every category the value 10 at scale 10, so each row is one
+   picture and neither the scale nor any comparison is exercised.
+2. **The other two pictograph FAILs are genuine capability gaps, both diagnosed:**
+   - `mat_g1_dp_q3_0` — *"Collect data in one variable through a simple interview."* `registry.py`
+     already discloses it in its own comment: *"This DNA has no interview-simulation task_type at
+     all (a real, disclosed gap, not a routing bug)."* Build `collect_interview`.
+   - `mat_g2_dp_q3_1` — *"Interpret data **in tabular form and** in a pictograph."* Every item
+     opens *"Look at the picture graph"*. `fill_in_table` is a **set** formatter, so reading a
+     *displayed table* is a distinct, unbuilt capability.
+3. **`mat_g2_na_q2_3`'s verb `Illustrate`** — design already worked out in the previous entry:
+   `VARIANTS_BY_DNA["subtraction"]` has no `task_type` axis, and the `task_type` key already in its
+   `FORMATTER_VARIANT_SUPPORT` entry references a variant that does not exist. Build it, bind it,
+   then apply the reverse restriction; check the §1C blast radius first.
+4. **The cross-node plural defect** — *"1 story chapters"*, *"1 merchandise shirts"* — localised to
+   **multi-word object nouns only**.
+5. **`mat_g2_mg_q4_4`** — co-mapped-DNA question, open eight ticks. **Escalated to the maintainer.**
+6. **139 nodes undeclared, 30 capability gaps.**
+
+**State at handoff: tree clean, NON-VERDICT 0, FAIL down to 28.**
