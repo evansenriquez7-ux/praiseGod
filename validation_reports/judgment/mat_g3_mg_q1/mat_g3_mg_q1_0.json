@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g3_mg_q1_0",
-  "reviewed_by": "Claude Opus 5 blind reviewer, area cluster re-review after square-label and surface-noun fixes, 2026-08-13",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after estimation-spread and induction-guard fixes, 2026-08-13",
   "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
@@ -33,7 +33,7 @@
         },
         {
           "key": "B",
-          "value": 4,
+          "value": 21,
           "is_correct": false
         },
         {
@@ -66,7 +66,7 @@
         },
         {
           "key": "C",
-          "value": 14,
+          "value": 56,
           "is_correct": false
         },
         {
@@ -84,7 +84,7 @@
       "options": [
         {
           "key": "A",
-          "value": 5,
+          "value": 2,
           "is_correct": false
         },
         {
@@ -94,7 +94,7 @@
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 6,
           "is_correct": false
         },
         {
@@ -112,7 +112,7 @@
       "options": [
         {
           "key": "A",
-          "value": 26,
+          "value": 30,
           "is_correct": false
         },
         {
@@ -140,7 +140,7 @@
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": 5,
           "is_correct": false
         },
         {
@@ -180,14 +180,14 @@
         },
         {
           "key": "C",
-          "value": 15,
-          "text": "15",
+          "value": 20,
+          "text": "20",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 17,
-          "text": "17",
+          "value": 12,
+          "text": "12",
           "is_correct": false
         }
       ]
@@ -262,14 +262,14 @@
         },
         {
           "key": "B",
-          "value": 15,
-          "text": "15",
+          "value": 20,
+          "text": "20",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 17,
-          "text": "17",
+          "value": 12,
+          "text": "12",
           "is_correct": false
         },
         {
@@ -298,7 +298,7 @@
         },
         {
           "key": "C",
-          "value": 10,
+          "value": 18,
           "is_correct": false
         },
         {
@@ -316,20 +316,20 @@
       "options": [
         {
           "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 10,
           "text": "10",
           "is_correct": false
         },
         {
-          "key": "B",
-          "value": 5,
-          "text": "5",
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": 4,
-          "text": "4",
+          "value": 12,
+          "text": "12",
           "is_correct": false
         },
         {
@@ -353,7 +353,7 @@
         },
         {
           "key": "B",
-          "value": 10,
+          "value": 18,
           "is_correct": false
         },
         {
@@ -363,7 +363,7 @@
         },
         {
           "key": "D",
-          "value": 16,
+          "value": 12,
           "is_correct": false
         }
       ]
@@ -419,7 +419,7 @@
         },
         {
           "key": "D",
-          "value": 8,
+          "value": 35,
           "is_correct": false
         }
       ]
@@ -427,29 +427,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The illustrate half is really there: seed 42 sets up 'A rectangle is covered edge-to-edge with unit square tiles, arranged in 2 rows and 7 columns' and seed 55 puts a picture in front of the student with 'Look at the 4×3 array. How many squares are shaded in all?', so area is always reached by counting square tile units. The estimate half is only a word. Seed 50 says 'Estimate how many unit tiles cover the square in all.' but offers 8, 16, 15 and 17, and seed 45 asks 'About how many tiles in total will you use?' against 26, 10, 25 and 20 — no estimation strategy separates 25 from 26, so the hedged wording demands an exact product while teaching the student that estimating means computing exactly."
+      "verdict": "PASS",
+      "rationale": "The estimation verb is actually operable on the estimate-worded items: seed 42 asks 'Estimate how many unit tiles cover the rectangle in all.' for 2 rows and 7 columns and offers 9, 14, 18, 21, so a pupil who judges the total as roughly two sevens lands on the key without exact multiplication; seed 43's 28 sits against 22, 56 and 11, and seed 502's 9 against 6, 12 and 18. Every stem containing 'Estimate' or 'About how many tiles in total will you use?' keeps its nearest distractor at least 20 percent away from the key."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both figures the competency names are tiled and both are asked about: the square at seed 44, 'A square is covered edge-to-edge with unit square tiles, arranged in 2 rows and 2 columns', and the rectangle at seed 606, 'A rectangle is covered edge-to-edge with unit square tiles, arranged in 4 rows and 7 columns'. The illustrated presentation that the verb illustrate calls for is carried by the array items, seed 605 'Look at the 5×6 array.' and seed 500 'Look at the 10×10 array.', and seed 601 takes the same tiling idea onto a real surface, 'Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with square tiles that are 1 m on each side'."
+      "rationale": "Both shapes named in the competency appear and both are tiled with unit squares: squares at seed 45 'fitting 5 rows and 5 columns exactly' and seed 44 'arranged in 2 rows and 2 columns', rectangles at seed 606 'arranged in 4 rows and 7 columns' and seed 602 'fitting 5 rows and 3 columns exactly'. The 'illustrate' half is carried by the array items such as seed 605 'Look at the 5×6 array. How many squares are shaded in all?' and the contextual tiling of seed 601 'Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with square tiles that are 1 m on each side.'"
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each stem holds one array in one clause, so the reasoning is a single count or product: seed 502, 'You are laying unit square tiles over a square, fitting 3 rows and 3 columns exactly', needs only 3 × 3. The one word problem, seed 601, 'Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with square tiles that are 1 m on each side', is fully answerable from the information given — both side lengths and the tile size are stated, giving 2 × 3 = 6 — with no hidden conversion and no leftover partial tile for a Grade 3 Quarter 1 pupil to reason about."
+      "rationale": "The heaviest item, seed 500 'Look at the 10×10 array. How many squares are shaded in all?' with options 100, 97, 101 and 102, is still reachable for Grade 3 Quarter 1 by skip-counting ten rows of ten rather than tallying every square, and the tight cluster there sits on a count-worded stem, not an estimate-worded one. Stem length stays short throughout, and seed 601's garden framing carries only two measurements plus a 1 m tile."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Four genuinely different presentations appear across the fourteen samples, not one template renumbered: the third-person tiling report at seed 43, 'A rectangle is covered edge-to-edge with unit square tiles, arranged in 7 rows and 4 columns'; the second-person action framing at seed 602, 'You are laying unit square tiles over a rectangle, fitting 5 rows and 3 columns exactly'; the read-the-picture items such as seed 55, 'Look at the 4×3 array', which name no rows or columns in prose and force the student to read the arrangement off the figure; and the contextual garden item at seed 601. Three formatters (mcq, cloze, read_mcq) carry them."
+      "rationale": "Fourteen samples span three formatters (mcq at seed 606, cloze at seed 601, read_mcq at seed 55) and four distinct stem frames: the rows-and-columns description, the second-person 'You are laying unit square tiles over a square, fitting 3 rows and 3 columns exactly.' of seed 502, the pictorial 'Look at the 4×3 array.' of seed 55, and the garden word problem at seed 601. The only redundancy is seeds 50 and 501 repeating the identical cloze stem 'A square is covered edge-to-edge with unit square tiles, arranged in 4 rows and 4 columns.', one repeated pair out of fourteen."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample keeps the square tile as the unit of measure and asks only how many of them cover the figure — seed 46, 'A rectangle is covered edge-to-edge with unit square tiles, arranged in 2 rows and 5 columns', and seed 605, 'Look at the 5×6 array. How many squares are shaded in all?'. Nothing drifts to perimeter, nothing states an area and asks back for a missing side, and no stem hands the student a rule to apply; even the contextual item at seed 601 measures with 'square tiles that are 1 m on each side', so the tile remains the unit rather than a length formula."
+      "rationale": "Distractor design tracks the verb of each stem rather than being uniform: where the stem says 'Estimate how many unit tiles cover the rectangle in all.' (seed 46, key 10) the foils 5, 7 and 14 are structural errors a rough estimate discriminates, while where the stem asks an exact count of a drawn array (seed 55 'Look at the 4×3 array.', key 12 against 11, 13 and 14) the foils are off-by-one miscounts, which is the right misconception for counting tiles. Both 'Illustrate' and 'estimate' are therefore addressed, and no item drifts into perimeter or into standard area units."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The arithmetic each sample actually demands stays inside the multiplication facts to ten: 2 × 2 = 4 at seed 44, 7 × 4 = 28 at seed 43, 4 × 7 = 28 at seed 606, and the largest is the array at seed 500, 'Look at the 10×10 array', a hundred-square whose answer 100 is the familiar Grade 3 hundred chart. No sample needs a two-digit by two-digit product, and the garden at seed 601 is 2 m long and 3 m wide, a size a Grade 3 pupil can picture."
+      "rationale": "Side counts run from 2 to 10 and totals from 4 to 100, all inside Grade 3 Quarter 1 multiplication facts: seed 44's '2 rows and 2 columns' anchors the low end, seed 500's '10×10 array' the high end, and seed 601 keeps a real context plausible with 'a rectangular garden that is 2 m long and 3 m wide'. No item demands a product beyond ten times ten or a fractional tile."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }
