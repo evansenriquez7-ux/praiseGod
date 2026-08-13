@@ -3371,3 +3371,73 @@ The reviewer also re-verified key uniqueness independently across the whole pack
 every offered option against every case in all 14 items: exactly one option survives in each."*
 
 `validate_matrix --node` PASS on all four; full `run_all` 151/151, 0 failures, stages 1–5 green.
+
+---
+
+## 2026-08-13 — length_measurement: the largest FAIL cluster in the tree
+
+### Why this cluster
+The area cluster reached zero FAILs, and the protocol says FAIL before CONCERN, so the 33
+remaining FAILs were grouped by DNA rather than by node prefix:
+
+```
+5  ('length_measurement',): ['mat_g1_mg_q2_2', 'mat_g2_mg_q2_0', 'mat_g2_mg_q2_1',
+                             'mat_g2_mg_q2_2', 'mat_g3_mg_q1_6']
+4  ('subtraction',): [...]
+3  ('pictographs',): [...]
+3  ('division',): [...]
+```
+
+`length_measurement` is the largest, and a sixth node (`mat_g2_mg_q4_4`) shares the DNA.
+
+### Three defects, all in the `estimate` branch
+
+**1. The enum printed as the unit.** Every other branch resolves a real unit name for
+non-standard mode (`rng.choice(_NON_STANDARD_UNITS)` → paperclips, hands, steps). The `estimate`
+branch printed `unit_mode` straight into the stem:
+
+> "Seed 607 ... renders `An object measures 2 non_standard. About how many non_standard is that,
+> rounded to the nearest 10?`, the same broken placeholder text found in the sibling
+> measure-length node"
+
+**2. The task was ungated and reached Grade 1.** Checked against the knowledge graph rather than
+assumed — **no Grade 1 competency asks a pupil to estimate a length at all**:
+
+```
+G2Q2 mat_g2_mg_q2_2: Estimate length using meters or centimeters, and distance using meters.
+G3Q1 mat_g3_mg_q1_0: Illustrate and estimate the area of a square or rectangle using square tile
+G3Q2 mat_g3_mg_q2_1: Estimate mass of an object using grams, kilograms, and/or milligrams.
+G3Q2 mat_g3_mg_q2_4: Estimate capacity using liters and/or milliliters.
+```
+
+So it now carries a curriculum gate at (2, 2) — where MATATAG introduces it. The reviewer's
+finding was exactly this: *"'Rounded to the nearest 10' again asks for a rounding operation this
+grade's measurement competency does not call for and Grade 1 has not yet taught."*
+
+**3. Estimates that rounded away the whole quantity, and estimates that were no-ops.** A length of
+2 rounded to the nearest 10 keys 0 — flagged twice by reviewers (*"rounds 'An object measures 2 m'
+to the nearest 10, which collapses to zero"*). And once that was fixed, a length already on the
+boundary made the estimate a no-op (`10 m` to the nearest 5 keys 10). The rounding unit is now
+chosen from the magnitude, the length floored, and a value sitting on the boundary nudged one off
+— the same treatment `mass_capacity.py` already applies.
+
+### Verification
+
+```
+1800 items across 9 length_measurement nodes
+  stems containing the literal "non_standard": 0
+  estimate items whose answer rounds to 0:      0
+
+estimate items: 200 | no-op (value already on the boundary): 0 | rounding to 0: 0 | enum leaks: 0
+
+mat_g1_mg_q2_2 seed 607: ValueError: generate_context: variant task_type='estimate' for DNA
+                         'length_measurement' is not available at node 'mat_g1_m...
+mat_g2_mg_q2_2 seed 604: 'An object measures 11 cm. About how many cm is that, rounded to the
+                          nearest 5?'
+```
+
+The Grade 1 refusal is the gate working, and packets still build for that node (16 samples) —
+the builder skips variant seeds the curriculum forbids rather than failing.
+
+`validate_matrix --node` PASS on all six affected nodes; full `run_all` 151/151, 0 failures, all
+ten contract checks, stages 1–5 green.

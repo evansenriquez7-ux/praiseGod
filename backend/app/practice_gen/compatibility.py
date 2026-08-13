@@ -120,6 +120,15 @@ CURRICULUM_VARIANT_GATES: Dict[tuple, tuple] = {
     # was never registered here — so the Lab offered the option at G1 and every
     # generation crashed. The gate mirrors the DNA's own rule.
     ("length_measurement", "task_type", "choose_unit"): (2, 1),
+    # Length estimation enters the curriculum at mat_g2_mg_q2_2 ("Estimate length
+    # using meters or centimeters, and distance using meters") and nowhere earlier
+    # -- no Grade 1 competency in the knowledge graph asks a pupil to estimate a
+    # length at all. Ungated, this task_type reached mat_g1_mg_q2_2 ("Solve problems
+    # involving lengths and distances using non-standard units"), where a blind
+    # reviewer found it rendering a rounding exercise the grade has not been taught:
+    # "'Rounded to the nearest 10' again asks for a rounding operation this grade's
+    # measurement competency does not call for and Grade 1 has not yet taught."
+    ("length_measurement", "task_type", "estimate"): (2, 2),
 
     # Word problems: available from G1Q1 per curriculum ("solve problems given orally or in pictures")
     # No gate entries (all LCs with word_problem context available from Q1)

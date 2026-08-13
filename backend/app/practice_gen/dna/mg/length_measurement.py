@@ -311,8 +311,28 @@ def generate_params(
         # also had no matching task_type -- same rounding-based estimation
         # framing already used for mass_capacity.py's fix this session.
         lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
-        length = rng.randint(lo, hi)
-        round_unit = 10 if length < 100 else 50
+        # The label, not the enum. Every other branch resolves a real unit name for
+        # non-standard mode; this one printed `unit_mode` straight into the stem, so
+        # a Grade 1 sample read "An object measures 2 non_standard. About how many
+        # non_standard is that...". The curriculum gate above now keeps this task at
+        # Grade 2+, where unit_mode is always "cm" or "m", but the resolution stays
+        # so the enum cannot leak again if that gate ever moves.
+        unit_label = rng.choice(_NON_STANDARD_UNITS) if unit_mode == "non_standard" else unit_mode
+        # An estimate that rounds away the whole quantity is not an estimate: at
+        # length 2 rounding to the nearest 10 gives 0, which a blind reviewer flagged
+        # twice ("rounds 'An object measures 2 m' to the nearest 10, which collapses
+        # to zero and does not model a realistic estimation scenario"). The rounding
+        # unit is chosen from the magnitude instead, and the length floored, so the
+        # rounded answer is always a real quantity.
+        length = max(10, rng.randint(lo, hi))
+        round_unit = 50 if length >= 100 else (10 if length >= 20 else 5)
+        # A value already on the rounding boundary makes the estimate a no-op:
+        # "An object measures 10 m. About how many m is that, rounded to the nearest
+        # 5?" keys 10, and nothing was estimated. mass_capacity.py hit the same thing
+        # and solved it the same way -- shift the value one off the boundary so there
+        # is a real judgment to make.
+        if length % round_unit == 0:
+            length += 1
         # A `max(round_unit, ...)` floor here was mathematically wrong:
         # small values (e.g. 2 cm, rounding to the nearest 10) correctly
         # round DOWN to 0, not up to the rounding unit itself. Found by a
@@ -331,14 +351,14 @@ def generate_params(
         return {
             "blank_target": "answer",
             "length": length,
-            "unit": unit_mode,
+            "unit": unit_label,
             "unit_type": unit_mode,
             "task_type": "estimate",
             "round_to": round_unit,
             "answer": rounded,
             "question": (
-                f"An object measures {length} {unit_mode}. "
-                f"About how many {unit_mode} is that, rounded to the nearest {round_unit}?"
+                f"An object measures {length} {unit_label}. "
+                f"About how many {unit_label} is that, rounded to the nearest {round_unit}?"
             ),
         }
 
