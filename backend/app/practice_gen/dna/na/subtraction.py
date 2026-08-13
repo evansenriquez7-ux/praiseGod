@@ -480,9 +480,19 @@ def generate_params(
     # verbatim in the stem is a SEMANTIC-LEAK concern handled at render time via
     # FormattedProblem.given_values / blank_target and the auditor's
     # explainable-count check — not by dropping valid number pairs.
+    # "2-digit by 1-digit" bounds the SUBTRAHEND, not just the minuend, and this
+    # DNA had no key for it: mat_g2_na_q2_3's competency reads "Illustrate
+    # subtraction of 2-digit by 1-digit" and the node rendered "What is 930 - 408?"
+    # -- 3-digit by 3-digit. A blind reviewer scored it FAIL on four findings at
+    # once, including "the largest minuend across the eighteen samples is 930 ...
+    # far above what a 2-digit by 1-digit subtraction competency implies".
+    max_subtrahend_val = profile.get("max_subtrahend")
+    max_subtrahend = int(max_subtrahend_val) if max_subtrahend_val is not None else None
+
     if max_minuend <= 100:
         for a in candidates_a:
-            for b in range(0, a + 1):
+            b_hi = a if max_subtrahend is None else min(a, max_subtrahend)
+            for b in range(0, b_hi + 1):
                 if _satisfies_regrouping(a, b, reg_level):
                     candidate_pairs.append((a, b))
     else:
@@ -492,7 +502,7 @@ def generate_params(
         while len(candidate_pairs) < 2000 and attempts < 5000:
             attempts += 1
             a = rng.randint(min_a, max_minuend)
-            b = rng.randint(0, a)
+            b = rng.randint(0, a if max_subtrahend is None else min(a, max_subtrahend))
             if _satisfies_regrouping(a, b, reg_level):
                 candidate_pairs.append((a, b))
 
@@ -506,7 +516,8 @@ def generate_params(
         # exact range/exclusion set, which is still a real incompatibility.
         raise RuntimeError(
             f"generate_params (subtraction): no valid (a, b) pair exists for "
-            f"max_minuend={max_minuend}, regrouping='{reg_level}' with the "
+            f"max_minuend={max_minuend}, max_subtrahend={max_subtrahend}, "
+            f"regrouping='{reg_level}' with the "
             f"non-degenerate exclusions (b>=1, a!=2b, a!=b). "
             f"Constraints are incompatible (grade={grade}, profile={difficulty_profile})."
         )

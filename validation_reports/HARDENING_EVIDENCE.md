@@ -4020,3 +4020,54 @@ the missing term and the repeated value is part of the sequence. All three are a
 
 `validate_matrix --node` PASS on all seven checked nodes; full `run_all` 151/151, 0 failures,
 all ten contract checks, stages 1–5 green.
+
+---
+
+## 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key
+
+### The failing rationale
+`mat_g2_na_q2_3` was scored FAIL on four findings at once:
+
+> "The competency is explicitly '2-digit by 1-digit' subtraction, but most samples subtract
+> three-digit numbers, e.g. seed 600's '930 − 408' and seed 42's '510 − 382' — these are 3-digit by
+> 3-digit problems"
+> "the largest minuend across the eighteen samples is 930 ... far above what a 2-digit by 1-digit
+> subtraction competency implies (a 2-digit number minus a single digit, at most 99 − 9)"
+
+Its bounds were `{}` — nothing parsed the phrasing at all, so the DNA's per-grade default
+(`g2: a < 1000`) governed.
+
+### Why binding alone was not enough — and what had to be built
+Binding `max_minuend=(1, 99)` fixes the *minuend* half. The subtrahend half had **no key to bind**:
+the DNA read only `max_minuend`, and the candidate-pair builder drew `b` from `range(0, a + 1)` in
+its exhaustive path and `rng.randint(0, a)` in its sampled one. "2-digit **by 1-digit**" bounds two
+operands and only one of them was expressible.
+
+So `max_subtrahend` was built and threaded through both pair paths, and the registry learned the
+paired-width phrasing — parsed *before* the existing single-width idiom, which would otherwise
+capture only the first number and leave the subtrahend unbounded.
+
+```
+mat_g2_na_q2_3 bounds: {'max_minuend': (1, 99), 'max_subtrahend': (1, 9)}
+```
+
+### Verification
+
+```
+explicit a - b items: 170 | violating 2-digit by 1-digit: 0
+
+seed 42  BEFORE: 'What is 510 − 382?'   AFTER: 'What is 2 − 1?'
+seed 600 BEFORE: 'What is 930 − 408?'   AFTER: 'What is 30 − 8?'
+```
+
+Two variant-coverage seeds now raise rather than render — `regrouping level 'four_places' requires
+4 borrow places` — which is the feasibility guard working: a 2-digit minuend cannot borrow four
+times. The packet builder skips them and still builds:
+
+```
+packet: 18 samples OK
+mat_g2_na_q2_3: PASS   mat_g1_na_q3_4: PASS   mat_g2_na_q2_4: PASS
+mat_g3_na_q2_4: PASS   mat_g3_na_q2_5: PASS
+```
+
+Full `run_all`: 151/151, 0 failures, all ten contract checks, stages 1–5 green.

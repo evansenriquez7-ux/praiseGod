@@ -277,8 +277,17 @@ def _parse_competency_bounds(
         # ceiling, so a mis-parsed bound immunises the node from the only
         # checks that could expose it. Same digit-width idiom as the generic
         # number extraction further down (see "Check for digit limits first").
+        # "2-digit by 1-digit" states BOTH operand widths. Parsed before the
+        # single-width idiom below, which would otherwise capture only the first
+        # number and leave the subtrahend unbounded -- which is how mat_g2_na_q2_3
+        # ("Illustrate subtraction of 2-digit by 1-digit") stayed completely
+        # unbound and served "What is 930 - 408?".
+        pair_match = re.search(r'(\d+)\s*-?\s*digits?\s+by\s+(\d+)\s*-?\s*digits?', text)
         digit_match = re.search(r'(?:up\s+to|to)\s+(\d+)\s*-?\s*digits?', text)
-        if digit_match:
+        if pair_match:
+            bounds["max_minuend"] = (1, (10 ** int(pair_match.group(1))) - 1)
+            bounds["max_subtrahend"] = (1, (10 ** int(pair_match.group(2))) - 1)
+        elif digit_match:
             bounds["max_minuend"] = (1, (10 ** int(digit_match.group(1))) - 1)
         else:
             # Parse explicit operand bounds. A capture below 10 is a digit
