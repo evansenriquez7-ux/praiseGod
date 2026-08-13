@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g1_mg_q2_0",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the ruler routing fix, 2026-08-13",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the G1 ruler and unit-size fixes, 2026-08-13",
   "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
@@ -9,7 +9,6 @@
     44,
     45,
     46,
-    50,
     500,
     501,
     502,
@@ -75,56 +74,56 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A box and a bag are placed apart. The distance between them is ___ blocks.",
-      "correct_answer": 5,
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 6,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 5,
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": 7,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 5,
-          "is_correct": true
+          "value": 4,
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A bag and a chair are placed apart. The distance between them is ___ steps.",
-      "correct_answer": 10,
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 10,
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 9,
+          "value": 11,
           "is_correct": false
         }
       ]
@@ -158,74 +157,38 @@
       ]
     },
     {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "A chair and a box are placed apart. The distance between them is ___ blocks.",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 11,
-          "text": "11",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "text": "10",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "text": "12",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "seed": 500,
-      "formatter": "cloze",
+      "formatter": "read_mcq",
       "question_text": "A toy and a bag are placed apart. The distance between them is ___ blocks.",
-      "correct_answer": 90,
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
           "value": 90,
-          "text": "90",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 89,
-          "text": "89",
+          "value": 91,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 91,
-          "text": "91",
+          "value": 95,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 92,
-          "text": "92",
+          "value": 89,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 501,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A box and a chair are placed apart. The distance between them is ___ steps.",
-      "correct_answer": 60,
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
@@ -234,30 +197,30 @@
         },
         {
           "key": "B",
-          "value": 62,
+          "value": 65,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 59,
+          "value": 61,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 61,
+          "value": 59,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A box and a chair are placed apart. The distance between them is ___ crayons.",
-      "correct_answer": 60,
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 61,
+          "value": 65,
           "is_correct": false
         },
         {
@@ -267,7 +230,7 @@
         },
         {
           "key": "C",
-          "value": 62,
+          "value": 61,
           "is_correct": false
         },
         {
@@ -279,36 +242,36 @@
     },
     {
       "seed": 600,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A bag and a box are placed apart. The distance between them is ___ steps.",
-      "correct_answer": 10,
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 9,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 10,
-          "is_correct": true
+          "value": 20,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 12,
-          "is_correct": false
+          "value": 10,
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 601,
       "formatter": "read_mcq",
-      "question_text": "A pencil is 5 hands long. A shoe is 4 hands long. How many hands longer is a pencil than a shoe?",
+      "question_text": "A book is 2 hands long. A crayon is 1 hand long. How many hands longer is a book than a crayon?",
       "correct_answer": "D",
       "options": [
         {
@@ -336,29 +299,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The length half of the sentence is carried only by the three read_mcq ruler items, seeds 42, 43 and 46, all reading 'How long is the object? Give your answer in paperclips.' — visual items, correctly judged with a diagram, and fine as such. The distance half is carried by seven text items on the mcq and cloze formatters that state no measurable information whatsoever: seed 44 is 'A box and a bag are placed apart. The distance between them is ___ blocks.' keyed to 5, and seed 501 is 'A box and a chair are placed apart. The distance between them is ___ steps.' keyed to 60. Neither formatter is a read or ruler type, so there is no diagram to count, and nothing in the stem separates the key from the distractors. The same empty frame recurs at seeds 45, 50, 500, 502 and 600. Measuring a distance is what the competency names, and these items cannot be measured, only guessed."
+      "verdict": "PASS",
+      "rationale": "Both acts named in the sentence appear. Seeds 42, 43 and 46 render 'How long is the object? Give your answer in paperclips.' as read_mcq diagram items, so an object length is read off a picture. Seeds 44, 45, 500, 501, 502 and 600 render distance items such as 'A box and a bag are placed apart. The distance between them is ___ blocks.' All ten samples carry the read_mcq formatter and are therefore visual; seed 601 is the only one whose numbers also sit in the text, so it alone is answerable without the diagram."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Both named parts do appear, so nothing is wholly absent: length of an object at seeds 42, 43 and 46, and distance between two objects at seeds 44, 45, 50, 500, 501, 502 and 600. The concern is depth on the length side — all three of its samples are the one stem 'How long is the object? Give your answer in paperclips.' in the one unit paperclips, and seeds 43 and 46 render as the identical item, same stem and same four option values keyed to the same letter, so the length sub-case is really two distinct exemplars out of eleven."
+      "verdict": "PASS",
+      "rationale": "Each named part was searched for on its own. Length of one object: seeds 42, 43 and 46. Distance between two objects: seeds 44, 45 and 600 plus the large-magnitude seeds 500, 501 and 502, which move the unit across 'blocks', 'steps' and 'crayons' and the object pair across box, bag, chair and toy. Both halves of the sentence are present in the packet."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Nothing here reaches past Grade 1 Quarter 2. The only arithmetic in the whole packet is the single-digit difference at seed 601, 'A pencil is 5 hands long. A shoe is 4 hands long. How many hands longer is a pencil than a shoe?', which is a take-away within ten. Every other item is a direct count off a diagram or a fill-in, no regrouping, no multiplication, no unit conversion, and the vocabulary stays at box, bag, chair, toy, pencil and shoe."
+      "rationale": "No item requires an operation beyond Grade 1. Nine samples need only counting of units on the rendered diagram. Seed 601, 'A book is 2 hands long. A crayon is 1 hand long. How many hands longer is a book than a crayon?', needs one subtraction within 20, which Grade 1 quarter 2 already holds. No multiplication, division, fractional unit or standard unit vocabulary appears anywhere in the ten samples."
     },
     "variant_comprehensiveness": {
       "verdict": "CONCERN",
-      "rationale": "Three formatters are present (read_mcq, mcq, cloze) and the non-standard units do vary across paperclips, blocks, steps, crayons and hands, which is real breadth. Against that, the distance sub-case is a single sentence frame reskinned seven times — 'placed apart. The distance between them is ___' at seeds 44, 45, 50, 500, 501, 502 and 600, differing only in the two nouns and the unit — and seeds 43 and 46 are a straight duplicate of each other, so eleven seeds yield far fewer than eleven distinct exercises."
+      "rationale": "Seeds 43 and 46 are the same item twice: identical stem 'How long is the object? Give your answer in paperclips.', identical option values in identical order and the same key, so any difference between the two can only live in the unseen diagram. Seed 45 and seed 600 likewise differ only in the object pair while both land on ten steps with the same near-miss options. Inside the length half all three items share one wording and one unit, paperclips, so the spread there is far narrower than in the distance half."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Ten of eleven items sit inside the sentence, but seed 601, 'A pencil is 5 hands long. A shoe is 4 hands long. How many hands longer is a pencil than a shoe?', is a comparison-difference word problem. This node says only measure the length of an object and measure the distance between two objects; it does not name comparing, and how much longer belongs to the neighbouring solve-problems competency rather than to this one. The measurements are handed to the student rather than taken by the student."
+      "rationale": "Nine of the ten samples map straight onto measuring. Seed 601 does not: 'How many hands longer is a book than a crayon?' hands the pupil two finished measurements and asks for the difference, so no measuring happens. That is the work named by the problem-solving competency instead, and node mat_g1_mg_q2_2 renders the same template at its seed 608. The item stays inside Grade 1 and inside non-standard units, so this reads as a placement problem rather than a curriculum breach."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "Unit choice suits the thing measured — paperclips for the length of a small object, blocks and steps for a gap between furniture — but the magnitudes at the top of the range are not classroom-plausible for Grade 1. Seed 500, 'A toy and a bag are placed apart. The distance between them is ___ blocks.', is keyed to 90; seed 501 is keyed to 60 steps and seed 502 to 60 in '___ crayons.', which is roughly six metres of crayons laid end to end. Iterating a non-standard unit ninety times is not something a Grade 1 child does, and it sits oddly beside the same node keying other distances to 5 and 10."
+      "rationale": "The small-count samples pair unit and object believably: five and ten paperclips for a classroom object at seeds 42 and 43, five blocks at seed 44 and ten steps at seed 45 between pieces of furniture. The three large seeds do not. Seed 500 sets 'A toy and a bag are placed apart.' at ninety blocks, seed 501 sets 'A box and a chair are placed apart.' at sixty steps, which is roughly thirty metres of floor at a child pace, and seed 502 puts the same pair at sixty crayons. Each is a diagram read whose wrong options sit one unit from the key, so the pupil would have to count to ninety on a picture and separate ninety from eighty-nine. Neither the physical setup nor that counting precision fits Grade 1 quarter 2."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }
