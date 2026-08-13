@@ -1516,3 +1516,56 @@ bad=[q for f in review['findings'].values()
    competency sentence alone — and has repeatedly named the defect before any sample was read.
 
 **State at handoff: tree clean, NON-VERDICT 0, all four area nodes freshly reviewed, one at PASS.**
+
+---
+
+## 2026-08-13 — Tick C. **`mat_g3_mg_q1_1` reaches PASS; NON-VERDICT stays 0.**
+
+- **Census before:** PASS=57 CONCERN=61 FAIL=33. Gate: NON-VERDICT=0, tree clean.
+- **Unit 1 — made the derivation's evidence show that both factors matter.** The standing CONCERN
+  was that every rectangle item held its width fixed, so the cases were equally consistent with
+  "total = length × 4" as a rule about that one figure. Added a both-factors-vary case shape
+  alongside the fixed-width one. Commit `acdf58a`.
+  - Caught before commit: pairing two independent draws rendered `'a 3 by 3 rectangle'` — a
+    rectangle with equal sides. The length is nudged off the width on collision.
+- **Unit 2 — re-reviewed; the CONCERN moved and got sharper.** Five PASS, but
+  `competency_fulfillment` now: *"three of the eight rectangle items hold one dimension fixed ...
+  an add-a-constant pattern fits the counts equally well."* Seed 43's `70/80/90` is as consistent
+  with "add 10 each time" as with `length × width`. Commit at `acdf58a`'s review.
+- **Unit 3 — removed the fixed-width shape entirely.** It had been kept on half the seeds on the
+  reasoning that a steady width makes the pattern easier to spot. **Two successive blind reviewers
+  rejected that reasoning**, and they were right: for a competency about deriving that *both*
+  factors govern the area, a case set holding one fixed is not an easier version of the task, it
+  is evidence for a different rule. Commit `a82a389`.
+- **Unit 4 — re-reviewed: PASS on all six findings.** Commit `028a7d6`.
+- **Census after: PASS=58 CONCERN=60 FAIL=33. NON-VERDICT 0.** `run_all` 151/151, 0 failures, all
+  ten contract checks, stages 1–5 green throughout.
+
+### The pattern worth keeping from this tick
+The fix→review→fix→review cycle converged in two rounds because each reviewer's CONCERN was
+*specific enough to act on without interpretation* — it named seeds, quoted the stems, and said
+what property was missing. That came from asking the reviewer directly whether the evidence
+**demonstrates** the keyed rule, not just whether the item is answerable. Two different questions;
+the second one is what `_assert_cases_determine` already covers, and only the first found this.
+
+The last reviewer also declined to inflate a minor observation into a CONCERN, saying so
+explicitly. That is the behaviour the neutral prompt framing is for — worth preserving verbatim in
+future reviewer prompts: *"a clean PASS is a legitimate result if the content earns it ... do not
+manufacture a concern to look thorough."*
+
+### Next tick should:
+1. **`mat_g3_mg_q1_2`** — CONCERN on `variant_comprehensiveness` and `competency_alignment`:
+   seeds 50 and 500 render byte-identical, 13 of 14 samples use one of only two sentence frames,
+   and nothing ever asks straight out for an area in square units in a context. The area DNA's
+   `find_area` path has had the least attention of the four.
+2. **`mat_g3_mg_q1_3`** — CONCERN on `variant_comprehensiveness`: all 14 samples come from two
+   frames (the garden tiling context and the bare inverse), and no item takes two steps.
+3. Then the two remaining named **Tick F**s, still untouched and both confirmed by blind
+   declaration: `equal_jumps_on_a_number_line` (`mat_g2_na_q3_1` + `mat_g3_na_q4_0`; start from
+   `fmt_number_line.py`'s existing single hop, and note `frontend/src/App.jsx:1435` draws one arc,
+   so budget backend + frontend) and `draw_line_relationships` (`mat_g3_mg_q1_5`; check
+   `fmt_shape_board.py` before building new).
+4. **139 nodes undeclared, 30 capability gaps.** Declaring is cheap and has repeatedly named the
+   defect before any sample was read.
+
+**State at handoff: tree clean, NON-VERDICT 0, area cluster has no FAIL and two nodes at PASS.**
