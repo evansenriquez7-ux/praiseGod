@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q2_3",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the max_subtrahend bound, 2026-08-14",
+  "review_date": "2026-08-14",
   "blind": true,
   "sample_seeds": [
     42,
@@ -11,8 +11,8 @@
     46,
     50,
     51,
-    55,
-    85,
+    75,
+    82,
     500,
     501,
     502,
@@ -27,27 +27,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 510 − 382?",
-      "correct_answer": 128,
+      "question_text": "What is 2 − 1?",
+      "correct_answer": 1,
       "options": [
         {
           "key": "A",
-          "value": 892,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 129,
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 128,
+          "value": 1,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 127,
+          "value": 0,
           "is_correct": false
         }
       ]
@@ -55,291 +55,22 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 11 − 0?",
-      "correct_answer": 11,
+      "question_text": "What is 21 − 1?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 11,
+          "value": 20,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 12,
+          "value": 19,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "cloze",
-      "question_text": "244 − 150 = ___",
-      "correct_answer": 94,
-      "options": [
-        {
-          "key": "A",
-          "value": 93,
-          "text": "93",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 394,
-          "text": "394",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 95,
-          "text": "95",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 94,
-          "text": "94",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "cloze",
-      "question_text": "30 − 29 = ___",
-      "correct_answer": 1,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 59,
-          "text": "59",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "text": "1",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 0,
-          "text": "0",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 71 − 60?",
-      "correct_answer": 11,
-      "options": [
-        {
-          "key": "A",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 11,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 131,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 116 and it moves backward 20 numbers. Starting from 116, just count back 20 numbers. Which number will the dot land on?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 136,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 96,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 97,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 95,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 51,
-      "formatter": "error_detect",
-      "question_text": "Ana says: 152 − 150 = 302. Is Ana correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 2
-      }
-    },
-    {
-      "seed": 55,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The total is 380 and one part is 210. What is the other part?",
-      "correct_answer": 170
-    },
-    {
-      "seed": 85,
-      "formatter": "true_false",
-      "question_text": "265 − 210 = 55. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 500,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The total is 591 and one part is 487. What is the other part?",
-      "correct_answer": 104
-    },
-    {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "921 − 838 = 83. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 823 − 659?",
-      "correct_answer": 164,
-      "options": [
-        {
-          "key": "A",
-          "value": 1482,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 164,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 165,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 163,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What is 930 − 408?",
-      "correct_answer": 522,
-      "options": [
-        {
-          "key": "A",
-          "value": 1338,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 521,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 522,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 523,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "In a pictograph, Pia's group collected 765 leashes and another group collected 110 leashes. How many more did Pia's group collect?",
-      "correct_answer": 655,
-      "options": [
-        {
-          "key": "A",
-          "value": 654,
-          "text": "654",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 875,
-          "text": "875",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 656,
-          "text": "656",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 655,
-          "text": "655",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 270 − 247?",
-      "correct_answer": 23,
-      "options": [
-        {
-          "key": "A",
-          "value": 23,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 24,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 517,
+          "value": 21,
           "is_correct": false
         },
         {
@@ -350,33 +81,302 @@
       ]
     },
     {
-      "seed": 603,
+      "seed": 44,
       "formatter": "cloze",
-      "question_text": "1 − 1 = ___",
-      "correct_answer": 0,
+      "question_text": "60 − 5 = ___",
+      "correct_answer": 55,
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "text": "3",
+          "value": 54,
+          "text": "54",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 0,
-          "text": "0",
-          "is_correct": true
+          "value": 65,
+          "text": "65",
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": 2,
-          "text": "2",
+          "value": 56,
+          "text": "56",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 1,
-          "text": "1",
+          "value": 55,
+          "text": "55",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "cloze",
+      "question_text": "50 − 1 = ___",
+      "correct_answer": 49,
+      "options": [
+        {
+          "key": "A",
+          "value": 50,
+          "text": "50",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 51,
+          "text": "51",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 49,
+          "text": "49",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 48,
+          "text": "48",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "cloze",
+      "question_text": "75 − 1 = ___",
+      "correct_answer": 74,
+      "options": [
+        {
+          "key": "A",
+          "value": 75,
+          "text": "75",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 74,
+          "text": "74",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 73,
+          "text": "73",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 76,
+          "text": "76",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The total is 30 and one part is 3. What is the other part?",
+      "correct_answer": 27
+    },
+    {
+      "seed": 51,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 35 and it moves backward 0 numbers. Starting from 35, just count back 0 numbers. Which number will the dot land on?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 36,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 35,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 34,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 75,
+      "formatter": "true_false",
+      "question_text": "80 − 1 = 81. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 82,
+      "formatter": "error_detect",
+      "question_text": "Dante says: 31 − 0 = 31. Is Dante correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 31
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "How many items are left?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 93,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 89,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 97,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "true_false",
+      "question_text": "93 − 9 = 84. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 58 − 9?",
+      "correct_answer": 49,
+      "options": [
+        {
+          "key": "A",
+          "value": 67,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 49,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 50,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 48,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "What is 30 − 8?",
+      "correct_answer": 22,
+      "options": [
+        {
+          "key": "A",
+          "value": 38,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 21,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 22,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 23,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "true_false",
+      "question_text": "In a pictograph, Pia's group collected 24 leashes and another group collected 0 leashes. How many more did Pia's group collect? The answer is 24. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 20 − 3?",
+      "correct_answer": 17,
+      "options": [
+        {
+          "key": "A",
+          "value": 17,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 23,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 16,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "14 − 0 = ___",
+      "correct_answer": 14,
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "text": "16",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "text": "14",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "text": "13",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "text": "15",
           "is_correct": false
         }
       ]
@@ -384,36 +384,8 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 416 − 0?",
-      "correct_answer": 416,
-      "options": [
-        {
-          "key": "A",
-          "value": 416,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 417,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 415,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 418,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 28 and it moves backward 15 numbers. Starting from 28, just count back 15 numbers. Which number will the dot land on?",
-      "correct_answer": "A",
+      "question_text": "What is 14 − 1?",
+      "correct_answer": 13,
       "options": [
         {
           "key": "A",
@@ -422,12 +394,12 @@
         },
         {
           "key": "B",
-          "value": 43,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 12,
+          "value": 15,
           "is_correct": false
         },
         {
@@ -436,32 +408,38 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 605,
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 38 and 0. What is the sum?",
+      "correct_answer": 38
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency is explicitly '2-digit by 1-digit' subtraction, but most samples subtract three-digit numbers, e.g. seed 600's '930 − 408' and seed 42's '510 − 382' — these are 3-digit by 3-digit problems, not the stated 2-digit by 1-digit case."
+      "rationale": "Operand widths were checked directly. The largest minuend actually subtracted is 93, in seed 501 '93 − 9 = 84. True or False?', and the largest subtrahend is 9, in that same seed and in seed 502 'What is 58 − 9?', so every subtrahend is one digit and complies. Values that merely appear are not operands: 81 in seed 75 '80 − 1 = 81. True or False?' is a deliberate wrong answer, and 93 in seed 500 'How many items are left?' is only a distractor. One minuend does not comply: seed 42 asks 'What is 2 − 1?', a one-digit minuend, outside 2-digit by 1-digit. The deeper gap is the verb Illustrate: 16 of the 18 samples are bare computation such as seed 44 '60 − 5 = ___' with neither a number line nor a part-whole frame."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The competency also requires illustrating subtraction 'as an inverse of addition', but no sample explicitly shows an addition fact and derives the matching subtraction fact from it; the part-part-whole items (seed 55, 500) imply the relationship without ever demonstrating it."
+      "rationale": "The sentence names two illustrations and each was found exactly once. On the number line: only seed 51, 'The dot is at 35 and it moves backward 0 numbers.', and it is degenerate, since 'just count back 0 numbers' returns the dot to its starting point, so zero displacement is the only number-line illustration in the packet. As an inverse of addition: only seed 50, 'The total is 30 and one part is 3. What is the other part?', which is a genuine missing-addend item. Seed 605 'The two parts are 38 and 0. What is the sum?' does not count, since it asks for a sum and is plain addition. No sample pairs a subtraction with its matching addition."
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "Three-digit subtraction with borrowing across a zero, such as seed 42's 510 − 382 or seed 600's 930 − 408, is a much heavier computational load than the 2-digit by 1-digit operations this node's competency describes for Grade 2 Quarter 2."
+      "verdict": "PASS",
+      "rationale": "Every item is answerable from what the sample gives, and the arithmetic is correct in all 18 samples, including seed 75 '80 − 1 = 81. True or False?' answered False and seed 82 'Dante says: 31 − 0 = 31. Is Dante correct?' answered as no error. No blank falls on a quantity the answer depends on: the cloze blanks sit on the result, as in seed 46 '75 − 1 = ___', and both read_fill_in_blank stems, seeds 50 and 605, state their known quantities in words. Seed 500 'How many items are left?' is a read_mcq visual item and is judged as one; its options 4, 93, 89 and 97 are consistent with a display of 93 with 4 removed. Reading load and problem structure stay inside Grade 2 Quarter 2."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The number-line variant does appear (seed 605: 'The dot is at 28 and it moves backward 15 numbers'), but its subtrahend (15) is two digits, not one, so even the number-line items miss the stated digit constraint."
+      "verdict": "PASS",
+      "rationale": "Six formatter families appear across the 18 samples: mcq in seed 602 'What is 20 − 3?', cloze in seed 44 '60 − 5 = ___', true_false in seed 501 '93 − 9 = 84. True or False?', error_detect in seed 82 'Dante says: 31 − 0 = 31. Is Dante correct?', read_mcq in seed 500 'How many items are left?', and read_fill_in_blank in seed 605 'The two parts are 38 and 0. What is the sum?'. Framings include direct computation, missing part, backward count on a track, verification and error spotting, so surface variety is adequate even though the underlying task repeats."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "Difficulty here is driven by number-of-digits and presence of borrowing (e.g. seed 501's 921 − 838) rather than by the specific 2-digit-minus-1-digit skill the competency names, so harder items are testing a different, later skill instead of this one."
+      "rationale": "Three items map outside the sentence. Seed 42 'What is 2 − 1?' is one-digit minus one-digit and does not meet 2-digit by 1-digit. Seed 605 'The two parts are 38 and 0. What is the sum?' asks the student to add rather than to recover a part by subtracting, so it maps to addition itself, not to subtraction as its inverse. Seed 601 opens 'In a pictograph' and poses a how-many-more comparison, a data-display context outside this number-and-algebra node, with no pictograph shown since the formatter is true_false. The remaining samples map cleanly to 2-digit minus 1-digit computation, but to the computation only and not to the illustrate clause."
     },
     "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "The largest minuend across the eighteen samples is 930 (seed 600, '930 − 408'), far above what a 2-digit by 1-digit subtraction competency implies (a 2-digit number minus a single digit, at most 99 − 9)."
+      "verdict": "CONCERN",
+      "rationale": "Minuend magnitudes are mostly reasonable for Grade 2 Quarter 2, reaching 93 in seed 501 '93 − 9 = 84. True or False?' and 80 in seed 75 '80 − 1 = 81. True or False?'. The subtrahends are the weakness: 11 of the 18 are 0 or 1. Five leave the number unchanged, namely seed 82 '31 − 0 = 31', seed 603 '14 − 0 = ___', seed 51 'just count back 0 numbers', seed 601 with a group that collected 0 leashes, and seed 605 'The two parts are 38 and 0. What is the sum?'. Six more subtract 1, such as seed 46 '75 − 1 = ___' and seed 604 'What is 14 − 1?'. Seed 42 'What is 2 − 1?' is trivially small outright. Only seeds 44, 500, 501, 502, 600 and 602 require real counting back."
     }
   },
   "overall": "FAIL"
