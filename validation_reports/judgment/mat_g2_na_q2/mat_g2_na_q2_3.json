@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_na_q2_3",
-  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the max_subtrahend bound, 2026-08-14",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the width floors, 2026-08-14",
   "review_date": "2026-08-14",
   "blind": true,
   "sample_seeds": [
@@ -27,27 +27,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 2 − 1?",
-      "correct_answer": 1,
+      "question_text": "What is 11 − 1?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 3,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 2,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 1,
+          "value": 10,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 0,
+          "value": 9,
           "is_correct": false
         }
       ]
@@ -55,27 +55,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 21 − 1?",
-      "correct_answer": 20,
+      "question_text": "What is 15 − 5?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 20,
+          "value": 10,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 19,
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 21,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 22,
+          "value": 20,
           "is_correct": false
         }
       ]
@@ -147,31 +147,31 @@
     {
       "seed": 46,
       "formatter": "cloze",
-      "question_text": "75 − 1 = ___",
-      "correct_answer": 74,
+      "question_text": "24 − 1 = ___",
+      "correct_answer": 23,
       "options": [
         {
           "key": "A",
-          "value": 75,
-          "text": "75",
+          "value": 24,
+          "text": "24",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 74,
-          "text": "74",
+          "value": 23,
+          "text": "23",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 73,
-          "text": "73",
+          "value": 22,
+          "text": "22",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 76,
-          "text": "76",
+          "value": 25,
+          "text": "25",
           "is_correct": false
         }
       ]
@@ -185,27 +185,27 @@
     {
       "seed": 51,
       "formatter": "read_mcq",
-      "question_text": "The dot is at 35 and it moves backward 0 numbers. Starting from 35, just count back 0 numbers. Which number will the dot land on?",
+      "question_text": "The dot is at 45 and it moves backward 3 numbers. Starting from 45, just count back 3 numbers. Which number will the dot land on?",
       "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 40,
+          "value": 43,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 36,
+          "value": 41,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 35,
+          "value": 42,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 34,
+          "value": 48,
           "is_correct": false
         }
       ]
@@ -219,10 +219,10 @@
     {
       "seed": 82,
       "formatter": "error_detect",
-      "question_text": "Dante says: 31 − 0 = 31. Is Dante correct?",
+      "question_text": "Dante says: 45 − 2 = 43. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
-        "correct_value": 31
+        "correct_value": 43
       }
     },
     {
@@ -318,7 +318,7 @@
     {
       "seed": 601,
       "formatter": "true_false",
-      "question_text": "In a pictograph, Pia's group collected 24 leashes and another group collected 0 leashes. How many more did Pia's group collect? The answer is 24. True or False?",
+      "question_text": "In a pictograph, Pia's group collected 75 leashes and another group collected 1 leash. How many more did Pia's group collect? The answer is 74. True or False?",
       "correct_answer": true
     },
     {
@@ -352,31 +352,31 @@
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "14 − 0 = ___",
-      "correct_answer": 14,
+      "question_text": "75 − 1 = ___",
+      "correct_answer": 74,
       "options": [
         {
           "key": "A",
-          "value": 16,
-          "text": "16",
+          "value": 75,
+          "text": "75",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 14,
-          "text": "14",
+          "value": 74,
+          "text": "74",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 13,
-          "text": "13",
+          "value": 76,
+          "text": "76",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 15,
-          "text": "15",
+          "value": 73,
+          "text": "73",
           "is_correct": false
         }
       ]
@@ -384,7 +384,7 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 14 − 1?",
+      "question_text": "What is 15 − 2?",
       "correct_answer": 13,
       "options": [
         {
@@ -399,7 +399,7 @@
         },
         {
           "key": "C",
-          "value": 15,
+          "value": 17,
           "is_correct": false
         },
         {
@@ -412,35 +412,35 @@
     {
       "seed": 605,
       "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 38 and 0. What is the sum?",
-      "correct_answer": 38
+      "question_text": "The total is 42 and one part is 1. What is the other part?",
+      "correct_answer": 41
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Operand widths were checked directly. The largest minuend actually subtracted is 93, in seed 501 '93 − 9 = 84. True or False?', and the largest subtrahend is 9, in that same seed and in seed 502 'What is 58 − 9?', so every subtrahend is one digit and complies. Values that merely appear are not operands: 81 in seed 75 '80 − 1 = 81. True or False?' is a deliberate wrong answer, and 93 in seed 500 'How many items are left?' is only a distractor. One minuend does not comply: seed 42 asks 'What is 2 − 1?', a one-digit minuend, outside 2-digit by 1-digit. The deeper gap is the verb Illustrate: 16 of the 18 samples are bare computation such as seed 44 '60 − 5 = ___' with neither a number line nor a part-whole frame."
+      "verdict": "CONCERN",
+      "rationale": "The competency verb is Illustrate, and it names two illustrations. Only seed 51 works on the number line: 'The dot is at 45 and it moves backward 3 numbers.' is a read_mcq shown with a diagram, and the landing point 42 is right. Only seeds 50 and 605 use the inverse-of-addition framing, 'The total is 30 and one part is 3. What is the other part?' and 'The total is 42 and one part is 1.', both answered as missing addends, 27 and 41. That is 1 of 18 on the number line and 2 of 18 as inverse of addition. The other 15 samples illustrate neither: seed 502 is 'What is 58 − 9?', seed 44 is '60 − 5 = ___', seed 501 is '93 − 9 = 84. True or False?'. Those are bare computation of a subtraction fact and would read identically under a competency that never mentioned a number line or an inverse. Both named illustrations do exist and are correct, so this is not an absence, but with 15 of 18 items carrying no illustration the verb Illustrate is met only in a small minority of what a student actually sees."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The sentence names two illustrations and each was found exactly once. On the number line: only seed 51, 'The dot is at 35 and it moves backward 0 numbers.', and it is degenerate, since 'just count back 0 numbers' returns the dot to its starting point, so zero displacement is the only number-line illustration in the packet. As an inverse of addition: only seed 50, 'The total is 30 and one part is 3. What is the other part?', which is a genuine missing-addend item. Seed 605 'The two parts are 38 and 0. What is the sum?' does not count, since it asks for a sum and is plain addition. No sample pairs a subtraction with its matching addition."
+      "verdict": "CONCERN",
+      "rationale": "Counting the two named illustrations across all 18 samples: number line 1 (seed 51), inverse of addition 2 (seeds 50 and 605), neither 15. Of those 15, thirteen are bare computation such as 'What is 11 − 1?' at seed 42 and '75 − 1 = ___' at seed 603, seed 500 is a visual take-away, 'How many items are left?', which is a picture but not a number line and not a part-whole, and seed 601 is a comparison word problem. Operand-width coverage is complete by contrast: every minuend lands in 10 to 99 and every subtrahend in 1 to 9, with no leakage below either floor. The gap is the illustration half of the sentence. A single number-line item in eighteen leaves the first named representation barely sampled, so a student could finish a session having seen the number line once or, on a shorter set, not at all."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Every item is answerable from what the sample gives, and the arithmetic is correct in all 18 samples, including seed 75 '80 − 1 = 81. True or False?' answered False and seed 82 'Dante says: 31 − 0 = 31. Is Dante correct?' answered as no error. No blank falls on a quantity the answer depends on: the cloze blanks sit on the result, as in seed 46 '75 − 1 = ___', and both read_fill_in_blank stems, seeds 50 and 605, state their known quantities in words. Seed 500 'How many items are left?' is a read_mcq visual item and is judged as one; its options 4, 93, 89 and 97 are consistent with a display of 93 with 4 removed. Reading load and problem structure stay inside Grade 2 Quarter 2."
+      "verdict": "CONCERN",
+      "rationale": "Number sizes, one-step structure and sentence length all suit Grade 2 Quarter 2, and seed 51 even scaffolds the method with 'Starting from 45, just count back 3 numbers.' Answerability is sound for 17 of 18: the two read formatters, seeds 51 and 500, are shown with diagrams and are judged as visual items, and every other stem carries its own numbers. The exception is seed 601, which opens 'In a pictograph,' but is a true_false formatter with no diagram attached. The counts 75 and 1 are stated in the text, so the item can still be answered, yet a Grade 2 reader is told to look at a pictograph that is not there. The nesting is also the heaviest in the set, since 'How many more did' a group collect must be resolved and only then checked against 'The answer is 74. True or False?'. That is a solvable item with a stem that promises a picture it does not deliver."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Six formatter families appear across the 18 samples: mcq in seed 602 'What is 20 − 3?', cloze in seed 44 '60 − 5 = ___', true_false in seed 501 '93 − 9 = 84. True or False?', error_detect in seed 82 'Dante says: 31 − 0 = 31. Is Dante correct?', read_mcq in seed 500 'How many items are left?', and read_fill_in_blank in seed 605 'The two parts are 38 and 0. What is the sum?'. Framings include direct computation, missing part, backward count on a track, verification and error spotting, so surface variety is adequate even though the underlying task repeats."
+      "rationale": "Six distinct formatters across 18 samples: mcq at seeds 42, 43, 502, 600, 602 and 604, cloze at seeds 44, 45, 46 and 603, true_false at seeds 75, 501 and 601, read_mcq at seeds 51 and 500, read_fill_in_blank at seeds 50 and 605, and error_detect at seed 82, 'Dante says: 45 − 2 = 43. Is Dante correct?'. The question stems vary in shape too, from the plain prompt 'What is 30 − 8?' to the equation frame '50 − 1 = ___' to the verification frame '80 − 1 = 81. True or False?', so the student is asked to compute, to fill, to verify, to critique and to read a diagram. Distractors are purposeful rather than random: seed 43 offers 20 against 'What is 15 − 5?', the sum instead of the difference, and seed 500 offers 93 and 4, the two operands themselves. Formatter and framing breadth is genuinely good here."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "Three items map outside the sentence. Seed 42 'What is 2 − 1?' is one-digit minus one-digit and does not meet 2-digit by 1-digit. Seed 605 'The two parts are 38 and 0. What is the sum?' asks the student to add rather than to recover a part by subtracting, so it maps to addition itself, not to subtraction as its inverse. Seed 601 opens 'In a pictograph' and poses a how-many-more comparison, a data-display context outside this number-and-algebra node, with no pictograph shown since the formatter is true_false. The remaining samples map cleanly to 2-digit minus 1-digit computation, but to the computation only and not to the illustrate clause."
+      "verdict": "PASS",
+      "rationale": "Every one of the 18 items is a 2-digit minuend minus a 1-digit subtrahend, exactly the width the sentence names. Smallest minuend is 11 at seed 42, 'What is 11 − 1?', largest is 93, appearing at seed 501 in '93 − 9 = 84. True or False?' and at the visual seed 500, whose distractors 93 and 4 fix the operands behind 'How many items are left?'. Smallest subtrahend is 1 at seeds 42, 45, 46, 75, 601, 603 and 605, largest is 9 at seeds 501 and 502. No minuend falls under 10 and no subtrahend reaches 10, so both floors and both ceilings hold. Values that merely appear were not counted as operands: the 81 in '80 − 1 = 81. True or False?' at seed 75 is the planted wrong result, correctly marked false since 80 minus 1 is 79, and the 43 in seed 82 is the asserted result, correctly marked as no error. Arithmetic is right in all 18, including the regrouping cases '60 − 5 = ___' at 55, 'What is 20 − 3?' at 17 and 'What is 58 − 9?' at 49. Nothing exceeds the competency into 2-digit subtrahends or later content."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Minuend magnitudes are mostly reasonable for Grade 2 Quarter 2, reaching 93 in seed 501 '93 − 9 = 84. True or False?' and 80 in seed 75 '80 − 1 = 81. True or False?'. The subtrahends are the weakness: 11 of the 18 are 0 or 1. Five leave the number unchanged, namely seed 82 '31 − 0 = 31', seed 603 '14 − 0 = ___', seed 51 'just count back 0 numbers', seed 601 with a group that collected 0 leashes, and seed 605 'The two parts are 38 and 0. What is the sum?'. Six more subtract 1, such as seed 46 '75 − 1 = ___' and seed 604 'What is 14 − 1?'. Seed 42 'What is 2 − 1?' is trivially small outright. Only seeds 44, 500, 501, 502, 600 and 602 require real counting back."
+      "verdict": "PASS",
+      "rationale": "Minuends spread across the whole 2-digit band rather than clustering: 11, 15, 15, 20, 24, 30, 30, 42, 45, 45, 50, 58, 60, 75, 75, 80, 93, 93. Subtrahends use the full 1 to 9 range. Seven of the 18 require regrouping past a ones digit, including '60 − 5 = ___', 'What is 30 − 8?', 'What is 20 − 3?' and 'What is 58 − 9?', so the set is not uniformly easy. The one imbalance worth naming is that a subtrahend of 1 carries 7 of the 18 items and the pair 75 minus 1 appears twice, at seed 603 as '75 − 1 = ___' and again inside seed 601. Even so, two of those seven, '50 − 1 = ___' and '80 − 1 = 81. True or False?', cross a zero in the ones place and are not trivial for Grade 2. Trivial subtrahends are frequent but do not dominate, and the magnitude range is well suited to Grade 2 Quarter 2."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }
