@@ -262,7 +262,13 @@ def generate_params(
                                          if v != fixed], 3))
             cases = [(v, fixed, v * fixed) for v in varying]
             answer = "length × width"
-            distractors = ["length + width", "2 × (length + width)", "length + length"]
+            # No grouping symbols: a bracketed candidate makes the pupil parse
+            # notation no stem at this grade uses, which is a reading load rather
+            # than a mathematical one (blind review). The perimeter is spelled out
+            # instead, so the classic perimeter-for-area confusion is still offered.
+            distractors = ["length + width",
+                           "length + width + length + width",
+                           "length + length"]
             dims_word = "length and width"
         return {
             "blank_target": "answer",

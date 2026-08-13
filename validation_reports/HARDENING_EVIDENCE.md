@@ -3033,3 +3033,32 @@ unreachable-value defeat still caught: True
 
 Full `run_all`: 151/151, 0 failures, all ten contract checks, stages 1–5 green;
 capability failures 198 → 169.
+
+### Two defects in the new inductive item, found by its own blind re-review
+
+The reviewer that scored the new item PASS on fulfilment, coverage and alignment also named two
+real defects in it, both introduced by this build:
+
+- **Article agreement.** Four stems read `'a 8 by 2 rectangle takes 16 tiles'`. Fixed: the
+  article follows the spoken form of the leading number, and 8 is the only dimension here that
+  takes "an".
+- **A bracketed distractor.** `'2 × (length + width)'` made the pupil parse grouping symbols no
+  stem at this grade uses — a reading load rather than a mathematical one. Replaced with the
+  perimeter spelled out, `'length + width + length + width'`, so the classic perimeter-for-area
+  confusion is still offered without the notation.
+
+```
+stems with bad article or grouping symbols, 200 seeds: 0
+
+seed 46: Cover each rectangle with unit square tiles and count them: a 6 by 5 rectangle takes
+         30 tiles, a 7 by 5 rectangle takes 35 tiles, and an 8 by 5 rectangle takes 40 tiles.
+         Which rule always gives the number of tiles?
+   options: length + length, length × width, length + width + length + width, length + width
+```
+
+### The reviewer caught the stale-packet race on its own
+Worth recording, because this loop has hit the race three ticks running: the reviewer was handed
+a `mat_g3_mg_q1_1` packet built before the derive_formula rewrite, **detected that all 13 seeds
+failed freshness, rebuilt the packet itself, and re-reviewed against what actually renders.** Its
+first pass had scored FAIL on the stale content. Instructing reviewers to verify packet freshness
+before scoring turns this race from a silent wrong verdict into a self-correcting one.

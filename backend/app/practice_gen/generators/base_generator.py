@@ -1148,11 +1148,16 @@ def _build_symbolic_question(
                     f"item needs several tiled cases to generalise from; the DNA "
                     f"branch that produced this must supply them."
                 )
-            shown = ", ".join(
-                f"a {r} by {c} {shape} takes {t} tiles" for r, c, t in cases[:-1]
-            )
-            r, c, t = cases[-1]
-            shown += f", and a {r} by {c} {shape} takes {t} tiles"
+            # "a 8 by 2 rectangle" -- article agreement follows the spoken form of
+            # the leading number, and 8 is the only single digit that takes "an"
+            # (11 and 18 do too, but no dimension here reaches them). Blind review
+            # caught this in four stems.
+            def _case(r, c, t):
+                article = "an" if r == 8 else "a"
+                return f"{article} {r} by {c} {shape} takes {t} tiles"
+
+            shown = ", ".join(_case(*case) for case in cases[:-1])
+            shown += f", and {_case(*cases[-1])}"
             return (
                 f"Cover each {shape} with unit square tiles and count them: "
                 f"{shown}. Which rule always gives the number of tiles?"
