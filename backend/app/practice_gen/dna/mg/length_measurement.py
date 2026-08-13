@@ -42,15 +42,32 @@ _NON_STANDARD_UNITS = ["paperclips", "hands", "steps", "blocks", "crayons"]
 # length is only believable if it matches the thing being measured, and the numbers
 # a child meets here are the size benchmarks they carry forward.
 _OBJECT_CM_BANDS = {
-    "a crayon":      (6, 12),
-    "a pencil":      (10, 20),
-    "a spoon":       (12, 20),
-    "a ruler":       (15, 30),
-    "a book":        (18, 30),
-    "a notebook":    (20, 30),
-    "a shoe":        (20, 30),
-    "a garden path": (30, 100),
+    "a crayon":   (6, 12),
+    "a pencil":   (10, 20),
+    "a spoon":    (12, 20),
+    "a ruler":    (15, 30),
+    "a book":     (18, 30),
+    "a notebook": (20, 30),
+    "a shoe":     (20, 30),
 }
+
+# Metre-scale objects, kept in their own pool rather than measured in centimetres.
+# "a garden path" used to sit in the centimetre table at (30, 100), which is how a
+# blind reviewer found "A garden path is 30 cm long." next to a 6 cm crayon: the band
+# made the number defensible while the unit stayed wrong. A path is metres.
+_OBJECT_M_BANDS = {
+    "a rope":         (2, 10),
+    "a garden path":  (3, 20),
+    "a hallway":      (5, 30),
+    "a school fence": (10, 40),
+}
+
+
+def _object_pool(unit_mode: str) -> Dict[str, tuple]:
+    """The objects worth measuring in this unit. A pencil is not metres long and a
+    hallway is not centimetres long, so the noun follows the unit rather than being
+    drawn from one pool and clamped afterwards."""
+    return _OBJECT_CM_BANDS if unit_mode == "cm" else _OBJECT_M_BANDS
 
 
 # ─── error patterns ───────────────────────────────────────────────────────────
@@ -258,8 +275,16 @@ def generate_params(
             # branch's 1cm floor (nobody describes a bench and a tree as
             # 6cm apart). Blind review of mat_g2_mg_q2_3 flagged exactly
             # this: "distance from the bench to the tree is 6 cm".
-            if unit_mode == "cm":
-                lo = max(lo, 20)
+            # Metres. Raising the centimetre floor to 20 was the previous attempt at
+            # this and it treated the symptom: "The distance from the bench to the
+            # tree is 22 cm." is still not a distance anyone would state in
+            # centimetres. mat_g2_mg_q2_0's competency says "distance in meters"
+            # outright, and mat_g2_mg_q2_1 teaches the same thing -- it rewards "m"
+            # for the distance between the barangay hall and the plaza -- so a
+            # sibling node asserting a 20 cm landmark gap contradicts what the pupil
+            # was just taught.
+            unit = "m"
+            lo, hi = _standard_unit_bounds(bounds, "m", scalar)
             hi = max(hi, lo + 1)
             val_a = rng.randint(lo, hi)
             val_b = rng.randint(lo, hi)
@@ -620,9 +645,7 @@ def generate_params(
             # units), so it never reached the non_standard branch's fix.
             # Same self-answering defect as the non_standard branch above, and
             # the same fix: two measured objects and a difference to compute.
-            obj_a, obj_b = rng.sample(
-                ["a pencil", "a book", "a notebook", "a ruler", "a garden path", "a crayon"], 2
-            )
+            obj_a, obj_b = rng.sample(sorted(_object_pool(unit_mode)), 2)
             # Small classroom objects (pencil, book, notebook, ruler, crayon)
             # are realistically 5-50cm; "a garden path" gets its own,
             # higher floor (30cm) but no cap, since it plausibly reaches
@@ -642,9 +665,7 @@ def generate_params(
                 # fine, but it trains wrong size benchmarks, which a blind reviewer
                 # flagged as the one systematic defect left in this DNA. A pupil
                 # meeting a 49 cm crayon learns the wrong thing about crayons.
-                if unit_mode != "cm":
-                    return v
-                lo_b, hi_b = _OBJECT_CM_BANDS.get(obj, (5, 50))
+                lo_b, hi_b = _object_pool(unit_mode).get(obj, (5, 50))
                 return min(max(v, lo_b), hi_b)
 
             val_a = _plausible(length, obj_a)
@@ -654,7 +675,7 @@ def generate_params(
                 # walked straight past the floor -- a book at 17 cm and a ruler at
                 # 14 cm, both a centimetre under their band, purely because the two
                 # draws happened to tie.
-                b_lo, b_hi = _OBJECT_CM_BANDS.get(obj_b, (5, 50)) if unit_mode == "cm" else (1, max(2, val_b + 1))
+                b_lo, b_hi = _object_pool(unit_mode).get(obj_b, (5, 50))
                 val_b = val_b + 1 if val_b < b_hi else val_b - 1
                 val_b = min(max(val_b, b_lo), b_hi)
             result["length"] = val_a

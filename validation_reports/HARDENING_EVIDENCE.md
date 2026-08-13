@@ -3636,3 +3636,53 @@ values outside their object band: 0 | pairs left equal: 0
 
 Every object now renders only at sizes it plausibly has. `validate_matrix --node` PASS on the six
 affected nodes; full `run_all` 151/151, 0 failures, all ten contract checks, stages 1–5 green.
+
+---
+
+## 2026-08-13 — Finishing the pairing fix: the unit, not the floor
+
+### The failing rationale
+The previous tick's pairing fix landed on the perimeter nodes but not on the length-and-distance
+stems. The reviewer was exact about what survived:
+
+> "Object-to-unit pairing still broken in 3/16 seeds: seed 44 `'A garden path is 30 cm long.'`
+> (placed end to end with a 6 cm crayon), seed 500 `'A garden path is 100 cm long.'`, and seed 603
+> `'The distance from the bench to the tree is 20 cm.'` — which contradicts seed 601 in the same
+> node, that teaches such a distance is measured in `'m'`."
+
+A node teaching that landmark distances are metres while asserting one in centimetres is worse
+than either alone.
+
+### Two causes, both mine from the previous tick
+
+**1. "a garden path" was in the centimetre band table**, at `(30, 100)`. The band made the number
+defensible while the unit stayed wrong — which is exactly how it survived a fix aimed at
+magnitudes. A path is metres. The pools are now split by unit and the noun follows the unit,
+rather than being drawn from one pool and clamped afterwards. That also closes a latent case in
+the same branch: with a single pool, nothing stopped "A pencil is 5 m long".
+
+**2. `compare_distance` raised the centimetre floor to 20 instead of changing the unit.** That was
+an earlier fix treating the symptom — the comment even reasons "nobody describes a bench and a
+tree as 6cm apart" and then leaves them 20 cm apart. `mat_g2_mg_q2_0`'s competency says "distance
+in **meters**" outright, and `mat_g2_mg_q2_1` teaches the same thing by rewarding "m" for the
+distance between the barangay hall and the plaza. Landmark distances now render in metres.
+
+### Verification
+
+```
+landmark-distance items: 393 | still in cm: 0
+classroom objects rendered in metres: 0
+garden-path items: 0 | rendered in cm: 0
+
+mat_g2_mg_q2_0 seed 42: The distance from the bench to the tree is 2 m. The distance from the gate
+                        to the tree is 1 m. Which distance ...
+```
+
+`validate_matrix --node` PASS on all nine nodes touching this DNA; full `run_all` 151/151,
+0 failures, all ten contract checks, stages 1–5 green.
+
+### The general lesson, worth keeping
+Both of this tick's causes were previous fixes that adjusted the *number* when the *unit* was
+wrong — a floor of 20 cm, a band of (30, 100) cm. Each made its sample look more reasonable
+without making it right, and each survived a later review precisely because the magnitude no
+longer looked absurd. **When a measurement reads wrong, check the unit before tuning the range.**
