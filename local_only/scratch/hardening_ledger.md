@@ -1307,3 +1307,78 @@ Known remaining findings on the cluster, from the fresh reviews, for whoever pic
 - `q1_1` **FAIL** — the inductive-derivation gap. Tick F. Unchanged and unaffected by any of this.
 - `q1_2` CONCERN — seeds 50/500 byte-identical; 13 of 14 samples use one of two frames.
 - `q1_0` CONCERN — was the "shaded shape" stem, now fixed; needs re-review to confirm.
+
+---
+
+## 2026-08-13 — Tick C + **Tick F** (the area cluster clears its last FAIL)
+
+- **Census before:** PASS=56 CONCERN=61 FAIL=34. Gate: **NON-VERDICT=4** (the inherited
+  resumption point — seeds 500/601/601/603, exactly what the previous tick's fixes changed).
+- **Unit 1 — cleared the stale reviews.** Three nodes re-reviewed blind. NON-VERDICT 4 → 0.
+- **Unit 2 — Tick F: built the inductive derivation for `mat_g3_mg_q1_1`.**
+  - **The gap, named twice independently.** A blind reviewer scored it FAIL ("No sample derives
+    anything... no correct answer is ever a formula"), and §6C named the same four capabilities as
+    unprovided *from the competency sentence alone* (`explore_pattern_across_cases`,
+    `reason_inductively_from_cases`, `derive_area_formula`, `area_formula_expression`). Two
+    instruments, one reading rendered content and one reading the curriculum, agreeing.
+  - **Step 1 said don't build what exists.** `fmt_fill_in_table` exists and is routed; more to the
+    point, `mcq` already supports a *string* answer with string distractors
+    (`values["distractors"]`, the mechanism `shapes_2d` uses). **No new formatter was needed** —
+    the gap was in the DNA and the stem, which is the "most missing machinery isn't" lesson.
+  - **Built:** an `area.py` `derive_formula` branch returning three tiled cases and keying the
+    *rule*; a `base_generator` stem that shows the cases and asks which rule always works, and
+    **raises** if cases are absent rather than falling back. "Formula**s**" is plural in the
+    competency, so the shape decides: rectangle → `length × width`, square → `side × side`.
+  - **Verified:** 107 / 93 split across 200 seeds, 0 items whose stem contains the keyed answer.
+  - Commit `4e71789`.
+- **Unit 3 — the capability contract for the cluster.** Registered the area providers with a
+  rendered sample behind each (Rule 9). **Total gaps 59 → 30; the area cluster reaches 0.**
+  Also fixed a hole this exposed in §6C itself: `mat_g3_mg_q1_3` is bound to a per-seed
+  **sentinel** that is deliberately not a Lab-selectable variant, so intersecting
+  `VARIANTS_BY_DNA` with the bound reported it as having *no reachable task_type at all* — the
+  opposite of the truth. A bound the registry pins is now reachable by construction; the clamp
+  still excludes what the bound excludes, so the Rule 9 defeat stays caught (re-verified).
+- **Unit 4 — polish the new item**, on its own re-review's findings: article agreement
+  ("a 8 by 2 rectangle") and a bracketed distractor `2 × (length + width)` using grouping symbols
+  no stem at this grade uses. Commit `6686385`.
+- **Census after: PASS=56 CONCERN=62 FAIL=33.** `mat_g3_mg_q1_1` **FAIL → CONCERN** — the
+  reviewer scored fulfilment, coverage and alignment all PASS on the new item. **The whole
+  g3_mg_q1 area cluster is now CONCERN with no FAIL.**
+- `run_all`: 151/151, 0 failures, all ten contract checks, stages 1–5 green, capability failures
+  198 → 169.
+
+### The stale-packet race solved itself this tick — do this deliberately from now on
+
+Three ticks running, a content fix has outrun its reviews. This tick the reviewer was handed a
+`q1_1` packet built before the derive_formula rewrite, **noticed all 13 seeds failed freshness,
+rebuilt the packet itself, and re-reviewed against what actually renders** — its first pass had
+scored FAIL on the stale content. **Put "verify packet freshness before scoring, and rebuild if
+stale" in every reviewer prompt.** It converts this race from a silent wrong verdict into a
+self-correcting one, and it cost nothing.
+
+### ⚠️ RESUMPTION POINT
+
+**NON-VERDICT is 5**, all on `mat_g3_mg_q1_1` — Unit 4's polish restaled its review. Rebuild the
+packet and re-review that one node blind before new content work.
+
+### Next tick should:
+
+The area cluster is done with FAILs; what remains there is `variant_comprehensiveness` on all
+four (single sentence frames) and `q1_0`'s `competency_fulfillment` CONCERN — the reviewer's
+sharpest remaining point: *"the estimate half is only a word — seed 50 says 'Estimate how many
+unit tiles cover the square in all' while offering 15, 16 and 17, so no estimation strategy
+separates them and the item silently demands an exact product."* That is a real competency gap
+("Illustrate **and estimate**"), and fixing it means distractors far enough apart that estimating
+actually discriminates.
+
+Then the two remaining named Tick Fs, both still untouched and both confirmed by blind
+declaration:
+- `equal_jumps_on_a_number_line` (`mat_g2_na_q3_1` + `mat_g3_na_q4_0`) — start from
+  `fmt_number_line.py`'s existing single hop (grade-3 branch, `hop_from`/`hop_by`); note
+  `frontend/src/App.jsx:1435` draws one arc and will need extending too.
+- `draw_line_relationships` (`mat_g3_mg_q1_5`) — `geometric_lines` offers only `["mcq"]`;
+  check `fmt_shape_board.py` before building new.
+
+**30 capability gaps remain across the tree, and 139 nodes are still undeclared** — declaring a
+node is cheap (a blind Declarer, competency text only) and repeatedly turns out to name the
+defect outright before any sample is read.
