@@ -3952,3 +3952,71 @@ it. Node IDs and justification recorded here and in the file's own comment, per 
 
 `run_all` after the correction: 151/151, 0 failures, all ten contract checks, **stages 1–5 green**,
 `competency_bounds_parsing` PASS.
+
+---
+
+## 2026-08-14 — The blank landed on a given, not on the unknown
+
+### The failing rationale
+A blind reviewer found the same shape on two nodes and named it as one pattern:
+
+> "the same defect shape appears in two different nodes — a cloze whose blank lands on an operand
+> the answer depends on (q3_3 seed 603 minuend, q2_5 seed 501 subtrahend). This is the mirror image
+> of the known 'spine blank_target match' issue: the blank hides a required operand instead of
+> leaking the unknown one."
+
+```
+mat_g1_na_q3_3 seed 603: 'Yna has ___ sketchpads. A classmate has 0 sketchpads. How many more
+                          sketchpads does Yna have?'   -> keyed 4, with 3/5/6 fitting equally
+mat_g2_na_q2_5 seed 501: '...collected 98 loaves of bread and another group collected ___ loaves
+                          of bread. How many more...' -> keyed 49, unreachable
+```
+
+### Root cause
+`base_generator` blanks by **value match**, not by position:
+
+```python
+blank_value = values.get(blank_target)          # "result" -> 4
+pattern = re.compile(rf"(?<!\d){re.escape(str(blank_value))}(?!\d)(?!\.\d)")
+question_text_with_blank, _n = pattern.subn("___", question_text, count=1)
+```
+
+A narrated stem states its operands and asks for the result **in prose**, so the result normally
+does not appear in the text at all. When the result happens to *equal* one of the stated operands,
+`count=1` blanks that operand instead:
+
+```
+seed 603: a=4, b=0, result=4      -> the 4 matched is the minuend
+seed 501: a=98, b=49, result=49   -> the 49 matched is the subtrahend
+```
+
+The item goes from solvable to underdetermined, and nothing downstream can tell.
+
+### The fix
+When the blank value collides with a stated operand the match is ambiguous, so nothing is blanked
+and the prose question carries the unknown — which is what it was written to do.
+
+```
+seed 603 AFTER: 'Yna has 4 sketchpads. A classmate has 0 sketchpads. How many more sketchpads
+                 does Yna have?'  -> 4
+seed 501 AFTER: '...collected 98 loaves of bread and another group collected 49 loaves of bread.
+                 How many more did Lola Ising's group collect?'  -> 49
+```
+
+### Verification — legitimate blanks preserved
+The risk of a rule like this is over-suppression, so the sweep counted both sides across the tree:
+
+```
+cloze items with a blank: 409 (narrative: 90)
+narrative blanks whose keyed answer also appears as a stated number: 3
+   mat_g3_na_q2_5 seed 53: 'Estimate: 171 − 100 ≈ ___' -> 100
+   mat_g3_na_q3_5 seed 83: 'What number is missing in the pattern: 227, 221, ___, 127, ...' -> 221
+   mat_g3_na_q3_5 seed 85: 'What number is missing in the pattern: 64, 64, ___, 54, 44?' -> 54
+```
+
+409 blanks still render. The three remaining coincidences are **different constructions, not the
+defect**: an `≈` equation whose blank sits at the result, and pattern items where the blank *is*
+the missing term and the repeated value is part of the sequence. All three are answerable.
+
+`validate_matrix --node` PASS on all seven checked nodes; full `run_all` 151/151, 0 failures,
+all ten contract checks, stages 1–5 green.

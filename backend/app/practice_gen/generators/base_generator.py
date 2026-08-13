@@ -385,6 +385,26 @@ def generate_context(
     # question_text_with_blank: replace the blank_target value with "___"
     blank_target: str = values.get("blank_target", "result")
     blank_value = values.get(blank_target)
+    # A narrated stem states its operands and ASKS for the result in prose, so the
+    # result usually does not appear in the text at all. When the result happens to
+    # equal one of those stated operands, the value-match below found the operand
+    # and blanked that instead -- turning a solvable item into an underdetermined
+    # one. Blind review caught both shapes:
+    #   a=4, b=0, result=4  -> "Yna has ___ sketchpads. A classmate has 0
+    #                           sketchpads. How many more sketchpads does Yna have?"
+    #                           keyed 4, with 3/5/6 fitting the text equally.
+    #   a=98, b=49, result=49 -> "...collected 98 loaves of bread and another group
+    #                           collected ___ loaves of bread." keyed 49, unreachable.
+    # This is the mirror of the known blank_target/spine mismatch: there the blank
+    # LEAKS the unknown, here it HIDES a required given. When the blank value
+    # collides with a stated operand the match is ambiguous, so nothing is blanked
+    # and the prose question carries the unknown, which is what it was written to do.
+    _stated = [
+        v for k, v in values.items()
+        if k != blank_target and isinstance(v, int) and not isinstance(v, bool)
+    ]
+    if blank_value is not None and blank_value in _stated:
+        blank_value = None
     if blank_value is not None and spine is not None and "___" not in question_text:
         # Replace the blank value only where it appears as a standalone
         # number — NOT as a substring inside a larger number. A naive
