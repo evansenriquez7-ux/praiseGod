@@ -1858,3 +1858,63 @@ before concluding a sub-case is missing.
 6. **139 nodes undeclared, 30 capability gaps.**
 
 **State at handoff: tree clean, NON-VERDICT 0.**
+
+---
+
+## 2026-08-13 — Tick C: the unanswerable measure item was a routing bug.
+
+- **Census before:** PASS=59 CONCERN=61 FAIL=31. Gate: NON-VERDICT=0, tree clean.
+- **Unit 1 — `read_measurement` routed to the ruler.** Commit `c38e73f`.
+  The previous tick recorded this as "naming the object will not fix it" rather than guessing,
+  and the table confirmed the reasoning. `FORMATTER_VARIANT_SUPPORT` already stopped
+  `ruler_measure` serving the wrong tasks — **nothing stopped the wrong formatters serving the
+  ruler's task**, and `read_measurement` is a read-the-visual task:
+
+  ```
+  BEFORE  {'mcq': 171, 'cloze': 69, 'read_mcq': 32}      <- 240 unanswerable, 32 answerable
+  AFTER   {'read_mcq': 272}
+  ```
+
+  **The §1C blast radius the handoff warned about did not fire**, and the reason is worth keeping:
+  no node binds `read_measurement` as a *scalar* — they bind sentinels or leave `task_type` free,
+  and a bound naming a value outside a formatter's supported list is treated as registry-governed
+  rather than annihilating the matrix. All nine nodes PASS.
+  - Also: `mat_g2_mg_q2_2` served two of its three named parts because pinning metres to distances
+    two ticks ago left the length half permanently centimetres. Now 158 distance-in-m /
+    75 length-in-cm / 67 length-in-m.
+- **Unit 2 — re-reviewed all six affected nodes.** Commit `f6dc007`.
+  `mat_g2_mg_q2_0` **FAIL → CONCERN** and `mat_g2_mg_q2_2` **FAIL → CONCERN** — *"No unanswerable
+  items and no defect of substance ... ruler reads carry the measuring-tool clause"*.
+- **Census after: PASS=59 CONCERN=61 FAIL=31** (two cleared, two moved the other way).
+  NON-VERDICT 0. `run_all` 151/151, 0 failures, all ten contract checks, stages 1–5 green.
+
+### Next tick should:
+
+1. **The same defect one grade down, and the reviewer named the cause exactly:** *"The G1 nodes
+   still route distance items to text formatters that need a diagram they will never get."*
+   `mat_g1_mg_q2_0` renders *"A box and a bag are placed apart. The distance between them is ___
+   blocks."* keyed to 5 against distractors 4/6/7 — **seven of eleven samples**, nothing in the
+   item separating key from distractor. That is `distance_between` doing at G1 exactly what
+   `read_measurement` was doing at G2.
+
+   **But do not copy the fix.** `ruler_measure` supports `read_measurement` only, so G1's
+   `distance_between` has **no visual formatter to route to** — restricting it would leave the task
+   unrenderable and empty the matrix for the nodes bound to it. The right fix here is the opposite
+   direction: **make the stem self-contained**, e.g. state both positions so the gap is derivable
+   ("The box is at 3 blocks, the bag is at 8 blocks. How far apart are they?"). Check
+   `mat_g1_mg_q2_2` seed 605 too — the same frame leaks there.
+2. **G1 object-to-unit pairing has no bands at all.** `_OBJECT_CM_BANDS` / `_OBJECT_M_BANDS` cover
+   standard units only, so G1's non-standard units produce *"A shoe is 10 steps long."*,
+   *"A book is 60 crayons long."*, and *"A crayon is 90 blocks long. A shoe is 33 blocks long."* —
+   a crayon three shoes long. Same mechanism as the cm/m bands, one unit system over.
+   `mat_g1_mg_q2_2` also needs two-digit regrouping subtraction removed (a Grade 2 operation).
+3. **`mat_g2_mg_q4_4`** — still FAIL, now with a sharper count: **8 of 15 samples involve no
+   perimeter at all**, and *"of identify / measure / appropriate tools, only computing a perimeter
+   is covered"*. This is the co-mapped-DNA decision recorded three ticks running. It needs a call:
+   give `perimeter` a measuring formatter so the co-mapping can go, or bind the length half to the
+   figure. **Escalate rather than guess** — it is a pedagogical question about what "measure the
+   perimeter using appropriate tools" should render.
+4. Then the next FAIL clusters by DNA: **subtraction (4)**, **pictographs (3)**, **division (3)**.
+5. **139 nodes undeclared, 30 capability gaps.**
+
+**State at handoff: tree clean, NON-VERDICT 0.**
