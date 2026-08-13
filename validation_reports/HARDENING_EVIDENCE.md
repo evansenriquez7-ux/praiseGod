@@ -4194,3 +4194,119 @@ Both are genuine capability gaps rather than bindings, and the code already disc
 - **`mat_g2_dp_q3_1`** — *"Interpret data **in tabular form and** in a pictograph."* Every item
   opens *"Look at the picture graph"*; the tabular half never renders. `fill_in_table` is a **set**
   formatter (fill the table in), so reading a *displayed table* is a distinct, unbuilt capability.
+
+---
+
+## 2026-08-14 — table *reading* built, and the four defects the new packet exposed
+
+### The failing rationale
+> `mat_g2_dp_q3_1`: "Every one of the twelve sampled items opens with 'Look at the picture graph';
+> none references reading a table, even though the competency explicitly requires interpreting data
+> 'in tabular form and in a pictograph', leaving the tabular half untested in this sample."
+
+Competency: *"Interpret data **in tabular form and** in a pictograph **with or without scale**."*
+
+### Root cause — a real capability gap, and a second one in the same sentence
+The previous entry recorded this as *"a distinct, unbuilt capability"*, and Step 1 confirmed it:
+`fmt_fill_in_table` blanks **every** row it renders —
+
+```python
+for cat, val in zip(categories, values):
+    rows.append([cat, None])
+```
+
+— so the only formatter in the pipeline that draws a data table could only ever ask a pupil to
+*fill one in*. Filling a table in is the **organize** skill (`mat_g1_dp_q3_3`'s competency);
+*interpreting* a filled one is a different skill and nothing produced it.
+
+**Second gap, same sentence.** `scale_type` was left UNBOUND on this node — the registry guard
+correctly stopped *"with or without scale"* from matching the `"without scale"` branch and pinning
+the node to `no_scale`, but unbound means the DNA's G2 default, which draws only from
+`scale_2/5/10`. So *"without"* was unreachable no matter the seed. Not pinning a node to one half
+is not the same as reaching both halves.
+
+### The fix
+`fmt_fill_in_table` gains a `read` mode (table shown **with** its counts, one count read back out),
+reached by a new `table_read` adapter entry gated to `task_type: "read_table"`. Both halves of the
+sentence are bound to per-seed sentinels, since registry bounds are computed once per node.
+
+**One trap worth recording.** `read_table` is deliberately *not* added to the DNA's
+`extract_discrete_level` options list, which maps a float scalar onto its entries **by index**:
+
+```
+scalar 0.25:  6-item -> compare_two      7-item -> find_total       SHIFTED
+scalar 0.5:   6-item -> find_total       7-item -> find_difference  SHIFTED
+scalar 1.0:   6-item -> present_data     7-item -> read_table       SHIFTED
+```
+
+Appending one value silently re-points every scalar-driven node. It arrives as a *string* from the
+sentinel and from the exhaustive sweep instead, so it stays reachable without disturbing the ladder.
+Verified by hashing 30 seeds of each of the other six pictograph nodes against a clean worktree at
+HEAD — all six byte-identical, so the blast radius was exactly one node.
+
+### Verification
+
+```
+mat_g2_dp_q3_1 bounds: {'task_type': 'tabular_and_pictograph', 'scale_type': 'with_or_without_scale'}
+mat_g2_dp_q3_1 over 200 seeds: {'TABLE': 75, 'pictograph': 125}
+scales: {None: 14, 1: 7, 10: 6, 5: 5, 2: 5}
+
+seed 42: Look at the table. How many are in Monday?
+  vp: {"columns": ["Category", "Count"], "rows": [["Monday", 9], ["Tuesday", 9],
+       ["Wednesday", 6], ["Thursday", 5]], "ask_category": "Monday"}
+  options: [6, 10, 9(correct), 5]
+```
+
+### Then the blind review of the result found four defects — none in the new path
+All four pre-existed and were exposed only because a fresh packet was read carefully. Measured
+across 2100 items, all seven pictograph nodes, seeds 42–341:
+
+| defect | before | after |
+| --- | --- | --- |
+| comparisons whose two categories hold **equal counts** | 51 / 249 | 0 |
+| hints naming a **different category** than the stem asks | 172 | 0 |
+| stems announcing a scale whose hint then computes **× 1** | 76 | 0 |
+| `"in the the legend that shows what each picture means"` | present | 0 |
+
+Four separate causes, not one:
+
+1. **Ties keyed arbitrarily.** The comparison branch used `values[idx_a] >= values[idx_b]`, so when
+   the two drawn categories held the same count the keyed answer was whichever the sampler drew
+   first. *"Which has more: cats or fish?"* over counts `[10, 10, 10, 10]` keyed `cats` — a pupil
+   who read the graph correctly was marked wrong. Now drawn only from pairs that differ.
+2. **The formatter re-drew the question category.** `fmt_pictograph` ran its own
+   `ask_idx = rng.randint(...)` in read mode, ignoring the category the DNA had already chosen *and
+   built the hint from*: *"How many are in bananas?"* under the hint *"Count the pictures for
+   'apples': there are 9 picture(s) × 1 = 9."*
+3. **`"scale"` missing from three return branches**, so `generate_hints` fell back to
+   `values.get("scale", 1)` and spelled out `× 1 =` beneath a stem announcing `Each 🍎 = 5`.
+4. **The value range admitted one multiple.** `val_hi` is interpolated from the difficulty scalar,
+   but counts must be whole multiples of the scale — `scale=10` with `val_hi=19` gives
+   `min_mult == max_mult == 1`, forcing **every** category to 10. A flat graph: one picture per row,
+   nothing to compare, the scale never exercised. This is also the open `scale_appropriateness`
+   concern on `mat_g2_dp_q3_0` (*"every category the value 10 at a scale of 10"*); both fall to the
+   same widening, and the fail-fast added for (1) is what surfaced it.
+
+```
+mat_g2_dp_q3_1 seed 45  (was: "Count the pictures for 'Grade 1': ... × 1 = 10")
+  Q: Look at the picture graph. Each 🍎 = 5. How many are in Grade 1?
+  counts: ['Grade 1','Grade 2','Grade 3','Grade 4'] [10, 5, 10, 10] scale 5
+  hints: Each picture stands for 5 items. | Count the pictures for 'Grade 1':
+         there are 2 picture(s) × 5 = 10.
+
+mat_g2_dp_q3_0 seed 42  (was: apples: 10, bananas: 10, mangoes: 10, grapes: 10)
+  Q: Make a picture graph to show: apples: 30, bananas: 20, mangoes: 10, grapes: 10.
+     Each 🍎 equals 10.
+```
+
+`run_all`: **Total Failures Observed: 0**, all ten contract checks executed, stages 1–5 green,
+151/151 nodes.
+
+### A process correction worth keeping
+The first packet was **hand-built** rather than produced by `judgment_packets.py`. The canonical
+builder applies a max-difficulty profile to the 500-seed band and a variant-coverage profile to the
+600-band, and calls `run()` **without** `is_student_path` — so a hand-rolled packet showed the
+reviewer content the freshness gate does not regenerate, and the filed review came back with 36
+structural errors and 3 stale seeds despite every quotation being genuinely present in the packet it
+was given. That review was **discarded, not repaired**. Build packets with the tool the gate is
+defined against; the gate's notion of "the content" is the only one that counts.
