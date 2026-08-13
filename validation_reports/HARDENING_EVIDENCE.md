@@ -4139,3 +4139,58 @@ part is 3". They are simply rare:
 `VARIANTS_BY_DNA["subtraction"]` has **no `task_type` axis at all** (the `task_type` key in
 `FORMATTER_VARIANT_SUPPORT["subtraction"]["number_line_read"]` references a variant that does not
 exist, so it filters nothing). That needs a new variant built and bound, which is its own unit.
+
+---
+
+## 2026-08-14 — "or vice versa" names two directions; the node was bound to one
+
+### The failing rationale
+> `mat_g2_dp_q3_0`: "All thirteen sampled items go the same single direction, raw data into a
+> pictograph; none tests the 'vice versa' direction the competency text explicitly names, where a
+> pictograph would need to be read back into tabular or raw form."
+
+Competency: *"Present raw data, or data in tabular form, in a pictograph with a scale, **or vice
+versa**."* Bound to `task_type='present_data'` — half its own sentence.
+
+### Step 1 said prove it doesn't already exist, and it did
+The reverse direction is **already built and already wired**. `task_type='organize_table'` renders
+against a displayed pictograph through the `fill_in_table` formatter, and `mat_g1_dp_q3_3` has been
+using it all along:
+
+```
+mat_g1_dp_q3_3 (task_type='organize_table'): 'Fill in the chart with the correct counts.'
+```
+
+Nothing needed building. The node was bound to one direction while the machinery for the other sat
+one line away — the same shape as the area cluster's unbound `task_type`, and worth the check
+before reaching for new machinery.
+
+Bound to a **sentinel** rather than a list, for the reason this codebase has hit repeatedly:
+registry bounds are computed once per node, so a choice made there freezes to one direction
+forever. `pictographs.py` resolves it per seed, alongside the `read_or_compare` sentinel already
+there.
+
+### Verification
+
+```
+mat_g2_dp_q3_0 bounds: {'task_type': 'present_or_organize'}
+directions over 200 seeds: {'raw -> pictograph': 107, 'pictograph -> table': 93}
+
+seed 42: Make a picture graph to show: apples: 10, bananas: 10, mangoes: 10, grapes: 10...
+seed 44: Fill in the table. Note: Each symbol stands for 5 items.
+```
+
+`validate_matrix --node` PASS on all seven pictograph nodes; full `run_all` 151/151, 0 failures,
+all ten contract checks, stages 1–5 green.
+
+### The other two pictograph FAILs, diagnosed but not fixed here
+Both are genuine capability gaps rather than bindings, and the code already discloses one of them:
+
+- **`mat_g1_dp_q3_0`** — *"Collect data in one variable through a simple interview."* `registry.py`
+  states it outright: *"This DNA has no interview-simulation task_type at all (a real, disclosed
+  gap, not a routing bug)"*, so the node is left unbound and the `read_value` default renders
+  pictograph reading instead. The reviewer found the same: *"no sample shows a question being posed
+  to classmates or a tally being recorded."* Building a `collect_interview` task_type is the fix.
+- **`mat_g2_dp_q3_1`** — *"Interpret data **in tabular form and** in a pictograph."* Every item
+  opens *"Look at the picture graph"*; the tabular half never renders. `fill_in_table` is a **set**
+  formatter (fill the table in), so reading a *displayed table* is a distinct, unbuilt capability.

@@ -139,6 +139,12 @@ def generate_params(
     _scale_default = "no_scale" if grade == 1 else random.Random(seed).choice(["scale_2", "scale_5", "scale_10"])
     scale_type    = extract_discrete_level(profile, "scale_type", ["no_scale", "scale_2", "scale_5", "scale_10"], _scale_default)
     task_type     = extract_discrete_level(profile, "task_type", ["read_single", "compare_two", "find_total", "find_difference", "organize_table", "present_data"], "read_value")
+    if task_type == "present_or_organize":
+        # registry.py sentinel for "Present raw data ... in a pictograph with a
+        # scale, or vice versa" (mat_g2_dp_q3_0): the sentence names both
+        # directions, so alternate between building the pictograph from raw data
+        # and reading a pictograph back into a table, per seed.
+        task_type = rng.choice(["present_data", "organize_table"])
     if task_type == "read_or_compare":
         # registry.py sentinel for "Interpret data in tabular form and in
         # a pictograph..." (mat_g2_dp_q3_1): alternate between reading a

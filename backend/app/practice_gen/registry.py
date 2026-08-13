@@ -862,6 +862,19 @@ def _parse_competency_bounds(
     elif dna_name == "pictographs":
         if "organize" in text or "into a table" in text:
             bounds["task_type"] = "organize_table"
+        # "Present raw data, or data in tabular form, in a pictograph with a
+        # scale, OR VICE VERSA" (mat_g2_dp_q3_0) names two directions and was
+        # pinned to one. A blind reviewer: "All thirteen sampled items go the same
+        # single direction, raw data into a pictograph; none tests the 'vice versa'
+        # direction the competency text explicitly names."
+        # The reverse direction already exists and is already wired -- task_type
+        # "organize_table" renders "Fill in the chart with the correct counts."
+        # against a displayed pictograph via the fill_in_table formatter. Nothing
+        # needed building; the node was simply bound to half its own sentence.
+        # Sentinel rather than a list, because registry bounds are computed once per
+        # node and a choice made here would freeze to one direction forever.
+        elif "present" in text and "vice versa" in text:
+            bounds["task_type"] = "present_or_organize"
         elif "present" in text:
             bounds["task_type"] = "present_data"
         # "interpret" (mat_g2_dp_q3_1: "Interpret data in tabular form and
