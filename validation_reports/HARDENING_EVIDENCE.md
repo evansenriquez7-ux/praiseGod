@@ -3751,3 +3751,72 @@ perfectly answerable, and the same values rendered through plain `mcq`/`cloze` h
 therefore no derivable answer. The fix is formatter routing — restricting `read_measurement` to
 `ruler_measure` — which is exactly the tension that produced an empty execution matrix when
 `grid_area` was re-routed. It needs the §1C blast radius worked through, not a quick edit.
+
+---
+
+## 2026-08-13 — The unanswerable measure item was a routing bug, not a wording one
+
+### The failing rationale
+Two nodes were scored FAIL on the same stem, and the reviewer was precise about why it mattered:
+
+> "`Measure the object. Its length is ___ cm.` names no object and carries no depiction —
+> nothing in the stem or sample determines the keyed answers 1, 2, 2, 3 — and those are precisely
+> the items that would have carried the verb *measure*."
+
+So the competency lost its own verb to a broken item. The previous tick recorded this deliberately
+rather than fixing it, on the reasoning that naming the object would not help.
+
+### That reasoning held, and the table showed exactly why
+`FORMATTER_VARIANT_SUPPORT["length_measurement"]` already carried one direction of the
+restriction:
+
+```
+"ruler_measure": {"task_type": ["read_measurement"]}
+```
+
+The ruler was stopped from serving the wrong tasks. **Nothing stopped the wrong formatters serving
+the ruler's task.** `read_measurement` is a read-the-visual task — strip the ruler and there is
+nothing in the item to read — yet `mcq` and `cloze` carried no restriction at all:
+
+```
+1800 items | formats rendering the read-the-visual stem: {'mcq': 171, 'cloze': 69, 'read_mcq': 32}
+```
+
+171 and 69 unanswerable against 32 answerable. Adding the reverse restriction:
+
+```
+1800 items | formats rendering the read-the-visual stem: {'read_mcq': 272}
+```
+
+Every one now carries its ruler.
+
+### The blast radius the previous tick warned about did not materialise
+The handoff flagged the §1C empty-execution-matrix tension that the `grid_area` re-route hit, and
+said to work it through before editing. Worked through: it does not fire here, because **no node
+binds `read_measurement` as a scalar** — they bind sentinels (`length_or_distance`,
+`measure_compare_or_distance`) or leave `task_type` free, and a bound naming a value outside the
+formatter's supported list is treated as registry-governed rather than annihilating the matrix.
+
+```
+mat_g1_mg_q2_0: PASS  mat_g1_mg_q2_1: PASS  mat_g1_mg_q2_2: PASS
+mat_g2_mg_q2_0: PASS  mat_g2_mg_q2_1: PASS  mat_g2_mg_q2_2: PASS
+mat_g2_mg_q2_3: PASS  mat_g2_mg_q4_4: PASS  mat_g3_mg_q1_6: PASS
+```
+
+### Second defect, same tick — a competency serving two of its three parts
+`mat_g2_mg_q2_2` is "Estimate length using **meters or centimeters**, and distance using meters",
+and the reviewer found *"the 'estimate length using meters' branch is entirely absent ... every
+metre item is a gate-to-flagpole distance"*. That was a side effect of pinning metres to distances
+two ticks ago: it fixed the distance half and left the length half permanently centimetres.
+
+```
+mat_g2_mg_q2_2 over 300 seeds:
+   distance  in m  : 158
+   length    in cm : 75
+   length    in m  : 67
+```
+
+All three named parts now render. The override only applies when no unit is explicitly requested,
+so a pinned unit still wins.
+
+Full `run_all` 151/151, 0 failures, all ten contract checks, stages 1–5 green.

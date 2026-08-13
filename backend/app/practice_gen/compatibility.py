@@ -791,6 +791,23 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # are equally undrawable on a single ruler — estimate especially, since
         # a ruler hands over the measurement the student is meant to estimate.
         "ruler_measure": {"task_type": ["read_measurement"]},
+        # The reverse restriction, which was missing. Limiting ruler_measure to
+        # read_measurement stopped the ruler serving the wrong tasks, but nothing
+        # stopped mcq and cloze serving read_measurement -- and that direction is
+        # just as broken, because read_measurement is a READ-THE-VISUAL task: strip
+        # the ruler and the item has nothing in it to read. It rendered "Measure the
+        # object. Its length is ___ cm." 171 times through mcq and 69 through cloze,
+        # against only 32 answerable ruler items. A blind reviewer scored two nodes
+        # FAIL for it -- "nothing in the stem or sample determines the keyed answers
+        # 1, 2, 2, 3" -- and noted those were "precisely the items that would have
+        # carried the verb measure", so the competency lost its verb to a broken item.
+        #
+        # Listing every task_type EXCEPT read_measurement is how this table excludes
+        # a value; it has no negative form.
+        "mcq": {"task_type": ["compare", "convert", "choose_unit", "estimate",
+                              "distance_between", "equal_length", "compare_distance"]},
+        "cloze": {"task_type": ["compare", "convert", "choose_unit", "estimate",
+                                "distance_between", "equal_length", "compare_distance"]},
     },
 
     "multiplication": {

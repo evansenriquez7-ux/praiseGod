@@ -424,6 +424,14 @@ def generate_params(
         estimate_distance = grade >= 2 and rng.random() < 0.5
         if estimate_distance:
             unit_mode = "m"
+        elif grade >= 2 and requested_unit_type is None and rng.random() < 0.4:
+            # "Estimate length using METERS OR CENTIMETERS, and distance using
+            # meters" names three parts and the length half was always centimetres:
+            # pinning metres to distances left "estimate length using meters"
+            # with no item at all, which a blind reviewer scored as a coverage
+            # FAIL -- "every metre item is a gate-to-flagpole distance". Only when
+            # no unit is explicitly requested, so a pinned unit still wins.
+            unit_mode = "m"
         # Resolved AFTER the distance override above, so the label follows the unit
         # actually in play. Every other branch resolves a real name for non-standard
         # mode; this one used to print the enum straight into the stem.
