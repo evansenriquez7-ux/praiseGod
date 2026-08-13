@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_mg_q1_6",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the conversion gate and cm ceiling, 2026-08-13",
+  "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
     42,
@@ -22,7 +22,7 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Segment A is 21 cm long. Segment B is 21 cm long. Are Segment A and Segment B equal in length?",
+      "question_text": "Segment A is 2 cm long. Segment B is 2 cm long. Are Segment A and Segment B equal in length?",
       "correct_answer": "Yes",
       "options": [
         {
@@ -50,7 +50,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Segment A is 2 cm long. Segment B is 2 cm long. Are Segment A and Segment B equal in length?",
+      "question_text": "Segment A is 1 cm long. Segment B is 1 cm long. Are Segment A and Segment B equal in length?",
       "correct_answer": "Yes",
       "options": [
         {
@@ -78,7 +78,7 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Segment A is 14 cm long. Segment B is 10 cm long. Are Segment A and Segment B equal in length?",
+      "question_text": "Segment A is 7 cm long. Segment B is 3 cm long. Are Segment A and Segment B equal in length?",
       "correct_answer": "No",
       "options": [
         {
@@ -106,7 +106,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Segment A is 9 cm long. Segment B is 9 cm long. Are Segment A and Segment B equal in length?",
+      "question_text": "Segment A is 5 cm long. Segment B is 5 cm long. Are Segment A and Segment B equal in length?",
       "correct_answer": "Yes",
       "options": [
         {
@@ -134,7 +134,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Segment A is 3 cm long. Segment B is 3 cm long. Are Segment A and Segment B equal in length?",
+      "question_text": "Segment A is 2 cm long. Segment B is 2 cm long. Are Segment A and Segment B equal in length?",
       "correct_answer": "Yes",
       "options": [
         {
@@ -162,7 +162,7 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "Segment A is 16 cm long. Segment B is 17 cm long. Are Segment A and Segment B equal in length?",
+      "question_text": "Segment A is 8 cm long. Segment B is 5 cm long. Are Segment A and Segment B equal in length?",
       "correct_answer": "No",
       "options": [
         {
@@ -194,13 +194,13 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "Segment A is 409 cm long. Segment B is 409 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "Yes",
+      "question_text": "Segment A is 60 cm long. Segment B is 65 cm long. Are Segment A and Segment B equal in length?",
+      "correct_answer": "No",
       "options": [
         {
           "key": "A",
-          "value": "Yes",
-          "text": "Yes",
+          "value": "No",
+          "text": "No",
           "is_correct": true
         },
         {
@@ -211,8 +211,8 @@
         },
         {
           "key": "C",
-          "value": "No",
-          "text": "No",
+          "value": "Yes",
+          "text": "Yes",
           "is_correct": false
         },
         {
@@ -226,7 +226,7 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "Segment A is 328 cm long. Segment B is 328 cm long. Are Segment A and Segment B equal in length?",
+      "question_text": "Segment A is 82 cm long. Segment B is 82 cm long. Are Segment A and Segment B equal in length?",
       "correct_answer": "Yes",
       "options": [
         {
@@ -254,7 +254,7 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Segment A is 259 cm long. Segment B is 259 cm long. Are Segment A and Segment B equal in length?",
+      "question_text": "Segment A is 65 cm long. Segment B is 65 cm long. Are Segment A and Segment B equal in length?",
       "correct_answer": "Yes",
       "options": [
         {
@@ -282,7 +282,7 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Segment A is 7 cm long. Segment B is 11 cm long. Are Segment A and Segment B equal in length?",
+      "question_text": "Segment A is 4 cm long. Segment B is 1 cm long. Are Segment A and Segment B equal in length?",
       "correct_answer": "No",
       "options": [
         {
@@ -314,7 +314,7 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Segment A is 13 cm long. Segment B is 13 cm long. Are Segment A and Segment B equal in length?",
+      "question_text": "Segment A is 7 cm long. Segment B is 7 cm long. Are Segment A and Segment B equal in length?",
       "correct_answer": "Yes",
       "options": [
         {
@@ -342,7 +342,7 @@
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "Segment A is 6 cm long. Segment B is 7 cm long. Are Segment A and Segment B equal in length?",
+      "question_text": "Segment A is 3 cm long. Segment B is 4 cm long. Are Segment A and Segment B equal in length?",
       "correct_answer": "No",
       "options": [
         {
@@ -398,28 +398,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Every sample only compares two already-stated lengths for equality (e.g. seed 42's 'Segment A is 21 cm long. Segment B is 21 cm long. Are Segment A and Segment B equal in length?'); no sample involves reading a ruler or performing a draw/construct action, so the competency's 'using a ruler' tool-use is never tested."
+      "verdict": "FAIL",
+      "rationale": "All thirteen seeds carry the single stem 'Are Segment A and Segment B equal in length?' with both lengths already printed, for example seed 42 'Segment A is 2 cm long. Segment B is 2 cm long.' keyed 'Yes' and seed 44 'Segment A is 7 cm long. Segment B is 3 cm long.' keyed 'No'. Every item is answerable from what its stem says, but of the two verbs the sentence names only identify is touched, and only in a reduced numeral-comparison form; draw is absent from the whole pool, since no seed asks the student to draw or construct a segment of a stated length."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both equal-length ('Yes') and unequal-length ('No') cases are represented, and both cm and m units appear (seed 604's '2 m')."
+      "verdict": "FAIL",
+      "rationale": "Coverage is limited to one yes/no equality judgment. Equal pairs (seeds 42, 43, 45, 46, 501, 502, 602, 604) and unequal pairs (seeds 44, 50, 500, 601, 603) are both represented and the keys 'Yes' and 'No' are reasonably balanced, but there is no construction task, no ruler-reading task, and no item that presents segments to be identified rather than described in words, so roughly half the competency is unrepresented."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Segment lengths reach 409 cm (seed 500), 328 cm (seed 501), and 259 cm (seed 502) — well beyond what a Grade 3 student could practically measure or draw with a classroom ruler, undermining the 'using a ruler' framing of the competency."
+      "rationale": "Nothing exceeds the Grade 3 Quarter 1 ceiling: no conversion, no formula, no later-grade vocabulary. The problem runs the other way. With both lengths given in the stem, seed 603 'Segment A is 3 cm long. Segment B is 4 cm long.' reduces to deciding whether 3 and 4 are the same number, a judgment available well before Grade 3, and no seed requires a student to align, read or set a ruler."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Every sample follows the identical structure seen in seed 42, 'Segment A is 21 cm long. Segment B is 21 cm long. Are Segment A and Segment B equal in length?', just with different lengths; there is no ruler-reading or drawing-based variant."
+      "verdict": "FAIL",
+      "rationale": "One template serves all thirteen seeds. Seed 42 and seed 46 are the identical item, both 'Segment A is 2 cm long. Segment B is 2 cm long. Are Segment A and Segment B equal in length?' keyed 'Yes'. The formatter label alternates between mcq and cloze, but the stem wording, the option set and the required task never change, so the student meets one question repeated with different numbers."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Difficulty varies only by the numeric length values compared, not by the specific ruler-use or drawing skill the competency names."
+      "verdict": "FAIL",
+      "rationale": "Nothing drifts outside the topic of segment length, so there is no over-reach, but the mapping is only partial. The sentence names drawing with a ruler and no seed produces or demands either action. Seed 500 'Segment A is 60 cm long. Segment B is 65 cm long.' hands the student both measurements outright, which is representative of the whole pool: the ruler named in the competency has no role in any of the thirteen items."
     },
     "scale_appropriateness": {
       "verdict": "FAIL",
-      "rationale": "Lengths as large as 409 cm (seed 500: 'Segment A is 409 cm long. Segment B is 409 cm long.') are unrealistic for a hands-on ruler-measurement exercise, since a standard classroom ruler measures well under 100 cm."
+      "rationale": "Several segments cannot be drawn or checked with the ruler the sentence names. Seed 604 uses 'Segment A is 2 m long. Segment B is 2 m long.', a two-metre line segment, and seeds 500, 501 and 502 use 60, 65 and 82 cm, all past a classroom ruler, which measures well under a metre, and past the width of a worksheet. The 1 to 8 cm seeds (42, 43, 44, 45, 46, 50, 601, 602, 603) are appropriate. Only line segments appear, so no triangle inequality question arises."
     }
   },
   "overall": "FAIL"
