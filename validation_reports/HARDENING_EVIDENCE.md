@@ -3125,3 +3125,50 @@ second independent blind pass, on a fresh packet, to notice that the evidence ad
 The freshness-verification step added to the reviewer prompt this tick worked as intended — the
 reviewer reported `stale seeds: []` before scoring, so the FAIL is about the current content and
 nothing else.
+
+---
+
+## 2026-08-13 — "Estimate" was only a word (mat_g3_mg_q1_0)
+
+### The failing rationale
+> "the estimate half is only a word — seed 50 says `Estimate how many unit tiles cover the square
+> in all.` while offering 15, 16 and 17, so no estimation strategy separates them and the item
+> silently demands an exact product."
+
+The competency is *"Illustrate **and estimate** the area of a square or rectangle using square
+tile units."* An option one tile from the answer forces exact computation, so the item tested the
+wrong skill — the verb in the curriculum was not being served.
+
+### Root cause, in two layers
+1. The DNA supplied no distractors for `illustrate_tiles`, so options came from the shared error
+   patterns. For a 4x4 square those are `s + s = 8` and `4 * s = 16` — and 16 **is** the answer, so
+   it was filtered as equivalent, leaving only one distractor. `fmt_mcq` then padded to four with
+   its arithmetic-offset fallback: 15 and 17.
+2. Fixing layer 1 alone still left 10 of 212 items with a close option, because the error patterns
+   are appended *after* the DNA's own and can land arbitrarily close by coincidence — for a 3x7
+   tiling the perimeter `2*(3+7) = 20` sits **4.8%** from the area 21.
+
+### The fix
+`_estimation_distractors` builds three wrong tile counts from the real misconceptions (added
+instead of multiplied, perimeter instead of area, a row too many or too few, doubled, halved),
+keeping only values at least a fifth of the answer away from it **and from each other**. And
+because the separation is a property of the item type rather than of one distractor source, the
+same rule is applied where the options are finally assembled, so error-pattern distractors respect
+it too. That filter drops a distractor, never the answer, and only where the competency's verb is
+"estimate".
+
+### Verification
+
+```
+BEFORE  seed 50: answer=16 options=[8, 16, 15, 17]
+AFTER   seed 50: answer=16 options=[8, 12, 16, 20]
+        seed 57: answer=24 options=[10, 12, 24, 48]
+        seed 58: answer=21 options=[10, 14, 21, 42]
+
+illustrate_tiles items: 212
+items whose nearest option is within 20% of the answer: 0      (was 10 after layer 1 alone)
+smallest relative gap: 0.200
+```
+
+`validate_matrix --node` PASS on all four area nodes. The assembly-point change is in shared code,
+so the full sweep matters: `run_all` 151/151, 0 failures, all ten contract checks, stages 1–5 green.

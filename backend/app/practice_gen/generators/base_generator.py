@@ -499,6 +499,26 @@ def generate_context(
         except Exception:
             continue
 
+    # An ESTIMATION item needs options far enough apart that estimating tells them
+    # apart; an option a few percent from the answer forces exact computation and
+    # quietly turns "estimate the area" into "compute the area". The DNA supplies
+    # well-separated distractors for these items, but the shared error patterns are
+    # appended afterwards and can land arbitrarily close by coincidence -- for a
+    # 3 x 7 tiling the perimeter 2*(3+7) = 20 sits 4.8% from the area 21. So for
+    # this item type the same separation rule that governs the DNA's own options
+    # governs the error-pattern ones too. This drops a distractor, never the
+    # answer, and only where the competency's verb is "estimate".
+    if values.get("task_type") == "illustrate_tiles" and isinstance(correct_answer, int):
+        _MIN_GAP = 0.2
+        keep = [
+            d for d in distractors
+            if not isinstance(d, int)
+            or abs(d - correct_answer) >= _MIN_GAP * abs(correct_answer)
+        ]
+        for dropped in [d for d in distractors if d not in keep]:
+            distractors_provenance.pop(dropped, None)
+        distractors = keep
+
     # ── i. Hints ──────────────────────────────────────────────────────────────
     hints: List[str] = []
     if hasattr(dna_module, "generate_hints"):

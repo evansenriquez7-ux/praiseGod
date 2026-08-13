@@ -101,6 +101,50 @@ def _assert_cases_determine(cases, answer, distractors, seed):
             )
 
 
+# Estimation needs options far enough apart that estimating discriminates.
+# mat_g3_mg_q1_0's competency is "Illustrate and ESTIMATE the area ... using square
+# tile units", but its distractors came from the shared error patterns, and when
+# those collided with the answer they were filtered out and fmt_mcq's fallback
+# padded with correct +/- 1. A blind reviewer caught the result: seed 50 asked
+# "Estimate how many unit tiles cover the square in all" against 15, 16 and 17 --
+# "no estimation strategy separates them and the item silently demands an exact
+# product". Options a fifth apart or more make the estimate do real work.
+_ESTIMATE_MIN_RELATIVE_GAP = 0.2
+
+
+def _estimation_distractors(rows: int, cols: int) -> List[int]:
+    """
+    Three wrong tile counts, each far enough from the true one to be told apart by
+    estimating rather than by computing exactly.
+
+    Candidates are the real misconceptions first -- added instead of multiplied,
+    perimeter instead of area, one row too many or too few -- then filtered so every
+    kept value differs from the answer, and from every value already kept, by at
+    least _ESTIMATE_MIN_RELATIVE_GAP of the answer.
+    """
+    answer = rows * cols
+    candidates = [
+        rows + cols,            # added instead of multiplied
+        2 * (rows + cols),      # perimeter instead of area
+        (rows - 1) * cols,      # missed a whole row
+        (rows + 1) * cols,      # counted a row twice
+        answer * 2,             # doubled
+        max(1, answer // 2),    # halved
+    ]
+    kept: List[int] = []
+    for c in candidates:
+        if c <= 0 or c == answer:
+            continue
+        if abs(c - answer) < _ESTIMATE_MIN_RELATIVE_GAP * answer:
+            continue
+        if any(abs(c - k) < _ESTIMATE_MIN_RELATIVE_GAP * answer for k in kept):
+            continue
+        kept.append(c)
+        if len(kept) == 3:
+            break
+    return kept
+
+
 def _table_and_cofactor(scalar: float, rng: random.Random) -> tuple:
     """
     A (table_factor, co_factor) pair whose product is a known-table fact at G3 Q1.
@@ -363,6 +407,8 @@ def generate_params(
             "unit": unit_label,
             "task_type": task_type if task_type in ("illustrate_tiles", "derive_formula") else "find_area",
             "answer": area,
+            **({"distractors": _estimation_distractors(s, s)}
+               if task_type == "illustrate_tiles" else {}),
             "answer_formula": "s * s",
             "context": context,
         }
@@ -418,6 +464,8 @@ def generate_params(
         "unit": unit_label,
         "task_type": task_type if task_type in ("illustrate_tiles", "derive_formula") else "find_area",
         "answer": area,
+        **({"distractors": _estimation_distractors(l, w)}
+           if task_type == "illustrate_tiles" else {}),
         "answer_formula": "l * w",
         "context": context,
     }
