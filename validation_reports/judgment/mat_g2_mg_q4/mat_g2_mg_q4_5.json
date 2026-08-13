@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_mg_q4_5",
-  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the triangle-validity and shape-variation fixes, 2026-08-13",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the object-to-unit pairing fixes, 2026-08-13",
   "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
@@ -312,7 +312,7 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "A rectangular garden is 11 cm long and 10 cm wide. How much fencing is needed to go all the way around it?",
+      "question_text": "A rectangular garden is 11 m long and 10 m wide. How much fencing is needed to go all the way around it?",
       "correct_answer": 42,
       "options": [
         {
@@ -461,28 +461,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "All fifteen samples ask for exactly what the sentence names, the perimeter of a triangle, square or rectangle, and every answer checks out: seed 501 'A triangle has sides 10 cm, 21 cm, and 17 cm. What is its perimeter?' gives 48, seed 500 'A square has a side of 17 cm. What is its perimeter?' gives 68, seed 602 'A rectangle has sides 7 cm and 3 cm. What is its perimeter?' gives 20. Every item is answerable from the numbers in its own stem, with no missing side and no second unknown."
+      "rationale": "All fifteen samples ask exactly what the sentence asks, the perimeter of a named figure, and every key is arithmetically right. Seed 43 'A rectangle has sides 5 cm and 12 cm.' keys 34, seed 500 'A square has a side of 17 cm.' keys 68, and seed 501 'A triangle has sides 10 cm, 21 cm, and 17 cm.' keys 48. Each stem supplies every side needed, so each item is fully answerable from the information given, and each has a single correct value."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All three shapes the sentence names appear separately. Triangles at seeds 42, 501, 502 and 604; squares at seeds 44, 45, 50, 500, 600 and 603; rectangles at seeds 43, 46, 602 and 605, with seed 601 'A rectangular garden is 11 cm long and 10 cm wide.' adding a rectangle in context. Every triangle described can actually exist under the triangle inequality: seed 42 'A triangle has sides 2 cm, 1 cm, and 2 cm. What is its perimeter?' has 1+2>2, seed 604 has 2+4>4, seed 501 has 10+17>21, and the tightest case, seed 502 'A triangle has sides 12 cm, 6 cm, and 17 cm. What is its perimeter?', has 6+12=18>17, so all four are constructible."
+      "rationale": "The sentence names three figures and all three are present in quantity. Triangles appear at seeds 42, 501, 502 and 604; squares at seeds 44, 45, 50, 500, 600 and 603; rectangles at seeds 43, 46, 602 and 605, plus the contextual rectangle of seed 601 'A rectangular garden is 11 m long and 10 m wide.'. No named sub-case is left uncovered and none is represented by a single seed."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each item is one addition or one doubling on whole centimetres, with the largest answer 68 at seed 500 'A square has a side of 17 cm. What is its perimeter?' and most well under 40, comfortably inside grade 2 addition. Nothing requires a formula, a missing side, unit conversion, or a second step; seed 50 'A square has a side of 5 cm. What is its perimeter?' is representative of the load."
+      "rationale": "Every item is a one-step whole-number addition suited to Grade 2 Quarter 4. The largest total is the 68 of seed 500, reachable by adding 17 four times, and the square items never demand a multiplication fact outside repeated addition. Stems use plain words such as 'What is its perimeter?' with no algebraic notation, no missing-side reasoning, and no unit conversion."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Two formatters are exercised (mcq at seed 602, cloze at seeds 50, 500, 601 and 605), all three shapes recur with varied side values from 1 up to 21, isosceles and scalene triangles both appear (seed 604 'A triangle has sides 2 cm, 4 cm, and 4 cm. What is its perimeter?' against seed 502), and seed 601 supplies a contextual framing with 'How much fencing is needed to go all the way around it?' alongside the bare geometric stems. The template is uniform, which suits a find-the-perimeter competency, and the variation lands on the shapes and values that matter here."
+      "rationale": "Two formatters appear, mcq at seed 42 and cloze at seed 50, and the stems vary in structure rather than only in numbers: bare triangles with three listed sides, squares given by one side, rectangles given by two sides, and one applied phrasing at seed 601 'How much fencing is needed to go all the way around it?'. Side values range from the 1 cm of seed 46 up to the 21 cm of seed 501, and distractors sit adjacent to the key, so seed 605 keying 34 catches an off-by-one rather than a guess."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Nothing reaches past the sentence and nothing falls short of it. No sample asks for area, for a missing side given the perimeter, or for a shape outside the three named; no sample stops at measuring a single length. Seed 605 'A rectangle has sides 10 cm and 7 cm. What is its perimeter?' is the pattern throughout, and the one contextual item, seed 601, still asks only for the distance around a rectangle."
+      "rationale": "Nothing strays outside the sentence and nothing falls short of it. No sample asks for area, for a missing side, for a conversion, or for a figure other than the three named; the one contextual item, seed 601, is still a rectangle perimeter. Wording such as 'A rectangle has sides 7 cm and 1 cm.' names the two distinct sides a rectangle needs, so the figure is fully determined without importing later vocabulary."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The bare geometric stems are fine, since a drawn triangle or square of 3 to 21 cm is exactly what a grade 2 ruler handles. The single item that names a real object gets the unit wrong: seed 601 'A rectangular garden is 11 cm long and 10 cm wide.' describes a garden about the size of a postcard, roughly two orders of magnitude too small, when 11 m by 10 m is the plausible reading. The arithmetic and the answer 42 are correct; only the object-to-unit pairing is implausible, and it is the only contextual item in the pool, so the one bad case is also the whole context sample."
+      "verdict": "PASS",
+      "rationale": "Every figure named can actually exist. All four triangles satisfy the triangle inequality: seed 42 with sides 2, 1 and 2 because 1 plus 2 exceeds 2; seed 604 with 2, 4 and 4 because 2 plus 4 exceeds 4; seed 501 with 10, 21 and 17 because 10 plus 17 exceeds 21; and seed 502 'A triangle has sides 12 cm, 6 cm, and 17 cm.' because 12 plus 6 exceeds 17. The rectangles read sensibly, the thinnest being seed 46 at 7 cm by 1 cm, which is a legitimate narrow rectangle. Units fit the objects: abstract figures drawn on a page are given in centimetres from 1 cm to 21 cm, while the only real-world object, seed 601 'A rectangular garden is 11 m long and 10 m wide.', is given in metres, which is the right unit for a garden."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

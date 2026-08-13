@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_mg_q4_4",
-  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the triangle-validity and shape-variation fixes, 2026-08-13",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the object-to-unit pairing fixes, 2026-08-13",
   "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
@@ -313,7 +313,7 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "A rectangular garden is 11 cm long and 10 cm wide. How much fencing is needed to go all the way around it?",
+      "question_text": "A rectangular garden is 11 m long and 10 m wide. How much fencing is needed to go all the way around it?",
       "correct_answer": 42,
       "options": [
         {
@@ -493,29 +493,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The sentence puts perimeter of a plane figure at the centre, and only six of the sixteen samples get there: seed 604 'A triangle has sides 2 cm, 4 cm, and 4 cm. What is its perimeter?' (10), seed 603 'A square has a side of 3 cm. What is its perimeter?' (12), seed 46 'A rectangle has sides 7 cm and 1 cm. What is its perimeter?' (16), plus seeds 42, 43 and 601, and all six are arithmetically right. The remaining ten name no figure and no perimeter at all: seeds 44, 45, 50, 501 and 502 read 'Measure the object. Its length is ___ cm.', seeds 68 and 500 read 'How long is the object? Give your answer in cm.', and seed 606 is 'Which is longer: 2 cm or 12 cm?'. Length measurement is a fair reading of using appropriate tools, but a pool where the majority of items never reach a perimeter under-delivers the stated skill."
+      "verdict": "FAIL",
+      "rationale": "The sentence asks for perimeter of a plane figure, yet only six of the sixteen samples ask for a perimeter at all: seeds 42, 43, 46, 601, 603 and 604. Seven samples ask instead for the length of a single unnamed object, for example seed 44 'Measure the object. Its length is ___ cm.' and seed 68 'How long is the object? Give your answer in cm.'. Length of one object is not perimeter of a figure, and as rendered these stems are unanswerable: no object is named, no side lengths are given, and nothing in the packet identifies what is being measured, so the key 14 at seed 44 cannot be recovered from the information given."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The sentence names two actions on one object, identify and measure the perimeter. Measuring is present but only ever on a single object, as in seed 45 'Measure the object. Its length is ___ cm.'; no sample asks a student to apply a tool around a plane figure. The perimeter items instead hand the lengths over already, as in seed 42 'A triangle has sides 2 cm, 1 cm, and 2 cm. What is its perimeter?', so nothing measures a perimeter. No item asks a student to identify which measure is the perimeter, so the identify verb is unrepresented. Shape coverage inside the perimeter items is good: triangle at seeds 42 and 604, rectangle at seeds 43, 46 and 601, square at seed 603. Both triangles can exist: 1+2>2 for seed 42 and 2+4>4 for seed 604, so each obeys the triangle inequality on all three pairings."
+      "verdict": "FAIL",
+      "rationale": "The sentence names two verbs and a tool clause, and none of the three is exercised. No sample asks the student to identify the perimeter, for instance to pick out the distance around a figure as opposed to the space inside it. No sample names a measuring tool such as a ruler or tape measure; the closest is seed 605 'Which unit would you use to measure the distance between the barangay hall and the plaza: centimeters or meters?', which is about units, not tools, and is a length-and-distance question rather than a perimeter one. Seeds 606 'Which is longer: 2 cm or 12 cm?' and 607 'The distance from the bench to the tree is 22 cm.' belong to the same off-node family, so ten of sixteen samples sit outside this competency."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Every item is a single step at grade 2 depth: one sum of three small sides at seed 604 'A triangle has sides 2 cm, 4 cm, and 4 cm. What is its perimeter?', one doubling at seed 603 'A square has a side of 3 cm. What is its perimeter?', or one direct reading at seed 44 'Measure the object. Its length is ___ cm.'. No sample chains two operations, needs a formula, or asks for an unknown side, and the vocabulary stays at perimeter, longer, centimeters and meters."
+      "rationale": "Taken on their own the six genuine perimeter items are pitched correctly for Grade 2 Quarter 4: seed 603 'A square has a side of 3 cm.' answers 12, seed 43 answers 34 from two given sides, and seed 604 'A triangle has sides 2 cm, 4 cm, and 4 cm.' answers 10 by simple addition. Each is a one-step sum of whole numbers well inside Grade 2 range, with no formula notation and no reliance on multiplication beyond repeated addition."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sixteen samples spread across three formatters (mcq at seed 46, cloze at seed 50, read_mcq at seed 68) and five genuinely different framings: direct perimeter of a stated figure at seed 603 'A square has a side of 3 cm. What is its perimeter?', tool reading at seed 44 'Measure the object. Its length is ___ cm.', unit choice at seed 605 'Which unit would you use to measure the distance between the barangay hall and the plaza: centimeters or meters?', length comparison at seed 606 'Which is longer: 2 cm or 12 cm?', and a fencing context at seed 601 'A rectangular garden is 11 cm long and 10 cm wide.'. Distractor spacing also varies rather than being fixed at plus or minus one."
+      "verdict": "CONCERN",
+      "rationale": "Three formatters do appear (mcq at seed 42, cloze at seed 50, read_mcq at seed 68), but the variety is spent on the wrong stems. Within the perimeter items the shapes are reasonable, covering triangle at seed 42, rectangle at seed 43 and square at seed 603, yet seven of sixteen slots are consumed by one repeated template, 'Measure the object. Its length is ___ cm.', which supplies no variety of its own and differs between seeds only in the hidden key. The single word-problem variant, seed 601 'A rectangular garden is 11 m long and 10 m wide.', is left as the only contextual item."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Two samples sit outside the sentence rather than short of it. Seed 606 'Which is longer: 2 cm or 12 cm?' compares two bare numbers with no figure and no tool, and seed 607 'The distance from the bench to the tree is 22 cm.' likewise only ranks two given distances. Neither identifies nor measures a perimeter, and neither involves a plane figure; they are prior length-comparison work rather than this sentence. Seed 605 on choosing centimeters or meters is defensible under using appropriate tools, so it is not counted here."
+      "verdict": "FAIL",
+      "rationale": "The node pulls content from a neighbouring competency. Seed 605, seed 606 and seed 607 are unit-choice and longer-than comparison items about length and distance, and the seven 'Measure the object. Its length is ___ cm.' items measure a single length rather than the distance around a plane figure. Only the six perimeter stems, such as seed 46 'A rectangle has sides 7 cm and 1 cm.', map onto the sentence, so the majority of the node addresses a different learning competency than the one it is filed under."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Magnitudes are implausible for the objects named in five samples, and they contradict the unit sense this same node teaches. Seeds 500, 501 and 502 ask 'How long is the object? Give your answer in cm.' and 'Measure the object. Its length is ___ cm.' with answers of 409, 328 and 259 centimetres, that is two to four metres, with distractors a single centimetre apart, which no grade 2 ruler can resolve. Seed 607 'The distance from the bench to the tree is 22 cm.' places two landmarks a hand-span apart, and seed 601 'A rectangular garden is 11 cm long and 10 cm wide.' is a garden smaller than a sheet of paper. Seed 605 in the same pool asks 'Which unit would you use to measure the distance between the barangay hall and the plaza: centimeters or meters?', so the pool rewards choosing metres for a long distance while modelling gardens and landmark distances in centimetres. The arithmetic is sound throughout; the defect is the object-to-unit pairing."
+      "verdict": "FAIL",
+      "rationale": "The perimeter figures themselves are sound and their units fit: seed 42 'A triangle has sides 2 cm, 1 cm, and 2 cm.' satisfies the triangle inequality because 1 plus 2 exceeds 2, seed 604 with sides 2, 4 and 4 satisfies it because 2 plus 4 exceeds 4, and seed 601 puts an 11 by 10 garden in metres, which is right for a garden. The measurement items are not sound. Seed 500 keys 409, seed 501 keys 328 and seed 502 keys 259 for a stem that reads 'Measure the object. Its length is ___ cm.'; an object of three to four metres reported to the nearest centimetre is not something a Grade 2 pupil measures with a classroom ruler, and no object able to carry such a size is named. Seed 607 compounds this by placing a bench 22 cm from a tree while seed 605 in the same node teaches that such a distance is measured in 'm'."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }
