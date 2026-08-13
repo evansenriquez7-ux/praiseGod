@@ -790,7 +790,18 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # choose_unit item discarded. compare ("which is longer?") and estimate
         # are equally undrawable on a single ruler — estimate especially, since
         # a ruler hands over the measurement the student is meant to estimate.
-        "ruler_measure": {"task_type": ["read_measurement"]},
+        # distance_between belongs here with read_measurement: it is the same
+        # read-the-visual task, measuring a gap rather than an object, and the ruler
+        # renders it correctly (object_start/object_end span the gap). Without it the
+        # task fell to mcq/cloze, where "A box and a bag are placed apart. The
+        # distance between them is ___ blocks." keyed 5 against distractors 4/6/7
+        # with nothing in the item to distinguish them -- 93 of 200 samples on
+        # mat_g1_mg_q2_0, and a blind reviewer scored the node FAIL for it.
+        #
+        # Note the fix is to give the task its visual, NOT to restrict it and hope:
+        # at G1 there is no other visual formatter, so restricting alone would have
+        # left the task unrenderable.
+        "ruler_measure": {"task_type": ["read_measurement", "distance_between"]},
         # The reverse restriction, which was missing. Limiting ruler_measure to
         # read_measurement stopped the ruler serving the wrong tasks, but nothing
         # stopped mcq and cloze serving read_measurement -- and that direction is
@@ -805,9 +816,9 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # Listing every task_type EXCEPT read_measurement is how this table excludes
         # a value; it has no negative form.
         "mcq": {"task_type": ["compare", "convert", "choose_unit", "estimate",
-                              "distance_between", "equal_length", "compare_distance"]},
+                              "equal_length", "compare_distance"]},
         "cloze": {"task_type": ["compare", "convert", "choose_unit", "estimate",
-                                "distance_between", "equal_length", "compare_distance"]},
+                                "equal_length", "compare_distance"]},
     },
 
     "multiplication": {

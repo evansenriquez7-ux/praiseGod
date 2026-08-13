@@ -44,6 +44,32 @@ _PARAM_BOUNDS: Dict[str, Dict[str, Any]] = {
 # Non-standard unit objects used at G1
 _NON_STANDARD_UNITS = ["paperclips", "hands", "steps", "blocks", "crayons"]
 
+# Roughly how big each non-standard unit and each measured object is, in cm. Nothing
+# renders these numbers -- they exist so a COUNT can be derived rather than drawn.
+# Objects and units used to be picked independently, which produced "A shoe is 10
+# steps long." and "A book is 60 crayons long.", and in one sample "A crayon is 90
+# blocks long. A shoe is 33 blocks long." -- a crayon three shoes long. The count of
+# units spanning an object is not free: it is the object divided by the unit.
+_NON_STANDARD_UNIT_CM = {
+    "paperclips": 3,
+    "blocks": 5,
+    "crayons": 9,
+    "hands": 15,
+    "steps": 60,
+}
+_G1_OBJECT_CM = {
+    "a crayon": 9,
+    "a pencil": 17,
+    "a book": 24,
+    "a notebook": 26,
+    "a shoe": 26,
+}
+
+
+def _units_spanning(obj: str, unit: str) -> int:
+    """How many of `unit` lie along `obj`, never fewer than one."""
+    return max(1, round(_G1_OBJECT_CM[obj] / _NON_STANDARD_UNIT_CM[unit]))
+
 # Plausible centimetre ranges for the objects the word problems name. A measured
 # length is only believable if it matches the thing being measured, and the numbers
 # a child meets here are the size benchmarks they carry forward.
@@ -621,13 +647,38 @@ def generate_params(
             # ask for the difference: that needs the stated lengths *and* an
             # operation, and "solve problems involving lengths" is what the
             # competency asks for in the first place.
-            obj_a, obj_b = rng.sample(
-                ["a pencil", "a book", "a notebook", "a shoe", "a crayon"], 2
-            )
-            if length < 2:
-                length = 2
-                result["length"] = length
-            shorter = rng.randint(1, length - 1)
+            # Both counts come from the size model, so the numbers match the things.
+            # Ordered longer-first, since the stem asks how much longer obj_a is; a
+            # pair that measures the same in this unit is redrawn rather than nudged,
+            # which would break the pairing the model exists to keep.
+            def _pairs_for(u: str):
+                return [
+                    (a, b) for a in _G1_OBJECT_CM for b in _G1_OBJECT_CM
+                    if _units_spanning(a, u) > _units_spanning(b, u)
+                ]
+
+            candidates = _pairs_for(unit)
+            if not candidates:
+                # A unit can be too coarse to tell these objects apart: every
+                # classroom object is one step long, so a "how many steps longer"
+                # question has no answer worth asking. That is a property of the
+                # unit, not a failure -- steps measure a room, not a pencil -- so
+                # the unit is re-chosen from those that can actually discriminate,
+                # deterministically from this call's own rng.
+                usable = sorted(u for u in _NON_STANDARD_UNITS if _pairs_for(u))
+                if not usable:
+                    raise ValueError(
+                        f"length_measurement: no non-standard unit can distinguish "
+                        f"any two objects in _G1_OBJECT_CM (grade={grade}, "
+                        f"seed={seed}); the size model is inconsistent."
+                    )
+                unit = rng.choice(usable)
+                result["unit"] = unit
+                candidates = _pairs_for(unit)
+            obj_a, obj_b = rng.choice(sorted(candidates))
+            length = _units_spanning(obj_a, unit)
+            shorter = _units_spanning(obj_b, unit)
+            result["length"] = length
             result["length_b"] = shorter
             result["answer"] = length - shorter
             # length is guaranteed >= 2 above, but shorter (1..length-1) can

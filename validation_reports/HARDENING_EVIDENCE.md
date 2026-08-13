@@ -3820,3 +3820,67 @@ All three named parts now render. The override only applies when no unit is expl
 so a pinned unit still wins.
 
 Full `run_all` 151/151, 0 failures, all ten contract checks, stages 1–5 green.
+
+---
+
+## 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units
+
+### Defect 1 — the dataless distance item
+`mat_g1_mg_q2_0` rendered *"A box and a bag are placed apart. The distance between them is ___
+blocks."* keyed to 5 against distractors 4/6/7, on `mcq` and `cloze`. A blind reviewer: *"no
+diagram, no quantity, nothing separating key from distractor"* — **93 of 200 samples**.
+
+This is `distance_between` doing at G1 exactly what `read_measurement` was doing at G2, and the
+previous tick's handoff warned explicitly **not** to copy the G2 fix: `ruler_measure` supported
+`read_measurement` only, so restricting `distance_between` alone would have left it with no visual
+at all and emptied the matrix.
+
+Checked before deciding, in memory:
+
+```
+ruler_measure rendering distance_between:
+  seed 44: 'A box and a bag are placed apart. The distance between them is ___ blocks.' -> B
+      visual=RulerMeasure keys=['length','object_end','object_start','ruler_end','ruler_start',...]
+```
+
+The ruler renders it correctly — `object_start`/`object_end` span the gap. Measuring a gap is the
+same read-the-visual act as measuring an object, so `distance_between` was **given** the ruler and
+removed from the text formatters, rather than merely restricted.
+
+```
+1800 items | dataless "placed apart" items on a text formatter: 0
+mat_g1_mg_q2_0 formats: {'read_mcq': 200}
+```
+
+### Defect 2 — object and unit drawn independently
+The G1 word problem picked an object from one list and a non-standard unit from another, with the
+count drawn free. That produced *"A shoe is 10 steps long."*, *"A book is 60 crayons long."*, and
+*"A crayon is 90 blocks long. A shoe is 33 blocks long."* — a crayon three shoes long.
+
+**The count is not free: it is the object divided by the unit.** Both are now modelled in
+centimetres (nothing renders those numbers; they exist so the count can be derived), and every
+pairing falls out plausible:
+
+```
+a book = 8 paperclips · 5 blocks · 3 crayons · 2 hands
+a pencil = 6 paperclips · 3 blocks · 2 crayons · 1 hand
+a crayon = 3 paperclips · 2 blocks
+```
+
+Deriving the counts also removed the two-digit regrouping subtraction the reviewer flagged as a
+Grade 2 operation in a Grade 1 node — the differences are now single-digit by construction.
+
+### A regression I introduced and caught by measuring
+The first version *raised* when no object pair differed in the chosen unit. That fires for real:
+every classroom object is one step long, so `steps` crashed generation on **53 of 2700** attempts.
+That is a property of the unit, not a failure — steps measure a room, not a pencil — so the unit
+is now re-chosen from those that can discriminate, and the raise is kept only as a true invariant
+(no unit works at all).
+
+```
+BEFORE  2700 attempts | 2647 ok | 53 raised
+AFTER   2700 attempts | 2700 ok |  0 raised
+```
+
+`validate_matrix --node` PASS on the affected nodes; full `run_all` 151/151, 0 failures, all ten
+contract checks, stages 1–5 green.
