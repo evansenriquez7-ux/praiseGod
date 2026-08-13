@@ -1806,3 +1806,55 @@ before concluding a sub-case is missing.
 6. **139 nodes undeclared, 30 capability gaps.**
 
 **State at handoff: tree clean, NON-VERDICT 0, PASS up to 59.**
+
+---
+
+## 2026-08-13 — Tick C: stranded reviews landed, then conversion + cm ceiling.
+
+- **Census before:** PASS=59 CONCERN=62 FAIL=30. Gate: **NON-VERDICT=17** (the previous tick
+  committed its fix but the usage limit killed its re-review).
+- **Unit 1 — landed the three stranded reviews.** Rather than re-review from scratch, the same
+  agent was **resumed from its own transcript** — its judgment was already made and quote-checked,
+  so resuming preserved both the work and its blindness. NON-VERDICT 17 → 0. Commit `0062ece`.
+  **Worth reusing: a reviewer killed after judging but before writing can be resumed to write.**
+- **Unit 2 — two defects, both grounded in the curriculum rather than in taste.** Commit `82bb320`.
+  1. **`Convert 4 m to cm.` is invention.** Not merely "later grade" — **no competency anywhere in
+     the G1–G3 graph mentions conversion**, and `mat_g2_mg_q2_3` carries no conversion concept.
+     Yet `CURRICULUM_VARIANT_GATES` asserted an introduction point of (2, 1), a curriculum fact
+     that does not exist. Gate moved past this graph; the task_type stays declared so §1C stays
+     intact, as with `estimate`. It had been reachable at six of nine nodes.
+  2. **`cm_max: 500`** produced *"Which is longer: 409 cm or 237 cm?"* — four metres in
+     centimetres. A metre stick is the largest tool this grade measures with, so a cm reading past
+     100 is a metre reading wearing the wrong unit. Now 100.
+  - Verified: 2776 items across 9 nodes → **0 conversion items, 0 cm readings above 100**.
+- **Unit 3 — re-reviewed all five affected nodes.** Commit above.
+  `mat_g2_mg_q2_3` **FAIL → CONCERN**. Two nodes moved **CONCERN → FAIL** on the defect this tick
+  deliberately left, now scored rather than described.
+- **Census after: PASS=59 CONCERN=61 FAIL=31.** NON-VERDICT 0. `run_all` 151/151, 0 failures,
+  all ten contract checks, stages 1–5 green throughout.
+
+### Next tick should:
+
+1. **`"Measure the object. Its length is ___ cm."` — now the single dominant cause in this
+   subtree, driving FAILs on two nodes.** *"nothing in the stem or sample determines the keyed
+   answers 1, 2, 2, 3"*, and *"those are precisely the items that would have carried the verb
+   'measure'"*. 7 of 16 samples on `mat_g2_mg_q4_4` too.
+
+   **Naming the object will not fix it.** `read_measurement` is a *read-the-visual* task: with the
+   `ruler_measure` formatter the item is answerable; the same values through plain `mcq`/`cloze`
+   have no visual and no derivable answer. The fix is **formatter routing** — restrict
+   `read_measurement` to `ruler_measure` in `FORMATTER_VARIANT_SUPPORT`. Expect the §1C
+   empty-execution-matrix tension that the `grid_area` re-route hit: a node bound to
+   `read_measurement` would leave `mcq`/`cloze` with no surviving combination. Work that blast
+   radius through *before* editing; the area cluster's history in this ledger has the pattern.
+2. **`mat_g2_mg_q2_2` — a new, separate, cheap finding:** *"the 'estimate length using meters'
+   branch is entirely absent"* because every metre item is a distance. Its competency names three
+   parts and serves two. The distance framing added two ticks ago pinned metres to distances only;
+   let a length estimate use metres too.
+3. **`mat_g3_mg_q1_6`** — FAIL: *draw* never appears, no ruler is used, and seed 604 asks about a
+   2 m segment for a classroom ruler. Related to the same Tick F as `draw_line_relationships`.
+4. **`mat_g2_mg_q4_4`** — the co-mapped-DNA decision, still open and still needing a call.
+5. Then the next FAIL clusters by DNA: **subtraction (4)**, **pictographs (3)**, **division (3)**.
+6. **139 nodes undeclared, 30 capability gaps.**
+
+**State at handoff: tree clean, NON-VERDICT 0.**
