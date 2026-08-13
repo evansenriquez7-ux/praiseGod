@@ -3291,3 +3291,49 @@ about *this* figure. The under-determination guard does not catch it, because th
 distractors are all refuted — the gap is in what the evidence *demonstrates*, not in what it
 rules out. Making some items vary both factors is the fix, and the guard will still hold (varying
 both makes the distractors easier to refute, not harder).
+
+---
+
+## 2026-08-13 — The derivation's evidence never showed the second factor mattering
+
+### The failing rationale
+> "all eight rectangle samples hold the second dimension fixed across their three cases (only
+> ever 4, 5, or 10), so no variant in the pool ever shows both factors changing — the evidence
+> never demonstrates that the second factor matters, which is the core of the inductive
+> derivation."
+
+Right, and sharper than the variety CONCERN it replaced. With every case at width 4, the presented
+evidence is equally consistent with "total = length × 4" as a rule about *that* figure. The pupil
+can reach the keyed answer, but not because the cases forced it.
+
+**`_assert_cases_determine` does not catch this**, and that is worth being precise about: the
+offered distractors are all refuted either way, so the item is well posed in the sense that guard
+enforces. The gap is in what the evidence *demonstrates*, not in what it *rules out* — a different
+property, needing its own case shape rather than a stronger guard.
+
+### The fix
+Rectangle items now alternate per seed between two case shapes: the fixed-width shape (easy to
+spot, still useful) and a **both-factors-vary** shape whose three cases change length and width
+together. Widths are drawn from `_KNOWN_TABLES` in both shapes, so every product stays a fact the
+pupil holds whichever is drawn (Content Rule 1).
+
+### A defect the new shape introduced, caught before commit
+Pairing two independent draws produced `'a 3 by 3 rectangle takes 9 tiles'` and
+`'a 10 by 10 rectangle takes 100 tiles'` — rectangles with equal sides, which are squares and read
+as errors. The fixed-width path avoids this by construction; the new one does not, so the length
+is nudged off the width when they collide. The width stays in `_KNOWN_TABLES`, so the product
+remains a table fact.
+
+### Verification
+
+```
+1000 seeds | rectangles rendered with equal sides: 0
+rectangle items: both factors vary=240, width fixed=262
+
+seed 42: Cover each rectangle with unit square tiles and count them: a 4 by 3 rectangle takes
+         12 tiles, a 6 by 4 rectangle takes 24 tiles, and a 9 by 10 rectangle takes 90 tiles...
+```
+
+Seed 42 now varies both factors across its three cases. The under-determination guard never fired
+across those 1000 seeds. `validate_matrix --node` PASS on all four area nodes; full `run_all`
+151/151, 0 failures, all ten contract checks, stages 1–5 green.

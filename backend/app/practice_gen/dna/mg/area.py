@@ -342,26 +342,52 @@ def generate_params(
             distractors = ["side + side", "4 × side", "side + 4"]
             dims_word = "side"
         else:
-            # One dimension held fixed across the cases so the pattern is
-            # visible: the other varies, and the total tracks the product.
-            # The fixed width may not be 2. At width 2 the distractor
-            # "length + length" computes 2 x length, which is exactly length x width
-            # for every case shown -- so a pupil who induces faithfully from all the
-            # evidence has TWO rules consistent with it and is marked wrong. A blind
-            # reviewer caught this on seeds 42 and 601 and scored the node FAIL for
-            # it. An inductive item is only well posed if the presented cases
-            # falsify every distractor; _assert_cases_determine below enforces that
-            # for whatever pool is in play, so a future distractor change cannot
-            # quietly reintroduce the ambiguity.
-            # Widened past {3,4}: at low difficulty the old pool left six of eight
-            # rectangle items pinned to a width of 4, so "the evidence a pupil sees
-            # never once varies the width" (blind review). 2 stays excluded for the
-            # reason _assert_cases_determine enforces.
-            fixed = rng.choice([t for t in _KNOWN_TABLES
-                                if t != 2 and t <= (5 if scalar < 0.34 else 10)])
-            varying = sorted(rng.sample([v for v in range(2, _OTHER_SIDE_MAX + 1)
-                                         if v != fixed], 3))
-            cases = [(v, fixed, v * fixed) for v in varying]
+            # Two case shapes, alternated per seed.
+            #
+            # Holding the width fixed makes the pattern easy to spot, but it is not
+            # enough on its own: with every case at width 4, the evidence is equally
+            # consistent with "total = length x 4" as a rule about that one figure,
+            # so it never demonstrates that the SECOND factor matters -- which is the
+            # core of deriving length x width. A blind reviewer put it exactly that
+            # way: "no variant in the pool ever shows both factors changing -- the
+            # evidence never demonstrates that the second factor matters".
+            #
+            # Note _assert_cases_determine does not catch that: the offered
+            # distractors are all refuted either way. The gap is in what the evidence
+            # DEMONSTRATES, not in what it rules out, so it needs its own case shape.
+            #
+            # Every case keeps one factor in _KNOWN_TABLES, so each product stays a
+            # fact the pupil holds (Content Rule 1) whichever shape is drawn.
+            if rng.random() < 0.5:
+                # Both factors vary. Widths come from the known tables so the
+                # products stay table facts; lengths vary freely alongside them.
+                widths = rng.sample([t for t in _KNOWN_TABLES
+                                     if t <= (5 if scalar < 0.34 else 10)], 3)
+                lengths = rng.sample([v for v in range(2, _OTHER_SIDE_MAX + 1)], 3)
+                pairs = []
+                for l, w in zip(lengths, widths):
+                    # "a 3 by 3 rectangle" is a square, and reads as an error. The
+                    # fixed-width path avoids this by construction; pairing two
+                    # independent draws does not, so nudge the length off the width.
+                    # The width stays in _KNOWN_TABLES either way, so the product
+                    # remains a table fact whatever the length becomes.
+                    if l == w:
+                        l = l + 1 if l < _OTHER_SIDE_MAX else l - 1
+                    pairs.append((l, w))
+                cases = sorted((l, w, l * w) for l, w in pairs)
+            else:
+                # One dimension held fixed across the cases so the pattern is
+                # visible: the other varies, and the total tracks the product.
+                # The fixed width may not be 2. At width 2 the distractor
+                # "length + length" computes 2 x length, which is exactly
+                # length x width for every case shown -- so a pupil who induces
+                # faithfully has TWO rules consistent with the evidence and is
+                # marked wrong. A blind reviewer caught that on seeds 42 and 601.
+                fixed = rng.choice([t for t in _KNOWN_TABLES
+                                    if t != 2 and t <= (5 if scalar < 0.34 else 10)])
+                varying = sorted(rng.sample([v for v in range(2, _OTHER_SIDE_MAX + 1)
+                                             if v != fixed], 3))
+                cases = [(v, fixed, v * fixed) for v in varying]
             answer = "length × width"
             # No grouping symbols: a bracketed candidate makes the pupil parse
             # notation no stem at this grade uses, which is a reading load rather
