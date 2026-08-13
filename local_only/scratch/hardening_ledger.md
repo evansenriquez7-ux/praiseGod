@@ -1689,3 +1689,63 @@ manufacture a concern to look thorough."*
 6. **139 nodes undeclared, 30 capability gaps.**
 
 **State at handoff: tree clean, NON-VERDICT 0, FAIL down to 30.**
+
+---
+
+## 2026-08-13 — Tick C: perimeter. **FAIL 30 → 29.**
+
+- **Census before:** PASS=57 CONCERN=64 FAIL=30. Gate: NON-VERDICT=0, tree clean.
+- **Unit 1 — two defects in `perimeter`, the second hiding behind the first.** Commit `ac72eb0`.
+  1. **The DNA emitted impossible triangles.** Three independent `randint` draws with nothing
+     relating them, so `"A triangle has sides 2 cm, 4 cm, and 7 cm"` (2+4 < 7) was asked for its
+     perimeter. The third side is now drawn from the window the first two leave open
+     (`|a-b| < c < a+b` ∩ bounds), the first two redrawn if it closes, and an explicit check
+     raises if the inequality is ever violated. Deliberately *not* clamped to an endpoint, which
+     would bias every such case onto the same degenerate triangle.
+  2. **`profile.get("shape", "rectangle")` — a silent default, and no node binds `shape`.** So
+     `mat_g2_mg_q4_5` ("Find the perimeter of **triangles, squares, and rectangles**") served
+     rectangles **200 of 200**. Two of the three shapes in its own sentence were unreachable.
+     Same defect shape as `area.py`'s, same fix. Now 60 triangle / 72 rectangle / 68 square.
+- **Unit 2 — re-reviewed all three perimeter nodes.** Commit `776be23`. `mat_g2_mg_q4_4`
+  **FAIL → CONCERN**. The reviewer verified both fixes by machine, not by eye: *"All 12 triangles
+  across the three packets satisfy the inequality on every pairing, including the two tight cases
+  ... Every perimeter is arithmetically correct — 45/45 matched by machine check"*, and *"Shape
+  coverage is complete on nodes 5 and 6"*.
+- **Census after: PASS=57 CONCERN=65 FAIL=29.** NON-VERDICT 0. `run_all` 151/151, 0 failures,
+  all ten contract checks, stages 1–5 green throughout.
+
+### A false alarm of mine, recorded so it is not repeated
+I first measured `mat_g2_mg_q4_6` as naming no shape in 200/200 samples. That was my regex, not the
+generator: I searched for `triangle`/`rectangle` and the word problems say **triangular** and
+**rectangular**. The node was already correct. **Match on the wording the content actually uses**
+before concluding a sub-case is missing.
+
+### Next tick should:
+
+1. **Object-to-unit pairing — now the single highest-value fix in the tree, and confirmed across
+   two DNAs.** Every real-world context is sized in centimetres regardless of the noun:
+   *"A rectangular garden is 5 cm long and 12 cm wide."*, *"A rectangular garden is 7 cm long and
+   1 cm wide."*, *"A triangular flower bed has sides 3 cm, 9 cm, and 11 cm."*, a bench-to-tree
+   distance of 22 cm, "crayon" at 5, 8, 10, 21 and 49 cm. `mat_g2_mg_q4_4` **contradicts itself**
+   — seed 605 rewards "m" for the distance between the barangay hall and the plaza while seed 607
+   asserts a 22 cm bench-to-tree distance.
+
+   The fix is one shared mechanism: **bind each context noun to a plausible magnitude band and
+   unit** (crayon/pencil/spoon → cm, small; garden/court/road/flower bed → m). It lifts
+   `scale_appropriateness` on `length_measurement` and `perimeter` nodes simultaneously — at least
+   six nodes, several of them the only remaining non-PASS finding on their node.
+   Secondary, same area: seeds 43/601/604 describe a garden whose **width exceeds its length**.
+2. **`mat_g2_mg_q4_4`'s co-mapped DNA — a decision, not an edit.** It maps to both `perimeter` and
+   `length_measurement`; ten of sixteen samples name no figure. But `COMPATIBILITY['perimeter']`
+   is `['mcq','cloze']` and `ruler_measure` comes only from `length_measurement`, so deleting the
+   co-mapping — the fix this file documents for two other nodes — costs the node its only
+   measuring visual while its competency says "using appropriate **tools**". Either give
+   `perimeter` a ruler-based formatter, or accept the co-mapping and bind it so the length half
+   serves the figure. Escalate if neither reading is obviously right.
+3. **`mat_g2_mg_q2_0`** — still FAIL: distance renders in centimetres though the competency says
+   "distance in meters". One-line override, same as `estimate` got.
+4. Then the next FAIL clusters by DNA: **subtraction (4)**, **pictographs (3)**, **division (3)**.
+5. Still untouched: `equal_jumps_on_a_number_line`, `draw_line_relationships` (both Tick F).
+6. **139 nodes undeclared, 30 capability gaps.**
+
+**State at handoff: tree clean, NON-VERDICT 0, FAIL down to 29.**
