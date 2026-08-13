@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g3_mg_q1_1",
-  "reviewed_by": "claude-opus-5 blind reviewer, re-review after both-factors-vary cases, 2026-08-13",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after removing fixed-width cases, 2026-08-13",
   "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
@@ -23,7 +23,7 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 3 rectangle takes 12 tiles, a 6 by 4 rectangle takes 24 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 3 rectangle takes 12 tiles, a 5 by 4 rectangle takes 20 tiles, and a 7 by 2 rectangle takes 14 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
       "options": [
         {
@@ -51,7 +51,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Cover each rectangle with unit square tiles and count them: a 7 by 10 rectangle takes 70 tiles, an 8 by 10 rectangle takes 80 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 3 rectangle takes 12 tiles, a 6 by 10 rectangle takes 60 tiles, and a 9 by 5 rectangle takes 45 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
       "options": [
         {
@@ -135,7 +135,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 4 rectangle takes 20 tiles, a 7 by 4 rectangle takes 28 tiles, and a 9 by 4 rectangle takes 36 tiles. Which rule always gives the number of tiles?",
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 3 rectangle takes 12 tiles, a 6 by 4 rectangle takes 24 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
       "options": [
         {
@@ -283,7 +283,7 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Cover each rectangle with unit square tiles and count them: a 2 by 5 rectangle takes 10 tiles, a 5 by 2 rectangle takes 10 tiles, and a 7 by 10 rectangle takes 70 tiles. Which rule always gives the number of tiles?",
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 2 by 5 rectangle takes 10 tiles, an 8 by 3 rectangle takes 24 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
       "options": [
         {
@@ -315,7 +315,7 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Cover each rectangle with unit square tiles and count them: an 8 by 5 rectangle takes 40 tiles, a 9 by 4 rectangle takes 36 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
+      "question_text": "Cover each rectangle with unit square tiles and count them: an 8 by 10 rectangle takes 80 tiles, a 9 by 4 rectangle takes 36 tiles, and a 10 by 3 rectangle takes 30 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
       "options": [
         {
@@ -343,7 +343,7 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Cover each rectangle with unit square tiles and count them: a 6 by 5 rectangle takes 30 tiles, an 8 by 5 rectangle takes 40 tiles, and a 10 by 5 rectangle takes 50 tiles. Which rule always gives the number of tiles?",
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 5 rectangle takes 20 tiles, an 8 by 4 rectangle takes 32 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
       "options": [
         {
@@ -371,7 +371,7 @@
     {
       "seed": 605,
       "formatter": "cloze",
-      "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 4 rectangle takes 20 tiles, a 6 by 10 rectangle takes 60 tiles, and a 9 by 2 rectangle takes 18 tiles. Which rule always gives the number of tiles?",
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 2 rectangle takes 10 tiles, a 7 by 5 rectangle takes 35 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
       "options": [
         {
@@ -403,7 +403,7 @@
     {
       "seed": 606,
       "formatter": "mcq",
-      "question_text": "Three rectangles are tiled with unit squares: a 3 by 5 rectangle takes 15 tiles, a 9 by 4 rectangle takes 36 tiles, and a 10 by 3 rectangle takes 30 tiles. Which rule works for every one of them?",
+      "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 2 rectangle takes 10 tiles, a 9 by 5 rectangle takes 45 tiles, and a 10 by 4 rectangle takes 40 tiles. Which rule always gives the number of tiles?",
       "correct_answer": "length × width",
       "options": [
         {
@@ -431,29 +431,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Every item shows three tiled cases and asks 'Which rule always gives the number of tiles?' or its variant, and the keyed rules 'length × width' and 'side × side' are the two formulas the competency names; across all fourteen samples only the keyed rule survives all three cases, so no offered option is a second valid answer. Three rectangle items nevertheless hold one dimension fixed in every case: seed 43 runs 'a 7 by 10 rectangle takes 70 tiles' then 8 by 10 then 9 by 10, seed 46 fixes the 4 and seed 604 fixes the 5. Those case sets never vary the width, so they cannot demonstrate that the count depends on it, and the counts form an arithmetic run that a narrower add-a-constant pattern fits equally well. On those three the derivation is only half shown."
+      "verdict": "PASS",
+      "rationale": "Every item lays out three tiled cases before asking 'Which rule always gives the number of tiles?', so the learner generalizes from evidence instead of recalling a stated formula, which is what inductive derivation means. The evidence actually forces the keyed rule in each item: in seed 605 the case 'a 5 by 2 rectangle takes 10 tiles' is equally matched by doubling the length, but 'a 7 by 5 rectangle takes 35 tiles' kills that reading, and in seed 501 'a 4 by 4 square takes 16 tiles' is equally matched by four times the side until 'a 5 by 5 square takes 25 tiles' rules it out. Checking all 14 samples, exactly one offered option survives all three cases in every item."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both shapes the competency names are present: six square items keyed 'side × side' and eight rectangle items keyed 'length × width', so both formulas get derived rather than only one. Each stem states the tiling explicitly, for example 'Cover each square with unit square tiles and count them', and one rectangle item pairs 'a 2 by 5 rectangle takes 10 tiles' with 'a 5 by 2 rectangle takes 10 tiles' so the commutative reading of the tile array is exposed too. Nothing in the set asks for anything outside the derivation itself."
+      "rationale": "Both figures the competency names are covered: eight rectangle items keyed to 'length × width' and six square items keyed to 'side × side'. The rectangle cases vary length and width independently rather than holding one of them fixed, for example 'a 2 by 5 rectangle takes 10 tiles', 'an 8 by 3 rectangle takes 24 tiles' and 'a 9 by 10 rectangle takes 90 tiles' in seed 601, so no narrower rule about a single dimension or a constant step fits the shown cases. Square items sweep sides of 2, 3, 4, 5 and 10 across the pool."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The grade 3 quarter 1 load is reasonable: the learner reads three worked tile counts and picks one of four rules stated in ordinary words, with no letter variables, no exponent notation and no unit labels. The heaviest step is checking that 'side × side' reproduces the counts in 'a 2 by 2 square takes 4 tiles' and its two partners, which is pattern matching over basic facts rather than symbolic manipulation, and the tiling sentence keeps the concrete referent in front of the learner."
+      "rationale": "Tile counts are supplied in the stem, so a grade 3 learner verifies a rule rather than computing area, and every product stays inside the tables through ten, the largest being 'a 10 by 10 square takes 100 tiles'. The rules are stated in words, 'side × side' and 'length × width', with no variable letters, no exponent notation, and no perimeter or unit-conversion vocabulary, so nothing from a later node is required to answer."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Thirteen of the fourteen rendered stems are distinct, edge lengths range from 2 to 10, and the case triples differ from item to item. Two sentence frames are in play: 'Cover each rectangle with unit square tiles and count them' and 'Three squares are tiled with unit squares', the latter closing with 'Which rule works for every one of them?' instead of the standard closing question. The correct option also moves among the four key positions. One blemish only: seeds 50 and 502 render the same item character for character, differing solely in the declared formatter."
+      "rationale": "Thirteen of the fourteen samples carry distinct stems, spread across two figure types, two formatters, and two sentence frames: the main frame 'Cover each square with unit square tiles and count them' and the alternate 'Three squares are tiled with unit squares' closing with 'Which rule works for every one of them?'. Dimension sets differ item to item rather than repeating one triple. The one soft spot is that the alternate frame appears only on seeds 50 and 502, which render an identical stem, so it contributes just one distinct item and never lands on a rectangle; the pool is still varied enough that no answer can be pattern matched from the wording."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The samples sit on the exact wording of the competency, which is inductive derivation using square tile units. Tiles are the stated medium in every stem, for example 'Three rectangles are tiled with unit squares'; what is requested is a rule and not a numeric area; and the keyed rules 'length × width' and 'side × side' are precisely the two formulas named. Nothing reaches past the clause into square unit notation, unit conversion, or computing an area for a figure that was never tiled."
+      "rationale": "The measuring unit is exactly the one the competency names, since every stem tiles with 'unit square tiles' and the quantity discussed is the tile count, which at this stage is the area in square units. Nothing outside the competency is smuggled in: no unit conversion, no missing-side solving, and no numeric area answer is demanded. What is asked for is the rule itself, 'length × width' or 'side × side', which is precisely the derivation the sentence calls for."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Edge lengths run from 2 to 10 and tile counts from 4 up to 100, the largest case being 'a 10 by 10 square takes 100 tiles'; every product lies inside the basic multiplication table a grade 3 learner works with, and small cases such as 'a 4 by 3 rectangle takes 12 tiles' keep at least one genuinely countable array in view in most items."
+      "rationale": "Side lengths run from 2 to 10 and tile counts from 'a 2 by 2 square takes 4 tiles' up to 'a 10 by 10 square takes 100 tiles', all inside grade 3 range and all small enough that a learner can believe the tiling was really carried out with tiles. Rectangle magnitudes match, topping out at 'a 9 by 10 rectangle takes 90 tiles', and every stated tile count in all 14 samples is arithmetically correct."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }
