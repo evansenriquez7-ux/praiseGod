@@ -1453,3 +1453,66 @@ beats a silent green. Budget the re-reviews it will demand; do not land it witho
    arc at `App.jsx:1435` needs extending too) and `draw_line_relationships` (`mat_g3_mg_q1_5`).
 4. **139 nodes remain undeclared and 30 capability gaps remain.** Declaring is cheap and keeps
    naming defects before any sample is read.
+
+---
+
+## 2026-08-13 — Tick A (the freshness blind spot) + re-reviews. **NON-VERDICT reaches 0.**
+
+- **Census before:** PASS=56 CONCERN=61 FAIL=34. Gate: NON-VERDICT=7.
+- **Unit 1 — Tick A: closed the freshness blind spot.** `_validate_freshness` compared
+  `question_text` only — not the keyed answer, not the options. The gap was live: the previous
+  tick changed `mat_g3_mg_q1_0`'s distractors while leaving every stem byte-identical, so the gate
+  called the review fresh while its rationale reasoned about options (15, 16, 17) that no longer
+  rendered. **Third blind spot this gate has had, same shape as the first two: a check running on
+  a subset it doesn't announce.** Now compares stem → answer → option multiset, one error per
+  seed. Stated in the docstring: a sample recording no `options` key is not option-checked (right
+  for cloze/fill-in-blank, 480 of 2107 samples, but an MCQ review filed without options escapes).
+  NON-VERDICT 7 → 18, **all eleven new errors on the one node whose options moved** and the other
+  148 untouched — precise, not noisy. Commit `bc852a3`.
+- **Unit 2 — re-reviewed q1_0 and q1_1 blind.** `mat_g3_mg_q1_0` → **PASS on all six findings**,
+  the first node in this cluster to get there; the reviewer confirmed the estimation fix on its
+  own terms. `q1_1` → CONCERN with the induction guard independently verified sample by sample.
+  Commit `ef3e7df`.
+- **Unit 3 — widened the derivation item's case pools, added a second framing.** 15 samples → 11
+  distinct became 14 → 13, one sentence frame became six, and the width stopped being pinned at 4
+  (self-inflicted: excluding 2, which the guard requires, had left the low pool as {3,4}).
+  1000 seeds with the guard never firing. Commit `d014054`.
+- **Unit 4 — re-reviewed q1_1 again.** Five PASS, one CONCERN. **NON-VERDICT 12 → 0.**
+  Commit `62da2b3`.
+- **Census after: PASS=57 CONCERN=61 FAIL=33.** `run_all` 151/151, 0 failures, all ten contract
+  checks, stages 1–5 green throughout.
+
+### A review the gate rejected — the process working
+The first attempt at Unit 4 was cut off by the usage limit. Its recovered file parsed cleanly and
+looked fine, but the gate caught a **fabricated quote**: the rationale quoted `'A = l w'`, notation
+the reviewer invented, appearing in no sample. It was **reverted, not edited to pass**, and the
+node re-reviewed from scratch with the failure named in the prompt plus a pre-write self-check.
+The replacement came back clean first time. Put that self-check in every reviewer prompt:
+
+```bash
+bad=[q for f in review['findings'].values()
+     for q in re.findall(r"'([^']+)'", f['rationale']) if q not in corpus]
+```
+
+### Next tick should:
+
+1. **`mat_g3_mg_q1_1`'s one remaining CONCERN, stated precisely by the reviewer:**
+   > "all eight rectangle samples hold the second dimension fixed across their three cases (only
+   > ever 4, 5, or 10), so no variant in the pool ever shows both factors changing — the evidence
+   > never demonstrates that the second factor matters, which is the core of the inductive
+   > derivation."
+
+   Right, and sharper than the variety point it replaced: with width fixed, the cases are equally
+   consistent with "total = length × 4" as a rule about that figure. `_assert_cases_determine`
+   does *not* catch this — the offered distractors are all refuted; the gap is in what the
+   evidence **demonstrates**, not what it rules out. Make some items vary both factors; the guard
+   still holds (varying both makes distractors easier to refute). **Budget the re-review with the
+   fix** — that is now four ticks of evidence that a content change without its review is a debt.
+2. The two remaining named Tick Fs, still untouched, both confirmed by blind declaration:
+   `equal_jumps_on_a_number_line` (`mat_g2_na_q3_1` + `mat_g3_na_q4_0`; start from
+   `fmt_number_line.py`'s existing single hop, and note `frontend/src/App.jsx:1435` draws one arc)
+   and `draw_line_relationships` (`mat_g3_mg_q1_5`; check `fmt_shape_board.py` first).
+3. **139 nodes undeclared, 30 capability gaps.** Declaring is cheap — a blind Declarer on the
+   competency sentence alone — and has repeatedly named the defect before any sample was read.
+
+**State at handoff: tree clean, NON-VERDICT 0, all four area nodes freshly reviewed, one at PASS.**

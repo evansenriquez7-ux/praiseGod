@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-08-13)
 
 ## Corpus Check
-- 448 files · ~653,376 words
+- 448 files · ~653,561 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3252 nodes · 5230 edges · 258 communities (241 shown, 17 thin omitted)
+- 3254 nodes · 5232 edges · 259 communities (242 shown, 17 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 88 edges (avg confidence: 0.57)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ef3e7dfc`
+- Built from commit: `62da2b3f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -191,7 +191,6 @@
 - [[_COMMUNITY_get_node_competency_bounds|get_node_competency_bounds]]
 - [[_COMMUNITY_generator.py|generator.py]]
 - [[_COMMUNITY_matatag_loader.py|matatag_loader.py]]
-- [[_COMMUNITY___init__.py|__init__.py]]
 - [[_COMMUNITY_Native SQL Examples|Native SQL Examples]]
 - [[_COMMUNITY_counting.py|counting.py]]
 - [[_COMMUNITY_get_gemini_models|get_gemini_models]]
@@ -257,6 +256,7 @@
 - [[_COMMUNITY__combined_interests|_combined_interests]]
 - [[_COMMUNITY__combined_interests|_combined_interests]]
 - [[_COMMUNITY_fmt_fill_in_table.py|fmt_fill_in_table.py]]
+- [[_COMMUNITY_Anti-Patterns|Anti-Patterns]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `QuestionContext` - 85 edges
@@ -285,7 +285,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (258 total, 17 thin omitted)
+## Communities (259 total, 17 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
@@ -321,7 +321,7 @@ Nodes (38): _gen_g3_dp_q3_bar_graphs(), _gen_g3_dp_q3_probability(), _gen_g3_mg_
 
 ### Community 8 - "Community 8"
 Cohesion: 0.12
-Nodes (36): get_db(), FastAPI dependency that yields a database session.     Guarantees session closur, SessionLocal(), Background task to pre-generate questions into the cache.     Uses parallel exec, replenish_question_cache(), get_axes_for_concept(), Practice Generation — Difficulty Axes Catalog ==================================, Return the UI-ready axis list for a concept, or [] if not found. (+28 more)
+Nodes (38): get_db(), FastAPI dependency that yields a database session.     Guarantees session closur, SessionLocal(), Background task to pre-generate questions into the cache.     Uses parallel exec, replenish_question_cache(), get_axes_for_concept(), Practice Generation — Difficulty Axes Catalog ==================================, Return the UI-ready axis list for a concept, or [] if not found. (+30 more)
 
 ### Community 9 - "Community 9"
 Cohesion: 0.13
@@ -408,8 +408,8 @@ Cohesion: 0.12
 Nodes (16): 1.1 The docs issue commands to the agent's judgment, not to a machine, 1.2 Unverifiable and verifiable items are interleaved, so everything gets the same (low) rigor, 1.3 Duplication has already drifted, 1.4 The docs describe intent; the code implements something adjacent; nothing detects the gap, 1.5 Docs grow by accretion into context-window poison, 1.6 The docs assign the agent tests it cannot run, 3.1 Rewrite `pgen_checklist.md` → contract + judgment split, 3.2 `DIFFICULTY_DIMENSIONS.md` — keep, but demote MUSTs (+8 more)
 
 ### Community 30 - "Community 30"
-Cohesion: 0.08
-Nodes (24): Access Levels, Anti-Patterns, @auth Directive, auth.token Fields, Authorization Data Lookup, Authorization Patterns, Available Bindings, CEL Expressions (+16 more)
+Cohesion: 0.10
+Nodes (19): Access Levels, @auth Directive, auth.token Fields, Authorization Data Lookup, Authorization Patterns, Available Bindings, CEL Expressions, @check (+11 more)
 
 ### Community 31 - "Community 31"
 Cohesion: 0.29
@@ -548,8 +548,8 @@ Cohesion: 0.14
 Nodes (14): 1. Generate Firestore Rules, 3. Strict Path and Relationship Scoping, 4. Secure Counter Updates, 5. **CRITICAL** Ensure Application Validity, Advanced Validation for Business Logic, Critical Constraints, Critical Directives for Secure Generation, **CRITICAL** RBAC Guidelines (+6 more)
 
 ### Community 65 - "Community 65"
-Cohesion: 0.15
-Nodes (12): Blog with Permissions, E-Commerce Store, Examples, Movie Review App, Mutations, Operations, Operations with Role Checks, Queries (+4 more)
+Cohesion: 0.10
+Nodes (20): Advanced aggregation with RANK, Advanced CTE with upserts (atomic get-or-create), Basic SELECT with field aliasing, Basic UPDATE, Blog with Permissions, E-Commerce Store, Examples, Movie Review App (+12 more)
 
 ### Community 66 - "Community 66"
 Cohesion: 0.15
@@ -728,7 +728,7 @@ Cohesion: 0.22
 Nodes (8): 1. Create a Firebase Project and App (Automated), 2. Installation (Automated via Swift Package Manager CLI), 3. Initialization, AppDelegate (Traditional / UIKit), ⛔️ CRITICAL RULE: INITIALIZATION ORDER ⛔️, ⛔️ CRITICAL RULE: STATE MANAGEMENT (OBSERVATION VS COMBINE) ⛔️, Firebase iOS Setup Guide, SwiftUI (Modern - SAFE PATTERN)
 
 ### Community 110 - "Community 110"
-Cohesion: 0.14
+Cohesion: 0.22
 Nodes (8): Core Agent Constraints, Mutation Fields (DML), Native SQL Operations, Native SQL Root Fields, PostgreSQL Extensions, Query Fields (Read-Only), ⚠️ Security: Stored Procedures & Dynamic SQL, Syntax rules & limitations
 
 ### Community 111 - "Community 111"
@@ -841,7 +841,7 @@ Nodes (7): Session, Initiates a telemetry tracking session for window defense te
 
 ### Community 138 - "Community 138"
 Cohesion: 0.15
-Nodes (18): get_gemini_models(), get_parent_analytics(), get_parent_config(), get_parent_graph(), parent_login(), Any, Session, Parent Dashboard compiling telemetry statistics, Elo progress, and skills master (+10 more)
+Nodes (16): get_gemini_models(), get_parent_analytics(), get_parent_config(), get_parent_graph(), parent_login(), Any, Session, Parent Dashboard compiling telemetry statistics, Elo progress, and skills master (+8 more)
 
 ### Community 139 - "Community 139"
 Cohesion: 0.33
@@ -962,10 +962,6 @@ Nodes (20): _node_file(), _normalize(), _option_values(), _provenance_corpus(), 
 ### Community 188 - "matatag_loader.py"
 Cohesion: 0.17
 Nodes (16): generate_node_id(), get_competencies_for_grade(), get_competency_by_id(), _get_matatag_data_path(), load_matatag_curriculum(), _load_matatag_json(), parse_node_id(), Session (+8 more)
-
-### Community 190 - "__init__.py"
-Cohesion: 0.25
-Nodes (8): Advanced aggregation with RANK, Advanced CTE with upserts (atomic get-or-create), Basic SELECT with field aliasing, Basic UPDATE, Multi-statement Transactions, Native SQL Examples, UPDATE with RETURNING and Auth Context, Use of extensions (e.g. PostGIS for geospatial data)
 
 ### Community 191 - "Native SQL Examples"
 Cohesion: 0.20
@@ -1168,8 +1164,8 @@ Cohesion: 0.40
 Nodes (5): get_variant_combinations(), Any, Score the complexity of whole numbers/fractions in problem.given_values., Generate all possible variant assignment combinations from supported variants di, score_problem_operands()
 
 ### Community 247 - "Anti-Patterns"
-Cohesion: 0.40
-Nodes (5): 2026-08-13 — Tick A: the freshness check compared the stem and nothing else, The blind spot, The derivation item's variety, on the reviewer's own measurements, The fix, Verification — the check catches what it was written for
+Cohesion: 0.29
+Nodes (7): 2026-08-13 — Tick A: the freshness check compared the stem and nothing else, A review the gate rejected, and why it was not filed, The blind spot, The derivation item's variety, on the reviewer's own measurements, The fix, The remaining CONCERN on the derivation item, stated precisely, Verification — the check catches what it was written for
 
 ### Community 248 - "generate_params"
 Cohesion: 0.50
@@ -1187,8 +1183,12 @@ Nodes (5): 2026-08-13 — "Estimate" was only a word (mat_g3_mg_q1_0), Root caus
 Cohesion: 0.50
 Nodes (3): Any, Registry to map visual types to their Pydantic schemas., VisualSchemaRegistry
 
+### Community 258 - "Anti-Patterns"
+Cohesion: 0.40
+Nodes (5): Anti-Patterns, ❌ Don't Pass User ID as Variable, ❌ Don't Trust Unverified Email, ❌ Don't Use PUBLIC/USER for Prototyping, ❌ Don't Use USER Without Filters
+
 ## Knowledge Gaps
-- **982 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+977 more)
+- **984 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+979 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -1202,7 +1202,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `DNA` connect `get_interest_themes` to `frontend_contract_auditor.py`, `counting.py`, `Community 1`, `Community 100`, `Community 101`, `Community 75`, `Community 14`, `Community 86`, `Community 118`, `Community 24`, `Native SQL Examples`, `Community 26`, `Part 1 — Diagnosis: how the current docs cause bugs`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **What connects `graphify`, `PackageDescription`, `Foundation` to the rest of the system?**
-  _1603 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1605 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.12043010752688173 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**

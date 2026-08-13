@@ -3258,3 +3258,36 @@ picture, but in this item the totals are *read* rather than counted — the pupi
 stated numbers — so it widens the pool without adding counting load.
 
 `validate_matrix --node` PASS on all four; full `run_all` 151/151, 0 failures, stages 1–5 green.
+
+### A review the gate rejected, and why it was not filed
+
+The first attempt at this re-review was cut off by the usage limit. The file it left behind was
+complete and parsed cleanly, and would have looked fine to a casual check — but the gate rejected
+it:
+
+```
+mat_g3_mg_q1_1: findings['cognitive_capacity'].rationale quotes 'A = l w', which appears nowhere
+in this review's own samples_reviewed or competency text — the reviewer c...
+```
+
+`A = l w` is notation the reviewer invented to summarise the rule; no sample contains it. That is
+the fabricated-quote class this gate was hardened to catch, so the file was **reverted rather than
+edited to pass**, and the node re-reviewed from scratch. Editing the rationale to match the
+samples would have produced a green review describing content nobody had actually judged — the
+exact failure this repo has suffered twice.
+
+The replacement reviewer was given the failure explicitly, plus a self-check to run before writing
+(`quotes not found verbatim in samples: []`). It came back clean on the first attempt.
+
+### The remaining CONCERN on the derivation item, stated precisely
+
+> "all eight rectangle samples hold the second dimension fixed across their three cases (only ever
+> 4, 5, or 10), so no variant in the pool ever shows both factors changing — the evidence never
+> demonstrates that the second factor matters, which is the core of the inductive derivation."
+
+This is a sharper point than the variety CONCERN it replaced, and it is right: holding the width
+fixed within an item means the cases are equally consistent with "total = length × 4" as a rule
+about *this* figure. The under-determination guard does not catch it, because the offered
+distractors are all refuted — the gap is in what the evidence *demonstrates*, not in what it
+rules out. Making some items vary both factors is the fix, and the guard will still hold (varying
+both makes the distractors easier to refute, not harder).
