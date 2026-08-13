@@ -4071,3 +4071,71 @@ mat_g3_na_q2_4: PASS   mat_g3_na_q2_5: PASS
 ```
 
 Full `run_all`: 151/151, 0 failures, all ten contract checks, stages 1–5 green.
+
+---
+
+## 2026-08-14 — A stated width is a floor as well as a ceiling
+
+### The failing rationale
+After `max_subtrahend` bound the ceiling, one width violation survived and the reviewer named it:
+
+> "**One violation:** seed 42 `What is 2 − 1?` has a one-digit minuend, outside '2-digit by
+> 1-digit'."
+
+and, separately:
+
+> "11 of 18 subtrahends are 0 or 1: five items leave the number unchanged ... Only 6 samples
+> demand real counting back."
+
+### Root cause — two layers, and the first fix was not enough
+Setting `bounds["max_minuend"] = (10, 99)` looked like the fix, and it was not:
+
+```
+mat_g2_na_q2_3 bounds: {'max_minuend': (10, 99), 'max_subtrahend': (1, 9)}
+explicit a - b items: 170 | outside 2-digit by 1-digit: 60
+minuend range: 2..93
+subtrahends: {0: 42, 1: 45, 2: 17, ...}
+```
+
+**That `(lo, hi)` is the difficulty *axis* range — it caps the ceiling, it does not floor the drawn
+operand.** With a sampled ceiling of, say, 25, the DNA still drew `a` from `min_a = 1`. Measuring
+after the change rather than assuming it is what exposed the second layer.
+
+So the registry now emits the operand floors themselves as scalars, and the DNA honours them —
+an explicit width floor from the competency outranking the grade heuristic, which guesses the
+floor from the ceiling rather than reading it from the sentence.
+
+### Verification
+
+```
+explicit a - b items: 170 | outside 2-digit by 1-digit: 0
+minuend range: 10..93
+subtrahends: {1: 65, 2: 28, 3: 28, 4: 13, 5: 17, 6: 7, 7: 4, 8: 5, 9: 3}
+```
+
+Every minuend is two digits, every subtrahend one, and subtracting zero is gone — a one-digit
+subtrahend floors at 1, since subtracting zero leaves the minuend unchanged. A subtrahend of 1 is
+still 65 of 170, so the reviewer's difficulty-spread point is halved rather than closed; that is a
+distribution question, not a width violation, and is recorded as such.
+
+`validate_matrix --node` PASS on all nine subtraction nodes; full `run_all` 151/151, 0 failures,
+all ten contract checks, stages 1–5 green.
+
+### Recorded, not fixed: the verb `Illustrate`
+`mat_g2_na_q2_3` reads *"**Illustrate** subtraction of 2-digit by 1-digit **on the number line** and
+**as an inverse of addition**"*, and both illustrations exist as formatters — `number_line_read`
+renders "The dot is at 28 and it moves backward 15", `number_bond` renders "The total is 30 and one
+part is 3". They are simply rare:
+
+```
+   82  ('bare', 'mcq')          16  ('inverse', 'read_fill_in_blank')
+   37  ('bare', 'cloze')        14  ('number_line', 'read_mcq')
+   23  ('bare', 'true_false')   16  ('bare', 'error_detect')
+   12  ('bare', 'read_mcq')
+```
+
+158 of 200 items are bare computation. Making the two named illustrations dominate is the
+`read_measurement` pattern — restrict the text formatters away from the illustrating task — but
+`VARIANTS_BY_DNA["subtraction"]` has **no `task_type` axis at all** (the `task_type` key in
+`FORMATTER_VARIANT_SUPPORT["subtraction"]["number_line_read"]` references a variant that does not
+exist, so it filters nothing). That needs a new variant built and bound, which is its own unit.

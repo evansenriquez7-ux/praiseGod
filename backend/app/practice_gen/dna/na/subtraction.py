@@ -467,6 +467,13 @@ def generate_params(
         min_a = 10  # Enforce at least 2-digit minuends for Grade 3+ large bounds
     if grade >= 4 and max_minuend >= 1000:
         min_a = 100 # Enforce at least 3-digit minuends for Grade 4+ large bounds
+    # An explicit width floor from the competency ("2-digit by 1-digit") outranks the
+    # grade heuristic above: the heuristic guesses from the ceiling, this is stated.
+    _min_minuend = profile.get("min_minuend")
+    if _min_minuend is not None:
+        min_a = max(min_a, int(_min_minuend))
+    _min_subtrahend = profile.get("min_subtrahend")
+    min_b = int(_min_subtrahend) if _min_subtrahend is not None else 0
         
     candidates_a = list(range(min_a, max_minuend + 1))
 
@@ -492,7 +499,7 @@ def generate_params(
     if max_minuend <= 100:
         for a in candidates_a:
             b_hi = a if max_subtrahend is None else min(a, max_subtrahend)
-            for b in range(0, b_hi + 1):
+            for b in range(min_b, b_hi + 1):
                 if _satisfies_regrouping(a, b, reg_level):
                     candidate_pairs.append((a, b))
     else:
@@ -502,7 +509,10 @@ def generate_params(
         while len(candidate_pairs) < 2000 and attempts < 5000:
             attempts += 1
             a = rng.randint(min_a, max_minuend)
-            b = rng.randint(0, a if max_subtrahend is None else min(a, max_subtrahend))
+            _b_hi = a if max_subtrahend is None else min(a, max_subtrahend)
+            if _b_hi < min_b:
+                continue
+            b = rng.randint(min_b, _b_hi)
             if _satisfies_regrouping(a, b, reg_level):
                 candidate_pairs.append((a, b))
 

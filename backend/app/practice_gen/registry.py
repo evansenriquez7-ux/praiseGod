@@ -285,8 +285,26 @@ def _parse_competency_bounds(
         pair_match = re.search(r'(\d+)\s*-?\s*digits?\s+by\s+(\d+)\s*-?\s*digits?', text)
         digit_match = re.search(r'(?:up\s+to|to)\s+(\d+)\s*-?\s*digits?', text)
         if pair_match:
-            bounds["max_minuend"] = (1, (10 ** int(pair_match.group(1))) - 1)
-            bounds["max_subtrahend"] = (1, (10 ** int(pair_match.group(2))) - 1)
+            # A stated width is a FLOOR as well as a ceiling: "2-digit" means 10..99,
+            # not 1..99. These bounds are difficulty axes, so a floor of 1 let the
+            # low end of the range serve "What is 2 - 1?" on a node whose competency
+            # reads "2-digit by 1-digit" -- a blind reviewer caught it as the one
+            # remaining width violation after the ceiling was bound. Mirror of the
+            # subtrahend gap closed in the same file.
+            _minuend_digits = int(pair_match.group(1))
+            _subtrahend_digits = int(pair_match.group(2))
+            bounds["max_minuend"] = (10 ** (_minuend_digits - 1),
+                                     (10 ** _minuend_digits) - 1)
+            # The (lo, hi) above is the difficulty AXIS range -- it caps the ceiling,
+            # it does not floor the drawn operand, so the DNA could still draw a=2
+            # under a ceiling of 25. These scalars are the operand floors themselves.
+            bounds["min_minuend"] = 10 ** (_minuend_digits - 1)
+            bounds["min_subtrahend"] = max(1, 10 ** (_subtrahend_digits - 1))
+            # A one-digit subtrahend floors at 1, not 0: subtracting zero leaves the
+            # minuend unchanged, and the same reviewer found 11 of 18 subtrahends
+            # were 0 or 1, so "only 6 samples demand real counting back".
+            bounds["max_subtrahend"] = (max(1, 10 ** (_subtrahend_digits - 1)),
+                                        (10 ** _subtrahend_digits) - 1)
         elif digit_match:
             bounds["max_minuend"] = (1, (10 ** int(digit_match.group(1))) - 1)
         else:
