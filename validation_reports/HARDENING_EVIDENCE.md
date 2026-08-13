@@ -3062,3 +3062,66 @@ a `mat_g3_mg_q1_1` packet built before the derive_formula rewrite, **detected th
 failed freshness, rebuilt the packet itself, and re-reviewed against what actually renders.** Its
 first pass had scored FAIL on the stale content. Instructing reviewers to verify packet freshness
 before scoring turns this race from a silent wrong verdict into a self-correcting one.
+
+---
+
+## 2026-08-13 — The inductive item had two correct answers (Tick C)
+
+### The failing rationale
+The blind re-review of the derivation item built in the previous tick scored it **FAIL**, on a
+defect that is a genuine logical flaw rather than a matter of taste:
+
+> "Every rectangle sample fixes the width across its three cases. That is harmless at width 3, 4
+> or 5, but at width 2 the distractor `length + length` is mathematically identical to
+> `length × width`. Seed 42 (`4 by 2` → 8, `7 by 2` → 14, `9 by 2` → 18) and seed 601 (`6 by 2`
+> → 12, `8 by 2` → 16, `10 by 2` → 20) each have two answers consistent with all presented
+> evidence."
+
+The item asks the pupil to induce a rule from the cases shown. At width 2 the cases are equally
+consistent with `length × width` and with `length + length`, so **a pupil who induces faithfully
+from all the evidence is marked wrong.** The reviewer also noted, correctly, that the square
+distractors survive the same scrutiny — `side + side` matches at side 2 and `4 × side` at side 4,
+but neither holds across a full case set, so those items genuinely require checking all three.
+
+### The fix, and why it is a guard rather than a patch
+The narrow fix is to stop drawing a fixed width of 2. But the real property being violated is
+general: **an inductive item is well posed only if the cases shown falsify every distractor.**
+That is a property of the (cases, distractor pool) pair, so it is now checked rather than assumed.
+`_RULE_VALUES` gives each offered distractor its arithmetic, and `_assert_cases_determine` raises
+— naming the seed, the offending distractor and the case set — if any distractor reproduces the
+keyed total on every case. A future change to the distractor pool cannot quietly reintroduce the
+ambiguity, and an unknown distractor string is itself an error rather than a silent skip.
+
+### Verification
+
+The guard fires on exactly the case set the reviewer flagged, and passes a well-posed one:
+
+```
+guard fires: area: inductive item is under-determined (seed=42). Distractor 'length + length'
+reproduces the keyed answer 'length × width' on every case [(4, 2, 8), (7, 2, 14), (9, 2, 18)],
+so two rules fit the evidence. Va...
+guard passes a well-posed case set: OK
+```
+
+Live generation, 500 consecutive seeds:
+
+```
+500 seeds generated with no under-determined item raised
+answers: {'length × width': 251, 'side × side': 249}
+
+seed 42:  Cover each rectangle with unit square tiles and count them: a 3 by 4 rectangle takes
+          12 tiles, a 6 by 4 rectangle takes 24 tiles, ...
+seed 601: Cover each rectangle with unit square tiles and count them: a 2 by 4 rectangle takes
+          8 tiles, a 6 by 4 rectangle takes 24 tiles, ...
+```
+
+Both flagged seeds now hold the width at 4, where `length + length` disagrees with the shown
+totals on every case. `validate_matrix --node` PASS on all four area nodes; full `run_all`
+151/151, 0 failures, all ten contract checks, stages 1–5 green.
+
+### What this says about the review layer
+The item was built *and* scored PASS on fulfilment by a reviewer one tick earlier; it took a
+second independent blind pass, on a fresh packet, to notice that the evidence admitted two rules.
+The freshness-verification step added to the reviewer prompt this tick worked as intended — the
+reviewer reported `stale seeds: []` before scoring, so the FAIL is about the current content and
+nothing else.

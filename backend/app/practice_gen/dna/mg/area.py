@@ -65,6 +65,42 @@ _KNOWN_TABLES = (2, 3, 4, 5, 10)
 _OTHER_SIDE_MAX = 10
 
 
+# How each offered distractor rule computes, so an inductive item can prove its own
+# cases rule them out. Keys must match the distractor strings exactly.
+_RULE_VALUES = {
+    "length + width":                   lambda a, b: a + b,
+    "length + width + length + width":  lambda a, b: 2 * (a + b),
+    "length + length":                  lambda a, b: a + a,
+    "side + side":                      lambda a, b: a + a,
+    "4 × side":                         lambda a, b: 4 * a,
+    "side + 4":                         lambda a, b: a + 4,
+}
+
+
+def _assert_cases_determine(cases, answer, distractors, seed):
+    """
+    An inductive item is well posed only if the cases shown FALSIFY every distractor.
+
+    If some distractor reproduces the keyed total on every case, the evidence supports
+    two rules equally and the pupil is marked wrong for reasoning correctly. This is a
+    property of the (cases, distractor pool) pair, so it is checked rather than assumed.
+    """
+    for d in distractors:
+        rule = _RULE_VALUES.get(d)
+        if rule is None:
+            raise ValueError(
+                f"area: distractor {d!r} has no entry in _RULE_VALUES (seed={seed}); "
+                f"add one so the inductive item can prove its cases rule it out."
+            )
+        if all(rule(a, b) == total for a, b, total in cases):
+            raise ValueError(
+                f"area: inductive item is under-determined (seed={seed}). Distractor "
+                f"{d!r} reproduces the keyed answer {answer!r} on every case {cases}, "
+                f"so two rules fit the evidence. Vary a dimension the distractor "
+                f"depends on, or drop it from the pool."
+            )
+
+
 def _table_and_cofactor(scalar: float, rng: random.Random) -> tuple:
     """
     A (table_factor, co_factor) pair whose product is a known-table fact at G3 Q1.
@@ -257,7 +293,17 @@ def generate_params(
         else:
             # One dimension held fixed across the cases so the pattern is
             # visible: the other varies, and the total tracks the product.
-            fixed = table_side
+            # The fixed width may not be 2. At width 2 the distractor
+            # "length + length" computes 2 x length, which is exactly length x width
+            # for every case shown -- so a pupil who induces faithfully from all the
+            # evidence has TWO rules consistent with it and is marked wrong. A blind
+            # reviewer caught this on seeds 42 and 601 and scored the node FAIL for
+            # it. An inductive item is only well posed if the presented cases
+            # falsify every distractor; _assert_cases_determine below enforces that
+            # for whatever pool is in play, so a future distractor change cannot
+            # quietly reintroduce the ambiguity.
+            fixed = rng.choice([t for t in _KNOWN_TABLES
+                                if t != 2 and t <= (5 if scalar < 0.67 else 10)])
             varying = sorted(rng.sample([v for v in range(2, _OTHER_SIDE_MAX + 1)
                                          if v != fixed], 3))
             cases = [(v, fixed, v * fixed) for v in varying]
@@ -270,6 +316,7 @@ def generate_params(
                            "length + width + length + width",
                            "length + length"]
             dims_word = "length and width"
+        _assert_cases_determine(cases, answer, distractors, seed)
         return {
             "blank_target": "answer",
             "shape": shape,
