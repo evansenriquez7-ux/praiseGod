@@ -1178,9 +1178,19 @@ def _build_symbolic_question(
 
             shown = ", ".join(_case(*case) for case in cases[:-1])
             shown += f", and {_case(*cases[-1])}"
+            # Two framings, alternated on a value the seed has already fixed (the
+            # first case's total), so the choice is deterministic without threading
+            # a new rng through this shared builder -- the same device the
+            # illustrate_tiles branch above uses. Blind review found all 15 samples
+            # running on one sentence frame.
+            if int(cases[0][2]) % 2 == 0:
+                return (
+                    f"Cover each {shape} with unit square tiles and count them: "
+                    f"{shown}. Which rule always gives the number of tiles?"
+                )
             return (
-                f"Cover each {shape} with unit square tiles and count them: "
-                f"{shown}. Which rule always gives the number of tiles?"
+                f"Three {shape}s are tiled with unit squares: {shown}. "
+                f"Which rule works for every one of them?"
             )
         return f"A {shape} has {dims}. What is its area in {unit}?"
 

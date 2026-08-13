@@ -3228,3 +3228,33 @@ existed and invented none.
 Full `run_all`: 151/151, 0 failures, all ten contract checks, stages 1–5 green. Ending this tick
 with a higher NON-VERDICT than it started is correct and expected: an honest red beats a silent
 green, and the reviews it names are being re-reviewed.
+
+### The derivation item's variety, on the reviewer's own measurements
+
+The re-review that confirmed the induction guard left one CONCERN, stated precisely enough to act
+on directly:
+
+> "all 15 samples use one sentence frame ending 'Which rule always gives the number of tiles?',
+> ... seeds 50/500/501 present an identical case triple and 44/502 another (15 samples collapse
+> to 11 distinct items), and six of the eight rectangle items pin the second dimension at 4 — so
+> the evidence a pupil sees never once varies the width."
+
+The pinned width was self-inflicted: excluding 2 (which the induction guard requires) left the
+low-difficulty pool as {3,4}, so 4 dominated. Widened, together with the square pool — {2,3,4,5}
+choose 3 is only four case-triples, which is why seeds collided — and a second sentence framing
+alternated on a value the seed has already fixed, the same device the `illustrate_tiles` branch
+uses.
+
+```
+BEFORE  15 samples -> 11 distinct items · 1 sentence frame · 6 of 8 rectangles at width 4
+AFTER   14 samples -> 13 distinct items · 6 sentence frames
+        rectangle/square widths used: {'5': 3, '4': 3, '2': 3, '3': 2, '10': 3}
+
+1000 seeds, guard never fired. answers: {'length × width': 502, 'side × side': 498}
+```
+
+The 10-square (100 tiles) is offered only at the top of the difficulty range: it is large to
+picture, but in this item the totals are *read* rather than counted — the pupil induces from
+stated numbers — so it widens the pool without adding counting load.
+
+`validate_matrix --node` PASS on all four; full `run_all` 151/151, 0 failures, stages 1–5 green.

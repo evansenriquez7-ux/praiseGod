@@ -329,7 +329,14 @@ def generate_params(
     # length x width are different rules, so the shape decides which is keyed.
     if task_type == "derive_formula":
         if shape == "square":
-            sides = sorted(rng.sample([t for t in _KNOWN_TABLES if t <= 5], 3))
+            # {2,3,4,5} choose 3 is only four case-triples, so seeds collided often
+            # (a reviewer found 15 samples collapsing to 11 distinct items). The
+            # 10-square is 100 tiles, which is large to picture but is only *read*
+            # here -- the pupil induces from stated totals rather than counting -- so
+            # it is offered at the top of the difficulty range, taking the pool to
+            # ten triples.
+            side_pool = [t for t in _KNOWN_TABLES if t <= (5 if scalar < 0.67 else 10)]
+            sides = sorted(rng.sample(side_pool, 3))
             cases = [(v, v, v * v) for v in sides]
             answer = "side × side"
             distractors = ["side + side", "4 × side", "side + 4"]
@@ -346,8 +353,12 @@ def generate_params(
             # falsify every distractor; _assert_cases_determine below enforces that
             # for whatever pool is in play, so a future distractor change cannot
             # quietly reintroduce the ambiguity.
+            # Widened past {3,4}: at low difficulty the old pool left six of eight
+            # rectangle items pinned to a width of 4, so "the evidence a pupil sees
+            # never once varies the width" (blind review). 2 stays excluded for the
+            # reason _assert_cases_determine enforces.
             fixed = rng.choice([t for t in _KNOWN_TABLES
-                                if t != 2 and t <= (5 if scalar < 0.67 else 10)])
+                                if t != 2 and t <= (5 if scalar < 0.34 else 10)])
             varying = sorted(rng.sample([v for v in range(2, _OTHER_SIDE_MAX + 1)
                                          if v != fixed], 3))
             cases = [(v, fixed, v * fixed) for v in varying]
