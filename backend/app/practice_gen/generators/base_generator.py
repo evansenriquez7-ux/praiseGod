@@ -1072,22 +1072,38 @@ def _build_symbolic_question(
                 f"{'length' if known_side == 'l' else 'width'} of {known_value} cm. What is its {other}?"
             )
         if values.get("context") == "word_problem":
-            # "Solve problems involving perimeter" (mat_g2_mg_q4_6)
-            # previously had no word-problem framing at all.
+            # "Solve problems involving perimeter" (mat_g2_mg_q4_6).
+            #
+            # METRES, not centimetres. These templates hardcoded cm, so every
+            # narrated figure came out at a physically absurd size: "A rectangular
+            # garden is 5 cm long and 12 cm wide.", "A triangular flower bed has
+            # sides 3 cm, 9 cm, and 11 cm.", and in one sample a garden 1 cm wide.
+            # A blind reviewer flagged the whole corpus: "all 14 contexts (gardens,
+            # flower beds) are modelled at centimetre scale ... Metres are the
+            # plausible unit at every one of these values." The magnitudes were
+            # always fine for a garden; only the unit was wrong. The bare-geometry
+            # framings below stay in cm, where an abstract figure is what is meant.
             if shape == "square":
                 return (
-                    f"A square garden has a side of {sides.get('s', '?')} cm. "
+                    f"A square garden has a side of {sides.get('s', '?')} m. "
                     f"How much fencing is needed to go all the way around it?"
                 )
             if shape == "triangle":
                 return (
-                    f"A triangular flower bed has sides {sides.get('a', '?')} cm, "
-                    f"{sides.get('b', '?')} cm, and {sides.get('c', '?')} cm. "
+                    f"A triangular flower bed has sides {sides.get('a', '?')} m, "
+                    f"{sides.get('b', '?')} m, and {sides.get('c', '?')} m. "
                     f"How much edging is needed to go all the way around it?"
                 )
+            # A garden narrower than it is long reads as an error to anyone
+            # picturing it; blind review found "a garden whose width exceeds its
+            # stated length" on three seeds. The two sides are the same pair either
+            # way, so ordering them costs nothing and the perimeter is unchanged.
+            l_val, w_val = sides.get("l", "?"), sides.get("w", "?")
+            if isinstance(l_val, int) and isinstance(w_val, int) and w_val > l_val:
+                l_val, w_val = w_val, l_val
             return (
-                f"A rectangular garden is {sides.get('l', '?')} cm long and "
-                f"{sides.get('w', '?')} cm wide. How much fencing is needed to go all the way around it?"
+                f"A rectangular garden is {l_val} m long and "
+                f"{w_val} m wide. How much fencing is needed to go all the way around it?"
             )
         if shape == "square":
             return f"A square has a side of {sides.get('s', '?')} cm. What is its perimeter?"

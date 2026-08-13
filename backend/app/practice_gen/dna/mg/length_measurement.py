@@ -38,6 +38,20 @@ _PARAM_BOUNDS: Dict[str, Dict[str, Any]] = {
 # Non-standard unit objects used at G1
 _NON_STANDARD_UNITS = ["paperclips", "hands", "steps", "blocks", "crayons"]
 
+# Plausible centimetre ranges for the objects the word problems name. A measured
+# length is only believable if it matches the thing being measured, and the numbers
+# a child meets here are the size benchmarks they carry forward.
+_OBJECT_CM_BANDS = {
+    "a crayon":      (6, 12),
+    "a pencil":      (10, 20),
+    "a spoon":       (12, 20),
+    "a ruler":       (15, 30),
+    "a book":        (18, 30),
+    "a notebook":    (20, 30),
+    "a shoe":        (20, 30),
+    "a garden path": (30, 100),
+}
+
 
 # ─── error patterns ───────────────────────────────────────────────────────────
 _ERROR_PATTERNS: List[ErrorPattern] = [
@@ -622,16 +636,27 @@ def generate_params(
             # undersized notebook, round 4 an undersized garden path
             # ("6 cm long", shorter than a pencil).
             def _plausible(v: int, obj: str) -> int:
+                # Per-object bands, not one shared clamp. The old rule floored every
+                # classroom object at 5 and capped it at 50, so "a crayon" rendered
+                # at 5, 8, 10, 21 and 49 cm across one sample set -- arithmetically
+                # fine, but it trains wrong size benchmarks, which a blind reviewer
+                # flagged as the one systematic defect left in this DNA. A pupil
+                # meeting a 49 cm crayon learns the wrong thing about crayons.
                 if unit_mode != "cm":
                     return v
-                if obj == "a garden path":
-                    return max(v, 30)
-                return min(max(v, 5), 50)
+                lo_b, hi_b = _OBJECT_CM_BANDS.get(obj, (5, 50))
+                return min(max(v, lo_b), hi_b)
 
             val_a = _plausible(length, obj_a)
             val_b = _plausible(rng.randint(lo, hi), obj_b)
             if val_a == val_b:
-                val_b = max(1, val_b - 1)
+                # Step within obj_b's own band, not below it. `max(1, val_b - 1)`
+                # walked straight past the floor -- a book at 17 cm and a ruler at
+                # 14 cm, both a centimetre under their band, purely because the two
+                # draws happened to tie.
+                b_lo, b_hi = _OBJECT_CM_BANDS.get(obj_b, (5, 50)) if unit_mode == "cm" else (1, max(2, val_b + 1))
+                val_b = val_b + 1 if val_b < b_hi else val_b - 1
+                val_b = min(max(val_b, b_lo), b_hi)
             result["length"] = val_a
             result["length_b"] = val_b
             # "Solve problems involving length and distance" names both a

@@ -3577,3 +3577,62 @@ other. That needs a decision, not a quick edit.
 
 `validate_matrix --node` PASS on all six perimeter nodes; full `run_all` 151/151, 0 failures, all
 ten contract checks, stages 1–5 green.
+
+---
+
+## 2026-08-13 — Object-to-unit pairing: the numbers were right, the things were wrong
+
+### The failing rationale
+The reviewer that cleared the perimeter FAILs named this as the one systematic defect left, and it
+spanned two DNAs:
+
+> "The one systematic defect is object-to-unit pairing, not arithmetic. Every real-world context in
+> the corpus is sized in centimetres: `A rectangular garden is 5 cm long and 12 cm wide.`,
+> `A triangular flower bed has sides 3 cm, 9 cm, and 11 cm.`, `A rectangular garden is 7 cm long
+> and 1 cm wide.` Metres are the plausible unit at every one of these values."
+
+and, on the sibling DNA, *"'crayon' appears at 5, 8, 10, 21 and 49 cm across the set. The
+arithmetic is sound; the referents train wrong size benchmarks."*
+
+That last sentence is the whole diagnosis. Nothing here computes a wrong answer. A pupil who meets
+a 49 cm crayon and a 5 cm garden learns something false about crayons and gardens.
+
+### Two causes, one in each DNA
+
+**1. `perimeter`'s word-problem templates hardcoded `cm`.** The magnitudes were always fine for a
+garden — 5, 12, 9 — only the unit was wrong. Switched to metres. The bare-geometry framings stay
+in centimetres, where an abstract figure is what is meant, and the reviewer confirmed those read
+correctly.
+
+Also fixed in the same template: *"a garden whose width exceeds its stated length"* on three
+seeds. The two sides are the same pair either way, so ordering them costs nothing and leaves the
+perimeter unchanged.
+
+**2. `length_measurement` clamped every classroom object to one shared band.** `_plausible` floored
+at 5 and capped at 50 for everything except a single special-cased noun, which is how one crayon
+reached 49 cm. Replaced with per-object bands.
+
+### A leak the first attempt left, caught by measuring rather than assuming
+After adding the bands, five values still sat outside them — a book at 17 cm and a ruler at 14 cm,
+each exactly one under their floor. The cause was the tie-breaker: when the two independent draws
+collided, `val_b = max(1, val_b - 1)` stepped straight past the band floor. It now steps *within*
+the band.
+
+### Verification
+
+```
+narrated perimeter items: 300 | still in cm: 0 | width > length: 0
+  seed 43 : A rectangular garden is 12 m long and 5 m wide. How much fencing is needed ...
+  seed 44 : A square garden has a side of 9 m. How much fencing is needed to go all the way around it?
+
+a book: [18, 19, 20, 21, 22]
+a crayon: [6, 7, 8, 9, 10, 11, 12]
+a garden path: [30]
+a notebook: [20, 21, 22]
+a pencil: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+a ruler: [15, 16, 17, 18, 19, 20, 21, 22]
+values outside their object band: 0 | pairs left equal: 0
+```
+
+Every object now renders only at sizes it plausibly has. `validate_matrix --node` PASS on the six
+affected nodes; full `run_all` 151/151, 0 failures, all ten contract checks, stages 1–5 green.
