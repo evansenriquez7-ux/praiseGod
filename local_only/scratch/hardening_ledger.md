@@ -1970,3 +1970,64 @@ before concluding a sub-case is missing.
 5. **139 nodes undeclared, 30 capability gaps.**
 
 **State at handoff: tree clean, NON-VERDICT 0, FAIL down to 29.**
+
+---
+
+## 2026-08-13/14 — Tick C: "less than N" was parsed as "up to N". **CUT SHORT by the usage limit.**
+
+- **Census before:** PASS=59 CONCERN=63 FAIL=29. Gate: NON-VERDICT=0, tree clean.
+- **Cluster choice:** re-censused FAILs by DNA; **subtraction (4)** was the largest single-DNA
+  cluster, so FAIL-before-CONCERN put it ahead of the G1 CONCERN items on the previous handoff.
+- **Unit 1 — the off-by-one.** Commit `797ad58`.
+  `_parse_competency_bounds` matched both phrasings in one alternation:
+  `re.search(r'(?:less than|up to)\s+(\d+)')` → `(1, N)`. "up to N" admits N; "less than N" does
+  not. **Six of the seven MATATAG competencies using this phrasing are subtraction nodes**, so the
+  off-by-one was systematic. Measured before: 63 items containing exactly 20 on a node whose
+  sentence says *less than 20*; 67 containing exactly 100. After: **0 operands at or above the
+  ceiling on all six nodes, across ~1300 items**.
+  - **A false positive of my own first check, worth not repeating:** scanning every number in the
+    stem flagged `"90 − 23 = 113. True or False?"`. 113 is the deliberate *wrong answer* of a
+    true/false item, not an operand. Measure operands, not digits. The blind reviewer independently
+    made and dismissed the same observation.
+  - **PROTOCOL 5 CORRECTION (reported):** the full sweep went red at
+    `competency_bounds_parsing` — two expected values in `validate_compat.py` encoded the *same*
+    off-by-one (`mat_g3_na_q2_4` expected 10000 for "less than 10 000"; `mat_g1_na_q3_4` expected
+    100 for "less than 100"). The competency text is ground truth, the cases exist to pin
+    magnitude-vs-digit-width parsing (which they still do), and the boundary moves **stricter**.
+    Justification is in the file and in HARDENING_EVIDENCE.md.
+- **Unit 2 — re-reviewed; three of six landed before the limit.** Commit above. The fix is
+  confirmed by measurement: largest operands 17, 96, 98 against ceilings 20, 100, 100.
+
+### ⚠️ RESUMPTION POINT — first item next tick
+**NON-VERDICT = 36**, on the three nodes whose re-review never ran: `mat_g2_na_q2_6` (16),
+`mat_g2_na_q2_7` (15), `mat_g3_na_q2_4` (5). Packets are already built at
+`scratchpad/t22_<node>.json`; rebuild them rather than reusing, then re-review blind.
+Note two of the three currently *read* PASS — those verdicts are stale and unearned until
+re-reviewed.
+
+### Next tick should, after clearing those three:
+
+1. **A cloze whose blank lands on an operand the answer depends on** — the reviewer named it as
+   one pattern across two nodes, and it is now the reason all three re-reviewed nodes still FAIL:
+   - `mat_g1_na_q3_3` seed 603: *"Yna has ___ sketchpads. A classmate has 0 sketchpads. How many
+     more sketchpads does Yna have?"* keys 4; the minuend is blanked and the subtrahend is 0, so
+     3/5/6 fit equally.
+   - `mat_g2_na_q2_5` seed 501: *"collected 98 loaves of bread"* vs *"another group collected ___"*
+     keys 49, unreachable.
+   - `mat_g1_na_q3_4` seed 500: the bare string *"How many items are left?"*, keying 33.
+
+   The reviewer places it exactly: **"the mirror image of the known spine blank_target issue: the
+   blank hides a required operand instead of leaking the unknown one."** Start from
+   `select_spine`/`blank_target` and the memory note on blank_target matching.
+2. **`mat_g2_na_q2_3`** — FAIL, bounds `{}`, competency *"Illustrate subtraction of 2-digit by
+   1-digit"*, rendering `930 − 408`. Diagnosed this tick: binding `max_minuend=(1, 99)` fixes the
+   2-digit half, but **no `max_subtrahend` bound exists** — the DNA has only `max_minuend`, and the
+   operand pair is built by rejection sampling (`subtraction.py`, around the `regrouping_is_feasible`
+   guard). The 1-digit half needs that key built and threaded through the sampler.
+3. **`mat_g2_mg_q4_4`** — the co-mapped-DNA question, now open four ticks. **Escalated to the
+   maintainer**; it is a pedagogical call about what "measure the perimeter using appropriate
+   tools" should render.
+4. Then: **pictographs (3)**, **division (3)**, **fractions (4 across two groupings)**.
+5. **139 nodes undeclared, 30 capability gaps.**
+
+**State at handoff: tree clean, but NON-VERDICT is 36 — clear it first.**
