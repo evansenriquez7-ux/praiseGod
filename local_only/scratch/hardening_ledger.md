@@ -1382,3 +1382,74 @@ declaration:
 **30 capability gaps remain across the tree, and 139 nodes are still undeclared** — declaring a
 node is cheap (a blind Declarer, competency text only) and repeatedly turns out to name the
 defect outright before any sample is read.
+
+---
+
+## 2026-08-13 — Tick C (two correctness fixes, and a blind spot found in the freshness check)
+
+- **Census before:** PASS=56 CONCERN=62 FAIL=33. Gate: **NON-VERDICT=5** (`mat_g3_mg_q1_1`, the
+  inherited resumption point).
+- **Unit 1 — cleared the stale review.** `q1_1` re-reviewed blind, with the freshness-verification
+  step added to the prompt (the ledger's recommendation last tick). The reviewer reported
+  `stale seeds: []` before scoring, so its verdict is about current content and nothing else.
+- **Unit 2 — the inductive item admitted two correct answers.** The reviewer scored `q1_1` FAIL
+  on a real logical flaw in the item built last tick:
+  > "at width 2 the distractor `length + length` is mathematically identical to `length × width`.
+  > Seed 42 (`4 by 2` → 8, `7 by 2` → 14, `9 by 2` → 18) ... each have two answers consistent with
+  > all presented evidence."
+
+  A pupil who induced faithfully from all the evidence was marked wrong. Fixed by never drawing a
+  fixed width of 2 — **and**, because the property is general, by checking it rather than assuming
+  it: `_RULE_VALUES` gives each distractor its arithmetic and `_assert_cases_determine` raises,
+  naming seed/distractor/cases, if any distractor reproduces the keyed total on every case.
+  Guard verified to fire on the reviewer's exact case set and pass a well-posed one; 500
+  consecutive seeds generate with it never firing. Commit `711aded`.
+- **Unit 3 — "estimate" was only a word (`q1_0`).** Competency: "Illustrate **and estimate** the
+  area ... using square tile units", but seed 50 offered 15, 16, 17 against an answer of 16.
+  Two layers: the DNA supplied no distractors for `illustrate_tiles`, so the shared error patterns
+  governed and `fmt_mcq` padded with ±1; and fixing that alone still left 10 of 212 items close,
+  because error-pattern distractors are appended afterwards and can land anywhere — a 3×7 tiling's
+  perimeter 2×(3+7)=20 sits **4.8%** from the area 21. Fixed with misconception-based distractors
+  held a fifth of the answer apart, plus the same separation rule applied where options are
+  finally assembled. **10 → 0 of 212**; smallest relative gap 0.200. Commit `65a66be`.
+- `run_all`: 151/151, 0 failures, all ten contract checks, stages 1–5 green, throughout.
+- **Census after:** PASS=56 CONCERN=61 FAIL=34 (`q1_1`'s honest fresh FAIL from Unit 1).
+
+### ⚠️ A blind spot in the freshness check — the next tick's first item
+
+**The freshness check compares `question_text` only. It does not compare the options.** Unit 3
+changed `q1_0`'s options completely while leaving every stem byte-identical, so:
+
+```
+mat_g3_mg_q1_0 seed 50
+  stem identical:     True          <- so the gate reports the review FRESH
+  reviewed options:   [8, 15, 16, 17]
+  live options:       [8, 12, 16, 20]
+```
+
+The filed review's rationale reasons explicitly about 15, 16 and 17 — options that no longer
+render. **The review is substantively stale while NON-VERDICT reports 0 for it.** This is exactly
+the shape §2 warns about: *a check that runs on a subset it doesn't announce*. It is the third
+blind spot this gate has had, after "freshness validated the samples block but not the rationale"
+and "every content check skipped non-PASS reviews".
+
+**Fix it in `validate_judgment.py` by comparing the rendered options (and correct_answer) as well
+as the stem.** Expect NON-VERDICT to jump when it lands — that is the point, and an honest red
+beats a silent green. Budget the re-reviews it will demand; do not land it without room for them.
+
+### Resumption point
+- **NON-VERDICT = 7**, all `mat_g3_mg_q1_1` (Unit 2's fix restaled it). Re-review blind.
+- **`mat_g3_mg_q1_0` also needs re-review** even though the gate calls it fresh, for the reason
+  above. Do not trust the gate on this one node until the options check is in.
+
+### Next tick should:
+1. Land the options comparison in the freshness check, then re-review whatever it marks stale.
+2. `q1_1`'s remaining `variant_comprehensiveness` CONCERN is real and unaddressed: one sentence
+   frame across all 15 seeds, and seeds 50/500/501 render byte-identical text, as do 44/502 —
+   fifteen seeds yield twelve distinct items. The square pool is only {2,3,4,5} choose 3, which is
+   four combinations; widening it and varying the frame would fix both.
+3. Then the two remaining named Tick Fs, still untouched: `equal_jumps_on_a_number_line`
+   (`mat_g2_na_q3_1` + `mat_g3_na_q4_0`, start from `fmt_number_line.py`'s single hop; the frontend
+   arc at `App.jsx:1435` needs extending too) and `draw_line_relationships` (`mat_g3_mg_q1_5`).
+4. **139 nodes remain undeclared and 30 capability gaps remain.** Declaring is cheap and keeps
+   naming defects before any sample is read.
