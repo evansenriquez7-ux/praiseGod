@@ -358,36 +358,28 @@ def generate_params(
             #
             # Every case keeps one factor in _KNOWN_TABLES, so each product stays a
             # fact the pupil holds (Content Rule 1) whichever shape is drawn.
-            if rng.random() < 0.5:
-                # Both factors vary. Widths come from the known tables so the
-                # products stay table facts; lengths vary freely alongside them.
-                widths = rng.sample([t for t in _KNOWN_TABLES
-                                     if t <= (5 if scalar < 0.34 else 10)], 3)
-                lengths = rng.sample([v for v in range(2, _OTHER_SIDE_MAX + 1)], 3)
-                pairs = []
-                for l, w in zip(lengths, widths):
-                    # "a 3 by 3 rectangle" is a square, and reads as an error. The
-                    # fixed-width path avoids this by construction; pairing two
-                    # independent draws does not, so nudge the length off the width.
-                    # The width stays in _KNOWN_TABLES either way, so the product
-                    # remains a table fact whatever the length becomes.
-                    if l == w:
-                        l = l + 1 if l < _OTHER_SIDE_MAX else l - 1
-                    pairs.append((l, w))
-                cases = sorted((l, w, l * w) for l, w in pairs)
-            else:
-                # One dimension held fixed across the cases so the pattern is
-                # visible: the other varies, and the total tracks the product.
-                # The fixed width may not be 2. At width 2 the distractor
-                # "length + length" computes 2 x length, which is exactly
-                # length x width for every case shown -- so a pupil who induces
-                # faithfully has TWO rules consistent with the evidence and is
-                # marked wrong. A blind reviewer caught that on seeds 42 and 601.
-                fixed = rng.choice([t for t in _KNOWN_TABLES
-                                    if t != 2 and t <= (5 if scalar < 0.34 else 10)])
-                varying = sorted(rng.sample([v for v in range(2, _OTHER_SIDE_MAX + 1)
-                                             if v != fixed], 3))
-                cases = [(v, fixed, v * fixed) for v in varying]
+            # Both factors ALWAYS vary. A fixed-width case set was offered here on
+            # half the seeds, on the reasoning that a steady width makes the pattern
+            # easier to spot. Two successive blind reviewers rejected that, the
+            # second decisively: seed 43's 7 by 10, 8 by 10, 9 by 10 -> 70/80/90 "is
+            # equally well explained by an add-a-constant pattern", because the
+            # evidence never varies the factor the rule depends on. For a competency
+            # whose whole subject is deriving that BOTH factors govern the area, a
+            # case set that holds one still is not easier -- it is evidence for a
+            # different rule. Widths come from the known tables so the products stay
+            # table facts; lengths vary freely alongside them.
+            widths = rng.sample([t for t in _KNOWN_TABLES
+                                 if t <= (5 if scalar < 0.34 else 10)], 3)
+            lengths = rng.sample([v for v in range(2, _OTHER_SIDE_MAX + 1)], 3)
+            pairs = []
+            for l, w in zip(lengths, widths):
+                # "a 3 by 3 rectangle" is a square, and reads as an error, so nudge
+                # the length off the width when two independent draws collide. The
+                # width stays in _KNOWN_TABLES, so the product remains a table fact.
+                if l == w:
+                    l = l + 1 if l < _OTHER_SIDE_MAX else l - 1
+                pairs.append((l, w))
+            cases = sorted((l, w, l * w) for l, w in pairs)
             answer = "length × width"
             # No grouping symbols: a bracketed candidate makes the pupil parse
             # notation no stem at this grade uses, which is a reading load rather

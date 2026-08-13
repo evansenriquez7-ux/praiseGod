@@ -3337,3 +3337,37 @@ seed 42: Cover each rectangle with unit square tiles and count them: a 4 by 3 re
 Seed 42 now varies both factors across its three cases. The under-determination guard never fired
 across those 1000 seeds. `validate_matrix --node` PASS on all four area nodes; full `run_all`
 151/151, 0 failures, all ten contract checks, stages 1–5 green.
+
+### The fixed-width case shape removed entirely
+
+The re-review after both-factors-vary landed moved its CONCERN from variety to
+`competency_fulfillment`, with a sharper argument than the one before it:
+
+> "three of the eight rectangle items (seeds 43, 46, 604) hold one dimension fixed across all
+> three cases, so their evidence never varies the factor the rule depends on and an add-a-constant
+> pattern fits the counts equally well."
+
+Seed 43's `7 by 10, 8 by 10, 9 by 10 -> 70/80/90` is exactly as consistent with "add 10 each time"
+as with `length × width`. The reviewer scored it CONCERN rather than FAIL because the keyed rule
+is still the only *selectable* option — the item is answerable, it just does not demonstrate what
+it claims to.
+
+The fixed-width shape had been kept on half the seeds on the reasoning that a steady width makes
+the pattern easier to spot. **Two successive blind reviewers rejected that reasoning**, and they
+are right: for a competency whose whole subject is deriving that *both* factors govern the area, a
+case set holding one fixed is not an easier version of the task — it is evidence for a different
+rule. Removed.
+
+```
+1000 seeds | rectangle items: both vary=502, width fixed=0, equal-sided=0
+
+seed 43 BEFORE: a 7 by 10 rectangle takes 70 tiles, a 8 by 10 rectangle takes 80 tiles,
+                and a 9 by 10 rectangle takes 90 tiles
+seed 43 AFTER:  a 4 by 3 rectangle takes 12 tiles, a 6 by 10 rectangle takes 60 tiles,
+                and a 9 by 5 rectangle takes 45 tiles
+```
+
+The reviewer also re-verified key uniqueness independently across the whole packet: *"I evaluated
+every offered option against every case in all 14 items: exactly one option survives in each."*
+
+`validate_matrix --node` PASS on all four; full `run_all` 151/151, 0 failures, stages 1–5 green.
