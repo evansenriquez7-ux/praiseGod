@@ -108,7 +108,17 @@ CURRICULUM_VARIANT_GATES: Dict[tuple, tuple] = {
     # non-standard units only (paperclips, hands, steps).
     ("length_measurement", "unit_type", "cm"): (2, 1),
     ("length_measurement", "unit_type", "m"): (2, 1),
-    ("length_measurement", "task_type", "convert"): (2, 1),
+    # Unit conversion is NOT a G1-G3 competency. Grepping every competency in the
+    # knowledge graph for "convert"/"conversion" returns nothing, and
+    # mat_g2_mg_q2_3's cumulative_concepts carries no conversion concept either --
+    # yet this gate admitted the task from G2 Q1, and a blind reviewer found
+    # "Convert 4 m to cm." rendering inside "Solve problems involving length and
+    # distance" and scored the node FAIL: a bare metre-to-centimetre conversion
+    # needing a x100 the grade has not been taught. Producing content no competency
+    # names is invention (CLAUDE.md Content Rule 3), so the gate moves past this
+    # graph entirely rather than the task_type being deleted -- keeping it declared
+    # leaves the §1C sweep intact, exactly as the `estimate` gating did.
+    ("length_measurement", "task_type", "convert"): (4, 1),
     # missing_number's param_bounds give G2 the 2/3/4/5/10 tables and only G3 the
     # full 2-9 set, so the 6-9 tables are not selectable before Grade 3.
     ("missing_number", "tables", "6"): (3, 1),

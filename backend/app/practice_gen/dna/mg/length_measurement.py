@@ -29,7 +29,13 @@ _PARAM_BOUNDS: Dict[str, Dict[str, Any]] = {
     },
     "g2": {
         "cm_min": 1,
-        "cm_max": 500,
+        # 100, not 500. A 500 cm ceiling let the compare branch render
+        # "Which is longer: 409 cm or 237 cm?" -- four metres stated in
+        # centimetres, which a blind reviewer flagged twice. A metre stick is the
+        # largest tool this grade measures with, so a centimetre reading past 100
+        # is a metre reading wearing the wrong unit; the m bounds below cover
+        # everything larger.
+        "cm_max": 100,
         "m_min": 1,
         "m_max": 100,
     },

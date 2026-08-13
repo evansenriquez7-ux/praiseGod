@@ -3686,3 +3686,68 @@ Both of this tick's causes were previous fixes that adjusted the *number* when t
 wrong — a floor of 20 cm, a band of (30, 100) cm. Each made its sample look more reasonable
 without making it right, and each survived a later review precisely because the magnitude no
 longer looked absurd. **When a measurement reads wrong, check the unit before tuning the range.**
+
+---
+
+## 2026-08-13 — Content no competency asks for, and a metre wearing centimetres
+
+### Defect 1 — `Convert 4 m to cm.` is invention
+A blind reviewer scored `mat_g2_mg_q2_3` FAIL for it: *"a bare metre-to-centimetre conversion,
+which is a later-grade competency, and reaching 400 needs a ×100 a G2 Q2 learner has not been
+taught."*
+
+Checked against the curriculum rather than assumed — and the answer is stronger than "later
+grade". **No competency anywhere in the G1–G3 knowledge graph mentions conversion at all:**
+
+```
+competencies mentioning convert/conversion:
+                                    <- nothing
+mat_g2_mg_q2_3 competency: Solve problems involving length and distance.
+conversion-ish concepts known there: []
+```
+
+Yet `CURRICULUM_VARIANT_GATES` carried `("length_measurement", "task_type", "convert"): (2, 1)`,
+asserting a curriculum introduction point the curriculum does not contain. Producing content no
+competency names is invention (Content Rule 3), so the gate moves past this graph entirely. The
+task_type stays *declared* rather than deleted, which keeps the §1C sweep intact — the same shape
+as the `estimate` gating two ticks ago.
+
+`convert` was reachable at six of the nine nodes on this DNA, including the two whose bounds leave
+`task_type` free (`mat_g2_mg_q2_3`, `mat_g2_mg_q4_4`).
+
+### Defect 2 — a 500 cm ceiling
+`_PARAM_BOUNDS["g2"]["cm_max"]` was 500, which is how the compare branch rendered
+`"Which is longer: 409 cm or 237 cm?"` — four metres stated in centimetres, flagged by reviewers
+on two separate nodes. A metre stick is the largest tool this grade measures with, so a centimetre
+reading past 100 is a metre reading wearing the wrong unit. Ceiling now 100; the `m` bounds cover
+everything larger.
+
+### Verification
+
+```
+2776 items across 9 length_measurement nodes
+  conversion items:            0
+  cm readings above 100:       0
+```
+
+The Grade 2 refusal is the gate working, and packets still build for the affected nodes — the
+builder skips variant seeds the curriculum forbids:
+
+```
+mat_g2_mg_q2_0 packet: 14 samples OK
+mat_g2_mg_q2_3 packet: 16 samples OK
+mat_g2_mg_q4_4 packet: 16 samples OK
+mat_g2_mg_q2_2 packet: 9 samples OK
+```
+
+`validate_matrix --node` PASS on all nine nodes touching this DNA; full `run_all` 151/151,
+0 failures, all ten contract checks, stages 1–5 green.
+
+### Left deliberately: `"Measure the object. Its length is ___ cm."`
+The third defect the reviewer named — *"no object, ruler or figure in the stem, so they are not
+answerable as rendered"* — is **not** a wording problem, and naming the object would not fix it.
+`read_measurement` is a *read-the-visual* task: with the `ruler_measure` formatter the item is
+perfectly answerable, and the same values rendered through plain `mcq`/`cloze` have no visual and
+therefore no derivable answer. The fix is formatter routing — restricting `read_measurement` to
+`ruler_measure` — which is exactly the tension that produced an empty execution matrix when
+`grid_area` was re-routed. It needs the §1C blast radius worked through, not a quick edit.
