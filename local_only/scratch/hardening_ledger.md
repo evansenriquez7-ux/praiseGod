@@ -2031,3 +2031,57 @@ re-reviewed.
 5. **139 nodes undeclared, 30 capability gaps.**
 
 **State at handoff: tree clean, but NON-VERDICT is 36 — clear it first.**
+
+---
+
+## 2026-08-14 — Tick C: the blank landed on a given, not on the unknown.
+
+- **Census before:** PASS=58 CONCERN=63 FAIL=30. Gate: **NON-VERDICT=36** (inherited).
+- **Unit 1 — cleared the three stranded re-reviews.** NON-VERDICT 36 → 0. Commit `d3a04c6`.
+  `mat_g2_na_q2_6` and `mat_g3_na_q2_4` had *read* PASS while stale; those verdicts are now earned.
+  The reviewer also confirmed the previous tick's ceiling fix by measurement, reporting the largest
+  **operand** per node: 930 (< 1000), 930 (< 1000), 8413 (< 10 000) — and noting the out-of-range
+  numbers that do occur are distractors or a true/false wrong answer, never operands.
+- **Unit 2 — the cloze blanked a given instead of the unknown.** Commit `24b428b`.
+  `base_generator` blanks by **value match, not position**: it replaces the first standalone
+  occurrence of the `blank_target` value. A narrated stem states its operands and asks for the
+  result *in prose*, so the result is usually absent from the text — and when the result happens
+  to **equal a stated operand**, `count=1` blanked that operand instead.
+  ```
+  a=4,  b=0,  result=4  -> "Yna has ___ sketchpads. A classmate has 0 sketchpads..."  keyed 4
+  a=98, b=49, result=49 -> "...another group collected ___ loaves of bread."          keyed 49
+  ```
+  A blind reviewer had already named it as one pattern: *"the mirror image of the known spine
+  blank_target match issue: the blank hides a required operand instead of leaking the unknown."*
+  Fix: when the blank value collides with a stated operand the match is ambiguous, so nothing is
+  blanked and the prose question carries the unknown.
+  - **Checked for over-suppression**, which is the risk of such a rule: **409 cloze blanks still
+    render**. The three narrative items whose answer still coincides with a stated number are
+    different constructions — an `≈` equation whose blank sits at the result, and pattern items
+    where the blank *is* the missing term — and all are answerable.
+- **Unit 3 — re-reviewed all seven affected nodes.** `mat_g1_na_q3_3` and `mat_g2_na_q2_5` both
+  **FAIL → CONCERN**. A reviewer that never saw the fix confirmed it held: *"every cloze blank
+  falls on the answer (product, quotient, total), never on a given operand."*
+- **Census after: PASS=58 CONCERN=63 FAIL=30** — two cleared, three sharpened. NON-VERDICT 0.
+  `run_all` 151/151, 0 failures, all ten contract checks, stages 1–5 green.
+
+### Next tick should:
+
+1. **`mat_g2_na_q2_3`** — FAIL, and fully diagnosed two ticks ago: bounds `{}`, competency
+   *"Illustrate subtraction of 2-digit by 1-digit"*, rendering `930 − 408`. Binding
+   `max_minuend=(1, 99)` fixes the 2-digit half, but **no `max_subtrahend` bound exists** — the
+   DNA has only `max_minuend`, and the pair is built by rejection sampling in `subtraction.py`
+   near the `regrouping_is_feasible` guard. The 1-digit half needs that key built and threaded.
+   Its sibling `mat_g2_na_q2_7` FAILs on a related gap: no 2-step problem and no money context,
+   though its sentence names both.
+2. **Three nodes newly sharpened to FAIL, each with a precise diagnosis** (see commit above):
+   `mat_g3_na_q3_2` (neither named multiplicand range reached; second family collapses to ×10),
+   `mat_g3_na_q4_5` (all 13 items money though money is the *included* case; 3-digit dividends
+   never touched), `mat_g3_dp_q3_3` (bar-graph items state the data in the sentence, so the graph
+   is decorative; "vertical" never appears).
+3. **`mat_g2_mg_q4_4`** — the co-mapped-DNA question, open five ticks. **Escalated to the
+   maintainer.**
+4. Then: **pictographs (3)**, **fractions (4 across two groupings)**.
+5. **139 nodes undeclared, 30 capability gaps.**
+
+**State at handoff: tree clean, NON-VERDICT 0.**
