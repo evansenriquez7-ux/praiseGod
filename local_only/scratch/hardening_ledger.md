@@ -1569,3 +1569,68 @@ manufacture a concern to look thorough."*
    defect before any sample was read.
 
 **State at handoff: tree clean, NON-VERDICT 0, area cluster has no FAIL and two nodes at PASS.**
+
+---
+
+## 2026-08-13 — Tick C: the **length_measurement** FAIL cluster. FAIL 33 → 32.
+
+- **Census before:** PASS=58 CONCERN=60 FAIL=33. Gate: NON-VERDICT=0, tree clean.
+- **Cluster choice — a correction to the previous handoff.** That handoff named `q1_2`/`q1_3`'s
+  variety CONCERNs next, but those are CONCERNs while 33 FAILs sat untouched, and the protocol
+  says **FAIL before CONCERN**. Grouping the FAILs by **DNA** rather than node prefix (prefix
+  grouping showed no cluster; DNA grouping showed one immediately):
+
+  ```
+  5  ('length_measurement',): mat_g1_mg_q2_2, mat_g2_mg_q2_0/_1/_2, mat_g3_mg_q1_6
+  4  ('subtraction',)   3  ('pictographs',)   3  ('division',)   ...
+  ```
+
+  **Group FAILs by DNA, not by node id.** Node prefixes scatter a shared root cause across
+  quarters and grades; the DNA is where the cause actually lives.
+- **Unit 1 — three defects, all in `length_measurement`'s `estimate` branch.** Commit `c653b16`.
+  1. **The enum printed as the unit.** Every other branch resolves a real name via
+     `_NON_STANDARD_UNITS`; this one printed `unit_mode`, so Grade 1 read *"An object measures 2
+     non_standard. About how many non_standard is that…"*.
+  2. **The task was ungated and reached Grade 1.** Checked, not assumed: **no G1 competency asks
+     to estimate a length** — `mat_g2_mg_q2_2` is where MATATAG introduces it. Gated at (2, 2).
+  3. **Estimates that rounded the quantity away, then estimates that were no-ops.** Length 2 to
+     the nearest 10 keys 0; fixing that exposed boundary values (10 to the nearest 5 keys 10).
+     Rounding unit now derived from magnitude, length floored, boundary values nudged — the
+     treatment `mass_capacity.py` already uses.
+  - Verified: 1800 items across 9 nodes → 0 enum leaks, 0 rounding-to-zero, 0 no-op estimates.
+    Packets still build for the gated G1 node (16 samples): the builder skips forbidden variants.
+- **Unit 2 — re-reviewed both changed nodes.** Commit `a2c30d4`.
+  - `mat_g1_mg_q2_2` **FAIL → CONCERN**; reviewer confirms *"no placeholder tokens, and seed 55
+    even singularizes to 'A notebook is 1 paperclip long.'"*
+  - `mat_g2_mg_q2_2` stays FAIL, but the diagnosis moved off the arithmetic — *"every seed's
+    rounding genuinely moves the number, no answer equals the stated value and none is zero"*.
+- **Census after: PASS=58 CONCERN=61 FAIL=32.** NON-VERDICT 0. `run_all` 151/151, 0 failures,
+  all ten contract checks, stages 1–5 green throughout.
+
+### Next tick should:
+
+1. **`mat_g2_mg_q2_2` — the coverage FAIL, and it is a one-line diagnosis.** Its competency is
+   *"Estimate length using meters or centimeters, **and distance using meters**"*, and the
+   reviewer found **zero** items for the second clause: all 11 seeds run the one template, ten in
+   cm. The cause is visible in the binding:
+
+   ```
+   mat_g2_mg_q2_2 bounds: {'task_type': 'estimate'}
+   length_measurement task_types: [..., 'estimate', 'distance_between', 'compare_distance', ...]
+   ```
+
+   A single scalar bound pins it to object-length estimation, so the distance half can never
+   render. `distance_between` already exists. This wants the **sentinel** idiom (as
+   `mat_g3_mg_q1_3` uses for `find_area_or_missing_dimension`): bind a value the DNA resolves per
+   seed into estimate-a-length or estimate-a-distance. Check `distance_between` renders in metres.
+2. Its sibling **`mat_g2_mg_q2_1`** has the identical shape — bound `{'task_type': 'choose_unit'}`
+   against a competency naming *"the length of an object **and the distance between two
+   locations**"*, and its FAIL rationale says the distance scenario "does not show up once".
+   Same fix, same tick.
+3. `mat_g2_mg_q2_0` — competency requires "distance in meters"; its distance item renders in cm.
+4. Then the next DNA clusters by size: **subtraction (4)**, **pictographs (3)**, **division (3)**.
+5. Still untouched, both confirmed by blind declaration: `equal_jumps_on_a_number_line`
+   (`mat_g2_na_q3_1` + `mat_g3_na_q4_0`) and `draw_line_relationships` (`mat_g3_mg_q1_5`).
+6. **139 nodes undeclared, 30 capability gaps.**
+
+**State at handoff: tree clean, NON-VERDICT 0, FAIL down to 32.**
