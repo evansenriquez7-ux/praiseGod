@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_mg_q4_4",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the distance-clause fixes, 2026-08-13",
+  "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
     42,
@@ -401,19 +401,19 @@
     {
       "seed": 605,
       "formatter": "cloze",
-      "question_text": "Which unit would you use to measure the length of a spoon: centimeters or meters?",
-      "correct_answer": "cm",
+      "question_text": "Which unit would you use to measure the distance between the barangay hall and the plaza: centimeters or meters?",
+      "correct_answer": "m",
       "options": [
         {
           "key": "A",
-          "value": "cm",
-          "text": "cm",
+          "value": "m",
+          "text": "m",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "m",
-          "text": "m",
+          "value": "cm",
+          "text": "cm",
           "is_correct": false
         },
         {
@@ -494,27 +494,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "Of sixteen samples, ten (seeds 44, 45, 50, 68, 500, 501, 502, 605, 606, 607) are plain length-measurement or unit-selection items such as \"Measure the object. Its length is ___ cm.\" and the spoon unit question, none of which mention perimeter at all; only six samples actually compute a perimeter."
+      "rationale": "Perimeter is computed correctly on five seeds, including 'A rectangle has sides 11 cm and 2 cm. What is its perimeter?' (seed 42) and 'A square has a side of 3 cm. What is its perimeter?' (seed 603). But seed 604 asks 'A triangle has sides 2 cm, 4 cm, and 7 cm. What is its perimeter?' and no such triangle exists, because 2 plus 4 is less than 7, so that stem is not a plane figure at all. Nothing in the set has the student measure a figure and then obtain its perimeter."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "The competency's stated method, using appropriate tools, never appears in any perimeter sample; the six real perimeter items are pure addition of pre-given side lengths, e.g. seed 42 \"A rectangle has sides 11 cm and 2 cm. What is its perimeter?\", with no measuring step, while the majority of the item pool is off-topic length reading."
+      "rationale": "The sentence names identify and measure, and I checked for each. Identify is covered: rectangle, square, triangle and the applied 'A rectangular garden is 4 cm long and 11 cm wide. How much fencing is needed to go all the way around it?' (seed 601). Measure is not: all seven measuring items measure one single object, 'Measure the object. Its length is ___ cm.' (seeds 44, 45, 50, 501, 502) and 'How long is the object? Give your answer in cm.' (seeds 68, 500), never the border of a figure. Those stems also name no object, so the text alone leaves nothing identified to measure."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The genuine perimeter items and the misplaced length items are each individually worded at grade level."
+      "rationale": "Where perimeter is genuinely asked the load fits Grade 2 Quarter 4: 11 plus 2 doubled at seed 42, 3 taken four times at seed 603, and 'How much fencing is needed to go all the way around it?' at seed 601 makes the idea concrete without introducing later vocabulary. No stem prints an internal placeholder token; the blank in 'Measure the object. Its length is ___ cm.' is the cloze blank and the unit renders as a real cm throughout."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The true perimeter items include rectangles and a fencing word problem (seed 601), though the off-topic contamination limits how much of the set is actually about perimeter."
+      "verdict": "CONCERN",
+      "rationale": "Inside the perimeter items the shape variety is decent — rectangle, square, triangle and one applied fencing problem — but that is only six of sixteen seeds. Seven seeds repeat a single template, 'Measure the object. Its length is ___ cm.' and its read_mcq twin 'How long is the object? Give your answer in cm.', with nothing varying but the number, so the practice a student actually receives is dominated by one non-perimeter form."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "A large share of the apparent difficulty range in this node is really an unrelated skill, reading a ruler diagram or choosing cm vs m, rather than building up the perimeter competency."
+      "rationale": "Three seeds are length-and-distance items that belong to a different competency rather than to perimeter: 'Which unit would you use to measure the distance between the barangay hall and the plaza: centimeters or meters?' (seed 605), 'Which is longer: 2 cm or 12 cm?' (seed 606) and 'The distance from the bench to the tree is 22 cm. The distance from the gate to the tree is 20 cm. Which distance is longer?' (seed 607). None of them mentions a plane figure or the distance around one."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The perimeter-relevant side lengths, 1 cm to 21 cm, are reasonable for Grade 2."
+      "verdict": "FAIL",
+      "rationale": "Magnitudes do not match the tool the stems imply. 'Measure the object. Its length is ___ cm.' keys '328' at seed 501 and '259' at seed 502, objects of roughly three and two and a half metres offered as something to lay a centimetre ruler against, and seed 500 keys a value above four metres for 'How long is the object? Give your answer in cm.'. 'A rectangular garden is 4 cm long and 11 cm wide.' is a garden the size of a postcard being fenced, and 'The distance from the bench to the tree is 22 cm.' seats a bench a hand span from a tree."
     }
   },
   "overall": "FAIL"

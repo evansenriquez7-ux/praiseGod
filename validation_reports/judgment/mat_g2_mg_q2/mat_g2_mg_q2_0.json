@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_mg_q2_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the distance-clause fixes, 2026-08-13",
+  "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
     42,
@@ -14,38 +14,36 @@
     500,
     501,
     502,
+    600,
     601,
     602,
-    603,
-    604,
-    605,
-    607
+    603
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 21,
+      "question_text": "The distance from the bench to the tree is 22 cm. The distance from the gate to the tree is 20 cm. Which distance is longer?",
+      "correct_answer": 22,
       "options": [
         {
           "key": "A",
-          "value": 22,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 23,
+          "value": 21,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 21,
+          "value": 22,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 20,
+          "value": 23,
           "is_correct": false
         }
       ]
@@ -81,17 +79,17 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 14,
+      "question_text": "Which is longer: 14 cm or 17 cm?",
+      "correct_answer": 17,
       "options": [
         {
           "key": "A",
-          "value": 13,
+          "value": 18,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 15,
+          "value": 14,
           "is_correct": false
         },
         {
@@ -101,7 +99,7 @@
         },
         {
           "key": "D",
-          "value": 14,
+          "value": 17,
           "is_correct": true
         }
       ]
@@ -109,27 +107,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 9,
+      "question_text": "Which is longer: 9 cm or 14 cm?",
+      "correct_answer": 14,
       "options": [
         {
           "key": "A",
-          "value": 11,
+          "value": 13,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 10,
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 9,
+          "value": 14,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 8,
+          "value": 15,
           "is_correct": false
         }
       ]
@@ -165,13 +163,13 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "Measure the object. Its length is ___ cm.",
+      "question_text": "Which is longer: 16 cm or 9 cm?",
       "correct_answer": 16,
       "options": [
         {
           "key": "A",
-          "value": 17,
-          "text": "17",
+          "value": 9,
+          "text": "9",
           "is_correct": false
         },
         {
@@ -182,14 +180,14 @@
         },
         {
           "key": "C",
-          "value": 18,
-          "text": "18",
+          "value": 15,
+          "text": "15",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 15,
-          "text": "15",
+          "value": 17,
+          "text": "17",
           "is_correct": false
         }
       ]
@@ -224,60 +222,60 @@
     },
     {
       "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "How long is the object? Give your answer in cm.",
-      "correct_answer": "A",
+      "formatter": "cloze",
+      "question_text": "Which is longer: 409 cm or 237 cm?",
+      "correct_answer": 409,
       "options": [
         {
           "key": "A",
           "value": 409,
+          "text": "409",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 410,
+          "text": "410",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 414,
+          "value": 237,
+          "text": "237",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 408,
+          "text": "408",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 328,
+      "formatter": "mcq",
+      "question_text": "The distance from the bench to the tree is 347 cm. The distance from the gate to the tree is 164 cm. Which distance is longer?",
+      "correct_answer": 347,
       "options": [
         {
           "key": "A",
-          "value": 328,
-          "text": "328",
+          "value": 347,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 330,
-          "text": "330",
+          "value": 346,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 327,
-          "text": "327",
+          "value": 348,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 329,
-          "text": "329",
+          "value": 164,
           "is_correct": false
         }
       ]
@@ -285,27 +283,55 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 259,
+      "question_text": "The distance from the bench to the tree is 278 cm. The distance from the gate to the tree is 206 cm. Which distance is longer?",
+      "correct_answer": 278,
       "options": [
         {
           "key": "A",
-          "value": 260,
+          "value": 206,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 259,
+          "value": 278,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 261,
+          "value": 277,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 258,
+          "value": 279,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Which is longer: 9 cm or 12 cm?",
+      "correct_answer": 12,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 11,
           "is_correct": false
         }
       ]
@@ -345,46 +371,18 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Which unit would you use to measure the length of a book: centimeters or meters?",
-      "correct_answer": "cm",
+      "question_text": "Which is longer: 13 cm or 6 cm?",
+      "correct_answer": 13,
       "options": [
         {
           "key": "A",
-          "value": "cm",
+          "value": 13,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "neither works",
+          "value": 12,
           "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "m",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "either works",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "mcq",
-      "question_text": "Which is longer: 6 cm or 18 cm?",
-      "correct_answer": 18,
-      "options": [
-        {
-          "key": "A",
-          "value": 17,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 18,
-          "is_correct": true
         },
         {
           "key": "C",
@@ -393,100 +391,36 @@
         },
         {
           "key": "D",
-          "value": 19,
+          "value": 14,
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 604,
+      "seed": 603,
       "formatter": "mcq",
-      "question_text": "The distance from the bench to the tree is 20 cm. The distance from the gate to the tree is 21 cm. Which distance is longer?",
-      "correct_answer": 21,
+      "question_text": "Measure the object. Its length is ___ m.",
+      "correct_answer": 3,
       "options": [
         {
           "key": "A",
-          "value": 21,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 22,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 23,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
-      "formatter": "cloze",
-      "question_text": "Convert 4 m to cm.",
-      "correct_answer": 400,
-      "options": [
-        {
-          "key": "A",
-          "value": 400,
-          "text": "400",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 401,
-          "text": "401",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 399,
-          "text": "399",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 402,
-          "text": "402",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 607,
-      "formatter": "cloze",
-      "question_text": "Segment A is 3 cm long. Segment B is 1 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "No",
-      "options": [
-        {
-          "key": "A",
-          "value": "only if they are the same color",
-          "text": "only if they are the same color",
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "Yes",
-          "text": "Yes",
-          "is_correct": false
+          "value": 3,
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": "only if they are drawn in the same direction",
-          "text": "only if they are drawn in the same direction",
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "No",
-          "text": "No",
-          "is_correct": true
+          "value": 2,
+          "is_correct": false
         }
       ]
     }
@@ -494,27 +428,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "FAIL",
-      "rationale": "The competency explicitly requires \"distance in meters,\" yet the node's own distance item, seed 604, reads \"The distance from the bench to the tree is 20 cm. The distance from the gate to the tree is 21 cm.\" and never converts to meters, contradicting the stated unit for distance."
+      "rationale": "The sentence names three things: measuring object length, comparing lengths, and distance in meters. The first two are met - seed 43 gives 'Measure the object. Its length is ___ cm.' and seed 44 gives 'Which is longer: 14 cm or 17 cm?' - but the distance clause is rendered in the wrong unit in every distance seed. Seed 42 states 'The distance from the bench to the tree is 22 cm.' and seed 501 states 'The distance from the bench to the tree is 347 cm.', so no seed in this packet expresses a distance in meters, which is the only unit the competency allows for distance."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Length-in-cm is drilled thoroughly across ten-plus samples, but no item ever expresses a measured length or distance answer in meters; the only meter reference is a unit-conversion drill, seed 605 \"Convert 4 m to cm.\", not an actual measurement task."
+      "verdict": "FAIL",
+      "rationale": "Taking each named part separately: measuring an object is covered (seeds 43, 46, 55, 603); comparing lengths is covered (seeds 44, 45, 50, 600, 602); centimeters are covered everywhere; meters appear in exactly one of fourteen samples, seed 603 with 'Measure the object. Its length is ___ m.'; distance in meters is not covered at all, only distance stated in cm. The measuring-tool part is likewise unrepresented, since seed 55 asks 'How long is the object? Give your answer in cm.' and seed 43 opens with 'Measure the object.', naming neither the object nor any ruler or meter stick in the rendered stem."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Sentence forms such as \"Measure the object. Its length is ___ cm.\" are short and concrete for the grade."
+      "rationale": "Load is right for Grade 2 Quarter 2. Comparisons are single binary reads of two whole numbers, and the one multi-step item, seed 601 asking 'How many cm longer is a garden path than a crayon?' with answer 23, is a single subtraction. The largest quantities, 409 and 347, stay inside the Grade 2 whole-number range, and every stem is one or two short sentences with four options."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The set mixes ruler-reading (read_mcq), comparison (\"Which is longer: 6 cm or 18 cm?\"), a difference word problem (seed 601 garden path vs. crayon), and an equality check (seed 607)."
+      "rationale": "Four distinct item shapes appear across the fourteen seeds: direct measurement read-off at seed 46 with 'Measure the object. Its length is ___ cm.', two-length comparison at seed 602 with 'Which is longer: 13 cm or 6 cm?', two-distance comparison at seed 502, and a difference item at seed 601. Three formatters are exercised (mcq, cloze, read_mcq). Worth noting but not blocking: the distance items all reuse one frame, 'The distance from the gate to the tree is', with only the numerals changing across seeds 42, 501 and 502."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Difficulty scales through larger cm values while staying on the measuring/comparing skill itself."
+      "verdict": "FAIL",
+      "rationale": "The distance sub-case is aligned to the wrong unit. The competency confines distance to meters, yet seed 502 renders 'The distance from the bench to the tree is 278 cm.' and seed 42 renders 'The distance from the gate to the tree is 20 cm.' The object-length items align correctly and nothing reaches past the competency into area or unit conversion, but no stem invokes the measuring tool the competency names: seed 43 asks for a measurement with 'Measure the object.' and no instrument in the text."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 500 gives an object length of 409 as a plain cm reading rather than expressing it as roughly 4 meters, so the value drifts far past what a single ruler diagram can plausibly show without switching units."
+      "verdict": "FAIL",
+      "rationale": "Several magnitudes are not ones a child could plausibly measure with the implied tool. Seed 42 places two outdoor landmarks a pencil-length apart with 'The distance from the bench to the tree is 22 cm.', and seed 601 offers 'A garden path is 30 cm long.', a path shorter than a school ruler. Seed 500 asks 'Which is longer: 409 cm or 237 cm?', expressing lengths of over four and over two meters in centimeters, which is not what a Grade 2 child reads off a cm ruler."
     }
   },
   "overall": "FAIL"

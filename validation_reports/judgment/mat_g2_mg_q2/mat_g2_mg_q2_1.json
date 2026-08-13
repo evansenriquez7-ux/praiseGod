@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_mg_q2_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the distance-clause fixes, 2026-08-13",
+  "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
     42,
@@ -12,18 +12,19 @@
     50,
     500,
     501,
-    502
+    502,
+    600
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Which unit would you use to measure the length of a classroom: centimeters or meters?",
-      "correct_answer": "m",
+      "question_text": "Which unit would you use to measure the length of a book: centimeters or meters?",
+      "correct_answer": "cm",
       "options": [
         {
           "key": "A",
-          "value": "cm",
+          "value": "m",
           "is_correct": false
         },
         {
@@ -33,7 +34,7 @@
         },
         {
           "key": "C",
-          "value": "m",
+          "value": "cm",
           "is_correct": true
         },
         {
@@ -46,12 +47,12 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Which unit would you use to measure the length of a crayon: centimeters or meters?",
-      "correct_answer": "cm",
+      "question_text": "Which unit would you use to measure the distance between your house and the church: centimeters or meters?",
+      "correct_answer": "m",
       "options": [
         {
           "key": "A",
-          "value": "cm",
+          "value": "m",
           "is_correct": true
         },
         {
@@ -66,7 +67,7 @@
         },
         {
           "key": "D",
-          "value": "m",
+          "value": "cm",
           "is_correct": false
         }
       ]
@@ -74,8 +75,8 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Which unit would you use to measure the length of a spoon: centimeters or meters?",
-      "correct_answer": "cm",
+      "question_text": "Which unit would you use to measure the distance between the school and the market: centimeters or meters?",
+      "correct_answer": "m",
       "options": [
         {
           "key": "A",
@@ -84,7 +85,7 @@
         },
         {
           "key": "B",
-          "value": "m",
+          "value": "cm",
           "is_correct": false
         },
         {
@@ -94,7 +95,7 @@
         },
         {
           "key": "D",
-          "value": "cm",
+          "value": "m",
           "is_correct": true
         }
       ]
@@ -102,8 +103,8 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Which unit would you use to measure the length of a shoe: centimeters or meters?",
-      "correct_answer": "cm",
+      "question_text": "Which unit would you use to measure the distance between the barangay hall and the plaza: centimeters or meters?",
+      "correct_answer": "m",
       "options": [
         {
           "key": "A",
@@ -112,12 +113,12 @@
         },
         {
           "key": "B",
-          "value": "m",
+          "value": "cm",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "cm",
+          "value": "m",
           "is_correct": true
         },
         {
@@ -130,8 +131,8 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Which unit would you use to measure the length of a basketball court: centimeters or meters?",
-      "correct_answer": "m",
+      "question_text": "Which unit would you use to measure the length of a spoon: centimeters or meters?",
+      "correct_answer": "cm",
       "options": [
         {
           "key": "A",
@@ -140,7 +141,7 @@
         },
         {
           "key": "B",
-          "value": "m",
+          "value": "cm",
           "is_correct": true
         },
         {
@@ -150,7 +151,7 @@
         },
         {
           "key": "D",
-          "value": "cm",
+          "value": "m",
           "is_correct": false
         }
       ]
@@ -158,19 +159,19 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "Which unit would you use to measure the length of a book: centimeters or meters?",
-      "correct_answer": "cm",
+      "question_text": "Which unit would you use to measure the distance between the classroom and the canteen: centimeters or meters?",
+      "correct_answer": "m",
       "options": [
         {
           "key": "A",
-          "value": "m",
-          "text": "m",
+          "value": "cm",
+          "text": "cm",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "cm",
-          "text": "cm",
+          "value": "m",
+          "text": "m",
           "is_correct": true
         },
         {
@@ -222,7 +223,7 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "Which unit would you use to measure the length of a garden: centimeters or meters?",
+      "question_text": "Which unit would you use to measure the length of a hallway: centimeters or meters?",
       "correct_answer": "m",
       "options": [
         {
@@ -250,17 +251,17 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Which unit would you use to measure the length of a hallway: centimeters or meters?",
-      "correct_answer": "m",
+      "question_text": "Which unit would you use to measure the length of a book: centimeters or meters?",
+      "correct_answer": "cm",
       "options": [
         {
           "key": "A",
-          "value": "cm",
+          "value": "m",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "m",
+          "value": "cm",
           "is_correct": true
         },
         {
@@ -274,33 +275,61 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Which unit would you use to measure the length of a shoe: centimeters or meters?",
+      "correct_answer": "cm",
+      "options": [
+        {
+          "key": "A",
+          "value": "m",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "either works",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "cm",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "neither works",
+          "is_correct": false
+        }
+      ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every sample correctly frames the choice as a unit pick, e.g. seed 42 \"Which unit would you use to measure the length of a classroom: centimeters or meters?\", with a plausible correct unit for each named object."
+      "rationale": "Every unit assignment in the packet is correct on its own terms. Seed 42 asks 'Which unit would you use to measure the length of a book: centimeters or meters?' and takes 'cm', while seed 501 asks 'Which unit would you use to measure the length of a hallway: centimeters or meters?' and the house-to-church item at seed 43 both take 'm'. The unit-selection demand the competency states is genuinely exercised in all ten samples."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Object length is the sole scenario tested nine times over (classroom, crayon, spoon, shoe, court, book, road, garden, hallway); the two-location distance scenario that the same sentence of the competency requires does not show up once."
+      "verdict": "CONCERN",
+      "rationale": "Checking the two named sub-cases separately: length of an object is present in seeds 42, 46 with 'Which unit would you use to measure the length of a spoon: centimeters or meters?', 500, 501, 502 and 600; distance between two locations is present in seeds 43, 44 with 'Which unit would you use to measure the distance between the school and the market: centimeters or meters?', 45 and 50. Both halves are therefore covered. What is missing is the second verb: across all ten seeds the student only identifies a unit and never uses one, since no sample asks for a measured value expressed in the unit just chosen."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The fixed sentence template with a single swapped noun is easy to parse at Grade 2."
+      "rationale": "Each item is one binary decision with no arithmetic, and every referent sits inside the daily experience of a Filipino Grade 2 child: 'a spoon' and 'a shoe' at the small end, and the span named at seed 45, 'the barangay hall and the plaza', at the large end. Sentence length is uniform and short throughout."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Both mcq and cloze formatters are used, and object choices range from small handheld items to large spaces, exercising the unit judgment from both ends of the scale."
+      "verdict": "CONCERN",
+      "rationale": "All ten seeds use one interrogative frame, 'Which unit would you use to measure the' followed by a noun phrase and closing with 'centimeters or meters?'. Only the referent and the formatter change (cloze at seeds 50 and 500, mcq elsewhere). There is no inverse item that supplies a measurement and asks whether the unit fits, and no item that attaches a number to the chosen unit, so surface variety is thin relative to the ten samples drawn."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The varying element, which object is named, is exactly the unit-selection judgment the competency targets."
+      "rationale": "Every stem asks exactly the question the competency poses, which of the two units suits a given referent, and it does so for both of the targets named: object length at seed 600 with 'Which unit would you use to measure the length of a shoe: centimeters or meters?', and location-to-location distance at seed 50 with 'Which unit would you use to measure the distance between the classroom and the canteen: centimeters or meters?'. Nothing in the packet reaches beyond m and cm."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "No numeric range is involved in a unit-selection task, so there is no ceiling to violate."
+      "rationale": "These stems carry no magnitudes at all, so plausibility rests entirely on referent choice, and that choice is sound throughout: the centimeter answers attach to hand-sized things such as 'a book' and 'a spoon', while the meter answers attach to room-, building- or town-scale spans such as 'a road' at seed 500 and 'your house and the church' at seed 43. No stem prints an internal placeholder in place of a unit or object."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

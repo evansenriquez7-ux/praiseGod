@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_mg_q2_3",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the distance-clause fixes, 2026-08-13",
+  "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
     42,
@@ -19,7 +19,7 @@
     602,
     603,
     604,
-    605
+    606
   ],
   "samples_reviewed": [
     {
@@ -341,8 +341,8 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Which unit would you use to measure the length of a spoon: centimeters or meters?",
-      "correct_answer": "cm",
+      "question_text": "Which unit would you use to measure the distance between the school and the market: centimeters or meters?",
+      "correct_answer": "m",
       "options": [
         {
           "key": "A",
@@ -352,8 +352,8 @@
         },
         {
           "key": "B",
-          "value": "m",
-          "text": "m",
+          "value": "cm",
+          "text": "cm",
           "is_correct": false
         },
         {
@@ -364,8 +364,8 @@
         },
         {
           "key": "D",
-          "value": "cm",
-          "text": "cm",
+          "value": "m",
+          "text": "m",
           "is_correct": true
         }
       ]
@@ -455,33 +455,29 @@
       ]
     },
     {
-      "seed": 605,
-      "formatter": "cloze",
-      "question_text": "A garden path is 30 cm long. A ruler is 18 cm long. If they are placed end to end, what is their combined length in cm?",
-      "correct_answer": 48,
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Segment A is 2 cm long. Segment B is 2 cm long. Are Segment A and Segment B equal in length?",
+      "correct_answer": "Yes",
       "options": [
         {
           "key": "A",
-          "value": 48,
-          "text": "48",
+          "value": "Yes",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 49,
-          "text": "49",
+          "value": "No",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 47,
-          "text": "47",
+          "value": "only if they are the same color",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 50,
-          "text": "50",
+          "value": "only if they are drawn in the same direction",
           "is_correct": false
         }
       ]
@@ -490,28 +486,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The items are genuine word problems built on two given lengths, e.g. seed 42 asks the combined length of \"A pencil is 21 cm long. A crayon is 9 cm long.\", matching \"solve problems involving length.\""
+      "rationale": "Seeds 42 and 44 build a length by joining — 'If they are placed end to end, what is their combined length in cm?' — and seeds 46 and 600 take a difference, 'How many cm longer is a pencil than a ruler?'. Both are real solve-a-problem tasks rather than bare computation, and every word problem states both measurements it needs, so each is answerable from the information given."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The sample set spans addition (\"placed end to end\"), a difference question (\"How many cm longer\"), comparison (\"Which is longer\"), unit choice, and a meter-to-centimeter conversion (seed 604), covering the breadth this open-ended competency implies."
+      "rationale": "The sentence names two things, length and distance, and I looked for each separately. Length is covered by seeds 43, 45 and 502, which join or compare object lengths. Distance is covered too: seed 601 asks 'Which unit would you use to measure the distance between the school and the market: centimeters or meters?' and seed 603 asks 'The distance from the bench to the tree is 20 cm. The distance from the gate to the tree is 22 cm. Which distance is longer?'. Both named sub-cases are present."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each problem uses two short sentences and a single-step operation appropriate for Grade 2 Quarter 2."
+      "rationale": "Arithmetic stays within Grade 2 Quarter 2 reach: seed 502 is 50 plus 49, seed 500 is 50 plus 297 giving 347 and still under a thousand, and the differences at seeds 50 and 600 are single-digit. 'Convert 4 m to cm.' is reachable by skip counting hundreds rather than formal multiplication, and 'Segment A is 2 cm long. Segment B is 2 cm long. Are Segment A and Segment B equal in length?' is a plain equality judgment. No stem prints an internal placeholder: every unit renders as a real cm or m and every object is a named noun."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Pure comparisons (seed 602 \"Which is longer: 13 cm or 6 cm?\") sit alongside contextual objects (pencils, crayons, garden paths, a bench-to-tree distance) across mcq, cloze, and read_mcq formatters."
+      "rationale": "Seven distinct question shapes across sixteen seeds: joining lengths (seed 42), finding a difference (seed 46), choosing a unit (seed 601), direct comparison 'Which is longer: 13 cm or 6 cm?' (seed 602), comparing two distances (seed 603), 'Convert 4 m to cm.' (seed 604) and an equality check (seed 606). Three formatters appear, and the read_mcq keying is right — seed 500 keys the option holding the correct sum of 'A ruler is 50 cm long. A garden path is 297 cm long.'."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The difficulty progression is driven by the size of the given lengths and by the operation required, all on the length/distance problem-solving skill."
+      "rationale": "Nothing reaches past length and distance. There is no area, no perimeter and no operation heavier than skip counting hundreds for 'Convert 4 m to cm.'. The heaviest reading load is seed 603 with two stated distances in one stem, which is fair for Grade 2, and every item maps onto solving a length or distance problem."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Values stay in a believable classroom-object range, 5 cm to 297 cm, fitting a Grade 2 Quarter 2 length unit."
+      "verdict": "CONCERN",
+      "rationale": "The object nouns look decoupled from the magnitudes, so several stems describe things that cannot exist. Seed 44 opens 'A garden path is 30 cm long. A crayon is 5 cm long.', a path shorter than a hand span; seed 501 states 'A notebook is 50 cm long. A crayon is 49 cm long.'; seed 50 states 'A crayon is 21 cm long.'. The same noun turns up at 5, 8, 10, 21 and 49 cm across the set. The arithmetic is sound and a centimetre ruler suits the smaller seeds, but for a measurement competency these referents train wrong size benchmarks."
     }
   },
-  "overall": "PASS"
+  "overall": "CONCERN"
 }
