@@ -279,8 +279,20 @@ def validate_competency_bounds_parsing() -> List[str]:
         # which is the whole defect class rather than the three symptoms.
         ("mat_g3_na_q2_5", "subtraction", {"max_minuend": (1, 9999)}),   # "up to 4 digits"
         # ...and the magnitude phrasings that must keep parsing as magnitudes.
-        ("mat_g3_na_q2_4", "subtraction", {"max_minuend": (1, 10000)}),  # "less than 10 000"
-        ("mat_g1_na_q3_4", "subtraction", {"max_minuend": (1, 100)}),    # "less than 100"
+        # PROTOCOL 5 CORRECTION, 2026-08-13. These two expected values encoded an
+        # off-by-one that the parser shared: "less than N" was parsed, and asserted,
+        # as an INCLUSIVE ceiling of N. The competency text is the ground truth and
+        # it says *less than* -- "less than 10 000" admits 9999, not 10000, and
+        # "less than 100" admits 99, not 100. Blind reviewers scored two nodes FAIL
+        # on exactly this, quoting the operand back: "Team A scored 20" on a node
+        # whose sentence reads "both numbers are less than 20", and three items
+        # using exactly 100 on mat_g2_na_q2_5.
+        #
+        # The cases exist to pin magnitude-vs-digit-width parsing, which they still
+        # do; only the boundary moves, and it moves STRICTER (99 < 100), so this
+        # tightens the check rather than weakening it.
+        ("mat_g3_na_q2_4", "subtraction", {"max_minuend": (1, 9999)}),  # "less than 10 000"
+        ("mat_g1_na_q3_4", "subtraction", {"max_minuend": (1, 99)}),    # "less than 100"
     ]
     # Ground Rule 2 correction, 2026-08-02 (docs/pgen_hardening.md judgment
     # review, Phase D): mat_g3_na_q2_6/_7's ("up to 2 digits") cases above were

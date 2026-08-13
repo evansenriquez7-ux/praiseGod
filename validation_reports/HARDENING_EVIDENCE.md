@@ -3884,3 +3884,71 @@ AFTER   2700 attempts | 2700 ok |  0 raised
 
 `validate_matrix --node` PASS on the affected nodes; full `run_all` 151/151, 0 failures, all ten
 contract checks, stages 1–5 green.
+
+---
+
+## 2026-08-13 — "less than N" was parsed as "up to N"
+
+### The failing rationales
+Two nodes were scored FAIL on scale, and both reviewers quoted the operand back at the sentence:
+
+> `mat_g1_na_q3_3`: *"The competency states both numbers must be 'less than 20', yet five sampled
+> items use 20 as an operand — 'Team A scored 20 in the barangay court and Team B scored 12'"*
+> `mat_g2_na_q2_5`: *"Seeds 42, 501, and 502 each use exactly 100 as one operand ... which is not
+> less than 100"*
+
+### Root cause
+`_parse_competency_bounds` matched both phrasings with one alternation and bound the same ceiling:
+
+```python
+match = re.search(r'(?:less than|up to)\s+(\d+)', text)
+if match and int(match.group(1)) >= 10:
+    bounds["max_minuend"] = (1, int(match.group(1)))
+```
+
+"up to N" admits N; "less than N" does not. **Six of the seven MATATAG competencies using this
+phrasing are subtraction nodes**, so the off-by-one was systematic rather than a one-node slip:
+
+```
+mat_g1_na_q3_3  'less than 20'   -> (1, 20)     63 items containing exactly 20
+mat_g1_na_q3_4  'less than 100'  -> (1, 100)
+mat_g2_na_q2_4  'less than 100'  -> (1, 100)
+mat_g2_na_q2_5  'less than 100'  -> (1, 100)    67 items containing exactly 100
+mat_g2_na_q2_6  'less than 1000' -> (1, 1000)
+mat_g2_na_q2_7  'less than 1000' -> (1, 1000)    2 items containing exactly 1000
+```
+
+### Verification — operands, across ~1300 items
+```
+mat_g1_na_q3_3: 0/217 items with an OPERAND >= 20
+mat_g1_na_q3_4: 0/220 items with an OPERAND >= 100
+mat_g2_na_q2_4: 0/220 items with an OPERAND >= 100
+mat_g2_na_q2_5: 0/217 items with an OPERAND >= 100
+mat_g2_na_q2_6: 0/218 items with an OPERAND >= 1000
+mat_g2_na_q2_7: 0/218 items with an OPERAND >= 1000
+```
+
+Two apparent survivors were artifacts of a first, cruder check that scanned every number in the
+stem: `'90 − 23 = 113. True or False?'` is a true/false item whose 113 is the deliberate *wrong*
+answer, not an operand. Measuring operands specifically is what settled it.
+
+### PROTOCOL 5 CORRECTION — two assertions modified, reported here as required
+The full sweep then went red at `competency_bounds_parsing`, which is exactly why it is run:
+
+```
+- Registry bounds parser for 'mat_g3_na_q2_4' (subtraction) expected key 'max_minuend' to be
+  '(1, 10000)', but got '(1, 9999)'.
+- Registry bounds parser for 'mat_g1_na_q3_4' (subtraction) expected key 'max_minuend' to be
+  '(1, 100)', but got '(1, 99)'.
+```
+
+**Both expected values encoded the same off-by-one as the parser.** The competency text is ground
+truth: `mat_g3_na_q2_4` reads *"both numbers are less than 10 000"*, which admits 9999, not 10000;
+`mat_g1_na_q3_4` reads *"less than 100"*, which admits 99. The cases were written to pin
+magnitude-vs-digit-width parsing — a distinction they still pin — and only the boundary moves.
+
+It moves **stricter** (99 < 100, 9999 < 10000), so this tightens the check rather than weakening
+it. Node IDs and justification recorded here and in the file's own comment, per Protocol 5.
+
+`run_all` after the correction: 151/151, 0 failures, all ten contract checks, **stages 1–5 green**,
+`competency_bounds_parsing` PASS.

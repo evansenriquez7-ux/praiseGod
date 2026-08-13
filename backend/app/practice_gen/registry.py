@@ -288,9 +288,20 @@ def _parse_competency_bounds(
             # extraction below applies for exactly this reason. With no
             # parse the DNA's own per-grade _PARAM_BOUNDS governs, which is
             # what the comment above describes.
-            match = re.search(r'(?:less than|up to)\s+(\d+)', text)
-            if match and int(match.group(1)) >= 10:
-                bounds["max_minuend"] = (1, int(match.group(1)))
+            # "less than N" and "up to N" are NOT the same ceiling. Treating them
+            # alike bound max_minuend=(1, N) for both, so a competency reading
+            # "both numbers are less than 20" served 20 itself: "Team A scored 20
+            # ... and Team B scored 12" on mat_g1_na_q3_3, and 100 on
+            # mat_g2_na_q2_5 whose sentence says less than 100. Blind reviewers
+            # scored both FAIL on scale, quoting the operand back. Six of the seven
+            # MATATAG competencies using this phrasing are subtraction nodes, so the
+            # off-by-one was systematic rather than a one-node slip.
+            match = re.search(r'(less than|up to)\s+(\d+)', text)
+            if match and int(match.group(2)) >= 10:
+                ceiling = int(match.group(2))
+                if match.group(1) == "less than":
+                    ceiling -= 1
+                bounds["max_minuend"] = (1, ceiling)
 
         # "Estimate the difference of two numbers ..." (mat_g3_na_q2_5) names
         # a distinct skill from exact subtraction -- round both operands,
