@@ -414,6 +414,7 @@ COMPATIBILITY: Dict[str, List[str]] = {
         "pictograph_read",
         "pictograph_set",
         "fill_in_table",
+        "table_read",
     ],
 
     "bar_graphs": [
@@ -708,7 +709,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "pictographs": {
-        "task_type": ["read_value", "compare_two", "find_total", "find_difference", "present_data", "organize_table"],
+        "task_type": ["read_value", "compare_two", "find_total", "find_difference", "present_data", "organize_table", "read_table"],
         "scale_type": ["no_scale", "scale_2", "scale_5", "scale_10"],
     },
 
@@ -1127,6 +1128,10 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         "pictograph_read": {"task_type": ["read_value", "compare_two", "find_total", "find_difference"]},
         "pictograph_set": {"task_type": ["present_data"]},
         "fill_in_table": {"task_type": ["organize_table"]},
+        # "read_table" displays a completed table and asks for one count back.
+        # Only this formatter renders it: every entry above is pinned to task
+        # types that draw a PICTOGRAPH, so none of them can show a table to read.
+        "table_read": {"task_type": ["read_table"]},
     },
 
     "bar_graphs": {

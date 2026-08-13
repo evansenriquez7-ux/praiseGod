@@ -138,6 +138,19 @@ def generate_params(
     # still wins.
     _scale_default = "no_scale" if grade == 1 else random.Random(seed).choice(["scale_2", "scale_5", "scale_10"])
     scale_type    = extract_discrete_level(profile, "scale_type", ["no_scale", "scale_2", "scale_5", "scale_10"], _scale_default)
+    if scale_type == "with_or_without_scale":
+        # registry.py sentinel for "...in a pictograph WITH OR WITHOUT scale"
+        # (mat_g2_dp_q3_1). Leaving it unbound did not cover both cases: the
+        # G2 default above only ever draws from scale_2/5/10, so the "without"
+        # half of the node's own sentence was unreachable no matter the seed.
+        scale_type = rng.choice(["no_scale", "scale_2", "scale_5", "scale_10"])
+    # "read_table" is deliberately NOT in this list. extract_discrete_level maps a
+    # float scalar onto it by index -- idx = round(scalar * (len - 1)) -- so adding
+    # a seventh entry silently re-points every scalar-driven node: 0.5 moves from
+    # find_total to find_difference, and 1.0 from present_data to read_table.
+    # read_table only ever arrives as a STRING (from the registry sentinel below,
+    # or from VARIANTS_BY_DNA during the exhaustive sweep), and strings are
+    # returned verbatim, so it stays reachable without disturbing the ladder.
     task_type     = extract_discrete_level(profile, "task_type", ["read_single", "compare_two", "find_total", "find_difference", "organize_table", "present_data"], "read_value")
     if task_type == "present_or_organize":
         # registry.py sentinel for "Present raw data ... in a pictograph with a
@@ -145,6 +158,17 @@ def generate_params(
         # directions, so alternate between building the pictograph from raw data
         # and reading a pictograph back into a table, per seed.
         task_type = rng.choice(["present_data", "organize_table"])
+    if task_type == "tabular_and_pictograph":
+        # registry.py sentinel for "Interpret data IN TABULAR FORM AND in a
+        # pictograph with or without scale" (mat_g2_dp_q3_1). The sentence names
+        # two displays, and only the pictograph one was ever rendered -- a blind
+        # reviewer: "Every one of the twelve sampled items opens with 'Look at the
+        # picture graph'; none references reading a table."
+        # "read_table" shows a completed table and asks for one count back; it is
+        # served by the new "read" mode of fill_in_table (the only formatter in
+        # the pipeline that draws a data table at all -- until now it could only
+        # blank one out, which is the "organize" skill, not the "interpret" one).
+        task_type = rng.choice(["read_table", "read_value", "compare_two"])
     if task_type == "read_or_compare":
         # registry.py sentinel for "Interpret data in tabular form and in
         # a pictograph..." (mat_g2_dp_q3_1): alternate between reading a
@@ -188,8 +212,41 @@ def generate_params(
     max_mult = val_hi // scale if scale > 0 else val_hi
     if max_mult < min_mult:
         max_mult = min_mult
-    
+
+    # The upper value bound is interpolated from the difficulty scalar, but the
+    # counts must be whole multiples of the scale -- so a large scale against a
+    # modest bound leaves exactly one usable multiple (scale 10 with val_hi 19
+    # gives min_mult == max_mult == 1) and EVERY category renders the same count.
+    # That is a flat graph: one picture per row, nothing to compare, and the scale
+    # itself never exercised. A blind reviewer caught it as "every category the
+    # value 10 at a scale of 10". Widen to the grade's own hard ceiling, which is
+    # the bound the curriculum sets, rather than the interpolated one.
+    if max_mult <= min_mult:
+        hard_ceiling = val_hi_bound // scale if scale > 0 else val_hi_bound
+        if hard_ceiling > min_mult:
+            max_mult = min(min_mult + 2, hard_ceiling)
+
+
     values = [rng.randint(min_mult, max_mult) * scale for _ in categories]
+
+    # "Which has more: A or B?" has no correct answer when A and B hold the same
+    # count, and 51 of 249 comparison items rendered exactly that -- the keyed
+    # category was simply whichever the sampler drew first (the branch below used
+    # >=), so a pupil who read the graph correctly was marked wrong. A comparison
+    # needs at least two distinct counts to compare; if the value range is too
+    # narrow to give one, that is a parameter error and must be loud, not silently
+    # served to a student.
+    if task_type in ("compare", "compare_two") and len(set(values)) == 1:
+        bumped = values[0] + scale
+        if bumped > val_hi:
+            bumped = values[0] - scale
+        if bumped < val_lo or bumped == values[0]:
+            raise ValueError(
+                f"pictographs: cannot build a comparison for node grade {grade} -- every "
+                f"category must take the same value {values[0]} (val range {val_lo}..{val_hi}, "
+                f"scale {scale}), so 'which has more' has no answer. seed={seed}"
+            )
+        values[rng.randrange(len(values))] = bumped
     vp = {
         "categories": categories,
         "counts": values,
@@ -205,18 +262,33 @@ def generate_params(
         return {
         "blank_target": "answer",
             "visual_params": vp,
+            # "scale" was missing from this branch (and only this class of branch),
+            # so generate_hints fell back to values.get("scale", 1) and told the
+            # pupil "Each picture stands for 1 item" on 76 items whose own stem
+            # announced "Each 🍎 = 5", spelling out "× 1 =" in the worked count.
+            "scale": scale,
             "question_category": question_category,
             "answer": answer,
             "task_type": task_type,
         }
 
     if task_type in ("compare", "compare_two"):
-        idx_a, idx_b = rng.sample(range(len(categories)), 2)
-        # answer is the category name with more items
-        answer_cat = categories[idx_a] if values[idx_a] >= values[idx_b] else categories[idx_b]
+        # Only pairs that actually differ: a tie makes the stem unanswerable, and
+        # rng.sample() alone had no way to exclude one.
+        distinct = [
+            (i, j)
+            for i in range(len(values))
+            for j in range(len(values))
+            if i < j and values[i] != values[j]
+        ]
+        idx_a, idx_b = rng.choice(distinct)
+        if rng.random() < 0.5:
+            idx_a, idx_b = idx_b, idx_a
+        answer_cat = categories[idx_a] if values[idx_a] > values[idx_b] else categories[idx_b]
         return {
         "blank_target": "answer",
             "visual_params": vp,
+            "scale": scale,
             "question_category": f"{categories[idx_a]} vs {categories[idx_b]}",
             "compare_a": categories[idx_a],
             "compare_b": categories[idx_b],
@@ -228,6 +300,7 @@ def generate_params(
         return {
         "blank_target": "answer",
             "visual_params": vp,
+            "scale": scale,
             "question_category": "total",
             "answer": sum(values),
             "task_type": task_type,
@@ -249,6 +322,23 @@ def generate_params(
             "task_type": task_type,
         }
         
+    if task_type == "read_table":
+        # The data is displayed as a completed TABLE, not a pictograph, and the
+        # student reads one category's count back out of it. "values" is repeated
+        # at the top level because fill_in_table reads counts from that key,
+        # while the pictograph formatters read them from visual_params["counts"].
+        q_idx = rng.randint(0, len(categories) - 1)
+        return {
+            "blank_target": "answer",
+            "visual_params": vp,
+            "categories": categories,
+            "values": values,
+            "scale": scale,
+            "question_category": categories[q_idx],
+            "answer": values[q_idx],
+            "task_type": task_type,
+        }
+
     if task_type == "organize_table":
         # Table expects all values or something similar, answer can just be the entire dict of categories/values
         # Or an interaction where they fill in the entire table
@@ -288,12 +378,33 @@ def generate_hints(
     scale       = values.get("scale", 1)
     task_type   = values.get("task_type", "read_value")
 
+    if task_type == "read_table":
+        # A table carries no symbol and no scale, so the pictograph hints below
+        # (count the pictures, each picture stands for N) would describe a
+        # display this item never shows.
+        chart_word = "table" if "table" in cumulative_vocab else "chart"
+        cat = values.get("question_category", "the category")
+        return [
+            f"Look at the {chart_word} carefully.",
+            f"Find the row labelled '{cat}'.",
+            f"Read the number written next to it in the Count column.",
+        ]
+
     hints = [f"Look at the {pg_label} carefully."]
 
     if scale > 1:
-        hints.append(
-            f"Each picture in the {key_label} stands for {scale} items ({scale_label} = {scale})."
-        )
+        # Both vocab fallbacks are noun PHRASES, not nouns, and this template
+        # wrapped them in "the ... ( ... = N)": pupils who had not met "key" or
+        # "scale" were served "Each picture in the the legend that shows what each
+        # picture means stands for 5 items (what each picture stands for = 5)."
+        # When the words are known the technical phrasing is the point; when they
+        # are not, say it plainly instead of splicing a definition into a slot.
+        if "key" in cumulative_vocab and "scale" in cumulative_vocab:
+            hints.append(
+                f"Each picture in the {key_label} stands for {scale} items ({scale_label} = {scale})."
+            )
+        else:
+            hints.append(f"Each picture stands for {scale} items.")
     else:
         hints.append("Each picture stands for 1 item.")
 
@@ -325,7 +436,7 @@ PICTOGRAPHS_DNA = DNA(
     answer_formula=None,
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,
-    compatible_formatters=["bar_chart_read", "pictograph_read", "pictograph_set", "fill_in_table"],
+    compatible_formatters=["bar_chart_read", "pictograph_read", "pictograph_set", "fill_in_table", "table_read"],
     requires_context=False,
     visual_home="BarChart",
     difficulty_axes=_DIFFICULTY_AXES,

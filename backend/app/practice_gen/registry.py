@@ -886,6 +886,16 @@ def _parse_competency_bounds(
         # genuinely interprets the dataset -- unlike the bare whole-number
         # comparing_ordering DNA this node used to be co-mapped to and was
         # removed from; see NODE_TO_DNA).
+        elif "interpret" in text and ("tabular" in text or "in a table" in text):
+            # "Interpret data IN TABULAR FORM AND in a pictograph..."
+            # (mat_g2_dp_q3_1) names two displays to interpret, and only the
+            # pictograph existed: fill_in_table could blank a table out but not
+            # show a filled one, so "read the table" was a real capability gap,
+            # not a routing bug. A blind reviewer: "Every one of the twelve
+            # sampled items opens with 'Look at the picture graph'; none
+            # references reading a table." The read mode of fill_in_table is new
+            # in the same commit as this binding; this sentinel is what reaches it.
+            bounds["task_type"] = "tabular_and_pictograph"
         elif "interpret" in text:
             # Sentinel resolved per-seed inside pictographs.py's own
             # generate_params (registry bounds are computed once per node,
@@ -908,6 +918,13 @@ def _parse_competency_bounds(
         # without regrouping"/"without regrouping" elsewhere in this file.
         if ("without a scale" in text or "without scale" in text) and "with or without" not in text:
             bounds["scale_type"] = "no_scale"
+        elif "with or without" in text:
+            # Guarding the branch above stopped the node being pinned to
+            # "no_scale", but left scale_type UNBOUND -- and unbound means
+            # pictographs.py's G2 default, which draws only from scale_2/5/10.
+            # "Without" was therefore unreachable on the one node whose
+            # competency explicitly asks for both. Sentinel, resolved per seed.
+            bounds["scale_type"] = "with_or_without_scale"
 
     elif dna_name == "comparing_ordering":
         if "order" in text:

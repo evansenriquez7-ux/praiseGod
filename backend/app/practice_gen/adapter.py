@@ -225,6 +225,13 @@ FORMATTER_ROUTES: Dict[str, tuple] = {
         "format_fill_in_table",
         {"interaction_mode": "set", "answer_collection": "fill_in_blank"},
     ),
+    # Same function in "read" mode: the table is shown WITH its counts and the
+    # student interprets it, rather than filling it in.
+    "table_read": (
+        "backend.app.practice_gen.formatters.visual.fmt_fill_in_table",
+        "format_fill_in_table",
+        {"interaction_mode": "read", "answer_collection": "mcq"},
+    ),
     "number_bond": (
         "backend.app.practice_gen.formatters.visual.fmt_number_bond",
         "format_number_bond",

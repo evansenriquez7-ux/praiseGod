@@ -180,8 +180,18 @@ def format_pictograph(
             correct_count = ctx.correct_answer if ctx.correct_answer is not None else abs(counts[categories.index(comp_a)] - counts[categories.index(comp_b)])
             question_text = f"Look at the picture graph. What is the difference between {comp_a} and {comp_b}?"
         else: # read_value
-            ask_idx = rng.randint(0, len(categories) - 1)
-            ask_cat = categories[ask_idx]
+            # The DNA already chose which category to ask about, and generate_hints
+            # built its worked count from THAT choice. Re-drawing here ignored it,
+            # so on 172 items the stem asked for one category while the hint walked
+            # the pupil through counting a different one ("How many are in bananas?"
+            # / "Count the pictures for 'apples'..."). Honour the DNA's choice; only
+            # draw when it did not make one.
+            ask_cat = ctx.values.get("question_category")
+            if ask_cat in categories:
+                ask_idx = categories.index(ask_cat)
+            else:
+                ask_idx = rng.randint(0, len(categories) - 1)
+                ask_cat = categories[ask_idx]
             correct_count = counts[ask_idx]
             vp["ask_category"] = ask_cat
             if scale > 1:
