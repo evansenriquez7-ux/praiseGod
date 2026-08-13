@@ -3172,3 +3172,59 @@ smallest relative gap: 0.200
 
 `validate_matrix --node` PASS on all four area nodes. The assembly-point change is in shared code,
 so the full sweep matters: `run_all` 151/151, 0 failures, all ten contract checks, stages 1–5 green.
+
+---
+
+## 2026-08-13 — Tick A: the freshness check compared the stem and nothing else
+
+### The blind spot
+The gate re-rendered every cited seed and compared `question_text`. It did not compare the keyed
+answer, and it did not compare the options. That gap was not theoretical — the previous tick
+changed `mat_g3_mg_q1_0`'s distractors while leaving every stem byte-identical:
+
+```
+mat_g3_mg_q1_0 seed 50
+  stem identical:     True          <- so the gate reported the review FRESH
+  reviewed options:   [8, 15, 16, 17]
+  live options:       [8, 12, 16, 20]
+```
+
+The filed review's rationale reasons at length about 15, 16 and 17 — options that no longer
+render. **The review was substantively stale while NON-VERDICT reported 0 for it.** A reviewer
+judges distractor quality, scale and answerability from the options as much as from the stem, so
+a review whose options have moved is exactly as stale as one whose stem has.
+
+This is the shape §2 names: *a check that runs on a subset it doesn't announce*. It is the third
+blind spot this gate has had, after "freshness validated the samples block but not the rationale"
+and "every content check skipped non-PASS reviews".
+
+### The fix
+`_validate_freshness` now compares, per cited seed: the stem, then the keyed answer, then the set
+of offered options — reporting at most one error per seed, since the stem already proves drift
+when it differs. Options are compared as an **unordered multiset of values**: which options are
+offered is what the reviewer judged, and A/B/C/D placement moving is not drift in the content.
+
+Per the loop's own instruction to state out loud what a new check does *not* examine: a sample
+that records no `options` key is not option-checked. That is correct for cloze and fill-in-blank
+items, which genuinely have none — 480 of the 2107 samples in the tree — but it does mean an MCQ
+review filed without its options escapes this check. Packets emit options for every MCQ, so new
+reviews carry them. This limitation is written into the function's docstring, not just here.
+
+### Verification — the check catches what it was written for
+
+```
+NON-VERDICT: 18       (was 7)
+by node: {'mat_g3_mg_q1_0': 11, 'mat_g3_mg_q1_1': 7}
+
+mat_g3_mg_q1_0: STALE review — seed 42 keeps its wording but is no longer offered the same
+options. Reviewed: ['14', '18', '4', '9']; now offers: ['14', '18', '21', '9']. Distractor
+quality, scale and answerability are judged from the options, so a v...
+```
+
+The eleven new errors land entirely on the one node whose options moved. **The other 148 reviewed
+nodes are untouched**, so the check is precise rather than noisy — it found the drift that
+existed and invented none.
+
+Full `run_all`: 151/151, 0 failures, all ten contract checks, stages 1–5 green. Ending this tick
+with a higher NON-VERDICT than it started is correct and expected: an honest red beats a silent
+green, and the reviews it names are being re-reviewed.

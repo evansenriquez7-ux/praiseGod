@@ -46,7 +46,7 @@ import collections
 import json
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Set
+from typing import Any, Dict, List, Optional, Set
 
 from backend.app.practice_gen.registry import get_all_node_ids, get_node_info
 from backend.app.practice_gen.validation.judgment_packets import _render_sample
@@ -231,6 +231,26 @@ def _validate_freshness(node_id: str, data: Dict[str, Any]) -> List[str]:
     Render failures are hard errors, never skips (Ground Rule 3): a seed the
     pipeline can no longer generate is a strictly worse form of drift than one
     that renders differently.
+
+    **What is compared, and what is not.** The stem, the keyed answer, and the set
+    of offered options. For a long time only the stem was compared, and that gap was
+    live: a change to mat_g3_mg_q1_0's distractors left every stem byte-identical
+    while the options went from [8, 15, 16, 17] to [8, 12, 16, 20], so the gate
+    called the review fresh while its rationale reasoned at length about 15, 16 and
+    17 -- options that no longer existed. A reviewer judges distractor quality,
+    scale and answerability from the options as much as from the stem, so a review
+    whose options have moved is exactly as stale as one whose stem has.
+
+    Options are compared as an unordered multiset of values, not as a sequence:
+    which options are offered is what the reviewer judged, and A/B/C/D placement
+    moving is not drift in the content.
+
+    Not compared, and named here so the next reader does not have to rediscover it:
+    a sample that recorded no `options` key at all is not option-checked. That is
+    correct for cloze and fill-in-blank items, which genuinely have none (480 of
+    2107 samples in the current tree), but it does mean an MCQ review filed without
+    its options escapes this check. Packets emit options for every MCQ, so new
+    reviews carry them.
     """
     errs: List[str] = []
     for i, s in enumerate(data.get("samples_reviewed") or []):
@@ -248,15 +268,59 @@ def _validate_freshness(node_id: str, data: Dict[str, Any]) -> List[str]:
             continue
         reviewed_text = _normalize(s.get("question_text"))
         current_text = _normalize(current.get("question_text"))
+        rebuild = (
+            f"Rebuild the packet with: "
+            f"python -m backend.app.practice_gen.validation.judgment_packets --node {node_id}"
+        )
         if reviewed_text != current_text:
             errs.append(
                 f"{node_id}: STALE review — seed {seed} no longer renders the content that was "
                 f"judged. Reviewed: {reviewed_text!r}; now renders: {current_text!r}. The "
                 f"generator changed after this review was filed, so its verdict is unearned; "
-                f"a fresh blind re-review is required. Rebuild the packet with: "
-                f"python -m backend.app.practice_gen.validation.judgment_packets --node {node_id}"
+                f"a fresh blind re-review is required. {rebuild}"
+            )
+            continue  # the stem already proves drift; one error per seed is enough
+
+        reviewed_answer = _normalize(s.get("correct_answer"))
+        current_answer = _normalize(current.get("correct_answer"))
+        if reviewed_answer != current_answer:
+            errs.append(
+                f"{node_id}: STALE review — seed {seed} keeps its wording but no longer keys the "
+                f"same answer. Reviewed: {reviewed_answer!r}; now keys: {current_answer!r}. A "
+                f"verdict about correctness cannot survive the answer changing under it. {rebuild}"
+            )
+            continue
+
+        reviewed_opts = _option_values(s)
+        current_opts = _option_values(current)
+        if reviewed_opts is not None and current_opts is not None and reviewed_opts != current_opts:
+            errs.append(
+                f"{node_id}: STALE review — seed {seed} keeps its wording but is no longer offered "
+                f"the same options. Reviewed: {reviewed_opts}; now offers: {current_opts}. "
+                f"Distractor quality, scale and answerability are judged from the options, so a "
+                f"verdict about them is unearned once they move. {rebuild}"
             )
     return errs
+
+
+def _option_values(sample: Dict[str, Any]) -> Optional[List[str]]:
+    """
+    The offered option values as a sorted list of strings, or None when the sample
+    records no options at all (cloze and fill-in-blank items genuinely have none).
+
+    Sorted because which options are offered is what a reviewer judges; their
+    A/B/C/D placement moving is not drift in the content.
+    """
+    opts = sample.get("options")
+    if not isinstance(opts, list):
+        return None
+    values: List[str] = []
+    for o in opts:
+        if isinstance(o, dict) and "value" in o:
+            values.append(_normalize(o["value"]))
+        else:
+            values.append(_normalize(o))
+    return sorted(values)
 
 
 def _rationale_skeleton(rationale: str) -> str:
