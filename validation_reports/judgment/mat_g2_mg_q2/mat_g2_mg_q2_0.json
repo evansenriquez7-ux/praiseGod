@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_mg_q2_0",
-  "reviewed_by": "Opus 5 blind reviewer, re-review after the conversion gate and cm ceiling, 2026-08-13",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the ruler routing fix, 2026-08-13",
   "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
@@ -10,7 +10,6 @@
     45,
     46,
     50,
-    55,
     500,
     501,
     502,
@@ -50,28 +49,28 @@
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 1,
+      "formatter": "read_mcq",
+      "question_text": "How long is the object? Give your answer in cm.",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 1,
           "is_correct": true
         },
         {
-          "key": "B",
-          "value": 0,
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": 3,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 2,
+          "value": 0,
           "is_correct": false
         }
       ]
@@ -134,13 +133,13 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 2,
+      "formatter": "read_mcq",
+      "question_text": "How long is the object? Give your answer in cm.",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": 20,
           "is_correct": false
         },
         {
@@ -150,12 +149,12 @@
         },
         {
           "key": "C",
-          "value": 1,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 3,
+          "value": 1,
           "is_correct": false
         }
       ]
@@ -188,34 +187,6 @@
           "key": "D",
           "value": 9,
           "text": "9",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "How long is the object? Give your answer in cm.",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 20,
           "is_correct": false
         }
       ]
@@ -338,32 +309,28 @@
     },
     {
       "seed": 601,
-      "formatter": "cloze",
+      "formatter": "read_mcq",
       "question_text": "A shoe is 20 cm long. A ruler is 15 cm long. How many cm longer is a shoe than a ruler?",
-      "correct_answer": 5,
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
           "value": 4,
-          "text": "4",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 6,
-          "text": "6",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 7,
-          "text": "7",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 5,
-          "text": "5",
           "is_correct": true
         }
       ]
@@ -398,58 +365,58 @@
     },
     {
       "seed": 603,
-      "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ m.",
-      "correct_answer": 3,
+      "formatter": "read_mcq",
+      "question_text": "How long is the object? Give your answer in m.",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 4,
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": 2,
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": true
         }
       ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The compare half of the sentence is fulfilled and answerable from the stem alone: seed 44 'Which is longer: 7 cm or 9 cm?' and seed 500 'Which is longer: 60 cm or 68 cm?' carry both quantities in the text. The measure half is not answerable. Seeds 43 and 46 both render 'Measure the object. Its length is ___ cm.' and seed 55 renders 'How long is the object? Give your answer in cm.' Neither names an object nor carries any depiction, ruler image, or scale in the sample, so nothing in the stem determines the keyed answers 1, 2 and 2; a student can only guess. Seed 603 'Measure the object. Its length is ___ m.' has the identical hole with a keyed answer of 3. Four of fourteen samples are therefore unanswerable as written, and they are exactly the samples that would have carried the verb measure."
+      "verdict": "PASS",
+      "rationale": "All three clauses are exercised and every sample is answerable on its own terms. The visual items are seeds 43 and 46, 'How long is the object? Give your answer in cm.', and seed 603, 'How long is the object? Give your answer in m.', all read_mcq ruler reads judged as diagram items. The remaining ten are text and carry their own quantities: seed 42, 'The distance from the bench to the tree is 2 m. The distance from the gate to the tree is 1 m. Which distance is longer?', and seed 601, 'A shoe is 20 cm long. A ruler is 15 cm long. How many cm longer is a shoe than a ruler?'. No item in this packet is a bare stem with no data."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Taking each named part separately. Compare lengths of objects: found and sound, seeds 44, 45, 50, 600, 602 and 500. Distance in meters: found, seed 42 'The distance from the bench to the tree is 2 m. The distance from the gate to the tree is 1 m.' and seeds 501 and 502. Measure lengths in centimeters: attempted at seeds 43, 46 and 55 but hollow, since 'Measure the object. Its length is ___ cm.' gives nothing to measure. Measure lengths in meters: attempted only at seed 603, same hollow form. Using appropriate measuring tools: not found anywhere in the packet. No stem asks which tool to use, mentions a tape measure, or shows a ruler in use; seed 601 'A shoe is 20 cm long. A ruler is 15 cm long. How many cm longer is a shoe than a ruler?' names a ruler only as a measured object, not as an instrument. Two named parts are missing or non-functional."
+      "verdict": "PASS",
+      "rationale": "Each named part is present and I found all of them separately. Measuring in centimetres: seeds 43 and 46. Measuring in metres: seed 603, 'How long is the object? Give your answer in m.'. Comparing lengths: seeds 44, 45, 50, 500, 600, 602 and the difference at seed 601. Distance in metres: seeds 42, 501 and 502, 'The distance from the bench to the tree is 65 m. The distance from the gate to the tree is 47 m. Which distance is longer?'. The measuring-tool clause is carried by the ruler reads, and both m and cm are genuinely used rather than one standing in for the other."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "No item requires an operation beyond Grade 2 Quarter 2. The comparison items ask only which of two two-digit quantities is larger, as in seed 500 'Which is longer: 60 cm or 68 cm?' and seed 501 'The distance from the bench to the tree is 82 m.' The single arithmetic item, seed 601 'A shoe is 20 cm long. A ruler is 15 cm long. How many cm longer is a shoe than a ruler?', needs one subtraction within 100 keyed to 5. No multiplication, division, fractions, decimals or unit conversion between cm and m appears in any stem, and no item mixes the two units inside one comparison."
+      "rationale": "Nothing exceeds Grade 2 Quarter 2. The heaviest operation is the difference at seed 601, 'How many cm longer is a shoe than a ruler?', taken from 'A shoe is 20 cm long. A ruler is 15 cm long.', a within-ten subtraction with no regrouping. Everything else is an ordering judgement between two whole numbers, as at seed 501, 'The distance from the bench to the tree is 82 m. The distance from the gate to the tree is 37 m. Which distance is longer?'. Notably no item mixes m and cm in one stem, so no student is asked to convert between the two units, which would be past this node."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Three formatters appear (mcq, cloze, read_mcq) but the fourteen samples collapse into only four stem families, one of which dominates. Six samples reuse the wording 'Which is longer: ' with only the two numbers changed (seeds 44, 45, 50, 600, 602, 500). Three reuse the identical landmark framing 'The distance from the bench to the tree is' with the same bench, gate and tree every time (seeds 42, 501, 502). Three more repeat 'Measure the object. Its length is ___ cm.' verbatim. Only seed 601 offers a contextual word problem, and only seed 55 varies the read wording with 'How long is the object? Give your answer in cm.' The surface variety is thin for a competency that spans measuring, comparing and distance."
+      "verdict": "PASS",
+      "rationale": "Three formatters appear (read_mcq, mcq, cloze) over five distinct stems: the centimetre ruler read at seeds 43 and 46, the metre ruler read at seed 603, the bare ordering item 'Which is longer: 7 cm or 9 cm?', the distance comparison at seeds 42, 501 and 502, and the difference at seed 601. Both units are represented, the magnitudes range from 'Which is longer: 7 cm or 3 cm?' up to 'Which is longer: 60 cm or 68 cm?', and no two samples in the packet render identically. The ordering stem does account for six of thirteen, but the surrounding spread is adequate."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Unit assignment matches the sentence precisely: objects are quantified in cm and landmark separations in m, as in seed 502 'The distance from the bench to the tree is 65 m. The distance from the gate to the tree is 47 m. Which distance is longer?' Two drifts. First, the clause about using appropriate measuring tools is never exercised, so the stems land short of the written scope. Second, seed 601 'How many cm longer is a shoe than a ruler?' asks for a quantified difference, which is a solve-a-problem task rather than the comparison this sentence names, and the same template appears in the sibling solve lc of this node group."
+      "rationale": "The sentence says compare lengths of objects, and six of thirteen samples reduce that to comparing two bare numerals with no object and no tool anywhere in the stem: seed 44 'Which is longer: 7 cm or 9 cm?', seed 45 'Which is longer: 5 cm or 7 cm?', seed 50 'Which is longer: 8 cm or 5 cm?', seed 500 'Which is longer: 60 cm or 68 cm?', seed 600 'Which is longer: 5 cm or 6 cm?' and seed 602 'Which is longer: 7 cm or 3 cm?'. These are answered by whole-number order alone and would read the same with the unit deleted, so they exercise number comparison rather than length comparison. Only seed 601 compares the lengths of two named objects, 'A shoe is 20 cm long. A ruler is 15 cm long.'. The distance items at seeds 42, 501 and 502 are properly situated by contrast."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "Units suit the things measured throughout, and the large seeds are plausible: seed 501 'The distance from the bench to the tree is 82 m. The distance from the gate to the tree is 37 m.' is a believable schoolyard pair, and seed 601 'A shoe is 20 cm long. A ruler is 15 cm long.' pairs objects with sensible sizes. The small end is not plausible. Seed 42 'The distance from the bench to the tree is 2 m. The distance from the gate to the tree is 1 m.' places a gate one metre from a tree, which is not a distance between landmarks. Seed 43 keys 'Measure the object. Its length is ___ cm.' to 1 and seed 46 keys the same stem to 2, so the child is asked to measure a one or two centimetre object; seed 603 'Measure the object. Its length is ___ m.' keys 3, a three metre object with no name to make that credible."
+      "rationale": "Unit choice is right throughout — centimetres for 'A shoe is 20 cm long. A ruler is 15 cm long.', metres for bench-to-tree distances, and 'The distance from the bench to the tree is 82 m.' is an ordinary schoolyard span. The concern is at the bottom of the ruler reads: seed 43, 'How long is the object? Give your answer in cm.', is keyed to a length of one centimetre and seed 46 to two centimetres. An object one centimetre long is barely a tick mark on a ruler diagram and is not the sort of classroom object a Grade 2 measuring lesson uses, especially when the same node happily works with 'Which is longer: 60 cm or 68 cm?'. Seed 603 keys a three-metre object, which is fine for a metre-tape task."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }

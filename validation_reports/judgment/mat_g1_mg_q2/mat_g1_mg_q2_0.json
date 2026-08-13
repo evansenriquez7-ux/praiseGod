@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_mg_q2_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the ruler routing fix, 2026-08-13",
+  "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
     42,
@@ -10,7 +10,6 @@
     45,
     46,
     50,
-    55,
     500,
     501,
     502,
@@ -20,18 +19,18 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ paperclips.",
-      "correct_answer": 5,
+      "formatter": "read_mcq",
+      "question_text": "How long is the object? Give your answer in paperclips.",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 7,
+          "value": 6,
           "is_correct": false
         },
         {
@@ -41,35 +40,35 @@
         },
         {
           "key": "D",
-          "value": 4,
+          "value": 20,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ paperclips.",
-      "correct_answer": 10,
+      "formatter": "read_mcq",
+      "question_text": "How long is the object? Give your answer in paperclips.",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 10,
           "is_correct": true
         },
         {
-          "key": "B",
-          "value": 9,
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": 12,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 11,
+          "value": 9,
           "is_correct": false
         }
       ]
@@ -132,13 +131,13 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ paperclips.",
-      "correct_answer": 10,
+      "formatter": "read_mcq",
+      "question_text": "How long is the object? Give your answer in paperclips.",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 20,
           "is_correct": false
         },
         {
@@ -148,12 +147,12 @@
         },
         {
           "key": "C",
-          "value": 9,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 11,
+          "value": 9,
           "is_correct": false
         }
       ]
@@ -186,34 +185,6 @@
           "key": "D",
           "value": 9,
           "text": "9",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "How long is the object? Give your answer in paperclips.",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 20,
           "is_correct": false
         }
       ]
@@ -336,32 +307,28 @@
     },
     {
       "seed": 601,
-      "formatter": "cloze",
+      "formatter": "read_mcq",
       "question_text": "A pencil is 5 hands long. A shoe is 4 hands long. How many hands longer is a pencil than a shoe?",
-      "correct_answer": 1,
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
           "value": 0,
-          "text": "0",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 2,
-          "text": "2",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 3,
-          "text": "3",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 1,
-          "text": "1",
           "is_correct": true
         }
       ]
@@ -369,29 +336,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "\"Measure the object. Its length is ___ paperclips.\" and the \"distance between them\" items directly cover both halves this competency names: measuring an object's length and measuring the distance between two objects."
+      "verdict": "FAIL",
+      "rationale": "The length half of the sentence is carried only by the three read_mcq ruler items, seeds 42, 43 and 46, all reading 'How long is the object? Give your answer in paperclips.' — visual items, correctly judged with a diagram, and fine as such. The distance half is carried by seven text items on the mcq and cloze formatters that state no measurable information whatsoever: seed 44 is 'A box and a bag are placed apart. The distance between them is ___ blocks.' keyed to 5, and seed 501 is 'A box and a chair are placed apart. The distance between them is ___ steps.' keyed to 60. Neither formatter is a read or ruler type, so there is no diagram to count, and nothing in the stem separates the key from the distractors. The same empty frame recurs at seeds 45, 50, 500, 502 and 600. Measuring a distance is what the competency names, and these items cannot be measured, only guessed."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both sub-cases are present across the twelve sampled seeds, in more than one unit each -- paperclips for length, and blocks, steps, crayons, and hands for distance."
+      "verdict": "CONCERN",
+      "rationale": "Both named parts do appear, so nothing is wholly absent: length of an object at seeds 42, 43 and 46, and distance between two objects at seeds 44, 45, 50, 500, 501, 502 and 600. The concern is depth on the length side — all three of its samples are the one stem 'How long is the object? Give your answer in paperclips.' in the one unit paperclips, and seeds 43 and 46 render as the identical item, same stem and same four option values keyed to the same letter, so the length sub-case is really two distinct exemplars out of eleven."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Sentence structure such as \"A box and a bag are placed apart. The distance between them is ___ blocks.\" is short and concrete, matching Grade 1 Quarter 2."
+      "rationale": "Nothing here reaches past Grade 1 Quarter 2. The only arithmetic in the whole packet is the single-digit difference at seed 601, 'A pencil is 5 hands long. A shoe is 4 hands long. How many hands longer is a pencil than a shoe?', which is a take-away within ten. Every other item is a direct count off a diagram or a fill-in, no regrouping, no multiplication, no unit conversion, and the vocabulary stays at box, bag, chair, toy, pencil and shoe."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "mcq, cloze, and read_mcq formatters each cover both the length-of-an-object and distance-between-objects framings."
+      "verdict": "CONCERN",
+      "rationale": "Three formatters are present (read_mcq, mcq, cloze) and the non-standard units do vary across paperclips, blocks, steps, crayons and hands, which is real breadth. Against that, the distance sub-case is a single sentence frame reskinned seven times — 'placed apart. The distance between them is ___' at seeds 44, 45, 50, 500, 501, 502 and 600, differing only in the two nouns and the unit — and seeds 43 and 46 are a straight duplicate of each other, so eleven seeds yield far fewer than eleven distinct exercises."
     },
     "competency_alignment": {
       "verdict": "CONCERN",
-      "rationale": "Seed 601, \"A pencil is 5 hands long. A shoe is 4 hands long. How many hands longer is a pencil than a shoe?\", asks students to compute a difference between two given lengths, which is the solve-a-problem skill a sibling competency in this quarter owns, rather than measuring a length or distance directly."
+      "rationale": "Ten of eleven items sit inside the sentence, but seed 601, 'A pencil is 5 hands long. A shoe is 4 hands long. How many hands longer is a pencil than a shoe?', is a comparison-difference word problem. This node says only measure the length of an object and measure the distance between two objects; it does not name comparing, and how much longer belongs to the neighbouring solve-problems competency rather than to this one. The measurements are handed to the student rather than taken by the student."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "Most sampled values stay at or under 10, but seed 500 jumps to a 90-block distance and seeds 501/502 to 60, with nothing sampled in between to show how that scale is reached."
+      "rationale": "Unit choice suits the thing measured — paperclips for the length of a small object, blocks and steps for a gap between furniture — but the magnitudes at the top of the range are not classroom-plausible for Grade 1. Seed 500, 'A toy and a bag are placed apart. The distance between them is ___ blocks.', is keyed to 90; seed 501 is keyed to 60 steps and seed 502 to 60 in '___ crayons.', which is roughly six metres of crayons laid end to end. Iterating a non-standard unit ninety times is not something a Grade 1 child does, and it sits oddly beside the same node keying other distances to 5 and 10."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

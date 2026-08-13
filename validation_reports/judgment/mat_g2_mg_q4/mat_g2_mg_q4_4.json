@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_mg_q4_4",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the conversion gate and cm ceiling, 2026-08-13",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the ruler routing fix, 2026-08-13",
   "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
@@ -9,8 +9,7 @@
     44,
     45,
     46,
-    50,
-    68,
+    51,
     500,
     501,
     502,
@@ -80,56 +79,56 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 7,
+      "formatter": "read_mcq",
+      "question_text": "How long is the object? Give your answer in cm.",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 8,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 7,
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": 9,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 7,
-          "is_correct": true
+          "value": 6,
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 5,
+      "formatter": "read_mcq",
+      "question_text": "How long is the object? Give your answer in cm.",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 7,
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 5,
           "is_correct": true
         },
         {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 4,
+          "value": 6,
           "is_correct": false
         }
       ]
@@ -163,61 +162,33 @@
       ]
     },
     {
-      "seed": 50,
+      "seed": 51,
       "formatter": "cloze",
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 8,
+      "question_text": "A rectangle has sides 9 cm and 9 cm. What is its perimeter?",
+      "correct_answer": 36,
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "text": "9",
+          "value": 38,
+          "text": "38",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 8,
-          "text": "8",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 68,
-      "formatter": "read_mcq",
-      "question_text": "How long is the object? Give your answer in cm.",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 9,
+          "value": 35,
+          "text": "35",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 20,
-          "is_correct": false
+          "value": 36,
+          "text": "36",
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 7,
+          "value": 37,
+          "text": "37",
           "is_correct": false
         }
       ]
@@ -252,45 +223,41 @@
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 82,
+      "formatter": "read_mcq",
+      "question_text": "How long is the object? Give your answer in cm.",
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
           "value": 82,
-          "text": "82",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 84,
-          "text": "84",
+          "value": 87,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 81,
-          "text": "81",
+          "value": 83,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 83,
-          "text": "83",
+          "value": 81,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Measure the object. Its length is ___ cm.",
-      "correct_answer": 65,
+      "formatter": "read_mcq",
+      "question_text": "How long is the object? Give your answer in cm.",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 66,
+          "value": 70,
           "is_correct": false
         },
         {
@@ -300,7 +267,7 @@
         },
         {
           "key": "C",
-          "value": 67,
+          "value": 66,
           "is_correct": false
         },
         {
@@ -493,28 +460,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Seven of the sixteen seeds are not answerable from what the stem says: seeds 44, 45, 50, 501 and 502 read 'Measure the object. Its length is ___ cm.' and seeds 68 and 500 read 'How long is the object? Give your answer in cm.', with no object named and nothing depicted in the sample, so the student has nothing to measure. On the two verbs the sentence names, measure is never really exercised even in the perimeter items, because seeds 42, 43, 46, 603 and 604 hand over every side in the text; identify is reached only implicitly at seed 601, 'How much fencing is needed to go all the way around it?'."
+      "verdict": "CONCERN",
+      "rationale": "The perimeter items that exist are sound and correctly keyed: seed 42, 'A triangle has sides 2 cm, 1 cm, and 2 cm. What is its perimeter?', keys '5'; seed 603, 'A square has a side of 3 cm. What is its perimeter?', keys '12'; and seed 601, 'How much fencing is needed to go all the way around it?', keys '42' for the garden it describes. But only seven of the fifteen samples involve a perimeter at all, and the tools clause is never met on a figure, because no sample asks a student to measure the sides of a figure with a ruler and then total them."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Inside the perimeter items the figure set is reasonable: seed 42 'A triangle has sides 2 cm, 1 cm, and 2 cm.', seed 43 'A rectangle has sides 5 cm and 12 cm.', seed 603 'A square has a side of 3 cm.' and the contextual case at seed 601. But only 6 of 16 seeds are perimeter at all, no seed asks the student to obtain the side lengths with a measuring tool before adding them, and no seed works backwards from a given perimeter to a missing side."
+      "verdict": "FAIL",
+      "rationale": "The sentence names identifying, measuring, and appropriate tools, and only the computing of a perimeter is really covered. Identifying is absent: nothing asks which measurement is the perimeter or asks a student to trace the boundary of a figure, and the nearest thing is the wording at seed 601, 'How much fencing is needed to go all the way around it?'. Measuring with an appropriate tool is present only in the wrong place: seeds 44, 45, 500, 501 and 502 all read 'How long is the object? Give your answer in cm.', which is a ruler read of the length of one object, never the perimeter of a plane figure. Two of the three named sub-cases are therefore not covered."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Arithmetic stays inside Grade 2 Quarter 4. The largest total is at seed 43, 'A rectangle has sides 5 cm and 12 cm.', answered 34 by repeated addition rather than by any formula, and seed 603 totals 12. No multiplication is required, no decimals or fractions appear, and no later-grade vocabulary is used; seed 605 offers the Grade 2 choice 'centimeters or meters?', which is within reach at this quarter."
+      "rationale": "The structure suits Grade 2 Quarter 4. Seed 604, 'A triangle has sides 2 cm, 4 cm, and 4 cm.', is a three-addend sum; seed 43, 'A rectangle has sides 5 cm and 12 cm.', needs each side counted twice; and the largest total in the packet, at seed 601, is '42'. No formula notation appears, no multiplication shortcut is required, and there are no decimals or fractions anywhere in the packet."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Three formatters appear (mcq, cloze, read_mcq) over several distinct stem families: bare-figure perimeter at seeds 42, 43, 46, 603 and 604; a real-world context at seed 601, 'A rectangular garden is 11 m long and 10 m wide.'; unit selection at seed 605; and comparison at seed 607, 'Which distance is longer?'. Options are near-miss values around the key rather than repeats, and the key position moves between A, B, C and D across seeds."
+      "verdict": "CONCERN",
+      "rationale": "Figure variety is reasonable, with a triangle at seed 42 and seed 604, a rectangle at seed 43 and seed 46, a square at seed 603, and a real-world item at seed 601. Both triangles can exist: at seed 42, 'A triangle has sides 2 cm, 1 cm, and 2 cm.', the two shorter sides sum to more than the longest, and at seed 604, 'A triangle has sides 2 cm, 4 cm, and 4 cm.', likewise. Two things weaken it. Five samples repeat one identical stem, 'How long is the object? Give your answer in cm.', and seed 51, 'A rectangle has sides 9 cm and 9 cm. What is its perimeter?', presents a square under the name rectangle while seed 603 names a square outright, which reads as inconsistent at this grade."
     },
     "competency_alignment": {
       "verdict": "FAIL",
-      "rationale": "The sentence is about the perimeter of a plane figure, yet ten of the sixteen seeds address something else entirely: the length of a single unnamed object (seeds 44, 45, 50, 68, 500, 501, 502), unit selection at seed 605, 'Which unit would you use to measure the distance between the barangay hall and the plaza', magnitude comparison at seed 606, 'Which is longer: 1 cm or 6 cm?', and distance comparison at seed 607. None of those involves a plane figure or the boundary around it, so the majority of the pool sits outside the competency this node maps to."
+      "rationale": "Eight of the fifteen samples address a different competency entirely, with no plane figure and no boundary in sight. Seed 605 asks 'Which unit would you use to measure the distance between the barangay hall and the plaza: centimeters or meters?' and keys 'm'; seed 606 asks 'Which is longer: 1 cm or 6 cm?' and keys '6'; seed 607 asks 'The distance from the bench to the tree is 2 m. The distance from the gate to the tree is 3 m. Which distance is longer?' and keys '3'. Add the five ruler reads of 'How long is the object? Give your answer in cm.' and the majority of this node is Quarter 2 length-and-distance content standing on a node whose sentence is about the perimeter of a plane figure."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Magnitudes suit the tool implied. Measured objects run from 5 cm to 82 cm, all under a metre and within reach of a metre stick, while the large distances correctly switch units: seed 601 'A rectangular garden is 11 m long and 10 m wide.' and seed 605 keying 'm' for a barangay hall to plaza distance. Both triangles can exist under the triangle inequality: seed 42 'A triangle has sides 2 cm, 1 cm, and 2 cm.' has 1 plus 2 greater than 2, and seed 604 'A triangle has sides 2 cm, 4 cm, and 4 cm.' has 2 plus 4 greater than 4."
+      "verdict": "CONCERN",
+      "rationale": "Where a thing is named the unit fits it well: seed 601, 'A rectangular garden is 11 m long and 10 m wide.', uses meters for a garden, and the figure sides stay in centimeters throughout. The ruler items are where it breaks. Seeds 500, 501 and 502 all ask 'How long is the object? Give your answer in cm.' with keys in the sixties and eighties of centimeters, longer than the classroom ruler such an item implies, and because the stem names nothing beyond 'the object' neither the choice of tool nor the fit of unit to thing can be checked. Seed 46, 'A rectangle has sides 7 cm and 1 cm.', is a sliver a Grade 2 child would struggle to measure."
     }
   },
   "overall": "FAIL"

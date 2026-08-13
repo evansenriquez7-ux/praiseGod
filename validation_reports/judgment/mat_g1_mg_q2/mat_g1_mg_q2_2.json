@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g1_mg_q2_2",
-  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the estimate-branch fixes, 2026-08-13",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the ruler routing fix, 2026-08-13",
   "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
@@ -9,8 +9,6 @@
     44,
     45,
     46,
-    50,
-    55,
     500,
     501,
     502,
@@ -24,9 +22,9 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A notebook is 5 paperclips long. A book is 2 paperclips long. How many paperclips longer is a notebook than a book?",
-      "correct_answer": 3,
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
@@ -52,9 +50,9 @@
     },
     {
       "seed": 43,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A book is 10 paperclips long. A shoe is 6 paperclips long. How many paperclips longer is a book than a shoe?",
-      "correct_answer": 4,
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
@@ -80,9 +78,9 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A book is 5 blocks long. A shoe is 2 blocks long. How many blocks longer is a book than a shoe?",
-      "correct_answer": 3,
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
@@ -108,9 +106,9 @@
     },
     {
       "seed": 45,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A shoe is 10 steps long. A notebook is 2 steps long. How many steps longer is a shoe than a notebook?",
-      "correct_answer": 8,
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
@@ -136,9 +134,9 @@
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A pencil is 10 paperclips long. A book is 9 paperclips long. How many paperclips longer is a pencil than a book?",
-      "correct_answer": 1,
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
@@ -158,66 +156,6 @@
         {
           "key": "D",
           "value": 2,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "A notebook is 10 blocks long. A book is 8 blocks long. How many blocks longer is a notebook than a book?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "text": "2",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "A book is 5 paperclips long. A notebook is 1 paperclip long. How many paperclips longer is a book than a notebook?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 5,
           "is_correct": false
         }
       ]
@@ -252,41 +190,37 @@
     },
     {
       "seed": 501,
-      "formatter": "cloze",
+      "formatter": "read_mcq",
       "question_text": "A book is 60 steps long. A notebook is 22 steps long. How many steps longer is a book than a notebook?",
-      "correct_answer": 38,
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
           "value": 38,
-          "text": "38",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 40,
-          "text": "40",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 37,
-          "text": "37",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 39,
-          "text": "39",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A book is 60 crayons long. A notebook is 47 crayons long. How many crayons longer is a book than a notebook?",
-      "correct_answer": 13,
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
@@ -312,9 +246,9 @@
     },
     {
       "seed": 600,
-      "formatter": "mcq",
+      "formatter": "read_mcq",
       "question_text": "A shoe is 10 steps long. A book is 2 steps long. How many steps longer is a shoe than a book?",
-      "correct_answer": 8,
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
@@ -456,32 +390,28 @@
     },
     {
       "seed": 608,
-      "formatter": "cloze",
+      "formatter": "read_mcq",
       "question_text": "A shoe is 5 hands long. A crayon is 3 hands long. How many hands longer is a shoe than a crayon?",
-      "correct_answer": 2,
+      "correct_answer": "A",
       "options": [
         {
           "key": "A",
           "value": 2,
-          "text": "2",
           "is_correct": true
         },
         {
           "key": "B",
           "value": 4,
-          "text": "4",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 1,
-          "text": "1",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 3,
-          "text": "3",
           "is_correct": false
         }
       ]
@@ -490,28 +420,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Fifteen of the sixteen seeds pose a genuine solvable length problem in a non-standard unit, for example seed 42 'A notebook is 5 paperclips long. A book is 2 paperclips long. How many paperclips longer is a notebook than a book?'. Seed 605 does not: 'A toy and a bag are placed apart. The distance between them is ___ hands.' supplies no measurement, no reference object and no figure, yet the keyed answer is 10 with 9, 11 and 12 offered as distractors. Nothing in that stem lets a learner solve anything, so the item does not fulfil the verb of the competency."
+      "rationale": "Thirteen of the fourteen samples are genuine problems and are fully answerable from their own text — none of this node is visual, every stem supplies its own quantities. Seed 42, 'A notebook is 5 paperclips long. A book is 2 paperclips long. How many paperclips longer is a notebook than a book?', and the distance item at seed 603, 'The distance from the bench to the tree is 9 hands. The distance from the gate to the tree is 10 hands. Which distance is longer?', both work as stated. The exception is seed 605, 'A toy and a bag are placed apart. The distance between them is ___ hands.', which is on the cloze formatter, not a read or ruler type, and supplies no quantity at all — there is no problem to solve and no basis for the key."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The competency sentence names two things and both are present. Length is carried by seeds 42, 44, 500 and 608, for example seed 608 'How many hands longer is a shoe than a crayon?'. Distance is carried by seed 603 'The distance from the bench to the tree is 9 hands.' set against the gate-to-tree span. The sub-cases also go past plain difference: seed 602 asks 'Which is longer: 3 blocks or 6 blocks?' and seed 606 asks 'Are Segment A and Segment B equal in length?', so comparison, equality and difference are all exercised."
+      "rationale": "The sentence names lengths and distances, and both are present. Lengths dominate: the difference items at seeds 42, 43, 44, 45, 46, 500, 501, 502, 600 and 608, the ordering item at seed 602 'Which is longer: 3 blocks or 6 blocks?', and the equality item at seed 606 'Are Segment A and Segment B equal in length?'. Distances appear at seed 603, 'The distance from the bench to the tree is 9 hands.', and at seed 605. Problem types also span difference, ordering and equality rather than difference alone."
     },
     "cognitive_capacity": {
       "verdict": "CONCERN",
-      "rationale": "Seeds 500, 501 and 502 demand two-digit subtraction across a ten in Grade 1 Quarter 2. Seed 500 'A crayon is 90 blocks long. A shoe is 33 blocks long.' requires 90 minus 33; seed 501 pairs 'A book is 60 steps long.' with 'A notebook is 22 steps long.' for 60 minus 22; seed 502 needs 60 minus 47. The four options at seed 500 are 57, 56, 58 and 59, so no estimation shortcut is available and the learner must regroup. That is past the Grade 1 Quarter 2 subtraction range that the small seeds such as 42 and 608 sit comfortably inside."
+      "rationale": "Two items demand two-digit subtraction across a ten, which is Grade 2 arithmetic rather than Grade 1 Quarter 2: seed 500, 'A crayon is 90 blocks long. A shoe is 33 blocks long. How many blocks longer is a crayon than a shoe?', and seed 501, 'A book is 60 steps long. A notebook is 22 steps long. How many steps longer is a book than a notebook?'. Seed 502 is the same shape. The named operation is subtraction with regrouping. Seed 606 also leans on 'Segment A' and 'Segment B', line-segment vocabulary that a Grade 1 measurement lesson has no reason to introduce, where the rest of the node stays with a book, a shoe and a crayon. The small-difference items at seeds 42 and 608 show the right level."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Three formatters appear (mcq, cloze, read_mcq) across five distinct framings: the two-object difference stem, the direct comparison 'Which is longer: 3 blocks or 6 blocks?' at seed 602, the distance comparison at seed 603, the equality judgment 'Are Segment A and Segment B equal in length?' at seed 606, and a cloze fill at seed 50 over 'A notebook is 10 blocks long. A book is 8 blocks long.'. Units rotate across paperclips, blocks, steps, crayons and hands rather than repeating a single one."
+      "verdict": "CONCERN",
+      "rationale": "Five distinct stems do appear — the how-much-longer difference, 'Which is longer: 3 blocks or 6 blocks?', the distance comparison at seed 603, the equality check 'Are Segment A and Segment B equal in length?', and the fill-in at seed 605 — across three formatters and the units paperclips, blocks, steps, crayons and hands. But ten of fourteen samples are the one difference stem, and seeds 45 and 600 differ by a single noun: 'A shoe is 10 steps long. A notebook is 2 steps long.' against 'A shoe is 10 steps long. A book is 2 steps long.', same numbers and therefore the same answer. Several ordering items also offer option values that never appear in their own stem."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every stem measures in a real non-standard unit a Grade 1 child can physically lay end to end: 'A book is 5 blocks long.' at seed 44, 'A book is 10 paperclips long.' at seed 43, 'A shoe is 5 hands long.' at seed 608. No stem prints an internal placeholder token and none leaks a standard metric unit, which would belong to a later node. Seed 55 even inflects the unit correctly to 'A notebook is 1 paperclip long.' instead of a bare plural."
+      "rationale": "Every item is about a length or a distance expressed in a non-standard unit and every item asks the student to do something with those quantities rather than merely restate them: differences at seed 608, 'A shoe is 5 hands long. A crayon is 3 hands long. How many hands longer is a shoe than a crayon?', ordering at seed 602, equality at seed 606, and distance comparison at seed 603. Nothing strays into standard units, area or perimeter, and no item asks for a measurement instrument, which this sentence does not name."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Several object-and-unit pairings describe things that cannot exist. Seeds 45 and 600 both assert 'A shoe is 10 steps long.' when one shoe is a fraction of a single step; seed 502 asserts 'A book is 60 crayons long.', roughly five metres of book; seed 501 asserts 'A book is 60 steps long.'; and seed 500 asserts 'A crayon is 90 blocks long.' beside 'A shoe is 33 blocks long.', making the crayon nearly three times the shoe. The small-magnitude seeds are exactly right, so the defect is confined to the large-number pool, where unit and object are combined without regard to real size."
+      "verdict": "FAIL",
+      "rationale": "The object-to-unit pairings are physically impossible in several samples, and the unit is repeatedly larger than the thing it measures. Seed 45 and seed 600 both assert 'A shoe is 10 steps long.', making one shoe ten paces long. Seed 501 has 'A book is 60 steps long.' and seed 502 has 'A book is 60 crayons long.', roughly six metres of book. Seed 500 reads 'A crayon is 90 blocks long. A shoe is 33 blocks long.', which makes a crayon nearly three times the length of a shoe in the same unit. A Grade 1 child is expected to lay the unit alongside the object, so a shoe measured in steps and a crayon longer than a shoe teach the wrong thing about measurement, independently of the arithmetic. The small-number samples such as seed 44, 'A book is 5 blocks long. A shoe is 2 blocks long.', are the plausible ones."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }

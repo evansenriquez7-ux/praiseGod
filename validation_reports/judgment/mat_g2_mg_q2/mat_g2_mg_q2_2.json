@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_mg_q2_2",
-  "reviewed_by": "Opus 5 blind reviewer, re-review after the conversion gate and cm ceiling, 2026-08-13",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the ruler routing fix, 2026-08-13",
   "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
@@ -18,7 +18,7 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "An object measures 11 cm. About how many cm is that, rounded to the nearest 5?",
+      "question_text": "An object measures 11 m. About how many m is that, rounded to the nearest 5?",
       "correct_answer": 10,
       "options": [
         {
@@ -130,7 +130,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "An object measures 11 cm. About how many cm is that, rounded to the nearest 5?",
+      "question_text": "An object measures 11 m. About how many m is that, rounded to the nearest 5?",
       "correct_answer": 10,
       "options": [
         {
@@ -190,31 +190,31 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "An object measures 68 cm. About how many cm is that, rounded to the nearest 10?",
-      "correct_answer": 70,
+      "question_text": "An object measures 75 cm. About how many cm is that, rounded to the nearest 10?",
+      "correct_answer": 80,
       "options": [
         {
           "key": "A",
-          "value": 70,
-          "text": "70",
+          "value": 80,
+          "text": "80",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 69,
-          "text": "69",
+          "value": 79,
+          "text": "79",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 71,
-          "text": "71",
+          "value": 81,
+          "text": "81",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 72,
-          "text": "72",
+          "value": 82,
+          "text": "82",
           "is_correct": false
         }
       ]
@@ -222,27 +222,27 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "An object measures 81 cm. About how many cm is that, rounded to the nearest 10?",
-      "correct_answer": 80,
+      "question_text": "An object measures 31 cm. About how many cm is that, rounded to the nearest 10?",
+      "correct_answer": 30,
       "options": [
         {
           "key": "A",
-          "value": 80,
+          "value": 30,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 82,
+          "value": 32,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 79,
+          "value": 29,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 81,
+          "value": 31,
           "is_correct": false
         }
       ]
@@ -250,27 +250,27 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "An object measures 22 cm. About how many cm is that, rounded to the nearest 10?",
-      "correct_answer": 20,
+      "question_text": "An object measures 46 m. About how many m is that, rounded to the nearest 10?",
+      "correct_answer": 50,
       "options": [
         {
           "key": "A",
-          "value": 21,
+          "value": 51,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 20,
+          "value": 50,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 22,
+          "value": 52,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 19,
+          "value": 49,
           "is_correct": false
         }
       ]
@@ -279,28 +279,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "CONCERN",
-      "rationale": "Every item here is answerable from what the stem actually says, which is the key difference from a bare measure prompt: seed 42 'An object measures 11 cm. About how many cm is that, rounded to the nearest 5?' states the quantity, so the unnamed object costs nothing. What the items ask, however, is to round a number that has already been measured, not to estimate a length. The centimetre branch of the sentence is exercised at seeds 42, 46, 500, 501 and 502, and the distance branch at seeds 43, 44, 45 and 50 via 'The distance from the gate to the flagpole is 11 m. About how many m is that, rounded to the nearest 5?', but the branch that estimates a length in meters never appears."
+      "rationale": "Every one of the nine samples hands the student the measurement and then asks for a rounding of it. Seed 42 reads 'An object measures 11 m. About how many m is that, rounded to the nearest 5?' and seed 500 reads 'An object measures 75 cm. About how many cm is that, rounded to the nearest 10?'. Nothing in the packet asks a student to estimate an unknown length against a benchmark or a referent, so the verb the competency names is only partly met: the skill exercised is rounding a stated number. All nine items are plain text, none is a visual or ruler item, and each is fully answerable from its own stem."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The sentence names three parts. Estimate length using centimeters: found, seeds 42, 46, 500 'An object measures 68 cm. About how many cm is that, rounded to the nearest 10?', 501 and 502. Estimate distance using meters: found, seeds 43, 44, 45 and 50, all rendering 'The distance from the gate to the flagpole is 11 m. About how many m is that, rounded to the nearest 5?' Estimate length using meters: not found in any of the nine samples. Every metre-valued item in the packet is a distance between the gate and the flagpole; no stem asks for the length of an object in m. One of the three named parts is absent."
+      "verdict": "PASS",
+      "rationale": "The sentence names three things and all three are present in the packet. Length in meters appears at seed 42, 'An object measures 11 m'; length in centimeters appears at seed 500, 'An object measures 75 cm', and at seed 501, 'An object measures 31 cm'; distance in meters appears at seed 43, 'The distance from the gate to the flagpole is 11 m'. Nothing the sentence names is missing, and centimeters are never used for a distance."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "No operation beyond Grade 2 Quarter 2 is required. The heaviest demand is rounding a two-digit number, as at seed 501 'An object measures 81 cm. About how many cm is that, rounded to the nearest 10?' keyed to 80, and seed 502 keyed to 20. The 'rounded to the nearest 5' variant at seeds 42 to 50 is an unusual rounding base but stays within reach of a Grade 2 child who counts by fives, and 11 to 10 needs no midpoint rule. No multiplication, division, fraction or cm to m conversion appears anywhere."
+      "rationale": "Structure is one statement plus one question, single step, with no conversion between meters and centimeters and no decimals anywhere. Values stay small: seed 501 'An object measures 31 cm' and seed 502 'An object measures 46 m' round to the nearest 10, and the 'rounded to the nearest 5' wording at seed 42 leans on counting by fives, which Grade 2 has. Answer options are whole numbers, keyed at values such as '10' and '80'."
     },
     "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "Only two stem templates exist and both are heavily duplicated. Seeds 43, 44, 45 and 50 render byte-identical text, 'The distance from the gate to the flagpole is 11 m. About how many m is that, rounded to the nearest 5?', with the same keyed answer 10, differing only in the order of the four options. Seeds 42 and 46 are likewise identical to each other. Six of the nine samples use the value 11 and key 10. Only three samples, seeds 500, 501 and 502, show any real variation, and all three share the one template 'An object measures'. A student drawing several items from this node would repeatedly meet the same question."
+      "verdict": "CONCERN",
+      "rationale": "Six of the nine samples carry the same number. Seeds 42 and 46 both read 'An object measures 11 m' and seeds 43, 44, 45 and 50 all read 'The distance from the gate to the flagpole is 11 m', with the same key of '10' in all six, so only seeds 500, 501 and 502 bring new values. Separately, every distractor list sits within one or two of the given number, which leaves the key as the sole multiple of the rounding unit on offer, so seed 42 and seed 500 can both be answered by picking the round-looking number without carrying out any rounding."
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The sentence asks the child to estimate, that is to judge a length or distance without an exact measurement in hand. Every stem instead supplies the exact value first and asks for a rounding of it: 'An object measures 22 cm. About how many cm is that, rounded to the nearest 10?' at seed 502 is a rounding exercise wearing estimation wording. Nothing goes past the grade, so this is not over-reach, but the items sit beside the competency rather than on it, and no stem uses a benchmark such as a known object or a step to anchor a judgement."
+      "verdict": "PASS",
+      "rationale": "Scope is held exactly where the sentence puts it. Only meters and centimeters appear, never millimeters or kilometers, and no item asks for a conversion between the two. Distance is always given in meters as required, as at seed 43, 'The distance from the gate to the flagpole is 11 m', and no later idea such as perimeter, area or a decimal measure leaks in. Contexts are everyday Grade 2 ones such as the gate and the flagpole."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Units match the things they quantify. Objects are given in cm across a plausible classroom band, 11 cm at seed 42, 22 cm at seed 502, 68 cm at seed 500 and 81 cm at seed 501, none of which strains belief for a hand-held or desk-sized item even though the object is unnamed. Distance takes m, and 'The distance from the gate to the flagpole is 11 m' at seed 43 is a credible schoolyard span. No item quantifies a distance in cm or a small object in m."
+      "verdict": "CONCERN",
+      "rationale": "The centimeter items are well sized, with seed 500 'An object measures 75 cm' and seed 501 'An object measures 31 cm' both plausible for a handheld thing, and the distance stem at seed 43 is well matched at 11 m from a gate to a flagpole. The meter items applied to a thing are not: seed 502 reads 'An object measures 46 m' and seed 42 reads 'An object measures 11 m', magnitudes no classroom object has, and because the stem names nothing more specific than 'An object' the fit between the unit and the thing measured cannot be judged by the student at all."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }
