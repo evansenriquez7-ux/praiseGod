@@ -136,6 +136,7 @@ def generate_params(
         "read_measurement", "compare", "convert", "estimate", "choose_unit",
         "distance_between", "equal_length", "length_or_distance",
         "compare_distance", "compare_length_or_distance",
+        "measure_compare_or_distance",
     ):
         raise ValueError(
             f"generate_params (length_measurement): unknown task_type '{task_type}'."
@@ -146,10 +147,34 @@ def generate_params(
         # competency names two sub-tasks, so alternate between them per
         # seed rather than locking to one.
         task_type = random.Random(seed).choice(["read_measurement", "distance_between"])
+    if task_type == "measure_compare_or_distance":
+        # registry.py sentinel for "Measure AND compare lengths ... and distance in
+        # meters" (mat_g2_mg_q2_0): three named sub-tasks, so rotate across all
+        # three per seed rather than locking to the read_measurement default.
+        task_type = random.Random(seed).choice(
+            ["read_measurement", "compare", "distance_between"]
+        )
     if task_type == "compare_length_or_distance":
         # registry.py sentinel for "Compare lengths AND distances"
         # (mat_g1_mg_q2_1): alternate between the two framings per seed.
         task_type = random.Random(seed).choice(["compare", "compare_distance"])
+    # MOVED UP from below the compare_distance branch, where it could never take
+    # effect: the redirect ran *after* the branch that handles compare_distance, so a
+    # redirected distance_between fell past every handler to the read_measurement
+    # return at the bottom. mat_g2_mg_q2_0 rendered "Measure the object. Its length
+    # is ___ cm." for 125 of 200 seeds and never once mentioned a distance, though
+    # its competency names "distance in meters". Resolving it here, alongside the
+    # other sentinels, is the whole fix.
+    #
+    # Why redirect at all: the distance_between branch below is hardcoded to
+    # non-standard units ("hands", "paperclips"), a G1-only framing per MATATAG.
+    # compare_distance is the standard-units G2+ version of the same
+    # "distance between two objects" skill. Raising instead would fail
+    # validate_matrix's §1C sweep, which requires every declared task_type to render
+    # for every node mapped to this DNA regardless of grade.
+    if task_type == "distance_between" and grade >= 2:
+        task_type = "compare_distance"
+
     if task_type == "convert" and grade < 2:
         raise ValueError(
             f"generate_params (length_measurement): task_type='convert' is not available for grade={grade}."
@@ -254,6 +279,29 @@ def generate_params(
         # skill this competency names.
         cm_scale_items = ["a pencil", "a crayon", "a book", "a shoe", "a spoon"]
         m_scale_items = ["a classroom", "a hallway", "a garden", "a basketball court", "a road"]
+        # The competency names TWO scenarios -- "the length of an object AND the
+        # distance between two locations" -- and only the object half was ever
+        # rendered: a blind reviewer found "the two-location distance scenario that
+        # the same sentence of the competency requires does not show up once".
+        # Half the items now ask about a distance between places, which is always
+        # a metre-scale judgment at this grade.
+        if rng.random() < 0.5:
+            pair = rng.choice([
+                "the school and the market", "your house and the church",
+                "the classroom and the canteen", "the barangay hall and the plaza",
+            ])
+            return {
+                "blank_target": "answer",
+                "item": pair,
+                "unit_type": "non_standard",
+                "task_type": "choose_unit",
+                "answer": "m",
+                "distractors": ["cm", "either works", "neither works"],
+                "question": (
+                    f"Which unit would you use to measure the distance between "
+                    f"{pair}: centimeters or meters?"
+                ),
+            }
         use_cm = rng.random() < 0.5
         item = rng.choice(cm_scale_items if use_cm else m_scale_items)
         answer_unit = "cm" if use_cm else "m"
@@ -317,13 +365,24 @@ def generate_params(
         # non_standard is that...". The curriculum gate above now keeps this task at
         # Grade 2+, where unit_mode is always "cm" or "m", but the resolution stays
         # so the enum cannot leak again if that gate ever moves.
-        unit_label = rng.choice(_NON_STANDARD_UNITS) if unit_mode == "non_standard" else unit_mode
         # An estimate that rounds away the whole quantity is not an estimate: at
         # length 2 rounding to the nearest 10 gives 0, which a blind reviewer flagged
         # twice ("rounds 'An object measures 2 m' to the nearest 10, which collapses
         # to zero and does not model a realistic estimation scenario"). The rounding
         # unit is chosen from the magnitude instead, and the length floored, so the
         # rounded answer is always a real quantity.
+        # "Estimate length using meters or centimeters, AND DISTANCE USING METERS"
+        # (mat_g2_mg_q2_2). Only the object-length half was ever rendered -- a blind
+        # reviewer found the distance clause had "zero items ... all 11 seeds are the
+        # single template". Half the items now estimate a distance, and the
+        # competency names metres for that case specifically, so the unit is fixed.
+        estimate_distance = grade >= 2 and rng.random() < 0.5
+        if estimate_distance:
+            unit_mode = "m"
+        # Resolved AFTER the distance override above, so the label follows the unit
+        # actually in play. Every other branch resolves a real name for non-standard
+        # mode; this one used to print the enum straight into the stem.
+        unit_label = rng.choice(_NON_STANDARD_UNITS) if unit_mode == "non_standard" else unit_mode
         length = max(10, rng.randint(lo, hi))
         round_unit = 50 if length >= 100 else (10 if length >= 20 else 5)
         # A value already on the rounding boundary makes the estimate a no-op:
@@ -357,30 +416,13 @@ def generate_params(
             "round_to": round_unit,
             "answer": rounded,
             "question": (
-                f"An object measures {length} {unit_label}. "
-                f"About how many {unit_label} is that, rounded to the nearest {round_unit}?"
+                (f"The distance from the gate to the flagpole is {length} {unit_label}. "
+                 f"About how many {unit_label} is that, rounded to the nearest {round_unit}?")
+                if estimate_distance else
+                (f"An object measures {length} {unit_label}. "
+                 f"About how many {unit_label} is that, rounded to the nearest {round_unit}?")
             ),
         }
-
-    if task_type == "distance_between" and grade >= 2:
-        # The branch below is hardcoded to non-standard units ("hands",
-        # "paperclips", etc), a genuinely G1-only framing per MATATAG (G2
-        # moves to standard cm/m units). Nothing gated this for higher
-        # grades, so mat_g2_mg_q2_3's variant-coverage seed 605 (which pins
-        # task_type='distance_between' purely to demonstrate every declared
-        # task_type at least once) rendered a G1-style non-standard-unit
-        # item on a G2 node: "The distance between them is ___ hands." --
-        # ungrounded (no visual/object to count against) and regressive for
-        # the grade (blind review: cognitive_capacity FAIL, "unsolvable/
-        # broken item with no derivable answer"). Redirecting to
-        # compare_distance (the standard-units, G2+ version of the same
-        # "distance between two objects" skill, already implemented and
-        # already exercised successfully by this node at other seeds)
-        # keeps the declared task_type renderable -- raising instead would
-        # make validate_matrix's own exhaustive §1C sweep fail, since it
-        # expects every VARIANTS_BY_DNA-declared combination to succeed for
-        # every node mapped to this DNA, regardless of grade.
-        task_type = "compare_distance"
 
     if task_type == "distance_between":
         # "the distance between two objects" (mat_g1_mg_q2_0's second named

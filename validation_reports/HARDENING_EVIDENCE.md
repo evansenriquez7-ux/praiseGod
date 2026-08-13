@@ -3441,3 +3441,77 @@ the builder skips variant seeds the curriculum forbids rather than failing.
 
 `validate_matrix --node` PASS on all six affected nodes; full `run_all` 151/151, 0 failures, all
 ten contract checks, stages 1–5 green.
+
+---
+
+## 2026-08-13 — The distance clause: three G2 competencies named it, none served it
+
+### The failing rationales
+All three G2 length nodes name distance in their own sentence, and a blind reviewer found none of
+them rendering it:
+
+> `mat_g2_mg_q2_0`: *"The competency explicitly requires 'distance in meters,' yet the node's own
+> distance item ... never converts to meters"*
+> `mat_g2_mg_q2_1`: *"the two-location distance scenario that the same sentence of the competency
+> requires does not show up once"*
+> `mat_g2_mg_q2_2`: *"the competency's second clause (distance in metres) has **zero** items"*
+
+Measured before the fix — **0 of 200 items on each of the three nodes mentioned a distance at all**.
+
+### The root cause, and why it hid
+`mat_g2_mg_q2_0` was simply unbound (`{}`), so the DNA's `read_measurement` default governed: one
+stem, `"Measure the object. Its length is ___ cm."`, on every seed. The G1 siblings already solve
+exactly this with **sentinels** (`length_or_distance`, `compare_length_or_distance`) that the DNA
+resolves per seed — the idiom existed in this very file, and an earlier fix had explicitly
+deferred this node ("out of scope for this fix").
+
+But binding it was not enough, and the reason is the real find: the DNA redirects
+`distance_between → compare_distance` at grade ≥ 2 (the `distance_between` branch is hardcoded to
+G1's non-standard units), and **that redirect sat below the `compare_distance` branch it redirects
+into**. A redirected task therefore fell past every handler to the `read_measurement` return at the
+bottom of the function. So even once the sentinel started selecting `distance_between`, the item
+still rendered as a measurement:
+
+```
+BEFORE  mat_g2_mg_q2_0, 200 seeds:
+   125  'Measure the object. Its length is ___ cm.'
+    68  'Which is longer'
+     7  'How long is the object? Give your answer in c'
+        0/200 mention distance
+```
+
+Moving the redirect up with the other sentinel resolutions is the whole fix for that node.
+
+### What was built for the other two
+`choose_unit` and `estimate` had no distance framing at all — each served only the object-length
+half of its competency. Both now alternate per seed:
+
+- `choose_unit` asks about the distance between two places ("the school and the market"), which is
+  always a metre-scale judgment at this grade.
+- `estimate` estimates a distance, and since the competency says "distance using **meters**", the
+  unit is fixed to metres for that framing. The unit label is now resolved *after* that override,
+  so the label follows the unit actually in play.
+
+### Verification
+
+```
+AFTER
+mat_g2_mg_q2_0: 60/200 mention distance
+    68  'Which is longer'
+    65  'Measure the object. Its length is ___ cm.'
+    60  'The distance from the bench to the tree is 22'
+mat_g2_mg_q2_1: 106/200 mention distance
+    'Which unit would you use to measure the distance between your house and the church: ...'
+mat_g2_mg_q2_2: 106/200 mention distance
+    'The distance from the gate to the flagpole is 11 m. About how many m is that, rounded ...'
+```
+
+`mat_g2_mg_q2_0` now serves all three sub-tasks its sentence names — measure, compare, and
+distance. `validate_matrix --node` PASS on all nine nodes touching this DNA; full `run_all`
+151/151, 0 failures, all ten contract checks, stages 1–5 green.
+
+### Still unserved, found while measuring
+`mat_g2_mg_q2_3` ("Solve problems involving length **and distance**") is bound only to
+`context=word_problem`, so `task_type` falls to the same `read_measurement` default: 0 of 200 items
+mention distance. Same shape, same one-line fix, and it was not in the FAIL list only because its
+review scored it CONCERN.

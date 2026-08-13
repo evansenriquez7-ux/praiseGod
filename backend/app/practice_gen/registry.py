@@ -782,6 +782,17 @@ def _parse_competency_bounds(
             # length_or_distance is a generate_params-level sentinel that
             # alternates between the two per seed rather than picking one.
             bounds["task_type"] = "length_or_distance"
+        # "Measure and compare lengths of objects, in meters (m) or centimeters
+        # (cm), and distance in meters" (mat_g2_mg_q2_0) was left UNBOUND, so the
+        # DNA's read_measurement default governed and the node rendered the single
+        # stem "Measure the object. Its length is ___ cm." on every seed -- neither
+        # comparing anything nor ever mentioning distance, though its own sentence
+        # names all three. An earlier fix in this file deferred it explicitly
+        # ("out of scope for this fix"); it is in scope now. Sentinel, resolved per
+        # seed in the DNA, because the competency names three sub-tasks and binding
+        # any one of them would drop the other two.
+        elif "measure and compare lengths" in text:
+            bounds["task_type"] = "measure_compare_or_distance"
         elif "compare lengths and distances" in text:
             # mat_g1_mg_q2_1 matched none of the conditions above, so it
             # also silently defaulted to read_measurement and never once
