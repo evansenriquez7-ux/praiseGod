@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_mg_q2_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the estimate-branch fixes, 2026-08-13",
+  "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
     42,
@@ -13,9 +13,7 @@
     500,
     501,
     502,
-    601,
     602,
-    603,
     604
   ],
   "samples_reviewed": [
@@ -50,45 +48,17 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "An object measures 2 cm. About how many cm is that, rounded to the nearest 10?",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 0,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "mcq",
-      "question_text": "An object measures 14 cm. About how many cm is that, rounded to the nearest 10?",
+      "question_text": "An object measures 11 cm. About how many cm is that, rounded to the nearest 5?",
       "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "is_correct": false
+          "value": 10,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 11,
+          "value": 9,
           "is_correct": false
         },
         {
@@ -98,7 +68,35 @@
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 11,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "An object measures 14 cm. About how many cm is that, rounded to the nearest 5?",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 17,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 15,
           "is_correct": true
         }
       ]
@@ -106,7 +104,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "An object measures 9 cm. About how many cm is that, rounded to the nearest 10?",
+      "question_text": "An object measures 11 cm. About how many cm is that, rounded to the nearest 5?",
       "correct_answer": 10,
       "options": [
         {
@@ -134,27 +132,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "An object measures 3 cm. About how many cm is that, rounded to the nearest 10?",
-      "correct_answer": 0,
+      "question_text": "An object measures 11 cm. About how many cm is that, rounded to the nearest 5?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 3,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 0,
+          "value": 10,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 2,
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 1,
+          "value": 11,
           "is_correct": false
         }
       ]
@@ -162,31 +160,31 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "An object measures 16 cm. About how many cm is that, rounded to the nearest 10?",
-      "correct_answer": 20,
+      "question_text": "An object measures 16 cm. About how many cm is that, rounded to the nearest 5?",
+      "correct_answer": 15,
       "options": [
         {
           "key": "A",
-          "value": 21,
-          "text": "21",
+          "value": 16,
+          "text": "16",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 20,
-          "text": "20",
+          "value": 15,
+          "text": "15",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 22,
-          "text": "22",
+          "value": 17,
+          "text": "17",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 19,
-          "text": "19",
+          "value": 14,
+          "text": "14",
           "is_correct": false
         }
       ]
@@ -280,89 +278,29 @@
       ]
     },
     {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "An object measures 7 cm. About how many cm is that, rounded to the nearest 10?",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 11,
-          "text": "11",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "text": "12",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "text": "10",
-          "is_correct": true
-        }
-      ]
-    },
-    {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "An object measures 13 cm. About how many cm is that, rounded to the nearest 10?",
-      "correct_answer": 10,
+      "question_text": "An object measures 13 cm. About how many cm is that, rounded to the nearest 5?",
+      "correct_answer": 15,
       "options": [
         {
           "key": "A",
-          "value": 10,
+          "value": 15,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 12,
+          "value": 17,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 11,
+          "value": 16,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 9,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "mcq",
-      "question_text": "An object measures 6 cm. About how many cm is that, rounded to the nearest 10?",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 9,
+          "value": 14,
           "is_correct": false
         }
       ]
@@ -370,27 +308,27 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "An object measures 2 m. About how many m is that, rounded to the nearest 10?",
-      "correct_answer": 0,
+      "question_text": "An object measures 11 m. About how many m is that, rounded to the nearest 5?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 0,
+          "value": 10,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 2,
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 1,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 3,
+          "value": 12,
           "is_correct": false
         }
       ]
@@ -398,28 +336,28 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Sampled items correctly frame estimation as rounding a measured value, e.g. \"An object measures 21 cm. About how many cm is that, rounded to the nearest 10?\""
+      "verdict": "CONCERN",
+      "rationale": "Every seed does ask for an approximation and the rounding genuinely moves the number, so no item hands back the stated value or a zero: seed 42 'An object measures 21 cm. About how many cm is that, rounded to the nearest 10?' keys 20, seed 44 'An object measures 14 cm. About how many cm is that, rounded to the nearest 5?' keys 15, and seed 501 keys 350 from 'An object measures 328 cm'. The judgment is undermined by the option sets, however. Seed 500 'An object measures 409 cm. About how many cm is that, rounded to the nearest 50?' offers 400, 399, 401 and 402, and seed 42 offers 21, 22, 20 and 19, so a learner who cannot round at all still scores by picking the only round number."
     },
     "comprehensive_coverage": {
       "verdict": "FAIL",
-      "rationale": "Rounding cm values to the nearest 10 or 50 is well drilled, but a length or distance actually framed and estimated in meters is essentially untested; seed 604 rounds a bare \"An object measures 2 m\" statement to zero, which is the closest this set comes to the meters clause, and the word \"distance\" never appears in any of the thirteen samples."
+      "rationale": "The competency sentence names two things: estimating length in metres or centimetres, and estimating distance in metres. Distance never appears in any of the eleven seeds. All eleven use the identical object framing 'An object measures' with no two places and no span between them, and ten of the eleven are in centimetres. Metres appear once, at seed 604 'An object measures 11 m. About how many m is that, rounded to the nearest 5?', and even there it is an object length, not a distance. The second half of the competency is entirely unrepresented."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Rounding targets, nearest 10 and nearest 50, match Grade 2 place-value estimation skills."
+      "verdict": "CONCERN",
+      "rationale": "Seeds 500, 501 and 502 round to the nearest 50 inside the hundreds: 'An object measures 328 cm' is keyed to 350 and 'An object measures 259 cm' is keyed to 250, which requires the multiples of 50 and the 25 midpoint. That is a heavier benchmark than the nearest 10 at seed 42 or the nearest 5 at seed 43 'An object measures 11 cm. About how many cm is that, rounded to the nearest 5?', and rounding to the nearest 50 is not a benchmark Grade 2 Quarter 2 establishes."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Both rounding-to-10 (small cm values) and rounding-to-50 (three-digit cm values in seeds 500-502) appear, giving two distinct estimation granularities."
+      "verdict": "FAIL",
+      "rationale": "All eleven seeds are one sentence pattern with only the numeral, the unit and the rounding step swapped. Seeds 43, 45 and 46 are the byte-identical stem 'An object measures 11 cm. About how many cm is that, rounded to the nearest 5?', and seed 50 'An object measures 16 cm. About how many cm is that, rounded to the nearest 5?' differs only in the numeral. There is no comparison framing, no named-object framing, no pick-the-better-estimate framing, and only two formatters, so a learner meets the same question eleven times."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The difficulty axis is the measured value's size and the rounding unit, both inside the estimation skill."
+      "verdict": "CONCERN",
+      "rationale": "The stem states the exact measurement before asking for it back: 'An object measures 21 cm' followed by 'About how many cm is that, rounded to the nearest 10?'. The act performed is therefore rounding a number that has already been measured, a Number and Algebra skill, rather than estimating a length that has not been measured. Nothing anchors the estimate to something a Grade 2 child can see either, because the subject is always 'An object' and never a desk, a door or a rope, and no referent such as a metre stick is offered."
     },
     "scale_appropriateness": {
       "verdict": "CONCERN",
-      "rationale": "Seed 604 rounds \"An object measures 2 m\" to the nearest 10, which collapses to zero and does not model a realistic estimation scenario for a length expressed in meters."
+      "rationale": "The hundreds seeds are metre-scale lengths reported in centimetres: 'An object measures 409 cm' is just over four metres, 'An object measures 328 cm' is over three, and 'An object measures 259 cm' is over two and a half. A Grade 2 child estimating those with a metre stick would answer in metres, which is exactly what the competency asks for, so the centimetre framing at that magnitude is the wrong unit choice. The small seeds are well judged: 'An object measures 14 cm' at seed 44 and 'An object measures 16 cm' at seed 50 are ruler-sized."
     }
   },
   "overall": "FAIL"

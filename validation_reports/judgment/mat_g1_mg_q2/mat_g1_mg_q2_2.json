@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_mg_q2_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the estimate-branch fixes, 2026-08-13",
+  "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
     42,
@@ -19,7 +19,7 @@
     603,
     605,
     606,
-    607
+    608
   ],
   "samples_reviewed": [
     {
@@ -455,63 +455,63 @@
       ]
     },
     {
-      "seed": 607,
+      "seed": 608,
       "formatter": "cloze",
-      "question_text": "An object measures 2 non_standard. About how many non_standard is that, rounded to the nearest 10?",
-      "correct_answer": 0,
+      "question_text": "A shoe is 5 hands long. A crayon is 3 hands long. How many hands longer is a shoe than a crayon?",
+      "correct_answer": 2,
       "options": [
         {
           "key": "A",
           "value": 2,
           "text": "2",
-          "is_correct": false
+          "is_correct": true
         },
         {
           "key": "B",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 1,
           "text": "1",
           "is_correct": false
         },
         {
-          "key": "C",
+          "key": "D",
           "value": 3,
           "text": "3",
           "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 0,
-          "text": "0",
-          "is_correct": true
         }
       ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Seed 607 in this node also renders \"An object measures 2 non_standard. About how many non_standard is that, rounded to the nearest 10?\", the same broken placeholder text found in the sibling measure-length node, so this item likewise fails to present a real problem to solve."
+      "verdict": "CONCERN",
+      "rationale": "Fifteen of the sixteen seeds pose a genuine solvable length problem in a non-standard unit, for example seed 42 'A notebook is 5 paperclips long. A book is 2 paperclips long. How many paperclips longer is a notebook than a book?'. Seed 605 does not: 'A toy and a bag are placed apart. The distance between them is ___ hands.' supplies no measurement, no reference object and no figure, yet the keyed answer is 10 with 9, 11 and 12 offered as distractors. Nothing in that stem lets a learner solve anything, so the item does not fulfil the verb of the competency."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Apart from the broken item, subtraction-style \"How many paperclips longer\" word problems are well represented across paperclips, blocks, steps, and crayons."
+      "rationale": "The competency sentence names two things and both are present. Length is carried by seeds 42, 44, 500 and 608, for example seed 608 'How many hands longer is a shoe than a crayon?'. Distance is carried by seed 603 'The distance from the bench to the tree is 9 hands.' set against the gate-to-tree span. The sub-cases also go past plain difference: seed 602 asks 'Which is longer: 3 blocks or 6 blocks?' and seed 606 asks 'Are Segment A and Segment B equal in length?', so comparison, equality and difference are all exercised."
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "\"Rounded to the nearest 10\" again asks for a rounding operation this grade's measurement competency does not call for and Grade 1 has not yet taught."
+      "verdict": "CONCERN",
+      "rationale": "Seeds 500, 501 and 502 demand two-digit subtraction across a ten in Grade 1 Quarter 2. Seed 500 'A crayon is 90 blocks long. A shoe is 33 blocks long.' requires 90 minus 33; seed 501 pairs 'A book is 60 steps long.' with 'A notebook is 22 steps long.' for 60 minus 22; seed 502 needs 60 minus 47. The four options at seed 500 are 57, 56, 58 and 59, so no estimation shortcut is available and the learner must regroup. That is past the Grade 1 Quarter 2 subtraction range that the small seeds such as 42 and 608 sit comfortably inside."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "mcq, cloze, read_mcq, and an equality check (\"Are Segment A and Segment B equal in length?\") together give solid format range."
+      "rationale": "Three formatters appear (mcq, cloze, read_mcq) across five distinct framings: the two-object difference stem, the direct comparison 'Which is longer: 3 blocks or 6 blocks?' at seed 602, the distance comparison at seed 603, the equality judgment 'Are Segment A and Segment B equal in length?' at seed 606, and a cloze fill at seed 50 over 'A notebook is 10 blocks long. A book is 8 blocks long.'. Units rotate across paperclips, blocks, steps, crayons and hands rather than repeating a single one."
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "As in the sibling node, the broken seed tests rounding rather than solving a length or distance problem, pulling that one item off the competency's own axis."
+      "verdict": "PASS",
+      "rationale": "Every stem measures in a real non-standard unit a Grade 1 child can physically lay end to end: 'A book is 5 blocks long.' at seed 44, 'A book is 10 paperclips long.' at seed 43, 'A shoe is 5 hands long.' at seed 608. No stem prints an internal placeholder token and none leaks a standard metric unit, which would belong to a later node. Seed 55 even inflects the unit correctly to 'A notebook is 1 paperclip long.' instead of a bare plural."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Where the items are functioning correctly, computed differences such as 57, 38, and 13 stay in a range a Grade 1 Quarter 2 learner could reasonably work with."
+      "verdict": "CONCERN",
+      "rationale": "Several object-and-unit pairings describe things that cannot exist. Seeds 45 and 600 both assert 'A shoe is 10 steps long.' when one shoe is a fraction of a single step; seed 502 asserts 'A book is 60 crayons long.', roughly five metres of book; seed 501 asserts 'A book is 60 steps long.'; and seed 500 asserts 'A crayon is 90 blocks long.' beside 'A shoe is 33 blocks long.', making the crayon nearly three times the shoe. The small-magnitude seeds are exactly right, so the defect is confined to the large-number pool, where unit and object are combined without regard to real size."
     }
   },
-  "overall": "FAIL"
+  "overall": "CONCERN"
 }
