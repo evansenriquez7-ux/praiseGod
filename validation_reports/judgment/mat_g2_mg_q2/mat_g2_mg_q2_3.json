@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g2_mg_q2_3",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the object-to-unit pairing fixes, 2026-08-13",
+  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the landmark-distance unit fix, 2026-08-13",
   "review_date": "2026-08-13",
   "blind": true,
   "sample_seeds": [
@@ -19,33 +19,33 @@
     602,
     603,
     604,
-    606
+    605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "A pencil is 20 cm long. A crayon is 9 cm long. If they are placed end to end, what is their combined length in cm?",
-      "correct_answer": 29,
+      "question_text": "A book is 21 cm long. A spoon is 12 cm long. If they are placed end to end, what is their combined length in cm?",
+      "correct_answer": 33,
       "options": [
         {
           "key": "A",
-          "value": 30,
+          "value": 34,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 31,
+          "value": 35,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 29,
+          "value": 33,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 28,
+          "value": 32,
           "is_correct": false
         }
       ]
@@ -53,102 +53,18 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "A notebook is 20 cm long. A book is 18 cm long. If they are placed end to end, what is their combined length in cm?",
-      "correct_answer": 38,
+      "question_text": "A shoe is 21 cm long. A notebook is 20 cm long. How many cm longer is a shoe than a notebook?",
+      "correct_answer": 1,
       "options": [
         {
           "key": "A",
-          "value": 38,
+          "value": 1,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 37,
+          "value": 0,
           "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 40,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 39,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "mcq",
-      "question_text": "A garden path is 30 cm long. A crayon is 6 cm long. If they are placed end to end, what is their combined length in cm?",
-      "correct_answer": 36,
-      "options": [
-        {
-          "key": "A",
-          "value": 35,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 37,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 38,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 36,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "A ruler is 15 cm long. A crayon is 9 cm long. If they are placed end to end, what is their combined length in cm?",
-      "correct_answer": 24,
-      "options": [
-        {
-          "key": "A",
-          "value": 26,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 25,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 24,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 23,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "A pencil is 19 cm long. A ruler is 15 cm long. How many cm longer is a pencil than a ruler?",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": true
         },
         {
           "key": "C",
@@ -157,7 +73,91 @@
         },
         {
           "key": "D",
-          "value": 5,
+          "value": 2,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "A ruler is 15 cm long. A spoon is 12 cm long. If they are placed end to end, what is their combined length in cm?",
+      "correct_answer": 27,
+      "options": [
+        {
+          "key": "A",
+          "value": 26,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 28,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 29,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 27,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "A pencil is 10 cm long. A spoon is 12 cm long. If they are placed end to end, what is their combined length in cm?",
+      "correct_answer": 22,
+      "options": [
+        {
+          "key": "A",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 23,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 22,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 21,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "A book is 19 cm long. A pencil is 10 cm long. How many cm longer is a book than a pencil?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
           "is_correct": false
         }
       ]
@@ -165,31 +165,31 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "A notebook is 20 cm long. A crayon is 12 cm long. How many cm longer is a notebook than a crayon?",
-      "correct_answer": 8,
+      "question_text": "A notebook is 20 cm long. A spoon is 16 cm long. How many cm longer is a notebook than a spoon?",
+      "correct_answer": 4,
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "text": "9",
+          "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 8,
-          "text": "8",
+          "value": 4,
+          "text": "4",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 10,
-          "text": "10",
+          "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 7,
-          "text": "7",
+          "value": 3,
+          "text": "3",
           "is_correct": false
         }
       ]
@@ -197,27 +197,27 @@
     {
       "seed": 55,
       "formatter": "read_mcq",
-      "question_text": "A book is 18 cm long. A crayon is 10 cm long. How many cm longer is a book than a crayon?",
+      "question_text": "A spoon is 12 cm long. A crayon is 6 cm long. How many cm longer is a spoon than a crayon?",
       "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 7,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 10,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 8,
+          "value": 6,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 9,
+          "value": 20,
           "is_correct": false
         }
       ]
@@ -225,27 +225,27 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "A ruler is 30 cm long. A garden path is 100 cm long. If they are placed end to end, what is their combined length in cm?",
+      "question_text": "A pencil is 20 cm long. A ruler is 30 cm long. If they are placed end to end, what is their combined length in cm?",
       "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 130,
+          "value": 50,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 129,
+          "value": 49,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 131,
+          "value": 51,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 132,
+          "value": 52,
           "is_correct": false
         }
       ]
@@ -253,31 +253,31 @@
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "A notebook is 30 cm long. A crayon is 12 cm long. How many cm longer is a notebook than a crayon?",
-      "correct_answer": 18,
+      "question_text": "A notebook is 30 cm long. A shoe is 29 cm long. If they are placed end to end, what is their combined length in cm?",
+      "correct_answer": 59,
       "options": [
         {
           "key": "A",
-          "value": 18,
-          "text": "18",
+          "value": 59,
+          "text": "59",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 20,
-          "text": "20",
+          "value": 61,
+          "text": "61",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 17,
-          "text": "17",
+          "value": 58,
+          "text": "58",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 19,
-          "text": "19",
+          "value": 60,
+          "text": "60",
           "is_correct": false
         }
       ]
@@ -285,27 +285,27 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "A notebook is 30 cm long. A book is 29 cm long. If they are placed end to end, what is their combined length in cm?",
-      "correct_answer": 59,
+      "question_text": "A notebook is 30 cm long. A crayon is 12 cm long. If they are placed end to end, what is their combined length in cm?",
+      "correct_answer": 42,
       "options": [
         {
           "key": "A",
-          "value": 60,
+          "value": 43,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 59,
+          "value": 42,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 61,
+          "value": 44,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 58,
+          "value": 41,
           "is_correct": false
         }
       ]
@@ -313,27 +313,27 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "A notebook is 20 cm long. A ruler is 15 cm long. How many cm longer is a notebook than a ruler?",
-      "correct_answer": 5,
+      "question_text": "A notebook is 20 cm long. A shoe is 21 cm long. If they are placed end to end, what is their combined length in cm?",
+      "correct_answer": 41,
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 42,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 4,
+          "value": 40,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 5,
+          "value": 41,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 7,
+          "value": 43,
           "is_correct": false
         }
       ]
@@ -401,27 +401,27 @@
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "The distance from the bench to the tree is 20 cm. The distance from the gate to the tree is 22 cm. Which distance is longer?",
-      "correct_answer": 22,
+      "question_text": "The distance from the bench to the tree is 3 m. The distance from the gate to the tree is 9 m. Which distance is longer?",
+      "correct_answer": 9,
       "options": [
         {
           "key": "A",
-          "value": 21,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 22,
+          "value": 9,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 20,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 23,
+          "value": 10,
           "is_correct": false
         }
       ]
@@ -455,29 +455,33 @@
       ]
     },
     {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "Segment A is 2 cm long. Segment B is 2 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "Yes",
+      "seed": 605,
+      "formatter": "cloze",
+      "question_text": "The distance from the bench to the tree is 3 m. The distance from the gate to the tree is 10 m. Which distance is longer?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": "Yes",
+          "value": 10,
+          "text": "10",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "No",
+          "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "only if they are the same color",
+          "value": 11,
+          "text": "11",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "only if they are drawn in the same direction",
+          "value": 9,
+          "text": "9",
           "is_correct": false
         }
       ]
@@ -486,28 +490,28 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Every sample asks the student to solve something about length or distance, matching the competency sentence. Seed 42 combines two lengths with 'If they are placed end to end, what is their combined length in cm?' and answers 29; seed 46 takes a difference with 'How many cm longer is a pencil than a ruler?' and answers 4; seed 601 chooses a unit with 'Which unit would you use to measure the distance between the school and the market: centimeters or meters?'. Each item is answerable from the numbers printed in its own stem, with a unique correct value."
+      "rationale": "The sentence asks for problems solved, and the body of the node does exactly that in one step. Combination at seed 42, 'A book is 21 cm long. A spoon is 12 cm long. If they are placed end to end, what is their combined length in cm?', and difference at seed 46, 'A book is 19 cm long. A pencil is 10 cm long. How many cm longer is a book than a pencil?'. Every item in this node is answerable from the information rendered in the stem; none depends on a picture, a ruler image or an unstated quantity, and each states both operands and the unit wanted."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both halves of the sentence appear. Length of objects is covered by seeds 42 to 502; distance is covered by seed 601 and by seed 603 'The distance from the bench to the tree is 20 cm.'. The sub-skills span joining (seed 43, answer 38), comparing by difference (seed 50, answer 8), direct comparison in seed 602 'Which is longer: 13 cm or 6 cm?', equality in seed 606 'Segment A is 2 cm long.', unit choice, and conversion in seed 604 'Convert 4 m to cm.'."
+      "rationale": "Both nouns the sentence names are covered separately. Length carries the majority, e.g. seed 50, 'A notebook is 20 cm long. A spoon is 16 cm long. How many cm longer is a notebook than a spoon?', and seed 501, 'A notebook is 30 cm long. A shoe is 29 cm long. If they are placed end to end, what is their combined length in cm?'. Distance is present in its own right at seed 603, 'The distance from the bench to the tree is 3 m. The distance from the gate to the tree is 9 m. Which distance is longer?', and at seed 601, 'Which unit would you use to measure the distance between the school and the market: centimeters or meters?'. Both the combining and the comparing shapes of problem are found."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Arithmetic stays inside Grade 2 Quarter 2 reach: single-step sums and differences with totals no larger than the 130 of seed 500, and one memorised metric relation in seed 604 'Convert 4 m to cm.' whose answer 400 rests on the known 1 m to 100 cm fact rather than on formal multiplication. No item requires more than one operation or any vocabulary past centimetre and metre."
+      "verdict": "CONCERN",
+      "rationale": "Fifteen of the sixteen items are one-step sums or differences with totals no larger than 59, as at seed 501, 'A notebook is 30 cm long. A shoe is 29 cm long. If they are placed end to end, what is their combined length in cm?'. Seed 604, 'Convert 4 m to cm.', is the outlier: arriving at 400 requires the metre to centimetre relation applied four times, that is a multiplication by 100 that a Grade 2 Quarter 2 learner has not been taught, and it is the only item in the node making that demand."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Three formatters appear across the sixteen seeds (mcq at seed 42, cloze at seed 50, read_mcq at seed 55) and the stems take six genuinely different shapes rather than one template: end-to-end joining, longer-than differencing, bare comparison, landmark distance comparison, unit selection, and metric conversion. Distractors sit one or two units either side of the key, so seed 501 with answer 18 punishes an off-by-one rather than rewarding a guess."
+      "rationale": "Three problem shapes appear across three formatters, with the operands and objects varied rather than recycled. End-to-end combination at seed 44, 'A ruler is 15 cm long. A spoon is 12 cm long. If they are placed end to end, what is their combined length in cm?'; how-much-longer difference at seed 55, 'A spoon is 12 cm long. A crayon is 6 cm long. How many cm longer is a spoon than a crayon?'; and distance reasoning at seed 605, 'The distance from the bench to the tree is 3 m. The distance from the gate to the tree is 10 m. Which distance is longer?'. Object pairings change seed to seed and distractors sit one or two units from the key."
     },
     "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Nothing reaches past the sentence. No item mentions perimeter, area, multiplication of measures, or millimetres and kilometres; the widest reach is seed 604 'Convert 4 m to cm.', which is still squarely a length question. Seed 606 answers 'Yes' about two equal segments and stays inside comparison of lengths, so the node addresses the competency without exceeding it."
+      "verdict": "FAIL",
+      "rationale": "Seed 604, 'Convert 4 m to cm.', is not a problem involving length and distance; it is a bare unit conversion, and converting between metres and centimetres is a later grade competency, so a Grade 2 Quarter 2 node reaches past its own sentence by carrying it. The remainder stays in scope, although seed 602, 'Which is longer: 13 cm or 6 cm?', is a bare magnitude comparison that solves no problem and would sit more naturally in the measure-and-compare node than in this one."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Most nouns carry believable sizes: a pencil at 20 cm, a crayon at 9 cm, a ruler at 15 cm and a book at 18 cm are all right for the objects named, and centimetres suit every one of them. Three samples do not hold up. Seed 44 states 'A garden path is 30 cm long.' and pairs it end to end with a 6 cm crayon; seed 500 states 'A garden path is 100 cm long.'; no real garden path is a hand-span or a single metre long, and a path belongs in metres. Seed 603 states 'The distance from the bench to the tree is 20 cm.', which puts a bench inside the trunk, and it contradicts seed 601 in this same node, which teaches that a distance between two places is measured in 'm'. The mathematics in all three is correct and answerable, but the object-to-unit pairing has not been fixed for the garden path or the bench-to-tree distance."
+      "verdict": "PASS",
+      "rationale": "Every noun takes a fitting unit at a believable size. Seed 55, 'A spoon is 12 cm long. A crayon is 6 cm long. How many cm longer is a spoon than a crayon?', and seed 500, 'A pencil is 20 cm long. A ruler is 30 cm long. If they are placed end to end, what is their combined length in cm?', keep hand-held objects in cm within ruler range. Distance goes to metres and stays there: seed 601, 'Which unit would you use to measure the distance between the school and the market: centimeters or meters?', answers m, and seeds 603 and 605 state the bench, gate and tree distances in m, so no item in the node contradicts the unit rule that seed 601 teaches."
     }
   },
-  "overall": "CONCERN"
+  "overall": "FAIL"
 }
