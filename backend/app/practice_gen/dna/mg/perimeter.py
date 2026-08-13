@@ -79,7 +79,13 @@ def generate_params(
     g_key = f"g{max(2, min(grade, 3))}"
     bounds = _PARAM_BOUNDS[g_key]
 
-    shape     = profile.get("shape", "rectangle")
+    # No silent default. `profile.get("shape", "rectangle")` meant that every node
+    # which never binds `shape` -- which is all of them -- rendered a rectangle and
+    # nothing else: 200 of 200 samples on mat_g2_mg_q4_5, whose competency is "Find
+    # the perimeter of TRIANGLES, SQUARES, AND RECTANGLES". Two of the three shapes
+    # its own sentence names were unreachable. Same defect shape as area.py's, and
+    # the same fix: vary per seed unless a profile pins it.
+    shape     = profile.get("shape") or rng.choice(["rectangle", "square", "triangle"])
     task_type = profile.get("task_type", "find_perimeter")
     num_size  = profile.get("number_size", "small_numbers")
     scalar    = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
@@ -148,9 +154,42 @@ def generate_params(
         }
 
     # triangle
+    # Three independent draws do not make a triangle. Nothing here enforced the
+    # triangle inequality, so the DNA emitted figures that cannot exist -- a blind
+    # reviewer caught "A triangle has sides 2 cm, 4 cm, and 7 cm. What is its
+    # perimeter?" (2 + 4 < 7) and scored the node FAIL for asking the perimeter of
+    # something that is not a plane figure. The arithmetic was right and the shape
+    # was impossible, which is the sort of defect only a reader notices.
+    #
+    # The third side is drawn from the window the first two leave open:
+    # |a - b| < c < a + b, intersected with the grade's own bounds.
     a = rng.randint(lo, hi)
     b = rng.randint(lo, hi)
-    c = rng.randint(lo, hi)
+    c_lo = max(lo, abs(a - b) + 1)
+    c_hi = min(hi, a + b - 1)
+    attempts = 0
+    while c_lo > c_hi:
+        # The window can close when the first two sides are far apart relative to the
+        # bounds. Redraw them rather than clamping to an endpoint, which would bias
+        # every such case onto the same degenerate triangle.
+        attempts += 1
+        if attempts > 20:
+            raise ValueError(
+                f"perimeter: cannot draw a valid triangle within bounds "
+                f"[{lo}, {hi}] (grade={grade}, seed={seed}) after {attempts} attempts; "
+                f"the side range is too narrow for the triangle inequality to hold."
+            )
+        a = rng.randint(lo, hi)
+        b = rng.randint(lo, hi)
+        c_lo = max(lo, abs(a - b) + 1)
+        c_hi = min(hi, a + b - 1)
+    c = rng.randint(c_lo, c_hi)
+    if not (a + b > c and a + c > b and b + c > a):
+        raise ValueError(
+            f"perimeter: triangle inequality violated by sides {a}, {b}, {c} "
+            f"(grade={grade}, seed={seed}). The draw above is supposed to make this "
+            f"unreachable; if it fires, the window arithmetic is wrong."
+        )
     perimeter = a + b + c
     sides = {"a": a, "b": b, "c": c}
     if task_type == "find_missing_side" and grade >= 3:

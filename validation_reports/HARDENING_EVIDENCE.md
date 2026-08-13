@@ -3515,3 +3515,65 @@ distance. `validate_matrix --node` PASS on all nine nodes touching this DNA; ful
 `context=word_problem`, so `task_type` falls to the same `read_measurement` default: 0 of 200 items
 mention distance. Same shape, same one-line fix, and it was not in the FAIL list only because its
 review scored it CONCERN.
+
+---
+
+## 2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared
+
+### Defect 1 — the DNA emitted triangles that cannot exist
+A blind reviewer scored `mat_g2_mg_q4_4` FAIL partly on this:
+
+> "seed 604 asks the perimeter of `A triangle has sides 2 cm, 4 cm, and 7 cm.`, which violates the
+> triangle inequality (2+4 < 7), so the stem is not a plane figure."
+
+The three sides were three independent `rng.randint(lo, hi)` draws with nothing relating them. The
+arithmetic was right and the figure was impossible — the kind of defect only a reader catches.
+
+The third side is now drawn from the window the first two leave open (`|a-b| < c < a+b`,
+intersected with the grade's bounds), the first two are redrawn if that window closes, and an
+explicit check raises if the inequality is ever violated. No clamping to an endpoint, which would
+have biased every such case onto the same degenerate triangle.
+
+```
+triangle items across 3 perimeter nodes: 2
+  violating the triangle inequality: 0
+seed 604 now: A triangle has sides 2 cm, 4 cm, and 4 cm. What is its perimeter?
+```
+
+### Defect 2 — a silent default made two of three named shapes unreachable
+That count of 2 triangle items was itself the symptom of a second defect. `generate_params` read
+`profile.get("shape", "rectangle")`, and no node binds `shape`, so the default governed
+everywhere:
+
+```
+BEFORE
+mat_g2_mg_q4_4: {'rectangle': 107, '(no shape named)': 93}
+mat_g2_mg_q4_5: {'rectangle': 200}     <- competency: "triangles, squares, and rectangles"
+```
+
+`mat_g2_mg_q4_5`'s own sentence names three shapes and it served one, 200 times out of 200. This is
+the same defect shape as `area.py`'s, fixed the same way — vary per seed unless a profile pins it.
+
+```
+AFTER
+mat_g2_mg_q4_5: {'triangle': 60, 'rectangle': 72, 'square': 68}
+mat_g2_mg_q4_4: {'triangle': 35, 'rectangle': 72, '(no shape named)': 93}
+```
+
+### A false alarm of my own, corrected
+I first measured `mat_g2_mg_q4_6` as naming no shape in 200 of 200 samples. That was my regex, not
+the generator: it searched for `triangle`/`rectangle`, and the word problems say **triangular** and
+**rectangular** ("A triangular flower bed has sides 2 cm, 1 cm, and 2 cm"). That node was already
+naming all three shapes correctly. Match on the stem the content actually uses.
+
+### Left deliberately, with the reasoning, for the next tick
+`mat_g2_mg_q4_4` maps to **both** `perimeter` and `length_measurement`, and the reviewer is right
+that its length items name no plane figure. But removing the co-mapped DNA — the fix this file
+already documents for two other nodes — would cost the node its only measuring visual:
+`COMPATIBILITY['perimeter']` is `['mcq', 'cloze']`, and `ruler_measure` comes from
+`length_measurement` (14 of 200 student-path items). Since the competency says "using appropriate
+**tools**", deleting the only tool to fix the framing trades one half of the sentence for the
+other. That needs a decision, not a quick edit.
+
+`validate_matrix --node` PASS on all six perimeter nodes; full `run_all` 151/151, 0 failures, all
+ten contract checks, stages 1–5 green.
