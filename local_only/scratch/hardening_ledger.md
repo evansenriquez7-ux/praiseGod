@@ -2085,3 +2085,50 @@ re-reviewed.
 5. **139 nodes undeclared, 30 capability gaps.**
 
 **State at handoff: tree clean, NON-VERDICT 0.**
+
+---
+
+## 2026-08-14 — Tick C: built `max_subtrahend`.
+
+- **Census before:** PASS=58 CONCERN=63 FAIL=30. Gate: NON-VERDICT=0, tree clean.
+- **Unit — "2-digit by 1-digit" bounds two operands and only one had a key.** Commit `a131919`.
+  `mat_g2_na_q2_3`'s bounds were `{}` — nothing parsed the phrasing — so the DNA's per-grade
+  default (`g2: a < 1000`) governed and it served *"What is 930 − 408?"* against a competency
+  reading *"Illustrate subtraction of 2-digit by 1-digit"*. Four findings FAILed at once.
+  - Binding `max_minuend=(1, 99)` fixes only half. **The subtrahend half had no key to bind**: the
+    DNA read `max_minuend` alone and the pair builder drew `b` from `range(0, a+1)` / `randint(0, a)`.
+    Per Rule 8, building `max_subtrahend` *is* the fix — threaded through both pair paths, with the
+    registry learning the paired-width phrasing (parsed **before** the single-width idiom, which
+    would otherwise capture only the first number).
+  - Verified: **170 explicit `a − b` items, 0 violating 2-digit by 1-digit.** Two variant-coverage
+    seeds now raise instead of rendering (a 2-digit minuend cannot borrow four times) — the
+    feasibility guard working; the packet builder skips them and still builds 18 samples.
+- **Re-reviewed.** The reviewer confirmed the bound by measurement — *"Largest minuend actually
+  subtracted: 93. Compliant. Largest subtrahend: 9. All 18 subtrahends are one digit"* — and
+  correctly excluded non-operands (a true/false wrong answer, an MCQ distractor).
+- **Census after: PASS=58 CONCERN=63 FAIL=30.** NON-VERDICT 0. `run_all` 151/151, 0 failures,
+  all ten contract checks, stages 1–5 green.
+
+### Next tick should:
+
+1. **`mat_g2_na_q2_3` — a floor, not just a ceiling.** Seed 42 renders *"What is 2 − 1?"*: a
+   one-digit minuend. **"2-digit" is a floor as well as a ceiling**, and `max_minuend` expresses
+   only the ceiling — the exact mirror of the subtrahend gap closed this tick. The paired-width
+   parse already knows both widths, so a `min_minuend` (and `min_subtrahend`) falls straight out
+   of `10 ** (n - 1)`. Also: 11 of 18 subtrahends are 0 or 1, so only 6 samples demand real
+   counting back.
+2. **Same node, the harder half: the verb `Illustrate`.** Its sentence names two illustrations —
+   *on the number line* and *as an inverse of addition* — and each appears **exactly once in 18
+   samples**, with the number-line item degenerate (*"moves backward 0 numbers"*) and seed 605
+   asking for the **sum**, which is plain addition rather than subtraction recovered from it. This
+   is a binding-and-coverage job, not a bound: the node needs those two framings to dominate, the
+   way `derive_formula` was made to dominate `mat_g3_mg_q1_1`.
+3. **A cross-node plural defect, one root cause, at least two nodes:** *"A classmate has 1 story
+   chapters"* and *"collected 1 merchandise shirts"*. The reviewer localised it precisely —
+   **multi-word object nouns only**; `1 coin` and `1 lightstick` singularize correctly.
+4. Three nodes newly sharpened to FAIL last tick, each with a precise diagnosis in that commit:
+   `mat_g3_na_q3_2`, `mat_g3_na_q4_5`, `mat_g3_dp_q3_3`.
+5. **`mat_g2_mg_q4_4`** — the co-mapped-DNA question, open six ticks. **Escalated to the maintainer.**
+6. **139 nodes undeclared, 30 capability gaps.**
+
+**State at handoff: tree clean, NON-VERDICT 0.**
