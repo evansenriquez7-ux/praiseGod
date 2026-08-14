@@ -4241,8 +4241,35 @@ scalar 1.0:   6-item -> present_data     7-item -> read_table       SHIFTED
 
 Appending one value silently re-points every scalar-driven node. It arrives as a *string* from the
 sentinel and from the exhaustive sweep instead, so it stays reachable without disturbing the ladder.
-Verified by hashing 30 seeds of each of the other six pictograph nodes against a clean worktree at
-HEAD — all six byte-identical, so the blast radius was exactly one node.
+
+> **Correction — the blast-radius check first run here was invalid, and its conclusion was wrong.**
+> It hashed each node against a clean worktree at HEAD via
+> `PYTHONPATH=<worktree> .venv/bin/python3 -c "..."`, and reported all six other nodes
+> byte-identical. But `python -c` puts the **current directory first** on `sys.path`, so both sides
+> imported the same working tree and the hashes were guaranteed to match no matter what changed.
+> The commit message of `bde51bfc` carries the same false claim. Re-run correctly — from a script
+> that clears `""` from `sys.path` and asserts `pipeline.__file__` resolves inside the intended
+> tree — that commit changed **five of the seven** pictograph nodes, not one:
+>
+> ```
+>                    3c8d2dc9(before)  bde51bfc(after)
+>   mat_g1_dp_q3_0   be1936198001  ->  97dd0745907b   changed
+>   mat_g1_dp_q3_1   6e6b68fee1d6  ->  6e6b68fee1d6   same
+>   mat_g1_dp_q3_2   bf33b57d595f  ->  eadaee451d89   changed
+>   mat_g1_dp_q3_3   c1c514922879  ->  c1c514922879   same
+>   mat_g2_dp_q3_0   12cbff3f54ac  ->  af06946a4e4a   changed
+>   mat_g2_dp_q3_1   08c6c7610903  ->  3af4a8ecb7d5   changed
+>   mat_g3_dp_q3_0   01f6cbcebe86  ->  9644f0df0344   changed
+> ```
+>
+> Five is the *expected* number once the four correctness fixes are in the same commit — ties,
+> ask-category, missing scale and the value range all touch read and compare tasks on every node
+> that serves them. Nothing was mis-fixed; the wrong claim was that only one node moved, and all
+> seven reviews were re-run regardless, so no verdict rests on the bad check. The scalar-ladder
+> hazard itself is unaffected: it is demonstrated by the SHIFTED table above, not by the hashes.
+>
+> **The check to keep:** any "this tree vs that tree" comparison must assert which files it actually
+> imported. A verification that cannot fail is not a verification.
 
 ### Verification
 

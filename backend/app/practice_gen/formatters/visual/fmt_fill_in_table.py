@@ -51,13 +51,29 @@ def format_fill_in_table(
         "rows": rows,
     }
 
+    # "Organize data in a pictograph without a scale INTO A TABLE" (mat_g1_dp_q3_3)
+    # is a transfer between two displays, and the single stem this formatter used to
+    # emit -- "Fill in the {table_word} with the correct counts." -- named neither of
+    # them. A blind reviewer: "All eight samples carry the byte-identical stem ...
+    # with no visible variation whatsoever; only the hidden numbers behind them
+    # differ ... effectively one item presented eight times", and separately that the
+    # instruction "never says the counts are to be taken from a picture graph, never
+    # names the categories being tabulated". Name the source display and the rows
+    # being tabulated, and vary the phrasing per seed.
+    pg_word = "pictograph" if "pictograph" in ctx.cumulative_vocab else "picture graph"
+    cat_list = _join_categories(categories)
+    question_text = rng.choice([
+        f"Look at the {pg_word}. Write the correct count for each row in the {table_word}: {cat_list}.",
+        f"The {pg_word} shows {cat_list}. Fill in the {table_word} with the correct counts.",
+        f"Count the pictures in each row of the {pg_word}, then write the counts for "
+        f"{cat_list} in the {table_word}.",
+    ])
     if "scale" in vp and vp["scale"] > 1:
+        # The previous wording, "Note: Each symbol meant N items.", was past tense.
         if scale_known:
-            question_text = f"Fill in the {table_word}. Note: Each symbol meant {vp['scale']} items."
+            question_text += f" The scale is {vp['scale']}: each symbol stands for {vp['scale']} items."
         else:
-            question_text = f"Fill in the {table_word}. Note: Each symbol stands for {vp['scale']} items."
-    else:
-        question_text = f"Fill in the {table_word} with the correct counts."
+            question_text += f" Each symbol stands for {vp['scale']} items."
 
     return FormattedProblem(
         problem_id=f"{ctx.node_id}_{ctx.seed}_table",
@@ -175,3 +191,11 @@ def _format_read(
         given_values={k: v for k, v in ctx.values.items() if k != ctx.blank_target} if ctx.values else None,
         blank_target=ctx.blank_target,
     )
+
+
+def _join_categories(categories: list) -> str:
+    """'apples, bananas and mangoes' — so a stem can name the rows it tabulates."""
+    labels = [str(c) for c in categories]
+    if len(labels) == 1:
+        return labels[0]
+    return ", ".join(labels[:-1]) + " and " + labels[-1]
