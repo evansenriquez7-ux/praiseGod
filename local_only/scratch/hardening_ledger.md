@@ -2239,3 +2239,94 @@ re-reviewed.
 6. **139 nodes undeclared, 30 capability gaps.**
 
 **State at handoff: tree clean, NON-VERDICT 0, FAIL down to 28.**
+
+---
+
+## 2026-08-14 — Tick D: table reading built; four defects it exposed. **FAIL 28 → 27.**
+
+- **Census before:** PASS=58 CONCERN=65 FAIL=28. Gate: NON-VERDICT=0, tree clean.
+- **Census after:** PASS=58 CONCERN=66 FAIL=27. NON-VERDICT=0. `run_all` 0 failures, all ten
+  contract checks, stages 1–5 green, 151/151.
+
+### Unit 1 — `mat_g2_dp_q3_1`: build the table-reading capability (`bde51bfc`)
+*"Interpret data **in tabular form and** in a pictograph **with or without scale**."* Two gaps in one
+sentence, both real, neither a routing bug:
+- `fmt_fill_in_table` blanked **every** row it drew, so the only formatter that renders a table could
+  only ask a pupil to *fill one in* — the **organize** skill. Interpreting a filled table was unbuilt.
+  It now has a `read` mode, reached by a new `table_read` formatter gated to `task_type: read_table`.
+- `scale_type` was left **unbound**, and unbound means the G2 default, which draws only from
+  `scale_2/5/10`. *Not pinning a node to one half is not the same as reaching both halves.*
+- Result: **75 table / 125 pictograph** over 200 seeds; scales 1, 2, 5, 10.
+
+> **Trap worth carrying forward.** `read_table` is deliberately NOT in the DNA's
+> `extract_discrete_level` options list, which maps a float scalar onto its entries **by index**.
+> Appending one value moved `0.5` from `find_total`→`find_difference` and `1.0` from
+> `present_data`→`read_table` — silently re-pointing every scalar-driven node. Reachability comes
+> from the *string* path (sentinel + sweep) instead. **Adding a value to a discrete ladder is never
+> additive.**
+
+### Unit 2 — the four defects the fresh packet exposed (same commit)
+All pre-existing; none in the new path. Across 2100 items, seeds 42–341, all seven nodes:
+
+| defect | before | after |
+| --- | --- | --- |
+| comparisons whose two categories hold **equal counts** | 51 / 249 | 0 |
+| hints naming a **different category** than the stem asks | 172 | 0 |
+| stems announcing a scale whose hint computes **× 1** | 76 | 0 |
+| `"in the the legend that shows what each picture means"` | present | 0 |
+
+Four separate causes: `>=` keying whichever category was drawn first on a tie; the formatter
+re-drawing `ask_idx` instead of honouring the category the DNA chose *and built the hint from*;
+`"scale"` missing from three return branches; and an interpolated value bound admitting a single
+multiple of a large scale (`scale 10`, `val_hi 19` → every category forced to 10). The last also
+closed `mat_g2_dp_q3_0`'s standing `scale_appropriateness` concern — **the fail-fast added for the
+first defect is what surfaced it.**
+
+### Unit 3 — `mat_g1_dp_q3_3`: name both displays (`30841df8`) → **FAIL → PASS**
+*"Organize data in a pictograph without a scale **into a table**"* is a transfer between two
+displays, and the single stem named neither: `"Fill in the chart with the correct counts."`,
+byte-identical on all eight seeds. Stems now name the source and the rows, three frames, per seed.
+
+### Two process failures this tick — both mine, both worth keeping
+
+1. **I hand-built the first packet instead of using `judgment_packets.py`.** The canonical builder
+   applies a max-difficulty profile to the 500-band and a variant-coverage profile to the 600-band,
+   and calls `run()` **without** `is_student_path`. So the reviewer judged content the freshness gate
+   does not regenerate: 36 structural errors, 3 stale seeds, every quotation genuinely present in the
+   packet it was handed. **That review was discarded, not repaired.** Build packets with the tool the
+   gate is defined against.
+2. **A blast-radius check that could not fail.** `PYTHONPATH=<worktree> python3 -c "..."` — but
+   `python -c` puts the **cwd first** on `sys.path`, so both sides imported the same tree and the
+   hashes were identical by construction. It "proved" six nodes unchanged; re-run correctly,
+   `bde51bfc` had changed **five of seven**. Corrected in `HARDENING_EVIDENCE.md` and in
+   `30841df8`'s message. **Any tree-vs-tree comparison must assert which files it imported** — the
+   fixed script clears `""` from `sys.path` and asserts `pipeline.__file__` resolves inside the
+   intended tree. It caught the very next check honestly (blast radius: exactly 2 nodes).
+
+### Next tick should:
+
+1. **`mat_g2_dp_q3_0`'s new CONCERN is the sharpest lead — the scale is INERT.** Every
+   *"Make a picture graph to show:"* item keys an answer identical to the numbers printed in its own
+   stem (seed 42 prints `apples: 30, bananas: 20, mangoes: 10, grapes: 10` with `Each 🍎 equals 10`
+   and keys `30, 20, 10, 10`). Presenting data in a *scaled* pictograph **is** the act of dividing
+   each value by the scale to get a row length. Key the **row lengths** (3, 2, 1, 1), not the raw
+   data. Also: seed 600 renders an unscaled graph on a node whose object is expressly a scaled one.
+2. **The comparison coin-flip, measured and scoped.** 161 of 161 *"Which has more: A or B?"* items
+   offer four options, two of which the stem never names. `validate_matrix.py:967` requires **exactly
+   4** MCQ options, so the fix is to make the stem name all four, not to shrink the option set:
+   *"Which has the most: A, B, C or D?"*. All 161 display exactly 4 categories, so this fits; **112 of
+   161 already have a unique maximum**, and the other 49 need the same distinctness bump already
+   built for the pair.
+3. **The two wholly-unbuilt DP capabilities, both still FAIL and both correctly so:**
+   - `mat_g1_dp_q3_0` — *"Collect data in one variable through a simple interview."* No interview or
+     tally task exists; `registry.py` discloses it in its own comment. Build `collect_interview`.
+   - `mat_g3_dp_q3_0` — *"Collect data from experiments..."* A reviewer: no die, coin, spinner, trial
+     or outcome appears anywhere; it renders Grade 2 pictograph work.
+4. **Category sets carry no subject noun**, so stems read *"How many are in Monday?"* — the reviewer
+   called this parsing *"how many are in"* a weekday with no noun supplied. Give each set a title and
+   stem template (*"How many books were read on Monday?"*, *"How many pupils chose blue?"*).
+5. **`mat_g2_na_q2_3`'s verb `Illustrate`**, **the multi-word-noun plural defect**, and
+   **`mat_g2_mg_q4_4`** (co-mapped DNA, open nine ticks, **escalated to the maintainer**) all stand.
+6. **139 nodes undeclared, 30 capability gaps.**
+
+**State at handoff: tree clean, NON-VERDICT 0, FAIL down to 27, PASS back to 58.**
