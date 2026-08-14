@@ -1,163 +1,163 @@
 {
-  "node_id": "mat_g1_dp_q3_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
-  "review_date": "2026-08-12",
-  "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46,
-    500,
-    501,
-    502,
-    600,
-    601
-  ],
-  "samples_reviewed": [
-    {
-      "seed": 42,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: cats: 1, dogs: 5, birds: 4, fish: 4. Draw one 🍎 for each item.",
-      "correct_answer": [
-        1,
-        5,
-        4,
-        4
-      ]
-    },
-    {
-      "seed": 43,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: apples: 5, bananas: 3, mangoes: 8, grapes: 6. Draw one 🍎 for each item.",
-      "correct_answer": [
-        5,
-        3,
-        8,
-        6
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: roses: 9, sunflowers: 9, tulips: 2, daisies: 3. Draw one 🍎 for each item.",
-      "correct_answer": [
-        9,
-        9,
-        2,
-        3
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: Monday: 7, Tuesday: 8, Wednesday: 5, Thursday: 2. Draw one 🍎 for each item.",
-      "correct_answer": [
-        7,
-        8,
-        5,
-        2
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: cats: 7, dogs: 1, birds: 10, fish: 10. Draw one 🍎 for each item.",
-      "correct_answer": [
-        7,
-        1,
-        10,
-        10
-      ]
-    },
-    {
-      "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: Grade 1: 9, Grade 2: 10, Grade 3: 8, Grade 4: 5, Grade 5: 7, Grade 6: 4. Draw one 🍎 for each item.",
-      "correct_answer": [
-        9,
-        10,
-        8,
-        5,
-        7,
-        4
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: Monday: 6, Tuesday: 4, Wednesday: 6, Thursday: 6, Friday: 9, Saturday: 6. Draw one 🍎 for each item.",
-      "correct_answer": [
-        6,
-        4,
-        6,
-        6,
-        9,
-        6
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: basketball: 3, volleyball: 6, swimming: 3, running: 7, soccer: 1, tennis: 7. Draw one 🍎 for each item.",
-      "correct_answer": [
-        3,
-        6,
-        3,
-        7,
-        1,
-        7
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: Monday: 6, Tuesday: 8, Wednesday: 3, Thursday: 10. Draw one 🍎 for each item.",
-      "correct_answer": [
-        6,
-        8,
-        3,
-        10
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: Math: 10, Science: 9, English: 1, Art: 2. Draw one 🍎 for each item.",
-      "correct_answer": [
-        10,
-        9,
-        1,
-        2
-      ]
-    }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Each item correctly instructs the student to build a graph from given counts, but the fixed closing line \"Draw one 🍎 for each item\" hands out an apple icon even for categories like dogs or Monday, breaking the pictorial correspondence a pictograph is supposed to teach."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The category sets sampled range from four groups (cats, dogs, birds, fish) up to six (the six weekdays, the six grade levels), giving a reasonable spread of one-variable datasets to present."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Counts requested for drawing stay in the 1-10 range and the instruction is a single short sentence, both suited to Grade 1 Quarter 3."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "All ten sampled seeds end on the identical instruction \"Draw one 🍎 for each item\" with no alternative phrasing or icon choice to distinguish one presentation task from the next."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "What actually changes seed to seed is the dataset itself -- the labels and their counts -- which is exactly the axis this presenting-data competency is meant to exercise."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Values to be drawn top out at 10, consistent with an unscaled Grade 1 pictograph where each icon equals one unit."
-    }
+ "node_id": "mat_g1_dp_q3_1",
+ "reviewed_by": "Blind MATATAG curriculum reviewer (independent judgment pass, 2026-08-14)",
+ "review_date": "2026-08-14",
+ "blind": true,
+ "sample_seeds": [
+  42,
+  43,
+  44,
+  45,
+  46,
+  500,
+  501,
+  502,
+  600,
+  601
+ ],
+ "samples_reviewed": [
+  {
+   "seed": 42,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: cats: 1, dogs: 5, birds: 4, fish: 4. Draw one 🍎 for each item.",
+   "correct_answer": [
+    1,
+    5,
+    4,
+    4
+   ]
   },
-  "overall": "CONCERN"
+  {
+   "seed": 43,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: apples: 5, bananas: 3, mangoes: 8, grapes: 6. Draw one 🍎 for each item.",
+   "correct_answer": [
+    5,
+    3,
+    8,
+    6
+   ]
+  },
+  {
+   "seed": 44,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: roses: 9, sunflowers: 9, tulips: 2, daisies: 3. Draw one 🍎 for each item.",
+   "correct_answer": [
+    9,
+    9,
+    2,
+    3
+   ]
+  },
+  {
+   "seed": 45,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: Monday: 7, Tuesday: 8, Wednesday: 5, Thursday: 2. Draw one 🍎 for each item.",
+   "correct_answer": [
+    7,
+    8,
+    5,
+    2
+   ]
+  },
+  {
+   "seed": 46,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: cats: 7, dogs: 1, birds: 10, fish: 10. Draw one 🍎 for each item.",
+   "correct_answer": [
+    7,
+    1,
+    10,
+    10
+   ]
+  },
+  {
+   "seed": 500,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: Grade 1: 9, Grade 2: 10, Grade 3: 8, Grade 4: 5, Grade 5: 7, Grade 6: 4. Draw one 🍎 for each item.",
+   "correct_answer": [
+    9,
+    10,
+    8,
+    5,
+    7,
+    4
+   ]
+  },
+  {
+   "seed": 501,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: Monday: 6, Tuesday: 4, Wednesday: 6, Thursday: 6, Friday: 9, Saturday: 6. Draw one 🍎 for each item.",
+   "correct_answer": [
+    6,
+    4,
+    6,
+    6,
+    9,
+    6
+   ]
+  },
+  {
+   "seed": 502,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: basketball: 3, volleyball: 6, swimming: 3, running: 7, soccer: 1, tennis: 7. Draw one 🍎 for each item.",
+   "correct_answer": [
+    3,
+    6,
+    3,
+    7,
+    1,
+    7
+   ]
+  },
+  {
+   "seed": 600,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: Monday: 6, Tuesday: 8, Wednesday: 3, Thursday: 10. Draw one 🍎 for each item.",
+   "correct_answer": [
+    6,
+    8,
+    3,
+    10
+   ]
+  },
+  {
+   "seed": 601,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: Math: 10, Science: 9, English: 1, Art: 2. Draw one 🍎 for each item.",
+   "correct_answer": [
+    10,
+    9,
+    1,
+    2
+   ]
+  }
+ ],
+ "findings": {
+  "competency_fulfillment": {
+   "verdict": "CONCERN",
+   "rationale": "The items do ask for exactly the presentation the competency names, one symbol per unit with no scale: \"Make a picture graph to show: cats: 1, dogs: 5, birds: 4, fish: 4. Draw one 🍎 for each item.\" What weakens it is that the keyed answer restates the very numbers already printed in the stem, so no transformation is actually assessed, and every data set is drawn with the same apple symbol regardless of subject, as in \"Make a picture graph to show: roses: 9, sunflowers: 9, tulips: 2, daisies: 3. Draw one 🍎 for each item.\" where flowers are represented by apples."
+  },
+  "comprehensive_coverage": {
+   "verdict": "PASS",
+   "rationale": "The competency names one act, presenting data in a pictograph without a scale, and every sample performs it across differently shaped data sets: four categories in \"Make a picture graph to show: Monday: 7, Tuesday: 8, Wednesday: 5, Thursday: 2.\" and six in \"Make a picture graph to show: Grade 1: 9, Grade 2: 10, Grade 3: 8, Grade 4: 5, Grade 5: 7, Grade 6: 4.\" Nothing the competency names is left out."
+  },
+  "cognitive_capacity": {
+   "verdict": "PASS",
+   "rationale": "One-to-one symbol drawing with no scale to reason about, and no count above ten, as in \"Make a picture graph to show: Math: 10, Science: 9, English: 1, Art: 2.\" The longest row a Grade 1 learner must draw is ten symbols, which is manageable at this grade and quarter."
+  },
+  "variant_comprehensiveness": {
+   "verdict": "CONCERN",
+   "rationale": "All ten samples run one template: \"Make a picture graph to show:\" followed by a label-and-number list and closed by \"Draw one 🍎 for each item.\" Only the labels and numbers change, and the closing instruction is word-for-word identical every time. No sample supplies the data as a sentence or tally, asks for a missing bar to be completed, or asks the learner to label the finished graph."
+  },
+  "competency_alignment": {
+   "verdict": "PASS",
+   "rationale": "Difficulty varies inside the competency without drifting out of it, from four small counts in \"Make a picture graph to show: cats: 1, dogs: 5, birds: 4, fish: 4.\" to six categories with repeated values in \"Make a picture graph to show: Monday: 6, Tuesday: 4, Wednesday: 6, Thursday: 6, Friday: 9, Saturday: 6.\" No sample introduces a scale or any later skill."
+  },
+  "scale_appropriateness": {
+   "verdict": "PASS",
+   "rationale": "Counts stay between one and ten throughout, e.g. \"Make a picture graph to show: cats: 7, dogs: 1, birds: 10, fish: 10.\", so the tallest unscaled row is ten symbols. That is the practical ceiling for a scale-free Grade 1 pictograph and the packet never exceeds it."
+  }
+ },
+ "overall": "CONCERN"
 }

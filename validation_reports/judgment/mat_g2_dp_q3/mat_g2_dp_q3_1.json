@@ -1,385 +1,269 @@
 {
-  "node_id": "mat_g2_dp_q3_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
-  "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46,
-    500,
-    501,
-    502,
-    600,
-    601,
-    602,
-    603
-  ],
-  "samples_reviewed": [
+ "node_id": "mat_g2_dp_q3_1",
+ "reviewed_by": "Blind MATATAG curriculum reviewer (independent judgment pass, 2026-08-14)",
+ "review_date": "2026-08-14",
+ "blind": true,
+ "sample_seeds": [
+  42,
+  43,
+  44,
+  45,
+  46,
+  500,
+  501,
+  502
+ ],
+ "samples_reviewed": [
+  {
+   "seed": 42,
+   "formatter": "read_mcq",
+   "question_text": "Look at the table. How many are in Monday?",
+   "correct_answer": "C",
+   "options": [
     {
-      "seed": 42,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Each 🍎 = 10. How many are in bananas?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
+     "key": "A",
+     "value": 6,
+     "is_correct": false
     },
     {
-      "seed": 43,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Each 🍎 = 2. How many are in Thursday?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "is_correct": false
-        }
-      ]
+     "key": "B",
+     "value": 10,
+     "is_correct": false
     },
     {
-      "seed": 44,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Which has more: cats or fish?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": "dogs",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "cats",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "birds",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "fish",
-          "is_correct": true
-        }
-      ]
+     "key": "C",
+     "value": 9,
+     "is_correct": true
     },
     {
-      "seed": 45,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Which has more: tulips or roses?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": "daisies",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "tulips",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "sunflowers",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "roses",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Each 🍎 = 2. How many are in sunflowers?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Which has more: Grade 1 or Grade 2?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": "Grade 2",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "Grade 3",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "Grade 1",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "Grade 4",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Which has more: swimming or running?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": "swimming",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "running",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "basketball",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "volleyball",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Which has more: blue or green?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "blue",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "green",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "yellow",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "red",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Which has more: running or volleyball?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "swimming",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "running",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "volleyball",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "basketball",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Each 🍎 = 10. How many are in apples?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Which has more: yellow or blue?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": "blue",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "yellow",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "red",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "green",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Each 🍎 = 5. How many are in running?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 15,
-          "is_correct": true
-        }
-      ]
+     "key": "D",
+     "value": 5,
+     "is_correct": false
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Value-reading ('Each 🍎 = 2. How many are in Thursday?') and comparison ('Which has more: cats or fish?') questions both directly interpret a pictograph, matching the pictograph half of 'Interpret data in tabular form and in a pictograph'."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Every one of the twelve sampled items opens with 'Look at the picture graph'; none references reading a table, even though the competency explicitly requires interpreting data 'in tabular form and in a pictograph', leaving the tabular half untested in this sample."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Each item asks one value-lookup or one two-way comparison from a graph already shown, matching a Grade 2 Quarter 3 data-reading task."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Every sampled item uses the read_mcq formatter; no cloze, mcq, or true_false variant tests interpretation here, unlike the construction node this competency pairs with."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Difficulty shifts between a single value lookup and a two-category comparison rather than a different skill, keeping every item about reading the graph correctly."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Scale factors of 2, 5, and 10 appear in the value-reading items, matching the range already established for this grade's pictograph work."
-    }
+   ]
   },
-  "overall": "FAIL"
+  {
+   "seed": 43,
+   "formatter": "read_mcq",
+   "question_text": "Look at the picture graph. How many are in yellow?",
+   "correct_answer": "B",
+   "options": [
+    {
+     "key": "A",
+     "value": 17,
+     "is_correct": false
+    },
+    {
+     "key": "B",
+     "value": 16,
+     "is_correct": true
+    },
+    {
+     "key": "C",
+     "value": 15,
+     "is_correct": false
+    },
+    {
+     "key": "D",
+     "value": 18,
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "seed": 44,
+   "formatter": "read_mcq",
+   "question_text": "Look at the picture graph. Which has more: dogs or cats?",
+   "correct_answer": "D",
+   "options": [
+    {
+     "key": "A",
+     "value": "birds",
+     "is_correct": false
+    },
+    {
+     "key": "B",
+     "value": "cats",
+     "is_correct": false
+    },
+    {
+     "key": "C",
+     "value": "fish",
+     "is_correct": false
+    },
+    {
+     "key": "D",
+     "value": "dogs",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "seed": 45,
+   "formatter": "read_mcq",
+   "question_text": "Look at the picture graph. Each 🍎 = 5. How many are in Grade 1?",
+   "correct_answer": "D",
+   "options": [
+    {
+     "key": "A",
+     "value": 15,
+     "is_correct": false
+    },
+    {
+     "key": "B",
+     "value": 5,
+     "is_correct": false
+    },
+    {
+     "key": "C",
+     "value": 2,
+     "is_correct": false
+    },
+    {
+     "key": "D",
+     "value": 10,
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "seed": 46,
+   "formatter": "read_mcq",
+   "question_text": "Look at the picture graph. How many are in apples?",
+   "correct_answer": "B",
+   "options": [
+    {
+     "key": "A",
+     "value": 11,
+     "is_correct": false
+    },
+    {
+     "key": "B",
+     "value": 9,
+     "is_correct": true
+    },
+    {
+     "key": "C",
+     "value": 10,
+     "is_correct": false
+    },
+    {
+     "key": "D",
+     "value": 8,
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "seed": 500,
+   "formatter": "read_mcq",
+   "question_text": "Look at the picture graph. Which has more: Grade 2 or Grade 1?",
+   "correct_answer": "A",
+   "options": [
+    {
+     "key": "A",
+     "value": "Grade 2",
+     "is_correct": true
+    },
+    {
+     "key": "B",
+     "value": "Grade 3",
+     "is_correct": false
+    },
+    {
+     "key": "C",
+     "value": "Grade 1",
+     "is_correct": false
+    },
+    {
+     "key": "D",
+     "value": "Grade 4",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "seed": 501,
+   "formatter": "read_mcq",
+   "question_text": "Look at the picture graph. Which has more: tennis or soccer?",
+   "correct_answer": "A",
+   "options": [
+    {
+     "key": "A",
+     "value": "soccer",
+     "is_correct": true
+    },
+    {
+     "key": "B",
+     "value": "swimming",
+     "is_correct": false
+    },
+    {
+     "key": "C",
+     "value": "basketball",
+     "is_correct": false
+    },
+    {
+     "key": "D",
+     "value": "volleyball",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "seed": 502,
+   "formatter": "read_mcq",
+   "question_text": "Look at the table. How many are in volleyball?",
+   "correct_answer": "B",
+   "options": [
+    {
+     "key": "A",
+     "value": 15,
+     "is_correct": false
+    },
+    {
+     "key": "B",
+     "value": 35,
+     "is_correct": true
+    },
+    {
+     "key": "C",
+     "value": 45,
+     "is_correct": false
+    },
+    {
+     "key": "D",
+     "value": 5,
+     "is_correct": false
+    }
+   ]
+  }
+ ],
+ "findings": {
+  "competency_fulfillment": {
+   "verdict": "PASS",
+   "rationale": "All three of the sources named by the competency are actually read. Tabular form: \"Look at the table. How many are in Monday?\". Pictograph without a scale: \"Look at the picture graph. How many are in apples?\". Pictograph with a scale: \"Look at the picture graph. Each 🍎 = 5. How many are in Grade 1?\", whose key of 10 is correctly the scaled value, with the raw symbol count of 2 present only as a distractor."
+  },
+  "comprehensive_coverage": {
+   "verdict": "PASS",
+   "rationale": "Each distinct thing the competency names is exercised: tabular reading twice, in \"Look at the table. How many are in Monday?\" and \"Look at the table. How many are in volleyball?\"; unscaled pictograph reading in \"Look at the picture graph. How many are in yellow?\"; scaled pictograph reading in \"Look at the picture graph. Each 🍎 = 5. How many are in Grade 1?\"; plus comparison interpretation in \"Look at the picture graph. Which has more: Grade 2 or Grade 1?\"."
+  },
+  "cognitive_capacity": {
+   "verdict": "PASS",
+   "rationale": "The reasoning is right for Grade 2 Quarter 3: direct value reads such as \"Look at the table. How many are in volleyball?\" keyed to 35, and one scale conversion of two symbols at five each in \"Look at the picture graph. Each 🍎 = 5. How many are in Grade 1?\". Nothing requires chained arithmetic or multi-step inference beyond the grade."
+  },
+  "variant_comprehensiveness": {
+   "verdict": "PASS",
+   "rationale": "Real variety across sources and question forms rather than one repeated item: \"Look at the table. How many are in Monday?\", \"Look at the picture graph. How many are in yellow?\", \"Look at the picture graph. Each 🍎 = 5. How many are in Grade 1?\" and \"Look at the picture graph. Which has more: dogs or cats?\", spread over weekday, colour, animal, fruit, sport and grade-level contexts."
+  },
+  "competency_alignment": {
+   "verdict": "CONCERN",
+   "rationale": "Interpretation is never abandoned, but the comparison items are made easier than the competency warrants by offering options the question does not name. \"Look at the picture graph. Which has more: tennis or soccer?\" lists \"swimming\", \"basketball\" and \"volleyball\" among the choices, and \"Look at the picture graph. Which has more: dogs or cats?\" lists \"birds\" and \"fish\", so two options in each are eliminable without consulting the display and the item degrades to a two-way choice."
+  },
+  "scale_appropriateness": {
+   "verdict": "CONCERN",
+   "rationale": "The table and scaled items are well pitched, with a keyed table value of 35 in \"Look at the table. How many are in volleyball?\" and a scaled read of 10 in \"Look at the picture graph. Each 🍎 = 5. How many are in Grade 1?\". But \"Look at the picture graph. How many are in yellow?\" is an unscaled picture graph keyed to 16 against distractors of 15, 17 and 18, which means counting sixteen individual symbols and telling that row apart from one a symbol longer, exactly the situation a Grade 2 scale exists to avoid."
+  }
+ },
+ "overall": "CONCERN"
 }

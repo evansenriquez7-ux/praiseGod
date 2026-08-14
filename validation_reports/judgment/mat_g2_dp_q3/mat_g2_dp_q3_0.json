@@ -1,175 +1,187 @@
 {
-  "node_id": "mat_g2_dp_q3_0",
-  "reviewed_by": "claude-opus-5 blind reviewer, re-review after binding both directions, 2026-08-14",
-  "review_date": "2026-08-14",
-  "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46,
-    500,
-    501,
-    502,
-    600,
-    602,
-    603
-  ],
-  "samples_reviewed": [
-    {
-      "seed": 42,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: apples: 10, bananas: 10, mangoes: 10, grapes: 10. Each 🍎 equals 10.",
-      "correct_answer": [
-        10,
-        10,
-        10,
-        10
-      ]
-    },
-    {
-      "seed": 43,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: Monday: 6, Tuesday: 16, Wednesday: 12, Thursday: 4. Each 🍎 equals 2.",
-      "correct_answer": [
-        6,
-        16,
-        12,
-        4
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Fill in the table. Note: Each symbol stands for 5 items.",
-      "correct_answer": [
-        5,
-        10,
-        5,
-        10
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Fill in the table. Note: Each symbol stands for 5 items.",
-      "correct_answer": [
-        10,
-        10,
-        5,
-        10
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: roses: 2, sunflowers: 8, tulips: 18, daisies: 6. Each 🍎 equals 2.",
-      "correct_answer": [
-        2,
-        8,
-        18,
-        6
-      ]
-    },
-    {
-      "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Fill in the table. Note: Each symbol stands for 5 items.",
-      "correct_answer": [
-        25,
-        35,
-        20,
-        10,
-        30,
-        10
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Fill in the table. Note: Each symbol stands for 10 items.",
-      "correct_answer": [
-        20,
-        30,
-        30,
-        30,
-        20,
-        30
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Fill in the table. Note: Each symbol stands for 10 items.",
-      "correct_answer": [
-        30,
-        20,
-        40,
-        10,
-        40,
-        10
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Fill in the table with the correct counts.",
-      "correct_answer": [
-        16,
-        6,
-        5,
-        14
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Fill in the table. Note: Each symbol stands for 2 items.",
-      "correct_answer": [
-        12,
-        18,
-        10,
-        16
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Make a picture graph to show: basketball: 10, volleyball: 5, swimming: 15, running: 15. Each 🍎 equals 5.",
-      "correct_answer": [
-        10,
-        5,
-        15,
-        15
-      ]
-    }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both directions named by the sentence are present across the eleven samples. Four samples go raw data into a pictograph: seeds 42, 43, 46 and 603, for example seed 603 gives 'Make a picture graph to show: basketball: 10, volleyball: 5, swimming: 15, running: 15. Each 🍎 equals 5.' Seven samples go the vice versa way, reading a pictograph back into tabular form: seeds 44, 45, 500, 501, 502, 600 and 602, for example seed 501 gives 'Fill in the table. Note: Each symbol stands for 10 items.' Every making item states its key in the stem, so the four to seven split covers the whole sentence."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Coverage spans three explicit scales: 2 at seeds 43, 46 and 602, 5 at seeds 44, 45, 500 and 603, and 10 at seeds 42, 501 and 502, plus a one to one graph at seed 600. Category counts vary between four, as in seed 46 'Make a picture graph to show: roses: 2, sunflowers: 8, tulips: 18, daisies: 6. Each 🍎 equals 2.', and six, as in seed 500 whose answer is '[25, 35, 20, 10, 30, 10]'. Every sample uses the set_fill_in_blank visual formatter, so the reading items arrive with the pictograph diagram and the making items carry both the data and the key in the stem; each item is answerable as presented."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Number size and structure fit Grade 2: values run from 2 to 40 and each one is a multiple of its stated scale, landing on skip counting by 2s, 5s and 10s. The concern is the symbol used in the making direction. Seed 42 reads 'Make a picture graph to show: apples: 10, bananas: 10, mangoes: 10, grapes: 10. Each 🍎 equals 10.', so the apple picture is the key for the bananas, mangoes and grapes rows while apples is itself one of the four categories, which a Grade 2 reader can easily take as marking the apples row alone. The same apple key is attached to weekdays at seed 43, to flowers at seed 46 and to a sports survey at seed 603, where 'Each 🍎 equals 5.' labels basketball and swimming."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The eleven samples share the set_fill_in_blank formatter but split into two genuine task variants: building a graph from listed data, as at seed 43 'Make a picture graph to show: Monday: 6, Tuesday: 16, Wednesday: 12, Thursday: 4. Each 🍎 equals 2.', and completing a table from a graph, as at seed 602 'Fill in the table. Note: Each symbol stands for 2 items.' Within those two the scale, the category count and the context all vary. No sample reaches past the sentence into interpreting, totalling or comparing the data, which is correct scoping for this competency rather than a missing variant."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Nothing here goes beyond presenting data. No sample asks for a bar graph, a total, a difference or any statistic, and no fractional symbol is ever required because every value divides by its stated scale, for example seed 46 answer '[2, 8, 18, 6]' against a scale of 2 and seed 502 answer '[30, 20, 40, 10, 40, 10]' against a scale of 10. Both the raw listing form and the tabular form appear, matching the wording of the competency in both of its directions."
-    },
-    "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The scales themselves are Grade 2 appropriate at 2, 5 and 10, and they are stated plainly, as in seed 500 'Fill in the table. Note: Each symbol stands for 5 items.' Two samples sit awkwardly against the with a scale wording. Seed 42 pairs 'Each 🍎 equals 10.' with four categories that are each worth 10, so every row of the finished graph is a single picture and neither the scale nor any comparison is exercised. Seed 600 states no scale at all, only 'Fill in the table with the correct counts.', and its answer '[16, 6, 5, 14]' shares no common factor, so the graph must be one to one and the stem leaves the key wholly to the diagram while every other reading item restates it in words."
-    }
+ "node_id": "mat_g2_dp_q3_0",
+ "reviewed_by": "Blind MATATAG curriculum reviewer (independent judgment pass, 2026-08-14)",
+ "review_date": "2026-08-14",
+ "blind": true,
+ "sample_seeds": [
+  42,
+  43,
+  44,
+  45,
+  46,
+  500,
+  501,
+  502,
+  600,
+  601,
+  602,
+  603
+ ],
+ "samples_reviewed": [
+  {
+   "seed": 42,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: apples: 30, bananas: 20, mangoes: 10, grapes: 10. Each 🍎 equals 10.",
+   "correct_answer": [
+    30,
+    20,
+    10,
+    10
+   ]
   },
-  "overall": "CONCERN"
+  {
+   "seed": 43,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: Monday: 6, Tuesday: 16, Wednesday: 12, Thursday: 4. Each 🍎 equals 2.",
+   "correct_answer": [
+    6,
+    16,
+    12,
+    4
+   ]
+  },
+  {
+   "seed": 44,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Fill in the table. Note: Each symbol stands for 5 items.",
+   "correct_answer": [
+    5,
+    10,
+    5,
+    10
+   ]
+  },
+  {
+   "seed": 45,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Fill in the table. Note: Each symbol stands for 5 items.",
+   "correct_answer": [
+    10,
+    10,
+    5,
+    10
+   ]
+  },
+  {
+   "seed": 46,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: roses: 2, sunflowers: 8, tulips: 18, daisies: 6. Each 🍎 equals 2.",
+   "correct_answer": [
+    2,
+    8,
+    18,
+    6
+   ]
+  },
+  {
+   "seed": 500,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Fill in the table. Note: Each symbol stands for 5 items.",
+   "correct_answer": [
+    25,
+    35,
+    20,
+    10,
+    30,
+    10
+   ]
+  },
+  {
+   "seed": 501,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Fill in the table. Note: Each symbol stands for 10 items.",
+   "correct_answer": [
+    20,
+    30,
+    30,
+    30,
+    20,
+    30
+   ]
+  },
+  {
+   "seed": 502,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Fill in the table. Note: Each symbol stands for 10 items.",
+   "correct_answer": [
+    30,
+    20,
+    40,
+    10,
+    40,
+    10
+   ]
+  },
+  {
+   "seed": 600,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Fill in the table with the correct counts.",
+   "correct_answer": [
+    16,
+    6,
+    5,
+    14
+   ]
+  },
+  {
+   "seed": 601,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: apples: 10, bananas: 20, mangoes: 30, grapes: 20. Each 🍎 equals 10.",
+   "correct_answer": [
+    10,
+    20,
+    30,
+    20
+   ]
+  },
+  {
+   "seed": 602,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Fill in the table. Note: Each symbol stands for 2 items.",
+   "correct_answer": [
+    12,
+    18,
+    10,
+    16
+   ]
+  },
+  {
+   "seed": 603,
+   "formatter": "set_fill_in_blank",
+   "question_text": "Make a picture graph to show: basketball: 10, volleyball: 5, swimming: 15, running: 15. Each 🍎 equals 5.",
+   "correct_answer": [
+    10,
+    5,
+    15,
+    15
+   ]
+  }
+ ],
+ "findings": {
+  "competency_fulfillment": {
+   "verdict": "PASS",
+   "rationale": "Both directions the competency names are present and the scale is honoured in each. Raw data into a scaled pictograph: \"Make a picture graph to show: apples: 30, bananas: 20, mangoes: 10, grapes: 10. Each 🍎 equals 10.\" And the reverse, a scaled pictograph read back into tabular form: \"Fill in the table. Note: Each symbol stands for 5 items.\" Keyed values are multiples of the stated symbol value throughout."
+  },
+  "comprehensive_coverage": {
+   "verdict": "PASS",
+   "rationale": "Every distinct element is exercised, including a range of scales rather than a single one. Construction appears with symbol values of ten, five and two: \"Make a picture graph to show: apples: 10, bananas: 20, mangoes: 30, grapes: 20. Each 🍎 equals 10.\", \"Make a picture graph to show: basketball: 10, volleyball: 5, swimming: 15, running: 15. Each 🍎 equals 5.\", \"Make a picture graph to show: Monday: 6, Tuesday: 16, Wednesday: 12, Thursday: 4. Each 🍎 equals 2.\" The vice-versa direction appears at the same three scales, e.g. \"Fill in the table. Note: Each symbol stands for 10 items.\" and \"Fill in the table. Note: Each symbol stands for 2 items.\""
+  },
+  "cognitive_capacity": {
+   "verdict": "PASS",
+   "rationale": "The demand is skip counting by twos, fives and tens and mapping between counts and symbols, which is right for Grade 2 Quarter 3: \"Fill in the table. Note: Each symbol stands for 5 items.\" is keyed to values from 10 up to 35, and \"Make a picture graph to show: roses: 2, sunflowers: 8, tulips: 18, daisies: 6. Each 🍎 equals 2.\" needs at most nine symbols in a row."
+  },
+  "variant_comprehensiveness": {
+   "verdict": "PASS",
+   "rationale": "Two distinct task families alternate, each with varied labels, category counts and scales: construction items such as \"Make a picture graph to show: apples: 30, bananas: 20, mangoes: 10, grapes: 10. Each 🍎 equals 10.\" and table-completion items such as \"Fill in the table. Note: Each symbol stands for 10 items.\", over fruit, weekday, flower, sport and grade-level contexts and both four-row and six-row data sets."
+  },
+  "competency_alignment": {
+   "verdict": "CONCERN",
+   "rationale": "Most items sit squarely on the scaled competency, but one sample drops below it: \"Fill in the table with the correct counts.\" states no symbol value at all and is keyed to 16, 6, 5 and 14, which share no common factor, so no scale can be in play. That is the without-a-scale task from the earlier grade appearing inside a competency whose text specifies a pictograph with a scale."
+  },
+  "scale_appropriateness": {
+   "verdict": "PASS",
+   "rationale": "Data values are multiples of the stated symbol value and stay inside Grade 2's number range: \"Make a picture graph to show: basketball: 10, volleyball: 5, swimming: 15, running: 15. Each 🍎 equals 5.\" and \"Fill in the table. Note: Each symbol stands for 10 items.\" top out at 40, and no pictograph row requires more than about nine symbols."
+  }
+ },
+ "overall": "CONCERN"
 }
