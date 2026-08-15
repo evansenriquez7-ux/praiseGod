@@ -124,10 +124,13 @@ def _format_read(
         "ask_category": ask_cat,
         "is_read_mode": True,
     }
+    stem_tpl = ctx.values.get("stem_template") if ctx.values else None
+    if stem_tpl:
+        sub_q = stem_tpl.format(cat=ask_cat)
+        question_text = f"Look at the {table_word}. {sub_q}"
+    else:
+        question_text = f"Look at the {table_word}. How many are in {ask_cat}?"
 
-    question_text = f"Look at the {table_word}. How many are in {ask_cat}?"
-
-    mcq_options = None
     correct_answer: Any = correct
     if answer_collection == "mcq":
         seen = {correct}

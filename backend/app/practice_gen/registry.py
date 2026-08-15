@@ -919,12 +919,9 @@ def _parse_competency_bounds(
         if ("without a scale" in text or "without scale" in text) and "with or without" not in text:
             bounds["scale_type"] = "no_scale"
         elif "with or without" in text:
-            # Guarding the branch above stopped the node being pinned to
-            # "no_scale", but left scale_type UNBOUND -- and unbound means
-            # pictographs.py's G2 default, which draws only from scale_2/5/10.
-            # "Without" was therefore unreachable on the one node whose
-            # competency explicitly asks for both. Sentinel, resolved per seed.
             bounds["scale_type"] = "with_or_without_scale"
+        elif "with a scale" in text or "with scale" in text or "using a scale" in text:
+            bounds["scale_type"] = ["scale_2", "scale_5", "scale_10"]
 
     elif dna_name == "comparing_ordering":
         if "order" in text:

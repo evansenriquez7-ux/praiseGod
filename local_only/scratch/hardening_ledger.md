@@ -2330,3 +2330,46 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
 6. **139 nodes undeclared, 30 capability gaps.**
 
 **State at handoff: tree clean, NON-VERDICT 0, FAIL down to 27, PASS back to 58.**
+
+---
+
+## 2026-08-16 — Tick C (Pictographs Engine Hardening)
+
+- **Census before:** PASS=58 CONCERN=66 FAIL=27 UNKNOWN=0 (151 reviewed).
+- **Unit of work:** Hardened `backend/app/practice_gen/dna/dp/pictographs.py`, `fmt_pictograph.py`, `fmt_fill_in_table.py`, and `registry.py` covering all 7 pictograph nodes (`mat_g1_dp_q3_0..3`, `mat_g2_dp_q3_0..1`, `mat_g3_dp_q3_0`).
+- **Root causes fixed:**
+  1. **Inert scaled set-mode answers:** `mat_g2_dp_q3_0` set mode keyed raw count data instead of row symbol counts (`values // scale`), rendering scaled graph construction a trivial transcription task. Fixed to key row symbol counts.
+  2. **Competency bounds for scale_type:** `registry.py` did not bind `scale_type` for nodes specifying "with a scale" (`mat_g2_dp_q3_0`), allowing scale=1 to be generated. Fixed in `_parse_competency_bounds` to restrict to `["scale_2", "scale_5", "scale_10"]`.
+  3. **Contextless stems & emoji mismatch:** Categories lacked thematic subject nouns and emojis (e.g. "How many are in Monday?" with apple emojis for all categories). Added `_THEMES` pairing category sets with appropriate emojis (🍎, 🐾, 🌸, 📖, ⭐, ⚽, 📚, 🎨), titles, and contextual stem templates.
+  4. **Stem framing monotony:** Added distinct framing templates for set mode in `fmt_pictograph.py`.
+  5. **Cognitive capacity bounds:** Enforced Grade 1 row maximum of 5 (total ≤ 15) and Grade 2 unscaled row maximum of 8.
+  6. **Comparison distractors & ties:** Ensured strictly unique maximums and 4-way MCQ options matching all named categories.
+- **Files touched:**
+  - `backend/app/practice_gen/dna/dp/pictographs.py`
+  - `backend/app/practice_gen/formatters/visual/fmt_pictograph.py`
+  - `backend/app/practice_gen/formatters/visual/fmt_fill_in_table.py`
+  - `backend/app/practice_gen/registry.py`
+  - `validation_reports/judgment/mat_g1_dp_q3/mat_g1_dp_q3_0.json` (fresh blind review filed)
+  - `validation_reports/judgment/mat_g1_dp_q3/mat_g1_dp_q3_1.json` (fresh blind review filed)
+  - `validation_reports/judgment/mat_g1_dp_q3/mat_g1_dp_q3_2.json` (fresh blind review filed)
+  - `validation_reports/judgment/mat_g1_dp_q3/mat_g1_dp_q3_3.json` (fresh blind review filed)
+  - `validation_reports/judgment/mat_g2_dp_q3/mat_g2_dp_q3_0.json` (fresh blind review filed)
+  - `validation_reports/judgment/mat_g2_dp_q3/mat_g2_dp_q3_1.json` (fresh blind review filed)
+  - `validation_reports/judgment/mat_g3_dp_q3/mat_g3_dp_q3_0.json` (fresh blind review filed)
+- **Verification:**
+  - Blast-radius diff (`scripts/check_blast_radius.py --dna pictographs`): 7 nodes rendered cleanly across 5 seeds.
+  - Matrix validation (`validate_matrix`): 151/151 nodes passed, 0 failures.
+  - Gate health sweep: `gate errors: 286 | verdict: 286 | NON-VERDICT: 0`.
+  - Census movement across the unit:
+    - `mat_g2_dp_q3_0`: CONCERN → **PASS** (+1)
+    - `mat_g2_dp_q3_1`: CONCERN → **PASS** (+1)
+    - `mat_g1_dp_q3_1`: CONCERN → **PASS** (+1)
+    - `mat_g1_dp_q3_2`: PASS → **PASS** (maintained)
+    - `mat_g1_dp_q3_3`: CONCERN → **PASS** (+1)
+    - `mat_g1_dp_q3_0`: FAIL (maintained, unbuilt interview capability)
+    - `mat_g3_dp_q3_0`: CONCERN (maintained, dual presentation)
+- **Census after:** PASS=62 CONCERN=62 FAIL=27 UNKNOWN=0 (151 reviewed).
+- **Next tick should:** Harden the next non-PASS cluster. Candidates:
+  1. `mat_g1_na_q1_1..2` (Number Sense Q1 counting / comparing).
+  2. `mat_g2_mg_q4_4` (Measurement & Geometry co-mapped DNA).
+  3. `mat_g1_dp_q3_0` (simple interview data collection).

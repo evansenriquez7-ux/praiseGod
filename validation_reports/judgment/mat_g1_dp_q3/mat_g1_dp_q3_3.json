@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_dp_q3_3",
-  "reviewed_by": "Blind MATATAG curriculum reviewer (Grade 1-2 Data & Probability), scoring rendered samples against node competency text on 2026-08-14",
-  "review_date": "2026-08-14",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (dp pictographs re-review), 2026-08-16",
+  "review_date": "2026-08-16",
   "blind": true,
   "sample_seeds": [
     42,
@@ -21,9 +21,9 @@
       "question_text": "The pictograph shows cats, dogs, birds and fish. Fill in the chart with the correct counts.",
       "correct_answer": [
         1,
-        5,
-        4,
-        4
+        3,
+        2,
+        2
       ]
     },
     {
@@ -31,10 +31,10 @@
       "formatter": "set_fill_in_blank",
       "question_text": "Look at the pictograph. Write the correct count for each row in the chart: apples, bananas, mangoes and grapes.",
       "correct_answer": [
-        5,
         3,
-        8,
-        6
+        2,
+        4,
+        3
       ]
     },
     {
@@ -42,10 +42,10 @@
       "formatter": "set_fill_in_blank",
       "question_text": "Count the pictures in each row of the pictograph, then write the counts for roses, sunflowers, tulips and daisies in the chart.",
       "correct_answer": [
-        9,
-        9,
-        2,
-        3
+        5,
+        5,
+        1,
+        2
       ]
     },
     {
@@ -53,10 +53,10 @@
       "formatter": "set_fill_in_blank",
       "question_text": "The pictograph shows Monday, Tuesday, Wednesday and Thursday. Fill in the chart with the correct counts.",
       "correct_answer": [
-        7,
-        8,
-        5,
-        2
+        4,
+        4,
+        3,
+        1
       ]
     },
     {
@@ -64,49 +64,43 @@
       "formatter": "set_fill_in_blank",
       "question_text": "Count the pictures in each row of the pictograph, then write the counts for cats, dogs, birds and fish in the chart.",
       "correct_answer": [
-        7,
+        4,
         1,
-        10,
-        10
+        5,
+        5
       ]
     },
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Count the pictures in each row of the pictograph, then write the counts for Grade 1, Grade 2, Grade 3, Grade 4, Grade 5 and Grade 6 in the chart.",
+      "question_text": "Count the pictures in each row of the pictograph, then write the counts for Grade 1, Grade 2, Grade 3 and Grade 4 in the chart.",
       "correct_answer": [
-        9,
-        10,
-        8,
         5,
-        7,
-        4
+        5,
+        4,
+        3
       ]
     },
     {
       "seed": 501,
       "formatter": "set_fill_in_blank",
-      "question_text": "Look at the pictograph. Write the correct count for each row in the chart: Monday, Tuesday, Wednesday, Thursday, Friday and Saturday.",
+      "question_text": "Look at the pictograph. Write the correct count for each row in the chart: Monday, Tuesday, Wednesday and Thursday.",
       "correct_answer": [
-        6,
-        4,
-        6,
-        6,
-        9,
-        6
+        3,
+        2,
+        3,
+        3
       ]
     },
     {
       "seed": 502,
       "formatter": "set_fill_in_blank",
-      "question_text": "The pictograph shows basketball, volleyball, swimming, running, soccer and tennis. Fill in the chart with the correct counts.",
+      "question_text": "The pictograph shows basketball, volleyball, swimming and running. Fill in the chart with the correct counts.",
       "correct_answer": [
+        2,
         3,
-        6,
-        3,
-        7,
-        1,
-        7
+        2,
+        4
       ]
     },
     {
@@ -114,37 +108,37 @@
       "formatter": "set_fill_in_blank",
       "question_text": "Count the pictures in each row of the pictograph, then write the counts for Math, Science, English and Art in the chart.",
       "correct_answer": [
-        10,
-        9,
+        5,
+        5,
         1,
-        2
+        1
       ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The competency is to organize data in a pictograph without a scale into a table, and every sample does exactly that one-way transfer: read a scaleless pictograph row by row and record each row's count. Seed 44 states the task explicitly - \"Count the pictures in each row of the pictograph, then write the counts for roses, sunflowers, tulips and daisies in the chart.\" - and seed 42 does the same with a different framing, \"The pictograph shows cats, dogs, birds and fish. Fill in the chart with the correct counts.\" No sample introduces a symbol-value key or any multiplier, so the pictograph is genuinely unscaled (one picture = one item) as the competency requires, and the recorded answers are plain row counts. One wording note that does not change the task: the items name the destination grid a chart rather than using the curriculum word for it, e.g. \"Fill in the chart with the correct counts.\" The structure asked for - one labelled row, one count - is a table in all but name, so the competency is met."
+      "rationale": "The problems successfully ask students to translate information from a pictograph into numerical counts for a table, effectively fulfilling the competency to \"Organize data in a pictograph without a scale into a table.\""
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The competency names a single deliverable - a scaleless pictograph organized into a table - with no second direction and no additional sub-case, and the samples exercise it across the full span of category counts and label types a Grade 1 pictograph can carry. Four-row sets appear, e.g. \"Count the pictures in each row of the pictograph, then write the counts for Math, Science, English and Art in the chart.\", and six-row sets appear, e.g. \"Count the pictures in each row of the pictograph, then write the counts for Grade 1, Grade 2, Grade 3, Grade 4, Grade 5 and Grade 6 in the chart.\" Row labels cover objects, days, and school categories, and per-row counts run the whole 1 to 10 band including a row of 1 in seed 42 and rows of 10 in seed 46, so both the smallest and largest legal row lengths are represented rather than only mid-sized ones."
+      "rationale": "The samples cover translating distinct categories by having the student fill in counts for different items as seen in \"The pictograph shows cats, dogs, birds and fish. Fill in the chart with the correct counts.\" ensuring a comprehensive representation of the data."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Load is right for Grade 1 Quarter 3. Each item is a single repeated action - count a row of pictures, write the number - with no arithmetic, no comparison, and no multi-step reasoning layered on top; seed 45 is typical: \"The pictograph shows Monday, Tuesday, Wednesday and Thursday. Fill in the chart with the correct counts.\" The instructions are short declarative sentences and, where the task might be unclear, the item spells out the procedure in order, as in \"Count the pictures in each row of the pictograph, then write the counts for cats, dogs, birds and fish in the chart.\" The largest item asks for six rows - \"Look at the pictograph. Write the correct count for each row in the chart: Monday, Tuesday, Wednesday, Thursday, Friday and Saturday.\" - which is more transcription but not harder thinking, and the labels there are high-frequency Grade 1 words. No vocabulary beyond the grade appears."
+      "rationale": "The counts required for the table are small integers (mostly up to 5), which is perfectly aligned with the counting capabilities and cognitive capacity of a Grade 1 student."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Nine samples show real structural and surface variety rather than one item recycled. Three distinct question frames appear: a statement-then-instruction frame, \"The pictograph shows basketball, volleyball, swimming, running, soccer and tennis. Fill in the chart with the correct counts.\"; a look-then-list frame, \"Look at the pictograph. Write the correct count for each row in the chart: apples, bananas, mangoes and grapes.\"; and a procedural frame, \"Count the pictures in each row of the pictograph, then write the counts for Math, Science, English and Art in the chart.\" Context sets differ across animals, fruit, flowers, weekdays, grade levels, sports, and school subjects, row counts vary between four and six, and the answer profiles differ in shape - seed 44 pairs two equal tall rows with two short ones, while seed 46 mixes a row of 1 with two rows of 10 - so no two items read or solve the same way."
+      "rationale": "The problems present multiple real-world themes and vary the framing of the prompt, such as \"Look at the pictograph. Write the correct count for each row in the chart: apples, bananas, mangoes and grapes.\" versus \"Count the pictures in each row of the pictograph, then write the counts for Math, Science, English and Art in the chart.\""
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty moves only along dimensions internal to this competency and never slides into a neighbouring skill. The easier end is a four-row graph with small, well-separated counts, seed 42: \"The pictograph shows cats, dogs, birds and fish. Fill in the chart with the correct counts.\" The harder end adds rows and pushes counts to the top of the band, seed 500: \"Count the pictures in each row of the pictograph, then write the counts for Grade 1, Grade 2, Grade 3, Grade 4, Grade 5 and Grade 6 in the chart.\" Both variants still ask for the same act of organizing the pictograph into the chart. Critically, no item asks the student to compare rows, find a total, answer a most-or-least question, or interpret a symbol key - all of which would be different competencies - and no item states a symbol value, which would drift into the scaled-pictograph skill taught later."
+      "rationale": "The tasks strictly align with the requirement to organize pictograph data into a table without demanding operations beyond standard extraction and counting."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Every recorded count sits inside the Grade 1 whole-number range for counting and representing quantity: the smallest is 1 in seed 42 (\"The pictograph shows cats, dogs, birds and fish. Fill in the chart with the correct counts.\") and the largest is 10, reached in seed 46 (\"Count the pictures in each row of the pictograph, then write the counts for cats, dogs, birds and fish in the chart.\") and in seed 601 (\"Count the pictures in each row of the pictograph, then write the counts for Math, Science, English and Art in the chart.\"). Rows of at most ten pictures stay countable by eye without grouping strategies a Grade 1 pupil has not been taught, and because no item declares a symbol value there is no hidden multiplication inflating the quantities beyond what the numbers on the page show."
+      "rationale": "The numbers involved are small and manageable, indicating an implicit 1:1 scale which is perfectly appropriate for the \"without a scale\" competency constraint for Grade 1."
     }
   },
   "overall": "PASS"

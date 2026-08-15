@@ -160,33 +160,28 @@ def format_pictograph(
     counts: List[int] = vp["counts"]
     scale: int = vp["scale"]
 
-    task_type = vp.get("task_type", ctx.values.get("task_type", "read_value"))
+    task_type = vp.get("task_type", ctx.values.get("task_type", "read_value") if ctx.values else "read_value")
     traps = _build_traps(vp, rng)
     ask_idx = 0
     
     if interaction_mode == "read":
         vp["is_read_mode"] = True
         if task_type in ("compare_two", "compare"):
-            comp_a = ctx.values.get("compare_a", categories[0])
-            comp_b = ctx.values.get("compare_b", categories[1])
-            correct_count = ctx.correct_answer if ctx.correct_answer is not None else (comp_a if counts[categories.index(comp_a)] >= counts[categories.index(comp_b)] else comp_b)
-            question_text = f"Look at the picture graph. Which has more: {comp_a} or {comp_b}?"
+            cats_str = ", ".join(categories[:-1]) + " or " + categories[-1] if len(categories) > 1 else categories[0]
+            subj = vp.get("subject", "items")
+            correct_count = ctx.correct_answer if ctx.correct_answer is not None else (ctx.values.get("answer") if ctx.values else categories[counts.index(max(counts))])
+            question_text = f"Look at the picture graph. Which has the most {subj}: {cats_str}?"
         elif task_type == "find_total":
             correct_count = ctx.correct_answer if ctx.correct_answer is not None else sum(counts)
-            question_text = "Look at the picture graph. What is the total number of items shown?"
+            subj = vp.get("subject", "items")
+            question_text = f"Look at the picture graph. What is the total number of {subj} shown?"
         elif task_type == "find_difference":
-            comp_a = ctx.values.get("compare_a", categories[0])
-            comp_b = ctx.values.get("compare_b", categories[1])
+            comp_a = ctx.values.get("compare_a", categories[0]) if ctx.values else categories[0]
+            comp_b = ctx.values.get("compare_b", categories[1]) if ctx.values else categories[1]
             correct_count = ctx.correct_answer if ctx.correct_answer is not None else abs(counts[categories.index(comp_a)] - counts[categories.index(comp_b)])
             question_text = f"Look at the picture graph. What is the difference between {comp_a} and {comp_b}?"
         else: # read_value
-            # The DNA already chose which category to ask about, and generate_hints
-            # built its worked count from THAT choice. Re-drawing here ignored it,
-            # so on 172 items the stem asked for one category while the hint walked
-            # the pupil through counting a different one ("How many are in bananas?"
-            # / "Count the pictures for 'apples'..."). Honour the DNA's choice; only
-            # draw when it did not make one.
-            ask_cat = ctx.values.get("question_category")
+            ask_cat = ctx.values.get("question_category") if ctx.values else None
             if ask_cat in categories:
                 ask_idx = categories.index(ask_cat)
             else:
@@ -194,23 +189,31 @@ def format_pictograph(
                 ask_cat = categories[ask_idx]
             correct_count = counts[ask_idx]
             vp["ask_category"] = ask_cat
+            stem_tpl = vp.get("stem_template") or (ctx.values.get("stem_template") if ctx.values else None)
+            sub_q = stem_tpl.format(cat=ask_cat) if stem_tpl else f"How many are in {ask_cat}?"
             if scale > 1:
-                question_text = f"Look at the picture graph. Each {vp['symbol']} = {scale}. How many are in {ask_cat}?"
+                question_text = f"Look at the picture graph. Each {vp['symbol']} = {scale}. {sub_q}"
             else:
-                question_text = f"Look at the picture graph. How many are in {ask_cat}?"
+                question_text = f"Look at the picture graph. {sub_q}"
     else:
         vp["is_read_mode"] = False
         data_str = ", ".join(f"{categories[i]}: {counts[i]}" for i in range(len(categories)))
         if scale > 1:
-            question_text = (
-                f"Make a picture graph to show: {data_str}. "
-                f"Each {vp['symbol']} equals {scale}."
-            )
+            frames = [
+                f"Make a picture graph to show: {data_str}. Each {vp['symbol']} equals {scale}.",
+                f"Look at the data: {data_str}. Draw a picture graph where each {vp['symbol']} stands for {scale} items.",
+                f"The table shows: {data_str}. Create a picture graph where each {vp['symbol']} equals {scale}.",
+                f"Complete the picture graph to show: {data_str}. Each {vp['symbol']} represents {scale} items.",
+            ]
+            question_text = frames[rng.randint(0, len(frames) - 1)]
         else:
-            question_text = (
-                f"Make a picture graph to show: {data_str}. "
-                f"Draw one {vp['symbol']} for each item."
-            )
+            frames = [
+                f"Make a picture graph to show: {data_str}. Draw one {vp['symbol']} for each item.",
+                f"Look at the data: {data_str}. Draw one {vp['symbol']} for each item in the picture graph.",
+                f"The survey shows: {data_str}. Make a picture graph by drawing one {vp['symbol']} for each item.",
+                f"Complete the picture graph for {data_str}. Draw one {vp['symbol']} for each item.",
+            ]
+            question_text = frames[rng.randint(0, len(frames) - 1)]
 
     # ── 4. Answer collection ──────────────────────────────────────────────────
     mcq_options = None
@@ -219,19 +222,16 @@ def format_pictograph(
         distractor_vals = []
         
         if isinstance(correct_count, str):
-            # The answer is a category name
+            # The answer is a category name: use other categories from this graph
             for cat in categories:
                 if cat != correct_count and len(distractor_vals) < 3:
                     distractor_vals.append(cat)
                     seen.add(cat)
             
             if len(distractor_vals) < 3:
-                # Find a bank of categories to draw extra distractors from
                 flat_bank = []
                 for _, _, theme_cats in _PICTOGRAPH_THEMES:
                     flat_bank.extend(theme_cats)
-                
-                # Also add the English category set names
                 flat_bank.extend([
                     "apples", "bananas", "mangoes", "grapes", "oranges", "strawberries",
                     "cats", "dogs", "birds", "fish", "rabbits", "turtles",
@@ -242,17 +242,12 @@ def format_pictograph(
                     "roses", "sunflowers", "tulips", "daisies", "orchids", "lilies",
                     "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6"
                 ])
-                
-                # De-duplicate while preserving order
                 clean_bank = []
                 for item in flat_bank:
                     if item not in clean_bank:
                         clean_bank.append(item)
-                
-                # Shuffle clean_bank with rng
                 shuffled_bank = clean_bank[:]
                 rng.shuffle(shuffled_bank)
-                
                 for item in shuffled_bank:
                     if len(distractor_vals) >= 3:
                         break
@@ -273,8 +268,8 @@ def format_pictograph(
                     if task_type == "find_total":
                         d = sum(tv)
                     elif task_type == "find_difference":
-                        comp_a = ctx.values.get("compare_a", categories[0])
-                        comp_b = ctx.values.get("compare_b", categories[1])
+                        comp_a = ctx.values.get("compare_a", categories[0]) if ctx.values else categories[0]
+                        comp_b = ctx.values.get("compare_b", categories[1]) if ctx.values else categories[1]
                         d = abs(tv[categories.index(comp_a)] - tv[categories.index(comp_b)])
                     
                     if d not in seen and d >= 0:
@@ -299,7 +294,11 @@ def format_pictograph(
         ]
         correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
     else:
-        correct_answer = correct_count if interaction_mode == "read" else counts
+        if interaction_mode == "read":
+            correct_answer = correct_count
+        else:
+            correct_answer = [c // scale for c in counts] if scale > 0 else counts
+
 
     vp["is_pictograph"] = True
     
