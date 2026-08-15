@@ -2454,3 +2454,49 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
 - **Census after:** PASS=70 CONCERN=56 FAIL=25 Total=151 (+4 PASS).
 - **Next tick should:** Harden the next non-PASS cluster (e.g. `mat_g1_na_q1_3..4` comparing/ordering, or `mat_g3_mg_q2_0/3` mass & capacity duplication).
 
+## Tick C Unit: Grade 1 Quarter 2 Place Value & Addition Cluster Hardening (`mat_g1_na_q2_2`, `mat_g1_na_q2_3`, `mat_g1_na_q2_4`, `mat_g1_na_q2_5`) + G1 Q1 Reviews Refresh (`mat_g1_na_q1_7`, `mat_g1_na_q1_8`, `mat_g1_na_q1_9`)
+- **Timestamp:** 2026-08-16T06:20:00+08:00
+- **Scope / Target Nodes:**
+  - `mat_g1_na_q2_2` (G1 Q2 Number Sense): Determine the place value of a digit in a 2-digit number, the value of a digit, and the digit of a number, given its place value.
+  - `mat_g1_na_q2_3` (G1 Q2 Number Sense): Decompose any 2-digit number into tens and ones.
+  - `mat_g1_na_q2_4` (G1 Q2 Number Sense): Add numbers with sums up to 100 using expanded form (without and with regrouping).
+  - `mat_g1_na_q2_5` (G1 Q2 Number Sense): Add 2-digit numbers and 1-digit numbers, and 2-digit numbers and 2-digit numbers with sums up to 100 without regrouping.
+  - `mat_g1_na_q1_7`, `mat_g1_na_q1_8`, `mat_g1_na_q1_9` (G1 Q1 Addition): Refreshed and kept in sync with gate and spine improvements.
+- **Root Cause & Diagnosis:**
+  1. `place_value` DNA had continuous axis `number_difficulty` missing in `axes_catalog.py`, preventing seeds 500-502 from testing high 2-digit range.
+  2. `mat_g1_na_q2_4` (expanded form addition) fell back to single-digit addition at lower difficulty scalars due to `max_sum` bounds in `registry.py` and unfloored `max_result` in `addition.py`.
+  3. `mat_g1_na_q2_5` (2-digit/1-digit addition without regrouping) had `candidates_b` in `addition.py` constrained to `b >= 10`, preventing 2-digit + 1-digit pairs and generating single-digit facts.
+  4. `place_value.py` generated out-of-grade meta-distractors ("cannot be determined", "none of the above") and 3-digit values (100) for Grade 1.
+  5. `compatibility.py` lacked curriculum variant gating for expanded_form and associative addition, admitting place value decomposition before G1 Q2.
+  6. Story spines in `dna/base.py` had object/container collision when theme object was "basket" inside "in one basket" template; fixed slot collision.
+- **Files Modified:**
+  - `backend/app/practice_gen/axes_catalog.py`
+  - `backend/app/practice_gen/compatibility.py`
+  - `backend/app/practice_gen/dna/base.py`
+  - `backend/app/practice_gen/dna/na/addition.py`
+  - `backend/app/practice_gen/dna/na/place_value.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_cloze.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_mcq.py`
+  - `backend/app/practice_gen/registry.py`
+  - `validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_7.json` (PASS)
+  - `validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_8.json` (PASS)
+  - `validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_9.json` (PASS)
+  - `validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_2.json` (PASS)
+  - `validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_3.json` (PASS)
+  - `validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_4.json` (PASS)
+  - `validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_5.json` (PASS)
+- **Verification:**
+  - Scoped matrix validation (`validate_matrix` on 4 G1 Q2 nodes): 4/4 nodes passed, 0 failures.
+  - Blast-radius sweep across all 20 addition and place_value nodes: 20/20 passed, 0 failures.
+  - Full matrix validation (`validate_matrix` over 151 nodes): 151/151 passed, 0 failures.
+  - Blind Pro Reviews: 7/7 nodes achieved clean PASS verdicts with exact contiguous quote provenance.
+  - Judgment verification (`_validate_one`, `_validate_freshness`, `_validate_quote_provenance`): 151 total review files: 0 stale, 0 provenance errors.
+  - Census movement across the unit:
+    - `mat_g1_na_q2_2`: CONCERN → **PASS** (+1)
+    - `mat_g1_na_q2_3`: CONCERN → **PASS** (+1)
+    - `mat_g1_na_q2_4`: FAIL → **PASS** (+1)
+    - `mat_g1_na_q2_5`: CONCERN → **PASS** (+1)
+- **Census after:** PASS=73 CONCERN=54 FAIL=24 Total=151 (+3 PASS, -1 FAIL).
+- **Next tick should:** Harden the next non-PASS cluster (e.g. `mat_g1_na_q2_6` 2-digit addition with regrouping, or `mat_g1_na_q1_3..4` comparing/ordering numbers).
+
+

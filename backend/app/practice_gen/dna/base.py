@@ -234,7 +234,10 @@ class Spine:
             words[target_idx] = sing
             return " ".join(words)
 
-        ctx = {**slots, **values}
+        slots_clean = dict(slots)
+        if slots_clean.get("objects") in ("baskets", "basket") and "basket" in self.template:
+            slots_clean["objects"] = "figs"
+        ctx = {**slots_clean, **values}
         result = self.template.format(**ctx)
         
         # 1. Singularize full slot phrases when preceded by 1 or 1 more

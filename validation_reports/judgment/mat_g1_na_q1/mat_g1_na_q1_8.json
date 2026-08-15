@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g1_na_q1_8",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition & ordinals hardening), 2026-08-16",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition hardening), 2026-08-16",
   "review_date": "2026-08-16",
   "blind": true,
   "sample_seeds": [
@@ -20,7 +20,7 @@
     602,
     603,
     604,
-    605
+    606
   ],
   "samples_reviewed": [
     {
@@ -443,39 +443,58 @@
       ]
     },
     {
-      "seed": 605,
-      "formatter": "error_detect",
-      "question_text": "Liza says: 4 + 0 = 4. Is Liza correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 4
-      }
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "What is 3 + 0?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
+      ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The items successfully address the objective to \"Illustrate by applying the following properties of addition\" by practically testing \"the sum of zero and any number is equal to the number\" with problems like \"What is 1 + 0?\"."
+      "rationale": "The generator requires students to \"Illustrate by applying the following properties of addition\" by having them evaluate concrete instances of those properties, such as answering \"What is 1 + 0?\" and determining \"Is 2 + 1 the same as 1 + 2?\""
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The generator comprehensively covers the required cases, generating questions testing that \"changing the order of the addends does not change the sum\" such as \"Is 13 + 6 the same as 6 + 13?\", alongside zero-sum questions like \"What is 0 + 4?\"."
+      "rationale": "Both required properties are covered: \"the sum of zero and any number is equal to the number\" is tested in items like \"What is 0 + 3?\", and \"changing the order of the addends does not change the sum\" is tested in items like \"Is 7 + 2 the same as 2 + 7?\"."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The phrasing matches the first-grade cognitive level by utilizing straightforward language such as \"Is Grace correct?\" and avoiding complex multi-step instructions, fully respecting the constraint of \"using sums up to 20\"."
+      "rationale": "The language is highly accessible for Grade 1 students, using simple, direct structures such as \"What is 0 + 4?\" and \"Is 16 + 1 the same as 1 + 16?\"."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The sample demonstrates solid structural variety, offering multiple choice, true/false, error detection, and cloze formats to assess the \"properties of addition\", e.g. \"1 + 0 = ___\"."
+      "rationale": "The items use a robust variety of formats to test the concepts, spanning direct computations like \"3 + 0 = ___\", boolean judgments like \"Is 13 + 6 the same as 6 + 13?\", and error detection like \"Grace says: 0 + 2 = 1. Is Grace correct?\"."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "All samples are perfectly aligned, functioning strictly to assess \"properties of addition\" without introducing irrelevant concepts like subtraction or missing addends."
+      "rationale": "The samples are strictly bound to the target knowledge, focusing entirely on \"changing the order of the addends does not change the sum\" and \"the sum of zero and any number is equal to the number\" without introducing extraneous operations."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The generator consistently obeys the restriction \"using sums up to 20\"; the largest sum required to evaluate any problem correctly is 19, found in \"Is 18 + 1 the same as 1 + 18?\"."
+      "rationale": "All values strictly adhere to the requirement of \"using sums up to 20\". The maximum evaluated sum presented is 19, found in items such as \"Is 18 + 1 the same as 1 + 18?\" and \"Is 13 + 6 the same as 6 + 13?\"."
     }
   },
   "overall": "PASS"

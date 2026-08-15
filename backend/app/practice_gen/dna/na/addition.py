@@ -483,7 +483,8 @@ def generate_params(
             "question": f"Is ({a_val} + {b_val}) + {c_val} the same as {a_val} + ({b_val} + {c_val})?",
         }
 
-    if task_type == "expanded_form" and max_result >= 11:
+    if task_type == "expanded_form":
+        max_result = max(11, max_result)
         # Threshold is the branch's own structural minimum, not an arbitrary
         # round number: lo=10 below always requires a two-digit `a`, so the
         # smallest representable sum is 10+1=11. The previous ">= 20" guard
@@ -806,11 +807,11 @@ def generate_params(
         }
 
     # Build candidate operand pool with grade-appropriate floor
-    min_a = 0
+    min_a = int(profile.get("min_a", 0))
     if grade >= 3 and max_result >= 100:
-        min_a = 10
+        min_a = max(min_a, 10)
     if grade >= 4 and max_result >= 1000:
-        min_a = 100
+        min_a = max(min_a, 100)
         
     # Fail fast on infeasible (range, regrouping) combinations instead of
     # discovering it by exhausting the rejection loop below. A sum bounded by
@@ -828,7 +829,7 @@ def generate_params(
 
     a_hi = max(1, max_result - 1)
     candidates_a = list(range(min_a, a_hi + 1))
-    candidates_b = candidates_a.copy()
+    candidates_b = list(range(0, a_hi + 1))
 
     # Build all valid pairs satisfying sum and regrouping
     candidate_pairs = []

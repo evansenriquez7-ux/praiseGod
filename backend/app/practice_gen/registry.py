@@ -181,6 +181,7 @@ def _parse_competency_bounds(
         # "the actual expanded-form addition procedure... never appears").
         if "expanded form" in text:
             bounds["task_type"] = "expanded_form"
+            bounds["max_sum"] = (11, 100 if grade == 1 else 1000)
 
         # "Illustrate by applying the following properties of addition, using
         # sums up to 20: the sum of zero and any number..., changing the order
@@ -258,6 +259,13 @@ def _parse_competency_bounds(
                 small_digits = int(digit_match.group(2))
                 min_feasible = (10 ** (big_digits - 1)) + (10 ** (small_digits - 1) if small_digits > 1 else 1)
                 bounds["max_sum"] = (min_feasible, bounds["max_sum"][1])
+
+        if "without regrouping" in text:
+            bounds["regrouping"] = "none"
+        if "2-digit and 1-digit" in text and "2-digit and 2-digit" in text:
+            bounds["min_a"] = 10
+            cur_hi = bounds.get("max_sum", (11, 100))[1]
+            bounds["max_sum"] = (11, cur_hi)
 
     # Subtraction: operand bound is enforced by the DNA's per-grade
     # _PARAM_BOUNDS[grade] (g1: a<100, g2: a<1000, g3: a<10000). All

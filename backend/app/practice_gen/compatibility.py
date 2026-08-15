@@ -101,6 +101,11 @@ CURRICULUM_VARIANT_GATES: Dict[tuple, tuple] = {
     ("fractions", "operation", "subtract"): (3, 4),
     ("fractions", "operation", "add_subtract"): (3, 4),
 
+    # Addition: expanded form requires tens and ones place value introduced in G1 Q2 (mat_g1_na_q2_2)
+    ("addition", "task_type", "expanded_form"): (1, 2),
+    ("addition", "strategy", "expanded_form"): (1, 2),
+    ("addition", "task_type", "associative"): (2, 1),
+
     # Multiplication: multi_digit introduced in G3Q3 (2-3 digit × 1-digit operations)
     ("multiplication", "number_type", "multi_digit"): (3, 3),
 
@@ -920,9 +925,10 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
 
     "place_value": {
         "include_zeros": ["yes", "no"],
+        "mcq": {"task_type": ["identify_value", "identify_digit", "compose", "decompose"]},
         # blocks work best for compose/decompose
-        "place_value_blocks_read": {"task_type": ["identify_value", "compose", "identify_place"], "context": ["pure"]},
-        "place_value_blocks_set": {"task_type": ["compose", "decompose", "identify_value"], "context": ["pure"]},
+        "place_value_blocks_read": {"task_type": ["compose"], "context": ["pure"]},
+        "place_value_blocks_set": {"task_type": ["compose", "decompose"], "context": ["pure"]},
     },
 
     "comparing_ordering": {

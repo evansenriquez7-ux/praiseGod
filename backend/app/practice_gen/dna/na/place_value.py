@@ -304,8 +304,6 @@ def generate_params(
         # non-vocabulary filler options rather than reaching for a place
         # name this node hasn't earned yet.
         other_places = [p for p in PLACE_NAMES[: max_pl + 1] if p != place_name]
-        while len(other_places) < 3:
-            other_places.append("cannot be determined" if len(other_places) == 2 else "none of the above")
         return {
             "blank_target": "place_name",
             "number":                number,
@@ -315,7 +313,7 @@ def generate_params(
             "value_at_position":     value_at_position,
             "place_name":            place_name,
             "answer":                place_name,
-            "distractors":           other_places[:3],
+            "distractors":           other_places,
         }
 
     if task_type == "identify_digit":
@@ -335,6 +333,25 @@ def generate_params(
             "place_name":            place_name,
             "answer":                digit_at_position,
             "distractors":           other_digits[:3],
+        }
+
+    if task_type == "identify_value":
+        val_distractors = []
+        if digit_at_position != value_at_position:
+            val_distractors.append(digit_at_position)
+        for cand in [digit_at_position * 10, digit_at_position + 10, number, digit_at_position + 1]:
+            if cand != value_at_position and 0 <= cand < (10 ** (max_pl + 1)) and cand not in val_distractors:
+                val_distractors.append(cand)
+        return {
+            "blank_target": "value_at_position",
+            "number":                number,
+            "target_digit_position": target_pos,
+            "task_type":             "identify_value",
+            "digit_at_position":     digit_at_position,
+            "value_at_position":     value_at_position,
+            "place_name":            place_name,
+            "answer":                value_at_position,
+            "distractors":           val_distractors[:3],
         }
 
     return {

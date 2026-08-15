@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q2_4",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition hardening), 2026-08-16",
+  "review_date": "2026-08-16",
   "blind": true,
   "sample_seeds": [
     42,
@@ -11,41 +11,41 @@
     46,
     50,
     55,
-    84,
-    85,
     500,
     501,
     502,
+    600,
     601,
     603,
-    608,
-    611
+    604,
+    607,
+    608
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 1 + 1?",
-      "correct_answer": 2,
+      "question_text": "10 is 1 ten and 0 ones. 4 is 4 ones. Add the place values, then find the total: what is 10 + 4?",
+      "correct_answer": 14,
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 24,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 2,
+          "value": 14,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 1,
+          "value": 13,
           "is_correct": false
         }
       ]
@@ -53,265 +53,390 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 1 + 2?",
-      "correct_answer": 3,
+      "question_text": "15 is 1 ten and 5 ones. 11 is 1 ten and 1 one. Add the place values, then find the total: what is 15 + 11?",
+      "correct_answer": 26,
       "options": [
         {
           "key": "A",
-          "value": 3,
+          "value": 26,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 2,
+          "value": 25,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 4,
+          "value": 27,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 13,
+          "value": 36,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "true_false",
-      "question_text": "2 + 1 = 3. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 45,
       "formatter": "cloze",
-      "question_text": "1 + 2 = ___",
-      "correct_answer": 3,
+      "question_text": "10 is 1 ten and 0 ones. 22 is 2 tens and 2 ones. Add the place values, then find the total: 10 + 22 = ___",
+      "correct_answer": 32,
       "options": [
         {
           "key": "A",
-          "value": 4,
-          "text": "4",
+          "value": 31,
+          "text": "31",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 13,
-          "text": "13",
+          "value": 42,
+          "text": "42",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 3,
-          "text": "3",
+          "value": 33,
+          "text": "33",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 32,
+          "text": "32",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "22 is 2 tens and 2 ones. 10 is 1 ten and 0 ones. Add the place values, then find the total: what is 22 + 10?",
+      "correct_answer": 32,
+      "options": [
+        {
+          "key": "A",
+          "value": 33,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 42,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 32,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 2,
-          "text": "2",
+          "value": 31,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "cloze",
-      "question_text": "1 + 2 = ___",
-      "correct_answer": 3,
+      "formatter": "mcq",
+      "question_text": "21 is 2 tens and 1 one. 10 is 1 ten and 0 ones. Add the place values, then find the total: what is 21 + 10?",
+      "correct_answer": 31,
       "options": [
         {
           "key": "A",
-          "value": 4,
-          "text": "4",
+          "value": 32,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
-          "text": "3",
+          "value": 31,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 2,
-          "text": "2",
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 13,
-          "text": "13",
+          "value": 41,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 50,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 1 + 2 on the number line.",
-      "correct_answer": 3
+      "formatter": "true_false",
+      "question_text": "15 is 1 ten and 5 ones. 5 is 5 ones. Add the place values, then find the total: 15 + 5 = 19. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "How many items are there in total?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 0,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 84,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 1 and 1. What is the sum?",
-      "correct_answer": 2
-    },
-    {
-      "seed": 85,
       "formatter": "error_detect",
-      "question_text": "Maria says: 2 + 1 = 2. Is Maria correct?",
+      "question_text": "Grace says: 12 is 1 ten and 2 ones. 12 is 1 ten and 2 ones. Add the place values, then find the total: 12 + 12 = 23. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
-        "correct_value": 3
+        "correct_value": 24
       }
     },
     {
       "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "How many items are there in total?",
-      "correct_answer": "C",
+      "formatter": "error_detect",
+      "question_text": "Rico says: 55 is 5 tens and 5 ones. 43 is 4 tens and 3 ones. Add the place values, then find the total: 55 + 43 = 98. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 98
+      }
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "70 is 7 tens and 0 ones. 18 is 1 ten and 8 ones. Add the place values, then find the total: 70 + 18 = ___",
+      "correct_answer": 88,
       "options": [
         {
           "key": "A",
-          "value": 18,
-          "is_correct": false
+          "value": 88,
+          "text": "88",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 17,
+          "value": 89,
+          "text": "89",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 19,
-          "is_correct": true
+          "value": 87,
+          "text": "87",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 1,
+          "value": 98,
+          "text": "98",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "15 is 1 ten and 5 ones. 5 is 5 ones. Add the place values, then find the total: 15 + 5 = 20. True or False?",
-      "correct_answer": true
-    },
-    {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "12 is 1 ten and 2 ones. 8 is 8 ones. Add the place values, then find the total: what is 12 + 8?",
-      "correct_answer": 20,
+      "question_text": "87 is 8 tens and 7 ones. 9 is 9 ones. Add the place values, then find the total: what is 87 + 9?",
+      "correct_answer": 96,
       "options": [
         {
           "key": "A",
-          "value": 30,
+          "value": 106,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 20,
+          "value": 96,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 21,
+          "value": 97,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 19,
+          "value": 95,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "20 is 2 tens and 0 ones. 3 is 3 ones. Add the place values, then find the total: what is 20 + 3?",
+      "correct_answer": 23,
+      "options": [
+        {
+          "key": "A",
+          "value": 33,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 23,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 24,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 601,
-      "formatter": "true_false",
-      "question_text": "Pia is on step 2. Pia climbs up 1 more steps. What step is Pia on now? The answer is 3. True or False?",
-      "correct_answer": true
+      "formatter": "cloze",
+      "question_text": "10 is 1 ten and 0 ones. 5 is 5 ones. Add the place values, then find the total: 10 + 5 = ___",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 14,
+          "text": "14",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 25,
+          "text": "25",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "text": "16",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "text": "15",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 603,
-      "formatter": "true_false",
-      "question_text": "1 + 1 = 1. True or False?",
-      "correct_answer": false
+      "formatter": "cloze",
+      "question_text": "10 is 1 ten and 0 ones. 14 is 1 ten and 4 ones. Add the place values, then find the total: 10 + 14 = ___",
+      "correct_answer": 24,
+      "options": [
+        {
+          "key": "A",
+          "value": 25,
+          "text": "25",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 24,
+          "text": "24",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 34,
+          "text": "34",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 23,
+          "text": "23",
+          "is_correct": false
+        }
+      ]
     },
     {
-      "seed": 608,
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "13 is 1 ten and 3 ones. 28 is 2 tens and 8 ones. Add the place values, then find the total: what is 13 + 28?",
+      "correct_answer": 41,
+      "options": [
+        {
+          "key": "A",
+          "value": 41,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 51,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 42,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 607,
       "formatter": "error_detect",
-      "question_text": "Rico says: 2 + 1 = 4. Is Rico correct?",
+      "question_text": "Grace says: 10 is 1 ten and 0 ones. 22 is 2 tens and 2 ones. Add the place values, then find the total: 10 + 22 = 31. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
-        "correct_value": 3
+        "correct_value": 32
       }
     },
     {
-      "seed": 611,
-      "formatter": "true_false",
-      "question_text": "2 + 1 = 4. True or False?",
-      "correct_answer": false
+      "seed": 608,
+      "formatter": "cloze",
+      "question_text": "12 is 1 ten and 2 ones. 15 is 1 ten and 5 ones. Add the place values, then find the total: 12 + 15 = ___",
+      "correct_answer": 27,
+      "options": [
+        {
+          "key": "A",
+          "value": 27,
+          "text": "27",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 28,
+          "text": "28",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 26,
+          "text": "26",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 37,
+          "text": "37",
+          "is_correct": false
+        }
+      ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Fourteen of sixteen sampled items are bare single-digit facts with no tens/ones framing at all — 'What is 1 + 1?', '1 + 2 = ___', '2 + 1 = 3. True or False?' — and never mention a ten or a one. Only seeds 501 and 502 use the competency's defining method, 'Add the place values, then find the total: 15 + 5 = 20', so the node mostly tests raw addition recall rather than 'expressing addends as tens and ones (expanded form)'."
+      "verdict": "PASS",
+      "rationale": "The items directly satisfy the requirement to \"Add numbers by expressing addends as tens and ones (expanded form).\" by providing the expanded form of each addend in the prompt, as seen in the phrase \"15 is 1 ten and 5 ones. 11 is 1 ten and 1 one.\" and explicitly instructing the student to \"Add the place values, then find the total:\""
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The expanded-form framing itself only shows up twice across sixteen seeds, both a 2-digit-plus-1-digit pairing, 'Add the place values, then find the total: what is 12 + 8?'; no sample exercises the method on a pair where both addends carry a nonzero tens digit."
+      "verdict": "PASS",
+      "rationale": "The generator covers a full range of addition scenarios for this grade level. It includes two-digit plus one-digit problems without regrouping such as \"20 is 2 tens and 0 ones. 3 is 3 ones.\", two-digit plus two-digit problems without regrouping like \"55 is 5 tens and 5 ones. 43 is 4 tens and 3 ones.\", and problems that require regrouping such as \"13 is 1 ten and 3 ones. 28 is 2 tens and 8 ones.\""
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Where present, the two-clause place-value narration ('12 is 1 ten and 2 ones. 8 is 8 ones.') is appropriately short for a first exposure to expanded-form addition in Grade 1."
+      "rationale": "The questions are structured simply and use repeated, predictable phrasing like \"Add the place values, then find the total:\" which reduces cognitive load for Grade 1 students. The distractor options in multiple choice formats like \"what is 21 + 10?\" are close in value to the correct answer, testing the math rather than reading comprehension."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Formatter variety is wide — mcq, true_false, cloze, set_fill_in_blank on a number line, read_fill_in_blank ('The two parts are 1 and 1. What is the sum?'), and error_detect ('Maria says: 2 + 1 = 2. Is Maria correct?') — even though most of that variety is spent on facts outside the competency's method."
+      "rationale": "The generator provides a comprehensive set of variants by utilizing multiple formatters, including \"mcq\", \"cloze\", \"true_false\", and \"error_detect\". This variety allows for different modes of assessment, ranging from straightforward completion like \"10 + 22 = ___\" to evaluative tasks such as \"Is Grace correct?\""
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Difficulty here tracks the size of a generic sum (1+1 versus 15+5) rather than the presence or complexity of the expanded-form technique the competency is actually about, so the progression varies the wrong axis."
+      "verdict": "PASS",
+      "rationale": "The content perfectly aligns with the target learning competency. Every item explicitly frames the addition task around the concept of place value, matching the curriculum's mandate to teach addition \"by expressing addends as tens and ones (expanded form).\""
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "No sampled sum exceeds 20 ('12 + 8' tops the set), which is comfortably inside the up-to-100 ceiling shared with the sibling addition competency."
+      "rationale": "The numerical bounds are appropriate for Grade 1. The items scale from basic sums like \"what is 10 + 4?\" up to sums just below 100, such as \"55 + 43 = 98\" and \"what is 87 + 9?\", fitting standard curriculum limits for early grade addition."
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }

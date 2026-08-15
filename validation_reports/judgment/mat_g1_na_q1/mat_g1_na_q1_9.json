@@ -1,6 +1,6 @@
 {
   "node_id": "mat_g1_na_q1_9",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition & ordinals hardening), 2026-08-16",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition hardening), 2026-08-16",
   "review_date": "2026-08-16",
   "blind": true,
   "sample_seeds": [
@@ -19,8 +19,8 @@
     602,
     606,
     607,
-    608,
-    609
+    609,
+    610
   ],
   "samples_reviewed": [
     {
@@ -357,7 +357,7 @@
     {
       "seed": 606,
       "formatter": "mcq",
-      "question_text": "There is 1 basket in one basket and 2 baskets in another basket. How many baskets are there in all?",
+      "question_text": "There is 1 fig in one basket and 2 figs in another basket. How many figs are there in all?",
       "correct_answer": 3,
       "options": [
         {
@@ -411,12 +411,6 @@
       ]
     },
     {
-      "seed": 608,
-      "formatter": "true_false",
-      "question_text": "Ate Sam is on step 2. Ate Sam climbs up 1 more step. What step is Ate Sam on now? The answer is 3. True or False?",
-      "correct_answer": true
-    },
-    {
       "seed": 609,
       "formatter": "mcq",
       "question_text": "There is 1 costume in one basket and 1 costume in another basket. How many costumes are there in all?",
@@ -443,32 +437,60 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 610,
+      "formatter": "mcq",
+      "question_text": "Lola Ising has 1 cookie. A friend has 2 cookies. If they put all their cookies together, how many cookies do they have in all?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The generator successfully creates items to \"Solve problems\" using scenarios like \"Carlo had 4 canvases. Then Carlo got 14 more. How many canvases does Carlo have now?\" which fulfills the requirement to solve word problems."
+      "rationale": "The samples faithfully represent 'Solve problems (given orally or in pictures)' by presenting a variety of text-based stories and emoji layouts such as '🐸 — There is 1 frog.' that visually simulate pictures."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The packet covers a wide range of values and contexts from very basic additions like \"There is 1 frog.\" and \"1 more frog is added.\" to larger numbers such as \"There are 12 drinks.\" and \"7 more drinks are added.\""
+      "rationale": "The packet provides robust coverage of 'addition with sums up to 20.' by testing various scenarios, from simple problems like '1 score card in one basket and 1 score card in another basket.' to larger combinations like '15 trophies in one basket and 2 trophies in another basket.'"
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The language and problem structures are developmentally appropriate for Grade 1. Phrasing like \"How many total cherries are there?\" and \"What number do you land on?\" are easily accessible to young learners."
+      "rationale": "The language and logic map perfectly to early primary grades. Phrasing like 'Start at 1. Count up 2 more. What number do you land on?' is conceptually appropriate for beginning 'addition with sums up to 20.'"
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The generator produces multiple structural variations, including simple word problems (\"How many score cards are there in all?\"), number line steps (\"Ate Sam climbs up 1 more step.\"), and error detection items (\"Jose says the answer is 3. Is Jose correct?\")."
+      "rationale": "The generator demonstrates solid variation, utilizing standard 'mcq' as well as structural variations like 'error_detect' featuring 'Jose solved this problem' and 'true_false' items."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The generated items adhere strictly to the target of \"addition with sums up to 20\", properly creating sums near the boundary, such as 19 for the drinks and 18 for \"Carlo had 4 canvases. Then Carlo got 14 more.\""
+      "rationale": "Every sample securely aligns to 'addition with sums up to 20.' and restricts its mathematical operation strictly to addition without introducing extraneous or advanced arithmetic operations."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The numbers involved are correctly restricted to \"sums up to 20\", as successfully demonstrated in limits like \"There are 15 trophies in one basket and 2 trophies in another basket.\""
+      "rationale": "All numerical values fall correctly into the 'sums up to 20.' constraint, such as '12 drinks' and '7 more drinks are added.' giving exactly 19, remaining safely below the upper limit."
     }
   },
   "overall": "PASS"

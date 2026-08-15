@@ -305,14 +305,16 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
                         break
             offset_mult += 1
         else:
-            raise ValueError(
-                f"MCQ formatter could not generate enough distractors for string correct answer {correct!r}."
-            )
+            # Non-numeric string answer (e.g. place names): use available distractors
+            break
 
-    if len(candidates) < 3:
+    if len(candidates) < 3 and isinstance(correct, (int, float)) and not isinstance(correct, bool):
         candidates = augment_distractors(candidates, correct, target=3, max_delta=5)
         if len(candidates) < 3:
             raise ValueError(f"MCQ formatter requires at least 3 unique distractors, but got {len(candidates)}: {candidates}")
+
+    if not candidates:
+        raise ValueError(f"MCQ formatter requires at least 1 distractor, but got none for {correct!r}")
 
     distractors = candidates[:3]
 
@@ -323,7 +325,7 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
 
     # Shuffle and assign keys
     rng.shuffle(pool)
-    keys = ["A", "B", "C", "D"]
+    keys = ["A", "B", "C", "D"][:len(pool)]
     options = []
     correct_key = "A"
     for key, opt in zip(keys, pool):

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q2_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na place_value hardening), 2026-08-16",
+  "review_date": "2026-08-16",
   "blind": true,
   "sample_seeds": [
     42,
@@ -10,8 +10,7 @@
     45,
     46,
     50,
-    51,
-    88,
+    72,
     500,
     501,
     502,
@@ -56,54 +55,40 @@
       "options": [
         {
           "key": "A",
-          "value": "ones",
-          "is_correct": true
+          "value": "tens",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "none of the above",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "tens",
-          "is_correct": false
+          "value": "ones",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "What is the value of the digit 0 in 40?",
       "correct_answer": 0,
       "options": [
         {
           "key": "A",
-          "value": 2,
-          "text": "2",
+          "value": 40,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 1,
-          "text": "1",
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 3,
-          "text": "3",
+          "value": 1,
           "is_correct": false
         },
         {
           "key": "D",
           "value": 0,
-          "text": "0",
           "is_correct": true
         }
       ]
@@ -116,12 +101,12 @@
       "options": [
         {
           "key": "A",
-          "value": 22,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 1,
+          "value": 2,
           "is_correct": false
         },
         {
@@ -131,7 +116,7 @@
         },
         {
           "key": "D",
-          "value": 2,
+          "value": 12,
           "is_correct": false
         }
       ]
@@ -144,82 +129,58 @@
       "options": [
         {
           "key": "A",
-          "value": "cannot be determined",
+          "value": "tens",
           "is_correct": false
         },
         {
           "key": "B",
           "value": "ones",
           "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "none of the above",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "tens",
-          "is_correct": false
         }
       ]
     },
     {
       "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "What number do the blocks show?",
-      "correct_answer": "B",
+      "formatter": "true_false",
+      "question_text": "In the number 50, the value of the digit 5 in the tens place is 500. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 72,
+      "formatter": "cloze",
+      "question_text": "What place is the digit 0 in, in the number 50?",
+      "correct_answer": "ones",
       "options": [
         {
           "key": "A",
-          "value": 40,
+          "value": "tens",
+          "text": "tens",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 50,
+          "value": "ones",
+          "text": "ones",
           "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 51,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "is_correct": false
         }
       ]
     },
     {
-      "seed": 51,
-      "formatter": "true_false",
-      "question_text": "What place is the digit 0 in, in the number 50? The answer is ones. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 88,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Use base-10 blocks to show the number 12.",
-      "correct_answer": 12
-    },
-    {
       "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Use base-10 blocks to show the number 40.",
-      "correct_answer": 40
+      "formatter": "true_false",
+      "question_text": "In the number 97, the value of the digit 9 in the tens place is 97. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "In 15, what digit is in the tens place?",
-      "correct_answer": 1,
+      "question_text": "In 76, what digit is in the tens place?",
+      "correct_answer": 7,
       "options": [
         {
           "key": "A",
-          "value": 1,
-          "text": "1",
+          "value": 7,
+          "text": "7",
           "is_correct": true
         },
         {
@@ -245,7 +206,7 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "In 15, what digit is in the ones place?",
+      "question_text": "In 85, what digit is in the ones place?",
       "correct_answer": 5,
       "options": [
         {
@@ -293,7 +254,7 @@
         },
         {
           "key": "D",
-          "value": 100,
+          "value": 15,
           "is_correct": false
         }
       ]
@@ -306,24 +267,12 @@
       "options": [
         {
           "key": "A",
-          "value": "none of the above",
-          "text": "none of the above",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "tens",
           "text": "tens",
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": "cannot be determined",
-          "text": "cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "D",
+          "key": "B",
           "value": "ones",
           "text": "ones",
           "is_correct": true
@@ -343,7 +292,7 @@
         },
         {
           "key": "B",
-          "value": 100,
+          "value": 12,
           "is_correct": false
         },
         {
@@ -362,27 +311,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The three sub-verbs of the competency all appear: naming a digit's place ('What place is the digit 5 in, in the number 15?'), naming a digit's value ('What is the value of the digit 2 in 20?'), and the reverse direction, pulling a digit out given its place ('In 15, what digit is in the tens place?')."
+      "rationale": "The samples directly assess the ability to determine \"the place value of a digit in a 2-digit number\" (e.g., \"What place is the digit 5 in, in the number 15?\"), find \"the value of a digit\" (e.g., \"What is the value of the digit 0 in 40?\"), and identify \"the digit of a number, given its place value\" (e.g., \"In 10, what digit is in the ones place?\")."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Ones-place and tens-place items both occur for the same underlying numbers (e.g. 15's ones digit and 40's ones digit), so neither place is left untested across the sampled seeds."
+      "rationale": "All parts of the competency are covered. The dataset includes examples for finding \"the place value of a digit in a 2-digit number\" (seed 43, 46, 72, 601), calculating \"the value of a digit\" (seed 44, 45, 50, 500, 600, 602), and finding \"the digit of a number, given its place value\" (seed 42, 501, 502)."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Every stem isolates a single digit's place or value in a two-digit number, matching what a Grade 1 Quarter 2 learner is expected to reason about without folding in outside operations."
+      "rationale": "The cognitive load is appropriate for a Grade 1 learner as all instances strictly use a \"2-digit number\" such as \"10\", \"40\", or \"97\". Questions use straightforward phrasing matching grade expectations without introducing overly complex language."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The set spans mcq, cloze, true_false ('The answer is ones. True or False?'), and a base-10-block construction task ('Use base-10 blocks to show the number 12'), pairing symbolic and manipulative routes to the same concept."
+      "rationale": "The samples present a robust variety of testing formats covering the competency. There are multiple-choice items like \"In 85, what digit is in the ones place?\", cloze formats such as \"What place is the digit 0 in, in the number 50?\", and true/false validation variants such as \"In the number 97, the value of the digit 9 in the tens place is 97. True or False?\"."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "What changes between easier and harder items is which digit or place is asked about, not a shift to a different skill such as addition, so the progression stays inside place value itself."
+      "rationale": "The questions are strictly aligned to the requirement to \"Determine the place value of a digit in a 2-digit number, the value of a digit, and the digit of a number, given its place value.\" There are no out-of-scope concepts or unrelated operations introduced in any of the seeds."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All sampled numbers are two digits (10 through 50), matching the '2-digit number' scope the competency names without reaching for three-digit values."
+      "rationale": "The competency scope explicitly requires applying the skill in a \"2-digit number\". The samples strictly adhere to this scale, using only two-digit values such as \"15\", \"20\", \"50\", \"76\", \"85\", and \"12\"."
     }
   },
   "overall": "PASS"

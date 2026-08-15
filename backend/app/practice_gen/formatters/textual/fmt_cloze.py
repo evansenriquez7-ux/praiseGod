@@ -247,11 +247,10 @@ def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
                         break
             offset_mult += 1
         else:
-            raise ValueError(
-                f"Cloze formatter could not generate enough distractors for string correct answer {correct!r}."
-            )
+            # Non-numeric string answer (e.g. place names): use available distractors
+            break
 
-    if len(candidates) < 3:
+    if len(candidates) < 3 and isinstance(correct, (int, float)) and not isinstance(correct, bool):
         candidates = augment_distractors(candidates, correct, target=3, max_delta=5)
         if len(candidates) < 3:
             raise ValueError(f"Formatter 'cloze' requires at least 3 unique distractors, but got {len(candidates)}. Correct answer: {correct}")
@@ -264,7 +263,7 @@ def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
         ]
         
         rng.shuffle(pool)
-        keys = ["A", "B", "C", "D"]
+        keys = ["A", "B", "C", "D"][:len(pool)]
         mcq_options = []
         for key, opt in zip(keys, pool):
             mcq_options.append({"key": key, "value": opt["value"], "text": str(opt["value"]), "is_correct": opt["is_correct"]})
