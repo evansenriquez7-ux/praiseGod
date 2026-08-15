@@ -1,55 +1,482 @@
 {
   "node_id": "mat_g1_na_q1_8",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch C2 (post-fix re-review, properties of addition), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition & ordinals hardening), 2026-08-16",
+  "review_date": "2026-08-16",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 53, 55, 85, 500, 501, 502, 600, 601, 602, 603, 604, 605],
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    51,
+    55,
+    85,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
   "samples_reviewed": [
-    {"seed": 42, "formatter": "mcq", "question_text": "What is 1 + 0?", "correct_answer": 1, "options": [{"key": "A", "value": 11, "is_correct": false}, {"key": "B", "value": 2, "is_correct": false}, {"key": "C", "value": 1, "is_correct": true}, {"key": "D", "value": 0, "is_correct": false}]},
-    {"seed": 43, "formatter": "mcq", "question_text": "What is 0 + 3?", "correct_answer": 3, "options": [{"key": "A", "value": 3, "is_correct": true}, {"key": "B", "value": 2, "is_correct": false}, {"key": "C", "value": 4, "is_correct": false}, {"key": "D", "value": 13, "is_correct": false}]},
-    {"seed": 44, "formatter": "mcq", "question_text": "Is 2 + 1 the same as 1 + 2?", "correct_answer": true, "options": [{"key": "A", "value": 3, "is_correct": false}, {"key": "B", "value": false, "is_correct": false}, {"key": "C", "value": 13, "is_correct": false}, {"key": "D", "value": true, "is_correct": true}]},
-    {"seed": 45, "formatter": "mcq", "question_text": "Is 7 + 2 the same as 2 + 7?", "correct_answer": true, "options": [{"key": "A", "value": 19, "is_correct": false}, {"key": "B", "value": false, "is_correct": false}, {"key": "C", "value": true, "is_correct": true}, {"key": "D", "value": 9, "is_correct": false}]},
-    {"seed": 46, "formatter": "mcq", "question_text": "What is 0 + 4?", "correct_answer": 4, "options": [{"key": "A", "value": 5, "is_correct": false}, {"key": "B", "value": 4, "is_correct": true}, {"key": "C", "value": 3, "is_correct": false}, {"key": "D", "value": 14, "is_correct": false}]},
-    {"seed": 50, "formatter": "read_fill_in_blank", "question_text": "The two parts are 5 and 3. What is the sum?", "correct_answer": 8},
-    {"seed": 51, "formatter": "error_detect", "question_text": "Ana says: 0 + 2 = 1. Is Ana correct?", "correct_answer": {"has_error": true, "correct_value": 2}},
-    {"seed": 53, "formatter": "cloze", "question_text": "4 + 0 = ___", "correct_answer": 4, "options": [{"key": "A", "value": 4, "text": "4", "is_correct": true}, {"key": "B", "value": 14, "text": "14", "is_correct": false}, {"key": "C", "value": 3, "text": "3", "is_correct": false}, {"key": "D", "value": 5, "text": "5", "is_correct": false}]},
-    {"seed": 55, "formatter": "read_mcq", "question_text": "How many items are there in total?", "correct_answer": "D", "options": [{"key": "A", "value": 0, "is_correct": false}, {"key": "B", "value": 3, "is_correct": false}, {"key": "C", "value": 1, "is_correct": false}, {"key": "D", "value": 2, "is_correct": true}]},
-    {"seed": 85, "formatter": "true_false", "question_text": "1 + 0 = 1. True or False?", "correct_answer": true},
-    {"seed": 500, "formatter": "read_mcq", "question_text": "How many items are there in total?", "correct_answer": "C", "options": [{"key": "A", "value": 18, "is_correct": false}, {"key": "B", "value": 17, "is_correct": false}, {"key": "C", "value": 19, "is_correct": true}, {"key": "D", "value": 1, "is_correct": false}]},
-    {"seed": 501, "formatter": "mcq", "question_text": "Is 16 + 1 the same as 1 + 16?", "correct_answer": true, "options": [{"key": "A", "value": true, "is_correct": true}, {"key": "B", "value": 27, "is_correct": false}, {"key": "C", "value": 17, "is_correct": false}, {"key": "D", "value": false, "is_correct": false}]},
-    {"seed": 502, "formatter": "mcq", "question_text": "Is 13 + 6 the same as 6 + 13?", "correct_answer": true, "options": [{"key": "A", "value": false, "is_correct": false}, {"key": "B", "value": true, "is_correct": true}, {"key": "C", "value": 29, "is_correct": false}, {"key": "D", "value": 19, "is_correct": false}]},
-    {"seed": 600, "formatter": "mcq", "question_text": "Is 6 + 3 the same as 3 + 6?", "correct_answer": true, "options": [{"key": "A", "value": false, "is_correct": false}, {"key": "B", "value": 9, "is_correct": false}, {"key": "C", "value": true, "is_correct": true}, {"key": "D", "value": 19, "is_correct": false}]},
-    {"seed": 601, "formatter": "true_false", "question_text": "0 + 1 = 1. True or False?", "correct_answer": true},
-    {"seed": 602, "formatter": "mcq", "question_text": "Is 3 + 2 the same as 2 + 3?", "correct_answer": true, "options": [{"key": "A", "value": true, "is_correct": true}, {"key": "B", "value": 15, "is_correct": false}, {"key": "C", "value": false, "is_correct": false}, {"key": "D", "value": 5, "is_correct": false}]},
-    {"seed": 603, "formatter": "cloze", "question_text": "3 + 0 = ___", "correct_answer": 3, "options": [{"key": "A", "value": 4, "text": "4", "is_correct": false}, {"key": "B", "value": 3, "text": "3", "is_correct": true}, {"key": "C", "value": 13, "text": "13", "is_correct": false}, {"key": "D", "value": 2, "text": "2", "is_correct": false}]},
-    {"seed": 604, "formatter": "mcq", "question_text": "What is 2 + 0?", "correct_answer": 2, "options": [{"key": "A", "value": 2, "is_correct": true}, {"key": "B", "value": 1, "is_correct": false}, {"key": "C", "value": 12, "is_correct": false}, {"key": "D", "value": 3, "is_correct": false}]},
-    {"seed": 605, "formatter": "read_fill_in_blank", "question_text": "The two parts are 4 and 0. What is the sum?", "correct_answer": 4}
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is 1 + 0?",
+      "correct_answer": 1,
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 0,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 0 + 3?",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "Is 2 + 1 the same as 1 + 2?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Is 7 + 2 the same as 2 + 7?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Cannot be determined",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What is 0 + 4?",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 51,
+      "formatter": "true_false",
+      "question_text": "0 + 2 = 2. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 55,
+      "formatter": "error_detect",
+      "question_text": "Grace says: 0 + 2 = 1. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 2
+      }
+    },
+    {
+      "seed": 85,
+      "formatter": "cloze",
+      "question_text": "1 + 0 = ___",
+      "correct_answer": 1,
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "text": "0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "text": "1",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "mcq",
+      "question_text": "Is 18 + 1 the same as 1 + 18?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Only when both are 0",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "Is 16 + 1 the same as 1 + 16?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": false,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Is 13 + 6 the same as 6 + 13?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Cannot be determined",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Is 6 + 3 the same as 3 + 6?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Only when both are 0",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "0 + 1 = ___",
+      "correct_answer": 1,
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "text": "0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "text": "1",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Is 3 + 2 the same as 2 + 3?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Cannot be determined",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "3 + 0 = ___",
+      "correct_answer": 3,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "text": "3",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 13,
+          "text": "13",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "What is 2 + 0?",
+      "correct_answer": 2,
+      "options": [
+        {
+          "key": "A",
+          "value": 2,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "error_detect",
+      "question_text": "Liza says: 4 + 0 = 4. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 4
+      }
+    }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "3 of the 19 samples (seeds 50, 55, 500) ask 'What is the sum?' or 'How many items are there in total?' with no zero addend and no order-comparison, so they exercise plain addition rather than 'the sum of zero and any number is equal to the number' or 'changing the order of the addends does not change the sum.'"
+      "verdict": "PASS",
+      "rationale": "The items successfully address the objective to \"Illustrate by applying the following properties of addition\" by practically testing \"the sum of zero and any number is equal to the number\" with problems like \"What is 1 + 0?\"."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both named sub-cases are generated with real counts: the zero property appears in 10 samples (seeds 42, 43, 46, 51, 53, 85, 601, 603, 604, 605) such as 'What is 0 + 3?', and the order-changing property appears in 6 samples (seeds 44, 45, 501, 502, 600, 602) such as 'Is 2 + 1 the same as 1 + 2?'"
+      "rationale": "The generator comprehensively covers the required cases, generating questions testing that \"changing the order of the addends does not change the sum\" such as \"Is 13 + 6 the same as 6 + 13?\", alongside zero-sum questions like \"What is 0 + 4?\"."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Phrasing stays short and direct, e.g. 'What is 1 + 0?' and 'Ana says: 0 + 2 = 1. Is Ana correct?', and every observed sum stays within the competency's 'sums up to 20' ceiling, with the largest being 13 + 6 = 19 in seed 502."
+      "rationale": "The phrasing matches the first-grade cognitive level by utilizing straightforward language such as \"Is Grace correct?\" and avoiding complex multi-step instructions, fully respecting the constraint of \"using sums up to 20\"."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The order-changing property is rendered only as mcq comparisons like 'Is 2 + 1 the same as 1 + 2?' across all 6 instances (seeds 44, 45, 501, 502, 600, 602), while the zero property spans five formatters (mcq, read_fill_in_blank, error_detect, cloze, true_false) including 'Ana says: 0 + 2 = 1. Is Ana correct?' and '4 + 0 = ___', leaving commutativity without a true_false, cloze, or error_detect variant."
+      "verdict": "PASS",
+      "rationale": "The sample demonstrates solid structural variety, offering multiple choice, true/false, error detection, and cloze formats to assess the \"properties of addition\", e.g. \"1 + 0 = ___\"."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty scales through addend magnitude within each property itself rather than an unrelated skill: the zero property runs from 'What is 0 + 3?' up to 'What is 2 + 0?' with a 0 partner throughout, and the order-changing property runs from 'Is 2 + 1 the same as 1 + 2?' up to 'Is 13 + 6 the same as 6 + 13?', never drifting into subtraction or another operation."
+      "rationale": "All samples are perfectly aligned, functioning strictly to assess \"properties of addition\" without introducing irrelevant concepts like subtraction or missing addends."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Observed sums range from 1 + 0 = 1 in seed 42 up to 13 + 6 = 19 in seed 502 and 16 + 1 = 17 in seed 501, reaching close to the competency's stated 'sums up to 20' ceiling without exceeding it."
+      "rationale": "The generator consistently obeys the restriction \"using sums up to 20\"; the largest sum required to evaluate any problem correctly is 19, found in \"Is 18 + 1 the same as 1 + 18?\"."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

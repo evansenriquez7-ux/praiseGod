@@ -43,6 +43,10 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
                 f"{decompose_to_places(a)} {decompose_to_places(b)} "
                 f"Add the place values, then find the total: {a} + {b} = ___"
             )
+        if values.get("task_type") == "putting_together":
+            a_p = f"{a} item" if a == 1 else f"{a} items"
+            b_p = f"{b} item" if b == 1 else f"{b} items"
+            return f"One group has {a_p} and another group has {b_p}. Putting them together makes ___ items in all."
         if values.get("task_type") == "counting_up" and blank_target == "result":
             # Same root cause as expanded_form above -- drops the "start at /
             # count up" narration values["question"] states.

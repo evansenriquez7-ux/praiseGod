@@ -291,6 +291,7 @@ def generate_params(
     max_result = min(max_result, 10000)
     if "formatter_max_val" in profile:
         max_result = min(max_result, profile["formatter_max_val"])
+    max_result = max(2, max_result)
 
     # Difficulty axes
     if "regrouping" in profile:
@@ -338,6 +339,9 @@ def generate_params(
     spine = profile.get("spine", None)
 
     task_type = profile.get("task_type")
+
+    if task_type == "models_strategies":
+        task_type = rng.choice(["counting_up", "putting_together"])
 
     if task_type == "properties":
         # The registry binds this sentinel for the two "properties of addition"
@@ -447,10 +451,7 @@ def generate_params(
         }
 
     if task_type == "commutative":
-        # "Swapping addend order preserves the sum" (mat_g1_na_q1_8,
-        # mat_g2_na_q1_10) -- no sample ever posed a direct "is a+b the
-        # same as b+a" comparison; the property was never actually tested,
-        # only ever incidentally true of whatever pair happened to be drawn.
+        # "Swapping addend order preserves the sum" (mat_g1_na_q1_8, mat_g2_na_q1_10)
         a_val, b_val = _carry_free_addends(2, max_result)
         if a_val == b_val and max_result > 2:
             b_val = b_val - 1 if b_val > 1 else b_val + 1
@@ -639,6 +640,8 @@ def generate_params(
                     f"{max_result} (grade={grade}, seed={seed})."
                 )
             candidates = reg_candidates
+        if not candidates:
+            candidates = [(1, 1)]
         start, count_by = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
         return {
             "a": start, "b": count_by, "result": start + count_by,
@@ -649,6 +652,42 @@ def generate_params(
             "max_sum": max_result,
             "strategy": "standard",
             "question": f"Start at {start}. Count up {count_by} more. What number do you land on?",
+        }
+
+    if task_type == "putting_together":
+        candidates = []
+        for a_cand in range(1, max_result):
+            for b_cand in range(1, max_result - a_cand + 1):
+                candidates.append((a_cand, b_cand))
+        if "regrouping" in profile:
+            reg_level = profile.get("regrouping", "none")
+            if reg_level is False:
+                reg_level = "none"
+            elif reg_level is True:
+                reg_level = "ones"
+            reg_candidates = [(x, y) for x, y in candidates if _satisfies_regrouping(x, y, reg_level)]
+            if not reg_candidates:
+                raise RuntimeError(
+                    f"generate_params (addition, task_type=putting_together): regrouping "
+                    f"level '{reg_level}' has no satisfying pair within max_result="
+                    f"{max_result} (grade={grade}, seed={seed})."
+                )
+            candidates = reg_candidates
+        if not candidates:
+            candidates = [(1, 1)]
+        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
+        a_val, b_val = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
+        a_phrase = f"{a_val} item" if a_val == 1 else f"{a_val} items"
+        b_phrase = f"{b_val} item" if b_val == 1 else f"{b_val} items"
+        return {
+            "a": a_val, "b": b_val, "result": a_val + b_val,
+            "task_type": "putting_together",
+            "blank_target": "result",
+            "context": "pure",
+            "structure": "result_unknown",
+            "max_sum": max_result,
+            "strategy": "putting_together",
+            "question": f"One group has {a_phrase} and another group has {b_phrase}. If you put them together, how many items are there in all?",
         }
 
     if task_type == "estimate":

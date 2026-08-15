@@ -221,11 +221,10 @@ def _parse_competency_bounds(
         # up," almost never appeared (blind review: "at most 1-2 samples,"
         # with the rest a severe multi-source leak from the co-mapped
         # `counting` DNA's own unrelated skip-counting/backward-counting
-        # content). "number line" distinguishes this from mat_g1_na_q1_7's
-        # text, which also says "counting up" but alongside "putting
-        # together" and never mentions a number line -- that sibling node
-        # names BOTH strategies, so it correctly keeps the plain default
-        # mix rather than being pinned to counting_up alone.
+        elif "counting up" in text and "putting together" in text:
+            bounds["task_type"] = "models_strategies"
+            bounds["regrouping"] = "none"
+
         elif "counting up" in text and "number line" in text:
             bounds["task_type"] = "counting_up"
             # The competency names ONE 2-digit number AND one 1-digit

@@ -2413,3 +2413,44 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
 - **Census after:** PASS=66 CONCERN=59 FAIL=26 Total=151.
 - **Next tick should:** Harden the next non-PASS cluster (e.g. `mat_g1_na_q1_3..4` comparing/ordering, or `mat_g3_mg_q2_0/3` mass & capacity duplication).
 
+## Tick C Unit: Grade 1 Addition, Properties, Word Problems, and Ordinals Hardening (`mat_g1_na_q1_5`, `mat_g1_na_q1_7`, `mat_g1_na_q1_8`, `mat_g1_na_q1_9`)
+- **Timestamp:** 2026-08-16T05:35:00+08:00
+- **Scope / Target Nodes:**
+  - `mat_g1_na_q1_5` (G1 Q1 Number Sense): Identify ordinal positions 1st through 10th.
+  - `mat_g1_na_q1_7` (G1 Q1 Number Sense): Illustrate addition with sums up to 20 ("counting up" and "putting together").
+  - `mat_g1_na_q1_8` (G1 Q1 Number Sense): Illustrate properties of addition (commutative and identity/zero property).
+  - `mat_g1_na_q1_9` (G1 Q1 Number Sense): Solve addition word problems with sums up to 20.
+- **Root Cause & Diagnosis:**
+  1. `ordinal_numbers.py` generated `11th` as distractor in Grade 1, violating the MATATAG curriculum bound "up to 10th". Also, `find_position` returned cardinal integers instead of ordinal symbols ("1st").
+  2. `addition.py` and `fmt_mcq.py` rendered bare equations ("What is 4 + 14?") for `mat_g1_na_q1_7`, discarding the `counting_up` and `putting_together` pedagogical wording.
+  3. `fmt_mcq.py` failed when formatting boolean commutative/associative questions, generating numeric/boolean hybrid distractors.
+  4. Story spines in `dna/base.py` produced irregular pluralization issues ("cooky", "brownies" singularizations, compound words like "score card", "knee pad").
+  5. Interest picker in `generators/interest.py` drew out-of-grade themes for 6-year-olds; enforced elementary grade filtering.
+- **Files Modified:**
+  - `backend/app/practice_gen/compatibility.py`
+  - `backend/app/practice_gen/dna/base.py`
+  - `backend/app/practice_gen/dna/na/addition.py`
+  - `backend/app/practice_gen/dna/na/ordinal_numbers.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_cloze.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_mcq.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_true_false.py`
+  - `backend/app/practice_gen/generators/interest.py`
+  - `backend/app/practice_gen/registry.py`
+  - `validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_5.json` (fresh blind review filed: PASS)
+  - `validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_7.json` (fresh blind review filed: PASS)
+  - `validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_8.json` (fresh blind review filed: PASS)
+  - `validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_9.json` (fresh blind review filed: PASS)
+- **Verification:**
+  - Scoped matrix validation (`validate_matrix` on 4 nodes): 4/4 nodes passed, 0 failures.
+  - Blast-radius sweep across all 13 addition and ordinal nodes: 13/13 passed.
+  - Full matrix validation (`validate_matrix` over 151 nodes): 151/151 passed, 0 failures.
+  - Blind Pro Reviews: 4/4 nodes achieved clean PASS verdicts with exact contiguous quote provenance.
+  - Judgment verification (`_validate_one`, `_validate_freshness`, `_validate_quote_provenance`): 0 errors across all 4 nodes.
+  - Census movement across the unit:
+    - `mat_g1_na_q1_5`: CONCERN → **PASS** (+1)
+    - `mat_g1_na_q1_7`: CONCERN → **PASS** (+1)
+    - `mat_g1_na_q1_8`: FAIL → **PASS** (+1)
+    - `mat_g1_na_q1_9`: CONCERN → **PASS** (+1)
+- **Census after:** PASS=70 CONCERN=56 FAIL=25 Total=151 (+4 PASS).
+- **Next tick should:** Harden the next non-PASS cluster (e.g. `mat_g1_na_q1_3..4` comparing/ordering, or `mat_g3_mg_q2_0/3` mass & capacity duplication).
+

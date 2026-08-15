@@ -497,7 +497,8 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         "strategy": ["standard", "expanded_form"],
         "task_type": [
             "zero_identity", "commutative", "associative",
-            "expanded_form", "counting_up",
+            "expanded_form", "counting_up", "putting_together",
+            "models_strategies",
         ],
     },
 
@@ -741,10 +742,13 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
 
     "addition": {
         # number_line only supports find_sum (can't show missing addend well)
-        "number_line_read": {"task_type": ["find_sum"], "context": ["pure"]},
-        "number_line_set": {"task_type": ["find_sum"], "context": ["pure"]},
-        # number_bond supports all task_types
-        "number_bond": {"context": ["pure"]},
+        "number_line_read": {"task_type": ["find_sum", "counting_up"], "context": ["pure"]},
+        "number_line_set": {"task_type": ["find_sum", "counting_up"], "context": ["pure"]},
+        # emoji_pictorial (visual ten-frame/counters) and number_bond
+        # model concrete addition, not symbolic algebraic properties
+        "emoji_pictorial": {"task_type": ["find_sum", "putting_together", "visual_counting", "counting_up"]},
+        # number_bond models part-whole decomposition
+        "number_bond": {"task_type": ["find_sum", "putting_together", "part_part_whole", "missing_addend"], "context": ["pure"]},
         # commutative/associative render a Yes/No claim ("Is a+b the same
         # as b+a?"), not a numeric fact -- error_detect's "character says
         # <value>, correct?" framing serves that claim's boolean answer as
@@ -752,7 +756,7 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # defeats §1E's isinstance(bool) skip and false-positives as answer
         # corruption against the raw arithmetic recomputation.
         "error_detect": {
-            "task_type": ["zero_identity", "expanded_form", "counting_up"]
+            "task_type": ["zero_identity", "expanded_form", "counting_up", "putting_together"]
         },
         # true_false wraps a statement in its OWN "...True or False?"
         # judgment -- commutative/associative's claim ("Is a+b the same as
@@ -762,7 +766,7 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # None" (blind review of mat_g1_na_q1_7 seed 613, same root cause
         # as the fmt_mcq.py fix for this task_type).
         "true_false": {
-            "task_type": ["zero_identity", "expanded_form", "counting_up"]
+            "task_type": ["zero_identity", "expanded_form", "counting_up", "putting_together"]
         },
         # cloze is a fill-in-the-blank formatter -- commutative/associative's
         # yes/no claim has no blank to fill (blank_target="answer", no
@@ -771,7 +775,7 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # error_detect/true_false restrictions above, just never applied to
         # cloze). Same allow-list.
         "cloze": {
-            "task_type": ["zero_identity", "expanded_form", "counting_up"]
+            "task_type": ["zero_identity", "expanded_form", "counting_up", "putting_together"]
         },
     },
 

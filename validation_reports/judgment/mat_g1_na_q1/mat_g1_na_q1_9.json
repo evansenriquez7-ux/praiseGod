@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q1_9",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition & ordinals hardening), 2026-08-16",
+  "review_date": "2026-08-16",
   "blind": true,
   "sample_seeds": [
     42,
@@ -26,7 +26,7 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "There are 1 resin in one basket and 1 resin in another basket. How many resin are there in all?",
+      "question_text": "There is 1 score card in one basket and 1 score card in another basket. How many score cards are there in all?",
       "correct_answer": 2,
       "options": [
         {
@@ -82,7 +82,7 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "Lara has 2 ribbons. A friend has 1 ribbon. If they put all their ribbons together, how many ribbons do they have in all?",
+      "question_text": "Isko has 2 medals. A friend has 1 medal. If they put all their medals together, how many medals do they have in all?",
       "correct_answer": 3,
       "options": [
         {
@@ -114,7 +114,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "One basket has 1 water bottles. Another basket has 2 water bottles. If you put all the water bottles together, how many water bottles are there?",
+      "question_text": "One basket has 1 cookie. Another basket has 2 cookies. If you put all the cookies together, how many cookies are there?",
       "correct_answer": 3,
       "options": [
         {
@@ -170,7 +170,7 @@
     {
       "seed": 50,
       "formatter": "error_detect",
-      "question_text": "Jose solved this problem: \"Mia has 1 merchandise shirts. A friend has 2 merchandise shirts. If they put all their merchandise shirts together, how many merchandise shirts do they have in all?\" Jose says the answer is 3. Is Jose correct?",
+      "question_text": "Jose solved this problem: \"Bianca has 1 ribbon. A friend has 2 ribbons. If they put all their ribbons together, how many ribbons do they have in all?\" Jose says the answer is 3. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 3
@@ -241,7 +241,7 @@
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "There are 15 book covers in one basket and 2 book covers in another basket. How many book covers are there in all?",
+      "question_text": "There are 15 trophies in one basket and 2 trophies in another basket. How many trophies are there in all?",
       "correct_answer": 17,
       "options": [
         {
@@ -273,7 +273,7 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Ate Mags had 4 merch shirts. Then Ate Mags got 14 more. How many merch shirts does Ate Mags have now?",
+      "question_text": "Carlo had 4 canvases. Then Carlo got 14 more. How many canvases does Carlo have now?",
       "correct_answer": 18,
       "options": [
         {
@@ -301,7 +301,7 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "One basket has 1 clip highlights. Another basket has 2 clip highlights. If you put all the clip highlights together, how many clip highlights are there?",
+      "question_text": "One basket has 1 colored pencil. Another basket has 2 colored pencils. If you put all the colored pencils together, how many colored pencils are there?",
       "correct_answer": 3,
       "options": [
         {
@@ -329,7 +329,7 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Janna has 1 fan shirts. A friend has 2 fan shirts. If they put all their fan shirts together, how many fan shirts do they have in all?",
+      "question_text": "Des has 1 knee pad. A friend has 2 knee pads. If they put all their knee pads together, how many knee pads do they have in all?",
       "correct_answer": 3,
       "options": [
         {
@@ -357,7 +357,7 @@
     {
       "seed": 606,
       "formatter": "mcq",
-      "question_text": "There are 1 headset in one basket and 2 headsets in another basket. How many headsets are there in all?",
+      "question_text": "There is 1 basket in one basket and 2 baskets in another basket. How many baskets are there in all?",
       "correct_answer": 3,
       "options": [
         {
@@ -413,13 +413,13 @@
     {
       "seed": 608,
       "formatter": "true_false",
-      "question_text": "Kuya Tads is on step 2. Kuya Tads climbs up 1 more steps. What step is Kuya Tads on now? The answer is 3. True or False?",
+      "question_text": "Ate Sam is on step 2. Ate Sam climbs up 1 more step. What step is Ate Sam on now? The answer is 3. True or False?",
       "correct_answer": true
     },
     {
       "seed": 609,
       "formatter": "mcq",
-      "question_text": "There are 1 guitar picks in one basket and 1 guitar picks in another basket. How many guitar picks are there in all?",
+      "question_text": "There is 1 costume in one basket and 1 costume in another basket. How many costumes are there in all?",
       "correct_answer": 2,
       "options": [
         {
@@ -447,29 +447,29 @@
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Most items are genuine addition word problems, such as \"Lara has 2 ribbons. A friend has 1 ribbon. If they put all their ribbons together, how many ribbons do they have in all?\", but the grammar in several stems is broken, e.g. \"One basket has 1 water bottles. Another basket has 2 water bottles.\", pairing the singular quantity 1 with a plural noun."
+      "verdict": "PASS",
+      "rationale": "The generator successfully creates items to \"Solve problems\" using scenarios like \"Carlo had 4 canvases. Then Carlo got 14 more. How many canvases does Carlo have now?\" which fulfills the requirement to solve word problems."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Pictorial word problems using emoji, giving totals such as \"How many total frogs are there?\", satisfy the given-in-pictures half of the competency alongside the plain-text word problems."
+      "rationale": "The packet covers a wide range of values and contexts from very basic additions like \"There is 1 frog.\" and \"1 more frog is added.\" to larger numbers such as \"There are 12 drinks.\" and \"7 more drinks are added.\""
     },
     "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "Repeated grammar errors -- \"There are 1 resin in one basket and 1 resin in another basket.\" and \"Janna has 1 fan shirts.\" among them -- model incorrect English number agreement to students who are concurrently learning English sentence structure at this grade."
+      "verdict": "PASS",
+      "rationale": "The language and problem structures are developmentally appropriate for Grade 1. Phrasing like \"How many total cherries are there?\" and \"What number do you land on?\" are easily accessible to young learners."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Pictorial, narrative word-problem, counting-up, and error-detection formats are all present across the seventeen sampled seeds."
+      "rationale": "The generator produces multiple structural variations, including simple word problems (\"How many score cards are there in all?\"), number line steps (\"Ate Sam climbs up 1 more step.\"), and error detection items (\"Jose says the answer is 3. Is Jose correct?\")."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "What varies across seeds is the object being counted and the numbers involved, staying inside solving addition problems rather than an unrelated axis."
+      "rationale": "The generated items adhere strictly to the target of \"addition with sums up to 20\", properly creating sums near the boundary, such as 19 for the drinks and 18 for \"Carlo had 4 canvases. Then Carlo got 14 more.\""
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Sums sampled stay within 20, for example 15 + 2 = 17 and 4 + 14 = 18."
+      "rationale": "The numbers involved are correctly restricted to \"sums up to 20\", as successfully demonstrated in limits like \"There are 15 trophies in one basket and 2 trophies in another basket.\""
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }

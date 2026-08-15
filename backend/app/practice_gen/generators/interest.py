@@ -178,27 +178,30 @@ def pick_interest(
     Choose the best available interest ID for a student.
 
     Selection logic (in priority order):
-      1. If student_interest_id is provided AND exists in the bank, return it.
-      2. Otherwise, pick a random interest from the bank.
-      3. If no interests exist, return "neutral".
-
-    Note: Grade bands are ignored - all interests are available for all grades.
+      1. If student_interest_id is provided, exists in the bank, and is grade-appropriate, return it.
+      2. Otherwise, pick a random grade-appropriate interest from the bank.
+      3. If no grade-appropriate interests exist, fall back to any available or "neutral".
 
     Args:
         student_interest_id: The student's stored preference, or None.
-        grade: Student grade level (unused, kept for API compatibility).
+        grade: Student grade level.
         rng: Seeded Random instance.
 
     Returns:
         An interest ID string, or "neutral" when nothing else applies.
     """
-    all_interests = list(_INTERESTS.keys())
+    appropriate = get_grade_appropriate_interests(grade)
 
-    # If student has a preference and it exists in the bank, use it
+    # If student has a preference and it's grade-appropriate, use it
     if student_interest_id and student_interest_id in _INTERESTS:
-        return student_interest_id
+        if not appropriate or student_interest_id in appropriate:
+            return student_interest_id
 
-    # Otherwise pick random from all available
+    # Pick random from grade-appropriate interests
+    if appropriate:
+        return rng.choice(appropriate)
+
+    all_interests = list(_INTERESTS.keys())
     if all_interests:
         return rng.choice(all_interests)
 

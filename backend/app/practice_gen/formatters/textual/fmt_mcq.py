@@ -34,17 +34,7 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
             return f"Estimate the sum: {real_a} + {real_b}"
-        if task_type in ("commutative", "associative", "expanded_form", "counting_up") and values.get("question"):
-            # These task types don't fit the "a + b = ?" / "a + ? = result"
-            # equation shapes below at all -- commutative/associative ask a
-            # yes/no claim (blank_target="answer", no "result" key set at
-            # all), so falling through to the blank_target=="b"/"a" branches
-            # substituted the missing "result" as the literal string "None"
-            # ("What number plus 2 equals None?" -- found by blind review of
-            # mat_g1_na_q1_7 seed 613). base_generator.py's question-text
-            # resolution already prefers values["question"] when the DNA
-            # sets one; this "pure"-context rebuild has its own separate
-            # equation-building path and needs the same preference.
+        if values.get("question"):
             return values["question"]
         if blank_target == "result":
             return f"What is {a} + {b}?"
@@ -217,6 +207,60 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
         question_text = _build_pure_question(ctx)
 
     # Collect candidate distractors — deduplicate and exclude correct answer
+    if isinstance(correct, bool):
+        distractors = [not correct, "Cannot be determined", "Only when both are 0"]
+        pool = [
+            {"value": True, "is_correct": correct is True},
+            {"value": False, "is_correct": correct is False},
+            {"value": "Cannot be determined", "is_correct": False},
+            {"value": "Only when both are 0", "is_correct": False},
+        ]
+        rng.shuffle(pool)
+        keys = ["A", "B", "C", "D"]
+        options = []
+        correct_key = "A"
+        for key, opt in zip(keys, pool):
+            entry = {"key": key, "value": opt["value"], "is_correct": opt["is_correct"]}
+            options.append(entry)
+            if opt["is_correct"]:
+                correct_key = key
+        format_data = {
+            "options": options,
+            "correct_key": correct_key,
+            "context": context_variant,
+        }
+        return FormattedProblem(
+            problem_id=f"{ctx.node_id}_{ctx.seed}_mcq",
+            node_id=ctx.node_id,
+            competency_text=ctx.competency_text,
+            grade=ctx.grade,
+            seed=ctx.seed,
+            question_text=question_text,
+            correct_answer=ctx.correct_answer,
+            distractors=distractors,
+            hints=ctx.hints,
+            format="mcq",
+            format_data=format_data,
+            is_visual=bool(ctx.visual_params),
+            visual_type=ctx.visual_type,
+            visual_params=ctx.visual_params,
+            interaction_mode=None,
+            answer_collection="mcq",
+            difficulty_profile=ctx.difficulty_profile or {},
+            difficulty_axes_served=ctx.difficulty_axes_served,
+            experience="standard",
+            experience_config=None,
+            interest_theme=ctx.interest_theme,
+            spine_id=ctx.spine_id,
+            given_values={k: v for k, v in ctx.values.items() if k != ctx.blank_target} if ctx.values else None,
+            blank_target=ctx.blank_target,
+            analytics={
+                "time_to_answer_ms": None,
+                "trap_triggered": None,
+                "is_correct": None,
+            },
+        )
+
     candidates: List = []
     seen = {str(correct).strip().lower()}
     correct_is_non_negative = (

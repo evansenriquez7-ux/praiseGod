@@ -192,41 +192,75 @@ class Spine:
         
         Handles singular/plural automatically:
         - If {objects} is used after a number, it becomes singular when the number is 1
-        - E.g., "1 basketballs" becomes "1 basketball"
+        - E.g., "1 basketballs" -> "1 basketball", "1 water bottles" -> "1 water bottle"
+        - "There are 1" -> "There is 1", "1 more steps" -> "1 more step"
         """
+        import re
+
+        def _to_singular_phrase(phrase: str) -> str:
+            if not phrase:
+                return phrase
+            words = phrase.split()
+            if len(words) >= 3 and words[1] == "of":
+                target_idx = 0
+            else:
+                target_idx = -1
+            word = words[target_idx]
+            irregulars = {
+                "loaves": "loaf",
+                "paintbrushes": "paintbrush",
+                "canvases": "canvas",
+                "matches": "match",
+                "boxes": "box",
+                "cherries": "cherry",
+                "glasses": "glass",
+                "steps": "step",
+                "feet": "foot",
+                "leaves": "leaf",
+                "cookies": "cookie",
+                "brownies": "brownie",
+                "smoothies": "smoothie",
+            }
+            if word in irregulars:
+                sing = irregulars[word]
+            elif word.endswith(("shes", "ches", "xes", "zes", "sses")):
+                sing = word[:-2]
+            elif word.endswith("ies") and len(word) > 3 and word[-4] not in "aeiou":
+                sing = word[:-3] + "y"
+            elif word.endswith("s") and not word.endswith("ss"):
+                sing = word[:-1]
+            else:
+                sing = word
+            words[target_idx] = sing
+            return " ".join(words)
+
         ctx = {**slots, **values}
         result = self.template.format(**ctx)
         
-        # Fix singular/plural for objects
-        # Pattern: "1 <word>s" -> "1 <word>" (remove trailing 's' for quantity 1)
-        import re
+        # 1. Singularize full slot phrases when preceded by 1 or 1 more
+        for slot_key in ("objects", "item1", "item2", "item"):
+            if slot_key in slots and slots[slot_key]:
+                plural_str = str(slots[slot_key])
+                sing_str = _to_singular_phrase(plural_str)
+                if sing_str != plural_str:
+                    result = re.sub(
+                        rf"\b(1)\s+{re.escape(plural_str)}\b",
+                        rf"1 {sing_str}",
+                        result,
+                    )
         
-        def singularize(match):
-            num = match.group(1)
+        # 2. Match patterns like "1 basketballs", "1 apples", etc.
+        def _singularize_word(match):
             word = match.group(2)
-            if num == "1" and word.endswith("s") and not word.endswith("ss"):
-                # Handle specific irregulars found in interest bank
-                irregulars = {
-                    "loaves": "loaf",
-                    "paintbrushes": "paintbrush",
-                    "canvases": "canvas",
-                    "matches": "match",
-                    "boxes": "box"
-                }
-                if word in irregulars:
-                    return f"1 {irregulars[word]}"
-                # Handle es endings
-                if word.endswith(("shes", "ches", "xes", "zes", "sses")):
-                    return f"1 {word[:-2]}"
-                # Handle ies endings
-                if word.endswith("ies") and len(word) > 3 and word[-4] not in "aeiou":
-                    return f"1 {word[:-3]}y"
-                # Default: remove trailing 's'
-                return f"1 {word[:-1]}"
-            return match.group(0)
-        
-        # Match patterns like "1 basketballs", "1 apples", etc.
-        result = re.sub(r'\b(1)\s+(\w+s)\b', singularize, result)
+            sing = _to_singular_phrase(word)
+            return f"1 {sing}"
+            
+        result = re.sub(r'\b(1)\s+(\w+s)\b', _singularize_word, result)
+
+        # 3. Fix English agreement for existence copulas and step counts
+        result = re.sub(r'\bThere are 1\b', 'There is 1', result)
+        result = re.sub(r'\bThere were 1\b', 'There was 1', result)
+        result = re.sub(r'\b1 more steps\b', '1 more step', result)
         
         return result
 

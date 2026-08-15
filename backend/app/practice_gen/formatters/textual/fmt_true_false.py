@@ -92,12 +92,16 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                     f"{decompose_to_places(a)} {decompose_to_places(b)} "
                     f"Add the place values, then find the total: {a} + {b} = {fill_value}"
                 )
+            elif values.get("task_type") == "putting_together" and blank_target == "result":
+                a_p = f"{a} item" if a == 1 else f"{a} items"
+                b_p = f"{b} item" if b == 1 else f"{b} items"
+                statement = f"One group has {a_p} and another group has {b_p}. Putting them together makes {fill_value} items in all."
             elif values.get("task_type") == "counting_up" and blank_target == "result":
                 # Same root cause as expanded_form above -- "{a} + {b} =
                 # {fill_value}" drops the "start at / count up" narration
                 # values["question"] states, losing the counting-up framing
                 # this task_type exists to demonstrate.
-                statement = f"Start at {a}. Count up {b} more. You land on {fill_value}"
+                statement = f"Start at {a}. Count up {b} more. You land on {fill_value}."
             elif blank_target == "result":
                 statement = f"{a} + {b} = {fill_value}"
             elif blank_target == "b":

@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-08-16)
 
 ## Corpus Check
-- 449 files · ~674,313 words
+- 449 files · ~674,885 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3344 nodes · 5332 edges · 276 communities (260 shown, 16 thin omitted)
+- 3344 nodes · 5331 edges · 274 communities (257 shown, 17 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 88 edges (avg confidence: 0.57)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8ea40e92`
+- Built from commit: `d95dbc1e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -266,9 +266,7 @@
 - [[_COMMUNITY_2026-08-13 — The G1 measure items a visual for the task, and a size model for the units|2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units]]
 - [[_COMMUNITY__gen_g2_na_q3_multiplication|_gen_g2_na_q3_multiplication]]
 - [[_COMMUNITY_find_node_id|find_node_id]]
-- [[_COMMUNITY_symmetry_slides.py|symmetry_slides.py]]
 - [[_COMMUNITY_time_reading.py|time_reading.py]]
-- [[_COMMUNITY_validate_difficulty_feasibility|validate_difficulty_feasibility]]
 - [[_COMMUNITY_2026-08-13 — length_measurement the largest FAIL cluster in the tree|2026-08-13 — length_measurement: the largest FAIL cluster in the tree]]
 - [[_COMMUNITY_2026-08-14 — 2-digit by 1-digit bounds two operands, and only one had a key|2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key]]
 - [[_COMMUNITY_get_node_capabilities|get_node_capabilities]]
@@ -293,25 +291,25 @@
   .agents/skills/xcode-project-setup/scripts/xcode_spm_setup/Sources/main.swift → frontend/run_servers_and_test.js
 - `_audit_node()` --indirect_call--> `FormattedProblem`  [INFERRED]
   tests/frontend_contract_auditor.py → backend/app/practice_gen/dna/base.py
-- `test_bottom_band_reaches_the_floor()` --calls--> `generate_pair_by_window()`  [EXTRACTED]
-  tests/unit/test_window_endpoints_and_scalar_guard.py → backend/app/practice_gen/generators/number_difficulty.py
 - `validate_kg_monotonicity()` --indirect_call--> `chronological_sort_key()`  [INFERRED]
   backend/app/practice_gen/validation/validate_compat.py → scripts/rebuild_knowledge_graph.py
 - `AuditHarnessError` --uses--> `PracticeOrchestrator`  [INFERRED]
   tests/exhaustive_checklist_auditor.py → backend/app/services/orchestrator.py
+- `TestFormatterSupportsProfileGate1` --uses--> `PracticeOrchestrator`  [INFERRED]
+  tests/unit/test_formatter_supports_profile.py → backend/app/services/orchestrator.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (276 total, 16 thin omitted)
+## Communities (274 total, 17 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
 Nodes (30): _gen_g1_dp_q3_data(), _gen_g1_mg_q1_shapes(), _gen_g1_mg_q2_length(), _gen_g1_mg_q4_time(), _gen_g1_mg_q4_turns(), _gen_g1_na_q2_addition(), _gen_g1_na_q2_counting(), _gen_g1_na_q2_place_value() (+22 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.18
-Nodes (18): _are_values_equal(), _eval_formula(), Any, Practice Generation — DNA Validation Suite  Validates structural correctness and, Validate a visual_read-type DNA.      Checks:       1. answer_formula is None., Validate a static_bank-type DNA.      Checks:       1. answer_formula is None., Validate an algorithmic-type DNA for structural correctness.     Similar to vali, Call the DNA module's generate_params with a neutral profile.     Returns the pa (+10 more)
+Cohesion: 0.32
+Nodes (6): A reusable story template with named slots.      Slots are filled from the stude, Spine, Random, Practice Generation — Story Spines ====================================  Defines, Choose the best narrative Spine for the current problem context.      Eligibilit, select_spine()
 
 ### Community 2 - "Community 2"
 Cohesion: 0.08
@@ -370,8 +368,8 @@ Cohesion: 0.06
 Nodes (30): App Hosting CLI Commands, Automated deployment via GitHub (CI/CD), Backend Management, Initialization, `npx -y firebase-tools@latest apphosting:backends:create`, `npx -y firebase-tools@latest apphosting:backends:delete <backend-id>`, `npx -y firebase-tools@latest apphosting:backends:get <backend-id>`, `npx -y firebase-tools@latest apphosting:backends:list` (+22 more)
 
 ### Community 16 - "Community 16"
-Cohesion: 0.13
-Nodes (20): _draw_numbers(), _draw_pairs(), Unit tests for the two behaviours changed on 2026-07-30:    * difficulty window, §1A-reach depends on this: sampling the top *score* band is not enough,     beca, (1, 2) is larger than (1, 10); lexicographic order says otherwise., `max_minuend` is bound by the registry but is not a catalog axis, so     nothing, The regression this exists for: argmax ignored rng completely., Pins the design intent against a re-introduced argmax: scalar 1.0 means     "the (+12 more)
+Cohesion: 0.14
+Nodes (19): _draw_numbers(), _draw_pairs(), Unit tests for the two behaviours changed on 2026-07-30:    * difficulty window, §1A-reach depends on this: sampling the top *score* band is not enough,     beca, (1, 2) is larger than (1, 10); lexicographic order says otherwise., `max_minuend` is bound by the registry but is not a catalog axis, so     nothing, The regression this exists for: argmax ignored rng completely., Pins the design intent against a re-introduced argmax: scalar 1.0 means     "the (+11 more)
 
 ### Community 17 - "Community 17"
 Cohesion: 0.25
@@ -410,8 +408,8 @@ Cohesion: 0.08
 Nodes (40): Attempt, CompetencyConfiguration, MasteryState, NodeIntroView, ParentAccount, QuestionFlag, SkillEdge, SkillNode (+32 more)
 
 ### Community 26 - "Community 26"
-Cohesion: 0.17
-Nodes (21): _count_decimal_places(), generate_number_by_window(), generate_pair_by_window(), _magnitude_edge_band(), _magnitude_key(), Any, Random, Order candidates by magnitude. Fractions compare by value, not by the     tuple' (+13 more)
+Cohesion: 0.16
+Nodes (22): _count_decimal_places(), generate_number_by_window(), generate_pair_by_window(), _magnitude_edge_band(), _magnitude_key(), Any, Random, Order candidates by magnitude. Fractions compare by value, not by the     tuple' (+14 more)
 
 ### Community 27 - "Community 27"
 Cohesion: 0.08
@@ -602,7 +600,7 @@ Cohesion: 0.17
 Nodes (12): Basic Query, Best Practices for Agents, Calling Operations, Client-Side Caching, Data Type Mapping Reference, Flutter SDK, Imports, Initialization (+4 more)
 
 ### Community 74 - "Community 74"
-Cohesion: 0.15
+Cohesion: 0.17
 Nodes (12): Basic CRUD Schema, Client Subscribe (Web), connector.yaml Template, dataconnect.yaml Template, Event-Driven Refresh, Firebase Init Commands, Many-to-Many Relationship, Realtime Query Templates (+4 more)
 
 ### Community 75 - "Community 75"
@@ -714,8 +712,8 @@ Cohesion: 0.22
 Nodes (8): _evaluate_left_to_right(), generate_hints(), generate_params(), Any, DNA: Order of Operations (Number & Algebra)  G3 only — addition and subtraction, Generate an order-of-operations problem (G3 only, + and − left to right).      R, Return 2–4 step-by-step hints for an order-of-operations problem., Evaluate an expression left to right given operands and operator list.
 
 ### Community 102 - "Community 102"
-Cohesion: 0.20
-Nodes (8): DNA, Specification of a mathematical concept for practice generation.      dna_type:, Return param_bounds for grade, falling back to nearest defined grade., Return the index of a level within an axis (0 = easiest)., Return a 0.0–1.0 scalar for a given axis level., build_scaffold_sequence(), Any, Build an ordered list of difficulty profiles for a scaffold sequence.      Each
+Cohesion: 0.67
+Nodes (3): build_scaffold_sequence(), Any, Build an ordered list of difficulty profiles for a scaffold sequence.      Each
 
 ### Community 103 - "Community 103"
 Cohesion: 0.13
@@ -746,7 +744,7 @@ Cohesion: 0.22
 Nodes (8): 1. Create a Firebase Project and App (Automated), 2. Installation (Automated via Swift Package Manager CLI), 3. Initialization, AppDelegate (Traditional / UIKit), ⛔️ CRITICAL RULE: INITIALIZATION ORDER ⛔️, ⛔️ CRITICAL RULE: STATE MANAGEMENT (OBSERVATION VS COMBINE) ⛔️, Firebase iOS Setup Guide, SwiftUI (Modern - SAFE PATTERN)
 
 ### Community 110 - "Community 110"
-Cohesion: 0.15
+Cohesion: 0.14
 Nodes (8): Core Agent Constraints, Mutation Fields (DML), Native SQL Operations, Native SQL Root Fields, PostgreSQL Extensions, Query Fields (Read-Only), ⚠️ Security: Stored Procedures & Dynamic SQL, Syntax rules & limitations
 
 ### Community 111 - "Community 111"
@@ -954,8 +952,8 @@ Cohesion: 0.33
 Nodes (6): 2026-08-13 — The derivation's evidence never showed the second factor mattering, A defect the new shape introduced, caught before commit, The failing rationale, The fix, The fixed-width case shape removed entirely, Verification
 
 ### Community 182 - "validate_interest.py"
-Cohesion: 0.16
-Nodes (19): enumerate_profiles(), extract_numerical_limits(), get_dimension_ranges(), _make_predicates(), measure_acceptance_rate(), normalize_difficulty(), Any, Random (+11 more)
+Cohesion: 0.08
+Nodes (44): DNA, Specification of a mathematical concept for practice generation.      dna_type:, Return param_bounds for grade, falling back to nearest defined grade., enumerate_profiles(), extract_numerical_limits(), get_dimension_ranges(), _make_predicates(), measure_acceptance_rate() (+36 more)
 
 ### Community 183 - "1. Local Prototyping: Data Seeding"
 Cohesion: 0.27
@@ -1102,8 +1100,8 @@ Cohesion: 0.14
 Nodes (13): get_available_intro_nodes(), get_interest_themes(), Return all interest themes. Grade parameter is ignored (kept for API compatibili, Return list of nodes that have intro content available., Intro Content Generation Module  Generates introductory lesson content for MATAT, _combined_interests(), get_intro_content(), list_intro_interests() (+5 more)
 
 ### Community 225 - "get_all_node_ids"
-Cohesion: 0.07
-Nodes (37): get_variants_for_dna(), is_variant_available_at(), Return all contextual variants defined for a DNA concept.      Args:         dna, Check if a variant is available at a specific grade/quarter per curriculum., A reusable story template with named slots.      Slots are filled from the stude, Spine, _build_symbolic_question(), _detect_axes_served() (+29 more)
+Cohesion: 0.09
+Nodes (31): get_variants_for_dna(), is_variant_available_at(), Return all contextual variants defined for a DNA concept.      Args:         dna, Check if a variant is available at a specific grade/quarter per curriculum., _build_symbolic_question(), _detect_axes_served(), _eval_error_formula(), generate_context() (+23 more)
 
 ### Community 226 - "socratic_chat_exchange"
 Cohesion: 0.40
@@ -1227,19 +1225,15 @@ Nodes (5): 2026-08-14 — "or vice versa" names two directions; the node was bou
 
 ### Community 259 - "generate_params"
 Cohesion: 0.12
-Nodes (24): ErrorPattern, extract_continuous_scalar(), extract_discrete_level(), A pedagogically meaningful wrong answer.      formula:          SymPy expression, Extracts a discrete level from the difficulty profile.     If the value is a str, Extracts a continuous scalar from the difficulty profile.     Handles floats, di, generate_hints(), generate_params() (+16 more)
+Nodes (22): extract_continuous_scalar(), extract_discrete_level(), Extracts a discrete level from the difficulty profile.     If the value is a str, Extracts a continuous scalar from the difficulty profile.     Handles floats, di, generate_hints(), generate_params(), Any, DNA: Bar Graphs (Data & Probability)  Covers MATATAG grade 3 bar graph competenc (+14 more)
 
 ### Community 261 - "socratic_chat_exchange"
 Cohesion: 0.40
 Nodes (5): _combined_interests(), Session, Socratic Tutor split-screen dialog endpoint.     Guides the student out of their, Merge parent-set interest_tags and student-set student_interest_tags into a, socratic_chat_exchange()
 
 ### Community 262 - "rebuild_knowledge_graph.py"
-Cohesion: 0.40
-Nodes (5): generate_hints(), generate_params(), Any, DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile.
-
-### Community 263 - "2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared"
-Cohesion: 0.40
-Nodes (5): generate_hints(), generate_params(), Any, DNA: Calendar (Measurement & Geometry)  Covers MATATAG grades 1–2 calendar compe, Returns visual_params for the Calendar formatter and an answer value.       {"mo
+Cohesion: 0.12
+Nodes (17): ErrorPattern, A pedagogically meaningful wrong answer.      formula:          SymPy expression, generate_hints(), generate_params(), Any, DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile., generate_hints() (+9 more)
 
 ### Community 264 - "2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units"
 Cohesion: 0.40
@@ -1249,17 +1243,9 @@ Nodes (5): generate_hints(), generate_params(), Any, DNA: Geometric Lines (Measu
 Cohesion: 0.40
 Nodes (5): generate_hints(), generate_params(), Any, DNA: 2D Shapes (Measurement & Geometry)  Covers MATATAG grades 1–2 2D shape comp, Sample one item from the static pool filtered by grade and difficulty_profile.
 
-### Community 267 - "symmetry_slides.py"
-Cohesion: 0.40
-Nodes (5): generate_hints(), generate_params(), Any, DNA: Symmetry and Slides (Measurement & Geometry)  Covers MATATAG grades 2–3 sym, Sample one item from the static pool filtered by grade and difficulty profile.
-
 ### Community 268 - "time_reading.py"
 Cohesion: 0.40
 Nodes (5): generate_hints(), generate_params(), Any, DNA: Time Reading (Measurement & Geometry)  Covers MATATAG grades 1–2 time-telli, Returns visual_params for the ClockSet formatter:       {"hour": int, "minute":
-
-### Community 269 - "validate_difficulty_feasibility"
-Cohesion: 0.50
-Nodes (4): Verify that every difficulty profile for a DNA meets MIN_ACCEPTANCE_RATE.      F, Run validate_difficulty_feasibility for every DNA x every grade present     in t, run_all_feasibility_checks(), validate_difficulty_feasibility()
 
 ### Community 270 - "2026-08-13 — length_measurement: the largest FAIL cluster in the tree"
 Cohesion: 0.50
@@ -1284,7 +1270,7 @@ Nodes (9): True if `level` can be satisfied by some (a, b) with a + b <= max_res
 ## Knowledge Gaps
 - **1045 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+1040 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -1293,7 +1279,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Why does `QuestionContext` connect `Community 50` to `Community 4`, `Community 13`, `Community 18`, `Community 153`, `Community 51`, `Community 59`, `Community 60`, `get_gemini_models`, `test_answer_leak_and_reach.py`, `Community 70`, `Community 77`, `Community 79`, `test_semantic_leak_guards.py`, `Community 92`, `Community 93`, `Community 94`, `fmt_numeric_input.py`, `Community 95`, `get_all_node_ids`, `models.py`, `Community 100`, `CompetencyConfiguration`, `fmt_pictograph.py`, `fmt_bar_chart.py`, `fmt_ruler_measure.py`?**
   _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **Why does `DNA` connect `Community 102` to `fmt_fill_in_table.py`, `Community 1`, `generate_params`, `Community 4`, `Community 3`, `rebuild_knowledge_graph.py`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`, `2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units`, `Community 138`, `find_node_id`, `symmetry_slides.py`, `time_reading.py`, `Community 14`, `validate_difficulty_feasibility`, `counting.py`, `Community 24`, `Community 41`, `validate_interest.py`, `mastery_drill.py`, `generator.py`, `validate_capability.py`, `counting.py`, `Community 75`, `Community 87`, `Native SQL Examples`, `models.py`, `get_all_node_ids`, `Community 101`, `TestLogScaleDeclarations`, `Community 118`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`?**
+- **Why does `DNA` connect `validate_interest.py` to `fmt_fill_in_table.py`, `generate_params`, `Community 4`, `Community 3`, `rebuild_knowledge_graph.py`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`, `2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units`, `Community 138`, `find_node_id`, `time_reading.py`, `Community 14`, `counting.py`, `Community 24`, `Community 41`, `mastery_drill.py`, `generator.py`, `validate_capability.py`, `counting.py`, `Community 75`, `Community 87`, `Native SQL Examples`, `models.py`, `get_all_node_ids`, `Community 101`, `Community 102`, `TestLogScaleDeclarations`, `Community 118`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **What connects `graphify`, `PackageDescription`, `Foundation` to the rest of the system?**
   _1673 weakly-connected nodes found - possible documentation gaps or missing edges._

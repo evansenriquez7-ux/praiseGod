@@ -92,13 +92,13 @@ _ITEM_TEMPLATES = [
         "answer_key": "symbol",
         "choices_type": "symbols",
     },
-    # find_position — ordinal given, pick position number
+    # find_position — position number given, pick ordinal symbol
     {
         "range_key": "11th_to_20th",
-        "template":  "A runner finished in {word} place. What position number is that?",
+        "template":  "A runner is at position number {n}. In what place did the runner finish?",
         "task_type": "find_position",
-        "answer_key": "n",
-        "choices_type": "numbers",
+        "answer_key": "symbol",
+        "choices_type": "symbols",
     },
     # find_position — position number given, pick ordinal symbol
     {
@@ -180,39 +180,19 @@ def generate_params(
     g_key = f"g{max(1, min(grade, 3))}"
     bounds = _PARAM_BOUNDS[g_key]
     min_ord = bounds["min_ordinal"]
-    # axes_catalog.py declares this DNA's only continuous axis as
-    # "ordinal_range" (not "difficulty_scalar"/"number_difficulty", which
-    # this line used to read) -- the orchestrator's own continuous-axis
-    # pipeline already maps "ordinal_range" from a 0-1 scalar into a real
-    # ordinal ceiling using this axis's min/max before generate_params ever
-    # runs, so reading the wrong keys here meant diff_scalar silently sat
-    # at its hardcoded 0.5 default for every single render, regardless of
-    # seed or requested difficulty -- max_ord never moved, so no sample
-    # ever approached a node's stated ceiling (blind review of
-    # mat_g2_na_q1_5/mat_g3_na_q1_2: scale_appropriateness FAIL/CONCERN,
-    # "climb only as high as 14th" against a stated 20th/100th ceiling).
-    # generate_number_by_window below also needs a 0-1 scalar (for where
-    # *within* [min_ord, max_ord] to bias sampling), independent of which
-    # branch computed the ceiling itself.
+    max_ord = bounds["max_ordinal"]
+
     diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
     ordinal_range_val = profile.get("ordinal_range")
     if ordinal_range_val is not None:
-        max_ord = int(ordinal_range_val)
-    else:
-        from backend.app.practice_gen.dna.base import log_interpolate
-        max_ord = int(log_interpolate(10, bounds["max_ordinal"], diff_scalar))
+        try:
+            val = float(ordinal_range_val)
+            if val > 1:
+                max_ord = min(max_ord, int(val))
+        except (TypeError, ValueError):
+            pass
 
     range_level = profile.get("range", "1st_to_10th")
-    # Every "Describe the position of objects using ordinal numbers" node
-    # left task_type unbound, so it silently defaulted to "identify_ordinal"
-    # every single render -- "find_position"'s object-in-context templates
-    # ("A runner finished in {word} place...") and "compare_positions"'s
-    # ("Who arrived earlier...") never once appeared, even though they're
-    # the templates that actually name an object being positioned (blind
-    # review: competency_fulfillment FAIL/CONCERN across mat_g1_na_q1_5,
-    # mat_g2_na_q1_5, mat_g3_na_q1_2, "none of the samples references any
-    # object or context"). Vary across all three implemented task_types
-    # when unbound.
     task_type = profile.get("task_type") or rng.choice(
         ["identify_ordinal", "find_position", "compare_positions"]
     )
@@ -229,7 +209,12 @@ def generate_params(
     
     number_candidates = list(range(min_ord, max_ord + 1))
     from backend.app.practice_gen.generators.number_difficulty import generate_number_by_window
-    n = generate_number_by_window(number_candidates, diff_scalar, d=5, rng=rng, num_type="ordinal")
+    n = generate_number_by_window(number_candidates, diff_scalar, d=max(4, len(number_candidates)//2), rng=rng, num_type="ordinal")
+
+    # If asking for next symbol, ensure n + 1 stays within curriculum bounds
+    if template_def["answer_key"] == "next_symbol" and n >= max_ord:
+        n = max(min_ord, max_ord - 1)
+
     symbol  = _ordinal_suffix(n)
     word    = _ordinal_word(n)
 
@@ -242,7 +227,9 @@ def generate_params(
     elif answer_key == "symbol":
         answer = symbol
     elif answer_key == "earlier_symbol":
-        n2      = rng.randint(min_ord, max_ord)
+        n2 = rng.randint(min_ord, max_ord)
+        while n2 == n and max_ord > min_ord:
+            n2 = rng.randint(min_ord, max_ord)
         symbol2 = _ordinal_suffix(n2)
         answer  = symbol if n < n2 else symbol2
     elif answer_key == "next_symbol":
@@ -255,29 +242,23 @@ def generate_params(
     tpl = template_def["template"]
     ctx: Dict[str, Any] = {"n": n, "symbol": symbol, "word": word}
     if "symbol2" in tpl:
-        n2 = n2 if "n2" in dir() else rng.randint(min_ord, max_ord)
-        symbol2 = _ordinal_suffix(n2)
+        if "n2" not in locals() or n2 is None:
+            n2 = rng.randint(min_ord, max_ord)
+            while n2 == n and max_ord > min_ord:
+                n2 = rng.randint(min_ord, max_ord)
+            symbol2 = _ordinal_suffix(n2)
         ctx["symbol2"] = symbol2
     try:
         question_text = tpl.format(**ctx)
     except KeyError:
         question_text = tpl
 
-    # Generate 3 unique distractors of the same type/domain
+    curriculum_max = bounds["max_ordinal"]
+    # Generate 3 unique distractors strictly within [min_ord, curriculum_max]
     distractors = []
-    other_ns = []
-    for candidate_n in range(min_ord, max_ord + 1):
-        if candidate_n != n:
-            other_ns.append(candidate_n)
-    
-    # If the range is too narrow, widen it to guarantee distractors exist
-    ext_max = max_ord
-    while len(other_ns) < 5:
-        ext_max += 1
-        other_ns.append(ext_max)
-        
+    other_ns = [cand_n for cand_n in range(min_ord, curriculum_max + 1) if cand_n != n]
     rng.shuffle(other_ns)
-    
+
     for candidate_n in other_ns:
         if len(distractors) >= 3:
             break
@@ -285,15 +266,9 @@ def generate_params(
             cand = candidate_n
         elif answer_key == "word":
             cand = _ordinal_word(candidate_n)
-        elif answer_key == "symbol":
-            cand = _ordinal_suffix(candidate_n)
-        elif answer_key == "earlier_symbol":
-            cand = _ordinal_suffix(candidate_n)
-        elif answer_key == "next_symbol":
-            cand = _ordinal_suffix(candidate_n + 1)
         else:
             cand = _ordinal_suffix(candidate_n)
-            
+
         if cand != answer and cand not in distractors:
             distractors.append(cand)
 
