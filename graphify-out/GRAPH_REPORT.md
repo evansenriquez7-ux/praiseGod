@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-08-16)
 
 ## Corpus Check
-- 449 files · ~675,370 words
+- 449 files · ~674,313 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bc2f8e29`
+- Built from commit: `8ea40e92`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -719,7 +719,7 @@ Nodes (8): DNA, Specification of a mathematical concept for practice generation.
 
 ### Community 103 - "Community 103"
 Cohesion: 0.13
-Nodes (15): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated, A false alarm of my own, corrected, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item (+7 more)
+Nodes (15): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — Object-to-unit pairing: the numbers were right, the things were wrong, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated, A leak the first attempt left, caught by measuring rather than assuming, Final Definition of Done, Phase F — full `run_all` verification and three more regressions it caught — 2026-08-02 (+7 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.12
@@ -1051,7 +1051,7 @@ Nodes (12): 2026-07-26 audit — the harness was green while not looking, 2026-0
 
 ### Community 211 - "CompetencyConfiguration"
 Cohesion: 0.40
-Nodes (5): 2026-08-13 — Object-to-unit pairing: the numbers were right, the things were wrong, A leak the first attempt left, caught by measuring rather than assuming, The failing rationale, Two causes, one in each DNA, Verification
+Nodes (5): 2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared, A false alarm of my own, corrected, Defect 1 — the DNA emitted triangles that cannot exist, Defect 2 — a silent default made two of three named shapes unreachable, Left deliberately, with the reasoning, for the next tick
 
 ### Community 212 - "test_semantic_leak_guards.py"
 Cohesion: 0.33
@@ -1267,7 +1267,7 @@ Nodes (4): 2026-08-13 — length_measurement: the largest FAIL cluster in the tr
 
 ### Community 271 - "2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key"
 Cohesion: 0.50
-Nodes (4): 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, The failing rationale, Verification, Why binding alone was not enough — and what had to be built
+Nodes (4): 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item, Defect 2 — object and unit drawn independently
 
 ### Community 273 - "test_regrouping_feasibility.py"
 Cohesion: 0.23

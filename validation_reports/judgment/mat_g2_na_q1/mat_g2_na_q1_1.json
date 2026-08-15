@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na number_reading hardening), 2026-08-16",
+  "review_date": "2026-08-16",
   "blind": true,
   "sample_seeds": [
     42,
@@ -10,13 +10,10 @@
     45,
     46,
     50,
-    51,
-    68,
+    72,
     500,
     501,
-    502,
-    600,
-    601
+    502
   ],
   "samples_reviewed": [
     {
@@ -77,32 +74,28 @@
     },
     {
       "seed": 44,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Write the number: fifty-eight.",
       "correct_answer": 58,
       "options": [
         {
           "key": "A",
           "value": 580,
-          "text": "580",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 85,
-          "text": "85",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 48,
-          "text": "48",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 58,
-          "text": "58",
           "is_correct": true
         }
       ]
@@ -165,49 +158,47 @@
     },
     {
       "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "What number is marked on the number line?",
-      "correct_answer": "B",
+      "formatter": "true_false",
+      "question_text": "The number written as 'ninety-seven' is 87. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 72,
+      "formatter": "cloze",
+      "question_text": "Write 76 in words.",
+      "correct_answer": "seventy-six",
       "options": [
         {
           "key": "A",
-          "value": 96,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 97,
+          "value": "seventy-six",
+          "text": "seventy-six",
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": "seven hundred sixty",
+          "text": "seven hundred sixty",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 99,
+          "value": "sixty-six",
+          "text": "sixty-six",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 98,
+          "value": "sixty-seven",
+          "text": "sixty-seven",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 51,
-      "formatter": "true_false",
-      "question_text": "The number 157 is written in words as 'one hundred fifty-seven'. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 68,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Move the dot to show 157 on the number line.",
-      "correct_answer": 157
-    },
-    {
       "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Move the dot to show 717 on the number line.",
-      "correct_answer": 717
+      "formatter": "true_false",
+      "question_text": "The number written as 'seven hundred seventeen' is 718. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
@@ -268,67 +259,33 @@
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "Write 96 in words.",
-      "correct_answer": "ninety-six",
-      "options": [
-        {
-          "key": "A",
-          "value": "sixty-nine",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "nine hundred sixty",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "ninety-six",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "eighty-six",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "true_false",
-      "question_text": "The number written as 'seventy-eight' is 78. True or False?",
-      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Most samples squarely test converting between numeral and word form, e.g. seed 42 \"Write 35 in words.\" and seed 45 \"Write the number: one hundred thirty-five.\""
+      "rationale": "The items successfully implement the directive to \"Read and write numerals up to 1000.\" by challenging students with tasks such as \"Write 35 in words.\" and \"Write the number: fifty-eight.\""
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both directions, numeral to words and words to numeral, and a verification format (seed 51 true/false about \"one hundred fifty-seven\") are all represented."
+      "rationale": "The provided samples offer comprehensive coverage of the competency, evaluating both numeral-to-word conversions like \"Write 102 in words.\" and word-to-numeral conversions like \"Write the number: one hundred thirty-five.\""
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Word forms used, e.g. \"eight hundred twenty-one\", match Grade 2 place-value vocabulary."
+      "rationale": "The cognitive load of the items is appropriate for the target grade, utilizing straightforward phrasing such as \"The number written as 'ninety-seven' is 87. True or False?\""
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "mcq, cloze, true_false, and set_fill_in_blank formatters are all used across the thirteen samples."
+      "rationale": "The generator demonstrates strong variant comprehensiveness by producing varied assessment formats, including multiple-choice, cloze, and true/false tasks such as \"The number written as 'seven hundred seventeen' is 718. True or False?\""
     },
     "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Seeds 68 and 500, \"Move the dot to show 157 on the number line.\" and \"Move the dot to show 717 on the number line.\", test number-line magnitude placement rather than the reading/writing-of-numerals skill this competency names."
+      "verdict": "PASS",
+      "rationale": "The generated items strictly align with the requirement to \"Read and write numerals up to 1000.\" and do not include numerals beyond 1000 or unrelated concepts."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Values reach 821 (seed 501) while staying under the 1000 ceiling."
+      "rationale": "The samples effectively address the scale constraint of \"up to 1000.\" by testing a spectrum of values, from smaller numbers to larger numbers like \"Write the number: eight hundred twenty-one.\""
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

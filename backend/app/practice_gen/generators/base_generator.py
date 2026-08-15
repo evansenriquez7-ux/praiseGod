@@ -990,7 +990,7 @@ def _build_symbolic_question(
         number = values.get("number", a)
         word_form = values.get("word_form")
         task_type = values.get("task_type", "numeral_to_word")
-        if task_type == "word_to_numeral" and word_form:
+        if task_type in ("word_to_numeral", "identify_value", "number_line") and word_form:
             return f"Write the number: {word_form}."
         elif task_type == "numeral_to_expanded":
             return f"Write {number} in expanded form."

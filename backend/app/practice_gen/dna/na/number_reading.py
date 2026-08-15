@@ -178,28 +178,12 @@ def generate_params(
         # auto-resolves CALLER-supplied difficulty_profile list values,
         # not ones injected later from registry bounds.
         task_type = rng.choice(task_type)
+    if task_type == "read_and_write":
+        task_type = rng.choice(["numeral_to_word", "word_to_numeral"])
+    elif task_type == "model_representation":
+        task_type = rng.choice(["identify_value", "number_line"])
     if grade == 1 and task_type == "numeral_to_expanded":
         task_type = "numeral_to_word"
-
-    if task_type == "identify_value":
-        # "...using a variety of concrete and pictorial models (e.g.,
-        # number line, block or bar models, and numerals)" names a
-        # representation this DNA never had at all -- reading a number's
-        # magnitude from base-10 blocks, as opposed to converting between
-        # numeral/word/expanded forms (blind review: "block/bar models...
-        # never appear anywhere"). Reuses place_value.py's own task_type
-        # name for the identical underlying skill; fmt_place_value_blocks.py
-        # is wired to this DNA's compatible_formatters for it (see
-        # compatibility.py).
-        number = rng.randint(lo, hi)
-        return {
-            "number":        number,
-            "word_form":     num_to_tagalog_style_english_words(number),
-            "expanded_form": _make_expanded_form(number),
-            "task_type":     "identify_value",
-            "blank_target":  "number",
-            "answer":        number,
-        }
 
     # If no range difficulty is specified, use full grade-appropriate range (scalar=1.0)
     # A scalar of 0.0 would pin every question to the minimum of the range (e.g. 1-9),
@@ -243,7 +227,7 @@ def generate_params(
     expanded_form = _make_expanded_form(number)
 
     blank_target = "word_form"
-    if task_type == "word_to_numeral":
+    if task_type in ("word_to_numeral", "identify_value", "number_line"):
         blank_target = "number"
     elif task_type == "numeral_to_expanded":
         blank_target = "expanded_form"

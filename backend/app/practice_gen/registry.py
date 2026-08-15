@@ -1059,49 +1059,21 @@ def _parse_competency_bounds(
             # one (see place_value.py's "any_place_value_skill" composite
             # value).
             bounds["task_type"] = "any_place_value_skill"
+        elif "pictorial models" in text or "block or bar" in text or "materials and representations" in text or "concrete and pictorial" in text:
+            # For model representation nodes, place_value provides base-10 block models
+            bounds["task_type"] = "identify_value"
 
     # Number reading: "numerals/numbers up to X"
     elif dna_name == "number_reading":
-        match = re.search(r'(?:numerals?|numbers?)\s+(?:up\s+to|to)\s+(\d+)', text)
+        match = re.search(r'(?:numerals?|numbers?)\s+(?:up\s+to|to)\s+([\d\s]+)', text)
         if match:
-            max_val = int(match.group(1))
+            max_val = int(match.group(1).replace(" ", "").strip())
             bounds["range"] = (10, max_val)
 
-        # "Recognize and represent numbers... using a variety of concrete
-        # and pictorial models (e.g., number line, block or bar models,
-        # and numerals)" (mat_g1_na_q1_2/mat_g2_na_q1_2): this DNA's own
-        # task_type vocabulary (numeral_to_word/word_to_numeral/numeral_to
-        # _expanded) covers the "numerals" representation this text ALSO
-        # names, but has no concept of "block or bar models" at all --
-        # the co-mapped `counting` DNA filled the gap with unrelated
-        # counting-sequence content instead of any genuine model-based
-        # representation (blind review: "block/bar models... never appear
-        # anywhere across all 17 seeds"; "5/17 samples... test sequence
-        # fluency, an axis unrelated to represent numbers using models").
-        # "identify_value" reuses place_value.py's own task_type name for
-        # the identical underlying skill (read a magnitude from base-10
-        # blocks) -- see number_reading.py's new branch and the
-        # "place_value_blocks_read"/"_set" formatter wiring below. Also
-        # matches "represent numbers... using pictorial models and
-        # numerals" (mat_g3_na_q1_0, no "concrete and"/"block or bar"
-        # wording but the identical underlying gap: blind review found it
-        # "text-for-text identical to sibling node mat_g3_na_q1_1['s]...
-        # read/write packet" with zero pictorial-model content anywhere).
-        if "pictorial models" in text or "block or bar" in text:
-            # Equal-weight rng.choice over 3 options gave identify_value
-            # (the ONLY task_type this node doesn't share with its "read
-            # and write" sibling) just 1/3 odds -- the other 2/3 produced
-            # task_type/seed/range combinations IDENTICAL to what the
-            # sibling's own unbound default (rng.choice(["numeral_to_word",
-            # "word_to_numeral"])) generates, so most samples were
-            # byte-for-byte duplicates of the sibling node (blind review:
-            # "8 of 12 samples are word-for-word identical... the defining
-            # 'concrete/pictorial models' clause is tested in only 4 of
-            # 12"). List repetition biases the DNA's own rng.choice toward
-            # the model-based task_type this competency is actually about,
-            # while keeping some numeral-notation variety since the
-            # competency also lists "numerals" as one representation type.
-            bounds["task_type"] = ["identify_value"] * 3 + ["numeral_to_word", "word_to_numeral"]
+        if "pictorial models" in text or "block or bar" in text or "materials and representations" in text or "concrete and pictorial" in text:
+            bounds["task_type"] = "model_representation"
+        else:
+            bounds["task_type"] = "read_and_write"
 
     # Symmetry and slides: this DNA's item pool spans four disjoint curriculum
     # scopes (rotation/turns; slide/translation; line symmetry; completing a

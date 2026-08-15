@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q1_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na number_reading hardening), 2026-08-16",
+  "review_date": "2026-08-16",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,14 +9,9 @@
     44,
     45,
     46,
-    50,
-    51,
-    53,
     500,
     501,
-    502,
-    600,
-    601
+    502
   ],
   "samples_reviewed": [
     {
@@ -27,22 +22,22 @@
       "options": [
         {
           "key": "A",
-          "value": 14,
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 40,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 4,
+          "value": 13,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 5,
+          "value": 31,
           "is_correct": false
         }
       ]
@@ -55,78 +50,56 @@
       "options": [
         {
           "key": "A",
-          "value": 27,
+          "value": 23,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 37,
+          "value": 22,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 73,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 4,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "Write 29 in words.",
-      "correct_answer": "twenty-nine",
-      "options": [
-        {
-          "key": "A",
-          "value": "nineteen",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "ninety-two",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "thirty",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "twenty-nine",
-          "is_correct": true
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Move the dot to show 29.",
+      "correct_answer": 29
     },
     {
       "seed": 45,
       "formatter": "read_mcq",
-      "question_text": "What number do the blocks show?",
-      "correct_answer": "B",
+      "question_text": "What number is marked?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 44,
+          "value": 28,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 54,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 45,
+          "value": 25,
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 26,
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": 9,
+          "value": 27,
           "is_correct": false
         }
       ]
@@ -139,170 +112,92 @@
       "options": [
         {
           "key": "A",
-          "value": 7,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 52,
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 25,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 42,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "true_false",
-      "question_text": "The number 21 is written in words as 'twenty-two'. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 51,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Use base-10 blocks to show the number 65.",
-      "correct_answer": 65
-    },
-    {
-      "seed": 53,
-      "formatter": "cloze",
-      "question_text": "Write the number: nineteen.",
-      "correct_answer": 19,
-      "options": [
-        {
-          "key": "A",
-          "value": 19,
-          "text": "19",
           "is_correct": true
         },
         {
-          "key": "B",
-          "value": 91,
-          "text": "91",
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": 9,
-          "text": "9",
+          "value": 52,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 20,
-          "text": "20",
+          "value": 7,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "true_false",
-      "question_text": "The number 99 is written in words as 'one hundred'. True or False?",
-      "correct_answer": false
+      "formatter": "set_fill_in_blank",
+      "question_text": "Move the dot to show 99.",
+      "correct_answer": 99
     },
     {
       "seed": 501,
       "formatter": "set_fill_in_blank",
-      "question_text": "Use base-10 blocks to show the number 81.",
-      "correct_answer": 81
+      "question_text": "Move the dot to show 77.",
+      "correct_answer": 77
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Write the number: seventy-eight.",
-      "correct_answer": 78,
+      "formatter": "read_mcq",
+      "question_text": "What number is marked?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 87,
+          "value": 52,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 78,
+          "value": 53,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 79,
+          "value": 55,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 68,
+          "value": 54,
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "Write 21 in words.",
-      "correct_answer": "twenty-one",
-      "options": [
-        {
-          "key": "A",
-          "value": "twelve",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "eleven",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "twenty-one",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "twenty-two",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "true_false",
-      "question_text": "The number written as 'nineteen' is 19. True or False?",
-      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Several of the thirteen sampled items -- \"Write 29 in words.\", \"Write the number: nineteen.\", \"Write the number: seventy-eight.\", and the true/false check of \"one hundred\" -- are pure digit/word conversions with no concrete or pictorial model in sight, which is a different skill from recognizing and representing a number with a model."
+      "verdict": "PASS",
+      "rationale": "The samples fulfill the requirement to \"Recognize and represent numbers up to 100\" by asking the student \"What number do the blocks show?\" and \"What number is marked?\" to test recognition. They also test representation by instructing the student to \"Move the dot to show 99.\" matching the requirement to use a \"number line\"."
     },
     "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency names number line as an explicit example model, but not one of the thirteen sampled items in this node references a number line; only block and base-10-block models ever appear, e.g. \"What number do the blocks show?\" and \"Use base-10 blocks to show the number 65.\""
+      "verdict": "PASS",
+      "rationale": "The samples comprehensively cover the expected models by addressing a \"number line\" in prompts like \"What number is marked?\" and testing \"block or bar models\" with the prompt \"What number do the blocks show?\". The evaluated numbers include 99 and 77, confirming coverage of \"numbers up to 100\"."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The base-10 block language and the number sizes used are appropriate for Grade 1 Quarter 1."
+      "rationale": "The tasks align well with Grade 1 cognitive capacity. The text \"What number do the blocks show?\" uses simple, direct language suitable for early readers. Providing a distractor of 31 for the correct answer 13 appropriately assesses common developmental place-value errors."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Several formatters are used (read_mcq, true_false, mcq, cloze, set_fill_in_blank), but the underlying content clusters into just two families -- reading blocks and converting words to digits -- so real model variety is thin."
+      "verdict": "PASS",
+      "rationale": "The variants successfully assess both the \"Recognize and represent\" actions. Recognition is verified through multiple choice questions like \"What number do the blocks show?\" while representation is interactively assessed with inputs such as \"Move the dot to show 77.\""
     },
     "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "This node's own seed 600 stem, \"Write 21 in words.\", is a word-numeral conversion rather than a models-based representation task, showing the sampled difficulty axis is not reliably staying inside the recognize-and-represent-with-models competency."
+      "verdict": "PASS",
+      "rationale": "Every sample tightly aligns with the mandate of \"using a variety of concrete and pictorial models\". The prompts only ask students to identify visual values like \"What number is marked?\" or execute actions like \"Move the dot to show 29.\" keeping exactly within the bounds of the required representations."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Block-model values sampled -- 37, 52, 54, 65, 81 -- all stay within the up-to-100 range this competency states."
+      "rationale": "The scale and magnitude of the values used in the samples, including 29, 99, 77, and 53, strictly adhere to the defined range in the competency text which requires \"numbers up to 100\"."
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }

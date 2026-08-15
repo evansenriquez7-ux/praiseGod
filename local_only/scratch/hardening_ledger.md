@@ -2373,3 +2373,43 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
   1. `mat_g1_na_q1_1..2` (Number Sense Q1 counting / comparing).
   2. `mat_g2_mg_q4_4` (Measurement & Geometry co-mapped DNA).
   3. `mat_g1_dp_q3_0` (simple interview data collection).
+
+## Tick C Unit: Number Reading & Number Representation Hardening (`mat_g1_na_q1_1..2`, `mat_g2_na_q1_1..2`, `mat_g3_na_q1_0..1`)
+- **Timestamp:** 2026-08-16T05:01:00+08:00
+- **Scope / Target Nodes:**
+  - `mat_g1_na_q1_1` (G1 Q1 Number Sense): Read and write numerals up to 100.
+  - `mat_g1_na_q1_2` (G1 Q1 Number Sense): Recognize and represent numbers up to 100 using a variety of concrete and pictorial models.
+  - `mat_g2_na_q1_1` (G2 Q1 Number Sense): Read and write numerals up to 1000.
+  - `mat_g2_na_q1_2` (G2 Q1 Number Sense): Recognize and represent numbers up to 1000 using a variety of concrete and pictorial models, and numerals.
+  - `mat_g3_na_q1_0` (G3 Q1 Number Sense): Represent numbers up to 10 000 using pictorial models and numerals.
+  - `mat_g3_na_q1_1` (G3 Q1 Number Sense): Read and write numbers up to 10 000 in numerals and in words.
+- **Root Cause & Diagnosis:**
+  1. `place_value` DNA had formatters containing vocabulary `place value`, `digit`, `tens`, `hundreds` which are strictly `NOT_YET_KNOWN` in Grade 1 Quarter 1 (introduced in G1 Q2 `mat_g1_na_q2_2`), causing 100 vocabulary gating violations when co-mapped to `mat_g1_na_q1_2`.
+  2. Number reading and number representation are disjoint pedagogical competencies: "Read and write" nodes require pure text conversions between numerals and number words, while "Recognize and represent" nodes require concrete/pictorial models (base-10 blocks and number lines).
+  3. Synthesized scopes `read_and_write` and `model_representation` were established to partition the formatters: textual formatters (`mcq`, `cloze`, `true_false`) handle `read_and_write`, while visual model formatters (`place_value_blocks_read/set`, `number_line_read/set`) handle `model_representation`.
+  4. Formatter question stems were hardened so `identify_value` and `number_line` do not leak answers in symbolic stems.
+- **Files Modified:**
+  - `backend/app/practice_gen/compatibility.py`
+  - `backend/app/practice_gen/dna/na/number_reading.py`
+  - `backend/app/practice_gen/generators/base_generator.py`
+  - `backend/app/practice_gen/registry.py`
+  - `validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_1.json` (fresh blind review filed: PASS)
+  - `validation_reports/judgment/mat_g1_na_q1/mat_g1_na_q1_2.json` (fresh blind review filed: PASS)
+  - `validation_reports/judgment/mat_g2_na_q1/mat_g2_na_q1_1.json` (fresh blind review filed: PASS)
+  - `validation_reports/judgment/mat_g2_na_q1/mat_g2_na_q1_2.json` (fresh blind review filed: PASS)
+  - `validation_reports/judgment/mat_g3_na_q1/mat_g3_na_q1_0.json` (fresh blind review filed: PASS)
+  - `validation_reports/judgment/mat_g3_na_q1/mat_g3_na_q1_1.json` (fresh blind review filed: PASS)
+- **Verification:**
+  - Matrix validation (`validate_matrix`): 151/151 nodes passed, 0 failures.
+  - Blind Pro Reviews: 6/6 nodes achieved clean PASS verdicts with exact contiguous quote provenance.
+  - Gate health sweep (`validate_judgment`): 0 stale reviews, 0 hash errors.
+  - Census movement across the unit:
+    - `mat_g1_na_q1_1`: CONCERN → **PASS** (+1)
+    - `mat_g1_na_q1_2`: CONCERN → **PASS** (+1)
+    - `mat_g2_na_q1_1`: CONCERN → **PASS** (+1)
+    - `mat_g2_na_q1_2`: CONCERN → **PASS** (+1)
+    - `mat_g3_na_q1_0`: CONCERN → **PASS** (+1)
+    - `mat_g3_na_q1_1`: CONCERN → **PASS** (+1)
+- **Census after:** PASS=66 CONCERN=59 FAIL=26 Total=151.
+- **Next tick should:** Harden the next non-PASS cluster (e.g. `mat_g1_na_q1_3..4` comparing/ordering, or `mat_g3_mg_q2_0/3` mass & capacity duplication).
+

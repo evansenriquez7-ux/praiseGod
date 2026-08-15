@@ -549,7 +549,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "number_reading": {
-        "task_type": ["numeral_to_word", "word_to_numeral"],
+        "task_type": ["numeral_to_word", "word_to_numeral", "numeral_to_expanded", "identify_value", "number_line"],
     },
 
     "ordinal_numbers": {
@@ -1035,20 +1035,13 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # "Write 5 in words." stem keyed to the bare numeral answer "5"
         # (confirmed live). Excluded here the same way number_line excludes
         # numeral_to_word below.
-        "mcq": {"context": ["pure"], "task_type": ["numeral_to_word", "word_to_numeral", "numeral_to_expanded"]},
-        "cloze": {"context": ["pure"], "task_type": ["numeral_to_word", "word_to_numeral", "numeral_to_expanded"]},
-        "true_false": {"context": ["pure"], "task_type": ["numeral_to_word", "word_to_numeral", "numeral_to_expanded"]},
-        # A number line can only ever show a numeral position — it cannot
-        # represent a word-form answer. Restrict to word_to_numeral (numeral
-        # is the answer); numeral_to_word doesn't fit this visual formatter.
-        "number_line_read": {"context": ["pure"], "task_type": ["word_to_numeral"]},
-        "number_line_set": {"context": ["pure"], "task_type": ["word_to_numeral"]},
-        # "identify_value" is the only task_type this DNA generates with a
-        # shape place_value_blocks expects (a bare number, no word/expanded
-        # form) -- numeral_to_word/word_to_numeral don't fit a base-10-block
-        # visual the same way they don't fit number_line above.
-        "place_value_blocks_read": {"context": ["pure"], "task_type": ["identify_value"]},
-        "place_value_blocks_set": {"context": ["pure"], "task_type": ["identify_value"]},
+        "mcq": {"context": ["pure"], "task_type": ["numeral_to_word", "word_to_numeral", "numeral_to_expanded", "read_and_write"]},
+        "cloze": {"context": ["pure"], "task_type": ["numeral_to_word", "word_to_numeral", "numeral_to_expanded", "read_and_write"]},
+        "true_false": {"context": ["pure"], "task_type": ["numeral_to_word", "word_to_numeral", "numeral_to_expanded", "read_and_write"]},
+        "number_line_read": {"context": ["pure"], "task_type": ["number_line", "model_representation"]},
+        "number_line_set": {"context": ["pure"], "task_type": ["number_line", "model_representation"]},
+        "place_value_blocks_read": {"context": ["pure"], "task_type": ["identify_value", "model_representation"]},
+        "place_value_blocks_set": {"context": ["pure"], "task_type": ["identify_value", "model_representation"]},
     },
 
     "rounding": {

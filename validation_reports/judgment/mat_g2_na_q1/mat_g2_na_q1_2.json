@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q1_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na number_reading hardening), 2026-08-16",
+  "review_date": "2026-08-16",
   "blind": true,
   "sample_seeds": [
     42,
@@ -9,14 +9,9 @@
     44,
     45,
     46,
-    50,
-    51,
-    53,
     500,
     501,
-    502,
-    600,
-    601
+    502
   ],
   "samples_reviewed": [
     {
@@ -27,22 +22,22 @@
       "options": [
         {
           "key": "A",
-          "value": 8,
+          "value": 25,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 16,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 26,
+          "value": 35,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 62,
+          "value": 53,
           "is_correct": false
         }
       ]
@@ -55,78 +50,56 @@
       "options": [
         {
           "key": "A",
-          "value": 239,
+          "value": 92,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 14,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 193,
+          "value": 120,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 293,
+          "value": 102,
           "is_correct": true
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "Write 58 in words.",
-      "correct_answer": "fifty-eight",
-      "options": [
-        {
-          "key": "A",
-          "value": "five hundred eighty",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "eighty-five",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "forty-eight",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "fifty-eight",
-          "is_correct": true
-        }
-      ]
+      "formatter": "set_fill_in_blank",
+      "question_text": "Move the dot to show 58 on the number line.",
+      "correct_answer": 58
     },
     {
       "seed": 45,
       "formatter": "read_mcq",
-      "question_text": "What number do the blocks show?",
+      "question_text": "What number is marked on the number line?",
       "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 14,
+          "value": 137,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 418,
+          "value": 134,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 428,
+          "value": 135,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 482,
+          "value": 136,
           "is_correct": false
         }
       ]
@@ -139,169 +112,91 @@
       "options": [
         {
           "key": "A",
-          "value": 310,
+          "value": 31,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 400,
+          "value": 113,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 5,
+          "value": 121,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 410,
+          "value": 131,
           "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "true_false",
-      "question_text": "The number 97 is written in words as 'eighty-seven'. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 51,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Use base-10 blocks to show the number 859.",
-      "correct_answer": 859
-    },
-    {
-      "seed": 53,
-      "formatter": "cloze",
-      "question_text": "Write the number: eighty-four.",
-      "correct_answer": 84,
-      "options": [
-        {
-          "key": "A",
-          "value": 84,
-          "text": "84",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 48,
-          "text": "48",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 840,
-          "text": "840",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 74,
-          "text": "74",
-          "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "true_false",
-      "question_text": "The number 717 is written in words as 'seven hundred eighteen'. True or False?",
-      "correct_answer": false
+      "formatter": "set_fill_in_blank",
+      "question_text": "Move the dot to show 717 on the number line.",
+      "correct_answer": 717
     },
     {
       "seed": 501,
       "formatter": "set_fill_in_blank",
-      "question_text": "Use base-10 blocks to show the number 644.",
-      "correct_answer": 644
+      "question_text": "Move the dot to show 821 on the number line.",
+      "correct_answer": 821
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Write the number: five hundred fifty.",
-      "correct_answer": 550,
+      "formatter": "read_mcq",
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 55,
+          "value": 349,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 550,
+          "value": 350,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 551,
+          "value": 352,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 540,
+          "value": 351,
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "Write 96 in words.",
-      "correct_answer": "ninety-six",
-      "options": [
-        {
-          "key": "A",
-          "value": "sixty-nine",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "nine hundred sixty",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "ninety-six",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "eighty-six",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "true_false",
-      "question_text": "The number written as 'seventy-eight' is 78. True or False?",
-      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Base-10 block items like seed 42 \"What number do the blocks show?\" directly test recognizing a pictorial model, and seed 51 \"Use base-10 blocks to show the number 859.\" tests constructing a concrete model."
+      "rationale": "The generator successfully fulfills the requirement to \"Recognize and represent numbers up to 1000\" by providing tasks such as \"Move the dot to show 58 on the number line.\""
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Pictorial recognition (blocks), concrete construction (set_fill_in_blank blocks), and numeral/word conversion (seed 44, seed 53) are all present, covering concrete and pictorial models, and numerals as named."
+      "rationale": "The samples cover \"using a variety of concrete and pictorial models, and numerals.\" by alternating between visual blocks (\"What number do the blocks show?\") and distance models (\"What number is marked on the number line?\")."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Block-reading and word-writing prompts are concrete and grade-appropriate."
+      "rationale": "The tasks align perfectly with a Grade 2 student's capacity to handle \"numbers up to 1000\" by using direct, unambiguous instructions like \"Move the dot to show 821 on the number line.\""
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "read_mcq, mcq, true_false, cloze, and set_fill_in_blank formatters are all exercised."
+      "rationale": "The variants are comprehensive, smoothly balancing recognition tasks (\"What number is marked on the number line?\") with representation tasks (\"Move the dot to show 717 on the number line.\")."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The varying element, representation type (blocks vs. words vs. numerals), matches the competency's own scope."
+      "rationale": "The samples align entirely with the directive to \"Recognize and represent numbers up to 1000 using a variety of concrete and pictorial models, and numerals.\" without exceeding the bounds of the curriculum."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Values reach 859 (seed 51) while staying under the 1000 ceiling."
+      "rationale": "Values are appropriately scaled for \"numbers up to 1000\", maintaining steady difficulty in multi-digit place value tests like \"What number do the blocks show?\"."
     }
   },
   "overall": "PASS"

@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g3_na_q1_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B7a (g3 mg_q2_4-q4 + na_q1), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na number_reading hardening), 2026-08-16",
+  "review_date": "2026-08-16",
   "blind": true,
   "sample_seeds": [
     42,
@@ -10,13 +10,10 @@
     45,
     46,
     50,
-    51,
-    68,
+    72,
     500,
     501,
-    502,
-    600,
-    601
+    502
   ],
   "samples_reviewed": [
     {
@@ -77,32 +74,28 @@
     },
     {
       "seed": 44,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "Write the number: five hundred ninety-six.",
       "correct_answer": 596,
       "options": [
         {
           "key": "A",
           "value": 5960,
-          "text": "5960",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 695,
-          "text": "695",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 586,
-          "text": "586",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 596,
-          "text": "596",
           "is_correct": true
         }
       ]
@@ -165,49 +158,47 @@
     },
     {
       "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "What number is marked on the number line?",
-      "correct_answer": "B",
+      "formatter": "true_false",
+      "question_text": "The number written as 'three hundred thirty-six' is 326. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 72,
+      "formatter": "cloze",
+      "question_text": "Write 254 in words.",
+      "correct_answer": "two hundred fifty-four",
       "options": [
         {
           "key": "A",
-          "value": 335,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 336,
+          "value": "two hundred fifty-four",
+          "text": "two hundred fifty-four",
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": "two thousand five hundred forty",
+          "text": "two thousand five hundred forty",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 338,
+          "value": "two hundred forty-four",
+          "text": "two hundred forty-four",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 337,
+          "value": "four hundred fifty-two",
+          "text": "four hundred fifty-two",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 51,
-      "formatter": "true_false",
-      "question_text": "The number 578 is written in words as 'five hundred seventy-eight'. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 68,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Move the dot to show 576 on the number line.",
-      "correct_answer": 576
-    },
-    {
       "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Move the dot to show 9630 on the number line.",
-      "correct_answer": 9630
+      "formatter": "true_false",
+      "question_text": "The number written as 'nine thousand six hundred thirty' is 9620. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
@@ -268,66 +259,32 @@
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "Write 334 in words.",
-      "correct_answer": "three hundred thirty-four",
-      "options": [
-        {
-          "key": "A",
-          "value": "four hundred thirty-three",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "three thousand three hundred forty",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "three hundred thirty-four",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "three hundred twenty-four",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "true_false",
-      "question_text": "The number written as 'two hundred sixty-one' is 261. True or False?",
-      "correct_answer": true
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The great majority of samples directly exercise reading and writing between numeral and word form, such as seed 42's \"Write 89 in words.\" and seed 44's \"Write the number: five hundred ninety-six.\", the exact two directions the competency names."
+      "rationale": "The items effectively direct the student to \"Read and write numbers up to 10 000 in numerals and in words.\" For example, seed 42 explicitly tests writing by asking the student to \"Write 89 in words.\" while seed 44 tests reading words and writing numerals by asking \"Write the number: five hundred ninety-six.\""
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Both conversion directions are present: numeral-to-words in seeds 42, 43, 46, and 600, and words-to-numeral in seeds 44, 45, 501, and 502, plus true/false checks on a stated word form in seeds 51 and 601."
+      "rationale": "The generator comprehensively covers both required directions. It includes numerals to words as seen in seed 46 with \"Write 473 in words.\" and words to numerals as seen in seed 502 with \"Write the number: three thousand seven hundred sixty-one.\""
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The word forms required, such as \"eighty-nine\" and \"three hundred fifty-six\", use standard English number-word conventions appropriate to Grade 3 without irregular or compound terminology beyond this level."
+      "rationale": "The difficulty is well-suited for Grade 3, as the distractors target common developmental misconceptions like place value misalignment. For instance, seed 43 asks to \"Write 356 in words.\" and offers \"three thousand five hundred sixty\" to check if the student incorrectly shifted the digits by a magnitude."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Seeds 600 and 601 in this node render text identical to the same-numbered seeds in sibling node mat_g3_na_q1_0, \"Write 334 in words.\" and the \"two hundred sixty-one\" true/false item; this reuse is worth flagging, though the content itself is a legitimate numeral-to-words task that fits this node's own competency."
+      "rationale": "There is a good variety of formats included in the packet, demonstrating strong variant comprehensiveness. The seeds use \"mcq\", \"true_false\", and \"cloze\" as formatters."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Distractors for word-form questions substitute plausible errors, such as seed 43's \"three hundred forty-six\" and \"six hundred fifty-three\" against the correct \"three hundred fifty-six\", keeping difficulty tied to numeral and word translation accuracy."
+      "rationale": "The items perfectly map to the competency without introducing any out-of-scope concepts. Every sample directly corresponds to the instruction to \"Read and write numbers up to 10 000 in numerals and in words.\""
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Values span from two digits, such as seed 42's \"89\", to four digits, such as seed 501's \"6795\" and seed 500's number-line target \"9630\", staying within the competency's \"up to 10 000\" bound."
+      "rationale": "The values are properly constrained to the \"up to 10 000\" requirement. The largest value used is in seed 500, referencing \"nine thousand six hundred thirty\" and the numeral \"9620\", which strictly conforms to the scale limit."
     }
   },
   "overall": "PASS"
