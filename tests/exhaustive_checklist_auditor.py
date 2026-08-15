@@ -1269,7 +1269,7 @@ def _check_cap_vs_formatter_code(
     """
     import inspect
     import importlib
-    from backend.app.practice_gen.adapter import _FORMATTER_ROUTES
+    from backend.app.practice_gen.adapter import FORMATTER_ROUTES
 
     for dna_name in dnas:
         fmt_caps = FORMATTER_VARIANT_SUPPORT.get(dna_name, {})
@@ -1280,7 +1280,7 @@ def _check_cap_vs_formatter_code(
             if not caps:
                 continue
 
-            route = _FORMATTER_ROUTES.get(formatter)
+            route = FORMATTER_ROUTES.get(formatter)
             if not route:
                 continue
             module_path = route[0]

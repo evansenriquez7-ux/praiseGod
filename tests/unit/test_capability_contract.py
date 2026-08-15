@@ -74,7 +74,7 @@ def test_unprovided_capability_names_the_node_and_the_clause():
     say so itself rather than leaving it to a reviewer's judgment.
     """
     errs = VC.validate_capability_declarations(["mat_g3_mg_q1_5"])
-    draw = [e for e in errs if "draw_lines" in e]
+    draw = [e for e in errs if "draw_line" in e]
     assert draw, f"expected an unprovided-capability failure for draw_lines, got {errs}"
     assert "mat_g3_mg_q1_5" in draw[0]
     assert "no pipeline artifact provides it" in draw[0]
