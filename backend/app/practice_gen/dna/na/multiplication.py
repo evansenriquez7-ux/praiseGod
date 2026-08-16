@@ -530,6 +530,24 @@ def generate_params(
         "factor_unknown": "b",
     }.get(structure, "result")
 
+    group_form = None
+    plural_name = None
+    if task_type == "equal_groups":
+        _number_plurals = {
+            1: "ones",
+            2: "twos",
+            3: "threes",
+            4: "fours",
+            5: "fives",
+            6: "sixes",
+            7: "sevens",
+            8: "eights",
+            9: "nines",
+            10: "tens",
+        }
+        group_form = rng.choice(["groups_of", "plural_name"])
+        plural_name = _number_plurals.get(a, f"{a}s")
+
     result_dict = {
         "a": a,
         "b": b,
@@ -538,6 +556,8 @@ def generate_params(
         "context": context,
         "structure": structure,
         "task_type": task_type,
+        "group_form": group_form,
+        "plural_name": plural_name,
         # Aliases for the mul_* word-problem spines (spines.py), whose
         # templates use "groups"/"n"/"total" rather than this DNA's own
         # "a"/"b"/"result" -- Spine.render() does a raw str.format() over

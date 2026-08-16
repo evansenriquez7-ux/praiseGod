@@ -376,7 +376,7 @@ def format_array_grid(
             # for the repeated sum itself; a plain product node wants neither.
             if _mul_task_type == "equal_groups":
                 question_text = (
-                    f"Look at the array. It shows {rows} groups of {cols}. "
+                    f"Look at the array. It shows {rows} groups of {cols} ({_repeated_sum(rows, cols)}). "
                     f"How many squares are shaded in all?"
                 )
             elif _mul_task_type == "repeated_addition":
@@ -399,7 +399,7 @@ def format_array_grid(
         if shape_type == "rectangle" and rows and cols:
             if _mul_task_type == "equal_groups":
                 question_text = (
-                    f"Shade {rows} groups of {cols} squares. "
+                    f"Shade {rows} groups of {cols} squares to show {_repeated_sum(rows, cols)}. "
                     f"How many squares did you shade in all?"
                 )
             elif _mul_task_type == "repeated_addition":

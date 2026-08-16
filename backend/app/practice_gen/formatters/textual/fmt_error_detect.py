@@ -142,6 +142,25 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
         if is_estimate:
             real_a, real_b = values.get("real_a", a), values.get("real_b", b)
             return f"{real_a} × {real_b} ≈ {slot('result', 'total', value=r)}"
+        if values.get("task_type") == "equal_groups" and blank_target in ("result", "total"):
+            group_form = values.get("group_form")
+            plural_name = values.get("plural_name")
+            if not plural_name:
+                _plurals = {1: "ones", 2: "twos", 3: "threes", 4: "fours", 5: "fives", 6: "sixes", 7: "sevens", 8: "eights", 9: "nines", 10: "tens"}
+                plural_name = _plurals.get(a, f"{a}s")
+            terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
+            if group_form == "plural_name":
+                return f"Count {b} {plural_name} by repeated addition: {terms} = {slot('result', 'total', value=r)}"
+            unit = "group" if b == 1 else "groups"
+            return f"There are {b} {unit} of {a} ({terms}), so there are {slot('result', 'total', value=r)} in all."
+        if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total"):
+            terms = " + ".join([str(a)] * b)
+            return f"{terms} = {slot('result', 'total', value=r)}"
+        if values.get("task_type") == "skip_counting" and blank_target in ("result", "total"):
+            seq = ", ".join(str(a * i) for i in range(1, b + 1))
+            return f"Counting by {a}s: {seq}, so {a} × {b} = {slot('result', 'total', value=r)}"
+        if values.get("task_type") == "number_line_jumps" and blank_target in ("result", "total"):
+            return f"Starting at 0, taking {b} equal jumps of {a} on the number line lands on {slot('result', 'total', value=r)}"
         return (
             f"{slot('a', 'groups', value=a)} × {slot('b', 'n', value=b)} "
             f"= {slot('result', 'total', value=r)}"

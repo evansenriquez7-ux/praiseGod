@@ -422,6 +422,8 @@ def _parse_competency_bounds(
         # "equal groups" appears only in q3_0's text, so it discriminates.
         if "equal groups" in text:
             bounds["task_type"] = "equal_groups"
+        elif "equal jumps" in text or "counting by multiples" in text or "multiples" in text:
+            bounds["task_type"] = ["repeated_addition", "skip_counting", "number_line_jumps"]
         elif "repeated addition" in text:
             bounds["task_type"] = "repeated_addition"
 

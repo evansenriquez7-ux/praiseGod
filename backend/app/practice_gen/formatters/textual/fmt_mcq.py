@@ -85,25 +85,24 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             # that fix for the full explanation).
             return values["question"]
         if values.get("task_type") == "equal_groups" and blank_target in ("result", "total"):
-            # See base_generator._build_symbolic_question's identical branch.
-            # mat_g2_na_q3_0's competency states the skill in group language
-            # ("create equal groups, using ... '5 groups of 3'"), and this
-            # formatter rebuilds its own pure-context question text
-            # independently of that function, so the same framing has to be
-            # applied here too -- mcq is the majority formatter for this node,
-            # so without this copy the group language never reaches a student.
+            group_form = values.get("group_form")
+            plural_name = values.get("plural_name")
+            if not plural_name:
+                _plurals = {1: "ones", 2: "twos", 3: "threes", 4: "fours", 5: "fives", 6: "sixes", 7: "sevens", 8: "eights", 9: "nines", 10: "tens"}
+                plural_name = _plurals.get(a, f"{a}s")
+            terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
+            if group_form == "plural_name":
+                return f"Count {b} {plural_name} by repeated addition ({terms}): how many in all?"
             unit = "group" if b == 1 else "groups"
-            return f"There are {b} {unit} of {a}. How many in all?"
-        if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total") and 2 <= b <= 5:
-            # See base_generator._build_symbolic_question's identical branch:
-            # "What is 4 x 3?" doesn't illustrate repeated addition, it just
-            # states the fact. This formatter rebuilds its own pure-context
-            # question text independently of that function (a pre-existing
-            # duplication -- see doc_rem.md R2), so the same fix has to be
-            # applied here too or "pure"-context mcq items (the majority
-            # formatter for this node) never show it.
+            return f"There are {b} {unit} of {a} ({terms}). How many in all?"
+        if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total"):
             terms = " + ".join([str(a)] * b)
             return f"{terms} = ___. What is {a} × {b}?"
+        if values.get("task_type") == "skip_counting" and blank_target in ("result", "total"):
+            seq = ", ".join(str(a * i) for i in range(1, b + 1))
+            return f"Count by {a}s: {seq}. What is {a} × {b}?"
+        if values.get("task_type") == "number_line_jumps" and blank_target in ("result", "total"):
+            return f"Starting at 0, take {b} equal jumps of {a} on the number line. What is {a} × {b}?"
         if blank_target in ("result", "total"):
             return f"What is {a} × {b}?"
         elif blank_target in ("b", "n"):

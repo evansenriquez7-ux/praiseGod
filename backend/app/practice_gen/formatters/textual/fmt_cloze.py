@@ -98,18 +98,24 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             real_b = values.get("real_b", b)
             return f"Estimate: {real_a} × {real_b} ≈ ___"
         if values.get("task_type") == "equal_groups" and blank_target in ("result", "total"):
-            # See base_generator._build_symbolic_question and fmt_mcq.py's
-            # copies of this same branch. Cloze fills a blank rather than
-            # asking a question, so the group language is stated and the total
-            # is what the student supplies.
+            group_form = values.get("group_form")
+            plural_name = values.get("plural_name")
+            if not plural_name:
+                _plurals = {1: "ones", 2: "twos", 3: "threes", 4: "fours", 5: "fives", 6: "sixes", 7: "sevens", 8: "eights", 9: "nines", 10: "tens"}
+                plural_name = _plurals.get(a, f"{a}s")
+            terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
+            if group_form == "plural_name":
+                return f"Count {b} {plural_name} ({terms}) = ___"
             unit = "group" if b == 1 else "groups"
-            return f"{b} {unit} of {a} makes ___ in all"
-        if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total") and 2 <= b <= 5:
-            # See base_generator._build_symbolic_question's identical branch
-            # and fmt_mcq.py's copy of this same fix -- this formatter also
-            # rebuilds its own pure-context question text independently.
+            return f"{b} {unit} of {a} ({terms}) makes ___ in all"
+        if values.get("task_type") == "repeated_addition" and blank_target in ("result", "total"):
             terms = " + ".join([str(a)] * b)
             return f"{terms} = ___"
+        if values.get("task_type") == "skip_counting" and blank_target in ("result", "total"):
+            seq = ", ".join(str(a * i) for i in range(1, b + 1))
+            return f"Count by {a}s: {seq}. {a} × {b} = ___"
+        if values.get("task_type") == "number_line_jumps" and blank_target in ("result", "total"):
+            return f"Starting at 0, {b} equal jumps of {a} on the number line lands on ___"
         if blank_target in ("result", "total"):
             return f"{a} × {b} = ___"
         elif blank_target in ("b", "n"):

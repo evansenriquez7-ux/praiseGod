@@ -697,31 +697,24 @@ def _build_symbolic_question(
             real_b = values.get("real_b", b)
             return f"Estimate the product: {real_a} × {real_b}"
         if values.get("task_type") == "equal_groups" and blank in ["total", "result"]:
-            # "Count the number of concrete objects in a group by repeated
-            # addition and create equal groups, using ... '5 groups of 3'"
-            # (mat_g2_na_q3_0). The competency states the skill in group
-            # language, so the item has to ask it that way; "What is 3 x 5?" is
-            # the bare fact its sibling node already covers.
-            #
-            # Deliberately not gated on a small b the way repeated_addition is
-            # below. That gate exists because writing out b terms gets unwieldy,
-            # but group language does not -- "There are 10 groups of 7" reads
-            # fine -- and gating it would drop the largest samples back to the
-            # bare "What is 7 x 10?" form that blind review flagged on this node
-            # ("bare multiplication-fact recall with no ... grouping language
-            # shown at all").
+            group_form = values.get("group_form")
+            plural_name = values.get("plural_name")
+            if not plural_name:
+                _plurals = {1: "ones", 2: "twos", 3: "threes", 4: "fours", 5: "fives", 6: "sixes", 7: "sevens", 8: "eights", 9: "nines", 10: "tens"}
+                plural_name = _plurals.get(a, f"{a}s")
+            terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
+            if group_form == "plural_name":
+                return f"Count {b} {plural_name} by repeated addition ({terms}): how many in all?"
             unit = "group" if b == 1 else "groups"
-            return f"There are {b} {unit} of {a}. How many in all?"
-        if values.get("task_type") == "repeated_addition" and blank in ["total", "result"] and 2 <= b <= 5:
-            # "Illustrate and write multiplication as repeated addition ...
-            # using ... numerals" (mat_g2_na_q3_1) -- "What is 4 x 3?" is a
-            # bare fact, not an illustration of repeated addition. Write out
-            # the actual repeated sum (b terms of a, per generate_hints'
-            # identical breakdown), so the numeral form of the illustration
-            # is the question itself, not just a hint the student may never
-            # open.
+            return f"There are {b} {unit} of {a} ({terms}). How many in all?"
+        if values.get("task_type") == "repeated_addition" and blank in ["total", "result"]:
             terms = " + ".join([str(a)] * b)
             return f"{terms} = ___. What is {a} × {b}?"
+        if values.get("task_type") == "skip_counting" and blank in ["total", "result"]:
+            seq = ", ".join(str(a * i) for i in range(1, b + 1))
+            return f"Count by {a}s: {seq}. What is {a} × {b}?"
+        if values.get("task_type") == "number_line_jumps" and blank in ["total", "result"]:
+            return f"Starting at 0, take {b} equal jumps of {a} on the number line. What is {a} × {b}?"
         if blank in ["total", "result"]:
             return f"What is {groups} × {n}?"
         elif blank in ["b", "n"]:

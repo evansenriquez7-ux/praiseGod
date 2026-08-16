@@ -518,7 +518,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         "structure": ["result_unknown"],
         "number_type": ["single_digit", "multi_digit"],
         "context": ["pure", "word_problem"],
-        "task_type": ["zero_identity", "commutative", "associative", "distributive"],
+        "task_type": ["find_product", "zero_identity", "commutative", "associative", "distributive", "equal_groups", "repeated_addition", "skip_counting", "number_line_jumps"],
     },
 
     "division": {
@@ -849,8 +849,8 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # shown" and "None of the competency's named representations -- arrays,
         # counting by multiples, or equal jumps on a number line -- appear
         # anywhere in the eleven samples."
-        "array_grid_read": {"task_type": ["find_product", "repeated_addition", "equal_groups"], "context": ["pure"]},
-        "array_grid_set": {"task_type": ["find_product", "repeated_addition", "equal_groups"], "context": ["pure"]},
+        "array_grid_read": {"task_type": ["find_product", "repeated_addition", "equal_groups", "skip_counting", "number_line_jumps"], "context": ["pure"]},
+        "array_grid_set": {"task_type": ["find_product", "repeated_addition", "equal_groups", "skip_counting", "number_line_jumps"], "context": ["pure"]},
         # commutative/associative/distributive render a Yes/No claim, not a
         # numeric fact -- same class of bug as addition.py's identical fix:
         # error_detect's "character says <value>, correct?" framing and
@@ -860,12 +860,12 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # zero_identity is a plain a×b=result fact (like find_product), not a
         # yes/no claim -- it belongs on this allow-list, not excluded with
         # commutative/associative/distributive.
-        "error_detect": {"task_type": ["find_product", "estimate", "zero_identity"]},
-        "true_false": {"task_type": ["find_product", "estimate", "zero_identity"]},
+        "error_detect": {"task_type": ["find_product", "estimate", "zero_identity", "equal_groups", "repeated_addition", "skip_counting", "number_line_jumps"]},
+        "true_false": {"task_type": ["find_product", "estimate", "zero_identity", "equal_groups", "repeated_addition", "skip_counting", "number_line_jumps"]},
         # Same "fill-in-the-blank has no blank for a yes/no claim" defect as
         # addition's identical cloze restriction above -- commutative/
         # associative/distributive rendered "___ × {b} = None" on cloze.
-        "cloze": {"task_type": ["find_product", "estimate", "zero_identity"]},
+        "cloze": {"task_type": ["find_product", "estimate", "zero_identity", "equal_groups", "repeated_addition", "skip_counting", "number_line_jumps"]},
     },
 
     "division": {

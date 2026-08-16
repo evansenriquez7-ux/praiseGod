@@ -2542,5 +2542,36 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
 - **Census after:** PASS=78 CONCERN=51 FAIL=22 Total=151 (+5 PASS, -3 FAIL).
 - **Next tick should:** Harden Grade 2 Quarter 3 Multiplication Cluster (`mat_g2_na_q3_0`, `mat_g2_na_q3_1`).
 
+## Tick C Unit: Grade 2 Quarter 3 Multiplication Cluster Hardening (`mat_g2_na_q3_0`, `mat_g2_na_q3_1`)
+- **Timestamp:** 2026-08-16T09:18:00+08:00
+- **Scope / Target Nodes:**
+  - `mat_g2_na_q3_0` (G2 Q3 Equal Groups & Repeated Addition Language): Count the number of concrete objects in a group by repeated addition and create equal groups, using language such as '5 groups of 3' and '5 threes'.
+  - `mat_g2_na_q3_1` (G2 Q3 Multiplication Representations): Illustrate and write multiplication as repeated addition, using a variety of concrete and pictorial models and numerals, and using groups of equal quantities, arrays, counting by multiples, and equal jumps on a number line.
+- **Root Cause & Diagnosis:**
+  1. `mat_g2_na_q3_0` was missing the plural number-word form (`"5 threes"`, `"2 twos"`, `"2 sixes"`) required by the competency clause `"using language such as '5 groups of 3' and '5 threes'"`, and lacked explicit repeated addition expressions alongside the equal grouping representations.
+  2. `mat_g2_na_q3_1` lacked representation branches for "counting by multiples" (skip-counting) and "equal jumps on a number line", and fell back to bare facts at higher table levels.
+  3. Formatter compatibility restrictions in `compatibility.py` excluded `equal_groups`, `repeated_addition`, `skip_counting`, and `number_line_jumps` from textual formatters (`cloze`, `true_false`, `error_detect`) and array formatters (`array_grid_read`, `array_grid_set`).
+- **Files Modified:**
+  - `backend/app/practice_gen/compatibility.py`
+  - `backend/app/practice_gen/dna/na/multiplication.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_cloze.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_error_detect.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_mcq.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_true_false.py`
+  - `backend/app/practice_gen/formatters/visual/fmt_array_grid.py`
+  - `backend/app/practice_gen/generators/base_generator.py`
+  - `backend/app/practice_gen/registry.py`
+  - `validation_reports/judgment/mat_g2_na_q3/mat_g2_na_q3_0.json` (PASS)
+  - `validation_reports/judgment/mat_g2_na_q3/mat_g2_na_q3_1.json` (PASS)
+- **Verification:**
+  - Matrix validation (`vm.run_matrix_for_node` on 8 multiplication nodes): 8/8 nodes passed with 0 failures across all matrix checks.
+  - Blind Pro Reviews: Both nodes achieved 100% clean PASS verdicts across all 6 findings with verified quote provenance.
+  - Judgment review verification across the cluster: 0 stale reviews, 0 quote provenance errors.
+  - Census movement across the unit:
+    - `mat_g2_na_q3_0`: CONCERN → **PASS** (+1)
+    - `mat_g2_na_q3_1`: FAIL → **PASS** (+1)
+- **Census after:** PASS=80 CONCERN=50 FAIL=21 Total=151 (+2 PASS, -1 CONCERN, -1 FAIL).
+- **Next tick should:** Harden Grade 3 Quarter 3 Multiplication Cluster (`mat_g3_na_q3_1`, `mat_g3_na_q3_2`, `mat_g3_na_q3_4`).
+
 
 

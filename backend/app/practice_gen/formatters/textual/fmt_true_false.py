@@ -147,6 +147,25 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 real_a = values.get("real_a", a)
                 real_b = values.get("real_b", b)
                 statement = f"{real_a} × {real_b} ≈ {fill_value}"
+            elif values.get("task_type") == "equal_groups" and blank_target in ("result", "total"):
+                group_form = values.get("group_form")
+                plural_name = values.get("plural_name")
+                if not plural_name:
+                    _plurals = {1: "ones", 2: "twos", 3: "threes", 4: "fours", 5: "fives", 6: "sixes", 7: "sevens", 8: "eights", 9: "nines", 10: "tens"}
+                    plural_name = _plurals.get(a, f"{a}s")
+                terms = " + ".join([str(a)] * b) if b <= 5 else f"{a} added {b} times"
+                if group_form == "plural_name":
+                    statement = f"Count {b} {plural_name} by repeated addition: {terms} = {fill_value}."
+                else:
+                    unit = "group" if b == 1 else "groups"
+                    statement = f"There are {b} {unit} of {a}. By repeated addition, {terms} = {fill_value}."
+            elif values.get("task_type") == "repeated_addition" and blank_target in ("result", "total"):
+                terms = " + ".join([str(a)] * b)
+                statement = f"{terms} = {fill_value}"
+            elif values.get("task_type") == "skip_counting" and blank_target in ("result", "total"):
+                statement = f"Counting by {a}s to {a * b} gives {a} × {b} = {fill_value}."
+            elif values.get("task_type") == "number_line_jumps" and blank_target in ("result", "total"):
+                statement = f"Starting at 0, taking {b} equal jumps of {a} on the number line lands on {fill_value}."
             elif blank_target in ("result", "total"):
                 statement = f"{a} × {b} = {fill_value}"
             else:

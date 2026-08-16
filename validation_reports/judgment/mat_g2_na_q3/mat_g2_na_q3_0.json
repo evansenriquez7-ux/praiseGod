@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g2_na_q3_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch C6 (post-fix re-review, g2 repeated addition pair), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2 (na multiplication hardening), 2026-08-16",
+  "review_date": "2026-08-16",
   "blind": true,
   "sample_seeds": [
     42,
@@ -10,21 +10,24 @@
     45,
     46,
     50,
+    51,
     55,
+    85,
     500,
     501,
     502,
+    600,
     601,
     603,
+    604,
     605,
-    606,
-    607
+    606
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "There are 4 groups of 3. How many in all?",
+      "question_text": "There are 4 groups of 3 (3 + 3 + 3 + 3). How many in all?",
       "correct_answer": 12,
       "options": [
         {
@@ -52,7 +55,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "There are 2 groups of 2. How many in all?",
+      "question_text": "Count 2 twos by repeated addition (2 + 2): how many in all?",
       "correct_answer": 4,
       "options": [
         {
@@ -79,56 +82,64 @@
     },
     {
       "seed": 44,
-      "formatter": "mcq",
-      "question_text": "There are 3 groups of 2. How many in all?",
+      "formatter": "cloze",
+      "question_text": "3 groups of 2 (2 + 2 + 2) makes ___ in all",
       "correct_answer": 6,
       "options": [
         {
           "key": "A",
           "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 9,
+          "text": "9",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 6,
+          "text": "6",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "There are 2 groups of 6. How many in all?",
+      "formatter": "cloze",
+      "question_text": "Count 2 sixes (6 + 6) = ___",
       "correct_answer": 12,
       "options": [
         {
           "key": "A",
           "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 12,
+          "text": "12",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 4,
+          "text": "4",
           "is_correct": false
         }
       ]
@@ -136,7 +147,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "There are 2 groups of 3. How many in all?",
+      "question_text": "Count 2 threes by repeated addition (3 + 3): how many in all?",
       "correct_answer": 6,
       "options": [
         {
@@ -164,7 +175,7 @@
     {
       "seed": 50,
       "formatter": "read_mcq",
-      "question_text": "Look at the array. It shows 3 groups of 3. How many squares are shaded in all?",
+      "question_text": "Look at the array. It shows 3 groups of 3 (3 + 3 + 3). How many squares are shaded in all?",
       "correct_answer": "A",
       "options": [
         {
@@ -190,49 +201,42 @@
       ]
     },
     {
+      "seed": 51,
+      "formatter": "error_detect",
+      "question_text": "Ana says: There are 2 groups of 5 (5 + 5), so there are 3 in all.. Is Ana correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 10
+      }
+    },
+    {
       "seed": 55,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade 3 groups of 2 squares. How many squares did you shade in all?",
+      "question_text": "Shade 3 groups of 2 squares to show 2 + 2 + 2. How many squares did you shade in all?",
       "correct_answer": 6
+    },
+    {
+      "seed": 85,
+      "formatter": "true_false",
+      "question_text": "There are 2 groups of 5. By repeated addition, 5 + 5 = 10. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade 7 groups of 10 squares. How many squares did you shade in all?",
+      "question_text": "Shade 7 groups of 10 squares to show 10 added 7 times. How many squares did you shade in all?",
       "correct_answer": 70
     },
     {
       "seed": 501,
-      "formatter": "mcq",
-      "question_text": "There are 10 groups of 10. How many in all?",
-      "correct_answer": 100,
-      "options": [
-        {
-          "key": "A",
-          "value": 100,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 90,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 0,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "Count 10 tens by repeated addition: 10 added 10 times = 100. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "There are 10 groups of 8. How many in all?",
+      "question_text": "Count 10 eights by repeated addition (8 added 10 times): how many in all?",
       "correct_answer": 80,
       "options": [
         {
@@ -258,71 +262,157 @@
       ]
     },
     {
-      "seed": 601,
+      "seed": 600,
       "formatter": "mcq",
-      "question_text": "Pia puts 2 leashes in each of 5 bags. How many leashes are in all the bags?",
+      "question_text": "Count 2 sixes by repeated addition (6 + 6): how many in all?",
+      "correct_answer": 12,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Moses puts 2 baskets in each of 5 bags. How many baskets are in all the bags?",
       "correct_answer": 10,
       "options": [
         {
           "key": "A",
           "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 7,
+          "text": "7",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 10,
+          "text": "10",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "mcq",
-      "question_text": "There are 2 groups of 4. How many in all?",
+      "formatter": "cloze",
+      "question_text": "Count 2 fours (4 + 4) = ___",
       "correct_answer": 8,
       "options": [
         {
           "key": "A",
           "value": 7,
+          "text": "7",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 8,
+          "text": "8",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 2,
+          "text": "2",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "There are 2 groups of 3 (3 + 3). How many in all?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 1,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 605,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 4 groups of 2 squares. How many squares did you shade in all?",
-      "correct_answer": 8
+      "formatter": "read_mcq",
+      "question_text": "Look at the array. It shows 4 groups of 2 (2 + 2 + 2 + 2). How many squares are shaded in all?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 606,
       "formatter": "mcq",
-      "question_text": "There are 5 groups of 2. How many in all?",
+      "question_text": "There are 5 groups of 2 (2 + 2 + 2 + 2 + 2). How many in all?",
       "correct_answer": 10,
       "options": [
         {
@@ -346,39 +436,33 @@
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 607,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 2 groups of 5 squares. How many squares did you shade in all?",
-      "correct_answer": 10
     }
   ],
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Fourteen of fifteen samples use the \"groups of\" phrasing that mirrors the competency's own example \"5 groups of 3\" (e.g. seed 42's \"There are 4 groups of 3. How many in all?\"), and the \"create equal groups\" verb is directly enacted by the four set_fill_in_blank items asking the student to build the groups, such as seed 605's \"Shade 4 groups of 2 squares.\""
+      "rationale": "The samples fulfill the competency by using language such as \"4 groups of 3\" and \"2 twos\", which directly matches the requirement to use \"language such as '5 groups of 3' and '5 threes'\"."
     },
     "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The competency names two language forms, \"5 groups of 3\" and \"5 threes\"; the \"groups of\" form appears in 14 of the 15 samples, such as seed 42's \"There are 4 groups of 3\", but the plural number-word form \"5 threes\" never appears anywhere in any sample, so one of the two explicitly named phrasings is entirely unrepresented."
+      "verdict": "PASS",
+      "rationale": "The generated questions comprehensively cover the skills requested, explicitly showing repeated addition as seen in \"(3 + 3 + 3 + 3)\" and addressing the creation of groups with tasks like \"Shade 3 groups of 2 squares\"."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Group counts and sizes stay within single digits familiar to grade 2 quarter 3, ranging from seed 43's \"2 groups of 2\" up to seed 501's \"10 groups of 10\", with plain sentence structure throughout."
+      "rationale": "The cognitive load is appropriate for Grade 2 students who must \"Count the number of concrete objects in a group by repeated addition\", utilizing accessible structures like \"10 tens\" and \"2 sixes\"."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Nine of the ten mcq samples reuse the same sentence frame with only the numbers changed, as in seed 44's \"There are 3 groups of 2. How many in all?\" and seed 606's \"There are 5 groups of 2. How many in all?\", and only seed 601's \"Pia puts 2 leashes in each of 5 bags\" supplies a real-world context, leaving contextual variety thin."
+      "verdict": "PASS",
+      "rationale": "The samples offer a robust variety of formats, testing the concept through word problems such as \"Moses puts 2 baskets in each of 5 bags.\" alongside visual references like \"Look at the array.\""
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty is varied purely by the number and size of groups, from seed 43's \"2 groups of 2\" to seed 501's \"10 groups of 10\", which is exactly the counting-by-groups axis the competency targets."
+      "rationale": "The questions are strictly aligned to the MATATAG curriculum text, explicitly linking equal grouping to counting by \"repeated addition\" in items like \"Count 2 threes by repeated addition (3 + 3): how many in all?\"."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The highest total reached is seed 501's \"10 groups of 10\" totaling 100, a ceiling consistent with grade 2's within-100 number range, with no sample exceeding it."
+      "rationale": "The generated numbers scale appropriately for the target level, applying the math to reasonable sets such as \"2 sixes\" and clear mathematical statements like \"10 added 10 times = 100\"."
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

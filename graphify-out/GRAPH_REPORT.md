@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-08-16)
 
 ## Corpus Check
-- 449 files · ~675,671 words
+- 449 files · ~676,333 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a7d12111`
+- Built from commit: `e41cd1b5`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -717,7 +717,7 @@ Nodes (3): build_scaffold_sequence(), Any, Build an ordered list of difficulty p
 
 ### Community 103 - "Community 103"
 Cohesion: 0.13
-Nodes (15): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — Object-to-unit pairing: the numbers were right, the things were wrong, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated, A leak the first attempt left, caught by measuring rather than assuming, Final Definition of Done, Phase F — full `run_all` verification and three more regressions it caught — 2026-08-02 (+7 more)
+Nodes (15): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated, A false alarm of my own, corrected, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item (+7 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.12
@@ -1049,7 +1049,7 @@ Nodes (12): 2026-07-26 audit — the harness was green while not looking, 2026-0
 
 ### Community 211 - "CompetencyConfiguration"
 Cohesion: 0.40
-Nodes (5): 2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared, A false alarm of my own, corrected, Defect 1 — the DNA emitted triangles that cannot exist, Defect 2 — a silent default made two of three named shapes unreachable, Left deliberately, with the reasoning, for the next tick
+Nodes (5): generate_hints(), generate_params(), Any, DNA: Geometric Lines (Measurement & Geometry)  Covers MATATAG grade 2-3 lines/su, Sample one item from the static pool filtered by grade and difficulty profile.
 
 ### Community 212 - "test_semantic_leak_guards.py"
 Cohesion: 0.33
@@ -1237,7 +1237,7 @@ Nodes (17): ErrorPattern, A pedagogically meaningful wrong answer.      formula:
 
 ### Community 264 - "2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units"
 Cohesion: 0.40
-Nodes (5): generate_hints(), generate_params(), Any, DNA: Time Reading (Measurement & Geometry)  Covers MATATAG grades 1–2 time-telli, Returns visual_params for the ClockSet formatter:       {"hour": int, "minute":
+Nodes (5): 2026-08-13 — Object-to-unit pairing: the numbers were right, the things were wrong, A leak the first attempt left, caught by measuring rather than assuming, The failing rationale, Two causes, one in each DNA, Verification
 
 ### Community 266 - "find_node_id"
 Cohesion: 0.40
@@ -1251,9 +1251,9 @@ Nodes (5): generate_hints(), generate_params(), Any, DNA: Symmetry and Slides (M
 Cohesion: 0.50
 Nodes (4): 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, Three defects, all in the `estimate` branch, Verification, Why this cluster
 
-### Community 271 - "2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key"
+### Community 269 - "2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key"
 Cohesion: 0.50
-Nodes (4): 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item, Defect 2 — object and unit drawn independently
+Nodes (4): 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, The failing rationale, Verification, Why binding alone was not enough — and what had to be built
 
 ### Community 273 - "test_regrouping_feasibility.py"
 Cohesion: 0.23
@@ -1279,7 +1279,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Why does `QuestionContext` connect `Community 50` to `Community 4`, `Community 13`, `Community 18`, `Community 153`, `Community 51`, `Community 59`, `Community 60`, `get_gemini_models`, `test_answer_leak_and_reach.py`, `Community 70`, `Community 77`, `Community 79`, `test_semantic_leak_guards.py`, `Community 92`, `Community 93`, `Community 94`, `fmt_numeric_input.py`, `Community 95`, `get_all_node_ids`, `models.py`, `Community 100`, `CompetencyConfiguration`, `fmt_pictograph.py`, `fmt_bar_chart.py`, `fmt_ruler_measure.py`?**
   _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **Why does `DNA` connect `validate_interest.py` to `fmt_fill_in_table.py`, `generate_params`, `Community 4`, `Community 3`, `rebuild_knowledge_graph.py`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`, `2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units`, `Community 138`, `find_node_id`, `symmetry_slides.py`, `Community 14`, `counting.py`, `Community 24`, `Community 41`, `mastery_drill.py`, `generator.py`, `validate_capability.py`, `counting.py`, `Community 75`, `Community 87`, `Native SQL Examples`, `models.py`, `get_all_node_ids`, `Community 101`, `Community 102`, `TestLogScaleDeclarations`, `Community 118`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`?**
+- **Why does `DNA` connect `validate_interest.py` to `fmt_fill_in_table.py`, `generate_params`, `Community 4`, `Community 3`, `rebuild_knowledge_graph.py`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`, `Community 138`, `find_node_id`, `symmetry_slides.py`, `Community 14`, `counting.py`, `Community 24`, `Community 41`, `mastery_drill.py`, `generator.py`, `validate_capability.py`, `counting.py`, `Community 75`, `CompetencyConfiguration`, `Community 87`, `Native SQL Examples`, `models.py`, `get_all_node_ids`, `Community 101`, `Community 102`, `TestLogScaleDeclarations`, `Community 118`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **What connects `graphify`, `PackageDescription`, `Foundation` to the rest of the system?**
   _1673 weakly-connected nodes found - possible documentation gaps or missing edges._
