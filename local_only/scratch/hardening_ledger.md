@@ -2497,6 +2497,50 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
     - `mat_g1_na_q2_4`: FAIL → **PASS** (+1)
     - `mat_g1_na_q2_5`: CONCERN → **PASS** (+1)
 - **Census after:** PASS=73 CONCERN=54 FAIL=24 Total=151 (+3 PASS, -1 FAIL).
-- **Next tick should:** Harden the next non-PASS cluster (e.g. `mat_g1_na_q2_6` 2-digit addition with regrouping, or `mat_g1_na_q1_3..4` comparing/ordering numbers).
+- **Next tick should:** Harden Grade 1 Subtraction Cluster (`mat_g1_na_q2_6`, `mat_g1_na_q3_0`, `mat_g1_na_q3_3`, `mat_g1_na_q3_4`, `mat_g1_na_q3_5`).
+
+## Tick C Unit: Grade 1 Subtraction & Word Problems Cluster Hardening (`mat_g1_na_q2_6`, `mat_g1_na_q3_0`, `mat_g1_na_q3_3`, `mat_g1_na_q3_4`, `mat_g1_na_q3_5`)
+- **Timestamp:** 2026-08-16T09:10:00+08:00
+- **Scope / Target Nodes:**
+  - `mat_g1_na_q2_6` (G1 Q2 Addition Problems): Solve problems (given orally or in pictures) involving addition with sums up to 100 without regrouping.
+  - `mat_g1_na_q3_0` (G1 Q3 Subtraction Models): Illustrate subtraction involving numbers up to 20 using a variety of concrete and pictorial models, and describes subtraction as 'taking away'.
+  - `mat_g1_na_q3_3` (G1 Q3 Subtraction Problems): Solve subtraction problems (given orally or in pictures) where both numbers are less than 20.
+  - `mat_g1_na_q3_4` (G1 Q3 2-digit Subtraction): Subtract numbers where both numbers are less than 100 using concrete and pictorial models, without regrouping: 2-digit minus 1-digit numbers, and 2-digit minus 2-digit numbers.
+  - `mat_g1_na_q3_5` (G1 Q3 Expanded Form Subtraction): Subtract numbers by expressing minuends and subtrahends as tens and ones (expanded form) without regrouping.
+- **Root Cause & Diagnosis:**
+  1. `mat_g1_na_q3_0` and `mat_g1_na_q3_4` were missing explicit curriculum task type bindings for "taking away" and "counting back", generating plain arithmetic instead of concrete/pictorial illustrations.
+  2. `mat_g1_na_q3_5` (expanded form subtraction) had `fmt_number_bond.py` defaulting to addition phrasing ("is made of") and `fmt_cloze.py` / `fmt_true_false.py` missing decomposed minuend/subtrahend subtraction templates.
+  3. `fmt_emoji_pictorial.py` had a short-circuit on context_variant == "pure" that skipped emoji counters on pure subtraction models.
+  4. `compatibility.py` mis-routed `expanded_form` subtraction to part-part-whole number bond diagrams.
+  5. `mat_g1_na_q2_6` had discrete variant coverage leaking symbolic commutativity questions into an oral/pictorial word problems node. Bound `task_type` in `registry.py` to contextual addition types (`putting_together`, `counting_up`).
+- **Files Modified:**
+  - `backend/app/practice_gen/compatibility.py`
+  - `backend/app/practice_gen/dna/na/subtraction.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_cloze.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_error_detect.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_mcq.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_true_false.py`
+  - `backend/app/practice_gen/formatters/visual/fmt_emoji_pictorial.py`
+  - `backend/app/practice_gen/formatters/visual/fmt_number_bond.py`
+  - `backend/app/practice_gen/generators/base_generator.py`
+  - `backend/app/practice_gen/registry.py`
+  - `validation_reports/judgment/mat_g1_na_q2/mat_g1_na_q2_6.json` (PASS)
+  - `validation_reports/judgment/mat_g1_na_q3/mat_g1_na_q3_0.json` (PASS)
+  - `validation_reports/judgment/mat_g1_na_q3/mat_g1_na_q3_3.json` (PASS)
+  - `validation_reports/judgment/mat_g1_na_q3/mat_g1_na_q3_4.json` (PASS)
+  - `validation_reports/judgment/mat_g1_na_q3/mat_g1_na_q3_5.json` (PASS)
+- **Verification:**
+  - Scoped matrix validation (`vm.run_matrix_for_node` on 5 cluster nodes): 5/5 nodes passed, 0 failures.
+  - Blind Pro Reviews: 5/5 nodes achieved 100% clean PASS verdicts with exact contiguous quote provenance.
+  - Judgment review verification across cluster: 0 stale, 0 provenance errors.
+  - Census movement across the unit:
+    - `mat_g1_na_q2_6`: CONCERN → **PASS** (+1)
+    - `mat_g1_na_q3_0`: FAIL → **PASS** (+1)
+    - `mat_g1_na_q3_3`: FAIL → **PASS** (+1)
+    - `mat_g1_na_q3_4`: FAIL → **PASS** (+1)
+    - `mat_g1_na_q3_5`: CONCERN → **PASS** (+1)
+- **Census after:** PASS=78 CONCERN=51 FAIL=22 Total=151 (+5 PASS, -3 FAIL).
+- **Next tick should:** Harden Grade 2 Quarter 3 Multiplication Cluster (`mat_g2_na_q3_0`, `mat_g2_na_q3_1`).
+
 
 

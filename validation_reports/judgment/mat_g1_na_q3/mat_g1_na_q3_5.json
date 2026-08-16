@@ -1,9 +1,26 @@
 {
   "node_id": "mat_g1_na_q3_5",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B3 remediation (re-review of voided nodes), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition & subtraction hardening), 2026-08-16",
+  "review_date": "2026-08-16",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 55, 85, 500, 501, 502, 600, 601, 602, 603, 604, 605],
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
   "samples_reviewed": [
     {
       "seed": 42,
@@ -11,10 +28,26 @@
       "question_text": "75 is 7 tens and 5 ones. 12 is 1 ten and 2 ones. Subtract the place values, then find what's left: what is 75 − 12?",
       "correct_answer": 63,
       "options": [
-        {"key": "A", "value": 87, "is_correct": false},
-        {"key": "B", "value": 64, "is_correct": false},
-        {"key": "C", "value": 63, "is_correct": true},
-        {"key": "D", "value": 62, "is_correct": false}
+        {
+          "key": "A",
+          "value": 87,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 64,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 63,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 62,
+          "is_correct": false
+        }
       ]
     },
     {
@@ -23,10 +56,26 @@
       "question_text": "13 is 1 ten and 3 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: what is 13 − 10?",
       "correct_answer": 3,
       "options": [
-        {"key": "A", "value": 3, "is_correct": true},
-        {"key": "B", "value": 2, "is_correct": false},
-        {"key": "C", "value": 4, "is_correct": false},
-        {"key": "D", "value": 23, "is_correct": false}
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 23,
+          "is_correct": false
+        }
       ]
     },
     {
@@ -35,22 +84,58 @@
       "question_text": "45 is 4 tens and 5 ones. 40 is 4 tens and 0 ones. Subtract the place values, then find what's left: 45 − 40 = ___",
       "correct_answer": 5,
       "options": [
-        {"key": "A", "value": 4, "text": "4", "is_correct": false},
-        {"key": "B", "value": 85, "text": "85", "is_correct": false},
-        {"key": "C", "value": 6, "text": "6", "is_correct": false},
-        {"key": "D", "value": 5, "text": "5", "is_correct": true}
+        {
+          "key": "A",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 85,
+          "text": "85",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": true
+        }
       ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "35 is 3 tens and 5 ones. 30 is 3 tens and 0 ones. Subtract the place values, then find what's left: 35 − 30 = ___",
+      "formatter": "mcq",
+      "question_text": "35 is 3 tens and 5 ones. 30 is 3 tens and 0 ones. Subtract the place values, then find what's left: what is 35 − 30?",
       "correct_answer": 5,
       "options": [
-        {"key": "A", "value": 6, "text": "6", "is_correct": false},
-        {"key": "B", "value": 65, "text": "65", "is_correct": false},
-        {"key": "C", "value": 5, "text": "5", "is_correct": true},
-        {"key": "D", "value": 4, "text": "4", "is_correct": false}
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 65,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": false
+        }
       ]
     },
     {
@@ -59,59 +144,83 @@
       "question_text": "15 is 1 ten and 5 ones. 11 is 1 ten and 1 one. Subtract the place values, then find what's left: what is 15 − 11?",
       "correct_answer": 4,
       "options": [
-        {"key": "A", "value": 5, "is_correct": false},
-        {"key": "B", "value": 4, "is_correct": true},
-        {"key": "C", "value": 3, "is_correct": false},
-        {"key": "D", "value": 26, "is_correct": false}
+        {
+          "key": "A",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 26,
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 50,
-      "formatter": "read_fill_in_blank",
-      "question_text": "60 is 6 tens and 0 ones. 20 is 2 tens and 0 ones. Subtract the place values, then find what's left: The total is 60 and one part is 20. What is the other part?",
-      "correct_answer": 40
-    },
-    {
-      "seed": 51,
-      "formatter": "error_detect",
-      "question_text": "Ana says: 33 is 3 tens and 3 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: 33 − 10 = 43. Is Ana correct?",
-      "correct_answer": {"has_error": true, "correct_value": 23}
+      "formatter": "true_false",
+      "question_text": "60 is 6 tens and 0 ones. 20 is 2 tens and 0 ones. Subtract the place values, then find what's left: 60 − 20 = 41. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "How many items are left?",
-      "correct_answer": "D",
-      "options": [
-        {"key": "A", "value": 15, "is_correct": false},
-        {"key": "B", "value": 0, "is_correct": false},
-        {"key": "C", "value": 17, "is_correct": false},
-        {"key": "D", "value": 16, "is_correct": true}
-      ]
-    },
-    {
-      "seed": 85,
-      "formatter": "true_false",
-      "question_text": "26 is 2 tens and 6 ones. 0 is 0 ones. Subtract the place values, then find what's left: 26 − 0 = 26. True or False?",
-      "correct_answer": true
+      "formatter": "error_detect",
+      "question_text": "Grace says: 16 is 1 ten and 6 ones. 0 is 0 ones. Subtract the place values, then find what's left: 16 − 0 = 15. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 16
+      }
     },
     {
       "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "How many items are left?",
-      "correct_answer": "C",
-      "options": [
-        {"key": "A", "value": 43, "is_correct": false},
-        {"key": "B", "value": 152, "is_correct": false},
-        {"key": "C", "value": 44, "is_correct": true},
-        {"key": "D", "value": 98, "is_correct": false}
-      ]
+      "formatter": "error_detect",
+      "question_text": "Rico says: 98 is 9 tens and 8 ones. 54 is 5 tens and 4 ones. Subtract the place values, then find what's left: 98 − 54 = 44. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 44
+      }
     },
     {
       "seed": 501,
-      "formatter": "true_false",
-      "question_text": "94 is 9 tens and 4 ones. 72 is 7 tens and 2 ones. Subtract the place values, then find what's left: 94 − 72 = 22. True or False?",
-      "correct_answer": true
+      "formatter": "cloze",
+      "question_text": "94 is 9 tens and 4 ones. 72 is 7 tens and 2 ones. Subtract the place values, then find what's left: 94 − 72 = ___",
+      "correct_answer": 22,
+      "options": [
+        {
+          "key": "A",
+          "value": 22,
+          "text": "22",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 23,
+          "text": "23",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 166,
+          "text": "166",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 502,
@@ -119,10 +228,26 @@
       "question_text": "88 is 8 tens and 8 ones. 58 is 5 tens and 8 ones. Subtract the place values, then find what's left: what is 88 − 58?",
       "correct_answer": 30,
       "options": [
-        {"key": "A", "value": 146, "is_correct": false},
-        {"key": "B", "value": 30, "is_correct": true},
-        {"key": "C", "value": 31, "is_correct": false},
-        {"key": "D", "value": 29, "is_correct": false}
+        {
+          "key": "A",
+          "value": 146,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 31,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 29,
+          "is_correct": false
+        }
       ]
     },
     {
@@ -131,17 +256,59 @@
       "question_text": "35 is 3 tens and 5 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: what is 35 − 10?",
       "correct_answer": 25,
       "options": [
-        {"key": "A", "value": 45, "is_correct": false},
-        {"key": "B", "value": 24, "is_correct": false},
-        {"key": "C", "value": 25, "is_correct": true},
-        {"key": "D", "value": 26, "is_correct": false}
+        {
+          "key": "A",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 25,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 26,
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 601,
-      "formatter": "true_false",
-      "question_text": "25 is 2 tens and 5 ones. 15 is 1 ten and 5 ones. Subtract the place values, then find what's left: 25 − 15 = 10. True or False?",
-      "correct_answer": true
+      "formatter": "cloze",
+      "question_text": "25 is 2 tens and 5 ones. 15 is 1 ten and 5 ones. Subtract the place values, then find what's left: 25 − 15 = ___",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "text": "40",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 602,
@@ -149,10 +316,26 @@
       "question_text": "45 is 4 tens and 5 ones. 20 is 2 tens and 0 ones. Subtract the place values, then find what's left: what is 45 − 20?",
       "correct_answer": 25,
       "options": [
-        {"key": "A", "value": 25, "is_correct": true},
-        {"key": "B", "value": 26, "is_correct": false},
-        {"key": "C", "value": 65, "is_correct": false},
-        {"key": "D", "value": 24, "is_correct": false}
+        {
+          "key": "A",
+          "value": 25,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 26,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 65,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 24,
+          "is_correct": false
+        }
       ]
     },
     {
@@ -161,10 +344,30 @@
       "question_text": "24 is 2 tens and 4 ones. 0 is 0 ones. Subtract the place values, then find what's left: 24 − 0 = ___",
       "correct_answer": 24,
       "options": [
-        {"key": "A", "value": 26, "text": "26", "is_correct": false},
-        {"key": "B", "value": 24, "text": "24", "is_correct": true},
-        {"key": "C", "value": 23, "text": "23", "is_correct": false},
-        {"key": "D", "value": 25, "text": "25", "is_correct": false}
+        {
+          "key": "A",
+          "value": 26,
+          "text": "26",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 24,
+          "text": "24",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 23,
+          "text": "23",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 25,
+          "text": "25",
+          "is_correct": false
+        }
       ]
     },
     {
@@ -173,44 +376,63 @@
       "question_text": "15 is 1 ten and 5 ones. 4 is 4 ones. Subtract the place values, then find what's left: what is 15 − 4?",
       "correct_answer": 11,
       "options": [
-        {"key": "A", "value": 11, "is_correct": true},
-        {"key": "B", "value": 10, "is_correct": false},
-        {"key": "C", "value": 19, "is_correct": false},
-        {"key": "D", "value": 12, "is_correct": false}
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 605,
-      "formatter": "read_fill_in_blank",
-      "question_text": "24 is 2 tens and 4 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: The total is 24 and one part is 10. What is the other part?",
-      "correct_answer": 14
+      "formatter": "error_detect",
+      "question_text": "Liza says: 24 is 2 tens and 4 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: 24 − 10 = 14. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 14
+      }
     }
   ],
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Sixteen of eighteen samples state the requirement directly, e.g. '75 is 7 tens and 5 ones. 12 is 1 ten and 2 ones.', but the two read_mcq items reduce the stem to the bare 'How many items are left?' with no minuend or subtrahend expressed as tens and ones in the text."
+      "verdict": "PASS",
+      "rationale": "The samples fulfill the requirement to \"Subtract numbers by expressing minuends and subtrahends as tens and ones\" by explicitly breaking down the numbers, such as \"75 is 7 tens and 5 ones. 12 is 1 ten and 2 ones.\""
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The packet covers subtracting a bare ones-value subtrahend, '15 is 1 ten and 5 ones. 4 is 4 ones.', subtracting an even decade, '13 is 1 ten and 3 ones. 10 is 1 ten and 0 ones.', and subtracting zero, '26 is 2 tens and 6 ones. 0 is 0 ones.', so the sub-cases implied by 'minuends and subtrahends as tens and ones' are not limited to the easiest pairing."
+      "rationale": "The generated problems provide broad coverage of subtraction scenarios \"without regrouping.\" including two-digit minus two-digit numbers like \"94 is 9 tens and 4 ones. 72 is 7 tens and 2 ones.\" and two-digit minus one-digit scenarios like \"15 is 1 ten and 5 ones. 4 is 4 ones.\""
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Every direct-computation stem walks the student through the reasoning in two short sentences before asking the question, e.g. '45 is 4 tens and 5 ones. 40 is 4 tens and 0 ones. Subtract the place values, then find what's left: 45 − 40 = ___', matching a grade 1 quarter 3 first pass at expanded-form subtraction."
+      "rationale": "The questions are appropriate for Grade 1 students. By breaking down the operations into steps with prompts like \"Subtract the place values, then find what's left\", the cognitive load is reduced to match the level of early learners."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The eighteen samples span direct computation (formatter mcq), a fill-in blank (formatter cloze), part-part-whole phrasing ('The total is 60 and one part is 20. What is the other part?'), and error-checking framing ('Ana says: 33 is 3 tens and 3 ones.' before asking 'Is Ana correct?'), well beyond a single task type."
+      "rationale": "The samples show a healthy mix of question formats. Along with direct calculations, it includes error detection variants like \"Is Grace correct?\" and true or false questions like \"60 − 20 = 41. True or False?\""
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "In every cited pair the ones digit of the minuend is at least the ones digit of the subtrahend, for instance '88 is 8 tens and 8 ones. 58 is 5 tens and 8 ones.', so difficulty stays inside the competency's own 'without regrouping' boundary rather than drifting to an unrelated axis."
+      "rationale": "The focus remains strictly on the core skill to \"Subtract numbers by expressing minuends and subtrahends as tens and ones\" without introducing unrelated concepts or vocabulary."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Every explicit minuend/subtrahend pair stays within two digits, up to '94 is 9 tens and 4 ones. 72 is 7 tens and 2 ones.', yet seed 500's own option set includes the value 152, a three-digit number inconsistent with the two-digit tens/ones ceiling every other sample respects."
+      "verdict": "PASS",
+      "rationale": "The numbers used in the problems, such as \"75\", \"12\", \"98\", and \"54\", are appropriately sized for first graders learning two-digit subtraction \"without regrouping.\""
     }
   },
-  "overall": "CONCERN"
+  "overall": "PASS"
 }

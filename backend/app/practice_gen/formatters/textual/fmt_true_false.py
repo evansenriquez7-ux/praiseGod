@@ -128,6 +128,11 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                     f"{decompose_to_places(a)} {decompose_to_places(b)} "
                     f"Subtract the place values, then find what's left: {a} − {b} = {fill_value}"
                 )
+            elif values.get("task_type") == "counting_back" and blank_target == "result":
+                statement = f"Start at {a}. Count back {b}. You land on {fill_value}."
+            elif values.get("task_type") == "taking_away" and blank_target == "result":
+                item = values.get("item_name", "items")
+                statement = f"There are {a} {item}. Taking away {b} {item} leaves {fill_value} {item}."
             elif blank_target == "result":
                 statement = f"{a} − {b} = {fill_value}"
             elif blank_target == "b":

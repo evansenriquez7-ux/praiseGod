@@ -1,7 +1,7 @@
 {
   "node_id": "mat_g1_na_q2_6",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition & subtraction hardening), 2026-08-16",
+  "review_date": "2026-08-16",
   "blind": true,
   "sample_seeds": [
     42,
@@ -26,7 +26,7 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "There are 1 resin in one basket and 10 resin in another basket. How many resin are there in all?",
+      "question_text": "There is 1 score card in one basket and 10 score cards in another basket. How many score cards are there in all?",
       "correct_answer": 11,
       "options": [
         {
@@ -82,7 +82,7 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "Lara has 12 ribbons. A friend has 1 ribbon. If they put all their ribbons together, how many ribbons do they have in all?",
+      "question_text": "Isko has 12 medals. A friend has 1 medal. If they put all their medals together, how many medals do they have in all?",
       "correct_answer": 13,
       "options": [
         {
@@ -114,7 +114,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "One basket has 3 water bottles. Another basket has 1 water bottles. If you put all the water bottles together, how many water bottles are there?",
+      "question_text": "One basket has 3 cookies. Another basket has 1 cookie. If you put all the cookies together, how many cookies are there?",
       "correct_answer": 4,
       "options": [
         {
@@ -170,7 +170,7 @@
     {
       "seed": 50,
       "formatter": "error_detect",
-      "question_text": "Jose solved this problem: \"Mia has 0 merchandise shirts. A friend has 3 merchandise shirts. If they put all their merchandise shirts together, how many merchandise shirts do they have in all?\" Jose says the answer is 3. Is Jose correct?",
+      "question_text": "Jose solved this problem: \"Bianca has 0 ribbons. A friend has 3 ribbons. If they put all their ribbons together, how many ribbons do they have in all?\" Jose says the answer is 3. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 3
@@ -241,7 +241,7 @@
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "There are 52 book covers in one basket and 30 book covers in another basket. How many book covers are there in all?",
+      "question_text": "There are 52 trophies in one basket and 30 trophies in another basket. How many trophies are there in all?",
       "correct_answer": 82,
       "options": [
         {
@@ -273,7 +273,7 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Ate Mags had 84 merch shirts. Then Ate Mags got 0 more. How many merch shirts does Ate Mags have now?",
+      "question_text": "Carlo had 84 canvases. Then Carlo got 0 more. How many canvases does Carlo have now?",
       "correct_answer": 84,
       "options": [
         {
@@ -301,7 +301,7 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "One basket has 3 clip highlights. Another basket has 1 clip highlights. If you put all the clip highlights together, how many clip highlights are there?",
+      "question_text": "One basket has 3 colored pencils. Another basket has 1 colored pencil. If you put all the colored pencils together, how many colored pencils are there?",
       "correct_answer": 4,
       "options": [
         {
@@ -329,13 +329,13 @@
     {
       "seed": 601,
       "formatter": "true_false",
-      "question_text": "Pia is on step 2. Pia climbs up 2 more steps. What step is Pia on now? The answer is 4. True or False?",
+      "question_text": "Moses is on step 2. Moses climbs up 2 more steps. What step is Moses on now? The answer is 4. True or False?",
       "correct_answer": true
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Janna has 10 fan shirts. A friend has 3 fan shirts. If they put all their fan shirts together, how many fan shirts do they have in all?",
+      "question_text": "Des has 10 knee pads. A friend has 3 knee pads. If they put all their knee pads together, how many knee pads do they have in all?",
       "correct_answer": 13,
       "options": [
         {
@@ -363,7 +363,7 @@
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "Yna is on step 2. Yna climbs up 1 more steps. What step is Yna on now?",
+      "question_text": "Sir Ben is on step 2. Sir Ben climbs up 1 more step. What step is Sir Ben on now?",
       "correct_answer": 3,
       "options": [
         {
@@ -395,7 +395,7 @@
     {
       "seed": 605,
       "formatter": "error_detect",
-      "question_text": "Liza solved this problem: \"Ching is on step 2. Ching climbs up 1 more steps. What step is Ching on now?\" Liza says the answer is 3. Is Liza correct?",
+      "question_text": "Liza solved this problem: \"Riza is on step 2. Riza climbs up 1 more step. What step is Riza on now?\" Liza says the answer is 3. Is Liza correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 3
@@ -404,13 +404,13 @@
     {
       "seed": 606,
       "formatter": "mcq",
-      "question_text": "There are 1 headset in one basket and 2 headsets in another basket. How many headsets are there in all?",
+      "question_text": "Start at 2. Count up 1 more. What number do you land on?",
       "correct_answer": 3,
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "is_correct": true
+          "value": 4,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -424,8 +424,8 @@
         },
         {
           "key": "D",
-          "value": 4,
-          "is_correct": false
+          "value": 3,
+          "is_correct": true
         }
       ]
     }
@@ -433,27 +433,27 @@
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Word and picture framings dominate the set — 'Lara has 12 ribbons. A friend has 1 ribbon.' and the emoji-based 'How many total frogs are there?' — matching the 'given orally or in pictures' phrasing directly."
+      "rationale": "The generator successfully meets the requirement to \"Solve problems (given orally or in pictures) involving addition with sums up to 100 without regrouping.\" by presenting valid addition scenarios."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Situations vary between combining-baskets, counting-on ('Start at 1. Count up 2 more.'), and step-climbing scenarios, so the addition-in-context sub-cases are not limited to a single story type."
+      "rationale": "Coverage spans the numerical range specified by \"sums up to 100\", from small totals to larger combinations like \"52 trophies in one basket and 30 trophies in another basket.\""
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Each scenario asks a single question after one short setup sentence, matching the oral or pictorial one-step problems Grade 1 learners are expected to solve at this point in the year."
+      "rationale": "The scenarios and vocabulary are accessible for first graders, using straightforward phrasing such as \"If you put all the cookies together, how many cookies are there?\""
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Beyond mcq and cloze wording, the sample includes error_detect ('Jose says the answer is 3. Is Jose correct?') and a pictorial read_mcq built from repeated emoji, giving genuinely different task shapes."
+      "rationale": "The generator produces a wide mix of presentation styles, ranging from basic word problems to pictorial items like \"🐸 — There is 1 frog.\" and reflective prompts like \"Is Jose correct?\""
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The step from small to larger totals still keeps the underlying addition-in-context skill fixed while only the magnitude changes, as shown when '2 more drinks are added.' after a starting count of 85."
+      "rationale": "Every generated item is strictly aligned to the target operation of \"addition with sums up to 100 without regrouping.\" with no out-of-scope concepts introduced."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The largest total sampled, 87 drinks, stays under the shared 100 ceiling and needs no regrouping, matching the stated bound."
+      "rationale": "Option scaling provides plausible distractors for young learners, such as presenting \"83\" and \"88\" as alternatives for a sum of 87 in the problem where \"2 more drinks are added.\""
     }
   },
   "overall": "PASS"

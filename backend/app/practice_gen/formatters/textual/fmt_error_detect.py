@@ -129,6 +129,11 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
                 f"Subtract the place values, then find what's left: "
                 f"{slot('a', value=a)} − {slot('b', value=b)} = {slot('result', value=r)}"
             )
+        if values.get("task_type") == "counting_back" and blank_target == "result":
+            return f"Start at {slot('a', value=a)}. Count back {slot('b', value=b)}. You land on {slot('result', value=r)}"
+        if values.get("task_type") == "taking_away" and blank_target == "result":
+            item = values.get("item_name", "items")
+            return f"There are {slot('a', value=a)} {item}. Taking away {slot('b', value=b)} {item} leaves {slot('result', value=r)} {item}."
         return f"{slot('a', value=a)} − {slot('b', value=b)} = {slot('result', value=r)}"
     elif concept == "multiplication":
         a = values.get("a", values.get("groups"))

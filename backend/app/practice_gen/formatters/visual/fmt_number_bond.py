@@ -291,10 +291,10 @@ def format_number_bond(
         # fmt_error_detect.py (see those files' comments).
         from backend.app.practice_gen.dna.na.addition import decompose_to_places
         prefix = f"{decompose_to_places(ctx.values['a'])} {decompose_to_places(ctx.values['b'])} "
-        if bond.get("blank_position") == "whole":
-            question_text = f"{prefix}Add the place values, then find the total: {question_text}"
-        elif bond.get("blank_position") == "part2" and ctx.dna_concept == "subtraction":
+        if ctx.dna_concept == "subtraction":
             question_text = f"{prefix}Subtract the place values, then find what's left: {question_text}"
+        elif bond.get("blank_position") == "whole":
+            question_text = f"{prefix}Add the place values, then find the total: {question_text}"
 
     format_data: dict = {"visual_params": vp}
     if mcq_options:

@@ -677,6 +677,8 @@ def _build_symbolic_question(
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
             return f"Estimate the difference: {real_a} − {real_b}"
+        if values.get("task_type") in ("expanded_form", "counting_back", "taking_away") and values.get("question"):
+            return values["question"]
         if blank == "result":
             return f"What is {a} − {b}?"
         elif blank == "b":

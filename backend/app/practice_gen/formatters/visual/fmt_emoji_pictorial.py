@@ -229,14 +229,6 @@ def _build_question_text(params: dict, context_variant: str = "word_problem") ->
     """
     Build the question text with emoji representation.
     """
-    if context_variant == "pure":
-        operation = params["operation"]
-        if operation == "addition":
-            return "How many items are there in total?"
-        elif operation == "subtraction":
-            return "How many items are left?"
-        else:
-            return "How many items are there?"
     emoji = params["emoji"]
     a = params["group_a"]
     b = params["group_b"]
@@ -277,9 +269,9 @@ def _build_question_text(params: dict, context_variant: str = "word_problem") ->
         
         # Line 2: State how many taken away (no emoji display for taken items)
         if b == 0:
-            line2 = f"0 {name_plural} are taken away."
+            line2 = f"Taking away 0 {name_plural}."
         else:
-            line2 = f"{b} {name_b} {'is' if b == 1 else 'are'} taken away."
+            line2 = f"Taking away {b} {name_b}."
         
         # Line 3: Question
         line3 = f"How many {name_plural} are left?"

@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-08-16)
 
 ## Corpus Check
-- 449 files · ~674,885 words
+- 449 files · ~675,648 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d95dbc1e`
+- Built from commit: `3885c8cd`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -266,8 +266,8 @@
 - [[_COMMUNITY_2026-08-13 — The G1 measure items a visual for the task, and a size model for the units|2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units]]
 - [[_COMMUNITY__gen_g2_na_q3_multiplication|_gen_g2_na_q3_multiplication]]
 - [[_COMMUNITY_find_node_id|find_node_id]]
+- [[_COMMUNITY_symmetry_slides.py|symmetry_slides.py]]
 - [[_COMMUNITY_time_reading.py|time_reading.py]]
-- [[_COMMUNITY_2026-08-13 — length_measurement the largest FAIL cluster in the tree|2026-08-13 — length_measurement: the largest FAIL cluster in the tree]]
 - [[_COMMUNITY_2026-08-14 — 2-digit by 1-digit bounds two operands, and only one had a key|2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key]]
 - [[_COMMUNITY_get_node_capabilities|get_node_capabilities]]
 - [[_COMMUNITY_test_regrouping_feasibility.py|test_regrouping_feasibility.py]]
@@ -716,8 +716,8 @@ Cohesion: 0.67
 Nodes (3): build_scaffold_sequence(), Any, Build an ordered list of difficulty profiles for a scaffold sequence.      Each
 
 ### Community 103 - "Community 103"
-Cohesion: 0.13
-Nodes (15): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — Object-to-unit pairing: the numbers were right, the things were wrong, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated, A leak the first attempt left, caught by measuring rather than assuming, Final Definition of Done, Phase F — full `run_all` verification and three more regressions it caught — 2026-08-02 (+7 more)
+Cohesion: 0.14
+Nodes (14): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated, Final Definition of Done, Phase F — full `run_all` verification and three more regressions it caught — 2026-08-02, Phase G — degenerate "estimate" pairs across all four estimate DNAs, 2026-08-04 (+6 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.12
@@ -1243,13 +1243,13 @@ Nodes (5): generate_hints(), generate_params(), Any, DNA: Geometric Lines (Measu
 Cohesion: 0.40
 Nodes (5): generate_hints(), generate_params(), Any, DNA: 2D Shapes (Measurement & Geometry)  Covers MATATAG grades 1–2 2D shape comp, Sample one item from the static pool filtered by grade and difficulty_profile.
 
+### Community 267 - "symmetry_slides.py"
+Cohesion: 0.40
+Nodes (5): generate_hints(), generate_params(), Any, DNA: Symmetry and Slides (Measurement & Geometry)  Covers MATATAG grades 2–3 sym, Sample one item from the static pool filtered by grade and difficulty profile.
+
 ### Community 268 - "time_reading.py"
 Cohesion: 0.40
-Nodes (5): generate_hints(), generate_params(), Any, DNA: Time Reading (Measurement & Geometry)  Covers MATATAG grades 1–2 time-telli, Returns visual_params for the ClockSet formatter:       {"hour": int, "minute":
-
-### Community 270 - "2026-08-13 — length_measurement: the largest FAIL cluster in the tree"
-Cohesion: 0.50
-Nodes (4): 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, Three defects, all in the `estimate` branch, Verification, Why this cluster
+Nodes (5): 2026-08-13 — Object-to-unit pairing: the numbers were right, the things were wrong, A leak the first attempt left, caught by measuring rather than assuming, The failing rationale, Two causes, one in each DNA, Verification
 
 ### Community 271 - "2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key"
 Cohesion: 0.50
@@ -1279,7 +1279,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Why does `QuestionContext` connect `Community 50` to `Community 4`, `Community 13`, `Community 18`, `Community 153`, `Community 51`, `Community 59`, `Community 60`, `get_gemini_models`, `test_answer_leak_and_reach.py`, `Community 70`, `Community 77`, `Community 79`, `test_semantic_leak_guards.py`, `Community 92`, `Community 93`, `Community 94`, `fmt_numeric_input.py`, `Community 95`, `get_all_node_ids`, `models.py`, `Community 100`, `CompetencyConfiguration`, `fmt_pictograph.py`, `fmt_bar_chart.py`, `fmt_ruler_measure.py`?**
   _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **Why does `DNA` connect `validate_interest.py` to `fmt_fill_in_table.py`, `generate_params`, `Community 4`, `Community 3`, `rebuild_knowledge_graph.py`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`, `2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units`, `Community 138`, `find_node_id`, `time_reading.py`, `Community 14`, `counting.py`, `Community 24`, `Community 41`, `mastery_drill.py`, `generator.py`, `validate_capability.py`, `counting.py`, `Community 75`, `Community 87`, `Native SQL Examples`, `models.py`, `get_all_node_ids`, `Community 101`, `Community 102`, `TestLogScaleDeclarations`, `Community 118`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`?**
+- **Why does `DNA` connect `validate_interest.py` to `fmt_fill_in_table.py`, `generate_params`, `Community 4`, `Community 3`, `rebuild_knowledge_graph.py`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`, `2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units`, `Community 138`, `find_node_id`, `symmetry_slides.py`, `Community 14`, `counting.py`, `Community 24`, `Community 41`, `mastery_drill.py`, `generator.py`, `validate_capability.py`, `counting.py`, `Community 75`, `Community 87`, `Native SQL Examples`, `models.py`, `get_all_node_ids`, `Community 101`, `Community 102`, `TestLogScaleDeclarations`, `Community 118`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **What connects `graphify`, `PackageDescription`, `Foundation` to the rest of the system?**
   _1673 weakly-connected nodes found - possible documentation gaps or missing edges._

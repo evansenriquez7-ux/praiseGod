@@ -266,6 +266,8 @@ def _parse_competency_bounds(
             bounds["min_a"] = 10
             cur_hi = bounds.get("max_sum", (11, 100))[1]
             bounds["max_sum"] = (11, cur_hi)
+        if "given orally or in pictures" in text:
+            bounds["task_type"] = ["putting_together", "counting_up"]
 
     # Subtraction: operand bound is enforced by the DNA's per-grade
     # _PARAM_BOUNDS[grade] (g1: a<100, g2: a<1000, g3: a<10000). All
@@ -350,6 +352,12 @@ def _parse_competency_bounds(
         # rule as addition's identical binding above.
         elif "expanded form" in text:
             bounds["task_type"] = "expanded_form"
+
+        elif "taking away" in text:
+            bounds["task_type"] = "taking_away"
+
+        elif "concrete and pictorial" in text or "illustrate" in text.lower():
+            bounds["task_type"] = ["counting_back", "taking_away"]
 
     # Multiplication: "products up to X"
     elif dna_name == "multiplication":
@@ -1606,7 +1614,7 @@ BINDINGS = {
     },
     "mat_g1_na_q3_0": {
         "dna": "subtraction",
-        "visual": "number_line_read"
+        "visual": "emoji_pictorial"
     },
     "mat_g1_na_q3_1": {
         "dna": "missing_number",

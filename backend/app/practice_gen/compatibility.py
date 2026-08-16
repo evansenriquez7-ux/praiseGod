@@ -785,8 +785,9 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     },
 
     "subtraction": {
-        "number_line_read": {"task_type": ["find_difference"], "context": ["pure"]},
-        "number_bond": {"context": ["pure"]},
+        "number_line_read": {"task_type": ["find_difference", "counting_back"], "context": ["pure"]},
+        "number_bond": {"task_type": ["find_difference"], "context": ["pure"]},
+        "emoji_pictorial": {"task_type": ["find_difference", "take_away", "taking_away", "counting_back"], "context": ["pure", "word_problem"]},
     },
 
     "length_measurement": {

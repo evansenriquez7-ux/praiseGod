@@ -302,6 +302,8 @@ def generate_params(
     structure = profile.get("structure", "result_unknown")
 
     task_type = profile.get("task_type")
+    if isinstance(task_type, list):
+        task_type = rng.choice(task_type)
     if task_type == "estimate":
         # Rounding both operands to a common place value zeroes out every
         # digit below that place, in BOTH operands -- so the served pair can
@@ -403,6 +405,38 @@ def generate_params(
             "context": "pure",
             "structure": "result_unknown",
             "max_minuend": max_minuend,
+        }
+
+    if task_type in ("counting_back", "taking_away"):
+        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
+        min_a = int(profile.get("min_minuend", 10 if max_minuend >= 10 else 1))
+        max_sub = profile.get("max_subtrahend")
+        max_sub = int(max_sub) if max_sub is not None else None
+        min_b = int(profile.get("min_subtrahend", 1))
+        candidates = []
+        for a in range(max(1, min_a), max_minuend + 1):
+            b_hi = a if max_sub is None else min(a, max_sub)
+            for b in range(min_b, b_hi + 1):
+                if _satisfies_regrouping(a, b, reg_level):
+                    candidates.append((a, b))
+        if not candidates:
+            candidates = [(max_minuend, 1)]
+        start, count_back = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
+        items_pool = ["apples", "stickers", "marbles", "crayons", "blocks", "candies", "pencils", "erasers", "stars", "cookies"]
+        item_name = rng.choice(items_pool)
+        if task_type == "counting_back":
+            q_text = f"Start at {start}. Count back {count_back}. What number do you land on?"
+        else:
+            q_text = f"There are {start} {item_name}. Taking away {count_back} {item_name} leaves how many {item_name}?"
+        return {
+            "a": start, "b": count_back, "result": start - count_back,
+            "task_type": task_type,
+            "item_name": item_name,
+            "blank_target": "result",
+            "context": "pure",
+            "structure": "result_unknown",
+            "max_minuend": max_minuend,
+            "question": q_text,
         }
 
     if task_type == "expanded_form" and max_minuend >= 11:
