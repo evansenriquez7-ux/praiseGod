@@ -2766,7 +2766,35 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
     - `mat_g3_mg_q1_3`: CONCERN → **PASS** (+1)
     - `mat_g3_mg_q1_4`: FAIL → **PASS** (+1)
     - `mat_g3_mg_q1_5`: CONCERN → **PASS** (+1)
-    - `mat_g3_mg_q1_6`: FAIL → **PASS** (+1)
-- **Census after:** PASS=97 CONCERN=43 FAIL=11 Total=151 (+5 PASS, -2 FAIL, -3 CONCERN).
 - **Next tick should:** Harden Grade 2 Quarter 4 Measurement & Geometry Cluster (`mat_g2_mg_q4_2`, `mat_g2_mg_q4_4`).
+
+---
+
+## Tick C Unit: Grade 2 Quarter 4 Measurement & Geometry Cluster Hardening (`mat_g2_mg_q4_2`, `mat_g2_mg_q4_4`)
+- **Timestamp:** 2026-08-18T02:35:00+08:00
+- **Scope / Target Nodes:**
+  - `mat_g2_mg_q4_2`: Solve problems involving elapsed time (minutes in an hour, hours in a day, days in a week), including timetables.
+  - `mat_g2_mg_q4_4`: Identify and measure the perimeter of a plane figure using appropriate tools.
+- **Root Cause & Diagnosis:**
+  1. `mat_g2_mg_q4_2`: Missing coverage for competency-mandated sub-cases: minutes in an hour, hours in a day, days in a week, and timetables. Expanded `elapsed_time` task type in `time_reading.py` to support all 4 sub-cases with daytime-realistic hours (7 a.m.–6 p.m.), bounded minute intervals to $\le 60$ minutes ("minutes in an hour"), and standardized `blank_target = "answer"`.
+  2. `mat_g2_mg_q4_4`: Mapped to `length_measurement` which generated generic length questions rather than perimeter. Unmapped `length_measurement` from `mat_g2_mg_q4_4`, added `elif dna_name == "perimeter"` to competency bounds parsing in `registry.py`, and authored `identify_and_measure`, `identify_definition` (perimeter as outer boundary distance), and `measure_tools` (ruler / measuring tape) with guarded non-degenerate shape calculations (`l != w`).
+- **Files Modified:**
+  - `backend/app/practice_gen/dna/mg/time_reading.py`
+  - `backend/app/practice_gen/dna/mg/perimeter.py`
+  - `backend/app/practice_gen/generators/base_generator.py`
+  - `backend/app/practice_gen/compatibility.py`
+  - `backend/app/practice_gen/registry.py`
+  - `validation_reports/judgment/mat_g2_mg_q4/mat_g2_mg_q4_2.json` (PASS)
+  - `validation_reports/judgment/mat_g2_mg_q4/mat_g2_mg_q4_4.json` (PASS)
+- **Verification:**
+  - Full matrix validation (`validate_matrix` on `mat_g2_mg_q4_2`, `mat_g2_mg_q4_4`): 100% PASS with 0 errors across all nodes.
+  - Safety Net 1 (Registry Cross-Audit): 100% bidirectional cross-registration verified.
+  - Safety Net 2 (Blast Radius Audit): `time_reading` (4 sibling nodes), `perimeter` (3 sibling nodes) rendered cleanly across all test seeds.
+  - Blind Pro Reviews: 2/2 nodes achieved authentic PASS verdicts from blind Pro reviewer subagents with exact contiguous quote provenance and zero freshness drift.
+  - Census movement across the unit:
+    - `mat_g2_mg_q4_2`: FAIL → **PASS** (+1)
+    - `mat_g2_mg_q4_4`: FAIL → **PASS** (+1)
+- **Census after:** PASS=99 CONCERN=43 FAIL=9 Total=151 (+2 PASS, -2 FAIL).
+- **Next tick should:** Identify the next non-PASS cluster from `validation_reports/judgment/` (e.g. Grade 2 Quarter 3 / Grade 2 Quarter 2 cluster) and harden per protocol.
+
 

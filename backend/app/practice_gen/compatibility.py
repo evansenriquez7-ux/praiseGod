@@ -679,6 +679,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         "precision": ["hour", "half_hour", "quarter_hour", "five_minutes", "one_minute"],
         "include_ampm": ["yes", "no"],
         "mode": ["read", "set"],
+        "task_type": ["clock_reading", "elapsed_time"],
         "context": ["pure", "word_problem"],
     },
 
@@ -693,7 +694,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         # previous "calculate"/"missing_side" values matched neither the
         # DNA's actual "find_perimeter"/"find_missing_side" values.
         "shape": ["square", "rectangle", "triangle"],
-        "task_type": ["find_perimeter", "find_missing_side"],
+        "task_type": ["find_perimeter", "find_missing_side", "identify_and_measure", "identify_definition", "measure_tools"],
         "context": ["pure", "word_problem"],
     },
 

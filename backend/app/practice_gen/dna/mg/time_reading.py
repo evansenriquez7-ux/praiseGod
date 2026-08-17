@@ -93,127 +93,293 @@ def generate_params(
     if profile.get("task_type") == "elapsed_time":
         # "Solve problems involving elapsed time (minutes in an hour,
         # hours in a day, days in a week), including timetables" (mat_g2_
-        # mg_q4_2) had no matching task_type at all -- every other branch
-        # in this DNA reads/sets a SINGLE clock time, never computes a
-        # duration between two, so the co-mapped `subtraction` DNA (a bare
-        # whole-number subtraction skill with no time/clock awareness)
-        # filled the gap with off-topic content instead (blind review: "9
-        # of 17 samples are off-topic pictograph subtraction-comparison
-        # word problems... zero connection to minutes/hours/days/
-        # timetables"). Picks a start time and a whole-minutes duration
-        # (capped at 120 so at most one a.m./p.m. boundary is ever
-        # crossed, keeping the modular hour math exact), computes the end
-        # time, and asks for whichever of duration/end-time the profile
-        # doesn't already fix -- covering both "how long did it last?" and
-        # "what time will it end?" problem shapes.
-        start_hour = rng.randint(1, 12)
-        start_minute = rng.choice([0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55])
-        duration_minutes = rng.choice([5, 10, 15, 20, 25, 30, 40, 45, 50, 60, 75, 90, 120])
-        # validate_matrix's §1C exhaustive sweep force-tests every
-        # formatter this DNA declares compatible (now including mcq/cloze
-        # for this task_type) against EVERY node mapped to time_reading,
-        # not just the one node (mat_g2_mg_q4_2, grade 2) this task_type
-        # is registry-bound to -- so this branch must stay correct even
-        # when called for a grade-1 node. a.m./p.m. is NOT_YET_KNOWN
-        # vocabulary at G1 (same gate the default path below already
-        # applies), so it silently leaked through here unconditionally
-        # (blind review/harness: "[NOT_YET_KNOWN] Forbidden term 'p.m.'").
+        # mg_q4_2). Supports all 4 sub-cases:
+        # 1. minutes in an hour / duration & end time
+        # 2. hours in a day (whole hour durations & start/end times)
+        # 3. days in a week (day durations & start/end day names)
+        # 4. timetables (bus and class schedules)
         use_ampm = grade >= 2
-        start_period = rng.choice(["a.m.", "p.m."]) if use_ampm else None
-
-        total_start = (start_hour % 12) * 60 + start_minute
-        total_end = total_start + duration_minutes
-        period_flips = total_end >= 12 * 60
-        total_end_in_day = total_end % (12 * 60)
-        end_hour = total_end_in_day // 60
-        end_hour = 12 if end_hour == 0 else end_hour
-        end_minute = total_end_in_day % 60
-        end_period = None
-        if use_ampm:
-            end_period = (
-                ("p.m." if start_period == "a.m." else "a.m.") if period_flips else start_period
-            )
 
         def _fmt_time(h: int, m: int, p: Optional[str]) -> str:
             return f"{h}:{m:02d}" + (f" {p}" if p else "")
 
-        start_str = _fmt_time(start_hour, start_minute, start_period)
-        end_str = _fmt_time(end_hour, end_minute, end_period)
+        elapsed_unit = profile.get("elapsed_unit") or rng.choice(["minutes", "hours", "days", "timetable"])
 
-        activity = rng.choice([
-            "a recess", "a class", "a movie", "a bus ride",
-            "a study session", "a swimming lesson", "a soccer practice",
-        ])
-        ask = profile.get("elapsed_ask") or rng.choice(["duration", "end_time"])
-        if ask == "duration":
-            # end_str sometimes ends in "a.m."/"p.m." (its own trailing
-            # period) -- appending a sentence-final "." unconditionally
-            # produced "...ended at 11:10 p.m.. How many..." (double
-            # period), the same defect already fixed once in fmt_clock.py's
-            # "set" stem for the identical reason.
-            trailing = "" if end_str.endswith(".") else "."
-            question = (
-                f"{activity.capitalize()} started at {start_str} and ended "
-                f"at {end_str}{trailing} How many minutes did it last?"
-            )
-            answer: Any = duration_minutes
-            blank_target = "duration_minutes"
-            # base_generator's shared error-pattern loop can't derive
-            # distractors here (this DNA's error_patterns are all
-            # formula="None", hour/minute misconception LABELS with no
-            # computable formula), so a numeric-answer task_type would
-            # reach fmt_mcq.py with zero candidates and rely entirely on
-            # its own +-1/+-10 padding fallback -- fine for a duration
-            # value, but explicit plausible minute-arithmetic traps are
-            # more pedagogically meaningful than arbitrary offsets.
-            distractors = sorted({
-                d for d in (
-                    duration_minutes + 5, max(1, duration_minutes - 5),
-                    60 - duration_minutes if duration_minutes < 60 else duration_minutes + 60,
-                    duration_minutes * 2,
-                ) if d != duration_minutes and d > 0
-            })
+        if elapsed_unit == "hours":
+            start_hour = rng.randint(6, 11)
+            duration_hours = rng.randint(2, 6)
+            total_end_hour = start_hour + duration_hours
+            start_period = "a.m."
+            if total_end_hour < 12:
+                end_hour = total_end_hour
+                end_period = "a.m."
+            elif total_end_hour == 12:
+                end_hour = 12
+                end_period = "p.m."
+            else:
+                end_hour = total_end_hour - 12
+                end_period = "p.m."
+
+            start_str = _fmt_time(start_hour, 0, start_period if use_ampm else None)
+            end_str = _fmt_time(end_hour, 0, end_period if use_ampm else None)
+
+            activity = rng.choice([
+                "family road trip", "school library schedule",
+                "community sports festival", "museum tour", "train journey"
+            ])
+            ask = profile.get("elapsed_ask") or rng.choice(["duration", "end_time", "start_time"])
+            if ask == "duration":
+                trailing = "" if end_str.endswith(".") else "."
+                question = f"The {activity} started at {start_str} and ended at {end_str}{trailing} How many hours did it last?"
+                answer = duration_hours
+                distractors = sorted({
+                    d for d in [
+                        duration_hours + 1, max(1, duration_hours - 1),
+                        duration_hours + 2, max(1, duration_hours - 2)
+                    ] if d != duration_hours and d > 0
+                })
+            elif ask == "end_time":
+                question = f"The {activity} started at {start_str} and lasted for {duration_hours} hours. What time did it end?"
+                answer = end_str
+                off_hour1 = 12 if end_hour == 11 else (end_hour % 12) + 1
+                off_hour2 = 12 if end_hour == 1 else end_hour - 1
+                distractors = [
+                    s for s in {
+                        _fmt_time(off_hour1, 0, end_period if use_ampm else None),
+                        _fmt_time(off_hour2, 0, end_period if use_ampm else None),
+                        _fmt_time(start_hour, 0, start_period if use_ampm else None),
+                    } if s != end_str
+                ]
+            else:
+                question = f"The {activity} ended at {end_str} after running for {duration_hours} hours. What time did it start?"
+                answer = start_str
+                off_start1 = 12 if start_hour == 1 else start_hour - 1
+                off_start2 = (start_hour % 12) + 1
+                distractors = [
+                    s for s in {
+                        _fmt_time(off_start1, 0, start_period if use_ampm else None),
+                        _fmt_time(off_start2, 0, start_period if use_ampm else None),
+                        _fmt_time(end_hour, 0, end_period if use_ampm else None),
+                    } if s != start_str
+                ]
+
+            return {
+                "blank_target": "answer",
+                "task_type": "elapsed_time",
+                "elapsed_unit": "hours",
+                "start_time_str": start_str,
+                "end_time_str": end_str,
+                "duration_hours": duration_hours,
+                "question": question,
+                "answer": answer,
+                "distractors": distractors,
+                "hour": start_hour,
+                "minute": 0,
+                "time_str": start_str,
+                "precision": "hour",
+                "period": start_period if use_ampm else None,
+            }
+
+        elif elapsed_unit == "days":
+            days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+            start_idx = rng.randint(0, 3)
+            start_day = days_of_week[start_idx]
+            duration_days = rng.randint(2, 4)
+            end_idx = start_idx + duration_days - 1
+            end_day = days_of_week[end_idx]
+            activity = rng.choice([
+                "science fair", "reading camp", "school sports meet", "art workshop", "gardening project"
+            ])
+            art = "an" if activity.startswith(("a", "e", "i", "o", "u")) else "a"
+            ask = profile.get("elapsed_ask") or rng.choice(["duration", "end_day"])
+            if ask == "duration":
+                question = f"{art.capitalize()} {activity} begins on {start_day} and finishes on {end_day} of the same week. How many days does the {activity} run?"
+                answer = duration_days
+                distractors = sorted({
+                    d for d in [duration_days + 1, max(1, duration_days - 1), duration_days + 2, 7]
+                    if d != duration_days and d > 0
+                })
+            else:
+                question = f"A {duration_days}-day {activity} starts on {start_day}. On what day of the week does it end?"
+                answer = end_day
+                distractors = [
+                    d for d in days_of_week if d != end_day and d != start_day
+                ][:3]
+
+            return {
+                "blank_target": "answer",
+                "task_type": "elapsed_time",
+                "elapsed_unit": "days",
+                "start_day": start_day,
+                "end_day": end_day,
+                "duration_days": duration_days,
+                "question": question,
+                "answer": answer,
+                "distractors": distractors,
+                "hour": 8,
+                "minute": 0,
+                "time_str": "8:00 a.m.",
+                "precision": "hour",
+                "period": "a.m.",
+            }
+
+        elif elapsed_unit == "timetable":
+            tt_type = rng.choice(["bus", "class"])
+            if tt_type == "bus":
+                b1_dur = rng.choice([30, 45, 60])
+                b2_dur = rng.choice([35, 40, 45, 50, 60])
+                b1_start_h = 7
+                b1_start_m = 0
+                b1_end_h = 7 if b1_dur < 60 else 8
+                b1_end_m = b1_dur % 60
+
+                b2_start_h = 8
+                b2_start_m = 15
+                b2_total = 8 * 60 + 15 + b2_dur
+                b2_end_h = b2_total // 60
+                b2_end_m = b2_total % 60
+
+                b1_start_str = _fmt_time(b1_start_h, b1_start_m, "a.m." if use_ampm else None)
+                b1_end_str = _fmt_time(b1_end_h, b1_end_m, "a.m." if use_ampm else None)
+                b2_start_str = _fmt_time(b2_start_h, b2_start_m, "a.m." if use_ampm else None)
+                b2_end_str = _fmt_time(b2_end_h, b2_end_m, "a.m." if use_ampm else None)
+
+                target_bus = rng.choice([1, 2])
+                ans_min = b1_dur if target_bus == 1 else b2_dur
+
+                question = (
+                    f"Look at the bus timetable:\n"
+                    f"• Bus 1: Departs {b1_start_str}, Arrives {b1_end_str}\n"
+                    f"• Bus 2: Departs {b2_start_str}, Arrives {b2_end_str}\n"
+                    f"According to the timetable, how many minutes is the travel time for Bus {target_bus}?"
+                )
+                answer = ans_min
+                distractors = sorted({
+                    d for d in [ans_min + 10, max(5, ans_min - 10), ans_min + 15, ans_min * 2]
+                    if d != ans_min and d > 0
+                })
+            else:
+                m_start_str = _fmt_time(8, 0, "a.m." if use_ampm else None)
+                m_end_str = _fmt_time(9, 0, "a.m." if use_ampm else None)
+                e_start_str = _fmt_time(9, 0, "a.m." if use_ampm else None)
+                e_end_str = _fmt_time(9, 45, "a.m." if use_ampm else None)
+
+                subj = rng.choice(["Math", "English"])
+                if subj == "Math":
+                    question = (
+                        f"Look at the class schedule:\n"
+                        f"• Math: {m_start_str} – {m_end_str}\n"
+                        f"• English: {e_start_str} – {e_end_str}\n"
+                        f"How many hours long is the Math class?"
+                    )
+                    answer = 1
+                    distractors = [2, 3, 4]
+                else:
+                    question = (
+                        f"Look at the class schedule:\n"
+                        f"• Math: {m_start_str} – {m_end_str}\n"
+                        f"• English: {e_start_str} – {e_end_str}\n"
+                        f"How many minutes long is the English class?"
+                    )
+                    answer = 45
+                    distractors = [30, 40, 50]
+
+            return {
+                "blank_target": "answer",
+                "task_type": "elapsed_time",
+                "elapsed_unit": "timetable",
+                "question": question,
+                "answer": answer,
+                "distractors": distractors,
+                "hour": 8,
+                "minute": 0,
+                "time_str": "8:00 a.m.",
+                "precision": "hour",
+                "period": "a.m.",
+            }
+
         else:
-            question = (
-                f"{activity.capitalize()} started at {start_str} and "
-                f"lasted {duration_minutes} minutes. What time did it end?"
-            )
-            answer = end_str
-            blank_target = "end_time_str"
-            # A string correct_answer gives fmt_mcq.py no numeric fallback
-            # path at all (it raises immediately if candidates run short),
-            # so explicit distractors are mandatory here, not just
-            # nice-to-have: off-by-one-hour and off-by-ten-minutes are
-            # exactly the "read the wrong hand" and "miscounted minutes"
-            # errors this DNA's own error_patterns already name.
-            off_hour = 12 if end_hour == 11 else (end_hour % 12) + 1
-            off_hour = 12 if off_hour == 0 else off_hour
-            off_minute = (end_minute + 10) % 60
-            distractors = [
-                s for s in {
-                    _fmt_time(off_hour, end_minute, end_period),
-                    _fmt_time(end_hour, off_minute, end_period),
-                    _fmt_time(start_hour, start_minute, start_period),
-                } if s != end_str
-            ]
+            # minutes in an hour
+            if use_ampm:
+                start_period = rng.choice(["a.m.", "p.m."])
+                if start_period == "a.m.":
+                    start_hour = rng.randint(7, 11)
+                else:
+                    start_hour = rng.choice([12, 1, 2, 3, 4, 5, 6])
+            else:
+                start_period = None
+                start_hour = rng.randint(7, 11)
+            start_minute = rng.choice([0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55])
+            duration_minutes = rng.choice([5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60])
 
-        return {
-            "task_type": "elapsed_time",
-            "start_time_str": start_str,
-            "end_time_str": end_str,
-            "duration_minutes": duration_minutes,
-            "question": question,
-            "blank_target": blank_target,
-            "answer": answer,
-            "distractors": distractors,
-            # Populated for any shared consumer (generate_hints, base_
-            # generator fallbacks) that expects the usual single-clock keys.
-            "hour": start_hour,
-            "minute": start_minute,
-            "time_str": start_str,
-            "precision": "one_minute",
-            "period": start_period,
-        }
+            total_start = (start_hour % 12) * 60 + start_minute
+            total_end = total_start + duration_minutes
+            period_flips = total_end >= 12 * 60
+            total_end_in_day = total_end % (12 * 60)
+            end_hour = total_end_in_day // 60
+            end_hour = 12 if end_hour == 0 else end_hour
+            end_minute = total_end_in_day % 60
+            end_period = None
+            if use_ampm:
+                end_period = (
+                    ("p.m." if start_period == "a.m." else "a.m.") if period_flips else start_period
+                )
+
+            start_str = _fmt_time(start_hour, start_minute, start_period)
+            end_str = _fmt_time(end_hour, end_minute, end_period)
+
+            activity = rng.choice([
+                "a recess", "a class", "a movie", "a bus ride",
+                "a study session", "a swimming lesson", "a soccer practice",
+            ])
+            ask = profile.get("elapsed_ask") or rng.choice(["duration", "end_time"])
+            if ask == "duration":
+                trailing = "" if end_str.endswith(".") else "."
+                question = (
+                    f"{activity.capitalize()} started at {start_str} and ended "
+                    f"at {end_str}{trailing} How many minutes did it last?"
+                )
+                answer: Any = duration_minutes
+                distractors = sorted({
+                    d for d in (
+                        duration_minutes + 5, max(1, duration_minutes - 5),
+                        60 - duration_minutes if duration_minutes < 60 else duration_minutes + 60,
+                        duration_minutes * 2,
+                    ) if d != duration_minutes and d > 0
+                })
+            else:
+                question = (
+                    f"{activity.capitalize()} started at {start_str} and "
+                    f"lasted {duration_minutes} minutes. What time did it end?"
+                )
+                answer = end_str
+                off_hour = 12 if end_hour == 11 else (end_hour % 12) + 1
+                off_hour = 12 if off_hour == 0 else off_hour
+                off_minute = (end_minute + 10) % 60
+                distractors = [
+                    s for s in {
+                        _fmt_time(off_hour, end_minute, end_period),
+                        _fmt_time(end_hour, off_minute, end_period),
+                        _fmt_time(start_hour, start_minute, start_period),
+                    } if s != end_str
+                ]
+
+            return {
+                "blank_target": "answer",
+                "task_type": "elapsed_time",
+                "elapsed_unit": "minutes",
+                "start_time_str": start_str,
+                "end_time_str": end_str,
+                "duration_minutes": duration_minutes,
+                "question": question,
+                "answer": answer,
+                "distractors": distractors,
+                "hour": start_hour,
+                "minute": start_minute,
+                "time_str": start_str,
+                "precision": "one_minute",
+                "period": start_period,
+            }
 
     # "Read and write time in hours and minutes, with a.m. and p.m."
     # (mat_g2_mg_q4_1) always defaulted to "hour" precision and no a.m./

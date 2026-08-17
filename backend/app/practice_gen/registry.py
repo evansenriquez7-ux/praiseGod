@@ -930,6 +930,18 @@ def _parse_competency_bounds(
         elif "compare" in text:
             bounds["task_type"] = "compare_pair"
 
+    elif dna_name == "perimeter":
+        if "identify and measure" in text or "appropriate tools" in text:
+            # mat_g2_mg_q4_4: Identify and measure the perimeter of a plane figure using appropriate tools
+            bounds["task_type"] = "identify_and_measure"
+        elif "find" in text or "using appropriate units" in text:
+            # mat_g2_mg_q4_5: Find the perimeter of a plane figure using appropriate units (cm and m)
+            bounds["task_type"] = "find_perimeter"
+        elif "solve problems" in text or "problems involving" in text:
+            # mat_g2_mg_q4_6: Solve problems involving perimeter of plane figures
+            bounds["task_type"] = "find_perimeter"
+            bounds["context"] = "word_problem"
+
     # Patterns: bind pattern_type/ask_type per node -- patterns.py's own
     # default (pattern_type="growing" -> arithmetic_increasing, ask_type=
     # "next") silently governed every unbound node, so a "repeating
@@ -2486,7 +2498,7 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     # instead of relying on a mismatched co-mapped DNA.
     "mat_g2_mg_q4_2": ["time_reading"],
     "mat_g2_mg_q4_3": ["geometric_lines"],
-    "mat_g2_mg_q4_4": ["perimeter", "length_measurement"],
+    "mat_g2_mg_q4_4": ["perimeter"],
     "mat_g2_mg_q4_5": ["perimeter"],
     # addition removed (Ground Rule 2, 2026-08-06): same root cause as
     # mat_g2_mg_q2_3 -- perimeter already self-narrates via

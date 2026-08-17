@@ -1008,6 +1008,8 @@ def _build_symbolic_question(
 
     # ── Time reading ──────────────────────────────────────────────────────────
     if concept == "time_reading":
+        if values.get("question"):
+            return values["question"]
         hour = values.get("hour", a)
         minute = values.get("minute", 0)
         return f"What time does the clock show? ({hour}:{minute:02d})"
@@ -1081,9 +1083,8 @@ def _build_symbolic_question(
         return f"What is the {mc_lbl} of the object in {unit}?"
 
     if concept == "perimeter":
-        # Same bug as area's prior fallback: never showed the dimensions
-        # needed to compute the answer, silently unanswerable for every
-        # textual formatter.
+        if values.get("question"):
+            return values["question"]
         shape = values.get("shape", "rectangle")
         sides = values.get("sides", {})
         task_type = values.get("task_type", "find_perimeter")
