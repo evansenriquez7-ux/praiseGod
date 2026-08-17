@@ -121,8 +121,18 @@ def generate_params(
 
     from backend.app.practice_gen.dna.base import linear_interpolate, extract_discrete_level, extract_continuous_scalar
     
-    orientation = extract_discrete_level(profile, "orientation", ["vertical", "horizontal"], "vertical")
-    task_type   = extract_discrete_level(profile, "task_type", ["read_value", "compare_bars", "find_total", "find_difference", "find_most_least"], "read_value")
+    orientation = profile.get("orientation")
+    if isinstance(orientation, list):
+        orientation = rng.choice(orientation)
+    elif not orientation:
+        orientation = rng.choice(["vertical", "horizontal", "table"])
+
+    task_type = profile.get("task_type")
+    if isinstance(task_type, list):
+        task_type = rng.choice(task_type)
+    elif task_type == "interpret_data" or not task_type:
+        task_type = rng.choice(["read_value", "compare_bars", "find_total", "find_difference", "find_most_least"])
+
     scale_level = extract_discrete_level(profile, "scale", ["scale_5", "scale_10", "scale_20"], "scale_5")
 
     scale_map = {"scale_5": 5, "scale_10": 10, "scale_20": 20}
@@ -162,16 +172,61 @@ def generate_params(
         "task_type": task_type,
     }
 
+    if task_type == "present_data":
+        data_str = ", ".join(f"{categories[i]}: {values[i]}" for i in range(len(categories)))
+        return {
+            "blank_target": "answer",
+            **base,
+            "data_str": data_str,
+            "answer": values,
+        }
+
+    if task_type == "solve_problem":
+        prob_kind = rng.choice(["difference", "sum", "mult_step", "add_step"])
+        idx_a, idx_b = rng.sample(range(len(categories)), 2)
+        cat_a, cat_b = categories[idx_a], categories[idx_b]
+        val_a, val_b = values[idx_a], values[idx_b]
+
+        if prob_kind == "difference":
+            diff = abs(val_a - val_b)
+            more_cat = cat_a if val_a >= val_b else cat_b
+            less_cat = cat_b if more_cat == cat_a else cat_a
+            p_text = f"How many more items were recorded for {more_cat} than for {less_cat}?"
+            ans = diff
+        elif prob_kind == "sum":
+            p_text = f"How many total items were recorded for {cat_a} and {cat_b} together?"
+            ans = val_a + val_b
+        elif prob_kind == "mult_step":
+            unit_price = rng.choice([2, 3, 5, 10])
+            p_text = f"If each item for {cat_a} costs ₱{unit_price}, what is the total cost for {cat_a}?"
+            ans = val_a * unit_price
+        else: # add_step
+            added = rng.choice([5, 10, 15, 20])
+            p_text = f"If {added} more items are added to {cat_a}, what will be the new total for {cat_a}?"
+            ans = val_a + added
+
+        return {
+            "blank_target": "answer",
+            **base,
+            "problem_question": p_text,
+            "answer": ans,
+            "question_category": cat_a,
+        }
+
     if task_type == "read_value":
         q_idx = rng.randint(0, len(categories) - 1)
         return {
-        "blank_target": "answer",**base, "question_category": categories[q_idx], "answer": values[q_idx]}
+            "blank_target": "answer",
+            **base,
+            "question_category": categories[q_idx],
+            "answer": values[q_idx],
+        }
 
     if task_type == "compare_bars":
         idx_a, idx_b = rng.sample(range(len(categories)), 2)
         answer_cat = categories[idx_a] if values[idx_a] >= values[idx_b] else categories[idx_b]
         return {
-        "blank_target": "answer",
+            "blank_target": "answer",
             **base,
             "compare_a": categories[idx_a],
             "compare_b": categories[idx_b],
@@ -180,13 +235,17 @@ def generate_params(
 
     if task_type == "find_total":
         return {
-        "blank_target": "answer",**base, "question_category": "total", "answer": sum(values)}
+            "blank_target": "answer",
+            **base,
+            "question_category": "total",
+            "answer": sum(values),
+        }
 
     if task_type == "find_difference":
         idx_a, idx_b = rng.sample(range(len(categories)), 2)
         diff = abs(values[idx_a] - values[idx_b])
         return {
-        "blank_target": "answer",
+            "blank_target": "answer",
             **base,
             "compare_a": categories[idx_a],
             "compare_b": categories[idx_b],
@@ -202,7 +261,11 @@ def generate_params(
             values[idx] += scale
         best_idx = values.index(max(values))
         return {
-        "blank_target": "answer",**base, "direction": "most", "answer": categories[best_idx]}
+            "blank_target": "answer",
+            **base,
+            "direction": "most",
+            "answer": categories[best_idx],
+        }
     else:
         m_val = min(values)
         if values.count(m_val) > 1:
@@ -215,7 +278,11 @@ def generate_params(
                         values[i] += scale
         best_idx = values.index(min(values))
         return {
-        "blank_target": "answer",**base, "direction": "least", "answer": categories[best_idx]}
+            "blank_target": "answer",
+            **base,
+            "direction": "least",
+            "answer": categories[best_idx],
+        }
 
 
 # ─── hint generator ───────────────────────────────────────────────────────────

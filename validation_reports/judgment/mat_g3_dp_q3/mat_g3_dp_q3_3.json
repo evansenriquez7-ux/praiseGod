@@ -1,17 +1,40 @@
 {
   "node_id": "mat_g3_dp_q3_3",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the cloze blanking fix, 2026-08-14",
-  "review_date": "2026-08-14",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-DP-Harden (mat_g3_dp_q3_0..mat_g3_dp_q3_4), 2026-08-17",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The samples directly fulfill the competency \"Solve problems using data presented in a single bar graph (horizontal and vertical)\". They prompt the student to solve various mathematical problems based on data from bar graphs, explicitly stating either \"Look at the vertical bar graph\" (e.g., seed 42) or \"Look at the horizontal bar graph\" (e.g., seed 44)."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The questions provide comprehensive coverage of the competency. They explicitly utilize both orientations specified by the curriculum: vertical (e.g., \"Look at the vertical bar graph. How many total items were recorded for apples and mangoes together?\") and horizontal (e.g., \"Look at the horizontal bar graph. How many more items were recorded for dogs than for cats?\"). They also cover multiple problem types including addition, subtraction, and multiplication."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The problem complexity aligns with Grade 3 cognitive capacity. The questions involve basic operations on whole numbers (addition, subtraction, and simple multiplication with money). For instance, finding differences like \"How many more items were recorded for Monday than for Tuesday?\" or simple cost calculations like \"If each item for Grade 2 costs \u20b13, what is the total cost for Grade 2?\" are developmentally appropriate for a third-grader."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples exhibit excellent variant comprehensiveness. Problem structures include finding sums of categories (\"recorded for Grade 2 and Grade 3 together?\"), differences between categories (\"How many more items were recorded for dogs than for cats?\"), conditional scalar additions (\"If 5 more items are added to Art, what will be the new total for Art?\"), and practical word problems involving multiplication/money (\"If each item for basketball costs \u20b110, what is the total cost for basketball?\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The generated items strictly align with the MATATAG curriculum. Every question bounds its context to solving a problem using bar graph data without introducing off-topic concepts. Questions like \"How many more items were recorded for February than for January?\" strictly test the student's ability to extract data from a horizontal bar graph and perform a calculation on it."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical scale of the answers indicates that the data points and resulting calculations are well within Grade 3 limits. Answer values range from single digits (e.g., 5) to small hundreds (e.g., 120, 325, 600), which maps to the arithmetic competencies for Grade 3 (such as multi-digit addition/subtraction and multiplying 2-digit numbers by 1-digit numbers or 10)."
+    }
+  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
-    50,
-    51,
-    68,
     500,
     501,
     502,
@@ -26,7 +49,7 @@
     {
       "seed": 42,
       "formatter": "read_mcq",
-      "question_text": "Look at the bar graph. What is the value for dogs?",
+      "question_text": "Look at the vertical bar graph. How many total items were recorded for apples and mangoes together?",
       "correct_answer": "D",
       "options": [
         {
@@ -36,17 +59,17 @@
         },
         {
           "key": "B",
-          "value": 25,
+          "value": 60,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 27,
+          "value": 31,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 60,
+          "value": 80,
           "is_correct": true
         }
       ]
@@ -54,296 +77,203 @@
     {
       "seed": 43,
       "formatter": "read_mcq",
-      "question_text": "Look at the bar graph. What is the value for grapes?",
+      "question_text": "Look at the vertical bar graph. If each item for basketball costs \u20b110, what is the total cost for basketball?",
       "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 41,
+          "value": 65,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 15,
+          "value": 600,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 14,
+          "value": 45,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 25,
+          "value": 59,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "A bar graph shows 2233 costume sash and 6570 wristband sold at the school stage. How many items were sold in total?",
-      "correct_answer": 8803,
+      "formatter": "read_mcq",
+      "question_text": "Look at the horizontal bar graph. How many more items were recorded for dogs than for cats?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 8802,
-          "text": "8802",
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 8813,
-          "text": "8813",
+          "value": 16,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 8804,
-          "text": "8804",
-          "is_correct": false
+          "value": 20,
+          "is_correct": true
         },
         {
           "key": "D",
-          "value": 8803,
-          "text": "8803",
-          "is_correct": true
+          "value": 23,
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "A bar graph shows 1650 headband and 4444 cap sold at the barangay court. How many items were sold in total?",
-      "correct_answer": 6094,
+      "formatter": "read_mcq",
+      "question_text": "Look at the horizontal bar graph. If each item for Grade 1 costs \u20b110, what is the total cost for Grade 1?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 6095,
+          "value": 25,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 6104,
+          "value": 41,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 6094,
-          "is_correct": true
+          "value": 40,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 6093,
-          "is_correct": false
+          "value": 400,
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 46,
       "formatter": "read_mcq",
-      "question_text": "Look at the bar graph. What is the value for dogs?",
+      "question_text": "Look at the vertical bar graph. How many total items were recorded for Grade 2 and Grade 3 together?",
       "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 43,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 50,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 35,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 5,
+          "value": 100,
           "is_correct": true
         }
       ]
     },
     {
-      "seed": 50,
-      "formatter": "true_false",
-      "question_text": "A bar graph shows 700 fan shirt and 8970 tote bag sold at the music store. How many items were sold in total? The answer is 9669. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 51,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Create a bar graph to show: Monday: 70, Tuesday: 45, Wednesday: 45, Thursday: 15.",
-      "correct_answer": [
-        70,
-        45,
-        45,
-        15
-      ]
-    },
-    {
-      "seed": 68,
-      "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"A bar graph shows 1485 USB drive and 3560 solar toy sold at the school lab. How many items were sold in total?\" Rico says the answer is 5044. Is Rico correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 5045
-      }
-    },
-    {
       "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"A bar graph shows 1 hair tie set and 0 duffel bag sold at the barangay plaza. How many items were sold in total?\" Rico says the answer is 1. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 1
-      }
-    },
-    {
-      "seed": 501,
-      "formatter": "cloze",
-      "question_text": "A bar graph shows 1 bread loaf and 0 cooking apron sold at the bakery. How many items were sold in total?",
-      "correct_answer": 1,
+      "formatter": "read_mcq",
+      "question_text": "Look at the horizontal bar graph. How many more items were recorded for February than for January?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 1,
-          "text": "1",
-          "is_correct": true
+          "value": 45,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 2,
-          "text": "2",
+          "value": 52,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 0,
-          "text": "0",
+          "value": 44,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 11,
-          "text": "11",
+          "value": 20,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "read_mcq",
+      "question_text": "Look at the horizontal bar graph. If each item for tulips costs \u20b110, what is the total cost for tulips?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 550,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 54,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 39,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "mcq",
-      "question_text": "A bar graph shows 0 fan shirt and 1 poster sold at the music store. How many items were sold in total?",
-      "correct_answer": 1,
+      "formatter": "read_mcq",
+      "question_text": "Look at the horizontal bar graph. How many more items were recorded for English than for Science?",
+      "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 11,
+          "value": 60,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 1,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 2,
+          "value": 61,
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 40,
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": 0,
+          "value": 53,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "A bar graph shows 1240 streamer merch shirt and 1690 pin badge sold at the home stream setup. How many items were sold in total?",
-      "correct_answer": 2930,
-      "options": [
-        {
-          "key": "A",
-          "value": 2940,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2929,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2930,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 2931,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Create a bar graph (horizontal bars) to show: Monday: 55, Tuesday: 50, Wednesday: 45, Thursday: 60.",
-      "correct_answer": [
-        55,
-        50,
-        45,
-        60
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "A bar graph shows 8820 fan shirt and 279 wristband sold at the school canteen. How many items were sold in total?",
-      "correct_answer": 9099,
-      "options": [
-        {
-          "key": "A",
-          "value": 9099,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 9098,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8541,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 9109,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Create a bar graph to show: Math: 45, Science: 50, English: 30, Art: 40.",
-      "correct_answer": [
-        45,
-        50,
-        30,
-        40
-      ]
-    },
-    {
-      "seed": 604,
       "formatter": "read_mcq",
-      "question_text": "Look at the bar graph. What is the value for birds?",
+      "question_text": "Look at the horizontal bar graph. How many more items were recorded for volleyball than for running?",
       "correct_answer": "B",
       "options": [
         {
@@ -353,58 +283,160 @@
         },
         {
           "key": "B",
-          "value": 65,
+          "value": 40,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 64,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 37,
+          "value": 31,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "read_mcq",
+      "question_text": "Look at the vertical bar graph. How many more items were recorded for Monday than for Tuesday?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 55,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 52,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 56,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "read_mcq",
+      "question_text": "Look at the horizontal bar graph. If 5 more items are added to Art, what will be the new total for Art?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 29,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 42,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 35,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "read_mcq",
+      "question_text": "Look at the vertical bar graph. How many more items were recorded for roses than for sunflowers?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 40,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 39,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "read_mcq",
+      "question_text": "Look at the vertical bar graph. If each item for Thursday costs \u20b15, what is the total cost for Thursday?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 35,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 325,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 34,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 48,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 605,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Create a bar graph to show: Math: 50, Science: 35, English: 45, Art: 40.",
-      "correct_answer": [
-        50,
-        35,
-        45,
-        40
+      "formatter": "read_mcq",
+      "question_text": "Look at the vertical bar graph. If each item for Grade 2 costs \u20b13, what is the total cost for Grade 2?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 120,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 44,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 45,
+          "is_correct": false
+        }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The graph items do read a single bar graph and are shown with a diagram, for example 'Look at the bar graph. What is the value for dogs?' (seed 42), whose key names option 'D' among four numeric choices. Those four read items only retrieve one bar value, however; they pose no problem to solve. The nine items that do pose a problem, such as 'A bar graph shows 2233 costume sash and 6570 wristband sold at the school stage. How many items were sold in total?' (seed 44), state both data values inside the sentence and render as plain multiple choice or cloze, so the student never reads data off a graph in order to solve."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The sentence names horizontal and vertical, and I looked for both. Found horizontal exactly once, at seed 601, 'Create a bar graph (horizontal bars) to show: Monday: 55, Tuesday: 50, Wednesday: 45, Thursday: 60.', and that is a construction item rather than a problem solved from a graph. Found no sample naming vertical bars in its text at all. Also absent across all 17 seeds is any comparison drawn from the graph, such as how many more or which category has the most: the only graph question type is the single value lookup at seeds 42, 43, 46 and 604, including 'What is the value for birds?'."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Every item is answerable from what it gives and no cloze blank falls on a needed quantity; seed 501 supplies both bar values before asking for the total. The load is uneven, though. Judged as visual items with a diagram, the four bar-reading questions offer numeric choices that sit one unit apart, seed 42 for dogs and seed 604 for birds each pairing two adjacent values, which asks for reading precision a Grade 3 bar graph scale is unlikely to support. At the other extreme seed 502, 'A bar graph shows 0 fan shirt and 1 poster sold at the music store.', is a graph with a bar of height zero and a total of one."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Six presentation types appear across the 17 seeds: bar-graph reading at seed 42, multiple choice at seed 45, cloze at seed 44, true or false at seed 50, error detection in both polarities with 'Rico says the answer is 5044. Is Rico correct?' (seed 68) flagged as wrong against the seed 500 version flagged as right, and graph construction at seeds 51, 601, 603 and 605. Settings also vary, from 'the school stage' to 'the home stream setup'."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Four of the 17 samples ask the student to build a graph rather than to solve a problem using one, for instance 'Create a bar graph to show: Math: 45, Science: 50, English: 30, Art: 40.' (seed 603) and the same shape at seeds 51, 601 and 605. Construction is an activity the sentence does not name; the sentence names solving problems using data already presented. The remaining problem items demand only addition of two stated numbers, which is in grade, but there the phrase 'A bar graph shows' is decorative rather than a presentation of data."
-    },
-    "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The data magnitudes do not hold together inside one Grade 3 Quarter 3 node. Seed 602 puts '8820 fan shirt and 279 wristband' on a bar graph and seed 44 puts 2233 and 6570 on one, which turns the underlying task into 4-digit addition and gives bar heights no Grade 3 graph would plot, while seeds 500, 501 and 502 drop to bars of zero and one, as in 'A bar graph shows 1 bread loaf and 0 cooking apron sold at the bakery.'. Every sum is correct, but a spread from one to nearly nine thousand inside the same node follows no consistent scale."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }

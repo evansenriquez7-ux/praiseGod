@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g3_dp_q3_4",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-DP-Harden (mat_g3_dp_q3_0..mat_g3_dp_q3_4), 2026-08-17",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample questions successfully fulfill the competency by asking students to describe and compare chance events using the exact terminology required. For instance, questions ask students to evaluate the \"chance of picking a red ball?\" or whether an outcome is \"more likely, less likely, or equally likely compared to picking blue?\""
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Coverage is comprehensive across all specified terms. The sample set explicitly tests 'certain' (e.g., \"chance of picking a red ball?\" with only red balls), 'impossible' (e.g., \"chance of rolling the number 7?\"), 'equally likely' (e.g., \"The chances of picking red or blue are ___.\"), 'less/least likely' (e.g., \"Which fish is LEAST likely to be scooped first?\"), and 'more/most likely' (e.g., \"Which outcome is more likely?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The cognitive load is highly appropriate for Grade 3. The contexts (bags of colored balls, spinners, dice, and aquariums) are familiar and concrete. The comparisons rely on basic counting of small quantities, such as comparing \"6 red balls and 4 blue balls\" or \"8 goldfish, 4 guppies, and 1 angelfish\", which easily allows a third grader to conceptualize the relative probabilities without needing formal fractions."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The variants encompass a diverse set of real-life situations. Problem templates include drawing items from bags (\"A bag has 3 red balls and 7 blue balls.\"), spinning spinners (\"A spinner has 5 sections: 3 yellow, 1 red, and 1 green.\"), rolling dice (\"A standard 6-sided die with faces 1 to 6 is rolled.\"), and selecting from groups (\"In an aquarium tank\"). This provides a robust variety of probability models."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The generator aligns strictly with the competency text. It asks for qualitative probability descriptions (e.g., \"equally likely\", \"certain\") and avoids out-of-scope concepts like numerical probabilities, fractions, or percentages, which are typically introduced in later grades. The focus remains tightly bounded to describing outcomes with the mandated vocabulary."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The scale and numbers used in the generation are perfectly appropriate. Quantities are kept small (e.g., 1 to 8 items per category), making it simple for students to immediately grasp the differences in quantity and thus determine the likelihood. The distractor options effectively test the target vocabulary without introducing confusion."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -12,33 +38,35 @@
     500,
     501,
     502,
+    601,
+    603,
     604
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Which event is CERTAIN to happen when you roll a standard number cube (1–6)?",
-      "correct_answer": "Getting a number between 1 and 6.",
+      "question_text": "A bag has 5 red balls and no other colors. What is the chance of picking a red ball?",
+      "correct_answer": "certain",
       "options": [
         {
           "key": "A",
-          "value": "Getting a 7.",
+          "value": "impossible",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "Getting a 10.",
+          "value": "less likely",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "Getting a number between 1 and 6.",
+          "value": "certain",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "Getting a 0.",
+          "value": "equally likely",
           "is_correct": false
         }
       ]
@@ -56,12 +84,12 @@
         },
         {
           "key": "B",
-          "value": "unlikely",
+          "value": "equally likely",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "likely",
+          "value": "less likely",
           "is_correct": false
         },
         {
@@ -74,27 +102,27 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "A bag has 2 yellow marbles and 8 green marbles. Which is LESS likely to be picked?",
-      "correct_answer": "yellow",
+      "question_text": "A spinner has 5 sections: 3 yellow, 1 red, and 1 green. Which color is LEAST likely to be landed on?",
+      "correct_answer": "red or green",
       "options": [
         {
           "key": "A",
-          "value": "they are equally likely",
+          "value": "It is equally likely for all colors.",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "green",
+          "value": "yellow",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "neither",
+          "value": "blue",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "yellow",
+          "value": "red or green",
           "is_correct": true
         }
       ]
@@ -102,27 +130,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "On a sunny day with no clouds, which event is more likely?",
-      "correct_answer": "It stays sunny.",
+      "question_text": "A bag has 3 red balls and 7 blue balls. Is picking red more likely, less likely, or equally likely compared to picking blue?",
+      "correct_answer": "less likely",
       "options": [
         {
           "key": "A",
-          "value": "A tornado happens.",
+          "value": "certain",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "It rains heavily.",
+          "value": "more likely",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "It stays sunny.",
+          "value": "less likely",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "It snows.",
+          "value": "equally likely",
           "is_correct": false
         }
       ]
@@ -130,27 +158,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "It is impossible for it to rain. Under what condition would that be true?",
-      "correct_answer": "when there are no clouds and no moisture in the air",
+      "question_text": "A standard 6-sided die with faces 1 to 6 is rolled. What is the chance of rolling the number 7?",
+      "correct_answer": "impossible",
       "options": [
         {
           "key": "A",
-          "value": "in the morning",
+          "value": "more likely",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "when there are no clouds and no moisture in the air",
+          "value": "impossible",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "when the temperature is warm",
+          "value": "equally likely",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "on a Monday",
+          "value": "certain",
           "is_correct": false
         }
       ]
@@ -158,27 +186,27 @@
     {
       "seed": 500,
       "formatter": "mcq",
-      "question_text": "On a sunny day with no clouds, which event is more likely?",
-      "correct_answer": "It stays sunny.",
+      "question_text": "In an aquarium tank, there are 8 goldfish, 4 guppies, and 1 angelfish. Which fish is LEAST likely to be scooped first?",
+      "correct_answer": "angelfish",
       "options": [
         {
           "key": "A",
-          "value": "It stays sunny.",
+          "value": "angelfish",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "It snows.",
+          "value": "guppy",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "It rains heavily.",
+          "value": "goldfish",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "A tornado happens.",
+          "value": "All fish are equally likely.",
           "is_correct": false
         }
       ]
@@ -186,27 +214,27 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "A spinner has two equal sections: one red and one blue. Spinning red or blue are ___.",
-      "correct_answer": "equally likely",
+      "question_text": "A bag has 6 red balls and 4 blue balls. Is picking red more likely, less likely, or equally likely compared to picking blue?",
+      "correct_answer": "more likely",
       "options": [
         {
           "key": "A",
-          "value": "equally likely",
+          "value": "more likely",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "certain",
+          "value": "impossible",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "blue is more likely",
+          "value": "equally likely",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "red is more likely",
+          "value": "less likely",
           "is_correct": false
         }
       ]
@@ -214,12 +242,68 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "A coin is flipped. The chance of heads and the chance of tails are ___.",
+      "question_text": "A spinner has 3 red sections and 1 blue section. Which outcome is more likely?",
+      "correct_answer": "red",
+      "options": [
+        {
+          "key": "A",
+          "value": "blue",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "red",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "impossible",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "equally likely",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "A bag has 5 red balls and 5 blue balls. The chances of picking red or blue are ___.",
       "correct_answer": "equally likely",
       "options": [
         {
           "key": "A",
-          "value": "heads is more likely",
+          "value": "blue is more likely",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "red is more likely",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "impossible",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "equally likely",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "A spinner is divided into 4 equal quarters: Red, Blue, Yellow, and Green. The chances of landing on any one color are ___.",
+      "correct_answer": "equally likely",
+      "options": [
+        {
+          "key": "A",
+          "value": "impossible",
           "is_correct": false
         },
         {
@@ -229,12 +313,12 @@
         },
         {
           "key": "C",
-          "value": "impossible",
+          "value": "Red is more likely",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "tails is more likely",
+          "value": "Yellow is least likely",
           "is_correct": false
         }
       ]
@@ -242,57 +326,30 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "A bag has 5 red balls and no other colors. What is the chance of picking a red ball?",
-      "correct_answer": "certain",
+      "question_text": "A bag has only blue balls. What is the chance of picking a green ball?",
+      "correct_answer": "impossible",
       "options": [
         {
           "key": "A",
-          "value": "certain",
+          "value": "impossible",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "likely",
+          "value": "more likely",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "impossible",
+          "value": "certain",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "unlikely",
+          "value": "equally likely",
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples use the competency's own vocabulary correctly in context, e.g. seed 43's spinner 'all sections colored red' answered 'certain', and seed 44's marble bag answered 'yellow' as the less-likely color."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "All five named terms appear at least once ('certain' in seed 43/604, 'equally likely' in seed 501/502, 'LESS likely' in seed 44, 'more likely' in seed 45/500, 'impossible' in seed 46), but the competency's own 'less/least likely' and 'more/most likely' pairs are only ever tested in their comparative form — the superlative forms, which require three or more outcomes to distinguish, never appear."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Real-life contexts (dice, spinners, marble bags, weather, a bag of only red balls) are concrete and age-appropriate for Grade 3."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Contexts vary meaningfully across the nine samples — games of chance, weather, and object bags — giving reasonable coverage of 'real-life situations'."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Each sample directly asks the student to classify or compare an outcome's likelihood, matching 'describe and compare outcomes' precisely."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "No numeric scale is implicated by this competency; outcome counts used (2–10 items) are reasonable."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

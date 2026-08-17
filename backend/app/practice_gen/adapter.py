@@ -284,6 +284,7 @@ _DNA_INSTANCE_ATTR: Dict[str, str] = {
     "pictographs":        "PICTOGRAPHS_DNA",
     "bar_graphs":         "BAR_GRAPHS_DNA",
     "probability_language":"PROBABILITY_LANGUAGE_DNA",
+    "probability_experiment": "PROBABILITY_EXPERIMENT_DNA",
 }
 
 

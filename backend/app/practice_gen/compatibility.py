@@ -430,6 +430,13 @@ COMPATIBILITY: Dict[str, List[str]] = {
     "probability_language": [
         "mcq",
     ],
+
+    "probability_experiment": [
+        "mcq",
+        "cloze",
+        "true_false",
+        "error_detect",
+    ],
 }
 
 
@@ -720,13 +727,13 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "bar_graphs": {
-        "task_type": ["read_value", "compare_bars", "find_total", "find_difference", "find_most_least"],
-        "orientation": ["vertical", "horizontal"],
+        "task_type": ["read_value", "compare_bars", "find_total", "find_difference", "find_most_least", "present_data", "solve_problem"],
+        "orientation": ["vertical", "horizontal", "table"],
         "scale": ["scale_5", "scale_10", "scale_20"],
     },
 
     "probability_language": {
-        "scenario_type": ["certain_impossible", "likely_unlikely", "comparative"],
+        "scenario_type": ["certain_impossible", "equally_likely", "comparative", "superlative", "likely_unlikely"],
         "context": ["colored_objects", "coins", "spinners", "weather"],
     },
 }
@@ -1118,8 +1125,8 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     },
 
     "bar_graphs": {
-        "bar_chart_read": {},  # all task types
-        "bar_chart_set": {"task_type": ["read_value"]},  # set mode is simpler
+        "bar_chart_read": {"task_type": ["read_value", "compare_bars", "find_total", "find_difference", "find_most_least", "solve_problem"]},
+        "bar_chart_set": {"task_type": ["present_data"]},
     },
 }
 

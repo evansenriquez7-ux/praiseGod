@@ -200,6 +200,8 @@ def format_bar_chart(
     """
     # ── 1. Resolve visual_params ───────────────────────────────────────────────
     vocab_set = set(ctx.cumulative_vocab or [])
+    if "bar graph" in (ctx.competency_text or "").lower():
+        vocab_set.add("bar graph")
     bg_lbl = VocabGated("bar graph", "bar graph", "graph").resolve(vocab_set)
     dbg_lbl = VocabGated("bar graph", "double bar graph", "graph").resolve(vocab_set)
 
@@ -254,25 +256,37 @@ def format_bar_chart(
     ask_idx = 0
     ask_series = series_labels[0] if series_labels else None
 
+    orientation = vp.get("orientation", "vertical")
+    if orientation == "table":
+        bg_full_lbl = "table"
+        dbg_full_lbl = "table"
+    else:
+        orient_lbl = f"{orientation} " if orientation in ("vertical", "horizontal") else ""
+        bg_full_lbl = f"{orient_lbl}{bg_lbl}"
+        dbg_full_lbl = f"{orient_lbl}{dbg_lbl}"
+
     if interaction_mode == "read":
         vp["is_read_mode"] = True
-        if task_type in ("compare_bars", "compare"):
+        if task_type == "solve_problem" and ctx.values and "problem_question" in ctx.values:
+            correct_value = ctx.correct_answer if ctx.correct_answer is not None else ctx.values["answer"]
+            question_text = f"Look at the {bg_full_lbl}. {ctx.values['problem_question']}"
+        elif task_type in ("compare_bars", "compare"):
             comp_a = ctx.values.get("compare_a", categories[0])
             comp_b = ctx.values.get("compare_b", categories[1])
             correct_value = ctx.correct_answer if ctx.correct_answer is not None else (comp_a if values[categories.index(comp_a)] >= values[categories.index(comp_b)] else comp_b)
-            question_text = f"Look at the {bg_lbl}. Which is greater: {comp_a} or {comp_b}?"
+            question_text = f"Look at the {bg_full_lbl}. Which is greater: {comp_a} or {comp_b}?"
         elif task_type == "find_total":
             correct_value = ctx.correct_answer if ctx.correct_answer is not None else sum(values)
-            question_text = f"Look at the {bg_lbl}. What is the total value of all categories?"
+            question_text = f"Look at the {bg_full_lbl}. What is the total value of all categories?"
         elif task_type == "find_difference":
             comp_a = ctx.values.get("compare_a", categories[0])
             comp_b = ctx.values.get("compare_b", categories[1])
             correct_value = ctx.correct_answer if ctx.correct_answer is not None else abs(values[categories.index(comp_a)] - values[categories.index(comp_b)])
-            question_text = f"Look at the {bg_lbl}. What is the difference between {comp_a} and {comp_b}?"
+            question_text = f"Look at the {bg_full_lbl}. What is the difference between {comp_a} and {comp_b}?"
         elif task_type == "find_most_least":
             direction = ctx.values.get("direction", "most")
             correct_value = ctx.correct_answer if ctx.correct_answer is not None else (categories[values.index(max(values))] if direction == "most" else categories[values.index(min(values))])
-            question_text = f"Look at the {bg_lbl}. Which category has the {direction}?"
+            question_text = f"Look at the {bg_full_lbl}. Which category has the {direction}?"
         else:
             if ctx.values and "question_category" in ctx.values and ctx.values["question_category"] in categories:
                 ask_cat = ctx.values["question_category"]
@@ -284,16 +298,18 @@ def format_bar_chart(
             vp["ask_series"] = ask_series
             if values2 and ask_series:
                 correct_value = values[ask_idx] if ask_series == series_labels[0] else values2[ask_idx]
-                question_text = f"Look at the {dbg_lbl}. What is the value for {ask_cat} in {ask_series}?"
+                question_text = f"Look at the {dbg_full_lbl}. What is the value for {ask_cat} in {ask_series}?"
             else:
                 correct_value = values[ask_idx]
-                question_text = f"Look at the {bg_lbl}. What is the value for {ask_cat}?"
+                question_text = f"Look at the {bg_full_lbl}. What is the value for {ask_cat}?"
     else:
         vp["is_read_mode"] = False
         correct_value = values if not values2 else [values, values2]
         data_str = ", ".join(f"{categories[i]}: {values[i]}" for i in range(len(categories)))
-        orient_hint = " (horizontal bars)" if vp.get("orientation") == "horizontal" else ""
-        question_text = f"Create a {bg_lbl}{orient_hint} to show: {data_str}."
+        if orientation == "table":
+            question_text = f"Complete the table to show: {data_str}."
+        else:
+            question_text = f"Create a {bg_full_lbl} to show: {data_str}."
 
     # ── 4. Answer collection ──────────────────────────────────────────────────
     mcq_options = None

@@ -305,17 +305,17 @@ def format_error_detect(ctx: QuestionContext, rng: random.Random) -> FormattedPr
             f'{actor} says the {miss_lbl} is {actors_answer}. '
             f'Is {actor} correct?'
         )
-    elif context_variant == "pure":
-        actor_statement = f"{problem_text} = {actors_answer}"
-        question_text = (
-            f"{actor} says: {actor_statement}. "
-            f"Is {actor} correct?"
-        )
-    else:
+    elif problem_text.strip().endswith("?") or context_variant != "pure":
         question_text = (
             f'{actor} solved this problem: "{problem_text}" '
             f'{actor} says the answer is {actors_answer}. '
             f'Is {actor} correct?'
+        )
+    else:
+        actor_statement = f"{problem_text} = {actors_answer}"
+        question_text = (
+            f"{actor} says: {actor_statement}. "
+            f"Is {actor} correct?"
         )
 
     # correct_answer encodes both parts

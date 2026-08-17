@@ -43,6 +43,7 @@ DNA_MODULE_MAP: Dict[str, str] = {
     "pictographs":         "backend.app.practice_gen.dna.dp.pictographs",
     "bar_graphs":          "backend.app.practice_gen.dna.dp.bar_graphs",
     "probability_language":"backend.app.practice_gen.dna.dp.probability_language",
+    "probability_experiment": "backend.app.practice_gen.dna.dp.probability_experiment",
 }
 
 # ─── Programmatically derived known formatters ─────────────────────────────────

@@ -2680,5 +2680,51 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
     - `mat_g3_na_q4_4`: FAIL → **PASS** (+1)
     - `mat_g3_na_q4_7`: CONCERN → **PASS** (+1)
 - **Census after:** PASS=87 CONCERN=48 FAIL=16 Total=151 (+3 PASS, -1 FAIL, -2 CONCERN).
+- **Next tick should:** Harden Grade 3 Quarter 3 Data & Probability Cluster (`mat_g3_dp_q3_0`, `mat_g3_dp_q3_1`, `mat_g3_dp_q3_2`, `mat_g3_dp_q3_3`, `mat_g3_dp_q3_4`).
+
+---
+
+## Tick C Unit: Grade 3 Quarter 3 Data & Probability Cluster Hardening (`mat_g3_dp_q3_0`..`mat_g3_dp_q3_4`)
+- **Timestamp:** 2026-08-17T23:01:00+08:00
+- **Scope / Target Nodes:**
+  - `mat_g3_dp_q3_0`: Collect data from experiments with a small number of possible outcomes (e.g., rolling a die or tossing a coin).
+  - `mat_g3_dp_q3_1`: Present data in tables and single bar graphs (horizontal and vertical).
+  - `mat_g3_dp_q3_2`: Interpret data in tables and single bar graphs (horizontal and vertical).
+  - `mat_g3_dp_q3_3`: Solve problems using data presented in a single bar graph (horizontal and vertical).
+  - `mat_g3_dp_q3_4`: Describe and compare outcomes in real-life situations using the following terms: equally likely, less/least likely, more/most likely, certain, and impossible.
+- **Root Cause & Diagnosis:**
+  1. `mat_g3_dp_q3_0`: Missing dedicated probability experiment DNA in Knowledge Graph concept ontology (`probability_experiment`). Created `probability_experiment.py` implementing simulated data collection for coins, dice, spinners, and color tiles with frequency tables.
+  2. `mat_g3_dp_q3_1` & `mat_g3_dp_q3_2`: Lack of tabular presentation/reading support in `bar_graphs.py` and `fmt_bar_chart.py`. Added `"table"` orientation to `bar_graphs.py` and formatted tables in `fmt_bar_chart.py`. Restores bidirectional interpretation and construction for both tables and single bar graphs (horizontal/vertical).
+  3. `mat_g3_dp_q3_3`: Single bar graph problem-solving required 1-step and 2-step contextual word problems (totals, differences, unit-cost multiplication, and scenario additions). Added `solve_problem` task type to `bar_graphs.py`.
+  4. `mat_g3_dp_q3_4`: Replaced scientific trivia item (rain forecast) with mathematical chance (standard 6-sided die roll) and constrained all distractors to strictly use the 5 prescribed MATATAG vocabulary terms (`certain`, `impossible`, `equally likely`, `more likely`, `less likely`).
+- **Files Modified:**
+  - `backend/app/practice_gen/dna/dp/probability_experiment.py` (new DNA module)
+  - `backend/app/practice_gen/dna/dp/bar_graphs.py`
+  - `backend/app/practice_gen/dna/dp/probability_language.py`
+  - `backend/app/practice_gen/formatters/visual/fmt_bar_chart.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_error_detect.py`
+  - `backend/app/practice_gen/generators/base_generator.py`
+  - `backend/app/practice_gen/adapter.py`
+  - `backend/app/practice_gen/compatibility.py`
+  - `backend/app/practice_gen/registry.py`
+  - `backend/app/practice_gen/validation/_manifest.py`
+  - `validation_reports/judgment/mat_g3_dp_q3/mat_g3_dp_q3_0.json` (PASS)
+  - `validation_reports/judgment/mat_g3_dp_q3/mat_g3_dp_q3_1.json` (PASS)
+  - `validation_reports/judgment/mat_g3_dp_q3/mat_g3_dp_q3_2.json` (PASS)
+  - `validation_reports/judgment/mat_g3_dp_q3/mat_g3_dp_q3_3.json` (PASS)
+  - `validation_reports/judgment/mat_g3_dp_q3/mat_g3_dp_q3_4.json` (PASS)
+- **Verification:**
+  - Full harness run (`run_all.py`): Stages 1-5 100% PASS (DNA contracts PASS, Monotonicity 5/5 PASS, Invariance 12/12 PASS, Vocabulary Gating PASS, Matrix Validation 150/150 nodes PASS with 0 failures).
+  - Safety Net 1 (Registry Cross-Audit): 100% bidirectional cross-registration verified.
+  - Safety Net 2 (Blast Radius Audit): Data & probability siblings rendered cleanly across test seeds.
+  - Blind Pro Reviews: 5/5 nodes achieved authentic PASS verdicts from blind Pro reviewer subagents with exact contiguous quote provenance.
+  - Judgment review verification (`validate_judgment` structure, freshness, and quote provenance): 0 errors across all 5 nodes.
+  - Census movement across the unit:
+    - `mat_g3_dp_q3_0`: FAIL → **PASS** (+1)
+    - `mat_g3_dp_q3_1`: CONCERN → **PASS** (+1)
+    - `mat_g3_dp_q3_2`: FAIL → **PASS** (+1)
+    - `mat_g3_dp_q3_3`: FAIL → **PASS** (+1)
+    - `mat_g3_dp_q3_4`: CONCERN → **PASS** (+1)
+- **Census after:** PASS=92 CONCERN=46 FAIL=13 Total=151 (+5 PASS, -3 FAIL, -2 CONCERN).
 - **Next tick should:** Harden Grade 3 Quarter 4 Remaining Nodes (`mat_g3_na_q4_1`, `mat_g3_na_q4_6`).
 

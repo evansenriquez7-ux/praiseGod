@@ -686,7 +686,18 @@ def _parse_competency_bounds(
     # explicit 2-item allow-list (registry bounds accept lists, not just
     # single values -- same mechanism as missing_number's "tables" bound).
     elif dna_name == "probability_language" and "compare" in text and "less" in text and "more" in text:
-        bounds["scenario_type"] = ["certain_impossible", "comparative"]
+        bounds["scenario_type"] = ["certain_impossible", "equally_likely", "comparative", "superlative"]
+
+    elif dna_name == "bar_graphs":
+        if "solve" in text:
+            bounds["task_type"] = "solve_problem"
+            bounds["orientation"] = ["vertical", "horizontal"]
+        elif "present" in text:
+            bounds["task_type"] = "present_data"
+            bounds["orientation"] = ["vertical", "horizontal", "table"]
+        elif "interpret" in text:
+            bounds["task_type"] = "interpret_data"
+            bounds["orientation"] = ["vertical", "horizontal", "table"]
 
     # Area: bind task_type per node -- the DNA's own default
     # (task_type="find_area") silently governed every unbound node, so
@@ -2104,12 +2115,12 @@ BINDINGS = {
         "visual": "shape_board"
     },
     "mat_g3_dp_q3_0": {
-        "dna": "pictographs",
-        "visual": "pictograph_read"
+        "dna": "probability_experiment",
+        "visual": "mcq"
     },
     "mat_g3_dp_q3_1": {
         "dna": "bar_graphs",
-        "visual": "bar_chart_read"
+        "visual": "bar_chart_set"
     },
     "mat_g3_dp_q3_2": {
         "dna": "bar_graphs",
@@ -2640,10 +2651,10 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     # GRADE 3 — Data & Probability
     # ────────────────────────────────────────────────────────────────────────
 
-    "mat_g3_dp_q3_0": ["pictographs", "bar_graphs"],
+    "mat_g3_dp_q3_0": ["probability_experiment"],
     "mat_g3_dp_q3_1": ["bar_graphs"],
     "mat_g3_dp_q3_2": ["bar_graphs"],
-    "mat_g3_dp_q3_3": ["bar_graphs", "addition"],
+    "mat_g3_dp_q3_3": ["bar_graphs"],
     "mat_g3_dp_q3_4": ["probability_language"],
 }
 

@@ -1,125 +1,168 @@
 {
   "node_id": "mat_g3_dp_q3_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (dp pictographs re-review), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-DP-Harden (mat_g3_dp_q3_0..mat_g3_dp_q3_4), 2026-08-17",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The generator successfully creates scenarios that simulate the results of data collection from simple experiments. Questions like \"How many times did the coin land on Heads?\" adequately assess the student's ability to engage with collected experimental data within a digital assessment format, directly satisfying the core verb and context of the competency."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The samples cover the full breadth of the competency. They include different types of experiments (coins, spinners, tiles) and require students to perform various operations on the data: direct extraction (\"How many times was a Blue tile drawn?\"), summation (\"What is the total number of spins in the experiment?\"), comparison (\"How many more times did Heads land than Tails?\"), and finding the maximum (\"Which color was landed on most often?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The items are cognitively appropriate for Grade 3, Quarter 3. The mathematics required involves basic reading of small numbers and simple arithmetic (addition and subtraction within 30), which does not distract from the primary data handling task. For example, calculating the sum from \"Heads (6), Tails (6)\" to find total tosses is perfectly aligned with their capacity."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "There is excellent variant diversity. Contexts vary across coin tosses, spinners, and drawing tiles. The generator also makes great use of multiple formatter types, including mcq, cloze, true_false, and error_detect (e.g., asking \"Is Rico correct?\" after presenting a simulated student's work)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The content strictly aligns with the competency's constraint of \"experiments with a small number of possible outcomes\". The generators use contexts explicitly mentioned in the competency or closely related ones (e.g., \"coin toss experiment\", \"spinner experiment\", \"tile was picked\")."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The scales used are realistic and perfectly suited for Grade 3. The total number of trials in the experiments ranges from 10 to 25 (e.g., \"A student spun a spinner 24 times\", \"A coin was tossed 10 times\"), ensuring the data sets are \"small\" as dictated by the competency."
+    }
+  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
+    50,
+    55,
     500,
     501,
-    502,
-    600,
-    601,
-    602,
-    603,
-    604,
-    605
+    502
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Each 🐾 = 10. How many pupils chose dogs?",
-      "correct_answer": "C",
+      "formatter": "mcq",
+      "question_text": "A coin toss experiment was conducted with 15 tosses. The results are: Heads: 5, Tails: 10. How many times did the coin land on Heads?",
+      "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": 40,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 30,
+          "value": 5,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 20,
+          "value": 15,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Each 🍎 = 2. How many apples were counted?",
-      "correct_answer": "B",
+      "formatter": "mcq",
+      "question_text": "A coin toss experiment was conducted with 12 tosses. The results are: Heads: 9, Tails: 3. How many times did the coin land on Tails?",
+      "correct_answer": 3,
       "options": [
         {
           "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
+          "value": 3,
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 6,
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 8,
+          "value": 9,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Create a graph to show: Grade 1: 15, Grade 2: 15, Grade 3: 15, Grade 4: 5.",
-      "correct_answer": [
-        15,
-        15,
-        15,
-        5
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "read_mcq",
-      "question_text": "Look at the graph. What is the value for swimming?",
-      "correct_answer": "D",
+      "formatter": "cloze",
+      "question_text": "In a probability experiment, a tile was picked from a bag and replaced 10 times. Results: Red tile: 2, Blue tile: 5, Green tile: 3. How many times was a Blue tile drawn?",
+      "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": 9,
+          "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 15,
+          "value": 2,
+          "text": "2",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 8,
+          "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 5,
+          "text": "5",
           "is_correct": true
         }
       ]
     },
     {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "A student spun a spinner 24 times and recorded: Red: 14, Blue: 4, Green: 4, Yellow: 2. How many times did the spinner land on Red?",
+      "correct_answer": 14,
+      "options": [
+        {
+          "key": "A",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 14,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
+    },
+    {
       "seed": 46,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Each 🐾 = 2. How many pupils chose dogs?",
-      "correct_answer": "B",
+      "formatter": "mcq",
+      "question_text": "A coin was tossed 10 times. Heads occurred 6 times and Tails occurred 4 times. How many more times did Heads land than Tails?",
+      "correct_answer": 2,
       "options": [
         {
           "key": "A",
@@ -133,264 +176,99 @@
         },
         {
           "key": "C",
-          "value": 4,
+          "value": 1,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 1,
+          "value": 3,
           "is_correct": false
         }
       ]
     },
     {
+      "seed": 50,
+      "formatter": "true_false",
+      "question_text": "In a probability experiment, a tile was picked from a bag and replaced 20 times. Results: Red tile: 10, Blue tile: 3, Green tile: 7. How many times was a Blue tile drawn? The answer is 4. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
+      "formatter": "error_detect",
+      "question_text": "Grace solved this problem: \"A student recorded coin toss results in a table: Heads (6), Tails (6). How many total tosses were recorded in the experiment?\" Grace says the answer is 6. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 12
+      }
+    },
+    {
       "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Create a graph to show: January: 45, February: 40, March: 25, April: 35, May: 20, June: 10.",
-      "correct_answer": [
-        45,
-        40,
-        25,
-        35,
-        20,
-        10
-      ]
+      "formatter": "error_detect",
+      "question_text": "Rico solved this problem: \"In a probability experiment, a tile was picked from a bag and replaced 25 times. Results: Red tile: 10, Blue tile: 7, Green tile: 8. How many times was a Green tile drawn?\" Rico says the answer is 8. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 8
+      }
     },
     {
       "seed": 501,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Create a graph to show: basketball: 30, volleyball: 20, swimming: 30, running: 30, cycling: 45, tennis: 30.",
-      "correct_answer": [
-        30,
-        20,
-        30,
-        30,
-        45,
-        30
+      "formatter": "cloze",
+      "question_text": "A spinner with colored sections was spun 24 times. The outcomes recorded are: Red: 14, Blue: 6, Green: 4. Which color was landed on most often?",
+      "correct_answer": "Red",
+      "options": [
+        {
+          "key": "A",
+          "value": "Red",
+          "text": "Red",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Orange",
+          "text": "Orange",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Green",
+          "text": "Green",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Blue",
+          "text": "Blue",
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 502,
-      "formatter": "read_mcq",
-      "question_text": "Look at the graph. What is the value for lilies?",
-      "correct_answer": "C",
+      "formatter": "mcq",
+      "question_text": "A spinner experiment recorded these outcomes: Red: 3, Blue: 8, Green: 7, Yellow: 2. What is the total number of spins in the experiment?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "C",
           "value": 22,
           "is_correct": false
         },
         {
-          "key": "B",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": true
-        },
-        {
           "key": "D",
-          "value": 6,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "read_mcq",
-      "question_text": "Look at the graph. What is the value for basketball?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Each 📚 = 2. How many pupils voted for Art?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 16,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "read_mcq",
-      "question_text": "Look at the graph. What is the value for Grade 4?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 0,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Each 🎨 = 2. How many pupils chose red?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 18,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Each 🐾 = 2. How many pupils chose fish?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 12,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. How many pupils chose red?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 8,
+          "value": 17,
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The competency explicitly requires students to 'Collect data from experiments with a small number of possible outcomes (e.g., rolling a die or tossing a coin).' The provided samples completely fail to fulfill this requirement. Instead, they present tasks on reading and creating categorical graphs, such as Seed 42: 'Look at the picture graph. Each 🐾 = 10. How many pupils chose dogs?' or Seed 44: 'Create a graph to show: Grade 1: 15...'. No experimental data collection or probability scenarios are present."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "There is a complete lack of coverage for the required competency. The samples provide zero representation of experiments, rolling dice, tossing coins, or recording experimental outcomes. All generated questions cover categorical data representation instead."
-    },
-    "cognitive_capacity": {
-      "verdict": "FAIL",
-      "rationale": "While the numerical scaling (e.g., counting by 2s and 10s) may be appropriate for Grade 3 mathematics in general, the cognitive task of understanding and recording outcomes of random experiments is entirely absent. The current tasks measure an unrelated cognitive skill (graph interpretation)."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "The generator uses `read_mcq` and `set_fill_in_blank` to present various categorical subjects ('dogs', 'apples', 'swimming', 'basketball'), but produces exactly zero variants related to experimental outcomes like coin flips (heads/tails), dice rolls (1-6), or spinners. It lacks the required variants entirely."
-    },
-    "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "The generator is wholly misaligned. It is clearly hooked up to logic meant for a data interpretation/graphing competency (interpreting pictographs and bar graphs) rather than the probability and experiments competency specified for mat_g3_dp_q3_0."
-    },
-    "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "Although scaled pictographs (e.g., 'Each 🍎 = 2') are appropriately scoped for Grade 3 data handling, they are misapplied here. The competency requires handling small sets of experimental outcomes, which makes applying graph scales to categorical survey data inappropriate for the stated learning goals."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }

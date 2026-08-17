@@ -57,7 +57,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A bag has 5 red balls and no other colors. What is the chance of picking a red ball?",
         "answer": "certain",
-        "distractors": ["impossible", "likely", "unlikely"],
+        "distractors": ["impossible", "equally likely", "less likely"],
         "scenario_type": "certain_impossible",
         "context": "colored_objects",
         "probability_term": "certain",
@@ -65,7 +65,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A bag has only blue balls. What is the chance of picking a green ball?",
         "answer": "impossible",
-        "distractors": ["certain", "likely", "equally likely"],
+        "distractors": ["certain", "more likely", "equally likely"],
         "scenario_type": "certain_impossible",
         "context": "colored_objects",
         "probability_term": "impossible",
@@ -73,7 +73,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "You flip a coin. What is the chance of getting either heads OR tails?",
         "answer": "certain",
-        "distractors": ["impossible", "likely", "unlikely"],
+        "distractors": ["impossible", "equally likely", "less likely"],
         "scenario_type": "certain_impossible",
         "context": "coins",
         "probability_term": "certain",
@@ -81,7 +81,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "You flip a regular coin. What is the chance of getting the number 3?",
         "answer": "impossible",
-        "distractors": ["certain", "likely", "equally likely"],
+        "distractors": ["certain", "more likely", "equally likely"],
         "scenario_type": "certain_impossible",
         "context": "coins",
         "probability_term": "impossible",
@@ -89,7 +89,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A spinner has all sections colored red. What is the chance of landing on red?",
         "answer": "certain",
-        "distractors": ["impossible", "unlikely", "likely"],
+        "distractors": ["impossible", "equally likely", "less likely"],
         "scenario_type": "certain_impossible",
         "context": "spinners",
         "probability_term": "certain",
@@ -97,20 +97,17 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A spinner has all sections colored blue. What is the chance of landing on red?",
         "answer": "impossible",
-        "distractors": ["certain", "likely", "unlikely"],
+        "distractors": ["certain", "more likely", "equally likely"],
         "scenario_type": "certain_impossible",
         "context": "spinners",
         "probability_term": "impossible",
     },
     {
-        # "(choose the correct word)" told the student to expect a single
-        # word, but the keyed answer is a full clause -- an instruction/
-        # answer type mismatch (blind review of mat_g3_dp_q3_4).
-        "question": "It is impossible for it to rain. Under what condition would that be true?",
-        "answer": "when there are no clouds and no moisture in the air",
-        "distractors": ["on a Monday", "when the temperature is warm", "in the morning"],
+        "question": "A standard 6-sided die with faces 1 to 6 is rolled. What is the chance of rolling the number 7?",
+        "answer": "impossible",
+        "distractors": ["certain", "equally likely", "more likely"],
         "scenario_type": "certain_impossible",
-        "context": "weather",
+        "context": "coins",
         "probability_term": "impossible",
     },
     # ── likely / unlikely ─────────────────────────────────────────────────────
@@ -183,7 +180,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "question": "A bag has 5 red balls and 5 blue balls. The chances of picking red or blue are ___.",
         "answer": "equally likely",
         "distractors": ["red is more likely", "blue is more likely", "impossible"],
-        "scenario_type": "comparative",
+        "scenario_type": "equally_likely",
         "context": "colored_objects",
         "probability_term": "equally likely",
     },
@@ -191,7 +188,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "question": "A coin is flipped. The chance of heads and the chance of tails are ___.",
         "answer": "equally likely",
         "distractors": ["heads is more likely", "tails is more likely", "impossible"],
-        "scenario_type": "comparative",
+        "scenario_type": "equally_likely",
         "context": "coins",
         "probability_term": "equally likely",
     },
@@ -199,11 +196,27 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "question": "A spinner has two equal sections: one red and one blue. Spinning red or blue are ___.",
         "answer": "equally likely",
         "distractors": ["red is more likely", "blue is more likely", "certain"],
-        "scenario_type": "comparative",
+        "scenario_type": "equally_likely",
         "context": "spinners",
         "probability_term": "equally likely",
     },
-    # ── comparative ───────────────────────────────────────────────────────────
+    {
+        "question": "A box has 6 red crayons and 6 green crayons. Picking a red crayon and picking a green crayon are ___.",
+        "answer": "equally likely",
+        "distractors": ["red is more likely", "green is more likely", "impossible"],
+        "scenario_type": "equally_likely",
+        "context": "colored_objects",
+        "probability_term": "equally likely",
+    },
+    {
+        "question": "A spinner is divided into 4 equal quarters: Red, Blue, Yellow, and Green. The chances of landing on any one color are ___.",
+        "answer": "equally likely",
+        "distractors": ["Red is more likely", "Yellow is least likely", "impossible"],
+        "scenario_type": "equally_likely",
+        "context": "spinners",
+        "probability_term": "equally likely",
+    },
+    # ── comparative (more likely / less likely) ────────────────────────────────
     {
         "question": "A bag has 7 red balls and 3 blue balls. Which color is MORE likely to be picked?",
         "answer": "red",
@@ -264,16 +277,28 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "context": "colored_objects",
         "probability_term": "less likely",
     },
-    # "most likely"/"least likely" (superlative, 3+ outcomes) were never
-    # represented at all -- every existing "comparative" item is a 2-way
-    # more/less/equally comparison (blind review of mat_g3_dp_q3_4:
-    # comprehensive_coverage FAIL, these two named terms never appear
-    # anywhere in the sample set).
+    {
+        "question": "A bag has 3 yellow counters and 7 red counters. Picking a yellow counter is ___ compared to picking a red counter.",
+        "answer": "less likely",
+        "distractors": ["more likely", "equally likely", "certain"],
+        "scenario_type": "comparative",
+        "context": "colored_objects",
+        "probability_term": "less likely",
+    },
+    {
+        "question": "A spinner has 1 green section and 4 purple sections. Landing on green is ___ than landing on purple.",
+        "answer": "less likely",
+        "distractors": ["more likely", "equally likely", "impossible"],
+        "scenario_type": "comparative",
+        "context": "spinners",
+        "probability_term": "less likely",
+    },
+    # ── superlative (most likely / least likely) ──────────────────────────────
     {
         "question": "A bag has 6 red balls, 3 blue balls, and 1 green ball. Which color is MOST likely to be picked?",
         "answer": "red",
         "distractors": ["blue", "green", "It is equally likely for all colors."],
-        "scenario_type": "comparative",
+        "scenario_type": "superlative",
         "context": "colored_objects",
         "probability_term": "most likely",
     },
@@ -281,7 +306,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "question": "A spinner has 5 sections: 3 yellow, 1 red, and 1 green. Which color is LEAST likely to be landed on?",
         "answer": "red or green",
         "distractors": ["yellow", "It is equally likely for all colors.", "blue"],
-        "scenario_type": "comparative",
+        "scenario_type": "superlative",
         "context": "spinners",
         "probability_term": "least likely",
     },
@@ -289,10 +314,51 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "question": "A box has 8 pencils, 5 pens, and 2 erasers. Which item is MOST likely to be picked at random?",
         "answer": "pencil",
         "distractors": ["pen", "eraser", "It is equally likely for all items."],
-        "scenario_type": "comparative",
+        "scenario_type": "superlative",
         "context": "colored_objects",
         "probability_term": "most likely",
     },
+    {
+        "question": "A jar contains 10 green marbles, 4 blue marbles, and 1 red marble. Which marble color is MOST likely to be drawn at random?",
+        "answer": "green",
+        "distractors": ["blue", "red", "All colors are equally likely."],
+        "scenario_type": "superlative",
+        "context": "colored_objects",
+        "probability_term": "most likely",
+    },
+    {
+        "question": "A box has 9 mangoes, 5 apples, and 1 orange. Which fruit is LEAST likely to be chosen without looking?",
+        "answer": "orange",
+        "distractors": ["mango", "apple", "All fruits are equally likely."],
+        "scenario_type": "superlative",
+        "context": "colored_objects",
+        "probability_term": "least likely",
+    },
+    {
+        "question": "A spinner is divided into 6 equal parts: 3 are red, 2 are blue, and 1 is green. Which color is LEAST likely to be landed on?",
+        "answer": "green",
+        "distractors": ["red", "blue", "All colors are equally likely."],
+        "scenario_type": "superlative",
+        "context": "spinners",
+        "probability_term": "least likely",
+    },
+    {
+        "question": "In a classroom box, there are 12 math cards, 6 science cards, and 2 art cards. Which card type is MOST likely to be picked?",
+        "answer": "math card",
+        "distractors": ["science card", "art card", "All card types are equally likely."],
+        "scenario_type": "superlative",
+        "context": "colored_objects",
+        "probability_term": "most likely",
+    },
+    {
+        "question": "In an aquarium tank, there are 8 goldfish, 4 guppies, and 1 angelfish. Which fish is LEAST likely to be scooped first?",
+        "answer": "angelfish",
+        "distractors": ["goldfish", "guppy", "All fish are equally likely."],
+        "scenario_type": "superlative",
+        "context": "colored_objects",
+        "probability_term": "least likely",
+    },
+    # ── certain / impossible ──────────────────────────────────────────────────
     {
         "question": "Which event is CERTAIN to happen when you roll a standard number cube (1–6)?",
         "answer": "Getting a number between 1 and 6.",
@@ -323,36 +389,18 @@ def generate_params(
     rng = random.Random(seed)
     profile = difficulty_profile or {}
 
-    # "Describe and compare outcomes... using: equally likely, less/least
-    # likely, more/most likely, certain, and impossible" (mat_g3_dp_q3_4)
-    # names all three implemented scenario_types worth of vocabulary, but
-    # this always defaulted to "certain_impossible" alone when unbound --
-    # the "comparative" pool (equally/less/more likely) and "likely_
-    # unlikely" pool existed but were never once selected (blind review:
-    # comprehensive_coverage FAIL, "only 2 of the 5 named terms appear...
-    # 'equally likely', 'less/least likely', and 'more/most likely' never
-    # occur"). Same fix for "context", which also silently pinned to
-    # "colored_objects" every time.
     scenario_type = profile.get("scenario_type")
     if isinstance(scenario_type, list):
-        # registry.py binds an allow-list (not a single value) for
-        # competencies whose named vocabulary excludes one of this DNA's
-        # scenario_types (e.g. mat_g3_dp_q3_4 excludes "likely_unlikely" --
-        # bare "likely"/"unlikely" isn't among its own named terms).
-        # Orchestrator-level list resolution only fires for CALLER-supplied
-        # difficulty_profile keys, not ones injected later from registry
-        # bounds, so this DNA has to resolve it itself.
         scenario_type = rng.choice(scenario_type)
     elif not scenario_type:
-        scenario_type = rng.choice(["certain_impossible", "likely_unlikely", "comparative"])
-    context = profile.get("context") or rng.choice(
-        ["colored_objects", "coins", "spinners", "weather"]
-    )
+        scenario_type = rng.choice(["certain_impossible", "equally_likely", "comparative", "superlative"])
+
+    context = profile.get("context")
 
     candidates = [
         item for item in _ITEM_POOL
         if item["scenario_type"] == scenario_type
-        and item["context"] == context
+        and (context is None or item["context"] == context)
     ]
     if not candidates:
         candidates = [item for item in _ITEM_POOL if item["scenario_type"] == scenario_type]

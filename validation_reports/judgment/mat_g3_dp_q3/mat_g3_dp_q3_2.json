@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g3_dp_q3_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-DP-Harden (mat_g3_dp_q3_0..mat_g3_dp_q3_4), 2026-08-17",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The samples successfully fulfill the competency by asking students to interpret data to find specific values (\"What is the value for bananas?\"), calculate totals (\"What is the total value of all categories?\"), determine maximums and minimums (\"Which category has the most?\", \"Which category has the least?\"), calculate differences (\"What is the difference between January and April?\"), and compare categories (\"Which is greater: grapes or apples?\")."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The samples provide excellent coverage of all data presentation formats specified in the competency text. They include questions based on tables (\"Look at the table.\"), horizontal bar graphs (\"Look at the horizontal bar graph.\"), and vertical bar graphs (\"Look at the vertical bar graph.\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The cognitive demand is perfectly suited for Grade 3 students. The interpretation tasks require basic single-step arithmetic, such as addition for totals (\"What is the total value of all categories?\") and subtraction for differences (\"What is the difference between bananas and mangoes?\"), which are well within the Grade 3 mathematical capacity."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The variant coverage is thorough, spanning multiple types of data interpretation tasks: direct lookup (\"What is the value for bananas?\"), extrema identification (\"Which category has the most?\", \"Which category has the least?\"), summation (\"What is the total value of all categories?\"), difference calculation (\"What is the difference between Art and English?\"), and comparison (\"Which is greater: Grade 4 or Grade 2?\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample aligns strictly with the target competency. The questions remain focused entirely on interpreting the provided data formats without introducing any out-of-scope concepts or unrelated mathematical operations."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical scale of the answers is appropriate for the grade level. Totals involve numbers up to the hundreds (e.g., 185, 325, 320) and differences involve smaller numbers (e.g., 5, 20, 35), matching Grade 3 arithmetic standards."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -23,27 +49,27 @@
     {
       "seed": 42,
       "formatter": "read_mcq",
-      "question_text": "Look at the bar graph. What is the value for dogs?",
+      "question_text": "Look at the table. What is the value for bananas?",
       "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 61,
+          "value": 26,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 25,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 27,
+          "value": 31,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 60,
+          "value": 25,
           "is_correct": true
         }
       ]
@@ -51,89 +77,78 @@
     {
       "seed": 43,
       "formatter": "read_mcq",
-      "question_text": "Look at the bar graph. What is the value for grapes?",
+      "question_text": "Look at the vertical bar graph. What is the total value of all categories?",
       "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 41,
+          "value": 184,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 15,
+          "value": 185,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 14,
+          "value": 183,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 25,
+          "value": 225,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Create a bar graph to show: Grade 1: 45, Grade 2: 45, Grade 3: 60, Grade 4: 70.",
-      "correct_answer": [
-        45,
-        45,
-        60,
-        70
-      ]
-    },
-    {
-      "seed": 45,
       "formatter": "read_mcq",
-      "question_text": "Look at the bar graph. What is the value for swimming?",
+      "question_text": "Look at the horizontal bar graph. Which category has the most?",
       "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 27,
+          "value": "cats",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 24,
+          "value": "birds",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 40,
+          "value": "fish",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 25,
+          "value": "dogs",
           "is_correct": true
         }
       ]
     },
     {
-      "seed": 46,
+      "seed": 45,
       "formatter": "read_mcq",
-      "question_text": "Look at the bar graph. What is the value for dogs?",
+      "question_text": "Look at the horizontal bar graph. What is the difference between January and April?",
       "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 50,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 35,
+          "value": 0,
           "is_correct": false
         },
         {
@@ -144,55 +159,113 @@
       ]
     },
     {
+      "seed": 46,
+      "formatter": "read_mcq",
+      "question_text": "Look at the vertical bar graph. What is the difference between bananas and mangoes?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "is_correct": true
+        }
+      ]
+    },
+    {
       "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Create a bar graph to show: January: 85, February: 95, March: 75, April: 45, May: 65, June: 35.",
-      "correct_answer": [
-        85,
-        95,
-        75,
-        45,
-        65,
-        35
+      "formatter": "read_mcq",
+      "question_text": "Look at the horizontal bar graph. Which category has the most?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": "March",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "January",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "February",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "June",
+          "is_correct": true
+        }
       ]
     },
     {
       "seed": 501,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Create a bar graph to show: basketball: 60, volleyball: 40, swimming: 55, running: 55, cycling: 85, tennis: 60.",
-      "correct_answer": [
-        60,
-        40,
-        55,
-        55,
-        85,
-        60
+      "formatter": "read_mcq",
+      "question_text": "Look at the table. What is the total value of all categories?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 325,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 324,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 321,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 365,
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 502,
       "formatter": "read_mcq",
-      "question_text": "Look at the bar graph. What is the value for lilies?",
+      "question_text": "Look at the table. What is the total value of all categories?",
       "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 44,
+          "value": 318,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 60,
+          "value": 380,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 10,
+          "value": 320,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 11,
+          "value": 322,
           "is_correct": false
         }
       ]
@@ -200,163 +273,170 @@
     {
       "seed": 600,
       "formatter": "read_mcq",
-      "question_text": "Look at the bar graph. What is the value for basketball?",
+      "question_text": "Look at the horizontal bar graph. What is the total value of all categories?",
       "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 31,
+          "value": 165,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 30,
+          "value": 160,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 35,
+          "value": 215,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 60,
+          "value": 155,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 601,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Create a bar graph to show: Monday: 55, Tuesday: 50, Wednesday: 45, Thursday: 60.",
-      "correct_answer": [
-        55,
-        50,
-        45,
-        60
+      "formatter": "read_mcq",
+      "question_text": "Look at the table. Which is greater: grapes or apples?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": "bananas",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "apples",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "mangoes",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "grapes",
+          "is_correct": true
+        }
       ]
     },
     {
       "seed": 602,
       "formatter": "read_mcq",
-      "question_text": "Look at the bar graph. What is the value for Grade 3?",
+      "question_text": "Look at the vertical bar graph. What is the difference between Art and English?",
       "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 60,
+          "value": 0,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 49,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 40,
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": 15,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 50,
+          "value": 35,
           "is_correct": true
         }
       ]
     },
     {
       "seed": 603,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Create a bar graph to show: Math: 60, Science: 60, English: 40, Art: 40.",
-      "correct_answer": [
-        60,
-        60,
-        40,
-        40
+      "formatter": "read_mcq",
+      "question_text": "Look at the vertical bar graph. Which category has the most?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": "sunflowers",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "tulips",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "daisies",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "roses",
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 604,
       "formatter": "read_mcq",
-      "question_text": "Look at the bar graph. What is the value for birds?",
-      "correct_answer": "B",
+      "question_text": "Look at the vertical bar graph. Which is greater: Grade 4 or Grade 2?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 35,
+          "value": "Grade 4",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 65,
-          "is_correct": true
+          "value": "Grade 3",
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": 64,
+          "value": "Grade 1",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 37,
-          "is_correct": false
+          "value": "Grade 2",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 605,
       "formatter": "read_mcq",
-      "question_text": "Look at the bar graph. Which is greater: Math or Art?",
+      "question_text": "Look at the vertical bar graph. Which category has the least?",
       "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": "Math",
+          "value": "Grade 4",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "Science",
+          "value": "Grade 1",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "Art",
+          "value": "Grade 3",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "English",
+          "value": "Grade 2",
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Five of the fourteen samples (seed 44, 500, 501, 601, 603) are 'Create a bar graph to show: ...' tasks, which test presenting data — the sibling competency's skill — rather than interpreting an existing graph as this node's competency requires."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The competency specifies bar graphs '(horizontal and vertical)', but none of the fourteen samples labels or distinguishes horizontal from vertical orientation."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The read-graph items use reasonable Grade 3 magnitudes (e.g. seed 42's dog value of 60)."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Read-graph items cover several contexts — pets, fruit, sports, school subjects — giving reasonable topical variety for the interpretation task itself."
-    },
-    "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "Roughly a third of the samples (the create-graph items) vary along a presenting-skill axis, not the interpreting-skill axis this competency is meant to isolate."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Values read from the graphs (up to 95, seed 500's create-graph January value) are Grade-3-appropriate in magnitude."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }
