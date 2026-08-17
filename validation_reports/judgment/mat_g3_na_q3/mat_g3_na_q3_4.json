@@ -1,7 +1,420 @@
 {
   "node_id": "mat_g3_na_q3_4",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-Multiplication-Harden (mat_g3_na_q3_1, mat_g3_na_q3_2, mat_g3_na_q3_4), 2026-08-17",
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The samples correctly demonstrate both 1-step and 2-step problems involving multiplication of whole numbers. Examples of 1-step scenarios include \"10 running shoes in each of 2 bags\", while 2-step scenarios correctly chain multiplicative relationships, such as \"3 large trays. Each tray holds 3 plates, and each plate has 5 cookies.\""
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample successfully covers all aspects of the competency, including 1-step problems (\"puts 5 capos in each of 10 bags\"), 2-step problems (\"6 boxes of crayons. Each box contains 6 packs\"), and the explicit requirement to include money (\"costs \u20b12\" and \"costs \u20b13\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The language is appropriate for a Grade 3 learner, utilizing clear, direct sentence structures (\"Juan bought 4 boxes of envelopes.\"). The multi-step problems remain grounded in simple arrays and groupings (\"4 shelves with 3 boxes on each shelf. Each box has 15 toy cars.\") allowing students to clearly conceptualize the consecutive multiplication steps."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The packet provides excellent variety across formatting (multiple-choice, cloze, true/false, error detection). The problem structures vary nicely between spatial grouping logic (\"Each tray holds 4 plates, and each plate has 4 pandesal.\") and unit price logic (\"Each box contains 7 packs, and each pack costs \u20b14.\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The generated questions align perfectly with the target competency. Extraneous operations (like unrelated addition or subtraction) are not introduced, maintaining focus purely on multiplication. Money representations strictly use the correct symbol contextually, as requested in the curriculum."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All final products appropriately satisfy the \"up to 1000\" constraint. Generating values vary nicely from smaller double-digit products like 24 and 56 to larger triple-digit products like 180 (\"Rico says the answer is 180.\"), confirming that the mathematical scale is correctly parameterized."
+    }
+  },
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "Rico prepared 3 large trays. Each tray holds 3 plates, and each plate has 5 cookies. How many cookies are there altogether?",
+      "correct_answer": 45,
+      "options": [
+        {
+          "key": "A",
+          "value": 45,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 43,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 40,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "Grace bought 4 packs with 6 apples in each pack. Each apple costs \u20b13. How much did Grace pay in all?",
+      "correct_answer": 72,
+      "options": [
+        {
+          "key": "A",
+          "value": 72,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 70,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 42,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 18,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "Bianca bought 6 boxes of crayons. Each box contains 6 packs, and each pack costs \u20b12. How much did Bianca spend in all?",
+      "correct_answer": 72,
+      "options": [
+        {
+          "key": "A",
+          "value": 34,
+          "text": "34",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 38,
+          "text": "38",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 70,
+          "text": "70",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 72,
+          "text": "72",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Lito bought 5 packs with 5 pencils in each pack. Each pencil costs \u20b12. How much did Lito pay in all?",
+      "correct_answer": 50,
+      "options": [
+        {
+          "key": "A",
+          "value": 48,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 27,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 50,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 23,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Kuya Noel puts 5 capos in each of 10 bags. How many capos are in all the bags?",
+      "correct_answer": 50,
+      "options": [
+        {
+          "key": "A",
+          "value": 45,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 50,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "true_false",
+      "question_text": "Grace prepared 4 large trays. Each tray holds 4 plates, and each plate has 3 eggs. How many eggs are there altogether? The answer is 13. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
+      "formatter": "error_detect",
+      "question_text": "Grace solved this problem: \"Aling Rosa puts 2 medals in each of 30 bags. How many medals are in all the bags?\" Grace says the answer is 28. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 60
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "error_detect",
+      "question_text": "Rico solved this problem: \"Bianca arranged 6 shelves with 6 boxes on each shelf. Each box has 5 jars. How many jars are there in all?\" Rico says the answer is 180. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 180
+      }
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "Grace arranged 4 shelves with 3 boxes on each shelf. Each box has 15 toy cars. How many toy cars are there in all?",
+      "correct_answer": 180,
+      "options": [
+        {
+          "key": "A",
+          "value": 180,
+          "text": "180",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 179,
+          "text": "179",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 165,
+          "text": "165",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 27,
+          "text": "27",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Bianca bought 3 boxes of biscuits. Each box contains 7 packs, and each pack costs \u20b14. How much did Bianca spend in all?",
+      "correct_answer": 84,
+      "options": [
+        {
+          "key": "A",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 84,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Juan bought 4 boxes of envelopes. Each box contains 7 packs, and each pack costs \u20b12. How much did Juan spend in all?",
+      "correct_answer": 56,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 26,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 56,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 54,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Pia puts 10 water bowls in each of 11 bags. How many water bowls are in all the bags?",
+      "correct_answer": 110,
+      "options": [
+        {
+          "key": "A",
+          "value": 1,
+          "text": "1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 21,
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 100,
+          "text": "100",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 110,
+          "text": "110",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Rico prepared 3 large trays. Each tray holds 4 plates, and each plate has 4 pandesal. How many pandesal are there altogether?",
+      "correct_answer": 48,
+      "options": [
+        {
+          "key": "A",
+          "value": 48,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 44,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "Riza puts 7 cookies in each of 2 bags. How many cookies are in all the bags?",
+      "correct_answer": 14,
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "text": "13",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "text": "14",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "Faye puts 10 running shoes in each of 2 bags. How many running shoes are in all the bags?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 19,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "error_detect",
+      "question_text": "Liza solved this problem: \"Lola Caring puts 8 leashes in each of 3 bags. How many leashes are in all the bags?\" Liza says the answer is 24. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 24
+      }
+    }
+  ],
   "blind": true,
   "sample_seeds": [
     42,
@@ -20,419 +433,5 @@
     603,
     604,
     605
-  ],
-  "samples_reviewed": [
-    {
-      "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Daniel puts 0 coins in each of 5 bags. How many coins are in all the bags?",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 0,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Kuya Bien puts 2 story chapters in each of 3 bags. How many story chapters are in all the bags?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "cloze",
-      "question_text": "Lara wants to buy 2 ribbons that cost ₱10 each. How much does Lara need to pay in all?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "text": "12",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 19,
-          "text": "19",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "text": "20",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Coach Roel wants to buy 10 water bottles that cost ₱3 each. How much does Coach Roel need to pay in all?",
-      "correct_answer": 30,
-      "options": [
-        {
-          "key": "A",
-          "value": 27,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 30,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Ate Cara puts 2 photo albums in each of 10 bags. How many photo albums are in all the bags?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "true_false",
-      "question_text": "Mia wants to buy 4 merchandise shirts that cost ₱10 each. How much does Mia need to pay in all? The answer is 30. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 55,
-      "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Sora puts 2 concert tickets in each of 10 bags. How many concert tickets are in all the bags?\" Grace says the answer is 8. Is Grace correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 20
-      }
-    },
-    {
-      "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"Lara wants to buy 96 fan accessories that cost ₱5 each. How much does Lara need to pay in all?\" Rico says the answer is 480. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 480
-      }
-    },
-    {
-      "seed": 501,
-      "formatter": "cloze",
-      "question_text": "Lola Ising wants to buy 100 loaves of bread that cost ₱10 each. How much does Lola Ising need to pay in all?",
-      "correct_answer": 1000,
-      "options": [
-        {
-          "key": "A",
-          "value": 1000,
-          "text": "1000",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 990,
-          "text": "990",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 90,
-          "text": "90",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 110,
-          "text": "110",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Kuya Pat wants to buy 83 concert tickets that cost ₱10 each. How much does Kuya Pat need to pay in all?",
-      "correct_answer": 830,
-      "options": [
-        {
-          "key": "A",
-          "value": 93,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 830,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 820,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 73,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "Jomar wants to buy 10 clip highlights that cost ₱3 each. How much does Jomar need to pay in all?",
-      "correct_answer": 30,
-      "options": [
-        {
-          "key": "A",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 30,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 27,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Pia puts 2 leashes in each of 20 bags. How many leashes are in all the bags?",
-      "correct_answer": 40,
-      "options": [
-        {
-          "key": "A",
-          "value": 18,
-          "text": "18",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 22,
-          "text": "22",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 38,
-          "text": "38",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 40,
-          "text": "40",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "Janna wants to buy 2 fan shirts that cost ₱0 each. How much does Janna need to pay in all?",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 0,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "cloze",
-      "question_text": "Yna puts 2 sketchpads in each of 20 bags. How many sketchpads are in all the bags?",
-      "correct_answer": 40,
-      "options": [
-        {
-          "key": "A",
-          "value": 38,
-          "text": "38",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 40,
-          "text": "40",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 22,
-          "text": "22",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 18,
-          "text": "18",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "mcq",
-      "question_text": "Kris puts 2 lightsticks in each of 2 bags. How many lightsticks are in all the bags?",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 0,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
-      "formatter": "error_detect",
-      "question_text": "Liza solved this problem: \"Ching puts 10 capos in each of 2 bags. How many capos are in all the bags?\" Liza says the answer is 20. Is Liza correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 20
-      }
-    }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Story-chapter bags (seed 43), photo-album bags (seed 46), and peso-priced items (seed 44's ribbons, seed 502's concert tickets) all resolve as multiplication, covering both the plain and money halves of the competency text."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Not one of the 16 samples needs a second computation step — seed 500's 96 fan accessories times ₱5 and seed 601's 2 leashes times 20 bags both stop at a single multiplication — so the 2-step half of 'Solve 1-to 2-step multiplication problems' is never demonstrated."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Whole-peso prices (₱10, ₱3, ₱5) and operand sizes up to 100 (seed 501) keep the arithmetic within Grade 3 Quarter 3 reach."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "mcq, cloze, true_false, and error_detect all appear, and edge cases are deliberately included — seed 42's zero coins per bag, seed 602's ₱0 shirts."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Operand size and the presence or absence of a peso price are what separate easy items from hard ones, both proper to this competency."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest product in the set is seed 501's 100 × ₱10 = ₱1000, a reasonable ceiling for Grade 3 money multiplication."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }

@@ -116,6 +116,16 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             return f"Count by {a}s: {seq}. {a} × {b} = ___"
         if values.get("task_type") == "number_line_jumps" and blank_target in ("result", "total"):
             return f"Starting at 0, {b} equal jumps of {a} on the number line lands on ___"
+        if values.get("task_type") == "commutative":
+            return f"{a} × {b} = ___ × {a}"
+        if values.get("task_type") == "associative":
+            c = values.get("c", 3)
+            return f"({a} × {b}) × {c} = {a} × (___ × {c})"
+        if values.get("task_type") == "distributive":
+            c = values.get("c", 5)
+            return f"{a} × ({b} + {c}) = ({a} × {b}) + ({a} × ___)"
+        if values.get("task_type") == "two_step":
+            return f"({a} × {b}) + 5 = ___"
         if blank_target in ("result", "total"):
             return f"{a} × {b} = ___"
         elif blank_target in ("b", "n"):

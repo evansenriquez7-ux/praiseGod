@@ -166,6 +166,16 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 statement = f"Counting by {a}s to {a * b} gives {a} × {b} = {fill_value}."
             elif values.get("task_type") == "number_line_jumps" and blank_target in ("result", "total"):
                 statement = f"Starting at 0, taking {b} equal jumps of {a} on the number line lands on {fill_value}."
+            elif values.get("task_type") == "commutative":
+                statement = f"{a} × {b} = {b} × {a}"
+            elif values.get("task_type") == "associative":
+                c = values.get("c", 3)
+                statement = f"({a} × {b}) × {c} = {a} × ({b} × {c})"
+            elif values.get("task_type") == "distributive":
+                c = values.get("c", 5)
+                statement = f"{a} × ({b} + {c}) = ({a} × {b}) + ({a} × {c})"
+            elif values.get("task_type") == "two_step":
+                statement = f"({a} × {b}) + 5 = {fill_value}"
             elif blank_target in ("result", "total"):
                 statement = f"{a} × {b} = {fill_value}"
             else:

@@ -361,10 +361,11 @@ def _parse_competency_bounds(
 
     # Multiplication: "products up to X"
     elif dna_name == "multiplication":
-        match = re.search(r'products?\s+(?:up\s+to|of\s+up\s+to|to)\s+(\d+)', text)
+        match = re.search(r'products?\s+(?:up\s+to|of\s+up\s+to|to)\s+([\d\s]+)', text)
         if match:
-            max_val = int(match.group(1))
-            bounds["max_product"] = (0, max_val)
+            max_val = int(match.group(1).replace(" ", ""))
+            min_val = 20 if ("2- to" in text or "2-digit" in text or "3-digit" in text) else 1
+            bounds["max_product"] = (min_val, max_val)
 
         # Parse table level. "2_3_4_5_10_named" (distinct from the DNA's own
         # bare default "2_3_4_5_10", used when no node binds "table" at all,
@@ -389,6 +390,7 @@ def _parse_competency_bounds(
         # shapes per seed (see multiplication.py).
         elif "leading digit is the only non-zero digit" in text:
             bounds["table"] = "one_digit_or_leading_digit"
+            bounds["context"] = "pure"
 
         # Parse number type
         if "2- to 3-digit" in text or "2- to 4-digit" in text:
@@ -420,6 +422,9 @@ def _parse_competency_bounds(
         # threes' never appears in any of the eleven samples" and for being
         # "word-for-word identical to node mat_g2_na_q3_1's eleven samples".
         # "equal groups" appears only in q3_0's text, so it discriminates.
+        if "problems" in text or "word problem" in text:
+            bounds["context"] = "word_problem"
+
         if "equal groups" in text:
             bounds["task_type"] = "equal_groups"
         elif "equal jumps" in text or "counting by multiples" in text or "multiples" in text:
@@ -482,6 +487,8 @@ def _parse_competency_bounds(
         # property task_types" -- it isn't a literal VARIANTS_BY_DNA value,
         # so binding it here excludes all three property values without
         # forcing any real behavior change on the default/table-fact path.
+        elif "1- to 2-step" in text or "1-to 2-step" in text or "2-step" in text:
+            bounds["task_type"] = ["find_product", "two_step"]
         elif "properties" not in text:
             bounds["task_type"] = "find_product"
         else:
@@ -508,15 +515,9 @@ def _parse_competency_bounds(
             # competency's own "for the 6, 7, 8, 9 multiplication tables"
             # scope also implies genuine table facts belong alongside the
             # properties, not just illustrative small numbers.
-            # "zero_identity" added (2026-08-07, Ground Rule 5 disclosure):
             # the competency's own wording names FIVE properties (identity,
-            # zero, commutative, associative, distributive) but this list
-            # previously bound only three of them -- "one multiplied by any
-            # number is equal to the number; zero multiplied by any number
-            # is zero" never had a dedicated task_type at all (blind
-            # review: "identity property...entirely absent"). See
-            # multiplication.py's new zero_identity branch.
-            bounds["task_type"] = ["find_product", "commutative", "associative", "distributive", "zero_identity"]
+            # zero, commutative, associative, distributive).
+            bounds["task_type"] = ["commutative", "associative", "distributive", "zero_identity"]
 
     # Division: operand bound is enforced by the DNA's per-grade
     # _PARAM_BOUNDS[grade] (q_max: g2=50, g3=100). All MATATAG K-3

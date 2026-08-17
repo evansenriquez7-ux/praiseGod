@@ -1,7 +1,355 @@
 {
   "node_id": "mat_g3_na_q3_2",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the cloze blanking fix, 2026-08-14",
-  "review_date": "2026-08-14",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-Multiplication-Harden (mat_g3_na_q3_1, mat_g3_na_q3_2, mat_g3_na_q3_4), 2026-08-17",
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The generated items fulfill the competency by accurately requiring the multiplication of 2- to 3-digit numbers by a 1-digit number (e.g., \"What is 41 \u00d7 6?\", \"What is 104 \u00d7 7?\") and 2- to 4-digit numbers by a number whose leading digit is the only non-zero digit (e.g., \"22 \u00d7 30 = ___\", \"What is 33 \u00d7 300?\", \"1000 \u00d7 10 = ___\"). All products remain within the \"up to 10 000\" constraint."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The questions cover both main clauses of the competency: multiplying by a 1-digit number (2-digit multiplicands like \"69 \u00d7 3 = ___\" and 3-digit like \"What is 101 \u00d7 5?\") and multiplying by multiples of 10/100 (like \"What is 10 \u00d7 80?\", \"What is 33 \u00d7 300?\", and \"1000 \u00d7 10 = ___\"). Both with and without regrouping scenarios are represented."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The cognitive load is appropriate for Grade 3 Quarter 3. The questions are straightforward direct calculations (e.g., \"What is 401 \u00d7 2?\") and simple error detection scenarios (e.g., \"Grace says: 48 \u00d7 4 = 44. Is Grace correct?\") that do not overwhelm the student with unnecessary contextual complexity or extraneous text."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample demonstrates a solid variety of formats, including multiple-choice (\"What is 12 \u00d7 60?\"), cloze / fill-in-the-blank (\"22 \u00d7 30 = ___\"), true/false (\"11 \u00d7 60 = 600. True or False?\"), and error detection (\"Rico says: 1000 \u00d7 10 = 10000. Is Rico correct?\"). While 3-digit by leading-digit-only variants are not explicitly present in this small sample, the structural variety is highly comprehensive for the grade level."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "There is no out-of-bounds vocabulary or out-of-scope conceptual requirement. Every operation targets exactly what is described in the competency, without extending into 2-digit by 2-digit multiplication (unless the second number is a multiple of 10, which is explicitly allowed, e.g., \"What is 12 \u00d7 60?\") or exceeding the 10,000 product limit."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The values are scaled appropriately, strictly adhering to the upper bound constraint. The largest product tested is 10,000 in \"1000 \u00d7 10 = ___\", which exactly matches the \"up to 10 000\" limit. Distractors are well-chosen common errors (e.g., offering \"721\" and \"97\" for \"What is 104 \u00d7 7?\") rather than random large numbers."
+    }
+  },
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "What is 41 \u00d7 6?",
+      "correct_answer": 246,
+      "options": [
+        {
+          "key": "A",
+          "value": 47,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 240,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 246,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 35,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 104 \u00d7 7?",
+      "correct_answer": 728,
+      "options": [
+        {
+          "key": "A",
+          "value": 728,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 97,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 721,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 111,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "cloze",
+      "question_text": "22 \u00d7 30 = ___",
+      "correct_answer": 660,
+      "options": [
+        {
+          "key": "A",
+          "value": 630,
+          "text": "630",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 52,
+          "text": "52",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 659,
+          "text": "659",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 660,
+          "text": "660",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "What is 10 \u00d7 80?",
+      "correct_answer": 800,
+      "options": [
+        {
+          "key": "A",
+          "value": 799,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 90,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 800,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 720,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What is 401 \u00d7 2?",
+      "correct_answer": 802,
+      "options": [
+        {
+          "key": "A",
+          "value": 800,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 802,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 399,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 403,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "true_false",
+      "question_text": "11 \u00d7 60 = 600. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
+      "formatter": "error_detect",
+      "question_text": "Grace says: 48 \u00d7 4 = 44. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 192
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "error_detect",
+      "question_text": "Rico says: 1000 \u00d7 10 = 10000. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 10000
+      }
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "1000 \u00d7 10 = ___",
+      "correct_answer": 10000,
+      "options": [
+        {
+          "key": "A",
+          "value": 10000,
+          "text": "10000",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9990,
+          "text": "9990",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 990,
+          "text": "990",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1010,
+          "text": "1010",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 33 \u00d7 300?",
+      "correct_answer": 9900,
+      "options": [
+        {
+          "key": "A",
+          "value": 333,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9900,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 9899,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9600,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "69 \u00d7 3 = ___",
+      "correct_answer": 207,
+      "options": [
+        {
+          "key": "A",
+          "value": 66,
+          "text": "66",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 72,
+          "text": "72",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 204,
+          "text": "204",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 207,
+          "text": "207",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 12 \u00d7 60?",
+      "correct_answer": 720,
+      "options": [
+        {
+          "key": "A",
+          "value": 720,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 719,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 72,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 660,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "101 \u00d7 5 = ___",
+      "correct_answer": 505,
+      "options": [
+        {
+          "key": "A",
+          "value": 500,
+          "text": "500",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 505,
+          "text": "505",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 106,
+          "text": "106",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 96,
+          "text": "96",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
   "blind": true,
   "sample_seeds": [
     42,
@@ -14,386 +362,8 @@
     500,
     501,
     502,
-    600,
     601,
     602,
     603
-  ],
-  "samples_reviewed": [
-    {
-      "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 15 × 2?",
-      "correct_answer": 30,
-      "options": [
-        {
-          "key": "A",
-          "value": 17,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 28,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 30,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is 20 × 5?",
-      "correct_answer": 100,
-      "options": [
-        {
-          "key": "A",
-          "value": 100,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 95,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 25,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "cloze",
-      "question_text": "11 × 10 = ___",
-      "correct_answer": 110,
-      "options": [
-        {
-          "key": "A",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 21,
-          "text": "21",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 100,
-          "text": "100",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 110,
-          "text": "110",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "What is 10 × 20?",
-      "correct_answer": 200,
-      "options": [
-        {
-          "key": "A",
-          "value": 199,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 200,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 180,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What is 21 × 0?",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 0,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 21,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "true_false",
-      "question_text": "20 × 10 = 10. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 55,
-      "formatter": "error_detect",
-      "question_text": "Grace says: 40 × 3 = 37. Is Grace correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 120
-      }
-    },
-    {
-      "seed": 500,
-      "formatter": "error_detect",
-      "question_text": "Rico says: 936 × 10 = 9360. Is Rico correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 9360
-      }
-    },
-    {
-      "seed": 501,
-      "formatter": "cloze",
-      "question_text": "962 × 10 = ___",
-      "correct_answer": 9620,
-      "options": [
-        {
-          "key": "A",
-          "value": 9620,
-          "text": "9620",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 9610,
-          "text": "9610",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 952,
-          "text": "952",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 972,
-          "text": "972",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 845 × 10?",
-      "correct_answer": 8450,
-      "options": [
-        {
-          "key": "A",
-          "value": 855,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8450,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 8440,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 835,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What is 21 × 10?",
-      "correct_answer": 210,
-      "options": [
-        {
-          "key": "A",
-          "value": 31,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 210,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 200,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Pia puts 0 leashes in each of 44 bags. How many leashes are in all the bags?",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 44,
-          "text": "44",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 0,
-          "text": "0",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 12 × 10?",
-      "correct_answer": 120,
-      "options": [
-        {
-          "key": "A",
-          "value": 120,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 110,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 22,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "cloze",
-      "question_text": "42 × 0 = ___",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 0,
-          "text": "0",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 42,
-          "text": "42",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        }
-      ]
-    }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Every sample is a single multiplication and all products are correct, so the verb of the sentence is met, but only one of the two named families is exercised at depth. The 1-digit-multiplier family appears as 'What is 15 × 2?' (seed 42), 'What is 20 × 5?' (seed 43) and 'Grace says: 40 × 3 = 37. Is Grace correct?' (seed 55) and never uses a 3-digit multiplicand. The second family collapses to a single multiplier, ten, as in 'What is 845 × 10?' (seed 502)."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The sentence names two sub-cases and I looked for each separately. Found, 2-digit by 1-digit: seed 42 'What is 15 × 2?' and seed 55 '40 × 3 = 37'. Found, 2- and 3-digit by ten: seed 44 '11 × 10 = ___' and seed 501 '962 × 10 = ___'. Not found anywhere in the 14 samples: a 3-digit multiplicand with a 1-digit multiplier, a 4-digit multiplicand, or any leading-digit multiplier other than ten such as twenty or three hundred. Half of the stated range is untouched and seven of the 14 seeds repeat the same times-ten pattern."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "All items are single-step and read cleanly for Grade 3 Quarter 3. The one word problem, seed 601 'Pia puts 0 leashes in each of 44 bags. How many leashes are in all the bags?', states both factors in one sentence with no nested clause. Every item is answerable from what it gives: each cloze blank falls on the product, as at seed 603 '42 × 0 = ___', never on an operand the answer depends on, so no item admits several values."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Five presentation types appear across the 14 seeds: multiple choice 'What is 10 × 20?' (seed 45), cloze '11 × 10 = ___' (seed 44), true or false '20 × 10 = 10. True or False?' (seed 50), error detection in both polarities with 'Grace says: 40 × 3 = 37. Is Grace correct?' (seed 55) flagged as an error and 'Rico says: 936 × 10 = 9360. Is Rico correct?' (seed 500) flagged as accurate, and one contextual word problem at seed 601. Distractors are near misses rather than random values."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "No item demands an operation past multiplication and all arithmetic checks out. But three of the 14 samples put zero in the multiplier slot: 'What is 21 × 0?' (seed 46), '42 × 0 = ___' (seed 603) and the word problem at seed 601. Zero is neither a factor that can produce regrouping nor a number whose leading digit is the only non-zero digit, so these three items exercise the zero property instead of the multiplication with and without regrouping that the sentence names."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Products stay inside the stated ceiling of ten thousand. The largest is at seed 501 '962 × 10 = ___' with an answer of 9620, and the next largest is seed 500 'Rico says: 936 × 10 = 9360. Is Rico correct?'. Multiplicands run from 10 up to 962, all inside the two to four digit window the sentence allows, and no sample crosses the bound."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }

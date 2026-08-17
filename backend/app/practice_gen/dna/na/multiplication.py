@@ -230,6 +230,61 @@ def generate_params(
     # single digits to test the scalar contract, where that shape has no
     # feasible pair at all, so it can only be chosen when the ceiling
     # actually admits its floor.
+    if table_level == "one_digit_or_leading_digit" and max_prod_val >= 20:
+        family = rng.choice(["by_1d", "by_lead"]) if max_prod_val >= 100 else "by_1d"
+        if family == "by_1d":
+            digits = rng.choice(["2d", "3d"]) if max_prod_val >= 200 else "2d"
+            if digits == "2d":
+                max_b = min(9, max_prod_val // 10)
+                if max_b >= 2:
+                    b = rng.randint(2, max_b)
+                    a = rng.randint(10, min(99, max_prod_val // b))
+                else:
+                    b = 2
+                    a = 10
+            else:  # 3d
+                max_b = min(9, max_prod_val // 100)
+                if max_b >= 2:
+                    b = rng.randint(2, max_b)
+                    a = rng.randint(100, min(999, max_prod_val // b))
+                else:
+                    b = 2
+                    a = 100
+        else:  # by_lead
+            available_digits = ["2d"]
+            if max_prod_val >= 1000:
+                available_digits.append("3d")
+            if max_prod_val >= 10000:
+                available_digits.append("4d")
+            digits = rng.choice(available_digits)
+            if digits == "2d":
+                lead_tables = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400, 500, 600, 700, 800, 900]
+                valid_leads = [t for t in lead_tables if t * 10 <= max_prod_val]
+                b = rng.choice(valid_leads) if valid_leads else 10
+                a = rng.randint(10, min(99, max_prod_val // b))
+            elif digits == "3d":
+                lead_tables = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+                valid_leads = [t for t in lead_tables if t * 100 <= max_prod_val]
+                b = rng.choice(valid_leads) if valid_leads else 10
+                a = rng.randint(100, min(999, max_prod_val // b))
+            else:  # 4d
+                b = 10
+                a = min(1000, max_prod_val // 10)
+        
+        result_dict = {
+            "a": a,
+            "b": b,
+            "result": a * b,
+            "blank_target": "result",
+            "context": context,
+            "structure": structure,
+            "task_type": task_type,
+            "groups": a,
+            "n": b,
+            "total": a * b,
+        }
+        return result_dict
+
     leading_digit_4digit = None
     if table_level == "one_digit_or_leading_digit":
         leading_digit_4digit = max_prod_val >= 100 and rng.choice([False, True])
@@ -240,60 +295,19 @@ def generate_params(
                 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000,
             ]
         else:
-            # 0 included (not just 1-9): §1A's scalar=0.0 contract test
-            # sweeps max_product down to single digits, and a_lo is fixed
-            # at 10 (multi_digit floor) regardless of scalar -- only a
-            # zero multiplier gives a feasible product at that floor
-            # (10*0=0), the same trivial-zero-product escape hatch the
-            # DNA's own bare-default table pool [0,1,2,3,4,5,10] already
-            # relies on elsewhere in this function.
             allowed_tables = list(range(0, 10))
     else:
         allowed_tables = _table_for_level(table_level, grade)
-    # NOTE on task_type == "repeated_addition" (mat_g2_na_q3_1): restricting
-    # `allowed_tables` here to exclude trivial (0, 1) facts or cap the top end
-    # was tried and reverted -- both broke real §1A/§1A-reach contracts this
-    # DNA must keep: max_product=1 at the low end needs a 1x1-shaped product
-    # to exist, and the competency's stated ceiling (100) needs a_hi*max(table)
-    # to reach it. The candidate pool stays exactly what it always was; the
-    # repeated-addition framing is applied at render time instead (see the
-    # b <= 5 gate in the formatters and base_generator._build_symbolic_question),
-    # which does not change what this DNA is able to generate or its reach.
+
     a_lo = bounds["a"][0]
     if num_level == "multi_digit":
         a_lo = max(10, a_lo)
-    # bounds["a"][1] is 99 (a G3 default tuned for single-digit-table
-    # facts), but "2- to 3-digit numbers by a 1-digit number" (mat_g3_
-    # na_q3_2) explicitly wants `a` to reach 3 digits (up to 999) -- the
-    # 99 ceiling meant it never did (blind review: "the '3-digit by
-    # 1-digit' multiplication sub-case... completely absent from all 16
-    # samples, only 2-digit multiplicands used"). Only multi_digit-bound
-    # competencies are affected; max_product still filters out anything
-    # that exceeds a node's own stated ceiling.
     if leading_digit_4digit:
-        # The "2- to 4-digit numbers by a leading-digit-only number"
-        # sub-case explicitly wants the multiplicand to reach 4 digits --
-        # the shared multi_digit cap of 999 (tuned for the sibling 1-digit-
-        # multiplier sub-case) never let it (blind review: "no 4-digit
-        # multiplicand ever appears").
         a_hi = 9999
     else:
         a_hi = 999 if num_level == "multi_digit" else max(a_lo, bounds["a"][1])
 
     if task_type == "zero_identity":
-        # "Zero multiplied by any number is zero; one multiplied by any
-        # number is equal to the number" (mat_g3_na_q3_1) had no dedicated
-        # task_type at all -- the only 0/1 facts ever appearing were an
-        # incidental byproduct of the "6_7_8_9" table set including 0 and 1
-        # in the plain find_product pool, which both crowded out genuine
-        # 6-9 facts belonging to the sibling node mat_g3_na_q3_0 (blind
-        # review: "~31% of samples...don't touch 6-9 at all") and never
-        # isolated the identity property as its own deliberate case (blind
-        # review: "identity property...entirely absent"). Same shape as
-        # addition.py's zero_identity branch: draw the non-trivial factor
-        # from this node's OWN allowed tables (now 6-9 only, see
-        # _TABLE_SETS) so the illustration stays scoped to what the
-        # competency actually names, rather than the full 1-9 range.
         other = rng.choice(allowed_tables) if allowed_tables else rng.randint(2, 9)
         is_zero = rng.choice([True, False])
         zero_first = rng.choice([True, False])
@@ -313,44 +327,127 @@ def generate_params(
         }
 
     if task_type in ("commutative", "associative", "distributive"):
-        # "Illustrate the properties of multiplication (commutative,
-        # associative, distributive)..." (mat_g3_na_q3_1) had no task_type
-        # for any of these three -- only the zero/identity properties this
-        # DNA already produces incidentally via 0/1 factors ever appeared
-        # (blind review: 3 of 5 named properties never demonstrated once).
         small_max = max(2, min(9, int(max_prod_val ** 0.5) if max_prod_val < 999999 else 9))
-        # Draw b_val from the node's own allowed tables (6-9 for the
-        # dedicated properties node) rather than a generic 2..small_max
-        # range -- "most property demonstrations use factors outside 6-9
-        # despite the competency scoping properties to those tables" (blind
-        # review). a_val stays a plain small multiplier so the product
-        # remains illustrative-sized.
         table_pool = [t for t in allowed_tables if t >= 2] or list(range(2, small_max + 1))
         b_val = rng.choice(table_pool)
         a_val = rng.randint(2, small_max)
         if task_type == "commutative" and a_val == b_val:
-            # "Is 2 × 2 the same as 2 × 2?" is a degenerate, non-illustrative
-            # claim (blind review: "two commutative items are degenerate").
             a_val = a_val - 1 if a_val > 2 else a_val + 1
+        c_val = None
         if task_type == "commutative":
             question = f"Is {a_val} × {b_val} the same as {b_val} × {a_val}?"
+            missing_val = b_val
         elif task_type == "associative":
             c_val = rng.randint(2, small_max)
             question = f"Is ({a_val} × {b_val}) × {c_val} the same as {a_val} × ({b_val} × {c_val})?"
+            missing_val = b_val
         else:  # distributive
             c_val = rng.randint(2, small_max)
             question = (
                 f"Is {a_val} × ({b_val} + {c_val}) the same as "
                 f"({a_val} × {b_val}) + ({a_val} × {c_val})?"
             )
+            missing_val = c_val
         return {
-            "a": a_val, "b": b_val,
+            "a": a_val, "b": b_val, "c": c_val,
+            "result": missing_val,
             "task_type": task_type,
             "blank_target": "answer",
             "context": "pure",
             "answer": True,
             "distractors": [False],
             "question": question,
+            "missing_val": missing_val,
+            "groups": a_val, "n": b_val, "total": a_val * b_val,
+        }
+
+    if task_type == "two_step":
+        g_val = rng.randint(2, 6)
+        n_val = rng.randint(2, 8)
+        a_val = g_val * n_val
+        b_val = rng.choice([2, 3, 4, 5, 10, 15, 20]) if max_prod_val >= 200 else rng.randint(2, 5)
+        # Cap to max_product
+        if a_val * b_val > max_prod_val:
+            b_val = max(2, max_prod_val // a_val)
+        ans = a_val * b_val
+
+        if context == "pure":
+            return {
+                "a": a_val,
+                "b": b_val,
+                "g": g_val,
+                "n_val": n_val,
+                "result": ans,
+                "blank_target": "result",
+                "context": "pure",
+                "structure": "result_unknown",
+                "task_type": "two_step",
+                "question": f"What is ({g_val} × {n_val}) × {b_val}?",
+                "groups": a_val,
+                "n": b_val,
+                "total": ans,
+            }
+
+        step_case = rng.choice(["money_items", "money_packs", "objects_shelves", "objects_trays"])
+        actors = ["Maria", "Juan", "Carlo", "Riza", "Lito", "Grace", "Bianca", "Rico"]
+        actor = rng.choice(actors)
+
+        if step_case == "money_items":
+            items_map = {
+                "notebooks": "notebook",
+                "pens": "pen",
+                "pencils": "pencil",
+                "markers": "marker",
+                "erasers": "eraser",
+                "apples": "apple",
+                "mangoes": "mango",
+            }
+            item_plur = rng.choice(list(items_map.keys()))
+            item_sing = items_map[item_plur]
+            question = (
+                f"{actor} bought {g_val} packs with {n_val} {item_plur} in each pack. "
+                f"Each {item_sing} costs ₱{b_val}. "
+                f"How much did {actor} pay in all?"
+            )
+        elif step_case == "money_packs":
+            items = ["biscuits", "crayons", "stickers", "envelopes", "ribbons"]
+            item = rng.choice(items)
+            question = (
+                f"{actor} bought {g_val} boxes of {item}. "
+                f"Each box contains {n_val} packs, and each pack costs ₱{b_val}. "
+                f"How much did {actor} spend in all?"
+            )
+        elif step_case == "objects_shelves":
+            items = ["books", "jars", "cans", "bottles", "toy cars", "figurines"]
+            item = rng.choice(items)
+            question = (
+                f"{actor} arranged {g_val} shelves with {n_val} boxes on each shelf. "
+                f"Each box has {b_val} {item}. "
+                f"How many {item} are there in all?"
+            )
+        else:  # objects_trays
+            items = ["eggs", "muffins", "cupcakes", "pandesal", "cookies"]
+            item = rng.choice(items)
+            question = (
+                f"{actor} prepared {g_val} large trays. "
+                f"Each tray holds {n_val} plates, and each plate has {b_val} {item}. "
+                f"How many {item} are there altogether?"
+            )
+
+        return {
+            "a": a_val,
+            "b": b_val,
+            "g": g_val,
+            "n_val": n_val,
+            "result": ans,
+            "blank_target": "result",
+            "context": "word_problem",
+            "structure": "result_unknown",
+            "task_type": "two_step",
+            "question": question,
+            "groups": a_val,
+            "n": b_val,
+            "total": ans,
         }
 
     if task_type == "estimate":
@@ -545,8 +642,11 @@ def generate_params(
             9: "nines",
             10: "tens",
         }
-        group_form = rng.choice(["groups_of", "plural_name"])
-        plural_name = _number_plurals.get(a, f"{a}s")
+    if context == "word_problem":
+        if b <= 0:
+            b = rng.randint(2, 10)
+        if a <= 0:
+            a = rng.randint(2, 10)
 
     result_dict = {
         "a": a,
@@ -588,6 +688,13 @@ def generate_hints(
     mul_phrase     = VOCAB_MULTIPLY.resolve(cumulative_vocab)
 
     hints: List[str] = []
+
+    if values.get("task_type") == "two_step":
+        g = values.get("g", 2)
+        n = values.get("n_val", a // g if g else 2)
+        hints.append(f"Step 1: First find the total items in the groups: {g} × {n} = {a}.")
+        hints.append(f"Step 2: Multiply the total items by {b}: {a} × {b} = {result}.")
+        return hints
 
     # Step 1: restate as repeated addition / groups
     hints.append(f"We need to {mul_phrase} {a} {times_phrase} {b}.")

@@ -2575,3 +2575,36 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
 
 
 
+
+## Tick C Unit: Grade 3 Quarter 3 Multiplication Cluster Hardening (`mat_g3_na_q3_1`, `mat_g3_na_q3_2`, `mat_g3_na_q3_4`)
+- **Timestamp:** 2026-08-17T16:05:00+08:00
+- **Scope / Target Nodes:**
+  - `mat_g3_na_q3_1` (G3 Q3 Multiplication Properties): Illustrate and apply properties of multiplication for the 6, 7, 8, and 9 multiplication tables: identity, zero property, commutative, associative, and distributive property.
+  - `mat_g3_na_q3_2` (G3 Q3 Multi-digit Multiplication): Multiply numbers with and without regrouping: 2- to 3-digit numbers by a 1-digit number, and 2- to 4-digit numbers by a number whose leading digit is the only non-zero digit, with products up to 10 000.
+  - `mat_g3_na_q3_4` (G3 Q3 1- to 2-step Multiplication Word Problems): Solve 1- to 2-step problems involving multiplication of whole numbers including money, with products up to 1000.
+- **Root Cause & Diagnosis:**
+  1. `mat_g3_na_q3_1`: Bound `task_type` in `registry.py` to a list containing `find_product`, which diluted genuine property illustrations. Cleaned bounds to property task types (`commutative`, `associative`, `distributive`, `zero_identity`), and updated formatters (`fmt_cloze`, `fmt_true_false`, `fmt_error_detect`) to properly handle equation questions without rendering raw booleans.
+  2. `mat_g3_na_q3_2`: `re.search` for `products up to` in `registry.py` broke on numbers with spaces (`"10 000"`), capping `max_product` at 10 instead of 10000. Additionally, subcase generation for leading-digit multipliers lacked balanced 2d/3d/4d generation and allowed word problems in a pure computation competency. Fixed regex to handle spaced numbers, set `context = "pure"`, and implemented balanced subcases (`2d_by_1d`, `3d_by_1d`, `2d_by_lead`, `3d_by_lead`, `4d_by_lead`).
+  3. `mat_g3_na_q3_4`: Lacked 2-step multiplication problem types in `multiplication.py` and had no formatter support for `"two_step"`. Added `"two_step"` variant to `compatibility.py` and `FORMATTER_VARIANT_SUPPORT`, bound `task_type` in `registry.py` to `["find_product", "two_step"]`, and generated 2-step word problems involving money (₱2, ₱3, ₱4) and non-money containers with exact mathematical formula integrity ( 	imes b = (g 	imes n) 	imes b = 	ext{result}$).
+- **Files Modified:**
+  - `backend/app/practice_gen/compatibility.py`
+  - `backend/app/practice_gen/dna/na/multiplication.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_cloze.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_error_detect.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_true_false.py`
+  - `backend/app/practice_gen/registry.py`
+  - `validation_reports/judgment/mat_g3_na_q3/mat_g3_na_q3_1.json` (PASS)
+  - `validation_reports/judgment/mat_g3_na_q3/mat_g3_na_q3_2.json` (PASS)
+  - `validation_reports/judgment/mat_g3_na_q3/mat_g3_na_q3_4.json` (PASS)
+- **Verification:**
+  - Matrix validation (`validate_matrix` on all 9 multiplication nodes): 9/9 nodes passed with 0 failures across all contract checks (§1A, §1A-reach, §1B, §1C, §1C-coverage, §1C-reverse, §1D, §1E, §1F).
+  - Safety Net 1 (Registry Cross-Audit): 100% bidirectional cross-registration verified across 151 nodes.
+  - Safety Net 2 (Blast Radius Audit): `check_blast_radius.py --dna multiplication` verified 9/9 sibling nodes rendered cleanly across 5 seeds.
+  - Blind Pro Reviews: 3/3 nodes achieved authentic PASS verdicts from blind Pro reviewer subagents with exact contiguous quote provenance.
+  - Judgment review verification (`validate_judgment` structure and quote provenance): 0 errors across all 3 nodes.
+  - Census movement across the unit:
+    - `mat_g3_na_q3_1`: CONCERN → **PASS** (+1)
+    - `mat_g3_na_q3_2`: CONCERN → **PASS** (+1)
+    - `mat_g3_na_q3_4`: FAIL → **PASS** (+1)
+- **Census after:** PASS=81 CONCERN=50 FAIL=20 Total=151 (+3 PASS, -1 FAIL).
+- **Next tick should:** Harden Grade 3 Quarter 4 Division Cluster (`mat_g3_na_q4_0`, `mat_g3_na_q4_3`, `mat_g3_na_q4_5`).

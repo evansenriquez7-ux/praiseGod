@@ -161,6 +161,16 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
             return f"Counting by {a}s: {seq}, so {a} × {b} = {slot('result', 'total', value=r)}"
         if values.get("task_type") == "number_line_jumps" and blank_target in ("result", "total"):
             return f"Starting at 0, taking {b} equal jumps of {a} on the number line lands on {slot('result', 'total', value=r)}"
+        if values.get("task_type") == "commutative":
+            return f"{a} × {b} = {slot('b', value=b)} × {a}"
+        if values.get("task_type") == "associative":
+            c = values.get("c", 3)
+            return f"({a} × {b}) × {c} = {a} × ({slot('b', value=b)} × {c})"
+        if values.get("task_type") == "distributive":
+            c = values.get("c", 5)
+            return f"{a} × ({b} + {c}) = ({a} × {b}) + ({a} × {slot('c', value=c)})"
+        if values.get("task_type") == "two_step":
+            return f"({a} × {b}) + 5 = {slot('result', 'total', value=r)}"
         return (
             f"{slot('a', 'groups', value=a)} × {slot('b', 'n', value=b)} "
             f"= {slot('result', 'total', value=r)}"
