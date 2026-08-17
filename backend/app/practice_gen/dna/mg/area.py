@@ -404,73 +404,226 @@ def generate_params(
             "context": context,
         }
 
-    if shape == "square":
-        # s * s must itself be a known-table fact, so the side is the table factor.
-        s = table_side
-        area = s * s
-        # No find_missing_dimension branch here: it is redirected to the rectangle
-        # path above, because recovering a square's side from its area is a square
-        # root. The branch that used to live here returned answer_formula
-        # "sqrt(area)" and omitted known_dimension/known_value entirely.
-        # illustrate_tiles / derive_formula reuse find_area's computation --
-        # they differ only in framing (tile-counting vs. formula-derivation
-        # narration), not in the underlying math, matching the competency
-        # wording exactly (mat_g3_mg_q1_0: "Illustrate and estimate the area
-        # ... using square tile units"; mat_g3_mg_q1_1: "Explore inductively
-        # the derivation of the formula[] ... using square tile units").
-        return {
-            "blank_target": "answer",
-            "shape": "square",
-            "sides": {"s": s},
-            "s": s,  # top-level alias for the area_solve spine template
-            "shape_noun": "square",
-            # The surface the story tiles follows the unit. A garden measured in
-            # centimetres is not a garden -- blind review caught "a square garden
-            # measuring 5 cm on each side" -- but the item itself is fine, so the
-            # fix is the noun, not the number. A forced `unit` variant bypasses the
-            # metres rule above (that is what a forced variant is for), so the noun
-            # has to derive from the unit actually in play rather than from context.
-            "surface_noun": "garden" if unit_label == "sq m" else "card",
-            "dims_phrase": f"measuring {s} {unit_label.replace('sq ', '')} on each side",
-            "length_unit": unit_label.replace("sq ", ""),
-            "unit": unit_label,
-            "task_type": task_type if task_type in ("illustrate_tiles", "derive_formula") else "find_area",
-            "answer": area,
-            **({"distractors": _estimation_distractors(s, s)}
-               if task_type == "illustrate_tiles" else {}),
-            "answer_formula": "s * s",
-            "context": context,
-        }
+    if task_type == "illustrate_tiles":
+        if shape == "square":
+            s = table_side
+            area = s * s
+            return {
+                "blank_target": "answer",
+                "shape": "square",
+                "sides": {"s": s},
+                "s": s,
+                "shape_noun": "square",
+                "surface_noun": "garden" if unit_label == "sq m" else "card",
+                "dims_phrase": f"measuring {s} {unit_label.replace('sq ', '')} on each side",
+                "length_unit": unit_label.replace("sq ", ""),
+                "unit": unit_label,
+                "task_type": "illustrate_tiles",
+                "answer": area,
+                "distractors": _estimation_distractors(s, s),
+                "answer_formula": "s * s",
+                "context": context,
+            }
+        else:
+            if other_side == table_side:
+                other_side = other_side + 1 if other_side < _OTHER_SIDE_MAX else other_side - 1
+            if rng.random() < 0.5:
+                l, w = table_side, other_side
+            else:
+                l, w = other_side, table_side
+            area = l * w
+            return {
+                "blank_target": "answer",
+                "shape": "rectangle",
+                "sides": {"l": l, "w": w},
+                "l": l, "w": w, "s": l,
+                "shape_noun": "rectangular",
+                "surface_noun": "garden" if unit_label == "sq m" else "card",
+                "dims_phrase": f"that is {l} {unit_label.replace('sq ', '')} long and {w} {unit_label.replace('sq ', '')} wide",
+                "length_unit": unit_label.replace("sq ", ""),
+                "unit": unit_label,
+                "task_type": "illustrate_tiles",
+                "answer": area,
+                "distractors": _estimation_distractors(l, w),
+                "answer_formula": "l * w",
+                "context": context,
+            }
 
-    # rectangle
-    # A "rectangle" sample with l == w renders identically to a square (e.g.
-    # "6 rows and 6 columns") -- undermining the very distinction the shape
-    # variance above exists to test, and blind review caught it happening
-    # (mat_g3_mg_q1_0 seed 44). Walk the co-factor off the table factor rather
-    # than redrawing, so the pair stays inside the known tables either way.
+    # Setup rectangle dimensions
     if other_side == table_side:
         other_side = other_side + 1 if other_side < _OTHER_SIDE_MAX else other_side - 1
-    # Which of the two is named "length" varies, so the table factor is not always
-    # the first dimension read out; the product is a known-table fact regardless.
     if rng.random() < 0.5:
         l, w = table_side, other_side
         table_dim = "l"
     else:
         l, w = other_side, table_side
         table_dim = "w"
-    area = l * w
+    rect_area = l * w
+    lu = unit_label.replace("sq ", "")
+
+    if context == "word_problem":
+        # mat_g3_mg_q1_3: "Solve problems involving areas of squares and rectangles."
+        # If task_type is strictly find_area (mat_g3_mg_q1_2), stay on direct area calculation.
+        # If task_type is find_missing_dimension or problem solving, support all 5 problem types.
+        if task_type == "find_area":
+            wp_type = "direct_area"
+        else:
+            wp_type = rng.choice(["direct_area", "missing_dimension", "compare_area", "cost_area", "combined_area"])
+
+        # compare_area, cost_area, and combined_area naturally fit room/outdoor scale (metres)
+        if wp_type in ("compare_area", "cost_area", "combined_area"):
+            unit_label = "sq m"
+            lu = "m"
+        else:
+            lu = unit_label.replace("sq ", "")
+
+        if wp_type == "direct_area":
+            if shape == "square":
+                s = table_side
+                area = s * s
+                if unit_label == "sq cm":
+                    item_noun = rng.choice(["picture card", "greeting card", "photo", "notebook cover"])
+                else:
+                    item_noun = rng.choice(["table top", "garden bed", "patio", "mat"])
+                q = f"A square {item_noun} measures {s} {lu} on each side. What is its area in {unit_label}?"
+                return {
+                    "blank_target": "answer",
+                    "shape": "square",
+                    "sides": {"s": s},
+                    "s": s,
+                    "unit": unit_label,
+                    "length_unit": lu,
+                    "task_type": "find_area",
+                    "answer": area,
+                    "answer_formula": "s * s",
+                    "question": q,
+                    "context": "word_problem",
+                }
+            else:
+                if unit_label == "sq cm":
+                    item_noun = rng.choice(["postcard", "photo", "sheet of paper", "bookmark", "index card"])
+                else:
+                    item_noun = rng.choice(["classroom floor", "garden plot", "rug", "chalkboard"])
+                q = f"A rectangular {item_noun} is {l} {lu} long and {w} {lu} wide. What is the area of the {item_noun} in {unit_label}?"
+                return {
+                    "blank_target": "answer",
+                    "shape": "rectangle",
+                    "sides": {"l": l, "w": w},
+                    "l": l, "w": w,
+                    "unit": unit_label,
+                    "length_unit": lu,
+                    "task_type": "find_area",
+                    "answer": rect_area,
+                    "answer_formula": "l * w",
+                    "question": q,
+                    "context": "word_problem",
+                }
+
+        if wp_type == "missing_dimension":
+            known = table_dim
+            known_val = l if known == "l" else w
+            missing_val = w if known == "l" else l
+            if unit_label == "sq cm":
+                item_noun = rng.choice(["poster", "photo", "postcard", "drawing sheet", "card"])
+            else:
+                item_noun = rng.choice(["garden plot", "rug", "chalkboard", "wooden board"])
+            other_name = "width" if known == "l" else "length"
+            known_name = "length" if known == "l" else "width"
+            q = f"A rectangular {item_noun} has an area of {rect_area} {unit_label} and a {known_name} of {known_val} {lu}. What is its {other_name} in {lu}?"
+            return {
+                "blank_target": "answer",
+                "shape": "rectangle",
+                "area": rect_area,
+                "unit": unit_label,
+                "known_dimension": known,
+                "known_value": known_val,
+                "task_type": "find_missing_dimension",
+                "answer": missing_val,
+                "answer_formula": "area / known_value",
+                "sides": {"l": l, "w": w},
+                "l": l, "w": w,
+                "question": q,
+                "context": "word_problem",
+            }
+
+        if wp_type == "compare_area":
+            l1, w1 = table_side, other_side
+            area1 = l1 * w1
+            l2 = table_side
+            w2 = min(_OTHER_SIDE_MAX, other_side + rng.choice([1, 2, 3]))
+            area2 = l2 * w2
+            diff = area2 - area1
+            q = (
+                f"Garden Plot A is {l1} {lu} by {w1} {lu} (area = {area1} {unit_label}). "
+                f"Garden Plot B is {l2} {lu} by {w2} {lu} (area = {area2} {unit_label}). "
+                f"How many {unit_label} larger is Plot B than Plot A?"
+            )
+            return {
+                "blank_target": "answer",
+                "shape": "rectangle",
+                "unit": unit_label,
+                "length_unit": lu,
+                "task_type": "find_area",
+                "answer": diff,
+                "answer_formula": "area2 - area1",
+                "l1": l1, "w1": w1, "l2": l2, "w2": w2,
+                "area1": area1, "area2": area2,
+                "question": q,
+                "context": "word_problem",
+            }
+
+        if wp_type == "cost_area":
+            cost_per_sq = rng.choice([2, 5, 10])
+            total_cost = rect_area * cost_per_sq
+            item_noun = rng.choice(["wall", "floor", "patio"])
+            action = "painting" if item_noun == "wall" else "tiling"
+            q = (
+                f"A rectangular {item_noun} is {l} {lu} long and {w} {lu} wide (area = {rect_area} {unit_label}). "
+                f"If {action} costs ₱{cost_per_sq} per {unit_label}, what is the total cost to cover the {item_noun}?"
+            )
+            return {
+                "blank_target": "answer",
+                "shape": "rectangle",
+                "unit": unit_label,
+                "length_unit": lu,
+                "task_type": "find_area",
+                "answer": total_cost,
+                "answer_formula": "area * cost",
+                "question": q,
+                "context": "word_problem",
+            }
+
+        if wp_type == "combined_area":
+            l1, w1 = table_side, other_side
+            area1 = l1 * w1
+            l2, w2 = rng.choice([2, 3, 4, 5]), rng.randint(2, 6)
+            area2 = l2 * w2
+            total = area1 + area2
+            q = (
+                f"Ana has two rectangular flower beds: Bed 1 is {l1} {lu} by {w1} {lu} and "
+                f"Bed 2 is {l2} {lu} by {w2} {lu}. What is the combined total area of both flower beds in {unit_label}?"
+            )
+            return {
+                "blank_target": "answer",
+                "shape": "rectangle",
+                "unit": unit_label,
+                "length_unit": lu,
+                "task_type": "find_area",
+                "answer": total,
+                "answer_formula": "area1 + area2",
+                "question": q,
+                "context": "word_problem",
+            }
+
+    # Direct find_missing_dimension (pure)
     if task_type == "find_missing_dimension":
-        # The divisor must be the table factor: area / table_side is then a
-        # `division_tables_2_3_4_5_10` fact. Choosing the side at random here is
-        # what produced '44 sq cm ... a width of 22 cm' (44/22), a two-digit
-        # divisor that Grade 3 never teaches.
         known = table_dim
         known_val = l if known == "l" else w
         missing_val = w if known == "l" else l
         return {
             "blank_target": "answer",
             "shape": "rectangle",
-            "area": area,
+            "area": rect_area,
             "unit": unit_label,
             "known_dimension": known,
             "known_value": known_val,
@@ -479,23 +632,58 @@ def generate_params(
             "answer_formula": "area / known_value",
             "sides": {"l": l, "w": w},
             "l": l, "w": w,
+            "question": f"A rectangle has an area of {rect_area} {unit_label} and a {'length' if known == 'l' else 'width'} of {known_val} {lu}. What is its {'width' if known == 'l' else 'length'} in {lu}?",
             "context": context,
         }
+
+    # Direct find_area (pure, mat_g3_mg_q1_2)
+    if shape == "square":
+        s = table_side
+        area = s * s
+        phrasings = [
+            f"A square has a side of {s} {lu}. What is its area in {unit_label}?",
+            f"What is the area of a square with a side length of {s} {lu} in {unit_label}?",
+            f"Find the area of a square measuring {s} {lu} on each side in {unit_label}.",
+            f"Calculate the area of a square with sides of {s} {lu} in {unit_label}.",
+        ]
+        q = rng.choice(phrasings)
+        return {
+            "blank_target": "answer",
+            "shape": "square",
+            "sides": {"s": s},
+            "s": s,
+            "shape_noun": "square",
+            "dims_phrase": f"measuring {s} {lu} on each side",
+            "length_unit": lu,
+            "unit": unit_label,
+            "task_type": "find_area",
+            "answer": area,
+            "answer_formula": "s * s",
+            "question": q,
+            "context": context,
+        }
+
+    # Direct rectangle find_area (pure, mat_g3_mg_q1_2)
+    phrasings = [
+        f"A rectangle has sides {l} {lu} and {w} {lu}. What is its area in {unit_label}?",
+        f"What is the area of a rectangle with length {l} {lu} and width {w} {lu} in {unit_label}?",
+        f"Find the area of a rectangle that is {l} {lu} long and {w} {lu} wide in {unit_label}.",
+        f"Calculate the area of a rectangle with dimensions {l} {lu} by {w} {lu} in {unit_label}.",
+    ]
+    q = rng.choice(phrasings)
     return {
         "blank_target": "answer",
         "shape": "rectangle",
         "sides": {"l": l, "w": w},
-        "l": l, "w": w, "s": l,  # top-level aliases for spine templates & error formulas
+        "l": l, "w": w, "s": l,
         "shape_noun": "rectangular",
-        "surface_noun": "garden" if unit_label == "sq m" else "card",
-        "dims_phrase": f"that is {l} {unit_label.replace('sq ', '')} long and {w} {unit_label.replace('sq ', '')} wide",
-        "length_unit": unit_label.replace("sq ", ""),
+        "dims_phrase": f"that is {l} {lu} long and {w} {lu} wide",
+        "length_unit": lu,
         "unit": unit_label,
-        "task_type": task_type if task_type in ("illustrate_tiles", "derive_formula") else "find_area",
-        "answer": area,
-        **({"distractors": _estimation_distractors(l, w)}
-           if task_type == "illustrate_tiles" else {}),
+        "task_type": "find_area",
+        "answer": rect_area,
         "answer_formula": "l * w",
+        "question": q,
         "context": context,
     }
 

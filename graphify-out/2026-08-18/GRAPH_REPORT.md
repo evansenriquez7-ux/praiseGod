@@ -1,7 +1,7 @@
-# Graph Report - ccmed  (2026-08-18)
+# Graph Report - ccmed  (2026-08-17)
 
 ## Corpus Check
-- 462 files · ~696,985 words
+- 457 files · ~687,931 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1e4d9ec0`
+- Built from commit: `ca22aa9c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -244,10 +244,8 @@
 - [[_COMMUNITY_duplicate_registry_keys.py|duplicate_registry_keys.py]]
 - [[_COMMUNITY_Ground Rule 2 Spec Corrections & Baseline Fixes|Ground Rule 2: Spec Corrections & Baseline Fixes]]
 - [[_COMMUNITY_2026-08-13 — The tiling word problem had no determinate answer (Tick C)|2026-08-13 — The tiling word problem had no determinate answer (Tick C)]]
-- [[_COMMUNITY_2026-08-13 — perimeter an impossible triangle, and two shapes that never appeared|2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared]]
 - [[_COMMUNITY_generate_params|generate_params]]
 - [[_COMMUNITY_Anti-Patterns|Anti-Patterns]]
-- [[_COMMUNITY_2026-08-13 — The G1 measure items a visual for the task, and a size model for the units|2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units]]
 - [[_COMMUNITY__get_available_formats|_get_available_formats]]
 - [[_COMMUNITY_counting.py|counting.py]]
 - [[_COMMUNITY_2026-08-14 — A stated width is a floor as well as a ceiling|2026-08-14 — A stated width is a floor as well as a ceiling]]
@@ -261,6 +259,8 @@
 - [[_COMMUNITY_2026-08-13 — perimeter an impossible triangle, and two shapes that never appeared|2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared]]
 - [[_COMMUNITY_2026-08-13 — The G1 measure items a visual for the task, and a size model for the units|2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units]]
 - [[_COMMUNITY__gen_g2_na_q3_multiplication|_gen_g2_na_q3_multiplication]]
+- [[_COMMUNITY_time_reading.py|time_reading.py]]
+- [[_COMMUNITY_2026-08-14 — 2-digit by 1-digit bounds two operands, and only one had a key|2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key]]
 - [[_COMMUNITY_test_regrouping_feasibility.py|test_regrouping_feasibility.py]]
 - [[_COMMUNITY_counting.py|counting.py]]
 
@@ -706,8 +706,8 @@ Cohesion: 0.15
 Nodes (17): get_node_competency_bounds(), _parse_competency_bounds(), Parse competency text to extract bounds for difficulty dimensions.      Returns, Get competency-specific bounds for a node's difficulty dimensions.          Retu, Exception, Gated, main(), Pairwise-collapse probe: which declared variant VALUES render identically to eac (+9 more)
 
 ### Community 103 - "Community 103"
-Cohesion: 0.14
-Nodes (14): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated, Final Definition of Done, Phase F — full `run_all` verification and three more regressions it caught — 2026-08-02, Phase G — degenerate "estimate" pairs across all four estimate DNAs, 2026-08-04 (+6 more)
+Cohesion: 0.13
+Nodes (15): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated, A false alarm of my own, corrected, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item (+7 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.15
@@ -1165,10 +1165,6 @@ Nodes (9): 2026-08-13 — Tick F: building the inductive derivation (mat_g3_mg_q
 Cohesion: 0.33
 Nodes (6): 2026-08-13 — The tiling word problem had no determinate answer (Tick C), A correction made during the fix, The failing rationale, The fix, Two defects the tile-size fix's own re-review then caught (same tick), Verification
 
-### Community 245 - "2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared"
-Cohesion: 0.40
-Nodes (5): 2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared, A false alarm of my own, corrected, Defect 1 — the DNA emitted triangles that cannot exist, Defect 2 — a silent default made two of three named shapes unreachable, Left deliberately, with the reasoning, for the next tick
-
 ### Community 246 - "generate_params"
 Cohesion: 0.40
 Nodes (5): 2026-08-13 — The unanswerable measure item was a routing bug, not a wording one, Second defect, same tick — a competency serving two of its three parts, That reasoning held, and the table showed exactly why, The blast radius the previous tick warned about did not materialise, The failing rationale
@@ -1176,10 +1172,6 @@ Nodes (5): 2026-08-13 — The unanswerable measure item was a routing bug, not a
 ### Community 247 - "Anti-Patterns"
 Cohesion: 0.29
 Nodes (7): 2026-08-13 — Tick A: the freshness check compared the stem and nothing else, A review the gate rejected, and why it was not filed, The blind spot, The derivation item's variety, on the reviewer's own measurements, The fix, The remaining CONCERN on the derivation item, stated precisely, Verification — the check catches what it was written for
-
-### Community 248 - "2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units"
-Cohesion: 0.50
-Nodes (4): 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item, Defect 2 — object and unit drawn independently
 
 ### Community 251 - "_get_available_formats"
 Cohesion: 0.40
@@ -1224,6 +1216,14 @@ Nodes (4): generate_hints(), generate_params(), Any, Sample one item from the st
 ### Community 264 - "2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units"
 Cohesion: 0.40
 Nodes (5): 2026-08-13 — Object-to-unit pairing: the numbers were right, the things were wrong, A leak the first attempt left, caught by measuring rather than assuming, The failing rationale, Two causes, one in each DNA, Verification
+
+### Community 268 - "time_reading.py"
+Cohesion: 0.50
+Nodes (4): 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, Three defects, all in the `estimate` branch, Verification, Why this cluster
+
+### Community 269 - "2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key"
+Cohesion: 0.50
+Nodes (4): 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, The failing rationale, Verification, Why binding alone was not enough — and what had to be built
 
 ### Community 273 - "test_regrouping_feasibility.py"
 Cohesion: 0.09

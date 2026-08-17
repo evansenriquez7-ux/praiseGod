@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g3_mg_q1_3",
-  "reviewed_by": "Claude Opus 5 blind reviewer, area cluster re-review after square-label and surface-noun fixes, 2026-08-13",
-  "review_date": "2026-08-13",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Harden (mat_g3_mg_q1_2..mat_g3_mg_q1_6), 2026-08-17",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items consistently require the student to apply knowledge of area formulas for basic quadrilaterals, explicitly meeting the requirement to 'Solve problems involving areas of squares and rectangles.' Examples include finding area directly (e.g., 'A rectangular classroom floor is 4 m long and 3 m wide. What is the area of the classroom floor in sq m?') or finding a missing side given the area (e.g., 'A rectangular poster has an area of 15 sq cm and a length of 5 cm. What is its width in cm?')."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The generator successfully covers both shapes specified in the competency, featuring problems about squares ('A square table top measures 3 m on each side.') and rectangles ('A rectangular floor is 6 m long and 3 m wide'). It explores multiple conceptual angles of the competency."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The number bounds and operations required are highly appropriate for a Grade 3 level. The dimensions rely on basic multiplication facts (e.g., 4x3=12, 3x3=9, 5x5=25) and simple inverse division (e.g., 15/5=3, 28/4=7) that are well within the grasp of third graders. Multi-step word problems intentionally scaffold the cognitive load by pre-calculating the area when appropriate, such as in 'Garden Plot B is 5 m by 9 m (area = 45 sq m). How many sq m larger is Plot B than Plot A?'"
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample packet displays an excellent range of problem variants. It includes direct area calculation ('What is the area of the rug in sq m?'), reverse area/missing dimension problems ('What is its width in cm?'), area comparisons ('How many sq m larger is Plot B than Plot A?'), and practical application/cost calculations ('If tiling costs \u20b110 per sq m, what is the total cost to cover the patio?')."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample precisely maps to the target learning competency. There are no extraneous topics (like perimeter or volume) introduced. The focus remains exclusively on problems involving the area of squares and rectangles as mandated by the curriculum."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The units and measurements used are realistic and contextually appropriate for the real-world objects described. Examples include realistic dimensions for rooms and outdoor spaces ('A rectangular classroom floor is 4 m long and 3 m wide', 'Garden Plot A is 3 m by 7 m'), as well as smaller objects scaled appropriately in centimeters ('A rectangular postcard has an area of 28 sq cm', 'A square picture card measures 5 cm on each side')."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -23,7 +49,7 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Daniel wants to cover a rectangular garden that is 4 m long and 3 m wide with square tiles that are 1 m on each side. How many tiles are needed to cover it completely?",
+      "question_text": "A rectangular classroom floor is 4 m long and 3 m wide. What is the area of the classroom floor in sq m?",
       "correct_answer": 12,
       "options": [
         {
@@ -33,7 +59,7 @@
         },
         {
           "key": "B",
-          "value": 8,
+          "value": 13,
           "is_correct": false
         },
         {
@@ -51,7 +77,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Kuya Bien wants to cover a square garden measuring 3 m on each side with square tiles that are 1 m on each side. How many tiles are needed to cover it completely?",
+      "question_text": "A square table top measures 3 m on each side. What is its area in sq m?",
       "correct_answer": 9,
       "options": [
         {
@@ -79,7 +105,7 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "A rectangle has an area of 15 sq cm and a length of 5 cm. What is its width?",
+      "question_text": "A rectangular poster has an area of 15 sq cm and a length of 5 cm. What is its width in cm?",
       "correct_answer": 3,
       "options": [
         {
@@ -107,12 +133,12 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "A rectangle has an area of 8 sq m and a length of 4 m. What is its width?",
-      "correct_answer": 2,
+      "question_text": "A rectangular classroom floor is 4 m long and 2 m wide. What is the area of the classroom floor in sq m?",
+      "correct_answer": 8,
       "options": [
         {
           "key": "A",
-          "value": 3,
+          "value": 9,
           "is_correct": false
         },
         {
@@ -122,7 +148,7 @@
         },
         {
           "key": "C",
-          "value": 2,
+          "value": 8,
           "is_correct": true
         },
         {
@@ -135,7 +161,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Ate Cara wants to cover a square garden measuring 2 m on each side with square tiles that are 1 m on each side. How many tiles are needed to cover it completely?",
+      "question_text": "A square garden bed measures 2 m on each side. What is its area in sq m?",
       "correct_answer": 4,
       "options": [
         {
@@ -163,31 +189,31 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "A rectangle has an area of 21 sq m and a length of 3 m. What is its width?",
-      "correct_answer": 7,
+      "question_text": "Garden Plot A is 3 m by 7 m (area = 21 sq m). Garden Plot B is 3 m by 8 m (area = 24 sq m). How many sq m larger is Plot B than Plot A?",
+      "correct_answer": 3,
       "options": [
         {
           "key": "A",
-          "value": 10,
-          "text": "10",
+          "value": 4,
+          "text": "4",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 7,
-          "text": "7",
+          "value": 3,
+          "text": "3",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 8,
-          "text": "8",
+          "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 20,
-          "text": "20",
+          "value": 2,
+          "text": "2",
           "is_correct": false
         }
       ]
@@ -195,31 +221,31 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "A rectangle has an area of 30 sq m and a width of 5 m. What is its length?",
-      "correct_answer": 6,
+      "question_text": "Garden Plot A is 5 m by 6 m (area = 30 sq m). Garden Plot B is 5 m by 9 m (area = 45 sq m). How many sq m larger is Plot B than Plot A?",
+      "correct_answer": 15,
       "options": [
         {
           "key": "A",
-          "value": 6,
-          "text": "6",
+          "value": 15,
+          "text": "15",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 22,
-          "text": "22",
+          "value": 14,
+          "text": "14",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 11,
-          "text": "11",
+          "value": 16,
+          "text": "16",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 7,
-          "text": "7",
+          "value": 17,
+          "text": "17",
           "is_correct": false
         }
       ]
@@ -227,7 +253,7 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "A rectangle has an area of 28 sq cm and a width of 4 cm. What is its length?",
+      "question_text": "A rectangular postcard has an area of 28 sq cm and a width of 4 cm. What is its length in cm?",
       "correct_answer": 7,
       "options": [
         {
@@ -255,8 +281,8 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "A rectangle has an area of 24 sq m and a width of 3 m. What is its length?",
-      "correct_answer": 8,
+      "question_text": "A rectangular chalkboard is 8 m long and 3 m wide. What is the area of the chalkboard in sq m?",
+      "correct_answer": 24,
       "options": [
         {
           "key": "A",
@@ -265,12 +291,12 @@
         },
         {
           "key": "B",
-          "value": 8,
+          "value": 24,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 9,
+          "value": 25,
           "is_correct": false
         },
         {
@@ -283,27 +309,27 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "A rectangle has an area of 18 sq m and a width of 3 m. What is its length?",
-      "correct_answer": 6,
+      "question_text": "A rectangular floor is 6 m long and 3 m wide (area = 18 sq m). If tiling costs \u20b15 per sq m, what is the total cost to cover the floor?",
+      "correct_answer": 90,
       "options": [
         {
           "key": "A",
-          "value": 9,
+          "value": 91,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 18,
+          "value": 89,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 6,
+          "value": 90,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 7,
+          "value": 92,
           "is_correct": false
         }
       ]
@@ -311,7 +337,7 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with square tiles that are 1 m on each side. How many tiles are needed to cover it completely?",
+      "question_text": "A rectangular chalkboard is 2 m long and 3 m wide. What is the area of the chalkboard in sq m?",
       "correct_answer": 6,
       "options": [
         {
@@ -328,8 +354,8 @@
         },
         {
           "key": "C",
-          "value": 4,
-          "text": "4",
+          "value": 7,
+          "text": "7",
           "is_correct": false
         },
         {
@@ -343,27 +369,27 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "A rectangle has an area of 24 sq cm and a width of 4 cm. What is its length?",
-      "correct_answer": 6,
+      "question_text": "A rectangular patio is 6 m long and 4 m wide (area = 24 sq m). If tiling costs \u20b110 per sq m, what is the total cost to cover the patio?",
+      "correct_answer": 240,
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 240,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 7,
+          "value": 242,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 10,
+          "value": 241,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 20,
+          "value": 239,
           "is_correct": false
         }
       ]
@@ -371,7 +397,7 @@
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "Yna wants to cover a square card measuring 5 cm on each side with square tiles that are 1 cm on each side. How many tiles are needed to cover it completely?",
+      "question_text": "A square picture card measures 5 cm on each side. What is its area in sq cm?",
       "correct_answer": 25,
       "options": [
         {
@@ -399,7 +425,7 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Kris wants to cover a rectangular garden that is 8 m long and 5 m wide with square tiles that are 1 m on each side. How many tiles are needed to cover it completely?",
+      "question_text": "A rectangular rug is 8 m long and 5 m wide. What is the area of the rug in sq m?",
       "correct_answer": 40,
       "options": [
         {
@@ -419,37 +445,10 @@
         },
         {
           "key": "D",
-          "value": 16,
+          "value": 41,
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples genuinely solve area problems, and in both directions. Forward, seed 604, 'Kris wants to cover a rectangular garden that is 8 m long and 5 m wide with square tiles that are 1 m on each side. How many tiles are needed to cover it completely?', is answerable from the stem alone — both dimensions and the tile size are given, so 8 × 5 = 40. Inverse, seed 50, 'A rectangle has an area of 21 sq m and a length of 3 m. What is its width?', makes the student work back through 21 ÷ 3 = 7. That is problem solving about area rather than tile-counting practice."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Squares and rectangles, the two figures the wording names, both carry real items: the square at seed 43, 'Kuya Bien wants to cover a square garden measuring 3 m on each side', and at seed 603, 'Yna wants to cover a square card measuring 5 cm on each side', with rectangles from seed 42 onward. Within the rectangle case both unknowns are exercised, the missing width at seed 44, 'A rectangle has an area of 15 sq cm and a length of 5 cm. What is its width?', and the missing length at seed 501, 'A rectangle has an area of 28 sq cm and a width of 4 cm. What is its length?'. The inverse direction is never applied to a square, though the wording does not name that sub-case."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Contexts are concrete, local and single-step — seed 46, 'Ate Cara wants to cover a square garden measuring 2 m on each side with square tiles that are 1 m on each side', and the 5 cm card at seed 603 — and the names Kuya Bien, Ate Cara, Pia and Yna sit naturally for a Filipino Grade 3 class. The word problems are all answerable from what they state; seed 42, 'Daniel wants to cover a rectangular garden that is 4 m long and 3 m wide with square tiles that are 1 m on each side', supplies every number needed and leaves no partial tile. The inverse items need one missing-factor division, 24 ÷ 3 = 8 at seed 502, which is within reach in Quarter 1."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "All fourteen samples come from exactly two sentence frames. Six are the tiling context of seed 601, 'Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with square tiles that are 1 m on each side. How many tiles are needed to cover it completely?', with only the name, the shape and the two numbers changing. The other eight are the bare inverse of seed 600, 'A rectangle has an area of 18 sq m and a width of 3 m. What is its length?'. Nothing asks straight out for an area in square units, no item compares two figures or takes two steps, and no situation other than covering a garden or a card ever appears."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every item keeps the area relationship of a square or a rectangle as the thing being reasoned about, and none slips into perimeter or into bare multiplication practice. Seed 600, 'A rectangle has an area of 18 sq m and a width of 3 m. What is its length?', can only be answered by inverting area equals length times width, and seed 43, 'Kuya Bien wants to cover a square garden measuring 3 m on each side with square tiles that are 1 m on each side', is an applied covering problem rather than an exercise in illustrating or deriving a rule."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Magnitudes stay small and physically sensible. The largest computation is the 8 × 5 = 40 sq m at seed 604, and every division sits inside the basic facts — 30 ÷ 5 = 6 at seed 500, 'A rectangle has an area of 30 sq m and a width of 5 m. What is its length?', and 28 ÷ 4 = 7 at seed 501. Units fit the object measured: the card at seed 603 is '5 cm on each side' while the garden at seed 43 is '3 m on each side', so no sample asks a Grade 3 pupil to imagine a five-metre greeting card."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

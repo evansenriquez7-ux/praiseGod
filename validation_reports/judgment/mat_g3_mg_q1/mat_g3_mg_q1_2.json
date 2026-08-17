@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g3_mg_q1_2",
-  "reviewed_by": "claude-opus-5 blind reviewer, area cluster re-review after tile-size fix, 2026-08-13",
-  "review_date": "2026-08-13",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Harden (mat_g3_mg_q1_2..mat_g3_mg_q1_6), 2026-08-17",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample problems successfully require the student to find the area of both squares and rectangles in the appropriate units, fulfilling the core expectation of the competency. For example, questions ask to 'Find the area of a rectangle that is 8 cm long and 5 cm wide in sq cm.' and 'Calculate the area of a square with sides of 4 m in sq m.'"
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The generator comprehensively covers all four distinct conditions in the competency: squares in sq. cm (e.g., 'A square has a side of 4 cm. What is its area in sq cm?'), squares in sq. m (e.g., 'Find the area of a square measuring 5 m on each side in sq m.'), rectangles in sq. cm (e.g., 'A rectangle has sides 4 cm and 3 cm. What is its area in sq cm?'), and rectangles in sq. m (e.g., 'A rectangle has sides 3 m and 5 m. What is its area in sq m?')."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The numerical values used in the problems are highly appropriate for Grade 3, Quarter 1. The side lengths are single-digit numbers (e.g., 2, 3, 4, 5, 6, 8), which rely on basic multiplication facts that are accessible to third graders without causing excessive cognitive load."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample set shows good variety in question phrasing, including direct declarative setups ('A rectangle has sides 4 cm and 3 cm. What is its area in sq cm?'), imperative commands ('Find the area of a square measuring 3 m on each side in sq m.'), and contextualized real-world objects ('A rectangular chalkboard is 2 m long and 3 m wide. What is the area of the chalkboard in sq m?')."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All questions align strictly with the competency text. There is no scope creep; the problems do not ask for missing side lengths, perimeter, or conversions between units, focusing solely on finding the area given the dimensions."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The dimensions and units paired with contextual objects are realistic and appropriately scaled. For instance, 'A rectangular chalkboard is 2 m long and 3 m wide.' is a plausible real-world measurement, while abstract shapes use standard small integers like 'A square has a side of 4 cm'."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -13,11 +39,12 @@
     500,
     501,
     502,
+    600,
     601,
     602,
+    603,
     604,
-    605,
-    606
+    605
   ],
   "samples_reviewed": [
     {
@@ -107,7 +134,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "A square has a side of 5 m. What is its area in sq m?",
+      "question_text": "Find the area of a square measuring 5 m on each side in sq m.",
       "correct_answer": 25,
       "options": [
         {
@@ -135,7 +162,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "A rectangle has sides 6 m and 2 m. What is its area in sq m?",
+      "question_text": "What is the area of a rectangle with length 6 m and width 2 m in sq m?",
       "correct_answer": 12,
       "options": [
         {
@@ -163,7 +190,7 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "A square has a side of 4 m. What is its area in sq m?",
+      "question_text": "Calculate the area of a square with sides of 4 m in sq m.",
       "correct_answer": 16,
       "options": [
         {
@@ -227,7 +254,7 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "A square has a side of 3 m. What is its area in sq m?",
+      "question_text": "Find the area of a square measuring 3 m on each side in sq m.",
       "correct_answer": 9,
       "options": [
         {
@@ -255,7 +282,7 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "A square has a side of 4 cm. What is its area in sq cm?",
+      "question_text": "Calculate the area of a square with sides of 4 cm in sq cm.",
       "correct_answer": 16,
       "options": [
         {
@@ -281,9 +308,37 @@
       ]
     },
     {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "A square has a side of 5 m. What is its area in sq m?",
+      "correct_answer": 25,
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 25,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 26,
+          "is_correct": false
+        }
+      ]
+    },
+    {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with square tiles that are 1 m on each side. How many tiles are needed to cover it completely?",
+      "question_text": "A rectangular chalkboard is 2 m long and 3 m wide. What is the area of the chalkboard in sq m?",
       "correct_answer": 6,
       "options": [
         {
@@ -300,8 +355,8 @@
         },
         {
           "key": "C",
-          "value": 4,
-          "text": "4",
+          "value": 7,
+          "text": "7",
           "is_correct": false
         },
         {
@@ -315,7 +370,7 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "A rectangle has sides 4 m and 3 m. What is its area in sq m?",
+      "question_text": "Find the area of a rectangle that is 4 m long and 3 m wide in sq m.",
       "correct_answer": 12,
       "options": [
         {
@@ -341,9 +396,37 @@
       ]
     },
     {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "A square has a side of 4 cm. What is its area in sq cm?",
+      "correct_answer": 16,
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 16,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "is_correct": false
+        }
+      ]
+    },
+    {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "A rectangle has sides 8 cm and 5 cm. What is its area in sq cm?",
+      "question_text": "Find the area of a rectangle that is 8 cm long and 5 cm wide in sq cm.",
       "correct_answer": 40,
       "options": [
         {
@@ -399,61 +482,6 @@
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "A rectangle has sides 4 m and 7 m. What is its area in sq m?",
-      "correct_answer": 28,
-      "options": [
-        {
-          "key": "A",
-          "value": 28,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 22,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": false
-        }
-      ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every sample asks outright for an area and names the square unit in the question itself: seed 44 'A square has a side of 3 cm. What is its area in sq cm?' resolves by 3x3=9, and seed 604 'A rectangle has sides 8 cm and 5 cm. What is its area in sq cm?' by 8x5=40. Nothing here asks the pupil to do anything beyond computing the area of a stated square or rectangle, which is the verb this competency uses."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All four sub-cases the wording names are present. Square in sq cm: seed 502 'A square has a side of 4 cm. What is its area in sq cm?'. Square in sq m: seed 45 'A square has a side of 5 m. What is its area in sq m?'. Rectangle in sq cm: seed 605 'A rectangle has sides 5 cm and 6 cm. What is its area in sq cm?'. Rectangle in sq m: seed 606 'A rectangle has sides 4 m and 7 m. What is its area in sq m?'. Neither shape nor unit is left unsampled."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The stems are two short sentences carrying one multiplication and no unit conversion, e.g. seed 46 'A rectangle has sides 6 m and 2 m. What is its area in sq m?' keeps both lengths in the same unit as the requested answer. Seed 601 is the only multi-clause item and its extra load is concrete and countable, 'with square tiles that are 1 m on each side'. That is the right reading and reasoning demand for the start of Grade 3."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Seeds 50 and 500 render the same stem word for word, 'A square has a side of 4 m. What is its area in sq m?', with the same answer 16 and the same four option values merely reordered; seed 502 repeats that computation in centimetres as 'A square has a side of 4 cm. What is its area in sq cm?'; seeds 44 and 501 are likewise a side-of-3 pair. Thirteen of the fourteen samples are one of just two fixed frames, the square-side frame and the rectangle-sides frame, with only the numbers and the unit swapped."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 601 'Pia wants to cover a rectangular garden that is 2 m long and 3 m wide with square tiles that are 1 m on each side.' asks for a count of tiles, and its answer 6 carries no square unit, so the single contextual item in this packet reports a tile count rather than an area stated in sq cm or sq m; the identical item also stands in the sibling problem-solving node. The other thirteen samples, such as seed 602 'A rectangle has sides 4 m and 3 m. What is its area in sq m?', sit squarely on this competency."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Every sample demands exactly one multiplication of two one-digit lengths and no division at all: seed 42 'A rectangle has sides 4 cm and 3 cm. What is its area in sq cm?' is 4x3=12, seed 43 is 3x5=15, seed 45 is 5x5=25, and the three largest products are seed 604 at 8x5=40, seed 605 at 5x6=30 and seed 606 at 4x7=28. All sit inside the basic multiplication facts and no result passes 40, which is plausible for Grade 3 Quarter 1."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

@@ -539,50 +539,100 @@ def generate_params(
         }
 
     if task_type == "equal_length":
-        # "Identify ... line segments of equal length" (mat_g3_mg_q1_6) needs
-        # the complement of "compare": able to present a genuinely EQUAL
-        # pair, which "compare" structurally forbids (its own loop below
-        # forces val_b != val_a). Present a reference segment and a second
-        # segment that matches it exactly half the time.
-        if unit_mode == "non_standard":
-            unit = rng.choice(_NON_STANDARD_UNITS)
-            lo, hi = bounds.get("length_min", 1), bounds.get("length_max", 100)
-            hi = max(lo + 1, int(log_interpolate(lo, hi, scalar)))
-        else:
-            unit = unit_mode
-            lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
-            hi = max(hi, lo + 1)
-        ref = rng.randint(lo, hi)
-        is_equal = rng.random() < 0.5
-        if is_equal:
-            candidate = ref
-        else:
-            deltas = [d for d in range(-5, 6) if d != 0 and lo <= ref + d <= hi]
-            candidate = ref + rng.choice(deltas) if deltas else ref + 1
-        answer = "Yes" if is_equal else "No"
-        # "cannot tell without measuring" is a guaranteed-wrong distractor
-        # here -- both lengths are already stated in the question, so a
-        # student never actually needs to eliminate it by reasoning about
-        # the task (blind review of mat_g3_mg_q1_6). Swap for a distractor
-        # that is wrong for a reason unrelated to information being given.
-        unit_a = unit[:-1] if ref == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
-        unit_b = unit[:-1] if candidate == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
+        # "Identify and draw line segments of equal length using a ruler" (mat_g3_mg_q1_6)
+        # Constrain to classroom ruler scale: 2 cm to 12 cm, strictly in cm.
+        unit = "cm"
+        sub_type = rng.choice(["ruler_read_equality", "draw_from_zero", "draw_from_offset", "identify_matching_segment"])
+        len_a = rng.randint(2, 9)
+        start_b = rng.randint(1, 5)
+
+        if sub_type == "ruler_read_equality":
+            is_equal = rng.random() < 0.5
+            len_b = len_a if is_equal else (len_a + rng.choice([-2, -1, 1, 2]))
+            if len_b < 1:
+                len_b = len_a + 1
+            is_equal = (len_a == len_b)
+            end_b = start_b + len_b
+            answer = "Yes" if is_equal else "No"
+            return {
+                "blank_target": "answer",
+                "length": len_a,
+                "value_a": len_a,
+                "value_b": len_b,
+                "unit": unit,
+                "unit_type": "cm",
+                "task_type": "equal_length",
+                "sub_task": "ruler_read_equality",
+                "answer": answer,
+                "distractors": [
+                    "No" if answer == "Yes" else "Yes",
+                    "Only if both segments start at 0 cm",
+                    "Cannot be determined without a set square",
+                ],
+                "question": (
+                    f"On a ruler, Segment A starts at 0 cm and ends at {len_a} cm. "
+                    f"Segment B starts at {start_b} cm and ends at {end_b} cm. "
+                    f"Are Segment A and Segment B equal in length?"
+                ),
+            }
+
+        if sub_type == "draw_from_zero":
+            answer = len_a
+            dists = [d for d in [len_a + 1, max(1, len_a - 1), len_a + 2, len_a + 3] if d != answer][:3]
+            return {
+                "blank_target": "answer",
+                "length": len_a,
+                "unit": unit,
+                "unit_type": "cm",
+                "task_type": "equal_length",
+                "sub_task": "draw_from_zero",
+                "answer": answer,
+                "distractors": dists,
+                "question": (
+                    f"Segment A has a length of {len_a} cm. To draw Segment B equal in length "
+                    f"using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?"
+                ),
+            }
+
+        if sub_type == "draw_from_offset":
+            end_b = start_b + len_a
+            answer = end_b
+            dists = [d for d in [len_a, start_b, end_b + 1, end_b - 1] if d != answer][:3]
+            return {
+                "blank_target": "answer",
+                "length": len_a,
+                "unit": unit,
+                "unit_type": "cm",
+                "task_type": "equal_length",
+                "sub_task": "draw_from_offset",
+                "answer": answer,
+                "distractors": dists,
+                "question": (
+                    f"Segment A is {len_a} cm long. If you use a ruler to draw Segment B equal in length "
+                    f"starting at the {start_b} cm mark, at which centimeter mark on the ruler must Segment B end?"
+                ),
+            }
+
+        # identify_matching_segment
+        end_match = start_b + len_a
+        answer = f"A segment starting at {start_b} cm and ending at {end_match} cm"
+        distractors = [
+            f"A segment starting at {start_b} cm and ending at {end_match + 2} cm",
+            f"A segment starting at {start_b} cm and ending at {max(start_b + 1, end_match - 2)} cm",
+            f"A segment starting at {start_b + 1} cm and ending at {end_match + 2} cm",
+        ]
         return {
             "blank_target": "answer",
-            "value_a": ref,
-            "value_b": candidate,
+            "length": len_a,
             "unit": unit,
-            "unit_type": unit_mode,
+            "unit_type": "cm",
             "task_type": "equal_length",
+            "sub_task": "identify_matching_segment",
             "answer": answer,
-            "distractors": [
-                "No" if answer == "Yes" else "Yes",
-                "only if they are the same color",
-                "only if they are drawn in the same direction",
-            ],
+            "distractors": distractors,
             "question": (
-                f"Segment A is {ref} {unit_a} long. Segment B is {candidate} {unit_b} long. "
-                f"Are Segment A and Segment B equal in length?"
+                f"Segment A measures {len_a} cm on a ruler. Which of the following describes a line segment "
+                f"that is equal in length to Segment A?"
             ),
         }
 

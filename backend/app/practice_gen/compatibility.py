@@ -145,6 +145,12 @@ CURRICULUM_VARIANT_GATES: Dict[tuple, tuple] = {
     # measurement competency does not call for and Grade 1 has not yet taught."
     ("length_measurement", "task_type", "estimate"): (2, 2),
 
+    # Geometric lines: point/segment/ray and parallel/perp enter at G3 Q1 (mat_g3_mg_q1_4/5)
+    ("geometric_lines", "task_type", "recognize_model"): (3, 1),
+    ("geometric_lines", "task_type", "draw_construct"): (3, 1),
+    ("geometric_lines", "concept_type", "point_line_segment_ray"): (3, 1),
+    ("geometric_lines", "concept_type", "parallel_intersecting_perpendicular"): (3, 1),
+
     # Word problems: available from G1Q1 per curriculum ("solve problems given orally or in pictures")
     # No gate entries (all LCs with word_problem context available from Q1)
 }
@@ -709,7 +715,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         # when a requested combination has zero grade-eligible items, so a
         # registered variant value that doesn't exist in the pool is a hard
         # failure at generation time, not a quietly-wrong substitution.
-        "task_type": ["identify_name", "identify_property"],
+        "task_type": ["identify_name", "identify_property", "recognize_model", "draw_construct"],
         "concept_type": ["straight_curved", "parallel_intersecting_perpendicular", "point_line_segment_ray"],
     },
 

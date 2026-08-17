@@ -2075,8 +2075,8 @@ BINDINGS = {
         "visual": "mcq"
     },
     "mat_g3_mg_q1_6": {
-        "dna": "geometric_lines",
-        "visual": "mcq"
+        "dna": "length_measurement",
+        "visual": "ruler_measure"
     },
     "mat_g3_mg_q2_0": {
         "dna": "mass_capacity",

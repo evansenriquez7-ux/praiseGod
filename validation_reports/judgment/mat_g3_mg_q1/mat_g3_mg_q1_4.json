@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g3_mg_q1_4",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B6 (g2 na re-review + g3 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Harden (mat_g3_mg_q1_2..mat_g3_mg_q1_6), 2026-08-17",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The generator successfully meets the core competency by testing the student's ability to identify points, lines, line segments, and rays, using definitional properties, visual models, and drawing procedures. Questions such as 'Look at the model: \u2022 P (a single dot with a label). Which geometric figure is represented?' and 'When drawing a line, what symbols are placed at both ends to show it extends forever in both directions?' fulfill the requirements."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All parts of the competency are covered: points ('Look at the model: \u2022 P (a single dot with a label).'), lines ('When drawing a line, what symbols are placed at both ends'), line segments ('To draw a line segment measuring 4 cm'), and rays ('When drawing a ray, what symbol is placed at one end'). Both recognizing using models ('A beam of light starting from a flashlight and travelling outward in one direction is a real-world model of a ___.') and the concept of drawing are evaluated."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The language and conceptual difficulty are fully appropriate for Grade 3. The use of simple, familiar models like 'A beam of light starting from a flashlight' and drawing instructions like 'you start at the 0 cm mark on a ruler and draw until which mark?' match the developmental capacity of a 3rd grader."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples show a good variety of question types, including straightforward definitions ('What figure has two endpoints and a definite length?'), model recognition ('Look at the diagram of a triangle. Each of its straight sides with two endpoints is an example of a ___.'), and procedural drawing questions ('When drawing a line, what symbols are placed at both ends')."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The items are strictly aligned to the MATATAG curriculum text. There is no scope creep into naming specific rays or lines with complex notation, or measuring angles. The focus remains tightly on 'Recognize, using models, and draws a point, line, line segment, and ray.'"
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical values and spatial concepts used are appropriate. Using '4 cm' in 'To draw a line segment measuring 4 cm, you start at the 0 cm mark on a ruler and draw until which mark?' is highly plausible and grounds the geometric concepts in basic, age-appropriate measurement."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -11,14 +37,17 @@
     46,
     500,
     501,
-    502
+    502,
+    600,
+    601,
+    603
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What do we call an exact location in space with no length or width?",
-      "correct_answer": "point",
+      "question_text": "What figure has two endpoints and a definite length?",
+      "correct_answer": "line segment",
       "options": [
         {
           "key": "A",
@@ -27,12 +56,12 @@
         },
         {
           "key": "B",
-          "value": "line segment",
+          "value": "point",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "point",
+          "value": "line segment",
           "is_correct": true
         },
         {
@@ -45,12 +74,12 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "A figure starts at point A and passes through point B, then continues forever past B. What is it?",
-      "correct_answer": "ray",
+      "question_text": "What figure has no endpoints and extends forever in both directions?",
+      "correct_answer": "line",
       "options": [
         {
           "key": "A",
-          "value": "ray",
+          "value": "line",
           "is_correct": true
         },
         {
@@ -65,7 +94,7 @@
         },
         {
           "key": "D",
-          "value": "line",
+          "value": "ray",
           "is_correct": false
         }
       ]
@@ -73,12 +102,40 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Which figure can be measured because it has a definite length?",
-      "correct_answer": "line segment",
+      "question_text": "To draw a line segment measuring 4 cm, you start at the 0 cm mark on a ruler and draw until which mark?",
+      "correct_answer": "4 cm",
       "options": [
         {
           "key": "A",
-          "value": "ray",
+          "value": "8 cm",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "0 cm",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "10 cm",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4 cm",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Look at the model: \u2022 P (a single dot with a label). Which geometric figure is represented?",
+      "correct_answer": "point",
+      "options": [
+        {
+          "key": "A",
+          "value": "line segment",
           "is_correct": false
         },
         {
@@ -89,39 +146,11 @@
         {
           "key": "C",
           "value": "point",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "line segment",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "How many endpoints does a line have?",
-      "correct_answer": "0",
-      "options": [
-        {
-          "key": "A",
-          "value": "infinite",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "0",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "2",
+          "value": "ray",
           "is_correct": false
         }
       ]
@@ -157,27 +186,27 @@
     {
       "seed": 500,
       "formatter": "mcq",
-      "question_text": "How many endpoints does a line have?",
-      "correct_answer": "0",
+      "question_text": "When drawing a line, what symbols are placed at both ends to show it extends forever in both directions?",
+      "correct_answer": "arrowheads",
       "options": [
         {
           "key": "A",
-          "value": "0",
+          "value": "arrowheads",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "2",
+          "value": "dots",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "1",
+          "value": "endpoints",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "infinite",
+          "value": "numbers",
           "is_correct": false
         }
       ]
@@ -185,27 +214,27 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "How many endpoints does a ray have?",
-      "correct_answer": "1",
+      "question_text": "Look at the model: \u2022 P (a single dot with a label). Which geometric figure is represented?",
+      "correct_answer": "point",
       "options": [
         {
           "key": "A",
-          "value": "1",
+          "value": "point",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "3",
+          "value": "line segment",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "2",
+          "value": "ray",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "0",
+          "value": "line",
           "is_correct": false
         }
       ]
@@ -213,57 +242,114 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "How many endpoints does a line segment have?",
-      "correct_answer": "2",
+      "question_text": "A beam of light starting from a flashlight and travelling outward in one direction is a real-world model of a ___.",
+      "correct_answer": "ray",
       "options": [
         {
           "key": "A",
-          "value": "0",
+          "value": "line",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "2",
+          "value": "ray",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "3",
+          "value": "point",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "1",
+          "value": "line segment",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Look at the diagram of a triangle. Each of its straight sides with two endpoints is an example of a ___.",
+      "correct_answer": "line segment",
+      "options": [
+        {
+          "key": "A",
+          "value": "line",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "ray",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "line segment",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "point",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "When drawing a ray, what symbol is placed at one end to show that it extends forever in that direction?",
+      "correct_answer": "arrowhead",
+      "options": [
+        {
+          "key": "A",
+          "value": "circle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "endpoint dot",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "square",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "arrowhead",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "Which figure can be measured because it has a definite length?",
+      "correct_answer": "line segment",
+      "options": [
+        {
+          "key": "A",
+          "value": "point",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "line segment",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "line",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "ray",
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The four figures are correctly defined (point in seed 42, ray in seed 43, line segment in seed 44/46, line in seed 45/500), but the competency's operative phrase 'using models, and draws' is never enacted — every sample is a verbal definition question with no diagram to recognize or drawing task."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All four named figures — point, line, line segment, and ray — are each addressed by at least one sample."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Vocabulary ('endpoint', 'definite length') is appropriately pitched for Grade 3 Quarter 1."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "All eight samples share the same text-only, property-recall mcq structure; there is no visual-model recognition item and no drawing-based item, so the sample set has effectively one variant."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Difficulty varies only by which of the four terms is asked about, not along the 'using models, and draws' dimension the competency itself names."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "No numeric scale is implicated by this competency."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

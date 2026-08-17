@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g3_mg_q1_6",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the conversion gate and cm ceiling, 2026-08-13",
-  "review_date": "2026-08-13",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Harden (mat_g3_mg_q1_2..mat_g3_mg_q1_6), 2026-08-17",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items successfully fulfill the competency's mandate to 'Identify and draw line segments of equal length using a ruler.' Questions like 'Are Segment A and Segment B equal in length?' test the identification aspect, while questions such as 'If you use a ruler to draw Segment B equal in length starting at the 4 cm mark, at which centimeter mark on the ruler must Segment B end?' successfully translate the drawing aspect into a testable conceptual format."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The generator comprehensively covers the competency by exploring multiple facets: evaluating two given segments to determine if they are equal, finding a matching segment description given a base length (e.g., 'Which of the following describes a line segment that is equal in length to Segment A?'), and determining the correct endpoint to create an equal segment."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The questions are well-suited for Grade 3 students. The lengths and ruler marks involve small whole numbers (e.g., 0 to 14 cm), requiring basic addition and subtraction (e.g., 4 cm + 8 cm = 12 cm) which is appropriate for their cognitive capacity."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample packet demonstrates good variant comprehensiveness. It includes Yes/No comparison tasks ('Are Segment A and Segment B equal in length?'), multiple-choice selection of equivalent segments ('Which of the following describes a line segment that is equal in length to Segment A?'), and endpoint calculation tasks representing drawing ('at which centimeter mark on the ruler must Segment B end?')."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All questions align perfectly with the target competency. They strictly focus on using ruler measurements to determine or establish equal lengths for line segments, without introducing unrelated concepts or vocabulary."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The values used represent realistic and standard ruler measurements for classroom use (e.g., segments of '3 cm', '7 cm', up to ends at '14 cm'). This scale is highly appropriate and relatable for the intended Grade 3 audience."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -13,6 +39,7 @@
     500,
     501,
     502,
+    600,
     601,
     602,
     603,
@@ -22,7 +49,7 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Segment A is 2 cm long. Segment B is 2 cm long. Are Segment A and Segment B equal in length?",
+      "question_text": "On a ruler, Segment A starts at 0 cm and ends at 2 cm. Segment B starts at 3 cm and ends at 5 cm. Are Segment A and Segment B equal in length?",
       "correct_answer": "Yes",
       "options": [
         {
@@ -32,7 +59,7 @@
         },
         {
           "key": "B",
-          "value": "only if they are drawn in the same direction",
+          "value": "Cannot be determined without a set square",
           "is_correct": false
         },
         {
@@ -42,7 +69,7 @@
         },
         {
           "key": "D",
-          "value": "only if they are the same color",
+          "value": "Only if both segments start at 0 cm",
           "is_correct": false
         }
       ]
@@ -50,27 +77,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Segment A is 1 cm long. Segment B is 1 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "Yes",
+      "question_text": "On a ruler, Segment A starts at 0 cm and ends at 6 cm. Segment B starts at 2 cm and ends at 9 cm. Are Segment A and Segment B equal in length?",
+      "correct_answer": "No",
       "options": [
         {
           "key": "A",
-          "value": "Yes",
+          "value": "No",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "only if they are the same color",
+          "value": "Only if both segments start at 0 cm",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "only if they are drawn in the same direction",
+          "value": "Cannot be determined without a set square",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "No",
+          "value": "Yes",
           "is_correct": false
         }
       ]
@@ -78,27 +105,27 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Segment A is 7 cm long. Segment B is 3 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "No",
+      "question_text": "Segment A measures 3 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
+      "correct_answer": "A segment starting at 2 cm and ending at 5 cm",
       "options": [
         {
           "key": "A",
-          "value": "only if they are the same color",
+          "value": "A segment starting at 2 cm and ending at 3 cm",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "Yes",
+          "value": "A segment starting at 2 cm and ending at 7 cm",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "only if they are drawn in the same direction",
+          "value": "A segment starting at 3 cm and ending at 7 cm",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "No",
+          "value": "A segment starting at 2 cm and ending at 5 cm",
           "is_correct": true
         }
       ]
@@ -106,27 +133,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Segment A is 5 cm long. Segment B is 5 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "Yes",
+      "question_text": "Segment A is 8 cm long. If you use a ruler to draw Segment B equal in length starting at the 4 cm mark, at which centimeter mark on the ruler must Segment B end?",
+      "correct_answer": 12,
       "options": [
         {
           "key": "A",
-          "value": "only if they are drawn in the same direction",
+          "value": 13,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "No",
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "Yes",
+          "value": 12,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "only if they are the same color",
+          "value": 4,
           "is_correct": false
         }
       ]
@@ -134,27 +161,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Segment A is 2 cm long. Segment B is 2 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "Yes",
+      "question_text": "On a ruler, Segment A starts at 0 cm and ends at 8 cm. Segment B starts at 1 cm and ends at 8 cm. Are Segment A and Segment B equal in length?",
+      "correct_answer": "No",
       "options": [
         {
           "key": "A",
-          "value": "only if they are drawn in the same direction",
+          "value": "Cannot be determined without a set square",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "Yes",
+          "value": "No",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "only if they are the same color",
+          "value": "Only if both segments start at 0 cm",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "No",
+          "value": "Yes",
           "is_correct": false
         }
       ]
@@ -162,31 +189,31 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "Segment A is 8 cm long. Segment B is 5 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "No",
+      "question_text": "Segment A measures 6 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
+      "correct_answer": "A segment starting at 3 cm and ending at 9 cm",
       "options": [
         {
           "key": "A",
-          "value": "Yes",
-          "text": "Yes",
+          "value": "A segment starting at 3 cm and ending at 11 cm",
+          "text": "A segment starting at 3 cm and ending at 11 cm",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "No",
-          "text": "No",
+          "value": "A segment starting at 3 cm and ending at 9 cm",
+          "text": "A segment starting at 3 cm and ending at 9 cm",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "only if they are drawn in the same direction",
-          "text": "only if they are drawn in the same direction",
+          "value": "A segment starting at 4 cm and ending at 11 cm",
+          "text": "A segment starting at 4 cm and ending at 11 cm",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "only if they are the same color",
-          "text": "only if they are the same color",
+          "value": "A segment starting at 3 cm and ending at 7 cm",
+          "text": "A segment starting at 3 cm and ending at 7 cm",
           "is_correct": false
         }
       ]
@@ -194,31 +221,31 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "Segment A is 60 cm long. Segment B is 65 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "No",
+      "question_text": "Segment A measures 9 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
+      "correct_answer": "A segment starting at 3 cm and ending at 12 cm",
       "options": [
         {
           "key": "A",
-          "value": "No",
-          "text": "No",
+          "value": "A segment starting at 3 cm and ending at 12 cm",
+          "text": "A segment starting at 3 cm and ending at 12 cm",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "only if they are the same color",
-          "text": "only if they are the same color",
+          "value": "A segment starting at 3 cm and ending at 10 cm",
+          "text": "A segment starting at 3 cm and ending at 10 cm",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "Yes",
-          "text": "Yes",
+          "value": "A segment starting at 3 cm and ending at 14 cm",
+          "text": "A segment starting at 3 cm and ending at 14 cm",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "only if they are drawn in the same direction",
-          "text": "only if they are drawn in the same direction",
+          "value": "A segment starting at 4 cm and ending at 14 cm",
+          "text": "A segment starting at 4 cm and ending at 14 cm",
           "is_correct": false
         }
       ]
@@ -226,27 +253,27 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "Segment A is 82 cm long. Segment B is 82 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "Yes",
+      "question_text": "Segment A is 7 cm long. If you use a ruler to draw Segment B equal in length starting at the 2 cm mark, at which centimeter mark on the ruler must Segment B end?",
+      "correct_answer": 9,
       "options": [
         {
           "key": "A",
-          "value": "Yes",
+          "value": 9,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "only if they are drawn in the same direction",
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "only if they are the same color",
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "No",
+          "value": 7,
           "is_correct": false
         }
       ]
@@ -254,27 +281,55 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Segment A is 65 cm long. Segment B is 65 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "Yes",
+      "question_text": "Segment A is 4 cm long. If you use a ruler to draw Segment B equal in length starting at the 3 cm mark, at which centimeter mark on the ruler must Segment B end?",
+      "correct_answer": 7,
       "options": [
         {
           "key": "A",
-          "value": "No",
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "Yes",
+          "value": 7,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "only if they are drawn in the same direction",
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "only if they are the same color",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Segment A is 7 cm long. If you use a ruler to draw Segment B equal in length starting at the 4 cm mark, at which centimeter mark on the ruler must Segment B end?",
+      "correct_answer": 11,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 12,
           "is_correct": false
         }
       ]
@@ -282,31 +337,31 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Segment A is 4 cm long. Segment B is 1 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "No",
+      "question_text": "Segment A has a length of 2 cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?",
+      "correct_answer": 2,
       "options": [
         {
           "key": "A",
-          "value": "only if they are the same color",
-          "text": "only if they are the same color",
+          "value": 1,
+          "text": "1",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "Yes",
-          "text": "Yes",
+          "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "only if they are drawn in the same direction",
-          "text": "only if they are drawn in the same direction",
+          "value": 4,
+          "text": "4",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "No",
-          "text": "No",
+          "value": 2,
+          "text": "2",
           "is_correct": true
         }
       ]
@@ -314,27 +369,27 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Segment A is 7 cm long. Segment B is 7 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "Yes",
+      "question_text": "Segment A measures 4 cm on a ruler. Which of the following describes a line segment that is equal in length to Segment A?",
+      "correct_answer": "A segment starting at 3 cm and ending at 7 cm",
       "options": [
         {
           "key": "A",
-          "value": "Yes",
+          "value": "A segment starting at 3 cm and ending at 7 cm",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "only if they are drawn in the same direction",
+          "value": "A segment starting at 4 cm and ending at 9 cm",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "No",
+          "value": "A segment starting at 3 cm and ending at 9 cm",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "only if they are the same color",
+          "value": "A segment starting at 3 cm and ending at 5 cm",
           "is_correct": false
         }
       ]
@@ -342,27 +397,27 @@
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "Segment A is 3 cm long. Segment B is 4 cm long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "No",
+      "question_text": "Segment A has a length of 7 cm. To draw Segment B equal in length using a ruler starting at the 0 cm mark, at which centimeter mark must Segment B end?",
+      "correct_answer": 7,
       "options": [
         {
           "key": "A",
-          "value": "only if they are drawn in the same direction",
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "No",
+          "value": 7,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "Yes",
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "only if they are the same color",
+          "value": 6,
           "is_correct": false
         }
       ]
@@ -370,57 +425,30 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Segment A is 2 m long. Segment B is 2 m long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "Yes",
+      "question_text": "On a ruler, Segment A starts at 0 cm and ends at 5 cm. Segment B starts at 4 cm and ends at 10 cm. Are Segment A and Segment B equal in length?",
+      "correct_answer": "No",
       "options": [
         {
           "key": "A",
-          "value": "Yes",
+          "value": "No",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "only if they are the same color",
+          "value": "Only if both segments start at 0 cm",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "No",
+          "value": "Yes",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "only if they are drawn in the same direction",
+          "value": "Cannot be determined without a set square",
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "All thirteen seeds carry the single stem 'Are Segment A and Segment B equal in length?' with both lengths already printed, for example seed 42 'Segment A is 2 cm long. Segment B is 2 cm long.' keyed 'Yes' and seed 44 'Segment A is 7 cm long. Segment B is 3 cm long.' keyed 'No'. Every item is answerable from what its stem says, but of the two verbs the sentence names only identify is touched, and only in a reduced numeral-comparison form; draw is absent from the whole pool, since no seed asks the student to draw or construct a segment of a stated length."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Coverage is limited to one yes/no equality judgment. Equal pairs (seeds 42, 43, 45, 46, 501, 502, 602, 604) and unequal pairs (seeds 44, 50, 500, 601, 603) are both represented and the keys 'Yes' and 'No' are reasonably balanced, but there is no construction task, no ruler-reading task, and no item that presents segments to be identified rather than described in words, so roughly half the competency is unrepresented."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Nothing exceeds the Grade 3 Quarter 1 ceiling: no conversion, no formula, no later-grade vocabulary. The problem runs the other way. With both lengths given in the stem, seed 603 'Segment A is 3 cm long. Segment B is 4 cm long.' reduces to deciding whether 3 and 4 are the same number, a judgment available well before Grade 3, and no seed requires a student to align, read or set a ruler."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "One template serves all thirteen seeds. Seed 42 and seed 46 are the identical item, both 'Segment A is 2 cm long. Segment B is 2 cm long. Are Segment A and Segment B equal in length?' keyed 'Yes'. The formatter label alternates between mcq and cloze, but the stem wording, the option set and the required task never change, so the student meets one question repeated with different numbers."
-    },
-    "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "Nothing drifts outside the topic of segment length, so there is no over-reach, but the mapping is only partial. The sentence names drawing with a ruler and no seed produces or demands either action. Seed 500 'Segment A is 60 cm long. Segment B is 65 cm long.' hands the student both measurements outright, which is representative of the whole pool: the ruler named in the competency has no role in any of the thirteen items."
-    },
-    "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "Several segments cannot be drawn or checked with the ruler the sentence names. Seed 604 uses 'Segment A is 2 m long. Segment B is 2 m long.', a two-metre line segment, and seeds 500, 501 and 502 use 60, 65 and 82 cm, all past a classroom ruler, which measures well under a metre, and past the width of a worksheet. The 1 to 8 cm seeds (42, 43, 44, 45, 46, 50, 601, 602, 603) are appropriate. Only line segments appear, so no triangle inequality question arises."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }

@@ -406,7 +406,7 @@ def generate_context(
     ]
     if blank_value is not None and blank_value in _stated:
         blank_value = None
-    if blank_value is not None and spine is not None and "___" not in question_text:
+    if blank_value is not None and spine is not None and "___" not in question_text and not question_text.strip().endswith("?"):
         # Replace the blank value only where it appears as a standalone
         # number — NOT as a substring inside a larger number. A naive
         # str.replace("0", …) turns "10" into "1___"; a digit-boundary
@@ -1141,6 +1141,8 @@ def _build_symbolic_question(
         return f"A {shape} has sides {sides.get('l', '?')} cm and {sides.get('w', '?')} cm. What is its perimeter?"
 
     if concept == "area":
+        if values.get("question"):
+            return values["question"]
         # The prior version ("Find the area of {shape}.") never showed the
         # actual dimensions needed to compute the answer at all -- correct
         # only by coincidence for a visual formatter that renders the grid

@@ -2726,5 +2726,47 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
     - `mat_g3_dp_q3_3`: FAIL → **PASS** (+1)
     - `mat_g3_dp_q3_4`: CONCERN → **PASS** (+1)
 - **Census after:** PASS=92 CONCERN=46 FAIL=13 Total=151 (+5 PASS, -3 FAIL, -2 CONCERN).
-- **Next tick should:** Harden Grade 3 Quarter 4 Remaining Nodes (`mat_g3_na_q4_1`, `mat_g3_na_q4_6`).
+- **Next tick should:** Harden Grade 3 Quarter 1 Measurement & Geometry Cluster (`mat_g3_mg_q1_2`, `mat_g3_mg_q1_3`, `mat_g3_mg_q1_4`, `mat_g3_mg_q1_5`, `mat_g3_mg_q1_6`).
+
+---
+
+## Tick C Unit: Grade 3 Quarter 1 Measurement & Geometry Cluster Hardening (`mat_g3_mg_q1_2`..`mat_g3_mg_q1_6`)
+- **Timestamp:** 2026-08-18T01:10:00+08:00
+- **Scope / Target Nodes:**
+  - `mat_g3_mg_q1_2`: Find the areas of squares and rectangles in sq. cm and sq. m.
+  - `mat_g3_mg_q1_3`: Solve problems involving areas of squares and rectangles.
+  - `mat_g3_mg_q1_4`: Recognize, using models, and draws a point, line, line segment, and ray.
+  - `mat_g3_mg_q1_5`: Recognize and draw parallel, intersecting, and perpendicular lines.
+  - `mat_g3_mg_q1_6`: Identify and draw line segments of equal length using a ruler.
+- **Root Cause & Diagnosis:**
+  1. `mat_g3_mg_q1_2`: Previous generator produced formulaic sentences with repetitive phrasing frames ("What is the area of a square..."). Added 4 distinct phrasing variations for both squares and rectangles in sq cm and sq m.
+  2. `mat_g3_mg_q1_3`: Required rich multi-structure problem solving for squares and rectangles. Built 5 distinct problem variants (`direct_area`, `missing_dimension`, `compare_area`, `cost_area`, `combined_area`) with scale-appropriate real-world noun segregation (`cm`/`sq cm` for desk objects like postcards/photos, `m`/`sq m` for rooms/plots) and prevented premature cloze substitution on questions ending in `?`.
+  3. `mat_g3_mg_q1_4`: Expanded item pool in `geometric_lines.py` with direct model recognition items (`• P`, `<--->`, `•---•`, `•--->`) and ruler/arrow drawing procedure items across points, lines, line segments, and rays. Replaced forbidden vocabulary words (`balance scale` -> `thermometer`).
+  4. `mat_g3_mg_q1_5`: Added model recognition (`||`, `X`, `T`) and drawing technique items with ruler and set square for parallel, intersecting, and perpendicular lines. Gated G3 Q1 variants in `compatibility.py`.
+  5. `mat_g3_mg_q1_6`: Bound `task_type == "equal_length"` in `length_measurement.py` with classroom ruler offset reading, starting from zero vs offset drawing calculations, and segment matching. Re-registered `NODE_REGISTRY["mat_g3_mg_q1_6"]` to `length_measurement` / `ruler_measure`.
+- **Files Modified:**
+  - `backend/app/practice_gen/dna/mg/area.py`
+  - `backend/app/practice_gen/dna/mg/geometric_lines.py`
+  - `backend/app/practice_gen/dna/mg/length_measurement.py`
+  - `backend/app/practice_gen/generators/base_generator.py`
+  - `backend/app/practice_gen/compatibility.py`
+  - `backend/app/practice_gen/registry.py`
+  - `validation_reports/judgment/mat_g3_mg_q1/mat_g3_mg_q1_2.json` (PASS)
+  - `validation_reports/judgment/mat_g3_mg_q1/mat_g3_mg_q1_3.json` (PASS)
+  - `validation_reports/judgment/mat_g3_mg_q1/mat_g3_mg_q1_4.json` (PASS)
+  - `validation_reports/judgment/mat_g3_mg_q1/mat_g3_mg_q1_5.json` (PASS)
+  - `validation_reports/judgment/mat_g3_mg_q1/mat_g3_mg_q1_6.json` (PASS)
+- **Verification:**
+  - Full matrix validation (`validate_matrix` on `mat_g3_mg_q1_2`..`mat_g3_mg_q1_6`): 100% PASS with 0 errors across all 5 nodes.
+  - Safety Net 1 (Registry Cross-Audit): 100% bidirectional cross-registration verified.
+  - Safety Net 2 (Blast Radius Audit): `area` (4 nodes), `geometric_lines` (3 nodes), `length_measurement` (9 nodes) rendered cleanly across all test seeds.
+  - Blind Pro Reviews: 5/5 nodes achieved authentic PASS verdicts from blind Pro reviewer subagents with exact contiguous quote provenance and zero freshness drift.
+  - Census movement across the unit:
+    - `mat_g3_mg_q1_2`: CONCERN → **PASS** (+1)
+    - `mat_g3_mg_q1_3`: CONCERN → **PASS** (+1)
+    - `mat_g3_mg_q1_4`: FAIL → **PASS** (+1)
+    - `mat_g3_mg_q1_5`: CONCERN → **PASS** (+1)
+    - `mat_g3_mg_q1_6`: FAIL → **PASS** (+1)
+- **Census after:** PASS=97 CONCERN=43 FAIL=11 Total=151 (+5 PASS, -2 FAIL, -3 CONCERN).
+- **Next tick should:** Harden Grade 2 Quarter 4 Measurement & Geometry Cluster (`mat_g2_mg_q4_2`, `mat_g2_mg_q4_4`).
 
