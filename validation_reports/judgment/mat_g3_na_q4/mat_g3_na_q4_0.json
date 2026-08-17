@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g3_na_q4_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-Division-Harden (mat_g3_na_q4_0, mat_g3_na_q4_3, mat_g3_na_q4_5), 2026-08-17",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The packet completely addresses both required parts of the competency. It successfully assesses the ability to model division through \"equal jumps on the number line\" (e.g., \"Start at 12 on a number line and take equal jumps back of 2 to reach 0.\") and to identify division as the \"inverse of multiplication\" (e.g., \"Since 8 \u00d7 9 = 72, what is 72 \u00f7 8?\")."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The packet provides well-balanced coverage of the two distinct concepts. Approximately half of the questions directly target the \"inverse of multiplication\" (e.g., \"Since 3 \u00d7 4 = 12, 12 \u00f7 3 = ___\"), while the remaining questions effectively target \"equal jumps on the number line\" (e.g., \"Start at 40 on a number line and take equal jumps back of 5 to reach 0. How many jumps did you make?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The cognitive load and complexity are appropriate for Grade 3 mathematics. The problems are constrained to basic multiplication and division facts (within 10x10), which aligns with the grade level. The phrasing of the scenarios, such as \"Since 9 \u00d7 6 = 54, then 54 \u00f7 9 = 6. Is Rico correct?\", is accessible and clear."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample packet appropriately utilizes multiple interaction formats to measure the competency robustly. These include multiple-choice questions, cloze items, true/false questions, and error detection (e.g., \"Grace says: Starting at 20 on a number line, taking equal jumps back of 5 takes 15 jumps to reach 0. Is Grace correct?\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "There is no out-of-bounds content. Every question strictly adheres to either the \"equal jumps on the number line\" representation or the concept of division as the \"inverse of multiplication\" without introducing external, unaligned topics or larger numbers that exceed the scope of the node."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The distractors in the multiple-choice questions reflect common arithmetic misconceptions. In the case of \"Since 4 \u00d7 7 = 28, what is 28 \u00f7 4?\", distractors include \"112\" (multiplication mistake) and \"24\" (subtraction mistake), creating a rigorous assessment scale for the student."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -10,44 +36,42 @@
     45,
     46,
     50,
-    51,
     55,
-    85,
     500,
     501,
     502,
     600,
     601,
-    602,
     603,
     604,
-    605
+    605,
+    606
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 670 ÷ 10?",
-      "correct_answer": 67,
+      "question_text": "Start at 12 on a number line and take equal jumps back of 2 to reach 0. How many jumps did you make? 12 \u00f7 2 = ___",
+      "correct_answer": 6,
       "options": [
         {
           "key": "A",
-          "value": 660,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 6700,
+          "value": 24,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 67,
+          "value": 6,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 2,
           "is_correct": false
         }
       ]
@@ -55,27 +79,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 30 ÷ 2?",
-      "correct_answer": 15,
+      "question_text": "Start at 24 on a number line and take equal jumps back of 6 to reach 0. How many jumps did you make? 24 \u00f7 6 = ___",
+      "correct_answer": 4,
       "options": [
         {
           "key": "A",
-          "value": 15,
+          "value": 4,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 2,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 60,
+          "value": 144,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 28,
+          "value": 18,
           "is_correct": false
         }
       ]
@@ -83,63 +107,59 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "300 ÷ 5 = ___",
-      "correct_answer": 60,
+      "question_text": "Since 3 \u00d7 4 = 12, 12 \u00f7 3 = ___",
+      "correct_answer": 4,
       "options": [
         {
           "key": "A",
-          "value": 5,
-          "text": "5",
+          "value": 3,
+          "text": "3",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 295,
-          "text": "295",
+          "value": 9,
+          "text": "9",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 1500,
-          "text": "1500",
+          "value": 36,
+          "text": "36",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 60,
-          "text": "60",
+          "value": 4,
+          "text": "4",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "200 ÷ 4 = ___",
-      "correct_answer": 50,
+      "formatter": "mcq",
+      "question_text": "Since 8 \u00d7 9 = 72, what is 72 \u00f7 8?",
+      "correct_answer": 9,
       "options": [
         {
           "key": "A",
-          "value": 800,
-          "text": "800",
+          "value": 576,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 196,
-          "text": "196",
+          "value": 64,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 50,
-          "text": "50",
+          "value": 9,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 4,
-          "text": "4",
+          "value": 8,
           "is_correct": false
         }
       ]
@@ -147,117 +167,83 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is 108 ÷ 2?",
-      "correct_answer": 54,
+      "question_text": "Start at 16 on a number line and take equal jumps back of 8 to reach 0. How many jumps did you make? 16 \u00f7 8 = ___",
+      "correct_answer": 2,
       "options": [
         {
           "key": "A",
-          "value": 216,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 54,
+          "value": 2,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 2,
+          "value": 128,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 106,
+          "value": 8,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "This array has 130 squares split into 10 equal rows. How many squares are in each row?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 13,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 46,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 16,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 11,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 51,
-      "formatter": "error_detect",
-      "question_text": "Ana says: 20 ÷ 4 = 16. Is Ana correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 5
-      }
+      "formatter": "true_false",
+      "question_text": "Since 6 \u00d7 7 = 42, then 42 \u00f7 6 = 252. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 126 squares into 2 equal rows. How many squares are in each row?",
-      "correct_answer": 63
-    },
-    {
-      "seed": 85,
-      "formatter": "true_false",
-      "question_text": "165 ÷ 3 = 55. True or False?",
-      "correct_answer": true
+      "formatter": "error_detect",
+      "question_text": "Grace says: Starting at 20 on a number line, taking equal jumps back of 5 takes 15 jumps to reach 0. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 4
+      }
     },
     {
       "seed": 500,
       "formatter": "error_detect",
-      "question_text": "Rico says: 940 ÷ 10 = 94. Is Rico correct?",
+      "question_text": "Rico says: Since 9 \u00d7 6 = 54, then 54 \u00f7 9 = 6. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
-        "correct_value": 94
+        "correct_value": 6
       }
     },
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "890 ÷ 10 = ___",
-      "correct_answer": 89,
+      "question_text": "Since 7 \u00d7 5 = 35, 35 \u00f7 7 = ___",
+      "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": 89,
-          "text": "89",
+          "value": 5,
+          "text": "5",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 8900,
-          "text": "8900",
+          "value": 245,
+          "text": "245",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 10,
-          "text": "10",
+          "value": 7,
+          "text": "7",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 880,
-          "text": "880",
+          "value": 28,
+          "text": "28",
           "is_correct": false
         }
       ]
@@ -265,27 +251,27 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 960 ÷ 10?",
-      "correct_answer": 96,
+      "question_text": "Since 4 \u00d7 7 = 28, what is 28 \u00f7 4?",
+      "correct_answer": 7,
       "options": [
         {
           "key": "A",
-          "value": 950,
+          "value": 24,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 96,
+          "value": 7,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 9600,
+          "value": 112,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 4,
           "is_correct": false
         }
       ]
@@ -293,27 +279,27 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 140 ÷ 4?",
-      "correct_answer": 35,
+      "question_text": "Since 7 \u00d7 9 = 63, what is 63 \u00f7 7?",
+      "correct_answer": 9,
       "options": [
         {
           "key": "A",
-          "value": 136,
+          "value": 56,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 4,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 35,
+          "value": 9,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 560,
+          "value": 441,
           "is_correct": false
         }
       ]
@@ -321,91 +307,63 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Pia has ₱135 and wants to share it equally among 3 friends. How much does each friend get?",
-      "correct_answer": 45,
+      "question_text": "Start at 6 on a number line and take equal jumps back of 2 to reach 0: 6 \u00f7 2 = ___",
+      "correct_answer": 3,
       "options": [
         {
           "key": "A",
+          "value": 2,
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "D",
           "value": 3,
           "text": "3",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 132,
-          "text": "132",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 405,
-          "text": "405",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 45,
-          "text": "45",
           "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 255 ÷ 5?",
-      "correct_answer": 51,
-      "options": [
-        {
-          "key": "A",
-          "value": 51,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 1275,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 250,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "75 ÷ 3 = ___",
-      "correct_answer": 25,
+      "question_text": "Start at 63 on a number line and take equal jumps back of 7 to reach 0: 63 \u00f7 7 = ___",
+      "correct_answer": 9,
       "options": [
         {
           "key": "A",
-          "value": 225,
-          "text": "225",
+          "value": 441,
+          "text": "441",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 25,
-          "text": "25",
+          "value": 9,
+          "text": "9",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 72,
-          "text": "72",
+          "value": 56,
+          "text": "56",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 3,
-          "text": "3",
+          "value": 7,
+          "text": "7",
           "is_correct": false
         }
       ]
@@ -413,85 +371,67 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 12 ÷ 2?",
-      "correct_answer": 6,
+      "question_text": "Start at 40 on a number line and take equal jumps back of 5 to reach 0. How many jumps did you make? 40 \u00f7 5 = ___",
+      "correct_answer": 8,
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 8,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 2,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 10,
+          "value": 35,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 24,
+          "value": 200,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 605,
-      "formatter": "read_mcq",
-      "question_text": "This array has 15 squares split into 3 equal rows. How many squares are in each row?",
-      "correct_answer": "C",
+      "formatter": "error_detect",
+      "question_text": "Liza says: Starting at 72 on a number line, taking equal jumps back of 8 takes 9 jumps to reach 0. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 9
+      }
+    },
+    {
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Start at 56 on a number line and take equal jumps back of 7 to reach 0. How many jumps did you make? 56 \u00f7 7 = ___",
+      "correct_answer": 8,
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "is_correct": false
+          "value": 8,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 8,
+          "value": 49,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 5,
-          "is_correct": true
+          "value": 7,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 16,
+          "value": 392,
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Division is certainly present (seed 42's 670÷10, seed 601's ₱135 split three ways) but nothing frames it through equal jumps or as an inverse multiplication fact, so 'Illustrate division through equal jumps on the number line and as inverse of multiplication' goes unmet as a teaching method even though the underlying operation is practiced."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "None of the 18 samples contain the words 'jump' or 'number line', and none pair a division with its inverse multiplication fact; the closest visual, an array of rows (seed 50's '130 squares split into 10 equal rows'), is a different representation from either named method."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Divisors of 2 through 10 with dividends under 1000 fit Grade 3 Quarter 4 division-fact expectations."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Six formatters carry the division skill (mcq, cloze, read_mcq, error_detect, set_fill_in_blank, true_false), and a money word problem (seed 601) sits alongside bare number facts."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Dividend and divisor size, plus formatter choice, are what separate easy from hard items here, staying on the division-fact axis."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest dividend in the set is seed 502's 960, well within a Grade 3 division-facts scope."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }

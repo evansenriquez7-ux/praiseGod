@@ -118,12 +118,8 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             real_a = values.get("real_a", dividend)
             real_b = values.get("real_b", divisor)
             return f"Estimate the quotient: {real_a} ÷ {real_b}"
-        if values.get("task_type") == "even_odd" and values.get("question"):
-            # blank_target="answer" (a categorical "even"/"odd" string, not
-            # a quotient) doesn't fit any of the branches below -- same root
-            # cause as addition/multiplication's identical fix: this
-            # formatter rebuilds its own pure-context question independently
-            # of base_generator's values["question"] preference.
+        if values.get("task_type") in ("even_odd", "number_line_jumps", "inverse_of_multiplication") and values.get("question"):
+            # blank_target="answer" or custom narrative question doesn't fit the bare equations below.
             return values["question"]
         if blank_target in ("result", "quotient"):
             return f"What is {dividend} ÷ {divisor}?"

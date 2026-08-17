@@ -579,7 +579,7 @@ def generate_context(
         seed=seed,
         interest_theme=resolved_theme if resolved_theme != "neutral" else None,
         spine_id=spine_id,
-        difficulty_profile=difficulty_profile,
+        difficulty_profile=profile_to_use,
         difficulty_axes_served=difficulty_axes_served,
         dna_concept=dna.concept,
         dna_type=dna.dna_type,

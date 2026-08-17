@@ -376,11 +376,11 @@ def generate_problem(
     # 5. Pick formatter
     if formatter is None:
         available = get_formatters_for_dna(dna_name)
-        task_type = ctx.values.get("task_type")
-        if task_type:
-            compatible = get_compatible_formatters_for_variant(dna_name, "task_type", task_type)
-            if compatible:
-                available = [fmt for fmt in available if fmt in compatible]
+        for var_name, var_value in (ctx.values or {}).items():
+            if var_name in ("task_type", "table", "remainder", "context", "structure") and var_value is not None:
+                compatible = get_compatible_formatters_for_variant(dna_name, var_name, str(var_value))
+                if compatible:
+                    available = [fmt for fmt in available if fmt in compatible]
         if allowed_formatters:
             available = [fmt for fmt in available if fmt in allowed_formatters]
         if not available:
@@ -393,13 +393,14 @@ def generate_problem(
     # unsupported combos (e.g. a number-line formatter asked to show a
     # word-form answer) silently generate mismatched content instead of
     # rejecting the request.
-    if difficulty_profile:
+    effective_profile = ctx.difficulty_profile or difficulty_profile or {}
+    if effective_profile:
         # Only validate keys that are actual contextual variants for this DNA
         # (VARIANTS_BY_DNA) — difficulty_profile also carries continuous/discrete
         # axis values (e.g. "regrouping", "number_difficulty") which are not
         # variants and aren't tracked in this table.
         known_variants = get_variants_for_dna(dna_name)
-        for var_name, var_value in difficulty_profile.items():
+        for var_name, var_value in effective_profile.items():
             if var_name not in known_variants:
                 continue
             if not is_variant_supported(dna_name, formatter, var_name, str(var_value)):

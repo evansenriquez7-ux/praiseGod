@@ -2608,3 +2608,43 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
     - `mat_g3_na_q3_4`: FAIL → **PASS** (+1)
 - **Census after:** PASS=81 CONCERN=50 FAIL=20 Total=151 (+3 PASS, -1 FAIL).
 - **Next tick should:** Harden Grade 3 Quarter 4 Division Cluster (`mat_g3_na_q4_0`, `mat_g3_na_q4_3`, `mat_g3_na_q4_5`).
+
+---
+
+## Tick C Unit: Grade 3 Quarter 4 Division Cluster Hardening (`mat_g3_na_q4_0`, `mat_g3_na_q4_3`, `mat_g3_na_q4_5`)
+- **Timestamp:** 2026-08-17T21:15:00+08:00
+- **Scope / Target Nodes:**
+  - `mat_g3_na_q4_0` (G3 Q4 Division Representations): Illustrate division through equal jumps on the number line and as inverse of multiplication.
+  - `mat_g3_na_q4_3` (G3 Q4 Division with and without Remainder): Divide numbers with and without remainder: 2- to 3-digit numbers by 1-digit number without remainder, 2-digit numbers by 1-digit number with remainder, and 2- to 4-digit numbers by 10, 100, and 1000.
+  - `mat_g3_na_q4_5` (G3 Q4 Multi-digit Division Word Problems): Solve problems involving division of 2- to 3-digit numbers by 1-digit number, including money.
+- **Root Cause & Diagnosis:**
+  1. `mat_g3_na_q4_0`: Missing dedicated branches in `division.py` for `number_line_jumps` ("Start at 12 on a number line...") and `inverse_of_multiplication` ("Since 3 × 4 = 12, what is 12 ÷ 3?"). Textual formatters had defects with trailing periods on full sentence statements.
+  2. `mat_g3_na_q4_3`: Visual array formatters (`array_grid_read`, `array_grid_set`) were inappropriately offered on large 3-digit dividends (e.g. "Shade 275 squares into 5 equal rows"). Division with remainder was returning bare truncated quotients instead of `"Q R R"` strings with calibrated distractors. Subcase generation for powers of 10 and 2d/3d dividends was skewed toward 4-digit numbers. Unrestricted `structure` allowed missing operands that violated 1-digit divisor bounds.
+  3. `mat_g3_na_q4_5`: `table="one_digit_2_9"` clamped quotients at 9, restricting dividends to small facts. Word problem spines for division lacked `{a}`, `{b}` variable bindings, and money problems were unrepresented.
+- **Files Modified:**
+  - `backend/app/practice_gen/adapter.py`
+  - `backend/app/practice_gen/compatibility.py`
+  - `backend/app/practice_gen/dna/na/division.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_cloze.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_error_detect.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_mcq.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_true_false.py`
+  - `backend/app/practice_gen/generators/base_generator.py`
+  - `backend/app/practice_gen/generators/spines.py`
+  - `backend/app/practice_gen/registry.py`
+  - `backend/app/services/orchestrator.py`
+  - `validation_reports/judgment/mat_g3_na_q4/mat_g3_na_q4_0.json` (PASS)
+  - `validation_reports/judgment/mat_g3_na_q4/mat_g3_na_q4_3.json` (PASS)
+  - `validation_reports/judgment/mat_g3_na_q4/mat_g3_na_q4_5.json` (PASS)
+- **Verification:**
+  - Matrix validation (`validate_matrix` on all 11 division nodes and across all 151 nodes in repository): 151/151 nodes passed with 0 failures across all checks.
+  - Safety Net 1 (Registry Cross-Audit): 100% bidirectional cross-registration verified.
+  - Safety Net 2 (Blast Radius Audit): `check_blast_radius.py --dna division` verified 11/11 sibling nodes rendered cleanly across 5 seeds.
+  - Blind Pro Reviews: 3/3 nodes achieved authentic PASS verdicts from blind Pro reviewer subagents with exact contiguous quote provenance.
+  - Judgment review verification (`validate_judgment` structure, freshness, and quote provenance): 0 errors across all 3 nodes.
+  - Census movement across the unit:
+    - `mat_g3_na_q4_0`: FAIL → **PASS** (+1)
+    - `mat_g3_na_q4_3`: FAIL → **PASS** (+1)
+    - `mat_g3_na_q4_5`: FAIL → **PASS** (+1)
+- **Census after:** PASS=84 CONCERN=50 FAIL=17 Total=151 (+3 PASS, -3 FAIL).
+- **Next tick should:** Harden Grade 3 Quarter 4 Fractions Cluster (`mat_g3_na_q4_1`, `mat_g3_na_q4_2`).

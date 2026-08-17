@@ -160,12 +160,17 @@ def generate_params(
     # do with the named tables. `profile.get("table")` is None for nodes that
     # never bind a table (the general 2-to-3-digit-by-1-digit competencies),
     # so this narrows only the table-restricted nodes.
-    if profile.get("table") is not None:
+    if profile.get("table") in ("2_3_4_5_10", "6_7_8_9"):
         q_max = min(q_max, 9)
         q_min = 1
+    elif profile.get("table") == "one_digit_2_9":
+        # "2- to 3-digit numbers by a 1-digit number" (mat_g3_na_q4_5):
+        # 1-digit divisor (2-9) into a 2- to 3-digit dividend (10-999).
+        q_min = 2
+        q_max = 111
 
     rem_level    = extract_discrete_level(profile, "remainder", ["none", "with_remainder"], "none")
-    table_level  = extract_discrete_level(profile, "table", ["2_3_4_5_10", "6_7_8_9"], "2_3_4_5_10")
+    table_level  = extract_discrete_level(profile, "table", ["2_3_4_5_10", "6_7_8_9", "one_digit_2_9"], "2_3_4_5_10")
     structure    = extract_discrete_level(profile, "structure", ["result_unknown", "divisor_unknown"], "result_unknown")
     if structure == "divisor_or_dividend_unknown":
         # "Find the missing number in a ... sentence" (mat_g3_na_q4_2/
@@ -178,6 +183,8 @@ def generate_params(
     context      = extract_discrete_level(profile, "context", ["pure", "word_problem"], "pure")
     num_diff_scalar = extract_continuous_scalar(profile, "number_difficulty", extract_continuous_scalar(profile, "difficulty_scalar", 0.5))
     task_type    = profile.get("task_type")
+    if isinstance(task_type, list):
+        task_type = rng.choice(task_type)
     if task_type == "repeated_subtraction_or_default":
         # registry.py sentinel for mat_g2_na_q3_5's "...equal sharing or
         # formation of equal groups of objects, and repeated subtraction"
@@ -185,6 +192,40 @@ def generate_params(
         # only one, so mix it with the DNA's normal rendering rather than
         # replacing it outright.
         task_type = rng.choice(["repeated_subtraction", None, None])
+
+    if task_type == "number_line_jumps":
+        # "Illustrate division through equal jumps on the number line" (mat_g3_na_q4_0)
+        b = rng.randint(2, 9)
+        q = rng.randint(2, 9)
+        a = b * q
+        return {
+            "a": a,
+            "b": b,
+            "result": q,
+            "remainder": 0,
+            "task_type": "number_line_jumps",
+            "blank_target": "result",
+            "context": "pure",
+            "structure": "result_unknown",
+            "question": f"Start at {a} on a number line and take equal jumps back of {b} to reach 0. How many jumps did you make? {a} ÷ {b} = ___",
+        }
+
+    if task_type == "inverse_of_multiplication":
+        # "...and as inverse of multiplication" (mat_g3_na_q4_0)
+        b = rng.randint(2, 9)
+        q = rng.randint(2, 9)
+        a = b * q
+        return {
+            "a": a,
+            "b": b,
+            "result": q,
+            "remainder": 0,
+            "task_type": "inverse_of_multiplication",
+            "blank_target": "result",
+            "context": "pure",
+            "structure": "result_unknown",
+            "question": f"Since {b} × {q} = {a}, what is {a} ÷ {b}?",
+        }
 
     if task_type == "estimate":
         # "Estimate the quotient of 2- to 3-digit numbers divided by 1- to
@@ -324,43 +365,111 @@ def generate_params(
     if table_level == "one_digit_mixed_or_power_of_ten":
         # "2- to 3-digit numbers by 1-digit number WITHOUT remainder,
         # 2-digit numbers by 1-digit number WITH remainder, and 2- to
-        # 4-digit numbers by 10, 100, and 1000" (mat_g3_na_q4_3): three
-        # genuinely different (dividend, divisor, remainder) shapes under
-        # one competency, none of which the DNA's single table_level/
-        # rem_level pair can express together. Built directly as one
-        # combined candidate pool (rather than routed through the shared
-        # rem_level-filtered loop below, which can only ever apply ONE
-        # remainder policy to ONE divisor pool at a time) so a single
-        # difficulty-scalar window sees all three shapes at once.
-        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
-        candidate_pairs = []
-        for b in range(2, 10):
-            for q in range(2, 100):
-                a = b * q
-                if 10 <= a <= 999:
-                    candidate_pairs.append((a, b))
-        for b in range(2, 10):
-            for q in range(1, 20):
-                for r in range(1, b):
-                    a = b * q + r
-                    if 10 <= a <= 99:
-                        candidate_pairs.append((a, b))
-        for b in (10, 100, 1000):
-            for q in range(1, 999):
-                a = b * q
-                if 10 <= a <= 9999:
-                    candidate_pairs.append((a, b))
-        a, b = generate_pair_by_window(candidate_pairs, num_diff_scalar, d=5, rng=rng)
+        # 4-digit numbers by 10, 100, and 1000" (mat_g3_na_q4_3):
+        # All explicit sub-clauses are represented and balanced:
+        # - 2d by 1d without remainder (e.g. 48 ÷ 6 = 8, 84 ÷ 4 = 21)
+        # - 3d by 1d without remainder (e.g. 330 ÷ 6 = 55)
+        # - 2d by 1d with remainder (e.g. 53 ÷ 2 = 26 R 1)
+        # - 2d to 4d by 10 (e.g. 90 ÷ 10, 480 ÷ 10, 5010 ÷ 10)
+        # - 3d to 4d by 100 (e.g. 500 ÷ 100, 5200 ÷ 100)
+        # - 4d by 1000 (e.g. 7000 ÷ 1000)
+        subcase = rng.choice([
+            "2d_by_1d_exact",
+            "3d_by_1d_exact",
+            "2d_by_1d_remainder",
+            "pow_10",
+            "pow_100",
+            "pow_1000",
+        ])
+        if subcase == "pow_1000":
+            b = 1000
+            q = rng.randint(1, 9)
+            a = b * q
+            rem = 0
+        elif subcase == "pow_100":
+            b = 100
+            # Uniformly choose between 3-digit and 4-digit dividend
+            num_digits = rng.choice([3, 4])
+            if num_digits == 3:
+                q = rng.randint(1, 9)
+            else:
+                q = rng.randint(10, 99)
+            a = b * q
+            rem = 0
+        elif subcase == "pow_10":
+            b = 10
+            # Uniformly choose between 2-digit, 3-digit, and 4-digit dividend
+            num_digits = rng.choice([2, 3, 4])
+            if num_digits == 2:
+                q = rng.randint(2, 9)
+            elif num_digits == 3:
+                q = rng.randint(10, 99)
+            else:
+                q = rng.randint(100, 999)
+            a = b * q
+            rem = 0
+        elif subcase == "2d_by_1d_remainder":
+            b = rng.randint(2, 9)
+            q_min_rem = max(1, 10 // b)
+            q_max_rem = min(49, 99 // b)
+            q = int(q_min_rem + (q_max_rem - q_min_rem) * num_diff_scalar)
+            q = max(q_min_rem, min(q_max_rem, q + rng.randint(-1, 1)))
+            r = rng.randint(1, b - 1)
+            a = b * q + r
+            if a > 99:
+                a = 99 - (99 % b) + r
+                if a > 99:
+                    a -= b
+            rem = a % b
+            structure = "result_unknown"
+        elif subcase == "2d_by_1d_exact":
+            b = rng.randint(2, 9)
+            q_min_2d = max(2, 10 // b + 1)
+            q_max_2d = 99 // b
+            q = rng.randint(q_min_2d, q_max_2d)
+            a = b * q
+            rem = 0
+        else: # "3d_by_1d_exact"
+            b = rng.randint(2, 9)
+            q_min_3d = max(12, 100 // b + 1)
+            q_max_3d = min(111, 999 // b)
+            q = int(q_min_3d + (q_max_3d - q_min_3d) * num_diff_scalar)
+            q = max(q_min_3d, min(q_max_3d, q + rng.randint(-2, 2)))
+            a = b * q
+            rem = 0
+
         blank_target = {
             "result_unknown":   "result",
             "divisor_unknown":  "b",
             "dividend_unknown": "a",
         }.get(structure, "result")
+
+        if rem > 0 and blank_target == "result":
+            q_val = a // b
+            res_str = f"{q_val} R {rem}"
+            alt_r = max(1, rem - 1) if rem > 1 else rem + 1
+            if alt_r >= b:
+                alt_r = max(1, rem - 1)
+            return {
+                "a":           a,
+                "b":           b,
+                "result":      res_str,
+                "remainder":   rem,
+                "distractors": [
+                    f"{q_val}",
+                    f"{q_val} R {alt_r}",
+                    f"{q_val + 1} R {rem}",
+                ],
+                "blank_target": blank_target,
+                "context":     context,
+                "structure":   structure,
+            }
+
         return {
             "a":           a,
             "b":           b,
             "result":      a // b,
-            "remainder":   a % b,
+            "remainder":   rem,
             "blank_target": blank_target,
             "context":     context,
             "structure":   structure,
@@ -373,11 +482,15 @@ def generate_params(
         for q in range(q_min, q_max + 1):
             if rem_level == "none":
                 a = b * q
+                if table_level == "one_digit_2_9" and not (10 <= a <= 999):
+                    continue
                 if _satisfies_remainder(a, b, rem_level):
                     candidate_pairs.append((a, b))
             else:
                 for r in range(0 if q == 0 else 1, b):
                     a = b * q + r
+                    if table_level == "one_digit_2_9" and not (10 <= a <= 999):
+                        continue
                     if _satisfies_remainder(a, b, rem_level):
                         candidate_pairs.append((a, b))
 
@@ -390,20 +503,42 @@ def generate_params(
     from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
     a, b = generate_pair_by_window(candidate_pairs, num_diff_scalar, d=5, rng=rng)
 
+    rem = a % b
     blank_target = {
         "result_unknown":  "result",
         "divisor_unknown": "b",
     }.get(structure, "result")
 
-    result_dict = {
-        "a":           a,
-        "b":           b,
-        "result":      a // b,
-        "remainder":   a % b,
-        "blank_target": blank_target,
-        "context":     context,
-        "structure":   structure,
-    }
+    if rem > 0 and blank_target == "result":
+        q_val = a // b
+        res_str = f"{q_val} R {rem}"
+        alt_r = max(1, rem - 1) if rem > 1 else rem + 1
+        if alt_r >= b:
+            alt_r = max(1, rem - 1)
+        result_dict = {
+            "a":           a,
+            "b":           b,
+            "result":      res_str,
+            "remainder":   rem,
+            "distractors": [
+                f"{q_val}",
+                f"{q_val} R {alt_r}",
+                f"{q_val + 1} R {rem}",
+            ],
+            "blank_target": blank_target,
+            "context":     context,
+            "structure":   structure,
+        }
+    else:
+        result_dict = {
+            "a":           a,
+            "b":           b,
+            "result":      a // b,
+            "remainder":   rem,
+            "blank_target": blank_target,
+            "context":     context,
+            "structure":   structure,
+        }
 
     if task_type == "repeated_subtraction" and structure == "result_unknown" and a % b == 0:
         # "...modelling division as equal sharing or formation of equal
@@ -445,10 +580,10 @@ def generate_hints(
     cumulative_vocab: Set[str],
 ) -> List[str]:
     """Return 2–4 step-by-step hint strings for the given division problem."""
-    a         = values["a"]
-    b         = values["b"]
-    result    = values["result"]
-    remainder = values.get("remainder", a % b)
+    a         = values.get("a", values.get("dividend", 0))
+    b         = values.get("b", values.get("divisor", 1))
+    result    = values.get("result", 0)
+    remainder = values.get("remainder", a % b if b else 0)
 
     quotient_label  = VOCAB_QUOTIENT.resolve(cumulative_vocab)
     dividend_label  = VOCAB_DIVIDEND.resolve(cumulative_vocab)

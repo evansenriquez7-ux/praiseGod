@@ -212,6 +212,10 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                     f"repeatedly, you subtract {fill_value} times before "
                     f"reaching 0."
                 )
+            elif values.get("task_type") == "number_line_jumps":
+                statement = f"Starting at {dividend} on a number line, taking {fill_value} equal jumps back of {divisor} lands on 0."
+            elif values.get("task_type") == "inverse_of_multiplication":
+                statement = f"Since {divisor} × {quotient} = {dividend}, then {dividend} ÷ {divisor} = {fill_value}."
             elif blank_target in ("result", "quotient"):
                 statement = f"{dividend} ÷ {divisor} = {fill_value}"
             else:

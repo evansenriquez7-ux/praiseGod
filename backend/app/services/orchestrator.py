@@ -415,6 +415,8 @@ class PracticeOrchestrator:
                 compatible = True
                 for variant_name, allowed_vals in fmt_caps.items():
                     ctx_val = ctx.values.get(variant_name)
+                    if ctx_val is None and ctx.difficulty_profile:
+                        ctx_val = ctx.difficulty_profile.get(variant_name)
                     if ctx_val and allowed_vals and ctx_val not in allowed_vals:
                         compatible = False
                         break

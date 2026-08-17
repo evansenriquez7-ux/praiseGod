@@ -405,22 +405,22 @@ _MUL_REPEATED_ADD = Spine(
 _DIV_SHARE_EQUALLY = Spine(
     id="div_share_equally",
     template=(
-        "{actor} wants to share {total} {objects} equally among {groups} friends. "
+        "{actor} wants to share {a} {objects} equally among {b} friends. "
         "How many {objects} does each friend get?"
     ),
-    required_concepts={"division"},
-    blank_target="n",
+    required_concepts={"division", "counting"},
+    blank_target="total",
     grade_band=(2, 3),
 )
 
 _DIV_HOW_MANY_GROUPS = Spine(
     id="div_how_many_groups",
     template=(
-        "There are {total} {objects}. "
-        "If {n} {objects} are put in each bag, how many bags are needed?"
+        "There are {a} {objects}. "
+        "If {b} {objects} are put in each bag, how many bags are needed?"
     ),
-    required_concepts={"division"},
-    blank_target="groups",
+    required_concepts={"division", "counting"},
+    blank_target="total",
     grade_band=(2, 3),
 )
 

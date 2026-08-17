@@ -522,9 +522,9 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "division": {
-        "remainder": ["none", "some"],
-        "table": ["2", "3", "4", "5", "10"],
-        "structure": ["result_unknown"],
+        "remainder": ["none", "with_remainder"],
+        "table": ["2_3_4_5_10", "6_7_8_9", "one_digit_2_9", "one_digit_mixed_or_power_of_ten"],
+        "structure": ["result_unknown", "divisor_unknown", "dividend_unknown"],
         "context": ["pure", "word_problem"],
         # Neither "estimate" nor "even_odd" is listed here, deliberately --
         # both work via the registry-scope exemption instead (like
@@ -860,8 +860,8 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         "remainder": ["none", "some"],
         "table": ["2", "3", "4", "5", "10"],
         "structure": ["result_unknown"],
-        "array_grid_read": {"task_type": ["find_quotient"], "context": ["pure"]},
-        "array_grid_set": {"task_type": ["find_quotient"], "context": ["pure"]},
+        "array_grid_read": {"task_type": ["find_quotient"], "context": ["pure"], "table": ["2_3_4_5_10", "6_7_8_9"], "remainder": ["none"]},
+        "array_grid_set": {"task_type": ["find_quotient"], "context": ["pure"], "table": ["2_3_4_5_10", "6_7_8_9"], "remainder": ["none"]},
         # even_odd's answer is a categorical "even"/"odd" string with only
         # one possible opposite value -- get_supported_variants has no
         # per-node scoping (it's computed once per (dna, formatter) pair
@@ -885,9 +885,9 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # (reproduced: mat_g2_na_q3_4 failing §1D on task_type='estimate'
         # purely from being offered a task_type its own competency never
         # requested).
-        "mcq": {"task_type": ["find_quotient"]},
-        "cloze": {"task_type": ["find_quotient"]},
-        "error_detect": {"task_type": ["find_quotient"]},
+        "mcq": {"task_type": ["find_quotient", "number_line_jumps", "inverse_of_multiplication"]},
+        "cloze": {"task_type": ["find_quotient", "number_line_jumps", "inverse_of_multiplication"]},
+        "error_detect": {"task_type": ["find_quotient", "number_line_jumps", "inverse_of_multiplication"]},
     },
 
     "missing_number": {

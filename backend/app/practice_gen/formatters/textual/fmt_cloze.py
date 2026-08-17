@@ -141,6 +141,10 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             real_a = values.get("real_a", dividend)
             real_b = values.get("real_b", divisor)
             return f"Estimate: {real_a} ÷ {real_b} ≈ ___"
+        if values.get("task_type") == "number_line_jumps":
+            return f"Start at {dividend} on a number line and take equal jumps back of {divisor} to reach 0: {dividend} ÷ {divisor} = ___"
+        if values.get("task_type") == "inverse_of_multiplication":
+            return f"Since {divisor} × {quotient} = {dividend}, {dividend} ÷ {divisor} = ___"
         if blank_target in ("result", "quotient"):
             return f"{dividend} ÷ {divisor} = ___"
         elif blank_target in ("b", "divisor", "n"):

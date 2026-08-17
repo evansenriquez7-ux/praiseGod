@@ -541,6 +541,7 @@ def _parse_competency_bounds(
         # sub-cases are entirely absent").
         if "without remainder" in text and "with remainder" in text and "10,100" in text.replace(" ", ""):
             bounds["table"] = "one_digit_mixed_or_power_of_ten"
+            bounds["context"] = "pure"
 
         # Parse table level
         elif "6, 7, 8, and 9" in text or "6, 7, 8, 9" in text or "6, 7, 8, or 9" in text:
@@ -549,54 +550,23 @@ def _parse_competency_bounds(
             bounds["table"] = "2_3_4_5_10"
         elif "2, 3, 4, 5, and 10" in text or "2, 3, 4, 5, 10" in text:
             bounds["table"] = "2_3_4_5_10"
-
-        # "Solve division problems involving 2- to 3-digit numbers by A
-        # 1-DIGIT number, including problems involving money" (mat_g3_
-        # na_q3_5... mat_g3_na_q4_5): the DNA's bare-default divisor pool
-        # [2,3,4,5,10] includes 10, a 2-digit divisor -- directly violating
-        # this competency's own explicit "1-digit number" scope (blind
-        # review: "6 of 16 samples divide by 10 -- a 2-digit divisor --
-        # directly violating 'by a 1-digit number'"). "6_7_8_9" already
-        # excludes 10 but also excludes 2-5, which this competency does not
-        # restrict away.
         elif "1-digit number" in text and "1- to 2-digit" not in text:
             bounds["table"] = "one_digit_2_9"
 
-        # Parse remainder
-        if "without remainder" in text:
-            bounds["remainder"] = "none"
-        elif "with remainder" in text:
-            bounds["remainder"] = "with_remainder"
-
         # "Illustrate division through equal jumps on the number line and
-        # AS INVERSE OF MULTIPLICATION" (mat_g3_na_q4_0): neither named
-        # model has a meaningful reading when the division doesn't come
-        # out even -- a remainder breaks the "inverse of multiplication"
-        # framing entirely (19÷10 has no multiplication fact it inverts),
-        # and this competency, unlike mat_g3_na_q4_3, never names a
-        # remainder sub-case at all. The "remainder" axis was left
-        # completely unbound here, so it auto-varied 50/50 with the DNA's
-        # own default (blind review/harness: "19 ÷ 10 = ___" served with
-        # correct_answer=1, silently dropping the remainder of 9).
-        elif "inverse of multiplication" in text:
+        # AS INVERSE OF MULTIPLICATION" (mat_g3_na_q4_0):
+        if "equal jumps" in text or "inverse of multiplication" in text:
+            bounds["task_type"] = ["number_line_jumps", "inverse_of_multiplication"]
             bounds["remainder"] = "none"
-        elif bounds.get("table"):
-            # VARIANTS_BY_DNA["division"]["remainder"] = ["none","some"] has
-            # no per-node scoping, so judgment_packets.py's variant-coverage
-            # stratification and validate_matrix's §1C sweep can both
-            # request remainder="with_remainder" against ANY division node,
-            # including a plain "Divide numbers using the 6, 7, 8, and 9
-            # multiplication tables" competency that never mentions
-            # remainders at all. A table-facts competency is tied 1:1 to
-            # its multiplication counterpart (42÷6=7 exactly, because
-            # 6×7=42) -- there is no "with remainder" reading of it. A
-            # formatter that renders only the quotient as "the answer"
-            # (e.g. "15 ÷ 6 = 2") without surfacing the dropped remainder
-            # then keys an incomplete statement as fully correct (blind
-            # review of mat_g3_na_q4_1 seed 603: 15÷6 is 2 remainder 3, not
-            # a clean 2). Binding remainder="none" here closes the leak the
-            # same way "estimate"/"even_odd" are already closed elsewhere
-            # in this function.
+            bounds["context"] = "pure"
+
+        # Parse remainder
+        if bounds.get("table") == "one_digit_mixed_or_power_of_ten":
+            # Mixed competency with both with and without remainder -- do not pin to 'none'
+            pass
+        elif "with remainder" in text and "without remainder" not in text:
+            bounds["remainder"] = "with_remainder"
+        else:
             bounds["remainder"] = "none"
 
         # "...modelling division as equal sharing or formation of equal
@@ -618,6 +588,8 @@ def _parse_competency_bounds(
             # division's own renders never did -- blind review: "no
             # sample shows the 'dividend-missing' blank position").
             bounds["structure"] = "divisor_or_dividend_unknown"
+        else:
+            bounds["structure"] = "result_unknown"
 
         # "Estimate the quotient of 2- to 3-digit numbers divided by 1- to
         # 2-digit numbers, using multiples of 10 or 100 as appropriate"
