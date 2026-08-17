@@ -116,8 +116,6 @@ def generate_params(
         missing_value  : int   — the answer
         context        : str   "pure" | "word_problem"
     """
-    if seed == 42:
-        seed = 43
     rng     = random.Random(seed)
     profile = difficulty_profile or {}
 
@@ -347,23 +345,23 @@ def generate_params(
 
     else:
         if op == "multiplication":
-            a, b = x, y
+            # For multiplication by tables (e.g. 6, 7, 8, 9), ensure the visible
+            # factor or sentence clearly involves the table:
+            # - start:  ___ × x = result (e.g. ___ × 6 = 42)
+            # - change: x × ___ = result (e.g. 6 × ___ = 42)
+            # - result: x × y = ___      (e.g. 6 × 7 = ___)
+            if blank_pos == "start":
+                a = y
+                b = x
+            else:
+                a = x
+                b = y
             result = a * b
         else:
-            # x is always the constrained value (drawn from `tables`, e.g.
-            # {6,7,8,9} for "missing number in a multiplication or
-            # division sentence BY 6,7,8,9" -- mat_g3_na_q4_2/mat_g2_
-            # na_q3_7), y is the free 1-10 count/multiplier. "b" is the
-            # DIVISOR in the rendered equation, and the competency scopes
-            # the divisor specifically to `tables`, not "some operand
-            # somewhere in the fact" -- a 50/50 swap here used to put the
-            # unconstrained y into the divisor slot half the time (blind
-            # review: "___ ÷ 6 = 5" using divisor 6 was fine, but other
-            # samples showed divisors like 2, 5, 10, entirely outside the
-            # named {6,7,8,9} scope). b=x keeps the divisor always in
-            # scope; blank_pos already provides positional variety
-            # (which of start/change/result gets blanked) without needing
-            # to also randomize which value plays which role.
+            # x is the table factor (e.g. 6, 7, 8, 9), y is the multiplier/quotient (1..10)
+            # - start:  ___ ÷ x = y (e.g. ___ ÷ 6 = 7)
+            # - change: a ÷ ___ = y (e.g. 42 ÷ ___ = 7)
+            # - result: a ÷ x = ___ (e.g. 42 ÷ 6 = ___)
             a = x * y
             b = x
             result = y
@@ -405,7 +403,7 @@ def generate_hints(
     values: Dict[str, Any],
     cumulative_vocab: Set[str],
 ) -> List[str]:
-    """Return 2–4 step-by-step hint strings for the given missing-number problem."""
+    # Return step-by-step hint strings for the given missing-number problem.
     a            = values["a"]
     b            = values["b"]
     result       = values["result"]

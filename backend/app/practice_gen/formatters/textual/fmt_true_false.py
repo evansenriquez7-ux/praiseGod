@@ -271,6 +271,54 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             pos = values.get("target_digit_position", 0)
             place = _place_names[pos] if pos < len(_place_names) else f"10^{pos}"
             statement = f"In the number {number}, the value of the digit {digit} in the {place} place is {fill_value}"
+        elif concept == "missing_number":
+            op_name = values.get("operation", "addition")
+            op_symbol = {"addition": "+", "subtraction": "−",
+                         "multiplication": "×", "division": "÷",
+                         "equivalent": values.get("equivalent_symbol", "+")}.get(op_name, "+")
+            blank_pos = values.get("blank_position", "result")
+            res = values.get("result", values.get("total"))
+            a_val = values.get("a")
+            b_val = values.get("b")
+            miss_lbl = "missing number" if "missing number" in ctx.cumulative_vocab else "blank"
+            if op_name == "equivalent":
+                c_val = values.get("c", 1)
+                eq_sym = values.get("equivalent_symbol", "+")
+                if eq_sym == "+":
+                    statement = f"In {a_val} + {b_val} = {c_val} + ___, the {miss_lbl} is {fill_value}"
+                else:
+                    statement = f"In {a_val} − {b_val} = {c_val} − ___, the {miss_lbl} is {fill_value}"
+            elif blank_pos == "start":
+                statement = f"In ___ {op_symbol} {b_val} = {res}, the {miss_lbl} is {fill_value}"
+            elif blank_pos == "change":
+                statement = f"In {a_val} {op_symbol} ___ = {res}, the {miss_lbl} is {fill_value}"
+            else:
+                statement = f"In {a_val} {op_symbol} {b_val} = ___, the {miss_lbl} is {fill_value}"
+        elif concept == "fractions":
+            numer = values.get("numerator", values.get("a", 1))
+            denom = values.get("denominator", values.get("b", 2))
+            operation = values.get("operation")
+            if operation == "compare":
+                a_num = values.get("a_num", numer)
+                a_den = values.get("a_den", denom)
+                b_num = values.get("b_num", numer)
+                b_den = values.get("b_den", denom)
+                sign_fill = fill_value if fill_value in (">", "<", "=") else "="
+                statement = f"\\(\\frac{{{a_num}}}{{{a_den}}}\\) {sign_fill} \\(\\frac{{{b_num}}}{{{b_den}}}\\)"
+            elif operation in ("add_subtract", "add", "subtract"):
+                a_num = values.get("a_num", numer)
+                b_num = values.get("b_num", 0)
+                a_den = values.get("a_den", denom)
+                b_den = values.get("b_den", denom)
+                a_part = "1 part" if a_num == 1 else f"{a_num} parts"
+                if operation == "subtract":
+                    b_part = "1 shaded part" if b_num == 1 else f"{b_num} shaded parts"
+                    statement = f"A shape is divided into {a_den} equal parts. {a_part} is shaded. Taking away {b_part} leaves {fill_value}"
+                else:
+                    b_part = "1 more part" if b_num == 1 else f"{b_num} more parts"
+                    statement = f"A shape is divided into {a_den} equal parts. Shading {a_part} and then {b_part} gives {fill_value} shaded in all"
+            else:
+                statement = f"A shape is divided into {denom} equal parts with {numer} parts shaded, which represents the fraction {fill_value}"
         else:
             statement = f"{ctx.question_text} The answer is {fill_value}."
 

@@ -1,29 +1,38 @@
 {
   "node_id": "mat_g3_na_q4_7",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
-  "review_date": "2026-08-12",
-  "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46,
-    50,
-    55,
-    72,
-    500,
-    501,
-    502,
-    600,
-    602,
-    603
-  ],
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-Mixed-Harden (mat_g3_na_q4_2, mat_g3_na_q4_4, mat_g3_na_q4_7), 2026-08-17",
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items successfully fulfill the competency of adding and subtracting similar fractions using models. They explicitly contextualize the operations through area models (e.g., \"A shape is divided into 4 equal parts. 3 parts are shaded and 1 more part is shaded.\") and visual model interaction (\"Shade the shape to show the result of 5/6 + 1/6.\")."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample comprehensively covers both operations specified in the competency: addition (e.g., \"What fraction of the shape is shaded in all: \\(\\frac{3}{4} + \\frac{1}{4}\\)?\") and subtraction (e.g., \"If 1 shaded part is taken away, what fraction of the shape remains shaded: \\(\\frac{3}{8} - \\frac{1}{8}\\)?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The cognitive load is appropriate for Grade 3 Quarter 4. The language used to describe the models is clear and straightforward (\"A shape is divided into 6 equal parts. 2 parts are shaded.\"), and denominators are kept to standard early-grade sizes (4, 5, 6, 8, 10)."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The items exhibit good variant comprehensiveness by employing multiple formats, including descriptive text models for MCQ (\"A shape is divided into 8 equal parts...\"), fill-in-the-blank text models (\"\\(\\frac{1}{10} + \\frac{1}{10} = ___\\)\"), and interactive visual models (\"Shade the shape to show the result of 7/8 - 1/8.\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The questions are strictly aligned with the competency. They focus exclusively on similar fractions (same denominators) and consistently anchor the abstract symbolic operation to a concrete model representation, meeting both the mathematical and pedagogical constraints of the MATATAG curriculum."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numbers and distractors are scaled appropriately. Distractors target common student misconceptions, such as adding or subtracting the denominators (e.g., offering \"3/12\" for \\(\\frac{2}{6} - \\frac{1}{6}\\)) or inverting the fraction (e.g., offering \"6/2\")."
+    }
+  },
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is \\(\\frac{3}{4} + \\frac{1}{4}\\)?",
+      "question_text": "A shape is divided into 4 equal parts. 3 parts are shaded and 1 more part is shaded. What fraction of the shape is shaded in all: \\(\\frac{3}{4} + \\frac{1}{4}\\)?",
       "correct_answer": "4/4",
       "options": [
         {
@@ -51,7 +60,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is \\(\\frac{2}{4} + \\frac{1}{4}\\)?",
+      "question_text": "A shape is divided into 4 equal parts. 2 parts are shaded and 1 more part is shaded. What fraction of the shape is shaded in all: \\(\\frac{2}{4} + \\frac{1}{4}\\)?",
       "correct_answer": "3/4",
       "options": [
         {
@@ -79,7 +88,7 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What is \\(\\frac{2}{6} - \\frac{1}{6}\\)?",
+      "question_text": "A shape is divided into 6 equal parts. 2 parts are shaded. If 1 shaded part is taken away, what fraction of the shape remains shaded: \\(\\frac{2}{6} - \\frac{1}{6}\\)?",
       "correct_answer": "1/6",
       "options": [
         {
@@ -107,7 +116,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What is \\(\\frac{3}{8} - \\frac{1}{8}\\)?",
+      "question_text": "A shape is divided into 8 equal parts. 3 parts are shaded. If 1 shaded part is taken away, what fraction of the shape remains shaded: \\(\\frac{3}{8} - \\frac{1}{8}\\)?",
       "correct_answer": "2/8",
       "options": [
         {
@@ -135,7 +144,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is \\(\\frac{3}{8} + \\frac{1}{8}\\)?",
+      "question_text": "A shape is divided into 8 equal parts. 3 parts are shaded and 1 more part is shaded. What fraction of the shape is shaded in all: \\(\\frac{3}{8} + \\frac{1}{8}\\)?",
       "correct_answer": "4/8",
       "options": [
         {
@@ -197,7 +206,7 @@
     {
       "seed": 72,
       "formatter": "cloze",
-      "question_text": "What is \\(\\frac{1}{10} + \\frac{1}{10}\\)?",
+      "question_text": "A shape is divided into 10 equal parts. 1 part is shaded and 1 more part is shaded: \\(\\frac{1}{10} + \\frac{1}{10} = ___\\)",
       "correct_answer": "2/10",
       "options": [
         {
@@ -235,7 +244,7 @@
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "What is \\(\\frac{5}{6} - \\frac{1}{6}\\)?",
+      "question_text": "A shape is divided into 6 equal parts. 5 parts are shaded. If 1 shaded part is taken away: \\(\\frac{5}{6} - \\frac{1}{6} = ___\\)",
       "correct_answer": "4/6",
       "options": [
         {
@@ -267,7 +276,7 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is \\(\\frac{6}{10} - \\frac{1}{10}\\)?",
+      "question_text": "A shape is divided into 10 equal parts. 6 parts are shaded. If 1 shaded part is taken away, what fraction of the shape remains shaded: \\(\\frac{6}{10} - \\frac{1}{10}\\)?",
       "correct_answer": "5/10",
       "options": [
         {
@@ -295,7 +304,7 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is \\(\\frac{3}{5} - \\frac{1}{5}\\)?",
+      "question_text": "A shape is divided into 5 equal parts. 3 parts are shaded. If 1 shaded part is taken away, what fraction of the shape remains shaded: \\(\\frac{3}{5} - \\frac{1}{5}\\)?",
       "correct_answer": "2/5",
       "options": [
         {
@@ -323,7 +332,7 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is \\(\\frac{4}{5} - \\frac{1}{5}\\)?",
+      "question_text": "A shape is divided into 5 equal parts. 4 parts are shaded. If 1 shaded part is taken away, what fraction of the shape remains shaded: \\(\\frac{4}{5} - \\frac{1}{5}\\)?",
       "correct_answer": "3/5",
       "options": [
         {
@@ -351,7 +360,7 @@
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "What is \\(\\frac{2}{6} + \\frac{1}{6}\\)?",
+      "question_text": "A shape is divided into 6 equal parts. 2 parts are shaded and 1 more part is shaded: \\(\\frac{2}{6} + \\frac{1}{6} = ___\\)",
       "correct_answer": "3/6",
       "options": [
         {
@@ -381,31 +390,21 @@
       ]
     }
   ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "11 of the 14 samples show a bare equation such as seed 42's '\\(\\frac{3}{4} + \\frac{1}{4}\\)' with no shape or shading mentioned in the text at all, even though the competency text ends in 'using models' — only seed 50, seed 55, and seed 500 reference anything visual."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Addition (seed 42's 3/4+1/4, seed 603's 2/6+1/6) and subtraction (seed 44's 2/6-1/6, seed 600's 3/5-1/5) of same-denominator fractions both appear, so the competency's two named operations are both generated."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Every fraction pair shares a denominator — never mixed denominators — correctly keeping this inside the 'similar fractions' scope rather than reaching into later unlike-denominator work."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "set_click items (seed 55, seed 500) provide real interactive shading, distinct from the mcq, cloze, and read_mcq items that surround them."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Denominator size (4 through 10) and how close the numerator sits to the denominator are what move difficulty, not an unrelated skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Denominators stay at 10 or below and numerators never exceed the denominator by more than would make a whole, keeping scale inside Grade 3 similar-fraction work."
-    }
-  },
-  "overall": "CONCERN"
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    72,
+    500,
+    501,
+    502,
+    600,
+    602,
+    603
+  ]
 }

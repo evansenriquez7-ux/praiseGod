@@ -117,7 +117,8 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         if values.get("task_type") == "estimate":
             real_a = values.get("real_a", dividend)
             real_b = values.get("real_b", divisor)
-            return f"Estimate the quotient: {real_a} ÷ {real_b}"
+            stem = "Estimate the quotient" if "quotient" in ctx.cumulative_vocab else "Estimate the answer"
+            return f"{stem}: {real_a} ÷ {real_b}"
         if values.get("task_type") in ("even_odd", "number_line_jumps", "inverse_of_multiplication") and values.get("question"):
             # blank_target="answer" or custom narrative question doesn't fit the bare equations below.
             return values["question"]
@@ -128,6 +129,53 @@ def _build_pure_question(ctx: QuestionContext) -> str:
         else:
             return f"What divided by {divisor} equals {quotient}?"
     
+    elif concept == "missing_number":
+        op_name = values.get("operation", "addition")
+        op_symbol = {"addition": "+", "subtraction": "−",
+                     "multiplication": "×", "division": "÷",
+                     "equivalent": values.get("equivalent_symbol", "+")}.get(op_name, "+")
+        blank_pos = values.get("blank_position", "result")
+        res = values.get("result", values.get("total"))
+        a_val = values.get("a")
+        b_val = values.get("b")
+        if op_name == "equivalent":
+            c_val = values.get("c", 1)
+            eq_sym = values.get("equivalent_symbol", "+")
+            if eq_sym == "+":
+                return f"What number completes the expression: {a_val} + {b_val} = {c_val} + ___?"
+            else:
+                return f"What number completes the expression: {a_val} − {b_val} = {c_val} − ___?"
+        if blank_pos == "start":
+            return f"What number goes in the blank: ___ {op_symbol} {b_val} = {res}?"
+        elif blank_pos == "change":
+            return f"What number goes in the blank: {a_val} {op_symbol} ___ = {res}?"
+        else:
+            return f"What number goes in the blank: {a_val} {op_symbol} {b_val} = ___?"
+
+    elif concept == "fractions":
+        numer = values.get("numerator", values.get("a", 1))
+        denom = values.get("denominator", values.get("b", 2))
+        operation = values.get("operation")
+        if operation == "compare":
+            a_num = values.get("a_num", numer)
+            a_den = values.get("a_den", denom)
+            b_num = values.get("b_num", numer)
+            b_den = values.get("b_den", denom)
+            return f"Compare the fractions: \\(\\frac{{{a_num}}}{{{a_den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?"
+        if operation in ("add_subtract", "add", "subtract"):
+            a_num = values.get("a_num", numer)
+            b_num = values.get("b_num", 0)
+            a_den = values.get("a_den", denom)
+            b_den = values.get("b_den", denom)
+            a_part = "1 part is" if a_num == 1 else f"{a_num} parts are"
+            if operation == "subtract":
+                b_part = "1 shaded part is" if b_num == 1 else f"{b_num} shaded parts are"
+                return f"A shape is divided into {a_den} equal parts. {a_part} shaded. If {b_part} taken away, what fraction of the shape remains shaded: \\(\\frac{{{a_num}}}{{{a_den}}} - \\frac{{{b_num}}}{{{b_den}}}\\)?"
+            b_part = "1 more part is" if b_num == 1 else f"{b_num} more parts are"
+            return f"A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded. What fraction of the shape is shaded in all: \\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}}\\)?"
+        part_word = "part is" if numer == 1 else "parts are"
+        return f"A shape is divided into {denom} equal parts. {numer} {part_word} shaded. What fraction of the shape is shaded?"
+
     elif concept == "counting":
         seq = values.get("sequence") or []
         direction = values.get("direction", "forward")

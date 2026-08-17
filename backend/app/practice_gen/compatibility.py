@@ -859,9 +859,8 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
     "division": {
         "remainder": ["none", "some"],
         "table": ["2", "3", "4", "5", "10"],
-        "structure": ["result_unknown"],
-        "array_grid_read": {"task_type": ["find_quotient"], "context": ["pure"], "table": ["2_3_4_5_10", "6_7_8_9"], "remainder": ["none"]},
-        "array_grid_set": {"task_type": ["find_quotient"], "context": ["pure"], "table": ["2_3_4_5_10", "6_7_8_9"], "remainder": ["none"]},
+        "array_grid_read": {"task_type": ["find_quotient"], "context": ["pure"], "table": ["2_3_4_5_10", "6_7_8_9"], "remainder": ["none"], "structure": ["result_unknown"]},
+        "array_grid_set": {"task_type": ["find_quotient"], "context": ["pure"], "table": ["2_3_4_5_10", "6_7_8_9"], "remainder": ["none"], "structure": ["result_unknown"]},
         # even_odd's answer is a categorical "even"/"odd" string with only
         # one possible opposite value -- get_supported_variants has no
         # per-node scoping (it's computed once per (dna, formatter) pair
@@ -876,18 +875,10 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # generate enough distractors for string correct answer 'even'").
         # true_false is the only formatter that fits a binary judgment
         # without needing extra distractors, so it's the only one left
-        # unrestricted. NOTE: don't add "estimate" to this allow-list --
-        # it isn't declared in VARIANTS_BY_DNA (works via the registry-scope
-        # exemption instead, deliberately, see that comment), and adding it
-        # here would make it a discoverable VARIANTS_BY_DNA-equivalent value
-        # too, exhaustively testing division's "quotient"-worded estimate
-        # text against nodes whose vocabulary hasn't introduced that term
-        # (reproduced: mat_g2_na_q3_4 failing §1D on task_type='estimate'
-        # purely from being offered a task_type its own competency never
-        # requested).
-        "mcq": {"task_type": ["find_quotient", "number_line_jumps", "inverse_of_multiplication"]},
-        "cloze": {"task_type": ["find_quotient", "number_line_jumps", "inverse_of_multiplication"]},
-        "error_detect": {"task_type": ["find_quotient", "number_line_jumps", "inverse_of_multiplication"]},
+        # unrestricted.
+        "mcq": {"task_type": ["find_quotient", "estimate", "number_line_jumps", "inverse_of_multiplication"]},
+        "cloze": {"task_type": ["find_quotient", "estimate", "number_line_jumps", "inverse_of_multiplication"]},
+        "error_detect": {"task_type": ["find_quotient", "estimate", "number_line_jumps", "inverse_of_multiplication"]},
     },
 
     "missing_number": {

@@ -2647,4 +2647,38 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
     - `mat_g3_na_q4_3`: FAIL → **PASS** (+1)
     - `mat_g3_na_q4_5`: FAIL → **PASS** (+1)
 - **Census after:** PASS=84 CONCERN=50 FAIL=17 Total=151 (+3 PASS, -3 FAIL).
-- **Next tick should:** Harden Grade 3 Quarter 4 Fractions Cluster (`mat_g3_na_q4_1`, `mat_g3_na_q4_2`).
+- **Next tick should:** Harden Grade 3 Quarter 4 Mixed Cluster (`mat_g3_na_q4_2`, `mat_g3_na_q4_4`, `mat_g3_na_q4_7`).
+
+---
+
+## Tick C Unit: Grade 3 Quarter 4 Mixed Cluster Hardening (`mat_g3_na_q4_2`, `mat_g3_na_q4_4`, `mat_g3_na_q4_7`)
+- **Timestamp:** 2026-08-17T21:40:00+08:00
+- **Scope / Target Nodes:**
+  - `mat_g3_na_q4_2` (G3 Q4 Missing Number Equations): Find the missing number in a number sentence involving multiplication or division by 6, 7, 8, and 9.
+  - `mat_g3_na_q4_4` (G3 Q4 Quotient Estimation): Estimate the quotient of 2- to 3-digit numbers divided by 1- to 2-digit numbers, using multiples of 10 or 100 as appropriate.
+  - `mat_g3_na_q4_7` (G3 Q4 Add/Subtract Similar Fractions with Models): Add and subtract similar fractions using models.
+- **Root Cause & Diagnosis:**
+  1. `mat_g3_na_q4_2`: `missing_number.py` table factor checks allowed non-{6,7,8,9} visible operands in certain blank positions. Error-detect formatter naively replaced `___` with character statements resulting in ungrammatical equations.
+  2. `mat_g3_na_q4_4`: `division.py` estimate path lacked dedicated balanced candidate pools for 2-digit vs 3-digit dividends across 1-digit and 2-digit divisors, occasionally selecting exact division facts or inappropriate roundings without requiring genuine rounding to multiples of 10/100. Distractor pools in `base_generator.py` formulaic arithmetic error patterns generated astronomically large products for estimation tasks instead of scale-appropriate options.
+  3. `mat_g3_na_q4_7`: Fraction addition/subtraction models in `fractions.py` and visual formatters (`fraction_pie_set`, `fraction_bar_set`, `fmt_read_mcq`) were validated and found to be cleanly adhering to similar fractions within single-digit bounds.
+- **Files Modified:**
+  - `backend/app/practice_gen/dna/na/division.py`
+  - `backend/app/practice_gen/dna/na/missing_number.py`
+  - `backend/app/practice_gen/generators/base_generator.py`
+  - `backend/app/practice_gen/formatters/textual/fmt_error_detect.py`
+  - `validation_reports/judgment/mat_g3_na_q4/mat_g3_na_q4_2.json` (PASS)
+  - `validation_reports/judgment/mat_g3_na_q4/mat_g3_na_q4_4.json` (PASS)
+  - `validation_reports/judgment/mat_g3_na_q4/mat_g3_na_q4_7.json` (PASS)
+- **Verification:**
+  - Matrix validation (`validate_matrix` on `mat_g3_na_q4_2`, `mat_g3_na_q4_4`, `mat_g3_na_q4_7` and sibling nodes): 100% pass with 0 failures across all contract checks (§1A, §1B, §1C, §1D, §1E, §1F).
+  - Safety Net 1 (Registry Cross-Audit): 100% bidirectional cross-registration verified.
+  - Safety Net 2 (Blast Radius Audit): Division and missing number siblings rendered cleanly across test seeds.
+  - Blind Pro Reviews: 3/3 nodes achieved authentic PASS verdicts from blind Pro reviewer subagents with exact contiguous quote provenance.
+  - Judgment review verification (`validate_judgment` structure, freshness, and quote provenance): 0 errors across all 3 nodes.
+  - Census movement across the unit:
+    - `mat_g3_na_q4_2`: CONCERN → **PASS** (+1)
+    - `mat_g3_na_q4_4`: FAIL → **PASS** (+1)
+    - `mat_g3_na_q4_7`: CONCERN → **PASS** (+1)
+- **Census after:** PASS=87 CONCERN=48 FAIL=16 Total=151 (+3 PASS, -1 FAIL, -2 CONCERN).
+- **Next tick should:** Harden Grade 3 Quarter 4 Remaining Nodes (`mat_g3_na_q4_1`, `mat_g3_na_q4_6`).
+

@@ -181,6 +181,50 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             # wrong. Same defect and same fix as base_generator's copy of
             # this stem (three copies of one sentence — see doc_rem.md R2).
             return f"Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?"
+    elif concept == "missing_number":
+        op_name = values.get("operation", "addition")
+        op_symbol = {"addition": "+", "subtraction": "−",
+                     "multiplication": "×", "division": "÷",
+                     "equivalent": values.get("equivalent_symbol", "+")}.get(op_name, "+")
+        blank_pos = values.get("blank_position", "result")
+        res = values.get("result", values.get("total"))
+        a_val = values.get("a")
+        b_val = values.get("b")
+        if op_name == "equivalent":
+            c_val = values.get("c", 1)
+            eq_sym = values.get("equivalent_symbol", "+")
+            if eq_sym == "+":
+                return f"{a_val} + {b_val} = {c_val} + ___"
+            else:
+                return f"{a_val} − {b_val} = {c_val} − ___"
+        if blank_pos == "start":
+            return f"___ {op_symbol} {b_val} = {res}"
+        elif blank_pos == "change":
+            return f"{a_val} {op_symbol} ___ = {res}"
+        else:
+            return f"{a_val} {op_symbol} {b_val} = ___"
+    elif concept == "fractions":
+        numer = values.get("numerator", values.get("a", 1))
+        denom = values.get("denominator", values.get("b", 2))
+        operation = values.get("operation")
+        if operation == "compare":
+            a_num = values.get("a_num", numer)
+            a_den = values.get("a_den", denom)
+            b_num = values.get("b_num", numer)
+            b_den = values.get("b_den", denom)
+            return f"Compare the fractions: \\(\\frac{{{a_num}}}{{{a_den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?"
+        if operation in ("add_subtract", "add", "subtract"):
+            a_num = values.get("a_num", numer)
+            b_num = values.get("b_num", 0)
+            a_den = values.get("a_den", denom)
+            b_den = values.get("b_den", denom)
+            a_part = "1 part is" if a_num == 1 else f"{a_num} parts are"
+            if operation == "subtract":
+                b_part = "1 shaded part is" if b_num == 1 else f"{b_num} shaded parts are"
+                return f"A shape is divided into {a_den} equal parts. {a_part} shaded. If {b_part} taken away: \\(\\frac{{{a_num}}}{{{a_den}}} - \\frac{{{b_num}}}{{{b_den}}} = ___\\)"
+            b_part = "1 more part is" if b_num == 1 else f"{b_num} more parts are"
+            return f"A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded: \\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}} = ___\\)"
+        return f"A shape is divided into {denom} equal parts with {numer} parts shaded. The fraction shaded is ___."
     else:
         if ctx.question_text_with_blank:
             return ctx.question_text_with_blank

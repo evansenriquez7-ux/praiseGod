@@ -191,6 +191,47 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
             f"{slot('a', 'dividend', value=dividend)} ÷ {slot('b', 'divisor', value=divisor)} "
             f"= {slot('result', 'quotient', value=quotient)}"
         )
+    elif concept == "missing_number":
+        op_name = values.get("operation", "addition")
+        op_symbol = {"addition": "+", "subtraction": "−",
+                     "multiplication": "×", "division": "÷",
+                     "equivalent": values.get("equivalent_symbol", "+")}.get(op_name, "+")
+        blank_pos = values.get("blank_position", "result")
+        res = values.get("result", values.get("total"))
+        a_val = values.get("a")
+        b_val = values.get("b")
+        if op_name == "equivalent":
+            c_val = values.get("c", 1)
+            eq_sym = values.get("equivalent_symbol", "+")
+            if eq_sym == "+":
+                return f"{a_val} + {b_val} = {c_val} + ___"
+            else:
+                return f"{a_val} − {b_val} = {c_val} − ___"
+        if blank_pos == "start":
+            return f"___ {op_symbol} {b_val} = {res}"
+        elif blank_pos == "change":
+            return f"{a_val} {op_symbol} ___ = {res}"
+        else:
+            return f"{a_val} {op_symbol} {b_val} = ___"
+    elif concept == "fractions":
+        numer = values.get("numerator", values.get("a", 1))
+        denom = values.get("denominator", values.get("b", 2))
+        operation = values.get("operation")
+        res_str = values.get("result", f"{numer}/{denom}")
+        if operation == "compare":
+            a_num = values.get("a_num", numer)
+            a_den = values.get("a_den", denom)
+            b_num = values.get("b_num", numer)
+            b_den = values.get("b_den", denom)
+            return f"\\(\\frac{{{a_num}}}{{{a_den}}}\\) {slot('result', 'sign', value=res_str)} \\(\\frac{{{b_num}}}{{{b_den}}}\\)"
+        if operation in ("add_subtract", "add", "subtract"):
+            a_num = values.get("a_num", numer)
+            b_num = values.get("b_num", 0)
+            a_den = values.get("a_den", denom)
+            b_den = values.get("b_den", denom)
+            op_sym = "+" if operation in ("add_subtract", "add") else "−"
+            return f"\\(\\frac{{{a_num}}}{{{a_den}}} {op_sym} \\frac{{{b_num}}}{{{b_den}}} = {slot('result', 'fraction', value=res_str)}\\)"
+        return f"A shape is divided into {denom} equal parts with {numer} parts shaded, representing {slot('result', 'fraction', value=res_str)}"
     else:
         return ctx.question_text
 
@@ -258,11 +299,14 @@ def format_error_detect(ctx: QuestionContext, rng: random.Random) -> FormattedPr
     # equation), _build_pure_equation returns ctx.question_text unchanged,
     # which never contains "___"; keep the old append behaviour for that case.
     if "___" in problem_text:
-        actor_statement = problem_text.replace("___", str(actors_answer), 1)
-    else:
+        miss_lbl = "missing number" if "missing number" in ctx.cumulative_vocab else "blank"
+        question_text = (
+            f'{actor} solved: "{problem_text}". '
+            f'{actor} says the {miss_lbl} is {actors_answer}. '
+            f'Is {actor} correct?'
+        )
+    elif context_variant == "pure":
         actor_statement = f"{problem_text} = {actors_answer}"
-
-    if context_variant == "pure":
         question_text = (
             f"{actor} says: {actor_statement}. "
             f"Is {actor} correct?"

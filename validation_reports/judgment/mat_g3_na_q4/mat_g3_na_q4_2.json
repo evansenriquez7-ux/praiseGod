@@ -1,53 +1,58 @@
 {
   "node_id": "mat_g3_na_q4_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
-  "review_date": "2026-08-12",
-  "blind": true,
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46,
-    50,
-    51,
-    68,
-    110,
-    500,
-    501,
-    502,
-    600,
-    601,
-    602,
-    603,
-    604,
-    605
-  ],
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-Mixed-Harden (mat_g3_na_q4_2, mat_g3_na_q4_4, mat_g3_na_q4_7), 2026-08-17",
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items successfully require the student to find a missing number in multiplication and division sentences, fulfilling the competency's core requirement. Examples include finding the missing factor in \"___ \u00d7 6 = 12?\" and the missing dividend in \"___ \u00f7 9 = 7\"."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The generator comprehensively covers all specified target numbers (6, 7, 8, and 9) across both multiplication and division operations. For instance, 6 is covered in \"60 \u00f7 6 = ___?\", 7 in \"What divided by 7 equals 8?\", 8 in \"8 \u00d7 5 = ___. What is the missing number?\", and 9 in \"___ \u00f7 9 = 9\"."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The problems are appropriately scoped for Grade 3 Quarter 4. They use clear, straightforward phrasing such as \"What divided by 8 equals 9?\" and \"Both sides balance evenly. 6 \u00d7 ? = 60. What is the missing value?\" without introducing overly complex or distracting contexts."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample set provides an excellent variety of question formats and missing value positions. It includes direct equations (\"72 \u00f7 8 = ___\"), word-based sentences (\"What divided by 7 equals 3?\"), truth value evaluation (\"63 \u00f7 9 = 9. True or False?\"), and error detection (\"Rico solved: \"___ \u00f7 9 = 6\". Rico says the missing number is 6. Is Rico correct?\"). It effectively tests missing factors, products, dividends, and quotients."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All questions align strictly with the curriculum requirement. They focus entirely on finding missing numbers in multiplication or division sentences involving the specified operands (6, 7, 8, 9) without straying into unrelated skills or larger numbers."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical scale is perfectly appropriate, staying within the bounds of standard 10x10 multiplication facts. The maximum product/dividend used is 81, as seen in \"___ \u00f7 9 = 9\" (correct answer 81), which is correct for this grade level."
+    }
+  },
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "60 ÷ 6 = ___. What is the missing number?",
-      "correct_answer": 10,
+      "question_text": "What number goes in the blank: ___ \u00d7 6 = 12?",
+      "correct_answer": 2,
       "options": [
         {
           "key": "A",
-          "value": 70,
+          "value": 14,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 11,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 10,
+          "value": 2,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 16,
+          "value": 18,
           "is_correct": false
         }
       ]
@@ -55,7 +60,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "60 ÷ 6 = ___. What is the missing number?",
+      "question_text": "What number goes in the blank: 60 \u00f7 6 = ___?",
       "correct_answer": 10,
       "options": [
         {
@@ -83,13 +88,13 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "63 ÷ 9 = ___",
-      "correct_answer": 7,
+      "question_text": "___ \u00f7 9 = 7",
+      "correct_answer": 63,
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "text": "9",
+          "value": 7,
+          "text": "7",
           "is_correct": false
         },
         {
@@ -100,46 +105,42 @@
         },
         {
           "key": "C",
-          "value": 567,
-          "text": "567",
+          "value": 9,
+          "text": "9",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 7,
-          "text": "7",
+          "value": 63,
+          "text": "63",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "72 ÷ 8 = ___",
-      "correct_answer": 9,
+      "formatter": "mcq",
+      "question_text": "What divided by 8 equals 9?",
+      "correct_answer": 72,
       "options": [
         {
           "key": "A",
-          "value": 576,
-          "text": "576",
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "B",
           "value": 64,
-          "text": "64",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 9,
-          "text": "9",
+          "value": 72,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 8,
-          "text": "8",
+          "value": 9,
           "is_correct": false
         }
       ]
@@ -147,7 +148,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "18 ÷ 6 = ___. What is the missing number?",
+      "question_text": "What number goes in the blank: 18 \u00f7 6 = ___?",
       "correct_answer": 3,
       "options": [
         {
@@ -174,70 +175,93 @@
     },
     {
       "seed": 50,
+      "formatter": "true_false",
+      "question_text": "63 \u00f7 9 = 9. True or False?",
+      "correct_answer": false
+    },
+    {
+      "seed": 55,
       "formatter": "read_mcq",
-      "question_text": "This array has 63 squares split into 7 equal rows. How many squares are in each row?",
-      "correct_answer": "A",
+      "question_text": "Both sides balance evenly. 6 \u00d7 ? = 60. What is the missing value?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "is_correct": true
+          "value": 16,
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 32,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 12,
+          "value": 60,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 7,
+          "value": 10,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 68,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"___ \u00f7 9 = 6\". Rico says the missing number is 6. Is Rico correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 54
+      }
+    },
+    {
+      "seed": 500,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"___ \u00f7 9 = 3\". Rico says the missing number is 27. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 27
+      }
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "___ \u00f7 9 = 9",
+      "correct_answer": 81,
+      "options": [
+        {
+          "key": "A",
+          "value": 81,
+          "text": "81",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 729,
+          "text": "729",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 72,
+          "text": "72",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 51,
-      "formatter": "true_false",
-      "question_text": "7 × 6 = ___. What is the missing number? The answer is 42. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 68,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 54 squares into 9 equal rows. How many squares are in each row?",
-      "correct_answer": 6
-    },
-    {
-      "seed": 110,
-      "formatter": "error_detect",
-      "question_text": "Jose says: 49 ÷ 7 = 343. Is Jose correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 7
-      }
-    },
-    {
-      "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 27 squares into 9 equal rows. How many squares are in each row?",
-      "correct_answer": 3
-    },
-    {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "81 ÷ 9 = 9. True or False?",
-      "correct_answer": true
-    },
-    {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 56 ÷ 7?",
-      "correct_answer": 8,
+      "question_text": "What divided by 7 equals 8?",
+      "correct_answer": 56,
       "options": [
         {
           "key": "A",
@@ -246,17 +270,17 @@
         },
         {
           "key": "B",
-          "value": 8,
+          "value": 56,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 392,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 7,
+          "value": 8,
           "is_correct": false
         }
       ]
@@ -264,8 +288,8 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 40 ÷ 8?",
-      "correct_answer": 5,
+      "question_text": "What divided by 8 equals 5?",
+      "correct_answer": 40,
       "options": [
         {
           "key": "A",
@@ -274,17 +298,17 @@
         },
         {
           "key": "B",
-          "value": 8,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 5,
+          "value": 40,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 320,
+          "value": 8,
           "is_correct": false
         }
       ]
@@ -292,7 +316,7 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "9 × ___ = 63. What is the missing number?",
+      "question_text": "9 \u00d7 ___ = 63",
       "correct_answer": 7,
       "options": [
         {
@@ -324,17 +348,17 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is 21 ÷ 7?",
-      "correct_answer": 3,
+      "question_text": "What divided by 7 equals 3?",
+      "correct_answer": 21,
       "options": [
         {
           "key": "A",
-          "value": 3,
+          "value": 21,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 147,
+          "value": 7,
           "is_correct": false
         },
         {
@@ -344,7 +368,7 @@
         },
         {
           "key": "D",
-          "value": 7,
+          "value": 3,
           "is_correct": false
         }
       ]
@@ -352,7 +376,7 @@
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "72 ÷ 8 = ___. What is the missing number?",
+      "question_text": "72 \u00f7 8 = ___",
       "correct_answer": 9,
       "options": [
         {
@@ -384,7 +408,7 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "8 × 5 = ___. What is the missing number?",
+      "question_text": "8 \u00d7 5 = ___. What is the missing number?",
       "correct_answer": 40,
       "options": [
         {
@@ -412,35 +436,28 @@
     {
       "seed": 605,
       "formatter": "true_false",
-      "question_text": "45 ÷ 9 = ___. What is the missing number? The answer is 4. True or False?",
+      "question_text": "In 45 \u00f7 9 = ___, the missing number is 4. True or False?",
       "correct_answer": false
     }
   ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both operations get a missing-number treatment — seed 51's '7 × 6 = ___' for multiplication and seed 42's '60 ÷ 6 = ___' for division — matching 'a number sentence involving multiplication or division'."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Multiplication sentences hide either the factor (seed 601's '9 × ___ = 63') or the product (seed 604's '8 × 5 = ___'), but every division sentence hides only the quotient (seed 44's '63 ÷ 9 = ___', seed 602's 'What is 21 ÷ 7?'); the dividend and divisor positions are never the blank."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Values stay inside the 6-9 fact family (81 is the ceiling, in seeds 501/602), suiting Grade 3."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Seed 42 and seed 43 generate the exact same sentence, '60 ÷ 6 = ___', with the same four option values and only the option order changed — a duplication rather than a new variant."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Difficulty tracks which table is used and which slot is hidden, a lever proper to this competency."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Nothing in the set exceeds 81, matching the ceiling implied by the 6-9 tables named in the competency text."
-    }
-  },
-  "overall": "CONCERN"
+  "blind": true,
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    68,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ]
 }

@@ -171,15 +171,14 @@ def generate_params(
 
     rem_level    = extract_discrete_level(profile, "remainder", ["none", "with_remainder"], "none")
     table_level  = extract_discrete_level(profile, "table", ["2_3_4_5_10", "6_7_8_9", "one_digit_2_9"], "2_3_4_5_10")
-    structure    = extract_discrete_level(profile, "structure", ["result_unknown", "divisor_unknown"], "result_unknown")
+    structure    = profile.get("structure")
     if structure == "divisor_or_dividend_unknown":
         # "Find the missing number in a ... sentence" (mat_g3_na_q4_2/
         # mat_g2_na_q3_7): the missing number can be in ANY position --
-        # divisor_unknown alone never produces a missing-DIVIDEND item
-        # (e.g. "__ ÷ 8 = 9"), which this DNA has no structure value for
-        # at all (blind review: "no sample shows the 'dividend-missing'
-        # blank position"). Alternate between the two.
+        # alternate between divisor_unknown and dividend_unknown.
         structure = rng.choice(["divisor_unknown", "dividend_unknown"])
+    elif structure not in ("result_unknown", "divisor_unknown", "dividend_unknown"):
+        structure = extract_discrete_level(profile, "structure", ["result_unknown", "divisor_unknown", "dividend_unknown"], "result_unknown")
     context      = extract_discrete_level(profile, "context", ["pure", "word_problem"], "pure")
     num_diff_scalar = extract_continuous_scalar(profile, "number_difficulty", extract_continuous_scalar(profile, "difficulty_scalar", 0.5))
     task_type    = profile.get("task_type")
@@ -245,85 +244,78 @@ def generate_params(
         # governs the served answer, exactly as it does for the exact
         # (non-estimate) path -- an estimate is not expected to divide
         # evenly.
-        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
         candidates = []
-        attempts = 0
-        while len(candidates) < 500 and attempts < 5000:
-            attempts += 1
-            x = rng.randint(10, 999)
-            y = rng.randint(2, 99)
-            candidates.append((x, y))
+        # 1. 3-digit by 2-digit:
+        for q in [2, 3, 4, 5, 6, 7, 8, 9, 10, 20]:
+            for rb in range(10, 95, 10):
+                ra = rb * q
+                if 100 <= ra <= 900 and (ra % 100 == 0 or ra % 10 == 0):
+                    for da in [-18, -12, -7, -3, 3, 7, 12, 18]:
+                        for db in [-3, -2, -1, 1, 2, 3]:
+                            real_a = ra + da
+                            real_b = rb + db
+                            if 100 <= real_a <= 999 and 10 <= real_b <= 99:
+                                if real_a % 10 != 0 or real_b % 10 != 0:
+                                    candidates.append((real_a, real_b, ra, rb, q))
+        # 2. 3-digit by 1-digit:
+        for q in [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]:
+            for rb in range(2, 10):
+                ra = rb * q
+                if 100 <= ra <= 900:
+                    for da in [-18, -12, -7, -3, 3, 7, 12, 18]:
+                        real_a = ra + da
+                        if 100 <= real_a <= 999 and real_a % 10 != 0:
+                            candidates.append((real_a, rb, ra, rb, q))
+        # 3. 2-digit by 2-digit:
+        for q in [2, 3, 4, 5]:
+            for rb in range(10, 50, 10):
+                ra = rb * q
+                if 20 <= ra <= 90:
+                    for da in [-4, -3, -2, -1, 1, 2, 3, 4]:
+                        for db in [-2, -1, 1, 2]:
+                            real_a = ra + da
+                            real_b = rb + db
+                            if 10 <= real_a <= 99 and 10 <= real_b <= 99 and real_a >= real_b * 2:
+                                if real_a % 10 != 0 or real_b % 10 != 0:
+                                    candidates.append((real_a, real_b, ra, rb, q))
+        # 4. 2-digit by 1-digit:
+        for q in [5, 10, 15, 20, 30, 40]:
+            for rb in range(2, 10):
+                ra = rb * q
+                if 20 <= ra <= 90:
+                    for da in [-4, -3, -2, -1, 1, 2, 3, 4]:
+                        real_a = ra + da
+                        if 10 <= real_a <= 99 and real_a >= rb * 2 and real_a % 10 != 0:
+                            candidates.append((real_a, rb, ra, rb, q))
+
         if not candidates:
             raise RuntimeError(
                 f"generate_params (division): no valid estimate pair for "
                 f"grade={grade}, profile={difficulty_profile}."
             )
 
-        def _round_half_up(n: int, precision: int) -> int:
-            remainder = n % precision
-            if remainder >= precision / 2:
-                return n - remainder + precision
-            return n - remainder
+        # Draw a balanced candidate
+        candidate_item = rng.choice(candidates)
+        real_a, real_b, rounded_a, rounded_b, est_q = candidate_item
 
-        # A dividend that already sits on its own rounding boundary (e.g.
-        # 300, already a multiple of 100) rounds to itself, so the served
-        # "estimate" is identical to the exact-division answer -- the
-        # divisor is deliberately never rounded (see above), so this is the
-        # ONLY source of degeneracy here, and it's the worst-affected of the
-        # four estimate DNAs (~16% of samples, since a 2-digit dividend need
-        # only be a multiple of 10 to collide). Same thin-don't-exclude
-        # convention as addition/subtraction/multiplication's identical fix.
-        def _is_degenerate_estimate(pair: tuple) -> bool:
-            x, _y = pair
-            rt = 10 if x < 100 else 100
-            return _round_half_up(x, rt) == x
-
-        _meaningful = [p for p in candidates if not _is_degenerate_estimate(p)]
-        _degenerate = [p for p in candidates if _is_degenerate_estimate(p)]
-        if _meaningful and _degenerate:
-            cap = max(1, len(_meaningful) // 10)
-            candidates = _meaningful + _degenerate[:cap]
-        elif _meaningful:
-            candidates = _meaningful
-
-        real_a, real_b = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
-
-        round_to = 10 if real_a < 100 else 100
-        rounded_a = max(round_to, _round_half_up(real_a, round_to))
-        # Leaving a 2-digit divisor completely unrounded while the dividend
-        # rounds to the nearest 10/100 can swing the quotient far from the
-        # true value -- e.g. real 150÷16=9.375 rounded only the dividend to
-        # 200, then floor-divided by the untouched 16 to give "≈12", a 28%
-        # error from a technique meant to produce a plausible ballpark
-        # (blind review of mat_g3_na_q4_4: "no standard tens/hundreds
-        # rounding path reaches 12"). Real "compatible numbers" estimation
-        # rounds BOTH operands -- rounding a 2-digit divisor to the nearest
-        # 10 too (a 1-digit divisor is already as simple as it gets, so
-        # left alone) keeps the estimate proportionally honest: the same
-        # example now rounds to 200÷20=10, much closer to 9.375.
-        rounded_b = _round_half_up(real_b, 10) if real_b >= 10 else real_b
-        rounded_b = max(10, rounded_b) if real_b >= 10 else rounded_b
-
-        # An "estimate" is the served value itself, not a quotient+
-        # remainder pair -- flooring rounded_a/rounded_b (a // b) silently
-        # discards however close the true rounded ratio sits to the NEXT
-        # whole number, which can be the majority of it (blind review of
-        # mat_g3_na_q4_4 seed 601: rounds to 300÷80=3.75, floor-served as
-        # "3" even though 3.75 is closer to 4 -- a worse estimate than the
-        # rounding step that produced it). Round the quotient itself
-        # half-up instead, matching this DNA's own _round_half_up
-        # convention rather than Python's implicit floor division.
-        est_q, est_r = divmod(rounded_a, rounded_b)
-        if est_r * 2 >= rounded_b:
-            est_q += 1
+        # Plausible estimation distractors (scale errors, place-value errors, off-by-one)
+        d1 = est_q * 10 if est_q < 50 else max(1, est_q // 10)
+        d2 = max(1, est_q + (2 if est_q <= 10 else 5))
+        d3 = max(1, est_q - (1 if est_q <= 10 else 5))
+        d4 = max(1, est_q * 2) if est_q <= 20 else max(1, est_q // 2)
+        distractor_pool = [d for d in [d1, d2, d3, d4] if d != est_q]
+        if len(distractor_pool) < 3:
+            distractor_pool.extend([est_q + 3, max(1, est_q - 2), est_q + 10])
+        distractors = list(dict.fromkeys(distractor_pool))[:3]
 
         return {
             "a": rounded_a,
             "b": rounded_b,
             "result": est_q,
-            "remainder": rounded_a % rounded_b,
+            "remainder": 0,
             "real_a": real_a,
             "real_b": real_b,
+            "distractors": distractors,
             "task_type": "estimate",
             "blank_target": "result",
             "context": "pure",
@@ -505,8 +497,9 @@ def generate_params(
 
     rem = a % b
     blank_target = {
-        "result_unknown":  "result",
-        "divisor_unknown": "b",
+        "result_unknown":   "result",
+        "divisor_unknown":  "b",
+        "dividend_unknown": "a",
     }.get(structure, "result")
 
     if rem > 0 and blank_target == "result":

@@ -500,24 +500,25 @@ def generate_context(
     # itself be one of the other two signs, never a formula result of a
     # completely different shape.
     correct_is_comparison_symbol = correct_answer in (">", "<", "=")
-    for ep in filtered_patterns:
-        if ep.formula == "None":
-            continue
-        try:
-            distractor = _eval_error_formula(ep.formula, values)
-            if (
-                distractor is not None
-                and not (correct_is_str and not isinstance(distractor, str))
-                and not (correct_is_comparison_symbol and distractor not in (">", "<", "="))
-                and distractor != correct_answer
-                and distractor not in distractors
-                and not _is_out_of_grade_negative(distractor)
-                and not _is_equivalent_to_answer(distractor)
-            ):
-                distractors.append(distractor)
-                distractors_provenance[distractor] = ep.label
-        except Exception:
-            continue
+    if values.get("task_type") != "estimate":
+        for ep in filtered_patterns:
+            if ep.formula == "None":
+                continue
+            try:
+                distractor = _eval_error_formula(ep.formula, values)
+                if (
+                    distractor is not None
+                    and not (correct_is_str and not isinstance(distractor, str))
+                    and not (correct_is_comparison_symbol and distractor not in (">", "<", "="))
+                    and distractor != correct_answer
+                    and distractor not in distractors
+                    and not _is_out_of_grade_negative(distractor)
+                    and not _is_equivalent_to_answer(distractor)
+                ):
+                    distractors.append(distractor)
+                    distractors_provenance[distractor] = ep.label
+            except Exception:
+                continue
 
     # An ESTIMATION item needs options far enough apart that estimating tells them
     # apart; an option a few percent from the answer forces exact computation and
@@ -888,8 +889,20 @@ def _build_symbolic_question(
             b_num = values.get("b_num", 0)
             a_den = values.get("a_den", denom)
             b_den = values.get("b_den", denom)
-            op_sym = "+" if operation in ("add_subtract", "add") else "-"
-            return f"What is \\(\\frac{{{a_num}}}{{{a_den}}} {op_sym} \\frac{{{b_num}}}{{{b_den}}}\\)?"
+            a_part = "1 part is" if a_num == 1 else f"{a_num} parts are"
+            if operation == "subtract":
+                b_part = "1 shaded part is" if b_num == 1 else f"{b_num} shaded parts are"
+                return (
+                    f"A shape is divided into {a_den} equal parts. {a_part} shaded. "
+                    f"If {b_part} taken away, what fraction of the shape remains shaded: "
+                    f"\\(\\frac{{{a_num}}}{{{a_den}}} - \\frac{{{b_num}}}{{{b_den}}}\\)?"
+                )
+            b_part = "1 more part is" if b_num == 1 else f"{b_num} more parts are"
+            return (
+                f"A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded. "
+                f"What fraction of the shape is shaded in all: "
+                f"\\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}}\\)?"
+            )
         # The previous phrasing — "What fraction does \(\frac{n}{d}\) equal parts
         # represent?" — was both ungrammatical and self-answering: it displayed
         # the very fraction it asked the student to name, so the item measured
