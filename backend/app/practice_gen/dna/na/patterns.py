@@ -179,23 +179,27 @@ def generate_params(
         # instead of construction.
         if pattern_type == "repeating":
             cycle_len = rng.randint(cyc_lo, cyc_hi)
-            # "Create repeating patterns using objects, images, OR
-            # NUMBERS" (mat_g1_na_q3_7) named three modalities, but this
-            # branch only ever drew from a bare number range -- letters
-            # (already used elsewhere in this DNA as the best available
-            # proxy for a non-numeric "object/image" element) never
-            # appeared here at all (blind review: "only the 'numbers'
-            # modality is used... 'objects' and 'images' never appear").
-            use_letters = rng.random() < 0.35
-            if use_letters:
+            # "Create repeating patterns using objects, images, or numbers" (mat_g1_na_q3_7)
+            # supports three modalities: objects/shapes, letters, and numbers.
+            modality = rng.choice(["objects", "letters", "numbers"])
+            if modality == "objects":
+                candidates = ["square", "triangle", "rectangle"]
+                cycle = rng.sample(candidates, min(cycle_len, len(candidates)))
+            elif modality == "letters":
                 candidates = _LETTER_POOL
                 cycle = rng.sample(_LETTER_POOL, min(cycle_len, len(_LETTER_POOL)))
             else:
                 candidates = list(range(1, max_val + 1))
                 cycle = [generate_number_by_window(candidates, num_diff_scalar, d=5, rng=rng) for _ in range(cycle_len)]
+            
+            if len(set(cycle)) < 2:
+                alternatives = [c for c in candidates if c != cycle[0]]
+                if alternatives:
+                    cycle[-1] = rng.choice(alternatives)
+            
             valid_seq = _make_repeating_sequence(0, cycle, seq_length)
             pattern_label = "repeating pattern"
-            rule = f"Repeat the group: {cycle}"
+            rule = f"Repeat the group: {', '.join(map(str, cycle))}"
         else:
             increasing = pattern_type != "arithmetic_decreasing"
             if increasing:
@@ -263,10 +267,12 @@ def generate_params(
         # asking the student to merely recognize an unspecified pattern.
         elements_str = ", ".join(map(str, cycle)) if pattern_type == "repeating" else None
         if elements_str:
-            question = (
-                f"You want to create a repeating pattern using: {elements_str}. "
-                f"Which sequence correctly creates it?"
-            )
+            q_template = rng.choice([
+                f"You want to create a repeating pattern using: {elements_str}. Which sequence correctly creates it?",
+                f"Create a repeating pattern with the repeating group: {elements_str}. Which sequence shows this pattern?",
+                f"Use the repeating unit {elements_str} to build a repeating pattern. Which sequence correctly creates it?",
+            ])
+            question = q_template
         else:
             question = (
                 f"You want to create {'an' if pattern_label[0] in 'aeiou' else 'a'} "
