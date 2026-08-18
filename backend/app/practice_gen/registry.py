@@ -861,7 +861,10 @@ def _parse_competency_bounds(
     # "conduct the interview" part itself, which this DNA has no way to
     # represent.
     elif dna_name == "pictographs":
-        if "organize" in text or "into a table" in text:
+        if "interview" in text or "collect" in text:
+            bounds["task_type"] = "collect_interview"
+            bounds["scale_type"] = "no_scale"
+        elif "organize" in text or "into a table" in text:
             bounds["task_type"] = "organize_table"
         # "Present raw data, or data in tabular form, in a pictograph with a
         # scale, OR VICE VERSA" (mat_g2_dp_q3_0) names two directions and was

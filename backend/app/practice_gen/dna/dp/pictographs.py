@@ -158,6 +158,102 @@ VOCAB_TALLY = VocabGated(
     fallback="count marks",
 )
 
+# ─── Simple interview pool (Grade 1 Data Collection: mat_g1_dp_q3_0) ───────────
+_INTERVIEW_POOL = [
+    # 1. Interview Question Selection
+    {
+        "question": "Maya wants to collect information about her classmates' favorite fruits. What question should Maya ask in her simple interview?",
+        "answer": "What is your favorite fruit?",
+        "distractors": ["How old are you?", "What time is it?", "How many shoes do you have?"],
+    },
+    {
+        "question": "Carlo wants to collect data on his friends' favorite colors. What question should Carlo ask in his interview?",
+        "answer": "What is your favorite color?",
+        "distractors": ["Where is your pencil?", "What day is today?", "How many doors are in the room?"],
+    },
+    {
+        "question": "Sam wants to find out what pets his classmates have at home. What question should Sam ask in his interview?",
+        "answer": "What pet do you have at home?",
+        "distractors": ["What is your favorite food?", "What time do you wake up?", "How tall is the tree?"],
+    },
+    {
+        "question": "Liza wants to collect data about her classmates' favorite games. What question should Liza ask in her interview?",
+        "answer": "What is your favorite game?",
+        "distractors": ["What color is your ball?", "How many pencils do you own?", "What time is lunch?"],
+    },
+    # 2. Topic / Variable Identification (child-friendly wording)
+    {
+        "question": "Ben asks each classmate: 'What is your favorite color?' What topic is Ben collecting data about in this interview?",
+        "answer": "favorite color",
+        "distractors": ["favorite food", "how old classmates are", "favorite pet"],
+    },
+    {
+        "question": "Ella asks each friend: 'What pet do you have at home?' What is Ella collecting data about?",
+        "answer": "pets at home",
+        "distractors": ["favorite toy", "favorite drink", "bedtime"],
+    },
+    {
+        "question": "Dan asks each pupil: 'What is your favorite snack?' What information is Dan collecting in this interview?",
+        "answer": "favorite snack",
+        "distractors": ["number of bags", "favorite game", "favorite color"],
+    },
+    # 3. Recording Interview Responses (Tallying and listing)
+    {
+        "question": "During an interview, 3 classmates answered 'dog'. How should you record 3 tally marks for 'dog'?",
+        "answer": "|||",
+        "distractors": ["||", "||||", "|"],
+    },
+    {
+        "question": "During an interview, 4 classmates answered 'red'. How should you record 4 tally marks for 'red'?",
+        "answer": "||||",
+        "distractors": ["|||", "||", "|||||"],
+    },
+    {
+        "question": "In an interview, you ask 4 friends for their favorite fruit: Kim says Apple, Ben says Mango, Dan says Apple, Joy says Apple. How many votes did Apple get?",
+        "answer": "3",
+        "distractors": ["1", "4", "2"],
+    },
+    {
+        "question": "Rico conducts an interview with 4 classmates: Ana chose blue, Leo chose red, Sam chose blue, Mia chose blue. How many times was 'blue' collected in the interview?",
+        "answer": "3",
+        "distractors": ["1", "4", "2"],
+    },
+    {
+        "question": "Tina asks 5 friends their favorite pet: 2 say Cat, 3 say Dog. How should Tina record the data in her interview list?",
+        "answer": "Cat: 2, Dog: 3",
+        "distractors": ["Cat: 3, Dog: 2", "Cat: 5, Dog: 0", "Cat: 1, Dog: 4"],
+    },
+    # 4. Conducting Interview Procedures
+    {
+        "question": "To collect data from 5 classmates about their favorite sport, what is the best way to do a simple interview?",
+        "answer": "Ask each classmate one by one and record their answers.",
+        "distractors": [
+            "Guess what each classmate likes without asking.",
+            "Count the number of balls in the gym.",
+            "Measure the height of the classroom door.",
+        ],
+    },
+    {
+        "question": "Liza is conducting a simple interview. She asks: 'What is your favorite fruit?' What should Liza do right after a friend answers 'mango'?",
+        "answer": "Record 'mango' on her interview data sheet.",
+        "distractors": [
+            "Erase all previous answers.",
+            "Stop asking and leave the room.",
+            "Change her friend's answer to apple.",
+        ],
+    },
+    {
+        "question": "If you want to collect data about what shoes your classmates wear to school, whom should you interview?",
+        "answer": "your classmates",
+        "distractors": ["the birds outside", "the classroom walls", "the desks"],
+    },
+    {
+        "question": "Paul asks 4 pupils for their favorite fruit. Which of these is a response collected from this interview?",
+        "answer": "banana",
+        "distractors": ["20 pesos", "7 o'clock", "triangle"],
+    },
+]
+
 
 # ─── parameter generator ──────────────────────────────────────────────────────
 
@@ -184,13 +280,25 @@ def generate_params(
     if scale_type == "with_or_without_scale":
         scale_type = rng.choice(["no_scale", "scale_2", "scale_5", "scale_10"])
 
-    task_type = extract_discrete_level(profile, "task_type", ["read_single", "compare_two", "find_total", "find_difference", "organize_table", "present_data"], "read_value")
+    task_type = extract_discrete_level(profile, "task_type", ["read_single", "compare_two", "find_total", "find_difference", "organize_table", "present_data", "collect_interview"], "read_value")
     if task_type == "present_or_organize":
         task_type = rng.choice(["present_data", "organize_table"])
     if task_type == "tabular_and_pictograph":
         task_type = rng.choice(["read_table", "read_value", "compare_two", "find_total", "find_difference"])
     if task_type == "read_or_compare":
         task_type = rng.choice(["read_value", "compare_two", "find_total", "find_difference"])
+
+    if task_type == "collect_interview":
+        item = _INTERVIEW_POOL[seed % len(_INTERVIEW_POOL)]
+        return {
+            "blank_target": "answer",
+            "question": item["question"],
+            "answer": item["answer"],
+            "distractors": list(item["distractors"]),
+            "task_type": "collect_interview",
+            "scale_type": "no_scale",
+            "scale": 1,
+        }
 
     # Determine scale
     if scale_type == "no_scale" or grade == 1:
@@ -420,6 +528,13 @@ def generate_hints(
     scale       = values.get("scale", 1)
     task_type   = values.get("task_type", "read_value")
 
+    if task_type == "collect_interview":
+        return [
+            "Read the interview question or results carefully.",
+            "Find the votes or answers counted for each choice.",
+            "Answer what the interview shows.",
+        ]
+
     if task_type == "read_table":
         chart_word = "table" if "table" in cumulative_vocab else "chart"
         cat = values.get("question_category", "the category")
@@ -485,7 +600,7 @@ PICTOGRAPHS_DNA = DNA(
     answer_formula=None,
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,
-    compatible_formatters=["bar_chart_read", "pictograph_read", "pictograph_set", "fill_in_table", "table_read"],
+    compatible_formatters=["bar_chart_read", "pictograph_read", "pictograph_set", "fill_in_table", "table_read", "mcq"],
     requires_context=False,
     visual_home="BarChart",
     difficulty_axes=_DIFFICULTY_AXES,

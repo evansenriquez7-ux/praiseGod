@@ -1261,6 +1261,8 @@ def _build_symbolic_question(
 
     # ── Data / probability ────────────────────────────────────────────────────
     if concept == "pictographs":
+        if values.get("question"):
+            return values["question"]
         category = values.get("category", "item")
         count = values.get("count", a)
         pg_lbl = VocabGated("pictograph", "pictograph", "picture graph").resolve(cumulative_vocab)

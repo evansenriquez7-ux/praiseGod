@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g1_dp_q3_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (dp pictographs re-review), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1-DP-Q3-Harden-v2 (mat_g1_dp_q3_0), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items effectively assess the student's understanding of how to collect data via an interview, including identifying the variable, the process of interviewing, and recording the responses. Questions such as \"what is the best way to do a simple interview?\" directly evaluate the core competency."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The generated samples cover multiple facets of the competency. They address identifying the target audience (\"whom should you interview?\"\\), recognizing the data variable (\"What topic is Ben collecting data about\"\\), executing the interview process (\"What should Liza do right after a friend answers 'mango'?\"\\), and recording the collected data (\"How should Tina record the data\"\\)."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The scenarios and vocabulary are perfectly suited for Grade 1. The items use highly relatable contexts like favorite fruits, colors, and pets. The quantities involved are small (e.g., \"4 classmates\" or \"5 friends\"\\), ensuring that the cognitive focus remains on the data collection concept rather than arithmetic."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample set provides excellent variety. It includes counting occurrences from raw data (\"How many times was 'blue' collected\"\\), determining the methodology (\"what is the best way to do a simple interview?\"\\), identifying the data topic (\"What information is Dan collecting\"\\), and recognizing tally marks (\"record 4 tally marks\"\\)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All questions strictly adhere to the single-variable constraint and the 'simple interview' method specified in the MATATAG curriculum. No items drift into multi-variable data, complex surveys, or advanced graph interpretation."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The distractors are well-crafted and age-appropriate for Grade 1. They offer clear, distinct, and sometimes deliberately absurd choices that test genuine comprehension without being confusing (e.g., choosing to interview 'the desks' instead of classmates, or selecting 'Erase all previous answers.')."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -13,431 +39,288 @@
     501,
     502,
     600,
-    601,
-    603,
-    604,
-    605,
-    606
+    601
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. How many pupils chose dogs?",
-      "correct_answer": "C",
+      "formatter": "mcq",
+      "question_text": "Rico conducts an interview with 4 classmates: Ana chose blue, Leo chose red, Sam chose blue, Mia chose blue. How many times was 'blue' collected in the interview?",
+      "correct_answer": "3",
       "options": [
         {
           "key": "A",
-          "value": 5,
+          "value": "1",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 4,
+          "value": "4",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 3,
+          "value": "3",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 2,
+          "value": "2",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. How many apples were counted?",
-      "correct_answer": "B",
+      "formatter": "mcq",
+      "question_text": "Tina asks 5 friends their favorite pet: 2 say Cat, 3 say Dog. How should Tina record the data in her interview list?",
+      "correct_answer": "Cat: 2, Dog: 3",
       "options": [
         {
           "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
+          "value": "Cat: 2, Dog: 3",
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": "Cat: 3, Dog: 2",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 2,
+          "value": "Cat: 5, Dog: 0",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 5,
+          "value": "Cat: 1, Dog: 4",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 44,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. How many daisies are in the garden?",
-      "correct_answer": "D",
+      "formatter": "mcq",
+      "question_text": "To collect data from 5 classmates about their favorite sport, what is the best way to do a simple interview?",
+      "correct_answer": "Ask each classmate one by one and record their answers.",
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "is_correct": false
+          "value": "Ask each classmate one by one and record their answers.",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 1,
+          "value": "Guess what each classmate likes without asking.",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 4,
+          "value": "Count the number of balls in the gym.",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 2,
-          "is_correct": true
+          "value": "Measure the height of the classroom door.",
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. How many books were read on Wednesday?",
-      "correct_answer": "D",
+      "formatter": "mcq",
+      "question_text": "Liza is conducting a simple interview. She asks: 'What is your favorite fruit?' What should Liza do right after a friend answers 'mango'?",
+      "correct_answer": "Record 'mango' on her interview data sheet.",
       "options": [
         {
           "key": "A",
-          "value": 5,
+          "value": "Change her friend's answer to apple.",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 2,
-          "is_correct": false
+          "value": "Record 'mango' on her interview data sheet.",
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": 4,
+          "value": "Erase all previous answers.",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 3,
-          "is_correct": true
+          "value": "Stop asking and leave the room.",
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. How many pupils chose dogs?",
-      "correct_answer": "B",
+      "formatter": "mcq",
+      "question_text": "If you want to collect data about what shoes your classmates wear to school, whom should you interview?",
+      "correct_answer": "your classmates",
       "options": [
         {
           "key": "A",
-          "value": 0,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 1,
+          "value": "your classmates",
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": "the birds outside",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 3,
+          "value": "the desks",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 2,
+          "value": "the classroom walls",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. How many stars were earned by Grade 4?",
-      "correct_answer": "A",
+      "formatter": "mcq",
+      "question_text": "Ben asks each classmate: 'What is your favorite color?' What topic is Ben collecting data about in this interview?",
+      "correct_answer": "favorite color",
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "is_correct": true
+          "value": "how old classmates are",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": 2,
+          "value": "favorite food",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 4,
+          "value": "favorite pet",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 5,
-          "is_correct": false
+          "value": "favorite color",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 501,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. How many books were read on Wednesday?",
-      "correct_answer": "A",
+      "formatter": "mcq",
+      "question_text": "Ella asks each friend: 'What pet do you have at home?' What is Ella collecting data about?",
+      "correct_answer": "pets at home",
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 5,
+          "value": "favorite toy",
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": "pets at home",
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": 2,
+          "value": "favorite drink",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 4,
+          "value": "bedtime",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 502,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. How many pupils play basketball?",
-      "correct_answer": "B",
+      "formatter": "mcq",
+      "question_text": "Dan asks each pupil: 'What is your favorite snack?' What information is Dan collecting in this interview?",
+      "correct_answer": "favorite snack",
       "options": [
         {
           "key": "A",
-          "value": 3,
+          "value": "number of bags",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 2,
+          "value": "favorite snack",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 4,
+          "value": "favorite game",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 1,
+          "value": "favorite color",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 600,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. How many books were read on Monday?",
-      "correct_answer": "B",
+      "formatter": "mcq",
+      "question_text": "During an interview, 4 classmates answered 'red'. How should you record 4 tally marks for 'red'?",
+      "correct_answer": "||||",
       "options": [
         {
           "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
+          "value": "||||",
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": "|||",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 4,
+          "value": "||",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 2,
+          "value": "|||||",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 601,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. How many pupils voted for Art?",
-      "correct_answer": "D",
+      "formatter": "mcq",
+      "question_text": "In an interview, you ask 4 friends for their favorite fruit: Kim says Apple, Ben says Mango, Dan says Apple, Joy says Apple. How many votes did Apple get?",
+      "correct_answer": "3",
       "options": [
         {
           "key": "A",
-          "value": 3,
+          "value": "1",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 2,
+          "value": "4",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 0,
+          "value": "2",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 1,
+          "value": "3",
           "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. How many pupils chose red?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. Which has the most pets: cats, dogs, birds or fish?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": "fish",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "cats",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "birds",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "dogs",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. What is the difference between red and blue?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 0,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 606,
-      "formatter": "read_mcq",
-      "question_text": "Look at the picture graph. What is the total number of fruits shown?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The provided samples ask the user to \"Look at the picture graph.\" rather than to \"Collect data in one variable through a simple interview.\" Therefore, they entirely fail to fulfill the data collection requirement of the competency."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The dataset has zero coverage of the requirement to \"Collect data in one variable through a simple interview.\" Instead, it exclusively tests interpretation of an existing graph."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "While reading values from a picture graph is within a Grade 1 cognitive capacity, this misses the active, constructive cognitive task required to collect data."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "The sample set contains essentially one variant that repeats the prompt \"Look at the picture graph.\" while ignoring the primary simple interview competency."
-    },
-    "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "The materials are completely misaligned with the intended curriculum node. A competency of \"Collect data in one variable through a simple interview.\" is fundamentally distinct from interpreting given graphs."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical values used in the options, such as 3, 5, 12, and 14, are appropriate for a Grade 1 student."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }
