@@ -170,6 +170,8 @@ def _parse_competency_bounds(
         # competency regardless of which node maps to it.
         if "estimate" in text:
             bounds["task_type"] = "estimate"
+            if "4 digits" in text or "4-digit" in text or "up to 4" in text:
+                bounds["max_sum"] = (20, 10000)
 
         # "Add numbers by expressing addends as tens and ones (expanded
         # form)" (mat_g1_na_q2_4) / "...in expanded form" (mat_g2_na_q1_8):

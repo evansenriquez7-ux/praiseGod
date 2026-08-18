@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g3_na_q2_4",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the less-than ceiling fix, 2026-08-14",
-  "review_date": "2026-08-14",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q2-Harden (mat_g3_na_q2_4), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample set fully satisfies the MATATAG learning competency requirement to subtract numbers less than 10 000, both with and without regrouping. Subtraction without regrouping is directly evaluated in items such as 'What is 8413 \u2212 4110?' (seed 43), 'What is 3463 \u2212 60?' (seed 46), and '3377 \u2212 210 = ___' (seed 603). Subtraction with regrouping across multiple place values is robustly assessed in problems such as 'What is 1830 \u2212 1744?' (seed 42), '7222 \u2212 810 = ___' (seed 44), '880 \u2212 102 = ___' (seed 45), 'The total is 6398 and one part is 3715. What is the other part?' (seed 500), and 'What is 5609 \u2212 1839?' (seed 502). All operands are non-negative integers strictly under 10 000, directly fulfilling the core mandate."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The items comprehensively cover the domain by assessing diverse digit combinations (4-digit minus 4-digit, 4-digit minus 3-digit, 4-digit minus 2-digit, 3-digit minus 3-digit, and 2-digit minus 2-digit) and varied degrees of regrouping. Problems span regrouping across tens and ones ('What is 1830 \u2212 1744?', seed 42; '880 \u2212 102 = ___', seed 45; '3418 \u2212 3379 = 39. True or False?', seed 501), regrouping across hundreds and thousands ('7222 \u2212 810 = ___', seed 44; 'What is 5609 \u2212 1839?', seed 502; 'What is 5252 \u2212 1800?', seed 600; 'What is 912 \u2212 570?', seed 602), and non-regrouping cases ('What is 8413 \u2212 4110?', seed 43; 'What is 5325 \u2212 4220?', seed 604). Furthermore, problems evaluate counting backward along a continuum ('The dot is at 7042 and it moves backward 6900 numbers. Starting from 7042, just count back 6900 numbers. Which number will the dot land on?', seed 50) and part-part-whole relationships ('The total is 1389 and one part is 1170. What is the other part?', seed 55)."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The linguistic and structural presentation is developmentally well-calibrated for Grade 3 Quarter 2 learners. Sentences are succinct and avoid excessive syntactic or lexical overhead. Number line concepts are clearly articulated in child-friendly language ('The dot is at 152 and it moves backward 110 numbers. Starting from 152, just count back 110 numbers. Which number will the dot land on?', seed 605), while part-whole reasoning is cleanly structured without ambiguous phrasing ('The total is 6398 and one part is 3715. What is the other part?', seed 500). Word problems present intuitive, everyday contexts ('Pia has 18 water bowls. A friend has 10 water bowls. How many more water bowls does Pia have than the friend?', seed 601) that remain well within early primary reading and cognitive capacity."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The packet exhibits strong pedagogical variety across multiple item archetypes and formatters. It encompasses direct multiple-choice arithmetic ('What is 5609 \u2212 1839?', seed 502; 'What is 912 \u2212 570?', seed 602), standard cloze equation completion ('7222 \u2212 810 = ___', seed 44; '3377 \u2212 210 = ___', seed 603), conceptual movement along a number line ('The dot is at 7042 and it moves backward 6900 numbers. Starting from 7042, just count back 6900 numbers. Which number will the dot land on?', seed 50), error detection diagnosing common place-value misconceptions ('Ana solved: \"542 \u2212 20 = ___\". Ana says the missing number is 562. Is Ana correct?', seed 51), part-whole relational missing-addend/subtraction items ('The total is 1389 and one part is 1170. What is the other part?', seed 55), true/false identity verification ('903 \u2212 300 = 603. True or False?', seed 85; '3418 \u2212 3379 = 39. True or False?', seed 501), and comparative word problems ('Pia has 18 water bowls. A friend has 10 water bowls. How many more water bowls does Pia have than the friend?', seed 601)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All 18 items strictly conform to the exact parameters of mat_g3_na_q2_4. Every minuend and subtrahend is strictly less than 10 000, and minuends are uniformly greater than subtrahends, ensuring differences remain within positive whole numbers. The items focus squarely on subtraction with and without regrouping without straying into out-of-scope operations or premature upper-grade concepts. Items such as 'What is 3463 \u2212 60?' (seed 46) and '3418 \u2212 3379 = 39. True or False?' (seed 501) precisely assess the target computational and conceptual skills."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical scale is tightly bounded within the specified limit (< 10 000) and displays an appropriate distribution across the 100 to 9 999 domain. Minuends reach realistically up to high 4-digit numbers ('What is 8413 \u2212 4110?', seed 43; '7222 \u2212 810 = ___', seed 44; 'The dot is at 7042 and it moves backward 6900 numbers. Starting from 7042, just count back 6900 numbers. Which number will the dot land on?', seed 50; 'The total is 6398 and one part is 3715. What is the other part?', seed 500) while also sampling lower multi-digit numbers ('880 \u2212 102 = ___', seed 45; 'The dot is at 152 and it moves backward 110 numbers. Starting from 152, just count back 110 numbers. Which number will the dot land on?', seed 605). The scale balances mental subtraction across round tens/hundreds with multi-step column regrouping across 4-digit values."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -27,183 +54,43 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 1830 − 1744?",
-      "correct_answer": 86,
-      "options": [
-        {
-          "key": "A",
-          "value": 3574,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 87,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 86,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 85,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 1830 \u2212 1744?",
+      "correct_answer": 86
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 8413 − 4110?",
-      "correct_answer": 4303,
-      "options": [
-        {
-          "key": "A",
-          "value": 4303,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 4302,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4304,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 12523,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 8413 \u2212 4110?",
+      "correct_answer": 4303
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "7222 − 810 = ___",
-      "correct_answer": 6412,
-      "options": [
-        {
-          "key": "A",
-          "value": 6411,
-          "text": "6411",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8032,
-          "text": "8032",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 6413,
-          "text": "6413",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6412,
-          "text": "6412",
-          "is_correct": true
-        }
-      ]
+      "question_text": "7222 \u2212 810 = ___",
+      "correct_answer": 6412
     },
     {
       "seed": 45,
       "formatter": "cloze",
-      "question_text": "880 − 102 = ___",
-      "correct_answer": 778,
-      "options": [
-        {
-          "key": "A",
-          "value": 779,
-          "text": "779",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 982,
-          "text": "982",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 778,
-          "text": "778",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 777,
-          "text": "777",
-          "is_correct": false
-        }
-      ]
+      "question_text": "880 \u2212 102 = ___",
+      "correct_answer": 778
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is 3463 − 60?",
-      "correct_answer": 3403,
-      "options": [
-        {
-          "key": "A",
-          "value": 3404,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3403,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 3402,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3523,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 3463 \u2212 60?",
+      "correct_answer": 3403
     },
     {
       "seed": 50,
       "formatter": "read_mcq",
       "question_text": "The dot is at 7042 and it moves backward 6900 numbers. Starting from 7042, just count back 6900 numbers. Which number will the dot land on?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 13942,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 142,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 143,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 141,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "B"
     },
     {
       "seed": 51,
       "formatter": "error_detect",
-      "question_text": "Ana says: 542 − 20 = 562. Is Ana correct?",
+      "question_text": "Ana solved: \"542 \u2212 20 = ___\". Ana says the missing number is 562. Is Ana correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 522
@@ -218,7 +105,7 @@
     {
       "seed": 85,
       "formatter": "true_false",
-      "question_text": "903 − 300 = 603. True or False?",
+      "question_text": "903 \u2212 300 = 603. True or False?",
       "correct_answer": true
     },
     {
@@ -230,239 +117,50 @@
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "3418 − 3379 = 39. True or False?",
+      "question_text": "3418 \u2212 3379 = 39. True or False?",
       "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 5609 − 1839?",
-      "correct_answer": 3770,
-      "options": [
-        {
-          "key": "A",
-          "value": 7448,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3770,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 3771,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3769,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 5609 \u2212 1839?",
+      "correct_answer": 3770
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 5252 − 1800?",
-      "correct_answer": 3452,
-      "options": [
-        {
-          "key": "A",
-          "value": 7052,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3451,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3452,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 3453,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 5252 \u2212 1800?",
+      "correct_answer": 3452
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "In a pictograph, Pia's group collected 18 leashes and another group collected 10 leashes. How many more did Pia's group collect?",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 28,
-          "text": "28",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "text": "8",
-          "is_correct": true
-        }
-      ]
+      "question_text": "Pia has 18 water bowls. A friend has 10 water bowls. How many more water bowls does Pia have than the friend?",
+      "correct_answer": 8
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is 912 − 570?",
-      "correct_answer": 342,
-      "options": [
-        {
-          "key": "A",
-          "value": 342,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 343,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1482,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 341,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 912 \u2212 570?",
+      "correct_answer": 342
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "3377 − 210 = ___",
-      "correct_answer": 3167,
-      "options": [
-        {
-          "key": "A",
-          "value": 3168,
-          "text": "3168",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3167,
-          "text": "3167",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 3587,
-          "text": "3587",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3166,
-          "text": "3166",
-          "is_correct": false
-        }
-      ]
+      "question_text": "3377 \u2212 210 = ___",
+      "correct_answer": 3167
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 5325 − 4220?",
-      "correct_answer": 1105,
-      "options": [
-        {
-          "key": "A",
-          "value": 1105,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 1104,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 9545,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1106,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 5325 \u2212 4220?",
+      "correct_answer": 1105
     },
     {
       "seed": 605,
       "formatter": "read_mcq",
       "question_text": "The dot is at 152 and it moves backward 110 numbers. Starting from 152, just count back 110 numbers. Which number will the dot land on?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 42,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 262,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 41,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 43,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "A"
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All 18 samples are subtractions of two whole numbers below 10 000, and the arithmetic verifies in every case: seed 43 'What is 8413 − 4110?' gives 4303, seed 502 'What is 5609 − 1839?' gives 3770, seed 500 'The total is 6398 and one part is 3715. What is the other part?' gives 2683, and seed 51 'Ana says: 542 − 20 = 562. Is Ana correct?' is flagged wrong with the corrected value 522. Nothing asks for an operation outside the sentence."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both regrouping cases are present and easy to point at. With regrouping: seed 42 'What is 1830 − 1744?' answering 86, seed 45 '880 − 102 = ___' answering 778, and seed 501 '3418 − 3379 = 39. True or False?'. Without regrouping: seed 46 'What is 3463 − 60?', seed 603 '3377 − 210 = ___', seed 604 'What is 5325 − 4220?', and seed 85 '903 − 300 = 603. True or False?'. Part-whole and count-back framings also appear."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Four-digit subtraction is the right load for grade 3 quarter 2, and each item stays at one operation. Seed 50 'The dot is at 7042 and it moves backward 6900 numbers. Starting from 7042, just count back 6900 numbers. Which number will the dot land on?' keeps the count manageable by using a round jump, and seed 55 'The total is 1389 and one part is 1170. What is the other part?' uses part and whole wording without any symbolic unknown."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Six formatters are represented: mcq (seed 43), cloze (seed 44 '7222 − 810 = ___'), true_false (seed 501), error_detect (seed 51 'Ana says: 542 − 20 = 562. Is Ana correct?'), read_mcq (seed 605 'The dot is at 152 and it moves backward 110 numbers.') and read_fill_in_blank (seed 500). One contextual item, seed 601, adds a comparison framing with 'collected 18 leashes and another group collected 10 leashes'. Distractors combine near neighbours with a sum trap."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every sample sits on the subtraction verb and never reaches past it into multiplication or algebraic notation. Answerability is intact: the two fill-in items, seed 55 'The total is 1389 and one part is 1170. What is the other part?' and seed 500, both state the whole and one part before asking for the other, and each cloze blank falls on the result, as in seed 603 '3377 − 210 = ___', never on a number the solver needs."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest operand found is 8413 in seed 43 'What is 8413 − 4110?', followed by 7222 in seed 44 and 7042 in seed 50; all are below 10 000, so the literal bound holds. Numbers above the ceiling appear only as distractor options, namely 13942 in seed 50, 12523 in seed 43 and 9545 in seed 604, none of which is an operand. The small end, seed 601 with 'collected 18 leashes and another group collected 10 leashes' and seed 605 'The dot is at 152 and it moves backward 110 numbers.', is light for grade 3 but is two items out of eighteen across a ladder that reaches 8413."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

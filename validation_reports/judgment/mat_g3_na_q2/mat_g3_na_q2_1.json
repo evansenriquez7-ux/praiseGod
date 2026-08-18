@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g3_na_q2_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B7b (g3 na_q2 + na_q3_0-3), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q2-Harden (mat_g3_na_q2_1), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample set fully satisfies the MATATAG learning competency 'Add numbers with sums up to 10 000, with and without regrouping.' by assessing addition across 2-digit, 3-digit, and 4-digit addends with sums up to 10,000, as demonstrated in 4-digit problems like \"What is 9021 + 757?\" and \"7361 + 2510 = 9871. True or False?\", 3-digit problems like \"What is 114 + 10?\", and identity property addition like \"What is 146 + 0?\"."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The items span a comprehensive range of representations and cognitive modalities including direct arithmetic equations (\"110 + 45 = ___\"), number line models (\"Show 90 + 108 on the number line.\" and \"The dot is at 150 and it moves forward 7 numbers. Starting from 150, just count up 7 numbers. Which number will the dot land on?\"), part-part-whole reasoning (\"The two parts are 10 and 115. What is the sum?\"), and contextual word problems (\"Pia has 208 water bowls. A friend has 0 water bowls. If they put all their water bowls together, how many water bowls do they have in all?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The reading level, structural framing, and question complexity are well-calibrated for Grade 3 Quarter 2 students. Item prompts are concise and clear, avoiding extraneous cognitive load or non-target vocabulary, as seen in \"The two parts are 9093 and 700. What is the sum?\" and \"What is 120 + 72?\"."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The generator produces a diverse array of response formats and prompt variants, spanning standard multiple-choice (\"What is 127 + 30?\"), cloze fill-in (\"143 + 0 = ___\"), truth verification (\"44 + 0 = 54. True or False?\"), interactive number line placement (\"Show 114 + 130 on the number line.\"), and part-whole sum identification (\"The two parts are 9093 and 700. What is the sum?\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All generated items directly assess whole number addition within the MATATAG curriculum bounds for this competency without introducing out-of-scope operations such as multiplication or division. Questions like \"What is 130 + 11?\" and \"240 + 4 = ___\" align precisely with the learning standard."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical values strictly conform to the Grade 3 Quarter 2 scale, spanning from 2- and 3-digit operations (\"109 + 30 = ___\") up to large 4-digit sums approaching 10 000 such as \"7361 + 2510 = 9871. True or False?\" (sum 9871) and \"The two parts are 9093 and 700. What is the sum?\" (sum 9793), without exceeding the 10 000 ceiling."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -19,439 +46,128 @@
     502,
     600,
     601,
+    602,
     603,
     604,
-    606,
-    607
+    605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 89 + 134?",
-      "correct_answer": 223,
-      "options": [
-        {
-          "key": "A",
-          "value": 233,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 224,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 223,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 222,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 146 + 0?",
+      "correct_answer": 146
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 130 + 40?",
-      "correct_answer": 170,
-      "options": [
-        {
-          "key": "A",
-          "value": 170,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 180,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 169,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 90,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 114 + 10?",
+      "correct_answer": 124
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "145 + 60 = ___",
-      "correct_answer": 205,
-      "options": [
-        {
-          "key": "A",
-          "value": 215,
-          "text": "215",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 85,
-          "text": "85",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 204,
-          "text": "204",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 205,
-          "text": "205",
-          "is_correct": true
-        }
-      ]
+      "question_text": "110 + 45 = ___",
+      "correct_answer": 155
     },
     {
       "seed": 45,
       "formatter": "cloze",
-      "question_text": "90 + 155 = ___",
-      "correct_answer": 245,
-      "options": [
-        {
-          "key": "A",
-          "value": 246,
-          "text": "246",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 255,
-          "text": "255",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 245,
-          "text": "245",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 244,
-          "text": "244",
-          "is_correct": false
-        }
-      ]
+      "question_text": "109 + 30 = ___",
+      "correct_answer": 139
     },
     {
       "seed": 46,
       "formatter": "cloze",
-      "question_text": "47 + 150 = ___",
-      "correct_answer": 197,
-      "options": [
-        {
-          "key": "A",
-          "value": 198,
-          "text": "198",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 197,
-          "text": "197",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 196,
-          "text": "196",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 207,
-          "text": "207",
-          "is_correct": false
-        }
-      ]
+      "question_text": "240 + 4 = ___",
+      "correct_answer": 244
     },
     {
       "seed": 50,
       "formatter": "set_fill_in_blank",
-      "question_text": "Show 50 + 190 on the number line.",
-      "correct_answer": 240
+      "question_text": "Show 90 + 108 on the number line.",
+      "correct_answer": 198
     },
     {
       "seed": 51,
       "formatter": "read_mcq",
       "question_text": "The dot is at 150 and it moves forward 7 numbers. Starting from 150, just count up 7 numbers. Which number will the dot land on?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 156,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 167,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 157,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 143,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "C"
     },
     {
       "seed": 55,
       "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 240 and 3. What is the sum?",
-      "correct_answer": 243
+      "question_text": "The two parts are 10 and 115. What is the sum?",
+      "correct_answer": 125
     },
     {
       "seed": 75,
       "formatter": "true_false",
-      "question_text": "71 + 90 = 171. True or False?",
+      "question_text": "44 + 0 = 54. True or False?",
       "correct_answer": false
     },
     {
       "seed": 82,
       "formatter": "error_detect",
-      "question_text": "Dante says: 80 + 110 = 190. Is Dante correct?",
+      "question_text": "Dante solved: \"13 + 210 = ___\". Dante says the missing number is 223. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
-        "correct_value": 190
+        "correct_value": 223
       }
     },
     {
       "seed": 500,
       "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 8080 and 1131. What is the sum?",
-      "correct_answer": 9211
+      "question_text": "The two parts are 9093 and 700. What is the sum?",
+      "correct_answer": 9793
     },
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "247 + 7696 = 7943. True or False?",
+      "question_text": "7361 + 2510 = 9871. True or False?",
       "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 6346 + 2691?",
-      "correct_answer": 9037,
-      "options": [
-        {
-          "key": "A",
-          "value": 3655,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9037,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 9036,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 9047,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 9021 + 757?",
+      "correct_answer": 9778
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 60 + 163?",
-      "correct_answer": 223,
-      "options": [
-        {
-          "key": "A",
-          "value": 233,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 222,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 223,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 224,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 130 + 11?",
+      "correct_answer": 141
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "What is 210 + 7?",
-      "correct_answer": 217,
-      "options": [
-        {
-          "key": "A",
-          "value": 227,
-          "text": "227",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 203,
-          "text": "203",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 216,
-          "text": "216",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 217,
-          "text": "217",
-          "is_correct": true
-        }
-      ]
+      "question_text": "Pia has 208 water bowls. A friend has 0 water bowls. If they put all their water bowls together, how many water bowls do they have in all?",
+      "correct_answer": 208
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 127 + 30?",
+      "correct_answer": 157
     },
     {
       "seed": 603,
       "formatter": "cloze",
       "question_text": "143 + 0 = ___",
-      "correct_answer": 143,
-      "options": [
-        {
-          "key": "A",
-          "value": 144,
-          "text": "144",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 143,
-          "text": "143",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 153,
-          "text": "153",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 142,
-          "text": "142",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 143
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 180 + 61?",
-      "correct_answer": 241,
-      "options": [
-        {
-          "key": "A",
-          "value": 241,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 251,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 119,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 240,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 120 + 72?",
+      "correct_answer": 192
     },
     {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "What is 173 + 57?",
-      "correct_answer": 230,
-      "options": [
-        {
-          "key": "A",
-          "value": 230,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 116,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 240,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 229,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 607,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 195 and 45. What is the sum?",
-      "correct_answer": 240
+      "seed": 605,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 114 + 130 on the number line.",
+      "correct_answer": 244
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples are direct addition computations across formatters, e.g. seed42's mcq \"What is 89 + 134?\" and seed44's cloze \"145 + 60 = ___\", matching the competency's plain addition-of-numbers wording without introducing an unrelated operation."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both regrouping and non-regrouping cases appear: seed42's \"89 + 134\" carries in the ones column, while seed603's \"143 + 0 = ___\" needs no carrying, so with-and-without regrouping is represented."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Vocabulary stays at simple sum/parts language, e.g. seed500's read_fill_in_blank \"The two parts are 8080 and 1131. What is the sum?\", appropriate for Grade 3 without introducing multiplication or fractions."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Formatters vary widely: mcq, cloze, a number-line set_fill_in_blank (seed50), a read_mcq counting-forward item (seed51), read_fill_in_blank part-sum, true_false, and error_detect, giving several distinct ways of engaging the same addition skill."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Difficulty scales through larger sums and more regrouping steps rather than an unrelated skill; seed500's \"8080 and 1131\" pushes toward the stated ceiling while remaining pure addition."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest sums generated, seed500's 9211 and seed502's 9037, approach the stated \"sums up to 10 000\" ceiling without exceeding it."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

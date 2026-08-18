@@ -730,14 +730,10 @@ def generate_params(
             return n - remainder
 
         from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
-        # est_min=1 (not 10): front-end rounding to each addend's OWN
-        # leading place already no-ops naturally for single-digit values
-        # (round_to=10**0=1), so no artificial floor is needed -- and one
-        # is actively harmful at a low max_sum ceiling (the §1A scalar-0.0
-        # sweep can drive max_result down to single digits, where a
-        # floor of 10 makes every candidate's rounded sum structurally
-        # exceed the ceiling).
-        est_min = 1
+        # est_min=10 when max_result >= 20: below 10, "round to the nearest ten"
+        # is a no-op that produces degenerate 1-digit addends. For scalar sweeps
+        # with tiny max_result, fall back to 1.
+        est_min = 10 if max_result >= 20 else 1
         est_max = max(est_min + 1, min(max_result, 9999))
         candidates = []
         attempts = 0
