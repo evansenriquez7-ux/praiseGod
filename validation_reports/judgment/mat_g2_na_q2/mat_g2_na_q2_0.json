@@ -1,68 +1,189 @@
 {
   "node_id": "mat_g2_na_q2_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch C12 (post-fix re-review, g2 money value), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q2-Harden (mat_g2_na_q2_0), 2026-08-18",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 50, 55, 72, 500, 501, 502, 601, 602, 603, 604],
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items evaluate calculating total monetary values across centavo coins only (e.g., 'What is the total value of 6 50\u00a2 coins and 2 25\u00a2 coins, in centavos?'), peso coins only (e.g., 'What is the total value of 1 \u20b15 coin and 1 \u20b11 coin?'), peso bills only (e.g., 'Find the total amount of 2 \u20b120 bills:'), and combinations of bills and coins (e.g., 'Use coins and bills to make exactly \u20b1125. Use the fewest pieces possible.')."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "All four specific sub-cases identified in the competency text are represented across the sample set: centavo coins only ('How much is 6 50\u00a2 coins and 4 25\u00a2 coins altogether, in centavos?'), peso coins only ('What is the total value of 1 \u20b110 coin and 3 \u20b11 coins?'), peso bills only ('What is the total value of 1 \u20b1500 bill, 1 \u20b1200 bill, 1 \u20b1100 bill, and 1 \u20b150 bill?'), and combined currency pieces ('Use coins and bills to make exactly \u20b1801. Use the fewest pieces possible.')."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The instructions are brief, direct, and utilize accessible phrasing suitable for Grade 2 pupils (e.g., 'Find the total amount of 1 \u20b110 coin and 1 \u20b11 coin:' and 'Count the coins and bills shown. What is the total amount?'). No extraneous narrative complexity or premature multi-step word problems are introduced."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The generator exercises multiple interactive formats including standard multiple-choice ('Find the total amount of 2 \u20b120 bills:'), cloze completion ('How much is 2 \u20b1500 bills altogether?'), visual reading ('Count the coins and bills shown. What is the total amount?'), and constructive denomination composition ('Use coins and bills to make exactly \u20b1125. Use the fewest pieces possible.')."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Difficulty scaling increases the number and denominations of currency pieces (such as adding multiple large bills in 'What is the total value of 1 \u20b1500 bill, 1 \u20b1200 bill, 1 \u20b1100 bill, and 1 \u20b150 bill?' or combining multi-digit denominations in 'What is the total value of 2 \u20b110 coins and 3 \u20b11 coins?') without introducing unintroduced decimal operations or commercial transaction algorithms."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All values strictly adhere to the MATATAG ceiling of \u20b11000, as demonstrated by the maximum boundary case 'How much is 2 \u20b1500 bills altogether?' yielding 1000, and mid-range combinations such as 'Use coins and bills to make exactly \u20b1801. Use the fewest pieces possible.'."
+    }
+  },
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    50,
+    55,
+    72,
+    500,
+    501,
+    502,
+    601,
+    602,
+    603
+  ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is the total value of 6 50¢ coins and 2 25¢ coins, in centavos?",
+      "question_text": "What is the total value of 6 50\u00a2 coins and 2 25\u00a2 coins, in centavos?",
       "correct_answer": 350,
       "options": [
-        {"key": "A", "value": 351, "is_correct": false},
-        {"key": "B", "value": 3500, "is_correct": false},
-        {"key": "C", "value": 350, "is_correct": true},
-        {"key": "D", "value": 340, "is_correct": false}
+        {
+          "key": "A",
+          "value": 351,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3500,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 350,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 340,
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is the total value of 6 50¢ coins and 4 25¢ coins, in centavos?",
+      "question_text": "How much is 6 50\u00a2 coins and 4 25\u00a2 coins altogether, in centavos?",
       "correct_answer": 400,
       "options": [
-        {"key": "A", "value": 400, "is_correct": true},
-        {"key": "B", "value": 390, "is_correct": false},
-        {"key": "C", "value": 4000, "is_correct": false},
-        {"key": "D", "value": 401, "is_correct": false}
+        {
+          "key": "A",
+          "value": 400,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 390,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 4000,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 401,
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 ₱5 coin and 1 ₱1 coin?",
+      "question_text": "What is the total value of 1 \u20b15 coin and 1 \u20b11 coin?",
       "correct_answer": 6,
       "options": [
-        {"key": "A", "value": 60, "is_correct": false},
-        {"key": "B", "value": 7, "is_correct": false},
-        {"key": "C", "value": 5, "is_correct": false},
-        {"key": "D", "value": 6, "is_correct": true}
+        {
+          "key": "A",
+          "value": 60,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": true
+        }
       ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What is the total value of 2 ₱20 bills?",
+      "question_text": "Find the total amount of 2 \u20b120 bills:",
       "correct_answer": 40,
       "options": [
-        {"key": "A", "value": 400, "is_correct": false},
-        {"key": "B", "value": 41, "is_correct": false},
-        {"key": "C", "value": 40, "is_correct": true},
-        {"key": "D", "value": 30, "is_correct": false}
+        {
+          "key": "A",
+          "value": 400,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 41,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 40,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 30,
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is the total value of 6 50¢ coins and 2 25¢ coins, in centavos?",
+      "question_text": "What is the total value of 6 50\u00a2 coins and 2 25\u00a2 coins, in centavos?",
       "correct_answer": 350,
       "options": [
-        {"key": "A", "value": 3500, "is_correct": false},
-        {"key": "B", "value": 350, "is_correct": true},
-        {"key": "C", "value": 340, "is_correct": false},
-        {"key": "D", "value": 351, "is_correct": false}
+        {
+          "key": "A",
+          "value": 3500,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 350,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 340,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 351,
+          "is_correct": false
+        }
       ]
     },
     {
@@ -71,134 +192,219 @@
       "question_text": "Count the coins and bills shown. What is the total amount?",
       "correct_answer": "A",
       "options": [
-        {"key": "A", "value": 12, "is_correct": true},
-        {"key": "B", "value": 22, "is_correct": false},
-        {"key": "C", "value": 2, "is_correct": false},
-        {"key": "D", "value": 17, "is_correct": false}
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 22,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 17,
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 55,
       "formatter": "set_fill_in_blank",
-      "question_text": "Use coins and bills to make exactly ₱125. Use the fewest pieces possible.",
+      "question_text": "Use coins and bills to make exactly \u20b1125. Use the fewest pieces possible.",
       "correct_answer": 125
     },
     {
       "seed": 72,
       "formatter": "cloze",
-      "question_text": "What is the total value of 3 50¢ coins and 5 25¢ coins, in centavos?",
+      "question_text": "How much is 3 50\u00a2 coins and 5 25\u00a2 coins altogether, in centavos?",
       "correct_answer": 275,
       "options": [
-        {"key": "A", "value": 275, "text": "275", "is_correct": true},
-        {"key": "B", "value": 265, "text": "265", "is_correct": false},
-        {"key": "C", "value": 2750, "text": "2750", "is_correct": false},
-        {"key": "D", "value": 276, "text": "276", "is_correct": false}
+        {
+          "key": "A",
+          "value": 275,
+          "text": "275",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 265,
+          "text": "265",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2750,
+          "text": "2750",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 276,
+          "text": "276",
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Use coins and bills to make exactly ₱801. Use the fewest pieces possible.",
+      "question_text": "Use coins and bills to make exactly \u20b1801. Use the fewest pieces possible.",
       "correct_answer": 801
     },
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "What is the total value of 2 ₱500 bills?",
+      "question_text": "How much is 2 \u20b1500 bills altogether?",
       "correct_answer": 1000,
       "options": [
-        {"key": "A", "value": 1000, "text": "1000", "is_correct": true},
-        {"key": "B", "value": 10000, "text": "10000", "is_correct": false},
-        {"key": "C", "value": 990, "text": "990", "is_correct": false},
-        {"key": "D", "value": 1001, "text": "1001", "is_correct": false}
+        {
+          "key": "A",
+          "value": 1000,
+          "text": "1000",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10000,
+          "text": "10000",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 990,
+          "text": "990",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1001,
+          "text": "1001",
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 ₱500 bill, 1 ₱200 bill, 1 ₱100 bill, and 1 ₱50 bill?",
+      "question_text": "What is the total value of 1 \u20b1500 bill, 1 \u20b1200 bill, 1 \u20b1100 bill, and 1 \u20b150 bill?",
       "correct_answer": 850,
       "options": [
-        {"key": "A", "value": 851, "is_correct": false},
-        {"key": "B", "value": 850, "is_correct": true},
-        {"key": "C", "value": 8500, "is_correct": false},
-        {"key": "D", "value": 840, "is_correct": false}
+        {
+          "key": "A",
+          "value": 851,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 850,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 8500,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 840,
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "What is the total value of 1 ₱10 coin and 3 ₱1 coins?",
+      "question_text": "What is the total value of 1 \u20b110 coin and 3 \u20b11 coins?",
       "correct_answer": 13,
       "options": [
-        {"key": "A", "value": 3, "text": "3", "is_correct": false},
-        {"key": "B", "value": 14, "text": "14", "is_correct": false},
-        {"key": "C", "value": 130, "text": "130", "is_correct": false},
-        {"key": "D", "value": 13, "text": "13", "is_correct": true}
+        {
+          "key": "A",
+          "value": 3,
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 14,
+          "text": "14",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 130,
+          "text": "130",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "text": "13",
+          "is_correct": true
+        }
       ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 ₱10 coin and 1 ₱1 coin?",
+      "question_text": "Find the total amount of 1 \u20b110 coin and 1 \u20b11 coin:",
       "correct_answer": 11,
       "options": [
-        {"key": "A", "value": 11, "is_correct": true},
-        {"key": "B", "value": 110, "is_correct": false},
-        {"key": "C", "value": 12, "is_correct": false},
-        {"key": "D", "value": 1, "is_correct": false}
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 110,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
       ]
     },
     {
       "seed": 603,
-      "formatter": "cloze",
-      "question_text": "What is the total value of 2 ₱10 coins and 3 ₱1 coins?",
+      "formatter": "mcq",
+      "question_text": "What is the total value of 2 \u20b110 coins and 3 \u20b11 coins?",
       "correct_answer": 23,
       "options": [
-        {"key": "A", "value": 230, "text": "230", "is_correct": false},
-        {"key": "B", "value": 23, "text": "23", "is_correct": true},
-        {"key": "C", "value": 24, "text": "24", "is_correct": false},
-        {"key": "D", "value": 13, "text": "13", "is_correct": false}
-      ]
-    },
-    {
-      "seed": 604,
-      "formatter": "mcq",
-      "question_text": "What is the total value of 1 50¢ coin and 1 25¢ coin, in centavos?",
-      "correct_answer": 75,
-      "options": [
-        {"key": "A", "value": 75, "is_correct": true},
-        {"key": "B", "value": 65, "is_correct": false},
-        {"key": "C", "value": 76, "is_correct": false},
-        {"key": "D", "value": 750, "is_correct": false}
+        {
+          "key": "A",
+          "value": 230,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 23,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 24,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 13,
+          "is_correct": false
+        }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "13 of 15 samples ask students to compute a total from given pieces, matching \"Determine and write the value\", but seeds 55 and 500 invert the task (\"Use coins and bills to make exactly ₱125\" / \"₱801\"), which is a construction task, not a determination of a given set's value."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Of 15 samples, centavo-coins-only is named with specific denominations in 5 (seeds 42, 43, 46, 72, 604), peso-coins-only in 4 (44, 601, 602, 603), and peso-bills-only in 3 (45, 501, 502); the fourth sub-case, \"combined peso coins and peso bills\", never appears with named denominations of both a coin and a bill together, only the generic phrase \"coins and bills\" in seeds 50, 55, and 500 with no denomination breakdown."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Phrasing stays to a single short sentence per item and the arithmetic is one addition step over 2-4 same-type denominations (e.g. \"6 50¢ coins and 2 25¢ coins\"), consistent with a grade 2 quarter 2 money-counting unit."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "12 of the 15 samples open with the identical template \"What is the total value of\", and seeds 42 and 46 are the exact same question text and correct_answer (350) with only the option order shuffled, leaving thin phrasing/context variety outside of the single read_mcq visual item (seed 50)."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Across formatters (mcq, cloze, read_mcq, set_fill_in_blank) the varying elements are denomination type (centavo coins vs peso coins vs peso bills) and monetary magnitude, both of which are the axes the competency itself names, not an unrelated skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Correct answers span from 6 (seed 44) up to 1000 (seed 501, \"What is the total value of 2 ₱500 bills?\"), so the peso-denominated items reach the competency's stated ₱1000 ceiling rather than stopping short of it."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

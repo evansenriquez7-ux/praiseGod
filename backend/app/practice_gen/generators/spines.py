@@ -875,32 +875,34 @@ def select_spine(
             eligible = op_matched
 
     if node_own_concepts:
-        # op_matched above only guarantees a spine narrates the CURRENTLY
-        # ACTIVE dna.concept -- for a node co-mapped to multiple DNAs (e.g.
-        # ["length_measurement", "addition"]), when the orchestrator's
-        # active DNA for this render is the generic "addition" half,
-        # current_operation="addition" alone is satisfied by *any* spine
-        # that happens to also use addition (money_total, data_read_results
-        # survey spines, etc.), not just this node's own domain. Every one
-        # of those then ties on the scoring step below (they all score by
-        # overlap with the student's entire concept history, not by
-        # relevance to this node), so a "solve problems involving length
-        # and distance" node could get narrated with an unrelated class-
-        # survey spine roughly as often as a real length spine (confirmed:
-        # mat_g2_mg_q2_3 blind review found "A class survey showed ...
-        # students like costume sash" rendered for a length/distance node).
-        # Narrow to spines that also relate to one of this node's OTHER
-        # mapped DNAs (excluding current_operation itself, which every
-        # surviving spine already requires by construction of op_matched
-        # above -- intersecting against it unexcluded would trivially
-        # match everything and narrow nothing), falling back to the
-        # unfiltered set only if none do.
+        # A spine whose template requires slots/keys from other domains (like length_measurement, pictographs, comparing_ordering)
+        # must only be considered if the node itself belongs to that domain.
+        known_dna_domains = {
+            "length_measurement", "pictographs", "bar_graphs", "money_peso", "area",
+            "time_reading", "fractions", "mass_measurement", "capacity_measurement",
+            "comparing_ordering",
+        }
+        eligible = [
+            s for s in eligible
+            if not (s.required_concepts & known_dna_domains - node_own_concepts)
+        ]
+
         other_concepts = node_own_concepts - {current_operation}
         own_matched = [
             s for s in eligible if s.required_concepts & other_concepts
         ]
         if own_matched:
-            eligible = own_matched
+            # For competencies that cover both standard contexts and an "including <co-concept>"
+            # context (e.g. addition/subtraction including money), rotate between the co-concept
+            # and the standard domain so both sub-cases are represented across seeds.
+            if rng.random() < 0.5:
+                eligible = own_matched
+            else:
+                non_own = [s for s in eligible if not (s.required_concepts & other_concepts)]
+                if non_own:
+                    eligible = non_own
+                else:
+                    eligible = own_matched
 
     if required_blank_target is not None:
         matched = [s for s in eligible if s.blank_target == required_blank_target]

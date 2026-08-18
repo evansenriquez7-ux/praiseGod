@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_na_q2_6",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the less-than ceiling fix, 2026-08-14",
-  "review_date": "2026-08-14",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q2-Harden (mat_g2_na_q2_6), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every sample directly assesses subtraction of numbers strictly below 1000 across varied standard and contextual scenarios. Problems such as \"What is 510 \u2212 382?\" (seed 42), \"244 \u2212 150 = ___\" (seed 44), \"What is 823 \u2212 659?\" (seed 502), and \"921 \u2212 838 = 83. True or False?\" (seed 501) rigorously evaluate multi-digit subtraction with regrouping, while items like \"What is 71 \u2212 60?\" (seed 46) and \"265 \u2212 210 = 55. True or False?\" (seed 85) assess subtraction without regrouping."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set comprehensively covers all dimensions of the competency: subtraction without regrouping (e.g., \"There are 765 baskets on the table. Moses takes away 110 baskets. How many baskets are left on the table?\" - seed 601), single and double regrouping across tens and hundreds (e.g., \"What is 930 \u2212 408?\" - seed 600, \"What is 270 \u2212 247?\" - seed 602), identity and boundary cases (e.g., \"What is 11 \u2212 0?\" - seed 43, \"What is 416 \u2212 0?\" - seed 604, \"1 \u2212 1 = ___\" - seed 603), number line and counting back representations (\"The dot is at 116 and it moves backward 20 numbers. Starting from 116, just count back 20 numbers. Which number will the dot land on?\" - seed 50), part-whole relations (\"The total is 380 and one part is 210. What is the other part?\" - seed 55), and error analysis (\"Ana solved: \"152 \u2212 150 = ___\". Ana says the missing number is 302. Is Ana correct?\" - seed 51)."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The language complexity, reading burden, and syntactic structure are well-calibrated for Grade 2 Quarter 2 learners. Real-world contexts are simple and concrete (e.g., baskets on a table in seed 601), counting backward scaffolding is explicitly phrased (\"Starting from 28, just count back 15 numbers. Which number will the dot land on?\" - seed 605), and distractors target genuine arithmetic errors such as addition instead of subtraction (e.g., 892 in seed 42) or off-by-one errors without introducing excessive cognitive load."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "There is a rich variety of question formats represented in the packet, including standard multiple choice ('mcq', e.g., \"What is 510 \u2212 382?\"), fill-in-the-blank/equation cloze ('cloze', e.g., \"30 \u2212 29 = ___\"), number-line/contextual multiple choice ('read_mcq', e.g., \"The dot is at 116 and it moves backward 20 numbers. Starting from 116, just count back 20 numbers. Which number will the dot land on?\"), part-whole prompts ('read_fill_in_blank', e.g., \"The total is 591 and one part is 487. What is the other part?\"), verification statements ('true_false', e.g., \"921 \u2212 838 = 83. True or False?\"), and conceptual misconception checking ('error_detect', e.g., \"Ana solved: \"152 \u2212 150 = ___\". Ana says the missing number is 302. Is Ana correct?\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All problems strictly remain within the scope of Grade 2 Quarter 2 subtraction. All minuends and subtrahends are whole numbers under 1000, and differences are non-negative whole numbers (\u2265 0). No advanced operations, negative numbers, or unintroduced concepts are included, ensuring 100% alignment with MATATAG node mat_g2_na_q2_6."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Number magnitude strictly adheres to the 'less than 1000' boundary. The sample spans single-digit operations (\"1 \u2212 1 = ___\"), two-digit numbers (\"30 \u2212 29 = ___\", \"What is 71 \u2212 60?\"), and large three-digit minuends extending up to 930 (\"What is 930 \u2212 408?\") and 921 (\"921 \u2212 838 = 83. True or False?\"), providing balanced scale representation across the entire allowable range."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -27,7 +53,7 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 510 − 382?",
+      "question_text": "What is 510 \u2212 382?",
       "correct_answer": 128,
       "options": [
         {
@@ -55,7 +81,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 11 − 0?",
+      "question_text": "What is 11 \u2212 0?",
       "correct_answer": 11,
       "options": [
         {
@@ -83,7 +109,7 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "244 − 150 = ___",
+      "question_text": "244 \u2212 150 = ___",
       "correct_answer": 94,
       "options": [
         {
@@ -115,7 +141,7 @@
     {
       "seed": 45,
       "formatter": "cloze",
-      "question_text": "30 − 29 = ___",
+      "question_text": "30 \u2212 29 = ___",
       "correct_answer": 1,
       "options": [
         {
@@ -147,7 +173,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is 71 − 60?",
+      "question_text": "What is 71 \u2212 60?",
       "correct_answer": 11,
       "options": [
         {
@@ -203,7 +229,7 @@
     {
       "seed": 51,
       "formatter": "error_detect",
-      "question_text": "Ana says: 152 − 150 = 302. Is Ana correct?",
+      "question_text": "Ana solved: \"152 \u2212 150 = ___\". Ana says the missing number is 302. Is Ana correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 2
@@ -218,7 +244,7 @@
     {
       "seed": 85,
       "formatter": "true_false",
-      "question_text": "265 − 210 = 55. True or False?",
+      "question_text": "265 \u2212 210 = 55. True or False?",
       "correct_answer": true
     },
     {
@@ -230,13 +256,13 @@
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "921 − 838 = 83. True or False?",
+      "question_text": "921 \u2212 838 = 83. True or False?",
       "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 823 − 659?",
+      "question_text": "What is 823 \u2212 659?",
       "correct_answer": 164,
       "options": [
         {
@@ -264,7 +290,7 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 930 − 408?",
+      "question_text": "What is 930 \u2212 408?",
       "correct_answer": 522,
       "options": [
         {
@@ -292,7 +318,7 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "In a pictograph, Pia's group collected 765 leashes and another group collected 110 leashes. How many more did Pia's group collect?",
+      "question_text": "There are 765 baskets on the table. Moses takes away 110 baskets. How many baskets are left on the table?",
       "correct_answer": 655,
       "options": [
         {
@@ -324,7 +350,7 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is 270 − 247?",
+      "question_text": "What is 270 \u2212 247?",
       "correct_answer": 23,
       "options": [
         {
@@ -352,7 +378,7 @@
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "1 − 1 = ___",
+      "question_text": "1 \u2212 1 = ___",
       "correct_answer": 0,
       "options": [
         {
@@ -384,7 +410,7 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 416 − 0?",
+      "question_text": "What is 416 \u2212 0?",
       "correct_answer": 416,
       "options": [
         {
@@ -437,32 +463,5 @@
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every one of the 18 samples resolves to a single subtraction of two whole numbers, and each answer checks out by hand: seed 42 asks 'What is 510 − 382?' and gives 128, seed 502 asks 'What is 823 − 659?' and gives 164, seed 600 asks 'What is 930 − 408?' and gives 522. Seed 51 states 'Ana says: 152 − 150 = 302. Is Ana correct?' and the packet marks it wrong with the corrected value 2, which is right. No sample demands an operation the sentence does not name."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both named sub-cases appear separately. With regrouping: seed 42 'What is 510 − 382?', seed 44 '244 − 150 = ___', seed 500 'The total is 591 and one part is 487. What is the other part?' answering 104, and seed 602 'What is 270 − 247?'. Without regrouping: seed 46 'What is 71 − 60?', seed 604 'What is 416 − 0?', seed 85 '265 − 210 = 55. True or False?'. Beyond bare computation the node also reaches part-part-whole (seed 55) and backward counting (seed 50)."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Sentences are short and carry one operation each, which fits grade 2 quarter 2. Seed 50 reads 'The dot is at 116 and it moves backward 20 numbers. Starting from 116, just count back 20 numbers. Which number will the dot land on?', which names the strategy for the child rather than assuming it. Seed 55 'The total is 380 and one part is 210. What is the other part?' uses part and whole language a grade 2 pupil already meets, with no algebraic notation anywhere."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Six distinct formatters appear across the 18 seeds: mcq (seed 42), cloze (seed 44 '244 − 150 = ___'), true_false (seed 501 '921 − 838 = 83. True or False?'), error_detect (seed 51 'Ana says: 152 − 150 = 302. Is Ana correct?'), read_mcq (seed 605 'The dot is at 28 and it moves backward 15 numbers.') and read_fill_in_blank (seed 55). Distractors are principled rather than random, pairing off-by-one neighbours with a sum trap, such as 892 sitting beside 128 in seed 42."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Each item maps onto the subtraction verb and nothing past it; even the one contextual item, seed 601 with 'collected 765 leashes and another group collected 110 leashes', reduces to one difference of 655. Answerability holds throughout: no blank lands on a quantity the answer needs, because the cloze blanks sit on the result, as in seed 603 '1 − 1 = ___', and seed 500 'The total is 591 and one part is 487. What is the other part?' supplies both given numbers before asking."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest operand found anywhere in this node is 930 in seed 600 'What is 930 − 408?', with seed 501 '921 − 838 = 83. True or False?' close behind at 921; both are under 1000, so the literal bound holds. Larger numbers do appear, but only as multiple-choice distractors such as 1338 in seed 600 and 1482 in seed 502, which are not operands. The floor of the ladder, seed 603 '1 − 1 = ___', is trivial but still inside the stated range and reads as the easiest rung rather than an error."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

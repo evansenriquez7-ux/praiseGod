@@ -407,6 +407,161 @@ def generate_params(
             "max_minuend": max_minuend,
         }
 
+    if task_type in ("illustrate_number_line_or_inverse", "inverse_of_addition", "number_line_subtraction"):
+        # "Illustrate subtraction of 2-digit by 1-digit on the number line and as an inverse of addition" (mat_g2_na_q2_3)
+        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
+        min_a = int(profile.get("min_minuend", 10))
+        max_sub = profile.get("max_subtrahend")
+        max_sub = int(max_sub) if max_sub is not None else 9
+        min_b = int(profile.get("min_subtrahend", 1))
+        candidates = []
+        for a in range(max(10, min_a), min(max_minuend, 99) + 1):
+            for b in range(min_b, min(a, max_sub) + 1):
+                if _satisfies_regrouping(a, b, reg_level):
+                    candidates.append((a, b))
+        if not candidates:
+            candidates = [(25, 3)]
+        a_val, b_val = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
+        diff_val = a_val - b_val
+        mode = rng.choice(["number_line", "inverse_addition"])
+        if mode == "number_line":
+            q_template = rng.choice([
+                f"Starting at {a_val} on the number line, jump back {b_val} units. What number do you land on?",
+                f"A dot is at {a_val} on the number line. If you move back {b_val} steps, what number do you reach?",
+                f"Start at {a_val} on the number line and count back {b_val}. What is {a_val} − {b_val}?",
+            ])
+            return {
+                "a": a_val, "b": b_val, "result": diff_val,
+                "task_type": "number_line_subtraction",
+                "blank_target": "result",
+                "context": "pure",
+                "structure": "result_unknown",
+                "max_minuend": max_minuend,
+                "question": q_template,
+            }
+        else: # inverse_addition
+            q_template = rng.choice([
+                f"Since {diff_val} + {b_val} = {a_val}, what is {a_val} − {b_val}?",
+                f"If {diff_val} + {b_val} = {a_val}, then {a_val} − {b_val} = ___. What is the missing number?",
+                f"What is {a_val} − {b_val}? (Hint: {diff_val} + {b_val} = {a_val})",
+            ])
+            return {
+                "a": a_val, "b": b_val, "result": diff_val,
+                "task_type": "inverse_of_addition",
+                "blank_target": "result",
+                "context": "pure",
+                "structure": "result_unknown",
+                "max_minuend": max_minuend,
+                "question": q_template,
+            }
+
+    if task_type == "one_or_two_step_subtraction":
+        # "Solve 1- and 2-step problems involving subtraction where both numbers are less than 1000 (including problems involving money)" (mat_g2_na_q2_7)
+        mode = rng.choice(["one_step_general", "one_step_money", "two_step_general", "two_step_money"])
+        actors = ["Carlo", "Mia", "Ben", "Liza", "Dan", "Elena", "Renz", "Ate Nena", "Kuya Ton", "Bianca", "Isko"]
+        actor = rng.choice(actors)
+        items_pool = ["mangoes", "stickers", "crayons", "pencils", "stamps", "erasers", "books", "loaves of bread", "tickets", "notebooks"]
+        item = rng.choice(items_pool)
+
+        # Build candidate pairs that strictly satisfy reg_level
+        min_a = max(20, int(profile.get("min_minuend", 20)))
+        candidates = []
+        attempts = 0
+        while len(candidates) < 500 and attempts < 3000:
+            attempts += 1
+            a_cand = rng.randint(min_a, min(max_minuend, 990))
+            b_cand = rng.randint(10, a_cand - 5)
+            if _satisfies_regrouping(a_cand, b_cand, reg_level):
+                candidates.append((a_cand, b_cand))
+        if not candidates:
+            for a_cand in range(min_a, min(max_minuend, 990) + 1):
+                for b_cand in range(10, a_cand - 5):
+                    if _satisfies_regrouping(a_cand, b_cand, reg_level):
+                        candidates.append((a_cand, b_cand))
+                        if len(candidates) >= 100:
+                            break
+                if len(candidates) >= 100:
+                    break
+        if not candidates:
+            candidates = [(100, 25)]
+
+        from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
+        total, b_total = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
+        ans = total - b_total
+
+        if mode == "two_step_money":
+            b1 = rng.randint(max(1, b_total // 4), max(2, (3 * b_total) // 4))
+            b2 = b_total - b1
+            if b2 <= 0:
+                b1 = max(1, b_total - 1)
+                b2 = 1
+            snack1, snack2 = rng.sample(["a sandwich", "a juice box", "a notebook", "a ballpen", "a pad paper", "an apple"], 2)
+            q = f"{actor} had ₱{total}. {actor} bought {snack1} for ₱{b1} and {snack2} for ₱{b2}. How much money does {actor} have left?"
+            dists = [ans + 10, max(1, ans - 10), ans + 20]
+            dists = [d for d in dists if d != ans][:3]
+            return {
+                "a": total, "b": b_total, "result": ans,
+                "task_type": "two_step_subtraction",
+                "blank_target": "result",
+                "context": "word_problem",
+                "structure": "result_unknown",
+                "max_minuend": max_minuend,
+                "question": q,
+                "distractors": dists,
+            }
+        elif mode == "two_step_general":
+            b1 = rng.randint(max(1, b_total // 4), max(2, (3 * b_total) // 4))
+            b2 = b_total - b1
+            if b2 <= 0:
+                b1 = max(1, b_total - 1)
+                b2 = 1
+            name1, name2 = rng.sample([n for n in actors if n != actor], 2)
+            q = f"{actor} had {total} {item}. {actor} gave {b1} {item} to {name1} and {b2} {item} to {name2}. How many {item} does {actor} have left?"
+            dists = [ans + 10, max(1, ans - 10), ans + 20]
+            dists = [d for d in dists if d != ans][:3]
+            return {
+                "a": total, "b": b_total, "result": ans,
+                "task_type": "two_step_subtraction",
+                "blank_target": "result",
+                "context": "word_problem",
+                "structure": "result_unknown",
+                "max_minuend": max_minuend,
+                "question": q,
+                "distractors": dists,
+            }
+        elif mode == "one_step_money":
+            spent = b_total
+            purpose = rng.choice(["for art supplies", "for a school project", "for lunch", "at the sari-sari store"])
+            q = f"{actor} had ₱{total} and spent ₱{spent} {purpose}. How much money does {actor} have left?"
+            dists = [ans + 10, max(1, ans - 10), ans + 20]
+            dists = [d for d in dists if d != ans][:3]
+            return {
+                "a": total, "b": spent, "result": ans,
+                "task_type": "one_step_subtraction",
+                "blank_target": "result",
+                "context": "word_problem",
+                "structure": "result_unknown",
+                "max_minuend": max_minuend,
+                "question": q,
+                "distractors": dists,
+            }
+        else: # one_step_general
+            given = b_total
+            recipient = rng.choice(["a friend", "classmates", "a sibling", "the library"])
+            q = f"{actor} had {total} {item}. {actor} gave {given} {item} to {recipient}. How many {item} does {actor} have left?"
+            dists = [ans + 10, max(1, ans - 10), ans + 20]
+            dists = [d for d in dists if d != ans][:3]
+            return {
+                "a": total, "b": given, "result": ans,
+                "task_type": "one_step_subtraction",
+                "blank_target": "result",
+                "context": "word_problem",
+                "structure": "result_unknown",
+                "max_minuend": max_minuend,
+                "question": q,
+                "distractors": dists,
+            }
+
     if task_type in ("counting_back", "taking_away"):
         from backend.app.practice_gen.generators.number_difficulty import generate_pair_by_window
         min_a = int(profile.get("min_minuend", 10 if max_minuend >= 10 else 1))

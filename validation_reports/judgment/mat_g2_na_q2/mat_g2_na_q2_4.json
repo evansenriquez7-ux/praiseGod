@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_na_q2_4",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q2-Harden (mat_g2_na_q2_4), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every sample item directly fulfills the requirement of subtracting numbers where both numbers are less than 100 with regrouping. The sample set exercises 2-digit minus 1-digit subtraction with regrouping (e.g., \"What is 30 \u2212 3?\", \"60 \u2212 2 = ___\") and 2-digit minus 2-digit subtraction with regrouping across decade boundaries and arbitrary 2-digit values (e.g., \"What is 93 \u2212 65?\", \"60 \u2212 51 = ___\", \"20 \u2212 15 = ___\"). In all instances, the units digit of the minuend is smaller than the units digit of the subtrahend, necessitating regrouping."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set provides balanced and comprehensive coverage across the full scope of the competency. Both specified sub-cases are thoroughly tested: 2-digit minus 1-digit numbers (such as \"What is 20 \u2212 1?\" and \"90 \u2212 2 = 92. True or False?\") and 2-digit minus 2-digit numbers (such as \"What is 93 \u2212 65?\", \"What is 60 \u2212 46?\", and \"80 \u2212 78 = 2. True or False?\"). In addition, multiple problem structures are covered including direct computation, cloze equation completion, part-whole relationships, and word contexts."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "All items are developmentally appropriate for Grade 2 Quarter 2 learners. The linguistic complexity is appropriately constrained, using clear and familiar vocabulary (e.g., \"What is 30 \u2212 3?\", \"The total is 90 and one part is 18. What is the other part?\", \"There are 30 baskets on the table. Moses takes away 28 baskets. How many baskets are left on the table? The answer is 2. True or False?\"). Distractors target common place-value errors (e.g., adding instead of subtracting or subtracting without regrouping) without inducing extraneous cognitive load."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample exhibits an excellent variety of item variants and pedagogical formatters. These include standard multiple-choice arithmetic (\"What is 93 \u2212 65?\"), cloze equation completion (\"60 \u2212 51 = ___\", \"30 \u2212 21 = ___\"), number-line / backward counting (\"The dot is at 50 and it moves backward 1 number. Starting from 50, just count back 1 number. Which number will the dot land on?\"), part-whole missing addend (\"The total is 30 and one part is 23. What is the other part?\"), error detection (\"Dante solved: \"30 \u2212 14 = ___\". Dante says the missing number is 16. Is Dante correct?\"), and True/False assertions (\"80 \u2212 78 = 2. True or False?\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All questions strictly align with the MATATAG learning competency without underreaching or exceeding curriculum boundaries. There are no operations beyond subtraction, no 3-digit operands, and no unregrouped calculations. Items like \"What is 93 \u2212 65?\" and \"What is 20 \u2212 12?\" stay squarely on 2-digit subtraction with regrouping for numbers under 100."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numerical bounds strictly adhere to the competency constraint that 'both numbers are less than 100'. Minuends range from 20 to 93 (e.g., 20 in \"What is 20 \u2212 1?\", 60 in \"60 \u2212 51 = ___\", 93 in \"What is 93 \u2212 65?\") and subtrahends range from 1 to 78 (e.g., 1 in \"What is 20 \u2212 1?\", 78 in \"80 \u2212 78 = 2. True or False?\"). All resulting differences remain positive whole numbers within the grade-appropriate range."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -27,7 +53,7 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 30 − 3?",
+      "question_text": "What is 30 \u2212 3?",
       "correct_answer": 27,
       "options": [
         {
@@ -55,7 +81,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 20 − 1?",
+      "question_text": "What is 20 \u2212 1?",
       "correct_answer": 19,
       "options": [
         {
@@ -83,7 +109,7 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "60 − 51 = ___",
+      "question_text": "60 \u2212 51 = ___",
       "correct_answer": 9,
       "options": [
         {
@@ -115,7 +141,7 @@
     {
       "seed": 45,
       "formatter": "cloze",
-      "question_text": "60 − 2 = ___",
+      "question_text": "60 \u2212 2 = ___",
       "correct_answer": 58,
       "options": [
         {
@@ -147,7 +173,7 @@
     {
       "seed": 46,
       "formatter": "cloze",
-      "question_text": "20 − 15 = ___",
+      "question_text": "20 \u2212 15 = ___",
       "correct_answer": 5,
       "options": [
         {
@@ -213,13 +239,13 @@
     {
       "seed": 75,
       "formatter": "true_false",
-      "question_text": "90 − 2 = 92. True or False?",
+      "question_text": "90 \u2212 2 = 92. True or False?",
       "correct_answer": false
     },
     {
       "seed": 82,
       "formatter": "error_detect",
-      "question_text": "Dante says: 30 − 14 = 16. Is Dante correct?",
+      "question_text": "Dante solved: \"30 \u2212 14 = ___\". Dante says the missing number is 16. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 16
@@ -228,7 +254,7 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "How many items are left?",
+      "question_text": "(Large group of 92 drinks) \u2014 There are 92 drinks.\nTaking away 55 drinks.\nHow many drinks are left?",
       "correct_answer": "C",
       "options": [
         {
@@ -256,13 +282,13 @@
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "80 − 78 = 2. True or False?",
+      "question_text": "80 \u2212 78 = 2. True or False?",
       "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 93 − 65?",
+      "question_text": "What is 93 \u2212 65?",
       "correct_answer": 28,
       "options": [
         {
@@ -290,7 +316,7 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 50 − 45?",
+      "question_text": "What is 50 \u2212 45?",
       "correct_answer": 5,
       "options": [
         {
@@ -318,13 +344,13 @@
     {
       "seed": 601,
       "formatter": "true_false",
-      "question_text": "In a pictograph, Pia's group collected 30 leashes and another group collected 28 leashes. How many more did Pia's group collect? The answer is 2. True or False?",
+      "question_text": "There are 30 baskets on the table. Moses takes away 28 baskets. How many baskets are left on the table? The answer is 2. True or False?",
       "correct_answer": true
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is 60 − 46?",
+      "question_text": "What is 60 \u2212 46?",
       "correct_answer": 14,
       "options": [
         {
@@ -352,7 +378,7 @@
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "30 − 21 = ___",
+      "question_text": "30 \u2212 21 = ___",
       "correct_answer": 9,
       "options": [
         {
@@ -384,7 +410,7 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 20 − 12?",
+      "question_text": "What is 20 \u2212 12?",
       "correct_answer": 8,
       "options": [
         {
@@ -415,32 +441,5 @@
       "question_text": "The total is 30 and one part is 23. What is the other part?",
       "correct_answer": 7
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every sampled subtraction keeps both numbers under 100 — seed 42's \"What is 30 − 3?\" and seed 602's \"What is 60 − 46?\" are typical — matching the competency's explicit ceiling."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both named sub-cases show up: 2-digit-minus-1-digit in seed 42 (\"30 − 3\") and seed 45 (\"60 − 2\"), and 2-digit-minus-2-digit in seed 44 (\"60 − 51\") and seed 603 (\"30 − 21\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Single-step subtraction sentences at this magnitude are well within grade 2 quarter 2 reach."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "A pictograph word problem (seed 601), a number-line item (seed 51), true_false, error_detect, and plain computation formats are all represented among the eighteen samples."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The only lever changing across items is regrouping demand and whether the subtrahend has one or two digits — seed 42's clean \"30 − 3\" versus seed 44's \"60 − 51\" — never store size or an unrelated theme."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest minuend anywhere in the packet is seed 502's \"93 − 65\", consistent with both numbers staying under 100 as the competency requires."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

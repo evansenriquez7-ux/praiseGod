@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_na_q2_7",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the less-than ceiling fix, 2026-08-14",
-  "review_date": "2026-08-14",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q2-Harden (mat_g2_na_q2_7), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample set fully addresses the competency mandate to 'Solve 1- and 2-step problems involving subtraction where both numbers are less than 1000 (including problems involving money), with and without regrouping.' Single-step word problems are well represented (e.g., \"Carlo had 630 stamps. Carlo gave 96 stamps to classmates. How many stamps does Carlo have left?\" and \"Elena had \u20b1110 and spent \u20b1105 for lunch. How much money does Elena have left?\"), as are two-step problems (e.g., \"Ben had 314 loaves of bread. Ben gave 193 loaves of bread to Kuya Ton and 107 loaves of bread to Renz. How many loaves of bread does Ben have left?\" and \"Ate Nena had \u20b1636. Ate Nena bought a ballpen for \u20b161 and a pad paper for \u20b1179. How much money does Ate Nena have left?\"). Problems include both non-monetary discrete quantities and Philippine peso currency contexts, and span operations with regrouping (e.g., 630 - 96 = 534) and without regrouping (e.g., \"Elena had 922 books. Elena gave 300 books to the library. How many books does Elena have left?\")."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Coverage across all sub-dimensions of the competency is complete and balanced. The items span 1-step subtraction (e.g., \"Ben had 160 books. Ben gave 13 books to a friend. How many books does Ben have left?\" and \"Renz had \u20b1234 and spent \u20b1110 at the sari-sari store. How much money does Renz have left?\") and 2-step subtraction (e.g., \"Ben had 572 erasers. Ben gave 165 erasers to Isko and 331 erasers to Elena. How many erasers does Ben have left?\" and \"Ate Nena had 60 mangoes. Ate Nena gave 26 mangoes to Kuya Ton and 24 mangoes to Renz. How many mangoes does Ate Nena have left?\"). Both standard physical items (stamps, bread, books, pencils, erasers, mangoes) and currency transactions (ballpen, pad paper, sandwich, lunch, sari-sari store) are covered across various 2-digit and 3-digit number scales."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The contextual complexity, phrasing, and cognitive load are perfectly tuned for Grade 2 Quarter 2 learners. Problem scenarios employ familiar Filipino cultural contexts, names, and items (e.g., \"Ate Nena had \u20b1636. Ate Nena bought a ballpen for \u20b161 and a pad paper for \u20b1179. How much money does Ate Nena have left?\" and \"Renz had \u20b1234 and spent \u20b1110 at the sari-sari store. How much money does Renz have left?\"). Sentences are concise, clear, and direct. The 2-step structures describe intuitive sequential giving/spending events without convoluted sentence structures or unintroduced mathematical concepts."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample packet tests competency mastery across multiple rich assessment formats. These include standard multiple-choice questions (e.g., \"Carlo had \u20b1810. Carlo bought a ballpen for \u20b1174 and a sandwich for \u20b1136. How much money does Carlo have left?\"), cloze / fill-in-the-blank items (e.g., \"Mia had 269 loaves of bread. Mia gave 30 loaves of bread to the library. How many loaves of bread does Mia have left?\"), true/false evaluations (e.g., \"Elena had 635 pencils. Elena gave 112 pencils to Isko and 248 pencils to Renz. How many pencils does Elena have left? The answer is 276. True or False?\"), and error detection problems evaluating peer work (e.g., \"Grace solved this problem: \"Ben had \u20b187 and spent \u20b130 for lunch. How much money does Ben have left?\" Grace says the answer is 47. Is Grace correct?\" and \"Rico solved this problem: \"Dan had \u20b1349. Dan bought a sandwich for \u20b192 and a juice box for \u20b184. How much money does Dan have left?\" Rico says the answer is 173. Is Rico correct?\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All generated problems adhere strictly to the target competency. Every item focuses on 1-step or 2-step subtraction of quantities strictly below 1000. Distractors represent plausible mathematical miscalculations (such as place-value and regrouping errors) rather than arbitrary noise. No irrelevant operations, advanced terminology, or out-of-scope concepts are introduced."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All numerical values strictly respect the curriculum bound of numbers less than 1000. Examples range from 2-digit subtractions such as \"Grace solved this problem: \"Ben had \u20b187 and spent \u20b130 for lunch. How much money does Ben have left?\" Grace says the answer is 47. Is Grace correct?\" to high 3-digit subtractions such as \"Elena had 922 books. Elena gave 300 books to the library. How many books does Elena have left?\" and \"Isko had 717 erasers. Isko gave 145 erasers to Ben and 304 erasers to Ate Nena. How many erasers does Isko have left?\". All subtrahends and results are positive integers well within the Grade 2 scale."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -25,27 +51,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "In a pictograph, Daniel's group collected 510 coins and another group collected 382 coins. How many more did Daniel's group collect?",
-      "correct_answer": 128,
+      "question_text": "Carlo had 630 stamps. Carlo gave 96 stamps to classmates. How many stamps does Carlo have left?",
+      "correct_answer": 534,
       "options": [
         {
           "key": "A",
-          "value": 892,
+          "value": 544,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 129,
+          "value": 554,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 128,
+          "value": 534,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 127,
+          "value": 524,
           "is_correct": false
         }
       ]
@@ -53,27 +79,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "In a pictograph, Kuya Bien's group collected 11 story chapters and another group collected 0 story chapters. How many more did Kuya Bien's group collect?",
-      "correct_answer": 11,
+      "question_text": "Ben had 314 loaves of bread. Ben gave 193 loaves of bread to Kuya Ton and 107 loaves of bread to Renz. How many loaves of bread does Ben have left?",
+      "correct_answer": 14,
       "options": [
         {
           "key": "A",
-          "value": 11,
+          "value": 14,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 12,
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 13,
+          "value": 34,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 24,
           "is_correct": false
         }
       ]
@@ -81,31 +107,31 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "In a pictograph, Lara's group collected 244 ribbons and another group collected 150 ribbons. How many more did Lara's group collect?",
-      "correct_answer": 94,
+      "question_text": "Ben had 160 books. Ben gave 13 books to a friend. How many books does Ben have left?",
+      "correct_answer": 147,
       "options": [
         {
           "key": "A",
-          "value": 93,
-          "text": "93",
+          "value": 137,
+          "text": "137",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 394,
-          "text": "394",
+          "value": 157,
+          "text": "157",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 95,
-          "text": "95",
+          "value": 167,
+          "text": "167",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 94,
-          "text": "94",
+          "value": 147,
+          "text": "147",
           "is_correct": true
         }
       ]
@@ -113,27 +139,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "In a pictograph, Coach Roel's group collected 30 water bottles and another group collected 29 water bottles. How many more did Coach Roel's group collect?",
-      "correct_answer": 1,
+      "question_text": "Ate Nena had \u20b1636. Ate Nena bought a ballpen for \u20b161 and a pad paper for \u20b1179. How much money does Ate Nena have left?",
+      "correct_answer": 396,
       "options": [
         {
           "key": "A",
-          "value": 2,
+          "value": 416,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 59,
+          "value": 406,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 1,
+          "value": 396,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 0,
+          "value": 386,
           "is_correct": false
         }
       ]
@@ -141,27 +167,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "In a pictograph, Ate Cara's group collected 71 photo albums and another group collected 60 photo albums. How many more did Ate Cara's group collect?",
-      "correct_answer": 11,
+      "question_text": "Carlo had \u20b1810. Carlo bought a ballpen for \u20b1174 and a sandwich for \u20b1136. How much money does Carlo have left?",
+      "correct_answer": 500,
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 520,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 11,
+          "value": 500,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 10,
+          "value": 490,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 131,
+          "value": 510,
           "is_correct": false
         }
       ]
@@ -169,55 +195,55 @@
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "In a pictograph, Mia's group collected 116 merchandise shirts and another group collected 20 merchandise shirts. How many more did Mia's group collect? The answer is 97. True or False?",
+      "question_text": "Elena had 635 pencils. Elena gave 112 pencils to Isko and 248 pencils to Renz. How many pencils does Elena have left? The answer is 276. True or False?",
       "correct_answer": false
     },
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"In a pictograph, Sora's group collected 380 concert tickets and another group collected 210 concert tickets. How many more did Sora's group collect?\" Grace says the answer is 590. Is Grace correct?",
+      "question_text": "Grace solved this problem: \"Ben had \u20b187 and spent \u20b130 for lunch. How much money does Ben have left?\" Grace says the answer is 47. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
-        "correct_value": 170
+        "correct_value": 57
       }
     },
     {
       "seed": 500,
       "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"In a pictograph, Lara's group collected 591 fan accessories and another group collected 487 fan accessories. How many more did Lara's group collect?\" Rico says the answer is 104. Is Rico correct?",
+      "question_text": "Rico solved this problem: \"Dan had \u20b1349. Dan bought a sandwich for \u20b192 and a juice box for \u20b184. How much money does Dan have left?\" Rico says the answer is 173. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
-        "correct_value": 104
+        "correct_value": 173
       }
     },
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "In a pictograph, Lola Ising's group collected 921 loaves of bread and another group collected 838 loaves of bread. How many more did Lola Ising's group collect?",
-      "correct_answer": 83,
+      "question_text": "Isko had 717 erasers. Isko gave 145 erasers to Ben and 304 erasers to Ate Nena. How many erasers does Isko have left?",
+      "correct_answer": 268,
       "options": [
         {
           "key": "A",
-          "value": 83,
-          "text": "83",
+          "value": 268,
+          "text": "268",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 84,
-          "text": "84",
+          "value": 288,
+          "text": "288",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 82,
-          "text": "82",
+          "value": 258,
+          "text": "258",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 1759,
-          "text": "1759",
+          "value": 278,
+          "text": "278",
           "is_correct": false
         }
       ]
@@ -225,27 +251,27 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "In a pictograph, Kuya Pat's group collected 823 concert tickets and another group collected 659 concert tickets. How many more did Kuya Pat's group collect?",
-      "correct_answer": 164,
+      "question_text": "Ben had 572 erasers. Ben gave 165 erasers to Isko and 331 erasers to Elena. How many erasers does Ben have left?",
+      "correct_answer": 76,
       "options": [
         {
           "key": "A",
-          "value": 1482,
+          "value": 86,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 164,
+          "value": 76,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 165,
+          "value": 96,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 163,
+          "value": 66,
           "is_correct": false
         }
       ]
@@ -253,27 +279,27 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "In a pictograph, Jomar's group collected 930 clip highlights and another group collected 408 clip highlights. How many more did Jomar's group collect?",
-      "correct_answer": 522,
+      "question_text": "Isko had 346 loaves of bread. Isko gave 62 loaves of bread to Elena and 88 loaves of bread to Kuya Ton. How many loaves of bread does Isko have left?",
+      "correct_answer": 196,
       "options": [
         {
           "key": "A",
-          "value": 1338,
+          "value": 206,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 521,
+          "value": 186,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 522,
+          "value": 196,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 523,
+          "value": 216,
           "is_correct": false
         }
       ]
@@ -281,31 +307,31 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "In a pictograph, Pia's group collected 765 leashes and another group collected 110 leashes. How many more did Pia's group collect?",
-      "correct_answer": 655,
+      "question_text": "Mia had 269 loaves of bread. Mia gave 30 loaves of bread to the library. How many loaves of bread does Mia have left?",
+      "correct_answer": 239,
       "options": [
         {
           "key": "A",
-          "value": 654,
-          "text": "654",
+          "value": 229,
+          "text": "229",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 875,
-          "text": "875",
+          "value": 249,
+          "text": "249",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 656,
-          "text": "656",
+          "value": 259,
+          "text": "259",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 655,
-          "text": "655",
+          "value": 239,
+          "text": "239",
           "is_correct": true
         }
       ]
@@ -313,27 +339,27 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "In a pictograph, Janna's group collected 270 fan shirts and another group collected 247 fan shirts. How many more did Janna's group collect?",
-      "correct_answer": 23,
+      "question_text": "Elena had \u20b1110 and spent \u20b1105 for lunch. How much money does Elena have left?",
+      "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": 23,
+          "value": 5,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 24,
+          "value": 25,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 517,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 22,
+          "value": 1,
           "is_correct": false
         }
       ]
@@ -341,25 +367,25 @@
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "In a pictograph, Yna's group collected 1 sketchpad and another group collected 1 sketchpad. How many more did Yna's group collect?",
-      "correct_answer": 0,
+      "question_text": "Ate Nena had 60 mangoes. Ate Nena gave 26 mangoes to Kuya Ton and 24 mangoes to Renz. How many mangoes does Ate Nena have left?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "text": "3",
+          "value": 30,
+          "text": "30",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 0,
-          "text": "0",
+          "value": 10,
+          "text": "10",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 2,
-          "text": "2",
+          "value": 20,
+          "text": "20",
           "is_correct": false
         },
         {
@@ -373,27 +399,27 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "In a pictograph, Kris's group collected 416 lightsticks and another group collected 0 lightsticks. How many more did Kris's group collect?",
-      "correct_answer": 416,
+      "question_text": "Renz had \u20b1234 and spent \u20b1110 at the sari-sari store. How much money does Renz have left?",
+      "correct_answer": 124,
       "options": [
         {
           "key": "A",
-          "value": 416,
+          "value": 124,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 417,
+          "value": 114,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 415,
+          "value": 134,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 418,
+          "value": 144,
           "is_correct": false
         }
       ]
@@ -401,57 +427,30 @@
     {
       "seed": 606,
       "formatter": "mcq",
-      "question_text": "In a pictograph, Jomar's group collected 25 clip highlights and another group collected 0 clip highlights. How many more did Jomar's group collect?",
-      "correct_answer": 25,
+      "question_text": "Elena had 922 books. Elena gave 300 books to the library. How many books does Elena have left?",
+      "correct_answer": 622,
       "options": [
         {
           "key": "A",
-          "value": 25,
+          "value": 622,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 24,
+          "value": 632,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 26,
+          "value": 612,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 27,
+          "value": 642,
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "The competency sentence names 1- and 2-step problems and explicitly includes money, but all 16 samples are single-step comparisons and none involves money. Seed 600 asks about a group that 'collected 930 clip highlights and another group collected 408 clip highlights' and the answer 522 follows from one subtraction; every other sample has the same one-operation shape. The closest thing to a money context is seed 42, 'collected 510 coins and another group collected 382 coins', where coins are counted as objects and no peso amount, price, or change appears. Arithmetic itself is sound in all 16."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "Taking the named sub-cases one at a time: regrouping is covered on both sides, with seed 42 'collected 510 coins and another group collected 382 coins' needing it and seed 46 'collected 71 photo albums and another group collected 60 photo albums' not needing it. The 2-step sub-case is absent from all 16 samples, and the money sub-case is absent as well. Two of the three things the sentence enumerates are simply not generated here."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Nothing overshoots grade 2 quarter 2. Each item is one comparison in plain language, and the numbers stay inside three digits. Seed 55 wraps the problem in a check of another pupil, 'Grace says the answer is 590. Is Grace correct?', which is still a single subtraction plus a comparison and is reasonable at this level. If anything the node sits below its level, as with seed 603 'collected 1 sketchpad and another group collected 1 sketchpad'."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "FAIL",
-      "rationale": "All 16 samples share one semantic spine: each opens 'In a pictograph, ' and closes by asking 'How many more did ' the named group collect. Only the outer formatter rotates, as in seed 50 which appends 'The answer is 97. True or False?' and seed 500 which appends 'Rico says the answer is 104. Is Rico correct?'. No take-away, join, missing-addend, or comparison-of-difference framing appears anywhere, so the surface variety hides a single underlying problem type."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The items are genuine subtraction word problems, but every one asserts 'In a pictograph, ' while no pictograph accompanies the text. The numbers are stated in the sentence, so each item remains answerable, yet the representation the wording claims is not actually present. Three items also compare against zero, such as seed 604 'collected 416 lightsticks and another group collected 0 lightsticks' and seed 606 'collected 25 clip highlights and another group collected 0 clip highlights', which is a degenerate comparison rather than a problem to solve."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest operand in the node is 930, in seed 600 'collected 930 clip highlights and another group collected 408 clip highlights', with 921 next in seed 501; both are below 1000, so the literal bound is respected. The out-of-range numbers 1759 and 1482 occur only as sum-trap options in seeds 501 and 502 and are not operands. The stated answer 97 in seed 50 is a deliberate wrong value, not an operand either."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }

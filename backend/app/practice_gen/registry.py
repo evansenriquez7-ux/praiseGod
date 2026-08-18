@@ -346,16 +346,16 @@ def _parse_competency_bounds(
         # generate_params).
         if "estimate" in text:
             bounds["task_type"] = "estimate"
-
-        # "Subtract numbers by expressing minuends and subtrahends as tens
-        # and ones (expanded form)" (mat_g1_na_q3_5) -- same text-match
-        # rule as addition's identical binding above.
+        elif "number line and as an inverse of addition" in text or "number line and as inverse of addition" in text or ("number line" in text and "inverse of addition" in text):
+            bounds["task_type"] = "illustrate_number_line_or_inverse"
+            bounds["context"] = "pure"
+        elif "1- and 2-step" in text or "1- and 2 step" in text or "one- and two-step" in text:
+            bounds["task_type"] = "one_or_two_step_subtraction"
+            bounds["context"] = "word_problem"
         elif "expanded form" in text:
             bounds["task_type"] = "expanded_form"
-
         elif "taking away" in text:
             bounds["task_type"] = "taking_away"
-
         elif "concrete and pictorial" in text or "illustrate" in text.lower():
             bounds["task_type"] = ["counting_back", "taking_away"]
 

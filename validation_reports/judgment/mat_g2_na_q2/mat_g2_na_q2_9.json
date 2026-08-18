@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_na_q2_9",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q2-Harden (mat_g2_na_q2_9), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items directly assess the student's ability to create increasing and decreasing patterns based on an explicit rule and starting value. For example, in seed 42 (\"You want to create a decreasing pattern where the rule is: Subtract 1 each time. Which sequence correctly creates it?\") and seed 45 (\"Create a pattern that starts at 2 and uses the rule: Add 3 each time. Which sequence shows this pattern?\"), students must apply the pattern rule to generate or identify the resulting sequence."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set provides balanced coverage across both directions (increasing and decreasing) and multiple step sizes. Increasing patterns include unit steps (+1 in seed 43: \"You want to create an increasing pattern where the rule is: Add 1 each time. Which sequence correctly creates it?\"), steps of 2 (seed 50: \"You want to create an increasing pattern where the rule is: Add 2 each time. Which sequence correctly creates it?\"), and steps of 3 (seed 45). Decreasing patterns include steps of 1 (seed 42), steps of 2 (seed 46: \"You want to create a decreasing pattern where the rule is: Subtract 2 each time. Which sequence correctly creates it?\"), steps of 3 (seed 501: \"Start at 91 and create a decreasing pattern with the rule: Subtract 3 each time. Which pattern did you create?\"), and steps of 7 (seed 502: \"Create a pattern that starts at 89 and uses the rule: Subtract 7 each time. Which sequence shows this pattern?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The sentence structures are straightforward and uncluttered, suitable for Grade 2 Quarter 2 learners (e.g., seed 44: \"You want to create an increasing pattern where the rule is: Add 1 each time. Which sequence correctly creates it?\"). Distractor options target plausible student errors, such as miscalculating a single intermediate term, without imposing excessive reading load."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The items vary phrasing templates effectively, including standard prompt phrasing (\"You want to create an increasing pattern where the rule is: Add 1 each time. Which sequence correctly creates it?\"), starting value focus (\"Create a pattern that starts at 2 and uses the rule: Add 3 each time. Which sequence shows this pattern?\"), and directive phrasing (\"Start at 91 and create a decreasing pattern with the rule: Subtract 3 each time. Which pattern did you create?\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All questions remain tightly focused on generating linear arithmetic sequences within whole numbers. None introduce out-of-scope concepts such as non-linear patterns, negative numbers, or geometric scaling."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical magnitudes span single-digit numbers up to 2-digit numbers under 100 (e.g. from starting at 2 in seed 45 up to starting at 91 in seed 501: \"Start at 91 and create a decreasing pattern with the rule: Subtract 3 each time. Which pattern did you create?\"). Decreasing sequences maintain positive integers throughout (e.g., seed 502 descends from 89 to 54), which strictly adheres to Grade 2 numerical limits."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -102,7 +128,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "You want to create an increasing pattern where the rule is: Add 3 each time. Which sequence correctly creates it?",
+      "question_text": "Create a pattern that starts at 2 and uses the rule: Add 3 each time. Which sequence shows this pattern?",
       "correct_answer": "2, 5, 8, 11, 14, 17",
       "options": [
         {
@@ -222,7 +248,7 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "You want to create a decreasing pattern where the rule is: Subtract 3 each time. Which sequence correctly creates it?",
+      "question_text": "Start at 91 and create a decreasing pattern with the rule: Subtract 3 each time. Which pattern did you create?",
       "correct_answer": "91, 88, 85, 82, 79, 76",
       "options": [
         {
@@ -250,7 +276,7 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "You want to create a decreasing pattern where the rule is: Subtract 7 each time. Which sequence correctly creates it?",
+      "question_text": "Create a pattern that starts at 89 and uses the rule: Subtract 7 each time. Which sequence shows this pattern?",
       "correct_answer": "89, 82, 75, 68, 61, 54",
       "options": [
         {
@@ -275,32 +301,5 @@
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every item names an explicit rule, such as seed 42's \"Subtract 1 each time\" or seed 45's \"Add 3 each time\", and asks the student to identify the sequence that correctly follows it, matching \"create\" through a selection task."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both increasing rules (Add 1, Add 2, Add 3) and decreasing rules (Subtract 1, Subtract 2, Subtract 3, Subtract 7) appear across the nine samples."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Six-term sequences generated from one constant rule are appropriate to grade 2 quarter 2."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "All nine samples share one task shape — choosing the correctly-built sequence from four options that each contain a single planted error — so no variant asks the student to actually type or extend a sequence."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Whether the rule is add 1 or subtract 7, every item still asks the student to pick the sequence that follows a stated rule, so the difficulty knob is the rule's step size, not a different skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Sequence values stay under 100, e.g. seed 500's \"91, 90, 89, 88, 87, 86\", fitting grade 2 quarter 2 magnitude."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

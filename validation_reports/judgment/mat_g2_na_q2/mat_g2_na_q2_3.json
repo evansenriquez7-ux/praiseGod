@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_na_q2_3",
-  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the width floors, 2026-08-14",
-  "review_date": "2026-08-14",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q2-Harden (mat_g2_na_q2_3), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample set fully satisfies the MATATAG learning competency 'Illustrate subtraction of 2-digit by 1-digit on the number line and as an inverse of addition.' Both core instructional representations are thoroughly tested using 2-digit minuends and 1-digit subtrahends. Number line subtraction is assessed through movement and jumping contexts such as 'A dot is at 15 on the number line. If you move back 5 steps, what number do you reach?' (seed 43) and 'Starting at 60 on the number line, jump back 5 units. What number do you land on? Answer: ___' (seed 44). Subtraction as the inverse of addition is assessed using direct relational statements and hints like 'Since 10 + 1 = 11, what is 11 \u2212 1?' (seed 42) and 'If 49 + 1 = 50, then 50 \u2212 1 = ___. What is the missing number?' (seed 45)."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The items comprehensively cover subtraction of 2-digit numbers by 1-digit numbers across diverse decades and digit values (10s through 90s) and various 1-digit subtrahends (1, 2, 3, 4, 5, 8, 9). Examples include bridging/crossing multiples of ten such as 'Since 22 + 8 = 30, what is 30 \u2212 8?' (seed 600) and 'What is 58 \u2212 9? (Hint: 49 + 9 = 58)' (seed 502), non-regrouping cases like 'Start at 24 on the number line and count back 1. What is 24 \u2212 1?' (seed 46), and larger minuends like 'Since 84 + 9 = 93, what is 93 \u2212 9? Answer: ___' (seed 501)."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "All items are strictly tailored to Grade 2 Quarter 2 learners in terms of sentence length, vocabulary, and cognitive load. Instructions are clear, direct, and avoid superfluous narrative context. Problems such as 'What is 12 \u2212 1? (Hint: 11 + 1 = 12)' (seed 606) and 'What is 20 \u2212 3? (Hint: 17 + 3 = 20)' (seed 602) present scaffolded reasoning without placing an excessive burden on working memory."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample packet demonstrates strong structural and pedagogical variety across four distinct formatters: standard multiple-choice (e.g., 'Since 10 + 1 = 11, what is 11 \u2212 1?' [seed 42]), fill-in-the-blank / cloze (e.g., 'If 74 + 1 = 75, then 75 \u2212 1 = ___. What is the missing number?' [seed 603]), true/false evaluation ('What is 30 \u2212 3? (Hint: 27 + 3 = 30) The answer is 28. True or False?' [seed 50]), and error detection / student work evaluation ('Rico solved: \"If 89 + 4 = 93, then 93 \u2212 4 = ___. What is the missing number?\". Rico says the missing number is 89. Is Rico correct?' [seed 500] and 'Grace solved: \"Start at 15 on the number line and count back 2. What is 15 \u2212 2? (Answer: ___)\". Grace says the missing number is 17. Is Grace correct?' [seed 55])."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every single generated item directly aligns with the competency target without construct under-representation or construct-irrelevant difficulty. There are no operations beyond 2-digit minus 1-digit subtraction, no multi-step word problems exceeding the competency scope, and every item targets either number line visualization or inverse addition relationships (e.g., 'If 13 + 2 = 15, then 15 \u2212 2 = ___. What is the missing number?' [seed 604] and 'Starting at 75 on the number line, jump back 1 units. What number do you land on? Answer: ___' [seed 601])."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical scale is strictly maintained within Grade 2 2-digit by 1-digit bounds: minuends range from 11 up to 93, subtrahends range from 1 to 9, and all resulting differences are non-negative 2-digit numbers or 10. Examples like 'A dot is at 15 on the number line. If you move back 5 steps, what number do you reach?' (seed 43, answer 10) and 'Since 84 + 9 = 93, what is 93 \u2212 9? Answer: ___' (seed 501, answer 84) verify adherence to grade-appropriate number domains."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -10,9 +36,7 @@
     45,
     46,
     50,
-    51,
-    75,
-    82,
+    55,
     500,
     501,
     502,
@@ -21,13 +45,13 @@
     602,
     603,
     604,
-    605
+    606
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 11 − 1?",
+      "question_text": "Since 10 + 1 = 11, what is 11 \u2212 1?",
       "correct_answer": 10,
       "options": [
         {
@@ -55,7 +79,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 15 − 5?",
+      "question_text": "A dot is at 15 on the number line. If you move back 5 steps, what number do you reach?",
       "correct_answer": 10,
       "options": [
         {
@@ -83,7 +107,7 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "60 − 5 = ___",
+      "question_text": "Starting at 60 on the number line, jump back 5 units. What number do you land on? Answer: ___",
       "correct_answer": 55,
       "options": [
         {
@@ -114,155 +138,120 @@
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "50 − 1 = ___",
+      "formatter": "mcq",
+      "question_text": "If 49 + 1 = 50, then 50 \u2212 1 = ___. What is the missing number?",
       "correct_answer": 49,
       "options": [
         {
           "key": "A",
           "value": 50,
-          "text": "50",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 51,
-          "text": "51",
           "is_correct": false
         },
         {
           "key": "C",
           "value": 49,
-          "text": "49",
           "is_correct": true
         },
         {
           "key": "D",
           "value": 48,
-          "text": "48",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "cloze",
-      "question_text": "24 − 1 = ___",
+      "formatter": "mcq",
+      "question_text": "Start at 24 on the number line and count back 1. What is 24 \u2212 1?",
       "correct_answer": 23,
       "options": [
         {
           "key": "A",
           "value": 24,
-          "text": "24",
           "is_correct": false
         },
         {
           "key": "B",
           "value": 23,
-          "text": "23",
           "is_correct": true
         },
         {
           "key": "C",
           "value": 22,
-          "text": "22",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 25,
-          "text": "25",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 50,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The total is 30 and one part is 3. What is the other part?",
-      "correct_answer": 27
-    },
-    {
-      "seed": 51,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 45 and it moves backward 3 numbers. Starting from 45, just count back 3 numbers. Which number will the dot land on?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 43,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 41,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 42,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 48,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 75,
       "formatter": "true_false",
-      "question_text": "80 − 1 = 81. True or False?",
+      "question_text": "What is 30 \u2212 3? (Hint: 27 + 3 = 30) The answer is 28. True or False?",
       "correct_answer": false
     },
     {
-      "seed": 82,
+      "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Dante says: 45 − 2 = 43. Is Dante correct?",
+      "question_text": "Grace solved: \"Start at 15 on the number line and count back 2. What is 15 \u2212 2? (Answer: ___)\". Grace says the missing number is 17. Is Grace correct?",
       "correct_answer": {
-        "has_error": false,
-        "correct_value": 43
+        "has_error": true,
+        "correct_value": 13
       }
     },
     {
       "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "How many items are left?",
-      "correct_answer": "C",
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"If 89 + 4 = 93, then 93 \u2212 4 = ___. What is the missing number?\". Rico says the missing number is 89. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 89
+      }
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "Since 84 + 9 = 93, what is 93 \u2212 9? Answer: ___",
+      "correct_answer": 84,
       "options": [
         {
           "key": "A",
-          "value": 4,
-          "is_correct": false
+          "value": 84,
+          "text": "84",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 93,
+          "value": 85,
+          "text": "85",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 89,
-          "is_correct": true
+          "value": 83,
+          "text": "83",
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 97,
+          "value": 102,
+          "text": "102",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "93 − 9 = 84. True or False?",
-      "correct_answer": true
-    },
-    {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 58 − 9?",
+      "question_text": "What is 58 \u2212 9? (Hint: 49 + 9 = 58)",
       "correct_answer": 49,
       "options": [
         {
@@ -290,7 +279,7 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 30 − 8?",
+      "question_text": "Since 22 + 8 = 30, what is 30 \u2212 8?",
       "correct_answer": 22,
       "options": [
         {
@@ -317,14 +306,40 @@
     },
     {
       "seed": 601,
-      "formatter": "true_false",
-      "question_text": "In a pictograph, Pia's group collected 75 leashes and another group collected 1 leash. How many more did Pia's group collect? The answer is 74. True or False?",
-      "correct_answer": true
+      "formatter": "cloze",
+      "question_text": "Starting at 75 on the number line, jump back 1 units. What number do you land on? Answer: ___",
+      "correct_answer": 74,
+      "options": [
+        {
+          "key": "A",
+          "value": 73,
+          "text": "73",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 76,
+          "text": "76",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 75,
+          "text": "75",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 74,
+          "text": "74",
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is 20 − 3?",
+      "question_text": "What is 20 \u2212 3? (Hint: 17 + 3 = 20)",
       "correct_answer": 17,
       "options": [
         {
@@ -352,7 +367,7 @@
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "75 − 1 = ___",
+      "question_text": "If 74 + 1 = 75, then 75 \u2212 1 = ___. What is the missing number?",
       "correct_answer": 74,
       "options": [
         {
@@ -384,7 +399,7 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 15 − 2?",
+      "question_text": "If 13 + 2 = 15, then 15 \u2212 2 = ___. What is the missing number?",
       "correct_answer": 13,
       "options": [
         {
@@ -410,37 +425,32 @@
       ]
     },
     {
-      "seed": 605,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The total is 42 and one part is 1. What is the other part?",
-      "correct_answer": 41
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "What is 12 \u2212 1? (Hint: 11 + 1 = 12)",
+      "correct_answer": 11,
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 13,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "The competency verb is Illustrate, and it names two illustrations. Only seed 51 works on the number line: 'The dot is at 45 and it moves backward 3 numbers.' is a read_mcq shown with a diagram, and the landing point 42 is right. Only seeds 50 and 605 use the inverse-of-addition framing, 'The total is 30 and one part is 3. What is the other part?' and 'The total is 42 and one part is 1.', both answered as missing addends, 27 and 41. That is 1 of 18 on the number line and 2 of 18 as inverse of addition. The other 15 samples illustrate neither: seed 502 is 'What is 58 − 9?', seed 44 is '60 − 5 = ___', seed 501 is '93 − 9 = 84. True or False?'. Those are bare computation of a subtraction fact and would read identically under a competency that never mentioned a number line or an inverse. Both named illustrations do exist and are correct, so this is not an absence, but with 15 of 18 items carrying no illustration the verb Illustrate is met only in a small minority of what a student actually sees."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Counting the two named illustrations across all 18 samples: number line 1 (seed 51), inverse of addition 2 (seeds 50 and 605), neither 15. Of those 15, thirteen are bare computation such as 'What is 11 − 1?' at seed 42 and '75 − 1 = ___' at seed 603, seed 500 is a visual take-away, 'How many items are left?', which is a picture but not a number line and not a part-whole, and seed 601 is a comparison word problem. Operand-width coverage is complete by contrast: every minuend lands in 10 to 99 and every subtrahend in 1 to 9, with no leakage below either floor. The gap is the illustration half of the sentence. A single number-line item in eighteen leaves the first named representation barely sampled, so a student could finish a session having seen the number line once or, on a shorter set, not at all."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "Number sizes, one-step structure and sentence length all suit Grade 2 Quarter 2, and seed 51 even scaffolds the method with 'Starting from 45, just count back 3 numbers.' Answerability is sound for 17 of 18: the two read formatters, seeds 51 and 500, are shown with diagrams and are judged as visual items, and every other stem carries its own numbers. The exception is seed 601, which opens 'In a pictograph,' but is a true_false formatter with no diagram attached. The counts 75 and 1 are stated in the text, so the item can still be answered, yet a Grade 2 reader is told to look at a pictograph that is not there. The nesting is also the heaviest in the set, since 'How many more did' a group collect must be resolved and only then checked against 'The answer is 74. True or False?'. That is a solvable item with a stem that promises a picture it does not deliver."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Six distinct formatters across 18 samples: mcq at seeds 42, 43, 502, 600, 602 and 604, cloze at seeds 44, 45, 46 and 603, true_false at seeds 75, 501 and 601, read_mcq at seeds 51 and 500, read_fill_in_blank at seeds 50 and 605, and error_detect at seed 82, 'Dante says: 45 − 2 = 43. Is Dante correct?'. The question stems vary in shape too, from the plain prompt 'What is 30 − 8?' to the equation frame '50 − 1 = ___' to the verification frame '80 − 1 = 81. True or False?', so the student is asked to compute, to fill, to verify, to critique and to read a diagram. Distractors are purposeful rather than random: seed 43 offers 20 against 'What is 15 − 5?', the sum instead of the difference, and seed 500 offers 93 and 4, the two operands themselves. Formatter and framing breadth is genuinely good here."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every one of the 18 items is a 2-digit minuend minus a 1-digit subtrahend, exactly the width the sentence names. Smallest minuend is 11 at seed 42, 'What is 11 − 1?', largest is 93, appearing at seed 501 in '93 − 9 = 84. True or False?' and at the visual seed 500, whose distractors 93 and 4 fix the operands behind 'How many items are left?'. Smallest subtrahend is 1 at seeds 42, 45, 46, 75, 601, 603 and 605, largest is 9 at seeds 501 and 502. No minuend falls under 10 and no subtrahend reaches 10, so both floors and both ceilings hold. Values that merely appear were not counted as operands: the 81 in '80 − 1 = 81. True or False?' at seed 75 is the planted wrong result, correctly marked false since 80 minus 1 is 79, and the 43 in seed 82 is the asserted result, correctly marked as no error. Arithmetic is right in all 18, including the regrouping cases '60 − 5 = ___' at 55, 'What is 20 − 3?' at 17 and 'What is 58 − 9?' at 49. Nothing exceeds the competency into 2-digit subtrahends or later content."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Minuends spread across the whole 2-digit band rather than clustering: 11, 15, 15, 20, 24, 30, 30, 42, 45, 45, 50, 58, 60, 75, 75, 80, 93, 93. Subtrahends use the full 1 to 9 range. Seven of the 18 require regrouping past a ones digit, including '60 − 5 = ___', 'What is 30 − 8?', 'What is 20 − 3?' and 'What is 58 − 9?', so the set is not uniformly easy. The one imbalance worth naming is that a subtrahend of 1 carries 7 of the 18 items and the pair 75 minus 1 appears twice, at seed 603 as '75 − 1 = ___' and again inside seed 601. Even so, two of those seven, '50 − 1 = ___' and '80 − 1 = 81. True or False?', cross a zero in the ones place and are not trivial for Grade 2. Trivial subtrahends are frequent but do not dominate, and the magnitude range is well suited to Grade 2 Quarter 2."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

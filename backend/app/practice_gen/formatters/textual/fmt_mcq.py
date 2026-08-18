@@ -55,7 +55,7 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
             return f"Estimate the difference: {real_a} − {real_b}"
-        if values.get("task_type") in ("expanded_form", "counting_back", "taking_away") and values.get("question"):
+        if values.get("task_type") in ("expanded_form", "counting_back", "taking_away", "illustrate_number_line_or_inverse", "inverse_of_addition", "number_line_subtraction", "one_or_two_step_subtraction", "one_step_subtraction", "two_step_subtraction") and values.get("question"):
             # Same root cause as addition's identical fix: this formatter
             # rebuilds its own pure-context question independently of
             # base_generator's values["question"] preference.

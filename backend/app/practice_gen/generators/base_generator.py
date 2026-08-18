@@ -21,6 +21,7 @@ Refactored from:
 
 from __future__ import annotations
 
+import hashlib
 import importlib
 import json
 import math
@@ -684,7 +685,7 @@ def _build_symbolic_question(
             real_a = values.get("real_a", a)
             real_b = values.get("real_b", b)
             return f"Estimate the difference: {real_a} − {real_b}"
-        if values.get("task_type") in ("expanded_form", "counting_back", "taking_away") and values.get("question"):
+        if values.get("task_type") in ("expanded_form", "counting_back", "taking_away", "illustrate_number_line_or_inverse", "inverse_of_addition", "number_line_subtraction", "one_or_two_step_subtraction", "one_step_subtraction", "two_step_subtraction") and values.get("question"):
             return values["question"]
         if blank == "result":
             return f"What is {a} − {b}?"
@@ -980,10 +981,22 @@ def _build_symbolic_question(
                 desc = f"{parts[0]} and {parts[1]}"
             else:
                 desc = ", ".join(parts[:-1]) + f", and {parts[-1]}"
+            desc_hash = int(hashlib.md5(desc.encode()).hexdigest(), 16)
             if is_centavo:
                 # Name the unit the answer is in, so the total is unambiguous.
-                return f"What is the total value of {desc}, in centavos?"
-            return f"What is the total value of {desc}?"
+                templates = [
+                    f"What is the total value of {desc}, in centavos?",
+                    f"Find the total amount of {desc}, in centavos:",
+                    f"How much is {desc} altogether, in centavos?",
+                ]
+                return templates[desc_hash % len(templates)]
+            templates = [
+                f"What is the total value of {desc}?",
+                f"Find the total amount of {desc}:",
+                f"How much is {desc} altogether?",
+                f"Determine the total value of {desc}:",
+            ]
+            return templates[desc_hash % len(templates)]
         else:
             total = values.get("total", values.get("result", a))
             return f"What is the total value of the money shown?"

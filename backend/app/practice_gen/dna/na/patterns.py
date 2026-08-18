@@ -274,10 +274,14 @@ def generate_params(
             ])
             question = q_template
         else:
-            question = (
-                f"You want to create {'an' if pattern_label[0] in 'aeiou' else 'a'} "
-                f"{pattern_label} where the rule is: {rule}. Which sequence correctly creates it?"
-            )
+            first_term = valid_seq[0]
+            question_templates = [
+                f"You want to create {'an' if pattern_label[0] in 'aeiou' else 'a'} {pattern_label} where the rule is: {rule}. Which sequence correctly creates it?",
+                f"Start at {first_term} and create {'an' if pattern_label[0] in 'aeiou' else 'a'} {pattern_label} with the rule: {rule}. Which pattern did you create?",
+                f"Which sequence correctly shows {'an' if pattern_label[0] in 'aeiou' else 'a'} {pattern_label} starting at {first_term} and following the rule: {rule}?",
+                f"Create a pattern that starts at {first_term} and uses the rule: {rule}. Which sequence shows this pattern?",
+            ]
+            question = rng.choice(question_templates)
         return {
             "blank_target": "answer",
             "task_type": "identify_valid_pattern",

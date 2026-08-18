@@ -77,6 +77,16 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
                 f"{decompose_to_places(a)} {decompose_to_places(b)} "
                 f"Subtract the place values, then find what's left: {a} − {b} = ___"
             )
+        if values.get("task_type") in ("illustrate_number_line_or_inverse", "inverse_of_addition", "number_line_subtraction") and values.get("question"):
+            q = values["question"]
+            if "___" in q:
+                return q
+            return f"{q} Answer: ___"
+        if values.get("task_type") in ("one_or_two_step_subtraction", "one_step_subtraction", "two_step_subtraction") and values.get("question"):
+            q = values["question"]
+            if "___" in q:
+                return q
+            return f"{q} Answer: ___"
         if values.get("task_type") == "counting_back" and blank_target == "result":
             return f"Start at {a}. Count back {b}. You land on ___"
         if values.get("task_type") == "taking_away" and blank_target == "result":

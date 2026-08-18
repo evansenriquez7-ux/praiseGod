@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_na_q2_2",
-  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the cloze blanking fix, 2026-08-14",
-  "review_date": "2026-08-14",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q2-Harden (mat_g2_na_q2_2), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The generated sample items strictly fulfill the competency requirement to 'Solve problems involving addition with sums up to 1000, including problems involving money, with and without regrouping.' Money contexts are well-represented across multiple scenarios such as purchasing items in 'Nanding bought a pencil for \u20b12 and an eraser for \u20b110. How much did Nanding spend in all?' (seed 43), combining pocket money in 'Ate Gab has \u20b11 in one pocket and \u20b1120 in another pocket. How much money does Ate Gab have in total?' (seed 45), and saving money across days in 'Sir Rez saved \u20b120 on Monday and \u20b1502 on Tuesday. How much money did Sir Rez save altogether?' (seed 602). General word problems also address addition in non-monetary contexts such as combining objects in 'Ate Joy has 4 seeds. A friend has 15 seeds. If they put all their seeds together, how many seeds do they have in all?' (seed 46) and 'There are 200 canvases in one basket and 705 canvases in another basket. How many canvases are there in all?' (seed 501). Sums span from basic 2-digit combinations up to the 1000 limit with regrouping in 'Kuya Renz is on step 500. Kuya Renz climbs up 500 more steps. What step is Kuya Renz on now?' (seed 502)."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The packet comprehensively covers the key sub-cases described in the competency. It provides pure counting and movement problems like 'Start at 10. Count up 12 more. What number do you land on?' (seed 42), discrete object addition like 'Nanding had 100 water bowls. Then Nanding got 670 more. How many water bowls does Nanding have now?' (seed 500) and 'One basket has 5 leashes. Another basket has 50 leashes. If you put all the leashes together, how many leashes are there?' (seed 600), as well as multi-digit addition without regrouping like 'There are 200 canvases in one basket and 705 canvases in another basket. How many canvases are there in all?' (seed 501). Money problems are thoroughly varied, covering saving in 'Kuya Renz saved \u20b15 on Monday and \u20b1200 on Tuesday. How much money did Kuya Renz save altogether?' (seed 50) and receiving gifts in 'Coach Nora had \u20b15 and received \u20b1501 more from Nanay. How much money does Coach Nora have in all?' (seed 44)."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The language, syntax, and cognitive load are perfectly tuned for Grade 2 Quarter 2 learners. Sentences are concise and use familiar Filipino cultural names and honorifics such as 'Ate Beng', 'Kuya Renz', 'Nanay', and 'Aling Rosa'. The contexts involve everyday concrete scenarios such as 'Aling Rosa bought a pencil for \u20b120 and an eraser for \u20b120. How much did Aling Rosa spend in all? The answer is 40. True or False?' (seed 51) and 'Coach Roel had \u20b115 and received \u20b110 more from Nanay. How much money does Coach Roel have in all?' (seed 601). No extraneous reading load or advanced mathematical terminology is introduced."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "There is an excellent distribution of formatters and problem structures across the sample set. The packet includes standard multiple choice questions like 'Kuya Renz has \u20b13 in one pocket and \u20b115 in another pocket. How much money does Kuya Renz have in total?' (seed 604), cloze completion items like 'Ate Beng saved \u20b112 on Monday and \u20b140 on Tuesday. How much money did Ate Beng save altogether?' (seed 603), true/false validation in 'Aling Rosa bought a pencil for \u20b120 and an eraser for \u20b120. How much did Aling Rosa spend in all? The answer is 40. True or False?' (seed 51), and error analysis items assessing reasoning in 'Grace solved this problem: \"Romel bought a pencil for \u20b16 and an eraser for \u20b110. How much did Romel spend in all?\" Grace says the answer is 15. Is Grace correct?' (seed 55) and 'Liza solved this problem: \"Ate Beng has \u20b113 in one pocket and \u20b115 in another pocket. How much money does Ate Beng have in total?\" Liza says the answer is 28. Is Liza correct?' (seed 605)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All questions focus directly on the target addition skill without introducing irrelevant construct complexity. Distractors target realistic arithmetic misconceptions, such as place-value concatenation errors (e.g., 5060 in seed 44: 'Coach Nora had \u20b15 and received \u20b1501 more from Nanay. How much money does Coach Nora have in all?'), off-by-one counting errors (e.g., 23 and 21 for sum 22 in seed 42: 'Start at 10. Count up 12 more. What number do you land on?'), and operation confusion (e.g., 5 vs 25 in seed 601: 'Coach Roel had \u20b115 and received \u20b110 more from Nanay. How much money does Coach Roel have in all?')."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical scale accurately reflects the competency's 'sums up to 1000' specification. The samples span single-to-double digit sums such as 12 in 'Nanding bought a pencil for \u20b12 and an eraser for \u20b110. How much did Nanding spend in all?' (seed 43) and 18 in 'Kuya Renz has \u20b13 in one pocket and \u20b115 in another pocket. How much money does Kuya Renz have in total?' (seed 604), three-digit addends yielding 770 in 'Nanding had 100 water bowls. Then Nanding got 670 more. How many water bowls does Nanding have now?' (seed 500) and 905 in 'There are 200 canvases in one basket and 705 canvases in another basket. How many canvases are there in all?' (seed 501), reaching the exact ceiling of 1000 in 'Kuya Renz is on step 500. Kuya Renz climbs up 500 more steps. What step is Kuya Renz on now?' (seed 502)."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -26,27 +52,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Daniel has ₱1 in bills and ₱40 in coins. How much money does Daniel have in all?",
-      "correct_answer": 41,
+      "question_text": "Start at 10. Count up 12 more. What number do you land on?",
+      "correct_answer": 22,
       "options": [
         {
           "key": "A",
-          "value": 51,
+          "value": 32,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 42,
+          "value": 23,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 41,
+          "value": 22,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 40,
+          "value": 21,
           "is_correct": false
         }
       ]
@@ -54,27 +80,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Kuya Bien has ₱28 in bills and ₱30 in coins. How much money does Kuya Bien have in all?",
-      "correct_answer": 58,
+      "question_text": "Nanding bought a pencil for \u20b12 and an eraser for \u20b110. How much did Nanding spend in all?",
+      "correct_answer": 12,
       "options": [
         {
           "key": "A",
-          "value": 58,
+          "value": 12,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 57,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 59,
+          "value": 13,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 68,
+          "value": 22,
           "is_correct": false
         }
       ]
@@ -82,7 +108,7 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 ₱500 bill, 1 ₱5 coin, and 1 ₱1 coin?",
+      "question_text": "Coach Nora had \u20b15 and received \u20b1501 more from Nanay. How much money does Coach Nora have in all?",
       "correct_answer": 506,
       "options": [
         {
@@ -110,7 +136,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 ₱100 bill, 1 ₱20 bill, and 1 ₱1 coin?",
+      "question_text": "Ate Gab has \u20b11 in one pocket and \u20b1120 in another pocket. How much money does Ate Gab have in total?",
       "correct_answer": 121,
       "options": [
         {
@@ -138,27 +164,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Ate Cara has ₱0 in bills and ₱16 in coins. How much money does Ate Cara have in all?",
-      "correct_answer": 16,
+      "question_text": "Ate Joy has 4 seeds. A friend has 15 seeds. If they put all their seeds together, how many seeds do they have in all?",
+      "correct_answer": 19,
       "options": [
         {
           "key": "A",
-          "value": 17,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 16,
+          "value": 19,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 15,
+          "value": 18,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 26,
+          "value": 29,
           "is_correct": false
         }
       ]
@@ -166,7 +192,7 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "Mia has ₱5 in bills and ₱200 in coins. How much money does Mia have in all?",
+      "question_text": "Kuya Renz saved \u20b15 on Monday and \u20b1200 on Tuesday. How much money did Kuya Renz save altogether?",
       "correct_answer": 205,
       "options": [
         {
@@ -198,46 +224,46 @@
     {
       "seed": 51,
       "formatter": "true_false",
-      "question_text": "Lara has ₱19 in bills and ₱0 in coins. How much money does Lara have in all? The answer is 19. True or False?",
+      "question_text": "Aling Rosa bought a pencil for \u20b120 and an eraser for \u20b120. How much did Aling Rosa spend in all? The answer is 40. True or False?",
       "correct_answer": true
     },
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace solved this problem: \"Sora has ₱15 in bills and ₱12 in coins. How much money does Sora have in all?\" Grace says the answer is 37. Is Grace correct?",
+      "question_text": "Grace solved this problem: \"Romel bought a pencil for \u20b16 and an eraser for \u20b110. How much did Romel spend in all?\" Grace says the answer is 15. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
-        "correct_value": 27
+        "correct_value": 16
       }
     },
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "What is the total value of 1 ₱10 coin, 1 ₱5 coin, and 3 ₱1 coins?",
-      "correct_answer": 18,
+      "question_text": "Nanding had 100 water bowls. Then Nanding got 670 more. How many water bowls does Nanding have now?",
+      "correct_answer": 770,
       "options": [
         {
           "key": "A",
-          "value": 18,
-          "text": "18",
+          "value": 770,
+          "text": "770",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 8,
-          "text": "8",
+          "value": 760,
+          "text": "760",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 19,
-          "text": "19",
+          "value": 771,
+          "text": "771",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 180,
-          "text": "180",
+          "value": 7700,
+          "text": "7700",
           "is_correct": false
         }
       ]
@@ -245,27 +271,27 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 ₱10 coin, 1 ₱5 coin, and 3 ₱1 coins?",
-      "correct_answer": 18,
+      "question_text": "There are 200 canvases in one basket and 705 canvases in another basket. How many canvases are there in all?",
+      "correct_answer": 905,
       "options": [
         {
           "key": "A",
-          "value": 18,
+          "value": 905,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 180,
+          "value": 9050,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 8,
+          "value": 895,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 19,
+          "value": 906,
           "is_correct": false
         }
       ]
@@ -273,27 +299,27 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 ₱10 coin and 2 ₱5 coins?",
-      "correct_answer": 20,
+      "question_text": "Kuya Renz is on step 500. Kuya Renz climbs up 500 more steps. What step is Kuya Renz on now?",
+      "correct_answer": 1000,
       "options": [
         {
           "key": "A",
-          "value": 21,
+          "value": 1001,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 20,
+          "value": 1000,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 200,
+          "value": 10000,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 990,
           "is_correct": false
         }
       ]
@@ -301,7 +327,7 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Jomar has ₱5 in bills and ₱50 in coins. How much money does Jomar have in all?",
+      "question_text": "One basket has 5 leashes. Another basket has 50 leashes. If you put all the leashes together, how many leashes are there?",
       "correct_answer": 55,
       "options": [
         {
@@ -329,31 +355,31 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Pia has ₱43 in bills and ₱0 in coins. How much money does Pia have in all?",
-      "correct_answer": 43,
+      "question_text": "Coach Roel had \u20b115 and received \u20b110 more from Nanay. How much money does Coach Roel have in all?",
+      "correct_answer": 25,
       "options": [
         {
           "key": "A",
-          "value": 42,
-          "text": "42",
+          "value": 35,
+          "text": "35",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 53,
-          "text": "53",
+          "value": 5,
+          "text": "5",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 44,
-          "text": "44",
+          "value": 24,
+          "text": "24",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 43,
-          "text": "43",
+          "value": 25,
+          "text": "25",
           "is_correct": true
         }
       ]
@@ -361,7 +387,7 @@
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 ₱500 bill, 1 ₱20 bill, and 2 ₱1 coins?",
+      "question_text": "Sir Rez saved \u20b120 on Monday and \u20b1502 on Tuesday. How much money did Sir Rez save altogether?",
       "correct_answer": 522,
       "options": [
         {
@@ -389,31 +415,31 @@
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "Yna has ₱46 in bills and ₱0 in coins. How much money does Yna have in all?",
-      "correct_answer": 46,
+      "question_text": "Ate Beng saved \u20b112 on Monday and \u20b140 on Tuesday. How much money did Ate Beng save altogether?",
+      "correct_answer": 52,
       "options": [
         {
           "key": "A",
-          "value": 47,
-          "text": "47",
+          "value": 53,
+          "text": "53",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 46,
-          "text": "46",
+          "value": 52,
+          "text": "52",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 56,
-          "text": "56",
+          "value": 62,
+          "text": "62",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 45,
-          "text": "45",
+          "value": 51,
+          "text": "51",
           "is_correct": false
         }
       ]
@@ -421,27 +447,27 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Kris has ₱15 in bills and ₱20 in coins. How much money does Kris have in all?",
-      "correct_answer": 35,
+      "question_text": "Kuya Renz has \u20b13 in one pocket and \u20b115 in another pocket. How much money does Kuya Renz have in total?",
+      "correct_answer": 18,
       "options": [
         {
           "key": "A",
-          "value": 35,
+          "value": 18,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 34,
+          "value": 17,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 45,
+          "value": 28,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 36,
+          "value": 19,
           "is_correct": false
         }
       ]
@@ -449,38 +475,11 @@
     {
       "seed": 605,
       "formatter": "error_detect",
-      "question_text": "Liza solved this problem: \"Ching has ₱0 in bills and ₱36 in coins. How much money does Ching have in all?\" Liza says the answer is 36. Is Liza correct?",
+      "question_text": "Liza solved this problem: \"Ate Beng has \u20b113 in one pocket and \u20b115 in another pocket. How much money does Ate Beng have in total?\" Liza says the answer is 28. Is Liza correct?",
       "correct_answer": {
         "has_error": false,
-        "correct_value": 36
+        "correct_value": 28
       }
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All 17 samples are addition problems set in a money context and every total is correct: seed 602 'What is the total value of 1 ₱500 bill, 1 ₱20 bill, and 2 ₱1 coins?' keys 522, seed 44 keys 506, seed 50 keys 205, and the error_detect item at seed 55 correctly flags 'Grace says the answer is 37' as wrong with 27 as the true total. Every item is answerable from what is printed: the cloze items at seeds 50, 601 and 603 render the whole sentence with no ___, so no operand is blanked out."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The sentence names four things: sums up to 1000, money problems, with regrouping, and without regrouping. Money is present in all 17 samples and the without-regrouping case is abundant, for example seed 43 with 28 and 30. The with-regrouping case is almost absent. Working each sample by column, only seed 502 'What is the total value of 1 ₱10 coin and 2 ₱5 coins?' forces a carry, because 5 plus 5 makes 10; the other 16 are carry-free, including the largest ones such as seed 602 and seed 44. One marginal item is thin evidence for a sub-case the competency names explicitly. Separately, the word including implies money is a subset, yet no non-money addition problem appears in the set."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "One-step totals with values a Grade 2 Quarter 2 pupil can hold. The three-addend denomination items, such as seed 44 'What is the total value of 1 ₱500 bill, 1 ₱5 coin, and 1 ₱1 coin?' and seed 500, add counting load without adding any new operation, which is appropriate here. Reading length is short and the question sentence is always last."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Four formatters appear: mcq, cloze (seed 50), true_false (seed 51) and error_detect (seeds 55 and 605). Two problem framings appear: a bills-and-coins total, and a denomination tally such as 'What is the total value of 1 ₱10 coin and 2 ₱5 coins?' at seed 502. Redundancy note: seeds 500 and 501 carry the identical question text 'What is the total value of 1 ₱10 coin, 1 ₱5 coin, and 3 ₱1 coins?' and differ only in formatter, so the effective variety of the set is slightly smaller than the sample count suggests."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The mathematics matches the competency, but the money facts do not always match Philippine currency, which matters on a node whose own sentence names money. Nine samples use a bills-and-coins frame with a peso amount that cannot be formed from any Philippine banknote: seed 42 'has ₱1 in bills and ₱40 in coins', seed 51 'has ₱19 in bills and ₱0 in coins', seed 604 'has ₱15 in bills and ₱20 in coins', and seed 601 'has ₱43 in bills and ₱0 in coins'. The smallest note in circulation is 20 pesos, so 1, 15, 19 and 43 pesos in bills teach a false denomination fact to the same pupils who are learning denominations. The denomination-tally items, seed 44 and seed 602, are accurate and show the correct pattern."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest operand is 500 pesos, at seed 602 'What is the total value of 1 ₱500 bill, 1 ₱20 bill, and 2 ₱1 coins?', and the largest sum is 522, both inside the sums-up-to-1000 bound. Values above the bound appear only as distractors and never as operands, namely 5220 at seed 602 and 1210 at seed 45. Realism note within range: seed 50 says 'has ₱5 in bills and ₱200 in coins', and 200 pesos entirely in coins is an odd quantity for a child to hold."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

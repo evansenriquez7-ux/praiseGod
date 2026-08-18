@@ -129,6 +129,13 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
                 f"Subtract the place values, then find what's left: "
                 f"{slot('a', value=a)} − {slot('b', value=b)} = {slot('result', value=r)}"
             )
+        if values.get("task_type") in ("illustrate_number_line_or_inverse", "inverse_of_addition", "number_line_subtraction") and values.get("question"):
+            q = values["question"]
+            if "___" in q:
+                return q.replace("___", f"{slot('result', value=r)}")
+            return f"{q} (Answer: {slot('result', value=r)})"
+        if values.get("task_type") in ("one_or_two_step_subtraction", "one_step_subtraction", "two_step_subtraction") and values.get("question"):
+            return f"{values['question']} (Answer: {slot('result', value=r)})"
         if values.get("task_type") == "counting_back" and blank_target == "result":
             return f"Start at {slot('a', value=a)}. Count back {slot('b', value=b)}. You land on {slot('result', value=r)}"
         if values.get("task_type") == "taking_away" and blank_target == "result":
