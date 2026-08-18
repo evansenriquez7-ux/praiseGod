@@ -24,7 +24,7 @@ from backend.app.practice_gen.dna.base import (
 _PARAM_BOUNDS: Dict[str, Dict[str, Any]] = {
     "g1": {
         "length_min": 1,
-        "length_max": 100,
+        "length_max": 12,
         "units": ["paperclips", "hands", "steps", "blocks"],
     },
     "g2": {
@@ -199,7 +199,7 @@ def generate_params(
         "read_measurement", "compare", "convert", "estimate", "choose_unit",
         "distance_between", "equal_length", "length_or_distance",
         "compare_distance", "compare_length_or_distance",
-        "measure_compare_or_distance",
+        "measure_compare_or_distance", "solve_problems_non_standard", "solve_word_problem",
     ):
         raise ValueError(
             f"generate_params (length_measurement): unknown task_type '{task_type}'."
@@ -252,18 +252,32 @@ def generate_params(
 
     if task_type == "compare":
         # Comparing two lengths needs at least two distinct values to draw from.
-        # At the bottom of the difficulty window the mapped ceiling collapses onto
-        # the floor (log_interpolate(1, 100, 0.0) == 1), and the "keep drawing
-        # until they differ" loops below then spin forever — a real hang, not a
-        # slow path. One unit of headroom is the domain minimum for the task.
         if unit_mode == "non_standard":
             unit = rng.choice(_NON_STANDARD_UNITS)
-            l_min, l_max = bounds.get("length_min", 1), bounds.get("length_max", 100)
-            l_max_current = max(l_min + 1, int(log_interpolate(l_min, l_max, scalar)))
-            val_a = rng.randint(l_min, l_max_current)
-            val_b = rng.randint(l_min, l_max_current)
+            l_min, l_max = 2, 9
+            val_a = rng.randint(l_min, l_max)
+            val_b = rng.randint(l_min, l_max)
             while val_b == val_a:
-                val_b = rng.randint(l_min, l_max_current)
+                val_b = rng.randint(l_min, l_max)
+            ask_shorter = rng.random() < 0.5
+            answer = min(val_a, val_b) if ask_shorter else max(val_a, val_b)
+            other = max(val_a, val_b) if ask_shorter else min(val_a, val_b)
+            unit_a = unit[:-1] if val_a == 1 and unit.endswith("s") else unit
+            unit_b = unit[:-1] if val_b == 1 and unit.endswith("s") else unit
+            dists = [other, answer + 1, max(1, answer - 1)]
+            dists = [d for d in dists if d != answer][:3]
+            comp_word = "shorter" if ask_shorter else "longer"
+            return {
+                "blank_target": "answer",
+                "value_a": val_a,
+                "value_b": val_b,
+                "unit": unit,
+                "unit_type": unit_mode,
+                "task_type": "compare",
+                "answer": answer,
+                "distractors": dists,
+                "question": f"Which is {comp_word}: {val_a} {unit_a} or {val_b} {unit_b}?",
+            }
         else:
             unit = unit_mode
             lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
@@ -272,49 +286,51 @@ def generate_params(
             val_b = rng.randint(lo, hi)
             while val_b == val_a:
                 val_b = rng.randint(lo, hi)
-        answer = max(val_a, val_b)
-        return {
-            "blank_target": "answer",
-            "value_a": val_a,
-            "value_b": val_b,
-            "unit": unit,
-            "unit_type": unit_mode,
-            "task_type": "compare",
-            "answer": answer,
-            "distractors": [val_a, val_b, min(val_a, val_b)],
-        }
+            answer = max(val_a, val_b)
+            return {
+                "blank_target": "answer",
+                "value_a": val_a,
+                "value_b": val_b,
+                "unit": unit,
+                "unit_type": unit_mode,
+                "task_type": "compare",
+                "answer": answer,
+                "distractors": [val_a, val_b, min(val_a, val_b)],
+            }
 
     if task_type == "compare_distance":
-        # "Compare lengths AND distances" (mat_g1_mg_q2_1) -- "compare"
-        # above only ever renders "Which is longer: X or Y?" (object-length
-        # framing), so the "distances" half of the competency was never
-        # once exercised in any sample. Same value/answer shape as
-        # "compare", distance-between-two-things framing instead.
+        # "Compare lengths AND distances" (mat_g1_mg_q2_1)
         if unit_mode == "non_standard":
-            unit = rng.choice(_NON_STANDARD_UNITS)
-            l_min, l_max = bounds.get("length_min", 1), bounds.get("length_max", 100)
-            l_max_current = max(l_min + 1, int(log_interpolate(l_min, l_max, scalar)))
-            val_a = rng.randint(l_min, l_max_current)
-            val_b = rng.randint(l_min, l_max_current)
+            unit = rng.choice(["steps", "blocks", "hands"])
+            l_min, l_max = 2, 9
+            val_a = rng.randint(l_min, l_max)
+            val_b = rng.randint(l_min, l_max)
             while val_b == val_a:
-                val_b = rng.randint(l_min, l_max_current)
+                val_b = rng.randint(l_min, l_max)
+            ask_shorter = rng.random() < 0.5
+            answer = min(val_a, val_b) if ask_shorter else max(val_a, val_b)
+            other = max(val_a, val_b) if ask_shorter else min(val_a, val_b)
+            unit_a = unit[:-1] if val_a == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
+            unit_b = unit[:-1] if val_b == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
+            dists = [other, answer + 1, max(1, answer - 1)]
+            dists = [d for d in dists if d != answer][:3]
+            comp_word = "shorter" if ask_shorter else "longer"
+            return {
+                "blank_target": "answer",
+                "value_a": val_a,
+                "value_b": val_b,
+                "unit": unit,
+                "unit_type": unit_mode,
+                "task_type": "compare_distance",
+                "answer": answer,
+                "distractors": dists,
+                "question": (
+                    f"The distance from the bench to the tree is {val_a} {unit_a}. "
+                    f"The distance from the gate to the tree is {val_b} {unit_b}. "
+                    f"Which distance is {comp_word}?"
+                ),
+            }
         else:
-            unit = unit_mode
-            lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
-            # This frames a distance *between two landmarks* (bench/tree/
-            # gate), not an object's own length -- a real-world floor of
-            # 20cm is far more plausible than the object-length "compare"
-            # branch's 1cm floor (nobody describes a bench and a tree as
-            # 6cm apart). Blind review of mat_g2_mg_q2_3 flagged exactly
-            # this: "distance from the bench to the tree is 6 cm".
-            # Metres. Raising the centimetre floor to 20 was the previous attempt at
-            # this and it treated the symptom: "The distance from the bench to the
-            # tree is 22 cm." is still not a distance anyone would state in
-            # centimetres. mat_g2_mg_q2_0's competency says "distance in meters"
-            # outright, and mat_g2_mg_q2_1 teaches the same thing -- it rewards "m"
-            # for the distance between the barangay hall and the plaza -- so a
-            # sibling node asserting a 20 cm landmark gap contradicts what the pupil
-            # was just taught.
             unit = "m"
             lo, hi = _standard_unit_bounds(bounds, "m", scalar)
             hi = max(hi, lo + 1)
@@ -322,24 +338,24 @@ def generate_params(
             val_b = rng.randint(lo, hi)
             while val_b == val_a:
                 val_b = rng.randint(lo, hi)
-        answer = max(val_a, val_b)
-        unit_a = unit[:-1] if val_a == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
-        unit_b = unit[:-1] if val_b == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
-        return {
-            "blank_target": "answer",
-            "value_a": val_a,
-            "value_b": val_b,
-            "unit": unit,
-            "unit_type": unit_mode,
-            "task_type": "compare_distance",
-            "answer": answer,
-            "distractors": [val_a, val_b, min(val_a, val_b)],
-            "question": (
-                f"The distance from the bench to the tree is {val_a} {unit_a}. "
-                f"The distance from the gate to the tree is {val_b} {unit_b}. "
-                f"Which distance is longer?"
-            ),
-        }
+            answer = max(val_a, val_b)
+            unit_a = unit[:-1] if val_a == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
+            unit_b = unit[:-1] if val_b == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
+            return {
+                "blank_target": "answer",
+                "value_a": val_a,
+                "value_b": val_b,
+                "unit": unit,
+                "unit_type": unit_mode,
+                "task_type": "compare_distance",
+                "answer": answer,
+                "distractors": [val_a, val_b, min(val_a, val_b)],
+                "question": (
+                    f"The distance from the bench to the tree is {val_a} {unit_a}. "
+                    f"The distance from the gate to the tree is {val_b} {unit_b}. "
+                    f"Which distance is longer?"
+                ),
+            }
 
     if task_type == "choose_unit":
         # "Identify and use the appropriate unit (m or cm)" (mat_g2_mg_q2_1)
@@ -504,38 +520,86 @@ def generate_params(
         }
 
     if task_type == "distance_between":
-        # "the distance between two objects" (mat_g1_mg_q2_0's second named
-        # sub-task) is the same non-standard-unit counting skill as
-        # read_measurement, applied to the gap between two objects rather
-        # than a single object's length -- MATATAG G1 doesn't distinguish
-        # them numerically, only by what is being measured. G1-only, so
-        # unit_mode is always non_standard here.
-        unit = rng.choice(_NON_STANDARD_UNITS)
-        l_min, l_max = bounds.get("length_min", 1), bounds.get("length_max", 100)
-        l_max_current = max(l_min, int(log_interpolate(l_min, l_max, scalar)))
-        tick_options = [1, 2, 5, 10]
-        tick_step = tick_options[min(3, int(scalar * 4))]
-        if l_max_current > 50:
-            tick_step = max(tick_step, 10)
-        elif l_max_current > 20:
-            tick_step = max(tick_step, 5)
-        min_mult = max(1, (l_min + tick_step - 1) // tick_step)
-        max_mult = max(min_mult, l_max_current // tick_step)
-        length = rng.randint(min_mult, max_mult) * tick_step
-        obj_a, obj_b = rng.sample(["a ball", "a box", "a chair", "a bag", "a toy"], 2)
+        # "the distance between two objects" (mat_g1_mg_q2_0's second named sub-task)
+        unit = rng.choice(["steps", "blocks", "hands", "paperclips"])
+        max_u = {"steps": 8, "hands": 8, "blocks": 10, "paperclips": 12, "crayons": 6}.get(unit, 8)
+        length = rng.randint(2, max_u)
+        obj_a, obj_b = rng.sample(["a ball", "a box", "a chair", "a bag", "a desk", "a shelf"], 2)
         unit_word = unit[:-1] if length == 1 and unit.endswith("s") else unit
+        dists = [d for d in [length + 1, max(1, length - 1), length + 2, length + 3] if d != length][:3]
         return {
             "blank_target": "answer",
             "length": length,
             "unit": unit,
             "unit_type": "non_standard",
             "task_type": "distance_between",
-            "tick_step": tick_step,
             "answer": length,
+            "distractors": dists,
             "question": (
                 f"{obj_a[0].upper()}{obj_a[1:]} and {obj_b} are placed apart. "
                 f"The distance between them is ___ {unit_word}."
             ),
+        }
+
+    if task_type in ("solve_problems_non_standard", "solve_word_problem") and grade < 2:
+        # "Solve problems involving lengths and distances using non-standard units" (mat_g1_mg_q2_2)
+        problem_mode = rng.choice(["length_diff", "length_sum", "dist_diff", "dist_sum"])
+        if problem_mode == "length_diff":
+            obj_a, obj_b = rng.choice([
+                ("a notebook", "a pencil"), ("a book", "a crayon"),
+                ("a shoe", "an eraser"), ("a long ribbon", "a short ribbon"),
+                ("a stick", "a spoon")
+            ])
+            unit = rng.choice(["paperclips", "blocks", "hands"])
+            len_a = rng.randint(4, 9)
+            len_b = rng.randint(1, len_a - 1)
+            unit_b = unit[:-1] if len_b == 1 and unit.endswith("s") else unit
+            ans = len_a - len_b
+            q = f"{obj_a.capitalize()} is {len_a} {unit} long. {obj_b.capitalize()} is {len_b} {unit_b} long. How many {unit} longer is {obj_a} than {obj_b}?"
+        elif problem_mode == "length_sum":
+            obj_a, obj_b = rng.choice([
+                ("a pencil", "an eraser"), ("a red ribbon", "a blue ribbon"),
+                ("a stick", "a marker"), ("a spoon", "a fork")
+            ])
+            unit = rng.choice(["paperclips", "blocks"])
+            len_a = rng.randint(2, 5)
+            len_b = rng.randint(2, 5)
+            ans = len_a + len_b
+            q = f"{obj_a.capitalize()} is {len_a} {unit} long and {obj_b} is {len_b} {unit} long. If they are placed end to end, what is their total length in {unit}?"
+        elif problem_mode == "dist_diff":
+            loc_a, loc_b = rng.choice([
+                ("the door", "the window"), ("the chair", "the bookshelf"),
+                ("the reading corner", "the chalkboard"), ("the gate", "the bench")
+            ])
+            unit = "steps"
+            len_a = rng.randint(5, 9)
+            len_b = rng.randint(1, len_a - 1)
+            unit_b = "step" if len_b == 1 else "steps"
+            ans = len_a - len_b
+            q = f"From the teacher's desk, it is {len_a} steps to {loc_a} and {len_b} {unit_b} to {loc_b}. How many steps farther is {loc_a} than {loc_b}?"
+        else:  # dist_sum
+            loc_a, loc_b = rng.choice([
+                ("the desk to the door", "the door to the window"),
+                ("the chair to the desk", "the desk to the shelf"),
+                ("the gate to the tree", "the tree to the bench")
+            ])
+            unit = "steps"
+            len_a = rng.randint(2, 5)
+            len_b = rng.randint(2, 5)
+            ans = len_a + len_b
+            name = rng.choice(["Ana", "Ben", "Carlo", "Dan", "Elena", "Mia", "Leo"])
+            q = f"{name} walked {len_a} steps from {loc_a}, and then {len_b} steps from {loc_b}. How many steps did {name} walk in all?"
+
+        dists = [d for d in [ans + 1, max(1, ans - 1), ans + 2, ans + 3] if d != ans][:3]
+        return {
+            "blank_target": "answer",
+            "length": ans,
+            "unit": unit,
+            "unit_type": "non_standard",
+            "task_type": task_type,
+            "answer": ans,
+            "distractors": dists,
+            "question": q,
         }
 
     if task_type == "equal_length":
@@ -637,110 +701,22 @@ def generate_params(
         }
 
     if unit_mode == "non_standard":
-        unit = rng.choice(_NON_STANDARD_UNITS)
-        l_min, l_max = bounds.get("length_min", 1), bounds.get("length_max", 100)
-
-        # We use log interpolate so we spend a good amount of time in 1-20 range before jumping to 100
-        l_max_current = max(l_min, int(log_interpolate(l_min, l_max, scalar)))
-
-        # Calculate tick step based on difficulty (1 to 10)
-        tick_options = [1, 2, 5, 10]
-        tick_step = tick_options[min(3, int(scalar * 4))]
-
-        # Ensure UX is visually clear for larger numbers (prevent too many tiny ticks)
-        if l_max_current > 50:
-            tick_step = max(tick_step, 10)
-        elif l_max_current > 20:
-            tick_step = max(tick_step, 5)
-
-        # Snap the length to a multiple of tick_step so it always lands exactly on a tick mark
-        min_mult = max(1, (l_min + tick_step - 1) // tick_step)
-        max_mult = max(min_mult, l_max_current // tick_step)
-        length = rng.randint(min_mult, max_mult) * tick_step
-
-        result = {
+        obj = rng.choice(["a pencil", "a spoon", "a notebook", "a ribbon", "a shoe", "a paintbrush"])
+        unit = rng.choice(["paperclips", "blocks", "hands", "crayons"])
+        max_u = {"paperclips": 10, "blocks": 8, "crayons": 5, "hands": 4}[unit]
+        length = rng.randint(2, max_u)
+        dists = [d for d in [length + 1, max(1, length - 1), length + 2, length + 3] if d != length][:3]
+        return {
             "blank_target": "answer",
             "length": length,
             "unit": unit,
+            "item": obj,
             "unit_type": "non_standard",
             "task_type": task_type,
-            "tick_step": tick_step,
             "answer": length,
+            "distractors": dists,
+            "question": f"How long is {obj}? Give your answer in {unit}.",
         }
-        if profile.get("context") == "word_problem":
-            # "Solve problems involving lengths ... using non-standard
-            # units" (mat_g1_mg_q2_2) previously had no word-problem
-            # framing at all -- this DNA has no "context" handling
-            # anywhere, so it always rendered the bare read-measurement
-            # stem ("Measure the object. Its length is ___ paperclips.")
-            # regardless of the competency asking for solved *problems*.
-            # A self-contained narrative here (rather than routing through
-            # the shared spine system, whose length spines expect a second
-            # compared/summed value this single-measurement task doesn't
-            # have) keeps this fix narrow and avoids the blank_target /
-            # slot-alias mismatches that pattern has caused elsewhere this
-            # session.
-            # "a table" deliberately excluded: "table" is reserved
-            # NOT_YET_KNOWN vocabulary (data-table terminology introduced
-            # later), unrelated to this furniture sense but still caught by
-            # the vocab-gating checker's literal word match.
-            # "a ruler" excluded for a stronger reason: this branch is the G1
-            # non-standard-units path, and "ruler" is genuinely NOT_YET_KNOWN
-            # at mat_g1_mg_q2_0 — a G1 pupil measuring in steps/paperclips has
-            # not met the ruler yet. It stays available on the G2 standard-units
-            # branch below, where the node introduces it.
-            # The first version of this narrative stated the measurement and then
-            # asked for it back ("It measured 5 paperclips long. How long is a
-            # book in paperclips?"), so the answer was the only number on the
-            # page and could be copied without measuring or reasoning
-            # (validate_matrix §1F). Give the student two measured objects and
-            # ask for the difference: that needs the stated lengths *and* an
-            # operation, and "solve problems involving lengths" is what the
-            # competency asks for in the first place.
-            # Both counts come from the size model, so the numbers match the things.
-            # Ordered longer-first, since the stem asks how much longer obj_a is; a
-            # pair that measures the same in this unit is redrawn rather than nudged,
-            # which would break the pairing the model exists to keep.
-            def _pairs_for(u: str):
-                return [
-                    (a, b) for a in _G1_OBJECT_CM for b in _G1_OBJECT_CM
-                    if _units_spanning(a, u) > _units_spanning(b, u)
-                ]
-
-            candidates = _pairs_for(unit)
-            if not candidates:
-                # A unit can be too coarse to tell these objects apart: every
-                # classroom object is one step long, so a "how many steps longer"
-                # question has no answer worth asking. That is a property of the
-                # unit, not a failure -- steps measure a room, not a pencil -- so
-                # the unit is re-chosen from those that can actually discriminate,
-                # deterministically from this call's own rng.
-                usable = sorted(u for u in _NON_STANDARD_UNITS if _pairs_for(u))
-                if not usable:
-                    raise ValueError(
-                        f"length_measurement: no non-standard unit can distinguish "
-                        f"any two objects in _G1_OBJECT_CM (grade={grade}, "
-                        f"seed={seed}); the size model is inconsistent."
-                    )
-                unit = rng.choice(usable)
-                result["unit"] = unit
-                candidates = _pairs_for(unit)
-            obj_a, obj_b = rng.choice(sorted(candidates))
-            length = _units_spanning(obj_a, unit)
-            shorter = _units_spanning(obj_b, unit)
-            result["length"] = length
-            result["length_b"] = shorter
-            result["answer"] = length - shorter
-            # length is guaranteed >= 2 above, but shorter (1..length-1) can
-            # be exactly 1 -- "1 paperclips" is a plural-agreement error a
-            # Grade 1 reader stumbles on (blind review of mat_g1_mg_q2_2).
-            shorter_unit = unit[:-1] if shorter == 1 and unit.endswith("s") else unit
-            result["question"] = (
-                f"{obj_a[0].upper()}{obj_a[1:]} is {length} {unit} long. "
-                f"{obj_b[0].upper()}{obj_b[1:]} is {shorter} {shorter_unit} long. "
-                f"How many {unit} longer is {obj_a} than {obj_b}?"
-            )
-        return result
 
     if task_type != "convert":
         lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)

@@ -833,18 +833,9 @@ def _parse_competency_bounds(
         elif "measure and compare lengths" in text:
             bounds["task_type"] = "measure_compare_or_distance"
         elif "compare lengths and distances" in text:
-            # mat_g1_mg_q2_1 matched none of the conditions above, so it
-            # also silently defaulted to read_measurement and never once
-            # compared two values. Matched on the specific phrase rather
-            # than a bare "compare" substring: mat_g2_mg_q2_0 ("Measure
-            # and compare lengths...") also contains "compare" but names a
-            # dual measure-and-compare skill this single-value binding
-            # would only half-cover, and it is out of scope for this fix.
-            # "compare" alone only ever renders "Which is longer: X or Y?"
-            # (object-length framing) -- the "distances" half of this
-            # competency's own name was never once exercised. Alternate
-            # between the length- and distance-framed comparisons per seed.
             bounds["task_type"] = "compare_length_or_distance"
+        elif "solve problems" in text:
+            bounds["task_type"] = "solve_problems_non_standard" if grade < 2 else "solve_word_problem"
 
     # Pictographs: bind task_type per node -- the DNA's own default
     # (task_type="read_value") silently governed every unbound node, and

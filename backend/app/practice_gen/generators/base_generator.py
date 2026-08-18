@@ -1020,6 +1020,8 @@ def _build_symbolic_question(
 
     # ── Measurement ───────────────────────────────────────────────────────────
     if concept == "length_measurement":
+        if values.get("question"):
+            return values["question"]
         task_type = values.get("task_type")
         if task_type == "convert":
             val = values.get("value")

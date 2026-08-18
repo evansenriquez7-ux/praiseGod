@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g1_mg_q2_0",
-  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the G1 ruler and unit-size fixes, 2026-08-13",
-  "review_date": "2026-08-13",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1-MG-Q2-Harden (mat_g1_mg_q2_0..mat_g1_mg_q2_2), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items successfully fulfill the competency by asking students to visually quantify measurements. They properly evaluate both the length of an object (e.g., \"How long is a paintbrush?\"\\) and distance (e.g., \"A desk and a ball are placed apart.\"\\) using non-standard units."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Coverage is comprehensive. The competency explicitly requires measuring both the length of an object and the distance between objects. The samples address length (e.g., \"How long is a pencil? Give your answer in hands.\"\\) and distance (e.g., \"A bag and a chair are placed apart. The distance between them is ___ hands.\"\\)."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The cognitive load is perfectly targeted for Grade 1 Quarter 2. The scenarios use highly familiar items (pencil, spoon, bag, desk). Distractor options are grouped tightly around the correct integer value, strictly assessing accurate diagrammatic counting for questions like \"How long is a paintbrush?\""
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "There is strong variation across the samples. The non-standard measurement units alternate well across \"paperclips\", \"hands\", and \"crayons\". The objects being measured also vary naturally."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The items are strictly aligned with the required scope. They correctly focus on non-standard units and avoid introducing standard metric or imperial units (like centimeters or inches) which would violate the node boundaries."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical values are small integers suitable for Grade 1 diagrammatic assessment. For example, lengths and distances evaluate to manageable numbers like 2, 3, 5, 6, 8, and 9 (e.g., answering 3 in \"How long is a spoon?\"\\). These scales match realistic counting bounds on a screen."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -19,22 +45,22 @@
     {
       "seed": 42,
       "formatter": "read_mcq",
-      "question_text": "How long is the object? Give your answer in paperclips.",
+      "question_text": "How long is a paintbrush? Give your answer in paperclips.",
       "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 4,
+          "value": 1,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 6,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 5,
+          "value": 2,
           "is_correct": true
         },
         {
@@ -47,7 +73,7 @@
     {
       "seed": 43,
       "formatter": "read_mcq",
-      "question_text": "How long is the object? Give your answer in paperclips.",
+      "question_text": "How long is a pencil? Give your answer in hands.",
       "correct_answer": "B",
       "options": [
         {
@@ -57,12 +83,40 @@
         },
         {
           "key": "B",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "read_mcq",
+      "question_text": "A desk and a ball are placed apart. The distance between them is ___ paperclips.",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "B",
           "value": 10,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 11,
+          "value": 20,
           "is_correct": false
         },
         {
@@ -73,14 +127,14 @@
       ]
     },
     {
-      "seed": 44,
+      "seed": 45,
       "formatter": "read_mcq",
-      "question_text": "A box and a bag are placed apart. The distance between them is ___ blocks.",
+      "question_text": "A bag and a chair are placed apart. The distance between them is ___ hands.",
       "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 4,
           "is_correct": false
         },
         {
@@ -95,35 +149,7 @@
         },
         {
           "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "read_mcq",
-      "question_text": "A bag and a chair are placed apart. The distance between them is ___ steps.",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 11,
+          "value": 6,
           "is_correct": false
         }
       ]
@@ -131,158 +157,18 @@
     {
       "seed": 46,
       "formatter": "read_mcq",
-      "question_text": "How long is the object? Give your answer in paperclips.",
+      "question_text": "How long is a pencil? Give your answer in crayons.",
       "correct_answer": "B",
       "options": [
         {
           "key": "A",
           "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 9,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "A toy and a bag are placed apart. The distance between them is ___ blocks.",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 90,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 91,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 95,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 89,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "read_mcq",
-      "question_text": "A box and a chair are placed apart. The distance between them is ___ steps.",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 60,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 65,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 61,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 59,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "read_mcq",
-      "question_text": "A box and a chair are placed apart. The distance between them is ___ crayons.",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 65,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 60,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 61,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 59,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "read_mcq",
-      "question_text": "A bag and a box are placed apart. The distance between them is ___ steps.",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "read_mcq",
-      "question_text": "A book is 2 hands long. A crayon is 1 hand long. How many hands longer is a book than a crayon?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 0,
           "is_correct": false
         },
         {
           "key": "B",
           "value": 2,
-          "is_correct": false
+          "is_correct": true
         },
         {
           "key": "C",
@@ -292,36 +178,149 @@
         {
           "key": "D",
           "value": 1,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "read_mcq",
+      "question_text": "A desk and a bag are placed apart. The distance between them is ___ paperclips.",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 10,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "read_mcq",
+      "question_text": "A chair and a box are placed apart. The distance between them is ___ hands.",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "read_mcq",
+      "question_text": "A shelf and a chair are placed apart. The distance between them is ___ hands.",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 3,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 2,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "read_mcq",
+      "question_text": "A shelf and a bag are placed apart. The distance between them is ___ hands.",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 4,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "read_mcq",
+      "question_text": "How long is a spoon? Give your answer in paperclips.",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 3,
           "is_correct": true
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Both acts named in the sentence appear. Seeds 42, 43 and 46 render 'How long is the object? Give your answer in paperclips.' as read_mcq diagram items, so an object length is read off a picture. Seeds 44, 45, 500, 501, 502 and 600 render distance items such as 'A box and a bag are placed apart. The distance between them is ___ blocks.' All ten samples carry the read_mcq formatter and are therefore visual; seed 601 is the only one whose numbers also sit in the text, so it alone is answerable without the diagram."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Each named part was searched for on its own. Length of one object: seeds 42, 43 and 46. Distance between two objects: seeds 44, 45 and 600 plus the large-magnitude seeds 500, 501 and 502, which move the unit across 'blocks', 'steps' and 'crayons' and the object pair across box, bag, chair and toy. Both halves of the sentence are present in the packet."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "No item requires an operation beyond Grade 1. Nine samples need only counting of units on the rendered diagram. Seed 601, 'A book is 2 hands long. A crayon is 1 hand long. How many hands longer is a book than a crayon?', needs one subtraction within 20, which Grade 1 quarter 2 already holds. No multiplication, division, fractional unit or standard unit vocabulary appears anywhere in the ten samples."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Seeds 43 and 46 are the same item twice: identical stem 'How long is the object? Give your answer in paperclips.', identical option values in identical order and the same key, so any difference between the two can only live in the unseen diagram. Seed 45 and seed 600 likewise differ only in the object pair while both land on ten steps with the same near-miss options. Inside the length half all three items share one wording and one unit, paperclips, so the spread there is far narrower than in the distance half."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "Nine of the ten samples map straight onto measuring. Seed 601 does not: 'How many hands longer is a book than a crayon?' hands the pupil two finished measurements and asks for the difference, so no measuring happens. That is the work named by the problem-solving competency instead, and node mat_g1_mg_q2_2 renders the same template at its seed 608. The item stays inside Grade 1 and inside non-standard units, so this reads as a placement problem rather than a curriculum breach."
-    },
-    "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The small-count samples pair unit and object believably: five and ten paperclips for a classroom object at seeds 42 and 43, five blocks at seed 44 and ten steps at seed 45 between pieces of furniture. The three large seeds do not. Seed 500 sets 'A toy and a bag are placed apart.' at ninety blocks, seed 501 sets 'A box and a chair are placed apart.' at sixty steps, which is roughly thirty metres of floor at a child pace, and seed 502 puts the same pair at sixty crayons. Each is a diagram read whose wrong options sit one unit from the key, so the pupil would have to count to ninety on a picture and separate ninety from eighty-nine. Neither the physical setup nor that counting precision fits Grade 1 quarter 2."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

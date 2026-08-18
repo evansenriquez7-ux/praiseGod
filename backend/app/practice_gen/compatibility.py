@@ -666,6 +666,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         "task_type": [
             "compare", "convert", "read_measurement", "choose_unit", "estimate",
             "distance_between", "equal_length", "compare_distance",
+            "solve_problems_non_standard", "solve_word_problem",
         ],
         "context": ["pure", "word_problem"],
     },
@@ -842,9 +843,9 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # Listing every task_type EXCEPT read_measurement is how this table excludes
         # a value; it has no negative form.
         "mcq": {"task_type": ["compare", "convert", "choose_unit", "estimate",
-                              "equal_length", "compare_distance"]},
+                              "equal_length", "compare_distance", "solve_problems_non_standard", "solve_word_problem"]},
         "cloze": {"task_type": ["compare", "convert", "choose_unit", "estimate",
-                                "equal_length", "compare_distance"]},
+                                "equal_length", "compare_distance", "solve_problems_non_standard", "solve_word_problem"]},
     },
 
     "multiplication": {

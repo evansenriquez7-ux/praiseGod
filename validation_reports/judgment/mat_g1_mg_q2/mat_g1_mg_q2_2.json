@@ -1,57 +1,81 @@
 {
   "node_id": "mat_g1_mg_q2_2",
-  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the G1 ruler and unit-size fixes, 2026-08-13",
-  "review_date": "2026-08-13",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1-MG-Q2-Harden (mat_g1_mg_q2_0..mat_g1_mg_q2_2), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The samples directly fulfill the competency by asking students to solve word problems involving lengths and distances measured in non-standard units. For example, questions like \"A notebook is 6 hands long. A pencil is 2 hands long. How many hands longer is a notebook than a pencil?\" and \"From the teacher's desk, it is 6 steps to the reading corner and 3 steps to the chalkboard. How many steps farther is the reading corner than the chalkboard?\" explicitly test this skill."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Coverage is comprehensive, encompassing both length and distance scenarios. Length is covered using units like hands and paperclips (e.g., \"A notebook is 6 hands long. A pencil is 2 hands long. How many hands longer is a notebook than a pencil?\", \"A pencil is 5 paperclips long and an eraser is 5 paperclips long. If they are placed end to end, what is their total length in paperclips?\"\\), while distance is covered using steps (e.g., \"Dan walked 2 steps from the gate to the tree, and then 3 steps from the tree to the bench. How many steps did Dan walk in all?\"\\). Furthermore, both addition and subtraction problem types are present."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The problems are perfectly tailored for Grade 1 Quarter 2 cognitive capacity. The values used are single-digit numbers resulting in sums and differences within 10 (e.g., \"Dan walked 2 steps from the gate to the tree, and then 3 steps from the tree to the bench. How many steps did Dan walk in all?\", \"From the teacher's desk, it is 8 steps to the gate and 3 steps to the bench. How many steps farther is the gate than the bench?\"\\). The problem phrasing is simple, concrete, and easy for early readers to parse."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples show excellent variant comprehensiveness. They include addition for distance (\"Dan walked 2 steps from the gate to the tree, and then 3 steps from the tree to the bench. How many steps did Dan walk in all?\"\\), subtraction for distance (\"From the teacher's desk, it is 6 steps to the reading corner and 3 steps to the chalkboard. How many steps farther is the reading corner than the chalkboard?\"\\), addition for length (\"A pencil is 5 paperclips long and an eraser is 5 paperclips long. If they are placed end to end, what is their total length in paperclips?\"\\), and subtraction for length (\"A shoe is 5 hands long. An eraser is 4 hands long. How many hands longer is a shoe than an eraser?\"\\)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The questions are strictly aligned with the competency Solve problems involving lengths and distances using non-standard units. Every question involves a word problem, focuses either on length or distance, and exclusively uses non-standard units like hands, paperclips, and steps."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The scale of the numbers and scenarios is highly appropriate. Grade 1 students work with numbers up to 100 but typically solve simple word problems within 20 or 10 at this stage in the quarter. The numbers selected ensure the focus remains on understanding the concept of measurement rather than complex arithmetic."
+    }
+  },
   "sample_seeds": [
     42,
     43,
     44,
     45,
     46,
+    50,
     500,
     501,
     502,
-    602,
-    603,
-    605,
-    606,
-    608
+    600,
+    601
   ],
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "read_mcq",
-      "question_text": "A notebook is 9 paperclips long. A pencil is 6 paperclips long. How many paperclips longer is a notebook than a pencil?",
-      "correct_answer": "C",
+      "formatter": "mcq",
+      "question_text": "A notebook is 6 hands long. A pencil is 2 hands long. How many hands longer is a notebook than a pencil?",
+      "correct_answer": 4,
       "options": [
         {
           "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 5,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 3,
+          "value": 4,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 2,
+          "value": 3,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 43,
-      "formatter": "read_mcq",
-      "question_text": "A notebook is 9 paperclips long. A book is 8 paperclips long. How many paperclips longer is a notebook than a book?",
-      "correct_answer": "A",
+      "formatter": "mcq",
+      "question_text": "A shoe is 5 hands long. An eraser is 4 hands long. How many hands longer is a shoe than an eraser?",
+      "correct_answer": 1,
       "options": [
         {
           "key": "A",
@@ -60,12 +84,12 @@
         },
         {
           "key": "B",
-          "value": 0,
+          "value": 3,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 4,
           "is_correct": false
         },
         {
@@ -77,181 +101,161 @@
     },
     {
       "seed": 44,
-      "formatter": "read_mcq",
-      "question_text": "A book is 5 blocks long. A pencil is 3 blocks long. How many blocks longer is a book than a pencil?",
-      "correct_answer": "D",
+      "formatter": "mcq",
+      "question_text": "Dan walked 2 steps from the gate to the tree, and then 3 steps from the tree to the bench. How many steps did Dan walk in all?",
+      "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": 4,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 2,
+          "value": 5,
           "is_correct": true
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "read_mcq",
-      "question_text": "A notebook is 9 paperclips long. A pencil is 6 paperclips long. How many paperclips longer is a notebook than a pencil?",
-      "correct_answer": "C",
+      "formatter": "mcq",
+      "question_text": "From the teacher's desk, it is 8 steps to the gate and 3 steps to the bench. How many steps farther is the gate than the bench?",
+      "correct_answer": 5,
       "options": [
         {
           "key": "A",
-          "value": 5,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 4,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 5,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 2,
+          "value": 4,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "read_mcq",
-      "question_text": "A book is 8 paperclips long. A crayon is 3 paperclips long. How many paperclips longer is a book than a crayon?",
-      "correct_answer": "B",
+      "formatter": "mcq",
+      "question_text": "A long ribbon is 8 paperclips long. A short ribbon is 5 paperclips long. How many paperclips longer is a long ribbon than a short ribbon?",
+      "correct_answer": 3,
       "options": [
         {
           "key": "A",
-          "value": 7,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 5,
+          "value": 3,
           "is_correct": true
         },
         {
           "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
           "value": 4,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "cloze",
+      "question_text": "Mia walked 4 steps from the chair to the desk, and then 3 steps from the desk to the shelf. How many steps did Mia walk in all?",
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "text": "7",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 9,
+          "text": "9",
           "is_correct": false
         },
         {
           "key": "D",
           "value": 6,
+          "text": "6",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "A pencil is 3 blocks long. A crayon is 2 blocks long. How many blocks longer is a pencil than a crayon?",
-      "correct_answer": "A",
+      "formatter": "cloze",
+      "question_text": "Mia walked 5 steps from the gate to the tree, and then 4 steps from the tree to the bench. How many steps did Mia walk in all?",
+      "correct_answer": 9,
       "options": [
         {
           "key": "A",
-          "value": 1,
+          "value": 9,
+          "text": "9",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 0,
+          "value": 8,
+          "text": "8",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 2,
+          "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 3,
+          "value": 11,
+          "text": "11",
           "is_correct": false
         }
       ]
     },
     {
       "seed": 501,
-      "formatter": "read_mcq",
-      "question_text": "A shoe is 3 crayons long. A crayon is 1 crayon long. How many crayons longer is a shoe than a crayon?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "read_mcq",
-      "question_text": "A book is 3 crayons long. A pencil is 2 crayons long. How many crayons longer is a book than a pencil?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 0,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 602,
       "formatter": "mcq",
-      "question_text": "Which is longer: 3 blocks or 6 blocks?",
-      "correct_answer": 6,
+      "question_text": "From the teacher's desk, it is 6 steps to the reading corner and 3 steps to the chalkboard. How many steps farther is the reading corner than the chalkboard?",
+      "correct_answer": 3,
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": 3,
           "is_correct": true
         },
         {
@@ -261,154 +265,103 @@
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 7,
+          "value": 4,
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 603,
+      "seed": 502,
       "formatter": "mcq",
-      "question_text": "The distance from the bench to the tree is 9 hands. The distance from the gate to the tree is 10 hands. Which distance is longer?",
-      "correct_answer": 10,
+      "question_text": "From the teacher's desk, it is 7 steps to the chair and 6 steps to the bookshelf. How many steps farther is the chair than the bookshelf?",
+      "correct_answer": 1,
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 11,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
-      "formatter": "read_mcq",
-      "question_text": "A toy and a bag are placed apart. The distance between them is ___ hands.",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "Segment A is 6 paperclips long. Segment B is 7 paperclips long. Are Segment A and Segment B equal in length?",
-      "correct_answer": "No",
-      "options": [
-        {
-          "key": "A",
-          "value": "No",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "Yes",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "only if they are the same color",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "only if they are drawn in the same direction",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 608,
-      "formatter": "read_mcq",
-      "question_text": "A shoe is 2 hands long. A pencil is 1 hand long. How many hands longer is a shoe than a pencil?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
           "value": 1,
           "is_correct": true
         },
         {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
           "key": "C",
-          "value": 0,
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 2,
+          "value": 3,
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "From the teacher's desk, it is 8 steps to the reading corner and 2 steps to the chalkboard. How many steps farther is the reading corner than the chalkboard?",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 8,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "A pencil is 5 paperclips long and an eraser is 5 paperclips long. If they are placed end to end, what is their total length in paperclips?",
+      "correct_answer": 10,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 11,
+          "text": "11",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 12,
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": true
+        }
+      ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples ask the pupil to solve rather than only to read. Seed 42, 'A notebook is 9 paperclips long. A pencil is 6 paperclips long. How many paperclips longer is a notebook than a pencil?', is a length problem, and seed 603, 'The distance from the bench to the tree is 9 hands. The distance from the gate to the tree is 10 hands. Which distance is longer?', is a distance problem. Every quantity stays in a non-standard unit."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Each named part was looked for separately. Lengths: seeds 42, 43, 44, 45, 46, 500, 501, 502, 602 and 608, across paperclips, blocks, crayons and hands. Distances: seed 603 and seed 605, 'A toy and a bag are placed apart. The distance between them is ___ hands.' Both halves are present, though the balance is lopsided at eleven length items against two distance items, and only seed 603 turns a distance into a problem to solve rather than a count to read."
-    },
-    "cognitive_capacity": {
-      "verdict": "CONCERN",
-      "rationale": "The arithmetic is safely Grade 1: every difference is a subtraction within ten and seeds 602, 603 and 606 need only a comparison, with no operation beyond Grade 1 anywhere in the packet. The vocabulary is the problem. Seed 606 reads 'Segment A is 6 paperclips long. Segment B is 7 paperclips long. Are Segment A and Segment B equal in length?' Naming a length as a segment is geometry vocabulary a Grade 1 quarter 2 pupil has not met, while every other sample anchors on a concrete thing such as 'a notebook' at seed 42 or 'a shoe' at seed 608."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Item shapes are genuinely varied across difference questions, a which-is-longer pair at seed 603, an equality check answered 'No' at seed 606, and a diagram distance read at seed 605. Two flaws sit inside that spread. Seed 602 asks 'Which is longer: 3 blocks or 6 blocks?' yet two of its four options are 5 and 7, values that appear nowhere in the question, so half the option set cannot answer the question as written. Seeds 42 and 45 are the same stem with the same key and only the option order shuffled."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every sample stays on lengths and distances measured in non-standard units and none names a standard unit or reaches into area, perimeter or unit conversion. Seed 608, 'A shoe is 2 hands long. A pencil is 1 hand long. How many hands longer is a shoe than a pencil?', is typical of the packet: two measured lengths in one non-standard unit and a single subtraction, which is what solving problems involving lengths means at this grade. The three text-only items, seeds 602, 603 and 606, each state their own numbers, so they are answerable without a diagram."
-    },
-    "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Most pairings are believable: a notebook at nine paperclips and a pencil at six paperclips at seed 42, a book at five blocks at seed 44, a shoe at two hands at seed 608. Seed 501 is not. It reads 'A shoe is 3 crayons long. A crayon is 1 crayon long. How many crayons longer is a shoe than a crayon?', which measures a crayon with crayons, so the second sentence is a tautology that teaches nothing about the unit and invites the pupil to treat the unit and the measured object as one thing. The shoe at three crayons is fine; the crayon measured in crayons is the defect."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }
