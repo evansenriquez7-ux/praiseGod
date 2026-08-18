@@ -1016,6 +1016,8 @@ def _build_symbolic_question(
 
     # ── Calendar ──────────────────────────────────────────────────────────────
     if concept == "calendar":
+        if values.get("question"):
+            return values["question"]
         return "Use the calendar to answer the question."
 
     # ── Measurement ───────────────────────────────────────────────────────────

@@ -114,15 +114,15 @@ def generate_params(
         # and/or weeks" (mat_g2_mg_q4_0): the competency names both units,
         # so alternate between them per seed rather than locking to one.
         task_type = rng.choice(["elapsed_days", "elapsed_weeks"])
+    elif task_type == "day_and_month_calendar":
+        # registry.py sentinel for "Determine the day and month of the
+        # year using a calendar" (mat_g1_mg_q4_3): rotate across day-of-week
+        # reading, calendar-month reading, and date-lookup.
+        task_type = rng.choice(["read_day", "read_month", "find_date"])
     elif task_type == "days_and_months":
         # registry.py sentinel for "Solve problems involving time (...
-        # days in a week, and months in a year)" (mat_g1_mg_q4_4): the
-        # time_reading DNA it's co-mapped with has no day/month concept at
-        # all, so this competency's day/month sub-case never appeared
-        # anywhere (blind review: "Zero samples touch 'days in a week' or
-        # 'months in a year'... both explicitly named"). Alternate between
-        # this DNA's own day-of-week and month-name recall task_types.
-        task_type = rng.choice(["read_day", "read_month"])
+        # days in a week, and months in a year)" (mat_g1_mg_q4_4):
+        task_type = rng.choice(["problem_days", "problem_months", "read_day"])
 
     month = rng.randint(bounds["month"][0], bounds["month"][1])
     year  = bounds.get("year", 2025)
@@ -139,6 +139,70 @@ def generate_params(
         "show_day_names": True,
     }
 
+    if task_type == "problem_days":
+        mode = rng.choice(["after_days", "before_days", "duration_days"])
+        if mode == "after_days":
+            idx = rng.randint(0, 6)
+            day = DAYS_OF_WEEK[idx]
+            add_d = rng.randint(1, 3)
+            ans = DAYS_OF_WEEK[(idx + add_d) % 7]
+            q = f"Today is {day}. What day of the week will it be in {add_d} {'day' if add_d == 1 else 'days'}?"
+        elif mode == "before_days":
+            idx = rng.randint(0, 6)
+            day = DAYS_OF_WEEK[idx]
+            sub_d = rng.randint(1, 2)
+            ans = DAYS_OF_WEEK[(idx - sub_d) % 7]
+            q = f"If today is {day}, what day of the week was it {sub_d} {'day' if sub_d == 1 else 'days'} ago?"
+        else:
+            start_idx = rng.randint(1, 3)
+            dur = rng.randint(2, 4)
+            end_idx = start_idx + dur - 1
+            s_day = DAYS_OF_WEEK[start_idx]
+            e_day = DAYS_OF_WEEK[end_idx]
+            ans = dur
+            q = f"A school event starts on {s_day} and finishes on {e_day} of the same week. How many days does the event run?"
+
+        dists = [d for d in (DAYS_OF_WEEK if isinstance(ans, str) else [ans + 1, max(1, ans - 1), ans + 2]) if d != ans][:3]
+        return {
+            "blank_target": "answer",
+            "task_type": "problem_days",
+            "answer": ans,
+            "distractors": dists,
+            "question": q,
+            "visual_params": vp,
+            "month": month,
+            "year": year,
+        }
+
+    if task_type == "problem_months":
+        mode = rng.choice(["after_months", "month_diff"])
+        if mode == "after_months":
+            idx = rng.randint(0, 11)
+            m_name = MONTHS_OF_YEAR[idx]
+            add_m = rng.randint(1, 3)
+            ans = MONTHS_OF_YEAR[(idx + add_m) % 12]
+            q = f"This month is {m_name}. What month will it be in {add_m} {'month' if add_m == 1 else 'months'}?"
+        else:
+            m1_idx = rng.randint(0, 7)
+            diff = rng.randint(2, 4)
+            m2_idx = m1_idx + diff
+            m1_name = MONTHS_OF_YEAR[m1_idx]
+            m2_name = MONTHS_OF_YEAR[m2_idx]
+            ans = diff
+            q = f"The school program begins in {m1_name} and an exhibit happens in {m2_name}. How many months later is the exhibit?"
+
+        dists = [d for d in (MONTHS_OF_YEAR if isinstance(ans, str) else [ans + 1, max(1, ans - 1), ans + 2]) if d != ans][:3]
+        return {
+            "blank_target": "answer",
+            "task_type": "problem_months",
+            "answer": ans,
+            "distractors": dists,
+            "question": q,
+            "visual_params": vp,
+            "month": month,
+            "year": year,
+        }
+
     if task_type == "read_day":
         target_date = rng.randint(1, days_in_this_month)
         dow_index = (first_dow + target_date - 1) % 7
@@ -146,14 +210,14 @@ def generate_params(
         vp["highlighted_dates"] = [target_date]
         vp["correct_date"] = target_date
         return {
-        "blank_target": "answer",
+            "blank_target": "answer",
             "visual_params": vp,
             "month": month,
             "year": year,
             "target_date": target_date,
             "answer": answer,
             "task_type": task_type,
-            "question": f"What day of the week is {MONTHS_OF_YEAR[month - 1]} {target_date}, {year}?",
+            "question": f"Look at the {MONTHS_OF_YEAR[month - 1]} {year} calendar. What day of the week is {MONTHS_OF_YEAR[month - 1]} {target_date}?",
         }
 
     if task_type == "read_month":
@@ -162,15 +226,17 @@ def generate_params(
         vp["month"] = month_num
         vp["highlighted_dates"] = [1]
         vp["correct_date"] = 1
+        dists = [m for m in MONTHS_OF_YEAR if m != answer][:3]
         return {
-        "blank_target": "answer",
+            "blank_target": "answer",
             "visual_params": vp,
             "month": month_num,
             "year": year,
             "target_date": 1,
             "answer": answer,
+            "distractors": dists,
             "task_type": task_type,
-            "question": f"Which month is the {month_num}{'st' if month_num == 1 else 'nd' if month_num == 2 else 'rd' if month_num == 3 else 'th'} month of the year?",
+            "question": f"Look at the calendar page shown. What month of the year is shown on this calendar?",
         }
 
     if task_type == "find_date":

@@ -383,11 +383,8 @@ COMPATIBILITY: Dict[str, List[str]] = {
 
     "calendar": [
         "calendar_read",
-        # task_type="sequence" (recite/order day or month names) has no
-        # calendar grid to show and is excluded from calendar_read's own
-        # FORMATTER_VARIANT_SUPPORT entry above -- mcq is its only
-        # compatible formatter.
         "mcq",
+        "cloze",
     ],
 
     "perimeter": [
@@ -687,7 +684,7 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
 
     "calendar": {
         # Must match calendar.py's real internal task_type strings.
-        "task_type": ["read_day", "read_month", "find_date", "elapsed_days", "elapsed_weeks", "sequence"],
+        "task_type": ["read_day", "read_month", "find_date", "elapsed_days", "elapsed_weeks", "sequence", "problem_days", "problem_months", "day_and_month_calendar"],
         "calendar_feature": ["days", "weeks", "months", "dates"],
     },
 
@@ -1088,14 +1085,9 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # "all task types work", which let the calendar_read formatter get
         # picked for "sequence" and silently render an unrelated
         # date-lookup grid instead).
-        "calendar_read": {"task_type": ["read_day", "read_month", "find_date", "elapsed_days", "elapsed_weeks"]},
-        # mcq is calendar's other newly-added compatible formatter (see
-        # COMPATIBILITY["calendar"] below) but is scoped to task_type=
-        # "sequence" only -- the other task_types' string answers (e.g. a
-        # bare day-of-week name) hit a pre-existing MCQ distractor-count
-        # bug that was never reachable before mcq became compatible with
-        # this DNA at all; fixing that generically is out of scope here.
-        "mcq": {"task_type": ["sequence"]},
+        "calendar_read": {"task_type": ["read_day", "read_month", "find_date", "elapsed_days", "elapsed_weeks", "day_and_month_calendar"]},
+        "mcq": {"task_type": ["sequence", "problem_days", "problem_months"]},
+        "cloze": {"task_type": ["sequence", "problem_days", "problem_months"]},
     },
 
     "area": {

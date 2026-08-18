@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g1_mg_q4_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1-MG-Q4-Harden v3 (mat_g1_mg_q4_1, mat_g1_mg_q4_3), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The generator successfully addresses both reading and writing time. Reading is assessed through the 'read_mcq' format with prompts like 'What time does the clock show?', and writing is assessed through 'set_fill_in_blank' asking to physically manipulate the clock hands, such as 'Set the clock to show 9:30.' This fully satisfies the competency's core requirements."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The generator correctly covers all three specific time intervals mandated by the competency: the hour ('5:00', '7:00', '11:00'), the half hour ('9:30', '7:30'), and the quarter hour ('2:15', '5:45', '3:45'). Both reading and writing skills are tested across these intervals."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The cognitive load is completely appropriate for Grade 1 students in Quarter 4. The language is simple, direct, and consistent across formats ('What time does the clock show?' and 'Set the clock to show 12:00.'). Distractors in the multiple-choice questions represent common Grade 1 errors without introducing trickery (e.g., confusing 2:10 with 2:15)."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The generator uses two distinct and appropriate formats: 'read_mcq' for interpreting the clock face and 'set_fill_in_blank' for writing/setting the time. The distribution between these formats is balanced and effectively covers the mechanical and interpretive aspects of the competency."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The generator strictly aligns with the MATATAG curriculum. It only asks for times on the hour, half hour, and quarter hour. It does not overstep by asking for minute-level precision (e.g., 3:17) which would violate the scope for Grade 1."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The generator demonstrates robust variability across seeds. It produces a wide array of clock times utilizing all requested intervals, ensuring that a student would not easily memorize patterns and will experience a comprehensive assessment of the skill."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -13,6 +39,7 @@
     501,
     502,
     601,
+    603,
     605,
     607,
     608
@@ -26,22 +53,22 @@
       "options": [
         {
           "key": "A",
-          "value": "3:00",
+          "value": "3:15",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "2:05",
+          "value": "2:10",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "2:00",
+          "value": "2:15",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "1:00",
+          "value": "1:15",
           "is_correct": false
         }
       ]
@@ -77,8 +104,8 @@
     {
       "seed": 44,
       "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 9:00.",
-      "correct_answer": "9:00"
+      "question_text": "Set the clock to show 9:30.",
+      "correct_answer": "9:30"
     },
     {
       "seed": 45,
@@ -145,8 +172,8 @@
     {
       "seed": 501,
       "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 5:30.",
-      "correct_answer": "5:30"
+      "question_text": "Set the clock to show 5:45.",
+      "correct_answer": "5:45"
     },
     {
       "seed": 502,
@@ -183,10 +210,16 @@
       "correct_answer": "11:00"
     },
     {
+      "seed": 603,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Set the clock to show 9:00.",
+      "correct_answer": "9:00"
+    },
+    {
       "seed": 605,
       "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 10:00.",
-      "correct_answer": "10:00"
+      "question_text": "Set the clock to show 3:45.",
+      "correct_answer": "3:45"
     },
     {
       "seed": 607,
@@ -197,35 +230,8 @@
     {
       "seed": 608,
       "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 3:00.",
-      "correct_answer": "3:00"
+      "question_text": "Set the clock to show 3:15.",
+      "correct_answer": "3:15"
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "\"What time does the clock show?\" covers reading, and \"Set the clock to show 9:30.\" covers writing, matching the competency's two verbs directly."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Reading items cover hour, half hour, and quarter hour (2:00, 7:30, and 6:15 respectively), but every writing item -- 9:00, 9:30, 5:30, 11:00, 10:00, 12:00, 3:00 -- lands on the hour or half hour, never a quarter-hour target."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Clock-time vocabulary and short instructions throughout suit Grade 1 Quarter 4."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Both the reading direction (mcq) and the writing direction (set_fill_in_blank) are represented, just unevenly across the three time sub-cases."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Difficulty varies by which specific time is shown or requested, staying entirely inside the clock-reading-and-setting skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All sampled times sit within an ordinary 12-hour clock face, matching what a Grade 1 analog clock lesson would use."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

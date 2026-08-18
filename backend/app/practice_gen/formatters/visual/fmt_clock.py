@@ -230,41 +230,50 @@ def format_clock(
     traps = _build_traps(hours, minutes, use_24, rng)
 
     # ── 2. Build question text ────────────────────────────────────────────────
-    # This formatter previously always built its own text, ignoring
-    # ctx.values["question"] entirely -- so time_reading.py's new
-    # word-problem narrative (set only when context=="word_problem") was
-    # silently discarded and every "read" mode question rendered the bare
-    # "What time does the clock show?" stem regardless.
-    dna_question = (ctx.values or {}).get("question") if interaction_mode == "read" else None
+    mcq_options = None
+    dna_question = (ctx.values or {}).get("question")
     if dna_question:
         question_text = dna_question
+        raw_ans = (ctx.values or {}).get("answer", time_str)
+        if answer_collection == "mcq":
+            dists = (ctx.values or {}).get("distractors") or []
+            if len(dists) >= 3:
+                target_correct = raw_ans
+                all_options = [target_correct] + [d for d in dists if d != target_correct][:3]
+            else:
+                target_correct = time_str
+                distractor_strings = _trap_time_strings(traps, use_24, correct_tuple, rng, period)
+                all_options = [target_correct] + [d for d in distractor_strings if d != target_correct][:3]
+            rng.shuffle(all_options)
+            mcq_options = [
+                {"key": chr(ord("A") + i), "value": opt, "is_correct": opt == target_correct}
+                for i, opt in enumerate(all_options)
+            ]
+            correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        else:
+            correct_answer = str(raw_ans)
     elif interaction_mode == "read":
         if use_24:
             question_text = "What time does the clock show? Give the time in 24-hour format."
         else:
             question_text = "What time does the clock show?"
+        if answer_collection == "mcq":
+            distractor_strings = _trap_time_strings(traps, use_24, correct_tuple, rng, period)
+            all_options = [time_str] + distractor_strings[:3]
+            rng.shuffle(all_options)
+            mcq_options = [
+                {"key": chr(ord("A") + i), "value": opt, "is_correct": opt == time_str}
+                for i, opt in enumerate(all_options)
+            ]
+            correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
+        else:
+            correct_answer = time_str
     else:  # "set"
-        # time_str now sometimes ends in "a.m."/"p.m." (its own trailing
-        # period) -- appending a sentence-final "." unconditionally
-        # produced "Set the clock to show 9:40 a.m.." (double period).
         trailing = "" if time_str.endswith(".") else "."
         if use_24:
             question_text = f"Set the clock to show {time_str} (24-hour time)."
         else:
             question_text = f"Set the clock to show {time_str}{trailing}"
-
-    # ── 3. Answer collection ──────────────────────────────────────────────────
-    mcq_options = None
-    if answer_collection == "mcq":
-        distractor_strings = _trap_time_strings(traps, use_24, correct_tuple, rng, period)
-        all_options = [time_str] + distractor_strings[:3]
-        rng.shuffle(all_options)
-        mcq_options = [
-            {"key": chr(ord("A") + i), "value": opt, "is_correct": opt == time_str}
-            for i, opt in enumerate(all_options)
-        ]
-        correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
-    else:
         correct_answer = time_str
 
     # ── 4. Assemble visual_params ─────────────────────────────────────────────

@@ -42,6 +42,10 @@ from backend.app.practice_gen.formatters._distractor_fallback import augment_dis
 # ─────────────────────────────────────────────────────────────────────────────
 
 _DAY_NAMES = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+_MONTH_NAMES = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+]
 _SCHOOL_MONTHS = [8, 9, 10, 11, 12, 1, 2, 3, 4]   # Philippine school year
 
 
@@ -195,7 +199,10 @@ def format_calendar(
     traps = _build_traps(vp, rng)
 
     # ── 2. Compute correct answer ─────────────────────────────────────────────
-    if task_type == "select_date":
+    if ctx.values and ctx.values.get("task_type") == "read_month":
+        raw_correct = month_name
+        question_text = f"Look at the {cal_word} page shown. What month of the year is shown on this {cal_word}?"
+    elif task_type == "select_date":
         date = vp["correct_date"]
         weekday = _weekday_name(year, month, date)
 
@@ -227,7 +234,11 @@ def format_calendar(
     # ── 3. Answer collection ──────────────────────────────────────────────────
     mcq_options = None
     if answer_collection == "mcq":
-        if task_type == "select_date":
+        if ctx.values and ctx.values.get("task_type") == "read_month":
+            other_months = [m for m in _MONTH_NAMES if m != raw_correct]
+            rng.shuffle(other_months)
+            all_opts = [raw_correct] + other_months[:3]
+        elif task_type == "select_date":
             # Day-name options: correct + 3 other day names
             other_days = [d for d in _DAY_NAMES if d != raw_correct]
             rng.shuffle(other_days)

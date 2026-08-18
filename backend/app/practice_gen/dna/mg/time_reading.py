@@ -218,9 +218,9 @@ def generate_params(
                 "distractors": distractors,
                 "hour": 8,
                 "minute": 0,
-                "time_str": "8:00 a.m.",
+                "time_str": _fmt_time(8, 0, "a.m." if use_ampm else None),
                 "precision": "hour",
-                "period": "a.m.",
+                "period": "a.m." if use_ampm else None,
             }
 
         elif elapsed_unit == "timetable":
@@ -293,9 +293,9 @@ def generate_params(
                 "distractors": distractors,
                 "hour": 8,
                 "minute": 0,
-                "time_str": "8:00 a.m.",
+                "time_str": _fmt_time(8, 0, "a.m." if use_ampm else None),
                 "precision": "hour",
-                "period": "a.m.",
+                "period": "a.m." if use_ampm else None,
             }
 
         else:
@@ -393,15 +393,17 @@ def generate_params(
     if grade >= 2:
         precision_choices += ["five_minutes", "one_minute"]
     precision = profile.get("precision") or rng.choice(precision_choices)
+    if grade < 2 and precision not in ("hour", "half_hour", "quarter_hour"):
+        precision = "quarter_hour"
 
     hour = rng.randint(bounds["hour"][0], bounds["hour"][1])
 
     if precision == "hour":
         minute = 0
     elif precision == "half_hour":
-        minute = rng.choice([0, 30])
+        minute = 30
     elif precision == "quarter_hour":
-        minute = rng.choice([0, 15, 30, 45])
+        minute = rng.choice([15, 45])
     elif precision == "five_minutes":
         minute = rng.choice(list(range(0, 60, 5)))
     else:  # one_minute — G2+ only
@@ -455,20 +457,94 @@ def generate_params(
         "period": period,
     }
     if profile.get("context") == "word_problem":
-        # "Solve problems involving time" (mat_g1_mg_q4_4) previously had
-        # no word-problem framing at all -- this DNA has no "context"
-        # handling anywhere, so it always rendered the bare clock-reading
-        # stem ("What time does the clock show?") regardless of the
-        # competency asking for solved *problems*. A self-contained
-        # narrative here (as with length_measurement's equivalent fix)
-        # avoids routing through the shared spine system for a single-value
-        # read that has no second quantity to combine/compare.
-        activity = rng.choice([
-            "wakes up", "eats breakfast", "leaves for school",
-            "starts homework", "goes to sleep", "has lunch",
-        ])
-        actor = rng.choice(["Maria", "Jose", "Ana", "Ben", "Liza"])
-        result["question"] = f"{actor} {activity} at {time_str}. What time is that?"
+        if grade < 2:
+            mode = rng.choice(["hours_duration", "half_hour_duration", "quarter_hour_duration", "elapsed_hours", "elapsed_minutes"])
+            actor = rng.choice(["Maria", "Jose", "Ana", "Ben", "Liza", "Sam", "Leo", "Mia"])
+            if mode == "hours_duration":
+                start_h = rng.randint(7, 10)
+                dur = rng.randint(1, 2)
+                end_h = start_h + dur
+                activity = rng.choice(["a class", "a workshop", "art time", "study time"])
+                ans_str = f"{end_h}:00"
+                dists = list(dict.fromkeys([d for d in [f"{start_h}:00", f"{end_h + 1}:00", f"{max(1, start_h - 1)}:00", f"{end_h + 2}:00"] if d != ans_str]))[:3]
+                return {
+                    "blank_target": "answer",
+                    "task_type": "clock_reading",
+                    "hour": end_h,
+                    "minute": 0,
+                    "time_str": ans_str,
+                    "answer": ans_str,
+                    "distractors": dists,
+                    "question": f"{activity.capitalize()} starts at {start_h}:00 and lasts for {dur} {'hour' if dur == 1 else 'hours'}. What time does it end?",
+                }
+            elif mode == "half_hour_duration":
+                start_h = rng.randint(8, 11)
+                ans_str = f"{start_h}:30"
+                activity = rng.choice(["Lunch", "Recess", "Story time", "Play time"])
+                dists = [f"{start_h}:00", f"{start_h + 1}:00", f"{start_h + 1}:30"]
+                return {
+                    "blank_target": "answer",
+                    "task_type": "clock_reading",
+                    "hour": start_h,
+                    "minute": 30,
+                    "time_str": ans_str,
+                    "answer": ans_str,
+                    "distractors": dists,
+                    "question": f"{activity} starts at {start_h}:00 and lasts half an hour (30 minutes). What time does it end?",
+                }
+            elif mode == "quarter_hour_duration":
+                start_h = rng.randint(8, 11)
+                ans_str = f"{start_h}:15"
+                activity = rng.choice(["A short break", "Morning exercise", "Reading time"])
+                dists = [f"{start_h}:00", f"{start_h}:30", f"{start_h}:45"]
+                return {
+                    "blank_target": "answer",
+                    "task_type": "clock_reading",
+                    "hour": start_h,
+                    "minute": 15,
+                    "time_str": ans_str,
+                    "answer": ans_str,
+                    "distractors": dists,
+                    "question": f"{activity} starts at {start_h}:00 and lasts a quarter of an hour (15 minutes). What time does it end?",
+                }
+            elif mode == "elapsed_hours":
+                start_h = rng.randint(7, 9)
+                dur = rng.randint(1, 3)
+                end_h = start_h + dur
+                activity = rng.choice(["read books", "draw pictures", "play games", "help in the garden"])
+                ans_num = dur
+                dists = [d for d in [dur + 1, max(1, dur - 1), dur + 2] if d != ans_num][:3]
+                return {
+                    "blank_target": "answer",
+                    "task_type": "clock_reading",
+                    "hour": start_h,
+                    "minute": 0,
+                    "time_str": f"{start_h}:00",
+                    "answer": ans_num,
+                    "distractors": dists,
+                    "question": f"{actor} started to {activity} at {start_h}:00 and finished at {end_h}:00. How many hours did {actor} spend?",
+                }
+            else:  # elapsed_minutes
+                start_h = rng.randint(8, 11)
+                ans_num = 30
+                activity = rng.choice(["recess", "snack time", "clean-up time"])
+                return {
+                    "blank_target": "answer",
+                    "task_type": "clock_reading",
+                    "hour": start_h,
+                    "minute": 30,
+                    "time_str": f"{start_h}:30",
+                    "answer": ans_num,
+                    "distractors": [15, 45, 60],
+                    "question": f"The {activity} began at {start_h}:00 and finished at {start_h}:30. How many minutes did it last?",
+                }
+        else:
+            activity = rng.choice([
+                "wakes up", "eats breakfast", "leaves for school",
+                "starts homework", "goes to sleep", "has lunch",
+            ])
+            actor = rng.choice(["Maria", "Jose", "Ana", "Ben", "Liza"])
+            result["question"] = f"{actor} {activity} at {time_str}. What time is that?"
     return result
 
 

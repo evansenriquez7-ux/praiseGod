@@ -762,26 +762,15 @@ def _parse_competency_bounds(
     elif dna_name == "calendar" and "duration" in text and ("days" in text or "weeks" in text):
         bounds["task_type"] = "elapsed_days_or_weeks"
 
-    # "Solve problems involving time (hour, half hour, quarter hour, days
-    # in a week, and months in a year)" (mat_g1_mg_q4_4): time_reading (its
-    # other co-mapped DNA) has no day/month concept, so this competency's
-    # day/month sub-case never appeared at all (blind review: "Zero
-    # samples touch 'days in a week' or 'months in a year'"). Matched on
-    # "in a week"/"in a year" specifically, not "of the week"/"of the
-    # year", to stay distinct from mat_g1_mg_q4_2's "days of the week and
-    # months of the year in the correct order" (bound to "sequence" above).
+    elif dna_name == "calendar" and "day and month" in text:
+        bounds["task_type"] = "day_and_month_calendar"
     elif dna_name == "calendar" and "days in a week" in text and "months in a year" in text:
         bounds["task_type"] = "days_and_months"
-
-    # "Solve problems involving elapsed time (minutes in an hour, hours in
-    # a day, days in a week), including timetables" (mat_g2_mg_q4_2):
-    # time_reading has no duration-between-two-times concept at all (every
-    # other task_type reads/sets a single clock), so the co-mapped
-    # `subtraction` DNA (a bare whole-number skill, no time/clock
-    # awareness) filled the gap with off-topic content instead (blind
-    # review: "9 of 17 samples are off-topic pictograph subtraction-
-    # comparison word problems... zero connection to minutes/hours/days/
-    # timetables").
+    elif dna_name == "time_reading" and "read and write" in text:
+        bounds["task_type"] = "clock_reading"
+        bounds["context"] = "pure"
+    elif dna_name == "time_reading" and "solve problems" in text:
+        bounds["context"] = "word_problem"
     elif dna_name == "time_reading" and "elapsed time" in text:
         bounds["task_type"] = "elapsed_time"
 
@@ -1708,7 +1697,7 @@ BINDINGS = {
     },
     "mat_g1_mg_q4_4": {
         "dna": "time_reading",
-        "visual": "clock_set"
+        "visual": "clock_read"
     },
     "mat_g1_dp_q3_0": {
         "dna": "pictographs",
