@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_na_q3_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2 (na multiplication hardening), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q3-Harden (mat_g2_na_q3_0), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items directly require students to count concrete/pictorial objects using repeated addition and equal groups language (e.g. \"How many altogether? Count by equal groups: 4 groups of 2 = ___\" in seed 42 and \"How many altogether? 3 groups of 3 = ___\" in seed 45)."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Covers both visual counting/shading models (\"Count the groups shown. What is the total count?\" in seed 50, \"Shade 2 groups of 10 squares. How many squares are shaded altogether?\" in seed 55) and symbolic representations across multiple grouping sizes (2s, 3s, 4s, 5s, 10s)."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Text structures and vocabulary are concise and accessible for Grade 2 Quarter 3 students (e.g. \"Carlo solved: \\\"4 groups of 2 = ___\\\". Carlo says the missing number is 8. Is Carlo correct?\" in seed 51)."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Includes multiple-choice (\"How many altogether? Count by equal groups: 4 groups of 2 = ___\" in seed 42), cloze (\"5 groups of 10 = ___\" in seed 44), error detection (seed 51), interactive shading (seed 55), read visual diagrams (seed 50), and true/false (\"4 groups of 5 = 20. True or False?\" in seed 85)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Strictly adheres to Grade 2 group counting and repeated addition without straying into out-of-scope multiplication algorithms or larger divisors."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Group counts and total quantities are appropriately bounded for Grade 2 (totals up to 50, with factors within 2, 3, 4, 5, 10)."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -18,36 +44,36 @@
     502,
     600,
     601,
+    602,
     603,
     604,
-    605,
-    606
+    605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "There are 4 groups of 3 (3 + 3 + 3 + 3). How many in all?",
-      "correct_answer": 12,
+      "question_text": "How many altogether? Count by equal groups: 4 groups of 2 = ___",
+      "correct_answer": 8,
       "options": [
         {
           "key": "A",
-          "value": 7,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 11,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 12,
+          "value": 8,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 8,
+          "value": 2,
           "is_correct": false
         }
       ]
@@ -55,7 +81,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Count 2 twos by repeated addition (2 + 2): how many in all?",
+      "question_text": "How many altogether? Count by equal groups: 2 groups of 2 = ___",
       "correct_answer": 4,
       "options": [
         {
@@ -70,7 +96,7 @@
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 6,
           "is_correct": false
         },
         {
@@ -83,63 +109,59 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "3 groups of 2 (2 + 2 + 2) makes ___ in all",
-      "correct_answer": 6,
+      "question_text": "5 groups of 10 = ___",
+      "correct_answer": 50,
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
+          "value": 50,
+          "text": "50",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 5,
-          "text": "5",
+          "value": 60,
+          "text": "60",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 9,
-          "text": "9",
+          "value": 40,
+          "text": "40",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 6,
-          "text": "6",
-          "is_correct": true
+          "value": 15,
+          "text": "15",
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "Count 2 sixes (6 + 6) = ___",
-      "correct_answer": 12,
+      "formatter": "mcq",
+      "question_text": "How many altogether? 3 groups of 3 = ___",
+      "correct_answer": 9,
       "options": [
         {
           "key": "A",
-          "value": 10,
-          "text": "10",
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
+          "value": 9,
+          "is_correct": true
         },
         {
           "key": "C",
           "value": 12,
-          "text": "12",
-          "is_correct": true
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 4,
-          "text": "4",
+          "value": 3,
           "is_correct": false
         }
       ]
@@ -147,27 +169,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Count 2 threes by repeated addition (3 + 3): how many in all?",
-      "correct_answer": 6,
+      "question_text": "How many altogether? Count by equal groups: 1 group of 4 = ___",
+      "correct_answer": 4,
       "options": [
         {
           "key": "A",
           "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 1,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 5,
+          "value": 0,
           "is_correct": false
         }
       ]
@@ -175,13 +197,184 @@
     {
       "seed": 50,
       "formatter": "read_mcq",
-      "question_text": "Look at the array. It shows 3 groups of 3 (3 + 3 + 3). How many squares are shaded in all?",
+      "question_text": "Count the groups shown. What is the total count?",
       "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 9,
+          "value": 10,
           "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 7,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 51,
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"4 groups of 2 = ___\". Carlo says the missing number is 8. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 8
+      }
+    },
+    {
+      "seed": 55,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 2 groups of 10 squares. How many squares are shaded altogether?",
+      "correct_answer": 20
+    },
+    {
+      "seed": 85,
+      "formatter": "true_false",
+      "question_text": "4 groups of 5 = 20. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 500,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Shade 2 groups of 10 squares. How many squares are shaded altogether?",
+      "correct_answer": 20
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "4 groups of 10 = ___",
+      "correct_answer": 40,
+      "options": [
+        {
+          "key": "A",
+          "value": 50,
+          "text": "50",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "text": "30",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 40,
+          "text": "40",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "text": "14",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "How many altogether? Count by equal groups: 2 groups of 10 = ___",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "How many altogether? Count by equal groups: 2 groups of 3 = ___",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 3,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 6,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "How many altogether? Count by equal groups: 2 groups of 10 = ___",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "How many altogether? Count by equal groups: 2 groups of 4 = ___",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
         },
         {
           "key": "B",
@@ -190,154 +383,33 @@
         },
         {
           "key": "C",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "D",
           "value": 12,
           "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 51,
-      "formatter": "error_detect",
-      "question_text": "Ana says: There are 2 groups of 5 (5 + 5), so there are 3 in all.. Is Ana correct?",
-      "correct_answer": {
-        "has_error": true,
-        "correct_value": 10
-      }
-    },
-    {
-      "seed": 55,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 3 groups of 2 squares to show 2 + 2 + 2. How many squares did you shade in all?",
-      "correct_answer": 6
-    },
-    {
-      "seed": 85,
-      "formatter": "true_false",
-      "question_text": "There are 2 groups of 5. By repeated addition, 5 + 5 = 10. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 7 groups of 10 squares to show 10 added 7 times. How many squares did you shade in all?",
-      "correct_answer": 70
-    },
-    {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "Count 10 tens by repeated addition: 10 added 10 times = 100. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Count 10 eights by repeated addition (8 added 10 times): how many in all?",
-      "correct_answer": 80,
-      "options": [
-        {
-          "key": "A",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 80,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 79,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 70,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "Count 2 sixes by repeated addition (6 + 6): how many in all?",
-      "correct_answer": 12,
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Moses puts 2 baskets in each of 5 bags. How many baskets are in all the bags?",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "text": "10",
-          "is_correct": true
         }
       ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "Count 2 fours (4 + 4) = ___",
+      "question_text": "4 groups of 2 = ___",
       "correct_answer": 8,
       "options": [
         {
           "key": "A",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 8,
           "text": "8",
           "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -356,7 +428,7 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "There are 2 groups of 3 (3 + 3). How many in all?",
+      "question_text": "How many altogether? Count by equal groups: 3 groups of 2 = ___",
       "correct_answer": 6,
       "options": [
         {
@@ -366,53 +438,25 @@
         },
         {
           "key": "B",
-          "value": 1,
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 5,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 4,
+          "value": 5,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 605,
-      "formatter": "read_mcq",
-      "question_text": "Look at the array. It shows 4 groups of 2 (2 + 2 + 2 + 2). How many squares are shaded in all?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 606,
       "formatter": "mcq",
-      "question_text": "There are 5 groups of 2 (2 + 2 + 2 + 2 + 2). How many in all?",
+      "question_text": "How many altogether? Count by equal groups: 1 group of 10 = ___",
       "correct_answer": 10,
       "options": [
         {
@@ -422,47 +466,20 @@
         },
         {
           "key": "B",
-          "value": 7,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 5,
+          "value": 0,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 9,
+          "value": 11,
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples fulfill the competency by using language such as \"4 groups of 3\" and \"2 twos\", which directly matches the requirement to use \"language such as '5 groups of 3' and '5 threes'\"."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The generated questions comprehensively cover the skills requested, explicitly showing repeated addition as seen in \"(3 + 3 + 3 + 3)\" and addressing the creation of groups with tasks like \"Shade 3 groups of 2 squares\"."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive load is appropriate for Grade 2 students who must \"Count the number of concrete objects in a group by repeated addition\", utilizing accessible structures like \"10 tens\" and \"2 sixes\"."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The samples offer a robust variety of formats, testing the concept through word problems such as \"Moses puts 2 baskets in each of 5 bags.\" alongside visual references like \"Look at the array.\""
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The questions are strictly aligned to the MATATAG curriculum text, explicitly linking equal grouping to counting by \"repeated addition\" in items like \"Count 2 threes by repeated addition (3 + 3): how many in all?\"."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The generated numbers scale appropriately for the target level, applying the math to reasonable sets such as \"2 sixes\" and clear mathematical statements like \"10 added 10 times = 100\"."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

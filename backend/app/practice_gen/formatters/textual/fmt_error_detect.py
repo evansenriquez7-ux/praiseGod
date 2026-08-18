@@ -190,8 +190,12 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
             real_a = values.get("real_a", dividend)
             real_b = values.get("real_b", divisor)
             return f"{real_a} ÷ {real_b} ≈ {slot('result', 'quotient', value=quotient)}"
+        if values.get("task_type") == "even_odd":
+            return f"Divide {dividend} by 2. {dividend} is an {slot('answer', value=values.get('answer'))} number."
         if values.get("task_type") == "number_line_jumps":
             return f"Starting at {dividend} on a number line, taking equal jumps back of {divisor} takes {slot('result', 'quotient', value=quotient)} jumps to reach 0"
+        if values.get("task_type") == "repeated_subtraction":
+            return f"Starting from {dividend} and subtracting {divisor} repeatedly, you subtract {slot('result', 'quotient', value=quotient)} times before reaching 0"
         if values.get("task_type") == "inverse_of_multiplication":
             return f"Since {divisor} × {quotient} = {dividend}, then {dividend} ÷ {divisor} = {slot('result', 'quotient', value=quotient)}"
         return (

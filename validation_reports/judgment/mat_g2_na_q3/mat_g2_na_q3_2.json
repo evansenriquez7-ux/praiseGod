@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_na_q3_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q3-Harden (mat_g2_na_q3_2), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample items directly and comprehensively evaluate multiplication facts for the 2, 3, 4, 5, and 10 tables, e.g. \"What is 4 \u00d7 2?\" (seed 42), \"What is 2 \u00d7 2?\" (seed 43), \"5 \u00d7 10 = ___\" (seed 44), and \"What is 3 \u00d7 3?\" (seed 45)."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Every required table (2, 3, 4, 5, 10) is sampled across multiple contexts and difficulty levels, including array models (\"This array has 2 rows of 5 squares. How many squares in all?\" in seed 50, \"Shade 2 rows of 10 squares. How many squares are shaded altogether?\" in seed 55) and word problems (\"Ate Sam puts 10 running shoes in each of 4 bags. How many running shoes are in all the bags?\" in seed 501)."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Question stems are concise, direct, and well within Grade 2 Quarter 3 cognitive capabilities."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Demonstrates diverse formats: multiple-choice (\"What is 1 \u00d7 4?\" in seed 46), cloze fill-in (\"4 \u00d7 10 = ___\" in seed 501), array reading (seed 50), shading construction (seed 55), error detection (\"Carlo solved: \\\"3 \u00d7 3 = ___\\\". Carlo says the missing number is 9. Is Carlo correct?\" in seed 51), and true/false (\"4 \u00d7 5 = 20. True or False?\" in seed 85)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All items strictly focus on basic multiplication tables without multidigit multiplication or out-of-scope concepts."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numerical parameters strictly match the 2, 3, 4, 5, and 10 tables with single-digit multipliers and products <= 100."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -18,6 +44,7 @@
     502,
     600,
     601,
+    602,
     603,
     604
   ],
@@ -25,27 +52,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 4 × 10?",
-      "correct_answer": 40,
+      "question_text": "What is 4 \u00d7 2?",
+      "correct_answer": 8,
       "options": [
         {
           "key": "A",
-          "value": 14,
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 39,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 40,
+          "value": 8,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 30,
+          "value": 2,
           "is_correct": false
         }
       ]
@@ -53,7 +80,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 2 × 2?",
+      "question_text": "What is 2 \u00d7 2?",
       "correct_answer": 4,
       "options": [
         {
@@ -68,7 +95,7 @@
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 6,
           "is_correct": false
         },
         {
@@ -81,63 +108,59 @@
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "2 × 4 = ___",
-      "correct_answer": 8,
+      "question_text": "5 \u00d7 10 = ___",
+      "correct_answer": 50,
       "options": [
         {
           "key": "A",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
+          "value": 50,
+          "text": "50",
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 6,
-          "text": "6",
+          "value": 60,
+          "text": "60",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 7,
-          "text": "7",
+          "value": 40,
+          "text": "40",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 8,
-          "text": "8",
-          "is_correct": true
+          "value": 15,
+          "text": "15",
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "2 × 3 = ___",
-      "correct_answer": 6,
+      "formatter": "mcq",
+      "question_text": "What is 3 \u00d7 3?",
+      "correct_answer": 9,
       "options": [
         {
           "key": "A",
-          "value": 9,
-          "text": "9",
+          "value": 6,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 5,
-          "text": "5",
-          "is_correct": false
+          "value": 9,
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": 6,
-          "text": "6",
-          "is_correct": true
+          "value": 12,
+          "is_correct": false
         },
         {
           "key": "D",
           "value": 3,
-          "text": "3",
           "is_correct": false
         }
       ]
@@ -145,27 +168,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is 1 × 4?",
+      "question_text": "What is 1 \u00d7 4?",
       "correct_answer": 4,
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 4,
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": 8,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 0,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 5,
+          "value": 0,
           "is_correct": false
         }
       ]
@@ -173,7 +196,7 @@
     {
       "seed": 50,
       "formatter": "read_mcq",
-      "question_text": "Look at the 2×5 array. How many squares are shaded in all?",
+      "question_text": "This array has 2 rows of 5 squares. How many squares in all?",
       "correct_answer": "A",
       "options": [
         {
@@ -183,17 +206,17 @@
         },
         {
           "key": "B",
-          "value": 14,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 13,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 8,
+          "value": 15,
           "is_correct": false
         }
       ]
@@ -201,60 +224,86 @@
     {
       "seed": 51,
       "formatter": "error_detect",
-      "question_text": "Ana says: 5 × 2 = 3. Is Ana correct?",
+      "question_text": "Carlo solved: \"3 \u00d7 3 = ___\". Carlo says the missing number is 9. Is Carlo correct?",
       "correct_answer": {
-        "has_error": true,
-        "correct_value": 10
+        "has_error": false,
+        "correct_value": 9
       }
     },
     {
       "seed": 55,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 3×2 rectangle. How many squares did you shade in all?",
-      "correct_answer": 6
+      "question_text": "Shade 2 rows of 10 squares. How many squares are shaded altogether?",
+      "correct_answer": 20
     },
     {
       "seed": 85,
       "formatter": "true_false",
-      "question_text": "5 × 2 = 10. True or False?",
+      "question_text": "4 \u00d7 5 = 20. True or False?",
       "correct_answer": true
     },
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 8×10 rectangle. How many squares did you shade in all?",
-      "correct_answer": 80
+      "question_text": "Shade 2 rows of 10 squares. How many squares are shaded altogether?",
+      "correct_answer": 20
     },
     {
       "seed": 501,
-      "formatter": "true_false",
-      "question_text": "6 × 5 = 30. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 9 × 4?",
-      "correct_answer": 36,
+      "formatter": "cloze",
+      "question_text": "Ate Sam puts 10 running shoes in each of 4 bags. How many running shoes are in all the bags?",
+      "correct_answer": 40,
       "options": [
         {
           "key": "A",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 36,
+          "value": 40,
+          "text": "40",
           "is_correct": true
         },
         {
+          "key": "B",
+          "value": 35,
+          "text": "35",
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 32,
+          "value": 6,
+          "text": "6",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 5,
+          "value": 14,
+          "text": "14",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Kuya Renz puts 10 canvases in each of 2 bags. How many canvases are in all the bags?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 19,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8,
           "is_correct": false
         }
       ]
@@ -262,80 +311,104 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 2 × 3?",
+      "question_text": "What is 2 \u00d7 3?",
       "correct_answer": 6,
       "options": [
         {
           "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 3,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 9,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 6,
-          "is_correct": true
+          "value": 5,
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": 9,
-          "is_correct": false
+          "value": 6,
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Pia puts 2 leashes in each of 5 bags. How many leashes are in all the bags?",
-      "correct_answer": 10,
+      "formatter": "mcq",
+      "question_text": "What is 2 \u00d7 10?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
+          "value": 20,
+          "is_correct": true
         },
         {
           "key": "B",
-          "value": 7,
-          "text": "7",
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 8,
-          "text": "8",
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "D",
           "value": 10,
-          "text": "10",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 2 \u00d7 4?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8,
           "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 12,
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "4 × 2 = ___",
+      "question_text": "4 \u00d7 2 = ___",
       "correct_answer": 8,
       "options": [
         {
           "key": "A",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 8,
           "text": "8",
           "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
         },
         {
           "key": "C",
@@ -354,7 +427,7 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 3 × 2?",
+      "question_text": "What is 3 \u00d7 2?",
       "correct_answer": 6,
       "options": [
         {
@@ -364,47 +437,20 @@
         },
         {
           "key": "B",
-          "value": 1,
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 5,
+          "value": 8,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 4,
+          "value": 5,
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every sample is a direct multiplication fact from the 2, 3, 4, 5, or 10 tables, such as seed 502's \"What is 9 × 4?\" and seed 501's \"6 × 5 = 30. True or False?\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All five named tables (2, 3, 4, 5, 10) appear as a factor across the sixteen samples, including seed 42's \"4 × 10\" and seed 500's \"8×10 rectangle.\""
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Single-fact recall or computation with small factors matches grade 2 quarter 3."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "mcq, cloze, a read_mcq array visual (seed 50's \"Look at the 2×5 array\"), set_fill_in_blank shading, error_detect, and true_false are all present."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Factor size is the only thing that changes between an easy fact like seed 43's \"2 × 2\" and a harder one like seed 502's \"9 × 4\", keeping every item inside the named tables."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest product observed is seed 500's \"8×10 rectangle\" (80), inside the range implied by the named tables."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

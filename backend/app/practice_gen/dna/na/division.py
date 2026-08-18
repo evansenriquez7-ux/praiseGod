@@ -531,6 +531,7 @@ def generate_params(
             "blank_target": blank_target,
             "context":     context,
             "structure":   structure,
+            "task_type":   task_type or "find_quotient",
         }
 
     if task_type == "repeated_subtraction" and structure == "result_unknown" and a % b == 0:

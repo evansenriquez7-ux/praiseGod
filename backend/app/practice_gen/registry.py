@@ -552,6 +552,8 @@ def _parse_competency_bounds(
             bounds["table"] = "2_3_4_5_10"
         elif "1-digit number" in text and "1- to 2-digit" not in text:
             bounds["table"] = "one_digit_2_9"
+        elif grade == 2:
+            bounds["table"] = "2_3_4_5_10"
 
         # "Illustrate division through equal jumps on the number line and
         # AS INVERSE OF MULTIPLICATION" (mat_g3_na_q4_0):
@@ -577,7 +579,7 @@ def _parse_competency_bounds(
         # of the remainder chain above -- this node binds no table, so
         # that chain never touches it either way.
         if "repeated subtraction" in text:
-            bounds["task_type"] = "repeated_subtraction_or_default"
+            bounds["task_type"] = ["find_quotient", "repeated_subtraction"]
 
         # Parse missing structure
         if "missing number" in text or "missing term" in text:

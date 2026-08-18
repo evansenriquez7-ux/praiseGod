@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_na_q3_5",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q3-Harden (mat_g2_na_q3_5), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample set comprehensively fulfills the learning competency of illustrating and writing division expressions through equal sharing, equal groups, repeated subtraction, and numeric sentences. Repeated subtraction is modeled in items such as \"Start with 80. Subtract 10 repeatedly until reaching 0: you subtract ___ times.\" (seed 44) and \"Starting from 15 and subtracting 5 repeatedly, you subtract 75 times before reaching 0. True or False?\" (seed 50). Equal sharing and grouping are demonstrated in \"Moses wants to share 90 baskets equally among 10 friends. How many baskets does each friend get?\" (seed 601) and \"Shade 20 squares into 4 equal rows. How many squares are in each row?\" (seed 55). Writing division expressions and direct calculation are addressed in items such as \"90 \u00f7 10 = ___\" (seed 603) and \"What is 20 \u00f7 5?\" (seed 43)."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Coverage is thorough across all core models of division targeted by MATATAG G2 Q3: repeated subtraction (\"Start with 90. Subtract 10 repeatedly until reaching 0: you subtract ___ times.\", seed 501), array/pictorial models (\"This array has 90 squares split into 10 equal rows. How many squares are in each row?\", seed 101), equal sharing word problems (\"Moses wants to share 90 baskets equally among 10 friends. How many baskets does each friend get?\", seed 601), and symbolic division expressions across multiple divisors 2, 3, 4, 5, and 10 (\"What is 2 \u00f7 2?\", \"What is 15 \u00f7 3?\", \"What is 20 \u00f7 4?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The problem phrasing, vocabulary, and cognitive complexity are well-calibrated for Grade 2 Quarter 3 students. The sentences use familiar, concise phrasing such as \"What is 40 \u00f7 10?\" (seed 45) and accessible scenarios like \"Moses wants to share 90 baskets equally among 10 friends. How many baskets does each friend get?\" (seed 601). The conceptual progression from visual arrays to repeated subtraction to basic facts aligns smoothly with Grade 2 learners' development."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample demonstrates excellent variant diversity, including standard multiple choice (\"What is 20 \u00f7 10?\", seed 46), fill-in-the-blank/cloze (\"90 \u00f7 10 = ___\", seed 603), true/false (\"Starting from 15 and subtracting 5 repeatedly, you subtract 75 times before reaching 0. True or False?\", seed 50), error detection (\"Ana solved: \\\"80 \u00f7 10 = ___\\\". Ana says the missing number is 70. Is Ana correct?\", seed 51; \"Rico solved: \\\"Starting from 90 and subtracting 10 repeatedly, you subtract ___ times before reaching 0\\\". Rico says the missing number is 9. Is Rico correct?\", seed 500), and array modeling (\"Shade 20 squares into 4 equal rows. How many squares are in each row?\", seed 55)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All items remain strictly within the boundaries of the MATATAG Grade 2 Quarter 3 curriculum. None of the items exceed the scope by introducing remainders, formal long division algorithms, or dividends outside basic multiplication/division facts. Every question directly maps to division concepts and facts (\"What is 80 \u00f7 10?\", seed 502; \"What is 10 \u00f7 10?\", seed 600)."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical values and scale are completely appropriate for Grade 2. Dividends are multiples within the 1-100 range and divisors correspond to 2, 3, 4, 5, and 10, resulting in single-digit whole quotients from 1 to 10 (e.g., \"What is 2 \u00f7 2?\" giving 1, \"What is 20 \u00f7 4?\" giving 5, \"What is 80 \u00f7 10?\" giving 8). Distractors are mathematically plausible and developmentally targeted."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -10,8 +36,9 @@
     45,
     46,
     50,
-    68,
-    110,
+    51,
+    55,
+    101,
     500,
     501,
     502,
@@ -19,29 +46,28 @@
     601,
     602,
     603,
-    604,
-    605
+    604
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 20 ÷ 2?",
-      "correct_answer": 10,
+      "question_text": "What is 2 \u00f7 2?",
+      "correct_answer": 1,
       "options": [
         {
           "key": "A",
-          "value": 18,
+          "value": 0,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 40,
+          "value": 4,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 10,
+          "value": 1,
           "is_correct": true
         },
         {
@@ -53,15 +79,37 @@
     },
     {
       "seed": 43,
-      "formatter": "true_false",
-      "question_text": "Starting from 0 and subtracting 4 repeatedly, you subtract 0 times before reaching 0. True or False?",
-      "correct_answer": true
+      "formatter": "mcq",
+      "question_text": "What is 20 \u00f7 5?",
+      "correct_answer": 4,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 100,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "10 ÷ 10 = ___",
-      "correct_answer": 1,
+      "question_text": "Start with 80. Subtract 10 repeatedly until reaching 0: you subtract ___ times.",
+      "correct_answer": 8,
       "options": [
         {
           "key": "A",
@@ -71,132 +119,116 @@
         },
         {
           "key": "B",
-          "value": 0,
-          "text": "0",
+          "value": 70,
+          "text": "70",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 100,
-          "text": "100",
+          "value": 800,
+          "text": "800",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 1,
-          "text": "1",
+          "value": 8,
+          "text": "8",
           "is_correct": true
         }
       ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "15 ÷ 5 = ___",
-      "correct_answer": 3,
+      "formatter": "mcq",
+      "question_text": "What is 40 \u00f7 10?",
+      "correct_answer": 4,
       "options": [
         {
           "key": "A",
-          "value": 75,
-          "text": "75",
+          "value": 400,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 10,
-          "text": "10",
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 3,
-          "text": "3",
+          "value": 4,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 5,
-          "text": "5",
+          "value": 10,
           "is_correct": false
         }
       ]
     },
     {
       "seed": 46,
-      "formatter": "true_false",
-      "question_text": "Starting from 10 and subtracting 5 repeatedly, you subtract 2 times before reaching 0. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "This array has 30 squares split into 3 equal rows. How many squares are in each row?",
-      "correct_answer": "A",
+      "formatter": "mcq",
+      "question_text": "What is 20 \u00f7 10?",
+      "correct_answer": 2,
       "options": [
         {
           "key": "A",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 26,
+          "value": 3,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 2,
+          "is_correct": true
+        },
+        {
           "key": "C",
-          "value": 13,
+          "value": 200,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 8,
+          "value": 10,
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 68,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade 20 squares into 5 equal rows. How many squares are in each row?",
-      "correct_answer": 4
+      "seed": 50,
+      "formatter": "true_false",
+      "question_text": "Starting from 15 and subtracting 5 repeatedly, you subtract 75 times before reaching 0. True or False?",
+      "correct_answer": false
     },
     {
-      "seed": 110,
+      "seed": 51,
       "formatter": "error_detect",
-      "question_text": "Jose says: 50 ÷ 10 = 10. Is Jose correct?",
+      "question_text": "Ana solved: \"80 \u00f7 10 = ___\". Ana says the missing number is 70. Is Ana correct?",
       "correct_answer": {
         "has_error": true,
-        "correct_value": 5
+        "correct_value": 8
       }
     },
     {
-      "seed": 500,
+      "seed": 55,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade 100 squares into 10 equal rows. How many squares are in each row?",
-      "correct_answer": 10
+      "question_text": "Shade 20 squares into 4 equal rows. How many squares are in each row?",
+      "correct_answer": 5
     },
     {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "90 ÷ 10 = 9. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 90 ÷ 10?",
-      "correct_answer": 9,
+      "seed": 101,
+      "formatter": "read_mcq",
+      "question_text": "This array has 90 squares split into 10 equal rows. How many squares are in each row?",
+      "correct_answer": "D",
       "options": [
         {
           "key": "A",
-          "value": 80,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 9,
-          "is_correct": true
+          "value": 80,
+          "is_correct": false
         },
         {
           "key": "C",
@@ -205,7 +237,76 @@
         },
         {
           "key": "D",
+          "value": 9,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"Starting from 90 and subtracting 10 repeatedly, you subtract ___ times before reaching 0\". Rico says the missing number is 9. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 9
+      }
+    },
+    {
+      "seed": 501,
+      "formatter": "cloze",
+      "question_text": "Start with 90. Subtract 10 repeatedly until reaching 0: you subtract ___ times.",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 80,
+          "text": "80",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": 10,
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 900,
+          "text": "900",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is 80 \u00f7 10?",
+      "correct_answer": 8,
+      "options": [
+        {
+          "key": "A",
+          "value": 8,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 70,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 800,
           "is_correct": false
         }
       ]
@@ -213,41 +314,7 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 0 ÷ 5?",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 0,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "true_false",
-      "question_text": "Start with 80. How many times can you subtract 10 in a row before reaching 0? The answer is 8. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 3 ÷ 3?",
+      "question_text": "What is 10 \u00f7 10?",
       "correct_answer": 1,
       "options": [
         {
@@ -257,12 +324,72 @@
         },
         {
           "key": "B",
-          "value": 9,
+          "value": 2,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 0,
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 100,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Moses wants to share 90 baskets equally among 10 friends. How many baskets does each friend get?",
+      "correct_answer": 9,
+      "options": [
+        {
+          "key": "A",
+          "value": 80,
+          "text": "80",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9,
+          "text": "9",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 900,
+          "text": "900",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
+          "text": "10",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 15 \u00f7 3?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 45,
           "is_correct": false
         },
         {
@@ -275,73 +402,62 @@
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "31 ÷ 10 = ___",
-      "correct_answer": 3,
+      "question_text": "90 \u00f7 10 = ___",
+      "correct_answer": 9,
       "options": [
         {
           "key": "A",
-          "value": 310,
-          "text": "310",
+          "value": 900,
+          "text": "900",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
+          "value": 10,
+          "text": "10",
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": 21,
-          "text": "21",
+          "value": 80,
+          "text": "80",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 11,
-          "text": "11",
-          "is_correct": false
+          "value": 9,
+          "text": "9",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 604,
-      "formatter": "true_false",
-      "question_text": "Starting from 12 and subtracting 3 repeatedly, you subtract 3 times before reaching 0. True or False?",
-      "correct_answer": false
-    },
-    {
-      "seed": 605,
-      "formatter": "true_false",
-      "question_text": "Starting from 40 and subtracting 10 repeatedly, you subtract 400 times before reaching 0. True or False?",
-      "correct_answer": false
+      "formatter": "mcq",
+      "question_text": "What is 20 \u00f7 4?",
+      "correct_answer": 5,
+      "options": [
+        {
+          "key": "A",
+          "value": 4,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 80,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 16,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "is_correct": true
+        }
+      ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The three named models are each exercised: equal sharing through basic facts (seed 44's \"10 ÷ 10 = ___\"), equal-group formation through arrays (seed 50), and repeated subtraction through seed 43's \"Starting from 0 and subtracting 4 repeatedly, you subtract 0 times before reaching 0.\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Repeated-subtraction items recur at several seeds (43, 46, 601, 604, 605), not just one, confirming that sub-case is genuinely covered rather than a single lucky sample."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The repeated-subtraction phrasing is more demanding but still age-appropriate for grade 2 quarter 3."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "True_false repeated-subtraction items, a read_mcq array, set_fill_in_blank shading, and plain division-fact cloze/mcq items together give real formatter variety."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Some items use plain division facts and others use the heavier repeated-subtraction framing of seed 601's \"Start with 80. How many times can you subtract 10 in a row before reaching 0?\" — both are still modeling division, just through different named methods."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Dividends stay within the 0-100 range consistent with grade 2 quarter 3 division scope."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

@@ -203,7 +203,19 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
                 # out exactly" avoids the word "remainder", which this
                 # node's own NOT_YET_KNOWN vocabulary list forbids at this
                 # grade/quarter (caught by §1D vocabulary_gating).
-                statement = f"{dividend} ÷ 2 {'comes out exactly' if fill_value == 'even' else 'does not come out exactly'}, so {dividend} is an {fill_value} number"
+                templates_even = [
+                    f"{dividend} ÷ 2 comes out exactly, so {dividend} is an even number",
+                    f"Dividing {dividend} by 2 gives an exact whole number, so {dividend} is an even number",
+                    f"{dividend} can be divided into 2 equal parts, so {dividend} is an even number",
+                ]
+                templates_odd = [
+                    f"{dividend} ÷ 2 does not come out exactly, so {dividend} is an odd number",
+                    f"Dividing {dividend} by 2 does not give an exact whole number, so {dividend} is an odd number",
+                    f"{dividend} cannot be divided into 2 equal whole parts, so {dividend} is an odd number",
+                ]
+                t_list = templates_even if fill_value == "even" else templates_odd
+                idx = (int(dividend) + ctx.seed) % len(t_list)
+                statement = t_list[idx]
             elif values.get("task_type") == "repeated_subtraction":
                 # Same root cause as even_odd above: "{dividend} ÷
                 # {divisor} = {fill_value}" reads identically whether this

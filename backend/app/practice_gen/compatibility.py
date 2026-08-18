@@ -889,9 +889,9 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # true_false is the only formatter that fits a binary judgment
         # without needing extra distractors, so it's the only one left
         # unrestricted.
-        "mcq": {"task_type": ["find_quotient", "estimate", "number_line_jumps", "inverse_of_multiplication"]},
-        "cloze": {"task_type": ["find_quotient", "estimate", "number_line_jumps", "inverse_of_multiplication"]},
-        "error_detect": {"task_type": ["find_quotient", "estimate", "number_line_jumps", "inverse_of_multiplication"]},
+        "mcq": {"task_type": ["find_quotient", "estimate", "number_line_jumps", "inverse_of_multiplication", "repeated_subtraction"]},
+        "cloze": {"task_type": ["find_quotient", "estimate", "number_line_jumps", "inverse_of_multiplication", "repeated_subtraction"]},
+        "error_detect": {"task_type": ["find_quotient", "estimate", "number_line_jumps", "inverse_of_multiplication", "repeated_subtraction"]},
     },
 
     "missing_number": {

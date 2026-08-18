@@ -31,7 +31,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 
 from ..dna.base import DNA, QuestionContext, VocabGated
-from ..registry import get_node_competency_bounds, get_node_dnas
+from ..registry import get_node_competency_bounds, get_node_dnas, get_node_info
 from .interest import get_interest_slots, pick_interest
 from .spines import select_spine
 
@@ -362,7 +362,11 @@ def generate_context(
                 if dna.concept == "money_peso"
                 else dna.concept
             ),
-            node_own_concepts=set(get_node_dnas(node_id) or []),
+            node_own_concepts=(
+                (set(get_node_dnas(node_id) or []) | {"money_peso"})
+                if any(kw in (get_node_info(node_id) or {}).get("competency", "").lower() for kw in ("money", "peso", "centavo"))
+                else set(get_node_dnas(node_id) or [])
+            ),
         )
         if spine is not None:
             spine_id = spine.id
