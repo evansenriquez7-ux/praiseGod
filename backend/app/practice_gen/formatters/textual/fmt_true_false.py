@@ -315,30 +315,33 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
             else:
                 statement = f"In {a_val} {op_symbol} {b_val} = ___, the {miss_lbl} is {fill_value}"
         elif concept == "fractions":
-            numer = values.get("numerator", values.get("a", 1))
-            denom = values.get("denominator", values.get("b", 2))
-            operation = values.get("operation")
-            if operation == "compare":
-                a_num = values.get("a_num", numer)
-                a_den = values.get("a_den", denom)
-                b_num = values.get("b_num", numer)
-                b_den = values.get("b_den", denom)
-                sign_fill = fill_value if fill_value in (">", "<", "=") else "="
-                statement = f"\\(\\frac{{{a_num}}}{{{a_den}}}\\) {sign_fill} \\(\\frac{{{b_num}}}{{{b_den}}}\\)"
-            elif operation in ("add_subtract", "add", "subtract"):
-                a_num = values.get("a_num", numer)
-                b_num = values.get("b_num", 0)
-                a_den = values.get("a_den", denom)
-                b_den = values.get("b_den", denom)
-                a_part = "1 part" if a_num == 1 else f"{a_num} parts"
-                if operation == "subtract":
-                    b_part = "1 shaded part" if b_num == 1 else f"{b_num} shaded parts"
-                    statement = f"A shape is divided into {a_den} equal parts. {a_part} is shaded. Taking away {b_part} leaves {fill_value}"
-                else:
-                    b_part = "1 more part" if b_num == 1 else f"{b_num} more parts"
-                    statement = f"A shape is divided into {a_den} equal parts. Shading {a_part} and then {b_part} gives {fill_value} shaded in all"
+            if values.get("question"):
+                statement = f"{values['question']} The answer is {fill_value}."
             else:
-                statement = f"A shape is divided into {denom} equal parts with {numer} parts shaded, which represents the fraction {fill_value}"
+                numer = values.get("numerator", values.get("a", 1))
+                denom = values.get("denominator", values.get("b", 2))
+                operation = values.get("operation")
+                if operation == "compare":
+                    a_num = values.get("a_num", numer)
+                    a_den = values.get("a_den", denom)
+                    b_num = values.get("b_num", numer)
+                    b_den = values.get("b_den", denom)
+                    sign_fill = fill_value if fill_value in (">", "<", "=") else "="
+                    statement = f"\\(\\frac{{{a_num}}}{{{a_den}}}\\) {sign_fill} \\(\\frac{{{b_num}}}{{{b_den}}}\\)"
+                elif operation in ("add_subtract", "add", "subtract"):
+                    a_num = values.get("a_num", numer)
+                    b_num = values.get("b_num", 0)
+                    a_den = values.get("a_den", denom)
+                    b_den = values.get("b_den", denom)
+                    a_part = "1 part" if a_num == 1 else f"{a_num} parts"
+                    if operation == "subtract":
+                        b_part = "1 shaded part" if b_num == 1 else f"{b_num} shaded parts"
+                        statement = f"A shape is divided into {a_den} equal parts. {a_part} is shaded. Taking away {b_part} leaves {fill_value}"
+                    else:
+                        b_part = "1 more part" if b_num == 1 else f"{b_num} more parts"
+                        statement = f"A shape is divided into {a_den} equal parts. Shading {a_part} and then {b_part} gives {fill_value} shaded in all"
+                else:
+                    statement = f"A shape is divided into {denom} equal parts with {numer} parts shaded, which represents the fraction {fill_value}"
         else:
             statement = f"{ctx.question_text} The answer is {fill_value}."
 

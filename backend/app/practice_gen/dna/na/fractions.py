@@ -172,13 +172,6 @@ def generate_params(
         operation = rng.choice(["add", "subtract"])
 
     if operation == "order":
-        # "Order unit/similar fractions from smallest to largest, and vice
-        # versa" (mat_g2_na_q4_2/mat_g2_na_q4_5) had no operation for this
-        # at all -- operation only ever resolved to identify_name/compare/
-        # add_subtract, so the co-mapped comparing_ordering DNA (a bare
-        # whole-number ordering skill) filled the gap with off-topic
-        # content instead (blind review: "ordering unit fractions...
-        # never appears anywhere in the 18 samples").
         n_items = 4
         if frac_type in ("unit_fraction", "unit"):
             # Unit fractions: numerator always 1, distinct denominators.
@@ -197,16 +190,59 @@ def generate_params(
             pairs = [(n, den) for n in nums]
 
         direction = rng.choice(["ascending", "descending"])
-        seq_strs = [_fraction_str(n, d) for n, d in pairs]
+        display_pairs = list(pairs)
+        rng.shuffle(display_pairs)
+        sorted_pairs = sorted(pairs, key=lambda p: p[0] / p[1], reverse=(direction == "descending"))
+        if display_pairs == sorted_pairs:
+            display_pairs.reverse()
+
+        display_str = ", ".join(_fraction_str(n, d) for n, d in display_pairs)
+        correct_answer = ", ".join(_fraction_str(n, d) for n, d in sorted_pairs)
+
+        distractors = []
+        rev_answer = ", ".join(_fraction_str(n, d) for n, d in reversed(sorted_pairs))
+        if rev_answer != correct_answer:
+            distractors.append(rev_answer)
+        if frac_type in ("unit_fraction", "unit"):
+            den_sorted = sorted(pairs, key=lambda p: p[1], reverse=(direction == "descending"))
+            cand = ", ".join(_fraction_str(n, d) for n, d in den_sorted)
+            if cand != correct_answer and cand not in distractors:
+                distractors.append(cand)
+        attempts = 0
+        while len(distractors) < 3 and attempts < 20:
+            attempts += 1
+            shuffled = list(pairs)
+            rng.shuffle(shuffled)
+            cand = ", ".join(_fraction_str(n, d) for n, d in shuffled)
+            if cand != correct_answer and cand not in distractors:
+                distractors.append(cand)
+
+        if direction == "ascending":
+            q_template = rng.choice([
+                f"Which list shows these fractions ordered from smallest to largest: {display_str}?",
+                f"Arrange these fractions from least to greatest: {display_str}.",
+                f"Order these fractions from smallest to largest: {display_str}.",
+            ])
+        else:
+            q_template = rng.choice([
+                f"Which list shows these fractions ordered from largest to smallest: {display_str}?",
+                f"Arrange these fractions from greatest to least: {display_str}.",
+                f"Order these fractions from largest to smallest: {display_str}.",
+            ])
+
         return {
             "numerator":    pairs[0][0],
             "denominator":  pairs[0][1],
-            "fraction_str": seq_strs[0],
+            "fraction_str": correct_answer,
             "model_type":   model_type,
             "operation":    "order",
-            "sequence":     seq_strs,
+            "sequence":     [_fraction_str(n, d) for n, d in display_pairs],
             "direction":    direction,
-            "blank_target": "sequence",
+            "question":     q_template,
+            "answer":       correct_answer,
+            "result":       correct_answer,
+            "distractors":  distractors[:3],
+            "blank_target": "result",
         }
 
     if operation == "count_sequence":
@@ -377,7 +413,41 @@ def generate_params(
 
                 notation_question = None
                 if operation == "identify_name" and profile.get("fraction_task_mode") == "notation":
-                    notation_question = f"Write {_fraction_words(num, den)} in fraction notation."
+                    task_dir = rng.choice(["write", "read"])
+                    if task_dir == "write":
+                        notation_question = f"Write {_fraction_words(num, den)} in fraction notation."
+                        ans = frac_s
+                        nd_dist = []
+                        if num != den:
+                            nd_dist.append(f"{den}/{num}")
+                        if num + 1 < den:
+                            nd_dist.append(f"{num + 1}/{den}")
+                        if num > 1:
+                            nd_dist.append(f"{num - 1}/{den}")
+                        for other_d in denom_pool:
+                            if other_d != den and f"{num}/{other_d}" not in nd_dist:
+                                nd_dist.append(f"{num}/{other_d}")
+                        cmp_distractors = nd_dist[:3]
+                    else:
+                        notation_question = rng.choice([
+                            f"How is \\(\\frac{{{num}}}{{{den}}}\\) read in words?",
+                            f"Which word name represents \\(\\frac{{{num}}}{{{den}}}\\)?",
+                            f"Read the fraction \\(\\frac{{{num}}}{{{den}}}\\). Which is the correct word name?",
+                        ])
+                        ans = _fraction_words(num, den)
+                        word_dist = []
+                        if num != den and den <= 10:
+                            word_dist.append(_fraction_words(den, num) if num <= 10 and _ORDINAL_WORDS.get(num) else f"{den} {_CARDINAL_WORDS.get(num, str(num))}ths")
+                        if num + 1 < den:
+                            word_dist.append(_fraction_words(num + 1, den))
+                        if num > 1:
+                            word_dist.append(_fraction_words(num - 1, den))
+                        for other_d in denom_pool:
+                            if other_d != den:
+                                w = _fraction_words(num, other_d)
+                                if w not in word_dist and w != ans:
+                                    word_dist.append(w)
+                        cmp_distractors = [w for w in word_dist if w != ans][:3]
 
                 candidate_params.append({
                     "numerator":    num,
@@ -442,6 +512,7 @@ def generate_params(
                         "result_num":   r_num,
                         "result_den":   r_den,
                         "result":       f"{r_num}/{r_den}" if r_den != 1 else str(r_num),
+                        "answer":       f"{r_num}/{r_den}" if r_den != 1 else str(r_num),
                     })
 
     if not candidate_params:
@@ -548,7 +619,7 @@ def generate_hints(
 FRACTIONS_DNA = DNA(
     concept="fractions",
     dna_type="formula",
-    answer_formula="numerator / denominator",
+    answer_formula="answer",
     param_bounds=_PARAM_BOUNDS,
     error_patterns=_ERROR_PATTERNS,
     compatible_formatters=[

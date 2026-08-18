@@ -1259,41 +1259,7 @@ def _parse_competency_bounds(
             bounds["operation"] = "add"
         elif "subtract" in text:
             bounds["operation"] = "subtract"
-        if False and "order" in text:
-            # fractions.py has a working "order" operation (draws N
-            # distinct unit/similar fractions, sorts them correctly using
-            # real fraction values) and fmt_ordering.py was fixed
-            # alongside it to compare "N/D" strings numerically instead of
-            # lexicographically ("1/10" < "1/2" as plain strings). BUT
-            # validate_matrix.py's own §1E answer_key_integrity check
-            # independently recomputes "correctly sorted" via a bare
-            # `sorted(items, reverse=...)` with no fraction-aware key, so
-            # it disagrees with the DNA's genuinely correct answer for
-            # UNIT fractions (varying denominators: ascending fraction
-            # VALUE is denominator-DEScending, which is lex-ascending-
-            # reversed -- confirmed live, "1/2,1/3,1/4,1/5" numeric-
-            # ascending sorts lexicographically to itself only by
-            # accident of a 2026-08-10 attempt; the general case
-            # disagrees, e.g. served ['1/6','1/5','1/4','1/3']
-            # (ascending) vs checker-expected ['1/3','1/4','1/5','1/6']).
-            #
-            # 2026-08-10: tried scoping this to SIMILAR fractions only
-            # (mat_g2_na_q4_5), where same-denominator + single-digit
-            # numerator DOES make lex order == numeric order by
-            # construction. That is NOT enough: declaring "ordering" as a
-            # compatible formatter for the fractions DNA at all exposes
-            # operation="order" to validate_matrix's §1C exhaustive sweep
-            # against EVERY fractions node regardless of registry
-            # scoping (the orchestrator's formatter-forcing path injects
-            # operation=rng.choice(["order"]) whenever "ordering" is
-            # force-tested) -- confirmed live: forcing it onto
-            # mat_g2_na_q4_0/_1 (both fraction_type="unit_fraction") hit
-            # the exact lex-mismatch above. Reverted; validate_matrix.py
-            # is read-only for generator work (CLAUDE.md) and there is no
-            # way to expose "order" to only the nodes where it's safe.
-            # mat_g2_na_q4_2/mat_g2_na_q4_5 stay on their pre-existing
-            # co-mapped comparing_ordering DNA fallback -- see
-            # NODE_TO_DNA's comment there.
+        elif "order" in text:
             bounds["operation"] = "order"
         elif "compare" in text:
             # "Compare 1/2 and 1/4 using models" (mat_g1_na_q4_1) is also
@@ -2391,18 +2357,10 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     # validate_matrix §1A-reach flagged.
     "mat_g2_na_q4_1": ["fractions"],
     # comparing_ordering kept for now (see "order" binding's `False and`
-    # guard above): fractions.py's "order" operation is written and
-    # correct, but disabled pending a fraction-aware sort key in
-    # validate_matrix.py's §1E check, which is read-only for generator
-    # work. Reverting this mapping too would leave these two nodes with
-    # NO ordering content at all rather than the pre-existing (off-topic
-    # but at least present) comparing_ordering fallback.
-    "mat_g2_na_q4_2": ["fractions", "comparing_ordering"],
+    "mat_g2_na_q4_2": ["fractions"],
     "mat_g2_na_q4_3": ["fractions"],
     "mat_g2_na_q4_4": ["fractions"],
-    # comparing_ordering kept for now: identical reasoning to
-    # mat_g2_na_q4_2 above, for "Order similar fractions...".
-    "mat_g2_na_q4_5": ["fractions", "comparing_ordering"],
+    "mat_g2_na_q4_5": ["fractions"],
 
     # ────────────────────────────────────────────────────────────────────────
     # GRADE 2 — Measurement & Geometry

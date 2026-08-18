@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_na_q4_4",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q4-Harden (mat_g2_na_q4_4), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample questions directly fulfill the learning competency by assessing both reading fractions into words and writing fractions in standard notation. For reading, items such as \"How is \\(\\frac{2}{5}\\) read in words?\" and \"Which word name represents \\(\\frac{1}{8}\\)?\" evaluate students' ability to interpret fraction notation and match it with correct word names. For writing, items like \"Write three eighths in fraction notation.\" and \"Write five sixths in fraction notation.\" directly prompt students to convert word names into standard fraction notation."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set comprehensively covers bidirectional translation between fraction notation and words across various proper fractions appropriate for Grade 2 (denominators 4, 5, 6, 8). Both unit fractions (e.g., \"Write one eighth in fraction notation.\" and \"Which word name represents \\(\\frac{1}{8}\\)?\") and non-unit fractions (e.g., \"How is \\(\\frac{3}{5}\\) read in words?\" and \"Write two fourths in fraction notation.\") are well-represented."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The difficulty and readability are strictly aligned with Grade 2 Quarter 4 developmental expectations. Prompts are concise and direct, such as \"Write three fifths in fraction notation.\" and \"Write four eighths in fraction notation.\", avoiding unnecessary linguistic complexity or extraneous cognitive load."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples demonstrate balanced variation in question format (MCQ and cloze) and phrasing, using stems such as \"How is \\(\\frac{4}{5}\\) read in words?\", \"Which word name represents \\(\\frac{2}{4}\\)?\", and \"Write two fifths in fraction notation.\". Distractor choices effectively address common early-grade misconceptions, such as reciprocal inversion (e.g., 8/3, 5/2) and misnaming denominators."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All 12 items align strictly with the target competency. Items focus squarely on reading and writing fractions in fraction notation (such as \"Write three eighths in fraction notation.\" and \"How is \\(\\frac{3}{5}\\) read in words?\") without requiring unintroduced concepts such as fraction addition, comparison, or simplification."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numeric values utilized in the sample items (denominators 4, 5, 6, 8 with proper numerators) are within the MATATAG Grade 2 fraction scope. Examples such as \"Write two fourths in fraction notation.\" and \"Which word name represents \\(\\frac{1}{8}\\)?\" use small, intuitive fractions suitable for Grade 2 learners."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -13,33 +39,35 @@
     500,
     501,
     502,
-    601
+    600,
+    601,
+    602
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Write two fifths in fraction notation.",
-      "correct_answer": "2/5",
+      "question_text": "How is \\(\\frac{2}{5}\\) read in words?",
+      "correct_answer": "two fifths",
       "options": [
         {
           "key": "A",
-          "value": "5/2",
+          "value": "five halfs",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "3/5",
+          "value": "one fifth",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "2/5",
+          "value": "two fifths",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "5/10",
+          "value": "three fifths",
           "is_correct": false
         }
       ]
@@ -47,12 +75,304 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Write three fourths in fraction notation.",
-      "correct_answer": "3/4",
+      "question_text": "Write three eighths in fraction notation.",
+      "correct_answer": "3/8",
       "options": [
         {
           "key": "A",
-          "value": "3/4",
+          "value": "3/8",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "4/8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2/8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "8/3",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "Which word name represents \\(\\frac{1}{8}\\)?",
+      "correct_answer": "one eighth",
+      "options": [
+        {
+          "key": "A",
+          "value": "two eighths",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "8 oneths",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "one half",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "one eighth",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "How is \\(\\frac{3}{5}\\) read in words?",
+      "correct_answer": "three fifths",
+      "options": [
+        {
+          "key": "A",
+          "value": "two fifths",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "five thirds",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "three fifths",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "four fifths",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "Write three fifths in fraction notation.",
+      "correct_answer": "3/5",
+      "options": [
+        {
+          "key": "A",
+          "value": "2/5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3/5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "4/5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5/3",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "formatter": "cloze",
+      "question_text": "Write two fifths in fraction notation.",
+      "correct_answer": "2/5",
+      "options": [
+        {
+          "key": "A",
+          "value": "5/2",
+          "text": "5/2",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2/5",
+          "text": "2/5",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "1/5",
+          "text": "1/5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3/5",
+          "text": "3/5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "cloze",
+      "question_text": "Write five sixths in fraction notation.",
+      "correct_answer": "5/6",
+      "options": [
+        {
+          "key": "A",
+          "value": "5/6",
+          "text": "5/6",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "4/6",
+          "text": "4/6",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "6/5",
+          "text": "6/5",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5/2",
+          "text": "5/2",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "How is \\(\\frac{4}{5}\\) read in words?",
+      "correct_answer": "four fifths",
+      "options": [
+        {
+          "key": "A",
+          "value": "four fifths",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "four halfs",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "three fifths",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "five fourths",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Write four eighths in fraction notation.",
+      "correct_answer": "4/8",
+      "options": [
+        {
+          "key": "A",
+          "value": "8/4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4/8",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "3/8",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5/8",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Write one eighth in fraction notation.",
+      "correct_answer": "1/8",
+      "options": [
+        {
+          "key": "A",
+          "value": "8/1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2/8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1/8",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "1/2",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "Which word name represents \\(\\frac{2}{4}\\)?",
+      "correct_answer": "two fourths",
+      "options": [
+        {
+          "key": "A",
+          "value": "three fourths",
+          "text": "three fourths",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "four halfs",
+          "text": "four halfs",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "one fourth",
+          "text": "one fourth",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "two fourths",
+          "text": "two fourths",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Write two fourths in fraction notation.",
+      "correct_answer": "2/4",
+      "options": [
+        {
+          "key": "A",
+          "value": "2/4",
           "is_correct": true
         },
         {
@@ -62,278 +382,15 @@
         },
         {
           "key": "C",
-          "value": "6/5",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "4/3",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "mcq",
-      "question_text": "Write three eighths in fraction notation.",
-      "correct_answer": "3/8",
-      "options": [
-        {
-          "key": "A",
-          "value": "7/16",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "8/3",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "4/8",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "3/8",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Write one eighth in fraction notation.",
-      "correct_answer": "1/8",
-      "options": [
-        {
-          "key": "A",
-          "value": "2/8",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "8/1",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1/8",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "3/16",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Write two fifths in fraction notation.",
-      "correct_answer": "2/5",
-      "options": [
-        {
-          "key": "A",
-          "value": "3/5",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "2/5",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "5/10",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "5/2",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 50,
-      "formatter": "cloze",
-      "question_text": "Write two thirds in fraction notation.",
-      "correct_answer": "2/3",
-      "options": [
-        {
-          "key": "A",
-          "value": "3/2",
-          "text": "3/2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "2/3",
-          "text": "2/3",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "4/4",
-          "text": "4/4",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1/3",
-          "text": "1/3",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 500,
-      "formatter": "cloze",
-      "question_text": "Write four fifths in fraction notation.",
-      "correct_answer": "4/5",
-      "options": [
-        {
-          "key": "A",
-          "value": "4/5",
-          "text": "4/5",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "1/5",
-          "text": "1/5",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "5/4",
-          "text": "5/4",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "8/6",
-          "text": "8/6",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "mcq",
-      "question_text": "Write seven eighths in fraction notation.",
-      "correct_answer": "7/8",
-      "options": [
-        {
-          "key": "A",
-          "value": "7/8",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "14/9",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1/8",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "8/7",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Write five sixths in fraction notation.",
-      "correct_answer": "5/6",
-      "options": [
-        {
-          "key": "A",
-          "value": "6/5",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "5/6",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "10/7",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1/6",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Write two fourths in fraction notation.",
-      "correct_answer": "2/4",
-      "options": [
-        {
-          "key": "A",
-          "value": "5/8",
-          "text": "5/8",
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": "4/2",
-          "text": "4/2",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "3/4",
-          "text": "3/4",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "2/4",
-          "text": "2/4",
-          "is_correct": true
+          "value": "3/4",
+          "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "As with the unit-fraction sibling, every sample only tests writing a spoken fraction as notation, e.g. seed 42's \"Write two fifths in fraction notation.\" → \"2/5\"; no sample tests the \"read\" direction."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The \"read and write\" pairing named in the competency is only half-covered across the ten samples; the read direction is absent entirely."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Converting spoken non-unit fraction names to notation suits grade 2 quarter 4."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Both mcq items, like seed 42's \"Write two fifths in fraction notation\", and cloze items, like seed 50's \"Write two thirds in fraction notation\", appear across the ten samples."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "As with the unit-fraction sibling, the fraction word named — \"five sixths\" in seed 502, for instance — is what varies in difficulty, not the write-in-notation task itself."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Denominators tested (3, 4, 5, 6, 8) and numerators are all consistent with \"similar fractions\" for this grade."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }

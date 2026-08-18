@@ -1015,9 +1015,9 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # through the visual formatters above -- absent for every other
         # operation, so this never affects compare/add_subtract/
         # count_sequence.
-        "mcq":           {"operation": ["identify_name", "compare", "add", "subtract", "add_subtract", "count_sequence"], "fraction_task_mode": ["notation"]},
-        "cloze":         {"operation": ["identify_name", "compare", "add", "subtract", "add_subtract", "count_sequence"], "fraction_task_mode": ["notation"]},
-        "numeric_input": {"operation": ["identify_name", "compare", "add", "subtract", "add_subtract", "count_sequence"]},
+        "mcq":           {"operation": ["identify_name", "compare", "add", "subtract", "add_subtract", "count_sequence", "order"], "fraction_task_mode": ["notation"]},
+        "cloze":         {"operation": ["identify_name", "compare", "add", "subtract", "add_subtract", "count_sequence", "order"], "fraction_task_mode": ["notation"]},
+        "numeric_input": {"operation": ["identify_name", "compare", "add", "subtract", "add_subtract", "count_sequence", "order"]},
     },
 
     "money_peso": {

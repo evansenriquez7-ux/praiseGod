@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_na_q4_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B5 (g2 na_q2_1-q4), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q4-Harden (mat_g2_na_q4_1), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample items directly assess reading and writing unit fractions in fraction notation. Reading competencies are evaluated by presenting fraction notation and asking for word names, such as in \"Read the fraction \\(\\frac{1}{2}\\). Which is the correct word name?\" and \"How is \\(\\frac{1}{3}\\) read in words?\". Writing competencies are tested by giving word names and asking for fractional representations, such as in \"Write one third in fraction notation.\" and \"Write one eighth in fraction notation.\""
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The items comprehensively span standard unit fractions including halves, thirds, fourths, and eighths. Both directions of competency are thoroughly covered across items: reading notation to identify verbal names (e.g., \"Read the fraction \\(\\frac{1}{3}\\). Which is the correct word name?\") and converting verbal names to fraction notation (e.g., \"Write one fourth in fraction notation.\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The cognitive load is well-calibrated for Grade 2 Quarter 4 students. Question stems are direct and accessible, using clear instructions such as \"Write one half in fraction notation.\" and \"How is \\(\\frac{1}{2}\\) read in words?\", with age-appropriate vocabulary and no extraneous linguistic complexity."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "Multiple item templates and phrasing variants are included, such as \"Write one third in fraction notation.\", \"Read the fraction \\(\\frac{1}{2}\\). Which is the correct word name?\", and \"How is \\(\\frac{1}{2}\\) read in words?\". Formats include both standard multiple choice and cloze presentations, with effective distractors targeting common learner errors like inversion (e.g., 3/1, 4/1) and incorrect naming."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every item strictly aligns with unit fraction reading and writing without exceeding the curricular scope. There are no out-of-scope operations, non-unit target answers, or improper fractions. Questions like \"Write one fourth in fraction notation.\" and \"How is \\(\\frac{1}{3}\\) read in words?\" adhere precisely to the target competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numbers and denominators used across all items (denominators 2, 3, 4, and 8, as seen in \"Write one half in fraction notation.\" and \"Write one eighth in fraction notation.\") are standard, intuitive unit fractions perfectly scaled for Grade 2 learners."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -13,7 +39,8 @@
     500,
     501,
     502,
-    601
+    600,
+    602
   ],
   "samples_reviewed": [
     {
@@ -29,7 +56,7 @@
         },
         {
           "key": "B",
-          "value": "2/3",
+          "value": "1/2",
           "is_correct": false
         },
         {
@@ -39,7 +66,7 @@
         },
         {
           "key": "D",
-          "value": "3/6",
+          "value": "2/3",
           "is_correct": false
         }
       ]
@@ -47,27 +74,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Write one half in fraction notation.",
-      "correct_answer": "1/2",
+      "question_text": "Write one fourth in fraction notation.",
+      "correct_answer": "1/4",
       "options": [
         {
           "key": "A",
-          "value": "1/2",
+          "value": "1/4",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "2/3",
+          "value": "2/4",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "3/2",
+          "value": "1/2",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "2/1",
+          "value": "4/1",
           "is_correct": false
         }
       ]
@@ -75,12 +102,40 @@
     {
       "seed": 44,
       "formatter": "mcq",
+      "question_text": "Read the fraction \\(\\frac{1}{2}\\). Which is the correct word name?",
+      "correct_answer": "one half",
+      "options": [
+        {
+          "key": "A",
+          "value": "one third",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2 oneths",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "one fourth",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "one half",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
       "question_text": "Write one fourth in fraction notation.",
       "correct_answer": "1/4",
       "options": [
         {
           "key": "A",
-          "value": "3/8",
+          "value": "1/2",
           "is_correct": false
         },
         {
@@ -90,40 +145,12 @@
         },
         {
           "key": "C",
-          "value": "2/4",
-          "is_correct": false
-        },
-        {
-          "key": "D",
           "value": "1/4",
           "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Write one eighth in fraction notation.",
-      "correct_answer": "1/8",
-      "options": [
-        {
-          "key": "A",
-          "value": "2/8",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "8/1",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1/8",
-          "is_correct": true
         },
         {
           "key": "D",
-          "value": "3/16",
+          "value": "2/4",
           "is_correct": false
         }
       ]
@@ -136,7 +163,7 @@
       "options": [
         {
           "key": "A",
-          "value": "3/2",
+          "value": "1/4",
           "is_correct": false
         },
         {
@@ -146,7 +173,7 @@
         },
         {
           "key": "C",
-          "value": "2/3",
+          "value": "1/3",
           "is_correct": false
         },
         {
@@ -159,31 +186,31 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "Write one fourth in fraction notation.",
-      "correct_answer": "1/4",
+      "question_text": "Read the fraction \\(\\frac{1}{3}\\). Which is the correct word name?",
+      "correct_answer": "one third",
       "options": [
         {
           "key": "A",
-          "value": "4/1",
-          "text": "4/1",
+          "value": "3 oneths",
+          "text": "3 oneths",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "1/4",
-          "text": "1/4",
+          "value": "one third",
+          "text": "one third",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "2/4",
-          "text": "2/4",
+          "value": "one half",
+          "text": "one half",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "3/8",
-          "text": "3/8",
+          "value": "two thirds",
+          "text": "two thirds",
           "is_correct": false
         }
       ]
@@ -191,31 +218,31 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "Write one half in fraction notation.",
-      "correct_answer": "1/2",
+      "question_text": "Read the fraction \\(\\frac{1}{2}\\). Which is the correct word name?",
+      "correct_answer": "one half",
       "options": [
         {
           "key": "A",
-          "value": "1/2",
-          "text": "1/2",
+          "value": "one half",
+          "text": "one half",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "2/3",
-          "text": "2/3",
+          "value": "one third",
+          "text": "one third",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "2/1",
-          "text": "2/1",
+          "value": "2 oneths",
+          "text": "2 oneths",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "3/2",
-          "text": "3/2",
+          "value": "one fourth",
+          "text": "one fourth",
           "is_correct": false
         }
       ]
@@ -223,27 +250,27 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "Write one half in fraction notation.",
-      "correct_answer": "1/2",
+      "question_text": "Read the fraction \\(\\frac{1}{2}\\). Which is the correct word name?",
+      "correct_answer": "one half",
       "options": [
         {
           "key": "A",
-          "value": "1/2",
+          "value": "one half",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "3/2",
+          "value": "one fourth",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "2/3",
+          "value": "one third",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "2/1",
+          "value": "2 oneths",
           "is_correct": false
         }
       ]
@@ -251,89 +278,86 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Write one half in fraction notation.",
-      "correct_answer": "1/2",
+      "question_text": "How is \\(\\frac{1}{2}\\) read in words?",
+      "correct_answer": "one half",
       "options": [
         {
           "key": "A",
-          "value": "2/1",
+          "value": "2 oneths",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "1/2",
+          "value": "one half",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "3/2",
+          "value": "one fourth",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "2/3",
+          "value": "one third",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Write one fifth in fraction notation.",
-      "correct_answer": "1/5",
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "How is \\(\\frac{1}{3}\\) read in words?",
+      "correct_answer": "one third",
       "options": [
         {
           "key": "A",
-          "value": "3/10",
-          "text": "3/10",
+          "value": "3 oneths",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "5/1",
-          "text": "5/1",
+          "value": "two thirds",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "2/5",
-          "text": "2/5",
+          "value": "one third",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "one half",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Write one eighth in fraction notation.",
+      "correct_answer": "1/8",
+      "options": [
+        {
+          "key": "A",
+          "value": "1/8",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "1/2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "8/1",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "1/5",
-          "text": "1/5",
-          "is_correct": true
+          "value": "2/8",
+          "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Every sample tests the \"write\" direction only, converting a word phrase to notation, e.g. seed 42's \"Write one third in fraction notation.\" → \"1/3\"; the \"read\" direction never appears among the ten samples."
-    },
-    "comprehensive_coverage": {
-      "verdict": "FAIL",
-      "rationale": "The competency name itself, \"Read and write unit fractions in fraction notation\", promises two directions, but the sampled items exercise only one of them, leaving the \"read\" sub-case entirely absent from this packet."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Converting a spoken fraction name to numeral notation is an appropriate grade 2 quarter 4 task."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "mcq and cloze formatters both appear across the denominators tested."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Only the denominator named in the word changes across items — compare seed 42's \"one third\" to seed 45's \"one eighth\" — while the task itself stays fixed on the read/write-notation skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Denominators tested (2, 3, 4, 5, 8) are all unit fractions consistent with this stage."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }

@@ -225,6 +225,9 @@ def _build_pure_equation(ctx: QuestionContext) -> str:
         else:
             return f"{a_val} {op_symbol} {b_val} = ___"
     elif concept == "fractions":
+        if values.get("question"):
+            res_str = values.get("result", values.get("fraction_str", ""))
+            return f"{values['question']} (Answer: {slot('result', 'fraction', value=res_str)})"
         numer = values.get("numerator", values.get("a", 1))
         denom = values.get("denominator", values.get("b", 2))
         operation = values.get("operation")
