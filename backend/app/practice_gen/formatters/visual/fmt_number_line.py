@@ -519,6 +519,28 @@ def format_number_line(
     elif ctx.dna_concept == "subtraction" and "a" in values and "b" in values:
         # Build subtraction-specific number line with hops
         vp = _build_subtraction_params(values, ctx.grade, rng)
+    elif ctx.dna_concept == "rounding" and ("number" in values or target_num is not None):
+        value = values.get("number", target_num)
+        round_to = values.get("round_to", 10)
+        interval = max(1, round_to // 10)
+        start_val = (value // round_to) * round_to - round_to
+        if start_val < 0:
+            start_val = 0
+        end_val = ((value // round_to) + 2) * round_to
+        divisions = (end_val - start_val) // interval
+        vp = {
+            "value": value,
+            "start": start_val,
+            "end": end_val,
+            "interval": interval,
+            "divisions": divisions,
+            "correct_position": value,
+            "dot_value": value,
+            "content_type": "whole_number",
+            "labels": [str(start_val), str(end_val)],
+            "marked_points": [],
+            "question_mark_at": None,
+        }
     elif target_num is not None:
         # Handle static number payload (e.g. from number_reading, place_value, or counting)
         value = target_num
@@ -561,11 +583,16 @@ def format_number_line(
     vp["is_interactive"] = (interaction_mode == "set")
     vp.setdefault("show_labels", True)
 
-    correct_val = _correct_value(vp)
+    if ctx.dna_concept == "rounding" and "answer" in values:
+        correct_val = values["answer"]
+    else:
+        correct_val = _correct_value(vp)
 
     # Compute correct float value for grading compatibility in practice_router.py
     ct = vp.get("content_type", "whole_number")
-    if ct == "fraction":
+    if ctx.dna_concept == "rounding" and "answer" in values:
+        target_val = float(values["answer"])
+    elif ct == "fraction":
         target_val = vp["numerator"] / vp["denominator"]
     elif ct == "improper_fraction":
         parts = vp["fraction_display"].split("/")
@@ -589,9 +616,9 @@ def format_number_line(
         if "dot_value" not in vp:
             vp["dot_value"] = vp.get("value", vp.get("correct_position"))
     
-    # For addition/subtraction, use context distractors; otherwise build from traps
+    # For addition/subtraction/rounding, use context distractors; otherwise build from traps
     seen = {str(correct_val)}
-    if ctx.dna_concept in ("addition", "subtraction") and ctx.distractors:
+    if ctx.dna_concept in ("addition", "subtraction", "rounding") and ctx.distractors:
         distractor_vals = [d for d in ctx.distractors if d != correct_val][:3]
         for d in distractor_vals:
             seen.add(str(d))
@@ -685,6 +712,13 @@ def format_number_line(
             question_text = f"The dot is at {a} and it moves backward {b} {num_word}. Starting from {a}, just count back {b} {num_word}. Which number will the dot land on?"
         else:
             question_text = f"Show {a} − {b} on the number line."
+    elif ctx.dna_concept == "rounding":
+        num = values.get("number", vp.get("value"))
+        precision = values.get("round_to", 10)
+        if interaction_mode == "read":
+            question_text = f"The number {num} is marked on the number line. Round {num} to the nearest {precision}."
+        else:
+            question_text = f"Round {num} to the nearest {precision}."
     else:
         question_text = _stem(vp, interaction_mode, set(ctx.cumulative_vocab))
 

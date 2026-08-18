@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g3_na_q1_4",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B7a (g3 mg_q2_4-q4 + na_q1), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q1-Harden (mat_g3_na_q1_4), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "All sampled problems directly address the MATATAG competency to round numbers to the nearest ten, hundred, or thousand. Direct rounding directives are used throughout, such as seed 42 asking \"Round 38 to the nearest 10.\", seed 50 asking \"Round 160 to the nearest 100.\", and seed 501 asking \"Round 6148 to the nearest 1000.\", as well as number line contextual items like seed 55 with \"The number 93 is marked on the number line. Round 93 to the nearest 10.\" which also explicitly require rounding."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample thoroughly covers all three target rounding units explicitly named in the competency text (ten, hundred, thousand). Rounding to the nearest ten is evaluated in items like seed 42's \"Round 38 to the nearest 10.\", rounding to the nearest hundred in seed 44's \"Round 105 to the nearest 100.\", and rounding to the nearest thousand in seed 501's \"Round 6148 to the nearest 1000.\"."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The vocabulary and grammatical structure are clear and age-appropriate for Grade 3 Quarter 1 learners. The items test rounding mechanics including standard cases and tie-breaking halfway cases, such as seed 601's \"Round 315 to the nearest 10.\" rounding up to 320 and seed 602's \"Round 225 to the nearest 100.\" rounding down to 200 based on the tens digit."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The generator provides healthy variant diversity, incorporating standard multiple-choice items like seed 42's \"Round 38 to the nearest 10.\", fill-in-the-blank cloze formats like seed 50's \"Round 160 to the nearest 100.\", and number line visual representation stems like seed 500's \"The number 8438 is marked on the number line. Round 8438 to the nearest 100.\"."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The distractors and problem progressions isolate rounding and place-value estimation skills rather than confounding arithmetic. For example, in seed 43's \"Round 122 to the nearest 10.\", options focus on adjacent tens (120 vs 130), and seed 501's \"Round 6148 to the nearest 1000.\" tests rounding down to 6000 versus rounding up to 7000."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numbers sampled appropriately span the 2-digit to 4-digit numeric ranges appropriate for Grade 3 numbers up to 10,000, aligning with each rounding place value: 2-digit numbers for tens like seed 603's \"Round 83 to the nearest 10.\", 3-digit numbers for hundreds like seed 45's \"Round 230 to the nearest 100.\", and 4-digit numbers up to thousands like seed 502's \"Round 6952 to the nearest 1000.\"."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -196,27 +223,27 @@
     {
       "seed": 55,
       "formatter": "read_mcq",
-      "question_text": "What number is marked on the number line?",
+      "question_text": "The number 93 is marked on the number line. Round 93 to the nearest 10.",
       "correct_answer": "C",
       "options": [
         {
           "key": "A",
-          "value": 94,
+          "value": 100,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 95,
+          "value": 94,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 93,
+          "value": 90,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 92,
+          "value": 0,
           "is_correct": false
         }
       ]
@@ -224,27 +251,27 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "What number is marked on the number line?",
+      "question_text": "The number 8438 is marked on the number line. Round 8438 to the nearest 100.",
       "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 8438,
+          "value": 8400,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 8439,
+          "value": 8410,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 8437,
+          "value": 8000,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 8440,
+          "value": 8448,
           "is_correct": false
         }
       ]
@@ -453,32 +480,5 @@
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Seeds 55 and 500 use the stem \"What number is marked on the number line?\", which asks only to read a marked value and never uses the word \"round\" or asks the student to round anything, unlike every other sample in the node, such as seed 42's \"Round 38 to the nearest 10.\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The three units the competency names are all present among the rounding items: nearest ten in seed 42's \"Round 38 to the nearest 10.\", nearest hundred in seed 44's \"Round 105 to the nearest 100.\", and nearest thousand in seed 501's \"Round 6148 to the nearest 1000.\""
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The rounding items include tie-breaking cases appropriate to Grade 3, such as seed 601's \"Round 315 to the nearest 10.\" rounding up to 320, and seed 602's \"Round 225 to the nearest 100.\" rounding down to 200, standard rounding-rule practice at this level."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Beyond the three rounding units, the node also includes a number-line-reading format in seeds 55 and 500, giving two distinct presentation styles even though, as noted above, one of them does not itself require rounding."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Wrong options for rounding items are the adjacent ten, hundred, or thousand values, such as seed 604's \"1010\" and \"1001\" around the correct \"1000\", so difficulty is anchored to rounding precision, matching the competency's focus."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Values scale with the rounding unit, from two-digit numbers rounded to tens, such as seed 603's \"83\", up to numbers rounded to thousands, such as seed 604's \"700\" rounding to \"1000\", staying within a reasonable Grade 3 numeric range."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }
