@@ -1,32 +1,33 @@
 {
   "node_id": "mat_g1_mg_q1_2",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-MG-Q1-Harden (mat_g1_mg_q1_0..2), 2026-08-18",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_mg_q1_2), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
   "overall": "PASS",
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The items successfully require students to perform the core operations of the competency. Questions effectively test composition, such as \"Two identical squares are placed side by side. What shape do they form?\", and decomposition, such as \"A square is cut on a slant, from one corner to the opposite corner. What two shapes are made?\""
+      "rationale": "The sample packet thoroughly fulfills the MATATAG competency requirement to 'Compose and decompose triangles, squares, and rectangles.' Items assess composition, such as combining triangles into rectangles (\"Two triangles are placed together, matching their longest straight edges. What shape do they form?\") and squares into rectangles (\"Two identical squares are placed side by side. What shape do they form?\"). They also directly assess decomposition, such as splitting rectangles into squares (\"A long rectangle is cut across its width into two equal squares. What two shapes are made?\") and splitting squares into triangles (\"A square is cut on a slant, from one corner to the opposite corner. What two shapes are made?\")."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The generator covers the necessary combinations of shapes and operations. It tests composing shapes (e.g., \"Two identical triangles are joined along their matching straight edges to make a 4-sided shape with equal sides. What shape is formed?\"\\) and decomposing shapes (e.g., \"A long rectangle is cut across its width into two equal squares. What two shapes are made?\"\\) across triangles, squares, and rectangles."
+      "rationale": "The items comprehensively cover the full scope of geometric relationships between triangles, squares, and rectangles. Both composition (combining triangles into a square: \"Two identical triangles are joined along their matching straight edges to make a 4-sided shape with equal sides. What shape is formed?\"; combining squares into a rectangle: \"Two identical squares are placed side by side. What shape do they form?\") and decomposition (cutting a rectangle into smaller rectangles: \"A rectangle is cut into two equal pieces down the middle. What two shapes are made?\"; cutting a rectangle into squares: \"A long rectangle is cut across its width into two equal squares. What two shapes are made?\") are represented across all three specified 2D shapes."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The descriptive language is well-suited for a Grade 1 comprehension level. Phrases describing geometric operations, such as \"cut on a slant, from one corner to the opposite corner\", \"placed side by side\", and \"matching their longest straight edges\", are concrete and help early learners visualize the transformations."
+      "rationale": "The language and cognitive load are perfectly tuned for Grade 1 Quarter 1 learners. Descriptions rely on clear, concrete physical actions rather than abstract terminology, using intuitive phrasing such as \"cut on a slant, from one corner to the opposite corner\" and \"Two identical squares are placed side by side. What shape do they form?\". The visual and spatial logic is straightforward and accessible."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The sample set shows good variety in the types of transformations presented. It includes multiple valid variants for both composing (squares to rectangle, triangles to square, triangles to rectangle) and decomposing (rectangle to squares, square to triangles, rectangle to rectangles), as seen in items like \"A rectangle is cut into two equal pieces down the middle. What two shapes are made?\""
+      "rationale": "The sample set demonstrates strong variant breadth, featuring diverse pairings and transformations including triangle-to-rectangle composition (\"Two identical triangles are rotated to fit together into a rectangle. What shape is made?\"), triangle-to-square composition (\"Two identical triangles are joined along their matching straight edges to make a 4-sided shape with equal sides. What shape is formed?\"), and rectangle-to-rectangle decomposition (\"A rectangle is cut into two equal pieces down the middle. What two shapes are made?\"), across both standard mcq and read_mcq formats."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The questions are strictly aligned to the target competency. They only ask about the composition and decomposition of \"triangles, squares, and rectangles\" without inappropriately expanding the scope to require manipulation of unlisted shapes."
+      "rationale": "All sample items remain strictly aligned with the target competency without introducing extraneous concepts or out-of-scope polygons. The items focus squarely on 2D composition and decomposition of triangles, squares, and rectangles (e.g., \"Two triangles are placed together, matching their longest straight edges. What shape do they form?\" and \"A square is cut on a slant, from one corner to the opposite corner. What two shapes are made?\"), avoiding unneeded geometric terminology or multidimensional complexity."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The generator produces appropriately scaled and distinct scenarios. The problem structures remain consistently clear without becoming convoluted or repetitive, as demonstrated by clear prompts like \"Two identical triangles are rotated to fit together into a rectangle. What shape is made?\""
+      "rationale": "The scale of manipulation involves 2 simple geometric parts (e.g., \"A rectangle is cut into two equal pieces down the middle. What two shapes are made?\", \"Two identical squares are placed side by side. What shape do they form?\"), which is precisely calibrated for Grade 1 students beginning spatial decomposition and composition."
     }
   },
   "sample_seeds": [
@@ -47,254 +48,67 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "A long rectangle is cut across its width into two equal squares. What two shapes are made?",
-      "correct_answer": "two squares",
-      "options": [
-        {
-          "key": "A",
-          "value": "two rectangles",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "two squares",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "two triangles",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "two squares"
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
-      "correct_answer": "rectangle",
-      "options": [
-        {
-          "key": "A",
-          "value": "triangle",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "rectangle",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": "rectangle"
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "Two identical squares are placed side by side. What shape do they form?",
-      "correct_answer": "rectangle",
-      "options": [
-        {
-          "key": "A",
-          "value": "triangle",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "rectangle",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "square",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "rectangle"
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A square is cut on a slant, from one corner to the opposite corner. What two shapes are made?",
-      "correct_answer": "two triangles",
-      "options": [
-        {
-          "key": "A",
-          "value": "two squares",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "two triangles",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "two rectangles",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "two triangles"
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
-      "correct_answer": "rectangle",
-      "options": [
-        {
-          "key": "A",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "rectangle",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "triangle",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "rectangle"
     },
     {
       "seed": 50,
       "formatter": "read_mcq",
       "question_text": "Two identical squares are placed side by side. What shape do they form?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "rectangle",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "triangle",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "B"
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "Two identical squares are placed side by side. What shape do they form?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": "rectangle",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "triangle",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "square",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "A"
     },
     {
       "seed": 501,
       "formatter": "mcq",
       "question_text": "A long rectangle is cut across its width into two equal squares. What two shapes are made?",
-      "correct_answer": "two squares",
-      "options": [
-        {
-          "key": "A",
-          "value": "two rectangles",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "two triangles",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "two squares",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": "two squares"
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Two identical triangles are joined along their matching straight edges to make a 4-sided shape with equal sides. What shape is formed?",
-      "correct_answer": "square",
-      "options": [
-        {
-          "key": "A",
-          "value": "triangle",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "square",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "rectangle",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "square"
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Two identical triangles are rotated to fit together into a rectangle. What shape is made?",
-      "correct_answer": "rectangle",
-      "options": [
-        {
-          "key": "A",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "rectangle",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "triangle",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "rectangle"
     },
     {
       "seed": 601,
       "formatter": "mcq",
       "question_text": "A rectangle is cut into two equal pieces down the middle. What two shapes are made?",
-      "correct_answer": "two rectangles",
-      "options": [
-        {
-          "key": "A",
-          "value": "two triangles",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "two rectangles",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "two squares",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "two rectangles"
     }
   ]
 }

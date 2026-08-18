@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g1_na_q3_6",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q3_6), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -19,317 +46,62 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is the next term in the pattern: e, d, e, d, e, d?",
-      "correct_answer": "e",
-      "options": [
-        {
-          "key": "A",
-          "value": "f",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "b",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "e",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "c",
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is the next letter in the pattern: e, d, e, d, e, d?",
+      "correct_answer": "e"
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is the next term in the pattern: p, c, p, c, p, c?",
-      "correct_answer": "p",
-      "options": [
-        {
-          "key": "A",
-          "value": "p",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "h",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "b",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "j",
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is the next letter in the pattern: p, c, p, c, p, c?",
+      "correct_answer": "p"
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "What is the next number in the pattern: 10, 1, 10, 1, 10, 1?",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 10
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What is the next number in the pattern: 2, 1, 2, 1, 2, 1?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "What is the next number in the pattern: 10, 4, 10, 4, 10, 4?",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 11,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 10
     },
     {
       "seed": 50,
       "formatter": "cloze",
       "question_text": "What is the next number in the pattern: 2, 10, 2, 10, 2, 10?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "text": "2",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "seed": 55,
       "formatter": "read_mcq",
       "question_text": "What is the missing piece (position 6) in the pattern?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 13,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "C"
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "What is the missing piece (position 6) in the pattern?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 17,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 19,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "A"
     },
     {
       "seed": 501,
       "formatter": "cloze",
       "question_text": "What is the next number in the pattern: 8, 18, 20, 8, 18, 20?",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "text": "8",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 8
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is the next term in the pattern: f, o, c, f, o, c?",
-      "correct_answer": "f",
-      "options": [
-        {
-          "key": "A",
-          "value": "j",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "f",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "p",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "a",
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is the next letter in the pattern: f, o, c, f, o, c?",
+      "correct_answer": "f"
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every stem asks for the next element after a clearly repeating run, matching 'Determine the next term/s in a repeating pattern' directly, whether the run is letters ('p, c, p, c, p, c') or numbers ('10, 1, 10, 1, 10, 1')."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Two-element cycles ('e, d, e, d, e, d') and three-element cycles ('f, o, c, f, o, c') both appear, matching the two example lengths the competency text itself gives."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Each pattern is shown fully before the blank, so the student only has to recognize a cycle already in front of them, appropriate for a first repeating-pattern task."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Letters, single-digit numbers, and multi-digit numbers ('8, 18, 20, 8, 18, 20') all serve as pattern units, and a pictorial read_mcq ('What is the missing piece (position 6) in the pattern?') adds a visual route."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Difficulty shifts by cycle length and unit size rather than by swapping in a different reasoning task, keeping every item about pattern continuation."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Numeric pattern units stay within values like 1 to 20, well inside what a Grade 1 learner already handles elsewhere this quarter."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

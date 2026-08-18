@@ -1,32 +1,33 @@
 {
   "node_id": "mat_g1_mg_q1_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-MG-Q1-Harden-v3 (mat_g1_mg_q1_0), 2026-08-18",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_mg_q1_0), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
   "overall": "PASS",
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The sample questions successfully ask the student to identify a shape from its properties. For instance, \"A party hat is shaped with 3 straight edges. What 2D shape is it?\" and \"A flat floor tile has 4 equal straight edges. What shape is the tile?\" directly test the core competency of shape identification."
+      "rationale": "The items directly fulfill the target competency of identifying simple 2D shapes (triangles, rectangles, and squares). Triangles are identified through real-world context (\"A party hat is shaped with 3 straight edges. What 2D shape is it?\") and direct shape prompts (\"A small flat shape with 3 straight edges is shown. What shape is it?\"). Rectangles are identified via properties (\"A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?\"), and squares are evaluated via equal edge descriptions (\"A flat floor tile has 4 equal straight edges. What shape is the tile?\"). Variations in size (\"A large flat shape with 4 equal straight edges is shown. What shape is it?\") and orientation (\"A small triangular sign is turned upside down. What shape is it?\") are explicitly tested."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The packet covers all three required shapes: triangle (e.g., \"A small flat shape with 3 straight edges is shown. What shape is it?\"), rectangle (e.g., \"A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?\"), and square (e.g., \"A large flat shape with 4 equal straight edges is shown. What shape is it?\"). It also tests different sizes and orientation (e.g., \"A small triangular sign is turned upside down. What shape is it?\")."
+      "rationale": "The sample set comprehensively covers all three specified shapes\u2014triangle, rectangle, and square. It also covers both abstract geometric descriptions (e.g., \"A small flat shape with 3 straight edges is shown. What shape is it?\") and concrete real-world objects (party hats, chalkboards, floor tiles, signs). Crucially, the sub-attributes of the competency\u2014different sizes (\"small\", \"large\") and orientation (\"turned upside down\" in \"A small triangular sign is turned upside down. What shape is it?\")\u2014are all adequately represented across the batch."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The questions are developmentally appropriate for Grade 1. They use familiar real-world objects like \"party hat\" and \"classroom chalkboard\". The geometric descriptions are basic enough, and phrases like \"A small triangular sign is turned upside down. What shape is it?\" assess orientation without exceeding cognitive capacity."
+      "rationale": "All sample items are well within the cognitive capacity and reading abilities of a Grade 1 Quarter 1 student. Sentences are concise, syntactic structures are simple, and vocabulary is accessible (\"party hat\", \"chalkboard\", \"flat shape\", \"straight edges\", \"tile\"). The focus remains purely on foundational visual and structural identification of 2D shapes without extraneous computational load."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The samples show a variety of formats, mixing abstract geometric properties (\"A small flat shape with 3 straight edges is shown. What shape is it?\"\\) with applied real-world examples (\"A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?\"\\)."
+      "rationale": "The batch demonstrates healthy variation across both formatters (mcq, read_mcq) and contexts. Scenarios span everyday items (\"A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?\", \"A flat floor tile has 4 equal straight edges. What shape is the tile?\"), rotated objects (\"A small triangular sign is turned upside down. What shape is it?\"), and pure geometric representations (\"A large flat shape with 4 equal straight edges is shown. What shape is it?\")."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "All samples strictly align with the MATATAG text by only testing the specified shapes (triangle, rectangle, square) and explicitly referencing sizes and orientations, as required by the competency text."
+      "rationale": "Every single question strictly aligns with MATATAG node mat_g1_mg_q1_0. There is no out-of-scope material (e.g., perimeter/area calculations, 3D solids, complex polygon naming, or formal angle definitions). Questions focus purely on distinguishing 2D shapes by edge counts and equal opposite/all sides, fully matching the curricular mandate."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The difficulty level is appropriately scaled for Grade 1 Quarter 1. The defining properties of the shapes (e.g., \"3 straight edges\" for a triangle, \"4 equal straight edges\" for a square) are presented clearly and directly. For example, \"A large flat shape with 4 equal straight edges is shown. What shape is it?\" perfectly scales to this level."
+      "rationale": "The numeric attributes involved (counting 3 or 4 straight edges) are perfectly scaled for Grade 1 Quarter 1 learners who are working with basic single-digit counts up to 10."
     }
   },
   "sample_seeds": [
@@ -47,254 +48,67 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
-      "correct_answer": "triangle",
-      "options": [
-        {
-          "key": "A",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "triangle",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "rectangle",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "triangle"
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
-      "correct_answer": "triangle",
-      "options": [
-        {
-          "key": "A",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "rectangle",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "triangle",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": "triangle"
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
-      "correct_answer": "triangle",
-      "options": [
-        {
-          "key": "A",
-          "value": "rectangle",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "triangle",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "square",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "triangle"
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?",
-      "correct_answer": "rectangle",
-      "options": [
-        {
-          "key": "A",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "rectangle",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "triangle",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "rectangle"
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
-      "correct_answer": "triangle",
-      "options": [
-        {
-          "key": "A",
-          "value": "rectangle",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "triangle",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "square",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "triangle"
     },
     {
       "seed": 50,
       "formatter": "read_mcq",
       "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "triangle",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "rectangle",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "B"
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": "triangle",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "rectangle",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "square",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "A"
     },
     {
       "seed": 501,
       "formatter": "mcq",
       "question_text": "A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?",
-      "correct_answer": "rectangle",
-      "options": [
-        {
-          "key": "A",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "triangle",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "rectangle",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": "rectangle"
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "A large flat shape with 4 equal straight edges is shown. What shape is it?",
-      "correct_answer": "square",
-      "options": [
-        {
-          "key": "A",
-          "value": "rectangle",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "square",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "triangle",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "square"
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "A small triangular sign is turned upside down. What shape is it?",
-      "correct_answer": "triangle",
-      "options": [
-        {
-          "key": "A",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "triangle",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "rectangle",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "triangle"
     },
     {
       "seed": 601,
       "formatter": "mcq",
       "question_text": "A flat floor tile has 4 equal straight edges. What shape is the tile?",
-      "correct_answer": "square",
-      "options": [
-        {
-          "key": "A",
-          "value": "triangle",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "square",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "rectangle",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "square"
     }
   ]
 }
