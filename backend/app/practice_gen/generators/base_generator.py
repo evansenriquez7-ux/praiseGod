@@ -870,10 +870,10 @@ def _build_symbolic_question(
             # and "What number is missing" is simply wrong for those.
             # "term" is accurate for both and matches this DNA's own
             # VOCAB_TERM vocabulary.
-            unit = "term" if any(isinstance(x, str) for x in seq) else "number"
+            unit = "letter" if any(isinstance(x, str) for x in seq) else "number"
             return f"What {unit} is missing in the pattern: {seq_str}?"
         seq_str = ", ".join(str(x) for x in seq) if seq else f"{a}, ..."
-        unit = "term" if any(isinstance(x, str) for x in seq) else "number"
+        unit = "letter" if any(isinstance(x, str) for x in seq) else "number"
         return f"What is the next {unit} in the pattern: {seq_str}?"
 
     if concept == "fractions":

@@ -463,7 +463,10 @@ def generate_hints(
         hints.append(f"This is a {rep} {VOCAB_PATTERN.resolve(cumulative_vocab)}. Find the repeating group.")
 
     if m_idx >= 0:
-        hints.append(f"The missing {term_label} is at position {m_idx + 1}.")
+        if m_idx >= len(seq) - 1:
+            hints.append(f"The next {term_label} is at position {m_idx + 1}.")
+        else:
+            hints.append(f"The {term_label} at position {m_idx + 1} is needed.")
     hints.append(f"The {rule_label} is: {rule}. The answer is {ans}.")
 
     return hints

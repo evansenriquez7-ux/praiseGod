@@ -57,7 +57,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
         "answer": "triangle",
-        "distractors": ["rectangle", "square"],
+        "distractors": ["rectangle", "square", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "standard",
@@ -66,7 +66,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A flat floor tile has 4 equal straight edges. What shape is the tile?",
         "answer": "square",
-        "distractors": ["triangle", "rectangle"],
+        "distractors": ["triangle", "rectangle", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "standard",
@@ -75,7 +75,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?",
         "answer": "rectangle",
-        "distractors": ["triangle", "square"],
+        "distractors": ["triangle", "square", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "standard",
@@ -84,7 +84,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A small flat shape with 3 straight edges is shown. What shape is it?",
         "answer": "triangle",
-        "distractors": ["rectangle", "square"],
+        "distractors": ["rectangle", "square", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "standard",
@@ -93,7 +93,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A large flat shape with 4 equal straight edges is shown. What shape is it?",
         "answer": "square",
-        "distractors": ["triangle", "rectangle"],
+        "distractors": ["triangle", "rectangle", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "standard",
@@ -102,7 +102,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A slice of pizza with 3 straight edges is turned sideways. What shape is it?",
         "answer": "triangle",
-        "distractors": ["square", "rectangle"],
+        "distractors": ["square", "rectangle", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "rotated",
@@ -111,7 +111,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A square tile is tilted like a diamond. What shape is the tile?",
         "answer": "square",
-        "distractors": ["triangle", "rectangle"],
+        "distractors": ["triangle", "rectangle", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "rotated",
@@ -120,7 +120,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A small triangular sign is turned upside down. What shape is it?",
         "answer": "triangle",
-        "distractors": ["rectangle", "square"],
+        "distractors": ["rectangle", "square", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "rotated",
@@ -129,7 +129,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A tall doorway has 4 straight edges and is standing upright. What shape is it?",
         "answer": "rectangle",
-        "distractors": ["triangle", "square"],
+        "distractors": ["triangle", "square", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "rotated",
@@ -138,7 +138,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A large square picture frame is tilted on one of its tips. What shape is the frame?",
         "answer": "square",
-        "distractors": ["triangle", "rectangle"],
+        "distractors": ["triangle", "rectangle", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "rotated",
@@ -243,7 +243,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
         "answer": "rectangle",
-        "distractors": ["square", "triangle"],
+        "distractors": ["square", "triangle", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "standard",
@@ -252,7 +252,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A rectangle is cut into two equal pieces down the middle. What two shapes are made?",
         "answer": "two rectangles",
-        "distractors": ["two triangles", "two squares"],
+        "distractors": ["two triangles", "two squares", "one triangle and one square"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "standard",
@@ -261,7 +261,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A square is cut on a slant, from one corner to the opposite corner. What two shapes are made?",
         "answer": "two triangles",
-        "distractors": ["two rectangles", "two squares"],
+        "distractors": ["two rectangles", "two squares", "one triangle and one square"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "standard",
@@ -270,7 +270,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Two identical squares are placed side by side. What shape do they form?",
         "answer": "rectangle",
-        "distractors": ["triangle", "square"],
+        "distractors": ["triangle", "square", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "standard",
@@ -279,7 +279,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Two identical triangles are joined along their matching straight edges to make a 4-sided shape with equal sides. What shape is formed?",
         "answer": "square",
-        "distractors": ["rectangle", "triangle"],
+        "distractors": ["rectangle", "triangle", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "standard",
@@ -288,7 +288,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A long rectangle is cut across its width into two equal squares. What two shapes are made?",
         "answer": "two squares",
-        "distractors": ["two triangles", "two rectangles"],
+        "distractors": ["two triangles", "two rectangles", "one triangle and one square"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "standard",
@@ -297,7 +297,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Two identical triangles are rotated and joined along their matching sides. What shape do they form?",
         "answer": "rectangle",
-        "distractors": ["square", "triangle"],
+        "distractors": ["square", "triangle", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "rotated",
@@ -306,7 +306,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A square is rotated and cut from corner to corner along a slant. What two shapes are produced?",
         "answer": "two triangles",
-        "distractors": ["two rectangles", "two squares"],
+        "distractors": ["two rectangles", "two squares", "one triangle and one square"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "rotated",
@@ -315,7 +315,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Two identical triangles are rotated to fit together into a rectangle. What shape is made?",
         "answer": "rectangle",
-        "distractors": ["triangle", "square"],
+        "distractors": ["triangle", "square", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "rotated",
@@ -324,7 +324,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A square is turned sideways and cut on a slant into two pieces. What two shapes are formed?",
         "answer": "two triangles",
-        "distractors": ["two squares", "two rectangles"],
+        "distractors": ["two squares", "two rectangles", "one triangle and one square"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "rotated",
@@ -333,7 +333,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Two identical rectangles are turned on their sides and placed together to make a larger square. What shape was formed?",
         "answer": "square",
-        "distractors": ["triangle", "rectangle"],
+        "distractors": ["triangle", "rectangle", "none of these"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "rotated",
