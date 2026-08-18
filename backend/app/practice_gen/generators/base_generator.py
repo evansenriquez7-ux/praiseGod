@@ -170,6 +170,8 @@ def generate_context(
         competency_text: str = ""
     else:
         cumulative_vocab = set(node.get("cumulative_vocab", []))
+        cumulative_vocab.update(node.get("student_vocab", []))
+        cumulative_vocab.update(node.get("introduces_vocab", []))
         cumulative_concepts = set(node.get("cumulative_concepts", []))
         competency_text = node.get("competency", "")
 
@@ -1087,6 +1089,7 @@ def _build_symbolic_question(
             return f"Which is {'heavier' if mtype == 'mass' else 'more'}: {val_a} {u} or {val_b} {u}?"
         unit = values.get("unit", "kg")
         mtype = values.get("measurement_type", "mass")
+        target_noun = "container" if mtype == "capacity" else "object"
         if mtype == "mass":
             mc_lbl = VocabGated("mass", "mass", "weight").resolve(cumulative_vocab)
         else:
@@ -1106,11 +1109,12 @@ def _build_symbolic_question(
             # DNA is mapped to, including ones earlier in the curriculum
             # that haven't introduced the word yet (an actual collision
             # hit for length_measurement's equivalent fix).
+            article = "A" if target_noun.startswith("c") else "An"
             return (
-                f"An object's {mc_lbl} measures {val} {unit}. "
+                f"{article} {target_noun}'s {mc_lbl} measures {val} {unit}. "
                 f"About how many {unit} is that, rounded to the nearest {round_to}?"
             )
-        return f"What is the {mc_lbl} of the object in {unit}?"
+        return f"What is the {mc_lbl} of the {target_noun} in {unit}?"
 
     if concept == "perimeter":
         if values.get("question"):

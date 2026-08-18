@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g3_mg_q2_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch C1b (post-fix re-review, g3 mass/capacity), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Q2-Harden (mat_g3_mg_q2_0), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items directly fulfill the MATATAG learning competency to measure mass across all target units. Questions such as \"What is the mass of the object in g?\", \"What is the mass of the object in kg?\", and \"What is the mass of the object in mg?\" assess the student's ability to read and determine mass values accurately."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample packet comprehensively covers all metric units required by the competency: grams (e.g., \"What is the mass of the object in g?\"), kilograms (e.g., \"What is the mass of the object in kg?\"), and milligrams (e.g., \"What is the mass of the object in mg?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The difficulty and phrasing are well suited for Grade 3 Quarter 2 learners. The prompt structure in \"What is the mass of the object in g?\" and \"What is the mass of the object in kg?\" is concise and free of unnecessary linguistic complexity, keeping cognitive load focused on scale reading."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample set incorporates multiple formatters (MCQ and cloze) and varies unit types across g, kg, and mg (e.g., \"What is the mass of the object in g?\" and \"What is the mass of the object in mg?\"), with plausible and closely calibrated distractor options."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every sample question strictly aligns with the stated competency without scope creep or unintroduced concepts. Prompts like \"What is the mass of the object in kg?\" and \"What is the mass of the object in mg?\" directly target mass measurement."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical values span realistic measurement scales suitable for Grade 3, ranging from small quantities like 7 in \"What is the mass of the object in g?\" to multi-digit values like 2850 in \"What is the mass of the object in mg?\" and 2893 in \"What is the mass of the object in g?\"."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -18,7 +45,7 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is the weight of the object in g?",
+      "question_text": "What is the mass of the object in g?",
       "correct_answer": 7,
       "options": [
         {
@@ -46,7 +73,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is the weight of the object in g?",
+      "question_text": "What is the mass of the object in g?",
       "correct_answer": 31,
       "options": [
         {
@@ -74,7 +101,7 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What is the weight of the object in kg?",
+      "question_text": "What is the mass of the object in kg?",
       "correct_answer": 18,
       "options": [
         {
@@ -102,7 +129,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What is the weight of the object in kg?",
+      "question_text": "What is the mass of the object in kg?",
       "correct_answer": 20,
       "options": [
         {
@@ -130,7 +157,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is the weight of the object in mg?",
+      "question_text": "What is the mass of the object in mg?",
       "correct_answer": 62,
       "options": [
         {
@@ -158,7 +185,7 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "What is the weight of the object in g?",
+      "question_text": "What is the mass of the object in g?",
       "correct_answer": 26,
       "options": [
         {
@@ -190,7 +217,7 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "What is the weight of the object in kg?",
+      "question_text": "What is the mass of the object in kg?",
       "correct_answer": 307,
       "options": [
         {
@@ -222,7 +249,7 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "What is the weight of the object in mg?",
+      "question_text": "What is the mass of the object in mg?",
       "correct_answer": 1927,
       "options": [
         {
@@ -250,7 +277,7 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is the weight of the object in mg?",
+      "question_text": "What is the mass of the object in mg?",
       "correct_answer": 454,
       "options": [
         {
@@ -275,32 +302,5 @@
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every item is a direct read-off such as seed 42's \"What is the weight of the object in g?\", the same stem repeated with kg and mg swapped in, which is exactly the 'measure mass' action the competency names, with no estimation or comparison language mixed in."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All three named units appear as the tested unit: g in seeds 42, 43, 50 (range 7-31), kg in seeds 44, 45, 500 (range 18-307), and mg in seeds 46, 501, 502 (range 62-1927), so g, kg and mg are each exercised three times."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The question stem \"What is the weight of the object in g?\" uses a single short sentence with no multi-step reasoning or vocabulary beyond the unit name, appropriate for a Grade 3 Quarter 2 reader."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Both formatters appear (mcq at seeds [42, 43, 44, 45, 46, 501, 502] and cloze at seeds [50, 500]), and the magnitudes span single digits (7 g) up to three digits (307 kg, 1927 mg), giving both format and scale variety."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The difficulty driver across seeds is the numeral size and the unit's place value (single-digit 7 g up to four-digit 1927 mg), which is the measurement-reading skill itself, not an unrelated axis like arithmetic operations."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "g values run 7-31, kg values run 18-307, and mg values run 62-1927; the competency states no explicit ceiling, and each range stays plausible for a scale reading in that unit."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

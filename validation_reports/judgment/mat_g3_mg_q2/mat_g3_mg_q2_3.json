@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g3_mg_q2_3",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch C1b (post-fix re-review, g3 mass/capacity), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Q2-Harden (mat_g3_mg_q2_3), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample items directly assess the MATATAG competency to measure capacity in liters (L) and milliliters (mL). In items such as 'What is the capacity of the container in mL?' (seed 42) and 'What is the capacity of the container in L?' (seed 43), students are required to determine and identify standard capacity values in both target units, directly fulfilling the required learning outcome."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The test packet thoroughly covers both specified units of capacity across diverse magnitudes. Both liters and milliliters are evaluated across varying numerical domains: milliliters are tested in small two-digit and four-digit quantities ('What is the capacity of the container in mL?', seeds 42, 44, 502), while liters are tested across single-, double-, and triple-digit volumes ('What is the capacity of the container in L?', seeds 43, 45, 46, 50, 500, 501)."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The problem formulations match Grade 3 Quarter 2 developmental benchmarks. Prompt phrasing is direct, standard, and concise ('What is the capacity of the container in L?' and 'What is the capacity of the container in mL?'), eliminating unnecessary reading overhead. Distractors reflect common scale-reading neighbor values (e.g., \u00b11 or \u00b12 around correct answers like 14 L and 56 mL), assessing precise measurement discernment without misleading complexity."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The generation exhibits strong structural and formatting diversity across both multiple-choice (MCQ) and cloze/fill-in formats. Both prompt variations ('What is the capacity of the container in mL?' and 'What is the capacity of the container in L?') appear seamlessly across both formatters with robust option distribution and randomized key placements."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All items remain strictly aligned with the scope of MATATAG Grade 3 Quarter 2 measurement. The prompts focus exclusively on determining capacity in L and mL through standard questions like 'What is the capacity of the container in L?' and 'What is the capacity of the container in mL?', without introducing premature unit conversions or out-of-grade arithmetic operations."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical values and increments presented in the items are well-calibrated for Grade 3 capacity measurement. Target quantities ranging from discrete values like 3 L, 14 L, and 16 L to larger volumes like 192 L, 285 L, and 2893 mL represent realistic capacity contexts with tightly bounded distractor spreads that appropriately measure unit scale competence."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -18,7 +45,7 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is the amount of liquid of the object in mL?",
+      "question_text": "What is the capacity of the container in mL?",
       "correct_answer": 56,
       "options": [
         {
@@ -46,7 +73,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is the amount of liquid of the object in L?",
+      "question_text": "What is the capacity of the container in L?",
       "correct_answer": 16,
       "options": [
         {
@@ -74,7 +101,7 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What is the amount of liquid of the object in mL?",
+      "question_text": "What is the capacity of the container in mL?",
       "correct_answer": 69,
       "options": [
         {
@@ -102,7 +129,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What is the amount of liquid of the object in L?",
+      "question_text": "What is the capacity of the container in L?",
       "correct_answer": 14,
       "options": [
         {
@@ -130,7 +157,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is the amount of liquid of the object in L?",
+      "question_text": "What is the capacity of the container in L?",
       "correct_answer": 18,
       "options": [
         {
@@ -158,7 +185,7 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "What is the amount of liquid of the object in L?",
+      "question_text": "What is the capacity of the container in L?",
       "correct_answer": 3,
       "options": [
         {
@@ -190,7 +217,7 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "What is the amount of liquid of the object in L?",
+      "question_text": "What is the capacity of the container in L?",
       "correct_answer": 285,
       "options": [
         {
@@ -222,7 +249,7 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "What is the amount of liquid of the object in L?",
+      "question_text": "What is the capacity of the container in L?",
       "correct_answer": 192,
       "options": [
         {
@@ -250,7 +277,7 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is the amount of liquid of the object in mL?",
+      "question_text": "What is the capacity of the container in mL?",
       "correct_answer": 2893,
       "options": [
         {
@@ -275,32 +302,5 @@
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Every stem reads \"What is the amount of liquid of the object in L?\" (e.g. seed 43) rather than naming \"capacity\", the noun the competency itself uses; the doubled preposition \"amount of liquid of the object\" is also imprecise phrasing for a container's capacity."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "mL is the tested unit at seeds [42, 44, 502] (range 56-2893) and L is tested at seeds [43, 45, 46, 50, 500, 501] (range 3-285), so both named units in the competency are exercised as the correct answer's unit."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Aside from the awkward noun choice, sentence structure is a single short question with no compound reasoning, and the numerals (e.g. 3 L, 56 mL) are whole numbers a Grade 3 reader already handles."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Both mcq and cloze formatters appear, and the magnitude spans a single-digit answer (3 L at seed 50) up to a four-digit answer (2893 mL at seed 502), so the numeral scale is not flat across the sample set."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Distractors stay adjacent to the true reading (e.g. seed 500 offers 284, 285, 286, 287 around the correct 285), so the varying difficulty is driven by the capacity reading itself rather than an unrelated skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "L readings run 3-285 and mL readings run 56-2893; no ceiling is stated in the competency text, and both ranges are plausible container-capacity magnitudes in their shown unit."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }
