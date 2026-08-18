@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g3_na_q4_6",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q4-Harden (mat_g3_na_q4_6), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items directly assess representing fractions equal to one (e.g., \"A shape is divided into 8 equal parts. 8 parts are shaded. What fraction of the shape is shaded?\" yielding 8/8) and fractions greater than one (e.g., \"A shape is divided into 3 equal parts. 5 parts are shaded. What fraction of the shape is shaded?\" yielding 5/3). The core concept of equal partitioning and unit fraction counting beyond one whole is solidly demonstrated."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set comprehensively covers fractions equal to one (such as \"A shape is divided into 5 equal parts. 5 parts are shaded. What fraction of the shape is shaded?\" and \"A shape is divided into 6 equal parts with 6 parts shaded. The fraction shaded is ___.\") as well as fractions greater than one across varied unit sizes (e.g., \"A shape is divided into 2 equal parts. 3 parts are shaded. What fraction of the shape is shaded?\" and \"A shape is divided into 5 equal parts. 9 parts are shaded. What fraction of the shape is shaded?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The reading level and syntactic complexity are well-calibrated for Grade 3 Quarter 4 students. Prompts like \"A shape is divided into 3 equal parts with 10 parts shaded. The fraction shaded is ___.\" are succinct and unambiguous, ensuring that students are tested on their fractional reasoning rather than deciphering complex sentence structures."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The items feature diverse question formats including multiple-choice questions (e.g., \"A shape is divided into 6 equal parts. 11 parts are shaded. What fraction of the shape is shaded?\") and fill-in-the-blank / cloze questions (e.g., \"A shape is divided into 6 equal parts with 14 parts shaded. The fraction shaded is ___.\"), covering simple improper fractions, whole-number multiples like \"A shape is divided into 4 equal parts. 8 parts are shaded. What fraction of the shape is shaded?\", and unitary whole fractions."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The problem set maintains strict alignment with MATATAG learning competency mat_g3_na_q4_6. It avoids out-of-scope mixed numbers, operations, or abstract fraction equations, staying firmly focused on model-based fraction identification such as \"A shape is divided into 3 equal parts. 8 parts are shaded. What fraction of the shape is shaded?\"."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The denominators used (2, 3, 4, 5, 6, 8) reflect standard Grade 3 fraction modeling bounds, and the numerator values (e.g., in \"A shape is divided into 8 equal parts. 18 parts are shaded. What fraction of the shape is shaded?\") are reasonable for multi-shape visual representation models at this grade level."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -10,369 +37,85 @@
     45,
     46,
     50,
-    55,
-    72,
     500,
     501,
     502,
     600,
+    601,
     602
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "There are 2 identical shapes, each divided into 3 equal parts. 5 parts are shaded in total. What fraction is shaded?",
-      "correct_answer": "5/3",
-      "options": [
-        {
-          "key": "A",
-          "value": "3/5",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1/3",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "5/3",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "7/6",
-          "is_correct": false
-        }
-      ]
+      "question_text": "A shape is divided into 3 equal parts. 5 parts are shaded. What fraction of the shape is shaded?",
+      "correct_answer": "5/3"
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "A shape is divided into 8 equal parts. 8 parts are shaded. What fraction of the shape is shaded?",
-      "correct_answer": "8/8",
-      "options": [
-        {
-          "key": "A",
-          "value": "8/8",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "1/8",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "15/9",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "15/16",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "8/8"
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "There are 2 identical shapes, each divided into 5 equal parts. 9 parts are shaded in total. What fraction is shaded?",
-      "correct_answer": "9/5",
-      "options": [
-        {
-          "key": "A",
-          "value": "13/10",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "5/9",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1/5",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "9/5",
-          "is_correct": true
-        }
-      ]
+      "question_text": "A shape is divided into 5 equal parts. 9 parts are shaded. What fraction of the shape is shaded?",
+      "correct_answer": "9/5"
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A shape is divided into 5 equal parts. 5 parts are shaded. What fraction of the shape is shaded?",
-      "correct_answer": "5/5",
-      "options": [
-        {
-          "key": "A",
-          "value": "9/6",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "9/10",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "5/5",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "1/5",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "5/5"
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "There are 3 identical shapes, each divided into 3 equal parts. 8 parts are shaded in total. What fraction is shaded?",
-      "correct_answer": "8/3",
-      "options": [
-        {
-          "key": "A",
-          "value": "1/3",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "8/3",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "10/6",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "3/8",
-          "is_correct": false
-        }
-      ]
+      "question_text": "A shape is divided into 3 equal parts. 8 parts are shaded. What fraction of the shape is shaded?",
+      "correct_answer": "8/3"
     },
     {
       "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "What fraction does the model show?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "3/10",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "10/3",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "9/3",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "3/3",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 55,
-      "formatter": "set_click",
-      "question_text": "Shade 3/3 of the shape.",
-      "correct_answer": "3/3"
-    },
-    {
-      "seed": 72,
       "formatter": "cloze",
-      "question_text": "A shape is divided into 6 equal parts. 6 parts are shaded. What fraction of the shape is shaded?",
-      "correct_answer": "6/6",
-      "options": [
-        {
-          "key": "A",
-          "value": "6/6",
-          "text": "6/6",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "1/6",
-          "text": "1/6",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "11/7",
-          "text": "11/7",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "11/12",
-          "text": "11/12",
-          "is_correct": false
-        }
-      ]
+      "question_text": "A shape is divided into 3 equal parts with 10 parts shaded. The fraction shaded is ___.",
+      "correct_answer": "10/3"
     },
     {
       "seed": 500,
-      "formatter": "set_click",
-      "question_text": "Shade 14/6 using 3 identical shapes, each divided into 6 equal parts.",
+      "formatter": "cloze",
+      "question_text": "A shape is divided into 6 equal parts with 14 parts shaded. The fraction shaded is ___.",
       "correct_answer": "14/6"
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "There are 3 identical shapes, each divided into 8 equal parts. 18 parts are shaded in total. What fraction is shaded?",
-      "correct_answer": "18/8",
-      "options": [
-        {
-          "key": "A",
-          "value": "18/8",
-          "text": "18/8",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "1/8",
-          "text": "1/8",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "25/16",
-          "text": "25/16",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "8/18",
-          "text": "8/18",
-          "is_correct": false
-        }
-      ]
+      "formatter": "mcq",
+      "question_text": "A shape is divided into 8 equal parts. 18 parts are shaded. What fraction of the shape is shaded?",
+      "correct_answer": "18/8"
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "There are 2 identical shapes, each divided into 4 equal parts. 8 parts are shaded in total. What fraction is shaded?",
-      "correct_answer": "8/4",
-      "options": [
-        {
-          "key": "A",
-          "value": "4/8",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "8/4",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "1/4",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "11/8",
-          "is_correct": false
-        }
-      ]
+      "question_text": "A shape is divided into 4 equal parts. 8 parts are shaded. What fraction of the shape is shaded?",
+      "correct_answer": "8/4"
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "There are 2 identical shapes, each divided into 6 equal parts. 11 parts are shaded in total. What fraction is shaded?",
-      "correct_answer": "11/6",
-      "options": [
-        {
-          "key": "A",
-          "value": "6/11",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "16/12",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "11/6",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "1/6",
-          "is_correct": false
-        }
-      ]
+      "question_text": "A shape is divided into 6 equal parts. 11 parts are shaded. What fraction of the shape is shaded?",
+      "correct_answer": "11/6"
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "A shape is divided into 6 equal parts with 6 parts shaded. The fraction shaded is ___.",
+      "correct_answer": "6/6"
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "There are 2 identical shapes, each divided into 2 equal parts. 3 parts are shaded in total. What fraction is shaded?",
-      "correct_answer": "3/2",
-      "options": [
-        {
-          "key": "A",
-          "value": "3/2",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "1/2",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "2/3",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "4/4",
-          "is_correct": false
-        }
-      ]
+      "question_text": "A shape is divided into 2 equal parts. 3 parts are shaded. What fraction of the shape is shaded?",
+      "correct_answer": "3/2"
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "seed 46's '3 identical shapes, each divided into 3 equal parts. 8 parts are shaded in total' is a textbook instance of the competency's own wording, 'Represent fractions that are equal to one and greater than one using models', and every other sample follows the same shape-and-parts structure."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Fractions equal to one (seed 43's 8/8, seed 72's 6/6, seed 55's shade-3/3) and fractions greater than one (seed 42's 5/3, seed 500's 14/6) both occur, matching the competency's two named cases."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Denominators from 2 to 8 and modest shaded counts keep the visual-fraction task inside Grade 3 Quarter 4 scope."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "set_click gives genuinely interactive shading (seed 55, seed 500) alongside mcq, read_mcq, and cloze, and both single-shape and multi-shape contexts appear."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Denominator size and the number of identical shapes used are what scale difficulty, staying on the model-representation skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "18/8 (seed 501) is the largest fraction in the set, with denominators never exceeding 8 — a sensible range for a Grade 3 visual task."
-    }
-  },
-  "overall": "PASS"
+  ]
 }
