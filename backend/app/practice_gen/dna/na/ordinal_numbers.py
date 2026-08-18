@@ -185,12 +185,21 @@ def generate_params(
     diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
     ordinal_range_val = profile.get("ordinal_range")
     if ordinal_range_val is not None:
-        try:
-            val = float(ordinal_range_val)
-            if val > 1:
-                max_ord = min(max_ord, int(val))
-        except (TypeError, ValueError):
-            pass
+        if isinstance(ordinal_range_val, (list, tuple)) and len(ordinal_range_val) == 2:
+            min_ord = max(min_ord, int(ordinal_range_val[0]))
+            max_ord = min(max_ord, int(ordinal_range_val[1]))
+        else:
+            try:
+                val = float(ordinal_range_val)
+                if val <= 1.0:
+                    diff_scalar = val
+                else:
+                    max_ord = min(max_ord, int(val))
+                    curriculum_max = bounds["max_ordinal"]
+                    if curriculum_max > min_ord:
+                        diff_scalar = (max_ord - min_ord) / (curriculum_max - min_ord)
+            except (TypeError, ValueError):
+                pass
 
     range_level = profile.get("range", "1st_to_10th")
     task_type = profile.get("task_type") or rng.choice(

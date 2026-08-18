@@ -605,9 +605,9 @@ def generate_params(
                 small_val = rng.randint(small_lo, small_hi)
                 if big_val + small_val > max_result:
                     continue
-                # Randomize which slot ("start"/"count_by") holds the
-                # bigger-digit operand for phrasing variety.
-                pair = (big_val, small_val) if rng.random() < 0.5 else (small_val, big_val)
+                # Always start at the larger-digit operand when counting up
+                # on a number line (e.g. "Start at 32. Count up 2 more.").
+                pair = (big_val, small_val)
                 candidates.append(pair)
             if not candidates:
                 raise RuntimeError(
@@ -620,7 +620,8 @@ def generate_params(
                 attempts += 1
                 start = rng.randint(1, max(1, max_result - 1))
                 count_by = rng.randint(1, max(1, max_result - start))
-                candidates.append((start, count_by))
+                pair = (max(start, count_by), min(start, count_by))
+                candidates.append(pair)
         if "regrouping" in profile:
             # Same "this early-return branch skips the default path's own
             # regrouping filter" defect as expanded_form's identical fix

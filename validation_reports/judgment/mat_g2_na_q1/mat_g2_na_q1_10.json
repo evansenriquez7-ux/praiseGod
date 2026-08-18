@@ -1,54 +1,481 @@
 {
   "node_id": "mat_g2_na_q1_10",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch C3 (post-fix re-review, g2 addition properties), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q1-Harden (mat_g2_na_q1_10), 2026-08-18",
   "blind": true,
-  "sample_seeds": [42, 43, 44, 45, 46, 50, 51, 54, 72, 500, 501, 502, 600, 601, 602, 603, 604, 605],
-  "samples_reviewed": [
-    {"seed": 42, "formatter": "mcq", "question_text": "Is (21 + 11) + 6 the same as 21 + (11 + 6)?", "correct_answer": true, "options": [{"key": "A", "value": false, "is_correct": false}, {"key": "B", "value": 32, "is_correct": false}, {"key": "C", "value": true, "is_correct": true}, {"key": "D", "value": 10, "is_correct": false}]},
-    {"seed": 43, "formatter": "mcq", "question_text": "What is 0 + 19?", "correct_answer": 19, "options": [{"key": "A", "value": 19, "is_correct": true}, {"key": "B", "value": 18, "is_correct": false}, {"key": "C", "value": 20, "is_correct": false}, {"key": "D", "value": 29, "is_correct": false}]},
-    {"seed": 44, "formatter": "mcq", "question_text": "Is 32 + 2 the same as 2 + 32?", "correct_answer": true, "options": [{"key": "A", "value": 30, "is_correct": false}, {"key": "B", "value": false, "is_correct": false}, {"key": "C", "value": 34, "is_correct": false}, {"key": "D", "value": true, "is_correct": true}]},
-    {"seed": 45, "formatter": "mcq", "question_text": "Is 27 + 2 the same as 2 + 27?", "correct_answer": true, "options": [{"key": "A", "value": 29, "is_correct": false}, {"key": "B", "value": false, "is_correct": false}, {"key": "C", "value": true, "is_correct": true}, {"key": "D", "value": 25, "is_correct": false}]},
-    {"seed": 46, "formatter": "mcq", "question_text": "What is 0 + 26?", "correct_answer": 26, "options": [{"key": "A", "value": 27, "is_correct": false}, {"key": "B", "value": 26, "is_correct": true}, {"key": "C", "value": 25, "is_correct": false}, {"key": "D", "value": 36, "is_correct": false}]},
-    {"seed": 50, "formatter": "read_fill_in_blank", "question_text": "The two parts are 55 and 3. What is the sum?", "correct_answer": 58},
-    {"seed": 51, "formatter": "error_detect", "question_text": "Ana says: 0 + 54 = 53. Is Ana correct?", "correct_answer": {"has_error": true, "correct_value": 54}},
-    {"seed": 54, "formatter": "cloze", "question_text": "29 + 0 = ___", "correct_answer": 29, "options": [{"key": "A", "value": 29, "text": "29", "is_correct": true}, {"key": "B", "value": 30, "text": "30", "is_correct": false}, {"key": "C", "value": 39, "text": "39", "is_correct": false}, {"key": "D", "value": 28, "text": "28", "is_correct": false}]},
-    {"seed": 72, "formatter": "true_false", "question_text": "0 + 51 = 51. True or False?", "correct_answer": true},
-    {"seed": 500, "formatter": "read_fill_in_blank", "question_text": "The two parts are 168 and 511. What is the sum?", "correct_answer": 679},
-    {"seed": 501, "formatter": "mcq", "question_text": "Is (553 + 123) + 221 the same as 553 + (123 + 221)?", "correct_answer": true, "options": [{"key": "A", "value": true, "is_correct": true}, {"key": "B", "value": 676, "is_correct": false}, {"key": "C", "value": 430, "is_correct": false}, {"key": "D", "value": false, "is_correct": false}]},
-    {"seed": 502, "formatter": "mcq", "question_text": "Is (623 + 62) + 103 the same as 623 + (62 + 103)?", "correct_answer": true, "options": [{"key": "A", "value": false, "is_correct": false}, {"key": "B", "value": true, "is_correct": true}, {"key": "C", "value": 685, "is_correct": false}, {"key": "D", "value": 561, "is_correct": false}]},
-    {"seed": 600, "formatter": "mcq", "question_text": "Is 36 + 3 the same as 3 + 36?", "correct_answer": true, "options": [{"key": "A", "value": false, "is_correct": false}, {"key": "B", "value": 33, "is_correct": false}, {"key": "C", "value": true, "is_correct": true}, {"key": "D", "value": 39, "is_correct": false}]},
-    {"seed": 601, "formatter": "true_false", "question_text": "0 + 44 = 44. True or False?", "correct_answer": true},
-    {"seed": 602, "formatter": "mcq", "question_text": "Is 43 + 13 the same as 13 + 43?", "correct_answer": true, "options": [{"key": "A", "value": true, "is_correct": true}, {"key": "B", "value": 56, "is_correct": false}, {"key": "C", "value": false, "is_correct": false}, {"key": "D", "value": 30, "is_correct": false}]},
-    {"seed": 603, "formatter": "cloze", "question_text": "36 + 0 = ___", "correct_answer": 36, "options": [{"key": "A", "value": 37, "text": "37", "is_correct": false}, {"key": "B", "value": 36, "text": "36", "is_correct": true}, {"key": "C", "value": 46, "text": "46", "is_correct": false}, {"key": "D", "value": 35, "text": "35", "is_correct": false}]},
-    {"seed": 604, "formatter": "mcq", "question_text": "What is 13 + 0?", "correct_answer": 13, "options": [{"key": "A", "value": 13, "is_correct": true}, {"key": "B", "value": 12, "is_correct": false}, {"key": "C", "value": 23, "is_correct": false}, {"key": "D", "value": 14, "is_correct": false}]},
-    {"seed": 605, "formatter": "error_detect", "question_text": "Liza says: 57 + 0 = 57. Is Liza correct?", "correct_answer": {"has_error": false, "correct_value": 57}}
-  ],
+  "overall": "PASS",
   "findings": {
     "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "16 of 18 samples directly exercise a named property (zero, order, or grouping), but seed 50 ('The two parts are 55 and 3. What is the sum?') and seed 500 ('The two parts are 168 and 511. What is the sum?') are plain two-addend sums with no zero addend, no reordering comparison, and no regrouping comparison, so they do not illustrate or apply any property this competency names."
+      "verdict": "PASS",
+      "rationale": "The samples fulfill the competency by explicitly testing the student's ability to illustrate and apply addition properties. Questions such as \"Is (21 + 11) + 6 the same as 21 + (11 + 6)?\" and \"What is 0 + 19?\" require students to recognize equal sums across order/grouping changes and apply the zero property directly."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All three named sub-cases appear with multiple instances: the zero property in 9 samples (e.g. seed 43 'What is 0 + 19?' and seed 605 '57 + 0 = 57'), the order (commutative) property in 4 samples (e.g. seed 44 'Is 32 + 2 the same as 2 + 32?'), and the grouping (associative) property in 3 samples (e.g. seed 42 'Is (21 + 11) + 6 the same as 21 + (11 + 6)?'), and the zero property is shown in both 0+n order (seed 43) and n+0 order (seed 604)."
+      "rationale": "All three properties mandated by the competency are present. The zero identity property is tested in \"0 + 44 = ___\", the commutative property in \"Is 168 + 511 the same as 511 + 168?\", and the associative property in \"Is (553 + 123) + 221 the same as 553 + (123 + 221)?\"."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Phrasing stays short and literal for Grade 2 Quarter 1, e.g. 'Is 43 + 13 the same as 13 + 43?' and '0 + 44 = 44. True or False?', each requiring a single comparison or one addition step, and the three-digit magnitudes used (e.g. seed 501's 553 + 123 + 221) fall within the competency's own stated ceiling of 'sums up to 1000'."
+      "rationale": "The sentence structures, cognitive demands, and arithmetic bounds are well-suited for Grade 2 students in Quarter 1. Contexts are simple or purely mathematical, and error-detect frames like \"Grace solved: \"0 + 61 = ___\". Grace says the missing number is 60. Is Grace correct?\" introduce reasoning without adding excessive cognitive load."
     },
     "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "The order property (4 of 4 samples: seeds 44, 45, 600, 602) and the grouping property (3 of 3 samples: seeds 42, 501, 502) are rendered exclusively through the mcq formatter with 'the same as' phrasing (e.g. seed 44: 'Is 32 + 2 the same as 2 + 32?'), while the zero property alone spans four different formatters (mcq, error_detect, cloze, true_false), leaving commutative and associative with no true_false, cloze, or error_detect treatment in this packet."
+      "verdict": "PASS",
+      "rationale": "The set of generated problems demonstrates good variety across formatting and numerical ranges. There are simple multiple-choice formats (\"What is 13 + 0?\"), cloze exercises (\"36 + 0 = ___\"), true/false evaluations (\"0 + 54 = 54. True or False?\"), and questions targeting 1-digit, 2-digit, and 3-digit operations."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Difficulty is varied through property type and operand digit count, both proper to this competency, e.g. seed 42 uses small two-digit addends (21, 11, 6) for grouping while seed 501 uses three-digit addends (553, 123, 221) for the same property, with no sample substituting an unrelated skill such as subtraction or multiplication."
+      "rationale": "Every generated sample is strictly aligned to the competency. No extraneous concepts, such as subtraction or missing addends requiring algebraic reasoning, are introduced. Questions like \"Is 36 + 3 the same as 3 + 36?\" laser-focus on the specific properties of addition as defined by MATATAG."
     },
     "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The zero property never uses an addend larger than 57 (seed 605: '57 + 0 = 57') and the order property never exceeds 43 (seed 602: '43 + 13'), so neither reaches near the stated 'sums up to 1000' ceiling; only the grouping-property samples and the two non-property sum problems reach three digits, with the largest sum in the packet being 897 from seed 501's 553 + 123 + 221, still short of 1000."
+      "verdict": "PASS",
+      "rationale": "The competency allows sums up to 1000. The numerical limits in the samples comply precisely with this upper bound. For example, the sum in \"Is (553 + 123) + 221 the same as 553 + (123 + 221)?\" stays below 1000 (reaching 897), avoiding overflow beyond the prescribed limits."
     }
   },
-  "overall": "CONCERN"
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    51,
+    55,
+    85,
+    500,
+    501,
+    502,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605
+  ],
+  "samples_reviewed": [
+    {
+      "seed": 42,
+      "formatter": "mcq",
+      "question_text": "Is (21 + 11) + 6 the same as 21 + (11 + 6)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Cannot be determined",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "formatter": "mcq",
+      "question_text": "What is 0 + 19?",
+      "correct_answer": 19,
+      "options": [
+        {
+          "key": "A",
+          "value": 19,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 18,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 29,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "formatter": "mcq",
+      "question_text": "Is 32 + 2 the same as 2 + 32?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "Is 27 + 2 the same as 2 + 27?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Cannot be determined",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What is 0 + 26?",
+      "correct_answer": 26,
+      "options": [
+        {
+          "key": "A",
+          "value": 27,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 26,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 36,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 51,
+      "formatter": "true_false",
+      "question_text": "0 + 54 = 54. True or False?",
+      "correct_answer": true
+    },
+    {
+      "seed": 55,
+      "formatter": "error_detect",
+      "question_text": "Grace solved: \"0 + 61 = ___\". Grace says the missing number is 60. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 61
+      }
+    },
+    {
+      "seed": 85,
+      "formatter": "cloze",
+      "question_text": "0 + 45 = ___",
+      "correct_answer": 45,
+      "options": [
+        {
+          "key": "A",
+          "value": 44,
+          "text": "44",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 46,
+          "text": "46",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 55,
+          "text": "55",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 45,
+          "text": "45",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "mcq",
+      "question_text": "Is 168 + 511 the same as 511 + 168?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Only when both are 0",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "Is (553 + 123) + 221 the same as 553 + (123 + 221)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": false,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "Is (623 + 62) + 103 the same as 623 + (62 + 103)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Cannot be determined",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "Is 36 + 3 the same as 3 + 36?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Only when both are 0",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "0 + 44 = ___",
+      "correct_answer": 44,
+      "options": [
+        {
+          "key": "A",
+          "value": 43,
+          "text": "43",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 54,
+          "text": "54",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 45,
+          "text": "45",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 44,
+          "text": "44",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Is 43 + 13 the same as 13 + 43?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Cannot be determined",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "36 + 0 = ___",
+      "correct_answer": 36,
+      "options": [
+        {
+          "key": "A",
+          "value": 37,
+          "text": "37",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 36,
+          "text": "36",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 46,
+          "text": "46",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 35,
+          "text": "35",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "What is 13 + 0?",
+      "correct_answer": 13,
+      "options": [
+        {
+          "key": "A",
+          "value": 13,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 12,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 23,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 14,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "error_detect",
+      "question_text": "Liza solved: \"57 + 0 = ___\". Liza says the missing number is 57. Is Liza correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 57
+      }
+    }
+  ]
 }

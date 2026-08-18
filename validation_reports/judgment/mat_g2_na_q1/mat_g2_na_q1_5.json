@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_na_q1_5",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q1-Harden (mat_g2_na_q1_5), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The generator successfully requires students to use ordinal numbers to indicate positions, matching the competency. Questions like \"A runner is at position number 2. In what place did the runner finish?\" accurately assess this skill."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample spans the required numerical range up to the 20th. It tests early ordinals (\"Write the symbol for the first position.\"), mid-range ordinals, and the upper limit of the competency (\"What ordinal describes position number 20?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The language and conceptual complexity are perfectly suited for Grade 2, Quarter 1. Questions are short and direct, such as \"What ordinal describes position number 4?\", avoiding unnecessary cognitive load."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The generator exhibits strong variant diversity. It includes converting cardinal positions to ordinals (\"What ordinal describes position number 3?\"), sequence reasoning (\"Which position comes after 19th?\"), relative comparisons (\"Who arrived earlier: the student in 1st place or 6th place?\"), and word-to-symbol translation (\"Write the symbol for the sixth position.\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every generated item strictly adheres to the wording and intent of \"Describe the position of objects using ordinal numbers up to 20th.\" There are no items that stray into unrelated topics or exceed the 20th position limit."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The distractors are plausible and structurally consistent. Incorrect options in questions like \"Which position comes after 19th?\" provide other valid ordinal numbers within the learned scope (e.g., \"8th\", \"5th\", \"13th\"), which correctly scales the multiple-choice challenge."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -29,7 +55,7 @@
         },
         {
           "key": "B",
-          "value": "2nd",
+          "value": "4th",
           "is_correct": false
         },
         {
@@ -39,7 +65,7 @@
         },
         {
           "key": "D",
-          "value": "6th",
+          "value": "7th",
           "is_correct": false
         }
       ]
@@ -57,17 +83,17 @@
         },
         {
           "key": "B",
-          "value": "1st",
+          "value": "3rd",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "5th",
+          "value": "12th",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "3rd",
+          "value": "2nd",
           "is_correct": false
         }
       ]
@@ -75,27 +101,27 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "A runner finished in second place. What position number is that?",
-      "correct_answer": 2,
+      "question_text": "A runner is at position number 2. In what place did the runner finish?",
+      "correct_answer": "2nd",
       "options": [
         {
           "key": "A",
-          "value": 1,
+          "value": "12th",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 4,
+          "value": "13th",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 6,
+          "value": "20th",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 2,
+          "value": "2nd",
           "is_correct": true
         }
       ]
@@ -108,12 +134,12 @@
       "options": [
         {
           "key": "A",
-          "value": "2nd",
+          "value": "5th",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "5th",
+          "value": "19th",
           "is_correct": false
         },
         {
@@ -123,7 +149,7 @@
         },
         {
           "key": "D",
-          "value": "6th",
+          "value": "20th",
           "is_correct": false
         }
       ]
@@ -136,7 +162,7 @@
       "options": [
         {
           "key": "A",
-          "value": "4th",
+          "value": "5th",
           "is_correct": false
         },
         {
@@ -146,12 +172,12 @@
         },
         {
           "key": "C",
-          "value": "2nd",
+          "value": "17th",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "5th",
+          "value": "15th",
           "is_correct": false
         }
       ]
@@ -164,8 +190,8 @@
       "options": [
         {
           "key": "A",
-          "value": "4th",
-          "text": "4th",
+          "value": "11th",
+          "text": "11th",
           "is_correct": false
         },
         {
@@ -176,14 +202,14 @@
         },
         {
           "key": "C",
-          "value": "6th",
-          "text": "6th",
+          "value": "20th",
+          "text": "20th",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "1st",
-          "text": "1st",
+          "value": "14th",
+          "text": "14th",
           "is_correct": false
         }
       ]
@@ -191,13 +217,13 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "What ordinal describes position number 11?",
-      "correct_answer": "11th",
+      "question_text": "What ordinal describes position number 20?",
+      "correct_answer": "20th",
       "options": [
         {
           "key": "A",
-          "value": "11th",
-          "text": "11th",
+          "value": "20th",
+          "text": "20th",
           "is_correct": true
         },
         {
@@ -208,14 +234,14 @@
         },
         {
           "key": "C",
-          "value": "19th",
-          "text": "19th",
+          "value": "18th",
+          "text": "18th",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "16th",
-          "text": "16th",
+          "value": "15th",
+          "text": "15th",
           "is_correct": false
         }
       ]
@@ -223,27 +249,27 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "Which position comes after 11th?",
-      "correct_answer": "12th",
+      "question_text": "Which position comes after 19th?",
+      "correct_answer": "20th",
       "options": [
         {
           "key": "A",
-          "value": "12th",
+          "value": "20th",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "11th",
+          "value": "10th",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "8th",
+          "value": "7th",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "6th",
+          "value": "5th",
           "is_correct": false
         }
       ]
@@ -251,27 +277,27 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Which position comes after 10th?",
-      "correct_answer": "11th",
+      "question_text": "Which position comes after 19th?",
+      "correct_answer": "20th",
       "options": [
         {
           "key": "A",
-          "value": "9th",
+          "value": "8th",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "11th",
+          "value": "20th",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "6th",
+          "value": "5th",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "15th",
+          "value": "13th",
           "is_correct": false
         }
       ]
@@ -279,57 +305,30 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "A runner finished in third place. What position number is that?",
-      "correct_answer": 3,
+      "question_text": "A runner is at position number 3. In what place did the runner finish?",
+      "correct_answer": "3rd",
       "options": [
         {
           "key": "A",
-          "value": 6,
+          "value": "12th",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 1,
+          "value": "19th",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 3,
+          "value": "3rd",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 4,
+          "value": "18th",
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Items correctly use ordinal forms in context, e.g. seed 42 \"Who arrived earlier: the student in 1st place or 6th place?\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Position-to-ordinal (seed 44), ordinal-to-position (seed 45), ordinal-word-to-symbol (seed 43), and next-ordinal (seed 501, seed 502) sub-tasks are all represented."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Ordinal vocabulary and short comparative phrasing fit Grade 2 Quarter 1."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Contexts range from race positions to abstract position-number prompts across the mcq and cloze formatters."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The varying element is which ordinal position is named, staying on-topic."
-    },
-    "scale_appropriateness": {
-      "verdict": "FAIL",
-      "rationale": "The competency states ordinal numbers \"up to 20th\", but the highest ordinal appearing anywhere in the ten samples is seed 501's \"12th\" (from \"Which position comes after 11th?\"); no sample reaches 13th through 20th at all."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }
