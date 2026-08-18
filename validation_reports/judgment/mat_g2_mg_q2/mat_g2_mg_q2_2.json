@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_mg_q2_2",
-  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the ruler routing fix, 2026-08-13",
-  "review_date": "2026-08-13",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q2-Harden v2 (mat_g2_mg_q2_2), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The samples successfully fulfill the competency of estimating length and distance by using the standard computer-based assessment approach of rounding to benchmarks. Items consistently prompt students with phrases like \"rounded to the nearest 10 cm\" and \"rounded to the nearest 5 m\"."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The packet comprehensively covers all aspects of the competency: length in centimeters (e.g., \"A wooden ruler measures 22 cm\"), length in meters (e.g., \"A school fence measures 35 m\"), and distance in meters (e.g., \"The distance from the classroom to the canteen is 17 m\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The cognitive load is appropriate for Grade 2. The numbers used (e.g., 14, 17, 21, 23, 35) are simple two-digit integers, and rounding to the nearest 5 or 10 is well within the developmental capacity and curriculum expectations of second graders."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples show excellent variant comprehensiveness. They vary the contexts (school, outdoors, everyday objects), the target units (meters vs. centimeters), the estimation base (\"nearest 5\" vs. \"nearest 10\"), and the question formats (MCQ and cloze)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The questions are strictly aligned with the target competency. No extraneous or advanced concepts are introduced, and the task consistently remains focused on estimating \"About how many meters is that\" or \"About how many centimeters is that\"."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All measurements provided are physically plausible and realistic, giving students authentic contexts for estimation. A \"wooden ruler measures 22 cm\", a \"pencil case measures 17 cm\", and a \"distance from the front door to the school fence is 14 m\" all reflect accurate, real-world scales."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -12,33 +38,37 @@
     50,
     500,
     501,
-    502
+    502,
+    600,
+    601,
+    602,
+    603
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "An object measures 11 m. About how many m is that, rounded to the nearest 5?",
-      "correct_answer": 10,
+      "question_text": "A wooden ruler measures 22 cm. About how many centimeters is that, rounded to the nearest 10 cm?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 11,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 12,
+          "value": 40,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 10,
+          "value": 20,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 9,
+          "value": 10,
           "is_correct": false
         }
       ]
@@ -46,27 +76,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "The distance from the gate to the flagpole is 11 m. About how many m is that, rounded to the nearest 5?",
-      "correct_answer": 10,
+      "question_text": "The distance from the classroom to the canteen is 17 m. About how many meters is that, rounded to the nearest 5 m?",
+      "correct_answer": 15,
       "options": [
         {
           "key": "A",
-          "value": 10,
+          "value": 15,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 9,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 12,
+          "value": 25,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 11,
+          "value": 20,
           "is_correct": false
         }
       ]
@@ -74,27 +104,27 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "The distance from the gate to the flagpole is 11 m. About how many m is that, rounded to the nearest 5?",
-      "correct_answer": 10,
+      "question_text": "The distance from the library to the garden is 21 m. About how many meters is that, rounded to the nearest 10 m?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 9,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 11,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 12,
+          "value": 40,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 10,
+          "value": 20,
           "is_correct": true
         }
       ]
@@ -102,27 +132,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "The distance from the gate to the flagpole is 11 m. About how many m is that, rounded to the nearest 5?",
-      "correct_answer": 10,
+      "question_text": "The distance from the front door to the school fence is 14 m. About how many meters is that, rounded to the nearest 5 m?",
+      "correct_answer": 15,
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 25,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 11,
+          "value": 20,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 10,
+          "value": 15,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 9,
+          "value": 10,
           "is_correct": false
         }
       ]
@@ -130,27 +160,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "An object measures 11 m. About how many m is that, rounded to the nearest 5?",
-      "correct_answer": 10,
+      "question_text": "A storybook measures 23 cm. About how many centimeters is that, rounded to the nearest 10 cm?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 12,
+          "value": 40,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 10,
+          "value": 20,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 9,
+          "value": 10,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 11,
+          "value": 30,
           "is_correct": false
         }
       ]
@@ -158,31 +188,31 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "The distance from the gate to the flagpole is 11 m. About how many m is that, rounded to the nearest 5?",
-      "correct_answer": 10,
+      "question_text": "The distance from the bench to the mango tree is 16 m. About how many meters is that, rounded to the nearest 5 m?",
+      "correct_answer": 15,
       "options": [
         {
           "key": "A",
-          "value": 11,
-          "text": "11",
+          "value": 20,
+          "text": "20",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 10,
-          "text": "10",
+          "value": 15,
+          "text": "15",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 12,
-          "text": "12",
+          "value": 25,
+          "text": "25",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 9,
-          "text": "9",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         }
       ]
@@ -190,31 +220,31 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "An object measures 75 cm. About how many cm is that, rounded to the nearest 10?",
-      "correct_answer": 80,
+      "question_text": "A classroom hallway measures 21 m. About how many meters is that, rounded to the nearest 10 m?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 80,
-          "text": "80",
+          "value": 20,
+          "text": "20",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 79,
-          "text": "79",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 81,
-          "text": "81",
+          "value": 30,
+          "text": "30",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 82,
-          "text": "82",
+          "value": 40,
+          "text": "40",
           "is_correct": false
         }
       ]
@@ -222,27 +252,27 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "An object measures 31 cm. About how many cm is that, rounded to the nearest 10?",
-      "correct_answer": 30,
+      "question_text": "A school fence measures 35 m. About how many meters is that, rounded to the nearest 10 m?",
+      "correct_answer": 40,
       "options": [
         {
           "key": "A",
-          "value": 30,
+          "value": 40,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 32,
+          "value": 60,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 29,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 31,
+          "value": 50,
           "is_correct": false
         }
       ]
@@ -250,57 +280,146 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "An object measures 46 m. About how many m is that, rounded to the nearest 10?",
-      "correct_answer": 50,
+      "question_text": "A wooden ruler measures 21 cm. About how many centimeters is that, rounded to the nearest 10 cm?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 51,
+          "value": 30,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 50,
+          "value": 20,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 52,
+          "value": 40,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 49,
+          "value": 10,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "A pencil case measures 17 cm. About how many centimeters is that, rounded to the nearest 5 cm?",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 10,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 25,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "The distance from the library to the garden is 18 m. About how many meters is that, rounded to the nearest 5 m?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 15,
+          "text": "15",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 25,
+          "text": "25",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 30,
+          "text": "30",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 20,
+          "text": "20",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "The distance from the bench to the mango tree is 18 m. About how many meters is that, rounded to the nearest 5 m?",
+      "correct_answer": 20,
+      "options": [
+        {
+          "key": "A",
+          "value": 20,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 15,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "The distance from the library to the garden is 16 m. About how many meters is that, rounded to the nearest 5 m?",
+      "correct_answer": 15,
+      "options": [
+        {
+          "key": "A",
+          "value": 25,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 15,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 20,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 10,
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Every one of the nine samples hands the student the measurement and then asks for a rounding of it. Seed 42 reads 'An object measures 11 m. About how many m is that, rounded to the nearest 5?' and seed 500 reads 'An object measures 75 cm. About how many cm is that, rounded to the nearest 10?'. Nothing in the packet asks a student to estimate an unknown length against a benchmark or a referent, so the verb the competency names is only partly met: the skill exercised is rounding a stated number. All nine items are plain text, none is a visual or ruler item, and each is fully answerable from its own stem."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sentence names three things and all three are present in the packet. Length in meters appears at seed 42, 'An object measures 11 m'; length in centimeters appears at seed 500, 'An object measures 75 cm', and at seed 501, 'An object measures 31 cm'; distance in meters appears at seed 43, 'The distance from the gate to the flagpole is 11 m'. Nothing the sentence names is missing, and centimeters are never used for a distance."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Structure is one statement plus one question, single step, with no conversion between meters and centimeters and no decimals anywhere. Values stay small: seed 501 'An object measures 31 cm' and seed 502 'An object measures 46 m' round to the nearest 10, and the 'rounded to the nearest 5' wording at seed 42 leans on counting by fives, which Grade 2 has. Answer options are whole numbers, keyed at values such as '10' and '80'."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Six of the nine samples carry the same number. Seeds 42 and 46 both read 'An object measures 11 m' and seeds 43, 44, 45 and 50 all read 'The distance from the gate to the flagpole is 11 m', with the same key of '10' in all six, so only seeds 500, 501 and 502 bring new values. Separately, every distractor list sits within one or two of the given number, which leaves the key as the sole multiple of the rounding unit on offer, so seed 42 and seed 500 can both be answered by picking the round-looking number without carrying out any rounding."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Scope is held exactly where the sentence puts it. Only meters and centimeters appear, never millimeters or kilometers, and no item asks for a conversion between the two. Distance is always given in meters as required, as at seed 43, 'The distance from the gate to the flagpole is 11 m', and no later idea such as perimeter, area or a decimal measure leaks in. Contexts are everyday Grade 2 ones such as the gate and the flagpole."
-    },
-    "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "The centimeter items are well sized, with seed 500 'An object measures 75 cm' and seed 501 'An object measures 31 cm' both plausible for a handheld thing, and the distance stem at seed 43 is well matched at 11 m from a gate to a flagpole. The meter items applied to a thing are not: seed 502 reads 'An object measures 46 m' and seed 42 reads 'An object measures 11 m', magnitudes no classroom object has, and because the stem names nothing more specific than 'An object' the fit between the unit and the thing measured cannot be judged by the student at all."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

@@ -282,11 +282,22 @@ def generate_params(
             unit = unit_mode
             lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
             hi = max(hi, lo + 1)
-            val_a = rng.randint(lo, hi)
-            val_b = rng.randint(lo, hi)
-            while val_b == val_a:
-                val_b = rng.randint(lo, hi)
-            answer = max(val_a, val_b)
+            obj_a, obj_b = rng.sample(sorted(_object_pool(unit_mode)), 2)
+            def _plausible_val(v: int, obj: str) -> int:
+                lo_b, hi_b = _object_pool(unit_mode).get(obj, (5, 50))
+                return min(max(v, lo_b), hi_b)
+            val_a = _plausible_val(rng.randint(lo, hi), obj_a)
+            val_b = _plausible_val(rng.randint(lo, hi), obj_b)
+            if val_a == val_b:
+                b_lo, b_hi = _object_pool(unit_mode).get(obj_b, (5, 50))
+                val_b = val_b + 1 if val_b < b_hi else val_b - 1
+                val_b = min(max(val_b, b_lo), b_hi)
+            ask_shorter = rng.random() < 0.5
+            ans_val = min(val_a, val_b) if ask_shorter else max(val_a, val_b)
+            other_val = max(val_a, val_b) if ask_shorter else min(val_a, val_b)
+            comp_word = "shorter" if ask_shorter else "longer"
+            dists = [other_val, ans_val + 5, max(1, ans_val - 5)]
+            dists = [d for d in dists if d != ans_val][:3]
             return {
                 "blank_target": "answer",
                 "value_a": val_a,
@@ -294,8 +305,13 @@ def generate_params(
                 "unit": unit,
                 "unit_type": unit_mode,
                 "task_type": "compare",
-                "answer": answer,
-                "distractors": [val_a, val_b, min(val_a, val_b)],
+                "answer": ans_val,
+                "distractors": dists,
+                "question": (
+                    f"{obj_a[0].upper()}{obj_a[1:]} is {val_a} {unit} long. "
+                    f"{obj_b[0].upper()}{obj_b[1:]} is {val_b} {unit} long. "
+                    f"Which length is {comp_word} in {unit}?"
+                ),
             }
 
     if task_type == "compare_distance":
@@ -338,9 +354,12 @@ def generate_params(
             val_b = rng.randint(lo, hi)
             while val_b == val_a:
                 val_b = rng.randint(lo, hi)
-            answer = max(val_a, val_b)
-            unit_a = unit[:-1] if val_a == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
-            unit_b = unit[:-1] if val_b == 1 and unit.endswith("s") and unit not in ("cm", "m") else unit
+            ask_shorter = rng.random() < 0.5
+            ans_val = min(val_a, val_b) if ask_shorter else max(val_a, val_b)
+            other_val = max(val_a, val_b) if ask_shorter else min(val_a, val_b)
+            comp_word = "shorter" if ask_shorter else "longer"
+            dists = [other_val, ans_val + 5, max(1, ans_val - 5)]
+            dists = [d for d in dists if d != ans_val][:3]
             return {
                 "blank_target": "answer",
                 "value_a": val_a,
@@ -348,35 +367,39 @@ def generate_params(
                 "unit": unit,
                 "unit_type": unit_mode,
                 "task_type": "compare_distance",
-                "answer": answer,
-                "distractors": [val_a, val_b, min(val_a, val_b)],
+                "answer": ans_val,
+                "distractors": dists,
                 "question": (
-                    f"The distance from the bench to the tree is {val_a} {unit_a}. "
-                    f"The distance from the gate to the tree is {val_b} {unit_b}. "
-                    f"Which distance is longer?"
+                    f"The distance from the bench to the tree is {val_a} m. "
+                    f"The distance from the gate to the tree is {val_b} m. "
+                    f"Which distance is {comp_word} in meters?"
                 ),
             }
 
     if task_type == "choose_unit":
         # "Identify and use the appropriate unit (m or cm)" (mat_g2_mg_q2_1)
-        # had no matching task_type at all -- this DNA only ever measured
-        # in a unit already chosen for it, never asked the student to
-        # choose one. cm-scale items are short objects; m-scale items are
-        # longer distances/rooms -- picking between them is the actual
-        # skill this competency names.
-        cm_scale_items = ["a pencil", "a crayon", "a book", "a shoe", "a spoon"]
-        m_scale_items = ["a classroom", "a hallway", "a garden", "a basketball court", "a road"]
-        # The competency names TWO scenarios -- "the length of an object AND the
-        # distance between two locations" -- and only the object half was ever
-        # rendered: a blind reviewer found "the two-location distance scenario that
-        # the same sentence of the competency requires does not show up once".
-        # Half the items now ask about a distance between places, which is always
-        # a metre-scale judgment at this grade.
-        if rng.random() < 0.5:
-            pair = rng.choice([
-                "the school and the market", "your house and the church",
-                "the classroom and the canteen", "the barangay hall and the plaza",
-            ])
+        cm_scale_items = [
+            ("a pencil", 15), ("a crayon", 8), ("a book", 25),
+            ("a shoe", 22), ("a spoon", 16), ("an eraser", 5),
+            ("a notebook", 24), ("a pencil case", 20)
+        ]
+        m_scale_items = [
+            ("a classroom", 8), ("a hallway", 20), ("a garden", 15),
+            ("a basketball court", 28), ("a road", 50), ("a school fence", 30),
+            ("a swimming pool", 25), ("a flagpole", 10)
+        ]
+        distance_pairs = [
+            ("the school and the market", 200),
+            ("your house and the church", 150),
+            ("the classroom and the canteen", 40),
+            ("the barangay hall and the plaza", 100),
+            ("the gate and the library", 50),
+            ("the bench and the playground", 30),
+        ]
+        
+        mode = rng.choice(["item_unit", "distance_unit", "reasonableness_item", "reasonableness_dist"])
+        if mode == "distance_unit":
+            pair, dist_val = rng.choice(distance_pairs)
             return {
                 "blank_target": "answer",
                 "item": pair,
@@ -384,44 +407,54 @@ def generate_params(
                 "task_type": "choose_unit",
                 "answer": "m",
                 "distractors": ["cm", "either works", "neither works"],
-                "question": (
-                    f"Which unit would you use to measure the distance between "
-                    f"{pair}: centimeters or meters?"
-                ),
+                "question": f"Which unit is best to measure the distance between {pair}: centimeters (cm) or meters (m)?",
             }
-        use_cm = rng.random() < 0.5
-        item = rng.choice(cm_scale_items if use_cm else m_scale_items)
-        answer_unit = "cm" if use_cm else "m"
-        return {
-            "blank_target": "answer",
-            "item": item,
-            "unit_type": "non_standard",  # no numeric measurement generated for this task
-            "task_type": "choose_unit",
-            "answer": answer_unit,
-            # fmt_mcq requires 3 distractors and has no numeric fallback for
-            # string answers -- the only genuine wrong unit choice here is
-            # the other of cm/m, so pad with plausible-sounding but
-            # non-numeric "reasoning" distractors rather than inventing
-            # additional units this curriculum hasn't introduced yet.
-            "distractors": [
-                "cm" if answer_unit == "m" else "m",
-                "either works",
-                "neither works",
-            ],
-            "question": f"Which unit would you use to measure the length of {item}: centimeters or meters?",
-        }
+        elif mode == "reasonableness_dist":
+            pair, dist_val = rng.choice(distance_pairs)
+            return {
+                "blank_target": "answer",
+                "item": pair,
+                "unit_type": "non_standard",
+                "task_type": "choose_unit",
+                "answer": "m",
+                "distractors": ["cm", "either works", "neither works"],
+                "question": f"The distance between {pair} is about {dist_val} ___. Which unit makes the measurement reasonable: cm or m?",
+            }
+        elif mode == "reasonableness_item":
+            use_cm = rng.random() < 0.5
+            item, item_len = rng.choice(cm_scale_items if use_cm else m_scale_items)
+            ans_u = "cm" if use_cm else "m"
+            wrong_u = "m" if use_cm else "cm"
+            return {
+                "blank_target": "answer",
+                "item": item,
+                "unit_type": "non_standard",
+                "task_type": "choose_unit",
+                "answer": ans_u,
+                "distractors": [wrong_u, "either works", "neither works"],
+                "question": f"{item.capitalize()} has a length of about {item_len} ___. Which unit is correct: cm or m?",
+            }
+        else: # item_unit
+            use_cm = rng.random() < 0.5
+            item, _ = rng.choice(cm_scale_items if use_cm else m_scale_items)
+            ans_u = "cm" if use_cm else "m"
+            wrong_u = "m" if use_cm else "cm"
+            q_frame = rng.choice([
+                f"Which unit would you use to measure the length of {item}: centimeters (cm) or meters (m)?",
+                f"Would you measure the length of {item} in centimeters (cm) or meters (m)?",
+                f"What is the appropriate unit to measure the length of {item}: cm or m?"
+            ])
+            return {
+                "blank_target": "answer",
+                "item": item,
+                "unit_type": "non_standard",
+                "task_type": "choose_unit",
+                "answer": ans_u,
+                "distractors": [wrong_u, "either works", "neither works"],
+                "question": q_frame,
+            }
 
     if task_type == "convert":
-        # VARIANTS_BY_DNA declares "convert" and the grade<2 guard above
-        # already gates it, but no branch ever built its params -- the
-        # DNA fell straight through to the read_measurement default at the
-        # bottom, which sets "length"/"unit", not the "value"/"from_unit"/
-        # "to_unit" keys _build_symbolic_question's convert stem reads, so
-        # every convert render literally said "Convert None None to None."
-        # (blind review of mat_g2_mg_q2_3 seed 604). m->cm is always exact
-        # (x100); cm->m only draws cm values that are already a multiple of
-        # 100, since K-3 hasn't met decimal lengths, so the answer stays a
-        # whole number of meters either direction.
         m_to_cm = rng.random() < 0.5
         lo, hi = 1, max(2, int(log_interpolate(1, 20, scalar)))
         if m_to_cm:
@@ -442,82 +475,95 @@ def generate_params(
         }
 
     if task_type == "estimate":
-        # "Estimate length using meters or centimeters" (mat_g2_mg_q2_2)
-        # also had no matching task_type -- same rounding-based estimation
-        # framing already used for mass_capacity.py's fix this session.
-        lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
-        # The label, not the enum. Every other branch resolves a real unit name for
-        # non-standard mode; this one printed `unit_mode` straight into the stem, so
-        # a Grade 1 sample read "An object measures 2 non_standard. About how many
-        # non_standard is that...". The curriculum gate above now keeps this task at
-        # Grade 2+, where unit_mode is always "cm" or "m", but the resolution stays
-        # so the enum cannot leak again if that gate ever moves.
-        # An estimate that rounds away the whole quantity is not an estimate: at
-        # length 2 rounding to the nearest 10 gives 0, which a blind reviewer flagged
-        # twice ("rounds 'An object measures 2 m' to the nearest 10, which collapses
-        # to zero and does not model a realistic estimation scenario"). The rounding
-        # unit is chosen from the magnitude instead, and the length floored, so the
-        # rounded answer is always a real quantity.
-        # "Estimate length using meters or centimeters, AND DISTANCE USING METERS"
-        # (mat_g2_mg_q2_2). Only the object-length half was ever rendered -- a blind
-        # reviewer found the distance clause had "zero items ... all 11 seeds are the
-        # single template". Half the items now estimate a distance, and the
-        # competency names metres for that case specifically, so the unit is fixed.
+        # "Estimate length using meters or centimeters, and distance using meters" (mat_g2_mg_q2_2)
         estimate_distance = grade >= 2 and rng.random() < 0.5
         if estimate_distance:
             unit_mode = "m"
-        elif grade >= 2 and requested_unit_type is None and rng.random() < 0.4:
-            # "Estimate length using METERS OR CENTIMETERS, and distance using
-            # meters" names three parts and the length half was always centimetres:
-            # pinning metres to distances left "estimate length using meters"
-            # with no item at all, which a blind reviewer scored as a coverage
-            # FAIL -- "every metre item is a gate-to-flagpole distance". Only when
-            # no unit is explicitly requested, so a pinned unit still wins.
-            unit_mode = "m"
-        # Resolved AFTER the distance override above, so the label follows the unit
-        # actually in play. Every other branch resolves a real name for non-standard
-        # mode; this one used to print the enum straight into the stem.
-        unit_label = rng.choice(_NON_STANDARD_UNITS) if unit_mode == "non_standard" else unit_mode
-        length = max(10, rng.randint(lo, hi))
-        round_unit = 50 if length >= 100 else (10 if length >= 20 else 5)
-        # A value already on the rounding boundary makes the estimate a no-op:
-        # "An object measures 10 m. About how many m is that, rounded to the nearest
-        # 5?" keys 10, and nothing was estimated. mass_capacity.py hit the same thing
-        # and solved it the same way -- shift the value one off the boundary so there
-        # is a real judgment to make.
-        if length % round_unit == 0:
-            length += 1
-        # A `max(round_unit, ...)` floor here was mathematically wrong:
-        # small values (e.g. 2 cm, rounding to the nearest 10) correctly
-        # round DOWN to 0, not up to the rounding unit itself. Found by a
-        # blind judgment review hand-verifying the rounding arithmetic
-        # (seeds where length=2 and length=3 both wrongly gave 10).
-        #
-        # Python's round() uses round-half-to-even, not the round-half-up
-        # convention elementary curricula teach (an exact-midpoint value
-        # like 5, rounding to the nearest 10, must round UP to 10 -- round()
-        # silently gives 0). The identical bug was caught in
-        # mass_capacity.py's copy of this logic by a blind review hand-
-        # verifying an exact-5 sample; fixed the same way here pre-emptively
-        # rather than waiting to hit it by chance.
-        import math
-        rounded = math.floor(length / round_unit + 0.5) * round_unit
-        return {
-            "blank_target": "answer",
-            "length": length,
-            "unit": unit_label,
-            "unit_type": unit_mode,
-            "task_type": "estimate",
-            "round_to": round_unit,
-            "answer": rounded,
-            "question": (
-                (f"The distance from the gate to the flagpole is {length} {unit_label}. "
-                 f"About how many {unit_label} is that, rounded to the nearest {round_unit}?")
-                if estimate_distance else
-                (f"An object measures {length} {unit_label}. "
-                 f"About how many {unit_label} is that, rounded to the nearest {round_unit}?")
-            ),
-        }
+            unit_label = "m"
+            pair = rng.choice([
+                "the gate to the flagpole", "the classroom to the canteen",
+                "the bench to the mango tree", "the front door to the school fence",
+                "the library to the garden"
+            ])
+            lo, hi = 10, max(20, int(log_interpolate(10, 60, scalar)))
+            length = rng.randint(lo, hi)
+            round_unit = 10 if length >= 20 else 5
+            if length % round_unit == 0:
+                length += 1
+            import math
+            rounded = math.floor(length / round_unit + 0.5) * round_unit
+            dists = [rounded + round_unit, max(round_unit, rounded - round_unit), rounded + 2 * round_unit]
+            dists = [d for d in dists if d != rounded][:3]
+            return {
+                "blank_target": "answer",
+                "length": length,
+                "unit": unit_label,
+                "unit_type": unit_mode,
+                "task_type": "estimate",
+                "round_to": round_unit,
+                "answer": rounded,
+                "distractors": dists,
+                "question": f"The distance from {pair} is {length} m. About how many meters is that, rounded to the nearest {round_unit} m?",
+            }
+        else:
+            use_cm = (requested_unit_type == "cm") or (requested_unit_type is None and rng.random() < 0.6)
+            unit_mode = "cm" if use_cm else "m"
+            unit_label = unit_mode
+            if use_cm:
+                obj_spec = rng.choice([
+                    ("a piece of ribbon", 15, 30),
+                    ("a notebook", 18, 26),
+                    ("a wooden ruler", 15, 30),
+                    ("a pencil case", 16, 22),
+                    ("a storybook", 20, 28)
+                ])
+                obj, o_lo, o_hi = obj_spec
+                length = rng.randint(o_lo, o_hi)
+                round_unit = 10 if length >= 20 else 5
+                if length % round_unit == 0:
+                    length += 1
+                import math
+                rounded = math.floor(length / round_unit + 0.5) * round_unit
+                dists = [rounded + round_unit, max(round_unit, rounded - round_unit), rounded + 2 * round_unit]
+                dists = [d for d in dists if d != rounded][:3]
+                return {
+                    "blank_target": "answer",
+                    "length": length,
+                    "unit": unit_label,
+                    "unit_type": unit_mode,
+                    "task_type": "estimate",
+                    "round_to": round_unit,
+                    "answer": rounded,
+                    "distractors": dists,
+                    "question": f"{obj[0].upper()}{obj[1:]} measures {length} cm. About how many centimeters is that, rounded to the nearest {round_unit} cm?",
+                }
+            else:
+                obj_spec = rng.choice([
+                    ("a garden hose", 10, 25),
+                    ("a school fence", 15, 35),
+                    ("a garden path", 8, 22),
+                    ("a classroom hallway", 12, 30)
+                ])
+                obj, o_lo, o_hi = obj_spec
+                length = rng.randint(o_lo, o_hi)
+                round_unit = 10 if length >= 20 else 5
+                if length % round_unit == 0:
+                    length += 1
+                import math
+                rounded = math.floor(length / round_unit + 0.5) * round_unit
+                dists = [rounded + round_unit, max(round_unit, rounded - round_unit), rounded + 2 * round_unit]
+                dists = [d for d in dists if d != rounded][:3]
+                return {
+                    "blank_target": "answer",
+                    "length": length,
+                    "unit": unit_label,
+                    "unit_type": unit_mode,
+                    "task_type": "estimate",
+                    "round_to": round_unit,
+                    "answer": rounded,
+                    "distractors": dists,
+                    "question": f"{obj[0].upper()}{obj[1:]} measures {length} m. About how many meters is that, rounded to the nearest {round_unit} m?",
+                }
 
     if task_type == "distance_between":
         # "the distance between two objects" (mat_g1_mg_q2_0's second named sub-task)
@@ -720,6 +766,9 @@ def generate_params(
 
     if task_type != "convert":
         lo, hi = _standard_unit_bounds(bounds, unit_mode, scalar)
+        if unit_mode == "cm":
+            lo = max(5, lo)
+            hi = min(30, max(15, hi))
         length = rng.randint(lo, hi)
         result = {
             "blank_target": "answer",
@@ -729,72 +778,94 @@ def generate_params(
             "task_type": task_type,
             "answer": length,
         }
-        if profile.get("context") == "word_problem":
-            # Same fix as the non_standard branch above, applied to the
-            # G2 standard-units (cm/m) path -- "Solve problems involving
-            # length and distance" (mat_g2_mg_q2_3) is G2-only (standard
-            # units), so it never reached the non_standard branch's fix.
-            # Same self-answering defect as the non_standard branch above, and
-            # the same fix: two measured objects and a difference to compute.
-            obj_a, obj_b = rng.sample(sorted(_object_pool(unit_mode)), 2)
-            # Small classroom objects (pencil, book, notebook, ruler, crayon)
-            # are realistically 5-50cm; "a garden path" gets its own,
-            # higher floor (30cm) but no cap, since it plausibly reaches
-            # this unit's full difficulty-scaled ceiling (no cap/floor for
-            # the "m" unit at all). Applied per-object and via an
-            # INDEPENDENT second draw rather than deriving obj_b's length
-            # from obj_a's (a prior version drew "shorter = randint(1,
-            # length-1)", which ties obj_b's scale to obj_a's and breaks
-            # down whenever obj_a is the uncapped garden path) -- blind
-            # review round 2 found an oversized ruler this way, round 3 an
-            # undersized notebook, round 4 an undersized garden path
-            # ("6 cm long", shorter than a pencil).
-            def _plausible(v: int, obj: str) -> int:
-                # Per-object bands, not one shared clamp. The old rule floored every
-                # classroom object at 5 and capped it at 50, so "a crayon" rendered
-                # at 5, 8, 10, 21 and 49 cm across one sample set -- arithmetically
-                # fine, but it trains wrong size benchmarks, which a blind reviewer
-                # flagged as the one systematic defect left in this DNA. A pupil
-                # meeting a 49 cm crayon learns the wrong thing about crayons.
-                lo_b, hi_b = _object_pool(unit_mode).get(obj, (5, 50))
-                return min(max(v, lo_b), hi_b)
-
-            val_a = _plausible(length, obj_a)
-            val_b = _plausible(rng.randint(lo, hi), obj_b)
-            if val_a == val_b:
-                # Step within obj_b's own band, not below it. `max(1, val_b - 1)`
-                # walked straight past the floor -- a book at 17 cm and a ruler at
-                # 14 cm, both a centimetre under their band, purely because the two
-                # draws happened to tie.
-                b_lo, b_hi = _object_pool(unit_mode).get(obj_b, (5, 50))
-                val_b = val_b + 1 if val_b < b_hi else val_b - 1
-                val_b = min(max(val_b, b_lo), b_hi)
-            result["length"] = val_a
-            result["length_b"] = val_b
-            # "Solve problems involving length and distance" names both a
-            # difference sub-case ("how many cm longer") and an additive one
-            # implicitly (combining two measured lengths) -- 12/16 samples
-            # reusing the identical difference template was flagged as a
-            # variant_comprehensiveness FAIL (blind review, round 2/3).
-            # Alternate between the two framings instead of always asking
-            # for the difference.
-            if rng.random() < 0.5:
-                result["answer"] = val_a + val_b
-                result["question"] = (
-                    f"{obj_a[0].upper()}{obj_a[1:]} is {val_a} {unit_mode} long. "
-                    f"{obj_b[0].upper()}{obj_b[1:]} is {val_b} {unit_mode} long. "
-                    f"If they are placed end to end, what is their combined length in {unit_mode}?"
-                )
+        if profile.get("context") == "word_problem" or task_type == "solve_word_problem":
+            # "Solve problems involving length and distance" (mat_g2_mg_q2_3)
+            # Alternate across 4 modes: length_sum, length_diff, dist_sum, dist_diff
+            mode = rng.choice(["length_sum", "length_diff", "dist_sum", "dist_diff"])
+            if mode in ("dist_sum", "dist_diff"):
+                loc_a, loc_b, loc_c = rng.sample([
+                    "the classroom", "the library", "the canteen",
+                    "the playground", "the school gate", "the gym"
+                ], 3)
+                name = rng.choice(["Carlo", "Mia", "Ben", "Liza", "Dan", "Elena", "Renz"])
+                dist_a = rng.randint(10, 45)
+                dist_b = rng.randint(10, 45)
+                if mode == "dist_sum":
+                    loc_a, loc_b, loc_c = rng.sample([
+                        "the classroom", "the library", "the canteen",
+                        "the playground", "the school gate", "the gym"
+                    ], 3)
+                    ans = dist_a + dist_b
+                    q = (
+                        f"{name} walked {dist_a} m from {loc_a} to {loc_b}, and then walked {dist_b} m "
+                        f"from {loc_b} to {loc_c}. What is the total distance {name} walked in meters?"
+                    )
+                else:
+                    dest_a, dest_b = rng.sample([
+                        "the classroom", "the library", "the canteen",
+                        "the playground", "the gym", "the science lab", "the garden"
+                    ], 2)
+                    longer_val = max(dist_a, dist_b)
+                    shorter_val = min(dist_a, dist_b)
+                    if longer_val == shorter_val:
+                        longer_val += 5
+                    ans = longer_val - shorter_val
+                    q = (
+                        f"The distance from the school gate to {dest_a} is {longer_val} m. "
+                        f"The distance from the school gate to {dest_b} is {shorter_val} m. "
+                        f"How many meters farther is {dest_a} than {dest_b}?"
+                    )
+                dists = [ans + 5, max(1, ans - 5), ans + 10]
+                dists = [d for d in dists if d != ans][:3]
+                result.update({
+                    "blank_target": "answer",
+                    "length": ans,
+                    "unit": "m",
+                    "unit_type": "m",
+                    "task_type": "solve_word_problem",
+                    "answer": ans,
+                    "distractors": dists,
+                    "question": q,
+                })
             else:
-                longer_obj, longer_val, shorter_obj, shorter_val = (
-                    (obj_a, val_a, obj_b, val_b) if val_a > val_b else (obj_b, val_b, obj_a, val_a)
-                )
-                result["answer"] = longer_val - shorter_val
-                result["question"] = (
-                    f"{longer_obj[0].upper()}{longer_obj[1:]} is {longer_val} {unit_mode} long. "
-                    f"{shorter_obj[0].upper()}{shorter_obj[1:]} is {shorter_val} {unit_mode} long. "
-                    f"How many {unit_mode} longer is {longer_obj} than {shorter_obj}?"
-                )
+                obj_a, obj_b = rng.sample(sorted(_object_pool(unit_mode)), 2)
+                def _plausible(v: int, obj: str) -> int:
+                    lo_b, hi_b = _object_pool(unit_mode).get(obj, (5, 50))
+                    return min(max(v, lo_b), hi_b)
+
+                val_a = _plausible(length, obj_a)
+                val_b = _plausible(rng.randint(lo, hi), obj_b)
+                if val_a == val_b:
+                    b_lo, b_hi = _object_pool(unit_mode).get(obj_b, (5, 50))
+                    val_b = val_b + 1 if val_b < b_hi else val_b - 1
+                    val_b = min(max(val_b, b_lo), b_hi)
+                result["length"] = val_a
+                result["length_b"] = val_b
+                if mode == "length_sum":
+                    ans = val_a + val_b
+                    q = (
+                        f"{obj_a[0].upper()}{obj_a[1:]} is {val_a} {unit_mode} long. "
+                        f"{obj_b[0].upper()}{obj_b[1:]} is {val_b} {unit_mode} long. "
+                        f"If they are placed end to end, what is their combined length in {unit_mode}?"
+                    )
+                else:
+                    longer_obj, longer_val, shorter_obj, shorter_val = (
+                        (obj_a, val_a, obj_b, val_b) if val_a > val_b else (obj_b, val_b, obj_a, val_a)
+                    )
+                    ans = longer_val - shorter_val
+                    q = (
+                        f"{longer_obj[0].upper()}{longer_obj[1:]} is {longer_val} {unit_mode} long. "
+                        f"{shorter_obj[0].upper()}{shorter_obj[1:]} is {shorter_val} {unit_mode} long. "
+                        f"How many {unit_mode} longer is {longer_obj} than {shorter_obj}?"
+                    )
+                dists = [ans + 5, max(1, ans - 5), ans + 10]
+                dists = [d for d in dists if d != ans][:3]
+                result.update({
+                    "blank_target": "answer",
+                    "answer": ans,
+                    "distractors": dists,
+                    "question": q,
+                })
         return result
 
     # convert_between: give meters, ask for centimeters (or vice versa)

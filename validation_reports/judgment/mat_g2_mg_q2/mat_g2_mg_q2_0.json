@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_mg_q2_0",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the ruler routing fix, 2026-08-13",
-  "review_date": "2026-08-13",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q2-Harden v2 (mat_g2_mg_q2_0), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample questions successfully fulfill the requirements to measure and compare. Measuring is assessed via tool diagram reading (e.g. \"How long is the object? Give your answer in cm.\") while comparison is directly tested by providing two values and asking for the relative magnitude (e.g. \"Which length is shorter in cm?\")."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The samples thoroughly cover the entire competency scope. They include measuring objects in cm, comparing lengths of objects in cm (e.g., \"A pencil is 10 cm long. A ruler is 15 cm long. Which length is shorter in cm?\"), comparing lengths of objects in meters (e.g., \"A school fence is 10 m long. A garden path is 9 m long.\"), and comparing distances strictly in meters (e.g., \"The distance from the bench to the tree is 82 m. The distance from the gate to the tree is 37 m. Which distance is longer in meters?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The numerical values are well within the cognitive capacity of a Grade 2 student. The lengths and distances involve manageable 1-digit and 2-digit whole numbers up to 100 (such as 10 cm, 20 cm, 82 m, 37 m) which perfectly suit Grade 2 arithmetic expectations without overshadowing the measurement concepts."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "There is excellent variation across the required dimensions. The questions alternate between finding the 'longer' and 'shorter' length (e.g., \"Which distance is longer in meters?\" vs \"Which distance is shorter in meters?\"). Furthermore, the formatters are varied (mcq, read_mcq, cloze)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The items strictly adhere to the competency text without any overreach. Objects are measured in both cm and m, and distance is precisely restricted to meters as mandated by the phrasing \"distance in meters\" in the curriculum text."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The real-world objects and distances used in the scenarios have logical, realistic dimensions (e.g., \"A pencil is 10 cm long\", \"A spoon is 20 cm long\", \"The distance from the bench to the tree is 2 m\"). This ensures students can anchor their mathematical understanding in plausible physical realities."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -14,15 +40,13 @@
     501,
     502,
     600,
-    601,
-    602,
-    603
+    602
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "The distance from the bench to the tree is 2 m. The distance from the gate to the tree is 1 m. Which distance is longer?",
+      "question_text": "The distance from the bench to the tree is 2 m. The distance from the gate to the tree is 1 m. Which distance is longer in meters?",
       "correct_answer": 2,
       "options": [
         {
@@ -32,7 +56,7 @@
         },
         {
           "key": "B",
-          "value": 4,
+          "value": 3,
           "is_correct": false
         },
         {
@@ -42,7 +66,7 @@
         },
         {
           "key": "D",
-          "value": 3,
+          "value": 7,
           "is_correct": false
         }
       ]
@@ -55,22 +79,22 @@
       "options": [
         {
           "key": "A",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": true
-        },
-        {
-          "key": "C",
           "value": 20,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 5,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 6,
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": 0,
+          "value": 4,
           "is_correct": false
         }
       ]
@@ -78,27 +102,27 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Which is longer: 7 cm or 9 cm?",
-      "correct_answer": 9,
+      "question_text": "A pencil is 10 cm long. A ruler is 15 cm long. Which length is shorter in cm?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 10,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 7,
+          "value": 15,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 8,
+          "value": 11,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 9,
+          "value": 10,
           "is_correct": true
         }
       ]
@@ -106,27 +130,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Which is longer: 5 cm or 7 cm?",
-      "correct_answer": 7,
+      "question_text": "A notebook is 20 cm long. A pencil is 10 cm long. Which length is shorter in cm?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "B",
           "value": 5,
           "is_correct": false
         },
         {
+          "key": "B",
+          "value": 20,
+          "is_correct": false
+        },
+        {
           "key": "C",
-          "value": 7,
+          "value": 10,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 8,
+          "value": 15,
           "is_correct": false
         }
       ]
@@ -144,17 +168,17 @@
         },
         {
           "key": "B",
-          "value": 2,
+          "value": 6,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 7,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 1,
+          "value": 5,
           "is_correct": false
         }
       ]
@@ -162,31 +186,31 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "Which is longer: 8 cm or 5 cm?",
-      "correct_answer": 8,
+      "question_text": "A pencil is 10 cm long. A notebook is 20 cm long. Which length is longer in cm?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 5,
-          "text": "5",
+          "value": 10,
+          "text": "10",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 8,
-          "text": "8",
+          "value": 20,
+          "text": "20",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 7,
-          "text": "7",
+          "value": 15,
+          "text": "15",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 9,
-          "text": "9",
+          "value": 25,
+          "text": "25",
           "is_correct": false
         }
       ]
@@ -194,31 +218,31 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "Which is longer: 60 cm or 68 cm?",
-      "correct_answer": 68,
+      "question_text": "A spoon is 20 cm long. A pencil is 19 cm long. Which length is shorter in cm?",
+      "correct_answer": 19,
       "options": [
         {
           "key": "A",
-          "value": 68,
-          "text": "68",
+          "value": 19,
+          "text": "19",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 69,
-          "text": "69",
+          "value": 24,
+          "text": "24",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 60,
-          "text": "60",
+          "value": 20,
+          "text": "20",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 67,
-          "text": "67",
+          "value": 14,
+          "text": "14",
           "is_correct": false
         }
       ]
@@ -226,7 +250,7 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "The distance from the bench to the tree is 82 m. The distance from the gate to the tree is 37 m. Which distance is longer?",
+      "question_text": "The distance from the bench to the tree is 82 m. The distance from the gate to the tree is 37 m. Which distance is longer in meters?",
       "correct_answer": 82,
       "options": [
         {
@@ -236,12 +260,12 @@
         },
         {
           "key": "B",
-          "value": 81,
+          "value": 77,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 83,
+          "value": 87,
           "is_correct": false
         },
         {
@@ -254,27 +278,27 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "The distance from the bench to the tree is 65 m. The distance from the gate to the tree is 47 m. Which distance is longer?",
-      "correct_answer": 65,
+      "question_text": "The distance from the bench to the tree is 65 m. The distance from the gate to the tree is 47 m. Which distance is shorter in meters?",
+      "correct_answer": 47,
       "options": [
         {
           "key": "A",
-          "value": 47,
+          "value": 65,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 65,
+          "value": 47,
           "is_correct": true
         },
         {
           "key": "C",
-          "value": 64,
+          "value": 42,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 66,
+          "value": 52,
           "is_correct": false
         }
       ]
@@ -282,141 +306,58 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Which is longer: 5 cm or 6 cm?",
-      "correct_answer": 6,
+      "question_text": "A notebook is 20 cm long. A spoon is 12 cm long. Which length is longer in cm?",
+      "correct_answer": 20,
       "options": [
         {
           "key": "A",
-          "value": 5,
+          "value": 12,
           "is_correct": false
         },
         {
           "key": "B",
-          "value": 7,
+          "value": 25,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 6,
+          "value": 20,
           "is_correct": true
         },
         {
           "key": "D",
-          "value": 8,
+          "value": 15,
           "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "read_mcq",
-      "question_text": "A shoe is 20 cm long. A ruler is 15 cm long. How many cm longer is a shoe than a ruler?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "is_correct": true
         }
       ]
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Which is longer: 7 cm or 3 cm?",
-      "correct_answer": 7,
+      "question_text": "A school fence is 10 m long. A garden path is 9 m long. Which length is longer in m?",
+      "correct_answer": 10,
       "options": [
         {
           "key": "A",
-          "value": 7,
+          "value": 10,
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 6,
+          "value": 5,
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 3,
+          "value": 9,
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 8,
+          "value": 15,
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 603,
-      "formatter": "read_mcq",
-      "question_text": "How long is the object? Give your answer in m.",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": true
-        }
-      ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All three clauses are exercised and every sample is answerable on its own terms. The visual items are seeds 43 and 46, 'How long is the object? Give your answer in cm.', and seed 603, 'How long is the object? Give your answer in m.', all read_mcq ruler reads judged as diagram items. The remaining ten are text and carry their own quantities: seed 42, 'The distance from the bench to the tree is 2 m. The distance from the gate to the tree is 1 m. Which distance is longer?', and seed 601, 'A shoe is 20 cm long. A ruler is 15 cm long. How many cm longer is a shoe than a ruler?'. No item in this packet is a bare stem with no data."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Each named part is present and I found all of them separately. Measuring in centimetres: seeds 43 and 46. Measuring in metres: seed 603, 'How long is the object? Give your answer in m.'. Comparing lengths: seeds 44, 45, 50, 500, 600, 602 and the difference at seed 601. Distance in metres: seeds 42, 501 and 502, 'The distance from the bench to the tree is 65 m. The distance from the gate to the tree is 47 m. Which distance is longer?'. The measuring-tool clause is carried by the ruler reads, and both m and cm are genuinely used rather than one standing in for the other."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Nothing exceeds Grade 2 Quarter 2. The heaviest operation is the difference at seed 601, 'How many cm longer is a shoe than a ruler?', taken from 'A shoe is 20 cm long. A ruler is 15 cm long.', a within-ten subtraction with no regrouping. Everything else is an ordering judgement between two whole numbers, as at seed 501, 'The distance from the bench to the tree is 82 m. The distance from the gate to the tree is 37 m. Which distance is longer?'. Notably no item mixes m and cm in one stem, so no student is asked to convert between the two units, which would be past this node."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Three formatters appear (read_mcq, mcq, cloze) over five distinct stems: the centimetre ruler read at seeds 43 and 46, the metre ruler read at seed 603, the bare ordering item 'Which is longer: 7 cm or 9 cm?', the distance comparison at seeds 42, 501 and 502, and the difference at seed 601. Both units are represented, the magnitudes range from 'Which is longer: 7 cm or 3 cm?' up to 'Which is longer: 60 cm or 68 cm?', and no two samples in the packet render identically. The ordering stem does account for six of thirteen, but the surrounding spread is adequate."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The sentence says compare lengths of objects, and six of thirteen samples reduce that to comparing two bare numerals with no object and no tool anywhere in the stem: seed 44 'Which is longer: 7 cm or 9 cm?', seed 45 'Which is longer: 5 cm or 7 cm?', seed 50 'Which is longer: 8 cm or 5 cm?', seed 500 'Which is longer: 60 cm or 68 cm?', seed 600 'Which is longer: 5 cm or 6 cm?' and seed 602 'Which is longer: 7 cm or 3 cm?'. These are answered by whole-number order alone and would read the same with the unit deleted, so they exercise number comparison rather than length comparison. Only seed 601 compares the lengths of two named objects, 'A shoe is 20 cm long. A ruler is 15 cm long.'. The distance items at seeds 42, 501 and 502 are properly situated by contrast."
-    },
-    "scale_appropriateness": {
-      "verdict": "CONCERN",
-      "rationale": "Unit choice is right throughout — centimetres for 'A shoe is 20 cm long. A ruler is 15 cm long.', metres for bench-to-tree distances, and 'The distance from the bench to the tree is 82 m.' is an ordinary schoolyard span. The concern is at the bottom of the ruler reads: seed 43, 'How long is the object? Give your answer in cm.', is keyed to a length of one centimetre and seed 46 to two centimetres. An object one centimetre long is barely a tick mark on a ruler diagram and is not the sort of classroom object a Grade 2 measuring lesson uses, especially when the same node happily works with 'Which is longer: 60 cm or 68 cm?'. Seed 603 keys a three-metre object, which is fine for a metre-tape task."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

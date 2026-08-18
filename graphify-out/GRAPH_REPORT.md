@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-08-18)
 
 ## Corpus Check
-- 462 files · ~702,734 words
+- 462 files · ~701,521 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3374 nodes · 5379 edges · 261 communities (248 shown, 13 thin omitted)
+- 3374 nodes · 5379 edges · 260 communities (246 shown, 14 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 88 edges (avg confidence: 0.57)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `056b8128`
+- Built from commit: `21ad31a4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -199,7 +199,6 @@
 - [[_COMMUNITY__distractor_fallback.py|_distractor_fallback.py]]
 - [[_COMMUNITY_fmt_array_grid.py|fmt_array_grid.py]]
 - [[_COMMUNITY_Queries|Queries]]
-- [[_COMMUNITY__manifest.py|_manifest.py]]
 - [[_COMMUNITY_fmt_ordering.py|fmt_ordering.py]]
 - [[_COMMUNITY_2026-08-12 — Tick C cluster 1c two repeated-addition competencies bound identically|2026-08-12 — Tick C cluster 1c: two repeated-addition competencies bound identically]]
 - [[_COMMUNITY_PG Pipeline Test Infrastructure|PG Pipeline Test Infrastructure]]
@@ -288,7 +287,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (261 total, 13 thin omitted)
+## Communities (260 total, 14 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
@@ -303,8 +302,8 @@ Cohesion: 0.08
 Nodes (25): 20.0 Curriculum Descriptor ≠ Student Vocabulary, 20.10 Common Generator Pitfalls, 20.11 Debugging Visual Rendering Issues, 20.12 Introduction Slide ≠ Definitions Slide (CRITICAL), 20.13 Grade-Level Vocabulary Constraints, 20.14 Cross-Branch Terms and the Vocabulary System, 20.15 Every Competency Needs a Worked Example, 20.16 Interest Wrapping Must Be Consistent Within a Mini-Lesson (+17 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.14
-Nodes (17): Practice Generation — Compatibility & Registry Coverage Validation  Verifies tha, Integrity lint check asserting that along every prerequisite edge:     successor, Assert that the Lab router's bridge scalar is dynamically linked to the portal's, Unit test table for the registry bounds parser (`_parse_competency_bounds`)., Run all compatibility and coverage checks and print a summary.      Returns:, Validate every entry in the COMPATIBILITY table.      Checks:       1. Each DNA, Verify bidirectional coverage between the knowledge graph and NODE_TO_DNA,     a, validate_all() (+9 more)
+Cohesion: 0.12
+Nodes (18): Practice Generation — Validation Manifest  Central source of truth for the valid, Practice Generation — Compatibility & Registry Coverage Validation  Verifies tha, Integrity lint check asserting that along every prerequisite edge:     successor, Assert that the Lab router's bridge scalar is dynamically linked to the portal's, Unit test table for the registry bounds parser (`_parse_competency_bounds`)., Run all compatibility and coverage checks and print a summary.      Returns:, Validate every entry in the COMPATIBILITY table.      Checks:       1. Each DNA, Verify bidirectional coverage between the knowledge graph and NODE_TO_DNA,     a (+10 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.31
@@ -454,10 +453,6 @@ Nodes (21): BalanceScaleParams, BarChartParams, BaseVisualParams, CalendarParams
 Cohesion: 0.33
 Nodes (6): 5. Vocabulary & Cognitive Constraints, Enforcement Points, Grade Knowledge Ceiling, NOT_YET_KNOWN Enforcement, Rule 1: Incorporate — draw from prior vocabulary, Rule 2: Exclude — never use future vocabulary
 
-### Community 41 - "Community 41"
-Cohesion: 0.14
-Nodes (13): Translate a FormattedProblem to the legacy skeleton dict format.      This shim, to_legacy_dict(), PracticeOrchestrator, Bridge Layer separating the generation logic from the FastAPI routing/server lay, is_prompt_target_formatter(), The orchestrator must set problem.dna_name to the actually-chosen DNA., TestOrchestratorAnnotatesDnaName, _is_rendered_leak() (+5 more)
-
 ### Community 42 - "Community 42"
 Cohesion: 0.11
 Nodes (11): Exploring Commands, Initialization, Refresh Android Studio Local Environment, Refresh Antigravity Local Environment, Refresh Claude Code Local Environment, Refresh Gemini CLI Local Environment, Refresh Other Local Environment, Common Issues (+3 more)
@@ -604,7 +599,7 @@ Nodes (11): _build_traps(), _build_visual_params(), format_clock(), Random, fmt_
 
 ### Community 78 - "Community 78"
 Cohesion: 0.05
-Nodes (63): get_node(), Return the raw knowledge-graph node dict for node_id, or None.      Args:, find_node_id(), get_all_node_ids(), get_node_formatters(), get_node_info(), Practice Generation — Node Registry ======================================  Maps, # NOTE: `max_difference` was removed from this list on 2026-07-01. (+55 more)
+Nodes (62): get_node(), Return the raw knowledge-graph node dict for node_id, or None.      Args:, find_node_id(), get_all_node_ids(), get_node_info(), Practice Generation — Node Registry ======================================  Maps, # NOTE: `max_difference` was removed from this list on 2026-07-01., Return the full knowledge-graph node dict for a node.      Args:         node_id (+54 more)
 
 ### Community 79 - "Community 79"
 Cohesion: 0.27
@@ -699,16 +694,16 @@ Cohesion: 0.22
 Nodes (8): _evaluate_left_to_right(), generate_hints(), generate_params(), Any, DNA: Order of Operations (Number & Algebra)  G3 only — addition and subtraction, Generate an order-of-operations problem (G3 only, + and − left to right).      R, Return 2–4 step-by-step hints for an order-of-operations problem., Evaluate an expression left to right given operands and operator list.
 
 ### Community 102 - "Community 102"
-Cohesion: 0.15
-Nodes (17): get_node_competency_bounds(), _parse_competency_bounds(), Parse competency text to extract bounds for difficulty dimensions.      Returns, Get competency-specific bounds for a node's difficulty dimensions.          Retu, Exception, Gated, main(), Pairwise-collapse probe: which declared variant VALUES render identically to eac (+9 more)
+Cohesion: 0.14
+Nodes (17): Generate a single practice problem and return it as a dict.      This is the sin, run(), get_node_competency_bounds(), _parse_competency_bounds(), Parse competency text to extract bounds for difficulty dimensions.      Returns, Get competency-specific bounds for a node's difficulty dimensions.          Retu, matatag_lab_v2_generate(), Generate a practice problem using the new practice_gen pipeline. (+9 more)
 
 ### Community 103 - "Community 103"
 Cohesion: 0.13
 Nodes (15): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated, A false alarm of my own, corrected, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item (+7 more)
 
 ### Community 104 - "Community 104"
-Cohesion: 0.15
-Nodes (14): get_pipeline_status(), Any, Practice Generation — Pipeline Coordinator =====================================, Return a health-check dict for the pipeline.      Checks:       - Whether each o, Generate a single practice problem and return it as a dict.      This is the sin, Generate a batch of varied practice problems and return them as dicts.      Args, run(), run_batch() (+6 more)
+Cohesion: 0.08
+Nodes (31): get_formatters_for_dna(), is_variant_available_at(), Check if a variant is available at a specific grade/quarter per curriculum., Return all formatter names compatible with a given DNA concept.      Args:, get_pipeline_status(), Any, Practice Generation — Pipeline Coordinator =====================================, Return a health-check dict for the pipeline.      Checks:       - Whether each o (+23 more)
 
 ### Community 105 - "Community 105"
 Cohesion: 0.22
@@ -815,8 +810,8 @@ Cohesion: 0.29
 Nodes (7): 1. `google_sign_in` 7.2.0 API Changes, 2. Initialization & Web Hang/Crash Pitfalls, 3. Web Logout Crashes, 4. Prototyping Workaround: Bypassing Firestore Composite Indices, 5. Robust `AuthService` Boilerplate, 6. Troubleshooting `auth/unauthorized-domain` on Flutter Web, Firebase Auth & Google Sign-In for Flutter
 
 ### Community 131 - "Community 131"
-Cohesion: 0.08
-Nodes (52): apply_experience(), apply_formatter(), generate_batch(), generate_problem(), _get_dna_instance(), Any, Random, Practice Generation — API Adapter ===================================  Main entr (+44 more)
+Cohesion: 0.09
+Nodes (35): apply_experience(), apply_formatter(), generate_batch(), generate_problem(), _get_dna_instance(), Any, Random, Practice Generation — API Adapter ===================================  Main entr (+27 more)
 
 ### Community 132 - "Community 132"
 Cohesion: 0.29
@@ -956,7 +951,7 @@ Nodes (10): generate_hints(), generate_params(), num_to_words(), _pick_amounts()
 
 ### Community 186 - "get_node_competency_bounds"
 Cohesion: 0.07
-Nodes (36): get_supported_variants(), Return variants supported by a specific DNA + formatter combination.      Applie, get_matatag_lab_config(), Return full lab configuration for a MATATAG node.      Includes:     - difficult, _audit_node(), build_test_profiles(), _check_cap_vs_formatter_code(), check_checklist_compliance() (+28 more)
+Nodes (36): Translate a FormattedProblem to the legacy skeleton dict format.      This shim, to_legacy_dict(), _audit_node(), build_test_profiles(), _check_cap_vs_formatter_code(), check_checklist_compliance(), _check_variant_sensitivity(), _check_visual_capacity() (+28 more)
 
 ### Community 187 - "generator.py"
 Cohesion: 0.09
@@ -997,10 +992,6 @@ Nodes (6): 2026-08-12 — Centavo piles reachable (final tick before the loop wa
 ### Community 197 - "Queries"
 Cohesion: 0.33
 Nodes (6): Anti-template checks, Enforcement, PG Pipeline Judgment Guide, The six items, What the enforcer accepts, Who reviews, and how
-
-### Community 198 - "_manifest.py"
-Cohesion: 0.29
-Nodes (6): Practice Generation — Validation Manifest  Central source of truth for the valid, Practice Generation — Interest Invariance Validation  Verifies that interest-the, Verify that interest theme does not alter the correct answer.      For each of `, Run interest invariance checks for all requires_context=True formula DNAs., validate_all_interest_invariance(), validate_interest_invariance()
 
 ### Community 199 - "fmt_ordering.py"
 Cohesion: 0.33
@@ -1079,8 +1070,8 @@ Cohesion: 0.14
 Nodes (13): get_available_intro_nodes(), get_interest_themes(), Return all interest themes. Grade parameter is ignored (kept for API compatibili, Return list of nodes that have intro content available., Intro Content Generation Module  Generates introductory lesson content for MATAT, _combined_interests(), get_intro_content(), list_intro_interests() (+5 more)
 
 ### Community 225 - "get_all_node_ids"
-Cohesion: 0.24
-Nodes (10): _contains_forbidden_term(), get_grade_appropriate_interests(), get_interest_slots(), pick_interest(), Random, Practice Generation — Interest Bank =====================================  Loads, Build a single-problem slot dict for the given interest theme.      Randomly sel, Choose the best available interest ID for a student.      Selection logic (in pr (+2 more)
+Cohesion: 0.11
+Nodes (27): _build_symbolic_question(), _detect_axes_served(), _eval_error_formula(), generate_context(), _import_dna_module(), Any, Practice Generation — Context Generator ========================================, Generate a format-agnostic QuestionContext from a DNA + node.      Steps: (+19 more)
 
 ### Community 226 - "socratic_chat_exchange"
 Cohesion: 0.15
@@ -1221,16 +1212,16 @@ Nodes (8): generate_hints(), generate_params(), Any, Random, DNA: Counting (Numb
 ## Knowledge Gaps
 - **1046 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+1041 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `FormattedProblem` connect `Community 94` to `Community 1`, `generate_params`, `Community 131`, `Community 4`, `Community 8`, `Community 138`, `Community 13`, `Community 18`, `Community 153`, `Community 25`, `Community 41`, `Community 50`, `Community 51`, `Spine`, `Community 59`, `Community 60`, `get_gemini_models`, `Community 70`, `Community 77`, `Community 79`, `_get_available_formats`, `Community 92`, `Community 93`, `Community 95`, `Community 100`, `CompetencyConfiguration`, `fmt_pictograph.py`?**
+- **Why does `FormattedProblem` connect `Community 94` to `Community 1`, `generate_params`, `Community 131`, `Community 4`, `Community 8`, `Community 138`, `Community 13`, `Community 18`, `Community 153`, `Community 25`, `Community 50`, `Community 51`, `Spine`, `get_node_competency_bounds`, `Community 59`, `Community 60`, `get_gemini_models`, `Community 70`, `Community 77`, `Community 79`, `_get_available_formats`, `Community 92`, `Community 93`, `Community 95`, `Community 100`, `CompetencyConfiguration`, `fmt_pictograph.py`, `Community 104`?**
   _High betweenness centrality (0.030) - this node is a cross-community bridge._
-- **Why does `QuestionContext` connect `Community 50` to `generate_params`, `Community 131`, `Community 4`, `Community 138`, `Community 13`, `Community 18`, `Community 153`, `Community 51`, `Spine`, `Community 59`, `Community 60`, `get_gemini_models`, `Community 70`, `Community 77`, `Community 78`, `Community 79`, `_get_available_formats`, `Community 92`, `Community 93`, `Community 94`, `Community 95`, `Community 100`, `CompetencyConfiguration`, `fmt_pictograph.py`?**
+- **Why does `QuestionContext` connect `Community 50` to `generate_params`, `Community 131`, `Community 4`, `Community 138`, `Community 13`, `Community 18`, `Community 153`, `Community 51`, `Spine`, `Community 59`, `Community 60`, `get_gemini_models`, `Community 70`, `Community 77`, `Community 78`, `Community 79`, `_get_available_formats`, `Community 92`, `Community 93`, `Community 94`, `Community 95`, `get_all_node_ids`, `Community 100`, `CompetencyConfiguration`, `fmt_pictograph.py`?**
   _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **Why does `DNA` connect `generate_params` to `counting.py`, `fmt_fill_in_table.py`, `Community 131`, `Community 101`, `_manifest.py`, `TestLogScaleDeclarations`, `Community 11`, `Community 78`, `_combined_interests`, `counting.py`, `test_semantic_leak_guards.py`, `Community 118`, `validate_interest.py`, `Community 24`, `Native SQL Examples`, `generator.py`, `Community 94`, `fractions.py`?**
+- **Why does `DNA` connect `generate_params` to `counting.py`, `fmt_fill_in_table.py`, `get_all_node_ids`, `Community 3`, `Community 101`, `TestLogScaleDeclarations`, `Community 11`, `Community 78`, `_combined_interests`, `counting.py`, `test_semantic_leak_guards.py`, `Community 118`, `validate_interest.py`, `Community 24`, `Native SQL Examples`, `generator.py`, `Community 94`, `fractions.py`?**
   _High betweenness centrality (0.024) - this node is a cross-community bridge._
 - **What connects `graphify`, `PackageDescription`, `Foundation` to the rest of the system?**
   _1684 weakly-connected nodes found - possible documentation gaps or missing edges._
@@ -1239,4 +1230,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `Community 3` be split into smaller, more focused modules?**
-  _Cohesion score 0.14035087719298245 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.12380952380952381 - nodes in this community are weakly interconnected._

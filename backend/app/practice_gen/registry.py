@@ -793,38 +793,25 @@ def _parse_competency_bounds(
     elif dna_name == "length_measurement":
         if "appropriate unit" in text or "identify and use" in text:
             bounds["task_type"] = "choose_unit"
+            bounds["context"] = "pure"
         elif "estimate" in text:
             bounds["task_type"] = "estimate"
+            bounds["context"] = "pure"
         elif "equal length" in text:
-            # "Identify ... line segments of EQUAL length" (mat_g3_mg_q1_6)
-            # was bound to "compare", whose own generation loop explicitly
-            # FORCES its two values apart (while val_b == val_a: redraw) --
-            # structurally incapable of ever presenting an equal pair, the
-            # entire point of this competency. Bind the dedicated task_type.
             bounds["task_type"] = "equal_length"
+            bounds["context"] = "pure"
         elif "distance between two objects" in text:
-            # "Measure the length of an object AND the distance between two
-            # objects" (mat_g1_mg_q2_0) names two distinct sub-tasks; without
-            # this, task_type always defaulted to read_measurement and
-            # "distance between two objects" was never once exercised.
-            # length_or_distance is a generate_params-level sentinel that
-            # alternates between the two per seed rather than picking one.
             bounds["task_type"] = "length_or_distance"
-        # "Measure and compare lengths of objects, in meters (m) or centimeters
-        # (cm), and distance in meters" (mat_g2_mg_q2_0) was left UNBOUND, so the
-        # DNA's read_measurement default governed and the node rendered the single
-        # stem "Measure the object. Its length is ___ cm." on every seed -- neither
-        # comparing anything nor ever mentioning distance, though its own sentence
-        # names all three. An earlier fix in this file deferred it explicitly
-        # ("out of scope for this fix"); it is in scope now. Sentinel, resolved per
-        # seed in the DNA, because the competency names three sub-tasks and binding
-        # any one of them would drop the other two.
+            bounds["context"] = "pure"
         elif "measure and compare lengths" in text:
             bounds["task_type"] = "measure_compare_or_distance"
+            bounds["context"] = "pure"
         elif "compare lengths and distances" in text:
             bounds["task_type"] = "compare_length_or_distance"
+            bounds["context"] = "pure"
         elif "solve problems" in text:
             bounds["task_type"] = "solve_problems_non_standard" if grade < 2 else "solve_word_problem"
+            bounds["context"] = "word_problem"
 
     # Pictographs: bind task_type per node -- the DNA's own default
     # (task_type="read_value") silently governed every unbound node, and
