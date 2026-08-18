@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g3_na_q3_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B7b (g3 na_q2 + na_q3_0-3), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q3-Harden (mat_g3_na_q3_0), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items directly fulfill the competency requirement of multiplying numbers using the 6, 7, 8, and 9 multiplication tables. Multiple items assess direct computation and fact recall across all target tables, including \"What is 5 \u00d7 6?\" for 6s, \"4 \u00d7 7 = ___\" for 7s, \"4 \u00d7 8 = ___\" for 8s, and \"8 \u00d7 9 = 72. True or False?\" for 8s and 9s."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set comprehensively covers all four specified multiplication tables (6, 7, 8, and 9) across diverse representations and factor combinations. For table 6, items include \"What is 3 \u00d7 6?\", \"What is 4 \u00d7 6?\", and \"7 \u00d7 6 = ___\". For table 7, items include \"What is 4 \u00d7 7?\", \"2 \u00d7 7 = 14. True or False?\", and \"Ana solved: \"3 \u00d7 7 = ___\". Ana says the missing number is 14. Is Ana correct?\". For table 8, items include \"What is 3 \u00d7 8?\" and \"Shade all the squares inside the 9\u00d78 rectangle. How many squares did you shade in all?\". For table 9, items include \"Look at the 2\u00d79 array. How many squares are shaded in all?\" and \"What is 4 \u00d7 9?\"."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The cognitive demand, sentence complexity, and vocabulary are well-calibrated for Grade 3 Quarter 3 students. Word problems and prompts such as \"Pia puts 7 water bowls in each of 2 bags. How many water bowls are in all the bags?\" and \"Shade all the squares inside the 4\u00d76 rectangle. How many squares did you shade in all?\" utilize clear, accessible phrasing without unnecessary working memory overhead."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample demonstrates excellent variant diversity, including standard multiple choice (\"What is 5 \u00d7 6?\"), fill-in-the-blank equations (\"7 \u00d7 6 = ___\"), visual array interpretation (\"Look at the 7\u00d76 array. How many squares are shaded in all?\"), interactive grid shading (\"Shade all the squares inside the 4\u00d76 rectangle. How many squares did you shade in all?\"), true/false validation (\"8 \u00d7 9 = 72. True or False?\"), error analysis (Ana solved: \"3 \u00d7 7 = ___\". Ana says the missing number is 14. Is Ana correct?), and contextual word problems (\"Pia puts 7 water bowls in each of 2 bags. How many water bowls are in all the bags?\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All items strictly adhere to single-digit multiplication within the 6, 7, 8, and 9 fact families. There is no scope creep into multi-digit multiplication algorithms, division, or higher-grade concepts. Items such as \"4 \u00d7 8 = ___\" and \"What is 4 \u00d7 9?\" align precisely with the MATATAG learning competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical values and multipliers (factors 2 through 9 with products from 14 up to 72) are fully appropriate for Grade 3 multiplication tables. Examples range from smaller products like \"2 \u00d7 7 = 14. True or False?\" (product 14) and \"What is 3 \u00d7 6?\" (product 18) up to upper-table products like \"8 \u00d7 9 = 72. True or False?\" (product 72) and \"Shade all the squares inside the 9\u00d78 rectangle. How many squares did you shade in all?\"."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -19,189 +46,50 @@
     600,
     601,
     602,
-    603
+    603,
+    605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 5 × 6?",
-      "correct_answer": 30,
-      "options": [
-        {
-          "key": "A",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 29,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 30,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 24,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 5 \u00d7 6?",
+      "correct_answer": 30
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 3 × 6?",
-      "correct_answer": 18,
-      "options": [
-        {
-          "key": "A",
-          "value": 18,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 17,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 9,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 3 \u00d7 6?",
+      "correct_answer": 18
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "4 × 8 = ___",
-      "correct_answer": 32,
-      "options": [
-        {
-          "key": "A",
-          "value": 24,
-          "text": "24",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "text": "12",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 31,
-          "text": "31",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 32,
-          "text": "32",
-          "is_correct": true
-        }
-      ]
+      "question_text": "4 \u00d7 8 = ___",
+      "correct_answer": 32
     },
     {
       "seed": 45,
       "formatter": "cloze",
-      "question_text": "4 × 7 = ___",
-      "correct_answer": 28,
-      "options": [
-        {
-          "key": "A",
-          "value": 27,
-          "text": "27",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 11,
-          "text": "11",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 28,
-          "text": "28",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 21,
-          "text": "21",
-          "is_correct": false
-        }
-      ]
+      "question_text": "4 \u00d7 7 = ___",
+      "correct_answer": 28
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is 4 × 6?",
-      "correct_answer": 24,
-      "options": [
-        {
-          "key": "A",
-          "value": 23,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 24,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 4 \u00d7 6?",
+      "correct_answer": 24
     },
     {
       "seed": 50,
       "formatter": "read_mcq",
-      "question_text": "Look at the 2×9 array. How many squares are shaded in all?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 18,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 22,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 21,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 16,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Look at the 2\u00d79 array. How many squares are shaded in all?",
+      "correct_answer": "A"
     },
     {
       "seed": 51,
       "formatter": "error_detect",
-      "question_text": "Ana says: 3 × 7 = 14. Is Ana correct?",
+      "question_text": "Ana solved: \"3 \u00d7 7 = ___\". Ana says the missing number is 14. Is Ana correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 21
@@ -210,201 +98,62 @@
     {
       "seed": 55,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 4×6 rectangle. How many squares did you shade in all?",
+      "question_text": "Shade all the squares inside the 4\u00d76 rectangle. How many squares did you shade in all?",
       "correct_answer": 24
     },
     {
       "seed": 85,
       "formatter": "true_false",
-      "question_text": "2 × 7 = 14. True or False?",
+      "question_text": "2 \u00d7 7 = 14. True or False?",
       "correct_answer": true
     },
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 9×8 rectangle. How many squares did you shade in all?",
+      "question_text": "Shade all the squares inside the 9\u00d78 rectangle. How many squares did you shade in all?",
       "correct_answer": 72
     },
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "8 × 9 = 72. True or False?",
+      "question_text": "8 \u00d7 9 = 72. True or False?",
       "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 4 × 9?",
-      "correct_answer": 36,
-      "options": [
-        {
-          "key": "A",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 36,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 35,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 27,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 4 \u00d7 9?",
+      "correct_answer": 36
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 4 × 7?",
-      "correct_answer": 28,
-      "options": [
-        {
-          "key": "A",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 21,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 28,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 27,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 4 \u00d7 7?",
+      "correct_answer": 28
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Pia puts 7 leashes in each of 2 bags. How many leashes are in all the bags?",
-      "correct_answer": 14,
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 13,
-          "text": "13",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 14,
-          "text": "14",
-          "is_correct": true
-        }
-      ]
+      "question_text": "Pia puts 7 water bowls in each of 2 bags. How many water bowls are in all the bags?",
+      "correct_answer": 14
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "What is 3 × 8?",
-      "correct_answer": 24,
-      "options": [
-        {
-          "key": "A",
-          "value": 24,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 23,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 16,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 3 \u00d7 8?",
+      "correct_answer": 24
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "7 × 6 = ___",
-      "correct_answer": 42,
-      "options": [
-        {
-          "key": "A",
-          "value": 36,
-          "text": "36",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 42,
-          "text": "42",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 13,
-          "text": "13",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        }
-      ]
+      "question_text": "7 \u00d7 6 = ___",
+      "correct_answer": 42
+    },
+    {
+      "seed": 605,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 7\u00d76 array. How many squares are shaded in all?",
+      "correct_answer": "C"
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every fact involves at least one factor from the named tables, e.g. seed42's \"What is 5 × 6?\" and seed602's \"What is 3 × 8?\", directly matching the competency's named tables."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All four named tables appear as a factor across the set: 6 (seed42, seed43), 7 (seed45, seed85, seed600), 8 (seed44, seed602), and 9 (seed50, seed502), so no named table is missing."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Facts stay at single-digit-by-single-digit multiplication with array/shading visual supports, e.g. seed55's \"Shade all the squares inside the 4×6 rectangle. How many squares did you shade in all?\", matching Grade 3 fact-fluency expectations."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Formatters span mcq, cloze, read_mcq array-counting, set_fill_in_blank shading, true_false, error_detect, and a bagging word problem, seed601's \"Pia puts 7 leashes in each of 2 bags. How many leashes are in all the bags?\", giving broad practice modes."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Distractors reflect common fact-recall errors; seed51's \"Ana says: 3 × 7 = 14. Is Ana correct?\" flags a doubling mistake rather than an unrelated skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Products stay within standard single-digit table bounds, with the largest observed being seed500's 9×8=72, appropriate for rote multiplication-table practice."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g3_na_q3_3",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B7b (g3 na_q2 + na_q3_0-3), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q3-Harden (mat_g3_na_q3_3), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every sample directly exercises the core requirement of estimating products using multiples of 10. For instance, in \"Estimate the product: 120 \u00d7 14\", the student rounds 14 to 10 to obtain 120 \u00d7 10 = 1200. In \"Estimate the product: 32 \u00d7 15\", factors round to 30 \u00d7 20 = 600. Cloze formats like \"Estimate: 20 \u00d7 14 \u2248 ___\" and error verification items like \"Grace solved: \"150 \u00d7 13 \u2248 ___\". Grace says the missing number is 1500. Is Grace correct?\" directly target the required skill."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample packet thoroughly covers the range of factor combinations specified in the competency. It includes 2-digit by 2-digit multiplication cases such as \"Estimate the product: 10 \u00d7 32\", \"Estimate the product: 48 \u00d7 30\", and \"Rico solved: \"67 \u00d7 76 \u2248 ___\". Rico says the missing number is 5600. Is Rico correct?\", as well as 3-digit by 2-digit scenarios such as \"Estimate the product: 120 \u00d7 14\", \"Estimate: 930 \u00d7 13 \u2248 ___\", \"Estimate the product: 853 \u00d7 12\", and \"Estimate the product: 100 \u00d7 14\"."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The difficulty and structural complexity are well-calibrated for Grade 3 Quarter 3 learners. Items like \"Estimate: 20 \u00d7 14 \u2248 ___\" and \"Estimate the product: 11 \u00d7 45\" require straightforward rounding to the nearest ten and multiplying by tens, which is fully aligned with Grade 3 cognitive development and avoids unneeded procedural or reading overload."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The items utilize a diverse array of assessment formatters, including standard multiple choice (\"Estimate the product: 120 \u00d7 14\"), cloze fill-ins (\"Estimate: 20 \u00d7 14 \u2248 ___\"), truth-value verification (\"19 \u00d7 30 \u2248 592. True or False?\"), and error detection/critique (Liza solved: \"21 \u00d7 30 \u2248 ___\". Liza says the missing number is 600. Is Liza correct?)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The problems strictly align with the MATATAG learning competency without introducing any out-of-scope operations or higher-grade concepts. Every item, such as \"Estimate the product: 853 \u00d7 12\" and \"Estimate: 10 \u00d7 45 \u2248 ___\", centers on estimating factor products using multiples of 10 without exceeding the specified digit limits."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical magnitudes across all samples strictly obey the bounds of 2- to 3-digit numbers multiplied by 1- to 2-digit numbers. Examples range from 2-digit combinations in \"Estimate the product: 40 \u00d7 30\" and \"Estimate: 20 \u00d7 35 \u2248 ___\" to 3-digit by 2-digit combinations in \"Estimate the product: 853 \u00d7 12\" and \"Estimate: 930 \u00d7 13 \u2248 ___\"."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -25,166 +52,52 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Estimate the product: 120 × 14",
-      "correct_answer": 1200,
-      "options": [
-        {
-          "key": "A",
-          "value": 130,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 1190,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1200,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 110,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Estimate the product: 120 \u00d7 14",
+      "correct_answer": 1200
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Estimate the product: 10 × 32",
-      "correct_answer": 300,
-      "options": [
-        {
-          "key": "A",
-          "value": 300,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 270,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 299,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 40,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Estimate the product: 10 \u00d7 32",
+      "correct_answer": 300
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "Estimate: 20 × 14 ≈ ___",
-      "correct_answer": 200,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 30,
-          "text": "30",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 190,
-          "text": "190",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 200,
-          "text": "200",
-          "is_correct": true
-        }
-      ]
+      "question_text": "Estimate: 20 \u00d7 14 \u2248 ___",
+      "correct_answer": 200
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Estimate the product: 32 × 15",
-      "correct_answer": 600,
-      "options": [
-        {
-          "key": "A",
-          "value": 580,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 50,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 600,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Estimate the product: 32 \u00d7 15",
+      "correct_answer": 600
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Estimate the product: 11 × 45",
-      "correct_answer": 500,
-      "options": [
-        {
-          "key": "A",
-          "value": 499,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 500,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 450,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 60,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Estimate the product: 11 \u00d7 45",
+      "correct_answer": 500
     },
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "19 × 30 ≈ 570. True or False?",
+      "question_text": "19 \u00d7 30 \u2248 592. True or False?",
       "correct_answer": false
     },
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace says: 150 × 13 ≈ 140. Is Grace correct?",
+      "question_text": "Grace solved: \"150 \u00d7 13 \u2248 ___\". Grace says the missing number is 1500. Is Grace correct?",
       "correct_answer": {
-        "has_error": true,
+        "has_error": false,
         "correct_value": 1500
       }
     },
     {
       "seed": 500,
       "formatter": "error_detect",
-      "question_text": "Rico says: 67 × 76 ≈ 5600. Is Rico correct?",
+      "question_text": "Rico solved: \"67 \u00d7 76 \u2248 ___\". Rico says the missing number is 5600. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 5600
@@ -193,246 +106,53 @@
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "Estimate: 930 × 13 ≈ ___",
-      "correct_answer": 9300,
-      "options": [
-        {
-          "key": "A",
-          "value": 9300,
-          "text": "9300",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 9290,
-          "text": "9290",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 920,
-          "text": "920",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 940,
-          "text": "940",
-          "is_correct": false
-        }
-      ]
+      "question_text": "Estimate: 930 \u00d7 13 \u2248 ___",
+      "correct_answer": 9300
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Estimate the product: 853 × 12",
-      "correct_answer": 8500,
-      "options": [
-        {
-          "key": "A",
-          "value": 860,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8500,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 8490,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 840,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Estimate the product: 853 \u00d7 12",
+      "correct_answer": 8500
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Estimate the product: 48 × 30",
-      "correct_answer": 1500,
-      "options": [
-        {
-          "key": "A",
-          "value": 80,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1500,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 1470,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Estimate the product: 48 \u00d7 30",
+      "correct_answer": 1500
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Estimate: 20 × 35 ≈ ___",
-      "correct_answer": 800,
-      "options": [
-        {
-          "key": "A",
-          "value": 760,
-          "text": "760",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 60,
-          "text": "60",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 799,
-          "text": "799",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 800,
-          "text": "800",
-          "is_correct": true
-        }
-      ]
+      "question_text": "Estimate: 20 \u00d7 35 \u2248 ___",
+      "correct_answer": 800
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Estimate the product: 100 × 14",
-      "correct_answer": 1000,
-      "options": [
-        {
-          "key": "A",
-          "value": 1000,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 990,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 110,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 90,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Estimate the product: 100 \u00d7 14",
+      "correct_answer": 1000
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "Estimate: 10 × 45 ≈ ___",
-      "correct_answer": 500,
-      "options": [
-        {
-          "key": "A",
-          "value": 499,
-          "text": "499",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 500,
-          "text": "500",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 60,
-          "text": "60",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 450,
-          "text": "450",
-          "is_correct": false
-        }
-      ]
+      "question_text": "Estimate: 10 \u00d7 45 \u2248 ___",
+      "correct_answer": 500
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Estimate the product: 40 × 30",
-      "correct_answer": 1200,
-      "options": [
-        {
-          "key": "A",
-          "value": 1200,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 70,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1170,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Estimate the product: 40 \u00d7 30",
+      "correct_answer": 1200
     },
     {
       "seed": 605,
       "formatter": "error_detect",
-      "question_text": "Liza says: 21 × 30 ≈ 600. Is Liza correct?",
+      "question_text": "Liza solved: \"21 \u00d7 30 \u2248 ___\". Liza says the missing number is 600. Is Liza correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 600
       }
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every sample rounds each factor to the nearest ten before multiplying, exactly matching \"estimating the factors using multiples of 10\", e.g. seed46's \"Estimate the product: 11 × 45\" rounds to 10 × 50 = 500."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both named factor-size ranges appear: 2- to 3-digit values, e.g. seed42's 120 and seed502's 853, and 1- to 2-digit multipliers, e.g. seed42's 14 and seed500's 76, covering the stated ranges."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The ≈ estimate framing and single rounding-then-multiplying step, e.g. seed601's \"Estimate: 20 × 35 ≈ ___\", match Grade 3 expectations without requiring exact multi-digit multiplication."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Formatters include mcq, cloze, true_false, and error_detect, e.g. seed55's \"Grace says: 150 × 13 ≈ 140. Is Grace correct?\", giving multiple practice modes for the same rounding strategy."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Distractors are built from the rounding process, e.g. seed502 offers 8490 as a near-miss to the correctly rounded 8500, keeping difficulty tied to estimation rather than an unrelated skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Both 2-digit and 3-digit multiplicands appear, e.g. seed500's 67 and seed501's 930, spanning the \"2- to 3-digit\" range the competency names."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

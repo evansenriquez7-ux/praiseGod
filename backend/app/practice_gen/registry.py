@@ -427,13 +427,6 @@ def _parse_competency_bounds(
         if "problems" in text or "word problem" in text:
             bounds["context"] = "word_problem"
 
-        if "equal groups" in text:
-            bounds["task_type"] = "equal_groups"
-        elif "equal jumps" in text or "counting by multiples" in text or "multiples" in text:
-            bounds["task_type"] = ["repeated_addition", "skip_counting", "number_line_jumps"]
-        elif "repeated addition" in text:
-            bounds["task_type"] = "repeated_addition"
-
         # "Estimate the product of 2- to 3-digit numbers by 1- to 2-digit
         # numbers by estimating the factors using multiples of 10"
         # (mat_g3_na_q3_3) -- round both factors to the nearest 10, then
@@ -442,7 +435,7 @@ def _parse_competency_bounds(
         # generate_params). The co-mapped `rounding` DNA rounds ONE
         # number, not two factors of a product, so it cannot express this
         # competency regardless of which node maps to it.
-        elif "estimate" in text:
+        if "estimate" in text:
             bounds["task_type"] = "estimate"
             # Ground-truth correction (Ground Rule 5): this competency has
             # no explicit "products up to X" phrase, so without this it
@@ -473,6 +466,12 @@ def _parse_competency_bounds(
             # multiplication node's own ceiling (10 000) so a genuine
             # 3-digit-by-2-digit pair (e.g. rounded 300 x 30 = 9000) fits.
             bounds["max_product"] = (100, 10000)
+        elif "equal groups" in text:
+            bounds["task_type"] = "equal_groups"
+        elif "equal jumps" in text or "counting by multiples" in text:
+            bounds["task_type"] = ["repeated_addition", "skip_counting", "number_line_jumps"]
+        elif "repeated addition" in text:
+            bounds["task_type"] = "repeated_addition"
 
         # Every other multiplication competency (table facts, word
         # problems, illustrate-as-repeated-addition, multi-digit

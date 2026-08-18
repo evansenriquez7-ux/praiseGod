@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g3_na_q3_5",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B8 (g3 na_q2 re-review + na_q3_4-6 + na_q4), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q3-Harden (mat_g3_na_q3_5), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "All reviewed samples directly assess the ability to determine missing terms in sequences featuring combined repeating and increasing or repeating and decreasing components. For instance, seed 42 ('What number is missing in the pattern: 24, 24, 34, ___, 44?') tests a sequence with repeated elements incrementing across periods, while seed 44 ('What number is missing in the pattern: 44, ___, 41, 34, 35, 31, 24, 25?') tests a decreasing tens component with repeating unit transitions. Seed 55 ('What is the missing term (position 5) in the pattern?') directly tests indexed component patterns matching the competency exemplar."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set comprehensively covers both repeating-increasing patterns (e.g., seed 42: 'What number is missing in the pattern: 24, 24, 34, ___, 44?', seed 43: 'What number is missing in the pattern: 33, 38, 83, ___, 133?', and seed 502: 'What number is missing in the pattern: 43, 47, 41, 63, 67, ___, 83, 87?') and repeating-decreasing patterns (e.g., seed 45: 'What number is missing in the pattern: 212, ___, 216, 112, 115, 116, 12, 15?' and seed 50: 'What number is missing in the pattern: 114, 118, 116, 64, 68, ___, 14, 18?'). It also covers missing values in various positions (middle of period, end of period, different cycle indices) as well as positional queries like seed 500 ('What is the missing term (position 8) in the pattern?')."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The cognitive load is well-calibrated for Grade 3 Quarter 3 students. Sequence lengths range from 5 to 9 terms, allowing students to clearly identify the period cycle without cognitive overload. Arithmetic transformations are manageable single-digit or clean round decade/century steps (+5, +10, +20, +50, -50, -100), as demonstrated in seed 46 ('What number is missing in the pattern: 224, 229, 124, ___, 24?') and seed 501 ('What number is missing in the pattern: 136, 136, ___, 86, 86, 89, 36, 36?'), focusing student effort on structural pattern discernment rather than heavy calculation."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The packet exercises diverse presentation formats including standard multiple choice (mcq, e.g., seed 43: 'What number is missing in the pattern: 33, 38, 83, ___, 133?'), cloze fill-in (cloze, e.g., seed 50: 'What number is missing in the pattern: 114, 118, 116, 64, 68, ___, 14, 18?'), and positional term identification (read_mcq, e.g., seed 55: 'What is the missing term (position 5) in the pattern?'). Period lengths vary naturally between 2-element and 3-element cycles."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every item strictly aligns with MATATAG learning competency mat_g3_na_q3_5. Patterns feature clearly discernible composite rules (repeating and increasing/decreasing) without introducing extraneous concepts or unannounced rule changes. For example, seed 45 ('What number is missing in the pattern: 212, ___, 216, 112, 115, 116, 12, 15?') and seed 502 ('What number is missing in the pattern: 43, 47, 41, 63, 67, ___, 83, 87?') cleanly exhibit dual-level periodic structure."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numerical values throughout the sample set span from 12 up to 229, which is well within the MATATAG Grade 3 number domain (up to 10,000) and kept small enough for rapid mental pattern checking. In seed 43 ('What number is missing in the pattern: 33, 38, 83, ___, 133?') and seed 46 ('What number is missing in the pattern: 224, 229, 124, ___, 24?'), the numbers and increments remain entirely accessible."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -20,316 +47,61 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "What number is missing in the pattern: 24, 24, 34, ___, 44?",
-      "correct_answer": 34,
-      "options": [
-        {
-          "key": "A",
-          "value": 24,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 54,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 34,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 44,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 34
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What number is missing in the pattern: 33, 38, 83, ___, 133?",
-      "correct_answer": 88,
-      "options": [
-        {
-          "key": "A",
-          "value": 88,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 138,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 183,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 38,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 88
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "What number is missing in the pattern: 44, ___, 41, 34, 35, 31, 24, 25?",
-      "correct_answer": 45,
-      "options": [
-        {
-          "key": "A",
-          "value": 35,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 55,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 34,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 45,
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 45
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What number is missing in the pattern: 212, ___, 216, 112, 115, 116, 12, 15?",
-      "correct_answer": 215,
-      "options": [
-        {
-          "key": "A",
-          "value": 112,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 315,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 215,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 115,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 215
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "What number is missing in the pattern: 224, 229, 124, ___, 24?",
-      "correct_answer": 129,
-      "options": [
-        {
-          "key": "A",
-          "value": 130,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 129,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 29,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 229,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 129
     },
     {
       "seed": 50,
       "formatter": "cloze",
       "question_text": "What number is missing in the pattern: 114, 118, 116, 64, 68, ___, 14, 18?",
-      "correct_answer": 66,
-      "options": [
-        {
-          "key": "A",
-          "value": 116,
-          "text": "116",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 66,
-          "text": "66",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 67,
-          "text": "67",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 16,
-          "text": "16",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 66
     },
     {
       "seed": 55,
       "formatter": "read_mcq",
-      "question_text": "What is the missing piece (position 5) in the pattern?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 22,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 25,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 45,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is the missing term (position 5) in the pattern?",
+      "correct_answer": "C"
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "What is the missing piece (position 8) in the pattern?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 34,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 37,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 134,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 35,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is the missing term (position 8) in the pattern?",
+      "correct_answer": "A"
     },
     {
       "seed": 501,
       "formatter": "cloze",
       "question_text": "What number is missing in the pattern: 136, 136, ___, 86, 86, 89, 36, 36?",
-      "correct_answer": 139,
-      "options": [
-        {
-          "key": "A",
-          "value": 139,
-          "text": "139",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 36,
-          "text": "36",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 89,
-          "text": "89",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 189,
-          "text": "189",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 139
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "What number is missing in the pattern: 43, 47, 41, 63, 67, ___, 83, 87?",
-      "correct_answer": 61,
-      "options": [
-        {
-          "key": "A",
-          "value": 41,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 61,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 143,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 81,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 61
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "seed 43's '33, 38, 83, ___, 133' and similar items hand the student a sequence with one term hidden, which is literally 'Determine the missing term/s in a pattern'."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Rising sequences (seed 43 climbs by 50 between pairs) sit alongside falling ones (seed 44's '44, ___, 41, 34, 35, 31, 24, 25' drops by 10 between triples), so both directions named in the competency are represented."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Repeating groups of two or three terms with a constant shift between them, as in seed 46's shift of -100, are within reach for Grade 3 Quarter 3 pattern reasoning."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "read_mcq items (seed 55, seed 500) reference a numbered visual position rather than a written-out sequence, giving a pictorial variant alongside the symbolic mcq and cloze items."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The size of the group and the size of the shift between groups scale together as items get harder, which is the structural lever this competency is actually built on."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Nothing in the sequences exceeds the low 200s (seed 45's 216 is the largest value), a sensible range for Grade 3 pattern work with no stated numeric ceiling."
-    }
-  },
-  "overall": "PASS"
+  ]
 }
