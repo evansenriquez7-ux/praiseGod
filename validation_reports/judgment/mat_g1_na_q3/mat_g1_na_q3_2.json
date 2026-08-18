@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g1_na_q3_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q3_2), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The competency requires writing equivalent expressions for given addition or subtraction expressions (e.g., 2+3 = 1+4; 10-5 = 6-1). The sample items fulfill this directly by presenting an expression on one side of an equality sign and requiring the student to complete or verify an equivalent expression on the other side. For addition, items such as 'What number completes the expression: 3 + 2 = 1 + ___?' (Seed 42) and '2 + 2 = 3 + ___' (Seed 72) test equivalence with sums within 10. For subtraction, items like 'What number completes the expression: 8 \u2212 5 = 18 \u2212 ___?' (Seed 43) and '15 \u2212 4 = 17 \u2212 ___' (Seed 501) test equivalence between subtraction expressions yielding equal differences. All evaluated items squarely target the stated competency."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set provides balanced coverage across both arithmetic operations specified in the competency text (addition and subtraction) and spans multiple difficulty levels appropriate for Grade 1. Addition expressions are represented across smaller facts (e.g., '1 + 7 = 5 + ___', Seed 601) and teen sums (e.g., 'What number completes the expression: 3 + 12 = 8 + ___?', Seed 44; 'What number completes the expression: 6 + 8 = 10 + ___?', Seed 602). Subtraction expressions cover single-digit minuends and teen minuends up to 20 (e.g., 'What number completes the expression: 6 \u2212 2 = 14 \u2212 ___?', Seed 46; '15 \u2212 8 = 8 \u2212 ___', Seed 603; 'What number completes the expression: 18 \u2212 8 = 15 \u2212 ___?', Seed 45). Coverage of both operations and numeric sub-ranges is comprehensive."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The problems are appropriately calibrated for Grade 1 Quarter 3 students. The sentence structures are simple and direct ('What number completes the expression: 2 + 2 = 3 + ___?'), and cloze representations ('1 + 7 = 5 + ___') eliminate reading overhead entirely. The working memory demand requires evaluating a two-term expression (e.g., 18 \u2212 8 = 10) and determining the missing component for an equivalent two-term expression (13 \u2212 3 = 10 as in 'What number completes the expression: 18 \u2212 8 = 13 \u2212 ___?'), which directly matches the cognitive development expected for this grade and quarter."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The review packet incorporates three distinct question formatters: multiple choice (e.g., 'What number completes the expression: 19 \u2212 1 = 20 \u2212 ___?', Seed 502), cloze fill-in-the-blank (e.g., '15 \u2212 4 = 17 \u2212 ___', Seed 501), and true/false verification (e.g., 'In 19 \u2212 2 = 18 \u2212 ___, the missing number is 36. True or False?', Seed 50; 'In 16 \u2212 9 = 15 \u2212 ___, the missing number is 16. True or False?', Seed 605). This variety evaluates procedural generation, equivalence recognition, and error identification thoroughly across different prompt structures."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All sampled items align strictly with the target competency 'Write an equivalent expression to a given addition or subtraction expression'. No out-of-scope concepts (such as multiplication, division, negative integers, or algebraic variables) are introduced. The mathematical relationships directly mirror the curriculum standard's illustrative examples (e.g., 'What number completes the expression: 3 + 2 = 1 + ___?' closely mirrors '2+3 = 1+4', and 'What number completes the expression: 18 \u2212 8 = 15 \u2212 ___?' mirrors '10-5 = 6-1')."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Number ranges are strictly bounded within numbers up to 20, perfectly fitting Grade 1 Quarter 3 MATATAG standards. Operands and results remain within familiar bounds (e.g., in 'In 19 \u2212 3 = 20 \u2212 ___, the missing number is 19. True or False?' the expressions equal 16; in 'What number completes the expression: 6 + 8 = 10 + ___?' the sums equal 14; in '2 + 2 = 3 + ___' the sum is 4). All missing values and intermediate values are single or small double-digit whole numbers within 20."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -18,434 +45,105 @@
     601,
     602,
     603,
-    605,
-    606
+    604,
+    605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Complete the equivalent expression: 8 − 5 = 18 − ___",
-      "correct_answer": 15,
-      "options": [
-        {
-          "key": "A",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 15,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number completes the expression: 3 + 2 = 1 + ___?",
+      "correct_answer": 4
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Complete the equivalent expression: 8 − 5 = 18 − ___",
-      "correct_answer": 15,
-      "options": [
-        {
-          "key": "A",
-          "value": 15,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 16,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 11,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number completes the expression: 8 \u2212 5 = 18 \u2212 ___?",
+      "correct_answer": 15
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Complete the equivalent expression: 3 + 12 = 8 + ___",
-      "correct_answer": 7,
-      "options": [
-        {
-          "key": "A",
-          "value": 27,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": true
-        }
-      ]
+      "question_text": "What number completes the expression: 3 + 12 = 8 + ___?",
+      "correct_answer": 7
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Complete the equivalent expression: 18 − 8 = 15 − ___",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 28,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 18,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number completes the expression: 18 \u2212 8 = 15 \u2212 ___?",
+      "correct_answer": 5
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Complete the equivalent expression: 6 − 2 = 14 − ___",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number completes the expression: 6 \u2212 2 = 14 \u2212 ___?",
+      "correct_answer": 10
     },
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "Complete the equivalent expression: 19 − 2 = 18 − ___ The answer is 36. True or False?",
+      "question_text": "In 19 \u2212 2 = 18 \u2212 ___, the missing number is 36. True or False?",
       "correct_answer": false
     },
     {
       "seed": 72,
       "formatter": "cloze",
-      "question_text": "Complete the equivalent expression: 2 + 2 = 3 + ___",
-      "correct_answer": 1,
-      "options": [
-        {
-          "key": "A",
-          "value": 1,
-          "text": "1",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 0,
-          "text": "0",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        }
-      ]
+      "question_text": "2 + 2 = 3 + ___",
+      "correct_answer": 1
     },
     {
       "seed": 500,
       "formatter": "true_false",
-      "question_text": "Complete the equivalent expression: 19 − 3 = 20 − ___ The answer is 19. True or False?",
+      "question_text": "In 19 \u2212 3 = 20 \u2212 ___, the missing number is 19. True or False?",
       "correct_answer": false
     },
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "Complete the equivalent expression: 15 − 4 = 17 − ___",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "text": "6",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 15,
-          "text": "15",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 26,
-          "text": "26",
-          "is_correct": false
-        }
-      ]
+      "question_text": "15 \u2212 4 = 17 \u2212 ___",
+      "correct_answer": 6
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Complete the equivalent expression: 19 − 1 = 20 − ___",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 37,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 19,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number completes the expression: 19 \u2212 1 = 20 \u2212 ___?",
+      "correct_answer": 2
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Complete the equivalent expression: 18 − 8 = 13 − ___",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 28,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number completes the expression: 18 \u2212 8 = 13 \u2212 ___?",
+      "correct_answer": 3
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Complete the equivalent expression: 1 + 7 = 5 + ___",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 15,
-          "text": "15",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        }
-      ]
+      "question_text": "1 + 7 = 5 + ___",
+      "correct_answer": 3
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Complete the equivalent expression: 6 + 8 = 10 + ___",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 22,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number completes the expression: 6 + 8 = 10 + ___?",
+      "correct_answer": 4
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "Complete the equivalent expression: 15 − 8 = 8 − ___",
-      "correct_answer": 1,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "text": "1",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 22,
-          "text": "22",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 15,
-          "text": "15",
-          "is_correct": false
-        }
-      ]
+      "question_text": "15 \u2212 8 = 8 \u2212 ___",
+      "correct_answer": 1
+    },
+    {
+      "seed": 604,
+      "formatter": "mcq",
+      "question_text": "What number completes the expression: 2 + 2 = 3 + ___?",
+      "correct_answer": 1
     },
     {
       "seed": 605,
       "formatter": "true_false",
-      "question_text": "Complete the equivalent expression: 16 − 9 = 15 − ___ The answer is 16. True or False?",
+      "question_text": "In 16 \u2212 9 = 15 \u2212 ___, the missing number is 16. True or False?",
       "correct_answer": false
-    },
-    {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "Complete the equivalent expression: 17 − 14 = 15 − ___",
-      "correct_answer": 12,
-      "options": [
-        {
-          "key": "A",
-          "value": 12,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 17,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "is_correct": false
-        }
-      ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every stem asks the student to complete a same-operation equivalence, e.g. '8 − 5 = 18 − ___', mirroring the competency's own worked examples ('2+3 = 1+4; 10-5 = 6-1') closely."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both addition equivalences ('3 + 12 = 8 + ___') and subtraction equivalences ('18 − 8 = 15 − ___') are generated, so neither operation named in the competency's examples is missing."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Each item only asks for one missing term to balance a known equality, a reasonable single-step task for this grade and quarter."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "mcq, cloze, and true_false ('The answer is 36. True or False?') formatters test the same equivalence skill from recognition and production angles."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Distractors reuse numbers already in the sentence (e.g. offering 8 as a wrong answer to an equivalence with an 8 already present) rather than testing a different concept, keeping the difficulty inside equivalence itself."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All values sampled sit at or under 20, consistent with the numbers-to-20 scope shared with the sibling subtraction competencies this quarter."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

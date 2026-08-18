@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g1_na_q3_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q3_1), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "All 16 sample items directly require students to find the missing number in either addition or subtraction number sentences within 20. For example, addition sentences appear with unknown addends like \"What number goes in the blank: ___ + 11 = 20?\" and unknown sums like \"What number goes in the blank: 19 + 1 = ___?\". Subtraction sentences similarly assess unknown subtrahends like \"20 \u2212 ___ = 12\", unknown minuends like \"___ \u2212 13 = 7\", and unknown differences like \"What number goes in the blank: 7 \u2212 5 = ___?\". The core competency requirement is completely fulfilled."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set provides exhaustive coverage of missing number positions across both addition and subtraction. It covers missing initial addends (\"What number goes in the blank: ___ + 8 = 20?\"), missing second addends (\"15 + ___ = 16\"), missing sums (\"5 + 15 = ___. What is the missing number?\"), missing minuends (\"What number goes in the blank: ___ \u2212 3 = 17?\"), missing subtrahends (\"What number goes in the blank: 15 \u2212 ___ = 1?\"), and missing differences (\"20 \u2212 15 = ___\"). The numerical values span from single-digit subtraction facts up to sums and minuends of 20."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The cognitive load is tailored perfectly to Grade 1 Quarter 3 learners. Questions use concise, predictable phrasing such as \"What number goes in the blank: ___ + 11 = 20?\" or direct symbolic statements such as \"20 \u2212 ___ = 12\". Conceptual prompts using balanced sides (\"Both sides balance evenly. 10 + ? = 20. What is the missing value?\") use simple phrasing that reinforces the concept of equivalence without overwhelming reading demands."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample set demonstrates excellent format diversity across multiple item types. It incorporates multiple-choice questions (\"What number goes in the blank: 20 \u2212 10 = ___?\"), cloze / fill-in-the-blank equations (\"___ \u2212 13 = 7\"), relational balance representations (\"Both sides balance evenly. 13 + ? = 20. What is the missing value?\"), and verification / true-false tasks (\"In 13 \u2212 ___ = 3, the missing number is 13. True or False?\" and \"In 17 \u2212 1 = ___, the missing number is 15. True or False?\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every generated question aligns strictly with the MATATAG learning competency without extraneous complexity or out-of-scope concepts. No multi-step operations, numbers above 20, or negative integers are introduced. Each task centers strictly on single-operation missing number problems such as \"What number goes in the blank: ___ \u2212 3 = 17?\" and \"15 + ___ = 16\"."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All numerical values, addends, sums, minuends, subtrahends, and differences are well within the specified bound of numbers up to 20. For instance, the maximum sum reached is 20 in \"What number goes in the blank: ___ + 11 = 20?\" and \"5 + 15 = ___. What is the missing number?\", and the largest minuend is 20 in \"20 \u2212 ___ = 12\" and \"___ \u2212 13 = 7\", with non-negative differences throughout."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -25,449 +52,98 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "7 − 5 = ___. What is the unknown number?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number goes in the blank: ___ + 11 = 20?",
+      "correct_answer": 9
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "7 − 5 = ___. What is the unknown number?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 9,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number goes in the blank: 7 \u2212 5 = ___?",
+      "correct_answer": 2
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "20 − ___ = 12. What is the unknown number?",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "text": "20",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 32,
-          "text": "32",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "text": "8",
-          "is_correct": true
-        }
-      ]
+      "question_text": "20 \u2212 ___ = 12",
+      "correct_answer": 8
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "15 − ___ = 1. What is the unknown number?",
-      "correct_answer": 14,
-      "options": [
-        {
-          "key": "A",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 14,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 15,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number goes in the blank: 15 \u2212 ___ = 1?",
+      "correct_answer": 14
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "19 + 1 = ___. What is the unknown number?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 19,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 21,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 39,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number goes in the blank: 19 + 1 = ___?",
+      "correct_answer": 20
     },
     {
       "seed": 50,
       "formatter": "true_false",
-      "question_text": "13 − ___ = 3. What is the unknown number? The answer is 13. True or False?",
+      "question_text": "In 13 \u2212 ___ = 3, the missing number is 13. True or False?",
       "correct_answer": false
     },
     {
       "seed": 55,
       "formatter": "read_mcq",
       "question_text": "Both sides balance evenly. 10 + ? = 20. What is the missing value?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "C"
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "Both sides balance evenly. 13 + ? = 20. What is the missing value?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "A"
     },
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "___ − 13 = 7. What is the unknown number?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "text": "20",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 19,
-          "text": "19",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 21,
-          "text": "21",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 27,
-          "text": "27",
-          "is_correct": false
-        }
-      ]
+      "question_text": "___ \u2212 13 = 7",
+      "correct_answer": 20
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "___ + 8 = 20. What is the unknown number?",
-      "correct_answer": 12,
-      "options": [
-        {
-          "key": "A",
-          "value": 32,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 28,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number goes in the blank: ___ + 8 = 20?",
+      "correct_answer": 12
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "20 − 10 = ___. What is the unknown number?",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 11,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number goes in the blank: 20 \u2212 10 = ___?",
+      "correct_answer": 10
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "15 + ___ = 16. What is the unknown number?",
-      "correct_answer": 1,
-      "options": [
-        {
-          "key": "A",
-          "value": 17,
-          "text": "17",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 31,
-          "text": "31",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "text": "1",
-          "is_correct": true
-        }
-      ]
+      "question_text": "15 + ___ = 16",
+      "correct_answer": 1
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "___ − 3 = 17. What is the unknown number?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 19,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 37,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 21,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number goes in the blank: ___ \u2212 3 = 17?",
+      "correct_answer": 20
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "20 − 15 = ___. What is the unknown number?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "text": "5",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 25,
-          "text": "25",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "text": "20",
-          "is_correct": false
-        }
-      ]
+      "question_text": "20 \u2212 15 = ___",
+      "correct_answer": 5
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "5 + 15 = ___. What is the unknown number?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 35,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 25,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 21,
-          "is_correct": false
-        }
-      ]
+      "question_text": "5 + 15 = ___. What is the missing number?",
+      "correct_answer": 20
     },
     {
       "seed": 605,
       "formatter": "true_false",
-      "question_text": "17 − 1 = ___. What is the unknown number? The answer is 15. True or False?",
+      "question_text": "In 17 \u2212 1 = ___, the missing number is 15. True or False?",
       "correct_answer": false
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Missing values appear in every legal slot of a number sentence — as the difference ('7 − 5 = ___'), the subtrahend ('20 − ___ = 12'), and the minuend ('___ − 13 = 7') — which is exactly what 'Find the missing number in addition or subtraction sentences' asks for."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both operations are represented with the unknown in each position, including an addition sentence with the missing addend at the front ('___ + 8 = 20'), so the sub-cases the wording implies are not limited to subtraction alone."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Every number sentence stays within 20 and asks for a single unknown, matching the reasoning a Grade 1 Quarter 3 student is expected to manage."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "A balance-scale read_mcq ('Both sides balance evenly. 10 + ? = 20.') sits alongside standard cloze and true_false phrasing, giving a visual model in addition to the symbolic one."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Harder items change which position holds the blank rather than introducing an unrelated skill, so the missing-number concept itself is what gets harder."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Every sentence sampled stays at or under 20, matching 'numbers up to 20' without exception in this set."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

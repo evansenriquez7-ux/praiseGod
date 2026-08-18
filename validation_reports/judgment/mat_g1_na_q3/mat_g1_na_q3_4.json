@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g1_na_q3_4",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition & subtraction hardening), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q3_4), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items directly fulfill the competency requirement of subtracting numbers less than 100 without regrouping, covering both 2-digit minus 1-digit numbers (e.g. seed 502: \"There are 69 candies. Taking away 7 candies leaves how many candies?\") and 2-digit minus 2-digit numbers (e.g. seed 42: \"Start at 12. Count back 11. What number do you land on?\", seed 44: \"There are 90 stars. Taking away 20 stars leaves ___ stars.\", seed 45: \"There are 66 erasers. Taking away 30 erasers leaves how many erasers?\", seed 501: \"There are 91 candies. Taking away 71 candies leaves ___ candies.\", and seed 604: \"Start at 35. Count back 15. What number do you land on?\"). Both concrete take-away scenarios and pictorial/number-line counting-back models are actively used."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set comprehensively covers the required cases including 2-digit minus 1-digit subtraction (seed 502), subtracting multiples of 10 (seed 43: \"Start at 45. Count back 10. What number do you land on?\", seed 44, seed 45, seed 603: \"Start at 48. Count back 30. You land on ___\"), arbitrary 2-digit subtraction without regrouping (seed 42: 12 - 11, seed 501: 91 - 71, seed 604: 35 - 15), and subtracting equal quantities down to zero (seed 600: \"There are 50 erasers. Taking away 50 erasers leaves how many erasers?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "All items are well suited to Grade 1 Quarter 3 learners. Question stems are succinct and readable (e.g. seed 85: \"Start at 20. Count back 10. You land on 10. True or False?\", seed 601: \"Start at 13. Count back 10. You land on 3. True or False?\"). Contexts utilize age-appropriate objects (stars, candies, frogs, drinks, erasers) without excessive reading complexity or multi-step operations."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The generator demonstrates wide variant diversity across formatters, including standard multiple-choice ('mcq' in seeds 42, 43, 45, 46, 502, 600, 602, 604), fill-in-the-blank ('cloze' in seeds 44, 501, 603), error detection (seed 50: \"There are 43 candies. Taking away 30 candies leaves ___ candies.\"), visual/reading comprehension ('read_mcq' in seed 55: \"Taking away 10 frogs.\", seed 500, and seed 605: \"The dot is at 70 and it moves backward 40 numbers. Starting from 70, just count back 40 numbers. Which number will the dot land on?\"), and true/false ('true_false' in seeds 85, 601)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every subtraction problem in the packet strictly avoids regrouping (e.g., in seed 502 69 - 7 leaves 2 in the ones place with 9 - 7; in seed 501 91 - 71 leaves 0 in the ones place with 1 - 1; in seed 45 66 - 30 leaves 6 in the ones place with 6 - 0). All numbers used are strictly less than 100, adhering exactly to MATATAG specifications for Grade 1 Quarter 3."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical values span the appropriate range for this competency (< 100), testing two-digit numbers across multiple decades (12, 13, 20, 33, 35, 43, 45, 48, 50, 63, 66, 69, 70, 81, 90, 91) and subtrahends varying from single digits (7) to tens (10, 20, 30, 40, 50, 60, 80) and two-digit numbers (11, 15, 71)."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -27,150 +54,36 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "Start at 12. Count back 11. What number do you land on?",
-      "correct_answer": 1,
-      "options": [
-        {
-          "key": "A",
-          "value": 23,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 0,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Start at 45. Count back 10. What number do you land on?",
-      "correct_answer": 35,
-      "options": [
-        {
-          "key": "A",
-          "value": 35,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 34,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 36,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 55,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 35
     },
     {
       "seed": 44,
       "formatter": "cloze",
       "question_text": "There are 90 stars. Taking away 20 stars leaves ___ stars.",
-      "correct_answer": 70,
-      "options": [
-        {
-          "key": "A",
-          "value": 69,
-          "text": "69",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 110,
-          "text": "110",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 71,
-          "text": "71",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 70,
-          "text": "70",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 70
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "There are 66 erasers. Taking away 30 erasers leaves how many erasers?",
-      "correct_answer": 36,
-      "options": [
-        {
-          "key": "A",
-          "value": 37,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 96,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 36,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 35,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 36
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Start at 63. Count back 60. What number do you land on?",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 123,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "seed": 50,
       "formatter": "error_detect",
-      "question_text": "Jose says: There are 43 candies. Taking away 30 candies leaves 13 candies.. Is Jose correct?",
+      "question_text": "Jose solved: \"There are 43 candies. Taking away 30 candies leaves ___ candies.\". Jose says the missing number is 13. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 13
@@ -179,30 +92,8 @@
     {
       "seed": 55,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 35 frogs) — There are 35 frogs.\nTaking away 10 frogs.\nHow many frogs are left?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 35,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 26,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 25,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 24,
-          "is_correct": false
-        }
-      ]
+      "question_text": "(Large group of 35 frogs) \u2014 There are 35 frogs.\nTaking away 10 frogs.\nHow many frogs are left?",
+      "correct_answer": "C"
     },
     {
       "seed": 85,
@@ -213,114 +104,26 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 81 drinks) — There are 81 drinks.\nTaking away 80 drinks.\nHow many drinks are left?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 161,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 81,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 0,
-          "is_correct": false
-        }
-      ]
+      "question_text": "(Large group of 81 drinks) \u2014 There are 81 drinks.\nTaking away 80 drinks.\nHow many drinks are left?",
+      "correct_answer": "C"
     },
     {
       "seed": 501,
       "formatter": "cloze",
       "question_text": "There are 91 candies. Taking away 71 candies leaves ___ candies.",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 21,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 19,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 162,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 20
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "There are 69 candies. Taking away 7 candies leaves how many candies?",
-      "correct_answer": 62,
-      "options": [
-        {
-          "key": "A",
-          "value": 76,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 62,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 63,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 61,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 62
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "There are 50 erasers. Taking away 50 erasers leaves how many erasers?",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 100,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 0,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "seed": 601,
@@ -332,144 +135,25 @@
       "seed": 602,
       "formatter": "mcq",
       "question_text": "There are 33 candies. Taking away 10 candies leaves how many candies?",
-      "correct_answer": 23,
-      "options": [
-        {
-          "key": "A",
-          "value": 23,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 24,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 43,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 22,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 23
     },
     {
       "seed": 603,
       "formatter": "cloze",
       "question_text": "Start at 48. Count back 30. You land on ___",
-      "correct_answer": 18,
-      "options": [
-        {
-          "key": "A",
-          "value": 19,
-          "text": "19",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 18,
-          "text": "18",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 78,
-          "text": "78",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "text": "17",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 18
     },
     {
       "seed": 604,
       "formatter": "mcq",
       "question_text": "Start at 35. Count back 15. What number do you land on?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 19,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 50,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 21,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 20
     },
     {
       "seed": 605,
       "formatter": "read_mcq",
       "question_text": "The dot is at 70 and it moves backward 40 numbers. Starting from 70, just count back 40 numbers. Which number will the dot land on?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 30,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 110,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 29,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 31,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "A"
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample \"There are 69 candies. Taking away 7 candies leaves how many candies?\" successfully tests subtraction of \"2-digit minus 1-digit numbers\" and the sample \"There are 90 stars. Taking away 20 stars leaves ___ stars.\" successfully tests subtraction of \"2-digit minus 2-digit numbers\" while staying \"without regrouping\" as demanded by the competency."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The packet provides comprehensive coverage of the competency's mandate for \"2-digit minus 1-digit numbers, and 2-digit minus 2-digit numbers.\" by generating items like \"Taking away 7 candies\" and \"Taking away 10 frogs.\". It satisfies the requirement for \"concrete and pictorial models\" through contextual text cues like \"(Large group of 35 frogs) — There are 35 frogs.\" and references to a number line with \"Start at 12. Count back 11.\"."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The packet correctly limits the scope to \"less than 100\" as specified in the competency text. Using scenarios with highly familiar Grade 1 objects like \"stars\", \"erasers\", and \"candies\" along with clear instructions like \"Start at 12. Count back 11.\" perfectly aligns with the cognitive capacity of Grade 1 students."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The packet provides excellent variant comprehensiveness across formats. It includes true/false items like \"Start at 20. Count back 10. You land on 10. True or False?\", error detection via \"Jose says: There are 43 candies. Taking away 30 candies leaves 13 candies.. Is Jose correct?\", standard word problems such as \"Taking away 30 erasers leaves how many erasers?\", and cloze questions such as \"leaves ___ stars.\"."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The generated items perfectly align with the constraint to construct problems \"without regrouping\". In all samples, such as \"Start at 35. Count back 15.\" and \"Taking away 71 candies\", the subtrahend digits in each place value never exceed the corresponding minuend digits, completely avoiding the need for regrouping."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numbers generated in the packet consistently respect the strict bound of \"less than 100\". Operands and results such as \"91\", \"81\", \"69\", \"71\", and \"12\" fall safely within this required scale."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

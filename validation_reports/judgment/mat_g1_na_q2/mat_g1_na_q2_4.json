@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g1_na_q2_4",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition hardening), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q2_4), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "Every sample explicitly decomposes addends into their place value components (tens and ones / expanded form) and guides the student to combine place values to find the total sum. For example, seed 42 explicitly breaks down the addends with \"10 is 1 ten and 0 ones. 4 is 4 ones. Add the place values, then find the total: what is 10 + 4?\" and seed 43 does the same with 2-digit addends: \"15 is 1 ten and 5 ones. 11 is 1 ten and 1 one. Add the place values, then find the total: what is 15 + 11?\"."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set comprehensively covers varied addition structures within 100: decade numbers added to single-digit numbers (\"20 is 2 tens and 0 ones. 3 is 3 ones. Add the place values, then find the total: what is 20 + 3?\", seed 600), 2-digit numbers with single-digit numbers involving regrouping across ten (\"87 is 8 tens and 7 ones. 9 is 9 ones. Add the place values, then find the total: what is 87 + 9?\", seed 502), decade numbers with 2-digit numbers (\"70 is 7 tens and 0 ones. 18 is 1 ten and 8 ones. Add the place values, then find the total: 70 + 18 = ___\", seed 501), and 2-digit plus 2-digit numbers with regrouping (\"13 is 1 ten and 3 ones. 28 is 2 tens and 8 ones. Add the place values, then find the total: what is 13 + 28?\", seed 604)."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The language and scaffolding are directly suited to Grade 1 Quarter 2 learners. Sentences are short, direct, and use repetitive, clear phrasing (e.g., \"10 is 1 ten and 0 ones. 5 is 5 ones. Add the place values, then find the total: 10 + 5 = ___\", seed 601). No extraneous reading load or confusing distractor structures are introduced."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The generated items exhibit a well-balanced distribution across multiple formatters, including standard multiple choice questions (e.g., seeds 42, 43, 45, 46, 502, 600, 604), cloze/fill-in-the-blank equations (e.g., \"10 is 1 ten and 0 ones. 22 is 2 tens and 2 ones. Add the place values, then find the total: 10 + 22 = ___\", seed 44; seeds 501, 601, 603, 608), true/false validation (\"15 is 1 ten and 5 ones. 5 is 5 ones. Add the place values, then find the total: 15 + 5 = 19. True or False?\", seed 50), and error analysis/peer work evaluation (e.g., seed 55, seed 500, seed 607)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All questions adhere strictly to the target MATATAG competency without straying into unrelated operations or unintroduced concepts. Each item maintains the place-value decomposition framework (e.g., \"12 is 1 ten and 2 ones. 15 is 1 ten and 5 ones. Add the place values, then find the total: 12 + 15 = ___\", seed 608) directly targeted by MATATAG G1 Q2."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All addends and resulting totals remain strictly within the standard Grade 1 range of whole numbers up to 100, spanning accessible early sums like 14 (seed 42) and 15 (seed 601) to higher two-digit totals such as 88 (seed 501), 96 (seed 502), and 98 (seed 500)."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -175,7 +202,7 @@
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace says: 12 is 1 ten and 2 ones. 12 is 1 ten and 2 ones. Add the place values, then find the total: 12 + 12 = 23. Is Grace correct?",
+      "question_text": "Grace solved: \"12 is 1 ten and 2 ones. 12 is 1 ten and 2 ones. Add the place values, then find the total: 12 + 12 = ___\". Grace says the blank is 23. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 24
@@ -184,7 +211,7 @@
     {
       "seed": 500,
       "formatter": "error_detect",
-      "question_text": "Rico says: 55 is 5 tens and 5 ones. 43 is 4 tens and 3 ones. Add the place values, then find the total: 55 + 43 = 98. Is Rico correct?",
+      "question_text": "Rico solved: \"55 is 5 tens and 5 ones. 43 is 4 tens and 3 ones. Add the place values, then find the total: 55 + 43 = ___\". Rico says the blank is 98. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 98
@@ -373,7 +400,7 @@
     {
       "seed": 607,
       "formatter": "error_detect",
-      "question_text": "Grace says: 10 is 1 ten and 0 ones. 22 is 2 tens and 2 ones. Add the place values, then find the total: 10 + 22 = 31. Is Grace correct?",
+      "question_text": "Grace solved: \"10 is 1 ten and 0 ones. 22 is 2 tens and 2 ones. Add the place values, then find the total: 10 + 22 = ___\". Grace says the blank is 31. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 32
@@ -411,32 +438,5 @@
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items directly satisfy the requirement to \"Add numbers by expressing addends as tens and ones (expanded form).\" by providing the expanded form of each addend in the prompt, as seen in the phrase \"15 is 1 ten and 5 ones. 11 is 1 ten and 1 one.\" and explicitly instructing the student to \"Add the place values, then find the total:\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The generator covers a full range of addition scenarios for this grade level. It includes two-digit plus one-digit problems without regrouping such as \"20 is 2 tens and 0 ones. 3 is 3 ones.\", two-digit plus two-digit problems without regrouping like \"55 is 5 tens and 5 ones. 43 is 4 tens and 3 ones.\", and problems that require regrouping such as \"13 is 1 ten and 3 ones. 28 is 2 tens and 8 ones.\""
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The questions are structured simply and use repeated, predictable phrasing like \"Add the place values, then find the total:\" which reduces cognitive load for Grade 1 students. The distractor options in multiple choice formats like \"what is 21 + 10?\" are close in value to the correct answer, testing the math rather than reading comprehension."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator provides a comprehensive set of variants by utilizing multiple formatters, including \"mcq\", \"cloze\", \"true_false\", and \"error_detect\". This variety allows for different modes of assessment, ranging from straightforward completion like \"10 + 22 = ___\" to evaluative tasks such as \"Is Grace correct?\""
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The content perfectly aligns with the target learning competency. Every item explicitly frames the addition task around the concept of place value, matching the curriculum's mandate to teach addition \"by expressing addends as tens and ones (expanded form).\""
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical bounds are appropriate for Grade 1. The items scale from basic sums like \"what is 10 + 4?\" up to sums just below 100, such as \"55 + 43 = 98\" and \"what is 87 + 9?\", fitting standard curriculum limits for early grade addition."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

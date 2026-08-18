@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g1_na_q3_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition & subtraction hardening), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q3_3), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The generator directly fulfills the MATATAG learning competency of solving subtraction problems where both numbers are less than 20. The sample set features both pictorial representations, such as \"Taking away 1 frog.\" (seed 55), and contextual word problems, such as \"A kitchen has 10 cookies. Chef Demi removes 2 cookies. How many cookies are left in the kitchen?\" (seed 45). Minuends and subtrahends across all items strictly respect the bound of being less than 20."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The items encompass diverse subtraction conceptual models appropriate for Grade 1 Quarter 3, including take-away (\"Sir Ben has 4 crayons. Sir Ben gives away 0 crayons. How many crayons does Sir Ben have left?\", seed 603), comparative subtraction (\"Isko has 10 medals. A friend has 3 medals. How many fewer medals does the friend have?\", seed 44), step/counting back (\"Ate Nena is on step 15. Ate Nena goes down 10 steps. What step is Ate Nena on now?\", seed 46 and \"Start at 15. Count back 1. What number do you land on?\", seed 43), bridge-over-ten facts (\"Carlo had 14 canvases and gave 8 to friends at the home desk. How many canvases does Carlo have left?\", seed 502), and zero identity subtraction (\"There are 12 stones on the table. Moses takes away 0 stones. How many stones are left on the table? The answer is 12. True or False?\", seed 601)."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "Sentence constructions are concise, clear, and developmentally tailored for Grade 1 learners without unnecessary cognitive load or vocabulary hurdles (e.g., \"Daniel is on step 1. Daniel goes down 1 step. What step is Daniel on now?\", seed 42, and \"Faye is on step 12. Faye goes down 1 step. What step is Faye on now?\", seed 604). The pictorial representations provide concrete scaffolding for early learners."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample demonstrates a robust diversity of question formatters including standard multiple choice (`mcq`, seeds 42, 45, 46, 502, 600, 602, 604, 606), fill-in-the-blank (`cloze`, seeds 44, 501, 603), pictorial multiple choice (`read_mcq`, seeds 55, 500), true/false verification (`true_false`, seeds 72, 601), and error evaluation (`error_detect`, \"Jose solved this problem: \"Bianca had 10 ribbons. Bianca used 2 of them. How many ribbons are left?\" Jose says the answer is 8. Is Jose correct?\", seed 50)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All generated items align precisely with the curriculum target without introducing premature arithmetic concepts, multi-step problem solving, negative results, or numbers exceeding 20. Examples like \"Des has 10 knee pads. A friend has 1 knee pad. How many fewer knee pads does the friend have?\" (seed 602) and \"Start at 14. Count back 0. What number do you land on?\" (seed 606) perfectly match the intended scope."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All numerical values fall squarely within the designated bounds (both minuend and subtrahend are less than 20). Minuends span from single-digit integers up to 17 (e.g., 17 in seed 500, 15 in seed 501, 14 in seed 502, 12 in seed 55, 10 in seed 45, down to 1 in seed 42), subtrahends span 0 through 10, and all resulting differences are non-negative whole numbers."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -26,151 +53,37 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Daniel has 1 scroll. A classmate has 1 scroll. How many more scrolls does Daniel have?",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 0,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Daniel is on step 1. Daniel goes down 1 step. What step is Daniel on now?",
+      "correct_answer": 0
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Kuya Ton has 15 costumes. A classmate has 1 costume. How many more costumes does Kuya Ton have?",
-      "correct_answer": 14,
-      "options": [
-        {
-          "key": "A",
-          "value": 14,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 16,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Start at 15. Count back 1. What number do you land on?",
+      "correct_answer": 14
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "Team A scored 10 in the school gym and Team B scored 3. What is the difference in their scores?",
-      "correct_answer": 7,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 13,
-          "text": "13",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "text": "7",
-          "is_correct": true
-        }
-      ]
+      "question_text": "Isko has 10 medals. A friend has 3 medals. How many fewer medals does the friend have?",
+      "correct_answer": 7
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Team A scored 10 in the kitchen and Team B scored 2. What is the difference in their scores?",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": false
-        }
-      ]
+      "question_text": "A kitchen has 10 cookies. Chef Demi removes 2 cookies. How many cookies are left in the kitchen?",
+      "correct_answer": 8
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Ate Nena has 15 bags of flour. A classmate has 10 bags of flour. How many more bags of flour does Ate Nena have?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 25,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Ate Nena is on step 15. Ate Nena goes down 10 steps. What step is Ate Nena on now?",
+      "correct_answer": 5
     },
     {
       "seed": 50,
       "formatter": "error_detect",
-      "question_text": "Jose solved this problem: \"Team A scored 10 in the dance studio and Team B scored 2. What is the difference in their scores?\" Jose says the answer is 8. Is Jose correct?",
+      "question_text": "Jose solved this problem: \"Bianca had 10 ribbons. Bianca used 2 of them. How many ribbons are left?\" Jose says the answer is 8. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 8
@@ -179,301 +92,68 @@
     {
       "seed": 55,
       "formatter": "read_mcq",
-      "question_text": "🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸 — There are 12 frogs.\nTaking away 1 frog.\nHow many frogs are left?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 11,
-          "is_correct": true
-        }
-      ]
+      "question_text": "\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38 \u2014 There are 12 frogs.\nTaking away 1 frog.\nHow many frogs are left?",
+      "correct_answer": "D"
     },
     {
       "seed": 72,
       "formatter": "true_false",
-      "question_text": "Des has 6 score sheets. A classmate has 0 score sheets. How many more score sheets does Des have? The answer is 6. True or False?",
+      "question_text": "Des is on step 6. Des goes down 0 steps. What step is Des on now? The answer is 6. True or False?",
       "correct_answer": true
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤 — There are 17 drinks.\nTaking away 9 drinks.\nHow many drinks are left?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 26,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "is_correct": false
-        }
-      ]
+      "question_text": "\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64 \u2014 There are 17 drinks.\nTaking away 9 drinks.\nHow many drinks are left?",
+      "correct_answer": "C"
     },
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "Team A scored 15 in the home desk and Team B scored 9. What is the difference in their scores?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "text": "6",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "text": "5",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 24,
-          "text": "24",
-          "is_correct": false
-        }
-      ]
+      "question_text": "A home desk has 15 canvases. Carlo removes 9 canvases. How many canvases are left in the home desk?",
+      "correct_answer": 6
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Team A scored 14 in the barangay court and Team B scored 8. What is the difference in their scores?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 22,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Carlo had 14 canvases and gave 8 to friends at the home desk. How many canvases does Carlo have left?",
+      "correct_answer": 6
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Team A scored 10 in the art room and Team B scored 2. What is the difference in their scores?",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 9,
-          "is_correct": false
-        }
-      ]
+      "question_text": "A art room has 10 colored pencils. Kuya Renz removes 2 colored pencils. How many colored pencils are left in the art room?",
+      "correct_answer": 8
     },
     {
       "seed": 601,
       "formatter": "true_false",
-      "question_text": "Moses has 12 stones. A classmate has 0 stones. How many more stones does Moses have? The answer is 12. True or False?",
+      "question_text": "There are 12 stones on the table. Moses takes away 0 stones. How many stones are left on the table? The answer is 12. True or False?",
       "correct_answer": true
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Team A scored 10 in the sports complex and Team B scored 1. What is the difference in their scores?",
-      "correct_answer": 9,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Des has 10 knee pads. A friend has 1 knee pad. How many fewer knee pads does the friend have?",
+      "correct_answer": 9
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "Sir Ben has 4 crayons. A classmate has 0 crayons. How many more crayons does Sir Ben have?",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "text": "4",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "text": "5",
-          "is_correct": false
-        }
-      ]
+      "question_text": "Sir Ben has 4 crayons. Sir Ben gives away 0 crayons. How many crayons does Sir Ben have left?",
+      "correct_answer": 4
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Faye has 12 running shoes. A classmate has 1 running shoe. How many more running shoes does Faye have?",
-      "correct_answer": 11,
-      "options": [
-        {
-          "key": "A",
-          "value": 11,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Faye is on step 12. Faye goes down 1 step. What step is Faye on now?",
+      "correct_answer": 11
     },
     {
       "seed": 606,
       "formatter": "mcq",
-      "question_text": "Kuya Renz has 14 colored pencils. A classmate has 0 colored pencils. How many more colored pencils does Kuya Renz have?",
-      "correct_answer": 14,
-      "options": [
-        {
-          "key": "A",
-          "value": 14,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 16,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Start at 14. Count back 0. What number do you land on?",
+      "correct_answer": 14
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples fulfill the requirement to \"Solve subtraction problems\" by presenting scenarios such as \"Taking away 9 drinks.\" and asking \"How many drinks are left?\" or \"What is the difference in their scores?\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The dataset provides a good range of subtraction situations, including take-away (\"Taking away 1 frog.\") and comparison (\"How many more score sheets does Des have?\") to cover the required concepts."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive load is appropriate for Grade 1, utilizing simple contexts like \"Moses has 12 stones.\" and straightforward questions like \"How many more stones does Moses have?\""
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The dataset includes a wide variety of question formats, including standard multiple choice, \"true_false\", \"cloze\", and \"error_detect\" formats to assess the skill from multiple angles."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The samples strictly adhere to the constraint \"where both numbers are less than 20.\" by using numbers like \"15\", \"10\", \"12\", and \"9\" across the generated problems."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The contexts and scales used are relatable for young learners, involving everyday items and situations like \"14 colored pencils.\" and \"Team A scored 10 in the art room\"."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

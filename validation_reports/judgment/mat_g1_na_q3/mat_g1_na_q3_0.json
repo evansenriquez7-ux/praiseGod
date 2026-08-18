@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g1_na_q3_0",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition & subtraction hardening), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q3_0), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items directly fulfill the competency requirement of illustrating subtraction up to 20 as 'taking away'. The phrasing consistently reinforces the 'taking away' conceptualization across multiple representations, including concrete story contexts like \"There are 10 blocks. Taking away 10 blocks leaves how many blocks?\" (seed 42) and pictorial models like \"Taking away 2 frogs.\" (seed 55)."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set provides thorough coverage across key subtraction archetypes up to 20: subtracting all to yield zero (seed 42: \"There are 10 blocks. Taking away 10 blocks leaves how many blocks?\", seed 72: \"There are 20 cookies. Taking away 20 cookies leaves 0 cookies. True or False?\"), subtracting 10 (seed 43: \"There are 12 marbles. Taking away 10 marbles leaves how many marbles?\"), subtracting small single digits (seed 44: \"There are 10 marbles. Taking away 2 marbles leaves ___ marbles.\", seed 600: \"There are 20 erasers. Taking away 3 erasers leaves how many erasers?\"), subtracting large 2-digit quantities (seed 45: \"There are 20 erasers. Taking away 12 erasers leaves how many erasers?\", seed 500: \"Taking away 18 drinks.\"), and halving doubles (seed 502: \"There are 16 candies. Taking away 8 candies leaves how many candies?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The language and structural complexity are perfectly tailored for Grade 1 Quarter 3 learners. Sentence templates are concise, predictable, and repetitive, focusing learner attention on the subtraction action without unnecessary linguistic or narrative overhead (e.g., seed 46: \"There are 15 apples. Taking away 2 apples leaves how many apples?\")."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample includes a robust variety of assessment formatters testing different aspects of subtraction comprehension: standard multiple-choice (`mcq`, seeds 42, 43, 45, 46, 502, 600, 602, 604), cloze sentence completion (`cloze`, seeds 44, 501, 603), pictorial item decoding (`read_mcq`, seeds 55, 500), statement verification (`true_false`, seeds 72, 601), and student reasoning validation (`error_detect`, seed 50: \"Jose solved: \"There are 20 candies. Taking away 2 candies leaves ___ candies.\". Jose says the blank is 18. Is Jose correct?\" and seed 605: \"Liza solved: \"There are 15 pencils. Taking away 12 pencils leaves ___ pencils.\". Liza says the blank is 3. Is Liza correct?)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All generated items are strictly bounded within the explicit scope of MATATAG learning competency mat_g1_na_q3_0. There is zero concept or vocabulary drift into later grades or advanced operations."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All minuends are within 1 to 20 (ranging from 10 to 20), all subtrahends are less than or equal to minuends, and all resulting differences are non-negative whole numbers within 0 to 20, exactly satisfying the specified scale parameters."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -27,150 +54,36 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "There are 10 blocks. Taking away 10 blocks leaves how many blocks?",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 0,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 0
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "There are 12 marbles. Taking away 10 marbles leaves how many marbles?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 22,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "seed": 44,
       "formatter": "cloze",
       "question_text": "There are 10 marbles. Taking away 2 marbles leaves ___ marbles.",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "text": "12",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 9,
-          "text": "9",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "text": "8",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 8
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "There are 20 erasers. Taking away 12 erasers leaves how many erasers?",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 32,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 8
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "There are 15 apples. Taking away 2 apples leaves how many apples?",
-      "correct_answer": 13,
-      "options": [
-        {
-          "key": "A",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 13,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 13
     },
     {
       "seed": 50,
       "formatter": "error_detect",
-      "question_text": "Jose says: There are 20 candies. Taking away 2 candies leaves 18 candies.. Is Jose correct?",
+      "question_text": "Jose solved: \"There are 20 candies. Taking away 2 candies leaves ___ candies.\". Jose says the blank is 18. Is Jose correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 18
@@ -179,30 +92,8 @@
     {
       "seed": 55,
       "formatter": "read_mcq",
-      "question_text": "🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸 — There are 12 frogs.\nTaking away 2 frogs.\nHow many frogs are left?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ]
+      "question_text": "\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38 \u2014 There are 12 frogs.\nTaking away 2 frogs.\nHow many frogs are left?",
+      "correct_answer": "C"
     },
     {
       "seed": 72,
@@ -213,118 +104,26 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤 — There are 20 drinks.\nTaking away 18 drinks.\nHow many drinks are left?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
+      "question_text": "\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64 \u2014 There are 20 drinks.\nTaking away 18 drinks.\nHow many drinks are left?",
+      "correct_answer": "C"
     },
     {
       "seed": 501,
       "formatter": "cloze",
       "question_text": "There are 20 crayons. Taking away 15 crayons leaves ___ crayons.",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 5,
-          "text": "5",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 35,
-          "text": "35",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 5
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "There are 16 candies. Taking away 8 candies leaves how many candies?",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 24,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 8
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "There are 20 erasers. Taking away 3 erasers leaves how many erasers?",
-      "correct_answer": 17,
-      "options": [
-        {
-          "key": "A",
-          "value": 23,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 17,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 18,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 17
     },
     {
       "seed": 601,
@@ -336,125 +135,28 @@
       "seed": 602,
       "formatter": "mcq",
       "question_text": "There are 10 candies. Taking away 3 candies leaves how many candies?",
-      "correct_answer": 7,
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 7
     },
     {
       "seed": 603,
       "formatter": "cloze",
       "question_text": "There are 15 cookies. Taking away 10 cookies leaves ___ cookies.",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "text": "5",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 25,
-          "text": "25",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 5
     },
     {
       "seed": 604,
       "formatter": "mcq",
       "question_text": "There are 12 pencils. Taking away 2 pencils leaves how many pencils?",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 11,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 10
     },
     {
       "seed": 605,
       "formatter": "error_detect",
-      "question_text": "Liza says: There are 15 pencils. Taking away 12 pencils leaves 3 pencils.. Is Liza correct?",
+      "question_text": "Liza solved: \"There are 15 pencils. Taking away 12 pencils leaves ___ pencils.\". Liza says the blank is 3. Is Liza correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 3
       }
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The packet successfully fulfills the instruction to \"Illustrate subtraction involving numbers up to 20\" by maintaining the scope of numbers appropriately. It also perfectly \"describes subtraction as 'taking away'.\" by using the exact phrase directly in questions, such as \"Taking away 10 blocks leaves how many blocks?\"."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The samples utilize \"a variety of concrete and pictorial models\" effectively. Concrete item nouns such as \"blocks\", \"marbles\", and \"candies\" are present. Additionally, it accurately supports standard visual practices through emoji pictorial representations like \"🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸\" and \"🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤\"."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive structure of the problems is highly suited for Grade 1. Statements such as \"There are 12 marbles. Taking away 10 marbles leaves how many marbles?\" are succinct, straightforward, and avoid linguistic complexity, perfectly aligning with the expected capacity of early grade learners."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The packet exhibits strong variant comprehensiveness across different testing formats. It incorporates multiple item types, spanning standard selection formats to true/false statements like \"There are 20 cookies. Taking away 20 cookies leaves 0 cookies. True or False?\", and error detection mechanisms such as \"Jose says: There are 20 candies. Taking away 2 candies leaves 18 candies.. Is Jose correct?\"."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Alignment with the requested wording is strict and precise. The competency requires that the model \"describes subtraction as 'taking away'.\" Every sample flawlessly implements this exact terminology, evidenced by phrases like \"Taking away 2 frogs.\" and \"Taking away 15 crayons leaves\"."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The number scales adhere perfectly to the requirement of \"involving numbers up to 20\". The maximum starting value presented in any item is exactly twenty, demonstrated by \"There are 20 drinks.\", ensuring that no operation exceeds the explicit numerical boundary of the competency."
-    }
-  },
-  "overall": "PASS"
+  ]
 }
