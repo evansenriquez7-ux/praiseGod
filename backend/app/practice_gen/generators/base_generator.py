@@ -865,6 +865,8 @@ def _build_symbolic_question(
         return f"What is the next {unit} in the pattern: {seq_str}?"
 
     if concept == "fractions":
+        if values.get("question"):
+            return values["question"]
         numer = values.get("numerator", a)
         denom = values.get("denominator", b)
         operation = values.get("operation")

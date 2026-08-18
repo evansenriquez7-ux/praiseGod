@@ -204,6 +204,8 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
         else:
             return f"{a_val} {op_symbol} {b_val} = ___"
     elif concept == "fractions":
+        if values.get("question"):
+            return values["question"]
         numer = values.get("numerator", values.get("a", 1))
         denom = values.get("denominator", values.get("b", 2))
         operation = values.get("operation")

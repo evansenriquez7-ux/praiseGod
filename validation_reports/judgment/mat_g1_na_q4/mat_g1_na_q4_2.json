@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g1_na_q4_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1-NA-Q4-Harden (mat_g1_na_q4_1..2), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The samples directly fulfill the competency \"Count halves and quarters.\" by having students complete counting sequences for both halves (e.g., \"What comes next when counting by halves: 1/2, ___?\") and quarters (e.g., \"What fraction is missing when counting by quarters: 1/4, ___, 3/4, 4/4?\")."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The packet thoroughly covers both required fractions. It includes counting halves (\"Count by halves: 1/2, ___. What fraction comes next?\") and counting quarters (\"Count by quarters: 2/4, 3/4, ___. What fraction comes next?\"). It also tests finding missing terms at the end of a sequence (\"What is the next fraction in the pattern: 1/4, 2/4, 3/4, ___?\") and in the middle (\"What fraction is missing when counting by quarters: 1/4, ___, 3/4, 4/4?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The questions are highly appropriate for a Grade 1, Quarter 4 learner. Students are asked to identify missing items in simple, explicitly stated counting sequences (\"What is the next fraction in the pattern: 1/4, 2/4, 3/4, ___?\"). The distractors are plausible numbers in sequence (e.g., \"5/4\" or \"2/4\") but do not require complex cognitive leaps or arithmetic calculations."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples demonstrate excellent structural variety. Questions use diverse phrasings such as \"What comes next when counting by halves: 1/2, ___?\", \"What fraction is missing when counting by quarters: 1/4, 2/4, ___, 4/4?\", and \"What is the next fraction in the pattern: 1/2, ___?\". Additionally, the packet uses both 'mcq' and 'cloze' formatters to present the options."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "There is strict alignment with the curriculum. Every question focuses purely on counting halves and quarters without introducing unstated fractions (like thirds or eighths). The language \"Count by halves\" and \"Count by quarters\" directly mirrors the intended mechanics of the learning competency."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical scale is perfectly constrained for Grade 1. All correct answers represent simple fractions that complete the sequences up to one whole (e.g., \"2/2\", \"3/4\", \"4/4\"). This ensures students are accurately tested on foundational fractions without exceeding expected bounds."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -12,18 +38,20 @@
     50,
     500,
     501,
-    502
+    502,
+    601,
+    602
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What comes next in the pattern: 1/2, ___?",
+      "question_text": "What comes next when counting by halves: 1/2, ___?",
       "correct_answer": "2/2",
       "options": [
         {
           "key": "A",
-          "value": "3/2",
+          "value": "1/2",
           "is_correct": false
         },
         {
@@ -38,7 +66,7 @@
         },
         {
           "key": "D",
-          "value": "1/2",
+          "value": "3/2",
           "is_correct": false
         }
       ]
@@ -46,7 +74,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What comes next in the pattern: 1/2, ___?",
+      "question_text": "Count by halves: 1/2, ___. What fraction comes next?",
       "correct_answer": "2/2",
       "options": [
         {
@@ -56,7 +84,7 @@
         },
         {
           "key": "B",
-          "value": "1/2",
+          "value": "3/2",
           "is_correct": false
         },
         {
@@ -66,7 +94,7 @@
         },
         {
           "key": "D",
-          "value": "3/2",
+          "value": "1/2",
           "is_correct": false
         }
       ]
@@ -74,8 +102,8 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What comes next in the pattern: 1/4, 2/4, 3/4, ___?",
-      "correct_answer": "4/4",
+      "question_text": "What fraction is missing when counting by quarters: 1/4, ___, 3/4, 4/4?",
+      "correct_answer": "2/4",
       "options": [
         {
           "key": "A",
@@ -84,17 +112,17 @@
         },
         {
           "key": "B",
-          "value": "5/4",
+          "value": "1/4",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "4/2",
+          "value": "4/4",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "4/4",
+          "value": "2/4",
           "is_correct": true
         }
       ]
@@ -102,7 +130,7 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What comes next in the pattern: 1/4, 2/4, 3/4, ___?",
+      "question_text": "Count by quarters: 2/4, 3/4, ___. What fraction comes next?",
       "correct_answer": "4/4",
       "options": [
         {
@@ -112,7 +140,7 @@
         },
         {
           "key": "B",
-          "value": "5/4",
+          "value": "3/4",
           "is_correct": false
         },
         {
@@ -122,7 +150,7 @@
         },
         {
           "key": "D",
-          "value": "3/4",
+          "value": "5/4",
           "is_correct": false
         }
       ]
@@ -130,7 +158,7 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What comes next in the pattern: 1/2, ___?",
+      "question_text": "Count by halves: 1/2, ___. What fraction comes next?",
       "correct_answer": "2/2",
       "options": [
         {
@@ -145,12 +173,12 @@
         },
         {
           "key": "C",
-          "value": "1/2",
+          "value": "3/2",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "3/2",
+          "value": "1/2",
           "is_correct": false
         }
       ]
@@ -158,13 +186,13 @@
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "What comes next in the pattern: 1/4, 2/4, 3/4, ___?",
+      "question_text": "Count by quarters: 2/4, 3/4, ___. What fraction comes next?",
       "correct_answer": "4/4",
       "options": [
         {
           "key": "A",
-          "value": "5/4",
-          "text": "5/4",
+          "value": "3/4",
+          "text": "3/4",
           "is_correct": false
         },
         {
@@ -181,8 +209,8 @@
         },
         {
           "key": "D",
-          "value": "3/4",
-          "text": "3/4",
+          "value": "5/4",
+          "text": "5/4",
           "is_correct": false
         }
       ]
@@ -190,31 +218,31 @@
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "What comes next in the pattern: 1/4, 2/4, 3/4, ___?",
-      "correct_answer": "4/4",
+      "question_text": "What fraction is missing when counting by quarters: 1/4, 2/4, ___, 4/4?",
+      "correct_answer": "3/4",
       "options": [
         {
           "key": "A",
-          "value": "4/4",
-          "text": "4/4",
+          "value": "3/4",
+          "text": "3/4",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "3/4",
-          "text": "3/4",
+          "value": "2/4",
+          "text": "2/4",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "5/4",
-          "text": "5/4",
+          "value": "1/4",
+          "text": "1/4",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "4/2",
-          "text": "4/2",
+          "value": "4/4",
+          "text": "4/4",
           "is_correct": false
         }
       ]
@@ -222,22 +250,50 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "What comes next in the pattern: 1/4, 2/4, 3/4, ___?",
-      "correct_answer": "4/4",
+      "question_text": "What fraction is missing when counting by quarters: 1/4, 2/4, ___, 4/4?",
+      "correct_answer": "3/4",
       "options": [
         {
           "key": "A",
-          "value": "4/4",
+          "value": "3/4",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "4/2",
+          "value": "4/4",
           "is_correct": false
         },
         {
           "key": "C",
+          "value": "2/4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "1/4",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "What is the next fraction in the pattern: 1/4, 2/4, 3/4, ___?",
+      "correct_answer": "4/4",
+      "options": [
+        {
+          "key": "A",
           "value": "3/4",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "4/4",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "4/2",
           "is_correct": false
         },
         {
@@ -248,59 +304,64 @@
       ]
     },
     {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What comes next in the pattern: 1/4, 2/4, 3/4, ___?",
-      "correct_answer": "4/4",
+      "seed": 601,
+      "formatter": "cloze",
+      "question_text": "What is the next fraction in the pattern: 1/2, ___?",
+      "correct_answer": "2/2",
       "options": [
         {
           "key": "A",
-          "value": "5/4",
+          "value": "3/2",
+          "text": "3/2",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "4/4",
-          "is_correct": true
+          "value": "1/2",
+          "text": "1/2",
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": "4/2",
+          "value": "2/4",
+          "text": "2/4",
           "is_correct": false
         },
         {
           "key": "D",
+          "value": "2/2",
+          "text": "2/2",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "Count by quarters: 1/4, 2/4, 3/4, ___. What fraction comes next?",
+      "correct_answer": "4/4",
+      "options": [
+        {
+          "key": "A",
+          "value": "4/4",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "4/2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
           "value": "3/4",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "5/4",
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Treating '1/4, 2/4, 3/4, ___' and '1/2, ___' as sequences to continue matches 'Count halves and quarters' as a skip-counting task over fraction units rather than a whole-number one."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Only two distinct starting sequences occur across all nine sampled seeds — '1/2, ___' and '1/4, 2/4, 3/4, ___' — with no sample beginning mid-sequence (e.g. from 2/4), descending, or extending past a whole, so the range of counting sub-cases is narrow."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Each sequence is short and ends at exactly one whole, a reasonable first task for counting in unit fractions at this grade and quarter."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Every sample uses mcq or cloze pattern-continuation phrasing; no read_mcq picture task or word-problem framing appears for this competency the way one does for the sibling illustrate-fractions node."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The two sequences differ only in whether the unit is a half or a quarter, keeping every item anchored to counting fraction units rather than an unrelated skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Counting stays within one whole (2/2 or 4/4) in every sample, an appropriate ceiling for a first fraction-counting task."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

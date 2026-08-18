@@ -240,42 +240,63 @@ def generate_params(
         # the whole, with the whole itself (N/N) always the final/asked-
         # for term.
         count_denom = rng.choice([d for d in denom_pool if d in (2, 4)] or [2])
-        seq_fracs = [(n, count_denom) for n in range(1, count_denom + 1)]
-        visible = seq_fracs[:-1]
-        next_frac = seq_fracs[-1]
-        seq_strs = [_fraction_str(n, d) for n, d in visible]
-        answer_str = _fraction_str(*next_frac)
-        # A string answer skips the shared numeric-offset distractor
-        # padding (base_generator's type-consistency guard correctly
-        # skips it for non-numeric correct_answer values), so explicit
-        # distractors are required here: one step too far, one step short
-        # (a repeat of the last visible term), and a denominator swap
-        # (a plausible "used the wrong fraction" trap).
-        over_shoot = _fraction_str(next_frac[0] + 1, count_denom)
-        short_fall = seq_strs[-1]
-        wrong_denom = _fraction_str(next_frac[0], 2 if count_denom == 4 else 4)
-        distractors = [d for d in (over_shoot, short_fall, wrong_denom) if d != answer_str]
-        # "numerator"/"denominator" are set to the ANSWER (next_frac), not
-        # the first visible term: the DNA's shared answer_formula
-        # ("numerator / denominator") is what validate_matrix's §1E
-        # answer-key-integrity check recomputes against given_values to
-        # verify the served correct_answer, and count_sequence has no
-        # single "given" fraction the way identify_name does -- the given
-        # is a 4-term sequence, not a scalar. Anchoring numerator/denominator
-        # to the answer keeps that generic recompute honest (it was
-        # previously anchored to visible[0], which made every seed fail
-        # answer_key_integrity: "recomputed '0.5' != served '5/2'").
+        if count_denom == 2:
+            seq_strs = ["1/2"]
+            answer_str = "2/2"
+            next_frac = (2, 2)
+            distractors = ["1/2", "3/2", "2/4"]
+            q_template = rng.choice([
+                "What comes next when counting by halves: 1/2, ___?",
+                "Count by halves: 1/2, ___. What fraction comes next?",
+                "What is the next fraction in the pattern: 1/2, ___?",
+            ])
+        else:
+            # Support multiple counting sequence variations:
+            # 1) full sequence: "1/4, 2/4, 3/4, ___" -> "4/4"
+            # 2) mid-start sequence: "2/4, 3/4, ___" -> "4/4"
+            # 3) missing middle: "1/4, 2/4, ___, 4/4" -> "3/4" or "1/4, ___, 3/4, 4/4" -> "2/4"
+            seq_mode = rng.choice(["full", "mid", "missing_middle"])
+            if seq_mode == "mid":
+                seq_strs = ["2/4", "3/4"]
+                answer_str = "4/4"
+                next_frac = (4, 4)
+                distractors = ["3/4", "5/4", "4/2"]
+                q_template = rng.choice([
+                    "What comes next when counting by quarters: 2/4, 3/4, ___?",
+                    "Count by quarters: 2/4, 3/4, ___. What fraction comes next?",
+                ])
+            elif seq_mode == "missing_middle":
+                missing_num = rng.choice([2, 3])
+                answer_str = f"{missing_num}/4"
+                next_frac = (missing_num, 4)
+                display = [("___" if n == missing_num else f"{n}/4") for n in range(1, 5)]
+                distractors = [f"{n}/4" for n in range(1, 5) if n != missing_num] + ["1/2"]
+                distractors = [d for d in distractors if d != answer_str][:3]
+                seq_strs = display
+                q_template = f"What fraction is missing when counting by quarters: {', '.join(display)}?"
+            else:
+                seq_strs = ["1/4", "2/4", "3/4"]
+                answer_str = "4/4"
+                next_frac = (4, 4)
+                distractors = ["3/4", "5/4", "4/2"]
+                q_template = rng.choice([
+                    "What comes next when counting by quarters: 1/4, 2/4, 3/4, ___?",
+                    "Count by quarters: 1/4, 2/4, 3/4, ___. What fraction comes next?",
+                    "What is the next fraction in the pattern: 1/4, 2/4, 3/4, ___?",
+                ])
+
         return {
             "numerator":    next_frac[0],
             "denominator":  next_frac[1],
-            "fraction_str": seq_strs[0],
+            "fraction_str": "1/2" if count_denom == 2 else "1/4",
             "model_type":   model_type,
             "operation":    "count_sequence",
             "sequence":     seq_strs,
             "answer":       answer_str,
+            "result":       answer_str,
             "distractors":  distractors,
             "blank_target": "answer",
-            "question":     f"What comes next in the pattern: {', '.join(seq_strs)}, ___?",
+            "question":     q_template,
         }
 
     candidate_params = []
@@ -332,49 +353,28 @@ def generate_params(
                         larger_denoms = [d for d in denom_pool if d > den]
                         b_den = min(larger_denoms) if larger_denoms else max(denom_pool)
                 cmp_distractors = None
+                cmp_question = None
                 if operation == "compare":
-                    ans = "=" if (num, den) == (b_num, b_den) else (">" if num / den > b_num / b_den else "<")
-                    # The comparison answer domain is exactly {">", "<", "="}
-                    # -- base_generator's generic error-pattern distractor
-                    # loop evaluates this DNA's fraction-VALUE formulas
-                    # (fr_swap_nd etc.) against numerator/denominator
-                    # regardless of operation, and since those formulas also
-                    # happen to produce strings, they pass the weak
-                    # str-vs-str type check and get offered as "sign"
-                    # options -- e.g. "2/1" or "2/6" alongside the real sign
-                    # (blind review of mat_g1_na_q4_1: MCQ options were
-                    # "2/1", "1/2", ">", "2/6" for a "which sign?" question,
-                    # three of which are not signs at all). Supplying the
-                    # only two OTHER valid signs explicitly, combined with
-                    # base_generator's shape-guard for comparison answers,
-                    # keeps every offered option a genuine sign. Only 2 other
-                    # signs exist, one short of MCQ's fixed 4-option
-                    # requirement (validate_matrix's mcq_option_count check)
-                    # -- comparing_ordering.py's identical compare_two
-                    # task_type already solved this exact cardinality gap by
-                    # padding with "cannot be determined", a genuinely
-                    # plausible wrong answer for a student who hasn't yet
-                    # learned to compare unlike fractions, not a nonsense
-                    # filler; reuse that established convention rather than
-                    # inventing a second one.
-                    cmp_distractors = [s for s in (">", "<", "=") if s != ans] + ["cannot be determined"]
+                    if grade == 1:
+                        # Grade 1 MATATAG: "Compare 1/2 and 1/4 using models."
+                        # Strictly compare 1/2 and 1/4 (or 1/4 and 1/2) using visual models.
+                        order_pair = rng.choice([(1, 2, 1, 4), (1, 4, 1, 2)])
+                        num, den, b_num, b_den = order_pair
+                        ans = ">" if (num / den) > (b_num / b_den) else "<"
+                        cmp_distractors = [s for s in (">", "<", "=") if s != ans] + ["+"]
+                        q_template = rng.choice([
+                            f"Look at the fraction models. Compare \\(\\frac{{{num}}}{{{den}}}\\) and \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign makes the statement true: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?",
+                            f"Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?",
+                            f"Look at the fraction models for \\(\\frac{{{num}}}{{{den}}}\\) and \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which comparison sign is correct: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\)?",
+                        ])
+                        cmp_question = q_template
+                    else:
+                        ans = "=" if (num, den) == (b_num, b_den) else (">" if num / den > b_num / b_den else "<")
+                        cmp_distractors = [s for s in (">", "<", "=") if s != ans] + ["+"]
+                        cmp_question = f"Compare the fractions: \\(\\frac{{{num}}}{{{den}}}\\) ___ \\(\\frac{{{b_num}}}{{{b_den}}}\\). Which sign is correct: >, <, or =?"
                 else:
                     ans = frac_s
 
-                # "Read and write unit/similar fractions in fraction
-                # notation" (mat_g2_na_q4_1/_4) is co-mapped with a
-                # "Represent and identify..." sibling (mat_g2_na_q4_0/_3)
-                # that shares this exact same identify_name operation --
-                # compatibility.py now routes the two to different
-                # formatters (visual model-shade vs text mcq/cloze), but
-                # both fall back to base_generator's SAME generic "A shape
-                # is divided into..." symbolic text when no DNA-supplied
-                # "question" overrides it, so the two nodes still rendered
-                # byte-identical text despite using different formatters
-                # (blind review: "byte-identical duplicate of q4_3's
-                # packet"). A genuine notation task doesn't need a shape
-                # description at all -- give the word form and ask for the
-                # symbol, the actual "notation" skill this node names.
                 notation_question = None
                 if operation == "identify_name" and profile.get("fraction_task_mode") == "notation":
                     notation_question = f"Write {_fraction_words(num, den)} in fraction notation."
@@ -390,8 +390,9 @@ def generate_params(
                     "b_num":        b_num,
                     "b_den":        b_den,
                     "result":       ans,
+                    "answer":       ans,
                     **({"distractors": cmp_distractors} if cmp_distractors is not None else {}),
-                    **({"question": notation_question} if notation_question else {}),
+                    **({"question": notation_question or cmp_question} if (notation_question or cmp_question) else {}),
                     # Must be echoed back into the returned dict (which
                     # becomes ctx.values), not just read from `profile` --
                     # the orchestrator's FORMATTER_VARIANT_SUPPORT filter

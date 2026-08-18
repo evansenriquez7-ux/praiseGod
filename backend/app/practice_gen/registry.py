@@ -1242,50 +1242,33 @@ def _parse_competency_bounds(
     # numerator > 1, which is the entire point that distinguishes it from the
     # "unit" node. Bind explicitly from the LC wording.
     elif dna_name == "fractions":
-        if "unit fraction" in text:
+        if "unit fraction" in text or "1/2 and 1/4" in text or "1/2 and 1/4" in text or "half" in text or "quarter" in text:
             bounds["fraction_type"] = "unit_fraction"
         elif "similar fraction" in text:
             bounds["fraction_type"] = "similar_proper"
 
-        # "Represent and identify..." (mat_g2_na_q4_0/_3) vs "Read and
-        # write... in fraction notation" (mat_g2_na_q4_1/_4): both pairs
-        # share the same identify_name operation and produce the exact
-        # same numerator/denominator content, so nothing distinguished
-        # which formatter rendered them -- most samples ended up byte-
-        # identical between the two sibling nodes regardless of which one
-        # explicitly names a visual model vs pure notation (blind review:
-        # "the entire packet is byte-identical to sibling node q4_1",
-        # "byte-identical duplicate of q4_3's packet"). New axis restricts
-        # fraction_shade/fraction_model_read to the "represent" nodes and
-        # mcq/cloze to the "read and write in notation" nodes (see
-        # FORMATTER_VARIANT_SUPPORT["fractions"] in compatibility.py).
-        if "represent and identify" in text:
+        if "illustrate" in text:
             bounds["fraction_task_mode"] = "model"
+            bounds["operation"] = "identify_name"
+        elif "represent and identify" in text:
+            bounds["fraction_task_mode"] = "model"
+            bounds["operation"] = "identify_name"
         elif "read and write" in text and "notation" in text:
             bounds["fraction_task_mode"] = "notation"
-        elif "equal to one" in text or "greater than one" in text:
-            # "Represent fractions that are equal to one and greater than
-            # one using models" (mat_g3_na_q4_6) matched neither "unit
-            # fraction" nor "similar fraction", so fraction_type stayed
-            # unbound and the DNA's own default ("unit_fraction", always
-            # numerator=1 over a denominator >=2, i.e. always <1) governed
-            # -- every sample rendered a proper fraction strictly less
-            # than one, the opposite of what this competency names (blind
-            # review: "the target fraction... is a proper fraction
-            # strictly less than one" for all 8 samples).
-            bounds["fraction_type"] = "improper"
-            # "Represent fractions... using models" names no arithmetic
-            # operation at all, but leaving "operation" unbound left it
-            # vulnerable to VARIANTS_BY_DNA["fractions"]["operation"] =
-            # ["add","subtract","add_subtract"] (declared for the sibling
-            # add/subtract node, mat_g3_na_q4_7, with no per-node scoping)
-            # -- judgment_packets.py's variant-coverage stratification
-            # probes those values against every fractions node regardless,
-            # so a plain "represent this model" competency got fraction-
-            # addition items mixed in (blind review: "Seeds 603, 604, and
-            # 605 are fraction-addition problems... competency leakage
-            # from node 7").
             bounds["operation"] = "identify_name"
+        elif "equal to one" in text or "greater than one" in text:
+            bounds["fraction_type"] = "improper"
+            bounds["operation"] = "identify_name"
+        elif "compare" in text:
+            bounds["operation"] = "compare"
+        elif text.strip().startswith("count") and ("half" in text or "quarter" in text):
+            bounds["operation"] = "count_sequence"
+        elif "add" in text and "subtract" in text:
+            bounds["operation"] = "add_subtract"
+        elif "add" in text:
+            bounds["operation"] = "add"
+        elif "subtract" in text:
+            bounds["operation"] = "subtract"
         if False and "order" in text:
             # fractions.py has a working "order" operation (draws N
             # distinct unit/similar fractions, sorts them correctly using

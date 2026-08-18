@@ -143,6 +143,10 @@ def _stem(model_type: str, fraction_str: str, interaction_mode: str, operation: 
         return f"Shade the model to show {fraction_str}."
     if operation in ("add", "subtract", "add_subtract"):
         return "What is the result of the fraction operation shown?"
+    if operation == "compare":
+        return f"Look at the fraction models. Compare the fractions: which sign is correct: >, <, or =?"
+    if operation == "count_sequence":
+        return f"Look at the fraction sequence. What comes next when counting?"
     model_names = {"area": "shaded picture", "set": "set model", "number_line": "number line"}
     name = model_names.get(model_type, "model")
     return f"What fraction does the {name} show?"
@@ -235,31 +239,62 @@ def format_fraction_model(
     vp["is_read_only"] = interaction_mode == "read"
     # total_wholes lets the React component pre-render enough bars/circles
     # for improper fractions (e.g. 33/10 → 4 wholes) without leaking the
-    # exact answer count (frontend audit gap G3).
-    import math as _math
-    vp["total_wholes"] = max(1, _math.ceil(numer / denom)) if denom else 1
+    dna_question = (ctx.values or {}).get("question")
+    dna_ans = (ctx.values or {}).get("answer") or (ctx.values or {}).get("result")
+    dna_distractors = (ctx.values or {}).get("distractors")
 
-    # ── 3. Traps ──────────────────────────────────────────────────────────────
-    traps = _build_traps(numer, denom)
+    if dna_ans is not None:
+        correct_answer = dna_ans
+
+    ca_num, ca_den = numer, denom
+    if isinstance(correct_answer, str) and "/" in correct_answer:
+        try:
+            parts = correct_answer.split("/")
+            ca_num, ca_den = int(parts[0]), int(parts[1])
+        except Exception:
+            pass
+
+    if dna_distractors:
+        traps = [d for d in dna_distractors if d != correct_answer]
+    else:
+        traps = _build_traps(ca_num, ca_den)
+
+    seen = {str(correct_answer)}
+    unique_traps = []
+    for t in traps:
+        if str(t) not in seen:
+            unique_traps.append(t)
+            seen.add(str(t))
+    traps = unique_traps
 
     # ── 4. MCQ options ────────────────────────────────────────────────────────
     mcq_options = None
     if answer_collection == "mcq":
         if len(traps) < 3:
             traps = augment_distractors(traps, correct_answer, target=3, max_delta=5)
+            # Re-filter in case augment returned duplicates
+            unique_traps = []
+            for t in traps:
+                if str(t) not in seen:
+                    unique_traps.append(t)
+                    seen.add(str(t))
+            traps = unique_traps
             if len(traps) < 3:
                 raise ValueError(f"Formatter 'fraction_model' requires at least 3 unique distractors, but got {len(traps)}")
         all_opts = [correct_answer] + traps[:3]
         rng.shuffle(all_opts)
         mcq_options = [
-            {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
+            {"key": chr(ord("A") + i), "value": v, "is_correct": str(v) == str(correct_answer)}
             for i, v in enumerate(all_opts)
         ]
         final_answer = next(o["key"] for o in mcq_options if o["is_correct"])
     else:
         final_answer = correct_answer
 
-    question_text = _stem(model_type, vp.get("fraction_str", fraction_str), interaction_mode, vp.get("operation"))
+    if dna_question:
+        question_text = dna_question
+    else:
+        question_text = _stem(model_type, vp.get("fraction_str", fraction_str), interaction_mode, vp.get("operation"))
 
     format_data: dict = {"visual_params": vp}
     if mcq_options:

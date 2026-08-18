@@ -153,6 +153,8 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             return f"What number goes in the blank: {a_val} {op_symbol} {b_val} = ___?"
 
     elif concept == "fractions":
+        if values.get("question"):
+            return values["question"]
         numer = values.get("numerator", values.get("a", 1))
         denom = values.get("denominator", values.get("b", 2))
         operation = values.get("operation")
