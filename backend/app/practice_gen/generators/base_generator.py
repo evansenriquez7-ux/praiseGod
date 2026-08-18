@@ -292,6 +292,11 @@ def generate_context(
     # narrative spine entirely rather than narrate a mismatched subset; the
     # symbolic/pure fallback still shows the true full computation.
     money_peso_amounts = values.get("amounts") if dna.concept == "money_peso" else None
+    if money_peso_amounts and len(money_peso_amounts) > 2 and values.get("context", "pure") == "word_problem":
+        values["a"] = money_peso_amounts[0]
+        values["b"] = sum(money_peso_amounts[1:])
+        values["amounts"] = [values["a"], values["b"]]
+        money_peso_amounts = values["amounts"]
     money_peso_narratable = money_peso_amounts is None or len(money_peso_amounts) == 2
     # div_money_share (spines.py) narrates "has PN, shares equally among M
     # friends, how much does each get?" and answers with the floor
@@ -934,6 +939,8 @@ def _build_symbolic_question(
 
     # ── Money ────────────────────────────────────────────────────────────────
     if concept == "money_peso":
+        if values.get("question"):
+            return values["question"]
         operation = values.get("operation", "add_amounts")
         amounts = values.get("amounts")
 

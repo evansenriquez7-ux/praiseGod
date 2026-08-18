@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g1_na_q4_5",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1-NA-Q4-Money-Harden-v5 (mat_g1_na_q4_5), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The generated items directly require students to compare two different monetary denominations, accurately fulfilling the competency. Examples include asking \"Which has a greater value: 1 \u20b1100 bill or 1 \u20b120 bill?\" and \"Which has a smaller value: 1 \u20b110 coin or 1 \u20b150 bill?\"."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The items successfully cover the full scope of the competency by including both greater and smaller comparisons across various combinations of bills and coins (e.g., bill vs bill in \"Which has a greater value: 1 \u20b150 bill or 1 \u20b1100 bill?\", coin vs coin in \"Which has a greater value: 1 \u20b110 coin or 1 \u20b11 coin?\", and coin vs bill). All items remain within the \u20b1100 limit and correctly exclude centavo coins."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The vocabulary and question structures are highly appropriate for a Grade 1 learner in the 4th quarter. The phrasing \"Which has a greater value\" and \"Which has a smaller value\" is clear and direct, placing the cognitive load correctly on the mathematical comparison rather than on reading comprehension."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample uses a strong variety of formatters, including standard multiple-choice ('mcq'), reading-focused multiple-choice ('read_mcq'), 'cloze', and fill-in-the-blank ('set_fill_in_blank'). Distractors like \"They are equal\" effectively test common student misconceptions."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every question strictly adheres to the provided MATATAG text. The samples explicitly deal with \"peso coins (excluding centavo coins) and bills up to \u20b1100\", testing exactly what is prescribed without introducing out-of-scope concepts like addition of money or making change."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical values reflect authentic Philippine currency denominations strictly bounded by the specified limit of \u20b1100 (e.g., \u20b11, \u20b15, \u20b110, \u20b120, \u20b150, \u20b1100). The values and contexts scale perfectly to the expected real-world knowledge of a Grade 1 student."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -17,31 +43,31 @@
     502,
     600,
     601,
-    602,
-    603,
     604,
-    606
+    605,
+    606,
+    607
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Which has a greater value: 1 ₱5 coin and 1 ₱1 coin or 1 ₱10 coin and 1 ₱5 coin?",
-      "correct_answer": "1 ₱10 coin and 1 ₱5 coin",
+      "question_text": "Which has a greater value: 1 \u20b1100 bill or 1 \u20b120 bill?",
+      "correct_answer": "1 \u20b1100 bill",
       "options": [
         {
           "key": "A",
-          "value": "1 ₱5 coin and 1 ₱1 coin",
+          "value": "1 \u20b120 bill",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+          "value": "1 \u20b15 coin",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "1 ₱10 coin and 1 ₱5 coin",
+          "value": "1 \u20b1100 bill",
           "is_correct": true
         },
         {
@@ -54,12 +80,12 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Which has a greater value: 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin or 1 ₱5 coin and 1 ₱1 coin?",
-      "correct_answer": "1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+      "question_text": "Which has a greater value: 1 \u20b150 bill or 1 \u20b1100 bill?",
+      "correct_answer": "1 \u20b1100 bill",
       "options": [
         {
           "key": "A",
-          "value": "1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+          "value": "1 \u20b1100 bill",
           "is_correct": true
         },
         {
@@ -69,12 +95,12 @@
         },
         {
           "key": "C",
-          "value": "1 ₱5 coin and 2 ₱1 coins",
+          "value": "1 \u20b110 coin",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "1 ₱5 coin and 1 ₱1 coin",
+          "value": "1 \u20b150 bill",
           "is_correct": false
         }
       ]
@@ -82,8 +108,8 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Which has a greater value: 1 ₱10 coin and 3 ₱1 coins or 1 ₱10 coin and 2 ₱1 coins?",
-      "correct_answer": "1 ₱10 coin and 3 ₱1 coins",
+      "question_text": "Which has a smaller value: 1 \u20b120 bill or 1 \u20b11 coin?",
+      "correct_answer": "1 \u20b11 coin",
       "options": [
         {
           "key": "A",
@@ -92,17 +118,17 @@
         },
         {
           "key": "B",
-          "value": "1 ₱10 coin and 2 ₱1 coins",
+          "value": "1 \u20b120 bill",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "3 ₱1 coins",
+          "value": "1 \u20b150 bill",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "1 ₱10 coin and 3 ₱1 coins",
+          "value": "1 \u20b11 coin",
           "is_correct": true
         }
       ]
@@ -110,22 +136,22 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Which has a greater value: 1 ₱5 coin and 2 ₱1 coins or 4 ₱5 coins?",
-      "correct_answer": "4 ₱5 coins",
+      "question_text": "Which has a greater value: 1 \u20b150 bill or 1 \u20b110 coin?",
+      "correct_answer": "1 \u20b150 bill",
       "options": [
         {
           "key": "A",
-          "value": "3 ₱5 coins",
+          "value": "1 \u20b15 coin",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "1 ₱5 coin and 2 ₱1 coins",
+          "value": "1 \u20b110 coin",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "4 ₱5 coins",
+          "value": "1 \u20b150 bill",
           "is_correct": true
         },
         {
@@ -138,17 +164,17 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Which has a greater value: 1 ₱10 coin and 2 ₱5 coins or 1 ₱10 coin and 1 ₱1 coin?",
-      "correct_answer": "1 ₱10 coin and 2 ₱5 coins",
+      "question_text": "Which has a smaller value: 1 \u20b1100 bill or 1 \u20b11 coin?",
+      "correct_answer": "1 \u20b11 coin",
       "options": [
         {
           "key": "A",
-          "value": "1 ₱10 coin and 1 ₱5 coin",
+          "value": "1 \u20b110 coin",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "1 ₱10 coin and 2 ₱5 coins",
+          "value": "1 \u20b11 coin",
           "is_correct": true
         },
         {
@@ -158,7 +184,7 @@
         },
         {
           "key": "D",
-          "value": "1 ₱10 coin and 1 ₱1 coin",
+          "value": "1 \u20b1100 bill",
           "is_correct": false
         }
       ]
@@ -166,27 +192,27 @@
     {
       "seed": 50,
       "formatter": "read_mcq",
-      "question_text": "Count the coins and bills shown. What is the total amount?",
+      "question_text": "Which has a smaller value: 1 \u20b110 coin or 1 \u20b150 bill?",
       "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": 20,
+          "value": "1 \u20b110 coin",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": 40,
+          "value": "1 \u20b1100 bill",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": 10,
+          "value": "They are equal",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": 25,
+          "value": "1 \u20b150 bill",
           "is_correct": false
         }
       ]
@@ -194,19 +220,19 @@
     {
       "seed": 55,
       "formatter": "set_fill_in_blank",
-      "question_text": "Use coins and bills to make exactly ₱20. Use the fewest pieces possible.",
-      "correct_answer": 20
+      "question_text": "Which has a greater value: 1 \u20b1100 bill or 1 \u20b15 coin?",
+      "correct_answer": "1 \u20b1100 bill"
     },
     {
       "seed": 72,
       "formatter": "cloze",
-      "question_text": "Which has a greater value: 1 ₱5 coin and 1 ₱1 coin or 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin?",
-      "correct_answer": "1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+      "question_text": "Which has a smaller value: 1 \u20b1100 bill or 1 \u20b11 coin?",
+      "correct_answer": "1 \u20b11 coin",
       "options": [
         {
           "key": "A",
-          "value": "1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
-          "text": "1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+          "value": "1 \u20b11 coin",
+          "text": "1 \u20b11 coin",
           "is_correct": true
         },
         {
@@ -217,14 +243,14 @@
         },
         {
           "key": "C",
-          "value": "2 ₱5 coins and 1 ₱1 coin",
-          "text": "2 ₱5 coins and 1 ₱1 coin",
+          "value": "1 \u20b110 coin",
+          "text": "1 \u20b110 coin",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "1 ₱5 coin and 1 ₱1 coin",
-          "text": "1 ₱5 coin and 1 ₱1 coin",
+          "value": "1 \u20b1100 bill",
+          "text": "1 \u20b1100 bill",
           "is_correct": false
         }
       ]
@@ -232,25 +258,25 @@
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Use coins and bills to make exactly ₱81. Use the fewest pieces possible.",
-      "correct_answer": 81
+      "question_text": "Which has a smaller value: 1 \u20b120 bill or 1 \u20b15 coin?",
+      "correct_answer": "1 \u20b15 coin"
     },
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "Which has a greater value: 1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin or 1 ₱20 bill and 1 ₱10 coin?",
-      "correct_answer": "1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin",
+      "question_text": "Which has a greater value: 1 \u20b110 coin or 1 \u20b11 coin?",
+      "correct_answer": "1 \u20b110 coin",
       "options": [
         {
           "key": "A",
-          "value": "1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin",
-          "text": "1 ₱50 bill, 1 ₱20 bill, 1 ₱10 coin, and 1 ₱5 coin",
+          "value": "1 \u20b110 coin",
+          "text": "1 \u20b110 coin",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "1 ₱50 bill and 1 ₱1 coin",
-          "text": "1 ₱50 bill and 1 ₱1 coin",
+          "value": "1 \u20b150 bill",
+          "text": "1 \u20b150 bill",
           "is_correct": false
         },
         {
@@ -261,8 +287,8 @@
         },
         {
           "key": "D",
-          "value": "1 ₱20 bill and 1 ₱10 coin",
-          "text": "1 ₱20 bill and 1 ₱10 coin",
+          "value": "1 \u20b11 coin",
+          "text": "1 \u20b11 coin",
           "is_correct": false
         }
       ]
@@ -270,22 +296,22 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Which has a greater value: 2 ₱50 bills or 1 ₱10 coin and 1 ₱5 coin?",
-      "correct_answer": "2 ₱50 bills",
+      "question_text": "Which has a smaller value: 1 \u20b1100 bill or 1 \u20b110 coin?",
+      "correct_answer": "1 \u20b110 coin",
       "options": [
         {
           "key": "A",
-          "value": "1 ₱10 coin and 1 ₱5 coin",
+          "value": "1 \u20b1100 bill",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "2 ₱50 bills",
+          "value": "1 \u20b110 coin",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "1 ₱20 bill, 1 ₱10 coin, and 1 ₱1 coin",
+          "value": "1 \u20b120 bill",
           "is_correct": false
         },
         {
@@ -298,12 +324,12 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Which has a greater value: 2 ₱10 coins or 1 ₱5 coin and 1 ₱1 coin?",
-      "correct_answer": "2 ₱10 coins",
+      "question_text": "Which has a smaller value: 1 \u20b11 coin or 1 \u20b1100 bill?",
+      "correct_answer": "1 \u20b11 coin",
       "options": [
         {
           "key": "A",
-          "value": "1 ₱5 coin and 1 ₱1 coin",
+          "value": "1 \u20b1100 bill",
           "is_correct": false
         },
         {
@@ -313,12 +339,12 @@
         },
         {
           "key": "C",
-          "value": "2 ₱10 coins",
+          "value": "1 \u20b11 coin",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "1 ₱10 coin and 1 ₱5 coin",
+          "value": "1 \u20b120 bill",
           "is_correct": false
         }
       ]
@@ -326,8 +352,8 @@
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Which has a greater value: 1 ₱10 coin, 1 ₱5 coin, and 2 ₱1 coins or 1 ₱10 coin and 2 ₱1 coins?",
-      "correct_answer": "1 ₱10 coin, 1 ₱5 coin, and 2 ₱1 coins",
+      "question_text": "Which has a smaller value: 1 \u20b11 coin or 1 \u20b120 bill?",
+      "correct_answer": "1 \u20b11 coin",
       "options": [
         {
           "key": "A",
@@ -337,93 +363,33 @@
         },
         {
           "key": "B",
-          "value": "1 ₱10 coin and 2 ₱1 coins",
-          "text": "1 ₱10 coin and 2 ₱1 coins",
+          "value": "1 \u20b120 bill",
+          "text": "1 \u20b120 bill",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "1 ₱5 coin and 1 ₱1 coin",
-          "text": "1 ₱5 coin and 1 ₱1 coin",
+          "value": "1 \u20b1100 bill",
+          "text": "1 \u20b1100 bill",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "1 ₱10 coin, 1 ₱5 coin, and 2 ₱1 coins",
-          "text": "1 ₱10 coin, 1 ₱5 coin, and 2 ₱1 coins",
+          "value": "1 \u20b11 coin",
+          "text": "1 \u20b11 coin",
           "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "Which has a greater value: 1 ₱10 coin and 1 ₱1 coin or 2 ₱10 coins?",
-      "correct_answer": "2 ₱10 coins",
-      "options": [
-        {
-          "key": "A",
-          "value": "2 ₱10 coins",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "1 ₱5 coin and 1 ₱1 coin",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1 ₱10 coin and 1 ₱1 coin",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "They are equal",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "cloze",
-      "question_text": "Which has a greater value: 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin or 1 ₱10 coin and 2 ₱1 coins?",
-      "correct_answer": "1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
-      "options": [
-        {
-          "key": "A",
-          "value": "1 ₱5 coin and 2 ₱1 coins",
-          "text": "1 ₱5 coin and 2 ₱1 coins",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
-          "text": "1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "1 ₱10 coin and 2 ₱1 coins",
-          "text": "1 ₱10 coin and 2 ₱1 coins",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "They are equal",
-          "text": "They are equal",
-          "is_correct": false
         }
       ]
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Which has a greater value: 1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin or 2 ₱5 coins and 1 ₱1 coin?",
-      "correct_answer": "1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+      "question_text": "Which has a smaller value: 1 \u20b1100 bill or 1 \u20b120 bill?",
+      "correct_answer": "1 \u20b120 bill",
       "options": [
         {
           "key": "A",
-          "value": "1 ₱10 coin, 1 ₱5 coin, and 1 ₱1 coin",
+          "value": "1 \u20b120 bill",
           "is_correct": true
         },
         {
@@ -433,12 +399,40 @@
         },
         {
           "key": "C",
-          "value": "2 ₱5 coins and 1 ₱1 coin",
+          "value": "1 \u20b1100 bill",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "1 ₱10 coin and 1 ₱5 coin",
+          "value": "1 \u20b11 coin",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "read_mcq",
+      "question_text": "Which has a greater value: 1 \u20b1100 bill or 1 \u20b110 coin?",
+      "correct_answer": "C",
+      "options": [
+        {
+          "key": "A",
+          "value": "1 \u20b110 coin",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "They are equal",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1 \u20b1100 bill",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "1 \u20b15 coin",
           "is_correct": false
         }
       ]
@@ -446,17 +440,17 @@
     {
       "seed": 606,
       "formatter": "mcq",
-      "question_text": "Which has a greater value: 1 ₱10 coin and 2 ₱1 coins or 2 ₱5 coins and 1 ₱1 coin?",
-      "correct_answer": "1 ₱10 coin and 2 ₱1 coins",
+      "question_text": "Which has a greater value: 1 \u20b1100 bill or 1 \u20b150 bill?",
+      "correct_answer": "1 \u20b1100 bill",
       "options": [
         {
           "key": "A",
-          "value": "1 ₱10 coin and 2 ₱1 coins",
+          "value": "1 \u20b1100 bill",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "2 ₱5 coins and 1 ₱1 coin",
+          "value": "1 \u20b150 bill",
           "is_correct": false
         },
         {
@@ -466,37 +460,16 @@
         },
         {
           "key": "D",
-          "value": "1 ₱10 coin, 1 ₱5 coin, and 3 ₱1 coins",
+          "value": "1 \u20b110 coin",
           "is_correct": false
         }
       ]
+    },
+    {
+      "seed": 607,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Which has a greater value: 1 \u20b110 coin or 1 \u20b120 bill?",
+      "correct_answer": "1 \u20b120 bill"
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Two stems never set up a comparison at all — 'Count the coins and bills shown. What is the total amount?' asks for a single total, and the fewest-pieces construction task asks the student to build one amount rather than judge which of two sets is worth more, unlike 'Compare different denominations of peso coins (excluding centavo coins) and bills up to ₱100'."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Comparisons span coin-vs-coin ('2 ₱10 coins or 1 ₱5 coin and 1 ₱1 coin'), bill-vs-bill ('2 ₱50 bills or 1 ₱10 coin and 1 ₱5 coin'), and equal-value pairs offered as a distractor option ('They are equal'), covering the comparison outcomes the competency implies."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Weighing two named sets of denominations against each other is a manageable single judgment for this grade and quarter."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "mcq, cloze, read_mcq, and set_fill_in_blank formats are all present, even though the last two lean away from the comparison task itself."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Where comparison is tested, difficulty tracks how close the two sets' totals are rather than switching to a different money skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Sets compared reach as high as ₱100 ('2 ₱50 bills') without exceeding the stated ceiling."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

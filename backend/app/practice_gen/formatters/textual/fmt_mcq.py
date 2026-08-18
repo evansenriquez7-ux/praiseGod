@@ -214,6 +214,10 @@ def _build_pure_question(ctx: QuestionContext) -> str:
             # wrong. Same defect and same fix as base_generator's copy of
             # this stem (three copies of one sentence — see doc_rem.md R2).
             return f"Compare the numbers: {a} ___ {b}. Which sign is correct: >, <, or =?"
+    elif concept == "money_peso":
+        if values.get("question"):
+            return values["question"]
+        return ctx.question_text
     else:
         # Fallback: use the question_text
         return ctx.question_text

@@ -490,6 +490,28 @@ _MONEY_SPENDING = Spine(
     grade_band=(1, 3),
 )
 
+_MONEY_STORE_SNACK = Spine(
+    id="money_store_snack",
+    template=(
+        "{actor} had ₱{a} and bought a snack for ₱{b} at the sari-sari store. "
+        "How much money does {actor} have left?"
+    ),
+    required_concepts={"money_peso", "subtraction"},
+    blank_target="result",
+    grade_band=(1, 3),
+)
+
+_MONEY_SAVINGS_WITHDRAW = Spine(
+    id="money_savings_withdraw",
+    template=(
+        "{actor} had ₱{a} in a piggy bank and used ₱{b} to buy a notebook. "
+        "How much money is left in the piggy bank?"
+    ),
+    required_concepts={"money_peso", "subtraction"},
+    blank_target="result",
+    grade_band=(1, 3),
+)
+
 _MONEY_CHANGE = Spine(
     id="money_change",
     template=(
@@ -504,8 +526,41 @@ _MONEY_CHANGE = Spine(
 _MONEY_TOTAL = Spine(
     id="money_total",
     template=(
-        "{actor} has ₱{a} in bills and ₱{b} in coins. "
+        "{actor} had ₱{a} and received ₱{b} more from Nanay. "
         "How much money does {actor} have in all?"
+    ),
+    required_concepts={"money_peso", "addition"},
+    blank_target="result",
+    grade_band=(1, 3),
+)
+
+_MONEY_BUYING_TWO = Spine(
+    id="money_buying_two",
+    template=(
+        "{actor} bought a pencil for ₱{a} and an eraser for ₱{b}. "
+        "How much did {actor} spend in all?"
+    ),
+    required_concepts={"money_peso", "addition"},
+    blank_target="result",
+    grade_band=(1, 3),
+)
+
+_MONEY_SAVINGS = Spine(
+    id="money_savings",
+    template=(
+        "{actor} saved ₱{a} on Monday and ₱{b} on Tuesday. "
+        "How much money did {actor} save altogether?"
+    ),
+    required_concepts={"money_peso", "addition"},
+    blank_target="result",
+    grade_band=(1, 3),
+)
+
+_MONEY_TWO_POCKETS = Spine(
+    id="money_two_pockets",
+    template=(
+        "{actor} has ₱{a} in one pocket and ₱{b} in another pocket. "
+        "How much money does {actor} have in total?"
     ),
     required_concepts={"money_peso", "addition"},
     blank_target="result",
@@ -723,8 +778,13 @@ ALL_SPINES: List[Spine] = [
     # Money
     _MONEY_BUYING,
     _MONEY_SPENDING,
+    _MONEY_STORE_SNACK,
+    _MONEY_SAVINGS_WITHDRAW,
     _MONEY_CHANGE,
     _MONEY_TOTAL,
+    _MONEY_BUYING_TWO,
+    _MONEY_SAVINGS,
+    _MONEY_TWO_POCKETS,
     # Measurement
     _MEAS_COMPARE_LENGTHS,
     _MEAS_DIFFERENCE,

@@ -227,6 +227,12 @@ def _build_equation_sentence(ctx: QuestionContext) -> str:
             b_part = "1 more part is" if b_num == 1 else f"{b_num} more parts are"
             return f"A shape is divided into {a_den} equal parts. {a_part} shaded and {b_part} shaded: \\(\\frac{{{a_num}}}{{{a_den}}} + \\frac{{{b_num}}}{{{b_den}}} = ___\\)"
         return f"A shape is divided into {denom} equal parts with {numer} parts shaded. The fraction shaded is ___."
+    elif concept == "money_peso":
+        if values.get("question"):
+            return values["question"]
+        if ctx.question_text_with_blank:
+            return ctx.question_text_with_blank
+        return f"{values.get('question_text', ctx.question_text)}"
     else:
         if ctx.question_text_with_blank:
             return ctx.question_text_with_blank

@@ -164,15 +164,18 @@ def generate_params(
         from backend.app.practice_gen.dna.base import log_interpolate
         diff_scalar = float(profile.get("difficulty_scalar", profile.get("number_difficulty", 0.5)))
         max_total = int(log_interpolate(10, bounds["max_total"], diff_scalar))
+    elif isinstance(max_total_prof, float) and 0.0 <= max_total_prof <= 1.0:
+        from backend.app.practice_gen.dna.base import log_interpolate
+        max_total = int(log_interpolate(10, bounds["max_total"], max_total_prof))
     elif isinstance(max_total_prof, (int, float)):
         max_total = int(max_total_prof)
     elif isinstance(max_total_prof, str):
         legacy_map = {"up_to_100": 100, "up_to_1000": 1000, "up_to_10000": 10000}
-        max_total = legacy_map.get(max_total_prof, 100)
+        max_total = legacy_map.get(max_total_prof, bounds["max_total"])
     else:
-        max_total = 100
+        max_total = bounds["max_total"]
 
-    max_total = max(20, min(max_total, 10000))
+    max_total = max(20, min(max_total, bounds["max_total"]))
 
     operation_profile = profile.get("operation", "add_amounts")
     if operation_profile == "add":
@@ -195,7 +198,10 @@ def generate_params(
         # only, peso bills only, combined peso coins and peso bills)". Pinning
         # one value would leave the others untested, so rotate them by seed and
         # let a node's sample set cover each.
-        denom_type = rng.choice(["centavos_only", "coins_only", "bills_only", "mixed"])
+        if allow_centavos and grade > 1:
+            denom_type = rng.choice(["centavos_only", "coins_only", "bills_only", "mixed"])
+        else:
+            denom_type = rng.choice(["coins_only", "bills_only", "mixed"])
 
     # A centavo pile is denominated in centavos, not pesos. Mixing the two
     # integer scales in one pile is what kept this sub-case out of the DNA:
@@ -286,6 +292,13 @@ def generate_params(
             if len(pile) >= 2 and sum(pile) <= max_total:
                 candidates.append((sum(pile), pile))
 
+    if context == "word_problem" and grade == 1:
+        for _ in range(150):
+            a_val = rng.choice([2, 5, 10, 15, 20, 25, 30, 40, 50])
+            b_val = rng.choice([1, 2, 5, 10, 15, 20, 25, 30, 40, 50])
+            if a_val + b_val <= max_total:
+                candidates.append((a_val + b_val, [a_val, b_val]))
+
     if not candidates:
         # Fallback: two of the smallest available denomination.
         fallback_denom = denom_pool[0]
@@ -302,18 +315,27 @@ def generate_params(
     total = selected_c[0]
 
     if operation == "compare":
-        t1, amounts1 = total, amounts
-        other_candidates = [c for c in candidates if c[0] != t1]
-        if not other_candidates:
-            other_candidates = [(t1 + 10, [10])]
-        selected_other = rng.choice(other_candidates)
-        t2, amounts2 = selected_other[0], selected_other[1]
+        if grade == 1:
+            denom_choices = [1, 5, 10, 20, 50, 100]
+            d1, d2 = rng.sample(denom_choices, 2)
+            amounts1 = [d1]
+            amounts2 = [d2]
+            t1, t2 = d1, d2
+            remaining_denoms = [d for d in denom_choices if d not in (d1, d2)]
+            amounts3 = [rng.choice(remaining_denoms)]
+        else:
+            t1, amounts1 = total, amounts
+            other_candidates = [c for c in candidates if c[0] != t1]
+            if not other_candidates:
+                other_candidates = [(t1 + 10, [10])]
+            selected_other = rng.choice(other_candidates)
+            t2, amounts2 = selected_other[0], selected_other[1]
 
-        third_candidates = [c for c in candidates if c[0] != t1 and c[0] != t2]
-        if not third_candidates:
-            third_candidates = [(t1 + t2 + 10, [10, 10])]
-        selected_third = rng.choice(third_candidates)
-        amounts3 = selected_third[1]
+            third_candidates = [c for c in candidates if c[0] != t1 and c[0] != t2]
+            if not third_candidates:
+                third_candidates = [(t1 + t2 + 10, [10, 10])]
+            selected_third = rng.choice(third_candidates)
+            amounts3 = selected_third[1]
 
         def get_desc(amts):
             from collections import Counter
@@ -343,16 +365,26 @@ def generate_params(
         desc2 = get_desc(amounts2)
         desc3 = get_desc(amounts3)
 
-        question = f"Which has a greater value: {desc1} or {desc2}?"
-        if t1 > t2:
-            correct_ans = desc1
-            distractors = [desc2, "They are equal", desc3]
+        ask_greater = rng.choice([True, False])
+        if ask_greater:
+            question = f"Which has a greater value: {desc1} or {desc2}?"
+            if t1 > t2:
+                correct_ans = desc1
+                distractors = [desc2, "They are equal", desc3]
+            else:
+                correct_ans = desc2
+                distractors = [desc1, "They are equal", desc3]
         else:
-            correct_ans = desc2
-            distractors = [desc1, "They are equal", desc3]
+            question = f"Which has a smaller value: {desc1} or {desc2}?"
+            if t1 < t2:
+                correct_ans = desc1
+                distractors = [desc2, "They are equal", desc3]
+            else:
+                correct_ans = desc2
+                distractors = [desc1, "They are equal", desc3]
 
         return {
-        "blank_target": "answer",
+            "blank_target": "answer",
             "amounts": amounts1,
             "total": t1,
             "operation": "compare",
@@ -363,15 +395,29 @@ def generate_params(
         }
 
     elif operation == "read_write":
-        task = rng.choice(["words_to_numeral", "numeral_to_words", "symbols"])
         if grade == 1:
+            task = rng.choice(["recognize_coin", "recognize_bill", "words_to_numeral", "numeral_to_words", "symbols"])
             total_rw = rng.choice([5, 10, 20, 50, 100])
         elif grade == 2:
+            task = rng.choice(["words_to_numeral", "numeral_to_words", "symbols"])
             total_rw = rng.choice([20, 50, 100, 200, 500, 1000])
         else:
+            task = rng.choice(["words_to_numeral", "numeral_to_words", "symbols"])
             total_rw = rng.randint(20, 9999)
 
-        if task == "numeral_to_words":
+        if task == "recognize_coin":
+            denom = rng.choice([1, 5, 10, 20])
+            question = f"A coin marked with the number {denom} is shown. What coin is it?"
+            correct_ans = f"₱{denom} coin"
+            wrong_denoms = [d for d in [1, 5, 10, 20] if d != denom]
+            distractors = [f"₱{d} coin" for d in wrong_denoms[:3]]
+        elif task == "recognize_bill":
+            denom = rng.choice([20, 50, 100])
+            question = f"A bill marked with the number {denom} is shown. What bill is it?"
+            correct_ans = f"₱{denom} bill"
+            wrong_denoms = [d for d in [20, 50, 100] if d != denom] + [10]
+            distractors = [f"₱{d} bill" if d >= 20 else f"₱{d} coin" for d in wrong_denoms[:3]]
+        elif task == "numeral_to_words":
             words = num_to_words(total_rw)
             question = f"How is ₱{total_rw} written in words?"
             correct_ans = f"{words} pesos"
@@ -394,23 +440,6 @@ def generate_params(
                 f"{total_rw}¢"
             ]
         else: # symbols
-            # "...Philippine currency symbols (₱ AND PhP)... and the
-            # centavo sign" (mat_g3_na_q2_0): grade==3 only ever took the
-            # centavo-decimal branch, so PhP -- one of the two explicitly
-            # named symbols -- never appeared in any grade-3 sample at all
-            # (blind review: "'PhP' never appears in any of 15 samples").
-            # Alternate between both G3 sub-cases instead of picking one
-            # by grade.
-            # The competency names three notations: "₱ and PhP ... and the
-            # centavo sign". Two sub-cases covered ₱ and PhP, but the centavo
-            # sign was only ever a *distractor* -- in this branch, in
-            # words_to_numeral, and in numeral_to_words alike. Blind review:
-            # "not one correct_answer contains a ¢ symbol; the sign shows up
-            # solely as a wrong option ... so the competency's third named
-            # notation ... is a trap and never a taught answer." A notation a
-            # pupil only ever sees marked wrong is being taught against.
-            # Rotate three sub-cases instead of two, so writing the centavo
-            # sign is something the node actually asks for.
             g3_sub = rng.choice(["peso_decimal", "centavo_sign", "php_code"]) if grade == 3 else "php_code"
             if g3_sub == "peso_decimal":
                 cent_choice = rng.choice([25, 50])
@@ -422,8 +451,6 @@ def generate_params(
                     f"{cent_choice}¢"
                 ]
             elif g3_sub == "centavo_sign":
-                # The inverse of the branch above: the centavo sign is the
-                # answer, not the trap.
                 cent_choice = rng.choice([25, 50])
                 question = f"How is ₱0.{cent_choice} written using the centavo sign?"
                 correct_ans = f"{cent_choice}¢"
@@ -441,7 +468,7 @@ def generate_params(
                     f"{total_rw} PhP"
                 ]
         return {
-        "blank_target": "answer",
+            "blank_target": "answer",
             "amounts": [total_rw],
             "total": total_rw,
             "operation": "read_write",

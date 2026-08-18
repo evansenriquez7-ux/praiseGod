@@ -1205,6 +1205,7 @@ def _parse_competency_bounds(
     # competency's own task of determining the value of a given set".
     elif dna_name == "money_peso" and "determine" in text and "value" in text:
         bounds["operation"] = "add_amounts"
+        bounds["context"] = "pure"
 
         # mat_g2_na_q2_0's parenthetical enumerates the denomination sub-cases
         # it wants: "(centavo coins only, peso coins only, peso bills only,
@@ -1222,7 +1223,7 @@ def _parse_competency_bounds(
         # them wrong. That constant is currently referenced nowhere at all.
         # Serving centavo piles needs unit-aware render text in the money
         # formatters, which is its own change.
-        if "peso bills only" in text:
+        if "peso bills only" in text or "bills and/or" in text or ("bills" in text and "coins" in text):
             bounds["denomination_type"] = "peso_sub_cases"
 
     elif dna_name == "geometric_lines":
@@ -1628,11 +1629,11 @@ BINDINGS = {
     },
     "mat_g1_na_q4_4": {
         "dna": "money_peso",
-        "visual": "peso_money_build"
+        "visual": "peso_money_read"
     },
     "mat_g1_na_q4_5": {
         "dna": "money_peso",
-        "visual": "peso_money_build"
+        "visual": "peso_money_read"
     },
     "mat_g1_na_q4_6": {
         "dna": "money_peso",

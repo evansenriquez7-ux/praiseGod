@@ -261,8 +261,14 @@ def format_peso_money(
     total = vp["total"]
     traps = _build_traps(vp, rng)
 
+    dna_question = (ctx.values or {}).get("question")
+    dna_ans = (ctx.values or {}).get("answer") or (ctx.values or {}).get("result")
+    dna_distractors = (ctx.values or {}).get("distractors")
+
     # ── 2. Question text ──────────────────────────────────────────────────────
-    if interaction_mode == "read":
+    if dna_question:
+        question_text = dna_question
+    elif interaction_mode == "read":
         question_text = "Count the coins and bills shown. What is the total amount?"
     else:
         stem = f"Use coins and bills to make exactly ₱{total}."
@@ -270,32 +276,44 @@ def format_peso_money(
             stem += " Use the fewest pieces possible."
         question_text = stem
 
+    target_ans = dna_ans if dna_ans is not None else total
+
     # ── 3. Answer collection ──────────────────────────────────────────────────
     mcq_options = None
     if answer_collection == "mcq":
-        distractor_amounts = []
-        seen = {total}
-        for t in traps.values():
-            v = t.get("value")
-            if v is not None and v not in seen and v > 0:
-                seen.add(v)
-                distractor_amounts.append(v)
-            if len(distractor_amounts) == 3:
-                break
+        if dna_distractors:
+            distractor_amounts = [d for d in dna_distractors if str(d) != str(target_ans)]
+        else:
+            distractor_amounts = []
+            seen = {total}
+            for t in traps.values():
+                v = t.get("value")
+                if v is not None and v not in seen and v > 0:
+                    seen.add(v)
+                    distractor_amounts.append(v)
+                if len(distractor_amounts) == 3:
+                    break
+        seen = {str(target_ans)}
+        unique_traps = []
+        for d in distractor_amounts:
+            if str(d) not in seen:
+                unique_traps.append(d)
+                seen.add(str(d))
+        distractor_amounts = unique_traps
         if len(distractor_amounts) < 3:
-            distractor_amounts = augment_distractors(distractor_amounts, total, target=3, max_delta=5)
+            distractor_amounts = augment_distractors(distractor_amounts, target_ans, target=3, max_delta=10)
             if len(distractor_amounts) < 3:
                 raise ValueError(f"Formatter 'peso_money' requires at least 3 unique distractors, but got {len(distractor_amounts)}")
 
-        all_opts = [total] + distractor_amounts[:3]
+        all_opts = [target_ans] + distractor_amounts[:3]
         rng.shuffle(all_opts)
         mcq_options = [
-            {"key": chr(ord("A") + i), "value": v, "is_correct": v == total}
+            {"key": chr(ord("A") + i), "value": v, "is_correct": str(v) == str(target_ans)}
             for i, v in enumerate(all_opts)
         ]
         correct_answer = next(o["key"] for o in mcq_options if o["is_correct"])
     else:
-        correct_answer = total
+        correct_answer = target_ans
 
     format_data: dict = {"visual_params": vp}
     if mcq_options is not None:
