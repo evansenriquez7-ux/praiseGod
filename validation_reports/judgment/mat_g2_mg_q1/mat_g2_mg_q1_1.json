@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_mg_q1_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q1-Harden (mat_g2_mg_q1_0..mat_g2_mg_q1_2), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The samples successfully test both composing and decomposing figures as explicitly required by the competency. For instance, \"joined along their flat straight edges\" and \"cut straight down the middle into two 2-by-2 parts\" directly address the composition and decomposition of figures."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The generated items cover the full spectrum of shapes listed in the competency, including squares, rectangles, triangles, circles, half-circles, and quarter-circles. They also incorporate both specified contexts: \"Using cut-outs\" and \"On a square grid\"."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The questions are well-suited for Grade 2. The scenarios use simple, easily visualizable shapes and operations, like joining \"two identical triangles\" or \"four quarter-circles\", which matches the cognitive expectations for a first-quarter Grade 2 learner."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The generator provides a good variety of problem structures. It asks students to identify the resulting shape from composition (\"What shape is formed?\"\\), the resulting shapes from decomposition (\"What two shapes are made?\"\\), and the count of simple shapes in a composite figure (\"How many simple shapes were used to compose it?\"\\)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every question strictly adheres to the competency text. There is no extraneous vocabulary, and the operations are limited entirely to composing and decomposing the exact set of shapes mentioned using \"cut-outs\" and \"square grids\"."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical values and spatial dimensions are appropriately scaled. Grid sizes like \"4-by-2\" and shape counts like \"1 square, 1 triangle, and 1 rectangle\" are perfectly scaled for Grade 2 mathematics, avoiding overly complex arithmetic."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -13,33 +39,35 @@
     500,
     501,
     502,
-    601
+    600,
+    601,
+    603
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?",
-      "correct_answer": "2",
+      "question_text": "On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?",
+      "correct_answer": "3",
       "options": [
         {
           "key": "A",
-          "value": "1",
+          "value": "2",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "4",
+          "value": "5",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "2",
+          "value": "3",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "3",
+          "value": "4",
           "is_correct": false
         }
       ]
@@ -47,7 +75,7 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
+      "question_text": "Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form?",
       "correct_answer": "rectangle",
       "options": [
         {
@@ -57,17 +85,17 @@
         },
         {
           "key": "B",
-          "value": "hexagon",
+          "value": "half-circle",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "pentagon",
+          "value": "quarter-circle",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "square",
+          "value": "circle",
           "is_correct": false
         }
       ]
@@ -75,27 +103,27 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "Two half-circles are put together to make one shape. What shape is formed?",
-      "correct_answer": "circle",
+      "question_text": "On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed?",
+      "correct_answer": "rectangle",
       "options": [
         {
           "key": "A",
-          "value": "square",
+          "value": "circle",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "rectangle",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "triangle",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": "quarter-circle",
+          "is_correct": false
+        },
+        {
           "key": "D",
-          "value": "circle",
+          "value": "rectangle",
           "is_correct": true
         }
       ]
@@ -103,27 +131,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "A square is cut on a slant, from one edge to another. What two shapes are made?",
-      "correct_answer": "two triangles",
+      "question_text": "A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure?",
+      "correct_answer": "2",
       "options": [
         {
           "key": "A",
-          "value": "two pentagons",
+          "value": "4",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "two rectangles",
+          "value": "1",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "two triangles",
+          "value": "2",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "two squares",
+          "value": "3",
           "is_correct": false
         }
       ]
@@ -131,27 +159,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
-      "correct_answer": "rectangle",
+      "question_text": "Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed?",
+      "correct_answer": "circle",
       "options": [
         {
           "key": "A",
-          "value": "pentagon",
+          "value": "triangle",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "rectangle",
+          "value": "circle",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "hexagon",
+          "value": "square",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "square",
+          "value": "rectangle",
           "is_correct": false
         }
       ]
@@ -159,27 +187,27 @@
     {
       "seed": 50,
       "formatter": "read_mcq",
-      "question_text": "Two half-circles are put together to make one shape. What shape is formed?",
+      "question_text": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?",
       "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": "rectangle",
+          "value": "circle",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "circle",
+          "value": "square",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "triangle",
+          "value": "half-circle",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "square",
+          "value": "triangle",
           "is_correct": false
         }
       ]
@@ -187,27 +215,27 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "A figure is made of a square with a half-circle on top. How many shapes make up this figure?",
+      "question_text": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?",
       "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": "2",
+          "value": "square",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "3",
+          "value": "triangle",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "1",
+          "value": "circle",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "4",
+          "value": "half-circle",
           "is_correct": false
         }
       ]
@@ -215,27 +243,27 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?",
-      "correct_answer": "2",
+      "question_text": "On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?",
+      "correct_answer": "3",
       "options": [
         {
           "key": "A",
-          "value": "2",
+          "value": "3",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "4",
+          "value": "5",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "3",
+          "value": "4",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "1",
+          "value": "2",
           "is_correct": false
         }
       ]
@@ -243,12 +271,96 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Four quarter-circles are put together to make one shape. What shape do they make?",
+      "question_text": "On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure?",
+      "correct_answer": "3",
+      "options": [
+        {
+          "key": "A",
+          "value": "1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "On a square grid, a rotated composite shape is made of a square and a triangle. How many simple shapes make up this figure?",
+      "correct_answer": "2",
+      "options": [
+        {
+          "key": "A",
+          "value": "1",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "3",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "4",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made?",
+      "correct_answer": "two triangles",
+      "options": [
+        {
+          "key": "A",
+          "value": "two circles",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "two rectangles",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "two squares",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "two triangles",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 603,
+      "formatter": "mcq",
+      "question_text": "Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make?",
       "correct_answer": "circle",
       "options": [
         {
           "key": "A",
-          "value": "square",
+          "value": "triangle",
           "is_correct": false
         },
         {
@@ -258,7 +370,7 @@
         },
         {
           "key": "C",
-          "value": "triangle",
+          "value": "square",
           "is_correct": false
         },
         {
@@ -267,61 +379,6 @@
           "is_correct": false
         }
       ]
-    },
-    {
-      "seed": 601,
-      "formatter": "mcq",
-      "question_text": "A rectangle is cut into two equal pieces down the middle. What two shapes are made?",
-      "correct_answer": "two rectangles",
-      "options": [
-        {
-          "key": "A",
-          "value": "two squares",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "two triangles",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "two pentagons",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "two rectangles",
-          "is_correct": true
-        }
-      ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples ask students to count component shapes or name the shape formed, e.g. \"How many shapes make up this figure?\" and \"What shape do they form?\", both matching the compose/decompose verbs directly."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Ten samples all show cutting or joining named shapes, yet the phrase \"square grids\" from the competency text has no counterpart anywhere in the set -- grid-based composition is simply not one of the generated item types."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Sentence structure is short and concrete, e.g. \"A figure is made of a rectangle with a triangle on top.\", matching Grade 2 Quarter 1 reading level."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Both compose direction (seed 502 four quarter-circles forming a circle) and decompose direction (seed 45 a square cut into two triangles, seed 601 a rectangle cut into two rectangles) appear, across mcq and read_mcq formatters."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Difficulty varies by which named shapes are combined or split, not by an unrelated numeric axis."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Component counts stay small (one to four shapes), appropriate since this qualitative competency states no numeric ceiling."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

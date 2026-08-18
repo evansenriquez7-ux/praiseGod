@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_mg_q1_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B2 (g1 na_q2-q4 + g2 dp/mg), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q1-Harden (mat_g2_mg_q1_0..mat_g2_mg_q1_2), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items successfully assess the ability to represent and describe the target shapes. Questions prompt students to identify shapes based on their core geometric attributes, such as \"What shape has no corners and no straight sides?\""
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The packet thoroughly covers all three shapes mandated by the competency: circles (\"How many corners does a circle have?\"\\), half-circles (\"A shape is made from exactly half of a circle. What is it called?\"\\), and quarter-circles (\"A circle is divided into 4 equal parts. What is each part called?\"\\)."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The conceptual load is highly appropriate for Grade 2, Quarter 1. The items use simple descriptive language suitable for early readers and basic spatial reasoning, such as understanding shape constancy when \"A quarter-circle is rotated to face another direction. What shape is it?\""
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The generated questions exhibit an excellent variety of testing formats. They range from definitional prompts (\"A shape is made from exactly one quarter of a circle. What is it called?\"\\) to compositional relationships (\"How many quarter-circles make 1 whole circle?\"\\) and comparative property analysis (\"Which has more straight edges: a half-circle or a quarter-circle?\"\\)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The questions strictly adhere to the MATATAG learning competency without scope creep. They focus explicitly on representing and describing the target circular figures. While other shapes like \"triangle\" and \"square\" appear as options, they are appropriately used only as plausible distractors."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numerical values used in the compositional items are small, concrete, and developmentally appropriate for the target grade (e.g., dividing into \"2 equal parts\" or \"4 equal parts\")."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -14,6 +40,7 @@
     501,
     502,
     600,
+    601,
     603,
     604,
     605
@@ -22,12 +49,12 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "A shape is made from exactly one quarter of a circle. What is it called?",
-      "correct_answer": "quarter-circle",
+      "question_text": "What shape has no corners and no straight sides?",
+      "correct_answer": "circle",
       "options": [
         {
           "key": "A",
-          "value": "half-circle",
+          "value": "triangle",
           "is_correct": false
         },
         {
@@ -37,12 +64,12 @@
         },
         {
           "key": "C",
-          "value": "quarter-circle",
+          "value": "circle",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "triangle",
+          "value": "rectangle",
           "is_correct": false
         }
       ]
@@ -78,12 +105,12 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "A shape is made from exactly half of a circle. What is it called?",
+      "question_text": "A circle is divided into 2 equal parts. What is each part called?",
       "correct_answer": "half-circle",
       "options": [
         {
           "key": "A",
-          "value": "triangle",
+          "value": "whole circle",
           "is_correct": false
         },
         {
@@ -93,7 +120,7 @@
         },
         {
           "key": "C",
-          "value": "rectangle",
+          "value": "triangle",
           "is_correct": false
         },
         {
@@ -106,22 +133,22 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "A shape is made from exactly half of a circle. What is it called?",
-      "correct_answer": "half-circle",
+      "question_text": "A shape is made from exactly one quarter of a circle. What is it called?",
+      "correct_answer": "quarter-circle",
       "options": [
         {
           "key": "A",
-          "value": "rectangle",
+          "value": "square",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "quarter-circle",
+          "value": "half-circle",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "half-circle",
+          "value": "quarter-circle",
           "is_correct": true
         },
         {
@@ -162,7 +189,7 @@
     {
       "seed": 50,
       "formatter": "read_mcq",
-      "question_text": "A shape is made from exactly half of a circle. What is it called?",
+      "question_text": "A circle is divided into 2 equal parts. What is each part called?",
       "correct_answer": "B",
       "options": [
         {
@@ -177,12 +204,12 @@
         },
         {
           "key": "C",
-          "value": "rectangle",
+          "value": "triangle",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "triangle",
+          "value": "whole circle",
           "is_correct": false
         }
       ]
@@ -190,7 +217,7 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "A shape is made from exactly half of a circle. What is it called?",
+      "question_text": "A circle is divided into 2 equal parts. What is each part called?",
       "correct_answer": "A",
       "options": [
         {
@@ -200,7 +227,7 @@
         },
         {
           "key": "B",
-          "value": "triangle",
+          "value": "whole circle",
           "is_correct": false
         },
         {
@@ -210,7 +237,7 @@
         },
         {
           "key": "D",
-          "value": "rectangle",
+          "value": "triangle",
           "is_correct": false
         }
       ]
@@ -246,7 +273,7 @@
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "A shape is made from exactly one quarter of a circle. What is it called?",
+      "question_text": "A circle is divided into 4 equal parts. What is each part called?",
       "correct_answer": "quarter-circle",
       "options": [
         {
@@ -261,12 +288,12 @@
         },
         {
           "key": "C",
-          "value": "square",
+          "value": "rectangle",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "triangle",
+          "value": "whole circle",
           "is_correct": false
         }
       ]
@@ -274,8 +301,36 @@
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What shape has 4 sides where opposite sides are equal?",
-      "correct_answer": "rectangle",
+      "question_text": "A quarter-circle is rotated to face another direction. What shape is it?",
+      "correct_answer": "quarter-circle",
+      "options": [
+        {
+          "key": "A",
+          "value": "half-circle",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "circle",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "quarter-circle",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "square",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "A shape is made from exactly half of a circle. What is it called?",
+      "correct_answer": "half-circle",
       "options": [
         {
           "key": "A",
@@ -284,26 +339,26 @@
         },
         {
           "key": "B",
-          "value": "square",
+          "value": "quarter-circle",
           "is_correct": false
         },
         {
           "key": "C",
           "value": "rectangle",
-          "is_correct": true
+          "is_correct": false
         },
         {
           "key": "D",
-          "value": "pentagon",
-          "is_correct": false
+          "value": "half-circle",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "A circle and a square: which one has straight sides?",
-      "correct_answer": "square",
+      "question_text": "Which has more straight edges: a half-circle or a quarter-circle?",
+      "correct_answer": "quarter-circle",
       "options": [
         {
           "key": "A",
@@ -312,17 +367,17 @@
         },
         {
           "key": "B",
-          "value": "square",
+          "value": "quarter-circle",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "circle",
+          "value": "half-circle",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "both",
+          "value": "they are equal",
           "is_correct": false
         }
       ]
@@ -330,36 +385,8 @@
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Two half-circles are put together to make one shape. What shape is formed?",
-      "correct_answer": "circle",
-      "options": [
-        {
-          "key": "A",
-          "value": "circle",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "rectangle",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "triangle",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
-      "formatter": "read_mcq",
-      "question_text": "How many sides does a rectangle have?",
-      "correct_answer": "A",
+      "question_text": "How many quarter-circles make 1 whole circle?",
+      "correct_answer": "4",
       "options": [
         {
           "key": "A",
@@ -373,42 +400,43 @@
         },
         {
           "key": "C",
-          "value": "6",
+          "value": "2",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "5",
+          "value": "8",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 605,
+      "formatter": "read_mcq",
+      "question_text": "How many corners does a circle have?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": "0",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "1",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "4",
           "is_correct": false
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "FAIL",
-      "rationale": "Two sampled items are entirely about a shape the competency never names — 'What shape has 4 sides where opposite sides are equal?' and 'How many sides does a rectangle have?' — neither mentions a circle, half-circle, or quarter-circle at all, so they test rectangle recognition rather than 'Represent and describe circles, half circles and quarter circles'."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Where the sample stays on-topic, all three named shapes occur, including the part-whole relation between them ('Two half-circles are put together to make one shape. What shape is formed?' answering 'circle')."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "On-topic items ask for a single shape name from a short property description, matching a first geometry unit for this grade and quarter."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "CONCERN",
-      "rationale": "Every on-topic item is a straight mcq or text read_mcq naming a shape from a property; none has the student represent or construct a circle, half-circle, or quarter-circle directly, leaving the 'represent' half of the verb pair thin."
-    },
-    "competency_alignment": {
-      "verdict": "CONCERN",
-      "rationale": "The two rectangle items vary the sample by swapping in an entirely different shape family rather than varying difficulty within circles, half-circles, and quarter-circles."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "There is no numeric ceiling at stake for a shape-naming competency, and the on-topic items stay at the single-shape-property level this grade and quarter expects."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }

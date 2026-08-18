@@ -76,12 +76,6 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "directions": "one_direction",
         "grade_min": 1,
     },
-    # Every rotation item above starts from the same initial facing (UP) --
-    # the competency itself says "given an initial facing direction",
-    # implying the START should vary, not just the turn direction (blind
-    # review of mat_g1_mg_q4_0: "the starting direction is always UP...
-    # only the turn direction ever changes"). Same turn types, different
-    # starting facings.
     {
         "question": "An arrow faces DOWN. It does a quarter turn clockwise. Which direction does it face now?",
         "answer": "left",
@@ -122,17 +116,18 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "directions": "one_direction",
         "grade_min": 1,
     },
-    # ── slide / translation ────────────────────────────────────────────────────
+
+    # ── slide / translation (Grade 2: one-direction multi-step slide - mat_g2_mg_q1_2) ─────
     {
-        "question": "A shape moves 3 spaces to the right without turning or flipping. What is this called?",
-        "answer": "slide (translation)",
-        "distractors": ["flip (reflection)", "turn (rotation)", "stretch"],
+        "question": "A shape slides 2 spaces right, then slides 1 more space right in the same direction without turning. What is this multi-step movement called?",
+        "answer": "one-direction multi-step slide (translation)",
+        "distractors": ["flip (reflection)", "turn (rotation)", "two-direction slide"],
         "concept": "slide_translation",
         "directions": "one_direction",
         "grade_min": 2,
     },
     {
-        "question": "When a shape slides, does its size or shape change?",
+        "question": "After a shape undergoes a multi-step slide in one direction, does its size or shape change?",
         "answer": "No, the size and shape stay the same.",
         "distractors": [
             "Yes, it gets bigger.",
@@ -144,7 +139,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
     {
-        "question": "A triangle slides 4 spaces down. Which direction did it move?",
+        "question": "A triangle slides 2 spaces down, then slides 2 more spaces down. In which single direction did the multi-step slide move?",
         "answer": "downward",
         "distractors": ["upward", "to the right", "to the left"],
         "concept": "slide_translation",
@@ -152,13 +147,6 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
     {
-        # "one-direction multi-step slide" (mat_g2_mg_q1_2) had no item at
-        # all: every "one_direction" entry above is a single stage, and the
-        # only multi-stage entries are "two_directions" (different
-        # directions, gated to G3), so a node bound to
-        # directions="one_direction" could never surface the "multi-step"
-        # half of its own competency (blind review: comprehensive_coverage
-        # FAIL, "no sample chains two or more slide steps together").
         "question": "A shape slides 2 spaces right, then slides 3 more spaces right. How far did it move in all?",
         "answer": "5 spaces to the right",
         "distractors": ["2 spaces to the right", "3 spaces to the right", "6 spaces to the right"],
@@ -179,6 +167,72 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
     {
+        "question": "After a multi-step slide, the shape looks exactly the same — only its position changed. True or false?",
+        "answer": "True",
+        "distractors": ["False", "Only sometimes true", "Only for squares"],
+        "concept": "slide_translation",
+        "directions": "one_direction",
+        "grade_min": 2,
+    },
+    {
+        "question": "A figure undergoes a multi-step slide: 2 spaces up, then 3 more spaces up. What is another mathematical name for a slide?",
+        "answer": "translation",
+        "distractors": ["rotation", "reflection", "dilation"],
+        "concept": "slide_translation",
+        "directions": "one_direction",
+        "grade_min": 2,
+    },
+    {
+        "question": "To draw the result of sliding a square 4 spaces to the right in one direction, where should you draw the new square?",
+        "answer": "4 spaces to the right of the original square",
+        "distractors": ["4 spaces to the left", "4 spaces upward", "in the same place"],
+        "concept": "slide_translation",
+        "directions": "one_direction",
+        "grade_min": 2,
+    },
+    {
+        "question": "A triangle is drawn at space 2. It undergoes a multi-step slide: 3 spaces right, then 2 more spaces right. At which space should you draw the final triangle?",
+        "answer": "space 7",
+        "distractors": ["space 5", "space 4", "space 6"],
+        "concept": "slide_translation",
+        "directions": "one_direction",
+        "grade_min": 2,
+    },
+    {
+        "question": "A circle is at grid mark 1. It is slid 2 marks right, then another 4 marks right in the same direction. At what grid mark will the circle be drawn?",
+        "answer": "mark 7",
+        "distractors": ["mark 6", "mark 5", "mark 8"],
+        "concept": "slide_translation",
+        "directions": "one_direction",
+        "grade_min": 2,
+    },
+    {
+        "question": "A rectangle at mark 8 slides 3 spaces left, then slides 2 more spaces left in the same direction. At what mark should the rectangle be drawn?",
+        "answer": "mark 3",
+        "distractors": ["mark 5", "mark 6", "mark 2"],
+        "concept": "slide_translation",
+        "directions": "one_direction",
+        "grade_min": 2,
+    },
+    {
+        "question": "To draw a multi-step slide of 2 units down followed by 3 units down in one direction, what is the total distance to draw the shift?",
+        "answer": "5 units down",
+        "distractors": ["6 units down", "1 unit down", "3 units down"],
+        "concept": "slide_translation",
+        "directions": "one_direction",
+        "grade_min": 2,
+    },
+    {
+        "question": "A shape starts at position 3. It slides 1 space right, then 4 spaces right. Describe the total slide in one direction.",
+        "answer": "5 spaces to the right",
+        "distractors": ["4 spaces to the right", "1 space to the right", "3 spaces to the right"],
+        "concept": "slide_translation",
+        "directions": "one_direction",
+        "grade_min": 2,
+    },
+
+    # ── slide / translation (Grade 3: two-direction slide) ─────────────────────
+    {
         "question": "A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?",
         "answer": "2",
         "distractors": ["1", "3", "5"],
@@ -194,23 +248,8 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "directions": "two_directions",
         "grade_min": 3,
     },
-    {
-        "question": "After a slide, the shape looks exactly the same — only its position changed. True or false?",
-        "answer": "True",
-        "distractors": ["False", "Only sometimes true", "Only for squares"],
-        "concept": "slide_translation",
-        "directions": "one_direction",
-        "grade_min": 2,
-    },
-    {
-        "question": "Which word means the same as 'slide' in geometry?",
-        "answer": "translation",
-        "distractors": ["rotation", "reflection", "dilation"],
-        "concept": "slide_translation",
-        "directions": "one_direction",
-        "grade_min": 2,
-    },
-    # ── line symmetry ──────────────────────────────────────────────────────────
+
+    # ── line symmetry (Grade 3) ────────────────────────────────────────────────
     {
         "question": "A line of symmetry divides a shape into two ___.",
         "answer": "equal halves that are mirror images",
@@ -258,64 +297,49 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "The letter 'A' has a line of symmetry. In which direction does it run?",
         "answer": "vertical (up and down)",
-        "distractors": [
-            "horizontal (left and right)",
-            "diagonal",
-            "It has no line of symmetry.",
-        ],
+        "distractors": ["horizontal (side to side)", "diagonal", "no lines of symmetry"],
         "concept": "line_symmetry",
         "directions": "one_direction",
         "grade_min": 3,
     },
     {
-        "question": "The letter 'B' has a line of symmetry. In which direction does it run?",
-        "answer": "horizontal (left and right)",
-        "distractors": [
-            "vertical (up and down)",
-            "diagonal",
-            "It has no line of symmetry.",
-        ],
+        "question": "The letter 'H' has how many lines of symmetry?",
+        "answer": "2",
+        "distractors": ["1", "3", "0"],
         "concept": "line_symmetry",
         "directions": "one_direction",
         "grade_min": 3,
     },
+
+    # ── complete symmetric figure (Grade 3) ───────────────────────────────────
     {
-        "question": "Does a scalene triangle (all sides different) have a line of symmetry?",
-        "answer": "No",
-        "distractors": ["Yes, one line", "Yes, two lines", "Yes, three lines"],
-        "concept": "line_symmetry",
-        "directions": "one_direction",
-        "grade_min": 3,
-    },
-    # ── complete_symmetric_figure ──────────────────────────────────────────────
-    {
-        "question": "Half of a shape is shown. The line of symmetry is vertical. To complete the shape, what do you do?",
-        "answer": "Draw the mirror image on the other side of the line.",
+        "question": "To complete a symmetric figure across a vertical line of symmetry, the other half must be ___.",
+        "answer": "drawn as a mirror image of the first half",
         "distractors": [
-            "Draw a copy directly below the shape.",
-            "Rotate the half shape 90°.",
-            "Slide the shape to the right.",
+            "drawn upside down",
+            "drawn twice as large",
+            "drawn as a triangle",
         ],
         "concept": "complete_symmetric_figure",
         "directions": "one_direction",
         "grade_min": 3,
     },
     {
-        "question": "A symmetric figure has a horizontal line of symmetry. If the top half has 3 squares, how many squares are in the bottom half?",
-        "answer": "3",
-        "distractors": ["6", "2", "4"],
+        "question": "A point is 3 grid units to the left of a vertical line of symmetry. Where is its mirror-image point?",
+        "answer": "3 grid units to the right of the line",
+        "distractors": [
+            "3 grid units above the line",
+            "6 grid units to the right of the line",
+            "on the line itself",
+        ],
         "concept": "complete_symmetric_figure",
         "directions": "one_direction",
         "grade_min": 3,
     },
     {
-        "question": "When completing a symmetric figure, the two halves must be ___.",
-        "answer": "mirror images of each other",
-        "distractors": [
-            "identical in position",
-            "different sizes",
-            "rotated copies",
-        ],
+        "question": "If a shape is symmetrical across a line, folding along that line makes both halves match exactly. True or false?",
+        "answer": "True",
+        "distractors": ["False", "Only for circles", "Only for squares"],
         "concept": "complete_symmetric_figure",
         "directions": "one_direction",
         "grade_min": 3,
@@ -330,11 +354,14 @@ def generate_params(
     difficulty_profile: Optional[Dict[str, Any]],
     seed: int,
 ) -> Dict[str, Any]:
-    """Sample one item from the static pool filtered by grade and difficulty profile."""
+    """
+    Sample one item from the static pool filtered by grade, concept, and directions.
+    Returns the item dict directly.
+    """
     rng = random.Random(seed)
     profile = difficulty_profile or {}
 
-    concept    = profile.get("concept", "rotation" if grade == 1 else "slide_translation")
+    concept    = profile.get("concept", "slide_translation")
     directions = profile.get("directions", "one_direction")
 
     candidates = [
@@ -343,14 +370,8 @@ def generate_params(
         and item["concept"] == concept
         and item["directions"] == directions
     ]
+
     if not candidates:
-        # Relax only directions -- concept is the node's bound curriculum
-        # scope (registry.py's _parse_competency_bounds) and must never be
-        # silently swapped for a different one (AGENTS.md rule #3). A prior
-        # version of this function fell through to "any concept at this
-        # grade", which silently served slide/translation content to the
-        # G3 line-symmetry nodes (mat_g3_mg_q4_1/_2) whenever concept was
-        # left unbound.
         candidates = [
             item for item in _ITEM_POOL
             if item["grade_min"] <= grade and item["concept"] == concept
@@ -413,6 +434,6 @@ SYMMETRY_SLIDES_DNA = DNA(
     error_patterns=_ERROR_PATTERNS,
     compatible_formatters=["mcq", "shape_board"],
     requires_context=False,
-    visual_home=None,
+    visual_home="ShapeBoard",
     difficulty_axes=_DIFFICULTY_AXES,
 )

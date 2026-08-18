@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g2_mg_q1_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q1-Harden (mat_g2_mg_q1_0..mat_g2_mg_q1_2), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample questions successfully address both describing and predicting the outcome of drawing the slides. Questions like \"Describe the total slide in one direction.\" target the description aspect, while \"At what mark should the rectangle be drawn?\" effectively adapts the drawing requirement for an MCQ format."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The samples cover all parts of the competency: one-direction multi-step slides (\"slides 3 spaces left, then slides 2 more spaces left\"), understanding translation terminology (\"What is another mathematical name for a slide?\"), describing the effect (\"does its size or shape change?\"), and basic shapes (using \"rectangle\" and \"triangle\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The numerical reasoning required fits Grade 2 capacity. Tracking positions involves basic single-digit addition and subtraction (e.g., \"starts at position 3\" and slides \"1 space right, then 4 spaces right\"). The language is clear and accessible."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The variants represent a robust mix of conceptual and procedural tasks. It includes calculating final positions (\"At which space should you draw the final triangle?\"\\), identifying total distance moved (\"How far did it move in all?\"\\), recognizing terminology (\"What is this multi-step movement called?\"\\), and understanding properties of translations."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The items strictly adhere to the MATATAG learning competency limits. They focus exclusively on \"one-direction\" slides (e.g., \"2 spaces up, then 3 more spaces up\") and avoid introducing multi-directional translations or rotations within the mathematical operations."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The scale and magnitudes are appropriate for early elementary. Using small units like \"mark 8\", \"space 2\", and moving by small values keeps the arithmetic load minimal so the focus remains on the spatial transformation concept."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -18,27 +44,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "After a slide, the shape looks exactly the same — only its position changed. True or false?",
-      "correct_answer": "True",
+      "question_text": "A rectangle at mark 8 slides 3 spaces left, then slides 2 more spaces left in the same direction. At what mark should the rectangle be drawn?",
+      "correct_answer": "mark 3",
       "options": [
         {
           "key": "A",
-          "value": "False",
+          "value": "mark 5",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "Only for squares",
+          "value": "mark 2",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "True",
+          "value": "mark 3",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "Only sometimes true",
+          "value": "mark 6",
           "is_correct": false
         }
       ]
@@ -46,12 +72,12 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "A shape moves 3 spaces to the right without turning or flipping. What is this called?",
-      "correct_answer": "slide (translation)",
+      "question_text": "A shape slides 2 spaces right, then slides 1 more space right in the same direction without turning. What is this multi-step movement called?",
+      "correct_answer": "one-direction multi-step slide (translation)",
       "options": [
         {
           "key": "A",
-          "value": "slide (translation)",
+          "value": "one-direction multi-step slide (translation)",
           "is_correct": true
         },
         {
@@ -61,7 +87,7 @@
         },
         {
           "key": "C",
-          "value": "stretch",
+          "value": "two-direction slide",
           "is_correct": false
         },
         {
@@ -73,6 +99,174 @@
     },
     {
       "seed": 44,
+      "formatter": "mcq",
+      "question_text": "A figure undergoes a multi-step slide: 2 spaces up, then 3 more spaces up. What is another mathematical name for a slide?",
+      "correct_answer": "translation",
+      "options": [
+        {
+          "key": "A",
+          "value": "reflection",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "rotation",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "dilation",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "translation",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "A shape slides 4 spaces down, then slides 1 more space down. Is this still a one-direction slide?",
+      "correct_answer": "Yes, both steps moved the same direction.",
+      "options": [
+        {
+          "key": "A",
+          "value": "No, this is a flip (reflection).",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "No, two steps means two directions.",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Yes, both steps moved the same direction.",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "No, this is a turn (rotation).",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "formatter": "mcq",
+      "question_text": "After a shape undergoes a multi-step slide in one direction, does its size or shape change?",
+      "correct_answer": "No, the size and shape stay the same.",
+      "options": [
+        {
+          "key": "A",
+          "value": "Yes, it changes shape.",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "No, the size and shape stay the same.",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Yes, it gets smaller.",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Yes, it gets bigger.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 500,
+      "formatter": "mcq",
+      "question_text": "A shape starts at position 3. It slides 1 space right, then 4 spaces right. Describe the total slide in one direction.",
+      "correct_answer": "5 spaces to the right",
+      "options": [
+        {
+          "key": "A",
+          "value": "5 spaces to the right",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "1 space to the right",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "4 spaces to the right",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "3 spaces to the right",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 501,
+      "formatter": "mcq",
+      "question_text": "A rectangle at mark 8 slides 3 spaces left, then slides 2 more spaces left in the same direction. At what mark should the rectangle be drawn?",
+      "correct_answer": "mark 3",
+      "options": [
+        {
+          "key": "A",
+          "value": "mark 3",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "mark 2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "mark 6",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "mark 5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 502,
+      "formatter": "mcq",
+      "question_text": "A triangle is drawn at space 2. It undergoes a multi-step slide: 3 spaces right, then 2 more spaces right. At which space should you draw the final triangle?",
+      "correct_answer": "space 7",
+      "options": [
+        {
+          "key": "A",
+          "value": "space 5",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "space 7",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "space 6",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "space 4",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
       "formatter": "mcq",
       "question_text": "A shape slides 2 spaces right, then slides 3 more spaces right. How far did it move in all?",
       "correct_answer": "5 spaces to the right",
@@ -98,201 +292,6 @@
           "is_correct": true
         }
       ]
-    },
-    {
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "A triangle slides 4 spaces down. Which direction did it move?",
-      "correct_answer": "downward",
-      "options": [
-        {
-          "key": "A",
-          "value": "to the left",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "upward",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "downward",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "to the right",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "A shape moves 3 spaces to the right without turning or flipping. What is this called?",
-      "correct_answer": "slide (translation)",
-      "options": [
-        {
-          "key": "A",
-          "value": "stretch",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "slide (translation)",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "turn (rotation)",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "flip (reflection)",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 500,
-      "formatter": "mcq",
-      "question_text": "Which word means the same as 'slide' in geometry?",
-      "correct_answer": "translation",
-      "options": [
-        {
-          "key": "A",
-          "value": "translation",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "reflection",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "rotation",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "dilation",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "mcq",
-      "question_text": "After a slide, the shape looks exactly the same — only its position changed. True or false?",
-      "correct_answer": "True",
-      "options": [
-        {
-          "key": "A",
-          "value": "True",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "Only for squares",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "Only sometimes true",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "False",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "A shape slides 4 spaces down, then slides 1 more space down. Is this still a one-direction slide?",
-      "correct_answer": "Yes, both steps moved the same direction.",
-      "options": [
-        {
-          "key": "A",
-          "value": "No, two steps means two directions.",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "Yes, both steps moved the same direction.",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "No, this is a flip (reflection).",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "No, this is a turn (rotation).",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "mcq",
-      "question_text": "When a shape slides, does its size or shape change?",
-      "correct_answer": "No, the size and shape stay the same.",
-      "options": [
-        {
-          "key": "A",
-          "value": "Yes, it gets smaller.",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "Yes, it gets bigger.",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "Yes, it changes shape.",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "No, the size and shape stay the same.",
-          "is_correct": true
-        }
-      ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Items test the description half of the skill directly, asking what a slide \"is called\" (seed 43) and whether a shape's size or shape stays the same after sliding (seed 601)."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "Description dominates this set entirely: true/false checks, vocabulary questions, and step-counting all ask the student to say what happened, while the drawing half of \"Describe and draw\" has zero representation among the nine items."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Phrasing such as \"A triangle slides 4 spaces down\" stays short and concrete for the grade."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Multi-step slides are present, e.g. seed 44 \"A shape slides 2 spaces right, then slides 3 more spaces right\" and seed 502's two-step check, alongside single-step and vocabulary items."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Variation is built from slide distance, direction, and step count, all on the translation topic itself."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Slide distances stay in the 1-5 space range appropriate to a Grade 2 introductory unit."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

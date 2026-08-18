@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-08-18)
 
 ## Corpus Check
-- 462 files · ~698,230 words
+- 462 files · ~699,933 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `508fd595`
+- Built from commit: `01a711be`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -247,6 +247,7 @@
 - [[_COMMUNITY_2026-08-13 — perimeter an impossible triangle, and two shapes that never appeared|2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared]]
 - [[_COMMUNITY_generate_params|generate_params]]
 - [[_COMMUNITY_Anti-Patterns|Anti-Patterns]]
+- [[_COMMUNITY__gen_g2_na_q1_numbers|_gen_g2_na_q1_numbers]]
 - [[_COMMUNITY__get_available_formats|_get_available_formats]]
 - [[_COMMUNITY_counting.py|counting.py]]
 - [[_COMMUNITY_2026-08-14 — A stated width is a floor as well as a ceiling|2026-08-14 — A stated width is a floor as well as a ceiling]]
@@ -259,7 +260,6 @@
 - [[_COMMUNITY_rebuild_knowledge_graph.py|rebuild_knowledge_graph.py]]
 - [[_COMMUNITY_2026-08-13 — perimeter an impossible triangle, and two shapes that never appeared|2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared]]
 - [[_COMMUNITY_2026-08-13 — The G1 measure items a visual for the task, and a size model for the units|2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units]]
-- [[_COMMUNITY__gen_g2_na_q3_multiplication|_gen_g2_na_q3_multiplication]]
 - [[_COMMUNITY_test_regrouping_feasibility.py|test_regrouping_feasibility.py]]
 - [[_COMMUNITY_counting.py|counting.py]]
 
@@ -701,8 +701,8 @@ Cohesion: 0.14
 Nodes (17): Generate a single practice problem and return it as a dict.      This is the sin, run(), get_node_competency_bounds(), _parse_competency_bounds(), Parse competency text to extract bounds for difficulty dimensions.      Returns, Get competency-specific bounds for a node's difficulty dimensions.          Retu, matatag_lab_v2_generate(), Generate a practice problem using the new practice_gen pipeline. (+9 more)
 
 ### Community 103 - "Community 103"
-Cohesion: 0.13
-Nodes (15): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated, A false alarm of my own, corrected, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item (+7 more)
+Cohesion: 0.14
+Nodes (14): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated, Final Definition of Done, Phase F — full `run_all` verification and three more regressions it caught — 2026-08-02, Phase G — degenerate "estimate" pairs across all four estimate DNAs, 2026-08-04 (+6 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.08
@@ -1037,8 +1037,8 @@ Cohesion: 0.33
 Nodes (9): _build_traps(), _build_visual_params(), format_array_grid(), Random, fmt_array_grid.py — ArrayGrid (GridArea) visual formatter  Produces a FormattedP, Write `terms` copies of `addend` as a repeated sum, or describe it when     writ, Build an ArrayGrid FormattedProblem from a QuestionContext.      interaction_mod, Build ArrayGrid visual_params.      Grade 2: arrays up to 10×10 (multiplication (+1 more)
 
 ### Community 211 - "CompetencyConfiguration"
-Cohesion: 0.50
-Nodes (4): 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, Three defects, all in the `estimate` branch, Verification, Why this cluster
+Cohesion: 0.40
+Nodes (5): 2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared, A false alarm of my own, corrected, Defect 1 — the DNA emitted triangles that cannot exist, Defect 2 — a silent default made two of three named shapes unreachable, Left deliberately, with the reasoning, for the next tick
 
 ### Community 213 - "shapes_2d.py"
 Cohesion: 0.18
@@ -1074,7 +1074,7 @@ Nodes (4): generate_hints(), generate_params(), Any, Generate parameters for col
 
 ### Community 222 - "models.py"
 Cohesion: 0.50
-Nodes (4): generate_hints(), generate_params(), Any, Sample one item from the static pool filtered by grade and difficulty profile.
+Nodes (4): generate_hints(), generate_params(), Any, Sample one item from the static pool filtered by grade, concept, and directions.
 
 ### Community 224 - "get_interest_themes"
 Cohesion: 0.14
@@ -1162,7 +1162,7 @@ Nodes (6): 2026-08-13 — The tiling word problem had no determinate answer (Tic
 
 ### Community 245 - "2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared"
 Cohesion: 0.50
-Nodes (4): 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, The failing rationale, Verification, Why binding alone was not enough — and what had to be built
+Nodes (4): 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item, Defect 2 — object and unit drawn independently
 
 ### Community 246 - "generate_params"
 Cohesion: 0.40

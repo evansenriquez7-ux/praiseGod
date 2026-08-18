@@ -1244,12 +1244,18 @@ def _build_symbolic_question(
 
     # ── Geometry ──────────────────────────────────────────────────────────────
     if concept == "shapes_2d":
+        if values.get("question"):
+            return values["question"]
         return "Identify the shape shown."
 
     if concept == "geometric_lines":
+        if values.get("question"):
+            return values["question"]
         return "Identify the type of line shown."
 
     if concept == "symmetry_slides":
+        if values.get("question"):
+            return values["question"]
         sym_lbl = VocabGated("line of symmetry", "line of symmetry", "symmetry line").resolve(cumulative_vocab)
         return f"Does this figure have a {sym_lbl}?"
 

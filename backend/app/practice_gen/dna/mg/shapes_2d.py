@@ -44,17 +44,18 @@ _DIFFICULTY_AXES: Dict[str, Any] = {
 
 
 # ─── vocab-gated terms ────────────────────────────────────────────────────────
-VOCAB_SIDES    = VocabGated(requires_vocab="sides",    preferred="sides",    fallback="straight edges")
-VOCAB_CORNERS  = VocabGated(requires_vocab="corners",  preferred="corners",  fallback="pointed parts")
+VOCAB_SIDES    = VocabGated(requires_vocab="side",    preferred="sides",    fallback="straight edges")
+VOCAB_CORNERS  = VocabGated(requires_vocab="corner",  preferred="corners",  fallback="corners")
 VOCAB_VERTICES = VocabGated(requires_vocab="vertices", preferred="vertices", fallback="corners")
 
 
 # ─── static item pool ─────────────────────────────────────────────────────────
 # Each item: {question, answer, distractors, shape_set, task_type, orientation, grade_min}
 _ITEM_POOL: List[Dict[str, Any]] = [
-    # ── identify_name ──────────────────────────────────────────────────────────
+    # ── G1: basic_triangles_rectangles_squares ─────────────────────────────────
+    # ── identify_name ──
     {
-        "question": "What shape has 3 sides and 3 corners?",
+        "question": "Which shape is a triangle?",
         "answer": "triangle",
         "distractors": ["rectangle", "square", "pentagon"],
         "shape_set": "basic_triangles_rectangles_squares",
@@ -63,7 +64,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 1,
     },
     {
-        "question": "What shape has 4 equal sides and 4 corners?",
+        "question": "Which shape is a square?",
         "answer": "square",
         "distractors": ["triangle", "rectangle", "pentagon"],
         "shape_set": "basic_triangles_rectangles_squares",
@@ -72,7 +73,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 1,
     },
     {
-        "question": "What shape has 4 sides where opposite sides are equal?",
+        "question": "Which shape is a rectangle?",
         "answer": "rectangle",
         "distractors": ["triangle", "square", "pentagon"],
         "shape_set": "basic_triangles_rectangles_squares",
@@ -81,33 +82,25 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 1,
     },
     {
-        "question": "What shape has no corners and no straight sides?",
-        "answer": "circle",
-        "distractors": ["triangle", "rectangle", "square"],
-        "shape_set": "extended_with_circles",
+        "question": "A 3-sided shape is turned sideways. What shape is it?",
+        "answer": "triangle",
+        "distractors": ["square", "rectangle", "pentagon"],
+        "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
-        "orientation": "standard",
-        "grade_min": 2,
+        "orientation": "rotated",
+        "grade_min": 1,
     },
     {
-        "question": "A shape is made from exactly half of a circle. What is it called?",
-        "answer": "half-circle",
-        "distractors": ["quarter-circle", "triangle", "rectangle"],
-        "shape_set": "extended_with_circles",
+        "question": "A 4-sided shape with equal sides is tilted. What shape is it?",
+        "answer": "square",
+        "distractors": ["triangle", "rectangle", "pentagon"],
+        "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
-        "orientation": "standard",
-        "grade_min": 2,
+        "orientation": "rotated",
+        "grade_min": 1,
     },
-    {
-        "question": "A shape is made from exactly one quarter of a circle. What is it called?",
-        "answer": "quarter-circle",
-        "distractors": ["half-circle", "triangle", "square"],
-        "shape_set": "extended_with_circles",
-        "task_type": "identify_name",
-        "orientation": "standard",
-        "grade_min": 2,
-    },
-    # ── count_sides_corners ────────────────────────────────────────────────────
+
+    # ── count_sides_corners ──
     {
         "question": "How many corners does a triangle have?",
         "answer": "3",
@@ -144,7 +137,6 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "orientation": "standard",
         "grade_min": 1,
     },
-    # ── rotated orientation ────────────────────────────────────────────────────
     {
         "question": "A triangle is turned at an angle. How many sides does it still have?",
         "answer": "3",
@@ -163,7 +155,8 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "orientation": "rotated",
         "grade_min": 1,
     },
-    # ── compare_shapes ─────────────────────────────────────────────────────────
+
+    # ── compare_shapes ──
     {
         "question": "Which shape has more sides — a triangle or a rectangle?",
         "answer": "rectangle",
@@ -192,6 +185,196 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 1,
     },
     {
+        "question": "A tilted square and a flat rectangle: do they have the same number of corners?",
+        "answer": "Yes, both have 4 corners.",
+        "distractors": ["No, the square has more.", "No, the rectangle has more.", "Neither has corners."],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "compare_shapes",
+        "orientation": "rotated",
+        "grade_min": 1,
+    },
+
+    # ── compose_decompose (G1) ──
+    {
+        "question": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
+        "answer": "rectangle",
+        "distractors": ["square", "hexagon", "pentagon"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 1,
+    },
+    {
+        "question": "A rectangle is cut into two equal pieces down the middle. What two shapes are made?",
+        "answer": "two rectangles",
+        "distractors": ["two triangles", "two squares", "two pentagons"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 1,
+    },
+    {
+        "question": "A square is cut on a slant, from one edge to another. What two shapes are made?",
+        "answer": "two triangles",
+        "distractors": ["two rectangles", "two squares", "two pentagons"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 1,
+    },
+    {
+        "question": "Two identical triangles are rotated and joined along their matching sides. What shape do they form?",
+        "answer": "rectangle",
+        "distractors": ["square", "triangle", "pentagon"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "compose_decompose",
+        "orientation": "rotated",
+        "grade_min": 1,
+    },
+
+    # ── G2: extended_with_circles (mat_g2_mg_q1_0) ─────────────────────────────
+    # "Represent and describe circles, half circles and quarter circles."
+    # ── identify_name ──
+    {
+        "question": "What shape has no corners and no straight sides?",
+        "answer": "circle",
+        "distractors": ["triangle", "rectangle", "square"],
+        "shape_set": "extended_with_circles",
+        "task_type": "identify_name",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "A shape is made from exactly half of a circle. What is it called?",
+        "answer": "half-circle",
+        "distractors": ["quarter-circle", "triangle", "rectangle"],
+        "shape_set": "extended_with_circles",
+        "task_type": "identify_name",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "A shape is made from exactly one quarter of a circle. What is it called?",
+        "answer": "quarter-circle",
+        "distractors": ["half-circle", "triangle", "square"],
+        "shape_set": "extended_with_circles",
+        "task_type": "identify_name",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "A circle is divided into 2 equal parts. What is each part called?",
+        "answer": "half-circle",
+        "distractors": ["quarter-circle", "whole circle", "triangle"],
+        "shape_set": "extended_with_circles",
+        "task_type": "identify_name",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "A circle is divided into 4 equal parts. What is each part called?",
+        "answer": "quarter-circle",
+        "distractors": ["half-circle", "whole circle", "rectangle"],
+        "shape_set": "extended_with_circles",
+        "task_type": "identify_name",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "A half-circle is turned upside down. What shape is it still?",
+        "answer": "half-circle",
+        "distractors": ["quarter-circle", "circle", "triangle"],
+        "shape_set": "extended_with_circles",
+        "task_type": "identify_name",
+        "orientation": "rotated",
+        "grade_min": 2,
+    },
+    {
+        "question": "A quarter-circle is rotated to face another direction. What shape is it?",
+        "answer": "quarter-circle",
+        "distractors": ["half-circle", "circle", "square"],
+        "shape_set": "extended_with_circles",
+        "task_type": "identify_name",
+        "orientation": "rotated",
+        "grade_min": 2,
+    },
+
+    # ── count_sides_corners (describing circles, half circles, quarter circles) ──
+    {
+        "question": "How many straight sides does a circle have?",
+        "answer": "0",
+        "distractors": ["1", "2", "4"],
+        "shape_set": "extended_with_circles",
+        "task_type": "count_sides_corners",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "How many corners does a circle have?",
+        "answer": "0",
+        "distractors": ["1", "2", "4"],
+        "shape_set": "extended_with_circles",
+        "task_type": "count_sides_corners",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "How many straight edges does a half-circle have?",
+        "answer": "1",
+        "distractors": ["0", "2", "3"],
+        "shape_set": "extended_with_circles",
+        "task_type": "count_sides_corners",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "How many curved edges does a half-circle have?",
+        "answer": "1",
+        "distractors": ["0", "2", "3"],
+        "shape_set": "extended_with_circles",
+        "task_type": "count_sides_corners",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "How many straight edges does a quarter-circle have?",
+        "answer": "2",
+        "distractors": ["1", "0", "3"],
+        "shape_set": "extended_with_circles",
+        "task_type": "count_sides_corners",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "How many curved edges does a quarter-circle have?",
+        "answer": "1",
+        "distractors": ["0", "2", "3"],
+        "shape_set": "extended_with_circles",
+        "task_type": "count_sides_corners",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "A half-circle is tilted sideways. How many straight edges does it have?",
+        "answer": "1",
+        "distractors": ["0", "2", "3"],
+        "shape_set": "extended_with_circles",
+        "task_type": "count_sides_corners",
+        "orientation": "rotated",
+        "grade_min": 2,
+    },
+    {
+        "question": "A quarter-circle is rotated. How many straight edges meet at its corner?",
+        "answer": "2",
+        "distractors": ["1", "0", "4"],
+        "shape_set": "extended_with_circles",
+        "task_type": "count_sides_corners",
+        "orientation": "rotated",
+        "grade_min": 2,
+    },
+
+    # ── compare_shapes ──
+    {
         "question": "A circle and a square: which one has straight sides?",
         "answer": "square",
         "distractors": ["circle", "both", "neither"],
@@ -200,39 +383,70 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "orientation": "standard",
         "grade_min": 2,
     },
-    # ── compose_decompose ──────────────────────────────────────────────────────
     {
-        "question": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
-        "answer": "rectangle",
-        "distractors": ["square", "hexagon", "pentagon"],
-        "shape_set": "basic_triangles_rectangles_squares",
-        "task_type": "compose_decompose",
+        "question": "Which has more straight edges: a half-circle or a quarter-circle?",
+        "answer": "quarter-circle",
+        "distractors": ["half-circle", "they are equal", "neither"],
+        "shape_set": "extended_with_circles",
+        "task_type": "compare_shapes",
         "orientation": "standard",
-        "grade_min": 1,
+        "grade_min": 2,
     },
     {
-        # Was keyed "two squares" with "two rectangles" as a distractor — the
-        # reverse of the truth. Halving a rectangle down the middle yields two
-        # rectangles for every rectangle except the one whose length is exactly
-        # twice its width, and this stem specifies no dimensions, so a pupil
-        # reasoning correctly was marked wrong. "two squares" is now the
-        # distractor, which is exactly the misconception worth surfacing.
-        "question": "A rectangle is cut into two equal pieces down the middle. What two shapes are made?",
-        "answer": "two rectangles",
-        "distractors": ["two triangles", "two squares", "two pentagons"],
-        "shape_set": "basic_triangles_rectangles_squares",
-        "task_type": "compose_decompose",
+        "question": "Which shape has no corners: a triangle or a circle?",
+        "answer": "circle",
+        "distractors": ["triangle", "both", "neither"],
+        "shape_set": "extended_with_circles",
+        "task_type": "compare_shapes",
         "orientation": "standard",
-        "grade_min": 1,
+        "grade_min": 2,
     },
     {
-        "question": "A square is cut on a slant, from one edge to another. What two shapes are made?",
-        "answer": "two triangles",
-        "distractors": ["two rectangles", "two squares", "two pentagons"],
-        "shape_set": "basic_triangles_rectangles_squares",
+        "question": "Which shape has fewer straight edges: a half-circle or a triangle?",
+        "answer": "half-circle",
+        "distractors": ["triangle", "they are equal", "neither"],
+        "shape_set": "extended_with_circles",
+        "task_type": "compare_shapes",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "When comparing a rotated quarter-circle and a rotated half-circle, which has fewer straight edges?",
+        "answer": "half-circle",
+        "distractors": ["quarter-circle", "they are equal", "neither"],
+        "shape_set": "extended_with_circles",
+        "task_type": "compare_shapes",
+        "orientation": "rotated",
+        "grade_min": 2,
+    },
+
+    # ── compose_decompose (representing circles, half circles, quarter circles) ──
+    {
+        "question": "How many half-circles make 1 whole circle?",
+        "answer": "2",
+        "distractors": ["4", "3", "1"],
+        "shape_set": "extended_with_circles",
         "task_type": "compose_decompose",
         "orientation": "standard",
-        "grade_min": 1,
+        "grade_min": 2,
+    },
+    {
+        "question": "How many quarter-circles make 1 whole circle?",
+        "answer": "4",
+        "distractors": ["2", "3", "8"],
+        "shape_set": "extended_with_circles",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "How many quarter-circles make 1 half-circle?",
+        "answer": "2",
+        "distractors": ["4", "1", "3"],
+        "shape_set": "extended_with_circles",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
     },
     {
         "question": "Two half-circles are put together to make one shape. What shape is formed?",
@@ -252,48 +466,58 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "orientation": "standard",
         "grade_min": 2,
     },
-    # ── composite figures ──────────────────────────────────────────────────────
+    {
+        "question": "A circular paper is cut in half. How many half-circles are created?",
+        "answer": "2",
+        "distractors": ["4", "1", "3"],
+        "shape_set": "extended_with_circles",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "A circular paper is cut into quarters. How many quarter-circles are created?",
+        "answer": "4",
+        "distractors": ["2", "1", "8"],
+        "shape_set": "extended_with_circles",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "Two quarter-circles are joined along their flat sides. What shape do they make together?",
+        "answer": "half-circle",
+        "distractors": ["whole circle", "square", "rectangle"],
+        "shape_set": "extended_with_circles",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "Two matching half-circles are rotated and joined along their flat edges. What shape is formed?",
+        "answer": "circle",
+        "distractors": ["square", "rectangle", "triangle"],
+        "shape_set": "extended_with_circles",
+        "task_type": "compose_decompose",
+        "orientation": "rotated",
+        "grade_min": 2,
+    },
+
+    # ── G2: composite_figures (mat_g2_mg_q1_1) ─────────────────────────────────
     # "Compose and decompose composite figures made up of squares, rectangles,
-    # triangles, circles, half circles, and quarter circles" (mat_g2_mg_q1_1)
-    # is bound to shape_set="composite_figures" specifically, but only ONE
-    # item in the whole pool carried that exact tag -- generate_params's
-    # filter is an exact match with no relaxation once >=1 candidate exists,
-    # so every single render picked that one item (blind review:
-    # comprehensive_coverage/variant_comprehensiveness FAIL, "question_text
-    # is byte-for-byte identical across all 6 seeds"). The five items above
-    # already compose/decompose exactly the shapes this competency names --
-    # duplicated here under "composite_figures" (not relabeled, so
-    # mat_g1_mg_q1_2's own "basic_triangles_rectangles_squares" pool for its
-    # narrower "triangles, squares, and rectangles" scope stays intact).
+    # triangles, circles, half circles, and quarter circles, using cut-outs and square grids."
+    # ── Cut-outs ──
     {
-        "question": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
+        "question": "Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form?",
         "answer": "rectangle",
-        "distractors": ["square", "hexagon", "pentagon"],
+        "distractors": ["circle", "half-circle", "quarter-circle"],
         "shape_set": "composite_figures",
         "task_type": "compose_decompose",
         "orientation": "standard",
         "grade_min": 2,
     },
     {
-        "question": "A rectangle is cut into two equal pieces down the middle. What two shapes are made?",
-        "answer": "two rectangles",
-        "distractors": ["two triangles", "two squares", "two pentagons"],
-        "shape_set": "composite_figures",
-        "task_type": "compose_decompose",
-        "orientation": "standard",
-        "grade_min": 2,
-    },
-    {
-        "question": "A square is cut on a slant, from one edge to another. What two shapes are made?",
-        "answer": "two triangles",
-        "distractors": ["two rectangles", "two squares", "two pentagons"],
-        "shape_set": "composite_figures",
-        "task_type": "compose_decompose",
-        "orientation": "standard",
-        "grade_min": 2,
-    },
-    {
-        "question": "Two half-circles are put together to make one shape. What shape is formed?",
+        "question": "Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed?",
         "answer": "circle",
         "distractors": ["rectangle", "square", "triangle"],
         "shape_set": "composite_figures",
@@ -302,7 +526,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
     {
-        "question": "Four quarter-circles are put together to make one shape. What shape do they make?",
+        "question": "Using cut-outs, four quarter-circles of the same size are joined together. What complete shape do they make?",
         "answer": "circle",
         "distractors": ["square", "rectangle", "triangle"],
         "shape_set": "composite_figures",
@@ -311,7 +535,16 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
     {
-        "question": "A figure is made of a rectangle with a triangle on top. How many shapes make up this figure?",
+        "question": "Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made?",
+        "answer": "two triangles",
+        "distractors": ["two rectangles", "two circles", "two squares"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure?",
         "answer": "2",
         "distractors": ["1", "3", "4"],
         "shape_set": "composite_figures",
@@ -320,12 +553,85 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
     {
-        "question": "A figure is made of a square with a half-circle on top. How many shapes make up this figure?",
+        "question": "A composite figure is made of a square with a triangle on top. How many simple shapes form this figure?",
         "answer": "2",
         "distractors": ["1", "3", "4"],
         "shape_set": "composite_figures",
         "task_type": "compose_decompose",
         "orientation": "standard",
+        "grade_min": 2,
+    },
+    # ── Square grids ──
+    {
+        "question": "On a square grid, a composite figure is made by joining 2 squares of 4 grid units each side by side. What shape is formed?",
+        "answer": "rectangle",
+        "distractors": ["triangle", "circle", "quarter-circle"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?",
+        "answer": "square",
+        "distractors": ["circle", "triangle", "half-circle"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "On a square grid, a composite figure is made of 1 square, 1 half-circle, and 1 rectangle. How many shapes form this composite figure?",
+        "answer": "3",
+        "distractors": ["1", "2", "4"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "On a square grid, how many 1-by-1 unit squares are needed to compose a 2-by-2 square?",
+        "answer": "4",
+        "distractors": ["2", "3", "6"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?",
+        "answer": "3",
+        "distractors": ["2", "4", "5"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 2,
+    },
+    {
+        "question": "Using cut-outs, two identical triangles are rotated and placed together. What shape can they form?",
+        "answer": "rectangle",
+        "distractors": ["circle", "half-circle", "quarter-circle"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "rotated",
+        "grade_min": 2,
+    },
+    {
+        "question": "On a square grid, a rotated composite shape is made of a square and a triangle. How many simple shapes make up this figure?",
+        "answer": "2",
+        "distractors": ["1", "3", "4"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "rotated",
+        "grade_min": 2,
+    },
+    {
+        "question": "On a square grid, combining two 2x2 squares side by side forms which shape?",
+        "answer": "rectangle",
+        "distractors": ["circle", "triangle", "half-circle"],
+        "shape_set": "composite_figures",
+        "task_type": "compose_decompose",
+        "orientation": "rotated",
         "grade_min": 2,
     },
 ]
@@ -357,12 +663,19 @@ def generate_params(
         and item["orientation"] == orientation
     ]
 
-    # Progressively relax filters if too narrow
+    # Progressively relax filters if too narrow (preserving shape_set)
     if not candidates:
         candidates = [
             item for item in _ITEM_POOL
             if item["grade_min"] <= grade
+            and item["shape_set"] == shape_set
             and item["task_type"] == task_type
+        ]
+    if not candidates:
+        candidates = [
+            item for item in _ITEM_POOL
+            if item["grade_min"] <= grade
+            and item["shape_set"] == shape_set
         ]
     if not candidates:
         candidates = [item for item in _ITEM_POOL if item["grade_min"] <= grade]
@@ -380,16 +693,25 @@ def generate_hints(
     values: Dict[str, Any],
     cumulative_vocab: Set[str],
 ) -> List[str]:
-    sides_label   = VOCAB_SIDES.resolve(cumulative_vocab)
-    corners_label = VOCAB_CORNERS.resolve(cumulative_vocab)
+    sides_label = "sides" if "side" in cumulative_vocab else "straight edges"
+    if "corner" in cumulative_vocab:
+        hints = [
+            f"Think about the {sides_label} and corners of each shape.",
+            f"A triangle has 3 {sides_label} and 3 corners.",
+            f"A square has 4 equal {sides_label} and 4 corners.",
+            f"A rectangle has 4 {sides_label} (opposite {sides_label} are equal) and 4 corners.",
+        ]
+        if "circle" in cumulative_vocab:
+            hints.append(f"A circle has no straight {sides_label} and no corners.")
+        return hints
     hints = [
-        f"Think about the {sides_label} and {corners_label} of each shape.",
-        f"A triangle has 3 {sides_label} and 3 {corners_label}.",
-        f"A square has 4 equal {sides_label} and 4 {corners_label}.",
-        f"A rectangle has 4 {sides_label} (opposite {sides_label} are equal) and 4 {corners_label}.",
+        f"Look at each shape and its {sides_label}.",
+        f"A triangle has 3 {sides_label}.",
+        f"A square has 4 equal {sides_label}.",
+        f"A rectangle has 4 {sides_label} (opposite {sides_label} are equal).",
     ]
     if "circle" in cumulative_vocab:
-        hints.append(f"A circle has no straight {sides_label} and no {corners_label}.")
+        hints.append(f"A circle has no straight {sides_label}.")
     return hints
 
 
