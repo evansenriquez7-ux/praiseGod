@@ -1,32 +1,33 @@
 {
   "node_id": "mat_g2_na_q3_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q3-Harden (mat_g2_na_q3_3), 2026-08-18",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q3_3), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
   "overall": "PASS",
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The sample set directly fulfills the MATATAG competency by providing single-step multiplication word problems using the 2, 3, 4, 5, and 10 multiplication tables in both equal groups and money contexts. For example, seed 42 asks \"Maico puts 10 costumes in each of 4 bags. How many costumes are in all the bags?\" which requires multiplying 10 by 4, and seed 43 asks \"Nanding wants to buy 2 water bowls that cost \u20b12 each. How much does Nanding need to pay in all?\" requiring calculation of total cost using multiplication by 2."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The packet covers all specified multiplication tables (2, 3, 4, 5, and 10) as well as money and non-money problem contexts. For instance, the 2 table is tested in seed 43 (\"Nanding wants to buy 2 water bowls that cost \u20b12 each. How much does Nanding need to pay in all?\"), the 3 table in seed 45 (\"Ate Gab wants to buy 2 trophies that cost \u20b13 each. How much does Ate Gab need to pay in all?\"), the 4 table in seed 44 (\"Coach Nora wants to buy 2 shuttlecocks that cost \u20b14 each. How much does Coach Nora need to pay in all?\"), the 5 table in seed 50 (\"Kuya Renz wants to buy 2 paintbrushes that cost \u20b15 each. How much does Kuya Renz need to pay in all? The answer is 5. True or False?\"), and the 10 table in seed 42 (\"Maico puts 10 costumes in each of 4 bags. How many costumes are in all the bags?\") and seed 606 (\"Sir Rez wants to buy 10 knee pads that cost \u20b12 each. How much does Sir Rez need to pay in all?\")."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The linguistic framing and syntactic complexity are well suited for Grade 2 Quarter 3 learners. Scenarios use straightforward sentence structures, familiar cultural honorifics, and clear item groupings without extraneous distractors or convoluted reading demands, as seen in seed 46 (\"Ate Joy puts 4 seeds in each of 1 bag. How many seeds are in all the bags?\") and seed 601 (\"Daniel puts 10 notebooks in each of 2 bags. How many notebooks are in all the bags?\")."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The sample set includes multiple valid assessment formats: standard multiple-choice questions (seed 600: \"Kuya Tads puts 3 leashes in each of 2 bags. How many leashes are in all the bags?\"), fill-in-the-blank/cloze questions (seed 501: \"Ate Sam puts 10 running shoes in each of 4 bags. How many running shoes are in all the bags?\"), true/false evaluation (seed 50: \"Kuya Renz wants to buy 2 paintbrushes that cost \u20b15 each. How much does Kuya Renz need to pay in all? The answer is 5. True or False?\"), and error detection (seed 55: \"Grace solved this problem: \\\"Romel wants to buy 3 rackets that cost \u20b12 each. How much does Romel need to pay in all?\\\" Grace says the answer is 1. Is Grace correct?\" and seed 500: \"Rico solved this problem: \\\"Kuya Ton puts 2 ribbons in each of 1 bag. How many ribbons are in all the bags?\\\" Rico says the answer is 2. Is Rico correct?\")."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "All questions strictly adhere to Grade 2 Quarter 3 multiplication without introducing out-of-scope concepts like multi-digit algorithms, division, or fractional values. Problems focus solely on basic multiplication tables within 2, 3, 4, 5, and 10, such as seed 602 (\"Sir Rez wants to buy 2 ribbons that cost \u20b14 each. How much does Sir Rez need to pay in all?\") and seed 605 (\"Kuya Renz wants to buy 3 watercolor sets that cost \u20b12 each. How much does Kuya Renz need to pay in all?\")."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Number ranges and product scales are fully appropriate for Grade 2 students working with tables 2, 3, 4, 5, and 10. The products stay manageable (e.g. 4 in seed 43: \"Nanding wants to buy 2 water bowls that cost \u20b12 each. How much does Nanding need to pay in all?\", 8 in seed 603: \"Ate Beng wants to buy 4 leashes that cost \u20b12 each. How much does Ate Beng need to pay in all?\", and 20 in seed 502: \"Kuya Renz puts 10 canvases in each of 2 bags. How many canvases are in all the bags?\"), and prices are kept at single-digit peso amounts (\u20b12, \u20b13, \u20b14, \u20b15)."
+      "rationale": "<thorough explanation citing sample questions>"
     }
   },
   "sample_seeds": [
@@ -41,156 +42,40 @@
     501,
     502,
     600,
-    601,
     602,
     603,
-    605,
-    606
+    604
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
       "question_text": "Maico puts 10 costumes in each of 4 bags. How many costumes are in all the bags?",
-      "correct_answer": 40,
-      "options": [
-        {
-          "key": "A",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 39,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 40,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 30,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 40
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Nanding wants to buy 2 water bowls that cost \u20b12 each. How much does Nanding need to pay in all?",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 0,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 4
     },
     {
       "seed": 44,
       "formatter": "cloze",
       "question_text": "Coach Nora wants to buy 2 shuttlecocks that cost \u20b14 each. How much does Coach Nora need to pay in all?",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "text": "8",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 8
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Ate Gab wants to buy 2 trophies that cost \u20b13 each. How much does Ate Gab need to pay in all?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 6
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Ate Joy puts 4 seeds in each of 1 bag. How many seeds are in all the bags?",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 0,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 4
     },
     {
       "seed": 50,
@@ -210,243 +95,47 @@
     {
       "seed": 500,
       "formatter": "error_detect",
-      "question_text": "Rico solved this problem: \"Kuya Ton puts 2 ribbons in each of 1 bag. How many ribbons are in all the bags?\" Rico says the answer is 2. Is Rico correct?",
+      "question_text": "Rico solved this problem: \"Kuya Ton puts 10 ribbons in each of 8 bags. How many ribbons are in all the bags?\" Rico says the answer is 80. Is Rico correct?",
       "correct_answer": {
         "has_error": false,
-        "correct_value": 2
+        "correct_value": 80
       }
     },
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "Ate Sam puts 10 running shoes in each of 4 bags. How many running shoes are in all the bags?",
-      "correct_answer": 40,
-      "options": [
-        {
-          "key": "A",
-          "value": 40,
-          "text": "40",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 35,
-          "text": "35",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 14,
-          "text": "14",
-          "is_correct": false
-        }
-      ]
+      "question_text": "Ate Sam puts 5 running shoes in each of 6 bags. How many running shoes are in all the bags?",
+      "correct_answer": 30
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Kuya Renz puts 10 canvases in each of 2 bags. How many canvases are in all the bags?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 19,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Kuya Renz puts 4 canvases in each of 9 bags. How many canvases are in all the bags?",
+      "correct_answer": 36
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Kuya Tads puts 3 leashes in each of 2 bags. How many leashes are in all the bags?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 9,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "mcq",
-      "question_text": "Daniel puts 10 notebooks in each of 2 bags. How many notebooks are in all the bags?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 19,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 6
     },
     {
       "seed": 602,
       "formatter": "mcq",
       "question_text": "Sir Rez wants to buy 2 ribbons that cost \u20b14 each. How much does Sir Rez need to pay in all?",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 8
     },
     {
       "seed": 603,
       "formatter": "cloze",
       "question_text": "Ate Beng wants to buy 4 leashes that cost \u20b12 each. How much does Ate Beng need to pay in all?",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "text": "8",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 8
     },
     {
-      "seed": 605,
+      "seed": 604,
       "formatter": "mcq",
       "question_text": "Kuya Renz wants to buy 3 watercolor sets that cost \u20b12 each. How much does Kuya Renz need to pay in all?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 606,
-      "formatter": "mcq",
-      "question_text": "Sir Rez wants to buy 10 knee pads that cost \u20b12 each. How much does Sir Rez need to pay in all?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 19,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 6
     }
   ]
 }

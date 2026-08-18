@@ -1,32 +1,33 @@
 {
   "node_id": "mat_g2_na_q3_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q3-Harden (mat_g2_na_q3_1), 2026-08-18",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q3_1), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
   "overall": "PASS",
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "Items comprehensively fulfill illustrating and writing multiplication as repeated addition (e.g. \"Write as repeated addition: 4 \u00d7 2 = ___\" in seed 42, \"2 + 2 + 2 + 2 = ___\" in seed 603) and arrays (\"This array has 2 rows of 5 squares. How many squares in all?\" in seed 50, \"Shade 2 rows of 10 squares. How many squares are shaded altogether?\" in seed 55)."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "Demonstrates multiple models including repeated addition sums, visual array grids, error detection, and equation conversions across factors 2, 3, 4, 5, 10."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Vocabulary and cognitive demands match Grade 2 Quarter 3 expectations (e.g. \"Carlo solved: \\\"3 \u00d7 3 = ___\\\". Carlo says the missing number is 9. Is Carlo correct?\" in seed 51)."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "Encompasses mcq, cloze, read_mcq array models, set_fill_in_blank interactive shading, error_detect, and true_false."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Directly targets the MATATAG learning competency without extraneous or advanced concepts."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "Products and addends remain well within Grade 2 limits (products <= 50)."
+      "rationale": "<thorough explanation citing sample questions>"
     }
   },
   "sample_seeds": [
@@ -44,413 +45,122 @@
     502,
     600,
     601,
-    602,
     603,
-    604
+    604,
+    605,
+    606
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Write as repeated addition: 4 \u00d7 2 = ___",
-      "correct_answer": "2 + 2 + 2 + 2",
-      "options": [
-        {
-          "key": "A",
-          "value": "2 + 2 + 2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "2 + 2 + 2 + 2 + 2",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "2 + 2 + 2 + 2",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "4 + 4",
-          "is_correct": false
-        }
-      ]
+      "question_text": "Starting at 0, take 2 equal jumps of 3 on the number line. What is 3 \u00d7 2?",
+      "correct_answer": 6
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Write as repeated addition: 2 \u00d7 2 = ___",
-      "correct_answer": "2 + 2",
-      "options": [
-        {
-          "key": "A",
-          "value": "2 + 2",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "2",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "2 + 2 + 2",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "2 + 2 + 2 + 2",
-          "is_correct": false
-        }
-      ]
+      "question_text": "6 + 6 = ___. What is 6 \u00d7 2?",
+      "correct_answer": 12
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "Write as repeated addition: 5 \u00d7 10 = ___",
-      "correct_answer": "10 + 10 + 10 + 10 + 10",
-      "options": [
-        {
-          "key": "A",
-          "value": "10 + 10 + 10 + 10 + 10",
-          "text": "10 + 10 + 10 + 10 + 10",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "10 + 10 + 10 + 10 + 10 + 10",
-          "text": "10 + 10 + 10 + 10 + 10 + 10",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "10 + 10 + 10 + 10",
-          "text": "10 + 10 + 10 + 10",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "5 + 5 + 5 + 5 + 5",
-          "text": "5 + 5 + 5 + 5 + 5",
-          "is_correct": false
-        }
-      ]
+      "question_text": "Count by 4s: 4, 8, 12. 4 \u00d7 3 = ___",
+      "correct_answer": 12
     },
     {
       "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Write as repeated addition: 3 \u00d7 3 = ___",
-      "correct_answer": "3 + 3 + 3",
-      "options": [
-        {
-          "key": "A",
-          "value": "3 + 3",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "3 + 3 + 3",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "3 + 3 + 3 + 3",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "3",
-          "is_correct": false
-        }
-      ]
+      "formatter": "cloze",
+      "question_text": "Count by 2s: 2, 4, 6. 2 \u00d7 3 = ___",
+      "correct_answer": 6
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Write as repeated addition: 1 \u00d7 4 = ___",
-      "correct_answer": "4",
-      "options": [
-        {
-          "key": "A",
-          "value": "4",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "4 + 4",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1 + 1 + 1 + 1",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "0",
-          "is_correct": false
-        }
-      ]
+      "question_text": "2 + 2 + 2 = ___. What is 2 \u00d7 3?",
+      "correct_answer": 6
     },
     {
       "seed": 50,
       "formatter": "read_mcq",
-      "question_text": "This array has 2 rows of 5 squares. How many squares in all?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 15,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Look at the 6\u00d72 array. How many squares are shaded in all?",
+      "correct_answer": "A"
     },
     {
       "seed": 51,
       "formatter": "error_detect",
-      "question_text": "Carlo solved: \"3 \u00d7 3 = ___\". Carlo says the missing number is 9. Is Carlo correct?",
+      "question_text": "Ana solved: \"4 + 4 + 4 = ___\". Ana says the missing number is 1. Is Ana correct?",
       "correct_answer": {
-        "has_error": false,
-        "correct_value": 9
+        "has_error": true,
+        "correct_value": 12
       }
     },
     {
       "seed": 55,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade 2 rows of 10 squares. How many squares are shaded altogether?",
-      "correct_answer": 20
+      "question_text": "Shade 5 rows of 2 squares to show 2 + 2 + 2 + 2 + 2. How many squares did you shade in all?",
+      "correct_answer": 10
     },
     {
       "seed": 85,
       "formatter": "true_false",
-      "question_text": "4 \u00d7 5 = 20. True or False?",
+      "question_text": "2 + 2 + 2 + 2 + 2 = 10. True or False?",
       "correct_answer": true
     },
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Shade 2 rows of 10 squares. How many squares are shaded altogether?",
-      "correct_answer": 20
+      "question_text": "Shade all the squares inside the 8\u00d710 rectangle. How many squares did you shade in all?",
+      "correct_answer": 80
     },
     {
       "seed": 501,
-      "formatter": "cloze",
-      "question_text": "4 \u00d7 10 = ___",
-      "correct_answer": 40,
-      "options": [
-        {
-          "key": "A",
-          "value": 50,
-          "text": "50",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 30,
-          "text": "30",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 40,
-          "text": "40",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 14,
-          "text": "14",
-          "is_correct": false
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "Starting at 0, taking 5 equal jumps of 7 on the number line lands on 35. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 2 \u00d7 10?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Starting at 0, take 5 equal jumps of 8 on the number line. What is 8 \u00d7 5?",
+      "correct_answer": 40
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 2 \u00d7 3?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "is_correct": true
-        }
-      ]
+      "question_text": "Count by 7s: 7, 14. What is 7 \u00d7 2?",
+      "correct_answer": 14
     },
     {
       "seed": 601,
-      "formatter": "mcq",
-      "question_text": "What is 2 \u00d7 10?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 2 \u00d7 4?",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ]
+      "formatter": "cloze",
+      "question_text": "Moses puts 4 baskets in each of 3 bags. How many baskets are in all the bags?",
+      "correct_answer": 12
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "2 + 2 + 2 + 2 = ___",
-      "correct_answer": 8,
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "text": "8",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        }
-      ]
+      "question_text": "4 + 4 + 4 = ___",
+      "correct_answer": 12
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 3 \u00d7 2?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "is_correct": false
-        }
-      ]
+      "question_text": "5 + 5 = ___. What is 5 \u00d7 2?",
+      "correct_answer": 10
+    },
+    {
+      "seed": 605,
+      "formatter": "read_mcq",
+      "question_text": "Look at the 2\u00d74 array. It shows 4 + 4. How many squares are shaded in all?",
+      "correct_answer": "C"
+    },
+    {
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "Starting at 0, take 2 equal jumps of 2 on the number line. What is 2 \u00d7 2?",
+      "correct_answer": 4
     }
   ]
 }

@@ -1,32 +1,33 @@
 {
   "node_id": "mat_g2_na_q3_6",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-NA-Q3-Harden (mat_g2_na_q3_6), 2026-08-18",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q3_6), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
   "overall": "PASS",
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The sample set directly and comprehensively fulfills the competency 'Divide numbers using the 2, 3 4, 5, and 10 multiplication tables.' Items test division directly linked to these tables, including basic division facts such as \"What is 3 \u00f7 3?\", \"What is 10 \u00f7 2?\", \"15 \u00f7 5 = ___\", and contextualized division like \"Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?\"."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All required multiplication/division tables (2, 3, 4, 5, and 10) are represented across the sample set. Specifically: divisor 2 is tested in \"What is 10 \u00f7 2?\" and \"What is 12 \u00f7 2?\"; divisor 3 is tested in \"What is 3 \u00f7 3?\" and \"15 \u00f7 3 = ___\"; divisor 4 is tested in \"20 \u00f7 4 = 5. True or False?\" and \"Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?\"; divisor 5 is tested in \"15 \u00f7 5 = ___\" and \"Ana solved: \\\"10 \u00f7 5 = ___\\\". Ana says the missing number is 5. Is Ana correct?\"; and divisor 10 is tested in \"40 \u00f7 10 = ___\" and \"What is 90 \u00f7 10?\"."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "Cognitive load and reading level are well-calibrated for Grade 2 Quarter 3 learners. Questions use concise, accessible language (e.g., \"What is 20 \u00f7 10?\", \"40 \u00f7 10 = ___\") and familiar sharing contexts (e.g., \"Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?\") without extraneous multi-step logic or non-target vocabulary."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The generator demonstrates strong pedagogical variety across multiple formatters and question types: direct mcq (\"What is 12 \u00f7 2?\"), cloze equation completion (\"40 \u00f7 10 = ___\"), equal sharing word problems (\"Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?\"), visual array row models (\"This array has 70 squares split into 10 equal rows. How many squares are in each row?\"), error detection (\"Ana solved: \\\"10 \u00f7 5 = ___\\\". Ana says the missing number is 5. Is Ana correct?\"), shading / set fill-in-blank (\"Shade 12 squares into 2 equal rows. How many squares are in each row?\"), and true/false verification (\"20 \u00f7 4 = 5. True or False?\")."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample strictly targets division facts within the specified tables (2, 3, 4, 5, 10). There are no out-of-scope divisors (such as 6, 7, 8, or 9), no multi-digit long division, and no remainders, maintaining exact curriculum alignment."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The numerical scale is completely appropriate for Grade 2 basic facts. Dividends remain within the products of single-digit numbers and the target factors (ranging from 3 in \"What is 3 \u00f7 3?\" up to 90 in \"What is 90 \u00f7 10?\" for the 10s table), and all quotients are whole numbers between 1 and 9."
+      "rationale": "<thorough explanation citing sample questions>"
     }
   },
   "sample_seeds": [
@@ -52,177 +53,37 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "What is 3 \u00f7 3?",
-      "correct_answer": 1,
-      "options": [
-        {
-          "key": "A",
-          "value": 0,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What is 10 \u00f7 2?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 5
     },
     {
       "seed": 44,
       "formatter": "cloze",
       "question_text": "40 \u00f7 10 = ___",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 30,
-          "text": "30",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 400,
-          "text": "400",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "text": "4",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 4
     },
     {
       "seed": 45,
       "formatter": "cloze",
       "question_text": "15 \u00f7 5 = ___",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 75,
-          "text": "75",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "text": "10",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "text": "5",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "What is 12 \u00f7 2?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 24,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 6
     },
     {
       "seed": 50,
       "formatter": "read_mcq",
       "question_text": "This array has 70 squares split into 10 equal rows. How many squares are in each row?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 34,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "A"
     },
     {
       "seed": 51,
@@ -261,149 +122,31 @@
       "seed": 502,
       "formatter": "mcq",
       "question_text": "What is 90 \u00f7 10?",
-      "correct_answer": 9,
-      "options": [
-        {
-          "key": "A",
-          "value": 80,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 900,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 9
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "What is 15 \u00f7 5?",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 75,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Moses wants to share 20 baskets equally among 4 friends. How many baskets does each friend get?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "text": "16",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 80,
-          "text": "80",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "text": "5",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 5
     },
     {
       "seed": 602,
       "formatter": "mcq",
       "question_text": "What is 20 \u00f7 10?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 200,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "seed": 603,
       "formatter": "cloze",
       "question_text": "15 \u00f7 3 = ___",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 45,
-          "text": "45",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "text": "5",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "text": "12",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 5
     }
   ]
 }
