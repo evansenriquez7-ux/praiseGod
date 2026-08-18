@@ -231,7 +231,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
 
-    # ── slide / translation (Grade 3: two-direction slide) ─────────────────────
+    # ── slide / translation (Grade 3: two-direction slide - mat_g3_mg_q4_0) ───
     {
         "question": "A shape moves 2 spaces right AND 3 spaces up. How many directions did it slide?",
         "answer": "2",
@@ -248,8 +248,80 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "directions": "two_directions",
         "grade_min": 3,
     },
+    {
+        "question": "A triangle at grid mark (1, 2) slides 3 units to the right and 4 units up. Where is its new position?",
+        "answer": "(4, 6)",
+        "distractors": ["(3, 4)", "(4, 2)", "(1, 6)"],
+        "concept": "slide_translation",
+        "directions": "two_directions",
+        "grade_min": 3,
+    },
+    {
+        "question": "A shape starts at position (5, 5). It undergoes a two-direction slide: 2 spaces left and 3 spaces down. What is the new position?",
+        "answer": "(3, 2)",
+        "distractors": ["(7, 8)", "(3, 5)", "(5, 2)"],
+        "concept": "slide_translation",
+        "directions": "two_directions",
+        "grade_min": 3,
+    },
+    {
+        "question": "A circle at grid coordinate (2, 4) slides 5 spaces right and 1 space down. At what grid point will the circle be drawn?",
+        "answer": "(7, 3)",
+        "distractors": ["(7, 5)", "(2, 3)", "(3, 9)"],
+        "concept": "slide_translation",
+        "directions": "two_directions",
+        "grade_min": 3,
+    },
+    {
+        "question": "To draw the result of a two-direction slide: 3 units right and 2 units down, what should you do to each corner of the shape?",
+        "answer": "shift each corner 3 units right and 2 units down",
+        "distractors": [
+            "shift each corner 3 units left and 2 units up",
+            "turn the shape 90 degrees",
+            "make each corner 3 times larger",
+        ],
+        "concept": "slide_translation",
+        "directions": "two_directions",
+        "grade_min": 3,
+    },
+    {
+        "question": "A figure slides 2 spaces left, then 1 more space left, then 4 spaces up. What is the total movement in the two directions?",
+        "answer": "3 spaces left and 4 spaces up",
+        "distractors": ["2 spaces left and 4 spaces up", "3 spaces left and 1 space up", "7 spaces left"],
+        "concept": "slide_translation",
+        "directions": "two_directions",
+        "grade_min": 3,
+    },
+    {
+        "question": "A rectangle undergoes a two-direction slide: 4 units right and 2 units up. Does the orientation or shape of the rectangle change?",
+        "answer": "No, only its position changes.",
+        "distractors": [
+            "Yes, it turns upside down.",
+            "Yes, it becomes a square.",
+            "Yes, it gets smaller.",
+        ],
+        "concept": "slide_translation",
+        "directions": "two_directions",
+        "grade_min": 3,
+    },
+    {
+        "question": "A point moves from (1, 1) to (4, 5). How many units right and how many units up did it slide?",
+        "answer": "3 units right and 4 units up",
+        "distractors": ["4 units right and 5 units up", "1 unit right and 1 unit up", "3 units right and 5 units up"],
+        "concept": "slide_translation",
+        "directions": "two_directions",
+        "grade_min": 3,
+    },
+    {
+        "question": "A star at point (0, 0) slides 4 spaces right, then 3 spaces up. Where should the star be drawn?",
+        "answer": "(4, 3)",
+        "distractors": ["(3, 4)", "(4, 0)", "(0, 3)"],
+        "concept": "slide_translation",
+        "directions": "two_directions",
+        "grade_min": 3,
+    },
 
-    # ── line symmetry (Grade 3) ────────────────────────────────────────────────
+    # ── line symmetry (Grade 3 - mat_g3_mg_q4_1) ──────────────────────────────
     {
         "question": "A line of symmetry divides a shape into two ___.",
         "answer": "equal halves that are mirror images",
@@ -287,6 +359,22 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 3,
     },
     {
+        "question": "How many lines of symmetry does an isosceles triangle (two equal sides) have?",
+        "answer": "1",
+        "distractors": ["2", "3", "0"],
+        "concept": "line_symmetry",
+        "directions": "one_direction",
+        "grade_min": 3,
+    },
+    {
+        "question": "How many lines of symmetry does a scalene triangle (all sides different) have?",
+        "answer": "0",
+        "distractors": ["1", "2", "3"],
+        "concept": "line_symmetry",
+        "directions": "one_direction",
+        "grade_min": 3,
+    },
+    {
         "question": "A circle has how many lines of symmetry?",
         "answer": "Infinite (unlimited)",
         "distractors": ["1", "4", "0"],
@@ -310,8 +398,44 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "directions": "one_direction",
         "grade_min": 3,
     },
+    {
+        "question": "The letter 'M' has a line of symmetry. In which direction does it run?",
+        "answer": "vertical (up and down)",
+        "distractors": ["horizontal (side to side)", "diagonal", "no lines of symmetry"],
+        "concept": "line_symmetry",
+        "directions": "one_direction",
+        "grade_min": 3,
+    },
+    {
+        "question": "The letter 'B' has a line of symmetry. In which direction does it run?",
+        "answer": "horizontal (side to side)",
+        "distractors": ["vertical (up and down)", "diagonal", "no lines of symmetry"],
+        "concept": "line_symmetry",
+        "directions": "one_direction",
+        "grade_min": 3,
+    },
+    {
+        "question": "Which of these shapes has NO line of symmetry?",
+        "answer": "a scalene triangle",
+        "distractors": ["a square", "a rectangle", "an equilateral triangle"],
+        "concept": "line_symmetry",
+        "directions": "one_direction",
+        "grade_min": 3,
+    },
+    {
+        "question": "If you draw a vertical line down the center of a heart shape, do both sides match?",
+        "answer": "Yes, it shows line symmetry.",
+        "distractors": [
+            "No, the sides are different.",
+            "Only if the heart is tilted.",
+            "No, hearts have 4 lines of symmetry.",
+        ],
+        "concept": "line_symmetry",
+        "directions": "one_direction",
+        "grade_min": 3,
+    },
 
-    # ── complete symmetric figure (Grade 3) ───────────────────────────────────
+    # ── complete symmetric figure (Grade 3 - mat_g3_mg_q4_2) ──────────────────
     {
         "question": "To complete a symmetric figure across a vertical line of symmetry, the other half must be ___.",
         "answer": "drawn as a mirror image of the first half",
@@ -340,6 +464,62 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "question": "If a shape is symmetrical across a line, folding along that line makes both halves match exactly. True or false?",
         "answer": "True",
         "distractors": ["False", "Only for circles", "Only for squares"],
+        "concept": "complete_symmetric_figure",
+        "directions": "one_direction",
+        "grade_min": 3,
+    },
+    {
+        "question": "A point is 4 grid units to the right of a vertical line of symmetry. Where should its matching point be drawn to complete the figure?",
+        "answer": "4 grid units to the left of the line",
+        "distractors": [
+            "4 grid units to the right of the line",
+            "2 grid units to the left of the line",
+            "on the line of symmetry",
+        ],
+        "concept": "complete_symmetric_figure",
+        "directions": "one_direction",
+        "grade_min": 3,
+    },
+    {
+        "question": "A point is 2 grid units above a horizontal line of symmetry. Where must the matching point be drawn to complete the symmetric figure?",
+        "answer": "2 grid units below the line of symmetry",
+        "distractors": [
+            "2 grid units above the line of symmetry",
+            "4 grid units below the line of symmetry",
+            "2 grid units to the right of the line",
+        ],
+        "concept": "complete_symmetric_figure",
+        "directions": "one_direction",
+        "grade_min": 3,
+    },
+    {
+        "question": "One side of a symmetric butterfly drawing has 3 dots on the left wing. How many dots must be drawn on the right wing to complete the figure?",
+        "answer": "3 dots in matching positions",
+        "distractors": [
+            "6 dots in matching positions",
+            "1 dot on the wing",
+            "0 dots",
+        ],
+        "concept": "complete_symmetric_figure",
+        "directions": "one_direction",
+        "grade_min": 3,
+    },
+    {
+        "question": "When completing a symmetric figure on grid paper, each vertex on the second half must be the same distance from the line of symmetry as its partner on the first half. True or false?",
+        "answer": "True",
+        "distractors": ["False", "Only for rectangles", "Only for circles"],
+        "concept": "complete_symmetric_figure",
+        "directions": "one_direction",
+        "grade_min": 3,
+    },
+    {
+        "question": "A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?",
+        "answer": "5 units to the right of the line",
+        "distractors": [
+            "5 units to the left of the line",
+            "10 units to the right of the line",
+            "on the line of symmetry",
+        ],
         "concept": "complete_symmetric_figure",
         "directions": "one_direction",
         "grade_min": 3,

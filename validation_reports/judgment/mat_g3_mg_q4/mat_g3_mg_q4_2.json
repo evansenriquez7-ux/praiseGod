@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g3_mg_q4_2",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B7a (g3 mg_q2_4-q4 + na_q1), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Q4-Harden (mat_g3_mg_q4_2), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items directly fulfill the competency requirement to complete a symmetric figure across a line. Questions evaluate locating corresponding points across vertical and horizontal lines of symmetry (e.g., \"A point is 3 grid units to the left of a vertical line of symmetry. Where is its mirror-image point?\" and \"A point is 2 grid units above a horizontal line of symmetry. Where must the matching point be drawn to complete the symmetric figure?\"), matching features on symmetric drawings (\"One side of a symmetric butterfly drawing has 3 dots on the left wing. How many dots must be drawn on the right wing to complete the figure?\"), and identifying equidistant reflection properties (\"When completing a symmetric figure on grid paper, each vertex on the second half must be the same distance from the line of symmetry as its partner on the first half. True or false?\")."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set comprehensively covers key dimensions of the competency, including both vertical and horizontal symmetry lines, left-to-right and right-to-left reflections (\"A point is 4 grid units to the right of a vertical line of symmetry. Where should its matching point be drawn to complete the figure?\"), polygon vertices (\"A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?\"), pictorial completion (\"One side of a symmetric butterfly drawing has 3 dots on the left wing. How many dots must be drawn on the right wing to complete the figure?\"), and fundamental symmetry definitions (\"To complete a symmetric figure across a vertical line of symmetry, the other half must be ___.\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The language, sentence structure, and conceptual load are calibrated appropriately for Grade 3 Quarter 4 students. Grid-based distance descriptions are intuitive and avoid formal coordinate notation, while contexts like \"One side of a symmetric butterfly drawing has 3 dots on the left wing. How many dots must be drawn on the right wing to complete the figure?\" provide accessible visual representations of reflectional completion."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The generator demonstrates solid variation across multiple item formats: directional mirror-point positioning across different axes (\"A point is 2 grid units above a horizontal line of symmetry. Where must the matching point be drawn to complete the symmetric figure?\"), polygon vertex reflection (\"A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?\"), property verification (\"When completing a symmetric figure on grid paper, each vertex on the second half must be the same distance from the line of symmetry as its partner on the first half. True or false?\"), and conceptual completion rules (\"To complete a symmetric figure across a vertical line of symmetry, the other half must be ___.\")."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All questions align strictly with the target competency 'Complete a figure that is symmetric with respect to a line' without introducing out-of-scope transformations such as rotations or formal Cartesian coordinate algebra. Items such as \"A point is 4 grid units to the right of a vertical line of symmetry. Where should its matching point be drawn to complete the figure?\" and \"A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?\" target reflectional symmetry completion directly."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numerical values used for grid distances (such as 2, 3, 4, and 5 units in \"A point is 3 grid units to the left of a vertical line of symmetry. Where is its mirror-image point?\" and \"A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?\") and small counts (\"One side of a symmetric butterfly drawing has 3 dots on the left wing. How many dots must be drawn on the right wing to complete the figure?\") are perfectly scaled for Grade 3 learners to visualize and count accurately."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -11,33 +38,34 @@
     46,
     500,
     501,
-    502
+    502,
+    601
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "When completing a symmetric figure, the two halves must be ___.",
-      "correct_answer": "mirror images of each other",
+      "question_text": "A point is 3 grid units to the left of a vertical line of symmetry. Where is its mirror-image point?",
+      "correct_answer": "3 grid units to the right of the line",
       "options": [
         {
           "key": "A",
-          "value": "identical in position",
+          "value": "3 grid units above the line",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "rotated copies",
+          "value": "on the line itself",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "mirror images of each other",
+          "value": "3 grid units to the right of the line",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "different sizes",
+          "value": "6 grid units to the right of the line",
           "is_correct": false
         }
       ]
@@ -45,27 +73,27 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Half of a shape is shown. The line of symmetry is vertical. To complete the shape, what do you do?",
-      "correct_answer": "Draw the mirror image on the other side of the line.",
+      "question_text": "To complete a symmetric figure across a vertical line of symmetry, the other half must be ___.",
+      "correct_answer": "drawn as a mirror image of the first half",
       "options": [
         {
           "key": "A",
-          "value": "Draw the mirror image on the other side of the line.",
+          "value": "drawn as a mirror image of the first half",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "Rotate the half shape 90\u00b0.",
+          "value": "drawn twice as large",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "Slide the shape to the right.",
+          "value": "drawn as a triangle",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "Draw a copy directly below the shape.",
+          "value": "drawn upside down",
           "is_correct": false
         }
       ]
@@ -73,27 +101,27 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "A symmetric figure has a horizontal line of symmetry. If the top half has 3 squares, how many squares are in the bottom half?",
-      "correct_answer": "3",
+      "question_text": "When completing a symmetric figure on grid paper, each vertex on the second half must be the same distance from the line of symmetry as its partner on the first half. True or false?",
+      "correct_answer": "True",
       "options": [
         {
           "key": "A",
-          "value": "2",
+          "value": "Only for rectangles",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "6",
+          "value": "False",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "4",
+          "value": "Only for circles",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "3",
+          "value": "True",
           "is_correct": true
         }
       ]
@@ -101,27 +129,27 @@
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "A symmetric figure has a horizontal line of symmetry. If the top half has 3 squares, how many squares are in the bottom half?",
-      "correct_answer": "3",
+      "question_text": "A point is 2 grid units above a horizontal line of symmetry. Where must the matching point be drawn to complete the symmetric figure?",
+      "correct_answer": "2 grid units below the line of symmetry",
       "options": [
         {
           "key": "A",
-          "value": "4",
+          "value": "2 grid units to the right of the line",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "6",
+          "value": "2 grid units above the line of symmetry",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "3",
+          "value": "2 grid units below the line of symmetry",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "2",
+          "value": "4 grid units below the line of symmetry",
           "is_correct": false
         }
       ]
@@ -129,27 +157,27 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Half of a shape is shown. The line of symmetry is vertical. To complete the shape, what do you do?",
-      "correct_answer": "Draw the mirror image on the other side of the line.",
+      "question_text": "A point is 3 grid units to the left of a vertical line of symmetry. Where is its mirror-image point?",
+      "correct_answer": "3 grid units to the right of the line",
       "options": [
         {
           "key": "A",
-          "value": "Slide the shape to the right.",
+          "value": "on the line itself",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "Draw the mirror image on the other side of the line.",
+          "value": "3 grid units to the right of the line",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "Rotate the half shape 90\u00b0.",
+          "value": "6 grid units to the right of the line",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "Draw a copy directly below the shape.",
+          "value": "3 grid units above the line",
           "is_correct": false
         }
       ]
@@ -157,27 +185,27 @@
     {
       "seed": 500,
       "formatter": "mcq",
-      "question_text": "A symmetric figure has a horizontal line of symmetry. If the top half has 3 squares, how many squares are in the bottom half?",
-      "correct_answer": "3",
+      "question_text": "A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?",
+      "correct_answer": "5 units to the right of the line",
       "options": [
         {
           "key": "A",
-          "value": "3",
+          "value": "5 units to the right of the line",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "2",
+          "value": "on the line of symmetry",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "6",
+          "value": "5 units to the left of the line",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "4",
+          "value": "10 units to the right of the line",
           "is_correct": false
         }
       ]
@@ -185,85 +213,86 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "When completing a symmetric figure, the two halves must be ___.",
-      "correct_answer": "mirror images of each other",
+      "question_text": "A point is 2 grid units above a horizontal line of symmetry. Where must the matching point be drawn to complete the symmetric figure?",
+      "correct_answer": "2 grid units below the line of symmetry",
       "options": [
         {
           "key": "A",
-          "value": "mirror images of each other",
-          "is_correct": true
+          "value": "4 grid units below the line of symmetry",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "rotated copies",
+          "value": "2 grid units above the line of symmetry",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "different sizes",
+          "value": "2 grid units to the right of the line",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "identical in position",
-          "is_correct": false
+          "value": "2 grid units below the line of symmetry",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "When completing a symmetric figure, the two halves must be ___.",
-      "correct_answer": "mirror images of each other",
+      "question_text": "One side of a symmetric butterfly drawing has 3 dots on the left wing. How many dots must be drawn on the right wing to complete the figure?",
+      "correct_answer": "3 dots in matching positions",
       "options": [
         {
           "key": "A",
-          "value": "identical in position",
+          "value": "6 dots in matching positions",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "mirror images of each other",
-          "is_correct": true
+          "value": "0 dots",
+          "is_correct": false
         },
         {
           "key": "C",
-          "value": "rotated copies",
+          "value": "3 dots in matching positions",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "1 dot on the wing",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 601,
+      "formatter": "mcq",
+      "question_text": "A point is 4 grid units to the right of a vertical line of symmetry. Where should its matching point be drawn to complete the figure?",
+      "correct_answer": "4 grid units to the left of the line",
+      "options": [
+        {
+          "key": "A",
+          "value": "2 grid units to the left of the line",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "on the line of symmetry",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "4 grid units to the right of the line",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "different sizes",
-          "is_correct": false
+          "value": "4 grid units to the left of the line",
+          "is_correct": true
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples test conceptual prerequisites for completing a symmetric figure, such as seed 44's question about how many squares are in a mirrored bottom half, which requires understanding the mirrored-count relationship the competency depends on."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "None of the eight samples actually has the student complete a figure; every item instead asks about the procedure, as in seed 43's \"what do you do?\", or a count derived from an already-described half, so the competency's core verb \"complete\" is never directly enacted in any rendered sample."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The reasoning required, mirrored counts and choosing \"Draw the mirror image on the other side of the line\" in seed 43, stays at a concrete, countable level suited to Grade 3 rather than requiring coordinate-based reflection."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The eight samples rotate through three distinct angles on the same skill: a general definition of mirror-image halves in seeds 42, 501, and 502, the correct completion procedure in seeds 43 and 46, and a numeric count check in seeds 44, 45, and 500."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Wrong options for the procedure question in seed 43, \"Rotate the half shape 90\u00b0\" and \"Slide the shape to the right\", name other transformations, anchoring difficulty to distinguishing reflection-completion from other moves."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The square-count values used, 3 squares per half, are small and concrete, appropriate for a Grade 3 introduction to symmetric completion without any large-number arithmetic."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }

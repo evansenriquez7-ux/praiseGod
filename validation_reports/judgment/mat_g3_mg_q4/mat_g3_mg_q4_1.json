@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g3_mg_q4_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B7a (g3 mg_q2_4-q4 + na_q1), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Q4-Harden (mat_g3_mg_q4_1), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample items directly fulfill the MATATAG competency requirement of identifying shapes and figures with line symmetry. In multiple-choice assessment formats where physical drawing cannot be directly scored, items translate the drawing process into verifying symmetry lines and determining their orientation and count. For example, 'If you draw a vertical line down the center of a heart shape, do both sides match?' directly tests the mental execution and visual verification of drawing a symmetry line. Items like 'The letter 'B' has a line of symmetry. In which direction does it run?' and 'How many lines of symmetry does a square have?' assess the ability to identify the precise lines of symmetry in figures."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set provides balanced coverage across 2D geometric shapes, letters, and familiar objects. Geometric shapes include regular and irregular polygons and curved figures: 'How many lines of symmetry does a square have?', 'How many lines of symmetry does an equilateral triangle have?', 'How many lines of symmetry does an isosceles triangle (two equal sides) have?', and 'A circle has how many lines of symmetry?'. Non-geometric figures include letters ('The letter 'H' has how many lines of symmetry?' and 'The letter 'B' has a line of symmetry. In which direction does it run?') as well as conceptual definitions ('A line of symmetry divides a shape into two ___.')."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "All questions are well-calibrated for Grade 3 learners in Quarter 4. Complex vocabulary is appropriately scaffolded, such as defining an isosceles triangle parenthetically in 'How many lines of symmetry does an isosceles triangle (two equal sides) have?'. Directional options include clear parenthetical aids ('horizontal (side to side)', 'vertical (up and down)'). The sentence structure across items like 'If you draw a vertical line down the center of a heart shape, do both sides match?' is concise and easily readable for 8-9 year old students."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample exhibits strong variant diversity spanning multiple facets of line symmetry: definition verification ('A line of symmetry divides a shape into two ___.'), direction/orientation identification ('The letter 'B' has a line of symmetry. In which direction does it run?'), line counting across polygons and curved shapes ('How many lines of symmetry does a square have?', 'How many lines of symmetry does an equilateral triangle have?', 'A circle has how many lines of symmetry?'), letter symmetry ('The letter 'H' has how many lines of symmetry?'), and visual halves matching ('If you draw a vertical line down the center of a heart shape, do both sides match?')."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every question in the sample set aligns strictly with Grade 3 line symmetry principles without leaking into out-of-scope concepts like rotational symmetry, coordinate reflection, or transformations. Items such as 'The letter 'H' has how many lines of symmetry?' and 'How many lines of symmetry does an equilateral triangle have?' directly reinforce reflectional symmetry appropriate for this grade level."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "Numerical quantities and options are completely appropriate for Grade 3. Symmetry line counts use discrete, low non-negative integers (0, 1, 2, 3, 4) or conceptual infinity as in 'A circle has how many lines of symmetry?'. Distractors are plausible and well-distributed."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -18,27 +45,27 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "How many lines of symmetry does a square have?",
-      "correct_answer": "4",
+      "question_text": "The letter 'B' has a line of symmetry. In which direction does it run?",
+      "correct_answer": "horizontal (side to side)",
       "options": [
         {
           "key": "A",
-          "value": "1",
+          "value": "vertical (up and down)",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "0",
+          "value": "no lines of symmetry",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "4",
+          "value": "horizontal (side to side)",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "2",
+          "value": "diagonal",
           "is_correct": false
         }
       ]
@@ -74,40 +101,12 @@
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "The letter 'B' has a line of symmetry. In which direction does it run?",
-      "correct_answer": "horizontal (left and right)",
-      "options": [
-        {
-          "key": "A",
-          "value": "diagonal",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "vertical (up and down)",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "It has no line of symmetry.",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "horizontal (left and right)",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "mcq",
       "question_text": "A circle has how many lines of symmetry?",
       "correct_answer": "Infinite (unlimited)",
       "options": [
         {
           "key": "A",
-          "value": "0",
+          "value": "4",
           "is_correct": false
         },
         {
@@ -117,12 +116,40 @@
         },
         {
           "key": "C",
+          "value": "0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
           "value": "Infinite (unlimited)",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "formatter": "mcq",
+      "question_text": "How many lines of symmetry does an isosceles triangle (two equal sides) have?",
+      "correct_answer": "1",
+      "options": [
+        {
+          "key": "A",
+          "value": "0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "2",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "1",
           "is_correct": true
         },
         {
           "key": "D",
-          "value": "4",
+          "value": "3",
           "is_correct": false
         }
       ]
@@ -158,27 +185,27 @@
     {
       "seed": 500,
       "formatter": "mcq",
-      "question_text": "Does a scalene triangle (all sides different) have a line of symmetry?",
-      "correct_answer": "No",
+      "question_text": "If you draw a vertical line down the center of a heart shape, do both sides match?",
+      "correct_answer": "Yes, it shows line symmetry.",
       "options": [
         {
           "key": "A",
-          "value": "No",
+          "value": "Yes, it shows line symmetry.",
           "is_correct": true
         },
         {
           "key": "B",
-          "value": "Yes, two lines",
+          "value": "No, hearts have 4 lines of symmetry.",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "Yes, one line",
+          "value": "No, the sides are different.",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "Yes, three lines",
+          "value": "Only if the heart is tilted.",
           "is_correct": false
         }
       ]
@@ -186,55 +213,55 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "A circle has how many lines of symmetry?",
-      "correct_answer": "Infinite (unlimited)",
+      "question_text": "The letter 'B' has a line of symmetry. In which direction does it run?",
+      "correct_answer": "horizontal (side to side)",
       "options": [
         {
           "key": "A",
-          "value": "Infinite (unlimited)",
-          "is_correct": true
+          "value": "no lines of symmetry",
+          "is_correct": false
         },
         {
           "key": "B",
-          "value": "0",
+          "value": "diagonal",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "4",
+          "value": "vertical (up and down)",
           "is_correct": false
         },
         {
           "key": "D",
-          "value": "1",
-          "is_correct": false
+          "value": "horizontal (side to side)",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "The letter 'A' has a line of symmetry. In which direction does it run?",
-      "correct_answer": "vertical (up and down)",
+      "question_text": "The letter 'H' has how many lines of symmetry?",
+      "correct_answer": "2",
       "options": [
         {
           "key": "A",
-          "value": "horizontal (left and right)",
+          "value": "0",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "vertical (up and down)",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "It has no line of symmetry.",
+          "value": "1",
           "is_correct": false
         },
         {
+          "key": "C",
+          "value": "2",
+          "is_correct": true
+        },
+        {
           "key": "D",
-          "value": "diagonal",
+          "value": "3",
           "is_correct": false
         }
       ]
@@ -252,12 +279,12 @@
         },
         {
           "key": "B",
-          "value": "1",
+          "value": "0",
           "is_correct": false
         },
         {
           "key": "C",
-          "value": "0",
+          "value": "1",
           "is_correct": false
         },
         {
@@ -267,32 +294,5 @@
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every sample tests the \"identify\" half of the competency by asking students to recognize whether and how many lines of symmetry a shape has, such as seed 42's \"How many lines of symmetry does a square have?\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The competency's second clause, \"by drawing the line of symmetry\", is never exercised: all nine samples are multiple-choice recall or direction-naming items, such as seed 44's \"In which direction does it run?\", and none asks the student to place or mark a line on a figure."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The shapes referenced, a square, a circle, a scalene triangle, an equilateral triangle, and the letters B and A, are concrete figures appropriate for Grade 3 Quarter 4 geometry vocabulary, without terms belonging to later grades."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The nine samples cover seven distinct question angles: counting symmetry lines for a square in seeds 42 and 46 and a circle in seeds 45 and 501, a fill-in-the-blank definition in seed 43, symmetry direction for two different letters in seeds 44 and 502, a no-symmetry case for a scalene triangle in seed 500, and a triangle count in seed 601."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Distractors probe genuine misconceptions about symmetry count; seed 42 offers 1, 0, and 2 as wrong answers to the square's true count of 4, keeping difficulty tied to the symmetry concept itself."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The symmetry counts involved, 0 through 4 plus \"Infinite (unlimited)\" for a circle, are within the small, countable range expected for introductory line-symmetry work at this grade."
-    }
-  },
-  "overall": "CONCERN"
+  ]
 }
