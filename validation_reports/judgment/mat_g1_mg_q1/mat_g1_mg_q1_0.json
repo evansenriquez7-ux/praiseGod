@@ -1,8 +1,34 @@
 {
   "node_id": "mat_g1_mg_q1_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B1 (g1 dp/mg + na_q1), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch G1-MG-Q1-Harden-v3 (mat_g1_mg_q1_0), 2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample questions successfully ask the student to identify a shape from its properties. For instance, \"A party hat is shaped with 3 straight edges. What 2D shape is it?\" and \"A flat floor tile has 4 equal straight edges. What shape is the tile?\" directly test the core competency of shape identification."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The packet covers all three required shapes: triangle (e.g., \"A small flat shape with 3 straight edges is shown. What shape is it?\"), rectangle (e.g., \"A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?\"), and square (e.g., \"A large flat shape with 4 equal straight edges is shown. What shape is it?\"). It also tests different sizes and orientation (e.g., \"A small triangular sign is turned upside down. What shape is it?\")."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The questions are developmentally appropriate for Grade 1. They use familiar real-world objects like \"party hat\" and \"classroom chalkboard\". The geometric descriptions are basic enough, and phrases like \"A small triangular sign is turned upside down. What shape is it?\" assess orientation without exceeding cognitive capacity."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples show a variety of formats, mixing abstract geometric properties (\"A small flat shape with 3 straight edges is shown. What shape is it?\"\\) with applied real-world examples (\"A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?\"\\)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All samples strictly align with the MATATAG text by only testing the specified shapes (triangle, rectangle, square) and explicitly referencing sizes and orientations, as required by the competency text."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The difficulty level is appropriately scaled for Grade 1 Quarter 1. The defining properties of the shapes (e.g., \"3 straight edges\" for a triangle, \"4 equal straight edges\" for a square) are presented clearly and directly. For example, \"A large flat shape with 4 equal straight edges is shown. What shape is it?\" perfectly scales to this level."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -13,35 +39,29 @@
     500,
     501,
     502,
-    605,
-    606,
-    607
+    600,
+    601
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What shape has 4 sides where opposite sides are equal?",
-      "correct_answer": "rectangle",
+      "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
+      "correct_answer": "triangle",
       "options": [
         {
           "key": "A",
-          "value": "triangle",
+          "value": "square",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "pentagon",
-          "is_correct": false
+          "value": "triangle",
+          "is_correct": true
         },
         {
           "key": "C",
           "value": "rectangle",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "square",
           "is_correct": false
         }
       ]
@@ -49,36 +69,31 @@
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What shape has 3 sides and 3 corners?",
+      "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
       "correct_answer": "triangle",
       "options": [
         {
           "key": "A",
-          "value": "triangle",
-          "is_correct": true
-        },
-        {
-          "key": "B",
           "value": "square",
           "is_correct": false
         },
         {
-          "key": "C",
-          "value": "pentagon",
+          "key": "B",
+          "value": "rectangle",
           "is_correct": false
         },
         {
-          "key": "D",
-          "value": "rectangle",
-          "is_correct": false
+          "key": "C",
+          "value": "triangle",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What shape has 4 equal sides and 4 corners?",
-      "correct_answer": "square",
+      "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
+      "correct_answer": "triangle",
       "options": [
         {
           "key": "A",
@@ -88,44 +103,34 @@
         {
           "key": "B",
           "value": "triangle",
-          "is_correct": false
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": "pentagon",
-          "is_correct": false
-        },
-        {
-          "key": "D",
           "value": "square",
-          "is_correct": true
+          "is_correct": false
         }
       ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What shape has 4 equal sides and 4 corners?",
-      "correct_answer": "square",
+      "question_text": "A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?",
+      "correct_answer": "rectangle",
       "options": [
         {
           "key": "A",
-          "value": "pentagon",
+          "value": "square",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "triangle",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "square",
+          "value": "rectangle",
           "is_correct": true
         },
         {
-          "key": "D",
-          "value": "rectangle",
+          "key": "C",
+          "value": "triangle",
           "is_correct": false
         }
       ]
@@ -133,12 +138,12 @@
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What shape has 3 sides and 3 corners?",
+      "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
       "correct_answer": "triangle",
       "options": [
         {
           "key": "A",
-          "value": "pentagon",
+          "value": "rectangle",
           "is_correct": false
         },
         {
@@ -149,11 +154,6 @@
         {
           "key": "C",
           "value": "square",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "rectangle",
           "is_correct": false
         }
       ]
@@ -161,26 +161,21 @@
     {
       "seed": 50,
       "formatter": "read_mcq",
-      "question_text": "What shape has 4 equal sides and 4 corners?",
+      "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
       "correct_answer": "B",
       "options": [
         {
           "key": "A",
-          "value": "triangle",
+          "value": "square",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "square",
+          "value": "triangle",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "pentagon",
-          "is_correct": false
-        },
-        {
-          "key": "D",
           "value": "rectangle",
           "is_correct": false
         }
@@ -189,12 +184,12 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "What shape has 4 equal sides and 4 corners?",
+      "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
       "correct_answer": "A",
       "options": [
         {
           "key": "A",
-          "value": "square",
+          "value": "triangle",
           "is_correct": true
         },
         {
@@ -204,12 +199,7 @@
         },
         {
           "key": "C",
-          "value": "triangle",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "pentagon",
+          "value": "square",
           "is_correct": false
         }
       ]
@@ -217,169 +207,94 @@
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "What shape has 4 sides where opposite sides are equal?",
+      "question_text": "A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?",
       "correct_answer": "rectangle",
       "options": [
         {
           "key": "A",
-          "value": "rectangle",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "pentagon",
-          "is_correct": false
-        },
-        {
-          "key": "C",
           "value": "square",
           "is_correct": false
         },
         {
-          "key": "D",
+          "key": "B",
           "value": "triangle",
           "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "rectangle",
+          "is_correct": true
         }
       ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What shape has 4 sides where opposite sides are equal?",
-      "correct_answer": "rectangle",
+      "question_text": "A large flat shape with 4 equal straight edges is shown. What shape is it?",
+      "correct_answer": "square",
       "options": [
         {
           "key": "A",
-          "value": "triangle",
+          "value": "rectangle",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "rectangle",
+          "value": "square",
           "is_correct": true
         },
         {
           "key": "C",
-          "value": "pentagon",
+          "value": "triangle",
           "is_correct": false
-        },
+        }
+      ]
+    },
+    {
+      "seed": 600,
+      "formatter": "mcq",
+      "question_text": "A small triangular sign is turned upside down. What shape is it?",
+      "correct_answer": "triangle",
+      "options": [
         {
-          "key": "D",
+          "key": "A",
           "value": "square",
           "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
-      "formatter": "read_mcq",
-      "question_text": "Which shape has more sides — a triangle or a rectangle?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": "rectangle",
-          "is_correct": true
         },
         {
           "key": "B",
           "value": "triangle",
-          "is_correct": false
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": "they are equal",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "neither",
+          "value": "rectangle",
           "is_correct": false
         }
       ]
     },
     {
-      "seed": 606,
+      "seed": 601,
       "formatter": "mcq",
-      "question_text": "A square is cut on a slant, from one edge to another. What two shapes are made?",
-      "correct_answer": "two triangles",
+      "question_text": "A flat floor tile has 4 equal straight edges. What shape is the tile?",
+      "correct_answer": "square",
       "options": [
         {
           "key": "A",
-          "value": "two triangles",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "two rectangles",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "two squares",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "two pentagons",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 607,
-      "formatter": "read_mcq",
-      "question_text": "How many corners does a triangle have?",
-      "correct_answer": "D",
-      "options": [
-        {
-          "key": "A",
-          "value": "2",
+          "value": "triangle",
           "is_correct": false
         },
         {
           "key": "B",
-          "value": "4",
-          "is_correct": false
+          "value": "square",
+          "is_correct": true
         },
         {
           "key": "C",
-          "value": "5",
+          "value": "rectangle",
           "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "3",
-          "is_correct": true
         }
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "CONCERN",
-      "rationale": "Riddle-style items such as \"What shape has 3 sides and 3 corners?\" do test naming a shape from its properties, but the competency's closing clause \"of different size and in different orientation\" is never referenced in any of the twelve stems, so that half of the wording cannot be confirmed as covered from text alone."
-    },
-    "comprehensive_coverage": {
-      "verdict": "CONCERN",
-      "rationale": "The size-and-orientation sub-case is named directly in this node's own competency text, yet none of the twelve sampled question stems mentions size or rotation, leaving that sub-case unverifiable from what was shown."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Property phrasing such as \"4 equal sides and 4 corners\" is short and concrete, matching Grade 1 Quarter 1."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Property riddles, a read_mcq restatement, and a couple of applied items together give reasonable format range."
-    },
-    "competency_alignment": {
-      "verdict": "FAIL",
-      "rationale": "Seed 605, \"Which shape has more sides — a triangle or a rectangle?\", and seed 606, \"A square is cut on a slant, from one edge to another. What two shapes are made?\", test comparison and decomposition rather than identification, so two of the twelve samples pull in content that belongs to this batch's compare-shapes and compose/decompose sibling nodes instead of deepening the identify skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The shape vocabulary stays inside triangle, square, and rectangle, with pentagon appearing only as a distractor, matching what this competency names."
-    }
-  },
-  "overall": "FAIL"
+  ]
 }

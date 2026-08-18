@@ -1156,6 +1156,8 @@ def _parse_competency_bounds(
             bounds["task_type"] = "compose_decompose"
         elif "compare" in text or "distinguish" in text:
             bounds["task_type"] = "compare_shapes"
+        elif "identify" in text:
+            bounds["task_type"] = "identify_name"
 
     # Geometric lines: this DNA's item pool spans three disjoint curriculum
     # scopes (straight/curved lines & surfaces; parallel/intersecting/

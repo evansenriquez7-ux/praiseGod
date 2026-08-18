@@ -53,47 +53,92 @@ VOCAB_VERTICES = VocabGated(requires_vocab="vertices", preferred="vertices", fal
 # Each item: {question, answer, distractors, shape_set, task_type, orientation, grade_min}
 _ITEM_POOL: List[Dict[str, Any]] = [
     # ── G1: basic_triangles_rectangles_squares ─────────────────────────────────
-    # ── identify_name ──
+    # ── identify_name (mat_g1_mg_q1_0: triangles, rectangles, squares of different size and orientation) ──
     {
-        "question": "Which shape is a triangle?",
+        "question": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
         "answer": "triangle",
-        "distractors": ["rectangle", "square", "pentagon"],
+        "distractors": ["rectangle", "square"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "standard",
         "grade_min": 1,
     },
     {
-        "question": "Which shape is a square?",
+        "question": "A flat floor tile has 4 equal straight edges. What shape is the tile?",
         "answer": "square",
-        "distractors": ["triangle", "rectangle", "pentagon"],
+        "distractors": ["triangle", "rectangle"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "standard",
         "grade_min": 1,
     },
     {
-        "question": "Which shape is a rectangle?",
+        "question": "A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?",
         "answer": "rectangle",
-        "distractors": ["triangle", "square", "pentagon"],
+        "distractors": ["triangle", "square"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "standard",
         "grade_min": 1,
     },
     {
-        "question": "A 3-sided shape is turned sideways. What shape is it?",
+        "question": "A small flat shape with 3 straight edges is shown. What shape is it?",
         "answer": "triangle",
-        "distractors": ["square", "rectangle", "pentagon"],
+        "distractors": ["rectangle", "square"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "identify_name",
+        "orientation": "standard",
+        "grade_min": 1,
+    },
+    {
+        "question": "A large flat shape with 4 equal straight edges is shown. What shape is it?",
+        "answer": "square",
+        "distractors": ["triangle", "rectangle"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "identify_name",
+        "orientation": "standard",
+        "grade_min": 1,
+    },
+    {
+        "question": "A slice of pizza with 3 straight edges is turned sideways. What shape is it?",
+        "answer": "triangle",
+        "distractors": ["square", "rectangle"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "rotated",
         "grade_min": 1,
     },
     {
-        "question": "A 4-sided shape with equal sides is tilted. What shape is it?",
+        "question": "A square tile is tilted like a diamond. What shape is the tile?",
         "answer": "square",
-        "distractors": ["triangle", "rectangle", "pentagon"],
+        "distractors": ["triangle", "rectangle"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "identify_name",
+        "orientation": "rotated",
+        "grade_min": 1,
+    },
+    {
+        "question": "A small triangular sign is turned upside down. What shape is it?",
+        "answer": "triangle",
+        "distractors": ["rectangle", "square"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "identify_name",
+        "orientation": "rotated",
+        "grade_min": 1,
+    },
+    {
+        "question": "A tall doorway has 4 straight edges and is standing upright. What shape is it?",
+        "answer": "rectangle",
+        "distractors": ["triangle", "square"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "identify_name",
+        "orientation": "rotated",
+        "grade_min": 1,
+    },
+    {
+        "question": "A large square picture frame is tilted on one of its tips. What shape is the frame?",
+        "answer": "square",
+        "distractors": ["triangle", "rectangle"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "identify_name",
         "orientation": "rotated",
@@ -156,7 +201,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 1,
     },
 
-    # ── compare_shapes ──
+    # ── compare_shapes (mat_g1_mg_q1_1: compare & distinguish according to sides and corners) ──
     {
         "question": "Which shape has more sides — a triangle or a rectangle?",
         "answer": "rectangle",
@@ -178,7 +223,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Which shape has the same number of sides as a square?",
         "answer": "rectangle",
-        "distractors": ["triangle", "hexagon", "pentagon"],
+        "distractors": ["triangle", "they are different", "neither"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compare_shapes",
         "orientation": "standard",
@@ -194,11 +239,11 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 1,
     },
 
-    # ── compose_decompose (G1) ──
+    # ── compose_decompose (mat_g1_mg_q1_2: compose and decompose triangles, squares, and rectangles) ──
     {
         "question": "Two triangles are placed together, matching their longest straight edges. What shape do they form?",
         "answer": "rectangle",
-        "distractors": ["square", "hexagon", "pentagon"],
+        "distractors": ["square", "triangle"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "standard",
@@ -207,16 +252,43 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "A rectangle is cut into two equal pieces down the middle. What two shapes are made?",
         "answer": "two rectangles",
-        "distractors": ["two triangles", "two squares", "two pentagons"],
+        "distractors": ["two triangles", "two squares"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "standard",
         "grade_min": 1,
     },
     {
-        "question": "A square is cut on a slant, from one edge to another. What two shapes are made?",
+        "question": "A square is cut on a slant, from one corner to the opposite corner. What two shapes are made?",
         "answer": "two triangles",
-        "distractors": ["two rectangles", "two squares", "two pentagons"],
+        "distractors": ["two rectangles", "two squares"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 1,
+    },
+    {
+        "question": "Two identical squares are placed side by side. What shape do they form?",
+        "answer": "rectangle",
+        "distractors": ["triangle", "square"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 1,
+    },
+    {
+        "question": "Two identical triangles are joined along their matching straight edges to make a 4-sided shape with equal sides. What shape is formed?",
+        "answer": "square",
+        "distractors": ["rectangle", "triangle"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "compose_decompose",
+        "orientation": "standard",
+        "grade_min": 1,
+    },
+    {
+        "question": "A long rectangle is cut across its width into two equal squares. What two shapes are made?",
+        "answer": "two squares",
+        "distractors": ["two triangles", "two rectangles"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "standard",
@@ -225,7 +297,43 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Two identical triangles are rotated and joined along their matching sides. What shape do they form?",
         "answer": "rectangle",
-        "distractors": ["square", "triangle", "pentagon"],
+        "distractors": ["square", "triangle"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "compose_decompose",
+        "orientation": "rotated",
+        "grade_min": 1,
+    },
+    {
+        "question": "A square is rotated and cut from corner to corner along a slant. What two shapes are produced?",
+        "answer": "two triangles",
+        "distractors": ["two rectangles", "two squares"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "compose_decompose",
+        "orientation": "rotated",
+        "grade_min": 1,
+    },
+    {
+        "question": "Two identical triangles are rotated to fit together into a rectangle. What shape is made?",
+        "answer": "rectangle",
+        "distractors": ["triangle", "square"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "compose_decompose",
+        "orientation": "rotated",
+        "grade_min": 1,
+    },
+    {
+        "question": "A square is turned sideways and cut on a slant into two pieces. What two shapes are formed?",
+        "answer": "two triangles",
+        "distractors": ["two squares", "two rectangles"],
+        "shape_set": "basic_triangles_rectangles_squares",
+        "task_type": "compose_decompose",
+        "orientation": "rotated",
+        "grade_min": 1,
+    },
+    {
+        "question": "Two identical rectangles are turned on their sides and placed together to make a larger square. What shape was formed?",
+        "answer": "square",
+        "distractors": ["triangle", "rectangle"],
         "shape_set": "basic_triangles_rectangles_squares",
         "task_type": "compose_decompose",
         "orientation": "rotated",
@@ -663,7 +771,7 @@ def generate_params(
         and item["orientation"] == orientation
     ]
 
-    # Progressively relax filters if too narrow (preserving shape_set)
+    # Progressively relax filters if too narrow (preserving shape_set and task_type)
     if not candidates:
         candidates = [
             item for item in _ITEM_POOL
@@ -671,11 +779,17 @@ def generate_params(
             and item["shape_set"] == shape_set
             and item["task_type"] == task_type
         ]
-    if not candidates:
+    if not candidates and "task_type" not in profile:
         candidates = [
             item for item in _ITEM_POOL
             if item["grade_min"] <= grade
             and item["shape_set"] == shape_set
+        ]
+    if not candidates:
+        candidates = [
+            item for item in _ITEM_POOL
+            if item["grade_min"] <= grade
+            and item["task_type"] == task_type
         ]
     if not candidates:
         candidates = [item for item in _ITEM_POOL if item["grade_min"] <= grade]
