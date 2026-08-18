@@ -294,7 +294,7 @@ def generate_params(
 
     if context == "word_problem" and grade == 1:
         for _ in range(150):
-            a_val = rng.choice([2, 5, 10, 15, 20, 25, 30, 40, 50])
+            a_val = rng.choice([2, 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80])
             b_val = rng.choice([1, 2, 5, 10, 15, 20, 25, 30, 40, 50])
             if a_val + b_val <= max_total:
                 candidates.append((a_val + b_val, [a_val, b_val]))

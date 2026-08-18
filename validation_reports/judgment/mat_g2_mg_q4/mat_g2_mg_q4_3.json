@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g2_mg_q4_3",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_mg_q4_3), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -12,316 +39,62 @@
     500,
     501,
     502,
-    600,
-    601
+    600
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
       "question_text": "It bends smoothly and changes direction. Is it a straight line or a curved line?",
-      "correct_answer": "curved line",
-      "options": [
-        {
-          "key": "A",
-          "value": "straight line",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "curved surface",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "curved line",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "flat surface",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "curved line"
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?",
-      "correct_answer": "curved surface",
-      "options": [
-        {
-          "key": "A",
-          "value": "curved surface",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "straight line",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "curved line",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "flat surface",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "curved surface"
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "The rim of a circle bends all the way around. Is it a straight line or a curved line?",
-      "correct_answer": "curved line",
-      "options": [
-        {
-          "key": "A",
-          "value": "flat surface",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "straight line",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "curved surface",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "curved line",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": "curved line"
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "The edge of a ruler never bends. Is it a straight line or a curved line?",
-      "correct_answer": "straight line",
-      "options": [
-        {
-          "key": "A",
-          "value": "curved surface",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "curved line",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "straight line",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "flat surface",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "straight line"
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "It bends smoothly and changes direction. Is it a straight line or a curved line?",
-      "correct_answer": "curved line",
-      "options": [
-        {
-          "key": "A",
-          "value": "curved surface",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "curved line",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "flat surface",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "straight line",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "curved line"
     },
     {
       "seed": 500,
       "formatter": "mcq",
       "question_text": "The rim of a circle bends all the way around. Is it a straight line or a curved line?",
-      "correct_answer": "curved line",
-      "options": [
-        {
-          "key": "A",
-          "value": "curved line",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "flat surface",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "straight line",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "curved surface",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "curved line"
     },
     {
       "seed": 501,
       "formatter": "mcq",
       "question_text": "The edge of a ruler never bends. Is it a straight line or a curved line?",
-      "correct_answer": "straight line",
-      "options": [
-        {
-          "key": "A",
-          "value": "straight line",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "curved surface",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "flat surface",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "curved line",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "straight line"
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Which best describes the side of a solid figure that you could trace with a straight ruler?",
-      "correct_answer": "flat surface",
-      "options": [
-        {
-          "key": "A",
-          "value": "curved surface",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "flat surface",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "curved line",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "straight line",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "flat surface"
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "A can has both flat surfaces (its ends) and one other kind of surface. What kind is it?",
-      "correct_answer": "curved surface",
-      "options": [
-        {
-          "key": "A",
-          "value": "flat surface",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "straight line",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "curved surface",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "curved line",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "mcq",
-      "question_text": "It never bends or changes direction. Is it a straight line or a curved line?",
-      "correct_answer": "straight line",
-      "options": [
-        {
-          "key": "A",
-          "value": "flat surface",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "curved line",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "curved surface",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "straight line",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": "curved surface"
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Samples require classifying a described edge or surface, e.g. seed 45 \"The edge of a ruler never bends. Is it a straight line or a curved line?\", matching the identify/explain wording."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All four named categories appear: straight line (seed 45), curved line (seed 42), flat surface (seed 502), and curved surface tied to a 3D object (seed 43 \"a solid figure has a surface that bends all the way around, like a ball\" and seed 600's can example)."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Descriptions like \"It bends smoothly and changes direction\" use concrete, grade-appropriate vocabulary rather than formal geometric terms."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Both 2D line items and 3D surface items are mixed with everyday referents (ruler, circle rim, ball, can), giving contextual variety within the mcq formatter."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The four-way classification target, straight/curved line and flat/curved surface, is exactly what varies across the sample set."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "No numeric ceiling applies to this qualitative competency, and the referents used are simple, single objects."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

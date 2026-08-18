@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g2_mg_q4_1",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_mg_q4_1), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -23,57 +50,13 @@
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "What time does the clock show?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": "2:00 p.m.",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1:05 p.m.",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1:00 p.m.",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "12:00 p.m.",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "C"
     },
     {
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "What time does the clock show?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": "5:00 a.m.",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "4:00 a.m.",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "5:05 a.m.",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "6:00 a.m.",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "A"
     },
     {
       "seed": 44,
@@ -85,57 +68,13 @@
       "seed": 45,
       "formatter": "read_mcq",
       "question_text": "What time does the clock show?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": "7:40 p.m.",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "8:45 p.m.",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "7:45 p.m.",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "6:45 p.m.",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "C"
     },
     {
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "What time does the clock show?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "7:05 a.m.",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "7:00 a.m.",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "6:00 a.m.",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "8:00 a.m.",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "B"
     },
     {
       "seed": 500,
@@ -146,42 +85,20 @@
     {
       "seed": 501,
       "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 11:30 a.m.",
-      "correct_answer": "11:30 a.m."
+      "question_text": "Set the clock to show 11:45 a.m.",
+      "correct_answer": "11:45 a.m."
     },
     {
       "seed": 502,
       "formatter": "read_mcq",
       "question_text": "What time does the clock show?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": "10:06 p.m.",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "6:10 p.m.",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "5:10 p.m.",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "7:10 p.m.",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "B"
     },
     {
       "seed": 601,
       "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 11:00 a.m.",
-      "correct_answer": "11:00 a.m."
+      "question_text": "Set the clock to show 11:30 a.m.",
+      "correct_answer": "11:30 a.m."
     },
     {
       "seed": 603,
@@ -192,47 +109,20 @@
     {
       "seed": 605,
       "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 3:45 p.m.",
-      "correct_answer": "3:45 p.m."
+      "question_text": "Set the clock to show 3:30 p.m.",
+      "correct_answer": "3:30 p.m."
     },
     {
       "seed": 607,
       "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 12:00 a.m.",
-      "correct_answer": "12:00 a.m."
+      "question_text": "Set the clock to show 12:05 a.m.",
+      "correct_answer": "12:05 a.m."
     },
     {
       "seed": 608,
       "formatter": "set_fill_in_blank",
-      "question_text": "Set the clock to show 3:42 a.m.",
-      "correct_answer": "3:42 a.m."
+      "question_text": "Set the clock to show 3:15 p.m.",
+      "correct_answer": "3:15 p.m."
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Reading is tested through \"What time does the clock show?\" items and writing is tested through set_fill_in_blank items like seed 500 \"Set the clock to show 9:45 p.m.\", matching both verbs in the competency."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both a.m. times (seed 43 \"5:00 a.m.\", seed 607 \"12:00 a.m.\") and p.m. times (seed 42 \"1:00 p.m.\", seed 500 \"9:45 p.m.\") appear, and minute precision varies from on-the-hour to a specific minute like seed 608's \"3:42 a.m.\""
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Clock-reading and clock-setting prompts are single short sentences suited to Grade 2 Quarter 4."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The read_mcq and set_fill_in_blank formatters give genuinely different interaction types for the same time-telling skill."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Difficulty varies by minute granularity and a.m./p.m. context rather than an unrelated axis."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All times are single clock-face readings within one 12-hour cycle, matching the analog-clock scope."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

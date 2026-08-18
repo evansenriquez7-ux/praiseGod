@@ -769,23 +769,17 @@ def _parse_competency_bounds(
         bounds["task_type"] = "day_and_month_calendar"
     elif dna_name == "calendar" and "days in a week" in text and "months in a year" in text:
         bounds["task_type"] = "days_and_months"
-    elif dna_name == "time_reading" and "read and write" in text:
-        bounds["task_type"] = "clock_reading"
-        bounds["context"] = "pure"
-    elif dna_name == "time_reading" and "solve problems" in text:
-        bounds["context"] = "word_problem"
-    elif dna_name == "time_reading" and "elapsed time" in text:
-        bounds["task_type"] = "elapsed_time"
-
-    # "Read and write time in hours and minutes, WITH a.m. and p.m."
-    # (mat_g2_mg_q4_1): the DNA's own default lets include_ampm auto-vary
-    # 50/50, so roughly half the samples never showed a.m./p.m. at all --
-    # fine for a node where it's optional, but this competency names it as
-    # a defining, non-optional feature of the skill (blind review: "~38%
-    # of samples omit a.m./p.m. entirely... the exact clause that
-    # differentiates this Grade 2 competency from Grade 1").
-    elif dna_name == "time_reading" and "with a.m. and p.m." in text:
-        bounds["include_ampm"] = "yes"
+    elif dna_name == "time_reading":
+        if "elapsed time" in text:
+            bounds["task_type"] = "elapsed_time"
+            bounds["context"] = "word_problem"
+        elif "read and write" in text:
+            bounds["task_type"] = "clock_reading"
+            bounds["context"] = "pure"
+        elif "solve problems" in text:
+            bounds["context"] = "word_problem"
+        if "with a.m. and p.m." in text:
+            bounds["include_ampm"] = "yes"
 
     # Length measurement: bind task_type per node -- "identify and use the
     # appropriate unit" and "estimate length" had no matching task_type in

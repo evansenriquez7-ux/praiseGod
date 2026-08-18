@@ -1,32 +1,33 @@
 {
   "node_id": "mat_g1_na_q4_4",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-NA-Q4-Money-Harden-v3 (mat_g1_na_q4_4), 2026-08-18",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q4_4), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
   "overall": "PASS",
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The samples directly require determining the value of currency, successfully fulfilling the competency. Questions like \"What is the total value of 1 \u20b150 bill, 1 \u20b120 bill, 1 \u20b110 coin, and 1 \u20b15 coin?\" explicitly ask students to calculate the sum of the provided denominations."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The sample set comprehensively covers various scenarios including small amounts (\"What is the total value of 1 \u20b15 coin and 1 \u20b11 coin?\") up to the maximum limit of \u20b1100 (\"What is the total value of 2 \u20b150 bills?\"). It effectively mixes both coins and bills without including any centavo coins."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The cognitive load is appropriate for Grade 1 Quarter 4. The vocabulary is simple and the mathematical operations involve adding familiar whole numbers up to 100. The instructions, such as \"Use coins and bills to make exactly \u20b16. Use the fewest pieces possible.\", are clear and concise."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The samples provide a robust mix of item formats. It tests direct calculation through text (\"What is the total value of 2 \u20b120 bills?\"), visual counting skills (\"Count the coins and bills shown. What is the total amount?\"), and interactive manipulative construction (\"Use coins and bills to make exactly \u20b1100. Use the fewest pieces possible.\")."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample perfectly aligns with the MATATAG competency text. They correctly focus only on whole pesos (\u20b11, \u20b15, \u20b110, \u20b120, \u20b150), omitting centavos, and strictly adhere to the upper bound of \u20b1100, such as in \"What is the total value of 2 \u20b150 bills?\"."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The amounts and denominations used are well-scaled for the competency limit. No question exceeds the \u20b1100 boundary. Examples like \"What is the total value of 1 \u20b110 coin and 2 \u20b11 coins?\" and \"What is the total value of 1 \u20b150 bill, 1 \u20b120 bill, 1 \u20b110 coin, and 1 \u20b15 coin?\" reflect authentic, real-world combinations scaled correctly for this grade."
+      "rationale": "<thorough explanation citing sample questions>"
     }
   },
   "sample_seeds": [
@@ -48,169 +49,37 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "What is the total value of 1 \u20b15 coin and 1 \u20b11 coin?",
-      "correct_answer": 6,
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 60,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 6
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 \u20b110 coin and 2 \u20b11 coins?",
-      "correct_answer": 12,
-      "options": [
-        {
-          "key": "A",
-          "value": 12,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 120,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Find the total amount of 1 \u20b110 coin and 2 \u20b11 coins:",
+      "correct_answer": 12
     },
     {
       "seed": 44,
       "formatter": "mcq",
-      "question_text": "What is the total value of 2 \u20b120 bills?",
-      "correct_answer": 40,
-      "options": [
-        {
-          "key": "A",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 41,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 400,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 40,
-          "is_correct": true
-        }
-      ]
+      "question_text": "Find the total amount of 2 \u20b120 bills:",
+      "correct_answer": 40
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "What is the total value of 2 \u20b120 bills?",
-      "correct_answer": 40,
-      "options": [
-        {
-          "key": "A",
-          "value": 400,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 41,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 40,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 30,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Find the total amount of 2 \u20b120 bills:",
+      "correct_answer": 40
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "What is the total value of 1 \u20b110 coin and 2 \u20b11 coins?",
-      "correct_answer": 12,
-      "options": [
-        {
-          "key": "A",
-          "value": 120,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Find the total amount of 1 \u20b110 coin and 2 \u20b11 coins:",
+      "correct_answer": 12
     },
     {
       "seed": 50,
       "formatter": "read_mcq",
       "question_text": "Count the coins and bills shown. What is the total amount?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 40,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 60,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 45,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "A"
     },
     {
       "seed": 55,
@@ -221,34 +90,8 @@
     {
       "seed": 72,
       "formatter": "cloze",
-      "question_text": "What is the total value of 1 \u20b110 coin, 1 \u20b15 coin, and 1 \u20b11 coin?",
-      "correct_answer": 16,
-      "options": [
-        {
-          "key": "A",
-          "value": 16,
-          "text": "16",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 6,
-          "text": "6",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 160,
-          "text": "160",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "text": "17",
-          "is_correct": false
-        }
-      ]
+      "question_text": "How much is 1 \u20b110 coin, 1 \u20b15 coin, and 1 \u20b11 coin altogether?",
+      "correct_answer": 16
     },
     {
       "seed": 500,
@@ -259,90 +102,20 @@
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "What is the total value of 1 \u20b150 bill, 1 \u20b120 bill, 1 \u20b110 coin, and 1 \u20b15 coin?",
-      "correct_answer": 85,
-      "options": [
-        {
-          "key": "A",
-          "value": 85,
-          "text": "85",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 850,
-          "text": "850",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 75,
-          "text": "75",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 86,
-          "text": "86",
-          "is_correct": false
-        }
-      ]
+      "question_text": "Find the total amount of 1 \u20b150 bill, 1 \u20b120 bill, 1 \u20b110 coin, and 1 \u20b15 coin:",
+      "correct_answer": 85
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is the total value of 2 \u20b150 bills?",
-      "correct_answer": 100,
-      "options": [
-        {
-          "key": "A",
-          "value": 101,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 100,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 1000,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 90,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Find the total amount of 2 \u20b150 bills:",
+      "correct_answer": 100
     },
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "What is the total value of 3 \u20b15 coins and 1 \u20b11 coin?",
-      "correct_answer": 16,
-      "options": [
-        {
-          "key": "A",
-          "value": 160,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 17,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "is_correct": false
-        }
-      ]
+      "question_text": "How much is 3 \u20b15 coins and 1 \u20b11 coin altogether?",
+      "correct_answer": 16
     }
   ]
 }

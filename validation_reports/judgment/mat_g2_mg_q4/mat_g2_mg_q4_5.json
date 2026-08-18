@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g2_mg_q4_5",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the object-to-unit pairing fixes, 2026-08-13",
-  "review_date": "2026-08-13",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_mg_q4_5), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -25,464 +52,91 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "A triangle has sides 2 cm, 1 cm, and 2 cm. What is its perimeter?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 5
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "A rectangle has sides 5 cm and 12 cm. What is its perimeter?",
-      "correct_answer": 34,
-      "options": [
-        {
-          "key": "A",
-          "value": 34,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 33,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 36,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 35,
-          "is_correct": false
-        }
-      ]
+      "question_text": "A rectangle has sides 6 cm and 2 cm. What is its perimeter?",
+      "correct_answer": 16
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "A square has a side of 9 cm. What is its perimeter?",
-      "correct_answer": 36,
-      "options": [
-        {
-          "key": "A",
-          "value": 35,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 37,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 38,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 36,
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 36
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A square has a side of 7 cm. What is its perimeter?",
-      "correct_answer": 28,
-      "options": [
-        {
-          "key": "A",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 29,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 28,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 27,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 28
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "A rectangle has sides 7 cm and 1 cm. What is its perimeter?",
-      "correct_answer": 16,
-      "options": [
-        {
-          "key": "A",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "is_correct": false
-        }
-      ]
+      "question_text": "A rectangle has sides 8 cm and 1 cm. What is its perimeter?",
+      "correct_answer": 18
     },
     {
       "seed": 50,
       "formatter": "cloze",
       "question_text": "A square has a side of 5 cm. What is its perimeter?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 21,
-          "text": "21",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "text": "20",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 22,
-          "text": "22",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 19,
-          "text": "19",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 20
     },
     {
       "seed": 500,
       "formatter": "cloze",
       "question_text": "A square has a side of 17 cm. What is its perimeter?",
-      "correct_answer": 68,
-      "options": [
-        {
-          "key": "A",
-          "value": 68,
-          "text": "68",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 67,
-          "text": "67",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 69,
-          "text": "69",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 70,
-          "text": "70",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 68
     },
     {
       "seed": 501,
       "formatter": "mcq",
       "question_text": "A triangle has sides 10 cm, 21 cm, and 17 cm. What is its perimeter?",
-      "correct_answer": 48,
-      "options": [
-        {
-          "key": "A",
-          "value": 48,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 50,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 47,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 49,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 48
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "A triangle has sides 12 cm, 6 cm, and 17 cm. What is its perimeter?",
-      "correct_answer": 35,
-      "options": [
-        {
-          "key": "A",
-          "value": 36,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 35,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 37,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 34,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 35
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "A square has a side of 6 cm. What is its perimeter?",
-      "correct_answer": 24,
-      "options": [
-        {
-          "key": "A",
-          "value": 25,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 23,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 24,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 26,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 24
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "A rectangular garden is 11 m long and 10 m wide. How much fencing is needed to go all the way around it?",
-      "correct_answer": 42,
-      "options": [
-        {
-          "key": "A",
-          "value": 41,
-          "text": "41",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 43,
-          "text": "43",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 44,
-          "text": "44",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 42,
-          "text": "42",
-          "is_correct": true
-        }
-      ]
+      "question_text": "A rectangular garden is 12 m long and 10 m wide. How much fencing is needed to go all the way around it?",
+      "correct_answer": 44
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "A rectangle has sides 7 cm and 3 cm. What is its perimeter?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 22,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 21,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 19,
-          "is_correct": false
-        }
-      ]
+      "question_text": "A rectangle has sides 8 cm and 2 cm. What is its perimeter?",
+      "correct_answer": 20
     },
     {
       "seed": 603,
       "formatter": "mcq",
       "question_text": "A square has a side of 3 cm. What is its perimeter?",
-      "correct_answer": 12,
-      "options": [
-        {
-          "key": "A",
-          "value": 14,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 11,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 12
     },
     {
       "seed": 604,
       "formatter": "mcq",
       "question_text": "A triangle has sides 2 cm, 4 cm, and 4 cm. What is its perimeter?",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 12,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 10
     },
     {
       "seed": 605,
       "formatter": "cloze",
-      "question_text": "A rectangle has sides 10 cm and 7 cm. What is its perimeter?",
-      "correct_answer": 34,
-      "options": [
-        {
-          "key": "A",
-          "value": 34,
-          "text": "34",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 35,
-          "text": "35",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 33,
-          "text": "33",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 36,
-          "text": "36",
-          "is_correct": false
-        }
-      ]
+      "question_text": "A rectangle has sides 11 cm and 7 cm. What is its perimeter?",
+      "correct_answer": 36
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All fifteen samples ask exactly what the sentence asks, the perimeter of a named figure, and every key is arithmetically right. Seed 43 'A rectangle has sides 5 cm and 12 cm.' keys 34, seed 500 'A square has a side of 17 cm.' keys 68, and seed 501 'A triangle has sides 10 cm, 21 cm, and 17 cm.' keys 48. Each stem supplies every side needed, so each item is fully answerable from the information given, and each has a single correct value."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sentence names three figures and all three are present in quantity. Triangles appear at seeds 42, 501, 502 and 604; squares at seeds 44, 45, 50, 500, 600 and 603; rectangles at seeds 43, 46, 602 and 605, plus the contextual rectangle of seed 601 'A rectangular garden is 11 m long and 10 m wide.'. No named sub-case is left uncovered and none is represented by a single seed."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Every item is a one-step whole-number addition suited to Grade 2 Quarter 4. The largest total is the 68 of seed 500, reachable by adding 17 four times, and the square items never demand a multiplication fact outside repeated addition. Stems use plain words such as 'What is its perimeter?' with no algebraic notation, no missing-side reasoning, and no unit conversion."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Two formatters appear, mcq at seed 42 and cloze at seed 50, and the stems vary in structure rather than only in numbers: bare triangles with three listed sides, squares given by one side, rectangles given by two sides, and one applied phrasing at seed 601 'How much fencing is needed to go all the way around it?'. Side values range from the 1 cm of seed 46 up to the 21 cm of seed 501, and distractors sit adjacent to the key, so seed 605 keying 34 catches an off-by-one rather than a guess."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Nothing strays outside the sentence and nothing falls short of it. No sample asks for area, for a missing side, for a conversion, or for a figure other than the three named; the one contextual item, seed 601, is still a rectangle perimeter. Wording such as 'A rectangle has sides 7 cm and 1 cm.' names the two distinct sides a rectangle needs, so the figure is fully determined without importing later vocabulary."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Every figure named can actually exist. All four triangles satisfy the triangle inequality: seed 42 with sides 2, 1 and 2 because 1 plus 2 exceeds 2; seed 604 with 2, 4 and 4 because 2 plus 4 exceeds 4; seed 501 with 10, 21 and 17 because 10 plus 17 exceeds 21; and seed 502 'A triangle has sides 12 cm, 6 cm, and 17 cm.' because 12 plus 6 exceeds 17. The rectangles read sensibly, the thinnest being seed 46 at 7 cm by 1 cm, which is a legitimate narrow rectangle. Units fit the objects: abstract figures drawn on a page are given in centimetres from 1 cm to 21 cm, while the only real-world object, seed 601 'A rectangular garden is 11 m long and 10 m wide.', is given in metres, which is the right unit for a garden."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

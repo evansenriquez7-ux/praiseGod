@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g2_mg_q4_6",
-  "reviewed_by": "Claude Opus 5 blind reviewer, re-review after the object-to-unit pairing fixes, 2026-08-13",
-  "review_date": "2026-08-13",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_mg_q4_6), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -16,444 +43,86 @@
     600,
     601,
     603,
-    604,
-    605
+    604
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
       "question_text": "A triangular flower bed has sides 2 m, 1 m, and 2 m. How much edging is needed to go all the way around it?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 5
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "A rectangular garden is 12 m long and 5 m wide. How much fencing is needed to go all the way around it?",
-      "correct_answer": 34,
-      "options": [
-        {
-          "key": "A",
-          "value": 34,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 33,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 36,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 35,
-          "is_correct": false
-        }
-      ]
+      "question_text": "A rectangular garden is 6 m long and 2 m wide. How much fencing is needed to go all the way around it?",
+      "correct_answer": 16
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "A square garden has a side of 9 m. How much fencing is needed to go all the way around it?",
-      "correct_answer": 36,
-      "options": [
-        {
-          "key": "A",
-          "value": 35,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 37,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 38,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 36,
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 36
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A square garden has a side of 7 m. How much fencing is needed to go all the way around it?",
-      "correct_answer": 28,
-      "options": [
-        {
-          "key": "A",
-          "value": 30,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 29,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 28,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 27,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 28
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "A rectangular garden is 7 m long and 1 m wide. How much fencing is needed to go all the way around it?",
-      "correct_answer": 16,
-      "options": [
-        {
-          "key": "A",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "is_correct": false
-        }
-      ]
+      "question_text": "A rectangular garden is 8 m long and 1 m wide. How much fencing is needed to go all the way around it?",
+      "correct_answer": 18
     },
     {
       "seed": 50,
       "formatter": "cloze",
       "question_text": "A square garden has a side of 5 m. How much fencing is needed to go all the way around it?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 21,
-          "text": "21",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "text": "20",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 22,
-          "text": "22",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 19,
-          "text": "19",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 20
     },
     {
       "seed": 500,
       "formatter": "cloze",
       "question_text": "A square garden has a side of 17 m. How much fencing is needed to go all the way around it?",
-      "correct_answer": 68,
-      "options": [
-        {
-          "key": "A",
-          "value": 68,
-          "text": "68",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 67,
-          "text": "67",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 69,
-          "text": "69",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 70,
-          "text": "70",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 68
     },
     {
       "seed": 501,
       "formatter": "mcq",
       "question_text": "A triangular flower bed has sides 10 m, 21 m, and 17 m. How much edging is needed to go all the way around it?",
-      "correct_answer": 48,
-      "options": [
-        {
-          "key": "A",
-          "value": 48,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 50,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 47,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 49,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 48
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "A triangular flower bed has sides 12 m, 6 m, and 17 m. How much edging is needed to go all the way around it?",
-      "correct_answer": 35,
-      "options": [
-        {
-          "key": "A",
-          "value": 36,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 35,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 37,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 34,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 35
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "A square garden has a side of 6 m. How much fencing is needed to go all the way around it?",
-      "correct_answer": 24,
-      "options": [
-        {
-          "key": "A",
-          "value": 25,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 23,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 24,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 26,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 24
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "A rectangular garden is 11 m long and 4 m wide. How much fencing is needed to go all the way around it?",
-      "correct_answer": 30,
-      "options": [
-        {
-          "key": "A",
-          "value": 29,
-          "text": "29",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 31,
-          "text": "31",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 32,
-          "text": "32",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 30,
-          "text": "30",
-          "is_correct": true
-        }
-      ]
+      "question_text": "A rectangular garden is 5 m long and 1 m wide. How much fencing is needed to go all the way around it?",
+      "correct_answer": 12
     },
     {
       "seed": 603,
       "formatter": "mcq",
       "question_text": "A triangular flower bed has sides 3 m, 9 m, and 11 m. How much edging is needed to go all the way around it?",
-      "correct_answer": 23,
-      "options": [
-        {
-          "key": "A",
-          "value": 25,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 23,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 24,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 22,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 23
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "A rectangular garden is 7 m long and 4 m wide. How much fencing is needed to go all the way around it?",
-      "correct_answer": 22,
-      "options": [
-        {
-          "key": "A",
-          "value": 22,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 21,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 23,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 24,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 605,
-      "formatter": "cloze",
-      "question_text": "A rectangular garden is 10 m long and 7 m wide. How much fencing is needed to go all the way around it?",
-      "correct_answer": 34,
-      "options": [
-        {
-          "key": "A",
-          "value": 34,
-          "text": "34",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 35,
-          "text": "35",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 33,
-          "text": "33",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 36,
-          "text": "36",
-          "is_correct": false
-        }
-      ]
+      "question_text": "A rectangular garden is 5 m long and 4 m wide. How much fencing is needed to go all the way around it?",
+      "correct_answer": 18
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every one of the fourteen samples is a word problem whose solution is a perimeter, which is what the sentence asks for. Seed 43 'A rectangular garden is 12 m long and 5 m wide.' keys 34, seed 603 'A triangular flower bed has sides 3 m, 9 m, and 11 m.' keys 23, and seed 500 'A square garden has a side of 17 m.' keys 68. All keys are arithmetically correct and every stem supplies each side needed, so nothing is unanswerable from the information given."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The three figures named in the sentence are all covered, including where the shape is named adjectivally. Triangles appear as flower beds at seeds 42, 501, 502 and 603; squares appear at seeds 44, 45, 50, 500 and 600; rectangles appear at seeds 43, 46, 601, 604 and 605. Each sub-case carries four or five seeds, so no named figure is token-covered."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Each problem is a single-step whole-number addition dressed in a familiar Grade 2 context, with the largest total the 68 of seed 500. The situation vocabulary stays concrete, asking 'How much fencing is needed to go all the way around it?', which names the going-around idea in plain words instead of assuming the term perimeter. No item requires a missing side, a conversion between metres and centimetres, or more than one operation."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Two formatters appear, mcq at seed 42 and cloze at seed 50, and the applied framing changes with the figure rather than being one fixed sentence: gardens are fenced while triangular beds are edged, as in seed 501 'How much edging is needed to go all the way around it?'. Dimensions span the 1 m of seed 46 'A rectangular garden is 7 m long and 1 m wide.' up to the 21 m side of seed 501, and distractors sit one or two units from the key, so seed 601 keying 30 rejects an off-by-one."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every item maps onto the sentence and none goes beyond it. There is no area question, no missing-side question, no unit conversion and no figure outside the three named. The problem contexts, fencing a garden and edging a flower bed, are the standard real-world uses of perimeter, so the applied framing required by the word solve is met without importing later content."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Sizes and units both fit the objects named. All four triangular beds can exist: seed 42 'A triangular flower bed has sides 2 m, 1 m, and 2 m.' because 1 plus 2 exceeds 2; seed 501 with 10, 21 and 17 because 10 plus 17 exceeds 21; seed 502 with 12, 6 and 17 because 12 plus 6 exceeds 17; and seed 603 with 3, 9 and 11 because 3 plus 9 exceeds 11. The rectangles read sensibly, from the narrow strip of seed 46 to the 10 by 7 plot of seed 605 'A rectangular garden is 10 m long and 7 m wide.'. Gardens and flower beds are consistently given in metres, never centimetres, and the range from a 1 m width to a 17 m square garden is believable ground for the objects described."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

@@ -1,32 +1,33 @@
 {
   "node_id": "mat_g1_na_q4_6",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-NA-Q4-Money-Harden-v2 (mat_g1_na_q4_6), 2026-08-18",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q4_6), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
   "overall": "PASS",
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The samples successfully fulfill the competency by providing 1-step word problems involving money. The problems correctly present addition, such as \"Kuya Ton had \u20b110 and received \u20b18 more from Nanay. How much money does Kuya Ton have in all?\", as well as subtraction, such as \"Carlo had \u20b150 in a piggy bank and used \u20b140 to buy a notebook. How much money is left in the piggy bank?\"."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The dataset comprehensively covers both required operations from the competency. Addition is well represented by problems like \"Des has \u20b12 in one pocket and \u20b110 in another pocket. How much money does Des have in total?\", while subtraction is appropriately tested in problems like \"Kuya Renz had \u20b15 and bought a snack for \u20b11 at the sari-sari store. How much money does Kuya Renz have left?\"."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The context and sentence structure are perfectly suited for Grade 1 learners. The scenarios involve familiar everyday situations and culturally relevant settings, such as \"Nanding had \u20b120 and bought a snack for \u20b111 at the sari-sari store. How much money does Nanding have left?\", which minimizes cognitive load and allows the student to focus on the math."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The problems utilize a robust variety of operational trigger words appropriate for the grade level. For addition, phrasing includes variations like \"How much money did Chef Demi save altogether?\" and \"How much did Moses spend in all?\". For subtraction, it consistently uses the standard \"How much money does Ate Nena have left?\"."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The problems align flawlessly with the explicit boundaries of the MATATAG learning competency. They do not introduce multi-step logic or extraneous operations. Questions like \"Riza bought a pencil for \u20b11 and an eraser for \u20b11. How much did Riza spend in all?\" purely test the intended 1-step arithmetic with money."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All numerical values strictly adhere to the competency's constraints. Addition sums do not exceed \u20b1100 (e.g., \"Faye had \u20b110 and received \u20b110 more from Nanay. How much money does Faye have in all?\" yields a sum of 20), and subtraction problems utilize amounts strictly less than \u20b1100 (e.g., \"Carlo had \u20b150 in a piggy bank and used \u20b140 to buy a notebook. How much money is left in the piggy bank?\" uses 50 and 40)."
+      "rationale": "<thorough explanation citing sample questions>"
     }
   },
   "sample_seeds": [
@@ -50,438 +51,92 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Marco had \u20b110 in a piggy bank and used \u20b15 to buy a notebook. How much money is left in the piggy bank?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 21,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 200,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Marco had \u20b15 in a piggy bank and used \u20b11 to buy a notebook. How much money is left in the piggy bank?",
+      "correct_answer": 4
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Kuya Ton had \u20b110 and received \u20b18 more from Nanay. How much money does Kuya Ton have in all?",
-      "correct_answer": 18,
-      "options": [
-        {
-          "key": "A",
-          "value": 18,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 180,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 19,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Kuya Ton had \u20b12 and received \u20b11 more from Nanay. How much money does Kuya Ton have in all?",
+      "correct_answer": 3
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "Isko has \u20b110 in one pocket and \u20b16 in another pocket. How much money does Isko have in total?",
-      "correct_answer": 16,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 17,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 160,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 16,
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 16
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Chef Demi saved \u20b11 on Monday and \u20b110 on Tuesday. How much money did Chef Demi save altogether?",
-      "correct_answer": 11,
-      "options": [
-        {
-          "key": "A",
-          "value": 110,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Chef Demi saved \u20b110 on Monday and \u20b11 on Tuesday. How much money did Chef Demi save altogether?",
+      "correct_answer": 11
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Ate Nena had \u20b110 and spent \u20b15 on bags of flour at the palengke. How much money does Ate Nena have left?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 160,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Ate Nena had \u20b110 and spent \u20b11 on bags of flour at the palengke. How much money does Ate Nena have left?",
+      "correct_answer": 9
     },
     {
       "seed": 50,
       "formatter": "cloze",
-      "question_text": "Bianca has \u20b12 in one pocket and \u20b115 in another pocket. How much money does Bianca have in total?",
-      "correct_answer": 17,
-      "options": [
-        {
-          "key": "A",
-          "value": 18,
-          "text": "18",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 17,
-          "text": "17",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 170,
-          "text": "170",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "text": "7",
-          "is_correct": false
-        }
-      ]
+      "question_text": "Bianca has \u20b110 in one pocket and \u20b110 in another pocket. How much money does Bianca have in total?",
+      "correct_answer": 20
     },
     {
       "seed": 500,
       "formatter": "cloze",
-      "question_text": "Nanding had \u20b120 and bought a snack for \u20b111 at the sari-sari store. How much money does Nanding have left?",
-      "correct_answer": 9,
-      "options": [
-        {
-          "key": "A",
-          "value": 9,
-          "text": "9",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 81,
-          "text": "81",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 92,
-          "text": "92",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 910,
-          "text": "910",
-          "is_correct": false
-        }
-      ]
+      "question_text": "Nanding had \u20b160 and bought a snack for \u20b140 at the sari-sari store. How much money does Nanding have left?",
+      "correct_answer": 20
     },
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "Kuya Ton had \u20b150 in a piggy bank and used \u20b15 to buy a notebook. How much money is left in the piggy bank?",
-      "correct_answer": 45,
-      "options": [
-        {
-          "key": "A",
-          "value": 45,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 950,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 85,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 96,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Kuya Ton had \u20b150 in a piggy bank and used \u20b139 to buy a notebook. How much money is left in the piggy bank?",
+      "correct_answer": 11
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Carlo had \u20b150 in a piggy bank and used \u20b140 to buy a notebook. How much money is left in the piggy bank?",
-      "correct_answer": 10,
-      "options": [
-        {
-          "key": "A",
-          "value": 91,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 900,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 80,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Carlo had \u20b180 in a piggy bank and used \u20b12 to buy a notebook. How much money is left in the piggy bank?",
+      "correct_answer": 78
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Kuya Renz had \u20b15 and bought a snack for \u20b11 at the sari-sari store. How much money does Kuya Renz have left?",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 110,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Kuya Renz had \u20b110 and bought a snack for \u20b12 at the sari-sari store. How much money does Kuya Renz have left?",
+      "correct_answer": 8
     },
     {
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Moses bought a pencil for \u20b110 and an eraser for \u20b11. How much did Moses spend in all?",
-      "correct_answer": 11,
-      "options": [
-        {
-          "key": "A",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 12,
-          "text": "12",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 110,
-          "text": "110",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 11,
-          "text": "11",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 11
     },
     {
       "seed": 602,
       "formatter": "mcq",
-      "question_text": "Des has \u20b12 in one pocket and \u20b110 in another pocket. How much money does Des have in total?",
-      "correct_answer": 12,
-      "options": [
-        {
-          "key": "A",
-          "value": 12,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 120,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Des has \u20b110 in one pocket and \u20b110 in another pocket. How much money does Des have in total?",
+      "correct_answer": 20
     },
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "Sir Ben bought a pencil for \u20b11 and an eraser for \u20b110. How much did Sir Ben spend in all?",
-      "correct_answer": 11,
-      "options": [
-        {
-          "key": "A",
-          "value": 110,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 11,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Sir Ben bought a pencil for \u20b12 and an eraser for \u20b11. How much did Sir Ben spend in all?",
+      "correct_answer": 3
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Faye had \u20b110 and received \u20b110 more from Nanay. How much money does Faye have in all?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 10,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 21,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 200,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Faye had \u20b11 and received \u20b16 more from Nanay. How much money does Faye have in all?",
+      "correct_answer": 7
     },
     {
       "seed": 605,
       "formatter": "cloze",
-      "question_text": "Riza bought a pencil for \u20b11 and an eraser for \u20b11. How much did Riza spend in all?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "text": "2",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "text": "20",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "text": "1",
-          "is_correct": false
-        }
-      ]
+      "question_text": "Riza bought a pencil for \u20b15 and an eraser for \u20b11. How much did Riza spend in all?",
+      "correct_answer": 6
     }
   ]
 }

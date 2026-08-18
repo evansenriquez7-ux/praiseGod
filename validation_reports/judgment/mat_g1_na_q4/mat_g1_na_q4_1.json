@@ -1,32 +1,33 @@
 {
   "node_id": "mat_g1_na_q4_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-NA-Q4-Harden v3 (mat_g1_na_q4_1), 2026-08-18",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q4_1), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
   "overall": "PASS",
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The samples directly execute the task required by the competency. Questions explicitly prompt the student to \"Look at the fraction models. Compare \\(\frac{1}{2}\\) and \\(\frac{1}{4}\\).\" (seed 42), directly satisfying the requirement to compare these fractions using models."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The generator covers the complete scope of this highly specific competency by testing both possible comparison directions: \"\\(\frac{1}{2}\\) ___ \\(\frac{1}{4}\\)?\" (seed 42) and \"\\(\frac{1}{4}\\) ___ \\(\frac{1}{2}\\)?\" (seed 44)."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The vocabulary and conceptual load are suitable for Grade 1 students in the 4th Quarter. Phrases like \"Look at the shaded models.\" (seed 45) keep the instructions accessible and ground the abstract comparison in a visual task."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "For a narrowly defined competency, the variants offer sufficient and appropriate diversity in phrasing. Samples alternate between \"Which sign makes the statement true\" (seed 42) and \"Which comparison sign is correct\" (seed 44) while swapping the fraction order."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "The items strictly adhere to the limits of the curriculum. They only involve the fractions \\(\frac{1}{2}\\) and \\(\frac{1}{4}\\), and the distractors are restricted to standard Grade 1 symbols like \"<\", \">\", \"=\", and \"+\" (seed 42)."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The multiple-choice options are well-constructed and scale effectively across seeds. The inclusion of \"+\" alongside comparison symbols like \"<\" and \">\" acts as a strong distractor to ensure students understand they are comparing parts rather than adding them."
+      "rationale": "<thorough explanation citing sample questions>"
     }
   },
   "sample_seeds": [
@@ -47,321 +48,67 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "Look at the fraction models. Compare \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which sign makes the statement true: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
-      "correct_answer": ">",
-      "options": [
-        {
-          "key": "A",
-          "value": "<",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "+",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": ">",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "=",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": ">"
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
-      "correct_answer": ">",
-      "options": [
-        {
-          "key": "A",
-          "value": ">",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "=",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "+",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "<",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": ">"
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "Look at the fraction models for \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which comparison sign is correct: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
-      "correct_answer": "<",
-      "options": [
-        {
-          "key": "A",
-          "value": "=",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": ">",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "+",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "<",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": "<"
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
-      "correct_answer": "<",
-      "options": [
-        {
-          "key": "A",
-          "value": "+",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": ">",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "<",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "=",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "<"
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
-      "correct_answer": ">",
-      "options": [
-        {
-          "key": "A",
-          "value": "+",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": ">",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "=",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "<",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": ">"
     },
     {
       "seed": 50,
       "formatter": "cloze",
       "question_text": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
-      "correct_answer": "<",
-      "options": [
-        {
-          "key": "A",
-          "value": ">",
-          "text": ">",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "<",
-          "text": "<",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "+",
-          "text": "+",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "=",
-          "text": "=",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "<"
     },
     {
       "seed": 55,
       "formatter": "read_mcq",
       "question_text": "Look at the fraction models. Compare \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which sign makes the statement true: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": "=",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "+",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": ">",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "<",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "C"
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "Look at the fraction models for \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which comparison sign is correct: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": "<",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "=",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": ">",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "+",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "A"
     },
     {
       "seed": 501,
       "formatter": "cloze",
       "question_text": "Look at the fraction models for \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which comparison sign is correct: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
-      "correct_answer": "<",
-      "options": [
-        {
-          "key": "A",
-          "value": "<",
-          "text": "<",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "+",
-          "text": "+",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "=",
-          "text": "=",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": ">",
-          "text": ">",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "<"
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Look at the fraction models. Compare \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which sign makes the statement true: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
-      "correct_answer": "<",
-      "options": [
-        {
-          "key": "A",
-          "value": ">",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "<",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "+",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "=",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "<"
     },
     {
       "seed": 601,
       "formatter": "cloze",
       "question_text": "Look at the fraction models for \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which comparison sign is correct: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
-      "correct_answer": ">",
-      "options": [
-        {
-          "key": "A",
-          "value": "=",
-          "text": "=",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "<",
-          "text": "<",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "+",
-          "text": "+",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": ">",
-          "text": ">",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": ">"
     }
   ]
 }

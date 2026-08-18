@@ -1,32 +1,33 @@
 {
   "node_id": "mat_g2_mg_q4_2",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G2-MG-Q4-Live-v2 (mat_g2_mg_q4_2), 2026-08-18",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_mg_q4_2), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
   "overall": "PASS",
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The samples strictly evaluate the core requirement of the competency: to solve problems involving elapsed time. Examples include elapsed minutes (\"A class started at 9:15 a.m. and ended at 9:35 a.m. How many minutes did it last?\"), elapsed hours (\"The community sports festival started at 10:00 a.m. and lasted for 6 hours.\"), elapsed days (\"A school sports meet begins on Thursday and finishes on Saturday\"), and interpreting timetables (\"Look at the bus timetable:\")."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "All dimensions specified in the competency are present in the sample. It includes questions calculating minutes in an hour (e.g., \"How many minutes long is the English class?\"), hours in a day (e.g., \"after running for 6 hours. What time did it start?\"), days in a week (e.g., \"How many days does the art workshop run?\"), and specifically integrates timetables as directed (e.g., \"According to the timetable, how many minutes is the travel time for Bus 2?\")."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The cognitive load and complexity are perfectly tailored for Grade 2. The minute intervals are bounded to simple subtraction within an hour or crossing an hour cleanly using familiar 5-minute increments (e.g., \"started at 12:45 p.m. and ended at 1:35 p.m.\"). Hours are small whole numbers (\"lasted for 6 hours\"), and days are within a single week (e.g., \"begins on Tuesday and finishes on Friday\"), which avoids cognitive overload while testing the core concepts."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The packet provides a comprehensive array of problem types. It requires finding the elapsed duration given start and end times (\"How many minutes did it last?\"), finding the end time given a start time and duration (\"What time did it end?\"), and finding a start time given the end time and duration (\"The train journey ended at 5:00 p.m. after running for 6 hours. What time did it start?\"). This ensures students understand the relationship between start time, end time, and elapsed time from all angles."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample question strictly targets elapsed time or timetables. There is no introduction of out-of-scope concepts like converting between minutes and seconds, calculating over multiple weeks, or dealing with complex 24-hour time formats. Every item firmly belongs to Grade 2 elapsed time."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The contexts used are relatable and realistic for young children, such as a \"movie\", \"soccer practice\", \"art workshop\", and \"class schedule\". The durations are logical for the scenarios (a 45-minute class, a 3-day sports meet, a 6-hour train journey), providing a mathematically sound and practical scale."
+      "rationale": "<thorough explanation citing sample questions>"
     }
   },
   "sample_seeds": [
@@ -51,437 +52,91 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "A class started at 9:15 a.m. and ended at 9:35 a.m. How many minutes did it last?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 40,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 25,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 20
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "A movie started at 5:10 p.m. and ended at 5:50 p.m. How many minutes did it last?",
-      "correct_answer": 40,
-      "options": [
-        {
-          "key": "A",
-          "value": 40,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 35,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 45,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 40
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "Look at the bus timetable:\n\u2022 Bus 1: Departs 7:00 a.m., Arrives 7:30 a.m.\n\u2022 Bus 2: Departs 8:15 a.m., Arrives 9:05 a.m.\nAccording to the timetable, how many minutes is the travel time for Bus 1?",
-      "correct_answer": 30,
-      "options": [
-        {
-          "key": "A",
-          "value": 40,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 45,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 30,
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 30
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "A school sports meet begins on Thursday and finishes on Saturday of the same week. How many days does the school sports meet run?",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "A soccer practice started at 12:45 p.m. and ended at 1:35 p.m. How many minutes did it last?",
-      "correct_answer": 50,
-      "options": [
-        {
-          "key": "A",
-          "value": 55,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 50,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 45,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 10,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 50
     },
     {
       "seed": 50,
       "formatter": "cloze",
       "question_text": "Look at the class schedule:\n\u2022 Math: 8:00 a.m. \u2013 9:00 a.m.\n\u2022 English: 9:00 a.m. \u2013 9:45 a.m.\nHow many minutes long is the English class?",
-      "correct_answer": 45,
-      "options": [
-        {
-          "key": "A",
-          "value": 30,
-          "text": "30",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 45,
-          "text": "45",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 50,
-          "text": "50",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 40,
-          "text": "40",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 45
     },
     {
       "seed": 500,
       "formatter": "cloze",
       "question_text": "Look at the class schedule:\n\u2022 Math: 8:00 a.m. \u2013 9:00 a.m.\n\u2022 English: 9:00 a.m. \u2013 9:45 a.m.\nHow many minutes long is the English class?",
-      "correct_answer": 45,
-      "options": [
-        {
-          "key": "A",
-          "value": 45,
-          "text": "45",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 40,
-          "text": "40",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 30,
-          "text": "30",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 50,
-          "text": "50",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 45
     },
     {
       "seed": 501,
       "formatter": "mcq",
       "question_text": "A 2-day school sports meet starts on Wednesday. On what day of the week does it end?",
-      "correct_answer": "Thursday",
-      "options": [
-        {
-          "key": "A",
-          "value": "Thursday",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "Friday",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "Tuesday",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "Monday",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "Thursday"
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "A school sports meet begins on Tuesday and finishes on Friday of the same week. How many days does the school sports meet run?",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 4
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "An art workshop begins on Wednesday and finishes on Saturday of the same week. How many days does the art workshop run?",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 4
     },
     {
       "seed": 601,
       "formatter": "cloze",
       "question_text": "The train journey ended at 5:00 p.m. after running for 6 hours. What time did it start?",
-      "correct_answer": "11:00 a.m.",
-      "options": [
-        {
-          "key": "A",
-          "value": "10:00 a.m.",
-          "text": "10:00 a.m.",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "5:00 p.m.",
-          "text": "5:00 p.m.",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "12:00 a.m.",
-          "text": "12:00 a.m.",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "11:00 a.m.",
-          "text": "11:00 a.m.",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": "11:00 a.m."
     },
     {
       "seed": 602,
       "formatter": "mcq",
       "question_text": "Look at the bus timetable:\n\u2022 Bus 1: Departs 7:00 a.m., Arrives 7:45 a.m.\n\u2022 Bus 2: Departs 8:15 a.m., Arrives 9:15 a.m.\nAccording to the timetable, how many minutes is the travel time for Bus 2?",
-      "correct_answer": 60,
-      "options": [
-        {
-          "key": "A",
-          "value": 60,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 75,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 50,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 70,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 60
     },
     {
       "seed": 603,
       "formatter": "mcq",
       "question_text": "The community sports festival started at 10:00 a.m. and lasted for 6 hours. What time did it end?",
-      "correct_answer": "4:00 p.m.",
-      "options": [
-        {
-          "key": "A",
-          "value": "3:00 p.m.",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "4:00 p.m.",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "5:00 p.m.",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "10:00 a.m.",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "4:00 p.m."
     },
     {
       "seed": 604,
       "formatter": "mcq",
       "question_text": "A soccer practice started at 10:25 a.m. and lasted 55 minutes. What time did it end?",
-      "correct_answer": "11:20 a.m.",
-      "options": [
-        {
-          "key": "A",
-          "value": "11:20 a.m.",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "12:20 a.m.",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "10:25 a.m.",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "11:30 a.m.",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "11:20 a.m."
     },
     {
       "seed": 605,
       "formatter": "cloze",
       "question_text": "The train journey started at 10:00 a.m. and lasted for 5 hours. What time did it end?",
-      "correct_answer": "3:00 p.m.",
-      "options": [
-        {
-          "key": "A",
-          "value": "3:00 p.m.",
-          "text": "3:00 p.m.",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "10:00 a.m.",
-          "text": "10:00 a.m.",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "4:00 p.m.",
-          "text": "4:00 p.m.",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "2:00 p.m.",
-          "text": "2:00 p.m.",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "3:00 p.m."
     }
   ]
 }

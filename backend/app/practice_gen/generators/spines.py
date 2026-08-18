@@ -895,7 +895,10 @@ def select_spine(
             # For competencies that cover both standard contexts and an "including <co-concept>"
             # context (e.g. addition/subtraction including money), rotate between the co-concept
             # and the standard domain so both sub-cases are represented across seeds.
-            if rng.random() < 0.5:
+            # However, nodes whose only concepts belong to specialized domains (e.g. only money_peso)
+            # must always use the domain-matched spines, never generic non-domain spines.
+            has_generic_math = bool(node_own_concepts - known_dna_domains)
+            if not has_generic_math or rng.random() < 0.5:
                 eligible = own_matched
             else:
                 non_own = [s for s in eligible if not (s.required_concepts & other_concepts)]
