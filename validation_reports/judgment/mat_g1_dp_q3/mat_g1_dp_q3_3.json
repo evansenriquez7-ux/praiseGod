@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g1_dp_q3_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (dp pictographs re-review), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_dp_q3_3), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "All generated items directly require students to count items in an unscaled pictograph and record the resulting counts into a table, perfectly fulfilling the competency 'Organize data in a pictograph without a scale into a table.' For example, seed 42 asks 'The pictograph shows cats, dogs, birds and fish. Fill in the table with the correct counts.' and seed 44 asks 'Count the pictures in each row of the pictograph, then write the counts for roses, sunflowers, tulips and daisies in the table.', which explicitly guides the student through reading pictograph rows and organizing the data into table counts."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set covers a broad range of familiar, developmentally appropriate thematic domains including animals ('cats, dogs, birds and fish' in seed 42), fruits ('apples, bananas, mangoes and grapes' in seed 43), flowers ('roses, sunflowers, tulips and daisies' in seed 44), days of the week ('Monday, Tuesday, Wednesday and Thursday' in seed 45 and seed 501), grade levels ('Grade 1, Grade 2, Grade 3 and Grade 4' in seed 500), sports ('basketball, volleyball, swimming and running' in seed 502), and school subjects ('Math, Science, English and Art' in seed 601). Count distributions across categories provide rich, balanced coverage without exceeding Grade 1 counting limits."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The difficulty and structural complexity are tailored precisely for Grade 1 Quarter 3 learners. All quantities per category are small single-digit integers between 1 and 5 (e.g. [1, 3, 2, 2] in seed 42, [3, 2, 4, 3] in seed 43, and [5, 5, 1, 1] in seed 601), avoiding cognitive overload while reinforcing one-to-one correspondence counting. The prompts are clear, concise, and easy to parse, such as 'Look at the pictograph. Write the correct count for each row in the table: apples, bananas, mangoes and grapes.'"
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The samples exhibit diverse natural phrasing variations ('The pictograph shows cats, dogs, birds and fish. Fill in the table with the correct counts.', 'Look at the pictograph. Write the correct count for each row in the table: apples, bananas, mangoes and grapes.', 'Count the pictures in each row of the pictograph, then write the counts for roses, sunflowers, tulips and daisies in the table.') alongside diverse 4-category contexts. This ensures learners encounter varying prompt structures while maintaining structural consistency."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "The assessment items remain strictly within the boundaries of MATATAG learning competency mat_g1_dp_q3_3. There are no out-of-scope concepts such as scaled keys (e.g. 1 icon = 2 or 5 items), comparison arithmetic questions, or multi-step analysis, ensuring exact alignment with data organization from an unscaled pictograph to a table. For instance, seed 601 ('Count the pictures in each row of the pictograph, then write the counts for Math, Science, English and Art in the table.') directly tests the targeted skill."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All samples represent unscaled data with an exact 1:1 relationship between pictures and counts. The answer vectors (e.g. [5, 5, 4, 3] in seed 500 and [2, 3, 2, 4] in seed 502) contain direct countable item frequencies within the Grade 1 number range (<= 5 items per category), adhering strictly to the 'without a scale' constraint."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -18,7 +45,7 @@
     {
       "seed": 42,
       "formatter": "set_fill_in_blank",
-      "question_text": "The pictograph shows cats, dogs, birds and fish. Fill in the chart with the correct counts.",
+      "question_text": "The pictograph shows cats, dogs, birds and fish. Fill in the table with the correct counts.",
       "correct_answer": [
         1,
         3,
@@ -29,7 +56,7 @@
     {
       "seed": 43,
       "formatter": "set_fill_in_blank",
-      "question_text": "Look at the pictograph. Write the correct count for each row in the chart: apples, bananas, mangoes and grapes.",
+      "question_text": "Look at the pictograph. Write the correct count for each row in the table: apples, bananas, mangoes and grapes.",
       "correct_answer": [
         3,
         2,
@@ -40,7 +67,7 @@
     {
       "seed": 44,
       "formatter": "set_fill_in_blank",
-      "question_text": "Count the pictures in each row of the pictograph, then write the counts for roses, sunflowers, tulips and daisies in the chart.",
+      "question_text": "Count the pictures in each row of the pictograph, then write the counts for roses, sunflowers, tulips and daisies in the table.",
       "correct_answer": [
         5,
         5,
@@ -51,7 +78,7 @@
     {
       "seed": 45,
       "formatter": "set_fill_in_blank",
-      "question_text": "The pictograph shows Monday, Tuesday, Wednesday and Thursday. Fill in the chart with the correct counts.",
+      "question_text": "The pictograph shows Monday, Tuesday, Wednesday and Thursday. Fill in the table with the correct counts.",
       "correct_answer": [
         4,
         4,
@@ -62,7 +89,7 @@
     {
       "seed": 46,
       "formatter": "set_fill_in_blank",
-      "question_text": "Count the pictures in each row of the pictograph, then write the counts for cats, dogs, birds and fish in the chart.",
+      "question_text": "Count the pictures in each row of the pictograph, then write the counts for cats, dogs, birds and fish in the table.",
       "correct_answer": [
         4,
         1,
@@ -73,7 +100,7 @@
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Count the pictures in each row of the pictograph, then write the counts for Grade 1, Grade 2, Grade 3 and Grade 4 in the chart.",
+      "question_text": "Count the pictures in each row of the pictograph, then write the counts for Grade 1, Grade 2, Grade 3 and Grade 4 in the table.",
       "correct_answer": [
         5,
         5,
@@ -84,7 +111,7 @@
     {
       "seed": 501,
       "formatter": "set_fill_in_blank",
-      "question_text": "Look at the pictograph. Write the correct count for each row in the chart: Monday, Tuesday, Wednesday and Thursday.",
+      "question_text": "Look at the pictograph. Write the correct count for each row in the table: Monday, Tuesday, Wednesday and Thursday.",
       "correct_answer": [
         3,
         2,
@@ -95,7 +122,7 @@
     {
       "seed": 502,
       "formatter": "set_fill_in_blank",
-      "question_text": "The pictograph shows basketball, volleyball, swimming and running. Fill in the chart with the correct counts.",
+      "question_text": "The pictograph shows basketball, volleyball, swimming and running. Fill in the table with the correct counts.",
       "correct_answer": [
         2,
         3,
@@ -106,7 +133,7 @@
     {
       "seed": 601,
       "formatter": "set_fill_in_blank",
-      "question_text": "Count the pictures in each row of the pictograph, then write the counts for Math, Science, English and Art in the chart.",
+      "question_text": "Count the pictures in each row of the pictograph, then write the counts for Math, Science, English and Art in the table.",
       "correct_answer": [
         5,
         5,
@@ -114,32 +141,5 @@
         1
       ]
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The problems successfully ask students to translate information from a pictograph into numerical counts for a table, effectively fulfilling the competency to \"Organize data in a pictograph without a scale into a table.\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The samples cover translating distinct categories by having the student fill in counts for different items as seen in \"The pictograph shows cats, dogs, birds and fish. Fill in the chart with the correct counts.\" ensuring a comprehensive representation of the data."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The counts required for the table are small integers (mostly up to 5), which is perfectly aligned with the counting capabilities and cognitive capacity of a Grade 1 student."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The problems present multiple real-world themes and vary the framing of the prompt, such as \"Look at the pictograph. Write the correct count for each row in the chart: apples, bananas, mangoes and grapes.\" versus \"Count the pictures in each row of the pictograph, then write the counts for Math, Science, English and Art in the chart.\""
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The tasks strictly align with the requirement to organize pictograph data into a table without demanding operations beyond standard extraction and counting."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numbers involved are small and manageable, indicating an implicit 1:1 scale which is perfectly appropriate for the \"without a scale\" competency constraint for Grade 1."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

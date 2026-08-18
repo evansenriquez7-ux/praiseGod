@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g1_na_q1_7",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition hardening), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q1_7), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The items directly embody both core conceptual descriptions mandated by the competency: addition as 'counting up' (e.g., \"Start at 2. Count up 1 more. What number do you land on?\") and addition as 'putting together' (e.g., \"One group has 2 items and another group has 1 item. Putting them together makes ___ items in all.\"). Furthermore, pictorial and concrete representations are effectively incorporated, such as number line models in \"Show 1 + 1 on the number line.\"."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The sample set comprehensively spans the dual semantic definitions of addition and the target number range up to 20. It covers small foundational combinations (e.g., \"Show 1 + 1 on the number line.\") as well as larger two-digit/single-digit sums within 20, such as \"One group has 4 items and another group has 14 items. If you put them together, how many items are there in all?\" and \"One group has 15 items and another group has 2 items. Putting them together makes 17 items in all. True or False?\"."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "All questions feature short, accessible sentences and direct phrasing suited for Grade 1 Quarter 1 learners. Questions like \"Start at 2. Count up 1 more. You land on ___\" and \"The two parts are 1 and 2. What is the sum?\" maintain low syntactic complexity and eliminate unnecessary cognitive reading overhead."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "A diverse array of assessment modalities is represented across the sample packet, including standard MCQ (\"One group has 1 item and another group has 2 items. If you put them together, how many items are there in all?\"), cloze completion (\"One group has 1 item and another group has 2 items. Putting them together makes ___ items in all.\"), true/false validation (\"One group has 15 items and another group has 2 items. Putting them together makes 17 items in all. True or False?\"), and error detection (Maria solved: \"Start at 2. Count up 1 more. You land on ___\". Maria says the blank is 13. Is Maria correct?)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "Every item is strictly aligned with the target learning competency, focusing purely on illustrating addition and framing it as counting up or combining groups without prematurely introducing formal vertical algorithms, subtraction, or extraneous symbolic operations. For instance, \"The dot is at 2 and it moves forward 1 number. Starting from 2, just count up 1 number. Which number will the dot land on?\" models counting up on a track in direct alignment with curriculum intentions."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All addends and resulting sums strictly adhere to the 'sums up to 20' constraint specified in the competency text. Examples range from basic sums like 2 + 1 = 3 to larger sums such as 15 + 2 = 17 in \"One group has 15 items and another group has 2 items. Putting them together makes 17 items in all. True or False?\" and \"One group has 4 items and another group has 14 items. If you put them together, how many items are there in all?\", with zero instances exceeding 20."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -20,7 +47,7 @@
     600,
     601,
     602,
-    603,
+    607,
     608
   ],
   "samples_reviewed": [
@@ -28,192 +55,48 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "Start at 2. Count up 1 more. What number do you land on?",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Start at 1. Count up 2 more. What number do you land on?",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "is_correct": false
-        }
-      ]
+      "question_text": "Start at 2. Count up 1 more. What number do you land on?",
+      "correct_answer": 3
     },
     {
       "seed": 44,
       "formatter": "cloze",
       "question_text": "One group has 2 items and another group has 1 item. Putting them together makes ___ items in all.",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 13,
-          "text": "13",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "seed": 45,
       "formatter": "cloze",
       "question_text": "One group has 1 item and another group has 2 items. Putting them together makes ___ items in all.",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 13,
-          "text": "13",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "seed": 46,
       "formatter": "cloze",
-      "question_text": "Start at 1. Count up 2 more. You land on ___",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "text": "13",
-          "is_correct": false
-        }
-      ]
+      "question_text": "Start at 2. Count up 1 more. You land on ___",
+      "correct_answer": 3
     },
     {
       "seed": 50,
       "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 1 and 2. What is the total?",
+      "question_text": "The two parts are 1 and 2. What is the sum?",
       "correct_answer": 3
     },
     {
       "seed": 51,
       "formatter": "read_mcq",
       "question_text": "The dot is at 2 and it moves forward 1 number. Starting from 2, just count up 1 number. Which number will the dot land on?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "C"
     },
     {
       "seed": 82,
       "formatter": "error_detect",
-      "question_text": "Dante says: Start at 1. Count up 1 more. You land on 2. Is Dante correct?",
+      "question_text": "Dante solved: \"Start at 1. Count up 1 more. You land on ___\". Dante says the blank is 2. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
         "correct_value": 2
@@ -222,7 +105,7 @@
     {
       "seed": 86,
       "formatter": "true_false",
-      "question_text": "Start at 1. Count up 2 more. You land on 13. True or False?",
+      "question_text": "Start at 2. Count up 1 more. You land on 4. True or False?",
       "correct_answer": false
     },
     {
@@ -234,30 +117,8 @@
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "How many items are there in total?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 7,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 19,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "is_correct": false
-        }
-      ]
+      "question_text": "\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64 \u2014 There are 12 drinks.\n\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64 \u2014 7 more drinks are added.\nHow many total drinks are there?",
+      "correct_answer": "B"
     },
     {
       "seed": 501,
@@ -269,62 +130,18 @@
       "seed": 502,
       "formatter": "mcq",
       "question_text": "One group has 4 items and another group has 14 items. If you put them together, how many items are there in all?",
-      "correct_answer": 18,
-      "options": [
-        {
-          "key": "A",
-          "value": 28,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 18,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 19,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 17,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 18
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "One group has 1 item and another group has 2 items. If you put them together, how many items are there in all?",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "seed": 601,
       "formatter": "error_detect",
-      "question_text": "Maria says: Start at 1. Count up 2 more. You land on 13. Is Maria correct?",
+      "question_text": "Maria solved: \"Start at 2. Count up 1 more. You land on ___\". Maria says the blank is 13. Is Maria correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 3
@@ -334,61 +151,13 @@
       "seed": 602,
       "formatter": "mcq",
       "question_text": "One group has 1 item and another group has 1 item. If you put them together, how many items are there in all?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 2
     },
     {
-      "seed": 603,
-      "formatter": "cloze",
-      "question_text": "Start at 2. Count up 1 more. You land on ___",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 13,
-          "text": "13",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        }
-      ]
+      "seed": 607,
+      "formatter": "read_mcq",
+      "question_text": "\ud83c\udf52\ud83c\udf52 \u2014 There are 2 cherries.\n\ud83c\udf52 \u2014 1 more cherry is added.\nHow many total cherries are there?",
+      "correct_answer": "B"
     },
     {
       "seed": 608,
@@ -396,32 +165,5 @@
       "question_text": "Start at 1. Count up 1 more. You land on 2. True or False?",
       "correct_answer": true
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The problems fulfill the competency requirements by modeling addition through \"'counting up,'\" (e.g., \"Start at 2. Count up 1 more.\") and \"'putting together'.\" (e.g., \"Putting them together makes\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The generator comprehensively covers the competency, including \"sums up to 20\" as evidenced by samples such as \"One group has 15 items and another group has 2 items.\""
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive load fits Grade 1 with simple, direct instructions. It asks straightforward questions like \"How many items are there in total?\" and \"What number do you land on?\""
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generation provides a varied range of item formats. Examples include \"True or False?\", error detection (\"Is Maria correct?\"), and fill-in-the-blank variants (\"You land on ___\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The materials adhere strictly to the target concepts of \"'counting up,'\" and \"'putting together'.\" as seen in clear text like \"If you put them together, how many items are there in all?\""
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All generated items respect the limitation of \"sums up to 20\", properly scaling numeric values as seen in \"One group has 4 items and another group has 14 items.\""
-    }
-  },
-  "overall": "PASS"
+  ]
 }

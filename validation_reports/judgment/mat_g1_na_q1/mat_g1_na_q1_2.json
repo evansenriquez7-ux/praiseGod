@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g1_na_q1_2",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na number_reading hardening), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q1_2), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The sample set fulfills the competency requirement to \"Recognize and represent numbers up to 100\". Recognition is assessed using base-ten pictorial blocks in \"What number do the blocks show?\" and on a number line in \"What number is marked on the number line?\". Representation is directly tested through interactive placement prompts such as \"Move the dot to show 29 on the number line.\" and \"Move the dot to show 99 on the number line.\"."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "The items cover both key representations named in the curriculum standards, specifically \"block or bar models\" with \"What number do the blocks show?\" and \"number line\" models with \"What number is marked on the number line?\" and \"Move the dot to show 77 on the number line.\". The numeric scope spans two-digit values up to the boundary of 100."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The linguistic complexity and visual tasks are well suited to Grade 1 Quarter 1 learners. Questions like \"What number do the blocks show?\" and \"Move the dot to show 29 on the number line.\" use minimal, accessible vocabulary, keeping working memory focused on recognizing and representing quantities without extraneous reading demands."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The items incorporate complementary formatters: \"read_mcq\" for identifying quantities from visual models (\"What number is marked on the number line?\") and \"set_fill_in_blank\" for student representation (\"Move the dot to show 99 on the number line.\"). This balances passive multiple-choice recognition with active number placement."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All sampled items strictly address the targeted learning competency without testing off-target skills like arithmetic operations or word-problem decoding. Tasks such as \"What number do the blocks show?\" and \"Move the dot to show 77 on the number line.\" directly measure the student's ability to interpret and construct visual number models."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "The numbers used in the samples, including 29, 77, and 99, thoroughly test the two-digit range up to the curricular boundary of \"numbers up to 100\" specified in the competency text. Tasks such as \"Move the dot to show 99 on the number line.\" appropriately test near-maximum values within the grade-level scope."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -18,186 +45,49 @@
       "seed": 42,
       "formatter": "read_mcq",
       "question_text": "What number do the blocks show?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 13,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 31,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "C"
     },
     {
       "seed": 43,
       "formatter": "read_mcq",
       "question_text": "What number do the blocks show?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 23,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 22,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "B"
     },
     {
       "seed": 44,
       "formatter": "set_fill_in_blank",
-      "question_text": "Move the dot to show 29.",
+      "question_text": "Move the dot to show 29 on the number line.",
       "correct_answer": 29
     },
     {
       "seed": 45,
       "formatter": "read_mcq",
-      "question_text": "What number is marked?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 28,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 25,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 26,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 27,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "C"
     },
     {
       "seed": 46,
       "formatter": "read_mcq",
       "question_text": "What number do the blocks show?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 15,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 25,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 52,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "B"
     },
     {
       "seed": 500,
       "formatter": "set_fill_in_blank",
-      "question_text": "Move the dot to show 99.",
+      "question_text": "Move the dot to show 99 on the number line.",
       "correct_answer": 99
     },
     {
       "seed": 501,
       "formatter": "set_fill_in_blank",
-      "question_text": "Move the dot to show 77.",
+      "question_text": "Move the dot to show 77 on the number line.",
       "correct_answer": 77
     },
     {
       "seed": 502,
       "formatter": "read_mcq",
-      "question_text": "What number is marked?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 52,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 53,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 55,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 54,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What number is marked on the number line?",
+      "correct_answer": "B"
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The samples fulfill the requirement to \"Recognize and represent numbers up to 100\" by asking the student \"What number do the blocks show?\" and \"What number is marked?\" to test recognition. They also test representation by instructing the student to \"Move the dot to show 99.\" matching the requirement to use a \"number line\"."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The samples comprehensively cover the expected models by addressing a \"number line\" in prompts like \"What number is marked?\" and testing \"block or bar models\" with the prompt \"What number do the blocks show?\". The evaluated numbers include 99 and 77, confirming coverage of \"numbers up to 100\"."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The tasks align well with Grade 1 cognitive capacity. The text \"What number do the blocks show?\" uses simple, direct language suitable for early readers. Providing a distractor of 31 for the correct answer 13 appropriately assesses common developmental place-value errors."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The variants successfully assess both the \"Recognize and represent\" actions. Recognition is verified through multiple choice questions like \"What number do the blocks show?\" while representation is interactively assessed with inputs such as \"Move the dot to show 77.\""
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every sample tightly aligns with the mandate of \"using a variety of concrete and pictorial models\". The prompts only ask students to identify visual values like \"What number is marked?\" or execute actions like \"Move the dot to show 29.\" keeping exactly within the bounds of the required representations."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The scale and magnitude of the values used in the samples, including 29, 99, 77, and 53, strictly adhere to the defined range in the competency text which requires \"numbers up to 100\"."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

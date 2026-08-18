@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g1_na_q1_8",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1 (na addition hardening), 2026-08-16",
-  "review_date": "2026-08-16",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q1_8), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "The generated problems directly fulfill both properties specified in the competency: the identity property of addition with zero (e.g., \"What is 1 + 0?\", \"0 + 1 = ___\") and the commutative property of addition where changing addend order preserves the sum (e.g., \"Is 2 + 1 the same as 1 + 2?\", \"Is 13 + 6 the same as 6 + 13?\"). All problems require direct application of these properties with sums not exceeding 20."
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "Coverage is comprehensive across both specified addition properties and directionalities. For the identity property, both a + 0 (\"What is 1 + 0?\", \"3 + 0 = ___\") and 0 + a (\"What is 0 + 3?\", \"0 + 1 = ___\", \"0 + 2 = 2. True or False?\") are tested. For the commutative property, single-digit addend pairs (e.g., \"Is 7 + 2 the same as 2 + 7?\", \"Is 3 + 2 the same as 2 + 3?\") as well as teen addend pairs (e.g., \"Is 18 + 1 the same as 1 + 18?\", \"Is 13 + 6 the same as 6 + 13?\") are covered."
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "The sentence structures, phrasing, and cognitive load are perfectly tuned for Grade 1 Quarter 1 learners. Clear, simple phrasing like \"What is 1 + 0?\" and intuitive equivalence questions like \"Is 2 + 1 the same as 1 + 2?\" test the conceptual properties without requiring complex reading comprehension or unintroduced formal jargon."
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "The sample set demonstrates excellent format variety, featuring multiple-choice direct questions (\"What is 0 + 4?\", \"Is 6 + 3 the same as 3 + 6?\"), cloze equations (\"1 + 0 = ___\", \"0 + 1 = ___\"), true/false verification (\"0 + 2 = 2. True or False?\"), and error detection (Grace solved: \"0 + 2 = ___\". Grace says the blank is 1. Is Grace correct?)."
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "All generated items align strictly with the target competency. No extraneous properties (such as associative property with three addends) or out-of-scope operations (such as subtraction or multiplication) are introduced. Every item assesses whether adding zero preserves value or whether changing addend order preserves the sum."
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "All numeric values and sums strictly respect the curriculum constraint of sums up to 20. Small sums like 1 (\"What is 1 + 0?\"), 2 (\"What is 2 + 0?\"), and 3 (\"What is 0 + 3?\") are present alongside larger two-digit sums up to 19 (\"Is 18 + 1 the same as 1 + 18?\", \"Is 13 + 6 the same as 6 + 13?\"), with zero values exceeding 20."
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -27,141 +54,31 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "What is 1 + 0?",
-      "correct_answer": 1,
-      "options": [
-        {
-          "key": "A",
-          "value": 11,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 0,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What is 0 + 3?",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 13,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "Is 2 + 1 the same as 1 + 2?",
-      "correct_answer": true,
-      "options": [
-        {
-          "key": "A",
-          "value": "Cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": false,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "Only when both are 0",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": true,
-          "is_correct": true
-        }
-      ]
+      "correct_answer": true
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Is 7 + 2 the same as 2 + 7?",
-      "correct_answer": true,
-      "options": [
-        {
-          "key": "A",
-          "value": "Only when both are 0",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": false,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": true,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "Cannot be determined",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": true
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "What is 0 + 4?",
-      "correct_answer": 4,
-      "options": [
-        {
-          "key": "A",
-          "value": 5,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 4,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 3,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 14,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 4
     },
     {
       "seed": 51,
@@ -172,7 +89,7 @@
     {
       "seed": 55,
       "formatter": "error_detect",
-      "question_text": "Grace says: 0 + 2 = 1. Is Grace correct?",
+      "question_text": "Grace solved: \"0 + 2 = ___\". Grace says the blank is 1. Is Grace correct?",
       "correct_answer": {
         "has_error": true,
         "correct_value": 2
@@ -182,320 +99,61 @@
       "seed": 85,
       "formatter": "cloze",
       "question_text": "1 + 0 = ___",
-      "correct_answer": 1,
-      "options": [
-        {
-          "key": "A",
-          "value": 0,
-          "text": "0",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 11,
-          "text": "11",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "text": "1",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "seed": 500,
       "formatter": "mcq",
       "question_text": "Is 18 + 1 the same as 1 + 18?",
-      "correct_answer": true,
-      "options": [
-        {
-          "key": "A",
-          "value": true,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "Cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": false,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "Only when both are 0",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": true
     },
     {
       "seed": 501,
       "formatter": "mcq",
       "question_text": "Is 16 + 1 the same as 1 + 16?",
-      "correct_answer": true,
-      "options": [
-        {
-          "key": "A",
-          "value": true,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "Only when both are 0",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "Cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": false,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Is 13 + 6 the same as 6 + 13?",
-      "correct_answer": true,
-      "options": [
-        {
-          "key": "A",
-          "value": false,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": true,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "Only when both are 0",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "Cannot be determined",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": true
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Is 6 + 3 the same as 3 + 6?",
-      "correct_answer": true,
-      "options": [
-        {
-          "key": "A",
-          "value": false,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "Cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": true,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "Only when both are 0",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": true
     },
     {
       "seed": 601,
       "formatter": "cloze",
       "question_text": "0 + 1 = ___",
-      "correct_answer": 1,
-      "options": [
-        {
-          "key": "A",
-          "value": 0,
-          "text": "0",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 11,
-          "text": "11",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 1,
-          "text": "1",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 1
     },
     {
       "seed": 602,
       "formatter": "mcq",
       "question_text": "Is 3 + 2 the same as 2 + 3?",
-      "correct_answer": true,
-      "options": [
-        {
-          "key": "A",
-          "value": true,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "Only when both are 0",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": false,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "Cannot be determined",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": true
     },
     {
       "seed": 603,
       "formatter": "cloze",
       "question_text": "3 + 0 = ___",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "text": "3",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 13,
-          "text": "13",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 3
     },
     {
       "seed": 604,
       "formatter": "mcq",
       "question_text": "What is 2 + 0?",
-      "correct_answer": 2,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 12,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 3,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 2
     },
     {
       "seed": 606,
       "formatter": "mcq",
       "question_text": "What is 3 + 0?",
-      "correct_answer": 3,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 13,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 4,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 3
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The generator requires students to \"Illustrate by applying the following properties of addition\" by having them evaluate concrete instances of those properties, such as answering \"What is 1 + 0?\" and determining \"Is 2 + 1 the same as 1 + 2?\""
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both required properties are covered: \"the sum of zero and any number is equal to the number\" is tested in items like \"What is 0 + 3?\", and \"changing the order of the addends does not change the sum\" is tested in items like \"Is 7 + 2 the same as 2 + 7?\"."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The language is highly accessible for Grade 1 students, using simple, direct structures such as \"What is 0 + 4?\" and \"Is 16 + 1 the same as 1 + 16?\"."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The items use a robust variety of formats to test the concepts, spanning direct computations like \"3 + 0 = ___\", boolean judgments like \"Is 13 + 6 the same as 6 + 13?\", and error detection like \"Grace says: 0 + 2 = 1. Is Grace correct?\"."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The samples are strictly bound to the target knowledge, focusing entirely on \"changing the order of the addends does not change the sum\" and \"the sum of zero and any number is equal to the number\" without introducing extraneous operations."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All values strictly adhere to the requirement of \"using sums up to 20\". The maximum evaluated sum presented is 19, found in items such as \"Is 18 + 1 the same as 1 + 18?\" and \"Is 13 + 6 the same as 6 + 13?\"."
-    }
-  },
-  "overall": "PASS"
+  ]
 }
