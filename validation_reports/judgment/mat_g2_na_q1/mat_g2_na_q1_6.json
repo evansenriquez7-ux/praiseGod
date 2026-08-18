@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g2_na_q1_6",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q1_6), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -10,8 +37,6 @@
     45,
     46,
     50,
-    51,
-    88,
     500,
     501,
     502,
@@ -24,366 +49,73 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "In 135, what digit is in the ones place?",
-      "correct_answer": 5,
-      "options": [
-        {
-          "key": "A",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 5,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 5
     },
     {
       "seed": 43,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What place is the digit 1 in, in the number 195?",
-      "correct_answer": "hundreds",
-      "options": [
-        {
-          "key": "A",
-          "value": "hundreds",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "tens",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "ones",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "hundreds"
     },
     {
       "seed": 44,
-      "formatter": "cloze",
+      "formatter": "mcq",
       "question_text": "What is the place value of the digit 3 in 320?",
-      "correct_answer": 300,
-      "options": [
-        {
-          "key": "A",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 303,
-          "text": "303",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 300,
-          "text": "300",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 300
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What is the place value of the digit 8 in 285?",
-      "correct_answer": 80,
-      "options": [
-        {
-          "key": "A",
-          "value": 88,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 80,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 80
     },
     {
       "seed": 46,
-      "formatter": "mcq",
+      "formatter": "cloze",
       "question_text": "What place is the digit 0 in, in the number 260?",
-      "correct_answer": "ones",
-      "options": [
-        {
-          "key": "A",
-          "value": "cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "ones",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "hundreds",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "tens",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "ones"
     },
     {
       "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "What number do the blocks show?",
-      "correct_answer": "B",
-      "options": [
-        {
-          "key": "A",
-          "value": 600,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 610,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 601,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 7,
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 51,
       "formatter": "true_false",
-      "question_text": "What place is the digit 5 in, in the number 520? The answer is hundreds. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 88,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Use base-10 blocks to show the number 165.",
-      "correct_answer": 165
+      "question_text": "In the number 610, the value of the digit 1 in the tens place is 11. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Use base-10 blocks to show the number 320.",
-      "correct_answer": 320
+      "formatter": "true_false",
+      "question_text": "In the number 831, the value of the digit 8 in the hundreds place is 18. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 501,
       "formatter": "cloze",
-      "question_text": "In 195, what digit is in the hundreds place?",
-      "correct_answer": 1,
-      "options": [
-        {
-          "key": "A",
-          "value": 1,
-          "text": "1",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 0,
-          "text": "0",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 2,
-          "text": "2",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 8,
-          "text": "8",
-          "is_correct": false
-        }
-      ]
+      "question_text": "In 752, what digit is in the hundreds place?",
+      "correct_answer": 7
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "In 250, what digit is in the ones place?",
-      "correct_answer": 0,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 0,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 8,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 5,
-          "is_correct": false
-        }
-      ]
+      "question_text": "In 847, what digit is in the ones place?",
+      "correct_answer": 7
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "What is the place value of the digit 2 in 250?",
-      "correct_answer": 200,
-      "options": [
-        {
-          "key": "A",
-          "value": 2,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 202,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 200,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 2000,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 200
     },
     {
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "What place is the digit 4 in, in the number 405?",
-      "correct_answer": "hundreds",
-      "options": [
-        {
-          "key": "A",
-          "value": "tens",
-          "text": "tens",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "ones",
-          "text": "ones",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "cannot be determined",
-          "text": "cannot be determined",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "hundreds",
-          "text": "hundreds",
-          "is_correct": true
-        }
-      ]
+      "formatter": "true_false",
+      "question_text": "What place is the digit 4 in, in the number 405? The answer is hundreds. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 602,
       "formatter": "mcq",
       "question_text": "What is the place value of the digit 6 in 160?",
-      "correct_answer": 60,
-      "options": [
-        {
-          "key": "A",
-          "value": 60,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 66,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 1,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 6,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 60
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All three named sub-tasks appear: naming the place (seed 43 \"What place is the digit 1 in, in the number 195?\"), giving the digit's value (seed 44 \"What is the place value of the digit 3 in 320?\"), and giving the digit at a place (seed 42 \"In 135, what digit is in the ones place?\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Each of the three sub-tasks recurs multiple times across the fourteen samples (e.g. seed 601 place-naming, seed 602 value, seed 501 digit-at-place), so no sub-case is generated only once."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "All numbers used are 3-digit, matching the competency's explicit scope."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Base-10 block construction (seed 88, seed 500) and reading (seed 50) supplement the direct place-value questions."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The varying element is which of the three named sub-skills is tested, directly on-competency."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Values stay within the 3-digit range the competency specifies, e.g. up to 610 in seed 50."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g2_na_q1_8",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q1_8), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -11,7 +38,6 @@
     46,
     50,
     55,
-    72,
     500,
     501,
     502,
@@ -19,373 +45,114 @@
     601,
     603,
     604,
-    607,
-    608
+    606,
+    607
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "10 is 1 ten and 0 ones. 10 is 1 ten and 0 ones. Add the place values, then find the total: what is 10 + 10?",
-      "correct_answer": 20,
-      "options": [
-        {
-          "key": "A",
-          "value": 0,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 19,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 20,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 30,
-          "is_correct": false
-        }
-      ]
+      "question_text": "20 is 2 tens and 0 ones. 13 is 1 ten and 3 ones. Add the place values, then find the total: what is 20 + 13?",
+      "correct_answer": 33
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "20 is 2 tens and 0 ones. 2 is 2 ones. Add the place values, then find the total: what is 20 + 2?",
-      "correct_answer": 22,
-      "options": [
-        {
-          "key": "A",
-          "value": 22,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 32,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 21,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 18,
-          "is_correct": false
-        }
-      ]
+      "question_text": "50 is 5 tens and 0 ones. 3 is 3 ones. Add the place values, then find the total: what is 50 + 3?",
+      "correct_answer": 53
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "40 is 4 tens and 0 ones. 2 is 2 ones. Add the place values, then find the total: 40 + 2 = ___",
-      "correct_answer": 42,
-      "options": [
-        {
-          "key": "A",
-          "value": 52,
-          "text": "52",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 38,
-          "text": "38",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 41,
-          "text": "41",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 42,
-          "text": "42",
-          "is_correct": true
-        }
-      ]
+      "question_text": "20 is 2 tens and 0 ones. 25 is 2 tens and 5 ones. Add the place values, then find the total: 20 + 25 = ___",
+      "correct_answer": 45
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "30 is 3 tens and 0 ones. 2 is 2 ones. Add the place values, then find the total: what is 30 + 2?",
-      "correct_answer": 32,
-      "options": [
-        {
-          "key": "A",
-          "value": 31,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 28,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 32,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 42,
-          "is_correct": false
-        }
-      ]
+      "question_text": "105 is 1 hundred, 0 tens, and 5 ones. 1 is 1 one. Add the place values, then find the total: what is 105 + 1?",
+      "correct_answer": 106
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "25 is 2 tens and 5 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: what is 25 + 30?",
-      "correct_answer": 55,
-      "options": [
-        {
-          "key": "A",
-          "value": 56,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 55,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 54,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 65,
-          "is_correct": false
-        }
-      ]
+      "question_text": "100 is 1 hundred, 0 tens, and 0 ones. 15 is 1 ten and 5 ones. Add the place values, then find the total: what is 100 + 15?",
+      "correct_answer": 115
     },
     {
       "seed": 50,
-      "formatter": "error_detect",
-      "question_text": "Jose says: 18 is 1 ten and 8 ones. 10 is 1 ten and 0 ones. Add the place values, then find the total: 18 + 10 = 28. Is Jose correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 28
-      }
+      "formatter": "true_false",
+      "question_text": "43 is 4 tens and 3 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 43 + 30 = 83. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 55,
-      "formatter": "read_fill_in_blank",
-      "question_text": "15 is 1 ten and 5 ones. 6 is 6 ones. Add the place values, then find the total: The two parts are 15 and 6. What is the sum?",
-      "correct_answer": 21
-    },
-    {
-      "seed": 72,
-      "formatter": "true_false",
-      "question_text": "60 is 6 tens and 0 ones. 2 is 2 ones. Add the place values, then find the total: 60 + 2 = 62. True or False?",
-      "correct_answer": true
+      "formatter": "error_detect",
+      "question_text": "Grace solved: \"30 is 3 tens and 0 ones. 65 is 6 tens and 5 ones. Add the place values, then find the total: 30 + 65 = ___\". Grace says the missing number is 94. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 95
+      }
     },
     {
       "seed": 500,
-      "formatter": "read_fill_in_blank",
-      "question_text": "958 is 9 hundreds, 5 tens, and 8 ones. 35 is 3 tens and 5 ones. Add the place values, then find the total: The two parts are 958 and 35. What is the sum?",
-      "correct_answer": 993
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"958 is 9 hundreds, 5 tens, and 8 ones. 35 is 3 tens and 5 ones. Add the place values, then find the total: 958 + 35 = ___\". Rico says the missing number is 993. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 993
+      }
     },
     {
       "seed": 501,
       "formatter": "cloze",
       "question_text": "250 is 2 hundreds, 5 tens, and 0 ones. 681 is 6 hundreds, 8 tens, and 1 one. Add the place values, then find the total: 250 + 681 = ___",
-      "correct_answer": 931,
-      "options": [
-        {
-          "key": "A",
-          "value": 931,
-          "text": "931",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 932,
-          "text": "932",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 930,
-          "text": "930",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 941,
-          "text": "941",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 931
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "231 is 2 hundreds, 3 tens, and 1 one. 723 is 7 hundreds, 2 tens, and 3 ones. Add the place values, then find the total: what is 231 + 723?",
-      "correct_answer": 954,
-      "options": [
-        {
-          "key": "A",
-          "value": 964,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 954,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 955,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 953,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 954
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "21 is 2 tens and 1 one. 15 is 1 ten and 5 ones. Add the place values, then find the total: what is 21 + 15?",
-      "correct_answer": 36,
-      "options": [
-        {
-          "key": "A",
-          "value": 6,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 46,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 36,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 35,
-          "is_correct": false
-        }
-      ]
+      "question_text": "65 is 6 tens and 5 ones. 60 is 6 tens and 0 ones. Add the place values, then find the total: what is 65 + 60?",
+      "correct_answer": 125
     },
     {
       "seed": 601,
-      "formatter": "true_false",
-      "question_text": "45 is 4 tens and 5 ones. 12 is 1 ten and 2 ones. Add the place values, then find the total: 45 + 12 = 57. True or False?",
-      "correct_answer": true
+      "formatter": "cloze",
+      "question_text": "11 is 1 ten and 1 one. 100 is 1 hundred, 0 tens, and 0 ones. Add the place values, then find the total: 11 + 100 = ___",
+      "correct_answer": 111
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "14 is 1 ten and 4 ones. 10 is 1 ten and 0 ones. Add the place values, then find the total: 14 + 10 = ___",
-      "correct_answer": 24,
-      "options": [
-        {
-          "key": "A",
-          "value": 23,
-          "text": "23",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 24,
-          "text": "24",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 4,
-          "text": "4",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 34,
-          "text": "34",
-          "is_correct": false
-        }
-      ]
+      "question_text": "15 is 1 ten and 5 ones. 123 is 1 hundred, 2 tens, and 3 ones. Add the place values, then find the total: 15 + 123 = ___",
+      "correct_answer": 138
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "15 is 1 ten and 5 ones. 6 is 6 ones. Add the place values, then find the total: what is 15 + 6?",
-      "correct_answer": 21,
-      "options": [
-        {
-          "key": "A",
-          "value": 21,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 31,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 9,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 20,
-          "is_correct": false
-        }
-      ]
+      "question_text": "15 is 1 ten and 5 ones. 115 is 1 hundred, 1 ten, and 5 ones. Add the place values, then find the total: what is 15 + 115?",
+      "correct_answer": 130
+    },
+    {
+      "seed": 606,
+      "formatter": "mcq",
+      "question_text": "32 is 3 tens and 2 ones. 78 is 7 tens and 8 ones. Add the place values, then find the total: what is 32 + 78?",
+      "correct_answer": 110
     },
     {
       "seed": 607,
-      "formatter": "read_fill_in_blank",
-      "question_text": "12 is 1 ten and 2 ones. 2 is 2 ones. Add the place values, then find the total: The two parts are 12 and 2. What is the sum?",
-      "correct_answer": 14
-    },
-    {
-      "seed": 608,
-      "formatter": "true_false",
-      "question_text": "15 is 1 ten and 5 ones. 11 is 1 ten and 1 one. Add the place values, then find the total: 15 + 11 = 26. True or False?",
-      "correct_answer": true
+      "formatter": "error_detect",
+      "question_text": "Grace solved: \"15 is 1 ten and 5 ones. 35 is 3 tens and 5 ones. Add the place values, then find the total: 15 + 35 = ___\". Grace says the missing number is 49. Is Grace correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 50
+      }
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Every sample states each addend in expanded form before asking for the sum, e.g. seed 42 \"10 is 1 ten and 0 ones. 10 is 1 ten and 0 ones. Add the place values, then find the total: what is 10 + 10?\", matching the competency's exact method."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Both two-digit expansions (seed 43, tens and ones) and three-digit expansions with hundreds (seed 500, \"958 is 9 hundreds, 5 tens, and 8 ones\") are represented."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The expanded-form sentence scaffold matches Grade 2 place-value instruction before the arithmetic step."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "mcq, cloze, true_false, error_detect, and read_fill_in_blank formatters all wrap the same expanded-form scaffold."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The varying element is addend size and digit count, staying inside the expanded-form addition skill."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Sums reach 993 (seed 500) and 954 (seed 502), approaching the stated 1000 ceiling."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

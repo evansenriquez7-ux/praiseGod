@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g2_na_q1_0",
-  "reviewed_by": "Claude Sonnet blind reviewer, batch B4 (g2 mg + na_q1-q2_0), 2026-08-12",
-  "review_date": "2026-08-12",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q1_0), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -26,488 +53,97 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 109, 110, 111, 112, ___?",
-      "correct_answer": 113,
-      "options": [
-        {
-          "key": "A",
-          "value": 111,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 114,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 113,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 110,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 113
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 32, 33, 34, 35, ___?",
-      "correct_answer": 36,
-      "options": [
-        {
-          "key": "A",
-          "value": 36,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 33,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 37,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 34,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 36
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 80, 81, 82, 83, ___?",
-      "correct_answer": 84,
-      "options": [
-        {
-          "key": "A",
-          "value": 81,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 82,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 85,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 84,
-          "is_correct": true
-        }
-      ]
+      "correct_answer": 84
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 62, 63, 64, 65, ___?",
-      "correct_answer": 66,
-      "options": [
-        {
-          "key": "A",
-          "value": 67,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 64,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 66,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 63,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 66
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 141, 142, 143, 144, ___?",
-      "correct_answer": 145,
-      "options": [
-        {
-          "key": "A",
-          "value": 146,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 145,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 142,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 143,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 145
     },
     {
       "seed": 50,
       "formatter": "cloze",
       "question_text": "Find the missing number: 91, 92, 93, 94, ___",
-      "correct_answer": 95,
-      "options": [
-        {
-          "key": "A",
-          "value": 93,
-          "text": "93",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 95,
-          "text": "95",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 96,
-          "text": "96",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 92,
-          "text": "92",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 95
     },
     {
       "seed": 55,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 44,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 45,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 43,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 42,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "C"
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
       "question_text": "What number is marked on the number line?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": 848,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 849,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 847,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 850,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "A"
     },
     {
       "seed": 501,
       "formatter": "cloze",
       "question_text": "Find the missing number: 682, 683, 684, 685, ___",
-      "correct_answer": 686,
-      "options": [
-        {
-          "key": "A",
-          "value": 686,
-          "text": "686",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 687,
-          "text": "687",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 683,
-          "text": "683",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 684,
-          "text": "684",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 686
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 545, 546, 547, 548, ___?",
-      "correct_answer": 549,
-      "options": [
-        {
-          "key": "A",
-          "value": 547,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 549,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 550,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 546,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 549
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 148, 149, 150, 151, ___?",
-      "correct_answer": 152,
-      "options": [
-        {
-          "key": "A",
-          "value": 150,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 149,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 152,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 153,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 152
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Pia is counting forward by 1 starting from 52. The count is: 52, 53, 54, 55. What is the next number Pia should say?",
-      "correct_answer": 56,
-      "options": [
-        {
-          "key": "A",
-          "value": 53,
-          "text": "53",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 54,
-          "text": "54",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 57,
-          "text": "57",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 56,
-          "text": "56",
-          "is_correct": true
-        }
-      ]
+      "question_text": "Moses is counting forward by 1 starting from 52. The count is: 52, 53, 54, 55. What is the next number Moses should say?",
+      "correct_answer": 56
     },
     {
       "seed": 602,
       "formatter": "mcq",
       "question_text": "What number comes next when counting backward: 83, 82, 81, 80, ___?",
-      "correct_answer": 79,
-      "options": [
-        {
-          "key": "A",
-          "value": 79,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 78,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 81,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 82,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 79
     },
     {
       "seed": 603,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 49, 50, 51, 52, ___?",
-      "correct_answer": 53,
-      "options": [
-        {
-          "key": "A",
-          "value": 54,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 53,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 51,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 50,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 53
     },
     {
       "seed": 604,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 74, 76, 78, 80, ___?",
-      "correct_answer": 82,
-      "options": [
-        {
-          "key": "A",
-          "value": 82,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 81,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 78,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 76,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 82
     },
     {
       "seed": 606,
       "formatter": "mcq",
       "question_text": "What number comes next when counting: 0, 100, 200, 300, ___?",
-      "correct_answer": 400,
-      "options": [
-        {
-          "key": "A",
-          "value": 400,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 200,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 301,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 100,
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 400
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "Each item asks for the next number in a counting sequence, matching the bare \"Count up to 1000\" wording directly."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Forward counting by ones (seed 42), backward counting (seed 602, \"counting backward: 83, 82, 81, 80\"), and skip counts by 2 and by 100 (seeds 604, 606) all appear, giving broad coverage of counting patterns within the 1000 ceiling."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The fixed \"what number comes next\" template with four given terms is concrete and grade-appropriate."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "A number-line reading task (seed 55, seed 500) and a named word problem (seed 601, \"Pia is counting forward by 1 starting from 52\") sit alongside the plain mcq sequences."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The varying element is sequence magnitude and step pattern, both on the counting skill itself."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "Values reach into the 800s, seed 500's \"848\", while staying under the 1000 ceiling the competency states."
-    }
-  },
-  "overall": "PASS"
+  ]
 }

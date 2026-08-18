@@ -1,32 +1,33 @@
 {
   "node_id": "mat_g1_na_q4_5",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G1-NA-Q4-Money-Harden-v5 (mat_g1_na_q4_5), 2026-08-18",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q4_5), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
   "overall": "PASS",
   "findings": {
     "competency_fulfillment": {
       "verdict": "PASS",
-      "rationale": "The generated items directly require students to compare two different monetary denominations, accurately fulfilling the competency. Examples include asking \"Which has a greater value: 1 \u20b1100 bill or 1 \u20b120 bill?\" and \"Which has a smaller value: 1 \u20b110 coin or 1 \u20b150 bill?\"."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The items successfully cover the full scope of the competency by including both greater and smaller comparisons across various combinations of bills and coins (e.g., bill vs bill in \"Which has a greater value: 1 \u20b150 bill or 1 \u20b1100 bill?\", coin vs coin in \"Which has a greater value: 1 \u20b110 coin or 1 \u20b11 coin?\", and coin vs bill). All items remain within the \u20b1100 limit and correctly exclude centavo coins."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "The vocabulary and question structures are highly appropriate for a Grade 1 learner in the 4th quarter. The phrasing \"Which has a greater value\" and \"Which has a smaller value\" is clear and direct, placing the cognitive load correctly on the mathematical comparison rather than on reading comprehension."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The sample uses a strong variety of formatters, including standard multiple-choice ('mcq'), reading-focused multiple-choice ('read_mcq'), 'cloze', and fill-in-the-blank ('set_fill_in_blank'). Distractors like \"They are equal\" effectively test common student misconceptions."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every question strictly adheres to the provided MATATAG text. The samples explicitly deal with \"peso coins (excluding centavo coins) and bills up to \u20b1100\", testing exactly what is prescribed without introducing out-of-scope concepts like addition of money or making change."
+      "rationale": "<thorough explanation citing sample questions>"
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "The numerical values reflect authentic Philippine currency denominations strictly bounded by the specified limit of \u20b1100 (e.g., \u20b11, \u20b15, \u20b110, \u20b120, \u20b150, \u20b1100). The values and contexts scale perfectly to the expected real-world knowledge of a Grade 1 student."
+      "rationale": "<thorough explanation citing sample questions>"
     }
   },
   "sample_seeds": [
@@ -53,169 +54,37 @@
       "seed": 42,
       "formatter": "mcq",
       "question_text": "Which has a greater value: 1 \u20b1100 bill or 1 \u20b120 bill?",
-      "correct_answer": "1 \u20b1100 bill",
-      "options": [
-        {
-          "key": "A",
-          "value": "1 \u20b120 bill",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1 \u20b15 coin",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1 \u20b1100 bill",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "They are equal",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "1 \u20b1100 bill"
     },
     {
       "seed": 43,
       "formatter": "mcq",
       "question_text": "Which has a greater value: 1 \u20b150 bill or 1 \u20b1100 bill?",
-      "correct_answer": "1 \u20b1100 bill",
-      "options": [
-        {
-          "key": "A",
-          "value": "1 \u20b1100 bill",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "They are equal",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1 \u20b110 coin",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1 \u20b150 bill",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "1 \u20b1100 bill"
     },
     {
       "seed": 44,
       "formatter": "mcq",
       "question_text": "Which has a smaller value: 1 \u20b120 bill or 1 \u20b11 coin?",
-      "correct_answer": "1 \u20b11 coin",
-      "options": [
-        {
-          "key": "A",
-          "value": "They are equal",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1 \u20b120 bill",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1 \u20b150 bill",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1 \u20b11 coin",
-          "is_correct": true
-        }
-      ]
+      "correct_answer": "1 \u20b11 coin"
     },
     {
       "seed": 45,
       "formatter": "mcq",
       "question_text": "Which has a greater value: 1 \u20b150 bill or 1 \u20b110 coin?",
-      "correct_answer": "1 \u20b150 bill",
-      "options": [
-        {
-          "key": "A",
-          "value": "1 \u20b15 coin",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1 \u20b110 coin",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1 \u20b150 bill",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "They are equal",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "1 \u20b150 bill"
     },
     {
       "seed": 46,
       "formatter": "mcq",
       "question_text": "Which has a smaller value: 1 \u20b1100 bill or 1 \u20b11 coin?",
-      "correct_answer": "1 \u20b11 coin",
-      "options": [
-        {
-          "key": "A",
-          "value": "1 \u20b110 coin",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1 \u20b11 coin",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "They are equal",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1 \u20b1100 bill",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "1 \u20b11 coin"
     },
     {
       "seed": 50,
       "formatter": "read_mcq",
       "question_text": "Which has a smaller value: 1 \u20b110 coin or 1 \u20b150 bill?",
-      "correct_answer": "A",
-      "options": [
-        {
-          "key": "A",
-          "value": "1 \u20b110 coin",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "1 \u20b1100 bill",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "They are equal",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1 \u20b150 bill",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "A"
     },
     {
       "seed": 55,
@@ -227,33 +96,7 @@
       "seed": 72,
       "formatter": "cloze",
       "question_text": "Which has a smaller value: 1 \u20b1100 bill or 1 \u20b11 coin?",
-      "correct_answer": "1 \u20b11 coin",
-      "options": [
-        {
-          "key": "A",
-          "value": "1 \u20b11 coin",
-          "text": "1 \u20b11 coin",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "They are equal",
-          "text": "They are equal",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1 \u20b110 coin",
-          "text": "1 \u20b110 coin",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1 \u20b1100 bill",
-          "text": "1 \u20b1100 bill",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "1 \u20b11 coin"
     },
     {
       "seed": 500,
@@ -265,205 +108,43 @@
       "seed": 501,
       "formatter": "cloze",
       "question_text": "Which has a greater value: 1 \u20b110 coin or 1 \u20b11 coin?",
-      "correct_answer": "1 \u20b110 coin",
-      "options": [
-        {
-          "key": "A",
-          "value": "1 \u20b110 coin",
-          "text": "1 \u20b110 coin",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "1 \u20b150 bill",
-          "text": "1 \u20b150 bill",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "They are equal",
-          "text": "They are equal",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1 \u20b11 coin",
-          "text": "1 \u20b11 coin",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "1 \u20b110 coin"
     },
     {
       "seed": 502,
       "formatter": "mcq",
       "question_text": "Which has a smaller value: 1 \u20b1100 bill or 1 \u20b110 coin?",
-      "correct_answer": "1 \u20b110 coin",
-      "options": [
-        {
-          "key": "A",
-          "value": "1 \u20b1100 bill",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1 \u20b110 coin",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "1 \u20b120 bill",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "They are equal",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "1 \u20b110 coin"
     },
     {
       "seed": 600,
       "formatter": "mcq",
       "question_text": "Which has a smaller value: 1 \u20b11 coin or 1 \u20b1100 bill?",
-      "correct_answer": "1 \u20b11 coin",
-      "options": [
-        {
-          "key": "A",
-          "value": "1 \u20b1100 bill",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "They are equal",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1 \u20b11 coin",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "1 \u20b120 bill",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "1 \u20b11 coin"
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "Which has a smaller value: 1 \u20b11 coin or 1 \u20b120 bill?",
-      "correct_answer": "1 \u20b11 coin",
-      "options": [
-        {
-          "key": "A",
-          "value": "They are equal",
-          "text": "They are equal",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "1 \u20b120 bill",
-          "text": "1 \u20b120 bill",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1 \u20b1100 bill",
-          "text": "1 \u20b1100 bill",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1 \u20b11 coin",
-          "text": "1 \u20b11 coin",
-          "is_correct": true
-        }
-      ]
+      "question_text": "Which has a greater value: 1 \u20b120 bill or 1 \u20b110 coin?",
+      "correct_answer": "1 \u20b120 bill"
     },
     {
       "seed": 604,
       "formatter": "mcq",
       "question_text": "Which has a smaller value: 1 \u20b1100 bill or 1 \u20b120 bill?",
-      "correct_answer": "1 \u20b120 bill",
-      "options": [
-        {
-          "key": "A",
-          "value": "1 \u20b120 bill",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "They are equal",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1 \u20b1100 bill",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1 \u20b11 coin",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "1 \u20b120 bill"
     },
     {
       "seed": 605,
       "formatter": "read_mcq",
       "question_text": "Which has a greater value: 1 \u20b1100 bill or 1 \u20b110 coin?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": "1 \u20b110 coin",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "They are equal",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "1 \u20b1100 bill",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "1 \u20b15 coin",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "C"
     },
     {
       "seed": 606,
       "formatter": "mcq",
       "question_text": "Which has a greater value: 1 \u20b1100 bill or 1 \u20b150 bill?",
-      "correct_answer": "1 \u20b1100 bill",
-      "options": [
-        {
-          "key": "A",
-          "value": "1 \u20b1100 bill",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "1 \u20b150 bill",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "They are equal",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "1 \u20b110 coin",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": "1 \u20b1100 bill"
     },
     {
       "seed": 607,

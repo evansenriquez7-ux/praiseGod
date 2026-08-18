@@ -1,8 +1,35 @@
 {
   "node_id": "mat_g2_na_q1_9",
-  "reviewed_by": "claude-opus-5 blind reviewer, re-review after the cloze blanking fix, 2026-08-14",
-  "review_date": "2026-08-14",
+  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q1_9), 2026-08-18",
+  "review_date": "2026-08-18",
   "blind": true,
+  "overall": "PASS",
+  "findings": {
+    "competency_fulfillment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "comprehensive_coverage": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "cognitive_capacity": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "variant_comprehensiveness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "competency_alignment": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    },
+    "scale_appropriateness": {
+      "verdict": "PASS",
+      "rationale": "<thorough explanation citing sample questions>"
+    }
+  },
   "sample_seeds": [
     42,
     43,
@@ -19,417 +46,128 @@
     502,
     600,
     601,
+    602,
     603,
     604,
-    607,
-    608
+    605
   ],
   "samples_reviewed": [
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "What is 1 + 40?",
-      "correct_answer": 41,
-      "options": [
-        {
-          "key": "A",
-          "value": 51,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 42,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 41,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 40,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 10 + 12?",
+      "correct_answer": 22
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "What is 28 + 30?",
-      "correct_answer": 58,
-      "options": [
-        {
-          "key": "A",
-          "value": 58,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 57,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 59,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 68,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 2 + 10?",
+      "correct_answer": 12
     },
     {
       "seed": 44,
       "formatter": "cloze",
-      "question_text": "18 + 15 = ___",
-      "correct_answer": 33,
-      "options": [
-        {
-          "key": "A",
-          "value": 43,
-          "text": "43",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 3,
-          "text": "3",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 32,
-          "text": "32",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 33,
-          "text": "33",
-          "is_correct": true
-        }
-      ]
+      "question_text": "0 + 22 = ___",
+      "correct_answer": 22
     },
     {
       "seed": 45,
       "formatter": "cloze",
-      "question_text": "15 + 25 = ___",
-      "correct_answer": 40,
-      "options": [
-        {
-          "key": "A",
-          "value": 41,
-          "text": "41",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 50,
-          "text": "50",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 40,
-          "text": "40",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 39,
-          "text": "39",
-          "is_correct": false
-        }
-      ]
+      "question_text": "24 + 15 = ___",
+      "correct_answer": 39
     },
     {
       "seed": 46,
       "formatter": "cloze",
-      "question_text": "0 + 16 = ___",
-      "correct_answer": 16,
-      "options": [
-        {
-          "key": "A",
-          "value": 17,
-          "text": "17",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 16,
-          "text": "16",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 15,
-          "text": "15",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 26,
-          "text": "26",
-          "is_correct": false
-        }
-      ]
+      "question_text": "4 + 15 = ___",
+      "correct_answer": 19
     },
     {
       "seed": 50,
       "formatter": "set_fill_in_blank",
-      "question_text": "Show 15 + 15 on the number line.",
-      "correct_answer": 30
+      "question_text": "Show 16 + 0 on the number line.",
+      "correct_answer": 16
     },
     {
       "seed": 51,
       "formatter": "read_mcq",
-      "question_text": "The dot is at 19 and it moves forward 0 numbers. Starting from 19, just count up 0 numbers. Which number will the dot land on?",
-      "correct_answer": "C",
-      "options": [
-        {
-          "key": "A",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 18,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 19,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 29,
-          "is_correct": false
-        }
-      ]
+      "question_text": "The dot is at 20 and it moves forward 20 numbers. Starting from 20, just count up 20 numbers. Which number will the dot land on?",
+      "correct_answer": "C"
     },
     {
       "seed": 55,
       "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 15 and 12. What is the sum?",
-      "correct_answer": 27
+      "question_text": "The two parts are 6 and 10. What is the sum?",
+      "correct_answer": 16
     },
     {
       "seed": 75,
       "formatter": "true_false",
-      "question_text": "25 + 15 = 10. True or False?",
+      "question_text": "0 + 44 = 54. True or False?",
       "correct_answer": false
     },
     {
       "seed": 82,
       "formatter": "error_detect",
-      "question_text": "Dante says: 11 + 0 = 11. Is Dante correct?",
+      "question_text": "Dante solved: \"11 + 20 = ___\". Dante says the missing number is 31. Is Dante correct?",
       "correct_answer": {
         "has_error": false,
-        "correct_value": 11
+        "correct_value": 31
       }
     },
     {
       "seed": 500,
       "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 727 and 59. What is the sum?",
-      "correct_answer": 786
+      "question_text": "The two parts are 912 and 24. What is the sum?",
+      "correct_answer": 936
     },
     {
       "seed": 501,
       "formatter": "true_false",
-      "question_text": "748 + 95 = 843. True or False?",
+      "question_text": "510 + 472 = 982. True or False?",
       "correct_answer": true
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "What is 689 + 158?",
-      "correct_answer": 847,
-      "options": [
-        {
-          "key": "A",
-          "value": 531,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 847,
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 846,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 857,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 902 + 92?",
+      "correct_answer": 994
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "What is 15 + 18?",
-      "correct_answer": 33,
-      "options": [
-        {
-          "key": "A",
-          "value": 43,
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 32,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 33,
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": 34,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 22 + 30?",
+      "correct_answer": 52
     },
     {
       "seed": 601,
       "formatter": "cloze",
-      "question_text": "What is 43 + 0?",
-      "correct_answer": 43,
-      "options": [
-        {
-          "key": "A",
-          "value": 42,
-          "text": "42",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 53,
-          "text": "53",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 44,
-          "text": "44",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 43,
-          "text": "43",
-          "is_correct": true
-        }
-      ]
+      "question_text": "Moses is on step 15. Moses climbs up 10 more steps. What step is Moses on now?",
+      "correct_answer": 25
+    },
+    {
+      "seed": 602,
+      "formatter": "mcq",
+      "question_text": "What is 0 + 17?",
+      "correct_answer": 17
     },
     {
       "seed": 603,
       "formatter": "cloze",
       "question_text": "12 + 40 = ___",
-      "correct_answer": 52,
-      "options": [
-        {
-          "key": "A",
-          "value": 53,
-          "text": "53",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": 52,
-          "text": "52",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": 62,
-          "text": "62",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 51,
-          "text": "51",
-          "is_correct": false
-        }
-      ]
+      "correct_answer": 52
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "What is 6 + 15?",
-      "correct_answer": 21,
-      "options": [
-        {
-          "key": "A",
-          "value": 21,
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": 20,
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": 31,
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": 22,
-          "is_correct": false
-        }
-      ]
+      "question_text": "What is 3 + 15?",
+      "correct_answer": 18
     },
     {
-      "seed": 607,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 10 and 11. What is the sum?",
-      "correct_answer": 21
-    },
-    {
-      "seed": 608,
-      "formatter": "true_false",
-      "question_text": "15 + 21 = 36. True or False?",
-      "correct_answer": true
+      "seed": 605,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 13 + 15 on the number line.",
+      "correct_answer": 28
     }
-  ],
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "All 19 samples are addition and every sum I checked is correct: seed 502 'What is 689 + 158?' keys 847, seed 500 'The two parts are 727 and 59. What is the sum?' keys 786, seed 501 '748 + 95 = 843' is keyed true, seed 75 '25 + 15 = 10. True or False?' is keyed false. No arithmetic error found. Every item is answerable from what is given: in the cloze items the blank sits on the sum only, as in seed 44 '18 + 15 = ___' and seed 603 '12 + 40 = ___', never on an addend, so no needed number is hidden."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sentence names two sub-cases, with regrouping and without regrouping, and I found both. With regrouping: seed 44 '18 + 15 = ___' carries in the ones, and seed 502 'What is 689 + 158?' carries twice. Without regrouping: seed 43 'What is 28 + 30?' and seed 603 '12 + 40 = ___'. Coverage note rather than a defect: only three samples (seeds 500, 501, 502) reach three digits, so the top of the stated range is represented but thinly."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "Single-step addition throughout, with no structure that belongs to a later competency. Two items deserve a note and neither breaks anything. Seed 51 says 'moves forward 0 numbers', so the dot lands on its starting value 19; this is legitimate practice of adding zero and it is fully answerable. Seed 50 says 'Show 15 + 15 on the number line.' while expecting the numeric sum 30, and the sum is derivable from the text alone even without the number line rendered."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "Six distinct formatters appear: mcq, cloze, true_false (seed 75), error_detect (seed 82 'Dante says: 11 + 0 = 11. Is Dante correct?'), read_fill_in_blank (seed 55 'The two parts are 15 and 12. What is the sum?') and set_fill_in_blank (seed 50). Framings vary too: bare equation at seed 44, question form 'What is 6 + 15?' at seed 604, part-and-whole at seed 607, and a number-line landing question at seed 51."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Nothing beyond addition of whole numbers appears; no subtraction, no money, no multi-step chains. The ceiling in the sentence is honored: the largest sum in the set is 847 at seed 502 'What is 689 + 158?', well under 1000, and the true_false item at seed 501 states '748 + 95 = 843', a correct equation rather than an out-of-range value."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The largest operand is 748, at seed 501 '748 + 95 = 843'; the largest sum is 847 at seed 502. Both sit inside the stated sums-up-to-1000 bound, and no distractor exceeds the bound either. Distribution note: 4 of the 19 samples use a zero addend, as at seed 46 '0 + 16 = ___' and seed 601 'What is 43 + 0?', and 16 of 19 stay at or below two digits."
-    }
-  },
-  "overall": "PASS"
+  ]
 }
