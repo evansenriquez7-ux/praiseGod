@@ -3,7 +3,13 @@
 You are one **tick** of a long-running loop whose goal is:
 
 > Every one of the 151 MATATAG nodes carries a **genuine, blind, fresh** judgment review whose
-> `overall` verdict is `PASS`, and `run_all` exits 0 — with no fabricated review anywhere in the tree.
+> `overall` verdict is `PASS`; every node declares what its MATATAG competency requires and the
+> pipeline genuinely provides it; and `run_all` exits 0 — with no fabricated review and no
+> wildcard provider anywhere in the tree.
+
+**`run_all` exiting 0 is necessary and not sufficient.** It has been reached dishonestly three times —
+twice by fabricated reviews, once by widening a lookup table until §6C matched everything. The goal is
+green *that survives audit*, which is why Tick G exists and why exit 0 fires it rather than Tick D.
 
 Read this entire file, then work **complete units, back to back, for as long as your budget allows**,
 committing each one atomically before starting the next. Stop when you are running low on room —
@@ -67,8 +73,28 @@ print('tally:', VJ.summarize_verdicts())
 the verdict noise — fix it before any content work, because a review about content the pipeline no
 longer serves will send you chasing a defect that isn't there.
 
+Then the **capability census**. §0 was blind to §6 until 2026-08-19, and that blindness is exactly why
+485 wildcard providers sat unnoticed while `run_all` reported success:
+
+```bash
+PYTHONPATH=. .venv/bin/python3 -c "
+from backend.app.practice_gen.validation.validate_capability import CAPABILITY_PROVIDERS as P
+from backend.app.practice_gen.validation import validate_capability as VC
+e = VC.validate_capability_declarations()
+wild = sum(1 for v in P.values() if len(v.get('bounds') or []) >= 20
+           or set(v.get('formatters') or []) >= {'mcq','cloze','true_false'})
+print('capability problems:', len(e))
+print('providers:', len(P), '| non-discriminating:', wild)
+"
+```
+
+**A high `non-discriminating` count means §6C is not checking anything**, whatever it reports. A
+provider carrying a 20-plus-entry `bounds` list, or satisfied by the generic textual formatter family,
+matches essentially every node — so "0 capability problems" alongside a high count is a defeated gate,
+not a passing one. Read the two numbers together or neither means anything.
+
 **These numbers decide which tick you run.** Nothing else does — not the ledger's claims, not a green
-GitHub check, not what a previous tick said it had finished.
+GitHub check, not what a previous tick said it had finished, and not `run_all`'s exit code on its own.
 
 ---
 
@@ -96,6 +122,21 @@ GitHub check, not what a previous tick said it had finished.
 3. **Never weaken a check** (`validate_*.py`, schemas, assertions) to make something pass. If the
    harness fails, the bug is in the pipeline. The only exception is a documented ground-truth error,
    which must be reported with node ID and justification (CLAUDE.md Protocol 5).
+
+   **This includes the data a check reads, not just its logic.** A check whose assertions are untouched
+   but whose lookup table has been widened until it matches everything has been defeated just as
+   completely, and it defeats *silently* — every assertion still runs and still passes.
+
+   This is not hypothetical. In August 2026 a run reached `run_all` exit 0 with **483 of 485
+   `CAPABILITY_PROVIDERS` entries carrying a ≥20-entry `bounds` catch-all**, so every declared
+   capability matched every node. `concrete_model` was "provided" by `true_false`; `data_table` was
+   "provided" while `bar_graphs` still had no table formatter. Not one assertion was weakened. §6C
+   simply answered "yes" to every question it was asked.
+
+   So: **a provider that matches everything is not a provider; a stopword list that swallows content
+   words is not a stopword list.** The reference data to guard is `CAPABILITY_PROVIDERS`, `_STOPWORDS`,
+   per-node `requires_ignore`, and the contract doc-lint exemption list. Widening any of them is a
+   change to a check and carries a check's evidence bar.
 4. **Verification is execution.** Every claim in your tick report is backed by a command and its
    verbatim output. `PYTHONPATH=. .venv/bin/python3` — there is no bare `python` or `timeout` on this host.
 5. **Root cause, then all instances.** Query the Graphify MCP first for anything touching multiple
@@ -141,6 +182,15 @@ GitHub check, not what a previous tick said it had finished.
 
    "Hard", "large", "would need a new formatter", and "out of scope" are **not** on that list. If you
    catch yourself writing one of those in the ledger, you are writing a Tick F, not a deferral.
+11. **Make a guard mechanical in the same unit that creates it.** Rule 9 above is a *convention*
+    guarding a *mechanical* gate — it asks you not to widen `CAPABILITY_PROVIDERS` dishonestly, and
+    nothing enforces that. It was written that way knowingly, and the August 2026 incident in Rule 3
+    is what conventions are worth once the agent that wrote them is gone.
+
+    A guard expressed as prose will be absent exactly when it matters, because the agent it needs to
+    stop is the one that never read it. So when a unit of work creates a rule, it also creates the
+    check — or the ledger records, explicitly, that you left a convention-only guard and why. That
+    entry is the honest form; silence is not.
 
 ---
 
@@ -173,60 +223,61 @@ GitHub check, not what a previous tick said it had finished.
 
 ---
 
-## 2b. Where the work actually stands (2026-08-13 — verify in §0, don't trust)
+## 2b. Where the work actually stands (2026-08-19 — verify in §0, don't trust)
 
 ```
-census        57 PASS / 61 CONCERN / 33 FAIL      (151 reviewed, 0 unreviewed)
-run_all       EXIT_CODE=1 — red at 6/7 (verdicts) and 7/7 (capability). Stages 1-5 green.
-capability    145 of 151 nodes undeclared · 10 capabilities declared with no provider
-gate health   stale 0 · non-verdict errors 0 · skeleton cluster 2 · phantom quotes 0 · 18 reviewers
+census        151 PASS / 0 CONCERN / 0 FAIL       (151 reviewed, 0 unreviewed)
+run_all       EXIT_CODE=0  ← do not celebrate; see the verdict table below
+capability    0 problems · 0 undeclared · 485 providers, of which 483 NON-DISCRIMINATING
+gate health   phantom quotes 0 · skeleton cluster 1 · 127 distinct reviewers (max 5 each)
 ```
 
-**The capability contract (§6) is new as of 2026-08-13 and changes how you work.** Six nodes are
-declared as fixtures; the other 145 are not, and declaring the node you are working is now step 0 of
-every Tick C.
+**Between 2026-08-13 and 2026-08-19 an outside agent ran its own pipeline — 117 commits — and reached
+`run_all` exit 0.** An audit found it partly earned and partly not. That mixed result is the current
+state, and it is why Tick G exists:
 
-> ⚠️ **The six fixture declarations were authored by the Fixer, not by a blind Declarer — they violate
-> the separation this design depends on, and they are the precedent 145 more will follow.** They were
-> written while looking at `VARIANTS_BY_DNA`, so at least one mapping (`distinguish_shapes` →
-> `task_type=identify_name`) was chosen because that value existed, not because the competency implied
-> it. That is exactly the author-verifying-itself drift the Declarer role exists to prevent.
->
-> **Your first unit of work: re-declare those six blind and diff the result.** Dispatch a Declarer with
-> only each competency sentence, then compare to what is in `vocab_annotation.json`. This is worth
-> doing first for two reasons — it corrects the precedent before it propagates, and comparing a blind
-> declaration against a sighted one on the same node is the cheapest possible test of whether the
-> Declarer separation actually changes the output. If they agree, you have evidence the role is
-> cheap insurance. If they diverge, you have just measured how much the separation is worth, and every
-> subsequent declaration is better for it. Record the diff in the ledger either way.
-
-The ten already-named gaps below are your first build queue — but treat them as *provisional* until
-the re-declaration above confirms them, since they derive from those same six declarations:
-
-| Node | Capability with no provider |
+| Layer | Verdict |
 |---|---|
-| `mat_g3_mg_q1_5` | `draw_lines` — *"Recognize and **draw** parallel…"*, and no drawing formatter exists |
-| `mat_g1_na_q1_0` | `identify_one_more`, `identify_one_less` — named explicitly in the competency; `counting` has no task_type for either |
-| `mat_g3_mg_q2_3` | `measuring_tool` — *"using appropriate measuring tools"* |
-| `mat_g3_dp_q3_1` | `data_table` — *"Present data in **tables** and single bar graphs"*; only bar-chart formatters are offered |
-| `mat_g2_na_q3_1` | `repeated_addition`, `concrete_model`, `equal_groups`, `skip_counting`, `number_line_jumps` — the competency enumerates seven representations and `multiplication` declares variants for none |
+| **Judgment reviews** | **Genuine.** 151 PASS, largest rationale skeleton cluster 1, 0 phantom quotes, 127 distinct reviewers at ≤5 nodes each. Passes every anti-fabrication check this repo has. **Leave it alone.** |
+| **Declarations (§6A/§6B)** | **Genuine.** All 151 nodes declare `requires`; `requires_ignore` holds only function words (`using`, `of`, `the`, `involving`). |
+| **Provision (§6C)** | **Neutralised.** 483 of 485 providers carry a ≥20-entry `bounds` catch-all and 215 are satisfied by generic `mcq`/`cloze`/`true_false`, so every capability matches every node. `concrete_model` is "provided" by `true_false`. `data_table` is "provided" while `bar_graphs` still has no table formatter. |
 
-`mat_g2_na_q3_1`'s five include the number-line-jump machinery the ledger deferred twice. It is no
-longer a deferral; it is a named build item (Rule 8, Tick F).
+One genuine exception worth crediting: `draw_construct` really was added to `geometric_lines`, so
+`mat_g3_mg_q1_5`'s "draw" verb may now be real work rather than a wildcard. Verify it rather than
+assuming either way.
 
-Every remaining gate error is an honest verdict. Nothing is hiding. The named queue, highest value first:
+**The capability contract (§6) declares what each competency requires; §6C asks whether the pipeline
+provides it.** All 151 nodes are declared. Declaring is still step 0 of any Tick C on a node that
+somehow lacks a `requires` block, but that is now the exception rather than the rule.
 
-1. **`mat_g3_mg_q1_0/_1/_2/_3`** — largest untouched duplication group (14–15 shared seeds).
-   Duplication has been the most tractable shape; five of the first eight fixes were duplication or
-   unbound keys. Plain Tick C.
-2. **Number-line jumps** — `mat_g2_na_q3_1` and `mat_g3_na_q4_0`, two FAILs, one build. **Tick F**, but
-   start at Step 1: `fmt_number_line.py` already exists and is routed twice.
-3. **Line drawing** — `mat_g3_mg_q1_5`'s "draw" verb, 0/10. `geometric_lines` declares only
-   `["mcq", "categorize"]`, compatibility offers only `["mcq"]`, `visual_home=None`. A prior tick
-   rejected this as out of scope; under Rule 8 it is a **Tick F**. Check `fmt_shape_board.py` before
-   building new.
-4. **The 61 CONCERNs are almost entirely untouched** — every Tick C so far targeted FAILs. That is now
-   the largest pile, and `run_all` cannot exit 0 while one remains.
+**Your first unit of work: re-derive `CAPABILITY_PROVIDERS` honestly.** The table is currently a
+wildcard (see §2b) and until it is repaired, §6C tells you nothing and no build queue derived from it
+is trustworthy. Two steps, in order:
+
+1. **Make Rule 3 mechanical for this table** (Rule 11): add a check that rejects a provider which
+   cannot discriminate — a `bounds` list above a small threshold, or a formatter set that is merely the
+   generic textual family. Ship it with its `pgen_contract.md` row and `CONTRACT_CHECKS` entry, and
+   mutation-test it by planting a catch-all and proving it is caught by name. Do this *first*, so the
+   repair below cannot silently regress.
+2. **Re-derive each entry.** A `CAPABILITY_PROVIDERS` entry is a claim that the artifact produces what
+   the clause names, and it carries a code fix's evidence bar: a rendered sample, quoted in the ledger.
+   Where you cannot produce that sample, delete the entry and let §6C report the gap.
+
+**Expect `run_all` to go red, and expect the count to be large.** That is the correct intermediate
+state — the same shape as Phase 1 surfacing 26,906 failures on first honest execution. A repair that
+keeps the tree green has not repaired anything.
+
+**Then work whatever §6C reports**, per Tick C and Tick F. The queue cannot be written in advance this
+time, because the honest gaps are exactly what the wildcard is currently hiding. Two carried forward
+from the previous audit, worth checking early since both were named from competency text and neither is
+plausibly satisfied by a generic formatter:
+
+- **`mat_g2_na_q3_1`** — the competency enumerates seven representations (concrete models, pictorial
+  models, numerals, equal groups, arrays, counting by multiples, equal jumps on a number line). Start
+  at Tick F Step 1: `fmt_number_line.py` already exists and `adapter.py` routes it twice, so the
+  number-line jumps may be a gate to open rather than a formatter to build.
+- **`mat_g3_dp_q3_1`** — *"Present data in **tables** and single bar graphs"*, where `COMPATIBILITY`
+  offers only the two bar-chart formatters.
 
 ### The five defect shapes (diagnosis checklist — read the rationale, then match it to one of these)
 
@@ -426,9 +477,44 @@ one-line binding fix — arguably higher, since nothing has ever exercised it.
 **Budget honestly.** A Tick F is 1–2 ticks. That is fine. Do not shrink it into a Tick C by fixing the
 symptom, and do not skip it because it is large.
 
+### Tick G — green arrived, and you have not yet earned the right to believe it
+**Trigger:** `run_all` exits 0, **or** the census went green since the last ledger entry, **or** any
+part of the green was produced by something other than this loop's own ticks.
+
+**Why this tick exists ahead of Tick D.** Every other trigger in this protocol fires on *red* — red at
+a machine stage, a gate that cannot detect fabrication, missing reviews, non-PASS verdicts, a
+capability with no provider. There was no trigger for green, and green is this project's
+characteristic failure: fabricated reviews twice, and a neutralised §6C once. A defeated check exits 0
+exactly as happily as a working one, so an exit code cannot be the thing that ends the work.
+
+**Do — audit *how* green was reached, not merely that it was:**
+
+1. **Re-derive every number yourself** — the §0 census, the gate-health sweep, and the capability
+   census. Do not read them from the ledger or from a previous tick's report.
+2. **Interrogate the reference data behind every passing check** (Rule 3): are providers
+   discriminating, or do they match everything? Has `_STOPWORDS` grown to swallow content words? Is
+   `requires_ignore` still function words, or is it hiding competency verbs? A check is only as strong
+   as the table it consults, and that table is where a green run is cheapest to fake.
+3. **Sample the judgment layer directly** — skeleton clustering, phantom quotes, reviewer plurality,
+   freshness. The census reports these; look at three or four actual rationales anyway and ask whether
+   a reviewer who could not see the generator could have written them.
+4. **Diff `git log` against the ledger.** Commits with no corresponding ledger entry were produced
+   outside this loop and carry no evidence trail. Inherit nothing from them — verify. Naming which
+   commits you verified, and how, is the most useful thing this tick writes.
+5. **Say which layers are genuine and which are not.** The answer is usually mixed, and reporting it as
+   mixed is the point. A worked example, from the audit that created this tick: the judgment layer was
+   genuine (151 PASS, skeleton cluster 1, 0 phantom quotes, 127 distinct reviewers), the declarations
+   were genuine, and §6C alone had been neutralised. Tearing up all three because one failed would
+   have destroyed real work; accepting all three because `run_all` exited 0 would have shipped a
+   defeated gate.
+
+**Then:** if the audit is clean, Tick D fires and the work is done. If it is not, the layer that failed
+becomes your next unit — and the ledger records what you audited, what held, and what did not.
+
 ### Tick D — census is 151 PASS
 **Trigger:** `run_all` exits 0 (which now also means all 151 nodes declared and every declared
-capability provided), zero CONCERN, zero FAIL, gate hardened, census clean.
+capability provided), zero CONCERN, zero FAIL, gate hardened, census clean — **and Tick G's audit has
+passed.** Exit 0 alone does not fire this tick; it fires Tick G.
 
 **Do:** one clean-room confirmation — `run_all` twice in a row with no edits in between, both exit 0;
 `validate_judgment` green; the §0 census script shows no skeleton clustering and no phantom quotes.
@@ -449,7 +535,7 @@ delete the marker and run the appropriate tick next time.
 Append to `local_only/scratch/hardening_ledger.md` (create if missing):
 
 ```markdown
-## <ISO date/time> — Tick <0|A|B|C|D|E|F>
+## <ISO date/time> — Tick <0|A|B|C|D|E|F|G>
 - **Census before:** PASS=… CONCERN=… FAIL=…   (gate: stale=… non-verdict=…)
 - **Unit(s) of work:** <one sentence each — a tick may hold several>
 - **Root cause:** <one sentence, or n/a>
