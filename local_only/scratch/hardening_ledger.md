@@ -3149,3 +3149,31 @@ invalidate the attestation just obtained. Attest → fix → re-attest once.
    `curved_lines`, `flat_surfaces`, `curved_surfaces`, `3_dimensional_objects`) still name only the
    generic family. All 6 are now blind-PROVIDED as *content*, which does not license `mcq` as the
    registered *provider*. Point each at a real artifact.
+
+### Correction appended to this tick before it closed
+
+`run_all` exited **1** and caught a false claim in this tick's own evidence entry. I had written that
+the G3 siblings were "provably untouched", citing a 500-seed probe. The probe called
+`generate_params(3, None, seed)` directly, bypassing the serving path where the variant set is
+consulted — it could not have observed the effect it was cited to rule out.
+
+Measured, not argued: §0's gate-health sweep returned `gate errors: 0` before the edits and 10 after.
+Cause isolated in memory (no file edited): removing only the `VARIANTS_BY_DNA` declaration while
+keeping the new `_ITEM_POOL` items takes stale reviews from
+`{'mat_g2_mg_q4_3': 7, 'mat_g3_mg_q1_4': 1, 'mat_g3_mg_q1_5': 2}` to `{'mat_g2_mg_q4_3': 7}`.
+
+**Durable lesson, not previously written down anywhere:** declaring a value in `VARIANTS_BY_DNA`
+reshuffles which pool item lands on which seed for **every node mapped to that DNA**, not just the
+node you are working on. This is the same hazard already recorded for `compatible_formatters` and the
+§1C sweep; it applies to variants identically. Budget one re-review per co-mapped node whenever you
+declare a variant, and never verify a leak claim through a path the orchestrator does not use.
+
+Reverting is forbidden here (narrowing a declaration to clear a check). The G3 content is valid, only
+redistributed across seeds, so the cost is two fresh blind re-reviews.
+
+**Revised `Next tick should:` — items 1 and 2 are now these, then the previous list follows:**
+1. **Re-review `mat_g3_mg_q1_4` and `mat_g3_mg_q1_5`** (fresh, blind, per §5). They went STALE as
+   collateral of this tick's variant declaration. Rebuild packets with
+   `python -m backend.app.practice_gen.validation.judgment_packets --node <id>`.
+2. **Re-review `mat_g2_mg_q4_3`** (7 STALE seeds) — but do it *after* fixing seed 64, not before, or
+   it pays twice.

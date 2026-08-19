@@ -5305,3 +5305,49 @@ batch is about content that no longer exists -- re-attest the batch. Do not edit
 `--reap` killed an orphaned pool worker at 443s CPU (ratio 0.99) left by the interrupted run. The
 first `run_all` of this tick was launched before these edits and crossed into §5 after they landed,
 so it measured neither tree state and was killed rather than reported.
+
+### CORRECTION (same tick, appended — the original claim above is wrong and is left standing)
+
+The section above claims the G3 siblings' content is "provably untouched", citing a 500-seed probe
+showing grade-3 serving never selects `explain_difference`. **That claim is false, and the probe did
+not test what it purported to test.** It called `generate_params(3, None, seed)` directly with
+`difficulty_profile=None`, which bypasses the serving path where the variant set is actually
+consulted. A check that cannot observe the mechanism cannot clear it.
+
+`run_all` caught it (exit 1, §6):
+
+```
+- mat_g3_mg_q1_4: STALE review — seed 603 ... Reviewed: 'Which figure can be measured because it has
+  a definite length?'; now renders: 'What figure has no endpoints and extends forever in both
+  directions?'
+- mat_g3_mg_q1_5: STALE review — seed 602 ... Reviewed: 'Two lines that cross at exactly one point
+  are called ___.'; now renders: 'Are all perpendicular lines also intersecting lines?'
+- mat_g3_mg_q1_5: STALE review — seed 603 ...
+```
+
+The §0 gate-health sweep run *before* this tick's edits returned `gate errors: 0 | NON-VERDICT: 0`;
+the same check now returns 10. The change is therefore the cause, measured rather than argued.
+
+Cause isolated in memory, without editing any file — removing only the `VARIANTS_BY_DNA`
+declaration while keeping the new `_ITEM_POOL` items:
+
+```
+AS COMMITTED            : {'mat_g2_mg_q4_3': 7, 'mat_g3_mg_q1_4': 1, 'mat_g3_mg_q1_5': 2}
+WITHOUT the variant decl: {'mat_g2_mg_q4_3': 7}
+```
+
+So **declaring the variant, not adding the items, reshuffled which pool item lands on which seed for
+every node mapped to this DNA.** This is the same hazard already recorded for formatters ("adding a
+formatter to `compatible_formatters` exposes it to the §1C sweep on EVERY mapped node, regardless of
+registry bindings"); it applies to `VARIANTS_BY_DNA` entries identically and that was not written
+down anywhere before now.
+
+**Not fixed by reverting.** `explain_difference` is a genuine variant of this DNA and
+`CAPABILITY_PROVIDERS['explain']` points at it; removing the declaration to make three findings
+disappear would be narrowing a declaration to satisfy a check, which is forbidden. The G3 content is
+not *wrong* — spot rendering shows valid parallel/perpendicular and point/line/ray items — only
+redistributed across seeds, so the filed reviews are about a seed→item mapping that no longer holds.
+The honest cost is two fresh blind re-reviews, queued for the next tick.
+
+**run_all result for this tick: EXIT 1.** 6/7 judgment reviews FAIL (10 STALE), 7/7 capability
+contract FAIL (817). Stages 1-5 and both two-direction contract checks PASS.
