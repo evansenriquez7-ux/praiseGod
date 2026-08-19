@@ -4700,3 +4700,78 @@ Tick C item.
 `draw_lines` remains in `CAPABILITY_PROVIDERS` pointing at the same `draw_construct` variant, but no
 node declares it — it is an orphan entry. It is dead reference data under the same ruling and should
 go in the next batch.
+
+---
+
+## 2026-08-19 — Hardening Unit 3: mutation coverage for §5 and §6
+
+`tests/mutation_harness.py` planted the seven Phase-4 machine-stage bugs (§1A–§1F, §2, §3) and
+nothing for §5 or §6 — **the only two stages that have ever actually been defeated**, three times
+between them (fabricated reviews twice, a neutralised provider table once). A green mutation run said
+the boundary/formatter/vocab checks work. It said nothing about the checks that had failed.
+
+Two mutations added, and two pieces of machinery they required.
+
+### Machinery 1 — `baseline_must_not_contain`
+
+A validator that is *already failing* "detects" anything. §6C is legitimately red right now (60 open
+findings), so `wildcard_provider` would have scored a false PASS on exit code alone — the same class
+of false green this whole exercise exists to remove. `run_mutation` now runs the validator **before**
+planting and refuses the mutation as `INVALID` if the marker is already present.
+
+```
+validate_capability: exit=1 | baseline already contains ['count_forward_from_a_given_number']? NO
+validate_judgment:   exit=0 | baseline already contains ['template rationale']?              NO
+```
+
+Both guards hold: `validate_capability` exits 1 yet never names the target capability, so the
+mutation remains a genuine discriminator on a red tree.
+
+### Machinery 2 — `apply_fn`
+
+Some mutations cannot be a literal find/replace. A templated review must be planted across four
+report files whose prose differs per node; an anchor would have to hardcode four rationales and would
+go stale the moment any node is re-reviewed. `wildcard_provider` has the mirror problem — a real
+provider line carries the 27-key `bounds` catch-all and runs past 600 characters. Both now locate
+their target and fail loudly if it is absent or ambiguous, returning `{path: original_text}` so the
+existing `finally`-restore is unchanged. Declaring both `edits` and `apply_fn` is rejected: two
+restore paths is how a mutation harness leaves the tree dirty.
+
+### Mutation A — `wildcard_provider` (§6D)
+
+Replaces a capability's real, discriminating provider with the generic textual family — the exact
+August 2026 shape.
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m tests.mutation_harness --only wildcard_provider
+
+[1/1] wildcard_provider: Replace a capability's real, discriminating provider with the generic
+      textual formatter family -- the exact shape that neutralised §6C in August 2026, when 474 of
+      485 entries listed mcq/cloze/true_false/error_detect and every clause was satisfied by text.
+    expected catcher: §6D (a generic textual formatter is not a provider)
+    DETECTED: exit 1 — Capability contract: 61 failure(s).
+
+  PASS  wildcard_provider        §6D (a generic textual formatter is not a provider)
+
+1/1 mutations detected.
+```
+
+61 = the 60 honest baseline findings plus the one planted, and detection additionally required the
+output to name `count_forward_from_a_given_number` **and** cite `§6D`. `git status` after the run
+shows the tree restored.
+
+### Mutation B — `template_review` (§5)
+
+Staples one fill-in-the-blank rationale, node ID substituted in, onto four separate reviews — the
+fabrication that passed every check this repo had, twice, because verbatim-reuse detection compares
+byte equality and a substituted node ID is not byte-identical. It plants **four** because
+`_MAX_SKELETON_CLUSTER` is 3, and it *reads that threshold from the module* rather than assuming it,
+raising if the count would not exceed it: planting within the tolerance a check deliberately allows
+would prove nothing, and lowering the threshold to suit the mutation is forbidden outright.
+
+**NOT YET EXECUTED at the time of this commit.** It rewrites `validation_reports/judgment/*.json` in
+place, and a full `run_all` was mid-flight; stage 6 reads exactly those files, so running it
+concurrently could have reported a fabricated judgment failure against a clean tree and wasted a
+50-minute run (the hazard list is explicit that the mutation harness must never run concurrently with
+`run_all`). Its baseline guard is verified above. Execution and result are recorded in the next
+entry — this one claims only what was run.

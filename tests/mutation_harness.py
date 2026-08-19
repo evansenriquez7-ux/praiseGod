@@ -25,11 +25,12 @@ Exit code 0 iff every mutation was detected.
 from __future__ import annotations
 
 import argparse
+import re
 import subprocess
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Callable, Dict, List, Optional, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
@@ -53,6 +54,16 @@ class Mutation:
     # Substrings that, if present in the output, confirm the failure points at
     # the planted bug rather than at unrelated noise. Empty = exit code only.
     expect_output_contains: List[str] = field(default_factory=list)
+    # Substrings the *unmutated* tree must NOT already produce. Without this, a
+    # mutation "passes" on a validator that was failing before it was applied --
+    # which is precisely the state §5 and §6 are in while the honest work queue
+    # is open, and precisely the false green Phase 4 exists to prevent.
+    baseline_must_not_contain: List[str] = field(default_factory=list)
+    # Some mutations cannot be written as a literal find/replace: a templated
+    # review has to be planted across several report files whose prose differs
+    # per node. Such a mutation supplies a callable that performs the edits and
+    # returns {path: original_text} for the same `finally` restore.
+    apply_fn: Optional[Callable[[], Dict[Path, str]]] = None
 
 
 MUTATIONS: List[Mutation] = [
@@ -168,11 +179,142 @@ MUTATIONS: List[Mutation] = [
         expected_check="_manifest.py import-time registry assertion",
         expect_output_contains=["planted_phantom_dna"],
     ),
+    # ------------------------------------------------------------------------
+    # §5 and §6 — the two stages that have actually been defeated.
+    #
+    # The seven mutations above cover the machine stages (§1A-§1F, §2, §3), none
+    # of which has ever been faked. §5 was defeated twice by fabricated reviews
+    # and §6 once by a provider table where a generic formatter satisfied every
+    # clause, and the harness planted nothing for either. A green mutation run
+    # said the boundary/formatter/vocab checks work; it said nothing about the
+    # checks that had failed three times between them.
+    # ------------------------------------------------------------------------
+    Mutation(
+        name="wildcard_provider",
+        description=(
+            "Replace a capability's real, discriminating provider with the generic "
+            "textual formatter family -- the exact shape that neutralised §6C in "
+            "August 2026, when 474 of 485 entries listed mcq/cloze/true_false/"
+            "error_detect and every clause was satisfied by text."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_wildcard_provider("count_forward_from_a_given_number"),
+        command=["backend.app.practice_gen.validation.validate_capability"],
+        expected_check="§6D (a generic textual formatter is not a provider)",
+        # Must name the capability AND cite §6D: exiting non-zero is not proof
+        # while the honest §6D queue is open.
+        expect_output_contains=["count_forward_from_a_given_number", "§6D"],
+        baseline_must_not_contain=["count_forward_from_a_given_number"],
+    ),
+    Mutation(
+        name="template_review",
+        description=(
+            "Staple one fill-in-the-blank rationale, with the node ID substituted "
+            "in, onto four separate reviews -- the fabrication that passed every "
+            "check this repo had, twice, because verbatim-reuse detection compares "
+            "byte equality and a substituted node ID is not byte-identical."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_template_rationale(4),
+        command=["backend.app.practice_gen.validation.validate_judgment"],
+        expected_check="§5 (rationale-skeleton clustering)",
+        expect_output_contains=["template rationale", "share one findings"],
+        baseline_must_not_contain=["template rationale"],
+    ),
 ]
+
+
+# The templated-review mutation cannot be a literal find/replace: each review's
+# prose differs per node, so an anchor would have to hardcode four rationales and
+# would go stale the moment any node is re-reviewed. It edits the JSON structurally
+# instead, and returns the same {path: original_text} map so `_restore` is unchanged.
+_TEMPLATE_RATIONALE = (
+    "The items for {node_id} were reviewed against the competency and found to "
+    "address it directly. The number ranges observed are appropriate for the grade "
+    "and quarter, the vocabulary stays within what has been introduced, and the "
+    "answer keys are correct throughout. No issues were identified for {node_id}."
+)
+
+
+def _plant_wildcard_provider(capability: str) -> Dict[Path, str]:
+    """
+    Rewrite one CAPABILITY_PROVIDERS entry so its only provider is the generic textual
+    family -- the August 2026 shape.
+
+    Done by locating the entry rather than by matching its literal text: a real provider
+    line carries a 27-key `bounds` catch-all and runs past 600 characters, and an anchor
+    that long goes stale on any unrelated edit to the same entry. The locate-and-replace
+    still fails loudly if the entry is absent.
+    """
+    path = REPO_ROOT / "backend/app/practice_gen/validation/validate_capability.py"
+    text = path.read_text(encoding="utf-8")
+    pattern = re.compile(rf"^([ \t]*)'{re.escape(capability)}':[^\n]*\n", re.MULTILINE)
+    matches = pattern.findall(text)
+    if len(matches) != 1:
+        raise ValueError(
+            f"mutation 'wildcard_provider': found {len(matches)} entries for "
+            f"'{capability}' in CAPABILITY_PROVIDERS, expected exactly 1. The table "
+            f"moved; repoint the mutation rather than loosening it."
+        )
+    indent = matches[0]
+    replacement = f"{indent}'{capability}': {{'formatters': ['mcq', 'cloze']}},\n"
+    path.write_text(pattern.sub(replacement, text, count=1), encoding="utf-8")
+    return {path: text}
+
+
+def _plant_template_rationale(n_nodes: int) -> Dict[Path, str]:
+    """
+    Overwrite `findings.competency_fulfillment.rationale` on `n_nodes` reviews with
+    one shared template, node ID substituted in.
+
+    n_nodes must exceed validate_judgment._MAX_SKELETON_CLUSTER, or the planted
+    template is *within* the tolerance the check deliberately allows for sibling
+    nodes and its survival would say nothing. Read the threshold rather than
+    assuming it, so tightening the check cannot silently invalidate this mutation.
+    """
+    import json
+
+    from backend.app.practice_gen.validation.validate_judgment import _MAX_SKELETON_CLUSTER
+
+    if n_nodes <= _MAX_SKELETON_CLUSTER:
+        raise ValueError(
+            f"mutation 'template_review': planting {n_nodes} templated rationales cannot "
+            f"trip a check that tolerates {_MAX_SKELETON_CLUSTER}. Plant more than the "
+            f"threshold -- never lower the threshold to suit the mutation."
+        )
+
+    review_dir = REPO_ROOT / "validation_reports" / "judgment"
+    targets = sorted(review_dir.rglob("*.json"))[:n_nodes]
+    if len(targets) < n_nodes:
+        raise FileNotFoundError(
+            f"mutation 'template_review': needed {n_nodes} review files under "
+            f"'{review_dir}', found {len(targets)}. The mutation harness is stale "
+            f"relative to the tree."
+        )
+
+    originals: Dict[Path, str] = {}
+    for path in targets:
+        text = path.read_text(encoding="utf-8")
+        originals[path] = text
+        data = json.loads(text)
+        node_id = data.get("node_id", path.stem)
+        data["findings"]["competency_fulfillment"]["rationale"] = (
+            _TEMPLATE_RATIONALE.format(node_id=node_id)
+        )
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+    return originals
 
 
 def _apply(mutation: Mutation) -> Dict[Path, str]:
     """Apply every edit, returning original contents for restoration."""
+    if mutation.apply_fn is not None:
+        if mutation.edits:
+            raise ValueError(
+                f"mutation '{mutation.name}': declares both `edits` and `apply_fn`. "
+                f"Pick one -- two restore paths is how a mutation harness leaves the "
+                f"tree dirty."
+            )
+        return mutation.apply_fn()
     originals: Dict[Path, str] = {}
     for rel, (find, replace) in mutation.edits.items():
         path = REPO_ROOT / rel
@@ -218,6 +360,17 @@ def run_mutation(mutation: Mutation) -> Tuple[bool, str]:
     declares them, its output carried the expected markers — an unrelated crash
     is not proof the assertion works.
     """
+    # A validator that is already failing will "detect" anything. Prove the marker
+    # is absent before planting, or the mutation proves nothing about the check.
+    if mutation.baseline_must_not_contain:
+        _, before = _run(mutation)
+        already = [m for m in mutation.baseline_must_not_contain if m in before]
+        if already:
+            return False, (
+                f"INVALID — the unmutated tree already reports {already}; this mutation "
+                f"cannot distinguish the planted bug from the pre-existing failure."
+            )
+
     originals: Dict[Path, str] = {}
     try:
         originals = _apply(mutation)
