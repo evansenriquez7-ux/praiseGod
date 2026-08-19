@@ -1,100 +1,176 @@
 {
-  "node_id": "mat_g2_mg_q4_3",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_mg_q4_3), 2026-08-18",
-  "review_date": "2026-08-18",
-  "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample set fully addresses the competency requirements of identifying and distinguishing straight lines, curved lines, flat surfaces, and curved surfaces of 3-dimensional objects. Straight and curved lines are tested via items such as \"The edge of a ruler never bends. Is it a straight line or a curved line?\" and \"The rim of a circle bends all the way around. Is it a straight line or a curved line?\". Flat and curved surfaces of solid objects are tested in questions like \"Which best describes the side of a solid figure that you could trace with a straight ruler?\" and \"A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?\"."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "Coverage spans both dimensional domains targeted by the standard: lines (straight vs. curved) and 3D surfaces (flat vs. curved). Real-world and geometric objects including a ruler (\"The edge of a ruler never bends. Is it a straight line or a curved line?\"), a circle (\"The rim of a circle bends all the way around. Is it a straight line or a curved line?\"), a ball (\"A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?\"), and a cylinder/can (\"A can has both flat surfaces (its ends) and one other kind of surface. What kind is it?\") are comprehensively represented."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The problems are appropriately targeted for Grade 2 Quarter 4 students. The prompts use clear, descriptive everyday language such as \"It bends smoothly and changes direction. Is it a straight line or a curved line?\" and \"The edge of a ruler never bends. Is it a straight line or a curved line?\". The cognitive load is focused strictly on visual and tactile properties of lines and surfaces without unnecessary complexity."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The items test distinct perspectives and sub-skills: definition/property-based line identification (\"It bends smoothly and changes direction. Is it a straight line or a curved line?\"), boundary/rim identification (\"The rim of a circle bends all the way around. Is it a straight line or a curved line?\"), tactile/tracing identification of flat surfaces (\"Which best describes the side of a solid figure that you could trace with a straight ruler?\"), and multi-surface object analysis (\"A can has both flat surfaces (its ends) and one other kind of surface. What kind is it?\")."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "All questions align directly with the MATATAG competency without introducing extraneous concepts or premature geometric definitions. Each question, whether focusing on straight/curved lines (e.g. \"The edge of a ruler never bends. Is it a straight line or a curved line?\") or 3D surfaces (e.g. \"A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?\"), stays strictly within the boundaries of identifying lines and surfaces."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The scale of difficulty, vocabulary, and conceptual depth is well-calibrated for Grade 2. Concrete exemplars like balls, cans, and rulers grounded in questions like \"A can has both flat surfaces (its ends) and one other kind of surface. What kind is it?\" provide intuitive access to 3D surface concepts suitable for 7-8 year old learners."
-    }
+ "node_id": "mat_g2_mg_q4_3",
+ "reviewed_by": "Blind judgment Reviewer (subagent, 0 tool uses, samples inline), batch fix-loop-tick-2 2026-08-20",
+ "review_date": "2026-08-20",
+ "blind": true,
+ "overall": "CONCERN",
+ "findings": {
+  "competency_fulfillment": {
+   "verdict": "PASS",
+   "rationale": "Both halves of the competency are directly addressed. Lines: seed 42 'How is a straight line different from a curved line?', seed 46 'Why is the edge of a ruler called a straight line?', seed 45 'The path of a winding river bends smoothly and changes direction.' Surfaces: seed 44 'How is a flat surface different from a curved surface?', seed 43 (box, 'six faces that are each flat'), seed 604 'What kind of surface does the cover of a closed book have?'. Nothing asks for area, perimeter, or face/edge/vertex counting."
   },
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46,
-    500,
-    501,
-    502,
-    600
-  ],
-  "samples_reviewed": [
-    {
-      "seed": 42,
-      "formatter": "mcq",
-      "question_text": "It bends smoothly and changes direction. Is it a straight line or a curved line?",
-      "correct_answer": "curved line"
-    },
-    {
-      "seed": 43,
-      "formatter": "mcq",
-      "question_text": "A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?",
-      "correct_answer": "curved surface"
-    },
-    {
-      "seed": 44,
-      "formatter": "mcq",
-      "question_text": "The rim of a circle bends all the way around. Is it a straight line or a curved line?",
-      "correct_answer": "curved line"
-    },
-    {
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "The edge of a ruler never bends. Is it a straight line or a curved line?",
-      "correct_answer": "straight line"
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "It bends smoothly and changes direction. Is it a straight line or a curved line?",
-      "correct_answer": "curved line"
-    },
-    {
-      "seed": 500,
-      "formatter": "mcq",
-      "question_text": "The rim of a circle bends all the way around. Is it a straight line or a curved line?",
-      "correct_answer": "curved line"
-    },
-    {
-      "seed": 501,
-      "formatter": "mcq",
-      "question_text": "The edge of a ruler never bends. Is it a straight line or a curved line?",
-      "correct_answer": "straight line"
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Which best describes the side of a solid figure that you could trace with a straight ruler?",
-      "correct_answer": "flat surface"
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "A can has both flat surfaces (its ends) and one other kind of surface. What kind is it?",
-      "correct_answer": "curved surface"
-    }
-  ]
+  "comprehensive_coverage": {
+   "verdict": "CONCERN",
+   "rationale": "Identification sub-cases are balanced at three keyed appearances each (straight line 42/46/500, curved line 42/45/501, flat surface 43/44/604, curved surface 44/502/603). The 'explain' verb is the gap: only seeds 42, 44 and 46 explain, and 42 and 44 are the same item with 'line' swapped for 'surface', sharing the distractor frame 'Both of them bend in the same way.' No item asks the pupil to explain a surface property of a named 3-dimensional object, though the competency reads 'flat and curved surfaces OF 3-dimensional objects'."
+  },
+  "cognitive_capacity": {
+   "verdict": "PASS",
+   "rationale": "Stems are one or two short sentences with concrete physical predicates ('never bends', 'bends all the way around', 'has no bumps or curves'). Contexts are everyday Grade 2 objects: ruler, box, ball, book, river. 'solid figure' (seed 603) is glossed in-item with 'like a ball'. No multi-step reasoning and no numerical load."
+  },
+  "variant_comprehensiveness": {
+   "verdict": "CONCERN",
+   "rationale": "Five stem shapes exist (paired contrast, property-clue plus open classification, property-clue plus category-constrained classification, justification, bare classification), so there is no single-template collapse. The variety fails at the option level: seven of ten items (43, 45, 500, 501, 502, 603, 604) present the identical four-item menu straight line / curved line / flat surface / curved surface, merely permuted, and the two explanation items recycle one distractor kit."
+  },
+  "competency_alignment": {
+   "verdict": "PASS",
+   "rationale": "Nothing exceeds scope; no face/edge/vertex counting, symmetry, area or solid names. Seed 43 uses 'faces' but defines it in place ('six faces that are each flat'). Recorded reading: if 'of 3-dimensional objects' is taken to govern both halves, seeds 45 (a river) and 501 (a circle) anchor lines to non-3-D referents; under the natural reading the phrase attaches to the surfaces clause and these are in scope."
+  },
+  "scale_appropriateness": {
+   "verdict": "PASS",
+   "rationale": "The only quantity in the set is 'six faces' (seed 43), correct for a box and within Grade 2 counting range. All contexts are physically accurate: a ruler's edge does not bend, a ball's surface curves in every direction, a closed book's cover is flat."
+  }
+ },
+ "problems_reported": [
+  "Duplicate item, seeds 502 and 603: both are ball/curved-surface classification with the same clue predicate; seed 603 names the ball, so its ostensible generalisation to 'solid figure' is not exercised.",
+  "Repeated context, seeds 46 and 500: both hang on 'the edge of a ruler never bends', consuming two of five line items while no line item is drawn from the edge of a solid.",
+  "Template twins, seeds 42 and 44: identical stem frame and distractor kit with one word substituted, including the verbatim shared distractor 'Both of them bend in the same way.'",
+  "Non-functioning distractors, seeds 43/502/603/604: the stem 'What kind of surface ...' grammatically excludes 'straight line' and 'curved line', so a pupil who knows only that a line is not a surface guesses at 50%. Seeds 45/500/501 use the correct 'Which best describes it?' frame that leaves all four options live.",
+  "Answer telegraphed in stem, seed 43: 'six faces that are each FLAT' supplies the keyword verbatim for key 'flat surface'. Seed 604 is the well-built version of the same content.",
+  "Imprecise referent, seed 501: 'The rim of a circle' -- a circle has no rim; the circle IS the curved line. The key survives both readings so the item is answerable, but the phrasing models sloppy geometry language.",
+  "Checked and clean: no wrong or ambiguous keys; no distractor is also true of its key; no mathematically false statement in any stem or key."
+ ],
+ "sample_seeds": [
+  42,
+  43,
+  44,
+  45,
+  46,
+  500,
+  501,
+  502,
+  603,
+  604
+ ],
+ "samples_reviewed": [
+  {
+   "seed": 42,
+   "question_text": "How is a straight line different from a curved line?",
+   "correct_answer": "A straight line never bends, but a curved line bends smoothly.",
+   "formatter": "mcq",
+   "options": [
+    "A straight line bends, but a curved line never bends.",
+    "A straight line is always longer than a curved line.",
+    "A straight line never bends, but a curved line bends smoothly.",
+    "Both of them bend in the same way."
+   ]
+  },
+  {
+   "seed": 43,
+   "question_text": "A box has six faces that are each flat. What kind of surface does a box have?",
+   "correct_answer": "flat surface",
+   "formatter": "mcq",
+   "options": [
+    "flat surface",
+    "straight line",
+    "curved line",
+    "curved surface"
+   ]
+  },
+  {
+   "seed": 44,
+   "question_text": "How is a flat surface different from a curved surface?",
+   "correct_answer": "A flat surface has no bumps or curves, but a curved surface bends.",
+   "formatter": "mcq",
+   "options": [
+    "Both of them bend in the same way.",
+    "A flat surface bends, but a curved surface has no bumps.",
+    "A flat surface is always bigger than a curved surface.",
+    "A flat surface has no bumps or curves, but a curved surface bends."
+   ]
+  },
+  {
+   "seed": 45,
+   "question_text": "The path of a winding river bends smoothly and changes direction. Which best describes it?",
+   "correct_answer": "curved line",
+   "formatter": "mcq",
+   "options": [
+    "curved surface",
+    "straight line",
+    "curved line",
+    "flat surface"
+   ]
+  },
+  {
+   "seed": 46,
+   "question_text": "Why is the edge of a ruler called a straight line?",
+   "correct_answer": "Because it never bends or changes direction.",
+   "formatter": "mcq",
+   "options": [
+    "Because it is very long.",
+    "Because it never bends or changes direction.",
+    "Because it is flat and wide.",
+    "Because it bends all the way around."
+   ]
+  },
+  {
+   "seed": 500,
+   "question_text": "The edge of a ruler never bends. Which best describes it?",
+   "correct_answer": "straight line",
+   "formatter": "mcq",
+   "options": [
+    "straight line",
+    "flat surface",
+    "curved line",
+    "curved surface"
+   ]
+  },
+  {
+   "seed": 501,
+   "question_text": "The rim of a circle bends all the way around. Which best describes it?",
+   "correct_answer": "curved line",
+   "formatter": "mcq",
+   "options": [
+    "curved line",
+    "curved surface",
+    "flat surface",
+    "straight line"
+   ]
+  },
+  {
+   "seed": 502,
+   "question_text": "A ball has a surface that bends smoothly in every direction. What kind of surface does a ball have?",
+   "correct_answer": "curved surface",
+   "formatter": "mcq",
+   "options": [
+    "flat surface",
+    "curved surface",
+    "curved line",
+    "straight line"
+   ]
+  },
+  {
+   "seed": 603,
+   "question_text": "A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?",
+   "correct_answer": "curved surface",
+   "formatter": "mcq",
+   "options": [
+    "curved line",
+    "curved surface",
+    "flat surface",
+    "straight line"
+   ]
+  },
+  {
+   "seed": 604,
+   "question_text": "What kind of surface does the cover of a closed book have?",
+   "correct_answer": "flat surface",
+   "formatter": "mcq",
+   "options": [
+    "flat surface",
+    "straight line",
+    "curved surface",
+    "curved line"
+   ]
+  }
+ ]
 }

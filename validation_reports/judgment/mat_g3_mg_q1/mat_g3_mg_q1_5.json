@@ -1,384 +1,205 @@
 {
-  "node_id": "mat_g3_mg_q1_5",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-MG-Harden (mat_g3_mg_q1_2..mat_g3_mg_q1_6), 2026-08-17",
-  "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The packet successfully fulfills both aspects of the competency by asking students to recognize line types (e.g., 'Two lines that never meet, no matter how far they extend, are called ___.') and assessing the 'draw' component through procedural knowledge (e.g., 'To draw parallel lines using a ruler and a set square, what is the correct technique?')."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "All three required line types are well-represented. Students are tested on parallel lines ('Look at the model: two straight lines that run side by side and never meet ( || ). What type of lines are they?'), intersecting lines ('Look at the letter 'X'. The two crossing line segments form ___.'), and perpendicular lines ('Look at the letter 'T'. The vertical and horizontal segments meet to form ___.')."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The language and conceptual load are perfectly suited for Grade 3 learners. Using familiar contextual models like letters ('Look at the letter 'X'. The two crossing line segments form ___.') and simple definitions ('Two lines that cross at exactly one point are called ___.') appropriately anchors the geometric concepts."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The samples demonstrate a strong variety of problem structures, including standard definitions ('Two lines that meet at a right angle (90\u00b0) are called ___.'), visual/symbolic recognition, conceptual relationships ('Are all perpendicular lines also intersecting lines?'), and drawing mechanics ('To draw perpendicular lines forming a square right angle, which tools can you use together?')."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "Every item is strictly aligned with the MATATAG competency text. The questions do not exceed Grade 3 boundaries (e.g., by introducing transversals or complex angle measurements), focusing purely on recognizing and drawing the three explicit line types ('Are all perpendicular lines also intersecting lines?')."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The assessment format is highly scalable for a digital environment. Using tool selection and procedural steps ('To draw perpendicular lines forming a square right angle, which tools can you use together?') is an effective workaround for assessing drawing skills within a multiple-choice structure."
-    }
+ "node_id": "mat_g3_mg_q1_5",
+ "reviewed_by": "Blind judgment Reviewer (subagent, 0 tool uses, samples inline), batch fix-loop-tick-2 2026-08-20",
+ "review_date": "2026-08-20",
+ "blind": true,
+ "overall": "CONCERN",
+ "findings": {
+  "competency_fulfillment": {
+   "verdict": "CONCERN",
+   "rationale": "The 'recognize' half is fulfilled squarely: seed 502 'Two lines that never meet, no matter how far they extend' (parallel), seed 600 'Two lines that cross at exactly one point' (intersecting), seed 44 'cross each other and form right angles / square corners' (perpendicular). The 'draw' half is never elicited: all 12 items are 4-option selections and no item asks the pupil to produce a construction. Seeds 43, 46 and 601 assess verbal knowledge ABOUT drawing; seed 45 is recognition wearing a drawing verb."
   },
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46,
-    500,
-    501,
-    502,
-    600,
-    601,
-    602,
-    603
-  ],
-  "samples_reviewed": [
-    {
-      "seed": 42,
-      "formatter": "mcq",
-      "question_text": "Two lines that never meet, no matter how far they extend, are called ___.",
-      "correct_answer": "parallel lines",
-      "options": [
-        {
-          "key": "A",
-          "value": "perpendicular lines",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "rays",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "parallel lines",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "intersecting lines",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 43,
-      "formatter": "mcq",
-      "question_text": "Two lines that meet at a right angle (90\u00b0) are called ___.",
-      "correct_answer": "perpendicular lines",
-      "options": [
-        {
-          "key": "A",
-          "value": "perpendicular lines",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "intersecting lines",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "line segments",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "parallel lines",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 44,
-      "formatter": "mcq",
-      "question_text": "To draw perpendicular lines forming a square right angle, which tools can you use together?",
-      "correct_answer": "ruler and set square",
-      "options": [
-        {
-          "key": "A",
-          "value": "clock and ruler",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "thermometer and clock",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "ruler only",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "ruler and set square",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 45,
-      "formatter": "mcq",
-      "question_text": "Look at the model: two straight lines that run side by side and never meet ( || ). What type of lines are they?",
-      "correct_answer": "parallel lines",
-      "options": [
-        {
-          "key": "A",
-          "value": "rays",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "perpendicular lines",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "parallel lines",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "intersecting lines",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "Two lines that meet at a right angle (90\u00b0) are called ___.",
-      "correct_answer": "perpendicular lines",
-      "options": [
-        {
-          "key": "A",
-          "value": "line segments",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "perpendicular lines",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "intersecting lines",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "parallel lines",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 500,
-      "formatter": "mcq",
-      "question_text": "To draw perpendicular lines forming a square right angle, which tools can you use together?",
-      "correct_answer": "ruler and set square",
-      "options": [
-        {
-          "key": "A",
-          "value": "ruler and set square",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "clock and ruler",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "thermometer and clock",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "ruler only",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 501,
-      "formatter": "mcq",
-      "question_text": "Look at the model: two straight lines that run side by side and never meet ( || ). What type of lines are they?",
-      "correct_answer": "parallel lines",
-      "options": [
-        {
-          "key": "A",
-          "value": "parallel lines",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "rays",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "intersecting lines",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "perpendicular lines",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "Look at the letter 'X'. The two crossing line segments form ___.",
-      "correct_answer": "intersecting lines",
-      "options": [
-        {
-          "key": "A",
-          "value": "parallel lines",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "intersecting lines",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "flat surfaces",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "perpendicular lines",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "Look at the letter 'T'. The vertical and horizontal segments meet to form ___.",
-      "correct_answer": "perpendicular lines",
-      "options": [
-        {
-          "key": "A",
-          "value": "parallel lines",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "intersecting lines",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "perpendicular lines",
-          "is_correct": true
-        },
-        {
-          "key": "D",
-          "value": "curved lines",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 601,
-      "formatter": "mcq",
-      "question_text": "To draw parallel lines using a ruler and a set square, what is the correct technique?",
-      "correct_answer": "Slide the set square along the straight edge of the ruler and draw along its side.",
-      "options": [
-        {
-          "key": "A",
-          "value": "Draw along the corner of the set square without moving it.",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "Cross the two edges at a 45 degree angle.",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "Draw a single point and connect it in a circle.",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "Slide the set square along the straight edge of the ruler and draw along its side.",
-          "is_correct": true
-        }
-      ]
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "Two lines that cross at exactly one point are called ___.",
-      "correct_answer": "intersecting lines",
-      "options": [
-        {
-          "key": "A",
-          "value": "intersecting lines",
-          "is_correct": true
-        },
-        {
-          "key": "B",
-          "value": "rays",
-          "is_correct": false
-        },
-        {
-          "key": "C",
-          "value": "parallel lines",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "perpendicular lines",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "seed": 603,
-      "formatter": "mcq",
-      "question_text": "Are all perpendicular lines also intersecting lines?",
-      "correct_answer": "Yes",
-      "options": [
-        {
-          "key": "A",
-          "value": "Only if they are rays",
-          "is_correct": false
-        },
-        {
-          "key": "B",
-          "value": "Yes",
-          "is_correct": true
-        },
-        {
-          "key": "C",
-          "value": "No",
-          "is_correct": false
-        },
-        {
-          "key": "D",
-          "value": "Only sometimes",
-          "is_correct": false
-        }
-      ]
-    }
-  ]
+  "comprehensive_coverage": {
+   "verdict": "CONCERN",
+   "rationale": "All three relationships present but uneven: parallel primary in 5 items (42, 500, 502, 601, 604), perpendicular in 5 (43, 44, 45, 501, 602), intersecting in only 2 (46, 600). Intersecting is also the only relationship never anchored to a concrete object, while parallel gets the letter H and a ruler's edges and perpendicular gets the letter T and the model. By verb: recognize 8, draw-flavoured 4, actual construction 0."
+  },
+  "cognitive_capacity": {
+   "verdict": "CONCERN",
+   "rationale": "Structure and single-step reasoning are right for Grade 3 Q1. Against that: authoring shorthand has leaked into pupil-facing text -- seed 44 reads 'form right angles / square corners ( ⟂ / + )' and seed 43 reads 'forming a square right angle', a redundant compound found in no textbook. The perpendicular symbol in seed 44 is formal notation not established anywhere else in the set. Seed 46's key phrase 'cross each other at a slanted angle' is not curriculum language."
+  },
+  "variant_comprehensiveness": {
+   "verdict": "CONCERN",
+   "rationale": "Five structures are present (blank completion, what-type identification, tool selection, procedure selection, yes/no relational), and seeds 602 and 604 are good items that probe family containment rather than labels. Against that: seeds 44 and 45 are functionally the same item (right angle -> perpendicular) with seed 501 a third pass at the same inference, and seeds 502 and 604 test one fact -- parallel lines never meet -- forward and then as a yes/no. Contextual referents are narrow: letters H and T and a ruler."
+  },
+  "competency_alignment": {
+   "verdict": "PASS",
+   "rationale": "Nothing reaches past scope: no degree measurement, no transversals, no lettered-point notation, no quadrilateral classification. Every keyed answer is one of the three named relationships or a procedure for producing one. Seeds 602 and 604 stay inside the competency by relating the three named terms to each other."
+  },
+  "scale_appropriateness": {
+   "verdict": "PASS",
+   "rationale": "No numeric magnitudes are involved. Four options per item, uniform; figures are single letters or a two-line crossing. Option strings in seeds 601 and 604 are at the top of the Grade 3 Q1 reading budget but remain single clauses."
+  }
+ },
+ "problems_reported": [
+  "Wrong keys, false statements, true-but-marked-wrong options: NONE FOUND. The reviewer checked the parallel/intersecting/perpendicular family in BOTH directions and confirmed soundness: every item keyed 'perpendicular lines' (44, 45, 501) omits 'intersecting lines'; seed 600, whose stem is equally true of perpendicular lines, correctly omits 'perpendicular lines'; seed 46 forecloses the overlap in the stem itself ('intersecting lines that are not perpendicular'), which legitimises its square-right-angle distractor. Seed 602 keys the containment explicitly and correctly.",
+  "All 12 seeds -- 'draw' is never performed. No item produces a construction. If the pipeline can emit a drawing/construction item type for this node, its absence is the gap; if it cannot, this set cannot evidence half the competency and that limit must be recorded rather than treated as covered.",
+  "seed 43 -- 'ruler only' is a semi-defensible distractor: a school ruler is a rectangle with square corners, so a pupil taught to trace a right angle from a corner could justify it. The keyed 'ruler and set square' is the curriculum method and clearly best, but the distractor is not cleanly false the way 'clock and ruler' is.",
+  "seed 44 -- 'line segments' distractor sits against a '+'-shaped model literally drawn as two segments; the stem's 'two lines that cross' plus the right-angle cue keeps the key uniquely best, but the option is softer than it looks.",
+  "seed 44 / 43 / 46 -- authoring shorthand in pupil-facing text: slash-alternates and 'square right angle' should resolve to one term before a pupil sees them.",
+  "seed 46 -- 'slanted angle' is technically wrong (the lines are slanted; the angle is simply not a right angle). Recommend 'cross each other but do not form a right angle'.",
+  "seeds 44/45 and 502/604 -- functional duplicate pairs.",
+  "Coverage skew: intersecting under-represented at 2 primary items against 5 each, and never grounded in a concrete object.",
+  "seed 602 -- 'Only if they are rays' is incoherent as an answer to a yes/no about perpendicular lines intersecting; harmless to the key but dead weight.",
+  "Reviewer flagged 'ray'/'line segment' distractor vocabulary as undecidable from the packet. Resolved against ground truth after the review: both are in this node's cumulative_vocab, so there is no gating violation."
+ ],
+ "sample_seeds": [
+  42,
+  43,
+  44,
+  45,
+  46,
+  500,
+  501,
+  502,
+  600,
+  601,
+  602,
+  604
+ ],
+ "samples_reviewed": [
+  {
+   "seed": 42,
+   "question_text": "Look at the letter 'H'. The two vertical side segments are an example of ___.",
+   "correct_answer": "parallel lines",
+   "formatter": "mcq",
+   "options": [
+    "perpendicular lines",
+    "rays",
+    "parallel lines",
+    "intersecting lines"
+   ]
+  },
+  {
+   "seed": 43,
+   "question_text": "To draw perpendicular lines forming a square right angle, which tools can you use together?",
+   "correct_answer": "ruler and set square",
+   "formatter": "mcq",
+   "options": [
+    "ruler and set square",
+    "clock and ruler",
+    "ruler only",
+    "thermometer and clock"
+   ]
+  },
+  {
+   "seed": 44,
+   "question_text": "Look at the model: two lines that cross each other and form right angles / square corners ( ⟂ / + ). What type of lines are they?",
+   "correct_answer": "perpendicular lines",
+   "formatter": "mcq",
+   "options": [
+    "curved lines",
+    "parallel lines",
+    "line segments",
+    "perpendicular lines"
+   ]
+  },
+  {
+   "seed": 45,
+   "question_text": "When you draw a vertical line meeting a horizontal line to form a square corner, what type of lines have you drawn?",
+   "correct_answer": "perpendicular lines",
+   "formatter": "mcq",
+   "options": [
+    "rays",
+    "parallel lines",
+    "perpendicular lines",
+    "curved lines"
+   ]
+  },
+  {
+   "seed": 46,
+   "question_text": "To draw intersecting lines that are not perpendicular, what should you draw?",
+   "correct_answer": "Two straight lines that cross each other at a slanted angle.",
+   "formatter": "mcq",
+   "options": [
+    "A single ray with one endpoint.",
+    "Two straight lines that cross each other at a slanted angle.",
+    "Two lines that meet at a square right angle.",
+    "Two lines that never meet."
+   ]
+  },
+  {
+   "seed": 500,
+   "question_text": "The edges of a ruler's two long sides are an example of what type of lines?",
+   "correct_answer": "parallel lines",
+   "formatter": "mcq",
+   "options": [
+    "parallel lines",
+    "intersecting lines",
+    "perpendicular lines",
+    "rays"
+   ]
+  },
+  {
+   "seed": 501,
+   "question_text": "Look at the letter 'T'. The vertical and horizontal segments meet to form ___.",
+   "correct_answer": "perpendicular lines",
+   "formatter": "mcq",
+   "options": [
+    "perpendicular lines",
+    "curved lines",
+    "rays",
+    "parallel lines"
+   ]
+  },
+  {
+   "seed": 502,
+   "question_text": "Two lines that never meet, no matter how far they extend, are called ___.",
+   "correct_answer": "parallel lines",
+   "formatter": "mcq",
+   "options": [
+    "perpendicular lines",
+    "parallel lines",
+    "rays",
+    "intersecting lines"
+   ]
+  },
+  {
+   "seed": 600,
+   "question_text": "Two lines that cross at exactly one point are called ___.",
+   "correct_answer": "intersecting lines",
+   "formatter": "mcq",
+   "options": [
+    "parallel lines",
+    "curved lines",
+    "intersecting lines",
+    "rays"
+   ]
+  },
+  {
+   "seed": 601,
+   "question_text": "To draw parallel lines using a ruler and a set square, what is the correct technique?",
+   "correct_answer": "Slide the set square along the straight edge of the ruler and draw along its side.",
+   "formatter": "mcq",
+   "options": [
+    "Draw along the corner of the set square without moving it.",
+    "Turn the set square over after drawing the first line.",
+    "Draw a single point and connect it in a circle.",
+    "Slide the set square along the straight edge of the ruler and draw along its side."
+   ]
+  },
+  {
+   "seed": 602,
+   "question_text": "Are all perpendicular lines also intersecting lines?",
+   "correct_answer": "Yes",
+   "formatter": "mcq",
+   "options": [
+    "Yes",
+    "Only if they are rays",
+    "No",
+    "Only sometimes"
+   ]
+  },
+  {
+   "seed": 604,
+   "question_text": "Do parallel lines ever intersect?",
+   "correct_answer": "No, they never intersect.",
+   "formatter": "mcq",
+   "options": [
+    "No, they never intersect.",
+    "Yes, they intersect at a right angle.",
+    "Yes, they intersect at one point.",
+    "Only if they are line segments."
+   ]
+  }
+ ]
 }

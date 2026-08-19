@@ -133,7 +133,16 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Two lines that cross at exactly one point are called ___.",
         "answer": "intersecting lines",
-        "distractors": ["parallel lines", "perpendicular lines", "rays"],
+        # The mirror of the perpendicular/intersecting defect fixed above, and
+        # missed on the first pass: two perpendicular lines DO cross at exactly
+        # one point, so this stem describes them too and a pupil choosing
+        # 'perpendicular lines' was marked wrong for a true answer. The stem
+        # states no condition excluding perpendicularity. Found by a blind
+        # Reviewer, which also noted the pool teaches the subset relation
+        # explicitly ("Are all perpendicular lines also intersecting lines?"
+        # -> "Yes"), so the set was training pupils into the reasoning that
+        # got this item wrong.
+        "distractors": ["parallel lines", "curved lines", "rays"],
         "concept_type": "parallel_intersecting_perpendicular",
         "task_type": "identify_name",
         "grade_min": 3,
@@ -141,7 +150,12 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Two lines that meet at a right angle (90°) are called ___.",
         "answer": "perpendicular lines",
-        "distractors": ["parallel lines", "intersecting lines", "line segments"],
+        # 'intersecting lines' removed as a distractor: every perpendicular pair
+        # IS an intersecting pair, so a pupil choosing it was marked wrong for a
+        # true statement. This pool asserts exactly that elsewhere -- "Are all
+        # perpendicular lines also intersecting lines?" is keyed "Yes" -- so the
+        # two items contradicted each other. Found by a blind Attester.
+        "distractors": ["parallel lines", "curved lines", "line segments"],
         "concept_type": "parallel_intersecting_perpendicular",
         "task_type": "identify_name",
         "grade_min": 3,
@@ -157,7 +171,12 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "The corner of a square shows which type of lines meeting?",
         "answer": "perpendicular lines",
-        "distractors": ["parallel lines", "intersecting lines", "line segments"],
+        # 'intersecting lines' removed as a distractor: every perpendicular pair
+        # IS an intersecting pair, so a pupil choosing it was marked wrong for a
+        # true statement. This pool asserts exactly that elsewhere -- "Are all
+        # perpendicular lines also intersecting lines?" is keyed "Yes" -- so the
+        # two items contradicted each other. Found by a blind Attester.
+        "distractors": ["parallel lines", "curved lines", "line segments"],
         "concept_type": "parallel_intersecting_perpendicular",
         "task_type": "identify_property",
         "grade_min": 3,
@@ -256,7 +275,18 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
     {
-        "question": "Which best describes the side of a solid figure that you could trace with a straight ruler?",
+        # Replaced 2026-08-20. The previous stem was "Which best describes the
+        # side of a solid figure that you could trace with a straight ruler?"
+        # keyed 'flat surface'. A blind Attester ruled it unsound and it is:
+        # a ruler traces a *line*, so 'straight line' (present in the option
+        # set) fits the stem better than the key; traceability with a
+        # straightedge does not identify a flat surface at all, since the
+        # curved lateral surface of a can contains straight lines; and "side"
+        # is ambiguous between a face and an edge -- the very distinction the
+        # item claims to test. Replaced with an object->classify item, which
+        # also drops the answer-in-stem pattern the Attester flagged across
+        # six other seeds.
+        "question": "What kind of surface does the cover of a closed book have?",
         "answer": "flat surface",
         "distractors": ["curved surface", "straight line", "curved line"],
         "concept_type": "straight_curved",
@@ -440,7 +470,12 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Look at the model: two lines that cross each other and form right angles / square corners ( ⟂ / + ). What type of lines are they?",
         "answer": "perpendicular lines",
-        "distractors": ["parallel lines", "intersecting lines", "line segments"],
+        # 'intersecting lines' removed as a distractor: every perpendicular pair
+        # IS an intersecting pair, so a pupil choosing it was marked wrong for a
+        # true statement. This pool asserts exactly that elsewhere -- "Are all
+        # perpendicular lines also intersecting lines?" is keyed "Yes" -- so the
+        # two items contradicted each other. Found by a blind Attester.
+        "distractors": ["parallel lines", "curved lines", "line segments"],
         "concept_type": "parallel_intersecting_perpendicular",
         "task_type": "recognize_model",
         "grade_min": 3,
@@ -464,7 +499,9 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Look at the letter 'T'. The vertical and horizontal segments meet to form ___.",
         "answer": "perpendicular lines",
-        "distractors": ["parallel lines", "intersecting lines", "curved lines"],
+        # See above: 'intersecting lines' is true of a perpendicular pair, so it
+        # cannot serve as a distractor against a keyed 'perpendicular lines'.
+        "distractors": ["parallel lines", "rays", "curved lines"],
         "concept_type": "parallel_intersecting_perpendicular",
         "task_type": "recognize_model",
         "grade_min": 3,
@@ -472,7 +509,11 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Look at the letter 'X'. The two crossing line segments form ___.",
         "answer": "intersecting lines",
-        "distractors": ["parallel lines", "perpendicular lines", "flat surfaces"],
+        # Same mirror defect: nothing in the stem rules out square corners, so
+        # 'perpendicular lines' is not reliably false of the figure described.
+        # (The sibling item that says "cross at a single point WITHOUT forming
+        # square corners" does exclude it, and correctly keeps the distractor.)
+        "distractors": ["parallel lines", "curved lines", "flat surfaces"],
         "concept_type": "parallel_intersecting_perpendicular",
         "task_type": "recognize_model",
         "grade_min": 3,
@@ -490,7 +531,13 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "question": "To draw parallel lines using a ruler and a set square, what is the correct technique?",
         "answer": "Slide the set square along the straight edge of the ruler and draw along its side.",
         "distractors": [
-            "Cross the two edges at a 45 degree angle.",
+            # Was "Cross the two edges at a 45 degree angle." A blind Reviewer
+            # flagged numeric degree measure as later-grade for G3 Q1, which
+            # handles right angles as square corners. The node's NOT_YET_KNOWN
+            # does not gate 'degree', so this is judgment rather than a machine
+            # violation -- but the phrase carried no curricular value in a
+            # distractor, so it is replaced with a degree-free wrong technique.
+            "Turn the set square over after drawing the first line.",
             "Draw along the corner of the set square without moving it.",
             "Draw a single point and connect it in a circle.",
         ],
@@ -578,17 +625,27 @@ def generate_params(
     # every time -- blind review of mat_g3_mg_q1_4 found all five samples
     # were "what do we call" identify_name MCQs, with identify_property
     # ("how many endpoints does X have?") never once exercised.
-    task_type = profile.get("task_type") or random.Random(seed).choice(
-        ["identify_name", "identify_property", "recognize_model", "draw_construct"]
-        if grade >= 3 else
-        ["identify_name", "identify_property", "explain_difference"]
-    )
+    # When the caller pins a task_type (validate_matrix's §1C sweep, the Lab,
+    # an adaptive profile) that binding is honoured exactly. When it does not
+    # -- the default serving path, the judgment reviewer -- do NOT pick a
+    # task_type first and then an item within it. That two-stage draw makes an
+    # item's probability depend on how many siblings share its task_type:
+    # with pools of 4 / 6 / 5, an identify_name item was served at 1/3 x 1/4 =
+    # 1/12 while an identify_property item got 1/3 x 1/6 = 1/18, so the
+    # smallest pool's items were over-served by 50% for no curricular reason.
+    # A blind Attester found the visible consequence on mat_g2_mg_q4_3: across
+    # ten seeds 'curved surface' was keyed six times while 'curved line' was
+    # keyed once. Draw uniformly over every eligible item for the concept_type
+    # instead -- task_type stays fully reachable (the earlier defect this
+    # replaces, where a seed-only call silently served identify_name every
+    # time) but no longer distorts the odds.
+    task_type = profile.get("task_type")
 
     candidates = [
         item for item in _ITEM_POOL
         if item["grade_min"] <= grade
         and item["concept_type"] == concept_type
-        and item["task_type"] == task_type
+        and (task_type is None or item["task_type"] == task_type)
     ]
     if not candidates:
         # Relax only task_type -- concept_type is the node's bound curriculum
