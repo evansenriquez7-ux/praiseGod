@@ -130,11 +130,20 @@ what the census as written measures.)
 
 Two traps this census exists to defuse, both paid for:
 
-- **The `bounds` list is a decoy.** 483 of 485 providers carry an identical 27-entry `bounds`
-  catch-all, and an earlier audit named it as the defeat mechanism. It is not: deleting `bounds` from
-  every provider moves the failure count `0 → 0`. It is inert padding. Do not spend a unit on it, and
-  do not write a check whose threshold is bounds length — you would flag 483 harmless entries and
-  still miss the mechanism.
+- **The `bounds` list was a decoy, and then it stopped being one. Read both halves.**
+  483 of 485 providers carry an identical 27-entry `bounds` catch-all. An audit on 2026-08-19 named
+  it as the defeat mechanism; it was not. Measured then, deleting `bounds` from every provider moved
+  the failure count `0 → 0` — inert padding, because the generic formatter family was satisfying
+  every clause first.
+  **Measured again on 2026-08-20, after §6D removed that family: `60 → 75`.** Fifteen capabilities
+  across three ordinal nodes are now carried by the catch-all alone. The decoy became the live
+  wildcard the moment the bigger one was removed.
+  The durable lesson is therefore *not* "ignore bounds" — it is: **a wildcard is defined by what it
+  carries, and what it carries changes when you remove another one. Re-run the delta census after
+  every provider change; never inherit its result.** And still do not threshold on bounds *length*:
+  there are exactly two distinct bounds lists in the table (one 27-key list on 483 providers, one
+  empty), so discriminate on shared-ness — a list carried verbatim by 483 entries makes no claim
+  about any particular capability.
 - **"Is the formatter set *only* generic?" misses almost everything.** Of the 474 providers listing a
   generic formatter, only 82 list *nothing else*; the other **392 mix it in beside a specific one**
   (`{'array_grid_read', 'array_grid_set', 'cloze', 'mcq', …}`), and `_validate_provision` ORs them —
@@ -313,6 +322,13 @@ GitHub check, not what a previous tick said it had finished, and not `run_all`'s
   ends mid-unit. So: launch `run_all` as a **background** command at the *start* of the verification
   step, iterate with scoped `--node` runs while it works, and read its exit line when it lands. Never
   end a tick waiting on it in the foreground.
+- **`pytest tests/unit` DEADLOCKS on this tree (measured 2026-08-19).** It hangs indefinitely: the
+  main thread parks in `lock_PyThread_acquire_lock` -> `_pthread_cond_wait` while a worker thread
+  sits in `select_poll_poll`. Observed at 22 s of CPU across 4 h 20 m of wall clock — it is hung, not
+  slow. **Never launch the full unit suite and walk away.** Run targeted files
+  (`pytest tests/unit/test_capability_contract.py`), or run the suite with
+  `--timeout=<n>` / `-x -p no:randomly` and treat a hang as a finding. Locating and fixing the
+  deadlock is a legitimate unit of work; leaving it unnamed is not.
 - `tests/mutation_harness.py` is the Phase 4 "verify the verifier" artifact, and it currently plants
   **only the seven machine-stage bugs** — nothing for §5 (judgment) or §6 (capability), which are the
   two stages that have actually been defeated. A green mutation run says the boundary/formatter/vocab
@@ -340,79 +356,27 @@ GitHub check, not what a previous tick said it had finished, and not `run_all`'s
 
 ---
 
-## 2b. Where the work actually stands (2026-08-19 — verify in §0, don't trust)
+## 2b. Where the work stands — SINGLE SOURCE OF TRUTH IS THE TICK PROMPT
 
-```
-census        151 PASS / 0 CONCERN / 0 FAIL       (151 reviewed, 0 unreviewed)
-run_all       EXIT_CODE=0  ← do not celebrate; see the verdict table below
-capability    0 problems reported · 59 UNEARNED (§0's delta census) · 485 providers, 474 generic-leaning
-gate health   phantom quotes 0 · skeleton cluster 1 · 127 distinct reviewers (max 5 each) · 0 gate errors
-evidence log  HARDENING_EVIDENCE.md last written 2026-08-14; 44 commits since, 0 entries
-```
+**Current state and the work queue live in `local_only/scratch/hardening_tick_prompt.md`, not here.**
 
-**Between 2026-08-13 and 2026-08-19 an outside agent ran its own pipeline — 76 commits on `main` —
-and reached `run_all` exit 0.** An audit found it partly earned and partly not. That mixed result is
-the current state, and it is why Tick G exists:
+This section used to carry both, and it drifted out of date within hours of a repair tick: an agent
+reading it on 2026-08-20 was told, as a live instruction, to "restore the two weakened tests first" —
+work that had already landed as `fce7f8df` the previous evening. Duplicated state is how a protocol
+starts lying, and a stale instruction costs a whole unit before anyone notices.
 
-| Layer | Verdict |
-|---|---|
-| **Judgment reviews** | **Genuine.** 151 PASS, largest rationale skeleton cluster 1, 0 phantom quotes, 127 distinct reviewers at ≤5 nodes each, `validate_judgment` reports 0 errors of any kind. Passes every anti-fabrication check this repo has. **Leave it alone.** One caveat to carry: the ledger describes "sanitizing quote provenance" on filed reviews. Editing a review to satisfy the quote check is not a repair (Rule 1). Nothing in the current set trips the gate, so this is a note for the audit trail, not a work item. |
-| **Declarations (§6A)** | **Genuine.** All 151 nodes declare `requires` — 787 requirement records — and every clause is a literal substring of its competency. |
-| **Declarations (§6B)** | **Partly earned.** `requires_ignore` is *not* function words only: the Tick G probe flags 37 nodes, and 25 of those park an unambiguous content word. `mat_g1_na_q2_2` ignores `place` and `value` on a competency that **is** place value; `mat_g3_na_q2_6` ignores its main verb `Perform`; `mat_g3_mg_q4_0` ignores `effect` ("draw the **effect** of a slide"); `mat_g3_mg_q4_1` ignores `show`; `mat_g1_na_q3_6` ignores `patterns`. This is the exact omission loophole §6B exists to block. `_STOPWORDS` itself is unchanged since creation — the widening is per-node. |
-| **Provision (§6C)** | **Neutralised.** 474 of 485 providers list a generic textual formatter (392 of them mixed in beside a specific one), and stripping that family turns 0 reported problems into 59. `concrete_model` is "provided" by `true_false`; `data_table` is "provided" while `bar_graphs` has no table formatter; `draw_line_relationships` passes on `mat_g3_mg_q1_5` and still passes when its variant is replaced by a string that does not exist — `mcq` alone carries it. |
-| **Unit tests** | **Two were weakened.** `test_capability_contract.py`'s acceptance test was rewritten onto a synthetic capability id (Rule 3); `test_formatter_supports_profile.py`'s orchestrator test was repointed to a different node, deleting the only coverage of the cross-DNA formatter filter. Both pre-edit assertions fail against the tree today. |
-| **Mutation harness** | **Blind where it matters.** `tests/mutation_harness.py` plants the seven Phase-4 bugs; none targets §5 or §6 — the two stages that have actually been defeated, three times between them. It was not run during the window. |
+So this file is now **only the durable part**: the hard rules, the paid-for hazards, the census
+scripts, the tick types, and the runtime. Those change rarely. Anything with a date on it — verdict
+counts, provider counts, what is done, what is next — is in the tick prompt, which is rewritten every
+tick.
 
-One genuine exception worth crediting: `draw_construct` really was added to `geometric_lines` and does
-render draw-themed stems on 31/100 student-path seeds. Whether an MCQ *about* drawing technique
-("To draw two parallel lines using a ruler, you must make sure the lines ___") satisfies MATATAG's
-"**draw** parallel, intersecting, and perpendicular lines" is a live Attester question — it is the
-kind of judgment Rule 1's Attester exists to make, and it has never been asked blind. What is *not*
-in question is that §6C is not the thing asking it.
+**If the two ever disagree, §0's own measurement wins over both** (§0, first paragraph). Neither file
+is evidence; they are notes about evidence.
 
-**The capability contract (§6) declares what each competency requires; §6C asks whether the pipeline
-provides it.** All 151 nodes are declared. Declaring is still step 0 of any Tick C on a node that
-somehow lacks a `requires` block, but that is now the exception rather than the rule.
+### Carried forward — two named gaps, still open
 
-**The work queue, in order. Each is one unit and one commit.**
-
-1. **Restore the two weakened tests first.** Put `test_unprovided_capability_names_the_node_and_the_clause`
-   back on the real node (`mat_g3_mg_q1_5`, real declaration, `validate_capability_declarations`, not
-   the private `_validate_provision`), and restore the orchestrator's cross-DNA formatter-filter
-   assertion or replace it with one that covers the same filter. **Both will fail.** That is the
-   point: they are the tripwires for units 2–4, and repairing the table under tests that cannot
-   notice is how this happened the first time. Commit them red, named in the ledger as a deliberate
-   documented red (the Tick A precedent).
-2. **Make Rule 9 mechanical** (Rule 11). Add a discrimination check to `validate_capability`:
-   for each provider, recompute provision with the generic textual family removed; a capability whose
-   *only* satisfier is a generic formatter is not provided and must FAIL by name. Do **not** threshold
-   on `bounds` length — measured, that catches 483 harmless entries and zero real ones. Ship it with
-   its `pgen_contract.md` row and `CONTRACT_CHECKS` entry (the two-direction lint fails otherwise),
-   and mutation-test it by planting a generic-formatter provider and proving it is caught by name.
-3. **Extend `tests/mutation_harness.py` to §5 and §6.** Two new mutations minimum: a wildcard provider
-   (must be caught by unit 2's check) and a templated review with the node ID substituted (must be
-   caught by `validate_judgment`'s skeleton clustering). The verifier currently proves itself only on
-   stages that have never been faked. `pgen_hardening.md` Phase 4 is explicit that a surviving
-   mutation is a hole in the harness, and this is the one phase where editing assertions is the point.
-4. **Re-derive each provider entry through an Attester.** A `CAPABILITY_PROVIDERS` entry is a claim
-   that the artifact produces what the clause names: it needs a rendered student-path sample, quoted
-   in the ledger *and* the evidence log, and a blind Attester verdict of `PROVIDED` (Rule 1). Where
-   you cannot get both, delete the entry and let §6C report the gap. Batch this — one Attester
-   subagent per capability family, ≤25 capabilities per batch.
-5. **Re-derive the 25 content words hidden in `requires_ignore`** (§2b — the Tick G probe flags 37
-   nodes; triage the 12 borderline ones, work the 25). Each is a Declarer question,
-   not a Fixer one: dispatch a blind Declarer with the competency sentence and ask what requirement
-   that word carries. `place`/`value` on `mat_g1_na_q2_2` almost certainly names a real capability.
-
-**Expect `run_all` to go red, and expect the count to be large.** That is the correct intermediate
-state — the same shape as Phase 1 surfacing 26,906 failures on first honest execution. A repair that
-keeps the tree green has not repaired anything. Unit 1 alone should take it red before you touch the
-table at all.
-
-**Then work whatever §6C reports**, per Tick C and Tick F. The queue cannot be written in advance this
-time, because the honest gaps are exactly what the wildcard is currently hiding. Two carried forward
-from the previous audit, worth checking early since both were named from competency text and neither is
-plausibly satisfied by a generic formatter:
+Both were named from competency text and neither is plausibly satisfied by a generic formatter, so
+they survive §6D and are real work rather than reporting artifacts:
 
 - **`mat_g2_na_q3_1`** — the competency enumerates seven representations (concrete models, pictorial
   models, numerals, equal groups, arrays, counting by multiples, equal jumps on a number line). Start
@@ -543,7 +507,8 @@ report the movement. Nodes that did **not** move are the real remaining punch li
    `data/skeletons/vocab_annotation.json`, then you run `scripts/rebuild_knowledge_graph.py` and
    `validate_capability`. Do this *before* diagnosing: §6C will often name the defect outright, and a
    declaration is cheaper to write than the same finding is to discover by reading samples.
-   145 of 151 nodes are still undeclared — declaring the node you are about to work is part of working it.
+   (As of 2026-08-20 all 151 nodes declare, so this step is now the exception rather than the rule —
+   but a node that somehow lacks a `requires` block is still declared before it is diagnosed.)
 1. Group the open findings by root cause, not by node. Pick the cluster with the highest
    (severity × node count). FAIL before CONCERN.
 2. Read the actual rationales — `findings.*.rationale` names the specific defect and quotes the
@@ -673,7 +638,7 @@ exactly as happily as a working one, so an exit code cannot be the thing that en
    re-run — `test_unprovided_capability_names_the_node_and_the_clause` and
    `test_orchestrator_sets_dna_name_for_ordering`.
 6. **Say which layers are genuine and which are not, layer by layer.** The answer is always mixed, and
-   reporting it as mixed is the point. The worked example is §2b's table: the judgment layer was
+   reporting it as mixed is the point. The worked example is the 2026-08-19 audit: the judgment layer was
    genuine (151 PASS, skeleton cluster 1, 0 phantom quotes, 127 distinct reviewers, 0 gate errors),
    §6A provenance was genuine, §6B was partly earned, §6C was neutralised, and two unit tests had
    been rewritten around their own failures. Tearing up all of it because part failed would have
@@ -813,6 +778,38 @@ the short version is how the blind spot got in.
 **Running the harness.** A full `run_all` is a **background** command — launch it with
 `run_in_background`, keep working on scoped `--node` runs, and read the exit line when it lands.
 Do not block a tick on it and do not skip it because it is slow.
+
+**Process hygiene — run this FIRST, before §0, every tick. This is not optional.**
+
+A hung background job silently kills the whole loop. `/loop` cron ticks fire **only while the REPL is
+idle**, so one stuck process means no tick ever fires again — and because it fires nothing, it also
+reports nothing. On 2026-08-19 a `pytest tests/unit` deadlocked at 20:41 and the loop went dark for
+five hours; four scheduled ticks never ran, and the failure was invisible until a human asked why.
+
+A monitor that cannot report red is a monitor that reports green (§6's retired-daemon lesson). A loop
+that cannot report *stalled* is the same thing.
+
+```bash
+# Anything Python-shaped that is old and barely burning CPU is hung, not slow.
+ps -eo pid,etime,time,comm,args | grep -E "[p]ytest|[r]un_all|practice_gen" | \
+  awk '{print $1, "elapsed="$2, "cpu="$3, $4}'
+```
+
+Judge by the **CPU-to-elapsed ratio**, never by elapsed alone: a healthy `run_all` worker burns ~50%
+of a core, so ~25 min CPU per 50 min wall. Under a few percent for more than ~10 minutes is a hang.
+
+- **Remediate it.** `kill -9 <pid>`, then say so in the ledger with the pid, the elapsed time, and
+  what it was. Do not tiptoe around a stuck process and do not "wait a bit longer" — it is not going
+  to finish.
+- **Diagnose before killing when it is cheap**: `sample <pid> 3` names the blocking call in seconds,
+  and a reproducible hang is a bug worth a unit, not just cleanup.
+- **Distinguish yours from someone else's.** A process from an earlier session is still blocking the
+  loop and should still be cleared, but say whose it was.
+
+**Never end a tick with a background job still outstanding.** Launching `run_all` in the background
+is correct; *ending the tick without reading its exit line* is not. Before you write the ledger
+entry, either the job has landed and you have recorded its result, or you have killed it and recorded
+that you did. An outstanding job is what stops the next tick from ever starting.
 
 **Ending a tick.** The tree is committed, the ledger has its entry (§4), the evidence log has its
 verbatim output (Rule 7), and `Next tick should:` names the first item for your cold future self.

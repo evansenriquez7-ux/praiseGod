@@ -2996,3 +2996,79 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
 - **Housekeeping:** killed my own redundant full-suite pytest that was contending with `run_all`.
   The stale PID 60504/60510 from an *earlier session* (now 856+ min CPU) is still running and is
   **not** mine — flagged for the maintainer, not killed.
+
+---
+
+## 2026-08-20 01:30 — Architecture tick (no pipeline change)
+
+- **Census before:** unchanged from the previous entry — no pipeline work was done. `run_all` was
+  launched and then **killed deliberately** to leave a clean slate for the handoff; nothing inherited
+  from it. Capability findings re-measured at **60**.
+
+- **Unit of work:** separated the *cheap supervisor* from the *expensive tick*, and removed the
+  duplicated state that made two prompts drift apart within a day.
+
+  The loop conflated two jobs with different costs: a tick is 45–60 minutes; deciding *whether* a
+  tick is needed should be seconds. Putting the expensive one on a timer meant every heartbeat
+  re-derived the world, and the timer's actual job — noticing work had stalled — was never done.
+
+- **Built:**
+  - `scripts/hardening_supervisor.py` — deterministic, ~1 s. Scans for hung processes by
+    **CPU-to-elapsed ratio** (`--reap` kills them), reads git/ledger state, counts capability
+    findings, writes `local_only/scratch/hardening_status.json`, and exits
+    `0 IN_FLIGHT` / `10 RESUME` / `20 NOTHING_TO_DO` / `30 NEEDS_HUMAN`.
+    It explicitly does **not** measure liveness by git-commit mtime — the retired daemon did, and the
+    postmortem names the cost: *"rewards committing over verifying."*
+  - `local_only/scratch/hardening_supervisor_prompt.md` — the single thing a human pastes.
+
+- **Retired:** `local_only/scratch/hardening_tick_prompt.md`. It duplicated state that belongs in
+  this ledger, which is exactly the failure it was created to fix. **State now lives in one place per
+  lifecycle:** durable rules in `hardening_loop_prompt.md` (no dated content), dated state and the
+  work queue in this ledger, machine-readable snapshot in `hardening_status.json`.
+
+- **Correction to an earlier claim (recorded because it changed a recommendation):** I reported that
+  cloud scheduling was blocked because the loop artifacts were gitignored. **Wrong** —
+  `hardening_loop_prompt.md` and `hardening_ledger.md` are tracked (19 files under `local_only/` are,
+  predating the ignore rule). The real blockers are the **8 unpushed commits** and the new artifacts
+  needing `git add -f`.
+
+- **Protocol edits (`hardening_loop_prompt.md`, 865 → 816 lines):** cut 88 lines of stale §2b state
+  and its work queue — which still ordered "restore the two weakened tests first", work that landed
+  as `fce7f8df`. Added process-hygiene rules to §6 and the `pytest tests/unit` deadlock to §2
+  hazards. Repaired three stale live instructions, the worst being §0's *"bounds is a decoy… do not
+  spend a unit on it"* — true on 08-19, **false now** (60 → 75), and it would have steered the next
+  agent off the live defect.
+
+- **Verification:** `scripts/hardening_supervisor.py` → `VERDICT: RESUME`, exit 10, ~1 s.
+- **Blind verdicts obtained:** none (no content work).
+- **Evidence log entry:** none — no commit in this tick changes pipeline behaviour. Rule 7's guard
+  is about `backend/app/practice_gen/` and `data/skeletons/`; this tick touches neither.
+
+- **Next tick should:**
+  1. **§6E — `bounds` is the live wildcard.** Stripping it moves 60 → 75: **15 capabilities across 3
+     ordinal nodes** ride the 27-key catch-all alone (`mat_g1_na_q1_5` ×7, `mat_g2_na_q1_5` ×4,
+     `mat_g3_na_q1_2` ×4). Rule 9: *"A `bounds` list is a numeric-ceiling provider and nothing else."*
+     Only `up_to_10th`/`up_to_20th`/`up_to_100th` are plausibly ceilings; `objects`,
+     `describe_position`, `1st`, `2nd`, `3rd`, `ordinal_numbers` are not. **Do not threshold on list
+     length** — `test_bounds_length_is_never_the_discriminator` pins that and must keep passing.
+     There are exactly **2 distinct bounds lists** in the table (27-key on 483 providers, one empty),
+     so discriminate on *shared-ness*: a list carried verbatim by 483 entries makes no claim about
+     any particular capability. Ship as §6D was shipped — contract row + `CONTRACT_CHECKS` entry +
+     unit tests + a planted mutation proved caught by name.
+  2. **Tick C — real math error in student-facing content.** `mat_g3_mg_q1_5` seeds **78, 91, 118,
+     127** key `perpendicular lines` while offering `intersecting lines` as a distractor; perpendicular
+     lines *are* intersecting lines. Found by the blind Attester, unasked. Also 6/3/1 coverage skew
+     and 7 distinct stems from 10 seeds (42≡57, 78≡118, 91≡127). Re-review after fixing — the filed
+     PASS is now suspect.
+  3. **Tick F** — `mat_g3_mg_q1_5` honestly reports no provider for `draw`. Build it (Rule 8/10);
+     Tick F Step 1 first, prove it does not already exist.
+  4. **Unit 4 continued** — Attester batches over the remaining 60 findings via
+     `tests/attester_packets.py`, ≤25 per batch. Start `mat_g1_mg_q4_0` (8), `mat_g2_mg_q4_3` (7),
+     `mat_g3_dp_q3_4` (6). Carry forward: batch 1 ruled `Recognize`/`parallel`/`intersecting`/
+     `perpendicular` PROVIDED *as content* while those entries still name only `mcq` — a PROVIDED
+     verdict does not license keeping `mcq`; point each entry at the artifact that produces it.
+  5. **Unit 5** — the 6 unambiguous `requires_ignore` content words, Declarer-first: `mat_g1_na_q2_2`
+     (`place`,`value`), `mat_g3_na_q2_6` (`Perform`), `mat_g3_mg_q4_0` (`effect`), `mat_g3_mg_q4_1`
+     (`show`), `mat_g1_na_q3_6` (`patterns`), `mat_g3_na_q3_5` (`1a`/`1b`/… — likely legitimate
+     e.g.-literals; triage first).
+  6. **The `pytest tests/unit` deadlock** — find the hanging test. It is a bug and a legitimate unit.
