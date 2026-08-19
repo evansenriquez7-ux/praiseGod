@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-08-20)
 
 ## Corpus Check
-- 457 files · ~740,310 words
+- 457 files · ~741,603 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d1dad315`
+- Built from commit: `2a5ccd31`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -1195,7 +1195,7 @@ Nodes (8): 2026-08-19 — Hardening Unit 2: §6D, the mechanical form of Rule 9,
 
 ### Community 246 - "generate_params"
 Cohesion: 0.11
-Nodes (17): A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params(), Any, DNA: Probability Experiment (Data & Probability)  Covers MATATAG grade 3 compete, Generate parameters for collecting and recording data from simple experiments., generate_hints() (+9 more)
+Nodes (17): A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, VocabGated, generate_hints(), generate_params(), Any, DNA: Probability Language (Data & Probability)  Covers MATATAG grade 3 probabili, Sample one scenario from the static pool filtered by difficulty profile., generate_hints() (+9 more)
 
 ### Community 247 - "Anti-Patterns"
 Cohesion: 0.29

@@ -3177,3 +3177,73 @@ redistributed across seeds, so the cost is two fresh blind re-reviews.
    `python -m backend.app.practice_gen.validation.judgment_packets --node <id>`.
 2. **Re-review `mat_g2_mg_q4_3`** (7 STALE seeds) — but do it *after* fixing seed 64, not before, or
    it pays twice.
+
+---
+
+## 2026-08-20 (tick 2) — Tick C + coverage unit (wrong keys in both directions, sampler bias, 22 clauses attested)
+
+Entered at `VERDICT: RESUME`, 817 findings, coverage 30/787. Fix loop unchanged (`2b9edad1`).
+
+**Deviation from Step 1, stated deliberately.** Last tick I launched `run_all` first and had to kill
+it because my own edits landed mid-run, so it measured neither tree state. HEAD carried only doc
+commits since that run, so the state was already known exactly (817 / 10 STALE / EXIT 1). I did the
+content work first and launched the harness against a stable tree at the end — one clean measurement
+instead of one contaminated one. Recommend this ordering whenever the previous tick's run is still
+valid for HEAD.
+
+**Work done (commits `2aa6f688`, `9866fe33`):**
+
+1. **A distractor that is TRUE of the key, fixed in BOTH directions.** 4 items keyed `perpendicular
+   lines` offered `intersecting lines`; 2 items keyed `intersecting lines` offered `perpendicular
+   lines`. Direction B was **missed on my first pass and caught by a blind Reviewer** — Protocol 2
+   means every instance of the cause, and a superset relation runs both ways. One sibling item was
+   deliberately left alone: its stem excludes perpendicularity explicitly, so its distractor is sound.
+   Enumerating a cause is not licence to apply the fix blindly.
+2. **Unsound key** on the only flat-surface item (ruler-tracing → `flat surface`), replaced.
+3. **Sampler bias root-caused.** Drawing task_type first then an item made odds depend on task_type
+   pool size (1/12 vs 1/18). Now uniform over eligible items; pinned task_type still honoured.
+   Distribution over 400 seeds is flat at ~26–27 per item; distinct stems on the review seeds 6 → 8.
+4. **Three honest reviews filed**, replacing stale PASS records: CONCERN / CONCERN / **FAIL**.
+5. **Coverage unit**: 22 clauses, 2 nodes, 8 NOT_PROVIDED.
+
+**Both movements:**
+- findings **817 → 819 → 805** (rose on the content fix as 3 attestations went stale, then fell as 22
+  UNATTESTED resolved into 14 net).
+- coverage **30/787 → 52/787 (3.8% → 6.6%)**. **The first coverage movement in three ticks.**
+- reviews: 151 PASS → **148 PASS / 2 CONCERN / 1 FAIL**. STALE 0, NON-VERDICT 0.
+
+The two flat-coverage ticks are broken. Note the honest shape: PASS count *fell* by 3 and findings
+*fell* by 12 — the PASS fall is the real gain, because those three PASS records were unearned.
+
+**Two things caught me this tick, both worth remembering:**
+- **§5 quote-provenance caught my record-keeping.** My `samples_reviewed` carried only stems and
+  answers, so the reviewers' quotes of *option* text had no source and the check reported 6
+  NON-VERDICT errors. The reviewers had seen the options; my record was incomplete. Record the full
+  packet the reviewer saw — stems, answers, formatter, **and options** — or honest quotes read as
+  fabricated ones.
+- **A blind Reviewer caught a Protocol 2 miss.** I fixed a superset-distractor defect in one
+  direction only. Whenever a fix is "term X cannot be a distractor for term Y", check Y-for-X too.
+
+**New systemic finding, quantified and NOT started:** `correct_answer` means the option **key** under
+`read_mcq` and the option **value** under `mcq`. Measured: **81 of 320 sampled items across 59
+distinct nodes, 100% attributable to `read_mcq`.** A third of the tree. Any consumer comparing
+`correct_answer` to a value is wrong on those nodes. It is a cross-cutting contract change that would
+restate the answer key in every affected review's `samples_reviewed`, so it gets its own tick.
+
+**Next tick should:**
+1. **`mat_g1_na_q1_6` — the largest content gap found so far.** Its competency *enumerates* six
+   sub-cases (`5 is 5 and 0`, `4 and 1`, `3 and 2`, `2 and 3`, `1 and 4`, `0 and 5`) and the pipeline
+   serves each **zero times**; the number 5 is never composed or decomposed, and `concrete materials`
+   is NOT_PROVIDED. Content Rule 4: the competency names them, so building them is the fix. This
+   clears 7 of the 8 new CONTRADICTED entries in one unit.
+2. **`mat_g2_mg_q1_1` false generalization, seeds 57/127** — two identical triangles joined along
+   matching edges do not form a rectangle in general (equilateral → rhombus). Also seed 91's missing
+   congruence condition, and `quarter circles` never appearing outside a distractor slot.
+3. **`read_mcq` answer-key contract** (59 nodes) — its own unit, per above.
+4. **`mat_g3_mg_q1_4` is FAIL** — "recognize, using models" reaches 1 of 11 unique items, "draws" 0,
+   `point` has a single definitional item, and 3 of 14 items are duplicates. Needs model-recognition
+   items and a construction item type, not a re-review.
+5. **§6E — `bounds` is still the live wildcard, still +15, still unbuilt.** Unchanged for three ticks
+   and now the largest single mechanical win. Discriminate on shared-ness, never on list length.
+6. **§6F has no notion of supersession** (batch003/batch005 still report STALE alongside their
+   replacements). Real gap in the check, not a record to tidy away.

@@ -5351,3 +5351,113 @@ The honest cost is two fresh blind re-reviews, queued for the next tick.
 
 **run_all result for this tick: EXIT 1.** 6/7 judgment reviews FAIL (10 STALE), 7/7 capability
 contract FAIL (817). Stages 1-5 and both two-direction contract checks PASS.
+
+---
+
+## 2026-08-20 (tick 2) — Wrong-answer keys in both directions, a sampler bias, and the first coverage movement
+
+Commits `2aa6f688`, `9866fe33`. Touches `backend/app/practice_gen/`, so Rule 7 requires this entry.
+
+### 1. A distractor that is TRUE of the key — found in both directions
+
+Perpendicular lines **are** intersecting lines, so neither term can serve as the other's wrong option
+unless the stem excludes it. A pupil choosing the true option was marked wrong.
+
+- **Direction A** (fixed first): 4 items keyed `perpendicular lines` offering `intersecting lines`.
+- **Direction B** (missed on the first pass, caught by a blind Reviewer): 2 items keyed
+  `intersecting lines` offering `perpendicular lines` — *"Two lines that cross at exactly one point
+  are called ___"* is equally true of a perpendicular pair.
+
+The pool asserted the subset relation explicitly elsewhere — *"Are all perpendicular lines also
+intersecting lines?"* keyed **Yes** — so the set was training pupils into the reasoning that got the
+other items marked wrong. The Reviewer named this precisely: *"the avoidance is applied everywhere
+except 600, so this is an inconsistency, not a deliberate design choice."*
+
+**One sibling item was deliberately left unchanged**, and the automated sweep would have been wrong
+to touch it: its stem reads *"cross at a single point **without forming square corners**"*, which
+does exclude perpendicularity, so its distractor is sound. Enumerating a cause is not licence to
+apply the fix blindly.
+
+```
+remaining unsound perpendicular/intersecting items: 0
+intentionally retained (stem excludes perpendicular):
+   Look at the model: two lines that cross at a single point without forming square corners...
+```
+
+### 2. Unsound key on the only flat-surface item
+
+*"Which best describes the side of a solid figure that you could trace with a straight ruler?"* keyed
+`flat surface`. A ruler traces a **line**, so `straight line` — present in the option set — fits the
+stem better; traceability with a straightedge does not identify a flat surface at all, since a can's
+curved lateral surface contains straight lines; and "side" is ambiguous between face and edge, the
+very distinction the item claims to test. Replaced with an object→classify item.
+
+### 3. Sampler bias — the root cause of the coverage skew
+
+`generate_params` drew a `task_type` first, then an item within it, so an item's probability depended
+on how many siblings shared its task_type: with pools of 4 / 6 / 5, an `identify_name` item was served
+at 1/3 × 1/4 = **1/12** while an `identify_property` item got 1/3 × 1/6 = **1/18**. The smallest pool's
+items were over-served by 50% for no curricular reason. It now draws uniformly over every eligible
+item for the concept_type when the caller pins nothing; a pinned `task_type` is still honoured exactly.
+
+```
+keyed-target distribution over 400 seeds (student path), after:
+    81  curved surface      (3 items)
+    80  flat surface        (3 items)
+    54  curved line         (2 items)
+    53  straight line       (2 items)
+    27 / 27 / 26 / 26 / 26  (the five explain items)
+```
+
+Flat at ~26–27 per item. Distinct stems on the ten review seeds: **6 → 8 of 10**, and the
+straight-vs-curved-line contrast the Attester reported as never appearing is now served.
+
+### 4. Three honest judgment reviews replacing stale PASS records
+
+```
+gate errors: 14 | STALE: 0 | non-PASS verdict: 14 | NON-VERDICT other: 0
+tally: {'PASS': 148, 'CONCERN': 2, 'FAIL': 1, 'UNKNOWN': 0, 'reviewed': 151}
+```
+
+`mat_g2_mg_q4_3` CONCERN, `mat_g3_mg_q1_5` CONCERN, `mat_g3_mg_q1_4` **FAIL**. The prior filed PASS
+for `mat_g2_mg_q4_3` had quoted the unsound ruler item *approvingly* as evidence of competency
+fulfilment — which is why the Attester role exists.
+
+**§5's quote-provenance check caught my own record-keeping**: the reviewers quoted option text, but
+my first `samples_reviewed` carried only `question_text` and `correct_answer`, so those quotes had no
+source in the packet. The check reported 6 NON-VERDICT errors. Fixed by recording the options the
+reviewers were actually shown, and by unquoting two spans that were the reviewers' own phrasing
+rather than citations. NON-VERDICT went 6 → 0. The check was right and the record was incomplete.
+
+### 5. Coverage — the first movement in three ticks
+
+```
+TOTAL FINDINGS: 805  {'UNATTESTED': 735, '6D wildcard': 58, 'CONTRADICTED': 8, 'STALE': 3, 'other': 1}
+COVERAGE: attested 52 /787 = 6.6 %      (was 30/787 = 3.8%)
+```
+
+22 clauses across 2 nodes, 8 ruled NOT_PROVIDED and now auto-enforced as CONTRADICTED. The largest
+finding is a competency the pipeline does not serve at all:
+
+> `mat_g1_na_q1_6` — *"Compose and decompose numbers up to 10 using concrete materials (e.g., 5 is 5
+> and 0; 4 and 1; 3 and 2; 2 and 3; 1 and 4; 0 and 5)."* The competency **enumerates** six sub-cases
+> and a pupil working the entire set meets each of them **exactly zero times**. The number 5 is never
+> composed or decomposed. `concrete materials` is also NOT_PROVIDED — nine of ten items are bare
+> symbolic arithmetic with nothing to handle or count.
+
+### 6. New systemic finding, quantified and queued (not started)
+
+`correct_answer` means different things in different formatters: `read_mcq` stores the option **key**
+("A"), `mcq` stores the **value** ("3").
+
+```
+samples with options checked: 320
+samples whose correct_answer is an option KEY, not a value: 81
+distinct nodes affected: 59
+by formatter: {'read_mcq': 81}
+```
+
+**59 nodes — a third of the tree — and 100% attributable to `read_mcq`.** Any consumer comparing
+`correct_answer` to a value is wrong on those nodes. Not started this tick: it is a cross-cutting
+contract change that would restate the answer key in every affected review's `samples_reviewed`, so
+it is its own unit.
