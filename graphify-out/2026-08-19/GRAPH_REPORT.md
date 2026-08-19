@@ -1,16 +1,16 @@
-# Graph Report - ccmed  (2026-08-18)
+# Graph Report - ccmed  (2026-08-19)
 
 ## Corpus Check
-- 462 files · ~701,291 words
+- 452 files · ~720,440 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3374 nodes · 5381 edges · 261 communities (247 shown, 14 thin omitted)
+- 3374 nodes · 5381 edges · 266 communities (247 shown, 19 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 88 edges (avg confidence: 0.57)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4d0259fa`
+- Built from commit: `26b2e3e5`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -244,17 +244,22 @@
 - [[_COMMUNITY_duplicate_registry_keys.py|duplicate_registry_keys.py]]
 - [[_COMMUNITY_Ground Rule 2 Spec Corrections & Baseline Fixes|Ground Rule 2: Spec Corrections & Baseline Fixes]]
 - [[_COMMUNITY_2026-08-13 — The tiling word problem had no determinate answer (Tick C)|2026-08-13 — The tiling word problem had no determinate answer (Tick C)]]
+- [[_COMMUNITY__combined_interests|_combined_interests]]
 - [[_COMMUNITY_generate_params|generate_params]]
 - [[_COMMUNITY_Anti-Patterns|Anti-Patterns]]
 - [[_COMMUNITY__gen_g2_na_q1_numbers|_gen_g2_na_q1_numbers]]
+- [[_COMMUNITY_health|health]]
+- [[_COMMUNITY__combined_interests|_combined_interests]]
 - [[_COMMUNITY__get_available_formats|_get_available_formats]]
 - [[_COMMUNITY_counting.py|counting.py]]
 - [[_COMMUNITY_2026-08-14 — A stated width is a floor as well as a ceiling|2026-08-14 — A stated width is a floor as well as a ceiling]]
+- [[_COMMUNITY_get_node_capabilities|get_node_capabilities]]
 - [[_COMMUNITY_2026-08-13 — Content no competency asks for, and a metre wearing centimetres|2026-08-13 — Content no competency asks for, and a metre wearing centimetres]]
 - [[_COMMUNITY_fmt_fill_in_table.py|fmt_fill_in_table.py]]
 - [[_COMMUNITY_calendar.py|calendar.py]]
 - [[_COMMUNITY_health|health]]
 - [[_COMMUNITY_generate_params|generate_params]]
+- [[_COMMUNITY__combined_interests|_combined_interests]]
 - [[_COMMUNITY_geometric_lines.py|geometric_lines.py]]
 - [[_COMMUNITY_rebuild_knowledge_graph.py|rebuild_knowledge_graph.py]]
 - [[_COMMUNITY_2026-08-13 — perimeter an impossible triangle, and two shapes that never appeared|2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared]]
@@ -288,7 +293,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (261 total, 14 thin omitted)
+## Communities (266 total, 19 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
@@ -323,16 +328,16 @@ Cohesion: 0.10
 Nodes (38): _gen_g3_dp_q3_bar_graphs(), _gen_g3_dp_q3_probability(), _gen_g3_mg_q1_area(), _gen_g3_mg_q1_lines(), _gen_g3_mg_q2_capacity(), _gen_g3_mg_q2_mass(), _gen_g3_mg_q4_symmetry(), _gen_g3_na_q1_comparing() (+30 more)
 
 ### Community 8 - "Community 8"
-Cohesion: 0.10
-Nodes (35): get_db(), FastAPI dependency that yields a database session.     Guarantees session closur, SessionLocal(), _combined_interests(), health(), Merge parent-set interest_tags and student-set student_interest_tags into a, Background task to pre-generate questions into the cache.     Uses parallel exec, Liveness probe. Reaching this proves the whole module graph imported and     uvi (+27 more)
+Cohesion: 0.12
+Nodes (35): get_db(), FastAPI dependency that yields a database session.     Guarantees session closur, SessionLocal(), Background task to pre-generate questions into the cache.     Uses parallel exec, replenish_question_cache(), get_axes_for_concept(), Practice Generation — Difficulty Axes Catalog ==================================, Return the UI-ready axis list for a concept, or [] if not found. (+27 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.16
-Nodes (19): _build_all_enabled_config(), _combined_interests(), flag_question(), get_practice_question(), get_practice_question_batch(), Session, Build the (formatters, difficulties, contexts) triple mirroring the     Matatag, Background task to pre-generate questions into the cache.     Uses parallel exec (+11 more)
+Cohesion: 0.13
+Nodes (15): _build_all_enabled_config(), _combined_interests(), flag_question(), get_practice_question(), get_practice_question_batch(), Session, Build the (formatters, difficulties, contexts) triple mirroring the     Matatag, Stores a flagged question for post-mortem review. (+7 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.12
-Nodes (7): RedisDict, RedisDict, RedisDict, RedisDict, get_cache(), Any, set_cache()
+Cohesion: 0.16
+Nodes (6): RedisDict, RedisDict, RedisDict, get_cache(), Any, set_cache()
 
 ### Community 11 - "Community 11"
 Cohesion: 0.15
@@ -435,8 +440,8 @@ Cohesion: 0.08
 Nodes (21): Add Dependencies to Gradle Build, App-level `build.gradle.kts` (`<project>/<app-module>/build.gradle.kts`), Firebase Crashlytics Android Setup Guide, Follow up Steps, Optional: Add custom debugging information, Optional: Install the NDK SDK to capture native crashes, Project and App Setup, Project-level `build.gradle.kts` (`<project>/build.gradle.kts`) (+13 more)
 
 ### Community 36 - "Community 36"
-Cohesion: 0.12
-Nodes (21): get_gemini_models(), get_parent_analytics(), get_parent_config(), get_parent_graph(), parent_login(), Any, Session, Parent Dashboard compiling telemetry statistics, Elo progress, and skills master (+13 more)
+Cohesion: 0.15
+Nodes (16): get_gemini_models(), get_parent_analytics(), get_parent_config(), get_parent_graph(), parent_login(), Any, Session, Parent Dashboard compiling telemetry statistics, Elo progress, and skills master (+8 more)
 
 ### Community 37 - "Community 37"
 Cohesion: 0.08
@@ -1217,7 +1222,7 @@ Nodes (8): generate_hints(), generate_params(), Any, Random, DNA: Counting (Numb
 ## Knowledge Gaps
 - **1046 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+1041 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **19 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
