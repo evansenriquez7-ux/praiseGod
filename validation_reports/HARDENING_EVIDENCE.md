@@ -5064,3 +5064,77 @@ Exit 0 remains the definition of done (CLAUDE.md unchanged). The correction reco
 satisfied.* Because §6F makes an unexamined claim a failure, an empty queue now requires every
 declared capability to have been judged by a blind party on content that still renders. Within a
 tick, the failure count is the work queue, not the score.
+
+---
+
+## 2026-08-20 — §5 worker death: a silent unbounded wait in the last gate
+
+**The defect.** `multiprocessing.Pool.imap_unordered` blocks **forever** if a worker dies. The task
+that worker held is simply lost and the parent waits for a result that can never arrive. Worse, Pool
+*replaces* the dead worker, so the pool looks perfectly healthy while making no progress — "are all
+workers alive?" answers yes and tells you nothing.
+
+`run_all` is the only thing standing between a broken pipeline change and production (there is no CI
+for this harness). A gate that can wait forever, with no error, no timeout and no exit code, is a gate
+that can silently stop gating. That is the same shape as the retired daemon's `|| true`.
+
+**How it was found.** By accident, which is worth recording. While diagnosing a *different* problem I
+ran `kill -USR1 <worker>` to try to obtain a Python stack — and Python's default disposition for
+SIGUSR1 is terminate. The worker executing node 151 of 151 died. `run_all` had already logged
+`[150/151] mat_g3_dp_q3_3  PASS` and then sat for 20 minutes with the parent at 0:04.10 CPU and two
+idle workers frozen at exactly 3:40.71 and 3:40.72, producing nothing and exiting never. The mistake
+was mine; the defect it exposed was real and would fire on any genuine worker crash.
+
+### The guard
+
+`_NO_RESULT_TIMEOUT_S` (default 2700s, `PGEN_MATRIX_NO_RESULT_TIMEOUT` to override) bounds how long
+§5 may go with **no node returning any result**. The bound must clear the slowest single node, because
+while that node runs no other result arrives — `mat_g3_na_q2_4` ("Subtract numbers … less than 10 000,
+with and without regrouping") dominated a full run at roughly 27 minutes, so 45 leaves headroom
+without letting a genuine hang run overnight.
+
+Worker death is detected by **change in the worker PID set**, not by liveness, precisely because Pool
+replaces the dead. Pending nodes are tracked so the failure can name exactly what never completed.
+
+### Proved by killing a worker mid-run
+
+`local_only/scratch/prove_worker_death.py` runs the real §5 stage with a 45s timeout and SIGKILLs one
+worker 20 seconds in.
+
+```
+>>> assassin: SIGKILL worker 7475
+...
+[149/151] mat_g3_dp_q3_4  PASS
+
+Traceback (most recent call last):
+  File ".../validate_matrix.py", line 1524, in main
+    return run_matrix_validation(node=args.node, fail_fast=args.fail_fast, workers=args.workers)
+  File ".../validate_matrix.py", line 1478, in run_matrix_validation
+    raise RuntimeError(
+RuntimeError: §5 matrix validation stalled: no node returned a result for 45s. worker
+process(es) [7475] died and were replaced; the node each was executing will never return a
+result. 2 node(s) never completed: ['mat_g1_na_q2_4', 'mat_g3_na_q2_4']. Re-run the
+incomplete node(s) directly with `validate_matrix --node <id>` to see the failure, or
+`--workers 1` to bypass the pool entirely.
+
+=== exited 1 after 271s ===
+PASS: stalled run failed loudly
+```
+
+Exit 1, named stage, named cause, named incomplete nodes, two concrete remedies — CLAUDE.md
+Protocol 3 rather than an unbounded wait. The 271s is correct behaviour, not latency: the remaining
+149 nodes completed normally on the surviving workers first, and only then was there a 45s window with
+no result at all.
+
+### Two related findings recorded while diagnosing
+
+- **§5 is bottlenecked on one node.** Two of three workers froze at 3:40.71 / 3:40.72 CPU at the
+  ten-minute mark and never moved again — the task queue was empty. One worker ran alone for the
+  next 27 minutes on `mat_g3_na_q2_4`. That single node is roughly 75% of the whole stage, which is
+  why parallelism buys almost nothing here (34 min on 3 workers vs ~38 min projected serial). It is
+  the reason every full verification is slow, and it is an optimisation target.
+- **Orphan mechanism.** A worker blocked mid-task does not observe its parent's death; it only
+  notices when it finishes and reads the task pipe again. Killing a parent while a worker is idle
+  orphans nothing (verified: EOF, clean exit). Killing it while a worker is 27 minutes into a node
+  orphans that worker for at least that long — and if the task never completes, forever. That is why
+  the orphans found earlier clustered on the slow node and why two of them ran for 23 hours.

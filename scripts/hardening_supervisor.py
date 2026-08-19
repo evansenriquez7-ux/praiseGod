@@ -42,6 +42,13 @@ Exit codes
   10  RESUME         stalled, interrupted, or idle with work outstanding -> run a tick
   20  NOTHING_TO_DO  no work outstanding
   30  NEEDS_HUMAN    inconsistent state a tick should not paper over
+  40  HUNG_UNREAPED  hung processes found and left alone; re-run with --reap
+
+Why 40 is separate from 30: a hung process is routine and self-remediable -- the
+caller re-runs with --reap and continues. A contract that cannot be evaluated is
+not. Both were originally reported as NEEDS_HUMAN, which made "you did not pass a
+flag" indistinguishable by exit code from "something is genuinely wrong." A monitor
+whose red means two different things is the failure this repo keeps paying for.
 """
 
 from __future__ import annotations
@@ -60,7 +67,7 @@ ATTEST = REPO / "validation_reports/attestation"
 JUDGMENT = REPO / "validation_reports/judgment"
 STATUS = REPO / "local_only/scratch/hardening_status.json"
 
-IN_FLIGHT, RESUME, NOTHING_TO_DO, NEEDS_HUMAN = 0, 10, 20, 30
+IN_FLIGHT, RESUME, NOTHING_TO_DO, NEEDS_HUMAN, HUNG_UNREAPED = 0, 10, 20, 30, 40
 
 # A process burning less than this fraction of a core, for longer than the grace
 # period, is hung rather than slow. A healthy run_all worker sits near 50%.
@@ -68,6 +75,30 @@ HUNG_CPU_RATIO = 0.02
 HUNG_GRACE_SECONDS = 600
 
 WATCHED = re.compile(r"practice_gen\.validation\.run_all|pytest|mutation_harness")
+# The shell wrapper that launches a background job carries the whole command in its
+# own args, so it matches WATCHED — and a wrapper legitimately burns ~0 CPU while its
+# child does the work. Counting it made every healthy background run look hung once it
+# passed the grace window. Only an actual interpreter is a candidate.
+_INTERPRETER = re.compile(r"(^|/)(python[0-9.]*|Python)$")
+
+# Orphaned multiprocessing workers — the actual cause of the 2026-08-20 "deadlock".
+#
+# `multiprocessing` spawn workers carry `spawn_main` in their args and NOTHING that
+# identifies the job they belong to, so a pattern matching run_all/pytest never sees
+# them. When a parent is killed (or dies), its workers are reparented to init and keep
+# computing forever — and each one pegs a core.
+#
+# Measured on this 4-core host: 14 orphans alive at once, 59.7 core-hours burned, the
+# oldest running 23 hours. Everything launched alongside them was starved to a few
+# percent of a core, which looks exactly like a deadlock: run_all sat at 4.3s CPU over
+# 73 minutes, pytest at 22s over 4h20m. Both were diagnosed as hangs. Neither was one.
+#
+# Worse, killing the parent by name made it worse each time, because the workers do not
+# match the parent's pattern and survived every cleanup.
+#
+# An orphan is hung by definition — its parent is gone, so no result it computes can be
+# collected. No grace period applies.
+_SPAWN_WORKER = re.compile(r"multiprocessing\.spawn|spawn_main")
 
 
 def _sh(*args: str) -> str:
@@ -95,27 +126,76 @@ def _cputime_to_seconds(t: str) -> float:
 
 
 def scan_processes() -> tuple[list[dict], list[dict]]:
-    """Return (healthy, hung) watched processes, judged by CPU-to-elapsed ratio."""
-    out = _sh("ps", "-eo", "pid=,etime=,time=,args=")
+    """
+    Return (healthy, hung) watched processes, judged by the CPU their whole process
+    TREE is burning, not their own.
+
+    A pool parent legitimately idles while its workers compute: measured on a live,
+    healthy run_all, the parent sat at ratio 0.0069 while its three workers burned
+    3:40, 3:40 and 9:46 of CPU over 9:51 of wall clock. Judging the parent alone would
+    have declared that run hung five seconds later and --reap would have killed it.
+
+    So the signal is the sum over the process and its descendants. A genuinely stalled
+    tree burns nothing anywhere; a working one burns a core per worker.
+    """
+    out = _sh("ps", "-eo", "pid=,ppid=,etime=,time=,args=")
+
+    # pid -> own cpu seconds, and pid -> children, for the whole table.
+    own_cpu: Dict[int, float] = {}
+    children: Dict[int, list] = {}
+    for line in out.splitlines():
+        f = line.split(None, 4)
+        if len(f) < 5:
+            continue
+        try:
+            pid_i, ppid_i, cpu_i = int(f[0]), int(f[1]), _cputime_to_seconds(f[3])
+        except ValueError:
+            continue
+        own_cpu[pid_i] = cpu_i
+        children.setdefault(ppid_i, []).append(pid_i)
+
+    def tree_cpu(root: int) -> float:
+        total, stack, seen = 0.0, [root], set()
+        while stack:
+            n = stack.pop()
+            if n in seen:
+                continue
+            seen.add(n)
+            total += own_cpu.get(n, 0.0)
+            stack.extend(children.get(n, []))
+        return total
+
     healthy, hung = [], []
     for line in out.splitlines():
-        parts = line.split(None, 3)
-        if len(parts) < 4:
+        parts = line.split(None, 4)
+        if len(parts) < 5:
             continue
-        pid, etime, cput, args = parts
-        if not WATCHED.search(args) or "hardening_supervisor" in args:
+        pid, ppid, etime, cput, args = parts
+        orphan_worker = _SPAWN_WORKER.search(args) and ppid == "1"
+        if "hardening_supervisor" in args:
             continue
+        if not (WATCHED.search(args) or orphan_worker):
+            continue
+        exe = args.split(None, 1)[0]
+        if not _INTERPRETER.search(exe):
+            continue  # shell wrapper, not the job itself
         try:
             elapsed = _etime_to_seconds(etime)
             cpu = _cputime_to_seconds(cput)
         except ValueError:
             continue
+        tcpu = tree_cpu(int(pid))
         rec = {
-            "pid": int(pid), "elapsed_s": elapsed, "cpu_s": round(cpu, 1),
-            "ratio": round(cpu / elapsed, 4) if elapsed else 0.0,
+            "pid": int(pid), "ppid": int(ppid), "elapsed_s": elapsed,
+            "cpu_s": round(cpu, 1), "tree_cpu_s": round(tcpu, 1),
+            "ratio": round(tcpu / elapsed, 4) if elapsed else 0.0,
+            "own_ratio": round(cpu / elapsed, 4) if elapsed else 0.0,
+            "orphan_worker": bool(orphan_worker),
             "cmd": args[:120],
         }
-        if elapsed > HUNG_GRACE_SECONDS and rec["ratio"] < HUNG_CPU_RATIO:
+        # An orphan is hung whatever its CPU: it is burning a core to produce a result
+        # nobody will ever collect. A low CPU ratio is the *other* signature.
+        if orphan_worker or (elapsed > HUNG_GRACE_SECONDS and rec["ratio"] < HUNG_CPU_RATIO):
             hung.append(rec)
         else:
             healthy.append(rec)
@@ -229,7 +309,11 @@ def main() -> int:
     cov = coverage()
 
     if hung and not killed:
-        verdict, why = NEEDS_HUMAN, f"{len(hung)} hung process(es); re-run with --reap"
+        verdict, why = HUNG_UNREAPED, (
+            f"{len(hung)} hung process(es) found and left running; re-run with --reap. "
+            f"Nothing else here is trustworthy until they are gone — a hung job blocks "
+            f"the next tick from ever starting."
+        )
     elif healthy:
         verdict, why = IN_FLIGHT, f"{len(healthy)} healthy process(es) running"
     elif dirty:
@@ -244,7 +328,8 @@ def main() -> int:
     status = {
         "checked_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
         "verdict": {IN_FLIGHT: "IN_FLIGHT", RESUME: "RESUME",
-                    NOTHING_TO_DO: "NOTHING_TO_DO", NEEDS_HUMAN: "NEEDS_HUMAN"}[verdict],
+                    NOTHING_TO_DO: "NOTHING_TO_DO", NEEDS_HUMAN: "NEEDS_HUMAN",
+                    HUNG_UNREAPED: "HUNG_UNREAPED"}[verdict],
         "why": why,
         "processes": {"healthy": healthy, "hung": hung, "killed": killed},
         "git": {"head": head, "modified_tracked": len(modified), "untracked": len(untracked),
@@ -271,10 +356,12 @@ def main() -> int:
           f" | mutations {cov['mutations_registered']}")
     print(f"  ledger last entry : {led['last_heading']} ({led['age_hours']}h ago)")
     for p in hung:
-        print(f"  HUNG pid={p['pid']} elapsed={p['elapsed_s']}s cpu={p['cpu_s']}s "
+        kind = "ORPHANED WORKER" if p.get("orphan_worker") else "HUNG"
+        print(f"  {kind} pid={p['pid']} elapsed={p['elapsed_s']}s cpu={p['cpu_s']}s "
               f"ratio={p['ratio']} {'KILLED' if p['pid'] in killed else 'NOT KILLED'}")
     for p in healthy:
-        print(f"  running pid={p['pid']} elapsed={p['elapsed_s']}s ratio={p['ratio']}")
+        print(f"  running pid={p['pid']} elapsed={p['elapsed_s']}s "
+              f"tree_cpu={p['tree_cpu_s']}s ratio={p['ratio']} (own {p['own_ratio']})")
     if led["next_tick_should"]:
         print(f"\n  Next tick should: {led['next_tick_should'][:300]}")
     print(f"\n  status written to {STATUS.relative_to(REPO)}")

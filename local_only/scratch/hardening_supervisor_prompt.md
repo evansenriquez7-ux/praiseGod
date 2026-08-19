@@ -25,7 +25,8 @@ start right now?* — and exits with a verdict:
 | `0` | `IN_FLIGHT` | A healthy process is running. **Report the one-line status and stop.** Do not start a second tick; two `run_all`s contend and neither is trustworthy. |
 | `10` | `RESUME` | Work is outstanding or a unit was interrupted. **Go to Step 2.** |
 | `20` | `NOTHING_TO_DO` | No findings, nothing in flight. Report in three lines and stop. Do not invent work. |
-| `30` | `NEEDS_HUMAN` | Inconsistent state. Report what is inconsistent and stop — do not paper over it with a tick. |
+| `30` | `NEEDS_HUMAN` | Genuinely inconsistent state — e.g. the capability contract could not be evaluated at all. Report what is inconsistent and stop; do not paper over it with a tick. |
+| `40` | `HUNG_UNREAPED` | Hung processes found and left running (you omitted `--reap`). **Re-run with `--reap`, then act on the new verdict.** Nothing else in the report is trustworthy until they are gone: a hung job blocks the next tick from ever starting, which is how the loop went dark for five hours on 2026-08-19. |
 
 **What the script's output is, and is not.** It is a *claim*, produced to decide whether to act. It is
 never evidence of state. Do not quote its numbers in a tick report and do not skip §0 because you read

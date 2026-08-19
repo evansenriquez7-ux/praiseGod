@@ -1368,6 +1368,23 @@ def val_to_seed_offset(val: float) -> int:
     return 5
 
 
+# How long §5 may go with NO node returning any result before it is declared stalled.
+#
+# `multiprocessing.Pool.imap_unordered` blocks forever if a worker dies: the task that
+# worker was executing is simply lost, and the parent waits for a result that can never
+# arrive. Pool even replaces the dead worker, so the pool looks healthy while making no
+# progress. Observed 2026-08-20: a worker was killed mid-node at [150/151] and `run_all`
+# sat indefinitely with no error, no timeout and no exit code — a silent unbounded wait
+# in the gate that is supposed to be the last thing between a broken pipeline change and
+# production.
+#
+# The bound has to clear the slowest single node, because while that node runs no other
+# result arrives. `mat_g3_na_q2_4` ("Subtract numbers ... less than 10 000, with and
+# without regrouping") dominated a full run at roughly 27 minutes, so 45 gives headroom
+# without letting a genuine hang run overnight.
+_NO_RESULT_TIMEOUT_S = int(os.environ.get("PGEN_MATRIX_NO_RESULT_TIMEOUT", 2700))
+
+
 def _worker(node_id: str) -> tuple:
     """Top-level worker so multiprocessing can pickle it."""
     try:
@@ -1433,8 +1450,41 @@ def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, w
         n_workers = workers if workers > 0 else max(1, multiprocessing.cpu_count() - 1)
         print(f"Using {n_workers} parallel workers.\n")
         completed = 0
+        pending = set(node_ids)
         with multiprocessing.Pool(processes=n_workers) as pool:
-            for node_id, node_failures, node_executed in pool.imap_unordered(_worker, node_ids):
+            # Worker PIDs at start. `Pool` silently REPLACES a worker that dies, so
+            # "are all workers alive?" is always yes and tells you nothing; a changed
+            # PID set is what reveals a death.
+            initial_pids = {w.pid for w in getattr(pool, "_pool", [])}
+            results = pool.imap_unordered(_worker, node_ids)
+            while True:
+                try:
+                    node_id, node_failures, node_executed = results.next(
+                        timeout=_NO_RESULT_TIMEOUT_S
+                    )
+                except StopIteration:
+                    break
+                except multiprocessing.TimeoutError:
+                    current_pids = {w.pid for w in getattr(pool, "_pool", [])}
+                    died = initial_pids - current_pids
+                    pool.terminate()
+                    detail = (
+                        f"worker process(es) {sorted(died)} died and were replaced; the "
+                        f"node each was executing will never return a result"
+                        if died else
+                        "all workers are still alive, so a single node is exceeding the "
+                        "timeout rather than crashing"
+                    )
+                    raise RuntimeError(
+                        f"§5 matrix validation stalled: no node returned a result for "
+                        f"{_NO_RESULT_TIMEOUT_S}s. {detail}. "
+                        f"{len(pending)} node(s) never completed: {sorted(pending)[:10]}"
+                        f"{' ...' if len(pending) > 10 else ''}. "
+                        f"Re-run the incomplete node(s) directly with "
+                        f"`validate_matrix --node <id>` to see the failure, or "
+                        f"`--workers 1` to bypass the pool entirely."
+                    )
+                pending.discard(node_id)
                 completed += 1
                 LAST_EXECUTED_CHECKS |= node_executed
                 _record(report, node_id, node_failures, node_executed)
