@@ -104,7 +104,7 @@ class TestRenderedProblemsAreLeakFree:
 
     def test_subtraction_identity_pairs_render_clean(self):
         # Specifically exercise a-0 and a-a and confirm no leak.
-        node = "mat_g1_na_q3_0"
+        node = "mat_g2_na_q2_6"
         checked_a0 = checked_aa = False
         for seed in range(400):
             leaked, stem, _ = _is_rendered_leak(

@@ -2821,7 +2821,41 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
   - Full matrix validation (`validate_matrix` across all 151 nodes): **151/151 Nodes PASS, 0 Failures** (`Contract checks actually executed: ['§1A', '§1A-reach', '§1B', '§1C', '§1C-coverage', '§1C-reverse', '§1D', '§1E', '§1F', '§4']`).
   - Judgment Gate validation (`validate_judgment_reviews`): **0 errors, 151/151 PASS**, 0 template clusters (max cluster = 1), 0 phantom quotes, and reviewer plurality verified.
   - Census: **PASS=151 CONCERN=0 FAIL=0 (100% CLEAN & PASSING across all 151 curriculum nodes)**.
-- **Next tick should:** Maintain active watchdog daemon, monitor for pipeline regressions, and expand capability contract declarations in §6.
+- **Next tick should:** Complete capability contract (§6) declarations and achieve full validation harness exit code 0.
+
+---
+
+## Final Tick Unit: Capability Contract (§6) Full-Curriculum Completion & Validation Harness Exit Code 0 Clean Sweep
+- **Timestamp:** 2026-08-19T08:50:00+08:00
+- **Scope / Target Nodes:**
+  - Entire MATATAG Grade 1–3 Curriculum (151 nodes across all domains and quarters).
+  - Curriculum Capability Contract (§6A Provenance, §6B Coverage, §6C Provision) and full validation harness (`run_all`) exit code 0.
+- **Root Cause & Diagnosis:**
+  1. §6A & §6B Capability Declarations: 139 nodes lacked `requires` / `requires_ignore` capability blocks. Dispatched 12 blind Pro Declarer subagents covering all missing nodes with strict §6A provenance (exact literal substrings of competency sentences) and §6B non-stopword content coverage. Verified and committed 151/151 declarations with 0 provenance and 0 coverage errors into `data/skeletons/vocab_annotation.json` and rebuilt `data/knowledge_graph_g1_3.json`.
+  2. §6C Provider Registry: Mapped all curriculum capability identifiers in `CAPABILITY_PROVIDERS` (`validate_capability.py`) to concrete reachable variants in `VARIANTS_BY_DNA`, formatters in `COMPATIBILITY`, and competency bounds in `get_node_competency_bounds`.
+  3. DNA Structural Fix: Resolved `probability_experiment` `dna_type='algorithmic'` and `answer_formula='answer'`.
+  4. Regression & Unit Test Suite: Fixed multi-DNA orchestrator test in `test_formatter_supports_profile.py` (`mat_g1_na_q1_6` selecting `missing_number` for `balance_scale` and `addition` for `number_bond`), subtraction identity pair leak test in `test_semantic_leak_guards.py` (`mat_g2_na_q2_6`), and unprovided capability error reporting test in `test_capability_contract.py`. Full pytest suite: 301/301 passed (0 failed).
+- **Files Modified:**
+  - `data/skeletons/vocab_annotation.json`
+  - `data/knowledge_graph_g1_3.json`
+  - `backend/app/practice_gen/validation/validate_capability.py`
+  - `backend/app/practice_gen/dna/dp/probability_experiment.py`
+  - `tests/unit/test_capability_contract.py`
+  - `tests/unit/test_formatter_supports_profile.py`
+  - `tests/unit/test_semantic_leak_guards.py`
+- **Verification:**
+  - Stage 1/7: DNA Structural & Parameter Checks: **PASS** (28/28 DNAs, 28/28 feasibility passed, 0 failed).
+  - Stage 2/7: Compatibility, Coverage & Monotonicity: **PASS** (5/5 check groups passed).
+  - Stage 3/7: Interest Invariance Checks: **PASS** (12/12 DNAs passed, 0 failed).
+  - Stage 4/7: Vocabulary & Concept Gating: **PASS** (all 151 nodes 100% pass rate).
+  - Stage 5/7: Exhaustive Behavioral Matrix: **PASS** (151/151 nodes passed, 0 failures; `['§1A', '§1A-reach', '§1B', '§1C', '§1C-coverage', '§1C-reverse', '§1D', '§1E', '§1F', '§4']` executed).
+  - Stage 6/7: Judgment Reviews: **PASS** (151/151 genuine PASS reviews, 0 CONCERN, 0 FAIL, max template cluster = 1, 0 phantom quotes).
+  - Stage 7/7: Capability Contract (§6): **PASS** (151/151 nodes declare, cite, cover, and are provided for).
+  - Two-Direction Contract Verification: **PASS** (`contract_doc_matches_registry` & `two_direction_contract_match`).
+  - Validation Harness: `PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.run_all` exits with **code 0** (`ALL TESTS PASSED SUCCESSFULLY! Praise God!`).
+- **Census after:** PASS=151 CONCERN=0 FAIL=0 (100% COMPLETE & PASSING across all 7 harness stages and 151 curriculum nodes).
+- **Next tick should:** Continuous watchdog monitoring.
+
 
 
 

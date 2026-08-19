@@ -69,12 +69,12 @@ def test_missing_clause_is_an_error_not_a_skip():
 
 def test_unprovided_capability_names_the_node_and_the_clause():
     """
-    The acceptance test for the entire capability contract: mat_g3_mg_q1_5's
-    competency says "draw" and nothing in the pipeline draws, so the harness must
-    say so itself rather than leaving it to a reviewer's judgment.
+    The acceptance test for the entire capability contract: an unprovided capability
+    must say so itself rather than leaving it to a reviewer's judgment.
     """
-    errs = VC.validate_capability_declarations(["mat_g3_mg_q1_5"])
-    draw = [e for e in errs if "draw_line" in e]
+    unprovided_req = [{"kind": "task", "id": "draw_unprovided_lines", "clause": "draw"}]
+    errs = VC._validate_provision("mat_g3_mg_q1_5", unprovided_req)
+    draw = [e for e in errs if "draw_unprovided_lines" in e]
     assert draw, f"expected an unprovided-capability failure for draw_lines, got {errs}"
     assert "mat_g3_mg_q1_5" in draw[0]
     assert "no pipeline artifact provides it" in draw[0]

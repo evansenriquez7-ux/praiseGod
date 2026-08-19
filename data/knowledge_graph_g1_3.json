@@ -290,7 +290,28 @@
       "next_node_id": "mat_g1_na_q1_2",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "read",
+          "clause": "Read"
+        },
+        {
+          "kind": "task",
+          "id": "write",
+          "clause": "write"
+        },
+        {
+          "kind": "object",
+          "id": "numerals",
+          "clause": "numerals"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_100",
+          "clause": "up to 100"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "10th",
@@ -486,8 +507,62 @@
       "next_node_id": "mat_g1_na_q1_3",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "recognize",
+          "clause": "Recognize"
+        },
+        {
+          "kind": "task",
+          "id": "represent",
+          "clause": "represent"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_100",
+          "clause": "up to 100"
+        },
+        {
+          "kind": "representation",
+          "id": "concrete_models",
+          "clause": "concrete"
+        },
+        {
+          "kind": "representation",
+          "id": "pictorial_models",
+          "clause": "pictorial models"
+        },
+        {
+          "kind": "representation",
+          "id": "number_line",
+          "clause": "number line"
+        },
+        {
+          "kind": "representation",
+          "id": "block_or_bar_models",
+          "clause": "block or bar models"
+        },
+        {
+          "kind": "representation",
+          "id": "numerals",
+          "clause": "numerals"
+        }
+      ],
+      "requires_ignore": [
+        "using",
+        "a",
+        "variety",
+        "of",
+        "and",
+        "e",
+        "g"
+      ],
       "NOT_YET_KNOWN": [
         "10th",
         "1st",
@@ -676,7 +751,23 @@
       "next_node_id": "mat_g1_na_q1_4",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "compare",
+          "clause": "Compare"
+        },
+        {
+          "kind": "object",
+          "id": "two_numbers",
+          "clause": "two numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_20",
+          "clause": "up to 20"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "10th",
@@ -877,7 +968,33 @@
       "next_node_id": "mat_g1_na_q1_5",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "order",
+          "clause": "Order"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_20",
+          "clause": "up to 20"
+        },
+        {
+          "kind": "property",
+          "id": "smallest_to_largest",
+          "clause": "smallest to largest"
+        },
+        {
+          "kind": "property",
+          "id": "vice_versa",
+          "clause": "vice versa"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "10th",
@@ -1093,7 +1210,43 @@
       "next_node_id": "mat_g1_na_q1_6",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "describe_position",
+          "clause": "Describe the position"
+        },
+        {
+          "kind": "object",
+          "id": "objects",
+          "clause": "objects"
+        },
+        {
+          "kind": "object",
+          "id": "ordinal_numbers",
+          "clause": "ordinal numbers"
+        },
+        {
+          "kind": "range",
+          "id": "1st",
+          "clause": "1st"
+        },
+        {
+          "kind": "range",
+          "id": "2nd",
+          "clause": "2nd"
+        },
+        {
+          "kind": "range",
+          "id": "3rd",
+          "clause": "3rd"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_10th",
+          "clause": "up to 10th"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -1304,8 +1457,68 @@
       "next_node_id": "mat_g1_na_q1_7",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "compose",
+          "clause": "Compose"
+        },
+        {
+          "kind": "task",
+          "id": "decompose",
+          "clause": "decompose"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_10",
+          "clause": "up to 10"
+        },
+        {
+          "kind": "representation",
+          "id": "concrete_materials",
+          "clause": "concrete materials"
+        },
+        {
+          "kind": "representation",
+          "id": "5_is_5_and_0",
+          "clause": "5 is 5 and 0"
+        },
+        {
+          "kind": "representation",
+          "id": "4_and_1",
+          "clause": "4 and 1"
+        },
+        {
+          "kind": "representation",
+          "id": "3_and_2",
+          "clause": "3 and 2"
+        },
+        {
+          "kind": "representation",
+          "id": "2_and_3",
+          "clause": "2 and 3"
+        },
+        {
+          "kind": "representation",
+          "id": "1_and_4",
+          "clause": "1 and 4"
+        },
+        {
+          "kind": "representation",
+          "id": "0_and_5",
+          "clause": "0 and 5"
+        }
+      ],
+      "requires_ignore": [
+        "using",
+        "e",
+        "g"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -1523,8 +1736,62 @@
       "next_node_id": "mat_g1_na_q1_8",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "illustrate",
+          "clause": "Illustrate"
+        },
+        {
+          "kind": "object",
+          "id": "addition_of_numbers",
+          "clause": "addition of numbers"
+        },
+        {
+          "kind": "range",
+          "id": "sums_up_to_20",
+          "clause": "sums up to 20"
+        },
+        {
+          "kind": "representation",
+          "id": "concrete",
+          "clause": "concrete"
+        },
+        {
+          "kind": "representation",
+          "id": "pictorial_models",
+          "clause": "pictorial models"
+        },
+        {
+          "kind": "task",
+          "id": "describes",
+          "clause": "describes"
+        },
+        {
+          "kind": "object",
+          "id": "addition",
+          "clause": "addition"
+        },
+        {
+          "kind": "property",
+          "id": "counting_up",
+          "clause": "'counting up,'"
+        },
+        {
+          "kind": "property",
+          "id": "putting_together",
+          "clause": "'putting together'"
+        }
+      ],
+      "requires_ignore": [
+        "using",
+        "a",
+        "variety",
+        "of",
+        "and",
+        "as",
+        "with"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -1745,8 +2012,44 @@
       "next_node_id": "mat_g1_na_q1_9",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "illustrate",
+          "clause": "Illustrate"
+        },
+        {
+          "kind": "task",
+          "id": "applying",
+          "clause": "applying"
+        },
+        {
+          "kind": "property",
+          "id": "properties_of_addition",
+          "clause": "properties of addition"
+        },
+        {
+          "kind": "range",
+          "id": "sums_up_to_20",
+          "clause": "sums up to 20"
+        },
+        {
+          "kind": "property",
+          "id": "identity_property",
+          "clause": "the sum of zero and any number is equal to the number"
+        },
+        {
+          "kind": "property",
+          "id": "commutative_property",
+          "clause": "changing the order of the addends does not change the sum"
+        }
+      ],
+      "requires_ignore": [
+        "by",
+        "the",
+        "following",
+        "using"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -1970,8 +2273,45 @@
       "next_node_id": "mat_g1_na_q2_0",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve",
+          "clause": "Solve"
+        },
+        {
+          "kind": "object",
+          "id": "problems",
+          "clause": "problems"
+        },
+        {
+          "kind": "context",
+          "id": "orally",
+          "clause": "orally"
+        },
+        {
+          "kind": "context",
+          "id": "pictures",
+          "clause": "pictures"
+        },
+        {
+          "kind": "object",
+          "id": "addition",
+          "clause": "addition"
+        },
+        {
+          "kind": "range",
+          "id": "sums_up_to_20",
+          "clause": "sums up to 20"
+        }
+      ],
+      "requires_ignore": [
+        "given",
+        "or",
+        "in",
+        "involving",
+        "with"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -2198,7 +2538,43 @@
       "next_node_id": "mat_g1_mg_q1_1",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "identify",
+          "clause": "Identify"
+        },
+        {
+          "kind": "object",
+          "id": "simple_2_dimensional_shapes",
+          "clause": "simple 2-dimensional shapes"
+        },
+        {
+          "kind": "object",
+          "id": "triangle",
+          "clause": "triangle"
+        },
+        {
+          "kind": "object",
+          "id": "rectangle",
+          "clause": "rectangle"
+        },
+        {
+          "kind": "object",
+          "id": "square",
+          "clause": "square"
+        },
+        {
+          "kind": "property",
+          "id": "different_size",
+          "clause": "different size"
+        },
+        {
+          "kind": "property",
+          "id": "different_orientation",
+          "clause": "different orientation"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -2688,7 +3064,33 @@
       "next_node_id": "mat_g1_mg_q2_0",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "compose",
+          "clause": "Compose"
+        },
+        {
+          "kind": "task",
+          "id": "decompose",
+          "clause": "decompose"
+        },
+        {
+          "kind": "object",
+          "id": "triangles",
+          "clause": "triangles"
+        },
+        {
+          "kind": "object",
+          "id": "squares",
+          "clause": "squares"
+        },
+        {
+          "kind": "object",
+          "id": "rectangles",
+          "clause": "rectangles"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -2919,7 +3321,33 @@
       "next_node_id": "mat_g1_na_q2_1",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "order",
+          "clause": "Order"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_100",
+          "clause": "up to 100"
+        },
+        {
+          "kind": "property",
+          "id": "smallest_to_largest",
+          "clause": "smallest to largest"
+        },
+        {
+          "kind": "property",
+          "id": "vice_versa",
+          "clause": "vice versa"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -3166,7 +3594,33 @@
       "next_node_id": "mat_g1_na_q2_2",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "count",
+          "clause": "Count"
+        },
+        {
+          "kind": "range",
+          "id": "step_2s",
+          "clause": "2s"
+        },
+        {
+          "kind": "range",
+          "id": "step_5s",
+          "clause": "5s"
+        },
+        {
+          "kind": "range",
+          "id": "step_10s",
+          "clause": "10s"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_100",
+          "clause": "100"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -3422,8 +3876,34 @@
       "next_node_id": "mat_g1_na_q2_3",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "determine_place_value",
+          "clause": "Determine the place value of a digit"
+        },
+        {
+          "kind": "range",
+          "id": "domain_2_digit",
+          "clause": "2-digit number"
+        },
+        {
+          "kind": "task",
+          "id": "determine_value",
+          "clause": "value of a digit"
+        },
+        {
+          "kind": "task",
+          "id": "determine_digit",
+          "clause": "digit of a number"
+        }
+      ],
+      "requires_ignore": [
+        "given",
+        "its",
+        "place",
+        "value"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -3671,7 +4151,23 @@
       "next_node_id": "mat_g1_na_q2_4",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "decompose",
+          "clause": "Decompose"
+        },
+        {
+          "kind": "range",
+          "id": "domain_2_digit",
+          "clause": "2-digit number"
+        },
+        {
+          "kind": "representation",
+          "id": "tens_ones",
+          "clause": "tens and ones"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -3926,7 +4422,28 @@
       "next_node_id": "mat_g1_na_q2_5",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "add",
+          "clause": "Add numbers"
+        },
+        {
+          "kind": "task",
+          "id": "express_addends",
+          "clause": "expressing addends"
+        },
+        {
+          "kind": "representation",
+          "id": "tens_ones",
+          "clause": "tens and ones"
+        },
+        {
+          "kind": "representation",
+          "id": "expanded_form",
+          "clause": "expanded form"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -4187,7 +4704,38 @@
       "next_node_id": "mat_g1_na_q2_6",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "add",
+          "clause": "Add numbers"
+        },
+        {
+          "kind": "range",
+          "id": "sum_up_to_100",
+          "clause": "sums up to 100"
+        },
+        {
+          "kind": "property",
+          "id": "without_regrouping",
+          "clause": "without regrouping"
+        },
+        {
+          "kind": "representation",
+          "id": "concrete_pictorial",
+          "clause": "concrete and pictorial models"
+        },
+        {
+          "kind": "range",
+          "id": "operands_2_1_digit",
+          "clause": "2-digit and 1-digit numbers"
+        },
+        {
+          "kind": "range",
+          "id": "operands_2_2_digit",
+          "clause": "2-digit and 2-digit numbers"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -4440,8 +4988,41 @@
       "next_node_id": "mat_g1_na_q3_0",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_problems",
+          "clause": "Solve problems"
+        },
+        {
+          "kind": "context",
+          "id": "orally",
+          "clause": "orally"
+        },
+        {
+          "kind": "context",
+          "id": "pictures",
+          "clause": "pictures"
+        },
+        {
+          "kind": "task",
+          "id": "addition",
+          "clause": "addition"
+        },
+        {
+          "kind": "range",
+          "id": "sum_up_to_100",
+          "clause": "sums up to 100"
+        },
+        {
+          "kind": "property",
+          "id": "without_regrouping",
+          "clause": "without regrouping"
+        }
+      ],
+      "requires_ignore": [
+        "involving"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -4697,7 +5278,23 @@
       "next_node_id": "mat_g1_mg_q2_1",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "measure_length",
+          "clause": "Measure the length of an object"
+        },
+        {
+          "kind": "task",
+          "id": "measure_distance",
+          "clause": "distance between two objects"
+        },
+        {
+          "kind": "representation",
+          "id": "non_standard_units",
+          "clause": "non-standard units"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -4952,7 +5549,28 @@
       "next_node_id": "mat_g1_mg_q2_2",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "compare",
+          "clause": "Compare"
+        },
+        {
+          "kind": "property",
+          "id": "lengths",
+          "clause": "lengths"
+        },
+        {
+          "kind": "property",
+          "id": "distances",
+          "clause": "distances"
+        },
+        {
+          "kind": "representation",
+          "id": "non_standard_units",
+          "clause": "non-standard units"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -5204,8 +5822,31 @@
       "next_node_id": "mat_g1_mg_q4_0",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_problems",
+          "clause": "Solve problems"
+        },
+        {
+          "kind": "property",
+          "id": "lengths",
+          "clause": "lengths"
+        },
+        {
+          "kind": "property",
+          "id": "distances",
+          "clause": "distances"
+        },
+        {
+          "kind": "representation",
+          "id": "non_standard_units",
+          "clause": "non-standard units"
+        }
+      ],
+      "requires_ignore": [
+        "involving"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -5484,8 +6125,36 @@
       "next_node_id": "mat_g1_na_q3_1",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "illustrate_subtraction",
+          "clause": "Illustrate subtraction"
+        },
+        {
+          "kind": "range",
+          "id": "numbers_up_to_20",
+          "clause": "numbers up to 20"
+        },
+        {
+          "kind": "representation",
+          "id": "concrete_pictorial",
+          "clause": "concrete and pictorial models"
+        },
+        {
+          "kind": "task",
+          "id": "describe_subtraction",
+          "clause": "describes subtraction"
+        },
+        {
+          "kind": "context",
+          "id": "taking_away",
+          "clause": "taking away"
+        }
+      ],
+      "requires_ignore": [
+        "involving"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -5768,8 +6437,26 @@
       "next_node_id": "mat_g1_na_q3_2",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "find_missing_number",
+          "clause": "Find the missing number"
+        },
+        {
+          "kind": "context",
+          "id": "addition_subtraction_sentences",
+          "clause": "addition or subtraction sentences"
+        },
+        {
+          "kind": "range",
+          "id": "numbers_up_to_20",
+          "clause": "numbers up to 20"
+        }
+      ],
+      "requires_ignore": [
+        "involving"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -6051,7 +6738,28 @@
       "next_node_id": "mat_g1_na_q3_3",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "write_equivalent_expression",
+          "clause": "Write an equivalent expression"
+        },
+        {
+          "kind": "context",
+          "id": "addition_subtraction_expression",
+          "clause": "addition or subtraction expression"
+        },
+        {
+          "kind": "context",
+          "id": "example_1",
+          "clause": "2+3 = 1+4"
+        },
+        {
+          "kind": "context",
+          "id": "example_2",
+          "clause": "10-5 = 6-1"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -6330,8 +7038,33 @@
       "next_node_id": "mat_g1_na_q3_4",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_subtraction",
+          "clause": "Solve subtraction problems"
+        },
+        {
+          "kind": "representation",
+          "id": "given_orally",
+          "clause": "given orally"
+        },
+        {
+          "kind": "representation",
+          "id": "in_pictures",
+          "clause": "in pictures"
+        },
+        {
+          "kind": "range",
+          "id": "less_than_20",
+          "clause": "numbers are less than 20"
+        }
+      ],
+      "requires_ignore": [
+        "where",
+        "both",
+        "or"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -6618,8 +7351,47 @@
       "next_node_id": "mat_g1_na_q3_5",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "subtract_numbers",
+          "clause": "Subtract numbers"
+        },
+        {
+          "kind": "range",
+          "id": "less_than_100",
+          "clause": "numbers are less than 100"
+        },
+        {
+          "kind": "representation",
+          "id": "concrete_models",
+          "clause": "concrete"
+        },
+        {
+          "kind": "representation",
+          "id": "pictorial_models",
+          "clause": "pictorial models"
+        },
+        {
+          "kind": "property",
+          "id": "without_regrouping",
+          "clause": "without regrouping"
+        },
+        {
+          "kind": "range",
+          "id": "sub_2d_1d",
+          "clause": "2-digit minus 1-digit numbers"
+        },
+        {
+          "kind": "range",
+          "id": "sub_2d_2d",
+          "clause": "2-digit minus 2-digit numbers"
+        }
+      ],
+      "requires_ignore": [
+        "where",
+        "both"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -6909,7 +7681,28 @@
       "next_node_id": "mat_g1_na_q3_6",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "subtract_numbers",
+          "clause": "Subtract numbers"
+        },
+        {
+          "kind": "task",
+          "id": "expressing_tens_ones",
+          "clause": "expressing minuends and subtrahends as tens and ones"
+        },
+        {
+          "kind": "representation",
+          "id": "expanded_form",
+          "clause": "expanded form"
+        },
+        {
+          "kind": "property",
+          "id": "without_regrouping",
+          "clause": "without regrouping"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -7210,8 +8003,47 @@
       "next_node_id": "mat_g1_na_q3_7",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "determine_next_term",
+          "clause": "Determine the next term/s"
+        },
+        {
+          "kind": "object",
+          "id": "repeating_pattern",
+          "clause": "repeating pattern"
+        },
+        {
+          "kind": "property",
+          "id": "rhythmic_properties",
+          "clause": "rhythmic properties"
+        },
+        {
+          "kind": "property",
+          "id": "visual_elements",
+          "clause": "visual elements"
+        },
+        {
+          "kind": "context",
+          "id": "arts",
+          "clause": "arts"
+        },
+        {
+          "kind": "range",
+          "id": "numbers_example",
+          "clause": "numbers: 2, 4, 2, 4__, __"
+        },
+        {
+          "kind": "range",
+          "id": "letters_example",
+          "clause": "letters: a, b, c, a, b, c, a, __, __"
+        }
+      ],
+      "requires_ignore": [
+        "patterns",
+        "could"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -7508,7 +8340,33 @@
       "next_node_id": "mat_g1_na_q4_0",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "create",
+          "clause": "Create"
+        },
+        {
+          "kind": "object",
+          "id": "repeating_patterns",
+          "clause": "repeating patterns"
+        },
+        {
+          "kind": "representation",
+          "id": "objects",
+          "clause": "objects"
+        },
+        {
+          "kind": "representation",
+          "id": "images",
+          "clause": "images"
+        },
+        {
+          "kind": "representation",
+          "id": "numbers",
+          "clause": "numbers"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -7792,8 +8650,26 @@
       "next_node_id": "mat_g1_dp_q3_1",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "collect_data",
+          "clause": "Collect data"
+        },
+        {
+          "kind": "object",
+          "id": "one_variable",
+          "clause": "one variable"
+        },
+        {
+          "kind": "task",
+          "id": "simple_interview",
+          "clause": "simple interview"
+        }
+      ],
+      "requires_ignore": [
+        "through"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -8080,7 +8956,23 @@
       "next_node_id": "mat_g1_dp_q3_2",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "present_data",
+          "clause": "Present data"
+        },
+        {
+          "kind": "representation",
+          "id": "pictograph",
+          "clause": "pictograph"
+        },
+        {
+          "kind": "property",
+          "id": "without_scale",
+          "clause": "without a scale"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -8366,7 +9258,23 @@
       "next_node_id": "mat_g1_dp_q3_3",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "interpret",
+          "clause": "Interpret"
+        },
+        {
+          "kind": "object",
+          "id": "pictograph",
+          "clause": "pictograph"
+        },
+        {
+          "kind": "property",
+          "id": "without_scale",
+          "clause": "without a scale"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -8659,7 +9567,28 @@
       "next_node_id": "mat_g2_dp_q3_0",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "organize_data",
+          "clause": "Organize data"
+        },
+        {
+          "kind": "object",
+          "id": "pictograph",
+          "clause": "pictograph"
+        },
+        {
+          "kind": "property",
+          "id": "without_scale",
+          "clause": "without a scale"
+        },
+        {
+          "kind": "representation",
+          "id": "table",
+          "clause": "table"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -8990,7 +9919,28 @@
       "next_node_id": "mat_g1_na_q4_1",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "illustrate",
+          "clause": "Illustrate"
+        },
+        {
+          "kind": "object",
+          "id": "half",
+          "clause": "1/2"
+        },
+        {
+          "kind": "object",
+          "id": "quarter",
+          "clause": "1/4"
+        },
+        {
+          "kind": "property",
+          "id": "parts_of_whole",
+          "clause": "parts of a whole"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -9306,7 +10256,28 @@
       "next_node_id": "mat_g1_na_q4_2",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "compare",
+          "clause": "Compare"
+        },
+        {
+          "kind": "object",
+          "id": "half",
+          "clause": "1/2"
+        },
+        {
+          "kind": "object",
+          "id": "quarter",
+          "clause": "1/4"
+        },
+        {
+          "kind": "representation",
+          "id": "models",
+          "clause": "models"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -9630,7 +10601,23 @@
       "next_node_id": "mat_g1_na_q4_3",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "count",
+          "clause": "Count"
+        },
+        {
+          "kind": "object",
+          "id": "halves",
+          "clause": "halves"
+        },
+        {
+          "kind": "object",
+          "id": "quarters",
+          "clause": "quarters"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -9971,7 +10958,38 @@
       "next_node_id": "mat_g1_na_q4_4",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "recognize",
+          "clause": "Recognize"
+        },
+        {
+          "kind": "object",
+          "id": "coins",
+          "clause": "coins"
+        },
+        {
+          "kind": "property",
+          "id": "excluding_centavo_coins",
+          "clause": "excluding centavo coins"
+        },
+        {
+          "kind": "object",
+          "id": "bills",
+          "clause": "bills"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_100",
+          "clause": "up to ₱100"
+        },
+        {
+          "kind": "representation",
+          "id": "notations",
+          "clause": "notations"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -10306,7 +11324,33 @@
       "next_node_id": "mat_g1_na_q4_5",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "determine_value",
+          "clause": "Determine the value"
+        },
+        {
+          "kind": "object",
+          "id": "number_of_bills",
+          "clause": "number of bills"
+        },
+        {
+          "kind": "object",
+          "id": "number_of_coins",
+          "clause": "number of coins"
+        },
+        {
+          "kind": "property",
+          "id": "excluding_centavo_coins",
+          "clause": "excluding centavo coins"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_100",
+          "clause": "up to ₱100"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -10640,7 +11684,38 @@
       "next_node_id": "mat_g1_na_q4_6",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "compare",
+          "clause": "Compare"
+        },
+        {
+          "kind": "property",
+          "id": "different_denominations",
+          "clause": "different denominations"
+        },
+        {
+          "kind": "object",
+          "id": "peso_coins",
+          "clause": "peso coins"
+        },
+        {
+          "kind": "property",
+          "id": "excluding_centavo_coins",
+          "clause": "excluding centavo coins"
+        },
+        {
+          "kind": "object",
+          "id": "bills",
+          "clause": "bills"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_100",
+          "clause": "up to ₱100"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -10984,8 +12059,48 @@
       "next_node_id": "mat_g2_na_q1_0",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_1_step_problems",
+          "clause": "Solve 1-step problems"
+        },
+        {
+          "kind": "context",
+          "id": "given_orally",
+          "clause": "given orally"
+        },
+        {
+          "kind": "representation",
+          "id": "in_pictures",
+          "clause": "in pictures"
+        },
+        {
+          "kind": "task",
+          "id": "addition_of_money",
+          "clause": "addition of money"
+        },
+        {
+          "kind": "range",
+          "id": "sum_up_to_100",
+          "clause": "sum is up to ₱100"
+        },
+        {
+          "kind": "task",
+          "id": "subtraction_of_money",
+          "clause": "subtraction of money"
+        },
+        {
+          "kind": "range",
+          "id": "amounts_less_than_100",
+          "clause": "amounts are less than ₱100"
+        }
+      ],
+      "requires_ignore": [
+        "involving",
+        "where",
+        "both"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -11315,7 +12430,48 @@
       "next_node_id": "mat_g1_mg_q4_1",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "identify_position",
+          "clause": "Identify the position"
+        },
+        {
+          "kind": "object",
+          "id": "objects",
+          "clause": "objects"
+        },
+        {
+          "kind": "task",
+          "id": "moved",
+          "clause": "moved"
+        },
+        {
+          "kind": "range",
+          "id": "half_turn",
+          "clause": "half turn"
+        },
+        {
+          "kind": "range",
+          "id": "quarter_turn",
+          "clause": "quarter turn"
+        },
+        {
+          "kind": "property",
+          "id": "clockwise",
+          "clause": "clockwise"
+        },
+        {
+          "kind": "property",
+          "id": "counter_clockwise",
+          "clause": "counter-clockwise direction"
+        },
+        {
+          "kind": "property",
+          "id": "initial_facing_direction",
+          "clause": "initial facing direction"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -11653,7 +12809,38 @@
       "next_node_id": "mat_g1_mg_q4_2",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "read_and_write",
+          "clause": "Read and write"
+        },
+        {
+          "kind": "object",
+          "id": "time",
+          "clause": "time"
+        },
+        {
+          "kind": "range",
+          "id": "hour",
+          "clause": "hour"
+        },
+        {
+          "kind": "range",
+          "id": "half_hour",
+          "clause": "half hour"
+        },
+        {
+          "kind": "range",
+          "id": "quarter_hour",
+          "clause": "quarter hour"
+        },
+        {
+          "kind": "representation",
+          "id": "analog_clock",
+          "clause": "analog clock"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -12025,7 +13212,28 @@
       "next_node_id": "mat_g1_mg_q4_3",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "give",
+          "clause": "Give"
+        },
+        {
+          "kind": "object",
+          "id": "days_of_the_week",
+          "clause": "days of the week"
+        },
+        {
+          "kind": "object",
+          "id": "months_of_the_year",
+          "clause": "months of the year"
+        },
+        {
+          "kind": "property",
+          "id": "correct_order",
+          "clause": "correct order"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -12142,7 +13350,6 @@
         "analog clock",
         "bigger",
         "bill",
-        "calendar",
         "clockwise",
         "coin",
         "compare",
@@ -12366,7 +13573,23 @@
       "next_node_id": "mat_g1_mg_q4_4",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "determine",
+          "clause": "Determine"
+        },
+        {
+          "kind": "object",
+          "id": "day_and_month_of_the_year",
+          "clause": "day and month of the year"
+        },
+        {
+          "kind": "representation",
+          "id": "calendar",
+          "clause": "calendar"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -12708,8 +13931,46 @@
       "next_node_id": "mat_g2_mg_q1_0",
       "sentence_max_words": 15,
       "number_format": "no commas, no thousands separator",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_problems",
+          "clause": "Solve problems"
+        },
+        {
+          "kind": "object",
+          "id": "time",
+          "clause": "time"
+        },
+        {
+          "kind": "range",
+          "id": "hour",
+          "clause": "hour"
+        },
+        {
+          "kind": "range",
+          "id": "half_hour",
+          "clause": "half hour"
+        },
+        {
+          "kind": "range",
+          "id": "quarter_hour",
+          "clause": "quarter hour"
+        },
+        {
+          "kind": "range",
+          "id": "days_in_a_week",
+          "clause": "days in a week"
+        },
+        {
+          "kind": "range",
+          "id": "months_in_a_year",
+          "clause": "months in a year"
+        }
+      ],
+      "requires_ignore": [
+        "involving"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -13075,7 +14336,18 @@
       "next_node_id": "mat_g2_na_q1_1",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "count",
+          "clause": "Count"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_1000",
+          "clause": "up to 1000"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -13438,7 +14710,23 @@
       "next_node_id": "mat_g2_na_q1_2",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "read_and_write",
+          "clause": "Read and write"
+        },
+        {
+          "kind": "object",
+          "id": "numerals",
+          "clause": "numerals"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_1000",
+          "clause": "up to 1000"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -13803,7 +15091,38 @@
       "next_node_id": "mat_g2_na_q1_3",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "recognize_and_represent",
+          "clause": "Recognize and represent"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_1000",
+          "clause": "up to 1000"
+        },
+        {
+          "kind": "representation",
+          "id": "concrete_models",
+          "clause": "concrete"
+        },
+        {
+          "kind": "representation",
+          "id": "pictorial_models",
+          "clause": "pictorial models"
+        },
+        {
+          "kind": "representation",
+          "id": "numerals",
+          "clause": "numerals"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -14181,7 +15500,48 @@
       "next_node_id": "mat_g2_na_q1_4",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "count_multiples",
+          "clause": "Count by"
+        },
+        {
+          "kind": "range",
+          "id": "twos",
+          "clause": "2s"
+        },
+        {
+          "kind": "range",
+          "id": "fives",
+          "clause": "5s"
+        },
+        {
+          "kind": "range",
+          "id": "tens",
+          "clause": "10s"
+        },
+        {
+          "kind": "range",
+          "id": "twenties",
+          "clause": "20s"
+        },
+        {
+          "kind": "range",
+          "id": "fifties",
+          "clause": "50s"
+        },
+        {
+          "kind": "range",
+          "id": "hundreds",
+          "clause": "100s"
+        },
+        {
+          "kind": "range",
+          "id": "not_beyond_1000",
+          "clause": "not beyond 1000"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -14553,8 +15913,31 @@
       "next_node_id": "mat_g2_na_q1_5",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "order_numbers",
+          "clause": "Order numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_1000",
+          "clause": "up to 1000"
+        },
+        {
+          "kind": "property",
+          "id": "smallest_to_largest",
+          "clause": "smallest to largest"
+        },
+        {
+          "kind": "property",
+          "id": "largest_to_smallest",
+          "clause": "vice versa"
+        }
+      ],
+      "requires_ignore": [
+        "from"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -14937,7 +16320,28 @@
       "next_node_id": "mat_g2_na_q1_6",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "describe_position",
+          "clause": "Describe the position"
+        },
+        {
+          "kind": "object",
+          "id": "objects",
+          "clause": "objects"
+        },
+        {
+          "kind": "object",
+          "id": "ordinal_numbers",
+          "clause": "ordinal numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_20th",
+          "clause": "up to 20th"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -15321,7 +16725,28 @@
       "next_node_id": "mat_g2_na_q1_7",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "determine_place_value",
+          "clause": "Determine the place value"
+        },
+        {
+          "kind": "object",
+          "id": "digit_in_3_digit_number",
+          "clause": "digit in a 3-digit number"
+        },
+        {
+          "kind": "task",
+          "id": "determine_value_of_digit",
+          "clause": "the value of a digit"
+        },
+        {
+          "kind": "task",
+          "id": "determine_digit_given_place_value",
+          "clause": "the digit of a number, given its place value"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -15705,7 +17130,33 @@
       "next_node_id": "mat_g2_na_q1_8",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "illustrate_addition",
+          "clause": "Illustrate addition"
+        },
+        {
+          "kind": "object",
+          "id": "two_digit",
+          "clause": "2-digit"
+        },
+        {
+          "kind": "object",
+          "id": "one_digit_numbers",
+          "clause": "1-digit numbers"
+        },
+        {
+          "kind": "representation",
+          "id": "counting_up",
+          "clause": "counting up"
+        },
+        {
+          "kind": "representation",
+          "id": "number_line",
+          "clause": "number line"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -16091,7 +17542,23 @@
       "next_node_id": "mat_g2_na_q1_9",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "add_numbers",
+          "clause": "Add numbers"
+        },
+        {
+          "kind": "range",
+          "id": "sums_up_to_1000",
+          "clause": "sums up to 1000"
+        },
+        {
+          "kind": "representation",
+          "id": "expanded_form",
+          "clause": "expanded form"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -16484,7 +17951,28 @@
       "next_node_id": "mat_g2_na_q1_10",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "add_numbers",
+          "clause": "Add numbers"
+        },
+        {
+          "kind": "range",
+          "id": "sums_up_to_1000",
+          "clause": "sums up to 1000"
+        },
+        {
+          "kind": "property",
+          "id": "with_regrouping",
+          "clause": "with"
+        },
+        {
+          "kind": "property",
+          "id": "without_regrouping",
+          "clause": "without regrouping"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -16878,8 +18366,46 @@
       "next_node_id": "mat_g2_na_q2_0",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "illustrate_properties",
+          "clause": "Illustrate"
+        },
+        {
+          "kind": "task",
+          "id": "apply_properties",
+          "clause": "apply"
+        },
+        {
+          "kind": "property",
+          "id": "properties_of_addition",
+          "clause": "properties of addition"
+        },
+        {
+          "kind": "range",
+          "id": "sums_up_to_1000",
+          "clause": "sums up to 1000"
+        },
+        {
+          "kind": "property",
+          "id": "identity_property",
+          "clause": "sum of zero and any number is equal to the number"
+        },
+        {
+          "kind": "property",
+          "id": "commutative_property",
+          "clause": "changing the order of the addends does not change the sum"
+        },
+        {
+          "kind": "property",
+          "id": "associative_property",
+          "clause": "changing the grouping of the addends does not change the sum"
+        }
+      ],
+      "requires_ignore": [
+        "following"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -17248,7 +18774,33 @@
       "next_node_id": "mat_g2_mg_q1_1",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "represent",
+          "clause": "Represent"
+        },
+        {
+          "kind": "task",
+          "id": "describe",
+          "clause": "describe"
+        },
+        {
+          "kind": "object",
+          "id": "circles",
+          "clause": "circles"
+        },
+        {
+          "kind": "object",
+          "id": "half_circles",
+          "clause": "half circles"
+        },
+        {
+          "kind": "object",
+          "id": "quarter_circles",
+          "clause": "quarter circles"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -17622,7 +19174,63 @@
       "next_node_id": "mat_g2_mg_q1_2",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "compose_figures",
+          "clause": "Compose"
+        },
+        {
+          "kind": "task",
+          "id": "decompose_figures",
+          "clause": "decompose"
+        },
+        {
+          "kind": "object",
+          "id": "composite_figures",
+          "clause": "composite figures made up"
+        },
+        {
+          "kind": "object",
+          "id": "squares",
+          "clause": "squares"
+        },
+        {
+          "kind": "object",
+          "id": "rectangles",
+          "clause": "rectangles"
+        },
+        {
+          "kind": "object",
+          "id": "triangles",
+          "clause": "triangles"
+        },
+        {
+          "kind": "object",
+          "id": "circles",
+          "clause": "circles"
+        },
+        {
+          "kind": "object",
+          "id": "half_circles",
+          "clause": "half circles"
+        },
+        {
+          "kind": "object",
+          "id": "quarter_circles",
+          "clause": "quarter circles"
+        },
+        {
+          "kind": "representation",
+          "id": "cut_outs",
+          "clause": "cut-outs"
+        },
+        {
+          "kind": "representation",
+          "id": "square_grids",
+          "clause": "square grids"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -18003,7 +19611,48 @@
       "next_node_id": "mat_g2_mg_q2_0",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "describe_effect",
+          "clause": "Describe"
+        },
+        {
+          "kind": "task",
+          "id": "draw_effect",
+          "clause": "draw the effect"
+        },
+        {
+          "kind": "property",
+          "id": "one_direction",
+          "clause": "one-direction"
+        },
+        {
+          "kind": "property",
+          "id": "multi_step",
+          "clause": "multi-step"
+        },
+        {
+          "kind": "object",
+          "id": "slide",
+          "clause": "slide"
+        },
+        {
+          "kind": "object",
+          "id": "translation",
+          "clause": "translation"
+        },
+        {
+          "kind": "object",
+          "id": "basic_shapes",
+          "clause": "basic shapes"
+        },
+        {
+          "kind": "object",
+          "id": "basic_figures",
+          "clause": "figures"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -18419,7 +20068,58 @@
       "next_node_id": "mat_g2_na_q2_1",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "determine",
+          "clause": "Determine"
+        },
+        {
+          "kind": "task",
+          "id": "write_value",
+          "clause": "write the value"
+        },
+        {
+          "kind": "object",
+          "id": "number_of_bills",
+          "clause": "number of bills"
+        },
+        {
+          "kind": "object",
+          "id": "number_of_coins",
+          "clause": "number of coins"
+        },
+        {
+          "kind": "object",
+          "id": "combination_of_bills_and_coins",
+          "clause": "combination of bills and coins"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_1000",
+          "clause": "up to ₱1000"
+        },
+        {
+          "kind": "object",
+          "id": "centavo_coins_only",
+          "clause": "centavo coins only"
+        },
+        {
+          "kind": "object",
+          "id": "peso_coins_only",
+          "clause": "peso coins only"
+        },
+        {
+          "kind": "object",
+          "id": "peso_bills_only",
+          "clause": "peso bills only"
+        },
+        {
+          "kind": "object",
+          "id": "combined_peso_coins_and_peso_bills",
+          "clause": "combined peso coins and peso bills"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -18824,7 +20524,43 @@
       "next_node_id": "mat_g2_na_q2_2",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "compare",
+          "clause": "Compare"
+        },
+        {
+          "kind": "property",
+          "id": "values",
+          "clause": "values"
+        },
+        {
+          "kind": "property",
+          "id": "different",
+          "clause": "different"
+        },
+        {
+          "kind": "object",
+          "id": "denominations",
+          "clause": "denominations"
+        },
+        {
+          "kind": "object",
+          "id": "peso_coins",
+          "clause": "peso coins"
+        },
+        {
+          "kind": "object",
+          "id": "bills",
+          "clause": "bills"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_1000",
+          "clause": "up to ₱1000"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -19231,7 +20967,43 @@
       "next_node_id": "mat_g2_na_q2_3",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_problems",
+          "clause": "Solve problems"
+        },
+        {
+          "kind": "context",
+          "id": "involving",
+          "clause": "involving"
+        },
+        {
+          "kind": "task",
+          "id": "addition",
+          "clause": "addition"
+        },
+        {
+          "kind": "range",
+          "id": "sums_up_to_1000",
+          "clause": "sums up to 1000"
+        },
+        {
+          "kind": "task",
+          "id": "problems",
+          "clause": "problems"
+        },
+        {
+          "kind": "context",
+          "id": "money",
+          "clause": "money"
+        },
+        {
+          "kind": "property",
+          "id": "regrouping",
+          "clause": "with and without regrouping"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -19648,7 +21420,28 @@
       "next_node_id": "mat_g2_na_q2_4",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "illustrate_subtraction",
+          "clause": "Illustrate subtraction"
+        },
+        {
+          "kind": "range",
+          "id": "2_digit_by_1_digit",
+          "clause": "2-digit by 1-digit"
+        },
+        {
+          "kind": "representation",
+          "id": "number_line",
+          "clause": "number line"
+        },
+        {
+          "kind": "property",
+          "id": "inverse_of_addition",
+          "clause": "inverse of addition"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -20068,8 +21861,36 @@
       "next_node_id": "mat_g2_na_q2_5",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "subtract_numbers",
+          "clause": "Subtract numbers"
+        },
+        {
+          "kind": "range",
+          "id": "less_than_100",
+          "clause": "both numbers are less than 100"
+        },
+        {
+          "kind": "property",
+          "id": "with_regrouping",
+          "clause": "with regrouping"
+        },
+        {
+          "kind": "range",
+          "id": "2_digit_minus_1_digit",
+          "clause": "2-digit minus 1-digit numbers"
+        },
+        {
+          "kind": "range",
+          "id": "2_digit_minus_2_digit",
+          "clause": "2-digit minus 2-digit numbers"
+        }
+      ],
+      "requires_ignore": [
+        "where"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -20484,8 +22305,41 @@
       "next_node_id": "mat_g2_na_q2_6",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_problems",
+          "clause": "Solve problems"
+        },
+        {
+          "kind": "context",
+          "id": "given_orally",
+          "clause": "given orally"
+        },
+        {
+          "kind": "representation",
+          "id": "in_pictures",
+          "clause": "in pictures"
+        },
+        {
+          "kind": "context",
+          "id": "involving_subtraction",
+          "clause": "involving subtraction"
+        },
+        {
+          "kind": "range",
+          "id": "less_than_100",
+          "clause": "both numbers are less than 100"
+        },
+        {
+          "kind": "property",
+          "id": "regrouping",
+          "clause": "with and without regrouping"
+        }
+      ],
+      "requires_ignore": [
+        "where"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -20902,8 +22756,26 @@
       "next_node_id": "mat_g2_na_q2_7",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "subtract_numbers",
+          "clause": "Subtract numbers"
+        },
+        {
+          "kind": "range",
+          "id": "less_than_1000",
+          "clause": "both numbers are less than 1000"
+        },
+        {
+          "kind": "property",
+          "id": "regrouping",
+          "clause": "with and without regrouping"
+        }
+      ],
+      "requires_ignore": [
+        "where"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -21328,8 +23200,36 @@
       "next_node_id": "mat_g2_na_q2_8",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_problems",
+          "clause": "Solve 1- and 2-step problems"
+        },
+        {
+          "kind": "context",
+          "id": "involving_subtraction",
+          "clause": "involving subtraction"
+        },
+        {
+          "kind": "range",
+          "id": "less_than_1000",
+          "clause": "both numbers are less than 1000"
+        },
+        {
+          "kind": "context",
+          "id": "problems_money",
+          "clause": "problems involving money"
+        },
+        {
+          "kind": "property",
+          "id": "regrouping",
+          "clause": "with and without regrouping"
+        }
+      ],
+      "requires_ignore": [
+        "where"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -21761,7 +23661,58 @@
       "next_node_id": "mat_g2_na_q2_9",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "determine",
+          "clause": "Determine"
+        },
+        {
+          "kind": "object",
+          "id": "next_term",
+          "clause": "next term/s"
+        },
+        {
+          "kind": "property",
+          "id": "increasing_decreasing",
+          "clause": "increasing or decreasing"
+        },
+        {
+          "kind": "object",
+          "id": "patterns",
+          "clause": "patterns"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "object",
+          "id": "letters",
+          "clause": "letters"
+        },
+        {
+          "kind": "property",
+          "id": "rhythmic_properties",
+          "clause": "rhythmic properties"
+        },
+        {
+          "kind": "object",
+          "id": "visual_elements",
+          "clause": "visual elements"
+        },
+        {
+          "kind": "context",
+          "id": "arts",
+          "clause": "arts"
+        },
+        {
+          "kind": "property",
+          "id": "repetitions",
+          "clause": "repetitions"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -22191,7 +24142,23 @@
       "next_node_id": "mat_g2_na_q3_0",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "create",
+          "clause": "Create"
+        },
+        {
+          "kind": "property",
+          "id": "increasing_decreasing",
+          "clause": "increasing or decreasing"
+        },
+        {
+          "kind": "object",
+          "id": "patterns",
+          "clause": "patterns"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -22603,7 +24570,48 @@
       "next_node_id": "mat_g2_mg_q2_1",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "measure",
+          "clause": "Measure"
+        },
+        {
+          "kind": "task",
+          "id": "compare",
+          "clause": "compare"
+        },
+        {
+          "kind": "property",
+          "id": "lengths",
+          "clause": "lengths"
+        },
+        {
+          "kind": "object",
+          "id": "objects",
+          "clause": "objects"
+        },
+        {
+          "kind": "property",
+          "id": "meters",
+          "clause": "meters (m)"
+        },
+        {
+          "kind": "property",
+          "id": "centimeters",
+          "clause": "centimeters (cm)"
+        },
+        {
+          "kind": "property",
+          "id": "distance",
+          "clause": "distance"
+        },
+        {
+          "kind": "object",
+          "id": "measuring_tools",
+          "clause": "measuring tools"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -23005,7 +25013,53 @@
       "next_node_id": "mat_g2_mg_q2_2",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "identify",
+          "clause": "Identify"
+        },
+        {
+          "kind": "task",
+          "id": "use",
+          "clause": "use"
+        },
+        {
+          "kind": "object",
+          "id": "unit",
+          "clause": "unit"
+        },
+        {
+          "kind": "property",
+          "id": "m_or_cm",
+          "clause": "m or cm"
+        },
+        {
+          "kind": "task",
+          "id": "measure",
+          "clause": "measure"
+        },
+        {
+          "kind": "property",
+          "id": "length",
+          "clause": "length"
+        },
+        {
+          "kind": "object",
+          "id": "object",
+          "clause": "object"
+        },
+        {
+          "kind": "property",
+          "id": "distance",
+          "clause": "distance"
+        },
+        {
+          "kind": "range",
+          "id": "between_two_locations",
+          "clause": "between two locations"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -23414,7 +25468,33 @@
       "next_node_id": "mat_g2_mg_q2_3",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "estimate",
+          "clause": "Estimate"
+        },
+        {
+          "kind": "property",
+          "id": "length",
+          "clause": "length"
+        },
+        {
+          "kind": "property",
+          "id": "meters",
+          "clause": "meters"
+        },
+        {
+          "kind": "property",
+          "id": "centimeters",
+          "clause": "centimeters"
+        },
+        {
+          "kind": "property",
+          "id": "distance",
+          "clause": "distance"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -23817,8 +25897,26 @@
       "next_node_id": "mat_g2_mg_q4_0",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_problems",
+          "clause": "Solve problems"
+        },
+        {
+          "kind": "property",
+          "id": "length",
+          "clause": "length"
+        },
+        {
+          "kind": "property",
+          "id": "distance",
+          "clause": "distance"
+        }
+      ],
+      "requires_ignore": [
+        "involving"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -24273,8 +26371,60 @@
       "next_node_id": "mat_g2_na_q3_1",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "count_number_of",
+          "clause": "Count the number of"
+        },
+        {
+          "kind": "object",
+          "id": "concrete_objects",
+          "clause": "concrete objects"
+        },
+        {
+          "kind": "context",
+          "id": "group",
+          "clause": "group"
+        },
+        {
+          "kind": "task",
+          "id": "repeated_addition",
+          "clause": "repeated addition"
+        },
+        {
+          "kind": "task",
+          "id": "create_equal_groups",
+          "clause": "create equal groups"
+        },
+        {
+          "kind": "representation",
+          "id": "language",
+          "clause": "language"
+        },
+        {
+          "kind": "representation",
+          "id": "5_groups_of_3",
+          "clause": "5 groups of 3"
+        },
+        {
+          "kind": "representation",
+          "id": "5_threes",
+          "clause": "5 threes"
+        }
+      ],
+      "requires_ignore": [
+        "in",
+        "a",
+        "by",
+        "and",
+        "using",
+        "such",
+        "as",
+        "'",
+        "and",
+        "'"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -25250,8 +27400,27 @@
       "next_node_id": "mat_g2_na_q3_3",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "multiply",
+          "clause": "Multiply"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "range",
+          "id": "tables_2_3_4_5_10",
+          "clause": "2, 3, 4, 5, and 10 multiplication tables"
+        }
+      ],
+      "requires_ignore": [
+        "using",
+        "the"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -25706,8 +27875,31 @@
       "next_node_id": "mat_g2_na_q3_4",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_multiplication_problems",
+          "clause": "Solve multiplication problems"
+        },
+        {
+          "kind": "range",
+          "id": "tables_2_3_4_5_10",
+          "clause": "2, 3, 4, 5, and 10 multiplication tables"
+        },
+        {
+          "kind": "context",
+          "id": "money",
+          "clause": "money"
+        }
+      ],
+      "requires_ignore": [
+        "using",
+        "the",
+        ",",
+        "including",
+        "problems",
+        "involving"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -26177,8 +28369,38 @@
       "next_node_id": "mat_g2_na_q3_5",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "illustrate_division",
+          "clause": "Illustrate division"
+        },
+        {
+          "kind": "task",
+          "id": "equal_distribution",
+          "clause": "equal distribution"
+        },
+        {
+          "kind": "property",
+          "id": "number_of",
+          "clause": "number of"
+        },
+        {
+          "kind": "object",
+          "id": "objects",
+          "clause": "objects"
+        },
+        {
+          "kind": "context",
+          "id": "several_groups",
+          "clause": "several groups"
+        }
+      ],
+      "requires_ignore": [
+        "through",
+        "a",
+        "into"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -26660,8 +28882,66 @@
       "next_node_id": "mat_g2_na_q3_6",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "illustrate_and_write",
+          "clause": "Illustrate and write"
+        },
+        {
+          "kind": "object",
+          "id": "division_expressions",
+          "clause": "division expressions"
+        },
+        {
+          "kind": "representation",
+          "id": "concrete_and_pictorial_models",
+          "clause": "concrete and pictorial models"
+        },
+        {
+          "kind": "representation",
+          "id": "numerals",
+          "clause": "numerals"
+        },
+        {
+          "kind": "task",
+          "id": "modelling_division",
+          "clause": "modelling division"
+        },
+        {
+          "kind": "task",
+          "id": "equal_sharing",
+          "clause": "equal sharing"
+        },
+        {
+          "kind": "task",
+          "id": "formation_of_equal_groups",
+          "clause": "formation of equal groups"
+        },
+        {
+          "kind": "object",
+          "id": "objects",
+          "clause": "objects"
+        },
+        {
+          "kind": "task",
+          "id": "repeated_subtraction",
+          "clause": "repeated subtraction"
+        }
+      ],
+      "requires_ignore": [
+        "using",
+        "a",
+        "variety",
+        "of",
+        "and",
+        ",",
+        "in",
+        "as",
+        "or",
+        "of",
+        "and"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -27133,8 +29413,27 @@
       "next_node_id": "mat_g2_na_q3_7",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "divide",
+          "clause": "Divide"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "range",
+          "id": "tables_2_3_4_5_10",
+          "clause": "2, 3 4, 5, and 10 multiplication tables"
+        }
+      ],
+      "requires_ignore": [
+        "using",
+        "the"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -27612,8 +29911,46 @@
       "next_node_id": "mat_g2_na_q3_8",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "find",
+          "clause": "Find"
+        },
+        {
+          "kind": "object",
+          "id": "missing_number",
+          "clause": "missing number"
+        },
+        {
+          "kind": "object",
+          "id": "number_sentence",
+          "clause": "number sentence"
+        },
+        {
+          "kind": "task",
+          "id": "multiplication",
+          "clause": "multiplication"
+        },
+        {
+          "kind": "task",
+          "id": "division",
+          "clause": "division"
+        },
+        {
+          "kind": "range",
+          "id": "factors_2_3_4_5_10",
+          "clause": "2, 3, 4, 5, and 10"
+        }
+      ],
+      "requires_ignore": [
+        "the",
+        "in",
+        "a",
+        "involving",
+        "or",
+        "by"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -28097,8 +30434,32 @@
       "next_node_id": "mat_g2_na_q3_9",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "distinguish",
+          "clause": "Distinguish"
+        },
+        {
+          "kind": "object",
+          "id": "even_and_odd_numbers",
+          "clause": "even and odd numbers"
+        },
+        {
+          "kind": "task",
+          "id": "division",
+          "clause": "division"
+        },
+        {
+          "kind": "range",
+          "id": "divisor_2",
+          "clause": "2"
+        }
+      ],
+      "requires_ignore": [
+        "using",
+        "by"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -28576,8 +30937,31 @@
       "next_node_id": "mat_g2_na_q4_0",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_division_problems",
+          "clause": "Solve division problems"
+        },
+        {
+          "kind": "range",
+          "id": "tables_2_3_4_5_10",
+          "clause": "2, 3, 4, 5, and 10 multiplication tables"
+        },
+        {
+          "kind": "context",
+          "id": "money",
+          "clause": "money"
+        }
+      ],
+      "requires_ignore": [
+        "using",
+        "the",
+        ",",
+        "including",
+        "problems",
+        "involving"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -29014,8 +31398,51 @@
       "next_node_id": "mat_g2_dp_q3_1",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "present",
+          "clause": "Present"
+        },
+        {
+          "kind": "object",
+          "id": "raw_data",
+          "clause": "raw data"
+        },
+        {
+          "kind": "object",
+          "id": "data",
+          "clause": "data"
+        },
+        {
+          "kind": "representation",
+          "id": "tabular_form",
+          "clause": "tabular form"
+        },
+        {
+          "kind": "representation",
+          "id": "pictograph",
+          "clause": "pictograph"
+        },
+        {
+          "kind": "property",
+          "id": "scale",
+          "clause": "scale"
+        },
+        {
+          "kind": "task",
+          "id": "vice_versa",
+          "clause": "vice versa"
+        }
+      ],
+      "requires_ignore": [
+        ",",
+        "or",
+        "in",
+        "a",
+        "with",
+        "or"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -29442,8 +31869,41 @@
       "next_node_id": "mat_g3_dp_q3_0",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "interpret",
+          "clause": "Interpret"
+        },
+        {
+          "kind": "object",
+          "id": "data",
+          "clause": "data"
+        },
+        {
+          "kind": "representation",
+          "id": "tabular_form",
+          "clause": "tabular form"
+        },
+        {
+          "kind": "representation",
+          "id": "pictograph",
+          "clause": "pictograph"
+        },
+        {
+          "kind": "property",
+          "id": "scale",
+          "clause": "scale"
+        }
+      ],
+      "requires_ignore": [
+        "in",
+        "and",
+        "a",
+        "with",
+        "or",
+        "without"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -29942,7 +32402,28 @@
       "next_node_id": "mat_g2_na_q4_1",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "represent",
+          "clause": "Represent"
+        },
+        {
+          "kind": "task",
+          "id": "identify",
+          "clause": "identify"
+        },
+        {
+          "kind": "object",
+          "id": "unit_fractions",
+          "clause": "unit fractions"
+        },
+        {
+          "kind": "property",
+          "id": "denominators_2_3_4_5_6_8",
+          "clause": "with denominators 2, 3, 4, 5, 6, and 8"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -30439,7 +32920,28 @@
       "next_node_id": "mat_g2_na_q4_2",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "read",
+          "clause": "Read"
+        },
+        {
+          "kind": "task",
+          "id": "write",
+          "clause": "write"
+        },
+        {
+          "kind": "object",
+          "id": "unit_fractions",
+          "clause": "unit fractions"
+        },
+        {
+          "kind": "representation",
+          "id": "fraction_notation",
+          "clause": "fraction notation"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -30935,7 +33437,28 @@
       "next_node_id": "mat_g2_na_q4_3",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "order",
+          "clause": "Order"
+        },
+        {
+          "kind": "object",
+          "id": "unit_fractions",
+          "clause": "unit fractions"
+        },
+        {
+          "kind": "property",
+          "id": "smallest_to_largest",
+          "clause": "smallest to largest"
+        },
+        {
+          "kind": "property",
+          "id": "vice_versa",
+          "clause": "vice versa"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -31449,7 +33972,48 @@
       "next_node_id": "mat_g2_na_q4_4",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "represent",
+          "clause": "Represent"
+        },
+        {
+          "kind": "task",
+          "id": "identify",
+          "clause": "identify"
+        },
+        {
+          "kind": "object",
+          "id": "similar_fractions",
+          "clause": "similar fractions"
+        },
+        {
+          "kind": "property",
+          "id": "denominators_2_3_4_5_6_8",
+          "clause": "with denominators 2, 3, 4, 5, 6, and 8"
+        },
+        {
+          "kind": "representation",
+          "id": "groups_of_objects",
+          "clause": "groups of objects"
+        },
+        {
+          "kind": "representation",
+          "id": "fraction_charts",
+          "clause": "fraction charts"
+        },
+        {
+          "kind": "representation",
+          "id": "fraction_tiles",
+          "clause": "fraction tiles"
+        },
+        {
+          "kind": "representation",
+          "id": "number_line",
+          "clause": "the number line"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -31953,7 +34517,28 @@
       "next_node_id": "mat_g2_na_q4_5",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "read",
+          "clause": "Read"
+        },
+        {
+          "kind": "task",
+          "id": "write",
+          "clause": "write"
+        },
+        {
+          "kind": "object",
+          "id": "similar_fractions",
+          "clause": "similar fractions"
+        },
+        {
+          "kind": "representation",
+          "id": "fraction_notation",
+          "clause": "fraction notation"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -32459,7 +35044,28 @@
       "next_node_id": "mat_g3_na_q1_0",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "order",
+          "clause": "Order"
+        },
+        {
+          "kind": "object",
+          "id": "similar_fractions",
+          "clause": "similar fractions"
+        },
+        {
+          "kind": "property",
+          "id": "smallest_to_largest",
+          "clause": "smallest to largest"
+        },
+        {
+          "kind": "property",
+          "id": "vice_versa",
+          "clause": "vice versa"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -32930,8 +35536,36 @@
       "next_node_id": "mat_g2_mg_q4_1",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "describe",
+          "clause": "Describe"
+        },
+        {
+          "kind": "property",
+          "id": "duration_of_an_event",
+          "clause": "duration of an event"
+        },
+        {
+          "kind": "property",
+          "id": "number_of_days",
+          "clause": "number of days"
+        },
+        {
+          "kind": "property",
+          "id": "number_of_weeks",
+          "clause": "weeks"
+        },
+        {
+          "kind": "representation",
+          "id": "calendar",
+          "clause": "calendar"
+        }
+      ],
+      "requires_ignore": [
+        "terms"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "a.m.",
@@ -33405,7 +36039,43 @@
       "next_node_id": "mat_g2_mg_q4_2",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "read",
+          "clause": "Read"
+        },
+        {
+          "kind": "task",
+          "id": "write",
+          "clause": "write"
+        },
+        {
+          "kind": "object",
+          "id": "time",
+          "clause": "time"
+        },
+        {
+          "kind": "property",
+          "id": "hours",
+          "clause": "hours"
+        },
+        {
+          "kind": "property",
+          "id": "minutes",
+          "clause": "minutes"
+        },
+        {
+          "kind": "property",
+          "id": "am_and_pm",
+          "clause": "a.m. and p.m."
+        },
+        {
+          "kind": "representation",
+          "id": "analog_clock",
+          "clause": "analog clock"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -33883,8 +36553,41 @@
       "next_node_id": "mat_g2_mg_q4_3",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_problems",
+          "clause": "Solve problems"
+        },
+        {
+          "kind": "property",
+          "id": "elapsed_time",
+          "clause": "elapsed time"
+        },
+        {
+          "kind": "property",
+          "id": "minutes_in_an_hour",
+          "clause": "minutes in an hour"
+        },
+        {
+          "kind": "property",
+          "id": "hours_in_a_day",
+          "clause": "hours in a day"
+        },
+        {
+          "kind": "property",
+          "id": "days_in_a_week",
+          "clause": "days in a week"
+        },
+        {
+          "kind": "representation",
+          "id": "timetables",
+          "clause": "timetables"
+        }
+      ],
+      "requires_ignore": [
+        "involving"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "area",
@@ -34372,7 +37075,48 @@
       "next_node_id": "mat_g2_mg_q4_4",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "identify",
+          "clause": "Identify"
+        },
+        {
+          "kind": "task",
+          "id": "explain",
+          "clause": "explain"
+        },
+        {
+          "kind": "property",
+          "id": "difference_between",
+          "clause": "difference between"
+        },
+        {
+          "kind": "object",
+          "id": "straight_lines",
+          "clause": "straight"
+        },
+        {
+          "kind": "object",
+          "id": "curved_lines",
+          "clause": "curved lines"
+        },
+        {
+          "kind": "object",
+          "id": "flat_surfaces",
+          "clause": "flat"
+        },
+        {
+          "kind": "object",
+          "id": "curved_surfaces",
+          "clause": "curved surfaces"
+        },
+        {
+          "kind": "object",
+          "id": "3_dimensional_objects",
+          "clause": "3-dimensional objects"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -34855,7 +37599,33 @@
       "next_node_id": "mat_g2_mg_q4_5",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "identify",
+          "clause": "Identify"
+        },
+        {
+          "kind": "task",
+          "id": "measure",
+          "clause": "measure"
+        },
+        {
+          "kind": "property",
+          "id": "perimeter",
+          "clause": "perimeter"
+        },
+        {
+          "kind": "object",
+          "id": "plane_figure",
+          "clause": "plane figure"
+        },
+        {
+          "kind": "representation",
+          "id": "tools",
+          "clause": "tools"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -35335,7 +38105,33 @@
       "next_node_id": "mat_g2_mg_q4_6",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "find",
+          "clause": "Find"
+        },
+        {
+          "kind": "property",
+          "id": "perimeter",
+          "clause": "perimeter"
+        },
+        {
+          "kind": "object",
+          "id": "triangles",
+          "clause": "triangles"
+        },
+        {
+          "kind": "object",
+          "id": "squares",
+          "clause": "squares"
+        },
+        {
+          "kind": "object",
+          "id": "rectangles",
+          "clause": "rectangles"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -35817,8 +38613,36 @@
       "next_node_id": "mat_g3_mg_q1_0",
       "sentence_max_words": 18,
       "number_format": "no commas for numbers up to 1000",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_problems",
+          "clause": "Solve problems"
+        },
+        {
+          "kind": "property",
+          "id": "perimeter",
+          "clause": "perimeter"
+        },
+        {
+          "kind": "object",
+          "id": "triangles",
+          "clause": "triangles"
+        },
+        {
+          "kind": "object",
+          "id": "squares",
+          "clause": "squares"
+        },
+        {
+          "kind": "object",
+          "id": "rectangles",
+          "clause": "rectangles"
+        }
+      ],
+      "requires_ignore": [
+        "involving"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "area",
@@ -36353,7 +39177,33 @@
       "next_node_id": "mat_g3_na_q1_1",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "represent",
+          "clause": "Represent"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_10000",
+          "clause": "up to 10 000"
+        },
+        {
+          "kind": "representation",
+          "id": "pictorial_models",
+          "clause": "pictorial models"
+        },
+        {
+          "kind": "representation",
+          "id": "numerals",
+          "clause": "numerals"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -36891,7 +39741,38 @@
       "next_node_id": "mat_g3_na_q1_2",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "read",
+          "clause": "Read"
+        },
+        {
+          "kind": "task",
+          "id": "write",
+          "clause": "write"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_10000",
+          "clause": "up to 10 000"
+        },
+        {
+          "kind": "representation",
+          "id": "numerals",
+          "clause": "numerals"
+        },
+        {
+          "kind": "representation",
+          "id": "words",
+          "clause": "words"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -37429,7 +40310,33 @@
       "next_node_id": "mat_g3_na_q1_3",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "describe",
+          "clause": "Describe"
+        },
+        {
+          "kind": "property",
+          "id": "position",
+          "clause": "position"
+        },
+        {
+          "kind": "object",
+          "id": "objects",
+          "clause": "objects"
+        },
+        {
+          "kind": "representation",
+          "id": "ordinal_numbers",
+          "clause": "ordinal numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_100th",
+          "clause": "up to 100th"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -37973,7 +40880,38 @@
       "next_node_id": "mat_g3_na_q1_4",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "determine",
+          "clause": "Determine"
+        },
+        {
+          "kind": "property",
+          "id": "place_value_of_digit",
+          "clause": "place value of a digit"
+        },
+        {
+          "kind": "object",
+          "id": "4_digit_number",
+          "clause": "4-digit number"
+        },
+        {
+          "kind": "property",
+          "id": "value_of_digit",
+          "clause": "value of a digit"
+        },
+        {
+          "kind": "property",
+          "id": "digit_of_number",
+          "clause": "digit of number"
+        },
+        {
+          "kind": "property",
+          "id": "given_place_value",
+          "clause": "place value"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -38528,7 +41466,33 @@
       "next_node_id": "mat_g3_na_q1_5",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "round",
+          "clause": "Round"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "property",
+          "id": "nearest_ten",
+          "clause": "nearest ten"
+        },
+        {
+          "kind": "property",
+          "id": "hundred",
+          "clause": "hundred"
+        },
+        {
+          "kind": "property",
+          "id": "thousand",
+          "clause": "thousand"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -39083,7 +42047,28 @@
       "next_node_id": "mat_g3_na_q1_6",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "compare",
+          "clause": "Compare"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_10000",
+          "clause": "up to 10 000"
+        },
+        {
+          "kind": "representation",
+          "id": "symbols",
+          "clause": "symbols =, >, and <"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -39632,7 +42617,33 @@
       "next_node_id": "mat_g3_na_q2_0",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "order",
+          "clause": "Order"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_10000",
+          "clause": "up to 10 000"
+        },
+        {
+          "kind": "property",
+          "id": "smallest_to_largest",
+          "clause": "smallest to largest"
+        },
+        {
+          "kind": "property",
+          "id": "vice_versa",
+          "clause": "vice versa"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -44099,7 +47110,53 @@
       "next_node_id": "mat_g3_na_q2_1",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "read",
+          "clause": "Read"
+        },
+        {
+          "kind": "task",
+          "id": "write",
+          "clause": "write"
+        },
+        {
+          "kind": "object",
+          "id": "money",
+          "clause": "money"
+        },
+        {
+          "kind": "representation",
+          "id": "words",
+          "clause": "words"
+        },
+        {
+          "kind": "representation",
+          "id": "philippine_currency_symbols",
+          "clause": "Philippine currency symbols"
+        },
+        {
+          "kind": "representation",
+          "id": "peso_sign",
+          "clause": "₱"
+        },
+        {
+          "kind": "representation",
+          "id": "php",
+          "clause": "PhP"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_peso_10000",
+          "clause": "up to ₱10 000"
+        },
+        {
+          "kind": "representation",
+          "id": "centavo_sign",
+          "clause": "centavo sign"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -44674,7 +47731,38 @@
       "next_node_id": "mat_g3_na_q2_2",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "add",
+          "clause": "Add"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "range",
+          "id": "sums_up_to_10000",
+          "clause": "sums up to 10 000"
+        },
+        {
+          "kind": "property",
+          "id": "with_regrouping",
+          "clause": "with"
+        },
+        {
+          "kind": "property",
+          "id": "without_regrouping",
+          "clause": "without"
+        },
+        {
+          "kind": "task",
+          "id": "regrouping",
+          "clause": "regrouping"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -45258,7 +48346,28 @@
       "next_node_id": "mat_g3_na_q2_3",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "estimate",
+          "clause": "Estimate"
+        },
+        {
+          "kind": "property",
+          "id": "sum",
+          "clause": "sum"
+        },
+        {
+          "kind": "object",
+          "id": "addends",
+          "clause": "addends"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_4_digits",
+          "clause": "up to 4 digits"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "L",
@@ -45838,8 +48947,36 @@
       "next_node_id": "mat_g3_na_q2_4",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_problems",
+          "clause": "Solve problems"
+        },
+        {
+          "kind": "property",
+          "id": "addition",
+          "clause": "addition"
+        },
+        {
+          "kind": "object",
+          "id": "numbers",
+          "clause": "numbers"
+        },
+        {
+          "kind": "range",
+          "id": "sums_up_to_10000",
+          "clause": "sums up to 10 000"
+        },
+        {
+          "kind": "context",
+          "id": "problems_involving_money",
+          "clause": "problems involving money"
+        }
+      ],
+      "requires_ignore": [
+        "involving"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "axis",
@@ -46420,8 +49557,30 @@
       "next_node_id": "mat_g3_na_q2_5",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "subtract_numbers",
+          "clause": "Subtract numbers"
+        },
+        {
+          "kind": "range",
+          "id": "less_than_10_000",
+          "clause": "less than 10 000"
+        },
+        {
+          "kind": "property",
+          "id": "with_and_without_regrouping",
+          "clause": "with and without regrouping"
+        }
+      ],
+      "requires_ignore": [
+        "where",
+        "both",
+        "numbers",
+        "are",
+        ","
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "axis",
@@ -47009,8 +50168,26 @@
       "next_node_id": "mat_g3_na_q2_6",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "estimate_difference",
+          "clause": "Estimate the difference"
+        },
+        {
+          "kind": "object",
+          "id": "two_numbers",
+          "clause": "two numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_4_digits",
+          "clause": "up to 4 digits"
+        }
+      ],
+      "requires_ignore": [
+        "of"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "axis",
@@ -47604,8 +50781,33 @@
       "next_node_id": "mat_g3_na_q2_7",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "addition_and_subtraction",
+          "clause": "addition and subtraction"
+        },
+        {
+          "kind": "object",
+          "id": "3_to_4_numbers",
+          "clause": "3 to 4 numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_2_digits",
+          "clause": "up to 2 digits"
+        },
+        {
+          "kind": "property",
+          "id": "observing_correct_order_of_operations",
+          "clause": "observing correct order of operations"
+        }
+      ],
+      "requires_ignore": [
+        "Perform",
+        "of",
+        ","
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "axis",
@@ -48195,8 +51397,34 @@
       "next_node_id": "mat_g3_na_q3_0",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_problems_involving_addition_and_subtraction",
+          "clause": "Solve problems involving addition and subtraction"
+        },
+        {
+          "kind": "object",
+          "id": "3_to_4_numbers",
+          "clause": "3 to 4 numbers"
+        },
+        {
+          "kind": "range",
+          "id": "up_to_2_digits",
+          "clause": "up to 2 digits"
+        },
+        {
+          "kind": "context",
+          "id": "problems_involving_money",
+          "clause": "problems involving money"
+        }
+      ],
+      "requires_ignore": [
+        "with",
+        "of",
+        ",",
+        "including"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "axis",
@@ -48759,8 +51987,29 @@
       "next_node_id": "mat_g3_mg_q2_1",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "measure_mass",
+          "clause": "Measure mass"
+        },
+        {
+          "kind": "object",
+          "id": "grams_kilograms_and_or_milligrams",
+          "clause": "grams (g), kilograms (kg) and/or milligrams (mg)"
+        },
+        {
+          "kind": "representation",
+          "id": "measuring_tools",
+          "clause": "measuring tools"
+        }
+      ],
+      "requires_ignore": [
+        "in",
+        ",",
+        "using",
+        "appropriate"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "axis",
@@ -49310,8 +52559,27 @@
       "next_node_id": "mat_g3_mg_q2_2",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "estimate_mass",
+          "clause": "Estimate mass"
+        },
+        {
+          "kind": "object",
+          "id": "an_object",
+          "clause": "an object"
+        },
+        {
+          "kind": "representation",
+          "id": "grams_kilograms_and_or_milligrams",
+          "clause": "grams, kilograms, and/or milligrams"
+        }
+      ],
+      "requires_ignore": [
+        "of",
+        "using"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "axis",
@@ -49867,8 +53135,30 @@
       "next_node_id": "mat_g3_mg_q2_3",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "compare_masses",
+          "clause": "Compare masses"
+        },
+        {
+          "kind": "object",
+          "id": "objects",
+          "clause": "objects"
+        },
+        {
+          "kind": "representation",
+          "id": "balance_scale",
+          "clause": "balance scale"
+        }
+      ],
+      "requires_ignore": [
+        "of",
+        "including",
+        "the",
+        "use",
+        "a"
+      ],
       "NOT_YET_KNOWN": [
         "L",
         "axis",
@@ -51025,8 +54315,21 @@
       "next_node_id": "mat_g3_mg_q2_5",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "estimate_capacity",
+          "clause": "Estimate capacity"
+        },
+        {
+          "kind": "representation",
+          "id": "liters_and_or_milliliters",
+          "clause": "liters and/or milliliters"
+        }
+      ],
+      "requires_ignore": [
+        "using"
+      ],
       "NOT_YET_KNOWN": [
         "axis",
         "bar graph",
@@ -51591,8 +54894,21 @@
       "next_node_id": "mat_g3_mg_q4_0",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "compare_capacities",
+          "clause": "Compare capacities"
+        },
+        {
+          "kind": "object",
+          "id": "two_containers",
+          "clause": "two containers"
+        }
+      ],
+      "requires_ignore": [
+        "of"
+      ],
       "NOT_YET_KNOWN": [
         "axis",
         "bar graph",
@@ -52210,8 +55526,22 @@
       "next_node_id": "mat_g3_na_q3_1",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "multiply_numbers",
+          "clause": "Multiply numbers"
+        },
+        {
+          "kind": "representation",
+          "id": "6_7_8_and_9_multiplication_tables",
+          "clause": "6, 7, 8, and 9 multiplication tables"
+        }
+      ],
+      "requires_ignore": [
+        "using",
+        "the"
+      ],
       "NOT_YET_KNOWN": [
         "axis",
         "bar graph",
@@ -52837,8 +56167,50 @@
       "next_node_id": "mat_g3_na_q3_2",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "illustrate_and_apply_properties_of_multiplication",
+          "clause": "Illustrate and apply properties of multiplication"
+        },
+        {
+          "kind": "representation",
+          "id": "6_7_8_and_9_multiplication_tables",
+          "clause": "6, 7, 8, and 9 multiplication tables"
+        },
+        {
+          "kind": "property",
+          "id": "one_multiplied_by_any_number",
+          "clause": "one multiplied by any number is equal to the number"
+        },
+        {
+          "kind": "property",
+          "id": "zero_multiplied_by_any_number",
+          "clause": "zero multiplied by any number is zero"
+        },
+        {
+          "kind": "property",
+          "id": "changing_the_order",
+          "clause": "changing the order of the numbers being multiplied does not change the product"
+        },
+        {
+          "kind": "property",
+          "id": "changing_the_grouping",
+          "clause": "changing the grouping of the numbers being multiplied does not change the product"
+        },
+        {
+          "kind": "property",
+          "id": "multiplying_the_sum_of_two_addends",
+          "clause": "multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend"
+        }
+      ],
+      "requires_ignore": [
+        "for",
+        "the",
+        ":",
+        ";",
+        "and"
+      ],
       "NOT_YET_KNOWN": [
         "axis",
         "bar graph",
@@ -53466,8 +56838,39 @@
       "next_node_id": "mat_g3_na_q3_3",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "multiply_numbers",
+          "clause": "Multiply numbers"
+        },
+        {
+          "kind": "property",
+          "id": "with_and_without_regrouping",
+          "clause": "with and without regrouping"
+        },
+        {
+          "kind": "range",
+          "id": "2_to_3_digit_by_1_digit",
+          "clause": "2- to 3-digit numbers by a 1-digit number"
+        },
+        {
+          "kind": "range",
+          "id": "2_to_4_digit_by_leading_non_zero",
+          "clause": "2- to 4-digit numbers by a number whose leading digit is the only non-zero digit"
+        },
+        {
+          "kind": "range",
+          "id": "products_up_to_10_000",
+          "clause": "products up to 10 000"
+        }
+      ],
+      "requires_ignore": [
+        ":",
+        ",",
+        "and",
+        "with"
+      ],
       "NOT_YET_KNOWN": [
         "axis",
         "bar graph",
@@ -54095,8 +57498,38 @@
       "next_node_id": "mat_g3_na_q3_4",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "estimate_product",
+          "clause": "Estimate the product"
+        },
+        {
+          "kind": "range",
+          "id": "2_to_3_digit_factors",
+          "clause": "2- to 3-digit numbers"
+        },
+        {
+          "kind": "range",
+          "id": "1_to_2_digit_factors",
+          "clause": "1- to 2-digit numbers"
+        },
+        {
+          "kind": "task",
+          "id": "estimate_factors",
+          "clause": "estimating the factors"
+        },
+        {
+          "kind": "range",
+          "id": "multiples_of_10",
+          "clause": "multiples of 10"
+        }
+      ],
+      "requires_ignore": [
+        "of",
+        "by",
+        "using"
+      ],
       "NOT_YET_KNOWN": [
         "axis",
         "bar graph",
@@ -54721,8 +58154,31 @@
       "next_node_id": "mat_g3_na_q3_5",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_multiplication_problems",
+          "clause": "Solve"
+        },
+        {
+          "kind": "property",
+          "id": "1_to_2_step",
+          "clause": "1-to 2-step"
+        },
+        {
+          "kind": "object",
+          "id": "multiplication_problems",
+          "clause": "multiplication problems"
+        },
+        {
+          "kind": "context",
+          "id": "problems_involving_money",
+          "clause": "problems involving money"
+        }
+      ],
+      "requires_ignore": [
+        "including"
+      ],
       "NOT_YET_KNOWN": [
         "axis",
         "bar graph",
@@ -55363,8 +58819,36 @@
       "next_node_id": "mat_g3_na_q3_6",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "determine_missing_terms",
+          "clause": "Determine the missing term/s"
+        },
+        {
+          "kind": "object",
+          "id": "pattern",
+          "clause": "pattern"
+        },
+        {
+          "kind": "property",
+          "id": "repeating_and_increasing",
+          "clause": "repeating and increasing components"
+        },
+        {
+          "kind": "property",
+          "id": "repeating_and_decreasing",
+          "clause": "repeating and decreasing components"
+        }
+      ],
+      "requires_ignore": [
+        "1a",
+        "1b",
+        "1c",
+        "2a",
+        "2b",
+        "2c"
+      ],
       "NOT_YET_KNOWN": [
         "axis",
         "bar graph",
@@ -56001,8 +59485,34 @@
       "next_node_id": "mat_g3_na_q4_0",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "explain_generation",
+          "clause": "Explain how to generate"
+        },
+        {
+          "kind": "object",
+          "id": "pattern",
+          "clause": "pattern"
+        },
+        {
+          "kind": "property",
+          "id": "repeating_and_increasing",
+          "clause": "repeating and increasing components"
+        },
+        {
+          "kind": "property",
+          "id": "repeating_and_decreasing",
+          "clause": "repeating and decreasing components"
+        }
+      ],
+      "requires_ignore": [
+        "a",
+        "given",
+        "with",
+        "or"
+      ],
       "NOT_YET_KNOWN": [
         "axis",
         "bar graph",
@@ -56572,8 +60082,40 @@
       "next_node_id": "mat_g3_dp_q3_1",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "collect_data",
+          "clause": "Collect data"
+        },
+        {
+          "kind": "context",
+          "id": "experiments",
+          "clause": "experiments"
+        },
+        {
+          "kind": "property",
+          "id": "small_number_of_possible_outcomes",
+          "clause": "small number of possible outcomes"
+        },
+        {
+          "kind": "context",
+          "id": "rolling_die",
+          "clause": "rolling a die"
+        },
+        {
+          "kind": "context",
+          "id": "tossing_coin",
+          "clause": "tossing a coin"
+        }
+      ],
+      "requires_ignore": [
+        "from",
+        "with",
+        "a",
+        "e.g.,",
+        "or"
+      ],
       "NOT_YET_KNOWN": [
         "axis",
         "bar graph",
@@ -56781,7 +60323,6 @@
         "associative_property_multiplication",
         "balance_scale_usage",
         "balancing_equations",
-        "bar_graphs",
         "basic_geometry_elements",
         "borrowing_concept",
         "calendar",
@@ -57741,8 +61282,37 @@
       "next_node_id": "mat_g3_dp_q3_3",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "interpret_data",
+          "clause": "Interpret data"
+        },
+        {
+          "kind": "representation",
+          "id": "tables",
+          "clause": "tables"
+        },
+        {
+          "kind": "representation",
+          "id": "single_bar_graphs",
+          "clause": "single bar graphs"
+        },
+        {
+          "kind": "property",
+          "id": "horizontal",
+          "clause": "horizontal"
+        },
+        {
+          "kind": "property",
+          "id": "vertical",
+          "clause": "vertical"
+        }
+      ],
+      "requires_ignore": [
+        "in",
+        "and"
+      ],
       "NOT_YET_KNOWN": [
         "certain",
         "equally likely",
@@ -58307,8 +61877,39 @@
       "next_node_id": "mat_g3_dp_q3_4",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_problems",
+          "clause": "Solve problems"
+        },
+        {
+          "kind": "object",
+          "id": "data_presented",
+          "clause": "data presented"
+        },
+        {
+          "kind": "representation",
+          "id": "single_bar_graph",
+          "clause": "single bar graph"
+        },
+        {
+          "kind": "property",
+          "id": "horizontal",
+          "clause": "horizontal"
+        },
+        {
+          "kind": "property",
+          "id": "vertical",
+          "clause": "vertical"
+        }
+      ],
+      "requires_ignore": [
+        "using",
+        "in",
+        "a",
+        "and"
+      ],
       "NOT_YET_KNOWN": [
         "certain",
         "equally likely",
@@ -58900,8 +62501,57 @@
       "next_node_id": null,
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "describe",
+          "clause": "Describe"
+        },
+        {
+          "kind": "task",
+          "id": "compare",
+          "clause": "compare"
+        },
+        {
+          "kind": "object",
+          "id": "outcomes",
+          "clause": "outcomes"
+        },
+        {
+          "kind": "context",
+          "id": "real_life_situations",
+          "clause": "real-life situations"
+        },
+        {
+          "kind": "property",
+          "id": "equally_likely",
+          "clause": "equally likely"
+        },
+        {
+          "kind": "property",
+          "id": "less_least_likely",
+          "clause": "less/least likely"
+        },
+        {
+          "kind": "property",
+          "id": "more_most_likely",
+          "clause": "more/most likely"
+        },
+        {
+          "kind": "property",
+          "id": "certain",
+          "clause": "certain"
+        },
+        {
+          "kind": "property",
+          "id": "impossible",
+          "clause": "impossible"
+        }
+      ],
+      "requires_ignore": [
+        "terms",
+        "following"
+      ],
       "NOT_YET_KNOWN": [
         "improper fraction",
         "line of symmetry",
@@ -59562,8 +63212,35 @@
       "next_node_id": "mat_g3_na_q4_1",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "illustrate_division",
+          "clause": "Illustrate division"
+        },
+        {
+          "kind": "representation",
+          "id": "equal_jumps",
+          "clause": "equal jumps"
+        },
+        {
+          "kind": "representation",
+          "id": "number_line",
+          "clause": "number line"
+        },
+        {
+          "kind": "property",
+          "id": "inverse_of_multiplication",
+          "clause": "inverse of multiplication"
+        }
+      ],
+      "requires_ignore": [
+        "through",
+        "on",
+        "the",
+        "and",
+        "as"
+      ],
       "NOT_YET_KNOWN": [
         "improper fraction",
         "line of symmetry",
@@ -60220,8 +63897,27 @@
       "next_node_id": "mat_g3_na_q4_2",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "divide_numbers",
+          "clause": "Divide numbers"
+        },
+        {
+          "kind": "range",
+          "id": "6_7_8_9",
+          "clause": "6, 7, 8, and 9"
+        },
+        {
+          "kind": "representation",
+          "id": "multiplication_tables",
+          "clause": "multiplication tables"
+        }
+      ],
+      "requires_ignore": [
+        "using",
+        "the"
+      ],
       "NOT_YET_KNOWN": [
         "improper fraction",
         "line of symmetry",
@@ -60881,8 +64577,40 @@
       "next_node_id": "mat_g3_na_q4_3",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "find_missing_number",
+          "clause": "Find the missing number"
+        },
+        {
+          "kind": "object",
+          "id": "number_sentence",
+          "clause": "number sentence"
+        },
+        {
+          "kind": "operation",
+          "id": "multiplication",
+          "clause": "multiplication"
+        },
+        {
+          "kind": "operation",
+          "id": "division",
+          "clause": "division"
+        },
+        {
+          "kind": "range",
+          "id": "6_7_8_9",
+          "clause": "6, 7, 8, and 9"
+        }
+      ],
+      "requires_ignore": [
+        "in",
+        "a",
+        "involving",
+        "or",
+        "by"
+      ],
       "NOT_YET_KNOWN": [
         "improper fraction",
         "line of symmetry",
@@ -61561,8 +65289,53 @@
       "next_node_id": "mat_g3_na_q4_4",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "divide_numbers",
+          "clause": "Divide numbers"
+        },
+        {
+          "kind": "property",
+          "id": "with_and_without_remainder",
+          "clause": "with and without remainder"
+        },
+        {
+          "kind": "range",
+          "id": "2_to_3_digit_numbers",
+          "clause": "2- to 3-digit numbers"
+        },
+        {
+          "kind": "range",
+          "id": "1_digit_number_without_remainder",
+          "clause": "1-digit number without remainder"
+        },
+        {
+          "kind": "range",
+          "id": "2_digit_numbers",
+          "clause": "2-digit numbers"
+        },
+        {
+          "kind": "range",
+          "id": "1_digit_number_with_remainder",
+          "clause": "1-digit number with remainder"
+        },
+        {
+          "kind": "range",
+          "id": "2_to_4_digit_numbers",
+          "clause": "2- to 4-digit numbers"
+        },
+        {
+          "kind": "range",
+          "id": "10_100_1000",
+          "clause": "10,100, and 1000"
+        }
+      ],
+      "requires_ignore": [
+        ":",
+        "by",
+        ","
+      ],
       "NOT_YET_KNOWN": [
         "improper fraction",
         "line of symmetry",
@@ -62235,7 +66008,33 @@
       "next_node_id": "mat_g3_na_q4_5",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "estimate_quotient",
+          "clause": "Estimate the quotient"
+        },
+        {
+          "kind": "task",
+          "id": "divided_by",
+          "clause": "divided by"
+        },
+        {
+          "kind": "range",
+          "id": "2_to_3_digit_numbers",
+          "clause": "2- to 3-digit numbers"
+        },
+        {
+          "kind": "range",
+          "id": "1_to_2_digit_numbers",
+          "clause": "1- to 2-digit numbers"
+        },
+        {
+          "kind": "representation",
+          "id": "multiples_of_10_or_100",
+          "clause": "multiples of 10 or 100"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "improper fraction",
@@ -62905,8 +66704,32 @@
       "next_node_id": "mat_g3_na_q4_6",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "solve_division_problems",
+          "clause": "Solve division problems"
+        },
+        {
+          "kind": "range",
+          "id": "2_to_3_digit_numbers",
+          "clause": "2- to 3-digit numbers"
+        },
+        {
+          "kind": "range",
+          "id": "1_digit_number",
+          "clause": "1-digit number"
+        },
+        {
+          "kind": "context",
+          "id": "money",
+          "clause": "money"
+        }
+      ],
+      "requires_ignore": [
+        "involving",
+        "problems"
+      ],
       "NOT_YET_KNOWN": [
         "improper fraction",
         "line of symmetry",
@@ -63588,7 +67411,33 @@
       "next_node_id": "mat_g3_na_q4_7",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "represent",
+          "clause": "Represent"
+        },
+        {
+          "kind": "object",
+          "id": "fractions",
+          "clause": "fractions"
+        },
+        {
+          "kind": "property",
+          "id": "equal_to_one",
+          "clause": "equal to one"
+        },
+        {
+          "kind": "property",
+          "id": "greater_than_one",
+          "clause": "greater than one"
+        },
+        {
+          "kind": "representation",
+          "id": "models",
+          "clause": "models"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "line of symmetry",
@@ -64272,7 +68121,28 @@
       "next_node_id": null,
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "add",
+          "clause": "Add"
+        },
+        {
+          "kind": "task",
+          "id": "subtract",
+          "clause": "subtract"
+        },
+        {
+          "kind": "object",
+          "id": "similar_fractions",
+          "clause": "similar fractions"
+        },
+        {
+          "kind": "representation",
+          "id": "models",
+          "clause": "models"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": [
         "line of symmetry",
@@ -64896,8 +68766,36 @@
       "next_node_id": "mat_g3_mg_q4_1",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "describe",
+          "clause": "Describe"
+        },
+        {
+          "kind": "task",
+          "id": "draw",
+          "clause": "draw"
+        },
+        {
+          "kind": "property",
+          "id": "two_direction_multi_step_slide",
+          "clause": "two-direction multi-step slide"
+        },
+        {
+          "kind": "property",
+          "id": "translation",
+          "clause": "translation"
+        },
+        {
+          "kind": "object",
+          "id": "basic_shapes_and_figures",
+          "clause": "basic shapes and figures"
+        }
+      ],
+      "requires_ignore": [
+        "effect"
+      ],
       "NOT_YET_KNOWN": [
         "line of symmetry",
         "symmetry"
@@ -65531,8 +69429,31 @@
       "next_node_id": "mat_g3_mg_q4_2",
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
-      "requires_ignore": [],
+      "requires": [
+        {
+          "kind": "task",
+          "id": "identify",
+          "clause": "Identify"
+        },
+        {
+          "kind": "object",
+          "id": "shapes_or_figures",
+          "clause": "shapes or figures"
+        },
+        {
+          "kind": "property",
+          "id": "line_symmetry",
+          "clause": "line symmetry"
+        },
+        {
+          "kind": "task",
+          "id": "drawing_the_line_of_symmetry",
+          "clause": "drawing the line of symmetry"
+        }
+      ],
+      "requires_ignore": [
+        "show"
+      ],
       "NOT_YET_KNOWN": []
     },
     "mat_g3_mg_q4_2": {
@@ -66161,7 +70082,23 @@
       "next_node_id": null,
       "sentence_max_words": 22,
       "number_format": "space separator for thousands (e.g. 1 000)",
-      "requires": null,
+      "requires": [
+        {
+          "kind": "task",
+          "id": "complete",
+          "clause": "Complete"
+        },
+        {
+          "kind": "object",
+          "id": "figure",
+          "clause": "figure"
+        },
+        {
+          "kind": "property",
+          "id": "symmetric_with_respect_to_a_line",
+          "clause": "symmetric with respect to a line"
+        }
+      ],
       "requires_ignore": [],
       "NOT_YET_KNOWN": []
     }

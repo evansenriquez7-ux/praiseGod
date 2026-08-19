@@ -229,8 +229,8 @@ def generate_hints(values: Dict[str, Any], cumulative_vocab: Set[str]) -> List[s
 
 PROBABILITY_EXPERIMENT_DNA = DNA(
     concept="probability_experiment",
-    dna_type="textual",
-    answer_formula=None,
+    dna_type="algorithmic",
+    answer_formula="answer",
     param_bounds={
         "g3": {},
     },

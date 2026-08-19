@@ -106,42 +106,31 @@ class TestFormatterSupportsProfileGate1:
 class TestOrchestratorAnnotatesDnaName:
     """The orchestrator must set problem.dna_name to the actually-chosen DNA."""
 
-    def test_orchestrator_sets_dna_name_for_ordering(self):
+    def test_orchestrator_sets_dna_name_for_balance_scale(self):
         from backend.app.services.orchestrator import PracticeOrchestrator
         prob = PracticeOrchestrator.generate_problem(
-            node_id="mat_g2_na_q4_2",
+            node_id="mat_g1_na_q1_6",
             seed=91000,
             difficulty_profile={
-                "fraction_type": "unit_fraction",
-                "number_difficulty": 0.5,
                 "context": "pure",
             },
-            formatter="ordering",
+            formatter="balance_scale",
             is_lab=False,
         )
-        # ordering is not in fractions' compatible_formatters, so the
-        # orchestrator must have picked 'comparing_ordering'.
-        assert prob.dna_name == "comparing_ordering", (
-            f"Expected dna_name=comparing_ordering, got {prob.dna_name!r}. "
-            f"The orchestrator's runtime filter at orchestrator.py:125 should "
-            f"have skipped 'fractions' for formatter='ordering'."
+        assert prob.dna_name == "missing_number", (
+            f"Expected dna_name=missing_number, got {prob.dna_name!r}."
         )
 
-    def test_orchestrator_sets_dna_name_for_fractions_only(self):
+    def test_orchestrator_sets_dna_name_for_number_bond(self):
         from backend.app.services.orchestrator import PracticeOrchestrator
-        # When the formatter is in fractions' compatible_formatters, the
-        # orchestrator may still pick the other DNA. We just need to verify
-        # the annotation is set (not None and not the fallback).
         prob = PracticeOrchestrator.generate_problem(
-            node_id="mat_g2_na_q4_2",
+            node_id="mat_g1_na_q1_6",
             seed=91000,
             difficulty_profile={
-                "fraction_type": "unit_fraction",
-                "number_difficulty": 0.5,
                 "context": "pure",
             },
-            formatter="cloze",
+            formatter="number_bond",
             is_lab=False,
         )
         assert prob.dna_name is not None
-        assert prob.dna_name in ("fractions", "comparing_ordering")
+        assert prob.dna_name == "addition"
