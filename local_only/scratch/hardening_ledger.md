@@ -3072,3 +3072,80 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
      (`show`), `mat_g1_na_q3_6` (`patterns`), `mat_g3_na_q3_5` (`1a`/`1b`/… — likely legitimate
      e.g.-literals; triage first).
   6. **The `pytest tests/unit` deadlock** — find the hanging test. It is a bug and a legitimate unit.
+
+---
+
+## 2026-08-20 06:10 — Tick C (content defects at root, `explain` built, one node re-attested)
+
+Entered at `VERDICT: RESUME`, 818 findings, coverage 30/787. §0 census run in full and it, not the
+ledger, picked the tick.
+
+**§0 census (measured, not inherited):**
+- verdicts: `{'PASS': 151}`; largest rationale skeleton cluster **1**; quote-provenance misses **0**.
+- gate-health: `gate errors: 0 | verdict: 0 | NON-VERDICT: 0`.
+- capability delta census: `providers=484 | leaning=473 | base=818 | stripped_fmt=818 |
+  stripped_bounds=833` → **UNEARNED §6C PASSES: 0**.
+
+**The census disagreed with the ledger and the census won.** The generic-formatter wildcard is now
+fully closed — stripping it moves 818→818, where on 08-19 it moved 60→59. `bounds` remains the live
+wildcard at **+15** (818→833), unchanged and still unbuilt. The 818 breaks down as
+**757 UNATTESTED / 59 §6D wildcard / 1 CONTRADICTED / 1 honest gap**.
+
+**Unit chosen:** `mat_g2_mg_q4_3`, because three queue priorities converged on it — it held the
+*only* CONTRADICTED entry (1), two of the five open content defects (2), and the second-worst §6D
+count (4). Graphify confirmed `geometric_lines.py` is self-contained and shared by exactly three
+nodes, so the root cause was fixable in one place.
+
+**Work done (commits `e0bf0c3b`, `664e9e69`):** one rule violated in five places — *a stem must name
+its referent and ask a question its own option set can answer*. Fixed every instance: 4 binary stems
+given antecedents and re-asked openly, the false "box has six faces that are each a flat square"
+(that is a cube) corrected, and the `explain` clause **built** as 5 `task_type='explain_difference'`
+items (Content Rule 4 — the competency names the verb). `CAPABILITY_PROVIDERS['explain']` retargeted
+off `mcq`+bounds onto the real variant. A fresh blind Attester (0 tool uses) then ruled all 8 clauses
+PROVIDED, clearing CONTRADICTED on fresh content rather than by re-filing.
+
+**Both movements, reported honestly:**
+- findings **818 → 817**; §6D wildcards **59 → 58**; CONTRADICTED **1 → 0**.
+- coverage **30/787 → 30/787. FLAT.**
+
+**This tick has the shape the protocol warns about — failures falling while coverage is flat — and
+it must not be reported as if it did not.** The reason it is not one of the three past defeats is
+that nothing was weakened: the finding fell because content was built and a blind party confirmed it,
+and §6F freshness fired loudly against my own change (batch003 STALE) rather than being edited away.
+But the honest reading stands: this was content-quality work, not coverage work. batch005 re-attests
+the same 8 (node, capability) pairs batch003 already held, so it bought quality, not coverage. A tick
+that moves coverage 0 while lowering findings by 1 is not a good trade and should not be repeated
+without a coverage unit alongside it.
+
+**Attester found, unasked, a defect I had missed** — the pattern from batches 1 and 2 repeating a
+third time: `seed 64` keys `flat surface` for "the side of a solid figure that you could trace with a
+straight ruler", but `straight line` is in the option set and better fits the stem, traceability with
+a straightedge does not identify a flat surface (a cylinder's lateral surface contains straight
+lines), and "side" is ambiguous between face and edge. Left OPEN deliberately: fixing it now would
+invalidate the attestation just obtained. Attest → fix → re-attest once.
+
+**Next tick should:**
+1. **`mat_g2_mg_q4_3` seed 64 — fix the unsound key first**, then re-attest the node **once**. It is
+   the only flat-surface-targeting item in the set, so the competency's `flat` clause currently rests
+   entirely on a defective item. Fix the discriminator, not the seed.
+2. **Widen `straight_curved` sampling** (queue item 3). Keyed targets are lopsided: curved surface
+   6 of 10, straight line 2, curved line **1**, flat surface **1**. `difference between` is exercised
+   only on the surface pair — **no item ever contrasts a straight line against a curved line, though
+   the competency names that pair first**. Objects are only ball/box/desk; no named solid, so the
+   coexistence case (a cylinder having both surface kinds) is never reachable. Also fix answer-in-stem
+   across seeds 11/23/57/78/91/127 and the off-topic distractor "A ball is always heavier than a box".
+3. **A coverage unit, non-negotiable after a flat tick.** ~30 Attester dispatches remain over 757
+   UNATTESTED records; measured throughput is 25 clauses / 3 nodes / 151 s / 0 tool uses. Start with
+   the worst §6D nodes: `mat_g1_mg_q4_0` (8), `mat_g3_dp_q3_4` (6), `mat_g2_mg_q1_2` (5).
+4. **§6E — `bounds` is still the live wildcard, still +15, still unbuilt.** Unchanged from the last
+   two ticks and now the largest single mechanical win. Discriminate on **shared-ness** (one 27-key
+   list on 483 providers); do **not** threshold on length —
+   `test_bounds_length_is_never_the_discriminator` pins that.
+5. **§6F has no notion of supersession.** `batch003` is correctly reported STALE, and batch005
+   supersedes it, but the check keys on batch id so the finding persists and cannot be cleared without
+   deleting a record — which is forbidden. This is a real gap in the check, not a record to tidy away.
+   Ship it as §6D/§6F were: contract row + `CONTRACT_CHECKS` entry + unit tests + planted mutation.
+6. **The 6 remaining §6D entries on this node** (`difference_between`, `straight_lines`,
+   `curved_lines`, `flat_surfaces`, `curved_surfaces`, `3_dimensional_objects`) still name only the
+   generic family. All 6 are now blind-PROVIDED as *content*, which does not license `mcq` as the
+   registered *provider*. Point each at a real artifact.
