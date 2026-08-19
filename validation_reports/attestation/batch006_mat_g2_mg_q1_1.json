@@ -1,0 +1,318 @@
+{
+ "batch": "batch006_mat_g2_mg_q1_1",
+ "attested_at": "2026-08-20T07:40:00+08:00",
+ "role": "Attester",
+ "blindness": {
+  "saw": [
+   "clause",
+   "competency text",
+   "grade/quarter",
+   "10 rendered student-path samples"
+  ],
+  "did_not_see": [
+   "CAPABILITY_PROVIDERS or that any entry was being defended",
+   "the node id",
+   "the DNA, formatter registry, or generator source",
+   "validation_reports/, local_only/, docs/"
+  ],
+  "samples_passed_inline": true,
+  "tool_uses_by_attester": 0,
+  "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'"
+ },
+ "packet": {
+  "builder": "tests/attester_packets.py",
+  "sampling": "is_student_path=True",
+  "node_id": "mat_g2_mg_q1_1",
+  "seeds": [
+   11,
+   23,
+   42,
+   57,
+   64,
+   78,
+   91,
+   103,
+   118,
+   127
+  ],
+  "samples_judged": [
+   {
+    "seed": 11,
+    "question_text": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?",
+    "correct_answer": "B",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 23,
+    "question_text": "A composite figure is made of a rectangle with a half-circle attached on top. How many simple shapes form this figure?",
+    "correct_answer": "D",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 42,
+    "question_text": "On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?",
+    "correct_answer": "3",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 57,
+    "question_text": "Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form?",
+    "correct_answer": "rectangle",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 64,
+    "question_text": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?",
+    "correct_answer": "square",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 78,
+    "question_text": "Using cut-outs, a square is cut along a slant from one corner to the opposite corner. What two shapes are made?",
+    "correct_answer": "two triangles",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 91,
+    "question_text": "Using cut-outs, two half-circles are joined along their flat straight edges. What shape is formed?",
+    "correct_answer": "circle",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 103,
+    "question_text": "On a square grid, a 4-by-2 rectangle is cut straight down the middle into two 2-by-2 parts. What shape is each part?",
+    "correct_answer": "B",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 118,
+    "question_text": "On a square grid, a composite shape has 1 square, 1 triangle, and 1 rectangle joined together. How many simple shapes were used to compose it?",
+    "correct_answer": "3",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 127,
+    "question_text": "Using cut-outs, two identical triangles are placed together along their matching edges. What shape can they form?",
+    "correct_answer": "D",
+    "formatter": "read_mcq"
+   }
+  ]
+ },
+ "verdicts": [
+  {
+   "capability_id": "compose_figures",
+   "node_id": "mat_g2_mg_q1_1",
+   "clause": "Compose",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    57,
+    127,
+    91
+   ],
+   "confidence": "high",
+   "reasoning": "Seeds 57/127 (two triangles joined form a rectangle) and 91 (two half-circles joined form a circle) build a whole from parts.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "decompose_figures",
+   "node_id": "mat_g2_mg_q1_1",
+   "clause": "decompose",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    64,
+    103,
+    78
+   ],
+   "confidence": "high",
+   "reasoning": "Seeds 11/64/103 (a 4-by-2 rectangle cut into two 2-by-2 parts) and 78 (a square cut corner to corner yields two triangles) break a whole into parts.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "composite_figures",
+   "node_id": "mat_g2_mg_q1_1",
+   "clause": "composite figures made up",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    23,
+    42,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Seeds 23 and 42/118 present a figure assembled from named simple shapes and ask about its composition.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "squares",
+   "node_id": "mat_g2_mg_q1_1",
+   "clause": "squares",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    64,
+    103,
+    42,
+    118,
+    78
+   ],
+   "confidence": "high",
+   "reasoning": "Square is the key in 11/64/103, a component in 42/118, and the figure being cut in 78.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "rectangles",
+   "node_id": "mat_g2_mg_q1_1",
+   "clause": "rectangles",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    64,
+    103,
+    42,
+    118,
+    57,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "The figure cut in 11/64/103, a component in 42/118, the key in 57/127.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "triangles",
+   "node_id": "mat_g2_mg_q1_1",
+   "clause": "triangles",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    78,
+    57,
+    127,
+    42,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "The key in 78, the two pieces joined in 57/127, a component in 42/118.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "circles",
+   "node_id": "mat_g2_mg_q1_1",
+   "clause": "circles",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    91
+   ],
+   "confidence": "low",
+   "reasoning": "Seed 91 only, where the circle is the key formed from two half-circles.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "half_circles",
+   "node_id": "mat_g2_mg_q1_1",
+   "clause": "half circles",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    23,
+    91
+   ],
+   "confidence": "medium",
+   "reasoning": "Seed 23 (half-circle attached atop a rectangle) and seed 91 (the two pieces joined).",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "quarter_circles",
+   "node_id": "mat_g2_mg_q1_1",
+   "clause": "quarter circles",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [],
+   "confidence": "high",
+   "reasoning": "'Quarter-circle' occurs only as option C in seeds 57 and 127, i.e. only as a wrong answer. It never appears in a stem, never as a key, and is never composed, decomposed, or used as a component. A distractor label does not exercise the shape.",
+   "action_taken": "none - newly attested; a NOT_PROVIDED verdict now enforces as §6F CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "cut_outs",
+   "node_id": "mat_g2_mg_q1_1",
+   "clause": "cut-outs",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    57,
+    127,
+    78,
+    91
+   ],
+   "confidence": "high",
+   "reasoning": "Seeds 57/127, 78 and 91 all open 'Using cut-outs.'",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "square_grids",
+   "node_id": "mat_g2_mg_q1_1",
+   "clause": "square grids",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    64,
+    103,
+    42,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Seeds 11/64/103 and 42/118 all open 'On a square grid.'",
+   "action_taken": "none - entry stands"
+  }
+ ],
+ "incidental_findings": [
+  {
+   "severity": "defect",
+   "seeds": [
+    57,
+    127
+   ],
+   "finding": "The stem teaches a false generalization: 'two identical triangles placed together along their matching edges' does not yield a rectangle in general. That holds for congruent RIGHT triangles joined along the hypotenuse; two identical equilateral triangles give a rhombus, other isosceles pairs give kites or larger triangles. The hedge 'can they form' and the option set rescue the key, but the stem asserts something untrue of triangles generally. Separately all three distractors are curved shapes, so the item is answerable by 'straight edges cannot make curves' without composition reasoning.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    91
+   ],
+   "finding": "Omits a needed condition: two half-circles joined along their flat straight edges form a circle only if they are congruent. Seed 57 says 'identical'; seed 91 should too.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    23,
+    42,
+    118,
+    11,
+    64,
+    103
+   ],
+   "finding": "Items answer themselves. Seed 23 names two shapes in the stem and the key is 2; seed 42 names three and the key is 3 -- noun-counting, not decomposition. Seeds 11/64/103 state the parts are '2-by-2', so 'square' follows from the words rather than from spatial reasoning.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "coverage",
+   "seeds": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "finding": "Every item describes a figure the pupil cannot see. On a competency whose entire method clause is 'using cut-outs and square grids', verbal description substitutes for the visual and physical work -- grid and cut-outs are mentioned rather than used. The Attester called this the most serious issue in the set. Also 10 items are only 6 distinct stems (11=64=103, 42=118, 57=127); circles appear once and quarter circles never outside a distractor slot.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "none",
+   "seeds": [],
+   "finding": "All ten keys are mathematically correct and consistent with their listed options; no wrong key and no second option also correct.",
+   "status": "CLOSED - no action"
+  }
+ ]
+}

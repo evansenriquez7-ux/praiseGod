@@ -1,0 +1,308 @@
+{
+ "batch": "batch006_mat_g1_na_q1_6",
+ "attested_at": "2026-08-20T07:40:00+08:00",
+ "role": "Attester",
+ "blindness": {
+  "saw": [
+   "clause",
+   "competency text",
+   "grade/quarter",
+   "10 rendered student-path samples"
+  ],
+  "did_not_see": [
+   "CAPABILITY_PROVIDERS or that any entry was being defended",
+   "the node id",
+   "the DNA, formatter registry, or generator source",
+   "validation_reports/, local_only/, docs/"
+  ],
+  "samples_passed_inline": true,
+  "tool_uses_by_attester": 0,
+  "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'"
+ },
+ "packet": {
+  "builder": "tests/attester_packets.py",
+  "sampling": "is_student_path=True",
+  "node_id": "mat_g1_na_q1_6",
+  "seeds": [
+   11,
+   23,
+   42,
+   57,
+   64,
+   78,
+   91,
+   103,
+   118,
+   127
+  ],
+  "samples_judged": [
+   {
+    "seed": 11,
+    "question_text": "The two parts are 0 and 3. What is the total?",
+    "correct_answer": 3,
+    "formatter": "read_fill_in_blank"
+   },
+   {
+    "seed": 23,
+    "question_text": "The two parts are 1 and 2. What is the total?",
+    "correct_answer": 3,
+    "formatter": "read_fill_in_blank"
+   },
+   {
+    "seed": 42,
+    "question_text": "What number goes in the blank: ___ + 5 = 10?",
+    "correct_answer": 5,
+    "formatter": "mcq"
+   },
+   {
+    "seed": 57,
+    "question_text": "What number goes in the blank: 1 + 1 = ___?",
+    "correct_answer": 2,
+    "formatter": "mcq"
+   },
+   {
+    "seed": 64,
+    "question_text": "What is 1 + 2?",
+    "correct_answer": 3,
+    "formatter": "mcq"
+   },
+   {
+    "seed": 78,
+    "question_text": "What number goes in the blank: 5 + 5 = ___?",
+    "correct_answer": 10,
+    "formatter": "mcq"
+   },
+   {
+    "seed": 91,
+    "question_text": "1 + 6 = ___",
+    "correct_answer": 7,
+    "formatter": "cloze"
+   },
+   {
+    "seed": 103,
+    "question_text": "🐥🐥 — There are 2 chicks.\n🐥 — 1 more chick is added.\nHow many total chicks are there?",
+    "correct_answer": "A",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 118,
+    "question_text": "What number goes in the blank: ___ + 4 = 6?",
+    "correct_answer": 2,
+    "formatter": "mcq"
+   },
+   {
+    "seed": 127,
+    "question_text": "Both sides balance evenly. 6 + ? = 7. What is the missing value?",
+    "correct_answer": "D",
+    "formatter": "read_mcq"
+   }
+  ]
+ },
+ "verdicts": [
+  {
+   "capability_id": "compose",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "Compose",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    57,
+    64,
+    78,
+    91,
+    103
+   ],
+   "confidence": "high",
+   "reasoning": "Seeds give two parts and ask for the whole (0 and 3; 1 and 2; 1+1; 1+2; 5+5; 1+6; 2 chicks and 1 more).",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "decompose",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "decompose",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    118,
+    127
+   ],
+   "confidence": "low",
+   "reasoning": "Provided in one thin form only: the whole plus one part, asking for the missing part. No item asks the pupil to produce a decomposition of a stated whole ('6 is 4 and ___') or more than one way to split a number, so the 'N is A and B' framing the competency itself models never appears.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "numbers",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "numbers",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Every item operates on whole numbers.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "up_to_10",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "up to 10",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    78
+   ],
+   "confidence": "high",
+   "reasoning": "Totals are 2,3,3,3,3,6,7,7,10,10; the ceiling of 10 is reached and never exceeded in any stem or key. Distractors do exceed it, recorded as a content problem.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "concrete_materials",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "concrete materials",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23
+   ],
+   "confidence": "high",
+   "reasoning": "Nine of ten items are bare symbolic arithmetic or abstract 'parts/total' language with no object, no manipulative, and nothing to handle or count. Seed 103's chick pictures are semi-concrete at best; seed 127 invokes a balance in words only, with no objects on it. Seeds 11 and 23 are the clearest evidence: 'The two parts are 0 and 3' names parts of nothing at all.",
+   "action_taken": "none - newly attested; a NOT_PROVIDED verdict now enforces as §6F CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "5_is_5_and_0",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "5 is 5 and 0",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [],
+   "confidence": "high",
+   "reasoning": "The number 5 is never the whole being composed or decomposed anywhere in the set. Seeds 42 and 78 use 5 only as a part of 10.",
+   "action_taken": "none - newly attested; a NOT_PROVIDED verdict now enforces as §6F CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "4_and_1",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "4 and 1",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [],
+   "confidence": "high",
+   "reasoning": "No item pairs 4 with 1. Seed 118's parts are 2 and 4 for a whole of 6.",
+   "action_taken": "none - newly attested; a NOT_PROVIDED verdict now enforces as §6F CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "3_and_2",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "3 and 2",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [],
+   "confidence": "high",
+   "reasoning": "No item pairs 3 with 2 as parts of 5.",
+   "action_taken": "none - newly attested; a NOT_PROVIDED verdict now enforces as §6F CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "2_and_3",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "2 and 3",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [],
+   "confidence": "high",
+   "reasoning": "Same absence; seed 23 uses 1 and 2 for a whole of 3.",
+   "action_taken": "none - newly attested; a NOT_PROVIDED verdict now enforces as §6F CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "1_and_4",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "1 and 4",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [],
+   "confidence": "high",
+   "reasoning": "No item pairs 1 with 4.",
+   "action_taken": "none - newly attested; a NOT_PROVIDED verdict now enforces as §6F CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "0_and_5",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "0 and 5",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    11
+   ],
+   "confidence": "high",
+   "reasoning": "Zero-as-a-part appears once (seed 11, '0 and 3'), but never with 5, and never with 5 as the whole.",
+   "action_taken": "none - newly attested; a NOT_PROVIDED verdict now enforces as §6F CONTRADICTED until the artifact is built or the entry deleted"
+  }
+ ],
+ "incidental_findings": [
+  {
+   "severity": "coverage",
+   "seeds": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "finding": "The competency ENUMERATES six sub-cases by example -- 5 is 5 and 0; 4 and 1; 3 and 2; 2 and 3; 1 and 4; 0 and 5 -- and a pupil working this entire set meets each of them EXACTLY ZERO TIMES. The whole number 5 is never composed or decomposed. Ten items deliver four templates, six of them the same symbolic blank-fill; the total 3 appears four times while totals 1, 4, 5, 8, 9 never appear. The 'many ways to make one number' idea, the heart of this competency, appears never.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    11,
+    23
+   ],
+   "finding": "Undefined subject: 'The two parts are 0 and 3. What is the total?' -- parts of what? No object, no picture, no context, on a competency whose method clause is 'using concrete materials'.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    42,
+    64,
+    78,
+    91
+   ],
+   "finding": "Out-of-range distractors 15, 13, 15, 13 and 11 put two-digit numbers before pupils on a node explicitly bounded at 10. They are digit-concatenation error patterns (1+2 read as '13'), a defensible rationale, but transparently implausible, narrowing a 4-option item to a 3-option guess.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    127
+   ],
+   "finding": "'Both sides balance evenly' refers to a balance the pupil cannot see and adds nothing the equation 6 + ? = 7 does not already state; 'What is the missing value?' is abstract register for G1 Q1.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "weakness",
+   "seeds": [
+    57,
+    64,
+    78,
+    91
+   ],
+   "finding": "Competency drift: these are plain addition-fact recall (1+1, 1+2, 5+5, 1+6) with no part-whole framing. A set where 6 of 10 items are symbolic blank-filling reads as 'add within 10', not 'compose and decompose numbers up to 10 using concrete materials'.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "none",
+   "seeds": [],
+   "finding": "All ten keys are mathematically correct and consistent with their listed options; no wrong key and no second option also correct.",
+   "status": "CLOSED - no action"
+  }
+ ]
+}
