@@ -5138,3 +5138,75 @@ no result at all.
   orphans nothing (verified: EOF, clean exit). Killing it while a worker is 27 minutes into a node
   orphans that worker for at least that long — and if the task never completes, forever. That is why
   the orphans found earlier clustered on the slow node and why two of them ran for 23 hours.
+
+---
+
+## 2026-08-20 — Attester batch 2: 25 clauses, 3 nodes, and the first mechanically-enforced NOT_PROVIDED
+
+**Throughput measured, not estimated:** 25 clauses across 3 nodes in **151 seconds**, 0 tool uses by
+the Attester (everything inline, so blindness needed no sandbox). Packet building took seconds.
+At that rate the remaining 757 records are roughly **30 dispatches**.
+
+```
+COVERAGE: attested 5/787 (0.6%)  ->  30/787 (3.8%)
+capability findings: 842 -> 818   {UNATTESTED 782 -> 757, §6D 59, CONTRADICTED 0 -> 1, other 1}
+```
+
+### §6F enforced a verdict without any manual step
+
+Batch 1's `NOT_PROVIDED` took effect only because the Fixer chose to delete the entry. Batch 2's did
+not need one — filing the record *is* the enforcement:
+
+```
+mat_g2_mg_q4_3: capability 'explain' (clause 'explain') is CONTRADICTED (§6F) -- a blind
+Attester ruled NOT_PROVIDED, and CAPABILITY_PROVIDERS still claims {'formatters': ['mcq'], ...}
+```
+
+That is the loop closing on itself: the role that judges cannot see the table, and the table can no
+longer ignore the judgement.
+
+### The ruling
+
+24 PROVIDED, 1 NOT_PROVIDED. On `explain` (`mat_g2_mg_q4_3`, *"Identify **and explain** the difference
+between straight and curved lines…"*):
+
+> "No item asks why, asks for a reason, or offers explanatory statements as options — the four choices
+> are bare labels. The distinguishing property is supplied by the stem ('It never bends or changes
+> direction', 'you could trace with a straight ruler'), and the student only names it, so the
+> explanation is authored into the item rather than produced or even selected by the student."
+
+The Attester also declared, unprompted, where it did **not** apply that strictness and why —
+`Describe` on the probability node was scored PROVIDED because that competency explicitly enumerates
+the vocabulary to be used — and named the inconsistency as the main question a grader should press it
+on. It flagged `objects` and `difference between` as genuinely torn, stating what would flip each.
+
+### Content defects found unasked (none catchable by any machine check)
+
+1. **`mat_g3_dp_q3_4` seed 64 — mathematically wrong key.** *"A spinner has 5 sections: 3 yellow,
+   1 red, and 1 green. Which color is LEAST likely?"* keyed **'red or green'**. Red and green are
+   equally likely, so a student answering "red" has named a colour that *is* least likely and is
+   marked wrong. Singular "Which color" contradicts a disjunctive key.
+2. **`mat_g1_mg_q4_0` seed 78 — off-competency item.** *"Which direction is clockwise?"* is a
+   vocabulary definition: no object, no turn, no initial facing direction. 1 of only 10 served items
+   on a competency about identifying position after rotation.
+3. **`mat_g2_mg_q4_3` seeds 42/57/78/118 — undefined referent.** The stem's subject is a bare "It"
+   with no antecedent. The stems ask a binary question ("Is it a straight line or a curved line?")
+   while the option set offers four choices including two *surface* labels, so question and options
+   disagree.
+4. **`mat_g2_mg_q4_3` seed 103 —** "A box has six faces that are each a flat square" describes a
+   cube, not a box.
+
+### Coverage skew, recorded because it is a generator defect rather than a review artifact
+
+Ten seeds do not yield ten items. `mat_g1_mg_q4_0` has ~6 distinct stems (11≡64≡103, 42≡91, 57≡127);
+`mat_g2_mg_q4_3` likewise. Within that, several clauses ride a single seed: **counter-clockwise
+appears once** against five half-turn items, **`most likely` once**, the comparative **`more likely`
+never**, and `mat_g1_mg_q4_0` never uses RIGHT as an initial facing direction. All were scored
+PROVIDED — they are exhibited — but a student can complete a full set having met counter-clockwise
+exactly once.
+
+### Note on the three nodes chosen
+
+All three carry open §6D findings, so they are doubly implicated: even the 24 PROVIDED clauses still
+fail §6D because their entries name only `mcq`. A PROVIDED verdict says the *content* does the thing;
+it does not license a generic formatter as the registered *provider*. Both must be satisfied.

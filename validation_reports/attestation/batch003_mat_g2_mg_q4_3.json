@@ -1,0 +1,243 @@
+{
+  "batch": "batch003_mat_g2_mg_q4_3",
+  "attested_at": "2026-08-20T05:05:00+08:00",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "validation_reports/, local_only/, docs/"
+    ],
+    "samples_passed_inline": true,
+    "tool_uses_by_attester": 0,
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "batched_with": [
+      "mat_g1_mg_q4_0",
+      "mat_g2_mg_q4_3",
+      "mat_g3_dp_q3_4"
+    ]
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q4_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "A ball has a surface that bends smoothly in every direction. What kind of surface does a ball have?",
+        "correct_answer": "curved surface",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "A ball has a surface that bends smoothly in every direction. What kind of surface does a ball have?",
+        "correct_answer": "curved surface",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "It bends smoothly and changes direction. Is it a straight line or a curved line?",
+        "correct_answer": "curved line",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "It never bends or changes direction. Is it a straight line or a curved line?",
+        "correct_answer": "straight line",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Which best describes the side of a solid figure that you could trace with a straight ruler?",
+        "correct_answer": "flat surface",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "It bends smoothly and changes direction. Is it a straight line or a curved line?",
+        "correct_answer": "curved line",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?",
+        "correct_answer": "curved surface",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "A box has six faces that are each a flat square. What kind of surface does a box have?",
+        "correct_answer": "flat surface",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "It bends smoothly and changes direction. Is it a straight line or a curved line?",
+        "correct_answer": "curved line",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?",
+        "correct_answer": "curved surface",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "identify",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "Identify",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        64,
+        103
+      ],
+      "confidence": "medium",
+      "reasoning": "Items require picking the correct category label for a described line or surface. Identification runs description->label rather than figure->label, since there is no visual payload.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "explain",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "explain",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "confidence": "high",
+      "reasoning": "No item asks why, asks for a reason, or offers explanatory statements as options - the four choices are bare labels. The distinguishing property is supplied by the stem ('It never bends or changes direction'), so the explanation is authored into the item rather than produced or even selected by the student.",
+      "action_taken": "PENDING - see next tick"
+    },
+    {
+      "capability_id": "difference_between",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "difference between",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        118
+      ],
+      "confidence": "torn",
+      "reasoning": "Seeds pose a direct two-way discrimination ('Is it a straight line or a curved line?') with the contrasting criteria that separate the categories. On the stronger reading (an item placing a straight and curved instance side by side and asking how they differ) no item qualifies and this flips to NOT_PROVIDED.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "straight_lines",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "straight",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        64
+      ],
+      "confidence": "high",
+      "reasoning": "Seed 57 keys 'straight line'; seed 64 uses straightness as the operative criterion ('trace with a straight ruler').",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "curved_lines",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "curved lines",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        118
+      ],
+      "confidence": "high",
+      "reasoning": "Three items key 'curved line' from 'It bends smoothly and changes direction'.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "flat_surfaces",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "flat",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64,
+        103
+      ],
+      "confidence": "high",
+      "reasoning": "Seeds 64 and 103 both key 'flat surface', the latter grounded in a box's flat faces.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "curved_surfaces",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "curved surfaces",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        91,
+        127
+      ],
+      "confidence": "high",
+      "reasoning": "Four items key 'curved surface' from ball/solid-figure descriptions.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "3_dimensional_objects",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "3-dimensional objects",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        91,
+        103,
+        127
+      ],
+      "confidence": "medium",
+      "reasoning": "Surface items are anchored to named solids - a ball, a box, 'a solid figure'. The objects are named in text only; none is shown, and the line items refer only to an undefined 'It'.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    }
+  ],
+  "incidental_findings": [
+    {
+      "kind": "content_defect",
+      "severity": "medium",
+      "seeds": [
+        42,
+        57,
+        78,
+        118
+      ],
+      "finding": "The stem's referent is an undefined 'It' with no antecedent - nothing tells the student what is bending. The stems pose a binary question ('Is it a straight line or a curved line?') while the option set carries four choices including two surface labels, so question and options disagree.",
+      "note": "Found unasked by the Attester."
+    },
+    {
+      "kind": "content_defect",
+      "severity": "low",
+      "seeds": [
+        103
+      ],
+      "finding": "'A box has six faces that are each a flat square' describes a cube, not a box in general.",
+      "note": "Teaches an over-narrow instance."
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "batch": "batch004_mat_g3_dp_q3_4",
+  "attested_at": "2026-08-20T05:05:00+08:00",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "validation_reports/, local_only/, docs/"
+    ],
+    "samples_passed_inline": true,
+    "tool_uses_by_attester": 0,
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "batched_with": [
+      "mat_g1_mg_q4_0",
+      "mat_g2_mg_q4_3",
+      "mat_g3_dp_q3_4"
+    ]
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_dp_q3_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "In an aquarium tank, there are 8 goldfish, 4 guppies, and 1 angelfish. Which fish is LEAST likely to be scooped first?",
+        "correct_answer": "angelfish",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "A bag has 2 yellow marbles and 8 green marbles. Which is LESS likely to be picked?",
+        "correct_answer": "yellow",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "A bag has 5 red balls and no other colors. What is the chance of picking a red ball?",
+        "correct_answer": "certain",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "A spinner has all sections colored blue. What is the chance of landing on red?",
+        "correct_answer": "impossible",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "A spinner has 5 sections: 3 yellow, 1 red, and 1 green. Which color is LEAST likely to be landed on?",
+        "correct_answer": "red or green",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A bag has 5 red balls and 5 blue balls. The chances of picking red or blue are ___.",
+        "correct_answer": "equally likely",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "You flip a coin. What is the chance of getting either heads OR tails?",
+        "correct_answer": "certain",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "A jar contains 10 green marbles, 4 blue marbles, and 1 red marble. Which marble color is MOST likely to be drawn at random?",
+        "correct_answer": "green",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "A spinner has two equal sections: one red and one blue. Spinning red or blue are ___.",
+        "correct_answer": "equally likely",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "A bag has only blue balls. What is the chance of picking a green ball?",
+        "correct_answer": "impossible",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "describe",
+      "node_id": "mat_g3_dp_q3_4",
+      "clause": "Describe",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "confidence": "medium",
+      "reasoning": "Items require applying a likelihood term to a situation. Since the competency itself enumerates the vocabulary to be used, selecting the right term is a fair MCQ realization of 'describe'; the student still makes the likelihood judgment.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "compare",
+      "node_id": "mat_g3_dp_q3_4",
+      "clause": "compare",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "confidence": "high",
+      "reasoning": "Four items require ranking outcomes against each other; the student must compare counts across outcomes, not just label one.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "outcomes",
+      "node_id": "mat_g3_dp_q3_4",
+      "clause": "outcomes",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "confidence": "high",
+      "reasoning": "Every item is built on the outcome of a chance event and the answer is about one of those outcomes.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "real_life_situations",
+      "node_id": "mat_g3_dp_q3_4",
+      "clause": "real-life situations",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        91,
+        103
+      ],
+      "confidence": "medium",
+      "reasoning": "Aquarium tank, coin flip and a jar of marbles are authentic everyday settings. The remaining seven lean on stock probability apparatus (bags of balls, spinners), conventional but thinner as 'real-life'.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "equally_likely",
+      "node_id": "mat_g3_dp_q3_4",
+      "clause": "equally likely",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        118
+      ],
+      "confidence": "high",
+      "reasoning": "Seeds 78 and 118 both key 'equally likely' and both are mathematically correct.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "less_least_likely",
+      "node_id": "mat_g3_dp_q3_4",
+      "clause": "less/least likely",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64
+      ],
+      "confidence": "high",
+      "reasoning": "Seed 23 uses 'LESS likely'; seeds 11 and 64 use 'LEAST likely'. Both halves of the slashed term appear.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "more_most_likely",
+      "node_id": "mat_g3_dp_q3_4",
+      "clause": "more/most likely",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        103
+      ],
+      "confidence": "high",
+      "reasoning": "Only the superlative half is exercised; no item uses the comparative 'more likely', and this is the sole seed of ten.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "certain",
+      "node_id": "mat_g3_dp_q3_4",
+      "clause": "certain",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        91
+      ],
+      "confidence": "high",
+      "reasoning": "Seeds 42 and 91 both key 'certain' correctly.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    },
+    {
+      "capability_id": "impossible",
+      "node_id": "mat_g3_dp_q3_4",
+      "clause": "impossible",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        127
+      ],
+      "confidence": "high",
+      "reasoning": "Seeds 57 and 127 both key 'impossible' correctly.",
+      "action_taken": "none yet - provider entry not yet re-derived"
+    }
+  ],
+  "incidental_findings": [
+    {
+      "kind": "content_defect",
+      "severity": "high",
+      "seeds": [
+        64
+      ],
+      "finding": "'A spinner has 5 sections: 3 yellow, 1 red, and 1 green. Which color is LEAST likely?' is keyed 'red or green'. Red and green are EQUALLY likely, so a student answering 'red' has named a colour that IS least likely and is marked wrong. The singular 'Which color' contradicts the disjunctive key.",
+      "note": "Found unasked by the Attester. Rewrite as 'Which colors are least likely?' or change the distribution to give a unique minimum."
+    }
+  ]
+}
