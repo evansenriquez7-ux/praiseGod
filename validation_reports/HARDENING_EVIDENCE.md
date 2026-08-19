@@ -4581,3 +4581,122 @@ variant (`task_type=draw_construct`), not by `mcq`. Whether an MCQ *about* drawi
 "**draw** parallel, intersecting, and perpendicular lines" is a semantic reading no mechanical check
 can make. That is precisely the question Rule 1's **Attester** exists to answer, and it is Unit 4's
 first item. The test stays red until an Attester rules — it must not be closed by editing it.
+
+---
+
+## 2026-08-19 — Hardening Unit 4 (batch 1): the first blind Attester ruling
+
+**Rule 9 + Rule 1.** §6D (Unit 2) can prove a provider is a *wildcard*. It cannot prove a specific
+provider is the *right* one — "does `task_type=draw_construct` constitute **drawing**?" is a reading
+of MATATAG, not a lookup. Until today the only party answering that was the Fixer, about its own
+table, with a red line in front of it. That is the structure that produced two sets of fabricated
+reviews. This unit hands the question to a blind Attester instead.
+
+### Tooling: `tests/attester_packets.py` (new)
+
+Builds the blind half and the Fixer-only half separately. The packet carries the clause, the
+competency, grade/quarter, and N rendered samples; the key carries node id + registered provider and
+is never shown to the Attester. Sampling is `is_student_path=True` — the real serving path — because
+`is_lab=True` bypasses the competency-bound clamp and a Lab sample can exhibit a capability the
+student path can never reach, which is the precise false positive this role exists to prevent.
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m tests.attester_packets --node mat_g3_mg_q1_5 \
+    --packets local_only/scratch/attester/batch1.json \
+    --key     local_only/scratch/attester/batch1.key.json
+packets: 5 item(s) -> local_only/scratch/attester/batch1.json
+key:     5 mapping(s) -> local_only/scratch/attester/batch1.key.json   (Attester must not see this)
+```
+
+### The dispatch
+
+Samples were passed **inline** in the subagent prompt, so the Attester had no reason to open a file,
+and Rule 1's forbidden-path list was stated verbatim in its own prompt (dna/, formatters/,
+generators/, adapter.py, compatibility.py, registry.py, orchestrator.py, validate_capability.py,
+validation_reports/, local_only/, docs/). It was given no node id, no provider table, no DNA name,
+no registry, and no indication that any entry was being defended. Framing was neutral
+("Do the rendered items exhibit what this clause names?"), never "find the defects".
+
+### The verdicts
+
+| item | clause | verdict | seeds |
+|---|---|---|---|
+| item_001 | `Recognize` | PROVIDED | 23, 78, 103, 118 |
+| **item_002** | **`draw`** | **NOT_PROVIDED** | — |
+| item_003 | `parallel` | PROVIDED | 23, 42, 57 |
+| item_004 | `intersecting` | PROVIDED | 64 |
+| item_005 | `perpendicular lines` | PROVIDED | 11, 78, 91, 103, 118, 127 |
+
+Verbatim, on `draw`:
+
+> "No item asks the student to produce anything; all ten are four-option MCQs with no drawing
+> surface, canvas, or visual payload. The three items that mention drawing (seed 11 'When you draw a
+> vertical line meeting a horizontal line...', seed 64 'To draw two intersecting lines, you draw two
+> straight paths that ___', seed 103 'When drawing a plus sign (+)...') use drawing only as narrative
+> framing and still require selecting a *name or description*, which for a Grade 3 constructive verb
+> is not the same act as drawing."
+
+And, unprompted, on what would change its mind:
+
+> "Nothing short of an item that requires the student to produce or construct the lines would change
+> that verdict; adding more MCQs about drawing would not."
+
+### The action taken
+
+Per Rule 9 — *"If you cannot produce that sample, the honest move is to leave the capability unmapped
+and build the thing"* — the `draw_line_relationships` entry was **deleted** from
+`CAPABILITY_PROVIDERS`, with the Attester's reasoning recorded in its place so no future agent
+re-registers it without a fresh ruling.
+
+`draw_construct` is a real variant and is genuinely reachable, which is exactly why §6D could not
+catch it and why Rule 9 requires an Attester. This is the one place the capability contract can be
+defeated without weakening a single assertion, and the defeat was live in the tree until now.
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -c "...validate_capability_declarations(['mat_g3_mg_q1_5'])..."
+mat_g3_mg_q1_5: competency requires 'draw_line_relationships' (from clause 'draw'), but no
+pipeline artifact provides it. Reachable DNAs: ['geometric_lines']. Build the formatter/variant/
+dd/DNA that produces it and register it in CAPABILITY_PROVIDERS -- this is the fix, not a reason
+to defer the node (AGENTS.md Content Rule 4).
+
+TOTAL tree capability failures now: 60      (was 59)
+```
+
+**The failure count went UP, and that is the system working** — an honest red replacing a false green.
+`mat_g3_mg_q1_5` is now a named Tick F: build something that renders a drawing task.
+
+### Unit 1's tripwire closes, for the right reason
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m pytest tests/unit/test_capability_contract.py -q
+..........                                                               [100%]
+10 passed in 1.52s
+```
+
+`test_unprovided_capability_names_the_node_and_the_clause` — restored red in Unit 1 — now passes
+because the harness genuinely reports the gap, not because the assertion was edited. That is the
+whole point of committing it red first.
+
+Two §6D tests used `draw_line_relationships` as their fixture and were **repointed** to
+`count_forward_from_a_given_number` / `mat_g1_na_q1_0`, a live variant-backed entry. The claims under
+test are unchanged; only the subject moved, because the old subject no longer exists. Recorded here
+per Rule 3's requirement that any test change name the old assertion and why it moved.
+
+### A content defect the Attester found that no machine check catches
+
+Reported unasked, outside its own question:
+
+> "seeds 78, 91, 118 and 127 offer 'intersecting lines' as a distractor against the keyed
+> 'perpendicular lines', but perpendicular lines *are* intersecting lines, so a student selecting the
+> distractor is not actually wrong."
+
+It also noted coverage is lopsided (6 perpendicular / 3 parallel / 1 intersecting) and that ten seeds
+yield only seven distinct stems (42≡57, 78≡118, 91≡127). This is a genuine mathematical error in
+student-facing content, on a node whose judgment review is a filed PASS. It is the next tick's first
+Tick C item.
+
+### Carried forward
+
+`draw_lines` remains in `CAPABILITY_PROVIDERS` pointing at the same `draw_construct` variant, but no
+node declares it — it is an orphan entry. It is dead reference data under the same ruling and should
+go in the next batch.

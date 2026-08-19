@@ -81,7 +81,19 @@ _STOPWORDS: Set[str] = {
 # answer for anything the pipeline cannot yet do. Do not add an entry to silence a
 # failure -- add one only when the artifact genuinely exists.
 CAPABILITY_PROVIDERS: Dict[str, Dict[str, List[Any]]] = {
-    'draw_line_relationships': {'variants': [('task_type', 'draw_construct')], 'formatters': ['mcq']},
+    # 'draw_line_relationships' was registered here with task_type=draw_construct.
+    # A blind Attester (Rule 1), shown the clause "draw" and ten rendered student-path
+    # samples with no node id and no knowledge that an entry existed, ruled NOT_PROVIDED:
+    #   "No item asks the student to produce anything; all ten are four-option MCQs with
+    #    no drawing surface, canvas, or visual payload. The three items that mention
+    #    drawing use drawing only as narrative framing and still require selecting a name
+    #    or description, which for a Grade 3 constructive verb is not the same act as
+    #    drawing."
+    # draw_construct renders MCQs *about* drawing technique. That is a real variant and it
+    # is genuinely reachable -- which is exactly why §6D cannot catch it and why Rule 9
+    # requires an Attester. Per Rule 9 the honest move is to leave the capability unmapped
+    # and build the thing, so mat_g3_mg_q1_5 now reports its missing "draw" (Tick F).
+    # Do not re-register this without an Attester verdict of PROVIDED on a rendered sample.
     'draw_lines': {'variants': [('task_type', 'draw_construct')], 'formatters': ['mcq']},
     '0_and_5': {'variants': [('tables', '5')], 'formatters': ['balance_scale', 'cloze', 'emoji_pictorial', 'error_detect', 'mcq', 'number_bond', 'number_line_read', 'number_line_set', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},
     '10_100_1000': {'formatters': ['array_grid_read', 'array_grid_set', 'cloze', 'error_detect', 'mcq', 'true_false'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},

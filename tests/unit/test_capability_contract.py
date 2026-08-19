@@ -104,7 +104,7 @@ def test_generic_textual_formatter_is_not_a_provider():
     """
     import copy
 
-    target, node = "draw_line_relationships", "mat_g3_mg_q1_5"
+    target, node = "count_forward_from_a_given_number", "mat_g1_na_q1_0"
     original = copy.deepcopy(VC.CAPABILITY_PROVIDERS)
     try:
         baseline = [e for e in VC.validate_capability_declarations([node]) if target in e]
@@ -139,10 +139,13 @@ def test_generic_formatter_does_not_mask_a_specific_one():
     """
     import copy
 
-    target, node = "draw_line_relationships", "mat_g3_mg_q1_5"
+    target, node = "count_forward_from_a_given_number", "mat_g1_na_q1_0"
     original = copy.deepcopy(VC.CAPABILITY_PROVIDERS)
     try:
         # The real entry is exactly this mixed shape: a reachable variant + 'mcq'.
+        # (Fixture repointed 2026-08-19 when draw_line_relationships was DELETED on an
+        # Attester NOT_PROVIDED ruling. The claim under test is unchanged; only the
+        # subject moved, because the old subject no longer exists.)
         spec = VC.CAPABILITY_PROVIDERS[target]
         assert "mcq" in spec.get("formatters", []), "fixture assumes the mixed shape"
         assert spec.get("variants"), "fixture assumes a specific provider is present"

@@ -2859,3 +2859,84 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
 
 
 
+
+---
+
+## 2026-08-19 (evening) — Tick G→repair (Units 1, 2, 3, 4-partial)
+
+- **Census before:** PASS=151 CONCERN=0 FAIL=0 (gate: 0 errors, non-verdict=0)
+  - §0 re-derived from disk, nothing inherited. **Every audited number reproduced exactly:**
+    151 PASS · largest skeleton cluster 1 · 0 phantom quotes · 0 gate errors ·
+    151 nodes declare `requires` / 787 records / 0 non-substring clauses ·
+    providers 485 · generic-leaning 474 (82 only-generic, 392 mixed) ·
+    base 0 · stripped_fmt 59 · stripped_bounds 0 · **UNEARNED §6C PASSES: 59** ·
+    requires_ignore probe: 37 nodes flagged · `_STOPWORDS` unchanged since creation.
+
+- **Unit(s) of work:**
+  1. **Restored the two weakened tests and committed them red** (`fce7f8df`). Both pre-edit
+     assertions fail against the tree, so the commits that changed them removed the checks rather
+     than satisfying them.
+  2. **§6D — made Rule 9 mechanical** (`e282c028`). `_validate_provision` no longer ORs providers
+     into one boolean; it partitions them and fails when a generic textual formatter is the only
+     satisfier. 0 reported capability problems → **59**, matching §0's delta census exactly.
+  3. **Extended `tests/mutation_harness.py` to §5 and §6** — the two stages that have actually been
+     defeated, and the two the harness planted nothing for. Added `wildcard_provider` and
+     `template_review`, plus two pieces of machinery they needed: `apply_fn` (a templated review
+     cannot be a literal find/replace across four files whose prose differs) and
+     `baseline_must_not_contain` (a validator already failing "detects" anything — without this,
+     `wildcard_provider` would score a false pass on today's red §6C).
+  4. **First blind Attester batch** — `tests/attester_packets.py` (new, permanent audit tooling),
+     batch 1 = the 5 clauses of `mat_g3_mg_q1_5`.
+
+- **Root cause:** §6C was defeated by *reference data*, not by logic — 474 of 485 provider entries
+  listed a formatter family reachable from 27 of 28 DNAs, so the clause was satisfied on almost
+  every node and the specific artifact beside it was decoration. Not one assertion was weakened.
+  The acceptance test that would have caught it was rewritten onto a synthetic capability id in the
+  same window.
+
+- **Machinery built:** §6D check + its `pgen_contract.md` row + `CONTRACT_CHECKS["§6D"]` entry
+  (two-direction lint clean, both directions empty); three permanent §6D unit tests; two mutation-
+  harness mutations + `apply_fn` / `baseline_must_not_contain`; `tests/attester_packets.py`.
+
+- **Blind verdicts obtained:** **Attester batch 1** (5 clauses, `mat_g3_mg_q1_5`), dispatched with
+  the samples inline and no node id, no provider table, no DNA, no registry — and with the Rule 1
+  forbidden-path list stated verbatim in its own prompt.
+
+  | clause | verdict |
+  |---|---|
+  | `Recognize` | PROVIDED (seeds 23, 78, 103, 118) — flagged as the one it was genuinely torn on |
+  | **`draw`** | **NOT_PROVIDED** — "no item asks the student to produce anything; all ten are four-option MCQs with no drawing surface, canvas, or visual payload" |
+  | `parallel` | PROVIDED (23, 42, 57) |
+  | `intersecting` | PROVIDED (64) — but 1 of 10, definition-completion only |
+  | `perpendicular lines` | PROVIDED (11, 78, 91, 103, 118, 127) |
+
+  This is the ruling the protocol said had never been made blind. `draw_construct` renders MCQs
+  *about* drawing technique; the Attester ruled that is not drawing, unprompted and without knowing
+  an entry was being defended.
+
+- **Drift recorded (§0 measurement wins over the file):**
+  - Protocol says the generic family is offered by "every DNA in the tree". Measured: **27 of 28**
+    (`bar_graphs` does not) and **148 of 151 nodes**. Conclusion unchanged.
+  - Protocol says 25 of the 37 `requires_ignore` nodes park "an unambiguous content word". The
+    37-node flag reproduces exactly, but the 25/12 split is a **classification judgment, not a
+    measurement**: with an explicit borderline list (`involving`, `given`, `following`, `through`,
+    `variety`, `appropriate`, `terms`, `numbers`, `problems`, `without`, `could`, `e.g.,`) the split
+    is **6 unambiguous / 31 borderline**. All five exemplars the protocol names reproduce
+    (`mat_g1_na_q2_2` place+value, `mat_g3_na_q2_6` Perform, `mat_g3_mg_q4_0` effect,
+    `mat_g3_mg_q4_1` show, `mat_g1_na_q3_6` patterns). Unit 5 should work those 6 first.
+  - **`bounds` is no longer inert.** Before §6D, stripping it moved the count 0 → 0. With §6D
+    active it moves 59 → 74, because the generic family is no longer satisfying first. The decoy
+    became a real question; it is a unit, not a distraction, from now on.
+
+- **A genuine content defect the Attester surfaced, unasked** (next tick's Tick C item):
+  `mat_g3_mg_q1_5` seeds **78, 91, 118, 127** offer `intersecting lines` as a distractor against the
+  keyed answer `perpendicular lines` — but perpendicular lines **are** intersecting lines, so a
+  student choosing the distractor is not wrong. Also: coverage is lopsided (6 perpendicular / 3
+  parallel / 1 intersecting) and 10 seeds yield only 7 distinct stems (42≡57, 78≡118, 91≡127).
+  This is a real math error in student-facing content and no machine check caught it.
+
+- **Evidence log entries:** "Hardening Unit 1: restore two weakened tests (deliberate documented
+  red)" and "Hardening Unit 2: §6D, the mechanical form of Rule 9".
+
+- **Also observed:** a stale process from an earlier session (PID 60510, `pytest tests/unit/`) has
+  accumulated **852 minutes of CPU** and is still running. Not killed — flagged for the maintainer.
