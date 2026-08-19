@@ -106,6 +106,56 @@ class TestFormatterSupportsProfileGate1:
 class TestOrchestratorAnnotatesDnaName:
     """The orchestrator must set problem.dna_name to the actually-chosen DNA."""
 
+    def test_orchestrator_sets_dna_name_for_ordering(self):
+        """
+        Cross-DNA formatter filter. RESTORED 2026-08-19 (hardening Unit 1): cc5977f5
+        repointed this test from mat_g2_na_q4_2/'ordering' onto
+        mat_g1_na_q1_6/'balance_scale', which deleted the only coverage of the filter
+        it exists to test. balance_scale maps to exactly one DNA, so nothing is
+        skipped and the assertion holds however the filter behaves.
+        """
+        from backend.app.services.orchestrator import PracticeOrchestrator
+        prob = PracticeOrchestrator.generate_problem(
+            node_id="mat_g2_na_q4_2",
+            seed=91000,
+            difficulty_profile={
+                "fraction_type": "unit_fraction",
+                "number_difficulty": 0.5,
+                "context": "pure",
+            },
+            formatter="ordering",
+            is_lab=False,
+        )
+        # ordering is not in fractions' compatible_formatters, so the
+        # orchestrator must have picked 'comparing_ordering'.
+        assert prob.dna_name == "comparing_ordering", (
+            f"Expected dna_name=comparing_ordering, got {prob.dna_name!r}. "
+            f"The orchestrator's runtime filter should "
+            f"have skipped 'fractions' for formatter='ordering'."
+        )
+
+    def test_orchestrator_sets_dna_name_for_fractions_only(self):
+        """
+        RESTORED 2026-08-19 (hardening Unit 1) alongside its sibling above.
+        """
+        from backend.app.services.orchestrator import PracticeOrchestrator
+        # When the formatter is in fractions' compatible_formatters, the
+        # orchestrator may still pick the other DNA. We just need to verify
+        # the annotation is set (not None and not the fallback).
+        prob = PracticeOrchestrator.generate_problem(
+            node_id="mat_g2_na_q4_2",
+            seed=91000,
+            difficulty_profile={
+                "fraction_type": "unit_fraction",
+                "number_difficulty": 0.5,
+                "context": "pure",
+            },
+            formatter="cloze",
+            is_lab=False,
+        )
+        assert prob.dna_name is not None
+        assert prob.dna_name in ("fractions", "comparing_ordering")
+
     def test_orchestrator_sets_dna_name_for_balance_scale(self):
         from backend.app.services.orchestrator import PracticeOrchestrator
         prob = PracticeOrchestrator.generate_problem(

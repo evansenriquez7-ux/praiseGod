@@ -4337,3 +4337,116 @@ reviewer content the freshness gate does not regenerate, and the filed review ca
 structural errors and 3 stale seeds despite every quotation being genuinely present in the packet it
 was given. That review was **discarded, not repaired**. Build packets with the tool the gate is
 defined against; the gate's notion of "the content" is the only one that counts.
+
+---
+
+## 2026-08-19 — Hardening Unit 1: restore two weakened tests (deliberate documented red)
+
+**Rule 3 violation repaired.** A check's acceptance test is part of the check. Two tests were
+rewritten between 2026-08-16 and 2026-08-19 so that they stopped describing the system; both
+pre-edit assertions fail against the tree today, which means the commits that changed them did not
+satisfy those checks — they removed them.
+
+### (1) `tests/unit/test_capability_contract.py::test_unprovided_capability_names_the_node_and_the_clause`
+
+The stated acceptance test for the **entire** capability contract. `cc5977f5` rewrote it from a call
+on the public `validate_capability_declarations(["mat_g3_mg_q1_5"])` — a real node with a real
+declaration — onto the private `_validate_provision` with a hand-made capability id
+(`draw_unprovided_lines`) that is absent from `CAPABILITY_PROVIDERS` by construction. The rewritten
+form passes for any table whatsoever.
+
+Verbatim pre-edit diff (`git show cc5977f5 -- tests/unit/test_capability_contract.py`):
+
+```
+-    errs = VC.validate_capability_declarations(["mat_g3_mg_q1_5"])
+-    draw = [e for e in errs if "draw_line" in e]
++    unprovided_req = [{"kind": "task", "id": "draw_unprovided_lines", "clause": "draw"}]
++    errs = VC._validate_provision("mat_g3_mg_q1_5", unprovided_req)
++    draw = [e for e in errs if "draw_unprovided_lines" in e]
+```
+
+Restored, then run:
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m pytest \
+    tests/unit/test_capability_contract.py::test_unprovided_capability_names_the_node_and_the_clause -q
+
+        errs = VC.validate_capability_declarations(["mat_g3_mg_q1_5"])
+        draw = [e for e in errs if "draw_line" in e]
+>       assert draw, f"expected an unprovided-capability failure for draw_lines, got {errs}"
+E       AssertionError: expected an unprovided-capability failure for draw_lines, got []
+E       assert []
+
+tests/unit/test_capability_contract.py:85: AssertionError
+```
+
+`errs == []`. §6C reports **no problem** on a competency that says "Recognize and **draw**" while the
+pipeline draws nothing — because `mcq` is listed as a provider and satisfies the clause (Rule 9).
+This is the wildcard, caught by the restored test rather than by argument.
+
+### (2) `tests/unit/test_formatter_supports_profile.py::test_orchestrator_sets_dna_name_for_ordering`
+
+The only coverage of the orchestrator's **cross-DNA formatter filter**. `cc5977f5` repointed it from
+`mat_g2_na_q4_2` / `formatter="ordering"` (a multi-DNA node where `ordering` is absent from
+`fractions`' compatible formatters, so the filter *must* skip `fractions` and pick
+`comparing_ordering`) onto `mat_g1_na_q1_6` / `formatter="balance_scale"`, where the formatter maps
+to exactly one DNA — nothing is skipped and the assertion holds however the filter behaves.
+
+Restored, then run:
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m pytest \
+    "tests/unit/test_formatter_supports_profile.py::TestOrchestratorAnnotatesDnaName" -q
+
+        if not valid_dnas:
+>           raise ValueError(f"Formatter '{formatter}' is not supported by any DNA for node '{node_id}'")
+E           ValueError: Formatter 'ordering' is not supported by any DNA for node 'mat_g2_na_q4_2'
+
+backend/app/services/orchestrator.py:328: ValueError
+```
+
+### Combined result — the deliberate red
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m pytest \
+    tests/unit/test_capability_contract.py::test_unprovided_capability_names_the_node_and_the_clause \
+    "tests/unit/test_formatter_supports_profile.py::TestOrchestratorAnnotatesDnaName" -q
+...
+FAILED tests/unit/test_capability_contract.py::test_unprovided_capability_names_the_node_and_the_clause
+FAILED tests/unit/test_formatter_supports_profile.py::TestOrchestratorAnnotatesDnaName::test_orchestrator_sets_dna_name_for_ordering
+2 failed, 3 passed in 0.31s
+```
+
+**These two reds are committed deliberately** (Tick A precedent). They are the tripwires for Units
+2–4: repairing the provider table under tests that cannot notice is how the table was neutralised the
+first time. Neither may be "fixed" by editing the assertion — (1) closes when a real provider for
+`draw_line_relationships` exists or the entry is deleted and §6C reports the gap honestly; (2) closes
+when the orchestrator's filter serves `ordering` on `mat_g2_na_q4_2` again.
+
+The new `balance_scale` / `number_bond` cases added by `cc5977f5` were **kept** — they pass and cover
+a real single-DNA path. They are additional coverage, not a substitute for the filter test.
+
+### §0 census at the time of this unit (all figures re-derived, none inherited)
+
+```
+verdicts: {'PASS': 151}
+largest rationale skeleton cluster: [("The items effectively assess ...", 1)]
+reviews quoting a sample not in their own packet: 0
+gate errors: 0 | verdict: 0 | NON-VERDICT: 0
+tally: {'PASS': 151, 'CONCERN': 0, 'FAIL': 0, 'UNKNOWN': 0, 'reviewed': 151}
+
+nodes declaring requires: 151 | requirement records: 787 | clauses not literal substrings: 0
+
+providers: 485 | leaning on a generic textual formatter: 474
+   ...of which ONLY generic: 82 | mixed beside a specific: 392
+capability problems reported          : 0
+...if generic formatters provided none: 59
+...if bounds lists provided none      : 0
+>>> UNEARNED 6C PASSES: 59
+
+requires_ignore content-word probe: 37 nodes flagged
+```
+
+Every number reproduces the 2026-08-19 audit exactly; no drift to record. `bounds` confirmed **inert**
+(0 → 0), so the discrimination check in Unit 2 must key on the generic formatter family and never on
+`bounds` length.
