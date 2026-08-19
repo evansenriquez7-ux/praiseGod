@@ -1,0 +1,281 @@
+{
+ "batch": "batch005_mat_g2_mg_q4_3",
+ "attested_at": "2026-08-20T06:45:00+08:00",
+ "role": "Attester",
+ "supersedes": "batch003_mat_g2_mg_q4_3 (ruled STALE by §6F after commit e0bf0c3b changed the content; that record is retained, not edited)",
+ "blindness": {
+  "saw": [
+   "clause",
+   "competency text",
+   "grade/quarter",
+   "10 rendered student-path samples"
+  ],
+  "did_not_see": [
+   "CAPABILITY_PROVIDERS or that any entry was being defended",
+   "the node id",
+   "the DNA, formatter registry, or generator source",
+   "validation_reports/, local_only/, docs/"
+  ],
+  "samples_passed_inline": true,
+  "tool_uses_by_attester": 0,
+  "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'"
+ },
+ "packet": {
+  "builder": "tests/attester_packets.py",
+  "sampling": "is_student_path=True",
+  "node_id": "mat_g2_mg_q4_3",
+  "seeds": [
+   11,
+   23,
+   42,
+   57,
+   64,
+   78,
+   91,
+   103,
+   118,
+   127
+  ],
+  "samples_judged": [
+   {
+    "seed": 11,
+    "question_text": "A ball has a surface that bends smoothly in every direction. What kind of surface does a ball have?",
+    "correct_answer": "curved surface",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 23,
+    "question_text": "A ball has a surface that bends smoothly in every direction. What kind of surface does a ball have?",
+    "correct_answer": "curved surface",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 42,
+    "question_text": "Why is the edge of a ruler called a straight line?",
+    "correct_answer": "Because it never bends or changes direction.",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 57,
+    "question_text": "The edge of a desk never bends or changes direction. Which best describes it?",
+    "correct_answer": "straight line",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 64,
+    "question_text": "Which best describes the side of a solid figure that you could trace with a straight ruler?",
+    "correct_answer": "flat surface",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 78,
+    "question_text": "The path of a winding river bends smoothly and changes direction. Which best describes it?",
+    "correct_answer": "curved line",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 91,
+    "question_text": "A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?",
+    "correct_answer": "curved surface",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 103,
+    "question_text": "A ball rolls smoothly but a box does not roll. Why?",
+    "correct_answer": "A ball has a curved surface, but a box has flat surfaces.",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 118,
+    "question_text": "A ball rolls smoothly but a box does not roll. Why?",
+    "correct_answer": "A ball has a curved surface, but a box has flat surfaces.",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 127,
+    "question_text": "A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?",
+    "correct_answer": "curved surface",
+    "formatter": "mcq"
+   }
+  ]
+ },
+ "verdicts": [
+  {
+   "capability_id": "identify",
+   "node_id": "mat_g2_mg_q4_3",
+   "clause": "Identify",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    57,
+    64,
+    78,
+    11,
+    23,
+    91,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Each item gives a described object or property and asks the student to select the correct category label ('Which best describes it?' / 'What kind of surface...'), which is identification.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "explain",
+   "node_id": "mat_g2_mg_q4_3",
+   "clause": "explain",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    103,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 42 asks 'Why is the edge of a ruler called a straight line?' and 103/118 ask why a ball rolls and a box does not; the keys are reasons, not labels. Caveat recorded by the Attester: every explanation is recognition among four supplied options - no item asks the student to produce an explanation in their own words.",
+   "action_taken": "provider entry retargeted to variants=[('task_type','explain_difference')] in commit e0bf0c3b; this fresh verdict clears the §6F CONTRADICTED state"
+  },
+  {
+   "capability_id": "difference_between",
+   "node_id": "mat_g2_mg_q4_3",
+   "clause": "difference between",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    103,
+    118
+   ],
+   "confidence": "low",
+   "reasoning": "PROVIDED thinly. Seeds 103/118 only - their key sets two categories against each other; every other item requires one label in isolation, and 103/118 are the same stem twice. The Attester noted no item ever contrasts a straight line against a curved line, though the competency names that pair first.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "straight_lines",
+   "node_id": "mat_g2_mg_q4_3",
+   "clause": "straight",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    57,
+    64
+   ],
+   "confidence": "high",
+   "reasoning": "Seeds 42 and 57 key 'straight line' ('never bends or changes direction'); seed 64 uses 'straight ruler' in the stem.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "curved_lines",
+   "node_id": "mat_g2_mg_q4_3",
+   "clause": "curved lines",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    78
+   ],
+   "confidence": "low",
+   "reasoning": "PROVIDED once. Seed 78 (winding river) is the only item in all 10 where 'curved line' is the answer; it appears as a distractor in seven others.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "flat_surfaces",
+   "node_id": "mat_g2_mg_q4_3",
+   "clause": "flat",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    64,
+    103,
+    118
+   ],
+   "confidence": "low",
+   "reasoning": "Seed 64 keys 'flat surface'; 103/118 key an answer naming 'flat surfaces'. The Attester flagged seed 64 as itself defective, and it is the only item targeting flat alone.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "curved_surfaces",
+   "node_id": "mat_g2_mg_q4_3",
+   "clause": "curved surfaces",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    91,
+    127,
+    103,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Over-represented rather than absent: seeds 11/23/91/127 key 'curved surface' outright and 103/118 name it in the key.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "3_dimensional_objects",
+   "node_id": "mat_g2_mg_q4_3",
+   "clause": "3-dimensional objects",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    64,
+    91,
+    127,
+    11,
+    23,
+    103,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Seeds 64/91/127 use 'solid figure'; ball, box and desk are the objects. The term '3-dimensional' never appears in student text, which the Attester judged appropriate for Grade 2 rather than a gap.",
+   "action_taken": "none - entry stands"
+  }
+ ],
+ "incidental_findings": [
+  {
+   "severity": "defect",
+   "seeds": [
+    64
+   ],
+   "finding": "Answer key is defensibly wrong and the discriminator is mathematically false. 'Which best describes the side of a solid figure that you could trace with a straight ruler?' keys 'flat surface', but 'straight line' is in the option set and better fits what the stem literally describes (a ruler traces a line, not a surface). Traceability with a straightedge does not identify a flat surface: the lateral surface of a cylinder or cone contains straight lines. 'side' is also ambiguous between face and edge - the very distinction the item tests.",
+   "status": "OPEN - queued for the next tick. Not fixed in this tick because fixing it would immediately invalidate this attestation (protocol: attest -> fix -> re-attest once, never attest a node you are about to change)."
+  },
+  {
+   "severity": "weakness",
+   "seeds": [
+    11,
+    23,
+    57,
+    78,
+    91,
+    127
+   ],
+   "finding": "Answer-in-stem: the defining property is stated in the stem and the student need only match it to a label. Seeds 91/127 additionally give it away with 'like a ball'. Seed 42 uses the straight-line phrase as the key while seed 57 uses the identical phrase as the stem, so the set is answerable by keyword match.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "weakness",
+   "seeds": [
+    103,
+    118
+   ],
+   "finding": "Distractor 'A ball is always heavier than a box' tests neither lines nor surfaces and does not probe the misconception space.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "coverage",
+   "seeds": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "finding": "Lopsided by keyed target: curved surface 6 of 10; straight line 2; curved line exactly 1 (seed 78); flat surface exactly 1 (seed 64), and that one is the defective item - so a student may meet no sound flat-surface item at all. 10 samples contain 7 distinct items (11=23, 91=127, 103=118). 'difference between' is exercised only on the surface pair, never straight-vs-curved line. Objects are limited to ball, box and desk; no named solid (cube, sphere, cylinder, cone), so the coexistence case (a cylinder having both surface kinds) is never touched.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "none",
+   "seeds": [
+    78
+   ],
+   "finding": "Vocabulary judged in range for Grade 2 throughout. 'winding' is the hardest word but is glossed in the same sentence ('bends smoothly and changes direction'), so it is not a gate.",
+   "status": "CLOSED - no action"
+  }
+ ]
+}
