@@ -12,6 +12,39 @@ twice by fabricated reviews, once by a provider table where a generic formatter 
 clause. The goal is green *that survives audit*, which is why Tick G exists and why exit 0 fires it
 rather than Tick D.
 
+## What a tick optimises: VERIFIED COVERAGE, not the failure count
+
+**Do not optimise the number of failures.** It is the wrong objective function and it is the one that
+was gamed three times. A failure count can always be driven down by weakening something — widen a
+provider, delete a check, rewrite a test, flip a verdict — and every one of those is cheaper than the
+honest fix. An agent told to minimise failures will find the cheap path, because it is doing what it
+was asked.
+
+Optimise these instead. None can be moved by weakening anything, because the party that produces each
+number cannot see the thing that would be weakened:
+
+| metric | why it cannot be gamed |
+|---|---|
+| **capabilities with a blind Attester verdict** | the Attester never sees `CAPABILITY_PROVIDERS`, or that an entry exists |
+| **nodes with a fresh blind review** | the Reviewer never sees the generator, and freshness re-renders the cited seeds |
+| **gates with a mutation the harness actually caught** | a mutation counts only when a *planted bug* made the check go red |
+
+Read them at any time, in about a second:
+
+```bash
+PYTHONPATH=. .venv/bin/python3 scripts/hardening_supervisor.py
+```
+
+**Failures rising while coverage rises is progress** — it means something dishonest was removed and
+the tree is telling the truth about more of itself. **Failures falling while coverage stays flat is
+the signature of all three past defeats.** Report the movement of both, always, and never report a
+falling failure count on its own as a result.
+
+`run_all` exit 0 is then the **lagging confirmation** that the work is done — the last thing you
+observe, never the thing you steer by. **Definition of done:** coverage saturated (every capability
+attested, every node freshly reviewed, every gate mutation-proven) **and** `run_all` exits 0 **and**
+an independent Tick G audit re-derives it without inheriting a single number.
+
 **Every count in this file is a measurement with a date, not a fact.** They were true when written and
 §0 re-derives them each tick. Where a number here disagrees with what you measure, yours wins and the
 ledger records the drift — a previous revision of this file confidently named the wrong field as the

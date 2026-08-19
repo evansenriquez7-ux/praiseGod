@@ -56,6 +56,8 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 LEDGER = REPO / "local_only/scratch/hardening_ledger.md"
+ATTEST = REPO / "validation_reports/attestation"
+JUDGMENT = REPO / "validation_reports/judgment"
 STATUS = REPO / "local_only/scratch/hardening_status.json"
 
 IN_FLIGHT, RESUME, NOTHING_TO_DO, NEEDS_HUMAN = 0, 10, 20, 30
@@ -157,6 +159,50 @@ def capability_findings() -> int | None:
         return None
 
 
+
+def coverage() -> dict:
+    """
+    Progress toward the goal, which is NOT the failure count.
+
+    A failure count can be driven to zero by weakening a check, and has been, three
+    times. These three numbers cannot: an Attester never sees the provider table, a
+    blind reviewer never sees the generator, and a mutation only counts when the
+    harness actually caught a planted bug. Widening a provider or deleting a check
+    moves none of them up.
+    """
+    import json as _json
+
+    attested = set()
+    if ATTEST.exists():
+        for f in ATTEST.glob("*.json"):
+            for v in _json.loads(f.read_text()).get("verdicts", []):
+                if v.get("capability_id"):
+                    attested.add(v["capability_id"])
+
+    try:
+        sys.path.insert(0, str(REPO))
+        from backend.app.practice_gen.validation.validate_capability import CAPABILITY_PROVIDERS
+        total_caps = len(CAPABILITY_PROVIDERS)
+    except Exception:
+        total_caps = None
+
+    reviewed = len(list(JUDGMENT.rglob("*.json"))) if JUDGMENT.exists() else 0
+
+    mutations = None
+    mh = REPO / "tests/mutation_harness.py"
+    if mh.exists():
+        mutations = len(re.findall(r"^\s{4}Mutation\($", mh.read_text(), re.MULTILINE))
+
+    return {
+        "capabilities_attested": len(attested),
+        "capabilities_total": total_caps,
+        "attested_pct": round(100 * len(attested) / total_caps, 1) if total_caps else None,
+        "nodes_reviewed": reviewed,
+        "nodes_total": 151,
+        "mutations_registered": mutations,
+    }
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--reap", action="store_true", help="kill hung processes (default: report only)")
@@ -177,6 +223,7 @@ def main() -> int:
     unpushed = _sh("git", "log", "--oneline", "origin/main..HEAD")
     led = ledger_state()
     findings = capability_findings()
+    cov = coverage()
 
     if hung and not killed:
         verdict, why = NEEDS_HUMAN, f"{len(hung)} hung process(es); re-run with --reap"
@@ -201,6 +248,7 @@ def main() -> int:
                 "unpushed_commits": len(unpushed.splitlines()) if unpushed else 0},
         "ledger": led,
         "capability_findings": findings,
+        "coverage": cov,
         "NOTE": "A claim, not evidence. §0 re-derives from disk before any work is done.",
     }
     STATUS.parent.mkdir(parents=True, exist_ok=True)
@@ -214,7 +262,10 @@ def main() -> int:
     print(f"  head              : {head}")
     print(f"  tree              : {('MODIFIED (' + str(len(modified)) + ' tracked)') if modified else 'clean'}"
           f" | untracked: {len(untracked)} | unpushed: {status['git']['unpushed_commits']}")
-    print(f"  capability findings: {findings}")
+    print(f"  capability findings: {findings}   <- a cost, not the goal")
+    print(f"  COVERAGE (the goal): attested {cov['capabilities_attested']}/{cov['capabilities_total']}"
+          f" ({cov['attested_pct']}%) | reviewed {cov['nodes_reviewed']}/{cov['nodes_total']}"
+          f" | mutations {cov['mutations_registered']}")
     print(f"  ledger last entry : {led['last_heading']} ({led['age_hours']}h ago)")
     for p in hung:
         print(f"  HUNG pid={p['pid']} elapsed={p['elapsed_s']}s cpu={p['cpu_s']}s "

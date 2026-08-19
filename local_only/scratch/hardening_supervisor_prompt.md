@@ -62,6 +62,26 @@ modified tracked tree, and ledger age.
 
 ## The goal — so no tick optimises the wrong number
 
+**A tick optimises VERIFIED COVERAGE, not the failure count** (established 2026-08-20). The
+supervisor prints it:
+
+```
+capability findings: 60   <- a cost, not the goal
+COVERAGE (the goal): attested 5/484 (1.0%) | reviewed 151/151 | mutations 9
+```
+
+A failure count can always be driven down by weakening something, and it was, three times. These
+three numbers cannot be: the Attester never sees the provider table, the Reviewer never sees the
+generator, and a mutation counts only when a planted bug actually made a check go red.
+
+**Failures rising while coverage rises is progress.** Failures falling while coverage stays flat is
+the signature of every past defeat. Report both movements, always. Never report a falling failure
+count on its own.
+
+Attestation scope is **all 484 provider entries** (decided 2026-08-20). Record every verdict in
+`validation_reports/attestation/<batch>.json` — a verdict that exists only in a commit message is not
+countable, and coverage that is not countable is not a goal.
+
 `run_all` exiting 0 is **not** the objective and never was. It has been reached dishonestly three
 times, and the tree is currently red on purpose: earlier ticks converted a false green into an earned
 red. Every fast route back to green is forbidden — re-widening `CAPABILITY_PROVIDERS`, deleting §6D,

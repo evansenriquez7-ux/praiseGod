@@ -1,0 +1,88 @@
+{
+  "batch": "batch001_mat_g3_mg_q1_5",
+  "attested_at": "2026-08-19T20:15:00+08:00",
+  "role": "Attester",
+  "blindness": {
+    "saw": ["clause", "competency text", "grade/quarter", "10 rendered student-path samples"],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "validation_reports/, local_only/, docs/"
+    ],
+    "samples_passed_inline": true,
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "sampling": "is_student_path=True",
+    "seeds": [11, 23, 42, 57, 64, 78, 91, 103, 118, 127]
+  },
+  "verdicts": [
+    {
+      "capability_id": "recognize_line_relationships",
+      "node_id": "mat_g3_mg_q1_5",
+      "clause": "Recognize",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [23, 78, 103, 118],
+      "reasoning": "Items present a concrete instance and require the student to classify it. Attester flagged this as the clause it was genuinely torn on: all recognition is mediated by a verbal description of the figure, since no item carries a visual payload. Flips to NOT_PROVIDED if the intended reading is 'identify from a displayed figure'.",
+      "confidence": "torn - explicit ruling requested",
+      "action_taken": "none yet - entry still names only 'mcq', which a PROVIDED verdict does not license"
+    },
+    {
+      "capability_id": "draw_line_relationships",
+      "node_id": "mat_g3_mg_q1_5",
+      "clause": "draw",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No item asks the student to produce anything; all ten are four-option MCQs with no drawing surface, canvas, or visual payload. The three items that mention drawing use drawing only as narrative framing and still require selecting a name or description, which for a Grade 3 constructive verb is not the same act as drawing. Attester added, unprompted: 'Nothing short of an item that requires the student to produce or construct the lines would change that verdict; adding more MCQs about drawing would not.'",
+      "confidence": "high",
+      "action_taken": "entry DELETED from CAPABILITY_PROVIDERS (8e523cc4); node now honestly reports its gap - open Tick F"
+    },
+    {
+      "capability_id": "parallel_lines",
+      "node_id": "mat_g3_mg_q1_5",
+      "clause": "parallel",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [23, 42, 57],
+      "reasoning": "Parallel lines are the target concept in three items; the items operate on the thing the clause names.",
+      "confidence": "high",
+      "action_taken": "none yet - entry still names only 'mcq'"
+    },
+    {
+      "capability_id": "intersecting_lines",
+      "node_id": "mat_g3_mg_q1_5",
+      "clause": "intersecting",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [64],
+      "reasoning": "Exactly one item makes intersecting lines the subject (seed 64). Genuinely exhibits the concept, but coverage is 1 of 10 and definition-completion only.",
+      "confidence": "medium - thin coverage noted by the Attester",
+      "action_taken": "none yet - entry still names only 'mcq'"
+    },
+    {
+      "capability_id": "perpendicular_lines",
+      "node_id": "mat_g3_mg_q1_5",
+      "clause": "perpendicular lines",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [11, 78, 91, 103, 118, 127],
+      "reasoning": "Keyed answer in six of ten items, across definitional framing and instance classification.",
+      "confidence": "high",
+      "action_taken": "none yet - entry still names only 'mcq'"
+    }
+  ],
+  "incidental_findings": [
+    {
+      "kind": "content_defect",
+      "severity": "high",
+      "node_id": "mat_g3_mg_q1_5",
+      "seeds": [78, 91, 118, 127],
+      "finding": "'intersecting lines' is offered as a distractor against the keyed answer 'perpendicular lines', but perpendicular lines ARE intersecting lines, so a student selecting the distractor is not wrong.",
+      "note": "Reported unasked, outside the Attester's own question. No machine check catches it and the node's judgment review is a filed PASS. Open Tick C."
+    },
+    {
+      "kind": "coverage_skew",
+      "node_id": "mat_g3_mg_q1_5",
+      "finding": "6 perpendicular / 3 parallel / 1 intersecting across ten seeds; ten seeds yield only seven distinct stems (42==57, 78==118, 91==127)."
+    }
+  ]
+}
