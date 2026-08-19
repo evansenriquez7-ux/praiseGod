@@ -184,7 +184,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     },
     # ── straight vs. curved lines / flat vs. curved surfaces (G2-MG-Q4) ───────
     {
-        "question": "It never bends or changes direction. Is it a straight line or a curved line?",
+        "question": "The edge of a desk never bends or changes direction. Which best describes it?",
         "answer": "straight line",
         "distractors": ["curved line", "flat surface", "curved surface"],
         "concept_type": "straight_curved",
@@ -192,7 +192,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
     {
-        "question": "It bends smoothly and changes direction. Is it a straight line or a curved line?",
+        "question": "The path of a winding river bends smoothly and changes direction. Which best describes it?",
         "answer": "curved line",
         "distractors": ["straight line", "flat surface", "curved surface"],
         "concept_type": "straight_curved",
@@ -200,7 +200,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
     {
-        "question": "The edge of a ruler never bends. Is it a straight line or a curved line?",
+        "question": "The edge of a ruler never bends. Which best describes it?",
         "answer": "straight line",
         "distractors": ["curved line", "flat surface", "curved surface"],
         "concept_type": "straight_curved",
@@ -208,7 +208,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
     {
-        "question": "The rim of a circle bends all the way around. Is it a straight line or a curved line?",
+        "question": "The rim of a circle bends all the way around. Which best describes it?",
         "answer": "curved line",
         "distractors": ["straight line", "flat surface", "curved surface"],
         "concept_type": "straight_curved",
@@ -232,7 +232,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 2,
     },
     {
-        "question": "A box has six faces that are each a flat square. What kind of surface does a box have?",
+        "question": "A box has six faces that are each flat. What kind of surface does a box have?",
         "answer": "flat surface",
         "distractors": ["curved surface", "straight line", "curved line"],
         "concept_type": "straight_curved",
@@ -261,6 +261,77 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "distractors": ["curved surface", "straight line", "curved line"],
         "concept_type": "straight_curved",
         "task_type": "identify_property",
+        "grade_min": 2,
+    },
+    # ── explain / difference between (G2-MG-Q4) ──────────────────────────────
+    # mat_g2_mg_q4_3's competency is "Identify *and explain* the difference
+    # between straight and curved lines, and flat and curved surfaces of
+    # 3-dimensional objects." Until 2026-08-20 the pool served only
+    # identify_name/identify_property, so a blind Attester ruled the 'explain'
+    # clause NOT_PROVIDED: "No item asks why, asks for a reason, or offers
+    # explanatory statements as options - the four choices are bare labels."
+    # These items are that clause's provider: the stem asks *why* or *how they
+    # differ*, and every option is a full explanatory statement rather than a
+    # label. Content Rule 4 -- the competency names the verb, so building it is
+    # the fix, not scope creep.
+    {
+        "question": "Why is the edge of a ruler called a straight line?",
+        "answer": "Because it never bends or changes direction.",
+        "distractors": [
+            "Because it bends all the way around.",
+            "Because it is flat and wide.",
+            "Because it is very long.",
+        ],
+        "concept_type": "straight_curved",
+        "task_type": "explain_difference",
+        "grade_min": 2,
+    },
+    {
+        "question": "Why is the rim of a plate called a curved line?",
+        "answer": "Because it bends smoothly and changes direction.",
+        "distractors": [
+            "Because it never bends.",
+            "Because it is a flat surface.",
+            "Because it has two ends.",
+        ],
+        "concept_type": "straight_curved",
+        "task_type": "explain_difference",
+        "grade_min": 2,
+    },
+    {
+        "question": "How is a straight line different from a curved line?",
+        "answer": "A straight line never bends, but a curved line bends smoothly.",
+        "distractors": [
+            "A straight line bends, but a curved line never bends.",
+            "Both of them bend in the same way.",
+            "A straight line is always longer than a curved line.",
+        ],
+        "concept_type": "straight_curved",
+        "task_type": "explain_difference",
+        "grade_min": 2,
+    },
+    {
+        "question": "How is a flat surface different from a curved surface?",
+        "answer": "A flat surface has no bumps or curves, but a curved surface bends.",
+        "distractors": [
+            "A flat surface bends, but a curved surface has no bumps.",
+            "Both of them bend in the same way.",
+            "A flat surface is always bigger than a curved surface.",
+        ],
+        "concept_type": "straight_curved",
+        "task_type": "explain_difference",
+        "grade_min": 2,
+    },
+    {
+        "question": "A ball rolls smoothly but a box does not roll. Why?",
+        "answer": "A ball has a curved surface, but a box has flat surfaces.",
+        "distractors": [
+            "A ball has flat surfaces, but a box has a curved surface.",
+            "Both of them have only flat surfaces.",
+            "A ball is always heavier than a box.",
+        ],
+        "concept_type": "straight_curved",
+        "task_type": "explain_difference",
         "grade_min": 2,
     },
     # ── point / line / segment / ray: recognize_model ──────────────────────────
@@ -510,7 +581,7 @@ def generate_params(
     task_type = profile.get("task_type") or random.Random(seed).choice(
         ["identify_name", "identify_property", "recognize_model", "draw_construct"]
         if grade >= 3 else
-        ["identify_name", "identify_property"]
+        ["identify_name", "identify_property", "explain_difference"]
     )
 
     candidates = [

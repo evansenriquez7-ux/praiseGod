@@ -150,6 +150,10 @@ CURRICULUM_VARIANT_GATES: Dict[tuple, tuple] = {
     ("geometric_lines", "task_type", "draw_construct"): (3, 1),
     ("geometric_lines", "concept_type", "point_line_segment_ray"): (3, 1),
     ("geometric_lines", "concept_type", "parallel_intersecting_perpendicular"): (3, 1),
+    # "explain the difference" is first asked at mat_g2_mg_q4_3 (G2 Q4). No
+    # earlier geometry competency asks a pupil to justify a classification, so
+    # the task_type must not reach G1 or G2 Q1-Q3.
+    ("geometric_lines", "task_type", "explain_difference"): (2, 4),
 
     # Word problems: available from G1Q1 per curriculum ("solve problems given orally or in pictures")
     # No gate entries (all LCs with word_problem context available from Q1)
@@ -715,7 +719,14 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         # when a requested combination has zero grade-eligible items, so a
         # registered variant value that doesn't exist in the pool is a hard
         # failure at generation time, not a quietly-wrong substitution.
-        "task_type": ["identify_name", "identify_property", "recognize_model", "draw_construct"],
+        "task_type": [
+            "identify_name", "identify_property", "recognize_model", "draw_construct",
+            # Only straight_curved carries explain_difference items. The other two
+            # concept_types fall to generate_params()'s task_type-only relax path,
+            # which is the documented behaviour for an unmatched combination -- it
+            # never swaps concept_type, so no node is served another node's scope.
+            "explain_difference",
+        ],
         "concept_type": ["straight_curved", "parallel_intersecting_perpendicular", "point_line_segment_ray"],
     },
 

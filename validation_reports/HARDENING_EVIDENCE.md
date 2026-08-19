@@ -5210,3 +5210,98 @@ exactly once.
 All three carry open §6D findings, so they are doubly implicated: even the 24 PROVIDED clauses still
 fail §6D because their entries name only `mcq`. A PROVIDED verdict says the *content* does the thing;
 it does not license a generic formatter as the registered *provider*. Both must be satisfied.
+
+---
+
+## 2026-08-20 — Tick C: `mat_g2_mg_q4_3` content defects fixed at root, and `explain` built
+
+Commit touches `backend/app/practice_gen/`, so Rule 7 requires this entry.
+
+### What was wrong
+
+Three defects, all in `backend/app/practice_gen/dna/mg/geometric_lines.py`'s hand-written
+`_ITEM_POOL`, all previously filed under a **PASS** judgment review:
+
+1. **Undefined referent + question/option disagreement** (4 pool entries). Two stems opened with a
+   bare "It" that referred to nothing. All four binary stems asked *"Is it a straight line or a
+   curved line?"* while carrying `flat surface` / `curved surface` distractors — two options the
+   question does not admit.
+2. **Mathematically false stem.** *"A box has six faces that are each a flat square"* describes a
+   **cube**, not a box.
+3. **`explain` clause served by nothing.** The competency is *"Identify **and explain** the
+   difference between straight and curved lines, and flat and curved surfaces of 3-dimensional
+   objects."* The pool held only `identify_name` / `identify_property` items, so a blind Attester
+   ruled the clause NOT_PROVIDED (§6F CONTRADICTED): *"No item asks why, asks for a reason, or offers
+   explanatory statements as options - the four choices are bare labels."*
+
+### Root cause and the fix
+
+One rule was violated in five places: **a stem must name its referent and ask a question its own
+option set can answer.** Fixed every instance (Protocol 2), not the reported seeds:
+
+- 4 binary stems given real antecedents and re-asked as *"Which best describes it?"*, which the
+  4-option set can answer. Bare `line` is in this node's `NOT_YET_KNOWN`, so the open phrasing
+  deliberately avoids the noun.
+- The box stem's false "square" claim removed.
+- **Built the `explain` provider** (Content Rule 4 — the competency names the verb, so building it is
+  the fix): 5 new `task_type='explain_difference'` items whose stems ask *why* / *how they differ*
+  and whose options are full explanatory statements. Registered in `VARIANTS_BY_DNA` and gated
+  `("geometric_lines", "task_type", "explain_difference"): (2, 4)` — the clause first appears at G2 Q4.
+- `CAPABILITY_PROVIDERS['explain']` retargeted from `{'formatters': ['mcq'], 'bounds': [27-key
+  catch-all]}` — neither of which claims anything about explanation — to
+  `{'variants': [('task_type', 'explain_difference')]}`. Only `mat_g2_mg_q4_3` requires this
+  capability, so the retarget affects no other node.
+
+### Verbatim results
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.validate_matrix --node mat_g2_mg_q4_3
+[1/1] Checking mat_g2_mg_q4_3 ...  PASS
+Nodes Checked: 1 | Nodes Passed:  1 | Nodes Failed:  0
+Contract checks actually executed: ['§1C', '§1C-coverage', '§1D', '§1F']
+   exit=0
+```
+
+`mat_g3_mg_q1_4` and `mat_g3_mg_q1_5` share this DNA and both still PASS (exit=0). Their content is
+provably untouched: over 500 seeds, grade-3 default serving never selects `explain_difference`
+(`{'draw_construct': 121, 'identify_property': 125, 'identify_name': 129, 'recognize_model': 125}`),
+and the 5 new items exist only under `concept_type='straight_curved'`, which no G3 node uses.
+
+Rendered seeds after the fix — the defects are gone and `explain` renders (seeds 42, 103, 118):
+
+```
+seed  42  Q: Why is the edge of a ruler called a straight line?
+          A: Because it never bends or changes direction.
+          O: ['Because it bends all the way around.', 'Because it is very long.',
+              'Because it never bends or changes direction.', 'Because it is flat and wide.']
+seed  57  Q: The edge of a desk never bends or changes direction. Which best describes it?
+          A: straight line
+seed  78  Q: The path of a winding river bends smoothly and changes direction. Which best describes it?
+          A: curved line
+seed 103  Q: A ball rolls smoothly but a box does not roll. Why?
+          A: A ball has a curved surface, but a box has flat surfaces.
+```
+
+Coverage skew (queue item 3) improved as a side effect: **6 → 7 distinct stems across the 10 fixed
+review seeds.** Not yet 10; the remaining clustering stays on the queue.
+
+### Movements
+
+- §6D wildcards **59 → 58** (the `explain` entry stopped being a wildcard).
+- CONTRADICTED **still 1**, correctly. §6F does not clear a blind verdict because the Fixer changed
+  the content — it clears on a *fresh* blind re-attestation. Building the artifact does not entitle
+  anyone to re-file the verdict.
+- §6F freshness then fired on its own, which is the check working:
+
+```
+mat_g2_mg_q4_3: attestation batch 'batch003_mat_g2_mg_q4_3' is STALE (§6F) at seed 42. The Attester
+judged 'It bends smoothly and changes direction. Is it a straight line or a curved line?' but the
+pipeline now renders 'Why is the edge of a ruler called a straight line?'. Every verdict in this
+batch is about content that no longer exists -- re-attest the batch. Do not edit the record.
+```
+
+### Process note
+
+`--reap` killed an orphaned pool worker at 443s CPU (ratio 0.99) left by the interrupted run. The
+first `run_all` of this tick was launched before these edits and crossed into §5 after they landed,
+so it measured neither tree state and was killed rather than reported.
