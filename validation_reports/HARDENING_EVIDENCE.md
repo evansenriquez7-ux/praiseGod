@@ -4775,3 +4775,93 @@ concurrently could have reported a fabricated judgment failure against a clean t
 50-minute run (the hazard list is explicit that the mutation harness must never run concurrently with
 `run_all`). Its baseline guard is verified above. Execution and result are recorded in the next
 entry — this one claims only what was run.
+
+---
+
+## 2026-08-19 — Unit 3 completion + full `run_all` verification
+
+### `template_review` (§5) — executed, DETECTED
+
+Deferred in the previous entry because a full `run_all` was mid-flight reading the same files. Run
+with exclusive access:
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m tests.mutation_harness --only template_review
+
+[1/1] template_review: Staple one fill-in-the-blank rationale, with the node ID substituted in,
+      onto four separate reviews -- the fabrication that passed every check this repo had, twice,
+      because verbatim-reuse detection compares byte equality and a substituted node ID is not
+      byte-identical.
+    expected catcher: §5 (rationale-skeleton clustering)
+    DETECTED: exit 1
+
+  PASS  template_review          §5 (rationale-skeleton clustering)
+
+1/1 mutations detected.
+```
+
+Detection required the output to carry both `template rationale` and `share one findings`, so this is
+the clustering check firing and not incidental noise. The verbatim finding:
+
+```
+template rationale: 4 nodes share one findings['competency_fulfillment'] skeleton (max 3) —
+node IDs, quoted spans, and digits stripped, the rationales are the same sentence frame, which
+is a fill-in-the-blank form rather than independent judgment. Skeleton: 'the items for <NODE>
+were reviewed against the competency and found to address it directly. the number ranges
+observed are appropriate for t...'
+```
+
+Restoration confirmed clean: `after restore, gate errors: 0`, and `git status` shows no tracked file
+modified.
+
+**Both stages that have ever been defeated now have a planted, caught mutation.** §5: 2/2 detected
+across the harness. §6: 1/1.
+
+### Full `run_all` — the intended red, with no machine-stage regression
+
+Launched in the background at 19:20, landed 19:5x (~34 min wall clock on a contended host; the
+protocol's measured figure is ~50 min uncontended).
+
+```
+--- 1/7: DNA Structural and Parameter Checks ---
+DNA validation: 28/28 passed, 0 failed.
+Difficulty feasibility validation: 28/28 passed, 0 failed.
+--- 2/7: Compatibility, Coverage & Monotonicity ---            PASS
+--- 3/7: Interest Invariance Checks ---
+Interest invariance: 12/12 passed, 0 failed.
+--- 4/7: Vocabulary & Concept Gating Audits (Full-Node Mode) --- PASS
+--- 5/7: Exhaustive Behavioral Matrix Validation ---
+Nodes Checked: 151 | Nodes Passed: 151 | Nodes Failed: 0
+Total Failures Observed: 0
+Contract checks actually executed: ['§1A', '§1A-reach', '§1B', '§1C', '§1C-coverage',
+                                    '§1C-reverse', '§1D', '§1E', '§1F', '§4']
+--- 6/7: Judgment Reviews (genuine per-node artifacts) ---
+  PASS judgment_reviews (all 151 nodes have genuine, fresh, PASS reviews: PASS=151 CONCERN=0 FAIL=0)
+--- 7/7: Capability Contract (competency → pipeline) ---
+  FAIL capability_contract (59 problem(s): 0 node(s) undeclared, 59 capability(ies) with no
+       provider, of which 59 are carried only by a generic textual formatter (§6D)):
+--- Two-Direction Contract Verification ---
+  PASS contract_doc_matches_registry
+  PASS two_direction_contract_match
+======================================================================
+SOME TESTS FAILED. Please review the output above.
+======================================================================
+EXIT=1
+```
+
+Four things this run establishes:
+
+1. **No Tick 0.** Stages 1–5 are green — 28/28 DNAs, 151/151 nodes, **0 total failures observed**.
+   §6D did not break the pipeline; it changed only what the contract *reports*.
+2. **§6D fires end-to-end in the real harness**, not merely in a unit test, and the new stage-7
+   summary line breaks the count out by cause.
+3. **Both contract lints PASS with §6D added**, which is the check on my own wiring: the doc row, the
+   `CONTRACT_CHECKS` entry, and the symmetric add/discard in `executed_checks` all agree.
+4. **`EXIT=1` — the intended red.** A repair that kept the tree green would not have repaired anything.
+
+**One precision note.** This run reports **59**, not the 60 the current tree reports. `run_all`'s
+parent process imported `validate_capability` at launch, before Unit 4 deleted the
+`draw_line_relationships` entry, so stage 7 evaluated the Unit-2 table from memory. 59 is therefore
+the correct verification of Unit 2 and does **not** cover Unit 4's deletion; Unit 4 was verified by
+its own scoped run (60 failures, `mat_g3_mg_q1_5` naming its missing "draw") and the next full
+`run_all` is expected to report 60.

@@ -2940,3 +2940,59 @@ byte-identical on all eight seeds. Stems now name the source and the rows, three
 
 - **Also observed:** a stale process from an earlier session (PID 60510, `pytest tests/unit/`) has
   accumulated **852 minutes of CPU** and is still running. Not killed — flagged for the maintainer.
+
+- **Commit(s):**
+  - `fce7f8df` test(harness): restore two weakened tests — deliberate documented red
+  - `e282c028` feat(capability): §6D — a generic textual formatter is not a provider
+  - `8e523cc4` fix(capability): delete draw_line_relationships on a blind Attester ruling
+  - `f97e5eee` test(harness): extend the mutation harness to §5 and §6
+
+- **Verification:**
+  - `pytest tests/unit/test_capability_contract.py` → **10 passed** (Unit 1's tripwire now passes
+    because the harness reports the gap, not because an assertion was edited)
+  - `validate_capability_declarations()` → **60 failures** (0 → 59 on §6D, +1 on the deleted draw entry)
+  - `mutation_harness --only wildcard_provider` → **DETECTED, 1/1**, tree restored
+  - two-direction contract lint → doc-only `set()`, registry-only `set()`, **MATCH True**
+  - full `run_all` launched in background 19:20; **still in flight at tick end**, its exit line is the
+    next tick's first read. `template_review` deliberately not run against a live `run_all`.
+
+- **Census after:** PASS=151 CONCERN=0 FAIL=0 (judgment untouched, as instructed) ·
+  **capability failures 0 → 60** · **UNEARNED §6C PASSES: 59 → 0** (they are now *reported*, not hidden)
+
+- **Next tick should:**
+  1. Read the `run_all` exit line from 19:20 and the follow-up run; expect stage 7 red at ~60 and
+     stages 1–5 green. A red at any machine stage is a Tick 0 and comes first.
+  2. Run `mutation_harness --only template_review` (needs exclusive access) and record the result;
+     if it SURVIVES, that is a hole in `validate_judgment` and it becomes the unit.
+  3. **Tick C, first item:** `mat_g3_mg_q1_5` seeds 78/91/118/127 key `perpendicular lines` while
+     offering `intersecting lines` as a distractor — perpendicular lines *are* intersecting lines, so
+     the distractor is not wrong. Real math error in student-facing content, on a filed PASS review.
+     Also fix the 6/3/1 coverage skew and the 7-distinct-stems-from-10-seeds duplication.
+  4. **Tick F:** `mat_g3_mg_q1_5` now honestly reports no provider for `draw`. Build something that
+     renders a drawing/construction task (Tick F Step 1 first — prove it doesn't already exist).
+  5. Continue Unit 4: Attester batches over the remaining §6D queue (15 nodes / 56 capabilities),
+     ≤25 per batch. Start with `mat_g1_mg_q4_0` (8), `mat_g2_mg_q4_3` (7), `mat_g3_dp_q3_4` (6).
+     Note batch 1 ruled `Recognize`/`parallel`/`intersecting`/`perpendicular` PROVIDED **as content**
+     while their entries still name only `mcq` — the repair is to point each entry at the artifact
+     that actually produces line-relationship content, not to keep `mcq`.
+  6. Delete the orphan `draw_lines` provider entry (no node declares it; same Attester ruling).
+  7. Unit 5: the 6 unambiguous `requires_ignore` content words, Declarer-first —
+     `mat_g1_na_q2_2` (place, value), `mat_g3_na_q2_6` (Perform), `mat_g3_mg_q4_0` (effect),
+     `mat_g3_mg_q4_1` (show), `mat_g1_na_q3_6` (patterns), `mat_g3_na_q3_5` (1a/1b/1c… — likely
+     legitimately ignorable e.g.-literals; triage before declaring).
+
+### Tick close-out (post-`run_all`)
+
+- **`run_all` (19:20 → ~19:54, background):** `EXIT=1`. Stages 1–5 **green** (28/28 DNAs, 151/151
+  nodes, **0 total failures observed**), stage 6 **PASS** (151 genuine PASS reviews), stage 7 **FAIL**
+  at **59** §6D findings, **both** two-direction contract lints **PASS**. No Tick 0 — §6D changed what
+  the contract reports, not what the pipeline produces.
+  *Reports 59, not the tree's current 60: the parent imported `validate_capability` before Unit 4's
+  deletion, so stage 7 read the Unit-2 table from memory. It verifies Unit 2; Unit 4 was verified by
+  its own scoped run. Next full run should report 60.*
+- **`mutation_harness --only template_review`:** **DETECTED** — caught by §5 skeleton clustering
+  ("4 nodes share one findings['competency_fulfillment'] skeleton (max 3)"), tree restored, gate
+  errors back to 0. **Both previously-defeated stages now have a planted, caught mutation.**
+- **Housekeeping:** killed my own redundant full-suite pytest that was contending with `run_all`.
+  The stale PID 60504/60510 from an *earlier session* (now 856+ min CPU) is still running and is
+  **not** mine — flagged for the maintainer, not killed.
