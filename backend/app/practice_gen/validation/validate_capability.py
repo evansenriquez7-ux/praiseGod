@@ -632,6 +632,33 @@ def _bound_restricts_to(bound: Any) -> Set[str] | None:
     return None
 
 
+# §6D — the generic textual formatter family.
+#
+# These four are reachable from almost every DNA in the tree, so listing one as a
+# capability's provider satisfies the clause on almost every node: it answers "can this
+# node render text?", never "does this node render the thing the clause names".
+#
+# Measured 2026-08-19 on this tree:
+#   * 27 of 28 DNAs offer at least one (only `bar_graphs` does not);
+#   * 148 of 151 nodes reach at least one on the student path;
+#   * 474 of 485 CAPABILITY_PROVIDERS entries list at least one, and removing the family
+#     turns 0 reported capability problems into 59.
+#
+# That is the shape of a wildcard: a provider that matches everything is not a provider
+# (Rule 9). §6D below recomputes provision with this family removed and fails, by name,
+# any capability the family alone was carrying.
+#
+# Note for anyone extending this: do NOT threshold on `bounds` list length. An earlier
+# audit named the 27-key `bounds` catch-all on 483 providers as the defeat mechanism;
+# measured, deleting `bounds` from every provider moves the failure count 0 -> 0. It is
+# inert padding. A check written that way flags 483 harmless entries and catches zero
+# real ones. Equally, "is this entry's formatter list *only* generic?" catches 82 of the
+# 474 — the other 392 mix a generic name in beside a specific one and `_validate_provision`
+# ORs them, so the generic name carries the clause and the specific one is decoration.
+# The question that discriminates is "what still provides this once the family is gone?"
+_GENERIC_TEXTUAL_FORMATTERS: Set[str] = {"mcq", "cloze", "true_false", "error_detect"}
+
+
 def _provided_for_node(node_id: str) -> Dict[str, Set[str]]:
     """
     The concrete artifacts reachable for this node **on the student path**.
@@ -694,21 +721,57 @@ def _validate_provision(node_id: str, requires: List[Dict]) -> List[str]:
             )
             continue
 
-        ok = any(f"{k}={v}" in avail["variants"] for k, v in spec.get("variants", []))
-        ok = ok or any(f in avail["formatters"] for f in spec.get("formatters", []))
+        by_variant = [
+            f"{k}={v}" for k, v in spec.get("variants", [])
+            if f"{k}={v}" in avail["variants"]
+        ]
+        # §6D: a generic textual formatter is not a provider for anything (see the
+        # measurement above the _GENERIC_TEXTUAL_FORMATTERS constant). Count what it
+        # carries separately from what a specific artifact carries, so the two can be
+        # told apart rather than OR'd into a single boolean.
+        matched_formatters = [f for f in spec.get("formatters", []) if f in avail["formatters"]]
+        by_specific_formatter = [
+            f for f in matched_formatters if f not in _GENERIC_TEXTUAL_FORMATTERS
+        ]
+        by_generic_formatter = [
+            f for f in matched_formatters if f in _GENERIC_TEXTUAL_FORMATTERS
+        ]
         # A numeric ceiling is provided by the node's competency bounds rather than by
         # a variant value -- that is the one part of _parse_competency_bounds worth
         # keeping, since a range genuinely is derivable from "up to 100".
-        if not ok and spec.get("bounds"):
+        by_bounds: List[str] = []
+        if spec.get("bounds"):
             bounds = get_node_competency_bounds(node_id) or {}
-            ok = any(b in bounds for b in spec["bounds"])
-        if not ok:
+            by_bounds = [b for b in spec["bounds"] if b in bounds]
+
+        discriminating = by_variant + by_specific_formatter + by_bounds
+        if discriminating:
+            continue
+
+        if by_generic_formatter:
+            # The entry is registered and it "matches" -- but only via a formatter the
+            # whole tree offers. Nothing here is evidence that this node produces what
+            # the clause names, so the honest report is the same one an unregistered
+            # capability gets: no pipeline artifact provides it.
             errs.append(
-                f"{node_id}: capability {cap!r} (clause {req.get('clause')!r}) has "
-                f"providers registered {spec}, but none is reachable from this node's "
-                f"DNAs {dnas}. Either the node is mapped to the wrong DNA, or the "
-                f"provider is gated off the node that needs it."
+                f"{node_id}: competency requires {cap!r} (from clause "
+                f"{req.get('clause')!r}), but no pipeline artifact provides it. "
+                f"Its only reachable provider is the generic textual formatter family "
+                f"{sorted(by_generic_formatter)}, which 27 of 28 DNAs offer and which "
+                f"therefore discriminates nothing (§6D, AGENTS.md Rule 9). "
+                f"Registered providers: {spec}. Reachable DNAs: {dnas or '[]'}. "
+                f"Either build the formatter/variant/dd/DNA that renders what the clause "
+                f"names and register that, or delete the entry and let this gap be "
+                f"reported -- a generic textual formatter is never the answer."
             )
+            continue
+
+        errs.append(
+            f"{node_id}: capability {cap!r} (clause {req.get('clause')!r}) has "
+            f"providers registered {spec}, but none is reachable from this node's "
+            f"DNAs {dnas}. Either the node is mapped to the wrong DNA, or the "
+            f"provider is gated off the node that needs it."
+        )
     return errs
 
 

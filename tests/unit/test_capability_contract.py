@@ -87,6 +87,125 @@ def test_unprovided_capability_names_the_node_and_the_clause():
     assert "no pipeline artifact provides it" in draw[0]
 
 
+# --- §6D: a generic textual formatter is not a provider -----------------------
+
+def test_generic_textual_formatter_is_not_a_provider():
+    """
+    The mechanical form of Rule 9, planted and proved (Rule 11).
+
+    In August 2026 `run_all` reached exit 0 with 474 of 485 CAPABILITY_PROVIDERS
+    entries listing mcq/cloze/true_false/error_detect among their providers. 27 of 28
+    DNAs offer at least one, so the generic name satisfied the clause on almost every
+    node and the specific artifact beside it was decoration. Not one assertion was
+    weakened -- §6C simply answered "yes" to every question it was asked.
+
+    This plants that exact shape on a capability that currently passes on a real,
+    discriminating provider, and requires §6D to catch it BY NAME.
+    """
+    import copy
+
+    target, node = "draw_line_relationships", "mat_g3_mg_q1_5"
+    original = copy.deepcopy(VC.CAPABILITY_PROVIDERS)
+    try:
+        baseline = [e for e in VC.validate_capability_declarations([node]) if target in e]
+        assert not baseline, (
+            f"{target} is expected to pass on its real provider before mutation; "
+            f"got {baseline}"
+        )
+
+        VC.CAPABILITY_PROVIDERS[target] = {"formatters": ["mcq", "cloze"]}
+        errs = VC.validate_capability_declarations([node])
+        caught = [e for e in errs if "§6D" in e and target in e]
+        assert caught, f"MUTATION SURVIVED: a wildcard provider was not caught. got {errs}"
+        assert node in caught[0]
+        assert "no pipeline artifact provides it" in caught[0]
+    finally:
+        VC.CAPABILITY_PROVIDERS.clear()
+        VC.CAPABILITY_PROVIDERS.update(original)
+
+    assert not [e for e in VC.validate_capability_declarations([node]) if target in e], (
+        "the mutation was not cleanly reverted"
+    )
+
+
+def test_generic_formatter_does_not_mask_a_specific_one():
+    """
+    The discrimination must key on *what survives removing the family*, never on how
+    the entry looks. 392 of the 474 wildcard entries mixed a generic name in beside a
+    specific one, so a check asking "is this entry only generic?" catches 82 of 474.
+
+    A specific, reachable provider standing beside a generic name is still a provider:
+    §6D must stay silent here or it would flag 392 entries it has no business touching.
+    """
+    import copy
+
+    target, node = "draw_line_relationships", "mat_g3_mg_q1_5"
+    original = copy.deepcopy(VC.CAPABILITY_PROVIDERS)
+    try:
+        # The real entry is exactly this mixed shape: a reachable variant + 'mcq'.
+        spec = VC.CAPABILITY_PROVIDERS[target]
+        assert "mcq" in spec.get("formatters", []), "fixture assumes the mixed shape"
+        assert spec.get("variants"), "fixture assumes a specific provider is present"
+
+        errs = [e for e in VC.validate_capability_declarations([node]) if target in e]
+        assert not errs, f"§6D fired on an entry with a real specific provider: {errs}"
+    finally:
+        VC.CAPABILITY_PROVIDERS.clear()
+        VC.CAPABILITY_PROVIDERS.update(original)
+
+
+def test_bounds_length_is_never_the_discriminator():
+    """
+    Guards against the decoy that cost an earlier audit a day.
+
+    483 of 485 providers carry an identical 27-entry `bounds` catch-all, and that audit
+    named it as the mechanism defeating §6C. It was not: measured *before* §6D existed,
+    deleting `bounds` from every provider moved the failure count 0 -> 0, because the
+    generic formatter family was satisfying everything first. A check thresholding on
+    bounds length would have flagged 483 harmless entries and caught zero real ones.
+
+    (With §6D active the family no longer satisfies, so `bounds` does become load-bearing
+    for the ~15 capabilities that leaned on both -- stripping it now moves the count
+    further. That is the contract working, not the decoy returning. What must never
+    happen is §6D keying on how *long* a bounds list is, which is what this pins:
+    padding a list with keys the node's competency bounds do not contain changes
+    nothing, in either direction.)
+    """
+    import copy
+    import re
+
+    def _identities():
+        """(node, capability) pairs §6D flagged -- not the message text, which echoes
+        the spec and therefore changes when the spec is padded."""
+        return {
+            m.groups()
+            for e in VC.validate_capability_declarations()
+            if "§6D" in e
+            for m in [re.match(r"^(\S+): competency requires '([^']+)'", e)]
+            if m
+        }
+
+    JUNK = [f"junk_bound_{i}" for i in range(100)]
+    original = copy.deepcopy(VC.CAPABILITY_PROVIDERS)
+    try:
+        flagged = _identities()
+        assert flagged, "fixture expects at least one §6D finding to pad"
+
+        for spec in VC.CAPABILITY_PROVIDERS.values():
+            spec["bounds"] = list(spec.get("bounds") or []) + JUNK
+        padded = _identities()
+    finally:
+        VC.CAPABILITY_PROVIDERS.clear()
+        VC.CAPABILITY_PROVIDERS.update(original)
+
+    assert padded == flagged, (
+        f"§6D's verdict moved when every bounds list was padded with 100 keys no node "
+        f"declares ({len(flagged)} -> {len(padded)} findings; symmetric difference "
+        f"{sorted(padded ^ flagged)[:5]}). The check is reading the shape of the bounds "
+        f"list rather than what actually provides the capability."
+    )
+
+
 # --- §1A-reach: the payload scanner must not measure its own input ------------
 
 def test_reach_scanner_excludes_the_echoed_difficulty_profile():

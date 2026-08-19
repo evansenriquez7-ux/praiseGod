@@ -20,6 +20,7 @@ A generator is done when `python -m backend.app.practice_gen.validation.run_all`
 | Response payload matches strict schema | Pydantic model + `validate_matrix` §4 | runtime + local `run_all` |
 | Every node carries a genuine, non-boilerplate, non-stale blind judgment review with a PASS verdict | `validate_judgment` §5 | local `run_all`; not in CI |
 | Every node declares what its MATATAG competency requires, cites the clause, covers every competency word, and the pipeline provides it | `validate_capability` §6 | local `run_all`; not in CI |
+| A capability's provider is the artifact that renders what the clause names, never a generic textual formatter every DNA already offers | `validate_capability` §6D | local `run_all`; not in CI |
 
 **On "local `run_all`; not in CI".** Every rule above is still enforced and still fails loudly — but
 the enforcement now runs **only** where someone runs it: `python -m backend.app.practice_gen.validation.run_all`,

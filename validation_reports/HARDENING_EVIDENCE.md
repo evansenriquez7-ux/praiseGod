@@ -4450,3 +4450,134 @@ requires_ignore content-word probe: 37 nodes flagged
 Every number reproduces the 2026-08-19 audit exactly; no drift to record. `bounds` confirmed **inert**
 (0 → 0), so the discrimination check in Unit 2 must key on the generic formatter family and never on
 `bounds` length.
+
+---
+
+## 2026-08-19 — Hardening Unit 2: §6D, the mechanical form of Rule 9
+
+**Rule 11.** Rule 9 ("`CAPABILITY_PROVIDERS` is not an escape hatch") was a *convention* guarding a
+*mechanical* gate, and a convention is absent exactly when it matters — because the agent it needs to
+stop is the one that never read it. In August 2026, `run_all` reached exit 0 with 474 of 485 provider
+entries listing a generic textual formatter. Not one assertion was weakened. §6C simply answered
+"yes" to every question it was asked. This unit makes the convention a check.
+
+### What the check keys on, and what it deliberately does not
+
+`_validate_provision` previously OR'd variants, formatters and bounds into a single boolean. It now
+partitions the *matched* providers into `by_variant`, `by_specific_formatter`, `by_bounds` and
+`by_generic_formatter`, and fails when the last is the only non-empty one.
+
+Two designs were measured and rejected first, both named in the protocol as paid-for traps:
+
+* **Thresholding on `bounds` length** — 483 of 485 providers carry an identical 27-key `bounds`
+  catch-all. Measured before this unit, deleting `bounds` from every provider moved the failure count
+  `0 → 0`. It was inert padding, and a check written that way flags 483 harmless entries and catches
+  zero real ones.
+* **Asking "is this entry's formatter list *only* generic?"** — only 82 of the 474 list nothing else.
+  The other **392 mix a generic name in beside a specific one**, and the OR meant the generic name
+  carried the clause while the specific artifact was decoration. That check catches 82 of 474.
+
+The question that discriminates is **"what still provides this once the family is removed?"**
+
+### The family, measured on this tree (not assumed)
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -c "...COMPATIBILITY..."
+DNAs: 28 | offering >=1 generic: 27 | missing: ['bar_graphs']
+
+$ PYTHONPATH=. .venv/bin/python3 -c "..._provided_for_node..."
+nodes: 151 | nodes whose student path reaches >=1 generic formatter: 148
+```
+
+**Drift recorded:** the protocol states "every DNA in the tree offers at least one of those". Measured,
+it is 27 of 28 — `bar_graphs` does not — and 148 of 151 nodes. The conclusion is unchanged (a provider
+reaching 98% of nodes discriminates nothing) but the number is now the measured one.
+
+### Result: 0 reported problems → 59, matching the §0 delta census exactly
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -c "from ... import validate_capability as VC; ..."
+TOTAL capability failures: 59
+  of which §6D (generic-only provider): 59
+  other: 0
+```
+
+59 is precisely what §0's delta census predicted (`UNEARNED §6C PASSES: 59`), which is the calibration
+evidence: the check surfaces exactly the passes the census proved were unearned, and nothing else.
+
+Shape of the 59: **15 distinct nodes, 56 distinct capabilities.**
+
+```
+top nodes: [('mat_g1_mg_q4_0', 8), ('mat_g2_mg_q4_3', 7), ('mat_g3_dp_q3_4', 6),
+            ('mat_g2_mg_q1_2', 5), ('mat_g3_dp_q3_0', 5), ('mat_g3_na_q2_6', 4),
+            ('mat_g3_na_q2_7', 4), ('mat_g3_mg_q1_5', 4)]
+```
+
+Verbatim sample of the new failure message:
+
+```
+mat_g3_mg_q1_5: competency requires 'recognize_line_relationships' (from clause 'Recognize'),
+but no pipeline artifact provides it. Its only reachable provider is the generic textual
+formatter family ['mcq'], which 27 of 28 DNAs offer and which therefore discriminates nothing
+(§6D, AGENTS.md Rule 9). Registered providers: {'formatters': ['mcq'], 'bounds': [...27 keys...]}.
+Reachable DNAs: ['geometric_lines']. Either build the formatter/variant/dd/DNA that renders what
+the clause names and register that, or delete the entry and let this gap be reported -- a generic
+textual formatter is never the answer.
+```
+
+### Mutation test — the check is proved by planting the violation it claims to catch
+
+`draw_line_relationships` on `mat_g3_mg_q1_5` currently passes on a real, discriminating provider
+(`task_type=draw_construct`). Replacing that provider with the August 2026 wildcard shape:
+
+```
+BASELINE draw_line_relationships on mat_g3_mg_q1_5: 0 failure(s)
+         (provider: {'variants': [('task_type', 'draw_construct')], 'formatters': ['mcq']})
+MUTATED  draw_line_relationships -> {"formatters": ["mcq","cloze"]}: 1 failure(s)
+CAUGHT BY NAME: True
+RESTORED: 0 failure(s)
+
+MUTATION TEST: PASS -- planted wildcard caught by name.
+```
+
+Filed permanently as three tests in `tests/unit/test_capability_contract.py`:
+
+| Test | Pins |
+|---|---|
+| `test_generic_textual_formatter_is_not_a_provider` | the planted wildcard is caught **by name** |
+| `test_generic_formatter_does_not_mask_a_specific_one` | §6D stays silent on the 392 mixed entries with a real provider — it must not flag them |
+| `test_bounds_length_is_never_the_discriminator` | padding every bounds list with 100 undeclared keys does not move a single verdict |
+
+### A wrong assertion I wrote and corrected, recorded because the correction is the finding
+
+The first draft of `test_bounds_length_is_never_the_discriminator` asserted that stripping `bounds`
+moves the failure count `0 → 0`. It failed: `59 → 74`. The code is right and the assertion was wrong.
+Before §6D, the generic family satisfied everything first, so `bounds` never got a chance to matter;
+once the family stops satisfying, `bounds` becomes genuinely load-bearing for the ~15 capabilities
+that leaned on both — exactly what the protocol predicted ("74 if bounds go too … the extra 15 are
+capabilities that lean on both"). The test was rewritten to pin the invariant that actually holds and
+that actually matters — §6D never reads the *length* of a bounds list — with no magic numbers in it.
+
+`bounds` is therefore **no longer inert** and is the natural subject of a later unit. It is not this
+unit's decoy any more; it is the next question.
+
+### Contract wiring (two-direction lint)
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -c "...(_parse_contract_section_refs vs CONTRACT_CHECKS)..."
+doc-only: set() | registry-only: set() | MATCH: True
+```
+
+`docs/pgen_contract.md` gains the §6D row; `run_all.py` gains the `CONTRACT_CHECKS["§6D"]` entry and
+adds/discards `§6D` symmetrically with `§6` in `executed_checks`. Stage 7's FAIL line now breaks out
+how many of the problems are §6D wildcards.
+
+### What this unit does NOT close
+
+`test_unprovided_capability_names_the_node_and_the_clause` (Unit 1) **remains red, correctly.**
+§6D does not fire on `draw_line_relationships`, because that entry is carried by a real reachable
+variant (`task_type=draw_construct`), not by `mcq`. Whether an MCQ *about* drawing technique
+("To draw two parallel lines using a ruler, you must make sure the lines ___") satisfies MATATAG's
+"**draw** parallel, intersecting, and perpendicular lines" is a semantic reading no mechanical check
+can make. That is precisely the question Rule 1's **Attester** exists to answer, and it is Unit 4's
+first item. The test stays red until an Attester rules — it must not be closed by editing it.
