@@ -306,8 +306,9 @@ GitHub check, not what a previous tick said it had finished, and not `run_all`'s
 - `validate_matrix --node X` **overwrites** `validation_reports/matrix_report.json` with a one-node
   report. Never read that file as a full-tree baseline unless the last thing that wrote it was a full
   `run_all`. Regenerate with `run_all` before drawing tree-wide conclusions.
-- A single node's matrix check costs ≈3 s, but **a full `run_all` is >30 minutes of wall clock on this
-  host** — stage 5/7 alone ran 31 minutes without finishing when this was measured on 2026-08-19.
+- A single node's matrix check costs ≈3 s, but **a full `run_all` is ~50 minutes of wall clock on this
+  host** — measured 2026-08-19: 17:28 → 18:18, `EXIT=0`, with stage 5/7 (the 151-node matrix on 3
+  workers) accounting for almost all of it.
   Earlier revisions of this file said "minutes", and a tick that budgets minutes and gets half an hour
   ends mid-unit. So: launch `run_all` as a **background** command at the *start* of the verification
   step, iterate with scoped `--node` runs while it works, and read its exit line when it lands. Never
