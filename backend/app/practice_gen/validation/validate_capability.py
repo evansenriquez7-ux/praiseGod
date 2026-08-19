@@ -792,6 +792,14 @@ def _validate_provision(node_id: str, requires: List[Dict]) -> List[str]:
 _ATTESTATION_DIR = Path(__file__).resolve().parents[4] / "validation_reports" / "attestation"
 
 
+def _attestation_records() -> List[Dict[str, Any]]:
+    """Every attestation batch on disk, whole, for the freshness pass."""
+    if not _ATTESTATION_DIR.exists():
+        return []
+    return [json.loads(p.read_text(encoding="utf-8"))
+            for p in sorted(_ATTESTATION_DIR.glob("*.json"))]
+
+
 def _load_attestations() -> Dict[tuple, Dict[str, Any]]:
     """
     Every blind Attester verdict on record, keyed by (node_id, capability_id).
@@ -825,6 +833,58 @@ def _load_attestations() -> Dict[tuple, Dict[str, Any]]:
                 )
             out[(node, cap)] = v
     return out
+
+
+def _attestation_staleness(records: List[Dict[str, Any]]) -> List[str]:
+    """
+    §6F freshness -- an attestation is evidence about *specific rendered content*, and
+    it stops being evidence the moment that content changes.
+
+    §5 has enforced this for judgment reviews since the fabrication incident: every
+    cited seed is re-rendered through the live pipeline and compared, because a review
+    of content the generator no longer produces is not a review. Attestations decay the
+    same way and for the same reason -- an Attester ruled that ten specific items do or
+    do not exhibit a clause, and a generator change can invalidate that ruling without
+    touching a single line of the provider table.
+
+    Without this, the contract has a permanent hole: attest everything once, then change
+    generators freely, and `run_all` keeps exiting 0 on evidence about content that no
+    longer exists. That hole would be invisible and it would scale -- which matters
+    because this harness is the foundation the remaining MATATAG grade levels get built
+    on, and a gate that certifies stale evidence certifies it for every grade.
+    """
+    from backend.app.practice_gen.validation.judgment_packets import _render_sample
+
+    errs: List[str] = []
+    for rec in records:
+        packet = rec.get("packet") or {}
+        node_id = packet.get("node_id")
+        judged = packet.get("samples_judged")
+        batch = rec.get("batch", "<unnamed batch>")
+        if not node_id or judged is None:
+            errs.append(
+                f"attestation batch {batch!r} records no packet.node_id / "
+                f"packet.samples_judged, so its verdicts cannot be checked for staleness. "
+                f"An attestation that cannot be re-rendered is not evidence -- re-run the "
+                f"packet builder and re-attest."
+            )
+            continue
+        for sample in judged:
+            seed = sample.get("seed")
+            if seed is None:
+                errs.append(f"attestation batch {batch!r}: a judged sample carries no seed.")
+                continue
+            current = _render_sample(node_id, seed)
+            was, now = sample.get("question_text", ""), current.get("question_text", "")
+            if " ".join(str(was).split()) != " ".join(str(now).split()):
+                errs.append(
+                    f"{node_id}: attestation batch {batch!r} is STALE (§6F) at seed {seed}. "
+                    f"The Attester judged {was[:90]!r} but the pipeline now renders "
+                    f"{now[:90]!r}. Every verdict in this batch is about content that no "
+                    f"longer exists -- re-attest the batch. Do not edit the record."
+                )
+                break
+    return errs
 
 
 def _validate_attestation(node_id: str, requires: List[Dict],
@@ -883,6 +943,7 @@ def validate_capability_declarations(node_ids: List[str] | None = None) -> List[
     """Run §6A/§6B/§6C over every registered node. Returns a flat list of failures."""
     errs: List[str] = []
     attested = _load_attestations()
+    errs += _attestation_staleness(_attestation_records())
     for node_id in (node_ids if node_ids is not None else get_all_node_ids()):
         meta = get_node_info(node_id)
         competency = str((meta or {}).get("competency", "")).strip()

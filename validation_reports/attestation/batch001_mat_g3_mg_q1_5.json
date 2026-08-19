@@ -3,7 +3,12 @@
   "attested_at": "2026-08-19T20:15:00+08:00",
   "role": "Attester",
   "blindness": {
-    "saw": ["clause", "competency text", "grade/quarter", "10 rendered student-path samples"],
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
     "did_not_see": [
       "CAPABILITY_PROVIDERS or that any entry was being defended",
       "the node id",
@@ -16,7 +21,81 @@
   "packet": {
     "builder": "tests/attester_packets.py",
     "sampling": "is_student_path=True",
-    "seeds": [11, 23, 42, 57, 64, 78, 91, 103, 118, 127]
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "When you draw a vertical line meeting a horizontal line to form a square corner, what type of lines have you drawn?",
+        "correct_answer": "perpendicular lines",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Look at the letter 'H'. The two vertical side segments are an example of ___.",
+        "correct_answer": "parallel lines",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "Two lines that never meet, no matter how far they extend, are called ___.",
+        "correct_answer": "parallel lines",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Two lines that never meet, no matter how far they extend, are called ___.",
+        "correct_answer": "parallel lines",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "To draw two intersecting lines, you draw two straight paths that ___.",
+        "correct_answer": "cross at a single point",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "The corner of a square shows which type of lines meeting?",
+        "correct_answer": "perpendicular lines",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Two lines that meet at a right angle (90°) are called ___.",
+        "correct_answer": "perpendicular lines",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "When drawing a plus sign (+), which type of lines are being drawn?",
+        "correct_answer": "perpendicular lines",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "The corner of a square shows which type of lines meeting?",
+        "correct_answer": "perpendicular lines",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Two lines that meet at a right angle (90°) are called ___.",
+        "correct_answer": "perpendicular lines",
+        "formatter": "mcq"
+      }
+    ],
+    "node_id": "mat_g3_mg_q1_5"
   },
   "verdicts": [
     {
@@ -24,7 +103,12 @@
       "node_id": "mat_g3_mg_q1_5",
       "clause": "Recognize",
       "verdict": "PROVIDED",
-      "seeds_showing_it": [23, 78, 103, 118],
+      "seeds_showing_it": [
+        23,
+        78,
+        103,
+        118
+      ],
       "reasoning": "Items present a concrete instance and require the student to classify it. Attester flagged this as the clause it was genuinely torn on: all recognition is mediated by a verbal description of the figure, since no item carries a visual payload. Flips to NOT_PROVIDED if the intended reading is 'identify from a displayed figure'.",
       "confidence": "torn - explicit ruling requested",
       "action_taken": "none yet - entry still names only 'mcq', which a PROVIDED verdict does not license"
@@ -44,7 +128,11 @@
       "node_id": "mat_g3_mg_q1_5",
       "clause": "parallel",
       "verdict": "PROVIDED",
-      "seeds_showing_it": [23, 42, 57],
+      "seeds_showing_it": [
+        23,
+        42,
+        57
+      ],
       "reasoning": "Parallel lines are the target concept in three items; the items operate on the thing the clause names.",
       "confidence": "high",
       "action_taken": "none yet - entry still names only 'mcq'"
@@ -54,7 +142,9 @@
       "node_id": "mat_g3_mg_q1_5",
       "clause": "intersecting",
       "verdict": "PROVIDED",
-      "seeds_showing_it": [64],
+      "seeds_showing_it": [
+        64
+      ],
       "reasoning": "Exactly one item makes intersecting lines the subject (seed 64). Genuinely exhibits the concept, but coverage is 1 of 10 and definition-completion only.",
       "confidence": "medium - thin coverage noted by the Attester",
       "action_taken": "none yet - entry still names only 'mcq'"
@@ -64,7 +154,14 @@
       "node_id": "mat_g3_mg_q1_5",
       "clause": "perpendicular lines",
       "verdict": "PROVIDED",
-      "seeds_showing_it": [11, 78, 91, 103, 118, 127],
+      "seeds_showing_it": [
+        11,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
       "reasoning": "Keyed answer in six of ten items, across definitional framing and instance classification.",
       "confidence": "high",
       "action_taken": "none yet - entry still names only 'mcq'"
@@ -75,7 +172,12 @@
       "kind": "content_defect",
       "severity": "high",
       "node_id": "mat_g3_mg_q1_5",
-      "seeds": [78, 91, 118, 127],
+      "seeds": [
+        78,
+        91,
+        118,
+        127
+      ],
       "finding": "'intersecting lines' is offered as a distractor against the keyed answer 'perpendicular lines', but perpendicular lines ARE intersecting lines, so a student selecting the distractor is not wrong.",
       "note": "Reported unasked, outside the Attester's own question. No machine check catches it and the node's judgment review is a filed PASS. Open Tick C."
     },

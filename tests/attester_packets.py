@@ -157,6 +157,7 @@ def main() -> int:
     ap.add_argument("--limit", type=int, default=0, help="cap the number of items (batch <=25)")
     ap.add_argument("--packets", required=True)
     ap.add_argument("--key", required=True)
+    ap.add_argument("--record", help="also emit a pre-filled attestation record skeleton")
     args = ap.parse_args()
 
     caps = None
@@ -172,6 +173,35 @@ def main() -> int:
     if args.limit:
         packets = packets[: args.limit]
         key = {k: v for k, v in key.items() if k in {p["item"] for p in packets}}
+
+    # A record skeleton pre-filled with the exact samples the Attester will see, so a
+    # filed verdict always carries re-renderable evidence. §6F fails any batch without
+    # it; emitting it here means a future batch cannot omit it by accident.
+    if args.record:
+        skeleton = [{
+            "batch": Path(args.record).stem,
+            "attested_at": "<ISO timestamp>",
+            "role": "Attester",
+            "packet": {"builder": "tests/attester_packets.py",
+                       "sampling": "is_student_path=True",
+                       "node_id": nodes[0] if len(nodes) == 1 else "<one node per record>",
+                       "seeds": SAMPLE_SEEDS,
+                       "samples_judged": [
+                           {"seed": s["seed"], "question_text": s["question_text"],
+                            "correct_answer": s["correct_answer"], "formatter": s["formatter"]}
+                           for s in (packets[0]["samples"] if packets else [])
+                       ]},
+            "verdicts": [{"capability_id": key[p["item"]]["capability_id"],
+                          "node_id": key[p["item"]]["node_id"],
+                          "clause": p["clause"],
+                          "verdict": "<PROVIDED|NOT_PROVIDED>",
+                          "seeds_showing_it": [], "reasoning": "<from the Attester>",
+                          "action_taken": "<what you did about it>"} for p in packets],
+        }]
+        Path(args.record).parent.mkdir(parents=True, exist_ok=True)
+        Path(args.record).write_text(json.dumps(skeleton[0], indent=2, ensure_ascii=False),
+                                     encoding="utf-8")
+        print(f"record skeleton: {args.record}  (fill in verdicts, then file it)")
 
     for path, payload in ((args.packets, packets), (args.key, key)):
         Path(path).parent.mkdir(parents=True, exist_ok=True)

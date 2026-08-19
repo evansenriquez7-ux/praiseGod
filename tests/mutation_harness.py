@@ -228,6 +228,21 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["CONTRADICTED"],
     ),
     Mutation(
+        name="stale_attestation",
+        description=(
+            "Drift the content an Attester judged, leaving the verdict on file. Without a "
+            "freshness pass the contract has a permanent hole: attest everything once, "
+            "then change generators freely, and run_all keeps exiting 0 on evidence about "
+            "content that no longer exists."
+        ),
+        edits={},
+        apply_fn=lambda: _drift_attested_content(),
+        command=["backend.app.practice_gen.validation.validate_capability"],
+        expected_check="§6F freshness (attestation is about content that still exists)",
+        expect_output_contains=["STALE && re-attest"],
+        baseline_must_not_contain=["STALE"],
+    ),
+    Mutation(
         name="template_review",
         description=(
             "Staple one fill-in-the-blank rationale, with the node ID substituted "
@@ -280,6 +295,31 @@ def _plant_wildcard_provider(capability: str) -> Dict[Path, str]:
     indent = matches[0]
     replacement = f"{indent}'{capability}': {{'formatters': ['mcq', 'cloze']}},\n"
     path.write_text(pattern.sub(replacement, text, count=1), encoding="utf-8")
+    return {path: text}
+
+
+def _drift_attested_content() -> Dict[Path, str]:
+    """Change the rendered text an attestation records, as a generator change would."""
+    import json
+
+    d = REPO_ROOT / "validation_reports" / "attestation"
+    records = sorted(d.glob("*.json"))
+    if not records:
+        raise FileNotFoundError(
+            "mutation 'stale_attestation': no attestation records to drift. File at "
+            "least one Attester verdict before claiming the freshness pass works."
+        )
+    path = records[0]
+    text = path.read_text(encoding="utf-8")
+    data = json.loads(text)
+    judged = (data.get("packet") or {}).get("samples_judged")
+    if not judged:
+        raise ValueError(
+            f"mutation 'stale_attestation': {path.name} has no packet.samples_judged, so "
+            f"there is nothing to drift. §6F already fails that record for the same reason."
+        )
+    judged[0]["question_text"] = "planted drift: a stem the pipeline never rendered"
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
     return {path: text}
 
 

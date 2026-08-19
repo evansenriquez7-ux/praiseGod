@@ -4986,3 +4986,81 @@ doc-only: set() | registry-only: set() | MATCH: True
 `docs/pgen_contract.md` gains the §6F row; `run_all.py` gains `CONTRACT_CHECKS["§6F"]`, tracks it
 symmetrically with §6/§6D, breaks the stage-7 summary out by cause, and sorts UNATTESTED findings last
 so the ones naming a real defect are not buried by the backlog.
+
+---
+
+## 2026-08-20 — §6F freshness: an attestation about content that changed is not evidence
+
+**The hole this closes.** §6F (previous entry) made an unexamined provider claim a failure. But an
+attestation, once filed, was permanent — so the contract still had a silent hole: **attest all 787
+once, then change generators freely, and `run_all` keeps exiting 0 on evidence about content that no
+longer exists.** §5 has enforced the equivalent rule for judgment reviews since the fabrication
+incident (re-render every cited seed, compare, fail loudly on drift). Attestations decay identically
+and for the same reason.
+
+This matters beyond the 151 nodes: the harness is the foundation the remaining MATATAG grade levels
+are built on, so a gate that certifies stale evidence certifies it for every grade produced
+afterwards. An incomplete testing pipeline does not yield one bug; it yields a method that produces
+them at a scale nobody can audit by hand.
+
+### Mechanism
+
+Attestation records now carry `packet.node_id` and `packet.samples_judged` — the exact rendered stems
+the Attester saw. `_attestation_staleness` re-renders each seed through the live pipeline and compares
+on collapsed whitespace. A record without those fields **fails as uncheckable** rather than being
+skipped: an attestation that cannot be re-rendered is not evidence.
+
+### Proved by planting drift
+
+```
+STALE findings after simulated drift: 1
+
+  mat_g3_mg_q1_5: attestation batch 'batch001_mat_g3_mg_q1_5' is STALE (§6F) at seed 57.
+  The Attester judged 'Which lines never meet? (reworded stem)' but the pipeline now renders
+  'Two lines that never meet, no matter how far they extend, are called ___.'. Every verdict
+  in this batch is about content that no longer exists -- re-attest the batch. Do not edit
+  the record.
+
+after revert, STALE: 0
+§6F FRESHNESS: PROVEN
+```
+
+Filed as mutation `stale_attestation` and two unit tests (drift is caught and names the re-attest
+remedy; a record missing `samples_judged` fails as uncheckable).
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m tests.mutation_harness --only stale_attestation
+    expected catcher: §6F freshness (attestation is about content that still exists)
+    DETECTED: exit 1 — Capability contract: 843 failure(s).
+  PASS  stale_attestation        §6F freshness
+1/1 mutations detected.
+
+$ PYTHONPATH=. .venv/bin/python3 -m pytest tests/unit/test_capability_contract.py -q
+................                                                         [100%]
+16 passed in 2.06s
+```
+
+**Mutation coverage is now 11**, and every stage that has ever been defeated has a planted, caught
+bug: §5 (2), §6D (1), §6F contradicted (1), §6F stale (1), plus the seven machine-stage originals.
+
+### Tooling, so a future batch cannot omit the evidence
+
+`tests/attester_packets.py --record <path>` emits an attestation-record skeleton pre-filled with the
+exact samples the Attester will be shown, leaving only the verdicts to paste in. §6F fails a batch
+without `samples_judged`; emitting it by default means that failure should never be reached by
+accident.
+
+### Denominator correction
+
+Coverage is reported against **787 (node, capability) pairs**, not 484 provider table rows. A verdict
+is about specific rendered content, so the same capability declared on two nodes reaches different
+DNAs, renders differently, and needs two verdicts. Attested coverage is therefore **5/787 (0.6%)**,
+not 5/484 — the honest figure, and roughly a third more work than the table-row count implied.
+
+### Goal restated in the protocol
+
+Exit 0 remains the definition of done (CLAUDE.md unchanged). The correction recorded in the protocol:
+*the answer to a gameable goal is not a different goal — it is a gate that cannot be cheaply
+satisfied.* Because §6F makes an unexamined claim a failure, an empty queue now requires every
+declared capability to have been judged by a blind party on content that still renders. Within a
+tick, the failure count is the work queue, not the score.

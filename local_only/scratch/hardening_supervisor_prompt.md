@@ -60,35 +60,34 @@ modified tracked tree, and ledger age.
 - Re-run the supervisor once at the end. It rewrites `hardening_status.json`, which is what the next
   wake-up reads.
 
-## The goal — so no tick optimises the wrong number
+## The goal — `run_all` exits 0, and the gate is what makes that mean something
 
-**A tick optimises VERIFIED COVERAGE, not the failure count** (established 2026-08-20). The
-supervisor prints it:
+**Exit 0 is the definition of done** (CLAUDE.md). It was gamed three times not because it is the
+wrong target but because the gate behind it was incomplete. The answer is not a different goal — it
+is a gate that cannot be cheaply satisfied. §6F now makes an unexamined provider claim a *failure*,
+so exit 0 is unreachable until every declared capability has been judged by a blind Attester on
+content that still renders.
+
+**This harness is the foundation the remaining MATATAG grade levels get built on.** A gate that lets
+one bad claim through does not let one bug through — it certifies the method that produces every
+later grade. Closing a hole in the harness is never a detour from the node work; it is the higher-
+leverage half of it.
+
+**Within a tick, do not optimise the failure count.** It is the work queue, not the score, and it can
+always be driven down by weakening something. The supervisor prints three numbers that cannot be:
 
 ```
-capability findings: 60   <- a cost, not the goal
-COVERAGE (the goal): attested 5/484 (1.0%) | reviewed 151/151 | mutations 9
+capability findings: 843   <- the work queue
+COVERAGE: attested 5/787 | reviewed 151/151 | mutations 11
 ```
 
-A failure count can always be driven down by weakening something, and it was, three times. These
-three numbers cannot be: the Attester never sees the provider table, the Reviewer never sees the
-generator, and a mutation counts only when a planted bug actually made a check go red.
+The Attester never sees the provider table, the Reviewer never sees the generator, and a mutation
+counts only when a planted bug actually made a check go red. **Failures rising while coverage rises
+is progress. Failures falling while coverage stays flat is the signature of every past defeat.**
+Report both movements; never a falling failure count alone.
 
-**Failures rising while coverage rises is progress.** Failures falling while coverage stays flat is
-the signature of every past defeat. Report both movements, always. Never report a falling failure
-count on its own.
+Attestation scope is **all declared capabilities — 787 (node, capability) pairs**, not the 484 table
+rows: a verdict is about specific rendered content, so the same capability on two nodes needs two
+verdicts. Record every one in `validation_reports/attestation/<batch>.json` **with its
+`packet.samples_judged`**, or §6F fails the batch as uncheckable.
 
-Attestation scope is **all 484 provider entries** (decided 2026-08-20). Record every verdict in
-`validation_reports/attestation/<batch>.json` — a verdict that exists only in a commit message is not
-countable, and coverage that is not countable is not a goal.
-
-`run_all` exiting 0 is **not** the objective and never was. It has been reached dishonestly three
-times, and the tree is currently red on purpose: earlier ticks converted a false green into an earned
-red. Every fast route back to green is forbidden — re-widening `CAPABILITY_PROVIDERS`, deleting §6D,
-narrowing a declaration, rewriting a test around its own failure.
-
-The objective is green **that survives audit**: every node carries a genuine blind PASS review, every
-node declares what its competency requires and the pipeline genuinely provides it, and `run_all` exits
-0 with no wildcard provider, no fabricated review, and no test rewritten around its own failure
-anywhere in the tree. A tick that ends redder than it started because something dishonest was removed
-has succeeded.

@@ -291,6 +291,54 @@ def test_attestation_verdict_must_be_binary():
         bad.unlink(missing_ok=True)
 
 
+def test_attestation_goes_stale_when_content_drifts():
+    """
+    An attestation is evidence about specific rendered content and stops being evidence
+    the moment that content changes. Without this, the contract has a permanent hole:
+    attest everything once, then change generators freely, and run_all keeps exiting 0
+    on evidence about content that no longer exists.
+
+    §5 has enforced the same rule for judgment reviews since the fabrication incident.
+    """
+    import json as _json
+    from pathlib import Path
+
+    rec = next(Path(VC._ATTESTATION_DIR).glob("*.json"))
+    original = rec.read_text(encoding="utf-8")
+    try:
+        d = _json.loads(original)
+        node = d["packet"]["node_id"]
+        d["packet"]["samples_judged"][0]["question_text"] = "a stem the pipeline never rendered"
+        rec.write_text(_json.dumps(d), encoding="utf-8")
+
+        errs = [e for e in VC.validate_capability_declarations([node]) if "STALE" in e]
+        assert errs, "FRESHNESS HOLE: an attestation about drifted content was accepted"
+        assert "re-attest" in errs[0]
+    finally:
+        rec.write_text(original, encoding="utf-8")
+
+    assert not [e for e in VC.validate_capability_declarations([node]) if "STALE" in e]
+
+
+def test_attestation_without_samples_cannot_be_checked_and_fails():
+    """A record that cannot be re-rendered is not evidence — and is never silently skipped."""
+    import json as _json
+    from pathlib import Path
+
+    rec = next(Path(VC._ATTESTATION_DIR).glob("*.json"))
+    original = rec.read_text(encoding="utf-8")
+    try:
+        d = _json.loads(original)
+        node = d["packet"]["node_id"]
+        d["packet"].pop("samples_judged")
+        rec.write_text(_json.dumps(d), encoding="utf-8")
+        errs = [e for e in VC.validate_capability_declarations([node])
+                if "cannot be checked for staleness" in e]
+        assert errs, "an unverifiable attestation was accepted"
+    finally:
+        rec.write_text(original, encoding="utf-8")
+
+
 # --- §1A-reach: the payload scanner must not measure its own input ------------
 
 def test_reach_scanner_excludes_the_echoed_difficulty_profile():

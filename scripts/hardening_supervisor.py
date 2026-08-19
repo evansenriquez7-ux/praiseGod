@@ -176,13 +176,16 @@ def coverage() -> dict:
     if ATTEST.exists():
         for f in ATTEST.glob("*.json"):
             for v in _json.loads(f.read_text()).get("verdicts", []):
-                if v.get("capability_id"):
-                    attested.add(v["capability_id"])
+                if v.get("capability_id") and v.get("node_id"):
+                    attested.add((v["node_id"], v["capability_id"]))
 
     try:
         sys.path.insert(0, str(REPO))
-        from backend.app.practice_gen.validation.validate_capability import CAPABILITY_PROVIDERS
-        total_caps = len(CAPABILITY_PROVIDERS)
+        from backend.app.practice_gen.registry import get_all_node_ids, get_node_info
+        # (node, capability) pairs, not table rows: a verdict is about specific rendered
+        # content, so the same capability on two nodes needs two verdicts.
+        total_caps = sum(len((get_node_info(n) or {}).get("requires") or [])
+                         for n in get_all_node_ids())
     except Exception:
         total_caps = None
 
@@ -262,7 +265,7 @@ def main() -> int:
     print(f"  head              : {head}")
     print(f"  tree              : {('MODIFIED (' + str(len(modified)) + ' tracked)') if modified else 'clean'}"
           f" | untracked: {len(untracked)} | unpushed: {status['git']['unpushed_commits']}")
-    print(f"  capability findings: {findings}   <- a cost, not the goal")
+    print(f"  capability findings: {findings}   <- the work queue, not the score")
     print(f"  COVERAGE (the goal): attested {cov['capabilities_attested']}/{cov['capabilities_total']}"
           f" ({cov['attested_pct']}%) | reviewed {cov['nodes_reviewed']}/{cov['nodes_total']}"
           f" | mutations {cov['mutations_registered']}")
