@@ -1,5 +1,13 @@
 # The command to paste
 
+**To fix what the pipeline finds** (the main loop):
+
+```
+/loop 2h Read local_only/scratch/hardening_fix_loop.md and run one tick.
+```
+
+**To only check on progress** without doing work:
+
 ```
 Run the hardening supervisor: local_only/scratch/hardening_supervisor_prompt.md
 ```
