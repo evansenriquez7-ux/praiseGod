@@ -4865,3 +4865,124 @@ parent process imported `validate_capability` at launch, before Unit 4 deleted t
 the correct verification of Unit 2 and does **not** cover Unit 4's deletion; Unit 4 was verified by
 its own scoped run (60 failures, `mat_g3_mg_q1_5` naming its missing "draw") and the next full
 `run_all` is expected to report 60.
+
+---
+
+## 2026-08-20 — §6F: an Attester verdict that nothing enforces is not a check
+
+**Rule 11, owed since the Attester role was created.** *"Make a guard mechanical in the same unit
+that creates it."* The Attester was introduced on 2026-08-19 to answer the question no mechanical
+check can — *does the artifact produce what the clause names?* — and its verdicts were then filed in
+`validation_reports/attestation/` where **nothing read them**:
+
+```
+$ grep -rn "attestation" backend/app/practice_gen/validation/
+  NOTHING reads validation_reports/attestation/ — Attester verdicts are inert
+```
+
+So the `NOT_PROVIDED` ruling on `draw_line_relationships` took effect only because the Fixer chose to
+delete the entry. A later agent could file `NOT_PROVIDED` and simply not act, and `run_all` would stay
+green — which is the identical author-verifying-itself structure the role exists to break.
+
+### The gate
+
+`_validate_attestation` reports two failures, deliberately distinct because they have different fixes:
+
+| failure | meaning | fix |
+|---|---|---|
+| **CONTRADICTED** | a blind Attester ruled `NOT_PROVIDED` and the table still claims it | delete the entry, or build the artifact and re-attest |
+| **UNATTESTED** | nobody blind has ever looked | build a packet, dispatch an Attester, file the verdict |
+
+`UNATTESTED` is a failure, not a skip. `if not attested: continue` is precisely the bug that let 94
+non-PASS judgment reviews escape every content check.
+
+Verdicts are keyed by **(node_id, capability_id)**, not by capability alone: a verdict is about
+specific rendered content, and the same capability on two nodes reaches different DNAs and renders
+differently. Malformed records raise rather than being skipped — an unreadable verdict is not a
+missing verdict.
+
+### Result
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -c "...validate_capability_declarations()..."
+TOTAL: 842
+  §6F-UNATTESTED: 782
+  §6D: 59
+  other: 1
+```
+
+**782 of 787 requirement records have never been examined by a blind party.** That is the honest size
+of the claim this table has been making.
+
+### CONTRADICTED, proved by planting it
+
+```
+CONTRADICTED before: 0 (entry is deleted, so none — correct)
+CONTRADICTED after re-adding the rejected entry: 1
+
+  mat_g3_mg_q1_5: capability 'draw_line_relationships' (clause 'draw') is CONTRADICTED (§6F) --
+  a blind Attester ruled NOT_PROVIDED, and CAPABILITY_PROVIDERS still claims
+  {'variants': [('task_type', 'draw_construct')], 'formatters': ['mcq']}. Attester's reasoning:
+  'No item asks the student to produce anything; all ten are four-option MCQs with no drawing
+  surface, canvas, or visual payload...'
+
+restored: 0
+§6F CONTRADICTED: PROVEN
+```
+
+Filed permanently as mutation `contradicted_attestation` and four unit tests (contradicted caught by
+name; unattested is a failure not a skip; an attested capability clears; a non-binary verdict raises).
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m tests.mutation_harness --only contradicted_attestation
+    expected catcher: §6F (blind Attester verdict contradicted by the table)
+    DETECTED: exit 1 — Capability contract: 842 failure(s).
+  PASS  contradicted_attestation §6F
+1/1 mutations detected.
+```
+
+### Yesterday's guard caught a real regression today
+
+Adding §6F broke `wildcard_provider`'s discriminator, and the harness said so rather than lying:
+
+```
+SURVIVED: INVALID — the unmutated tree already reports ['count_forward_from_a_given_number'];
+this mutation cannot distinguish the planted bug from the pre-existing failure.
+0/1 mutations detected.
+```
+
+§6F reports that capability as UNATTESTED, so §6D's bare-substring marker matched the baseline.
+**Without `baseline_must_not_contain` this mutation would have reported PASS while proving nothing.**
+Fixed by making markers line-precise — `" && "` means *all parts on one line* — which restores the
+discrimination without loosening the guard. Both then detect:
+
+```
+--- wildcard_provider ---        DETECTED: exit 1 — Capability contract: 843 failure(s).
+--- contradicted_attestation --- DETECTED: exit 1 — Capability contract: 842 failure(s).
+--- template_review ---          DETECTED: exit 1
+```
+
+### Two §6D tests scoped, and why that is not a weakening
+
+`test_generic_textual_formatter_is_not_a_provider` and
+`test_generic_formatter_does_not_mask_a_specific_one` asserted "no finding mentions this capability".
+§6F now legitimately reports the same capability as UNATTESTED, so both failed. They are scoped to
+`"§6D" in e`. **The §6D claim under test is unchanged** — filtering to the check being tested makes
+them precise, and leaving them coupled would mean neither check could be changed alone. Recorded here
+per Rule 3's requirement that any test change name what moved and why.
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m pytest tests/unit/test_capability_contract.py -q
+..............                                                           [100%]
+14 passed in 1.26s
+```
+
+### Contract wiring
+
+```
+doc-only: set() | registry-only: set() | MATCH: True
+```
+
+`docs/pgen_contract.md` gains the §6F row; `run_all.py` gains `CONTRACT_CHECKS["§6F"]`, tracks it
+symmetrically with §6/§6D, breaks the stage-7 summary out by cause, and sorts UNATTESTED findings last
+so the ones naming a real defect are not buried by the backlog.

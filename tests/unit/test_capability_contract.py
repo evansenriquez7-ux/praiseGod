@@ -107,9 +107,15 @@ def test_generic_textual_formatter_is_not_a_provider():
     target, node = "count_forward_from_a_given_number", "mat_g1_na_q1_0"
     original = copy.deepcopy(VC.CAPABILITY_PROVIDERS)
     try:
-        baseline = [e for e in VC.validate_capability_declarations([node]) if target in e]
+        # Scoped to §6D findings on purpose. This test's claim is about §6D's
+        # discrimination, and §6F independently reports the same capability as
+        # UNATTESTED until an Attester rules on it. Letting an unrelated §6F finding
+        # fail a §6D test would couple the two checks and make either one impossible
+        # to change alone. The §6D claim itself is unchanged and unweakened.
+        baseline = [e for e in VC.validate_capability_declarations([node])
+                    if target in e and "§6D" in e]
         assert not baseline, (
-            f"{target} is expected to pass on its real provider before mutation; "
+            f"{target} is expected to pass §6D on its real provider before mutation; "
             f"got {baseline}"
         )
 
@@ -123,8 +129,9 @@ def test_generic_textual_formatter_is_not_a_provider():
         VC.CAPABILITY_PROVIDERS.clear()
         VC.CAPABILITY_PROVIDERS.update(original)
 
-    assert not [e for e in VC.validate_capability_declarations([node]) if target in e], (
-        "the mutation was not cleanly reverted"
+    assert not [e for e in VC.validate_capability_declarations([node])
+                if target in e and "§6D" in e], (
+        "the mutation was not cleanly reverted — §6D still fires on the restored entry"
     )
 
 
@@ -150,7 +157,10 @@ def test_generic_formatter_does_not_mask_a_specific_one():
         assert "mcq" in spec.get("formatters", []), "fixture assumes the mixed shape"
         assert spec.get("variants"), "fixture assumes a specific provider is present"
 
-        errs = [e for e in VC.validate_capability_declarations([node]) if target in e]
+        # Scoped to §6D for the same reason as above: §6F's UNATTESTED finding on this
+        # capability is a separate, legitimate report, not a §6D false positive.
+        errs = [e for e in VC.validate_capability_declarations([node])
+                if target in e and "§6D" in e]
         assert not errs, f"§6D fired on an entry with a real specific provider: {errs}"
     finally:
         VC.CAPABILITY_PROVIDERS.clear()
@@ -207,6 +217,78 @@ def test_bounds_length_is_never_the_discriminator():
         f"{sorted(padded ^ flagged)[:5]}). The check is reading the shape of the bounds "
         f"list rather than what actually provides the capability."
     )
+
+
+# --- §6F: a claim nobody blind has checked is not evidence --------------------
+
+def test_contradicted_entry_is_caught_by_name():
+    """
+    The regression §6F exists to stop: someone re-registers what a blind Attester
+    already rejected.
+
+    On 2026-08-19 an Attester ruled `draw_line_relationships` NOT_PROVIDED from ten
+    rendered samples, without knowing the entry existed. The entry was deleted by hand.
+    Nothing prevented it coming back — the verdict sat in validation_reports/attestation/
+    and no validator read it, so the ruling took effect only if the Fixer chose to act
+    on it. That is the same author-verifying-itself structure the Attester was
+    introduced to break.
+    """
+    import copy
+
+    node, cap = "mat_g3_mg_q1_5", "draw_line_relationships"
+    original = copy.deepcopy(VC.CAPABILITY_PROVIDERS)
+    try:
+        assert not [e for e in VC.validate_capability_declarations([node]) if "CONTRADICTED" in e], (
+            "fixture expects the rejected entry to be absent before the mutation"
+        )
+        VC.CAPABILITY_PROVIDERS[cap] = {"variants": [("task_type", "draw_construct")]}
+        errs = [e for e in VC.validate_capability_declarations([node]) if "CONTRADICTED" in e]
+        assert errs, "re-registering an Attester-rejected capability was not caught"
+        assert cap in errs[0] and node in errs[0]
+        assert "NOT_PROVIDED" in errs[0], "the failure must quote the verdict it contradicts"
+    finally:
+        VC.CAPABILITY_PROVIDERS.clear()
+        VC.CAPABILITY_PROVIDERS.update(original)
+
+
+def test_unattested_capability_is_a_failure_not_a_skip():
+    """
+    An unexamined claim is not a passing claim. `if not attested: continue` is precisely
+    the bug that let 94 non-PASS judgment reviews escape every content check.
+    """
+    errs = VC.validate_capability_declarations(["mat_g1_mg_q4_0"])
+    unattested = [e for e in errs if "UNATTESTED" in e]
+    assert unattested, "a node with no filed Attester verdicts reported none unattested"
+    assert "no blind Attester has judged" in unattested[0]
+
+
+def test_attested_capability_is_not_reported_unattested():
+    """§6F must clear once a verdict is on file, or it is a counter rather than a check."""
+    errs = VC.validate_capability_declarations(["mat_g3_mg_q1_5"])
+    unattested = [e for e in errs if "UNATTESTED" in e]
+    for cap in ("recognize_line_relationships", "parallel_lines",
+                "intersecting_lines", "perpendicular_lines"):
+        assert not any(cap in e for e in unattested), (
+            f"{cap} has a filed PROVIDED verdict but is still reported UNATTESTED"
+        )
+
+
+def test_attestation_verdict_must_be_binary():
+    """There is no 'partly provided'. A malformed record is loud, never skipped."""
+    import json as _json
+
+    bad = VC._ATTESTATION_DIR / "_tmp_invalid_for_test.json"
+    bad.write_text(_json.dumps({"verdicts": [
+        {"node_id": "n", "capability_id": "c", "verdict": "PARTLY"}]}), encoding="utf-8")
+    try:
+        raised = False
+        try:
+            VC._load_attestations()
+        except ValueError as exc:
+            raised = "PROVIDED or " in str(exc)
+        assert raised, "a non-binary verdict was accepted"
+    finally:
+        bad.unlink(missing_ok=True)
 
 
 # --- §1A-reach: the payload scanner must not measure its own input ------------

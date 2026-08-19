@@ -69,6 +69,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§5": "validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews",
     "§6": "validate_capability: competency requirements declared, cited, covered, and provided",
     "§6D": "validate_capability: a capability carried only by a generic textual formatter is not provided",
+    "§6F": "validate_capability: every declared capability carries a blind Attester verdict, and none is contradicted",
 }
 
 def run_all(fail_fast: bool = False) -> int:
@@ -176,16 +177,25 @@ def run_all(fail_fast: bool = False) -> int:
     if capability_ok:
         executed_checks.add("§6")
         executed_checks.add("§6D")
+        executed_checks.add("§6F")
         print("  PASS capability_contract (all nodes declare, cite, cover, and are provided for)")
     else:
         undeclared = [e for e in capability_errors if "no 'requires' declaration" in e]
         unprovided = [e for e in capability_errors if "no pipeline artifact provides it" in e]
         wildcarded = [e for e in capability_errors if "§6D" in e]
+        unattested = [e for e in capability_errors if "UNATTESTED" in e]
+        contradicted = [e for e in capability_errors if "CONTRADICTED" in e]
         print(
             f"  FAIL capability_contract ({len(capability_errors)} problem(s): "
             f"{len(undeclared)} node(s) undeclared, {len(unprovided)} capability(ies) "
             f"with no provider, of which {len(wildcarded)} are carried only by a "
-            f"generic textual formatter (§6D)):"
+            f"generic textual formatter (§6D); {len(contradicted)} CONTRADICTED and "
+            f"{len(unattested)} UNATTESTED by a blind Attester (§6F)):"
+        )
+        # UNATTESTED dominates by volume while the backlog is open and would bury the
+        # findings that name a defect. Show the ones that name a real problem first.
+        capability_errors = (
+            [e for e in capability_errors if "UNATTESTED" not in e] + unattested
         )
         for err in capability_errors[:10]:
             print(f"    - {err}")
@@ -233,6 +243,8 @@ def run_all(fail_fast: bool = False) -> int:
             executed_checks.discard("§6")
             expected_subset.discard("§6D")
             executed_checks.discard("§6D")
+            expected_subset.discard("§6F")
+            executed_checks.discard("§6F")
 
         if executed_checks != expected_subset:
             raise AssertionError(

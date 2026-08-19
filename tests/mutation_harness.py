@@ -58,6 +58,12 @@ class Mutation:
     # mutation "passes" on a validator that was failing before it was applied --
     # which is precisely the state §5 and §6 are in while the honest work queue
     # is open, and precisely the false green Phase 4 exists to prevent.
+    #
+    # A marker containing " && " means "all of these parts on ONE line". A bare
+    # substring is too coarse once several checks report on the same capability:
+    # §6F's UNATTESTED finding names `count_forward_from_a_given_number`, which made
+    # §6D's mutation undetectable-by-baseline even though §6D itself was working fine.
+    # The conjunction restores the discrimination without loosening the guard.
     baseline_must_not_contain: List[str] = field(default_factory=list)
     # Some mutations cannot be written as a literal find/replace: a templated
     # review has to be planted across several report files whose prose differs
@@ -203,8 +209,23 @@ MUTATIONS: List[Mutation] = [
         expected_check="§6D (a generic textual formatter is not a provider)",
         # Must name the capability AND cite §6D: exiting non-zero is not proof
         # while the honest §6D queue is open.
-        expect_output_contains=["count_forward_from_a_given_number", "§6D"],
-        baseline_must_not_contain=["count_forward_from_a_given_number"],
+        expect_output_contains=["count_forward_from_a_given_number && §6D"],
+        baseline_must_not_contain=["count_forward_from_a_given_number && §6D"],
+    ),
+    Mutation(
+        name="contradicted_attestation",
+        description=(
+            "Re-register a capability a blind Attester already ruled NOT_PROVIDED -- the "
+            "regression §6F exists to stop. Until 2026-08-20 an Attester verdict took "
+            "effect only if the Fixer chose to act on it, which is the same "
+            "author-verifying-itself structure the role was created to break."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_contradicted_entry("draw_line_relationships"),
+        command=["backend.app.practice_gen.validation.validate_capability"],
+        expected_check="§6F (blind Attester verdict contradicted by the table)",
+        expect_output_contains=["CONTRADICTED && draw_line_relationships"],
+        baseline_must_not_contain=["CONTRADICTED"],
     ),
     Mutation(
         name="template_review",
@@ -259,6 +280,34 @@ def _plant_wildcard_provider(capability: str) -> Dict[Path, str]:
     indent = matches[0]
     replacement = f"{indent}'{capability}': {{'formatters': ['mcq', 'cloze']}},\n"
     path.write_text(pattern.sub(replacement, text, count=1), encoding="utf-8")
+    return {path: text}
+
+
+def _plant_contradicted_entry(capability: str) -> Dict[Path, str]:
+    """
+    Put back a provider entry that a filed Attester verdict says does not provide.
+
+    Located rather than literal-matched: the entry is *absent* by design (it was
+    deleted on the verdict), so there is no anchor text to match. It is re-inserted
+    immediately after the table's opening brace.
+    """
+    path = REPO_ROOT / "backend/app/practice_gen/validation/validate_capability.py"
+    text = path.read_text(encoding="utf-8")
+    m = re.search(r"^CAPABILITY_PROVIDERS[^\n=]*=\s*\{\n", text, re.MULTILINE)
+    marker = m.group(0) if m else ""
+    if not marker:
+        raise ValueError(
+            "mutation 'contradicted_attestation': could not locate the "
+            "CAPABILITY_PROVIDERS table opening. The module moved; repoint the mutation."
+        )
+    if f"'{capability}':" in text:
+        raise ValueError(
+            f"mutation 'contradicted_attestation': {capability!r} is already registered, "
+            f"so re-adding it proves nothing. This mutation requires the entry to be "
+            f"absent (deleted on an Attester ruling)."
+        )
+    injected = marker + f"    '{capability}': {{'variants': [('task_type', 'draw_construct')]}},\n"
+    path.write_text(text.replace(marker, injected, 1), encoding="utf-8")
     return {path: text}
 
 
@@ -352,6 +401,14 @@ def _run(mutation: Mutation) -> Tuple[int, str]:
     return proc.returncode, (proc.stdout or "") + (proc.stderr or "")
 
 
+def _marker_present(marker: str, output: str) -> bool:
+    """A plain substring, or -- with ' && ' -- several substrings on the SAME line."""
+    if " && " not in marker:
+        return marker in output
+    parts = [p for p in marker.split(" && ") if p]
+    return any(all(p in line for p in parts) for line in output.splitlines())
+
+
 def run_mutation(mutation: Mutation) -> Tuple[bool, str]:
     """
     Apply, run, restore. Returns (detected, evidence-line).
@@ -364,7 +421,8 @@ def run_mutation(mutation: Mutation) -> Tuple[bool, str]:
     # is absent before planting, or the mutation proves nothing about the check.
     if mutation.baseline_must_not_contain:
         _, before = _run(mutation)
-        already = [m for m in mutation.baseline_must_not_contain if m in before]
+        already = [m for m in mutation.baseline_must_not_contain
+                   if _marker_present(m, before)]
         if already:
             return False, (
                 f"INVALID — the unmutated tree already reports {already}; this mutation "
@@ -382,7 +440,7 @@ def run_mutation(mutation: Mutation) -> Tuple[bool, str]:
     if code == 0:
         return False, "SURVIVED — validator exited 0 with the bug planted."
 
-    missing = [m for m in mutation.expect_output_contains if m not in output]
+    missing = [m for m in mutation.expect_output_contains if not _marker_present(m, output)]
     if missing:
         return False, f"exited {code} but output lacked expected marker(s): {missing}"
 

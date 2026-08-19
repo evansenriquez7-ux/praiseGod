@@ -44,7 +44,9 @@ let 94 non-PASS judgment reviews escape every content check.
 
 from __future__ import annotations
 
+import json
 import re
+from pathlib import Path
 from typing import Any, Dict, List, Set
 
 from backend.app.practice_gen.compatibility import COMPATIBILITY, VARIANTS_BY_DNA
@@ -787,9 +789,100 @@ def _validate_provision(node_id: str, requires: List[Dict]) -> List[str]:
     return errs
 
 
+_ATTESTATION_DIR = Path(__file__).resolve().parents[4] / "validation_reports" / "attestation"
+
+
+def _load_attestations() -> Dict[tuple, Dict[str, Any]]:
+    """
+    Every blind Attester verdict on record, keyed by (node_id, capability_id).
+
+    A verdict is about *specific rendered content*, so it is scoped to the node whose
+    samples were judged -- the same capability on two nodes reaches different DNAs and
+    renders differently, and a verdict earned on one says nothing about the other.
+    """
+    out: Dict[tuple, Dict[str, Any]] = {}
+    if not _ATTESTATION_DIR.exists():
+        return out
+    for path in sorted(_ATTESTATION_DIR.glob("*.json")):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            raise ValueError(
+                f"attestation record '{path.name}' is not valid JSON: {exc}. An unreadable "
+                f"verdict is not a missing verdict -- fix the file rather than deleting it."
+            ) from exc
+        for v in data.get("verdicts", []):
+            node, cap, verdict = v.get("node_id"), v.get("capability_id"), v.get("verdict")
+            if not (node and cap and verdict):
+                raise ValueError(
+                    f"attestation record '{path.name}' has a verdict missing node_id, "
+                    f"capability_id or verdict: {v!r}"
+                )
+            if verdict not in ("PROVIDED", "NOT_PROVIDED"):
+                raise ValueError(
+                    f"attestation record '{path.name}': verdict must be PROVIDED or "
+                    f"NOT_PROVIDED, got {verdict!r}. There is no 'partly'."
+                )
+            out[(node, cap)] = v
+    return out
+
+
+def _validate_attestation(node_id: str, requires: List[Dict],
+                          attested: Dict[tuple, Dict[str, Any]]) -> List[str]:
+    """
+    §6F -- a provider entry is a *claim*, and a claim nobody blind has checked is not
+    evidence.
+
+    §6C proves the claimed artifact exists and is reachable. §6D proves it is not a
+    generic formatter every DNA already offers. **Neither can tell whether the artifact
+    does what the clause names**, because that is a reading of MATATAG rather than a
+    lookup: `task_type=draw_construct` is a real, reachable variant whose name asserts
+    its own semantics, and it rendered multiple-choice questions *about* drawing on a
+    competency that says "draw". Both mechanical checks passed it.
+
+    Until 2026-08-20 the Attester that closes that gap had no enforcement: its verdicts
+    sat in validation_reports/attestation/ and nothing read them, so a NOT_PROVIDED
+    ruling took effect only if the Fixer chose to act on it. That is the same
+    author-verifying-itself structure the role was introduced to break (Rule 11: make a
+    guard mechanical in the same unit that creates it -- this one was owed).
+
+    Two failures, deliberately distinct, because they mean different things and have
+    different fixes:
+
+      CONTRADICTED -- a blind Attester ruled NOT_PROVIDED and the table still claims it.
+                      Delete the entry or build the artifact. Never re-file the verdict.
+      UNATTESTED   -- nobody blind has ever looked. Not "probably fine": unexamined
+                      green is exactly what this project has shipped three times.
+    """
+    errs: List[str] = []
+    for req in requires:
+        cap = str(req.get("id", ""))
+        record = attested.get((node_id, cap))
+        if record is None:
+            errs.append(
+                f"{node_id}: capability {cap!r} (clause {req.get('clause')!r}) is UNATTESTED "
+                f"(§6F) -- no blind Attester has judged whether the pipeline's rendered "
+                f"output exhibits what this clause names. Build a packet with "
+                f"tests/attester_packets.py, dispatch an Attester (Rule 1), and file the "
+                f"verdict in validation_reports/attestation/. An unverified claim is not a "
+                f"provider."
+            )
+        elif record.get("verdict") == "NOT_PROVIDED" and cap in CAPABILITY_PROVIDERS:
+            errs.append(
+                f"{node_id}: capability {cap!r} (clause {req.get('clause')!r}) is "
+                f"CONTRADICTED (§6F) -- a blind Attester ruled NOT_PROVIDED, and "
+                f"CAPABILITY_PROVIDERS still claims {CAPABILITY_PROVIDERS[cap]}. "
+                f"Attester's reasoning: {str(record.get('reasoning'))[:200]!r}. "
+                f"Delete the entry and let the gap be reported, or build the artifact that "
+                f"renders what the clause names and re-attest it. Do not re-file the verdict."
+            )
+    return errs
+
+
 def validate_capability_declarations(node_ids: List[str] | None = None) -> List[str]:
     """Run §6A/§6B/§6C over every registered node. Returns a flat list of failures."""
     errs: List[str] = []
+    attested = _load_attestations()
     for node_id in (node_ids if node_ids is not None else get_all_node_ids()):
         meta = get_node_info(node_id)
         competency = str((meta or {}).get("competency", "")).strip()
@@ -813,6 +906,7 @@ def validate_capability_declarations(node_ids: List[str] | None = None) -> List[
         errs += _validate_provenance(node_id, competency, requires)
         errs += _validate_coverage(node_id, competency, requires, ignore)
         errs += _validate_provision(node_id, requires)
+        errs += _validate_attestation(node_id, requires, attested)
     return errs
 
 
