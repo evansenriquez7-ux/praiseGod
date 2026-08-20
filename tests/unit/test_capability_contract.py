@@ -372,3 +372,114 @@ def test_reach_scanner_excludes_the_echoed_difficulty_profile():
     # Derived from the registries, not hand-listed, so a new axis cannot reintroduce it.
     assert "max_sum" in _profile_echo_keys()
     assert "context" in _profile_echo_keys()
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# §6E — the shared `bounds` catch-all
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def test_shared_bounds_list_is_not_a_provider():
+    """
+    A `bounds` list carried verbatim by most of the table claims nothing.
+
+    Measured on this tree: 474 of 484 providers carry one identical 27-key list. A list
+    that almost every entry shares cannot distinguish one capability from another, so it
+    is not evidence that a node provides a clause -- Rule 9, "a bounds list is a
+    numeric-ceiling provider and nothing else".
+    """
+    shared = VC._nondiscriminating_bounds()
+    assert shared, "no shared bounds signature detected on a table that has one"
+
+    total = len(VC.CAPABILITY_PROVIDERS)
+    for sig in shared:
+        carriers = sum(
+            1 for s in VC.CAPABILITY_PROVIDERS.values()
+            if frozenset(s.get("bounds") or []) == sig
+        )
+        assert carriers > total / 2, (
+            f"a signature carried by only {carriers}/{total} providers was treated as "
+            f"shared; §6E must key on how many entries carry the identical list"
+        )
+
+
+def test_shared_bounds_is_detected_by_sharedness_not_length():
+    """
+    The invariant that separates §6E from the decoy that cost an earlier audit a day.
+
+    Length is not the question. This pins both directions:
+      * a SHORT list carried by almost everything IS a wildcard;
+      * a LONG list unique to one entry is NOT.
+
+    `test_bounds_length_is_never_the_discriminator` pins the same rule for §6D; this is
+    its §6E counterpart, and it must keep passing if anyone rewrites the detection.
+    """
+    import copy
+
+    original = copy.deepcopy(VC.CAPABILITY_PROVIDERS)
+    try:
+        # A one-key list on every provider: short, but shared by all -> wildcard.
+        for spec in VC.CAPABILITY_PROVIDERS.values():
+            spec["bounds"] = ["range"]
+        shared = VC._nondiscriminating_bounds()
+        assert frozenset({"range"}) in shared, (
+            "a 1-key bounds list carried by every provider was not detected as shared -- "
+            "§6E is keying on length, which is the defect this pins"
+        )
+
+        # A 40-key list on exactly one provider: long, but unique -> a real claim.
+        VC.CAPABILITY_PROVIDERS.clear()
+        VC.CAPABILITY_PROVIDERS.update(copy.deepcopy(original))
+        one = next(iter(VC.CAPABILITY_PROVIDERS))
+        VC.CAPABILITY_PROVIDERS[one]["bounds"] = [f"k{i}" for i in range(40)]
+        shared = VC._nondiscriminating_bounds()
+        assert frozenset(VC.CAPABILITY_PROVIDERS[one]["bounds"]) not in shared, (
+            "a 40-key bounds list unique to one provider was flagged as a wildcard -- "
+            "§6E is keying on length, which is the defect this pins"
+        )
+    finally:
+        VC.CAPABILITY_PROVIDERS.clear()
+        VC.CAPABILITY_PROVIDERS.update(original)
+
+
+def test_planted_mutation_bounds_only_provider_is_caught_by_name():
+    """
+    Planted mutation: an entry whose ONLY possible carrier is the shared catch-all.
+
+    On the current tree §6D and §6E always co-occur -- every entry riding the bounds
+    catch-all also lists a generic formatter, so §6D reports first and the standalone
+    §6E branch is dormant. A dormant branch is untested by the live tree, so this plants
+    the condition it exists for: strip the generic family and the variants from one such
+    entry, leaving the shared bounds list alone, and require §6E to fire BY NAME.
+    """
+    import copy
+    import re
+
+    generic = {"mcq", "cloze", "true_false", "error_detect"}
+    shared = VC._nondiscriminating_bounds()
+
+    target = None
+    for e in VC.validate_capability_declarations():
+        m = re.match(r"^(\S+): competency requires '([^']+)'", e)
+        if m and "§6D" in e:
+            node, cap = m.groups()
+            if frozenset(VC.CAPABILITY_PROVIDERS.get(cap, {}).get("bounds") or []) in shared:
+                target = (node, cap)
+                break
+    assert target, "no entry rides the shared bounds catch-all; the mutation cannot be planted"
+    node, cap = target
+
+    original = copy.deepcopy(VC.CAPABILITY_PROVIDERS)
+    try:
+        spec = VC.CAPABILITY_PROVIDERS[cap]
+        spec["formatters"] = [f for f in spec.get("formatters", []) if f not in generic]
+        spec["variants"] = []
+
+        errs = [e for e in VC.validate_capability_declarations([node]) if cap in e]
+        named = [e for e in errs if "§6E" in e and "bounds` catch-all" in e]
+        assert named, (
+            f"§6E did not fire by name on an entry carried only by the shared bounds "
+            f"catch-all. Got: {errs}"
+        )
+    finally:
+        VC.CAPABILITY_PROVIDERS.clear()
+        VC.CAPABILITY_PROVIDERS.update(original)

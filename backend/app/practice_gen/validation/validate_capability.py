@@ -713,6 +713,57 @@ def _bound_restricts_to(bound: Any) -> Set[str] | None:
 _GENERIC_TEXTUAL_FORMATTERS: Set[str] = {"mcq", "cloze", "true_false", "error_detect"}
 
 
+# §6E — the shared `bounds` catch-all.
+#
+# Rule 9 again, applied to the other column: "a `bounds` list is a numeric-ceiling
+# provider and nothing else". A bounds list earns a capability only if it says something
+# about THAT capability. A list carried verbatim by almost every entry in the table says
+# nothing about any of them.
+#
+# Measured on this tree: there are exactly TWO distinct bounds lists across 484
+# providers -- one 27-key list on 474 of them (97.9%) and one empty list on 10. Stripping
+# `bounds` from every provider moves the reported failure count by 15, so the catch-all
+# is now load-bearing for 15 capabilities across three ordinal nodes that ride it alone.
+#
+# The discriminator is SHARED-NESS, not length, and the distinction matters:
+#
+#   * A 1-key list carried by 474 entries is a wildcard and this check catches it.
+#   * A 27-key list unique to one entry is a real claim and this check leaves it alone.
+#
+# `test_bounds_length_is_never_the_discriminator` pins that a length threshold must never
+# be used here: an earlier audit named the 27-key list as the mechanism defeating §6C on
+# the strength of its length, and measured *at that time* it was inert padding -- deleting
+# it moved the count 0 -> 0, because the generic formatter family satisfied everything
+# first. Length was the wrong question then and is the wrong question now; "how many
+# entries carry this identical list?" is the right one, and it happens to be the question
+# whose answer changed when §6D removed the bigger wildcard.
+_SHARED_BOUNDS_FRACTION = 0.5
+
+
+def _nondiscriminating_bounds() -> Set[frozenset]:
+    """
+    Bounds-list signatures carried by more than half of all registered providers.
+
+    A list that most of the table shares cannot distinguish one capability from another,
+    so it is not evidence that this node provides this clause. Returns signatures rather
+    than lengths so the test that pins "length is never the discriminator" stays true by
+    construction.
+    """
+    total = len(CAPABILITY_PROVIDERS)
+    if not total:
+        return set()
+    counts: Dict[frozenset, int] = {}
+    for spec in CAPABILITY_PROVIDERS.values():
+        sig = frozenset(spec.get("bounds") or [])
+        if not sig:
+            continue  # an empty list provides nothing anywhere; it is not a wildcard
+        counts[sig] = counts.get(sig, 0) + 1
+    return {
+        sig for sig, n in counts.items()
+        if n > _SHARED_BOUNDS_FRACTION * total
+    }
+
+
 def _provided_for_node(node_id: str) -> Dict[str, Set[str]]:
     """
     The concrete artifacts reachable for this node **on the student path**.
@@ -759,6 +810,7 @@ def _validate_provision(node_id: str, requires: List[Dict]) -> List[str]:
     """§6C — required ⊆ provided. An unprovided capability is a build item, named."""
     errs: List[str] = []
     avail = _provided_for_node(node_id)
+    shared_bounds = _nondiscriminating_bounds()
     dnas = NODE_TO_DNA.get(node_id) or []
 
     for req in requires:
@@ -793,12 +845,19 @@ def _validate_provision(node_id: str, requires: List[Dict]) -> List[str]:
         # A numeric ceiling is provided by the node's competency bounds rather than by
         # a variant value -- that is the one part of _parse_competency_bounds worth
         # keeping, since a range genuinely is derivable from "up to 100".
+        # §6E: split the same way §6D splits formatters. A bounds list shared by most of
+        # the table is a catch-all and carries nothing; one specific to this entry is a
+        # genuine numeric-ceiling claim.
         by_bounds: List[str] = []
+        bounds_is_shared = False
         if spec.get("bounds"):
             bounds = get_node_competency_bounds(node_id) or {}
             by_bounds = [b for b in spec["bounds"] if b in bounds]
+            bounds_is_shared = frozenset(spec["bounds"]) in shared_bounds
+        by_specific_bounds = [] if bounds_is_shared else by_bounds
+        by_shared_bounds = by_bounds if bounds_is_shared else []
 
-        discriminating = by_variant + by_specific_formatter + by_bounds
+        discriminating = by_variant + by_specific_formatter + by_specific_bounds
         if discriminating:
             continue
 
@@ -812,11 +871,34 @@ def _validate_provision(node_id: str, requires: List[Dict]) -> List[str]:
                 f"{req.get('clause')!r}), but no pipeline artifact provides it. "
                 f"Its only reachable provider is the generic textual formatter family "
                 f"{sorted(by_generic_formatter)}, which 27 of 28 DNAs offer and which "
-                f"therefore discriminates nothing (§6D, AGENTS.md Rule 9). "
-                f"Registered providers: {spec}. Reachable DNAs: {dnas or '[]'}. "
+                f"therefore discriminates nothing (§6D, AGENTS.md Rule 9)."
+                + (
+                    f" Its `bounds` list is also a catch-all that "
+                    f"{sum(1 for s in CAPABILITY_PROVIDERS.values() if frozenset(s.get('bounds') or []) == frozenset(spec.get('bounds') or []))} "
+                    f"of {len(CAPABILITY_PROVIDERS)} providers carry verbatim, so it "
+                    f"rescues nothing either (§6E)."
+                    if by_shared_bounds else ""
+                )
+                + f" Registered providers: {spec}. Reachable DNAs: {dnas or '[]'}. "
                 f"Either build the formatter/variant/dd/DNA that renders what the clause "
                 f"names and register that, or delete the entry and let this gap be "
                 f"reported -- a generic textual formatter is never the answer."
+            )
+            continue
+
+        if by_shared_bounds:
+            errs.append(
+                f"{node_id}: competency requires {cap!r} (from clause "
+                f"{req.get('clause')!r}), but no pipeline artifact provides it. "
+                f"Its only reachable provider is a `bounds` catch-all "
+                f"{sorted(by_shared_bounds)} drawn from a list that "
+                f"{sum(1 for s in CAPABILITY_PROVIDERS.values() if frozenset(s.get('bounds') or []) == frozenset(spec['bounds']))} "
+                f"of {len(CAPABILITY_PROVIDERS)} providers carry verbatim, so it makes no "
+                f"claim about this capability in particular (§6E, AGENTS.md Rule 9). "
+                f"Registered providers: {spec}. Reachable DNAs: {dnas or '[]'}. "
+                f"Either build the formatter/variant/dd/DNA that renders what the clause "
+                f"names and register that, or delete the entry and let this gap be "
+                f"reported. A bounds list is a numeric-ceiling provider and nothing else."
             )
             continue
 

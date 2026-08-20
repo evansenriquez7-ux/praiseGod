@@ -69,6 +69,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§5": "validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews",
     "§6": "validate_capability: competency requirements declared, cited, covered, and provided",
     "§6D": "validate_capability: a capability carried only by a generic textual formatter is not provided",
+    "§6E": "validate_capability: a capability carried only by a `bounds` list most of the table shares is not provided",
     "§6F": "validate_capability: every declared capability carries a blind Attester verdict, and none is contradicted",
 }
 
@@ -177,6 +178,7 @@ def run_all(fail_fast: bool = False) -> int:
     if capability_ok:
         executed_checks.add("§6")
         executed_checks.add("§6D")
+        executed_checks.add("§6E")
         executed_checks.add("§6F")
         print("  PASS capability_contract (all nodes declare, cite, cover, and are provided for)")
     else:
