@@ -6229,3 +6229,81 @@ Multiplying by zero is legitimate content; **drawing an array for it is not**. W
 refuse the formatter for a zero operand or to route those seeds elsewhere is a routing decision, so
 §1G reports it rather than guessing. `mat_g3_na_q3_1` now fails §5 — that is the honest state of a
 node that has been rendering empty pictures.
+
+---
+
+## 2026-08-21 (tick 12) — An array cannot depict a zero factor
+
+Commit `7230b41f`. Touches `backend/app/practice_gen/`, so Rule 7 requires this entry.
+
+### The defect was a false declaration, not code
+
+`FORMATTER_VARIANT_SUPPORT['multiplication']` declared that `array_grid_read` and `array_grid_set`
+support the `zero_identity` task type. §1G caught what that produced:
+
+```
+mat_g3_na_q3_1: "Shade all the squares inside the shape. How many squares did you
+                 shade in all?"   rows=0 cols=7   key 0
+```
+
+**The content is not the problem and must not be narrowed.** `mat_g3_na_q3_1`'s competency explicitly
+requires *"zero multiplied by any number is zero"*, so Content Rule 4 makes producing it mandatory.
+What was false is the claim that an array can express it. Removing `zero_identity` from the two grid
+formatters leaves it on the text formatters, so the clause is still served by something that can say
+it:
+
+```
+"0 x 7 = 0. True or False?"   key True   visual_type None
+15 zero-property items over 150 seeds, no empty pictures
+```
+
+### A wrong first attempt, and why the second is better
+
+I first filtered grid formatters inside the orchestrator whenever an operand was 0. That worked on the
+student path (§1G went 2 → 0) and was still wrong:
+
+- the §1C sweep **pins formatters explicitly**, so it bypassed the filter entirely — the sweep still
+  showed 8 failures;
+- it silently swapped formatters at render time, when the actual defect was a **false claim in the
+  contract**.
+
+Reverted in favour of correcting the declaration. Fixing the contract fixed both paths at once.
+
+### What remains, and it is informative rather than broken
+
+`mat_g3_na_q3_1` matrix failures **8 → 2**, and the two survivors are a *different* check:
+
+```
+§1C-coverage: "No variant combination survives filtering for node 'mat_g3_na_q3_1',
+               DNA 'multiplication', formatter 'array_grid_read' — the execution matrix is empty"
+```
+
+That is **true**. This node's competency is entirely about multiplication *properties* — zero,
+identity, commutativity, associativity, distributivity — and an array can depict none of them. The
+formatter has no valid combination on this node at all.
+
+It cannot be expressed today. `get_node_formatters()` unions `COMPATIBILITY` across the node's DNAs
+and there is **no per-node formatter exclusion mechanism**. Dropping the array formatters from
+`COMPATIBILITY['multiplication']` would break every multiplication node that legitimately uses arrays.
+
+**This is the same root cause as the queued advertised-vs-servable finding** — 236 of 690 advertised
+(node, formatter) pairs refused by the orchestrator. Both are the absence of a node-level formatter
+filter. Two findings recorded three ticks apart turn out to be one missing mechanism.
+
+### One remaining §1G finding, newly diagnosed
+
+```
+mat_g2_na_q3_0 seed 23: rows=1 cols=0, key 0
+competency bounds: max_product (0, 100)      <- a range FLOOR of zero
+```
+
+"0 groups of 3" is not countable concrete objects, and that node's competency ("Count the number of
+concrete objects in a group by repeated addition … '5 groups of 3'") names no zero case. The floor is
+wrong. Same family as the recorded `axes_catalog` zero-floor hazard, where a range's `default: 0.0`
+pinned generation to the scalar floor.
+
+```
+§1G student-path findings: 2 -> 1
+structural validators: 0 errors
+pytest tests/unit: 313 passed, 2 deselected
+```

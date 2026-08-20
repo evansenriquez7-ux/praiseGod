@@ -3778,3 +3778,61 @@ those seeds is a routing decision.
 4. Still open: advertised-vs-servable formatters (236/690), `read_mcq` -> placement (63 nodes),
    `concrete materials`, `up to 10` on `mat_g1_na_q1_6`, `geometric_lines` hash bug, coverage
    programme (~35 dispatches).
+
+---
+
+## 2026-08-21 (tick 12) — The zero-factor array, and two findings that turn out to be one
+
+Entered at `VERDICT: RESUME`, 767 findings, coverage 127/787. Took ledger item 1.
+
+**The ledger said to check whether a zero factor is even in scope before choosing a fix. It was —
+decisively.** `mat_g3_na_q3_1`'s competency explicitly requires *"zero multiplied by any number is
+zero"*, so the content is MANDATED (Content Rule 4) and narrowing it was never an option. The false
+thing was `FORMATTER_VARIANT_SUPPORT` declaring that `array_grid_read`/`array_grid_set` support
+`zero_identity`. An array cannot depict a zero factor. Removing it from the two grid formatters, and
+leaving it on the text formatters, keeps the clause served — "0 x 7 = 0. True or False?", 15 items
+over 150 seeds, no empty pictures.
+
+**A wrong first attempt worth recording.** I first filtered grid formatters in the orchestrator when
+an operand was 0. It worked on the student path and was still wrong twice over: the §1C sweep pins
+formatters explicitly and bypassed it entirely (8 sweep failures remained), and it silently swapped
+formatters when the real defect was a false claim in the contract. **When a check fires on a payload,
+ask whether the DECLARATION is wrong before writing code to route around it.** Fixing the contract
+fixed both paths at once; the code fix fixed neither properly.
+
+**THE SYNTHESIS, and it is the most useful thing this tick produced.**
+mat_g3_na_q3_1's remaining 2 failures are §1C-coverage saying "the execution matrix is empty for
+array_grid_read". That is TRUE — the node's competency is entirely about multiplication properties and
+an array can depict none of them, so the formatter has no valid combination there at all. It cannot be
+expressed, because `get_node_formatters()` unions COMPATIBILITY across the node's DNAs and **there is
+no per-node formatter exclusion mechanism**.
+
+**That is the same root cause as the advertised-vs-servable finding from tick 6** (236 of 690
+advertised pairs refused by the orchestrator). Two findings recorded six ticks apart are one missing
+mechanism. Build it once and both close.
+
+**One §1G finding remains, newly diagnosed:** `mat_g2_na_q3_0` draws an empty grid because its
+competency bounds are `max_product (0, 100)` — a range FLOOR of zero. "0 groups of 3" is not countable
+concrete objects and its competency names no zero case. Same family as the recorded axes_catalog
+zero-floor hazard.
+
+**Both movements:**
+- findings **767 → 767**; coverage **127/787 unchanged**.
+- §1G student-path findings **2 → 1**; mat_g3_na_q3_1 matrix failures **8 → 2** (and the 2 are an
+  honest structural report, not a bad payload).
+
+**Next tick should:**
+1. **Build the per-node formatter exclusion mechanism.** It closes BOTH the 236/690
+   advertised-vs-servable gap and mat_g3_na_q3_1's empty execution matrix. Shape: a per-node
+   `excluded_formatters` (or a positive `formatters` override) consulted by `get_node_formatters()`
+   and by the orchestrator's availability filter, so the advertised list equals the servable list by
+   construction. Add a check that the two agree — that check is the real deliverable, since it makes
+   the class of defect impossible rather than fixing 236 instances.
+2. **`mat_g2_na_q3_0`'s `max_product` floor of 0.** Decide whether the floor should be 1 (or the
+   smallest product the competency's language admits) and fix the bounds parser. Verify no other node
+   depends on a zero floor before changing it.
+3. **Extend §1G**: BarChart, ClockSet, Calendar are still unchecked and all verifiable. Run each
+   candidate read-only first — one candidate already failed that screen this run.
+4. Still open: `read_mcq` -> placement (63 nodes), `concrete materials`, `up to 10` on
+   `mat_g1_na_q1_6`, `geometric_lines` hash bug, re-attesting the blind-packet nodes, and the coverage
+   programme (~35 dispatches).
