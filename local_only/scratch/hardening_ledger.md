@@ -3315,3 +3315,69 @@ decisive.** Use that method for collateral-damage questions.
 5. **§6E `bounds`** — still the live wildcard at +15, unchanged for four ticks.
 6. **`numbers` on `mat_g1_na_q1_6`** is now a §6D wildcard (it lost the `addition` provider). Point it
    at a real artifact or delete the entry and report the gap.
+
+---
+
+## 2026-08-20 (tick 4) — A tree-wide answer-key pattern, measured and then deliberately NOT shipped
+
+Entered at `VERDICT: RESUME`, 801 findings, coverage 52/787, gate 19 errors / 0 STALE.
+
+**The headline is a finding, not a fix.** A blind Reviewer's node-local complaint about answer
+position turned out to be systemic. Measured across every node, 963 four-option samples:
+
+```
+aggregate key position: 29.7 / 30.7 / 16.9 / 22.6   (uniform 25)   chi-square 48.5, 3 df, p < 0.0001
+seed 11 -> B on 80.9% of nodes      seed 42 -> C on 97.9% of nodes
+seed 23 -> D on 80.9% of nodes      seed 57 -> D on 94.3% of nodes
+```
+
+Root cause: `orchestrator.py:39` seeds the whole generation with `random.Random(seed)` and nothing
+else, so every node starts from the same rng state for a given seed and the A/B/C/D "shuffle" is a
+function of the seed. That is an exploitable pattern — learn the slot for one seed and you have it
+for every subject at that seed.
+
+I built the fix (a `(node_id, seed)` placement stream across the 22 final-option shuffles, leaving
+the 12 distractor-bank shuffles alone) and measured it working: per-seed concentration 97.9% -> 36.2%,
+chi-square 48.5 -> 4.7. **Then I reverted it**, because it stales **156 reviews**:
+
+**`read_mcq` storing `correct_answer` as the option LETTER (the tick-2 finding) is a hard blocker.**
+Moving the key's position changes the recorded answer, so §5 reports the review stale. The order is
+strict: fix `read_mcq` to store the *value* first (that itself stales ~59 nodes once, unavoidably),
+and only then is the placement fix churn-free. Shipping placement first would have destroyed the
+verified-review layer for a one-tick gain.
+
+This is the first time a queued item has turned out to be a *prerequisite* rather than a peer. Record
+it that way: **read_mcq -> placement is an ordered pair, not two independent units.**
+
+**The node unit (`mat_g1_na_q1_6`), batched so re-review is paid once:** 7 materials-directive items,
+the out-of-range distractor `11` removed, two zero-group stems rephrased. `answer_leak_in_stem` then
+caught two stems where removing the zero left `5` as the only value — one mine, one latent and merely
+exposed. The Reviewer's preferred wording collides with that check, so the zero is stated as a STATE
+with the numeral present. Both satisfied.
+
+**Both movements:**
+- findings **801 → 802** (batch007 superseded, counted stale — the known §6F supersession gap).
+- coverage **52/787, flat for a third tick.** Re-attestation buys correctness, not coverage.
+- reviews 147 PASS / 3 CONCERN / 1 FAIL; STALE 0; NON-VERDICT 0.
+
+**`concrete materials` is now settled evidence, not an open question.** A SECOND independent Attester,
+on different content, ruled it NOT_PROVIDED and foreclosed the cheap path: *"A referenced object is
+not a used object... Emoji upgraded to richer pictures would NOT change my answer."* No text MCQ can
+exhibit this clause. Stop trying to write around it.
+
+**Next tick should:**
+1. **`read_mcq` answer-key contract — now the critical path, not just a queued item.** 59 nodes store
+   `correct_answer` as a letter. Fix it to the value; that stales those nodes' reviews once. Then
+   ship the placement fix, which is already written and measured (see the evidence entry for the
+   exact patch shape) and becomes churn-free.
+2. **Plan the re-review programme before starting (1).** ~59 nodes at one blind dispatch each is
+   several ticks; measured throughput is ~3 nodes per dispatch for attestation, one node per dispatch
+   for judgment. Decide the batching before creating the staleness, not after.
+3. **`concrete materials`** — build an interactive manipulative response type (Rule 8), or delete the
+   entry and let §6C report the gap. Two blind verdicts now say the current machinery cannot do it.
+4. **`up to 10` on `mat_g1_na_q1_6`** — comprehensive_coverage is FAIL: only totals 5 and 10 appear
+   and all three ten-items use the same 7/3 split. Add totals 6-9 with undeclared pair values (an
+   undeclared value is still served, so the cross-product stays intact). Compose is 2 of 14; the
+   competency names it first.
+5. **`geometric_lines` multiplicative-hash bug** — still unfixed, same class as tick 3's.
+6. **§6E `bounds`** — still the live wildcard at +15, unchanged for five ticks.

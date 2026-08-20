@@ -5571,3 +5571,101 @@ gate rather than by me. In-memory reverts were also inconclusive (import-time ca
 file-level reverts in a fresh process were decisive.
 
 Fixed by restoring `shapes_2d`'s task_type and commenting both sites. STALE back to 0.
+
+---
+
+## 2026-08-20 (tick 4) — An exploitable answer-key pattern across the whole tree, and why it cannot be fixed yet
+
+Commit `d436c6a3`. Touches `backend/app/practice_gen/`, so Rule 7 requires this entry.
+
+### The finding: option placement is a function of the SEED, not the node
+
+A blind Reviewer flagged an answer-position bias on one node. Measuring it tree-wide turned a
+node-local complaint into a systemic defect. Over every registered node, 963 four-option samples:
+
+```
+key position (0-indexed): 29.7% / 30.7% / 16.9% / 22.6%     (uniform = 25%)
+chi-square = 48.5 on 3 df    -> p < 0.0001
+```
+
+Per seed it is far worse — the key lands in the SAME slot on most of the tree:
+
+```
+seed 11 -> position B on 80.9% of nodes
+seed 23 -> position D on 80.9% of nodes
+seed 42 -> position C on 97.9% of nodes
+seed 57 -> position D on 94.3% of nodes
+```
+
+**Root cause**, `backend/app/services/orchestrator.py:39`: `rng = random.Random(seed)`. The whole
+generation is seeded by the sample seed and nothing else, so for a given seed every node starts from
+an identical rng state and the A/B/C/D shuffle is not a shuffle across the tree at all. This is an
+exploitable pattern, not a cosmetic one: a pupil who learns the position for one seed has it for
+every other subject at that seed.
+
+### The fix, built and measured — then reverted
+
+A per-node placement stream derived from `(node_id, seed)`, applied to the 22 final-option shuffles
+across 20 formatter modules (the 12 distractor-bank shuffles were deliberately left alone, since
+those pick *which* values appear and changing them would move content):
+
+```
+per-seed max concentration: 97.9%  ->  36.2%
+aggregate:  26.8% / 25.5% / 22.1% / 25.5%
+chi-square:  48.5  ->  4.7 on 3 df    (p ~ 0.19, no longer significant)
+```
+
+**It was reverted, and the reason is the important part.** §5's freshness gate compares options as a
+*sorted* set precisely so placement does not stale a review — so this should have been free. It was
+not:
+
+```
+judgment gate after the fix: total 175 | STALE 156
+mat_g1_na_q1_0: STALE — seed 500 keeps its wording but no longer keys the same answer.
+                Reviewed: 'C'; now keys: 'A'.
+```
+
+**The `read_mcq` answer-key defect recorded in tick 2 is a hard blocker on this fix.** `read_mcq`
+stores `correct_answer` as the option *letter*, so moving the key's position changes the recorded
+answer and stales the review. The dependency is strict:
+
+1. fix `read_mcq` so `correct_answer` is the option *value* (stales ~59 nodes once, unavoidable);
+2. then the placement fix is genuinely free of churn.
+
+Shipping placement first would have created **156 stale reviews in one tick** — a re-review bill of
+one blind dispatch per node, and a wholesale regression of the verified-coverage layer. Reverted at
+`git checkout -- backend/app/practice_gen/formatters/`, gate confirmed back to 19 errors / 0 STALE.
+
+Independently, the blind Reviewer of `mat_g1_na_q1_6` reached the same conclusion from content alone:
+*"the key is in the first position in 7 [of 13]... A Grade 1 student who always taps the first choice
+scores above half, which corrupts the item set as a measure of the competency."* Two independent
+signals, one measured and one judged.
+
+### The node unit
+
+7 materials-directive items added, the out-of-range distractor `11` removed, two zero-group stems
+rephrased. §1's `answer_leak_in_stem` then caught two items where removing the zero group left `5` as
+the only value in the stem — one introduced by my rephrase, one latent and merely exposed by the pool
+change. The Reviewer's preferred wording ("One group is empty") collides with that check, so the zero
+is stated as a **state** with the numeral present ("One group has 0 counters"), satisfying both.
+
+```
+$ validate_matrix --node mat_g1_na_q1_6   → PASS, Nodes Failed: 0
+$ structural validators (all five)        → 0 errors
+$ validate_judgment_reviews               → 18 errors | STALE 0 | NON-VERDICT 0
+```
+
+### `concrete materials` is settled: no text MCQ can provide it
+
+A **second independent** blind Attester, on different content, again ruled it NOT_PROVIDED, and
+explicitly foreclosed the approach:
+
+> "A referenced object is not a used object... every one of these is answerable by picking from four
+> printed choices without ever touching a bead. **Emoji upgraded to richer pictures would not change
+> my answer** — that is still representational, not concrete."
+
+Its acceptance criteria: an interactive item where the pupil arranges tokens and the response is read
+from the arrangement; a task card for a teacher-supplied manipulative kit; or an item whose answer is
+unobtainable without the materials. All three need machinery the pipeline does not have. That is a
+Tick F build (Rule 8 — "needs new machinery" is not a deferral), or the entry is deleted so §6C
+reports the honest gap. Nothing was weakened and no verdict was re-filed.
