@@ -3618,3 +3618,59 @@ and they must be re-judged.
 5. Still open from earlier ticks: the advertised-vs-servable formatter gap (236/690), `read_mcq` ->
    placement (63 nodes), `concrete materials`, `up to 10` on `mat_g1_na_q1_6`, and the
    `geometric_lines` multiplicative-hash bug.
+
+---
+
+## 2026-08-20 (tick 9) — The packet was blind, so tick 8's findings were partly fiction
+
+Entered at `VERDICT: RESUME`, 767 findings, coverage 127/787. Took ledger item 1, which was to settle
+the visual question before building anything on last tick's verdicts. It did not survive contact.
+
+**`attester_packets._render` has never carried a visual payload.** It read
+`fd.get("visual") or fd.get("visual_data")`; the pipeline emits `format_data["visual_params"]` and a
+top-level `visual_type`. Silent None, every sample, every batch since the role was created.
+**389 of 1510 rendered samples across 71 nodes** actually carry a visual the packet was hiding.
+
+**And the prompt was lossy independently.** I shortened a stem when pasting it inline, so the Attester
+saw "Rosa's answer contains an error" where the pipeline renders "Rosa says the missing number is 10.
+Is Rosa correct?". It reported, correctly, that there was nothing to find an error in. I filed that as
+a pipeline defect. `render_prompt_block()` now emits the prompt text verbatim from the packet.
+
+**Four of the five content defects I reported last tick are INVALID** (PesoMoney, PatternSequence and
+GridArea all render; the "ungradeable" money key is an interactive build task scored on its target).
+Two stand: `mat_g2_mg_q2_1`'s dead options and `mat_g2_na_q3_1`'s factor-role flip, both text-only.
+
+**The durable lesson, and it is the sharpest one this run has produced:**
+**a blind role does not protect you from feeding it bad evidence.** It faithfully reports on whatever
+it is shown, which is what makes a defective packet dangerous — it produces confident, well-reasoned,
+WRONG findings, and they read exactly like the good ones. Before trusting any blind verdict, verify
+the packet contains what the pipeline actually renders. Two links (packet builder, inline paste) were
+lossy and neither was ever checked.
+
+**What the fix immediately bought — invalid banknotes reaching pupils:**
+```
+INVALID denominations: 5 across 2 nodes (mat_g2_na_q2_0, mat_g3_na_q2_0)
+   bill of 25    bill of 475    bill of 2594    bill of 3654    bill of 8103
+```
+No such Philippine notes exist, and 25 is not in the item's own `bill_faces [20,50,100,200]`. The
+four-digit ones are the target amount emitted as a SINGLE banknote instead of being decomposed. **No
+§1 check could ever have caught this** — every §1 check reads text, and the stem says only "make
+exactly P350".
+
+**Both movements:**
+- findings **767 → 767** (no provider-table change this tick).
+- coverage **127/787 unchanged**, but a share of it is now known to rest on defective evidence.
+
+**Next tick should:**
+1. **Fix the banknote generator.** `money_peso` is emitting denominations that do not exist, including
+   the whole target amount as one note. Then add a check: a denomination not in the node's own
+   `bill_faces`/`coin_faces` is a hard failure. This is a §1-class gap — text checks cannot see
+   visual payloads at all, and that is worth its own contract row.
+2. **Re-attest the nodes whose medium clauses were judged blind** — `mat_g1_na_q1_2`,
+   `mat_g2_na_q3_1`, `mat_g2_na_q2_8`, `mat_g2_na_q2_0`, `mat_g2_na_q3_5`, `mat_g2_mg_q1_1`,
+   `mat_g1_na_q1_7` — using `render_prompt_block()` so the paste is verbatim. Supersede, never edit.
+3. **Re-check every earlier batch's medium clauses** for the same reason; batches 1-8 were all built
+   with the blind packet.
+4. Still open: advertised-vs-servable formatters (236/690), `read_mcq` -> placement (63 nodes),
+   `concrete materials`, `up to 10` on `mat_g1_na_q1_6`, `geometric_lines` hash bug, and the coverage
+   programme (~35 dispatches).

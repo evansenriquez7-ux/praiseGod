@@ -6008,3 +6008,75 @@ Every such verdict carries the artifact that would flip it. This is the same fam
 6. **`mat_g1_na_q1_7` — half the sample is one question.** Four identical stems with reordered
    options, plus a fifth asking the same fact as True/False. Ten items reduce to two number facts
    (1+1, 2+1) against a competency whose range is sums to 20.
+
+---
+
+## 2026-08-20 (tick 9) — The evidence pipeline was lying, and I had filed verdicts on it
+
+Commit `2a17405b`. This entry corrects tick 8's.
+
+### Two defects, both in the evidence pipeline, both mine
+
+**1. `attester_packets._render` never carried a visual.** It read
+`fd.get("visual") or fd.get("visual_data")`. The pipeline emits neither: the payload lives in
+`format_data["visual_params"]` and is named by the top-level `visual_type`. The lookup returned None
+for every sample ever built, in every batch.
+
+```
+samples rendered:                                                  1510
+samples WITH a visual payload the packet never carried:  389  across 71 nodes
+```
+
+**2. The prompt was lossy too.** Blindness is a prompt contract, so samples are pasted into the
+subagent prompt by hand, and last tick that hand shortened a stem:
+
+```
+what the Attester was shown : Rosa solved: "...subtract ___ times...". Rosa's answer contains an error.
+what the pipeline renders   : Rosa solved: "...subtract ___ times...". Rosa says the missing number
+                              is 10. Is Rosa correct?
+```
+
+The Attester correctly reported there was nothing on the page to find an error in. **I filed that as a
+pipeline defect. It was a transcription defect.** `render_prompt_block()` now emits the
+Attester-facing text verbatim from the packet so it cannot be retyped.
+
+### Tick 8's reported defects, re-checked
+
+| reported last tick | verdict |
+|---|---|
+| `mat_g2_na_q2_0` 11/23 "unanswerable" | **INVALID** — renders `PesoMoney`, `bills:[2 × ₱20]` |
+| `mat_g2_na_q2_8` 23/103/127 "no pattern shown" | **INVALID** — renders `PatternSequence [11,10,9,8,7,6]` |
+| `mat_g2_na_q3_5` 127 "array not shown" | **INVALID** — renders `GridArea rows=3 cols=1` |
+| `mat_g2_na_q3_5` 23/103 "unanswerable" | **INVALID** — my truncation; the stem is complete and sound |
+| `mat_g2_na_q2_0` 103/127 "ungradeable key" | **INVALID** — `set_fill_in_blank` with an *interactive* PesoMoney widget; the key is the target total, which is how a build task scores |
+| `mat_g2_mg_q2_1` dead options, 8/10 key "m" | **STANDS** — text-only node, no visual involved |
+| `mat_g2_na_q3_1` factor roles swap between models | **STANDS** — text-only reasoning |
+
+Unsafe NOT_PROVIDED verdicts that must be re-judged with the payload present: `pictorial models`,
+`number line`, `block or bar models` (`mat_g1_na_q1_2`); `pictorial models`, `arrays`
+(`mat_g2_na_q3_1`); `visual elements` (`mat_g2_na_q2_8`); `number of bills`, `peso bills only`
+(`mat_g2_na_q2_0` — seed 11 is bills-only, which contradicts both).
+
+### The finding the fix bought: invalid banknotes reaching pupils
+
+```
+denomination entries inspected: 33
+INVALID denominations: 5 across 2 nodes
+   bill of 25    bill of 475    bill of 2594    bill of 3654    bill of 8103
+nodes: mat_g2_na_q2_0, mat_g3_na_q2_0
+```
+
+There is no ₱25, ₱475, ₱2594, ₱3654 or ₱8103 note in Philippine currency, and 25 is not even in the
+item's own `bill_faces` `[20, 50, 100, 200]`. The four-digit entries are the **target amount emitted
+as a single banknote** instead of being decomposed into real denominations.
+
+**No text-level check could ever have caught this** — the stem says only "make exactly ₱350", and
+every §1 check reads text. It took the visual payload to see it, which is precisely the evidence the
+packet had been withholding since the role was created.
+
+### The lesson
+
+An Attester's verdict is only as good as the packet, and the packet is only as good as what the
+dispatcher pastes. Both links were lossy and neither was checked. **A blind role does not protect you
+from feeding it bad evidence** — it faithfully reports on whatever it is shown, which is exactly what
+makes a defective packet so dangerous: it produces confident, well-reasoned, wrong findings.
