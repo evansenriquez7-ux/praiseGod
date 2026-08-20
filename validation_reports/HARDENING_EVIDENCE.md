@@ -6080,3 +6080,77 @@ An Attester's verdict is only as good as the packet, and the packet is only as g
 dispatcher pastes. Both links were lossy and neither was checked. **A blind role does not protect you
 from feeding it bad evidence** — it faithfully reports on whatever it is shown, which is exactly what
 makes a defective packet so dangerous: it produces confident, well-reasoned, wrong findings.
+
+---
+
+## 2026-08-21 (tick 10) — Banknotes that do not exist
+
+Commit `09381593`. Touches `backend/app/practice_gen/`, so Rule 7 requires this entry.
+
+### The defect
+
+`fmt_peso_money` split `amounts` into coins and bills by **magnitude**:
+
+```python
+coins_list = [a for a in amounts if a < 20]
+bills_list = [a for a in amounts if a >= 20]
+```
+
+That asks "is this number big?" rather than "is this a note?". Anything ≥ 20 became a banknote, so
+the pipeline put currency that does not exist in front of pupils:
+
+```
+bill of 25    bill of 475    bill of 2594    bill of 3654    bill of 8103
+```
+
+### Root cause: `amounts` is not always a pile
+
+`money_peso` reuses one field for two different things:
+
+| task | `amounts` holds | example |
+|---|---|---|
+| counting a pile | a list of denominations | `[20, 5, 5, 5]` → total 35 |
+| `operation=read_write` | **the amount itself** | `[8407]` → total 8407 |
+
+`mat_g3_na_q2_0` is *"Read and write money in words … up to ₱10 000"* — a notation task, not a
+counting one. Its `amounts` is the amount, and the formatter drew ₱8407 as a single note.
+
+`registry.py` already carried a warning about the other half of this: *"money_peso.py stores centavo
+denominations as centavo integers … while the pile/total pipeline is peso-integer, so dropping them
+into denom_pool would total them as pesos and label them wrong."* That warning was the ₱25 note,
+drawn. The prediction was on the record and the drawing happened anyway, because nothing checked.
+
+### The fix
+
+Use `amounts` only when every element is a real face; otherwise rebuild the pile from `total` with
+the existing greedy decomposer, and raise if even that cannot be made from real denominations.
+Showing currency that sums to `total` is the correct render for **both** task shapes, so this is not
+a fallback masking an error — and the genuinely undecomposable case still fails loud with the node
+and seed in the message.
+
+Also removed a stray `print("DEBUG TOTAL:", type(total), repr(total))` sitting in the production path.
+
+### Measured
+
+An intermediate version raised on every offending sample rather than repairing the pile, which
+surfaced the true scale before the final fix — 88 failures on `mat_g3_na_q2_0` and 21 on
+`mat_g2_na_q2_0`, not the 5 the sampled sweep had shown. After the repair:
+
+```
+samples generated: 80 | raised: 0
+INVALID denominations: 0
+piles whose denominations sum exactly to their stated total: 24
+mat_g2_na_q2_0  Nodes Failed: 0   Total Failures Observed: 0
+mat_g3_na_q2_0  Nodes Failed: 0   Total Failures Observed: 0
+pytest tests/unit: 313 passed, 2 deselected
+```
+
+### Why this one matters beyond the fix
+
+**No text check could ever have caught it.** Every §1 check reads the stem, and the stem says only
+"make exactly ₱350". §1D reads vocabulary, §1F reads the stem for answer leakage — none of them can
+see a `visual_params` payload at all. This defect was reachable only after last tick's fix made the
+Attester packet carry the visual, and it had been shipping invisibly until then.
+
+That is a structural gap, not a one-off: **the harness has no check that reads visual payloads.** A
+contract row for it is the obvious next piece.

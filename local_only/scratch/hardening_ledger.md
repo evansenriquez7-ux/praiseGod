@@ -3674,3 +3674,58 @@ exactly P350".
 4. Still open: advertised-vs-servable formatters (236/690), `read_mcq` -> placement (63 nodes),
    `concrete materials`, `up to 10` on `mat_g1_na_q1_6`, `geometric_lines` hash bug, and the coverage
    programme (~35 dispatches).
+
+---
+
+## 2026-08-21 (tick 10) — Banknotes that do not exist, and the gap that let them ship
+
+Entered at `VERDICT: RESUME`, 767 findings, coverage 127/787. Took ledger item 1.
+
+**The defect.** `fmt_peso_money` split `amounts` into coins and bills by MAGNITUDE (`a < 20` /
+`a >= 20`), which asks "is this number big?" rather than "is this a note?". Anything >= 20 became a
+banknote: **P25, P475, P2594, P3654, P8103** all reached pupil-facing money visuals.
+
+**Root cause: `amounts` is not always a pile.** money_peso reuses the field — a list of denominations
+for a counting task (`[20, 5, 5, 5]`), but for `operation=read_write` (mat_g3_na_q2_0, "Read and write
+money in words up to P10 000") it is **the amount itself** (`[8407]`). The formatter trusted it and
+drew P8407 as one note.
+
+**registry.py had already predicted half of this in a comment** — centavo faces are stored as centavo
+integers while the pile pipeline is peso-integer, so they "would total them as pesos and label them
+wrong". That comment was the P25 note, described in advance. **A prediction written in a comment is
+not a check.** Nothing enforced it, so it happened anyway.
+
+**Fix:** use `amounts` only when every element is a real face; otherwise rebuild the pile from `total`
+with the existing greedy decomposer; raise if even that is impossible. Showing currency that sums to
+`total` is correct for both task shapes, so this is not a masking fallback — the undecomposable case
+still fails loud with node and seed.
+
+Also deleted a stray `print("DEBUG TOTAL:", ...)` from the production path.
+
+**Method note worth keeping:** an intermediate version raised on every offending sample instead of
+repairing the pile. That was not the final fix, but it was the right diagnostic — it surfaced the true
+scale (**88 failures on mat_g3_na_q2_0, 21 on mat_g2_na_q2_0**) where the sampled sweep had shown only
+5. **When a defect's size matters, make it fail loudly first and count, then decide the repair.**
+
+**Both movements:**
+- findings **767 → 767** (no provider-table change).
+- coverage **127/787 unchanged.**
+- but 0 invalid denominations remain, 24 piles now sum exactly to their stated total, and both money
+  nodes are back to `Nodes Failed: 0`.
+
+**THE STRUCTURAL FINDING: the harness has no check that reads visual payloads at all.**
+§1D reads vocabulary, §1F reads the stem for answer leakage, §5 re-renders stems, §6 reads the
+provider table — every one of them reads TEXT. A `visual_params` payload can contain anything and no
+stage will look. This defect shipped invisibly until last tick's packet fix carried the payload to an
+Attester. That is a hole the size of every visual node in the tree (71 of 151 render one).
+
+**Next tick should:**
+1. **Build the visual-payload check (§1G).** At minimum: every denomination in a PesoMoney payload
+   must be in that node's own `bill_faces`/`coin_faces`; every pile must sum to its stated `total`;
+   a `GridArea` `correct_count` must equal `rows x cols` when `shaded` is true; a `NumberLine`
+   `value` must lie between `start` and `end`. Ship it with the FOUR wiring points (tick 5) and a
+   planted mutation per rule. This is the largest known hole in the gate.
+2. **Re-attest the nodes judged on blind packets** (tick 9's list) using `render_prompt_block()`.
+3. Still open: advertised-vs-servable formatters (236/690), `read_mcq` -> placement (63 nodes),
+   `concrete materials`, `up to 10` on `mat_g1_na_q1_6`, `geometric_lines` hash bug, and the coverage
+   programme (~35 dispatches).

@@ -1,7 +1,7 @@
-# Graph Report - ccmed  (2026-08-20)
+# Graph Report - ccmed  (2026-08-21)
 
 ## Corpus Check
-- 470 files · ~767,886 words
+- 470 files · ~768,307 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2a17405b`
+- Built from commit: `7b2d8deb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -391,7 +391,7 @@ Nodes (30): App Hosting CLI Commands, Automated deployment via GitHub (CI/CD), B
 
 ### Community 16 - "Community 16"
 Cohesion: 0.10
-Nodes (17): Mutation tests for the capability contract (§6A/§6B/§6C).  These exist because g, The discrimination must key on *what survives removing the family*, never on how, §6F must clear once a verdict is on file, or it is a counter rather than a check, There is no 'partly provided'. A malformed record is loud, never skipped., A record that cannot be re-rendered is not evidence — and is never silently skip, A `bounds` list carried verbatim by most of the table claims nothing.      Measu, The loophole this whole design would otherwise have: drop the requirement you, The invariant that separates §6E from the decoy that cost an earlier audit a day (+9 more)
+Nodes (17): Mutation tests for the capability contract (§6A/§6B/§6C).  These exist because g, Guards against the decoy that cost an earlier audit a day.      483 of 485 provi, The regression §6F exists to stop: someone re-registers what a blind Attester, A record that cannot be re-rendered is not evidence — and is never silently skip, A `bounds` list carried verbatim by most of the table claims nothing.      Measu, The loophole this whole design would otherwise have: drop the requirement you, Ignoring a competency word is possible but visible -- never a silent default., The acceptance test for the entire capability contract: mat_g3_mg_q1_5's     com (+9 more)
 
 ### Community 17 - "Community 17"
 Cohesion: 0.25
@@ -739,7 +739,7 @@ Nodes (16): generate_hints(), generate_params(), Any, DNA: Addition (Number & Al
 
 ### Community 103 - "Community 103"
 Cohesion: 0.08
-Nodes (25): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated (+17 more)
+Nodes (26): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — "Estimate" was only a word (mat_g3_mg_q1_0), 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated (+18 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.08
@@ -1210,8 +1210,8 @@ Cohesion: 0.25
 Nodes (8): 2026-08-19 — Hardening Unit 2: §6D, the mechanical form of Rule 9, A wrong assertion I wrote and corrected, recorded because the correction is the finding, Contract wiring (two-direction lint), Mutation test — the check is proved by planting the violation it claims to catch, Result: 0 reported problems → 59, matching the §0 delta census exactly, The family, measured on this tree (not assumed), What the check keys on, and what it deliberately does not, What this unit does NOT close
 
 ### Community 246 - "generate_params"
-Cohesion: 0.12
-Nodes (17): ErrorPattern, A pedagogically meaningful wrong answer.      formula:          SymPy expression, generate_hints(), generate_params(), Any, DNA: Probability Experiment (Data & Probability)  Covers MATATAG grade 3 compete, Generate parameters for collecting and recording data from simple experiments., generate_hints() (+9 more)
+Cohesion: 0.11
+Nodes (19): ErrorPattern, A pedagogically meaningful wrong answer.      formula:          SymPy expression, generate_hints(), generate_params(), Any, DNA: Probability Experiment (Data & Probability)  Covers MATATAG grade 3 compete, Generate parameters for collecting and recording data from simple experiments., generate_hints() (+11 more)
 
 ### Community 247 - "Anti-Patterns"
 Cohesion: 0.29
@@ -1222,12 +1222,12 @@ Cohesion: 0.29
 Nodes (7): 2026-08-20 — §6F: an Attester verdict that nothing enforces is not a check, Contract wiring, CONTRADICTED, proved by planting it, Result, The gate, Two §6D tests scoped, and why that is not a weakening, Yesterday's guard caught a real regression today
 
 ### Community 250 - "Part 3 — Concrete restructuring of the current docs/"
-Cohesion: 0.32
-Nodes (7): generate_hints(), generate_params(), _mix(), Any, DNA: Compose & Decompose Numbers to 10 (Number & Algebra)  Serves MATATAG mat_g1, Avalanche a seed before it is reduced modulo a small bucket count.      Plain mu, Sample one item from the static pool, filtered by grade and profile.
+Cohesion: 0.40
+Nodes (5): generate_hints(), generate_params(), Any, DNA: Calendar (Measurement & Geometry)  Covers MATATAG grades 1–2 calendar compe, Returns visual_params for the Calendar formatter and an answer value.       {"mo
 
 ### Community 251 - "_get_available_formats"
-Cohesion: 0.40
-Nodes (5): 2026-08-13 — "Estimate" was only a word (mat_g3_mg_q1_0), Root cause, in two layers, The failing rationale, The fix, Verification
+Cohesion: 0.50
+Nodes (4): 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item, Defect 2 — object and unit drawn independently
 
 ### Community 252 - "2026-08-19 — Hardening Unit 1: restore two weakened tests (deliberate documented red)"
 Cohesion: 0.40
@@ -1305,6 +1305,10 @@ Nodes (21): Check if a pair satisfies regrouping difficulty based on COUNT of pl
 Cohesion: 0.18
 Nodes (15): get_node_competency_bounds(), Get competency-specific bounds for a node's difficulty dimensions.          Retu, Exception, Gated, main(), Pairwise-collapse probe: which declared variant VALUES render identically to eac, The variant value is curriculum-gated off this node -- a correct refusal, not a, sig() (+7 more)
 
+### Community 275 - "health"
+Cohesion: 0.50
+Nodes (4): 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, New finding, quantified: the node formatter list advertises what the orchestrator refuses, The "deadlock" was a misdiagnosis, carried for five ticks, Three tests I broke in tick 3, invisible because run_all does not run pytest
+
 ### Community 276 - "_normalize_stem"
 Cohesion: 0.22
 Nodes (9): check_checklist_compliance(), Any, Run the checklist audit on the given nodes (default: all mat_g     nodes) and re, CLI entry point: runs the audit, writes JSON reports, exits 0/1.      Thin wrapp, run_audit(), test_checklist_audit.py ======================= Slow pytest entry that runs the, test_full_audit_zero_violations(), test_parallel_audit.py ======================= Verifies that run_audit(parallel= (+1 more)
@@ -1332,10 +1336,6 @@ Nodes (4): 2026-08-20 — §5 worker death: a silent unbounded wait in the last 
 ### Community 287 - "test_omission_survives_provenance_but_not_coverage"
 Cohesion: 0.40
 Nodes (5): 2026-08-20 (tick 9) — The evidence pipeline was lying, and I had filed verdicts on it, The finding the fix bought: invalid banknotes reaching pupils, The lesson, Tick 8's reported defects, re-checked, Two defects, both in the evidence pipeline, both mine
-
-### Community 288 - "2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127"
-Cohesion: 0.50
-Nodes (4): 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, Content defects found unasked, The dominant shape of the failures, Why this tick was dispatches only
 
 ### Community 289 - "_get_available_formats"
 Cohesion: 0.67
