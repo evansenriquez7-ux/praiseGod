@@ -3729,3 +3729,52 @@ Attester. That is a hole the size of every visual node in the tree (71 of 151 re
 3. Still open: advertised-vs-servable formatters (236/690), `read_mcq` -> placement (63 nodes),
    `concrete materials`, `up to 10` on `mat_g1_na_q1_6`, `geometric_lines` hash bug, and the coverage
    programme (~35 dispatches).
+
+---
+
+## 2026-08-21 (tick 11) — §1G shipped: the harness can see the pictures now
+
+Entered at `VERDICT: RESUME`, 767 findings, coverage 127/787. Took ledger item 1.
+
+**The hole closed.** Every stage read TEXT — §1D vocabulary, §1F stems, §5 re-rendered stems, §6 the
+provider table — so a `visual_params` payload could contain anything and nothing looked, across the
+**71 of 151 nodes** that render one. Two defects had already shipped through it.
+
+**§1G checks eight payload families** (PesoMoney, GridArea, NumberLine, PlaceValueBlocks, NumberBond,
+Fraction*, RulerMeasure, PatternSequence). All four wiring points hit; proved by planted payload.
+
+**The method point, and it is the one to keep:** every invariant was run read-only over the whole tree
+BEFORE being asserted, and **one candidate failed that screen and was dropped**.
+`GridArea.correct_count == rows * cols` is obvious, natural, and false — `correct_count` is the KEYED
+ANSWER, so "50 squares in 10 equal rows, how many per row?" correctly carries rows=10, cols=5,
+correct_count=5. Asserting it would have opened §1G with 10 false failures on sound content, and I
+would have "found" a defect that did not exist. **Verify an invariant against the tree before you
+enforce it; an obvious-looking invariant is exactly the kind that is wrong.**
+
+**What it found:** 2 student-path defects, 8 across the matrix sweep, one root cause.
+`fmt_array_grid` takes `rows`/`cols` straight from the DNA operands with no guard, so a **zero factor
+draws an empty array** — "Shade all the squares inside the shape. How many squares did you shade in
+all?" with rows=0 and the answer keyed 0. Multiplying by zero is legitimate content; drawing an array
+for it is not. Reported rather than guessed at, because whether to refuse the formatter or reroute
+those seeds is a routing decision.
+
+**Both movements:**
+- findings **767 → 767** (capability table untouched).
+- coverage **127/787 unchanged.**
+- gate surface: **§1G added; `mat_g3_na_q3_1` now fails §5**, which is the honest state of a node that
+  has been rendering empty pictures.
+
+**Next tick should:**
+1. **Fix the zero-factor array.** Either `fmt_array_grid` refuses when a factor is 0 (so the
+   orchestrator picks another formatter), or the affected nodes stop offering the array formatter for
+   those seeds. Then `mat_g3_na_q3_1` returns to green honestly. Check whether a zero factor is even
+   in scope for those competencies before choosing.
+2. **Extend §1G as more payload families gain invariants.** BarChart (len(values)==len(categories),
+   max_y >= max(values)), ClockSet (hours/minutes in range, angles agreeing with the stated time),
+   Calendar (question_date inside the rendered month) are all unchecked and all verifiable. Run each
+   candidate read-only first.
+3. **Re-attest the nodes judged on blind packets** (tick 9's list) using `render_prompt_block()` —
+   now more valuable, since the packets carry payloads AND §1G vouches for them.
+4. Still open: advertised-vs-servable formatters (236/690), `read_mcq` -> placement (63 nodes),
+   `concrete materials`, `up to 10` on `mat_g1_na_q1_6`, `geometric_lines` hash bug, coverage
+   programme (~35 dispatches).

@@ -6154,3 +6154,78 @@ Attester packet carry the visual, and it had been shipping invisibly until then.
 
 That is a structural gap, not a one-off: **the harness has no check that reads visual payloads.** A
 contract row for it is the obvious next piece.
+
+---
+
+## 2026-08-21 (tick 11) — §1G: the harness can finally see the pictures
+
+Commit `e7b24e6f`. Touches `backend/app/practice_gen/validation/` and the contract doc.
+
+### The hole
+
+Every stage in this harness reads **text**. §1D reads vocabulary, §1F reads the stem for answer
+leakage, §5 re-renders stems, §6 reads the provider table. A `visual_params` payload could contain
+anything at all and no stage would look — across the **71 of 151 nodes** that render one.
+
+Two defects had already shipped through it: the invalid banknotes fixed last tick (₱25, ₱475, ₱2594,
+₱3654, ₱8103), and `GridArea` rendering empty grids.
+
+### What §1G checks
+
+Eight payload families: **PesoMoney** (denominations must appear in the node's own faces; the pile
+must sum to its stated total), **GridArea** (non-empty dimensions, answer derivable from the grid,
+board not smaller than its content), **NumberLine** (start < end, values on their own axis),
+**PlaceValueBlocks** (blocks sum to `total_value`), **NumberBond** (parts make the whole),
+**FractionModel/FractionShade** (shaded ≤ total, no zero denominator), **RulerMeasure** (ordering,
+bounds, `length == span`), **PatternSequence** (missing indices inside the sequence).
+
+### Method: every invariant verified before being asserted
+
+Each candidate was run read-only over the whole tree first, because a wrong invariant manufactures
+false failures — and one did. `GridArea.correct_count == rows * cols` looks obvious and is **false**:
+
+```
+mat_g2_na_q3_4 seed 11: "This array has 50 squares split into 10 equal rows.
+                         How many squares are in each row?"
+   rows=10  cols=5  correct_count=5      <- correct_count is the KEYED ANSWER
+```
+
+Dropped and replaced with the true form — the answer must be *derivable* from the grid
+(`rows*cols`, `rows`, or `cols`). Had I asserted the obvious version, §1G would have opened with 10
+false failures on sound content.
+
+### Proved by planted payload
+
+```
+rows=0 grid              -> "GridArea has rows=0: an array with no rows renders nothing"
+bill 25 vs faces [20,50] -> "draws a bill of 25 ... currency that does not exist"
+```
+
+### All four wiring points
+
+```
+1 contract row    : True
+2 CONTRACT_CHECKS : True
+3 executed.add    : True
+4 discard path    : True     (§1G added to matrix_refs, which covers both directions)
+```
+
+Confirmed live: `Contract checks actually executed: [... '§1F', '§1G', '§4']`.
+
+### What it found
+
+2 defects on the student path, 8 across the matrix sweep, all one root cause.
+`fmt_array_grid` takes `rows = ctx.values["a"]`, `cols = ctx.values["b"]` straight from the DNA
+operands with no guard, so a **zero factor draws an empty array**:
+
+```
+mat_g3_na_q3_1 seed 103: "Shade all the squares inside the shape. How many squares
+                          did you shade in all?"   rows=0 cols=7   key 0
+mat_g2_na_q3_0 seed  23: "Look at the shaded shape. How many squares are shaded in all?"
+                          rows=1 cols=0   key 0
+```
+
+Multiplying by zero is legitimate content; **drawing an array for it is not**. Whether the fix is to
+refuse the formatter for a zero operand or to route those seeds elsewhere is a routing decision, so
+§1G reports it rather than guessing. `mat_g3_na_q3_1` now fails §5 — that is the honest state of a
+node that has been rendering empty pictures.
