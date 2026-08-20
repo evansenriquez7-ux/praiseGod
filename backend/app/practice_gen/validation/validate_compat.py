@@ -20,7 +20,7 @@ from pathlib import Path
 from typing import List
 
 from ..compatibility import COMPATIBILITY
-from ..registry import NODE_TO_DNA
+from ..registry import NODE_TO_DNA, get_node_formatters
 from ._manifest import DNA_MODULE_MAP, KNOWN_FORMATTERS
 
 
@@ -336,6 +336,69 @@ def validate_competency_bounds_parsing() -> List[str]:
     return errors
 
 
+
+def validate_advertised_formatters_are_servable() -> List[str]:
+    """
+    §2B — every formatter a node advertises must actually generate for that node.
+
+    `get_node_formatters()` unions `COMPATIBILITY` across the node's DNAs. Nothing
+    narrows that union per node, so a node advertises whatever any of its DNAs can do,
+    whether or not the orchestrator will serve it. Measured 2026-08-21:
+
+        (node, advertised formatter) pairs : 690
+          servable on every seed           : 454
+          refused on EVERY seed            : 236   across 86 of 151 nodes
+          refused on SOME seeds only       :   0
+
+    Every refusal is STATIC — the pair never works, on any seed — so this is a
+    declaration that is simply false, not a flaky generation. The Lab builds its
+    formatter menu from this list, so a third of the offerings raise when selected.
+
+    The same missing mechanism showed up from the other direction on
+    `mat_g3_na_q3_1`: its competency is entirely about multiplication properties, an
+    array can depict none of them, and there is no way to say so — §1C-coverage reports
+    "the execution matrix is empty for array_grid_read" and nothing can act on it.
+
+    This check does not fix either. It makes the class VISIBLE and impossible to
+    reintroduce, which is the prerequisite for fixing it once rather than 236 times:
+    whatever mechanism lands (a per-node exclusion list, a positive override, or
+    deriving the list from the orchestrator's own eligibility test), this check is what
+    proves the advertised list and the servable list agree afterwards.
+
+    Deliberately empirical. It ASKS the orchestrator rather than reimplementing its
+    eligibility rules, because a second copy of that logic would drift from the first —
+    which is exactly how the false declarations here arose. One seed per pair is enough
+    given the measurement above that no refusal is seed-dependent.
+    """
+    from backend.app.services.orchestrator import PracticeOrchestrator
+
+    errors: List[str] = []
+    for node_id in NODE_TO_DNA:
+        # No try/except here on purpose. The first version of this check wrapped this
+        # call and swallowed the exception, and because `get_node_formatters` was not
+        # imported the swallow ate a NameError on all 151 nodes -- the check reported
+        # "0 findings" while doing nothing whatsoever. A check that passes silently
+        # because its own lookup failed is worse than no check at all (AGENTS.md rule
+        # #3: no bare except, no warn-and-continue).
+        advertised = get_node_formatters(node_id)
+        for fmt in advertised:
+            try:
+                PracticeOrchestrator.generate_problem(
+                    node_id=node_id, seed=11, formatter=fmt, is_lab=False,
+                )
+            except Exception as exc:  # noqa: BLE001
+                if "is not supported by any DNA" not in str(exc):
+                    continue  # a content-level failure is another check's business
+                errors.append(
+                    f"{node_id} advertises formatter {fmt!r} via get_node_formatters(), "
+                    f"but the orchestrator refuses it for this node: {exc}. The advertised "
+                    f"list is a union of COMPATIBILITY across the node's DNAs with no "
+                    f"per-node narrowing, so it promises what cannot be served -- and the "
+                    f"Lab builds its menu from it."
+                )
+    return errors
+
+
 def validate_all() -> bool:
     """
     Run all compatibility and coverage checks and print a summary.
@@ -348,10 +411,13 @@ def validate_all() -> bool:
     monotonicity_errors = validate_kg_monotonicity()
     equivalence_errors = validate_lab_portal_equivalence()
     bounds_errors = validate_competency_bounds_parsing()
-    all_errors = compat_errors + coverage_errors + monotonicity_errors + equivalence_errors + bounds_errors
+    servable_errors = validate_advertised_formatters_are_servable()
+    all_errors = (compat_errors + coverage_errors + monotonicity_errors
+                  + equivalence_errors + bounds_errors + servable_errors)
 
-    total_checks = 5
-    passed = sum([not compat_errors, not coverage_errors, not monotonicity_errors, not equivalence_errors, not bounds_errors])
+    total_checks = 6
+    passed = sum([not compat_errors, not coverage_errors, not monotonicity_errors,
+                  not equivalence_errors, not bounds_errors, not servable_errors])
 
     print(f"\nCompatibility validation: {passed}/{total_checks} check groups passed.")
 
@@ -382,6 +448,15 @@ def validate_all() -> bool:
             print(f"    - {e}")
     else:
         print("  PASS lab_portal_equivalence")
+
+    if servable_errors:
+        print("  FAIL advertised_formatters_are_servable:")
+        for e in servable_errors[:10]:
+            print(f"    - {e}")
+        if len(servable_errors) > 10:
+            print(f"    ... and {len(servable_errors) - 10} more.")
+    else:
+        print("  PASS advertised_formatters_are_servable")
 
     if bounds_errors:
         print("  FAIL competency_bounds_parsing:")

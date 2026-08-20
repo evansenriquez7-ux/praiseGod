@@ -68,6 +68,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§1F": "validate_matrix: question stem does not leak its own answer",
     "§1G": "validate_matrix: rendered visual payload is real and self-consistent",
     "§2": "validate_compat: registry/compatibility coverage & monotonicity",
+    "§2B": "validate_compat: every formatter a node advertises can actually be served for it",
     "§3": "validate_dna: structural checks and difficulty profiles feasibility",
     "§4": "validate_matrix: response schema validation",
     "§5": "validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews",
@@ -156,6 +157,7 @@ def run_all(fail_fast: bool = False) -> int:
     compat_ok = validate_compat.validate_all()
     if compat_ok:
         executed_checks.add("§2")
+        executed_checks.add("§2B")
     elif fail_fast:
         print("  FAIL compatibility validation (fail-fast active)")
         return 1
@@ -293,6 +295,8 @@ def run_all(fail_fast: bool = False) -> int:
         if not compat_ok:
             expected_subset.discard("§2")
             executed_checks.discard("§2")
+            expected_subset.discard("§2B")
+            executed_checks.discard("§2B")
         if not matrix_ok:
             expected_subset -= matrix_refs
             executed_checks -= matrix_refs
