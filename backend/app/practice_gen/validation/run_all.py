@@ -66,6 +66,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§1D": "validate_matrix: vocabulary/concept lint on final formatted output",
     "§1E": "validate_matrix: answer-key & interest theme invariance on formatted output",
     "§1F": "validate_matrix: question stem does not leak its own answer",
+    "§1G": "validate_matrix: rendered visual payload is real and self-consistent",
     "§2": "validate_compat: registry/compatibility coverage & monotonicity",
     "§3": "validate_dna: structural checks and difficulty profiles feasibility",
     "§4": "validate_matrix: response schema validation",
@@ -282,7 +283,7 @@ def run_all(fail_fast: bool = False) -> int:
         # checks the harness *observed itself* running.
         expected_subset = set(CONTRACT_CHECKS.keys())
         matrix_refs = {"§1A", "§1A-reach", "§1B", "§1C", "§1C-reverse", "§1C-coverage",
-                   "§1D", "§1E", "§1F", "§4"}
+                   "§1D", "§1E", "§1F", "§1G", "§4"}
         if not unit_ok:
             expected_subset.discard("§0")
             executed_checks.discard("§0")

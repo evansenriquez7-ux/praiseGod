@@ -198,6 +198,143 @@ def _option_in_stem(value: Any, stem: str) -> bool:
     ) is not None
 
 
+
+def _visual_payload_defects(p: dict) -> List[str]:
+    """
+    §1G — arithmetic and structural sanity of the rendered visual payload.
+
+    Every other check in this harness reads TEXT. §1D reads vocabulary, §1F reads the
+    stem for answer leakage, §5 re-renders stems, §6 reads the provider table. A
+    `visual_params` payload could therefore contain anything at all and no stage would
+    look -- across the 71 of 151 nodes that render one.
+
+    That is not hypothetical. Two defects shipped through it:
+
+      * `fmt_peso_money` split denominations by magnitude, so any value >= 20 became a
+        banknote and the pipeline drew P25, P475, P2594, P3654 and P8103 notes. The stem
+        said only "make exactly P350", so no text check could see it.
+      * `GridArea` rendered rows=0 / cols=0 grids -- "Shade all the squares inside the
+        shape. How many squares did you shade in all?" with nothing to shade and the
+        answer keyed 0.
+
+    Each invariant below was verified read-only against the whole tree BEFORE being
+    asserted, because a wrong invariant manufactures false failures. One candidate was
+    dropped that way: `GridArea.correct_count == rows * cols` looked obvious and is
+    false -- `correct_count` is the KEYED ANSWER, so "50 squares in 10 equal rows, how
+    many per row?" correctly carries rows=10, cols=5, correct_count=5. The surviving
+    form asks only that the answer be derivable from the grid.
+    """
+    vt = p.get("visual_type")
+    v = p.get("visual_params")
+    if not vt or not isinstance(v, dict):
+        return []
+    out: List[str] = []
+
+    def num(x):
+        return isinstance(x, (int, float)) and not isinstance(x, bool)
+
+    if vt == "PesoMoney":
+        bill_faces = set(v.get("bill_faces") or [])
+        coin_faces = set(v.get("coin_faces") or [])
+        total_shown = 0
+        any_pieces = False
+        for group, faces, label in (("bills", bill_faces, "bill"), ("coins", coin_faces, "coin")):
+            for entry in v.get(group) or []:
+                if not isinstance(entry, dict):
+                    continue
+                any_pieces = True
+                d, c = entry.get("denomination"), entry.get("count", 0)
+                if faces and d not in faces:
+                    out.append(
+                        f"PesoMoney draws a {label} of {d}, which is not among this node's "
+                        f"own {label}_faces {sorted(faces)} -- currency that does not exist"
+                    )
+                if num(d) and num(c):
+                    total_shown += d * c
+        if any_pieces and num(v.get("total")) and total_shown != v["total"]:
+            out.append(
+                f"PesoMoney pile sums to {total_shown} but the payload states total="
+                f"{v['total']}; the picture and the answer disagree"
+            )
+
+    elif vt == "GridArea":
+        r, c = v.get("rows"), v.get("cols")
+        if num(r) and r < 1:
+            out.append(f"GridArea has rows={r}: an array with no rows renders nothing")
+        if num(c) and c < 1:
+            out.append(f"GridArea has cols={c}: an array with no columns renders nothing")
+        cc = v.get("correct_count")
+        if num(r) and num(c) and r >= 1 and c >= 1 and isinstance(cc, int):
+            if cc not in (r * c, r, c):
+                out.append(
+                    f"GridArea correct_count={cc} is not derivable from a {r}x{c} grid "
+                    f"(expected one of {r*c}, {r}, {c}) -- the picture cannot produce the key"
+                )
+        gs = v.get("grid_size")
+        if isinstance(gs, list) and len(gs) == 2 and num(r) and num(c):
+            if gs[0] < r or gs[1] < c:
+                out.append(f"GridArea grid_size={gs} is smaller than its own {r}x{c} content")
+
+    elif vt == "NumberLine":
+        st, en = v.get("start"), v.get("end")
+        if num(st) and num(en):
+            if st >= en:
+                out.append(f"NumberLine start={st} is not below end={en}")
+            else:
+                for k in ("value", "dot_value", "correct_position", "target"):
+                    x = v.get(k)
+                    if num(x) and not (st <= x <= en):
+                        out.append(f"NumberLine {k}={x} falls outside its own axis [{st}, {en}]")
+
+    elif vt == "PlaceValueBlocks":
+        calc = (v.get("thousands", 0) or 0) * 1000 + (v.get("hundreds", 0) or 0) * 100 \
+             + (v.get("tens", 0) or 0) * 10 + (v.get("ones", 0) or 0)
+        if num(v.get("total_value")) and calc != v["total_value"]:
+            out.append(
+                f"PlaceValueBlocks shows blocks worth {calc} but states total_value="
+                f"{v['total_value']}"
+            )
+
+    elif vt == "NumberBond":
+        p1, p2, w = v.get("part1"), v.get("part2"), v.get("whole")
+        if num(p1) and num(p2) and num(w) and p1 + p2 != w:
+            out.append(f"NumberBond parts {p1} + {p2} do not make the stated whole {w}")
+
+    elif vt in ("FractionModel", "FractionShade"):
+        sp, tp = v.get("shaded_parts"), v.get("total_parts")
+        if isinstance(sp, int) and isinstance(tp, int) and tp > 0 and sp > tp:
+            out.append(f"{vt} shades {sp} of {tp} parts")
+        if isinstance(tp, int) and tp == 0:
+            out.append(f"{vt} has total_parts=0")
+
+    elif vt == "RulerMeasure":
+        os_, oe = v.get("object_start"), v.get("object_end")
+        rs, re_ = v.get("ruler_start"), v.get("ruler_end")
+        if num(os_) and num(oe):
+            if os_ > oe:
+                out.append(f"RulerMeasure object runs backwards: {os_} to {oe}")
+            if num(v.get("length")) and v["length"] != oe - os_:
+                out.append(
+                    f"RulerMeasure states length={v['length']} but the object spans "
+                    f"{oe - os_} ({os_} to {oe})"
+                )
+        if num(os_) and num(oe) and num(rs) and num(re_) and not (rs <= os_ and oe <= re_):
+            out.append(
+                f"RulerMeasure object {os_}..{oe} extends past its own ruler {rs}..{re_}"
+            )
+
+    elif vt == "PatternSequence":
+        seq = v.get("sequence") or []
+        for i in v.get("missing_indices") or []:
+            if isinstance(i, int) and not (0 <= i < len(seq)):
+                out.append(
+                    f"PatternSequence missing_indices contains {i}, outside a sequence "
+                    f"of length {len(seq)}"
+                )
+
+    return out
+
+
 def _answer_leaks_into_stem(problem: Dict[str, Any]) -> Optional[str]:
     """
     Return a description of the leak, or None.
@@ -1235,6 +1372,28 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                                 f"answer without exercising the competency. question_text="
                                 f"{p.get('question_text','')!r}, correct_answer="
                                 f"{p.get('correct_answer')!r}."
+                            ),
+                        })
+                        if fail_fast:
+                            return failures, executed
+
+                # --- 1G. Visual payload sanity (the picture must be real and consistent) ---
+                #
+                # See _visual_payload_defects: every other stage reads text, so a
+                # visual_params payload was unchecked entirely. Invalid banknotes and
+                # zero-row grids both shipped through that gap.
+                for p in generations_1c:
+                    executed.add("§1G")
+                    for defect in _visual_payload_defects(p):
+                        failures.append({
+                            "dna": dna_name,
+                            "formatter": formatter,
+                            "check": "visual_payload",
+                            "seed": p["seed"],
+                            "error": (
+                                f"{defect}. question_text={p.get('question_text','')!r}, "
+                                f"correct_answer={p.get('correct_answer')!r}, "
+                                f"visual_type={p.get('visual_type')!r}."
                             ),
                         })
                         if fail_fast:
