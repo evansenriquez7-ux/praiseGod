@@ -154,7 +154,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 1,
     },
     {
-        "question": "Fely has 5 counters: 🔴🔴🔴🔴🔴 She puts 0 in one group. How many are in the other group?",
+        "question": "Fely has 5 counters: 🔴🔴🔴🔴🔴 One group has 0 counters. How many are in the other group?",
         "answer": "5",
         "distractors": ["0", "4", "1"],
         "target_total": 5,
@@ -284,7 +284,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     {
         "question": "Dino has 7 blocks and 3 blocks: 🟦🟦🟦🟦🟦🟦🟦 🟦🟦🟦 How many blocks in all?",
         "answer": "10",
-        "distractors": ["9", "11", "7"],
+        "distractors": ["9", "8", "7"],
         "target_total": 10,
         "pair": "7 and 3",
         "representation": "concrete_objects",
@@ -292,7 +292,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "grade_min": 1,
     },
     {
-        "question": "Ana has 0 shells and 5 shells: 🐚🐚🐚🐚🐚 How many shells does she have in all?",
+        "question": "Ana has 0 shells in one basket and 5 shells in another: 🐚🐚🐚🐚🐚 How many in all?",
         "answer": "5",
         "distractors": ["0", "4", "6"],
         "target_total": 5,
@@ -308,7 +308,7 @@ _ITEM_POOL: List[Dict[str, Any]] = [
     # declaration, and generate_params raises rather than substituting, so every
     # declared pair must exist in all three directions. These fill the gaps.
     {
-        "question": "Fely has 5 counters and 0 counters: 🔴🔴🔴🔴🔴 How many counters does she have in all?",
+        "question": "Fely puts 5 counters in one group and 0 counters in another. How many in all?",
         "answer": "5",
         "distractors": ["0", "4", "6"],
         "target_total": 5,
@@ -353,6 +353,85 @@ _ITEM_POOL: List[Dict[str, Any]] = [
         "distractors": ["7 and 2", "6 and 3", "7 and 4"],
         "target_total": 10,
         "pair": "7 and 3",
+        "representation": "concrete_objects",
+        "task_type": "name_the_pair",
+        "grade_min": 1,
+    },
+    # ── materials directives: the pupil handles real objects ─────────────────
+    # A blind Attester ruled `concrete materials` NOT_PROVIDED on the emoji rows
+    # and wrote its own acceptance test: "Static emoji next to a multiple-choice
+    # stem does not qualify. What would change my answer: an item that directs
+    # the student to physically get and split real objects ('Take 5 stones. Put
+    # some in each hand...')". These items are written to that stated criterion.
+    # They reuse existing task_type and pair values, so the declared
+    # (task_type x pair) cross-product is unchanged and no new combination is
+    # asserted -- see VARIANTS_BY_DNA's note on the sweep.
+    {
+        "question": "Take 5 stones from the box. Put 4 in one hand. How many are in your other hand?",
+        "answer": "1",
+        "distractors": ["4", "2", "0"],
+        "target_total": 5,
+        "pair": "4 and 1",
+        "representation": "concrete_objects",
+        "task_type": "decompose_pair",
+        "grade_min": 1,
+    },
+    {
+        "question": "Get 5 counters. Put 3 in one group. How many counters are in the other group?",
+        "answer": "2",
+        "distractors": ["3", "1", "5"],
+        "target_total": 5,
+        "pair": "3 and 2",
+        "representation": "concrete_objects",
+        "task_type": "decompose_pair",
+        "grade_min": 1,
+    },
+    {
+        "question": "Take 5 buttons. Put 2 in one hand. How many buttons are in your other hand?",
+        "answer": "3",
+        "distractors": ["2", "4", "1"],
+        "target_total": 5,
+        "pair": "2 and 3",
+        "representation": "concrete_objects",
+        "task_type": "decompose_pair",
+        "grade_min": 1,
+    },
+    {
+        "question": "Take 5 shells. Put them into two groups so one group is empty. Which pair shows your groups?",
+        "answer": "0 and 5",
+        "distractors": ["1 and 4", "0 and 4", "5 and 5"],
+        "target_total": 5,
+        "pair": "0 and 5",
+        "representation": "concrete_objects",
+        "task_type": "name_the_pair",
+        "grade_min": 1,
+    },
+    {
+        "question": "Get 10 blocks. Put 7 into one group. How many blocks are left over?",
+        "answer": "3",
+        "distractors": ["7", "4", "2"],
+        "target_total": 10,
+        "pair": "7 and 3",
+        "representation": "concrete_objects",
+        "task_type": "decompose_pair",
+        "grade_min": 1,
+    },
+    {
+        "question": "Take 5 sticks. Hold all 5 in one hand. How many sticks are in your other hand?",
+        "answer": "0",
+        "distractors": ["1", "5", "2"],
+        "target_total": 5,
+        "pair": "5 and 0",
+        "representation": "concrete_objects",
+        "task_type": "decompose_pair",
+        "grade_min": 1,
+    },
+    {
+        "question": "Get 5 beads. Put 1 in one group. Which pair shows your two groups?",
+        "answer": "1 and 4",
+        "distractors": ["1 and 3", "2 and 3", "1 and 5"],
+        "target_total": 5,
+        "pair": "1 and 4",
         "representation": "concrete_objects",
         "task_type": "name_the_pair",
         "grade_min": 1,

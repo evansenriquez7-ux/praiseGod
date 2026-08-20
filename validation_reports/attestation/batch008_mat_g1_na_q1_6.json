@@ -1,0 +1,329 @@
+{
+ "batch": "batch008_mat_g1_na_q1_6",
+ "attested_at": "2026-08-20T10:30:00+08:00",
+ "role": "Attester",
+ "supersedes": "batch007_mat_g1_na_q1_6 (content changed by the materials-directive and leak fixes; that record is retained, not edited)",
+ "blindness": {
+  "saw": [
+   "clause",
+   "competency text",
+   "grade/quarter",
+   "10 rendered student-path samples"
+  ],
+  "did_not_see": [
+   "CAPABILITY_PROVIDERS or that any entry was being defended",
+   "the node id",
+   "the DNA, formatter registry, or generator source",
+   "validation_reports/, local_only/, docs/",
+   "the previous Attester's verdict or reasoning"
+  ],
+  "samples_passed_inline": true,
+  "tool_uses_by_attester": 0,
+  "framing": "neutral - 'do these items exhibit what this clause names?'; for 'concrete materials' the Attester was asked to judge strictly AND INDEPENDENTLY, with an explicit instruction not to assume any outcome"
+ },
+ "packet": {
+  "builder": "tests/attester_packets.py",
+  "sampling": "is_student_path=True",
+  "node_id": "mat_g1_na_q1_6",
+  "seeds": [
+   11,
+   23,
+   42,
+   57,
+   64,
+   78,
+   91,
+   103,
+   118,
+   127
+  ],
+  "samples_judged": [
+   {
+    "seed": 11,
+    "question_text": "Fely puts 5 counters in one group and 0 counters in another. How many in all?",
+    "correct_answer": "5",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 23,
+    "question_text": "Get 10 blocks. Put 7 into one group. How many blocks are left over?",
+    "correct_answer": "3",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 42,
+    "question_text": "Ana has 5 shells: 🐚🐚🐚🐚🐚 She puts 5 in one group. How many are in the other group?",
+    "correct_answer": "0",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 57,
+    "question_text": "Get 5 beads. Put 1 in one group. Which pair shows your two groups?",
+    "correct_answer": "1 and 4",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 64,
+    "question_text": "Cita puts 5 sticks into two groups. One group has 3. Which pair shows her groups?",
+    "correct_answer": "3 and 2",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 78,
+    "question_text": "Ben has 4 stones and 1 stone: 🪨🪨🪨🪨 🪨 How many stones does he have in all?",
+    "correct_answer": "5",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 91,
+    "question_text": "Take 5 buttons. Put 2 in one hand. How many buttons are in your other hand?",
+    "correct_answer": "3",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 103,
+    "question_text": "Take 5 shells. Put them into two groups so one group is empty. Which pair shows your groups?",
+    "correct_answer": "0 and 5",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 118,
+    "question_text": "Get 5 beads. Put 1 in one group. Which pair shows your two groups?",
+    "correct_answer": "1 and 4",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 127,
+    "question_text": "Fely has 5 counters: 🔴🔴🔴🔴🔴 One group has 0 counters. How many are in the other group?",
+    "correct_answer": "5",
+    "formatter": "mcq"
+   }
+  ]
+ },
+ "verdicts": [
+  {
+   "capability_id": "compose",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "Compose",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    78
+   ],
+   "confidence": "high",
+   "reasoning": "Seeds 11 and 78 give two parts and ask for the total.",
+   "action_taken": "entry stands"
+  },
+  {
+   "capability_id": "decompose",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "decompose",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    23,
+    42,
+    57,
+    64,
+    91,
+    103,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Each names a total (10 or 5), fixes one part, and asks for the other part or the pair.",
+   "action_taken": "entry stands"
+  },
+  {
+   "capability_id": "numbers",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "numbers",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "All ten operate on whole numbers 0-10, as single numbers and as number pairs.",
+   "action_taken": "entry stands"
+  },
+  {
+   "capability_id": "up_to_10",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "up to 10",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    23
+   ],
+   "confidence": "low",
+   "reasoning": "Seed 23 is the only item reaching 10. Every other total is 5; the wholes 6, 7, 8 and 9 never appear.",
+   "action_taken": "entry stands"
+  },
+  {
+   "capability_id": "concrete_materials",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "concrete materials",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    23,
+    57,
+    91,
+    103,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "SECOND independent blind Attester to rule this NOT_PROVIDED, on different content from the first. Seven items name physical objects in words only; three substitute emoji, which are pictorial representations on a screen, not manipulables. The imperative framing added this tick ('Get 10 blocks', 'Take 5 beads', 'Put 2 in one hand') INSTRUCTS handling but the item neither supplies the objects nor depends on them: every one is answerable by picking from four printed choices without ever touching a bead. 'A referenced object is not a used object.' STATED ACCEPTANCE CRITERIA: (a) an interactive item where the pupil physically arranges tokens and the response is captured from the arrangement rather than a four-option list; (b) an explicit task card for a teacher-supplied manipulative kit, where the material is part of the delivered item; or (c) an item whose answer is not obtainable without the materials. Explicitly ruled out: 'Emoji upgraded to richer pictures would NOT change my answer -- that is still representational, not concrete.'",
+   "action_taken": "OPEN - two independent Attesters now agree no text MCQ can exhibit this clause. Needs an interactive manipulative response type (Tick F build), or the entry deleted so §6C reports the honest gap. NOT weakened, NOT re-filed."
+  },
+  {
+   "capability_id": "5_is_5_and_0",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "5 is 5 and 0",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    42
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 11 composes it; seed 42 decomposes it.",
+   "action_taken": "entry stands"
+  },
+  {
+   "capability_id": "4_and_1",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "4 and 1",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    78
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 78 states the pair in that order and keys the total 5.",
+   "action_taken": "entry stands"
+  },
+  {
+   "capability_id": "3_and_2",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "3 and 2",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    64
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 64 keys the literal string '3 and 2'.",
+   "action_taken": "entry stands"
+  },
+  {
+   "capability_id": "2_and_3",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "2 and 3",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    91
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 91, in that order: 5 buttons, 2 in one hand, key 3.",
+   "action_taken": "entry stands"
+  },
+  {
+   "capability_id": "1_and_4",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "1 and 4",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    57,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Both key the literal string '1 and 4'.",
+   "action_taken": "entry stands"
+  },
+  {
+   "capability_id": "0_and_5",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "0 and 5",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    103,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 103 keys '0 and 5'; seed 127 decomposes 5 as 0 and 5.",
+   "action_taken": "entry stands"
+  }
+ ],
+ "incidental_findings": [
+  {
+   "severity": "defect",
+   "seeds": [
+    42,
+    127
+   ],
+   "finding": "Undefined referent: both introduce 'the other group' without establishing that there are two groups. Seeds 64 and 103 state the two-group frame explicitly and are the model. The key is correct only under the unstated assumption.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    42
+   ],
+   "finding": "The emoji row shows five shells undivided, but the item's point is that one group holds all 5 and the other none. Seed 78's spacing does carry its 4-and-1 structure and is the pattern to follow.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    57,
+    118
+   ],
+   "finding": "Exact duplicate: identical stem and key, options reordered only.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "weakness",
+   "seeds": [
+    23
+   ],
+   "finding": "'How many blocks are left over?' frames the second part as a remainder, importing take-away language that belongs to a later competency. 'How many are in the other group?' keeps it in part-part-total language. Mathematics correct; wording only.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "weakness",
+   "seeds": [
+    64,
+    118
+   ],
+   "finding": "Weak distractors: options that fail the total (3 and 3 = 6, 2 and 2 = 4) let a pupil eliminate without engaging the stem constraint. Seeds 57 and 103 are well built by contrast - their wrong options are genuine decompositions of 5, excluded only by the stem.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "coverage",
+   "seeds": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "finding": "Nine of ten items use a total of 5 and the exception jumps to 10, so 6, 7, 8 and 9 are untouched. Composition is 2 of 10 against decomposition's 8, so the competency's FIRST verb is materially under-sampled.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "none",
+   "seeds": [],
+   "finding": "All six enumerated pairs covered. No wrong keys, no second-correct options, no mathematically false statements, nothing beyond Grade 1 Q1 scope.",
+   "status": "CLOSED - no action"
+  }
+ ]
+}
