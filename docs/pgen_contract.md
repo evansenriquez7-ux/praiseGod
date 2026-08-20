@@ -21,6 +21,7 @@ A generator is done when `python -m backend.app.practice_gen.validation.run_all`
 | Every node carries a genuine, non-boilerplate, non-stale blind judgment review with a PASS verdict | `validate_judgment` §5 | local `run_all`; not in CI |
 | Every node declares what its MATATAG competency requires, cites the clause, covers every competency word, and the pipeline provides it | `validate_capability` §6 | local `run_all`; not in CI |
 | A capability's provider is the artifact that renders what the clause names, never a generic textual formatter every DNA already offers | `validate_capability` §6D | local `run_all`; not in CI |
+| The harness's own unit tests pass before any stage reports green — green stages over red tests is not evidence | `pytest tests/unit` §0 | local `run_all`; not in CI |
 | A capability's `bounds` provider must be a numeric-ceiling claim about that capability, never a list most of the table carries verbatim | `validate_capability` §6E | local `run_all`; not in CI |
 | Every declared capability carries a blind Attester verdict that the rendered output exhibits what its clause names, and no entry contradicts one | `validate_capability` §6F | local `run_all`; not in CI |
 

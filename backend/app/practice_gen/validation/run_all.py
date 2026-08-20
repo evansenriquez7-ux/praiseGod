@@ -2,6 +2,7 @@
 Practice Generation — Validation Harness Runner
 
 Runs all validators in the practice problem generation pipeline:
+  0. pytest tests/unit (the harness's own tests — fast suite, slow deselected)
   1. validate_dna (DNA structural check, feasibility, distractors)
   2. validate_compat (compatibility table, coverage, monotonicity, lab/portal equivalence)
   3. validate_interest (interest invariance check)
@@ -14,6 +15,7 @@ Exit code is 0 if and only if all tests pass.
 
 from __future__ import annotations
 
+import os
 import re
 import sys
 from pathlib import Path
@@ -54,6 +56,7 @@ def _parse_contract_section_refs() -> Set[str]:
 # a row in the doc naming a §-ref not in this dict (or vice versa) is a
 # doc/harness drift and fails run_all (see the Two-Direction check).
 CONTRACT_CHECKS: Dict[str, str] = {
+    "§0": "pytest tests/unit: the harness's own unit tests pass (slow suite deselected)",
     "§1A": "validate_matrix: boundary exactness (0.0/1.0)",
     "§1B": "validate_matrix: containment sweep (monotonicity and window bounds)",
     "§1A-reach": "validate_matrix: scalar 1.0 reaches the competency maximum region",
@@ -73,6 +76,38 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§6F": "validate_capability: every declared capability carries a blind Attester verdict, and none is contradicted",
 }
 
+def _run_unit_tests() -> bool:
+    """
+    Run the fast unit suite and report it as a harness stage (§0).
+
+    Subprocess rather than in-process pytest: the validators are already imported here
+    with module-level state (CAPABILITY_PROVIDERS is mutated by several mutation tests),
+    and pytest collecting into this same interpreter would let a test's monkeypatching
+    leak into the stages that run afterwards. A clean interpreter is the only honest way
+    to run tests that plant mutations in the modules this harness is about to use.
+    """
+    import subprocess
+
+    repo_root = Path(__file__).resolve().parents[4]
+    proc = subprocess.run(
+        [sys.executable, "-m", "pytest", "tests/unit", "-q", "-p", "no:cacheprovider"],
+        cwd=repo_root,
+        capture_output=True,
+        text=True,
+        env={**os.environ, "PYTHONPATH": str(repo_root)},
+    )
+    tail = [ln for ln in proc.stdout.strip().splitlines() if ln.strip()]
+    summary = tail[-1] if tail else "(no output)"
+    if proc.returncode == 0:
+        print(f"  PASS unit_tests ({summary})")
+        return True
+    print(f"  FAIL unit_tests ({summary}):")
+    for line in proc.stdout.splitlines():
+        if line.startswith("FAILED") or line.startswith("ERROR"):
+            print(f"    - {line}")
+    return False
+
+
 def run_all(fail_fast: bool = False) -> int:
     print("======================================================================")
     print("RUNNING ALL PRACTICE PROBLEM GENERATION VALIDATORS")
@@ -80,8 +115,28 @@ def run_all(fail_fast: bool = False) -> int:
 
     executed_checks: Set[str] = set()
 
-    # 1. DNA Validation
-    print("--- 1/7: DNA Structural and Parameter Checks ---")
+    # 1. Unit tests (§0) — the harness's own tests.
+    #
+    # run_all did not run pytest until 2026-08-20, and the cost of that blind spot is
+    # measured: two capability-gate tests sat red on HEAD for an unknown number of ticks
+    # (one of them guarding the very freshness machinery §6F depends on), and a reroute
+    # in an earlier tick broke three orchestrator tests that stayed red for three more
+    # ticks while every tick report said the tree was clean. Green stages over red tests
+    # is exactly the "green is not evidence" failure this harness exists to prevent.
+    #
+    # Deselects `slow` (tests/pytest.ini does this by default): the two slow tests spawn
+    # process pools and take 15-40 minutes each, which is what made a plain pytest run
+    # look like a deadlock for five ticks. The fast suite is ~35s, so it runs FIRST --
+    # there is no sense spending 40 minutes on the matrix when the harness's own tests
+    # are broken.
+    print("--- 1/8: Unit Tests (the harness's own tests) ---")
+    unit_ok = _run_unit_tests()
+    if unit_ok:
+        executed_checks.add("§0")
+    if not unit_ok and fail_fast:
+        return 1
+
+    print("\n--- 2/8: DNA Structural and Parameter Checks ---")
     dna_results = validate_dna.validate_all_dnas()
     dna_failed = [c for c, errs in dna_results.items() if any(not e.startswith("WARN") for e in errs)]
 
@@ -96,7 +151,7 @@ def run_all(fail_fast: bool = False) -> int:
         return 1
 
     # 2. Compatibility
-    print("\n--- 2/7: Compatibility, Coverage & Monotonicity ---")
+    print("\n--- 3/8: Compatibility, Coverage & Monotonicity ---")
     compat_ok = validate_compat.validate_all()
     if compat_ok:
         executed_checks.add("§2")
@@ -105,7 +160,7 @@ def run_all(fail_fast: bool = False) -> int:
         return 1
 
     # 3. Interest Invariance
-    print("\n--- 3/7: Interest Invariance Checks ---")
+    print("\n--- 4/8: Interest Invariance Checks ---")
     interest_results = validate_interest.validate_all_interest_invariance()
     interest_failed = [c for c, errs in interest_results.items() if errs]
     interest_ok = len(interest_failed) == 0
@@ -114,7 +169,7 @@ def run_all(fail_fast: bool = False) -> int:
         return 1
 
     # 4. Vocabulary & Concept Gating (Full-Node Mode)
-    print("\n--- 4/7: Vocabulary & Concept Gating Audits (Full-Node Mode) ---")
+    print("\n--- 5/8: Vocabulary & Concept Gating Audits (Full-Node Mode) ---")
     vocab_results = validate_vocab.run_all_vocab_audits(sample_count=2)
     vocab_failed = []
     for nid, audit in vocab_results.items():
@@ -133,7 +188,7 @@ def run_all(fail_fast: bool = False) -> int:
         print("  PASS vocabulary gating audit (all nodes)")
 
     # 5. Exhaustive Behavioral Matrix
-    print("\n--- 5/7: Exhaustive Behavioral Matrix Validation ---")
+    print("\n--- 6/8: Exhaustive Behavioral Matrix Validation ---")
     # Run matrix validator. We set workers=0 for auto-detection.
     matrix_code = run_matrix_validation(fail_fast=fail_fast, workers=0)
     matrix_ok = matrix_code == 0
@@ -145,7 +200,7 @@ def run_all(fail_fast: bool = False) -> int:
         return 1
 
     # 6. Judgment Reviews (genuine, non-boilerplate — hard gate)
-    print("\n--- 6/7: Judgment Reviews (genuine per-node artifacts) ---")
+    print("\n--- 7/8: Judgment Reviews (genuine per-node artifacts) ---")
     judgment_errors = validate_judgment.validate_judgment_reviews(fail_fast=fail_fast)
     v = validate_judgment.summarize_verdicts()
     if v["FAIL"] > 0 or v["CONCERN"] > 0:
@@ -172,7 +227,7 @@ def run_all(fail_fast: bool = False) -> int:
 
     # 7. Capability Contract (§6) — does each node declare what its competency
     #    requires, cite it, cover it, and can the pipeline actually provide it?
-    print("\n--- 7/7: Capability Contract (competency → pipeline) ---")
+    print("\n--- 8/8: Capability Contract (competency → pipeline) ---")
     capability_errors = validate_capability.validate_capability_declarations()
     capability_ok = len(capability_errors) == 0
     if capability_ok:
@@ -228,6 +283,9 @@ def run_all(fail_fast: bool = False) -> int:
         expected_subset = set(CONTRACT_CHECKS.keys())
         matrix_refs = {"§1A", "§1A-reach", "§1B", "§1C", "§1C-reverse", "§1C-coverage",
                    "§1D", "§1E", "§1F", "§4"}
+        if not unit_ok:
+            expected_subset.discard("§0")
+            executed_checks.discard("§0")
         if not dna_ok:
             expected_subset.discard("§3")
             executed_checks.discard("§3")
@@ -263,7 +321,7 @@ def run_all(fail_fast: bool = False) -> int:
         contract_match_ok = False
 
     print("\n======================================================================")
-    all_ok = (dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok
+    all_ok = (unit_ok and dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok
               and judgment_ok and capability_ok and contract_match_ok)
     if all_ok:
         print("ALL TESTS PASSED SUCCESSFULLY! Praise God!")
