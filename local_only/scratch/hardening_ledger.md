@@ -3514,3 +3514,52 @@ the Lab offers formatters from that list, a third of selections raise. Same fami
    Only start on a tick that can be spent on dispatches.
 4. **`concrete materials`** — two blind verdicts say no text MCQ can do it.
 5. **`up to 10` on `mat_g1_na_q1_6`**, and the `geometric_lines` multiplicative-hash bug.
+
+---
+
+## 2026-08-20 (tick 7) — The harness runs its own tests now
+
+Entered at `VERDICT: RESUME`, 817 findings, coverage 52/787, unit suite green at 33s.
+
+**Took ledger item 1 and shipped it.** `run_all` gained a `§0` stage that runs the fast unit suite
+first. This closes the hole that let two of my own regressions live for three ticks each while my tick
+reports called the tree clean.
+
+Two design calls worth keeping:
+- **First, not last.** The suite is 33s and the matrix is 40 minutes. A harness whose own tests are
+  red should not spend 40 minutes before saying so.
+- **Subprocess, not in-process.** Several unit tests plant mutations in `CAPABILITY_PROVIDERS` and
+  restore them in a `finally`. Collecting them into the interpreter that is about to run §6 would let
+  a leak contaminate the very stage they are testing. A clean interpreter is the only honest way to
+  run tests that mutate the modules the harness is about to use.
+
+**All four wiring points hit, deliberately, with the checklist from last tick in hand** — contract
+row, `CONTRACT_CHECKS`, executed-checks in the PASS path, and the discard block in the FAILURE path.
+Then simulated the lint across all four `unit_ok x capability_ok` combinations (drift NONE in each),
+because last tick's regression was precisely an unconsidered combination. **A four-point checklist is
+only worth having if you also enumerate the outcome combinations it has to survive.**
+
+Proved by planting a failing test: stage returns False and names it; restored, returns True.
+
+**Both movements:**
+- findings **817 → 817** (this tick touched the harness, not the provider table).
+- coverage **52/787, flat for a sixth tick.**
+- gate surface: **8 stages, up from 7** — and the new one is the only stage that can catch a
+  regression in the checks themselves.
+
+**Next tick should:**
+1. **The advertised-vs-servable formatter gap.** Measured last tick: **236 of 690 (node, formatter)
+   pairs refused across 86 of 151 nodes** — `get_node_formatters` advertises what `generate_problem`
+   rejects with "not supported by any DNA". Decide which side is wrong, then fix one. Check the Lab's
+   formatter dropdown against it first; that is the user-visible blast radius and it decides the
+   direction.
+2. **`read_mcq` -> placement**, the scoped programme (63 nodes, 9 sites, batching decided in tick 5).
+   Only start on a tick that can be spent on dispatches. Note it is now safer to start: a broken
+   re-review programme would show up in §0 immediately.
+3. **`concrete materials`** — two blind verdicts say no text MCQ can do it. Build the interactive
+   manipulative response type, or delete the entry and let §6C report the gap.
+4. **`up to 10` on `mat_g1_na_q1_6`** (comprehensive_coverage is FAIL) and the `geometric_lines`
+   multiplicative-hash bug.
+5. **Coverage has been flat for six ticks at 52/787.** Five of those six were correctness or
+   gate-health work that genuinely needed doing, and the gate is now in much better shape than when
+   the run started — but the goal is coverage. Schedule a dispatch-only tick.

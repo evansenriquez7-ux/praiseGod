@@ -5875,3 +5875,66 @@ case the node advertises the formatter and exactly one of its DNAs offers it, an
 still refuses, with and without a difficulty profile. If the Lab or portal offers formatters from this
 list, a third of selections raise. Same family as the recorded "stale saved lab config unvalidated"
 hazard. Not fixed here — it is its own unit and it is now measured rather than suspected.
+
+---
+
+## 2026-08-20 (tick 7) — The harness now runs its own tests
+
+Commit `f0e41e9e`. Touches `backend/app/practice_gen/validation/` and the contract doc.
+
+### Why
+
+`run_all` never ran pytest, and the cost of that blind spot is measured, not hypothetical:
+
+- two capability-gate tests sat red on HEAD for an unknown number of ticks, one of them guarding the
+  freshness machinery §6F depends on;
+- a reroute in tick 3 broke three orchestrator tests that stayed red for **three more ticks** while
+  every tick report — mine — said the tree was clean.
+
+Green stages over red tests is exactly the "green is not evidence" failure this harness exists to
+prevent, committed by the harness itself.
+
+### What shipped
+
+A `§0` stage that runs the fast unit suite **first**, at ~33s. There is no sense spending 40 minutes
+on the matrix when the harness's own tests are broken. It runs in a **subprocess**, deliberately:
+several unit tests plant mutations in `CAPABILITY_PROVIDERS` and restore them in a `finally`, and
+collecting them into the same interpreter that is about to execute §6 would let any leak contaminate
+the stages that follow.
+
+All four wiring points, the fourth being the one missed on §6E last tick:
+
+```
+1 contract row      : True
+2 CONTRACT_CHECKS   : True
+3 executed (PASS)   : True
+4 discard (FAIL)    : True
+```
+
+### Proved, not assumed
+
+```
+green suite       -> PASS unit_tests (313 passed, 2 deselected, 1 warning in 32.65s)  -> True
+planted red test  -> FAIL unit_tests (1 failed, 313 passed, 2 deselected)             -> False
+                     - FAILED tests/unit/test_zz_planted_failure.py::test_planted_failure_for_run_all_wiring
+restored          -> PASS unit_tests (313 passed, 2 deselected)                       -> True
+```
+
+The two-direction lint simulated across every combination, because last tick's regression was exactly
+a missed combination:
+
+```
+unit_ok=True  capability_ok=True  -> drift: NONE
+unit_ok=True  capability_ok=False -> drift: NONE
+unit_ok=False capability_ok=True  -> drift: NONE
+unit_ok=False capability_ok=False -> drift: NONE
+```
+
+Live confirmation from the run itself:
+
+```
+--- 1/8: Unit Tests (the harness's own tests) ---
+  PASS unit_tests (313 passed, 2 deselected, 1 warning in 32.91s)
+```
+
+Stages renumbered 1/8..8/8.
