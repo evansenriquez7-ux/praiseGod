@@ -3247,3 +3247,71 @@ restate the answer key in every affected review's `samples_reviewed`, so it gets
    and now the largest single mechanical win. Discriminate on shared-ness, never on list length.
 6. **§6F has no notion of supersession** (batch003/batch005 still report STALE alongside their
    replacements). Real gap in the check, not a record to tidy away.
+
+---
+
+## 2026-08-20 (tick 3) — Tick F/C: built `compose_decompose_to_10`, the competency nothing served
+
+Entered at `VERDICT: RESUME`, 805 findings, coverage 52/787. §0 run: gate errors 14, NON-VERDICT 0,
+UNEARNED §6C 0, `bounds` still carries 15. Fix loop unchanged.
+
+Content work first, harness last again — the ordering from tick 2, now standard practice here.
+
+**Unit: ledger item 1**, `mat_g1_na_q1_6`. Its providers were not merely generic, they were
+**impossible**: the six enumerated sub-cases pointed at `('tables', N)`, a *multiplication-table*
+variant, and `compose`/`decompose` pointed at a task_type existing only in `shapes_2d`, a DNA the node
+cannot reach. The routing was the root cause — a "compose and decompose with concrete materials"
+competency mapped to two parametric arithmetic generators.
+
+Built a dedicated 23-item static-bank DNA and rerouted. **Named it to match the KG's own concept
+(`compose_decompose_to_10`), which avoided editing 92 successor nodes' `cumulative_concepts`** — the
+monotonicity check propagates DNA names, so the first name I picked would have demanded a
+ground-truth change across the whole downstream chain. Check the KG for an existing concept name
+before inventing a DNA name; this is the general lesson.
+
+**Both movements:**
+- findings **805 → 801**; CONTRADICTED **8 → 2** (all six enumerated sub-cases cleared).
+- coverage **52/787, flat** — batch007 re-attests the same pairs batch006 held, so a re-attestation
+  buys correctness, not coverage. Said plainly rather than dressed up.
+- reviews **147 PASS / 3 CONCERN / 1 FAIL**; STALE 0; NON-VERDICT 0.
+- blind verdicts: **10 of 11 clauses PROVIDED**, up from 4 of 11.
+
+**A real hashing bug, found while building and worth carrying forward:**
+`(seed * K) % n` **degenerates to `seed % n` whenever K ≡ 1 (mod n)**. At n=9, seeds 64/91/118/127 are
+all ≡ 1, so four of ten samples drew the identical item. Multiplying rescales, it does not mix, and
+the modulus can undo the rescale. Fixed here with a splitmix64 finalizer. **The identical pattern is
+in `geometric_lines.generate_params`** — not fixed this tick because it would re-stale the three
+nodes tick 2 just re-reviewed. Queued.
+
+**Three things caught me, all correctly:**
+1. §1D rejected my own hint text — `ones` is the place-value term and is NOT_YET_KNOWN here.
+2. §5 quote-provenance rejected my transcription twice: abbreviated stems that no longer matched the
+   packet, and words the reviewer named as *absent* put in quotes as if observed. **When transcribing
+   a blind rationale, every quoted span must be verbatim from the packet, and anything cited as
+   missing must not be quoted.**
+3. A file-wide `perl` rename also renamed `shapes_2d`'s unrelated `compose_decompose` task_type in two
+   places. One was caught by a validator; the other only by two nodes going STALE. **Never rename a
+   bare identifier file-wide when another DNA uses the same word.**
+
+**And a method failure worth naming:** my first isolation of that staleness used `run(node, seed)` and
+showed content identical before/after — but the freshness check does not render through that path, so
+the test was invalid. Same shape as tick 1's "provably untouched" claim. In-memory reverts were also
+inconclusive because of import-time caching. **Only file-level reverts in a fresh process were
+decisive.** Use that method for collateral-damage questions.
+
+**Next tick should:**
+1. **`concrete materials` — the last CONTRADICTED clause on this node, with an acceptance test the
+   Attester wrote itself:** *"an item that directs the student to physically get and split real
+   objects ('Take 5 stones. Put some in each hand...'), a materials directive rendered with the item,
+   or an interactive manipulative the student actually moves."* The first of those is text-renderable
+   and cheap. Do it, then re-attest once.
+2. **The reviewer's nine findings on this node**, batched so the re-review is paid once: a duplicate
+   item, an **answer-position bias (key is first option in 7 of 13 items)**, `up to 10` covered at
+   only totals 5 and 10, an out-of-range distractor `11`, and the self-answering list item. The
+   position bias is the most serious — a pupil always picking the first option scores ~54%.
+3. **`geometric_lines` multiplicative-hash bug** — same class as the one fixed here; re-review the
+   three affected nodes in the same tick so it is paid once.
+4. **`read_mcq` answer-key contract** (59 nodes) — still its own unit, unstarted.
+5. **§6E `bounds`** — still the live wildcard at +15, unchanged for four ticks.
+6. **`numbers` on `mat_g1_na_q1_6`** is now a §6D wildcard (it lost the `addition` provider). Point it
+   at a real artifact or delete the entry and report the gap.

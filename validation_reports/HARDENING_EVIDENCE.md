@@ -5461,3 +5461,113 @@ by formatter: {'read_mcq': 81}
 `correct_answer` to a value is wrong on those nodes. Not started this tick: it is a cross-cutting
 contract change that would restate the answer key in every affected review's `samples_reviewed`, so
 it is its own unit.
+
+---
+
+## 2026-08-20 (tick 3) — Building the competency the pipeline never served
+
+Commit `45105307`. Touches `backend/app/practice_gen/`, so Rule 7 requires this entry.
+
+### The defect: fictional providers behind a mis-routed node
+
+`mat_g1_na_q1_6` — *"Compose and decompose numbers up to 10 using concrete materials (e.g., 5 is 5
+and 0; 4 and 1; 3 and 2; 2 and 3; 1 and 4; 0 and 5)"* — was mapped to `missing_number` + `addition`,
+two parametric arithmetic generators, so it served symbolic sums. Its registered providers were not
+merely generic, they were **impossible**:
+
+- the six enumerated sub-cases pointed at `('tables', N)` — a **multiplication-table** variant that
+  makes no claim whatever about decomposing 5;
+- `compose`/`decompose` pointed at `task_type='compose_decompose'`, which exists **only in
+  `shapes_2d`**, a geometry DNA this node cannot reach at all.
+
+### The fix
+
+A dedicated static-bank DNA, `compose_decompose_to_10` (23 items), and the node rerouted to it.
+
+**Named to match the KG's own concept**, which avoided a ground-truth edit entirely. The monotonicity
+check requires a node's DNA names to propagate through every successor's `cumulative_concepts`; the
+first name I chose would have required editing **92 successor nodes**. The KG already carried
+`compose_decompose_to_10` in this node's `introduces_concepts`, propagated to all 92 — verified — so
+renaming the DNA to the curriculum's own term made the edit unnecessary.
+
+**Selection is stratified by `pair`**, because the pair is the curricular unit: MATATAG names the six,
+so a pupil must meet each, not merely meet six items drawn from a pool that happens to contain them.
+
+```
+bucket distribution over 800 seeds:
+  {'0 and 5': 96, '1 and 4': 107, '2 and 3': 86, '3 and 2': 94, '4 and 1': 109,
+   '5 and 0': 97, '7 and 3': 105, 'all ways to make 5': 106}
+named sub-cases exhibited in the 10 review seeds: all six   MISSING: NONE
+```
+
+### A real hashing bug, found while building
+
+`(seed * 2654435761) % n` **degenerates to `seed % n` whenever the multiplier is congruent to 1
+modulo n.** At n=9, review seeds 64, 91, 118 and 127 are all ≡ 1 (mod 9), so all four drew the
+identical item — four of ten samples were the same question. Multiplying does not mix; it rescales,
+and the modulus can undo the rescale. Replaced with a splitmix64 finalizer.
+
+**The same weak pattern is in `geometric_lines.generate_params` and is queued**, not fixed here,
+because changing it would re-stale nodes this tick already re-reviewed.
+
+### Verbatim results
+
+```
+$ validate_matrix --node mat_g1_na_q1_6      → PASS, Nodes Failed: 0
+$ structural validators (all five)           → 0 errors
+$ validate_judgment_reviews                  → 19 errors | STALE 0 | NON-VERDICT 0
+$ tally                                      → PASS 147 / CONCERN 3 / FAIL 1
+$ validate_capability                        → 801 {UNATTESTED 735, §6D 59, STALE 4, CONTRADICTED 2, other 1}
+```
+
+Blind Attester, 0 tool uses: **10 of 11 clauses PROVIDED**, where 4 of 11 were provided before.
+**CONTRADICTED 8 → 2.** Findings 805 → 801.
+
+`concrete materials` stays NOT_PROVIDED, judged strictly at my request, and the Attester supplied its
+own criterion for changing it:
+
+> "Static emoji next to a multiple-choice stem does not qualify. What would change my answer: an item
+> that directs the student to physically get and split real objects ('Take 5 stones. Put some in each
+> hand...'), a teacher/materials directive rendered with the item, or an interactive manipulative the
+> student actually moves."
+
+That is next tick's work, with a stated acceptance test.
+
+### Two checks caught me again — both correctly
+
+1. **§1D vocabulary gating** rejected my own hint text: *"Then count the ones left over."* — `ones` is
+   the place-value term and is in this node's `NOT_YET_KNOWN`. 15 failures on 15 sampled seeds.
+2. **§5 quote-provenance** rejected my transcription of the reviewer's rationale twice: I had
+   abbreviated stems (dropping the emoji) so the quotes did not match the packet, and I had put words
+   the reviewer cited as *absent* (`plus`, `minus`, `take away`) in quotes as if observed. Both are
+   real faults in the record, not in the check. NON-VERDICT 8 → 0.
+
+### An over-broad rename, caught by isolation rather than by reading
+
+Renaming the DNA with a file-wide `perl` substitution also renamed **`shapes_2d`'s own unrelated
+`compose_decompose` task_type** — in two places. The first (`registry.py`'s bounds parser) was caught
+immediately by `validate_competency_bounds_parsing`. The second
+(`VARIANTS_BY_DNA["shapes_2d"]["task_type"]`) was caught only by two nodes going STALE:
+
+```
+mat_g2_mg_q1_0: STALE — Reviewed: 'How many quarter-circles make 1 whole circle?';
+                        now renders: 'A tall doorway has 4 straight edges...'
+mat_g2_mg_q1_1: STALE — Reviewed: 'Using cut-outs, four quarter-circles ... joined together';
+                        now renders: 'Using cut-outs, two identical triangles are rotated...'
+```
+
+Isolation, fresh process per configuration:
+
+```
+as committed                          : stale=['mat_g2_mg_q1_0', 'mat_g2_mg_q1_1']
+with HEAD compatibility.py            : stale=[]          <- the cause
+with HEAD registry.py                 : stale=[... plus mat_g1_na_q1_6]
+```
+
+Note the method mattered: my first isolation attempt used `run(node, seed)` directly and showed the
+content **identical** before and after — because the freshness check does not render through that
+path. That is the same mistake as tick 1's "provably untouched" claim, made again and caught by the
+gate rather than by me. In-memory reverts were also inconclusive (import-time caching); only
+file-level reverts in a fresh process were decisive.
+
+Fixed by restoring `shapes_2d`'s task_type and commenting both sites. STALE back to 0.
