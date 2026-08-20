@@ -5764,3 +5764,33 @@ documents `"correct_answer": "Exact text of correct option"` in three places, wi
 Not started this tick: 63 blind judgment dispatches is several ticks of work, and starting it without
 that capacity is exactly the trap avoided in tick 4. The batching decision belongs in the ledger
 before the first line changes.
+
+### CORRECTION (same tick) — §6E shipped with a regression, caught by run_all
+
+The §6E entry above understated the work: registering a contract row is not finished when the row and
+the check exist. `run_all` exited 1 with a stage that had been green all tick:
+
+```
+  PASS contract_doc_matches_registry
+  FAIL two_direction_contract_match: Drift between contract registry and executed harness verifications!
+    Executed but not registered: set()
+    Registered but not executed: {'§6E'}
+```
+
+The §6-family checks are only marked executed in the capability **PASS** branch, so when the
+capability contract fails — which it does, at 817 findings — the lint discards `§6`/`§6D`/`§6F` from
+the expected set to compensate. I added §6E to `CONTRACT_CHECKS` and to the PASS branch but not to
+that discard block, so §6E was permanently "registered but not executed".
+
+Fixed in `ba6368c3`. Verified by simulating both capability outcomes rather than spending another
+40-minute run before committing:
+
+```
+capability_ok=True  -> drift: NONE
+capability_ok=False -> drift: NONE
+```
+
+**This is the two-direction lint doing exactly its job.** It exists to catch a contract row added
+without its enforcement wiring, and the row it caught was mine. Protocol 7 says contracts and
+enforcement move together; the enforcement here is not just the check that implements the rule, it is
+also the reporting that proves the check ran.

@@ -3441,3 +3441,18 @@ machinery §6F depends on. This is a gate-health hole, not housekeeping.
    three ten-items use the same 7/3 split. Add totals 6-9 with UNDECLARED pair values so the
    cross-product stays intact.
 5. **`geometric_lines` multiplicative-hash bug** — still unfixed, same class as tick 3's splitmix fix.
+
+### Correction appended to tick 5 before it closed
+
+`run_all` exited 1 on `two_direction_contract_match` — a stage that was green all tick — because I
+registered §6E in `CONTRACT_CHECKS` and the capability PASS branch but not in the failure path's
+discard block. With the contract red (817), §6E was permanently "registered but not executed".
+
+Fixed in `ba6368c3`, verified by simulating both capability outcomes (drift NONE either way) instead
+of burning another 40-minute run before committing.
+
+**Durable point:** shipping a new §-check has FOUR wiring points, not three — contract row,
+`CONTRACT_CHECKS` entry, executed-checks registration in the PASS branch, **and the discard block in
+the failure path**. Miss the fourth and the lint fails the moment that stage is red, which for a
+check added while its own stage is failing is immediately. The two-direction lint caught my own
+contract row, which is precisely what it is for.
