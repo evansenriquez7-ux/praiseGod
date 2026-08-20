@@ -1117,6 +1117,8 @@ def _parse_competency_bounds(
         elif "circle" in text:
             bounds["shape_set"] = "extended_with_circles"
         if "compose" in text and "decompose" in text:
+            # shapes_2d's own geometry task_type — unrelated to the
+            # compose_decompose_to_10 DNA, which is number work. Do not rename.
             bounds["task_type"] = "compose_decompose"
         elif "compare" in text or "distinguish" in text:
             bounds["task_type"] = "compare_shapes"
@@ -1486,8 +1488,8 @@ BINDINGS = {
         "visual": "sort_order"
     },
     "mat_g1_na_q1_6": {
-        "dna": "addition",
-        "visual": "number_line_read"
+        "dna": "compose_decompose_to_10",
+        "visual": "mcq"
     },
     "mat_g1_na_q1_7": {
         "dna": "addition",
@@ -2091,7 +2093,14 @@ NODE_TO_DNA: Dict[str, List[str]] = {
     "mat_g1_na_q1_3": ["comparing_ordering"],
     "mat_g1_na_q1_4": ["comparing_ordering"],
     "mat_g1_na_q1_5": ["ordinal_numbers"],
-    "mat_g1_na_q1_6": ["missing_number", "addition"],
+    # Was ["missing_number", "addition"]. Both are parametric arithmetic
+    # generators, and a blind Attester ruled 7 of this node's 11 clauses
+    # NOT_PROVIDED against what they served: the competency's six enumerated
+    # sub-cases (5 is 5 and 0; 4 and 1; ...) appeared ZERO times, and
+    # 'concrete materials' was absent because nine of ten items were bare
+    # symbolic arithmetic. The routing was the defect -- "compose and decompose
+    # numbers up to 10 using concrete materials" is not an addition competency.
+    "mat_g1_na_q1_6": ["compose_decompose_to_10"],
     "mat_g1_na_q1_7": ["addition"],
     "mat_g1_na_q1_8": ["addition"],
     "mat_g1_na_q1_9": ["addition"],

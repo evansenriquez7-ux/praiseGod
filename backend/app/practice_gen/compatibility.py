@@ -353,6 +353,13 @@ COMPATIBILITY: Dict[str, List[str]] = {
         "cloze",
     ],
 
+    # Serves mat_g1_na_q1_6 only. mcq alone: the items are a static bank whose
+    # answers are either a count or a named pair ("4 and 1"), and no other
+    # registered formatter renders a named pair as a choice.
+    "compose_decompose_to_10": [
+        "mcq",
+    ],
+
     # ── Measurement & Geometry ────────────────────────────────────────────────
 
     "shapes_2d": [
@@ -659,6 +666,8 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     "shapes_2d": {
         "orientation": ["standard", "rotated"],
         "shape_set": ["basic_triangles_rectangles_squares", "extended_with_circles", "composite_figures"],
+        # shapes_2d's own geometry task_type. Unrelated to the number-work DNA
+        # named compose_decompose_to_10 — do not rename this one.
         "task_type": ["identify_name", "count_sides_corners", "compare_shapes", "compose_decompose"],
     },
 
@@ -711,6 +720,32 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         "task_type": ["find_area", "find_missing_dimension", "illustrate_tiles", "derive_formula"],
         "unit": ["square_cm", "square_m"],
         "context": ["pure", "word_problem"],
+    },
+
+    "compose_decompose_to_10": {
+        # Must match compose_decompose_to_10.py's _ITEM_POOL values exactly
+        # -- generate_params() raises (no silent fallback) when a requested
+        # combination has zero grade-eligible items.
+        "task_type": ["decompose_pair", "name_the_pair", "compose_total"],
+        # `pair` is declared because MATATAG enumerates the sub-cases by name
+        # ("5 is 5 and 0; 4 and 1; ..."), so each is a capability in its own
+        # right and needs a provider that names it rather than a generic
+        # formatter or an unrelated `tables` value.
+        # §1C sweeps the CROSS-PRODUCT of declared variants, and generate_params
+        # raises rather than substituting, so every declared pair must exist in
+        # all three task_type directions -- verified, no gaps. "all ways to make
+        # 5" is deliberately NOT declared: it exists only as a name_the_pair
+        # item, so declaring it would assert a (compose_total x all-ways)
+        # combination that has no item and no sensible meaning. It is still
+        # served by seed; an undeclared value is not an unreachable one.
+        "pair": [
+            "5 and 0", "4 and 1", "3 and 2", "2 and 3", "1 and 4", "0 and 5",
+            "7 and 3",
+        ],
+        # The competency's method clause is "using concrete materials", so the
+        # representation is a declared property of the item, not an accident of
+        # its wording.
+        "representation": ["concrete_objects"],
     },
 
     "geometric_lines": {

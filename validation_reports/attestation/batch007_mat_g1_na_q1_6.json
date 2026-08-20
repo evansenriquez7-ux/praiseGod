@@ -1,0 +1,338 @@
+{
+ "batch": "batch007_mat_g1_na_q1_6",
+ "attested_at": "2026-08-20T08:55:00+08:00",
+ "role": "Attester",
+ "supersedes": "batch006_mat_g1_na_q1_6 (ruled STALE by §6F after the node was rerouted to the compose_decompose_to_10 DNA; that record is retained, not edited)",
+ "blindness": {
+  "saw": [
+   "clause",
+   "competency text",
+   "grade/quarter",
+   "10 rendered student-path samples"
+  ],
+  "did_not_see": [
+   "CAPABILITY_PROVIDERS or that any entry was being defended",
+   "the node id",
+   "the DNA, formatter registry, or generator source",
+   "validation_reports/, local_only/, docs/"
+  ],
+  "samples_passed_inline": true,
+  "tool_uses_by_attester": 0,
+  "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'"
+ },
+ "packet": {
+  "builder": "tests/attester_packets.py",
+  "sampling": "is_student_path=True",
+  "node_id": "mat_g1_na_q1_6",
+  "seeds": [
+   11,
+   23,
+   42,
+   57,
+   64,
+   78,
+   91,
+   103,
+   118,
+   127
+  ],
+  "samples_judged": [
+   {
+    "seed": 11,
+    "question_text": "Fely puts 5 counters into two groups. One group has all 5. Which pair shows her groups?",
+    "correct_answer": "5 and 0",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 23,
+    "question_text": "Dino puts 10 blocks into two groups. One group has 7. Which pair shows his groups?",
+    "correct_answer": "7 and 3",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 42,
+    "question_text": "Ana has 5 shells: 🐚🐚🐚🐚🐚 She puts 5 in one group. How many are in the other group?",
+    "correct_answer": "0",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 57,
+    "question_text": "Ella has 5 buttons: 🔘🔘🔘🔘🔘 She puts 1 in one group. How many are in the other group?",
+    "correct_answer": "4",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 64,
+    "question_text": "Cita puts 5 sticks into two groups. One group has 3. Which pair shows her groups?",
+    "correct_answer": "3 and 2",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 78,
+    "question_text": "Ben has 5 stones: 🪨🪨🪨🪨🪨 He puts 4 in one group. How many are in the other group?",
+    "correct_answer": "1",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 91,
+    "question_text": "Dino has 2 beads and 3 beads: 🔵🔵 🔵🔵🔵 How many beads does he have in all?",
+    "correct_answer": "5",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 103,
+    "question_text": "Ana puts 5 shells into two groups. One group is empty. Which pair shows her groups?",
+    "correct_answer": "0 and 5",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 118,
+    "question_text": "Ella puts 5 buttons into two groups. One group has 1. Which pair shows her groups?",
+    "correct_answer": "1 and 4",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 127,
+    "question_text": "Ana has 0 shells and 5 shells: 🐚🐚🐚🐚🐚 How many shells does she have in all?",
+    "correct_answer": "5",
+    "formatter": "mcq"
+   }
+  ]
+ },
+ "verdicts": [
+  {
+   "capability_id": "compose",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "Compose",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    23,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Seeds 23 (7 blocks + 3 blocks -> 10) and 127 (0 shells + 5 shells -> 5) give two known parts and ask for the total, which is composition.",
+   "action_taken": "entry retargeted onto the new artifact in this commit; this fresh verdict clears the prior §6F CONTRADICTED state"
+  },
+  {
+   "capability_id": "decompose",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "decompose",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Eight seeds take a known total (5) and a known part and require the missing part or the pair.",
+   "action_taken": "entry retargeted onto the new artifact in this commit; this fresh verdict clears the prior §6F CONTRADICTED state"
+  },
+  {
+   "capability_id": "numbers",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "numbers",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Whole numbers 0-10 are the sole content of every item.",
+   "action_taken": "entry retargeted onto the new artifact in this commit; this fresh verdict clears the prior §6F CONTRADICTED state"
+  },
+  {
+   "capability_id": "up_to_10",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "up to 10",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    23
+   ],
+   "confidence": "low",
+   "reasoning": "Exhibited, but barely: seed 23 is the single item reaching the 10 ceiling (7 + 3). Every other total is 5 or less.",
+   "action_taken": "entry retargeted onto the new artifact in this commit; this fresh verdict clears the prior §6F CONTRADICTED state"
+  },
+  {
+   "capability_id": "concrete_materials",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "concrete materials",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Judged strictly at the Attester's own request. Seeds 42/57/64/91/103 name objects in words only, with no picture and no instruction to handle anything. Seeds 11/23/78/127 add emoji rows, which are pictorial/representational, not concrete -- and in 11, 78 and 127 the picture does not model the partition being asked about. Only seed 23 uses spacing to show two sub-groups. STATED CRITERION for changing the verdict: an item directing the pupil to physically get and split real objects ('Take 5 stones. Put some in each hand...'), a materials directive rendered with the item, or an interactive manipulative the pupil actually moves.",
+   "action_taken": "OPEN - the clause needs a materials directive or an interactive manipulative; see the stated criterion"
+  },
+  {
+   "capability_id": "5_is_5_and_0",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "5 is 5 and 0",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    11
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 42 keys exactly '5 and 0'; seed 11 renders the same partition in fill-in form.",
+   "action_taken": "entry retargeted onto the new artifact in this commit; this fresh verdict clears the prior §6F CONTRADICTED state"
+  },
+  {
+   "capability_id": "4_and_1",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "4 and 1",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    78
+   ],
+   "confidence": "medium",
+   "reasoning": "Seed 78 states 4 in one group and keys 1, in that order. Exhibited only in numeric-answer form; in the pair-selection items '4 and 1' appears only as a distractor.",
+   "action_taken": "entry retargeted onto the new artifact in this commit; this fresh verdict clears the prior §6F CONTRADICTED state"
+  },
+  {
+   "capability_id": "3_and_2",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "3 and 2",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    64
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 64, key '3 and 2'.",
+   "action_taken": "entry retargeted onto the new artifact in this commit; this fresh verdict clears the prior §6F CONTRADICTED state"
+  },
+  {
+   "capability_id": "2_and_3",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "2 and 3",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    91
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 91, key '2 and 3'.",
+   "action_taken": "entry retargeted onto the new artifact in this commit; this fresh verdict clears the prior §6F CONTRADICTED state"
+  },
+  {
+   "capability_id": "1_and_4",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "1 and 4",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    57,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Seeds 57 and 118, key '1 and 4' in both.",
+   "action_taken": "entry retargeted onto the new artifact in this commit; this fresh verdict clears the prior §6F CONTRADICTED state"
+  },
+  {
+   "capability_id": "0_and_5",
+   "node_id": "mat_g1_na_q1_6",
+   "clause": "0 and 5",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    103,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 103 keys '0 and 5'; seed 127 exhibits the same pair in composition form.",
+   "action_taken": "entry retargeted onto the new artifact in this commit; this fresh verdict clears the prior §6F CONTRADICTED state"
+  }
+ ],
+ "incidental_findings": [
+  {
+   "severity": "defect",
+   "seeds": [
+    11,
+    78
+   ],
+   "finding": "Undefined referent: both stems say only 'He/She puts N in one group', then ask about 'the other group', which was never introduced. The pair-selection items correctly establish 'into two groups' first; these do not.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    42,
+    57,
+    64,
+    91,
+    103
+   ],
+   "finding": "Latent key ambiguity in the pair-selection format: 'One group has 1' does not fix the pair's order, so '1 and 4' and '4 and 1' are equally true. No item is currently double-keyed, but the invariant holds by luck of the distractor draw, not by the stem -- and it matters here because the competency treats '3 and 2' and '2 and 3' as DISTINCT targets.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    127
+   ],
+   "finding": "'Ana has 0 shells and 5 shells' is not natural language for a six-year-old, and the picture shows only the five shells, so the '0' part has no referent on the page.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "weakness",
+   "seeds": [
+    42,
+    57,
+    64,
+    103
+   ],
+   "finding": "Impossible-total distractors ('5 and 5', '1 and 5', '3 and 3', '0 and 4', '2 and 2') let a pupil eliminate to the key by summing alone, never engaging the 'one group has N' constraint. Seed 91 is the only item where two options both total 5 and the constraint does the work.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    57,
+    118
+   ],
+   "finding": "Exact duplicate: same name, objects, numbers and key, options reordered only.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "coverage",
+   "seeds": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "finding": "Nine of ten items use a total of 5. Decomposition is exercised for 5 and no other number; only one item touches the 10 ceiling; nothing decomposes 3, 4, 6, 7, 8 or 9. Composition is 2 items to decomposition's 8.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "none",
+   "seeds": [],
+   "finding": "All ten keys verified correct, and no second option is also correct in any item. No vocabulary or operation beyond Grade 1.",
+   "status": "CLOSED - no action"
+  }
+ ]
+}

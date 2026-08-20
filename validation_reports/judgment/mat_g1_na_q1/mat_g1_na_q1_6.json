@@ -1,156 +1,231 @@
 {
-  "node_id": "mat_g1_na_q1_6",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q1_6), 2026-08-18",
-  "review_date": "2026-08-18",
-  "blind": true,
-  "overall": "PASS",
-  "findings": {
-    "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The items directly fulfill the competency requirement to compose and decompose quantities up to 10. Explicit part-whole composition is tested in seed 84 (\"The two parts are 1 and 1. What is the total?\") and seed 43 (\"What number goes in the blank: 3 + 7 = ___?\"), while decomposition with missing addends is evaluated in seed 42 (\"What number goes in the blank: ___ + 5 = 10?\") and seed 601 (\"9 + ___ = 10\")."
-    },
-    "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The sample demonstrates thorough coverage of number bonds within 10, encompassing the zero property as seen in seed 45 (\"0 + 2 = ___\"), smaller single-digit combinations in seed 502 (\"What is 1 + 1?\"), combinations summing to 10 in seed 604 (\"7 + 3 = ___. What is the unknown number?\"), and commutative partner pairs such as seed 600 (\"What is 3 + 1?\") and seed 602 (\"What is 1 + 3?\")."
-    },
-    "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The language complexity and cognitive load are perfectly tuned for Grade 1 Quarter 1 learners. Questions use brief, direct phrasing such as seed 44 (\"1 + 2 = 3. True or False?\") and simple cloze structures like seed 603 (\"2 + 5 = ___\"), avoiding convoluted sentences and ensuring the mathematical relationship remains the primary focus."
-    },
-    "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The dataset spans a well-rounded set of modalities and question formats, incorporating visual and number-line representations in seed 50 (\"Show 2 + 2 on the number line.\"), balance-scale relational problems in seed 55 (\"Both sides balance evenly. 2 + ? = 3. What is the missing value?\"), boolean verification in seed 605 (\"In 3 + 3 = ___, the blank is 5. True or False?\"), and standard multiple-choice and cloze equations."
-    },
-    "competency_alignment": {
-      "verdict": "PASS",
-      "rationale": "The challenge progression properly isolates additive composition and decomposition within 10. Varying the position of the unknown across first addend, second addend, and total (e.g., seed 42 \"What number goes in the blank: ___ + 5 = 10?\" vs seed 43 \"What number goes in the blank: 3 + 7 = ___?\") builds algebraic thinking and part-whole conceptual understanding without introducing out-of-scope concepts."
-    },
-    "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "All addends, missing parts, and resulting sums strictly obey the ceiling of 10 stipulated in the competency text. The sample covers values spanning from minimal sums like 2 in seed 501 (\"1 + 1 = 2. True or False?\") and seed 84 (\"The two parts are 1 and 1. What is the total?\") up to the upper bound of 10 in seed 42 (\"What number goes in the blank: ___ + 5 = 10?\") and seed 43 (\"What number goes in the blank: 3 + 7 = ___?\")."
-    }
+ "node_id": "mat_g1_na_q1_6",
+ "reviewed_by": "Blind judgment Reviewer (subagent, 0 tool uses, samples inline), batch fix-loop-tick-3 2026-08-20",
+ "review_date": "2026-08-20",
+ "blind": true,
+ "overall": "CONCERN",
+ "findings": {
+  "competency_fulfillment": {
+   "verdict": "PASS",
+   "rationale": "Every item is a compose-or-decompose task on a number <= 10, and the pair items' answer format is lifted from the competency's own notation. Decomposition appears in the partition frame (\"Ana has 5 shells: 🐚🐚🐚🐚🐚 She puts 5 in one group. How many are in the other group?\") and in the pair-selection frame (\"Ana puts 5 shells into two groups. One group is empty. Which pair shows her groups?\"). Composition appears as (\"Cita has 3 sticks and 2 sticks: 🥢🥢🥢 🥢🥢 How many sticks does she have in all?\"). No item uses an operation symbol or the words add, plus, take away or minus, so the set stays in composition language without smuggling in formal notation a Grade 1 Quarter 1 pupil has not been taught."
   },
-  "sample_seeds": [
-    42,
-    43,
-    44,
-    45,
-    46,
-    50,
-    55,
-    84,
-    500,
-    501,
-    502,
-    600,
-    601,
-    602,
-    603,
-    604,
-    605
-  ],
-  "samples_reviewed": [
-    {
-      "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What number goes in the blank: ___ + 5 = 10?",
-      "correct_answer": 5
-    },
-    {
-      "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What number goes in the blank: 3 + 7 = ___?",
-      "correct_answer": 10
-    },
-    {
-      "seed": 44,
-      "formatter": "true_false",
-      "question_text": "1 + 2 = 3. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 45,
-      "formatter": "cloze",
-      "question_text": "0 + 2 = ___",
-      "correct_answer": 2
-    },
-    {
-      "seed": 46,
-      "formatter": "mcq",
-      "question_text": "What number goes in the blank: 6 + 1 = ___?",
-      "correct_answer": 7
-    },
-    {
-      "seed": 50,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 2 + 2 on the number line.",
-      "correct_answer": 4
-    },
-    {
-      "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "Both sides balance evenly. 2 + ? = 3. What is the missing value?",
-      "correct_answer": "A"
-    },
-    {
-      "seed": 84,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 1 and 1. What is the total?",
-      "correct_answer": 2
-    },
-    {
-      "seed": 500,
-      "formatter": "read_mcq",
-      "question_text": "\ud83e\udd64 \u2014 There is 1 drink.\n\ud83e\udd64 \u2014 1 more drink is added.\nHow many total drinks are there?",
-      "correct_answer": "C"
-    },
-    {
-      "seed": 501,
-      "formatter": "true_false",
-      "question_text": "1 + 1 = 2. True or False?",
-      "correct_answer": true
-    },
-    {
-      "seed": 502,
-      "formatter": "mcq",
-      "question_text": "What is 1 + 1?",
-      "correct_answer": 2
-    },
-    {
-      "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What is 3 + 1?",
-      "correct_answer": 4
-    },
-    {
-      "seed": 601,
-      "formatter": "cloze",
-      "question_text": "9 + ___ = 10",
-      "correct_answer": 1
-    },
-    {
-      "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 1 + 3?",
-      "correct_answer": 4
-    },
-    {
-      "seed": 603,
-      "formatter": "cloze",
-      "question_text": "2 + 5 = ___",
-      "correct_answer": 7
-    },
-    {
-      "seed": 604,
-      "formatter": "mcq",
-      "question_text": "7 + 3 = ___. What is the unknown number?",
-      "correct_answer": 10
-    },
-    {
-      "seed": 605,
-      "formatter": "true_false",
-      "question_text": "In 3 + 3 = ___, the blank is 5. True or False?",
-      "correct_answer": false
-    }
-  ]
+  "comprehensive_coverage": {
+   "verdict": "CONCERN",
+   "rationale": "Both verbs are exercised (8 decompose, 5 compose) and ALL SIX enumerated sub-cases are met in their stated order: 5 and 0 (seed 42), 4 and 1 (604, 608), 3 and 2 (501, 44), 2 and 3 (602), 1 and 4 (601, 500, 46), 0 and 5 (600, 43). The failure is the range clause: totals used are only 5 and 10, with no item on 2, 3, 4, 6, 7, 8 or 9, and the entire coverage of 10 rests on the single pair 7 and 3. The method clause is honoured in 11 of 14 items via pictorial counters; seeds 43, 500 and 46 carry no material at all."
+  },
+  "cognitive_capacity": {
+   "verdict": "CONCERN",
+   "rationale": "The bulk is well calibrated: short present-tense sentences, single-clause questions, concrete classroom nouns and Filipino names. Three problems pull it below PASS. \"These pairs each make 5: 5 and 0, 4 and 1, 3 and 2, 2 and 3, 0 and 5. Which pair also makes 5?\" requires holding five pairs before the question and is the heaviest load in the set. Seeds 45 and 502 offer 11 as a distractor, a numeral outside the taught range. \"Fely has 5 counters: 🔴🔴🔴🔴🔴 She puts 0 in one group. How many are in the other group?\" narrates an action on zero objects, where \"Ana puts 5 shells into two groups. One group is empty. Which pair shows her groups?\" shows the better phrasing was available."
+  },
+  "variant_comprehensiveness": {
+   "verdict": "CONCERN",
+   "rationale": "Four frames exist but 11 of 14 items are two templates: the partition frame six times with only name, noun, emoji and two numbers swapped, and the two-groups compose frame five times. Two answer formats (numeric and pair-string) are genuine variety, and \"Ben has 4 stones and 1 stone: 🪨🪨🪨🪨 🪨 How many stones does he have in all?\" shows correct singular/plural agreement rather than blind template fill. There is no open fill-both-blanks format and no item where the pupil partitions freely."
+  },
+  "competency_alignment": {
+   "verdict": "CONCERN",
+   "rationale": "Nothing requires a later-grade concept: no operation symbols, no regrouping, no numbers above 10 in any stem or key, no subtraction vocabulary, and the pair notation matches the competency's own wording. Two misalignments: the '11' option sits outside the stated range, and the list-completion item drops the method clause entirely while pre-listing five of the six enumerated pairs, converting the task into elimination against a list the item itself supplied."
+  },
+  "scale_appropriateness": {
+   "verdict": "PASS",
+   "rationale": "Magnitudes are 0-10 throughout, group sizes 1-7, and every context is a countable classroom manipulative: shells, sticks, blocks, buttons, counters, beads, stones. No money, no measurement, no abstract units."
+  }
+ },
+ "problems_reported": [
+  "Duplicate item: seed 502 has the same stem and key as seed 45; the set contains 13 distinct items, not 14.",
+  "Answer-position bias: the key is the FIRST option in 7 of the 13 distinct items (43, 500, 501, 602, 604, 606, 608). A pupil always picking the first option scores about 54% against a 25% baseline.",
+  "'Up to 10' under-covered: only totals 5 and 10 appear; 2, 3, 4, 6, 7, 8, 9 are absent, and the only decomposition of 10 is 7 and 3, used three times.",
+  "Out-of-range distractor: seeds 45 and 502 include '11', a numeral above the competency's taught range.",
+  "The list-completion item is off-method and self-answering: no material, and its stem hands the pupil five of the six enumerated pairs before asking for the sixth. Its distractors '2 and 2' and '1 and 3' both make 4.",
+  "'She puts 0 in one group' narrates an action on zero objects; 'One group is empty' is the correct model.",
+  "Seeds 43 and 500 name the manipulative but display none, unlike their siblings.",
+  "Fragile group separator: in the compose items the only signal that two groups exist is one space character; if the renderer collapses it the part-part-total structure is lost.",
+  "Order convention never stated: nothing establishes whether pair order is meaningful, so a future option set containing both orderings of one pair would be ambiguous. Matters because the competency treats '3 and 2' and '2 and 3' as distinct.",
+  "Verified clean: all 14 keys correct, no second correct option, no undefined referent, no false statement. The distractor design in seeds 43 and 500 is genuinely good -- each wrong option violates exactly one stem constraint."
+ ],
+ "sample_seeds": [
+  42,
+  43,
+  44,
+  45,
+  46,
+  500,
+  501,
+  502,
+  600,
+  601,
+  602,
+  604,
+  606,
+  608
+ ],
+ "samples_reviewed": [
+  {
+   "seed": 42,
+   "question_text": "Ana has 5 shells: 🐚🐚🐚🐚🐚 She puts 5 in one group. How many are in the other group?",
+   "correct_answer": "0",
+   "formatter": "mcq",
+   "options": [
+    "1",
+    "2",
+    "0",
+    "5"
+   ]
+  },
+  {
+   "seed": 43,
+   "question_text": "Ana puts 5 shells into two groups. One group is empty. Which pair shows her groups?",
+   "correct_answer": "0 and 5",
+   "formatter": "mcq",
+   "options": [
+    "0 and 5",
+    "0 and 4",
+    "5 and 5",
+    "1 and 4"
+   ]
+  },
+  {
+   "seed": 44,
+   "question_text": "Cita has 3 sticks and 2 sticks: 🥢🥢🥢 🥢🥢 How many sticks does she have in all?",
+   "correct_answer": "5",
+   "formatter": "mcq",
+   "options": [
+    "6",
+    "4",
+    "3",
+    "5"
+   ]
+  },
+  {
+   "seed": 45,
+   "question_text": "Dino has 7 blocks and 3 blocks: 🟦🟦🟦🟦🟦🟦🟦 🟦🟦🟦 How many blocks in all?",
+   "correct_answer": "10",
+   "formatter": "mcq",
+   "options": [
+    "7",
+    "9",
+    "10",
+    "11"
+   ]
+  },
+  {
+   "seed": 46,
+   "question_text": "These pairs each make 5: 5 and 0, 4 and 1, 3 and 2, 2 and 3, 0 and 5. Which pair also makes 5?",
+   "correct_answer": "1 and 4",
+   "formatter": "mcq",
+   "options": [
+    "4 and 2",
+    "1 and 4",
+    "2 and 2",
+    "1 and 3"
+   ]
+  },
+  {
+   "seed": 500,
+   "question_text": "Ella puts 5 buttons into two groups. One group has 1. Which pair shows her groups?",
+   "correct_answer": "1 and 4",
+   "formatter": "mcq",
+   "options": [
+    "1 and 4",
+    "2 and 3",
+    "1 and 3",
+    "1 and 5"
+   ]
+  },
+  {
+   "seed": 501,
+   "question_text": "Cita has 5 sticks: 🥢🥢🥢🥢🥢 She puts 3 in one group. How many are in the other group?",
+   "correct_answer": "2",
+   "formatter": "mcq",
+   "options": [
+    "2",
+    "5",
+    "1",
+    "3"
+   ]
+  },
+  {
+   "seed": 502,
+   "question_text": "Dino has 7 blocks and 3 blocks: 🟦🟦🟦🟦🟦🟦🟦 🟦🟦🟦 How many blocks in all?",
+   "correct_answer": "10",
+   "formatter": "mcq",
+   "options": [
+    "9",
+    "10",
+    "7",
+    "11"
+   ]
+  },
+  {
+   "seed": 600,
+   "question_text": "Fely has 5 counters: 🔴🔴🔴🔴🔴 She puts 0 in one group. How many are in the other group?",
+   "correct_answer": "5",
+   "formatter": "mcq",
+   "options": [
+    "0",
+    "4",
+    "5",
+    "1"
+   ]
+  },
+  {
+   "seed": 601,
+   "question_text": "Ella has 1 button and 4 buttons: 🔘 🔘🔘🔘🔘 How many buttons does she have in all?",
+   "correct_answer": "5",
+   "formatter": "mcq",
+   "options": [
+    "6",
+    "4",
+    "1",
+    "5"
+   ]
+  },
+  {
+   "seed": 602,
+   "question_text": "Dino has 5 beads: 🔵🔵🔵🔵🔵 He puts 2 in one group. How many are in the other group?",
+   "correct_answer": "3",
+   "formatter": "mcq",
+   "options": [
+    "3",
+    "1",
+    "2",
+    "4"
+   ]
+  },
+  {
+   "seed": 604,
+   "question_text": "Ben has 5 stones: 🪨🪨🪨🪨🪨 He puts 4 in one group. How many are in the other group?",
+   "correct_answer": "1",
+   "formatter": "mcq",
+   "options": [
+    "1",
+    "2",
+    "4",
+    "0"
+   ]
+  },
+  {
+   "seed": 606,
+   "question_text": "Dino has 10 blocks: 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦 He puts 7 in one group. How many are in the other group?",
+   "correct_answer": "3",
+   "formatter": "mcq",
+   "options": [
+    "3",
+    "7",
+    "4",
+    "2"
+   ]
+  },
+  {
+   "seed": 608,
+   "question_text": "Ben has 4 stones and 1 stone: 🪨🪨🪨🪨 🪨 How many stones does he have in all?",
+   "correct_answer": "5",
+   "formatter": "mcq",
+   "options": [
+    "5",
+    "4",
+    "6",
+    "3"
+   ]
+  }
+ ]
 }

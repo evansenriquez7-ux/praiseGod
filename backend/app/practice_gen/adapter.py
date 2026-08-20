@@ -258,6 +258,7 @@ FORMATTER_ROUTES: Dict[str, tuple] = {
 
 _DNA_INSTANCE_ATTR: Dict[str, str] = {
     "addition":           "ADDITION_DNA",
+    "compose_decompose_to_10":  "COMPOSE_DECOMPOSE_TO_10_DNA",
     "subtraction":        "SUBTRACTION_DNA",
     "multiplication":     "MULTIPLICATION_DNA",
     "division":           "DIVISION_DNA",

@@ -74,6 +74,7 @@ _DNA_MODULE_MAP: Dict[str, str] = {
     "place_value":        "backend.app.practice_gen.dna.na.place_value",
     "comparing_ordering": "backend.app.practice_gen.dna.na.comparing_ordering",
     "missing_number":     "backend.app.practice_gen.dna.na.missing_number",
+    "compose_decompose_to_10":  "backend.app.practice_gen.dna.na.compose_decompose_to_10",
     "patterns":           "backend.app.practice_gen.dna.na.patterns",
     "fractions":          "backend.app.practice_gen.dna.na.fractions",
     "money_peso":         "backend.app.practice_gen.dna.na.money_peso",
