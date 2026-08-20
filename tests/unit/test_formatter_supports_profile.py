@@ -106,42 +106,75 @@ class TestFormatterSupportsProfileGate1:
 class TestOrchestratorAnnotatesDnaName:
     """The orchestrator must set problem.dna_name to the actually-chosen DNA."""
 
-    def test_orchestrator_sets_dna_name_for_ordering(self):
+    # These tests are about ONE property: when a node maps to several DNAs and the
+    # requested formatter is supported by exactly one of them, the orchestrator's
+    # runtime filter must skip the others and annotate the DNA it actually used.
+    #
+    # They kept rotting because they hardcoded a node. cc5977f5 repointed one onto
+    # mat_g1_na_q1_6 and, per its own restored docstring, "deleted the only coverage of
+    # the filter it exists to test"; it was restored onto mat_g2_na_q4_2, which has since
+    # stopped supporting `ordering`; and mat_g1_na_q1_6 was rerouted to a single-DNA
+    # concept on 2026-08-20, which broke the other two outright. A node id is not the
+    # subject of these tests -- the filter is. So the subject is now LOCATED, not named.
+    def test_orchestrator_annotates_the_only_dna_offering_the_formatter(self):
         """
-        Cross-DNA formatter filter. RESTORED 2026-08-19 (hardening Unit 1): cc5977f5
-        repointed this test from mat_g2_na_q4_2/'ordering' onto
-        mat_g1_na_q1_6/'balance_scale', which deleted the only coverage of the filter
-        it exists to test. balance_scale maps to exactly one DNA, so nothing is
-        skipped and the assertion holds however the filter behaves.
+        The cross-DNA formatter filter, asserted as an INVARIANT over every case where
+        it is observable, rather than on a hardcoded node.
+
+        Three separate tests used to pin this on named nodes and all three rotted:
+        cc5977f5 repointed one onto mat_g1_na_q1_6 and, per its own restored docstring,
+        "deleted the only coverage of the filter it exists to test"; it was restored onto
+        mat_g2_na_q4_2, which has since stopped serving `ordering`; and mat_g1_na_q1_6
+        was rerouted to a single-DNA concept on 2026-08-20, breaking the other two. A
+        node id was never the subject -- the filter is.
+
+        Observable means: the node maps to several DNAs, exactly one of them offers the
+        formatter, and the orchestrator actually serves that combination. Whenever that
+        holds, the DNA it annotates must be that sole owner.
         """
         from backend.app.services.orchestrator import PracticeOrchestrator
-        prob = PracticeOrchestrator.generate_problem(
-            node_id="mat_g2_na_q4_2",
-            seed=91000,
-            difficulty_profile={
-                "fraction_type": "unit_fraction",
-                "number_difficulty": 0.5,
-                "context": "pure",
-            },
-            formatter="ordering",
-            is_lab=False,
+        from backend.app.practice_gen.registry import NODE_TO_DNA, get_node_formatters
+        from backend.app.practice_gen.compatibility import COMPATIBILITY
+
+        observed, mismatches = 0, []
+        for node_id, dnas in NODE_TO_DNA.items():
+            if len(dnas) < 2:
+                continue
+            try:
+                formatters = get_node_formatters(node_id)
+            except Exception:  # noqa: BLE001 - node advertises nothing; not this test's subject
+                continue
+            for fmt in formatters:
+                owners = [d for d in dnas if fmt in COMPATIBILITY.get(d, [])]
+                if len(owners) != 1:
+                    continue
+                try:
+                    prob = PracticeOrchestrator.generate_problem(
+                        node_id=node_id, seed=91000, formatter=fmt, is_lab=False,
+                    )
+                except Exception:  # noqa: BLE001 - see test_advertised_formatters_are_servable
+                    continue
+                observed += 1
+                if prob.dna_name != owners[0]:
+                    mismatches.append((node_id, fmt, owners[0], prob.dna_name))
+
+        assert observed, (
+            "no multi-DNA node currently serves a formatter offered by exactly one of "
+            "its DNAs, so this invariant is vacuous -- that is itself a regression in "
+            "coverage, not a pass"
         )
-        # ordering is not in fractions' compatible_formatters, so the
-        # orchestrator must have picked 'comparing_ordering'.
-        assert prob.dna_name == "comparing_ordering", (
-            f"Expected dna_name=comparing_ordering, got {prob.dna_name!r}. "
-            f"The orchestrator's runtime filter should "
-            f"have skipped 'fractions' for formatter='ordering'."
+        assert not mismatches, (
+            f"the orchestrator annotated a DNA that does not offer the requested "
+            f"formatter in {len(mismatches)} case(s): {mismatches[:5]}"
         )
 
     def test_orchestrator_sets_dna_name_for_fractions_only(self):
         """
-        RESTORED 2026-08-19 (hardening Unit 1) alongside its sibling above.
+        The complementary case: when the formatter IS offered by the node's own DNA,
+        the annotation must still be set to a real DNA rather than left None or a
+        fallback. RESTORED 2026-08-19 (hardening Unit 1) alongside its siblings.
         """
         from backend.app.services.orchestrator import PracticeOrchestrator
-        # When the formatter is in fractions' compatible_formatters, the
-        # orchestrator may still pick the other DNA. We just need to verify
-        # the annotation is set (not None and not the fallback).
         prob = PracticeOrchestrator.generate_problem(
             node_id="mat_g2_na_q4_2",
             seed=91000,
@@ -150,37 +183,8 @@ class TestOrchestratorAnnotatesDnaName:
                 "number_difficulty": 0.5,
                 "context": "pure",
             },
-            formatter="cloze",
+            formatter="mcq",
             is_lab=False,
         )
-        assert prob.dna_name is not None
-        assert prob.dna_name in ("fractions", "comparing_ordering")
-
-    def test_orchestrator_sets_dna_name_for_balance_scale(self):
-        from backend.app.services.orchestrator import PracticeOrchestrator
-        prob = PracticeOrchestrator.generate_problem(
-            node_id="mat_g1_na_q1_6",
-            seed=91000,
-            difficulty_profile={
-                "context": "pure",
-            },
-            formatter="balance_scale",
-            is_lab=False,
-        )
-        assert prob.dna_name == "missing_number", (
-            f"Expected dna_name=missing_number, got {prob.dna_name!r}."
-        )
-
-    def test_orchestrator_sets_dna_name_for_number_bond(self):
-        from backend.app.services.orchestrator import PracticeOrchestrator
-        prob = PracticeOrchestrator.generate_problem(
-            node_id="mat_g1_na_q1_6",
-            seed=91000,
-            difficulty_profile={
-                "context": "pure",
-            },
-            formatter="number_bond",
-            is_lab=False,
-        )
-        assert prob.dna_name is not None
-        assert prob.dna_name == "addition"
+        assert prob.dna_name, f"dna_name was not annotated, got {prob.dna_name!r}"
+        assert prob.dna_name in ("fractions", "comparing_ordering"), prob.dna_name
