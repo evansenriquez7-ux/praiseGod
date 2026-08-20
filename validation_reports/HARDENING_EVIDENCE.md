@@ -6307,3 +6307,81 @@ pinned generation to the scalar floor.
 structural validators: 0 errors
 pytest tests/unit: 313 passed, 2 deselected
 ```
+
+---
+
+## 2026-08-21 (tick 13) — §2B: a node may not advertise a formatter it cannot serve
+
+Commit at HEAD. Touches `backend/app/practice_gen/validation/` and the contract doc.
+
+### The measurement that chose the design
+
+Before building anything I asked whether the refusals are static or per-seed, because a static
+mechanism only fixes static cases:
+
+```
+(node, advertised formatter) pairs : 690
+  servable on every seed           : 454
+  refused on EVERY seed            : 236   across 86 of 151 nodes
+  refused on SOME seeds only       :   0
+```
+
+**Every refusal is static.** These are false declarations, not flaky generation — the pair never
+works, on any seed. The Lab builds its formatter menu from this list, so a third of the offerings
+raise when a user picks them.
+
+### Why the check, and not the fix
+
+The ledger named the check as the real deliverable, and the tick confirmed why. I first tried to
+*derive* the servable set by reimplementing the orchestrator's eligibility rules statically. It
+explained two refusals cleanly:
+
+```
+mat_g1_na_q1_7 / number_bond : bound task_type=models_strategies not in the formatter's supported list
+mat_g1_na_q1_8 / cloze       : bound task_type=properties       not in the formatter's supported list
+mat_g2_na_q1_10 / mcq        : no static blocker found          <- and yet it is refused
+```
+
+One in three it could not explain. A second copy of that logic would drift from the first — which is
+precisely how these false declarations arose. So §2B is **empirical**: it asks the orchestrator
+rather than modelling it, and one seed per pair suffices given the measurement above.
+
+### I shipped it broken, and the failure mode is worth recording
+
+The first version wrapped the lookup:
+
+```python
+try:
+    advertised = get_node_formatters(node_id)
+except Exception:
+    continue
+```
+
+`get_node_formatters` was never imported. The swallow ate a `NameError` on all 151 nodes, and the
+check reported **"§2B findings: 0"** while doing nothing whatsoever. It looked like a clean pass on a
+tree I had just measured as having 236 violations, which is the only reason I caught it.
+
+**A check that passes silently because its own lookup failed is worse than no check** — it converts an
+unknown into a false assurance. The `except` is gone, the import is real, and the comment in the
+source says why. This is the same bare-except prohibition (rule #3) that applies to pipeline code,
+and it applies with more force to the checks themselves.
+
+After the fix:
+
+```
+§2B findings: 236   across 86 distinct nodes
+```
+
+which matches the independent measurement exactly.
+
+### Wiring
+
+```
+1 contract row    : True
+2 CONTRACT_CHECKS : True
+3 executed.add    : True
+4 discard path    : True
+pytest tests/unit : 313 passed, 2 deselected
+```
+
+§2 now fails. That is the honest state: 236 false declarations exist, and they were invisible before.

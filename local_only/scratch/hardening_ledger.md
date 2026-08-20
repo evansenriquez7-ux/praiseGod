@@ -3847,3 +3847,55 @@ rollup line).
 That node is already CONCERN/failing, so it needs one fresh blind re-review regardless. **Do it in the
 same tick as the `max_product` floor fix**, since that fix will move its content again — re-reviewing
 before then pays twice.
+
+---
+
+## 2026-08-21 (tick 13) — §2B: the advertised list may not promise what the orchestrator refuses
+
+Entered at `VERDICT: RESUME`, 767 findings, coverage 127/787. Took ledger item 1.
+
+**Measured before designing, and the measurement chose the design.** Are the 236 refusals static or
+per-seed? A static mechanism only fixes static cases:
+
+```
+690 pairs | servable every seed 454 | refused EVERY seed 236 (86 nodes) | refused SOME seeds 0
+```
+
+Every refusal is static — false declarations, not flaky generation.
+
+**Built the CHECK, not the fix, and the tick proved that was right.** I first tried to derive the
+servable set by reimplementing the orchestrator's eligibility rules statically. It explained
+`mat_g1_na_q1_7/number_bond` and `mat_g1_na_q1_8/cloze` cleanly and could NOT explain
+`mat_g2_na_q1_10/mcq` — one in three. A second copy of that logic would drift from the first, which
+is how these false declarations arose in the first place. **§2B is empirical: it asks the orchestrator
+rather than modelling it.** Whatever mechanism eventually lands, §2B is what proves advertised ==
+servable afterwards.
+
+**I shipped the check broken and it is the most instructive thing here.** The first version wrapped
+`get_node_formatters()` in try/except; the function was never imported; the swallow ate a NameError on
+all 151 nodes; the check reported **"0 findings"** on a tree I had just measured at 236. It only
+surfaced because I had the independent number in hand.
+
+**A check that passes silently because its own lookup failed is worse than no check — it converts an
+unknown into a false assurance.** Rule #3's ban on bare except applies to the checks with MORE force
+than to pipeline code, because nothing downstream will ever contradict a green check. Two habits earn
+their keep here: never wrap a check's own setup in try/except, and always have an independent
+measurement to compare a new check's first run against.
+
+**Both movements:**
+- findings **767 → 767**; coverage **127/787 unchanged**.
+- gate surface: **§2B added; §2 now fails with 236 findings across 86 nodes** — previously invisible.
+
+**Next tick should:**
+1. **Fix the 236.** Now that §2B pins the class, choose the mechanism deliberately: a per-node
+   `excluded_formatters` in the registry consulted by `get_node_formatters()`, OR deriving the list
+   by calling the orchestrator once per pair and caching. The empirical route cannot drift but costs
+   ~35s at import; the declarative route is fast but must be kept honest — which §2B now does.
+   Start with the 5 worst nodes (7 bad pairs each) to validate the mechanism before the sweep.
+2. **`mat_g2_na_q3_0`'s `max_product` floor of 0** (still one §1G finding) and the 4 stale seeds on
+   `mat_g3_na_q3_1` — do those together, since both move that content.
+3. **Extend §1G**: BarChart, ClockSet, Calendar still unchecked. Verify each candidate read-only
+   first — one candidate already failed that screen in tick 11.
+4. Still open: `read_mcq` -> placement (63 nodes), `concrete materials`, `up to 10` on
+   `mat_g1_na_q1_6`, `geometric_lines` hash bug, re-attesting the blind-packet nodes, coverage
+   programme (~35 dispatches).
