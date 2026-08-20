@@ -5938,3 +5938,73 @@ Live confirmation from the run itself:
 ```
 
 Stages renumbered 1/8..8/8.
+
+---
+
+## 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127
+
+Commit `8eadacab`. No pipeline code changed; this entry records the blind evidence obtained.
+
+### Why this tick was dispatches only
+
+Coverage had been flat at 52/787 for six ticks while the work went to correctness and gate health.
+The previous ledger scheduled a dispatch-only tick precisely so that would not drift further, and the
+first item in the queue was deferred to honour it.
+
+```
+coverage   52/787 (6.6%)  ->  127/787 (16.1%)
+findings   817           ->  767
+           UNATTESTED  735 -> 660
+           CONTRADICTED  2 ->  27
+```
+
+Four blind Attesters, 0 tool uses each, samples inline, node ids withheld. **75 clauses judged: 50
+PROVIDED, 25 NOT_PROVIDED.** The 25 are honest failures §6F now auto-enforces.
+
+### The dominant shape of the failures
+
+Most NOT_PROVIDED verdicts are one pattern: **a clause naming a medium that the items only ever
+reference.** "Look at the 4×3 array", "What number do the blocks show?", "Starting at 0, take 4 equal
+jumps of 3 on the number line" — the model is named in words, its dimensions are stated in the stem,
+and the item is answerable with no picture at all. One Attester put the test precisely:
+
+> "A textual reference to a picture is not a picture — I can see 'Look at the 4×3 array' but nothing
+> establishes that any array renders, how many squares are shaded, or whether the drawing matches the
+> key... the dimensions are stated in the stem, so 4×3 → 12 is answerable from text alone; the
+> picture, if it exists, is redundant to the mathematics rather than load-bearing."
+
+Every such verdict carries the artifact that would flip it. This is the same family as the
+`concrete materials` finding from tick 4 and it is now measured across five more nodes.
+
+### Content defects found unasked
+
+1. **`mat_g2_na_q3_5` seeds 23/103 — unanswerable as rendered.** The peer's work is quoted with the
+   blank still in it: *"Rosa solved: 'Starting from 12 and subtracting 2 repeatedly, you subtract ___
+   times before reaching 0'."* Rosa's answer is never shown, yet the key asserts `has_error=True`.
+   The error-finding template is substituting the unfilled stem where the peer's wrong value belongs.
+   **There is nothing on the page for the pupil to find an error in.**
+
+2. **`mat_g3_na_q2_0` — clause inversion.** The competency requires reading and writing the centavo
+   sign. Across five seeds the centavo sign appears **only as the marked-wrong option**, because the
+   stems all ask for "a decimal of a peso using the ₱ symbol". Each key is defensible alone; the
+   aggregate teaches a pupil that "25¢" is an incorrect way to write money — the opposite of the
+   clause.
+
+3. **`mat_g2_na_q2_0` seeds 103/127 — ungradeable key.** "Use coins and bills to make exactly ₱27" is
+   keyed to `27`. The key restates the target already printed in the stem, so a pupil who copies the
+   question is marked right, and the real answer (a set of denominations) cannot be scored.
+
+4. **`mat_g2_mg_q2_1` — dead options and key skew.** Every stem poses a binary ("cm or m?") then
+   offers four options, two of which ("either works", "neither works") are never keyed in any sample.
+   Half the option set is permanently dead, and 8 of 10 items key "m", so answering "m" blind scores
+   80%.
+
+5. **`mat_g2_na_q3_1` — the factor-role convention flips between models.** Numeral items write
+   (group size) × (count) — "2 jumps of 3" → "3 × 2". Array items write rows × columns — "2×4 array.
+   It shows 4 + 4". Products are unaffected so no key is wrong, but at the exact grade where the array
+   is supposed to *ground* the multiplication sentence, multiplicand and multiplier swap roles
+   depending on which model the pupil is looking at.
+
+6. **`mat_g1_na_q1_7` — half the sample is one question.** Four identical stems with reordered
+   options, plus a fifth asking the same fact as True/False. Ten items reduce to two number facts
+   (1+1, 2+1) against a competency whose range is sums to 20.

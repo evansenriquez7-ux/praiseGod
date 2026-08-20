@@ -3563,3 +3563,58 @@ Proved by planting a failing test: stage returns False and names it; restored, r
 5. **Coverage has been flat for six ticks at 52/787.** Five of those six were correctness or
    gate-health work that genuinely needed doing, and the gate is now in much better shape than when
    the run started — but the goal is coverage. Schedule a dispatch-only tick.
+
+---
+
+## 2026-08-20 (tick 8) — Dispatch-only tick: coverage 52 → 127, the streak broken
+
+Entered at `VERDICT: RESUME`, 817 findings, coverage 52/787.
+
+**Deliberately did NOT take queue item 1.** The queue's first item was the formatter gap; the ledger's
+last item said coverage had been flat six ticks and to schedule a dispatch-only tick. Deferring that
+again to take a correctness item would have repeated exactly the pattern the previous entry named. So
+this tick was dispatches and nothing else.
+
+**Both movements, and this time coverage is the one that moved:**
+- coverage **52/787 (6.6%) → 127/787 (16.1%)** — more than doubled, the largest single-tick move of
+  the run.
+- findings **817 → 767** (UNATTESTED 735 → 660, CONTRADICTED 2 → 27).
+- 75 clauses judged across 8 nodes: **50 PROVIDED, 25 NOT_PROVIDED.**
+
+**Measured throughput, for planning:** 4 dispatches covered 8 nodes / 75 clauses. At that rate the
+remaining 660 UNATTESTED is roughly 35 dispatches, or ~9 more dispatch-only ticks. That is the real
+size of the coverage backlog and it should be planned as a programme, not as an occasional unit.
+
+**The dominant failure shape has a name now: a clause naming a MEDIUM that the items only REFERENCE.**
+"Look at the 4x3 array", "What number do the blocks show?", "take 4 equal jumps on the number line" —
+the model is named in words, the dimensions are stated in the stem, and the item is answerable with no
+picture at all. An Attester's formulation is worth keeping: *"the picture, if it exists, is redundant
+to the mathematics rather than load-bearing."* This is the same family as `concrete materials` in tick
+4 and it now spans at least six nodes. **It is probably one root cause, not six** — the packets carry
+no visual payload, so either the visuals genuinely do not render on the student path, or
+`attester_packets.py` is not passing them. **Determine which before building anything**: if it is the
+packet builder, every medium verdict in this tick is measuring the packet rather than the pipeline,
+and they must be re-judged.
+
+**Content defects found unasked** (all filed in the records, all OPEN):
+1. `mat_g2_na_q3_5` seeds 23/103 — **unanswerable**: the peer's answer is never shown, yet the key
+   asserts `has_error=True`. The template substitutes the unfilled stem where the wrong value belongs.
+2. `mat_g3_na_q2_0` — **clause inversion**: the centavo sign appears only as the marked-wrong option,
+   teaching the opposite of the clause the competency names.
+3. `mat_g2_na_q2_0` seeds 103/127 — **ungradeable key**: keyed to the number already in the stem.
+4. `mat_g2_mg_q2_1` — two of four options never keyed in any sample; 8 of 10 items key "m".
+5. `mat_g2_na_q3_1` — factor-role convention flips between array and numeral models.
+
+**Next tick should:**
+1. **Settle the visual question FIRST — it gates the value of this tick's 25 NOT_PROVIDED verdicts.**
+   Render a node whose items reference a visual and inspect `format_data` for a visual payload on the
+   student path. If the payload exists, fix `tests/attester_packets.py` to pass it (it already has a
+   `visual_payload_keys`/`visual_payload_excerpt` path — check why it is empty here) and re-judge the
+   medium clauses. If it does not exist, the finding is real and much larger than one node.
+2. **`mat_g2_na_q3_5` seeds 23/103** — an unanswerable item is the most serious content defect on the
+   board. Fix the error-finding template, then re-review and re-attest that node.
+3. **`mat_g3_na_q2_0` centavo-sign inversion** — build items that WRITE the centavo sign.
+4. **Continue the coverage programme.** ~35 dispatches remain; batch 8 nodes per tick.
+5. Still open from earlier ticks: the advertised-vs-servable formatter gap (236/690), `read_mcq` ->
+   placement (63 nodes), `concrete materials`, `up to 10` on `mat_g1_na_q1_6`, and the
+   `geometric_lines` multiplicative-hash bug.
