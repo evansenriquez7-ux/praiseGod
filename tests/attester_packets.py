@@ -77,12 +77,84 @@ def _render(node_id: str, seed: int) -> Dict[str, Any] | None:
     # A visual capability is exhibited by the visual payload, not the stem. Carry the
     # payload's shape (keys and a short repr) so "does this render a table?" is
     # answerable from the packet without handing over the formatter source.
-    visual = fd.get("visual") or fd.get("visual_data")
-    if visual is not None:
-        sample["visual_payload_keys"] = sorted(visual) if isinstance(visual, dict) else type(visual).__name__
-        sample["visual_payload_excerpt"] = json.dumps(visual, ensure_ascii=False)[:600]
+    #
+    # FIXED 2026-08-20. This read `fd.get("visual") or fd.get("visual_data")`, and the
+    # pipeline emits NEITHER key -- it puts the payload in `format_data["visual_params"]`
+    # and names it in the top-level `visual_type`. So the lookup silently returned None
+    # for every sample ever built, and no packet in any batch has ever carried a visual.
+    #
+    # The cost of that was not theoretical. Attesters correctly reported what they could
+    # see -- "a textual reference to a picture is not a picture", "every item describes a
+    # figure the pupil cannot see" -- and ruled clauses naming a medium (arrays, number
+    # line, block or bar models, pictorial models, square grids) NOT_PROVIDED across
+    # several nodes. Those verdicts were measuring THIS FUNCTION, not the pipeline:
+    # `mat_g1_na_q1_2` seed 42 really does render PlaceValueBlocks with tens=1, ones=3,
+    # and `mat_g2_na_q3_1` seed 11 really does render GridArea rows=4 cols=3 shaded=true.
+    # Every batch built before this fix must be re-judged on the medium clauses.
+    #
+    # Note an item can legitimately have no visual -- `mat_g2_na_q3_1` seed 42 ("take 2
+    # equal jumps of 3 on the number line") has visual_type None, so that stem names a
+    # model the item does not draw. That is a real finding, and it is only separable from
+    # the packet bug once the payload is actually carried.
+    visual_type = p.get("visual_type")
+    visual = p.get("visual_params") or fd.get("visual_params")
+    if visual is not None or visual_type:
+        sample["visual_type"] = visual_type
+        if isinstance(visual, dict):
+            sample["visual_payload_keys"] = sorted(visual)
+            sample["visual_payload_excerpt"] = json.dumps(visual, ensure_ascii=False)[:600]
+        elif visual is not None:
+            sample["visual_payload_keys"] = type(visual).__name__
+            sample["visual_payload_excerpt"] = json.dumps(visual, ensure_ascii=False)[:600]
     return sample
 
+
+
+def render_prompt_block(packets: List[Dict[str, Any]]) -> str:
+    """
+    Emit the Attester-facing text VERBATIM from a packet.
+
+    Blindness is a prompt contract, which means the dispatcher pastes the samples into
+    the subagent prompt by hand -- and on 2026-08-20 that hand introduced a defect the
+    packet did not have. A stem was shortened when pasted, so
+    `mat_g2_na_q3_5` seed 23 reached the Attester as
+
+        Rosa solved: "...you subtract ___ times before reaching 0". Rosa's answer
+        contains an error.
+
+    when the pipeline actually renders
+
+        Rosa solved: "...you subtract ___ times before reaching 0". Rosa says the
+        missing number is 10. Is Rosa correct?
+
+    The Attester then correctly reported that there was nothing on the page to find an
+    error in, and that verdict was filed as a pipeline defect. It was a transcription
+    defect. Use this function instead of retyping: whatever it returns is what the
+    Attester sees, and it is copied from the packet rather than summarised.
+    """
+    out: List[str] = []
+    for item in packets:
+        out.append("=" * 70)
+        out.append(f"COMPETENCY (Grade {item['grade']}, Quarter {item['quarter']}):")
+        out.append(item["competency"])
+        out.append("")
+        out.append("SAMPLES:")
+        for s in item["samples"]:
+            out.append(f"  seed {s['seed']}: {s['question_text']}")
+            out.append(f"        key: {s['correct_answer']}")
+            opts = s.get("options")
+            if opts:
+                vals = [str(o.get("value")) if isinstance(o, dict) else str(o) for o in opts]
+                out.append(f"        options: {' / '.join(vals)}")
+            if s.get("visual_type"):
+                out.append(f"        VISUAL RENDERED: {s['visual_type']}")
+                out.append(f"        payload: {s.get('visual_payload_excerpt')}")
+            if s.get("hint"):
+                out.append(f"        hint: {s['hint']}")
+        out.append("")
+        out.append(f"CLAUSE: {item['clause']}")
+        out.append("")
+    return "\n".join(out)
 
 def build(node_ids: List[str], capabilities: List[str] | None = None) -> tuple:
     """
