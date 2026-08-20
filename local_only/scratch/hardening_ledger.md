@@ -3381,3 +3381,63 @@ exhibit this clause. Stop trying to write around it.
    competency names it first.
 5. **`geometric_lines` multiplicative-hash bug** — still unfixed, same class as tick 3's.
 6. **§6E `bounds`** — still the live wildcard at +15, unchanged for five ticks.
+
+---
+
+## 2026-08-20 (tick 5) — §6E shipped; the read_mcq programme scoped, deliberately not started
+
+Entered at `VERDICT: RESUME`, 802 findings, coverage 52/787, gate 18 errors / 0 STALE.
+
+**Chose the zero-churn unit deliberately.** The queue's top item (`read_mcq`) creates 63 stale
+reviews, and this ledger's own item 2 said to size that bill before creating it. I sized it (below)
+and then spent the tick on §6E instead, which has been open five ticks and creates no review churn
+at all. That is the right trade when re-review capacity is the binding constraint.
+
+**§6E — a shared `bounds` catch-all is not a provider.** 484 providers carry exactly TWO distinct
+bounds lists: a 27-key list on 474 (97.9%) and an empty list on 10. The check keys on **shared-ness,
+never length**, and the tests pin both directions (a 1-key list on every provider IS caught; a 40-key
+list unique to one entry is NOT). Findings **802 → 817 (+15)**, exactly the delta the §0 census has
+predicted since tick 1.
+
+**A dormant branch, honestly handled.** §6D and §6E always co-occur on this tree — all 74 §6D
+findings also carry the shared bounds list, none do not — so §6D reports first and names §6E as a
+co-cause. The standalone §6E branch never fires on live data. Rather than pretend it is exercised, a
+planted mutation supplies the condition and proves it fires **by name**. Durable point: **when a new
+check is dormant because an older check shadows it, the planted mutation is not optional — it is the
+only evidence the branch works.**
+
+**New finding — two unit tests are RED on HEAD and no tick could see it:**
+`test_unattested_capability_is_a_failure_not_a_skip` and
+`test_attestation_goes_stale_when_content_drifts` both fail before this tick's change (verified by
+stashing: `2 failed, 14 passed`). **`run_all` does not run pytest**, so the loop has been reporting
+green stages over red unit tests for an unknown number of ticks. The second one guards the freshness
+machinery §6F depends on. This is a gate-health hole, not housekeeping.
+
+**Both movements:**
+- findings **802 → 817** — rose, because a real wildcard stopped rescuing 15 capabilities.
+- coverage **52/787, flat for a fourth tick.**
+
+**The read_mcq programme, scoped (this was ledger item 2):**
+- 63 of 151 nodes stale; 212 review samples; 2 attestation batches.
+- The fix is 9 identical sites, `o["key"]` -> `o["value"]`.
+- **Direction is settled by a written contract**, not preference: `subagents.py` documents
+  `"correct_answer": "Exact text of correct option"` three times, with examples `"Addition"`/`"fox"`.
+  `mcq` is right; `read_mcq` is the defect.
+- **Batching decision:** do it in one commit (the fix is atomic and a half-fixed contract is worse
+  than either state), then clear the 63 in batches of ~8 nodes per tick, worst-§6D nodes first so the
+  re-reviews double as coverage work. ~8 ticks. Do NOT start until a tick can be spent entirely on
+  dispatches.
+
+**Next tick should:**
+1. **Fix the two red unit tests first.** They are cheap, they are on the gate itself, and everything
+   below is less trustworthy while a staleness test is red. Also: consider whether `run_all` should
+   run `pytest tests/unit` — the loop cannot keep reporting green over red tests. (Note the known
+   `pytest tests/unit` deadlock hazard; run the file directly, it completes in ~5s.)
+2. **`read_mcq` -> placement**, as the scoped programme above. Only start on a tick that can be
+   spent on dispatches.
+3. **`concrete materials`** — two blind verdicts say no text MCQ can do it. Build the interactive
+   manipulative response type, or delete the entry and let §6C report the gap.
+4. **`up to 10` on `mat_g1_na_q1_6`** — comprehensive_coverage is FAIL; only totals 5 and 10, and all
+   three ten-items use the same 7/3 split. Add totals 6-9 with UNDECLARED pair values so the
+   cross-product stays intact.
+5. **`geometric_lines` multiplicative-hash bug** — still unfixed, same class as tick 3's splitmix fix.

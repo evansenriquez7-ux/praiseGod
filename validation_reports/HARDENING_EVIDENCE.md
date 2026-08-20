@@ -5669,3 +5669,98 @@ from the arrangement; a task card for a teacher-supplied manipulative kit; or an
 unobtainable without the materials. All three need machinery the pipeline does not have. That is a
 Tick F build (Rule 8 — "needs new machinery" is not a deferral), or the entry is deleted so §6C
 reports the honest gap. Nothing was weakened and no verdict was re-filed.
+
+---
+
+## 2026-08-20 (tick 5) — §6E shipped, and the read_mcq programme scoped before it is started
+
+Commit `e3ab8b50`. Touches `backend/app/practice_gen/`, so Rule 7 requires this entry.
+
+### §6E — the last mechanical wildcard, open for five ticks
+
+Rule 9 applied to the `bounds` column. Measured on this tree:
+
+```
+providers: 484 | distinct bounds lists: 2
+  carried by 474 entries | len=27   (97.9%)
+  carried by  10 entries | len= 0   ( 2.1%)
+```
+
+A list 97.9% of the table carries verbatim makes no claim about any particular capability.
+The check keys on **shared-ness**, never length, and both directions are pinned by tests:
+
+- a **1-key** list carried by every provider **is** caught;
+- a **40-key** list unique to one entry is **not**.
+
+That distinction is the whole point. An earlier audit named this same list as the mechanism
+defeating §6C *on the strength of its length* and was wrong — measured then, deleting it moved the
+count 0 → 0, because the generic formatter family satisfied everything first.
+`test_bounds_length_is_never_the_discriminator` pins that mistake shut and still passes.
+
+```
+findings 802 -> 817   (+15, exactly the delta the §0 census has predicted for five ticks)
+```
+
+### The dormant branch, and why it is still tested
+
+On the current tree §6D and §6E **always co-occur** — all 74 §6D findings also carry the shared
+bounds list, and 0 do not — so §6D reports first and names §6E as a co-cause in its message. The
+standalone §6E branch never fires on live data. A dormant branch is untested by the live tree, so
+the planted mutation supplies the condition it exists for:
+
+```
+planted mutation on (mat_g1_na_q1_5, describe_position): generic formatters + variants removed
+  §6E fired by name: True
+  -> "Its only reachable provider is a `bounds` catch-all ['ordinal_range'] drawn from a list
+      that 474 of 484 providers carry verbatim"
+```
+
+Shipped the way §6D and §6F were: `pgen_contract.md` row + `CONTRACT_CHECKS` entry +
+executed-checks registration + 3 unit tests + the planted mutation.
+
+```
+$ pytest tests/unit/test_capability_contract.py -q
+2 failed, 17 passed          (was 2 failed, 14 passed — the same two, see below)
+$ two-direction lint          → in registry not in doc: none; §6E present both sides
+```
+
+### Finding: two unit tests are red on HEAD and the loop cannot see it
+
+```
+FAILED test_unattested_capability_is_a_failure_not_a_skip
+FAILED test_attestation_goes_stale_when_content_drifts
+```
+
+Both fail **before** this tick's change — verified by stashing (`2 failed, 14 passed` on HEAD).
+`run_all` does not run pytest, so these have been red without appearing in any tick report. The
+second one is about the very freshness machinery §6F depends on. Not fixed here (it is not this
+tick's unit) but it is now on the record and queued: a red test on the check that guards staleness
+is a gate-health problem, not a housekeeping one.
+
+### The read_mcq programme, scoped before starting it
+
+The ledger's own instruction was to size the re-review bill **before** creating the staleness.
+Measured:
+
+```
+filed review samples: 2030
+samples recording a bare LETTER answer: 212
+nodes whose reviews would stale: 63 of 151
+attestation batches affected: 2 (mat_g1_na_q1_6, mat_g2_mg_q1_1)
+```
+
+The fix itself is small and mechanical — **9 identical sites**,
+`correct_answer = next(o["key"] ...)` → `o["value"]`:
+
+```
+fmt_array_grid:449  fmt_bar_chart:394  fmt_calendar:267  fmt_clock:252,268
+fmt_fill_in_table:165  fmt_number_line:695  fmt_peso_money:314  fmt_pictograph:295
+```
+
+**Which side is wrong is settled by a written contract, not preference.** `backend/app/subagents.py`
+documents `"correct_answer": "Exact text of correct option"` in three places, with worked examples
+`"Addition"` and `"fox"`. So `mcq` is right and `read_mcq` is the defect.
+
+Not started this tick: 63 blind judgment dispatches is several ticks of work, and starting it without
+that capacity is exactly the trap avoided in tick 4. The batching decision belongs in the ledger
+before the first line changes.
