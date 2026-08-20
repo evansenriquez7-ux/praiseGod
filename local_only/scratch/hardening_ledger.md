@@ -3836,3 +3836,14 @@ zero-floor hazard.
 4. Still open: `read_mcq` -> placement (63 nodes), `concrete materials`, `up to 10` on
    `mat_g1_na_q1_6`, `geometric_lines` hash bug, re-attesting the blind-packet nodes, and the coverage
    programme (~35 dispatches).
+
+### Addendum — collateral from this tick, measured after run_all
+
+Removing `zero_identity` from the array formatters shifted which formatter serves which seed on
+`mat_g3_na_q3_1`, so **4 of its judgment-review seeds went STALE** (50, 68, 110, and one more).
+Contained to that one node — no other review moved. §7 went 19 → 23 problems (22 distinct + the
+rollup line).
+
+That node is already CONCERN/failing, so it needs one fresh blind re-review regardless. **Do it in the
+same tick as the `max_product` floor fix**, since that fix will move its content again — re-reviewing
+before then pays twice.
