@@ -5794,3 +5794,84 @@ capability_ok=False -> drift: NONE
 without its enforcement wiring, and the row it caught was mine. Protocol 7 says contracts and
 enforcement move together; the enforcement here is not just the check that implements the rule, it is
 also the reporting that proves the check ran.
+
+---
+
+## 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3
+
+Commits `2d2d5e7d`, `fad9e66c`. Touches `backend/app/practice_gen/` indirectly via test fixtures and
+`tests/pytest.ini`; recorded here because it changes what the gate can see.
+
+### The "deadlock" was a misdiagnosis, carried for five ticks
+
+`tests/pytest.ini` registered a `slow` marker with a comment telling you to deselect it — and then
+never did, because there was no `addopts`. Every plain `pytest tests/unit` therefore ran both slow
+tests:
+
+```
+test_checklist_audit.py::test_full_audit_zero_violations     ~20-40 min (its own docstring)
+test_parallel_audit.py::test_parallel_audit_matches_serial   ~15 min
+```
+
+Each spawns a `ProcessPoolExecutor`. Measured while it ran:
+
+```
+parent 30399   elapsed 13:58   TIME 0:07.80   %CPU 0.0
+child  30406   elapsed 13:58   TIME 13:17.62  %CPU 97.8
+child  30407   elapsed 13:58   TIME 13:17.71  %CPU 97.2
+child  30408   elapsed 13:58   TIME 13:18.19  %CPU 97.5
+child  30409   elapsed 13:58   TIME 13:17.68  %CPU 95.5
+```
+
+An idle parent, four children at ~98%, no output for a quarter of an hour. That is the pool working
+exactly as designed — and it is the **same hazard the protocol already documents for `run_all`**
+("judge liveness by the process tree's CPU, never a parent's own: a pool parent idles by design"),
+met from the other direction and misread as a hang.
+
+With `addopts = -m "not slow"`, the fast suite is **313 passed in 35 seconds**.
+
+A note on method: my first `pkill` on the pytest parent left its four pool children orphaned, and
+`hardening_supervisor.py --reap` caught them at 816s CPU apiece. The reap earns its keep on test runs
+too, not just on `run_all`.
+
+### Three tests I broke in tick 3, invisible because run_all does not run pytest
+
+```
+ValueError: Formatter 'number_bond' is not supported by any DNA for node 'mat_g1_na_q1_6'
+```
+
+Rerouting `mat_g1_na_q1_6` to the single-DNA `compose_decompose_to_10` broke
+`TestOrchestratorAnnotatesDnaName`, which used that node to exercise the **cross-DNA formatter
+filter**. Three ticks of reports said the tree was clean while three tests were red from my own change.
+
+Those tests had rotted twice before for the same reason — `cc5977f5` repointed one onto
+`mat_g1_na_q1_6` and, per its own restored docstring, "deleted the only coverage of the filter it
+exists to test"; the restored version pointed at `mat_g2_na_q4_2`, which has since stopped serving
+`ordering`. **A node id was never the subject; the filter is.** They are replaced by one invariant
+test that locates every case where the filter is observable and asserts the annotation in all of them:
+
+```
+cases the invariant actually observes: 9
+cases where the orchestrator picked a DNA that does NOT offer the formatter: 0
+```
+
+It fails loudly if that set ever empties, so it cannot rot into a vacuous pass.
+
+### New finding, quantified: the node formatter list advertises what the orchestrator refuses
+
+Found while hunting for a working subject. `get_node_formatters(node)` returns formatters that
+`generate_problem` then rejects outright:
+
+```
+(node, advertised formatter) pairs tested: 690
+  served:  454
+  refused as "not supported by any DNA": 236   across 86 of 151 nodes
+worst formatters: cloze 24, mcq 22, true_false 19, emoji_pictorial 19, number_line_read 16, number_bond 14
+```
+
+**A third of what the tree advertises per node cannot be generated.** Reproduced on
+`mat_g3_na_q4_2`/`balance_scale`, `mat_g2_na_q2_2`/`number_bond`, `mat_g1_mg_q1_1`/`ordering` — in each
+case the node advertises the formatter and exactly one of its DNAs offers it, and the orchestrator
+still refuses, with and without a difficulty profile. If the Lab or portal offers formatters from this
+list, a third of selections raise. Same family as the recorded "stale saved lab config unvalidated"
+hazard. Not fixed here — it is its own unit and it is now measured rather than suspected.

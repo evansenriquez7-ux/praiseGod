@@ -3456,3 +3456,61 @@ of burning another 40-minute run before committing.
 the failure path**. Miss the fourth and the lint fails the moment that stage is red, which for a
 check added while its own stage is failing is immediately. The two-direction lint caught my own
 contract row, which is precisely what it is for.
+
+---
+
+## 2026-08-20 (tick 6) — The pytest "deadlock" does not exist, and run_all's blind spot cost three ticks
+
+Entered at `VERDICT: RESUME`, 817 findings, coverage 52/787, gate 18 errors / 0 STALE.
+
+**Took ledger item 1 (the two red unit tests) and it opened into something larger.**
+
+**1. Both red tests were rotted fixtures, not pipeline defects.** One hardcoded `mat_g1_mg_q4_0` as
+"a node with no filed Attester verdicts" — that node was attested in batch002, so the fixture had
+rotted into asserting the opposite of its own name. The other took `next(glob("*.json"))` and asserted
+no STALE finding existed afterwards, but the file that glob now returns first is a superseded batch
+that is legitimately stale. Both subjects are now DERIVED, and both claims were proved unweakened by
+planting the exact defects they name (UNATTESTED silenced -> test fails; freshness silenced -> test
+fails).
+
+**2. There is no pytest deadlock. It has been queued for five ticks and it does not exist.**
+`tests/pytest.ini` registered a `slow` marker with a comment saying to deselect it and then never did
+— no `addopts`. Every plain run executed both slow tests (~20-40 min and ~15 min), each spawning a
+process pool. Measured: parent at **0.0% CPU**, four children at **97-98% with 13:17 CPU apiece**.
+That is a pool working, and it is the SAME hazard this protocol already documents for `run_all` —
+"a pool parent idles by design" — met from the other direction and misread as a hang.
+With deselection: **313 passed in 35 seconds.**
+
+Durable point: **when the ledger records a diagnosis, record the measurement that produced it.** This
+one survived five ticks because "it hangs" was recorded without a CPU reading, and nobody could
+cheaply re-test the claim.
+
+**3. run_all does not run pytest, and that blind spot hid a regression of mine for three ticks.**
+Rerouting `mat_g1_na_q1_6` in tick 3 broke three tests that used it to exercise the cross-DNA
+formatter filter. Three tick reports said the tree was clean. Those tests had rotted twice before for
+the same reason, so they are now ONE invariant test that locates every observable case (9 today) and
+fails loudly if that set empties, rather than naming a node.
+
+**Both movements:**
+- findings **817 → 817** (this tick touched tests and config, not the provider table).
+- coverage **52/787, flat for a fifth tick.**
+- unit tests **2 failed / 14 passed → 313 passed, 0 failed, 35s.**
+
+**New finding, measured: the per-node formatter list advertises what the orchestrator refuses.**
+`get_node_formatters(node)` vs `generate_problem`: **236 of 690 pairs (34%) refused across 86 of 151
+nodes**, error "Formatter X is not supported by any DNA for node N", with and without a profile. If
+the Lab offers formatters from that list, a third of selections raise. Same family as the recorded
+"stale saved lab config unvalidated" hazard.
+
+**Next tick should:**
+1. **Wire the fast unit suite into `run_all` as a stage.** It is 35s and it is the only thing standing
+   between "green stages" and "green stages over red tests". Remember the FOUR wiring points from
+   tick 5: contract row, `CONTRACT_CHECKS` entry, executed-checks registration in the PASS branch,
+   AND the discard block in the failure path.
+2. **The advertised-vs-servable formatter gap (236/690).** Decide whether `get_node_formatters` is
+   over-advertising or the orchestrator is over-refusing, then fix one side. Check the Lab's formatter
+   dropdown against it — that is the user-visible blast radius.
+3. **`read_mcq` -> placement**, the scoped programme from tick 5 (63 nodes, 9 sites, batching decided).
+   Only start on a tick that can be spent on dispatches.
+4. **`concrete materials`** — two blind verdicts say no text MCQ can do it.
+5. **`up to 10` on `mat_g1_na_q1_6`**, and the `geometric_lines` multiplicative-hash bug.
