@@ -205,8 +205,51 @@ def format_peso_money(
         amounts = ctx.values["amounts"]
         total = ctx.values["total"]
         coin_faces, bill_faces = _grade_denominations(ctx.grade)
-        coins_list = [a for a in amounts if a < 20]
-        bills_list = [a for a in amounts if a >= 20]
+        # Split by MEMBERSHIP in the real face lists, never by magnitude.
+        #
+        # This was `a < 20` / `a >= 20`, which asks "is this number big?" rather than
+        # "is this a note?". Anything >= 20 became a banknote, so the pipeline drew
+        # currency that does not exist. Measured 2026-08-20 over the money nodes:
+        #
+        #   bill of 25    bill of 475    bill of 2594    bill of 3654    bill of 8103
+        #
+        # Two distinct sources, both caught by the same rule:
+        #   * 25 and 50 are the CENTAVO faces (_DENOMS_G2_CENTAVOS stores them as
+        #     centavo integers meaning P0.25 / P0.50). registry.py already warns that
+        #     "the pile/total pipeline is peso-integer, so dropping them into denom_pool
+        #     would total them as pesos and label them wrong" -- this is that, drawn.
+        #   * the four-digit ones are the whole target amount arriving as a single
+        #     element of `amounts`, so P3654 was rendered as one P3654 note.
+        #
+        # No text check could see any of it: every §1 check reads the stem, and the stem
+        # says only "make exactly P350". Fail loud instead (AGENTS.md rule #3) -- a node
+        # that cannot render its amount in real denominations must say so, not invent a
+        # banknote.
+        unknown = [a for a in amounts if a not in coin_faces and a not in bill_faces]
+        if unknown:
+            # `amounts` is NOT always a pile. money_peso reuses the field for two
+            # different things: for a counting task it is a list of denominations
+            # ([20, 5, 5, 5]), but for `operation=read_write` — "Read and write money
+            # in words ... up to P10 000" — it is the AMOUNT ITSELF, e.g. [8407].
+            # Trusting it blindly is what drew a P8407 banknote.
+            #
+            # A pile is decorative for a notation task, but it must still show real
+            # money, so rebuild it from the total rather than from `amounts`. This is
+            # not a fallback masking an error: showing currency that sums to `total` is
+            # the correct render in both cases. If it genuinely cannot be made from real
+            # denominations, that IS an error and it raises (AGENTS.md rule #3).
+            coins_list, bills_list = _greedy(total, coin_faces, bill_faces)
+            if coins_list is None:
+                raise ValueError(
+                    f"peso_money: cannot render P{total} for node {ctx.node_id!r} "
+                    f"(seed {ctx.seed}) using real denominations — coins {coin_faces}, "
+                    f"bills {bill_faces}. `amounts` held {sorted(set(unknown))}, which "
+                    f"are not denominations. Drawing them directly would put currency "
+                    f"that does not exist in front of a pupil."
+                )
+        else:
+            coins_list = [a for a in amounts if a in coin_faces]
+            bills_list = [a for a in amounts if a in bill_faces]
         from collections import Counter
         coin_counts = Counter(coins_list)
         bill_counts = Counter(bills_list)
@@ -227,7 +270,6 @@ def format_peso_money(
         }
     elif ctx.values and ("total" in ctx.values or "answer" in ctx.values or "result" in ctx.values):
         total = ctx.values.get("total") or ctx.values.get("answer") or ctx.values.get("result")
-        print("DEBUG TOTAL:", type(total), repr(total))
         coin_faces, bill_faces = _grade_denominations(ctx.grade)
         coins_list, bills_list = _greedy(total, coin_faces, bill_faces)
         if coins_list is None:
