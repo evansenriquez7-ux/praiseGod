@@ -245,6 +245,8 @@ def run_all(fail_fast: bool = False) -> int:
             executed_checks.discard("§6")
             expected_subset.discard("§6D")
             executed_checks.discard("§6D")
+            expected_subset.discard("§6E")
+            executed_checks.discard("§6E")
             expected_subset.discard("§6F")
             executed_checks.discard("§6F")
 
