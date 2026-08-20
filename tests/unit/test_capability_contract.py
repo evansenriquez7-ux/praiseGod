@@ -12,6 +12,7 @@ the draw requirement, and §6C (required ⊆ provided) would then pass trivially
 refactor cannot quietly drop it.
 """
 
+from backend.app.practice_gen.registry import NODE_TO_DNA, get_node_info
 from backend.app.practice_gen.validation import validate_capability as VC
 
 COMPETENCY = "Recognize and draw parallel, intersecting, and perpendicular lines."
@@ -255,10 +256,37 @@ def test_unattested_capability_is_a_failure_not_a_skip():
     """
     An unexamined claim is not a passing claim. `if not attested: continue` is precisely
     the bug that let 94 non-PASS judgment reviews escape every content check.
+
+    The node is chosen DYNAMICALLY. This test previously hardcoded `mat_g1_mg_q4_0` and
+    went red the moment that node was actually attested (batch002) — the check was fine,
+    the fixture had rotted into asserting "an attested node reports unattested". Deriving
+    the subject from the current attestation records keeps the test asserting what it
+    means as the backlog is worked off, instead of decaying into a false alarm.
     """
-    errs = VC.validate_capability_declarations(["mat_g1_mg_q4_0"])
+    import json as _json
+    from pathlib import Path
+
+    attested_nodes = set()
+    for rec in Path(VC._ATTESTATION_DIR).glob("*.json"):
+        d = _json.loads(rec.read_text(encoding="utf-8"))
+        for v in d.get("verdicts") or []:
+            attested_nodes.add(v.get("node_id"))
+
+    subject = next(
+        (n for n in NODE_TO_DNA
+         if n not in attested_nodes
+         and (get_node_info(n) or {}).get("requires")),
+        None,
+    )
+    if subject is None:
+        import pytest
+        pytest.skip("every node with declared requirements is attested — backlog cleared")
+
+    errs = VC.validate_capability_declarations([subject])
     unattested = [e for e in errs if "UNATTESTED" in e]
-    assert unattested, "a node with no filed Attester verdicts reported none unattested"
+    assert unattested, (
+        f"{subject} has no filed Attester verdicts but reported none unattested"
+    )
     assert "no blind Attester has judged" in unattested[0]
 
 
@@ -299,11 +327,32 @@ def test_attestation_goes_stale_when_content_drifts():
     on evidence about content that no longer exists.
 
     §5 has enforced the same rule for judgment reviews since the fabrication incident.
+
+    The record is chosen as one that is CURRENTLY FRESH. This test previously took
+    `next(glob("*.json"))` and asserted STALE was absent after restoring, which went red
+    once the first file the glob returned was a superseded batch that is legitimately
+    stale for its own reasons. The freshness check was correct; the fixture was asserting
+    "no record anywhere is stale", which is not what this test is about. Picking a fresh
+    record makes the before/after delta the actual subject.
     """
     import json as _json
     from pathlib import Path
 
-    rec = next(Path(VC._ATTESTATION_DIR).glob("*.json"))
+    rec = None
+    for candidate in sorted(Path(VC._ATTESTATION_DIR).glob("*.json")):
+        d = _json.loads(candidate.read_text(encoding="utf-8"))
+        node = (d.get("packet") or {}).get("node_id")
+        if not isinstance(node, str) or not (d.get("packet") or {}).get("samples_judged"):
+            continue
+        already = [
+            e for e in VC.validate_capability_declarations([node])
+            if "STALE" in e and candidate.stem in e
+        ]
+        if not already:
+            rec = candidate
+            break
+    assert rec is not None, "no currently-fresh attestation record to drift"
+
     original = rec.read_text(encoding="utf-8")
     try:
         d = _json.loads(original)
@@ -311,13 +360,21 @@ def test_attestation_goes_stale_when_content_drifts():
         d["packet"]["samples_judged"][0]["question_text"] = "a stem the pipeline never rendered"
         rec.write_text(_json.dumps(d), encoding="utf-8")
 
-        errs = [e for e in VC.validate_capability_declarations([node]) if "STALE" in e]
+        errs = [
+            e for e in VC.validate_capability_declarations([node])
+            if "STALE" in e and rec.stem in e
+        ]
         assert errs, "FRESHNESS HOLE: an attestation about drifted content was accepted"
         assert "re-attest" in errs[0]
     finally:
         rec.write_text(original, encoding="utf-8")
 
-    assert not [e for e in VC.validate_capability_declarations([node]) if "STALE" in e]
+    # Scoped to THIS record: other batches on the same node may be legitimately stale
+    # (a superseded record stays stale until §6F learns about supersession).
+    assert not [
+        e for e in VC.validate_capability_declarations([node])
+        if "STALE" in e and rec.stem in e
+    ]
 
 
 def test_attestation_without_samples_cannot_be_checked_and_fails():
