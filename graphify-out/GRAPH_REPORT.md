@@ -1,7 +1,7 @@
 # Graph Report - ccmed  (2026-08-21)
 
 ## Corpus Check
-- 470 files · ~770,256 words
+- 470 files · ~770,367 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e7b24e6f`
+- Built from commit: `1c17c81e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -263,6 +263,7 @@
 - [[_COMMUNITY__get_available_formats|_get_available_formats]]
 - [[_COMMUNITY_.axis_level_index|.axis_level_index]]
 - [[_COMMUNITY_generate_params|generate_params]]
+- [[_COMMUNITY_2026-08-13 — The G1 measure items a visual for the task, and a size model for the units|2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units]]
 - [[_COMMUNITY_fmt_array_grid.py|fmt_array_grid.py]]
 - [[_COMMUNITY_fmt_ruler_measure.py|fmt_ruler_measure.py]]
 - [[_COMMUNITY_generate_params|generate_params]]
@@ -271,7 +272,6 @@
 - [[_COMMUNITY_2026-08-20 — §5 worker death a silent unbounded wait in the last gate|2026-08-20 — §5 worker death: a silent unbounded wait in the last gate]]
 - [[_COMMUNITY__gen_g2_na_q3_multiplication|_gen_g2_na_q3_multiplication]]
 - [[_COMMUNITY_test_regrouping_feasibility.py|test_regrouping_feasibility.py]]
-- [[_COMMUNITY_health|health]]
 - [[_COMMUNITY__combined_interests|_combined_interests]]
 - [[_COMMUNITY_2026-08-20 — Tick C `mat_g2_mg_q4_3` content defects fixed at root, and `explain` built|2026-08-20 — Tick C: `mat_g2_mg_q4_3` content defects fixed at root, and `explain` built]]
 - [[_COMMUNITY_2026-08-14 — 2-digit by 1-digit bounds two operands, and only one had a key|2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key]]
@@ -724,7 +724,7 @@ Nodes (9): generate_hints(), generate_params(), Any, DNA: Multiplication (Number
 
 ### Community 103 - "Community 103"
 Cohesion: 0.09
-Nodes (22): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — Content no competency asks for, and a metre wearing centimetres, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 — §5 worker death: a silent unbounded wait in the last gate, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated, A regression I introduced and caught by measuring (+14 more)
+Nodes (22): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-19 — Hardening Unit 3: mutation coverage for §5 and §6, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 — §5 worker death: a silent unbounded wait in the last gate, 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso), 3. KG monotonicity — `order_of_operations` introduced but not propagated, Final Definition of Done (+14 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.03
@@ -1172,7 +1172,7 @@ Nodes (5): get_available_intro_nodes(), Return list of nodes that have intro con
 
 ### Community 240 - "_combined_interests"
 Cohesion: 0.40
-Nodes (5): 2026-08-19 — Hardening Unit 3: mutation coverage for §5 and §6, Machinery 1 — `baseline_must_not_contain`, Machinery 2 — `apply_fn`, Mutation A — `wildcard_provider` (§6D), Mutation B — `template_review` (§5)
+Nodes (5): 2026-08-13 — Content no competency asks for, and a metre wearing centimetres, Defect 1 — `Convert 4 m to cm.` is invention, Defect 2 — a 500 cm ceiling, Left deliberately: `"Measure the object. Its length is ___ cm."`, Verification
 
 ### Community 241 - "_gen_g2_na_q1_numbers"
 Cohesion: 0.33
@@ -1250,6 +1250,10 @@ Nodes (9): _build_traps(), _build_visual_params(), format_array_grid(), Random, 
 Cohesion: 0.31
 Nodes (8): _detect_input_type(), format_numeric_input(), _numeric_bounds(), Random, Textual Formatter — Numeric Input (Free-Entry)  Refactored from visual_skeletons, Classify the correct answer into integer, decimal, or fraction., Derive min_value / max_value from correct answer and available distractors., Format a QuestionContext as a free-entry numeric input problem.      format_data
 
+### Community 264 - "2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units"
+Cohesion: 0.50
+Nodes (4): 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item, Defect 2 — object and unit drawn independently
+
 ### Community 265 - "fmt_array_grid.py"
 Cohesion: 0.13
 Nodes (12): interpolate(), Any, Compute the dimension value at difficulty scalar t.          If override_min/ove, A reusable story template with named slots.      Slots are filled from the stude, Fill template with interest slots and numeric values.                  Handles s, Serialize to dict for API response., Interpolate between min_val and max_val using the given scale type.      scale_t, Spine (+4 more)
@@ -1277,10 +1281,6 @@ Nodes (5): 2026-08-20 (tick 4) — An exploitable answer-key pattern across the 
 ### Community 273 - "test_regrouping_feasibility.py"
 Cohesion: 0.07
 Nodes (37): generate_hints(), generate_params(), Any, Check if a pair satisfies regrouping difficulty based on COUNT of places.      C, True if `level` can be satisfied by some (a, b) with a + b <= max_result., Generate (a, b) that satisfy the difficulty_profile constraints.      Uses smart, Return 2–4 step-by-step hint strings for the given addition problem., regrouping_is_feasible() (+29 more)
-
-### Community 275 - "health"
-Cohesion: 0.50
-Nodes (4): 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, New finding, quantified: the node formatter list advertises what the orchestrator refuses, The "deadlock" was a misdiagnosis, carried for five ticks, Three tests I broke in tick 3, invisible because run_all does not run pytest
 
 ### Community 280 - "_combined_interests"
 Cohesion: 0.16

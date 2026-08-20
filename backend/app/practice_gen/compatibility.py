@@ -908,8 +908,16 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # shown" and "None of the competency's named representations -- arrays,
         # counting by multiples, or equal jumps on a number line -- appear
         # anywhere in the eleven samples."
-        "array_grid_read": {"task_type": ["find_product", "zero_identity", "repeated_addition", "equal_groups", "skip_counting", "number_line_jumps"], "context": ["pure"]},
-        "array_grid_set": {"task_type": ["find_product", "zero_identity", "repeated_addition", "equal_groups", "skip_counting", "number_line_jumps"], "context": ["pure"]},
+        # `zero_identity` is deliberately NOT offered to the array formatters. The
+        # competency requires "zero multiplied by any number is zero" (mat_g3_na_q3_1),
+        # so the CONTENT is mandated and must not be narrowed — but an array cannot
+        # depict it. Declaring support here was a false claim, and it drew 0-row grids:
+        # "Shade all the squares inside the shape. How many squares did you shade in
+        # all?" with nothing to shade and the answer keyed 0. §1G reports those payloads.
+        # The text formatters below keep `zero_identity`, so the clause is still served
+        # ("0 x 7 = 0. True or False?") by a formatter that can actually express it.
+        "array_grid_read": {"task_type": ["find_product", "repeated_addition", "equal_groups", "skip_counting", "number_line_jumps"], "context": ["pure"]},
+        "array_grid_set": {"task_type": ["find_product", "repeated_addition", "equal_groups", "skip_counting", "number_line_jumps"], "context": ["pure"]},
         "error_detect": {"task_type": ["find_product", "estimate", "zero_identity", "equal_groups", "repeated_addition", "skip_counting", "number_line_jumps", "two_step"]},
         "true_false": {"task_type": ["find_product", "estimate", "zero_identity", "equal_groups", "repeated_addition", "skip_counting", "number_line_jumps", "two_step"]},
         "cloze": {"task_type": ["find_product", "estimate", "zero_identity", "equal_groups", "repeated_addition", "skip_counting", "number_line_jumps", "two_step"]},
