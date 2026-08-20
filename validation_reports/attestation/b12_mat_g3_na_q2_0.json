@@ -1,0 +1,312 @@
+{
+ "batch": "b12_mat_g3_na_q2_0",
+ "attested_at": "2026-08-20T13:10:00+08:00",
+ "role": "Attester",
+ "blindness": {
+  "saw": [
+   "clause",
+   "competency text",
+   "grade/quarter",
+   "10 rendered student-path samples"
+  ],
+  "did_not_see": [
+   "CAPABILITY_PROVIDERS or that any entry was being defended",
+   "the node id",
+   "the DNA, formatter registry, or generator source",
+   "validation_reports/, local_only/, docs/"
+  ],
+  "samples_passed_inline": true,
+  "tool_uses_by_attester": 0,
+  "framing": "neutral; the 'centavo sign' and 'use' clauses were flagged for strict judgement with an explicit instruction not to assume an outcome"
+ },
+ "packet": {
+  "builder": "tests/attester_packets.py",
+  "sampling": "is_student_path=True",
+  "node_id": "mat_g3_na_q2_0",
+  "seeds": [
+   11,
+   23,
+   42,
+   57,
+   64,
+   78,
+   91,
+   103,
+   118,
+   127
+  ],
+  "samples_judged": [
+   {
+    "seed": 11,
+    "question_text": "How is 25 centavos written as a decimal of a peso using the ₱ symbol?",
+    "correct_answer": "C",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 23,
+    "question_text": "How is 50 centavos written as a decimal of a peso using the ₱ symbol?",
+    "correct_answer": "A",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 42,
+    "question_text": "How is 'four thousand four hundred ten pesos' written using the peso symbol?",
+    "correct_answer": "₱4410",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 57,
+    "question_text": "How is ₱2124 written in words?",
+    "correct_answer": "two thousand one hundred twenty-four pesos",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 64,
+    "question_text": "How is ₱6014 written using the currency code PhP?",
+    "correct_answer": "PhP 6014",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 78,
+    "question_text": "How is 'eight thousand two hundred fifty pesos' written using the peso symbol?",
+    "correct_answer": "₱8250",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 91,
+    "question_text": "How is 25 centavos written as a decimal of a peso using the ₱ symbol?",
+    "correct_answer": "₱0.25",
+    "formatter": "cloze"
+   },
+   {
+    "seed": 103,
+    "question_text": "How is ₱3654 written in words?",
+    "correct_answer": "three thousand six hundred fifty-four pesos",
+    "formatter": "set_fill_in_blank"
+   },
+   {
+    "seed": 118,
+    "question_text": "How is ₱7509 written using the currency code PhP?",
+    "correct_answer": "PhP 7509",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 127,
+    "question_text": "How is 50 centavos written as a decimal of a peso using the ₱ symbol?",
+    "correct_answer": "₱0.50",
+    "formatter": "set_fill_in_blank"
+   }
+  ]
+ },
+ "verdicts": [
+  {
+   "capability_id": "read",
+   "node_id": "mat_g3_na_q2_0",
+   "clause": "Read",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    57,
+    103
+   ],
+   "confidence": "high",
+   "reasoning": "Present a symbol-form amount and require rendering it in words, which is reading the currency notation.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "write",
+   "node_id": "mat_g3_na_q2_0",
+   "clause": "write",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    78,
+    64,
+    118,
+    11,
+    23,
+    91,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Both transcription directions the competency names are genuinely present. Caveat: all are four-option selections, so the pupil recognises a correct written form rather than producing one.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "money",
+   "node_id": "mat_g3_na_q2_0",
+   "clause": "money",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Every item is a peso or centavo amount.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "words",
+   "node_id": "mat_g3_na_q2_0",
+   "clause": "words",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    78,
+    57,
+    103
+   ],
+   "confidence": "high",
+   "reasoning": "Two supply amounts in words; two require words as the answer.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "philippine_currency_symbols",
+   "node_id": "mat_g3_na_q2_0",
+   "clause": "Philippine currency symbols",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Both members of the named pair appear.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "peso_sign",
+   "node_id": "mat_g3_na_q2_0",
+   "clause": "₱",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    78,
+    91,
+    103,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Present in stems and keys, and as a distractor in the PhP items.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "php",
+   "node_id": "mat_g3_na_q2_0",
+   "clause": "PhP",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    64,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Targeted directly, keys 'PhP 6014' and 'PhP 7509'.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "up_to_peso_10000",
+   "node_id": "mat_g3_na_q2_0",
+   "clause": "up to ₱10 000",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    57,
+    64,
+    78,
+    103,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Amounts span P0.25 to P8250, so the four-digit band is exercised - but nothing lands near or at the P10 000 boundary, so the stated limit itself is never probed.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "centavo_sign",
+   "node_id": "mat_g3_na_q2_0",
+   "clause": "centavo sign",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    78,
+    91
+   ],
+   "confidence": "high",
+   "reasoning": "The centavo sign appears ONLY EVER AS A WRONG OPTION. No item asks the pupil to read or write an amount USING it. The centavo items deliberately route around it - they ask for 'a decimal of a peso using the P symbol', so the correct answer is always peso notation. The clause names a notation the pupil is supposed to learn to read and write; these items only teach them to reject it.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  }
+ ],
+ "incidental_findings": [
+  {
+   "severity": "defect",
+   "seeds": [
+    11,
+    23,
+    42,
+    78,
+    91
+   ],
+   "finding": "CLAUSE INVERSION, the most serious finding here. Across five seeds the centavo sign is consistently the marked-wrong answer. This is worse than simply omitting it: a pupil who works this set learns that '25c' is an INCORRECT way to write money, when it is precisely the notation the competency requires them to master. Each individual key is defensible given its stem, but the aggregate teaches the opposite of the clause.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    42,
+    57,
+    64,
+    78,
+    103,
+    118
+   ],
+   "finding": "Thousands separator: the competency itself writes the ceiling as 'P10 000' with a separator, but every item writes four-digit amounts unseparated (P4410, P2124). Inconsistent with the competency's own rendering and with standard Philippine notation (P4,410). For a read/write-money item the separator is part of the written form being taught.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    11,
+    23,
+    91,
+    127
+   ],
+   "finding": "'written as a decimal of a peso' imports 'decimal', a named concept the competency does not mention (it names words, P, PhP and the centavo sign). Flagged for a check against this node's NOT_YET_KNOWN list - the Attester could not verify gating from the page.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    11,
+    91,
+    23,
+    127
+   ],
+   "finding": "Duplicate items: seeds 11 and 91 are the same item (25 centavos); seeds 23 and 127 are the same item (50 centavos). Four of ten samples reduce to two distinct problems.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "coverage",
+   "seeds": [],
+   "finding": "No item presents a combined peso-and-centavo amount (e.g. P1250.75 -> 'one thousand two hundred fifty pesos and seventy-five centavos'). Centavo amounts appear only in isolation and only as 25 or 50. Amounts cluster in the 2000-8250 band with nothing near the ceiling and nothing below P1000 in peso form.",
+   "status": "OPEN"
+  }
+ ]
+}

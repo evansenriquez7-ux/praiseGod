@@ -1,0 +1,314 @@
+{
+ "batch": "b12_mat_g2_mg_q2_1",
+ "attested_at": "2026-08-20T13:10:00+08:00",
+ "role": "Attester",
+ "blindness": {
+  "saw": [
+   "clause",
+   "competency text",
+   "grade/quarter",
+   "10 rendered student-path samples"
+  ],
+  "did_not_see": [
+   "CAPABILITY_PROVIDERS or that any entry was being defended",
+   "the node id",
+   "the DNA, formatter registry, or generator source",
+   "validation_reports/, local_only/, docs/"
+  ],
+  "samples_passed_inline": true,
+  "tool_uses_by_attester": 0,
+  "framing": "neutral; the 'centavo sign' and 'use' clauses were flagged for strict judgement with an explicit instruction not to assume an outcome"
+ },
+ "packet": {
+  "builder": "tests/attester_packets.py",
+  "sampling": "is_student_path=True",
+  "node_id": "mat_g2_mg_q2_1",
+  "seeds": [
+   11,
+   23,
+   42,
+   57,
+   64,
+   78,
+   91,
+   103,
+   118,
+   127
+  ],
+  "samples_judged": [
+   {
+    "seed": 11,
+    "question_text": "The distance between the gate and the library is about 50 ___. Which unit makes the measurement reasonable: cm or m?",
+    "correct_answer": "m",
+    "formatter": "cloze"
+   },
+   {
+    "seed": 23,
+    "question_text": "A hallway has a length of about 20 ___. Which unit is correct: cm or m?",
+    "correct_answer": "m",
+    "formatter": "cloze"
+   },
+   {
+    "seed": 42,
+    "question_text": "Which unit would you use to measure the length of a spoon: centimeters (cm) or meters (m)?",
+    "correct_answer": "cm",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 57,
+    "question_text": "Which unit would you use to measure the length of a pencil: centimeters (cm) or meters (m)?",
+    "correct_answer": "cm",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 64,
+    "question_text": "The distance between the school and the market is about 200 ___. Which unit makes the measurement reasonable: cm or m?",
+    "correct_answer": "m",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 78,
+    "question_text": "Which unit is best to measure the distance between the school and the market: centimeters (cm) or meters (m)?",
+    "correct_answer": "m",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 91,
+    "question_text": "Would you measure the length of a garden in centimeters (cm) or meters (m)?",
+    "correct_answer": "m",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 103,
+    "question_text": "The distance between the bench and the playground is about 30 ___. Which unit makes the measurement reasonable: cm or m?",
+    "correct_answer": "m",
+    "formatter": "cloze"
+   },
+   {
+    "seed": 118,
+    "question_text": "Which unit is best to measure the distance between the classroom and the canteen: centimeters (cm) or meters (m)?",
+    "correct_answer": "m",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 127,
+    "question_text": "Which unit would you use to measure the length of a hallway: centimeters (cm) or meters (m)?",
+    "correct_answer": "m",
+    "formatter": "cloze"
+   }
+  ]
+ },
+ "verdicts": [
+  {
+   "capability_id": "identify",
+   "node_id": "mat_g2_mg_q2_1",
+   "clause": "Identify",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Every item asks the pupil to pick which of cm/m fits a given object or distance.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "use",
+   "node_id": "mat_g2_mg_q2_1",
+   "clause": "use",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    64,
+    103
+   ],
+   "confidence": "high",
+   "reasoning": "Selecting a unit from a fixed menu of two named choices is identification, not use. Nothing requires the pupil to apply the unit - no item asks them to measure, estimate a length, produce a numeral-plus-unit measurement, or convert. Even where a magnitude is supplied, the pupil attaches a pre-written label to a pre-written number; the measuring act is done for them. The competency names two verbs and only the first is exercised.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "unit",
+   "node_id": "mat_g2_mg_q2_1",
+   "clause": "unit",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "The word appears in the stem of eight items and the concept governs all ten.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "m_or_cm",
+   "node_id": "mat_g2_mg_q2_1",
+   "clause": "m or cm",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    57,
+    11,
+    23,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Both units appear as full words and abbreviations throughout. Coverage is lopsided - see findings.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "measure",
+   "node_id": "mat_g2_mg_q2_1",
+   "clause": "measure",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Explicit in every stem. Caveat: the items are ABOUT measurement rather than instances of measuring, so this is provided at the level of subject matter only.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "length",
+   "node_id": "mat_g2_mg_q2_1",
+   "clause": "length",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    23,
+    42,
+    57,
+    91,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Length of a spoon, pencil, hallway, garden, hallway.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "object",
+   "node_id": "mat_g2_mg_q2_1",
+   "clause": "object",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    57
+   ],
+   "confidence": "high",
+   "reasoning": "Only two items present an unambiguous physical object (spoon, pencil); hallway and garden read as places rather than objects. The clause is met, but by two near-identical items.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "distance",
+   "node_id": "mat_g2_mg_q2_1",
+   "clause": "distance",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    64,
+    78,
+    103,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "All ask about a distance explicitly.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "between_two_locations",
+   "node_id": "mat_g2_mg_q2_1",
+   "clause": "between two locations",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    64,
+    78,
+    103,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Two named locations in each.",
+   "action_taken": "none - entry stands"
+  }
+ ],
+ "incidental_findings": [
+  {
+   "severity": "defect",
+   "seeds": [
+    42,
+    57,
+    91,
+    127
+   ],
+   "finding": "Ambiguous stems paired with an 'either works' option. 'Which unit would you use...' does not ask for the BEST or most reasonable unit, so with 'either works' on the list that choice is literally defensible: a pencil can be measured in metres (0.15 m) and a hallway in centimetres (2000 cm). Seeds 78/118 fix this with 'is best'; seeds 11/23/64/103 fix it by supplying a magnitude. These four do not.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "finding": "Stem/option mismatch across the whole set: every stem poses a binary ('cm or m?') then offers four options, two of which ('either works', 'neither works') are not among the two the stem named. Neither is ever keyed, so half the option set is permanently dead and a pupil who ignores both still faces only a 50/50.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    42,
+    57
+   ],
+   "finding": "Answer-key skew: eight of ten items key 'm', and the only two cm items are near-duplicates of each other. A pupil answering 'm' every time scores 80% without reading the stem.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "weakness",
+   "seeds": [
+    91
+   ],
+   "finding": "'length of a garden' keyed m is the weakest key in the set - a small home garden plot is plausibly measured in cm - though m remains defensible.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "none",
+   "seeds": [],
+   "finding": "Magnitudes all real-world plausible (gate-library 50 m, hallway 20 m, school-market 200 m, bench-playground 30 m) and each clearly implausible in cm, so the keys are sound.",
+   "status": "CLOSED - no action"
+  }
+ ]
+}

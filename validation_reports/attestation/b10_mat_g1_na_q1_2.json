@@ -1,0 +1,294 @@
+{
+ "batch": "b10_mat_g1_na_q1_2",
+ "attested_at": "2026-08-20T13:10:00+08:00",
+ "role": "Attester",
+ "blindness": {
+  "saw": [
+   "clause",
+   "competency text",
+   "grade/quarter",
+   "10 rendered student-path samples"
+  ],
+  "did_not_see": [
+   "CAPABILITY_PROVIDERS or that any entry was being defended",
+   "the node id",
+   "the DNA, formatter registry, or generator source",
+   "validation_reports/, local_only/, docs/"
+  ],
+  "samples_passed_inline": true,
+  "tool_uses_by_attester": 0,
+  "framing": "neutral; medium/modality clauses judged strictly with an explicit instruction to state what would flip the verdict"
+ },
+ "packet": {
+  "builder": "tests/attester_packets.py",
+  "sampling": "is_student_path=True",
+  "node_id": "mat_g1_na_q1_2",
+  "seeds": [
+   11,
+   23,
+   42,
+   57,
+   64,
+   78,
+   91,
+   103,
+   118,
+   127
+  ],
+  "samples_judged": [
+   {
+    "seed": 11,
+    "question_text": "Move the dot to show 30 on the number line.",
+    "correct_answer": 30,
+    "formatter": "set_fill_in_blank"
+   },
+   {
+    "seed": 23,
+    "question_text": "Move the dot to show 15 on the number line.",
+    "correct_answer": 15,
+    "formatter": "set_fill_in_blank"
+   },
+   {
+    "seed": 42,
+    "question_text": "What number do the blocks show?",
+    "correct_answer": "C",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 57,
+    "question_text": "What number do the blocks show?",
+    "correct_answer": "A",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 64,
+    "question_text": "What number is marked on the number line?",
+    "correct_answer": "B",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 78,
+    "question_text": "What number do the blocks show?",
+    "correct_answer": "C",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 91,
+    "question_text": "Use base-10 blocks to show the number 31.",
+    "correct_answer": 31,
+    "formatter": "set_fill_in_blank"
+   },
+   {
+    "seed": 103,
+    "question_text": "Move the dot to show 36 on the number line.",
+    "correct_answer": 36,
+    "formatter": "set_fill_in_blank"
+   },
+   {
+    "seed": 118,
+    "question_text": "What number do the blocks show?",
+    "correct_answer": "C",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 127,
+    "question_text": "Use base-10 blocks to show the number 32.",
+    "correct_answer": 32,
+    "formatter": "set_fill_in_blank"
+   }
+  ]
+ },
+ "verdicts": [
+  {
+   "capability_id": "recognize",
+   "node_id": "mat_g1_na_q1_2",
+   "clause": "Recognize",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    57,
+    78,
+    118,
+    64
+   ],
+   "confidence": "high",
+   "reasoning": "Recognition tasks: representation in, numeral out.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "represent",
+   "node_id": "mat_g1_na_q1_2",
+   "clause": "represent",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    103,
+    91,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "The other direction: numeral in, pupil-built representation out. Both directions of the competency are present.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "numbers",
+   "node_id": "mat_g1_na_q1_2",
+   "clause": "numbers",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Every item has a whole-number target.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "up_to_100",
+   "node_id": "mat_g1_na_q1_2",
+   "clause": "up to 100",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    42,
+    103
+   ],
+   "confidence": "high",
+   "reasoning": "The ten sampled values are 13, 15, 16, 16, 22, 24, 30, 31, 32, 36 - three decades out of ten, nothing above 36, no number in the 40s-90s, and never 100. The upper half of the stated range is untouched.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "concrete_models",
+   "node_id": "mat_g1_na_q1_2",
+   "clause": "concrete",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    91,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "'Use base-10 blocks' names a concrete manipulative, but nothing concrete is on the page and an on-screen block widget is virtual, not concrete. Would flip on evidence that an interactive block tool renders and the pupil actually composes 3 tens and 1 one.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "pictorial_models",
+   "node_id": "mat_g1_na_q1_2",
+   "clause": "pictorial models",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    42,
+    57,
+    78,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "The pictures are referenced, never shown. Here the visual is load-bearing ('What number do the blocks show?' is unanswerable without it), so a picture is certainly intended - but intent is not evidence that it renders, still less that it renders 13 rather than 31.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "number_line",
+   "node_id": "mat_g1_na_q1_2",
+   "clause": "number line",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    64,
+    103
+   ],
+   "confidence": "high",
+   "reasoning": "Referenced but neither the line, its scale, nor its labelling is visible.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "block_or_bar_models",
+   "node_id": "mat_g1_na_q1_2",
+   "clause": "block or bar models",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    42,
+    57,
+    78,
+    91,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Six stems reference blocks; the clause is disjunctive so blocks alone would satisfy it IF shown. No bar model appears anywhere, in text or by reference.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "numerals",
+   "node_id": "mat_g1_na_q1_2",
+   "clause": "numerals",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    91,
+    103,
+    127,
+    42,
+    57,
+    64,
+    78,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Numerals are used as a representation in their own right and in both directions.",
+   "action_taken": "none - entry stands"
+  }
+ ],
+ "incidental_findings": [
+  {
+   "severity": "defect",
+   "seeds": [
+    42,
+    57,
+    78,
+    118
+   ],
+   "finding": "Four items share the IDENTICAL stem 'What number do the blocks show?' with four different answers (13, 24, 16, 22), so the entire discriminative content sits in an image. If the image fails to render or renders the wrong quantity, the item is unanswerable or silently wrong and no text-level check catches it.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    91,
+    127
+   ],
+   "finding": "'Use base-10 blocks to show the number 31' is undoable unless a manipulative is actually supplied; the key '31' suggests the response is graded as a number, which would not confirm the pupil built 3 tens and 1 one rather than typing '31'. 'base-10' is also teacher register rather than G1 Q1 pupil register.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    11,
+    23,
+    103
+   ],
+   "finding": "'Move the dot to show 30 on the number line' does not establish the line's endpoints, interval or labelling, and the key is a value rather than a position.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "coverage",
+   "seeds": [],
+   "finding": "The number range collapses to 13-36 with no value above 36 in ten draws; only two modalities appear; no bar model at all despite the clause naming it.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "none",
+   "seeds": [],
+   "finding": "No key contradicts its stem; no option list contains a second correct answer.",
+   "status": "CLOSED - no action"
+  }
+ ]
+}

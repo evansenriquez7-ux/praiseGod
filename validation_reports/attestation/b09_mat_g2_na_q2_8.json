@@ -1,0 +1,286 @@
+{
+ "batch": "b09_mat_g2_na_q2_8",
+ "attested_at": "2026-08-20T13:10:00+08:00",
+ "role": "Attester",
+ "blindness": {
+  "saw": [
+   "clause",
+   "competency text",
+   "grade/quarter",
+   "10 rendered student-path samples"
+  ],
+  "did_not_see": [
+   "CAPABILITY_PROVIDERS or that any entry was being defended",
+   "the node id",
+   "the DNA, formatter registry, or generator source",
+   "validation_reports/, local_only/, docs/"
+  ],
+  "samples_passed_inline": true,
+  "tool_uses_by_attester": 0,
+  "framing": "neutral - 'do these items exhibit what this clause names?'; sub-case and medium clauses judged strictly on explicit instruction"
+ },
+ "packet": {
+  "builder": "tests/attester_packets.py",
+  "sampling": "is_student_path=True",
+  "node_id": "mat_g2_na_q2_8",
+  "seeds": [
+   11,
+   23,
+   42,
+   57,
+   64,
+   78,
+   91,
+   103,
+   118,
+   127
+  ],
+  "samples_judged": [
+   {
+    "seed": 11,
+    "question_text": "What is the next number in the pattern: 30, 28, 26, 24, 22, 20?",
+    "correct_answer": 18,
+    "formatter": "cloze"
+   },
+   {
+    "seed": 23,
+    "question_text": "What is the missing piece (position 6) in the pattern?",
+    "correct_answer": "D",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 42,
+    "question_text": "What is the next letter in the pattern: e, d, e, d, e, d?",
+    "correct_answer": "e",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 57,
+    "question_text": "What is the next number in the pattern: 10, 12, 14, 16, 18, 20?",
+    "correct_answer": 22,
+    "formatter": "mcq"
+   },
+   {
+    "seed": 64,
+    "question_text": "What is the next number in the pattern: 11, 10, 9, 8, 7, 6?",
+    "correct_answer": 5,
+    "formatter": "mcq"
+   },
+   {
+    "seed": 78,
+    "question_text": "What is the next number in the pattern: 10, 11, 12, 13, 14, 15?",
+    "correct_answer": 16,
+    "formatter": "mcq"
+   },
+   {
+    "seed": 91,
+    "question_text": "What is the next number in the pattern: 12, 13, 14, 15, 16, 17?",
+    "correct_answer": 18,
+    "formatter": "cloze"
+   },
+   {
+    "seed": 103,
+    "question_text": "What is the missing piece (position 6) in the pattern?",
+    "correct_answer": "B",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 118,
+    "question_text": "What is the next letter in the pattern: o, f, o, f, o, f?",
+    "correct_answer": "o",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 127,
+    "question_text": "What is the missing piece (position 6) in the pattern?",
+    "correct_answer": "D",
+    "formatter": "read_mcq"
+   }
+  ]
+ },
+ "verdicts": [
+  {
+   "capability_id": "determine",
+   "node_id": "mat_g2_na_q2_8",
+   "clause": "Determine",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    42,
+    57,
+    64,
+    78,
+    91,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Every item asks the pupil to work out an unstated term.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "next_term",
+   "node_id": "mat_g2_na_q2_8",
+   "clause": "next term/s",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    42,
+    57,
+    64,
+    78,
+    91,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "All ask for the next term after a six-term run. Only the singular case appears; no item asks for two or more subsequent terms.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "increasing_decreasing",
+   "node_id": "mat_g2_na_q2_8",
+   "clause": "increasing or decreasing",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    64,
+    57,
+    78,
+    91
+   ],
+   "confidence": "high",
+   "reasoning": "Both directions appear.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "patterns",
+   "node_id": "mat_g2_na_q2_8",
+   "clause": "patterns",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Every item presents an ordered sequence governed by a rule.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "numbers",
+   "node_id": "mat_g2_na_q2_8",
+   "clause": "numbers",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    57,
+    64,
+    78,
+    91
+   ],
+   "confidence": "high",
+   "reasoning": "Numeric sequences.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "letters",
+   "node_id": "mat_g2_na_q2_8",
+   "clause": "letters",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Letter patterns. Both are repeating, not increasing or decreasing, so letters are exercised in only one pattern type.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "rhythmic_properties",
+   "node_id": "mat_g2_na_q2_8",
+   "clause": "rhythmic properties",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [],
+   "confidence": "high",
+   "reasoning": "Nothing involves sound, beat, claps, duration, or any rhythmic sequence; all ten items are silent text sequences.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "visual_elements",
+   "node_id": "mat_g2_na_q2_8",
+   "clause": "visual elements",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    23,
+    103,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "The three candidates say only 'What is the missing piece (position 6) in the pattern?' and offer purely numeric options. No shape, colour, size or orientation appears, and what the pupil selects is a number.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "arts",
+   "node_id": "mat_g2_na_q2_8",
+   "clause": "arts",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [],
+   "confidence": "high",
+   "reasoning": "No item references artwork, art media, design motifs, or any arts context.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "repetitions",
+   "node_id": "mat_g2_na_q2_8",
+   "clause": "repetitions",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "ABAB repeating patterns where the answer is produced by the repeat, not by an increment.",
+   "action_taken": "none - entry stands"
+  }
+ ],
+ "incidental_findings": [
+  {
+   "severity": "defect",
+   "seeds": [
+    23,
+    103,
+    127
+   ],
+   "finding": "'What is the missing piece (position 6) in the pattern?' gives no pattern in the text. The referent 'piece' is undefined and it is unclear whether position 6 is terminal or interior. Unanswerable and unverifiable as rendered.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "weakness",
+   "seeds": [
+    11,
+    64,
+    103
+   ],
+   "finding": "Weak distractors (42 against a pattern decreasing by 2; 17 in a sequence descending to 5; 20 among 1/2/3) correspond to no plausible pupil error, making those items effectively three-option.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "coverage",
+   "seeds": [],
+   "finding": "Three of the four media the competency names are absent: rhythm, visual elements and arts. Numeric step sizes are limited to +/-1 and +/-2 with no skip counting and no growing patterns; seeds 78 and 91 are near-duplicates; every visible pattern is exactly six terms.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "none",
+   "seeds": [],
+   "finding": "No wrong keys found; all sequences verified.",
+   "status": "CLOSED - no action"
+  }
+ ]
+}

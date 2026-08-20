@@ -1,0 +1,296 @@
+{
+ "batch": "b11_mat_g1_na_q1_7",
+ "attested_at": "2026-08-20T13:10:00+08:00",
+ "role": "Attester",
+ "blindness": {
+  "saw": [
+   "clause",
+   "competency text",
+   "grade/quarter",
+   "10 rendered student-path samples"
+  ],
+  "did_not_see": [
+   "CAPABILITY_PROVIDERS or that any entry was being defended",
+   "the node id",
+   "the DNA, formatter registry, or generator source",
+   "validation_reports/, local_only/, docs/"
+  ],
+  "samples_passed_inline": true,
+  "tool_uses_by_attester": 0,
+  "framing": "neutral; medium clauses judged strictly with an explicit instruction to state what would flip the verdict"
+ },
+ "packet": {
+  "builder": "tests/attester_packets.py",
+  "sampling": "is_student_path=True",
+  "node_id": "mat_g1_na_q1_7",
+  "seeds": [
+   11,
+   23,
+   42,
+   57,
+   64,
+   78,
+   91,
+   103,
+   118,
+   127
+  ],
+  "samples_judged": [
+   {
+    "seed": 11,
+    "question_text": "The two parts are 2 and 1. What is the sum?",
+    "correct_answer": "3",
+    "formatter": "read_fill_in_blank"
+   },
+   {
+    "seed": 23,
+    "question_text": "The two parts are 1 and 1. What is the sum?",
+    "correct_answer": "2",
+    "formatter": "read_fill_in_blank"
+   },
+   {
+    "seed": 42,
+    "question_text": "Start at 2. Count up 1 more. What number do you land on?",
+    "correct_answer": "3",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 57,
+    "question_text": "Start at 2. Count up 1 more. What number do you land on?",
+    "correct_answer": "3",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 64,
+    "question_text": "One group has 1 item and another group has 1 item. If you put them together, how many items are there in all?",
+    "correct_answer": "2",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 78,
+    "question_text": "Start at 2. Count up 1 more. What number do you land on?",
+    "correct_answer": "3",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 91,
+    "question_text": "Start at 2. Count up 1 more. You land on 3. True or False?",
+    "correct_answer": "True",
+    "formatter": "true_false"
+   },
+   {
+    "seed": 103,
+    "question_text": "🐥🐥 — There are 2 chicks.\n🐥 — 1 more chick is added.\nHow many total chicks are there?",
+    "correct_answer": "A",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 118,
+    "question_text": "Start at 2. Count up 1 more. What number do you land on?",
+    "correct_answer": "3",
+    "formatter": "mcq"
+   },
+   {
+    "seed": 127,
+    "question_text": "Show 2 + 1 on the number line.",
+    "correct_answer": "3",
+    "formatter": "set_fill_in_blank"
+   }
+  ]
+ },
+ "verdicts": [
+  {
+   "capability_id": "illustrate",
+   "node_id": "mat_g1_na_q1_7",
+   "clause": "Illustrate",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    103
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 103 embeds a picture-model (chick emoji: two, then one more added) that carries the mathematics. No other seed illustrates anything, and no item asks the PUPIL to produce an illustration.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "addition_of_numbers",
+   "node_id": "mat_g1_na_q1_7",
+   "clause": "addition of numbers",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Every item combines two numbers additively.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "sums_up_to_20",
+   "node_id": "mat_g1_na_q1_7",
+   "clause": "sums up to 20",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42
+   ],
+   "confidence": "high",
+   "reasoning": "Every sum in the sample is 2 or 3 and no addend exceeds 2. The clause names a range to 20; roughly the bottom eighth is exercised and nothing above 3 appears.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "concrete",
+   "node_id": "mat_g1_na_q1_7",
+   "clause": "concrete",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    64,
+    103
+   ],
+   "confidence": "high",
+   "reasoning": "Nothing is a manipulable or a real object. Seed 64's 'one group has 1 item' uses a placeholder noun, not a thing; seed 103's emoji are pictures, which is the pictorial medium, not the concrete one.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "pictorial_models",
+   "node_id": "mat_g1_na_q1_7",
+   "clause": "pictorial models",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    103
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 103 alone: quantity readable from the picture rather than only from the words. One item in ten and one model type. Would flip if that emoji row does not render as a picture, or if the counts were also stated in the stem.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "describes",
+   "node_id": "mat_g1_na_q1_7",
+   "clause": "describes",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    57,
+    64,
+    78,
+    91,
+    118,
+    11,
+    23
+   ],
+   "confidence": "high",
+   "reasoning": "Addition is described in words as a count-up action, as putting two groups together, and as parts making a sum. Caveat: no item asks the pupil to GIVE a description; every key is a number or a truth value.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "addition",
+   "node_id": "mat_g1_na_q1_7",
+   "clause": "addition",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    42,
+    57,
+    64,
+    78,
+    91,
+    103,
+    118,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "All ten seeds.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "counting_up",
+   "node_id": "mat_g1_na_q1_7",
+   "clause": "'counting up,'",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    57,
+    78,
+    118,
+    91
+   ],
+   "confidence": "high",
+   "reasoning": "'Start at 2. Count up 1 more.' - explicit, in the competency's own words.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "putting_together",
+   "node_id": "mat_g1_na_q1_7",
+   "clause": "'putting together'",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    64,
+    11,
+    23
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 64 uses the phrase directly; seeds 11 and 23 carry the part-part-whole framing that underlies it.",
+   "action_taken": "none - entry stands"
+  }
+ ],
+ "incidental_findings": [
+  {
+   "severity": "defect",
+   "seeds": [
+    127
+   ],
+   "finding": "'Show 2 + 1 on the number line' asks for a demonstration but the key is the single value 3, and no number line appears. The definite article points at an object the pupil cannot see.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    64
+   ],
+   "finding": "'One group has 1 item and another group has 1 item' leaves 'item' unnamed - the reason the 'concrete' clause fails.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "weakness",
+   "seeds": [
+    42,
+    64
+   ],
+   "finding": "Implausible distractors: 13 offered for 2 + 1 and 12 for 1 + 1. Neither corresponds to any error a Grade 1 pupil makes; both look generated by a digit-concatenation rule and function as giveaways.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    42,
+    57,
+    78,
+    118,
+    91
+   ],
+   "finding": "Four identical items (same stem, options reordered) plus a fifth asking the same fact as True/False. Half the sample is one question.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "coverage",
+   "seeds": [],
+   "finding": "Ten items reduce to two number facts (1+1 and 2+1). Exactly one model appears where the competency asks for 'a variety of concrete and pictorial models'. 'counting up' is over-represented (five seeds) and 'putting together' has one explicit seed; the two are never contrasted within one item.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "none",
+   "seeds": [],
+   "finding": "All arithmetic and keys correct; no vocabulary or operation exceeds G1 Q1.",
+   "status": "CLOSED - no action"
+  }
+ ]
+}

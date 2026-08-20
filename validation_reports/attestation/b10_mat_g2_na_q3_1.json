@@ -1,0 +1,294 @@
+{
+ "batch": "b10_mat_g2_na_q3_1",
+ "attested_at": "2026-08-20T13:10:00+08:00",
+ "role": "Attester",
+ "blindness": {
+  "saw": [
+   "clause",
+   "competency text",
+   "grade/quarter",
+   "10 rendered student-path samples"
+  ],
+  "did_not_see": [
+   "CAPABILITY_PROVIDERS or that any entry was being defended",
+   "the node id",
+   "the DNA, formatter registry, or generator source",
+   "validation_reports/, local_only/, docs/"
+  ],
+  "samples_passed_inline": true,
+  "tool_uses_by_attester": 0,
+  "framing": "neutral; medium/modality clauses judged strictly with an explicit instruction to state what would flip the verdict"
+ },
+ "packet": {
+  "builder": "tests/attester_packets.py",
+  "sampling": "is_student_path=True",
+  "node_id": "mat_g2_na_q3_1",
+  "seeds": [
+   11,
+   23,
+   42,
+   57,
+   64,
+   78,
+   91,
+   103,
+   118,
+   127
+  ],
+  "samples_judged": [
+   {
+    "seed": 11,
+    "question_text": "Look at the 4×3 array. How many squares are shaded in all?",
+    "correct_answer": "C",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 23,
+    "question_text": "Look at the 3×2 array. How many squares are shaded in all?",
+    "correct_answer": "A",
+    "formatter": "read_mcq"
+   },
+   {
+    "seed": 42,
+    "question_text": "Starting at 0, take 2 equal jumps of 3 on the number line. What is 3 × 2?",
+    "correct_answer": 6,
+    "formatter": "mcq"
+   },
+   {
+    "seed": 57,
+    "question_text": "7 + 7 = ___. What is 7 × 2?",
+    "correct_answer": 14,
+    "formatter": "mcq"
+   },
+   {
+    "seed": 64,
+    "question_text": "Count by 3s: 3, 6. What is 3 × 2?",
+    "correct_answer": 6,
+    "formatter": "mcq"
+   },
+   {
+    "seed": 78,
+    "question_text": "3 + 3 = ___. What is 3 × 2?",
+    "correct_answer": 6,
+    "formatter": "mcq"
+   },
+   {
+    "seed": 91,
+    "question_text": "2 + 2 + 2 + 2 = ___",
+    "correct_answer": 8,
+    "formatter": "cloze"
+   },
+   {
+    "seed": 103,
+    "question_text": "Shade all the squares inside the 3×3 rectangle. How many squares did you shade in all?",
+    "correct_answer": 9,
+    "formatter": "set_fill_in_blank"
+   },
+   {
+    "seed": 118,
+    "question_text": "Starting at 0, take 4 equal jumps of 3 on the number line. What is 3 × 4?",
+    "correct_answer": 12,
+    "formatter": "mcq"
+   },
+   {
+    "seed": 127,
+    "question_text": "Look at the 2×4 array. It shows 4 + 4. How many squares are shaded in all?",
+    "correct_answer": "D",
+    "formatter": "read_mcq"
+   }
+  ]
+ },
+ "verdicts": [
+  {
+   "capability_id": "illustrate_multiplication",
+   "node_id": "mat_g2_na_q3_1",
+   "clause": "Illustrate",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    103
+   ],
+   "confidence": "high",
+   "reasoning": "Seed 103 ('Shade all the squares inside the 3x3 rectangle') is the one item where the pupil produces a representation rather than reading one. Weak: the pupil is told the dimensions and told to shade everything, so no decision about grouping is required.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "write_multiplication_sentence",
+   "node_id": "mat_g2_na_q3_1",
+   "clause": "write multiplication",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    42,
+    57,
+    64,
+    78,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "No item asks the pupil to produce a multiplication sentence. Every key is a single product, and the multiplication expression is supplied by the stem. The reverse direction (repeated addition -> multiplication sentence) is absent.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "multiplication_as_repeated_addition",
+   "node_id": "mat_g2_na_q3_1",
+   "clause": "multiplication as repeated addition",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    57,
+    78,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Put the addition and the multiplication side by side in one stem; the bridge is explicit and correct.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "concrete_model",
+   "node_id": "mat_g2_na_q3_1",
+   "clause": "concrete",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [],
+   "confidence": "high",
+   "reasoning": "Nothing names or implies a manipulative or a real object - no counters, tiles, sticks, or objects-in-groups context. Every item is bare symbolic notation or a grid/number-line reference.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "pictorial_model",
+   "node_id": "mat_g2_na_q3_1",
+   "clause": "pictorial models",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    103,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "The only evidence is stems that REFERENCE pictures. A textual reference to a picture is not a picture: nothing establishes that any array renders or whether the drawing matches the key. Would flip on the packet carrying the rendered visual payload.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "numeral_form",
+   "node_id": "mat_g2_na_q3_1",
+   "clause": "numerals",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    42,
+    57,
+    64,
+    78,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Multiplication is written in numerals with the x symbol throughout.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "groups_of_equal_quantities",
+   "node_id": "mat_g2_na_q3_1",
+   "clause": "groups of equal quantities",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    57,
+    78,
+    91,
+    42,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "Equal addends and equal groups run through the set.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "array",
+   "node_id": "mat_g2_na_q3_1",
+   "clause": "arrays",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    11,
+    23,
+    127
+   ],
+   "confidence": "high",
+   "reasoning": "Arrays are named with their dimensions but none is on the page. The dimensions are stated in the stem, so the mathematics is answerable from text alone and the picture is redundant rather than load-bearing.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  },
+  {
+   "capability_id": "counting_by_multiples",
+   "node_id": "mat_g2_na_q3_1",
+   "clause": "counting by multiples",
+   "verdict": "PROVIDED",
+   "seeds_showing_it": [
+    64
+   ],
+   "confidence": "high",
+   "reasoning": "Single instance ('Count by 3s: 3, 6'), and a two-term skip count is barely distinguishable from 3 + 3. Minimal coverage of a clause the competency names explicitly.",
+   "action_taken": "none - entry stands"
+  },
+  {
+   "capability_id": "equal_jumps_on_a_number_line",
+   "node_id": "mat_g2_na_q3_1",
+   "clause": "equal jumps on a number line",
+   "verdict": "NOT_PROVIDED",
+   "seeds_showing_it": [
+    42,
+    118
+   ],
+   "confidence": "high",
+   "reasoning": "The strategy is named in words and fully specified in text, but no number line is shown and the item is answerable with no number line at all. The clause names a MODEL, not a phrase.",
+   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+  }
+ ],
+ "incidental_findings": [
+  {
+   "severity": "defect",
+   "seeds": [
+    11,
+    23
+   ],
+   "finding": "'Look at the 4x3 array. How many squares are shaded in all?' never says all squares are shaded, yet the key assumes full shading. Seed 103 says explicitly 'Shade ALL the squares', so the generator family does distinguish partial from full - if any array item renders a partially shaded grid the key is wrong.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "defect",
+   "seeds": [
+    11,
+    127
+   ],
+   "finding": "Factor-role convention flips between item types. Numeral items write (size of group) x (number of groups) - 2 jumps of 3 -> '3 x 2'. Array items use rows x columns - '2x4 array. It shows 4 + 4'. Products are unaffected so no key is wrong, but at the exact grade where the array should GROUND the multiplication sentence, multiplicand and multiplier swap roles depending on the model.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "weakness",
+   "seeds": [
+    11,
+    23,
+    103,
+    91
+   ],
+   "finding": "Four of ten items contain no multiplication at all: three are pure square-counting and one is bare addition with no x, no groups language, and no model. None reaches the 'as multiplication' bridge that is the point of the competency.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "weakness",
+   "seeds": [
+    42,
+    64,
+    78
+   ],
+   "finding": "The option '1' appears three times and corresponds to no plausible pupil error in repeated addition.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "coverage",
+   "seeds": [],
+   "finding": "The fact 3 x 2 = 6 appears four times (40% of the sample) and the answer '6' is the key four times. The only factors used anywhere are 2, 3 and 4 - no 5s and no 10s. Every item runs model/addition -> product; nothing runs picture -> multiplication sentence.",
+   "status": "OPEN"
+  },
+  {
+   "severity": "none",
+   "seeds": [],
+   "finding": "All arithmetic verified correct; no second option correct; no vocabulary or operation exceeds the grade.",
+   "status": "CLOSED - no action"
+  }
+ ]
+}
