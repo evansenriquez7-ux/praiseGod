@@ -4177,3 +4177,85 @@ Findings fell only because attested clauses left the UNATTESTED queue — the co
 7. Latent trap, noted not fixed: `FORMATTER_VARIANT_SUPPORT["multiplication"]` has `"table"` and
    `"structure"` keys at **formatter** level holding plain lists, not dicts. Dead today because no
    formatter carries those names; the day one does, two axis lists silently become restrictions.
+
+---
+
+## 2026-08-21 — tick 19 — 45 of 49 nodes could not reach their own curriculum range
+
+Tick 18's Attester ruled `sums up to 20` NOT_PROVIDED. It was right about something much larger.
+
+**The ceiling was injected as a constant.** `max_sum` is a continuous axis separate from
+`number_difficulty`, and nothing on the student path ever sets it, so it fell to
+`axis.get("default", 0.5)`. The mapping is logarithmic, so 0.5 lands at ~a quarter of the range:
+
+```
+number_difficulty=0.0 -> max_sum injected={5}  results=[1,1,1,1,1]
+number_difficulty=1.0 -> max_sum injected={5}  results=[5,5,5,5,5]
+```
+
+The adaptivity knob moves the pair *within* a frozen ceiling. **Confirmed as product behaviour, not a
+harness convention** — the student portal calls the pipeline with no `difficulty_profile` at all
+(`practice_router.py:568`, `:928`). 45 of the 49 (node, continuous competency bound) pairs served
+under half their ceiling; `mat_g3_na_q2_1` reached 250 of 10 000.
+
+**Fixed** by sampling the scope axis per seed from the seeded rng. `number_difficulty` deliberately
+excluded — it is the adaptivity input, never a competency bound.
+
+**Making the range reachable broke two nodes, which is the point.** `max_product`'s bound floor was 0,
+so a low sample gave a ceiling of 0 and the DNA emitted a zero factor (GridArea `cols=0`; 54 and 162
+§1G failures). registry.py already floors the *table-named* branch at "room for at least an a=2 fact";
+the `else` branch never got it. Floored at 4. Ground-truth correction, Protocol 5, nodes
+`mat_g2_na_q3_0` / `mat_g2_na_q3_1`. **This closes the last §1G finding, open since tick 12.**
+
+```
+52 affected nodes matrix-checked individually: 51 clean
+the 1 failure (mat_g3_na_q3_1) is PRE-EXISTING — proved by stashing the change and
+  re-running: identical 2 failures either way
+§2B 0 both directions · map regenerated 212 -> 212 · pytest 318 passed
+```
+
+**Re-attestation (batch 19), blind, same fixed seeds as batch018 so they are comparable:**
+
+```
+mat_g1_na_q2_6  sum_up_to_100  NOT_PROVIDED -> PROVIDED    <- the fix closed this
+mat_g1_na_q1_9  sums_up_to_20  NOT_PROVIDED -> NOT_PROVIDED
+```
+
+The second is correct, and was predicted before dispatch by measuring the distribution: p50=2, p90=4,
+only **8%** of 300 seeds above half the ceiling. Uniform scalar + logarithmic mapping = log-uniform
+ceilings, most of them small. The node can now reach 17; it mostly still serves 2. **The fix is real
+and partial.** The packet seeds were not changed to obtain a better verdict.
+
+**Both movements:** findings §5 22 → **497**, §6 757 → **764**; coverage **143/787** (flat, since this
+tick re-attested rather than newly attested). CONTRADICTED 33 → 32.
+
+**The cost, stated plainly:** moving content on 52 nodes invalidated 479 reviews. Those reviews describe
+problems the pipeline no longer renders; keeping them "fresh" would have required leaving 45 nodes
+unable to reach their curriculum scope.
+
+**Next tick should:**
+1. **Fix §6F to honour `supersedes` — before anything else.** It never reads the field, so a correctly
+   superseded batch stays STALE for ever: 5 of today's 13 STALE findings are already superseded. The
+   ~50-node re-review programme below would add ~50 *uncloseable* findings. Not touched this tick on
+   purpose (it lives in `validation/`, and making a red check green inside a large content change is
+   the shape of every past defeat) — so verify the reading independently before editing.
+2. **The distribution, not just the reach.** Sampling the scalar uniformly through a logarithmic
+   mapping leaves 92% of seeds below half the ceiling. Options: sample uniformly in *value* space; or
+   let `number_difficulty` drive the ceiling so the mastery engine raises it. The second is more in
+   keeping with "Adaptive K-12 Mastery Engine" but is a design decision — escalate if unsure.
+   `sums_up_to_20` on `mat_g1_na_q1_9` is the acceptance test.
+3. **The ~50-node re-review programme** (479 STALE reviews). Gated on item 1.
+4. **`mat_g3_na_q3_1`, the tree's only matrix failure.** Both readings: (a) harness bug —
+   `validate_matrix:900` reads `COMPATIBILITY` directly rather than `get_node_formatters()`, so the
+   exclusion map does not apply, and its availability filter at :928 carries
+   `not isinstance(bound_val, list)`, so a list-valued scope never filters; the orchestrator genuinely
+   refuses the pair. (b) pipeline bug — the node advertises formatters it cannot serve. **Maintainer's
+   call**; do not silently pick (a).
+5. Content, all Attester-found and unfixed: noun-number agreement in four stems (`"10 running shoes and
+   6 water bottle"` gets it right and wrong in one sentence); zero-addend items (`"81 water bowls ...
+   and 0 water bowls"` is the *largest* sum in its sample and performs no addition); a distractor
+   exactly key+10 on all 20 items (seed 57: key 1, options `1 / 2 / 11 / 0`); 3 of 10 seeds rendering
+   an identical stem.
+6. Still open: `mat_g2_na_q3_1`'s undrawn number line; the `pictures` routing defect (emoji_pictorial
+   registered and servable, never selected); the `orally` class (escalation, no audio channel); the 10
+   DNAs offering only `mcq`; `read_mcq` → placement (63 nodes); ~32 attestation dispatches.
