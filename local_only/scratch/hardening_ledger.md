@@ -4096,3 +4096,84 @@ matters: **fix the guard, then do the work it guards.**
 4. Still open: `read_mcq` -> placement (63 nodes), `concrete materials`, `up to 10` on
    `mat_g1_na_q1_6`, `geometric_lines` hash bug, §1G extensions, re-attesting blind-packet nodes,
    coverage programme (~35 dispatches).
+
+---
+
+## 2026-08-21 — tick 18 — the regenerator that never ran, and the scope compared as a whole
+
+**Tick 17's `Next tick should:` item 1 was wrong in both halves, and finding out why was the tick.**
+
+**(a) The command §2B tells you to run has never worked.** `scripts/regen_formatter_exclusions.py`,
+shipped in tick 16 beside the generated map, dies on `ImportError: cannot import name
+'COMPATIBILITY_FORMATTERS_FOR_NODE'` — and past the import it has **no write of any kind**. It computed
+the map, printed a count, returned; the `from pathlib import Path` was never used. So a 228-entry file
+carrying a `DO NOT EDIT BY HAND` banner was hand-maintained under a generated label, and §2B's own
+failure message told a reader to run a script that could not run. **I cited that command in the tick-16
+report without executing it.** The map's content turned out correct (`added=[] removed=[]`), so the
+exposure was latent, not landed. Regeneration now recomputes from `COMPATIBILITY`, never from
+`get_node_formatters()` which subtracts the map being written — otherwise a wrongly excluded pair is
+never probed again and the error is permanent and self-confirming. Proved by emptying the map and
+getting the identical 228 back.
+
+**(b) The declarations did not need broadening; a membership test needed fixing.** A competency can
+bind an axis to a **set** of values (78 such bounds exist). `is_variant_supported` assumed a scalar and
+evaluated `variant_value in allowed_values`, comparing the whole list — False whatever it contains.
+Every formatter restricting that axis was refused even when it supports *every* member: all five of
+`mat_g2_na_q3_1`'s non-mcq formatters support all three of its task_types and all five were refused.
+Tick 16's map then filed those refusals as legitimate restrictions and hid the bug — `validate_matrix`
+already carries `not isinstance(bound_val, list)`, so the harness's model and the orchestrator's
+behaviour disagreed, invisibly, because the excluded pairs were never forward-tested.
+
+Fixed with `all`, not `any` (the DNA picks one member per seed). Second instance of the same cause
+fixed with it: `adapter.py` passed `str(var_value)`.
+
+```
+exclusions 228 -> 212   (16 FREED, 0 newly excluded)
+single-formatter nodes   33 -> 29
+still refused, correctly: mat_g3_na_q3_4 arrays (no 'two_step'),
+                          q1_9 number_bond/number_line_* (missing a member)
+student-path renders changed: 0 of 40   -> no review or attestation goes stale
+mutations: whole-list and any-not-all, each caught by name
+```
+
+**This widens the Lab/pinned path, not the student path.** Saying otherwise would be an overclaim.
+
+**Attestation batch 18** — 16 clauses, 3 nodes, 0 tool uses. 10 PROVIDED, 6 NOT_PROVIDED, all 6 on
+registered entries and therefore CONTRADICTED.
+
+**The finding of the tick, from the Attester and no machine check:** `mat_g1_na_q1_9`'s competency is
+*"addition with sums up to 20"* and across **200 seeds it produces exactly two distinct answers, 2 and
+3**. `mat_g1_na_q2_6` ("sums up to 100") tops out at 13. The bounds are right and the ceiling is
+unreachable even at `number_difficulty=1.0` (keys all 5), so the cap is in the scalar→magnitude
+mapping on the `word_problem`/`putting_together` path. Left unfixed on purpose: `run_all` was already
+measuring the committed tree.
+
+**Both movements:** findings 767 → **757**; coverage 127 → **143/787**. CONTRADICTED rose 27 → 33.
+Findings fell only because attested clauses left the UNATTESTED queue — the contradiction count going
+*up* is what honest attestation looks like.
+
+**Next tick should:**
+1. **Fix the magnitude cap on `addition`'s word_problem path.** `mat_g1_na_q1_9` (2 distinct answers
+   over 200 seeds, ceiling 20) and `mat_g1_na_q2_6` (max 13, ceiling 100). Bounds and `_PARAM_BOUNDS`
+   are both correct; the cap is between them. Content Rule 3 — the node must cover its full scope,
+   not merely stay inside it. Then re-render, re-review, and **re-attest** both nodes: the two
+   `sums_up_to_*` CONTRADICTED entries are the acceptance test.
+2. **`mat_g2_na_q3_1`: 4 of 12 seeds say "take 2 equal jumps of 3 on the number line" with
+   `visual=None`,** and no multiplication formatter can draw one. Per Content Rule 4 build the visual,
+   don't restrict the task — the competency reads *"using a variety of concrete and pictorial models
+   and numerals"*.
+3. **The `pictures` CONTRADICTED pair.** `emoji_pictorial` is registered and, after this tick, servable
+   on both nodes — but the student path never selects it, so all 10 seeds render `visual_type None`.
+   That is a routing defect, not a table edit.
+4. **The `orally` class** (2 more CONTRADICTED here, same shape as `concrete materials`): the pipeline
+   has no audio channel. Escalation, not a fix — is MATATAG's "(given orally or in pictures)" a
+   delivery note to the teacher rather than a required artifact? Both readings, maintainer's call.
+5. Content notes filed unasked and unfixed: zero as a G1 addend; plural agreement ("3 pom-pom",
+   "2 water bottle"); duplicate stems within one 10-seed set; a key+10 distractor on *every* MCQ;
+   a dead `0` distractor on 2 × 2; `error_detect` asking a yes/no question while keying a dict.
+6. Still open: the 10 DNAs offering only `mcq`; `mat_g2_na_q3_0`'s `max_product` floor (last §1G);
+   4 stale seeds on `mat_g3_na_q3_1`; `read_mcq` → placement (63 nodes); `up to 10` on
+   `mat_g1_na_q1_6`; `geometric_lines` hash bug; §1G extensions; ~32 attestation dispatches remain.
+7. Latent trap, noted not fixed: `FORMATTER_VARIANT_SUPPORT["multiplication"]` has `"table"` and
+   `"structure"` keys at **formatter** level holding plain lists, not dicts. Dead today because no
+   formatter carries those names; the day one does, two axis lists silently become restrictions.
