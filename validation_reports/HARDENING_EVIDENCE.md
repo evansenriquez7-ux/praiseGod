@@ -7069,3 +7069,70 @@ that is §5 and §6F working, not regressions. Those reviews are about problems 
 renders; leaving them "fresh" would have required leaving 45 nodes unable to reach their curriculum
 scope. **Re-reviewing ~50 nodes is now the largest single item in the queue**, and it is named in the
 ledger rather than absorbed quietly.
+
+### Re-attestation batch 19 — the fix closed one contradiction and correctly failed to close the other
+
+Blind Attester, 0 tool uses, node ids withheld, and it was not told this was a re-attestation or that a
+previous verdict existed. Same fixed seeds as batch018, so the two batches are directly comparable.
+
+```
+mat_g1_na_q2_6  sum_up_to_100   NOT_PROVIDED -> PROVIDED    <- the fix closed this
+mat_g1_na_q1_9  sums_up_to_20   NOT_PROVIDED -> NOT_PROVIDED
+mat_g1_na_q1_9  orally, pictures            unchanged NOT_PROVIDED
+mat_g1_na_q2_6  orally, pictures            unchanged NOT_PROVIDED
+```
+
+The `sums up to 20` verdict is correct and was predicted before dispatch. I measured the post-fix
+distribution first rather than hoping:
+
+```
+mat_g1_na_q1_9   300 seeds: p25=2  p50=2  p75=3  p90=4   max=17
+                 share above half the ceiling: 8%
+mat_g1_na_q2_6   300 seeds: p25=2  p50=4  p75=17 p90=34  max=81
+                 share above half the ceiling: 5%
+```
+
+A uniform scalar through a **logarithmic** mapping yields log-uniform ceilings, most of them small, and
+`number_difficulty` then picks mid-magnitude within that ceiling. The node can now reach 17; it mostly
+still serves 2. The ten fixed packet seeds max at 5, and the Attester said so: *"seven of ten have a
+sum of 4 or less ... bridging-to-ten and the 10-to-20 region are wholly untested."*
+
+The seeds were **not** changed to obtain a better verdict. `SAMPLE_SEEDS` is fixed precisely so a
+verdict can be re-rendered, and reselecting them would be shopping for the answer.
+
+Its two sharpest observations were verified against the pipeline rather than filed on trust:
+
+```
+A-seed57  key=1  options=[1, 2, 11, 0]     -> "11 is not a plausible error for 0 + 1"
+B-seed103 stem: "There are 81 water bowls in one basket and 0 water bowls in another basket..."
+                                            -> the sample's largest sum performs no addition at all
+```
+
+Quote provenance: 8/8 quoted strings appear verbatim in the packet's own samples.
+
+**Content notes carried forward** (none fixed this tick): noun-number agreement is wrong in four stems,
+and `mat_g1_na_q2_6` seed 78 gets it right and wrong in one sentence — *"10 running shoes and 6 water
+bottle"*. Zero-addend items persist. Every one of the twenty items carries a distractor exactly ten
+above the key. Three of ten Group B seeds render the identical stem. The Attester checked all twenty
+keys and found no wrong key and no doubly-correct option.
+
+### §6F does not honour `supersedes`, and that blocks the re-review programme
+
+```
+  grep supersedes backend/app/practice_gen/validation/validate_capability.py
+  -> NOT REFERENCED
+
+  STALE findings: 13; of which name a batch already superseded by a fresh record: 5
+```
+
+A correctly superseded batch stays STALE for ever. Re-attesting therefore *adds* a permanent finding
+instead of clearing one, and the ~50-node re-review programme this tick created would add roughly 50
+uncloseable STALE findings. **This has to be fixed before the programme starts, not after.**
+
+Not touched this tick, deliberately: it lives in `validation/`, and making a failing check pass inside
+the same tick as a large content change is the shape of every past defeat. Recorded with the
+measurement so the next tick can act on evidence rather than on my say-so.
+
+```
+capability findings 765 -> 764   (CONTRADICTED 33 -> 32)
+```

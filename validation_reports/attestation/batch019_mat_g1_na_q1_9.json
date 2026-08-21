@@ -1,0 +1,183 @@
+{
+  "batch": "batch019_mat_g1_na_q1_9",
+  "attested_at": "2026-08-21T22:05:00+08:00",
+  "role": "Attester",
+  "supersedes": "batch018_mat_g1_na_q1_9 (ruled STALE by §6F after commit 3071a87f changed the content; that record is retained, not edited)",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "validation_reports/, local_only/, docs/",
+      "the previous batch018 verdicts, or that this was a RE-attestation"
+    ],
+    "samples_passed_inline": true,
+    "tool_uses_by_attester": 0,
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_9",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Lola Caring has 2 leashes. A friend has 1 leash. If they put all their leashes together, how many leashes do they have in all?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Ate Gab collected 1 pom-pom and 3 wristband at the auditorium. How many items did Ate Gab collect in total?",
+        "correct_answer": 4,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "There is 1 score card in one basket and 1 score card in another basket. How many score cards are there in all?",
+        "correct_answer": 2,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Start at 0. Count up 1 more. What number do you land on?",
+        "correct_answer": 1,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Gab has 1 sneaker. A friend has 1 sneaker. If they put all their sneakers together, how many sneakers do they have in all?",
+        "correct_answer": 2,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Kuya Chad collected 1 running shoe and 2 water bottle at the school track. How many items did Kuya Chad collect in total?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Start at 1. Count up 1 more. What number do you land on?",
+        "correct_answer": 2,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "There are 0 water bowls in one basket and 5 water bowls in another basket. How many water bowls are there in all?",
+        "correct_answer": 5,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "There are 2 volleyballs in one basket and 2 volleyballs in another basket. How many volleyballs are there in all?",
+        "correct_answer": 4,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Start at 1. Count up 1 more. What number do you land on?",
+        "correct_answer": 2,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve",
+      "node_id": "mat_g1_na_q1_9",
+      "clause": "Solve",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        64,
+        78,
+        103,
+        118
+      ],
+      "reasoning": "Each item withholds the total and asks the pupil to produce it -- \"If they put all their leashes together, how many leashes do they have in all?\" (seed 11). The pupil must operate on two given quantities rather than recall or identify.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "problems",
+      "node_id": "mat_g1_na_q1_9",
+      "clause": "problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        64,
+        78,
+        103,
+        118
+      ],
+      "reasoning": "Seven of ten items are contextual word problems with actors, objects and a situation. The remaining three (57, 91, 127) are bare procedural prompts -- \"Start at 1. Count up 1 more. What number do you land on?\" -- which are exercises, not problems.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "orally",
+      "node_id": "mat_g1_na_q1_9",
+      "clause": "orally",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Every item is delivered as printed text that the pupil must read; there is no audio track, no read-aloud script, and no instruction marking the stem as teacher-spoken. A Grade 1 pupil is precisely the reader for whom \"given orally\" exists as a delivery mode, and nothing here supplies it.",
+      "action_taken": "STILL CONTRADICTED after the scope-axis fix, and unchanged in kind: the pipeline has no audio channel. Escalated to the maintainer with both readings -- is MATATAG's \"(given orally or in pictures)\" a delivery note to the teacher, or a required artifact? Entry left registered and reported by §6F rather than deleted."
+    },
+    {
+      "capability_id": "pictures",
+      "node_id": "mat_g1_na_q1_9",
+      "clause": "pictures",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No sample carries a `VISUAL RENDERED` line, so no item presents anything to look at. The stems are purely verbal -- \"Gab has 1 sneaker. A friend has 1 sneaker\" names objects but shows none.",
+      "action_taken": "STILL CONTRADICTED. emoji_pictorial is registered and servable on both nodes, but the student path never selects it, so all 10 seeds render visual_type None. A routing defect, not a table edit; queued."
+    },
+    {
+      "capability_id": "addition",
+      "node_id": "mat_g1_na_q1_9",
+      "clause": "addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        64,
+        78,
+        103,
+        118
+      ],
+      "reasoning": "The items join two disjoint quantities and ask for the union -- \"There are 2 volleyballs in one basket and 2 volleyballs in another basket. How many volleyballs are there in all?\" (seed 118), key 4.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "sums_up_to_20",
+      "node_id": "mat_g1_na_q1_9",
+      "clause": "sums up to 20",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Every sum is 5 or below -- 3, 4, 2, 1, 2, 3, 2, 5, 4, 2 across the ten seeds -- and the addends are only 0, 1, 2, 3 and 5. The items sit inside the range but cluster hard at its floor: seven of ten have a sum of 4 or less. Nothing in the sample exercises the teen band the competency names, so bridging-to-ten and the 10-to-20 region are wholly untested.",
+      "action_taken": "STILL CONTRADICTED, and correctly so. The scope-axis fix (commit 3071a87f) lifted this node from 2 distinct answers across 200 seeds to 11, with a maximum of 17 -- but the distribution remains skewed to the floor: p50=2, p90=4, and only 8% of 300 seeds exceed half the ceiling. A uniform scalar through a LOGARITHMIC mapping yields log-uniform ceilings, most of them small. Measured before this batch was dispatched and reported as a partial fix, not a closure. Next tick's item 1."
+    }
+  ]
+}
