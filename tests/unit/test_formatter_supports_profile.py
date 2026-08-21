@@ -188,3 +188,91 @@ class TestOrchestratorAnnotatesDnaName:
         )
         assert prob.dna_name, f"dna_name was not annotated, got {prob.dna_name!r}"
         assert prob.dna_name in ("fractions", "comparing_ordering"), prob.dna_name
+
+
+class TestListValuedVariantScopes:
+    """
+    A competency can bind an axis to a SET of literal values, not just one. 78 such
+    bounds exist across the tree (mat_g1_na_q1_9's task_type=['putting_together',
+    'counting_up'], mat_g2_na_q3_1's ['repeated_addition', 'skip_counting',
+    'number_line_jumps']).
+
+    `is_variant_supported` assumed a scalar and compared the whole list against the
+    allowed-value list, so it returned False for every list no matter what the list
+    held. Every formatter explicitly restricting that axis was refused on those nodes
+    -- including formatters declaring support for every member -- and the generated
+    exclusion map then recorded the refusal as a genuine restriction, which is how
+    mat_g2_na_q3_1 came to serve `mcq` alone while all five of its other formatters
+    supported all three of its task_types.
+
+    These pin the semantics so a refactor cannot quietly restore either the whole-list
+    comparison or an ANY reading.
+    """
+
+    def test_list_scope_supported_when_every_member_is(self):
+        from backend.app.practice_gen.compatibility import is_variant_supported
+        assert is_variant_supported(
+            "addition", "cloze", "task_type", ["putting_together", "counting_up"]
+        )
+
+    def test_list_scope_refused_when_any_member_is_not(self):
+        """
+        ALL, not ANY. The DNA picks one member per seed, so a formatter is eligible
+        only if it can render every value the node might land on -- ANY would let a
+        formatter be chosen and then handed a value it declared it cannot render.
+        `number_bond` supports putting_together but not counting_up.
+        """
+        from backend.app.practice_gen.compatibility import is_variant_supported
+        assert is_variant_supported("addition", "number_bond", "task_type", "putting_together")
+        assert not is_variant_supported("addition", "number_bond", "task_type", "counting_up")
+        assert not is_variant_supported(
+            "addition", "number_bond", "task_type", ["putting_together", "counting_up"]
+        )
+
+    def test_scalar_behaviour_is_unchanged(self):
+        from backend.app.practice_gen.compatibility import is_variant_supported
+        assert is_variant_supported("addition", "cloze", "task_type", "counting_up")
+        assert not is_variant_supported("addition", "cloze", "task_type", "find_sum")
+
+    def test_empty_scope_raises_rather_than_passing_vacuously(self):
+        """
+        `all([])` is True, which would report an empty scope as supported by every
+        formatter. An empty binding means the competency produced no renderable value
+        -- a registry defect -- so it must be loud rather than silently permissive.
+        """
+        import pytest
+        from backend.app.practice_gen.compatibility import is_variant_supported
+        with pytest.raises(ValueError, match="empty scope"):
+            is_variant_supported("addition", "cloze", "task_type", [])
+
+    def test_the_four_nodes_the_bug_narrowed_now_serve_their_supporting_formatters(self):
+        """
+        The end-to-end consequence, pinned by node id: these are the pairs the
+        membership bug excluded even though the formatter supports every member of
+        the node's scope. Excludes the pairs that are legitimately refused --
+        mat_g3_na_q3_4's arrays (no 'two_step') and q1_9's number_bond/number_line_*
+        (no 'counting_up' or no 'putting_together') -- so a regression that simply
+        widened everything would fail this too.
+        """
+        from backend.app.practice_gen.registry import get_node_formatters
+        expected = {
+            "mat_g1_na_q1_9": {"cloze", "emoji_pictorial", "error_detect", "true_false"},
+            "mat_g1_na_q2_6": {"cloze", "emoji_pictorial", "error_detect", "true_false"},
+            "mat_g2_na_q3_1": {"array_grid_read", "array_grid_set", "cloze",
+                               "error_detect", "true_false"},
+            "mat_g3_na_q3_4": {"cloze", "error_detect", "true_false"},
+        }
+        still_refused = {
+            "mat_g1_na_q1_9": {"number_bond", "number_line_read", "number_line_set"},
+            "mat_g1_na_q2_6": {"number_bond", "number_line_read", "number_line_set"},
+            "mat_g3_na_q3_4": {"array_grid_read", "array_grid_set"},
+        }
+        for node_id, must_serve in expected.items():
+            served = set(get_node_formatters(node_id))
+            assert must_serve <= served, f"{node_id}: missing {sorted(must_serve - served)}"
+        for node_id, must_not in still_refused.items():
+            served = set(get_node_formatters(node_id))
+            assert not (must_not & served), (
+                f"{node_id}: {sorted(must_not & served)} became servable, but the "
+                f"formatter does not support every member of the node's scope"
+            )

@@ -405,7 +405,13 @@ def generate_problem(
         for var_name, var_value in effective_profile.items():
             if var_name not in known_variants:
                 continue
-            if not is_variant_supported(dna_name, formatter, var_name, str(var_value)):
+            # NOT str(var_value): a list-valued competency scope stringifies to its
+            # repr ("['a', 'b']"), which no allowed-value list ever contains, so this
+            # raised for every node bound to a set of task_types even when the
+            # formatter supports every member. Same root cause as the whole-list
+            # comparison inside is_variant_supported; the predicate now handles both
+            # shapes, so hand it the value unchanged.
+            if not is_variant_supported(dna_name, formatter, var_name, var_value):
                 raise ValueError(
                     f"generate_problem: variant {var_name}='{var_value}' is not supported "
                     f"by formatter '{formatter}' for DNA '{dna_name}'."

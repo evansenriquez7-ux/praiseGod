@@ -1263,6 +1263,31 @@ def is_variant_supported(
     """
     supported = get_supported_variants(dna_concept, formatter_name)
     allowed_values = supported.get(variant_name, [])
+
+    # A competency scope can bind an axis to a SET of literal values, not just one:
+    # registry.py gives mat_g1_na_q1_9 task_type=['putting_together', 'counting_up']
+    # and mat_g2_na_q3_1 task_type=['repeated_addition', 'skip_counting',
+    # 'number_line_jumps'] -- 78 such bounds exist across the tree. This function
+    # assumed a scalar, so `[...] in allowed_values` compared the WHOLE LIST against a
+    # list of strings and was False no matter what the list contained. Every formatter
+    # that explicitly restricts the axis was therefore refused for those nodes, even
+    # when it declares support for every member: all five of mat_g2_na_q3_1's
+    # formatters support all three of its task_types, and all five were refused, which
+    # is why that node served `mcq` alone.
+    #
+    # ALL, not ANY. The DNA picks one member per seed, so a formatter is eligible only
+    # if it can render every value the node might land on. ANY would let a formatter be
+    # selected and then handed a value it has declared it cannot render.
+    if isinstance(variant_value, (list, tuple, set)):
+        if not variant_value:
+            raise ValueError(
+                f"is_variant_supported: empty scope for {dna_concept!r}/{variant_name!r} "
+                f"(formatter {formatter_name!r}). An empty allowed-value set means the "
+                f"competency binding produced no renderable value, which is a registry "
+                f"defect, not a formatter restriction."
+            )
+        return all(v in allowed_values for v in variant_value)
+
     return variant_value in allowed_values
 
 
