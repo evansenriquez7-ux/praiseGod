@@ -6934,3 +6934,138 @@ Reported for the record; none is fixed this tick.
   is 8. Is Rosa correct?"* keys `{'has_error': True, 'correct_value': 16}`. A pupil who answers "No"
   has answered the question as written and still mismatches the key. Worth checking against the
   renderer before treating it as a content defect — the dict may be consumed by the UI.
+
+---
+
+## Tick 19 — 2026-08-21 — 45 of 49 nodes could not reach their own curriculum range
+
+Tick 18's blind Attester ruled `sums up to 20` NOT_PROVIDED on `mat_g1_na_q1_9`. It was right about
+something much larger than one node.
+
+### The ceiling is injected as a constant
+
+`max_sum` is a continuous axis, separate from `number_difficulty`, and nothing on the student path
+ever sets it. Instrumenting the value that actually reaches the DNA:
+
+```
+=== mat_g1_na_q1_9  competency ceiling = 20 ===
+  number_difficulty=0.0   -> max_sum injected={5}  results=[1, 1, 1, 1, 1]
+  number_difficulty=0.5   -> max_sum injected={5}  results=[3, 2, 2, 3, 2]
+  number_difficulty=1.0   -> max_sum injected={5}  results=[5, 5, 5, 5, 5]
+
+=== mat_g1_na_q2_6  competency ceiling = 100 ===
+  number_difficulty=1.0   -> max_sum injected={14} results=[14, 12, 12, 13, 13]
+```
+
+The adaptivity knob moves the pair *within* a frozen ceiling; it cannot move the ceiling. The ceiling
+comes from `axis.get("default", 0.5)` and the mapping is logarithmic, so 0.5 lands at roughly a
+quarter of the range: `log10(21) * 0.6 → 6 - 1 = 5` reproduces the injected 5 exactly, and
+`log10(101) * 0.6 → 15 - 1 = 14` reproduces the 14.
+
+**This is the product, not a harness convention.** The student portal calls the pipeline with no
+`difficulty_profile` at all (`practice_router.py:568`, `:928`), so the catalog default is the only
+value a real pupil ever sees.
+
+### It is the tree, not two nodes
+
+```
+(node, continuous competency bound) pairs:                49
+pinned default below HALF the competency ceiling:         45   (45 nodes)
+
+node               axis             bound         default  at 1.0  scale
+mat_g3_na_q2_1     max_sum          (0,10000)         250    9999  logarithmic
+mat_g3_na_q1_5     max_value        (1,10000)         251   10000  logarithmic
+mat_g2_na_q1_9     max_sum          (0,1000)           62    1000  logarithmic
+mat_g1_na_q2_6     max_sum          (0,100)            14     100  logarithmic
+```
+
+`mat_g3_na_q2_1`'s competency reaches 10 000; the pipeline served 250 — 2.5% of it.
+
+### Fix: sample the scope axis, do not pin it
+
+A continuous axis the node's *competency* bounds is a scope parameter, not a difficulty knob —
+`max_sum (0, 20)` is the curriculum saying "sums up to 20", and MATATAG expects the pupil to meet that
+range. It is now sampled per seed from `rng` (seeded by the problem seed, so determinism holds,
+Protocol 6). `number_difficulty` is deliberately excluded: it is the adaptivity input, never a
+competency bound, and randomising it would fight the mastery engine rather than widen coverage.
+
+```
+mat_g1_na_q1_9 (ceiling 20):  200 seeds  distinct 2 -> 11,  max 3  -> 17
+mat_g1_na_q2_6 (ceiling 100): 200 seeds  distinct 7 -> 36,  max 13 -> 81
+```
+
+Range actually reached over 50 student-path seeds after the fix:
+
+```
+mat_g1_na_q1_9    ceiling=20     reached_max=13     distinct=6    (65% of ceiling)
+mat_g1_na_q2_6    ceiling=100    reached_max=74     distinct=17   (74% of ceiling)
+mat_g3_na_q2_1    ceiling=10000  reached_max=5927   distinct=36   (59% of ceiling)
+mat_g2_na_q1_9    ceiling=1000   reached_max=773    distinct=28   (77% of ceiling)
+```
+
+(`mat_g3_na_q1_5` was also probed and reported 0%, but that probe was invalid: its `correct_answer` is
+a comparison sign, not a magnitude. Its operands do reach 6290 — *"Compare the numbers: 6290 ___
+5010"*. Reporting the 0% would have been a measurement error, not a finding.)
+
+### Making the range reachable immediately broke two nodes — which is the point
+
+```
+FAIL mat_g2_na_q3_0 (failures=54)
+FAIL mat_g2_na_q3_1 (failures=162)
+
+  - [multiplication / array_grid_read] visual_payload (seed 42): GridArea has cols=0:
+    an array with no columns renders nothing.
+```
+
+`max_product`'s bound floor is **0**, so a low sample produced a ceiling of 0 and the DNA emitted a
+zero factor. The registry already carries the correct fix one branch above — *"Flooring at 2x the
+highest named table gives every table room for at least an a=2 fact even at the interpolation's own
+low end"* — and the `else` branch never got it. Floored at 4 (2 × 2), the smallest ceiling admitting a
+non-degenerate fact. Ground-truth correction, Protocol 5, node ids `mat_g2_na_q3_0` and
+`mat_g2_na_q3_1`.
+
+```
+mat_g2_na_q3_0: Nodes Failed 0, Total Failures 0
+mat_g2_na_q3_1: Nodes Failed 0, Total Failures 0
+```
+
+This also closes the last outstanding §1G finding, open since tick 12.
+
+### The full sweep
+
+```
+52 nodes whose content this moves — matrix-checked individually
+clean: 51 of 52
+```
+
+The one failure is `mat_g3_na_q3_1`, and it is **pre-existing and unchanged**. Verified by stashing the
+change and re-running:
+
+```
+pre-change:  empty_execution_matrix, array_grid_read + array_grid_set  (2 failures)
+post-change: Nodes Failed 1, Total Failures 2                          (identical)
+```
+
+Diagnosis, for the record: `validate_matrix.py:900` reads `COMPATIBILITY` directly rather than
+`get_node_formatters()`, so the exclusion map does not apply; and its availability filter at :928
+carries `not isinstance(bound_val, list)`, so a list-valued scope is never used to filter. The node's
+`task_type` scope `['commutative','associative','distributive','zero_identity']` is disjoint from
+array_grid_read's supported list, the orchestrator refuses the pair (it is in the exclusion map,
+refused at all 12 probe seeds), and the harness forward-tests it anyway. **Not touched.** Making a red
+check green inside a large content change is the shape of every past defeat, and whether that filter
+hole is a harness bug or a pipeline bug is a maintainer's call — both readings are in the ledger.
+
+### The cost, stated plainly
+
+```
+§5 judgment findings   22 -> 497   (479 of them STALE reviews)
+§6 capability findings 757 -> 765  (STALE attestations 5 -> 13)
+§2B                    0 findings, both directions
+pytest tests/unit      318 passed, 2 deselected
+```
+
+Moving content on 52 nodes invalidates every review and attestation that described the old content —
+that is §5 and §6F working, not regressions. Those reviews are about problems the pipeline no longer
+renders; leaving them "fresh" would have required leaving 45 nodes unable to reach their curriculum
+scope. **Re-reviewing ~50 nodes is now the largest single item in the queue**, and it is named in the
+ledger rather than absorbed quietly.

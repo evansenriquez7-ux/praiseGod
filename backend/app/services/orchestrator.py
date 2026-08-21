@@ -128,7 +128,43 @@ class PracticeOrchestrator:
             if axis.get("dim_type") == "continuous":
                 axis_name = axis["name"]
                 if axis_name not in local_difficulty_profile:
-                    local_difficulty_profile[axis_name] = axis.get("default", 0.5)
+                    # A continuous axis the node's COMPETENCY bounds is a scope
+                    # parameter, not a difficulty knob: `max_sum (0, 20)` is the
+                    # curriculum saying "sums up to 20", and MATATAG expects the
+                    # pupil to meet that whole range. Pinning it to the catalog
+                    # default froze every such node near the bottom of its own
+                    # range, because the default is 0.5 and the mapping below is
+                    # logarithmic -- 0.5 lands at roughly a quarter of the ceiling.
+                    #
+                    # Measured before this fix: 45 of the 49 (node, continuous
+                    # competency bound) pairs in the tree served less than HALF
+                    # their competency ceiling, and nothing on the student path
+                    # could raise them. The student portal calls the pipeline with
+                    # no difficulty_profile at all, so the catalog default was the
+                    # only value a pupil ever saw:
+                    #
+                    #   mat_g1_na_q1_9  "sums up to 20"    -> ceiling 5,   two
+                    #                   distinct answers (2 and 3) across 200 seeds
+                    #   mat_g1_na_q2_6  "sums up to 100"   -> ceiling 14
+                    #   mat_g3_na_q2_1  bound (0, 10000)   -> ceiling 250
+                    #
+                    # A blind Attester ruled `sums up to 20` NOT_PROVIDED on that
+                    # first node, and it was right: the node cannot reach its own
+                    # curriculum scope. Content Rule 3 -- address the full scope of
+                    # the competency, not merely stay inside it.
+                    #
+                    # So sample the scope axis per seed instead of pinning it. `rng`
+                    # is seeded from the problem seed, so this stays deterministic
+                    # (Protocol 6) and a set of problems now spans the range the
+                    # competency names. `number_difficulty` is deliberately NOT
+                    # included: it is the adaptivity input, never a competency
+                    # bound, and randomising it would fight the mastery engine
+                    # rather than widen curriculum coverage.
+                    bound = competency_bounds.get(axis_name)
+                    if isinstance(bound, tuple) and len(bound) == 2:
+                        local_difficulty_profile[axis_name] = rng.random()
+                    else:
+                        local_difficulty_profile[axis_name] = axis.get("default", 0.5)
 
         for axis in axes:
             if axis.get("dim_type") == "continuous" and axis["name"] in local_difficulty_profile:

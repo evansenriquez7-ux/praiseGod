@@ -1379,7 +1379,18 @@ def _parse_competency_bounds(
                 # least an a=2 fact even at the interpolation's own low end.
                 bounds["max_product"] = (2 * max(tables), max(tables) * 10)
             else:
-                bounds["max_product"] = (0, grade_defaults["max_product"])
+                # Same reasoning as the table-named branch just above, which
+                # already floors at "room for at least an a=2 fact" -- this
+                # branch never got it, and a floor of 0 is not a ceiling any
+                # multiplication item can satisfy. Sampling the scope axis
+                # across its bound (see orchestrator.generate_problem) drove
+                # max_product to 0 on mat_g2_na_q3_0 and mat_g2_na_q3_1, and the
+                # DNA then produced a zero factor: GridArea rendered cols=0, "an
+                # array with no columns renders nothing", 54 and 162 §1G failures
+                # respectively. 2 x 2 is the smallest ceiling that admits a
+                # non-degenerate fact, matching the sibling branch's intent.
+                # Ground-truth correction, Ground Rule 2 / Protocol 5.
+                bounds["max_product"] = (4, grade_defaults["max_product"])
         elif "max_total" in grade_defaults and dna_name == "money_peso":
             bounds["max_total"] = (1, grade_defaults["max_total"])
 
