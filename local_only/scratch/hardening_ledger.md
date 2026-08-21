@@ -3899,3 +3899,59 @@ measurement to compare a new check's first run against.
 4. Still open: `read_mcq` -> placement (63 nodes), `concrete materials`, `up to 10` on
    `mat_g1_na_q1_6`, `geometric_lines` hash bug, re-attesting the blind-packet nodes, coverage
    programme (~35 dispatches).
+
+---
+
+## 2026-08-21 (tick 14) — CORRECTION: §2B's 236 was two defects, and I nearly shipped the wrong fix
+
+Entered at `VERDICT: RESUME`, 767 findings, coverage 127/787. Took ledger item 1 (fix the 236).
+
+**Tick 13's framing was wrong and this tick corrects it.** I wrote "236 false declarations exist".
+Setting out to fix them showed the count is a mixture:
+
+```
+ 29 pairs /  8 nodes : EVERY advertised formatter refused when pinned, yet the node
+                       generates fine with none named   -> ORCHESTRATOR DEFECT
+207 pairs / 78 nodes : serves some pinned formatters, refuses others -> genuine
+```
+
+The first class is not false advertising. `orchestrator.py` already carries a comment about exactly
+this failure mode ("any request that named a formatter, i.e. every Lab preview, raised 'Formatter X is
+not supported by any DNA' for the 22 nodes bound this way") — it has bitten before and that exemption
+does not cover these 8.
+
+**THE NEAR MISS, and it is the lesson.** The plan was a generated per-node exclusion list. Generating
+it produced one absurd number — **8 nodes would be left with NO formatter at all** — and chasing that
+is the only reason the pinned/auto divergence surfaced. Shipping the list would have hidden an
+orchestrator bug AND narrowed eight nodes to nothing, while making §2B go green. **A fix that makes a
+check go green by deleting the thing the check measures is the exact shape of the three past defeats.
+The absurd intermediate result was the only guard.** Generate the artifact, look at it, and ask what
+would have to be true — before wiring it in.
+
+**Two approaches rejected by measurement, not argument:**
+- "union only over DNAs that can serve the node" — explains 30 of 236.
+- static predicate (bounds x FORMATTER_VARIANT_SUPPORT) — 635/690, but **43 FALSE REFUSALS**, which
+  would have stripped formatters that demonstrably work.
+
+**That is the THIRD time this run that modelling the orchestrator's logic in a second place drifted
+from it.** §2B is empirical for that reason. Stop trying to compute what you can ask.
+
+**Also worth recording, a process slip:** I backgrounded a compound command containing
+`git commit -F -` with a heredoc. Backgrounding broke stdin, the commit silently failed, and `run_all`
+launched anyway — so the tree was uncommitted while the harness ran. **Never background a command
+chain containing a commit;** commit in the foreground, then launch.
+
+**Both movements:** findings **767 → 767**, coverage **127/787 unchanged**. §2B now reports 8
+node-level defects + 207 pair-level, instead of one unactionable lump of 236.
+
+**Next tick should:**
+1. **Fix the 8 pinned-path nodes.** Find why the pinned branch disqualifies every DNA where the auto
+   branch succeeds — the composite-scope exemption around orchestrator.py:255-275 is the place to
+   start, since these look like the same class it was written for. This is user-visible: every Lab
+   preview on those nodes raises.
+2. **Then the 207.** With the pinned path correct, re-measure before building anything — the count
+   will move, and a per-node narrowing built on today's number would be built on sand.
+3. `mat_g2_na_q3_0`'s `max_product` floor of 0 + the 4 stale seeds on `mat_g3_na_q3_1`, together.
+4. Extend §1G (BarChart, ClockSet, Calendar), verifying each candidate read-only first.
+5. Still open: `read_mcq` -> placement (63 nodes), `concrete materials`, `up to 10` on
+   `mat_g1_na_q1_6`, `geometric_lines` hash bug, re-attesting blind-packet nodes, coverage programme.
