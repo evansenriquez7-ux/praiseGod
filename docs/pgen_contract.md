@@ -26,6 +26,7 @@ A generator is done when `python -m backend.app.practice_gen.validation.run_all`
 | The harness's own unit tests pass before any stage reports green — green stages over red tests is not evidence | `pytest tests/unit` §0 | local `run_all`; not in CI |
 | A capability's `bounds` provider must be a numeric-ceiling claim about that capability, never a list most of the table carries verbatim | `validate_capability` §6E | local `run_all`; not in CI |
 | Every declared capability carries a blind Attester verdict that the rendered output exhibits what its clause names, and no entry contradicts one | `validate_capability` §6F | local `run_all`; not in CI |
+| An attestation stops being evidence when the content it judged changes: every record still supplying a winning verdict is re-rendered and must still match. A record is exempt only once **every** one of its verdicts has been replaced by a later record — supersession is derived from the records themselves, never from a record's own `supersedes` text, so it must be earned by filing a replacement that faces this same check | `validate_capability` §6F freshness | local `run_all`; not in CI |
 
 **On "local `run_all`; not in CI".** Every rule above is still enforced and still fails loudly — but
 the enforcement now runs **only** where someone runs it: `python -m backend.app.practice_gen.validation.run_all`,

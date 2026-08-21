@@ -540,3 +540,72 @@ def test_planted_mutation_bounds_only_provider_is_caught_by_name():
     finally:
         VC.CAPABILITY_PROVIDERS.clear()
         VC.CAPABILITY_PROVIDERS.update(original)
+
+
+class TestAttestationSupersession:
+    """
+    §6F freshness re-renders every attestation's judged seeds. A record that no longer
+    supplies a single winning verdict is not evidence for anything -- `_load_attestations`
+    resolves (node_id, capability_id) by last-file-wins, so a fully replaced batch is
+    consulted by nothing -- and re-rendering its seeds reports staleness about a ruling
+    no check reads.
+
+    That mattered concretely: re-attesting a node ADDED a permanent STALE finding rather
+    than clearing one, so the ~50-node re-review programme would have produced ~50
+    findings that could never be closed.
+
+    The rule these pin is deliberately narrow:
+      * supersession is computed from the records, NEVER from the `supersedes` string,
+        so a batch cannot retire an inconvenient verdict by asserting it was replaced;
+      * it is whole-record -- a batch owning even one winning verdict is still checked.
+    """
+
+    @staticmethod
+    def _stale(records):
+        from backend.app.practice_gen.validation.validate_capability import (
+            _attestation_staleness,
+        )
+        return _attestation_staleness(records)
+
+    @staticmethod
+    def _rec(batch, node, caps, seed_text):
+        return {
+            "batch": batch,
+            "packet": {"node_id": node, "samples_judged": [
+                {"seed": 11, "question_text": seed_text}]},
+            "verdicts": [{"node_id": node, "capability_id": c, "verdict": "PROVIDED"}
+                         for c in caps],
+        }
+
+    def test_a_fully_replaced_record_is_not_freshness_checked(self):
+        old = self._rec("b001_x", "mat_g1_na_q1_9", ["solve", "addition"], "CONTENT THAT IS LONG GONE")
+        new = self._rec("b002_x", "mat_g1_na_q1_9", ["solve", "addition"], "CONTENT THAT IS LONG GONE")
+        errs = self._stale([old, new])
+        assert not any("b001_x" in e for e in errs), errs
+
+    def test_a_record_still_owning_one_verdict_is_still_checked(self):
+        """The case a blanket rule would break: batch018_mat_g3_na_q3_4 owned all four
+        of its verdicts while its two siblings owned none."""
+        old = self._rec("b001_x", "mat_g1_na_q1_9", ["solve", "addition"], "CONTENT THAT IS LONG GONE")
+        new = self._rec("b002_x", "mat_g1_na_q1_9", ["solve"], "CONTENT THAT IS LONG GONE")
+        errs = self._stale([old, new])
+        assert any("b001_x" in e for e in errs), (
+            "a record that still supplies a winning verdict must keep facing the "
+            f"freshness check; got {errs}"
+        )
+
+    def test_the_replacement_itself_is_still_checked(self):
+        old = self._rec("b001_x", "mat_g1_na_q1_9", ["solve"], "CONTENT THAT IS LONG GONE")
+        new = self._rec("b002_x", "mat_g1_na_q1_9", ["solve"], "ALSO LONG GONE")
+        errs = self._stale([old, new])
+        assert any("b002_x" in e for e in errs), errs
+
+    def test_a_self_declared_supersedes_earns_nothing(self):
+        """Supersession must be earned by filing a replacement, not claimed in a string."""
+        lone = self._rec("b001_x", "mat_g1_na_q1_9", ["solve"], "CONTENT THAT IS LONG GONE")
+        lone["supersedes"] = "b000_totally_real"
+        errs = self._stale([lone])
+        assert any("b001_x" in e for e in errs), (
+            "a record claiming supersession with no real replacement on disk must still "
+            f"be freshness-checked; got {errs}"
+        )

@@ -1,283 +1,283 @@
 {
- "batch": "b09_mat_g2_na_q2_0",
- "attested_at": "2026-08-20T13:10:00+08:00",
- "role": "Attester",
- "blindness": {
-  "saw": [
-   "clause",
-   "competency text",
-   "grade/quarter",
-   "10 rendered student-path samples"
+  "batch": "b09_mat_g2_na_q2_0",
+  "attested_at": "2026-08-20T13:10:00+08:00",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "validation_reports/, local_only/, docs/"
+    ],
+    "samples_passed_inline": true,
+    "tool_uses_by_attester": 0,
+    "framing": "neutral - 'do these items exhibit what this clause names?'; sub-case and medium clauses judged strictly on explicit instruction"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q2_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Count the coins and bills shown. What is the total amount?",
+        "correct_answer": "C",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Count the coins and bills shown. What is the total amount?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "What is the total value of 6 50¢ coins and 2 25¢ coins, in centavos?",
+        "correct_answer": 350,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Find the total amount of 4 50¢ coins and 3 25¢ coins, in centavos:",
+        "correct_answer": 275,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "How much is 1 ₱50 bill and 1 ₱5 coin altogether?",
+        "correct_answer": 55,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What is the total value of 3 ₱10 coins, 1 ₱5 coin, and 2 ₱1 coins?",
+        "correct_answer": 37,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "How much is 5 50¢ coins and 4 25¢ coins altogether, in centavos?",
+        "correct_answer": 350,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Use coins and bills to make exactly ₱27. Use the fewest pieces possible.",
+        "correct_answer": 27,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 118,
+        "question_text": "What is the total value of 3 ₱10 coins, 2 ₱5 coins, and 1 ₱1 coin?",
+        "correct_answer": 41,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Use coins and bills to make exactly ₱350. Use the fewest pieces possible.",
+        "correct_answer": 350,
+        "formatter": "set_fill_in_blank"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "determine",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "Determine",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        64,
+        78,
+        91,
+        118
+      ],
+      "confidence": "high",
+      "reasoning": "Seeds ask the pupil to work out a total amount from a stated collection of currency.",
+      "action_taken": "none - entry stands"
+    },
+    {
+      "capability_id": "write_value",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "write the value",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        103,
+        127
+      ],
+      "confidence": "high",
+      "reasoning": "Every value item is a four-option selection, which is choosing a value, not writing one. The only two free-response items hand the pupil the value in the stem and ask for a composition instead, so no item has the pupil produce or record a value.",
+      "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+    },
+    {
+      "capability_id": "number_of_bills",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "number of bills",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        64
+      ],
+      "confidence": "high",
+      "reasoning": "No item asks the pupil to count a quantity of bills; the only bill named anywhere is a single P50 bill, paired with a coin.",
+      "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+    },
+    {
+      "capability_id": "number_of_coins",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "number of coins",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118
+      ],
+      "confidence": "high",
+      "reasoning": "Each gives an explicit count of coins by denomination and asks for the total.",
+      "action_taken": "none - entry stands"
+    },
+    {
+      "capability_id": "combination_of_bills_and_coins",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "combination of bills and coins",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64,
+        11,
+        23
+      ],
+      "confidence": "high",
+      "reasoning": "Seed 64 is explicitly '1 P50 bill and 1 P5 coin'.",
+      "action_taken": "none - entry stands"
+    },
+    {
+      "capability_id": "up_to_1000",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "up to ₱1000",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        64,
+        127
+      ],
+      "confidence": "high",
+      "reasoning": "The largest peso amount anywhere is P350 and the largest computed total is P55. Every item is within the ceiling, but the band from roughly P400 to P1000 is never exercised.",
+      "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+    },
+    {
+      "capability_id": "centavo_coins_only",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "centavo coins only",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        91
+      ],
+      "confidence": "high",
+      "reasoning": "Use only 50c and 25c coins and ask for the answer in centavos.",
+      "action_taken": "none - entry stands"
+    },
+    {
+      "capability_id": "peso_coins_only",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "peso coins only",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        118
+      ],
+      "confidence": "high",
+      "reasoning": "Use only P10, P5 and P1 coins with no bills.",
+      "action_taken": "none - entry stands"
+    },
+    {
+      "capability_id": "peso_bills_only",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "peso bills only",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        64
+      ],
+      "confidence": "high",
+      "reasoning": "No item consists of bills alone; the only item naming a bill immediately adds a P5 coin.",
+      "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
+    },
+    {
+      "capability_id": "combined_peso_coins_and_peso_bills",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "combined peso coins and peso bills",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64
+      ],
+      "confidence": "high",
+      "reasoning": "P50 bill + P5 coin is exactly this sub-case.",
+      "action_taken": "none - entry stands"
+    }
   ],
-  "did_not_see": [
-   "CAPABILITY_PROVIDERS or that any entry was being defended",
-   "the node id",
-   "the DNA, formatter registry, or generator source",
-   "validation_reports/, local_only/, docs/"
-  ],
-  "samples_passed_inline": true,
-  "tool_uses_by_attester": 0,
-  "framing": "neutral - 'do these items exhibit what this clause names?'; sub-case and medium clauses judged strictly on explicit instruction"
- },
- "packet": {
-  "builder": "tests/attester_packets.py",
-  "sampling": "is_student_path=True",
-  "node_id": "mat_g2_na_q2_0",
-  "seeds": [
-   11,
-   23,
-   42,
-   57,
-   64,
-   78,
-   91,
-   103,
-   118,
-   127
-  ],
-  "samples_judged": [
-   {
-    "seed": 11,
-    "question_text": "Count the coins and bills shown. What is the total amount?",
-    "correct_answer": "C",
-    "formatter": "read_mcq"
-   },
-   {
-    "seed": 23,
-    "question_text": "Count the coins and bills shown. What is the total amount?",
-    "correct_answer": "A",
-    "formatter": "read_mcq"
-   },
-   {
-    "seed": 42,
-    "question_text": "What is the total value of 6 50¢ coins and 2 25¢ coins, in centavos?",
-    "correct_answer": 350,
-    "formatter": "mcq"
-   },
-   {
-    "seed": 57,
-    "question_text": "Find the total amount of 4 50¢ coins and 3 25¢ coins, in centavos:",
-    "correct_answer": 275,
-    "formatter": "mcq"
-   },
-   {
-    "seed": 64,
-    "question_text": "How much is 1 ₱50 bill and 1 ₱5 coin altogether?",
-    "correct_answer": 55,
-    "formatter": "mcq"
-   },
-   {
-    "seed": 78,
-    "question_text": "What is the total value of 3 ₱10 coins, 1 ₱5 coin, and 2 ₱1 coins?",
-    "correct_answer": 37,
-    "formatter": "mcq"
-   },
-   {
-    "seed": 91,
-    "question_text": "How much is 5 50¢ coins and 4 25¢ coins altogether, in centavos?",
-    "correct_answer": 350,
-    "formatter": "cloze"
-   },
-   {
-    "seed": 103,
-    "question_text": "Use coins and bills to make exactly ₱27. Use the fewest pieces possible.",
-    "correct_answer": 27,
-    "formatter": "set_fill_in_blank"
-   },
-   {
-    "seed": 118,
-    "question_text": "What is the total value of 3 ₱10 coins, 2 ₱5 coins, and 1 ₱1 coin?",
-    "correct_answer": 41,
-    "formatter": "mcq"
-   },
-   {
-    "seed": 127,
-    "question_text": "Use coins and bills to make exactly ₱350. Use the fewest pieces possible.",
-    "correct_answer": 350,
-    "formatter": "set_fill_in_blank"
-   }
+  "incidental_findings": [
+    {
+      "severity": "defect",
+      "seeds": [
+        103,
+        127
+      ],
+      "finding": "Ungradeable answer key. 'Use coins and bills to make exactly P27' is keyed to 27 - the key restates the target already printed in the stem. The correct answer to a make-the-amount task is a set of denominations, so the item cannot be scored and a pupil who writes '27' is marked right for copying the question.",
+      "status": "OPEN"
+    },
+    {
+      "severity": "defect",
+      "seeds": [
+        103,
+        127
+      ],
+      "finding": "'the fewest pieces possible' is only well-defined once the available denominations are fixed; with a P20 coin and a P20 bill both in circulation more than one minimal composition exists.",
+      "status": "OPEN"
+    },
+    {
+      "severity": "defect",
+      "seeds": [
+        11,
+        23
+      ],
+      "finding": "'Count the coins and bills shown' with no collection in the text - unanswerable from the rendered text alone. The two are otherwise identical stems with the same key, differing only in distractors.",
+      "status": "OPEN"
+    },
+    {
+      "severity": "coverage",
+      "seeds": [
+        103,
+        127
+      ],
+      "finding": "These invert the competency (value given, collection asked) and are the only free-response items, which is why 'write the value' goes unexhibited.",
+      "status": "OPEN"
+    },
+    {
+      "severity": "none",
+      "seeds": [],
+      "finding": "All arithmetic verified correct; no second option is also correct; all denominations are real Philippine currency; vocabulary grade-appropriate.",
+      "status": "CLOSED - no action"
+    }
   ]
- },
- "verdicts": [
-  {
-   "capability_id": "determine",
-   "node_id": "mat_g2_na_q2_0",
-   "clause": "Determine",
-   "verdict": "PROVIDED",
-   "seeds_showing_it": [
-    42,
-    57,
-    64,
-    78,
-    91,
-    118
-   ],
-   "confidence": "high",
-   "reasoning": "Seeds ask the pupil to work out a total amount from a stated collection of currency.",
-   "action_taken": "none - entry stands"
-  },
-  {
-   "capability_id": "write_value",
-   "node_id": "mat_g2_na_q2_0",
-   "clause": "write the value",
-   "verdict": "NOT_PROVIDED",
-   "seeds_showing_it": [
-    103,
-    127
-   ],
-   "confidence": "high",
-   "reasoning": "Every value item is a four-option selection, which is choosing a value, not writing one. The only two free-response items hand the pupil the value in the stem and ask for a composition instead, so no item has the pupil produce or record a value.",
-   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
-  },
-  {
-   "capability_id": "number_of_bills",
-   "node_id": "mat_g2_na_q2_0",
-   "clause": "number of bills",
-   "verdict": "NOT_PROVIDED",
-   "seeds_showing_it": [
-    64
-   ],
-   "confidence": "high",
-   "reasoning": "No item asks the pupil to count a quantity of bills; the only bill named anywhere is a single P50 bill, paired with a coin.",
-   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
-  },
-  {
-   "capability_id": "number_of_coins",
-   "node_id": "mat_g2_na_q2_0",
-   "clause": "number of coins",
-   "verdict": "PROVIDED",
-   "seeds_showing_it": [
-    42,
-    57,
-    78,
-    91,
-    118
-   ],
-   "confidence": "high",
-   "reasoning": "Each gives an explicit count of coins by denomination and asks for the total.",
-   "action_taken": "none - entry stands"
-  },
-  {
-   "capability_id": "combination_of_bills_and_coins",
-   "node_id": "mat_g2_na_q2_0",
-   "clause": "combination of bills and coins",
-   "verdict": "PROVIDED",
-   "seeds_showing_it": [
-    64,
-    11,
-    23
-   ],
-   "confidence": "high",
-   "reasoning": "Seed 64 is explicitly '1 P50 bill and 1 P5 coin'.",
-   "action_taken": "none - entry stands"
-  },
-  {
-   "capability_id": "up_to_1000",
-   "node_id": "mat_g2_na_q2_0",
-   "clause": "up to ₱1000",
-   "verdict": "NOT_PROVIDED",
-   "seeds_showing_it": [
-    64,
-    127
-   ],
-   "confidence": "high",
-   "reasoning": "The largest peso amount anywhere is P350 and the largest computed total is P55. Every item is within the ceiling, but the band from roughly P400 to P1000 is never exercised.",
-   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
-  },
-  {
-   "capability_id": "centavo_coins_only",
-   "node_id": "mat_g2_na_q2_0",
-   "clause": "centavo coins only",
-   "verdict": "PROVIDED",
-   "seeds_showing_it": [
-    42,
-    57,
-    91
-   ],
-   "confidence": "high",
-   "reasoning": "Use only 50c and 25c coins and ask for the answer in centavos.",
-   "action_taken": "none - entry stands"
-  },
-  {
-   "capability_id": "peso_coins_only",
-   "node_id": "mat_g2_na_q2_0",
-   "clause": "peso coins only",
-   "verdict": "PROVIDED",
-   "seeds_showing_it": [
-    78,
-    118
-   ],
-   "confidence": "high",
-   "reasoning": "Use only P10, P5 and P1 coins with no bills.",
-   "action_taken": "none - entry stands"
-  },
-  {
-   "capability_id": "peso_bills_only",
-   "node_id": "mat_g2_na_q2_0",
-   "clause": "peso bills only",
-   "verdict": "NOT_PROVIDED",
-   "seeds_showing_it": [
-    64
-   ],
-   "confidence": "high",
-   "reasoning": "No item consists of bills alone; the only item naming a bill immediately adds a P5 coin.",
-   "action_taken": "OPEN - newly attested; §6F now enforces this as CONTRADICTED until the artifact is built or the entry deleted"
-  },
-  {
-   "capability_id": "combined_peso_coins_and_peso_bills",
-   "node_id": "mat_g2_na_q2_0",
-   "clause": "combined peso coins and peso bills",
-   "verdict": "PROVIDED",
-   "seeds_showing_it": [
-    64
-   ],
-   "confidence": "high",
-   "reasoning": "P50 bill + P5 coin is exactly this sub-case.",
-   "action_taken": "none - entry stands"
-  }
- ],
- "incidental_findings": [
-  {
-   "severity": "defect",
-   "seeds": [
-    103,
-    127
-   ],
-   "finding": "Ungradeable answer key. 'Use coins and bills to make exactly P27' is keyed to 27 - the key restates the target already printed in the stem. The correct answer to a make-the-amount task is a set of denominations, so the item cannot be scored and a pupil who writes '27' is marked right for copying the question.",
-   "status": "OPEN"
-  },
-  {
-   "severity": "defect",
-   "seeds": [
-    103,
-    127
-   ],
-   "finding": "'the fewest pieces possible' is only well-defined once the available denominations are fixed; with a P20 coin and a P20 bill both in circulation more than one minimal composition exists.",
-   "status": "OPEN"
-  },
-  {
-   "severity": "defect",
-   "seeds": [
-    11,
-    23
-   ],
-   "finding": "'Count the coins and bills shown' with no collection in the text - unanswerable from the rendered text alone. The two are otherwise identical stems with the same key, differing only in distractors.",
-   "status": "OPEN"
-  },
-  {
-   "severity": "coverage",
-   "seeds": [
-    103,
-    127
-   ],
-   "finding": "These invert the competency (value given, collection asked) and are the only free-response items, which is why 'write the value' goes unexhibited.",
-   "status": "OPEN"
-  },
-  {
-   "severity": "none",
-   "seeds": [],
-   "finding": "All arithmetic verified correct; no second option is also correct; all denominations are real Philippine currency; vocabulary grade-appropriate.",
-   "status": "CLOSED - no action"
-  }
- ]
 }

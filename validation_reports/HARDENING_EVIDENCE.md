@@ -7136,3 +7136,72 @@ measurement so the next tick can act on evidence rather than on my say-so.
 ```
 capability findings 765 -> 764   (CONTRADICTED 33 -> 32)
 ```
+
+---
+
+## Tick 20 — 2026-08-21 — §6F re-checked evidence that nothing reads
+
+Tick 19 left this as item 1 with a warning attached: it *lowers* a failure count and lives in
+`validation/`, so verify the reading independently before editing. Doing that changed the fix.
+
+### `supersedes` was the wrong thing to honour
+
+The ledger said "make §6F honour `supersedes`". Reading the code showed that would have been a hole:
+a self-declared string would let a batch retire an inconvenient verdict by asserting it had been
+replaced — the forbidden move, dressed as bookkeeping.
+
+What is actually true is narrower and checkable. `_load_attestations` resolves
+`(node_id, capability_id)` by **last-file-wins** over a sorted glob, so a fully replaced batch is
+consulted by nothing, while `_attestation_staleness` re-renders **every** record on disk. Verified
+before editing:
+
+```
+batch018_mat_g1_na_q1_9: 6 verdicts, still the winning verdict for 0 of them
+batch018_mat_g1_na_q2_6: 6 verdicts, still the winning verdict for 0 of them
+batch018_mat_g3_na_q3_4: 4 verdicts, still the winning verdict for 4 of them
+```
+
+That third record is the reason the rule has to be whole-record: a blanket "a newer batch exists, skip
+it" would have stopped freshness-checking live evidence.
+
+So supersession is **derived from the records**, never from their own text, and a record is exempt only
+once *every* one of its verdicts has been replaced. It has to be earned by filing a replacement that
+faces this same check — and the replacement is not trusted either: if it is stale it is reported under
+its own name.
+
+### Proved by mutation, not by the number moving
+
+```
+=== MUTATION A: newer record drops ONE pair -> old record owns a live verdict again ===
+  dropped pair: mat_g1_na_q1_9 sums_up_to_20
+  STALE now: 9 | batch018_mat_g1_na_q1_9 fires again: True
+
+=== MUTATION B: a record CLAIMS supersession without a real replacement ===
+  b09_mat_g2_na_q2_0 claims supersession -> STALE 8 -> 8; still fires: True
+
+=== the 8 remaining STALE records ===
+  b09_mat_g2_na_q2_0:       owns 10/10 winning verdicts -> correctly checked
+  b10_mat_g1_na_q1_2:       owns  9/9
+  b10_mat_g2_na_q3_1:       owns 10/10
+  b11_mat_g1_na_q1_7:       owns  9/9
+  b12_mat_g3_na_q2_0:       owns  9/9
+  batch001_mat_g3_mg_q1_5:  owns  5/5
+  batch005_mat_g2_mg_q4_3:  owns  8/8
+  batch018_mat_g3_na_q3_4:  owns  4/4
+```
+
+Every remaining STALE record owns 100% of its winning verdicts, so none was wrongly skipped. And the
+unit tests catch a regression by name:
+
+```
+planted `if False:` (pre-fix, every record checked)
+  FAILED test_a_fully_replaced_record_is_not_freshness_checked
+restored: 322 passed, 2 deselected
+```
+
+```
+capability findings 764 -> 759   (STALE 13 -> 8, CONTRADICTED unchanged at 32)
+```
+
+CONTRADICTED is unchanged, which is the check that matters: this cleared bookkeeping noise, not a
+single verdict. Contract row added in the same commit (Protocol 7).

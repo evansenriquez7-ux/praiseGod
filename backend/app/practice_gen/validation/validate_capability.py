@@ -977,8 +977,34 @@ def _attestation_staleness(records: List[Dict[str, Any]]) -> List[str]:
     """
     from backend.app.practice_gen.validation.judgment_packets import _render_sample
 
+    # A record that no longer supplies a single winning verdict is not evidence for
+    # anything, and re-rendering its seeds asks whether content still matches a ruling
+    # nothing consults. `_load_attestations` resolves (node_id, capability_id) by
+    # last-file-wins over the same sorted glob, so replay exactly that rule here -- a
+    # different rule would let the freshness pass and the verdict pass disagree about
+    # which record is authoritative.
+    #
+    # Derived from the data, NEVER from the record's own `supersedes` string. A
+    # self-declared field would let a batch retire an inconvenient verdict by asserting
+    # it had been replaced; this way supersession has to be *earned* by filing a real
+    # record that itself faces this same freshness check. Note the newer record is not
+    # trusted either: if it is stale, it is reported under its own name.
+    #
+    # Whole-record, not per-verdict. batch018_mat_g3_na_q3_4 still owns all four of its
+    # verdicts while its two siblings own none of theirs, so a blanket "an 018 exists,
+    # skip it" rule would silently stop freshness-checking live evidence.
+    winner: Dict[tuple, int] = {}
+    for i, rec in enumerate(records):
+        for v in rec.get("verdicts", []):
+            winner[(v.get("node_id"), v.get("capability_id"))] = i
+
     errs: List[str] = []
-    for rec in records:
+    for idx, rec in enumerate(records):
+        verdict_pairs = [(v.get("node_id"), v.get("capability_id"))
+                         for v in rec.get("verdicts", [])]
+        if verdict_pairs and all(winner.get(pair) != idx for pair in verdict_pairs):
+            continue
+
         packet = rec.get("packet") or {}
         node_id = packet.get("node_id")
         judged = packet.get("samples_judged")
