@@ -381,7 +381,32 @@ def validate_advertised_formatters_are_servable() -> List[str]:
         except Exception as exc:  # noqa: BLE001
             return exc
 
+    from backend.app.practice_gen._generated_formatter_exclusions import (
+        NODE_FORMATTER_EXCLUSIONS,
+    )
+    from backend.app.practice_gen.compatibility import COMPATIBILITY
+    from ..registry import get_node_dnas
+
     errors: List[str] = []
+
+    # DIRECTION 2, added after the narrowing shipped: a formatter that is EXCLUDED but
+    # has become servable is silently withheld from the node. The first version of this
+    # check only looked for "advertised but unservable", so the exclusion map could rot
+    # in the direction that quietly narrows content and nothing would notice -- the
+    # exact harm the narrowing was warned about. A one-directional check on a generated
+    # file is a check that guards only the failure you happened to think of first.
+    for node_id, excluded in NODE_FORMATTER_EXCLUSIONS.items():
+        for fmt in excluded:
+            if not any(fmt in COMPATIBILITY.get(d, []) for d in get_node_dnas(node_id)):
+                continue  # no longer offered by any of the node's DNAs; not withheld
+            if _serves(node_id, fmt) is True:
+                errors.append(
+                    f"{node_id}: formatter {fmt!r} is listed in NODE_FORMATTER_EXCLUSIONS "
+                    f"but the orchestrator now serves it. The exclusion is stale and is "
+                    f"withholding a formatter the node could use. Regenerate with: "
+                    f"PYTHONPATH=. .venv/bin/python3 -m scripts.regen_formatter_exclusions"
+                )
+
     for node_id in NODE_TO_DNA:
         # No try/except here on purpose. The first version of this check wrapped this
         # call and swallowed the exception, and because `get_node_formatters` was not
