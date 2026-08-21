@@ -6591,3 +6591,69 @@ Tick 14's ledger said "never background a command chain containing a commit". Th
 actual failure was `git commit -F -` reading its message from a **heredoc on stdin**, which
 backgrounding breaks. Writing the message to a file first and using `git commit -F <file>` is safe —
 verified this tick by doing exactly that in a backgrounded chain and confirming the commit landed.
+
+---
+
+## 2026-08-21 (tick 17) — §2B was guarding one direction only
+
+Commit `445725c4`. Touches `backend/app/practice_gen/validation/`.
+
+### The gap I shipped
+
+Last tick's narrowing made the advertised formatter list equal the servable one, guarded by §2B. But
+§2B checked exactly one direction — *advertised but unservable*. The other direction, **excluded but
+now servable**, was unguarded, so the generated map could rot in the direction that silently withholds
+a formatter from a node.
+
+That is precisely the harm the narrowing was warned about (tick 14's near-miss was a change that would
+have narrowed 8 nodes to nothing). I shipped the guard against the *other* failure. **A
+one-directional check on a generated file guards only the failure you happened to think of first.**
+
+### Fixed and proved
+
+```
+planted: excluded 'mcq', which mat_g1_na_q1_7 demonstrably serves
+  direction-2 fired by name: True
+  -> "listed in NODE_FORMATTER_EXCLUSIONS but the orchestrator now serves it.
+      The exclusion is stale and is withholding a formatter the node could use"
+restored -> findings: 0
+```
+
+Proved by mutation rather than trusting the zero — tick 13's §2B reported "0 findings" while doing
+nothing at all, and that lesson applies to every new zero.
+
+Both directions currently report 0, so the map is exactly right today.
+
+### The 33 single-formatter nodes, surveyed
+
+They split cleanly, and only one half is a narrowing artefact:
+
+```
+10 nodes: their DNA declares only ONE formatter in COMPATIBILITY at all
+          geometric_lines / symmetry_slides / probability_language /
+          compose_decompose_to_10  ->  each is ['mcq']
+23 nodes: narrowed by exclusions
+```
+
+Of the 23, several are the **same synthesized-scope class tick 15 fixed**:
+
+```
+addition.task_type      : 'properties', 'estimate'
+multiplication.table    : '6_7_8_9'
+pictographs.scale_type  : 'with_or_without_scale'
+```
+
+Tick 15 declared each scope on only the one formatter needed to unblock a node, not on its siblings —
+so the siblings are still refused and the nodes still show a single formatter.
+
+### Why I did not broaden them this tick
+
+Broadening declarations makes pairs servable, which makes the generated exclusion map stale in exactly
+the direction §2B could not see. Doing that work *before* fixing the check would have been silently
+narrowing content while the harness reported green. With both directions live it is safe, and it is
+now the next tick's item.
+
+```
+§2B: 0 in both directions
+pytest tests/unit: 313 passed, 2 deselected
+```

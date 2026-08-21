@@ -4048,3 +4048,51 @@ is now truthful on 86 nodes.
 4. Still open: `read_mcq` -> placement (63 nodes), `concrete materials`, `up to 10` on
    `mat_g1_na_q1_6`, `geometric_lines` hash bug, re-attesting blind-packet nodes, coverage programme
    (~35 dispatches).
+
+---
+
+## 2026-08-21 (tick 17) — §2B guarded one direction only
+
+Entered at `VERDICT: RESUME`, 767 findings, coverage 127/787. Took ledger item 1 (the 33
+single-formatter nodes) and it turned into a gap in my own last change.
+
+**The gap.** Last tick's narrowing was guarded by §2B in ONE direction: "advertised but unservable".
+The other direction — **excluded but now servable** — was unguarded, so the generated map could rot the
+way that silently withholds formatters from nodes. That is exactly the harm tick 14 warned about, and
+I had shipped the guard against the other failure. **A one-directional check on a generated file
+guards only the failure you happened to think of first. When you generate an artifact and check it,
+enumerate both ways it can be wrong.**
+
+Fixed, and proved by planting a stale exclusion (direction 2 fires by name; restores to 0) rather than
+trusting the zero — tick 13's §2B reported 0 while doing nothing, and that lesson applies to every new
+zero.
+
+**The 33 single-formatter nodes, surveyed and split:**
+- **10 nodes**: their DNA declares only ONE formatter at all — `geometric_lines`, `symmetry_slides`,
+  `probability_language`, `compose_decompose_to_10` are each `['mcq']`. Not a narrowing artefact; a
+  content gap in those DNAs.
+- **23 nodes**: narrowed by exclusions, and several are the SAME synthesized-scope class tick 15
+  fixed — `addition.task_type` 'properties'/'estimate', `multiplication.table` '6_7_8_9',
+  `pictographs.scale_type` 'with_or_without_scale'. Tick 15 declared each scope on only the ONE
+  formatter needed to unblock a node, not on its siblings.
+
+**Deliberately did not broaden those declarations this tick.** Broadening makes pairs servable, which
+makes the generated map stale in exactly the direction §2B could not see. Doing the content work
+before fixing the check would have narrowed content silently while the harness reported green. Order
+matters: **fix the guard, then do the work it guards.**
+
+**Both movements:** findings 767 -> 767; coverage 127/787 unchanged. §2B now bidirectional, 0 both ways.
+
+**Next tick should:**
+1. **Broaden the synthesized-scope declarations to sibling formatters** — now safe. `addition`
+   'properties'/'estimate' on cloze/true_false/error_detect; `multiplication.table` '6_7_8_9';
+   `pictographs.scale_type` 'with_or_without_scale'. After each change regenerate the exclusion map
+   and confirm §2B is 0 both ways; the single-formatter count should fall.
+2. **The 10 DNAs that offer only `mcq`.** Real content work: decide per DNA which additional
+   formatters can genuinely render its items (geometric_lines could plausibly take `true_false` and
+   `error_detect`; probability_language likewise). Cite the competency clause each addition serves.
+3. `mat_g2_na_q3_0`'s `max_product` floor of 0 (last §1G finding) + the 4 stale seeds on
+   `mat_g3_na_q3_1`, together.
+4. Still open: `read_mcq` -> placement (63 nodes), `concrete materials`, `up to 10` on
+   `mat_g1_na_q1_6`, `geometric_lines` hash bug, §1G extensions, re-attesting blind-packet nodes,
+   coverage programme (~35 dispatches).
