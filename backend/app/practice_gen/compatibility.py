@@ -871,7 +871,7 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # Note the fix is to give the task its visual, NOT to restrict it and hope:
         # at G1 there is no other visual formatter, so restricting alone would have
         # left the task unrenderable.
-        "ruler_measure": {"task_type": ["read_measurement", "distance_between"]},
+        "ruler_measure": {"task_type": ["read_measurement", "distance_between", "length_or_distance", "compare_length_or_distance", "measure_compare_or_distance"]},
         # The reverse restriction, which was missing. Limiting ruler_measure to
         # read_measurement stopped the ruler serving the wrong tasks, but nothing
         # stopped mcq and cloze serving read_measurement -- and that direction is
@@ -1139,7 +1139,7 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
         # "all task types work", which let the calendar_read formatter get
         # picked for "sequence" and silently render an unrelated
         # date-lookup grid instead).
-        "calendar_read": {"task_type": ["read_day", "read_month", "find_date", "elapsed_days", "elapsed_weeks", "day_and_month_calendar"]},
+        "calendar_read": {"task_type": ["read_day", "read_month", "find_date", "elapsed_days", "elapsed_weeks", "day_and_month_calendar", "elapsed_days_or_weeks"]},
         "mcq": {"task_type": ["sequence", "problem_days", "problem_months"]},
         "cloze": {"task_type": ["sequence", "problem_days", "problem_months"]},
     },
@@ -1168,14 +1168,14 @@ FORMATTER_VARIANT_SUPPORT: Dict[str, Dict[str, Dict[str, List[str]]]] = {
 
     "pictographs": {
         "mcq": {"task_type": ["collect_interview"]},
-        "pictograph_read": {"task_type": ["read_value", "compare_two", "find_total", "find_difference"]},
+        "pictograph_read": {"task_type": ["read_value", "compare_two", "find_total", "find_difference", "read_or_compare", "present_or_organize", "tabular_and_pictograph"]},
         "pictograph_set": {"task_type": ["present_data"]},
         "fill_in_table": {"task_type": ["organize_table"]},
         "table_read": {"task_type": ["read_table"]},
     },
 
     "bar_graphs": {
-        "bar_chart_read": {"task_type": ["read_value", "compare_bars", "find_total", "find_difference", "find_most_least", "solve_problem"]},
+        "bar_chart_read": {"task_type": ["read_value", "compare_bars", "find_total", "find_difference", "find_most_least", "solve_problem", "interpret_data"]},
         "bar_chart_set": {"task_type": ["present_data"]},
     },
 }
