@@ -372,6 +372,15 @@ def validate_advertised_formatters_are_servable() -> List[str]:
     """
     from backend.app.services.orchestrator import PracticeOrchestrator
 
+    def _serves(node_id, fmt=None):
+        try:
+            PracticeOrchestrator.generate_problem(
+                node_id=node_id, seed=11, formatter=fmt, is_lab=False,
+            )
+            return True
+        except Exception as exc:  # noqa: BLE001
+            return exc
+
     errors: List[str] = []
     for node_id in NODE_TO_DNA:
         # No try/except here on purpose. The first version of this check wrapped this
@@ -381,6 +390,7 @@ def validate_advertised_formatters_are_servable() -> List[str]:
         # because its own lookup failed is worse than no check at all (AGENTS.md rule
         # #3: no bare except, no warn-and-continue).
         advertised = get_node_formatters(node_id)
+        refused: List[str] = []
         for fmt in advertised:
             try:
                 PracticeOrchestrator.generate_problem(
@@ -389,9 +399,43 @@ def validate_advertised_formatters_are_servable() -> List[str]:
             except Exception as exc:  # noqa: BLE001
                 if "is not supported by any DNA" not in str(exc):
                     continue  # a content-level failure is another check's business
+                refused.append(fmt)
+
+        if not refused:
+            continue
+
+        # Two different defects hide behind the same message, and lumping them together
+        # makes the finding unactionable. Separate them by asking whether the node can
+        # produce ANYTHING when no formatter is pinned:
+        #
+        #   * every advertised formatter refused, yet auto-select works  -> the PINNED
+        #     path is stricter than the auto path. That is a bug in the orchestrator,
+        #     not a false advertisement, and excluding the formatters would hide it
+        #     while narrowing the node's content. orchestrator.py already carries a
+        #     comment about exactly this class ("any request that named a formatter,
+        #     i.e. every Lab preview, raised 'Formatter X is not supported by any DNA'
+        #     for the 22 nodes bound this way") -- so it has bitten before and the
+        #     earlier exemption does not cover these.
+        #
+        #   * some advertised formatters serve and some do not -> the refusals are
+        #     genuine restrictions (e.g. a node bound to task_type='model_representation'
+        #     cannot use `mcq`, because an MCQ cannot represent a number with a model),
+        #     and the advertised list is simply promising what it should not.
+        auto = _serves(node_id)
+        if len(refused) == len(advertised) and auto is True:
+            errors.append(
+                f"{node_id}: ALL {len(advertised)} advertised formatters {sorted(refused)} "
+                f"are refused when pinned, yet the node generates fine when no formatter "
+                f"is named. The pinned path is stricter than the auto path -- an "
+                f"orchestrator defect, not a false advertisement. Do NOT fix this by "
+                f"trimming the advertised list; that hides it and narrows the node."
+            )
+        else:
+            for fmt in sorted(refused):
                 errors.append(
                     f"{node_id} advertises formatter {fmt!r} via get_node_formatters(), "
-                    f"but the orchestrator refuses it for this node: {exc}. The advertised "
+                    f"but the orchestrator refuses it for this node while serving other "
+                    f"advertised formatters, so the restriction is genuine. The advertised "
                     f"list is a union of COMPATIBILITY across the node's DNAs with no "
                     f"per-node narrowing, so it promises what cannot be served -- and the "
                     f"Lab builds its menu from it."

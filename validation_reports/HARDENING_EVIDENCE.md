@@ -6385,3 +6385,73 @@ pytest tests/unit : 313 passed, 2 deselected
 ```
 
 §2 now fails. That is the honest state: 236 false declarations exist, and they were invisible before.
+
+---
+
+## 2026-08-21 (tick 14) — CORRECTION: §2B's 236 was two defects, not one
+
+Commit at HEAD. Corrects tick 13's entry.
+
+### What I got wrong last tick
+
+I wrote "236 false declarations exist". That overstated it. Setting out to fix them revealed the count
+is a mixture:
+
+```
+29 pairs / 8 nodes : EVERY advertised formatter refused when pinned, yet the node
+                     generates fine with no formatter named  -> ORCHESTRATOR DEFECT
+207 pairs / 78 nodes: node serves some pinned formatters and refuses others
+                     -> genuine restriction, advertised list is wrong
+```
+
+The first class is not false advertising at all. `orchestrator.py` already carries a comment about
+exactly this failure mode — *"any request that named a formatter (i.e. every Lab preview) raised
+'Formatter X is not supported by any DNA' for the 22 nodes bound this way"* — so it has bitten before
+and the earlier exemption does not cover these 8.
+
+The second class is genuine and the diagnosis is clean:
+
+```
+mat_g1_na_q1_2 bound task_type='model_representation'
+   mcq supports [numeral_to_word, word_to_numeral, numeral_to_expanded, read_and_write]
+   -> an MCQ genuinely cannot REPRESENT a number with a model
+mat_g1_na_q1_1 bound task_type='read_and_write'
+   number_line_read supports [number_line, model_representation]
+   -> a number line does not serve "read and write numerals"
+```
+
+### I nearly shipped the wrong fix
+
+The plan was a generated per-node exclusion list. Generating it produced the signal that stopped it:
+
+```
+nodes that would be left with NO formatter: 8
+```
+
+A node with an empty formatter list is impossible on its face, and chasing that is what exposed the
+pinned-vs-auto divergence. **Shipping the exclusion list would have hidden an orchestrator bug and
+narrowed eight nodes to nothing.** The absurd intermediate result was the only thing standing between
+me and a confident wrong change.
+
+### Two other approaches, rejected by measurement rather than argument
+
+```
+"union only over DNAs that can serve the node"        -> explains 30 of 236
+static predicate (bounds x FORMATTER_VARIANT_SUPPORT) -> 635/690 correct,
+                                                          12 false-servable,
+                                                          43 FALSE REFUSALS
+```
+
+43 false refusals would have stripped formatters that demonstrably work. **This is the third time this
+run that modelling the orchestrator's logic in a second place has drifted from it** — §2B is empirical
+for exactly that reason, and the temptation to "just compute it" was wrong again.
+
+### What shipped
+
+§2B now classifies rather than lumps: 8 node-level pinned-path defects, 207 genuine false
+advertisements. Lumped, the finding was unactionable and pointed at the wrong fix.
+
+```
+§2B findings: 215  (8 node-level + 207 pair-level)
+pytest tests/unit: 313 passed, 2 deselected
+```
