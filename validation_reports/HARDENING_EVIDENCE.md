@@ -6455,3 +6455,73 @@ advertisements. Lumped, the finding was unactionable and pointed at the wrong fi
 §2B findings: 215  (8 node-level + 207 pair-level)
 pytest tests/unit: 313 passed, 2 deselected
 ```
+
+---
+
+## 2026-08-21 (tick 15) — Eight nodes where every Lab preview raised
+
+Commit `99fbfe76`. Touches `backend/app/practice_gen/`, so Rule 7 requires this entry.
+
+### The symptom
+
+Eight nodes could not preview **any** formatter. Pinning any advertised formatter raised
+`Formatter 'X' is not supported by any DNA`, while the same node generated fine with no formatter
+named. The Lab always pins, so every preview on those nodes raised.
+
+### Traced to one predicate
+
+```
+is_variant_supported('length_measurement','ruler_measure','task_type','length_or_distance') -> False
+is_variant_supported('pictographs','pictograph_read','task_type','present_or_organize')     -> False
+```
+
+`registry.py` synthesises a **composite** task_type from the competency text — *"Measure the length of
+an object AND the distance between two objects"* → `length_or_distance` — and the DNA resolves it
+internally, so it is never a literal option. `FORMATTER_VARIANT_SUPPORT` lists only literals, so the
+scope matched nothing.
+
+The orchestrator has an exemption for registry-synthesised scopes, but it is deliberately skipped when
+a formatter *explicitly restricts* that axis. That skip is correct in general — it is how
+`pattern_sequence` refuses an `ask_type` it cannot draw — but on these eight nodes it disqualified
+**every** DNA, leaving nothing pinnable.
+
+### Fixed by declaring the truth, not loosening the logic
+
+```
+ruler_measure   += length_or_distance, compare_length_or_distance, measure_compare_or_distance
+pictograph_read += read_or_compare, present_or_organize, tabular_and_pictograph
+calendar_read   += elapsed_days_or_weeks
+bar_chart_read  += interpret_data
+```
+
+The exemption stays intact for the case it was written for. This is the same shape as tick 12's fix:
+the declaration was incomplete, and loosening the check would have masked that.
+
+### Verified
+
+```
+node-level pinned-path defects : 8 -> 0
+mat_g1_mg_q2_0  Nodes Failed: 0   Total Failures Observed: 0
+mat_g2_dp_q3_0  Nodes Failed: 0   Total Failures Observed: 0
+mat_g2_mg_q4_0  Nodes Failed: 0   Total Failures Observed: 0
+mat_g3_dp_q3_2  Nodes Failed: 0   Total Failures Observed: 0
+pytest tests/unit: 313 passed, 2 deselected
+```
+
+### A count that rose for a good reason
+
+§2B's total moves **215 → 228**. That is the classification working, not a regression: a node whose
+formatters were *all* refused produced one node-level finding; now that it serves some, its remaining
+refusals reclassify into several pair-level findings. The number went up because eight nodes stopped
+being wholly broken.
+
+Worth stating plainly because "the count went up" is normally the signature of a regression here — and
+this is the case where it is the opposite. The node-level count, which is the one that tracks the
+defect, went 8 → 0.
+
+### A near-miss avoided by formatting, not judgment
+
+My first attempt at these edits used a regex that matched nothing: `entries updated: 0`, lists
+unchanged. Had it matched *partially* it would have written a malformed table. The verification print
+immediately after the edit is what made that safe — never edit a declaration table without printing
+the result back.

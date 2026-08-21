@@ -3955,3 +3955,48 @@ node-level defects + 207 pair-level, instead of one unactionable lump of 236.
 4. Extend §1G (BarChart, ClockSet, Calendar), verifying each candidate read-only first.
 5. Still open: `read_mcq` -> placement (63 nodes), `concrete materials`, `up to 10` on
    `mat_g1_na_q1_6`, `geometric_lines` hash bug, re-attesting blind-packet nodes, coverage programme.
+
+---
+
+## 2026-08-21 (tick 15) — The eight nodes where every Lab preview raised
+
+Entered at `VERDICT: RESUME`, 767 findings, coverage 127/787. Took ledger item 1.
+
+**Fixed: node-level pinned-path defects 8 -> 0.** Eight nodes could not preview ANY formatter — every
+pin raised "not supported by any DNA" while the node generated fine unpinned. The Lab always pins, so
+every preview on those nodes raised.
+
+**Root cause, traced to one predicate.** registry.py synthesises a COMPOSITE task_type from competency
+text ("Measure the length of an object AND the distance between two objects" -> `length_or_distance`)
+and the DNA resolves it internally, so it is never a literal option. FORMATTER_VARIANT_SUPPORT lists
+only literals, so the scope matched nothing. The orchestrator's exemption for registry scopes is
+deliberately skipped when a formatter explicitly restricts that axis — correct in general
+(pattern_sequence refusing an ask_type it cannot draw) — but here it disqualified every DNA.
+
+**Fixed by declaring the scopes, not by loosening the check.** Same shape as tick 12. Loosening would
+have masked an incomplete declaration and weakened a check that is right for its intended case.
+
+**A count that rose for a good reason, and it is worth naming because it is normally the danger sign.**
+§2B went **215 -> 228**. A node whose formatters were ALL refused produced one node-level finding; now
+that it serves some, its remainder reclassifies into several pair-level findings. The number went up
+because eight nodes stopped being wholly broken. **The number to watch is the node-level count (8 ->
+0), not the total.** When a check classifies, read the class that tracks the defect, not the sum.
+
+**A near miss avoided by a print, not by judgment.** My first edit used a regex that matched nothing
+("entries updated: 0"). Had it matched PARTIALLY it would have written a malformed declaration table
+and I would have shipped it. The verification print immediately after the edit is the only reason that
+was safe. **Never edit a declaration table without printing the parsed result back.**
+
+**Both movements:** findings 767 -> 767; coverage 127/787 unchanged. The gain is that 8 nodes are
+usable in the Lab again and 4 more nodes now pass validate_matrix cleanly.
+
+**Next tick should:**
+1. **The 228 pair-level §2B findings.** Now that the pinned path is honest, re-measure before building
+   anything — tick 14's warning stands, and the count has already moved twice. Then decide the
+   narrowing mechanism, remembering that the exclusion-list route nearly hid this very bug.
+2. `mat_g2_na_q3_0`'s `max_product` floor of 0 (last §1G finding) + the 4 stale seeds on
+   `mat_g3_na_q3_1`, together.
+3. Extend §1G (BarChart, ClockSet, Calendar), verifying each candidate read-only first.
+4. Still open: `read_mcq` -> placement (63 nodes), `concrete materials`, `up to 10` on
+   `mat_g1_na_q1_6`, `geometric_lines` hash bug, re-attesting blind-packet nodes, coverage programme
+   (~35 dispatches).
