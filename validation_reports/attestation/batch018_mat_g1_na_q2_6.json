@@ -1,0 +1,176 @@
+{
+  "batch": "batch018_mat_g1_na_q2_6",
+  "attested_at": "2026-08-21T20:10:00+08:00",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "validation_reports/, local_only/, docs/"
+    ],
+    "samples_passed_inline": true,
+    "tool_uses_by_attester": 0,
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q2_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Lola Caring has 0 leashes. A friend has 2 leashes. If they put all their leashes together, how many leashes do they have in all?",
+        "correct_answer": 2,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Ate Gab collected 3 pom-pom and 10 wristband at the auditorium. How many items did Ate Gab collect in total?",
+        "correct_answer": 13,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "There is 1 score card in one basket and 10 score cards in another basket. How many score cards are there in all?",
+        "correct_answer": 11,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Start at 1. Count up 2 more. What number do you land on?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Gab has 0 sneakers. A friend has 3 sneakers. If they put all their sneakers together, how many sneakers do they have in all?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Kuya Chad collected 2 running shoes and 2 water bottle at the school track. How many items did Kuya Chad collect in total?",
+        "correct_answer": 4,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Start at 1. Count up 3 more. What number do you land on?",
+        "correct_answer": 4,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "There are 0 water bowls in one basket and 2 water bowls in another basket. How many water bowls are there in all?",
+        "correct_answer": 2,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "There are 2 volleyballs in one basket and 1 volleyball in another basket. How many volleyballs are there in all?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Start at 1. Count up 2 more. What number do you land on?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        64,
+        78,
+        103,
+        118
+      ],
+      "reasoning": "Seven of the ten items are contextual word problems that require the pupil to work out an unknown total, e.g. \"Ate Gab collected 3 pom-pom and 10 wristband at the auditorium. How many items did Ate Gab collect in total?\" Each poses a situation and asks for a quantity.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "orally",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "orally",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Every item is delivered as printed text with printed options; nothing in any sample indicates the problem is read aloud to the pupil, and no audio medium is present.",
+      "action_taken": "CONTRADICTED. Same class as item_003; see that note."
+    },
+    {
+      "capability_id": "pictures",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "pictures",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No sample carries a `VISUAL RENDERED` line, so nothing was drawn for the pupil. The stems mention countable objects but the quantities are given only as numerals in text. There is nothing for the pupil to look at and count.",
+      "action_taken": "CONTRADICTED. Same class as item_004; confirmed visual_type None on all 10 student-path seeds."
+    },
+    {
+      "capability_id": "addition",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        64,
+        78,
+        103,
+        118
+      ],
+      "reasoning": "The items combine two quantities into a total: \"If they put all their leashes together, how many leashes do they have in all?\" (seed 11), \"How many items did Ate Gab collect in total?\" (seed 23). The keys match the sums of the two stated addends (3 + 10 = 13; 1 + 10 = 11).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "sum_up_to_100",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "sums up to 100",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The largest sum anywhere in the set is 13 (\"collected 3 pom-pom and 10 wristband\", key 13); the next largest is 11 (seed 42). Every other item lands on 2, 3 or 4. Sums confined to 2-13 sit inside a sums-to-20 scope and do not meaningfully exercise a range that reaches 100.",
+      "action_taken": "CONTRADICTED, and confirmed by execution: across 200 seeds the maximum key is 13 with 7 distinct values, against a competency ceiling of 100 and a registry bound of max_sum (0, 100). Same root cause as item_006. Next tick's item 1."
+    },
+    {
+      "capability_id": "without_regrouping",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42
+      ],
+      "reasoning": "No item in the set requires carrying: seed 23 is 3 + 10 = 13 and seed 42 is 1 + 10 = 11, both two-digit results reached with a ones-digit sum below 10, and the rest are single-digit sums. The constraint holds throughout. It is only thinly exercised, however, since only the \"10\" addends put a tens column in play at all.",
+      "action_taken": "Left registered. The Attester's caveat that the constraint is thinly exercised is subsumed by the range defect in item_011."
+    }
+  ]
+}

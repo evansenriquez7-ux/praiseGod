@@ -6657,3 +6657,280 @@ now the next tick's item.
 §2B: 0 in both directions
 pytest tests/unit: 313 passed, 2 deselected
 ```
+
+---
+
+## Tick 18 — 2026-08-21 — the regenerator that never ran, and the scope compared as a whole
+
+Last tick's `Next tick should:` was "broaden the synthesized-scope declarations to sibling formatters".
+Both halves of that instruction turned out to be wrong, and finding out why was the tick.
+
+### The command §2B tells you to run has never worked
+
+`scripts/regen_formatter_exclusions.py`, shipped in tick 16 alongside the generated map, fails in two
+independent ways and had never been executed:
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m scripts.regen_formatter_exclusions
+ImportError: cannot import name 'COMPATIBILITY_FORMATTERS_FOR_NODE' from
+'backend.app.practice_gen.registry'
+```
+
+and even past the import there is no write of any kind — it computed the map, printed a count, and
+returned. `from pathlib import Path` at the top was never used.
+
+That matters more than a broken helper usually would, because §2B's own failure message names this
+command as the remedy: a node whose exclusion had gone stale told the reader to run a script that
+could not run. And the file carries a `DO NOT EDIT BY HAND` banner, so a 228-entry map was
+hand-maintained under a generated label with nothing able to check it against the orchestrator. My
+tick-16 report cited this command without executing it — Protocol 1, and mine.
+
+Fixed, and the map now regenerates for real:
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m scripts.regen_formatter_exclusions
+228 exclusions across 86 nodes -> _generated_formatter_exclusions.py
+
+committed pairs: 228   regenerated pairs: 228
+semantic difference: added=[] removed=[]
+VERDICT: identical -- the hand-maintained map was correct
+```
+
+The hand-maintained content was right, so no harm had landed; the exposure was latent. Regeneration
+recomputes the union from `COMPATIBILITY` rather than from `get_node_formatters()`, which subtracts the
+very map being written — using it would make regeneration a function of its own previous output, so a
+wrongly excluded pair would never be probed again and the error would be permanent and
+self-confirming. Proved independent by emptying the map first:
+
+```
+map emptied -> 0 entries
+228 exclusions across 86 nodes
+IDENTICAL from an empty start — regeneration is independent of its own prior output
+```
+
+### The declarations did not need broadening. A membership test needed fixing.
+
+The ledger's diagnosis was that tick 15 declared each synthesized scope on one formatter and not its
+siblings. Measuring the 23 exclusion-narrowed nodes instead showed a second, larger class: a
+competency can bind an axis to a **set** of literal values, and 78 such bounds exist across the tree.
+
+```
+mat_g1_na_q1_9   task_type = ['putting_together', 'counting_up']
+mat_g2_na_q3_1   task_type = ['repeated_addition', 'skip_counting', 'number_line_jumps']
+```
+
+`is_variant_supported` assumed a scalar and evaluated `variant_value in allowed_values` — comparing the
+whole list against a list of strings, which is False no matter what the list contains:
+
+```
+=== the scope mat_g1_na_q1_9 binds: task_type = ['putting_together','counting_up'] ===
+  whole list  -> False
+  member 'putting_together' -> True
+  member 'counting_up' -> True
+
+=== mat_g2_na_q3_1: ['repeated_addition','skip_counting','number_line_jumps'] ===
+  cloze              whole=False  members=[True, True, True]
+  true_false         whole=False  members=[True, True, True]
+  error_detect       whole=False  members=[True, True, True]
+  array_grid_read    whole=False  members=[True, True, True]
+  array_grid_set     whole=False  members=[True, True, True]
+```
+
+Confirmed as the live path by instrumenting the predicate during a refusal:
+
+```
+mat_g1_na_q1_9/cloze: REFUSED -> Formatter 'cloze' is not supported by any DNA
+    is_variant_supported ('addition','cloze','task_type',"['putting_together','counting_up']",False)
+```
+
+So every formatter that explicitly restricts the axis was refused on those nodes even when it declares
+support for **every** member — and tick 16's map then recorded the refusal as a genuine restriction.
+That is how `mat_g2_na_q3_1` came to offer `mcq` alone while all five of its other formatters
+supported all three of its task_types. The narrowing did not cause this bug, but it filed it as
+legitimate and hid it: `validate_matrix` already carries `not isinstance(bound_val, list)` in its
+availability filter, so the harness's model and the orchestrator's behaviour disagreed, and the
+disagreement was invisible because the excluded pairs were never forward-tested.
+
+Root cause fixed in the predicate (Protocol 2), with `all`, not `any`: the DNA picks one member per
+seed, so a formatter is eligible only if it can render every value the node might land on. The second
+instance of the same cause was `adapter.py`, which passed `str(var_value)` — a list stringified to its
+repr, which no allowed-value list ever contains.
+
+### Result: 16 pairs freed, and the discrimination held
+
+```
+exclusions 228 -> 212   (pairs FREED: 16, newly excluded: 0)
+  FREED mat_g1_na_q1_9: ['cloze', 'emoji_pictorial', 'error_detect', 'true_false']
+  FREED mat_g1_na_q2_6: ['cloze', 'emoji_pictorial', 'error_detect', 'true_false']
+  FREED mat_g2_na_q3_1: ['array_grid_read','array_grid_set','cloze','error_detect','true_false']
+  FREED mat_g3_na_q3_4: ['cloze', 'error_detect', 'true_false']
+
+single-formatter nodes: 29 (was 33)
+```
+
+The formatters that genuinely cannot serve the scope stayed refused, which is the evidence that `all`
+is the right reading rather than a blanket widening: `mat_g3_na_q3_4`'s arrays still refuse (`two_step`
+is not in their list — an array cannot depict a two-step problem), and `mat_g1_na_q1_9`'s
+`number_bond` / `number_line_read` / `number_line_set` still refuse (each is missing `counting_up` or
+`putting_together`).
+
+Every newly served pair renders, and renders correctly:
+
+```
+mat_g1_na_q1_9  [cloze] There is 1 score card in one basket and 1 score card in another
+                        basket. How many score cards are there in all?      key=2
+mat_g2_na_q3_1  [array_grid_read] Look at the 3×2 array. How many squares are shaded
+                        in all?                                             key='C'
+mat_g2_na_q3_1  [array_grid_set] Shade all the squares inside the 3×2 rectangle. How
+                        many squares did you shade in all?                  key=6
+mat_g3_na_q3_4  [cloze] Maico puts 2 costumes in each of 2 bags. How many costumes are
+                        in all the bags?                                    key=4
+```
+
+```
+$ validate_matrix --node {mat_g1_na_q1_9, mat_g1_na_q2_6, mat_g2_na_q3_1, mat_g3_na_q3_4}
+  each: Nodes Passed 1, Nodes Failed 0, Total Failures Observed 0
+  Contract checks executed: §1A §1A-reach §1B §1C §1C-coverage §1C-reverse §1D §1E §1F §1G §4
+```
+
+### What this does NOT do, stated precisely
+
+It widens the **Lab/pinned** path — what a teacher can select — not what students meet. Verified by
+capturing the student path before and after across all 4 nodes × 10 seeds:
+
+```
+student-path renders changed: 0 of 40
+VERDICT: identical -- filed reviews stay fresh, no re-review owed
+```
+
+So no judgment review and no attestation goes stale, and §5 stays at 22. Reporting this as a
+student-facing content win would be an overclaim.
+
+### Mutation-proved
+
+```
+=== MUTATION 1: revert to the whole-list comparison (the original bug) ===
+FAILED tests/unit/test_formatter_supports_profile.py::TestListValuedVariantScopes::
+       test_list_scope_supported_when_every_member_is
+=== MUTATION 2: ANY instead of ALL (the plausible wrong reading) ===
+FAILED tests/unit/test_formatter_supports_profile.py::TestListValuedVariantScopes::
+       test_list_scope_refused_when_any_member_is_not
+=== restored === 15 passed
+```
+
+```
+§2B: 0 findings in both directions
+pytest tests/unit: 313 passed, 2 deselected
+```
+
+### Found and not fixed: a G2 stem names a number line that no formatter can draw
+
+`mat_g2_na_q3_1` renders, on the student path and already before this tick:
+
+```
+mcq seed=42  visual=None: Starting at 0, take 2 equal jumps of 3 on the number line. What is 3 × 2?
+mcq seed=103 visual=None: Starting at 0, take 3 equal jumps of 3 on the number line. What is 3 × 3?
+mcq seed=118 visual=None: Starting at 0, take 4 equal jumps of 3 on the number line. What is 3 × 4?
+mcq seed=999 visual=None: Starting at 0, take 2 equal jumps of 3 on the number line. What is 3 × 2?
+-> 4/12 mcq seeds already reference a number line
+
+COMPATIBILITY['multiplication'] = ['mcq','cloze','true_false','error_detect',
+                                   'array_grid_read','array_grid_set']
+```
+
+The DNA offers a `number_line_jumps` task_type and no multiplication formatter can draw a number line,
+so 4 of 12 seeds ask a G2 pupil to read a model that is not on the page. Pre-existing, not caused by
+this tick — but this tick widens the wrapper set around it. Per Content Rule 4 the fix is to build the
+visual, not to restrict the task: the competency for `mat_g2_na_q3_1` reads *"Illustrate and write
+multiplication as repeated addition, using a variety of concrete and pictorial models and numerals,
+and using groups of equal quantities"* — "a variety of ... pictorial models" is the clause that
+authorises a number-line model here. Named as next tick's item 1 rather than half-built.
+
+### Attestation batch 18 — 16 clauses, 3 nodes, and a node that cannot reach its own ceiling
+
+Blind Attester, 0 tool uses, samples inline, node ids withheld. 10 PROVIDED, 6 NOT_PROVIDED — and all
+6 land on registered entries, so they are CONTRADICTED, not gaps.
+
+```
+mat_g1_na_q1_9   orally  pictures  sums_up_to_20     -> NOT_PROVIDED
+mat_g1_na_q2_6   orally  pictures  sum_up_to_100     -> NOT_PROVIDED
+mat_g3_na_q3_4   all four clauses                    -> PROVIDED
+```
+
+Quote provenance checked against the packet's own `samples_reviewed` before filing — every quoted
+string appears verbatim in the samples the Attester was shown:
+
+```
+OK  collected 3 pom-pom and 10 wristband
+OK  There is 1 volleyball in one basket and 2 volleyballs in another basket
+OK  Lola Caring has 0 leashes. A friend has 2 leashes.
+OK  Maico puts 2 costumes in each of 2 bags
+OK  10 running shoes that cost ₱4 each          (9/9 OK)
+```
+
+**The range verdicts are not a sampling artefact.** Tick 9's lesson is to verify an Attester's premise
+against the pipeline rather than file it, so the claim was re-measured over 200 seeds:
+
+```
+mat_g1_na_q1_9 (competency: sums up to 20):   200 seeds, min=2, max=3,  distinct=2
+mat_g1_na_q2_6 (competency: sums up to 100):  200 seeds, min=2, max=13, distinct=7
+```
+
+`mat_g1_na_q1_9` produces exactly **two distinct answers, 2 and 3**, for a competency reading *"Solve
+problems (given orally or in pictures) involving addition with sums up to 20."* A pupil can complete
+the entire node having only ever seen 1+1, 1+2 and 2+1.
+
+The registry ground truth is correct, so this is not a bounds error:
+
+```
+mat_g1_na_q1_9   bounds={'max_sum': (0, 20)}
+mat_g1_na_q2_6   bounds={'max_sum': (0, 100)}
+addition _PARAM_BOUNDS g1 = {"a": (1, 50), "b": (1, 50), "max_result": 100}
+```
+
+Nor is the ceiling reachable by asking for it — at the top of the difficulty axis the sums still stop
+at 5:
+
+```
+number_difficulty=0.0: keys=[1, 1, 1, 1, 1]
+number_difficulty=0.5: keys=[3, 2, 2, 3, 2]
+number_difficulty=1.0: keys=[5, 5, 5, 5, 5]
+```
+
+So the cap is in the scalar→magnitude mapping on the `word_problem` / `putting_together` path, between
+a correct bound and a correct param_bounds. Diagnosed read-only and left unfixed: `run_all` was
+already measuring the committed tree, and editing a generator mid-run would have made its exit line
+describe a tree that no longer existed. Next tick's item 1, with the node ids and the 200-seed
+measurement above as the reproduction.
+
+**Movements after filing:**
+
+```
+total capability findings  767 -> 757
+  UNATTESTED               660 -> 644   (16 clauses judged)
+  CONTRADICTED              27 ->  33   (+6, all from this batch)
+coverage                   127 -> 143 of 787
+```
+
+Findings fell only because attested clauses left the UNATTESTED queue; the contradiction count *rose*,
+which is what an honest attestation looks like.
+
+### Content notes the Attester raised unasked
+
+Reported for the record; none is fixed this tick.
+
+- **Zero as an addend at Grade 1.** `mat_g1_na_q2_6` seeds 11, 64, 103: *"Lola Caring has 0 leashes. A
+  friend has 2 leashes. If they put all their leashes together..."* — a degenerate join.
+- **Plural agreement errors in the stem.** *"collected 3 pom-pom and 10 wristband"* (seed 23),
+  *"2 running shoes and 2 water bottle"* (seed 78). Number agreement is exactly the cue a Grade 1
+  reader relies on.
+- **Duplicate stems inside a ten-item sample.** Seeds 57 and 127 are identical; in `mat_g1_na_q1_9`
+  seeds 91 and 127 are identical. Same coverage-skew class as the ledger's item 3.
+- **A distractor exactly 10 above the key on every MCQ** (key 2 → 12, key 13 → 23, key 3 → 13). A pupil
+  can learn to discard the "teens" option by shape rather than by arithmetic.
+- **A dead distractor.** `mat_g3_na_q3_4` seed 42: *"Maico puts 2 costumes in each of 2 bags"*, key 4,
+  options `0 / 3 / 4 / 2`. No pupil error on 2 × 2 yields 0, so the item is effectively 3-choice.
+- **error_detect asks a yes/no question but keys a dict.** Seeds 23, 103, 127: *"Rosa says the answer
+  is 8. Is Rosa correct?"* keys `{'has_error': True, 'correct_value': 16}`. A pupil who answers "No"
+  has answered the question as written and still mismatches the key. Worth checking against the
+  renderer before treating it as a content defect — the dict may be consumed by the UI.
