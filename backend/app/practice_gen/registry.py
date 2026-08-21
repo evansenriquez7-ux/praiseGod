@@ -2622,13 +2622,24 @@ def get_node_formatters(node_id: str) -> List[str]:
     Returns:
         Ordered list of formatter name strings.
     """
+    from backend.app.practice_gen._generated_formatter_exclusions import (
+        NODE_FORMATTER_EXCLUSIONS,
+    )
+
+    # The union across a node's DNAs is what the node COULD offer if every DNA were
+    # eligible; it is not what the orchestrator will actually serve. Subtracting the
+    # generated exclusions makes the advertised list equal the servable one, which is
+    # what §2B enforces. Measured before this: 228 of 690 pairs across 86 of 151 nodes
+    # were advertised and always refused, and the Lab builds its menu from this list.
+    excluded = set(NODE_FORMATTER_EXCLUSIONS.get(node_id, ()))
     seen: Set[str] = set()
     result: List[str] = []
     for concept in get_node_dnas(node_id):
         for fmt in COMPATIBILITY.get(concept, []):
-            if fmt not in seen:
-                seen.add(fmt)
-                result.append(fmt)
+            if fmt in excluded or fmt in seen:
+                continue
+            seen.add(fmt)
+            result.append(fmt)
     return result
 
 
