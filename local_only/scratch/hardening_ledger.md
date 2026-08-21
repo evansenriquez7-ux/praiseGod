@@ -4000,3 +4000,51 @@ usable in the Lab again and 4 more nodes now pass validate_matrix cleanly.
 4. Still open: `read_mcq` -> placement (63 nodes), `concrete materials`, `up to 10` on
    `mat_g1_na_q1_6`, `geometric_lines` hash bug, re-attesting blind-packet nodes, coverage programme
    (~35 dispatches).
+
+---
+
+## 2026-08-21 (tick 16) — §2B 228 -> 0: advertised == servable
+
+Entered at `VERDICT: RESUME`, 767 findings, coverage 127/787. Took ledger item 1, which said to
+re-measure before building. That instruction earned its place: the ground had moved.
+
+**Re-measured first, and it changed the design.** 216 of 228 refusals are explained by a declared
+restriction the node's bound value fails; the other 12 are the numeric filter. Then the fourth attempt
+at a static predicate, run AFTER tick 15's fix: **646/690 with 43 FALSE REFUSALS**. The reason is
+decisive and worth keeping: **the orchestrator's numeric filter keys on the values actually generated
+for that seed, not on the node's declared ceiling**, so servability there is genuinely seed-dependent
+and no static rule can express it. Fourth attempt, same lesson: ask the orchestrator, do not model it.
+
+**Shipped an empirically-derived exclusion map** (228 pairs, 86 nodes), regenerable via
+`scripts/regen_formatter_exclusions.py`, with every pair verified refused at ALL 12 probe seeds (0
+seed-dependent false alarms). §2B keeps it honest in both directions.
+
+**Tick 14's stop signal was re-checked before shipping and is now clear** — 0 nodes emptied, where it
+was 8. **That signal did its job twice: once blocking a wrong change, once confirming the right one.**
+An absurd intermediate result is not just a veto; it is also the thing that tells you when you have
+actually earned the change.
+
+**FINDING, recorded rather than buried: 33 nodes now have exactly ONE formatter.** The narrowing did
+not cause it — those nodes only ever had one servable formatter — but a node with one formatter has no
+variety at all, and it was previously hidden behind a menu that could not deliver. This is a content
+finding and it is queued.
+
+**Process correction to my own tick-14 rule.** I wrote "never background a chain containing a commit".
+Imprecise. The real failure was `git commit -F -` reading its message from a HEREDOC ON STDIN, which
+backgrounding breaks. Writing the message to a file and using `git commit -F <file>` is safe —
+verified this tick by doing exactly that in a backgrounded chain.
+
+**Both movements:** findings 767 -> 767; coverage 127/787 unchanged. §2B 228 -> 0, and the Lab's menu
+is now truthful on 86 nodes.
+
+**Next tick should:**
+1. **The 33 single-formatter nodes.** Now visible. For each, ask whether the competency genuinely
+   admits only one presentation or whether a formatter that should serve it is being refused for a
+   fixable reason (tick 15 found four such declarations). Start by grouping them by DNA — a whole DNA
+   with thin coverage is one fix, not 33.
+2. `mat_g2_na_q3_0`'s `max_product` floor of 0 (last §1G finding) + the 4 stale seeds on
+   `mat_g3_na_q3_1`, together.
+3. Extend §1G (BarChart, ClockSet, Calendar), verifying each candidate read-only first.
+4. Still open: `read_mcq` -> placement (63 nodes), `concrete materials`, `up to 10` on
+   `mat_g1_na_q1_6`, `geometric_lines` hash bug, re-attesting blind-packet nodes, coverage programme
+   (~35 dispatches).

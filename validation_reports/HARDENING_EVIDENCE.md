@@ -6525,3 +6525,69 @@ My first attempt at these edits used a regex that matched nothing: `entries upda
 unchanged. Had it matched *partially* it would have written a malformed table. The verification print
 immediately after the edit is what made that safe — never edit a declaration table without printing
 the result back.
+
+---
+
+## 2026-08-21 (tick 16) — The advertised formatter list now equals the servable one
+
+Commit `72774fde`. Touches `backend/app/practice_gen/`, so Rule 7 requires this entry.
+
+### Result
+
+```
+§2B findings: 228 -> 0
+structural validators: all five at 0
+pytest tests/unit: 313 passed, 2 deselected
+```
+
+228 of 690 (node, formatter) pairs across 86 of 151 nodes were advertised and always refused. The Lab
+builds its menu from `get_node_formatters()`, so a third of the offerings raised when picked.
+
+### Why empirical, on the fourth attempt
+
+Three attempts to model the orchestrator's eligibility rules statically all drifted from it. The last
+one, re-run *after* tick 15 fixed the composite-scope declarations:
+
+```
+correct 646 / 690   (servable 419, refused 227)
+WRONG: false-servable 1, FALSE-REFUSED 43
+```
+
+The 43 false refusals are `emoji_pictorial`-shaped, and the reason is decisive: the orchestrator's
+numeric filter keys on **the values actually generated for that seed**, not on the node's declared
+ceiling. Servability there is genuinely seed-dependent, so **no static rule can express it**. Asking
+the orchestrator is the only thing that cannot drift.
+
+Every excluded pair was verified refused at **all 12 probe seeds**, so none is a seed-dependent false
+alarm:
+
+```
+pairs flagged at seed 11              : 228
+refused at EVERY one of 12 seeds      : 228
+servable at SOME seed (false alarm)   :   0
+```
+
+### Tick 14's stop signal, re-checked before shipping
+
+```
+NODES LEFT WITH ZERO FORMATTERS: none
+min formatters remaining on any node: 1
+```
+
+It was **8 nodes emptied** when this change was first attempted, which is what stopped it and exposed
+the pinned-path bug. Tick 15 fixed that bug; the same check now passes. The stop signal did its job
+twice — once by blocking a wrong change, once by confirming the right one.
+
+### A finding recorded rather than buried
+
+**33 nodes are left with exactly one formatter.** The narrowing did not cause this — those nodes only
+ever had one servable formatter and the rest were phantom offerings — but a node with a single
+formatter has no variety at all. Previously that was hidden behind a menu that could not deliver; now
+it is visible. It is a content finding in its own right and is queued.
+
+### Process correction
+
+Tick 14's ledger said "never background a command chain containing a commit". That was imprecise. The
+actual failure was `git commit -F -` reading its message from a **heredoc on stdin**, which
+backgrounding breaks. Writing the message to a file first and using `git commit -F <file>` is safe —
+verified this tick by doing exactly that in a backgrounded chain and confirming the commit landed.
