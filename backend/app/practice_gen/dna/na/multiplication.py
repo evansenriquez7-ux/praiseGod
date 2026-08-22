@@ -658,11 +658,24 @@ def generate_params(
             9: "nines",
             10: "tens",
         }
-    if context == "word_problem":
-        if b <= 0:
-            b = rng.randint(2, 10)
-        if a <= 0:
-            a = rng.randint(2, 10)
+    # A zero (or negative) operand is degenerate for every task_type that reaches this
+    # tail: `zero_identity` builds its own (0, other) pair and returns far above, so a 0
+    # here is never the zero property -- it is a selection accident.
+    #
+    # This repair used to be gated on `context == "word_problem"`, with no stated reason,
+    # and the array formatters are pure-only (`array_grid_read` declares
+    # context: ["pure"]). So the pure branch kept the zero and drew it: reproduced at
+    # mat_g2_na_q3_0 with assignment {'table': '2', 'number_type': 'single_digit',
+    # 'context': 'pure', 'task_type': 'equal_groups'}, seed 44 -> a=4, b=0, GridArea
+    # rows=4 cols=0 and correct_answer=0. "Look at the shaded shape. How many squares are
+    # shaded in all?" with nothing on the page. 9 of the 90 swept assignments hit it on
+    # each of array_grid_read and array_grid_set.
+    #
+    # The gate was the bug, not the repair. Same fix for both contexts.
+    if b <= 0:
+        b = rng.randint(2, 10)
+    if a <= 0:
+        a = rng.randint(2, 10)
 
     result_dict = {
         "a": a,
