@@ -121,21 +121,132 @@ def _plant_template_attestation(count: int) -> Dict[Path, str]:
     )
 
 
+def _plant_vocab_leak(term: str) -> Dict[Path, str]:
+    """
+    Append a NOT_YET_KNOWN term to the stem fmt_mcq actually emits.
+
+    The previous form of this mutation set `ctx.question_text` at the top of
+    `format_mcq` and was a silent no-op for however long fmt_mcq has looked like
+    this: the pure branch rebuilds the stem from `_build_pure_question(ctx)` and
+    never reads that field, so the planted term was discarded before it could reach
+    §1D. `validate_matrix --node mat_g1_na_q1_7` exited 0 with the bug applied, the
+    mutation was scored as SURVIVED, and the vocabulary gate -- Content Rule 1 --
+    had therefore never been demonstrated to work at all.
+
+    Both branches are patched, and a missing anchor raises rather than skipping. A
+    mutation that can quietly stop landing is worse than no mutation: it reports a
+    hole in the harness that is really a hole in the test, and it hides whichever
+    one is real.
+    """
+    path = REPO_ROOT / "backend/app/practice_gen/formatters/textual/fmt_mcq.py"
+    text = path.read_text(encoding="utf-8")
+    anchors = {
+        # pure branch -- rebuilt from the DNA, so the term must be appended after the build
+        "        question_text = _build_pure_question(ctx)\n":
+            f"        question_text = _build_pure_question(ctx) + ' Use {term} to check.'\n",
+        # word_problem branch -- carries ctx.question_text through
+        "        question_text = ctx.question_text\n":
+            f"        question_text = (ctx.question_text or '') + ' Use {term} to check.'\n",
+    }
+    mutated = text
+    for anchor, replacement in anchors.items():
+        if mutated.count(anchor) != 1:
+            raise ValueError(
+                f"mutation 'vocab_leak': anchor {anchor.strip()!r} matched "
+                f"{mutated.count(anchor)} times in fmt_mcq.py, expected exactly 1. The "
+                f"formatter moved; repoint the mutation at the line that actually "
+                f"reaches FormattedProblem.question_text and re-prove §1D. Do NOT drop "
+                f"the anchor -- an unlanded mutation scores SURVIVED and reads as a "
+                f"broken vocabulary gate."
+            )
+        mutated = mutated.replace(anchor, replacement)
+    path.write_text(mutated, encoding="utf-8")
+    return {path: text}
+
+
+def _plant_silent_substitution() -> Dict[Path, str]:
+    """
+    Disable BOTH redundant gates that refuse an unsupported variant/formatter pair.
+
+    There are two, and they are genuinely redundant: `adapter.py` raises directly,
+    and `orchestrator.py` marks the DNA incompatible, which surfaces as a raise from
+    its forced-DNA check. Patching either one alone leaves the other refusing, `run()`
+    still raises ValueError, and §1C-reverse -- which asks only "did requesting an
+    excluded variant raise?" -- correctly sees a refusal and reports nothing. The
+    mutation then scores SURVIVED and reads as a broken check when the check is fine.
+
+    That is what happened here for as long as this mutation has existed. It patched
+    only the orchestrator, on the theory that adapter's raise was "redundant" -- true,
+    but redundancy is exactly why one-sided patching proves nothing.
+
+    It was also pointed at mat_g1_na_q1_7, which does not execute §1C-reverse at all:
+    the check only runs when a DNA has variant values its formatter excludes, and that
+    node has none. A mutation aimed at a check the node never runs cannot be caught.
+    mat_g1_na_q1_0 executes both §1C-reverse and §4.
+    """
+    targets = {
+        REPO_ROOT / "backend/app/practice_gen/adapter.py": (
+            "            if not is_variant_supported(dna_name, formatter, var_name, var_value):\n"
+            "                raise ValueError(\n"
+            "                    f\"generate_problem: variant {var_name}='{var_value}' is not supported \"\n"
+            "                    f\"by formatter '{formatter}' for DNA '{dna_name}'.\"\n"
+            "                )\n",
+            "            pass  # planted mutation: silent substitution\n",
+        ),
+        REPO_ROOT / "backend/app/services/orchestrator.py": (
+            "                        if not is_variant_supported(d, formatter, var_name, var_val):\n"
+            "                            dna_compatible = False\n"
+            "                            break\n",
+            "                        pass  # planted mutation: silent substitution\n",
+        ),
+    }
+    originals: Dict[Path, str] = {}
+    for path, (anchor, replacement) in targets.items():
+        text = path.read_text(encoding="utf-8")
+        if text.count(anchor) != 1:
+            for done, original in originals.items():
+                done.write_text(original, encoding="utf-8")
+            raise ValueError(
+                f"mutation 'silent_substitution': anchor matched {text.count(anchor)} times "
+                f"in {path.name}, expected exactly 1. BOTH gates must be disabled together or "
+                f"the surviving one refuses and the mutation proves nothing. Repoint it; do "
+                f"not drop the file."
+            )
+        originals[path] = text
+        path.write_text(text.replace(anchor, replacement), encoding="utf-8")
+    return originals
+
+
 MUTATIONS: List[Mutation] = [
     Mutation(
         name="leaky_window",
         description=(
-            "Widen addition's sampled range past the competency ceiling "
-            "(sums allowed to exceed max_result by 10)."
+            "Make the scalar->value map land ten ABOVE the maximum at t=1.0, so "
+            "generation overshoots the competency ceiling. The mirror of "
+            "boundary_off_by_one: that one proves §1A's 'must reach the maximum', this "
+            "one proves §1B's 'must never exceed it'."
         ),
+        # Previously this widened addition.py's sum filter (`a + b > max_result` ->
+        # `+ 10`) and was a silent no-op: the generator is TARGET-driven, not
+        # rejection-driven, so selection aims at the competency target and never picks
+        # the extra pairs a wider filter admits. Widening `a_hi` as well changed nothing
+        # for the same reason -- measured, 100 seeds, max sum stayed exactly 20 against a
+        # ceiling of 20. A mutation that cannot breach cannot prove containment, and this
+        # one scored SURVIVED for as long as it existed, reading as a broken §1A/§1B.
+        # Corrupting the target is the only thing that actually overshoots: 36 breaches
+        # in 60 seeds, sums to 30 against a ceiling of 20.
         edits={
-            "backend/app/practice_gen/dna/na/addition.py": (
-                "                if a + b > max_result:\n",
-                "                if a + b > max_result + 10:\n",
+            "backend/app/services/orchestrator.py": (
+                '                    local_difficulty_profile[axis["name"]] = mapped_val\n',
+                '                    if val >= 1.0 and isinstance(mapped_val, int):\n'
+                '                        mapped_val = mapped_val + 10\n'
+                '                    local_difficulty_profile[axis["name"]] = mapped_val\n',
             )
         },
         command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
         expected_check="§1A/§1B (scalar boundary exactness / window containment)",
+        expect_output_contains=["window_containment && exceeds ceiling"],
+        baseline_must_not_contain=["exceeds ceiling"],
     ),
     Mutation(
         name="boundary_off_by_one",
@@ -192,38 +303,33 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="vocab_leak",
-        description="Inject a NOT_YET_KNOWN term into generated question text.",
-        edits={
-            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
-                "def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:\n",
-                "def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:\n"
-                "    ctx.question_text = (ctx.question_text or '') + ' Use multiplication to check.'\n",
-            )
-        },
+        description=(
+            "Append a NOT_YET_KNOWN term ('multiplication', forbidden on a G1 addition "
+            "node) to the stem fmt_mcq actually emits. Content Rule 1 is the rule that "
+            "stops a grade's items using a later grade's vocabulary, and §1D is the only "
+            "machine check that enforces it."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_vocab_leak("multiplication"),
         command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
         expected_check="§1D (vocabulary lint on formatted output)",
+        # Exit code alone is not proof: name the term and the check together on one line.
+        expect_output_contains=["NOT_YET_KNOWN && multiplication"],
+        baseline_must_not_contain=["NOT_YET_KNOWN && multiplication"],
     ),
     Mutation(
         name="silent_substitution",
         description=(
-            "Make the adapter silently accept an unsupported variant/formatter "
-            "combination instead of raising."
+            "Disable both redundant gates so an unsupported variant/formatter pair is "
+            "accepted silently instead of raising. A pipeline that substitutes rather "
+            "than refuses will serve a later grade content its formatter cannot render."
         ),
-        # Target the orchestrator's DNA-rejection gate, which is what actually
-        # refuses an unsupported combination. adapter.py carries a second,
-        # redundant raise for the same condition, so patching only that one leaves
-        # the pipeline still refusing — the mutation would "survive" while proving
-        # nothing about §1C-reverse.
-        edits={
-            "backend/app/services/orchestrator.py": (
-                "                        if not is_variant_supported(d, formatter, var_name, var_val):\n"
-                "                            dna_compatible = False\n"
-                "                            break\n",
-                "                        pass  # planted mutation: silent substitution\n",
-            )
-        },
-        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_7"],
+        edits={},
+        apply_fn=lambda: _plant_silent_substitution(),
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
         expected_check="§1C-reverse (excluded combinations must raise)",
+        expect_output_contains=["reverse_compatibility_check && did not raise an error"],
+        baseline_must_not_contain=["did not raise an error"],
     ),
     Mutation(
         name="registry_drift",

@@ -7575,3 +7575,107 @@ real holes in §1A/§1B, §1D and §1C-reverse, or mispointed mutations that no 
 Note §6G is provable *because* its baseline is zero. A check that lands clean can be verified; one
 whose baseline is already red cannot. That is an argument for landing gates before the queue they
 police fills up.
+
+---
+
+## 2026-08-23 — the mutation harness could not prove the three checks that make a new grade safe
+
+Under the Scaling Mandate, an unproven check is a broken check. Three mutations were scoring
+SURVIVED — §1A/§1B boundary containment, §1D vocabulary gating, §1C-reverse excluded-combination
+refusal. Those are precisely the gates a *new* grade is built on: for G1–3 human and blind-agent
+review partly compensated for a weak gate; for G4–10, generated unattended, these gates *are* the
+compensation.
+
+**All three checks turned out to be sound. All three mutations were mispointed.** Each failure was
+diagnosed by instrumenting the real path — rendering the sample, printing the value, proving whether
+the planted bug arrives — never by reading the validator and concluding.
+
+### §1D — vocabulary gating (Content Rule 1)
+
+The mutation set `ctx.question_text` at the top of `format_mcq`. The pure branch rebuilds the stem
+from `_build_pure_question(ctx)` and never reads that field, so the planted term was discarded before
+§1D could see it. Ground truth was fine (`multiplication` **is** in the node's 111-entry
+`NOT_YET_KNOWN`) and the matcher was fine (`_text_contains_term(..., 'multiplication') -> True`), but
+the gate that enforces Content Rule 1 had **never been demonstrated to work**.
+
+```
+before (mutation applied, mcq forced):  LEAK PRESENT: False   -> 0 failures
+after  (appended to the emitted stem):  LEAK PRESENT: True    -> Nodes Failed: 1, 20 failures
+```
+
+Repointed to patch both branches via `apply_fn`, raising if either anchor moves. A mutation that can
+quietly stop landing is worse than none: it reports a hole in the harness that is really a hole in the
+test, and hides which one is real.
+
+### §1C-reverse — excluded combinations must raise
+
+Two independent findings, either of which alone made the mutation unprovable.
+
+1. **The test node does not run the check.** §1C-reverse only executes when a DNA has variant values
+   its formatter excludes. `mat_g1_na_q1_7` has none, so the check never ran there — it is also the
+   only node of four sampled that skips §4:
+   ```
+   mat_g1_na_q1_7  ['§1A','§1A-reach','§1B','§1C','§1C-coverage','§1D','§1E','§1F','§1G']
+   mat_g1_na_q1_0  [... '§1C-reverse' ... '§4']      (same for q1_2, g2_na_q1_7, g3_na_q2_1)
+   ```
+2. **The gates are redundant, so one-sided patching proves nothing.** `adapter.py` raises directly and
+   `orchestrator.py` marks the DNA incompatible, surfacing as a raise from its forced-DNA check.
+   Disabling either leaves the other refusing; §1C-reverse asks only "did it raise?", correctly sees a
+   refusal, and reports nothing. Traced to the exact line:
+   ```
+   adapter gate disabled -> ValueError from orchestrator.py:395
+                            "Forced DNA 'addition' not compatible or supported for node ..."
+   ```
+   With **both** disabled, on a node that runs the check:
+   ```
+   reverse_compatibility_check (seed 42): Boundary violation: requesting excluded variant
+   context='word_problem' did not raise an error.        Nodes Failed: 1
+   ```
+
+### §1A/§1B — window containment
+
+The mutation widened addition's sum filter (`a + b > max_result` → `+ 10`). Measured over 100 seeds,
+**max sum stayed exactly 20 against a ceiling of 20** — zero breaches. Widening `a_hi` as well changed
+nothing, for the same reason: the generator is **target-driven, not rejection-driven**, so selection
+aims at the competency target and never picks the extra pairs a wider filter admits. A mutation that
+cannot breach cannot prove containment.
+
+Corrupting the target is what overshoots. Replaced with the mirror of `boundary_off_by_one` — that one
+proves §1A's *must reach the maximum*, this one proves §1B's *must never exceed it*:
+
+```
+t=1.0 maps ten above the maximum -> max sum=30 (ceiling 20), 36 breaches in 60 seeds
+  scalar_exactness_1.0_exceed_max_sum: At 1.0, sample maximum observed value (30)
+      exceeds competency maximum (20). Leaky window!
+  window_containment_1.0_max_sum: Generated parameter 30 exceeds ceiling 20 defined by scalar 1.0.
+```
+
+### §5 — the finding was real but invisible
+
+`template_review` exited 1 without its marker. The check fires correctly (one
+`template rationale: 4 nodes share one findings[...] skeleton` error), but `validate_judgment`'s
+`__main__` prints `errs[:40]` and 557 routine STALE findings buried it. Fabrication detectors now
+print ahead of routine staleness, the way `run_all` already orders §6 for the same reason. **Display
+order only** — the error set, the count and the exit code are unchanged (575 before and after).
+
+### Result
+
+```
+6/12 -> 10/12 mutations detected
+PASS  leaky_window, boundary_off_by_one, broken_formatter_combo, answer_corruption,
+      vocab_leak, silent_substitution, registry_drift, wildcard_provider,
+      template_review, template_attestation
+FAIL  contradicted_attestation   INVALID — tree already reports ['CONTRADICTED']
+FAIL  stale_attestation          INVALID — tree already reports ['STALE']
+```
+
+The two remaining are **not holes**. The harness is refusing to claim a detection it cannot
+distinguish from the open honest queue (31 CONTRADICTED, 10 stale attestations), exactly as
+`baseline_must_not_contain` is designed to. They become provable as the queue empties.
+
+No check was weakened to reach this: §5 stays at 575 errors, §6 at 760, `pytest tests/unit` 331
+passed. Class C unit — no `run_all`; the planted mutations are what prove a validator.
+
+**Standing lesson, now in AGENTS.md:** every one of these was a mutation aimed at code the validator
+does not execute — a rebuilt field, a redundant gate, a node that skips the check, a filter downstream
+of the real cap. A green mutation suite is only worth what its mutations actually reach.

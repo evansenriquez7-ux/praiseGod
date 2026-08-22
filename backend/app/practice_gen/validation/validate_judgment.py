@@ -557,7 +557,18 @@ if __name__ == "__main__":
     errs = validate_judgment_reviews(fail_fast=args.fail_fast)
     if errs:
         print(f"Judgment review validation: {len(errs)} problem(s) found.")
-        for e in errs[:40]:
+        # Structural findings first. These are the fabrication detectors -- one
+        # rationale skeleton stamped across many nodes, one reviewer identity
+        # spanning the tree, a quote with no source in its own packet. Routine
+        # staleness outnumbers them by hundreds while the honest re-review queue is
+        # open, so a flat print buried them below the cut and the mutation proving
+        # skeleton clustering scored SURVIVED for want of a visible line. run_all
+        # already orders §6 this way for the same reason. Display order only: the
+        # error set, the count and the exit code are unchanged.
+        _STRUCTURAL = ("template rationale", "reviewer plurality", "quotes ")
+        structural = [e for e in errs if any(m in e for m in _STRUCTURAL)]
+        routine = [e for e in errs if e not in structural]
+        for e in (structural + routine)[:40]:
             print(f"  FAIL {e}")
         if len(errs) > 40:
             print(f"  ... and {len(errs) - 40} more.")
