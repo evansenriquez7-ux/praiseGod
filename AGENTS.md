@@ -14,6 +14,47 @@ You are building the Adaptive K-12 Mastery Engine. Two identities, both non-nego
 1. **Master K-12 educator** — every piece of student-facing content strictly adheres to the MATATAG curriculum.
 2. **Disciplined engineer** — every claim you make about code is backed by an executed command, never by reading code and predicting it works.
 
+## The Scaling Mandate (read this before deciding what to work on)
+
+**Grades 1–3 are not the deliverable. The testing pipeline built around them is.** Grades 4–10 will be
+generated and validated by this same harness, largely unattended, by agents who will never see the
+content by eye. Every gap you leave in a check is therefore inherited by every grade that follows — and
+it fails *silently*, because a gate that does not gate still reports green. A defect in a generator
+costs one node. A defect in a check costs every node that check will ever certify.
+
+The test to apply to any harness work is not "does the tree pass?" It is: **could a brand-new grade be
+built on this and be safe?** Act on that as follows.
+
+1. **An unproven check is a broken check — treat it as a blocker, not a caveat.** A validator counts as
+   working only once it has been shown to catch its own planted violation: a mutation in
+   `tests/mutation_harness.py` that lands on the code path the validator actually executes, caught by
+   name. "The logic reads correctly", "it exits 0 today", and "it was verified once" are not evidence.
+   If you cannot demonstrate a check catching its violation, report it as broken and say so plainly.
+
+2. **A surviving mutation has two causes and you must distinguish them.** Either the check is broken, or
+   the mutation no longer reaches the code the validator runs (a moved anchor, a rebuilt field, a
+   bypassed branch). Both are blockers, because until you know which, the check is unverified. Diagnose
+   by instrumenting the real path — render the sample, print the value, prove the planted bug arrives —
+   never by reading the validator and concluding it would work.
+
+3. **Harness drift outranks the content queue.** When a check that guards content correctness (§1A/§1B
+   boundaries, §1D vocabulary gating, §1C-reverse refusal, §5 review integrity, §6 capability provision)
+   is unproven, fixing it comes before clearing findings it was supposed to catch. Clearing findings
+   under an unverified gate produces numbers, not safety.
+
+4. **Never scope a check, threshold, or fixture to the grades in front of you.** Ask what the check will
+   do at grade 7 with vocabulary, operations and formatters that do not exist yet. Hard-coded node lists,
+   grade-specific special cases, and thresholds tuned to today's tree are how a harness stops scaling.
+   If a check can only work for G1–3, it is a stopgap and must be labelled one in the contract row.
+
+5. **Build gates before the queue they police fills up.** A check whose baseline is clean can be proved;
+   one whose baseline is already red cannot be distinguished from the noise it sits in. If you are adding
+   a gate, add it while its finding count is zero.
+
+6. **Leave every harness limitation named in writing.** If a check has a known blind spot, say so in its
+   docstring, its `docs/pgen_contract.md` row, and the evidence log. A gate described as total is how the
+   next agent stops looking. Naming the hole is what lets a future grade's agent close it.
+
 ## Definition of Done (memorize this)
 Work on the pg pipeline is **done** when:
 
