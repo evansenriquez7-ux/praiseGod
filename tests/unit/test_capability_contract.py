@@ -609,3 +609,133 @@ class TestAttestationSupersession:
             "a record claiming supersession with no real replacement on disk must still "
             f"be freshness-checked; got {errs}"
         )
+
+
+# ---------------------------------------------------------------------------
+# §6G — an attestation must show its work.
+#
+# §6F proves an attestation exists and that the content it judged still renders.
+# Neither reads the verdict's own reasoning, so both are satisfied by a record
+# generated in bulk — which is exactly how 151 fabricated reviews passed §5's
+# freshness gate. These tests plant each fabrication shape and prove §6G names it.
+# ---------------------------------------------------------------------------
+
+def _packet(node="mat_g1_na_q1_5", seeds=(11, 23, 42)):
+    return {"node_id": node,
+            "samples_judged": [{"seed": s, "question_text": f"stem {s}",
+                                "correct_answer": s, "formatter": "mcq"} for s in seeds]}
+
+
+def _verdict(cap, node="mat_g1_na_q1_5", verdict="PROVIDED", seeds=(11,), reasoning=None):
+    return {"capability_id": cap, "node_id": node, "clause": cap.replace("_", " "),
+            "verdict": verdict, "seeds_showing_it": list(seeds),
+            "reasoning": reasoning if reasoning is not None
+                         else f"Seed {seeds[0] if seeds else 0} renders {cap} directly.",
+            "action_taken": "Left registered; no change."}
+
+
+def test_honest_attestation_batch_passes_6g():
+    """The shape a real dispatch produces must not trip any of the three checks."""
+    rec = {"batch": "b_honest", "packet": _packet(),
+           "verdicts": [_verdict("count_objects", reasoning="Seed 11 counts a set of 7 beads."),
+                        _verdict("compare_sets", seeds=(23,),
+                                 reasoning="Two collections are set side by side and the larger named.")]}
+    assert VC._attestation_integrity([rec]) == []
+
+
+def test_templated_reasoning_is_caught_by_name():
+    """
+    One sentence frame filled in per clause is a form, not judgement.
+
+    This is the §5 fabrication shape exactly: the node ID, the seed numbers and the
+    quoted span change; the frame does not. Freshness cannot see it because the
+    samples block is genuinely fresh.
+    """
+    rec = {"batch": "b_template", "packet": _packet(seeds=(11, 23, 42, 64)),
+           "verdicts": [_verdict(f"cap_{i}", seeds=(s,),
+                                 reasoning=f"Seed {s} clearly exhibits 'the named clause' throughout.")
+                        for i, s in enumerate((11, 23, 42, 64))]}
+    errs = VC._attestation_integrity([rec])
+    assert any("attester boilerplate (§6G)" in e for e in errs), errs
+    assert any("share one normalized" in e for e in errs), errs
+
+
+def test_skeleton_cluster_boundary_is_the_stated_maximum():
+    """At the cap it passes; one over, it fails. The threshold is a visible number."""
+    def batch(n):
+        seeds = tuple(range(11, 11 + n))
+        return {"batch": f"b_{n}", "packet": _packet(seeds=seeds),
+                "verdicts": [_verdict(f"cap_{i}", seeds=(s,),
+                                      reasoning=f"Seed {s} exhibits 'x' plainly.")
+                             for i, s in enumerate(seeds)]}
+    at_cap = VC._MAX_ATTESTER_SKELETON_CLUSTER
+    assert not any("boilerplate" in e for e in VC._attestation_integrity([batch(at_cap)]))
+    assert any("boilerplate" in e for e in VC._attestation_integrity([batch(at_cap + 1)]))
+
+
+def test_provided_verdict_must_name_a_seed():
+    """A PROVIDED verdict asserts specific items exhibit the clause; it must say which."""
+    rec = {"batch": "b_noseed", "packet": _packet(),
+           "verdicts": [_verdict("count_objects", seeds=())]}
+    errs = VC._attestation_integrity([rec])
+    assert any("names no seed" in e and "§6G" in e for e in errs), errs
+
+
+def test_cited_seed_must_exist_in_the_records_own_packet():
+    """Citing a seed that was never in the packet is citing an item never shown."""
+    rec = {"batch": "b_phantom", "packet": _packet(seeds=(11, 23)),
+           "verdicts": [_verdict("count_objects", seeds=(999,))]}
+    errs = VC._attestation_integrity([rec])
+    assert any("cites seed 999" in e and "§6G" in e for e in errs), errs
+
+
+def test_oversized_record_is_not_one_blind_dispatch():
+    """A record larger than a batch is one pass over the table wearing a batch's name."""
+    n = VC._MAX_VERDICTS_PER_BATCH + 1
+    seeds = tuple(range(11, 11 + n))
+    rec = {"batch": "b_huge", "packet": _packet(seeds=seeds),
+           "verdicts": [_verdict(f"cap_{i}", seeds=(s,),
+                                 reasoning=f"Distinct finding number {i} about item {s} here.")
+                        for i, s in enumerate(seeds)]}
+    errs = VC._attestation_integrity([rec])
+    assert any("carries" in e and "one blind dispatch" in e for e in errs), errs
+
+
+def test_empty_reasoning_is_a_failure_not_a_skip():
+    """A verdict with no reasoning is a vote, and the contract does not count votes."""
+    rec = {"batch": "b_blank", "packet": _packet(),
+           "verdicts": [_verdict("count_objects", reasoning="   ")]}
+    errs = VC._attestation_integrity([rec])
+    assert any("carries no" in e and "reasoning" in e for e in errs), errs
+
+
+def test_superseded_record_is_not_judged_by_6g():
+    """
+    A superseded record is no longer evidence, and failing it forever would leave no
+    legal move: §6F forbids editing it and forbids deleting it. Supersession is derived
+    from the records themselves — the same last-file-wins rule freshness replays — never
+    from a record's own `supersedes` text.
+    """
+    bad = {"batch": "b_old", "packet": _packet(seeds=(11,)),
+           "verdicts": [_verdict(f"cap_{i}", seeds=(999,),
+                                 reasoning="Seed 1 shows 'x' plainly.") for i in range(4)]}
+    good = {"batch": "b_new", "packet": _packet(seeds=(11, 23, 42, 64)),
+            "verdicts": [_verdict(f"cap_{i}", seeds=(s,), reasoning=r)
+                         for i, (s, r) in enumerate(zip((11, 23, 42, 64), (
+                             "Seed 11 counts beads one at a time.",
+                             "A comparison of two unequal collections appears here.",
+                             "The item asks which group holds more, with pictures.",
+                             "Numerals alone; no concrete model is offered at all.")))]}
+    assert VC._attestation_integrity([bad, good]) == []
+    # …and the same bad record, still live, is loud.
+    assert VC._attestation_integrity([bad]) != []
+
+
+def test_6g_is_clean_on_the_real_tree():
+    """
+    The gate must not retroactively fail honest work. Measured 2026-08-23: 143 live
+    verdicts across 24 records, zero §6G findings. A future failure here is a real
+    finding about a real record — never a reason to raise a threshold.
+    """
+    errs = VC._attestation_integrity(VC._attestation_records())
+    assert errs == [], f"§6G fires on the real tree: {errs[:3]}"

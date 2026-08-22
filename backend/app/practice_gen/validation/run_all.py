@@ -76,6 +76,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§6D": "validate_capability: a capability carried only by a generic textual formatter is not provided",
     "§6E": "validate_capability: a capability carried only by a `bounds` list most of the table shares is not provided",
     "§6F": "validate_capability: every declared capability carries a blind Attester verdict, and none is contradicted",
+    "§6G": "validate_capability: an attestation shows its work — non-boilerplate reasoning citing seeds from its own packet",
 }
 
 def _run_unit_tests() -> bool:
@@ -238,6 +239,7 @@ def run_all(fail_fast: bool = False) -> int:
         executed_checks.add("§6D")
         executed_checks.add("§6E")
         executed_checks.add("§6F")
+        executed_checks.add("§6G")
         print("  PASS capability_contract (all nodes declare, cite, cover, and are provided for)")
     else:
         undeclared = [e for e in capability_errors if "no 'requires' declaration" in e]
@@ -312,6 +314,8 @@ def run_all(fail_fast: bool = False) -> int:
             executed_checks.discard("§6E")
             expected_subset.discard("§6F")
             executed_checks.discard("§6F")
+            expected_subset.discard("§6G")
+            executed_checks.discard("§6G")
 
         if executed_checks != expected_subset:
             raise AssertionError(

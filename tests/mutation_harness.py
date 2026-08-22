@@ -72,6 +72,55 @@ class Mutation:
     apply_fn: Optional[Callable[[], Dict[Path, str]]] = None
 
 
+def _plant_template_attestation(count: int) -> Dict[Path, str]:
+    """
+    Overwrite one record's verdict reasoning with a per-clause fill-in of one frame.
+
+    This is the §5 fabrication shape aimed at the surface that is now four times
+    larger. §6F cannot see it: the packet is untouched, so freshness still passes,
+    the verdicts still exist, and nothing contradicts them. Only §6G reads the
+    reasoning.
+
+    The record is chosen for having `count` verdicts it still *owns* -- a superseded
+    record is exempt from §6G by design, so planting in one would prove nothing.
+    """
+    import json
+
+    d = REPO_ROOT / "validation_reports" / "attestation"
+    records = sorted(d.glob("*.json"))
+    if not records:
+        raise FileNotFoundError(
+            "mutation 'template_attestation': no attestation records to template. File "
+            "at least one Attester verdict before claiming §6G works."
+        )
+    # Replay last-file-wins so we plant in verdicts that are actually live.
+    owner: Dict[tuple, Path] = {}
+    for path in records:
+        for v in json.loads(path.read_text(encoding="utf-8")).get("verdicts", []):
+            owner[(v.get("node_id"), v.get("capability_id"))] = path
+
+    for path in records:
+        text = path.read_text(encoding="utf-8")
+        data = json.loads(text)
+        live = [v for v in data.get("verdicts", [])
+                if owner.get((v.get("node_id"), v.get("capability_id"))) == path]
+        if len(live) < count:
+            continue
+        for v in live[:count]:
+            seed = (v.get("seeds_showing_it") or [0])[0]
+            v["reasoning"] = (
+                f"Seed {seed} plainly exhibits '{v.get('clause')}' across the sample set."
+            )
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+        return {path: text}
+
+    raise ValueError(
+        f"mutation 'template_attestation': no record owns {count} live verdicts, so the "
+        f"skeleton cluster cannot exceed its cap. Repoint the mutation rather than "
+        f"lowering _MAX_ATTESTER_SKELETON_CLUSTER."
+    )
+
+
 MUTATIONS: List[Mutation] = [
     Mutation(
         name="leaky_window",
@@ -127,8 +176,13 @@ MUTATIONS: List[Mutation] = [
         description="Off-by-one the correct answer the MCQ formatter serves.",
         edits={
             "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
-                "        correct_answer=ctx.correct_answer,\n",
-                "        correct_answer=(ctx.correct_answer + 1)\n"
+                # Anchored to line start. fmt_mcq gained a second FormattedProblem
+                # return at a deeper indent, and a bare 8-space anchor is a substring
+                # of the 12-space line, so the literal matched twice and _apply
+                # aborted -- taking mutations 4..12 with it. The leading newline
+                # tightens the anchor; it does not loosen the mutation.
+                "\n        correct_answer=ctx.correct_answer,\n",
+                "\n        correct_answer=(ctx.correct_answer + 1)\n"
                 "        if isinstance(ctx.correct_answer, int) and not isinstance(ctx.correct_answer, bool)\n"
                 "        else ctx.correct_answer,\n",
             )
@@ -256,6 +310,22 @@ MUTATIONS: List[Mutation] = [
         expected_check="§5 (rationale-skeleton clustering)",
         expect_output_contains=["template rationale", "share one findings"],
         baseline_must_not_contain=["template rationale"],
+    ),
+    Mutation(
+        name="template_attestation",
+        description=(
+            "Staple one fill-in-the-blank reasoning, with the clause substituted in, "
+            "onto four live Attester verdicts. §6F passes it untouched -- the packet is "
+            "unchanged so freshness holds, the verdicts exist, nothing contradicts them. "
+            "This is the §5 fabrication aimed at a surface four times larger (787 "
+            "verdicts against 151 reviews), dispatched in unattended batches nobody reads."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_template_attestation(4),
+        command=["backend.app.practice_gen.validation.validate_capability"],
+        expected_check="§6G (attester reasoning-skeleton clustering)",
+        expect_output_contains=["attester boilerplate (§6G) && share one normalized"],
+        baseline_must_not_contain=["attester boilerplate (§6G)"],
     ),
 ]
 

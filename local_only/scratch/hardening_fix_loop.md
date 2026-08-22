@@ -128,21 +128,29 @@ Where your own measurement disagrees with any file, **yours wins**, and the ledg
 
 ## Step 4 — Classify the unit before you touch anything
 
-Every unit is exactly one of two classes, and the class decides whether this tick pays 50 minutes.
+Every unit is one of three classes, and the class decides what verifying it actually costs.
+A tick may carry more than one class; then each class's verification applies.
 
-| | **Class A — pipeline** | **Class B — records** |
-|---|---|---|
-| touches | `backend/app/practice_gen/`, `data/skeletons/` | `validation_reports/`, `docs/`, the ledger |
-| examples | generator/DNA/adapter/axes/formatter fixes, new machinery (Tick F) | attestation batches, blind re-reviews, evidence entries |
-| can move | every harness stage, 1–7 | stages 6 and 7 only |
-| verification | **full `run_all` before commit** | Step 2's two gates — nothing else can have changed |
+| | **Class A — generation** | **Class B — records** | **Class C — the harness itself** |
+|---|---|---|---|
+| touches | `backend/app/practice_gen/` *except* `validation/`, and `data/skeletons/` | `validation_reports/`, `docs/`, the ledger | `backend/app/practice_gen/validation/` |
+| examples | DNA/adapter/axes/formatter fixes, new machinery (Tick F) | attestation batches, blind re-reviews, evidence entries | a new or changed contract check |
+| can move | every harness stage, 1–7 | stages 6 and 7 only | the stage it implements, plus the two-direction lint |
+| verification | **full `run_all` before commit** | Step 2's two gates — nothing else can have changed | the stage's own validator, `pytest tests/unit`, the two-direction lint, and its planted mutation caught by name |
+
+Class C is the one that used to be mis-filed as A. A validator edit cannot change what
+the generators produce, so re-running the 151-node matrix proves nothing about it; what
+proves it is the mutation harness, which A and B never need.
 
 Ask the classifier rather than guessing:
 
 ```bash
-PIPE=$(git status --porcelain -- backend/app/practice_gen/ data/skeletons/)
-if [ -n "$PIPE" ]; then echo "CLASS A — full run_all REQUIRED:"; echo "$PIPE";
-else echo "CLASS B — no pipeline file touched; stages 1-5 cannot have moved"; fi
+GEN=$(git status --porcelain -- backend/app/practice_gen/ data/skeletons/ \
+      | grep -v 'practice_gen/validation/')
+HARNESS=$(git status --porcelain -- backend/app/practice_gen/validation/)
+if [ -n "$GEN" ];     then echo "CLASS A — generation touched, full run_all REQUIRED:"; echo "$GEN"; fi
+if [ -n "$HARNESS" ]; then echo "CLASS C — harness touched, mutation + unit + lint REQUIRED:"; echo "$HARNESS"; fi
+if [ -z "$GEN$HARNESS" ]; then echo "CLASS B — stages 1-5 cannot have moved"; fi
 ```
 
 **Pair the classes.** A Class A unit costs a 50-minute `run_all` you must wait out anyway. Fill that
@@ -155,10 +163,12 @@ verdict.
 
 ## Step 5 — `run_all`: when it is required, and how to spend the 50 minutes
 
-**Class B ticks run no `run_all` at all.** Stages 1–5 verify generation; if no generator changed,
-they cannot have moved, and Step 2 already ran the only two stages that could. **Name the skip in
-the ledger with the classifier output that justified it.** A skipped run is *named*, never assumed —
-an unexplained skip is indistinguishable from an evasion.
+**Class B and Class C ticks run no `run_all` at all.** Stages 1–5 verify generation; if no
+generator changed, they cannot have moved, and Step 2 already ran the only two stages that could.
+A Class C tick proves itself with the mutation harness instead — a planted bug caught by name is
+stronger evidence about a check than any number of green stages it does not implement. **Name the
+skip in the ledger with the classifier output that justified it.** A skipped run is *named*, never
+assumed — an unexplained skip is indistinguishable from an evasion.
 
 **Class A ticks run it, in this order:**
 

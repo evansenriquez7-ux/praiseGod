@@ -7486,3 +7486,92 @@ deterministic; pytest tests/unit: 322 passed
 This makes batch023 STALE on both nodes — the prescribed attest → fix → re-attest cycle, since the
 Attester's content note is what surfaced the defect. `CONTRADICTED` stays 31 (a stale batch still
 supplies its verdict; staleness is reported separately); `STALE` 8 → 10.
+
+---
+
+## 2026-08-23 — §6G: an attestation must show its work
+
+§6F asks two things of an attestation — that it exists, and that the content it judged still
+renders. Neither reads the verdict's own reasoning, so a record generated in bulk satisfies both.
+§5 already paid for that lesson: freshness passed all 151 fabricated reviews, because a template
+stapled onto a freshly-rendered samples block is fresh. Attestation is now the larger surface (787
+(node, capability) verdicts against 151 reviews) and is dispatched in unattended batches nobody
+reads, so the gap was about to scale.
+
+Each check was measured against all 143 live verdicts **before** being written, so the gate could
+not retroactively fail honest work:
+
+```
+max verdicts per batch: 11 | >25: []          -> batch cap 25 is safe
+skeleton clusters >3: 0  | max cluster: 2     -> cluster cap 3 is safe
+cited seed NOT in own packet : 0              -> seed provenance is clean
+PROVIDED with no seed cited  : 0
+```
+
+§5's fourth gate — quote provenance, the one that caught 115 of the 151 — is **deliberately not
+ported**, and the docstring and contract row say so. Measured, it fires on 16 of 143 honest
+verdicts, because an Attester is asked to state what would flip its verdict and writes that
+hypothesis in quotes (*"Nothing short of an item that requires the student to construct…"*,
+*"share N among M"*). A review's rationale quotes to cite; an attestation's reasoning quotes to
+hypothesize. Shipping it would have failed honest work and taught the next agent that this gate is
+negotiable. Closing it needs a record field separating citation from hypothesis — named work, not a
+threshold to tune.
+
+Only live verdicts are judged. `_winning_verdict_index` was factored out of `_attestation_staleness`
+so freshness and §6G replay the same last-file-wins rule and cannot drift about which record is
+authoritative; a superseded record is exempt because §6F forbids both editing and deleting it, so
+failing it forever would leave no legal move.
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -c "...validate_capability_declarations()..."
+TOTAL findings : 760  (baseline was 760)      <- the refactor changed nothing
+§6G findings   : 0    (expected 0 on honest data)
+
+$ ...run_all: _parse_contract_section_refs() vs CONTRACT_CHECKS
+doc-only     : set()   registry-only: set()   MATCH: True
+symmetric after capability_ok=False discard : True
+
+$ PYTHONPATH=. .venv/bin/python3 -m pytest tests/unit -q -p no:cacheprovider
+331 passed, 2 deselected, 1 warning in 36.58s
+
+$ PYTHONPATH=. .venv/bin/python3 tests/mutation_harness.py --only template_attestation
+    expected catcher: §6G (attester reasoning-skeleton clustering)
+    DETECTED: exit 1 — Capability contract: 761 failure(s).
+  PASS  template_attestation     §6G (attester reasoning-skeleton clustering)
+1/1 mutations detected.
+```
+
+**No `run_all`.** This is a Class C unit — it edits `validation/`, not generation. A validator edit
+cannot change what the generators produce, so re-running the 151-node matrix proves nothing about
+it; the planted mutation caught by name does. The tick prompt's classifier previously mis-filed this
+as Class A on a path prefix and is corrected in this commit.
+
+### Found while running the suite, unrelated to §6G
+
+`tests/mutation_harness.py` **aborted at mutation 4 of 12**: `fmt_mcq.py` gained a second
+`FormattedProblem` return at a deeper indent, and the mutation's 8-space anchor is a substring of the
+12-space line, so the literal matched twice and `_apply` raised. Mutations 5–12 had therefore never
+run — `mutations_registered: 11` was counting registrations, not verifications. Fixed by anchoring
+to line start (tighter, not looser). First complete run:
+
+```
+6/12 mutations detected.
+  PASS  boundary_off_by_one, broken_formatter_combo, answer_corruption,
+        registry_drift, wildcard_provider, template_attestation
+  FAIL  contradicted_attestation  INVALID — tree already reports ['CONTRADICTED']
+  FAIL  stale_attestation         INVALID — tree already reports ['STALE']
+  FAIL  leaky_window              SURVIVED — validator exited 0 with the bug planted
+  FAIL  vocab_leak                SURVIVED — validator exited 0 with the bug planted
+  FAIL  silent_substitution       SURVIVED — validator exited 0 with the bug planted
+  FAIL  template_review           (inconclusive; not investigated)
+```
+
+The two `INVALID`s are not holes — the harness is refusing to claim a detection it cannot
+distinguish from the open honest queue (31 CONTRADICTED, 10 stale attestations, 557 stale reviews),
+exactly as `baseline_must_not_contain` is designed to do. The three `SURVIVED` results are either
+real holes in §1A/§1B, §1D and §1C-reverse, or mispointed mutations that no longer reach node
+`mat_g1_na_q1_7`; distinguishing them is a unit of its own and is **not** done here.
+
+Note §6G is provable *because* its baseline is zero. A check that lands clean can be verified; one
+whose baseline is already red cannot. That is an argument for landing gates before the queue they
+police fills up.

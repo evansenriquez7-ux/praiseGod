@@ -993,10 +993,7 @@ def _attestation_staleness(records: List[Dict[str, Any]]) -> List[str]:
     # Whole-record, not per-verdict. batch018_mat_g3_na_q3_4 still owns all four of its
     # verdicts while its two siblings own none of theirs, so a blanket "an 018 exists,
     # skip it" rule would silently stop freshness-checking live evidence.
-    winner: Dict[tuple, int] = {}
-    for i, rec in enumerate(records):
-        for v in rec.get("verdicts", []):
-            winner[(v.get("node_id"), v.get("capability_id"))] = i
+    winner = _winning_verdict_index(records)
 
     errs: List[str] = []
     for idx, rec in enumerate(records):
@@ -1032,6 +1029,146 @@ def _attestation_staleness(records: List[Dict[str, Any]]) -> List[str]:
                     f"longer exists -- re-attest the batch. Do not edit the record."
                 )
                 break
+    return errs
+
+
+# How many (node, capability) verdicts may share one normalized reasoning skeleton
+# before it is a filled-in form rather than independent judgement. Deliberately the
+# same number as §5's _MAX_SKELETON_CLUSTER: both gates ask the same question about
+# the same kind of artifact, so weakening the idea should cost two visible diffs,
+# not one. Measured 2026-08-23 across all 143 live verdicts: largest cluster was 2.
+_MAX_ATTESTER_SKELETON_CLUSTER = 3
+
+# One batch is one blind dispatch, and docs/pgen_judgment.md caps a blind batch at
+# 25 items. A record carrying more did not come from one dispatch. Measured
+# 2026-08-23: the largest record on disk carries 11.
+_MAX_VERDICTS_PER_BATCH = 25
+
+
+def _winning_verdict_index(records: List[Dict[str, Any]]) -> Dict[tuple, int]:
+    """
+    Which record currently owns each (node_id, capability_id) verdict.
+
+    `_load_attestations` resolves duplicates by last-file-wins over a sorted glob.
+    Every pass that judges "is this record still evidence?" must replay exactly that
+    rule, or the passes disagree about which record is authoritative and a verdict
+    can be live for one check and superseded for another.
+
+    Derived from the records themselves, NEVER from a record's own `supersedes`
+    string: a self-declared field would let a batch retire an inconvenient verdict by
+    asserting it had been replaced. Supersession has to be earned by filing a real
+    record that itself faces these same checks.
+    """
+    winner: Dict[tuple, int] = {}
+    for i, rec in enumerate(records):
+        for v in rec.get("verdicts", []):
+            winner[(v.get("node_id"), v.get("capability_id"))] = i
+    return winner
+
+
+def _attestation_integrity(records: List[Dict[str, Any]]) -> List[str]:
+    """
+    §6G -- structural evidence that a verdict was earned rather than written.
+
+    §6F asks two things of an attestation: that it exists, and that the content it
+    judged still renders. Neither reads the verdict's own reasoning, so both are
+    satisfied by a record whose reasoning was produced in bulk. §5 learned exactly
+    this at cost: freshness passed all 151 fabricated reviews, because a template
+    stapled onto a freshly-rendered samples block is fresh. The structural checks
+    that finally caught them are ported here, because attestation is now the larger
+    surface -- 787 (node, capability) verdicts against 151 reviews -- and it is
+    dispatched in unattended batches where no human sees any single one.
+
+    What each catches, and why more prose cannot satisfy it:
+
+      * skeleton clustering -- strip node IDs, quoted spans and digits and a
+        filled-in form collapses to one string across every clause it was stamped
+        on. Independent judgements about different clauses do not collapse.
+      * seed provenance -- a verdict names the seeds that show the clause, and seeds
+        are structured data rather than prose. A verdict citing a seed absent from
+        its own packet cited an item it was never shown; a PROVIDED verdict citing
+        no seed asserts an observation it declines to locate.
+      * batch size -- a blind batch is <= 25 items dispatched to one agent. A record
+        carrying more is one pass over the provider table wearing a batch's name.
+
+    Only *live* verdicts are judged, by `_winning_verdict_index`'s last-file-wins
+    rule. A superseded record is no longer evidence for anything, and failing it
+    forever would leave no legal move -- the record may not be edited (§6F) and may
+    not be deleted.
+
+    Quote provenance -- §5's fourth gate, and the one that caught 115 of the 151 --
+    is deliberately NOT ported. Measured 2026-08-23, it fires on 16 of 143 honest
+    verdicts, because an Attester is asked to state what would flip its verdict and
+    writes that hypothesis in quotes ("Nothing short of an item that requires the
+    student to construct..."). A review's rationale quotes to cite; an attestation's
+    reasoning quotes to hypothesize. Shipping it here would fail honest work and
+    teach the next agent that this gate is negotiable. Closing it needs a record
+    field that separates citation from hypothesis, which is named work, not a
+    threshold to tune.
+    """
+    from backend.app.practice_gen.validation.validate_judgment import _rationale_skeleton
+
+    winner = _winning_verdict_index(records)
+    errs: List[str] = []
+    skeletons: Dict[str, List[tuple]] = {}
+
+    for idx, rec in enumerate(records):
+        batch = rec.get("batch", "<unnamed batch>")
+        verdicts = rec.get("verdicts", []) or []
+        packet = rec.get("packet") or {}
+        packet_seeds = {s.get("seed") for s in (packet.get("samples_judged") or [])}
+
+        live = [v for v in verdicts
+                if winner.get((v.get("node_id"), v.get("capability_id"))) == idx]
+        if not live:
+            continue
+
+        if len(verdicts) > _MAX_VERDICTS_PER_BATCH:
+            errs.append(
+                f"attestation batch {batch!r} carries {len(verdicts)} verdicts (§6G, max "
+                f"{_MAX_VERDICTS_PER_BATCH} -- one blind dispatch). A record larger than a "
+                f"batch is one pass over the table, not independent per-clause judgement. "
+                f"Split it and re-attest each part with its own Attester."
+            )
+
+        for v in live:
+            node_id, cap = v.get("node_id"), v.get("capability_id")
+            reasoning = str(v.get("reasoning", "") or "").strip()
+            if not reasoning:
+                errs.append(
+                    f"{node_id}: attestation of {cap!r} in batch {batch!r} carries no "
+                    f"reasoning (§6G). A verdict without reasoning is a vote, and the "
+                    f"contract does not count votes."
+                )
+                continue
+            skeletons.setdefault(_rationale_skeleton(reasoning), []).append((node_id, cap))
+
+            raw = v.get("seeds_showing_it")
+            cited = [int(x) for x in re.findall(r"\d+", str(raw))] if raw is not None else []
+            if v.get("verdict") == "PROVIDED" and not cited:
+                errs.append(
+                    f"{node_id}: attestation of {cap!r} in batch {batch!r} is PROVIDED but "
+                    f"names no seed in 'seeds_showing_it' (§6G). A PROVIDED verdict asserts "
+                    f"that specific rendered items exhibit the clause; it must say which."
+                )
+            for seed in cited:
+                if seed not in packet_seeds:
+                    errs.append(
+                        f"{node_id}: attestation of {cap!r} in batch {batch!r} cites seed "
+                        f"{seed} in 'seeds_showing_it', which is not in this record's own "
+                        f"packet.samples_judged {sorted(s for s in packet_seeds if s is not None)} "
+                        f"(§6G). The Attester cited an item it was never shown."
+                    )
+
+    for skeleton, pairs in sorted(skeletons.items()):
+        if len(pairs) > _MAX_ATTESTER_SKELETON_CLUSTER:
+            errs.append(
+                f"attester boilerplate (§6G): {len(pairs)} verdicts share one normalized "
+                f"reasoning skeleton (max {_MAX_ATTESTER_SKELETON_CLUSTER}) -- node IDs, "
+                f"quoted spans and digits stripped, the reasoning is the same sentence "
+                f"frame filled in per clause. That is a form, not independent judgement. "
+                f"First: {sorted(pairs)[:5]}. Skeleton: {skeleton[:120]!r}"
+            )
     return errs
 
 
@@ -1091,7 +1228,9 @@ def validate_capability_declarations(node_ids: List[str] | None = None) -> List[
     """Run §6A/§6B/§6C over every registered node. Returns a flat list of failures."""
     errs: List[str] = []
     attested = _load_attestations()
-    errs += _attestation_staleness(_attestation_records())
+    _records = _attestation_records()
+    errs += _attestation_staleness(_records)
+    errs += _attestation_integrity(_records)
     for node_id in (node_ids if node_ids is not None else get_all_node_ids()):
         meta = get_node_info(node_id)
         competency = str((meta or {}).get("competency", "")).strip()
