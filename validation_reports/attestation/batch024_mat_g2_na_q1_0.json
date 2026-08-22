@@ -1,0 +1,130 @@
+{
+  "batch": "batch024_mat_g2_na_q1_0",
+  "attested_at": "2026-08-23T00:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "handed to the Attester by path (local_only/scratch/attester/t24/A.prompt.txt), which is attester_packets.render_prompt_block output only: clause, competency, grade/quarter, samples. NOT pasted inline -- retyping ~60k characters is the transcription defect that module exists to prevent.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "2 reported by the runtime; the dispatch permitted exactly one Read, of the packet file named in samples_delivery. Not independently audited -- blindness here rests on the prompt contract, not on zero tool access."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "What number comes next when counting: 486, 487, 488, 489, ___?",
+        "correct_answer": 490,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "Find the missing number: 702, 703, 704, 705, ___",
+        "correct_answer": 706,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "What number comes next when counting: 46, 47, 48, 49, ___?",
+        "correct_answer": 50,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What number comes next when counting: 512, 513, 514, 515, ___?",
+        "correct_answer": 516,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What number comes next when counting: 924, 925, 926, 927, ___?",
+        "correct_answer": 928,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "What number comes next when counting: 790, 791, 792, 793, ___?",
+        "correct_answer": 794,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What number comes next when counting: 48, 49, 50, 51, ___?",
+        "correct_answer": 52,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "count",
+      "node_id": "mat_g2_na_q1_0",
+      "clause": "Count",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        118
+      ],
+      "reasoning": "Most samples are sequence-completion counting tasks with 3-digit numbers (e.g. 702,703,704,705 → 706), and three samples (23, 91, 103) ask the pupil to read a number's position off a rendered number line. Both forms are direct exercises of counting/enumerating rather than any other arithmetic operation.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "up_to_1000",
+      "node_id": "mat_g2_na_q1_0",
+      "clause": "up to 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        78
+      ],
+      "reasoning": "The ten samples span from small two-digit runs (46-52) up through several three-digit ranges reaching into the high 900s — seed 78 (924-928), seed 23 (930-940 on a rendered number line), and seed 103 (890-900) — which sits squarely inside, and close to, the 1000 ceiling this clause names.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "Unlike the parallel Grade-1 'up to 100' node, which had a sample landing exactly on its boundary (96,97,98,99 → 100), none of these ten samples reach the 990s or land on 999 → 1000. The scope stays well inside 1000, but the exact upper edge of the stated range is never actually exercised here."
+    }
+  ]
+}

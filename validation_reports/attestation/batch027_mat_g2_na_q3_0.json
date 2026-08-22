@@ -1,0 +1,208 @@
+{
+  "batch": "batch027_mat_g2_na_q3_0",
+  "attested_at": "2026-08-23T00:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "handed to the Attester by path (local_only/scratch/attester/t24/D.prompt.txt), which is attester_packets.render_prompt_block output only: clause, competency, grade/quarter, samples. NOT pasted inline -- retyping ~60k characters is the transcription defect that module exists to prevent.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "2 reported by the runtime; the dispatch permitted exactly one Read, of the packet file named in samples_delivery. Not independently audited -- blindness here rests on the prompt contract, not on zero tool access."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q3_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "1 group of 1 (1) makes ___ in all",
+        "correct_answer": 1,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "Look at the array. It shows 9 groups of 4 (4 added 9 times). How many squares are shaded in all?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "Manny solved: \"There are 10 groups of 4 (4 added 10 times), so there are ___ in all.\". Manny says the missing number is 30. Is Manny correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 40
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 57,
+        "question_text": "There are 2 groups of 4 (4 + 4). How many in all?",
+        "correct_answer": 8,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "1 group of 1 (1) makes ___ in all",
+        "correct_answer": 1,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "There are 4 groups of 2 (2 + 2 + 2 + 2). How many in all?",
+        "correct_answer": 8,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Shade 7 groups of 2 squares to show 2 added 7 times. How many squares did you shade in all?",
+        "correct_answer": 14,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 103,
+        "question_text": "Shade 8 groups of 5 squares to show 5 added 8 times. How many squares did you shade in all?",
+        "correct_answer": 40,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 118,
+        "question_text": "There are 3 groups of 6 (6 + 6 + 6). How many in all?",
+        "correct_answer": 18,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "There are 2 groups of 4 (4 + 4). How many in all?",
+        "correct_answer": 8,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "count_number_of",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "Count the number of",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        118,
+        91
+      ],
+      "reasoning": "Every sample's actual task is to determine a total count from a stated number of equal groups — 'How many in all?', 'How many squares are shaded in all?', 'How many squares did you shade in all?' — and the keyed answers (8, 18, 14, 36, 40...) are all correct totals. This is squarely counting the number of items in a group.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "Seeds 11 and 64 render the identical stem 'There are 1 group of 1 (1) makes ___ in all' word-for-word, differing only in MCQ option order; seeds 57 and 127 likewise both render 'There are 2 groups of 4 (4 + 4). How many in all?' verbatim. Two exact stem duplicates within one ten-seed sample."
+    },
+    {
+      "capability_id": "concrete_objects",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "concrete objects",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        23,
+        91,
+        103
+      ],
+      "reasoning": "None of the ten samples reference a real-world concrete object being grouped — no fruits, counters, toys, or animals are grouped or counted anywhere; the stems are purely numeric ('2 groups of 4', '10 groups of 4'). The closest thing to an object is the GridArea visual in seeds 23, 91, and 103, which shades abstract grid squares rather than depicting any tangible item, so even the pictorial layer never shows a 'concrete object' in the sense the competency intends.",
+      "action_taken": "Recorded: stems are purely numeric ('2 groups of 4') and the GridArea visual shades abstract squares, so no concrete object is ever grouped. Queued with mat_g1_na_q3_4's concrete_models finding."
+    },
+    {
+      "capability_id": "group",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "group",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        118
+      ],
+      "reasoning": "The word 'group(s)' is the operative noun in every single stem across all ten samples — '1 group of 1', '9 groups of 4', '2 groups of 4', '4 groups of 2', '7 groups of 2', '8 groups of 5', '3 groups of 6', '10 groups of 4' — the concept of grouping structures every problem the pupil solves, not just decorative phrasing.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "repeated_addition",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "repeated addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        78,
+        118
+      ],
+      "reasoning": "Several stems spell out the repeated addition explicitly as the method: seed 23 '(4 added 9 times)', seed 78 '(2 + 2 + 2 + 2)', seed 118 '(6 + 6 + 6)', seed 42 '(4 added 10 times)'. The pupil is shown the addend summed with itself repeatedly and must derive the total from it — this is repeated addition rendered as the actual solving mechanism, not just named.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "create_equal_groups",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "create equal groups",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        91,
+        103
+      ],
+      "reasoning": "Seed 91 ('Shade 7 groups of 2 squares to show 2 added 7 times') and seed 103 ('Shade 8 groups of 5 squares...') are the two samples where the pupil is asked to actively construct the grouping via an interactive GridArea rather than simply reading off a total from a pre-stated grouping — this is the 'create' verb being enacted as the task, distinct from the other eight samples which only ask the pupil to count or verify an already-given grouping.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "The GridArea payload for seeds 91 and 103 only exposes a single 'correct_count' (14, 40) with no field indicating the grid enforces that the shaded squares actually land in 7 or 8 discrete equal clusters versus any 14 or 40 squares shaded arbitrarily — from this file alone it isn't possible to confirm the 'equal groups' structure itself is validated, only the total."
+    },
+    {
+      "capability_id": "language",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "language",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        118
+      ],
+      "reasoning": "The competency names 'X groups of Y' as one example of the required language, and that exact phrasing template recurs in every sample: '9 groups of 4', '3 groups of 6', '1 group of 1', etc. Since one of the two explicitly-named phrasings is consistently used as the actual stem language (not just alluded to), the clause of using the specified mathematical language is exhibited.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "5_groups_of_3",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "5 groups of 3",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        118,
+        42
+      ],
+      "reasoning": "The precise 'N groups of M' sentence pattern shown in the competency's own example is reproduced verbatim throughout: seed 23 '9 groups of 4', seed 118 '3 groups of 6', seed 42 '10 groups of 4'. The numbers differ from the competency's illustrative '5 groups of 3' but the grammatical template matches exactly.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "5_threes",
+      "node_id": "mat_g2_na_q3_0",
+      "clause": "5 threes",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The alternate phrasing named by the competency — a count-word followed by the plural of the addend, as in '5 threes' — never appears anywhere in the ten samples. Every stem uses 'groups of' phrasing exclusively (e.g. '9 groups of 4', never '9 fours'; '3 groups of 6', never '3 sixes'). This specific named language pattern is completely absent from the rendered set.",
+      "action_taken": "Confirmed: the '5 threes' language form the competency names as a required example never renders; every stem uses 'groups of' exclusively. Queued as a stem-template addition, which Rule 8 makes the fix rather than a reason to narrow the clause.",
+      "content_note_from_attester": "This is a clean, direct miss: the competency names two language forms as required examples and only one of them is ever generated across all ten samples."
+    }
+  ]
+}

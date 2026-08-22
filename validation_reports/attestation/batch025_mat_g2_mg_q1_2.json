@@ -1,0 +1,202 @@
+{
+  "batch": "batch025_mat_g2_mg_q1_2",
+  "attested_at": "2026-08-23T00:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "handed to the Attester by path (local_only/scratch/attester/t24/B.prompt.txt), which is attester_packets.render_prompt_block output only: clause, competency, grade/quarter, samples. NOT pasted inline -- retyping ~60k characters is the transcription defect that module exists to prevent.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "2 reported by the runtime; the dispatch permitted exactly one Read, of the packet file named in samples_delivery. Not independently audited -- blindness here rests on the prompt contract, not on zero tool access."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q1_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "To draw the result of sliding a square 4 spaces to the right in one direction, where should you draw the new square?",
+        "correct_answer": "4 spaces to the right of the original square",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "A shape starts at position 3. It slides 1 space right, then 4 spaces right. Describe the total slide in one direction.",
+        "correct_answer": "5 spaces to the right",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "A rectangle at mark 8 slides 3 spaces left, then slides 2 more spaces left in the same direction. At what mark should the rectangle be drawn?",
+        "correct_answer": "mark 3",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "A shape slides 2 spaces right, then slides 1 more space right in the same direction without turning. What is this multi-step movement called?",
+        "correct_answer": "one-direction multi-step slide (translation)",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "To draw the result of sliding a square 4 spaces to the right in one direction, where should you draw the new square?",
+        "correct_answer": "4 spaces to the right of the original square",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A shape slides 2 spaces right, then slides 3 more spaces right. How far did it move in all?",
+        "correct_answer": "5 spaces to the right",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "After a shape undergoes a multi-step slide in one direction, does its size or shape change?",
+        "correct_answer": "No, the size and shape stay the same.",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "To draw a multi-step slide of 2 units down followed by 3 units down in one direction, what is the total distance to draw the shift?",
+        "correct_answer": "5 units down",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "To draw a multi-step slide of 2 units down followed by 3 units down in one direction, what is the total distance to draw the shift?",
+        "correct_answer": "5 units down",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "A shape slides 2 spaces right, then slides 1 more space right in the same direction without turning. What is this multi-step movement called?",
+        "correct_answer": "one-direction multi-step slide (translation)",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "describe_effect",
+      "node_id": "mat_g2_mg_q1_2",
+      "clause": "Describe",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        91
+      ],
+      "reasoning": "Seed 23 uses the verb directly — 'Describe the total slide in one direction' — and expects the pupil to state the combined displacement as '5 spaces to the right.' Seed 91 asks the pupil to describe an invariant effect of the transformation ('does its size or shape change?'). Both require putting the outcome of the slide into words, not just choosing a location, so this is genuinely exhibited.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "Seed 11 and seed 64 render byte-identical stem text ('To draw the result of sliding a square 4 spaces to the right in one direction, where should you draw the new square?'), differing only in the shuffled order of the options. The same duplication happens between seed 103 and seed 118 ('2 units down followed by 3 units down...') and between seed 57 and seed 127 ('...What is this multi-step movement called?'). Six of the ten seeds in this item group are really three items shown twice."
+    },
+    {
+      "capability_id": "draw_effect",
+      "node_id": "mat_g2_mg_q1_2",
+      "clause": "draw the effect",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "None of the ten samples for this item includes a VISUAL RENDERED line — there is no diagram, grid, or drawing surface anywhere in the set. Every sample instead asks in text 'where should you draw...' or 'what mark should be drawn' and offers a multiple-choice sentence like '4 spaces to the right of the original square' as the answer. The pupil is never shown a shape to slide or given any way to actually draw or place one; they are selecting a sentence describing a drawing, not producing an effect on a rendered figure.",
+      "action_taken": "Confirmed: no visual renders on any seed, so the pupil selects a sentence describing a drawing instead of acting on a figure. Left registered as an honest gap rather than repointed at a textual formatter (Rule 9). Queued as machinery: a figure/grid surface for slide tasks.",
+      "content_note_from_attester": "Seeds 11 and 64 are answerable by text-matching alone: the stem says 'sliding a square 4 spaces to the right' and the keyed option is literally '4 spaces to the right of the original square' — a pupil can select the option that echoes the stem's own wording without reasoning about where the shape actually lands."
+    },
+    {
+      "capability_id": "one_direction",
+      "node_id": "mat_g2_mg_q1_2",
+      "clause": "one-direction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57
+      ],
+      "reasoning": "The constraint is spelled out repeatedly in the stems — 'in one direction' (seed 11), 'in the same direction' (seed 42), 'without turning' (seed 57) — and seeds 57/127 force the pupil to distinguish the correct one-direction slide from distractor options labelled 'turn (rotation)' and 'flip (reflection),' which only makes sense if one-direction movement is the thing being tested against those alternatives.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "multi_step",
+      "node_id": "mat_g2_mg_q1_2",
+      "clause": "multi-step",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        78,
+        103,
+        118
+      ],
+      "reasoning": "Six of the ten samples chain two separate slide actions within one stem — 'slides 1 space right, then 4 spaces right' (23), 'slides 3 spaces left, then slides 2 more spaces left' (42), '2 units down followed by 3 units down' (103/118) — and require the pupil to combine both steps into one total displacement, which is the multi-step composition the clause names.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "slide",
+      "node_id": "mat_g2_mg_q1_2",
+      "clause": "slide",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11
+      ],
+      "reasoning": "The word and the concept anchor essentially every stem in the set; seed 11 alone ('sliding a square 4 spaces to the right') is sufficient, and the keyed answer describes the slide's outcome directly. This clause is trivially exhibited across the whole sample set.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "translation",
+      "node_id": "mat_g2_mg_q1_2",
+      "clause": "translation",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        127
+      ],
+      "reasoning": "Seeds 57 and 127 explicitly ask 'What is this multi-step movement called?' with the keyed correct answer 'one-direction multi-step slide (translation),' directly testing recognition of the vocabulary term against distractors like 'turn (rotation)' and 'flip (reflection).'",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "basic_shapes",
+      "node_id": "mat_g2_mg_q1_2",
+      "clause": "basic shapes",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        64
+      ],
+      "reasoning": "The objects being slid are a square (seeds 11, 64) and a rectangle (seed 42) — both basic shapes — and each sample requires reasoning about where that specific shape lands after the slide, so the clause is exhibited through the concrete objects used.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "basic_figures",
+      "node_id": "mat_g2_mg_q1_2",
+      "clause": "figures",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The word 'figure' never appears in any of the ten stems, and the only objects manipulated anywhere in the set are a square and a rectangle — the same two objects already credited to 'basic shapes.' Nothing rendered lets me distinguish 'figures' as a separate curriculum element from 'basic shapes'; no composite, irregular, or non-polygon figure ever appears. I can't confirm this term is being addressed as anything beyond what the shapes clause already covers.",
+      "action_taken": "Recorded, and deliberately not resolved by the Fixer. In the rendered set 'figures' is indistinguishable from 'basic shapes', which raises the question of whether this clause is a genuine separate requirement or a duplicate. Authoring or narrowing a requires block is the Declarer's role, not the Fixer's (Rule 1), so this is queued for a blind Declarer pass on this node's competency text."
+    }
+  ]
+}

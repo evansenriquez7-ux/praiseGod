@@ -1,0 +1,138 @@
+{
+  "batch": "batch024_mat_g3_mg_q2_0",
+  "attested_at": "2026-08-23T00:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "handed to the Attester by path (local_only/scratch/attester/t24/A.prompt.txt), which is attester_packets.render_prompt_block output only: clause, competency, grade/quarter, samples. NOT pasted inline -- retyping ~60k characters is the transcription defect that module exists to prevent.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "2 reported by the runtime; the dispatch permitted exactly one Read, of the packet file named in samples_delivery. Not independently audited -- blindness here rests on the prompt contract, not on zero tool access."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q2_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "What is the mass of the object in g?",
+        "correct_answer": 55,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "What is the mass of the object in g?",
+        "correct_answer": 1,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "What is the mass of the object in g?",
+        "correct_answer": 7,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "What is the mass of the object in kg?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What is the mass of the object in g?",
+        "correct_answer": 56,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What is the mass of the object in mg?",
+        "correct_answer": 40,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "What is the mass of the object in mg?",
+        "correct_answer": 20,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "What is the mass of the object in mg?",
+        "correct_answer": 19,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "What is the mass of the object in kg?",
+        "correct_answer": 1,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What is the mass of the object in mg?",
+        "correct_answer": 15,
+        "formatter": "cloze"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "measure_mass",
+      "node_id": "mat_g3_mg_q2_0",
+      "clause": "Measure mass",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Every stem asks 'What is the mass of the object in g/kg/mg?' but not one of the ten samples has a VISUAL RENDERED line — no scale, balance, or object image is shown anywhere. There is nothing in front of the pupil to actually measure; the pupil is being asked to produce a specific numeric reading (often from a tight cluster of close distractor values, e.g. 54/55/56/57) with no perceptual or given information to derive it from, so no genuine act of measuring is exhibited.",
+      "action_taken": "Confirmed and escalated in the ledger as this tick's highest-severity finding. Not merely an unprovided capability: the node renders no visual on any of the 10 seeds, so 'the object' every stem refers to is never shown and the item is unanswerable except by guessing among close-valued distractors. Queued as the first content unit of the next tick.",
+      "content_note_from_attester": "This looks like a real rendering gap rather than a hard-but-fair item: 'the object' is referenced in every single stem across all 10 seeds for items 020-022 but is never rendered anywhere in the payload — no VISUAL RENDERED line appears at all for this sample set, unlike the number-line and shape items elsewhere in the file, which do render their visuals. As given, a pupil has no way to determine the correct answer except guessing among close-valued options."
+    },
+    {
+      "capability_id": "grams_kilograms_and_or_milligrams",
+      "node_id": "mat_g3_mg_q2_0",
+      "clause": "grams (g), kilograms (kg) and/or milligrams (mg)",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        78
+      ],
+      "reasoning": "All three named units are used as the explicit unit of the question across the sample set — seed 11 asks for mass in g, seed 57 asks for mass in kg, and seed 78 asks for mass in mg — so the unit vocabulary this clause names is present in the rendered text even though (per item_020's finding) the underlying measurement task has no visual support to act on.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "measuring_tools",
+      "node_id": "mat_g3_mg_q2_0",
+      "clause": "measuring tools",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No sample names or shows any measuring tool at all — no scale, balance, or any instrument is mentioned in a stem or rendered in a payload across all ten seeds. Every stem simply says 'the object' and expects a bare numeric answer, so the 'using appropriate measuring tools' half of the competency has zero supporting evidence anywhere in this rendered set.",
+      "action_taken": "Same root cause as measure_mass on this node -- no measuring tool can be shown while no visual renders at all. Queued with it as one unit.",
+      "content_note_from_attester": "Same root cause as item_020: with no VISUAL RENDERED line anywhere in this sample set, no measuring tool could be shown even in principle, so this clause is structurally guaranteed to fail as long as that rendering gap persists for this node."
+    }
+  ]
+}

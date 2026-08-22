@@ -1,0 +1,181 @@
+{
+  "batch": "batch026_mat_g3_dp_q3_0",
+  "attested_at": "2026-08-23T00:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "handed to the Attester by path (local_only/scratch/attester/t24/C.prompt.txt), which is attester_packets.render_prompt_block output only: clause, competency, grade/quarter, samples. NOT pasted inline -- retyping ~60k characters is the transcription defect that module exists to prevent.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "1 reported by the runtime; the dispatch permitted exactly one Read, of the packet file named in samples_delivery. Not independently audited -- blindness here rests on the prompt contract, not on zero tool access."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_dp_q3_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "In a probability experiment, a tile was picked from a bag and replaced 25 times. Results: Red tile: 11, Blue tile: 6, Green tile: 8. How many times was a Green tile drawn? The answer is 6. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 23,
+        "question_text": "Rosa solved this problem: \"A student spun a spinner 24 times and recorded: Red: 13, Blue: 5, Green: 6. How many times did the spinner land on Blue?\" Rosa says the answer is 13. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 5
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 42,
+        "question_text": "A coin toss experiment was conducted with 15 tosses. The results are: Heads: 5, Tails: 10. How many times did the coin land on Heads?",
+        "correct_answer": 5,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "A coin toss experiment was conducted with 25 tosses. The results are: Heads: 21, Tails: 4. How many times did the coin land on Heads?",
+        "correct_answer": 21,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "In a probability experiment, a tile was picked from a bag and replaced 25 times. Results: Red tile: 16, Blue tile: 7, Green tile: 2. How many times was a Red tile drawn?",
+        "correct_answer": 16,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "In a die rolling experiment of 20 rolls, the results are: Face 1: 7, Face 2: 4, Face 3: 1, Face 4: 2, Face 5: 4, Face 6: 2. How many times did Face 6 appear?",
+        "correct_answer": 2,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "In a coin toss experiment of 12 tosses, the coin landed on Heads 4 times. How many times did it land on Tails?",
+        "correct_answer": 8,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Grace solved this problem: \"In a probability experiment, a tile was picked from a bag and replaced 10 times. Results: Red tile: 1, Blue tile: 7, Green tile: 2. How many times was a Green tile drawn?\" Grace says the answer is 3. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 2
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 118,
+        "question_text": "A 6-sided die was rolled 12 times. The recorded tally is: Face 1: 1, Face 2: 3, Face 3: 1, Face 4: 3, Face 5: 3, Face 6: 1. Which face was rolled least frequently?",
+        "correct_answer": "Face 1",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Grace solved this problem: \"In a coin toss experiment of 25 tosses, the coin landed on Tails 5 times. How many times did it land on Heads?\" Grace says the answer is 22. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 20
+        },
+        "formatter": "error_detect"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "collect_data",
+      "node_id": "mat_g3_dp_q3_0",
+      "clause": "Collect data",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78
+      ],
+      "reasoning": "In every sample the results are already tallied inside the stem ('Results: Red tile: 11, Blue tile: 6, Green tile: 8') and the pupil's job is to read, verify, or compute from that finished tally. No sample has the pupil roll a die, toss a coin, or record an outcome themselves -- the collecting is reported as already done, and the pupil only ever consumes the resulting numbers.",
+      "action_taken": "Recorded: every tally is pre-computed inside the stem, so the pupil only ever consumes a finished collection. Queued. Separately, this Attester reported an ambiguous key on seed 118 -- Faces 1, 3 and 6 are tied at the minimum count while only Face 1 is keyed and Face 3 is offered as a distractor -- which is carried to the ledger as a content defect in its own right.",
+      "content_note_from_attester": "Seed 118's die tally (Face 1: 1, Face 2: 3, Face 3: 1, Face 4: 3, Face 5: 3, Face 6: 1) has a three-way tie for least frequent face (Face 1, Face 3, and Face 6 all equal 1), yet only 'Face 1' is keyed correct while 'Face 3' sits among the offered options despite being equally correct -- an ambiguous key."
+    },
+    {
+      "capability_id": "experiments",
+      "node_id": "mat_g3_dp_q3_0",
+      "clause": "experiments",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        64
+      ],
+      "reasoning": "Every stem is explicitly framed as an experiment -- 'a probability experiment,' 'a coin toss experiment,' 'a die rolling experiment' -- and the question is posed about the outcomes of that named experiment, so the experimental setting itself is squarely present in the text even though the pupil does not physically run the trial.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "Same tie noted on item_018 applies here too: seed 118's die results give three faces (1, 3, 6) an equal minimum count, but only Face 1 is accepted as correct."
+    },
+    {
+      "capability_id": "small_number_of_possible_outcomes",
+      "node_id": "mat_g3_dp_q3_0",
+      "clause": "small number of possible outcomes",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        11
+      ],
+      "reasoning": "The outcome spaces used are genuinely small: 2 for a coin toss (heads or tails, seed 42), 6 for a die (faces 1 through 6, seed 78), and 3 for a colored-tile or spinner draw (red, blue, green, seed 11) -- all matching the 'small number of possible outcomes' the clause specifies rather than an open-ended count.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "Worth noting again for this clause specifically: seed 118's 6-outcome die set has a genuine 3-way tie at the minimum count that the key does not fully account for."
+    },
+    {
+      "capability_id": "rolling_die",
+      "node_id": "mat_g3_dp_q3_0",
+      "clause": "rolling a die",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        118
+      ],
+      "reasoning": "Seed 78 ('a die rolling experiment of 20 rolls ... How many times did Face 6 appear?') and seed 118 ('A 6-sided die was rolled 12 times ... Which face was rolled least frequently?') both center the task directly on a rolled die's recorded outcomes.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "Seed 118 is exactly where this clause's own evidence has a flaw: Face 1, Face 3, and Face 6 are tied at a count of 1, Face 3 is offered as a distractor option, but only Face 1 is accepted as the correct 'least frequent' answer."
+    },
+    {
+      "capability_id": "tossing_coin",
+      "node_id": "mat_g3_dp_q3_0",
+      "clause": "tossing a coin",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        91
+      ],
+      "reasoning": "Seeds 42, 57, 91, and 127 all revolve around a coin toss experiment with heads/tails tallies, asking the pupil to retrieve or compute (via subtraction from the total) the count for one face of the coin -- a direct exercise of tossing-a-coin content.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    }
+  ]
+}

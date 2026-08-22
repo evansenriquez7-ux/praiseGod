@@ -1,0 +1,199 @@
+{
+  "batch": "batch025_mat_g2_na_q1_3",
+  "attested_at": "2026-08-23T00:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "handed to the Attester by path (local_only/scratch/attester/t24/B.prompt.txt), which is attester_packets.render_prompt_block output only: clause, competency, grade/quarter, samples. NOT pasted inline -- retyping ~60k characters is the transcription defect that module exists to prevent.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "2 reported by the runtime; the dispatch permitted exactly one Read, of the packet file named in samples_delivery. Not independently audited -- blindness here rests on the prompt contract, not on zero tool access."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "What number comes next when counting: 700, 720, 740, 760, ___?",
+        "correct_answer": 780,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "Find the missing number: 0, 100, 200, 300, ___",
+        "correct_answer": 400,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "What number comes next when counting: 376, 378, 380, 382, ___?",
+        "correct_answer": 384,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What number comes next when counting: 140, 160, 180, 200, ___?",
+        "correct_answer": 220,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What number comes next when counting: 195, 200, 205, 210, ___?",
+        "correct_answer": 215,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "What number comes next when counting: 500, 600, 700, 800, ___?",
+        "correct_answer": 900,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What number comes next when counting: 934, 936, 938, 940, ___?",
+        "correct_answer": 942,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "count_multiples",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "Count by",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57,
+        64,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "Seven of the ten samples present an explicit constant-step sequence and ask the pupil to supply the next or missing term — e.g. '376, 378, 380, 382, ___' (seed 57) or '0, 100, 200, 300, ___' (seed 42) — which is exactly the skip-counting task the clause names. The three number-line seeds (23, 91, 103) test locating a marked value rather than generating a sequence, so they don't add evidence here, but the sequence-completion seeds are more than sufficient on their own.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "twos",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "2s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        127
+      ],
+      "reasoning": "Only two of the ten samples actually step by 2: seed 57 (376, 378, 380, 382 → 384) and seed 127 (934, 936, 938, 940 → 942). Every other sequence steps by 5, 20, or 100, and the number-line seeds use a unit interval of 1 for reading a position rather than counting by 2. Two genuine by-2s sequences requiring the pupil to continue the pattern is enough for PROVIDED, but the coverage is thin.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "fives",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "5s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78
+      ],
+      "reasoning": "Exactly one sample uses a step of 5: seed 78 (195, 200, 205, 210, ___ → 215), and it requires the pupil to identify and continue that pattern. No other sample in the set steps by 5. This is the thinnest evidence of any sub-case in this item group — a single sample out of ten — but it does genuinely require the operation, so PROVIDED.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "tens",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "10s",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Checking the step size of every sequence in the set (20, 100, 2, 5, plus unit-interval number lines), none of the ten samples counts by 10s. The competency names 10s as one of six required step sizes, and this sample set simply has no representative of it.",
+      "action_taken": "Confirmed coverage gap: step sizes across the 10 seeds are 2, 5, 20 and 100 -- never 10. The competency names 10s explicitly, so the fix is widening the step sampler, never narrowing the declaration. Queued."
+    },
+    {
+      "capability_id": "twenties",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "20s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64
+      ],
+      "reasoning": "Seed 11 (700, 720, 740, 760 → 780) and seed 64 (140, 160, 180, 200 → 220) both step by 20 and require the pupil to continue that pattern to find the missing term, which is the by-20s task the clause names.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "fifties",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "50s",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Same check as for 10s: the observed step sizes across all ten samples are 20, 100, 2, and 5, plus unit-interval number lines. Nothing here steps by 50 — this sub-case is entirely absent from the sample set.",
+      "action_taken": "Same sampler gap as 10s on this node; 50s never appears in any sampled seed. Queued with it -- one widening should close both."
+    },
+    {
+      "capability_id": "hundreds",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "100s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        118
+      ],
+      "reasoning": "Seed 42 (0, 100, 200, 300 → 400) and seed 118 (500, 600, 700, 800 → 900) both require continuing a hundreds-step sequence to the missing term, which directly exercises counting by 100s.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "not_beyond_1000",
+      "node_id": "mat_g2_na_q1_3",
+      "clause": "not beyond 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        127,
+        118
+      ],
+      "reasoning": "Every value that appears anywhere in the ten samples — stems, keys, and distractors alike — stays under 1000; the largest is 942 (seed 127, continuing 934...940) and 900 (seed 118). The samples don't specifically test the boundary (no distractor ever offers a value over 1000, so a pupil is never asked to reject one), but the generated range is consistent with the cap and reaches well into the high hundreds, which is the evidence available for a range clause like this.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    }
+  ]
+}

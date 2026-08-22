@@ -135,6 +135,11 @@ def render_prompt_block(packets: List[Dict[str, Any]]) -> str:
     out: List[str] = []
     for item in packets:
         out.append("=" * 70)
+        # The opaque item id is the ONLY handle the Attester has on this clause, and
+        # `tests/attester_file.py` joins the returned verdicts to the key on it. Omitting
+        # it forces the Fixer to re-identify each verdict by hand -- the retyping step
+        # this function exists to remove.
+        out.append(f"ITEM: {item['item']}")
         out.append(f"COMPETENCY (Grade {item['grade']}, Quarter {item['quarter']}):")
         out.append(item["competency"])
         out.append("")

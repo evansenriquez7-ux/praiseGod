@@ -1,0 +1,185 @@
+{
+  "batch": "batch024_mat_g1_mg_q1_0",
+  "attested_at": "2026-08-23T00:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "handed to the Attester by path (local_only/scratch/attester/t24/A.prompt.txt), which is attester_packets.render_prompt_block output only: clause, competency, grade/quarter, samples. NOT pasted inline -- retyping ~60k characters is the transcription defect that module exists to prevent.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "2 reported by the runtime; the dispatch permitted exactly one Read, of the packet file named in samples_delivery. Not independently audited -- blindness here rests on the prompt contract, not on zero tool access."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_mg_q1_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "A classroom chalkboard has 4 straight edges and opposite edges are equal. What shape is the chalkboard?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
+        "correct_answer": "triangle",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
+        "correct_answer": "triangle",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
+        "correct_answer": "triangle",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A flat floor tile has 4 equal straight edges. What shape is the tile?",
+        "correct_answer": "square",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
+        "correct_answer": "triangle",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "A small flat shape with 3 straight edges is shown. What shape is it?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "A flat floor tile has 4 equal straight edges. What shape is the tile?",
+        "correct_answer": "square",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "A party hat is shaped with 3 straight edges. What 2D shape is it?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "identify",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "Identify",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23
+      ],
+      "reasoning": "Every sample is structured as a forced-choice naming task ('What shape is it?' / 'What shape is the chalkboard?') where the pupil selects the correct shape name from four labeled options. That is squarely an identification task — matching a description to a name — not a construction, drawing, or measurement task.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "In every ShapeBoard-rendered sample (seeds 11, 23, 103, 127) the payload lists three shapes with 'highlighted_shape': null — nothing in the rendered visual marks which of the three shown shapes the stem's text actually describes. The pupil answers from the text clue alone; the visual doesn't functionally participate in resolving which shape is 'it'."
+    },
+    {
+      "capability_id": "simple_2_dimensional_shapes",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "simple 2-dimensional shapes",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        103
+      ],
+      "reasoning": "The only shapes that ever appear, whether in stem text or in the ShapeBoard payload's type fields, are triangle, rectangle, and square — flat, basic polygons with no curves, compound edges, or 3D structure, which matches what 'simple 2-dimensional shapes' names.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "triangle",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "triangle",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        91
+      ],
+      "reasoning": "Seeds 42 and 91 both key 'triangle' directly from a '3 straight edges' party-hat description, and every ShapeBoard payload (seeds 11, 23, 103, 127) includes a triangle-typed shape among the rendered figures, so triangle is exercised both as a text-derived answer and as a rendered shape type.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "rectangle",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "rectangle",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23
+      ],
+      "reasoning": "Seed 23 is the sample keyed to rectangle ('A classroom chalkboard has 4 straight edges and opposite edges are equal' → key D, rectangle), and rectangle appears as a shape_1 type in every ShapeBoard payload across the set, so this specific shape is both the target of a keyed question and a rendered figure.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "Seed 23's clue — 'four straight edges and opposite edges are equal' — is also mathematically true of a square (a square is a rectangle whose sides are all equal, so its opposite sides are trivially equal too), and 'square' sits right there as one of the four options. A pupil who knows squares well could reasonably choose square from this description and be marked wrong. That reads as an ambiguous or under-specified distractor rather than a description unique to rectangle."
+    },
+    {
+      "capability_id": "square",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "square",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        118
+      ],
+      "reasoning": "Seeds 78 and 118 both key 'square' from a '4 equal straight edges' floor-tile description, which — unlike seed 23's rectangle clue — is a property unique to square among the four listed options, so square is cleanly and unambiguously exercised as the correct answer.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "different_size",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "different size",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "None of the ShapeBoard payloads carry any size, scale, or dimension field at all (only id, type, sides, corners, is_regular, orientation_deg), and no two samples present the same shape type at contrasting sizes for the pupil to compare. The word 'small' shows up in a few stems (11, 64, 103) purely as a scene-setting adjective for the object being described, never as a variable actually being tested against a differently-sized instance of the same shape.",
+      "action_taken": "Recorded as unbuilt machinery: the ShapeBoard payload exposes no size or scale field at all, so no provider can currently satisfy this clause. Entry left registered so 6C keeps reporting the gap rather than hiding it. Queued as machinery."
+    },
+    {
+      "capability_id": "different_orientation",
+      "node_id": "mat_g1_mg_q1_0",
+      "clause": "different orientation",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Every ShapeBoard payload rendered in this set (seeds 11, 23, 103, 127) carries 'orientation_deg': 0 for all three shapes with no exceptions — not one sample shows a rotated triangle, rectangle, or square. The clause names orientation variation explicitly as part of the competency, and the rendered data shows that field pinned to a constant across every occurrence.",
+      "action_taken": "Confirmed mechanically by the Attester: orientation_deg is 0 for every shape in every ShapeBoard payload across all sampled seeds. Queued as a generator fix (vary orientation), not a table edit.",
+      "content_note_from_attester": "This is a clean, mechanically-checkable finding: orientation_deg is 0 in every single shape entry across all four ShapeBoard payloads in the sample set, suggesting the field is never actually randomized for this node."
+    }
+  ]
+}

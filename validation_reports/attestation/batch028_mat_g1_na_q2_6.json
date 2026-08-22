@@ -1,0 +1,182 @@
+{
+  "batch": "batch028_mat_g1_na_q2_6",
+  "attested_at": "2026-08-23T00:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "handed to the Attester by path (local_only/scratch/attester/t24/E.prompt.txt), which is attester_packets.render_prompt_block output only: clause, competency, grade/quarter, samples. NOT pasted inline -- retyping ~60k characters is the transcription defect that module exists to prevent.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "1 reported by the runtime; the dispatch permitted exactly one Read, of the packet file named in samples_delivery. Not independently audited -- blindness here rests on the prompt contract, not on zero tool access."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q2_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Start at 60. Count up 13 more. You land on ___",
+        "correct_answer": 73,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "Show 41 + 27 on the number line.",
+        "correct_answer": 68,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 42,
+        "question_text": "Manny solved: \"1 + 63 = ___\". Manny says the blank is 63. Is Manny correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 64
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 57,
+        "question_text": "One group has 32 items and another group has 24 items. If you put them together, how many items are there in all?",
+        "correct_answer": 56,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Start at 12. Count up 3 more. You land on ___",
+        "correct_answer": 15,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "One group has 5 items and another group has 72 items. If you put them together, how many items are there in all?",
+        "correct_answer": 77,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "(Large group of 60 bunnies) — There are 60 bunnies.\n(Large group of 30 bunnies) — 30 more bunnies are added.\nHow many total bunnies are there?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "(Large group of 67 chicks) — There are 67 chicks.\n(Large group of 31 chicks) — 31 more chicks are added.\nHow many total chicks are there?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "One group has 32 items and another group has 24 items. If you put them together, how many items are there in all?",
+        "correct_answer": 56,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "One group has 71 items and another group has 1 item. If you put them together, how many items are there in all?",
+        "correct_answer": 72,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        91
+      ],
+      "reasoning": "Combining both halves of this clause: seed 57 poses a scenario (32 items in one group, 24 in another) that the pupil must interpret and then solve to reach 56; seed 91 does the same through a pictorial bunny scene; seed 42 goes further and requires the pupil to solve independently in order to judge whether Manny's already-stated answer is right. All three show a stated situation resolved into a required computation — that is 'solve problems' as an integrated task, not two separable ideas.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "Seeds 57 and 118 render an identical stem and identical numbers ('One group has 32 items and another group has 24 items. If you put them together, how many items are there in all?', key 56) — the same word problem appears twice in this ten-sample set, differing only in the shuffled order of the MCQ options (56/57/66/55 vs 57/56/66/55). That is a duplicate generation within the sample window, not two independently produced problems."
+    },
+    {
+      "capability_id": "orally",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "orally",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "As with the Q1 version of this clause, none of the ten rendered samples give any indication of audio or spoken presentation — all stems are written text, and the two visual payloads present (NumberLine, EmojiPictorial) carry no audio markers either. There is simply no evidence in what I can see that any of these items are, or would be, delivered orally to the pupil, so I cannot say the oral-delivery mode is exhibited.",
+      "action_taken": "Same clause and same finding as on mat_g1_na_q1_9, from the same fresh dispatch. Queued as one machinery unit covering both nodes."
+    },
+    {
+      "capability_id": "pictures",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "pictures",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23
+      ],
+      "reasoning": "Seed 23 ('Show 41 + 27 on the number line') renders a genuine NumberLine visual with real structural detail — start/end points, interval spacing, a dot at 30, a target position at 68 — that the pupil interacts with directly rather than a stem that merely alludes to a picture. That is an actual pictorial/diagrammatic representation of the addition task, satisfying the clause on its own. I did not count seeds 91 and 103 toward this verdict; see the content note.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "Seeds 91 and 103 are labeled 'VISUAL RENDERED: EmojiPictorial' but their display fields contain literal placeholder text — '(Large group of 60 bunnies)' and '(Large group of 67 chicks)' / '(Large group of 31 chicks)' — rather than actual repeated glyphs. Contrast this with the Grade-1-Q1 EmojiPictorial samples in the other competency's set, which render real emoji strings the pupil could count. Here the pupil is shown a parenthetical description of a picture, not a picture, so these two samples do not actually exhibit the 'pictures' clause despite the VISUAL RENDERED header claiming to."
+    },
+    {
+      "capability_id": "addition",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        103
+      ],
+      "reasoning": "Each sample requires the pupil to combine two quantities to reach a larger total — counting on from a start value (seed 11: 60, up 13), joining two named groups (seed 57: 32 and 24 items), or joining pictorially described groups (seed 103: 67 and 31 chicks). No sample asks for a different operation; addition is consistently the operation the pupil must actually carry out to produce the keyed answer.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "sum_up_to_100",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "sums up to 100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        91,
+        103
+      ],
+      "reasoning": "The computed sums in this set are 73, 68, 64, 56, 15, 77, 90, 98, 56, 72 — all at or under 100, and seeds 91 and 103 (90 and 98) push close to the stated ceiling, showing the range is genuinely being used rather than clustered safely below it. No sample exceeds 100, so the clause's boundary is honored across the full spread from 15 up to 98.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "without_regrouping",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57
+      ],
+      "reasoning": "I checked the ones-place and tens-place addition in every sample: 60+13=73 (0+3, 6+1, no carry), 41+27=68 (1+7=8, 4+2=6, no carry), 32+24=56 (2+4=6, 3+2=5, no carry), 1+63=64 (1+3=4, no carry), 5+72=77 (5+2=7, no carry), 60+30=90 (0+0, 6+3=9, no carry), 67+31=98 (7+1=8, 6+3=9, no carry), 71+1=72 (1+1=2, no carry). Not one pairing in the entire set requires carrying into the next place value, which is exactly what 'without regrouping' demands — the constraint is honored consistently rather than by coincidence in a single sample.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    }
+  ],
+  "supersedes": "Supersedes batch023, stale for the same reason and re-dispatched on the same seeds. The pictures clause likewise moved to PROVIDED on freshly rendered content, with batch023 retained unaltered for comparison."
+}

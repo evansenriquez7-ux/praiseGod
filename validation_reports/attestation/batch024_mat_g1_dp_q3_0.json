@@ -1,0 +1,143 @@
+{
+  "batch": "batch024_mat_g1_dp_q3_0",
+  "attested_at": "2026-08-23T00:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "handed to the Attester by path (local_only/scratch/attester/t24/A.prompt.txt), which is attester_packets.render_prompt_block output only: clause, competency, grade/quarter, samples. NOT pasted inline -- retyping ~60k characters is the transcription defect that module exists to prevent.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "2 reported by the runtime; the dispatch permitted exactly one Read, of the packet file named in samples_delivery. Not independently audited -- blindness here rests on the prompt contract, not on zero tool access."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_dp_q3_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Tina asks 5 friends their favorite pet: 2 say Cat, 3 say Dog. How should Tina record the data in her interview list?",
+        "correct_answer": "Cat: 2, Dog: 3",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "During an interview, 3 classmates answered 'dog'. How should you record 3 tally marks for 'dog'?",
+        "correct_answer": "|||",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "Rico conducts an interview with 4 classmates: Ana chose blue, Leo chose red, Sam chose blue, Mia chose blue. How many times was 'blue' collected in the interview?",
+        "correct_answer": "3",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "In an interview, you ask 4 friends for their favorite fruit: Kim says Apple, Ben says Mango, Dan says Apple, Joy says Apple. How many votes did Apple get?",
+        "correct_answer": "3",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Maya wants to collect information about her classmates' favorite fruits. What question should Maya ask in her simple interview?",
+        "correct_answer": "What is your favorite fruit?",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "If you want to collect data about what shoes your classmates wear to school, whom should you interview?",
+        "correct_answer": "your classmates",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Tina asks 5 friends their favorite pet: 2 say Cat, 3 say Dog. How should Tina record the data in her interview list?",
+        "correct_answer": "Cat: 2, Dog: 3",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "During an interview, 3 classmates answered 'dog'. How should you record 3 tally marks for 'dog'?",
+        "correct_answer": "|||",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "Dan asks each pupil: 'What is your favorite snack?' What information is Dan collecting in this interview?",
+        "correct_answer": "favorite snack",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Paul asks 4 pupils for their favorite fruit. Which of these is a response collected from this interview?",
+        "correct_answer": "banana",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "collect_data",
+      "node_id": "mat_g1_dp_q3_0",
+      "clause": "Collect data",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64,
+        78
+      ],
+      "reasoning": "Seed 64 has the pupil choose the correct question to pose in an interview ('What is your favorite fruit?'), and seed 78 has the pupil identify who should be interviewed to gather the target information. Both require the pupil to make a decision about how to actually run a data-collection interview, which is a genuine exercise of 'collect,' as distinct from simply reading back results someone else already gathered.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "Several samples in this set (11, 23, 91, 103) test recording or tallying data that has already been collected ('How should Tina record the data...'), and 42/57 test computing a count from a data list already given whole in the stem. Those are adjacent data-handling skills but not the act of collecting itself — worth checking whether this node is meant to isolate 'collect' specifically or a broader collect-and-organize competency."
+    },
+    {
+      "capability_id": "one_variable",
+      "node_id": "mat_g1_dp_q3_0",
+      "clause": "one variable",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        64
+      ],
+      "reasoning": "Every interview scenario in this set asks about exactly one characteristic at a time — favorite pet, favorite fruit, favorite snack, or shoe type — and none of the ten samples cross two variables (e.g. favorite fruit broken down by another category), so the single-variable scope named by the clause holds throughout.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "simple_interview",
+      "node_id": "mat_g1_dp_q3_0",
+      "clause": "simple interview",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64
+      ],
+      "reasoning": "The word 'interview' (or 'interview list') appears in the stem of every sample in this set, and seed 64 uses the exact phrase 'her simple interview.' The scenarios described are all small, informal, peer-to-peer questioning of 4-5 classmates — matching 'simple interview' rather than any formal survey apparatus.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "Seed 127 ('Which of these is a response collected from this interview?', key banana, distractors 20 pesos / 7 o'clock / triangle) is answerable purely by eliminating category mismatches — money, time, shape — without any actual interview responses being shown in the stem. A pupil could get this right through vocabulary/category matching rather than by reasoning about the interview's actual data."
+    }
+  ]
+}

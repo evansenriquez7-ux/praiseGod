@@ -1,0 +1,220 @@
+{
+  "batch": "batch026_mat_g3_mg_q1_1",
+  "attested_at": "2026-08-23T00:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "handed to the Attester by path (local_only/scratch/attester/t24/C.prompt.txt), which is attester_packets.render_prompt_block output only: clause, competency, grade/quarter, samples. NOT pasted inline -- retyping ~60k characters is the transcription defect that module exists to prevent.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "1 reported by the runtime; the dispatch permitted exactly one Read, of the packet file named in samples_delivery. Not independently audited -- blindness here rests on the prompt contract, not on zero tool access."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q1_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 3 by 3 square takes 9 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "side × side",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "Three squares are tiled with unit squares: a 3 by 3 square takes 9 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule works for every one of them?",
+        "correct_answer": "side × side",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 3 rectangle takes 12 tiles, a 5 by 4 rectangle takes 20 tiles, and a 7 by 2 rectangle takes 14 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 6 by 5 rectangle takes 30 tiles, a 7 by 2 rectangle takes 14 tiles, and a 9 by 10 rectangle takes 90 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "side × side",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 4 rectangle takes 20 tiles, an 8 by 5 rectangle takes 40 tiles, and a 9 by 2 rectangle takes 18 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 5 by 10 rectangle takes 50 tiles, a 9 by 3 rectangle takes 27 tiles, and a 10 by 5 rectangle takes 50 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "Cover each square with unit square tiles and count them: a 2 by 2 square takes 4 tiles, a 4 by 4 square takes 16 tiles, and a 5 by 5 square takes 25 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "side × side",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 3 by 2 rectangle takes 6 tiles, a 6 by 4 rectangle takes 24 tiles, and a 7 by 10 rectangle takes 70 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Cover each rectangle with unit square tiles and count them: a 4 by 10 rectangle takes 40 tiles, a 5 by 4 rectangle takes 20 tiles, and an 8 by 2 rectangle takes 16 tiles. Which rule always gives the number of tiles?",
+        "correct_answer": "length × width",
+        "formatter": "cloze"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "explore_pattern_across_cases",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "Explore",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42
+      ],
+      "reasoning": "Every sample narrates the tiling and counting as already finished ('Cover each square with unit square tiles and count them: ... takes 4 tiles ...') and hands the pupil the totals as given facts. The pupil's only action is choosing one of four symbolic rules; nothing requires them to place tiles, try cases, or investigate anything themselves, and no VISUAL RENDERED payload appears anywhere in the file for them to even look at. That is consuming someone else's completed exploration, not exploring.",
+      "action_taken": "Recorded: every stem narrates the tiling and counting as already finished, so no exploration is required of the pupil. Queued as a generator framing unit together with the derivation clause on this node."
+    },
+    {
+      "capability_id": "reason_inductively_from_cases",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "inductively",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42
+      ],
+      "reasoning": "Each stem gives three distinct numeric instances (e.g. a 3x3, a 4x4, and a 5x5 square) and asks which single rule 'always' gives the tile count, or in seed 23's phrasing, 'works for every one of them.' Answering correctly forces the pupil to check a candidate formula against multiple separate cases and settle on the one that generalizes across all of them, which is exactly the inductive move the clause names, and it is required to answer, not incidental.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "derive_area_formula",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "the derivation",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        42,
+        118
+      ],
+      "reasoning": "No sample shows why the formula follows from the tiling (e.g. that the tiles form rows and columns), only the finished totals as premises. A pupil can pick the right option purely by substituting each candidate's side/length/width into the four listed expressions and matching the stated totals -- symbolic elimination, not building the formula up from the structure of the tile grid. The actual derivation step never appears in the text.",
+      "action_taken": "Recorded with the Explore clause above: the derivation step never appears, and the item is answerable by substituting each candidate expression into the stated totals. Queued as one unit."
+    },
+    {
+      "capability_id": "area_formula_expression",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "the formulas",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42
+      ],
+      "reasoning": "The four options in every sample are themselves candidate formulas written in the shape's own variables (side x side, 4 x side, side + side, side + 4 for squares; length x width and various additive expressions for rectangles), and the task is to identify the one true formula among them. The formula is the literal object under evaluation here.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "area_attribute",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "the areas",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42
+      ],
+      "reasoning": "The word 'area' never appears, but the quantity every sample asks for -- the number of unit square tiles needed to cover the shape -- is precisely area expressed in square-tile units. Selecting the rule that reliably reproduces that tile count is functionally computing area for each square and rectangle shown.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "square_figure",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "a square",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "Four of the ten samples are built entirely around squares with matching side lengths (2x2, 3x3, 4x4, 5x5) and ask the pupil to find the rule (side x side) that fits them, so the square case of the competency is directly exercised, not just mentioned.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "rectangle_figure",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "a rectangle",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "The majority of samples (six of ten) use rectangles with unequal length and width (4 by 3, 6 by 5, 5 by 4, and so on) and require picking length x width as the rule that fits every one, so the rectangle case is squarely tested, not a token mention.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "square_tile_array",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "square tile units",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42
+      ],
+      "reasoning": "Every stem states in prose that unit square tiles were used ('Cover each square with unit square tiles and count them'), but this is description only -- there is no VISUAL RENDERED line or image anywhere in the file showing an actual grid of tiles laid over a shape. A manipulative that is only named in text, never rendered for the pupil to see, does not exhibit the representation the clause names.",
+      "action_taken": "Confirmed: no visual renders on any seed for this node, so the tiles exist only as prose describing a finished count. Same root cause as the Explore and derivation clauses. Queued as one machinery unit -- render the tile grid."
+    },
+    {
+      "capability_id": "square_tile_unit",
+      "node_id": "mat_g3_mg_q1_1",
+      "clause": "tile units",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42
+      ],
+      "reasoning": "Same gap as the fuller phrase: the words 'tile' and 'tiles' occur throughout the stems, but the tile units exist only as narrated text describing a finished count, never as a rendered visual the pupil can inspect. Reading that 25 tiles were used is not the same as the tile units being shown.",
+      "action_taken": "Same root cause and same unit as square_tile_array: the tile units are named in text but never rendered. Queued together."
+    }
+  ]
+}

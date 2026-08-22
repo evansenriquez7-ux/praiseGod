@@ -1,0 +1,189 @@
+{
+  "batch": "batch024_mat_g1_na_q1_0",
+  "attested_at": "2026-08-23T00:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "handed to the Attester by path (local_only/scratch/attester/t24/A.prompt.txt), which is attester_packets.render_prompt_block output only: clause, competency, grade/quarter, samples. NOT pasted inline -- retyping ~60k characters is the transcription defect that module exists to prevent.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "2 reported by the runtime; the dispatch permitted exactly one Read, of the packet file named in samples_delivery. Not independently audited -- blindness here rests on the prompt contract, not on zero tool access."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "What number comes next when counting: 66, 67, 68, 69, ___?",
+        "correct_answer": 70,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "What number is marked?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "What comes next: 94, 95, 96, 97, ___",
+        "correct_answer": 98,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "What number comes next when counting: 8, 9, 10, 11, ___?",
+        "correct_answer": 12,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What comes next: 69, 70, 71, 72, ___",
+        "correct_answer": 73,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "What number comes next when counting: 43, 44, 45, 46, ___?",
+        "correct_answer": 47,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰 — There are 17 bunnies.\nCount the bunnies.\nHow many bunnies are there in all?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "(Large group of 89 chicks) — There are 89 chicks.\nCount the chicks.\nHow many chicks are there in all?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "What number comes next when counting: 96, 97, 98, 99, ___?",
+        "correct_answer": 100,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What number comes next when counting: 8, 9, 10, 11, ___?",
+        "correct_answer": 12,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "count_objects_to_a_total",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "Count",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        91,
+        103
+      ],
+      "reasoning": "The samples cover both senses of counting: sequence-continuation counting (66,67,68,69 → 70; 8,9,10,11 → 12, etc.) and cardinal counting of a displayed group via EmojiPictorial (seed 91: 17 bunnies rendered as 17 emoji characters; seed 103: 89 chicks). In both forms the pupil must actually enumerate or continue a count to answer, not recall an isolated fact.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "range_up_to_100",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "up to 100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        118,
+        91,
+        103
+      ],
+      "reasoning": "Every numeric value that appears across the ten samples sits within 0-100 (from 8 up through 100), and seed 118's sequence 96,97,98,99 → 100 lands directly on the clause's stated ceiling. Seeds 91 (17) and 103 (89) also stay well inside the bound, so the full range named by the clause is exercised.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "count_forward_from_a_given_number",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "counting up",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        118
+      ],
+      "reasoning": "Eight of the ten samples present an ascending run of four consecutive numbers and ask the pupil to name the next one (66,67,68,69 → 70; 96,97,98,99 → 100; etc.), which is literally the act of continuing a count upward as the task itself, not scenery around a different task.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "count_backward_from_a_given_number",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "down from a given number",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Every sample runs strictly forward — each 'what comes next' stem lists four ascending numbers and asks for the fifth, and the two object-counting stems ask for a static total, not a predecessor. Not one of the ten samples presents a descending run (e.g. 47,46,45,44 → ?) or otherwise asks the pupil to count backward from a starting point, so the 'down' half of the clause has no supporting evidence anywhere in this set.",
+      "action_taken": "Confirmed as a generator coverage gap, not a table error: no descending sequence renders on any of the 10 student-path seeds. The competency names counting down explicitly, so the entry stays registered and the fix is in the counting generator's direction sampling (Rule 8). Queued in the ledger as a tick-25 content unit.",
+      "content_note_from_attester": "The competency text names counting down as required content, but across all 10 rendered samples for this node, none present a descending sequence — every sequence-completion item is ascending only. Given how uniform this is across the full seed set, it reads as a structural gap in the generator rather than sampling noise."
+    },
+    {
+      "capability_id": "identify_a_number_relative_to_another",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "identifying a number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        91
+      ],
+      "reasoning": "Seed 23 has the pupil identify the specific number marked on a rendered number line (options 66/64/67/65, key 65), and the sequence-completion stems all require identifying the one number that correctly completes the run. Seed 91 requires identifying the count 17 from a pictorial group. Each of these is a genuine act of naming/selecting a particular number, which is what this clause literally names.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "identify_one_more_than_a_number",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "1 more",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        78
+      ],
+      "reasoning": "In every sequence-completion sample the requested answer is exactly one more than the last term shown (seed 11: after 69 comes 70; seed 78: after 46 comes 47), so successfully completing the sequence requires the pupil to compute one-more-than the given number, even though the stem never uses that exact phrase.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples.",
+      "content_note_from_attester": "None of the ten samples frame the task explicitly as 'what number is 1 more than X' — the skill is always embedded inside a 4-term sequence-completion frame. A pupil who is only pattern-matching the visual run of consecutive digits, rather than reasoning about the +1 relationship, could still answer correctly, which weakens how cleanly this specific sub-case is being isolated."
+    },
+    {
+      "capability_id": "identify_one_less_than_a_number",
+      "node_id": "mat_g1_na_q1_0",
+      "clause": "1 less",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No sample in this set asks the pupil to produce a number smaller than one given — every requested numeric answer (a 'next' value or a group total) is equal to or greater than the numbers already shown in the stem. There is no task anywhere in the ten samples, worded directly or embedded in a sequence, that requires finding or selecting a number one less than a given number.",
+      "action_taken": "Same root cause as count_backward on this node -- the decrement branch never fires on any sampled seed. Queued with it; one sampling fix should close both clauses.",
+      "content_note_from_attester": "Same underlying gap as the 'down from a given number' clause on this node: the decrement direction is entirely absent, for both sequential counting and the explicit one-less fact. Worth checking whether this competency's generator has a countdown/one-less branch that simply never fires."
+    }
+  ]
+}

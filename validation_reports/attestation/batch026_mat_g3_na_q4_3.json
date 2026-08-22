@@ -1,0 +1,216 @@
+{
+  "batch": "batch026_mat_g3_na_q4_3",
+  "attested_at": "2026-08-23T00:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "handed to the Attester by path (local_only/scratch/attester/t24/C.prompt.txt), which is attester_packets.render_prompt_block output only: clause, competency, grade/quarter, samples. NOT pasted inline -- retyping ~60k characters is the transcription defect that module exists to prevent.",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "1 reported by the runtime; the dispatch permitted exactly one Read, of the packet file named in samples_delivery. Not independently audited -- blindness here rests on the prompt contract, not on zero tool access."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q4_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "9770 ÷ 10 = 10. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 23,
+        "question_text": "Rosa solved: \"53 ÷ 3 = ___\". Rosa says the missing number is 17. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": "17 R 2"
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 42,
+        "question_text": "What is 2000 ÷ 1000?",
+        "correct_answer": 2,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "What is 77 ÷ 7?",
+        "correct_answer": 11,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What is 80 ÷ 10?",
+        "correct_answer": 8,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What is 216 ÷ 3?",
+        "correct_answer": 72,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "96 ÷ 4 = ___",
+        "correct_answer": 24,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Grace solved: \"8000 ÷ 1000 = ___\". Grace says the missing number is 8000000. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 8
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 118,
+        "question_text": "What is 3000 ÷ 1000?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Grace solved: \"12 ÷ 3 = ___\". Grace says the missing number is 9. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 4
+        },
+        "formatter": "error_detect"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "divide_numbers",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "Divide numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78
+      ],
+      "reasoning": "Every one of the ten samples is a division fact or a division being checked -- a plain quotient prompt (77 divided by 7), a true/false division statement (9770 divided by 10 equals 10), or an error-check of someone else's division work (53 divided by 3). Dividing numbers is the operation actually performed or verified in all of them.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "with_and_without_remainder",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "with and without remainder",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        57,
+        91
+      ],
+      "reasoning": "Seed 23 (53 divided by 3, correct value '17 R 2') is a genuine remainder case the pupil must recognize Rosa got wrong by dropping the remainder, while seed 57 (77 divided by 7 = 11) and seed 91 (96 divided by 4 = 24) are exact divisions with nothing left over. Both halves of the clause show up in the same ten-sample set.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "2_to_3_digit_numbers",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "2- to 3-digit numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        91,
+        127
+      ],
+      "reasoning": "Two-digit dividends (53, 77, 80, 96, 12) and a three-digit dividend (216 in seed 78) both appear paired with single-digit divisors, so the stated 2-to-3-digit dividend range is genuinely spanned, not just the low end of it.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "1_digit_number_without_remainder",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "1-digit number without remainder",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        91
+      ],
+      "reasoning": "77 divided by 7 = 11, 216 divided by 3 = 72, and 96 divided by 4 = 24 are all clean divisions by a one-digit divisor with nothing left over, which is exactly the without-remainder sub-case this phrase names.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "2_digit_numbers",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "2-digit numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        57,
+        91
+      ],
+      "reasoning": "53, 77, 80, 96, and 12 are all two-digit numbers appearing as the dividend; seed 23 in particular pairs a two-digit dividend (53) with a one-digit divisor (3) and a genuine remainder, which is the specific sub-case this phrase is lifted from.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "1_digit_number_with_remainder",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "1-digit number with remainder",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23
+      ],
+      "reasoning": "Only seed 23 actually produces a remainder with a one-digit divisor: 53 divided by 3 leaves 2 left over (correct value '17 R 2'), and Rosa's error of dropping the remainder is exactly what the pupil must catch. It is the sole instance in the set, but the clause only asks for one genuine case and this is unambiguously it.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "2_to_4_digit_numbers",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "2- to 4-digit numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        64
+      ],
+      "reasoning": "Within the subset of samples dividing by a power of ten, dividends range from two digits (80 divided by 10, seed 64) up to four digits (9770 divided by 10 in seed 11; 2000, 8000, and 3000 divided by 1000 in seeds 42, 103, 118), so both ends of the stated digit range are exercised. I did not find a three-digit dividend paired with a 10/100/1000 divisor anywhere in these ten samples -- the one three-digit dividend present (216, seed 78) is divided by 3, not by a power of ten -- so the middle of the range is thinner than the endpoints.",
+      "action_taken": "Left registered; the Attester found the clause exhibited in the rendered student-path samples."
+    },
+    {
+      "capability_id": "10_100_1000",
+      "node_id": "mat_g3_na_q4_3",
+      "clause": "10,100, and 1000",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        64
+      ],
+      "reasoning": "Across all ten samples the divisor used is either 10 (seeds 11, 64) or 1000 (seeds 42, 103, 118); division by 100 does not occur once in this set. The clause names three specific divisors and only two of the three are ever exercised, so it is not fully exhibited even though it is close.",
+      "action_taken": "Confirmed coverage gap: the divisors actually sampled are 10 and 1000 only -- division by 100 never occurs across the 10 seeds. The clause names all three, so the fix is widening the divisor sampler. Queued."
+    }
+  ]
+}

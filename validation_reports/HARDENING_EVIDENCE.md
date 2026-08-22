@@ -7679,3 +7679,102 @@ passed. Class C unit — no `run_all`; the planted mutations are what prove a va
 **Standing lesson, now in AGENTS.md:** every one of these was a mutation aimed at code the validator
 does not execute — a rebuilt field, a redundant gate, a node that skips the check, a filter downstream
 of the real cap. A green mutation suite is only worth what its mutations actually reach.
+
+---
+
+## 2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest
+
+Class B (attestation records + `tests/`; classifier printed `CLASS B — stages 1-5 cannot have moved`,
+so no `run_all`). Campaign: the §6F UNATTESTED backlog. §5 stale (**557** across 49 nodes) and §6F
+CONTRADICTED (**31** across 12 nodes at tick start) are deferred by the campaign, not skipped.
+
+Five blind Attesters, one dispatch each, 102 clauses across 17 nodes. Batch E re-attests the two
+nodes batch023 left STALE.
+
+```
+                              before          after
+§5  STALE/malformed reviews :  557 / 49 nodes  557 / 49 nodes
+§5  non-PASS verdicts       :   18 /  4        18 /  4
+§6F CONTRADICTED            :   31 / 12        50 / 23
+§6F stale attestations      :   10 / 10         8 /  8
+§6F UNATTESTED              :  644 / 134      554 / 119
+§6D wildcard providers      :   74 / 19        74 / 19
+§6G batch-integrity         :    —              0
+TOTAL capability findings   :  760            687
+coverage: attested            143/787         233/787
+```
+
+**Findings rose while coverage rose.** 90 clauses left UNATTESTED; 23 of them came back
+`NOT_PROVIDED`, so CONTRADICTED went 31 → 50. That is the intended direction: a clause nobody blind
+had judged became a clause a blind party refused to certify.
+
+**§6G passed all five batches at 0.** The Attesters wrote their own reasoning; nothing was templated,
+no cited seed fell outside its own `packet.samples_judged`, no batch exceeded 25.
+
+### What the blind verdicts found — the pattern is a medium, not a node
+
+Nine of the 23 `NOT_PROVIDED`s are one shape: **a clause names a representation and no visual renders
+at all.** `mat_g3_mg_q2_0` is the sharpest — every stem asks for the mass of "the object" and no seed
+renders any object, scale or balance, so the item is unanswerable except by guessing among distractors
+clustered at ±1. That is a content defect reaching students, not merely an unprovided capability.
+Same shape on `mat_g3_mg_q1_1` (tiles narrated, never drawn) and `mat_g2_mg_q1_2` (a slide with no
+figure to slide).
+
+Six more are **named sub-cases a sampler never emits**: no descending sequence or "1 less" on
+`mat_g1_na_q1_0`; no 10s or 50s step on `mat_g2_na_q1_3`; no 2-digit-minus-1-digit on
+`mat_g1_na_q3_4`; no "5 threes" phrasing on `mat_g2_na_q3_0`; no divisor of 100 on `mat_g3_na_q4_3`.
+Each is named in its competency, so each is a Rule 8 build, not a declaration to narrow.
+
+Unasked content defects, carried to the ledger:
+
+* `mat_g3_dp_q3_0` seed 118 — die tally has Faces 1, 3 and 6 tied at the minimum count; only Face 1 is
+  keyed and **Face 3 is offered as an option**. A pupil answering "Face 3" is marked wrong for a
+  correct answer. Same shape as `mat_g3_dp_q3_4` in Appendix A.
+* `mat_g2_dp_q3_0` seeds 11/57/103 — the stem says "count the pictures in each row of the pictograph"
+  and the payload is a `FillInTable` with null rows. The pictograph is never rendered.
+* `mat_g1_na_q2_6` seeds 91/103 — `EmojiPictorial` renders the literal string "(Large group of 60
+  bunnies)" instead of glyphs, so a "pictures" clause is satisfied by a parenthetical.
+* Duplicate stems inside one 10-seed window on `mat_g2_mg_q1_2` (6 of 10 seeds are 3 items twice),
+  `mat_g1_na_q2_6`, and `mat_g2_na_q3_0`.
+
+### batch023 → batch028: a verdict moved without being edited
+
+`pictures` was `NOT_PROVIDED` on both `mat_g1_na_q1_9` and `mat_g1_na_q2_6` in batch023. A fresh
+Attester on freshly rendered content ruled `PROVIDED`. **batch023 is retained unaltered** and
+supersession is derived by `_winning_verdict_index` from filename order, never from the `supersedes`
+note. Both records stand; the older one is simply no longer the winning verdict.
+
+### Tooling, and the honesty problem it forced
+
+`tests/attester_file.py` (adopted from an uncommitted previous tick) mechanically joins verdicts to
+the key the Attester never saw, so the Fixer never retypes a verdict. Two changes were needed:
+
+1. `attester_packets.render_prompt_block` emitted no item id, so its output could not be keyed back.
+2. The record hardcoded `samples_passed_inline: True` and an integer `tool_uses`. **Neither was true
+   of this dispatch.** A 22-clause packet renders ~60k characters; pasting that into five subagent
+   prompts is the exact transcription defect that module was written to prevent, so each Attester was
+   given the rendered packet file by path instead. That is equally blind in substance — the file holds
+   only clause, competency, grade/quarter and samples — but `tool_uses: 0` is an *evidentiary claim*
+   that blindness was structural, and this dispatch cannot make it. `--samples-delivery` and a
+   free-text `--tool-uses` now record what actually happened, verbatim, in every record.
+
+The refusals are now pinned by `tests/unit/test_attester_file.py` (13 tests), each asserting both
+directions:
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m pytest tests/unit/test_attester_file.py -q -p no:randomly
+13 passed in 0.25s
+
+$ PYTHONPATH=. .venv/bin/python3 -m pytest tests/unit -m "not slow" -q -p no:randomly
+344 passed, 2 deselected, 1 warning in 59.89s      (331 baseline + 13 new)
+```
+
+Two of those tests were *written wrong first and caught by running them* — the templated-batch case
+needed four colliding verdicts, not two, because the threshold is a maximum of 3. The negative
+control `test_three_shared_skeletons_are_allowed` pins that boundary from the other side and asserts
+`_MAX_ATTESTER_SKELETON_CLUSTER == 3`, so lowering the threshold now costs a visible test diff.
+
+**Known limitation, stated so the next agent keeps looking:** blindness in this run rests on the
+prompt contract alone. The forbidden-path list was given verbatim, but the Attesters had tool access
+and nothing structurally prevented a forbidden read. `blindness.tool_uses_by_attester` in every
+record filed today says so in full rather than asserting a clean `0`.
