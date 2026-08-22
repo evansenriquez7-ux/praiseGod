@@ -7322,3 +7322,73 @@ pytest tests/unit: 322 passed, 2 deselected
 ```
 
 The residual 18 and 34 are `zero_identity` items, which are the MATATAG zero property and belong there.
+
+---
+
+## Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path
+
+Variant B re-applied. Its two blockers (the O(ceiling²) pool, the zero factor in the default table
+pool) were fixed in tick 21, and the acceptance test tick 19 set now passes:
+
+```
+mat_g1_na_q1_9   ceiling=20     distinct=20   p50=13    max=20     breach=no
+mat_g1_na_q2_6   ceiling=100    distinct=63   p50=78    max=99     breach=no
+mat_g3_na_q2_3   ceiling=10000  distinct=129  p50=7091  max=9991   breach=no
+```
+
+`mat_g1_na_q1_9`'s competency reads *"addition with sums up to 20"*. Before tick 19 it produced **two**
+distinct answers, ever — 2 and 3. It now produces all twenty.
+
+### A wrong hypothesis, withdrawn rather than shipped
+
+The sweep still failed `mat_g2_na_q3_0` (18) and `mat_g2_na_q3_1` (54) on `GridArea cols=0`. I guessed
+the cause was `zero_identity` reaching a pinned array formatter and wrote a guard in the orchestrator
+for it. **The guard never fired.** The hypothesis was wrong, so it was removed rather than left in the
+tree with a comment describing a failure that had never been reproduced.
+
+### Then reproduced properly, by replaying the matrix's own sweep
+
+```
+array_grid_read: 90 assignments, empty-grid generations: 9
+  {'table': '2', 'structure': 'result_unknown', 'number_type': 'single_digit',
+   'context': 'pure', 'task_type': 'equal_groups'}  seed=44 -> rows=4 cols=0 key='B'
+array_grid_set:  90 assignments, empty-grid generations: 9
+```
+
+The cause is four lines in `multiplication.py`:
+
+```python
+if context == "word_problem":
+    if b <= 0: b = rng.randint(2, 10)
+    if a <= 0: a = rng.randint(2, 10)
+```
+
+The zero-factor repair runs **only for word problems**, and the array formatters are pure-only
+(`array_grid_read` declares `context: ["pure"]`). The one context that draws a picture is the one
+context the repair skipped. A zero operand is degenerate for every task_type reaching that tail —
+`zero_identity` builds its own `(0, other)` pair and returns far above — so the gate was the bug, not
+the repair.
+
+**This is the third distinct zero-factor path**, after the ceiling floor (tick 19) and the default
+table pool (tick 21). Each was hidden behind the one before it, and each surfaced only because
+something pushed on the range.
+
+```
+empty-grid generations across the swept assignments: 9 -> 0 on both nodes
+all 8 multiplication nodes: Total Failures Observed: 0
+zero_identity still yields a=0 b=10 result=0
+```
+
+### The sweep
+
+```
+52 affected nodes, matrix-checked individually with per-node timing
+clean: 50 of 51
+the one failure is mat_g3_na_q3_1 — the tree's known pre-existing matrix failure
+mat_g3_na_q2_3: 73s (it spun for 141 CPU-minutes in tick 20)
+slowest: mat_g2_na_q1_9 101s, mat_g3_na_q2_1 82s
+pytest tests/unit: 322 passed, 2 deselected
+```
+
+Content moves on 52 nodes, so their reviews and attestations go stale — correctly, and they were
+already stale from tick 19.

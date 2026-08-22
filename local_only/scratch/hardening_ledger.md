@@ -4385,3 +4385,48 @@ run_all EXIT 1 — matrix 150/151, §5 498, §6 759, both contract checks PASS
 5. Open content, all Attester-found: noun-number agreement in four stems; zero-addend items; a
    distractor exactly key+10 on all 20 sampled items; 3-of-10 identical stems; `mat_g2_na_q3_1`'s
    undrawn number line; the `pictures` routing defect; the `orally` escalation.
+
+---
+
+## 2026-08-22 — tick 22 — the range fix lands after three attempts and three real bugs
+
+**Variant B is in.** `mat_g1_na_q1_9` — *"addition with sums up to 20"* — now produces **all 20
+distinct sums** (p50=13, max=20, no breach). Before tick 19 it produced two, ever.
+
+The three attempts were not three tries at one fix; they were one fix blocked by three genuine
+pre-existing defects that only surfaced when something pushed on the range:
+
+```
+tick 19  sampled ceiling      -> reached 17 but p50=2; Attester correctly said NOT_PROVIDED again
+tick 20  variant B            -> reverted: hung a node, appeared to break two more
+tick 21  O(ceiling^2) pool    -> fixed (50M pairs at ceiling 10000; 0/240 renders moved)
+tick 21  zero in table pool   -> fixed (21/400 empty grids were LIVE on the student path)
+tick 22  zero-factor repair gated on context == "word_problem" -> fixed
+tick 22  variant B            -> lands clean
+```
+
+**A wrong hypothesis was withdrawn rather than shipped.** I guessed `zero_identity` was reaching a
+pinned array formatter and wrote an orchestrator guard for it; the guard never fired, so it was removed
+rather than left in the tree with a comment describing a failure never reproduced. The real cause was
+found by replaying the matrix's own assignment sweep instead of inventing profiles.
+
+```
+52-node sweep: 50 of 51 clean; the one failure is the known pre-existing mat_g3_na_q3_1
+mat_g3_na_q2_3: 73s (141 CPU-minutes in tick 20) · pytest 322 passed
+```
+
+**Both movements:** see the run_all line for this tick; coverage **143/787** flat — this tick was
+content, not attestation.
+
+**Next tick should:**
+1. **Re-attest `mat_g1_na_q1_9`.** `sums_up_to_20` is CONTRADICTED and the fix's whole purpose was to
+   close it. Same fixed seeds; do not reselect them. `mat_g1_na_q2_6` too.
+2. **§1G seed reachability.** A defect reachable on 5% of student-path seeds sat behind a green node in
+   tick 21 because the matrix's five seeds missed it. This would *raise* findings — verify the reading
+   before editing, as §6F was.
+3. **The ~50-node re-review programme.** Content has now settled, so this is finally worth doing.
+   §6F honours supersession, so re-reviews clear rather than accumulate.
+4. `mat_g3_na_q3_1` — maintainer's call, both readings in tick 19's entry.
+5. Open content, all Attester-found: noun-number agreement in four stems; zero-addend items; a
+   distractor exactly key+10 on all 20 sampled items; 3-of-10 identical stems; `mat_g2_na_q3_1`'s
+   undrawn number line; the `pictures` routing defect; the `orally` escalation.
