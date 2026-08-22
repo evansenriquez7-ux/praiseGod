@@ -124,6 +124,7 @@ class PracticeOrchestrator:
 
         # Single source of truth for normalizing scalars (0.0-1.0) into proper dimension values
         axes = get_axes_for_concept(primary_concept)
+        _scope_axis_bound = False
         for axis in axes:
             if axis.get("dim_type") == "continuous":
                 axis_name = axis["name"]
@@ -162,9 +163,42 @@ class PracticeOrchestrator:
                     # rather than widen curriculum coverage.
                     bound = competency_bounds.get(axis_name)
                     if isinstance(bound, tuple) and len(bound) == 2:
-                        local_difficulty_profile[axis_name] = rng.random()
+                        # 1.0, not a sample. The competency's ceiling IS the scope
+                        # MATATAG grants, so the candidate pool should be the whole of
+                        # it; where the pupil lands inside it is what difficulty decides.
+                        #
+                        # Sampling the ceiling instead (the first version of this fix)
+                        # put a uniform scalar through a LOGARITHMIC mapping, which
+                        # yields log-uniform ceilings -- mostly small ones. It lifted
+                        # mat_g1_na_q1_9 from 2 distinct answers to 11 but left p50=2,
+                        # p90=5 on a ceiling of 20, and a blind Attester ruled `sums up
+                        # to 20` NOT_PROVIDED a second time, correctly: "bridging-to-ten
+                        # and the 10-to-20 region are wholly untested".
+                        local_difficulty_profile[axis_name] = 1.0
+                        _scope_axis_bound = True
                     else:
                         local_difficulty_profile[axis_name] = axis.get("default", 0.5)
+
+        # With the scope axis opened to the full competency range, `number_difficulty`
+        # is what places the item inside it -- and on the student path nothing ever set
+        # it either, so every problem a pupil ever saw was generated at the catalog
+        # default of 0.5. Vary it per seed so a practice set spans the range the
+        # competency names.
+        #
+        # This does NOT fight the mastery engine. The block above only fills axes ABSENT
+        # from the profile, so a caller-supplied number_difficulty is left untouched;
+        # this changes behaviour only where nothing specified a difficulty at all, which
+        # today is every student-path request (practice_router.py passes no
+        # difficulty_profile). Confined to nodes carrying a competency-bound scope axis:
+        # whether a frozen 0.5 is also wrong for the rest of the tree is a larger
+        # question, named in the ledger rather than answered by a side effect.
+        #
+        # Two things had to land before this was safe, and both are now in:
+        # addition.py's candidate pool is bounded (it was O(ceiling^2) and spun for 141
+        # CPU-minutes at a ceiling of 10 000), and the zero factor is out of
+        # multiplication's default table pool (it rendered empty grids).
+        if _scope_axis_bound and "number_difficulty" not in (difficulty_profile or {}):
+            local_difficulty_profile["number_difficulty"] = rng.random()
 
         for axis in axes:
             if axis.get("dim_type") == "continuous" and axis["name"] in local_difficulty_profile:
