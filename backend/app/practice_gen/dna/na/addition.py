@@ -26,6 +26,13 @@ from backend.app.practice_gen.dna.base import (
 # g1: sums up to 20 (easy half), then sums up to 100 no regroup (harder half)
 # g2: operands up to 1000, regrouping expected
 # g3: operands up to 10000
+# Ceiling on how many (a, b) pairs the putting_together branch will materialise. The
+# pool is only ever fed to generate_pair_by_window, which scores each candidate, so its
+# size is a compute budget rather than a curriculum quantity. 40 000 is the exhaustive
+# size at max_result ~= 283, chosen so the sampled branch keeps the same pool density as
+# the enumerated one and the two behave alike where they meet.
+_MAX_CANDIDATE_PAIRS = 40_000
+
 _PARAM_BOUNDS: Dict[str, Dict[str, Any]] = {
     "g1": {"a": (1, 50),  "b": (1, 50),  "max_result": 100},
     "g2": {"a": (1, 500), "b": (1, 500), "max_result": 1000},
@@ -657,10 +664,51 @@ def generate_params(
         }
 
     if task_type == "putting_together":
+        # Enumerating every (a, b) with a + b <= max_result is O(max_result^2), and
+        # nothing bounded max_result. At mat_g3_na_q2_3's competency ceiling of 10 000
+        # that is 50 000 000 pairs -- built, then scored one by one by
+        # generate_pair_by_window. Measured: `validate_matrix --node mat_g3_na_q2_3`
+        # spends minutes here on the committed tree (its §1A sweep drives the scalar to
+        # 1.0, which is the ceiling), and an experiment that opened the ceiling on the
+        # student path left the node spinning at 100% CPU for 141 minutes before it was
+        # killed. It was never a deadlock -- just arithmetic nobody had bounded.
+        #
+        # Bound the POOL, not the ceiling: a ceiling is curriculum ground truth and must
+        # not be trimmed to make the code fast. Below the limit, enumerate exactly as
+        # before, so every node whose pool already fitted is bit-for-bit unchanged.
+        # Above it, sample uniformly from the same triangle by rejection -- a and b are
+        # drawn from the full range and the pair is kept only if a + b <= max_result, so
+        # the acceptance rate is ~1/2 and the sample carries the same score distribution
+        # generate_pair_by_window would have seen. `rng` is the seeded generator, so
+        # determinism holds (Protocol 6).
+        #
+        # This is the shape subtraction.py already uses at its own large-ceiling branch
+        # ("attempts" with a cap, exhaustive only as a fallback); addition.py never got
+        # it. missing_number.py guards the same loop with `if max_result <= 100`.
         candidates = []
-        for a_cand in range(1, max_result):
-            for b_cand in range(1, max_result - a_cand + 1):
+        if max_result * (max_result - 1) // 2 <= _MAX_CANDIDATE_PAIRS:
+            for a_cand in range(1, max_result):
+                for b_cand in range(1, max_result - a_cand + 1):
+                    candidates.append((a_cand, b_cand))
+        else:
+            hi = max_result - 1
+            seen_pairs = set()
+            attempts = 0
+            while len(candidates) < _MAX_CANDIDATE_PAIRS and attempts < _MAX_CANDIDATE_PAIRS * 4:
+                attempts += 1
+                a_cand = rng.randint(1, hi)
+                b_cand = rng.randint(1, hi)
+                if a_cand + b_cand > max_result or (a_cand, b_cand) in seen_pairs:
+                    continue
+                seen_pairs.add((a_cand, b_cand))
                 candidates.append((a_cand, b_cand))
+            if not candidates:
+                raise RuntimeError(
+                    f"generate_params (addition, task_type=putting_together): sampled "
+                    f"{attempts} times without finding one pair under max_result="
+                    f"{max_result} (grade={grade}, seed={seed}). The ceiling admits no "
+                    f"valid pair, which is a bounds defect, not a sampling one."
+                )
         if "regrouping" in profile:
             reg_level = profile.get("regrouping", "none")
             if reg_level is False:

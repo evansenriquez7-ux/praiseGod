@@ -7205,3 +7205,70 @@ capability findings 764 -> 759   (STALE 13 -> 8, CONTRADICTED unchanged at 32)
 
 CONTRADICTED is unchanged, which is the check that matters: this cleared bookkeeping noise, not a
 single verdict. Contract row added in the same commit (Protocol 7).
+
+---
+
+## Tick 21 — 2026-08-22 — the candidate pool was quadratic in a curriculum ceiling
+
+Tick 20's range experiment left `mat_g3_na_q2_3` spinning at 100% CPU for 141 minutes. It was never a
+deadlock: `addition.py`'s `putting_together` branch enumerates every `(a, b)` with `a + b <=
+max_result`, which is O(max_result²), and nothing bounded it.
+
+```
+mat_g1_na_q1_9: ceiling=20     pairs enumerated =        200
+mat_g3_na_q2_3: ceiling=10000  pairs enumerated = 50,000,000
+```
+
+**This already costs the committed tree.** `validate_matrix --node mat_g3_na_q2_3` on HEAD, with no
+experiment applied, was still running past **3m20s** — its §1A sweep drives the scalar to 1.0, which is
+the ceiling. The pinned default was capping the student path at 250 and hiding the rest.
+
+### All instances (Protocol 2)
+
+Four nested candidate builders exist across the number-and-algebra DNAs. Only one is unbounded:
+
+```
+addition.py:661        UNBOUNDED over max_result            <- the defect
+subtraction.py:418     bounded: min(max_minuend, 99), min(a, max_sub)
+subtraction.py:477     rejection sampling with an attempt cap  <- the precedent
+missing_number.py:247  guarded by `if max_result <= 100`
+```
+
+`subtraction.py` had already solved exactly this problem in its own large-ceiling branch. `addition.py`
+never got it.
+
+### Bound the pool, never the ceiling
+
+A ceiling is curriculum ground truth and must not be trimmed to make code fast. Below a pool limit the
+enumeration is unchanged; above it, pairs are drawn uniformly from the same triangle by rejection
+(`a`, `b` from the full range, kept only if `a + b <= max_result`, ~1/2 acceptance), so the sample
+carries the same score distribution `generate_pair_by_window` would have seen. `rng` is the seeded
+generator, so determinism holds.
+
+```
+  max_sum=20     a=2     b=9     sum=11     deterministic=True  0.003s
+  max_sum=100    a=11    b=67    sum=78     deterministic=True  0.066s
+  max_sum=283    a=38    b=178   sum=216    deterministic=True  0.558s
+  max_sum=1000   a=59    b=339   sum=398    deterministic=True  0.863s
+  max_sum=10000  a=3779  b=5504  sum=9283   deterministic=True  0.888s
+```
+
+### It moves no content at all
+
+The student path's pinned ceiling tops out at 250, i.e. 31 000 pairs — under the 40 000 limit — so the
+sampled branch never fires there today. Verified rather than argued, across six nodes × 40 seeds:
+
+```
+  mat_g1_na_q1_9    changed 0/40      mat_g2_na_q1_9    changed 0/40
+  mat_g1_na_q2_6    changed 0/40      mat_g3_na_q2_1    changed 0/40
+  mat_g1_na_q1_7    changed 0/40      mat_g3_na_q2_3    changed 0/40
+  TOTAL changed 0/240
+```
+
+No review and no attestation goes stale. This is a pure performance fix that unblocks the range work.
+
+```
+mat_g3_na_q2_3 matrix:  >3m20s (unfinished)  ->  47s, Total Failures Observed: 0
+mat_g3_na_q2_1: 0 failures (63s)   mat_g3_na_q2_2: 0 (4s)   mat_g2_na_q1_9: 0 (37s)
+pytest tests/unit: 322 passed, 2 deselected
+```
