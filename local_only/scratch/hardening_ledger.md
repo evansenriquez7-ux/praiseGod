@@ -4322,3 +4322,66 @@ above.
 5. Open content, all Attester-found: noun-number agreement in four stems; zero-addend items; a
    distractor exactly key+10 on all 20 sampled items; 3-of-10 identical stems;
    `mat_g2_na_q3_1`'s undrawn number line; the `pictures` routing defect; the `orally` escalation.
+
+---
+
+## 2026-08-22 — tick 21 — the pool was quadratic, and a zero factor was reaching students
+
+**(a) `addition.py`'s candidate pool was O(ceiling²).** The user flagged the tick-20 sweep as hung; it
+was spinning, not blocked — `putting_together` enumerates every `(a, b)` with `a + b <= max_result`,
+which at `mat_g3_na_q2_3`'s ceiling of 10 000 is **50 000 000 pairs**, each then scored by
+`generate_pair_by_window`. Judge liveness by the process tree's CPU, never the parent's: 141 minutes at
+100%.
+
+Protocol 2 — of the four nested candidate builders in the `na` DNAs, only this one was unbounded.
+`subtraction.py:477` already used rejection sampling with an attempt cap; `missing_number.py:247` guards
+with `if max_result <= 100`. **Bound the pool, never the ceiling** — a ceiling is curriculum ground truth.
+
+```
+max_sum=10000: unbounded -> 0.888s, deterministic
+mat_g3_na_q2_3 matrix: >3m20s unfinished -> 47s, 0 failures
+content moved: 0 of 240 renders (6 nodes x 40 seeds) -> nothing goes stale
+```
+
+It already cost the committed tree — §1A sweeps the scalar to 1.0, which is the ceiling.
+
+**(b) Tick 20 blamed variant B for the zero factor. That was wrong.** A zero factor is reachable at
+`number_difficulty=0.5`, the current default, so it was **already live on the student path**:
+
+```
+mat_g2_na_q3_0: 21/400 empty grids · 112/400 items whose answer is 0
+mat_g2_na_q3_1: 12/400 empty grids ·  94/400 items whose answer is 0
+```
+
+An empty grid renders *"Look at the shaded shape. How many squares are shaded in all?"* with rows=2,
+cols=0. **§1G is the check for cols=0 and it reported PASS** — its seed set never landed on one of the
+21. The gap is seed reachability, not the assertion; recorded, not fixed.
+
+Root cause was a comment whose justification had expired: `_TABLE_SETS["2_3_4_5_10"]` kept 0 for a
+`max_product` floor "as low as 1", and tick 19 floored every node on that pool at 4 or more. 0 removed,
+1 kept. Zero content is not lost — `zero_identity` builds `(0, other)` explicitly.
+
+```
+empty grids 21 -> 0 and 12 -> 0 ; zero-answer items 112 -> 18 and 94 -> 18 (all zero_identity)
+all 8 multiplication nodes: 0 failures · pytest 322 passed
+run_all EXIT 1 — matrix 150/151, §5 498, §6 759, both contract checks PASS
+```
+
+**Both movements:** findings §5 497 → **498**, §6 759 → **759** (one attestation newly STALE,
+`batch018_mat_g3_na_q3_4`, correctly — its content moved); coverage **143/787** flat.
+
+**Next tick should:**
+1. **Re-land variant B.** Both blockers are now gone — the pool is bounded and the zero factor is out
+   of the pool. Open the competency-bound scope axis to 1.0 and vary `number_difficulty` per seed.
+   Re-run the 52-node sweep and confirm `mat_g3_na_q2_3` finishes and `mat_g2_na_q3_*` stay at 0.
+   Acceptance test: `sums_up_to_20` on `mat_g1_na_q1_9`, which produced **all 20 distinct sums** under
+   variant B against 6 today.
+2. **§1G seed reachability.** A defect reachable on 5% of student-path seeds sat behind a green node
+   because the matrix's seeds missed it. Options: widen the seed set for visual-payload checks, or
+   sweep a larger seed range for §1G only. This is a harness change that would *raise* findings —
+   verify the reading before editing, as with §6F.
+3. Then the ~50-node re-review programme (now 498 stale reviews). Gated on 1 settling the content.
+4. `mat_g3_na_q3_1` — the tree's only matrix failure; both readings in tick 19's entry; maintainer's call.
+5. Open content, all Attester-found: noun-number agreement in four stems; zero-addend items; a
+   distractor exactly key+10 on all 20 sampled items; 3-of-10 identical stems; `mat_g2_na_q3_1`'s
+   undrawn number line; the `pictures` routing defect; the `orally` escalation.
