@@ -292,67 +292,33 @@ Ask the Attester to report any content problem it notices — that is where the 
 can exhibit a capability the student path can never reach); writing a verdict yourself; batching
 more than 25 clauses.
 
-> **§6F cannot tell an earned verdict from a fabricated one. Read this before filing any batch.**
+> **§6G reads your reasoning. Know what it checks before you file a batch.**
 >
-> §5 carries three structural gates against fabricated reviews — verbatim-reuse, rationale-skeleton
-> clustering (`_MAX_SKELETON_CLUSTER = 3`), quote provenance, and reviewer plurality
-> (`_MAX_NODES_PER_REVIEWER = 25`). **§6F carries none of them.** It checks JSON validity, the verdict
-> enum, freshness (re-rendering `packet.samples_judged`), and UNATTESTED/CONTRADICTED. The record's
-> `role` and `blindness` fields are never read by any validator, and `reasoning` is read exactly once
-> — to quote it back inside a CONTRADICTED message.
+> §6F only asks whether a verdict exists and whether the content it judged still renders — a
+> templated all-PROVIDED batch used to sail straight through it and raise coverage while proving
+> nothing. That is how 151 fabricated reviews beat §5's freshness gate. **§6G closes it**, and it
+> runs inside Step 2's measurement, so a bad batch is loud the moment you re-measure:
 >
-> §5's own history is what that costs: freshness alone passed all 151 fabricated reviews, and 115 of
-> them quoted stems appearing nowhere in their own packets. A templated all-PROVIDED batch would
-> sail through §6F today and raise coverage while proving nothing.
+> - **reasoning-skeleton clustering** (max 3) — node IDs, quoted spans and digits stripped, one
+>   sentence frame filled in per clause collapses to a single string. A form, not judgement.
+> - **seed provenance** — every seed in `seeds_showing_it` must exist in that record's own
+>   `packet.samples_judged`, and a `PROVIDED` verdict must name at least one.
+> - **batch size** (max 25) — one record is one blind dispatch.
+> - **empty reasoning** is a hard fail. A verdict without reasoning is a vote, and the contract does
+>   not count votes.
 >
-> So until the gate exists, the discipline is yours to keep and to evidence:
+> So: dispatch genuinely, one Attester per batch, and let each write its own reasoning. If §6G fires,
+> the batch is the bug — rebuild and re-dispatch it. **Never** edit a record to satisfy the check,
+> and never lower `_MAX_ATTESTER_SKELETON_CLUSTER`; both thresholds sit in `validate_capability.py`
+> precisely so weakening one is a visible diff.
 >
-> - **A distinct attester identity per batch.** Never stamp one identity across the campaign.
-> - **Run the interim self-audit over every record on disk before you commit**, and paste its output
->   in the evidence entry. A rising cluster count or an unexplained phantom quote fails the batch —
->   rebuild it, do not file it.
-
-```bash
-PYTHONPATH=. .venv/bin/python3 - <<'PY'
-import json, glob, collections
-from backend.app.practice_gen.validation.validate_judgment import (
-    _rationale_skeleton, _QUOTE_RE, _MIN_QUOTE_LEN)
-skel = collections.Counter(); byident = collections.Counter(); phantom = []; total = 0
-for f in sorted(glob.glob('validation_reports/attestation/*.json')):
-    d = json.load(open(f)); pkt = d.get('packet', {}) or {}
-    corpus = " ".join(str(s.get('question_text','')) + " " + str(s.get('correct_answer',''))
-                      for s in (pkt.get('samples_judged') or [])).lower()
-    ident = f"{d.get('role')}|{json.dumps(d.get('blindness'), sort_keys=True)}"
-    for v in d.get('verdicts', []):
-        total += 1; byident[ident] += 1
-        r = str(v.get('reasoning',''))
-        skel[_rationale_skeleton(r)] += 1
-        allowed = corpus + " " + str(v.get('clause','')).lower()
-        for _q, span in _QUOTE_RE.findall(r):
-            s = span.strip().lower()
-            if len(s) >= _MIN_QUOTE_LEN and s not in allowed:
-                phantom.append((d.get('batch'), v.get('node_id'), v.get('capability_id'), span[:70]))
-print(f"verdicts audited              : {total}")
-print(f"distinct reasoning skeletons  : {len(skel)}")
-print(f"largest skeleton cluster      : {skel.most_common(1)[0][1]}   (§5 caps at 3)")
-print(f"distinct attester identities  : {len(byident)}   largest covers {byident.most_common(1)[0][1]}")
-print(f"phantom-quote candidates      : {len(phantom)}")
-for p in phantom[:10]: print("   -", p)
-PY
-```
-
-> This audit's corpus is **narrower than §5's** — it holds stems and answers, not options, formatter
-> names, or the node's competency text — so a flagged span is a *candidate*, not a proven phantom.
-> Adjudicate each one by reading it: an Attester legitimately puts descriptions in quotes ("share N
-> among M"), and that is not a fabricated citation. Treat a jump in the count as the signal, not the
-> absolute number.
->
-> **This is an interim, and an agent auditing itself is the weaker arrangement by construction.** The
-> durable fix is to port §5's three gates onto §6F as a contract check, shipped the way §6D and §6F
-> were: `pgen_contract.md` row + `CONTRACT_CHECKS` entry + unit tests + a planted mutation proved
-> caught by name. **Do not build that check inside an unattended run.** An agent authoring the gate
-> that constrains its own output is the exact conflict of interest behind all three past defeats;
-> that unit is done attended, or not by this loop.
+> **What §6G still cannot see.** §5's quote provenance is deliberately not ported: it fires on 16 of
+> 143 honest verdicts, because an Attester asked what would flip its verdict writes that hypothesis
+> in quotes. A review's rationale quotes to cite; an attestation's reasoning quotes to hypothesize.
+> So a verdict may still quote a stem it was never shown, and nothing catches it. Closing that needs
+> a record field separating citation from hypothesis — a named Tick F item, and **not** something to
+> build inside an unattended run: an agent authoring the gate that constrains its own output is the
+> conflict of interest behind all three past defeats.
 
 ---
 
