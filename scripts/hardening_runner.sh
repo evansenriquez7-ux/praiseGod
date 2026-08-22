@@ -19,7 +19,16 @@
 #     report red is a monitor that reports green.
 #   * It does not default to --dry-run. Dry run is opt-in, for testing this script.
 #
-# Stop it at any time by creating the stop file; the runner exits before the next tick:
+# When this run ends
+# ------------------
+# The run ends when `local_only/scratch/HARDENING_DONE` exists -- a tick writes it only
+# after run_all exits 0 twice cleanly and the green audit passed. Nothing else ends it:
+# not a usage limit (it probes until the window reopens, however long that takes), not a
+# failing tick (it backs off and retries), not a supervisor that returns something
+# unexpected. A loop that gives up on transient trouble is a loop that reports green by
+# being absent.
+#
+# To stop it by hand at any time:
 #   touch local_only/scratch/HARDENING_STOP
 #
 set -uo pipefail
@@ -31,16 +40,23 @@ PY="$REPO/.venv/bin/python3"
 SUPERVISOR="$REPO/scripts/hardening_supervisor.py"
 RUN_DIR="$REPO/local_only/scratch/runner"
 STOP_FILE="$REPO/local_only/scratch/HARDENING_STOP"
+# The one terminal condition. A tick writes this only after run_all has exited 0 twice
+# with no edits between AND the green audit passed -- exit 0 has been reached dishonestly
+# three times, so the audit is part of the condition, not an optional extra.
+DONE_FILE="$REPO/local_only/scratch/HARDENING_DONE"
 LOG="$RUN_DIR/runner.log"
 
-TICK_PROMPT="${HARDENING_TICK_PROMPT:-Read local_only/scratch/hardening_fix_loop.md and run one tick.}"
+TICK_PROMPT="${HARDENING_TICK_PROMPT:-Read local_only/scratch/hardening_prompt.md and run one tick.}"
 MODEL="${HARDENING_MODEL:-opus}"
 TICK_CAP_SEC="${HARDENING_TICK_CAP_SEC:-5400}"      # 90 min: 50 min run_all + working room
 IDLE_SLEEP_SEC="${HARDENING_IDLE_SLEEP_SEC:-1800}"  # NOTHING_TO_DO -> re-check in 30 min
 BUSY_SLEEP_SEC="${HARDENING_BUSY_SLEEP_SEC:-300}"   # IN_FLIGHT -> someone else is working
-PROBE_SLEEP_SEC="${HARDENING_PROBE_SLEEP_SEC:-900}" # limit backoff: probe every 15 min
-MAX_PROBES="${HARDENING_MAX_PROBES:-24}"            # 6 h of probing before giving up
-MAX_CONSEC_ERR="${HARDENING_MAX_CONSEC_ERR:-3}"     # circuit breaker
+PROBE_SLEEP_SEC="${HARDENING_PROBE_SLEEP_SEC:-2700}" # limit backoff: probe every 45 min, forever
+# Consecutive tick failures do NOT end the run. They slow it down, so a genuinely broken
+# state (bad binary, corrupt tree) idles instead of spinning a tick every 20 seconds and
+# burning the usage window for nothing. Exponential, capped.
+ERR_SLEEP_MIN="${HARDENING_ERR_SLEEP_MIN:-60}"
+ERR_SLEEP_MAX="${HARDENING_ERR_SLEEP_MAX:-1800}"
 DRY_RUN="${HARDENING_DRY_RUN:-0}"
 # 0 = run until stopped. Any positive N exits cleanly after N ticks, which is how
 # you smoke-test the loop without committing to an unattended run. Bounding ticks
@@ -49,7 +65,9 @@ DRY_RUN="${HARDENING_DRY_RUN:-0}"
 MAX_TICKS="${HARDENING_MAX_TICKS:-0}"
 
 # Exit codes from hardening_supervisor.py
-IN_FLIGHT=0; RESUME=10; NOTHING_TO_DO=20; NEEDS_HUMAN=30; HUNG_UNREAPED=40
+# NEEDS_HUMAN=30 is retired (2026-08-23). No verdict ends the run on a judgement call;
+# see hardening_supervisor.py's docstring. A stray 30 now falls to the catch-all below.
+IN_FLIGHT=0; RESUME=10; NOTHING_TO_DO=20; HUNG_UNREAPED=40
 
 mkdir -p "$RUN_DIR"
 
@@ -120,32 +138,43 @@ probe_window_open() {
     [[ "$verdict" == "SUCCESS" ]]
 }
 
+# A usage limit is never a reason to end the run -- it is a pause. Probe until the window
+# reopens, for as long as that takes. Returns 1 only when STOP/DONE appeared meanwhile, and
+# the caller's next loop iteration exits on it.
 backoff_until_window_reopens() {
     local n=0
-    while (( n < MAX_PROBES )); do
+    while true; do
         n=$(( n + 1 ))
-        log "USAGE LIMIT: sleeping ${PROBE_SLEEP_SEC}s, then probe $n/$MAX_PROBES"
+        log "USAGE LIMIT: sleeping ${PROBE_SLEEP_SEC}s, then probe $n"
         sleep "$PROBE_SLEEP_SEC"
-        [[ -f "$STOP_FILE" ]] && { log "STOP file present during backoff"; return 1; }
+        [[ -f "$STOP_FILE" ]] && { log "STOP file appeared during backoff"; return 1; }
+        [[ -f "$DONE_FILE" ]] && { log "DONE file appeared during backoff"; return 1; }
         if probe_window_open; then
-            log "USAGE WINDOW REOPENED after $n probe(s) — resuming ticks"
+            log "USAGE WINDOW REOPENED after $n probe(s) ($(( n * PROBE_SLEEP_SEC / 60 )) min) — resuming"
             return 0
         fi
-        log "still limited (probe $n)"
+        log "still limited (probe $n, $(( n * PROBE_SLEEP_SEC / 60 )) min so far)"
     done
-    log "FATAL: still limited after $MAX_PROBES probes ($(( MAX_PROBES * PROBE_SLEEP_SEC / 3600 ))h)"
-    return 1
 }
 
 log "=========================================================="
 log "hardening runner starting | repo=$REPO"
 log "  model=$MODEL  tick_cap=${TICK_CAP_SEC}s  dry_run=$DRY_RUN  max_ticks=$MAX_TICKS"
 log "  prompt: $TICK_PROMPT"
-log "  stop with: touch $STOP_FILE"
+log "  ends on: $DONE_FILE (verified green) — nothing else"
+log "  stop by hand: touch $STOP_FILE"
 log "=========================================================="
 
-ticks=0; consec_err=0
+ticks=0; consec_err=0; err_sleep="$ERR_SLEEP_MIN"
 while true; do
+    if [[ -f "$DONE_FILE" ]]; then
+        log "=========================================================="
+        log "HARDENING_DONE present — verified green. Ending the run after $ticks tick(s)."
+        log "  $(head -c 300 "$DONE_FILE" 2>/dev/null | tr '\n' ' ')"
+        log "=========================================================="
+        exit 0
+    fi
+
     if [[ -f "$STOP_FILE" ]]; then
         log "STOP file present — exiting cleanly after $ticks tick(s)"
         exit 0
@@ -158,17 +187,17 @@ while true; do
         "$NOTHING_TO_DO")
             log "supervisor: NOTHING_TO_DO — sleeping ${IDLE_SLEEP_SEC}s"
             sleep "$IDLE_SLEEP_SEC"; continue ;;
-        "$NEEDS_HUMAN")
-            log "supervisor: NEEDS_HUMAN — stopping. A tick must not paper over this."
-            exit 30 ;;
         "$IN_FLIGHT")
             log "supervisor: IN_FLIGHT — work already running; sleeping ${BUSY_SLEEP_SEC}s"
             sleep "$BUSY_SLEEP_SEC"; continue ;;
         "$RESUME"|"$HUNG_UNREAPED")
             : ;;
         *)
-            log "supervisor: unexpected exit $verdict — stopping rather than guessing"
-            exit "$verdict" ;;
+            log "supervisor: unexpected exit $verdict — backing off ${err_sleep}s and retrying."
+            log "  The run does not end on this. If it repeats, the supervisor itself is the bug."
+            sleep "$err_sleep"
+            err_sleep=$(( err_sleep * 2 )); (( err_sleep > ERR_SLEEP_MAX )) && err_sleep=$ERR_SLEEP_MAX
+            continue ;;
     esac
 
     ticks=$(( ticks + 1 ))
@@ -190,18 +219,17 @@ while true; do
 
     case "$result" in
         SUCCESS)
-            consec_err=0 ;;
+            consec_err=0; err_sleep="$ERR_SLEEP_MIN" ;;
         LIMIT)
-            consec_err=0
-            backoff_until_window_reopens || { log "stopping: usage window did not reopen"; exit 1; } ;;
+            consec_err=0; err_sleep="$ERR_SLEEP_MIN"
+            # `continue` only fires if STOP/DONE appeared; the top of the loop exits on it.
+            backoff_until_window_reopens || continue ;;
         ERROR)
             consec_err=$(( consec_err + 1 ))
-            log "tick error $consec_err/$MAX_CONSEC_ERR; head of output:"
+            log "tick error (consecutive: $consec_err). The run does NOT end on errors. Head of output:"
             head -c 600 "$out" | tee -a "$LOG"; echo | tee -a "$LOG"
-            if (( consec_err >= MAX_CONSEC_ERR )); then
-                log "FATAL: $MAX_CONSEC_ERR consecutive failures — circuit breaker open, stopping"
-                exit 1
-            fi
-            sleep 120 ;;
+            log "backing off ${err_sleep}s before the next tick"
+            sleep "$err_sleep"
+            err_sleep=$(( err_sleep * 2 )); (( err_sleep > ERR_SLEEP_MAX )) && err_sleep=$ERR_SLEEP_MAX ;;
     esac
 done

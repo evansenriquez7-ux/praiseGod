@@ -39,16 +39,25 @@ ledger started lying.
 Exit codes
 ----------
   0   IN_FLIGHT      a healthy tick is running; do nothing
-  10  RESUME         stalled, interrupted, or idle with work outstanding -> run a tick
+  10  RESUME         stalled, interrupted, idle with work outstanding, or the capability
+                     contract itself is unevaluatable -> run a tick
   20  NOTHING_TO_DO  no work outstanding
-  30  NEEDS_HUMAN    inconsistent state a tick should not paper over
   40  HUNG_UNREAPED  hung processes found and left alone; re-run with --reap
 
-Why 40 is separate from 30: a hung process is routine and self-remediable -- the
-caller re-runs with --reap and continues. A contract that cannot be evaluated is
-not. Both were originally reported as NEEDS_HUMAN, which made "you did not pass a
-flag" indistinguishable by exit code from "something is genuinely wrong." A monitor
-whose red means two different things is the failure this repo keeps paying for.
+Why there is no NEEDS_HUMAN (retired 2026-08-23)
+------------------------------------------------
+There was a code 30, "inconsistent state a tick should not paper over", and its only
+trigger was an unevaluatable capability contract. On an unattended multi-day run that
+code was a kill switch: it ended the whole run over a broken import, and it legitimised
+the same shape of deferral one layer up ("this node is the maintainer's call"). Both are
+now handled by deciding instead of stopping. A contract that cannot be evaluated is a
+Class C repair and the tick's only unit; a contested reading of a competency is settled
+against MATATAG by the protocol's Rule 10 ladder and recorded as reversible.
+
+This does not leave the run unstoppable. Three consecutive failed ticks open the runner's
+circuit breaker, and that is an honest end -- reached by evidence -- rather than a
+pre-judged one. Code 40 stays separate because a hung process is routine and
+self-remediable: the caller re-runs with --reap and continues.
 """
 
 from __future__ import annotations
@@ -67,7 +76,7 @@ ATTEST = REPO / "validation_reports/attestation"
 JUDGMENT = REPO / "validation_reports/judgment"
 STATUS = REPO / "local_only/scratch/hardening_status.json"
 
-IN_FLIGHT, RESUME, NOTHING_TO_DO, NEEDS_HUMAN, HUNG_UNREAPED = 0, 10, 20, 30, 40
+IN_FLIGHT, RESUME, NOTHING_TO_DO, HUNG_UNREAPED = 0, 10, 20, 40
 
 # A process burning less than this fraction of a core, for longer than the grace
 # period, is hung rather than slow. A healthy run_all worker sits near 50%.
@@ -319,7 +328,12 @@ def main() -> int:
     elif dirty:
         verdict, why = RESUME, "working tree is dirty — a unit was interrupted mid-flight"
     elif findings is None:
-        verdict, why = NEEDS_HUMAN, "capability contract could not be evaluated"
+        # Not a stop condition. An unevaluatable contract is a Class C repair, and it is
+        # the tick's only unit -- Step 2 can measure nothing until it is fixed.
+        verdict, why = RESUME, (
+            "capability contract could not be evaluated -- CLASS C REPAIR is this tick's "
+            "only unit; Step 2 cannot measure anything until it is fixed"
+        )
     elif findings > 0:
         verdict, why = RESUME, f"{findings} capability finding(s) outstanding"
     else:
@@ -328,7 +342,7 @@ def main() -> int:
     status = {
         "checked_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
         "verdict": {IN_FLIGHT: "IN_FLIGHT", RESUME: "RESUME",
-                    NOTHING_TO_DO: "NOTHING_TO_DO", NEEDS_HUMAN: "NEEDS_HUMAN",
+                    NOTHING_TO_DO: "NOTHING_TO_DO",
                     HUNG_UNREAPED: "HUNG_UNREAPED"}[verdict],
         "why": why,
         "processes": {"healthy": healthy, "hung": hung, "killed": killed},
