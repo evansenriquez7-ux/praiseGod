@@ -347,6 +347,36 @@ def generate_params(
 
     task_type = profile.get("task_type")
 
+    # A competency can bind task_type to a SET of literal values, not just one:
+    # registry.py gives mat_g1_na_q1_9 and mat_g1_na_q2_6
+    # task_type=['putting_together', 'counting_up']. A list equals none of the branch
+    # strings below, so those nodes fell through EVERY task_type branch into the generic
+    # tail -- and the tail's candidate pool admits 0-operand pairs, while the
+    # putting_together and counting_up branches build theirs from range(1, ...) and
+    # cannot produce a zero at all.
+    #
+    # Measured on the student path, 300 seeds: mat_g1_na_q1_9 produced a zero addend in
+    # 23% of generations and returned task_type=None; mat_g1_na_q1_7, whose scope is the
+    # scalar 'models_strategies' and so resolves properly, produced 0%. Three separate
+    # blind Attesters flagged the result -- "Lola Caring has 0 leashes. A friend has 6
+    # leashes... the total is simply restated in the stem", an item that does not assess
+    # the competency it sits under. The zero property of addition is mat_g1_na_q1_8's
+    # competency ('properties'), not this one's.
+    #
+    # Resolve the set to one member per seed, exactly as the composite scalar scope
+    # 'models_strategies' is resolved immediately below. Same shape, same rng, same
+    # determinism. This is the tick-18 list-vs-scalar defect one layer down: there it was
+    # is_variant_supported comparing a whole list, here it is a branch chain doing the
+    # same.
+    if isinstance(task_type, (list, tuple)):
+        if not task_type:
+            raise ValueError(
+                f"generate_params (addition): empty task_type scope (grade={grade}, "
+                f"seed={seed}). A competency binding that produced no task type is a "
+                f"registry defect, not a generation choice."
+            )
+        task_type = task_type[rng.randrange(len(task_type))]
+
     if task_type == "models_strategies":
         task_type = rng.choice(["counting_up", "putting_together"])
 
