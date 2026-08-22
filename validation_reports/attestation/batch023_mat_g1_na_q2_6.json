@@ -1,0 +1,200 @@
+{
+  "batch": "batch023_mat_g1_na_q2_6",
+  "attested_at": "2026-08-22T12:40:00+08:00",
+  "role": "Attester",
+  "supersedes": "batch019_mat_g1_na_q2_6 (ruled STALE by §6F after commit f3382df0 changed the content; that record is retained, not edited)",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "validation_reports/, local_only/, docs/",
+      "the batch018/batch019 verdicts, or that this was a RE-attestation"
+    ],
+    "samples_passed_inline": true,
+    "tool_uses_by_attester": 0,
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q2_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Lola Caring has 0 leashes. A friend has 12 leashes. If they put all their leashes together, how many leashes do they have in all?",
+        "correct_answer": 12,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Ate Gab collected 46 pom-pom and 23 wristband at the auditorium. How many items did Ate Gab collect in total?",
+        "correct_answer": 69,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "There are 44 score cards in one basket and 11 score cards in another basket. How many score cards are there in all?",
+        "correct_answer": 55,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Start at 30. Count up 30 more. What number do you land on?",
+        "correct_answer": 60,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Gab has 40 sneakers. A friend has 15 sneakers. If they put all their sneakers together, how many sneakers do they have in all?",
+        "correct_answer": 55,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Kuya Chad collected 65 running shoes and 22 water bottle at the school track. How many items did Kuya Chad collect in total?",
+        "correct_answer": 87,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Start at 30. Count up 60 more. What number do you land on?",
+        "correct_answer": 90,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "There are 76 water bowls in one basket and 23 water bowls in another basket. How many water bowls are there in all?",
+        "correct_answer": 99,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "There are 17 volleyballs in one basket and 10 volleyballs in another basket. How many volleyballs are there in all?",
+        "correct_answer": 27,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Start at 30. Count up 30 more. What number do you land on?",
+        "correct_answer": 60,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        64,
+        78,
+        103,
+        118
+      ],
+      "reasoning": "Seven items pose a situation requiring computation -- \"There are 76 water bowls in one basket and 23 water bowls in another basket\" (seed 103). Seeds 57, 91 and 127 are bare procedures with no problem situation attached.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "orally",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "orally",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Every sample is delivered as written prose the pupil must read for themselves; there is no read-aloud script, no teacher prompt, and no marker distinguishing these from ordinary printed text.",
+      "action_taken": "STILL CONTRADICTED, unchanged in kind: the pipeline has no audio channel. Escalated to the maintainer with both readings -- is MATATAG's \"(given orally or in pictures)\" a delivery note to the teacher, or a required artifact?"
+    },
+    {
+      "capability_id": "pictures",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "pictures",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No sample carries a `VISUAL RENDERED` line, so nothing pictorial reaches the pupil. The stems name concrete objects -- \"leashes\", \"volleyballs\", \"water bowls\" -- but naming an object in words is not presenting a picture of it.",
+      "action_taken": "STILL CONTRADICTED. emoji_pictorial is registered and servable on both nodes but the student path never selects it. A routing defect; queued."
+    },
+    {
+      "capability_id": "addition",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All ten items combine two quantities into a total, by aggregation or by counting on -- \"Start at 3. Count up 16 more.\" (seed 91). Both are recognised Grade-1 addition structures under MATATAG.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "sum_up_to_100",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "sums up to 100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        118,
+        42,
+        64,
+        57,
+        127,
+        23,
+        78,
+        91,
+        103
+      ],
+      "reasoning": "The sums are 12, 69, 55, 60, 55, 87, 90, 99, 27, 60 -- none exceeds 100, and 99 sits right at the ceiling without crossing it. The mid-band is somewhat over-represented (four items land at 55-60, two of them identical), but the range is genuinely exercised rather than hugging one end.",
+      "action_taken": "Left registered; PROVIDED for a second consecutive batch, now on a much wider spread (batch019 reached 81 only via an 81+0 identity)."
+    },
+    {
+      "capability_id": "without_regrouping",
+      "node_id": "mat_g1_na_q2_6",
+      "clause": "without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Checking the ones column of every pair: 46+23 (6+3=9), 44+11 (4+1=5), 65+22 (5+2=7), 76+23 (6+3=9), 17+10 (7+0). No ones column reaches 10, so no carry is ever required, including the tightest case at seed 103 summing to 99.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}
