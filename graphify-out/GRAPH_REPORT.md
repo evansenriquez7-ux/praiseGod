@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-08-23)
 
 ## Corpus Check
-- 480 files · ~794,558 words
+- 480 files · ~794,655 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3678 nodes · 5779 edges · 316 communities (292 shown, 24 thin omitted)
+- 3678 nodes · 5779 edges · 317 communities (293 shown, 24 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 91 edges (avg confidence: 0.57)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ce0d64e7`
+- Built from commit: `3d79dac8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -314,6 +314,7 @@
 - [[_COMMUNITY_health|health]]
 - [[_COMMUNITY__combined_interests|_combined_interests]]
 - [[_COMMUNITY__combined_interests|_combined_interests]]
+- [[_COMMUNITY_2026-08-20 (tick 7) — The harness now runs its own tests|2026-08-20 (tick 7) — The harness now runs its own tests]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `QuestionContext` - 86 edges
@@ -342,7 +343,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (316 total, 24 thin omitted)
+## Communities (317 total, 24 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
@@ -758,7 +759,7 @@ Nodes (20): One reviewer identity may not stamp the whole tree.      Blind revie
 
 ### Community 103 - "Community 103"
 Cohesion: 0.06
-Nodes (35): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 7) — The harness now runs its own tests, 2026-08-20 (tick 9) — The evidence pipeline was lying, and I had filed verdicts on it, 2026-08-23 — §6G: an attestation must show its work (+27 more)
+Nodes (31): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2026-08-14 — "or vice versa" names two directions; the node was bound to one, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, 2026-08-23 — §6G: an attestation must show its work, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso) (+23 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.11
@@ -1282,7 +1283,7 @@ Nodes (14): _answer_leaks_into_stem(), _normalize_stem(), _option_in_stem(), Low
 
 ### Community 258 - "health"
 Cohesion: 0.40
-Nodes (5): 2026-08-14 — "or vice versa" names two directions; the node was bound to one, Step 1 said prove it doesn't already exist, and it did, The failing rationale, The other two pictograph FAILs, diagnosed but not fixed here, Verification
+Nodes (5): 2026-08-20 (tick 9) — The evidence pipeline was lying, and I had filed verdicts on it, The finding the fix bought: invalid banknotes reaching pupils, The lesson, Tick 8's reported defects, re-checked, Two defects, both in the evidence pipeline, both mine
 
 ### Community 259 - "generate_params"
 Cohesion: 0.05
@@ -1438,11 +1439,15 @@ Nodes (4): 2026-08-20 — §5 worker death: a silent unbounded wait in the last 
 
 ### Community 310 - "2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127"
 Cohesion: 0.50
-Nodes (4): 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, Content defects found unasked, The dominant shape of the failures, Why this tick was dispatches only
+Nodes (4): 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item, Defect 2 — object and unit drawn independently
 
 ### Community 311 - "run_batch"
 Cohesion: 0.67
 Nodes (3): Any, Generate a batch of varied practice problems and return them as dicts.      Args, run_batch()
+
+### Community 316 - "2026-08-20 (tick 7) — The harness now runs its own tests"
+Cohesion: 0.50
+Nodes (4): 2026-08-20 (tick 7) — The harness now runs its own tests, Proved, not assumed, What shipped, Why
 
 ## Knowledge Gaps
 - **1196 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+1191 more)
@@ -1456,7 +1461,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.034) - this node is a cross-community bridge._
 - **Why does `QuestionContext` connect `Community 50` to `generate_params`, `_get_available_formats`, `.axis_level_index`, `Community 138`, `Community 13`, `Community 18`, `_combined_interests`, `_combined_interests`, `Community 41`, `Community 51`, `Spine`, `Community 59`, `Community 60`, `get_gemini_models`, `Community 70`, `Community 77`, `Community 79`, `Community 92`, `Community 93`, `models.py`, `Community 95`, `Community 99`, `Community 100`, `Community 117`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`?**
   _High betweenness centrality (0.028) - this node is a cross-community bridge._
-- **Why does `Phase F — full `run_all` verification and three more regressions it caught — 2026-08-02` connect `Community 103` to `Queries`, `health`, `2026-08-13 — length_measurement: the largest FAIL cluster in the tree`, `fmt_ruler_measure.py`, `generate_params`, `missing_number.py`, `2026-08-19 — Hardening Unit 3: mutation coverage for §5 and §6`, `2026-08-21 (tick 17) — §2B was guarding one direction only`, `get_node_competency_bounds`, `SKILL.md`, `2026-08-20 — Tick C: `mat_g2_mg_q4_3` content defects fixed at root, and `explain` built`, `2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key`, `2026-08-19 — Hardening Unit 3: mutation coverage for §5 and §6`, `_get_available_formats`, `_normalize_stem`, `2026-08-14 — The blank landed on a given, not on the unknown`, `test_planted_mutation_bounds_only_provider_is_caught_by_name`, `test_attestation_verdict_must_be_binary`, `Community 36`, `Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path`, `run_batch`, `SKILL.md`, `2026-08-20 — §5 worker death: a silent unbounded wait in the last gate`, `2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127`, `matatag_loader.py`, `validate_capability.py`, `fractions.py`, `fmt_array_grid.py`, `fmt_ordering.py`, `2026-08-12 — Tick C cluster 1c: two repeated-addition competencies bound identically`, `get_interest_themes`, `test_semantic_leak_guards.py`, `test_semantic_leak_guards.py`, `run_audit`, `get_interest_themes`, `generate_params`, `models.py`, `get_node_competency_bounds`, `2026-08-14 — The blank landed on a given, not on the unknown`, `2026-08-12 — Tick C cluster 1: mass/capacity unit axis never bound (6 nodes)`, `RedisDict`, `2026-08-12 — Tick C cluster 1d: array formatters unreachable on the node that names arrays`, `2026-08-13 — The g3_mg_q1 area cluster: four siblings, one unbound key (Tick C)`, `health`, `get_engine`, `validate_compat.py`, `_gen_g2_na_q1_numbers`, `_combined_interests`, `Ground Rule 2: Spec Corrections & Baseline Fixes`, `2026-08-13 — The tiling word problem had no determinate answer (Tick C)`, `symmetry_slides.py`, `Anti-Patterns`, `2026-08-20 — §6F: an Attester verdict that nothing enforces is not a check`, `Part 3 — Concrete restructuring of the current docs/`, `2026-08-19 — Hardening Unit 1: restore two weakened tests (deliberate documented red)`, `2026-08-14 — A stated width is a floor as well as a ceiling`, `Community 127`?**
+- **Why does `Phase F — full `run_all` verification and three more regressions it caught — 2026-08-02` connect `Community 103` to `Queries`, `health`, `2026-08-13 — length_measurement: the largest FAIL cluster in the tree`, `fmt_ruler_measure.py`, `generate_params`, `missing_number.py`, `2026-08-19 — Hardening Unit 3: mutation coverage for §5 and §6`, `2026-08-21 (tick 17) — §2B was guarding one direction only`, `get_node_competency_bounds`, `SKILL.md`, `2026-08-20 — Tick C: `mat_g2_mg_q4_3` content defects fixed at root, and `explain` built`, `2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key`, `2026-08-19 — Hardening Unit 3: mutation coverage for §5 and §6`, `_get_available_formats`, `_normalize_stem`, `2026-08-14 — The blank landed on a given, not on the unknown`, `test_planted_mutation_bounds_only_provider_is_caught_by_name`, `test_attestation_verdict_must_be_binary`, `Community 36`, `Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path`, `run_batch`, `SKILL.md`, `2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127`, `2026-08-20 — §5 worker death: a silent unbounded wait in the last gate`, `matatag_loader.py`, `2026-08-20 (tick 7) — The harness now runs its own tests`, `validate_capability.py`, `fractions.py`, `fmt_array_grid.py`, `fmt_ordering.py`, `2026-08-12 — Tick C cluster 1c: two repeated-addition competencies bound identically`, `get_interest_themes`, `test_semantic_leak_guards.py`, `test_semantic_leak_guards.py`, `run_audit`, `get_interest_themes`, `generate_params`, `models.py`, `get_node_competency_bounds`, `2026-08-14 — The blank landed on a given, not on the unknown`, `2026-08-12 — Tick C cluster 1: mass/capacity unit axis never bound (6 nodes)`, `RedisDict`, `2026-08-12 — Tick C cluster 1d: array formatters unreachable on the node that names arrays`, `2026-08-13 — The g3_mg_q1 area cluster: four siblings, one unbound key (Tick C)`, `health`, `get_engine`, `validate_compat.py`, `_gen_g2_na_q1_numbers`, `_combined_interests`, `Ground Rule 2: Spec Corrections & Baseline Fixes`, `2026-08-13 — The tiling word problem had no determinate answer (Tick C)`, `symmetry_slides.py`, `Anti-Patterns`, `2026-08-20 — §6F: an Attester verdict that nothing enforces is not a check`, `Part 3 — Concrete restructuring of the current docs/`, `2026-08-19 — Hardening Unit 1: restore two weakened tests (deliberate documented red)`, `2026-08-14 — A stated width is a floor as well as a ceiling`, `Community 127`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **What connects `graphify`, `PackageDescription`, `Foundation` to the rest of the system?**
   _1884 weakly-connected nodes found - possible documentation gaps or missing edges._

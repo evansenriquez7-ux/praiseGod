@@ -42,6 +42,11 @@ PROBE_SLEEP_SEC="${HARDENING_PROBE_SLEEP_SEC:-900}" # limit backoff: probe every
 MAX_PROBES="${HARDENING_MAX_PROBES:-24}"            # 6 h of probing before giving up
 MAX_CONSEC_ERR="${HARDENING_MAX_CONSEC_ERR:-3}"     # circuit breaker
 DRY_RUN="${HARDENING_DRY_RUN:-0}"
+# 0 = run until stopped. Any positive N exits cleanly after N ticks, which is how
+# you smoke-test the loop without committing to an unattended run. Bounding ticks
+# is the right knob: the sleeps below only fire on NOTHING_TO_DO / IN_FLIGHT / a
+# usage-limit probe, so on success the loop has no interval to shorten.
+MAX_TICKS="${HARDENING_MAX_TICKS:-0}"
 
 # Exit codes from hardening_supervisor.py
 IN_FLIGHT=0; RESUME=10; NOTHING_TO_DO=20; NEEDS_HUMAN=30; HUNG_UNREAPED=40
@@ -134,7 +139,7 @@ backoff_until_window_reopens() {
 
 log "=========================================================="
 log "hardening runner starting | repo=$REPO"
-log "  model=$MODEL  tick_cap=${TICK_CAP_SEC}s  dry_run=$DRY_RUN"
+log "  model=$MODEL  tick_cap=${TICK_CAP_SEC}s  dry_run=$DRY_RUN  max_ticks=$MAX_TICKS"
 log "  prompt: $TICK_PROMPT"
 log "  stop with: touch $STOP_FILE"
 log "=========================================================="
@@ -176,6 +181,12 @@ while true; do
     cost="$(jq -r '.total_cost_usd // "?"' "$out" 2>/dev/null)"
     turns="$(jq -r '.num_turns // "?"' "$out" 2>/dev/null)"
     log "--- tick $ticks finished: $result (exit $rc, turns $turns, cost \$$cost)"
+
+    if (( MAX_TICKS > 0 && ticks >= MAX_TICKS )); then
+        log "MAX_TICKS=$MAX_TICKS reached — exiting cleanly. This is a bound, not a verdict:"
+        log "  the last tick's own result was $result."
+        exit 0
+    fi
 
     case "$result" in
         SUCCESS)
