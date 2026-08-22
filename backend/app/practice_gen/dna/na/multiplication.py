@@ -85,9 +85,25 @@ _TABLE_SETS: Dict[str, List[int]] = {
     # "2_3_4_5_10")), used whenever nothing binds "table" at all -- e.g.
     # mat_g2_na_q3_1's repeated-addition intro, which relies on a b=1 pair
     # being reachable to satisfy a max_product floor as low as 1 (see the
-    # "NOTE on task_type == repeated_addition" comment below). 0/1 stay in
+    # "NOTE on task_type == repeated_addition" comment below). 1 stays in
     # this set for that reason.
-    "2_3_4_5_10": [0, 1, 2, 3, 4, 5, 10],
+    #
+    # 0 REMOVED 2026-08-22. The justification above was a max_product floor
+    # "as low as 1"; registry.py now floors every node on this pool at 4 or
+    # more (mat_g2_na_q3_0 and _q3_1 at 4, _q3_4 at 4, mat_g3_na_q3_3 at
+    # 100), so a 2x2 fact always fits and no node needs a zero factor to
+    # reach its ceiling. Leaving it in was reaching students: measured on
+    # the student path over 400 seeds, mat_g2_na_q3_0 rendered 21 EMPTY
+    # GRIDS (GridArea rows=2, cols=0 -- "Look at the shaded shape. How many
+    # squares are shaded in all?" with nothing drawn) and 112 items whose
+    # answer was 0; mat_g2_na_q3_1, 12 and 94. §1G catches cols=0 but its
+    # seed set never landed on one, so the node reported PASS.
+    #
+    # Zero content is not lost: the `zero_identity` branch builds (0, other)
+    # explicitly rather than drawing 0 from this pool, which is where the
+    # zero property belongs -- the same split "6_7_8_9" and
+    # "2_3_4_5_10_named" already use, and which division.py established.
+    "2_3_4_5_10": [1, 2, 3, 4, 5, 10],
     # "2_3_4_5_10_named" is registry.py's binding for a competency whose
     # text explicitly names "the 2, 3, 4, 5, and 10 multiplication tables"
     # (mat_g2_na_q3_2/_3) -- unlike the bare default above, no node relying

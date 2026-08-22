@@ -7272,3 +7272,53 @@ mat_g3_na_q2_3 matrix:  >3m20s (unfinished)  ->  47s, Total Failures Observed: 0
 mat_g3_na_q2_1: 0 failures (63s)   mat_g3_na_q2_2: 0 (4s)   mat_g2_na_q1_9: 0 (37s)
 pytest tests/unit: 322 passed, 2 deselected
 ```
+
+### A zero factor was reaching students, and §1G's seeds never landed on it
+
+Tick 20 blamed variant B for reintroducing `GridArea cols=0`. That was wrong, and checking rather than
+assuming is what showed it: a zero factor is reachable at `number_difficulty=0.5`, the **current
+default**, so it was already live on the committed tree. Measured on the student path, 400 seeds:
+
+```
+mat_g2_na_q3_0: empty-grid renders 21/400   zero-answer items 112/400
+mat_g2_na_q3_1: empty-grid renders 12/400   zero-answer items  94/400
+```
+
+An empty grid is *"Look at the shaded shape. How many squares are shaded in all?"* with rows=2, cols=0
+— nothing on the page. And 28% of one node's items had the answer 0.
+
+**§1G does catch `cols=0`** — it is the check that caught it under variant B. It reported PASS here
+because its seed set never landed on one of the 21. A defect reachable 5% of the time on the student
+path sat behind a green node. Recorded, not fixed this tick: the gap is seed reachability, not the
+assertion.
+
+Root cause was a comment whose justification had expired. `_TABLE_SETS["2_3_4_5_10"]` kept 0 and 1
+because *"mat_g2_na_q3_1's repeated-addition intro ... relies on a b=1 pair being reachable to satisfy
+a max_product floor as low as 1"*. Tick 19 floored `max_product` at 4, and registry.py now floors every
+node on this pool at 4 or more:
+
+```
+mat_g2_na_q3_0  max_product=(4, 100)      mat_g3_na_q3_3  max_product=(100, 10000)
+mat_g2_na_q3_1  max_product=(4, 100)      mat_g3_na_q3_4  max_product=(4, 1000)
+```
+
+so a 2×2 fact always fits and no node needs a zero factor to reach its ceiling. 0 removed; 1 kept,
+since a 1×n array renders and the floor argument still holds for it.
+
+**Zero content is not lost.** The `zero_identity` branch builds `(0, other)` explicitly rather than
+drawing 0 from the pool — the split `"6_7_8_9"` and `"2_3_4_5_10_named"` already use:
+
+```
+zero_identity seed 42: a=0 b=10 result=0     <- the zero property, still produced
+```
+
+```
+mat_g2_na_q3_0: empty grids 21 -> 0   zero-answer items 112 -> 18
+mat_g2_na_q3_1: empty grids 12 -> 0   zero-answer items  94 -> 18
+mat_g3_na_q3_3 / _q3_4: empty grids 0   zero-answer items 34 (all zero_identity)
+
+all 8 multiplication nodes: Total Failures Observed: 0
+pytest tests/unit: 322 passed, 2 deselected
+```
+
+The residual 18 and 34 are `zero_identity` items, which are the MATATAG zero property and belong there.
