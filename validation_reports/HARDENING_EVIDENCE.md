@@ -7392,3 +7392,97 @@ pytest tests/unit: 322 passed, 2 deselected
 
 Content moves on 52 nodes, so their reviews and attestations go stale — correctly, and they were
 already stale from tick 19.
+
+---
+
+## Tick 23 — 2026-08-22 — the contradiction closes, and the Attester's aside was the next bug
+
+### The range contradiction is closed by a blind party
+
+Batch 23, 0 tool uses, node ids withheld, not told a previous verdict existed, and judged on the
+**same fixed seeds** as batch018 and batch019 so all three are directly comparable.
+
+```
+mat_g1_na_q1_9  sums_up_to_20  NOT_PROVIDED -> NOT_PROVIDED -> PROVIDED
+mat_g1_na_q2_6  sum_up_to_100  NOT_PROVIDED -> PROVIDED     -> PROVIDED
+```
+
+> "The ten sums are 6, 18, 5, 15, 11, 9, 19, 19, 6, 13 — all within 20, with no breach of the ceiling.
+> The spread genuinely exercises the range rather than clustering: four sums sit below 10, three in the
+> teens, and three reach 18–19, so the top of the band is tested."
+
+That node produced **two** distinct answers across 200 seeds before tick 19. The seeds were not
+reselected. Quote provenance: 7/7 verbatim in the packet's own samples.
+
+Still NOT_PROVIDED on both: `orally` (no audio channel — an escalation, not a fix) and `pictures`
+(`emoji_pictorial` is registered and servable but the student path never selects it — a routing defect).
+
+```
+capability findings 761 -> 758    CONTRADICTED 32 -> 31
+```
+
+### §1G seed reachability: measured, and the queue is empty
+
+Tick 21 found a defect reachable on 5% of student-path seeds sitting behind a green node, because §1G
+sees only five seeds. Before building a wider check, the queue behind it was measured:
+
+```
+151 nodes x 60 student-path seeds  (generation errors: 0)
+nodes with a visual-payload defect the matrix's 5 seeds never saw:  0
+total defective seeds:                                              0
+```
+
+Zero. The zero-factor fixes closed the only instances. A wider §1G would be a regression guard, not a
+queue-clearer — recorded as such rather than built on the assumption that it would find something.
+
+### A measurement that was wrong, caught before it was reported
+
+Asking whether variant B had *caused* the zero-addend rate, the first comparison returned identical
+figures for both trees — 69/300 and 41/300, before and after. Identical to the digit is not a result,
+it is a smell: `git stash push` on an unmodified file no-opped, the `||` fallback never ran, and HEAD
+was measured twice. Redone with the file diff proved first:
+
+```
+differs from HEAD: 1 file changed, 1 insertion(+), 35 deletions(-)
+_scope_axis_bound occurrences (0 = variant B absent): 0
+
+PRE-variant-B  mat_g1_na_q1_9   zero addend 72/300  (24%)   [post: 23%]
+PRE-variant-B  mat_g1_na_q2_6   zero addend 83/300  (28%)   [post: 14%]
+```
+
+Variant B did not cause it — it halved it on one node. The defect was pre-existing, and reporting
+"pre-existing, not mine" off the first measurement would have been luck rather than evidence.
+
+### The Attester's aside was a real bug: a list scope matching no branch
+
+Three separate blind Attesters flagged *"Lola Caring has 0 leashes. A friend has 6 leashes... the total
+is simply restated in the stem"* — an item that does not assess the competency it sits under. The zero
+property of addition is `mat_g1_na_q1_8`'s competency (`'properties'`), not this node's.
+
+Root cause, from instrumenting what the DNA actually receives:
+
+```
+mat_g1_na_q1_9  profile task_type=['putting_together', 'counting_up']  -> resolved=None   a=0 b=7
+mat_g1_na_q1_7  profile task_type='models_strategies'                  -> resolved='counting_up'
+```
+
+A **list** equals none of the branch strings, so those two nodes fell through *every* `task_type`
+branch into the generic tail — whose candidate pool admits 0-operand pairs, while the
+`putting_together` and `counting_up` branches build theirs from `range(1, ...)` and cannot produce a
+zero at all. The returned `task_type` was `None`, which was the visible tell.
+
+This is tick 18's list-vs-scalar defect one layer down: there `is_variant_supported` compared a whole
+list, here a branch chain does the same. Resolved to one member per seed, exactly as the composite
+scalar scope `'models_strategies'` is resolved immediately below it.
+
+```
+zero addend  23% -> 0%   and   14% -> 0%
+task_type now resolves (was None): putting_together 155 / counting_up 145
+range intact: q1_9 distinct=21 max=20; q2_6 distinct=54 max=99; no breach
+matrix: q1_9, q2_6, q1_7, q1_8 all Total Failures Observed: 0
+deterministic; pytest tests/unit: 322 passed
+```
+
+This makes batch023 STALE on both nodes — the prescribed attest → fix → re-attest cycle, since the
+Attester's content note is what surfaced the defect. `CONTRADICTED` stays 31 (a stale batch still
+supplies its verdict; staleness is reported separately); `STALE` 8 → 10.

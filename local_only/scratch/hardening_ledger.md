@@ -4430,3 +4430,53 @@ content, not attestation.
 5. Open content, all Attester-found: noun-number agreement in four stems; zero-addend items; a
    distractor exactly key+10 on all 20 sampled items; 3-of-10 identical stems; `mat_g2_na_q3_1`'s
    undrawn number line; the `pictures` routing defect; the `orally` escalation.
+
+---
+
+## 2026-08-22 — tick 23 — the contradiction closes; the Attester's aside was the next bug
+
+**`sums_up_to_20` is PROVIDED.** Blind, 0 tool uses, same fixed seeds as batch018/019, not told a prior
+verdict existed. The node produced two distinct answers across 200 seeds before tick 19; the Attester
+now reports *"four sums sit below 10, three in the teens, and three reach 18-19, so the top of the band
+is tested."* Seeds were not reselected. `CONTRADICTED 32 -> 31`.
+
+**§1G seed reachability: measured before building.** 151 nodes x 60 student-path seeds -> **0** defects
+the matrix's five seeds would miss. The zero-factor fixes closed the only instances, so a wider §1G is a
+regression guard, not a queue-clearer. Not built on the assumption it would find something.
+
+**A wrong measurement caught before reporting.** The first before/after comparison of the zero-addend
+rate returned identical figures for both trees — because `git stash push` on an unmodified file no-opped
+and the fallback never ran, so HEAD was measured twice. Redone with the file diff proved first:
+pre-variant-B 24% / 28%, post 23% / 14%. Variant B did not cause it; it halved it on one node.
+
+**The real bug, from the Attester's unasked content note.** `registry.py` binds `mat_g1_na_q1_9` and
+`mat_g1_na_q2_6` to `task_type=['putting_together','counting_up']`. A list equals none of the branch
+strings, so both nodes fell through **every** task_type branch into the generic tail, whose pool admits
+0-operand pairs — while the branches they should have taken build candidates from `range(1, ...)` and
+cannot produce a zero. Returned `task_type` was `None`. Tick 18's list-vs-scalar defect one layer down.
+
+```
+zero addend 23% -> 0% and 14% -> 0% · task_type resolves (was None)
+range intact (distinct 21 / 54, no breach) · 4 nodes matrix-clean · pytest 322
+```
+
+**Both movements:** §6 761 -> **760** (CONTRADICTED 32 -> 31, STALE 8 -> 10 — batch023 correctly stale,
+since I attested these nodes and then fixed them); coverage **143/787** flat.
+
+**Also this tick:** 73 commits pushed to origin/main at the user's request (`cc5977f5..dcd7eeae`,
+fast-forward, no divergence). The loop had been local-only for 23 ticks.
+
+**Next tick should:**
+1. **Re-attest `mat_g1_na_q1_9` and `mat_g1_na_q2_6`** — batch023 is STALE by my own fix. Same fixed
+   seeds. This also re-tests `sums_up_to_20` on content without zero addends.
+2. **The ~50-node re-review programme** (§5 is now the dominant number). Content has settled; §6F
+   honours supersession so re-reviews subtract rather than accumulate.
+3. **The `pictures` routing defect** — `emoji_pictorial` is registered and servable on both nodes but
+   the student path never selects it, so all 10 seeds render `visual_type None`. Two CONTRADICTED
+   entries ride on it and it is a routing fix, not a table edit.
+4. Open content, all Attester-found and none fixed: noun-number agreement ("65 running shoes and 22
+   water bottle" — right and wrong in one sentence); a distractor exactly key+10 on all 20 sampled
+   items, with key±1 filling the rest, so a pupil can score by shape; 2-of-10 identical stems; the
+   counting-on drills that are not "problems"; `mat_g2_na_q3_1`'s undrawn number line.
+5. `mat_g3_na_q3_1` — the tree's only matrix failure; both readings in tick 19's entry; maintainer's call.
+6. Consider the wider-seed §1G guard (measured 0 today, so pure insurance) and the `orally` escalation.
