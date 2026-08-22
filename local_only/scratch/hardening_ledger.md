@@ -4553,3 +4553,73 @@ empirical test that settles it. The rest of the handoff is carried forward verba
    `validate_matrix` claims, and the set difference names which side is lying. Record the outcome under
    `DECIDED (reversible):` with the command and its verbatim output. Do not pick (a) by reading code.
 6. Consider the wider-seed §1G guard (measured 0 today, so pure insurance) and the `orally` class.
+
+## 2026-08-23 — tick 24 — 90 clauses attested; nine of the refusals are one missing medium
+
+- **Queue before:** §5 stale=557/49 nodes, non-PASS=18/4 · §6F contra=31/12 stale=10/10 unattested=644/134 · §6D=74/19 · total=760 — coverage: attested 143/787, reviewed 151/151
+- **Unit(s) of work:**
+  1. Five blind Attester dispatches, 102 clauses across 17 nodes (batches 024–028), filed.
+  2. Adopted the uncommitted `tests/attester_file.py` left by a previous tick, fixed two honesty defects in it, and pinned its eight refusals with `tests/unit/test_attester_file.py`.
+- **Class:** B. Classifier output: `CLASS B — stages 1-5 cannot have moved` (nothing under `backend/app/practice_gen/` or `data/skeletons/` touched). No `run_all`; §2 already ran the only two stages that could have moved.
+- **Root cause:** n/a for the unit itself. The dominant root cause *found* by it: nine of 23 `NOT_PROVIDED`s are a clause naming a representation on a node where **no visual renders at all**.
+- **Machinery built:** none in the pipeline. Test-side: `tests/unit/test_attester_file.py` (13 tests); `--samples-delivery` and free-text `--tool-uses` in `attester_file.py`; item id added to `attester_packets.render_prompt_block`.
+- **Verification:**
+  - `pytest tests/unit -m "not slow" -q -p no:randomly` → `344 passed, 2 deselected, 1 warning in 59.89s` (331 baseline + 13 new)
+  - `pytest tests/unit/test_attester_file.py -q -p no:randomly` → `13 passed in 0.25s`
+  - §2 re-measure → total **760 → 687**, §6G batch-integrity **0**
+- **Blind verdicts obtained:** 5 Attester batches, 102 clauses, 17 nodes. 79 PROVIDED / 23 NOT_PROVIDED. No Declarer, Reviewer or Evaluator this tick.
+- **DECIDED (reversible):** `mat_g1_na_q1_9` / `mat_g1_na_q2_6`, clause `pictures`. Rung: *the node's rendered ground truth*. batch023 ruled `NOT_PROVIDED`; a fresh Attester on freshly rendered content ruled `PROVIDED`, citing a real `NumberBond` payload and countable `EmojiPictorial` glyphs. Reading rejected: that the earlier verdict still stands — it does not, because the content it judged no longer exists (that is why batch023 was STALE). **batch023 retained unaltered; nothing was edited.** What would flip it: the same Attester's own aside, that on `mat_g1_na_q2_6` seeds 91/103 the payload is the literal string `(Large group of 60 bunnies)` rather than glyphs. If the seeds a future packet draws are those, `pictures` should go back to `NOT_PROVIDED` — and that is a rendering defect to fix, not a verdict to argue with.
+- **Evidence log entry:** `## 2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest`
+- **Queue after:** §5 stale=**557**/49 nodes (unchanged — campaign-deferred, not skipped), non-PASS=18/4 · §6F contra=**50**/23 stale=**8**/8 unattested=**554**/119 · §6D=74/19 · total=**687** — coverage: attested **233/787**, reviewed 151/151, mutations 12
+- **Commit(s):** `de834ca5` attest(6F): 90 clauses judged blind — UNATTESTED 644 -> 554, CONTRADICTED 31 -> 50
+
+**Campaign note (§3).** The campaign defers band 1 and band 2; both are named here with their
+re-measured counts, per the standing instruction. §5 stale is **557 across 49 nodes** and did not move
+this tick. §6F CONTRADICTED is **50 across 23 nodes**, up from 31/12 — 19 of that rise is this tick's
+own newly filed refusals, which is coverage converting into a visible queue, not regression.
+
+**Next tick should:**
+
+1. **`mat_g3_mg_q2_0` — the worst thing found this tick, and it is a live content defect.** Every one
+   of the 10 student-path seeds asks "What is the mass of the object in g/kg/mg?" and **renders no
+   visual at all**. There is no object, no scale, no balance. Distractors cluster at ±1 (e.g.
+   54/55/56/57), so the item cannot be answered except by guessing. Two clauses ride on it
+   (`measure_mass`, `measuring_tools`) and both are now CONTRADICTED. Class A: fix, re-run
+   `validate_matrix --node`, re-review, re-attest.
+2. **The "no visual renders" cluster — same shape, three more nodes.** `mat_g3_mg_q1_1` (unit square
+   tiles narrated as a finished count, never drawn — 4 CONTRADICTED clauses), `mat_g2_mg_q1_2` (a
+   slide with no figure to slide; the pupil picks a *sentence describing* a drawing, and on seeds
+   11/64 the keyed option echoes the stem's own wording so it is answerable by text-matching),
+   `mat_g2_dp_q3_0` (stem says "count the pictures in each row of the pictograph"; payload is a
+   `FillInTable` with null rows — the pictograph is never rendered). Check whether these share one
+   routing cause before fixing them one at a time.
+3. **Ambiguous key, `mat_g3_dp_q3_0` seed 118** — die tally Face 1:1, Face 2:3, Face 3:1, Face 4:3,
+   Face 5:3, Face 6:1. Three faces tie at the minimum; only "Face 1" is keyed and **"Face 3" is
+   offered as an option**. A pupil answering Face 3 is marked wrong for a correct answer. Identical
+   shape to `mat_g3_dp_q3_4` in Appendix A — fix the root cause across both, not the seed.
+4. **Six sampler gaps, each a named sub-case the competency requires (Rule 8 builds, not narrowings):**
+   no descending sequence and no "1 less" on `mat_g1_na_q1_0` (one direction fix should close both);
+   no 10s and no 50s step on `mat_g2_na_q1_3`; no 2-digit-minus-1-digit on `mat_g1_na_q3_4`; no
+   "5 threes" phrasing on `mat_g2_na_q3_0`; no divisor of 100 on `mat_g3_na_q4_3`. Also
+   `mat_g1_mg_q1_0`: `orientation_deg` is **0 in every shape of every ShapeBoard payload sampled**,
+   and the payload carries no size field at all.
+5. **Duplicate stems inside one 10-seed window**, found unasked on three nodes: `mat_g2_mg_q1_2` (6 of
+   10 seeds are 3 items shown twice), `mat_g1_na_q2_6` (seeds 57/118 identical), `mat_g2_na_q3_0`
+   (seeds 11/64 and 57/127). This is the coverage-skew defect shape, and it is now measurable.
+6. **The `orally` class is still open and is not a deferral.** Third independent blind NOT_PROVIDED.
+   The rendered text channel cannot exhibit oral delivery, so no formatter satisfies it and
+   re-attesting will never move it. Under Rule 8 the fix is an oral/audio delivery capability. Note
+   `mat_g2_mg_q1_2`'s `basic_figures` needs a **blind Declarer**, not the Fixer — "figures" is
+   indistinguishable from "basic shapes" in the rendered set, and authoring or narrowing a `requires`
+   block is not the Fixer's role (Rule 1).
+7. **Carried forward from tick 23, untouched by this tick:** the ~50-node §5 re-review programme
+   (557/49, now the single largest number in the tree); `mat_g3_na_q3_1`, the tree's only matrix
+   failure, to be settled by instrumenting the real student path rather than by reading code; the
+   §1G wider-seed guard.
+
+**Harness limitation named, per Mandate §6.** Blindness in this run rests on the **prompt contract
+alone**. Rule 1's forbidden-path list was given verbatim to every Attester, but each had tool access
+and nothing structurally prevented a forbidden read — earlier records could assert
+`tool_uses_by_attester: 0` and mean "blindness was structural"; today's cannot, and every record filed
+says so in full rather than asserting a clean 0. Closing this needs a sandboxed dispatch, not a
+stronger prompt.
