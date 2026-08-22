@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.ccmed.hardening-runner</string>
+
+  <!-- caffeinate -i prevents idle sleep for as long as the runner lives. A Mac that
+       sleeps at 2am is the quietest way to lose 6 hours of an unattended run. -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/caffeinate</string>
+    <string>-i</string>
+    <string>/bin/bash</string>
+    <string>/Users/enrichmentcap/Documents/antigravity/ccmed/scripts/hardening_runner.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/enrichmentcap/Documents/antigravity/ccmed</string>
+
+  <!-- launchd gives a minimal environment. `claude` lives in ~/.local/bin and `jq`
+       in /usr/bin; without this the runner dies on its first tick. -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/Users/enrichmentcap/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>HOME</key>
+    <string>/Users/enrichmentcap</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <!-- Restart on a crash, but honour a clean exit. The runner exits 0 only when the
+       STOP file is present, so "stop" means stopped; a crash or an OOM comes back. -->
+  <key>KeepAlive</key>
+  <dict>
+    <key>SuccessfulExit</key>
+    <false/>
+  </dict>
+
+  <key>ThrottleInterval</key>
+  <integer>60</integer>
+
+  <key>StandardOutPath</key>
+  <string>/Users/enrichmentcap/Documents/antigravity/ccmed/local_only/scratch/runner/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/enrichmentcap/Documents/antigravity/ccmed/local_only/scratch/runner/launchd.err.log</string>
+</dict>
+</plist>
