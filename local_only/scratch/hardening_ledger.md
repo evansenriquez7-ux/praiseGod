@@ -4259,3 +4259,66 @@ unable to reach their curriculum scope.
 6. Still open: `mat_g2_na_q3_1`'s undrawn number line; the `pictures` routing defect (emoji_pictorial
    registered and servable, never selected); the `orally` class (escalation, no audio channel); the 10
    DNAs offering only `mcq`; `read_mcq` → placement (63 nodes); ~32 attestation dispatches.
+
+---
+
+## 2026-08-22 — tick 20 — §6F shipped; the range fix was reverted after it hung a node
+
+**Shipped: §6F no longer re-checks attestations that no verdict reads.** Tick 19's ledger said "make
+§6F honour `supersedes`". Reading the code first showed that would have been a hole — a self-declared
+string would let a batch retire an inconvenient verdict by asserting it had been replaced. Supersession
+is instead **derived from the records** (`_load_attestations` resolves by last-file-wins, so a fully
+replaced batch feeds nothing), and only when *every* verdict in a record has been replaced:
+
+```
+batch018_mat_g1_na_q1_9: still the winning verdict for 0 of 6   -> exempt
+batch018_mat_g3_na_q3_4: still the winning verdict for 4 of 4   -> still checked
+```
+
+Proved by mutation: dropping one pair from the replacement makes the old record fire again by name; a
+record that merely *claims* supersession still fires. `STALE 13 -> 8`, **CONTRADICTED unchanged at 32** —
+the number that matters. Contract row added in the same commit (Protocol 7). Commit `118342a4`.
+
+**Reverted: "variant B" for the range distribution.** Tick 19's sampled scope axis left p50=2 on a
+ceiling of 20. Variant B opened the scope axis to the full competency ceiling and varied
+`number_difficulty` per seed instead, and its coverage was genuinely better — `mat_g1_na_q1_9` produced
+**all 20 distinct sums** (p10=3, p50=13, p90=19) against 2 before tick 19. It was reverted anyway,
+because a 52-node sweep found two things it broke:
+
+1. **It hung `mat_g3_na_q2_3`** — 141 minutes of CPU at 100%, spinning, not blocked. `addition.py`
+   builds its candidate pool by exhaustive double loop, so the pool is O(ceiling²):
+
+   ```
+   mat_g1_na_q1_9: ceiling=20     pairs enumerated =        200
+   mat_g3_na_q2_3: ceiling=10000  pairs enumerated = 50,000,000
+   ```
+
+   The quadratic builder is **pre-existing**; the pinned default was capping it at 250 and hiding it.
+
+2. **It reintroduced the zero-factor defect tick 19 fixed** — `GridArea cols=0` on `mat_g2_na_q3_0`
+   (18 failures) and `mat_g2_na_q3_1` (54), at new seeds. The `max_product` floor of 4 is not
+   sufficient once difficulty varies downward.
+
+```
+sweep: 46 clean · 2 newly broken by the change · 1 pre-existing (mat_g3_na_q3_1) · 1 spinning
+after revert: mat_g2_na_q3_0 and mat_g2_na_q3_1 both back to Total Failures Observed: 0
+```
+
+A mid-sweep report of "43 of 50 clean" was wrong — the grep counted detail lines as failures. Corrected
+above.
+
+**Both movements:** findings 764 → **759**; coverage **143/787** (flat).
+
+**Next tick should:**
+1. **Make the candidate builder non-quadratic**, then re-attempt variant B. This is the real blocker:
+   until the pool is bounded, no fix can open a large competency ceiling. `addition.py:661`; check
+   `subtraction.py` and `multiplication.py` for the same shape (Protocol 2). Determinism must survive.
+2. **Then re-land variant B**, and this time fix the zero-factor properly rather than by a floor: find
+   why a low `number_difficulty` still reaches a 0 factor when `max_product >= 4`.
+3. Only after 1 and 2: **the ~50-node re-review programme**. Unblocked by §6F now, but pointless before
+   the content settles.
+4. `mat_g3_na_q3_1` (the tree's only matrix failure) — both readings recorded in tick 19's entry;
+   maintainer's call, do not silently pick one.
+5. Open content, all Attester-found: noun-number agreement in four stems; zero-addend items; a
+   distractor exactly key+10 on all 20 sampled items; 3-of-10 identical stems;
+   `mat_g2_na_q3_1`'s undrawn number line; the `pictures` routing defect; the `orally` escalation.
