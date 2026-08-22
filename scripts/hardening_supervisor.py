@@ -54,10 +54,15 @@ now handled by deciding instead of stopping. A contract that cannot be evaluated
 Class C repair and the tick's only unit; a contested reading of a competency is settled
 against MATATAG by the protocol's Rule 10 ladder and recorded as reversible.
 
-This does not leave the run unstoppable. Three consecutive failed ticks open the runner's
-circuit breaker, and that is an honest end -- reached by evidence -- rather than a
-pre-judged one. Code 40 stays separate because a hung process is routine and
-self-remediable: the caller re-runs with --reap and continues.
+This does not leave the run unstoppable, but note what actually stops it: NOT a circuit
+breaker. An earlier draft of this docstring claimed three consecutive failed ticks opened
+one; the runner has never had one and must not -- a loop that gives up on transient
+trouble reports green by being absent. What exists is an exponential backoff (60s,
+doubling, capped at 30 min) so a genuinely broken state idles instead of spinning, the
+maintainer's HARDENING_STOP file, and HARDENING_DONE. A documented guard that does not
+exist is the exact hazard the tick protocol's Rule 11 names, so this paragraph is the
+correction rather than a deletion. Code 40 stays separate because a hung process is
+routine and self-remediable: the caller re-runs with --reap and continues.
 """
 
 from __future__ import annotations
@@ -230,7 +235,9 @@ def ledger_state() -> dict:
         "exists": True,
         "age_hours": round((time.time() - LEDGER.stat().st_mtime) / 3600, 1),
         "last_heading": headings[-1] if headings else None,
-        "next_tick_should": " ".join(m.group(1).split())[:400] if m else None,
+        # 400 chars truncated the handoff to its first item, and §1 tells the tick this print
+        # IS its starting point. A handoff that arrives cut in half is a handoff that lies.
+        "next_tick_should": " ".join(m.group(1).split())[:4000] if m else None,
     }
 
 
@@ -377,7 +384,7 @@ def main() -> int:
         print(f"  running pid={p['pid']} elapsed={p['elapsed_s']}s "
               f"tree_cpu={p['tree_cpu_s']}s ratio={p['ratio']} (own {p['own_ratio']})")
     if led["next_tick_should"]:
-        print(f"\n  Next tick should: {led['next_tick_should'][:300]}")
+        print(f"\n  Next tick should: {led['next_tick_should'][:3000]}")
     print(f"\n  status written to {STATUS.relative_to(REPO)}")
     return verdict
 

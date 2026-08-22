@@ -75,15 +75,21 @@ log() { printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$*" | tee -a "$LOG"; 
 
 # Run a command with a hard wall-clock cap. This host has no `timeout`/`gtimeout`,
 # so the watchdog is bash-native. Returns 124 on timeout, else the command's status.
+# `pkill -9 -P` reaches only DIRECT children, so a run_all the tick launched from its
+# Bash tool -- a grandchild -- survived the 90-minute kill, kept three workers burning,
+# and the supervisor then read it as *healthy* -> IN_FLIGHT -> 5-minute sleeps for up to
+# ~50 min. `set -m` gives the job its own process group so a negative-pid kill takes the
+# whole tree. stdin is /dev/null: an unattended job must never inherit a terminal.
 run_capped() {
     local cap="$1" out="$2"; shift 2
-    "$@" >"$out" 2>&1 &
+    set -m
+    "$@" >"$out" 2>&1 </dev/null &
     local pid=$! waited=0
+    set +m
     while kill -0 "$pid" 2>/dev/null; do
         if (( waited >= cap )); then
-            log "TIMEOUT: ${cap}s exceeded; killing pid $pid and its descendants"
-            pkill -9 -P "$pid" 2>/dev/null
-            kill -9 "$pid" 2>/dev/null
+            log "TIMEOUT: ${cap}s exceeded; killing process group $pid"
+            kill -9 -"$pid" 2>/dev/null
             wait "$pid" 2>/dev/null
             return 124
         fi
@@ -96,17 +102,26 @@ run_capped() {
 # SUCCESS | LIMIT | ERROR — decided from the result JSON, never from exit code alone.
 classify() {
     local f="$1"
-    if grep -qiE "usage limit reached|out of usage credits" "$f" 2>/dev/null; then
-        echo LIMIT; return
-    fi
+    # Not JSON at all (a crashed binary, a truncated write): the phrase is the only
+    # signal there is.
     if ! jq -e . "$f" >/dev/null 2>&1; then
-        echo ERROR; return
+        grep -qiE "usage limit reached|out of usage credits" "$f" 2>/dev/null \
+            && echo LIMIT || echo ERROR
+        return
     fi
     local api_status is_err subtype
     api_status="$(jq -r '.api_error_status // empty' "$f")"
     is_err="$(jq -r '.is_error // false' "$f")"
     subtype="$(jq -r '.subtype // empty' "$f")"
     if [[ "$api_status" == "429" ]]; then echo LIMIT; return; fi
+    # The phrase is authoritative ONLY on a run that actually failed. Grepping the whole
+    # document first classified a *successful* tick as LIMIT whenever its own report
+    # mentioned one -- which the tick protocol's §13 actively invites it to write -- and
+    # bought a 45-minute sleep for a tick that had just succeeded. Proved 2026-08-23.
+    if [[ "$is_err" == "true" ]] \
+       && jq -r '.result // ""' "$f" | grep -qiE "usage limit reached|out of usage credits"; then
+        echo LIMIT; return
+    fi
     if [[ "$is_err" == "true" ]]; then echo ERROR; return; fi
     if [[ "$subtype" == "success" ]]; then echo SUCCESS; return; fi
     echo ERROR
@@ -138,11 +153,41 @@ probe_window_open() {
     [[ "$verdict" == "SUCCESS" ]]
 }
 
-# A usage limit is never a reason to end the run -- it is a pause. Probe until the window
-# reopens, for as long as that takes. Returns 1 only when STOP/DONE appeared meanwhile, and
-# the caller's next loop iteration exits on it.
+# The limit message carries the window's reset instant as a trailing unix epoch --
+# "Claude AI usage limit reached|1755950400". Reading it turns a blind fixed-interval
+# wait (which resumed up to PROBE_SLEEP_SEC late, every single time) into an on-time one.
+limit_reset_epoch() {
+    jq -r '.result // ""' "$1" 2>/dev/null | grep -oE '\|[0-9]{10}' | tr -d '|' | head -1
+}
+
+# A usage limit is never a reason to end the run -- it is a pause. Sleep to the stated
+# reset if there is one, then probe until the window reopens, for as long as that takes.
+# Returns 1 only when STOP/DONE appeared meanwhile, and the caller's next loop iteration
+# exits on it.
 backoff_until_window_reopens() {
-    local n=0
+    local src="${1:-}" n=0 epoch now wait_s
+    if [[ -n "$src" && -f "$src" ]]; then
+        epoch="$(limit_reset_epoch "$src")"
+        now="$(date +%s)"
+        if [[ -n "$epoch" ]] && (( epoch > now )); then
+            wait_s=$(( epoch - now + 60 ))
+            # A 5-hour window is 18000s. Anything past 6 hours is a misparse, not a limit;
+            # say so loudly and fall back rather than sleeping through the whole run.
+            if (( wait_s > 21600 )); then
+                log "stated reset is ${wait_s}s away — implausible, ignoring it and probing blind"
+            else
+                log "USAGE LIMIT: window resets $(date -r "$epoch" '+%Y-%m-%d %H:%M:%S') — sleeping ${wait_s}s"
+                sleep "$wait_s"
+                [[ -f "$STOP_FILE" ]] && { log "STOP file appeared during backoff"; return 1; }
+                [[ -f "$DONE_FILE" ]] && { log "DONE file appeared during backoff"; return 1; }
+                if probe_window_open; then
+                    log "USAGE WINDOW REOPENED at the stated reset — resuming"
+                    return 0
+                fi
+                log "still limited past the stated reset — falling back to ${PROBE_SLEEP_SEC}s probes"
+            fi
+        fi
+    fi
     while true; do
         n=$(( n + 1 ))
         log "USAGE LIMIT: sleeping ${PROBE_SLEEP_SEC}s, then probe $n"
@@ -165,18 +210,18 @@ log "  ends on: $DONE_FILE (verified green) — nothing else"
 log "  stop by hand: touch $STOP_FILE"
 log "=========================================================="
 
-ticks=0; consec_err=0; err_sleep="$ERR_SLEEP_MIN"
+ticks=0; consec_err=0; err_sleep="$ERR_SLEEP_MIN"; total_cost=0
 while true; do
     if [[ -f "$DONE_FILE" ]]; then
         log "=========================================================="
-        log "HARDENING_DONE present — verified green. Ending the run after $ticks tick(s)."
+        log "HARDENING_DONE present — verified green. Ending the run after $ticks tick(s), \$$total_cost."
         log "  $(head -c 300 "$DONE_FILE" 2>/dev/null | tr '\n' ' ')"
         log "=========================================================="
         exit 0
     fi
 
     if [[ -f "$STOP_FILE" ]]; then
-        log "STOP file present — exiting cleanly after $ticks tick(s)"
+        log "STOP file present — exiting cleanly after $ticks tick(s), \$$total_cost"
         exit 0
     fi
 
@@ -206,13 +251,26 @@ while true; do
     log "--- tick $ticks starting (cap ${TICK_CAP_SEC}s) -> $out"
 
     run_tick "$out"; rc=$?
-    result="$(classify "$out")"
-    cost="$(jq -r '.total_cost_usd // "?"' "$out" 2>/dev/null)"
-    turns="$(jq -r '.num_turns // "?"' "$out" 2>/dev/null)"
-    log "--- tick $ticks finished: $result (exit $rc, turns $turns, cost \$$cost)"
+    # A 124 is the tick hitting the wall clock, not a broken system: it did work and ran
+    # out of room. Classifying it as ERROR punished exactly the ticks that worked longest,
+    # doubling the backoff toward 30 min for doing a full Class A unit.
+    if (( rc == 124 )); then result=TIMEOUT; else result="$(classify "$out")"; fi
+    cost="$(jq -r '.total_cost_usd // 0' "$out" 2>/dev/null)"
+    [[ "$cost" =~ ^[0-9]+(\.[0-9]+)?$ ]] || cost=0
+    total_cost="$(jq -n --argjson a "$total_cost" --argjson b "$cost" '$a + $b')"
+    # jq on a truncated/absent file emits nothing at all, so `// "?"` never fires --
+    # which is exactly the TIMEOUT case, where no result JSON was ever written.
+    turns="$(jq -r '.num_turns // "?"' "$out" 2>/dev/null)"; [[ -n "$turns" ]] || turns="?"
+    sid="$(jq -r '.session_id // empty' "$out" 2>/dev/null)"
+    log "--- tick $ticks finished: $result (exit $rc, turns $turns, cost \$$cost, run total \$$total_cost)"
+    if [[ -n "$sid" ]]; then
+        log "    session $sid — inspect with: claude --resume $sid"
+    else
+        log "    no session id — the tick wrote no result JSON (killed at the cap, or the binary failed)"
+    fi
 
     if (( MAX_TICKS > 0 && ticks >= MAX_TICKS )); then
-        log "MAX_TICKS=$MAX_TICKS reached — exiting cleanly. This is a bound, not a verdict:"
+        log "MAX_TICKS=$MAX_TICKS reached (\$$total_cost) — exiting cleanly. This is a bound, not a verdict:"
         log "  the last tick's own result was $result."
         exit 0
     fi
@@ -220,10 +278,15 @@ while true; do
     case "$result" in
         SUCCESS)
             consec_err=0; err_sleep="$ERR_SLEEP_MIN" ;;
+        TIMEOUT)
+            # Not a failure. Whatever the tick committed survives; the rest leaves a dirty
+            # tree that the next tick's §1 RESUME unwinds, which is the designed path.
+            consec_err=0; err_sleep="$ERR_SLEEP_MIN"
+            log "tick hit the ${TICK_CAP_SEC}s cap — the next tick resumes an interrupted unit" ;;
         LIMIT)
             consec_err=0; err_sleep="$ERR_SLEEP_MIN"
             # `continue` only fires if STOP/DONE appeared; the top of the loop exits on it.
-            backoff_until_window_reopens || continue ;;
+            backoff_until_window_reopens "$out" || continue ;;
         ERROR)
             consec_err=$(( consec_err + 1 ))
             log "tick error (consecutive: $consec_err). The run does NOT end on errors. Head of output:"

@@ -4480,3 +4480,76 @@ fast-forward, no divergence). The loop had been local-only for 23 ticks.
    counting-on drills that are not "problems"; `mat_g2_na_q3_1`'s undrawn number line.
 5. `mat_g3_na_q3_1` — the tree's only matrix failure; both readings in tick 19's entry; maintainer's call.
 6. Consider the wider-seed §1G guard (measured 0 today, so pure insurance) and the `orally` escalation.
+
+## 2026-08-23 — maintainer entry (not a tick) — runner hardened for the unattended 48h run
+
+Not a tick: no pipeline work, no blind dispatch, no content touched. Recorded here because §10's green
+audit diffs `git log` against this ledger, and an unexplained out-of-loop commit is exactly what that
+step is meant to catch. Queue unchanged and re-measured at the time of writing: §5 stale **557** across
+49 nodes, §5 non-PASS **18**/4, §6F CONTRADICTED **31**/12, §6F stale **10**/10, §6F UNATTESTED
+**644**/134, §6D **74**/19, total **760**. Coverage **143/787** attested, **151/151** reviewed, 12
+mutations. Nothing moved; all six fixes are to `scripts/`.
+
+**Five defects in `scripts/hardening_runner.sh`, four of them reproduced before fixing:**
+
+1. **`classify()` called successful ticks `LIMIT`.** The `grep` for "usage limit reached" ran over the
+   whole result JSON *before* the `is_error` check, so it matched the agent's own report text — which
+   the tick protocol's §13 actively invites a tick to write. Every such tick bought a 45-minute sleep.
+   The phrase is now authoritative only when the run actually errored, or when the output is not JSON.
+2. **`run_capped`'s kill did not reach grandchildren.** `pkill -9 -P` reaps only direct children, so a
+   `run_all` launched from the tick's Bash tool survived the 90-minute kill, kept its workers burning,
+   and the supervisor then read it as *healthy* → `IN_FLIGHT` → 5-minute sleeps for up to ~50 min. The
+   job now runs in its own process group (`set -m`) and is killed by negative pid. stdin is `/dev/null`.
+3. **A 90-minute timeout was counted as a failure.** `rc=124` means the tick worked and ran out of
+   clock; counting it in `consec_err` doubled the backoff toward 30 min and so penalised exactly the
+   ticks that completed a full Class A unit. `TIMEOUT` is now its own arm and resets the backoff.
+4. **The usage-limit backoff resumed up to 45 minutes late, every time.** It slept `PROBE_SLEEP_SEC`
+   blind. The limit message carries the window's reset instant as a trailing epoch
+   (`...reached|1755950400`), so the runner now sleeps to that instant + 60s. An epoch more than 6h out
+   is refused loudly and falls back to the blind probe, which is also the path when no epoch is present.
+5. **No spend visibility.** Cumulative `total_cost_usd` is now carried across ticks and printed on every
+   tick line and every exit; each tick logs its `session_id` with the `claude --resume` command, so a
+   tick that failed 30 hours earlier can still be opened.
+
+**`scripts/hardening_supervisor.py`:** its docstring claimed "three consecutive failed ticks open the
+runner's circuit breaker". No circuit breaker has ever existed, and none should — the runner backs off
+and retries forever by design. Corrected in place rather than deleted, since a documented guard that
+does not exist is Rule 11's hazard.
+
+```
+epoch parsed from limit payload      : 1755950400   (empty on an ordinary reply -> blind fallback)
+A success whose report says "limit"  : SUCCESS (was LIMIT)          cost tracked $3.25, session sess-A
+B stated reset now+45s               : slept 95s to the stated instant, not 2700s blind
+C tick over the cap                  : TIMEOUT (exit 124), no orphaned grandchild survived
+D implausible epoch (now+999999)     : refused loudly, fell back to blind probe
+bash -n scripts/hardening_runner.sh  : OK        supervisor --reap: RESUME, 760 findings
+```
+
+**Also corrected: item 5 of the previous handoff told the next tick to escalate.** Rule 10 and §12
+forbid that outright and escalation was retired 2026-08-23, so the line is restated below as the
+empirical test that settles it. The rest of the handoff is carried forward verbatim.
+
+**Next tick should:**
+1. **Re-attest `mat_g1_na_q1_9` and `mat_g1_na_q2_6`** — batch023 is STALE by my own fix. Same fixed
+   seeds. This also re-tests `sums_up_to_20` on content without zero addends.
+2. **The ~50-node re-review programme** (§5 is now the dominant number). Content has settled; §6F
+   honours supersession so re-reviews subtract rather than accumulate.
+3. **The `pictures` routing defect** — `emoji_pictorial` is registered and servable on both nodes but
+   the student path never selects it, so all 10 seeds render `visual_type None`. Two CONTRADICTED
+   entries ride on it and it is a routing fix, not a table edit.
+4. Open content, all Attester-found and none fixed: noun-number agreement ("65 running shoes and 22
+   water bottle" — right and wrong in one sentence); a distractor exactly key+10 on all 20 sampled
+   items, with key±1 filling the rest, so a pupil can score by shape; 2-of-10 identical stems; the
+   counting-on drills that are not "problems"; `mat_g2_na_q3_1`'s undrawn number line.
+5. `mat_g3_na_q3_1`, the tree's only matrix failure — **not a maintainer's call, and not Rule 10's
+   ladder either.** The ladder settles contested *competency readings*; this is a question of fact with
+   a command that answers it. Tick 19 recorded two readings: (a) a Class C harness bug —
+   `validate_matrix` reads `COMPATIBILITY` directly instead of `get_node_formatters()`, so the exclusion
+   map never applies, and its availability filter carries `not isinstance(bound_val, list)`, so a
+   list-valued scope never filters; versus (b) a Class A pipeline bug — the node advertises formatters
+   it cannot serve. **Both can be true at once.** Decide it by instrumenting the real path: enumerate
+   the `(dna, formatter, variant)` set the orchestrator will actually serve on the student path
+   (`is_student_path=True`, `forced_dna=` since this node is multi-DNA), enumerate what
+   `validate_matrix` claims, and the set difference names which side is lying. Record the outcome under
+   `DECIDED (reversible):` with the command and its verbatim output. Do not pick (a) by reading code.
+6. Consider the wider-seed §1G guard (measured 0 today, so pure insurance) and the `orally` class.
