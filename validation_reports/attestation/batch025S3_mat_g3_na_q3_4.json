@@ -1,0 +1,172 @@
+{
+  "batch": "batch025S3_mat_g3_na_q3_4",
+  "attested_at": "2026-08-23T11:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent dispatch prompt, mechanically regrouped from the packet JSON by local_only/scratch/attester/t25/build_batches.py (samples printed once per set instead of once per clause); no sample text was retyped",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "1 - a single Write of its own verdicts file. The samples were pasted inline into the dispatch prompt, so no read was needed; blindness rests on the prompt contract (Rule 1's forbidden-path list given verbatim), not on a sandbox."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q3_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Rico prepared 6 large trays. Each tray holds 8 plates, and each plate has 20 cookies. How many cookies are there altogether?",
+        "correct_answer": 960,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Rosa solved this problem: \"Bianca arranged 2 shelves with 2 boxes on each shelf. Each box has 10 bottles. How many bottles are there in all?\" Rosa says the answer is 14. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 40
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 42,
+        "question_text": "Maico puts 2 costumes in each of 16 bags. How many costumes are in all the bags? The answer is 32. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 57,
+        "question_text": "Arnel wants to buy 84 running shoes that cost ₱5 each. How much does Arnel need to pay in all?",
+        "correct_answer": 420,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Maria prepared 2 large trays. Each tray holds 7 plates, and each plate has 10 muffins. How many muffins are there altogether?",
+        "correct_answer": 140,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "Kuya Ton puts 2 ribbons in each of 85 bags. How many ribbons are in all the bags?",
+        "correct_answer": 170,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Grace solved this problem: \"Coach Nora wants to buy 4 nets that cost ₱1 each. How much does Coach Nora need to pay in all?\" Grace says the answer is 3. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 4
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 103,
+        "question_text": "Grace solved this problem: \"Bianca bought 3 packs with 7 markers in each pack. Each marker costs ₱2. How much did Bianca pay in all?\" Grace says the answer is 23. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 42
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 118,
+        "question_text": "Ate Gab puts 5 ribbons in each of 85 bags. How many ribbons are in all the bags?",
+        "correct_answer": 425,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "David wants to buy 38 scrolls that cost ₱1 each. How much does David need to pay in all?",
+        "correct_answer": 38,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_multiplication_problems",
+      "node_id": "mat_g3_na_q3_4",
+      "clause": "Solve",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        118
+      ],
+      "reasoning": "Each item terminates in a computed numeric answer the pupil must work out: 960 cookies at seed 11, ₱420 at seed 57, 425 ribbons at seed 118. Even the check-the-worker items (seed 23, seed 103) require solving first, since the key carries a corrected value of 40 and 42.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "1_to_2_step",
+      "node_id": "mat_g3_na_q3_4",
+      "clause": "1-to 2-step",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        11,
+        64,
+        103
+      ],
+      "reasoning": "Both step counts are present. Single-step items appear at seed 42 (2 × 16) and seed 78 (2 × 85); genuine two-step chains appear at seed 11 (6 trays × 8 plates × 20 cookies), seed 64 (2 × 7 × 10) and seed 103 (3 packs × 7 markers, then × ₱2).",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "multiplication_problems",
+      "node_id": "mat_g3_na_q3_4",
+      "clause": "multiplication problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        78,
+        118
+      ],
+      "reasoning": "Every stem is an equal-groups multiplication situation — trays of plates of muffins at seed 64, ribbons per bag at seeds 78 and 118 — and the distractors are built from the additive misread (e.g. 87 and 90 against 170 and 425), which is exactly the multiplicative confusion this competency targets.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "Two items multiply by a unit price of ₱1 (seed 91: 4 nets at ₱1; seed 127: 38 scrolls at ₱1), so the multiplication is degenerate and the answer equals the count. Seed 57's context of buying 84 pairs of running shoes is also implausible for the money setting."
+    },
+    {
+      "capability_id": "problems_involving_money",
+      "node_id": "mat_g3_na_q3_4",
+      "clause": "problems involving money",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        103,
+        91,
+        127
+      ],
+      "reasoning": "Money-priced problems are explicitly present: seed 57 buys 84 items at ₱5 each for ₱420, and seed 103 chains 21 markers at ₱2 each to ₱42. Seeds 91 and 127 are likewise cost-in-all questions denominated in pesos.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    }
+  ],
+  "supersedes": "supersedes batch018_mat_g3_na_q3_4, which §6F reported STALE at seed 11: it judged 'Riza prepared 6 large trays...' and the pipeline now renders the same shape with a different name and numbers. Fresh blind dispatch on freshly rendered samples; the superseded record is retained unaltered."
+}

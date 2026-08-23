@@ -1,0 +1,227 @@
+{
+  "batch": "batch025S3_mat_g3_na_q2_0",
+  "attested_at": "2026-08-23T11:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent dispatch prompt, mechanically regrouped from the packet JSON by local_only/scratch/attester/t25/build_batches.py (samples printed once per set instead of once per clause); no sample text was retyped",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "1 - a single Write of its own verdicts file. The samples were pasted inline into the dispatch prompt, so no read was needed; blindness rests on the prompt contract (Rule 1's forbidden-path list given verbatim), not on a sandbox."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q2_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "How is ₱2463 written in words?",
+        "correct_answer": "two thousand four hundred sixty-three pesos",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "How is 'three hundred seventy-four pesos' written using the peso symbol?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "How is 25 centavos written as a decimal of a peso using the ₱ symbol?",
+        "correct_answer": "₱0.25",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "How is 'three thousand six hundred nineteen pesos' written using the peso symbol?",
+        "correct_answer": "₱3619",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "How is 'three thousand eight hundred fifty-nine pesos' written using the peso symbol?",
+        "correct_answer": "₱3859",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "How is ₱0.50 written using the centavo sign?",
+        "correct_answer": "50¢",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "How is 'five thousand two hundred fourteen pesos' written using the peso symbol?",
+        "correct_answer": "₱5214",
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 103,
+        "question_text": "How is 50 centavos written as a decimal of a peso using the ₱ symbol?",
+        "correct_answer": "₱0.50",
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 118,
+        "question_text": "How is ₱1495 written in words?",
+        "correct_answer": "one thousand four hundred ninety-five pesos",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "How is 'six thousand eight hundred ninety-eight pesos' written using the peso symbol?",
+        "correct_answer": "₱6898",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "read",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "Read",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        78,
+        118
+      ],
+      "reasoning": "Several stems hand the pupil an amount already written in symbol form and require decoding it before answering: seed 11 shows '₱2463' and seed 118 shows '₱1495' and asks what each says in words, and seed 78 requires interpreting '₱0.50' as fifty centavos. That is reading money as written.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "write",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "write",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        57,
+        64,
+        91,
+        127
+      ],
+      "reasoning": "The dominant task in this set is producing a written form: seeds 57, 64, 91 and 127 give the amount spoken in words and ask for the symbol notation (₱3619, ₱3859, ₱5214, ₱6898), and seed 23 asks the same for 374. The pupil selects rather than pens the form, but the object judged is the written representation.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "Key format is inconsistent across items of the same kind: seed 23 keys the letter 'A' while seeds 57, 64 and 127 key the literal option text. Seeds 91 and 103 print no options at all, so it cannot be told from the sample whether they are selection or free-entry items."
+    },
+    {
+      "capability_id": "money",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "money",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        91,
+        127
+      ],
+      "reasoning": "Every sample in the set is about a peso or centavo quantity — nothing here is a bare number. Seeds 23 and 91 even render PesoMoney bill-and-coin payloads (₱374 as 200+100+50+20+4×1), and seeds 42 and 78 work in centavos, so money is the subject matter throughout.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "words",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "words",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        118,
+        57,
+        64
+      ],
+      "reasoning": "Word-form money appears on both sides of the task. Seeds 11 and 118 require choosing the words ('two thousand four hundred sixty-three pesos', 'one thousand four hundred ninety-five pesos'), while seeds 57 and 64 present the words in the stem as the thing to be converted.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "philippine_currency_symbols",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "Philippine currency symbols",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        78,
+        127
+      ],
+      "reasoning": "Philippine currency notation is what the items are built around: the peso sign is used in stems, keys and distractors (seeds 23, 42, 127) and the centavo sign appears as a keyed answer at seed 78. Distractors like '374¢' and '6898¢' also force attention to which symbol is the right one.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "Only two of the notations named by the competency appear (₱ and ¢). The 'PhP' spelling never occurs anywhere in the ten samples."
+    },
+    {
+      "capability_id": "peso_sign",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "₱",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        91
+      ],
+      "reasoning": "The ₱ glyph is used literally and repeatedly — seed 57's key '₱3619', seed 91's key '₱5214', seed 42's key '₱0.25' — and several stems name it explicitly ('using the ₱ symbol').",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "php",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "PhP",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The letter form 'PhP' does not occur in a single stem, option or key across all ten samples; every peso amount shown uses the ₱ glyph instead. Nothing in this set would ever expose the pupil to the alternative spelling the clause names.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. The competency names 'Philippine currency symbols (₱ and PhP)' — two written forms — and the renderer emits only the ₱ glyph, in every one of the ten samples. Under Rule 8 the fix is a PhP-form route in the money renderer (the clause relied on is the parenthetical '(₱ and PhP)'), not a narrowing of the requires block — carried to Next tick should:, not built this tick (budget)."
+    },
+    {
+      "capability_id": "up_to_peso_10000",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "up to ₱10 000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        91,
+        127
+      ],
+      "reasoning": "The amounts sit squarely inside the stated ceiling and reach well into the thousands — ₱2463 at seed 11, ₱5214 at seed 91, ₱6898 at seed 127 — with no sample exceeding ₱10 000. The range the clause bounds is genuinely worked, not just nominally respected.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "The upper part of the range is thin: the largest amount in any stem is ₱6898, so ₱7000–₱10 000 is untouched. The only figure above that is 8407, and it appears solely inside seed 103's visual payload, which contradicts that item's own stem."
+    },
+    {
+      "capability_id": "centavo_sign",
+      "node_id": "mat_g3_na_q2_0",
+      "clause": "centavo sign",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        42
+      ],
+      "reasoning": "Seed 78 asks outright for ₱0.50 rewritten with the centavo sign and keys '50¢', and seed 42 uses '25¢' as a live distractor against the decimal-peso form. The ¢ notation is therefore both taught and discriminated.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    }
+  ],
+  "supersedes": "supersedes b12_mat_g3_na_q2_0, which §6F reported STALE at seed 11: it judged 'How is 25 centavos written as a decimal of a peso using the ₱ symbol?' and the pipeline now renders a words stem there. Fresh blind dispatch on freshly rendered samples; the superseded record is retained unaltered."
+}

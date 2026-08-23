@@ -1,0 +1,225 @@
+{
+  "batch": "batch025S2_mat_g1_na_q1_7",
+  "attested_at": "2026-08-23T11:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent dispatch prompt, mechanically regrouped from the packet JSON by local_only/scratch/attester/t25/build_batches.py (samples printed once per set instead of once per clause); no sample text was retyped",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "1 - a single Write of its own verdicts file. The samples were pasted inline into the dispatch prompt, so no read was needed; blindness rests on the prompt contract (Rule 1's forbidden-path list given verbatim), not on a sandbox."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_7",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "One group has 10 items and another group has 2 items. Putting them together makes ___ items in all.",
+        "correct_answer": 12,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "The two parts are 7 and 11. What is the sum?",
+        "correct_answer": 18,
+        "formatter": "read_fill_in_blank"
+      },
+      {
+        "seed": 42,
+        "question_text": "Manny solved: \"Start at 4. Count up 2 more. You land on ___\". Manny says the blank is 5. Is Manny correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 6
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 57,
+        "question_text": "Start at 16. Count up 3 more. What number do you land on?",
+        "correct_answer": 19,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "One group has 1 item and another group has 10 items. Putting them together makes ___ items in all.",
+        "correct_answer": 11,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "Start at 13. Count up 2 more. What number do you land on?",
+        "correct_answer": 15,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "🐰🐰🐰🐰🐰🐰🐰 — There are 7 bunnies.\n🐰 — 1 more bunny is added.\nHow many total bunnies are there?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥 — There are 15 chicks.\n🐥🐥🐥 — 3 more chicks are added.\nHow many total chicks are there?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "Start at 13. Count up 6 more. What number do you land on?",
+        "correct_answer": 19,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Start at 6. Count up 3 more. What number do you land on?",
+        "correct_answer": 9,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "Illustrate",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        91,
+        103
+      ],
+      "reasoning": "Addition is shown as well as stated: seed 23 draws a NumberBond with parts 7 and 11 and the whole left blank, and seeds 91 and 103 draw the two emoji groups being joined, so the combining is visible on screen. Note the pupil never draws anything here — every illustration is supplied ready-made, unlike a 'shade this' prompt.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "addition_of_numbers",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "addition of numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        118
+      ],
+      "reasoning": "Each sample requires joining two given numbers: 10 and 2 at seed 11, parts 7 and 11 at seed 23, 13 and 6 at seed 118 — numeric addends with a numeric total demanded.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "sums_up_to_20",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "sums up to 20",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        103,
+        118
+      ],
+      "reasoning": "The largest totals in the set land just under the ceiling — 18 at seed 23 (7+11), 18 at seed 103 (15+3) and 19 at seeds 57 and 118 — with no sample exceeding 20, so the stated bound holds across the samples.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "No sample produces a sum of exactly 20, so the top of the range is approached but never tested. Also, seeds 23 and 103 use two-digit addends (11 and 15) at Grade 1 Quarter 1, which is heavier than the count-up items in the same set."
+    },
+    {
+      "capability_id": "concrete",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "concrete",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No manipulable or real-object model appears anywhere: the closest candidates are on-screen emoji bunnies and chicks (seeds 91, 103), which are pictures, and seeds 11 and 64 refer only to nameless \"items\", so the concrete strand of the clause is unrepresented.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Here the refusal rests on emoji glyphs and on two stems whose groups are nameless 'items' with nothing drawn, so there is no object for a Grade 1 pupil to handle or count off-screen. Same class as item_004 and carried with it; the nameless-'items' stems are separately a content defect and are named in the ledger."
+    },
+    {
+      "capability_id": "pictorial_models",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "pictorial models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        91,
+        103
+      ],
+      "reasoning": "Two genuinely different pictures are rendered — a part-part-whole NumberBond at seed 23 and EmojiPictorial groups at seeds 91 (7 bunnies plus 1) and 103 (15 chicks plus 3) — which meets the 'variety of pictorial models' wording better than a single repeated visual would.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "describes",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "describes",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        42
+      ],
+      "reasoning": "The stems characterise the operation in words rather than just posing it: seed 11 says \"Putting them together makes ___ items in all\", seed 57 says \"Start at 16. Count up 3 more\", and seed 42 asks the pupil to judge such a description as stated.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "The description is always supplied by the stem; no sample asks the pupil to produce or select a description of what addition is, so 'describes' is exercised as reading comprehension, not as a pupil utterance."
+    },
+    {
+      "capability_id": "addition",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        91,
+        103,
+        64
+      ],
+      "reasoning": "The operation being characterised is unambiguously addition — the emoji payloads at seeds 91 and 103 carry \"operation\": \"addition\" and show a second group being added to a first, and seed 64 merges a group of 1 with a group of 10.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "counting_up",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "'counting up,'",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "Five of the ten samples use the counting-on frame verbatim — \"Start at 16. Count up 3 more\", \"Start at 13. Count up 2 more\", \"Start at 13. Count up 6 more\", \"Start at 6. Count up 3 more\" — landing on a number rather than summing two sets.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "putting_together",
+      "node_id": "mat_g1_na_q1_7",
+      "clause": "'putting together'",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64
+      ],
+      "reasoning": "Seeds 11 and 64 use the phrase itself — two separate groups and \"Putting them together makes ___ items in all\" — which is the part-part-whole reading of addition the clause quotes.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "Both putting-together stems say only \"items\" with no object named and render no picture, so the groups have no referent the pupil can visualise; naming a real object (or drawing the groups) would make them answerable in the intended way rather than as bare arithmetic."
+    }
+  ],
+  "supersedes": "supersedes b11_mat_g1_na_q1_7, which §6F reported STALE at seed 11: it judged 'The two parts are 2 and 1. What is the sum?' and the pipeline now renders a putting-together stem there. Fresh blind dispatch on freshly rendered samples; the superseded record is retained unaltered."
+}

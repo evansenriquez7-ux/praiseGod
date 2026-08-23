@@ -1,0 +1,232 @@
+{
+  "batch": "batch025S1_mat_g1_na_q1_2",
+  "attested_at": "2026-08-23T11:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent dispatch prompt, mechanically regrouped from the packet JSON by local_only/scratch/attester/t25/build_batches.py (samples printed once per set instead of once per clause); no sample text was retyped",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "1 - a single Write of its own verdicts file (plus one further Write when it was asked to re-check a seed citation against the ten seeds it was shown). The samples were pasted inline into the dispatch prompt, so no read was needed; blindness rests on the prompt contract (Rule 1's forbidden-path list given verbatim), not on a sandbox."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "C",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Move the dot to show 42 on the number line.",
+        "correct_answer": 42,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 42,
+        "question_text": "Use base-10 blocks to show the number 35.",
+        "correct_answer": 35,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 57,
+        "question_text": "What number do the blocks show?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Move the dot to show 47 on the number line.",
+        "correct_answer": 47,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 78,
+        "question_text": "What number do the blocks show?",
+        "correct_answer": "C",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Use base-10 blocks to show the number 54.",
+        "correct_answer": 54,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 103,
+        "question_text": "Move the dot to show 59 on the number line.",
+        "correct_answer": 59,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 118,
+        "question_text": "What number do the blocks show?",
+        "correct_answer": "C",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What number do the blocks show?",
+        "correct_answer": "C",
+        "formatter": "read_mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "recognize",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "Recognize",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        118
+      ],
+      "reasoning": "Seed 57 draws 7 tens and 9 ones and asks which number the blocks show, and seed 11 asks the pupil to read a dot sitting at 91 on a 90-to-100 line; in both the model is given and the number must be named back.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "Option placement is skewed: of the five multiple-choice items, seeds 11, 78, 118 and 127 all key option C and only seed 57 keys A, so a pupil who always picks the third option scores 4 of 5."
+    },
+    {
+      "capability_id": "represent",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "represent",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        91
+      ],
+      "reasoning": "Three items run the other direction: seed 42 hands over the numeral 35 and asks the pupil to build it from blocks, and seed 23 starts the dot parked at 40 and requires it moved to 42, so the pupil constructs the representation instead of reading one.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57,
+        118
+      ],
+      "reasoning": "Whole numbers are the sole subject matter throughout — 91, 42, 35, 79, 44, 54, 59, 71 — with content_type recorded as whole_number on the line items and no fractions, operations or non-numeric material anywhere.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "up_to_100",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "up to 100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        118
+      ],
+      "reasoning": "The ceiling is respected and approached: seed 11's marked value is 91 on a line that terminates exactly at 100, and seeds 57 and 118 sit at 79 and 71, so the upper half of the hundred is used rather than only small two-digit values.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "Nothing below 35 appears, so the lower end of 'up to 100' — teens and single digits, which matter early in Grade 1 Quarter 1 — is untouched by these ten samples."
+    },
+    {
+      "capability_id": "concrete_models",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "concrete",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        91
+      ],
+      "reasoning": "Seeds 42 and 91 are build_number items flagged interactive, where the pupil composes 35 and 54 by placing individual ten-rods and unit cubes; assembling a quantity out of discrete pieces is the manipulative behaviour this clause names.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "These are on-screen manipulatives, not physical objects. If 'concrete' is read strictly as hands-on material, no sample can satisfy it and the provision is virtual-manipulative only — worth knowing before this verdict is treated as full coverage."
+    },
+    {
+      "capability_id": "pictorial_models",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "pictorial models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "The identify_value items are pictures the pupil only looks at — seed 118 renders 7 ten-rods and 1 unit with is_interactive false, so the drawing itself stands in for the quantity and nothing can be moved.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "Seeds 78 and 127 are the same item: both render 4 tens and 4 ones for 44 and offer the identical four values (8, 34, 44, 45) merely reordered, so two of ten samples are duplicates."
+    },
+    {
+      "capability_id": "number_line",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "number line",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "Four samples render a NumberLine with unit intervals and ten divisions — reading a point on the 90-to-100 span in seed 11, and placing one on 40-to-50 or 50-to-60 in seeds 23, 64 and 103.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "Only the two endpoints are labelled on every line, so the pupil must count unlabelled ticks; that is reasonable but means seeds 23 and 64 present the identical 40-to-50 window twice within the ten."
+    },
+    {
+      "capability_id": "block_or_bar_models",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "block or bar models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        91,
+        118
+      ],
+      "reasoning": "Six samples render PlaceValueBlocks with explicit tens and ones counts, such as seed 91's five ten-blocks and four ones for 54, which is the 'block model' branch of the clause's alternatives.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "No bar or tape model appears anywhere; the block branch is the only one exercised. The clause is disjunctive so this still counts, but a reviewer expecting bar models will not find one here."
+    },
+    {
+      "capability_id": "numerals",
+      "node_id": "mat_g1_na_q1_2",
+      "clause": "numerals",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57
+      ],
+      "reasoning": "Numerals function as a representation on both sides of the translation: seed 57's answer set is the written symbols 79 / 97 / 16 / 69 chosen against a block picture, while seeds 23 and 42 present the bare numerals 42 and 35 as the thing to be modelled.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    }
+  ],
+  "supersedes": "supersedes b10_mat_g1_na_q1_2, which §6F reported STALE at seed 11: it judged 'Move the dot to show 30 on the number line.' and the pipeline now renders 'What number is marked on the number line?'. Fresh blind dispatch on freshly rendered samples; the superseded record is retained unaltered."
+}

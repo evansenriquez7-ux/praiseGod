@@ -1,0 +1,237 @@
+{
+  "batch": "batch025S2_mat_g2_na_q3_1",
+  "attested_at": "2026-08-23T11:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent dispatch prompt, mechanically regrouped from the packet JSON by local_only/scratch/attester/t25/build_batches.py (samples printed once per set instead of once per clause); no sample text was retyped",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "1 - a single Write of its own verdicts file. The samples were pasted inline into the dispatch prompt, so no read was needed; blindness rests on the prompt contract (Rule 1's forbidden-path list given verbatim), not on a sandbox."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q3_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Count by 2s: 2. 2 × 1 = ___",
+        "correct_answer": 2,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "Look at the 9×2 array. How many squares are shaded in all?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "Manny solved: \"Starting at 0, taking 2 equal jumps of 5 on the number line lands on ___\". Manny says the missing number is 3. Is Manny correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 10
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 57,
+        "question_text": "7 + 7 + 7 + 7 = ___. What is 7 × 4?",
+        "correct_answer": 28,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Count by 10s: 10, 20. 10 × 2 = ___",
+        "correct_answer": 20,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "4 + 4 + 4 = ___. What is 4 × 3?",
+        "correct_answer": 12,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Shade 3 rows of 10 squares to show 10 + 10 + 10. How many squares did you shade in all?",
+        "correct_answer": 30,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 103,
+        "question_text": "Shade all the squares inside the 8×5 rectangle. How many squares did you shade in all?",
+        "correct_answer": 40,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 118,
+        "question_text": "Starting at 0, take 3 equal jumps of 6 on the number line. What is 6 × 3?",
+        "correct_answer": 18,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "5 + 5 + 5 + 5 + 5 + 5 + 5 + 5 + 5 + 5 = ___. What is 5 × 10?",
+        "correct_answer": 50,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_multiplication",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "Illustrate",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        91,
+        103,
+        23
+      ],
+      "reasoning": "Two items hand the pupil the drawing act itself — seed 91 says \"Shade 3 rows of 10 squares to show 10 + 10 + 10\" and seed 103 says \"Shade all the squares inside the 8×5 rectangle\" — and seed 23 presents an already-shaded 9×2 grid to be read, so multiplication is depicted, not only computed.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "write_multiplication_sentence",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "write multiplication",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        57
+      ],
+      "reasoning": "Multiplication appears in written symbolic form that the pupil must complete: \"2 × 1 = ___\" at seed 11 and \"10 × 2 = ___\" at seed 64, and seed 57 pairs the written sum with the written product \"What is 7 × 4?\".",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "In every sample the × sentence is supplied and the pupil only fills in the product. No sample asks the pupil to compose the multiplication sentence from a model or a repeated-addition string (e.g. 'write the multiplication sentence for 4+4+4'), so the writing demanded is one numeral, not the sentence."
+    },
+    {
+      "capability_id": "multiplication_as_repeated_addition",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "multiplication as repeated addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        127
+      ],
+      "reasoning": "Seeds 57, 78 and 127 all put the repeated-addition string first and the product second — 7+7+7+7 then 7 × 4, 4+4+4 then 4 × 3, ten 5s then 5 × 10 — which is exactly the equivalence the clause names.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "concrete_model",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "concrete",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Nothing in these ten samples involves countable physical objects or manipulatives; the only pictures are abstract grid squares (seeds 23, 91, 103), and the remaining items are bare numerals or verbal number-line instructions, so no concrete model is present.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. The Attester's ground is that shaded grid squares are a pictorial model, not a concrete one, and the competency lists 'concrete and pictorial models' as two things. This is the third independent blind refusal of a 'concrete' clause in this tree, so it is recorded as a class question (what artifact, if any, makes a rendered item concrete) rather than a one-node patch — carried to Next tick should:."
+    },
+    {
+      "capability_id": "pictorial_model",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "pictorial models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        91,
+        103
+      ],
+      "reasoning": "Three samples actually render a GridArea picture — a 9×2 shaded grid at seed 23, a 3-by-10 grid at seed 91 and an 8×5 grid at seed 103 — so the pupil has a picture to work from rather than words alone.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "The pictorial variety is narrow: all three visuals are the same GridArea rectangle. The number-line items (seeds 42, 118) render no visual at all, so the picture set is one model type."
+    },
+    {
+      "capability_id": "numeral_form",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "numerals",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        118,
+        127
+      ],
+      "reasoning": "Multiplication is stated in digits and the × symbol without any object referent in seeds 57 (7 × 4), 118 (6 × 3) and 127 (5 × 10), which is the numeral representation the clause lists alongside concrete and pictorial ones.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "groups_of_equal_quantities",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "groups of equal quantities",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        91,
+        57,
+        127
+      ],
+      "reasoning": "Seed 91 names the equal groups outright — \"3 rows of 10 squares to show 10 + 10 + 10\" — and seeds 57 and 127 present equal-addend strings (four 7s, ten 5s) whose equal quantities are the whole point of the item.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "Every GridArea payload carries \"highlight_groups\": [], so the picture is an undifferentiated block of squares; the partition into equal groups exists only in the wording of seed 91, never in the drawing the pupil sees."
+    },
+    {
+      "capability_id": "array",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "arrays",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        103,
+        91
+      ],
+      "reasoning": "Seed 23 uses the word \"array\" for a rows=9/cols=2 grid, and seeds 103 and 91 render the same rectangular row-and-column arrangement (8×5 and 3×10), so a genuine array structure is on screen.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "counting_by_multiples",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "counting by multiples",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64,
+        11
+      ],
+      "reasoning": "Seed 64 gives the skip-count sequence \"Count by 10s: 10, 20\" before asking for 10 × 2, and seed 11 uses the same \"Count by 2s\" framing, so multiples are being counted rather than only multiplied.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "Seed 11's sequence is a single term (\"Count by 2s: 2\") for 2 × 1, which is a degenerate count — one number is not yet a count-by pattern, and the whole item collapses to recalling 2 × 1."
+    },
+    {
+      "capability_id": "equal_jumps_on_a_number_line",
+      "node_id": "mat_g2_na_q3_1",
+      "clause": "equal jumps on a number line",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        118,
+        42
+      ],
+      "reasoning": "Seed 118 instructs \"Starting at 0, take 3 equal jumps of 6 on the number line\" and seed 42 embeds the same 2-jumps-of-5 move inside an error-check, so the equal-jump model is used to reach the product.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    }
+  ],
+  "supersedes": "supersedes b10_mat_g2_na_q3_1, which §6F reported STALE at seed 11: it judged 'Look at the 4×3 array. How many squares are shaded in all?' and the pipeline now renders a skip-counting stem there. Fresh blind dispatch on freshly rendered samples; the superseded record is retained unaltered."
+}

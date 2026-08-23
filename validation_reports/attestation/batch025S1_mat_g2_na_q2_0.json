@@ -1,0 +1,235 @@
+{
+  "batch": "batch025S1_mat_g2_na_q2_0",
+  "attested_at": "2026-08-23T11:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent dispatch prompt, mechanically regrouped from the packet JSON by local_only/scratch/attester/t25/build_batches.py (samples printed once per set instead of once per clause); no sample text was retyped",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "1 - a single Write of its own verdicts file (plus one further Write when it was asked to re-check a seed citation against the ten seeds it was shown). The samples were pasted inline into the dispatch prompt, so no read was needed; blindness rests on the prompt contract (Rule 1's forbidden-path list given verbatim), not on a sandbox."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q2_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "How much is 1 ₱20 bill, 1 ₱5 coin, and 1 ₱1 coin altogether?",
+        "correct_answer": 26,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Count the coins and bills shown. What is the total amount?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "What is the total value of 3 50¢ coins and 1 25¢ coin, in centavos?",
+        "correct_answer": 175,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "How much is 5 50¢ coins and 2 25¢ coins altogether, in centavos?",
+        "correct_answer": 300,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "How much is 1 ₱50 bill, 1 ₱10 coin, and 2 ₱1 coins altogether?",
+        "correct_answer": 62,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "Find the total amount of 3 ₱10 coins, 5 ₱5 coins, and 3 ₱1 coins:",
+        "correct_answer": 58,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Use coins and bills to make exactly ₱150. Use the fewest pieces possible.",
+        "correct_answer": 150,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 103,
+        "question_text": "Use coins and bills to make exactly ₱655. Use the fewest pieces possible.",
+        "correct_answer": 655,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 118,
+        "question_text": "Find the total amount of 4 ₱10 coins, 3 ₱5 coins, and 2 ₱1 coins:",
+        "correct_answer": 57,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What is the total value of 3 50¢ coins and 6 25¢ coins, in centavos?",
+        "correct_answer": 300,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "determine",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "Determine",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        78
+      ],
+      "reasoning": "Most items withhold the total and make the pupil work it out: seed 78 gives 3 x P10, 5 x P5 and 3 x P1 and the answer 58 only exists after the pupil adds, and seed 11 requires 20+5+1 to reach 26. That computation from named pieces to an amount is the determining act.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "The key convention is inconsistent across the set: seed 23 keys a letter ('A') while every other multiple-choice item keys a raw value (26, 175, 300, 57). A grader assuming one convention will misgrade the other."
+    },
+    {
+      "capability_id": "write_value",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "write the value",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No sample asks the pupil to produce a written figure. The eight valuation items are four-option selections (seed 42 offers 1750 / 165 / 175 / 176), and the two open items, seeds 91 and 103, are answered by placing money pieces on the PesoMoney visual, not by writing an amount.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. The competency's verb pair is 'Determine and write the value'; every valuation item in the set is four-option selection, and the two open items ask the pupil to place money on screen rather than to write an amount. Under Rule 8 the fix is a write-the-amount (free-entry) route on this node's valuation items, not a re-attestation — carried to Next tick should:, not built this tick (budget).",
+      "content_note_from_attester": "If the writing half of 'determine and write' is meant to be exercised, this set has no free-entry numeric response anywhere; recognition of the right numeral among four is the only output form."
+    },
+    {
+      "capability_id": "number_of_bills",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "number of bills",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        91
+      ],
+      "reasoning": "Seed 23 presents a payload whose coin array is empty and whose bill array is 1 x P100 plus 3 x P200, asking for the total of that count of bills alone; seed 91's target of P150 is likewise settled entirely in P50 bills.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "Seed 91 instructs 'use the fewest pieces possible' but its composition is three P50 bills, while bill_faces includes 100 — P100 + P50 is two pieces and therefore fewer. The stated constraint and the modelled answer disagree."
+    },
+    {
+      "capability_id": "number_of_coins",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "number of coins",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        118
+      ],
+      "reasoning": "Seed 78 and seed 118 name only coin denominations (P10, P5, P1) and seeds 42 and 57 only 50c and 25c pieces, so in each the quantity to be valued is a stated count of coins with no bill anywhere in the stem.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "Coin-only items repeat heavily: 78 and 118 are the same template with different counts, and 42, 57 and 127 are three instances of one centavo template, so a 10-sample set carries only two distinct coin-only question shapes."
+    },
+    {
+      "capability_id": "combination_of_bills_and_coins",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "combination of bills and coins",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        103
+      ],
+      "reasoning": "Seed 64 mixes one P50 bill with a P10 coin and two P1 coins, and seed 103's payload reaches 655 only by adding a P5 coin to three P200 bills and a P50 bill, so bills and coins are combined inside a single amount.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "up_to_1000",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "up to ₱1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        103
+      ],
+      "reasoning": "The largest amounts in the set are P700 in seed 23 and P655 in seed 103, both under the ceiling, and the presence of P200 and P100 bill faces means the range is genuinely worked in the hundreds rather than stopping at small change.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "centavo_coins_only",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "centavo coins only",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        127
+      ],
+      "reasoning": "Seeds 42, 57 and 127 are built only from 50c and 25c pieces and explicitly ask for the total 'in centavos' (175, 300, 300), with no peso coin or bill appearing in those stems.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "The three centavo items share one distractor pattern — the correct value, the same value with a trailing zero, plus/minus one — so 1750 next to 175 and 3000 next to 300 recur; a pupil who spots the pattern can eliminate without valuing the coins."
+    },
+    {
+      "capability_id": "peso_coins_only",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "peso coins only",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        118
+      ],
+      "reasoning": "Seed 118's four P10, three P5 and two P1 coins, and seed 78's equivalent mix, are peso-denominated coinage exclusively — no bill is named and no centavo piece is involved in either total.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "peso_bills_only",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "peso bills only",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        91
+      ],
+      "reasoning": "Both bill-only payloads carry an empty coins list: seed 23 values P100 and P200 notes to 700, and seed 91 makes 150 from P50 notes, so the pupil handles paper money on its own.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "Seed 23's stem reads 'Count the coins and bills shown' but the payload contains no coins at all, so the stem promises a referent the picture does not show."
+    },
+    {
+      "capability_id": "combined_peso_coins_and_peso_bills",
+      "node_id": "mat_g2_na_q2_0",
+      "clause": "combined peso coins and peso bills",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        103
+      ],
+      "reasoning": "Peso coins and peso bills sit together in the same amount in seed 11 (a P20 bill with P5 and P1 coins) and seed 103, where the P5 coin is what carries 650 to 655, so the pupil must move across both money forms in one valuation.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    }
+  ],
+  "supersedes": "supersedes b09_mat_g2_na_q2_0, which §6F reported STALE at seed 11: it judged 'Count the coins and bills shown. What is the total amount?' and the pipeline now renders a different stem there. This record is a fresh blind dispatch on freshly rendered samples; the superseded record is retained unaltered."
+}

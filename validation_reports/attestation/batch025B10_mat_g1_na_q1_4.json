@@ -1,0 +1,215 @@
+{
+  "batch": "batch025B10_mat_g1_na_q1_4",
+  "attested_at": "2026-08-23T11:55:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "the Attester was told to read local_only/scratch/attester/t25/B10.prompt.txt, which is the grouped packet render only (clause, competency, grade/quarter, and the 10 rendered student-path samples per set) and contains no node id, capability id or provider",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "2 - one Read of the named packet render and one Write of its own verdicts file. This dispatch cannot claim structural blindness: the Attester had tool access, and Rule 1's forbidden-path list was given to it verbatim as a prompt contract, which is what was verified."
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Arrange these numbers from smallest to largest: 15, 13, 17",
+        "correct_answer": [
+          13,
+          15,
+          17
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 23,
+        "question_text": "Arrange these numbers from largest to smallest: 10, 20, 8",
+        "correct_answer": [
+          20,
+          10,
+          8
+        ],
+        "formatter": "sort_order"
+      },
+      {
+        "seed": 42,
+        "question_text": "Arrange these numbers from largest to smallest: 9, 10, 8",
+        "correct_answer": [
+          10,
+          9,
+          8
+        ],
+        "formatter": "sort_order"
+      },
+      {
+        "seed": 57,
+        "question_text": "Jose counted storybooks collected by 3 friends: 1, 6, 9. Arrange the counts from largest to smallest.",
+        "correct_answer": [
+          9,
+          6,
+          1
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 64,
+        "question_text": "Arrange these numbers from largest to smallest: 16, 11, 18, 1",
+        "correct_answer": [
+          18,
+          16,
+          11,
+          1
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 78,
+        "question_text": "Arrange these numbers from smallest to largest: 14, 15, 2",
+        "correct_answer": [
+          2,
+          14,
+          15
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 91,
+        "question_text": "Maria counted seashells collected by 3 friends: 1, 3, 15. Arrange the counts from smallest to largest.",
+        "correct_answer": [
+          1,
+          3,
+          15
+        ],
+        "formatter": "sort_order"
+      },
+      {
+        "seed": 103,
+        "question_text": "Arrange these numbers from smallest to largest: 15, 11, 20",
+        "correct_answer": [
+          11,
+          15,
+          20
+        ],
+        "formatter": "sort_order"
+      },
+      {
+        "seed": 118,
+        "question_text": "Arrange these numbers from smallest to largest: 13, 7, 12",
+        "correct_answer": [
+          7,
+          12,
+          13
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 127,
+        "question_text": "Jose counted marbles collected by 3 friends: 1, 8, 9. Arrange the counts from smallest to largest.",
+        "correct_answer": [
+          1,
+          8,
+          9
+        ],
+        "formatter": "ordering"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "order",
+      "node_id": "mat_g1_na_q1_4",
+      "clause": "Order",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        118
+      ],
+      "reasoning": "The instruction verb in every sample is \"Arrange\", and the keys are permutations of the given list rather than new values — seed 64 turns 16, 11, 18, 1 into [18, 16, 11, 1] — which is ordering as an operation on a whole set, not a pairwise comparison.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g1_na_q1_4",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        103
+      ],
+      "reasoning": "What gets ordered are bare whole numbers: seed 42 lists 9, 10, 8 with no units or objects attached, and seeds 78 and 103 likewise present naked numerals for arrangement.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "up_to_20",
+      "node_id": "mat_g1_na_q1_4",
+      "clause": "up to 20",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        103,
+        64
+      ],
+      "reasoning": "The ceiling of the range is actually reached and never breached: 20 itself appears in seeds 23 and 103, 18 in seed 64, and scanning all ten samples the largest value anywhere is 20.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed.",
+      "content_note_from_attester": "The three word-problem samples (seeds 57, 91, 127) top out at 9, 15 and 9, so the upper half of the 0-20 range is only ever exercised by the bare-number variants."
+    },
+    {
+      "capability_id": "smallest_to_largest",
+      "node_id": "mat_g1_na_q1_4",
+      "clause": "smallest to largest",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        78,
+        91,
+        103,
+        118
+      ],
+      "reasoning": "Ascending order is asked for and keyed correctly in five samples: seed 118 turns 13, 7, 12 into [7, 12, 13], and seed 91 does the ascending version inside a seashell-counting context.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    },
+    {
+      "capability_id": "vice_versa",
+      "node_id": "mat_g1_na_q1_4",
+      "clause": "vice versa",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        64
+      ],
+      "reasoning": "The reverse direction the competency's \"vice versa\" points at is present as its own instruction: seed 23 asks largest-to-smallest on 10, 20, 8 and keys [20, 10, 8], with seeds 42, 57 and 64 descending too, so the set covers both directions rather than one.",
+      "action_taken": "Left registered; the blind verdict is the evidence the entry needed, and nothing about the entry was changed."
+    }
+  ]
+}
