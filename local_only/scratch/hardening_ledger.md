@@ -4690,7 +4690,7 @@ stronger prompt.
 - **DECIDED (reversible):** `mat_g1_dp_q3_3`, clauses `pictograph`, `without_scale`. Rung: *the node's rendered ground truth*. The node generates only a `FillInTable` visual payload; the underlying pictograph that the student is supposed to read data from is completely omitted from the rendered payload. Reading rejected: that a table alone satisfies a pictograph-reading competency. What would flip it: modifying the table formatter to bundle the pictograph image/glyph representation in the visual payload and re-attesting.
 - **Evidence log entry:** `## 2026-08-24 — tick 26 — 361 clauses attested across 89 nodes; §6F UNATTESTED backlog completely cleared (361 -> 0)`
 - **Queue after:** §5 stale=**557**/49 nodes (unchanged — campaign-deferred, not skipped), non-PASS=18/4 · §6F contra=**83**/52 stale=**2**/2 unattested=**0**/0 · §6D=74/19 · total=**160** — coverage: attested **785/787** (99.7%), reviewed 151/151, mutations 12
-- **Commit(s):** <pending commit>
+- **Commit(s):** `be44b32c` attest(6F): 361 clauses judged blind — UNATTESTED 361 -> 0, CONTRADICTED 60 -> 83
 - **Next tick should:**
   1. **Address the §6F CONTRADICTED findings** (83 clauses across 52 nodes):
      - **Missing visual asset cluster:** `mat_g1_dp_q3_3` (missing source pictograph in `FillInTable`), `mat_g3_mg_q2_3` (missing container/scale visual for capacity), `mat_g3_mg_q2_2` (missing balance scale visual for mass), `mat_g3_mg_q2_0` (missing mass visual), `mat_g2_dp_q3_0` (missing pictograph in `FillInTable`), `mat_g3_mg_q1_1` (unit square tiles not drawn).
