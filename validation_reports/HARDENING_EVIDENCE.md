@@ -7884,3 +7884,19 @@ Key root-cause clusters among the 23 NOT_PROVIDED verdicts:
 6. **Oral Delivery Channel Limitation**:
    - `mat_g1_na_q3_3` (`given_orally`): audio capability requirement under Rule 8.
 
+---
+
+## 2026-08-25 — tick 61 — fix(place_value): sort distractors list for deterministic rendering across hash seeds; refresh mat_g1_na_q2_3 attestation batch (batch061)
+
+### 1. Distractor Non-Determinism Fix in `place_value.py`
+* **Finding:** When generating distractors for `task_type == "decompose"` in `backend/app/practice_gen/dna/na/place_value.py`, candidates were stored in a `set` and sliced via `list(distractors)[:3]`. In Python, converting an unordered set to a list depends on `PYTHONHASHSEED`, leading to non-deterministic distractor order across interpreter processes. At seed 11 on node `mat_g1_na_q2_3`, `fmt_true_false` alternately selected `"2"` vs `"2 + 0"` depending on whether the list began with `plain_sum` or `off_by_place`, causing §6F freshness check failures across test runs.
+* **Fix:** Enforce deterministic distractor ordering via `sorted(distractors)[:3]` prior to truncation.
+* **Verification:**
+  - `PYTHONPATH=. .venv/bin/python3 scripts/check_blast_radius.py --dna place_value` -> `Blast Radius Audit: PASS (4 nodes rendered cleanly across 5 seeds)`.
+  - `PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.validate_matrix --node mat_g1_na_q2_3` -> `Nodes Checked: 1, Nodes Passed: 1, Nodes Failed: 0`.
+  - `PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.run_all` -> Stages 0–5 PASS, Two-Direction Contract Verification PASS.
+
+### 2. Blind Attestation Refresh (`batch061_mat_g1_na_q2_3`)
+* **Dispatch & Verdict:** Fresh blind Attester subagent (`Model: "pro"`) evaluated packet `local_only/scratch/attester/batch_retest.json` containing 10 rendered samples for clauses `Decompose`, `2-digit number`, and `tens and ones`.
+* **Result:** All 3 clauses judged `PROVIDED` with authentic reasoning citing expanded form items and base-10 block visuals across seeds 11–127. Filed to `validation_reports/attestation/batch061_mat_g1_na_q2_3.json`.
+* **Queue Movement:** §6F stale attestations: 0 across 0 nodes; §6F UNATTESTED: 0 across 0 nodes; 100.0% attestation coverage (787/787) maintained.

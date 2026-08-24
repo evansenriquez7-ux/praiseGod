@@ -266,7 +266,7 @@ def generate_params(
             candidate = " + ".join(off_by_place)
             if candidate != exp_form:
                 distractors.add(candidate)
-        distractors_list = list(distractors)[:3]
+        distractors_list = sorted(distractors)[:3]
         while len(distractors_list) < 3:
             filler = f"{rng.randint(1, 9) * 10} + {rng.randint(1, 9)}"
             if filler != exp_form and filler not in distractors_list:

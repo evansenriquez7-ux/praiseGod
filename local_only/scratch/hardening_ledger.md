@@ -5730,3 +5730,37 @@ stronger prompt.
      - **Oral capability class:** `mat_g1_na_q3_3`, `mat_g1_na_q4_6`, `mat_g2_na_q2_5` (Rule 8 audio capability).
      - **Appendix A live defect:** `mat_g3_dp_q3_4` (seed 64 spinner color tied least likely keyed 'red or green').
   2. **The ~50-node §5 re-review programme** (557 stale reviews across 49 nodes).
+
+---
+
+## 2026-08-25 — tick 61 — fix(place_value): sort distractors list for deterministic rendering; refresh mat_g1_na_q2_3 attestation batch (batch061)
+
+- **Queue before:** §5 stale=557/49 nodes (deferred by campaign, not skipped), non-PASS=18/4 · §6F contra=83/52 (deferred by campaign, not skipped) stale=1/1 unattested=0/0 · §6D=74/19 · total=159 — coverage: attested 787/787 (100.0%), reviewed 151/151, mutations 12
+- **Unit(s) of work:**
+  1. Identified and resolved root cause of non-deterministic distractor generation across Python hash seeds on `place_value` DNA (`task_type == "decompose"`) by sorting distractor candidates before truncation in `backend/app/practice_gen/dna/na/place_value.py`.
+  2. Rebuilt blind attestation packet for `mat_g1_na_q2_3` (`batch_retest`), dispatched an independent blind Attester (`pro` subagent) obtaining 3 `PROVIDED` verdicts for clauses `Decompose`, `2-digit number`, and `tens and ones`, and filed `batch061_mat_g1_na_q2_3.json`.
+  3. Re-measured deferred bands per §3 campaign handling: §5 stale (557 clauses across 49 nodes) and §6F CONTRADICTED (83 clauses across 52 nodes, noting re-measured count vs initial prompt estimate).
+- **Class:** A. Classifier output: `CLASS A — generation touched, full run_all REQUIRED: M backend/app/practice_gen/dna/na/place_value.py`. Full `run_all` executed; stages 0–5 passed, contract checks PASS.
+- **Root cause:** Converting an unordered `set` of distractor candidates to `list` without sorting in `place_value.py` produced hash-seed dependent distractor ordering, causing `fmt_true_false` to alternate between selecting `"2"` and `"2 + 0"` for `mat_g1_na_q2_3` seed 11 across Python runs.
+- **Machinery built:** none.
+- **Verification:**
+  - `PYTHONPATH=. .venv/bin/python3 scripts/check_blast_radius.py --dna place_value` → `Blast Radius Audit: PASS (4 nodes rendered cleanly across 5 seeds)`.
+  - `PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.validate_matrix --node mat_g1_na_q2_3` → `Nodes Checked: 1, Nodes Passed: 1, Nodes Failed: 0`.
+  - `PYTHONPATH=. .venv/bin/pytest tests/unit/test_attester_file.py tests/unit/test_judgment_antitemplate.py -q -p no:randomly` → `24 passed in 0.45s`.
+  - `PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.run_all` → Stages 0–5 PASS, Two-Direction Contract Verification PASS.
+  - §2 exact script re-measure → §5 STALE=**557**/49 nodes (deferred by campaign, not skipped), non-PASS=**18**/4, §6F CONTRADICTED=**83**/52 nodes (deferred by campaign, not skipped), §6F stale=**0**/0, §6F UNATTESTED=**0**/0, §6D wildcards=**74**/19 nodes, total capability findings=**158**, coverage=**787/787 (100.0%)**.
+  - `PYTHONPATH=. .venv/bin/python3 scripts/hardening_supervisor.py --reap` → `VERDICT: RESUME — 158 capability finding(s) outstanding` (tree clean, 0 hung processes).
+- **Blind verdicts obtained:** 1 Attester batch (`batch061_mat_g1_na_q2_3`): 3 clauses (`Decompose`, `2-digit number`, `tens and ones`) on node `mat_g1_na_q2_3` judged `PROVIDED` by blind Attester subagent (`Model: "pro"`).
+- **DECIDED (reversible):** none this tick.
+- **Evidence log entry:** `## 2026-08-25 — tick 61 — fix(place_value): sort distractors list for deterministic rendering across hash seeds; refresh mat_g1_na_q2_3 attestation batch (batch061)` in `validation_reports/HARDENING_EVIDENCE.md`.
+- **Queue after:** §5 stale=**557**/49 nodes (deferred by campaign, not skipped), non-PASS=18/4 · §6F contra=**83**/52 (deferred by campaign, not skipped) stale=**0**/0 unattested=**0**/0 · §6D=74/19 · total=**158** — coverage: attested **787/787** (100.0%), reviewed 151/151, mutations 12
+- **Commit(s):** <pending commit>
+- **Next tick should:**
+  1. **Address the §6F CONTRADICTED findings** (83 clauses across 52 nodes) and **§6D wildcard providers** (74 across 19 nodes):
+     - **Missing visual asset cluster:** `mat_g1_dp_q3_3` (missing source pictograph in `FillInTable`), `mat_g3_mg_q2_3` (missing container/scale visual for capacity), `mat_g3_mg_q2_2` (missing balance scale visual for mass), `mat_g3_mg_q2_0` (missing mass visual), `mat_g2_dp_q3_0` (missing pictograph in `FillInTable`), `mat_g3_mg_q1_1` (unit square tiles not drawn).
+     - **Drawing interaction cluster:** `mat_g3_mg_q1_5`, `mat_g3_mg_q1_6`, `mat_g3_mg_q4_0`, `mat_g3_mg_q4_1`, `mat_g3_mg_q4_2`, `mat_g3_mg_q1_4` (drawing served as MCQ).
+     - **Sampler gaps:** `mat_g2_na_q1_9` (`with_regrouping`), `mat_g3_na_q1_4` (`thousand`), `mat_g2_na_q2_2` & `mat_g3_na_q2_1` (`with_regrouping`).
+     - **Oral capability class:** `mat_g1_na_q3_3`, `mat_g1_na_q4_6`, `mat_g2_na_q2_5` (Rule 8 audio capability).
+     - **Appendix A live defect:** `mat_g3_dp_q3_4` (seed 64 spinner color tied least likely keyed 'red or green').
+  2. **The ~50-node §5 re-review programme** (557 stale reviews across 49 nodes).
+
