@@ -5111,7 +5111,7 @@ stronger prompt.
 - **DECIDED (reversible):** none this tick.
 - **Evidence log entry:** none needed (Class B tick, no pipeline/skeleton changes).
 - **Queue after:** §5 stale=**557**/49 nodes (deferred by campaign, not skipped), non-PASS=18/4 · §6F contra=**83**/52 (deferred by campaign, not skipped) stale=**0**/0 unattested=**0**/0 · §6D=74/19 · total=**158** — coverage: attested **787/787** (100.0%), reviewed 151/151, mutations 12
-- **Commit(s):** pending commit docs(ledger): record tick 40 ledger entry
+- **Commit(s):** `4150929e` docs(ledger): record tick 40 ledger entry
 - **Next tick should:**
   1. **Address the §6F CONTRADICTED findings** (83 clauses across 52 nodes) and **§6D wildcard providers** (74 across 19 nodes):
      - **Missing visual asset cluster:** `mat_g1_dp_q3_3` (missing source pictograph in `FillInTable`), `mat_g3_mg_q2_3` (missing container/scale visual for capacity), `mat_g3_mg_q2_2` (missing balance scale visual for mass), `mat_g3_mg_q2_0` (missing mass visual), `mat_g2_dp_q3_0` (missing pictograph in `FillInTable`), `mat_g3_mg_q1_1` (unit square tiles not drawn).
@@ -5120,6 +5120,38 @@ stronger prompt.
      - **Oral capability class:** `mat_g1_na_q3_3`, `mat_g1_na_q4_6`, `mat_g2_na_q2_5` (Rule 8 audio capability).
      - **Appendix A live defect:** `mat_g3_dp_q3_4` (seed 64 spinner color tied least likely keyed 'red or green').
   2. **The ~50-node §5 re-review programme** (557 stale reviews across 49 nodes).
+
+---
+
+## 2026-08-25 — tick 41 — campaign attestation audit: 100% attestation coverage (787/787) maintained; stale batch refreshed for mat_g1_na_q2_3; deferred bands re-measured
+
+- **Queue before:** §5 stale=557/49 nodes (deferred by campaign, not skipped), non-PASS=18/4 · §6F contra=83/52 (deferred by campaign, not skipped) stale=1/1 unattested=0/0 · §6D=74/19 · total=159 — coverage: attested 787/787 (100.0%), reviewed 151/151, mutations 12
+- **Unit(s) of work:**
+  1. Executed §1 preflight supervisor verification (`--reap`) and §2 exact queue measurement under the §6F attestation backlog campaign mandate.
+  2. Dispatched blind Attester subagent (`Model: "pro"`) for `mat_g1_na_q2_3` (3 clauses) to refresh stale attestation batch at seed 11, obtained 3 genuine blind `PROVIDED` verdicts, and filed `batch041_mat_g1_na_q2_3.json` mechanically via `tests/attester_file.py`.
+  3. Verified §6F stale attestations cleared to 0 (0 STALE, 0 UNATTESTED, 100.0% attestation coverage 787/787 maintained), verified unit test suites (24 passed), and re-measured deferred bands per §3 campaign handling: §5 stale (557 clauses across 49 nodes) and §6F CONTRADICTED (83 clauses across 52 nodes, noting re-measured drift from initial prompt estimate of 60/34).
+- **Class:** B. Classifier output: `CLASS B — stages 1-5 cannot have moved` (nothing under `backend/app/practice_gen/` or `data/skeletons/` touched). No `run_all`; §2 re-measured stages 6 and 7 directly in ~17s.
+- **Root cause:** n/a (attestation batch refresh under campaign audit).
+- **Machinery built:** none.
+- **Verification:**
+  - `PYTHONPATH=. .venv/bin/python3 scripts/hardening_supervisor.py --reap` → `VERDICT: RESUME — 159 capability finding(s) outstanding` (tree clean, 0 hung processes).
+  - `PYTHONPATH=. .venv/bin/pytest tests/unit/test_attester_file.py tests/unit/test_judgment_antitemplate.py -q -p no:randomly` → `24 passed in 0.45s`.
+  - §2 exact script re-measure → §5 STALE=**557**/49 nodes (deferred by campaign, not skipped), non-PASS=**18**/4, §6F CONTRADICTED=**83**/52 nodes (deferred by campaign, not skipped), §6F stale=**0**/0, §6F UNATTESTED=**0**/0, §6D wildcards=**74**/19 nodes, total capability findings=**158**, coverage=**787/787 (100.0%)**.
+- **Blind verdicts obtained:**
+  - Attester batch `batch041_mat_g1_na_q2_3`: 3 `PROVIDED` verdicts (`decompose`, `domain_2_digit`, `tens_ones`) by blind `pro` subagent `28c96b6b-252f-4351-a060-6fef820e8db7`.
+- **DECIDED (reversible):** none this tick.
+- **Evidence log entry:** none needed (Class B tick, no pipeline/skeleton changes).
+- **Queue after:** §5 stale=**557**/49 nodes (deferred by campaign, not skipped), non-PASS=18/4 · §6F contra=**83**/52 (deferred by campaign, not skipped) stale=**0**/0 unattested=**0**/0 · §6D=74/19 · total=**158** — coverage: attested **787/787** (100.0%), reviewed 151/151, mutations 12
+- **Commit(s):** `64148e95` docs(ledger): record tick 41 ledger entry; refresh mat_g1_na_q2_3 attestation
+- **Next tick should:**
+  1. **Address the §6F CONTRADICTED findings** (83 clauses across 52 nodes) and **§6D wildcard providers** (74 across 19 nodes):
+     - **Missing visual asset cluster:** `mat_g1_dp_q3_3` (missing source pictograph in `FillInTable`), `mat_g3_mg_q2_3` (missing container/scale visual for capacity), `mat_g3_mg_q2_2` (missing balance scale visual for mass), `mat_g3_mg_q2_0` (missing mass visual), `mat_g2_dp_q3_0` (missing pictograph in `FillInTable`), `mat_g3_mg_q1_1` (unit square tiles not drawn).
+     - **Drawing interaction cluster:** `mat_g3_mg_q1_5`, `mat_g3_mg_q1_6`, `mat_g3_mg_q4_0`, `mat_g3_mg_q4_1`, `mat_g3_mg_q4_2`, `mat_g3_mg_q1_4` (drawing served as MCQ).
+     - **Sampler gaps:** `mat_g2_na_q1_9` (`with_regrouping`), `mat_g3_na_q1_4` (`thousand`), `mat_g2_na_q2_2` & `mat_g3_na_q2_1` (`with_regrouping`).
+     - **Oral capability class:** `mat_g1_na_q3_3`, `mat_g1_na_q4_6`, `mat_g2_na_q2_5` (Rule 8 audio capability).
+     - **Appendix A live defect:** `mat_g3_dp_q3_4` (seed 64 spinner color tied least likely keyed 'red or green').
+  2. **The ~50-node §5 re-review programme** (557 stale reviews across 49 nodes).
+
 
 
 
