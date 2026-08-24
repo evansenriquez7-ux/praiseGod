@@ -4700,3 +4700,32 @@ stronger prompt.
   2. **Re-attest the 2 stale attestations** (`mat_g1_na_q1_9`, `mat_g1_na_q2_6`).
   3. **Work §6D wildcard providers** (74 across 19 nodes).
   4. **The ~50-node §5 re-review programme** (557 stale reviews across 49 nodes).
+
+---
+
+## 2026-08-24 — tick 27 — 16 clauses re-attested; §6F stale attestations cleared (3 -> 0); 100% coverage (787/787)
+
+- **Queue before:** §5 stale=557/49 nodes, non-PASS=18/4 · §6F contra=83/52 stale=3/3 unattested=0/0 · §6D=74/19 · total=161 — coverage: attested 785/787 (99.7%), reviewed 151/151, mutations 12
+- **Unit(s) of work:**
+  1. Re-attested all 3 stale §6F attestation batches (`mat_g1_na_q2_3`, `mat_g2_mg_q4_3`, `mat_g3_mg_q1_5`) blind with a calibrated Attester subagent across 16 capability clauses (15 PROVIDED, 1 NOT_PROVIDED).
+  2. Filed batch `batch027` with verified actions, eliminating all stale attestations (§6F stale 3 -> 0) and reaching 100.0% attestation coverage (787/787 clauses).
+- **Class:** B. Classifier output: `CLASS B — stages 1-5 cannot have moved` (nothing under `backend/app/practice_gen/` or `data/skeletons/` touched). No `run_all`; §2 re-measured stages 6 and 7 directly in ~17s.
+- **Root cause:** Seed 11 question text drift in pipeline after prior fixes caused 3 older attestation records to fail freshness validation.
+- **Machinery built:** none in pipeline. 3 attestation records filed in `validation_reports/attestation/` (`batch027_mat_g1_na_q2_3.json`, `batch027_mat_g2_mg_q4_3.json`, `batch027_mat_g3_mg_q1_5.json`).
+- **Verification:**
+  - `python tests/attester_file.py` dry-run and filing on batch027 → 0 errors, 3 records written cleanly.
+  - `pytest tests/unit/test_attester_file.py -q -p no:randomly` → `13 passed in 0.39s`
+  - `pytest tests/unit/test_capability_contract.py -q -p no:randomly` → `31 passed, 1 skipped in 175.80s`
+  - §2 re-measure → §6F stale attestations **3 → 0**, §6F UNATTESTED **0 → 0**, total capability findings **161 → 158**, coverage **785/787 (99.7%) → 787/787 (100.0%)**.
+- **Blind verdicts obtained:** 1 calibrated Attester batch (batch027), 16 clauses, 3 nodes. 15 PROVIDED / 1 NOT_PROVIDED (`draw_line_relationships` on `mat_g3_mg_q1_5` because selected-response questions about drawing tools do not constitute constructive drawing).
+- **DECIDED (reversible):** `mat_g3_mg_q1_5`, clause `draw` (`draw_line_relationships`). Rung: *the node's rendered ground truth*. The node generates only multiple-choice questions asking which tools to use for drawing; no constructive drawing interaction or canvas is provided. Reading rejected: that an MCQ about drawing tools constitutes drawing. What would flip it: introducing a constructive drawing interaction or canvas and re-attesting.
+- **Evidence log entry:** none needed (Class B tick, no pipeline/skeleton changes).
+- **Queue after:** §5 stale=**557**/49 nodes (deferred by campaign, not skipped), non-PASS=18/4 · §6F contra=**83**/52 (deferred by campaign, not skipped) stale=**0**/0 unattested=**0**/0 · §6D=74/19 · total=**158** — coverage: attested **787/787** (100.0%), reviewed 151/151, mutations 12
+- **Commit(s):** `3f0a33cd` attest(6F): re-attest 3 stale batches (batch027) — §6F stale 3 -> 0, coverage 100%
+- **Next tick should:**
+  1. **Address the §6F CONTRADICTED findings** (83 clauses across 52 nodes) and **§6D wildcard providers** (74 across 19 nodes):
+     - **Missing visual asset cluster:** `mat_g1_dp_q3_3` (missing source pictograph in `FillInTable`), `mat_g3_mg_q2_3` (missing container/scale visual for capacity), `mat_g3_mg_q2_2` (missing balance scale visual for mass), `mat_g3_mg_q2_0` (missing mass visual), `mat_g2_dp_q3_0` (missing pictograph in `FillInTable`), `mat_g3_mg_q1_1` (unit square tiles not drawn).
+     - **Drawing interaction cluster:** `mat_g3_mg_q1_5`, `mat_g3_mg_q1_6`, `mat_g3_mg_q4_0`, `mat_g3_mg_q4_1`, `mat_g3_mg_q4_2`, `mat_g3_mg_q1_4` (drawing served as MCQ).
+     - **Sampler gaps:** `mat_g2_na_q1_9` (`with_regrouping`), `mat_g3_na_q1_4` (`thousand`), `mat_g2_na_q2_2` & `mat_g3_na_q2_1` (`with_regrouping`).
+     - **Oral capability class:** `mat_g1_na_q3_3`, `mat_g1_na_q4_6`, `mat_g2_na_q2_5` (Rule 8 audio capability).
+  2. **The ~50-node §5 re-review programme** (557 stale reviews across 49 nodes).
