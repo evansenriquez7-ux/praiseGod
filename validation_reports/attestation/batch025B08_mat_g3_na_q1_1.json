@@ -1,0 +1,186 @@
+{
+  "batch": "batch025B08_mat_g3_na_q1_1",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q1_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Write the number: eight thousand six hundred thirty.",
+        "correct_answer": 8630,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "The number written as 'two thousand three hundred sixty-nine' is 2369. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 42,
+        "question_text": "Write 1410 in words.",
+        "correct_answer": "one thousand four hundred ten",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "Write 7026 in words.",
+        "correct_answer": "seven thousand twenty-six",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Write the number: three thousand forty-six.",
+        "correct_answer": 3046,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Write 2574 in words.",
+        "correct_answer": "two thousand five hundred seventy-four",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "The number 3825 is written in words as 'three thousand eight hundred twenty-five'. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 103,
+        "question_text": "The number written as 'four thousand five hundred twenty-one' is 4521. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 118,
+        "question_text": "Write 6115 in words.",
+        "correct_answer": "six thousand one hundred fifteen",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Write 2607 in words.",
+        "correct_answer": "two thousand six hundred seven",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "read",
+      "node_id": "mat_g3_na_q1_1",
+      "clause": "Read",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        91
+      ],
+      "reasoning": "Reading a numeral aloud in words is required by seeds 42, 57 and 118, which show 1410, 7026 and 6115 and ask for the spoken form; seed 91 tests the same reading as a True/False judgement about 3825.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "All three True/False samples (seeds 23, 91, 103) are keyed True, so across this set a pupil answering True every time scores those items without reading anything."
+    },
+    {
+      "capability_id": "write",
+      "node_id": "mat_g3_na_q1_1",
+      "clause": "write",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        78
+      ],
+      "reasoning": "The stems are explicitly production tasks in both directions: seed 11 and seed 64 say 'Write the number' after dictating words (8630, 3046), and seed 78 says 'Write 2574 in words'.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Every 'write' item is answered by picking one of four options, so what is actually exercised is recognition of a correct spelling or numeral rather than producing one unaided."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g3_na_q1_1",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        118
+      ],
+      "reasoning": "The objects handled are whole numbers throughout — 8630, 7026 and 6115 in these three seeds — with no measurement units, money or fractions attached to distract from the number itself.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_10000",
+      "node_id": "mat_g3_na_q1_1",
+      "clause": "up to 10 000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        118
+      ],
+      "reasoning": "The largest values sampled sit just under the ceiling and inside it — 8630 at seed 11, 7026 at seed 57, 6115 at seed 118 — so the four-digit territory the bound describes is genuinely worked in.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "The sampled span is narrow for a 'up to 10 000' clause: all ten values are four-digit, the smallest is 1410 and the largest 8630, so neither the 9 000s, the boundary 10 000 itself, nor any two- or three-digit number is ever exercised."
+    },
+    {
+      "capability_id": "numerals",
+      "node_id": "mat_g3_na_q1_1",
+      "clause": "numerals",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        103
+      ],
+      "reasoning": "Digit form is the answer being produced or checked here — seed 11 keys 8630 and seed 64 keys 3046 against digit-string distractors like 8631 and 6403, and seed 103 asks whether 'four thousand five hundred twenty-one' is 4521.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "words",
+      "node_id": "mat_g3_na_q1_1",
+      "clause": "words",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        127
+      ],
+      "reasoning": "Full number-word spellings are the answer space in these seeds, including the tricky zero-tens and zero-hundreds cases: seed 57 keys 'seven thousand twenty-six' and seed 127 keys 'two thousand six hundred seven', with plausible word-form distractors alongside.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "batch": "batch025B08_mat_g2_mg_q4_2",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q4_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Look at the class schedule:\n• Math: 8:00 a.m. – 9:00 a.m.\n• English: 9:00 a.m. – 9:45 a.m.\nHow many minutes long is the English class?",
+        "correct_answer": 45,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "A 2-day gardening project starts on Monday. On what day of the week does it end?",
+        "correct_answer": "Tuesday",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "A class started at 9:15 a.m. and ended at 9:35 a.m. How many minutes did it last?",
+        "correct_answer": 20,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "A class started at 4:45 p.m. and lasted 5 minutes. What time did it end?",
+        "correct_answer": "4:50 p.m.",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Look at the bus timetable:\n• Bus 1: Departs 7:00 a.m., Arrives 8:00 a.m.\n• Bus 2: Departs 8:15 a.m., Arrives 9:15 a.m.\nAccording to the timetable, how many minutes is the travel time for Bus 2?",
+        "correct_answer": 60,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "The community sports festival ended at 10:00 a.m. after running for 4 hours. What time did it start?",
+        "correct_answer": "6:00 a.m.",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "A soccer practice started at 8:30 a.m. and lasted 40 minutes. What time did it end?",
+        "correct_answer": "9:10 a.m.",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "Look at the bus timetable:\n• Bus 1: Departs 7:00 a.m., Arrives 8:00 a.m.\n• Bus 2: Departs 8:15 a.m., Arrives 8:50 a.m.\nAccording to the timetable, how many minutes is the travel time for Bus 1?",
+        "correct_answer": 60,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "The community sports festival started at 8:00 a.m. and lasted for 2 hours. What time did it end?",
+        "correct_answer": "10:00 a.m.",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "A class started at 7:00 a.m. and lasted 25 minutes. What time did it end?",
+        "correct_answer": "7:25 a.m.",
+        "formatter": "cloze"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g2_mg_q4_2",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        91
+      ],
+      "reasoning": "The samples are situated word problems that need a computation, not clock-reading: seed 91 gives a soccer practice starting 8:30 a.m. lasting 40 minutes, and seed 78 works backwards from a festival that ended at 10:00 a.m. after 4 hours to find its 6:00 a.m. start.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "elapsed_time",
+      "node_id": "mat_g2_mg_q4_2",
+      "clause": "elapsed time",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        91,
+        118
+      ],
+      "reasoning": "Both directions of elapsed-time reasoning appear — duration from two clock times (seed 42: 9:15 to 9:35 gives 20 minutes) and end time from a start plus a duration (seed 57: 4:45 p.m. plus 5 minutes; seed 91: 8:30 a.m. plus 40 minutes; seed 118: 8:00 a.m. plus 2 hours).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "minutes_in_an_hour",
+      "node_id": "mat_g2_mg_q4_2",
+      "clause": "minutes in an hour",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64,
+        91,
+        103
+      ],
+      "reasoning": "The 60-minutes-per-hour relation is what the answer turns on in seed 64 and seed 103, where a whole-hour gap (8:15 to 9:15; 7:00 to 8:00) must be reported as 60 minutes, and seed 91 crosses the hour boundary (8:30 + 40 min = 9:10), which cannot be done without it.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "hours_in_a_day",
+      "node_id": "mat_g2_mg_q4_2",
+      "clause": "hours in a day",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No sample ever relates hours to a day. Seeds 78 and 118 use hour-length durations (4 hours, 2 hours) inside a single morning, and every time in the set is a.m. or p.m. within one day, so the 24-hours-in-a-day fact is never needed or shown.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. No sample relates hours to a day or exercises the 24-hours-in-a-day conversion/fact; stems only manipulate within-day durations. Sampler/variant gap; carried to Next tick should:."
+    },
+    {
+      "capability_id": "days_in_a_week",
+      "node_id": "mat_g2_mg_q4_2",
+      "clause": "days in a week",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23
+      ],
+      "reasoning": "Seed 23 is the one sample working in units of days and named weekdays — a 2-day project beginning Monday, with Tuesday/Wednesday/Thursday/Friday as options — so ordering the days of the week is the reasoning required, though no sample ever wraps past Sunday.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seed 23 is ambiguous: keyed Tuesday counts the days inclusively (Monday is day 1), but reading '2 days' as an added interval gives Wednesday, which is offered as a distractor. The stem should say whether the start day counts."
+    },
+    {
+      "capability_id": "timetables",
+      "node_id": "mat_g2_mg_q4_2",
+      "clause": "timetables",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        103
+      ],
+      "reasoning": "Three samples present an actual tabulated schedule the pupil must read a row from — seed 64 and seed 103 show a two-row bus timetable with departure and arrival times and ask about a named bus, and seed 11 shows a class schedule with Math and English periods.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

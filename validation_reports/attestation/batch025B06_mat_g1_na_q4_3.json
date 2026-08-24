@@ -1,0 +1,185 @@
+{
+  "batch": "batch025B06_mat_g1_na_q4_3",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q4_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "How is 'ten pesos' written using the peso symbol?",
+        "correct_answer": "₱10",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "A bill marked with the number 50 is shown. What bill is it?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "A bill marked with the number 20 is shown. What bill is it?",
+        "correct_answer": "₱20 bill",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "How is ₱10 written in words?",
+        "correct_answer": "ten pesos",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "How is ₱20 written in words?",
+        "correct_answer": "twenty pesos",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "How is 'one hundred pesos' written using the peso symbol?",
+        "correct_answer": "₱100",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "A coin marked with the number 20 is shown. What coin is it?",
+        "correct_answer": "₱20 coin",
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 103,
+        "question_text": "How is 'five pesos' written using the peso symbol?",
+        "correct_answer": "₱5",
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 118,
+        "question_text": "How is ₱50 written in words?",
+        "correct_answer": "fifty pesos",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "How is ₱100 written using the currency code PhP?",
+        "correct_answer": "PhP 100",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "recognize",
+      "node_id": "mat_g1_na_q4_3",
+      "clause": "Recognize",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        91
+      ],
+      "reasoning": "Three stems put a denomination in front of the pupil and ask 'What bill is it?' / 'What coin is it?' — the task is naming the money on sight, not calculating with it, which is exactly the act of recognition.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seed 42's stem asserts a bill 'is shown' but the item draws nothing; the only referent is the numeral 20 sitting inside the sentence, so the pupil reads a word rather than recognises a bill."
+    },
+    {
+      "capability_id": "coins",
+      "node_id": "mat_g1_na_q4_3",
+      "clause": "coins",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        91,
+        103
+      ],
+      "reasoning": "Coins are the object of the item at seed 91 ('What coin is it?', keyed ₱20 coin) and a coin is what the pupil is shown at seed 103, where the drawn payload is a single ₱5 coin; coin denominations also populate the option lists at seeds 11 and 42.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seed 91 is internally inconsistent: the stem says the coin is marked 20 and the key is '₱20 coin', but the rendered PesoMoney payload contains one coin of denomination 10, and the packet's own coin_faces list is [1, 5, 10] with 20 living in bill_faces. A pupil answering from the picture answers ₱10."
+    },
+    {
+      "capability_id": "excluding_centavo_coins",
+      "node_id": "mat_g1_na_q4_3",
+      "clause": "excluding centavo coins",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        118
+      ],
+      "reasoning": "Every keyed answer across the set is a whole-peso denomination — ₱10, ten pesos, fifty pesos — and the centavo forms (10¢ at seed 11, 'ten centavos' at 57, 'fifty centavos' at 118) never carry the key, so no centavo coin is ever something the pupil must recognise as money.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "The exclusion holds for the answers but not for the distractors: rejecting '10¢', 'twenty centavos' and 'PhP100c' requires the pupil to already read centavo notation, which is the very thing the competency brackets out."
+    },
+    {
+      "capability_id": "bills",
+      "node_id": "mat_g1_na_q4_3",
+      "clause": "bills",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42
+      ],
+      "reasoning": "Bills are named as such in two stems and keyed as such — '₱50 bill' and '₱20 bill' — and the bill_faces list carried by the rendered payloads is [20, 50, 100], so paper money is a first-class object in this set and not just a distractor.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seed 23 contradicts itself: the stem says the bill is marked 50 and keys '₱50 bill', while the drawn payload holds one bill of denomination 100 — and '₱100 bill' is on the option list, so the picture actively steers the pupil to a wrong option."
+    },
+    {
+      "capability_id": "up_to_100",
+      "node_id": "mat_g1_na_q4_3",
+      "clause": "up to ₱100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        127
+      ],
+      "reasoning": "The ceiling itself is exercised — seed 78 asks for 'one hundred pesos' in symbol form and seed 127 asks for ₱100 in currency-code form — and no keyed denomination anywhere in the set sits above ₱100.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "The distractor ₱1000 at seed 78 is the only value above the stated ceiling; as a wrong option it is defensible, but it is the one place four-digit peso notation enters a Grade 1 item."
+    },
+    {
+      "capability_id": "notations",
+      "node_id": "mat_g1_na_q4_3",
+      "clause": "notations",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        127
+      ],
+      "reasoning": "Notation is the whole substance of six of the ten samples, and three different written systems are exercised: symbol form (seed 11, 'ten pesos' → ₱10), word form (seed 57, ₱10 → 'ten pesos'), and the currency code (seed 127, ₱100 → 'PhP 100', with '100 PhP' offered as a placement trap).",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

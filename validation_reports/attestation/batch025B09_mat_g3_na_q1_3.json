@@ -1,0 +1,192 @@
+{
+  "batch": "batch025B09_mat_g3_na_q1_3",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q1_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "In the number 7125, the value of the digit 7 in the thousands place is 3. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 23,
+        "question_text": "In the number 1485, the value of the digit 5 in the ones place is 5. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 42,
+        "question_text": "In 1695, what digit is in the ones place?",
+        "correct_answer": 5,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "What place is the digit 5 in, in the number 4215?",
+        "correct_answer": "ones",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 64,
+        "question_text": "What is the place value of the digit 1 in 1730?",
+        "correct_answer": 1000,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What place is the digit 6 in, in the number 1605?",
+        "correct_answer": "hundreds",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 91,
+        "question_text": "What place is the digit 7 in, in the number 2175?",
+        "correct_answer": "tens",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "In 6705, what digit is in the tens place? The answer is 0. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 118,
+        "question_text": "In 2350, what digit is in the hundreds place?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What place is the digit 0 in, in the number 1630? The answer is ones. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "determine",
+      "node_id": "mat_g3_na_q1_3",
+      "clause": "Determine",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        118
+      ],
+      "reasoning": "Each stem puts the pupil in the position of working something out rather than recalling it: seed 42 and seed 118 demand the digit sitting in a named column, seed 57 demands the column name for a named digit. Nothing is handed over in the stem.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "place_value_of_digit",
+      "node_id": "mat_g3_na_q1_3",
+      "clause": "place value of a digit",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        91,
+        64
+      ],
+      "reasoning": "Three stems (57, 78, 91) ask outright which place a given digit occupies, with answers ones, hundreds and tens respectively, and seed 64 uses the phrase 'place value of the digit 1' directly. Both the naming form and the phrase itself are present.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seed 64 asks for the 'place value of the digit 1 in 1730' and keys 1000. Under the distinction the competency itself draws between 'place value of a digit' and 'value of a digit', the place value here is thousands and 1000 is the value; the option list (1 / 1000 / 10 / 11) offers no place name, so the item resolves the ambiguity by fiat rather than teaching it."
+    },
+    {
+      "capability_id": "4_digit_number",
+      "node_id": "mat_g3_na_q1_3",
+      "clause": "4-digit number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "I checked the numeral in every one of the ten stems — 7125, 1485, 1695, 4215, 1730, 1605, 2175, 6705, 2350, 1630 — and each is exactly four digits, none padded and none short. The thousands digit is also varied (1, 2, 4, 6, 7), not stuck at one value.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "value_of_digit",
+      "node_id": "mat_g3_na_q1_3",
+      "clause": "value of a digit",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        11
+      ],
+      "reasoning": "Seed 23 asserts 'the value of the digit 5 in the ones place is 5' and keys True, and seed 11 asserts the value of 7 in the thousands place is 3 and keys False. The pupil has to weigh a claimed digit-value against the real one, which is the value idea rather than the place idea.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seed 11's false claim is '3', a number with no relation to 7, 7000 or the numeral 7125. A pupil who has not learned anything can reject it; a near-miss such as 7 or 700 would actually test the confusion between digit and value."
+    },
+    {
+      "capability_id": "digit_of_number",
+      "node_id": "mat_g3_na_q1_3",
+      "clause": "digit of number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        118,
+        103
+      ],
+      "reasoning": "The reverse direction — place given, digit wanted — appears three times: ones place in 1695 keyed 5, hundreds place in 2350 keyed 3, and tens place in 6705 keyed 0. The zero case in seed 103 is the strongest of these because it forces the pupil to read an empty column rather than pick a visible non-zero digit.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "given_place_value",
+      "node_id": "mat_g3_na_q1_3",
+      "clause": "place value",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        127,
+        103,
+        42
+      ],
+      "reasoning": "The 'given its place value' direction is supplied by stems that name a column first and make the pupil supply or verify what sits there: seed 42 (ones), seed 103 (tens, verified as 0), seed 127 (asks which place holds the 0 in 1630 and keys ones). Place names are used as the given, not only as the answer.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

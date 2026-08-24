@@ -1,0 +1,183 @@
+{
+  "batch": "batch025B08_mat_g2_na_q3_7",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q3_7",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "In 10 ÷ ___ = 2, the missing number is 4. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 23,
+        "question_text": "In 2 × ___ = 2, the missing number is 1. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 42,
+        "question_text": "What number goes in the blank: ___ × 2 = 2?",
+        "correct_answer": 1,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "What number goes in the blank: 30 ÷ 10 = ___?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What number goes in the blank: 10 × ___ = 50?",
+        "correct_answer": 5,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What number goes in the blank: 3 × 10 = ___?",
+        "correct_answer": 30,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "10 × 6 = ___",
+        "correct_answer": 60,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Both sides balance evenly. 100 ÷ ? = 10. What is the missing value?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "What number goes in the blank: ___ × 3 = 30?",
+        "correct_answer": 10,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Both sides balance evenly. 2 × ? = 2. What is the missing value?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "find",
+      "node_id": "mat_g2_na_q3_7",
+      "clause": "Find",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        64,
+        103
+      ],
+      "reasoning": "The task the pupil is set is to determine an unknown quantity, not to verify or copy one: seed 42 and seed 64 both say 'What number goes in the blank', and seed 103 asks 'What is the missing value?' after showing 100 ÷ ? = 10.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "missing_number",
+      "node_id": "mat_g2_na_q3_7",
+      "clause": "missing number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        118,
+        127
+      ],
+      "reasoning": "An unknown is held open by a blank or a question mark inside the sentence and the answer supplies it — seed 118 (___ × 3 = 30, key 10), seed 42 (___ × 2 = 2, key 1), seed 127 (2 × ? = 2, key 1) — and seed 11 even names it, 'the missing number is 4'.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "In seeds 57, 78 and 91 the blank sits on the result side (30 ÷ 10 = ___, 3 × 10 = ___, 10 × 6 = ___), so those three reduce to plain computation of a product or quotient rather than recovering a hidden factor or divisor."
+    },
+    {
+      "capability_id": "number_sentence",
+      "node_id": "mat_g2_na_q3_7",
+      "clause": "number sentence",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        103
+      ],
+      "reasoning": "Each stem presents a complete equation with an equals sign rather than a bare calculation: seed 11 shows 10 ÷ ___ = 2, seed 57 shows 30 ÷ 10 = ___, and seed 103's balance-scale payload splits the same sentence into left_side '100 ÷ ?' and right_side '10'.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "multiplication",
+      "node_id": "mat_g2_na_q3_7",
+      "clause": "multiplication",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        64,
+        78,
+        118
+      ],
+      "reasoning": "The × operator carries the sentence in six of the ten samples, with the unknown on either factor: seed 64 is 10 × ___ = 50, seed 118 is ___ × 3 = 30, seed 42 is ___ × 2 = 2, and seed 78 is 3 × 10 = ___.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "division",
+      "node_id": "mat_g2_na_q3_7",
+      "clause": "division",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        103
+      ],
+      "reasoning": "Three samples are built on the ÷ operator — seed 11 (10 ÷ ___ = 2), seed 57 (30 ÷ 10 = ___) and seed 103 (100 ÷ ? = 10) — and in seeds 11 and 103 the unknown is the divisor itself, so division is genuinely the operation being reasoned about.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "factors_2_3_4_5_10",
+      "node_id": "mat_g2_na_q3_7",
+      "clause": "2, 3, 4, 5, and 10",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Sweeping the multiplier/divisor in every sample gives 2 (seeds 23, 42, 127), 3 (seeds 78, 118), 5 (seed 64) and 10 (seeds 11, 57, 64, 78, 91, 103), but 4 never operates in any of the ten sentences; the only 4 in the packet is the false claim inside seed 11's stem and a distractor option, so the enumerated set is not fully exhibited.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Factor 4 never appears as multiplier or divisor across 10 samples (appears only in distractor/false premise). Sampler gap in the factors enumeration; carried to Next tick should:.",
+      "content_note_from_attester": "Seed 91 multiplies by 6 (10 × 6 = ___) and seed 103 works from a dividend of 100 — both stay inside the clause via the 10, but 6 is outside the named set. Also, three of the ten samples (23, 42, 127) are the same trivial fact 2 × 1 = 2, which narrows the coverage further."
+    }
+  ]
+}

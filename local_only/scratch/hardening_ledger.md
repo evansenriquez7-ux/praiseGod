@@ -4623,3 +4623,44 @@ and nothing structurally prevented a forbidden read — earlier records could as
 `tool_uses_by_attester: 0` and mean "blindness was structural"; today's cannot, and every record filed
 says so in full rather than asserting a clean 0. Closing this needs a sandboxed dispatch, not a
 stronger prompt.
+
+
+---
+
+## 2026-08-24 — tick 25 — 177 clauses attested; §6F UNATTESTED 538 -> 361
+
+- **Queue before:** §5 stale=557/49 nodes, non-PASS=18/4 · §6F contra=37/22 stale=2/2 unattested=538/116 · §6D=74/19 · total=652 — coverage: attested 249/787 (31.6%), reviewed 151/151, mutations 12
+- **Unit(s) of work:**
+  1. Filed 9 blind Attester batches (B01–B09: `batch025B01` through `batch025B09`), covering 177 capability clauses across 27 nodes with 154 PROVIDED and 23 NOT_PROVIDED verdicts.
+  2. Authored verified `actions.json` dispositions for all newly surfaced `NOT_PROVIDED` clauses (four-medium gap on `mat_g2_na_q4_3`, position sampler gap on `mat_g1_na_q1_5`, rhythm/arts/visual gaps on `mat_g1_na_q3_6`, oral/audio capability gap on `mat_g1_na_q4_6` & `mat_g2_na_q2_5`, regrouping sampler gap on `mat_g2_na_q2_2` & `mat_g3_na_q2_1`, factors/hours sampler gaps on `mat_g2_na_q3_7` & `mat_g2_mg_q4_2`, drawing interaction gap on `mat_g3_mg_q1_4`, and illustrating route on `mat_g2_na_q1_10`).
+  3. Validated attestation record integrity, seed provenance, skeleton clustering, and 0 §6G violations against the entire attestation corpus.
+- **Class:** B. Classifier output: `CLASS B — stages 1-5 cannot have moved` (nothing under `backend/app/practice_gen/` or `data/skeletons/` touched). No `run_all`; §2 re-measured stages 6 and 7 directly in ~17s.
+- **Root cause:** n/a for the evidence-producing unit itself. The dominant root causes found by it:
+  (a) Missing media / representation formatters on nodes requiring concrete models (`fraction_charts`, `fraction_tiles`, `number_line`, `groups_of_objects` on `mat_g2_na_q4_3`, `rhythmic_properties` / `arts` on `mat_g1_na_q3_6`, and `in_pictures` on `mat_g1_na_q4_6`).
+  (b) Sampler edge omissions where the generator implementation fails to draw specific named values in the 10-sample window (e.g. carry-free additions generated on nodes requiring `with_regrouping` on `mat_g2_na_q2_2` and `mat_g3_na_q2_1`; factor 4 omitted on `mat_g2_na_q3_7`; 24 hours in a day omitted on `mat_g2_mg_q4_2`; 1st/3rd target positions appearing only as distractors on `mat_g1_na_q1_5`).
+  (c) The `given_orally` channel limitation (4th and 5th independent blind refusals on `mat_g1_na_q4_6` and `mat_g2_na_q2_5`), requiring audio/oral capability architecture under Rule 8.
+- **Machinery built:** none in pipeline. 27 attestation records filed in `validation_reports/attestation/`.
+- **Verification:**
+  - `python tests/attester_file.py` dry-run and filing on B01..B09 → 0 errors, all 27 records written cleanly.
+  - `pytest tests/unit/test_attester_file.py -q -p no:randomly` → `13 passed in 0.31s`
+  - `pytest tests/unit -m "not slow" -q -p no:randomly` → `344 passed, 2 deselected, 1 warning in 113.60s`
+  - §2 re-measure → UNATTESTED **538 → 361**, CONTRADICTED **37 → 60**, total **652 → 498**, coverage **249/787 (31.6%) → 426/787 (54.1%)**.
+- **Blind verdicts obtained:** 9 Attester batches (B01–B09), 177 clauses, 27 nodes. 154 PROVIDED / 23 NOT_PROVIDED. 0 §6G violations. No Declarer, Reviewer, or Evaluator this tick.
+- **DECIDED (reversible):** `mat_g2_na_q4_3`, clauses `fraction_charts`, `fraction_tiles`, `number_line`, `groups_of_objects`. Rung: *the node's rendered ground truth*. The node generates only `FractionShade` and `FractionModel` continuous area models; none of the other four named media are drawn. Reading rejected: that area models suffice for all fraction representations. What would flip it: wiring concrete multi-bar/tile/number-line fraction visual formatters to `mat_g2_na_q4_3` and re-attesting.
+- **Evidence log entry:** `## 2026-08-24 — tick 25 — 177 clauses attested; §6F UNATTESTED backlog reduced from 538 to 361`
+- **Queue after:** §5 stale=**557**/49 nodes (unchanged — campaign-deferred, not skipped), non-PASS=18/4 · §6F contra=**60**/34 stale=**2**/2 unattested=**361**/89 · §6D=74/19 · total=**498** — coverage: attested **426/787** (54.1%), reviewed 151/151, mutations 12
+- **Commit(s):** `5307fd88` attest(6F): 177 clauses judged blind — UNATTESTED 538 -> 361, CONTRADICTED 37 -> 60
+- **Next tick should:**
+  1. **Continue working the §6F attestation backlog** (361 clauses across 89 nodes remain UNATTESTED). Next batch group of nodes: `['mat_g1_dp_q3_2', 'mat_g1_dp_q3_3', 'mat_g1_mg_q1_2', 'mat_g1_mg_q2_0', 'mat_g1_mg_q2_1', 'mat_g1_mg_q2_2', 'mat_g1_mg_q4_2', 'mat_g1_mg_q4_3', 'mat_g1_na_q1_1', 'mat_g1_na_q1_3']`.
+  2. **Group newly surfaced NOT_PROVIDED findings by shared root cause:**
+     - **No visual / missing media cluster:** `mat_g2_na_q4_3` (fraction charts/tiles/number line/groups of objects), `mat_g1_na_q4_6` (`in_pictures`), `mat_g1_na_q1_5` (`objects`), `mat_g1_na_q3_6` (`visual_elements` / `rhythmic_properties` / `arts`).
+     - **Regrouping / carry sampler gap:** `mat_g2_na_q2_2` and `mat_g3_na_q2_1` (`with_regrouping` never drawn in 10-seed window).
+     - **Target position distractor bias (defect shape 4):** `mat_g1_na_q1_5` (1st and 3rd generated only as wrong options).
+     - **Factors & hour units sampler gaps:** `mat_g2_na_q3_7` (factor 4) and `mat_g2_mg_q4_2` (hours in a day).
+     - **Drawing / interaction gap:** `mat_g3_mg_q1_4` (`draws` served as selected-response MCQ).
+     - **Oral delivery capability class:** `mat_g1_na_q4_6` and `mat_g2_na_q2_5` (Rule 8 audio capability).
+  3. **Live content defects & deferred work carried forward:**
+     - `mat_g3_mg_q2_0` (mass of object with no visual rendered; distractors at ±1).
+     - `mat_g3_dp_q3_0` seed 118 (tied minimum faces where Face 1 is keyed and Face 3 is offered as an option).
+     - §5 stale re-reviews (557 across 49 nodes, deferred by campaign).
+     - §6F CONTRADICTED (60 across 34 nodes, deferred by campaign).

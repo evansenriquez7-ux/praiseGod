@@ -1,0 +1,197 @@
+{
+  "batch": "batch025B03_mat_g2_na_q1_10",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_10",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Is 288 + 701 the same as 701 + 288?",
+        "correct_answer": true,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Is 692 + 301 the same as 301 + 692?",
+        "correct_answer": true,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "Is (241 + 111) + 516 the same as 241 + (111 + 516)?",
+        "correct_answer": true,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "What is 0 + 377?",
+        "correct_answer": 377,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Is 892 + 6 the same as 6 + 892?",
+        "correct_answer": true,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What is 99 + 0?",
+        "correct_answer": 99,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Grace solved: \"0 + 605 = ___\". Grace says the missing number is 0. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 605
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 103,
+        "question_text": "Is (714 + 112) + 63 the same as 714 + (112 + 63)?",
+        "correct_answer": true,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "Is (16 + 451) + 222 the same as 16 + (451 + 222)?",
+        "correct_answer": true,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What is 0 + 935?",
+        "correct_answer": 935,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_properties",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "Illustrate",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Nothing in Set A shows a property to the pupil: there is no VISUAL RENDERED line on any of the ten samples, and no sample displays a completed equality, a grouping of objects, or a worked demonstration. Seeds 42 and 118 do put the associative equation on the page, but only as a yes/no question the pupil must judge, which is testing the property rather than illustrating it.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. The competency's verb pair is 'Illustrate and apply'; the set renders no model, no visual and no completed equality — every item asks the pupil to judge a statement instead. The 'apply' half is provided, the 'illustrate' half is not, and the fix is an illustrating route (a rendered model of the property) rather than a re-attestation. Carried to Next tick should:."
+    },
+    {
+      "capability_id": "apply_properties",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "apply",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        91,
+        127
+      ],
+      "reasoning": "The pupil has to use a property to produce an answer, not just recognise one: seeds 57 and 127 require the zero property to yield 377 and 935, and seed 91 makes the pupil apply it against Grace's claim that 0 + 605 is 0, keying the correction to 605.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "properties_of_addition",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "properties of addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57
+      ],
+      "reasoning": "All three properties named by the competency turn up in the same set of ten: identity at seed 57 (0 + 377), commutativity at seed 11 (288 + 701 against 701 + 288), and associativity at seed 42 ((241 + 111) + 516 against 241 + (111 + 516)).",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Every true/false property item in this set keys True (seeds 11, 23, 42, 64, 103, 118). A pupil who answers True without reading scores 6 of 6; no sample presents a false rearrangement to discriminate against."
+    },
+    {
+      "capability_id": "sums_up_to_1000",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "sums up to 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23
+      ],
+      "reasoning": "The addends reach the top of the stated range while staying inside it: 288 + 701 = 989 at seed 11 and 692 + 301 = 993 at seed 23. No sample totals more than 1000; the three-addend items come to 868, 889 and 689.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "identity_property",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "sum of zero and any number is equal to the number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        91,
+        127
+      ],
+      "reasoning": "Zero appears as an addend on both sides of the operator and the keyed answer is always the other number unchanged: 0 + 377 keyed 377 (seed 57), 99 + 0 keyed 99 (seed 78), 0 + 935 keyed 935 (seed 127), and seed 91 keys correct_value 605 for 0 + 605.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "commutative_property",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "changing the order of the addends does not change the sum",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64
+      ],
+      "reasoning": "Three samples present the identical pair of addends written in swapped order and ask whether the sums agree: 288/701 (seed 11), 692/301 (seed 23), and 892/6 (seed 64), the last pairing a three-digit addend with a one-digit one.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "associative_property",
+      "node_id": "mat_g2_na_q1_10",
+      "clause": "changing the grouping of the addends does not change the sum",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        103,
+        118
+      ],
+      "reasoning": "Seeds 42, 103 and 118 hold the addend order fixed and move only the parentheses — seed 103 asks whether (714 + 112) + 63 equals 714 + (112 + 63) — which is exactly regrouping the addends without reordering them.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "The distractor 'Only when both are 0' is offered on the three-addend grouping items (seeds 42, 103, 118), where there are three addends, not two; the word 'both' does not fit those stems."
+    }
+  ]
+}

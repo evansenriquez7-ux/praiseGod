@@ -1,0 +1,190 @@
+{
+  "batch": "batch025B07_mat_g2_na_q2_5",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q2_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Rosa solved this problem: \"Lola Caring had 90 leashes. Lola Caring used 43 of them. How many leashes are left?\" Rosa says the answer is 47. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 47
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 23,
+        "question_text": "Rosa solved this problem: \"A covered court has 21 sneakers. Marco removes 2 sneakers. How many sneakers are left in the covered court?\" Rosa says the answer is 23. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 19
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 42,
+        "question_text": "Daniel is on step 4. Daniel goes down 1 step. What step is Daniel on now?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Start at 50. Count back 30. What number do you land on?",
+        "correct_answer": 20,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Gab had 30 sneakers. Gab used 6 of them. How many sneakers are left?",
+        "correct_answer": 24,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "There are 15 score cards on the table. Ate Bea takes away 5 score cards. How many score cards are left on the table?",
+        "correct_answer": 10,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Romel is on step 8. Romel goes down 0 steps. What step is Romel on now?",
+        "correct_answer": 8,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "(Large group of 40 chicks) — There are 40 chicks.\nTaking away 2 chicks.\nHow many chicks are left?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "Ate Gab has 45 ribbons. Ate Gab gives away 2 ribbons. How many ribbons does Ate Gab have left?",
+        "correct_answer": 43,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Grace solved this problem: \"Start at 19. Count back 0. What number do you land on?\" Grace says the answer is 18. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 19
+        },
+        "formatter": "error_detect"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g2_na_q2_5",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64,
+        118,
+        11
+      ],
+      "reasoning": "The samples require an actual computation to resolve, not a fact recall: seed 64 needs 30 - 6 = 24, seed 118 needs 45 - 2 = 43, and seed 11 needs the pupil to compute 90 - 43 themselves in order to judge whether Rosa's 47 is right.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "given_orally",
+      "node_id": "mat_g2_na_q2_5",
+      "clause": "given orally",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Nothing in any of the ten samples is presented by voice — every stem is written text the pupil reads, and even the quoted problems at seeds 11 and 127 are printed inside quotation marks rather than spoken. No audio payload or 'listen' instruction appears anywhere in the set.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Fifth independent blind refusal of an 'orally' clause in the tree. Written text channel cannot exhibit oral delivery; tracked as part of the oral/audio delivery capability class under Rule 8."
+    },
+    {
+      "capability_id": "in_pictures",
+      "node_id": "mat_g2_na_q2_5",
+      "clause": "in pictures",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        103
+      ],
+      "reasoning": "Seed 103 is the one item that draws anything: an EmojiPictorial of chicks with group_a 40 and group_b 2 for the take-away, so the subtraction is at least partly presented as a picture. It is a single sample out of ten, and the picture is not load-bearing.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "The seed 103 payload renders the group as the text label '(Large group of 40 chicks)' rather than 40 countable chicks, and the stem already states both 40 and 2, so the pupil never needs to read the picture. The stem line 'Taking away 2 chicks.' is also ungrammatical for a Grade 2 reader."
+    },
+    {
+      "capability_id": "involving_subtraction",
+      "node_id": "mat_g2_na_q2_5",
+      "clause": "involving subtraction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        57
+      ],
+      "reasoning": "Subtraction is the operation in all ten samples, in several guises: take-away (90 - 43 at seed 11), removal (21 - 2 at seed 23, keyed to correct_value 19), reduction of a set (30 - 6 at seed 64) and count-back on the number sequence (50 - 30 at seed 57).",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seeds 91 and 127 subtract zero ('goes down 0 steps', 'Count back 0'). They are arithmetically valid but degenerate as subtraction practice, and two of ten samples spent on them is a lot."
+    },
+    {
+      "capability_id": "less_than_100",
+      "node_id": "mat_g2_na_q2_5",
+      "clause": "both numbers are less than 100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        118
+      ],
+      "reasoning": "Both operands stay two-digit or smaller throughout, and the set pushes near the ceiling without breaching it: 90 - 43 at seed 11, 50 - 30 at seed 57 and 45 - 2 at seed 118, with no minuend above 90 anywhere in the ten.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "regrouping",
+      "node_id": "mat_g2_na_q2_5",
+      "clause": "with and without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        118,
+        57
+      ],
+      "reasoning": "Both regrouping cases are present. Seeds 11 (90 - 43) and 23 (21 - 2) force a borrow because the ones digit of the minuend is smaller than the subtrahend's, whereas seeds 118 (45 - 2) and 57 (50 - 30) resolve digit-by-digit with no exchange.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

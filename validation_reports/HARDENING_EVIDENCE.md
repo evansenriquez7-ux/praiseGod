@@ -7778,3 +7778,51 @@ control `test_three_shared_skeletons_are_allowed` pins that boundary from the ot
 prompt contract alone. The forbidden-path list was given verbatim, but the Attesters had tool access
 and nothing structurally prevented a forbidden read. `blindness.tool_uses_by_attester` in every
 record filed today says so in full rather than asserting a clean `0`.
+
+
+---
+
+## 2026-08-24 — tick 25 — 177 clauses attested; §6F UNATTESTED backlog reduced from 538 to 361
+
+### Queue movement (measured per §2)
+
+```
+                            before (tick 24 close)    after (tick 25)
+§5  STALE/malformed reviews :  557 / 49 nodes           557 / 49 nodes (deferred by campaign)
+§5  non-PASS verdicts       :   18 / 4 nodes             18 / 4 nodes
+§6F CONTRADICTED            :   37 / 22 nodes            60 / 34 nodes
+§6F stale attestations      :    2 / 2 nodes              2 / 2 nodes
+§6F UNATTESTED              :  538 / 116 nodes          361 / 89 nodes
+§6D wildcard providers      :   74 / 19 nodes            74 / 19 nodes
+§6G batch-integrity         :    —                        0
+TOTAL capability findings   :  652                      498
+coverage: attested            249/787 (31.6%)          426/787 (54.1%)
+```
+
+**Findings rose while coverage rose.** 177 clauses left UNATTESTED; 23 of them came back
+`NOT_PROVIDED`, so CONTRADICTED moved 37 → 60. UNATTESTED moved from 538 across 116 nodes down
+to 361 across 89 nodes. Coverage increased from 31.6% (249/787) to 54.1% (426/787).
+
+**§6G passed all nine batches (B01–B09) at 0 violations.** All 27 newly written attestation
+records in `validation_reports/attestation/` (`batch025B01_*` through `batch025B09_*`) passed
+seed provenance, non-empty reasoning, batch size (<=25), and cross-tree skeleton clustering checks.
+
+### Summary of Blind Attester Findings
+
+177 capability clauses across 27 nodes were evaluated blind: 154 PROVIDED, 23 NOT_PROVIDED.
+
+Key root-cause clusters among the 23 NOT_PROVIDED verdicts:
+1. **Missing Media & Concrete Representations on Concept Nodes**:
+   - `mat_g2_na_q4_3`: `fraction_charts`, `fraction_tiles`, `number_line`, and `groups_of_objects` are all absent (only `FractionShade` and `FractionModel` continuous area models render).
+   - `mat_g1_na_q3_6`: `rhythmic_properties` and `arts` have no representation; `visual_elements` renders only numeric element strings.
+   - `mat_g1_na_q4_6`: `in_pictures` has no visual rendered for money items.
+   - `mat_g1_na_q1_5`: `objects` has no visual rendered for position of objects.
+2. **Sampler Range & Edge Omissions**:
+   - `mat_g2_na_q2_2` & `mat_g3_na_q2_1`: `with_regrouping` / `regrouping` never drawn across 10-seed sample windows (every column sum is <= 9).
+   - `mat_g2_na_q3_7`: factor 4 never appears as multiplier or divisor in 10-seed sample.
+   - `mat_g2_mg_q4_2`: `hours_in_a_day` (24-hour relation) is never exercised; durations remain within a single day.
+   - `mat_g1_na_q1_5`: Defect shape 4 (named form generated only as distractor) — `1st` and `3rd` positions occur only in incorrect MCQ options, never as keyed answers.
+3. **Drawing / Construction Interaction Gap**:
+   - `mat_g3_mg_q1_4`: `draw_geometric_object` (`draws`) is served via selected-response MCQ rather than student-constructed drawing.
+4. **Oral Channel Incompatibility**:
+   - `mat_g1_na_q4_6` & `mat_g2_na_q2_5`: `given_orally` cannot be satisfied via text channel; requires audio capability architecture under Rule 8.

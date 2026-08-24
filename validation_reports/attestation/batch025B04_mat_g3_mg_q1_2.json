@@ -1,0 +1,201 @@
+{
+  "batch": "batch025B04_mat_g3_mg_q1_2",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q1_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "What is the area of a square with a side length of 5 m in sq m?",
+        "correct_answer": 25,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "Calculate the area of a square with sides of 2 cm in sq cm.",
+        "correct_answer": 4,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "A rectangle has sides 4 cm and 3 cm. What is its area in sq cm?",
+        "correct_answer": 12,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Calculate the area of a rectangle with dimensions 3 m by 2 m in sq m.",
+        "correct_answer": 6,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "A square has a side of 5 cm. What is its area in sq cm?",
+        "correct_answer": 25,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Find the area of a rectangle that is 7 cm long and 4 cm wide in sq cm.",
+        "correct_answer": 28,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Calculate the area of a rectangle with dimensions 5 cm by 3 cm in sq cm.",
+        "correct_answer": 15,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "Calculate the area of a square with sides of 2 cm in sq cm.",
+        "correct_answer": 4,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "A rectangle has sides 2 m and 7 m. What is its area in sq m?",
+        "correct_answer": 14,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What is the area of a rectangle with length 2 cm and width 3 cm in sq cm?",
+        "correct_answer": 6,
+        "formatter": "cloze"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "compute_area",
+      "node_id": "mat_g3_mg_q1_2",
+      "clause": "Find",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        127
+      ],
+      "reasoning": "Each sample requires producing an area value from given side measures, and the instruction verb varies across the set: 'Find the area of a rectangle that is 7 cm long and 4 cm wide' at seed 78, 'Calculate the area' at seed 57, 'What is the area' at seed 127.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "area_attribute",
+      "node_id": "mat_g3_mg_q1_2",
+      "clause": "the areas",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        91,
+        118
+      ],
+      "reasoning": "Areas are the computed quantity throughout and all ten keys check out against the product of the sides — 4x3 keys 12 at seed 42, 5x3 keys 15 at seed 91, 2x7 keys 14 at seed 118 — with plausible additive distractors such as 7 and 8 sitting alongside.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seeds 23 and 103 are the same item (square with sides of 2 cm, key 4), differing only in the order of the options."
+    },
+    {
+      "capability_id": "square_figure",
+      "node_id": "mat_g3_mg_q1_2",
+      "clause": "squares",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "Four samples give a single side and expect it squared: 5 m at seed 11 and 5 cm at seed 64 both key 25, while the 2 cm squares at seeds 23 and 103 key 4, and the distractor 26 at seeds 11 and 64 targets the pupil who adds one instead of squaring.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "rectangle_figure",
+      "node_id": "mat_g3_mg_q1_2",
+      "clause": "rectangles",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        127
+      ],
+      "reasoning": "Six samples supply two distinct dimensions, and the phrasing of the pair is varied rather than templated: 'sides 4 cm and 3 cm' (seed 42), 'dimensions 3 m by 2 m' (seed 57), '7 cm long and 4 cm wide' (seed 78), 'length 2 cm and width 3 cm' (seed 127).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "square_centimeter",
+      "node_id": "mat_g3_mg_q1_2",
+      "clause": "sq. cm",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        91
+      ],
+      "reasoning": "Seven of the ten samples work in centimetres and each asks for the result 'in sq cm' — seed 78's 7 cm by 4 cm keying 28 and seed 91's 5 cm by 3 cm keying 15 are both stated in that unit.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "No option anywhere in this set carries a unit; all are bare numerals. The pupil is therefore never asked to distinguish sq cm from cm in the answer, only in the stem."
+    },
+    {
+      "capability_id": "square_meter",
+      "node_id": "mat_g3_mg_q1_2",
+      "clause": "sq. m",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        118
+      ],
+      "reasoning": "Metre-based figures are present in three samples, one square and two rectangles: a 5 m square keying 25 sq m at seed 11, 3 m by 2 m keying 6 at seed 57, and 2 m by 7 m keying 14 at seed 118.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "square_unit_abbreviation",
+      "node_id": "mat_g3_mg_q1_2",
+      "clause": "sq",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        64,
+        127
+      ],
+      "reasoning": "The squared-unit phrasing closes every single stem in the set, 'in sq cm' at seeds 23, 64 and 127 and 'in sq m' at seed 11, so the pupil is always told the answer is a square measure rather than a length.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Rendered as 'sq cm' and 'sq m' without the period that the competency wording uses ('sq. cm', 'sq. m') — cosmetic, but a consistent difference across all ten stems."
+    }
+  ]
+}

@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-08-24)
 
 ## Corpus Check
-- 509 files · ~833,724 words
+- 509 files · ~833,728 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3734 nodes · 5889 edges · 326 communities (297 shown, 29 thin omitted)
+- 3734 nodes · 5889 edges · 325 communities (296 shown, 29 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 91 edges (avg confidence: 0.57)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b49379f5`
+- Built from commit: `ca962df8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -306,7 +306,6 @@
 - [[_COMMUNITY_test_requires_ignore_must_be_explicit_to_excuse_a_word|test_requires_ignore_must_be_explicit_to_excuse_a_word]]
 - [[_COMMUNITY_generate_params|generate_params]]
 - [[_COMMUNITY_test_generic_textual_formatter_is_not_a_provider|test_generic_textual_formatter_is_not_a_provider]]
-- [[_COMMUNITY_2026-08-20 (tick 8) — A dispatch-only tick coverage 52 → 127|2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127]]
 - [[_COMMUNITY_build_scaffold_sequence|build_scaffold_sequence]]
 - [[_COMMUNITY__combined_interests|_combined_interests]]
 - [[_COMMUNITY_health|health]]
@@ -352,7 +351,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (326 total, 29 thin omitted)
+## Communities (325 total, 29 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
@@ -420,7 +419,7 @@ Nodes (30): App Hosting CLI Commands, Automated deployment via GitHub (CI/CD), B
 
 ### Community 16 - "Community 16"
 Cohesion: 0.10
-Nodes (17): Mutation tests for the capability contract (§6A/§6B/§6C).  These exist because g, The discrimination must key on *what survives removing the family*, never on how, Guards against the decoy that cost an earlier audit a day.      483 of 485 provi, §6F must clear once a verdict is on file, or it is a counter rather than a check, There is no 'partly provided'. A malformed record is loud, never skipped., A record that cannot be re-rendered is not evidence — and is never silently skip, A `bounds` list carried verbatim by most of the table claims nothing.      Measu, Ignoring a competency word is possible but visible -- never a silent default. (+9 more)
+Nodes (17): Mutation tests for the capability contract (§6A/§6B/§6C).  These exist because g, The discrimination must key on *what survives removing the family*, never on how, Guards against the decoy that cost an earlier audit a day.      483 of 485 provi, §6F must clear once a verdict is on file, or it is a counter rather than a check, There is no 'partly provided'. A malformed record is loud, never skipped., A `bounds` list carried verbatim by most of the table claims nothing.      Measu, Ignoring a competency word is possible but visible -- never a silent default., The acceptance test for the entire capability contract: mat_g3_mg_q1_5's     com (+9 more)
 
 ### Community 17 - "Community 17"
 Cohesion: 0.25
@@ -711,8 +710,8 @@ Cohesion: 0.15
 Nodes (12): 1. Pipeline Layout & Architecture, 2. Core Metamorphic Checkpoints, 3. CLI Execution Reference Table, 4. Diagnostics & Troubleshooting Traps, A. Strict Scalar Mapping (Boundary Checks), B. Metamorphic Sensitivity Checks, C. Semantic Leak Safeguards, D. Formatter and Choice Validity Checks (+4 more)
 
 ### Community 89 - "Community 89"
-Cohesion: 0.14
-Nodes (10): Documentation Rules (meta-rules), Authoring a `requires` declaration, Part 1 — Extending the pipeline, PG Pipeline — Engineering Guide & Hardening Record, Step 1 — check whether it already exists, Step 2 — wire every registry in the same commit, Step 3 — three traps that have each cost a day, Step 4 — verify like any other pipeline change (+2 more)
+Cohesion: 0.25
+Nodes (8): Authoring a `requires` declaration, Part 1 — Extending the pipeline, Step 1 — check whether it already exists, Step 2 — wire every registry in the same commit, Step 3 — three traps that have each cost a day, Step 4 — verify like any other pipeline change, The five defect shapes, When this applies
 
 ### Community 90 - "Community 90"
 Cohesion: 0.08
@@ -768,7 +767,7 @@ Nodes (26): Collapse a rationale to the structure that survives per-node substit
 
 ### Community 103 - "Community 103"
 Cohesion: 0.06
-Nodes (31): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-21 (tick 12) — An array cannot depict a zero factor, 2026-08-23 — §6G: an attestation must show its work, 2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest, 2. `§1A-reach` false failure — `mat_g3_na_q2_0` (money_peso) (+23 more)
+Nodes (35): 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, 2026-08-21 (tick 12) — An array cannot depict a zero factor, 2026-08-23 — §6G: an attestation must show its work (+27 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.11
@@ -1079,7 +1078,7 @@ Cohesion: 0.40
 Nodes (4): Layout, PG Pipeline Test Infrastructure, Rules, Running
 
 ### Community 202 - "_combined_interests"
-Cohesion: 0.33
+Cohesion: 0.29
 Nodes (6): 1. Description of Inconsistency, 2. Window-Design Math Evidence, 3. Temporary Mitigation, Live Bug: Bridge-Scalar Inconsistency, Option A: Scalar = 1.1 (Current Portal Level 4), Option B: Scalar = 1.25 (Current Lab UI)
 
 ### Community 203 - "get_interest_themes"
@@ -1127,8 +1126,8 @@ Cohesion: 0.50
 Nodes (3): Fixer correction to `batch_B1.json` — 2026-08-12, Note on evaluator reliability, Rejected void: `mat_g1_na_q1_8`
 
 ### Community 217 - "CLAUDE.md"
-Cohesion: 0.15
-Nodes (10): Agent Environment, AI Agent Workflow (Graphify & MCP), The Pipeline, Contract Rules Table, Core Principles, PG Pipeline Contract, CCMed — Adaptive K-12 Mastery Engine, Definition of done (pg pipeline) (+2 more)
+Cohesion: 0.11
+Nodes (16): CLAUDE.md, Content Rules (student-facing text, DNA files, generators), Definition of Done (memorize this), Engineering Protocols, File Management, Mission, Reporting Style, Terminology (+8 more)
 
 ### Community 218 - "AuditHarnessError"
 Cohesion: 0.22
@@ -1287,12 +1286,12 @@ Cohesion: 0.40
 Nodes (5): 2026-08-21 (tick 14) — CORRECTION: §2B's 236 was two defects, not one, I nearly shipped the wrong fix, Two other approaches, rejected by measurement rather than argument, What I got wrong last tick, What shipped
 
 ### Community 257 - "VisualSchemaRegistry"
-Cohesion: 0.22
-Nodes (9): CLAUDE.md, Content Rules (student-facing text, DNA files, generators), Definition of Done (memorize this), Engineering Protocols, File Management, Mission, Reporting Style, Terminology (+1 more)
+Cohesion: 0.25
+Nodes (5): Documentation Rules (meta-rules), Contract Rules Table, Core Principles, PG Pipeline Contract, PG Pipeline — Engineering Guide & Hardening Record
 
 ### Community 258 - "2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3"
 Cohesion: 0.50
-Nodes (4): 2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3, New finding, quantified: the node formatter list advertises what the orchestrator refuses, The "deadlock" was a misdiagnosis, carried for five ticks, Three tests I broke in tick 3, invisible because run_all does not run pytest
+Nodes (4): 2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest, batch023 → batch028: a verdict moved without being edited, Tooling, and the honesty problem it forced, What the blind verdicts found — the pattern is a medium, not a node
 
 ### Community 259 - "generate_params"
 Cohesion: 0.06
@@ -1445,10 +1444,6 @@ Nodes (4): generate_hints(), generate_params(), Any, Returns visual_params for t
 ### Community 307 - "test_generic_textual_formatter_is_not_a_provider"
 Cohesion: 0.40
 Nodes (5): 2026-08-20 (tick 9) — The evidence pipeline was lying, and I had filed verdicts on it, The finding the fix bought: invalid banknotes reaching pupils, The lesson, Tick 8's reported defects, re-checked, Two defects, both in the evidence pipeline, both mine
-
-### Community 308 - "2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127"
-Cohesion: 0.50
-Nodes (4): 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, Content defects found unasked, The dominant shape of the failures, Why this tick was dispatches only
 
 ### Community 309 - "build_scaffold_sequence"
 Cohesion: 0.67

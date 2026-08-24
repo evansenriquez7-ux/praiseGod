@@ -1,0 +1,188 @@
+{
+  "batch": "batch025B05_mat_g3_mg_q1_4",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q1_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "How many endpoints does a ray have?",
+        "correct_answer": "1",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "When drawing a line, what symbols are placed at both ends to show it extends forever in both directions?",
+        "correct_answer": "arrowheads",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "When drawing a line, what symbols are placed at both ends to show it extends forever in both directions?",
+        "correct_answer": "arrowheads",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Look at the model: <---A--------B---> (a straight path with arrowheads on both ends). Which geometric figure is represented?",
+        "correct_answer": "line",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What do we call an exact location in space with no length or width?",
+        "correct_answer": "point",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "How many endpoints does a line have?",
+        "correct_answer": "0",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "When drawing a ray, what symbol is placed at one end to show that it extends forever in that direction?",
+        "correct_answer": "arrowhead",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "To draw a line segment measuring 4 cm, you start at the 0 cm mark on a ruler and draw until which mark?",
+        "correct_answer": "4 cm",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "When drawing a line, what symbols are placed at both ends to show it extends forever in both directions?",
+        "correct_answer": "arrowheads",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "To draw a straight line segment between two points on paper, which tool should you use?",
+        "correct_answer": "ruler",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "recognize_geometric_object",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "Recognize",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        64
+      ],
+      "reasoning": "Seed 64 gives a definition (an exact location with no length or width) and makes the pupil name the figure; seed 57 shows a figure and makes the pupil name it. Both are identification tasks, which is what recognition asks for.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "concrete_model_depiction",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "using models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57
+      ],
+      "reasoning": "Seed 57 carries an actual model in the stem — the drawn path <---A--------B---> with arrowheads at both ends and points A and B labelled — and instructs the pupil to look at it before choosing.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Only 1 of the 10 samples contains a model, and it is typed characters in the stem rather than a rendered visual; no sample in this set has a VISUAL RENDERED line."
+    },
+    {
+      "capability_id": "draw_geometric_object",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "draws",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Seeds 23, 91, 103 and 127 are about drawing (which symbols go on the ends, which mark to stop at, which tool to pick), but every one is answered by selecting an option — no sample asks the pupil to produce a point, line, segment or ray, and nothing in the set could capture a drawing if they did.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Four samples (seeds 23, 91, 103, 127) are *about* drawing — which symbols end a line, which mark to stop at, which tool to use — but all are selected-response, so the pupil never produces or places a figure. This is the same 'recognize and draw' gap that took mat_g3_mg_q1_5 from CONCERN to FAIL, and the fix is a construct/draw interaction, not a stem reword. Carried to Next tick should:."
+    },
+    {
+      "capability_id": "point",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "a point",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64
+      ],
+      "reasoning": "Seed 64 keys 'point' as the name for an exact location in space with no length or width, which is the figure this clause names; it also appears as a distractor option in seed 57.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "line",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "line",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        23
+      ],
+      "reasoning": "Seed 57 keys 'line' from a model with arrowheads at both ends, seed 78 keys 0 endpoints for a line, and seed 23 keys the arrowheads that mark a line as extending forever in both directions.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seeds 23, 42 and 118 are the identical arrowhead question three times over, differing only in option order — 3 of the 10 samples are one item."
+    },
+    {
+      "capability_id": "line_segment",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "line segment",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        103,
+        127
+      ],
+      "reasoning": "Seed 103 walks a 4 cm line segment off a ruler starting at the 0 cm mark, and seed 127 asks which tool draws a straight segment joining two points; segment also stands as a distractor in seeds 57 and 64.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "In seed 127 the distractor 'set square only' is arguably also workable — a set square has straight edges and can join two points — so the option leans on the word 'only' to stay wrong."
+    },
+    {
+      "capability_id": "ray",
+      "node_id": "mat_g3_mg_q1_4",
+      "clause": "ray",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        91
+      ],
+      "reasoning": "Seed 11 keys 1 endpoint for a ray, and seed 91 keys the single arrowhead placed at the ray's open end to show it runs on in that one direction — both are ray-specific properties.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

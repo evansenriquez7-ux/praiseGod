@@ -1,0 +1,194 @@
+{
+  "batch": "batch025B03_mat_g2_na_q2_2",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q2_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Pia has ₱50 in one pocket and ₱120 in another pocket. How much money does Pia have in total?",
+        "correct_answer": 170,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "One basket has 1 sneaker. Another basket has 502 sneakers. If you put all the sneakers together, how many sneakers are there?",
+        "correct_answer": 503,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "Start at 505. Count up 111 more. What number do you land on? The answer is 616. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 57,
+        "question_text": "Arnel had ₱473 and received ₱505 more from Nanay. How much money does Arnel have in all?",
+        "correct_answer": 978,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Esther has ₱500 in one pocket and ₱240 in another pocket. How much money does Esther have in total?",
+        "correct_answer": 740,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Start at 441. Count up 532 more. What number do you land on?",
+        "correct_answer": 973,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Grace solved this problem: \"Coach Nora bought a pencil for ₱764 and an eraser for ₱222. How much did Coach Nora spend in all?\" Grace says the answer is 987. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 986
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 103,
+        "question_text": "Ate Sam has 50 bicycles. A friend has 605 bicycles. If they put all their bicycles together, how many bicycles do they have in all?",
+        "correct_answer": 655,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "Ate Gab is on step 260. Ate Gab climbs up 737 more steps. What step is Ate Gab on now?",
+        "correct_answer": 997,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "David had ₱300 and received ₱240 more from Nanay. How much money does David have in all?",
+        "correct_answer": 540,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        118
+      ],
+      "reasoning": "Each item poses a situation the pupil must resolve by computing rather than by recalling: Arnel's ₱473 plus the ₱505 he received (seed 57) and Ate Gab's step 260 plus 737 more (seed 118) both demand the produced total.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "involving",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "involving",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        103
+      ],
+      "reasoning": "The operation is embedded in the scenario instead of being stated: seed 11 gives money in two pockets and seed 103 has two people putting bicycles together, leaving the pupil to infer that combining is what the situation calls for.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "addition",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        91
+      ],
+      "reasoning": "Addition is the operation in every sample — seed 23 combines 1 and 502 sneakers to 503, and seed 91's error-check rests on 764 + 222 = 986 against Grace's 987.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "sums_up_to_1000",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "sums up to 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        118
+      ],
+      "reasoning": "The keyed answers climb to the top of the range without breaching it: 997 at seed 118 and 978 at seed 57, with the ten answers spanning 170 to 997 and none over 1000.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Several distractors sit far above the competency's 1000 ceiling — 1700 (seed 11), 7400 (seed 64), 6550 (seed 103) — offering numbers outside the grade's stated number range."
+    },
+    {
+      "capability_id": "problems",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        103,
+        118
+      ],
+      "reasoning": "Full contextualised problems with named actors and concrete objects appear rather than bare number sentences: Ate Sam and a friend pooling bicycles (seed 103), Ate Gab climbing steps (seed 118).",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seed 42's stem asks 'What number do you land on?' and then immediately supplies 'The answer is 616. True or False?' — two questions in one stem, with the answer to the first given away."
+    },
+    {
+      "capability_id": "money",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "money",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        127
+      ],
+      "reasoning": "Peso money is the quantity being added in half the set: ₱50 and ₱120 across two pockets (seed 11), ₱473 plus ₱505 received (seed 57), ₱300 plus ₱240 (seed 127).",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seed 91 prices a pencil at ₱764 and an eraser at ₱222 — the arithmetic is fine but the amounts are implausible for the objects named."
+    },
+    {
+      "capability_id": "regrouping",
+      "node_id": "mat_g2_na_q2_2",
+      "clause": "with and without regrouping",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Only the 'without regrouping' half is present. Working the columns of all ten additions — 50+120, 1+502, 505+111, 473+505, 500+240, 441+532, 764+222, 50+605, 260+737, 300+240 — every ones, tens and hundreds column sums to 9 or less, so not one sample requires a carry.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. All ten additions are carry-free — every column sums to 9 or less — so 'with regrouping', one of the two cases the clause names explicitly, never occurs in a full ten-seed set. Sampler gap; the fix forces regrouping onto a defensible share of the set and must be verified on the rendered addends, not on the sampler's intent.",
+      "content_note_from_attester": "Because the whole set is regroup-free, a pupil who has never learned to carry scores 10 out of 10 on it; the competency's 'with regrouping' case is untested here."
+    }
+  ]
+}

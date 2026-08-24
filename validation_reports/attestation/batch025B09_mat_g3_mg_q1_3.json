@@ -1,0 +1,187 @@
+{
+  "batch": "batch025B09_mat_g3_mg_q1_3",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q1_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "A rectangular patio is 4 m long and 3 m wide (area = 12 sq m). If tiling costs ₱10 per sq m, what is the total cost to cover the patio?",
+        "correct_answer": 120,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "Garden Plot A is 4 m by 5 m (area = 20 sq m). Garden Plot B is 4 m by 6 m (area = 24 sq m). How many sq m larger is Plot B than Plot A?",
+        "correct_answer": 4,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "A rectangular classroom floor is 4 m long and 3 m wide. What is the area of the classroom floor in sq m?",
+        "correct_answer": 12,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "A square mat measures 2 m on each side. What is its area in sq m?",
+        "correct_answer": 4,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "A rectangular rug has an area of 6 sq m and a width of 2 m. What is its length in m?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A rectangular rug is 7 m long and 4 m wide. What is the area of the rug in sq m?",
+        "correct_answer": 28,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "A rectangular chalkboard is 5 m long and 3 m wide. What is the area of the chalkboard in sq m?",
+        "correct_answer": 15,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "Garden Plot A is 2 m by 7 m (area = 14 sq m). Garden Plot B is 2 m by 10 m (area = 20 sq m). How many sq m larger is Plot B than Plot A?",
+        "correct_answer": 6,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "A square table top measures 2 m on each side. What is its area in sq m?",
+        "correct_answer": 4,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "A rectangular garden plot is 2 m long and 3 m wide. What is the area of the garden plot in sq m?",
+        "correct_answer": 6,
+        "formatter": "cloze"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_area_problem",
+      "node_id": "mat_g3_mg_q1_3",
+      "clause": "Solve",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64
+      ],
+      "reasoning": "Beyond one-step recall, three samples require an actual solution path: seed 11 multiplies an area by a ₱10 rate to reach 120, seed 23 compares two plot areas and subtracts to reach 4, and seed 64 inverts the relationship, dividing a 6 sq m area by a 2 m width to recover the 3 m length.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "word_problem_context",
+      "node_id": "mat_g3_mg_q1_3",
+      "clause": "problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        91,
+        127
+      ],
+      "reasoning": "Every stem is a worded situation with a concrete Filipino-classroom referent rather than a bare computation — a patio being tiled in seed 11, a chalkboard in seed 91, a garden plot in seed 127. The pupil must extract the dimensions from prose before any arithmetic starts.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "extract_area_relationship_from_context",
+      "node_id": "mat_g3_mg_q1_3",
+      "clause": "involving",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        64
+      ],
+      "reasoning": "Area is the load-bearing quantity, not decoration: seeds 42 and 78 make the area itself the requested answer (12 and 28 sq m), and seed 64 runs the relationship backwards so the area figure is the only route to the missing length. Remove area from any of these and the question collapses.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seeds 11, 23 and 103 pre-compute and state the area inside the stem ('area = 12 sq m', 'area = 20 sq m'), so the length x width step is done for the pupil and what remains is a multiplication by ₱10 or a subtraction. The area work in those three is scaffolded away."
+    },
+    {
+      "capability_id": "area_attribute",
+      "node_id": "mat_g3_mg_q1_3",
+      "clause": "areas",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        91,
+        78,
+        57
+      ],
+      "reasoning": "The square-metre quantity is asked for by name and computed correctly across the set: 4 x 3 keyed 12 in seed 42, 5 x 3 keyed 15 in seed 91, 7 x 4 keyed 28 in seed 78, and 2 x 2 keyed 4 in seed 57. Units are consistently 'sq m' throughout, never confused with perimeter.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "square_figure",
+      "node_id": "mat_g3_mg_q1_3",
+      "clause": "squares",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        118
+      ],
+      "reasoning": "Two items are genuinely square-shaped: a mat measuring 2 m on each side (seed 57) and a table top measuring 2 m on each side (seed 118), both keyed 4 sq m. The phrasing 'on each side' gives one dimension only, so the pupil must know a square's sides are equal.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Both square items use side 2 m, the one length where squaring and doubling coincide (2 x 2 = 4 = 2 + 2). A pupil confusing area with perimeter, or multiplication with addition, scores full marks on the entire square half of this set."
+    },
+    {
+      "capability_id": "rectangle_figure",
+      "node_id": "mat_g3_mg_q1_3",
+      "clause": "rectangles",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        91,
+        127,
+        64
+      ],
+      "reasoning": "Rectangles dominate, with distinct length-width pairs rather than repeats: 4 by 3 (seed 42), 7 by 4 (seed 78), 5 by 3 (seed 91), 2 by 3 (seed 127), plus seed 64's rug where the width 2 m and area 6 sq m are given and the length is unknown.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

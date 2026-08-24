@@ -1,0 +1,186 @@
+{
+  "batch": "batch025B05_mat_g1_na_q1_8",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_8",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Is 8 + 1 the same as 1 + 8?",
+        "correct_answer": true,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Is 12 + 1 the same as 1 + 12?",
+        "correct_answer": true,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "1 + 0 = 1. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 57,
+        "question_text": "What is 0 + 12?",
+        "correct_answer": 12,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Is 12 + 6 the same as 6 + 12?",
+        "correct_answer": true,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What is 4 + 0?",
+        "correct_answer": 4,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Grace solved: \"0 + 19 = ___\". Grace says the blank is 0. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 19
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 103,
+        "question_text": "Is 4 + 11 the same as 11 + 4?",
+        "correct_answer": true,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "What is 0 + 10?",
+        "correct_answer": 10,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What is 0 + 19?",
+        "correct_answer": 19,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate",
+      "node_id": "mat_g1_na_q1_8",
+      "clause": "Illustrate",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        11
+      ],
+      "reasoning": "Each property arrives as a worked instance the pupil must judge rather than as a stated rule: seed 42 puts up 1 + 0 = 1, seed 11 sets 8 + 1 beside 1 + 8. That instantiation is the illustrating.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "No sample in this set renders a visual or object model, so 'illustrate' is carried entirely by numeric example."
+    },
+    {
+      "capability_id": "applying",
+      "node_id": "mat_g1_na_q1_8",
+      "clause": "applying",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        91,
+        127
+      ],
+      "reasoning": "Seeds 57 and 127 cannot be answered without using the zero rule to produce a sum, and seed 91 pushes further by making the pupil apply it against another child's claim that 0 + 19 is 0.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "properties_of_addition",
+      "node_id": "mat_g1_na_q1_8",
+      "clause": "properties of addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        78
+      ],
+      "reasoning": "Both properties the competency lists are actually present in the set — commutativity at seed 11 and the zero identity at seed 78 — so the samples cover the property pair rather than one of them.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "sums_up_to_20",
+      "node_id": "mat_g1_na_q1_8",
+      "clause": "sums up to 20",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64,
+        127
+      ],
+      "reasoning": "The largest results in the set are 18 (seed 64, 12 + 6) and 19 (seed 127, 0 + 19); every other sum sits below that and nothing exceeds 20, so the stated ceiling is respected and nearly reached.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "identity_property",
+      "node_id": "mat_g1_na_q1_8",
+      "clause": "the sum of zero and any number is equal to the number",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        78,
+        118,
+        91
+      ],
+      "reasoning": "Seed 78 (4 + 0 = 4) and seed 118 (0 + 10 = 10) are direct statements of the rule, and seed 91 tests it in reverse by having the pupil reject 0 as the value of 0 + 19.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seed 91's key is printed as a raw dict, {'has_error': True, 'correct_value': 19} — an internal structure leaking into the keyed answer instead of a pupil-facing response."
+    },
+    {
+      "capability_id": "commutative_property",
+      "node_id": "mat_g1_na_q1_8",
+      "clause": "changing the order of the addends does not change the sum",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        103
+      ],
+      "reasoning": "Three separate addend pairs are shown swapped and asked whether they match — 8+1 vs 1+8, 12+6 vs 6+12, 4+11 vs 11+4 — which is exactly the order-does-not-change-the-sum claim.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "All four commutativity items (seeds 11, 23, 64, 103) share one distractor set and key True every time, so answering True blindly scores 4 of 4 without engaging the property."
+    }
+  ]
+}

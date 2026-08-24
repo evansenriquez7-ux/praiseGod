@@ -1,0 +1,189 @@
+{
+  "batch": "batch025B02_mat_g1_na_q3_6",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q3_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "What is the next number in the pattern: 2, 10, 2, 10, 2, 10?",
+        "correct_answer": 2,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "What is the missing piece (position 6) in the pattern?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "What is the next letter in the pattern: e, d, e, d, e, d?",
+        "correct_answer": "e",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "What is the next number in the pattern: 10, 1, 10, 1, 10, 1?",
+        "correct_answer": 10,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What is the next letter in the pattern: k, h, k, h, k, h?",
+        "correct_answer": "k",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What is the next letter in the pattern: n, o, n, o, n, o?",
+        "correct_answer": "n",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "What is the next number in the pattern: 10, 3, 10, 3, 10, 3?",
+        "correct_answer": 10,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "What is the missing piece (position 6) in the pattern?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "What is the next letter in the pattern: o, f, o, f, o, f?",
+        "correct_answer": "o",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What is the missing piece (position 6) in the pattern?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "determine_next_term",
+      "node_id": "mat_g1_na_q3_6",
+      "clause": "Determine the next term/s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57,
+        64
+      ],
+      "reasoning": "The stems literally ask for the term that comes after a shown run — \"What is the next number in the pattern: 2, 10, 2, 10, 2, 10?\" (seed 11) and \"What is the next letter in the pattern: e, d, e, d, e, d?\" (seed 42) — so continuing the sequence is the task the pupil performs. Only ever one term is requested, never the two blanks the competency's examples show.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "repeating_pattern",
+      "node_id": "mat_g1_na_q3_6",
+      "clause": "repeating pattern",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        127
+      ],
+      "reasoning": "Every sequence shown cycles a fixed core: k, h, k, h, k, h (seed 64) and the payload on seed 23 states base_pattern [1, 11] with period 2 and pattern_kind \"repeating\". The repetition is what makes the answer determinable, so the clause is squarely exercised.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "rhythmic_properties",
+      "node_id": "mat_g1_na_q3_6",
+      "clause": "rhythmic properties",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Nothing in the ten samples involves sound, beat, claps, or any rhythmic sequence — all pattern elements are printed digits or letters, and no stem asks the pupil to hear or continue a rhythm.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. The competency names patterns with rhythmic properties; every rendered pattern is a string of digits or letters, and nothing in the set involves beat, clapping or sound. Recorded with items 004 and 005 as one gap on this node: three of the pattern media the clause names are absent. Carried to Next tick should:, not built this tick (budget)."
+    },
+    {
+      "capability_id": "visual_elements",
+      "node_id": "mat_g1_na_q3_6",
+      "clause": "visual elements",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Three samples do draw a PatternSequence (seeds 23, 103, 127), but every payload declares element_type \"number\", so what is drawn is a row of numerals; no pattern is built from shapes, colours, or pictorial elements, which is what this clause names.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Three samples do draw a PatternSequence (seeds 23, 103, 127) but each payload declares element_type 'number', so what renders is a row of numerals — no shape, colour or picture pattern exists on this node. This is the narrowest of the three and the likely first fix: the formatter already draws sequences, so the gap is in what element types the sampler asks it for."
+    },
+    {
+      "capability_id": "arts",
+      "node_id": "mat_g1_na_q3_6",
+      "clause": "arts",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No sample references art, design, or any artwork context — the settings are bare number and letter strings with no artistic material at all.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. No sample carries an arts context of any kind; the settings are bare number and letter strings. Grouped with items 003 and 004 as the same node-level gap."
+    },
+    {
+      "capability_id": "numbers_example",
+      "node_id": "mat_g1_na_q3_6",
+      "clause": "numbers: 2, 4, 2, 4__, __",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        91,
+        103
+      ],
+      "reasoning": "Two-number alternating runs of exactly the exemplar's shape appear repeatedly: 10, 1, 10, 1, 10, 1 (seed 57) and the drawn sequence [10, 4, 10, 4, 10, 4] on seed 103. The one shortfall against the written example is that a single blank is asked for rather than two consecutive ones.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seed 11's distractors (1 / 2 / 3 / 4) never include 10, the pattern's other element, so the most instructive wrong answer is unavailable; seeds 57 and 91 do include both elements."
+    },
+    {
+      "capability_id": "letters_example",
+      "node_id": "mat_g1_na_q3_6",
+      "clause": "letters: a, b, c, a, b, c, a, __, __",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        64,
+        78,
+        118
+      ],
+      "reasoning": "Letters are used as pattern elements in four samples — n, o, n, o, n, o (seed 78) and o, f, o, f, o, f (seed 118) — so letter-based repeating patterns are exercised. The period is always 2, never the three-letter a, b, c cycle the clause writes out, and never two blanks.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

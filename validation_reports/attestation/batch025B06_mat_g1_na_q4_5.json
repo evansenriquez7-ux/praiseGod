@@ -1,0 +1,181 @@
+{
+  "batch": "batch025B06_mat_g1_na_q4_5",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q4_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Which has a smaller value: 1 ₱10 coin or 1 ₱5 coin?",
+        "correct_answer": "1 ₱5 coin",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Which has a greater value: 1 ₱100 bill or 1 ₱5 coin?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "Which has a smaller value: 1 ₱5 coin or 1 ₱50 bill?",
+        "correct_answer": "1 ₱5 coin",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "Which has a smaller value: 1 ₱20 bill or 1 ₱5 coin?",
+        "correct_answer": "1 ₱5 coin",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Which has a greater value: 1 ₱20 bill or 1 ₱10 coin?",
+        "correct_answer": "1 ₱20 bill",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "Which has a smaller value: 1 ₱10 coin or 1 ₱50 bill?",
+        "correct_answer": "1 ₱10 coin",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Which has a greater value: 1 ₱1 coin or 1 ₱5 coin?",
+        "correct_answer": "1 ₱5 coin",
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 103,
+        "question_text": "Which has a greater value: 1 ₱10 coin or 1 ₱1 coin?",
+        "correct_answer": "1 ₱10 coin",
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 118,
+        "question_text": "Which has a greater value: 1 ₱20 bill or 1 ₱100 bill?",
+        "correct_answer": "1 ₱100 bill",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Which has a smaller value: 1 ₱50 bill or 1 ₱100 bill?",
+        "correct_answer": "1 ₱50 bill",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "compare",
+      "node_id": "mat_g1_na_q4_5",
+      "clause": "Compare",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64
+      ],
+      "reasoning": "All ten stems place two single pieces of money side by side and demand a value judgement between them, and both directions are exercised — 'smaller value' at seed 11, 'greater value' at seed 64 — so the pupil cannot pass by always picking the bigger face.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seeds 23, 91 and 103 draw only one of the two things being compared (seed 103 renders the ₱10 coin alone, with no ₱1 coin), so the visual cannot settle the comparison it accompanies."
+    },
+    {
+      "capability_id": "different_denominations",
+      "node_id": "mat_g1_na_q4_5",
+      "clause": "different denominations",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        118
+      ],
+      "reasoning": "No sample pairs a denomination with itself: seed 11 sets ₱10 against ₱5 and seed 118 sets ₱20 against ₱100, and across the set the pairs range over ₱1/₱5, ₱5/₱50, ₱10/₱50 and ₱50/₱100, so the pupil meets many distinct denomination pairings.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "'They are equal' appears as an option in every sample but is never the key, since no pair is ever of equal value — a consistent giveaway a test-wise pupil could exploit."
+    },
+    {
+      "capability_id": "peso_coins",
+      "node_id": "mat_g1_na_q4_5",
+      "clause": "peso coins",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        91,
+        103
+      ],
+      "reasoning": "Peso coins are the compared objects, not scenery: seed 11 weighs a ₱10 coin against a ₱5 coin, and seeds 91 and 103 both turn on the ₱1-versus-₱10/₱5 coin pair, with the coin itself drawn in the payload.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "excluding_centavo_coins",
+      "node_id": "mat_g1_na_q4_5",
+      "clause": "excluding centavo coins",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78
+      ],
+      "reasoning": "Not a single centavo piece appears anywhere in this set — not in a stem, not in an option, not in a payload. The smallest denomination in play is the ₱1 coin, and full option lists such as seed 42's and seed 78's consist purely of peso coins, peso bills and 'They are equal'.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "bills",
+      "node_id": "mat_g1_na_q4_5",
+      "clause": "bills",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        118,
+        127
+      ],
+      "reasoning": "Bills are compared in both configurations: against a coin at seed 42 (₱5 coin vs ₱50 bill) and against another bill at seeds 118 and 127 (₱20 vs ₱100, ₱50 vs ₱100), so paper money is exercised as a full participant in the comparison.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_100",
+      "node_id": "mat_g1_na_q4_5",
+      "clause": "up to ₱100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        127
+      ],
+      "reasoning": "₱100 is the largest value present and it is worked from both sides — it is the greater item at seed 23 and the thing that exceeds the keyed answer at seed 127 — while nothing above the ₱100 ceiling appears in any stem, option or payload.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "batch": "batch025B01_mat_g1_na_q1_5",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "What ordinal describes position number 10?",
+        "correct_answer": "10th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "A runner is at position number 9. In what place did the runner finish?",
+        "correct_answer": "9th",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "Who arrived earlier: the student in 9th place or 5th place?",
+        "correct_answer": "5th",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "Write the symbol for the ninth position.",
+        "correct_answer": "9th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "A runner is at position number 10. In what place did the runner finish?",
+        "correct_answer": "10th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Which word describes the 10th position?",
+        "correct_answer": "tenth",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Which word describes the 9th position?",
+        "correct_answer": "ninth",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Which position comes after 9th?",
+        "correct_answer": "10th",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "Who arrived earlier: the student in 10th place or 2nd place?",
+        "correct_answer": "2nd",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Which word describes the 9th position?",
+        "correct_answer": "ninth",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "describe_position",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "Describe the position",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        78
+      ],
+      "reasoning": "The pupil is repeatedly asked to give the label for a place in a sequence: 'What ordinal describes position number 10?' (seed 11, key 10th) and 'Which word describes the 10th position?' (seed 78, key tenth), covering both the symbol form and the word form of the description.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "objects",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "objects",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No sample shows or names a set of objects arranged in order. The referents are either a bare 'position number 9' with nothing occupying it, or a person — 'a runner', 'the student in 9th place' — and there is no visual anywhere in this set, so the pupil never points to the third car, ball or child in a line.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. The competency is 'describe the position of objects'; the referents rendered are a bare 'position number 9' or a person, and no sample draws anything at all, so there is no ordered set of objects for the pupil to read a position from. The fix is a rendered ordered-objects visual on this node; carried to Next tick should:."
+    },
+    {
+      "capability_id": "ordinal_numbers",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "ordinal numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        78,
+        103
+      ],
+      "reasoning": "Ordinals are the content of every answer, in symbol form (10th at seed 11), word form (tenth at seed 78) and as a sequence relation (seed 103 asks which position comes after 9th, keyed 10th).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "1st",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "1st",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "1st and 'first' show up only as wrong options — seeds 11, 23, 57 list 1st and seed 91 lists first — and no stem or key involves the first position. A pupil could answer all ten samples correctly while never once deciding anything about 1st.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. This is defect shape 4 (a named form generated only as a distractor): 1st/'first' occurs at seeds 11, 23, 57 and 91 exclusively as a wrong option, never in a stem and never as a key. The fix is in the sampler's choice of target position, and it must count keyed answers separately from distractors."
+    },
+    {
+      "capability_id": "2nd",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "2nd",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        118
+      ],
+      "reasoning": "Seed 118 puts 2nd in the stem ('the student in 10th place or 2nd place') and keys 2nd as the correct answer, so the pupil has to reason that second is earlier than tenth; that is a real use of 2nd, unlike its appearance as a mere option at seed 57.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "3rd",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "3rd",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "3rd appears four times but never in a stem and never as a key — it is a distractor at seeds 11 and 42 and 'third' is a distractor at seeds 78 and 91. Nothing in the set asks the pupil to identify, order or write the third position.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Same shape as item_020 and the same root cause: 3rd is offered at seeds 11 and 42 and 'third' at seeds 78 and 91, always as a distractor. Keys bunch at 9th/10th on 7 of 10 samples, so the position sampler is the single fix for both clauses — named as one item, not two, in Next tick should:."
+    },
+    {
+      "capability_id": "up_to_10th",
+      "node_id": "mat_g1_na_q1_5",
+      "clause": "up to 10th",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        78,
+        103
+      ],
+      "reasoning": "The upper end of the range is reached and keyed repeatedly: 10th at seeds 11, 64 and 103, and the word tenth at seed 78, and seed 103 specifically walks the sequence up to it by asking what comes after 9th.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Coverage is bunched at the top: seven of the ten keys are 9th/ninth or 10th/tenth, and seed 57's stem says 'Write the symbol for the ninth position' while the item is actually multiple choice with options 9th/1st/2nd/8th, so the pupil selects rather than writes."
+    }
+  ]
+}

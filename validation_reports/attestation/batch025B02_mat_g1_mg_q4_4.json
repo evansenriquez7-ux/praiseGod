@@ -1,0 +1,194 @@
+{
+  "batch": "batch025B02_mat_g1_mg_q4_4",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_mg_q4_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "The school program begins in August and an exhibit happens in December. How many months later is the exhibit?",
+        "correct_answer": 4,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "This month is October. What month will it be in 2 months?",
+        "correct_answer": "December",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "A short break starts at 9:00 and lasts a quarter of an hour (15 minutes). What time does it end?",
+        "correct_answer": "C",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "The clean-up time began at 9:00 and finished at 9:30. How many minutes did it last?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "The school program begins in January and an exhibit happens in March. How many months later is the exhibit?",
+        "correct_answer": 2,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A short break starts at 11:00 and lasts a quarter of an hour (15 minutes). What time does it end?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Play time starts at 11:00 and lasts half an hour (30 minutes). What time does it end?",
+        "correct_answer": "11:30",
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 103,
+        "question_text": "Look at the August 2025 calendar. What day of the week is August 30?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "Morning exercise starts at 10:00 and lasts a quarter of an hour (15 minutes). What time does it end?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "The recess began at 8:00 and finished at 8:30. How many minutes did it last?",
+        "correct_answer": "30",
+        "formatter": "set_fill_in_blank"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g1_mg_q4_4",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57
+      ],
+      "reasoning": "The items pose situations that need working out rather than bare recall: counting August forward to December for 4 (seed 11) and finding the elapsed minutes between 9:00 and 9:30 (seed 57).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "time",
+      "node_id": "mat_g1_mg_q4_4",
+      "clause": "time",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        103,
+        127
+      ],
+      "reasoning": "Time is the subject matter throughout — clock times with hour and minute hands in the ClockSet payloads (seeds 42, 57), and calendar dates and months (seed 103). No sample is about anything else.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "hour",
+      "node_id": "mat_g1_mg_q4_4",
+      "clause": "hour",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Whole hours appear only as the given starting point (9:00, 10:00, 11:00, 8:00); no sample asks for a one-hour duration, and every clock drawn shows :15 or :30, so the pupil is never asked to read or produce an on-the-hour time.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Whole hours appear only as given start times (9:00, 10:00, 11:00, 8:00) and every clock drawn reads :15 or :30, so a one-hour duration is never asked for or shown. Sampler gap, same shape as B01's denominators: the fix widens the duration sampler to include whole hours."
+    },
+    {
+      "capability_id": "half_hour",
+      "node_id": "mat_g1_mg_q4_4",
+      "clause": "half hour",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        91,
+        127
+      ],
+      "reasoning": "Seed 91 names it outright — \"lasts half an hour (30 minutes)\" from 11:00 — and seeds 57 and 127 ask for the 30-minute span between 9:00/9:30 and 8:00/8:30.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Seed 127 asks \"How many minutes did it last?\" (key 30) but attaches an interactive clock in set mode (is_read_only false, target_time 8:30); the pupil is asked for a count of minutes while the response widget sets a clock face, so the answer type and the input do not match. Seed 91 has the same set-mode clock already carrying target_time 11:30, the answer being asked for."
+    },
+    {
+      "capability_id": "quarter_hour",
+      "node_id": "mat_g1_mg_q4_4",
+      "clause": "quarter hour",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        118
+      ],
+      "reasoning": "Three stems state a quarter-hour duration explicitly — \"lasts a quarter of an hour (15 minutes)\" starting at 9:00, 11:00 and 10:00 — and the keys are the corresponding :15 end times.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "On seeds 42, 78 and 118 the read-only ClockSet already displays the answer (target_time 9:15, 11:15, 10:15 respectively, matching the key), so the pupil can read the end time off the clock without adding a quarter hour to the start time."
+    },
+    {
+      "capability_id": "days_in_a_week",
+      "node_id": "mat_g1_mg_q4_4",
+      "clause": "days in a week",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        103
+      ],
+      "reasoning": "Seed 103 requires locating August 30 on a calendar with show_day_names true and naming its weekday, keyed Saturday, which is correct for 2025 — that is day-of-week work. It is the only sample of the seven-day cycle in the set; nothing asks how many days are in a week or what day follows another.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "months_in_a_year",
+      "node_id": "mat_g1_mg_q4_4",
+      "clause": "months in a year",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64
+      ],
+      "reasoning": "Three items move across the calendar year: August to December as 4 months (seed 11), October plus 2 months giving December (seed 23), and January to March as 2 (seed 64).",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "The Calendar visual contradicts the stem in all three: seed 11 speaks of August and December but draws month 9 (September); seed 23 says \"This month is October\" but draws month 2 (February); seed 64 spans January to March but draws month 2 alone. A single-month calendar also cannot represent a multi-month duration, so the drawn aid is at best useless and at worst misleading."
+    }
+  ]
+}

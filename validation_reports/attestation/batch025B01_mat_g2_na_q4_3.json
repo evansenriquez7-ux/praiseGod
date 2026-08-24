@@ -1,0 +1,190 @@
+{
+  "batch": "batch025B01_mat_g2_na_q4_3",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q4_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Shade 2/3 of the shape.",
+        "correct_answer": "2/3",
+        "formatter": "set_click"
+      },
+      {
+        "seed": 23,
+        "question_text": "Shade 1/8 of the shape.",
+        "correct_answer": "1/8",
+        "formatter": "set_click"
+      },
+      {
+        "seed": 42,
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "C",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Shade 2/5 of the shape.",
+        "correct_answer": "2/5",
+        "formatter": "set_click"
+      },
+      {
+        "seed": 103,
+        "question_text": "Shade 2/3 of the shape.",
+        "correct_answer": "2/3",
+        "formatter": "set_click"
+      },
+      {
+        "seed": 118,
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Shade 3/4 of the shape.",
+        "correct_answer": "3/4",
+        "formatter": "set_click"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "represent",
+      "node_id": "mat_g2_na_q4_3",
+      "clause": "Represent",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "Five samples hand the pupil an unshaded partitioned shape and a named fraction ('Shade 2/3 of the shape', 'Shade 1/8 of the shape') with an editable FractionShade visual (is_read_only false, interaction_mode 'set'), so the pupil is the one producing the representation rather than reading one.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "identify",
+      "node_id": "mat_g2_na_q4_3",
+      "clause": "identify",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        64,
+        78,
+        118
+      ],
+      "reasoning": "Five samples show a pre-shaded read-only area model and ask 'What fraction does the model show?', e.g. seed 118 shows 4 of 5 parts shaded and keys 4/5 — the pupil must name the fraction a picture stands for, which is identification.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Distractor lists carry improper fractions (5/2 at seed 42, 4/3 at seed 57, 3/2 at seed 64, 4/2 at seed 78, 5/4 at seed 118). A fraction greater than one is not something a Grade 2 pupil at this stage has met, and an improper distractor is not a plausible misread of a single shaded whole; the natural wrong answer (shaded-vs-unshaded confusion, e.g. 3/5 at seed 42) is present only sometimes."
+    },
+    {
+      "capability_id": "similar_fractions",
+      "node_id": "mat_g2_na_q4_3",
+      "clause": "similar fractions",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "'Similar fractions' is a relation that needs two or more fractions sharing a denominator to be visible at once, and every sample handles exactly one fraction: one shape to shade, or one model to name. Nothing asks the pupil to see that, say, 2/5 and 4/5 belong to the same family; the only place several fractions sit together is the distractor list, which the task never treats as a set.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. The Attester's ground is structural: 'similar fractions' is a relation between two or more fractions sharing a denominator, and every sample handles exactly one fraction at a time, so the relation is never on screen. Under Rule 8 the fix is a compare/identify-similar variant that renders two fractions together; carried to Next tick should: as the first content item on this node, not built this tick (budget)."
+    },
+    {
+      "capability_id": "denominators_2_3_4_5_6_8",
+      "node_id": "mat_g2_na_q4_3",
+      "clause": "with denominators 2, 3, 4, 5, 6, and 8",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Across all ten samples the denominators are 3, 8, 5, 4, 3, 4, 5, 3, 5, 4 — that is halves and sixths never appear. The clause names six denominators as the intended span, and two of the six (2 and 6) are absent from every stem, payload and key, so the span is not exhibited.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Denominators across the ten samples are 3, 8, 5, 4, 3, 4, 5, 3, 5, 4 — the clause names 2, 3, 4, 5, 6 and 8, and halves and sixths never appear. This is the sampler-gap shape (a named sub-case the competency requires, unreachable in a full ten-seed set), so the fix widens the denominator sampler rather than narrowing the clause. Carried with item_003."
+    },
+    {
+      "capability_id": "groups_of_objects",
+      "node_id": "mat_g2_na_q4_3",
+      "clause": "groups of objects",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Every visual is a single continuous whole cut into equal parts — payload shapes are 'circle', 'bar' and 'rectangle', and the read items say model_type 'area_model'. No sample shows a collection of countable things (counters, fruits, children) with part of the group marked off, which is what fractions of a group of objects requires.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Every visual is one continuous whole cut into equal parts (circle, bar, rectangle; model_type 'area_model'); no sample renders a collection of countable objects, which is what 'groups of objects' names. Recorded together with items 006-008 as one machinery gap: four of the competency's five named media are absent from this node, so the honest disposition is to build them, not to re-attest. Carried to Next tick should:."
+    },
+    {
+      "capability_id": "fraction_charts",
+      "node_id": "mat_g2_na_q4_3",
+      "clause": "fraction charts",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "A fraction chart shows several rows of different denominators stacked so wholes line up. The rendered visuals are one shape with one denominator each (total_parts 3, 8, 5, 4, 5), and no sample displays halves beside thirds beside fourths, so no chart is drawn.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. A fraction chart stacks rows of different denominators against a common whole; the rendered visuals show one shape with one denominator each, so nothing lines halves up beside thirds. Part of the same four-medium gap as items 005, 007 and 008."
+    },
+    {
+      "capability_id": "fraction_tiles",
+      "node_id": "mat_g2_na_q4_3",
+      "clause": "fraction tiles",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Fraction tiles are separable unit pieces the pupil lays out or counts. Nothing in the ten samples renders loose pieces — the shade items give one fixed partitioned outline the pupil colours in, and the read items give one fixed shaded area model.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Fraction tiles are separable unit pieces the pupil moves or counts; the shade items give one fixed partitioned outline to colour in, which is a different artifact. Part of the same four-medium gap as items 005, 006 and 008."
+    },
+    {
+      "capability_id": "number_line",
+      "node_id": "mat_g2_na_q4_3",
+      "clause": "the number line",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "No sample renders a marked line with endpoints and interval ticks; the only two visual types present are FractionShade and FractionModel, and both are enclosed regions, so the pupil never locates a fraction as a point between 0 and 1.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Only FractionShade and FractionModel render on this node, both enclosed regions, so a fraction is never located as a point on a marked line. Note the number-line formatter already exists in the tree, which makes this the cheapest of the four media to close — named first among them in Next tick should:."
+    }
+  ]
+}

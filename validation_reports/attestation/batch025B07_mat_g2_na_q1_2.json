@@ -1,0 +1,186 @@
+{
+  "batch": "batch025B07_mat_g2_na_q1_2",
+  "attested_at": "2026-08-24T14:00:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "pasted inline into the subagent prompt",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "inline prompt"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "C",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Move the dot to show 263 on the number line.",
+        "correct_answer": 263,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 42,
+        "question_text": "Use base-10 blocks to show the number 203.",
+        "correct_answer": 203,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 57,
+        "question_text": "What number do the blocks show?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Move the dot to show 305 on the number line.",
+        "correct_answer": 305,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 78,
+        "question_text": "What number do the blocks show?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Use base-10 blocks to show the number 782.",
+        "correct_answer": 782,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 103,
+        "question_text": "Move the dot to show 914 on the number line.",
+        "correct_answer": 914,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 118,
+        "question_text": "What number do the blocks show?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What number do the blocks show?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "recognize_and_represent",
+      "node_id": "mat_g2_na_q1_2",
+      "clause": "Recognize and represent",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        11,
+        42,
+        23
+      ],
+      "reasoning": "Recognition and representation both appear as separate task types: seeds 57 and 11 ask the pupil to name what the blocks or the number line already show, while seeds 42 and 23 hand over a numeral (203, 263) and require the pupil to build or place it.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g2_na_q1_2",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        78,
+        91
+      ],
+      "reasoning": "The objects of every task are whole numbers — 751 on the number line at seed 11, 276 from the blocks at seed 78, 782 to be built at seed 91 — with content_type recorded as whole_number on the line items.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_1000",
+      "node_id": "mat_g2_na_q1_2",
+      "clause": "up to 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        103,
+        127,
+        91
+      ],
+      "reasoning": "The sampled values reach the top end of the three-digit range without crossing it: 914 at seed 103, 816 at seed 127 and 782 at seed 91, with the smallest at 203 (seed 42), so the whole 'up to 1000' band is exercised.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "The thousands field is 0 in every PlaceValueBlocks payload and no sample reaches 1000 itself, so the boundary value named by the competency is never actually shown."
+    },
+    {
+      "capability_id": "concrete_models",
+      "node_id": "mat_g2_na_q1_2",
+      "clause": "concrete",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        91,
+        57
+      ],
+      "reasoning": "Base-10 blocks — the standard concrete manipulative — carry three of the samples: seed 42 has the pupil assemble 2 hundreds and 3 ones for 203 and seed 91 assemble 7/8/2 for 782 with is_interactive true, and seed 57 reads a value off a 5/5/4 block arrangement. It is a screen rendering of a concrete model rather than physical material, which is the closest a rendered item can come.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "pictorial_models",
+      "node_id": "mat_g2_na_q1_2",
+      "clause": "pictorial models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        118
+      ],
+      "reasoning": "Two distinct pictorial models are drawn rather than one: a labelled NumberLine spanning 750-760 with a dot at 751 (seed 11) and 260-270 for the dot placement at seed 23, plus the block picture at seed 118 that must be read as 497.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "numerals",
+      "node_id": "mat_g2_na_q1_2",
+      "clause": "numerals",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        127
+      ],
+      "reasoning": "Numerals are used as a representation the pupil must map to and from: seed 42 gives the numeral 203 in the stem as the thing to build, and seeds 57 and 127 require choosing the numeral (554, 816) that matches the block picture.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "The short distractors 14 (seed 57), 20 (seed 118) and 15 (seed 127) are the digit sums of the block counts — a sensible 'counted the pieces' misconception, but they sit oddly beside the three-digit options and may read as typos to a pupil."
+    }
+  ]
+}
