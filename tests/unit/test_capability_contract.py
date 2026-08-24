@@ -339,14 +339,20 @@ def test_attestation_goes_stale_when_content_drifts():
     from pathlib import Path
 
     rec = None
-    for candidate in sorted(Path(VC._ATTESTATION_DIR).glob("*.json")):
-        d = _json.loads(candidate.read_text(encoding="utf-8"))
+    all_records = [_json.loads(p.read_text(encoding="utf-8")) for p in sorted(Path(VC._ATTESTATION_DIR).glob("*.json"))]
+    winner = VC._winning_verdict_index(all_records)
+    for idx, candidate in enumerate(sorted(Path(VC._ATTESTATION_DIR).glob("*.json"))):
+        d = all_records[idx]
         node = (d.get("packet") or {}).get("node_id")
         if not isinstance(node, str) or not (d.get("packet") or {}).get("samples_judged"):
             continue
+        verdict_pairs = [(v.get("node_id"), v.get("capability_id")) for v in d.get("verdicts", [])]
+        if not any(winner.get(pair) == idx for pair in verdict_pairs):
+            continue
+        batch_name = d.get("batch", candidate.stem)
         already = [
             e for e in VC.validate_capability_declarations([node])
-            if "STALE" in e and candidate.stem in e
+            if "STALE" in e and (candidate.stem in e or batch_name in e)
         ]
         if not already:
             rec = candidate
@@ -357,12 +363,13 @@ def test_attestation_goes_stale_when_content_drifts():
     try:
         d = _json.loads(original)
         node = d["packet"]["node_id"]
+        batch_name = d.get("batch", rec.stem)
         d["packet"]["samples_judged"][0]["question_text"] = "a stem the pipeline never rendered"
         rec.write_text(_json.dumps(d), encoding="utf-8")
 
         errs = [
             e for e in VC.validate_capability_declarations([node])
-            if "STALE" in e and rec.stem in e
+            if "STALE" in e and (rec.stem in e or batch_name in e)
         ]
         assert errs, "FRESHNESS HOLE: an attestation about drifted content was accepted"
         assert "re-attest" in errs[0]
@@ -373,7 +380,7 @@ def test_attestation_goes_stale_when_content_drifts():
     # (a superseded record stays stale until §6F learns about supersession).
     assert not [
         e for e in VC.validate_capability_declarations([node])
-        if "STALE" in e and rec.stem in e
+        if "STALE" in e and (rec.stem in e or batch_name in e)
     ]
 
 

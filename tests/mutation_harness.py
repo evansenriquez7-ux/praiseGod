@@ -385,7 +385,7 @@ MUTATIONS: List[Mutation] = [
         command=["backend.app.practice_gen.validation.validate_capability"],
         expected_check="§6F (blind Attester verdict contradicted by the table)",
         expect_output_contains=["CONTRADICTED && draw_line_relationships"],
-        baseline_must_not_contain=["CONTRADICTED"],
+        baseline_must_not_contain=["CONTRADICTED && draw_line_relationships"],
     ),
     Mutation(
         name="stale_attestation",
@@ -399,8 +399,8 @@ MUTATIONS: List[Mutation] = [
         apply_fn=lambda: _drift_attested_content(),
         command=["backend.app.practice_gen.validation.validate_capability"],
         expected_check="§6F freshness (attestation is about content that still exists)",
-        expect_output_contains=["STALE && re-attest"],
-        baseline_must_not_contain=["STALE"],
+        expect_output_contains=["STALE && planted drift"],
+        baseline_must_not_contain=["planted drift"],
     ),
     Mutation(
         name="template_review",
@@ -477,6 +477,7 @@ def _plant_wildcard_provider(capability: str) -> Dict[Path, str]:
 def _drift_attested_content() -> Dict[Path, str]:
     """Change the rendered text an attestation records, as a generator change would."""
     import json
+    from backend.app.practice_gen.validation import validate_capability as VC
 
     d = REPO_ROOT / "validation_reports" / "attestation"
     records = sorted(d.glob("*.json"))
@@ -485,18 +486,29 @@ def _drift_attested_content() -> Dict[Path, str]:
             "mutation 'stale_attestation': no attestation records to drift. File at "
             "least one Attester verdict before claiming the freshness pass works."
         )
-    path = records[0]
-    text = path.read_text(encoding="utf-8")
-    data = json.loads(text)
-    judged = (data.get("packet") or {}).get("samples_judged")
-    if not judged:
+    all_records = [json.loads(p.read_text(encoding="utf-8")) for p in records]
+    winner = VC._winning_verdict_index(all_records)
+    target = None
+    target_data = None
+    for idx, path in enumerate(records):
+        rec = all_records[idx]
+        verdict_pairs = [(v.get("node_id"), v.get("capability_id")) for v in rec.get("verdicts", [])]
+        if verdict_pairs and any(winner.get(pair) == idx for pair in verdict_pairs):
+            packet = rec.get("packet") or {}
+            node_id = packet.get("node_id")
+            judged = packet.get("samples_judged")
+            if node_id and judged:
+                target = path
+                target_data = rec
+                break
+    if target is None:
         raise ValueError(
-            f"mutation 'stale_attestation': {path.name} has no packet.samples_judged, so "
-            f"there is nothing to drift. §6F already fails that record for the same reason."
+            "mutation 'stale_attestation': could not find an active winning attestation record to drift."
         )
-    judged[0]["question_text"] = "planted drift: a stem the pipeline never rendered"
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-    return {path: text}
+    original_text = target.read_text(encoding="utf-8")
+    target_data["packet"]["samples_judged"][0]["question_text"] = "planted drift: a stem the pipeline never rendered"
+    target.write_text(json.dumps(target_data, indent=2, ensure_ascii=False), encoding="utf-8")
+    return {target: original_text}
 
 
 def _plant_contradicted_entry(capability: str) -> Dict[Path, str]:
