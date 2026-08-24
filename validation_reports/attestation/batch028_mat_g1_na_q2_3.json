@@ -1,6 +1,6 @@
 {
-  "batch": "batch026B03_mat_g1_na_q2_3",
-  "attested_at": "2026-08-24T14:40:00Z",
+  "batch": "batch028_mat_g1_na_q2_3",
+  "attested_at": "2026-08-24T15:13:30Z",
   "role": "Attester",
   "blindness": {
     "saw": [
@@ -16,9 +16,9 @@
       "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
       "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
     ],
-    "samples_delivery": "read local_only/scratch/attester/t26/B03.json (packet render only)",
+    "samples_delivery": "inline prompt",
     "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
-    "tool_uses_by_attester": "viewed packet render only"
+    "tool_uses_by_attester": "0"
   },
   "packet": {
     "builder": "tests/attester_packets.py",
@@ -118,7 +118,7 @@
         118,
         127
       ],
-      "reasoning": "The text explicitly asks the student to write numbers like 20, 50, 45, and 10 as tens and ones (e.g., 'Write 20 as tens and ones'). The interactive items (seeds 103, 127) also require using place value blocks to build numbers, teaching decomposition into tens and ones.",
+      "reasoning": "The rendered items consistently require decomposing two-digit numbers into expanded place value forms (e.g., 40 + 5) across multiple-choice, true/false, and cloze formats, as well as modeling the decomposition concretely using base-10 block manipulatives.",
       "action_taken": "Left registered; no change."
     },
     {
@@ -138,7 +138,7 @@
         118,
         127
       ],
-      "reasoning": "All questions in the sampled seeds present two-digit numbers, specifically 10, 20, 45, and 50, either to be rewritten as tens and ones or to be constructed using base-10 blocks.",
+      "reasoning": "Every evaluated item directly focuses on a two-digit integer target (such as 10, 20, 45, and 50) as the subject of the decomposition problem.",
       "action_taken": "Left registered; no change."
     },
     {
@@ -158,7 +158,7 @@
         118,
         127
       ],
-      "reasoning": "The phrase 'tens and ones' is explicitly present in the question texts of the text-based items. The visual payload items (seeds 103, 127) also use PlaceValueBlocks which represent tens and ones to construct numbers.",
+      "reasoning": "Items directly evaluate partitioning numbers into tens and ones components, either via explicit addition expressions like 10 + 0 and 50 + 0 or through place-value block representations specifying discrete tens and ones amounts.",
       "action_taken": "Left registered; no change."
     }
   ]
