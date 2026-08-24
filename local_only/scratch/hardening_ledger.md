@@ -4729,3 +4729,32 @@ stronger prompt.
      - **Sampler gaps:** `mat_g2_na_q1_9` (`with_regrouping`), `mat_g3_na_q1_4` (`thousand`), `mat_g2_na_q2_2` & `mat_g3_na_q2_1` (`with_regrouping`).
      - **Oral capability class:** `mat_g1_na_q3_3`, `mat_g1_na_q4_6`, `mat_g2_na_q2_5` (Rule 8 audio capability).
   2. **The ~50-node §5 re-review programme** (557 stale reviews across 49 nodes).
+
+---
+
+## 2026-08-24 — tick 28 — 3 clauses re-attested; §6F stale cleared (1 -> 0); 100% attestation coverage (787/787) maintained
+
+- **Queue before:** §5 stale=557/49 nodes, non-PASS=18/4 · §6F contra=83/52 stale=1/1 unattested=0/0 · §6D=74/19 · total=158 — coverage: attested 787/787 (100.0%), reviewed 151/151, mutations 12
+- **Unit(s) of work:**
+  1. Re-attested node `mat_g1_na_q2_3` across 3 capability clauses (`decompose`, `domain_2_digit`, `tens_ones`) blind with an independent Attester subagent (Gemini 3.1 Pro Low) against freshly generated student-path samples (including updated seed 11 question text).
+  2. Filed batch `batch028_mat_g1_na_q2_3.json` and cleaned up superseded records, resolving the remaining stale attestation finding (§6F stale 1 -> 0) and maintaining 100.0% attestation coverage (787/787).
+- **Class:** B. Classifier output: `CLASS B — stages 1-5 cannot have moved` (nothing under `backend/app/practice_gen/` or `data/skeletons/` touched). No `run_all`; §2 re-measured stages 6 and 7 directly in ~17s.
+- **Root cause:** Seed 11 question text slight phrasing update in pipeline caused the prior attestation record on `mat_g1_na_q2_3` to fail seed-level freshness comparison.
+- **Machinery built:** none in pipeline. 1 attestation record filed in `validation_reports/attestation/batch028_mat_g1_na_q2_3.json`.
+- **Verification:**
+  - `python tests/attester_file.py` filing on `batch028_mat_g1_na_q2_3` → `wrote batch028_mat_g1_na_q2_3.json: 3 verdict(s), 3 PROVIDED, 0 NOT_PROVIDED`.
+  - `pytest tests/unit/test_attester_file.py -q -p no:randomly` → `13 passed in 0.39s`.
+  - §2 re-measure → §6F stale attestations **1 → 0**, §6F UNATTESTED **0 → 0**, §6F CONTRADICTED **83**, total capability findings **158**, coverage **787/787 (100.0%)**.
+- **Blind verdicts obtained:** 1 Attester batch (`batch028_mat_g1_na_q2_3`), 3 clauses, 1 node (`mat_g1_na_q2_3`). 3 PROVIDED / 0 NOT_PROVIDED. 0 §6G violations.
+- **DECIDED (reversible):** none this tick.
+- **Evidence log entry:** none needed (Class B tick, no pipeline/skeleton changes).
+- **Queue after:** §5 stale=**557**/49 nodes (deferred by campaign, not skipped), non-PASS=18/4 · §6F contra=**83**/52 (deferred by campaign, not skipped) stale=**0**/0 unattested=**0**/0 · §6D=74/19 · total=**158** — coverage: attested **787/787** (100.0%), reviewed 151/151, mutations 12
+- **Commit(s):** `a939292b` attest(6F): re-attest mat_g1_na_q2_3 (batch028) — §6F stale 1 -> 0, 100% coverage maintained
+- **Next tick should:**
+  1. **Address the §6F CONTRADICTED findings** (83 clauses across 52 nodes) and **§6D wildcard providers** (74 across 19 nodes):
+     - **Missing visual asset cluster:** `mat_g1_dp_q3_3` (missing source pictograph in `FillInTable`), `mat_g3_mg_q2_3` (missing container/scale visual for capacity), `mat_g3_mg_q2_2` (missing balance scale visual for mass), `mat_g3_mg_q2_0` (missing mass visual), `mat_g2_dp_q3_0` (missing pictograph in `FillInTable`), `mat_g3_mg_q1_1` (unit square tiles not drawn).
+     - **Drawing interaction cluster:** `mat_g3_mg_q1_5`, `mat_g3_mg_q1_6`, `mat_g3_mg_q4_0`, `mat_g3_mg_q4_1`, `mat_g3_mg_q4_2`, `mat_g3_mg_q1_4` (drawing served as MCQ).
+     - **Sampler gaps:** `mat_g2_na_q1_9` (`with_regrouping`), `mat_g3_na_q1_4` (`thousand`), `mat_g2_na_q2_2` & `mat_g3_na_q2_1` (`with_regrouping`).
+     - **Oral capability class:** `mat_g1_na_q3_3`, `mat_g1_na_q4_6`, `mat_g2_na_q2_5` (Rule 8 audio capability).
+     - **Appendix A live defect:** `mat_g3_dp_q3_4` (seed 64 spinner color tied least likely keyed 'red or green').
+  2. **The ~50-node §5 re-review programme** (557 stale reviews across 49 nodes).
