@@ -1,0 +1,180 @@
+{
+  "batch": "batch026B15_mat_g3_na_q4_0",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B15.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q4_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Since 9 × 9 = 81, then 81 ÷ 9 = 729. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 23,
+        "question_text": "Rosa solved: \"Since 3 × 2 = 6, then 6 ÷ 3 = ___\". Rosa says the missing number is 3. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 2
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 42,
+        "question_text": "Start at 12 on a number line and take equal jumps back of 2 to reach 0. How many jumps did you make? 12 ÷ 2 = ___",
+        "correct_answer": 6,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Start at 14 on a number line and take equal jumps back of 7 to reach 0. How many jumps did you make? 14 ÷ 7 = ___",
+        "correct_answer": 2,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Since 3 × 8 = 24, what is 24 ÷ 3?",
+        "correct_answer": 8,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Start at 18 on a number line and take equal jumps back of 3 to reach 0. How many jumps did you make? 18 ÷ 3 = ___",
+        "correct_answer": 6,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Start at 16 on a number line and take equal jumps back of 4 to reach 0: 16 ÷ 4 = ___",
+        "correct_answer": 4,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Grace solved: \"Since 5 × 3 = 15, then 15 ÷ 5 = ___\". Grace says the missing number is 75. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 3
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 118,
+        "question_text": "Start at 18 on a number line and take equal jumps back of 6 to reach 0. How many jumps did you make? 18 ÷ 6 = ___",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Grace solved: \"Starting at 6 on a number line, taking equal jumps back of 3 takes ___ jumps to reach 0\". Grace says the missing number is 3. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 2
+        },
+        "formatter": "error_detect"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_division",
+      "node_id": "mat_g3_na_q4_0",
+      "clause": "Illustrate division",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds require the student to evaluate a division problem or understand a division concept, whether through an inverse relationship or number line jumps.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "equal_jumps",
+      "node_id": "mat_g3_na_q4_0",
+      "clause": "equal jumps",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "These seeds specifically frame division in terms of taking 'equal jumps back' on a number line to reach 0.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "number_line",
+      "node_id": "mat_g3_na_q4_0",
+      "clause": "number line",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "The wording in these seeds explicitly mentions starting 'on a number line' to illustrate the division process.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "inverse_of_multiplication",
+      "node_id": "mat_g3_na_q4_0",
+      "clause": "inverse of multiplication",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "These seeds test the concept of division as the inverse of multiplication using phrasing like 'Since A × B = C, then C ÷ A = ___'.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

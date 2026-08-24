@@ -1,0 +1,180 @@
+{
+  "batch": "batch026B14_mat_g3_na_q2_7",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B14.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q2_7",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Fidel starts with 60 eggs. Then Fidel receives 58 eggs. Then Fidel receives 66 eggs. Then Fidel gives away 76 eggs. How many eggs does Fidel have now?",
+        "correct_answer": 108,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "Ana starts with 80 eggs. Then Ana receives 59 eggs. Then Ana gives away 4 eggs. Then Ana gives away 14 eggs. How many eggs does Ana have now?",
+        "correct_answer": 121,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "Fidel starts with ₱36. Then Fidel receives ₱32. Then Fidel receives ₱29. How much money does Fidel have now?",
+        "correct_answer": 97,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Carlo starts with ₱78. Then Carlo gives away ₱3. Then Carlo gives away ₱29. How much money does Carlo have now?",
+        "correct_answer": 46,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Fidel starts with ₱79. Then Fidel receives ₱52. Then Fidel receives ₱69. Then Fidel gives away ₱88. How much money does Fidel have now?",
+        "correct_answer": 112,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Fidel starts with ₱84. Then Fidel gives away ₱19. Then Fidel receives ₱84. How much money does Fidel have now?",
+        "correct_answer": 149,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Fidel starts with 28 marbles. Then Fidel receives 28 marbles. Then Fidel receives 50 marbles. How many marbles does Fidel have now?",
+        "correct_answer": 106,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "Dina starts with 90 stickers. Then Dina receives 95 stickers. Then Dina receives 28 stickers. Then Dina gives away 89 stickers. How many stickers does Dina have now?",
+        "correct_answer": 124,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "Carlo starts with ₱90. Then Carlo receives ₱47. Then Carlo gives away ₱38. How much money does Carlo have now?",
+        "correct_answer": 99,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Carlo starts with 75 notebooks. Then Carlo receives 73 notebooks. Then Carlo receives 13 notebooks. How many notebooks does Carlo have now?",
+        "correct_answer": 161,
+        "formatter": "cloze"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems_involving_addition_and_subtraction",
+      "node_id": "mat_g3_na_q2_7",
+      "clause": "Solve problems involving addition and subtraction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The rendered items ask the student to solve word problems involving sequential additions and subtractions of items (eggs, money, marbles, stickers, notebooks).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "3_to_4_numbers",
+      "node_id": "mat_g3_na_q2_7",
+      "clause": "3 to 4 numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each sampled word problem presents 3 to 4 sequential numbers to add or subtract. For instance, seed 11 gives 60, 58, 66, 76 (4 numbers), while seed 42 gives 36, 32, 29 (3 numbers).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_2_digits",
+      "node_id": "mat_g3_na_q2_7",
+      "clause": "up to 2 digits",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All the numbers used in the word problems (like 76, 80, 59, 4) have at most 2 digits, fitting the constraint of up to 2 digits.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "problems_involving_money",
+      "node_id": "mat_g3_na_q2_7",
+      "clause": "problems involving money",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        64,
+        78,
+        118
+      ],
+      "reasoning": "Several samples explicitly involve money, denoted by the Philippine peso sign (₱), such as 'Fidel starts with ₱36' in seed 42 or 'Carlo starts with ₱78' in seed 57.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

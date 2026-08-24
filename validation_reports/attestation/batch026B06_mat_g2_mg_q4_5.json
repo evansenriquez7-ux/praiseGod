@@ -1,0 +1,185 @@
+{
+  "batch": "batch026B06_mat_g2_mg_q4_5",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B06.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q4_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "A square has a side of 9 cm. What is its perimeter?",
+        "correct_answer": 36,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "A square has a side of 2 cm. What is its perimeter?",
+        "correct_answer": 8,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "A triangle has sides 2 cm, 1 cm, and 2 cm. What is its perimeter?",
+        "correct_answer": 5,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "A rectangle has sides 7 cm and 5 cm. What is its perimeter?",
+        "correct_answer": 24,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "A square has a side of 2 cm. What is its perimeter?",
+        "correct_answer": 8,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A rectangle has sides 3 cm and 2 cm. What is its perimeter?",
+        "correct_answer": 10,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "A rectangle has sides 11 cm and 3 cm. What is its perimeter?",
+        "correct_answer": 28,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "A triangle has sides 8 cm, 12 cm, and 8 cm. What is its perimeter?",
+        "correct_answer": 28,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "A triangle has sides 11 cm, 3 cm, and 11 cm. What is its perimeter?",
+        "correct_answer": 25,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "A rectangle has sides 11 cm and 10 cm. What is its perimeter?",
+        "correct_answer": 42,
+        "formatter": "cloze"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "find",
+      "node_id": "mat_g2_mg_q4_5",
+      "clause": "Find",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds provide dimensions for a shape (square, triangle, rectangle) and directly ask 'What is its perimeter?', requiring the student to find the value.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "perimeter",
+      "node_id": "mat_g2_mg_q4_5",
+      "clause": "perimeter",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every seed in this item directly focuses on calculating the 'perimeter' of a given shape.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "triangles",
+      "node_id": "mat_g2_mg_q4_5",
+      "clause": "triangles",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        103,
+        118
+      ],
+      "reasoning": "Seeds 42, 103, and 118 provide three side lengths and specifically ask for the perimeter of a 'triangle'.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "squares",
+      "node_id": "mat_g2_mg_q4_5",
+      "clause": "squares",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64
+      ],
+      "reasoning": "Seeds 11, 23, and 64 present questions about a 'square', providing one side length and asking for the perimeter.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "rectangles",
+      "node_id": "mat_g2_mg_q4_5",
+      "clause": "rectangles",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        91,
+        127
+      ],
+      "reasoning": "Seeds 57, 78, 91, and 127 explicitly mention a 'rectangle' and provide two side lengths to calculate its perimeter.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

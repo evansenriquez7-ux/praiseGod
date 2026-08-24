@@ -1,0 +1,151 @@
+{
+  "batch": "batch026B12_mat_g3_mg_q4_2",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B12.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_mg_q4_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?",
+        "correct_answer": "5 units to the right of the line",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "A point is 2 grid units above a horizontal line of symmetry. Where must the matching point be drawn to complete the symmetric figure?",
+        "correct_answer": "2 grid units below the line of symmetry",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "A point is 3 grid units to the left of a vertical line of symmetry. Where is its mirror-image point?",
+        "correct_answer": "3 grid units to the right of the line",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "To complete a symmetric figure across a vertical line of symmetry, the other half must be ___.",
+        "correct_answer": "drawn as a mirror image of the first half",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?",
+        "correct_answer": "5 units to the right of the line",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A point is 4 grid units to the right of a vertical line of symmetry. Where should its matching point be drawn to complete the figure?",
+        "correct_answer": "4 grid units to the left of the line",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "A point is 3 grid units to the left of a vertical line of symmetry. Where is its mirror-image point?",
+        "correct_answer": "3 grid units to the right of the line",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "A vertex of a polygon is 5 units to the left of a vertical line of symmetry. Where is the corresponding vertex of the completed symmetric polygon?",
+        "correct_answer": "5 units to the right of the line",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "If a shape is symmetrical across a line, folding along that line makes both halves match exactly. True or false?",
+        "correct_answer": "True",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "To complete a symmetric figure across a vertical line of symmetry, the other half must be ___.",
+        "correct_answer": "drawn as a mirror image of the first half",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "complete",
+      "node_id": "mat_g3_mg_q4_2",
+      "clause": "Complete",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "While the items ask questions about a completed symmetric figure (e.g., 'Where is the corresponding vertex...'), they are multiple-choice questions (e.g., '5 units to the right of the line') and do not require the student to actively complete or draw a figure themselves.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Completing symmetric figures is evaluated via multiple choice coordinates rather than completion drawing."
+    },
+    {
+      "capability_id": "figure",
+      "node_id": "mat_g3_mg_q4_2",
+      "clause": "figure",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        64,
+        78,
+        103,
+        127
+      ],
+      "reasoning": "These seeds explicitly refer to a 'figure' or 'polygon' that is symmetric (e.g., 'symmetric figure' in seeds 23, 57, 127, 'symmetric polygon' in seeds 11, 64, 103).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "symmetric_with_respect_to_a_line",
+      "node_id": "mat_g3_mg_q4_2",
+      "clause": "symmetric with respect to a line",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds describe points, vertices, or halves being symmetric with respect to a vertical or horizontal line of symmetry (e.g., 'symmetrical across a line' in 118, 'vertical line of symmetry' in 11, 42, 57, 64, 78, 91, 103, 127).",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

@@ -7826,3 +7826,61 @@ Key root-cause clusters among the 23 NOT_PROVIDED verdicts:
    - `mat_g3_mg_q1_4`: `draw_geometric_object` (`draws`) is served via selected-response MCQ rather than student-constructed drawing.
 4. **Oral Channel Incompatibility**:
    - `mat_g1_na_q4_6` & `mat_g2_na_q2_5`: `given_orally` cannot be satisfied via text channel; requires audio capability architecture under Rule 8.
+
+---
+
+## 2026-08-24 — tick 26 — 361 clauses attested across 89 nodes; §6F UNATTESTED backlog completely cleared (361 -> 0)
+
+### Queue movement (measured per §2)
+
+```
+                            before (tick 25 close)    after (tick 26)
+§5  STALE/malformed reviews :  557 / 49 nodes           557 / 49 nodes (deferred by campaign)
+§5  non-PASS verdicts       :   18 / 4 nodes             18 / 4 nodes
+§6F CONTRADICTED            :   60 / 34 nodes            83 / 52 nodes
+§6F stale attestations      :    2 / 2 nodes              2 / 2 nodes
+§6F UNATTESTED              :  361 / 89 nodes             0 /  0 nodes (CLEARED)
+§6D wildcard providers      :   74 / 19 nodes            74 / 19 nodes
+§6G batch-integrity         :    —                        0
+TOTAL capability findings   :  498                      160
+coverage: attested            426/787 (54.1%)          785/787 (99.7%)
+```
+
+**§6F UNATTESTED backlog is cleared to 0.** 361 clauses across 89 nodes evaluated blind across 16 batches (`batch026B01` through `batch026B16`).
+23 came back `NOT_PROVIDED`, moving CONTRADICTED from 60 across 34 nodes to 83 across 52 nodes.
+Total capability findings dropped from 498 to 160.
+Attested capability coverage reached 785/787 (99.7%), with only 2 stale attestations in the tree.
+
+**§6G passed all 16 batches (B01–B16) at 0 violations.** All 89 newly written attestation
+records in `validation_reports/attestation/` (`batch026B01_*` through `batch026B16_*`) passed
+seed provenance, non-empty reasoning, batch size (<=25), and cross-tree skeleton clustering checks.
+
+### Summary of Blind Attester Findings
+
+361 capability clauses across 89 nodes were evaluated blind: 338 PROVIDED, 23 NOT_PROVIDED.
+
+Key root-cause clusters among the 23 NOT_PROVIDED verdicts:
+1. **Missing Media & Assets in Visual Payloads**:
+   - `mat_g1_dp_q3_3` (clauses `pictograph`, `without_scale`): `FillInTable` is rendered, but the source pictograph is completely omitted from the visual payload (same defect family as `mat_g2_dp_q3_0`).
+   - `mat_g1_na_q3_7` (clauses `objects`, `images`): patterns are rendered as plain text strings rather than visual geometric objects or images.
+   - `mat_g3_mg_q2_2` (clauses `objects`, `balance_scale`): comparison of raw numbers with no object referents and no balance scale visual.
+   - `mat_g3_mg_q2_3` (clauses `measure_capacity`, `measuring_tools_for_capacity`): capacity question with no visual container or graduated scale (mirroring the `mat_g3_mg_q2_0` mass defect).
+   - `mat_g3_mg_q2_5` (clause `two_containers`): comparison of raw numbers without container nouns or container visuals.
+   - `mat_g3_na_q4_6` (clause `models`): word problem descriptions without visual models.
+2. **Interactive Drawing vs Multiple Choice**:
+   - `mat_g3_mg_q1_6` (`draw_segment_of_given_length` / `draw`): coordinate selection MCQ rather than interactive line drawing.
+   - `mat_g3_mg_q4_0` (`draw`): grid movement coordinate questions rather than interactive drawing.
+   - `mat_g3_mg_q4_1` (`drawing_the_line_of_symmetry`): multiple-choice symmetry questions rather than drawing a line of symmetry.
+   - `mat_g3_mg_q4_2` (`complete`): vertex coordinate selection rather than interactive completion drawing.
+3. **Literal Competency Example Clauses**:
+   - `mat_g1_na_q3_2` (`example_1` "2+3 = 1+4", `example_2` "10-5 = 6-1"): literal example equations from competency clause not drawn verbatim in the 10-seed window.
+4. **Sampler Coverage Gaps**:
+   - `mat_g2_na_q1_9` (`with_regrouping` / `with`): all 10 seeds are carry-free (sampler gap).
+   - `mat_g3_na_q1_4` (`thousand`): rounding only to nearest 10 and 100 in 10-seed window.
+   - `mat_g2_na_q4_4` (`similar_fractions`): single fraction given per item rather than a set.
+5. **Physical Object Referents**:
+   - `mat_g2_na_q1_5` & `mat_g3_na_q1_2` (`objects`): positions use runners/rankings or abstract numbers rather than a row of physical objects.
+   - `mat_g2_mg_q4_4` (`measure`): perimeter formula selection MCQ rather than measuring with tools.
+6. **Oral Delivery Channel Limitation**:
+   - `mat_g1_na_q3_3` (`given_orally`): audio capability requirement under Rule 8.
+

@@ -1,0 +1,163 @@
+{
+  "batch": "batch026B03_mat_g1_na_q3_2",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B03.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q3_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "In 20 − 4 = 19 − ___, the missing number is 20. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 23,
+        "question_text": "In 1 + 10 = 6 + ___, the missing number is 5. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 42,
+        "question_text": "What number completes the expression: 3 + 2 = 1 + ___?",
+        "correct_answer": 4,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "What number completes the expression: 4 − 1 = 11 − ___?",
+        "correct_answer": 8,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What number completes the expression: 13 + 4 = 9 + ___?",
+        "correct_answer": 8,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What number completes the expression: 3 + 5 = 7 + ___?",
+        "correct_answer": 1,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "3 + 1 = 1 + ___",
+        "correct_answer": 3,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "In 12 + 4 = 2 + ___, the missing number is 14. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 118,
+        "question_text": "What number completes the expression: 9 − 2 = 19 − ___?",
+        "correct_answer": 12,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "In 1 + 2 = 2 + ___, the missing number is 1. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "write_equivalent_expression",
+      "node_id": "mat_g1_na_q3_2",
+      "clause": "Write an equivalent expression",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The items require students to balance two expressions by finding the missing number that makes one expression equivalent to the other (e.g., '3 + 2 = 1 + ___' or '20 − 4 = 19 − ___').",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "addition_subtraction_expression",
+      "node_id": "mat_g1_na_q3_2",
+      "clause": "addition or subtraction expression",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each item provides an addition or subtraction expression on both sides of the equal sign, such as '13 + 4' and '9 + ___'.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "example_1",
+      "node_id": "mat_g1_na_q3_2",
+      "clause": "2+3 = 1+4",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The specific example equation '2+3 = 1+4' mentioned in the clause does not appear exactly in any of the rendered items. The closest is seed 42 which uses '3 + 2 = 1 + ___'.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. The specific literal example '2+3 = 1+4' from the competency clause is not generated in the 10 sampled seeds. Generator produces general equivalent addition equations instead."
+    },
+    {
+      "capability_id": "example_2",
+      "node_id": "mat_g1_na_q3_2",
+      "clause": "10-5 = 6-1",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "None of the sampled seeds present the specific subtraction equivalence example '10-5 = 6-1'. The subtraction expressions generated use other values like '20 − 4 = 19 − ___'.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. The specific literal subtraction example '10-5 = 6-1' is not generated in the 10 sampled seeds. Generator produces general equivalent subtraction equations."
+    }
+  ]
+}

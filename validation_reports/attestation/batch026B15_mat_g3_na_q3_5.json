@@ -1,0 +1,175 @@
+{
+  "batch": "batch026B15_mat_g3_na_q3_5",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B15.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q3_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "What number is missing in the pattern: 244, 243, 249, 144, 143, 149, ___, 43?",
+        "correct_answer": 44,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "What is the missing term (position 8) in the pattern?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "What number is missing in the pattern: 24, 24, 34, ___, 44?",
+        "correct_answer": 34,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "What number is missing in the pattern: 51, 54, ___, 104, 151?",
+        "correct_answer": 101,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What number is missing in the pattern: 27, 29, 21, ___, 39, 31, 47, 49?",
+        "correct_answer": 37,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What number is missing in the pattern: 35, 37, 25, ___, 15?",
+        "correct_answer": 27,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "What number is missing in the pattern: 43, 47, 63, ___, 83?",
+        "correct_answer": 67,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "What is the missing term (position 8) in the pattern?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "What number is missing in the pattern: 116, 115, ___, 65, 16?",
+        "correct_answer": 66,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What is the missing term (position 5) in the pattern?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "determine_missing_terms",
+      "node_id": "mat_g3_na_q3_5",
+      "clause": "Determine the missing term/s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All the sampled seeds require the student to determine the missing term in a given pattern sequence, as evidenced by prompts such as 'What number is missing in the pattern' and 'What is the missing term'.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "pattern",
+      "node_id": "mat_g3_na_q3_5",
+      "clause": "pattern",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each of the seeds explicitly presents a 'pattern' to the student (e.g., 'What number is missing in the pattern:' followed by a sequence of numbers).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "repeating_and_increasing",
+      "node_id": "mat_g3_na_q3_5",
+      "clause": "repeating and increasing components",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        64,
+        91,
+        103
+      ],
+      "reasoning": "These specific seeds present sequences with repeating and increasing components. For example, seed 91 (43, 47, 63, 67, 83) consists of repeating blocks that increase by a steady amount (20) between blocks.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "repeating_and_decreasing",
+      "node_id": "mat_g3_na_q3_5",
+      "clause": "repeating and decreasing components",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "These seeds feature sequences with repeating and decreasing components. For instance, seed 127 (65, 64, 55, 54, 45) consists of repeating patterns that step down (decrease by 10) in successive groups.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

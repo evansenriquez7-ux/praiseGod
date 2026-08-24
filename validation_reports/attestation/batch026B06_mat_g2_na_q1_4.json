@@ -1,0 +1,222 @@
+{
+  "batch": "batch026B06_mat_g2_na_q1_4",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B06.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Arrange these numbers from smallest to largest: 454, 456, 445, 446, 458",
+        "correct_answer": [
+          445,
+          446,
+          454,
+          456,
+          458
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 23,
+        "question_text": "Arrange these numbers from largest to smallest: 919, 912, 928, 910",
+        "correct_answer": [
+          928,
+          919,
+          912,
+          910
+        ],
+        "formatter": "sort_order"
+      },
+      {
+        "seed": 42,
+        "question_text": "Arrange these numbers from largest to smallest: 637, 638, 229",
+        "correct_answer": [
+          638,
+          637,
+          229
+        ],
+        "formatter": "sort_order"
+      },
+      {
+        "seed": 57,
+        "question_text": "Jose counted storybooks collected by 3 friends: 37, 46, 329. Arrange the counts from largest to smallest.",
+        "correct_answer": [
+          329,
+          46,
+          37
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 64,
+        "question_text": "Arrange these numbers from smallest to largest: 478, 490, 487, 476, 470",
+        "correct_answer": [
+          470,
+          476,
+          478,
+          487,
+          490
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 78,
+        "question_text": "Arrange these numbers from largest to smallest: 762, 808, 809",
+        "correct_answer": [
+          809,
+          808,
+          762
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 91,
+        "question_text": "Maria counted seashells collected by 3 friends: 75, 82, 84. Arrange the counts from smallest to largest.",
+        "correct_answer": [
+          75,
+          82,
+          84
+        ],
+        "formatter": "sort_order"
+      },
+      {
+        "seed": 103,
+        "question_text": "Arrange these numbers from smallest to largest: 990, 989, 976, 972, 973",
+        "correct_answer": [
+          972,
+          973,
+          976,
+          989,
+          990
+        ],
+        "formatter": "sort_order"
+      },
+      {
+        "seed": 118,
+        "question_text": "Arrange these numbers from smallest to largest: 711, 703, 709",
+        "correct_answer": [
+          703,
+          709,
+          711
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 127,
+        "question_text": "Jose counted marbles collected by 3 friends: 30, 275, 963. Arrange the counts from smallest to largest.",
+        "correct_answer": [
+          30,
+          275,
+          963
+        ],
+        "formatter": "ordering"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "order_numbers",
+      "node_id": "mat_g2_na_q1_4",
+      "clause": "Order numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds provide a list of numbers and ask the student to 'Arrange these numbers' or 'Arrange the counts', which directly exhibits ordering numbers.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_1000",
+      "node_id": "mat_g2_na_q1_4",
+      "clause": "up to 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The lists of numbers to be ordered in every seed consist of three-digit values below 1000 (e.g., 445, 990, 711).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "smallest_to_largest",
+      "node_id": "mat_g2_na_q1_4",
+      "clause": "smallest to largest",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Seeds 11, 64, 91, 103, 118, and 127 explicitly ask to arrange the sequence of numbers 'from smallest to largest'.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "largest_to_smallest",
+      "node_id": "mat_g2_na_q1_4",
+      "clause": "vice versa",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        57,
+        78
+      ],
+      "reasoning": "Seeds 23, 42, 57, and 78 address the 'vice versa' clause by explicitly asking the student to arrange the given numbers 'from largest to smallest'.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

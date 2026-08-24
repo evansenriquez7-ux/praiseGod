@@ -1,0 +1,209 @@
+{
+  "batch": "batch026B13_mat_g3_na_q2_3",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B13.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q2_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Tessie has ₱8910 in one pocket and ₱118 in another pocket. How much money does Tessie have in total?",
+        "correct_answer": 9028,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Rosa solved this problem: \"Marco had 7933 sneakers. Then Marco got 321 more. How many sneakers does Marco have now?\" Rosa says the answer is 7612. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 8254
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 42,
+        "question_text": "One basket has 4905 costumes. Another basket has 1627 costumes. If you put all the costumes together, how many costumes are there? The answer is 6532. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 57,
+        "question_text": "Arnel had ₱1111 and received ₱1371 more from Nanay. How much money does Arnel have in all?",
+        "correct_answer": 2482,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Boboy has ₱3360 in one pocket and ₱63 in another pocket. How much money does Boboy have in total?",
+        "correct_answer": 3423,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "One basket has 8543 ribbons. Another basket has 1345 ribbons. If you put all the ribbons together, how many ribbons are there?",
+        "correct_answer": 9888,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Grace solved this problem: \"Coach Nora bought a pencil for ₱5379 and an eraser for ₱4200. How much did Coach Nora spend in all?\" Grace says the answer is 9580. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 9579
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 103,
+        "question_text": "Grace solved this problem: \"There are 7781 bicycles in one basket and 1737 bicycles in another basket. How many bicycles are there in all?\" Grace says the answer is 6044. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 9518
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 118,
+        "question_text": "Ate Gab has 2658 ribbons. A friend has 4068 ribbons. If they put all their ribbons together, how many ribbons do they have in all?",
+        "correct_answer": 6726,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "David had ₱1031 and received ₱6440 more from Nanay. How much money does David have in all?",
+        "correct_answer": 7471,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g3_na_q2_3",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The questions are formatted as mathematical word problems to be solved or verified, such as calculating the total money Tessie has or determining if Rosa accurately solved her word problem.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "addition",
+      "node_id": "mat_g3_na_q2_3",
+      "clause": "addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each word problem requires adding given values, signaled by contextual cues like \"total\", \"in all\", \"received ... more\", or \"put all ... together\".",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g3_na_q2_3",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The problems center around combining numerical quantities, such as adding 8910 and 118 in seed 11.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "sums_up_to_10000",
+      "node_id": "mat_g3_na_q2_3",
+      "clause": "sums up to 10 000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The accurate sums computed across all seeds are under 10,000, for example, seed 11 evaluates to 9028 and seed 42 totals 6532.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "problems_involving_money",
+      "node_id": "mat_g3_na_q2_3",
+      "clause": "problems involving money",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        64,
+        91,
+        127
+      ],
+      "reasoning": "Several seeds (11, 57, 64, 91, 127) explicitly use the peso sign (₱) and refer to 'money' or 'spending', presenting themselves as financial word problems.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

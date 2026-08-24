@@ -1,0 +1,194 @@
+{
+  "batch": "batch026B04_mat_g1_na_q3_5",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B04.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q3_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "51 is 5 tens and 1 one. 0 is 0 ones. Subtract the place values, then find what's left: 51 − 0 = 52. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 23,
+        "question_text": "Rosa solved: \"37 is 3 tens and 7 ones. 0 is 0 ones. Subtract the place values, then find what's left: 37 − 0 = ___\". Rosa says the missing number is 36. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 37
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 42,
+        "question_text": "75 is 7 tens and 5 ones. 12 is 1 ten and 2 ones. Subtract the place values, then find what's left: what is 75 − 12?",
+        "correct_answer": 63,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "14 is 1 ten and 4 ones. 0 is 0 ones. Subtract the place values, then find what's left: what is 14 − 0?",
+        "correct_answer": 14,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "54 is 5 tens and 4 ones. 0 is 0 ones. Subtract the place values, then find what's left: what is 54 − 0?",
+        "correct_answer": 54,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "25 is 2 tens and 5 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: what is 25 − 10?",
+        "correct_answer": 15,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "15 is 1 ten and 5 ones. 13 is 1 ten and 3 ones. Subtract the place values, then find what's left: 15 − 13 = ___",
+        "correct_answer": 2,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Grace solved: \"90 is 9 tens and 0 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: 90 − 10 = ___\". Grace says the missing number is 81. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 80
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 118,
+        "question_text": "90 is 9 tens and 0 ones. 10 is 1 ten and 0 ones. Subtract the place values, then find what's left: what is 90 − 10?",
+        "correct_answer": 80,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Grace solved: \"14 is 1 ten and 4 ones. 1 is 1 one. Subtract the place values, then find what's left: 14 − 1 = ___\". Grace says the missing number is 15. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 13
+        },
+        "formatter": "error_detect"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "subtract_numbers",
+      "node_id": "mat_g1_na_q3_5",
+      "clause": "Subtract numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds prompt the student to perform subtraction operations. For instance, seed 42 asks 'what is 75 - 12?' with the key 63, and seed 11 explicitly asks to evaluate '51 - 0 = 52' as True or False. The operation of subtraction is clearly executed across the items.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "expressing_tens_ones",
+      "node_id": "mat_g1_na_q3_5",
+      "clause": "expressing minuends and subtrahends as tens and ones",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every item breaks down both the minuend and subtrahend into tens and ones. For example, seed 23 states '37 is 3 tens and 7 ones. 0 is 0 ones', and seed 78 states '25 is 2 tens and 5 ones. 10 is 1 ten and 0 ones.' This explicitly fulfills the requirement to express the numbers in tens and ones.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "expanded_form",
+      "node_id": "mat_g1_na_q3_5",
+      "clause": "expanded form",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The textual breakdown of numbers into place values (e.g., '15 is 1 ten and 5 ones' in seed 91, and '54 is 5 tens and 4 ones' in seed 64) acts as the expanded form representation of the numbers involved in the subtraction.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "without_regrouping",
+      "node_id": "mat_g1_na_q3_5",
+      "clause": "without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "None of the subtraction problems presented require regrouping (borrowing). The ones digit of the minuend is always greater than or equal to the ones digit of the subtrahend, such as in seed 42 (75 - 12), seed 78 (25 - 10), and seed 127 (14 - 1).",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

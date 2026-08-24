@@ -1,0 +1,205 @@
+{
+  "batch": "batch026B03_mat_g1_na_q3_0",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B03.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q3_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Rosa solved: \"There are 20 erasers. Taking away 15 erasers leaves ___ erasers.\". Rosa says the blank is 5. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 5
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 23,
+        "question_text": "Rosa solved: \"There are 10 apples. Taking away 2 apples leaves ___ apples.\". Rosa says the blank is 12. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 8
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 42,
+        "question_text": "There are 10 blocks. Taking away 10 blocks leaves how many blocks?",
+        "correct_answer": 0,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "There are 15 cookies. Taking away 1 cookies leaves how many cookies?",
+        "correct_answer": 14,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "There are 10 cookies. Taking away 2 cookies leaves how many cookies?",
+        "correct_answer": 8,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "There are 11 blocks. Taking away 10 blocks leaves how many blocks?",
+        "correct_answer": 1,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "There are 15 marbles. Taking away 12 marbles leaves ___ marbles.",
+        "correct_answer": 3,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥 — There are 20 chicks.\nTaking away 1 chick.\nHow many chicks are left?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "There are 12 stickers. Taking away 10 stickers leaves how many stickers?",
+        "correct_answer": 2,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Grace solved: \"There are 15 cookies. Taking away 12 cookies leaves ___ cookies.\". Grace says the blank is 27. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 3
+        },
+        "formatter": "error_detect"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_subtraction",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "Illustrate subtraction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every sampled seed illustrates a subtraction scenario, whether through word problem contexts involving removing items (e.g., 'Taking away 15 erasers') or through a visual subtraction display (seed 103).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "numbers_up_to_20",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "numbers up to 20",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The numbers used in the subtraction scenarios are all up to 20, such as starting with 20 erasers, 10 apples, 15 cookies, or 12 stickers.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "concrete_pictorial",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "concrete and pictorial models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        103
+      ],
+      "reasoning": "Only seed 103 contains a concrete or pictorial model (an EmojiPictorial payload rendering 20 chicks). The other seeds are text-based word problems without any visual or concrete aids.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "describe_subtraction",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "describes subtraction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds describe the operation of subtraction using contextual framing, explicitly stating that a certain number of items are 'Taking away' from a starting group.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "taking_away",
+      "node_id": "mat_g1_na_q3_0",
+      "clause": "taking away",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All sampled seeds consistently and explicitly use the exact phrase 'Taking away' in their problem descriptions (e.g., 'Taking away 10 blocks leaves...').",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

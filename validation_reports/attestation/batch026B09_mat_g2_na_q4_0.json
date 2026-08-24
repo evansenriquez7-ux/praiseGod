@@ -1,0 +1,175 @@
+{
+  "batch": "batch026B09_mat_g2_na_q4_0",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B09.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q4_0",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Shade 1/4 of the shape.",
+        "correct_answer": "1/4",
+        "formatter": "set_click"
+      },
+      {
+        "seed": 23,
+        "question_text": "Shade 1/8 of the shape.",
+        "correct_answer": "1/8",
+        "formatter": "set_click"
+      },
+      {
+        "seed": 42,
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "C",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Shade 1/2 of the shape.",
+        "correct_answer": "1/2",
+        "formatter": "set_click"
+      },
+      {
+        "seed": 103,
+        "question_text": "Shade 1/3 of the shape.",
+        "correct_answer": "1/3",
+        "formatter": "set_click"
+      },
+      {
+        "seed": 118,
+        "question_text": "What fraction does the model show?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Shade 1/2 of the shape.",
+        "correct_answer": "1/2",
+        "formatter": "set_click"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "represent",
+      "node_id": "mat_g2_na_q4_0",
+      "clause": "Represent",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "Seeds 11, 23, 91, 103, and 127 ask the student to 'Shade' a fraction on a shape, which is an active representation of the fraction. Seeds 42, 57, 64, 78, 118 ask to identify an already shaded model.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "identify",
+      "node_id": "mat_g2_na_q4_0",
+      "clause": "identify",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        64,
+        78,
+        118
+      ],
+      "reasoning": "Seeds 42, 57, 64, 78, and 118 require the student to look at a provided visual model and identify the fraction it shows.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "unit_fractions",
+      "node_id": "mat_g2_na_q4_0",
+      "clause": "unit fractions",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All the fractions represented or identified in the samples have a numerator of 1, making them unit fractions.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "denominators_2_3_4_5_6_8",
+      "node_id": "mat_g2_na_q4_0",
+      "clause": "with denominators 2, 3, 4, 5, 6, and 8",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every seed uses a unit fraction with a denominator from the specified set (2, 3, 4, 5, or 8).",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

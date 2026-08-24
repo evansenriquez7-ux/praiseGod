@@ -1,0 +1,174 @@
+{
+  "batch": "batch026B03_mat_g1_na_q3_3",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B03.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q3_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Rosa solved this problem: \"Lola Caring had 10 leashes. Lola Caring used 3 of them. How many leashes are left?\" Rosa says the answer is 7. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 7
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 23,
+        "question_text": "Rosa solved this problem: \"A covered court has 10 sneakers. Marco removes 1 sneaker. How many sneakers are left in the covered court?\" Rosa says the answer is 11. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 9
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 42,
+        "question_text": "Daniel is on step 1. Daniel goes down 1 step. What step is Daniel on now?",
+        "correct_answer": 0,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Start at 15. Count back 3. What number do you land on?",
+        "correct_answer": 12,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Gab had 10 sneakers. Gab used 1 of them. How many sneakers are left?",
+        "correct_answer": 9,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "There are 3 score cards on the table. Ate Bea takes away 1 score card. How many score cards are left on the table?",
+        "correct_answer": 2,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Romel is on step 5. Romel goes down 0 steps. What step is Romel on now?",
+        "correct_answer": 5,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "🐥🐥🐥🐥🐥🐥🐥🐥🐥🐥 — There are 10 chicks.\nTaking away 3 chicks.\nHow many chicks are left?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "Ate Gab has 15 ribbons. Ate Gab gives away 1 ribbon. How many ribbons does Ate Gab have left?",
+        "correct_answer": 14,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Grace solved this problem: \"Start at 6. Count back 0. What number do you land on?\" Grace says the answer is 5. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 6
+        },
+        "formatter": "error_detect"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_subtraction",
+      "node_id": "mat_g1_na_q3_3",
+      "clause": "Solve subtraction problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds present subtraction problems to solve, varying from word problems about leashes, sneakers, or score cards, to a visual pictorial of taking away chicks.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "given_orally",
+      "node_id": "mat_g1_na_q3_3",
+      "clause": "given orally",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "None of the rendered items contain an audio payload or indication that the problem is 'given orally'. They are all presented as written text strings or visual pictures.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. The rendered text channel cannot exhibit oral delivery without an audio pipeline (Rule 8 capability requirement)."
+    },
+    {
+      "capability_id": "in_pictures",
+      "node_id": "mat_g1_na_q3_3",
+      "clause": "in pictures",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        103
+      ],
+      "reasoning": "Seed 103 uses an EmojiPictorial visual payload to depict chicks, satisfying the requirement for the problem to be presented 'in pictures'. The other seeds are text-based.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "less_than_20",
+      "node_id": "mat_g1_na_q3_3",
+      "clause": "numbers are less than 20",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The numbers used in all the subtraction problems are strictly less than 20, such as 15, 10, 6, 5, 3, and 1.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

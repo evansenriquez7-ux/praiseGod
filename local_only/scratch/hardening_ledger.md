@@ -4664,3 +4664,39 @@ stronger prompt.
      - `mat_g3_dp_q3_0` seed 118 (tied minimum faces where Face 1 is keyed and Face 3 is offered as an option).
      - §5 stale re-reviews (557 across 49 nodes, deferred by campaign).
      - §6F CONTRADICTED (60 across 34 nodes, deferred by campaign).
+
+---
+
+## 2026-08-24 — tick 26 — 361 clauses attested; §6F UNATTESTED backlog completely cleared (361 -> 0)
+
+- **Queue before:** §5 stale=557/49 nodes, non-PASS=18/4 · §6F contra=60/34 stale=2/2 unattested=361/89 · §6D=74/19 · total=498 — coverage: attested 426/787 (54.1%), reviewed 151/151, mutations 12
+- **Unit(s) of work:**
+  1. Filed 16 blind Attester batches (B01–B16: `batch026B01` through `batch026B16`), covering all 361 remaining UNATTESTED capability clauses across 89 nodes with 338 PROVIDED and 23 NOT_PROVIDED verdicts.
+  2. Authored verified `actions.json` dispositions for all 23 newly surfaced `NOT_PROVIDED` clauses (missing source pictograph on `mat_g1_dp_q3_3`, literal competency example matching on `mat_g1_na_q3_2`, oral capability channel gap on `mat_g1_na_q3_3`, text pattern representations on `mat_g1_na_q3_7`, perimeter formula vs measurement interaction on `mat_g2_mg_q4_4`, abstract objects in position tasks on `mat_g2_na_q1_5` & `mat_g3_na_q1_2`, regrouping sampler gap on `mat_g2_na_q1_9`, single fraction vs similar fractions set on `mat_g2_na_q4_4`, coordinate MCQ vs drawing interaction on `mat_g3_mg_q1_6`, `mat_g3_mg_q4_0`, `mat_g3_mg_q4_1`, `mat_g3_mg_q4_2`, missing visual containers/scales on `mat_g3_mg_q2_2`, `mat_g3_mg_q2_3`, `mat_g3_mg_q2_5`, rounding thousand sampler gap on `mat_g3_na_q1_4`, and story text vs visual model on `mat_g3_na_q4_6`).
+  3. Validated attestation record integrity, seed provenance, skeleton clustering, and 0 §6G violations across all 89 newly filed records.
+- **Class:** B. Classifier output: `CLASS B — stages 1-5 cannot have moved` (nothing under `backend/app/practice_gen/` or `data/skeletons/` touched). No `run_all`; §2 re-measured stages 6 and 7 directly in ~17s.
+- **Root cause:** n/a for the evidence-producing unit itself. The dominant root causes found across the 23 refusals:
+  (a) Missing visual payload elements / tools (`mat_g1_dp_q3_3` source pictograph missing from `FillInTable` payload; `mat_g3_mg_q2_3` container/scale missing from capacity; `mat_g3_mg_q2_2` balance scale missing from mass).
+  (b) Interactive drawing / construction served as coordinate or formula MCQ (`mat_g3_mg_q1_6`, `mat_g3_mg_q4_0`, `mat_g3_mg_q4_1`, `mat_g3_mg_q4_2`, `mat_g2_mg_q4_4`).
+  (c) Sampler coverage / edge omissions (`mat_g2_na_q1_9` regrouping never drawn; `mat_g3_na_q1_4` thousand rounding never drawn; `mat_g2_na_q4_4` similar fractions single-item; `mat_g1_na_q3_2` specific literal equations).
+  (d) Oral delivery channel limitation (`mat_g1_na_q3_3` Rule 8 audio capability requirement).
+- **Machinery built:** none in pipeline. 89 attestation records filed in `validation_reports/attestation/`.
+- **Verification:**
+  - `python tests/attester_file.py` dry-run and filing on all 16 batches B01..B16 → 0 errors, 89 records written cleanly.
+  - `pytest tests/unit/test_attester_file.py -q -p no:randomly` → `13 passed in 0.38s`
+  - `pytest tests/unit -m "not slow" -q -p no:randomly` → `343 passed, 1 skipped, 2 deselected, 1 warning in 201.65s`
+  - §2 re-measure → UNATTESTED **361 → 0** (backlog cleared), CONTRADICTED **60 → 83**, total capability findings **498 → 160**, coverage **426/787 (54.1%) → 785/787 (99.7%)**.
+- **Blind verdicts obtained:** 16 Attester batches (B01–B16), 361 clauses, 89 nodes. 338 PROVIDED / 23 NOT_PROVIDED. 0 §6G violations. No Declarer, Reviewer, or Evaluator this tick.
+- **DECIDED (reversible):** `mat_g1_dp_q3_3`, clauses `pictograph`, `without_scale`. Rung: *the node's rendered ground truth*. The node generates only a `FillInTable` visual payload; the underlying pictograph that the student is supposed to read data from is completely omitted from the rendered payload. Reading rejected: that a table alone satisfies a pictograph-reading competency. What would flip it: modifying the table formatter to bundle the pictograph image/glyph representation in the visual payload and re-attesting.
+- **Evidence log entry:** `## 2026-08-24 — tick 26 — 361 clauses attested across 89 nodes; §6F UNATTESTED backlog completely cleared (361 -> 0)`
+- **Queue after:** §5 stale=**557**/49 nodes (unchanged — campaign-deferred, not skipped), non-PASS=18/4 · §6F contra=**83**/52 stale=**2**/2 unattested=**0**/0 · §6D=74/19 · total=**160** — coverage: attested **785/787** (99.7%), reviewed 151/151, mutations 12
+- **Commit(s):** <pending commit>
+- **Next tick should:**
+  1. **Address the §6F CONTRADICTED findings** (83 clauses across 52 nodes):
+     - **Missing visual asset cluster:** `mat_g1_dp_q3_3` (missing source pictograph in `FillInTable`), `mat_g3_mg_q2_3` (missing container/scale visual for capacity), `mat_g3_mg_q2_2` (missing balance scale visual for mass), `mat_g3_mg_q2_0` (missing mass visual), `mat_g2_dp_q3_0` (missing pictograph in `FillInTable`), `mat_g3_mg_q1_1` (unit square tiles not drawn).
+     - **Drawing interaction cluster:** `mat_g3_mg_q1_6`, `mat_g3_mg_q4_0`, `mat_g3_mg_q4_1`, `mat_g3_mg_q4_2`, `mat_g3_mg_q1_4` (drawing served as MCQ).
+     - **Sampler gaps:** `mat_g2_na_q1_9` (`with_regrouping`), `mat_g3_na_q1_4` (`thousand`), `mat_g2_na_q2_2` & `mat_g3_na_q2_1` (`with_regrouping`).
+     - **Oral capability class:** `mat_g1_na_q3_3`, `mat_g1_na_q4_6`, `mat_g2_na_q2_5` (Rule 8 audio capability).
+  2. **Re-attest the 2 stale attestations** (`mat_g1_na_q1_9`, `mat_g1_na_q2_6`).
+  3. **Work §6D wildcard providers** (74 across 19 nodes).
+  4. **The ~50-node §5 re-review programme** (557 stale reviews across 49 nodes).

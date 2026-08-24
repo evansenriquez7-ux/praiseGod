@@ -1,0 +1,214 @@
+{
+  "batch": "batch026B01_mat_g1_dp_q3_3",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B01.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_dp_q3_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "The pictograph shows Grade 1, Grade 2, Grade 3 and Grade 4. Fill in the table with the correct counts.",
+        "correct_answer": [
+          5,
+          4,
+          4,
+          5
+        ],
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 23,
+        "question_text": "Look at the pictograph. Write the correct count for each row in the table: Monday, Tuesday, Wednesday and Thursday.",
+        "correct_answer": [
+          1,
+          1,
+          5,
+          3
+        ],
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 42,
+        "question_text": "The pictograph shows cats, dogs, birds and fish. Fill in the table with the correct counts.",
+        "correct_answer": [
+          1,
+          3,
+          2,
+          2
+        ],
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 57,
+        "question_text": "Count the pictures in each row of the pictograph, then write the counts for apples, bananas, mangoes and grapes in the table.",
+        "correct_answer": [
+          3,
+          5,
+          5,
+          1
+        ],
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 64,
+        "question_text": "Count the pictures in each row of the pictograph, then write the counts for Grade 1, Grade 2, Grade 3 and Grade 4 in the table.",
+        "correct_answer": [
+          1,
+          5,
+          4,
+          5
+        ],
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 78,
+        "question_text": "Count the pictures in each row of the pictograph, then write the counts for Math, Science, English and Art in the table.",
+        "correct_answer": [
+          1,
+          3,
+          3,
+          4
+        ],
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 91,
+        "question_text": "Count the pictures in each row of the pictograph, then write the counts for cats, dogs, birds and fish in the table.",
+        "correct_answer": [
+          5,
+          2,
+          2,
+          4
+        ],
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 103,
+        "question_text": "Count the pictures in each row of the pictograph, then write the counts for Grade 1, Grade 2, Grade 3 and Grade 4 in the table.",
+        "correct_answer": [
+          2,
+          1,
+          5,
+          1
+        ],
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 118,
+        "question_text": "Count the pictures in each row of the pictograph, then write the counts for red, blue, green and yellow in the table.",
+        "correct_answer": [
+          3,
+          1,
+          3,
+          3
+        ],
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 127,
+        "question_text": "Count the pictures in each row of the pictograph, then write the counts for apples, bananas, mangoes and grapes in the table.",
+        "correct_answer": [
+          5,
+          5,
+          5,
+          1
+        ],
+        "formatter": "set_fill_in_blank"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "organize_data",
+      "node_id": "mat_g1_dp_q3_3",
+      "clause": "Organize data",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Students are prompted to fill in an empty table structure with counts they must derive, testing the skill of organizing data.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "The visual payload lacks the actual pictograph source data to organize from."
+    },
+    {
+      "capability_id": "pictograph",
+      "node_id": "mat_g1_dp_q3_3",
+      "clause": "pictograph",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "The item's visual payload ONLY contains the 'FillInTable' component. It completely fails to render the pictograph that the prompt text asks the student to count from.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. The visual payload contains only 'FillInTable'; the source pictograph is missing from the payload. Root cause: table renderer does not attach the pictograph prompt asset."
+    },
+    {
+      "capability_id": "without_scale",
+      "node_id": "mat_g1_dp_q3_3",
+      "clause": "without a scale",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "Because the pictograph is entirely missing from the payload, it cannot be verified whether it is without a scale.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Pictograph without a scale is unreachable when the source pictograph is absent. Same root cause as item_005; carried to Next tick should:."
+    },
+    {
+      "capability_id": "table",
+      "node_id": "mat_g1_dp_q3_3",
+      "clause": "table",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The visual payload successfully renders a 'FillInTable' component with categorical rows and empty count fields for the student to complete.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

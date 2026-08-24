@@ -1,0 +1,155 @@
+{
+  "batch": "batch026B05_mat_g2_mg_q2_3",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B05.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q2_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "The distance from the school gate to the science lab is 42 m. The distance from the school gate to the gym is 40 m. How many meters farther is the science lab than the gym?",
+        "correct_answer": 2,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "A book is 18 cm long. A ruler is 15 cm long. If they are placed end to end, what is their combined length in cm?",
+        "correct_answer": 33,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "A book is 18 cm long. A shoe is 20 cm long. If they are placed end to end, what is their combined length in cm?",
+        "correct_answer": 38,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Mia walked 42 m from the playground to the canteen, and then walked 30 m from the canteen to the gym. What is the total distance Mia walked in meters?",
+        "correct_answer": 72,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "A shoe is 20 cm long. A ruler is 15 cm long. If they are placed end to end, what is their combined length in cm?",
+        "correct_answer": 35,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A notebook is 20 cm long. A shoe is 21 cm long. If they are placed end to end, what is their combined length in cm?",
+        "correct_answer": 41,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "A shoe is 20 cm long. A spoon is 12 cm long. How many cm longer is a shoe than a spoon?",
+        "correct_answer": 8,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "A shoe is 20 cm long. A book is 18 cm long. How many cm longer is a shoe than a book?",
+        "correct_answer": 2,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "A notebook is 20 cm long. A book is 18 cm long. How many cm longer is a notebook than a book?",
+        "correct_answer": 2,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "A book is 18 cm long. A spoon is 12 cm long. If they are placed end to end, what is their combined length in cm?",
+        "correct_answer": 30,
+        "formatter": "cloze"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g2_mg_q2_3",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All listed seeds present word problems requiring arithmetic operations (+ or -) to solve for combined length (seed 23) or difference in distance (seed 11).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "length",
+      "node_id": "mat_g2_mg_q2_3",
+      "clause": "length",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "These seeds present problems specifically involving the 'length' of objects (like a book, ruler, shoe, or spoon) and their combined or differing measurements.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "distance",
+      "node_id": "mat_g2_mg_q2_3",
+      "clause": "distance",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57
+      ],
+      "reasoning": "Seeds 11 and 57 frame the problem purely in terms of geographical or travelled distance (e.g., 'distance from the school gate to the science lab' or 'distance Mia walked').",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

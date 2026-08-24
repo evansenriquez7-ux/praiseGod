@@ -1,0 +1,185 @@
+{
+  "batch": "batch026B16_mat_g3_na_q4_6",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B16.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q4_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "A shape is divided into 4 equal parts with 9 parts shaded. The fraction shaded is ___.",
+        "correct_answer": "9/4",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "A shape is divided into 4 equal parts with 7 parts shaded. The fraction shaded is ___.",
+        "correct_answer": "7/4",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "A shape is divided into 3 equal parts. 5 parts are shaded. What fraction of the shape is shaded?",
+        "correct_answer": "5/3",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "A shape is divided into 6 equal parts. 6 parts are shaded. What fraction of the shape is shaded?",
+        "correct_answer": "6/6",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "A shape is divided into 3 equal parts. 8 parts are shaded. What fraction of the shape is shaded?",
+        "correct_answer": "8/3",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A shape is divided into 6 equal parts. 19 parts are shaded. What fraction of the shape is shaded?",
+        "correct_answer": "19/6",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "A shape is divided into 3 equal parts. 3 parts are shaded. What fraction of the shape is shaded?",
+        "correct_answer": "3/3",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "A shape is divided into 4 equal parts with 9 parts shaded. The fraction shaded is ___.",
+        "correct_answer": "9/4",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "A shape is divided into 4 equal parts. 15 parts are shaded. What fraction of the shape is shaded?",
+        "correct_answer": "15/4",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "A shape is divided into 6 equal parts with 6 parts shaded. The fraction shaded is ___.",
+        "correct_answer": "6/6",
+        "formatter": "cloze"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "represent",
+      "node_id": "mat_g3_na_q4_6",
+      "clause": "Represent",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All items ask the student to mentally represent and convert a textual description of a partitioned shape (e.g., '3 equal parts, 5 parts shaded' in seed 42) into its corresponding mathematical fraction.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "The items lack actual visual models, forcing a text-based interpretation that is physically nonsensical for a single shape (e.g. 'A shape is divided into 4 equal parts with 9 parts shaded')."
+    },
+    {
+      "capability_id": "fractions",
+      "node_id": "mat_g3_na_q4_6",
+      "clause": "fractions",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every item focuses on fractions, explicitly asking 'What fraction of the shape is shaded?' and providing fractional options (e.g., 9/4, 5/3, 6/6) for the answer.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "equal_to_one",
+      "node_id": "mat_g3_na_q4_6",
+      "clause": "equal to one",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        91,
+        127
+      ],
+      "reasoning": "These specific seeds test fractions that are exactly equal to one, describing scenarios where the number of shaded parts matches the total equal parts (e.g., 6/6 in seeds 57 and 127, and 3/3 in seed 91).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "greater_than_one",
+      "node_id": "mat_g3_na_q4_6",
+      "clause": "greater than one",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        64,
+        78,
+        103,
+        118
+      ],
+      "reasoning": "These items present fractions with a value greater than one (improper fractions). For example, seed 11 describes 9 parts shaded for 4 equal parts (9/4), and seed 42 describes 5 parts shaded for 3 equal parts (5/3).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "models",
+      "node_id": "mat_g3_na_q4_6",
+      "clause": "models",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "There are no visual models rendered in any of the items. Instead, they rely entirely on textual descriptions (e.g., 'A shape is divided into...'), which fails to fulfill the requirement to use actual models.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Word problems use purely textual story descriptions without drawing visual bar/group models."
+    }
+  ]
+}

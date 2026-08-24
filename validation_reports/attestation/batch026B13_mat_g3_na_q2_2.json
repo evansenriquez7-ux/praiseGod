@@ -1,0 +1,185 @@
+{
+  "batch": "batch026B13_mat_g3_na_q2_2",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B13.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q2_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Estimate the sum: 411 + 7920",
+        "correct_answer": 8400,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Estimate the sum: 2429 + 6066",
+        "correct_answer": 8000,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "Estimate the sum: 168 + 1842",
+        "correct_answer": 2200,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Estimate the sum: 2004 + 4822",
+        "correct_answer": 7000,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Estimate the sum: 5311 + 2220",
+        "correct_answer": 7000,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Estimate the sum: 5317 + 3161",
+        "correct_answer": 8000,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Estimate the sum: 3147 + 593",
+        "correct_answer": 3600,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "Estimate the sum: 4156 + 1991",
+        "correct_answer": 6000,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "Estimate the sum: 1185 + 7156",
+        "correct_answer": 8000,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Estimate the sum: 3698 + 974",
+        "correct_answer": 5000,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "estimate",
+      "node_id": "mat_g3_na_q2_2",
+      "clause": "Estimate",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each task literally uses the phrase \"Estimate the sum:\" before providing an addition problem, with keys pointing to rounded approximate values like 8400 or 8000.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "sum",
+      "node_id": "mat_g3_na_q2_2",
+      "clause": "sum",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every seed requires finding a \"sum\" by showing an addition expression (like 411 + 7920) and requesting the result.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "addends",
+      "node_id": "mat_g3_na_q2_2",
+      "clause": "addends",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The problems feature two numbers added together acting as addends, such as 2429 and 6066 in seed 23.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_4_digits",
+      "node_id": "mat_g3_na_q2_2",
+      "clause": "up to 4 digits",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All addends are numbers strictly within 4 digits, such as 7920 and 2429, and occasionally 3 digits like 411 and 168.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

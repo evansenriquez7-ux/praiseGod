@@ -1,0 +1,195 @@
+{
+  "batch": "batch026B08_mat_g2_na_q2_4",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B08.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q2_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "The total is 90 and one part is 2. What is the other part?",
+        "correct_answer": 88,
+        "formatter": "read_fill_in_blank"
+      },
+      {
+        "seed": 23,
+        "question_text": "The total is 60 and one part is 7. What is the other part?",
+        "correct_answer": 53,
+        "formatter": "read_fill_in_blank"
+      },
+      {
+        "seed": 42,
+        "question_text": "What is 30 − 3?",
+        "correct_answer": 27,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "What is 20 − 2?",
+        "correct_answer": 18,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What is 90 − 12?",
+        "correct_answer": 78,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What is 30 − 27?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "21 − 2 = 19. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 103,
+        "question_text": "(Large group of 90 chicks) — There are 90 chicks.\nTaking away 3 chicks.\nHow many chicks are left?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "What is 30 − 25?",
+        "correct_answer": 5,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "The total is 20 and one part is 3. What is the other part?",
+        "correct_answer": 17,
+        "formatter": "read_fill_in_blank"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "subtract_numbers",
+      "node_id": "mat_g2_na_q2_4",
+      "clause": "Subtract numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All questions require subtraction to find the missing part or difference, for example calculating 30 - 3 in seed 42, or finding the missing part of 90 when one part is 2 in seed 11.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "less_than_100",
+      "node_id": "mat_g2_na_q2_4",
+      "clause": "both numbers are less than 100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The minuend and subtrahend in all cases are strictly below 100 (e.g., the largest minuend is 90 in seeds 11, 64, 103, and the subtrahends are also under 100).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "with_regrouping",
+      "node_id": "mat_g2_na_q2_4",
+      "clause": "with regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All items require borrowing/regrouping from the tens place, as the ones digit of the subtrahend is greater than the ones digit of the minuend (e.g., in seed 42's \"30 − 3\", regrouping is needed because 0 < 3; in seed 64's \"90 − 12\", 0 < 2).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "2_digit_minus_1_digit",
+      "node_id": "mat_g2_na_q2_4",
+      "clause": "2-digit minus 1-digit numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        91,
+        103,
+        127
+      ],
+      "reasoning": "Several seeds demonstrate subtraction of a single-digit number from a two-digit number, such as 90 - 2 in seed 11, 30 - 3 in seed 42, and 21 - 2 in seed 91.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "2_digit_minus_2_digit",
+      "node_id": "mat_g2_na_q2_4",
+      "clause": "2-digit minus 2-digit numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        64,
+        78,
+        118
+      ],
+      "reasoning": "Certain seeds specifically feature two-digit minuends and two-digit subtrahends, namely 90 - 12 (seed 64), 30 - 27 (seed 78), and 30 - 25 (seed 118).",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

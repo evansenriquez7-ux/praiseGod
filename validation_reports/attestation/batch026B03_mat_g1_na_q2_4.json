@@ -1,0 +1,194 @@
+{
+  "batch": "batch026B03_mat_g1_na_q2_4",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B03.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q2_4",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "43 is 4 tens and 3 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: what is 43 + 30?",
+        "correct_answer": 73,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Rosa solved: \"89 is 8 tens and 9 ones. 7 is 7 ones. Add the place values, then find the total: 89 + 7 = ___\". Rosa says the blank is 106. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 96
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 42,
+        "question_text": "10 is 1 ten and 0 ones. 62 is 6 tens and 2 ones. Add the place values, then find the total: 10 + 62 = 72. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 57,
+        "question_text": "28 is 2 tens and 8 ones. 40 is 4 tens and 0 ones. Add the place values, then find the total: what is 28 + 40?",
+        "correct_answer": 68,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "15 is 1 ten and 5 ones. 15 is 1 ten and 5 ones. Add the place values, then find the total: 15 + 15 = ___",
+        "correct_answer": 30,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "16 is 1 ten and 6 ones. 79 is 7 tens and 9 ones. Add the place values, then find the total: what is 16 + 79?",
+        "correct_answer": 95,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Grace solved: \"60 is 6 tens and 0 ones. 30 is 3 tens and 0 ones. Add the place values, then find the total: 60 + 30 = ___\". Grace says the blank is 60. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 90
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 103,
+        "question_text": "Grace solved: \"38 is 3 tens and 8 ones. 46 is 4 tens and 6 ones. Add the place values, then find the total: 38 + 46 = ___\". Grace says the blank is 94. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 84
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 118,
+        "question_text": "31 is 3 tens and 1 one. 11 is 1 ten and 1 one. Add the place values, then find the total: what is 31 + 11?",
+        "correct_answer": 42,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "73 is 7 tens and 3 ones. 21 is 2 tens and 1 one. Add the place values, then find the total: what is 73 + 21?",
+        "correct_answer": 94,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "add",
+      "node_id": "mat_g1_na_q2_4",
+      "clause": "Add numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every seed asks the student to add numbers, explicitly stating 'Add the place values, then find the total' and providing an addition scenario or expression like '43 + 30' or '89 + 7'.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "express_addends",
+      "node_id": "mat_g1_na_q2_4",
+      "clause": "expressing addends",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The question texts break down each addend into its tens and ones components before prompting for the sum. For instance, seed 11 states '43 is 4 tens and 3 ones', directly expressing the addends by place value.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "tens_ones",
+      "node_id": "mat_g1_na_q2_4",
+      "clause": "tens and ones",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The exact wording 'tens and ones' is used continuously throughout the item set to describe the decomposed addends, such as '3 tens and 0 ones' in seed 91 or '7 tens and 9 ones' in seed 78.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "expanded_form",
+      "node_id": "mat_g1_na_q2_4",
+      "clause": "expanded form",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The questions explicitly express the addends in terms of their place values (e.g., '4 tens and 3 ones' for 43), which satisfies the competency's parenthetical definition of expanded form as 'expressing addends as tens and ones'.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

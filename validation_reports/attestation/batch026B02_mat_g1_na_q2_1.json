@@ -1,0 +1,181 @@
+{
+  "batch": "batch026B02_mat_g1_na_q2_1",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B02.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q2_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "What number comes next when counting: 70, 75, 80, 85, ___?",
+        "correct_answer": 90,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "What number is marked on the number line?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "What comes next: 0, 10, 20, 30, ___",
+        "correct_answer": 40,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "What number comes next when counting: 46, 48, 50, 52, ___?",
+        "correct_answer": 54,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What comes next: 15, 20, 25, 30, ___",
+        "correct_answer": 35,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "What number comes next when counting: 28, 30, 32, 34, ___?",
+        "correct_answer": 36,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "(Large group of 82 bunnies) — There are 82 bunnies.\nCount the bunnies.\nHow many bunnies are there in all?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "(Large group of 70 chicks) — There are 70 chicks.\nCount the chicks.\nHow many chicks are there in all?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "What number comes next when counting: 50, 60, 70, 80, ___?",
+        "correct_answer": 90,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What number comes next when counting: 78, 80, 82, 84, ___?",
+        "correct_answer": 86,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "count",
+      "node_id": "mat_g1_na_q2_1",
+      "clause": "Count",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The questions require determining the next number when counting in a sequence, or explicitly ask to count items like bunnies or chicks.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "step_2s",
+      "node_id": "mat_g1_na_q2_1",
+      "clause": "2s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        57,
+        78,
+        127
+      ],
+      "reasoning": "These sequences (e.g., 46, 48, 50, 52 or 28, 30, 32, 34) require counting by intervals of 2.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "step_5s",
+      "node_id": "mat_g1_na_q2_1",
+      "clause": "5s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64
+      ],
+      "reasoning": "These sequences (e.g., 70, 75, 80, 85 or 15, 20, 25, 30) require counting by intervals of 5.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "step_10s",
+      "node_id": "mat_g1_na_q2_1",
+      "clause": "10s",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        118
+      ],
+      "reasoning": "These sequences (e.g., 0, 10, 20, 30 or 50, 60, 70, 80) require counting by intervals of 10.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_100",
+      "node_id": "mat_g1_na_q2_1",
+      "clause": "100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The counting tasks and number line involve values that range up to 100, staying within the specified limit.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

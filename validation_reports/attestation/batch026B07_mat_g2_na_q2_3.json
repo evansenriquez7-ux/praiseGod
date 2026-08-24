@@ -1,0 +1,184 @@
+{
+  "batch": "batch026B07_mat_g2_na_q2_3",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B07.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q2_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "If 53 + 7 = 60, then 60 − 7 = 52. What is the missing number?. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 23,
+        "question_text": "Rosa solved: \"Start at 10 on the number line and count back 6. What is 10 − 6? (Answer: ___)\". Rosa says the missing number is 16. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 4
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 42,
+        "question_text": "Since 10 + 1 = 11, what is 11 − 1?",
+        "correct_answer": 10,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Starting at 22 on the number line, jump back 1 units. What number do you land on?",
+        "correct_answer": 21,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What is 12 − 3? (Hint: 9 + 3 = 12)",
+        "correct_answer": 9,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What is 13 − 1? (Hint: 12 + 1 = 13)",
+        "correct_answer": 12,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "A dot is at 15 on the number line. If you move back 1 steps, what number do you reach? Answer: ___",
+        "correct_answer": 14,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Grace solved: \"Start at 20 on the number line and count back 5. What is 20 − 5? (Answer: ___)\". Grace says the missing number is 16. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 15
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 118,
+        "question_text": "Start at 15 on the number line and count back 5. What is 15 − 5?",
+        "correct_answer": 10,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Grace solved: \"Starting at 13 on the number line, jump back 1 units. What number do you land on? (Answer: ___)\". Grace says the missing number is 14. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 12
+        },
+        "formatter": "error_detect"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_subtraction",
+      "node_id": "mat_g2_na_q2_3",
+      "clause": "Illustrate subtraction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds present a subtraction scenario (e.g., 60 − 7, 10 − 6, jumping back on a number line).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "2_digit_by_1_digit",
+      "node_id": "mat_g2_na_q2_3",
+      "clause": "2-digit by 1-digit",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds involve subtracting a 1-digit number from a 2-digit number (e.g., 60 − 7, 11 − 1, 15 − 5).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "number_line",
+      "node_id": "mat_g2_na_q2_3",
+      "clause": "number line",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        57,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "These seeds explicitly mention using a 'number line' to count back or jump back to solve the subtraction problem.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "inverse_of_addition",
+      "node_id": "mat_g2_na_q2_3",
+      "clause": "inverse of addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        64,
+        78
+      ],
+      "reasoning": "These seeds explicitly present an addition fact as a hint or premise to help solve the subtraction problem, demonstrating subtraction as the inverse of addition (e.g., 'If 53 + 7 = 60, then 60 - 7 = 52').",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

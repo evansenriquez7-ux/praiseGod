@@ -1,0 +1,195 @@
+{
+  "batch": "batch026B10_mat_g3_dp_q3_3",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B10.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_dp_q3_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Look at the horizontal bar graph. How many total items were recorded for February and March together?",
+        "correct_answer": "C",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "Look at the horizontal bar graph. If 10 more items are added to birds, what will be the new total for birds?",
+        "correct_answer": "C",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "Look at the vertical bar graph. How many total items were recorded for apples and mangoes together?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Look at the vertical bar graph. If each item for daisies costs ₱10, what is the total cost for daisies?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Look at the horizontal bar graph. How many more items were recorded for dogs than for fish?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Look at the vertical bar graph. If each item for fish costs ₱3, what is the total cost for fish?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Look at the vertical bar graph. If 20 more items are added to Art, what will be the new total for Art?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "Look at the horizontal bar graph. How many more items were recorded for Thursday than for Tuesday?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "Look at the vertical bar graph. How many more items were recorded for volleyball than for swimming?",
+        "correct_answer": "C",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Look at the vertical bar graph. If 15 more items are added to dogs, what will be the new total for dogs?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g3_dp_q3_3",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds go beyond direct reading and impose arithmetic problem-solving over the extracted chart data. Tasks include summing groups (seed 11, 42), simulating added items (seed 23, 91, 127), finding cost through multiplication (seed 57, 78), and subtracting to find differences (seed 64, 103, 118).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "data_presented",
+      "node_id": "mat_g3_dp_q3_3",
+      "clause": "data presented",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each of the seeds contains a visual payload block with structured \"categories\" and \"values\" arrays representing the underlying data. The questions depend on this exact presented numerical data to arrive at the correct answer.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "single_bar_graph",
+      "node_id": "mat_g3_dp_q3_3",
+      "clause": "single bar graph",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "For this competency item, all seeds are designed to render solely as bar graphs. The payloads only feature \"orientation\": \"horizontal\" or \"orientation\": \"vertical\", and none are configured to display as tables.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "horizontal",
+      "node_id": "mat_g3_dp_q3_3",
+      "clause": "horizontal",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "The prompt texts for these seeds start with \"Look at the horizontal bar graph\", and the visual BarChart payloads corresponding to these seeds have the orientation field set to \"horizontal\".",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "vertical",
+      "node_id": "mat_g3_dp_q3_3",
+      "clause": "vertical",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "The prompt texts for these seeds instruct the user to \"Look at the vertical bar graph\", and their JSON visual payloads appropriately configure the orientation parameter as \"vertical\".",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

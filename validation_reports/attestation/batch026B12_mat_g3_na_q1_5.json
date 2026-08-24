@@ -1,0 +1,184 @@
+{
+  "batch": "batch026B12_mat_g3_na_q1_5",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B12.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q1_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Compare the numbers: 4560 ___ 1188. Which sign is correct: >, <, or =?",
+        "correct_answer": ">",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "2897 < 6745. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 42,
+        "question_text": "Compare the numbers: 4507 ___ 4507. Which sign is correct: >, <, or =?",
+        "correct_answer": "=",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "Liza has 4547 storybooks. Jose has 7312 storybooks. Which sign correctly compares the two amounts?",
+        "correct_answer": "<",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Compare the numbers: 5002 ___ 60. Which sign is correct: >, <, or =?",
+        "correct_answer": ">",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Compare the numbers: 4217 ___ 4217. Which sign is correct: >, <, or =?",
+        "correct_answer": "=",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Jose has 2644 storybooks. Maria has 2644 storybooks. Which sign correctly compares the two amounts? The answer is =. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 103,
+        "question_text": "3853 < 4531. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 118,
+        "question_text": "Compare the numbers: 1623 ___ 1623. Which sign is correct: >, <, or =?",
+        "correct_answer": "=",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Liza has 2173 seashells. Ben has 769 seashells. Which sign correctly compares the two amounts?",
+        "correct_answer": ">",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "compare",
+      "node_id": "mat_g3_na_q1_5",
+      "clause": "Compare",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds involve the mathematical comparison of two values. Seeds 11, 42, 57, 64, 78, 91, 118, and 127 explicitly ask to 'Compare the numbers' or which sign 'correctly compares the two amounts', while 23 and 103 test the result of a comparison in True/False format.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g3_na_q1_5",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds present specific multi-digit numbers (e.g., 4560, 2897, 7312, 5002) as the operands to be compared.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_10000",
+      "node_id": "mat_g3_na_q1_5",
+      "clause": "up to 10 000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118
+      ],
+      "reasoning": "The seeds involve comparing numbers in the thousands range (e.g., 4560 vs 1188 in seed 11, 7312 in seed 57, 6745 in seed 23), which appropriately targets the 'up to 10 000' constraint.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "symbols",
+      "node_id": "mat_g3_na_q1_5",
+      "clause": "symbols =, >, and <",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds utilize the mathematical comparison symbols =, >, and < in either the question text, the multiple-choice options, or as the true/false statement to evaluate (e.g., '2897 < 6745' in seed 23).",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

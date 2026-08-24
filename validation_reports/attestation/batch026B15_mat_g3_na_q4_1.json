@@ -1,0 +1,165 @@
+{
+  "batch": "batch026B15_mat_g3_na_q4_1",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B15.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q4_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "This array has 18 squares split into 9 equal rows. How many squares are in each row?",
+        "correct_answer": "C",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "This array has 8 squares split into 8 equal rows. How many squares are in each row?",
+        "correct_answer": "A",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "What is 48 ÷ 6?",
+        "correct_answer": 8,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "What is 18 ÷ 6?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "What is 36 ÷ 9?",
+        "correct_answer": 4,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "What is 28 ÷ 7?",
+        "correct_answer": 4,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "36 ÷ 6 = ___",
+        "correct_answer": 6,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Shade 27 squares into 9 equal rows. How many squares are in each row?",
+        "correct_answer": 3,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 118,
+        "question_text": "What is 21 ÷ 7?",
+        "correct_answer": 3,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "This array has 18 squares split into 6 equal rows. How many squares are in each row?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "divide_numbers",
+      "node_id": "mat_g3_na_q4_1",
+      "clause": "Divide numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All the seeds present division problems for the student to solve, either directly as equations (e.g., '18 ÷ 6') or visually using arrays.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "6_7_8_9",
+      "node_id": "mat_g3_na_q4_1",
+      "clause": "6, 7, 8, and 9",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The divisors in all the provided examples are strictly 6, 7, 8, or 9, directly fulfilling the clause.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "multiplication_tables",
+      "node_id": "mat_g3_na_q4_1",
+      "clause": "multiplication tables",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The division facts tested are the exact inverses of the standard 6, 7, 8, and 9 multiplication tables, with no remainders.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

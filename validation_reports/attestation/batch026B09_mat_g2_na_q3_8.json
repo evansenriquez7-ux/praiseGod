@@ -1,0 +1,185 @@
+{
+  "batch": "batch026B09_mat_g2_na_q3_8",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B09.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q3_8",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "58 ÷ 2 does not come out exactly, so 58 is an odd number. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 23,
+        "question_text": "Dividing 38 by 2 gives an exact whole number, so 38 is an even number. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 42,
+        "question_text": "Dividing 82 by 2 does not give an exact whole number, so 82 is an odd number. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 57,
+        "question_text": "6 ÷ 2 comes out exactly, so 6 is an even number. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 64,
+        "question_text": "61 can be divided into 2 equal parts, so 61 is an even number. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 78,
+        "question_text": "Dividing 25 by 2 gives an exact whole number, so 25 is an even number. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 91,
+        "question_text": "11 ÷ 2 does not come out exactly, so 11 is an odd number. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 103,
+        "question_text": "59 ÷ 2 does not come out exactly, so 59 is an odd number. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 118,
+        "question_text": "Dividing 81 by 2 gives an exact whole number, so 81 is an even number. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 127,
+        "question_text": "Dividing 6 by 2 gives an exact whole number, so 6 is an even number. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "distinguish",
+      "node_id": "mat_g2_na_q3_8",
+      "clause": "Distinguish",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds ask the student to determine if a statement categorizing a number as even or odd based on its divisibility is True or False, thus making them distinguish the parity.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "even_and_odd_numbers",
+      "node_id": "mat_g2_na_q3_8",
+      "clause": "even and odd numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every seed explicitly mentions either 'even number' or 'odd number' in the question text.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "division",
+      "node_id": "mat_g2_na_q3_8",
+      "clause": "division",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds use the division symbol '÷', the word 'Dividing', or the phrase 'divided into' to describe the operation.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "divisor_2",
+      "node_id": "mat_g2_na_q3_8",
+      "clause": "2",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every seed specifically uses 2 as the divisor to test for even or odd properties.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

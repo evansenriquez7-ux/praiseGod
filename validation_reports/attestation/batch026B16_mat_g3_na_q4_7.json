@@ -1,0 +1,169 @@
+{
+  "batch": "batch026B16_mat_g3_na_q4_7",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B16.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q4_7",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "What is the result of the fraction operation shown?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "What is the result of the fraction operation shown?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "A shape is divided into 4 equal parts. 3 parts are shaded and 1 more part is shaded. What fraction of the shape is shaded in all: \\(\\frac{3}{4} + \\frac{1}{4}\\)?",
+        "correct_answer": "4/4",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "A shape is divided into 5 equal parts. 3 parts are shaded and 1 more part is shaded. What fraction of the shape is shaded in all: \\(\\frac{3}{5} + \\frac{1}{5}\\)?",
+        "correct_answer": "4/5",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "A shape is divided into 10 equal parts. 3 parts are shaded. If 1 shaded part is taken away, what fraction of the shape remains shaded: \\(\\frac{3}{10} - \\frac{1}{10}\\)?",
+        "correct_answer": "2/10",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A shape is divided into 10 equal parts. 3 parts are shaded and 1 more part is shaded. What fraction of the shape is shaded in all: \\(\\frac{3}{10} + \\frac{1}{10}\\)?",
+        "correct_answer": "4/10",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "A shape is divided into 10 equal parts. 1 part is shaded and 1 more part is shaded: \\(\\frac{1}{10} + \\frac{1}{10} = ___\\)",
+        "correct_answer": "2/10",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Shade the shape to show the result of 5/6 - 1/6.",
+        "correct_answer": "4/6",
+        "formatter": "set_click"
+      },
+      {
+        "seed": 118,
+        "question_text": "A shape is divided into 4 equal parts. 2 parts are shaded and 1 more part is shaded. What fraction of the shape is shaded in all: \\(\\frac{2}{4} + \\frac{1}{4}\\)?",
+        "correct_answer": "3/4",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Shade the shape to show the result of 1/10 + 1/10.",
+        "correct_answer": "2/10",
+        "formatter": "set_click"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "add",
+      "node_id": "mat_g3_na_q4_7",
+      "clause": "Add",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "These items involve fraction addition. Some use visual interaction payloads with 'operation': 'add' (like seed 127 with 1/10 + 1/10), while others use textual prompts explicitly showing addition (e.g., seed 42: '3/4 + 1/4').",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "subtract",
+      "node_id": "mat_g3_na_q4_7",
+      "clause": "subtract",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "These items focus on fraction subtraction. Seeds 11 and 23 use the FractionModel visual payload showing subtraction (e.g., '2/6 - 1/6' and '3/10 - 1/10'), and seed 103 tasks the student to shade the result of '5/6 - 1/6'.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "similar_fractions",
+      "node_id": "mat_g3_na_q4_7",
+      "clause": "similar fractions",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All addition and subtraction problems use similar fractions, meaning the denominators are the same for both operands. Examples include 2/6 and 1/6 (seed 11), 3/10 and 1/10 (seed 23), and 3/4 and 1/4 (seed 42).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "models",
+      "node_id": "mat_g3_na_q4_7",
+      "clause": "models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        103,
+        127
+      ],
+      "reasoning": "These specific seeds utilize interactive visual models to represent the fraction operation. Seeds 11 and 23 use a 'FractionModel' for reading, while seeds 103 and 127 use a 'FractionShade' payload requiring the student to interact with the model.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

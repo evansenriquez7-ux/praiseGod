@@ -1,0 +1,175 @@
+{
+  "batch": "batch026B01_mat_g1_mg_q2_2",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B01.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_mg_q2_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Elena walked 5 steps from the gate to the tree, and then 5 steps from the tree to the bench. How many steps did Elena walk in all?",
+        "correct_answer": 10,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "From the teacher's desk, it is 5 steps to the door and 3 steps to the window. How many steps farther is the door than the window?",
+        "correct_answer": 2,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "A notebook is 6 hands long. A pencil is 2 hands long. How many hands longer is a notebook than a pencil?",
+        "correct_answer": 4,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "A shoe is 8 hands long. An eraser is 1 hand long. How many hands longer is a shoe than an eraser?",
+        "correct_answer": 7,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Ben walked 5 steps from the desk to the door, and then 2 steps from the door to the window. How many steps did Ben walk in all?",
+        "correct_answer": 7,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A pencil is 4 blocks long and an eraser is 5 blocks long. If they are placed end to end, what is their total length in blocks?",
+        "correct_answer": 9,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "A stick is 9 paperclips long. A spoon is 3 paperclips long. How many paperclips longer is a stick than a spoon?",
+        "correct_answer": 6,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "Elena walked 3 steps from the gate to the tree, and then 2 steps from the tree to the bench. How many steps did Elena walk in all?",
+        "correct_answer": 5,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "A stick is 4 paperclips long and a marker is 4 paperclips long. If they are placed end to end, what is their total length in paperclips?",
+        "correct_answer": 8,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "A stick is 8 hands long. A spoon is 7 hands long. How many hands longer is a stick than a spoon?",
+        "correct_answer": 1,
+        "formatter": "cloze"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g1_mg_q2_2",
+      "clause": "Solve problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The items are structured as word problems requiring the student to add or subtract non-standard measurements to find a total length or difference.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "lengths",
+      "node_id": "mat_g1_mg_q2_2",
+      "clause": "lengths",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        78,
+        91,
+        118,
+        127
+      ],
+      "reasoning": "These seeds present word problems solving for the total length or difference in length of physical objects placed end-to-end or compared.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "distances",
+      "node_id": "mat_g1_mg_q2_2",
+      "clause": "distances",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        64,
+        103
+      ],
+      "reasoning": "These seeds present word problems solving for total steps walked or the difference in steps between distinct locations (distances).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "non_standard_units",
+      "node_id": "mat_g1_mg_q2_2",
+      "clause": "non-standard units",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All the word problems are built around non-standard units such as steps, hands, blocks, and paperclips.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

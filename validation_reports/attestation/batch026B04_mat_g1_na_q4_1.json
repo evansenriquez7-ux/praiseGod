@@ -1,0 +1,179 @@
+{
+  "batch": "batch026B04_mat_g1_na_q4_1",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B04.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q4_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Look at the fraction models for \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which comparison sign is correct: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
+        "correct_answer": "<",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "Look at the fraction models. Compare \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which sign makes the statement true: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "Look at the fraction models. Compare \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which sign makes the statement true: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+        "correct_answer": ">",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+        "correct_answer": ">",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Look at the fraction models. Compare \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which sign makes the statement true: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
+        "correct_answer": "<",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Look at the fraction models for \\(\\frac{1}{4}\\) and \\(\\frac{1}{2}\\). Which comparison sign is correct: \\(\\frac{1}{4}\\) ___ \\(\\frac{1}{2}\\)?",
+        "correct_answer": "<",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Look at the fraction models for \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which comparison sign is correct: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+        "correct_answer": ">",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Look at the fraction models for \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which comparison sign is correct: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+        "correct_answer": "B",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "Look at the shaded models. Which sign correctly compares the shaded parts: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+        "correct_answer": ">",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Look at the fraction models for \\(\\frac{1}{2}\\) and \\(\\frac{1}{4}\\). Which comparison sign is correct: \\(\\frac{1}{2}\\) ___ \\(\\frac{1}{4}\\)?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "compare",
+      "node_id": "mat_g1_na_q4_1",
+      "clause": "Compare",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The items explicitly ask the student to compare two fractions by providing the correct relational sign. For example, seed 64 asks 'Which sign makes the statement true: 1/4 ___ 1/2?' and provides comparison operators as options.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "half",
+      "node_id": "mat_g1_na_q4_1",
+      "clause": "1/2",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every comparison problem in these seeds involves the fraction 1/2 as one of the operands, such as comparing '1/4 ___ 1/2' in seed 78.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "quarter",
+      "node_id": "mat_g1_na_q4_1",
+      "clause": "1/4",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every comparison problem in these seeds involves the fraction 1/4 as one of the operands, paired against 1/2.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "models",
+      "node_id": "mat_g1_na_q4_1",
+      "clause": "models",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        103,
+        127
+      ],
+      "reasoning": "Only seeds 23, 103, and 127 actually include a visual 'FractionModel' payload to support the comparison. The other seeds instruct the user to 'Look at the fraction models' but fail to render any visual payload. Even the ones that do render a payload only supply a single fraction model instead of two.",
+      "action_taken": "Left registered; no change.",
+      "content_note_from_attester": "Many seeds (e.g., 11, 42, 57, 64) prompt the user to 'Look at the fraction models' or 'shaded models' but do not provide any visual payload. Furthermore, seeds 23, 103, and 127 provide a 'FractionModel' payload, but it only illustrates one of the two fractions being compared, making a visual comparison impossible."
+    }
+  ]
+}

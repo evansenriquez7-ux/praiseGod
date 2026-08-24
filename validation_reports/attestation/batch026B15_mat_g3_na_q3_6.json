@@ -1,0 +1,175 @@
+{
+  "batch": "batch026B15_mat_g3_na_q3_6",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B15.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q3_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "This pattern follows a rule: 244, 243, 249, 144, 143, 149, 44, 43, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": -100,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "This pattern follows a rule: 75, 77, 77, 65, 67, 67, 55, 57, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": -10,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "This pattern follows a rule: 24, 24, 34, 34, 44, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": 10,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "This pattern follows a rule: 51, 54, 101, 104, 151, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": 50,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "This pattern follows a rule: 27, 29, 21, 37, 39, 31, 47, 49, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": 10,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "This pattern follows a rule: 35, 37, 25, 27, 15, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": -10,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "This pattern follows a rule: 43, 47, 63, 67, 83, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": 20,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "This pattern follows a rule: 32, 37, 38, 52, 57, 58, 72, 77, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": 20,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "This pattern follows a rule: 116, 115, 66, 65, 16, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": -50,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "This pattern follows a rule: 65, 64, 55, 54, 45, ... Each group of numbers repeats, then the next group changes by the same amount. What number is added or subtracted from one group to the next?",
+        "correct_answer": -10,
+        "formatter": "cloze"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "explain_generation",
+      "node_id": "mat_g3_na_q3_6",
+      "clause": "Explain how to generate",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The seeds ask the student to explain the generative rule by asking 'What number is added or subtracted from one group to the next?', thereby addressing how the pattern is generated.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "pattern",
+      "node_id": "mat_g3_na_q3_6",
+      "clause": "pattern",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every seed explicitly states 'This pattern follows a rule:' and then provides the pattern sequence to be analyzed.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "repeating_and_increasing",
+      "node_id": "mat_g3_na_q3_6",
+      "clause": "repeating and increasing components",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        64,
+        91,
+        103
+      ],
+      "reasoning": "These seeds contain patterns whose repeating blocks increase in value. For example, seed 103 changes by +20 between groups.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "repeating_and_decreasing",
+      "node_id": "mat_g3_na_q3_6",
+      "clause": "repeating and decreasing components",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "These seeds contain patterns whose repeating blocks decrease in value. For instance, seed 78 steps down by 10 from one group to the next.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

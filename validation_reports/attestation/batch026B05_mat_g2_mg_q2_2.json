@@ -1,0 +1,184 @@
+{
+  "batch": "batch026B05_mat_g2_mg_q2_2",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B05.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q2_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "The distance from the library to the garden is 23 m. About how many meters is that, rounded to the nearest 10 m?",
+        "correct_answer": 20,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "A garden hose measures 11 m. About how many meters is that, rounded to the nearest 5 m?",
+        "correct_answer": 10,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "A wooden ruler measures 22 cm. About how many centimeters is that, rounded to the nearest 10 cm?",
+        "correct_answer": 20,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "The distance from the library to the garden is 19 m. About how many meters is that, rounded to the nearest 5 m?",
+        "correct_answer": 20,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "The distance from the library to the garden is 16 m. About how many meters is that, rounded to the nearest 5 m?",
+        "correct_answer": 15,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A wooden ruler measures 28 cm. About how many centimeters is that, rounded to the nearest 10 cm?",
+        "correct_answer": 30,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "The distance from the classroom to the canteen is 21 m. About how many meters is that, rounded to the nearest 10 m?",
+        "correct_answer": 20,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "A notebook measures 19 cm. About how many centimeters is that, rounded to the nearest 5 cm?",
+        "correct_answer": 20,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "A piece of ribbon measures 26 cm. About how many centimeters is that, rounded to the nearest 10 cm?",
+        "correct_answer": 30,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "The distance from the library to the garden is 19 m. About how many meters is that, rounded to the nearest 5 m?",
+        "correct_answer": 20,
+        "formatter": "cloze"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "estimate",
+      "node_id": "mat_g2_mg_q2_2",
+      "clause": "Estimate",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The items task students with estimating values by explicitly asking 'About how many [unit] is that, rounded to the nearest [interval]', prompting an estimation/rounding action.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "length",
+      "node_id": "mat_g2_mg_q2_2",
+      "clause": "length",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        103,
+        118
+      ],
+      "reasoning": "Seeds 42, 78, 103, and 118 focus on measuring the length of specific objects like a 'wooden ruler', 'notebook', and 'ribbon' rather than geographical distance.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "meters",
+      "node_id": "mat_g2_mg_q2_2",
+      "clause": "meters",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        64,
+        91,
+        127
+      ],
+      "reasoning": "Seeds 11, 23, 57, 64, 91, and 127 use meters (m) as the unit of measurement, asking 'About how many meters is that'.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "centimeters",
+      "node_id": "mat_g2_mg_q2_2",
+      "clause": "centimeters",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        78,
+        103,
+        118
+      ],
+      "reasoning": "Seeds 42, 78, 103, and 118 use centimeters (cm) as the unit, specifically asking 'About how many centimeters is that' for objects like rulers and ribbons.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "distance",
+      "node_id": "mat_g2_mg_q2_2",
+      "clause": "distance",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        64,
+        91,
+        127
+      ],
+      "reasoning": "These seeds frame the problem as measuring spatial 'distance' between two points, such as 'The distance from the library to the garden' (seed 11) or 'from the classroom to the canteen' (seed 91).",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "batch": "batch026B08_mat_g2_na_q2_7",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B08.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q2_7",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Ate Nena had ₱480. Ate Nena bought a ballpen for ₱30 and a pad paper for ₱22. How much money does Ate Nena have left? The answer is 532. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 23,
+        "question_text": "Rosa solved this problem: \"Carlo had 415 notebooks. Carlo gave 270 notebooks to a sibling. How many notebooks does Carlo have left?\" Rosa says the answer is 155. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 145
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 42,
+        "question_text": "Carlo had 630 stamps. Carlo gave 96 stamps to classmates. How many stamps does Carlo have left?",
+        "correct_answer": 534,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Bianca had 222 notebooks. Bianca gave 66 notebooks to Mia and 34 notebooks to Elena. How many notebooks does Bianca have left?",
+        "correct_answer": 122,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Isko had 140 notebooks. Isko gave 24 notebooks to classmates. How many notebooks does Isko have left?",
+        "correct_answer": 116,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Dan had 620 stamps. Dan gave 400 stamps to a sibling. How many stamps does Dan have left?",
+        "correct_answer": 220,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Isko had ₱45 and spent ₱35 at the sari-sari store. How much money does Isko have left?",
+        "correct_answer": 10,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Grace solved this problem: \"Liza had ₱780. Liza bought an apple for ₱110 and a notebook for ₱184. How much money does Liza have left?\" Grace says the answer is 487. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 486
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 118,
+        "question_text": "Dan had ₱200 and spent ₱103 at the sari-sari store. How much money does Dan have left?",
+        "correct_answer": 97,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Grace solved this problem: \"Carlo had 655 mangoes. Carlo gave 510 mangoes to classmates. How many mangoes does Carlo have left?\" Grace says the answer is 155. Is Grace correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 145
+        },
+        "formatter": "error_detect"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "solve_problems",
+      "node_id": "mat_g2_na_q2_7",
+      "clause": "Solve 1- and 2-step problems",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The item set contains 1-step problems (e.g., seed 42: \"630 stamps ... gave 96\") and 2-step problems (e.g., seed 11: \"had ₱480 ... bought a ballpen for ₱30 and a pad paper for ₱22\").",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "involving_subtraction",
+      "node_id": "mat_g2_na_q2_7",
+      "clause": "involving subtraction",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All word problems involve scenarios of \"giving away\" or \"spending,\" which conceptually maps to subtraction to find the remaining amount (e.g. \"How many notebooks does Carlo have left?\" in seed 23).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "less_than_1000",
+      "node_id": "mat_g2_na_q2_7",
+      "clause": "both numbers are less than 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All quantities involved in the problem statements are less than 1000, with the maximum starting amount being 780 in seed 103.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "problems_money",
+      "node_id": "mat_g2_na_q2_7",
+      "clause": "problems involving money",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        91,
+        103,
+        118
+      ],
+      "reasoning": "Several problems use the Philippine Peso symbol (₱) and describe monetary transactions, such as buying items or spending money at a store (e.g., seed 11's ₱480, seed 91's ₱45).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "regrouping",
+      "node_id": "mat_g2_na_q2_7",
+      "clause": "with and without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The questions require subtraction calculations that include regrouping (e.g. 630 - 96 in seed 42) and computations without regrouping (e.g. 620 - 400 in seed 78, 655 - 510 in seed 127).",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

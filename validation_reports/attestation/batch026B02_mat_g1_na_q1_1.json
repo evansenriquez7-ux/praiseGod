@@ -1,0 +1,167 @@
+{
+  "batch": "batch026B02_mat_g1_na_q1_1",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B02.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Write the number: ninety-one.",
+        "correct_answer": 91,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "The number written as 'forty-two' is 42. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 42,
+        "question_text": "Write 35 in words.",
+        "correct_answer": "thirty-five",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "Write 79 in words.",
+        "correct_answer": "seventy-nine",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Write the number: forty-seven.",
+        "correct_answer": 47,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Write 44 in words.",
+        "correct_answer": "forty-four",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "The number 54 is written in words as 'fifty-four'. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 103,
+        "question_text": "The number written as 'fifty-nine' is 59. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 118,
+        "question_text": "Write 71 in words.",
+        "correct_answer": "seventy-one",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Write 44 in words.",
+        "correct_answer": "forty-four",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "read",
+      "node_id": "mat_g1_na_q1_1",
+      "clause": "Read",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        91,
+        103
+      ],
+      "reasoning": "These true/false questions require the student to read the number written in words and verify if it matches the given numeral.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "write",
+      "node_id": "mat_g1_na_q1_1",
+      "clause": "write",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57,
+        64,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "These questions explicitly instruct the student to 'Write the number' or 'Write X in words', asking for constructed production.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "numerals",
+      "node_id": "mat_g1_na_q1_1",
+      "clause": "numerals",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        64
+      ],
+      "reasoning": "Seeds 11 and 64 explicitly provide the number in words and ask to write the corresponding numeral (e.g., 'forty-seven' to 47).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_100",
+      "node_id": "mat_g1_na_q1_1",
+      "clause": "up to 100",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All the numerals and word forms used across the items fall within the range of 1 to 100 (e.g., 91, 42, 79, 59).",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

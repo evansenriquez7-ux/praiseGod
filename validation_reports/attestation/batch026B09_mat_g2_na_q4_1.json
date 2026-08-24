@@ -1,0 +1,175 @@
+{
+  "batch": "batch026B09_mat_g2_na_q4_1",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B09.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q4_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Read the fraction \\(\\frac{1}{2}\\). Which is the correct word name?",
+        "correct_answer": "one half",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "Write one eighth in fraction notation.",
+        "correct_answer": "1/8",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "Write one third in fraction notation.",
+        "correct_answer": "1/3",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Read the fraction \\(\\frac{1}{3}\\). Which is the correct word name?",
+        "correct_answer": "one third",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Read the fraction \\(\\frac{1}{3}\\). Which is the correct word name?",
+        "correct_answer": "one third",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Write one third in fraction notation.",
+        "correct_answer": "1/3",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Which word name represents \\(\\frac{1}{5}\\)?",
+        "correct_answer": "one fifth",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "Read the fraction \\(\\frac{1}{2}\\). Which is the correct word name?",
+        "correct_answer": "one half",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "Which word name represents \\(\\frac{1}{6}\\)?",
+        "correct_answer": "one sixth",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "How is \\(\\frac{1}{8}\\) read in words?",
+        "correct_answer": "one eighth",
+        "formatter": "cloze"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "read",
+      "node_id": "mat_g2_na_q4_1",
+      "clause": "Read",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        57,
+        64,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Seeds 11, 57, 64, 91, 103, 118, and 127 provide the fraction notation and ask the student to identify the correct word name, effectively asking them to read the fraction.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "write",
+      "node_id": "mat_g2_na_q4_1",
+      "clause": "write",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        42,
+        78
+      ],
+      "reasoning": "Seeds 23, 42, and 78 provide the word name (e.g., 'one eighth') and ask the student to choose the correct fraction notation, which is a multiple-choice equivalent of writing it.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "unit_fractions",
+      "node_id": "mat_g2_na_q4_1",
+      "clause": "unit fractions",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All questions involve fractions with a numerator of 1 (one half, one eighth, one third, one fifth, one sixth).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "fraction_notation",
+      "node_id": "mat_g2_na_q4_1",
+      "clause": "fraction notation",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds explicitly show or ask for fractions in numeric fraction notation (like \\(\\frac{1}{2}\\) or 1/8) as either the prompt or the answer options.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

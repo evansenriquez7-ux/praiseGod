@@ -1,0 +1,165 @@
+{
+  "batch": "batch026B06_mat_g2_na_q1_1",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B06.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_1",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Write the number: seven hundred fifty-one.",
+        "correct_answer": 751,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "The number written as 'two hundred sixty-three' is 263. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 42,
+        "question_text": "Write 203 in words.",
+        "correct_answer": "two hundred three",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "Write 554 in words.",
+        "correct_answer": "five hundred fifty-four",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Write the number: three hundred five.",
+        "correct_answer": 305,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Write 276 in words.",
+        "correct_answer": "two hundred seventy-six",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "The number 782 is written in words as 'seven hundred eighty-two'. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 103,
+        "question_text": "The number written as 'nine hundred fourteen' is 914. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 118,
+        "question_text": "Write 497 in words.",
+        "correct_answer": "four hundred ninety-seven",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Write 816 in words.",
+        "correct_answer": "eight hundred sixteen",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "read_and_write",
+      "node_id": "mat_g2_na_q1_1",
+      "clause": "Read and write",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The seeds task the student with converting numbers from word form to digits (e.g., seeds 11, 64), digits to word form (e.g., seeds 42, 57), or verifying the match (e.g., seeds 23, 91), covering both reading and writing.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "numerals",
+      "node_id": "mat_g2_na_q1_1",
+      "clause": "numerals",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All the seeds involve translating or verifying numerals (e.g., 751, 263, 203) in either numerical or written format.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_1000",
+      "node_id": "mat_g2_na_q1_1",
+      "clause": "up to 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All of the numbers presented in the seeds are positive integers below 1000 (e.g., 203, 554, 914), satisfying the 'up to 1000' requirement.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

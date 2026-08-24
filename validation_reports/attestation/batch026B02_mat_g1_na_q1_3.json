@@ -1,0 +1,165 @@
+{
+  "batch": "batch026B02_mat_g1_na_q1_3",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B02.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g1_na_q1_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Compare the numbers: 10 ___ 1. Which sign is correct: >, <, or =?",
+        "correct_answer": ">",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "9 < 15. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 42,
+        "question_text": "Compare the numbers: 9 ___ 9. Which sign is correct: >, <, or =?",
+        "correct_answer": "=",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "Ana has 3 stickers. Liza has 4 stickers. Which sign correctly compares the two amounts?",
+        "correct_answer": "<",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Compare the numbers: 10 ___ 2. Which sign is correct: >, <, or =?",
+        "correct_answer": ">",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Compare the numbers: 9 ___ 9. Which sign is correct: >, <, or =?",
+        "correct_answer": "=",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Jose has 6 storybooks. Maria has 6 storybooks. Which sign correctly compares the two amounts? The answer is =. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 103,
+        "question_text": "8 > 6. True or False?",
+        "correct_answer": true,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 118,
+        "question_text": "Compare the numbers: 4 ___ 4. Which sign is correct: >, <, or =?",
+        "correct_answer": "=",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Maria has 8 marbles. Liza has 11 marbles. Which sign correctly compares the two amounts?",
+        "correct_answer": "<",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "compare",
+      "node_id": "mat_g1_na_q1_3",
+      "clause": "Compare",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every seed requires comparing two amounts or numbers using relational operators like <, >, or =.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "two_numbers",
+      "node_id": "mat_g1_na_q1_3",
+      "clause": "two numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Each comparison question involves exactly two distinct numbers or quantities to be evaluated against each other.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_20",
+      "node_id": "mat_g1_na_q1_3",
+      "clause": "up to 20",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The numbers being compared in all seeds are 20 or less (e.g., 10, 1, 9, 15, 3, 4, 11).",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "batch": "batch026B12_mat_g3_na_q1_2",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B12.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q1_2",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "What ordinal describes position number 100?",
+        "correct_answer": "100th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "A runner is at position number 99. In what place did the runner finish?",
+        "correct_answer": "99th",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 42,
+        "question_text": "Who arrived earlier: the student in 99th place or 95th place?",
+        "correct_answer": "95th",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 57,
+        "question_text": "Write the symbol for the ninety-ninth position.",
+        "correct_answer": "99th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "A runner is at position number 100. In what place did the runner finish?",
+        "correct_answer": "100th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Which word describes the 100th position?",
+        "correct_answer": "one hundredth",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Which word describes the 99th position?",
+        "correct_answer": "ninety-ninth",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Which position comes after 99th?",
+        "correct_answer": "100th",
+        "formatter": "cloze"
+      },
+      {
+        "seed": 118,
+        "question_text": "Who arrived earlier: the student in 100th place or 13th place?",
+        "correct_answer": "13th",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Which word describes the 99th position?",
+        "correct_answer": "ninety-ninth",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "describe",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "Describe",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        78,
+        91,
+        127
+      ],
+      "reasoning": "These seeds explicitly ask the student to 'describe' the position by identifying the correct ordinal word or symbol (e.g., 'Which word describes the 100th position?' in seed 78, 'What ordinal describes...' in seed 11).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "position",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "position",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds explicitly refer to the 'position' or 'place' in their question text (e.g., 'position number 100', '99th place').",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "objects",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "objects",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "None of the seeds involve describing the position of physical objects. They either refer to abstract mathematical positions (e.g., 'position number 100') or people (runners in 23, 64; students in 42, 118), rather than inanimate objects.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Ordinal positions reference abstract numbers or rank positions rather than an array of physical objects."
+    },
+    {
+      "capability_id": "ordinal_numbers",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "ordinal numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds prominently feature ordinal numbers such as 95th, 99th, 100th, ninety-ninth, or one hundredth in the questions and multiple-choice options.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_100th",
+      "node_id": "mat_g3_na_q1_2",
+      "clause": "up to 100th",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The seeds involve ordinal numbers at the upper limit specified by the clause, repeatedly asking about the 99th and 100th positions.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

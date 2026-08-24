@@ -1,0 +1,177 @@
+{
+  "batch": "batch026B07_mat_g2_na_q1_9",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B07.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_9",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "720 + 143 = ___",
+        "correct_answer": 863,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "Show 473 + 123 on the number line.",
+        "correct_answer": 596,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 42,
+        "question_text": "Manny solved: \"505 + 111 = ___\". Manny says the missing number is 626. Is Manny correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 616
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 57,
+        "question_text": "What is 473 + 505?",
+        "correct_answer": 978,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "300 + 652 = ___",
+        "correct_answer": 952,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "What is 441 + 532?",
+        "correct_answer": 973,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "The two parts are 764 and 222. What is the sum?",
+        "correct_answer": 986,
+        "formatter": "read_fill_in_blank"
+      },
+      {
+        "seed": 103,
+        "question_text": "The two parts are 827 and 152. What is the sum?",
+        "correct_answer": 979,
+        "formatter": "read_fill_in_blank"
+      },
+      {
+        "seed": 118,
+        "question_text": "What is 260 + 737?",
+        "correct_answer": 997,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "What is 300 + 240?",
+        "correct_answer": 540,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "add_numbers",
+      "node_id": "mat_g2_na_q1_9",
+      "clause": "Add numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds present an addition problem to find the total sum of two numbers (e.g., 720 + 143, 473 + 505).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "sums_up_to_1000",
+      "node_id": "mat_g2_na_q1_9",
+      "clause": "sums up to 1000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The sum for the addition problems in all seeds is below 1000 (e.g., 863, 596, 616, 978, 952).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "with_regrouping",
+      "node_id": "mat_g2_na_q1_9",
+      "clause": "with",
+      "verdict": "NOT_PROVIDED",
+      "seeds_showing_it": [],
+      "reasoning": "None of the seeds involve addition 'with' regrouping. In all the provided equations (e.g., 473 + 505, 300 + 652, 764 + 222), the sums in the ones, tens, and hundreds places do not exceed 9, so regrouping is never required.",
+      "action_taken": "Filed as a §6F CONTRADICTED finding, unedited. Sampler gap: all 10 sampled seeds generated carry-free addition problems; addition 'with regrouping' was not drawn in the window."
+    },
+    {
+      "capability_id": "without_regrouping",
+      "node_id": "mat_g2_na_q1_9",
+      "clause": "without regrouping",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds present addition problems where none of the individual place values sum to 10 or more, meaning they are solved 'without regrouping'.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

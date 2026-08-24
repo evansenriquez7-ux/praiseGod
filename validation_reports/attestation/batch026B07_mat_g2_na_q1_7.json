@@ -1,0 +1,199 @@
+{
+  "batch": "batch026B07_mat_g2_na_q1_7",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B07.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_na_q1_7",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Start at 60. Count up 4 more. You land on ___",
+        "correct_answer": 64,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 23,
+        "question_text": "The dot is at 79 and it moves forward 8 numbers. Starting from 79, just count up 8 numbers. Which number will the dot land on?",
+        "correct_answer": "D",
+        "formatter": "read_mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "Manny solved: \"Start at 80. Count up 3 more. You land on ___\". Manny says the missing number is 93. Is Manny correct?",
+        "correct_answer": {
+          "has_error": true,
+          "correct_value": 83
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 57,
+        "question_text": "Start at 67. Count up 4 more. What number do you land on?",
+        "correct_answer": 71,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Start at 30. Count up 7 more. You land on ___",
+        "correct_answer": 37,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 78,
+        "question_text": "Start at 34. Count up 4 more. What number do you land on?",
+        "correct_answer": 38,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Show 93 + 6 on the number line.",
+        "correct_answer": 99,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 103,
+        "question_text": "Show 77 + 6 on the number line.",
+        "correct_answer": 83,
+        "formatter": "set_fill_in_blank"
+      },
+      {
+        "seed": 118,
+        "question_text": "Start at 36. Count up 8 more. What number do you land on?",
+        "correct_answer": 44,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Start at 87. Count up 7 more. What number do you land on?",
+        "correct_answer": 94,
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "illustrate_addition",
+      "node_id": "mat_g2_na_q1_7",
+      "clause": "Illustrate addition",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds involve an addition process, either by asking the student to count up to find a sum or directly showing an addition expression like '93 + 6'.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "two_digit",
+      "node_id": "mat_g2_na_q1_7",
+      "clause": "2-digit",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds start their addition process from a 2-digit number (e.g., 60, 79, 80, 67, 30, 34, 93, 77, 36, 87).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "one_digit_numbers",
+      "node_id": "mat_g2_na_q1_7",
+      "clause": "1-digit numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All seeds add a 1-digit number to the starting number (e.g., 4, 8, 3, 7, 6).",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "counting_up",
+      "node_id": "mat_g2_na_q1_7",
+      "clause": "counting up",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        118,
+        127
+      ],
+      "reasoning": "These seeds explicitly use the phrasing 'count up X more' or 'count up 8 numbers' to illustrate the addition strategy.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "number_line",
+      "node_id": "mat_g2_na_q1_7",
+      "clause": "number line",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        91,
+        103
+      ],
+      "reasoning": "These seeds either mention a number line in the text or include a VISUAL RENDERED payload of a NumberLine to model the problem.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

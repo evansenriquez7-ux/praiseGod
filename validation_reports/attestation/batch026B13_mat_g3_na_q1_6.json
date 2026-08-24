@@ -1,0 +1,244 @@
+{
+  "batch": "batch026B13_mat_g3_na_q1_6",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B13.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q1_6",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "Arrange these numbers from largest to smallest: 4504, 4506, 4495, 4496, 4508",
+        "correct_answer": [
+          4508,
+          4506,
+          4504,
+          4496,
+          4495
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 23,
+        "question_text": "Arrange these numbers from largest to smallest: 9203, 9192, 9199, 9208, 9190",
+        "correct_answer": [
+          9208,
+          9203,
+          9199,
+          9192,
+          9190
+        ],
+        "formatter": "sort_order"
+      },
+      {
+        "seed": 42,
+        "question_text": "Arrange these numbers from smallest to largest: 6397, 6398, 2287",
+        "correct_answer": [
+          2287,
+          6397,
+          6398
+        ],
+        "formatter": "sort_order"
+      },
+      {
+        "seed": 57,
+        "question_text": "Jose counted storybooks collected by 3 friends: 397, 400, 406. Arrange the counts from largest to smallest.",
+        "correct_answer": [
+          406,
+          400,
+          397
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 64,
+        "question_text": "Arrange these numbers from smallest to largest: 4798, 4810, 4807, 4796, 4790",
+        "correct_answer": [
+          4790,
+          4796,
+          4798,
+          4807,
+          4810
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 78,
+        "question_text": "Arrange these numbers from largest to smallest: 8098, 8099, 8103",
+        "correct_answer": [
+          8103,
+          8099,
+          8098
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 91,
+        "question_text": "Maria counted seashells collected by 3 friends: 795, 802, 804. Arrange the counts from smallest to largest.",
+        "correct_answer": [
+          795,
+          802,
+          804
+        ],
+        "formatter": "sort_order"
+      },
+      {
+        "seed": 103,
+        "question_text": "Arrange these numbers from smallest to largest: 9809, 9802, 9796, 9792, 9793, 9810",
+        "correct_answer": [
+          9792,
+          9793,
+          9796,
+          9802,
+          9809,
+          9810
+        ],
+        "formatter": "sort_order"
+      },
+      {
+        "seed": 118,
+        "question_text": "Arrange these numbers from smallest to largest: 7101, 7093, 7099",
+        "correct_answer": [
+          7093,
+          7099,
+          7101
+        ],
+        "formatter": "ordering"
+      },
+      {
+        "seed": 127,
+        "question_text": "Ana counted seashells collected by 3 friends: 390, 398, 3327. Arrange the counts from largest to smallest.",
+        "correct_answer": [
+          3327,
+          398,
+          390
+        ],
+        "formatter": "ordering"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "order",
+      "node_id": "mat_g3_na_q1_6",
+      "clause": "Order",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The tasks explicitly instruct the user to \"Arrange these numbers\" or \"Arrange the counts\", requiring them to order a sequence.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "numbers",
+      "node_id": "mat_g3_na_q1_6",
+      "clause": "numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All options involve numerical values that need to be arranged, such as 4504, 4506, and 9203.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_10000",
+      "node_id": "mat_g3_na_q1_6",
+      "clause": "up to 10 000",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The sets are comprised of whole numbers reaching up to 4 digits but staying below 10,000, like 9810 in seed 103 and 9208 in seed 23.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "smallest_to_largest",
+      "node_id": "mat_g3_na_q1_6",
+      "clause": "smallest to largest",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        64,
+        91,
+        103,
+        118
+      ],
+      "reasoning": "Some seeds (42, 64, 91, 103, 118) explicitly direct the user to arrange the lists \"from smallest to largest\".",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "vice_versa",
+      "node_id": "mat_g3_na_q1_6",
+      "clause": "vice versa",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        57,
+        78,
+        127
+      ],
+      "reasoning": "Some seeds (11, 23, 57, 78, 127) explicitly ask to arrange \"from largest to smallest\", representing the reverse order indicated by the phrase 'vice versa'.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "batch": "batch026B13_mat_g3_na_q2_5",
+  "attested_at": "2026-08-24T14:40:00Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "read local_only/scratch/attester/t26/B13.json (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g3_na_q2_5",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "5185 − 4950 ≈ 8. True or False?",
+        "correct_answer": false,
+        "formatter": "true_false"
+      },
+      {
+        "seed": 23,
+        "question_text": "Rosa solved: \"1170 − 279 ≈ ___\". Rosa says the missing number is 1000. Is Rosa correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 1000
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 42,
+        "question_text": "Estimate the difference: 1950 − 1152",
+        "correct_answer": 1000,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "Estimate the difference: 650 − 120",
+        "correct_answer": 600,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Estimate the difference: 1905 − 885",
+        "correct_answer": 1000,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "Estimate the difference: 9850 − 840",
+        "correct_answer": 9000,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Estimate: 1523 − 270 ≈ ___",
+        "correct_answer": 2000,
+        "formatter": "cloze"
+      },
+      {
+        "seed": 103,
+        "question_text": "Grace solved: \"1920 − 256 ≈ ___\". Grace says the missing number is 2000. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 2000
+        },
+        "formatter": "error_detect"
+      },
+      {
+        "seed": 118,
+        "question_text": "Estimate the difference: 304 − 165",
+        "correct_answer": 100,
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "Grace solved: \"5382 − 300 ≈ ___\". Grace says the missing number is 5000. Is Grace correct?",
+        "correct_answer": {
+          "has_error": false,
+          "correct_value": 5000
+        },
+        "formatter": "error_detect"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "estimate_difference",
+      "node_id": "mat_g3_na_q2_5",
+      "clause": "Estimate the difference",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "All instances employ the text \"Estimate the difference:\" or incorporate the approximately equal sign (≈) to prompt for an estimated answer rather than an exact computation.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "two_numbers",
+      "node_id": "mat_g3_na_q2_5",
+      "clause": "two numbers",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "Every single item involves a subtraction estimate strictly focused on a pair of numbers, as seen with 1950 and 1152 in seed 42.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "up_to_4_digits",
+      "node_id": "mat_g3_na_q2_5",
+      "clause": "up to 4 digits",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        42,
+        57,
+        64,
+        78,
+        91,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The values being subtracted range from 3-digit numbers, such as 650 and 120, up to 4-digit sizes, like 9850 and 840.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}
