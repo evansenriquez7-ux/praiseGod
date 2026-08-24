@@ -1,0 +1,218 @@
+{
+  "batch": "batch027_mat_g2_mg_q4_3",
+  "attested_at": "2026-08-24T15:00:42Z",
+  "role": "Attester",
+  "blindness": {
+    "saw": [
+      "clause",
+      "competency text",
+      "grade/quarter",
+      "10 rendered student-path samples"
+    ],
+    "did_not_see": [
+      "CAPABILITY_PROVIDERS or that any entry was being defended",
+      "the node id",
+      "the DNA, formatter registry, or generator source",
+      "backend/app/practice_gen/dna/, formatters/, generators/, adapter.py, orchestrator.py",
+      "validation_reports/, docs/, and every path under local_only/ except the one named in samples_delivery"
+    ],
+    "samples_delivery": "view_file on local_only/scratch/attester/batch_stale.prompt.txt (packet render only)",
+    "framing": "neutral - 'do these items exhibit what this clause names?', never 'find the defects'",
+    "tool_uses_by_attester": "viewed packet render only"
+  },
+  "packet": {
+    "builder": "tests/attester_packets.py",
+    "filed_by": "tests/attester_file.py (mechanical join on the key the Attester never saw)",
+    "sampling": "is_student_path=True",
+    "node_id": "mat_g2_mg_q4_3",
+    "seeds": [
+      11,
+      23,
+      42,
+      57,
+      64,
+      78,
+      91,
+      103,
+      118,
+      127
+    ],
+    "samples_judged": [
+      {
+        "seed": 11,
+        "question_text": "A ball rolls smoothly but a box does not roll. Why?",
+        "correct_answer": "A ball has a curved surface, but a box has flat surfaces.",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 23,
+        "question_text": "A can has both flat surfaces (its ends) and one other kind of surface. What kind is it?",
+        "correct_answer": "curved surface",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 42,
+        "question_text": "How is a straight line different from a curved line?",
+        "correct_answer": "A straight line never bends, but a curved line bends smoothly.",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 57,
+        "question_text": "How is a straight line different from a curved line?",
+        "correct_answer": "A straight line never bends, but a curved line bends smoothly.",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 64,
+        "question_text": "Why is the rim of a plate called a curved line?",
+        "correct_answer": "Because it bends smoothly and changes direction.",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 78,
+        "question_text": "A solid figure has a surface that bends all the way around, like a ball. What kind of surface is that?",
+        "correct_answer": "curved surface",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 91,
+        "question_text": "Why is the edge of a ruler called a straight line?",
+        "correct_answer": "Because it never bends or changes direction.",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 103,
+        "question_text": "A box has six faces that are each flat. What kind of surface does a box have?",
+        "correct_answer": "flat surface",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 118,
+        "question_text": "A box has six faces that are each flat. What kind of surface does a box have?",
+        "correct_answer": "flat surface",
+        "formatter": "mcq"
+      },
+      {
+        "seed": 127,
+        "question_text": "A ball has a surface that bends smoothly in every direction. What kind of surface does a ball have?",
+        "correct_answer": "curved surface",
+        "formatter": "mcq"
+      }
+    ]
+  },
+  "verdicts": [
+    {
+      "capability_id": "identify",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "Identify",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        23,
+        78,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "These items require the student to identify the specific type of surface (e.g., flat or curved) that belongs to given solid figures like cans, boxes, and balls.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "explain",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "explain",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57,
+        64,
+        91
+      ],
+      "reasoning": "These questions specifically prompt the student to explain reasoning by asking 'Why?' or 'How is... different?', requiring them to select the underlying rationale for geometric properties.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "difference_between",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "difference between",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        42,
+        57
+      ],
+      "reasoning": "These items explicitly ask the student to contrast two concepts, detailing the difference between rolling versus non-rolling objects or straight versus curved lines.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "straight_lines",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "straight",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        91
+      ],
+      "reasoning": "The concept of straight lines is directly assessed by asking students to distinguish their core property (never bending) and relate them to real-world objects like a ruler's edge.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "curved_lines",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "curved lines",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        42,
+        57,
+        64
+      ],
+      "reasoning": "These samples explicitly target curved lines, challenging the student to understand how they bend smoothly in comparison to straight lines or identifying them in objects like the rim of a plate.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "flat_surfaces",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "flat",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        103,
+        118
+      ],
+      "reasoning": "These seeds actively operate on the concept of 'flat' surfaces, testing the student's ability to map this property to relevant 3D shapes like boxes and the ends of a can.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "curved_surfaces",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "curved surfaces",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        78,
+        127
+      ],
+      "reasoning": "The items successfully require the application of 'curved surfaces' as a concept, prompting the student to identify the rounded features of balls and cans.",
+      "action_taken": "Left registered; no change."
+    },
+    {
+      "capability_id": "3_dimensional_objects",
+      "node_id": "mat_g2_mg_q4_3",
+      "clause": "3-dimensional objects",
+      "verdict": "PROVIDED",
+      "seeds_showing_it": [
+        11,
+        23,
+        78,
+        103,
+        118,
+        127
+      ],
+      "reasoning": "The geometric questions are appropriately framed around tangible 3-dimensional objects (balls, boxes, cans), linking abstract surface concepts to solid physical forms.",
+      "action_taken": "Left registered; no change."
+    }
+  ]
+}
