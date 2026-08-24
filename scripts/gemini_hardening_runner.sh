@@ -23,7 +23,9 @@ DONE_FILE="$REPO/local_only/scratch/HARDENING_DONE"
 LOG="$RUN_DIR/gemini_runner.log"
 
 TICK_PROMPT="${HARDENING_TICK_PROMPT:-Read local_only/scratch/gemini_hardening_loop_prompt.md and run one tick.}"
+# Main agent defaults to active environment setting: Gemini 3.7 Flash (High Effort)
 MODEL="${HARDENING_MODEL:-}"
+EFFORT="${HARDENING_EFFORT:-}"
 TICK_CAP_SEC="${HARDENING_TICK_CAP_SEC:-5400}"      # 90 min cap
 IDLE_SLEEP_SEC="${HARDENING_IDLE_SLEEP_SEC:-1800}"  # 30 min on NOTHING_TO_DO
 BUSY_SLEEP_SEC="${HARDENING_BUSY_SLEEP_SEC:-300}"   # 5 min on IN_FLIGHT
@@ -91,17 +93,20 @@ run_tick() {
     fi
     # If AGY CLI is available, run via agy / agentic runner, else log tick dispatch
     if command -v agy >/dev/null 2>&1; then
+        local agy_cmd=(agy -p "$TICK_PROMPT" --output-format json --dangerously-skip-permissions --print-timeout "${TICK_CAP_SEC}s")
         if [[ -n "$MODEL" ]]; then
-            run_capped "$TICK_CAP_SEC" "$out" agy -p "$TICK_PROMPT" --output-format json --dangerously-skip-permissions --print-timeout "${TICK_CAP_SEC}s" --model "$MODEL"
-        else
-            run_capped "$TICK_CAP_SEC" "$out" agy -p "$TICK_PROMPT" --output-format json --dangerously-skip-permissions --print-timeout "${TICK_CAP_SEC}s"
+            agy_cmd+=(--model "$MODEL")
         fi
+        if [[ -n "$EFFORT" ]]; then
+            agy_cmd+=(--effort "$EFFORT")
+        fi
+        run_capped "$TICK_CAP_SEC" "$out" "${agy_cmd[@]}"
     elif command -v claude >/dev/null 2>&1; then
+        local claude_cmd=(claude -p "$TICK_PROMPT" --output-format json --permission-mode bypassPermissions)
         if [[ -n "$MODEL" ]]; then
-            run_capped "$TICK_CAP_SEC" "$out" claude -p "$TICK_PROMPT" --output-format json --permission-mode bypassPermissions --model "$MODEL"
-        else
-            run_capped "$TICK_CAP_SEC" "$out" claude -p "$TICK_PROMPT" --output-format json --permission-mode bypassPermissions
+            claude_cmd+=(--model "$MODEL")
         fi
+        run_capped "$TICK_CAP_SEC" "$out" "${claude_cmd[@]}"
     else
         log "Runner dispatching tick via python supervisor harness..."
         run_capped "$TICK_CAP_SEC" "$out" "$PY" -c "
