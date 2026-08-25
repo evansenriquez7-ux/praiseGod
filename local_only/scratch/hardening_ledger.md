@@ -7977,7 +7977,7 @@ stronger prompt.
 - **DECIDED (reversible):** none this tick.
 - **Evidence log entry:** none needed (Class B tick, no pipeline/skeleton changes).
 - **Queue after:** §5 stale=**557**/49 nodes (deferred by campaign, not skipped), non-PASS=18/4 · §6F contra=**83**/52 (deferred by campaign, not skipped) stale=**0**/0 unattested=**0**/0 · §6D=74/19 · total=**158** — coverage: attested **787/787** (100.0%), reviewed 151/151, mutations 12
-- **Commit(s):** <pending>
+- **Commit(s):** `a634eaa4` docs(ledger): record tick 135 ledger entry
 - **Next tick should:**
   1. **Address the §6F CONTRADICTED findings** (83 clauses across 52 nodes) and **§6D wildcard providers** (74 across 19 nodes):
      - **Missing visual asset cluster:** `mat_g1_dp_q3_3` (missing source pictograph in `FillInTable`), `mat_g3_mg_q2_3` (missing container/scale visual for capacity), `mat_g3_mg_q2_2` (missing balance scale visual for mass), `mat_g3_mg_q2_0` (missing mass visual), `mat_g2_dp_q3_0` (missing pictograph in `FillInTable`), `mat_g3_mg_q1_1` (unit square tiles not drawn).
