@@ -28,6 +28,7 @@ from backend.app.practice_gen.validation import (
     validate_capability,
     validate_judgment,
     validate_matrix,
+    validate_census,
     validate_vocab,
 )
 from backend.app.practice_gen.validation.validate_matrix import run_matrix_validation
@@ -67,17 +68,23 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§1E": "validate_matrix: answer-key & interest theme invariance on formatted output",
     "§1F": "validate_matrix: question stem does not leak its own answer",
     "§1G": "validate_matrix: rendered visual payload is real and self-consistent",
+    "§1H": "validate_matrix: every check a node's composition makes applicable actually ran on that node",
+    "§1I": "validate_matrix: a true/false item family may not key every sample the same way",
     "§2": "validate_compat: registry/compatibility coverage & monotonicity",
     "§2B": "validate_compat: every formatter a node advertises can actually be served for it",
     "§3": "validate_dna: structural checks and difficulty profiles feasibility",
-    "§4": "validate_matrix: response schema validation",
+    "§4": "validate_matrix: VISUAL payload schema validation (recorded only under is_visual, so ~67 of 151 nodes; non-visual response shape rests on the Pydantic model at runtime)",
     "§5": "validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews",
     "§6": "validate_capability: competency requirements declared, cited, covered, and provided",
     "§6D": "validate_capability: a capability carried only by a generic textual formatter is not provided",
     "§6E": "validate_capability: a capability carried only by a `bounds` list most of the table shares is not provided",
     "§6F": "validate_capability: every declared capability carries a blind Attester verdict, and none is contradicted",
     "§6G": "validate_capability: an attestation shows its work — non-boilerplate reasoning citing seeds from its own packet",
+    "§7": "run_all: the suite's own census (nodes, unit tests, mutations) has not shrunk below its floor",
 }
+
+_LAST_UNIT_TEST_COUNT: list = [None]
+
 
 def _run_unit_tests() -> bool:
     """
@@ -101,6 +108,10 @@ def _run_unit_tests() -> bool:
     )
     tail = [ln for ln in proc.stdout.strip().splitlines() if ln.strip()]
     summary = tail[-1] if tail else "(no output)"
+    # "343 passed, 1 skipped, 2 deselected, 1 warning in 202.98s" -> 343. Recorded so §7
+    # can assert the suite did not silently shrink; a test that stops running stops gating.
+    m = re.search(r"(\d+) passed", summary)
+    _LAST_UNIT_TEST_COUNT[0] = int(m.group(1)) if m else None
     if proc.returncode == 0:
         print(f"  PASS unit_tests ({summary})")
         return True
@@ -199,6 +210,25 @@ def run_all(fail_fast: bool = False) -> int:
     # The matrix's §-refs are *observed*, not assumed: validate_matrix records an
     # id at each check site when that site actually evaluates an assertion.
     executed_checks |= validate_matrix.LAST_EXECUTED_CHECKS
+
+    # §1H — per-node applicability. The union above proves each check ran SOMEWHERE;
+    # this proves each ran on every node whose own composition demands it. Without it a
+    # check can quietly stop reaching 150 of 151 nodes and the suite still reports green.
+    applicability_errors = validate_matrix.applicability_failures(
+        validate_matrix._EXECUTED_BY_NODE
+    )
+    executed_checks.add("§1H")
+    if applicability_errors:
+        matrix_ok = False
+        print(f"  FAIL §1H applicability ({len(applicability_errors)} node(s)):")
+        for e in applicability_errors[:10]:
+            print(f"    - {e}")
+        if len(applicability_errors) > 10:
+            print(f"    ... and {len(applicability_errors) - 10} more.")
+    else:
+        print(f"  PASS §1H applicability (all {len(validate_matrix._EXECUTED_BY_NODE)} "
+              f"nodes ran every check their composition makes applicable)")
+
     if not matrix_ok and fail_fast:
         print("  FAIL matrix validation (fail-fast active)")
         return 1
@@ -267,6 +297,10 @@ def run_all(fail_fast: bool = False) -> int:
             return 1
 
     # Two-direction contract enforcement check
+    print("\n--- Suite Census (§7) ---")
+    census_ok = validate_census.validate_all()
+    executed_checks.add("§7")
+
     print("\n--- Two-Direction Contract Verification ---")
     try:
         # (doc_rem.md §3.5 drift tripwire) docs/pgen_contract.md is the single
@@ -287,7 +321,7 @@ def run_all(fail_fast: bool = False) -> int:
         # checks the harness *observed itself* running.
         expected_subset = set(CONTRACT_CHECKS.keys())
         matrix_refs = {"§1A", "§1A-reach", "§1B", "§1C", "§1C-reverse", "§1C-coverage",
-                   "§1D", "§1E", "§1F", "§1G", "§4"}
+                   "§1D", "§1E", "§1F", "§1G", "§1H", "§1I", "§4"}
         if not unit_ok:
             expected_subset.discard("§0")
             executed_checks.discard("§0")
@@ -331,7 +365,7 @@ def run_all(fail_fast: bool = False) -> int:
 
     print("\n======================================================================")
     all_ok = (unit_ok and dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok
-              and judgment_ok and capability_ok and contract_match_ok)
+              and judgment_ok and capability_ok and contract_match_ok and census_ok)
     if all_ok:
         print("ALL TESTS PASSED SUCCESSFULLY! Praise God!")
         print("======================================================================")

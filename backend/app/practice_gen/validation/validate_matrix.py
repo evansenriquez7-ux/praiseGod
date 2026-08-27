@@ -38,6 +38,8 @@ from backend.app.practice_gen.axes_catalog import get_axes_for_concept
 from backend.app.practice_gen.compatibility import (
     VARIANTS_BY_DNA,
     get_supported_variants,
+    get_variants_for_dna,
+    get_formatters_for_dna,
     FORMATTER_VARIANT_SUPPORT,
     is_variant_available_at,
 )
@@ -358,6 +360,16 @@ def _answer_leaks_into_stem(problem: Dict[str, Any]) -> Optional[str]:
     What remains is the genuine defect: the stem presents exactly one value, that
     value is the answer, and the student need only copy it — "Jose has lunch at
     1:30. What time is that?", or "What fraction does 2/5 equal parts represent?".
+
+    KNOWN BLIND SPOT, verified 2026-08-26 by instrumenting the rendered path: because
+    the final test requires the answer to be the stem's ONLY numeric datum, a leak in a
+    stem that carries any other number is not caught. A planted stem reading
+    "What number comes next when counting: 66, 67, 68, 69, ___? It is 70." with the
+    answer keyed 70 passes this function untouched. That is the deliberate cost of not
+    firing on 3,702 identity facts, but it is a hole, it is not covered by any other
+    check, and closing it needs a discriminator between "the answer also appears as an
+    operand" and "the answer is stated as the answer" — not a loosening of this test.
+    The mutation `answer_leak_in_stem` pins only the narrow form this function claims.
     """
     answer = problem.get("correct_answer")
     if isinstance(answer, (list, tuple, dict, bool)) or answer is None:
@@ -533,6 +545,43 @@ LAST_EXECUTED_CHECKS: Set[str] = set()
 # node_id -> sorted list of §-refs that node actually exercised (written to the
 # JSON report alongside the failures).
 _EXECUTED_BY_NODE: Dict[str, List[str]] = {}
+
+
+
+def formatter_refused_at_node(dna_name: str, comp_bounds: dict, fmt: str) -> bool:
+    """
+    Does this node's competency bind a variant to values this formatter cannot render?
+
+    Mirrors `compatibility.is_variant_available_at`: ALL, not ANY. The DNA picks one
+    member per seed, so a formatter is eligible only if it can render EVERY value the
+    node might land on; supporting one of four is not support.
+
+    The list branch was missing until 2026-08-26 -- the guard read
+    `not isinstance(bound_val, list)` and so skipped every list-valued bound. 78 such
+    bounds exist. mat_g3_na_q3_1 binds task_type to
+    ['commutative','associative','distributive','zero_identity'] and array_grid_read
+    supports none of them, so the orchestrator refuses the pair and it sits in
+    _generated_formatter_exclusions.py -- yet §1C-coverage forward-tested it as "should
+    succeed" and reported `empty_execution_matrix` against a formatter the node never
+    offers. That false positive was carried as the tree's only live §1 defect.
+
+    Module-level, and used by BOTH the execution path and `expected_checks_for_node`,
+    because the first version was a closure duplicated by the applicability predictor --
+    and §1H immediately caught the two disagreeing about §1C-reverse on this very node.
+    Pairs refused here are covered by the reverse check ("must raise"), not the matrix.
+    """
+    restrictions = FORMATTER_VARIANT_SUPPORT.get(dna_name, {}).get(fmt)
+    if not isinstance(restrictions, dict):
+        return False
+    for var_name, bound_val in (comp_bounds or {}).items():
+        if var_name not in restrictions:
+            continue
+        allowed = {str(v) for v in restrictions[var_name]}
+        wanted = ({str(b) for b in bound_val}
+                  if isinstance(bound_val, list) else {str(bound_val)})
+        if not wanted <= allowed:
+            return True
+    return False
 
 
 def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, Any]], Set[str]]:
@@ -925,17 +974,10 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
         # ask_type="identify_valid" cannot route to the pattern_sequence visual,
         # which restricts ask_type to next/missing. Such pairs are covered by the
         # reverse check ("must raise"), not by the execution matrix.
-        available_formatters = []
-        for fmt in formatters:
-            restrictions = FORMATTER_VARIANT_SUPPORT.get(dna_name, {}).get(fmt)
-            if isinstance(restrictions, dict) and any(
-                var_name in restrictions
-                and not isinstance(bound_val, list)
-                and not any(str(v) == str(bound_val) for v in restrictions[var_name])
-                for var_name, bound_val in comp_bounds.items()
-            ):
-                continue
-            available_formatters.append(fmt)
+        available_formatters = [
+            f for f in formatters
+            if not formatter_refused_at_node(dna_name, comp_bounds, f)
+        ]
         formatters = available_formatters
         for formatter in formatters:
             supported_variants = get_supported_variants(dna_name, formatter)
@@ -1048,6 +1090,12 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                 if fail_fast:
                     return failures, executed
 
+            # §1I accumulates across every variant combination for this (dna, formatter)
+            # pair rather than judging one combination's 5 seeds. Five samples all landing
+            # the same way happens 6.25% of the time on a fair coin -- across 151 nodes
+            # that is a false-failure generator. Pooling the combinations makes the
+            # evidence strong enough to act on.
+            fmt_bool_answers: List[Any] = []
             for assignment in combinations:
                 generations_1c = []
                 # 1C - Run pipeline over 5 seeds
@@ -1160,7 +1208,14 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                                         "error": f"MCQ option value is invalid: {opt.get('value')}."
                                     })
                                     
-                        # Visual validation
+                        # Visual validation.
+                        #
+                        # NOTE: §4 is registered as "response schema validation" but is
+                        # recorded only here, under `is_visual` — so it covers the visual
+                        # payload on the 67 of 151 nodes that render one, and nothing
+                        # else. The non-visual response shape is held by the Pydantic
+                        # model at runtime, not by this stage. Named because a check
+                        # described as broader than it is stops the next agent looking.
                         if p.get("is_visual"):
                             executed.add("§4")
                             try:
@@ -1350,6 +1405,11 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                                 "error": f"Failed to generate problem with theme '{theme}': {e}"
                             })
 
+                fmt_bool_answers.extend(
+                    p.get("correct_answer") for p in generations_1c
+                    if isinstance(p.get("correct_answer"), bool)
+                )
+
                 # --- 1F. Answer-leak lint (the stem may not give away its own answer) ---
                 #
                 # Blind reviewers kept flagging self-answering items by eye —
@@ -1451,6 +1511,42 @@ def run_matrix_for_node(node_id: str, fail_fast: bool) -> Tuple[List[Dict[str, A
                                     "seed": p["seed"],
                                     "error": f"[CONCEPT_GATE] Distractor value {d} from ErrorPattern '{source}' leaked into output."
                                 })
+
+            # --- 1I. Degenerate answer key (a true/false family may not be all one way) ---
+            #
+            # Measured 2026-08-26 on mat_g3_na_q3_1: every one of 180 sampled items across
+            # the commutative, associative and distributive task types was keyed True. A
+            # pupil answering "yes" to everything scored 100% without applying any
+            # property, so the items assessed nothing — and no check in this harness
+            # looked. §1E verifies the key SURVIVES formatting; nothing asked whether the
+            # key was worth having.
+            #
+            # Scoped deliberately to boolean answers. A numeric family whose answers
+            # coincide across a sample is not evidence of anything, but a true/false family
+            # with one distinct answer is broken with no exceptions: the option the pupil
+            # chooses between is never exercised. Widening this to all answer types would
+            # manufacture false failures on nodes with genuinely narrow answer spaces,
+            # which is how a check stops being trusted.
+            if len(fmt_bool_answers) >= 10:
+                executed.add("§1I")
+                if len(set(fmt_bool_answers)) == 1:
+                    only = fmt_bool_answers[0]
+                    failures.append({
+                        "dna": dna_name,
+                        "formatter": formatter,
+                        "check": "degenerate_answer_key",
+                        "seed": 42,
+                        "error": (
+                            f"All {len(fmt_bool_answers)} sampled true/false items are keyed "
+                            f"{only!r}. A pupil answering {only!r} every time scores 100% "
+                            f"without exercising the skill, so the item measures nothing. "
+                            f"Generate both outcomes — for a property statement that means "
+                            f"producing statements that VIOLATE the property, which is what "
+                            f"'apply the property' requires the pupil to detect."
+                        )
+                    })
+                    if fail_fast:
+                        return failures, executed
 
             # ─── 1C (Reverse): requesting excluded variants must raise ValueError
             # Find an excluded option/variant if any exist
@@ -1554,6 +1650,129 @@ def _worker(node_id: str) -> tuple:
                           "seed": 0, "error": str(exc)}], set()
 
 
+# ---------------------------------------------------------------------------------
+# §1H — per-node applicability.
+#
+# Until 2026-08-26 the only coverage assertion in the suite was a UNION: run_all took
+# `LAST_EXECUTED_CHECKS |= node_executed` across all 151 nodes and compared that against
+# the contract registry. One node exercising §1A therefore satisfied it, and the other
+# 150 could skip the check in silence. `_EXECUTED_BY_NODE` recorded the per-node truth
+# and nothing read it.
+#
+# Measured at the time: §1A/§1B ran on 61 of 151 nodes and every one of the 61 was a node
+# that HAD a checkable axis -- correct, but correct by construction rather than by
+# assertion. A routing change, a new grade's axis catalog, or a DNA edit that removed a
+# node's continuous axis would have dropped it out of §1A silently, and the suite-level
+# union would still have passed. That is the drift the Scaling Mandate says is inherited
+# by every grade that follows, so the applicability is now derived and asserted per node.
+# ---------------------------------------------------------------------------------
+
+# Checks that must run on every node, no matter what it is made of. Each is recorded at
+# a site the matrix reaches for all 151 nodes today.
+_ALWAYS_APPLICABLE = {"§1C", "§1C-coverage", "§1D", "§1F", "§1G"}
+
+
+def expected_checks_for_node(node_id: str) -> Set[str]:
+    """
+    Which contract checks this node's own composition makes applicable.
+
+    Deliberately derived from the node -- its DNAs, their axes, their formatters --
+    rather than from what the last run happened to execute. A list built from observed
+    behaviour cannot detect a check that stopped running; that is the whole defect this
+    exists to close.
+
+    Known limitations, stated so the next agent keeps looking:
+
+      * It cannot predict §1E, §4 or §1I. Those need a particular seed to produce an
+        interest-themed problem, a visual payload, or at least ten boolean answers
+        respectively -- runtime facts, not structural ones. They are reported as observed
+        rather than asserted, so a node that silently stops exercising them is NOT caught.
+      * §1C-reverse is under-predicted: measured 2026-08-26, this returns it for 75 nodes
+        while the matrix executes it on 79. Under-prediction is the safe direction — it
+        cannot manufacture a false failure — but those 4 nodes are unguarded for that
+        check. Closing the gap means finding what makes the extra 4 reach the reverse
+        loop; do NOT close it by asserting §1C-reverse everywhere, which would fire on
+        the 76 nodes that legitimately have nothing to reverse.
+
+    The counts this returns are a claim about applicability, not about correctness: a
+    check being applicable and having run says nothing about whether it found anything.
+    """
+    expected = set(_ALWAYS_APPLICABLE)
+
+    dna_names = get_node_dnas(node_id) or []
+    for dna_name in dna_names:
+        try:
+            axes = get_axes_for_concept(dna_name)
+        except Exception:
+            continue
+        try:
+            comp_bounds = get_node_competency_bounds(node_id, dna_name) or {}
+        except Exception:
+            comp_bounds = {}
+        continuous = [a for a in axes if a.get("dim_type") == "continuous"]
+        # §1A/§1B assert on a scalar's mapped value. `number_difficulty` is exempt at the
+        # check site: its mapped value IS the scalar, so the assertion is vacuous. 82 of
+        # 151 nodes carry it as their ONLY continuous axis and therefore correctly have
+        # no §1A -- which is exactly why this must be derived, not assumed.
+        sweepable = [a for a in continuous if a["name"] != "number_difficulty"]
+        if sweepable:
+            expected |= {"§1A", "§1B"}
+        # §1A-reach carries one FURTHER condition, and mirroring it matters: the check
+        # skips any axis the competency does not bind (`if axis_name not in comp_bounds:
+        # continue`), because with no bound the ceiling comes from the axis catalog's UI
+        # default rather than a curriculum claim, and asserting against a default
+        # "produces failures no generator change can honestly fix". Predicting §1A-reach
+        # from the axis alone over-fired on 6 nodes (mat_g1_dp_q3_0-3, mat_g2_dp_q3_0-1)
+        # whose pictograph axes are real and numeric but simply unbound.
+        if any(a["name"] in comp_bounds for a in sweepable):
+            expected.add("§1A-reach")
+
+        try:
+            formatters = get_formatters_for_dna(dna_name)
+        except Exception:
+            formatters = []
+        # §1C-reverse needs a formatter that is ACTUALLY available at this node and
+        # still restricts a variant. Predicting from the raw DNA union instead was wrong
+        # and §1H caught it on mat_g3_na_q3_1: array_grid restricts task_type, but the
+        # node's competency bounds refuse array_grid outright, so it never reaches the
+        # reverse loop. The prediction must apply the same filter the execution does.
+        # §1C-reverse fires per (dna, formatter) only when some variant's VALUES were
+        # narrowed -- `set(full_vals) - set(allowed_vals)` non-empty at the check site.
+        # Comparing the two dicts wholesale (the first version here) also fired on key
+        # differences that exclude nothing, over-predicting on 4 nodes.
+        all_dna_variants = VARIANTS_BY_DNA.get(dna_name, {})
+        for fmt in formatters:
+            if formatter_refused_at_node(dna_name, comp_bounds, fmt):
+                continue
+            try:
+                supported = get_supported_variants(dna_name, fmt)
+            except Exception:
+                continue
+            if any(set(all_dna_variants.get(var, [])) - set(allowed)
+                   for var, allowed in supported.items()):
+                expected.add("§1C-reverse")
+                break
+    return expected
+
+
+def applicability_failures(report_executed: Dict[str, List[str]]) -> List[str]:
+    """Every node whose structure demands a check that did not run on it."""
+    out: List[str] = []
+    for node_id, executed in sorted(report_executed.items()):
+        want = expected_checks_for_node(node_id)
+        missing = want - set(executed)
+        if missing:
+            out.append(
+                f"{node_id}: §1H applicability — the node's own composition makes "
+                f"{sorted(missing)} applicable, but the matrix did not execute "
+                f"{'it' if len(missing) == 1 else 'them'} on this node. Either the check "
+                f"stopped reaching this node (a routing or axis change) or the "
+                f"applicability rule in expected_checks_for_node is wrong. Do not widen "
+                f"the rule to make this pass without first proving the check still runs."
+            )
+    return out
+
+
 def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, workers: int = 0) -> int:
     # Load all nodes
     all_node_ids = get_all_node_ids()
@@ -1577,7 +1796,17 @@ def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, w
     report: Dict[str, list] = {}
     total_failures_count = 0
     passed_count = 0
-    report_path = Path("validation_reports/matrix_report.json")
+    # A `--node X` run must NOT write the tree-wide report. It used to, and the report
+    # is the only §1 evidence anything downstream reads: one single-node run reduced a
+    # 151-node report to one node, and `hardening_supervisor.matrix_evidence()` correctly
+    # but unhelpfully went PARTIAL/untrusted until a full 30-minute run rebuilt it. The
+    # mutation harness runs single-node validations constantly, so this fired on its own
+    # tooling. Subset runs get their own file; the tree-wide report stays a full-run
+    # artifact, which is what makes "PARTIAL" mean "a full run was interrupted".
+    if node:
+        report_path = Path(f"validation_reports/matrix_node_reports/{node}.json")
+    else:
+        report_path = Path("validation_reports/matrix_report.json")
     report_path.parent.mkdir(parents=True, exist_ok=True)
 
     def _flush_report():
@@ -1680,7 +1909,20 @@ def main() -> int:
     parser.add_argument("--workers", type=int, default=0,
                         help="Parallel worker count (0 = auto = cpu_count). Ignored with --node.")
     args = parser.parse_args()
-    return run_matrix_validation(node=args.node, fail_fast=args.fail_fast, workers=args.workers)
+    code = run_matrix_validation(node=args.node, fail_fast=args.fail_fast, workers=args.workers)
+
+    # §1H is reported here as well as from run_all so it can be proved on one node in
+    # seconds. A check that can only be exercised inside a 30-minute suite is a check
+    # nobody exercises.
+    applicability = applicability_failures(_EXECUTED_BY_NODE)
+    if applicability:
+        print(f"\n§1H applicability: {len(applicability)} node(s) skipped an applicable check")
+        for e in applicability:
+            print(f"  - {e}")
+        code = 1
+    else:
+        print(f"\n§1H applicability: PASS ({len(_EXECUTED_BY_NODE)} node(s))")
+    return code
 
 
 def _record(report: dict, node_id: str, failures: list, executed: Optional[Set[str]] = None):

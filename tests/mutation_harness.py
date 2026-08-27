@@ -433,6 +433,170 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["attester boilerplate (§6G) && share one normalized"],
         baseline_must_not_contain=["attester boilerplate (§6G)"],
     ),
+    # ---------------------------------------------------------------------------
+    # 2026-08-26: the four checks below were registered and binding but had no
+    # mutation, so nothing had ever shown them failing. §1C-coverage in particular
+    # is the check that caught mat_g3_na_q3_1 -- a node whose execution matrix is
+    # empty, which renders no problems at all and would otherwise report PASS. The
+    # harness's single most valuable catch was made by an unproven check.
+    # ---------------------------------------------------------------------------
+    Mutation(
+        name="empty_execution_matrix",
+        description=(
+            "Rename the two task_type values mat_g1_na_q1_9's competency binds, so no "
+            "variant combination survives filtering. This is the live shape of "
+            "mat_g3_na_q3_1: a competency naming task_types the DNA does not support, "
+            "leaving a node that generates nothing while every per-problem check "
+            "vacuously passes -- there are no problems to fail on."
+        ),
+        edits={
+            "backend/app/practice_gen/compatibility.py": (
+                '            "expanded_form", "counting_up", "putting_together",\n',
+                '            "expanded_form", "counting_up_PLANTED", "putting_together_PLANTED",\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_9"],
+        expected_check="§1C-coverage (every node/DNA/formatter has a non-empty execution matrix)",
+        expect_output_contains=["empty_execution_matrix"],
+        baseline_must_not_contain=["empty_execution_matrix"],
+    ),
+    Mutation(
+        name="answer_leak_in_stem",
+        description=(
+            "Reduce the stem to the answer itself, so the student need only copy it -- "
+            "'Jose has lunch at 1:30. What time is that?'. "
+            "SCOPE, verified by instrumenting the rendered path rather than reading the "
+            "validator: §1F fires ONLY when the answer is the stem's sole numeric datum. "
+            "An earlier version of this mutation appended 'It is 70.' to a counting stem "
+            "('66, 67, 68, 69, ___? It is 70.') and SURVIVED -- the stem carried five "
+            "numbers, so the check declined it by design. That narrowing is deliberate "
+            "(conflating it with degenerate-operand items fired on 3,702 well-formed "
+            "identity facts), but it means §1F does NOT catch a leak in a stem that "
+            "carries any other number. That blind spot is real and is named in the "
+            "validator docstring and the contract row."
+        ),
+        # Planted in `mcq`, not `numeric_input`: the first attempt targeted
+        # fmt_numeric_input and SURVIVED, because no node under test advertises that
+        # formatter -- the mutation never reached the code §1F executes. That is the
+        # second cause of a surviving mutation (a moved/unreachable anchor), not a
+        # broken check, and the fix is to land it on the executed path.
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                "        question_text = _build_pure_question(ctx)\n",
+                "        question_text = f\"The answer is {ctx.correct_answer}. What is it?\"\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§1F (question stem does not leak its own answer)",
+        expect_output_contains=["answer_leak_in_stem"],
+        baseline_must_not_contain=["answer_leak_in_stem"],
+    ),
+    Mutation(
+        name="inverted_number_line",
+        description=(
+            "Swap a number line's start and end so the axis runs backwards. Every other "
+            "stage reads TEXT: the stem still says 'what number is marked?' and reads "
+            "perfectly, while the picture the student is shown is incoherent. §1G is the "
+            "only check that looks at visual_params at all, across the 71 of 151 nodes "
+            "that render one."
+        ),
+        edits={},
+        apply_fn=lambda: _invert_number_line_axis(),
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§1G (rendered visual payload is real and self-consistent)",
+        expect_output_contains=["visual_payload", "is not below end"],
+        baseline_must_not_contain=["is not below end"],
+    ),
+    Mutation(
+        name="unservable_advertised_formatter",
+        description=(
+            "Make the orchestrator refuse `true_false` for every node while still serving "
+            "the rest. get_node_formatters() unions COMPATIBILITY across a node's DNAs "
+            "with no per-node narrowing, so the node keeps advertising a formatter that "
+            "cannot be served -- and the Lab builds its menu from that list."
+        ),
+        edits={
+            "backend/app/services/orchestrator.py": (
+                "        if not valid_dnas:\n"
+                "            raise ValueError(f\"Formatter '{formatter}' is not supported by any DNA for node '{node_id}'\")",
+                "        if formatter == 'true_false':\n"
+                "            valid_dnas = []  # planted mutation: refuse one advertised formatter\n"
+                "        if not valid_dnas:\n"
+                "            raise ValueError(f\"Formatter '{formatter}' is not supported by any DNA for node '{node_id}'\")",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_compat"],
+        expected_check="§2B (every formatter a node advertises can actually be served)",
+        expect_output_contains=["advertises formatter 'true_false'"],
+        baseline_must_not_contain=["advertises formatter 'true_false'"],
+    ),
+    Mutation(
+        name="node_dropped_from_check",
+        description=(
+            "Stop §1A recording itself on one node while that node's axes still make it "
+            "applicable. This is the only mutation that perturbs the harness rather than "
+            "the pipeline, because §1H's subject IS the harness's own per-node coverage: "
+            "the defect it guards is a check that quietly stops reaching nodes. Before "
+            "§1H existed, run_all only unioned executed checks across all 151 nodes, so "
+            "one node exercising §1A satisfied the suite and the other 150 could skip it "
+            "in silence."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_matrix.py": (
+                '            if axis_name != "number_difficulty":\n'
+                '                executed.add("§1A")\n',
+                '            if axis_name != "number_difficulty":\n'
+                '                if node_id != "mat_g1_na_q1_0":  # planted mutation\n'
+                '                    executed.add("§1A")\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§1H (every check a node's composition makes applicable ran on that node)",
+        expect_output_contains=["§1H applicability", "mat_g1_na_q1_0"],
+        baseline_must_not_contain=["§1H applicability — the node's own composition"],
+    ),
+    Mutation(
+        name="shrinking_node_registry",
+        description=(
+            "Drop every node after the first ten from the registry. Every stage then "
+            "checks ten nodes, finds nothing wrong with them, and the suite reports green "
+            "on 7% of the tree. Nothing asserted the suite's own size until §7: a total "
+            "wipe is caught (pytest exits 5 on an empty collection) but silent shrinkage "
+            "was not, in nodes, unit tests, or mutations."
+        ),
+        edits={
+            "backend/app/practice_gen/registry.py": (
+                "    result: List[str] = []\n"
+                "    for node_id in NODE_TO_DNA:\n",
+                "    result: List[str] = []\n"
+                "    for node_id in list(NODE_TO_DNA)[:10]:  # planted mutation\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_census"],
+        expected_check="§7 (the suite's own census has not shrunk below its floor)",
+        expect_output_contains=["census", "is below the floor"],
+        baseline_must_not_contain=["is below the floor"],
+    ),
+    Mutation(
+        name="degenerate_answer_key",
+        description=(
+            "Key every multiplication-property statement True, which is exactly how "
+            "mat_g3_na_q3_1 shipped: 180 of 180 sampled items across the commutative, "
+            "associative and distributive task types were True, so a pupil answering "
+            "'yes' every time scored 100% without applying any property. §1E checks the "
+            "key survives formatting; nothing checked the key was worth having."
+        ),
+        edits={
+            "backend/app/practice_gen/dna/na/multiplication.py": (
+                "        holds = rng.random() < 0.5\n",
+                "        holds = True  # planted mutation: never generate a false statement\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g3_na_q3_1"],
+        expected_check="§1I (a true/false item family may not key every sample the same way)",
+        expect_output_contains=["degenerate_answer_key", "scores 100%"],
+        baseline_must_not_contain=["degenerate_answer_key"],
+    ),
 ]
 
 
@@ -447,6 +611,28 @@ _TEMPLATE_RATIONALE = (
     "answer keys are correct throughout. No issues were identified for {node_id}."
 )
 
+
+
+def _invert_number_line_axis() -> Dict[Path, str]:
+    """
+    Swap start/end in every number-line payload the formatter builds.
+
+    A find/replace cannot do this: the `"start": start_val, "end": end_val` pair occurs
+    three times in the file and the harness (correctly) refuses an anchor that matches
+    more than once rather than letting it land somewhere unintended.
+    """
+    path = REPO_ROOT / "backend/app/practice_gen/formatters/visual/fmt_number_line.py"
+    original = path.read_text(encoding="utf-8")
+    pair = '"start": start_val,\n            "end": end_val,'
+    swapped = '"start": end_val,\n            "end": start_val,'
+    if pair not in original:
+        raise ValueError(
+            "mutation 'inverted_number_line': the start/end payload pair moved in "
+            "fmt_number_line.py. Update the anchor rather than loosening it -- a "
+            "mutation that no longer reaches the formatter proves nothing about §1G."
+        )
+    path.write_text(original.replace(pair, swapped), encoding="utf-8")
+    return {path: original}
 
 def _plant_wildcard_provider(capability: str) -> Dict[Path, str]:
     """
@@ -710,13 +896,27 @@ def main() -> int:
     print(f"MUTATION TESTING THE VALIDATION HARNESS ({len(selected)} mutation(s))")
     print("=" * 78)
 
+    # Most mutations invoke `validate_matrix --node X`, and a single-node run REPLACES
+    # validation_reports/matrix_report.json with a report covering that one node. The
+    # hardening supervisor reads that file as its §1 evidence, so an unguarded mutation
+    # run silently destroys tree-wide §1 coverage and leaves the queue unmeasurable.
+    # Snapshot it here and put it back, the same way file edits are restored.
+    _matrix_report = REPO_ROOT / "validation_reports" / "matrix_report.json"
+    _matrix_backup = _matrix_report.read_bytes() if _matrix_report.exists() else None
+
     results: List[Tuple[Mutation, bool, str]] = []
-    for i, m in enumerate(selected, 1):
-        print(f"\n[{i}/{len(selected)}] {m.name}: {m.description}")
-        print(f"    expected catcher: {m.expected_check}")
-        detected, evidence = run_mutation(m)
-        results.append((m, detected, evidence))
-        print(f"    {'DETECTED' if detected else 'SURVIVED'}: {evidence}")
+    try:
+        for i, m in enumerate(selected, 1):
+            print(f"\n[{i}/{len(selected)}] {m.name}: {m.description}")
+            print(f"    expected catcher: {m.expected_check}")
+            detected, evidence = run_mutation(m)
+            results.append((m, detected, evidence))
+            print(f"    {'DETECTED' if detected else 'SURVIVED'}: {evidence}")
+    finally:
+        if _matrix_backup is None:
+            _matrix_report.unlink(missing_ok=True)
+        else:
+            _matrix_report.write_bytes(_matrix_backup)
 
     print("\n" + "=" * 78)
     print("MUTATION SUMMARY")

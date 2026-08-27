@@ -54,7 +54,7 @@ ledger records the drift.
 
 ---
 
-## 1. Preflight — always, roughly one second
+## 1. Preflight — always, roughly thirty seconds
 
 ```bash
 PYTHONPATH=. .venv/bin/python3 scripts/hardening_supervisor.py --reap
@@ -79,7 +79,13 @@ pool parent idles by design.
   exit line, record it, continue from `Next tick should:`.
 - **Anything you cannot account for:** report and stop. Never start a competing run.
 
-**`20 NOTHING_TO_DO`** → three lines and stop. Do not invent work.
+**`20 NOTHING_TO_DO`** → every band is zero. Run §10; do not invent work.
+This verdict now covers stages 6, 7 and 8. Before 2026-08-26 it fired on stage 8 alone, so it could
+have declared "no work" with 575 stale reviews and a live §1C failure open.
+
+**`10 RESUME` naming `§1 matrix evidence is STALE/PARTIAL/MISSING`** → the queue is not measurable.
+Refreshing stage 6 is this tick's only unit:
+`PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.validate_matrix`.
 
 **`40 HUNG_UNREAPED`** → you dropped `--reap`. Re-run the command exactly as written.
 
@@ -87,37 +93,46 @@ pool parent idles by design.
 
 ---
 
-## 2. Measure the queue — ~17 seconds, never skipped, never remembered
+## 2. Measure the queue — never skipped, never remembered
 
 ```bash
-PYTHONPATH=. .venv/bin/python3 - <<'PY'
-import re, collections
-from backend.app.practice_gen.validation import validate_judgment as VJ, validate_capability as VC
-NODE = re.compile(r'mat_g\d_\w+?_q\d_\d+')
-j = VJ.validate_judgment_reviews()
-stale   = [e for e in j if "must be 'PASS'" not in e]
-verdict = [e for e in j if "must be 'PASS'" in e]
-c   = VC.validate_capability_declarations()
-d6d = [e for e in c if '6D' in e]
-d6f = [e for e in c if '6F' in e]
-un  = [e for e in d6f if 'unattested'  in e.lower()]
-con = [e for e in d6f if 'contradict'  in e.lower()]
-sta = [e for e in d6f if 'stale'       in e.lower()]
-def nodes(es): return {m.group(0) for e in es for m in [NODE.search(e)] if m}
-print(f"§5  STALE/malformed reviews : {len(stale):4d}  across {len(nodes(stale)):3d} nodes")
-print(f"§5  non-PASS verdicts       : {len(verdict):4d}  across {len(nodes(verdict)):3d} nodes")
-print(f"§6F CONTRADICTED            : {len(con):4d}  across {len(nodes(con)):3d} nodes")
-print(f"§6F stale attestations      : {len(sta):4d}  across {len(nodes(sta)):3d} nodes")
-print(f"§6F UNATTESTED              : {len(un):4d}  across {len(nodes(un)):3d} nodes")
-print(f"§6D wildcard providers      : {len(d6d):4d}  across {len(nodes(d6d)):3d} nodes")
-print(f"    6D worst first          : {collections.Counter(m.group(0) for e in d6d for m in [NODE.search(e)] if m).most_common(5)}")
-print(f"TOTAL capability findings   : {len(c)}   (the work queue, not the score)")
-print(f"tally: {VJ.summarize_verdicts()}")
-PY
+PYTHONPATH=. .venv/bin/python3 scripts/measure_queue.py
 ```
 
-**This is stages 6/7 and 7/7 of `run_all`, exactly** — the same two functions, run in 17 seconds
-instead of 50 minutes. You are not approximating the harness.
+**This reads the measurement the §1 preflight just took — it does not take a second one.**
+The supervisor evaluates every band during `--reap` and writes it to
+`local_only/scratch/hardening_status.json`; this prints it. If that status is older than
+600 seconds, or missing, the script re-measures before printing. `--force` re-measures
+unconditionally.
+
+Until 2026-08-26 this step carried its own inline heredoc that re-ran the same two
+validators the preflight had just run — ~54 seconds per tick spent computing the queue
+twice, from two implementations that could disagree. They did: the inline script counted
+stages 7 and 8; the supervisor's verdict counted stage 8 alone.
+
+**All three stages, not two.** The queue is stage 6 (§1 behavioural matrix) + stage 7 (§5
+judgment reviews) + stage 8 (§6 capability contract). Neither of the old measurements
+counted stage 6, so a live §1C `empty_execution_matrix` on `mat_g3_na_q3_1` — a node that
+renders no problems at all and would still report PASS — was invisible to 455 consecutive
+ticks that optimised a 158-item queue which was really 735.
+
+**§1 evidence has a state, and you must read it.** Stage 6 costs ~30 minutes over 151
+nodes, so it is read from `validation_reports/matrix_report.json` rather than re-executed.
+The script prints that report's state:
+
+| State | Meaning | What you must do |
+|---|---|---|
+| `FRESH` | complete and newer than every generator/skeleton file | trust it; it counts toward the total |
+| `STALE` | a generator or skeleton changed after the report was written | re-run the matrix before trusting any §1 zero |
+| `PARTIAL` | fewer than all nodes covered — a full matrix run was interrupted (it flushes after each node). Since 2026-08-26 `--node X` writes `validation_reports/matrix_node_reports/X.json` instead of clobbering the tree-wide report | re-run the matrix over all nodes |
+| `MISSING` / `UNREADABLE` | no usable report | re-run the matrix |
+
+Anything but `FRESH` is **not counted in the total** and is reported as unmeasured. A band
+that cannot be measured is never a band that is clean. Refresh it with:
+
+```bash
+PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.validate_matrix
+```
 
 ---
 
@@ -137,6 +152,32 @@ Work the first band that is non-zero:
 instruction to every tick of the run. If one is named, that band goes first and the rest keep their
 relative order. Bands 1 and 2 are never skipped *silently* — if a campaign defers them, the ledger says
 so with the current count.
+
+**Campaign exhaustion — a campaign directs order, never scope.** The moment the campaign's target band
+measures zero, the campaign is complete and no longer in force: fall through to the default priority
+list and work the first non-zero band. You do not need a new prompt, and you do not wait for one.
+
+This clause exists because its absence cost a 40-hour run. On 2026-08-24 a campaign targeted §6F
+UNATTESTED — priority 4 of 4. That band hit zero at tick 33. The supervisor still said `RESUME` (735
+findings stood), but the campaign pinned work to an empty band and the escalation path had been
+removed. The only legal act left was to re-measure and write a ledger entry saying there was nothing to
+do. The loop did that 455 times, burning 109M tokens and the weekly quota, while priority band 1 — 557
+stale reviews — received no work at all.
+
+Mechanically:
+
+1. Campaign band non-zero → work it.
+2. Campaign band **zero** → campaign over; work the first non-zero band in the default order.
+3. **Every** band zero → that is the §10 condition. Run it. Do not idle.
+4. A tick whose only output is a ledger entry saying the queue could not be worked is a **failed
+   tick**. Say so in the ledger in those words, and name the rule that blocked you. The runner
+   independently counts these and ends the run after `HARDENING_NOOP_TICK_LIMIT` (default 12)
+   consecutive ones.
+
+**No campaign may defer §1.** §1 matrix findings are content-correctness failures — a node that renders
+nothing, an answer key that disagrees with its stem, vocabulary from a later grade. They outrank every
+other band and every campaign. If §1 is non-zero, or its evidence is not `FRESH`, that is the tick's
+work regardless of what campaign is named.
 
 ---
 
