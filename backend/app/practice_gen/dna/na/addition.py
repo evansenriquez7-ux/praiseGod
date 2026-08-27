@@ -397,6 +397,29 @@ def generate_params(
             property_tasks.append("associative")
         task_type = property_tasks[rng.randrange(len(property_tasks))]
 
+    def _different_addend(value: int, lo: int = 0, hi: int = 0) -> int:
+        """
+        A number that is NOT `value`, inside [lo, hi] -- what makes a false statement false.
+
+        Falls back to value +/- 1 when the window is too tight to offer an alternative, and
+        never returns `value` itself: a "false" statement that is accidentally true would be
+        a wrong answer key, which is worse than the degenerate all-True set this replaces.
+        """
+        hi = max(hi, lo)
+        # A NEAR miss, not any other number. Drawing freely from [lo, hi] produced
+        # "Is 225 + 333 the same as 333 + 3070?" -- the pupil spots the outlier without
+        # ever comparing the two sides, so the item goes back to measuring nothing, just
+        # by a different route. Staying inside a narrow band around the original forces
+        # the comparison the property is about.
+        span = max(1, value // 4)
+        near_lo, near_hi = max(lo, value - span), min(hi, value + span)
+        candidates = [n for n in range(near_lo, near_hi + 1) if n != value]
+        if not candidates:
+            candidates = [n for n in range(lo, hi + 1) if n != value]
+        if candidates:
+            return rng.choice(candidates)
+        return value - 1 if value > lo else value + 1
+
     def _carry_free_addends(count: int, max_total: int) -> List[int]:
         """
         Pick `count` positive addends whose column sums never carry.
@@ -492,15 +515,24 @@ def generate_params(
         a_val, b_val = _carry_free_addends(2, max_result)
         if a_val == b_val and max_result > 2:
             b_val = b_val - 1 if b_val > 1 else b_val + 1
+        # Both outcomes, or the item measures nothing. Until 2026-08-26 every one of
+        # these was keyed True -- §1I measured 80/80 on mat_g2_na_q1_9 and
+        # mat_g3_na_q2_1 -- so a pupil answering "yes" every time scored full marks
+        # without ever comparing the two sides. The false form swaps the addends AND
+        # changes one, catching the pupil who pattern-matches "same two numbers,
+        # reversed". Same defect and same fix as the multiplication properties.
+        holds = rng.random() < 0.5
+        rhs = (f"{b_val} + {a_val}" if holds
+               else f"{b_val} + {_different_addend(a_val, lo=0, hi=max(0, max_result - b_val))}")
         return {
             "a": a_val, "b": b_val,
             "task_type": "commutative",
             "blank_target": "answer",
             "context": "pure",
             "max_sum": max_result,
-            "answer": True,
-            "distractors": [False],
-            "question": f"Is {a_val} + {b_val} the same as {b_val} + {a_val}?",
+            "answer": holds,
+            "distractors": [not holds],
+            "question": f"Is {a_val} + {b_val} the same as {rhs}?",
         }
 
     if task_type == "associative" and grade >= 2:
@@ -509,15 +541,20 @@ def generate_params(
         # zero-identity/commutative for the G2 "properties" node
         # specifically, and 3-operand grouping is not a G1 concept.
         a_val, b_val, c_val = _carry_free_addends(3, max_result)
+        # See the commutative branch: both outcomes, or the item assesses nothing.
+        holds = rng.random() < 0.5
+        rhs = (f"{a_val} + ({b_val} + {c_val})" if holds
+               else f"{a_val} + ({b_val} + "
+                    f"{_different_addend(c_val, lo=0, hi=max(0, max_result - a_val - b_val))})")
         return {
             "a": a_val, "b": b_val, "c": c_val,
             "task_type": "associative",
             "blank_target": "answer",
             "context": "pure",
             "max_sum": max_result,
-            "answer": True,
-            "distractors": [False],
-            "question": f"Is ({a_val} + {b_val}) + {c_val} the same as {a_val} + ({b_val} + {c_val})?",
+            "answer": holds,
+            "distractors": [not holds],
+            "question": f"Is ({a_val} + {b_val}) + {c_val} the same as {rhs}?",
         }
 
     if task_type == "expanded_form":

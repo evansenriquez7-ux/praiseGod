@@ -7900,3 +7900,48 @@ Key root-cause clusters among the 23 NOT_PROVIDED verdicts:
 * **Dispatch & Verdict:** Fresh blind Attester subagent (`Model: "pro"`) evaluated packet `local_only/scratch/attester/batch_retest.json` containing 10 rendered samples for clauses `Decompose`, `2-digit number`, and `tens and ones`.
 * **Result:** All 3 clauses judged `PROVIDED` with authentic reasoning citing expanded form items and base-10 block visuals across seeds 11–127. Filed to `validation_reports/attestation/batch061_mat_g1_na_q2_3.json`.
 * **Queue Movement:** §6F stale attestations: 0 across 0 nodes; §6F UNATTESTED: 0 across 0 nodes; 100.0% attestation coverage (787/787) maintained.
+
+---
+
+## 2026-08-27 — harness: measure every band, prove seven more checks, fix the degenerate answer keys they found
+
+### 1. The queue counted one stage of eight
+* **Finding:** `hardening_supervisor.py` derived its RESUME/NOTHING_TO_DO verdict from `validate_capability` alone — stage 8. Stage 6 (§1 behavioural matrix) and stage 7 (§5 judgment reviews) were absent from the number that decides whether work exists, so the loop optimised a 158-item queue while 744 findings stood. The tick protocol's own §2 measured stages 7 and 8 only.
+* **Fix:** `queue_state()` measures all three bands. Stage 6 costs ~30 min so it is read from `matrix_report.json`, but the report's coverage and freshness travel with the count: MISSING / UNREADABLE / PARTIAL / STALE are reported as *unmeasured* and never contribute a zero. `validate_matrix --node X` now writes `validation_reports/matrix_node_reports/X.json` instead of overwriting the tree-wide report.
+* **Verification:** `scripts/hardening_supervisor.py --reap` → `QUEUE (all bands) : 744  §1=0 §5=583 §6=161`. `pytest tests/unit/test_supervisor_queue.py` → 9 passed; each evidence state proved by planting it, and by mutating the trust logic to `True` (3 tests fail, as they must).
+
+### 2. Eleven of twenty-one binding checks had never been shown to fail
+* **Fix:** Six new mutations (§1C-coverage, §1F, §1G, §2B, §1H, §7) plus §1I below. Checks proven: 10/21 → 17/24.
+* **§1F scope, found by instrumenting the rendered path:** a planted stem `"...69, ___? It is 70."` keyed 70 **survived**. §1F fires only when the answer is the stem's sole numeric datum — deliberate (the wider form fired on 3,702 identity facts) but a real hole, now named in the validator docstring, the contract row, and the mutation.
+* **Verification:** `python -m tests.mutation_harness` → `19/19 mutations detected`, tree restored.
+
+### 3. §1C-coverage forward-tested pairs the node never serves
+* **Finding:** the formatter-refusal guard read `not isinstance(bound_val, list)` and so skipped every list-valued competency bound (78 exist). `mat_g3_na_q3_1` binds `task_type` to `['commutative','associative','distributive','zero_identity']`; `array_grid_read` supports none of them and the orchestrator already refuses the pair, yet §1C-coverage reported `empty_execution_matrix` against a formatter the node does not offer. Carried for weeks as the tree's only live §1 defect. **It was a harness false positive, not a content defect.**
+* **Fix:** `formatter_refused_at_node()` mirrors `is_variant_available_at` (ALL bound values must be renderable, not any), module-level so the executor and §1H's predictor cannot drift.
+* **Verification:** `validate_matrix --node mat_g3_na_q3_1` → `Nodes Failed: 0`. Mutation `empty_execution_matrix` still PASSES — scope corrected, detection intact.
+
+### 4. §1H — per-node applicability (new)
+* **Finding:** the only coverage assertion was a UNION across 151 nodes, so one node exercising §1A satisfied the suite and the other 150 could skip it silently. `_EXECUTED_BY_NODE` recorded the per-node truth and nothing read it.
+* **Verification:** `PASS §1H applicability (all 151 nodes ran every check their composition makes applicable)`. §1H caught three defects in checks written the same day, including its own predictor disagreeing with the executor.
+
+### 5. §7 — suite census floors (new)
+* **Finding:** nothing asserted a minimum node, unit-test or mutation count. A suite dropping from 349 tests to 12 still exits 0. (A total wipe is caught: pytest exits 5.)
+* **Verification:** `PASS census: nodes=151 · unit_tests=353 · mutations=19`. Counts tests *after* marker deselection — a deselected test does not gate.
+
+### 6. §1I — degenerate answer keys (new), and the seven nodes it found
+* **Finding:** `mat_g3_na_q3_1` keyed **180 of 180** sampled property items `True`; a pupil answering "yes" every time scored 100% without applying any property. §1E verifies the key survives formatting; nothing asked whether the key was worth having. On first run §1I found the same defect in `addition.py` on six more nodes — **80/80 True** on `mat_g2_na_q1_9` and `mat_g3_na_q2_1`.
+* **Competency clause conformed to (Content Rule 4):** `mat_g3_na_q3_1` — *"**Illustrate and apply** properties of multiplication for the **6, 7, 8, and 9 multiplication tables**: ... changing the order ...; changing the grouping ...; multiplying the sum of two addends by a number is the same as the sum of the products ..."*. Applying a property means deciding whether a statement respects it, which requires statements that do not. The false forms are canonical misconceptions (distributive: `a × (b + c)` read as `(a × b) + c`), not invented content.
+* **Also fixed in the same block:** `(9 × 9) × 9 = 729` against a stated `max_product` of 90 (the cap took a square root for every form, including the three-factor one); distributive addends that could coincide (`9 × (9 + 9)`); and, after a first attempt used free-range substitutes (`333 + 3070`), false cases are now **near misses** so the pupil must actually compare.
+* **Verification:** 600 multiplication + 720 addition statements evaluated arithmetically → **0 answer-key mismatches**, 0 products over ceiling, ~46/54 True/False balance, 100% of items use a named 6–9 table, false-case side ratio mean 1.05× (was ~9×). `run_all` stage 6 → `Nodes Failed: 0`.
+
+### 7. Runner and loop-protocol repairs (both runners)
+* Quota exhaustion classified as a generic ERROR under the `agy` CLI — its whole LIMIT branch read Claude-CLI field names (`.result`/`.is_error`) absent from agy's `{status, error}` payload, so a 137-hour reset was retried on a 30-minute backoff forever. Both runners now read both schemas and end the run when the stated reset exceeds `HARDENING_MAX_LIMIT_WAIT_SEC`.
+* Campaign deadlock: the 2026-08-24 run span 455 no-op ticks because a campaign pinned work to a band that had emptied while the supervisor still said RESUME, and Rule 10 removed escalation two days earlier. Fixed in three places — an exhaustion clause in both prompts, §1 promoted to priority 0 ("a campaign directs ORDER, never SCOPE"), and **supervisor exit 30 = STALLED**, derived from committed history so a tick can neither assert nor suppress it.
+* `HARDENING_DONE` was honoured on existence alone. It is now verified against the supervisor; a contradicted claim is moved aside, not obeyed.
+* **Verification:** `bash tests/test_runner_classify.sh` → all cases pass on both runners, including the byte-for-byte 2026-08-26 quota payload.
+
+### Known limitations left named
+* Still unproven: §0, §1A-reach, §2, §3, §4, §6, §6E. §6E is the `bounds`-wildcard twin of the proven §6D.
+* §1H cannot predict §1E, §4 or §1I — those depend on runtime output, not structure, and are reported as observed.
+* §5 rose 575 → 583: changing `multiplication.py` and `addition.py` correctly staled the blind reviews for those 15 nodes. They need re-review by the Reviewer role before their verdicts mean anything.
+* A SIGTERM mid-mutation bypasses the harness's `finally`; `orchestrator.py` was restored from git once during this work. No guard built.

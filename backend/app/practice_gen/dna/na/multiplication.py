@@ -343,26 +343,93 @@ def generate_params(
         }
 
     if task_type in ("commutative", "associative", "distributive"):
-        small_max = max(2, min(9, int(max_prod_val ** 0.5) if max_prod_val < 999999 else 9))
-        table_pool = [t for t in allowed_tables if t >= 2] or list(range(2, small_max + 1))
+        # MATATAG clause: "Illustrate and APPLY properties of multiplication ... changing
+        # the order / changing the grouping / multiplying the sum of two addends".
+        #
+        # Until 2026-08-26 every item here was keyed True -- measured 180/180 across 60
+        # seeds on each of the three properties. A pupil answering "yes" to everything
+        # scored 100% without applying anything, so the item assessed nothing. Applying a
+        # property means deciding whether a statement respects it, which requires that
+        # some statements do not. The false forms below are the canonical misconceptions,
+        # not invented content:
+        #
+        #   commutative  - the factors are swapped but one of them also CHANGED, so the
+        #                  pupil who pattern-matches "two numbers, reversed" is caught.
+        #   associative  - the grouping moves and one factor also changes.
+        #   distributive - the multiplier reaches only the FIRST addend: a x (b + c) read
+        #                  as (a x b) + c. This is the single most common distributive
+        #                  error in Grade 3.
+        #
+        # Products are bounded by the node's own max_product. The previous cap took the
+        # square root for every form, so the three-factor associative statement produced
+        # (9 x 9) x 9 = 729 against a stated ceiling of 90.
+        two_max = 9 if max_prod_val >= 999999 else max(2, min(9, int(max_prod_val ** 0.5)))
+        # The table factor always comes from the tables the competency NAMES ("the 6, 7,
+        # 8, and 9 multiplication tables"). Sizing all three associative factors by the
+        # cube root of max_product instead dropped the pool to 2-4 and produced
+        # (3 x 3) x 3 -- arithmetically fine, and about tables the clause does not name.
+        # Keep the named table and shrink the OTHER two factors to fit the ceiling.
+        table_pool = [t for t in allowed_tables if 2 <= t <= 9] or list(range(2, two_max + 1))
         b_val = rng.choice(table_pool)
+        if task_type == "associative":
+            # a x b x c <= max_product, with b fixed as the named table factor.
+            budget = max(4, max_prod_val // max(1, b_val))
+            small_max = max(2, min(9, int(budget ** 0.5)))
+        else:
+            small_max = two_max
         a_val = rng.randint(2, small_max)
         if task_type == "commutative" and a_val == b_val:
             a_val = a_val - 1 if a_val > 2 else a_val + 1
+
+        # Whether this item's statement is TRUE. Balanced so neither answer is a strategy.
+        holds = rng.random() < 0.5
+
+        def _other(value: int, lo: int, hi: int) -> int:
+            """A different number in range -- what makes a false statement false."""
+            if hi <= lo:
+                return lo
+            pick = rng.randint(lo, hi - 1)
+            return pick if pick != value else hi
+
         c_val = None
         if task_type == "commutative":
-            question = f"Is {a_val} × {b_val} the same as {b_val} × {a_val}?"
+            if holds:
+                question = f"Is {a_val} × {b_val} the same as {b_val} × {a_val}?"
+            else:
+                wrong = _other(a_val, 2, small_max)
+                question = f"Is {a_val} × {b_val} the same as {b_val} × {wrong}?"
             missing_val = b_val
         elif task_type == "associative":
             c_val = rng.randint(2, small_max)
-            question = f"Is ({a_val} × {b_val}) × {c_val} the same as {a_val} × ({b_val} × {c_val})?"
+            # Shrink the non-table factors, never the table, if the triple still breaches.
+            while a_val * b_val * c_val > max_prod_val and (a_val > 2 or c_val > 2):
+                if c_val >= a_val and c_val > 2:
+                    c_val -= 1
+                elif a_val > 2:
+                    a_val -= 1
+                else:
+                    break
+            if holds:
+                question = (f"Is ({a_val} × {b_val}) × {c_val} the same as "
+                            f"{a_val} × ({b_val} × {c_val})?")
+            else:
+                wrong = _other(c_val, 2, small_max)
+                question = (f"Is ({a_val} × {b_val}) × {c_val} the same as "
+                            f"{a_val} × ({b_val} × {wrong})?")
             missing_val = b_val
         else:  # distributive
-            c_val = rng.randint(2, small_max)
-            question = (
-                f"Is {a_val} × ({b_val} + {c_val}) the same as "
-                f"({a_val} × {b_val}) + ({a_val} × {c_val})?"
-            )
+            # The two addends must differ: a x (9 + 9) illustrates nothing about
+            # distributing across DIFFERENT addends, which is what the clause names.
+            c_val = _other(b_val, 2, small_max)
+            # a x (b + c) must also respect the ceiling, which the sum can breach.
+            while a_val * (b_val + c_val) > max_prod_val and a_val > 2:
+                a_val -= 1
+            if holds:
+                question = (f"Is {a_val} × ({b_val} + {c_val}) the same as "
+                            f"({a_val} × {b_val}) + ({a_val} × {c_val})?")
+            else:
+                question = (f"Is {a_val} × ({b_val} + {c_val}) the same as "
+                            f"({a_val} × {b_val}) + {c_val}?")
             missing_val = c_val
         return {
             "a": a_val, "b": b_val, "c": c_val,
@@ -370,8 +437,8 @@ def generate_params(
             "task_type": task_type,
             "blank_target": "answer",
             "context": "pure",
-            "answer": True,
-            "distractors": [False],
+            "answer": holds,
+            "distractors": [not holds],
             "question": question,
             "missing_val": missing_val,
             "groups": a_val, "n": b_val, "total": a_val * b_val,
