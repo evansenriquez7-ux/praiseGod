@@ -90,3 +90,7 @@ graphify-out/graph.html
 # via actions/upload-artifact on failure (deploy-backend.yml), so nothing
 # depends on it being in git history.
 validation_reports/matrix_report.json
+# Per-node subset reports from `validate_matrix --node X`, added 2026-08-26 so a
+# single-node run stops overwriting the tree-wide report. Derived output, same as
+# the report above.
+validation_reports/matrix_node_reports/
