@@ -63,15 +63,79 @@ class PracticeOrchestrator:
         for k in keys_to_remove:
             del local_difficulty_profile[k]
 
-        if allowed_difficulties:
-            for dim, opts in allowed_difficulties.items():
-                if opts and isinstance(opts, list) and len(opts) > 0 and dim not in local_difficulty_profile:
-                    local_difficulty_profile[dim] = rng.choice(opts)
-        
-        if allowed_contexts:
-            for var_name, opts in allowed_contexts.items():
-                if opts and isinstance(opts, list) and len(opts) > 0:
-                    local_difficulty_profile[var_name] = rng.choice(opts)
+        # §2D — a saved configuration may not reach past the node's competency.
+        #
+        # These two branches used to apply whatever they were handed, unchecked. Measured
+        # 2026-08-27 on mat_g3_na_q3_1, whose competency binds task_type to four PROPERTY
+        # types with max_product=90: a config naming task_type='two_step' rendered
+        # "What is 40 x 10?" -- a product of 400, and a task the clause does not name. The
+        # same route leaked NOT_YET_KNOWN vocabulary into Grade 1 ("737 is 7 hundreds,
+        # 3 tens, and 7 ones" on mat_g1_na_q2_4).
+        #
+        # Every §1A/§1B/§1D check enforces bounds on the PIPELINE path; this path routed
+        # around all of them, so a configuration that was legal when it was saved -- or
+        # never legal at all -- served content beyond the grade. MATATAG adherence is the
+        # first identity of this system, so the offered options are intersected with the
+        # node's CURRENT bounds and an empty intersection raises. Silently falling back to
+        # an unconstrained pick would hide exactly the stale-config case this exists to
+        # catch (CLAUDE.md #3: no silent defaults).
+        _bounds_cache: Dict[str, Dict[str, Any]] = {}
+
+        def _competency_allows(dim: str, options: List[Any]) -> List[Any]:
+            """Options this node's competency actually permits for `dim`."""
+            if not _bounds_cache:
+                for _dna in (get_node_dnas(node_id) or []):
+                    try:
+                        _bounds_cache[_dna] = get_node_competency_bounds(node_id, _dna) or {}
+                    except Exception:
+                        _bounds_cache[_dna] = {}
+            bound_vals = None
+            for _b in _bounds_cache.values():
+                if dim in _b:
+                    bv = _b[dim]
+                    # Only a LIST bound is a literal set of option values. Two other bound
+                    # shapes exist and neither can be compared against raw options:
+                    #
+                    #   * a 2-tuple is a (min, max) numeric range, enforced downstream by
+                    #     the generators and asserted by §1A/§1B;
+                    #   * a bare string is a SCOPE SENTINEL whose meaning lives in the
+                    #     DNA's scope resolution -- mat_g1_na_q1_0 binds
+                    #     skip_interval='by_1' while the Lab offers ['1','2','5',...], and
+                    #     mat_g3_na_q3_1 binds table='6_7_8_9'. Comparing the two
+                    #     vocabularies as strings is a category error: it refused 144
+                    #     legitimate configs on three nodes when this gate first landed.
+                    #
+                    # KNOWN GAP, named rather than papered over: a configuration CAN still
+                    # reach past a sentinel-bound axis. Closing it needs the sentinel
+                    # resolved to its value set, which is per-DNA scope logic. The defect
+                    # that motivated §2D (task_type bound to a literal list) is covered.
+                    if not isinstance(bv, list):
+                        return list(options)
+                    bound_vals = {str(x) for x in bv}
+                    break
+            if bound_vals is None:
+                return list(options)          # unbound axis: the config is free to choose
+            return [o for o in options if str(o) in bound_vals]
+
+        for _source, _label in ((allowed_difficulties, "allowed_difficulties"),
+                                (allowed_contexts, "allowed_contexts")):
+            if not _source:
+                continue
+            for dim, opts in _source.items():
+                if not (opts and isinstance(opts, list) and len(opts) > 0):
+                    continue
+                if _label == "allowed_difficulties" and dim in local_difficulty_profile:
+                    continue
+                permitted = _competency_allows(dim, opts)
+                if not permitted:
+                    raise ValueError(
+                        f"§2D: configuration offers {dim}={opts!r} for node '{node_id}', "
+                        f"but its competency permits none of those values. Serving one "
+                        f"would put content outside the node's curriculum in front of a "
+                        f"student. This usually means a saved configuration outlived a "
+                        f"competency change -- re-save it against the current bounds."
+                    )
+                local_difficulty_profile[dim] = rng.choice(permitted)
 
         dna_names = get_node_dnas(node_id)
         if not dna_names:

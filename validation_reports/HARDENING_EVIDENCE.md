@@ -7945,3 +7945,64 @@ Key root-cause clusters among the 23 NOT_PROVIDED verdicts:
 * §1H cannot predict §1E, §4 or §1I — those depend on runtime output, not structure, and are reported as observed.
 * §5 rose 575 → 583: changing `multiplication.py` and `addition.py` correctly staled the blind reviews for those 15 nodes. They need re-review by the Reviewer role before their verdicts mean anything.
 * A SIGTERM mid-mutation bypasses the harness's `finally`; `orchestrator.py` was restored from git once during this work. No guard built.
+
+---
+
+## 2026-08-28 — Track S: gate the student-facing boundary (§9 render, §10 grading), and §2D
+
+Until now every one of run_all's stages stopped at `FormattedProblem`. They validate the
+pipeline's *data*; nothing asked what the pupil SEES or whether their answer is GRADED
+correctly. The two auditors written for exactly that were referenced by **zero gates**.
+
+### 1. §2D — the saved-config path bypassed curriculum gating (live)
+* **Finding:** `PracticeOrchestrator.generate_problem` applied `allowed_difficulties` /
+  `allowed_contexts` with `rng.choice(opts)` and no validation. On `mat_g3_na_q3_1`
+  (competency binds four PROPERTY task_types, max_product=90) a config naming
+  `two_step` served **"What is 40 × 10?"** — product 400, wrong task scope. The same route
+  put NOT_YET_KNOWN vocabulary into Grade 1 (`737 is 7 hundreds...`).
+* **Fix:** offered options are intersected with the node's CURRENT competency bounds; an
+  empty intersection raises. **Known gap named in code:** sentinel-valued axes
+  (`skip_interval='by_1'`, `table='6_7_8_9'`) are a different vocabulary from raw option
+  values and are NOT gated — comparing them refused 144 legitimate configs when first tried.
+* **Verification:** 331 out-of-bounds configs refused, vocab leaks 4→2, student path
+  unaffected (302 ok / 0 errors). Mutation `config_bypasses_competency` PASSES.
+
+### 2. §9 — the render contract
+* **Finding, measured on the STUDENT path:** 16 payloads the React component cannot render.
+  `FractionModel` missing `total_wholes` ×7 (Bug #57); `Calendar`, `BarChart` and `ClockSet`
+  each ×3 rendering from a **completely empty** `visual_params`.
+* **Design note:** this does NOT drive `frontend_contract_auditor`. That tool's worker pool
+  never completed on the full tree (>25 min; `--no-parallel` 11 min) and strands
+  `multiprocessing.spawn` orphans when killed. More importantly it samples by PINNING each
+  advertised formatter, so it never exercises auto-select — it reported `mat_g1_dp_q3_0`
+  CLEAN while that node serves an empty BarChart to every student. §9 checks the student
+  path directly and reuses the auditor's `REQUIRED_KEYS`. **3 seconds, deterministic.**
+* **Verification:** `PASS render_contract: 16 broken renders (floor 16)`. Mutation
+  `unrenderable_visual_payload` PASSES — planted at the FINAL payload, because removing the
+  key upstream makes the formatter raise KeyError, which is a crash and another stage's finding.
+
+### 3. §10 — the grading contract
+* **Finding:** 5 submissions of a KNOWN-CORRECT answer are graded WRONG:
+  - list/ordering answers (`[10,9,8]`, `[62,61,29]`, `[638,637,229]`, `[2287,6397,6398]`)
+    — `lab_v2` True, `portal` and `lab_v1` both **False**;
+  - `'9:35 p.m.'` on `mat_g2_mg_q4_1` — `lab_v1` alone False.
+  A pupil who does the mathematics right is told they are wrong. This is Bug #002/#003/#004's
+  class, live and previously ungated.
+* **Design note:** the auditor spins a fresh `TestClient(app)` and writes a StudentProfile
+  row PER NODE (2 nodes = 30s, so ~38 min for the tree). §10 reuses its `_emit_correct` and
+  route shapes with ONE client over the student path: 559s for all 151 nodes.
+* **Verification:** `FAIL grading_contract: 5 mis-gradings` → floor set to 5, may only
+  shrink. Mutation `grader_rejects_correct_answer` PASSES.
+
+### 4. Kill-safe mutation restore
+* A SIGTERM mid-mutation left a planted bug in `orchestrator.py` on 2026-08-26 that needed
+  manual `git` recovery. Signal handlers + atexit + an on-disk marker holding the ORIGINAL
+  text now cover timeout, Ctrl-C and `kill -9`. Proven by killing runs both ways; three unit
+  tests in `tests/unit/test_mutation_killsafe.py`, including one asserting a CORRUPT marker
+  fails loud rather than guessing.
+
+### Carried, not fixed
+* The 16 unrenderable payloads and 5 mis-gradings are floors, tracked as content/serving work.
+* 2 vocabulary leaks remain reachable only by explicitly pinning `expanded_form` in the Lab
+  (0 student-path leaks across 360 seeds): the addition DNA renders `737`/`hundreds` on G1.
+* §2D does not gate sentinel-valued axes.

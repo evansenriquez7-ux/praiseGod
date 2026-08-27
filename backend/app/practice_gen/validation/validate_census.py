@@ -35,7 +35,7 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 CENSUS_FLOORS = {
     "nodes": 151,
     "unit_tests": 340,   # 349 observed 2026-08-26, with headroom for ordinary churn
-    "mutations": 19,
+    "mutations": 22,
 }
 
 

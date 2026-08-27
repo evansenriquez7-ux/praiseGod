@@ -468,6 +468,67 @@ def validate_advertised_formatters_are_servable() -> List[str]:
     return errors
 
 
+
+def validate_config_respects_competency() -> List[str]:
+    """
+    §2D — no configuration reachable through the serving API may serve content outside a
+    node's competency.
+
+    `PracticeOrchestrator.generate_problem` accepts `allowed_difficulties` and
+    `allowed_contexts` from saved Lab configurations. Until 2026-08-27 it applied them with
+    `rng.choice(opts)` and no validation, so the Lab path routed around every §1A/§1B/§1D
+    bound the pipeline path enforces. Measured then, on mat_g3_na_q3_1 (competency binds
+    task_type to four PROPERTY types, max_product=90):
+
+        task_type='two_step'  ->  "What is 40 x 10?"     product 400, wrong task scope
+        task_type='find_product' -> "What is 3 x 8?"     wrong task scope
+
+    and the same route put NOT_YET_KNOWN vocabulary into Grade 1 ("737 is 7 hundreds,
+    3 tens, and 7 ones" on mat_g1_na_q2_4). A configuration that was legal when it was
+    saved is not legal forever; a competency can narrow underneath it.
+
+    This asserts the refusal directly: for every node axis the competency binds to a value
+    SET, offering a value outside that set must raise. Numeric (min, max) bounds are not
+    covered here -- those are enforced by the generators and asserted by §1A/§1B.
+    """
+    from backend.app.services.orchestrator import PracticeOrchestrator
+    from ..registry import get_all_node_ids, get_node_dnas, get_node_competency_bounds
+
+    errors: List[str] = []
+    for node_id in get_all_node_ids():
+        for dna in (get_node_dnas(node_id) or []):
+            try:
+                bounds = get_node_competency_bounds(node_id, dna) or {}
+            except Exception:
+                continue
+            for axis, bound in bounds.items():
+                # List bounds only -- see orchestrator._competency_allows: a tuple is a
+                # numeric range (§1A/§1B) and a bare string is a scope sentinel in a
+                # different vocabulary from the raw option values a config offers.
+                if not isinstance(bound, list):
+                    continue
+                permitted = {str(x) for x in bound}
+                intruder = f"__not_in_competency_{axis}__"
+                if intruder in permitted:
+                    continue
+                try:
+                    PracticeOrchestrator.generate_problem(
+                        node_id=node_id, seed=11, is_lab=True,
+                        allowed_difficulties={axis: [intruder]},
+                    )
+                except ValueError:
+                    continue          # refused, which is the contract
+                except Exception:
+                    continue          # a content-level failure is another check's business
+                errors.append(
+                    f"{node_id}: a configuration offering {axis}={intruder!r} was SERVED, "
+                    f"but the competency binds {axis} to {sorted(permitted)}. The saved-config "
+                    f"path is bypassing curriculum gating (§2D) -- content outside the node's "
+                    f"competency can reach a student through the Lab."
+                )
+    return errors
+
+
 def validate_all() -> bool:
     """
     Run all compatibility and coverage checks and print a summary.
@@ -481,12 +542,14 @@ def validate_all() -> bool:
     equivalence_errors = validate_lab_portal_equivalence()
     bounds_errors = validate_competency_bounds_parsing()
     servable_errors = validate_advertised_formatters_are_servable()
+    config_errors = validate_config_respects_competency()
     all_errors = (compat_errors + coverage_errors + monotonicity_errors
-                  + equivalence_errors + bounds_errors + servable_errors)
+                  + equivalence_errors + bounds_errors + servable_errors + config_errors)
 
-    total_checks = 6
+    total_checks = 7
     passed = sum([not compat_errors, not coverage_errors, not monotonicity_errors,
-                  not equivalence_errors, not bounds_errors, not servable_errors])
+                  not equivalence_errors, not bounds_errors, not servable_errors,
+                  not config_errors])
 
     print(f"\nCompatibility validation: {passed}/{total_checks} check groups passed.")
 
@@ -526,6 +589,15 @@ def validate_all() -> bool:
             print(f"    ... and {len(servable_errors) - 10} more.")
     else:
         print("  PASS advertised_formatters_are_servable")
+
+    if config_errors:
+        print("  FAIL config_respects_competency:")
+        for e in config_errors[:10]:
+            print(f"    - {e}")
+        if len(config_errors) > 10:
+            print(f"    ... and {len(config_errors) - 10} more.")
+    else:
+        print("  PASS config_respects_competency")
 
     if bounds_errors:
         print("  FAIL competency_bounds_parsing:")

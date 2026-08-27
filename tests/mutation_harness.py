@@ -597,6 +597,86 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["degenerate_answer_key", "scores 100%"],
         baseline_must_not_contain=["degenerate_answer_key"],
     ),
+    Mutation(
+        name="config_bypasses_competency",
+        description=(
+            "Remove the §2D refusal so a saved Lab configuration is applied unchecked -- "
+            "the state the orchestrator was in until 2026-08-27, when offering "
+            "task_type='two_step' on mat_g3_na_q3_1 served 'What is 40 x 10?' against a "
+            "competency binding four property types with max_product=90, and the same "
+            "route put NOT_YET_KNOWN vocabulary ('737 is 7 hundreds...') into Grade 1. "
+            "Every §1A/§1B/§1D bound is enforced on the pipeline path; this one routes "
+            "around all of them."
+        ),
+        edits={
+            "backend/app/services/orchestrator.py": (
+                "                permitted = _competency_allows(dim, opts)\n",
+                "                permitted = list(opts)  # planted mutation: skip the competency gate\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_compat"],
+        expected_check="§2D (a saved configuration may not serve content outside a node's competency)",
+        expect_output_contains=["config_respects_competency", "bypassing curriculum gating"],
+        baseline_must_not_contain=["bypassing curriculum gating"],
+    ),
+    Mutation(
+        name="unrenderable_visual_payload",
+        description=(
+            "Drop `total_value` from the PlaceValueBlocks payload -- a key the React "
+            "component reads. It collapses to `undefined` and the block diagram renders "
+            "wrong or empty, while every stage that reads TEXT reports PASS. This is the "
+            "class the frontend auditor was written for (Bug #56 empty visual, #58 dot at "
+            "0 on the number line) and which no gate covered until §9: the auditor was "
+            "referenced by zero gates and had been holding 12 critical findings across 4 "
+            "nodes -- ClockSet, Calendar, and the FractionModel total_wholes collapse "
+            "that is Bug #57."
+        ),
+        # Planted at the FINAL payload, not at the internal dict. Removing it upstream
+        # makes the formatter raise KeyError on its own downstream read -- a crash, which
+        # is another stage's finding, not §9's. §9 is about a payload that is BUILT and
+        # SERVED while missing a key the component reads.
+        edits={
+            "backend/app/practice_gen/formatters/visual/fmt_place_value_blocks.py": (
+                '    format_data: dict = {"visual_params": vp}\n',
+                '    vp = {k: v for k, v in vp.items() if k != "total_value"}  # planted mutation\n'
+                '    format_data: dict = {"visual_params": vp}\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_render",
+                 "--node-ids", "mat_g1_na_q1_2"],
+        expected_check="§9 (the payload must be renderable by the component the student sees)",
+        expect_output_contains=["FAIL render_contract", "total_value"],
+        baseline_must_not_contain=["FAIL render_contract"],
+    ),
+    Mutation(
+        name="grader_rejects_correct_answer",
+        description=(
+            "Make the Lab v1 grader reject every submission. This is the worst defect "
+            "class the system can have -- a pupil does the mathematics right and is told "
+            "they are wrong -- and it had no gate until §10. The auditor written for it "
+            "(Bug #002 fraction_shade portal=False vs v1/v2=True, #003 cloze, #004 mcq "
+            "leniency) was referenced by zero gates. The live baseline is 5 real "
+            "mis-gradings: list/ordering answers that lab_v2 accepts and portal+lab_v1 "
+            "both reject, plus one time answer."
+        ),
+        edits={
+            "backend/app/routes/matatag_router.py": (
+                "    return {\n"
+                '        "is_correct": is_correct,\n'
+                '        "correct_answer": correct_answer_str,\n'
+                '        "trap_triggered": trap_triggered,\n',
+                "    return {\n"
+                '        "is_correct": False,  # planted mutation: reject every answer\n'
+                '        "correct_answer": correct_answer_str,\n'
+                '        "trap_triggered": trap_triggered,\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_grade",
+                 "--node-ids", "mat_g1_na_q1_0"],
+        expected_check="§10 (a known-correct answer must be graded correct by all three graders)",
+        expect_output_contains=["FAIL grading_contract", "told they are wrong"],
+        baseline_must_not_contain=["FAIL grading_contract"],
+    ),
 ]
 
 
@@ -799,9 +879,118 @@ def _apply(mutation: Mutation) -> Dict[Path, str]:
     return originals
 
 
+
+# ---------------------------------------------------------------------------------
+# Kill-safe restore.
+#
+# `run_mutation` restores in a `finally`, which covers exceptions and clean exits and
+# nothing else. On 2026-08-26 a 10-minute tool timeout sent SIGTERM mid-mutation and the
+# `finally` never ran: `orchestrator.py` was left carrying
+# `if formatter == 'true_false': valid_dnas = []` and had to be restored from git by
+# hand. A harness that plants bugs in real source MUST NOT be able to leave one behind --
+# the next run would then measure a tree it silently corrupted.
+#
+# Three layers, because each covers what the others cannot:
+#   * signal handlers (SIGTERM/SIGINT) -- the timeout and Ctrl-C cases;
+#   * atexit -- any other interpreter shutdown;
+#   * an on-disk marker holding the ORIGINAL text -- SIGKILL, power loss, OOM, where no
+#     handler runs at all. The next start finds it and restores before doing anything.
+# ---------------------------------------------------------------------------------
+
+_IN_FLIGHT: Dict[Path, str] = {}
+_MARKER = REPO_ROOT / "local_only" / "scratch" / "MUTATION_IN_FLIGHT.json"
+
+
+def _write_marker() -> None:
+    """Persist what is planted, so a kill -9 is still recoverable."""
+    import json
+    _MARKER.parent.mkdir(parents=True, exist_ok=True)
+    _MARKER.write_text(
+        json.dumps({str(k): v for k, v in _IN_FLIGHT.items()}, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+
+def _clear_marker() -> None:
+    _MARKER.unlink(missing_ok=True)
+
+
+def _restore_in_flight(reason: str) -> None:
+    if not _IN_FLIGHT:
+        _clear_marker()
+        return
+    print(f"\n!! {reason}: restoring {len(_IN_FLIGHT)} planted file(s) before exit",
+          file=sys.stderr)
+    for path, text in _IN_FLIGHT.items():
+        try:
+            path.write_text(text, encoding="utf-8")
+        except OSError as exc:  # say which file is still dirty; never swallow it
+            print(f"!! COULD NOT RESTORE {path}: {exc}", file=sys.stderr)
+    _IN_FLIGHT.clear()
+    _clear_marker()
+
+
+def recover_orphaned_mutation() -> bool:
+    """
+    Restore a mutation a previous run was killed before undoing. Returns True if it did.
+
+    Runs before anything else in main(): measuring a tree that still carries a planted
+    bug is worse than not measuring at all, because every result would look like a real
+    finding.
+    """
+    import json
+    if not _MARKER.exists():
+        return False
+    try:
+        planted = json.loads(_MARKER.read_text(encoding="utf-8"))
+    except (ValueError, OSError) as exc:
+        raise SystemExit(
+            f"FATAL: {_MARKER} exists but is unreadable ({exc}). A previous run was killed "
+            f"mid-mutation and the tree may still carry a planted bug. Restore the files "
+            f"named in git status by hand, delete the marker, and re-run."
+        )
+    if not planted:
+        _clear_marker()
+        return False
+    print(f"!! a previous run was killed mid-mutation; restoring {len(planted)} file(s)",
+          file=sys.stderr)
+    for path_str, text in planted.items():
+        target = Path(path_str)
+        # Display only -- a path outside the repo must not abort the restore. Crashing
+        # while recovering is the worst possible moment to crash: it leaves the tree
+        # planted AND the marker in place.
+        try:
+            shown = target.relative_to(REPO_ROOT)
+        except ValueError:
+            shown = target
+        print(f"   restoring {shown}", file=sys.stderr)
+        target.write_text(text, encoding="utf-8")
+    _clear_marker()
+    return True
+
+
+def _install_kill_safety() -> None:
+    import atexit
+    import signal
+
+    atexit.register(lambda: _restore_in_flight("interpreter exiting"))
+
+    def _handler(signum, _frame):
+        _restore_in_flight(f"received signal {signum}")
+        raise SystemExit(128 + signum)
+
+    for sig in (signal.SIGTERM, signal.SIGINT, signal.SIGHUP):
+        try:
+            signal.signal(sig, _handler)
+        except (ValueError, OSError):
+            pass  # not the main thread, or the platform lacks it
+
+
 def _restore(originals: Dict[Path, str]) -> None:
     for path, text in originals.items():
         path.write_text(text, encoding="utf-8")
+        _IN_FLIGHT.pop(path, None)
+    _write_marker() if _IN_FLIGHT else _clear_marker()
 
 
 def _run(mutation: Mutation) -> Tuple[int, str]:
@@ -846,6 +1035,8 @@ def run_mutation(mutation: Mutation) -> Tuple[bool, str]:
     originals: Dict[Path, str] = {}
     try:
         originals = _apply(mutation)
+        _IN_FLIGHT.update(originals)
+        _write_marker()
         code, output = _run(mutation)
     finally:
         if originals:
@@ -879,6 +1070,11 @@ def main() -> int:
     ap.add_argument("--only", help="Run a single mutation by name.")
     ap.add_argument("--list", action="store_true", help="List mutation names and exit.")
     args = ap.parse_args()
+
+    # Before anything: undo a mutation a killed run left planted, and arm the handlers
+    # so this run cannot leave one either.
+    recover_orphaned_mutation()
+    _install_kill_safety()
 
     if args.list:
         for m in MUTATIONS:

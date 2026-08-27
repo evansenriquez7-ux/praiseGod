@@ -29,6 +29,8 @@ from backend.app.practice_gen.validation import (
     validate_judgment,
     validate_matrix,
     validate_census,
+    validate_render,
+    validate_grade,
     validate_vocab,
 )
 from backend.app.practice_gen.validation.validate_matrix import run_matrix_validation
@@ -72,6 +74,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§1I": "validate_matrix: a true/false item family may not key every sample the same way",
     "§2": "validate_compat: registry/compatibility coverage & monotonicity",
     "§2B": "validate_compat: every formatter a node advertises can actually be served for it",
+    "§2D": "validate_compat: a saved configuration may not serve content outside a node's competency",
     "§3": "validate_dna: structural checks and difficulty profiles feasibility",
     "§4": "validate_matrix: VISUAL payload schema validation (recorded only under is_visual, so ~67 of 151 nodes; non-visual response shape rests on the Pydantic model at runtime)",
     "§5": "validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews",
@@ -81,6 +84,8 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§6F": "validate_capability: every declared capability carries a blind Attester verdict, and none is contradicted",
     "§6G": "validate_capability: an attestation shows its work — non-boilerplate reasoning citing seeds from its own packet",
     "§7": "run_all: the suite's own census (nodes, unit tests, mutations) has not shrunk below its floor",
+    "§9": "validate_render: the payload a node emits must be renderable by the React component the student sees",
+    "§10": "validate_grade: a known-correct answer must be graded correct by all three graders",
 }
 
 _LAST_UNIT_TEST_COUNT: list = [None]
@@ -297,6 +302,20 @@ def run_all(fail_fast: bool = False) -> int:
             return 1
 
     # Two-direction contract enforcement check
+    print("\n--- Render Contract (§9) ---")
+    # The first stage that looks past FormattedProblem at what the STUDENT receives.
+    # Everything above validates the pipeline's data; this asks whether the React
+    # component can render it. It was an ungated auditor until 2026-08-28 and had been
+    # holding 12 critical findings across 4 nodes the whole time.
+    render_ok = validate_render.validate_all()
+    executed_checks.add("§9")
+
+    print("\n--- Grading Contract (§10) ---")
+    # The worst defect class in the system: a pupil does the mathematics right and is told
+    # they are wrong. Three graders serve answers and can disagree about the same one.
+    grade_ok = validate_grade.validate_all()
+    executed_checks.add("§10")
+
     print("\n--- Suite Census (§7) ---")
     census_ok = validate_census.validate_all()
     executed_checks.add("§7")
@@ -365,7 +384,8 @@ def run_all(fail_fast: bool = False) -> int:
 
     print("\n======================================================================")
     all_ok = (unit_ok and dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok
-              and judgment_ok and capability_ok and contract_match_ok and census_ok)
+              and judgment_ok and capability_ok and contract_match_ok and census_ok
+              and render_ok and grade_ok)
     if all_ok:
         print("ALL TESTS PASSED SUCCESSFULLY! Praise God!")
         print("======================================================================")
