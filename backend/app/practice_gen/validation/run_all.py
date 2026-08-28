@@ -31,6 +31,7 @@ from backend.app.practice_gen.validation import (
     validate_census,
     validate_render,
     validate_grade,
+    validate_coverage,
     validate_vocab,
 )
 from backend.app.practice_gen.validation.validate_matrix import run_matrix_validation
@@ -88,6 +89,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§6F": "validate_capability: every declared capability carries a blind Attester verdict, and none is contradicted",
     "§6G": "validate_capability: an attestation shows its work — non-boilerplate reasoning citing seeds from its own packet",
     "§7": "run_all: the suite's own census (nodes, unit tests, mutations) has not shrunk below its floor",
+    "§8": "validate_coverage: every assertion the harness can emit is either proven by a mutation or on a shrinking allowlist",
     "§9": "validate_render: the payload a node emits must be renderable by the React component the student sees",
     "§10": "validate_grade: a known-correct answer must be graded correct by all three graders",
 }
@@ -325,6 +327,13 @@ def run_all(fail_fast: bool = False) -> int:
     grade_ok = validate_grade.validate_all()
     executed_checks.add("§10")
 
+    print("\n--- Assertion Coverage (§8) ---")
+    # Replaces "N of M checks proven", which counted a contract REF as proven when one of
+    # its sub-assertions was. validate_matrix alone emits 26 assertion labels behind ~11
+    # refs, so that number flattered the harness considerably.
+    coverage_ok = validate_coverage.validate_all()
+    executed_checks.add("§8")
+
     print("\n--- Suite Census (§7) ---")
     census_ok = validate_census.validate_all()
     executed_checks.add("§7")
@@ -417,7 +426,7 @@ def run_all(fail_fast: bool = False) -> int:
     print("\n======================================================================")
     all_ok = (unit_ok and dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok
               and judgment_ok and capability_ok and contract_match_ok and census_ok
-              and render_ok and grade_ok)
+              and render_ok and grade_ok and coverage_ok)
     if all_ok:
         print("ALL TESTS PASSED SUCCESSFULLY! Praise God!")
         print("======================================================================")

@@ -142,6 +142,8 @@ mutation is unproven regardless of how long it has been passing.
 | `§2D` | validate_compat: a saved configuration may not serve content outside a node's competency |
 | `§2E` | validate_compat: the correct option's position must not be predictable from the seed |
 | `§2C` | validate_compat: a formatter a node advertises must be reachable by the student path, not merely servable when pinned |
+| `§2F` | validate_compat: every node id referenced in the app must exist in the registry |
+| `§2G` | validate_compat: every node's competency bounds parse to a well-formed shape — the tree-wide property behind the fixture table |
 | `§3` | validate_dna: structural checks and difficulty profiles feasibility |
 | `§4` | validate_matrix: VISUAL payload schema validation (recorded only under is_visual, so ~67 of 151 nodes; non-visual response shape rests on the Pydantic model at runtime) |
 | `§5` | validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews |
@@ -151,6 +153,7 @@ mutation is unproven regardless of how long it has been passing.
 | `§6F` | validate_capability: every declared capability carries a blind Attester verdict, and none is contradicted |
 | `§6G` | validate_capability: an attestation shows its work — non-boilerplate reasoning citing seeds from its own packet |
 | `§7` | run_all: the suite's own census (nodes, unit tests, mutations) has not shrunk below its floor |
+| `§8` | validate_coverage: every assertion the harness can emit is either proven by a mutation or on a shrinking allowlist |
 | `§9` | validate_render: the payload a node emits must be renderable by the React component the student sees |
 | `§10` | validate_grade: a known-correct answer must be graded correct by all three graders |
 

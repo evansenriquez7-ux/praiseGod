@@ -53,6 +53,12 @@ class Mutation:
     expected_check: str
     # Substrings that, if present in the output, confirm the failure points at
     # the planted bug rather than at unrelated noise. Empty = exit code only.
+    # The assertion label(s) this mutation proves, e.g. ["empty_execution_matrix"].
+    # `expected_check` is free text for humans; this is the machine-checkable link that
+    # lets §8 state which assertions are proven. Without it "17 of 24 checks proven"
+    # counts a REF as proven when one of its sub-assertions is -- and validate_matrix
+    # alone emits 26 distinct assertion labels behind ~11 refs.
+    asserts: List[str] = field(default_factory=list)
     expect_output_contains: List[str] = field(default_factory=list)
     # Substrings the *unmutated* tree must NOT already produce. Without this, a
     # mutation "passes" on a validator that was failing before it was applied --
@@ -220,6 +226,7 @@ def _plant_silent_substitution() -> Dict[Path, str]:
 MUTATIONS: List[Mutation] = [
     Mutation(
         name="leaky_window",
+        asserts=['scalar_boundary_containment'],
         description=(
             "Make the scalar->value map land ten ABOVE the maximum at t=1.0, so "
             "generation overshoots the competency ceiling. The mirror of "
@@ -250,6 +257,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="boundary_off_by_one",
+        asserts=['scalar_boundary_exactness'],
         description="Make the scalar->value map land one below the maximum at t=1.0.",
         # Patch the orchestrator's scalar->value mapping, which is what actually
         # governs continuous axes on the serving path. dna/base.py's
@@ -270,6 +278,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="broken_formatter_combo",
+        asserts=['pipeline_run'],
         description="Make the MCQ formatter raise for a variant value it claims to support.",
         edits={
             "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
@@ -284,6 +293,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="answer_corruption",
+        asserts=['answer_key_integrity'],
         description="Off-by-one the correct answer the MCQ formatter serves.",
         edits={
             "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
@@ -303,6 +313,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="vocab_leak",
+        asserts=['vocabulary_gating'],
         description=(
             "Append a NOT_YET_KNOWN term ('multiplication', forbidden on a G1 addition "
             "node) to the stem fmt_mcq actually emits. Content Rule 1 is the rule that "
@@ -319,6 +330,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="silent_substitution",
+        asserts=['reverse_compatibility_check'],
         description=(
             "Disable both redundant gates so an unsupported variant/formatter pair is "
             "accepted silently instead of raising. A pipeline that substitutes rather "
@@ -333,6 +345,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="registry_drift",
+        asserts=['manifest_registry_assertion'],
         description="Add a DNA concept to COMPATIBILITY with no module behind it.",
         edits={
             "backend/app/practice_gen/compatibility.py": (
@@ -357,6 +370,7 @@ MUTATIONS: List[Mutation] = [
     # ------------------------------------------------------------------------
     Mutation(
         name="wildcard_provider",
+        asserts=['capability_generic_formatter_6D'],
         description=(
             "Replace a capability's real, discriminating provider with the generic "
             "textual formatter family -- the exact shape that neutralised §6C in "
@@ -374,6 +388,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="contradicted_attestation",
+        asserts=['capability_contradicted_6F'],
         description=(
             "Re-register a capability a blind Attester already ruled NOT_PROVIDED -- the "
             "regression §6F exists to stop. Until 2026-08-20 an Attester verdict took "
@@ -389,6 +404,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="stale_attestation",
+        asserts=['capability_stale_attestation_6F'],
         description=(
             "Drift the content an Attester judged, leaving the verdict on file. Without a "
             "freshness pass the contract has a permanent hole: attest everything once, "
@@ -404,6 +420,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="template_review",
+        asserts=['judgment_rationale_skeleton_5'],
         description=(
             "Staple one fill-in-the-blank rationale, with the node ID substituted "
             "in, onto four separate reviews -- the fabrication that passed every "
@@ -419,6 +436,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="template_attestation",
+        asserts=['attester_reasoning_skeleton_6G'],
         description=(
             "Staple one fill-in-the-blank reasoning, with the clause substituted in, "
             "onto four live Attester verdicts. §6F passes it untouched -- the packet is "
@@ -442,6 +460,7 @@ MUTATIONS: List[Mutation] = [
     # ---------------------------------------------------------------------------
     Mutation(
         name="empty_execution_matrix",
+        asserts=['empty_execution_matrix'],
         description=(
             "Rename the two task_type values mat_g1_na_q1_9's competency binds, so no "
             "variant combination survives filtering. This is the live shape of "
@@ -462,6 +481,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="answer_leak_in_stem",
+        asserts=['answer_leak_in_stem'],
         description=(
             "Reduce the stem to the answer itself, so the student need only copy it -- "
             "'Jose has lunch at 1:30. What time is that?'. "
@@ -493,6 +513,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="inverted_number_line",
+        asserts=['visual_payload'],
         description=(
             "Swap a number line's start and end so the axis runs backwards. Every other "
             "stage reads TEXT: the stem still says 'what number is marked?' and reads "
@@ -509,6 +530,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="unservable_advertised_formatter",
+        asserts=['advertised_formatters_are_servable'],
         description=(
             "Make the orchestrator refuse `true_false` for every node while still serving "
             "the rest. get_node_formatters() unions COMPATIBILITY across a node's DNAs "
@@ -532,6 +554,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="node_dropped_from_check",
+        asserts=['per_node_applicability_1H'],
         description=(
             "Stop §1A recording itself on one node while that node's axes still make it "
             "applicable. This is the only mutation that perturbs the harness rather than "
@@ -557,6 +580,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="shrinking_node_registry",
+        asserts=['suite_census_7'],
         description=(
             "Drop every node after the first ten from the registry. Every stage then "
             "checks ten nodes, finds nothing wrong with them, and the suite reports green "
@@ -579,6 +603,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="degenerate_answer_key",
+        asserts=['degenerate_answer_key'],
         description=(
             "Key every multiplication-property statement True, which is exactly how "
             "mat_g3_na_q3_1 shipped: 180 of 180 sampled items across the commutative, "
@@ -599,6 +624,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="config_bypasses_competency",
+        asserts=['config_respects_competency'],
         description=(
             "Remove the §2D refusal so a saved Lab configuration is applied unchecked -- "
             "the state the orchestrator was in until 2026-08-27, when offering "
@@ -621,6 +647,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="unrenderable_visual_payload",
+        asserts=['render_contract_9'],
         description=(
             "Drop `total_value` from the PlaceValueBlocks payload -- a key the React "
             "component reads. It collapses to `undefined` and the block diagram renders "
@@ -650,6 +677,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="grader_rejects_correct_answer",
+        asserts=['grading_contract_10'],
         description=(
             "Make the Lab v1 grader reject every submission. This is the worst defect "
             "class the system can have -- a pupil does the mathematics right and is told "
@@ -679,6 +707,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="predictable_option_placement",
+        asserts=['option_placement'],
         description=(
             "Revert the option shuffle to the shared per-problem rng stream. Every "
             "formatter still calls shuffle, and each node's own ordering still looks "
@@ -701,6 +730,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="formatter_unreachable_on_student_path",
+        asserts=['formatters_reachable'],
         description=(
             "Stop the orchestrator recording which formatter it chose. §2C then cannot "
             "tell a served formatter from an unserved one and every advertised formatter "
@@ -723,6 +753,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="dangling_node_reference",
+        asserts=['node_references_resolve'],
         description=(
             "Add a node id that does not exist to a served code path. placement.py already "
             "carries 7 such ids (its forward-looking G4-G10 ladder), latent because nothing "
@@ -744,6 +775,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="malformed_competency_bound",
+        asserts=['all_competency_bounds_parse'],
         description=(
             "Make the bounds parser return an inverted (min, max) range. The ~20-row "
             "fixture table above still passes -- its hand-written G1-3 cases do not cover "
@@ -757,6 +789,28 @@ MUTATIONS: List[Mutation] = [
         expected_check="§2G (every node's competency bounds parse to a well-formed shape)",
         expect_output_contains=["FAIL all_competency_bounds_parse", "min > max"],
         baseline_must_not_contain=["FAIL all_competency_bounds_parse"],
+    ),
+    Mutation(
+        name="coverage_map_gap",
+        asserts=["assertion_coverage_8"],
+        description=(
+            "Remove an assertion from the allowlist without writing its mutation. §8 must "
+            "then report it as neither proven nor excused. This is the gate that stops the "
+            "deficit growing: before §8, `Mutation.expected_check` was free text and "
+            "nothing could state which assertions were proven, so '17 of 24 checks' "
+            "counted a REF as proven when one of its sub-assertions was -- while "
+            "validate_matrix alone emits 26 assertion labels behind ~11 refs."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_coverage.py": (
+                '    "worker_crash":                 "2026-08-28: infrastructure label, not a content assertion",\n',
+                '    # planted mutation: allowlist entry removed, no mutation written\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_coverage"],
+        expected_check="§8 (every assertion is proven by a mutation or on a shrinking allowlist)",
+        expect_output_contains=["FAIL assertion_coverage", "worker_crash"],
+        baseline_must_not_contain=["FAIL assertion_coverage"],
     ),
 ]
 

@@ -8126,3 +8126,27 @@ contract_doc_matches_registry, operator_doc_covers_registry, two_direction.
 
 ### Verification
 `26/26 mutations detected`, tree clean. 31 checks registered.
+
+---
+
+## 2026-08-28 — Track A: the "checks proven" figure was measured against the wrong denominator
+
+* **Finding:** "17 of 24 checks proven" counted a contract REF as proven the moment ONE of
+  its sub-assertions had a mutation. `CONTRACT_CHECKS` conflates bundles with atomic
+  checks — `validate_matrix` alone emits **26 distinct assertion labels** behind ~11 refs,
+  so §5 read as proven on a single boilerplate mutation while its STALE and non-PASS paths
+  were untouched. And `Mutation.expected_check` was free text, so nothing could state which
+  assertions were proven: the deficit could not be counted, tracked, or stopped from growing.
+* **Fix:** `Mutation.asserts` is a machine-checkable label list, assigned for all 26
+  mutations from each validator's own failure label (naive string matching found only 6).
+  `validate_coverage` (§8) inventories every assertion the matrix can emit and requires each
+  to be proven or listed in `UNPROVEN_ASSERTIONS` with a reason and a date.
+* **The honest number:** **8/26 matrix assertions proven**, 20 knowingly unproven, 27
+  assertions proven overall — replacing 17/24.
+* **Allowlist discipline:** it may only SHRINK. A new assertion with neither a mutation nor
+  an entry fails immediately, so the deficit can never grow again. §8 also fails if an entry
+  on the list is now proven — a debt register that keeps settled debts hides how much is
+  really left. Mutation `coverage_map_gap` proves it.
+* **Largest remaining cluster:** the MCQ answer-key family (option count, uniqueness,
+  validity, correct presence, value mismatch) — five labels guarding the options a pupil
+  actually chooses between. That is Track B's next target.
