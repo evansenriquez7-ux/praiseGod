@@ -8042,3 +8042,47 @@ correctly. The two auditors written for exactly that were referenced by **zero g
   `bookkeeping_only_streak` now takes a ref and the test pins to `7795427a`.
 * **Expected consequence:** §5 rose 582 → 705. Changing 19 formatters correctly staled
   those nodes' blind reviews; they need re-review before their verdicts mean anything.
+
+---
+
+## 2026-08-28 — Track S3 (§2C reachability) and Track R1–R2 (the operator's picture was false)
+
+### §2C — "advertised" and "servable" are not "reachable"
+* **Finding:** §2B proves a formatter can be SERVED when pinned; nothing proved
+  auto-selection ever PICKS it. Measured tree-wide: **18 nodes** advertise formatters the
+  student path never selects in 40 seeds (e.g. `mat_g1_na_q3_5` never serves
+  `emoji_pictorial`, `number_bond`, `number_line_read`). The matrix therefore spends its
+  sweep validating content no pupil receives, and the Lab offers a wider menu than is served.
+* **Enabler:** the orchestrator now records `formatter_name` on the served problem.
+  `format` holds the ROUTE name (`read_mcq`), shared by several formatters — which is why a
+  first attempt at inferring reachability by fingerprinting mis-reported **62** unreachable
+  pairs where the real number was 12. Precedent existed: `dna_name` is annotated for exactly
+  this reason, with a comment naming the bug its absence caused.
+* **Verification:** floor 18 (may only shrink), `PASS formatters_reachable (18 node(s), floor 18)`,
+  mutation `formatter_unreachable_on_student_path` caught by name.
+
+### R1 — two documents asserted CI enforcement that was deleted 2026-08-12
+* `deploy-backend.yml` said *"The validation suite lives in validate-pgen.yml and runs
+  independently"* — naming a workflow that no longer exists.
+* `docs/testing_pipeline.md` said the auditors re-check what *"the CI-enforced harness
+  already binds and enforces"*.
+  A reader of either concludes validation is automated; it is entirely local and
+  loop-driven. Both corrected to say so plainly. Naming a guard that does not exist is the
+  hazard Rule 11 names, and `hardening_supervisor.py` cites it in its own docstring.
+
+### R2 — the operator doc named 3 of 29 checks
+* Last touched 2026-07-31. Rather than rewrite prose that would rot again, the existing
+  `contract_doc_matches_registry` tripwire was extended to cover it — as a **floor** (≥12
+  refs), not equality, because `pgen_contract.md` is the binding table while
+  `testing_pipeline.md` is explanatory prose. Requiring every ref would force boilerplate.
+* Doc brought current: **29/29**, with the stage map, every binding check, how to run the
+  suite, and an explicit statement that floors may only shrink and that there is no CI.
+* **The new tripwire immediately caught a defect in my own work:** a bare `§1` in the §2C
+  contract row. `_parse_contract_section_refs` scans the whole document, so prose creates
+  false binding refs. Reworded; registry parity restored.
+
+### Suite state
+`PASS` on: unit_tests, config_respects_competency, option_placement, formatters_reachable,
+matrix (Nodes Failed 0), §1H applicability, render_contract, grading_contract, census,
+contract_doc_matches_registry, operator_doc_covers_registry, two_direction.
+`FAIL` on the two standing content bands only: §5 judgment 705, §6 capability 161.

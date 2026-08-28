@@ -574,6 +574,10 @@ class PracticeOrchestrator:
         # actually picked 'comparing_ordering' (because 'fractions' doesn't
         # support the 'ordering' formatter). See docs/testing_pipeline.md.
         try:
+            problem.formatter_name = formatter
+        except Exception:
+            pass
+        try:
             problem.dna_name = dna_name
         except Exception:
             # Some FormattedProblem subclasses may not allow attribute

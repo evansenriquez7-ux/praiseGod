@@ -699,6 +699,28 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["FAIL option_placement", "without doing any mathematics"],
         baseline_must_not_contain=["FAIL option_placement"],
     ),
+    Mutation(
+        name="formatter_unreachable_on_student_path",
+        description=(
+            "Stop the orchestrator recording which formatter it chose. §2C then cannot "
+            "tell a served formatter from an unserved one and every advertised formatter "
+            "reads as unreachable. This pins the field the check depends on: `format` "
+            "holds the ROUTE name (read_mcq), which several formatters share, so "
+            "reachability is unanswerable without `formatter_name` -- a first attempt at "
+            "inferring it by fingerprinting mis-reported 62 unreachable pairs where the "
+            "real number was 12."
+        ),
+        edits={
+            "backend/app/services/orchestrator.py": (
+                "            problem.formatter_name = formatter\n",
+                "            problem.formatter_name = None  # planted mutation\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_compat"],
+        expected_check="§2C (an advertised formatter must be reachable by the student path)",
+        expect_output_contains=["FAIL formatters_reachable"],
+        baseline_must_not_contain=["FAIL formatters_reachable"],
+    ),
 ]
 
 

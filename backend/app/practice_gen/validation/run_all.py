@@ -76,6 +76,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§2B": "validate_compat: every formatter a node advertises can actually be served for it",
     "§2D": "validate_compat: a saved configuration may not serve content outside a node's competency",
     "§2E": "validate_compat: the correct option's position must not be predictable from the seed",
+    "§2C": "validate_compat: a formatter a node advertises must be reachable by the student path, not merely servable when pinned",
     "§3": "validate_dna: structural checks and difficulty profiles feasibility",
     "§4": "validate_matrix: VISUAL payload schema validation (recorded only under is_visual, so ~67 of 151 nodes; non-visual response shape rests on the Pydantic model at runtime)",
     "§5": "validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews",
@@ -178,6 +179,7 @@ def run_all(fail_fast: bool = False) -> int:
         executed_checks.add("§2B")
         executed_checks.add("§2D")
         executed_checks.add("§2E")
+        executed_checks.add("§2C")
     elif fail_fast:
         print("  FAIL compatibility validation (fail-fast active)")
         return 1
@@ -338,6 +340,29 @@ def run_all(fail_fast: bool = False) -> int:
                 f"  Implemented but not in contract doc: {registry_refs - doc_refs}"
             )
         print("  PASS contract_doc_matches_registry")
+
+        # The OPERATOR doc drifts the same way and had no tripwire. Measured 2026-08-28:
+        # docs/testing_pipeline.md was 83 lines last touched 2026-07-31 and named 3 of the
+        # 24 checks then registered, while asserting a "CI-enforced harness" that had been
+        # deleted six weeks earlier. Someone deploying or operating this reads that file.
+        #
+        # Deliberately a FLOOR, not equality: pgen_contract.md is the binding table and
+        # must match exactly, whereas testing_pipeline.md is prose that explains a subset.
+        # Requiring every ref would force boilerplate; requiring a floor stops it rotting.
+        operator_doc = Path(__file__).resolve().parents[4] / "docs" / "testing_pipeline.md"
+        if operator_doc.exists():
+            text = operator_doc.read_text(encoding="utf-8")
+            named = {r for r in registry_refs if r in text}
+            floor = 12
+            if len(named) < floor:
+                raise AssertionError(
+                    f"docs/testing_pipeline.md names only {len(named)} of "
+                    f"{len(registry_refs)} registered checks (floor {floor}). The operator "
+                    f"documentation has fallen behind the pipeline it describes; a reader "
+                    f"is being told about a harness that no longer exists. Missing: "
+                    f"{sorted(registry_refs - named)[:12]}"
+                )
+            print(f"  PASS operator_doc_covers_registry ({len(named)}/{len(registry_refs)} refs, floor {floor})")
 
         # Compare the checks the contract table claims are binding against the
         # checks the harness *observed itself* running.

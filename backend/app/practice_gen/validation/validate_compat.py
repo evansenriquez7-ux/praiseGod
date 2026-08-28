@@ -600,6 +600,64 @@ def validate_option_placement() -> List[str]:
     return errors
 
 
+
+_REACH_SEEDS = 40
+
+# Baseline measured 2026-08-28 with formatter_name recorded: 18 nodes advertise a
+# formatter the student path never selects. Red baseline, so a floor that may only SHRINK
+# (Mandate §5); the 18 are tracked as content/routing work, not something to widen around.
+_REACH_FLOOR = 18
+
+
+def validate_advertised_formatters_are_reachable() -> List[str]:
+    """
+    §2C — a formatter a node advertises must be REACHABLE by the path students take.
+
+    §2B proves a formatter can be SERVED when pinned. Nothing proved auto-selection ever
+    picks it. Measured 2026-08-28 over a 60-node sample: 12 (node, formatter) pairs across
+    6 nodes were never served in 40 seeds, e.g. mat_g1_na_q3_5 never served
+    ['emoji_pictorial', 'number_bond', 'number_line_read'].
+
+    That is the documented emoji_pictorial defect class -- "registered and servable on
+    both nodes, but the student path never selects it, so all seeds render visual_type
+    None". Consequences: §1 spends its sweep validating content no pupil receives, the Lab
+    offers a menu wider than what is served, and content variety is materially narrower
+    than every report suggests.
+
+    This reads `formatter_name`, which the orchestrator records on the served problem. Do
+    NOT go back to inferring it from `format`: that holds the ROUTE name (`read_mcq`),
+    which several formatters share, and a first attempt at fingerprinting mis-reported 62
+    unreachable pairs where the real number was 12.
+    """
+    from backend.app.services.orchestrator import PracticeOrchestrator
+    from ..registry import get_all_node_ids, get_node_formatters
+
+    errors: List[str] = []
+    for node_id in get_all_node_ids():
+        advertised = set(get_node_formatters(node_id) or [])
+        if len(advertised) < 2:
+            continue
+        served = set()
+        for seed in range(1, _REACH_SEEDS + 1):
+            try:
+                p = PracticeOrchestrator.generate_problem(
+                    node_id=node_id, seed=seed, is_student_path=True)
+            except Exception:
+                continue
+            d = p if isinstance(p, dict) else p.__dict__
+            if d.get("formatter_name"):
+                served.add(d["formatter_name"])
+        unreachable = sorted(advertised - served)
+        if unreachable:
+            errors.append(
+                f"{node_id}: advertises {unreachable} but the student path never selected "
+                f"{'it' if len(unreachable) == 1 else 'them'} in {_REACH_SEEDS} seeds "
+                f"(served: {sorted(served)}). §1 validates content no pupil receives, and "
+                f"the Lab offers a menu wider than what is served (§2C)."
+            )
+    return errors
+
+
 def validate_all() -> bool:
     """
     Run all compatibility and coverage checks and print a summary.
@@ -615,14 +673,17 @@ def validate_all() -> bool:
     servable_errors = validate_advertised_formatters_are_servable()
     config_errors = validate_config_respects_competency()
     placement_errors = validate_option_placement()
+    reach_errors = validate_advertised_formatters_are_reachable()
     all_errors = (compat_errors + coverage_errors + monotonicity_errors
                   + equivalence_errors + bounds_errors + servable_errors + config_errors
-                  + placement_errors)
+                  + placement_errors
+                  + (reach_errors if len(reach_errors) > _REACH_FLOOR else []))
 
-    total_checks = 8
+    total_checks = 9
     passed = sum([not compat_errors, not coverage_errors, not monotonicity_errors,
                   not equivalence_errors, not bounds_errors, not servable_errors,
-                  not config_errors, not placement_errors])
+                  not config_errors, not placement_errors,
+                  len(reach_errors) <= _REACH_FLOOR])
 
     print(f"\nCompatibility validation: {passed}/{total_checks} check groups passed.")
 
@@ -678,6 +739,15 @@ def validate_all() -> bool:
             print(f"    - {e}")
     else:
         print("  PASS option_placement")
+
+    if len(reach_errors) > _REACH_FLOOR:
+        print(f"  FAIL formatters_reachable ({len(reach_errors)} node(s), floor {_REACH_FLOOR}):")
+        for e in reach_errors[:10]:
+            print(f"    - {e}")
+        if len(reach_errors) > 10:
+            print(f"    ... and {len(reach_errors) - 10} more.")
+    else:
+        print(f"  PASS formatters_reachable ({len(reach_errors)} node(s), floor {_REACH_FLOOR})")
 
     if bounds_errors:
         print("  FAIL competency_bounds_parsing:")

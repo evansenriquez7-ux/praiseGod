@@ -491,6 +491,12 @@ class FormattedProblem(BaseModel):
     # per-DNA content checks (e.g. the "Fractions DNA concept overridden"
     # check needs to know which DNA produced the stem).
     dna_name: Optional[str] = None
+    # Which formatter actually produced this problem. `format` holds the ROUTE name
+    # (e.g. "read_mcq"), which several formatters share, so it cannot answer "was
+    # number_line_read ever served?". Without this, formatter reachability can only be
+    # measured by fingerprinting (format, visual_type) -- and a first attempt at that
+    # mis-reported 62 unreachable pairs where the real number was 12.
+    formatter_name: Optional[str] = None
 
     # ── Semantic leak detection (for audit) ────────────────────────────────────
     # For formatters that receive a QuestionContext with numeric operands:

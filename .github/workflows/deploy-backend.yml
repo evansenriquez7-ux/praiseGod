@@ -1,10 +1,17 @@
 name: Deploy Backend to Cloud Run
 
 # Deploying answers one question: can this image ship? Nothing else gates it.
-# The validation suite lives in validate-pgen.yml and runs independently — it
-# answers "is the curriculum work done?", which is the hardening loop's stop
-# signal, not a shipping criterion. A CONCERN verdict on a Grade-2 word problem
-# must not stop a backend fix from reaching Cloud Run.
+#
+# CORRECTION (2026-08-28): this header used to say "the validation suite lives in
+# validate-pgen.yml and runs independently". That workflow was DELETED on 2026-08-12 at
+# the maintainer's direction (docs/IMPLEMENTATION_STATUS.md, Phase 3 row). There is no CI
+# validation of the practice-generation pipeline at all: `run_all` is run locally, by the
+# hardening loop. Naming a guard that does not exist is the hazard Rule 11 names, and it
+# is worse here than saying nothing -- a reader concludes validation is automated.
+#
+# The suite answers "is the curriculum work done?", which is the hardening loop's stop
+# signal, not a shipping criterion. A CONCERN verdict on a Grade-2 word problem must not
+# stop a backend fix from reaching Cloud Run.
 #
 # This deliberately reverses pgen_hardening.md Phase 3's `needs: validate`
 # requirement, at the maintainer's direction. See docs/IMPLEMENTATION_STATUS.md
