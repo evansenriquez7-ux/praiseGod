@@ -1,33 +1,33 @@
 {
   "node_id": "mat_g2_na_q1_9",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g2_na_q1_9), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "Claude blind reviewer, batch D1A-part1, 2026-08-28",
+  "review_date": "2026-08-28",
   "blind": true,
-  "overall": "PASS",
+  "overall": "FAIL",
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample items directly operationalize the learning competency to add numbers with sums up to 1000, with and without regrouping. Addend structures span 1-digit + 2-digit (\"What is 2 + 10?\"), 2-digit + 2-digit (\"24 + 15 = ___\"), 3-digit + 2-digit (\"What is 902 + 92?\" and \"The two parts are 912 and 24. What is the sum?\"), and 3-digit + 3-digit (\"510 + 472 = 982. True or False?\"), thoroughly fulfilling the curriculum standard."
+      "verdict": "CONCERN",
+      "rationale": "The bare verb is met and the arithmetic is sound: seed 44 'What is 204 + 270?' -> 474, seed 46 'What is 401 + 418?' -> 819, seed 502 'What is 902 + 92?' -> 994, and seed 42 correctly flags 'Manny solved: \"505 + 111 = ___\". Manny says the missing number is 626' as an error with correct_value 616. What is not met is the qualifying clause 'with or without regrouping' -- only the 'without' half is ever tested. One item is also not really addition of two numbers: seed 61 is a counting-on task whose stem hands the pupil the strategy."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The items comprehensively span the full range from identity/zero addition (\"0 + 22 = ___\" and \"Show 16 + 0 on the number line.\") and 2-digit additions (\"What is 10 + 12?\") up to 3-digit sums approaching 1000 (\"510 + 472 = 982. True or False?\"). Both abstract equations and contextual problem types (\"Moses is on step 15. Moses climbs up 10 more steps. What step is Moses on now?\") are represented."
+      "verdict": "FAIL",
+      "rationale": "Not one of the 18 items requires regrouping. Every pair is carry-free in every column: 505+111 (42), 740+15 (43), 204+270 (44), 540+10 (45), 401+418 (46), 600+170 (47), 990+8 (48), 952+46 (52), 60+8 (61), 912+24 (500), 510+472 (501), 902+92 (502), 457+121 (600), 510+30 (601), 501+150 (602), 240+750 (603), 702+204 (604), 960+30 (605). The avoidance looks systematic rather than accidental: the items that push toward the ceiling are built as '240 + 750' (990), '960 + 30' (990) and '952 + 46' (998) -- each deliberately arranged so no column reaches ten. Half the competency's stated scope, and the harder half that a sums-to-1000 competency exists to teach, is never exercised at all."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The vocabulary, sentence length, and reading demand are well-calibrated for Grade 2 Quarter 1 students. Questions are concise and straightforward (e.g., \"Moses is on step 15. Moses climbs up 10 more steps. What step is Moses on now?\" and \"The two parts are 6 and 10. What is the sum?\"), with clear number line prompts (\"The dot is at 20 and it moves forward 20 numbers. Starting from 20, just count up 20 numbers. Which number will the dot land on?\") that keep cognitive load on the mathematical task."
+      "verdict": "CONCERN",
+      "rationale": "Grade 2, Quarter 1. Two items sit below the level: seed 61 is Grade-1 counting-on with the method pre-supplied, and seed 45 'What is 540 + 10?' is a single tens-place bump. Seed 52 'Show 952 + 46 on the number line.' also mismatches its own instruction: the pupil is told to SHOW something on a number line, but the expected response is the single value 998. The remaining items are pitched correctly -- seed 502 and seed 601 'Moses is on step 510. Moses climbs up 30 more steps.' are both age-appropriate."
     },
     "variant_comprehensiveness": {
       "verdict": "PASS",
-      "rationale": "The sample set provides rich representation and interaction diversity, including standard equation cloze (\"12 + 40 = ___\"), multiple choice (\"What is 22 + 30?\"), number line positioning (\"Show 13 + 15 on the number line.\"), part-whole verbal models (\"The two parts are 912 and 24. What is the sum?\"), true/false verification (\"0 + 44 = 54. True or False?\"), and error analysis (error analysis (seed 82: \"11 + 20 = ___\"))."
+      "rationale": "Seven distinct formatters appear and they make genuinely different demands: error_detect (42), read_fill_in_blank (43), mcq (46), cloze (47), true_false (48), set_fill_in_blank (52, number line) and read_mcq (61), plus one genuine word-problem context at seed 601. Item shape is therefore varied. The numeric monotony underneath it -- every addend pair regroup-free -- is a real defect but is scored under comprehensive_coverage rather than double-counted here."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "All items strictly focus on addition within sums of 1000. No irrelevant or premature Grade 3+ concepts are present. Simple additions like \"What is 0 + 17?\" and \"4 + 15 = ___\" maintain tight alignment with the foundational skills of this competency."
+      "rationale": "Nothing exceeds the competency. Only two-addend whole-number addition appears: no subtraction, no multiplication, no missing-addend algebra, no expanded-form or place-value naming. No answer breaches the stated ceiling -- the largest are 998 (52), 994 (502), and 990 (603, 605) -- and where 1000 appears it is only as a wrong option, correctly marked is_correct false."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical scale strictly stays within the competency bounds (sums up to 1000). Addends range from single digits (\"What is 3 + 15?\") to large hundreds (\"What is 902 + 92?\" with sum 994, and \"510 + 472 = 982. True or False?\"), providing full-spectrum practice without exceeding 1000."
+      "verdict": "CONCERN",
+      "rationale": "The upper bound is respected exactly: nothing exceeds 1000, and the near-boundary items are legitimate (998 at seed 52; 994 at seed 502). The floor is the problem. Seed 61 works on 60 + 8 = 68 with a single-digit addend, and seed 45 'What is 540 + 10?' adds a bare ten -- both sit far below the magnitude a 'sums up to 1000' competency describes, and seed 61 in particular is a one-digit counting exercise embedded in a three-digit competency."
     }
   },
   "sample_seeds": [
@@ -36,11 +36,10 @@
     44,
     45,
     46,
-    50,
-    51,
-    55,
-    75,
-    82,
+    47,
+    48,
+    52,
+    61,
     500,
     501,
     502,
@@ -54,66 +53,174 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 10 + 12?",
-      "correct_answer": 22
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"505 + 111 = ___\". Manny says the missing number is 626. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 616
+      }
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is 2 + 10?",
-      "correct_answer": 12
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 740 and 15. What is the sum?",
+      "correct_answer": 755
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "0 + 22 = ___",
-      "correct_answer": 22
+      "formatter": "mcq",
+      "question_text": "What is 204 + 270?",
+      "correct_answer": 474,
+      "options": [
+        {
+          "key": "A",
+          "value": 473,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 474,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 484,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 475,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "24 + 15 = ___",
-      "correct_answer": 39
+      "formatter": "mcq",
+      "question_text": "What is 540 + 10?",
+      "correct_answer": 550,
+      "options": [
+        {
+          "key": "A",
+          "value": 549,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 530,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 550,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 560,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What is 401 + 418?",
+      "correct_answer": 819,
+      "options": [
+        {
+          "key": "A",
+          "value": 820,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 829,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 818,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 819,
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "seed": 47,
       "formatter": "cloze",
-      "question_text": "4 + 15 = ___",
-      "correct_answer": 19
+      "question_text": "600 + 170 = ___",
+      "correct_answer": 770,
+      "options": [
+        {
+          "key": "A",
+          "value": 430,
+          "text": "430",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 770,
+          "text": "770",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 769,
+          "text": "769",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 780,
+          "text": "780",
+          "is_correct": false
+        }
+      ]
     },
     {
-      "seed": 50,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 16 + 0 on the number line.",
-      "correct_answer": 16
-    },
-    {
-      "seed": 51,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 20 and it moves forward 20 numbers. Starting from 20, just count up 20 numbers. Which number will the dot land on?",
-      "correct_answer": "C"
-    },
-    {
-      "seed": 55,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 6 and 10. What is the sum?",
-      "correct_answer": 16
-    },
-    {
-      "seed": 75,
+      "seed": 48,
       "formatter": "true_false",
-      "question_text": "0 + 44 = 54. True or False?",
+      "question_text": "990 + 8 = 990. True or False?",
       "correct_answer": false
     },
     {
-      "seed": 82,
-      "formatter": "error_detect",
-      "question_text": "Dante solved: \"11 + 20 = ___\". Dante says the missing number is 31. Is Dante correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 31
-      }
+      "seed": 52,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 952 + 46 on the number line.",
+      "correct_answer": 998
+    },
+    {
+      "seed": 61,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 60 and it moves forward 8 numbers. Starting from 60, just count up 8 numbers. Which number will the dot land on?",
+      "correct_answer": "A",
+      "options": [
+        {
+          "key": "A",
+          "value": 68,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 78,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 52,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 67,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
@@ -131,43 +238,168 @@
       "seed": 502,
       "formatter": "mcq",
       "question_text": "What is 902 + 92?",
-      "correct_answer": 994
+      "correct_answer": 994,
+      "options": [
+        {
+          "key": "A",
+          "value": 993,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 1004,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 810,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 994,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What is 22 + 30?",
-      "correct_answer": 52
+      "formatter": "true_false",
+      "question_text": "457 + 121 = 578. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Moses is on step 15. Moses climbs up 10 more steps. What step is Moses on now?",
-      "correct_answer": 25
+      "formatter": "mcq",
+      "question_text": "Moses is on step 510. Moses climbs up 30 more steps. What step is Moses on now?",
+      "correct_answer": 540,
+      "options": [
+        {
+          "key": "A",
+          "value": 539,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 550,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 540,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 480,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 0 + 17?",
-      "correct_answer": 17
+      "formatter": "cloze",
+      "question_text": "501 + 150 = ___",
+      "correct_answer": 651,
+      "options": [
+        {
+          "key": "A",
+          "value": 651,
+          "text": "651",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 661,
+          "text": "661",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 351,
+          "text": "351",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 650,
+          "text": "650",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "12 + 40 = ___",
-      "correct_answer": 52
+      "question_text": "240 + 750 = ___",
+      "correct_answer": 990,
+      "options": [
+        {
+          "key": "A",
+          "value": 990,
+          "text": "990",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 989,
+          "text": "989",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 1000,
+          "text": "1000",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 991,
+          "text": "991",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "What is 3 + 15?",
-      "correct_answer": 18
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"702 + 204 = ___\". Carlo says the missing number is 906. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 906
+      }
     },
     {
       "seed": 605,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 13 + 15 on the number line.",
-      "correct_answer": 28
+      "formatter": "cloze",
+      "question_text": "960 + 30 = ___",
+      "correct_answer": 990,
+      "options": [
+        {
+          "key": "A",
+          "value": 1000,
+          "text": "1000",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 930,
+          "text": "930",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 989,
+          "text": "989",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 990,
+          "text": "990",
+          "is_correct": true
+        }
+      ]
     }
   ]
 }

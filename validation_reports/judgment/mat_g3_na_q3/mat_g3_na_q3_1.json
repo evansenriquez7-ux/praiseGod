@@ -1,33 +1,33 @@
 {
   "node_id": "mat_g3_na_q3_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q3-Harden (mat_g3_na_q3_1), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "Claude blind reviewer, batch D1A-part1, 2026-08-28",
+  "review_date": "2026-08-28",
   "blind": true,
-  "overall": "PASS",
+  "overall": "CONCERN",
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample set comprehensively fulfills all five properties specified in the MATATAG learning competency for the 6, 7, 8, and 9 multiplication tables. Identity property ('one multiplied by any number is equal to the number') is illustrated and applied in samples such as \"What is 7 \u00d7 1?\" and \"Look at the 1\u00d78 array. How many squares are shaded in all?\". Zero property ('zero multiplied by any number is zero') is tested in \"6 \u00d7 0 = ___\". Commutative property ('changing the order of the numbers being multiplied does not change the product') is tested in \"Is 4 \u00d7 6 the same as 6 \u00d7 4?\" and \"Is 5 \u00d7 7 the same as 7 \u00d7 5?\". Associative property ('changing the grouping of the numbers being multiplied does not change the product') is tested in \"Is (2 \u00d7 6) \u00d7 5 the same as 2 \u00d7 (6 \u00d7 5)?\" and \"Is (6 \u00d7 7) \u00d7 5 the same as 6 \u00d7 (7 \u00d7 5)?\". Finally, distributive property ('multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend') is assessed in \"Is 5 \u00d7 (9 + 4) the same as (5 \u00d7 9) + (5 \u00d7 4)?\" and \"Is 7 \u00d7 (7 + 4) the same as (7 \u00d7 7) + (7 \u00d7 4)?\"."
+      "verdict": "CONCERN",
+      "rationale": "'Illustrate AND apply' names two coordinate verbs and only the second is met. All 17 items are symbolic judgements or fill-ins -- 'Is 6 × (9 + 4) the same as (6 × 9) + (6 × 4)?' (seed 45), '1 × 6 = ___' (seed 64), '7 × 0 = 7. True or False?' (seed 61), 'Is (2 × 6) × 3 the same as 2 × (6 × 3)?' (seed 601). No item illustrates a property with an array, equal groups, a re-grouping picture or any representation the student can point at, which means a pupil can answer every grouping and distributive item by matching the shape of the two sides without ever seeing why the property holds. The 'apply' half is fulfilled and the keys are correct (6 × 0 = 0 at seed 44; 9 × 1 = 9 at seed 63)."
     },
     "comprehensive_coverage": {
       "verdict": "PASS",
-      "rationale": "The items thoroughly cover every required multiplication table (6, 7, 8, and 9) across symbolic and visual representations. Table 6 is covered in items like \"Is 4 \u00d7 6 the same as 6 \u00d7 4?\", \"6 \u00d7 0 = ___\", and \"Is (2 \u00d7 6) \u00d7 5 the same as 2 \u00d7 (6 \u00d7 5)?\". Table 7 is represented in \"Jose solved: \"7 \u00d7 1 = ___\". Jose says the missing number is 6. Is Jose correct?\", \"What is 7 \u00d7 1?\", \"Is 5 \u00d7 7 the same as 7 \u00d7 5?\", and \"Is 7 \u00d7 (7 + 4) the same as (7 \u00d7 7) + (7 \u00d7 4)?\". Table 8 appears in \"Is 3 \u00d7 8 the same as 8 \u00d7 3?\", \"Look at the 1\u00d78 array. How many squares are shaded in all?\", and \"Is (5 \u00d7 8) \u00d7 2 the same as 5 \u00d7 (8 \u00d7 2)?\". Table 9 is exercised in \"Is 2 \u00d7 9 the same as 9 \u00d7 2?\", \"Is 5 \u00d7 (9 + 4) the same as (5 \u00d7 9) + (5 \u00d7 4)?\", and \"Shade all the squares inside the 9\u00d71 rectangle. How many squares did you shade in all?\". Coverage is well-balanced across all five properties."
+      "rationale": "All five clauses named in the competency are exercised, with both true and false cases for four of them. One-times: seed 63, seed 64 '1 × 6 = ___', seed 602 '7 × 1 = ___'. Zero-times: seed 44 'What is 6 × 0?' -> 0 and seed 61 '7 × 0 = 7. True or False?' -> False. Order: seed 42 'Is 5 × 6 the same as 6 × 5?' -> true, with non-examples at seeds 43, 46 and 604. Grouping: seed 601 and seed 603 'Is (3 × 8) × 2 the same as 3 × (8 × 2)?' -> true, with a non-example at seed 605. Sum-of-addends: seeds 45 and 600 as true cases and seeds 501/502 as the classic the forgot-to-distribute-to-the-second-addend shape non-examples."
     },
     "cognitive_capacity": {
       "verdict": "PASS",
-      "rationale": "All questions are appropriately calibrated for Grade 3 Quarter 3 learners. Property equivalences are phrased in clear, accessible language (e.g., \"Is 3 \u00d7 8 the same as 8 \u00d7 3?\" and \"Is (5 \u00d7 8) \u00d7 2 the same as 5 \u00d7 (8 \u00d7 2)?\"), visual array tasks provide concrete scaffolding (e.g., \"Look at the 1\u00d78 array. How many squares are shaded in all?\"), and error identification presents a simple single-step dialogue (Jose solved: \"7 \u00d7 1 = ___\". Jose says the missing number is 6. Is Jose correct?) without unnecessary reading overhead or cognitive overload."
+      "rationale": "Grade 3, Quarter 3, and the structure fits. Parenthesised expressions such as '(3 × 8) × 2' (seed 603) and '6 × (8 + 6)' (seed 600) are demanded by the competency's own 'changing the grouping' and 'sum of two addends' clauses, so they are not over-reach. Individual facts stay single-digit (seed 604 'Is 8 × 7 the same as 7 × 4?'), and the false items are decidable structurally rather than by heavy arithmetic -- seed 501 'Is 5 × (8 + 4) the same as (5 × 8) + 4?' can be judged from the missing second product alone, and seed 605 from the 2 becoming a 3."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The packet incorporates an excellent diversity of interactive formatters: standard multiple choice (\"Is 4 \u00d7 6 the same as 6 \u00d7 4?\", \"What is 7 \u00d7 1?\"), fill-in/cloze (\"6 \u00d7 0 = ___\"), visual array interpretation (\"Look at the 1\u00d78 array. How many squares are shaded in all?\"), interactive shading grid tasks (\"Shade all the squares inside the 9\u00d71 rectangle. How many squares did you shade in all?\", \"Shade all the squares inside the shape. How many squares did you shade in all?\"), and misconception/error analysis (Jose solved: \"7 \u00d7 1 = ___\". Jose says the missing number is 6. Is Jose correct?)."
+      "verdict": "CONCERN",
+      "rationale": "Seeds 63 and 500 are the same item with only the name changed: 'Ana solved: \"9 × 1 = ___\"' against 'Rico solved: \"9 × 1 = ___\"' -- identical numbers, identical property, identical answer. Twelve of seventeen items are MCQ and every one carries the same four options (true, false, 'Cannot be determined', 'Only when both are 0'), including on grouping items like seed 601 where 'Only when both are 0' is not a misconception anyone holds. The two distributive non-examples are also the same edit twice: '(5 × 8) + 4' (seed 501) and '(5 × 7) + 9' (seed 502). No word problem or real-world context appears anywhere in the set."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every sample aligns directly and exclusively with MATATAG learning competency mat_g3_na_q3_1. The items focus squarely on demonstrating and checking multiplication properties (identity, zero, commutative, associative, distributive) with factors from 6 to 9. No extraneous concepts, multi-digit standard algorithms, or unintroduced operations are present."
+      "rationale": "Nothing later-grade appears: no division, no fractions or decimals, no exponents, no variables, and no order-of-operations rule beyond the parentheses the competency itself introduces. Seed 600 is a word-for-word instance of 'multiplying the sum of two addends by a number is the same as the sum of the products of a number by each addend', and seed 603 is a word-for-word instance of 'changing the grouping of the numbers being multiplied does not change the product'."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical scale and dimensions are strictly appropriate for Grade 3 Quarter 3. The factors are bounded to single-digit numbers (6, 7, 8, 9 multiplied by 0, 1, or single-digit factors), addends in distributive property expressions remain single digits (e.g., (9 + 4), (8 + 7), (7 + 4), (8 + 3)), and visual array bounds like \"1\u00d78\" and \"9\u00d71\" in \"Look at the 1\u00d78 array. How many squares are shaded in all?\" and \"Shade all the squares inside the 9\u00d71 rectangle. How many squares did you shade in all?\" are clear and completely manageable."
+      "verdict": "CONCERN",
+      "rationale": "The competency scopes these properties to 'the 6, 7, 8, and 9 multiplication tables'. Seeds 501 and 502 use 5 as the multiplier -- 'Is 5 × (8 + 4) the same as (5 × 8) + 4?' and 'Is 5 × (7 + 9) the same as (5 × 7) + 9?' -- so a sub-product is 5 × 4 = 20, which belongs to none of the four named tables. Seeds 601 and 605 likewise turn on 12 × 3 and 21 × 2 rather than on any 6-9 fact. Intermediate products above the tables are unavoidable once the competency asks for grouping and distribution, so seed 603's 24 × 2 is inherent, but the choice of 5 as a multiplier is free and steps outside the stated table set. Everything else is on-table: 5 × 6 (seed 42), 4 × 8 and 8 × 9 (seed 43), 6 × 0 (seed 44), 8 × 7 (seed 604)."
     }
   },
   "sample_seeds": [
@@ -36,9 +36,9 @@
     44,
     45,
     46,
-    50,
-    68,
-    110,
+    61,
+    63,
+    64,
     500,
     501,
     502,
@@ -53,107 +53,426 @@
     {
       "seed": 42,
       "formatter": "mcq",
-      "question_text": "Is 4 \u00d7 6 the same as 6 \u00d7 4?",
-      "correct_answer": true
+      "question_text": "Is 5 × 6 the same as 6 × 5?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 43,
       "formatter": "mcq",
-      "question_text": "Is 3 \u00d7 8 the same as 8 \u00d7 3?",
-      "correct_answer": true
+      "question_text": "Is 4 × 8 the same as 8 × 9?",
+      "correct_answer": false,
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": true,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Only when both are 0",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "6 \u00d7 0 = ___",
-      "correct_answer": 0
+      "formatter": "mcq",
+      "question_text": "What is 6 × 0?",
+      "correct_answer": 0,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 0,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 2,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 1,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
       "formatter": "mcq",
-      "question_text": "Is 5 \u00d7 (9 + 4) the same as (5 \u00d7 9) + (5 \u00d7 4)?",
-      "correct_answer": true
+      "question_text": "Is 6 × (9 + 4) the same as (6 × 9) + (6 × 4)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": "Only when both are 0",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
       "formatter": "mcq",
-      "question_text": "Is 2 \u00d7 9 the same as 9 \u00d7 2?",
-      "correct_answer": true
+      "question_text": "Is 2 × 9 the same as 9 × 8?",
+      "correct_answer": false,
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": false
+        }
+      ]
     },
     {
-      "seed": 50,
-      "formatter": "read_mcq",
-      "question_text": "Look at the 1\u00d78 array. How many squares are shaded in all?",
-      "correct_answer": "A"
+      "seed": 61,
+      "formatter": "true_false",
+      "question_text": "7 × 0 = 7. True or False?",
+      "correct_answer": false
     },
     {
-      "seed": 68,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the shape. How many squares did you shade in all?",
-      "correct_answer": 0
-    },
-    {
-      "seed": 110,
+      "seed": 63,
       "formatter": "error_detect",
-      "question_text": "Jose solved: \"7 \u00d7 1 = ___\". Jose says the missing number is 6. Is Jose correct?",
+      "question_text": "Ana solved: \"9 × 1 = ___\". Ana says the missing number is 9. Is Ana correct?",
       "correct_answer": {
-        "has_error": true,
-        "correct_value": 7
+        "has_error": false,
+        "correct_value": 9
       }
     },
     {
+      "seed": 64,
+      "formatter": "cloze",
+      "question_text": "1 × 6 = ___",
+      "correct_answer": 6,
+      "options": [
+        {
+          "key": "A",
+          "value": 0,
+          "text": "0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 6,
+          "text": "6",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 5,
+          "text": "5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
       "seed": 500,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Shade all the squares inside the 9\u00d71 rectangle. How many squares did you shade in all?",
-      "correct_answer": 9
+      "formatter": "error_detect",
+      "question_text": "Rico solved: \"9 × 1 = ___\". Rico says the missing number is 9. Is Rico correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 9
+      }
     },
     {
       "seed": 501,
       "formatter": "mcq",
-      "question_text": "Is 5 \u00d7 (8 + 7) the same as (5 \u00d7 8) + (5 \u00d7 7)?",
-      "correct_answer": true
+      "question_text": "Is 5 × (8 + 4) the same as (5 × 8) + 4?",
+      "correct_answer": false,
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": false,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 502,
       "formatter": "mcq",
-      "question_text": "Is 7 \u00d7 (7 + 4) the same as (7 \u00d7 7) + (7 \u00d7 4)?",
-      "correct_answer": true
+      "question_text": "Is 5 × (7 + 9) the same as (5 × 7) + 9?",
+      "correct_answer": false,
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": true,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": "Only when both are 0",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
       "formatter": "mcq",
-      "question_text": "Is 5 \u00d7 (8 + 3) the same as (5 \u00d7 8) + (5 \u00d7 3)?",
-      "correct_answer": true
+      "question_text": "Is 6 × (8 + 6) the same as (6 × 8) + (6 × 6)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": false,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 601,
       "formatter": "mcq",
-      "question_text": "Is (2 \u00d7 6) \u00d7 5 the same as 2 \u00d7 (6 \u00d7 5)?",
-      "correct_answer": true
+      "question_text": "Is (2 × 6) × 3 the same as 2 × (6 × 3)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": false,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": true,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 7 \u00d7 1?",
-      "correct_answer": 7
+      "formatter": "cloze",
+      "question_text": "7 × 1 = ___",
+      "correct_answer": 7,
+      "options": [
+        {
+          "key": "A",
+          "value": 6,
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8,
+          "text": "8",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 7,
+          "text": "7",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 9,
+          "text": "9",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "mcq",
-      "question_text": "Is (5 \u00d7 8) \u00d7 2 the same as 5 \u00d7 (8 \u00d7 2)?",
-      "correct_answer": true
+      "question_text": "Is (3 × 8) × 2 the same as 3 × (8 × 2)?",
+      "correct_answer": true,
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": true,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": false,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 604,
       "formatter": "mcq",
-      "question_text": "Is 5 \u00d7 7 the same as 7 \u00d7 5?",
-      "correct_answer": true
+      "question_text": "Is 8 × 7 the same as 7 × 4?",
+      "correct_answer": false,
+      "options": [
+        {
+          "key": "A",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": true,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": false,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 605,
       "formatter": "mcq",
-      "question_text": "Is (6 \u00d7 7) \u00d7 5 the same as 6 \u00d7 (7 \u00d7 5)?",
-      "correct_answer": true
+      "question_text": "Is (3 × 7) × 2 the same as 3 × (7 × 3)?",
+      "correct_answer": false,
+      "options": [
+        {
+          "key": "A",
+          "value": "Cannot be determined",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": true,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": "Only when both are 0",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": false,
+          "is_correct": true
+        }
+      ]
     }
   ]
 }

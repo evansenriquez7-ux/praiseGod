@@ -8150,3 +8150,52 @@ contract_doc_matches_registry, operator_doc_covers_registry, two_direction.
 * **Largest remaining cluster:** the MCQ answer-key family (option count, uniqueness,
   validity, correct presence, value mismatch) — five labels guarding the options a pupil
   actually chooses between. That is Track B's next target.
+
+---
+
+## 2026-08-28 — D0 (§6H) and the first D1 blind re-review batch
+
+### §6H — Attester identity and plurality (the blocker before any Attester campaign)
+* **Finding:** all 173 attestation records carried **no identity field whatsoever** —
+  `attested_by`, `attester`, `judged_by` all absent. The independence §6F exists to
+  guarantee was therefore uncheckable on a surface four times larger than §5's (787
+  verdicts vs 151 reviews), while §5 has enforced reviewer plurality since it was written.
+  §6G caps verdicts per BATCH, which stops one record covering the table; nothing stopped
+  one agent filing every batch — the author-verifying-itself structure the blind role exists
+  to break.
+* **Fix:** `attested_by` required from 2026-08-28, one identity capped at 25 nodes
+  (mirroring `_MAX_NODES_PER_REVIEWER`), and `tests/attester_file.py` records it on filing.
+  Pre-cutoff records are **grandfathered**: failing 173 genuinely blind judgements to close
+  a schema gap would teach the next agent to distrust the check.
+* **Verification:** mutation `single_attester_identity` stamps one identity across every
+  record and §6H names it. 37/37 mutations detected.
+
+### D1 batch 1 — three nodes re-reviewed blind
+* Dispatched a blind Reviewer over a packet of rendered samples only, with the forbidden
+  paths stated verbatim (`dna/`, `formatters/`, `adapter.py`, `orchestrator.py`,
+  `registry.py`, sibling reviews, `docs/`).
+* **It caught a defect in this session's own multiplication fix.** On `mat_g3_na_q3_1`:
+  *"Seeds 501 and 502 use 5 as the multiplier … a sub-product is 5 × 4 = 20, which belongs
+  to none of the four named tables."* The distributive fix drew the multiplier from
+  `2..small_max` rather than the competency's named 6/7/8/9 tables. An agent that never saw
+  the code found it from rendered output alone.
+* It also independently confirmed the known sampler gap on `mat_g2_na_q1_9`: **not one of
+  18 items requires regrouping**, though the competency says "with or without regrouping",
+  and the near-ceiling items (`240+750`, `960+30`, `952+46`) are each arranged so no column
+  reaches ten. Verdict FAIL.
+* **Two defects in the FILING, both caught by §5:**
+  - transcription — a heredoc turned `×` into `x`, so legitimate quotes failed provenance.
+    Exactly the defect `attester_file.py` warns about ("a stem shortened while pasting
+    turned a transcription error into a filed pipeline defect");
+  - schematic quotes — the Reviewer used templates as if quoting; §5 verifies every quoted
+    span appears verbatim in the samples and rejected them.
+  Both constraints belong in the dispatch prompt for later batches: quote only verbatim
+  sample text, never transliterate.
+* **Effect:** §5 705 → 667; stale nodes 82 → 79; `other` findings back to 0.
+
+### Carried forward
+* D1 has ~79 nodes / 636 STALE findings left; D2/D3 need per-node engineering decisions
+  (build the artifact or delete the entry), not review. Both are quota-bound throughput.
+* The oral/audio ruling still blocks one D2 cluster.
+* New content finding, not yet fixed: the multiplication distributive multiplier should be
+  drawn from the competency's named tables.
