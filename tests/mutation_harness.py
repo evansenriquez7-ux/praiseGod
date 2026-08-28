@@ -677,6 +677,28 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["FAIL grading_contract", "told they are wrong"],
         baseline_must_not_contain=["FAIL grading_contract"],
     ),
+    Mutation(
+        name="predictable_option_placement",
+        description=(
+            "Revert the option shuffle to the shared per-problem rng stream. Every "
+            "formatter still calls shuffle, and each node's own ordering still looks "
+            "random -- but the stream is at the same state on every node, so one seed "
+            "puts the correct option in the same slot tree-wide. Measured before the fix: "
+            "slot 1 on 93% of nodes at seed 11, slot 3 on 86% at seed 64. A pupil scores "
+            "~90% on a practice set by always picking that position. No per-node check "
+            "can see this; it is only visible across nodes."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/_option_order.py": (
+                '    option_rng(node_id, seed, salt).shuffle(items)\n',
+                '    random.Random(seed).shuffle(items)  # planted mutation: shared stream\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_compat"],
+        expected_check="§2E (the correct option's position must not be predictable from the seed)",
+        expect_output_contains=["FAIL option_placement", "without doing any mathematics"],
+        baseline_must_not_contain=["FAIL option_placement"],
+    ),
 ]
 
 

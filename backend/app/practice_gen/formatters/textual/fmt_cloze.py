@@ -14,6 +14,7 @@ import random
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
+from backend.app.practice_gen.formatters._option_order import shuffle_options
 
 
 def _build_equation_sentence(ctx: QuestionContext) -> str:
@@ -353,7 +354,7 @@ def format_cloze(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
             {"value": d, "is_correct": False} for d in distractors
         ]
         
-        rng.shuffle(pool)
+        shuffle_options(pool, ctx.node_id, ctx.seed)
         keys = ["A", "B", "C", "D"][:len(pool)]
         mcq_options = []
         for key, opt in zip(keys, pool):

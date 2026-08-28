@@ -35,6 +35,7 @@ from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
+from backend.app.practice_gen.formatters._option_order import shuffle_options
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -259,7 +260,7 @@ def format_calendar(
                     raise ValueError(f"Formatter 'calendar' requires at least 3 unique distractors, but got {len(distractor_vals)}")
             all_opts = [dur] + distractor_vals[:3]
 
-        rng.shuffle(all_opts)
+        shuffle_options(all_opts, ctx.node_id, ctx.seed)
         mcq_options = [
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == raw_correct}
             for i, v in enumerate(all_opts)

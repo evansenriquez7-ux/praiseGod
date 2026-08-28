@@ -194,10 +194,17 @@ def test_bookkeeping_streak_detects_the_real_spin():
     fixture -- a synthetic-only test would not have caught the thing that happened.
     """
     sup = _supervisor()
-    streak = sup.bookkeeping_only_streak()
+    # 7795427a is tick 488 of the 2026-08-24 spin -- 455 consecutive commits whose only
+    # content was a ledger entry. Pinned to that ref rather than HEAD: asserting against
+    # HEAD passed only until the next real commit landed, which is a test that expires.
+    streak = sup.bookkeeping_only_streak("7795427a")
     assert streak >= sup.STALL_COMMITS, (
-        f"the detector saw a streak of {streak} where real history holds a run of "
-        f"ledger-only commits; a spin this size must be detectable"
+        f"the detector saw a streak of {streak} at the known spin tail; a run of "
+        f"ledger-only commits this size must be detectable in real history"
+    )
+    # And the converse: current HEAD is real work, so it must NOT look stalled.
+    assert sup.bookkeeping_only_streak("HEAD") < sup.STALL_COMMITS, (
+        "HEAD carries substantive commits but reads as a bookkeeping-only streak"
     )
 
 

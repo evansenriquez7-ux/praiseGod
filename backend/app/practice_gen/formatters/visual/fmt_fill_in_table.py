@@ -2,6 +2,7 @@ import random
 from typing import Any, Dict
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._option_order import shuffle_options
 
 def format_fill_in_table(
     ctx: QuestionContext,
@@ -157,7 +158,7 @@ def _format_read(
                 f"(node={ctx.node_id}, seed={ctx.seed})"
             )
         all_opts = [correct] + distractors[:3]
-        rng.shuffle(all_opts)
+        shuffle_options(all_opts, ctx.node_id, ctx.seed)
         mcq_options = [
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct}
             for i, v in enumerate(all_opts)

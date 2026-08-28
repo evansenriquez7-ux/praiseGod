@@ -23,6 +23,7 @@ from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
+from backend.app.practice_gen.formatters._option_order import shuffle_options
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -287,7 +288,7 @@ def format_pictograph(
                     distractor_vals.append(candidate)
 
         all_opts = [correct_count] + distractor_vals[:3]
-        rng.shuffle(all_opts)
+        shuffle_options(all_opts, ctx.node_id, ctx.seed)
         mcq_options = [
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_count}
             for i, v in enumerate(all_opts)

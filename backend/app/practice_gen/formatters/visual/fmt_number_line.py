@@ -25,6 +25,7 @@ from typing import Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
+from backend.app.practice_gen.formatters._option_order import shuffle_options
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -687,7 +688,7 @@ def format_number_line(
                 raise ValueError(f"NumberLine MCQ requires at least 3 unique distractors, but got {len(distractor_vals)}")
         
         all_opts = [correct_val] + distractor_vals[:3]
-        rng.shuffle(all_opts)
+        shuffle_options(all_opts, ctx.node_id, ctx.seed)
         mcq_options = [
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_val}
             for i, v in enumerate(all_opts)

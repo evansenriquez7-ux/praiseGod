@@ -8006,3 +8006,39 @@ correctly. The two auditors written for exactly that were referenced by **zero g
 * 2 vocabulary leaks remain reachable only by explicitly pinning `expanded_form` in the Lab
   (0 student-path leaks across 360 seeds): the addition DNA renders `737`/`hundreds` on G1.
 * §2D does not gate sentinel-valued axes.
+
+---
+
+## 2026-08-28 — Track S2: the correct option's position was predictable from the seed
+
+* **Finding:** measured across 46 MCQ nodes, one seed at a time — seed 11 put the correct
+  option in slot 1 on **93%** of nodes; seed 64, slot 3 on **86%**. A pupil working a
+  practice set at a given seed scored ~90% by always picking the same position, having
+  done no mathematics. This invalidates the assessment, not merely the item.
+* **Root cause — not a missing shuffle.** Every formatter already called `rng.shuffle`.
+  `rng` is `random.Random(seed)` and had consumed a similar number of draws on every node
+  by the time the shuffle ran, so one seed landed the answer in the same slot tree-wide.
+  Random *within* a node, correlated *across* nodes — precisely the axis a pupil
+  experiences. No per-node check could see it: each node's ordering looked random.
+* **Fix:** `formatters/_option_order.py` draws the ordering from a blake2b stream keyed by
+  `(node_id, seed)`. Not `hash()` — PYTHONHASHSEED randomises it per process and CLAUDE.md
+  #6 requires the same seed to give the same problem in every interpreter. Applied at all
+  19 option-shuffle sites.
+* **The planned prerequisite was unnecessary.** This was scoped as a three-part change
+  needing `read_mcq` decoupled from option order first (18 formatters key by letter).
+  Reading the code showed keys are assigned by position AFTER the list is built and
+  `correct_answer` derived after that, so shuffling fixes placement and keeps the letter
+  consistent. No representation change — which removed the risk that had stalled this fix.
+* **Verification:**
+  - worst concentration **93% → 30%** (25% is uniform for four options);
+  - `run_all` stage 6: `Nodes Failed: 0` — no answer key broke;
+  - `§10 grading: PASS 5 mis-gradings (floor 5)` — grading unchanged, the guard that
+    mattered most for a change to option order;
+  - `§2E` added (no slot above 45% across nodes at a fixed seed), 0 findings, and the
+    `predictable_option_placement` mutation reverting to the shared stream is caught.
+* **Also fixed, both self-inflicted and caught by the suite:** `§2D`/`§2E` were registered
+  but never added to `executed_checks` (two-direction drift); and the STALLED streak test
+  asserted HEAD was the spin tail, which expired the moment real work was committed —
+  `bookkeeping_only_streak` now takes a ref and the test pins to `7795427a`.
+* **Expected consequence:** §5 rose 582 → 705. Changing 19 formatters correctly staled
+  those nodes' blind reviews; they need re-review before their verdicts mean anything.

@@ -428,7 +428,7 @@ def _newest_pipeline_mtime() -> float:
 
 
 
-def bookkeeping_only_streak() -> int:
+def bookkeeping_only_streak(from_ref: str = "HEAD") -> int:
     """
     How many of the most recent commits changed nothing but the loop's own bookkeeping.
 
@@ -437,7 +437,11 @@ def bookkeeping_only_streak() -> int:
     from committed history rather than from a tick counter so it survives a runner
     restart -- the 2026-08-24 spin outlived several.
     """
-    out = _sh("git", "log", "--format=%H", "-n", str(STALL_COMMITS * 2))
+    # `from_ref` exists so this can be exercised against a KNOWN historical spin
+    # instead of whatever HEAD happens to be. A test that asserts "HEAD is the tail
+    # of the 2026-08-24 spin" passes only until the next real commit lands, which
+    # is a test that expires rather than a test that holds.
+    out = _sh("git", "log", "--format=%H", "-n", str(STALL_COMMITS * 2), from_ref)
     streak = 0
     for sha in out.splitlines():
         if not sha.strip():

@@ -33,6 +33,7 @@ import random
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
+from backend.app.practice_gen.formatters._option_order import shuffle_options
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -242,7 +243,7 @@ def format_ruler_measure(
     mcq_options = None
     if answer_collection == "mcq":
         all_opts = [correct_answer] + traps[:3]
-        rng.shuffle(all_opts)
+        shuffle_options(all_opts, ctx.node_id, ctx.seed)
         mcq_options = [
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
             for i, v in enumerate(all_opts)

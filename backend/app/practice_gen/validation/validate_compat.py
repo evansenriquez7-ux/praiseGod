@@ -529,6 +529,77 @@ def validate_config_respects_competency() -> List[str]:
     return errors
 
 
+
+# The correct option's slot, measured across nodes at a fixed seed. 4 options -> 25% is
+# uniform; this allows generous slack for an uneven number of options per node while still
+# catching the defect, which was 93%.
+_PLACEMENT_CEILING_PCT = 45
+_PLACEMENT_SEEDS = (11, 42, 64)
+
+
+def validate_option_placement() -> List[str]:
+    """
+    §2E — where the correct option sits must not be predictable from the seed.
+
+    Measured 2026-08-28, before the fix, across 46 MCQ nodes:
+
+        seed 11 -> correct option in slot 1 on 93% of nodes
+        seed 64 -> slot 3 on 86%
+        seed 42 -> slot 2 on 58%
+
+    A pupil working a practice set at a given seed scored ~90% by always picking the same
+    position, having done no mathematics. That invalidates the assessment, not the item.
+
+    Every formatter DID call `rng.shuffle`. The fault was that `rng` is
+    `random.Random(seed)` and had consumed a similar number of draws on every node by the
+    time the shuffle ran, so the same seed put the answer in the same slot tree-wide --
+    random within a node, correlated across nodes, which is precisely the axis a pupil
+    experiences. `formatters/_option_order.py` now draws the ordering from a blake2b
+    stream keyed by (node_id, seed); after the fix the worst concentration is 30%.
+
+    This asserts the property across nodes, because per-node checks cannot see it: each
+    node's own shuffle looked perfectly random the whole time.
+    """
+    import collections
+
+    from backend.app.services.orchestrator import PracticeOrchestrator
+    from ..registry import get_all_node_ids
+
+    errors: List[str] = []
+    for seed in _PLACEMENT_SEEDS:
+        slots: "collections.Counter[int]" = collections.Counter()
+        total = 0
+        for node_id in get_all_node_ids():
+            try:
+                p = PracticeOrchestrator.generate_problem(
+                    node_id=node_id, seed=seed, formatter="mcq", is_lab=False)
+            except Exception:
+                continue
+            d = p if isinstance(p, dict) else p.__dict__
+            fd = d.get("format_data") or {}
+            options = fd.get("mcq_options") or fd.get("options") or []
+            if not isinstance(options, list) or len(options) < 2:
+                continue
+            idx = next((i for i, o in enumerate(options)
+                        if isinstance(o, dict) and o.get("is_correct")), None)
+            if idx is None:
+                continue
+            slots[idx] += 1
+            total += 1
+        if total < 20:
+            continue  # too few samples for the proportion to mean anything
+        slot, count = slots.most_common(1)[0]
+        pct = 100 * count // total
+        if pct > _PLACEMENT_CEILING_PCT:
+            errors.append(
+                f"§2E option placement: at seed {seed} the correct option is in slot "
+                f"{slot} on {pct}% of {total} nodes (ceiling {_PLACEMENT_CEILING_PCT}%). "
+                f"A pupil can score ~{pct}% on a practice set by always picking that "
+                f"position, without doing any mathematics. Distribution: {dict(sorted(slots.items()))}"
+            )
+    return errors
+
+
 def validate_all() -> bool:
     """
     Run all compatibility and coverage checks and print a summary.
@@ -543,13 +614,15 @@ def validate_all() -> bool:
     bounds_errors = validate_competency_bounds_parsing()
     servable_errors = validate_advertised_formatters_are_servable()
     config_errors = validate_config_respects_competency()
+    placement_errors = validate_option_placement()
     all_errors = (compat_errors + coverage_errors + monotonicity_errors
-                  + equivalence_errors + bounds_errors + servable_errors + config_errors)
+                  + equivalence_errors + bounds_errors + servable_errors + config_errors
+                  + placement_errors)
 
-    total_checks = 7
+    total_checks = 8
     passed = sum([not compat_errors, not coverage_errors, not monotonicity_errors,
                   not equivalence_errors, not bounds_errors, not servable_errors,
-                  not config_errors])
+                  not config_errors, not placement_errors])
 
     print(f"\nCompatibility validation: {passed}/{total_checks} check groups passed.")
 
@@ -598,6 +671,13 @@ def validate_all() -> bool:
             print(f"    ... and {len(config_errors) - 10} more.")
     else:
         print("  PASS config_respects_competency")
+
+    if placement_errors:
+        print("  FAIL option_placement:")
+        for e in placement_errors:
+            print(f"    - {e}")
+    else:
+        print("  PASS option_placement")
 
     if bounds_errors:
         print("  FAIL competency_bounds_parsing:")

@@ -31,6 +31,7 @@ import re
 from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
+from backend.app.practice_gen.formatters._option_order import shuffle_options
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -296,7 +297,7 @@ def format_shape_board(
         final_answer = correct_answer
         if answer_collection == "mcq":
             all_opts = [correct_answer] + traps[:3]
-            rng.shuffle(all_opts)
+            shuffle_options(all_opts, ctx.node_id, ctx.seed)
             mcq_options = [
                 {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
                 for i, v in enumerate(all_opts)
@@ -370,7 +371,7 @@ def format_shape_board(
     mcq_options = None
     if answer_collection == "mcq" and not isinstance(correct_answer, list):
         all_opts = [correct_answer] + traps[:3]
-        rng.shuffle(all_opts)
+        shuffle_options(all_opts, ctx.node_id, ctx.seed)
         mcq_options = [
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_answer}
             for i, v in enumerate(all_opts)

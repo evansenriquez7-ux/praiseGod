@@ -1,16 +1,16 @@
-# Graph Report - ccmed  (2026-08-27)
+# Graph Report - ccmed  (2026-08-28)
 
 ## Corpus Check
-- 649 files · ~1,204,549 words
+- 644 files · ~1,208,082 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 4502 nodes · 6701 edges · 356 communities (317 shown, 39 thin omitted)
+- 4544 nodes · 6780 edges · 355 communities (317 shown, 38 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 94 edges (avg confidence: 0.57)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7795427a`
+- Built from commit: `c7d83e99`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -317,7 +317,6 @@
 - [[_COMMUNITY_test_invention_is_caught_by_provenance|test_invention_is_caught_by_provenance]]
 - [[_COMMUNITY_2026-08-12 — Tick B (batch B7a, 12 nodes) — preceded by a second aborted tick|2026-08-12 — Tick B (batch B7a, 12 nodes) — *preceded by a second aborted tick*]]
 - [[_COMMUNITY_test_planted_mutation_bounds_only_provider_is_caught_by_name|test_planted_mutation_bounds_only_provider_is_caught_by_name]]
-- [[_COMMUNITY_test_skeleton_cluster_boundary_is_the_stated_maximum|test_skeleton_cluster_boundary_is_the_stated_maximum]]
 - [[_COMMUNITY_TestBuildTestProfilesVariantCoverage|TestBuildTestProfilesVariantCoverage]]
 - [[_COMMUNITY_2026-08-23 — the mutation harness could not prove the three checks that make a new grade safe|2026-08-23 — the mutation harness could not prove the three checks that make a new grade safe]]
 - [[_COMMUNITY_test_generic_textual_formatter_is_not_a_provider|test_generic_textual_formatter_is_not_a_provider]]
@@ -359,13 +358,13 @@
 1. `Hardening ledger archive` - 414 edges
 2. `PGEN Hardening Ledger` - 134 edges
 3. `QuestionContext` - 86 edges
-4. `FormattedProblem` - 76 edges
-5. `Phase F — full `run_all` verification and three more regressions it caught — 2026-08-02` - 76 edges
+4. `Phase F — full `run_all` verification and three more regressions it caught — 2026-08-02` - 77 edges
+5. `FormattedProblem` - 76 edges
 6. `DNA` - 57 edges
 7. `augment_distractors()` - 50 edges
 8. `VocabGated` - 37 edges
 9. `ErrorPattern` - 32 edges
-10. `get_cache()` - 32 edges
+10. `get_node_dnas()` - 32 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `main()` --references--> `path`  [INFERRED]
@@ -376,21 +375,21 @@
   tests/unit/test_window_endpoints_and_scalar_guard.py → backend/app/practice_gen/generators/number_difficulty.py
 - `test_unmapped_bound_accepts_an_absolute_magnitude()` --calls--> `run()`  [EXTRACTED]
   tests/unit/test_window_endpoints_and_scalar_guard.py → backend/app/practice_gen/pipeline.py
-- `test_numeric_payload_skips_booleans_and_collects_nested()` --calls--> `_numeric_payload_values()`  [EXTRACTED]
-  tests/unit/test_answer_leak_and_reach.py → backend/app/practice_gen/validation/validate_matrix.py
+- `AuditHarnessError` --uses--> `PracticeOrchestrator`  [INFERRED]
+  tests/exhaustive_checklist_auditor.py → backend/app/services/orchestrator.py
 
 ## Import Cycles
 - None detected.
 
-## Communities (356 total, 39 thin omitted)
+## Communities (355 total, 38 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
 Nodes (59): _gen_g1_dp_q3_data(), _gen_g1_mg_q1_shapes(), _gen_g1_mg_q2_length(), _gen_g1_mg_q4_time(), _gen_g1_mg_q4_turns(), _gen_g1_na_q2_addition(), _gen_g1_na_q2_counting(), _gen_g1_na_q2_place_value() (+51 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.07
-Nodes (46): _fraction_str(), _fraction_words(), generate_hints(), generate_params(), Any, DNA: Fractions (Number & Algebra)  Refactored from:   - matatag_skeletons.py  (f, Spell out a fraction in words, e.g. (3, 4) -> 'three fourths'., Rejection-sample a fraction (or pair of fractions) matching difficulty_profile. (+38 more)
+Cohesion: 0.11
+Nodes (30): _fraction_str(), _fraction_words(), generate_hints(), generate_params(), Any, DNA: Fractions (Number & Algebra)  Refactored from:   - matatag_skeletons.py  (f, Spell out a fraction in words, e.g. (3, 4) -> 'three fourths'., Rejection-sample a fraction (or pair of fractions) matching difficulty_profile. (+22 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.08
@@ -398,11 +397,11 @@ Nodes (25): 20.0 Curriculum Descriptor ≠ Student Vocabulary, 20.10 Common Gene
 
 ### Community 3 - "Community 3"
 Cohesion: 0.15
-Nodes (16): get_gemini_models(), get_parent_analytics(), get_parent_config(), get_parent_graph(), parent_login(), Any, Session, Parent Dashboard compiling telemetry statistics, Elo progress, and skills master (+8 more)
+Nodes (18): get_gemini_models(), get_parent_analytics(), get_parent_config(), get_parent_graph(), parent_login(), Any, Session, Parent Dashboard compiling telemetry statistics, Elo progress, and skills master (+10 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.09
-Nodes (31): _audit_node(), AuditHarnessError, build_test_profiles(), _check_cap_vs_formatter_code(), check_checklist_compliance(), _check_variant_sensitivity(), _check_visual_capacity(), extract_numeric_state() (+23 more)
+Cohesion: 0.05
+Nodes (54): Translate a FormattedProblem to the legacy skeleton dict format.      This shim, to_legacy_dict(), get_supported_variants(), Return variants supported by a specific DNA + formatter combination.      Applie, get_matatag_lab_config(), Return full lab configuration for a MATATAG node.      Includes:     - difficult, _audit_node(), AuditHarnessError (+46 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.09
@@ -417,20 +416,20 @@ Cohesion: 0.10
 Nodes (38): _gen_g3_dp_q3_bar_graphs(), _gen_g3_dp_q3_probability(), _gen_g3_mg_q1_area(), _gen_g3_mg_q1_lines(), _gen_g3_mg_q2_capacity(), _gen_g3_mg_q2_mass(), _gen_g3_mg_q4_symmetry(), _gen_g3_na_q1_comparing() (+30 more)
 
 ### Community 8 - "Community 8"
-Cohesion: 0.12
-Nodes (36): get_db(), FastAPI dependency that yields a database session.     Guarantees session closur, SessionLocal(), Background task to pre-generate questions into the cache.     Uses parallel exec, replenish_question_cache(), get_axes_for_concept(), Practice Generation — Difficulty Axes Catalog ==================================, Return the UI-ready axis list for a concept, or [] if not found. (+28 more)
+Cohesion: 0.13
+Nodes (31): get_db(), FastAPI dependency that yields a database session.     Guarantees session closur, SessionLocal(), Background task to pre-generate questions into the cache.     Uses parallel exec, replenish_question_cache(), Practice Generation — Difficulty Axes Catalog ==================================, Background task to pre-generate questions into the cache.     Uses parallel exec, replenish_question_cache() (+23 more)
 
 ### Community 9 - "Community 9"
 Cohesion: 0.06
-Nodes (33): _get_available_formats(), get_intro_status(), get_matatag_difficulty_axes(), get_matatag_lab_interests(), get_matatag_nodes(), get_matatag_progress(), get_node_config(), LabV2ConfigSaveRequest (+25 more)
+Nodes (31): _get_available_formats(), get_intro_status(), get_matatag_difficulty_axes(), get_matatag_lab_interests(), get_matatag_nodes(), get_matatag_progress(), get_node_config(), LabV2ConfigSaveRequest (+23 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.12
-Nodes (7): RedisDict, RedisDict, RedisDict, RedisDict, get_cache(), Any, set_cache()
+Cohesion: 0.16
+Nodes (6): RedisDict, RedisDict, RedisDict, get_cache(), Any, set_cache()
 
 ### Community 11 - "Community 11"
-Cohesion: 0.07
-Nodes (43): get_supported_variants(), get_variants_for_dna(), is_variant_available_at(), Return all contextual variants defined for a DNA concept.      Args:         dna, Return variants supported by a specific DNA + formatter combination.      Applie, Check if a variant is available at a specific grade/quarter per curriculum., Any, Registry to map visual types to their Pydantic schemas. (+35 more)
+Cohesion: 0.06
+Nodes (56): get_axes_for_concept(), Return the UI-ready axis list for a concept, or [] if not found., get_node(), Return the raw knowledge-graph node dict for node_id, or None.      Args:, Any, Registry to map visual types to their Pydantic schemas., VisualSchemaRegistry, load_dna() (+48 more)
 
 ### Community 12 - "Community 12"
 Cohesion: 0.06
@@ -441,8 +440,8 @@ Cohesion: 0.14
 Nodes (26): AdminGraphEdge, AdminGraphNode, AdminGraphResponse, AnswerSubmitRequest, AnswerSubmitResponse, Config, GraphNode, GraphTrack (+18 more)
 
 ### Community 14 - "Community 14"
-Cohesion: 0.13
-Nodes (17): Generate a single practice problem and return it as a dict.      This is the sin, run(), build(), main(), Any, Attester packets — the blind evidence a CAPABILITY_PROVIDERS entry has to surviv, Emit the Attester-facing text VERBATIM from a packet.      Blindness is a prompt, Returns (packets, key).      `packets` is the blind half: an opaque item id, the (+9 more)
+Cohesion: 0.17
+Nodes (12): Any, Practice Generation — Pipeline Coordinator =====================================, Generate a single practice problem and return it as a dict.      This is the sin, Generate a batch of varied practice problems and return them as dicts.      Args, run(), run_batch(), matatag_lab_v2_generate(), Generate a practice problem using the new practice_gen pipeline. (+4 more)
 
 ### Community 15 - "Community 15"
 Cohesion: 0.06
@@ -450,7 +449,7 @@ Nodes (30): App Hosting CLI Commands, Automated deployment via GitHub (CI/CD), B
 
 ### Community 16 - "Community 16"
 Cohesion: 0.06
-Nodes (29): Mutation tests for the capability contract (§6A/§6B/§6C).  These exist because g, Guards against the decoy that cost an earlier audit a day.      483 of 485 provi, The regression §6F exists to stop: someone re-registers what a blind Attester, An unexamined claim is not a passing claim. `if not attested: continue` is preci, §6F must clear once a verdict is on file, or it is a counter rather than a check, There is no 'partly provided'. A malformed record is loud, never skipped., A requirement the curriculum never states cannot be declared., A record that cannot be re-rendered is not evidence — and is never silently skip (+21 more)
+Nodes (33): Mutation tests for the capability contract (§6A/§6B/§6C).  These exist because g, Guards against the decoy that cost an earlier audit a day.      483 of 485 provi, The regression §6F exists to stop: someone re-registers what a blind Attester, An unexamined claim is not a passing claim. `if not attested: continue` is preci, §6F must clear once a verdict is on file, or it is a counter rather than a check, There is no 'partly provided'. A malformed record is loud, never skipped., An attestation is evidence about specific rendered content and stops being evide, A requirement the curriculum never states cannot be declared. (+25 more)
 
 ### Community 17 - "Community 17"
 Cohesion: 0.25
@@ -485,12 +484,12 @@ Cohesion: 0.27
 Nodes (10): _close_pair(), _compare_symbol(), generate_hints(), generate_params(), Any, Random, DNA: Comparing and Ordering Numbers (Number & Algebra)  Covers MATATAG grades 1–, Return 2–4 step-by-step hints for a comparison/ordering problem. (+2 more)
 
 ### Community 25 - "Community 25"
-Cohesion: 0.08
-Nodes (40): Attempt, CompetencyConfiguration, MasteryState, NodeIntroView, ParentAccount, QuestionFlag, SkillEdge, SkillNode (+32 more)
+Cohesion: 0.07
+Nodes (45): Attempt, CompetencyConfiguration, MasteryState, NodeIntroView, ParentAccount, QuestionFlag, SkillEdge, SkillNode (+37 more)
 
 ### Community 26 - "Community 26"
-Cohesion: 0.18
-Nodes (14): _build_all_enabled_config(), _combined_interests(), flag_question(), get_practice_question(), get_practice_question_batch(), Session, Build the (formatters, difficulties, contexts) triple mirroring the     Matatag, Stores a flagged question for post-mortem review. (+6 more)
+Cohesion: 0.13
+Nodes (15): _build_all_enabled_config(), _combined_interests(), flag_question(), get_practice_question(), get_practice_question_batch(), Session, Build the (formatters, difficulties, contexts) triple mirroring the     Matatag, Stores a flagged question for post-mortem review. (+7 more)
 
 ### Community 27 - "Community 27"
 Cohesion: 0.08
@@ -549,8 +548,8 @@ Cohesion: 0.33
 Nodes (6): 5. Vocabulary & Cognitive Constraints, Enforcement Points, Grade Knowledge Ceiling, NOT_YET_KNOWN Enforcement, Rule 1: Incorporate — draw from prior vocabulary, Rule 2: Exclude — never use future vocabulary
 
 ### Community 41 - "Community 41"
-Cohesion: 0.07
-Nodes (35): get_dnas_for_formatter(), get_variant_curriculum_gate(), is_compatible(), Any, Practice Generation — DNA-Formatter Compatibility Table ========================, Validate a lab UI selection and return compatibility info.      Args:         dn, Return the curriculum introduction point for a variant, or None if no gate., Return True if the formatter is compatible with the given DNA concept.      Args (+27 more)
+Cohesion: 0.05
+Nodes (47): get_dnas_for_formatter(), get_variant_curriculum_gate(), is_compatible(), Any, Practice Generation — DNA-Formatter Compatibility Table ========================, Validate a lab UI selection and return compatibility info.      Args:         dn, Return the curriculum introduction point for a variant, or None if no gate., Return True if the formatter is compatible with the given DNA concept.      Args (+39 more)
 
 ### Community 42 - "Community 42"
 Cohesion: 0.11
@@ -681,12 +680,12 @@ Cohesion: 0.17
 Nodes (12): Basic Query, Best Practices for Agents, Calling Operations, Client-Side Caching, Data Type Mapping Reference, Flutter SDK, Imports, Initialization (+4 more)
 
 ### Community 74 - "Community 74"
-Cohesion: 0.15
+Cohesion: 0.17
 Nodes (12): Basic CRUD Schema, Client Subscribe (Web), connector.yaml Template, dataconnect.yaml Template, Event-Driven Refresh, Firebase Init Commands, Many-to-Many Relationship, Realtime Query Templates (+4 more)
 
 ### Community 75 - "Community 75"
-Cohesion: 0.40
-Nodes (5): get_pipeline_status(), Any, Return a health-check dict for the pipeline.      Checks:       - Whether each o, Generate a batch of varied practice problems and return them as dicts.      Args, run_batch()
+Cohesion: 0.14
+Nodes (18): decompose_to_places(), "N is H hundreds, T tens, and O ones." (place values whose digit is 0     are om, generate_hints(), generate_params(), max_regrouping_places(), Any, DNA: Subtraction (Number & Algebra)  Refactored from:   - matatag_skeletons.py, Largest borrow count achievable for any (a, b) with a <= max_minuend, a >= b. (+10 more)
 
 ### Community 76 - "Community 76"
 Cohesion: 0.12
@@ -697,8 +696,8 @@ Cohesion: 0.32
 Nodes (11): _build_traps(), _build_visual_params(), format_clock(), Random, fmt_clock.py — ClockSet visual formatter  Produces a FormattedProblem with clock, Generate clock visual_params deterministically from (grade, diff_level, rng)., Build a ClockSet FormattedProblem from a QuestionContext.      interaction_mode, Return trap dict mirroring visual_skeletons._traps_clock_set logic.      Keys: h (+3 more)
 
 ### Community 78 - "Community 78"
-Cohesion: 0.13
-Nodes (32): _blindness(), build_records(), check_skeletons(), _load(), main(), Any, Attester filing — turn one blind Attester's verdicts into §6F/§6G-valid records., §6G clustering is tree-wide, so collide the incoming batch against what is on di (+24 more)
+Cohesion: 0.16
+Nodes (26): check_skeletons(), §6G clustering is tree-wide, so collide the incoming batch against what is on di, _build(), test_attester_file.py ===================== `tests/attester_file.py` is the only, `tool_uses: 0` is a claim that blindness was structural. It must not be implied., §6G hard fail: a verdict without reasoning is a vote, and votes are not counted., §6G seed provenance — the Attester cannot cite what it was never shown., A NOT_PROVIDED lands as a §6F CONTRADICTED finding; 'what you did' has no defaul (+18 more)
 
 ### Community 79 - "Community 79"
 Cohesion: 0.27
@@ -741,12 +740,12 @@ Cohesion: 0.15
 Nodes (12): 1. Pipeline Layout & Architecture, 2. Core Metamorphic Checkpoints, 3. CLI Execution Reference Table, 4. Diagnostics & Troubleshooting Traps, A. Strict Scalar Mapping (Boundary Checks), B. Metamorphic Sensitivity Checks, C. Semantic Leak Safeguards, D. Formatter and Choice Validity Checks (+4 more)
 
 ### Community 89 - "Community 89"
-Cohesion: 0.25
-Nodes (8): Authoring a `requires` declaration, Part 1 — Extending the pipeline, Step 1 — check whether it already exists, Step 2 — wire every registry in the same commit, Step 3 — three traps that have each cost a day, Step 4 — verify like any other pipeline change, The five defect shapes, When this applies
+Cohesion: 0.14
+Nodes (10): Documentation Rules (meta-rules), Authoring a `requires` declaration, Part 1 — Extending the pipeline, PG Pipeline — Engineering Guide & Hardening Record, Step 1 — check whether it already exists, Step 2 — wire every registry in the same commit, Step 3 — three traps that have each cost a day, Step 4 — verify like any other pipeline change (+2 more)
 
 ### Community 90 - "Community 90"
-Cohesion: 0.15
-Nodes (18): linear_interpolate(), Linear interpolation between min_val and max_val at position t., _assert_cases_determine(), _estimation_distractors(), generate_hints(), generate_params(), Any, Random (+10 more)
+Cohesion: 0.23
+Nodes (12): _assert_cases_determine(), _estimation_distractors(), generate_hints(), generate_params(), Any, Random, DNA: Area (Measurement & Geometry)  Covers MATATAG grade 3 area competencies onl, Three wrong tile counts, each far enough from the true one to be told apart by (+4 more)
 
 ### Community 91 - "Community 91"
 Cohesion: 0.10
@@ -761,8 +760,8 @@ Cohesion: 0.31
 Nodes (10): _build_traps(), format_fraction_model(), _pick_fraction(), _pick_model_type(), Random, fmt_fraction_model.py — FractionModel visual formatter  NEW formatter — no exist, Build a FractionModel FormattedProblem from a QuestionContext.      interaction_, Return (numerator, denominator) appropriate for the grade.      G1: unit fractio (+2 more)
 
 ### Community 94 - "Community 94"
-Cohesion: 0.27
-Nodes (9): generate_hints(), generate_params(), Any, DNA: Multiplication (Number & Algebra)  Refactored from:   - matatag_skeletons.p, Return the allowed factor-b values for the given table axis level.      A recogn, Rejection-sample (a, b) that satisfy the difficulty_profile constraints.      Re, Return 2–4 step-by-step hint strings for the given multiplication problem., _satisfies_number_type() (+1 more)
+Cohesion: 0.14
+Nodes (16): generate_hints(), generate_params(), _inverse_op(), Any, DNA: Missing Number (Number & Algebra)  Covers MATATAG grades 1–3 missing-number, Rejection-sample a missing-number equation matching difficulty_profile.      Ret, generate_hints(), generate_params() (+8 more)
 
 ### Community 95 - "Community 95"
 Cohesion: 0.31
@@ -793,16 +792,16 @@ Cohesion: 0.22
 Nodes (8): _evaluate_left_to_right(), generate_hints(), generate_params(), Any, DNA: Order of Operations (Number & Algebra)  G3 only — addition and subtraction, Generate an order-of-operations problem (G3 only, + and − left to right).      R, Return 2–4 step-by-step hints for an order-of-operations problem., Evaluate an expression left to right given operands and operator list.
 
 ### Community 102 - "Community 102"
-Cohesion: 0.11
-Nodes (24): One reviewer identity may not stamp the whole tree.      Blind review is dispatc, Fail any normalized rationale skeleton shared by more than _MAX_SKELETON_CLUSTER, _validate_reviewer_plurality(), _validate_skeleton_clusters(), test_judgment_antitemplate.py ============================= The judgment gate's, Same frame, different node/seeds/quotes -> identical skeleton. This is the tell., Two reviewers describing different content must not collapse together., A CONCERN or FAIL verdict must not exempt a review from the content checks. (+16 more)
+Cohesion: 0.13
+Nodes (20): One reviewer identity may not stamp the whole tree.      Blind review is dispatc, Fail any normalized rationale skeleton shared by more than _MAX_SKELETON_CLUSTER, _validate_reviewer_plurality(), _validate_skeleton_clusters(), test_judgment_antitemplate.py ============================= The judgment gate's, A CONCERN or FAIL verdict must not exempt a review from the content checks., A reviewer quoting a stem it was actually shown is the genuine shape., The exact fabrication mechanism: a stem quoted that the packet never contained. (+12 more)
 
 ### Community 103 - "Community 103"
 Cohesion: 0.06
-Nodes (36): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, §1G seed reachability: measured, and the queue is empty, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 7) — The harness now runs its own tests, 2026-08-23 — §6G: an attestation must show its work, 2026-08-24 — tick 25 — 177 clauses attested; §6F UNATTESTED backlog reduced from 538 to 361 (+28 more)
+Nodes (36): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, §1G seed reachability: measured, and the queue is empty, 2026-08-13 — length_measurement: the largest FAIL cluster in the tree, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-23 — §6G: an attestation must show its work, 2026-08-24 — tick 25 — 177 clauses attested; §6F UNATTESTED backlog reduced from 538 to 361 (+28 more)
 
 ### Community 104 - "Community 104"
-Cohesion: 0.14
-Nodes (19): _attestation_integrity(), _attestation_records(), _attestation_staleness(), _bound_restricts_to(), _load_attestations(), Any, Which record currently owns each (node_id, capability_id) verdict.      `_load_a, §6G -- structural evidence that a verdict was earned rather than written.      § (+11 more)
+Cohesion: 0.07
+Nodes (43): get_node_info(), Return the full knowledge-graph node dict for a node.      Args:         node_id, _attestation_integrity(), _attestation_records(), _attestation_staleness(), _bound_restricts_to(), _content_words(), _load_attestations() (+35 more)
 
 ### Community 105 - "Community 105"
 Cohesion: 0.22
@@ -825,7 +824,7 @@ Cohesion: 0.22
 Nodes (8): 1. Create a Firebase Project and App (Automated), 2. Installation (Automated via Swift Package Manager CLI), 3. Initialization, AppDelegate (Traditional / UIKit), ⛔️ CRITICAL RULE: INITIALIZATION ORDER ⛔️, ⛔️ CRITICAL RULE: STATE MANAGEMENT (OBSERVATION VS COMBINE) ⛔️, Firebase iOS Setup Guide, SwiftUI (Modern - SAFE PATTERN)
 
 ### Community 110 - "Community 110"
-Cohesion: 0.15
+Cohesion: 0.14
 Nodes (8): Core Agent Constraints, Mutation Fields (DML), Native SQL Operations, Native SQL Root Fields, PostgreSQL Extensions, Query Fields (Read-Only), ⚠️ Security: Stored Procedures & Dynamic SQL, Syntax rules & limitations
 
 ### Community 111 - "Community 111"
@@ -853,8 +852,8 @@ Cohesion: 0.28
 Nodes (8): extract_constraints(), extract_numeric_limit(), has_constraint(), Any, Constraint Extractor Module  Parses dimensional constraints from MATATAG compete, Extract all dimensional constraints from a competency text.          Args:, Quick extraction of just the numeric limit.          Returns:         Numeric li, Check if a competency has a specific constraint type.          Args:         com
 
 ### Community 117 - "Community 117"
-Cohesion: 0.20
-Nodes (9): Translate a FormattedProblem to the legacy skeleton dict format.      This shim, to_legacy_dict(), is_prompt_target_formatter(), _is_rendered_leak(), _no_rendered_leaks(), test_semantic_leak_guards.py ============================ Semantic-leak preventi, Return (leaked: bool, stem, detail) using the auditor's exact rule., TestDnasGenerateFullSpace (+1 more)
+Cohesion: 0.29
+Nodes (8): generate_hints(), generate_params(), Any, Random, DNA: Counting (Number & Algebra)  Refactored from:   - matatag_skeletons.py  (co, Generate counting parameters satisfying difficulty_profile., Return 2–4 step-by-step hint strings for the given counting problem., _select_skip()
 
 ### Community 118 - "Community 118"
 Cohesion: 0.23
@@ -909,8 +908,8 @@ Cohesion: 0.29
 Nodes (7): 1. `google_sign_in` 7.2.0 API Changes, 2. Initialization & Web Hang/Crash Pitfalls, 3. Web Logout Crashes, 4. Prototyping Workaround: Bypassing Firestore Composite Indices, 5. Robust `AuthService` Boilerplate, 6. Troubleshooting `auth/unauthorized-domain` on Flutter Web, Firebase Auth & Google Sign-In for Flutter
 
 ### Community 131 - "Community 131"
-Cohesion: 0.09
-Nodes (21): get_node_dnas(), Return the list of DNA concept names for a node.      Args:         node_id: MAT, get_matatag_lab_config(), Return full lab configuration for a MATATAG node.      Includes:     - difficult, compute(), main(), Returns (exclusions, broken) -- broken = pairs that raise a NON-eligibility erro, _continuous_axes_with_default_range() (+13 more)
+Cohesion: 0.22
+Nodes (12): get_node_dnas(), Return the list of DNA concept names for a node.      Args:         node_id: MAT, compute(), main(), Returns (exclusions, broken) -- broken = pairs that raise a NON-eligibility erro, _formatters(), test_emoji_formatter_range_gate.py ================================== Emoji-base, The auditor's range-filtered supported_formatters must equal the lab     config' (+4 more)
 
 ### Community 132 - "Community 132"
 Cohesion: 0.29
@@ -1033,8 +1032,8 @@ Cohesion: 0.33
 Nodes (6): 2026-08-13 — The derivation's evidence never showed the second factor mattering, A defect the new shape introduced, caught before commit, The failing rationale, The fix, The fixed-width case shape removed entirely, Verification
 
 ### Community 182 - "validate_interest.py"
-Cohesion: 0.08
-Nodes (41): enumerate_profiles(), extract_numerical_limits(), get_dimension_ranges(), _make_predicates(), measure_acceptance_rate(), normalize_difficulty(), Any, Random (+33 more)
+Cohesion: 0.06
+Nodes (50): DNA, Specification of a mathematical concept for practice generation.      dna_type:, Return param_bounds for grade, falling back to nearest defined grade., Return the index of a level within an axis (0 = easiest)., Return a 0.0–1.0 scalar for a given axis level., build_scaffold_sequence(), Any, Practice Generation — Scaffolded Experience Wrapper  Ascending-difficulty sequen (+42 more)
 
 ### Community 183 - "1. Local Prototyping: Data Seeding"
 Cohesion: 0.33
@@ -1045,16 +1044,16 @@ Cohesion: 0.25
 Nodes (9): generate_hints(), generate_params(), _ordinal_suffix(), _ordinal_word(), Any, Static-bank generator: pick a template and fill in a random ordinal value., Return 2–4 step-by-step hints for an ordinal number problem., Return '1st', '2nd', '3rd', '4th', … for any positive integer. (+1 more)
 
 ### Community 185 - "Native SQL Examples"
-Cohesion: 0.15
-Nodes (22): _node_file(), _normalize(), _option_values(), _provenance_corpus(), Any, Path, Practice Generation — Judgment Review Validator (hard gate)  The judgment items, Return a list of schema/quality errors for one node's review file. (+14 more)
+Cohesion: 0.16
+Nodes (20): _node_file(), _normalize(), _option_values(), _provenance_corpus(), Any, Path, Practice Generation — Judgment Review Validator (hard gate)  The judgment items, Return a list of schema/quality errors for one node's review file. (+12 more)
 
 ### Community 186 - "get_node_competency_bounds"
 Cohesion: 0.40
 Nodes (5): 2026-08-14 — "or vice versa" names two directions; the node was bound to one, Step 1 said prove it doesn't already exist, and it did, The failing rationale, The other two pictograph FAILs, diagnosed but not fixed here, Verification
 
 ### Community 187 - "generator.py"
-Cohesion: 0.22
-Nodes (9): _boundary_distance(), generate_hints(), generate_params(), Any, Return 2–4 step-by-step hints for a rounding problem., Round n to the nearest precision (10, 100, 1000) using round-half-up., Return how far n is from the nearest rounding boundary., Generate a rounding problem (G3 only).      Returns:         {             "numb (+1 more)
+Cohesion: 0.24
+Nodes (10): _boundary_distance(), generate_hints(), generate_params(), Any, DNA: Rounding (Number & Algebra)  G3 only — rounding 4-digit numbers to nearest, Return 2–4 step-by-step hints for a rounding problem., Round n to the nearest precision (10, 100, 1000) using round-half-up., Return how far n is from the nearest rounding boundary. (+2 more)
 
 ### Community 188 - "matatag_loader.py"
 Cohesion: 0.29
@@ -1089,8 +1088,8 @@ Cohesion: 0.33
 Nodes (6): 2026-08-12 — Centavo piles reachable (final tick before the loop was stopped), Fix, Fresh blind re-review, Root cause, The unit-conversion bug this exposed, Verification
 
 ### Community 197 - "Queries"
-Cohesion: 0.20
-Nodes (8): Documentation Rules (meta-rules), PG Pipeline — Engineering Guide & Hardening Record, Anti-template checks, Enforcement, PG Pipeline Judgment Guide, The six items, What the enforcer accepts, Who reviews, and how
+Cohesion: 0.33
+Nodes (6): Anti-template checks, Enforcement, PG Pipeline Judgment Guide, The six items, What the enforcer accepts, Who reviews, and how
 
 ### Community 198 - "2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared"
 Cohesion: 0.17
@@ -1109,7 +1108,7 @@ Cohesion: 0.40
 Nodes (4): Layout, PG Pipeline Test Infrastructure, Rules, Running
 
 ### Community 202 - "_combined_interests"
-Cohesion: 0.25
+Cohesion: 0.33
 Nodes (6): 1. Description of Inconsistency, 2. Window-Design Math Evidence, 3. Temporary Mitigation, Live Bug: Bridge-Scalar Inconsistency, Option A: Scalar = 1.1 (Current Portal Level 4), Option B: Scalar = 1.25 (Current Lab UI)
 
 ### Community 203 - "get_interest_themes"
@@ -1149,8 +1148,8 @@ Cohesion: 0.17
 Nodes (19): bookkeeping_only_streak(), coverage(), _cputime_to_seconds(), _etime_to_seconds(), ledger_state(), main(), matrix_evidence(), _newest_pipeline_mtime() (+11 more)
 
 ### Community 215 - "mastery_drill.py"
-Cohesion: 0.10
-Nodes (31): _apply(), _drift_attested_content(), _first_failure_line(), _invert_number_line_axis(), main(), _marker_present(), Mutation, _plant_contradicted_entry() (+23 more)
+Cohesion: 0.06
+Nodes (49): _apply(), _clear_marker(), _drift_attested_content(), _first_failure_line(), _install_kill_safety(), _invert_number_line_axis(), main(), _marker_present() (+41 more)
 
 ### Community 216 - "_manifest.py"
 Cohesion: 0.50
@@ -1177,8 +1176,8 @@ Cohesion: 0.29
 Nodes (10): generate_hints(), generate_params(), _nudge_off_round(), Any, DNA: Mass and Capacity (Measurement & Geometry)  Covers MATATAG grade 3 mass and, Pick a sensible rounding granularity for an estimate task by magnitude.      Eve, Shift a value that is already an exact multiple of its rounding unit.      "An o, Returns measurement value(s) and the answer.     For 'convert' task: produces va (+2 more)
 
 ### Community 222 - "models.py"
-Cohesion: 0.08
-Nodes (42): apply_experience(), apply_formatter(), generate_batch(), generate_problem(), _get_dna_instance(), Any, Random, Practice Generation — API Adapter ===================================  Main entr (+34 more)
+Cohesion: 0.06
+Nodes (59): apply_experience(), apply_formatter(), generate_batch(), generate_problem(), _get_dna_instance(), Any, Random, Practice Generation — API Adapter ===================================  Main entr (+51 more)
 
 ### Community 223 - "fmt_numeric_input.py"
 Cohesion: 0.12
@@ -1193,8 +1192,8 @@ Cohesion: 0.29
 Nodes (11): _answer_from_bond(), _build_bond(), _build_traps(), format_number_bond(), _max_whole(), Random, fmt_number_bond.py — NumberBond visual formatter  NEW formatter — gap analysis a, Return up to 3 distractor values.      Traps:         wrong_op   — student adds (+3 more)
 
 ### Community 226 - "socratic_chat_exchange"
-Cohesion: 0.13
-Nodes (19): Practice Generation — Compatibility & Registry Coverage Validation  Verifies tha, Integrity lint check asserting that along every prerequisite edge:     successor, Assert that the Lab router's bridge scalar is dynamically linked to the portal's, Unit test table for the registry bounds parser (`_parse_competency_bounds`)., §2B — every formatter a node advertises must actually generate for that node., Validate every entry in the COMPATIBILITY table.      Checks:       1. Each DNA, Run all compatibility and coverage checks and print a summary.      Returns:, Verify bidirectional coverage between the knowledge graph and NODE_TO_DNA,     a (+11 more)
+Cohesion: 0.33
+Nodes (7): _numeric_payload_values(), _profile_echo_keys(), Every `given_values` key that is an echo of the request rather than generated, Every plain number a generated problem exposes to the student, labelled for, test_numeric_payload_skips_booleans_and_collects_nested(), `given_values` echoes the request's difficulty profile alongside real operands., test_reach_scanner_excludes_the_echoed_difficulty_profile()
 
 ### Community 227 - "generate_params"
 Cohesion: 0.33
@@ -1202,7 +1201,7 @@ Nodes (6): 2026-08-12 — Tick C cluster 4: a named notation generated only as a
 
 ### Community 228 - "CompetencyConfiguration"
 Cohesion: 0.08
-Nodes (18): get_node_formatters(), Return the union of compatible formatters from all DNAs for a node.      Looks u, PracticeOrchestrator, Bridge Layer separating the generation logic from the FastAPI routing/server lay, formatter_supports_profile(), Mirror the orchestrator's per-DNA×formatter compatibility check     (backend/app, test_formatter_supports_profile.py =================================== Regressio, The orchestrator must set problem.dna_name to the actually-chosen DNA. (+10 more)
+Nodes (17): PracticeOrchestrator, Bridge Layer separating the generation logic from the FastAPI routing/server lay, formatter_supports_profile(), Mirror the orchestrator's per-DNA×formatter compatibility check     (backend/app, test_formatter_supports_profile.py =================================== Regressio, The orchestrator must set problem.dna_name to the actually-chosen DNA., The cross-DNA formatter filter, asserted as an INVARIANT over every case where, The complementary case: when the formatter IS offered by the node's own DNA, (+9 more)
 
 ### Community 229 - "models.py"
 Cohesion: 0.25
@@ -1213,8 +1212,8 @@ Cohesion: 0.29
 Nodes (7): 2026-08-20 (tick 3) — Building the competency the pipeline never served, A real hashing bug, found while building, An over-broad rename, caught by isolation rather than by reading, The defect: fictional providers behind a mis-routed node, The fix, Two checks caught me again — both correctly, Verbatim results
 
 ### Community 231 - "TestLogScaleDeclarations"
-Cohesion: 0.09
-Nodes (30): log_interpolate(), Logarithmic interpolation between min_val and max_val at position t.      Produc, generate_hints(), generate_params(), _object_pool(), Any, DNA: Length Measurement (Measurement & Geometry)  Covers MATATAG grades 1–2 leng, Returns numeric params used by the ruler_measure formatter or word-problem spine (+22 more)
+Cohesion: 0.07
+Nodes (40): interpolate(), linear_interpolate(), log_interpolate(), Compute the dimension value at difficulty scalar t.          If override_min/ove, Logarithmic interpolation between min_val and max_val at position t.      Produc, Linear interpolation between min_val and max_val at position t., Interpolate between min_val and max_val using the given scale type.      scale_t, generate_hints() (+32 more)
 
 ### Community 232 - "2026-08-14 — The blank landed on a given, not on the unknown"
 Cohesion: 0.29
@@ -1273,8 +1272,8 @@ Cohesion: 0.25
 Nodes (8): 2026-08-19 — Hardening Unit 2: §6D, the mechanical form of Rule 9, A wrong assertion I wrote and corrected, recorded because the correction is the finding, Contract wiring (two-direction lint), Mutation test — the check is proved by planting the violation it claims to catch, Result: 0 reported problems → 59, matching the §0 delta census exactly, The family, measured on this tree (not assumed), What the check keys on, and what it deliberately does not, What this unit does NOT close
 
 ### Community 246 - "generate_params"
-Cohesion: 0.50
-Nodes (4): generate_hints(), generate_params(), Any, Sample one scenario from the static pool filtered by difficulty profile.
+Cohesion: 0.52
+Nodes (6): _blindness(), build_records(), _load(), main(), Any, Attester filing — turn one blind Attester's verdicts into §6F/§6G-valid records.
 
 ### Community 247 - "Anti-Patterns"
 Cohesion: 0.29
@@ -1309,24 +1308,24 @@ Cohesion: 0.33
 Nodes (9): _build_traps(), _build_visual_params(), format_array_grid(), Random, fmt_array_grid.py — ArrayGrid (GridArea) visual formatter  Produces a FormattedP, Write `terms` copies of `addend` as a repeated sum, or describe it when     writ, Build an ArrayGrid FormattedProblem from a QuestionContext.      interaction_mod, Build ArrayGrid visual_params.      Grade 2: arrays up to 10×10 (multiplication (+1 more)
 
 ### Community 255 - "2026-08-13 — Content no competency asks for, and a metre wearing centimetres"
-Cohesion: 0.17
-Nodes (21): _bound_allows(), build_group(), build_packet(), _main(), _max_difficulty_profile(), Any, Practice Generation — Blind Judgment Review Packets  Builds the data a *blind* r, Generate one problem and reduce it to reviewer-facing rendered fields only. (+13 more)
+Cohesion: 0.11
+Nodes (31): get_all_node_ids(), Return all node IDs from NODE_TO_DNA, optionally filtered.      Nodes are return, _bound_allows(), build_group(), build_packet(), _main(), _max_difficulty_profile(), Any (+23 more)
 
 ### Community 256 - "Queries"
 Cohesion: 0.40
 Nodes (5): 2026-08-21 (tick 14) — CORRECTION: §2B's 236 was two defects, not one, I nearly shipped the wrong fix, Two other approaches, rejected by measurement rather than argument, What I got wrong last tick, What shipped
 
 ### Community 257 - "VisualSchemaRegistry"
-Cohesion: 0.50
-Nodes (4): generate_hints(), generate_params(), Any, Returns visual_params for the Calendar formatter and an answer value.       {"mo
+Cohesion: 0.40
+Nodes (5): Practice Generation — Interest Invariance Validation  Verifies that interest-the, Verify that interest theme does not alter the correct answer.      For each of `, Run interest invariance checks for all requires_context=True formula DNAs., validate_all_interest_invariance(), validate_interest_invariance()
 
 ### Community 258 - "2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3"
-Cohesion: 0.50
-Nodes (4): generate_hints(), generate_params(), Any, Sample one item from the static pool filtered by grade and difficulty profile.
+Cohesion: 0.33
+Nodes (6): Collapse a rationale to the structure that survives per-node substitution., _rationale_skeleton(), Same frame, different node/seeds/quotes -> identical skeleton. This is the tell., Two reviewers describing different content must not collapse together., test_independent_rationales_have_distinct_skeletons(), test_template_collapses_to_one_skeleton()
 
 ### Community 259 - "generate_params"
 Cohesion: 0.04
-Nodes (66): DimensionSpec, DNA, ErrorPattern, extract_continuous_scalar(), extract_discrete_level(), Practice Generation — DNA Base Definitions  All dataclasses, enums, and shared u, A pedagogically meaningful wrong answer.      formula:          SymPy expression, A mathematical term fragment gated behind vocab knowledge.      preferred:    Te (+58 more)
+Nodes (67): DimensionSpec, ErrorPattern, extract_continuous_scalar(), extract_discrete_level(), Practice Generation — DNA Base Definitions  All dataclasses, enums, and shared u, A pedagogically meaningful wrong answer.      formula:          SymPy expression, A mathematical term fragment gated behind vocab knowledge.      preferred:    Te, Extracts a discrete level from the difficulty profile.     If the value is a str (+59 more)
 
 ### Community 260 - "2026-08-13 — length_measurement: the largest FAIL cluster in the tree"
 Cohesion: 0.40
@@ -1349,8 +1348,8 @@ Cohesion: 0.31
 Nodes (8): _detect_input_type(), format_numeric_input(), _numeric_bounds(), Random, Textual Formatter — Numeric Input (Free-Entry)  Refactored from visual_skeletons, Classify the correct answer into integer, decimal, or fraction., Derive min_value / max_value from correct answer and available distractors., Format a QuestionContext as a free-entry numeric input problem.      format_data
 
 ### Community 265 - "fmt_array_grid.py"
-Cohesion: 0.15
-Nodes (11): interpolate(), Any, Compute the dimension value at difficulty scalar t.          If override_min/ove, A reusable story template with named slots.      Slots are filled from the stude, Fill template with interest slots and numeric values.                  Handles s, Interpolate between min_val and max_val using the given scale type.      scale_t, Spine, Random (+3 more)
+Cohesion: 0.18
+Nodes (9): Any, A reusable story template with named slots.      Slots are filled from the stude, Fill template with interest slots and numeric values.                  Handles s, Serialize to dict for API response., Spine, Random, Practice Generation — Story Spines ====================================  Defines, Choose the best narrative Spine for the current problem context.      Eligibilit (+1 more)
 
 ### Community 266 - "fmt_ruler_measure.py"
 Cohesion: 0.33
@@ -1373,24 +1372,28 @@ Cohesion: 0.33
 Nodes (10): backoff_until_window_reopens(), classify(), _limit_blob(), log(), probe_window_open(), run_capped(), run_tick(), hardening_runner.sh script (+2 more)
 
 ### Community 271 - "2026-08-19 — Hardening Unit 3: mutation coverage for §5 and §6"
-Cohesion: 0.19
-Nodes (15): _answer_leaks_into_stem(), _normalize_stem(), _option_in_stem(), Lowercase the stem and render LaTeX fractions as 'a/b' so an option like     '1/, Whether an option value appears in the stem as a *whole* token.      Substring m, Return a description of the leak, or None.      A stem that contains its own ans, _problem(), Unit tests for the two contract checks added on 2026-07-27:   §1F  — a question (+7 more)
+Cohesion: 0.21
+Nodes (14): _answer_leaks_into_stem(), _normalize_stem(), _option_in_stem(), Lowercase the stem and render LaTeX fractions as 'a/b' so an option like     '1/, Whether an option value appears in the stem as a *whole* token.      Substring m, Return a description of the leak, or None.      A stem that contains its own ans, _problem(), Unit tests for the two contract checks added on 2026-07-27:   §1F  — a question (+6 more)
+
+### Community 272 - "test_attestation_goes_stale_when_content_drifts"
+Cohesion: 0.33
+Nodes (6): 1. §2D — the saved-config path bypassed curriculum gating (live), 2026-08-28 — Track S: gate the student-facing boundary (§9 render, §10 grading), and §2D, 2. §9 — the render contract, 3. §10 — the grading contract, 4. Kill-safe mutation restore, Carried, not fixed
 
 ### Community 273 - "test_regrouping_feasibility.py"
-Cohesion: 0.06
-Nodes (48): decompose_to_places(), generate_hints(), generate_params(), max_regrouping_places(), Any, DNA: Addition (Number & Algebra)  Refactored from:   - matatag_skeletons.py  (ar, Return 2–4 step-by-step hint strings for the given addition problem., "N is H hundreds, T tens, and O ones." (place values whose digit is 0     are om (+40 more)
+Cohesion: 0.11
+Nodes (24): generate_hints(), generate_params(), max_regrouping_places(), Any, DNA: Addition (Number & Algebra)  Refactored from:   - matatag_skeletons.py  (ar, Return 2–4 step-by-step hint strings for the given addition problem., Check if a pair satisfies regrouping difficulty based on COUNT of places.      C, Largest carry count physically achievable for any (a, b) with a + b <= max_resul (+16 more)
 
 ### Community 274 - "2026-08-21 (tick 17) — §2B was guarding one direction only"
 Cohesion: 0.40
 Nodes (5): 2026-08-21 (tick 17) — §2B was guarding one direction only, Fixed and proved, The 33 single-formatter nodes, surveyed, The gap I shipped, Why I did not broaden them this tick
 
 ### Community 275 - "test_attestation_without_samples_cannot_be_checked_and_fails"
-Cohesion: 0.30
-Nodes (11): get_all_node_ids(), Return all node IDs from NODE_TO_DNA, optionally filtered.      Nodes are return, count_mutations(), count_nodes(), count_unit_tests(), main(), §7 — the suite's own census has not silently got smaller.  Why this exists -----, How many tests the fast suite would actually RUN, not how many exist.      `--co (+3 more)
+Cohesion: 0.38
+Nodes (9): count_mutations(), count_nodes(), count_unit_tests(), main(), §7 — the suite's own census has not silently got smaller.  Why this exists -----, How many tests the fast suite would actually RUN, not how many exist.      `--co, Return one error per floor breached. Empty list means the suite is intact., validate_all() (+1 more)
 
 ### Community 277 - "_combined_interests"
-Cohesion: 0.07
-Nodes (46): _build_symbolic_question(), _detect_axes_served(), _eval_error_formula(), generate_context(), get_node(), _import_dna_module(), Any, Practice Generation — Context Generator ======================================== (+38 more)
+Cohesion: 0.24
+Nodes (10): _contains_forbidden_term(), get_grade_appropriate_interests(), get_interest_slots(), pick_interest(), Random, Practice Generation — Interest Bank =====================================  Loads, Build a single-problem slot dict for the given interest theme.      Randomly sel, Choose the best available interest ID for a student.      Selection logic (in pr (+2 more)
 
 ### Community 278 - "test_6g_is_clean_on_the_real_tree"
 Cohesion: 0.22
@@ -1401,16 +1404,16 @@ Cohesion: 0.40
 Nodes (5): 2026-08-21 (tick 12) — An array cannot depict a zero factor, A wrong first attempt, and why the second is better, One remaining §1G finding, newly diagnosed, The defect was a false declaration, not code, What remains, and it is informative rather than broken
 
 ### Community 280 - "run_all.py"
-Cohesion: 0.38
-Nodes (6): _parse_contract_section_refs(), Practice Generation — Validation Harness Runner  Runs all validators in the prac, Extract every '§1A'-style reference from docs/pgen_contract.md's rule     table, Run the fast unit suite and report it as a harness stage (§0).      Subprocess r, run_all(), _run_unit_tests()
+Cohesion: 0.50
+Nodes (4): 2026-08-20 (tick 7) — The harness now runs its own tests, Proved, not assumed, What shipped, Why
 
 ### Community 281 - "2026-08-20 — Tick C: `mat_g2_mg_q4_3` content defects fixed at root, and `explain` built"
 Cohesion: 0.29
 Nodes (7): 2026-08-20 — Tick C: `mat_g2_mg_q4_3` content defects fixed at root, and `explain` built, CORRECTION (same tick, appended — the original claim above is wrong and is left standing), Movements, Process note, Root cause and the fix, Verbatim results, What was wrong
 
 ### Community 282 - "generate_params"
-Cohesion: 0.33
-Nodes (6): generate_hints(), generate_params(), _mix(), Any, Avalanche a seed before it is reduced modulo a small bucket count.      Plain mu, Sample one item from the static pool, filtered by grade and profile.
+Cohesion: 0.32
+Nodes (7): generate_hints(), generate_params(), _mix(), Any, DNA: Compose & Decompose Numbers to 10 (Number & Algebra)  Serves MATATAG mat_g1, Avalanche a seed before it is reduced modulo a small bucket count.      Plain mu, Sample one item from the static pool, filtered by grade and profile.
 
 ### Community 283 - "get_node_capabilities"
 Cohesion: 0.33
@@ -1495,10 +1498,6 @@ Nodes (3): main(), _measure_now(), Re-run the supervisor so it rewrites the stat
 ### Community 305 - "test_6g_is_clean_on_the_real_tree"
 Cohesion: 0.67
 Nodes (3): main(), Return (preamble, [entry, ...]) without losing a byte., split_entries()
-
-### Community 306 - "2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key"
-Cohesion: 0.50
-Nodes (4): 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, The failing rationale, Verification, Why binding alone was not enough — and what had to be built
 
 ### Community 307 - "test_generic_textual_formatter_is_not_a_provider"
 Cohesion: 0.40
@@ -1585,24 +1584,24 @@ Cohesion: 0.67
 Nodes (3): 2026-08-13 — Tick C (the g3_mg_q1 area cluster — queue item 1), Next tick should:, What the blind re-review actually bought
 
 ## Knowledge Gaps
-- **1840 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+1835 more)
+- **1845 isolated node(s):** `graphify`, `PackageDescription`, `Foundation`, `PathKit`, `graphify-mcp` (+1840 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **38 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `FormattedProblem` connect `models.py` to `generate_params`, `_get_available_formats`, `.axis_level_index`, `2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest`, `Community 8`, `Community 138`, `Community 13`, `test_regrouping_feasibility.py`, `Community 18`, `Community 25`, `Community 50`, `Community 51`, `Spine`, `1. Local Prototyping: Data Seeding`, `Community 59`, `Community 60`, `get_gemini_models`, `Community 70`, `Community 77`, `Community 79`, `Community 92`, `Community 93`, `Community 95`, `get_all_node_ids`, `Community 99`, `Community 100`, `Community 117`, `_profile_echo_keys`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`?**
-  _High betweenness centrality (0.034) - this node is a cross-community bridge._
-- **Why does `get_node_info()` connect `_combined_interests` to `Community 4`, `Community 102`, `Community 104`, `Community 41`, `Community 8`, `Community 11`, `Community 9`, `Community 14`, `Community 16`, `hardening_supervisor.py`, `Native SQL Examples`, `models.py`, `2026-08-13 — Content no competency asks for, and a metre wearing centimetres`?**
-  _High betweenness centrality (0.024) - this node is a cross-community bridge._
-- **Why does `QuestionContext` connect `Community 50` to `generate_params`, `_get_available_formats`, `.axis_level_index`, `2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest`, `Community 138`, `Community 13`, `test_regrouping_feasibility.py`, `Community 18`, `_combined_interests`, `Community 51`, `Spine`, `1. Local Prototyping: Data Seeding`, `Community 59`, `Community 60`, `get_gemini_models`, `Community 70`, `Community 77`, `Community 79`, `Community 92`, `Community 93`, `models.py`, `Community 95`, `get_all_node_ids`, `Community 99`, `Community 100`, `_profile_echo_keys`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`?**
-  _High betweenness centrality (0.023) - this node is a cross-community bridge._
+- **Why does `FormattedProblem` connect `models.py` to `generate_params`, `Community 4`, `_get_available_formats`, `.axis_level_index`, `2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest`, `fmt_array_grid.py`, `Community 138`, `Community 8`, `Community 13`, `Community 18`, `Community 25`, `Community 50`, `Community 51`, `Spine`, `validate_interest.py`, `1. Local Prototyping: Data Seeding`, `Community 59`, `Community 60`, `get_gemini_models`, `Community 70`, `Community 75`, `Community 77`, `Community 79`, `Community 92`, `Community 93`, `Community 95`, `get_all_node_ids`, `Community 99`, `Community 100`, `_profile_echo_keys`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`?**
+  _High betweenness centrality (0.035) - this node is a cross-community bridge._
+- **Why does `QuestionContext` connect `Community 50` to `generate_params`, `_get_available_formats`, `.axis_level_index`, `2026-08-23 — tick 24 — 90 clauses attested; the medium clauses are where the tree is thinnest`, `Community 138`, `Community 11`, `Community 13`, `Community 18`, `Community 51`, `Spine`, `1. Local Prototyping: Data Seeding`, `Community 59`, `Community 60`, `get_gemini_models`, `Community 70`, `Community 75`, `Community 77`, `Community 79`, `Community 92`, `Community 93`, `models.py`, `Community 95`, `get_all_node_ids`, `Community 99`, `Community 100`, `_profile_echo_keys`, `2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared`?**
+  _High betweenness centrality (0.026) - this node is a cross-community bridge._
+- **Why does `get_node_info()` connect `Community 104` to `Community 4`, `Community 102`, `Community 8`, `Community 41`, `Community 11`, `Community 14`, `Community 16`, `hardening_supervisor.py`, `Native SQL Examples`, `models.py`, `2026-08-13 — Content no competency asks for, and a metre wearing centimetres`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **What connects `graphify`, `PackageDescription`, `Foundation` to the rest of the system?**
-  _2565 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _2585 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.053939714436805924 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.06938775510204082 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11290322580645161 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._

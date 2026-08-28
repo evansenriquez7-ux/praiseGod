@@ -17,6 +17,7 @@ from typing import List
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
+from backend.app.practice_gen.formatters._option_order import shuffle_options
 
 
 def _build_pure_question(ctx: QuestionContext) -> str:
@@ -264,7 +265,7 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
             {"value": "Cannot be determined", "is_correct": False},
             {"value": "Only when both are 0", "is_correct": False},
         ]
-        rng.shuffle(pool)
+        shuffle_options(pool, ctx.node_id, ctx.seed)
         keys = ["A", "B", "C", "D"]
         options = []
         correct_key = "A"
@@ -373,7 +374,7 @@ def format_mcq(ctx: QuestionContext, rng: random.Random) -> FormattedProblem:
     ]
 
     # Shuffle and assign keys
-    rng.shuffle(pool)
+    shuffle_options(pool, ctx.node_id, ctx.seed)
     keys = ["A", "B", "C", "D"][:len(pool)]
     options = []
     correct_key = "A"

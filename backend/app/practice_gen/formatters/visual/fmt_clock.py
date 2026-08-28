@@ -19,6 +19,7 @@ from typing import Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext
 from backend.app.practice_gen.formatters._distractor_fallback import augment_distractors
+from backend.app.practice_gen.formatters._option_order import shuffle_options
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -244,7 +245,7 @@ def format_clock(
                 target_correct = time_str
                 distractor_strings = _trap_time_strings(traps, use_24, correct_tuple, rng, period)
                 all_options = [target_correct] + [d for d in distractor_strings if d != target_correct][:3]
-            rng.shuffle(all_options)
+            shuffle_options(all_options, ctx.node_id, ctx.seed)
             mcq_options = [
                 {"key": chr(ord("A") + i), "value": opt, "is_correct": opt == target_correct}
                 for i, opt in enumerate(all_options)
@@ -260,7 +261,7 @@ def format_clock(
         if answer_collection == "mcq":
             distractor_strings = _trap_time_strings(traps, use_24, correct_tuple, rng, period)
             all_options = [time_str] + distractor_strings[:3]
-            rng.shuffle(all_options)
+            shuffle_options(all_options, ctx.node_id, ctx.seed)
             mcq_options = [
                 {"key": chr(ord("A") + i), "value": opt, "is_correct": opt == time_str}
                 for i, opt in enumerate(all_options)

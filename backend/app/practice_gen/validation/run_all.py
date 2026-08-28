@@ -75,6 +75,7 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§2": "validate_compat: registry/compatibility coverage & monotonicity",
     "§2B": "validate_compat: every formatter a node advertises can actually be served for it",
     "§2D": "validate_compat: a saved configuration may not serve content outside a node's competency",
+    "§2E": "validate_compat: the correct option's position must not be predictable from the seed",
     "§3": "validate_dna: structural checks and difficulty profiles feasibility",
     "§4": "validate_matrix: VISUAL payload schema validation (recorded only under is_visual, so ~67 of 151 nodes; non-visual response shape rests on the Pydantic model at runtime)",
     "§5": "validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews",
@@ -175,6 +176,8 @@ def run_all(fail_fast: bool = False) -> int:
     if compat_ok:
         executed_checks.add("§2")
         executed_checks.add("§2B")
+        executed_checks.add("§2D")
+        executed_checks.add("§2E")
     elif fail_fast:
         print("  FAIL compatibility validation (fail-fast active)")
         return 1

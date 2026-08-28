@@ -21,6 +21,7 @@ import random
 from typing import List, Optional
 
 from backend.app.practice_gen.dna.base import FormattedProblem, QuestionContext, VocabGated
+from backend.app.practice_gen.formatters._option_order import shuffle_options
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -386,7 +387,7 @@ def format_bar_chart(
                 )
 
         all_opts = [correct_value] + distractor_vals[:3]
-        rng.shuffle(all_opts)
+        shuffle_options(all_opts, ctx.node_id, ctx.seed)
         mcq_options = [
             {"key": chr(ord("A") + i), "value": v, "is_correct": v == correct_value}
             for i, v in enumerate(all_opts)
