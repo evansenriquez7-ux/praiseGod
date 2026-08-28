@@ -812,6 +812,157 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["FAIL assertion_coverage", "worker_crash"],
         baseline_must_not_contain=["FAIL assertion_coverage"],
     ),
+    # ---------------------------------------------------------------------------
+    # The MCQ answer-key family: five assertions guarding the options a pupil actually
+    # chooses between. All five were on §8's unproven allowlist -- the largest cluster of
+    # assertion debt in the harness, and the one closest to the student.
+    # ---------------------------------------------------------------------------
+    Mutation(
+        name="mcq_wrong_option_count",
+        asserts=["mcq_option_count"],
+        description="Serve three options instead of four, so the pupil is choosing from a short menu.",
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                '    format_data = {\n        "options": options,\n        "correct_key": correct_key,\n        "context": context_variant,\n    }\n',
+                '    options = options[:3]  # planted mutation: short option list\n' + '    format_data = {\n        "options": options,\n        "correct_key": correct_key,\n        "context": context_variant,\n    }\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§4/§1C (MCQ option count)",
+        expect_output_contains=["mcq_option_count"],
+        baseline_must_not_contain=["mcq_option_count"],
+    ),
+    Mutation(
+        name="mcq_no_correct_option",
+        asserts=["mcq_correct_presence"],
+        description=(
+            "Mark every option incorrect. The pupil cannot answer correctly no matter what "
+            "they choose, and nothing that reads the stem would notice."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                '    format_data = {\n        "options": options,\n        "correct_key": correct_key,\n        "context": context_variant,\n    }\n',
+                '    options = [dict(o, is_correct=False) for o in options]  # planted mutation\n' + '    format_data = {\n        "options": options,\n        "correct_key": correct_key,\n        "context": context_variant,\n    }\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§4/§1C (an MCQ must contain its correct answer)",
+        expect_output_contains=["mcq_correct_presence"],
+        baseline_must_not_contain=["mcq_correct_presence"],
+    ),
+    Mutation(
+        name="mcq_duplicate_options",
+        asserts=["mcq_option_uniqueness"],
+        description=(
+            "Duplicate an option value, so two choices are indistinguishable and one of "
+            "them is 'wrong' while reading identically to the right one."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                '    format_data = {\n        "options": options,\n        "correct_key": correct_key,\n        "context": context_variant,\n    }\n',
+                '    if len(options) > 1:  # planted mutation: duplicate a value\n'
+                '        options[-1] = dict(options[-1], value=options[0]["value"])\n' + '    format_data = {\n        "options": options,\n        "correct_key": correct_key,\n        "context": context_variant,\n    }\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§4/§1C (MCQ options must be distinct)",
+        expect_output_contains=["mcq_option_uniqueness"],
+        baseline_must_not_contain=["mcq_option_uniqueness"],
+    ),
+    Mutation(
+        name="mcq_empty_option_value",
+        asserts=["mcq_option_validity"],
+        description=(
+            "Blank one option's value. It renders as an empty choice the pupil can select "
+            "and can never be right."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                '    format_data = {\n        "options": options,\n        "correct_key": correct_key,\n        "context": context_variant,\n    }\n',
+                '    if options:  # planted mutation: blank an option\n'
+                '        options[-1] = dict(options[-1], value="")\n' + '    format_data = {\n        "options": options,\n        "correct_key": correct_key,\n        "context": context_variant,\n    }\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§4/§1C (no MCQ option may be empty)",
+        expect_output_contains=["mcq_option_validity"],
+        baseline_must_not_contain=["mcq_option_validity"],
+    ),
+    Mutation(
+        name="mcq_key_disagrees_with_option",
+        asserts=["mcq_correct_value_mismatch"],
+        description=(
+            "Flag a DIFFERENT option as correct from the one the answer key names. The "
+            "pupil who answers correctly is marked wrong -- the same class §10 catches at "
+            "the grader, caught here at the payload instead."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                '    format_data = {\n        "options": options,\n        "correct_key": correct_key,\n        "context": context_variant,\n    }\n',
+                '    if len(options) > 1:  # planted mutation: key names a different option\n'
+                '        options = [dict(o, is_correct=(i == (0 if not o["is_correct"] else 1)))\n'
+                '                   for i, o in enumerate(options)]\n' + '    format_data = {\n        "options": options,\n        "correct_key": correct_key,\n        "context": context_variant,\n    }\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§4/§1C (the flagged option must match the answer key)",
+        expect_output_contains=["mcq_correct_value_mismatch"],
+        baseline_must_not_contain=["mcq_correct_value_mismatch"],
+    ),
+    # Per-problem integrity: cheap to plant, and each guards something a pupil would meet
+    # directly -- a blank question, a missing key, a formatter that is not what was asked for.
+    Mutation(
+        name="blank_question_text",
+        asserts=["question_text_presence"],
+        description="Serve an empty stem. The pupil is shown options and no question.",
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                '    format_data = {\n        "options": options,\n        "correct_key": correct_key,\n        "context": context_variant,\n    }\n',
+                '    question_text = ""  # planted mutation: blank stem\n' + '    format_data = {\n        "options": options,\n        "correct_key": correct_key,\n        "context": context_variant,\n    }\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§1C (a served problem must carry a question)",
+        expect_output_contains=["question_text_presence"],
+        baseline_must_not_contain=["question_text_presence"],
+    ),
+    Mutation(
+        name="missing_correct_answer",
+        asserts=["correct_answer_presence"],
+        description=(
+            "Serve a problem with no answer key at all. Nothing downstream can grade it, "
+            "and the reviews and attestations that read rendered output would still pass."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                "        correct_answer=ctx.correct_answer,\n        distractors=distractors,",
+                "        correct_answer=None,  # planted mutation: no answer key\n        distractors=distractors,",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§1C (a served problem must carry an answer key)",
+        expect_output_contains=["correct_answer_presence"],
+        baseline_must_not_contain=["correct_answer_presence"],
+    ),
+    Mutation(
+        name="formatter_route_mismatch",
+        asserts=["formatter_match"],
+        description=(
+            "Return a route name that is not the formatter that was requested. The Lab and "
+            "the matrix both believe they pinned one formatter while another was served -- "
+            "which is how a per-formatter sweep can validate content nobody asked for."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                '        format="mcq",\n        format_data=format_data,',
+                '        format="cloze",  # planted mutation: route lies about the formatter\n        format_data=format_data,',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§1C (the served route must be the formatter that was requested)",
+        expect_output_contains=["formatter_match"],
+        baseline_must_not_contain=["formatter_match"],
+    ),
 ]
 
 

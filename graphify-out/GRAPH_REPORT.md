@@ -1,16 +1,16 @@
 # Graph Report - ccmed  (2026-08-28)
 
 ## Corpus Check
-- 646 files · ~1,215,162 words
+- 646 files · ~1,215,826 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 4591 nodes · 6905 edges · 352 communities (317 shown, 35 thin omitted)
+- 4591 nodes · 6905 edges · 351 communities (316 shown, 35 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 100 edges (avg confidence: 0.57)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c364742f`
+- Built from commit: `317d707f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -256,6 +256,7 @@
 - [[_COMMUNITY_2026-08-13 — perimeter an impossible triangle, and two shapes that never appeared|2026-08-13 — perimeter: an impossible triangle, and two shapes that never appeared]]
 - [[_COMMUNITY_2026-08-13 — Content no competency asks for, and a metre wearing centimetres|2026-08-13 — Content no competency asks for, and a metre wearing centimetres]]
 - [[_COMMUNITY_Queries|Queries]]
+- [[_COMMUNITY_2026-08-14 — 2-digit by 1-digit bounds two operands, and only one had a key|2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key]]
 - [[_COMMUNITY_2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3|2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3]]
 - [[_COMMUNITY_generate_params|generate_params]]
 - [[_COMMUNITY_2026-08-13 — length_measurement the largest FAIL cluster in the tree|2026-08-13 — length_measurement: the largest FAIL cluster in the tree]]
@@ -301,7 +302,6 @@
 - [[_COMMUNITY_test_6g_is_clean_on_the_real_tree|test_6g_is_clean_on_the_real_tree]]
 - [[_COMMUNITY_2026-08-14 — 2-digit by 1-digit bounds two operands, and only one had a key|2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key]]
 - [[_COMMUNITY_test_generic_textual_formatter_is_not_a_provider|test_generic_textual_formatter_is_not_a_provider]]
-- [[_COMMUNITY_Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path|Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path]]
 - [[_COMMUNITY__combined_interests|_combined_interests]]
 - [[_COMMUNITY_health|health]]
 - [[_COMMUNITY__combined_interests|_combined_interests]]
@@ -324,7 +324,6 @@
 - [[_COMMUNITY_2026-08-13 — Tick C. `mat_g3_mg_q1_1` reaches PASS; NON-VERDICT stays 0.|2026-08-13 — Tick C. **`mat_g3_mg_q1_1` reaches PASS; NON-VERDICT stays 0.**]]
 - [[_COMMUNITY_2026-08-13 — Tick C perimeter. FAIL 30 → 29.|2026-08-13 — Tick C: perimeter. **FAIL 30 → 29.**]]
 - [[_COMMUNITY_2026-08-13 — Tick C (the g3_mg_q1 area cluster — queue item 1)|2026-08-13 — Tick C (the g3_mg_q1 area cluster — queue item 1)]]
-- [[_COMMUNITY__get_max_regrouping_places|_get_max_regrouping_places]]
 - [[_COMMUNITY_2026-08-12 — Tick A|2026-08-12 — Tick A]]
 - [[_COMMUNITY_2026-08-12 — TICK A (second) — content checks were skipping every non-PASS review|2026-08-12 — **TICK A (second)** — content checks were skipping every non-PASS review]]
 - [[_COMMUNITY_2026-08-12 — Tick B (batch B8, 14 nodes) — TICK B COMPLETE all 151 nodes reviewed|2026-08-12 — Tick B (batch B8, 14 nodes) — **TICK B COMPLETE: all 151 nodes reviewed**]]
@@ -378,7 +377,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (352 total, 35 thin omitted)
+## Communities (351 total, 35 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.12
@@ -789,12 +788,12 @@ Cohesion: 0.22
 Nodes (8): _evaluate_left_to_right(), generate_hints(), generate_params(), Any, DNA: Order of Operations (Number & Algebra)  G3 only — addition and subtraction, Generate an order-of-operations problem (G3 only, + and − left to right).      R, Return 2–4 step-by-step hints for an order-of-operations problem., Evaluate an expression left to right given operands and operator list.
 
 ### Community 102 - "Community 102"
-Cohesion: 0.13
-Nodes (20): One reviewer identity may not stamp the whole tree.      Blind review is dispatc, Fail any normalized rationale skeleton shared by more than _MAX_SKELETON_CLUSTER, _validate_reviewer_plurality(), _validate_skeleton_clusters(), test_judgment_antitemplate.py ============================= The judgment gate's, A CONCERN or FAIL verdict must not exempt a review from the content checks., A reviewer quoting a stem it was actually shown is the genuine shape., The exact fabrication mechanism: a stem quoted that the packet never contained. (+12 more)
+Cohesion: 0.11
+Nodes (24): One reviewer identity may not stamp the whole tree.      Blind review is dispatc, Fail any normalized rationale skeleton shared by more than _MAX_SKELETON_CLUSTER, _validate_reviewer_plurality(), _validate_skeleton_clusters(), test_judgment_antitemplate.py ============================= The judgment gate's, Same frame, different node/seeds/quotes -> identical skeleton. This is the tell., Two reviewers describing different content must not collapse together., A CONCERN or FAIL verdict must not exempt a review from the content checks. (+16 more)
 
 ### Community 103 - "Community 103"
 Cohesion: 0.05
-Nodes (42): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, 2026-08-14 — A stated width is a floor as well as a ceiling, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 7) — The harness now runs its own tests, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, 2026-08-23 — §6G: an attestation must show its work (+34 more)
+Nodes (37): 1. Distractor Non-Determinism Fix in `place_value.py`, 1. Fractions answer-key false positive — `mat_g2_na_q4_0`/`_1`/`_2`, 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, 2026-08-19 — Unit 3 completion + full `run_all` verification, 2026-08-20 (tick 7) — The harness now runs its own tests, 2026-08-23 — §6G: an attestation must show its work, 2026-08-24 — tick 25 — 177 clauses attested; §6F UNATTESTED backlog reduced from 538 to 361, 2026-08-24 — tick 26 — 361 clauses attested across 89 nodes; §6F UNATTESTED backlog completely cleared (361 -> 0) (+29 more)
 
 ### Community 104 - "Community 104"
 Cohesion: 0.11
@@ -1197,8 +1196,8 @@ Cohesion: 0.33
 Nodes (6): 2026-08-12 — Tick C cluster 4: a named notation generated only as a wrong answer, Before / after, Fix, Fresh blind re-review (reviewer never saw the fix), Root cause, The failing rationale
 
 ### Community 228 - "CompetencyConfiguration"
-Cohesion: 0.40
-Nodes (5): 2026-08-13 — The unanswerable measure item was a routing bug, not a wording one, Second defect, same tick — a competency serving two of its three parts, That reasoning held, and the table showed exactly why, The blast radius the previous tick warned about did not materialise, The failing rationale
+Cohesion: 0.13
+Nodes (13): 2026-08-13 — The unanswerable measure item was a routing bug, not a wording one, 2026-08-20 — §5 worker death: a silent unbounded wait in the last gate, 2026-08-20 (tick 8) — A dispatch-only tick: coverage 52 → 127, Content defects found unasked, Proved by killing a worker mid-run, Second defect, same tick — a competency serving two of its three parts, That reasoning held, and the table showed exactly why, The blast radius the previous tick warned about did not materialise (+5 more)
 
 ### Community 229 - "models.py"
 Cohesion: 0.25
@@ -1269,8 +1268,8 @@ Cohesion: 0.25
 Nodes (8): 2026-08-19 — Hardening Unit 2: §6D, the mechanical form of Rule 9, A wrong assertion I wrote and corrected, recorded because the correction is the finding, Contract wiring (two-direction lint), Mutation test — the check is proved by planting the violation it claims to catch, Result: 0 reported problems → 59, matching the §0 delta census exactly, The family, measured on this tree (not assumed), What the check keys on, and what it deliberately does not, What this unit does NOT close
 
 ### Community 246 - "generate_params"
-Cohesion: 0.18
-Nodes (16): _attestation_records(), Every attestation batch on disk, whole, for the freshness pass., Collapse a rationale to the structure that survives per-node substitution., _rationale_skeleton(), _blindness(), build_records(), check_skeletons(), _load() (+8 more)
+Cohesion: 0.27
+Nodes (12): _attestation_records(), Every attestation batch on disk, whole, for the freshness pass., Collapse a rationale to the structure that survives per-node substitution., _rationale_skeleton(), _blindness(), build_records(), check_skeletons(), _load() (+4 more)
 
 ### Community 247 - "Anti-Patterns"
 Cohesion: 0.29
@@ -1289,8 +1288,8 @@ Cohesion: 0.29
 Nodes (7): 2026-08-21 (tick 15) — Eight nodes where every Lab preview raised, A count that rose for a good reason, A near-miss avoided by formatting, not judgment, Fixed by declaring the truth, not loosening the logic, The symptom, Traced to one predicate, Verified
 
 ### Community 251 - "2026-08-14 — A stated width is a floor as well as a ceiling"
-Cohesion: 0.50
-Nodes (4): 2026-08-13 — The G1 measure items: a visual for the task, and a size model for the units, A regression I introduced and caught by measuring, Defect 1 — the dataless distance item, Defect 2 — object and unit drawn independently
+Cohesion: 0.40
+Nodes (5): 2026-08-14 — A stated width is a floor as well as a ceiling, Recorded, not fixed: the verb `Illustrate`, Root cause — two layers, and the first fix was not enough, The failing rationale, Verification
 
 ### Community 252 - "2026-08-19 — Hardening Unit 1: restore two weakened tests (deliberate documented red)"
 Cohesion: 0.22
@@ -1311,6 +1310,10 @@ Nodes (25): get_node_info(), Return the full knowledge-graph node dict for a nod
 ### Community 256 - "Queries"
 Cohesion: 0.40
 Nodes (5): 2026-08-21 (tick 14) — CORRECTION: §2B's 236 was two defects, not one, I nearly shipped the wrong fix, Two other approaches, rejected by measurement rather than argument, What I got wrong last tick, What shipped
+
+### Community 257 - "2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key"
+Cohesion: 0.50
+Nodes (4): 2026-08-14 — "2-digit by 1-digit" bounds two operands, and only one had a key, The failing rationale, Verification, Why binding alone was not enough — and what had to be built
 
 ### Community 258 - "2026-08-20 (tick 6) — There is no pytest deadlock, and three tests I broke in tick 3"
 Cohesion: 0.33
@@ -1488,10 +1491,6 @@ Nodes (5): 2026-08-28 — Track S3 (§2C reachability) and Track R1–R2 (the op
 Cohesion: 0.40
 Nodes (5): 2026-08-20 (tick 9) — The evidence pipeline was lying, and I had filed verdicts on it, The finding the fix bought: invalid banknotes reaching pupils, The lesson, Tick 8's reported defects, re-checked, Two defects, both in the evidence pipeline, both mine
 
-### Community 309 - "Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path"
-Cohesion: 0.50
-Nodes (4): A wrong hypothesis, withdrawn rather than shipped, The sweep, Then reproduced properly, by replaying the matrix's own sweep, Tick 22 — 2026-08-22 — the range fix lands, and a third zero-factor path
-
 ### Community 313 - "get_node_capabilities"
 Cohesion: 0.40
 Nodes (5): 2026-08-21 (tick 17) — §2B was guarding one direction only, Fixed and proved, The 33 single-formatter nodes, surveyed, The gap I shipped, Why I did not broaden them this tick
@@ -1563,10 +1562,6 @@ Nodes (3): 2026-08-13 — Tick C: perimeter. **FAIL 30 → 29.**, A false alarm 
 ### Community 333 - "2026-08-13 — Tick C (the g3_mg_q1 area cluster — queue item 1)"
 Cohesion: 0.67
 Nodes (3): 2026-08-13 — Tick C (the g3_mg_q1 area cluster — queue item 1), Next tick should:, What the blind re-review actually bought
-
-### Community 334 - "_get_max_regrouping_places"
-Cohesion: 0.50
-Nodes (4): 2026-08-20 — §5 worker death: a silent unbounded wait in the last gate, Proved by killing a worker mid-run, The guard, Two related findings recorded while diagnosing
 
 ### Community 356 - "Tick 23 — 2026-08-22 — the contradiction closes, and the Attester's aside was the next bug"
 Cohesion: 0.40
