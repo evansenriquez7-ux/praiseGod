@@ -61,16 +61,12 @@ scratch/
 local_only/*
 !local_only/scratch/
 local_only/scratch/*
-!local_only/scratch/hardening_ledger.md
 !local_only/scratch/hardening_prompt.md
 !local_only/scratch/gemini_hardening_loop_prompt.md
-!local_only/scratch/ledger_archive/
 #
-# NOTE (2026-08-26): by CLAUDE.md's own file rules these do not belong under
-# `local_only/scratch/`, which is for TEMPORARY files. The ledger is a permanent audit
-# artifact (`validation_reports/`) and the prompts are operational protocol (`docs/`).
-# Moving them is a workflow decision for the maintainer, not a correctness fix, so it is
-# recorded here rather than done silently. `scripts/rotate_ledger.py` bounds the ledger.
+# NOTE (2026-08-28): the ledger MOVED to validation_reports/, where a permanent audit
+# artifact belongs per CLAUDE.md's file rules. The two prompts remain here as the only
+# tracked exceptions; they are operational protocol and arguably belong in docs/.
 
 # Logs
 *.log

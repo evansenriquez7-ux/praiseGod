@@ -36,7 +36,7 @@ Exit 0 is the definition of done (`AGENTS.md`) and it has been reached dishonest
 | Artifact | Holds | Changes |
 |---|---|---|
 | **this file** (`local_only/scratch/gemini_hardening_loop_prompt.md`) | Rules, hazards, procedure | Rarely |
-| `local_only/scratch/hardening_ledger.md` | Current state and the work queue (`Next tick should:`) | Every tick |
+| `validation_reports/hardening_ledger.md` | Current state and the work queue (`Next tick should:`) | Every tick |
 | `local_only/scratch/hardening_status.json` | Machine snapshot for the cheap check — **a claim, not evidence** | Every supervisor run |
 | `validation_reports/HARDENING_EVIDENCE.md` | Verbatim command output — the receipt an auditor reads | Every pipeline commit |
 
@@ -340,7 +340,7 @@ Every tick ends with:
 1. **Clean, committed working tree**.
 2. **No background jobs outstanding**.
 3. **`HARDENING_EVIDENCE.md` entry** for any pipeline/skeleton commit.
-4. **Ledger entry appended to `local_only/scratch/hardening_ledger.md`**:
+4. **Ledger entry appended to `validation_reports/hardening_ledger.md`**:
 
 ```markdown
 ## <ISO date/time> — tick <n>

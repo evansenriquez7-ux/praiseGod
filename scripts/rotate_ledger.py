@@ -32,7 +32,7 @@ from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-LEDGER = REPO / "local_only/scratch/hardening_ledger.md"
+LEDGER = REPO / "validation_reports/hardening_ledger.md"
 ARCHIVE_DIR = LEDGER.parent / "ledger_archive"
 
 # Entries begin with a level-2 heading: "## 2026-08-26 — tick 489 — ...".
@@ -81,7 +81,7 @@ def main() -> int:
     ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
     header = "" if archive.exists() else (
         "# Hardening ledger archive\n\n"
-        "Rotated out of `local_only/scratch/hardening_ledger.md` to keep the active file\n"
+        "Rotated out of `validation_reports/hardening_ledger.md` to keep the active file\n"
         "cheap to commit. Nothing here was edited; entries are verbatim and in order.\n"
     )
     with archive.open("a", encoding="utf-8") as fh:

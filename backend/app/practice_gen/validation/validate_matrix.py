@@ -27,6 +27,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 # Set up backend imports
+REPO_ROOT = Path(__file__).resolve().parents[4]
 from backend.app.practice_gen.pipeline import run
 from backend.app.practice_gen.registry import (
     get_node_competency_bounds,
@@ -1827,6 +1828,57 @@ def applicability_failures(report_executed: Dict[str, List[str]]) -> List[str]:
                 f"the rule to make this pass without first proving the check still runs."
             )
     return out
+
+
+
+_COVERAGE_BASELINE = REPO_ROOT / "validation_reports" / "check_coverage_baseline.json"
+
+
+def coverage_regressions(executed_by_node: Dict[str, List[str]]) -> List[str]:
+    """
+    §1H-regression — a node that STOPS exercising a check it used to exercise.
+
+    `expected_checks_for_node` predicts from a node's structure, which cannot cover §1E,
+    §4 or §1I: those need a particular seed to produce an interest-themed problem, a visual
+    payload, or ten boolean answers. They are runtime facts. So a node that quietly stops
+    exercising one of them is invisible to applicability -- the check simply is not in its
+    list any more, and nothing notices the difference.
+
+    This closes that by comparison against the last recorded run rather than by prediction.
+    It cannot say a check SHOULD apply; it can say this node used to run it and now does
+    not, which is the drift that matters. New nodes are recorded, never flagged.
+
+    Deliberately not a hard gate on first sight: the baseline is written when absent, so a
+    fresh clone records rather than fails.
+    """
+    import json
+
+    if not _COVERAGE_BASELINE.exists():
+        _COVERAGE_BASELINE.parent.mkdir(parents=True, exist_ok=True)
+        _COVERAGE_BASELINE.write_text(
+            json.dumps({k: sorted(v) for k, v in executed_by_node.items()}, indent=2),
+            encoding="utf-8")
+        return []
+
+    try:
+        previous = json.loads(_COVERAGE_BASELINE.read_text(encoding="utf-8"))
+    except (ValueError, OSError) as exc:
+        return [f"§1H-regression: coverage baseline unreadable ({exc}); delete it to re-record."]
+
+    errors: List[str] = []
+    for node_id, was in previous.items():
+        now = set(executed_by_node.get(node_id, ()))
+        if node_id not in executed_by_node:
+            continue  # the node is gone; §7's census owns that
+        lost = sorted(set(was) - now)
+        if lost:
+            errors.append(
+                f"{node_id}: stopped exercising {lost} — it ran on the previous recorded "
+                f"run and does not now. §1H cannot predict §1E/§4/§1I from structure, so a "
+                f"silent drop is only visible by comparison. If the change is intended, "
+                f"delete {_COVERAGE_BASELINE.name} to re-record."
+            )
+    return errors
 
 
 def run_matrix_validation(node: Optional[str] = None, fail_fast: bool = False, workers: int = 0) -> int:

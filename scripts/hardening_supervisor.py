@@ -123,7 +123,7 @@ import time
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-LEDGER = REPO / "local_only/scratch/hardening_ledger.md"
+LEDGER = REPO / "validation_reports/hardening_ledger.md"
 ATTEST = REPO / "validation_reports/attestation"
 JUDGMENT = REPO / "validation_reports/judgment"
 STATUS = REPO / "local_only/scratch/hardening_status.json"

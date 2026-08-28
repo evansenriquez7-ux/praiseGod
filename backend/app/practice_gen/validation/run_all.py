@@ -233,6 +233,12 @@ def run_all(fail_fast: bool = False) -> int:
     applicability_errors = validate_matrix.applicability_failures(
         validate_matrix._EXECUTED_BY_NODE
     )
+    # §1E, §4 and §1I depend on what a seed happens to produce, so applicability cannot
+    # predict them and a node that silently stops exercising one is invisible. Comparison
+    # against the last recorded run can see it.
+    applicability_errors += validate_matrix.coverage_regressions(
+        validate_matrix._EXECUTED_BY_NODE
+    )
     executed_checks.add("§1H")
     if applicability_errors:
         matrix_ok = False

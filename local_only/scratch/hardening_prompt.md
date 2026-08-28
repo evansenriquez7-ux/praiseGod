@@ -44,7 +44,7 @@ into a prompt was wrong on every line within three days. Current state has exact
 | artifact | holds | changes |
 |---|---|---|
 | **this file** | rules, hazards, procedure | rarely |
-| `local_only/scratch/hardening_ledger.md` | current state and the work queue (`Next tick should:`) | every tick |
+| `validation_reports/hardening_ledger.md` | current state and the work queue (`Next tick should:`) | every tick |
 | `local_only/scratch/hardening_status.json` | machine snapshot for the cheap check — **a claim, not evidence** | every supervisor run |
 | `validation_reports/HARDENING_EVIDENCE.md` | verbatim command output — the receipt an auditor reads | every pipeline commit |
 
@@ -619,7 +619,7 @@ layer that failed is your next unit.
 - **No background job outstanding.** Exit line read and recorded, or killed and said so.
 - **`HARDENING_EVIDENCE.md` entry** for any commit touching `backend/app/practice_gen/` or
   `data/skeletons/`, with verbatim command output (Rule 7).
-- **Ledger entry**, appended to `local_only/scratch/hardening_ledger.md`:
+- **Ledger entry**, appended to `validation_reports/hardening_ledger.md`:
 
 ```markdown
 ## <ISO date/time> — tick <n>
