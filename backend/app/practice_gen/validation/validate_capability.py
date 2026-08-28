@@ -1224,6 +1224,73 @@ def _validate_attestation(node_id: str, requires: List[Dict],
     return errs
 
 
+
+# Attestations filed from this date must name their Attester. Records predating it are
+# grandfathered: 173 exist with no identity field at all, and invalidating them would
+# destroy real blind judgement to punish a schema gap that was not their author's doing.
+_ATTESTER_IDENTITY_REQUIRED_FROM = "2026-08-28"
+
+# One Attester identity may cover at most this many nodes, mirroring §5's
+# _MAX_NODES_PER_REVIEWER. An identity spanning more than a dispatch is one pass over the
+# table, not independent per-clause judgement.
+_MAX_NODES_PER_ATTESTER = 25
+
+
+def validate_attester_plurality() -> List[str]:
+    """
+    §6H -- an Attester verdict must say WHO made it, and no one may make them all.
+
+    §5 has enforced reviewer plurality since it was written: `reviewed_by` is required and
+    one identity may not cover more than a batch. Attestation had no equivalent, and the
+    reason is stark -- measured 2026-08-28, all 173 attestation records carry NO identity
+    field whatsoever. `attested_by`, `attester`, `judged_by` are all absent.
+
+    So the independence §6F exists to guarantee could not be checked on a surface four
+    times larger than §5's (787 verdicts against 151 reviews). §6G caps how many verdicts
+    one BATCH may hold, which stops a single record covering the table, but nothing stopped
+    one identity filing every batch -- the author-verifying-itself structure the blind
+    Attester role was created to break.
+
+    Grandfathered, deliberately: records filed before the cutoff are exempt. Requiring an
+    identity retroactively would fail 173 records whose judgement was genuinely blind, and
+    a check that condemns honest work to close a schema gap teaches the next agent to
+    distrust it.
+    """
+    errs: List[str] = []
+    by_identity: Dict[str, Set[str]] = {}
+
+    for record in _attestation_records():
+        batch = record.get("batch") or "<unnamed>"
+        attested_at = str(record.get("attested_at") or "")
+        identity = (record.get("attested_by") or record.get("attester")
+                    or record.get("judged_by") or "")
+        identity = str(identity).strip()
+
+        if attested_at[:10] >= _ATTESTER_IDENTITY_REQUIRED_FROM and not identity:
+            errs.append(
+                f"attestation batch {batch!r} was filed {attested_at[:10]} with no "
+                f"'attested_by' identity (§6H). Since {_ATTESTER_IDENTITY_REQUIRED_FROM} a "
+                f"verdict must name who made it, or its independence cannot be checked -- "
+                f"which is the whole point of dispatching a blind Attester."
+            )
+            continue
+        if not identity:
+            continue  # grandfathered record, predating the requirement
+
+        nodes = {v.get("node_id") for v in record.get("verdicts", []) if v.get("node_id")}
+        by_identity.setdefault(identity.lower(), set()).update(nodes)
+
+    for identity, nodes in sorted(by_identity.items()):
+        if len(nodes) > _MAX_NODES_PER_ATTESTER:
+            errs.append(
+                f"attester plurality: identity {identity!r} covers {len(nodes)} nodes "
+                f"(max {_MAX_NODES_PER_ATTESTER} -- one blind dispatch) (§6H). One identity "
+                f"spanning more than a dispatch is a single pass over the table, not "
+                f"independent per-clause judgement. First nodes: {sorted(nodes)[:5]}."
+            )
+    return errs
+
+
 def validate_capability_declarations(node_ids: List[str] | None = None) -> List[str]:
     """Run §6A/§6B/§6C over every registered node. Returns a flat list of failures."""
     errs: List[str] = []
@@ -1255,6 +1322,9 @@ def validate_capability_declarations(node_ids: List[str] | None = None) -> List[
         errs += _validate_coverage(node_id, competency, requires, ignore)
         errs += _validate_provision(node_id, requires)
         errs += _validate_attestation(node_id, requires, attested)
+
+    # Tree-wide, not per node: plurality is a property of the whole attestation corpus.
+    errs += validate_attester_plurality()
     return errs
 
 

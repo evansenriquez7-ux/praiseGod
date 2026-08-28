@@ -989,6 +989,25 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["answer_leak_in_stem", "states the answer outright"],
         baseline_must_not_contain=["states the answer outright"],
     ),
+    Mutation(
+        name="single_attester_identity",
+        asserts=["attester_plurality_6H"],
+        description=(
+            "Stamp one identity on every attestation record, as a single pass over the "
+            "table would. §5 has enforced reviewer plurality since it was written; "
+            "attestation had no equivalent because all 173 records carried NO identity "
+            "field at all -- so independence was uncheckable on a surface four times "
+            "larger than §5's. §6G caps how many verdicts one BATCH may hold, which stops "
+            "one record covering the table, but nothing stopped one agent filing every "
+            "batch: the author-verifying-itself structure the blind role exists to break."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_single_attester_identity(),
+        command=["backend.app.practice_gen.validation.validate_capability"],
+        expected_check="§6H (an Attester identity may not cover more than one dispatch)",
+        expect_output_contains=["attester plurality", "planted-single-attester"],
+        baseline_must_not_contain=["attester plurality"],
+    ),
 ]
 
 
@@ -1047,6 +1066,32 @@ def _plant_inverted_bound() -> Dict[Path, str]:
     )
     path.write_text(original[:body_start] + injected + original[body_start:], encoding="utf-8")
     return {path: original}
+
+
+def _plant_single_attester_identity() -> Dict[Path, str]:
+    """
+    Stamp one identity across every attestation record, as a single pass over the table
+    would. Written to the records rather than the validator because §6H's subject IS the
+    corpus: the defect it guards is one agent filing everything.
+    """
+    import json
+
+    d = REPO_ROOT / "validation_reports" / "attestation"
+    records = sorted(d.glob("*.json"))
+    if not records:
+        raise ValueError(
+            "mutation 'single_attester_identity': no attestation records to stamp. "
+            "File at least one Attester verdict before claiming §6H works."
+        )
+    originals: Dict[Path, str] = {}
+    for path in records:
+        text = path.read_text(encoding="utf-8")
+        data = json.loads(text)
+        originals[path] = text
+        data["attested_by"] = "planted-single-attester"
+        data["attested_at"] = "2026-08-29T00:00:00+0800"   # after the cutoff
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+    return originals
 
 def _plant_wildcard_provider(capability: str) -> Dict[Path, str]:
     """

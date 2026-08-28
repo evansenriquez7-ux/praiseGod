@@ -107,7 +107,7 @@ def _load(path: str) -> Any:
 def build_records(packets: List[Dict[str, Any]], key: Dict[str, Any],
                   verdicts: List[Dict[str, Any]], batch_prefix: str,
                   action_provided: str, actions: Dict[str, str],
-                  attested_at: str, tool_uses: str, delivery: str,
+                  attested_at: str, attested_by: str, tool_uses: str, delivery: str,
                   supersedes: Dict[str, str]) -> Dict[str, Dict[str, Any]]:
     by_item = {p["item"]: p for p in packets}
 
@@ -185,6 +185,10 @@ def build_records(packets: List[Dict[str, Any]], key: Dict[str, Any],
         rec = {
             "batch": batch,
             "attested_at": attested_at,
+            # §6H: a verdict must name who made it, or its independence cannot be checked.
+            # All 173 records filed before 2026-08-28 carry no identity at all, which is why
+            # attester plurality was unenforceable while §5's has always been enforced.
+            "attested_by": attested_by,
             "role": "Attester",
             "blindness": _blindness(tool_uses, delivery),
             "packet": {
@@ -238,6 +242,8 @@ def main() -> int:
     ap.add_argument("--verdicts", required=True)
     ap.add_argument("--batch-prefix", required=True)
     ap.add_argument("--attested-at", required=True)
+    ap.add_argument("--attested-by", required=True,
+                    help="the Attester identity (§6H); one identity may cover <=25 nodes")
     ap.add_argument("--action-provided", required=True)
     ap.add_argument("--actions", help="JSON map item_id -> action_taken (required for NOT_PROVIDED)")
     ap.add_argument("--supersedes", help="JSON map node_id -> supersession note")
@@ -261,7 +267,7 @@ def main() -> int:
     records = build_records(
         _load(args.packets), _load(args.key), _load(args.verdicts), args.batch_prefix,
         args.action_provided, _load(args.actions) if args.actions else {},
-        args.attested_at, args.tool_uses, args.samples_delivery,
+        args.attested_at, args.attested_by, args.tool_uses, args.samples_delivery,
         _load(args.supersedes) if args.supersedes else {},
     )
     check_skeletons(records)
