@@ -46,9 +46,9 @@ UNPROVEN_ASSERTIONS: Dict[str, str] = {
     "reverse_compatibility_check_crash": "2026-08-28: crash variant of a proven check",
     "reverse_curriculum_gate_check": "2026-08-28: curriculum-gate reverse path, unproven",
     "reverse_curriculum_gate_check_crash": "2026-08-28: crash variant of the above",
-    "visual_schema_integrity":      "2026-08-28: §4 visual schema; §9 covers the render contract, not this",
+    "visual_schema_integrity":      "2026-08-28: SHADOWED, measured. Three plants were tried and none isolated it: negative counts and non-coercible types are both caught first by §1G (visual_payload), and a wrong-typed extra field violates nothing because the Pydantic schema coerces and total_value is not even declared. §4 adds little over §1G+§9 on this payload -- worth revisiting as a possible merge rather than a missing mutation",
     "worker_crash":                 "2026-08-28: infrastructure label, not a content assertion",
-    "scalar_1_0_reach":             "2026-08-28: §1A-reach; needs a generator capped below its ceiling",
+    "scalar_1_0_reach":             "2026-08-28: §1A-reach needs a plant that caps the generator below the competency ceiling WITHOUT breaking per-item validity, so §1A/§1B do not catch it first. Not yet found; the axis-catalog mapping is shared, so capping it trips the boundary checks",
     "node_to_dna_presence":         "2026-08-28: registry mapping presence",
 }
 
