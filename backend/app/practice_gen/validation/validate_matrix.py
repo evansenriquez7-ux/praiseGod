@@ -337,6 +337,49 @@ def _visual_payload_defects(p: dict) -> List[str]:
     return out
 
 
+# Stems that SHOW the answer as a worked example are teaching, not leaking:
+# "Write 45 as tens and ones, for example 45 = 40 + 5." A first version of the predicate
+# below flagged exactly that one item across the whole tree, which is why the rule is that
+# a candidate must be proved SILENT before it is asserted.
+_EXEMPLAR_PHRASE = re.compile(r"\b(for example|e\.g\.|such as|like this)\b", re.I)
+
+# Phrasings that STATE the answer rather than asking for it.
+_ANSWER_DECLARATIONS = (
+    r"\bit\s+is\s+{a}\b",
+    r"\bthe\s+answer\s+is\s+{a}\b",
+    r"\bthat\s+is\s+{a}\b",
+)
+
+
+def _stem_declares_the_answer(stem: str, answer: Any) -> Optional[str]:
+    """
+    §1F's second, independent path: the stem says the answer in words.
+
+    The original test fires only when the answer is the stem's SOLE numeric datum, which
+    is deliberate -- the wider form conflated leaks with degenerate-operand items and fired
+    on 3,702 well-formed identity facts. But that narrowness left a real hole: a planted
+    stem reading "What number comes next when counting: 66, 67, 68, 69, ___? It is 70."
+    keyed 70 passed untouched, because it carried five numbers.
+
+    This closes that hole without reopening the old one, by asking a different question --
+    not "is the answer present?" but "is the answer DECLARED?". Verified silent across 906
+    renders of the current tree before being asserted; the one hit the first version
+    produced was a worked example, now exempted above.
+    """
+    if answer is None or isinstance(answer, (list, dict, bool)):
+        return None
+    if _EXEMPLAR_PHRASE.search(stem):
+        return None
+    escaped = re.escape(str(answer).strip())
+    for pattern in _ANSWER_DECLARATIONS:
+        if re.search(pattern.replace("{a}", escaped), stem, re.I):
+            return (
+                f"the stem states the answer outright ({str(answer)!r}); the pupil reads it "
+                f"rather than working it out"
+            )
+    return None
+
+
 def _answer_leaks_into_stem(problem: Dict[str, Any]) -> Optional[str]:
     """
     Return a description of the leak, or None.
@@ -361,6 +404,12 @@ def _answer_leaks_into_stem(problem: Dict[str, Any]) -> Optional[str]:
     value is the answer, and the student need only copy it — "Jose has lunch at
     1:30. What time is that?", or "What fraction does 2/5 equal parts represent?".
 
+    CLOSED 2026-08-28. The blind spot below was real: because the final test requires the
+    answer to be the stem's ONLY numeric datum, a leak in a stem carrying any other number
+    went uncaught. `_stem_declares_the_answer` is now a second, INDEPENDENT path that asks
+    whether the stem states the answer rather than merely contains it, so the narrowness
+    here can stay exactly as it is. Original note follows.
+
     KNOWN BLIND SPOT, verified 2026-08-26 by instrumenting the rendered path: because
     the final test requires the answer to be the stem's ONLY numeric datum, a leak in a
     stem that carries any other number is not caught. A planted stem reading
@@ -374,6 +423,13 @@ def _answer_leaks_into_stem(problem: Dict[str, Any]) -> Optional[str]:
     answer = problem.get("correct_answer")
     if isinstance(answer, (list, tuple, dict, bool)) or answer is None:
         return None  # ordering/true-false/structured answers: nothing to give away
+
+    # Path 2, independent of everything below: the stem DECLARES the answer. This does not
+    # need the option analysis, because a stem that says "It is 70." gives the answer away
+    # whether or not the options make it uniquely identifiable.
+    declared = _stem_declares_the_answer(_normalize_stem(problem.get("question_text", "")), answer)
+    if declared is not None:
+        return declared
 
     fmt_data = problem.get("format_data") or {}
     options = fmt_data.get("mcq_options") or fmt_data.get("options")

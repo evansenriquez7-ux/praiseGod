@@ -963,6 +963,29 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["formatter_match"],
         baseline_must_not_contain=["formatter_match"],
     ),
+    Mutation(
+        name="stem_declares_the_answer",
+        asserts=["answer_leak_in_stem_declared"],
+        description=(
+            "Append 'It is <answer>.' to a counting stem. THIS EXACT PLANT SURVIVED on "
+            "2026-08-26: §1F fires only when the answer is the stem's sole numeric datum, "
+            "and '66, 67, 68, 69, ___? It is 70.' carries five numbers, so the check "
+            "declined it by design. The narrowness was deliberate -- the wider form fired "
+            "on 3,702 well-formed identity facts -- so the hole was closed with a SECOND, "
+            "independent path that asks whether the answer is DECLARED rather than merely "
+            "present. Verified silent across 906 renders before being asserted."
+        ),
+        edits={
+            "backend/app/practice_gen/formatters/textual/fmt_mcq.py": (
+                "        question_text = _build_pure_question(ctx)\n",
+                '        question_text = f"{_build_pure_question(ctx)} It is {ctx.correct_answer}."\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_matrix", "--node", "mat_g1_na_q1_0"],
+        expected_check="§1F (a stem may not state its own answer)",
+        expect_output_contains=["answer_leak_in_stem", "states the answer outright"],
+        baseline_must_not_contain=["states the answer outright"],
+    ),
 ]
 
 
