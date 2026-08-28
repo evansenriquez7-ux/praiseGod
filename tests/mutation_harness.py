@@ -492,8 +492,11 @@ MUTATIONS: List[Mutation] = [
             "numbers, so the check declined it by design. That narrowing is deliberate "
             "(conflating it with degenerate-operand items fired on 3,702 well-formed "
             "identity facts), but it means §1F does NOT catch a leak in a stem that "
-            "carries any other number. That blind spot is real and is named in the "
-            "validator docstring and the contract row."
+            "carries any other number. That blind spot was real; it is CLOSED as of "
+            "2026-08-28 by a second, independent path (see stem_declares_the_answer) "
+            "that asks whether the stem DECLARES the answer rather than merely "
+            "contains it. This mutation still pins the narrow form, which must keep "
+            "working on its own."
         ),
         # Planted in `mcq`, not `numeric_input`: the first attempt targeted
         # fmt_numeric_input and SURVIVED, because no node under test advertises that
