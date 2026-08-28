@@ -525,7 +525,7 @@ MUTATIONS: List[Mutation] = [
                 "            raise ValueError(f\"Formatter '{formatter}' is not supported by any DNA for node '{node_id}'\")",
             )
         },
-        command=["backend.app.practice_gen.validation.validate_compat"],
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "servable"],
         expected_check="§2B (every formatter a node advertises can actually be served)",
         expect_output_contains=["advertises formatter 'true_false'"],
         baseline_must_not_contain=["advertises formatter 'true_false'"],
@@ -614,7 +614,7 @@ MUTATIONS: List[Mutation] = [
                 "                permitted = list(opts)  # planted mutation: skip the competency gate\n",
             )
         },
-        command=["backend.app.practice_gen.validation.validate_compat"],
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "config"],
         expected_check="§2D (a saved configuration may not serve content outside a node's competency)",
         expect_output_contains=["config_respects_competency", "bypassing curriculum gating"],
         baseline_must_not_contain=["bypassing curriculum gating"],
@@ -694,7 +694,7 @@ MUTATIONS: List[Mutation] = [
                 '    random.Random(seed).shuffle(items)  # planted mutation: shared stream\n',
             )
         },
-        command=["backend.app.practice_gen.validation.validate_compat"],
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "placement"],
         expected_check="§2E (the correct option's position must not be predictable from the seed)",
         expect_output_contains=["FAIL option_placement", "without doing any mathematics"],
         baseline_must_not_contain=["FAIL option_placement"],
@@ -716,10 +716,47 @@ MUTATIONS: List[Mutation] = [
                 "            problem.formatter_name = None  # planted mutation\n",
             )
         },
-        command=["backend.app.practice_gen.validation.validate_compat"],
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "reachable"],
         expected_check="§2C (an advertised formatter must be reachable by the student path)",
         expect_output_contains=["FAIL formatters_reachable"],
         baseline_must_not_contain=["FAIL formatters_reachable"],
+    ),
+    Mutation(
+        name="dangling_node_reference",
+        description=(
+            "Add a node id that does not exist to a served code path. placement.py already "
+            "carries 7 such ids (its forward-looking G4-G10 ladder), latent because nothing "
+            "calls it -- but nothing asserted that a referenced node RESOLVES, so a live one "
+            "would raise 'No DNA mappings found' in front of a student. This is the Scaling "
+            "Mandate in miniature: fine while G1-3 are the only grades, silently wrong after."
+        ),
+        edits={
+            "backend/app/services/curriculum.py": (
+                "from backend.app import models\n",
+                'from backend.app import models\n'
+                '_PLANTED_NODE = "mat_g9_na_q1_7"  # planted mutation: absent from the registry\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "references"],
+        expected_check="§2F (every node id referenced in the app must exist in the registry)",
+        expect_output_contains=["FAIL node_references_resolve", "mat_g9_na_q1_7"],
+        baseline_must_not_contain=["FAIL node_references_resolve"],
+    ),
+    Mutation(
+        name="malformed_competency_bound",
+        description=(
+            "Make the bounds parser return an inverted (min, max) range. The ~20-row "
+            "fixture table above still passes -- its hand-written G1-3 cases do not cover "
+            "the mutated path -- which is exactly why the tree-wide property exists. A "
+            "fixture proves specific readings; only the property catches a parser that "
+            "starts returning nonsense on nodes nobody wrote a case for."
+        ),
+        edits={},
+        apply_fn=lambda: _plant_inverted_bound(),
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "bounds_property"],
+        expected_check="§2G (every node's competency bounds parse to a well-formed shape)",
+        expect_output_contains=["FAIL all_competency_bounds_parse", "min > max"],
+        baseline_must_not_contain=["FAIL all_competency_bounds_parse"],
     ),
 ]
 
@@ -756,6 +793,28 @@ def _invert_number_line_axis() -> Dict[Path, str]:
             "mutation that no longer reaches the formatter proves nothing about §1G."
         )
     path.write_text(original.replace(pair, swapped), encoding="utf-8")
+    return {path: original}
+
+
+def _plant_inverted_bound() -> Dict[Path, str]:
+    """Make get_node_competency_bounds hand back an inverted (min, max) range."""
+    path = REPO_ROOT / "backend" / "app" / "practice_gen" / "registry.py"
+    original = path.read_text(encoding="utf-8")
+    marker = "def get_node_competency_bounds("
+    if marker not in original:
+        raise ValueError(
+            "mutation 'malformed_competency_bound': get_node_competency_bounds moved. "
+            "Update the anchor rather than loosening it."
+        )
+    idx = original.index(marker)
+    body_start = original.index("\n", original.index(":", idx)) + 1
+    injected = (
+        "    # planted mutation: hand back an inverted range\n"
+        "    import os as _os\n"
+        "    if _os.environ.get('MUTATION_INVERT_BOUND', '1') == '1':\n"
+        "        return {'range': (100, 1)}\n"
+    )
+    path.write_text(original[:body_start] + injected + original[body_start:], encoding="utf-8")
     return {path: original}
 
 def _plant_wildcard_provider(capability: str) -> Dict[Path, str]:

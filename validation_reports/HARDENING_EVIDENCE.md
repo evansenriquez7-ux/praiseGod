@@ -8086,3 +8086,43 @@ correctly. The two auditors written for exactly that were referenced by **zero g
 matrix (Nodes Failed 0), §1H applicability, render_contract, grading_contract, census,
 contract_doc_matches_registry, operator_doc_covers_registry, two_direction.
 `FAIL` on the two standing content bands only: §5 judgment 705, §6 capability 161.
+
+---
+
+## 2026-08-28 — Track 0: will this survive grade 4?
+
+### §2C was load-dependent — my own defect from the previous step
+* **Finding:** §2C measured 18 unreachable-formatter nodes on an idle machine and **27**
+  while a mutation run competed for CPU, with identical code. The cause was mine:
+  `except Exception: continue` treated a failed generation as evidence a formatter is
+  unreachable, when it is no evidence either way. A gate whose answer depends on what else
+  the machine is doing is not a gate.
+* **Fix:** a quorum — below half the seed budget the node is *unmeasured* and reports
+  nothing. Verified stable at 18 under three deliberate CPU burners.
+
+### §2F — every node id referenced in the app must resolve
+* `services/placement.py` lists 10 milestone ids of which **7 do not exist**
+  (`mat_g4_na_q1_1` … `mat_g10_na_q1_1`); requesting one raises `No DNA mappings found`.
+  Latent today (`get_placement_sequence` is called from nowhere), live the moment Grade 4
+  lands, and nothing asserted that a referenced node resolves. Floor 1 file keeps the
+  deliberate forward-looking ladder while failing any NEW file naming absent nodes.
+
+### §2G — the tree-wide property behind the fixture table
+* `validate_competency_bounds_parsing` is a ~20-row hand-written G1–G3 table. It is a
+  legitimate regression fixture and it cannot grow itself: when Grade 4 introduces a
+  vocabulary nobody has seen, the parser can mis-parse silently while that table passes.
+  Mandate #4 forbids scoping a check to the grades in front of us, so §2G asserts the
+  PROPERTY across every node that exists — bounds parse, each value is a shape the
+  pipeline can consume, tuples are ordered. A new grade inherits it automatically.
+* **The mutation makes the point:** an inverted `(min, max)` range makes §2G report **157**
+  findings while the fixture table still passes, because its hand-written cases do not
+  cover the mutated path.
+
+### The harness was becoming too expensive to prove
+* Seven mutations target `validate_compat`, which now runs 11 checks including §2C's
+  40×151 sweep — minutes per mutation, paid twice (baseline + mutated). Added
+  `--only <check>`; each mutation now runs just the check it plants against, ~0s instead
+  of ~4 min. A check that is expensive to prove tends to end up unproven.
+
+### Verification
+`26/26 mutations detected`, tree clean. 31 checks registered.

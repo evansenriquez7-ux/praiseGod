@@ -608,6 +608,17 @@ _REACH_SEEDS = 40
 # (Mandate §5); the 18 are tracked as content/routing work, not something to widen around.
 _REACH_FLOOR = 18
 
+# A node needs this many successful generations before its unreachable set means
+# anything. Half the seed budget: enough for a formatter with any real selection
+# weight to appear, few enough that a node with genuine generation gaps is still
+# measured rather than silently skipped.
+_REACH_MIN_SAMPLES = _REACH_SEEDS // 2
+
+# placement.py's forward-looking G4-G10 milestone ladder is the only file with
+# dangling node ids today, and it is deliberate scaffolding. Floor 1 keeps it while
+# failing any NEW file that starts naming nodes that do not exist.
+_DANGLING_FLOOR = 1
+
 
 def validate_advertised_formatters_are_reachable() -> List[str]:
     """
@@ -638,15 +649,26 @@ def validate_advertised_formatters_are_reachable() -> List[str]:
         if len(advertised) < 2:
             continue
         served = set()
+        generated = 0
         for seed in range(1, _REACH_SEEDS + 1):
             try:
                 p = PracticeOrchestrator.generate_problem(
                     node_id=node_id, seed=seed, is_student_path=True)
             except Exception:
                 continue
+            generated += 1
             d = p if isinstance(p, dict) else p.__dict__
             if d.get("formatter_name"):
                 served.add(d["formatter_name"])
+
+        # A failed generation is not evidence that a formatter is unreachable -- it is no
+        # evidence at all. Swallowing them with `continue` and then reporting the shortfall
+        # as unreachability made this check LOAD-DEPENDENT: measured under a concurrent
+        # mutation run it reported 27 nodes, and 18 on an idle machine, with identical
+        # code. A gate whose answer depends on what else the machine is doing is not a
+        # gate. Below this quorum the node is unmeasured and says nothing either way.
+        if generated < _REACH_MIN_SAMPLES:
+            continue
         unreachable = sorted(advertised - served)
         if unreachable:
             errors.append(
@@ -655,6 +677,118 @@ def validate_advertised_formatters_are_reachable() -> List[str]:
                 f"(served: {sorted(served)}). §1 validates content no pupil receives, and "
                 f"the Lab offers a menu wider than what is served (§2C)."
             )
+    return errors
+
+
+
+def validate_node_references_resolve() -> List[str]:
+    """
+    §2F — every node id written down in the app must exist in the registry.
+
+    Measured 2026-08-28: `services/placement.py`'s MATATAG_PLACEMENT_MILESTONES lists 10
+    node ids of which **7 do not exist** (`mat_g4_na_q1_1` ... `mat_g10_na_q1_1`).
+    Requesting one raises `ValueError: No DNA mappings found`. It is LATENT today --
+    `get_placement_sequence` is called from nowhere -- so this is preventive, not urgent.
+    It becomes live the moment grade 4 lands, and nothing anywhere asserted that a node id
+    referenced outside the registry resolves.
+
+    That is the Scaling Mandate's concern in miniature: a reference that is fine while the
+    grades in front of us are the only grades, and silently wrong the moment they are not.
+    Held as a floor rather than zero so the forward-looking milestone ladder can stay,
+    while any NEW dangling reference fails immediately.
+    """
+    import re
+
+    from ..registry import get_all_node_ids
+
+    repo = Path(__file__).resolve().parents[4]
+    real = set(get_all_node_ids())
+    pattern = re.compile(r'["\'](mat_g\d+_[a-z]+_q\d+_\d+)["\']')
+
+    dangling: List[str] = []
+    for path in sorted((repo / "backend" / "app").rglob("*.py")):
+        if "validation" in path.parts or "__pycache__" in path.parts:
+            continue
+        try:
+            text = path.read_text(encoding="utf-8", errors="ignore")
+        except OSError:
+            continue
+        missing = sorted({m for m in pattern.findall(text) if m not in real})
+        if missing:
+            dangling.append(
+                f"{path.relative_to(repo)}: references {len(missing)} node id(s) absent "
+                f"from the registry -- {missing[:6]}. Serving one raises "
+                f"'No DNA mappings found' (§2F)."
+            )
+    if len(dangling) > _DANGLING_FLOOR:
+        return dangling
+    return []
+
+
+
+def validate_all_competency_bounds_parse() -> List[str]:
+    """
+    §2G — every node's competency bounds must parse to a well-formed result, tree-wide.
+
+    `validate_competency_bounds_parsing` above is a ~20-row table of hand-written
+    (node, dna, expected_bounds) cases, all Grade 1-3. It is a legitimate regression
+    fixture and it cannot grow on its own: when Grade 4 introduces a `concept` vocabulary
+    nobody has seen, the parser can mis-parse it silently while that table still passes.
+
+    Scaling Mandate #4 -- "never scope a check to the grades in front of you". So the
+    fixture keeps its exact cases and this asserts the PROPERTY across every node that
+    exists, including ones added later:
+
+      * bounds parse without raising;
+      * every value is a shape the pipeline knows how to consume -- a (min, max) tuple, a
+        list of literals, or a scalar sentinel string/number. Anything else (a dict, a
+        None inside a list, a bare object) is a parse the generators cannot act on;
+      * a (min, max) tuple is ordered.
+
+    A new grade inherits this automatically. The fixture proves specific readings; this
+    proves the parser never returns nonsense on anything in the tree.
+    """
+    from ..registry import get_all_node_ids, get_node_dnas, get_node_competency_bounds
+
+    errors: List[str] = []
+    for node_id in get_all_node_ids():
+        for dna in (get_node_dnas(node_id) or []):
+            try:
+                bounds = get_node_competency_bounds(node_id, dna)
+            except Exception as exc:  # noqa: BLE001 - naming the node beats a bare traceback
+                errors.append(
+                    f"{node_id}/{dna}: competency bounds failed to parse ({type(exc).__name__}: "
+                    f"{str(exc)[:90]}). The generators cannot be bound for this node (§2G)."
+                )
+                continue
+            if bounds is None:
+                continue
+            if not isinstance(bounds, dict):
+                errors.append(
+                    f"{node_id}/{dna}: bounds parsed to {type(bounds).__name__}, not a dict (§2G)."
+                )
+                continue
+            for axis, value in bounds.items():
+                if isinstance(value, tuple):
+                    if len(value) != 2:
+                        errors.append(
+                            f"{node_id}/{dna}: bound {axis}={value!r} is a {len(value)}-tuple; "
+                            f"a tuple bound is always read as (min, max) (§2G).")
+                    elif all(isinstance(v, (int, float)) for v in value) and value[0] > value[1]:
+                        errors.append(
+                            f"{node_id}/{dna}: bound {axis}={value!r} has min > max (§2G).")
+                elif isinstance(value, list):
+                    if not value:
+                        errors.append(
+                            f"{node_id}/{dna}: bound {axis}=[] permits nothing, so no variant "
+                            f"combination can survive filtering (§2G).")
+                    elif any(v is None for v in value):
+                        errors.append(
+                            f"{node_id}/{dna}: bound {axis}={value!r} contains None (§2G).")
+                elif not isinstance(value, (str, int, float, bool)):
+                    errors.append(
+                        f"{node_id}/{dna}: bound {axis} parsed to {type(value).__name__}, which "
+                        f"is not a range, a value list, or a scalar sentinel (§2G).")
     return errors
 
 
@@ -674,16 +808,21 @@ def validate_all() -> bool:
     config_errors = validate_config_respects_competency()
     placement_errors = validate_option_placement()
     reach_errors = validate_advertised_formatters_are_reachable()
+    dangling_errors = validate_node_references_resolve()
+    bounds_property_errors = validate_all_competency_bounds_parse()
     all_errors = (compat_errors + coverage_errors + monotonicity_errors
                   + equivalence_errors + bounds_errors + servable_errors + config_errors
                   + placement_errors
-                  + (reach_errors if len(reach_errors) > _REACH_FLOOR else []))
+                  + (reach_errors if len(reach_errors) > _REACH_FLOOR else [])
+                  + dangling_errors + bounds_property_errors)
 
-    total_checks = 9
+    total_checks = 11
     passed = sum([not compat_errors, not coverage_errors, not monotonicity_errors,
                   not equivalence_errors, not bounds_errors, not servable_errors,
                   not config_errors, not placement_errors,
-                  len(reach_errors) <= _REACH_FLOOR])
+                  len(reach_errors) <= _REACH_FLOOR,
+                  not dangling_errors,
+                  not bounds_property_errors])
 
     print(f"\nCompatibility validation: {passed}/{total_checks} check groups passed.")
 
@@ -749,6 +888,20 @@ def validate_all() -> bool:
     else:
         print(f"  PASS formatters_reachable ({len(reach_errors)} node(s), floor {_REACH_FLOOR})")
 
+    if dangling_errors:
+        print("  FAIL node_references_resolve:")
+        for e in dangling_errors:
+            print(f"    - {e}")
+    else:
+        print(f"  PASS node_references_resolve (floor {_DANGLING_FLOOR} file(s))")
+
+    if bounds_property_errors:
+        print(f"  FAIL all_competency_bounds_parse ({len(bounds_property_errors)}):")
+        for e in bounds_property_errors[:10]:
+            print(f"    - {e}")
+    else:
+        print("  PASS all_competency_bounds_parse (every node, not a fixture list)")
+
     if bounds_errors:
         print("  FAIL competency_bounds_parsing:")
         for e in bounds_errors:
@@ -761,6 +914,48 @@ def validate_all() -> bool:
 
 # ─── entry point ──────────────────────────────────────────────────────────────
 
+_SINGLE_CHECKS = {
+    "reachable": ("formatters_reachable", validate_advertised_formatters_are_reachable),
+    "config": ("config_respects_competency", validate_config_respects_competency),
+    "placement": ("option_placement", validate_option_placement),
+    "references": ("node_references_resolve", validate_node_references_resolve),
+    "bounds_property": ("all_competency_bounds_parse", validate_all_competency_bounds_parse),
+    "servable": ("advertised_formatters_are_servable", validate_advertised_formatters_are_servable),
+}
+
+
+def _run_single(name: str) -> int:
+    """
+    Run ONE check and report it the way validate_all does.
+
+    Exists for the mutation harness. `validate_all` runs eleven checks and §2C alone
+    sweeps 40 seeds x 151 nodes, so a mutation that plants in one of them was paying the
+    whole module twice (baseline + mutated) -- minutes per mutation, for seven mutations.
+    A check that is expensive to prove tends to end up unproven.
+    """
+    label, fn = _SINGLE_CHECKS[name]
+    errors = fn()
+    floor = {"formatters_reachable": _REACH_FLOOR,
+             "node_references_resolve": _DANGLING_FLOOR}.get(label, 0)
+    over = len(errors) > floor if label in ("formatters_reachable",) else bool(errors)
+    if label == "node_references_resolve":
+        over = bool(errors)  # the floor is applied inside that check
+    if over:
+        print(f"  FAIL {label} ({len(errors)}):")
+        for e in errors[:10]:
+            print(f"    - {e}")
+        return 1
+    print(f"  PASS {label} ({len(errors)}, floor {floor})")
+    return 0
+
+
 if __name__ == "__main__":
-    ok = validate_all()
-    sys.exit(0 if ok else 1)
+    import argparse
+
+    ap = argparse.ArgumentParser(description="compatibility / registry checks")
+    ap.add_argument("--only", choices=sorted(_SINGLE_CHECKS),
+                    help="run a single check (used by the mutation harness)")
+    args = ap.parse_args()
+    if args.only:
+        sys.exit(_run_single(args.only))
+    sys.exit(0 if validate_all() else 1)
