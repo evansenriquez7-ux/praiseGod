@@ -418,12 +418,25 @@ def generate_params(
                             f"{a_val} × ({b_val} × {wrong})?")
             missing_val = b_val
         else:  # distributive
+            # The MULTIPLIER carries the named table, not the addends. A blind reviewer
+            # caught this on 2026-08-28: "Seeds 501 and 502 use 5 as the multiplier ... a
+            # sub-product is 5 x 4 = 20, which belongs to none of the four named tables."
+            # In a x (b + c) the sub-products are a x b and a x c, so it is `a` that must
+            # come from "the 6, 7, 8, and 9 multiplication tables" for the distributed
+            # facts to be table facts at all. Swap the roles: the table factor multiplies,
+            # and the two addends are sized to fit the ceiling.
+            a_val = rng.choice(table_pool)
+            addend_budget = max(4, max_prod_val // max(1, a_val))
+            hi = max(3, min(9, addend_budget - 2))
+            b_val = rng.randint(2, hi)
             # The two addends must differ: a x (9 + 9) illustrates nothing about
             # distributing across DIFFERENT addends, which is what the clause names.
-            c_val = _other(b_val, 2, small_max)
-            # a x (b + c) must also respect the ceiling, which the sum can breach.
-            while a_val * (b_val + c_val) > max_prod_val and a_val > 2:
-                a_val -= 1
+            c_val = _other(b_val, 2, hi)
+            # a x (b + c) must still respect the ceiling, which the sum can breach.
+            while a_val * (b_val + c_val) > max_prod_val and c_val > 2:
+                c_val -= 1
+                if c_val == b_val and c_val > 2:
+                    c_val -= 1
             if holds:
                 question = (f"Is {a_val} × ({b_val} + {c_val}) the same as "
                             f"({a_val} × {b_val}) + ({a_val} × {c_val})?")
