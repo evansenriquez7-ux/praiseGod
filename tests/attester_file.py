@@ -107,8 +107,14 @@ def _load(path: str) -> Any:
 def build_records(packets: List[Dict[str, Any]], key: Dict[str, Any],
                   verdicts: List[Dict[str, Any]], batch_prefix: str,
                   action_provided: str, actions: Dict[str, str],
-                  attested_at: str, attested_by: str, tool_uses: str, delivery: str,
-                  supersedes: Dict[str, str]) -> Dict[str, Dict[str, Any]]:
+                  attested_at: str, tool_uses: str, delivery: str,
+                  supersedes: Dict[str, str],
+                  # Keyword with a default, and LAST on purpose: inserting it mid-signature
+                  # shifted every positional argument after it and broke 13 callers. The CLI
+                  # makes it required (--attested-by), so the real filing path always carries
+                  # an identity; a synthetic caller that omits it files an empty one, which
+                  # §6H then reports rather than silently accepting.
+                  attested_by: str = "") -> Dict[str, Dict[str, Any]]:
     by_item = {p["item"]: p for p in packets}
 
     seen = {}
@@ -267,8 +273,9 @@ def main() -> int:
     records = build_records(
         _load(args.packets), _load(args.key), _load(args.verdicts), args.batch_prefix,
         args.action_provided, _load(args.actions) if args.actions else {},
-        args.attested_at, args.attested_by, args.tool_uses, args.samples_delivery,
+        args.attested_at, args.tool_uses, args.samples_delivery,
         _load(args.supersedes) if args.supersedes else {},
+        attested_by=args.attested_by,
     )
     check_skeletons(records)
 

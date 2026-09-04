@@ -152,6 +152,7 @@ mutation is unproven regardless of how long it has been passing.
 | `§6E` | validate_capability: a capability carried only by a `bounds` list most of the table shares is not provided |
 | `§6F` | validate_capability: every declared capability carries a blind Attester verdict, and none is contradicted |
 | `§6G` | validate_capability: an attestation shows its work — non-boilerplate reasoning citing seeds from its own packet |
+| `§6H` | validate_capability: an Attester verdict must name who made it, and no identity may cover more than one dispatch |
 | `§7` | run_all: the suite's own census (nodes, unit tests, mutations) has not shrunk below its floor |
 | `§8` | validate_coverage: every assertion the harness can emit is either proven by a mutation or on a shrinking allowlist |
 | `§9` | validate_render: the payload a node emits must be renderable by the React component the student sees |

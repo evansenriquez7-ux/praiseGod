@@ -293,6 +293,7 @@ def run_all(fail_fast: bool = False) -> int:
         executed_checks.add("§6E")
         executed_checks.add("§6F")
         executed_checks.add("§6G")
+        executed_checks.add("§6H")
         print("  PASS capability_contract (all nodes declare, cite, cover, and are provided for)")
     else:
         undeclared = [e for e in capability_errors if "no 'requires' declaration" in e]
@@ -417,6 +418,8 @@ def run_all(fail_fast: bool = False) -> int:
             executed_checks.discard("§6F")
             expected_subset.discard("§6G")
             executed_checks.discard("§6G")
+            expected_subset.discard("§6H")
+            executed_checks.discard("§6H")
 
         if executed_checks != expected_subset:
             raise AssertionError(
