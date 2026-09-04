@@ -8199,3 +8199,118 @@ contract_doc_matches_registry, operator_doc_covers_registry, two_direction.
 * The oral/audio ruling still blocks one D2 cluster.
 * New content finding, not yet fixed: the multiplication distributive multiplier should be
   drawn from the competency's named tables.
+
+---
+
+## 2026-09-04 — §2H: a competency that names both cases must not be bound to one
+
+**Competency clauses this conforms to** (Content Rule 4 — building *toward* what MATATAG
+writes, never past it):
+
+* `mat_g3_na_q2_1` — "Add numbers with sums up to 10 000, **with and without regrouping**."
+* `mat_g2_na_q1_9` — "Add numbers with sums up to 1000, **with or without regrouping**."
+* `mat_g2_na_q2_2` — same two-sided clause.
+
+The "with regrouping" half is named by the curriculum. Producing it is the fix, not scope creep.
+
+### How it was found
+
+Track D1's blind review of `mat_g3_na_q2_1` (batch D1B) returned `comprehensive_coverage:
+FAIL` — "not one of the 18 samples requires a single carry", listing every operand pair.
+`mat_g1_na_q2_5` returned the sibling FAIL for a different clause (no 1-digit addends).
+Three independent reviews had now reported the same *shape* of defect, so the next step was
+the root cause, not a fourth review.
+
+### Root cause
+
+`_parse_competency_bounds` tests for regrouping at **two** sites. The second (line ~1410)
+already carried the guard and a comment explaining it, added when this was fixed once
+before. The first (line ~265, inside the addition branch) kept a bare substring test:
+
+```python
+if "without regrouping" in text:          # matches "with and without regrouping"
+    bounds["regrouping"] = "none"
+```
+
+`"with and without regrouping"` **contains** `"without regrouping"`. So the two-sided
+competency was bound to the one-sided case, and the correct branch below it did only
+`pass` — a no-op that leaves an already-written wrong value standing.
+
+The knowledge "the two-sided phrase contains the one-sided phrase" lived in one of the two
+places that needed it. That duplication *was* the defect.
+
+### Fix (root cause, then all instances — Protocol #2)
+
+One module-level predicate, `_regrouping_is_two_sided()`, used by **both** sites; the
+two-sided branch now `bounds.pop("regrouping", None)` instead of `pass`, so it means what
+it says regardless of what ran before it.
+
+### Measured, by rendering — 120 seeds per node, not by reading
+
+| node | before | after |
+|---|---|---|
+| `mat_g2_na_q1_9` | **0/120 carries (0.0%)** | 75/120 (62.5%) |
+| `mat_g3_na_q2_1` | **0/120 carries (0.0%)** | 75/120 (62.5%) |
+| `mat_g2_na_q2_2` | 13/120 (10.8%) | 53/120 (44.2%) |
+| `mat_g2_na_q2_5` (subtraction) | 55/120 (45.8%) | 55/120 — **unchanged** |
+| `mat_g3_na_q2_4` (subtraction) | 75/120 (62.5%) | 75/120 — **unchanged** |
+
+The control corrected my own blast-radius estimate: subtraction was never affected, because
+the buggy setter sits inside the addition branch. 9 bounds across 8 nodes were unpinned;
+**3 addition nodes** changed behaviour.
+
+### The gate (§2H) — because the fix alone is worth one node, the check is worth every grade
+
+Nothing read the competency text and the parsed bound *together*. §2G proves bounds are
+well-**formed**; a bound can be perfectly well-formed while asserting half the curriculum.
+The failure is silent by construction: narrowing a bound REMOVES items, so no downstream
+stage has anything to complain about. It took a human-style review of rendered samples to
+see it, which does not scale to seven more grades.
+
+§2H matches the *pattern* `with (and|or) without (\w+)` rather than the word "regrouping",
+so grade 4–10 wordings ("with and without renaming", "with or without remainders") are
+caught with no edit.
+
+**Stated blind spot** (Mandate #6): §2H catches "both cases named, one case bound". A clause
+the parser ignores **entirely** emits no bound, narrows no scope, and is invisible here —
+that is §6's job (capability provision), not this one. Recorded in the docstring, the
+contract row, and here.
+
+### Evidence
+
+```
+$ PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.validate_compat --only scope
+  PASS competency_scope_not_narrowed (0, floor 0)
+exit=0
+
+$ PYTHONPATH=. .venv/bin/python3 -m tests.mutation_harness --only competency_scope_narrowed
+  [1/1] competency_scope_narrowed
+    expected catcher: §2H (a competency naming both cases must not be bound to one)
+    DETECTED: exit 1 — FAIL competency_scope_not_narrowed (9):
+  PASS  competency_scope_narrowed
+  1/1 mutations detected.
+
+$ ...run_all: _parse_contract_section_refs() vs CONTRACT_CHECKS
+  contract doc refs : 34
+  CONTRACT_CHECKS   : 34
+  MATCH             : True
+
+$ PYTHONPATH=. .venv/bin/python3 -m backend.app.practice_gen.validation.validate_coverage
+  PASS assertion_coverage: 16/26 matrix assertions proven, 12 knowingly unproven;
+       38 assertions proven overall            (37 before this change)
+```
+
+**A mutation that survived first, and why that mattered.** The first version of
+`competency_scope_narrowed` reverted the guard at *one* call site. It **SURVIVED**. Mandate
+#2 requires distinguishing "the check is broken" from "the mutation does not reach the
+check" — here it was the latter, caused by the fix itself: with a guard at both sites,
+reverting one leaves the other correct, so nothing changed and the mutation proved nothing.
+Re-aimed at the predicate, where the behaviour actually changes, it is detected. Recorded
+because a mutation that passes for the wrong reason is worse than no mutation.
+
+### Consequence to carry forward
+
+This change edits generators, so the §5 reviews of `mat_g3_na_q2_1`, `mat_g2_na_q1_9` and
+`mat_g2_na_q2_2` are now **STALE by construction** and must be re-reviewed against fresh
+seeds. That is the loop working as designed, not a regression: the review found the defect,
+the root cause was fixed, and the node returns to the queue for confirmation.

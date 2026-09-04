@@ -794,6 +794,57 @@ MUTATIONS: List[Mutation] = [
         baseline_must_not_contain=["FAIL all_competency_bounds_parse"],
     ),
     Mutation(
+        name="competency_scope_narrowed",
+        asserts=["competency_scope_not_narrowed"],
+        description=(
+            "Blind the parser to two-sided phrasing: `_regrouping_is_two_sided` always "
+            "returns False, so \"with and without regrouping\" is read as the one-sided "
+            "\"without regrouping\" it contains as a substring. That is the historical "
+            "defect's semantics -- mat_g3_na_q2_1 and mat_g2_na_q1_9 bind regrouping to a "
+            "single case and render 0/120 carries. Every other stage stays green, because "
+            "narrowing a bound REMOVES items and nothing downstream has anything to "
+            "complain about. This is the shape a whole grade can inherit in silence.\n"
+            "Planted at the predicate, not at either call site, deliberately: the fix put "
+            "a guard at BOTH sites, so reverting one leaves the other still correct and "
+            "the mutation survives while proving nothing. A mutation must land where the "
+            "behaviour actually changes -- verified by watching it survive the call-site "
+            "edit first."
+        ),
+        edits={
+            "backend/app/practice_gen/registry.py": (
+                "    return any(phrase in text for phrase in _TWO_SIDED_REGROUPING_PHRASES)",
+                "    return False",
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "scope"],
+        expected_check="§2H (a competency naming both cases must not be bound to one)",
+        expect_output_contains=["FAIL competency_scope_not_narrowed", "mat_g3_na_q2_1"],
+        baseline_must_not_contain=["FAIL competency_scope_not_narrowed"],
+    ),
+    Mutation(
+        name="unproducible_variant_declared",
+        asserts=["declared_variants_are_producible"],
+        description=(
+            "Drop the competency-bounds filter from the variant-coverage candidate builder, "
+            "so nodes start declaring variant values their own competency excludes and the "
+            "unproducible count climbs above its floor. This is the shape that hid for 31 "
+            "nodes: the packet builder swallowed each failed render with `except Exception: "
+            "return None`, so a declared-but-impossible variant simply vanished and the "
+            "reviewer got a thinner packet with no indication anything was missing."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/judgment_packets.py": (
+                "                    if bound is None or _bound_allows(bound, v):\n"
+                "                        pairs.add((var_name, v))",
+                "                    pairs.add((var_name, v))",
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "producible"],
+        expected_check="§2I (a declared discrete variant must be producible)",
+        expect_output_contains=["FAIL declared_variants_are_producible"],
+        baseline_must_not_contain=["FAIL declared_variants_are_producible"],
+    ),
+    Mutation(
         name="coverage_map_gap",
         asserts=["assertion_coverage_8"],
         description=(

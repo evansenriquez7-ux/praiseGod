@@ -246,10 +246,35 @@ def _stratified_seeds(node_id: str) -> List[int]:
     return list(REVIEW_SEEDS) + extra + max_diff_extra + variant_extra
 
 
+# Every render this module gave up on, as {node_id: [(seed, "ExcType: message"), ...]}.
+#
+# `_try_render` used to `except Exception: return None` and say nothing. That silence hid a
+# real, tree-wide defect for as long as it existed: measured 2026-09-04, 31 nodes offered at
+# least one discrete variant-coverage candidate that CANNOT be generated -- mat_g1_na_q1_9
+# ("sums up to 20") offering regrouping="four_places", which needs four carry positions;
+# length nodes offering unit_type="cm"; four nodes offering number_type="multi_digit". Each
+# one silently dropped out of its packet, so the reviewer saw fewer samples than the packet
+# intended and no one learned that a declared variant is unproducible.
+#
+# CLAUDE.md #3 forbids exactly this shape. The skip itself has to stay -- a packet must
+# still be buildable -- so the fix is to make it LOUD rather than to make it fatal: record
+# every failure, expose it on the packet, and let a check with a shrinking floor drive the
+# count down. A silent skip is indistinguishable from "there was nothing to render".
+_RENDER_FAILURES: Dict[str, List[tuple]] = {}
+
+
+def render_failures(node_id: str) -> List[tuple]:
+    """(seed, error) pairs this module could not render for `node_id`. Never silent."""
+    return list(_RENDER_FAILURES.get(node_id, []))
+
+
 def _try_render(node_id: str, seed: int) -> Any:
     try:
         return _render_sample(node_id, seed)
-    except Exception:
+    except Exception as exc:  # noqa: BLE001 - recorded and surfaced, never discarded
+        _RENDER_FAILURES.setdefault(node_id, []).append(
+            (seed, f"{type(exc).__name__}: {str(exc)[:160]}")
+        )
         return None
 
 

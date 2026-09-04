@@ -1,33 +1,33 @@
 {
   "node_id": "mat_g3_na_q2_1",
-  "reviewed_by": "Gemini Pro blind reviewer, batch G3-NA-Q2-Harden (mat_g3_na_q2_1), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "Claude blind reviewer, batch D1B, 2026-09-04",
+  "review_date": "2026-09-04",
   "blind": true,
-  "overall": "PASS",
+  "overall": "FAIL",
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample set fully satisfies the MATATAG learning competency 'Add numbers with sums up to 10 000, with and without regrouping.' by assessing addition across 2-digit, 3-digit, and 4-digit addends with sums up to 10,000, as demonstrated in 4-digit problems like \"What is 9021 + 757?\" and \"7361 + 2510 = 9871. True or False?\", 3-digit problems like \"What is 114 + 10?\", and identity property addition like \"What is 146 + 0?\"."
+      "verdict": "CONCERN",
+      "rationale": "The verb \"Add\" is genuinely exercised in most items: seed 44 asks \"What is 1020 + 1325?\" (2345), seed 500 asks \"The two parts are 9093 and 700. What is the sum?\" (9793), and seed 601 wraps it in context: \"Pia has 7710 water bowls. A friend has 2220 water bowls. If they put all their water bowls together, how many water bowls do they have in all?\" (9930). But the competency's second clause, \"with and without regrouping\", is not fulfilled by any item (see coverage), and one item does not require adding at all: seed 48 renders \"7050 + 640 = 7050. True or False?\" — the asserted sum is identical to the first addend, so a student answers False by noticing the number did not change, never computing 7690."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The items span a comprehensive range of representations and cognitive modalities including direct arithmetic equations (\"110 + 45 = ___\"), number line models (\"Show 90 + 108 on the number line.\" and \"The dot is at 150 and it moves forward 7 numbers. Starting from 150, just count up 7 numbers. Which number will the dot land on?\"), part-part-whole reasoning (\"The two parts are 10 and 115. What is the sum?\"), and contextual word problems (\"Pia has 208 water bowls. A friend has 0 water bowls. If they put all their water bowls together, how many water bowls do they have in all?\")."
+      "verdict": "FAIL",
+      "rationale": "The competency says \"with and without regrouping\", and not one of the 18 samples requires a single carry. Every addend pair is column-wise safe: seed 42 \"4524 + 3255 = ___\" (4+5, 2+5, 5+2, 4+3), seed 45 \"What is 4020 + 5940?\" (0+0, 2+4, 0+9, 4+5), seed 46 \"What is 8003 + 152?\", seed 502 \"What is 9021 + 757?\", seed 600 \"4006 + 3922 = 7928. True or False?\", seed 602 \"4650 + 5205 = ___\", seed 603 \"8400 + 109 = ___\", seed 604 \"9943 + 24 = ___\", seed 605 \"2040 + 750 = ___\", seed 43 \"The two parts are 1620 and 2356. What is the sum?\", seed 61 (8105 plus 1380), seed 501 \"7361 + 2510 = 9871. True or False?\". Exactly half the stated scope — the regrouping half, which is the harder and more instructionally significant half — is absent from the entire sample set."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The reading level, structural framing, and question complexity are well-calibrated for Grade 3 Quarter 2 students. Item prompts are concise and clear, avoiding extraneous cognitive load or non-target vocabulary, as seen in \"The two parts are 9093 and 700. What is the sum?\" and \"What is 120 + 72?\"."
+      "verdict": "CONCERN",
+      "rationale": "Most stems suit Grade 3 Quarter 2, but seed 61 instructs a 4-digit jump as unit counting: \"The dot is at 8105 and it moves forward 1380 numbers. Starting from 8105, just count up 1380 numbers. Which number will the dot land on?\" Telling a G3 student to \"just count up 1380 numbers\" is a Grade 1 counting-on model stretched onto a 4-digit addend; it either misdescribes the strategy the item actually wants or prescribes an unusable one. Seed 52, \"Show 9223 + 743 on the number line.\", has the same tension — a number-line placement at 9966 with no visible scale."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The generator produces a diverse array of response formats and prompt variants, spanning standard multiple-choice (\"What is 127 + 30?\"), cloze fill-in (\"143 + 0 = ___\"), truth verification (\"44 + 0 = 54. True or False?\"), interactive number line placement (\"Show 114 + 130 on the number line.\"), and part-whole sum identification (\"The two parts are 9093 and 700. What is the sum?\")."
+      "verdict": "CONCERN",
+      "rationale": "Formatter variety is real (error_detect, read_fill_in_blank, mcq, cloze, true_false, set_fill_in_blank, read_mcq all appear), but the underlying mathematical shape never varies: every one of the 18 items is a no-carry column sum, so the digit patterns repeat too — seed 47 \"20 + 450 = ___\", seed 605 \"2040 + 750 = ___\" and seed 603 \"8400 + 109 = ___\" are all the same trailing-zero-plus-small-addend construction. Only one item, seed 601 with Pia's water bowls, supplies a real-world context; the remaining 17 are bare computation or a peer-answer wrapper such as seed 604's \"Carlo solved: \"9943 + 24 = ___\". Carlo says the missing number is 9967. Is Carlo correct?\""
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "All generated items directly assess whole number addition within the MATATAG curriculum bounds for this competency without introducing out-of-scope operations such as multiplication or division. Questions like \"What is 130 + 11?\" and \"240 + 4 = ___\" align precisely with the learning standard."
+      "rationale": "Nothing reaches past addition of whole numbers. No subtraction, multiplication, place-value naming, or later-grade vocabulary appears. Stems stay in plain language — seed 43 uses only \"The two parts are 1620 and 2356. What is the sum?\", and seed 601's context is everyday counting of \"water bowls\". Seed 52's \"Show 9223 + 743 on the number line.\" is a representation, not a new operation, so it stays inside the competency."
     },
     "scale_appropriateness": {
-      "verdict": "PASS",
-      "rationale": "The numerical values strictly conform to the Grade 3 Quarter 2 scale, spanning from 2- and 3-digit operations (\"109 + 30 = ___\") up to large 4-digit sums approaching 10 000 such as \"7361 + 2510 = 9871. True or False?\" (sum 9871) and \"The two parts are 9093 and 700. What is the sum?\" (sum 9793), without exceeding the 10 000 ceiling."
+      "verdict": "CONCERN",
+      "rationale": "The upper bound is respected — the largest sum is 9967 at seed 604 (\"9943 + 24 = ___\"), and seed 45's 9960, seed 502's 9778 and seed 601's 9930 all sit under 10 000. The concern is the low end for a node whose ceiling is 10 000: seed 47 renders \"20 + 450 = ___\" for a sum of 470, a two-digit-plus-three-digit item, and seed 604 pairs 9943 with the two-digit 24 so only one column is actually in play. These sit well below the magnitude band the competency names."
     }
   },
   "sample_seeds": [
@@ -36,11 +36,10 @@
     44,
     45,
     46,
-    50,
-    51,
-    55,
-    75,
-    82,
+    47,
+    48,
+    52,
+    61,
     500,
     501,
     502,
@@ -54,66 +53,174 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 146 + 0?",
-      "correct_answer": 146
+      "formatter": "error_detect",
+      "question_text": "Manny solved: \"4524 + 3255 = ___\". Manny says the missing number is 7789. Is Manny correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 7779
+      }
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is 114 + 10?",
-      "correct_answer": 124
+      "formatter": "read_fill_in_blank",
+      "question_text": "The two parts are 1620 and 2356. What is the sum?",
+      "correct_answer": 3976
     },
     {
       "seed": 44,
-      "formatter": "cloze",
-      "question_text": "110 + 45 = ___",
-      "correct_answer": 155
+      "formatter": "mcq",
+      "question_text": "What is 1020 + 1325?",
+      "correct_answer": 2345,
+      "options": [
+        {
+          "key": "A",
+          "value": 2344,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2346,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2345,
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 2355,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "109 + 30 = ___",
-      "correct_answer": 139
+      "formatter": "mcq",
+      "question_text": "What is 4020 + 5940?",
+      "correct_answer": 9960,
+      "options": [
+        {
+          "key": "A",
+          "value": 9960,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 9970,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9961,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9959,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 46,
+      "formatter": "mcq",
+      "question_text": "What is 8003 + 152?",
+      "correct_answer": 8155,
+      "options": [
+        {
+          "key": "A",
+          "value": 8155,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 7851,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8165,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 8154,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 47,
       "formatter": "cloze",
-      "question_text": "240 + 4 = ___",
-      "correct_answer": 244
+      "question_text": "20 + 450 = ___",
+      "correct_answer": 470,
+      "options": [
+        {
+          "key": "A",
+          "value": 469,
+          "text": "469",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 471,
+          "text": "471",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 480,
+          "text": "480",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 470,
+          "text": "470",
+          "is_correct": true
+        }
+      ]
     },
     {
-      "seed": 50,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 90 + 108 on the number line.",
-      "correct_answer": 198
-    },
-    {
-      "seed": 51,
-      "formatter": "read_mcq",
-      "question_text": "The dot is at 150 and it moves forward 7 numbers. Starting from 150, just count up 7 numbers. Which number will the dot land on?",
-      "correct_answer": "C"
-    },
-    {
-      "seed": 55,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 10 and 115. What is the sum?",
-      "correct_answer": 125
-    },
-    {
-      "seed": 75,
+      "seed": 48,
       "formatter": "true_false",
-      "question_text": "44 + 0 = 54. True or False?",
+      "question_text": "7050 + 640 = 7050. True or False?",
       "correct_answer": false
     },
     {
-      "seed": 82,
-      "formatter": "error_detect",
-      "question_text": "Dante solved: \"13 + 210 = ___\". Dante says the missing number is 223. Is Dante correct?",
-      "correct_answer": {
-        "has_error": false,
-        "correct_value": 223
-      }
+      "seed": 52,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 9223 + 743 on the number line.",
+      "correct_answer": 9966
+    },
+    {
+      "seed": 61,
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 8105 and it moves forward 1380 numbers. Starting from 8105, just count up 1380 numbers. Which number will the dot land on?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 9484,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9485,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 6725,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9495,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 500,
@@ -131,43 +238,168 @@
       "seed": 502,
       "formatter": "mcq",
       "question_text": "What is 9021 + 757?",
-      "correct_answer": 9778
+      "correct_answer": 9778,
+      "options": [
+        {
+          "key": "A",
+          "value": 8264,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9788,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9777,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9778,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What is 130 + 11?",
-      "correct_answer": 141
+      "formatter": "true_false",
+      "question_text": "4006 + 3922 = 7928. True or False?",
+      "correct_answer": true
     },
     {
       "seed": 601,
-      "formatter": "cloze",
-      "question_text": "Pia has 208 water bowls. A friend has 0 water bowls. If they put all their water bowls together, how many water bowls do they have in all?",
-      "correct_answer": 208
+      "formatter": "mcq",
+      "question_text": "Pia has 7710 water bowls. A friend has 2220 water bowls. If they put all their water bowls together, how many water bowls do they have in all?",
+      "correct_answer": 9930,
+      "options": [
+        {
+          "key": "A",
+          "value": 9940,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 5490,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9929,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 9930,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 127 + 30?",
-      "correct_answer": 157
+      "formatter": "cloze",
+      "question_text": "4650 + 5205 = ___",
+      "correct_answer": 9855,
+      "options": [
+        {
+          "key": "A",
+          "value": 9865,
+          "text": "9865",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 9854,
+          "text": "9854",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 9855,
+          "text": "9855",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 9856,
+          "text": "9856",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 603,
       "formatter": "cloze",
-      "question_text": "143 + 0 = ___",
-      "correct_answer": 143
+      "question_text": "8400 + 109 = ___",
+      "correct_answer": 8509,
+      "options": [
+        {
+          "key": "A",
+          "value": 8519,
+          "text": "8519",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 8508,
+          "text": "8508",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 8509,
+          "text": "8509",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 8291,
+          "text": "8291",
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "What is 120 + 72?",
-      "correct_answer": 192
+      "formatter": "error_detect",
+      "question_text": "Carlo solved: \"9943 + 24 = ___\". Carlo says the missing number is 9967. Is Carlo correct?",
+      "correct_answer": {
+        "has_error": false,
+        "correct_value": 9967
+      }
     },
     {
       "seed": 605,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 114 + 130 on the number line.",
-      "correct_answer": 244
+      "formatter": "cloze",
+      "question_text": "2040 + 750 = ___",
+      "correct_answer": 2790,
+      "options": [
+        {
+          "key": "A",
+          "value": 2800,
+          "text": "2800",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 2789,
+          "text": "2789",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 2790,
+          "text": "2790",
+          "is_correct": true
+        },
+        {
+          "key": "D",
+          "value": 1290,
+          "text": "1290",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }

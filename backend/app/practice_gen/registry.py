@@ -108,6 +108,28 @@ _GRADE_DEFAULT_BOUNDS: Dict[str, Dict[int, Dict[str, int]]] = {
 }
 
 
+# "with and without regrouping" and "with or without regrouping" both contain
+# "without regrouping" as a literal substring, so any bare `"without regrouping"
+# in text` test silently binds the two-sided competency to the one-sided case and
+# permanently hides the half the curriculum explicitly names. That was fixed once,
+# at the second of the two sites inside _parse_competency_bounds that need it --
+# and the first site kept the bare test, so mat_g3_na_q2_1 ("sums up to 10 000,
+# with and without regrouping") and mat_g2_na_q1_9 ("with or without regrouping")
+# were still bound regrouping="none". A blind review of mat_g3_na_q2_1 on
+# 2026-09-04 returned comprehensive_coverage FAIL: not one of 18 rendered samples
+# required a single carry. One predicate, used by every site, is the fix -- the
+# duplicated substring knowledge was the defect.
+_TWO_SIDED_REGROUPING_PHRASES = (
+    "with and without regrouping",
+    "with or without regrouping",
+)
+
+
+def _regrouping_is_two_sided(text: str) -> bool:
+    """True when the competency names BOTH the with- and without-regrouping cases."""
+    return any(phrase in text for phrase in _TWO_SIDED_REGROUPING_PHRASES)
+
+
 def _parse_competency_bounds(
     competency: str,
     dna_name: str,
@@ -262,7 +284,7 @@ def _parse_competency_bounds(
                 min_feasible = (10 ** (big_digits - 1)) + (10 ** (small_digits - 1) if small_digits > 1 else 1)
                 bounds["max_sum"] = (min_feasible, bounds["max_sum"][1])
 
-        if "without regrouping" in text:
+        if "without regrouping" in text and not _regrouping_is_two_sided(text):
             bounds["regrouping"] = "none"
         if "2-digit and 1-digit" in text and "2-digit and 2-digit" in text:
             bounds["min_a"] = 10
@@ -1407,9 +1429,13 @@ def _parse_competency_bounds(
     # wording, so this variant still silently forced regrouping=False
     # (blind review: comprehensive_coverage FAIL, "'with regrouping' ...
     # only the 'without regrouping' case is ever generated").
-    if "with and without regrouping" in text or "with or without regrouping" in text:
-        # Don't strictly bound it, let the catalog dictate options
-        pass
+    if _regrouping_is_two_sided(text):
+        # Don't strictly bound it -- let the catalog dictate options so BOTH cases
+        # are generated. `pass` is not enough: an earlier branch in this same
+        # function may already have written a regrouping bound, and a no-op leaves
+        # that wrong value standing. Clear it, so this branch means what it says
+        # regardless of what ran before it.
+        bounds.pop("regrouping", None)
     elif "without regrouping" in text:
         bounds["regrouping"] = False
     elif "with regrouping" in text:

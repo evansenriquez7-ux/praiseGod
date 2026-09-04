@@ -80,6 +80,8 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§2C": "validate_compat: a formatter a node advertises must be reachable by the student path, not merely servable when pinned",
     "§2F": "validate_compat: every node id referenced in the app must exist in the registry",
     "§2G": "validate_compat: every node's competency bounds parse to a well-formed shape — the tree-wide property behind the fixture table",
+    "§2I": "validate_compat: a discrete variant a node DECLARES must be one it can actually produce — a shrinking floor; the silent packet skip that hid 65 of these is now recorded",
+    "§2H": "validate_compat: a competency naming BOTH cases of a dimension must not be bound to one of them — §2G proves bounds are well-formed, this proves they are faithful",
     "§3": "validate_dna: structural checks and difficulty profiles feasibility",
     "§4": "validate_matrix: VISUAL payload schema validation (recorded only under is_visual, so ~67 of 151 nodes; non-visual response shape rests on the Pydantic model at runtime)",
     "§5": "validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews",
@@ -187,6 +189,8 @@ def run_all(fail_fast: bool = False) -> int:
         executed_checks.add("§2C")
         executed_checks.add("§2F")
         executed_checks.add("§2G")
+        executed_checks.add("§2H")
+        executed_checks.add("§2I")
     elif fail_fast:
         print("  FAIL compatibility validation (fail-fast active)")
         return 1

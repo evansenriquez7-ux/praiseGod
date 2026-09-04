@@ -144,6 +144,8 @@ mutation is unproven regardless of how long it has been passing.
 | `§2C` | validate_compat: a formatter a node advertises must be reachable by the student path, not merely servable when pinned |
 | `§2F` | validate_compat: every node id referenced in the app must exist in the registry |
 | `§2G` | validate_compat: every node's competency bounds parse to a well-formed shape — the tree-wide property behind the fixture table |
+| `§2H` | validate_compat: a competency naming BOTH cases of a dimension must not be bound to one of them — §2G proves bounds are well-formed, §2H proves they are faithful to the competency text |
+| `§2I` | validate_compat: a discrete variant a node declares must be one it can actually produce — a shrinking floor (65 at 2026-09-04), not a hard gate |
 | `§3` | validate_dna: structural checks and difficulty profiles feasibility |
 | `§4` | validate_matrix: VISUAL payload schema validation (recorded only under is_visual, so ~67 of 151 nodes; non-visual response shape rests on the Pydantic model at runtime) |
 | `§5` | validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews |

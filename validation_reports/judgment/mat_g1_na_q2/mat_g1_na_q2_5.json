@@ -1,33 +1,33 @@
 {
   "node_id": "mat_g1_na_q2_5",
-  "reviewed_by": "Gemini Pro blind reviewer, batch Re-Harden (mat_g1_na_q2_5), 2026-08-18",
-  "review_date": "2026-08-18",
+  "reviewed_by": "Claude blind reviewer, batch D1B, 2026-09-04",
+  "review_date": "2026-09-04",
   "blind": true,
-  "overall": "PASS",
+  "overall": "FAIL",
   "findings": {
     "competency_fulfillment": {
-      "verdict": "PASS",
-      "rationale": "The sample set fully meets the MATATAG learning competency requirement to add numbers with sums up to 100 without regrouping across both specified operand categories. It incorporates 2-digit and 1-digit addition such as \"What is 15 + 4?\" and \"24 + 1 = 25. True or False?\", as well as 2-digit and 2-digit addition such as \"What is 55 + 34?\" and \"15 + 10 = ___\". Furthermore, the items integrate concrete and pictorial models including number line representations in \"Show 11 + 0 on the number line.\", visual item grouping in \"\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38 \u2014 There are 10 frogs.\n\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38 \u2014 15 more frogs are added.\nHow many total frogs are there?\", and part-whole structures in \"The two parts are 15 and 12. What is the sum?\"."
+      "verdict": "CONCERN",
+      "rationale": "Adding without regrouping to sums under 100 is done correctly throughout — seed 502's \"What is 55 + 34?\" (89) and seed 52's \"The two parts are 52 and 47. What is the sum?\" (99) are both carry-free. But the clause \"using a variety of concrete and pictorial models\" is barely honoured, and one item is answerable without adding: seed 602 renders \"60 + 22 = 60. True or False?\", where the asserted sum is the first addend unchanged, so a student answers False by inspection. The two picture items also degrade into prose: seed 43 shows \"(Large group of 30 stars) — There are 30 stars.\" — a parenthetical description of a picture is not a pictorial model for a Grade 1 reader."
     },
     "comprehensive_coverage": {
-      "verdict": "PASS",
-      "rationale": "The items cover the full spectrum of addition cases mandated by the competency. This includes adding zero (\"What is 33 + 0?\"), adding multiples of ten (\"70 + 16 = 86. True or False?\" and \"What is 22 + 10?\"), 2-digit plus 1-digit combinations (\"The two parts are 12 and 2. What is the sum?\"), and general 2-digit plus 2-digit additions across both small sums (\"10 + 13 = ___\") and upper-range sums (\"What is 55 + 34?\" and \"(Large group of 83 drinks) \u2014 There are 83 drinks.\n\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64 \u2014 15 more drinks are added.\nHow many total drinks are there?\")."
+      "verdict": "FAIL",
+      "rationale": "The competency names two operand cases, \"for 2-digit and 1-digit numbers, and 2-digit and 2-digit numbers\", and every one of the 19 samples is 2-digit plus 2-digit. Seed 44 \"What is 60 + 22?\", seed 45 \"What is 30 + 15?\", seed 46 \"What is 16 + 61?\", seed 50 \"40 + 45 = ___\", seed 52 (52 and 47), seed 61 \"Show 51 + 30 on the number line.\", seed 70 \"24 + 74 = ___\", seed 500 (83 and 15), seed 501 \"70 + 16 = 86. True or False?\", seed 502 (55 and 34), seed 600 \"47 + 41 = ___\", seed 603 \"30 + 60 = ___\" — not a single 1-digit addend appears anywhere in the batch. Half the explicitly enumerated scope is untested."
     },
     "cognitive_capacity": {
-      "verdict": "PASS",
-      "rationale": "The cognitive load, sentence length, and vocabulary are well-calibrated for Grade 1 Quarter 2 learners. Problems use short, direct stems such as \"What is 10 + 5?\" and \"15 + 10 = ___\". Contextual items use simple, highly relatable situations like stepping up (\"Moses is on step 12. Moses climbs up 10 more steps. What step is Moses on now? The answer is 22. True or False?\") and straightforward pictorial counts with explicit labels to support emerging readers."
+      "verdict": "CONCERN",
+      "rationale": "For Grade 1 Quarter 2 the pictorial support fails exactly where it is most needed. Seed 500 mixes representations inside one item: the first group is the unreadable placeholder \"(Large group of 83 drinks) — There are 83 drinks.\" while the second group is drawn as actual cup icons for 15 more, so a child sees a picture for one addend and a sentence for the other. Seed 604 asks a Grade 1 child to \"just count up 30 numbers\" one at a time from 30. Seed 601's context, \"Moses is on step 30. Moses climbs up 60 more steps. What step is Moses on now?\", places a six-year-old on a 90-step staircase."
     },
     "variant_comprehensiveness": {
-      "verdict": "PASS",
-      "rationale": "The sample exhibits a wide diversity of question formats including standard computation in multiple-choice format (\"What is 55 + 34?\"), fill-in-the-blank cloze (\"15 + 10 = ___\"), truth verification (\"12 + 1 = 12. True or False?\"), part-part-whole phrasing (\"The two parts are 15 and 12. What is the sum?\"), error analysis (Maria solved: \"12 + 12 = ___\". Maria says the blank is 25. Is Maria correct?), number line visualization (\"Show 11 + 0 on the number line.\"), and pictorial word problems (\"\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38 \u2014 There are 10 frogs.\n\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38 \u2014 15 more frogs are added.\nHow many total frogs are there?\")."
+      "verdict": "FAIL",
+      "rationale": "Operand pairs are duplicated four times across only 19 samples: 30 and 15 at seeds 45 and 47 (\"30 + 15 = 46. True or False?\"), 60 and 22 at seeds 44 and 602, 30 and 30 at seeds 43 and 604, and 30 with 60 three separate times at seeds 601, 603 (\"30 + 60 = ___\") and 605 (\"60 + 30 = 90. True or False?\"). Round multiples of ten dominate the first addend (30, 40, 60, 70, 30, 60, 30, 60), so the tens column is trivially 0-plus-something in many items. Only one item, seed 601's steps, has a real-world context."
     },
     "competency_alignment": {
       "verdict": "PASS",
-      "rationale": "Every problem strictly aligns to 2-digit addition without regrouping with sums up to 100. No items introduce unprescribed concepts such as regrouping (e.g., in \"What is 55 + 34?\", 5+4=9 and 5+3=8; in \"70 + 16 = 86. True or False?\", 0+6=6 and 7+1=8), subtraction, or multi-step operations beyond Grade 1 Quarter 2 scope."
+      "rationale": "Nothing reaches beyond the competency. Every item is whole-number addition, no carry is ever required, and the language stays plain — seed 42 uses only \"The dot is at 68 and it moves forward 10 numbers.\" and seed 70 uses a peer-check frame, \"Dante solved: \"24 + 74 = ___\". Dante says the blank is 98. Is Dante correct?\" There is no subtraction, no regrouping vocabulary, and no place-value terminology that would belong to a later node."
     },
     "scale_appropriateness": {
       "verdict": "PASS",
-      "rationale": "All addends and resulting sums are strictly non-negative integers spanning the allowed range up to 100 without exceeding it. Calculations cover lower-scale totals like 14 in \"The two parts are 12 and 2. What is the sum?\", mid-scale sums like 25 in \"15 + 10 = ___\" and 33 in \"What is 33 + 0?\", up to upper-bound totals like 86 in \"70 + 16 = 86. True or False?\", 89 in \"What is 55 + 34?\", and 98 in \"(Large group of 83 drinks) \u2014 There are 83 drinks.\n\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64 \u2014 15 more drinks are added.\nHow many total drinks are there?\"."
+      "rationale": "Every sum obeys \"sums up to 100\": the largest are seed 52's 99 and seed 500's 98, and seed 601's 90 sits just below the ceiling, so the top of the band is genuinely reached without breaching it. Addends run from 15 (seed 500) to 83 (seed 500's first group), giving spread across the two-digit range. Distractor 100 at seeds 601 and 603 is presented only as a wrong option, never as a rendered sum."
     }
   },
   "sample_seeds": [
@@ -36,10 +36,11 @@
     44,
     45,
     46,
+    47,
     50,
-    55,
-    84,
-    85,
+    52,
+    61,
+    70,
     500,
     501,
     502,
@@ -53,66 +54,230 @@
   "samples_reviewed": [
     {
       "seed": 42,
-      "formatter": "mcq",
-      "question_text": "What is 33 + 0?",
-      "correct_answer": 33
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 68 and it moves forward 10 numbers. Starting from 68, just count up 10 numbers. Which number will the dot land on?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 77,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 78,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 88,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 79,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 43,
-      "formatter": "mcq",
-      "question_text": "What is 10 + 5?",
-      "correct_answer": 15
+      "formatter": "read_mcq",
+      "question_text": "(Large group of 30 stars) — There are 30 stars.\n(Large group of 30 stars) — 30 more stars are added.\nHow many total stars are there?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 59,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 30,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 61,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 60,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 44,
-      "formatter": "true_false",
-      "question_text": "24 + 1 = 25. True or False?",
-      "correct_answer": true
+      "formatter": "mcq",
+      "question_text": "What is 60 + 22?",
+      "correct_answer": 82,
+      "options": [
+        {
+          "key": "A",
+          "value": 82,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 92,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 83,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 81,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 45,
-      "formatter": "cloze",
-      "question_text": "15 + 10 = ___",
-      "correct_answer": 25
+      "formatter": "mcq",
+      "question_text": "What is 30 + 15?",
+      "correct_answer": 45,
+      "options": [
+        {
+          "key": "A",
+          "value": 44,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 46,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 55,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 45,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 46,
-      "formatter": "cloze",
-      "question_text": "10 + 13 = ___",
-      "correct_answer": 23
+      "formatter": "mcq",
+      "question_text": "What is 16 + 61?",
+      "correct_answer": 77,
+      "options": [
+        {
+          "key": "A",
+          "value": 77,
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 87,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 76,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 78,
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "seed": 47,
+      "formatter": "true_false",
+      "question_text": "30 + 15 = 46. True or False?",
+      "correct_answer": false
     },
     {
       "seed": 50,
-      "formatter": "set_fill_in_blank",
-      "question_text": "Show 11 + 0 on the number line.",
-      "correct_answer": 11
+      "formatter": "cloze",
+      "question_text": "40 + 45 = ___",
+      "correct_answer": 85,
+      "options": [
+        {
+          "key": "A",
+          "value": 86,
+          "text": "86",
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 85,
+          "text": "85",
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 84,
+          "text": "84",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 95,
+          "text": "95",
+          "is_correct": false
+        }
+      ]
     },
     {
-      "seed": 55,
-      "formatter": "read_mcq",
-      "question_text": "\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38 \u2014 There are 10 frogs.\n\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38\ud83d\udc38 \u2014 15 more frogs are added.\nHow many total frogs are there?",
-      "correct_answer": "C"
-    },
-    {
-      "seed": 84,
+      "seed": 52,
       "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 15 and 12. What is the sum?",
-      "correct_answer": 27
+      "question_text": "The two parts are 52 and 47. What is the sum?",
+      "correct_answer": 99
     },
     {
-      "seed": 85,
+      "seed": 61,
+      "formatter": "set_fill_in_blank",
+      "question_text": "Show 51 + 30 on the number line.",
+      "correct_answer": 81
+    },
+    {
+      "seed": 70,
       "formatter": "error_detect",
-      "question_text": "Maria solved: \"12 + 12 = ___\". Maria says the blank is 25. Is Maria correct?",
+      "question_text": "Dante solved: \"24 + 74 = ___\". Dante says the blank is 98. Is Dante correct?",
       "correct_answer": {
-        "has_error": true,
-        "correct_value": 24
+        "has_error": false,
+        "correct_value": 98
       }
     },
     {
       "seed": 500,
       "formatter": "read_mcq",
-      "question_text": "(Large group of 83 drinks) \u2014 There are 83 drinks.\n\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64\ud83e\udd64 \u2014 15 more drinks are added.\nHow many total drinks are there?",
-      "correct_answer": "B"
+      "question_text": "(Large group of 83 drinks) — There are 83 drinks.\n🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤🥤 — 15 more drinks are added.\nHow many total drinks are there?",
+      "correct_answer": "B",
+      "options": [
+        {
+          "key": "A",
+          "value": 99,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 98,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 97,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 83,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 501,
@@ -124,43 +289,138 @@
       "seed": 502,
       "formatter": "mcq",
       "question_text": "What is 55 + 34?",
-      "correct_answer": 89
+      "correct_answer": 89,
+      "options": [
+        {
+          "key": "A",
+          "value": 90,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 89,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 99,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 88,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 600,
-      "formatter": "mcq",
-      "question_text": "What is 15 + 4?",
-      "correct_answer": 19
+      "formatter": "error_detect",
+      "question_text": "Noel solved: \"47 + 41 = ___\". Noel says the blank is 98. Is Noel correct?",
+      "correct_answer": {
+        "has_error": true,
+        "correct_value": 88
+      }
     },
     {
       "seed": 601,
-      "formatter": "true_false",
-      "question_text": "Moses is on step 12. Moses climbs up 10 more steps. What step is Moses on now? The answer is 22. True or False?",
-      "correct_answer": true
+      "formatter": "mcq",
+      "question_text": "Moses is on step 30. Moses climbs up 60 more steps. What step is Moses on now?",
+      "correct_answer": 90,
+      "options": [
+        {
+          "key": "A",
+          "value": 91,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 90,
+          "is_correct": true
+        },
+        {
+          "key": "C",
+          "value": 89,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 100,
+          "is_correct": false
+        }
+      ]
     },
     {
       "seed": 602,
-      "formatter": "mcq",
-      "question_text": "What is 22 + 10?",
-      "correct_answer": 32
-    },
-    {
-      "seed": 603,
       "formatter": "true_false",
-      "question_text": "12 + 1 = 12. True or False?",
+      "question_text": "60 + 22 = 60. True or False?",
       "correct_answer": false
     },
     {
+      "seed": 603,
+      "formatter": "cloze",
+      "question_text": "30 + 60 = ___",
+      "correct_answer": 90,
+      "options": [
+        {
+          "key": "A",
+          "value": 90,
+          "text": "90",
+          "is_correct": true
+        },
+        {
+          "key": "B",
+          "value": 89,
+          "text": "89",
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 91,
+          "text": "91",
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 100,
+          "text": "100",
+          "is_correct": false
+        }
+      ]
+    },
+    {
       "seed": 604,
-      "formatter": "mcq",
-      "question_text": "What is 10 + 12?",
-      "correct_answer": 22
+      "formatter": "read_mcq",
+      "question_text": "The dot is at 30 and it moves forward 30 numbers. Starting from 30, just count up 30 numbers. Which number will the dot land on?",
+      "correct_answer": "D",
+      "options": [
+        {
+          "key": "A",
+          "value": 70,
+          "is_correct": false
+        },
+        {
+          "key": "B",
+          "value": 61,
+          "is_correct": false
+        },
+        {
+          "key": "C",
+          "value": 59,
+          "is_correct": false
+        },
+        {
+          "key": "D",
+          "value": 60,
+          "is_correct": true
+        }
+      ]
     },
     {
       "seed": 605,
-      "formatter": "read_fill_in_blank",
-      "question_text": "The two parts are 12 and 2. What is the sum?",
-      "correct_answer": 14
+      "formatter": "true_false",
+      "question_text": "60 + 30 = 90. True or False?",
+      "correct_answer": true
     }
   ]
 }

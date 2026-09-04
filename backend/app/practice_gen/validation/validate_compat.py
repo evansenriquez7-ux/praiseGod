@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import importlib
 import json
+import re
 import sys
 from pathlib import Path
 from typing import List
@@ -792,6 +793,132 @@ def validate_all_competency_bounds_parse() -> List[str]:
     return errors
 
 
+# A competency that names BOTH sides of a dimension, in any wording a curriculum writer
+# might use. Deliberately a pattern over the dimension WORD rather than a list of known
+# axes: grade 4-10 will phrase this with words that do not exist in the tree today
+# ("with and without renaming", "with or without remainders"), and a check that only
+# knows "regrouping" would pass them all silently (Scaling Mandate #4).
+_TWO_SIDED_CLAUSE = re.compile(r"with\s+(?:and|or)\s+without\s+([a-z]+)")
+
+
+def validate_competency_scope_not_narrowed() -> List[str]:
+    """
+    §2H — a competency that names BOTH cases must not be bound to one of them.
+
+    §2G proves bounds are well-FORMED. Nothing proved they are FAITHFUL to the competency
+    they were parsed from, and a bound can be perfectly well-formed while asserting half
+    of what the curriculum requires.
+
+    That is not hypothetical. Until 2026-09-04 `_parse_competency_bounds` tested
+    `"without regrouping" in text` with a bare substring match at one of the two sites
+    that needed the distinction. "with and without regrouping" CONTAINS "without
+    regrouping", so mat_g3_na_q2_1 ("sums up to 10 000, with and without regrouping") and
+    mat_g2_na_q1_9 ("with or without regrouping") were pinned regrouping="none". Measured
+    over 120 rendered seeds each: 0/120 items required a carry. The harness was green
+    throughout -- every stage validated the content that WAS produced and nothing asked
+    whether the competency's other half had gone missing. It took a blind human-style
+    review of rendered samples to see it, which does not scale to seven more grades.
+
+    The failure is silent by construction: narrowing a bound REMOVES items, so nothing
+    downstream has anything to complain about. This check is the only thing that reads the
+    competency text and the parsed bound together.
+
+    Blind spot, stated plainly: this catches the "both cases named, one case bound" shape
+    only. A competency clause the parser ignores ENTIRELY -- no bound emitted, no scope
+    narrowed -- is invisible here, and is §6's job (capability provision), not this one.
+    """
+    from ..registry import (get_all_node_ids, get_node_dnas, get_node_info,
+                            get_node_competency_bounds)
+
+    errors: List[str] = []
+    for node_id in get_all_node_ids():
+        text = ((get_node_info(node_id) or {}).get("competency") or "").lower()
+        dims = set(_TWO_SIDED_CLAUSE.findall(text))
+        if not dims:
+            continue
+        for dna in (get_node_dnas(node_id) or []):
+            try:
+                bounds = get_node_competency_bounds(node_id, dna)
+            except Exception:  # noqa: BLE001 - §2G owns parse failures; don't double-report
+                continue
+            if not isinstance(bounds, dict):
+                continue
+            for dim in sorted(dims):
+                if dim not in bounds:
+                    continue  # unbound is exactly right: the catalog offers both
+                value = bounds[dim]
+                # A list of >=2 options or a (min, max) range still admits both cases.
+                if isinstance(value, (list, tuple)) and len(value) >= 2:
+                    continue
+                errors.append(
+                    f"{node_id}/{dna}: the competency says \"with and/or without {dim}\" -- "
+                    f"it names BOTH cases -- but the parsed bound pins {dim}={value!r} to "
+                    f"one of them, so the other half of the competency can never be "
+                    f"generated. Narrowing removes items silently: no other check fires. "
+                    f"Fix the parse, do not widen this assertion (§2H)."
+                )
+    return errors
+
+
+# Measured 2026-09-04 across every node's full candidate list: 65 unproducible declared
+# variants over 33 nodes (regrouping 38, tables 8, task_type 6, unit_type 6, number_type 4,
+# strategy 3). A FLOOR, not a hard gate, and for the reason Scaling Mandate #5 gives: a
+# check whose baseline is already red cannot be told apart from the noise it sits in. It
+# may only ever be lowered. Lowering it is the whole point; raising it to make a run pass
+# is the defect it exists to catch.
+_PRODUCIBLE_FLOOR = 65
+
+
+def validate_declared_variants_are_producible() -> List[str]:
+    """
+    §2I — a discrete variant a node DECLARES must be one the node can actually produce.
+
+    §2B asks whether an advertised formatter can be served; §2C whether the student path
+    ever reaches it. Neither asks the same question of the *variant* axes, and nothing did:
+    a node can declare regrouping="four_places" while its competency caps sums at 20, which
+    needs four carry positions and has one.
+
+    This was invisible rather than absent. `judgment_packets._try_render` swallowed every
+    such failure with `except Exception: return None`, so the candidate silently vanished
+    from the packet: the reviewer saw fewer samples than intended, and nobody learned that a
+    declared variant is unproducible. A silent skip and "there was nothing to render" look
+    identical from outside, which is why this went 31 nodes deep before anyone measured it.
+
+    Two distinct causes live behind one number, and the fix differs per cause -- do not
+    treat the count as one bug:
+      * the value is physically impossible at the node's ceiling (regrouping/borrow depth) --
+        the declaration is wrong and should be narrowed;
+      * the DNA declares a variant it never implements for this shape (unit_type='cm' on a
+        G1 length node, number_type='multi_digit') -- a genuine capability gap, §6's subject.
+
+    Deliberately does NOT predict feasibility from a formula. The first attempt at this
+    check did, by calling the DNA's own `regrouping_is_feasible`, and over-filtered 3
+    candidates on 2 nodes -- `generate_params` normalizes "one_place" to "ones" BEFORE
+    applying that predicate, so a second copy of the rule disagreed with the generator.
+    That is the same duplication that caused the §2H defect. Render it and see.
+    """
+    from .judgment_packets import (_variant_coverage_candidates, _render_sample,
+                                   _VARIANT_COVERAGE_SEED_FLOOR)
+    from ..registry import get_all_node_ids
+
+    errors: List[str] = []
+    for node_id in get_all_node_ids():
+        candidates = _variant_coverage_candidates(node_id)
+        for i, (axis, value) in enumerate(candidates):
+            seed = _VARIANT_COVERAGE_SEED_FLOOR + i
+            try:
+                _render_sample(node_id, seed)
+            except Exception as exc:  # noqa: BLE001 - the failure IS the finding
+                errors.append(
+                    f"{node_id}: declares {axis}={value!r} but cannot produce it "
+                    f"(seed {seed}: {type(exc).__name__}: {str(exc)[:110]}). Either the "
+                    f"declaration is wrong for this node's bounds, or the DNA never "
+                    f"implements it here -- both leave the reviewer a thinner packet "
+                    f"than the node claims to support (§2I)."
+                )
+    return errors
+
+
 def validate_all() -> bool:
     """
     Run all compatibility and coverage checks and print a summary.
@@ -810,19 +937,24 @@ def validate_all() -> bool:
     reach_errors = validate_advertised_formatters_are_reachable()
     dangling_errors = validate_node_references_resolve()
     bounds_property_errors = validate_all_competency_bounds_parse()
+    scope_errors = validate_competency_scope_not_narrowed()
+    producible_errors = validate_declared_variants_are_producible()
     all_errors = (compat_errors + coverage_errors + monotonicity_errors
                   + equivalence_errors + bounds_errors + servable_errors + config_errors
                   + placement_errors
                   + (reach_errors if len(reach_errors) > _REACH_FLOOR else [])
-                  + dangling_errors + bounds_property_errors)
+                  + dangling_errors + bounds_property_errors + scope_errors
+                  + (producible_errors if len(producible_errors) > _PRODUCIBLE_FLOOR else []))
 
-    total_checks = 11
+    total_checks = 13
     passed = sum([not compat_errors, not coverage_errors, not monotonicity_errors,
                   not equivalence_errors, not bounds_errors, not servable_errors,
                   not config_errors, not placement_errors,
                   len(reach_errors) <= _REACH_FLOOR,
                   not dangling_errors,
-                  not bounds_property_errors])
+                  not bounds_property_errors,
+                  not scope_errors,
+                  len(producible_errors) <= _PRODUCIBLE_FLOOR])
 
     print(f"\nCompatibility validation: {passed}/{total_checks} check groups passed.")
 
@@ -902,6 +1034,22 @@ def validate_all() -> bool:
     else:
         print("  PASS all_competency_bounds_parse (every node, not a fixture list)")
 
+    if scope_errors:
+        print(f"  FAIL competency_scope_not_narrowed ({len(scope_errors)}):")
+        for e in scope_errors[:10]:
+            print(f"    - {e}")
+    else:
+        print("  PASS competency_scope_not_narrowed (no two-sided competency pinned to one side)")
+
+    if len(producible_errors) > _PRODUCIBLE_FLOOR:
+        print(f"  FAIL declared_variants_are_producible ({len(producible_errors)}, "
+              f"floor {_PRODUCIBLE_FLOOR} — it GREW):")
+        for e in producible_errors[:10]:
+            print(f"    - {e}")
+    else:
+        print(f"  PASS declared_variants_are_producible ({len(producible_errors)}, "
+              f"floor {_PRODUCIBLE_FLOOR}; floor may only shrink)")
+
     if bounds_errors:
         print("  FAIL competency_bounds_parsing:")
         for e in bounds_errors:
@@ -920,6 +1068,8 @@ _SINGLE_CHECKS = {
     "placement": ("option_placement", validate_option_placement),
     "references": ("node_references_resolve", validate_node_references_resolve),
     "bounds_property": ("all_competency_bounds_parse", validate_all_competency_bounds_parse),
+    "scope": ("competency_scope_not_narrowed", validate_competency_scope_not_narrowed),
+    "producible": ("declared_variants_are_producible", validate_declared_variants_are_producible),
     "servable": ("advertised_formatters_are_servable", validate_advertised_formatters_are_servable),
 }
 
@@ -936,8 +1086,11 @@ def _run_single(name: str) -> int:
     label, fn = _SINGLE_CHECKS[name]
     errors = fn()
     floor = {"formatters_reachable": _REACH_FLOOR,
-             "node_references_resolve": _DANGLING_FLOOR}.get(label, 0)
-    over = len(errors) > floor if label in ("formatters_reachable",) else bool(errors)
+             "node_references_resolve": _DANGLING_FLOOR,
+             "declared_variants_are_producible": _PRODUCIBLE_FLOOR}.get(label, 0)
+    over = (len(errors) > floor
+            if label in ("formatters_reachable", "declared_variants_are_producible")
+            else bool(errors))
     if label == "node_references_resolve":
         over = bool(errors)  # the floor is applied inside that check
     if over:
