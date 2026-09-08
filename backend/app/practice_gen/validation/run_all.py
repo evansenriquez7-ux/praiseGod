@@ -9,6 +9,13 @@ Runs all validators in the practice problem generation pipeline:
   4. validate_vocab (vocabulary gating and concept constraints check in full-node mode)
   5. validate_matrix (exhaustive behavioral matrix check)
   6. validate_judgment (genuine, non-boilerplate per-node judgment reviews — hard gate)
+  7. validate_capability Phase 1 (§6A–§6E: artifact-free — no attestation record needed)
+  8. validate_capability Phase 2 (§6F–§6H: reads validation_reports/attestation/)
+
+Stages 7 and 8 are the two bands of one contract, split 2026-09-08. A check is Phase 1
+iff it can run with no agent-authored artifact on disk; the phase of each §-ref lives in
+validate_capability.CHECK_PHASE and is reconciled against the phase it actually ran in
+by the Two-Direction block below.
 
 Exit code is 0 if and only if all tests pass.
 """
@@ -97,13 +104,13 @@ CONTRACT_CHECKS: Dict[str, str] = {
     "§2H": "validate_compat: a competency naming BOTH cases of a dimension must not be bound to one of them — §2G proves bounds are well-formed, this proves they are faithful",
     "§3": "validate_dna: structural checks and difficulty profiles feasibility",
     "§4": "validate_matrix: VISUAL payload schema validation (recorded only under is_visual, so ~67 of 151 nodes; non-visual response shape rests on the Pydantic model at runtime)",
-    "§5": "validate_judgment: genuine, non-boilerplate, non-stale blind judgment reviews",
-    "§6": "validate_capability: competency requirements declared, cited, covered, and provided",
-    "§6D": "validate_capability: a capability carried only by a generic textual formatter is not provided",
-    "§6E": "validate_capability: a capability carried only by a `bounds` list most of the table shares is not provided",
-    "§6F": "validate_capability: every declared capability carries a blind Attester verdict, and none is contradicted",
-    "§6G": "validate_capability: an attestation shows its work — non-boilerplate reasoning citing seeds from its own packet",
-    "§6H": "validate_capability: an Attester verdict must name who made it, and no identity may cover more than one dispatch",
+    "§5": "validate_judgment PHASE 2 (whole): genuine, non-boilerplate, non-stale blind judgment reviews",
+    "§6": "validate_capability PHASE 1: competency requirements declared, cited, covered, and provided — artifact-free, runs with validation_reports/attestation/ absent",
+    "§6D": "validate_capability PHASE 1: a capability carried only by a generic textual formatter is not provided",
+    "§6E": "validate_capability PHASE 1: a capability carried only by a `bounds` list most of the table shares is not provided",
+    "§6F": "validate_capability PHASE 2: every declared capability carries a blind Attester verdict, and none is contradicted",
+    "§6G": "validate_capability PHASE 2: an attestation shows its work — non-boilerplate reasoning citing seeds from its own packet",
+    "§6H": "validate_capability PHASE 2: an Attester verdict must name who made it, and no identity may cover more than one dispatch",
     "§7": "run_all: the suite's own census (nodes, unit tests, mutations) has not shrunk below its floor",
     "§8": "validate_coverage: every assertion the harness can emit is either proven by a mutation or on a shrinking allowlist",
     "§9": "validate_render: the payload a node emits must be renderable by the React component the student sees",
@@ -155,6 +162,27 @@ def run_all(fail_fast: bool = False) -> int:
     print("======================================================================\n")
 
     executed_checks: Set[str] = set()
+    # Which PHASE each executed §-ref actually ran in, against which
+    # validate_capability.CHECK_PHASE is reconciled below. Recorded rather than
+    # assumed, for the same reason validate_matrix records LAST_EXECUTED_CHECKS: a
+    # check that silently changes band is a check whose cost moved without anyone
+    # deciding to move it.
+    executed_phase: Dict[str, int] = {}
+
+    def _phase_refs(phase: int) -> Set[str]:
+        """The §6 refs registered to `phase` that this runner also contracts for.
+
+        `CHECK_PHASE` also phases §6A/§6B/§6C, which findings cite but CONTRACT_CHECKS
+        does not register as separate rows; intersecting keeps the two-direction check
+        comparing like with like instead of reporting three permanent phantoms.
+        """
+        return {ref for ref, p in validate_capability.CHECK_PHASE.items()
+                if p == phase and ref in CONTRACT_CHECKS}
+
+    def _record_phase(phase: int) -> None:
+        for ref in _phase_refs(phase):
+            executed_checks.add(ref)
+            executed_phase[ref] = phase
 
     # 1. Unit tests (§0) — the harness's own tests.
     #
@@ -170,14 +198,14 @@ def run_all(fail_fast: bool = False) -> int:
     # look like a deadlock for five ticks. The fast suite is ~35s, so it runs FIRST --
     # there is no sense spending 40 minutes on the matrix when the harness's own tests
     # are broken.
-    print("--- 1/8: Unit Tests (the harness's own tests) ---")
+    print("--- 1/9: Unit Tests (the harness's own tests) ---")
     unit_ok = _run_unit_tests()
     if unit_ok:
         executed_checks.add("§0")
     if not unit_ok and fail_fast:
         return 1
 
-    print("\n--- 2/8: DNA Structural and Parameter Checks ---")
+    print("\n--- 2/9: DNA Structural and Parameter Checks ---")
     dna_results = validate_dna.validate_all_dnas()
     dna_failed = [c for c, errs in dna_results.items() if any(not e.startswith("WARN") for e in errs)]
 
@@ -192,7 +220,7 @@ def run_all(fail_fast: bool = False) -> int:
         return 1
 
     # 2. Compatibility
-    print("\n--- 3/8: Compatibility, Coverage & Monotonicity ---")
+    print("\n--- 3/9: Compatibility, Coverage & Monotonicity ---")
     compat_ok = validate_compat.validate_all()
     if compat_ok:
         executed_checks.add("§2")
@@ -209,7 +237,7 @@ def run_all(fail_fast: bool = False) -> int:
         return 1
 
     # 3. Interest Invariance
-    print("\n--- 4/8: Interest Invariance Checks ---")
+    print("\n--- 4/9: Interest Invariance Checks ---")
     interest_results = validate_interest.validate_all_interest_invariance()
     interest_failed = [c for c, errs in interest_results.items() if errs]
     interest_ok = len(interest_failed) == 0
@@ -218,7 +246,7 @@ def run_all(fail_fast: bool = False) -> int:
         return 1
 
     # 4. Vocabulary & Concept Gating (Full-Node Mode)
-    print("\n--- 5/8: Vocabulary & Concept Gating Audits (Full-Node Mode) ---")
+    print("\n--- 5/9: Vocabulary & Concept Gating Audits (Full-Node Mode) ---")
     vocab_results = validate_vocab.run_all_vocab_audits(sample_count=2)
     vocab_failed = []
     for nid, audit in vocab_results.items():
@@ -237,7 +265,7 @@ def run_all(fail_fast: bool = False) -> int:
         print("  PASS vocabulary gating audit (all nodes)")
 
     # 5. Exhaustive Behavioral Matrix
-    print("\n--- 6/8: Exhaustive Behavioral Matrix Validation ---")
+    print("\n--- 6/9: Exhaustive Behavioral Matrix Validation ---")
     # Run matrix validator. We set workers=0 for auto-detection.
     matrix_code = run_matrix_validation(fail_fast=fail_fast, workers=0)
     matrix_ok = matrix_code == 0
@@ -274,7 +302,7 @@ def run_all(fail_fast: bool = False) -> int:
         return 1
 
     # 6. Judgment Reviews (genuine, non-boilerplate — hard gate)
-    print("\n--- 7/8: Judgment Reviews (genuine per-node artifacts) ---")
+    print("\n--- 7/9: Judgment Reviews (genuine per-node artifacts) ---")
     judgment_errors = validate_judgment.validate_judgment_reviews(fail_fast=fail_fast)
     v = validate_judgment.summarize_verdicts()
     if v["FAIL"] > 0 or v["CONCERN"] > 0:
@@ -299,41 +327,73 @@ def run_all(fail_fast: bool = False) -> int:
         if fail_fast:
             return 1
 
-    # 7. Capability Contract (§6) — does each node declare what its competency
-    #    requires, cite it, cover it, and can the pipeline actually provide it?
-    print("\n--- 8/8: Capability Contract (competency → pipeline) ---")
-    capability_errors = validate_capability.validate_capability_declarations()
-    capability_ok = len(capability_errors) == 0
-    if capability_ok:
-        executed_checks.add("§6")
-        executed_checks.add("§6D")
-        executed_checks.add("§6E")
-        executed_checks.add("§6F")
-        executed_checks.add("§6G")
-        executed_checks.add("§6H")
-        print("  PASS capability_contract (all nodes declare, cite, cover, and are provided for)")
+    # 7. Capability Contract (§6) — in its two phases.
+    #
+    # The seam is NOT "does this check need an LLM": every §6 check is programmatic,
+    # and the LLM's only job is to PRODUCE an attestation, never to validate one. The
+    # seam is whether a check needs an AGENT-AUTHORED ARTIFACT to exist before it can
+    # run at all. §6A–§6E do not (knowledge graph, `requires`, CAPABILITY_PROVIDERS:
+    # 75 findings in 0.1s, runs with validation_reports/attestation/ absent). §6F–§6H
+    # do, and freshness re-renders every attested seed: 90 findings in 9.9s.
+    #
+    # Until 2026-09-08 both ran on ONE boolean and added their six §-refs together, so
+    # 75 findings that belong in the fix-until-green loop were filed in a ~865-finding
+    # Phase-2 backlog and nothing in the harness could tell the two bands apart. The
+    # phase of each ref is read from validate_capability.CHECK_PHASE rather than
+    # restated here — one registry, so a second copy cannot disagree with it.
+    print("\n--- 8/9: Capability Contract Phase 1 (artifact-free — §6A–§6E) ---")
+    provision_errors = validate_capability.validate_capability_provision()
+    provision_ok = len(provision_errors) == 0
+    if provision_ok:
+        _record_phase(1)
+        print("  PASS capability_contract (Phase 1: all nodes declare, cite, cover, "
+              "and are provided for)")
     else:
-        undeclared = [e for e in capability_errors if "no 'requires' declaration" in e]
-        unprovided = [e for e in capability_errors if "no pipeline artifact provides it" in e]
-        wildcarded = [e for e in capability_errors if "§6D" in e]
-        unattested = [e for e in capability_errors if "UNATTESTED" in e]
-        contradicted = [e for e in capability_errors if "CONTRADICTED" in e]
+        undeclared = [e for e in provision_errors if "no 'requires' declaration" in e]
+        unprovided = [e for e in provision_errors if "no pipeline artifact provides it" in e]
+        wildcarded = [e for e in provision_errors if "§6D" in e]
         print(
-            f"  FAIL capability_contract ({len(capability_errors)} problem(s): "
+            f"  FAIL capability_contract (Phase 1, {len(provision_errors)} problem(s): "
             f"{len(undeclared)} node(s) undeclared, {len(unprovided)} capability(ies) "
             f"with no provider, of which {len(wildcarded)} are carried only by a "
-            f"generic textual formatter (§6D); {len(contradicted)} CONTRADICTED and "
-            f"{len(unattested)} UNATTESTED by a blind Attester (§6F)):"
+            f"generic textual formatter (§6D)):"
+        )
+        for err in provision_errors[:10]:
+            print(f"    - {err}")
+        if len(provision_errors) > 10:
+            print(f"    ... and {len(provision_errors) - 10} more.")
+        if fail_fast:
+            return 1
+
+    # PHASE 2 — gated on Phase 1 in the reorganised loop, but still RUN here so a
+    # single `run_all` reports the whole contract. Skipping it when Phase 1 is red
+    # would hide the attestation band behind a §6D backlog, which is the failure this
+    # split exists to end, not to repeat one level down.
+    print("\n--- 9/9: Capability Contract Phase 2 (attestation — §6F–§6H) ---")
+    attestation_errors = validate_capability.validate_capability_attestation()
+    attestation_ok = len(attestation_errors) == 0
+    if attestation_ok:
+        _record_phase(2)
+        print("  PASS capability_contract (Phase 2: every declared capability carries "
+              "a fresh, non-boilerplate, attributed blind Attester verdict)")
+    else:
+        unattested = [e for e in attestation_errors if "UNATTESTED" in e]
+        contradicted = [e for e in attestation_errors if "CONTRADICTED" in e]
+        stale = [e for e in attestation_errors if "is STALE" in e]
+        print(
+            f"  FAIL capability_contract (Phase 2, {len(attestation_errors)} problem(s): "
+            f"{len(contradicted)} CONTRADICTED, {len(unattested)} UNATTESTED and "
+            f"{len(stale)} STALE (§6F)):"
         )
         # UNATTESTED dominates by volume while the backlog is open and would bury the
         # findings that name a defect. Show the ones that name a real problem first.
-        capability_errors = (
-            [e for e in capability_errors if "UNATTESTED" not in e] + unattested
+        attestation_errors = (
+            [e for e in attestation_errors if "UNATTESTED" not in e] + unattested
         )
-        for err in capability_errors[:10]:
+        for err in attestation_errors[:10]:
             print(f"    - {err}")
-        if len(capability_errors) > 10:
-            print(f"    ... and {len(capability_errors) - 10} more.")
+        if len(attestation_errors) > 10:
+            print(f"    ... and {len(attestation_errors) - 10} more.")
         if fail_fast:
             return 1
 
@@ -424,25 +484,42 @@ def run_all(fail_fast: bool = False) -> int:
         if not judgment_ok:
             expected_subset.discard("§5")
             executed_checks.discard("§5")
-        if not capability_ok:
-            expected_subset.discard("§6")
-            executed_checks.discard("§6")
-            expected_subset.discard("§6D")
-            executed_checks.discard("§6D")
-            expected_subset.discard("§6E")
-            executed_checks.discard("§6E")
-            expected_subset.discard("§6F")
-            executed_checks.discard("§6F")
-            expected_subset.discard("§6G")
-            executed_checks.discard("§6G")
-            expected_subset.discard("§6H")
-            executed_checks.discard("§6H")
+        # Per PHASE, not per stage: a red Phase 1 no longer suppresses the §6F/§6G/§6H
+        # rows, and a red Phase 2 no longer suppresses §6/§6D/§6E. Six hand-written
+        # discard pairs on one boolean is what made the seam invisible here too.
+        for _phase, _ok in ((1, provision_ok), (2, attestation_ok)):
+            if _ok:
+                continue
+            for _ref in _phase_refs(_phase):
+                expected_subset.discard(_ref)
+                executed_checks.discard(_ref)
 
         if executed_checks != expected_subset:
             raise AssertionError(
                 f"Drift between contract registry and executed harness verifications!\n"
                 f"  Executed but not registered: {executed_checks - expected_subset}\n"
                 f"  Registered but not executed: {expected_subset - executed_checks}"
+            )
+
+        # Third direction, added with the §6 phase split: a ref must have run in the
+        # phase it is REGISTERED to. `_record_phase` derives its refs from CHECK_PHASE,
+        # so this catches the remaining way they can disagree — a stage calling
+        # `_record_phase` with the wrong phase, which would otherwise only show up as a
+        # confusing "registered but not executed" for the refs it skipped.
+        #
+        # This is the runner's half of the reconciliation and it is only reachable by a
+        # full `run_all`. The half a mutation can prove in ten seconds is
+        # validate_capability's `capability_phase_partition_6`, which holds each half's
+        # FINDINGS to the same registry.
+        misphased = {ref: (got, validate_capability.CHECK_PHASE[ref])
+                     for ref, got in executed_phase.items()
+                     if got != validate_capability.CHECK_PHASE.get(ref)}
+        if misphased:
+            raise AssertionError(
+                f"Drift between validate_capability.CHECK_PHASE and the phase each check "
+                f"actually ran in!\n"
+                + "\n".join(f"  {ref}: ran in Phase {got}, registered as Phase {want}"
+                             for ref, (got, want) in sorted(misphased.items()))
             )
         print("  PASS two_direction_contract_match")
         contract_match_ok = True
@@ -452,8 +529,8 @@ def run_all(fail_fast: bool = False) -> int:
 
     print("\n======================================================================")
     all_ok = (unit_ok and dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok
-              and judgment_ok and capability_ok and contract_match_ok and census_ok
-              and render_ok and grade_ok and coverage_ok)
+              and judgment_ok and provision_ok and attestation_ok and contract_match_ok
+              and census_ok and render_ok and grade_ok and coverage_ok)
     if all_ok:
         print("ALL TESTS PASSED SUCCESSFULLY! Praise God!")
         print("======================================================================")

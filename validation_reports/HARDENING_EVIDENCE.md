@@ -8473,3 +8473,164 @@ $ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
 
 Filter measurement for the curriculum gate, all three directions, before landing:
 **16 dropped, 16 dropped-and-already-failing, ZERO dropped-but-actually-renders.**
+
+---
+
+## 2026-09-08 — §6 straddled the phase seam: 75 artifact-free findings filed as Phase 2 work
+
+### The seam, and why it is not "does this check need an LLM"
+
+Every check in `validate_capability` is programmatic. Freshness is a mechanical
+re-render-and-compare, plurality is counting, seed provenance is a set lookup. The LLM's
+only job is to **produce** an attestation; it never validates one. So "needs an LLM" does
+not divide this module at all.
+
+The boundary that does divide it is:
+
+> **DOES THIS CHECK NEED AN AGENT-AUTHORED ARTIFACT TO EXIST BEFORE IT CAN RUN?**
+
+That question is decidable by reading what a function touches, which is what makes it
+enforceable rather than a convention. Measured on HEAD before the split:
+
+```
+ARTIFACT-FREE      §6A/§6B/§6C/§6D/§6E   75 findings in 0.1s   (74 of them §6D)
+ARTIFACT-DEPENDENT §6F/§6G/§6H           90 findings in 9.9s   (7 STALE, 83 CONTRADICTED)
+                                        165 total
+```
+
+`validate_capability_declarations()` ran both in one function and `run_all` added
+`§6/§6D/§6E/§6F/§6G/§6H` to `executed_checks` on **one boolean**, with six hand-written
+discard pairs behind it. So 75 findings that recompute in a tenth of a second — the fast
+band a fix-until-green loop can re-run after every edit — sat inside a Phase 2 backlog
+that costs ten seconds a sweep, and nothing in the harness could tell the two apart.
+
+### Correction to the brief this work was scoped from
+
+The task specified the attestation half as **7 findings**. That is the §6F *freshness*
+sub-pass alone. `_validate_attestation` contributes a further **83 CONTRADICTED**, and it
+reads `_load_attestations()` — artifact-dependent by the same test. The real split is
+**75 / 90**, and 90 is what the attestation half must reproduce. The invariant that
+actually holds the change honest is not either count but that the two halves are a
+**partition**: same findings, same text, no gain, no loss.
+
+### What landed
+
+* `validate_capability_provision()` — Phase 1. §6A–§6E. Reads the knowledge graph, the
+  `requires` declarations and `CAPABILITY_PROVIDERS`. Nothing else.
+* `validate_capability_attestation()` — Phase 2. §6F–§6H. Every check reads
+  `validation_reports/attestation/`.
+* `validate_capability_declarations()` — the two, concatenated. Kept because
+  `scripts/hardening_supervisor.py` bands by section ref and needs both.
+* `_declared_nodes()` — the node walk both halves share, returning guard errors
+  separately. Those errors (no competency text, no `requires` block) read only the
+  knowledge graph, so they are **Phase 1's alone**; emitting them from both halves would
+  double-count every undeclared node the first time a new grade lands with one.
+* `CHECK_PHASE` — the registry, in `validate_capability`. `run_all` imports it rather
+  than keeping a second copy that could disagree.
+
+### Two gates, because a seam held by a docstring is not held
+
+`capability_phase_boundary_6` re-runs Phase 1 with `_ATTESTATION_DIR` repointed at a path
+that does not exist and requires byte-identical findings. **KNOWN BLIND SPOT:** it is
+behavioural. A Phase-1 read whose result changes no finding today (a check that fires only
+on a malformed record, say) is a latent dependency it cannot see. Closing that needs a
+static reachability pass over the module's AST — named work, not a threshold.
+
+`capability_phase_partition_6` refuses a finding citing a section ref registered to the
+other phase. **KNOWN BLIND SPOT:** §6A/§6B/§6C findings cite no ref of their own, so it
+cannot see them. Safe in the direction that matters — all three are Phase 1, and the risk
+guarded is a Phase-2 check (which always cites §6F/§6G/§6H) surfacing in the Phase-1 half.
+
+`run_all` carries the third direction: a ref must have run in the phase it is registered
+to. That one is only reachable by a full `run_all`, so the half a mutation proves in ten
+seconds is `capability_phase_partition_6`.
+
+### No floor was introduced
+
+Neither half is floored. The rule that made that worth checking — a floor at or above the
+real defect count makes a check unprovable rather than merely lax; `RENDER_FLOOR=16` let
+seven planted broken payloads exit 0 — does not apply to a change that introduces none.
+The one floor touched is §7's `mutations`, ratcheted 48 → 50 for the two added.
+
+### The 74 §6D findings MOVED. They did not shrink.
+
+Deliberately out of scope: clearing them is a different change with a different risk
+profile. Phase 1 reports 75 before and 75 after.
+
+### Evidence
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_capability
+  Capability contract: 165 failure(s) (75 Phase 1 / artifact-free, 90 Phase 2 / attestation).
+  exit=1        (165 before the split, on one undifferentiated boolean)
+
+  # the halves are a PARTITION of the pre-split output, not a re-derivation:
+  baseline findings: 165   after split: 165
+  MULTISET IDENTICAL: True
+
+  # Phase 1 with the corpus physically moved aside -- not simulated:
+  $ mv validation_reports/attestation <scratchpad>      # 173 records
+    ls: validation_reports/attestation: No such file or directory
+    PHASE 1 with attestation/ ABSENT: 75 findings in 0.3s   (of which §6D: 74)
+  $ mv <scratchpad> validation_reports/attestation       # 173 records restored
+    present: 75  absent: 75   BYTE-IDENTICAL: True
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only attestation_leaks_into_phase1
+  DETECTED: exit 1 — Capability contract: 250 failure(s) (160 Phase 1, 90 Phase 2).
+  capability_phase_boundary_6: Phase 1 (artifact-free) produced 158 finding(s) with
+  validation_reports/attestation/ present and 862 with it absent, so it READS the
+  attestation corpus and is not artifact-free.
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py --only phase_ref_misassigned
+  DETECTED: exit 1 — Capability contract: 166 failure(s) (76 Phase 1, 90 Phase 2).
+  capability_phase_partition_6: 74 finding(s) reported by the Phase 1 half of §6 cite
+  §6D, which CHECK_PHASE registers as Phase 2.
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
+  50/50 mutations detected.
+  Praise God — the verifier verifies.
+  # the five pre-existing §6 mutations still fire, and now name their band:
+  #   wildcard_provider        75 -> 76 Phase 1     (a Phase 1 defect)
+  #   contradicted_attestation 90 -> 91 Phase 2     (a Phase 2 defect)
+  #   stale_attestation        90 -> 91 Phase 2
+  #   template_attestation     90 -> 91 Phase 2
+  #   single_attester_identity 90 -> 91 Phase 2
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_coverage
+  PASS assertion_coverage_8: 48/98 harness assertions proven (38 discovered in
+       validate_matrix, 60 declared across 12 modules), 50 knowingly unproven
+  # 46/96 -> 48/98. Both new assertions are PROVEN, not allowlisted; the
+  # allowlist stayed at 50 and did not grow to absorb them.
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_census
+  PASS census: nodes=151 (floor 151)
+  PASS census: unit_tests=402 (floor 395)
+  PASS census: mutations=50 (floor 50)        (floor was 48; ratcheted for the two added)
+  PASS census: variant_candidates=964 (floor 964)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all
+  PASS unit_tests (401 passed, 1 skipped, 2 deselected, 1 warning in 235.31s)
+  --- 8/9: Capability Contract Phase 1 (artifact-free — §6A–§6E) ---
+  FAIL capability_contract (Phase 1, 75 problem(s): 0 node(s) undeclared, 75
+       capability(ies) with no provider, of which 74 are carried only by a generic
+       textual formatter (§6D)):
+  --- 9/9: Capability Contract Phase 2 (attestation — §6F–§6H) ---
+  FAIL capability_contract (Phase 2, 90 problem(s): 83 CONTRADICTED, 0 UNATTESTED
+       and 7 STALE (§6F)):
+  PASS render_contract_floor_9: 0 broken renders (floor 0)
+  PASS grading_contract_floor_10: 0 mis-gradings (floor 0)
+  PASS contract_doc_matches_registry
+  PASS operator_doc_covers_registry (35/35 refs, floor 12)
+  PASS two_direction_contract_match
+  exit=1  — the pre-existing backlog (679 §5 findings, 165 §6). NOT introduced here:
+           the same 165 §6 findings stood before the split, on one boolean.
+```
+
+`two_direction_contract_match` passing with **both** phases red is the load-bearing line:
+it is the per-phase discard loop executing, proving a red Phase 1 no longer suppresses the
+§6F/§6G/§6H contract rows and a red Phase 2 no longer suppresses §6/§6D/§6E.
+
+`contract_doc_matches_registry` earned its keep during this change: the first draft of the
+§6 contract row contained the literal text "section ref" written with the section sign,
+which `_parse_contract_section_refs` matched as a ref the registry does not implement. The
+doc was fixed; the check was not touched.

@@ -38,12 +38,13 @@ CENSUS_FLOORS = {
     # have stopped running without breaching it, which is the silent shrinkage this
     # floor exists to catch, so it is ratcheted to the real number less a little churn.
     "unit_tests": 395,
-    # 48 registered 2026-09-08 (was 37). Four were added to prove §8's own directions and
-    # one to prove §2C at (node, formatter) granularity; the ten of headroom that existed
-    # before meant ten mutations could be deleted silently, and §8 only notices a deletion
-    # that leaves a label unproven -- where two mutations prove one label, this floor is
-    # the only guard.
-    "mutations": 48,
+    # 50 registered 2026-09-08 (was 48, was 37). Four were added to prove §8's own
+    # directions, one to prove §2C at (node, formatter) granularity, and two to prove the
+    # §6 phase seam (capability_phase_boundary_6, capability_phase_partition_6); the ten
+    # of headroom that existed before meant ten mutations could be deleted silently, and
+    # §8 only notices a deletion that leaves a label unproven -- where two mutations prove
+    # one label, this floor is the only guard.
+    "mutations": 50,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #

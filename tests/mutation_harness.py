@@ -434,6 +434,59 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["template rationale", "share one findings"],
         baseline_must_not_contain=["template rationale"],
     ),
+    # ------------------------------------------------------------------------
+    # The §6 phase seam (2026-09-08). §6A-§6E need no agent-authored artifact and
+    # run in Phase 1; §6F-§6H read validation_reports/attestation/ and run in
+    # Phase 2. Both halves lived in one function until this split, so 75 findings
+    # that compute in 0.1s sat in a backlog that costs 9.9s to recompute. A seam
+    # held only by a docstring is a convention; these two mutations are what make
+    # it a contract.
+    # ------------------------------------------------------------------------
+    Mutation(
+        name="attestation_leaks_into_phase1",
+        asserts=['capability_phase_boundary_6'],
+        description=(
+            "Read the attestation corpus from the Phase 1 (artifact-free) half -- the "
+            "one-line convenience that would silently make the fast band unrunnable "
+            "without an agent-authored artifact on disk, while still exiting 0."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_capability.py": (
+                "    rows, errs = _declared_nodes(node_ids)\n"
+                "    for node_id, competency, requires, ignore in rows:\n"
+                "        errs += _validate_provenance(node_id, competency, requires)",
+                "    rows, errs = _declared_nodes(node_ids)\n"
+                "    _leaked = _load_attestations()\n"
+                "    for node_id, competency, requires, ignore in rows:\n"
+                "        errs += _validate_attestation(node_id, requires, _leaked)\n"
+                "        errs += _validate_provenance(node_id, competency, requires)",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_capability"],
+        expected_check="§6 phase boundary (Phase 1 must run with the attestation corpus absent)",
+        expect_output_contains=["capability_phase_boundary_6 && is not"],
+        baseline_must_not_contain=["capability_phase_boundary_6"],
+    ),
+    Mutation(
+        name="phase_ref_misassigned",
+        asserts=['capability_phase_partition_6'],
+        description=(
+            "Relabel §6D as Phase 2 while `_validate_provision` keeps reporting it from "
+            "the Phase 1 half. Registry and execution disagreeing is how a check's cost "
+            "moves between bands without anyone deciding to move it -- the state §6 was "
+            "already in, with six refs added on one boolean."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_capability.py": (
+                '"§6C": 1, "§6D": 1, "§6E": 1,',
+                '"§6C": 1, "§6D": 2, "§6E": 1,',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_capability"],
+        expected_check="§6 per-phase reconciliation (a finding may only cite refs of its own phase)",
+        expect_output_contains=["capability_phase_partition_6 && §6D"],
+        baseline_must_not_contain=["capability_phase_partition_6"],
+    ),
     Mutation(
         name="template_attestation",
         asserts=['attester_reasoning_skeleton_6G'],

@@ -746,3 +746,77 @@ def test_6g_is_clean_on_the_real_tree():
     """
     errs = VC._attestation_integrity(VC._attestation_records())
     assert errs == [], f"§6G fires on the real tree: {errs[:3]}"
+
+
+# ---------------------------------------------------------------------------
+# The phase seam (2026-09-08)
+# ---------------------------------------------------------------------------
+# §6A-§6E need no agent-authored artifact and run in Phase 1; §6F-§6H read
+# validation_reports/attestation/ and run in Phase 2. The two gates below are
+# proven by mutations (`attestation_leaks_into_phase1`, `phase_ref_misassigned`).
+# What no mutation covers is the COMPOSITION: a caller that drops one half from
+# `validate_capability_declarations` loses a whole band silently, because run_all
+# calls the halves directly and would keep reporting green. These pin that.
+
+
+def test_phases_partition_the_whole_contract():
+    """
+    The two halves together are the whole contract, with nothing lost or doubled.
+
+    Multiset, not set: the guard errors in `_declared_nodes` (no competency text, no
+    `requires` block) read only the knowledge graph, so they are Phase 1's to report
+    and Phase 2 must not emit them a second time. A set comparison would hide exactly
+    that double-count, which is the failure a new grade with an undeclared node hits
+    first.
+    """
+    import collections
+
+    node = "mat_g3_mg_q1_5"
+    phase1 = VC.validate_capability_provision([node])
+    phase2 = VC.validate_capability_attestation([node])
+    whole = VC.validate_capability_declarations([node])
+    assert collections.Counter(phase1 + phase2) == collections.Counter(whole), (
+        f"the halves do not partition the whole: phase1={len(phase1)} "
+        f"phase2={len(phase2)} whole={len(whole)}"
+    )
+
+
+def test_phase1_runs_with_the_attestation_corpus_absent():
+    """
+    Phase 1 must produce identical findings with validation_reports/attestation/ gone.
+
+    This is the seam itself. If it ever fails, the fix is to move the check that reads
+    the corpus into `_phase2_findings` -- never to relax this assertion, because a
+    Phase-1 band that needs an agent-authored artifact cannot run in the
+    fix-until-green loop, which is the only reason the split exists.
+    """
+    node = "mat_g3_mg_q1_5"
+    with_corpus = VC.validate_capability_provision([node])
+
+    real = VC._ATTESTATION_DIR
+    try:
+        VC._ATTESTATION_DIR = real.parent / "_no_such_attestation_dir_for_test"
+        assert not VC._ATTESTATION_DIR.exists()
+        without_corpus = VC.validate_capability_provision([node])
+    finally:
+        VC._ATTESTATION_DIR = real
+
+    assert with_corpus == without_corpus, (
+        f"Phase 1 reads the attestation corpus: {len(with_corpus)} findings with it, "
+        f"{len(without_corpus)} without."
+    )
+
+
+def test_every_phase2_ref_is_registered_as_phase_2():
+    """
+    CHECK_PHASE must agree with what the halves actually report.
+
+    The runtime version of this is `capability_phase_partition_6`, which runs on the
+    live tree inside both halves. This pins the registry itself so a ref cannot be
+    added to CHECK_PHASE in the wrong band while the tree happens to emit no finding
+    that would show it.
+    """
+    assert VC.CHECK_PHASE["§6F"] == 2
+    assert VC.CHECK_PHASE["§6G"] == 2
+    assert VC.CHECK_PHASE["§6H"] == 2
+    assert {VC.CHECK_PHASE[r] for r in ("§6", "§6A", "§6B", "§6C", "§6D", "§6E")} == {1}

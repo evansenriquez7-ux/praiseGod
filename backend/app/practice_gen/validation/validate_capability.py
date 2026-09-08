@@ -40,6 +40,17 @@ Three checks, and the first two are what keep the declaration honest
 No graceful fallbacks (AGENTS.md Protocol 3). A node with no `requires` block is a loud
 failure, never a skip — `if "requires" not in node: continue` is precisely the bug that
 let 94 non-PASS judgment reviews escape every content check.
+
+Two phases, one seam
+--------------------
+§6A–§6E need nothing but the knowledge graph, the declarations and the provider table,
+so they run in Phase 1 — the fast, artifact-free band that the fix-until-green loop can
+re-run after every edit. §6F–§6H read `validation_reports/attestation/`, an artifact an
+agent has to author first, so they run in Phase 2. `validate_capability_provision` and
+`validate_capability_attestation` are those two halves; `CHECK_PHASE` records which
+§-ref belongs to which, and two gates (`capability_phase_boundary_6`,
+`capability_phase_partition_6`) keep the halves honest. See the block above
+`CHECK_PHASE` for why the boundary is artifact-dependence and not "needs an LLM".
 """
 
 from __future__ import annotations
@@ -55,8 +66,10 @@ from backend.app.practice_gen.compatibility import COMPATIBILITY, VARIANTS_BY_DN
 # proven by a mutation naming it in `Mutation.asserts`, or excused in
 # validate_coverage.UNPROVEN_ASSERTIONS with a reason and a date.
 # This module returns errors and prints nothing; run_all reports the group under
-# `capability_contract`. The sub-assertions are what a mutation must name -- §6 is five
-# refs deep and one mutation on the rollup would mark all of them proven.
+# `capability_contract` -- once per PHASE, same label, since it is one rollup for one
+# contract. The sub-assertions are what a mutation must name: §6 is eight refs deep
+# across two phases, and one mutation on the rollup would mark all of them proven.
+# The last two are the seam itself -- see the CHECK_PHASE block near the bottom.
 ASSERTIONS = (
     "capability_provenance_6A",
     "capability_coverage_6B",
@@ -69,6 +82,8 @@ ASSERTIONS = (
     "attester_reasoning_skeleton_6G",
     "attester_evidence_6G",
     "attester_plurality_6H",
+    "capability_phase_boundary_6",
+    "capability_phase_partition_6",
     "capability_contract",   # run_all's rollup print for the stage
 )
 from backend.app.practice_gen.registry import (
@@ -1312,13 +1327,59 @@ def validate_attester_plurality() -> List[str]:
     return errs
 
 
-def validate_capability_declarations(node_ids: List[str] | None = None) -> List[str]:
-    """Run §6A/§6B/§6C over every registered node. Returns a flat list of failures."""
+# ---------------------------------------------------------------------------
+# The phase seam
+# ---------------------------------------------------------------------------
+# The boundary between the harness's two phases is NOT "does this check need an
+# LLM". Every check in this module is programmatic: freshness is a mechanical
+# re-render-and-compare, plurality is counting, seed provenance is a set lookup.
+# The LLM's only job is to PRODUCE an attestation; it never validates one. The
+# boundary that matters is:
+#
+#     DOES THIS CHECK NEED AN AGENT-AUTHORED ARTIFACT TO EXIST BEFORE IT RUNS?
+#
+#     no  -> Phase 1. Reads the knowledge graph, the `requires` declarations and
+#            CAPABILITY_PROVIDERS, nothing else. Runs in the fix-until-green loop.
+#     yes -> Phase 2. Reads validation_reports/attestation/, so it can only run
+#            once an agent has filed one. Spans sessions; gated on Phase 1 green.
+#
+# That test is decidable rather than a matter of taste, which is what makes it
+# enforceable. §6 straddled it for as long as it has existed: one function ran
+# §6A-§6E (75 findings, 0.1s, needs no artifact) and §6F-§6H (90 findings, 9.9s,
+# re-renders every attested seed) and reported both on ONE boolean. 75 findings
+# that belong to the fast loop were therefore filed in the slow backlog, and
+# nothing in the harness could tell the two bands apart.
+#
+# CHECK_PHASE is the registry, and it is the single source of truth: run_all
+# imports it rather than keeping a second copy that could disagree with this one.
+CHECK_PHASE: Dict[str, int] = {
+    "§6": 1, "§6A": 1, "§6B": 1, "§6C": 1, "§6D": 1, "§6E": 1,
+    "§6F": 2, "§6G": 2, "§6H": 2,
+}
+
+# Every §-ref a finding can cite, for the partition check below.
+_SECTION_REF_RE = re.compile(r"§\d+[A-Za-z-]*")
+
+# A path under validation_reports/ that must never exist. `_phase_boundary_failures`
+# repoints _ATTESTATION_DIR here to re-run Phase 1 with the attestation corpus absent.
+_ABSENT_ATTESTATION_PROBE = "__phase1_boundary_probe_must_not_exist__"
+
+
+def _declared_nodes(
+    node_ids: List[str] | None,
+) -> tuple[List[tuple], List[str]]:
+    """
+    ((node_id, competency, requires, requires_ignore) per well-formed node, guard errors).
+
+    Both phases walk the same nodes, so the walk lives here rather than being written
+    twice and drifting. The guard errors -- no competency text, no `requires` block, a
+    malformed one -- are returned separately because they belong to exactly ONE phase.
+    They read the knowledge graph and nothing else, so they are Phase 1 findings, and
+    Phase 1 is the only caller that reports them. Emitting them from both halves would
+    double-count every undeclared node the moment a new grade lands with one.
+    """
+    rows: List[tuple] = []
     errs: List[str] = []
-    attested = _load_attestations()
-    _records = _attestation_records()
-    errs += _attestation_staleness(_records)
-    errs += _attestation_integrity(_records)
     for node_id in (node_ids if node_ids is not None else get_all_node_ids()):
         meta = get_node_info(node_id)
         competency = str((meta or {}).get("competency", "")).strip()
@@ -1339,22 +1400,187 @@ def validate_capability_declarations(node_ids: List[str] | None = None) -> List[
             continue
 
         ignore = (meta or {}).get("requires_ignore") or []
+        rows.append((node_id, competency, requires, ignore))
+    return rows, errs
+
+
+def _phase1_findings(node_ids: List[str] | None) -> List[str]:
+    """§6A/§6B/§6C/§6D/§6E over every registered node. Reads no agent-authored artifact."""
+    rows, errs = _declared_nodes(node_ids)
+    for node_id, competency, requires, ignore in rows:
         errs += _validate_provenance(node_id, competency, requires)
         errs += _validate_coverage(node_id, competency, requires, ignore)
         errs += _validate_provision(node_id, requires)
-        errs += _validate_attestation(node_id, requires, attested)
+    return errs
 
+
+def _phase2_findings(node_ids: List[str] | None) -> List[str]:
+    """§6F/§6G/§6H. Every one of these reads validation_reports/attestation/."""
+    records = _attestation_records()
+    attested = _load_attestations()
+    errs = _attestation_staleness(records)
+    errs += _attestation_integrity(records)
+    # Guard errors are Phase 1's to report (see `_declared_nodes`); an undeclared node
+    # has nothing to attest, and Phase 2 is gated on Phase 1 being green anyway.
+    rows, _guard = _declared_nodes(node_ids)
+    for node_id, _competency, requires, _ignore in rows:
+        errs += _validate_attestation(node_id, requires, attested)
     # Tree-wide, not per node: plurality is a property of the whole attestation corpus.
     errs += validate_attester_plurality()
     return errs
 
 
+def _phase_boundary_failures(node_ids: List[str] | None, findings: List[str]) -> List[str]:
+    """
+    `capability_phase_boundary_6` -- Phase 1 must produce the same findings with the
+    attestation corpus ABSENT as it does with it present.
+
+    This is the seam made mechanical rather than conventional. A split held only by a
+    docstring lasts until the first agent who adds one attestation read to a Phase-1
+    helper because it was convenient; nothing would report it, and Phase 1 would quietly
+    stop being runnable in the fix-until-green loop -- while still exiting 0.
+
+    KNOWN BLIND SPOT (Mandate 6): this is a BEHAVIOURAL test, not a static one. It
+    catches a Phase-1 read whose result changes the findings, which is the definition of
+    a dependency on this tree -- but a read that happens to produce identical output
+    today (a check that fires only on a malformed record, say) is a LATENT dependency it
+    cannot see. Closing that needs a static reachability pass over this module's AST,
+    which is named work, not a threshold to tune.
+
+    Rebinds a module global for the duration of the probe and restores it in a
+    `finally`, so this is not safe to call from two threads at once. run_all drives this
+    stage serially; if that ever changes, pass the directory down instead of swapping it.
+    """
+    global _ATTESTATION_DIR
+
+    probe = _ATTESTATION_DIR.parent / _ABSENT_ATTESTATION_PROBE
+    if probe.exists():
+        raise FileExistsError(
+            f"the Phase-1 boundary probe path '{probe}' exists, so Phase 1 cannot be "
+            f"re-run with the attestation corpus absent and the seam is unchecked. "
+            f"Delete it rather than skipping the check."
+        )
+    real = _ATTESTATION_DIR
+    try:
+        _ATTESTATION_DIR = probe
+        without = _phase1_findings(node_ids)
+    except Exception as exc:  # noqa: BLE001 - naming the breach beats a bare traceback
+        return [
+            f"capability_phase_boundary_6: Phase 1 (artifact-free) CRASHED when re-run "
+            f"with validation_reports/attestation/ absent: {type(exc).__name__}: {exc}. "
+            f"A Phase-1 check may not require an agent-authored artifact to exist -- that "
+            f"is what makes it runnable in the fix-until-green loop. Move the check that "
+            f"reads the corpus into `_phase2_findings`."
+        ]
+    finally:
+        _ATTESTATION_DIR = real
+
+    if without == findings:
+        return []
+    only_with = [f for f in findings if f not in without]
+    only_without = [f for f in without if f not in findings]
+    return [
+        f"capability_phase_boundary_6: Phase 1 (artifact-free) produced "
+        f"{len(findings)} finding(s) with validation_reports/attestation/ present and "
+        f"{len(without)} with it absent, so it READS the attestation corpus and is not "
+        f"artifact-free. {len(only_with)} finding(s) appear only when the corpus is "
+        f"present, {len(only_without)} only when it is absent. First present-only: "
+        f"{(only_with[:1] or ['<none>'])[0][:160]!r}. First absent-only: "
+        f"{(only_without[:1] or ['<none>'])[0][:160]!r}. Move the check that reads the "
+        f"corpus into `_phase2_findings` and register its §-ref as Phase 2 in CHECK_PHASE."
+    ]
+
+
+def _phase_partition_failures(findings: List[str], phase: int) -> List[str]:
+    """
+    `capability_phase_partition_6` -- a finding may only cite §-refs registered to the
+    phase that produced it.
+
+    The per-phase reconciliation. `_phase_boundary_failures` proves Phase 1 does not
+    READ an artifact; this proves the two halves still REPORT what their contract rows
+    say they report, so a check cannot migrate across the seam -- or be relabelled into
+    the other phase -- without being named.
+
+    KNOWN BLIND SPOT (Mandate 6): §6A, §6B and §6C findings cite no §-ref in their text,
+    so this check cannot see them. That is safe in the direction that matters: all three
+    are Phase 1, and the risk this guards is a Phase-2 check (which always cites §6F/§6G/
+    §6H) surfacing in the Phase-1 half. Giving §6A-§6C messages their own refs would
+    close it and is a message-text change, not a threshold.
+    """
+    seen: Dict[tuple, tuple] = {}
+    for finding in findings:
+        for ref in _SECTION_REF_RE.findall(finding):
+            registered = CHECK_PHASE.get(ref)
+            if registered == phase:
+                continue
+            key = (ref, registered)
+            count, example = seen.get(key, (0, finding))
+            seen[key] = (count + 1, example)
+
+    errs: List[str] = []
+    for (ref, registered), (count, example) in sorted(seen.items(), key=lambda kv: str(kv[0])):
+        where = f"Phase {registered}" if registered is not None else "no phase at all"
+        errs.append(
+            f"capability_phase_partition_6: {count} finding(s) reported by the Phase "
+            f"{phase} half of §6 cite {ref}, which CHECK_PHASE registers as {where}. A "
+            f"check may not straddle the seam: either it needs an agent-authored "
+            f"artifact to run (Phase 2) or it does not (Phase 1). First: "
+            f"{example[:200]!r}"
+        )
+    return errs
+
+
+def validate_capability_provision(node_ids: List[str] | None = None) -> List[str]:
+    """
+    PHASE 1 -- §6A/§6B/§6C/§6D/§6E, plus the two gates that keep the seam real.
+
+    Artifact-free by construction and by check: reads the knowledge graph, the nodes'
+    `requires` declarations and CAPABILITY_PROVIDERS, and runs with
+    validation_reports/attestation/ absent. Measured 2026-09-08 on this tree: 75
+    findings in 0.1s, 74 of them §6D.
+    """
+    findings = _phase1_findings(node_ids)
+    return (findings
+            + _phase_boundary_failures(node_ids, findings)
+            + _phase_partition_failures(findings, 1))
+
+
+def validate_capability_attestation(node_ids: List[str] | None = None) -> List[str]:
+    """
+    PHASE 2 -- §6F/§6G/§6H. Every check here reads validation_reports/attestation/.
+
+    Gated on Phase 1 being green: an attestation is a ruling about rendered content, and
+    there is no sense asking whether an Attester's verdict still holds on a node whose
+    declaration does not even cite its own competency. Measured 2026-09-08: 90 findings
+    in 9.9s (7 §6F-freshness, 83 §6F-CONTRADICTED), dominated by the re-render sweep.
+    """
+    findings = _phase2_findings(node_ids)
+    return findings + _phase_partition_failures(findings, 2)
+
+
+def validate_capability_declarations(node_ids: List[str] | None = None) -> List[str]:
+    """
+    Both phases of §6, for callers that want the whole picture in one list.
+
+    Kept as the module's public entry point because `scripts/hardening_supervisor.py`
+    bands the findings by section ref rather than by phase and needs both. Callers that
+    only want the fast half should call `validate_capability_provision` directly -- it
+    is ~100x cheaper and needs nothing on disk. `tests/attester_packets.py` was moved
+    onto it with this split; its §6D queue never needed the attestation sweep it had
+    been dragging in behind the whole-contract call.
+    """
+    return validate_capability_provision(node_ids) + validate_capability_attestation(node_ids)
+
+
 if __name__ == "__main__":
     import sys
 
-    failures = validate_capability_declarations()
+    phase1 = validate_capability_provision()
+    phase2 = validate_capability_attestation()
+    failures = phase1 + phase2
     if failures:
-        print(f"Capability contract: {len(failures)} failure(s).")
+        print(f"Capability contract: {len(failures)} failure(s) "
+              f"({len(phase1)} Phase 1 / artifact-free, {len(phase2)} Phase 2 / attestation).")
         for f in failures:
             print(f"  - {f}")
     else:

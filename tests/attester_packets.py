@@ -215,9 +215,14 @@ def build(node_ids: List[str], capabilities: List[str] | None = None) -> tuple:
 
 
 def _unearned_targets() -> Dict[str, List[str]]:
-    """The §6D queue: capabilities currently carried only by a generic formatter."""
+    """The §6D queue: capabilities currently carried only by a generic formatter.
+
+    Phase 1 only. §6D is emitted by `_validate_provision`, which reads nothing under
+    validation_reports/, so building this queue never needed the 10s attestation sweep
+    the whole-contract call used to drag in behind it.
+    """
     out: Dict[str, List[str]] = {}
-    for e in VC.validate_capability_declarations():
+    for e in VC.validate_capability_provision():
         if "§6D" not in e:
             continue
         m = re.match(r"^(\S+): competency requires '([^']+)'", e)
