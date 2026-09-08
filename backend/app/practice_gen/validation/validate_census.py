@@ -36,6 +36,23 @@ CENSUS_FLOORS = {
     "nodes": 151,
     "unit_tests": 340,   # 349 observed 2026-08-26, with headroom for ordinary churn
     "mutations": 37,
+    # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
+    # will actually demonstrate across the tree.
+    #
+    # This one guards a hole the OTHER direction from §2I. §2I caps unproducible
+    # declarations from ABOVE, so a filter in _variant_coverage_candidates that drops too
+    # much makes §2I report FEWER findings and look like progress. Measured: gutting two
+    # applicability filters took candidates 983 -> 932 and §2I 21 -> 19, and
+    # `validate_compat` still exited 0 printing "13/13 check groups passed".
+    #
+    # Three such filters were added on 2026-09-08 to clear 44 §2I findings; before that
+    # there were none to gut. Narrowing what a check looks at is a legitimate fix and a
+    # silent way to fake one, and only this floor tells them apart.
+    #
+    # Lower it deliberately, in the commit that removes a declaration and says which
+    # competency clause does not name it -- e.g. dropping unit_type='cm' from three
+    # "using non-standard units" nodes should lower this by exactly 6.
+    "variant_candidates": 983,
 }
 
 
@@ -49,6 +66,15 @@ def count_mutations() -> int:
     from tests.mutation_harness import MUTATIONS
 
     return len(MUTATIONS)
+
+
+def count_variant_candidates() -> int:
+    """(variant, value) pairs the review packets will demonstrate, tree-wide."""
+    from backend.app.practice_gen.registry import get_all_node_ids
+
+    from .judgment_packets import _variant_coverage_candidates
+
+    return sum(len(_variant_coverage_candidates(n)) for n in get_all_node_ids())
 
 
 def count_unit_tests() -> Optional[int]:
@@ -84,6 +110,12 @@ def validate_census() -> List[str]:
     except Exception as exc:  # noqa: BLE001
         return [f"§7 census: mutation harness did not import ({exc}); the floor cannot be checked"]
 
+    try:
+        observed["variant_candidates"] = count_variant_candidates()
+    except Exception as exc:  # noqa: BLE001
+        return [f"§7 census: variant candidates did not enumerate ({exc}); "
+                f"the coverage floor cannot be checked"]
+
     n = count_unit_tests()
     if n is None:
         return ["§7 census: could not parse a test count from pytest --collect-only; "
@@ -110,7 +142,8 @@ def validate_all() -> bool:
         return False
     for key, floor in CENSUS_FLOORS.items():
         got = {"nodes": count_nodes, "mutations": count_mutations,
-               "unit_tests": count_unit_tests}[key]()
+               "unit_tests": count_unit_tests,
+               "variant_candidates": count_variant_candidates}[key]()
         print(f"  PASS census: {key}={got} (floor {floor})")
     return True
 

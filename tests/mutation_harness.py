@@ -1141,7 +1141,34 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["FractionModel && total_wholes"],
         baseline_must_not_contain=["total_wholes"],
     ),
-]# The templated-review mutation cannot be a literal find/replace: each review's
+    Mutation(
+        name="variant_coverage_silently_narrowed",
+        asserts=['census_variant_candidates'],
+        description=(
+            "Gut an applicability filter in _variant_coverage_candidates so the blind-"
+            "review packets stop demonstrating variants they should. This is the failure "
+            "mode §2I CANNOT see: it caps unproducible declarations from above, so "
+            "dropping candidates makes it report FEWER findings and read as progress."
+        ),
+        # Measured before this gate existed: gutting two filters took candidates
+        # 983 -> 932 and §2I 21 -> 19, and validate_compat still exited 0 printing
+        # "13/13 check groups passed". Narrowing what a check looks at is both a
+        # legitimate fix and a silent way to fake one; the §7 floor is what tells them
+        # apart. Aimed at the census, not §2I, precisely because §2I gets QUIETER here.
+        edits={
+            "backend/app/practice_gen/validation/judgment_packets.py": (
+                '    return bounds.get("task_type") != "estimate"\n',
+                '    return False  # planted mutation: coverage silently narrowed\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_census"],
+        expected_check="§7 census (variant coverage did not shrink)",
+        expect_output_contains=["variant_candidates && below the floor"],
+        baseline_must_not_contain=["variant_candidates && below the floor"],
+    ),
+]
+
+# The templated-review mutation cannot be a literal find/replace: each review's
 # prose differs per node, so an anchor would have to hardcode four rationales and
 # would go stale the moment any node is re-reviewed. It edits the JSON structurally
 # instead, and returns the same {path: original_text} map so `_restore` is unchanged.
