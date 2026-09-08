@@ -116,7 +116,12 @@ def _variant_coverage_candidates(node_id: str) -> List[tuple]:
                 for v in opts:
                     if bound is not None and not _bound_allows(bound, v):
                         continue
-                    if var_name == "regrouping" and not _regrouping_fits(v, max_places):
+                    if var_name == "regrouping" and (
+                        not _regrouping_fits(v, max_places)
+                        or not _regrouping_applies(bounds)
+                    ):
+                        continue
+                    if var_name == "tables" and not _tables_apply(bounds):
                         continue
                     pairs.add((var_name, v))
         for axis in get_axes_for_concept(dna_name):
@@ -129,7 +134,12 @@ def _variant_coverage_candidates(node_id: str) -> List[tuple]:
                     # Same ceiling filter as the VARIANTS_BY_DNA branch above.
                     # `regrouping` is declared HERE, as a discrete axis, not in
                     # VARIANTS_BY_DNA -- filtering only that branch changed nothing.
-                    if axis["name"] == "regrouping" and not _regrouping_fits(val, max_places):
+                    if axis["name"] == "regrouping" and (
+                        not _regrouping_fits(val, max_places)
+                        or not _regrouping_applies(bounds)
+                    ):
+                        continue
+                    if axis["name"] == "tables" and not _tables_apply(bounds):
                         continue
                     pairs.add((axis["name"], val))
     return sorted(pairs, key=lambda p: (str(p[0]), str(p[1])))
@@ -146,6 +156,48 @@ def _max_regrouping_places_for(bounds: Dict[str, Any]) -> Optional[int]:
     if not isinstance(ceiling, int):
         return None
     return max_regrouping_places(ceiling)
+
+
+def _regrouping_applies(bounds: Dict[str, Any]) -> bool:
+    """
+    False when the node's competency pins a task_type for which regrouping is meaningless.
+
+    An estimation competency ("Estimate the sum/difference of two numbers of up to 4
+    digits") rounds each operand to its leading place BEFORE operating, so there is no
+    borrow or carry column left to have a depth. Both DNAs say so in their own words when
+    asked -- addition: "task_type='estimate' rounds each addend to its own leading place
+    before adding"; subtraction: "task_type='estimate' rounds both operands before
+    subtracting". Offering a regrouping candidate there is a contradictory declaration,
+    not a generator gap: 8 of §2I's findings, on mat_g3_na_q2_2 and mat_g3_na_q2_5.
+
+    Keyed off the node's OWN competency-derived bounds, so it says nothing about which
+    levels a non-estimate node can reach -- that stays `_regrouping_fits`, and stays
+    arithmetic.
+    """
+    return bounds.get("task_type") != "estimate"
+
+
+def _tables_apply(bounds: Dict[str, Any]) -> bool:
+    """
+    False when the node's competency is not about multiplication or division at all.
+
+    `tables` is a multiplication concept, but the missing_number DNA serves both
+    arithmetic and multiplicative competencies, so its table options were offered to
+    every node mapped to it. mat_g1_na_q3_1 ("Find the missing number in addition or
+    subtraction sentences involving numbers up to 20") was asked to demonstrate
+    tables='6' -- 8 of §2I's findings.
+
+    Reads the node's OWN parsed `operation` bound rather than re-reading the competency
+    text: the parser already resolves that phrase to "addition_subtraction",
+    "multiplication_division" or "equivalent", and every node that legitimately carries
+    a `tables` bound also carries operation="multiplication_division". An unpinned axis
+    normally means "any value is allowed"; for an axis the competency's operation
+    excludes outright, it means "not applicable".
+    """
+    operation = bounds.get("operation")
+    if operation is None:
+        return True
+    return operation == "multiplication_division"
 
 
 def _regrouping_fits(level: Any, max_places: Optional[int]) -> bool:

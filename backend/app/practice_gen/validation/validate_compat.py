@@ -860,13 +860,28 @@ def validate_competency_scope_not_narrowed() -> List[str]:
     return errors
 
 
-# Measured 2026-09-04 across every node's full candidate list: 65 unproducible declared
-# variants over 33 nodes (regrouping 38, tables 8, task_type 6, unit_type 6, number_type 4,
-# strategy 3). A FLOOR, not a hard gate, and for the reason Scaling Mandate #5 gives: a
-# check whose baseline is already red cannot be told apart from the noise it sits in. It
-# may only ever be lowered. Lowering it is the whole point; raising it to make a run pass
-# is the defect it exists to catch.
-_PRODUCIBLE_FLOOR = 65
+# 21, down from 65 on 2026-09-08. Remaining: task_type 6, unit_type 6, number_type 4,
+# strategy 3, regrouping 2.
+#
+# The 44 cleared were all one thing -- a declaration offering a value the node's own
+# competency excludes -- and none needed a generator change:
+#   * 28 regrouping levels deeper than the node's digit ceiling can reach (a max of 19 is
+#     two digits, one borrow position, and was offered four_places);
+#   * 8 regrouping levels on estimation competencies, which round their operands before
+#     operating and so have no borrow column to have a depth;
+#   * 8 multiplication `tables` offered to missing_number nodes whose competency reads
+#     "addition or subtraction sentences".
+# Each filter reads the node's OWN parsed bounds, so none is a second copy of a generator
+# rule -- the failure mode this check's docstring records from an earlier attempt.
+#
+# What remains is the docstring's *other* cause: a DNA declaring a variant it never
+# implements for this shape. Those split two ways and must not be cleared in bulk --
+# where the competency NAMES the capability ("Compare masses of objects" wanting
+# task_type='compare_pair') the fix is to build it; where it does not (unit_type='cm' on
+# a "using non-standard units" competency) the declaration is invention and goes.
+#
+# A FLOOR, not a hard gate, per Scaling Mandate #5, and it may only ever be lowered.
+_PRODUCIBLE_FLOOR = 21
 
 
 def validate_declared_variants_are_producible() -> List[str]:
