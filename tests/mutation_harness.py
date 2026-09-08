@@ -1059,10 +1059,89 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["attester plurality", "planted-single-attester"],
         baseline_must_not_contain=["attester plurality"],
     ),
-]
-
-
-# The templated-review mutation cannot be a literal find/replace: each review's
+    Mutation(
+        name="subtraction_pool_uncapped",
+        asserts=['subtraction_candidate_pool_bounded'],
+        description=(
+            "Remove the enumerate-or-sample guard from subtraction's "
+            "counting_back/taking_away branch, restoring the unbounded pair "
+            "enumeration that made 49,994,955 _satisfies_regrouping calls at "
+            "mat_g3_na_q2_4's max_minuend=9999 -- ~120s for one problem, and 42 of "
+            "the 48 minutes a full validate_matrix run took."
+        ),
+        # Deliberately caught by a unit test, NOT a validator. That is the finding:
+        # no §-check in the harness notices this bug. The tree-wide run sat at 48
+        # minutes with one worker pegged for 42 of them and still reported
+        # "151/151 pass, 0 findings". A complexity regression is invisible to every
+        # assertion the matrix emits, so the test asserts predicate CALL COUNT --
+        # deterministic, unlike wall-clock, which would be flaky under load.
+        edits={
+            "backend/app/practice_gen/dna/na/subtraction.py": (
+                "        if max_minuend <= _EXHAUSTIVE_MINUEND_CEILING:\n"
+                "            for a in range(lo_a, max_minuend + 1):\n",
+                "        if True:  # planted mutation: pool cap removed\n"
+                "            for a in range(lo_a, max_minuend + 1):\n",
+            )
+        },
+        command=["pytest",
+                 "tests/unit/test_subtraction_candidate_pool.py"
+                 "::test_large_range_does_not_enumerate_the_whole_space",
+                 "-q"],
+        expected_check="candidate-pool budget (counting_back/taking_away)",
+        expect_output_contains=["test_large_range_does_not_enumerate_the_whole_space"],
+        baseline_must_not_contain=["test_large_range_does_not_enumerate_the_whole_space"],
+    ),
+    Mutation(
+        name="grader_keys_a_value_answer",
+        asserts=['grading_contract_value_answers'],
+        description=(
+            "Send the portal's non-MCQ fallback back to comparing the submission against "
+            "`correct_key`, the bug §10 caught: a `sort_order` answer of [10, 9, 8] was "
+            "tested as \"[10, 9, 8]\" == \"A\", so a pupil who ordered the numbers "
+            "correctly was told they were wrong. Four nodes served this."
+        ),
+        # Scoped to one node: validate_grade's --node-ids path is zero-tolerance (the
+        # floor applies only to a full-tree run), so a single node both proves the check
+        # and keeps the mutation to ~20s instead of the 13 minutes a full sweep costs.
+        edits={
+            "backend/app/routes/practice_router.py": (
+                "                is_correct = answers_match(req.selected_answer, skeleton.get(\"correct_answer\"))\n",
+                "                is_correct = (str(req.selected_answer).upper() == skeleton.get(\"correct_key\", \"A\").upper())\n",
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_grade",
+                 "--node-ids", "mat_g1_na_q1_4"],
+        expected_check="§10 grading contract (a known-correct answer is graded correct)",
+        expect_output_contains=["KNOWN-CORRECT && portal"],
+        baseline_must_not_contain=["KNOWN-CORRECT"],
+    ),
+    Mutation(
+        name="visual_payload_drops_required_key",
+        asserts=['render_contract_required_keys'],
+        description=(
+            "Drop total_wholes from the FractionModel payload -- the key the React "
+            "component needs to pre-render enough shapes for improper fractions. The "
+            "assignment had genuinely been lost (the comment above it ended "
+            "mid-sentence), shipping 7 broken payloads across 3 nodes."
+        ),
+        # Guards the §9 applicability change made in the same commit. §9 used to select
+        # on `visual_type` alone and so reported 9 plain-text questions as broken
+        # visuals; it now selects on is_visual, matching QuestionRenderer.jsx:44. This
+        # mutation proves that narrowing did not stop it catching a REAL missing key on
+        # a genuinely visual payload -- the failure mode of "fixing" a check by making
+        # it look at less.
+        edits={
+            "backend/app/practice_gen/formatters/visual/fmt_fraction_model.py": (
+                '    vp["total_wholes"] = max(1, _math.ceil(numer / denom)) if denom else 1\n',
+                '    pass  # planted mutation: required payload key dropped\n',
+            )
+        },
+        command=["backend.app.practice_gen.validation.validate_render"],
+        expected_check="§9 render contract (payload carries every key the component reads)",
+        expect_output_contains=["FractionModel && total_wholes"],
+        baseline_must_not_contain=["total_wholes"],
+    ),
+]# The templated-review mutation cannot be a literal find/replace: each review's
 # prose differs per node, so an anchor would have to hardcode four rationales and
 # would go stale the moment any node is re-reviewed. It edits the JSON structurally
 # instead, and returns the same {path: original_text} map so `_restore` is unchanged.

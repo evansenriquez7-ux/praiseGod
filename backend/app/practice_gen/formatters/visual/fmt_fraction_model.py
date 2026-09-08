@@ -239,7 +239,17 @@ def format_fraction_model(
     vp["interaction_mode"] = interaction_mode
     vp["is_read_only"] = interaction_mode == "read"
     # total_wholes lets the React component pre-render enough bars/circles
-    # for improper fractions (e.g. 33/10 → 4 wholes) without leaking the
+    # for improper fractions (e.g. 33/10 -> 4 wholes) without leaking the
+    # answer: it is a count of SHAPES, not of shaded parts.
+    #
+    # The comment above used to end mid-sentence, with no assignment under it --
+    # the line had been lost, so every FractionModel payload shipped without
+    # total_wholes and the component collapsed wholeUnits to 1 (§9, 7 findings
+    # across 3 nodes, "Bug #57"). fmt_fraction_shade.py carries the identical
+    # line; this file simply lost it.
+    import math as _math
+    vp["total_wholes"] = max(1, _math.ceil(numer / denom)) if denom else 1
+
     dna_question = (ctx.values or {}).get("question")
     dna_ans = (ctx.values or {}).get("answer") or (ctx.values or {}).get("result")
     dna_distractors = (ctx.values or {}).get("distractors")

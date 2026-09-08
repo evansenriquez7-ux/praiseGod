@@ -25,7 +25,7 @@ from backend.app.practice_gen.dna.base import FormattedProblem
 
 from backend.app.practice_gen import registry as _pg_registry
 
-from backend.app.services.scoring import validate_math_answer
+from backend.app.services.scoring import validate_math_answer, answers_match
 from backend.app.practice_gen.axes_catalog import (
     get_axes_for_concept as _get_axes_for_concept,
     compute_difficulty_scalar as _compute_difficulty_scalar,
@@ -1025,6 +1025,23 @@ def matatag_lab_submit(
         correct_raw = skeleton.get("correct_answer")
         visual_type = skeleton.get("visual_type", "")
 
+        # A submission equal to the recorded correct answer is correct, whatever the
+        # visual type. Without this, each widget parser had to reconstruct every text
+        # form the generator can emit, and ClockSet did not: a `set_fill_in_blank`
+        # ClockSet node records correct_answer '9:35 p.m.', the student types exactly
+        # that, and `int("35 p.m.")` raised -> graded wrong (§10, mat_g2_mg_q4_1).
+        #
+        # Deliberately NOT solved by parsing digits out of both sides: '9:35 a.m.' and
+        # '9:35 p.m.' both reduce to [9, 35], so that fix would mark a genuinely wrong
+        # answer correct -- worse than the bug. Exact value equality cannot.
+        if answers_match(student_answer, correct_raw):
+            return {
+                "is_correct": True,
+                "correct_answer": str(correct_raw),
+                "trap_triggered": None,
+                "explanation": f"Correct! The answer is {correct_raw}.",
+            }
+
         if visual_type == "PesoMoney":
             # Student submits the total amount as a number
             try:
@@ -1172,6 +1189,17 @@ def matatag_lab_submit(
             else:
                 is_correct = not student_has_error
             correct_answer_str = str(correct_ans)
+        elif skeleton.get("answer_collection") not in ("mcq", None):
+            # Not an MCQ: grade by VALUE. Falling through to the key comparison below
+            # marked correct `sort_order` submissions wrong (§10) -- "[10, 9, 8]" was
+            # tested against "A". Keyed off answer_collection rather than a format-name
+            # list, so a future formatter returning a list does not re-open this.
+            #
+            # Only diverts when answer_collection is EXPLICITLY non-mcq. An earlier form
+            # also diverted when `correct_key` was falsy, which would have stolen genuine
+            # MCQs whose key is derived from their options in the branch below.
+            is_correct = answers_match(student_answer, skeleton.get("correct_answer"))
+            correct_answer_str = str(skeleton.get("correct_answer"))
         else:
             # MCQ: compare selected key to correct_key
             raw_opts = skeleton.get("options", {})

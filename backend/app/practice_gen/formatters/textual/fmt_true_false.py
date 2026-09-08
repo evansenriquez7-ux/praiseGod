@@ -368,7 +368,13 @@ def format_true_false(ctx: QuestionContext, rng: random.Random) -> FormattedProb
         hints=ctx.hints,
         format="true_false",
         format_data=format_data,
-        is_visual=(ctx.visual_type is not None),
+        # bool(visual_params), matching the other nineteen formatters. This file
+        # alone used `ctx.visual_type is not None` -- the node's visual CATEGORY
+        # rather than this problem's payload -- which would ship is_visual=True
+        # with no payload and make QuestionRenderer.jsx render an empty visual.
+        # FormattedProblem now derives the field regardless; this is aligned so
+        # the source no longer states a rule the model overrules.
+        is_visual=bool(ctx.visual_params),
         visual_type=ctx.visual_type,
         visual_params=ctx.visual_params,
         interaction_mode=None,

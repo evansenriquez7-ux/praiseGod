@@ -48,9 +48,23 @@ from typing import Any, Dict, List, Optional
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
-# Observed 2026-08-28 over all 151 nodes at SEEDS_PER_NODE=3. Each is a payload the React
-# component cannot render. Tracked as content work; the floor may only shrink.
-RENDER_FLOOR = 16
+# ZERO, as of 2026-09-08. The floor is gone, not shrunk.
+#
+# It stood at 16 and was doing real harm. Of those 16:
+#   * 7 were genuine -- fmt_fraction_model.py had lost its `total_wholes` assignment
+#     (the comment above it ended mid-sentence). Fixed.
+#   * 9 were this check's own false positives -- it selected on `visual_type`, the
+#     node's visual CATEGORY, and so demanded Calendar/BarChart/ClockSet payloads from
+#     plain-text questions. Both renderers ask whether a payload EXISTS
+#     (QuestionRenderer.jsx:44 gates on is_visual), so no student ever saw those.
+#     Applicability now matches the renderer.
+#
+# Why it must be zero and not 7-shrunk-to-0-later: with the floor at 16, the
+# `visual_payload_drops_required_key` mutation SURVIVED -- 7 planted broken payloads
+# still exited 0, so §9 could not be proven at all. A floor above the real defect count
+# does not merely tolerate defects, it makes the check unprovable, which is strictly
+# worse than the defects it was tracking.
+RENDER_FLOOR = 0
 
 SEEDS_PER_NODE = (11, 42, 64)
 
@@ -81,6 +95,27 @@ def collect_findings(node_ids: Optional[List[str]] = None) -> List[str]:
                 continue  # a generation failure is another stage's finding, not §9's
             d = p if isinstance(p, dict) else p.__dict__
             vt = d.get("visual_type")
+            # Applicability follows the RENDERER, not the node's category label.
+            #
+            # This used to select on `visual_type` alone, which is the visual family the
+            # NODE belongs to -- inherited from the registry and present even when a
+            # given problem is plain text. A Calendar node serving "What month comes
+            # after August?" as cloze has visual_type='Calendar', visual_params=None,
+            # and was reported as a broken Calendar payload. Nine such findings across
+            # three nodes; no student ever saw a broken visual, because BOTH renderers
+            # ask whether a picture exists:
+            #     QuestionRenderer.jsx:44   {question.is_visual ? <visual/> : <text/>}
+            #     App.jsx:1403              {visual_type && visual_params && ...}
+            # This check re-derived that condition and got it wrong -- the same
+            # duplicated-rule divergence it exists to catch elsewhere.
+            #
+            # `is_visual` is safe to trust as of the FormattedProblem invariant that
+            # derives it from visual_params (tests/unit/test_is_visual_invariant.py);
+            # before that, one formatter set it from visual_type and it could lie.
+            # A genuinely visual problem missing a key is still caught -- see the
+            # FractionModel/total_wholes findings this same run reported and fixed.
+            if not d.get("is_visual"):
+                continue
             if not vt or vt not in required:
                 continue
             params = d.get("visual_params")

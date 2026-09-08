@@ -39,17 +39,23 @@ from typing import Any, Dict, List, Optional
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
-# Baseline measured 2026-08-28 over all 151 nodes, three seeds each. Five submissions of a
-# KNOWN-CORRECT answer are graded wrong. Two shapes:
+# ZERO, as of 2026-09-08 (measured: 0 findings over all 151 nodes x 3 seeds, 14m23s).
 #
-#   * list/ordering answers ([10,9,8], [638,637,229], [2287,6397,6398]) -- lab_v2 grades
-#     them True while portal and lab_v1 both say False, so the two older graders cannot
-#     handle a list answer at all;
-#   * a time answer ('9:35 p.m.' on mat_g2_mg_q4_1) -- lab_v1 alone says False.
+# It stood at 5, all five real, and both causes were the same defect: an unrecognised
+# format fell through to a comparison that could never match.
+#   * portal and lab_v1 fell back to an MCQ *key* comparison, so a `sort_order` answer of
+#     [10, 9, 8] was tested as "[10, 9, 8]" == "A". Four nodes. lab_v2 fell back to a
+#     *value* comparison and was right -- three graders, three different defaults.
+#   * lab_v1's ClockSet branch parsed the CORRECT answer leniently (digits only) but the
+#     student's strictly (`int("35 p.m.")`), rejecting a byte-identical string.
+# Both now route through services.scoring.answers_match, keyed off the answer's SHAPE
+# rather than a list of format names -- `sort_order` was missing from lists that already
+# contained `ordering`, and a grade 4-10 formatter returning a list would have hit it too.
 #
-# This is Bug #002/#003/#004's class, live. The floor may only SHRINK; the five are
-# tracked content/serving work, not something to widen the floor around.
-GRADE_FLOOR = 5
+# The floor is removed rather than shrunk for the reason §9's was: a floor at or above the
+# real defect count makes the check UNPROVABLE. §9's mutation SURVIVED at floor 16 because
+# 7 planted broken payloads still exited 0. A gate that cannot fail cannot be trusted.
+GRADE_FLOOR = 0
 
 SEEDS_PER_NODE = (11, 42, 64)
 

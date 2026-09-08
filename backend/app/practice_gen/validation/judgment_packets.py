@@ -109,20 +109,75 @@ def _variant_coverage_candidates(node_id: str) -> List[tuple]:
     pairs = set()
     for dna_name in get_node_dnas(node_id) or []:
         bounds = get_node_competency_bounds(node_id, dna_name)
+        max_places = _max_regrouping_places_for(bounds)
         for var_name, opts in VARIANTS_BY_DNA.get(dna_name, {}).items():
             if isinstance(opts, list):
                 bound = bounds.get(var_name)
                 for v in opts:
-                    if bound is None or _bound_allows(bound, v):
-                        pairs.add((var_name, v))
+                    if bound is not None and not _bound_allows(bound, v):
+                        continue
+                    if var_name == "regrouping" and not _regrouping_fits(v, max_places):
+                        continue
+                    pairs.add((var_name, v))
         for axis in get_axes_for_concept(dna_name):
             if axis.get("dim_type") == "discrete":
                 bound = bounds.get(axis["name"])
                 for opt in axis.get("options", []):
                     val = opt.get("value") if isinstance(opt, dict) else opt
-                    if bound is None or _bound_allows(bound, val):
-                        pairs.add((axis["name"], val))
+                    if bound is not None and not _bound_allows(bound, val):
+                        continue
+                    # Same ceiling filter as the VARIANTS_BY_DNA branch above.
+                    # `regrouping` is declared HERE, as a discrete axis, not in
+                    # VARIANTS_BY_DNA -- filtering only that branch changed nothing.
+                    if axis["name"] == "regrouping" and not _regrouping_fits(val, max_places):
+                        continue
+                    pairs.add((axis["name"], val))
     return sorted(pairs, key=lambda p: (str(p[0]), str(p[1])))
+
+
+
+def _max_regrouping_places_for(bounds: Dict[str, Any]) -> Optional[int]:
+    """Borrow/carry positions this node's NUMBER CEILING physically admits, or None."""
+    from ..dna.na.subtraction import max_regrouping_places
+
+    ceiling = bounds.get("max_minuend") or bounds.get("max_sum") or bounds.get("max_result")
+    if isinstance(ceiling, tuple):
+        ceiling = ceiling[1]
+    if not isinstance(ceiling, int):
+        return None
+    return max_regrouping_places(ceiling)
+
+
+def _regrouping_fits(level: Any, max_places: Optional[int]) -> bool:
+    """
+    False only when `level` demands MORE borrow places than the ceiling can produce.
+
+    A regrouping depth is bounded by digit count, not by any `regrouping` bound in the
+    competency: a competency reading "with and without regrouping" pins that both cases
+    occur, never how deep. So a max_sum of 20 (two digits, one carry position) was still
+    offered three_places and four_places, and 28 such candidates could not render --
+    28 of the 38 regrouping findings §2I reported.
+
+    `max_regrouping_places` is the DNA's own single source of truth for this (its
+    docstring names the four call sites that already defer to it); this is a fifth
+    caller, not a second copy of the rule.
+
+    Deliberately one-sided. §2I's docstring records an earlier attempt to predict
+    producibility with `regrouping_is_feasible`, which over-filtered 3 candidates on 2
+    nodes because `generate_params` normalises "one_place" -> "ones" before applying it.
+    This drops a candidate ONLY when the arithmetic is unambiguous (required places
+    exceed available places), so a normalisation difference cannot cause a false drop.
+    Measured before landing: 28 dropped and all 28 already failed to render; ZERO
+    candidates dropped that the generator could actually produce.
+    """
+    from ..dna.na.subtraction import REGROUP_LEVEL_PLACES
+
+    if max_places is None:
+        return True
+    needed = REGROUP_LEVEL_PLACES.get(level)
+    if needed is None:
+        return True          # unknown level name: observe it, do not predict
+    return needed <= max_places
 
 
 def _render_sample(node_id: str, seed: int, difficulty_profile: Dict[str, Any] = None) -> Dict[str, Any]:

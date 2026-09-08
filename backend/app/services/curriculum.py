@@ -68,7 +68,24 @@ def check_and_advance_subject_frontier(student_id: int, subject: str, db: Sessio
     
     if not states:
         return
-        
+
+    # Load every SkillNode this student's states point at, in ONE query.
+    #
+    # The three loops below used to call
+    #   db.query(SkillNode).filter(SkillNode.id == s.skill_id).first()
+    # once per state. That is an N+1 on the answer-submission hot path: a student
+    # with 151 mastery states paid 152 extra round trips on EVERY submitted answer.
+    # Measured against the live database: 163 queries / 12.1s per submission for a
+    # student with a full frontier, versus 9 queries / 1.0s for a fresh one. At the
+    # ~79 ms round-trip this deployment sees, that is 12 seconds of pure latency per
+    # answer, and it grows as a student touches more of the curriculum.
+    _node_by_id = {
+        n.id: n
+        for n in db.query(models.SkillNode)
+        .filter(models.SkillNode.id.in_([s.skill_id for s in states]))
+        .all()
+    }
+
     def get_grade_num(grade_str):
         special_grades = {"K": 0, "HS": 10}
         if grade_str in special_grades:
@@ -81,7 +98,7 @@ def check_and_advance_subject_frontier(student_id: int, subject: str, db: Sessio
     active_grades = set()
     for s in states:
         if s.status in ("active", "review"):
-            node = db.query(models.SkillNode).filter(models.SkillNode.id == s.skill_id).first()
+            node = _node_by_id.get(s.skill_id)
             if node:
                 active_grades.add(get_grade_num(node.grade_level))
                 
@@ -90,7 +107,7 @@ def check_and_advance_subject_frontier(student_id: int, subject: str, db: Sessio
         mastered_grades = set()
         for s in states:
             if s.status == "mastered":
-                node = db.query(models.SkillNode).filter(models.SkillNode.id == s.skill_id).first()
+                node = _node_by_id.get(s.skill_id)
                 if node:
                     mastered_grades.add(get_grade_num(node.grade_level))
         if not mastered_grades:
@@ -103,7 +120,7 @@ def check_and_advance_subject_frontier(student_id: int, subject: str, db: Sessio
         remaining_active = 0
         for s in states:
             if s.status in ("active", "review"):
-                node = db.query(models.SkillNode).filter(models.SkillNode.id == s.skill_id).first()
+                node = _node_by_id.get(s.skill_id)
                 if node and get_grade_num(node.grade_level) == current_working_grade:
                     remaining_active += 1
                     

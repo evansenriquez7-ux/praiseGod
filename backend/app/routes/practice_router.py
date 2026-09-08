@@ -23,7 +23,7 @@ from backend.app.practice_gen import pipeline
 
 from backend.app.practice_gen import registry as _pg_registry
 
-from backend.app.services.scoring import validate_math_answer
+from backend.app.services.scoring import validate_math_answer, answers_match
 from backend.app.practice_gen.axes_catalog import (
     get_axes_for_concept as _get_axes_for_concept,
     compute_difficulty_scalar as _compute_difficulty_scalar,
@@ -1101,7 +1101,13 @@ def submit_practice_answer(req: schemas.AnswerSubmitRequest, db: Session = Depen
                 else:
                     is_correct = (str(req.selected_answer).upper() == skeleton.get("correct_key", "A").upper())
             else:
-                is_correct = (str(req.selected_answer).upper() == skeleton.get("correct_key", "A").upper())
+                # Non-visual and not an MCQ: grade by VALUE, not by option key.
+                # This branch used to compare the submission to `correct_key`, so a
+                # `sort_order` answer of [10, 9, 8] was tested as "[10, 9, 8]" == "A"
+                # and a pupil who ordered the numbers correctly was told they were
+                # wrong (§10, four nodes). Lab v2 already compared values here, which
+                # is why the three graders disagreed. See services.scoring.answers_match.
+                is_correct = answers_match(req.selected_answer, skeleton.get("correct_answer"))
     else:
         # SymPy Math — VALUE comparison (robust against narration shuffles and worked examples)
         selected_key = str(req.selected_answer).upper()

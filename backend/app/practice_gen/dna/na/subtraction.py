@@ -26,6 +26,27 @@ from backend.app.practice_gen.dna.base import (
 )
 
 
+# ─── candidate-pool budget ────────────────────────────────────────────────────
+# Every candidate pool in this file is fed to generate_pair_by_window, which makes
+# three full passes over it (a max(), a decimal-places max(), then score_candidate
+# twice per pair). Pool size is therefore a compute budget, not a curriculum
+# quantity -- the competency's number range is enforced by the bounds, not by
+# whether the pool was enumerated or sampled.
+#
+# Below the ceiling the space is small enough to enumerate exhaustively (100 gives
+# ~5,000 pairs); above it, sample. Deliberately NOT derived from
+# _MAX_CANDIDATE_PAIRS: a 2,000-pair space corresponds to a minuend near 63, and
+# lowering the ceiling there would change output for nodes between 64 and 100 that
+# have no problem today.
+#
+# Note addition.py sets its own budget to 40,000. That is not a number to share:
+# it is documented there as the exhaustive size at max_result ~= 283, matching
+# *its* enumerate/sample boundary. Subtraction's boundary is 100, so its
+# density-consistent budget is far smaller.
+_MAX_CANDIDATE_PAIRS = 2_000
+_EXHAUSTIVE_MINUEND_CEILING = 100
+
+
 # ─── param bounds ─────────────────────────────────────────────────────────────
 # g1: a,b both < 20 (easy half), then < 100 no regroup
 # g2: < 1000 with regrouping
@@ -568,14 +589,55 @@ def generate_params(
         max_sub = profile.get("max_subtrahend")
         max_sub = int(max_sub) if max_sub is not None else None
         min_b = int(profile.get("min_subtrahend", 1))
+        # Same enumerate-or-sample split as the main pair builder below, and for the
+        # same reason: the pool is only ever fed to generate_pair_by_window, which
+        # makes three full passes over it, so its size is a compute budget rather
+        # than a curriculum quantity. This branch was the only one in the file
+        # without the guard, and it cost 42 of the 48 minutes a full validate_matrix
+        # run took: at mat_g3_na_q2_4's max_minuend=9999 the exhaustive form made
+        # 49,994,955 _satisfies_regrouping calls and kept 9.1M pairs, ~120s for ONE
+        # problem. The full range stays intact -- the competency ("Subtract numbers,
+        # where both numbers are less than 10 000") requires it; only the
+        # enumeration strategy changes.
+        lo_a = max(1, min_a)
         candidates = []
-        for a in range(max(1, min_a), max_minuend + 1):
-            b_hi = a if max_sub is None else min(a, max_sub)
-            for b in range(min_b, b_hi + 1):
+        if max_minuend <= _EXHAUSTIVE_MINUEND_CEILING:
+            for a in range(lo_a, max_minuend + 1):
+                b_hi = a if max_sub is None else min(a, max_sub)
+                for b in range(min_b, b_hi + 1):
+                    if _satisfies_regrouping(a, b, reg_level):
+                        candidates.append((a, b))
+        else:
+            # Attempts are tied to the budget rather than a second literal. The
+            # sibling's fixed `attempts < 5000` is already marginal here: measured,
+            # reg_level="none" at max_minuend=9999 needs ~8000 draws and still finds
+            # only ~1585 pairs, because "no borrow in any column" is rare across four
+            # digits.
+            attempts = 0
+            while (len(candidates) < _MAX_CANDIDATE_PAIRS
+                   and attempts < _MAX_CANDIDATE_PAIRS * 4):
+                attempts += 1
+                a = rng.randint(lo_a, max_minuend)
+                b_hi = a if max_sub is None else min(a, max_sub)
+                if b_hi < min_b:
+                    continue
+                b = rng.randint(min_b, b_hi)
                 if _satisfies_regrouping(a, b, reg_level):
                     candidates.append((a, b))
         if not candidates:
-            candidates = [(max_minuend, 1)]
+            # Was `candidates = [(max_minuend, 1)]` -- a silent default that ignored
+            # the regrouping constraint outright and shipped off-spec content. The
+            # main pair builder below refuses exactly this (Protocol 3); so does this
+            # branch now. The seed is named because the failure must be reproducible
+            # (Protocol 6).
+            raise RuntimeError(
+                f"generate_params (subtraction, task_type={task_type!r}): no valid "
+                f"(a, b) pair exists for max_minuend={max_minuend}, "
+                f"max_subtrahend={max_sub}, min_minuend={min_a}, "
+                f"min_subtrahend={min_b}, regrouping={reg_level!r} (grade={grade}, "
+                f"seed={seed}). The constraint set admits no pair, which is a bounds "
+                f"defect, not a sampling one."
+            )
         start, count_back = generate_pair_by_window(candidates, num_diff_scalar, d=5, rng=rng)
         items_pool = ["apples", "stickers", "marbles", "crayons", "blocks", "candies", "pencils", "erasers", "stars", "cookies"]
         item_name = rng.choice(items_pool)
@@ -685,7 +747,7 @@ def generate_params(
     max_subtrahend_val = profile.get("max_subtrahend")
     max_subtrahend = int(max_subtrahend_val) if max_subtrahend_val is not None else None
 
-    if max_minuend <= 100:
+    if max_minuend <= _EXHAUSTIVE_MINUEND_CEILING:
         for a in candidates_a:
             b_hi = a if max_subtrahend is None else min(a, max_subtrahend)
             for b in range(min_b, b_hi + 1):
@@ -694,8 +756,14 @@ def generate_params(
     else:
         # Feasible level (guard above): the pool fills in far fewer than 2000
         # draws, so a low cap suffices.
+        #
+        # The 5000 stays a literal on purpose. It is measurably optimistic --
+        # reg_level="none" at max_minuend=9999 needs ~8000 draws and still finds
+        # only ~1585 pairs -- but raising it changes how much rng this branch
+        # consumes, and so changes the problems every node on this path serves.
+        # That is a content change, and it belongs in its own reviewed commit.
         attempts = 0
-        while len(candidate_pairs) < 2000 and attempts < 5000:
+        while len(candidate_pairs) < _MAX_CANDIDATE_PAIRS and attempts < 5000:
             attempts += 1
             a = rng.randint(min_a, max_minuend)
             _b_hi = a if max_subtrahend is None else min(a, max_subtrahend)

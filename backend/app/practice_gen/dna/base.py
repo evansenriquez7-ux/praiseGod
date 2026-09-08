@@ -490,6 +490,35 @@ class FormattedProblem(BaseModel):
     # the orchestrator after picking the DNA. Required for the auditor's
     # per-DNA content checks (e.g. the "Fractions DNA concept overridden"
     # check needs to know which DNA produced the stem).
+    @model_validator(mode='after')
+    def _derive_is_visual(self) -> 'FormattedProblem':
+        """
+        `is_visual` is DERIVED, never asserted by a formatter.
+
+        It answers one question -- "does this problem carry a picture?" -- and the
+        only honest source for that is whether a payload exists. `visual_type` answers
+        a different question: which visual family the NODE belongs to. A node can be a
+        Calendar node and still serve "What month comes after August?" as plain text.
+
+        Why derive rather than check
+        ----------------------------
+        Twenty formatters each set this field, and they did not agree. Nineteen used
+        `bool(ctx.visual_params)`; fmt_true_false.py used `ctx.visual_type is not None`
+        -- the node's category, not this problem's payload. That formatter would ship
+        is_visual=True with visual_params=None, and QuestionRenderer.jsx gates the
+        visual branch on is_visual alone, so the student would get an empty visual
+        where the text question should be.
+
+        No node hits it today (measured: 0 mismatches over 755 samples), which is
+        exactly why it is worth closing now -- Scaling Mandate #5. Deriving it here
+        makes the disagreement unrepresentable rather than merely detectable, so a
+        grade 4-10 formatter cannot reintroduce it however it sets the field.
+
+        Enforced by validate_matrix; planted by the `is_visual_lies` mutation.
+        """
+        object.__setattr__(self, "is_visual", bool(self.visual_params))
+        return self
+
     dna_name: Optional[str] = None
     # Which formatter actually produced this problem. `format` holds the ROUTE name
     # (e.g. "read_mcq"), which several formatters share, so it cannot answer "was
