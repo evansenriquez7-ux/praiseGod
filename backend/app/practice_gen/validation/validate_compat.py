@@ -881,7 +881,7 @@ def validate_competency_scope_not_narrowed() -> List[str]:
 # a "using non-standard units" competency) the declaration is invention and goes.
 #
 # A FLOOR, not a hard gate, per Scaling Mandate #5, and it may only ever be lowered.
-_PRODUCIBLE_FLOOR = 21
+_PRODUCIBLE_FLOOR = 12
 
 
 def validate_declared_variants_are_producible() -> List[str]:

@@ -107,6 +107,25 @@ def _variant_coverage_candidates(node_id: str) -> List[tuple]:
     compare-only node).
     """
     pairs = set()
+    # The bounds the PIPELINE will actually enforce when this node is rendered.
+    #
+    # The per-DNA bounds below are correct per DNA, but a multi-DNA node renders on one
+    # of them, and the boundary check tests the request against these. mat_g3_mg_q2_2
+    # ("Compare masses of objects") maps to both mass_capacity and comparing_ordering;
+    # comparing_ordering legitimately parses task_type='compare_pair', so it was declared,
+    # while the node's effective bounds pin task_type='compare' -- every render raised
+    # "Boundary violation: requesting out-of-bounds discrete variant".
+    #
+    # Forcing the owning DNA would make it render, and that is the wrong fix: it produces
+    # "Kuya Pat has 1054 marbles. Maria has 9170 marbles" on a node whose competency is
+    # about comparing MASSES, and the identical marbles item on the capacity node. The
+    # student path already serves the right content from mass_capacity ("Which is heavier:
+    # 22 g or 47 g?"). A variant only worth demonstrating is one the node can be asked for
+    # on the path it actually renders on.
+    #
+    # Measured before landing: 3 dropped, all 3 already failed to render, ZERO dropped
+    # that the generator could produce.
+    effective_bounds = get_node_competency_bounds(node_id) or {}
     for dna_name in get_node_dnas(node_id) or []:
         bounds = get_node_competency_bounds(node_id, dna_name)
         max_places = _max_regrouping_places_for(bounds)
@@ -116,12 +135,17 @@ def _variant_coverage_candidates(node_id: str) -> List[tuple]:
                 for v in opts:
                     if bound is not None and not _bound_allows(bound, v):
                         continue
+                    eff = effective_bounds.get(var_name)
+                    if eff is not None and not _bound_allows(eff, v):
+                        continue
                     if var_name == "regrouping" and (
                         not _regrouping_fits(v, max_places)
                         or not _regrouping_applies(bounds)
                     ):
                         continue
                     if var_name == "tables" and not _tables_apply(bounds):
+                        continue
+                    if var_name == "unit_type" and not _unit_type_applies(node_id):
                         continue
                     pairs.add((var_name, v))
         for axis in get_axes_for_concept(dna_name):
@@ -130,6 +154,9 @@ def _variant_coverage_candidates(node_id: str) -> List[tuple]:
                 for opt in axis.get("options", []):
                     val = opt.get("value") if isinstance(opt, dict) else opt
                     if bound is not None and not _bound_allows(bound, val):
+                        continue
+                    eff = effective_bounds.get(axis["name"])
+                    if eff is not None and not _bound_allows(eff, val):
                         continue
                     # Same ceiling filter as the VARIANTS_BY_DNA branch above.
                     # `regrouping` is declared HERE, as a discrete axis, not in
@@ -140,6 +167,8 @@ def _variant_coverage_candidates(node_id: str) -> List[tuple]:
                     ):
                         continue
                     if axis["name"] == "tables" and not _tables_apply(bounds):
+                        continue
+                    if axis["name"] == "unit_type" and not _unit_type_applies(node_id):
                         continue
                     pairs.add((axis["name"], val))
     return sorted(pairs, key=lambda p: (str(p[0]), str(p[1])))
@@ -175,6 +204,35 @@ def _regrouping_applies(bounds: Dict[str, Any]) -> bool:
     arithmetic.
     """
     return bounds.get("task_type") != "estimate"
+
+
+def _unit_type_applies(node_id: str) -> bool:
+    """
+    False below grade 2: standard units are a G2+ competency.
+
+    length_measurement.py refuses the request in its own words -- "unit_type='cm'
+    (standard units) is not available for grade=1 (G1 uses non-standard units only)" --
+    and derives `unit_mode = "non_standard" if grade < 2`. The axis offers only
+    ['cm', 'm'], both standard, so on a G1 node it does not apply at all. Three G1 nodes
+    whose competencies read "using non-standard units" were asked to demonstrate
+    centimetres: 6 of §2I's findings.
+
+    Content was never wrong -- those nodes already render paperclips, hands and steps,
+    30/30 samples with no standard unit named. Only the declaration was.
+
+    KNOWN LIMITATION (Mandate 6): this mirrors a rule that lives in the DNA, which is the
+    duplication §2I's docstring warns about. A cheaper fix was tried first and rejected --
+    binding unit_type='non_standard' in the competency parser broke generation outright
+    ("unknown unit_type 'non_standard'", 0/20 renders on all three nodes), because the
+    DNA accepts only cm/m as a REQUEST while producing non-standard content by grade.
+    Closing the duplication properly means giving the DNA a 'non_standard' unit_type it
+    accepts, which is a capability change and belongs in its own reviewed commit.
+    Measured before landing: 6 dropped, all 6 already failed; ZERO over-filtered.
+    """
+    import re as _re
+
+    m = _re.search(r"mat_g(\d+)", node_id)
+    return int(m.group(1)) >= 2 if m else True
 
 
 def _tables_apply(bounds: Dict[str, Any]) -> bool:

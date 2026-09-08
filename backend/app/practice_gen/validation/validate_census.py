@@ -52,7 +52,12 @@ CENSUS_FLOORS = {
     # Lower it deliberately, in the commit that removes a declaration and says which
     # competency clause does not name it -- e.g. dropping unit_type='cm' from three
     # "using non-standard units" nodes should lower this by exactly 6.
-    "variant_candidates": 983,
+    # 983 -> 974 on 2026-09-08, lowered deliberately with the commit that removed the
+    # declarations: 3 multi-DNA variants the node's effective bounds forbid outright, and
+    # 6 standard-unit values on G1 nodes whose competencies read "using non-standard
+    # units". Each removal cites the clause; the count moved by exactly the measured
+    # amount, which is the point of stating it here.
+    "variant_candidates": 974,
 }
 
 
