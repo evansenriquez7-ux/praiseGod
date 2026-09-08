@@ -24,6 +24,26 @@ from ..compatibility import COMPATIBILITY
 from ..registry import NODE_TO_DNA, get_node_formatters
 from ._manifest import DNA_MODULE_MAP, KNOWN_FORMATTERS
 
+# §8 inventory: the assertions this module can independently fail on. Each must be
+# proven by a mutation naming it in `Mutation.asserts`, or excused in
+# validate_coverage.UNPROVEN_ASSERTIONS with a reason and a date.
+# One label per check group, matching the `  FAIL <label>` each prints in validate_all.
+ASSERTIONS = (
+    "compatibility_table",
+    "registry_coverage",
+    "kg_monotonicity",
+    "lab_portal_equivalence",
+    "advertised_formatters_are_servable",   # §2B
+    "config_respects_competency",           # §2D
+    "option_placement",                     # §2E
+    "formatters_reachable",                 # §2C
+    "node_references_resolve",              # §2F
+    "all_competency_bounds_parse",          # §2G
+    "competency_scope_not_narrowed",        # §2H
+    "declared_variants_are_producible",     # §2I
+    "competency_bounds_parsing",
+)
+
 
 # Path to the knowledge graph JSON ────────────────────────────────────────────
 
@@ -604,10 +624,26 @@ def validate_option_placement() -> List[str]:
 
 _REACH_SEEDS = 40
 
-# Baseline measured 2026-08-28 with formatter_name recorded: 18 nodes advertise a
-# formatter the student path never selects. Red baseline, so a floor that may only SHRINK
-# (Mandate §5); the 18 are tracked as content/routing work, not something to widen around.
-_REACH_FLOOR = 18
+# Baseline measured 2026-08-28 with formatter_name recorded: 18 NODES advertised a
+# formatter the student path never selects. Counted in (node, formatter) PAIRS since
+# 2026-09-08 -- the same 18 nodes are 37 pairs, and the node count could not see a node
+# already on the list losing a SECOND formatter. A floor defeats only a regression smaller
+# than its headroom, and at node granularity every within-node regression was smaller than
+# its headroom, forever. Proven by `single_formatter_unreachable`, which takes ONE
+# formatter away from nodes that were already failing: 37 -> 39 pairs while the node count
+# stays at 18, so the old floor passed the planted bug and the new one fails it.
+#
+# KNOWN LIMITATION (Mandate 6): 40 seeds cannot separate "never offered" from "offered and
+# not drawn". 36 of the 37 are hard exclusions -- FORMATTER_VARIANT_SUPPORT rules the
+# formatter out for the variant values the node's competency pins, so the node's
+# advertised list is simply wider than its competency permits (content work). The 37th,
+# mat_g2_na_q3_5's array_grid_read, is a sampling miss: measured over 400 seeds it IS
+# served, 8 times (2%), so 40 seeds miss it more often than not. Separating the two means
+# recording the candidate set the orchestrator considered, which FormattedProblem's
+# extra="forbid" schema forbids without a contract change.
+#
+# Red baseline, so a floor that may only SHRINK (Mandate §5).
+_REACH_FLOOR = 37
 
 # A node needs this many successful generations before its unreachable set means
 # anything. Half the seed budget: enough for a formatter with any real selection
@@ -670,13 +706,13 @@ def validate_advertised_formatters_are_reachable() -> List[str]:
         # gate. Below this quorum the node is unmeasured and says nothing either way.
         if generated < _REACH_MIN_SAMPLES:
             continue
-        unreachable = sorted(advertised - served)
-        if unreachable:
+        # One finding per (node, formatter), not per node. A node already on this list
+        # losing another formatter used to change nothing at all -- see _REACH_FLOOR.
+        for fmt in sorted(advertised - served):
             errors.append(
-                f"{node_id}: advertises {unreachable} but the student path never selected "
-                f"{'it' if len(unreachable) == 1 else 'them'} in {_REACH_SEEDS} seeds "
-                f"(served: {sorted(served)}). §1 validates content no pupil receives, and "
-                f"the Lab offers a menu wider than what is served (§2C)."
+                f"{node_id}: advertises {fmt!r} but the student path never selected it in "
+                f"{_REACH_SEEDS} seeds (served: {sorted(served)}). §1 validates content no "
+                f"pupil receives, and the Lab offers a menu wider than what is served (§2C)."
             )
     return errors
 
@@ -860,8 +896,7 @@ def validate_competency_scope_not_narrowed() -> List[str]:
     return errors
 
 
-# 21, down from 65 on 2026-09-08. Remaining: task_type 6, unit_type 6, number_type 4,
-# strategy 3, regrouping 2.
+# 0, down from 65 on 2026-09-08 via 21 and 12. History of the 65, oldest first.
 #
 # The 44 cleared were all one thing -- a declaration offering a value the node's own
 # competency excludes -- and none needed a generator change:
@@ -880,8 +915,46 @@ def validate_competency_scope_not_narrowed() -> List[str]:
 # task_type='compare_pair') the fix is to build it; where it does not (unit_type='cm' on
 # a "using non-standard units" competency) the declaration is invention and goes.
 #
+# ZERO as of 2026-09-08, down from 12 the same day and 65 the day before. The floor is
+# gone, not shrunk, and that matters: a floor at or above the finding count makes the
+# check UNPROVABLE, not merely lax -- §9's mutation survived 7 planted broken payloads
+# while RENDER_FLOOR stood at 16.
+#
+# The last 12 split exactly along the two causes above, and were cleared in opposite
+# directions.
+#
+# TEN were declarations the MATATAG progression does not reach at the node, and the
+# pipeline already knew it: CURRICULUM_VARIANT_GATES gates each one to a later
+# grade/quarter and generate_context refuses it by name. Only the packet builder did not
+# consult the gate, so it declared candidates the pipeline would reject. It calls
+# `is_variant_available_at` now (judgment_packets._variant_reaches_this_node) rather than
+# restating the rule. Clause by clause, none names the variant:
+#   * strategy='expanded_form' x3 -- mat_g1_na_q1_7/8/9 (G1 Q1; gate G1 Q2). Their
+#     competencies name "counting up" and "putting together", the zero and order
+#     properties, and "solve problems ... with sums up to 20". Expanded form needs tens
+#     and ones, introduced at mat_g1_na_q2_2.
+#   * task_type='associative' -- mat_g1_na_q2_5 (G1 Q2; gate G2 Q1). "Add numbers with
+#     sums up to 100 without regrouping ..." names no property of addition at all.
+#   * number_type='multi_digit' x4 -- mat_g2_na_q3_0/1/2/3 (G2 Q3; gate G3 Q3). All four
+#     competencies are equal groups, repeated addition and the 2/3/4/5/10 tables, whose
+#     multipliers are single-digit throughout.
+#   * task_type='draw_construct' and 'recognize_model' -- mat_g2_mg_q4_3 (G2 Q4; gate
+#     G3 Q1). "Identify and explain the difference between straight and curved lines ..."
+#     names the verbs identify and explain, not draw, construct or model.
+# Same change removed `_unit_type_applies`, a hand-mirrored copy of "standard units are
+# G2+" carried as a KNOWN LIMITATION: the gate table already holds it. Measured, all three
+# directions: 16 dropped, 16 already failing, ZERO that actually render.
+#
+# TWO were the opposite -- the competency named the sub-case and the pipeline could not
+# produce it. mat_g3_na_q2_1 and mat_g3_na_q2_3 ("... sums up to 10 000, with and without
+# regrouping") were offered regrouping='four_places', which needs a sum of exactly 10 000,
+# and the orchestrator's logarithmic scalar map handed the DNA a ceiling of 9999: pow()
+# lands on 10000.999999999998 and int() truncates. So the top of the competency's own
+# range was unreachable on every node with that bound. Building it was the fix (Content
+# Rule 4); both nodes now render 8511 + 1489 = 10000.
+#
 # A FLOOR, not a hard gate, per Scaling Mandate #5, and it may only ever be lowered.
-_PRODUCIBLE_FLOOR = 12
+_PRODUCIBLE_FLOOR = 0
 
 
 def validate_declared_variants_are_producible() -> List[str]:
@@ -1027,13 +1100,15 @@ def validate_all() -> bool:
         print("  PASS option_placement")
 
     if len(reach_errors) > _REACH_FLOOR:
-        print(f"  FAIL formatters_reachable ({len(reach_errors)} node(s), floor {_REACH_FLOOR}):")
+        print(f"  FAIL formatters_reachable ({len(reach_errors)} (node, formatter) pair(s), "
+              f"floor {_REACH_FLOOR}):")
         for e in reach_errors[:10]:
             print(f"    - {e}")
         if len(reach_errors) > 10:
             print(f"    ... and {len(reach_errors) - 10} more.")
     else:
-        print(f"  PASS formatters_reachable ({len(reach_errors)} node(s), floor {_REACH_FLOOR})")
+        print(f"  PASS formatters_reachable ({len(reach_errors)} (node, formatter) pair(s), "
+              f"floor {_REACH_FLOOR})")
 
     if dangling_errors:
         print("  FAIL node_references_resolve:")

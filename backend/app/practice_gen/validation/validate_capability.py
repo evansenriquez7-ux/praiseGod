@@ -50,6 +50,27 @@ from pathlib import Path
 from typing import Any, Dict, List, Set
 
 from backend.app.practice_gen.compatibility import COMPATIBILITY, VARIANTS_BY_DNA
+
+# §8 inventory: the assertions this module can independently fail on. Each must be
+# proven by a mutation naming it in `Mutation.asserts`, or excused in
+# validate_coverage.UNPROVEN_ASSERTIONS with a reason and a date.
+# This module returns errors and prints nothing; run_all reports the group under
+# `capability_contract`. The sub-assertions are what a mutation must name -- §6 is five
+# refs deep and one mutation on the rollup would mark all of them proven.
+ASSERTIONS = (
+    "capability_provenance_6A",
+    "capability_coverage_6B",
+    "capability_provision_6C",
+    "capability_generic_formatter_6D",
+    "capability_nondiscriminating_bounds_6E",
+    "capability_unattested_6F",
+    "capability_contradicted_6F",
+    "capability_stale_attestation_6F",
+    "attester_reasoning_skeleton_6G",
+    "attester_evidence_6G",
+    "attester_plurality_6H",
+    "capability_contract",   # run_all's rollup print for the stage
+)
 from backend.app.practice_gen.registry import (
     NODE_TO_DNA,
     get_all_node_ids,

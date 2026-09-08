@@ -291,12 +291,8 @@ class PracticeOrchestrator:
                         t_val = val
 
                     if scale_type == "logarithmic":
-                        import math
-                        shift = 1 if min_val == 0 else 0
-                        log_min = math.log10(min_val + shift)
-                        log_max = math.log10(max_val + shift)
-                        log_val = log_min + t_val * (log_max - log_min)
-                        mapped_val = int(math.pow(10, log_val)) - shift
+                        from backend.app.practice_gen.axes_catalog import log_scale_value
+                        mapped_val = log_scale_value(min_val, max_val, t_val)
                     else:
                         if isinstance(min_val, float) or isinstance(max_val, float) or (max_val - min_val <= 2):
                             mapped_val = round(min_val + t_val * (max_val - min_val), 2)
@@ -487,10 +483,11 @@ class PracticeOrchestrator:
             if fmt_limit is not None:
                 local_difficulty_profile["formatter_max_val"] = fmt_limit
 
-        # Parse grade level from node ID
-        import re
-        grade_match = re.search(r"mat_g(\d+)", node_id)
-        effective_grade = int(grade_match.group(1)) if grade_match else 1
+        # Grade level from the node id, via the one parser generate_context's
+        # curriculum gate also uses -- two copies of this could disagree about which
+        # grade a node is, and the gate would then refuse or admit the wrong variants.
+        from backend.app.practice_gen.compatibility import node_grade_quarter
+        effective_grade, _ = node_grade_quarter(node_id)
 
         ctx = generate_context(dna, node_id, effective_grade, seed, local_difficulty_profile, interest_theme, is_lab=is_lab, is_student_path=is_student_path)
 

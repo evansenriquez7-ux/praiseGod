@@ -226,7 +226,7 @@ def _plant_silent_substitution() -> Dict[Path, str]:
 MUTATIONS: List[Mutation] = [
     Mutation(
         name="leaky_window",
-        asserts=['scalar_boundary_containment'],
+        asserts=["window_containment"],
         description=(
             "Make the scalar->value map land ten ABOVE the maximum at t=1.0, so "
             "generation overshoots the competency ceiling. The mirror of "
@@ -257,7 +257,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="boundary_off_by_one",
-        asserts=['scalar_boundary_exactness'],
+        asserts=["scalar_exactness_1.0"],
         description="Make the scalar->value map land one below the maximum at t=1.0.",
         # Patch the orchestrator's scalar->value mapping, which is what actually
         # governs continuous axes on the serving path. dna/base.py's
@@ -345,7 +345,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="registry_drift",
-        asserts=['manifest_registry_assertion'],
+        asserts=["compatibility_table"],
         description="Add a DNA concept to COMPATIBILITY with no module behind it.",
         edits={
             "backend/app/practice_gen/compatibility.py": (
@@ -583,7 +583,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="shrinking_node_registry",
-        asserts=['suite_census_7'],
+        asserts=["census", "census_nodes"],
         description=(
             "Drop every node after the first ten from the registry. Every stage then "
             "checks ten nodes, finds nothing wrong with them, and the suite reports green "
@@ -832,11 +832,30 @@ MUTATIONS: List[Mutation] = [
             "return None`, so a declared-but-impossible variant simply vanished and the "
             "reviewer got a thinner packet with no indication anything was missing."
         ),
+        # ANCHOR REPOINTED 2026-09-08, twice, and the second time is the instructive one.
+        #
+        # The original read "if bound is None or _bound_allows(bound, v):\n pairs.add(...)"
+        # and matched ZERO times -- the loop had been restructured into guard-clause form
+        # when the later filters were added, so this mutation raised "anchor matched 0
+        # times" instead of testing anything and §2I's proof was stale (Mandate 2).
+        #
+        # Re-pointing it at the FIRST guard clause alone made it SURVIVE. The builder
+        # filters against bounds TWICE -- once per-DNA (`bound`) and once against the
+        # node's effective bounds (`eff`), which are the same values on a single-DNA node
+        # -- so removing one changes nothing: candidates 964, findings 0. Removing both
+        # takes candidates to 1633 and findings to 644. The redundancy is deliberate (a
+        # multi-DNA node renders on one DNA while declaring for several), so the plant
+        # must cover both sites: a mutation has to land where BEHAVIOUR changes, not
+        # merely where the rule is written.
         edits={
             "backend/app/practice_gen/validation/judgment_packets.py": (
-                "                    if bound is None or _bound_allows(bound, v):\n"
-                "                        pairs.add((var_name, v))",
-                "                    pairs.add((var_name, v))",
+                "                for v in opts:\n"
+                "                    if bound is not None and not _bound_allows(bound, v):\n"
+                "                        continue\n"
+                "                    eff = effective_bounds.get(var_name)\n"
+                "                    if eff is not None and not _bound_allows(eff, v):\n"
+                "                        continue\n",
+                "                for v in opts:  # planted mutation: bounds filtering dropped\n",
             ),
         },
         command=["backend.app.practice_gen.validation.validate_compat", "--only", "producible"],
@@ -1019,7 +1038,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="stem_declares_the_answer",
-        asserts=["answer_leak_in_stem_declared"],
+        asserts=["answer_leak_in_stem"],
         description=(
             "Append 'It is <answer>.' to a counting stem. THIS EXACT PLANT SURVIVED on "
             "2026-08-26: §1F fires only when the answer is the stem's sole numeric datum, "
@@ -1093,7 +1112,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="grader_keys_a_value_answer",
-        asserts=['grading_contract_value_answers'],
+        asserts=["grading_contract_10"],
         description=(
             "Send the portal's non-MCQ fallback back to comparing the submission against "
             "`correct_key`, the bug §10 caught: a `sort_order` answer of [10, 9, 8] was "
@@ -1117,7 +1136,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="visual_payload_drops_required_key",
-        asserts=['render_contract_required_keys'],
+        asserts=["render_contract_floor_9"],
         description=(
             "Drop total_wholes from the FractionModel payload -- the key the React "
             "component needs to pre-render enough shapes for improper fractions. The "
@@ -1143,7 +1162,7 @@ MUTATIONS: List[Mutation] = [
     ),
     Mutation(
         name="variant_coverage_silently_narrowed",
-        asserts=['census_variant_candidates'],
+        asserts=["census", "census_variant_candidates"],
         description=(
             "Gut an applicability filter in _variant_coverage_candidates so the blind-"
             "review packets stop demonstrating variants they should. This is the failure "
@@ -1165,6 +1184,126 @@ MUTATIONS: List[Mutation] = [
         expected_check="§7 census (variant coverage did not shrink)",
         expect_output_contains=["variant_candidates && below the floor"],
         baseline_must_not_contain=["variant_candidates && below the floor"],
+    ),
+    Mutation(
+        name="single_formatter_unreachable",
+        asserts=["formatters_reachable"],
+        description=(
+            "Make ONE more advertised formatter unreachable on nodes that are ALREADY on "
+            "§2C's list. The existing mutation makes every advertised formatter "
+            "unreachable and so blows past any floor; this is the regression a floor "
+            "actually has to catch, and at node granularity it could not: the node count "
+            "stays at 18 while cloze joins pattern_sequence as unserved on two patterns "
+            "nodes. Measured -- pairs 37 -> 39, nodes 18 -> 18. A floor defeats only a "
+            "regression smaller than its headroom, and every within-node regression was "
+            "smaller than a node-counted floor's headroom by construction."
+        ),
+        edits={
+            "backend/app/practice_gen/compatibility.py": (
+                '        "pattern_sequence": {"task_type": ["find_next"], '
+                '"ask_type": ["next", "missing"]},\n',
+                '        "pattern_sequence": {"task_type": ["find_next"], '
+                '"ask_type": ["next", "missing"]},\n'
+                '        "cloze": {"task_type": ["__planted_never__"]},  # planted mutation\n',
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_compat", "--only", "reachable"],
+        expected_check="§2C (an advertised formatter must be reachable on the student path)",
+        expect_output_contains=["FAIL formatters_reachable", "advertises 'cloze'"],
+        baseline_must_not_contain=["advertises 'cloze'"],
+    ),
+    # ---- §8's own four extra directions ------------------------------------------
+    #
+    # §8 is the gate that measures whether the other gates are real, so the one thing it
+    # may not be is unproven itself. Its first direction (inventoried, unproven, not
+    # excused) is `coverage_map_gap` above; these four cover the rest. All are cheap --
+    # validate_coverage parses source and imports the validation package, no generation.
+    Mutation(
+        name="allowlist_keeps_a_paid_debt",
+        asserts=["assertion_allowlist_paid_8"],
+        description=(
+            "Park an assertion that IS proven on the unproven allowlist. The allowlist is "
+            "a debt register whose only permitted direction is down; an entry left on it "
+            "after its mutation was written overstates the remaining deficit and, worse, "
+            "makes the register unreadable as a work queue."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_coverage.py": (
+                '    # ---- §1* validate_matrix ---',
+                '    "vocabulary_gating":            "planted mutation: this label IS proven",\n'
+                '    # ---- §1* validate_matrix ---',
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_coverage"],
+        expected_check="§8 (an allowlisted assertion a mutation now proves)",
+        expect_output_contains=["vocabulary_gating && now proves it"],
+        baseline_must_not_contain=["now proves it"],
+    ),
+    Mutation(
+        name="allowlist_names_a_phantom_label",
+        asserts=["assertion_allowlist_phantom_8"],
+        description=(
+            "Add an allowlist entry for a label no check site emits. Two entries of "
+            "exactly this shape were found on 2026-09-08 when the inventory was widened: "
+            "`node_to_dna_presence` (the emitted label is `NODE_TO_DNA_presence`) and "
+            "`scalar_1_0_reach` (no site emits it at all). Both had read as accounted-for "
+            "debt since 2026-08-28 while excusing nothing, and the real labels sat outside "
+            "the inventory entirely."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_coverage.py": (
+                '    # ---- §1* validate_matrix ---',
+                '    "worker_crash_typo":            "planted mutation: nothing emits this",\n'
+                '    # ---- §1* validate_matrix ---',
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_coverage"],
+        expected_check="§8 (an allowlist entry naming a label nothing emits)",
+        expect_output_contains=["worker_crash_typo && excuses nothing"],
+        baseline_must_not_contain=["excuses nothing"],
+    ),
+    Mutation(
+        name="mutation_asserts_an_unknown_label",
+        asserts=["assertion_asserts_unknown_8"],
+        description=(
+            "Misspell a `Mutation.asserts` label. `asserts` is free text, so a typo marks "
+            "a label proven that nothing emits while the REAL label quietly falls back "
+            "into the unproven set -- the same defect as a phantom allowlist entry, "
+            "entered from the mutation side. Plants in the harness rather than the "
+            "pipeline because the harness's own bookkeeping is what §8 audits."
+        ),
+        edits={
+            "tests/mutation_harness.py": (
+                '        asserts=[\'option_placement\'],\n',
+                '        asserts=[\'option_placementt\'],  # planted mutation\n',
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_coverage"],
+        expected_check="§8 (a mutation asserting a label no validator declares)",
+        expect_output_contains=["option_placementt && no validator declares"],
+        baseline_must_not_contain=["no validator declares"],
+    ),
+    Mutation(
+        name="undeclared_check_reports_itself",
+        asserts=["assertion_undeclared_check_8"],
+        description=(
+            "Add a check that prints its own `  FAIL <label>` line without declaring the "
+            "label in its module's ASSERTIONS. This is the discovery direction: without "
+            "it, the DECLARED half of the inventory is only as complete as whoever last "
+            "edited a validator remembered to make it, and a new gate could be added, "
+            "never proven, and never counted as unproven either."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_census.py": (
+                '        print(f"  FAIL census ({len(errors)} floor(s) breached):")\n',
+                '        print(f"  FAIL census ({len(errors)} floor(s) breached):")\n'
+                '        print("  FAIL undeclared_planted_check: nobody declared me")\n',
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_coverage"],
+        expected_check="§8 (a printed FAIL label no module declares)",
+        expect_output_contains=["undeclared_planted_check && no module declares"],
+        baseline_must_not_contain=["no module declares"],
     ),
 ]
 

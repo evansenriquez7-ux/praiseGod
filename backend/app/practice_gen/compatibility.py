@@ -57,6 +57,7 @@ Refactored from:
 
 from __future__ import annotations
 
+import re
 from typing import Dict, List, Optional, Any
 
 
@@ -158,6 +159,22 @@ CURRICULUM_VARIANT_GATES: Dict[tuple, tuple] = {
     # Word problems: available from G1Q1 per curriculum ("solve problems given orally or in pictures")
     # No gate entries (all LCs with word_problem context available from Q1)
 }
+
+
+def node_grade_quarter(node_id: str) -> tuple:
+    """
+    The (grade, quarter) a node sits at, parsed from its id.
+
+    One copy, because three callers need the same answer and a disagreement between
+    them is silent: the orchestrator derives the grade it hands to generate_context,
+    generate_context derives the quarter for its curriculum gate, and the review-packet
+    builder has to predict what that gate will do. Defaults match the call sites this
+    replaces -- grade 1 and quarter 1 when the id does not carry them.
+    """
+    grade_match = re.search(r"mat_g(\d+)", node_id)
+    quarter_match = re.search(r"mat_g\d+_[a-z]+_q(\d+)", node_id)
+    return (int(grade_match.group(1)) if grade_match else 1,
+            int(quarter_match.group(1)) if quarter_match else 1)
 
 
 def get_variant_curriculum_gate(lc: str, variant_name: str, variant_value: str) -> Optional[tuple]:

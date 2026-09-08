@@ -25,6 +25,14 @@ from ..generators.difficulty import (
 
 from ._manifest import DNA_MODULE_MAP, load_dna
 
+# §8 inventory: the assertions this module can independently fail on. Each must be
+# proven by a mutation naming it in `Mutation.asserts`, or excused in
+# validate_coverage.UNPROVEN_ASSERTIONS with a reason and a date.
+ASSERTIONS = (
+    "dna_structure",               # validate_all_dnas: formula/visual/static_bank/algorithmic shape
+    "dna_difficulty_feasibility",  # run_all_feasibility_checks: every profile is satisfiable
+)
+
 
 def _sample_params_for_grade(dna: DNA, grade: int, seed: int = 42) -> Optional[Dict[str, Any]]:
     """

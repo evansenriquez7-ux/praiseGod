@@ -38,6 +38,19 @@ from backend.app.practice_gen.validation.validate_matrix import run_matrix_valid
 
 _PGEN_CONTRACT_PATH = Path(__file__).resolve().parents[4] / "docs" / "pgen_contract.md"
 
+# §8 inventory: the assertions the RUNNER owns, as opposed to the ones it re-reports for
+# the modules it drives. Each must be proven by a mutation naming it in
+# `Mutation.asserts`, or excused in validate_coverage.UNPROVEN_ASSERTIONS.
+ASSERTIONS = (
+    "unit_tests",                          # §0: the fast suite passes
+    # §0 is 399 tests and §8 does not inventory them one by one; §7's unit_tests floor
+    # guards their number. A test a mutation names individually is inventoried here.
+    "subtraction_candidate_pool_bounded",  # tests/unit/test_subtraction_candidate_pool.py
+    "contract_doc_matches_registry",
+    "operator_doc_covers_registry",
+    "two_direction_contract_match",
+)
+
 
 def _parse_contract_section_refs() -> Set[str]:
     """
@@ -175,7 +188,7 @@ def run_all(fail_fast: bool = False) -> int:
     if dna_ok:
         executed_checks.add("§3")
     elif fail_fast:
-        print("  FAIL DNA validation (fail-fast active)")
+        print("  ABORT after DNA validation (fail-fast active)")
         return 1
 
     # 2. Compatibility
@@ -192,7 +205,7 @@ def run_all(fail_fast: bool = False) -> int:
         executed_checks.add("§2H")
         executed_checks.add("§2I")
     elif fail_fast:
-        print("  FAIL compatibility validation (fail-fast active)")
+        print("  ABORT after compatibility validation (fail-fast active)")
         return 1
 
     # 3. Interest Invariance
@@ -201,7 +214,7 @@ def run_all(fail_fast: bool = False) -> int:
     interest_failed = [c for c, errs in interest_results.items() if errs]
     interest_ok = len(interest_failed) == 0
     if not interest_ok and fail_fast:
-        print("  FAIL interest invariance (fail-fast active)")
+        print("  ABORT after interest invariance (fail-fast active)")
         return 1
 
     # 4. Vocabulary & Concept Gating (Full-Node Mode)
@@ -213,7 +226,7 @@ def run_all(fail_fast: bool = False) -> int:
             vocab_failed.append((nid, audit["violations"]))
     vocab_ok = len(vocab_failed) == 0
     if not vocab_ok:
-        print(f"  FAIL vocabulary gating audit ({len(vocab_failed)} nodes failed):")
+        print(f"  FAIL vocab_audit_pass_rate ({len(vocab_failed)} node(s) below 1.00):")
         for nid, violations in vocab_failed[:5]:  # print first 5 to avoid flood
             print(f"    - {nid}: {violations}")
         if len(vocab_failed) > 5:
@@ -247,7 +260,7 @@ def run_all(fail_fast: bool = False) -> int:
     executed_checks.add("§1H")
     if applicability_errors:
         matrix_ok = False
-        print(f"  FAIL §1H applicability ({len(applicability_errors)} node(s)):")
+        print(f"  FAIL per_node_applicability_1H (§1H applicability, {len(applicability_errors)} node(s)):")
         for e in applicability_errors[:10]:
             print(f"    - {e}")
         if len(applicability_errors) > 10:
@@ -257,7 +270,7 @@ def run_all(fail_fast: bool = False) -> int:
               f"nodes ran every check their composition makes applicable)")
 
     if not matrix_ok and fail_fast:
-        print("  FAIL matrix validation (fail-fast active)")
+        print("  ABORT after matrix validation (fail-fast active)")
         return 1
 
     # 6. Judgment Reviews (genuine, non-boilerplate — hard gate)

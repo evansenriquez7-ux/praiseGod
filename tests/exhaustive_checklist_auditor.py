@@ -419,11 +419,8 @@ def _profile_violates_numeric_limit(profile, config, competency_bounds, formatte
         # Log scale for wide ranges, linear otherwise — same heuristic as
         # the orchestrator (axes_catalog scale: 'logarithmic' or default).
         if max_val > 0 and min_val > 0 and max_val / min_val >= 10:
-            shift = 1 if min_val == 0 else 0
-            log_min = math.log10(min_val + shift)
-            log_max = math.log10(max_val + shift)
-            log_val = log_min + val * (log_max - log_min)
-            mapped_val = int(math.pow(10, log_val)) - shift
+            from backend.app.practice_gen.axes_catalog import log_scale_value
+            mapped_val = log_scale_value(min_val, max_val, val)
         else:
             if isinstance(min_val, float) or isinstance(max_val, float) or (max_val - min_val <= 2):
                 mapped_val = round(min_val + val * (max_val - min_val), 2)
@@ -451,12 +448,8 @@ def _map_scalar_to_range(axis_name, scalar, competency_bounds, scale=None):
         return None
     min_val, max_val = bounds
     if scale == "logarithmic":
-        import math
-        shift = 1 if min_val == 0 else 0
-        log_min = math.log10(min_val + shift)
-        log_max = math.log10(max_val + shift)
-        log_val = log_min + scalar * (log_max - log_min)
-        return int(math.pow(10, log_val)) - shift
+        from backend.app.practice_gen.axes_catalog import log_scale_value
+        return log_scale_value(min_val, max_val, scalar)
     mapped = min_val + scalar * (max_val - min_val)
     if isinstance(min_val, int) and isinstance(max_val, int):
         return int(mapped)

@@ -57,7 +57,33 @@ The catalog distinguishes between two kinds of axis bounds:
 
 from __future__ import annotations
 
+import math
 from typing import Dict, List
+
+
+def log_scale_value(min_val: float, max_val: float, t: float) -> int:
+    """
+    The integer a 0-1 position `t` maps to on a logarithmic axis [min_val, max_val].
+
+    ONE copy. This arithmetic was written out eight times -- orchestrator, validate_matrix,
+    matatag_router x3, counting.py, number_reading.py, exhaustive_checklist_auditor x2 --
+    and the copies are what turned a float rounding bug into a silent curriculum cap:
+    log10 round-tripping 10000+1 gives 10000.999999999998, so `int()` truncated a
+    competency ceiling of 10 000 down to 9999. Measured 2026-09-08 at t=1.0: (0, 10000)
+    -> 9999 and (0, 50) -> 49, while (0, 20), (0, 100) and (0, 1000) were exact -- which is
+    how it survived, and why fixing one copy made validate_matrix's copy disagree with the
+    orchestrator's and fail 9 nodes.
+
+    A `t` of 1.0 therefore now yields max_val exactly, which is what §1A asserts and what
+    "sums up to 10 000" means. A genuinely fractional position still truncates, so the
+    mapping stays monotone and never overshoots the ceiling.
+    """
+    shift = 1 if min_val == 0 else 0
+    log_min = math.log10(min_val + shift)
+    log_max = math.log10(max_val + shift)
+    raw = math.pow(10, log_min + t * (log_max - log_min))
+    snapped = round(raw)
+    return (snapped if abs(raw - snapped) < 1e-6 else int(raw)) - shift
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

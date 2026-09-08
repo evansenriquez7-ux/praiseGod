@@ -34,8 +34,16 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 
 CENSUS_FLOORS = {
     "nodes": 151,
-    "unit_tests": 340,   # 349 observed 2026-08-26, with headroom for ordinary churn
-    "mutations": 37,
+    # 399 collected 2026-09-08 (was 340, set when 349 were observed). 59 tests could
+    # have stopped running without breaching it, which is the silent shrinkage this
+    # floor exists to catch, so it is ratcheted to the real number less a little churn.
+    "unit_tests": 395,
+    # 48 registered 2026-09-08 (was 37). Four were added to prove §8's own directions and
+    # one to prove §2C at (node, formatter) granularity; the ten of headroom that existed
+    # before meant ten mutations could be deleted silently, and §8 only notices a deletion
+    # that leaves a label unproven -- where two mutations prove one label, this floor is
+    # the only guard.
+    "mutations": 48,
     # 983 observed 2026-09-08. How many (variant, value) pairs the blind-review packets
     # will actually demonstrate across the tree.
     #
@@ -57,8 +65,21 @@ CENSUS_FLOORS = {
     # 6 standard-unit values on G1 nodes whose competencies read "using non-standard
     # units". Each removal cites the clause; the count moved by exactly the measured
     # amount, which is the point of stating it here.
-    "variant_candidates": 974,
+    # 974 -> 964 on 2026-09-08, lowered deliberately with the commit that stopped the
+    # packet builder declaring variants CURRICULUM_VARIANT_GATES already refuses at the
+    # node's grade/quarter: 3x strategy=expanded_form (G1 Q1 nodes, gate G1 Q2),
+    # task_type=associative (G1 Q2, gate G2 Q1), 4x number_type=multi_digit (G2 Q3, gate
+    # G3 Q3), and draw_construct + recognize_model (G2 Q4, gate G3 Q1). Each clause is
+    # quoted in validate_compat's _PRODUCIBLE_FLOOR note; the count moved by exactly the
+    # measured 10, which is the point of stating it here.
+    "variant_candidates": 964,
 }
+
+# §8 inventory: the assertions this module can independently fail on. Derived from the
+# floors rather than restated, so adding a floor adds an assertion that must then be
+# proven by a mutation or excused in validate_coverage.UNPROVEN_ASSERTIONS -- a new floor
+# nobody can breach on purpose is a floor nobody has checked.
+ASSERTIONS = ("census",) + tuple(f"census_{key}" for key in CENSUS_FLOORS)
 
 
 def count_nodes() -> int:

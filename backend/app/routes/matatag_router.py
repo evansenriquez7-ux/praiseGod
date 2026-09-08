@@ -1,6 +1,5 @@
 import datetime
 import os
-import math
 import json
 import re
 import random as _random
@@ -359,11 +358,8 @@ def get_matatag_difficulty_axes(node_id: str):
             bridge_scalar = DIFFICULTY_LEVEL_MAP[4]
             scale_type = axis.get("scale", "linear")
             if scale_type == "logarithmic":
-                shift = 1 if min_val == 0 else 0
-                log_min = math.log10(min_val + shift)
-                log_max = math.log10(max_val + shift)
-                log_val = log_min + bridge_scalar * (log_max - log_min)
-                bridge_value = int(math.pow(10, log_val)) - shift
+                from backend.app.practice_gen.axes_catalog import log_scale_value
+                bridge_value = log_scale_value(min_val, max_val, bridge_scalar)
             else:
                 if isinstance(min_val, float) or isinstance(max_val, float) or (max_val - min_val <= 2):
                     bridge_value = round(min_val + bridge_scalar * (max_val - min_val), 2)
@@ -512,12 +508,8 @@ def get_matatag_lab_config(node_id: str):
                 scalar = i / (divisions - 1) if divisions > 1 else 0.0
                 
                 if scale_type == "logarithmic":
-                    # Use a shifted log scale to handle 0
-                    shift = 1 if min_val == 0 else 0
-                    log_min = math.log10(min_val + shift)
-                    log_max = math.log10(max_val + shift)
-                    log_val = log_min + scalar * (log_max - log_min)
-                    value = int(math.pow(10, log_val)) - shift
+                    from backend.app.practice_gen.axes_catalog import log_scale_value
+                    value = log_scale_value(min_val, max_val, scalar)
                 else:
                     if isinstance(min_val, float) or isinstance(max_val, float) or (max_val - min_val <= 2):
                         value = round(min_val + scalar * (max_val - min_val), 2)
@@ -534,11 +526,8 @@ def get_matatag_lab_config(node_id: str):
             from backend.app.practice_gen.dna.base import DIFFICULTY_LEVEL_MAP
             bridge_scalar = DIFFICULTY_LEVEL_MAP[4]
             if scale_type == "logarithmic":
-                shift = 1 if min_val == 0 else 0
-                log_min = math.log10(min_val + shift)
-                log_max = math.log10(max_val + shift)
-                log_val = log_min + bridge_scalar * (log_max - log_min)
-                bridge_value = int(math.pow(10, log_val)) - shift
+                from backend.app.practice_gen.axes_catalog import log_scale_value
+                bridge_value = log_scale_value(min_val, max_val, bridge_scalar)
             else:
                 if isinstance(min_val, float) or isinstance(max_val, float) or (max_val - min_val <= 2):
                     bridge_value = round(min_val + bridge_scalar * (max_val - min_val), 2)

@@ -23,6 +23,16 @@ from ..registry import NODE_TO_DNA, get_all_node_ids, get_node_info
 
 from ._manifest import DNA_MODULE_MAP, load_dna
 
+# §8 inventory: the assertions this module can independently fail on. Each must be
+# proven by a mutation naming it in `Mutation.asserts`, or excused in
+# validate_coverage.UNPROVEN_ASSERTIONS with a reason and a date.
+ASSERTIONS = (
+    "static_vocab_gated_lint",  # lint_all_vocab_gated_instances: the static skeleton banks
+    # run_all reports the full-node audit's pass_rate under this label; the audit itself
+    # lives here, so the label is declared here.
+    "vocab_audit_pass_rate",
+)
+
 
 def _text_contains_term(text: str, term: str) -> bool:
     """

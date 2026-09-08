@@ -249,8 +249,8 @@ def generate_context(
     # cannot be checked inside generate_params() — it only receives `grade`,
     # not quarter. Reject loudly here rather than let the DNA silently
     # generate content the node hasn't reached yet.
-    quarter_match = re.search(r"mat_g\d+_[a-z]+_q(\d+)", node_id)
-    quarter = int(quarter_match.group(1)) if quarter_match else 1
+    from ..compatibility import node_grade_quarter
+    _, quarter = node_grade_quarter(node_id)
     if difficulty_profile:
         from ..compatibility import is_variant_available_at, get_variants_for_dna
         known_variants = get_variants_for_dna(dna.concept)

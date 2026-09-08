@@ -51,6 +51,19 @@ from typing import Any, Dict, List, Optional, Set
 from backend.app.practice_gen.registry import get_all_node_ids, get_node_info
 from backend.app.practice_gen.validation.judgment_packets import _render_sample
 
+# §8 inventory: the assertions this module can independently fail on. Each must be
+# proven by a mutation naming it in `Mutation.asserts`, or excused in
+# validate_coverage.UNPROVEN_ASSERTIONS with a reason and a date.
+ASSERTIONS = (
+    "judgment_review_schema_5",       # _validate_one: seeds, samples, six findings, verdicts
+    "judgment_review_freshness_5",    # STALE -- the reviewed seed no longer renders what was judged
+    "judgment_quote_provenance_5",    # a rationale quoting content absent from its own packet
+    "judgment_rationale_verbatim_5",  # a rationale byte-identical to another node's
+    "judgment_rationale_skeleton_5",  # _validate_skeleton_clusters: one sentence frame, many nodes
+    "judgment_reviewer_plurality_5",  # one 'reviewed_by' identity across more than one blind batch
+    "judgment_reviews",               # run_all's rollup print for the stage
+)
+
 # Anchored to the repo root from this file's location, not the process CWD.
 # A CWD-relative path made the gate's verdict depend on where it was invoked
 # from (from any other directory it reported "directory does not exist" rather

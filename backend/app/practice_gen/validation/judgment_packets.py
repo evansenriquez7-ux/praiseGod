@@ -145,7 +145,7 @@ def _variant_coverage_candidates(node_id: str) -> List[tuple]:
                         continue
                     if var_name == "tables" and not _tables_apply(bounds):
                         continue
-                    if var_name == "unit_type" and not _unit_type_applies(node_id):
+                    if not _variant_reaches_this_node(node_id, dna_name, var_name, v):
                         continue
                     pairs.add((var_name, v))
         for axis in get_axes_for_concept(dna_name):
@@ -168,7 +168,7 @@ def _variant_coverage_candidates(node_id: str) -> List[tuple]:
                         continue
                     if axis["name"] == "tables" and not _tables_apply(bounds):
                         continue
-                    if axis["name"] == "unit_type" and not _unit_type_applies(node_id):
+                    if not _variant_reaches_this_node(node_id, dna_name, axis["name"], val):
                         continue
                     pairs.add((axis["name"], val))
     return sorted(pairs, key=lambda p: (str(p[0]), str(p[1])))
@@ -206,33 +206,38 @@ def _regrouping_applies(bounds: Dict[str, Any]) -> bool:
     return bounds.get("task_type") != "estimate"
 
 
-def _unit_type_applies(node_id: str) -> bool:
+def _variant_reaches_this_node(node_id: str, dna_name: str, var_name: str, value: Any) -> bool:
     """
-    False below grade 2: standard units are a G2+ competency.
+    False when the pipeline's OWN curriculum gate would refuse this variant here.
 
-    length_measurement.py refuses the request in its own words -- "unit_type='cm'
-    (standard units) is not available for grade=1 (G1 uses non-standard units only)" --
-    and derives `unit_mode = "non_standard" if grade < 2`. The axis offers only
-    ['cm', 'm'], both standard, so on a G1 node it does not apply at all. Three G1 nodes
-    whose competencies read "using non-standard units" were asked to demonstrate
-    centimetres: 6 of §2I's findings.
+    `generate_context` rejects a variant value the MATATAG progression has not
+    introduced at the node's grade and quarter (base_generator.py, "c2. Curriculum-gate
+    check"), so a candidate it would refuse is a declaration the node cannot honour --
+    the reviewer gets a thinner packet and §2I reports a finding that names a gate doing
+    its job. `CURRICULUM_VARIANT_GATES` is the single source of truth for when a variant
+    enters the curriculum, and this CALLS it through the same `known_variants` guard the
+    pipeline applies, in the same order. It does not restate the rule: a second copy is
+    what caused the §2H defect and the over-filter §2I's docstring records.
 
-    Content was never wrong -- those nodes already render paperclips, hands and steps,
-    30/30 samples with no standard unit named. Only the declaration was.
+    This replaces `_unit_type_applies`, which mirrored length_measurement.py's "standard
+    units are G2+" rule by hand and was carried as a KNOWN LIMITATION from 2026-09-08.
+    The gate table already carries ("length_measurement", "unit_type", "cm"/"m") -> (2, 1),
+    so the general filter covers it exactly and the mirror is gone rather than annotated.
 
-    KNOWN LIMITATION (Mandate 6): this mirrors a rule that lives in the DNA, which is the
-    duplication §2I's docstring warns about. A cheaper fix was tried first and rejected --
-    binding unit_type='non_standard' in the competency parser broke generation outright
-    ("unknown unit_type 'non_standard'", 0/20 renders on all three nodes), because the
-    DNA accepts only cm/m as a REQUEST while producing non-standard content by grade.
-    Closing the duplication properly means giving the DNA a 'non_standard' unit_type it
-    accepts, which is a capability change and belongs in its own reviewed commit.
-    Measured before landing: 6 dropped, all 6 already failed; ZERO over-filtered.
+    Measured before landing (2026-09-08), all three directions, every DNA:
+      * dropped and already failing  : 12  (the whole §2I finding list)
+      * dropped but actually renders :  0  (no over-filter)
+      * kept and still failing       :  0
     """
-    import re as _re
+    from ..compatibility import (get_variants_for_dna, is_variant_available_at,
+                                 node_grade_quarter)
 
-    m = _re.search(r"mat_g(\d+)", node_id)
-    return int(m.group(1)) >= 2 if m else True
+    # The gate only judges individually-selectable variant values; generate_context
+    # skips anything outside VARIANTS_BY_DNA before consulting it, so this must too.
+    if str(value) not in get_variants_for_dna(dna_name).get(var_name, []):
+        return True
+    grade, quarter = node_grade_quarter(node_id)
+    return is_variant_available_at(dna_name, var_name, str(value), grade, quarter)
 
 
 def _tables_apply(bounds: Dict[str, Any]) -> bool:

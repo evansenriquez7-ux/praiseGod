@@ -8314,3 +8314,162 @@ This change edits generators, so the §5 reviews of `mat_g3_na_q2_1`, `mat_g2_na
 `mat_g2_na_q2_2` are now **STALE by construction** and must be re-reviewed against fresh
 seeds. That is the loop working as designed, not a regression: the review found the defect,
 the root cause was fixed, and the node returns to the queue for confirmation.
+
+## 2026-09-08 — §8 was measuring 37% of the harness; §2I to zero; §2C at pair granularity
+
+### The finding that reorders everything else
+
+`validate_coverage.matrix_assertion_labels()` regexed `"check": "..."` out of
+`validate_matrix.py` and nothing else. Measured on HEAD:
+
+```
+inventory: 26      proven: 43      proven but NOT inventoried: 27
+```
+
+Twenty-seven mutations proved assertions §8 had never heard of — every mutation added in
+the four preceding commits included. **Deleting any of them left §8 printing PASS.** §8 is
+the gate that measures whether the other gates are real, so this is Mandate 1 one level up.
+
+The regex was also wrong about the matrix it did read:
+
+* eleven labels are f-strings (`f"window_containment_{scalar}_{axis_name}"`) and the
+  pattern skipped every one — including the two families the harness's *oldest* mutations
+  (`leaky_window`, `boundary_off_by_one`) prove;
+* `[a-z0-9_]+` cannot match `NODE_TO_DNA_presence`, so its allowlist entry was spelled
+  `node_to_dna_presence` and excused **nothing**. `scalar_1_0_reach` was the same shape: a
+  name no check site has ever emitted. Both had read as accounted-for debt since 2026-08-28.
+
+### What replaced it
+
+Two mechanisms, because the harness has two shapes of assertion.
+
+* **DISCOVERED** — validate_matrix records `{"check": <label>}` at every check site, so its
+  labels are read from the AST with f-strings collapsed to their family name. 26 → **38**.
+  Nothing to maintain; a new check site is inventoried the moment it is written.
+* **DECLARED** — every other validator reports a check group through one
+  `print("  FAIL <label>")` and returns error strings, so there is no per-assertion marker
+  to discover. Each module now declares `ASSERTIONS` beside its checks. **58 labels across
+  12 modules**, at the granularity a defect class actually has: §6 is eleven labels, not
+  one `capability_contract`; §7 derives one per `CENSUS_FLOORS` key, so a new floor nobody
+  can breach on purpose is a floor nobody has checked.
+
+A declaration can rot, so three further directions pin it — a mutation may not assert a
+label nothing declares; the allowlist may not name one either; and every `  FAIL <label>` a
+validator prints must be in the inventory, which is what catches a check added without a
+declaration. All four new directions have their own mutation.
+
+Inventory 26 → **96**, of which 46 proven and 50 knowingly unproven with a reason and a
+date. That deficit is not new; it is the first honest count of it. It names, among others,
+§5's freshness path, §6A/§6B/§6C, §3 entirely, and §10's full-tree floor path — §9's floor
+path IS proven, and the grading side is the same gap.
+
+### §2I: 12 → 0, cleared in both directions
+
+Ten were values `CURRICULUM_VARIANT_GATES` already refuses at the node's grade/quarter, and
+`generate_context` refuses by name. Only the packet builder never consulted the gate, so it
+declared candidates the pipeline would reject. It **calls** `is_variant_available_at` now
+rather than restating the rule. Clause by clause, none names the variant: `expanded_form`
+on three G1 Q1 addition nodes whose competencies name "counting up", "putting together" and
+the zero/order properties; `associative` on "Add numbers with sums up to 100 without
+regrouping"; `multi_digit` on four G2 multiplication competencies that are equal groups,
+repeated addition and the 2/3/4/5/10 tables; `draw_construct` and `recognize_model` on
+"Identify and explain the difference between straight and curved lines". The same change
+deleted `_unit_type_applies`, a hand-mirrored copy of "standard units are G2+" carried as a
+KNOWN LIMITATION — the gate table already held it.
+
+Two were the opposite. `mat_g3_na_q2_1`/`_q2_3` read "Add numbers with sums up to 10 000,
+with and without regrouping" and were offered `regrouping='four_places'`, which needs a sum
+of exactly 10 000 — and the orchestrator handed the DNA a ceiling of **9999**. Building it
+was the fix (Content Rule 4). Both now render `8511 + 1489 = 10000`.
+
+### The root cause under that, and all eight instances
+
+`int(math.pow(10, log_val)) - shift`. `log10` round-tripping 10000+1 gives
+`10000.999999999998`, and `int()` truncates. At t=1.0: `(0, 10000) -> 9999` and
+`(0, 50) -> 49`, while `(0, 20)`, `(0, 100)` and `(0, 1000)` were exact — which is how it
+survived. Every node with such a bound was capped one below the competency's own ceiling.
+
+The arithmetic was written out **eight times**: orchestrator, validate_matrix,
+matatag_router ×3, counting.py, number_reading.py, exhaustive_checklist_auditor ×2. Fixing
+the orchestrator alone made validate_matrix's copy disagree and **fail 9 nodes**
+("observed 10000 != ceiling 9999" — the validator asserting a ceiling below the
+competency's). All eight now call one `axes_catalog.log_scale_value`.
+
+### §2C: the floor could not see the regression it exists to catch
+
+§2C counted NODES. `formatter_unreachable_on_student_path` is detected only because it
+makes *every* advertised formatter unreachable; a node already on the list losing a SECOND
+formatter changed the count by zero, forever. Counted in **(node, formatter) pairs** now —
+the same 18 nodes are 37 pairs — and `single_formatter_unreachable` proves it: one extra
+formatter taken from nodes already failing gives **39 pairs while the node count stays 18**,
+so the old floor passed the planted bug and the new one fails it.
+
+Checked before "fixing", as instructed: 36 of the 37 are hard `FORMATTER_VARIANT_SUPPORT`
+exclusions — the node's advertised list is wider than its own competency permits (e.g.
+"Illustrate 1/2 and 1/4 as parts of a whole" offers `cloze`/`mcq`, which
+`fraction_task_mode='model'` rules out). Those are real, and they are content work on the
+declaration, not routing bugs. The 37th is a **false positive**: `mat_g2_na_q3_5`'s
+`array_grid_read` is served 8 times in 400 seeds (2%), so 40 seeds miss it more often than
+not. Named in the docstring and the contract row; separating "never offered" from "offered
+and not drawn" needs the candidate set recorded on the problem, which `FormattedProblem`'s
+`extra="forbid"` schema forbids without a contract change.
+
+### Two mutations that were not testing anything
+
+`unproducible_variant_declared`'s anchor matched **zero** times — the loop had been
+restructured into guard-clause form when the later filters were added, so §2I's proof had
+been stale. Re-pointed at the first guard, it then **SURVIVED**: the builder filters against
+bounds twice (per-DNA and effective), so removing one changes nothing (964 candidates, 0
+findings). Removing both takes it to 1633 and 644. Mandate 2, twice over, in one mutation: a
+plant must land where BEHAVIOUR changes, not merely where the rule is written.
+
+### Consequence to carry forward
+
+Generation changed on `mat_g3_na_q2_1`, `mat_g3_na_q2_3` and `mat_g2_na_q1_7` (ceiling now
+the competency's own), and the variant-coverage seed→candidate mapping changed on the ten
+gated nodes. §5 STALE therefore moves **620 → 628** inside a pre-existing backlog of 620.
+Those nodes return to the blind re-review queue, which is the loop working as designed.
+
+### Evidence
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_coverage
+  PASS assertion_coverage_8: 46/96 harness assertions proven (38 discovered in
+       validate_matrix, 58 declared across 12 modules), 50 knowingly unproven
+
+  # the property this whole change exists for -- §2C's mutation un-asserted:
+  FAIL assertion_coverage_8 (1):
+    - §8 coverage: assertion 'formatters_reachable' can fail but no mutation proves it
+  exit=1                                    (printed PASS, exit 0, before this change)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_compat
+  Compatibility validation: 13/13 check groups passed.
+  PASS formatters_reachable (37 (node, formatter) pair(s), floor 37)
+  PASS declared_variants_are_producible (0, floor 0; floor may only shrink)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_matrix
+  Nodes Checked: 151   Nodes Passed: 151   Nodes Failed: 0   Total Failures Observed: 0
+  §1H applicability: PASS (151 node(s))
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_render
+  PASS render_contract_floor_9: 0 broken renders (floor 0)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_grade
+  PASS grading_contract_floor_10: 0 mis-gradings (floor 0)
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_census
+  PASS census: nodes=151 (floor 151)
+  PASS census: unit_tests=399 (floor 395)        (floor was 340: 59 tests of slack)
+  PASS census: mutations=48 (floor 48)           (floor was 37: 10 of slack)
+  PASS census: variant_candidates=964 (floor 964)  (974 -> 964, the 10 gated declarations)
+
+$ PYTHONPATH=. .venv/bin/python -m pytest tests/unit -q
+  398 passed, 1 skipped, 2 deselected, 1 warning in 214.63s
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
+  48/48 mutations detected.
+  Praise God — the verifier verifies.
+```
+
+Filter measurement for the curriculum gate, all three directions, before landing:
+**16 dropped, 16 dropped-and-already-failing, ZERO dropped-but-actually-renders.**

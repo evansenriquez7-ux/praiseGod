@@ -17,7 +17,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import math
 import multiprocessing
 import os
 import re
@@ -50,6 +49,17 @@ from backend.app.practice_gen.validation.validate_dna import _are_values_equal
 from backend.app.services.scoring import validate_math_answer
 from backend.app.practice_gen.schemas.visuals import VisualSchemaRegistry
 
+# §8 inventory: the assertions this module can independently fail on. Each must be
+# proven by a mutation naming it in `Mutation.asserts`, or excused in
+# validate_coverage.UNPROVEN_ASSERTIONS with a reason and a date.
+# The ~38 per-sample labels are DISCOVERED from the `{"check": ...}` sites themselves
+# (validate_coverage.matrix_assertion_labels), so only the two tree-wide assertions this
+# module owns and run_all prints need declaring.
+ASSERTIONS = (
+    "per_node_applicability_1H",  # applicability_failures: every check ran on every node it applies to
+    "coverage_regression_1H",     # coverage_regressions: §1E/§4/§1I coverage vs the last recorded run
+)
+
 
 def get_variant_combinations(supported_variants: Dict[str, List[Any]]) -> List[Dict[str, Any]]:
     """Generate all possible variant assignment combinations from supported variants dict."""
@@ -75,11 +85,12 @@ def get_expected_mapped_value(axis: dict, val: float, min_val: float, max_val: f
         t_val = val
 
     if scale_type == "logarithmic":
-        shift = 1 if min_val == 0 else 0
-        log_min = math.log10(min_val + shift)
-        log_max = math.log10(max_val + shift)
-        log_val = log_min + t_val * (log_max - log_min)
-        return int(math.pow(10, log_val)) - shift
+        # Calls the mapper the orchestrator calls. This used to be a second copy of the
+        # arithmetic, and when the orchestrator's float truncation was fixed the two
+        # disagreed: §1A/§1B failed 9 nodes reporting "observed 10000 != ceiling 9999",
+        # the validator asserting a ceiling one below the competency's own.
+        from ..axes_catalog import log_scale_value
+        return log_scale_value(min_val, max_val, t_val)
     else:
         if isinstance(min_val, float) or isinstance(max_val, float) or (max_val - min_val <= 2):
             return round(min_val + t_val * (max_val - min_val), 2)

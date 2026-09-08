@@ -48,6 +48,19 @@ from typing import Any, Dict, List, Optional
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
+# §8 inventory: the assertions this module can independently fail on. Each must be
+# proven by a mutation naming it in `Mutation.asserts`, or excused in
+# validate_coverage.UNPROVEN_ASSERTIONS with a reason and a date.
+#
+# The two modes are separate assertions on purpose. This module's own history is the
+# argument: with RENDER_FLOOR at 16 the floor path let 7 planted broken payloads through
+# while the subset path would have caught them instantly. A floor that swallows a
+# mutation is a check that cannot be proven, so the floor path is proven separately.
+ASSERTIONS = (
+    "render_contract_9",        # subset mode (--node-ids): any finding fails
+    "render_contract_floor_9",  # full tree measured against RENDER_FLOOR
+)
+
 # ZERO, as of 2026-09-08. The floor is gone, not shrunk.
 #
 # It stood at 16 and was doing real harm. Of those 16:
@@ -141,19 +154,20 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
 
     if node_ids:
         if findings:
-            print(f"  FAIL render_contract: {len(findings)} finding(s) on {node_ids}")
+            print(f"  FAIL render_contract_9: {len(findings)} finding(s) on {node_ids}")
             for f in findings[:8]:
                 print(f"    - {f}")
             return False
-        print(f"  PASS render_contract: 0 findings on {len(node_ids)} node(s)")
+        print(f"  PASS render_contract_9: 0 findings on {len(node_ids)} node(s)")
         return True
 
     if len(findings) > RENDER_FLOOR:
-        print(f"  FAIL render_contract: {len(findings)} broken renders exceeds floor {RENDER_FLOOR}")
+        print(f"  FAIL render_contract_floor_9: {len(findings)} broken renders exceeds "
+              f"floor {RENDER_FLOOR}")
         for f in findings[:10]:
             print(f"    - {f}")
         return False
-    print(f"  PASS render_contract: {len(findings)} broken renders (floor {RENDER_FLOOR})")
+    print(f"  PASS render_contract_floor_9: {len(findings)} broken renders (floor {RENDER_FLOOR})")
     if findings:
         print(f"    {len(findings)} payloads the student cannot render remain — content work:")
         for f in findings[:4]:

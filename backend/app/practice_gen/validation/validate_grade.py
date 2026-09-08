@@ -39,6 +39,14 @@ from typing import Any, Dict, List, Optional
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 
+# §8 inventory: the assertions this module can independently fail on. Each must be
+# proven by a mutation naming it in `Mutation.asserts`, or excused in
+# validate_coverage.UNPROVEN_ASSERTIONS with a reason and a date.
+ASSERTIONS = (
+    "grading_contract_10",        # subset mode (--node-ids): any finding fails
+    "grading_contract_floor_10",  # full tree measured against GRADE_FLOOR
+)
+
 # ZERO, as of 2026-09-08 (measured: 0 findings over all 151 nodes x 3 seeds, 14m23s).
 #
 # It stood at 5, all five real, and both causes were the same defect: an unrecognised
@@ -148,19 +156,20 @@ def validate_all(node_ids: Optional[List[str]] = None) -> bool:
 
     if node_ids:
         if findings:
-            print(f"  FAIL grading_contract: {len(findings)} finding(s) on {node_ids}")
+            print(f"  FAIL grading_contract_10: {len(findings)} finding(s) on {node_ids}")
             for f in findings[:8]:
                 print(f"    - {f}")
             return False
-        print(f"  PASS grading_contract: 0 findings on {len(node_ids)} node(s)")
+        print(f"  PASS grading_contract_10: 0 findings on {len(node_ids)} node(s)")
         return True
 
     if len(findings) > GRADE_FLOOR:
-        print(f"  FAIL grading_contract: {len(findings)} mis-gradings exceeds floor {GRADE_FLOOR}")
+        print(f"  FAIL grading_contract_floor_10: {len(findings)} mis-gradings exceeds "
+              f"floor {GRADE_FLOOR}")
         for f in findings[:10]:
             print(f"    - {f}")
         return False
-    print(f"  PASS grading_contract: {len(findings)} mis-gradings (floor {GRADE_FLOOR})")
+    print(f"  PASS grading_contract_floor_10: {len(findings)} mis-gradings (floor {GRADE_FLOOR})")
     return True
 
 

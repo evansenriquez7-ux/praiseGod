@@ -23,6 +23,11 @@ from ..generators.base_generator import generate_context
 
 from ._manifest import DNA_MODULE_MAP, load_dna
 
+# §8 inventory: the assertions this module can independently fail on. Each must be
+# proven by a mutation naming it in `Mutation.asserts`, or excused in
+# validate_coverage.UNPROVEN_ASSERTIONS with a reason and a date.
+ASSERTIONS = ("interest_invariance",)
+
 # Three representative interest themes used for invariance testing.
 # These must exist in interest_bank.json; if not found the generator falls back
 # to the neutral theme — which is still fine for invariance checking.

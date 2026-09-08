@@ -208,8 +208,8 @@ def generate_params(
     else:
         num_diff_scalar = range_val
 
-    log_val = log_min + num_diff_scalar * (log_max - log_min)
-    max_target = int(math.pow(10, log_val)) - shift
+    from ...axes_catalog import log_scale_value
+    max_target = log_scale_value(lo, hi, num_diff_scalar)
     
     current_hi = min(hi, max_target)
     
