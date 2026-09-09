@@ -94,6 +94,7 @@ ASSERTIONS = (
     "assertion_allowlist_phantom_8",  # an allowlist entry naming a label nothing emits
     "assertion_asserts_unknown_8",    # a mutation asserting a label nothing declares
     "assertion_undeclared_check_8",   # a printed `  FAIL` label no module declares
+    "check_phase_registry_8",         # a contract ref that declares no harness phase
 )
 
 # Assertions that can fail but have no mutation proving they do. Each needs a reason and a
@@ -299,6 +300,44 @@ def printed_check_labels() -> Tuple[Dict[str, List[str]], List[str]]:
     return sites, violations
 
 
+def check_phase_registry_failures() -> List[str]:
+    """
+    Every contract §-ref must declare which harness phase it runs in, and vice versa.
+
+    `_manifest.CHECK_PHASE` is what makes `run_all --phase 1` mean anything: a ref with no
+    phase is a check that band-scoped runs silently omit, and the two-direction tripwire
+    would then pass while the stage never ran. Measured 2026-09-09 before the registry went
+    harness-wide: 28 of 35 refs carried no phase at all, so "Phase 1 is done" could only be
+    asserted by running ten commands by hand and reading them.
+
+    Checked in both directions, because both failures are silent. A registered check with
+    no phase is omitted from every phased run; a phased ref nobody registered is a phase
+    decision about a check that does not exist. `PHASE_ONLY_REFS` is the declared exception
+    -- §6A/§6B/§6C are cited by findings and phased for the partition gate, but carry no
+    CONTRACT_CHECKS row of their own.
+    """
+    if str(REPO_ROOT) not in sys.path:
+        sys.path.insert(0, str(REPO_ROOT))
+    from backend.app.practice_gen.validation._manifest import CHECK_PHASE, PHASE_ONLY_REFS
+    from backend.app.practice_gen.validation.run_all import CONTRACT_CHECKS
+
+    errors: List[str] = []
+    for ref in sorted(set(CONTRACT_CHECKS) - set(CHECK_PHASE)):
+        errors.append(
+            f"§8 coverage: contract check {ref!r} declares no phase in "
+            f"_manifest.CHECK_PHASE. `run_all --phase N` would omit it from every band, "
+            f"and the two-direction tripwire would still pass -- a check that runs in no "
+            f"phase is a check that stops running the moment anyone runs a phase."
+        )
+    for ref in sorted(set(CHECK_PHASE) - set(CONTRACT_CHECKS) - PHASE_ONLY_REFS):
+        errors.append(
+            f"§8 coverage: _manifest.CHECK_PHASE phases {ref!r}, which CONTRACT_CHECKS "
+            f"does not register. Either add its contract row, or add it to "
+            f"PHASE_ONLY_REFS with the reason it carries no row of its own."
+        )
+    return errors
+
+
 def harness_assertion_labels() -> Set[str]:
     """The full inventory: discovered matrix labels plus every declared stage label."""
     labels = matrix_assertion_labels()
@@ -361,6 +400,8 @@ def validate_coverage() -> List[str]:
             f"the check it names must declare itself. A mutation proving a label nothing "
             f"emits proves nothing."
         )
+
+    errors += check_phase_registry_failures()
 
     # Discovery direction: a check that reports itself must be inventoried.
     for label in sorted(set(printed) - inventory):

@@ -477,7 +477,10 @@ MUTATIONS: List[Mutation] = [
             "already in, with six refs added on one boolean."
         ),
         edits={
-            "backend/app/practice_gen/validation/validate_capability.py": (
+            # Repointed 2026-09-09: CHECK_PHASE moved to _manifest when the seam was
+            # applied harness-wide (§5 is Phase 2 for the same reason §6F is), and
+            # validate_capability now derives its §6 slice from there.
+            "backend/app/practice_gen/validation/_manifest.py": (
                 '"§6C": 1, "§6D": 1, "§6E": 1,',
                 '"§6C": 1, "§6D": 2, "§6E": 1,',
             )
@@ -1264,6 +1267,29 @@ MUTATIONS: List[Mutation] = [
         expected_check="§2C (an advertised formatter must be reachable on the student path)",
         expect_output_contains=["FAIL formatters_reachable", "advertises 'cloze'"],
         baseline_must_not_contain=["advertises 'cloze'"],
+    ),
+    Mutation(
+        name="contract_check_declares_no_phase",
+        asserts=["check_phase_registry_8"],
+        description=(
+            "Drop a registered check's phase from _manifest.CHECK_PHASE. `run_all "
+            "--phase N` selects stages by that registry, so a ref with no phase is "
+            "omitted from EVERY band -- and the two-direction tripwire still passes, "
+            "because it only ever compares the refs that ran against the refs expected "
+            "for the band that ran. A check that runs in no phase stops running the "
+            "moment anyone runs a phase, silently. Measured 2026-09-09, before the "
+            "registry went harness-wide: 28 of 35 refs were in exactly this state."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/_manifest.py": (
+                '    "§9": 1,\n',
+                '    # planted mutation: §9 phase removed\n',
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_coverage"],
+        expected_check="§8 (every contract check declares the phase it runs in)",
+        expect_output_contains=["§9 && declares no phase"],
+        baseline_must_not_contain=["declares no phase"],
     ),
     # ---- §8's own four extra directions ------------------------------------------
     #

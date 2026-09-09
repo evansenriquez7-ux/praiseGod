@@ -1,23 +1,35 @@
 """
 Practice Generation — Validation Harness Runner
 
-Runs all validators in the practice problem generation pipeline:
-  0. pytest tests/unit (the harness's own tests — fast suite, slow deselected)
-  1. validate_dna (DNA structural check, feasibility, distractors)
-  2. validate_compat (compatibility table, coverage, monotonicity, lab/portal equivalence)
-  3. validate_interest (interest invariance check)
-  4. validate_vocab (vocabulary gating and concept constraints check in full-node mode)
-  5. validate_matrix (exhaustive behavioral matrix check)
-  6. validate_judgment (genuine, non-boilerplate per-node judgment reviews — hard gate)
-  7. validate_capability Phase 1 (§6A–§6E: artifact-free — no attestation record needed)
-  8. validate_capability Phase 2 (§6F–§6H: reads validation_reports/attestation/)
+Runs the validators in the practice problem generation pipeline, in two bands.
 
-Stages 7 and 8 are the two bands of one contract, split 2026-09-08. A check is Phase 1
-iff it can run with no agent-authored artifact on disk; the phase of each §-ref lives in
-validate_capability.CHECK_PHASE and is reconciled against the phase it actually ran in
-by the Two-Direction block below.
+PHASE 1 -- artifact-free. Runnable on a fresh clone by an agent that has authored
+nothing. This is the fix-until-green loop:
+  §0    pytest tests/unit (the harness's own tests — fast suite, slow deselected)
+  §3    validate_dna (structure, feasibility, distractors)
+  §2*   validate_compat (registry, coverage, monotonicity, reachability, producibility)
+        validate_interest (interest invariance)
+        validate_vocab (vocabulary gating and concept constraints, full-node mode)
+  §1*/§4 validate_matrix (exhaustive behavioural matrix)
+  §6A-E validate_capability_provision (declared, cited, covered, provided)
+  §9    validate_render      §10 validate_grade      §8 validate_coverage
+  §7    validate_census
 
-Exit code is 0 if and only if all tests pass.
+PHASE 2 -- needs an agent-authored artifact on disk before it can run at all:
+  §5    validate_judgment  (validation_reports/judgment/)
+  §6F-H validate_capability_attestation (validation_reports/attestation/)
+
+The seam is artifact-dependence, not "does it need an LLM" -- every check here is
+programmatic; the LLM only ever PRODUCES the artifact. Phase 2 is gated on Phase 1
+being green, because a review or attestation is a judgment about specific rendered
+seeds and any Phase 1 fix that changes generation invalidates it.
+
+`--phase 1` / `--phase 2` runs one band and exits on that band alone. The phase of each
+§-ref lives in `_manifest.CHECK_PHASE` -- one registry, read here and by
+validate_capability, held complete by §8's `check_phase_registry_8` -- and is reconciled
+against the phase it actually ran in by the Two-Direction block below.
+
+Exit code is 0 if and only if every check in scope passes.
 """
 
 from __future__ import annotations
@@ -26,7 +38,7 @@ import os
 import re
 import sys
 from pathlib import Path
-from typing import Dict, Set
+from typing import Dict, Optional, Set
 
 from backend.app.practice_gen.validation import (
     validate_compat,
@@ -42,6 +54,7 @@ from backend.app.practice_gen.validation import (
     validate_vocab,
 )
 from backend.app.practice_gen.validation.validate_matrix import run_matrix_validation
+from backend.app.practice_gen.validation._manifest import CHECK_PHASE, refs_in_phase
 
 _PGEN_CONTRACT_PATH = Path(__file__).resolve().parents[4] / "docs" / "pgen_contract.md"
 
@@ -156,10 +169,29 @@ def _run_unit_tests() -> bool:
     return False
 
 
-def run_all(fail_fast: bool = False) -> int:
+def run_all(fail_fast: bool = False, phase: Optional[int] = None) -> int:
+    """
+    Run the harness. `phase=1` runs only the artifact-free band, `phase=2` only the band
+    that needs an agent-authored artifact, `None` runs everything.
+
+    --phase 1 exists because "Phase 1 is done" was not a claim this runner could make.
+    The seam was decided per-ref for §6 on 2026-09-08 but 28 of the 35 refs carried no
+    phase at all, so asserting Phase 1 meant running ten commands by hand and reading
+    them -- which the Definition of Done exists to forbid. The band each stage belongs to
+    is read from `_manifest.CHECK_PHASE`, never restated here.
+    """
+    if phase not in (None, 1, 2):
+        raise ValueError(f"phase must be 1, 2 or None; got {phase!r}")
+    banner = ("RUNNING ALL PRACTICE PROBLEM GENERATION VALIDATORS" if phase is None
+              else f"RUNNING PHASE {phase} VALIDATORS "
+                   f"({'artifact-free' if phase == 1 else 'needs an agent-authored artifact'})")
     print("======================================================================")
-    print("RUNNING ALL PRACTICE PROBLEM GENERATION VALIDATORS")
+    print(banner)
     print("======================================================================\n")
+
+    def _runs(p: int) -> bool:
+        """True if the band `p` is in scope for this run."""
+        return phase is None or phase == p
 
     executed_checks: Set[str] = set()
     # Which PHASE each executed §-ref actually ran in, against which
@@ -176,7 +208,7 @@ def run_all(fail_fast: bool = False) -> int:
         does not register as separate rows; intersecting keeps the two-direction check
         comparing like with like instead of reporting three permanent phantoms.
         """
-        return {ref for ref, p in validate_capability.CHECK_PHASE.items()
+        return {ref for ref, p in CHECK_PHASE.items()
                 if p == phase and ref in CONTRACT_CHECKS}
 
     def _record_phase(phase: int) -> None:
@@ -198,134 +230,155 @@ def run_all(fail_fast: bool = False) -> int:
     # look like a deadlock for five ticks. The fast suite is ~35s, so it runs FIRST --
     # there is no sense spending 40 minutes on the matrix when the harness's own tests
     # are broken.
-    print("--- 1/9: Unit Tests (the harness's own tests) ---")
-    unit_ok = _run_unit_tests()
-    if unit_ok:
-        executed_checks.add("§0")
-    if not unit_ok and fail_fast:
-        return 1
+    if _runs(1):
+        print("--- Unit Tests (the harness's own tests) ---")
+        unit_ok = _run_unit_tests()
+        if unit_ok:
+            executed_checks.add("§0")
+        if not unit_ok and fail_fast:
+            return 1
+    else:
+        unit_ok = True
 
-    print("\n--- 2/9: DNA Structural and Parameter Checks ---")
-    dna_results = validate_dna.validate_all_dnas()
-    dna_failed = [c for c, errs in dna_results.items() if any(not e.startswith("WARN") for e in errs)]
+    if _runs(1):
+        print("\n--- DNA Structural and Parameter Checks ---")
+        dna_results = validate_dna.validate_all_dnas()
+        dna_failed = [c for c, errs in dna_results.items() if any(not e.startswith("WARN") for e in errs)]
 
-    feasibility_results = validate_dna.run_all_feasibility_checks()
-    feasibility_failed = [c for c, errs in feasibility_results.items() if errs]
+        feasibility_results = validate_dna.run_all_feasibility_checks()
+        feasibility_failed = [c for c, errs in feasibility_results.items() if errs]
 
-    dna_ok = len(dna_failed) == 0 and len(feasibility_failed) == 0
-    if dna_ok:
-        executed_checks.add("§3")
-    elif fail_fast:
-        print("  ABORT after DNA validation (fail-fast active)")
-        return 1
+        dna_ok = len(dna_failed) == 0 and len(feasibility_failed) == 0
+        if dna_ok:
+            executed_checks.add("§3")
+        elif fail_fast:
+            print("  ABORT after DNA validation (fail-fast active)")
+            return 1
+    else:
+        dna_ok = True
 
     # 2. Compatibility
-    print("\n--- 3/9: Compatibility, Coverage & Monotonicity ---")
-    compat_ok = validate_compat.validate_all()
-    if compat_ok:
-        executed_checks.add("§2")
-        executed_checks.add("§2B")
-        executed_checks.add("§2D")
-        executed_checks.add("§2E")
-        executed_checks.add("§2C")
-        executed_checks.add("§2F")
-        executed_checks.add("§2G")
-        executed_checks.add("§2H")
-        executed_checks.add("§2I")
-    elif fail_fast:
-        print("  ABORT after compatibility validation (fail-fast active)")
-        return 1
+    if _runs(1):
+        print("\n--- Compatibility, Coverage & Monotonicity ---")
+        compat_ok = validate_compat.validate_all()
+        if compat_ok:
+            executed_checks.add("§2")
+            executed_checks.add("§2B")
+            executed_checks.add("§2D")
+            executed_checks.add("§2E")
+            executed_checks.add("§2C")
+            executed_checks.add("§2F")
+            executed_checks.add("§2G")
+            executed_checks.add("§2H")
+            executed_checks.add("§2I")
+        elif fail_fast:
+            print("  ABORT after compatibility validation (fail-fast active)")
+            return 1
+    else:
+        compat_ok = True
 
     # 3. Interest Invariance
-    print("\n--- 4/9: Interest Invariance Checks ---")
-    interest_results = validate_interest.validate_all_interest_invariance()
-    interest_failed = [c for c, errs in interest_results.items() if errs]
-    interest_ok = len(interest_failed) == 0
-    if not interest_ok and fail_fast:
-        print("  ABORT after interest invariance (fail-fast active)")
-        return 1
+    if _runs(1):
+        print("\n--- Interest Invariance Checks ---")
+        interest_results = validate_interest.validate_all_interest_invariance()
+        interest_failed = [c for c, errs in interest_results.items() if errs]
+        interest_ok = len(interest_failed) == 0
+        if not interest_ok and fail_fast:
+            print("  ABORT after interest invariance (fail-fast active)")
+            return 1
+    else:
+        interest_ok = True
 
     # 4. Vocabulary & Concept Gating (Full-Node Mode)
-    print("\n--- 5/9: Vocabulary & Concept Gating Audits (Full-Node Mode) ---")
-    vocab_results = validate_vocab.run_all_vocab_audits(sample_count=2)
-    vocab_failed = []
-    for nid, audit in vocab_results.items():
-        if audit["pass_rate"] < 1.0:
-            vocab_failed.append((nid, audit["violations"]))
-    vocab_ok = len(vocab_failed) == 0
-    if not vocab_ok:
-        print(f"  FAIL vocab_audit_pass_rate ({len(vocab_failed)} node(s) below 1.00):")
-        for nid, violations in vocab_failed[:5]:  # print first 5 to avoid flood
-            print(f"    - {nid}: {violations}")
-        if len(vocab_failed) > 5:
-            print(f"    ... and {len(vocab_failed) - 5} more nodes.")
-        if fail_fast:
-            return 1
+    if _runs(1):
+        print("\n--- Vocabulary & Concept Gating Audits (Full-Node Mode) ---")
+        vocab_results = validate_vocab.run_all_vocab_audits(sample_count=2)
+        vocab_failed = []
+        for nid, audit in vocab_results.items():
+            if audit["pass_rate"] < 1.0:
+                vocab_failed.append((nid, audit["violations"]))
+        vocab_ok = len(vocab_failed) == 0
+        if not vocab_ok:
+            print(f"  FAIL vocab_audit_pass_rate ({len(vocab_failed)} node(s) below 1.00):")
+            for nid, violations in vocab_failed[:5]:  # print first 5 to avoid flood
+                print(f"    - {nid}: {violations}")
+            if len(vocab_failed) > 5:
+                print(f"    ... and {len(vocab_failed) - 5} more nodes.")
+            if fail_fast:
+                return 1
+        else:
+            print("  PASS vocabulary gating audit (all nodes)")
     else:
-        print("  PASS vocabulary gating audit (all nodes)")
+        vocab_ok = True
 
     # 5. Exhaustive Behavioral Matrix
-    print("\n--- 6/9: Exhaustive Behavioral Matrix Validation ---")
-    # Run matrix validator. We set workers=0 for auto-detection.
-    matrix_code = run_matrix_validation(fail_fast=fail_fast, workers=0)
-    matrix_ok = matrix_code == 0
-    # The matrix's §-refs are *observed*, not assumed: validate_matrix records an
-    # id at each check site when that site actually evaluates an assertion.
-    executed_checks |= validate_matrix.LAST_EXECUTED_CHECKS
+    if _runs(1):
+        print("\n--- Exhaustive Behavioral Matrix Validation ---")
+        # Run matrix validator. We set workers=0 for auto-detection.
+        matrix_code = run_matrix_validation(fail_fast=fail_fast, workers=0)
+        matrix_ok = matrix_code == 0
+        # The matrix's §-refs are *observed*, not assumed: validate_matrix records an
+        # id at each check site when that site actually evaluates an assertion.
+        executed_checks |= validate_matrix.LAST_EXECUTED_CHECKS
 
-    # §1H — per-node applicability. The union above proves each check ran SOMEWHERE;
-    # this proves each ran on every node whose own composition demands it. Without it a
-    # check can quietly stop reaching 150 of 151 nodes and the suite still reports green.
-    applicability_errors = validate_matrix.applicability_failures(
-        validate_matrix._EXECUTED_BY_NODE
-    )
-    # §1E, §4 and §1I depend on what a seed happens to produce, so applicability cannot
-    # predict them and a node that silently stops exercising one is invisible. Comparison
-    # against the last recorded run can see it.
-    applicability_errors += validate_matrix.coverage_regressions(
-        validate_matrix._EXECUTED_BY_NODE
-    )
-    executed_checks.add("§1H")
-    if applicability_errors:
-        matrix_ok = False
-        print(f"  FAIL per_node_applicability_1H (§1H applicability, {len(applicability_errors)} node(s)):")
-        for e in applicability_errors[:10]:
-            print(f"    - {e}")
-        if len(applicability_errors) > 10:
-            print(f"    ... and {len(applicability_errors) - 10} more.")
+        # §1H — per-node applicability. The union above proves each check ran SOMEWHERE;
+        # this proves each ran on every node whose own composition demands it. Without it a
+        # check can quietly stop reaching 150 of 151 nodes and the suite still reports green.
+        applicability_errors = validate_matrix.applicability_failures(
+            validate_matrix._EXECUTED_BY_NODE
+        )
+        # §1E, §4 and §1I depend on what a seed happens to produce, so applicability cannot
+        # predict them and a node that silently stops exercising one is invisible. Comparison
+        # against the last recorded run can see it.
+        applicability_errors += validate_matrix.coverage_regressions(
+            validate_matrix._EXECUTED_BY_NODE
+        )
+        executed_checks.add("§1H")
+        if applicability_errors:
+            matrix_ok = False
+            print(f"  FAIL per_node_applicability_1H (§1H applicability, {len(applicability_errors)} node(s)):")
+            for e in applicability_errors[:10]:
+                print(f"    - {e}")
+            if len(applicability_errors) > 10:
+                print(f"    ... and {len(applicability_errors) - 10} more.")
+        else:
+            print(f"  PASS §1H applicability (all {len(validate_matrix._EXECUTED_BY_NODE)} "
+                  f"nodes ran every check their composition makes applicable)")
+
+        if not matrix_ok and fail_fast:
+            print("  ABORT after matrix validation (fail-fast active)")
+            return 1
     else:
-        print(f"  PASS §1H applicability (all {len(validate_matrix._EXECUTED_BY_NODE)} "
-              f"nodes ran every check their composition makes applicable)")
-
-    if not matrix_ok and fail_fast:
-        print("  ABORT after matrix validation (fail-fast active)")
-        return 1
+        matrix_ok = True
 
     # 6. Judgment Reviews (genuine, non-boilerplate — hard gate)
-    print("\n--- 7/9: Judgment Reviews (genuine per-node artifacts) ---")
-    judgment_errors = validate_judgment.validate_judgment_reviews(fail_fast=fail_fast)
-    v = validate_judgment.summarize_verdicts()
-    if v["FAIL"] > 0 or v["CONCERN"] > 0:
-        judgment_errors.append(
-            f"Unresolved judgment verdicts remain across {v['reviewed']} nodes: "
-            f"PASS={v['PASS']} CONCERN={v['CONCERN']} FAIL={v['FAIL']}; "
-            f"all nodes must reach PASS verdict."
-        )
-    judgment_ok = len(judgment_errors) == 0
-    if judgment_ok:
-        executed_checks.add("§5")
-        print(
-            f"  PASS judgment_reviews (all {v['reviewed']} nodes have genuine, fresh, PASS reviews: "
-            f"PASS={v['PASS']} CONCERN={v['CONCERN']} FAIL={v['FAIL']})"
-        )
+    if _runs(2):
+        print("\n--- Judgment Reviews (genuine per-node artifacts) ---")
+        judgment_errors = validate_judgment.validate_judgment_reviews(fail_fast=fail_fast)
+        v = validate_judgment.summarize_verdicts()
+        if v["FAIL"] > 0 or v["CONCERN"] > 0:
+            judgment_errors.append(
+                f"Unresolved judgment verdicts remain across {v['reviewed']} nodes: "
+                f"PASS={v['PASS']} CONCERN={v['CONCERN']} FAIL={v['FAIL']}; "
+                f"all nodes must reach PASS verdict."
+            )
+        judgment_ok = len(judgment_errors) == 0
+        if judgment_ok:
+            executed_checks.add("§5")
+            print(
+                f"  PASS judgment_reviews (all {v['reviewed']} nodes have genuine, fresh, PASS reviews: "
+                f"PASS={v['PASS']} CONCERN={v['CONCERN']} FAIL={v['FAIL']})"
+            )
+        else:
+            print(f"  FAIL judgment_reviews ({len(judgment_errors)} problem(s) — non-PASS verdicts or incomplete reviews):")
+            for err in judgment_errors[:10]:
+                print(f"    - {err}")
+            if len(judgment_errors) > 10:
+                print(f"    ... and {len(judgment_errors) - 10} more.")
+            if fail_fast:
+                return 1
     else:
-        print(f"  FAIL judgment_reviews ({len(judgment_errors)} problem(s) — non-PASS verdicts or incomplete reviews):")
-        for err in judgment_errors[:10]:
-            print(f"    - {err}")
-        if len(judgment_errors) > 10:
-            print(f"    ... and {len(judgment_errors) - 10} more.")
-        if fail_fast:
-            return 1
+        judgment_ok = True
 
     # 7. Capability Contract (§6) — in its two phases.
     #
@@ -341,87 +394,97 @@ def run_all(fail_fast: bool = False) -> int:
     # Phase-2 backlog and nothing in the harness could tell the two bands apart. The
     # phase of each ref is read from validate_capability.CHECK_PHASE rather than
     # restated here — one registry, so a second copy cannot disagree with it.
-    print("\n--- 8/9: Capability Contract Phase 1 (artifact-free — §6A–§6E) ---")
-    provision_errors = validate_capability.validate_capability_provision()
-    provision_ok = len(provision_errors) == 0
-    if provision_ok:
-        _record_phase(1)
-        print("  PASS capability_contract (Phase 1: all nodes declare, cite, cover, "
-              "and are provided for)")
+    if _runs(1):
+        print("\n--- Capability Contract Phase 1 (artifact-free — §6A–§6E) ---")
+        provision_errors = validate_capability.validate_capability_provision()
+        provision_ok = len(provision_errors) == 0
+        if provision_ok:
+            _record_phase(1)
+            print("  PASS capability_contract (Phase 1: all nodes declare, cite, cover, "
+                  "and are provided for)")
+        else:
+            undeclared = [e for e in provision_errors if "no 'requires' declaration" in e]
+            unprovided = [e for e in provision_errors if "no pipeline artifact provides it" in e]
+            wildcarded = [e for e in provision_errors if "§6D" in e]
+            print(
+                f"  FAIL capability_contract (Phase 1, {len(provision_errors)} problem(s): "
+                f"{len(undeclared)} node(s) undeclared, {len(unprovided)} capability(ies) "
+                f"with no provider, of which {len(wildcarded)} are carried only by a "
+                f"generic textual formatter (§6D)):"
+            )
+            for err in provision_errors[:10]:
+                print(f"    - {err}")
+            if len(provision_errors) > 10:
+                print(f"    ... and {len(provision_errors) - 10} more.")
+            if fail_fast:
+                return 1
     else:
-        undeclared = [e for e in provision_errors if "no 'requires' declaration" in e]
-        unprovided = [e for e in provision_errors if "no pipeline artifact provides it" in e]
-        wildcarded = [e for e in provision_errors if "§6D" in e]
-        print(
-            f"  FAIL capability_contract (Phase 1, {len(provision_errors)} problem(s): "
-            f"{len(undeclared)} node(s) undeclared, {len(unprovided)} capability(ies) "
-            f"with no provider, of which {len(wildcarded)} are carried only by a "
-            f"generic textual formatter (§6D)):"
-        )
-        for err in provision_errors[:10]:
-            print(f"    - {err}")
-        if len(provision_errors) > 10:
-            print(f"    ... and {len(provision_errors) - 10} more.")
-        if fail_fast:
-            return 1
+        provision_ok = True
 
     # PHASE 2 — gated on Phase 1 in the reorganised loop, but still RUN here so a
     # single `run_all` reports the whole contract. Skipping it when Phase 1 is red
     # would hide the attestation band behind a §6D backlog, which is the failure this
     # split exists to end, not to repeat one level down.
-    print("\n--- 9/9: Capability Contract Phase 2 (attestation — §6F–§6H) ---")
-    attestation_errors = validate_capability.validate_capability_attestation()
-    attestation_ok = len(attestation_errors) == 0
-    if attestation_ok:
-        _record_phase(2)
-        print("  PASS capability_contract (Phase 2: every declared capability carries "
-              "a fresh, non-boilerplate, attributed blind Attester verdict)")
+    if _runs(2):
+        print("\n--- Capability Contract Phase 2 (attestation — §6F–§6H) ---")
+        attestation_errors = validate_capability.validate_capability_attestation()
+        attestation_ok = len(attestation_errors) == 0
+        if attestation_ok:
+            _record_phase(2)
+            print("  PASS capability_contract (Phase 2: every declared capability carries "
+                  "a fresh, non-boilerplate, attributed blind Attester verdict)")
+        else:
+            unattested = [e for e in attestation_errors if "UNATTESTED" in e]
+            contradicted = [e for e in attestation_errors if "CONTRADICTED" in e]
+            stale = [e for e in attestation_errors if "is STALE" in e]
+            print(
+                f"  FAIL capability_contract (Phase 2, {len(attestation_errors)} problem(s): "
+                f"{len(contradicted)} CONTRADICTED, {len(unattested)} UNATTESTED and "
+                f"{len(stale)} STALE (§6F)):"
+            )
+            # UNATTESTED dominates by volume while the backlog is open and would bury the
+            # findings that name a defect. Show the ones that name a real problem first.
+            attestation_errors = (
+                [e for e in attestation_errors if "UNATTESTED" not in e] + unattested
+            )
+            for err in attestation_errors[:10]:
+                print(f"    - {err}")
+            if len(attestation_errors) > 10:
+                print(f"    ... and {len(attestation_errors) - 10} more.")
+            if fail_fast:
+                return 1
     else:
-        unattested = [e for e in attestation_errors if "UNATTESTED" in e]
-        contradicted = [e for e in attestation_errors if "CONTRADICTED" in e]
-        stale = [e for e in attestation_errors if "is STALE" in e]
-        print(
-            f"  FAIL capability_contract (Phase 2, {len(attestation_errors)} problem(s): "
-            f"{len(contradicted)} CONTRADICTED, {len(unattested)} UNATTESTED and "
-            f"{len(stale)} STALE (§6F)):"
-        )
-        # UNATTESTED dominates by volume while the backlog is open and would bury the
-        # findings that name a defect. Show the ones that name a real problem first.
-        attestation_errors = (
-            [e for e in attestation_errors if "UNATTESTED" not in e] + unattested
-        )
-        for err in attestation_errors[:10]:
-            print(f"    - {err}")
-        if len(attestation_errors) > 10:
-            print(f"    ... and {len(attestation_errors) - 10} more.")
-        if fail_fast:
-            return 1
+        attestation_ok = True
 
     # Two-direction contract enforcement check
-    print("\n--- Render Contract (§9) ---")
-    # The first stage that looks past FormattedProblem at what the STUDENT receives.
-    # Everything above validates the pipeline's data; this asks whether the React
-    # component can render it. It was an ungated auditor until 2026-08-28 and had been
-    # holding 12 critical findings across 4 nodes the whole time.
-    render_ok = validate_render.validate_all()
-    executed_checks.add("§9")
+    # The four stages below are all Phase 1: each reads code, the knowledge graph or the
+    # harness's own bookkeeping, and none needs an agent-authored artifact on disk.
+    render_ok = grade_ok = coverage_ok = census_ok = True
+    if _runs(1):
+        print("\n--- Render Contract (§9) ---")
+        # The first stage that looks past FormattedProblem at what the STUDENT receives.
+        # Everything above validates the pipeline's data; this asks whether the React
+        # component can render it. It was an ungated auditor until 2026-08-28 and had been
+        # holding 12 critical findings across 4 nodes the whole time.
+        render_ok = validate_render.validate_all()
+        executed_checks.add("§9")
 
-    print("\n--- Grading Contract (§10) ---")
-    # The worst defect class in the system: a pupil does the mathematics right and is told
-    # they are wrong. Three graders serve answers and can disagree about the same one.
-    grade_ok = validate_grade.validate_all()
-    executed_checks.add("§10")
+        print("\n--- Grading Contract (§10) ---")
+        # The worst defect class in the system: a pupil does the mathematics right and is
+        # told they are wrong. Three graders serve answers and can disagree about one.
+        grade_ok = validate_grade.validate_all()
+        executed_checks.add("§10")
 
-    print("\n--- Assertion Coverage (§8) ---")
-    # Replaces "N of M checks proven", which counted a contract REF as proven when one of
-    # its sub-assertions was. validate_matrix alone emits 26 assertion labels behind ~11
-    # refs, so that number flattered the harness considerably.
-    coverage_ok = validate_coverage.validate_all()
-    executed_checks.add("§8")
+        print("\n--- Assertion Coverage (§8) ---")
+        # Replaces "N of M checks proven", which counted a contract REF as proven when one
+        # of its sub-assertions was. validate_matrix alone emits 38 assertion labels behind
+        # ~11 refs, so that number flattered the harness considerably.
+        coverage_ok = validate_coverage.validate_all()
+        executed_checks.add("§8")
 
-    print("\n--- Suite Census (§7) ---")
-    census_ok = validate_census.validate_all()
-    executed_checks.add("§7")
+        print("\n--- Suite Census (§7) ---")
+        census_ok = validate_census.validate_all()
+        executed_checks.add("§7")
 
     print("\n--- Two-Direction Contract Verification ---")
     try:
@@ -463,8 +526,14 @@ def run_all(fail_fast: bool = False) -> int:
             print(f"  PASS operator_doc_covers_registry ({len(named)}/{len(registry_refs)} refs, floor {floor})")
 
         # Compare the checks the contract table claims are binding against the
-        # checks the harness *observed itself* running.
+        # checks the harness *observed itself* running. Under --phase, only the band
+        # that ran is in scope -- comparing a phase-1 run against all 35 refs would
+        # report every phase-2 ref as "registered but not executed" forever, which
+        # would make the drift tripwire useless in exactly the mode meant to be run
+        # after every edit.
         expected_subset = set(CONTRACT_CHECKS.keys())
+        if phase is not None:
+            expected_subset &= refs_in_phase(phase)
         matrix_refs = {"§1A", "§1A-reach", "§1B", "§1C", "§1C-reverse", "§1C-coverage",
                    "§1D", "§1E", "§1F", "§1G", "§1H", "§1I", "§4"}
         if not unit_ok:
@@ -531,12 +600,17 @@ def run_all(fail_fast: bool = False) -> int:
     all_ok = (unit_ok and dna_ok and compat_ok and interest_ok and vocab_ok and matrix_ok
               and judgment_ok and provision_ok and attestation_ok and contract_match_ok
               and census_ok and render_ok and grade_ok and coverage_ok)
+    scope = "ALL TESTS" if phase is None else f"PHASE {phase}"
     if all_ok:
-        print("ALL TESTS PASSED SUCCESSFULLY! Praise God!")
+        print(f"{scope} PASSED SUCCESSFULLY! Praise God!")
+        if phase == 1:
+            print("Phase 1 is green: every check that needs no agent-authored artifact "
+                  "passes, so Phase 2's reviews and attestations can be filed against "
+                  "generation that will not move under them.")
         print("======================================================================")
         return 0
     else:
-        print("SOME TESTS FAILED. Please review the output above.")
+        print(f"SOME {scope} CHECKS FAILED. Please review the output above.")
         print("======================================================================")
         return 1
 
@@ -545,5 +619,11 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Practice Generation — Validation Harness Runner")
     parser.add_argument("--fail-fast", "-f", action="store_true", help="Exit immediately on first validator failure")
+    parser.add_argument(
+        "--phase", type=int, choices=(1, 2), default=None,
+        help="run only one band: 1 = artifact-free (the fix-until-green loop), "
+             "2 = needs an agent-authored artifact in validation_reports/. "
+             "Omit to run everything.",
+    )
     args = parser.parse_args()
-    sys.exit(run_all(fail_fast=args.fail_fast))
+    sys.exit(run_all(fail_fast=args.fail_fast, phase=args.phase))

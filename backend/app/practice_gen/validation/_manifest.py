@@ -2,7 +2,8 @@
 Practice Generation — Validation Manifest
 
 Central source of truth for the validation suite. Exposes the canonical
-DNA module registry, known formatters, and helper to load DNA instances.
+DNA module registry, known formatters, the helper to load DNA instances, and
+CHECK_PHASE — which harness phase each contract §-ref belongs to.
 """
 
 from __future__ import annotations
@@ -13,6 +14,60 @@ from typing import Dict, Set
 from backend.app.practice_gen.compatibility import COMPATIBILITY
 from backend.app.practice_gen.adapter import FORMATTER_ROUTES
 from backend.app.practice_gen.dna.base import DNA
+
+# ─── Harness phase registry ──────────────────────────────────────────────────
+#
+# THE SEAM: does this check need an agent-authored artifact to exist before it can run?
+#
+#   no  -> PHASE 1. Reads only code, the knowledge graph and the declarations. Runnable
+#          on a fresh clone, in the fix-until-green loop, by an agent that has authored
+#          nothing yet.
+#   yes -> PHASE 2. Reads validation_reports/judgment/ or validation_reports/attestation/,
+#          so it cannot run until an agent has filed one. Spans sessions; gated on
+#          Phase 1 being green, because a review or attestation is a judgment about
+#          specific rendered seeds and any Phase 1 fix that changes generation
+#          invalidates it.
+#
+# That test is decidable rather than a matter of taste, which is what makes it
+# enforceable rather than a convention. It was decided per-ref on 2026-09-08 for §6
+# alone; this is the same seam applied to all 35 refs, because until it was, "Phase 1
+# is done" was not a claim the harness could make -- `run_all` had no --phase, 28 of the
+# 35 refs carried no phase at all, and the only way to assert Phase 1 was to run ten
+# commands by hand and read them, which is what the Definition of Done forbids.
+#
+# `validate_coverage`'s `check_phase_registry_8` holds this against run_all's
+# CONTRACT_CHECKS in both directions, so a check cannot be added without declaring the
+# phase it runs in. validate_capability derives its §6 view from here rather than
+# keeping a second copy.
+CHECK_PHASE: Dict[str, int] = {
+    # -- Phase 1: artifact-free -------------------------------------------------------
+    "§0": 1,            # pytest tests/unit
+    "§1A": 1, "§1A-reach": 1, "§1B": 1, "§1C": 1, "§1C-reverse": 1, "§1C-coverage": 1,
+    "§1D": 1, "§1E": 1, "§1F": 1, "§1G": 1, "§1H": 1, "§1I": 1,
+    "§2": 1, "§2B": 1, "§2C": 1, "§2D": 1, "§2E": 1, "§2F": 1, "§2G": 1, "§2H": 1, "§2I": 1,
+    "§3": 1,
+    "§4": 1,
+    # §6A/§6B/§6C are cited by findings but carry no CONTRACT_CHECKS row of their own;
+    # they are phased here so validate_capability's partition gate can see them.
+    "§6": 1, "§6A": 1, "§6B": 1, "§6C": 1, "§6D": 1, "§6E": 1,
+    "§7": 1,
+    "§8": 1,
+    "§9": 1,
+    "§10": 1,
+    # -- Phase 2: needs an agent-authored artifact on disk ------------------------------
+    "§5": 2,            # validation_reports/judgment/
+    "§6F": 2, "§6G": 2, "§6H": 2,   # validation_reports/attestation/
+}
+
+# The refs that carry no CONTRACT_CHECKS row. Named so the completeness gate can tell
+# "phased but unregistered, deliberately" from "phased but unregistered, by accident".
+PHASE_ONLY_REFS: Set[str] = {"§6A", "§6B", "§6C"}
+
+
+def refs_in_phase(phase: int) -> Set[str]:
+    """Every §-ref registered to `phase`."""
+    return {ref for ref, p in CHECK_PHASE.items() if p == phase}
+
 
 # ─── Canonical DNA module registry ───────────────────────────────────────────
 DNA_MODULE_MAP: Dict[str, str] = {

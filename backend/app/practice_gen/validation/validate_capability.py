@@ -61,6 +61,9 @@ from pathlib import Path
 from typing import Any, Dict, List, Set
 
 from backend.app.practice_gen.compatibility import COMPATIBILITY, VARIANTS_BY_DNA
+from backend.app.practice_gen.validation._manifest import (
+    CHECK_PHASE as _MANIFEST_CHECK_PHASE,
+)
 
 # §8 inventory: the assertions this module can independently fail on. Each must be
 # proven by a mutation naming it in `Mutation.asserts`, or excused in
@@ -1352,9 +1355,12 @@ def validate_attester_plurality() -> List[str]:
 #
 # CHECK_PHASE is the registry, and it is the single source of truth: run_all
 # imports it rather than keeping a second copy that could disagree with this one.
+# Moved to _manifest 2026-09-09 and DERIVED here, not restated. The seam is harness-wide
+# -- §5 is Phase 2 for exactly the reason §6F is -- so a §6 module is the wrong owner of
+# the registry, and a second copy is what the original note ruled out. This view is the
+# §6 slice; the two gates below are unchanged and still read `CHECK_PHASE`.
 CHECK_PHASE: Dict[str, int] = {
-    "§6": 1, "§6A": 1, "§6B": 1, "§6C": 1, "§6D": 1, "§6E": 1,
-    "§6F": 2, "§6G": 2, "§6H": 2,
+    ref: phase for ref, phase in _MANIFEST_CHECK_PHASE.items() if ref.startswith("§6")
 }
 
 # Every §-ref a finding can cite, for the partition check below.
