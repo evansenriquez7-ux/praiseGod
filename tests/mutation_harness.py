@@ -1268,6 +1268,126 @@ MUTATIONS: List[Mutation] = [
         expect_output_contains=["FAIL formatters_reachable", "advertises 'cloze'"],
         baseline_must_not_contain=["advertises 'cloze'"],
     ),
+    # ---- §6's Phase 1 band: the four refs that were unproven while 75 findings sat
+    # ---- under them. Mandate 3 -- a gate you are about to clear findings under has to
+    # ---- be shown to work first. All four run the artifact-free half (0.1s, not 9.9s).
+    Mutation(
+        name="declarations_out_of_sync",
+        asserts=["capability_declarations_in_sync_6"],
+        description=(
+            "Edit the HAND-AUTHORED declarations without rebuilding the graph §6 reads. "
+            "data/knowledge_graph_g1_3.json is a build artifact of "
+            "scripts/rebuild_knowledge_graph.py over data/skeletons/vocab_annotation.json, "
+            "and nothing checked the two agreed -- so an author who edits the source and "
+            "forgets the rebuild has §6 validate a stale copy indefinitely, while §6's own "
+            "'no requires declaration' message points them at the file the validator does "
+            "not read. Found because `clause_not_in_competency` planted here first and "
+            "SURVIVED: the plant never reached the code the validator runs."
+        ),
+        edits={
+            "data/skeletons/vocab_annotation.json": (
+                '"id": "half_turn",\n          "clause": "half turn"',
+                '"id": "half_turn",\n          "clause": "half rotation"',
+            ),
+        },
+        command=["backend.app.practice_gen.validation.validate_capability", "--phase", "1"],
+        expected_check="§6 (the declarations validated are the ones an author wrote)",
+        expect_output_contains=["mat_g1_mg_q4_0 && does not match"],
+        baseline_must_not_contain=["does not match"],
+    ),
+    Mutation(
+        name="clause_not_in_competency",
+        asserts=["capability_provenance_6A"],
+        description=(
+            "Re-word a declared clause so the competency no longer contains it. §6A is the "
+            "half of the tiling rule that blocks INVENTION: without it an agent can declare "
+            "a requirement MATATAG never wrote, and §6C will then report it as provided or "
+            "not as if it were real. Plants in the declarations themselves, which is where "
+            "the defect would live."
+        ),
+        edits={
+            # The GENERATED graph, not the hand-authored source: `get_node_info` reads
+            # data/knowledge_graph_g1_3.json, which scripts/rebuild_knowledge_graph.py
+            # builds from vocab_annotation.json. Planting in the source made this
+            # mutation SURVIVE -- it never reached the code the validator runs
+            # (Mandate 2, second cause). That the two can disagree at all is now its own
+            # gate: `declarations_out_of_sync`.
+            "data/knowledge_graph_g1_3.json": (
+                '"id": "half_turn",\n          "clause": "half turn"',
+                '"id": "half_turn",\n          "clause": "half somersault"',
+            ),
+        },
+        command=['backend.app.practice_gen.validation.validate_capability', '--phase', '1'],
+        expected_check="§6A (a declared clause must be a literal substring of the competency)",
+        expect_output_contains=["half somersault && does not appear in the node's competency"],
+        baseline_must_not_contain=["does not appear in the node's competency"],
+    ),
+    Mutation(
+        name="competency_word_uncovered",
+        asserts=["capability_coverage_6B"],
+        description=(
+            "Delete a requirement so a competency word is covered by no clause. §6B is the "
+            "half of the tiling rule that blocks OMISSION -- the loophole that guts the "
+            "whole design, because an agent that cannot render 'half turn' could simply not "
+            "declare it and §6C would pass trivially. mat_g1_mg_q4_0's competency names "
+            "'half turn' explicitly."
+        ),
+        edits={
+            "data/knowledge_graph_g1_3.json": (
+                '        {\n          "kind": "range",\n          "id": "half_turn",\n'
+                '          "clause": "half turn"\n        },\n',
+                '',
+            ),
+        },
+        command=['backend.app.practice_gen.validation.validate_capability', '--phase', '1'],
+        expected_check="§6B (every content word of the competency is covered by some clause)",
+        expect_output_contains=["mat_g1_mg_q4_0 && are covered by no requirement"],
+        baseline_must_not_contain=["are covered by no requirement"],
+    ),
+    Mutation(
+        name="capability_provider_unregistered",
+        asserts=["capability_provision_6C"],
+        description=(
+            "Remove a capability's provider entry entirely. §6C is what converts 'an agent "
+            "decided this node was too hard' into a named build item, and it was unproven "
+            "while 74 §6D findings sat next to it. `0_and_5` is chosen because its entry is "
+            "a genuine variant provider -- ('pair', '0 and 5') on compose_decompose_to_10 -- "
+            "so deleting it moves a SATISFIED capability into the unprovided branch, which "
+            "is the transition the check exists to notice."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_capability.py": (
+                "    '0_and_5': {'variants': [('pair', '0 and 5'), "
+                "('pair', 'all ways to make 5')]},\n",
+                "    # planted mutation: provider entry deleted\n",
+            ),
+        },
+        command=['backend.app.practice_gen.validation.validate_capability', '--phase', '1'],
+        expected_check="§6C (every declared capability maps to something the node can produce)",
+        expect_output_contains=["'0_and_5' && register it in CAPABILITY_PROVIDERS"],
+        baseline_must_not_contain=["'0_and_5' && register it in CAPABILITY_PROVIDERS"],
+    ),
+    Mutation(
+        name="provider_is_only_a_bounds_catch_all",
+        asserts=["capability_nondiscriminating_bounds_6E"],
+        description=(
+            "Strip an entry's formatters so its only remaining provider is the 27-key "
+            "`bounds` list that 474 of 484 entries carry verbatim. §6E is §6D's twin -- §6D "
+            "catches the generic FORMATTER escape, §6E the generic BOUNDS escape -- and it "
+            "was the unproven one. A catch-all shared by all but ten entries makes no claim "
+            "about any capability in particular, so it must not rescue one."
+        ),
+        edits={
+            "backend/app/practice_gen/validation/validate_capability.py": (
+                "    '1st': {'formatters': ['cloze', 'mcq'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},\n",
+                "    '1st': {'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},\n",
+            ),
+        },
+        command=['backend.app.practice_gen.validation.validate_capability', '--phase', '1'],
+        expected_check="§6E (a `bounds` catch-all most of the table shares is not a provider)",
+        expect_output_contains=["'1st' && only reachable provider is a `bounds` catch-all"],
+        baseline_must_not_contain=["only reachable provider is a `bounds` catch-all"],
+    ),
     Mutation(
         name="contract_check_declares_no_phase",
         asserts=["check_phase_registry_8"],

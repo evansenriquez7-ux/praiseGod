@@ -85,6 +85,7 @@ ASSERTIONS = (
     "attester_reasoning_skeleton_6G",
     "attester_evidence_6G",
     "attester_plurality_6H",
+    "capability_declarations_in_sync_6",
     "capability_phase_boundary_6",
     "capability_phase_partition_6",
     "capability_contract",   # run_all's rollup print for the stage
@@ -1398,7 +1399,9 @@ def _declared_nodes(
             errs.append(
                 f"{node_id}: no 'requires' declaration. Add one to "
                 f"data/skeletons/vocab_annotation.json, authored from the competency text "
-                f"alone (see docs/pgen_hardening.md Part 1). Undeclared nodes are not skipped."
+                f"alone (see docs/pgen_hardening.md Part 1), then rebuild the graph this "
+                f"check reads: python scripts/rebuild_knowledge_graph.py. Undeclared nodes "
+                f"are not skipped."
             )
             continue
         if not isinstance(requires, list) or not requires:
@@ -1410,9 +1413,63 @@ def _declared_nodes(
     return rows, errs
 
 
+# The hand-authored source of the `requires` declarations. The knowledge graph the
+# validators read is BUILT from it by scripts/rebuild_knowledge_graph.py.
+_VOCAB_ANNOTATION_PATH = Path(__file__).resolve().parents[4] / "data" / "skeletons" / "vocab_annotation.json"
+_KNOWLEDGE_GRAPH_PATH = Path(__file__).resolve().parents[4] / "data" / "knowledge_graph_g1_3.json"
+
+
+def declaration_sync_failures() -> List[str]:
+    """
+    The declarations §6 validates must be the ones an author actually wrote.
+
+    `get_node_info` reads data/knowledge_graph_g1_3.json, which is a BUILD ARTIFACT that
+    scripts/rebuild_knowledge_graph.py generates from data/skeletons/vocab_annotation.json.
+    Nothing checked the two agreed. So an author who edits the hand-authored source and
+    does not rebuild has §6 validate a stale copy, silently and indefinitely -- and §6's
+    own "no 'requires' declaration" message tells them to edit exactly the file the
+    validator does not read.
+
+    Found 2026-09-09 by a mutation that SURVIVED: `clause_not_in_competency` planted a
+    bad clause in vocab_annotation.json and §6A never saw it (Mandate 2, second cause --
+    the plant did not reach the code the validator runs). The two copies happened to be
+    in sync at the time, so the drift had never bitten; nothing would have said so if it
+    had.
+
+    Phase 1: both files are checked into the repo and present on a fresh clone. Neither
+    is an agent-authored artifact.
+    """
+    errs: List[str] = []
+    try:
+        source = json.loads(_VOCAB_ANNOTATION_PATH.read_text(encoding="utf-8"))["nodes"]
+        built = json.loads(_KNOWLEDGE_GRAPH_PATH.read_text(encoding="utf-8"))["nodes"]
+    except (OSError, KeyError, json.JSONDecodeError) as exc:
+        return [
+            f"§6 declarations: could not compare the hand-authored declarations with the "
+            f"generated graph ({type(exc).__name__}: {exc}). Until they can be compared, "
+            f"§6 is validating a copy nobody has checked."
+        ]
+
+    for node_id in sorted(built):
+        for field in ("requires", "requires_ignore"):
+            want = source.get(node_id, {}).get(field)
+            got = built[node_id].get(field)
+            if (want or None) == (got or None):
+                continue
+            errs.append(
+                f"{node_id}: '{field}' in data/knowledge_graph_g1_3.json does not match "
+                f"data/skeletons/vocab_annotation.json, which is where it is authored. §6 "
+                f"validates the generated copy, so it is checking something nobody wrote. "
+                f"Rebuild with: python scripts/rebuild_knowledge_graph.py"
+            )
+    return errs
+
+
 def _phase1_findings(node_ids: List[str] | None) -> List[str]:
     """§6A/§6B/§6C/§6D/§6E over every registered node. Reads no agent-authored artifact."""
     rows, errs = _declared_nodes(node_ids)
+    # Before anything else: are these the declarations an author actually wrote?
+    errs = declaration_sync_failures() + errs
     for node_id, competency, requires, ignore in rows:
         errs += _validate_provenance(node_id, competency, requires)
         errs += _validate_coverage(node_id, competency, requires, ignore)
@@ -1579,10 +1636,20 @@ def validate_capability_declarations(node_ids: List[str] | None = None) -> List[
 
 
 if __name__ == "__main__":
+    import argparse
     import sys
 
-    phase1 = validate_capability_provision()
-    phase2 = validate_capability_attestation()
+    # --phase mirrors run_all's. Phase 1 is ~100x cheaper (0.1s against 9.9s: the
+    # attestation half re-renders every attested seed), so a mutation aimed at §6A-§6E
+    # should not pay for the corpus sweep -- "a check that is expensive to prove tends to
+    # end up unproven" is why validate_compat grew --only.
+    ap = argparse.ArgumentParser(description="§6 capability contract")
+    ap.add_argument("--phase", type=int, choices=(1, 2), default=None,
+                    help="1 = artifact-free (§6A-§6E); 2 = attestation (§6F-§6H)")
+    args = ap.parse_args()
+
+    phase1 = validate_capability_provision() if args.phase in (None, 1) else []
+    phase2 = validate_capability_attestation() if args.phase in (None, 2) else []
     failures = phase1 + phase2
     if failures:
         print(f"Capability contract: {len(failures)} failure(s) "

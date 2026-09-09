@@ -145,10 +145,6 @@ UNPROVEN_ASSERTIONS: Dict[str, str] = {
     "judgment_reviewer_plurality_5": "2026-09-08: one 'reviewed_by' identity spanning more than one blind batch. The §6H twin (attester_plurality_6H) IS proven",
     "judgment_reviews":             "2026-09-08: run_all's rollup print for §5; the sub-assertions above carry the proof",
     # ---- §6 validate_capability ----------------------------------------------------
-    "capability_provenance_6A":     "2026-09-08: a declared clause must be a literal substring of the competency. Unproven",
-    "capability_coverage_6B":       "2026-09-08: every content word of the competency must appear in some clause. Unproven",
-    "capability_provision_6C":      "2026-09-08: required subset of provided. Unproven; wildcard_provider plants at §6D, which recomputes provision with the generic-formatter family removed",
-    "capability_nondiscriminating_bounds_6E": "2026-09-08: a capability carried only by a `bounds` list most of the table shares. Unproven",
     "capability_unattested_6F":     "2026-09-08: a declared capability with no blind Attester verdict. Dominates by volume while the attestation queue is open, which is exactly why a mutation would be hard to tell from the backlog",
     "attester_evidence_6G":         "2026-09-08: a verdict with no reasoning, no cited seed, or a seed absent from its own packet. template_attestation proves the SKELETON-cluster path of §6G only",
     "capability_contract":          "2026-09-08: run_all's rollup print for §6; the sub-assertions above carry the proof",
