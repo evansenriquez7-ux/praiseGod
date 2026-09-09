@@ -518,24 +518,56 @@ def test_planted_mutation_bounds_only_provider_is_caught_by_name():
     import copy
     import re
 
+    from backend.app.practice_gen.registry import (
+        get_all_node_ids, get_node_competency_bounds, get_node_info,
+    )
+
     generic = {"mcq", "cloze", "true_false", "error_detect"}
     shared = VC._nondiscriminating_bounds()
 
+    # TARGET SEARCH WIDENED 2026-09-09. It used to scan live §6D findings, which worked
+    # only while some finding happened to ride the catch-all. Clearing 70 of the 75 §6D
+    # findings left only the five `draw*` gaps, and mat_g2_mg_q1_2's competency bounds
+    # contain NONE of the 27 catch-all keys -- so stripping its formatters left `by_bounds`
+    # empty and the run fell through to the "nothing reachable" branch, not §6E. The test
+    # failed while §6E was working perfectly.
+    #
+    # §6E needs BOTH halves of its condition, so search for both: an entry riding the
+    # catch-all, on a node whose own competency bounds actually contain one of those keys.
+    # A currently-SATISFIED entry is the better plant anyway -- it proves the check
+    # notices the transition, rather than re-reporting something already red.
     target = None
-    for e in VC.validate_capability_declarations():
-        m = re.match(r"^(\S+): competency requires '([^']+)'", e)
-        if m and "§6D" in e:
-            node, cap = m.groups()
-            if frozenset(VC.CAPABILITY_PROVIDERS.get(cap, {}).get("bounds") or []) in shared:
+    for node in get_all_node_ids():
+        node_bounds = get_node_competency_bounds(node) or {}
+        for req in (get_node_info(node) or {}).get("requires") or []:
+            cap = str(req.get("id"))
+            spec = VC.CAPABILITY_PROVIDERS.get(cap)
+            if not spec or spec.get("variants"):
+                continue
+            spec_bounds = spec.get("bounds") or []
+            if frozenset(spec_bounds) not in shared:
+                continue
+            if not any(k in node_bounds for k in spec_bounds):
+                continue
+            if [f for f in spec.get("formatters", []) if f not in generic]:
                 target = (node, cap)
                 break
-    assert target, "no entry rides the shared bounds catch-all; the mutation cannot be planted"
+        if target:
+            break
+    assert target, (
+        "no entry rides the shared bounds catch-all on a node whose competency bounds "
+        "name one of its keys, so §6E's condition cannot be planted. Repoint this test "
+        "rather than loosening it."
+    )
     node, cap = target
 
     original = copy.deepcopy(VC.CAPABILITY_PROVIDERS)
     try:
         spec = VC.CAPABILITY_PROVIDERS[cap]
-        spec["formatters"] = [f for f in spec.get("formatters", []) if f not in generic]
+        # ALL formatters, not just the generic family: the widened search deliberately
+        # picks an entry that a SPECIFIC formatter satisfies today, so leaving that one in
+        # place would keep the capability provided and nothing would fire.
+        spec["formatters"] = []
         spec["variants"] = []
 
         errs = [e for e in VC.validate_capability_declarations([node]) if cap in e]
@@ -820,3 +852,35 @@ def test_every_phase2_ref_is_registered_as_phase_2():
     assert VC.CHECK_PHASE["§6G"] == 2
     assert VC.CHECK_PHASE["§6H"] == 2
     assert {VC.CHECK_PHASE[r] for r in ("§6", "§6A", "§6B", "§6C", "§6D", "§6E")} == {1}
+
+
+def test_provision_reachability_honours_the_curriculum_gate():
+    """
+    A variant the MATATAG progression has not introduced at this node is not a provider.
+
+    §6C asks whether a node can PRODUCE what a clause names. `_provided_for_node` used
+    to intersect the DNA's declared variants with the node's competency bounds only --
+    it never consulted `CURRICULUM_VARIANT_GATES`, which `generate_context` enforces.
+    So a capability could be registered against a variant the pipeline refuses at that
+    grade/quarter, the §6D finding would clear, and the student path would still never
+    render it. That is the shape §6F reports as CONTRADICTED, and 83 of those were open
+    when this guard was added.
+
+    A NARROWING cannot be proven by a mutation: the mutation harness requires the
+    planted bug to make the validator FAIL, and removing this filter makes §6C quieter,
+    not louder (the same "caps findings from above" problem §2I has, guarded there by a
+    §7 census floor). So it is pinned here instead -- named as such in
+    `_provided_for_node`'s docstring rather than left to look like a proven gate.
+
+    mat_g2_mg_q4_3 is Grade 2 Quarter 4; `recognize_model` and `draw_construct` are
+    gated to Grade 3 Quarter 1, while `explain_difference` is gated to G2 Q4 and so is
+    genuinely reachable there.
+    """
+    reachable = VC._provided_for_node("mat_g2_mg_q4_3")["variants"]
+    assert "task_type=recognize_model" not in reachable
+    assert "task_type=draw_construct" not in reachable
+    assert "task_type=explain_difference" in reachable
+
+    # ... and the same values ARE reachable on the node the gate admits them at.
+    g3 = VC._provided_for_node("mat_g3_mg_q1_4")["variants"]
+    assert "task_type=recognize_model" in g3

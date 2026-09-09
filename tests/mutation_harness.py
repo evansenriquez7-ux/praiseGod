@@ -1379,13 +1379,18 @@ MUTATIONS: List[Mutation] = [
         ),
         edits={
             "backend/app/practice_gen/validation/validate_capability.py": (
-                "    '1st': {'formatters': ['cloze', 'mcq'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},\n",
-                "    '1st': {'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},\n",
+            # Repointed 2026-09-09: '1st' moved onto a SPECIFIC bounds list
+            # (['ordinal_range', 'max_ordinal']) when the ordinal band was cleared,
+            # so it no longer carries the catch-all this mutation needs.
+            # 'range_up_to_100' does, and mat_g1_na_q1_0 reaches it by a specific
+            # formatter today.
+                "    'range_up_to_100': {'formatters': ['cloze', 'emoji_pictorial', 'mcq', 'number_line_read'], 'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},\n",
+                "    'range_up_to_100': {'bounds': ['range', 'max_value', 'max_count', 'max_sum', 'max_minuend', 'minuend_max', 'max_product', 'max_result', 'max_total', 'max_subtrahend', 'min_minuend', 'min_subtrahend', 'min_a', 'ordinal_range', 'digit_count', 'operand_digits', 'skip_interval', 'skip_pool', 'denominators', 'table', 'tables', 'max_ordinal', 'factors', 'products', 'minuends', 'subtrahends', 'addends']},\n",
             ),
         },
         command=['backend.app.practice_gen.validation.validate_capability', '--phase', '1'],
         expected_check="§6E (a `bounds` catch-all most of the table shares is not a provider)",
-        expect_output_contains=["'1st' && only reachable provider is a `bounds` catch-all"],
+        expect_output_contains=["'range_up_to_100' && only reachable provider is a `bounds` catch-all"],
         baseline_must_not_contain=["only reachable provider is a `bounds` catch-all"],
     ),
     Mutation(

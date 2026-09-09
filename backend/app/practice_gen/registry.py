@@ -921,8 +921,13 @@ def _parse_competency_bounds(
 
     elif dna_name == "perimeter":
         if "identify and measure" in text or "appropriate tools" in text:
-            # mat_g2_mg_q4_4: Identify and measure the perimeter of a plane figure using appropriate tools
-            bounds["task_type"] = "identify_and_measure"
+            # mat_g2_mg_q4_4: Identify and measure the perimeter of a plane figure using
+            # appropriate tools. TWO tasks are named, not one: "identify and measure" AND
+            # "using appropriate tools", and perimeter.py implements both. Pinning the
+            # single value made `measure_tools` unreachable, so the node could never ask
+            # "Which measuring tool is most appropriate...?" -- the §2H defect class (a
+            # competency naming both cases bound to one), found via §6D's `tools` finding.
+            bounds["task_type"] = ["identify_and_measure", "measure_tools"]
         elif "find" in text or "using appropriate units" in text:
             # mat_g2_mg_q4_5: Find the perimeter of a plane figure using appropriate units (cm and m)
             bounds["task_type"] = "find_perimeter"

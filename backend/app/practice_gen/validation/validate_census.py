@@ -74,7 +74,13 @@ CENSUS_FLOORS = {
     # G3 Q3), and draw_construct + recognize_model (G2 Q4, gate G3 Q1). Each clause is
     # quoted in validate_compat's _PRODUCIBLE_FLOOR note; the count moved by exactly the
     # measured 10, which is the point of stating it here.
-    "variant_candidates": 964,
+    # 964 -> 975 on 2026-09-09, RAISED (a floor may always rise with the real number):
+    # order_of_operations declared `number_size`, probability_experiment declared
+    # `experiment_type`, and ordinal_numbers' task_type list went from two fictional
+    # values to the four its templates actually implement plus the new
+    # `describe_position`. Every one of those is a variant the review packets can now
+    # demonstrate and could not before.
+    "variant_candidates": 975,
 }
 
 # §8 inventory: the assertions this module can independently fail on. Derived from the

@@ -8634,3 +8634,131 @@ it is the per-phase discard loop executing, proving a red Phase 1 no longer supp
 §6 contract row contained the literal text "section ref" written with the section sign,
 which `_parse_contract_section_refs` matched as a ref the registry does not implement. The
 doc was fixed; the check was not touched.
+
+## 2026-09-09 — Phase 1 is green, and it is now a claim the runner can make
+
+### The gate had to exist before the queue could be called cleared
+
+`run_all` had no `--phase`, and 28 of the 35 contract refs carried no phase at all — the
+seam was decided per-ref for §6 the day before and nowhere else. So "Phase 1 is done"
+could only be asserted by running ten commands by hand and reading them, which the
+Definition of Done exists to forbid. `CHECK_PHASE` moved to `_manifest` and covers all 38
+refs; §5 is Phase 2 for the same reason §6F is. §8's `check_phase_registry_8` holds it
+against `CONTRACT_CHECKS` in both directions, because a registered check with no phase is
+dropped from EVERY `--phase` run while the tripwire still passes.
+
+### Then the gates, before the findings under them
+
+§6A/§6B/§6C/§6E were unproven while 75 findings sat beneath them (Mandate 3). Four
+mutations, on a new `--phase 1` half that costs 0.1s instead of 9.9s.
+
+**Two of them SURVIVED first, and that is the find.** `clause_not_in_competency` and
+`competency_word_uncovered` planted in `data/skeletons/vocab_annotation.json` — the file
+§6's own error message tells authors to edit. `get_node_info` does not read it. It reads
+`data/knowledge_graph_g1_3.json`, a BUILD ARTIFACT of
+`scripts/rebuild_knowledge_graph.py`, and nothing checked the two agreed. An author who
+edits the declarations and skips the rebuild has §6 validate a stale copy indefinitely.
+Mandate 2, second cause. The mutations are repointed at the graph the validator reads,
+and the drift is now its own Phase 1 gate (`declarations_out_of_sync`). The two were in
+sync when measured — which is exactly why it had never bitten and why nothing would have
+said so when it did.
+
+`_provided_for_node` also never consulted `CURRICULUM_VARIANT_GATES`, so §6C would have
+accepted a provider `generate_context` refuses at that grade/quarter — the shape §6F
+reports as CONTRADICTED, and 83 of those are open. Fixed before registering anything
+under it. It is a NARROWING, so no mutation can prove it (the harness needs the plant to
+make the validator FAIL, and removing the filter makes §6C quieter — the same "caps
+findings from above" problem §2I has). Pinned by a unit test and named as such.
+
+### §6 Phase 1: 75 → 5, and the 70 were registration, not capability
+
+Every clearance was rendered before it was registered. 45 provider entries named only the
+generic textual family while the DNA's own discriminating variant existed and produced
+the clause: `explain_difference` really does render "How is a flat surface different from
+a curved surface?"; `concept=rotation` really does render "An arrow faces UP. It does a
+half turn."; `experiment_type=die_roll` really does render a die-rolling experiment.
+
+Three DNAs were declaring variants nothing honoured — measured by rendering each declared
+value over six seeds and comparing the outputs:
+
+  * `ordinal_numbers.task_type` declared `['identify_position','identify_object']`, two
+    values **no item template has ever carried**. `generate_params` fell back to the whole
+    pool silently, so both produced byte-identical output. Replaced with the four the
+    templates implement; the fallback is now a named failure (Protocol 3).
+  * `order_of_operations` READ `number_size` and never declared it.
+  * `probability_experiment` READ `experiment_type` and had no VARIANTS_BY_DNA entry at all.
+
+And one capability was **built**, not registered. Every ordinal competency reads "Describe
+the position of OBJECTS using ordinal numbers" and not one rendered item contained an
+object. `describe_position` adds an enumerated line-up ("Ana, Ben, Carlo … stand in a row.
+Who is 3rd in the row?") plus a scalable form that still reaches a G3 ceiling of 100th, so
+§1A's reach is unaffected. Content Rule 4: MATATAG names it, so building it is the fix.
+
+Fixing the fictional task types made a **dead hint reachable** and it immediately tripped
+§1D on all three ordinal nodes: "The number 9 in a line is called the 9th" — and `line` is
+NOT_YET_KNOWN until mat_g3_mg_q1_4 introduces point/line/segment/ray. A latent vocabulary
+violation that only an unreachable branch had been hiding. Now "in order" / "in a row".
+
+`mat_g2_mg_q4_4`'s registry bound pinned `task_type='identify_and_measure'` for a
+competency reading "Identify and measure the perimeter of a plane figure using appropriate
+tools" — two named tasks bound to one, the §2H class, found through §6D's `tools` finding.
+`measure_tools` was implemented all along.
+
+### The residual 5 are one capability, and it is a real gap
+
+`draw_effect`, `draw_geometric_object`, `draw_line_relationships`, `draw`,
+`drawing_the_line_of_symmetry`. All five need a DRAWING SURFACE, which no formatter in the
+tree has. `draw_construct` renders MCQs *about* drawing technique and a blind Attester,
+shown ten samples and the clause, ruled it NOT_PROVIDED. Registering it is precisely how a
+§6F CONTRADICTED is manufactured. Floor 5, AT the count so a sixth fails immediately, and
+`wildcard_provider` clears it by an order of magnitude so §6D stays provable.
+
+### A defect this commit introduced, caught by its own run
+
+Broadening `_phase_refs` to the harness-wide registry made `_record_phase(1)` mark all 34
+Phase-1 refs executed **from inside the §6 stage**. The two-direction tripwire then passed
+only because the other stages happened to have run, and the misphased lookup crashed with
+`KeyError('§4')`. Re-scoped to §6, where it belongs. A run that claims a check ran because
+a registry lists it is the exact failure that block exists to catch.
+
+### Evidence
+
+```
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all --phase 1
+  PASS unit_tests (402 passed, 1 skipped, 2 deselected in 225.70s)
+  PASS DNA structural + feasibility (all concepts)
+  Compatibility validation: 13/13 check groups passed.
+    PASS formatters_reachable (37 (node, formatter) pair(s), floor 37)
+    PASS declared_variants_are_producible (0, floor 0)
+  Interest invariance: 12/12 passed, 0 failed.
+  PASS vocabulary gating audit (all nodes)
+  Nodes Checked: 151   Nodes Passed: 151   Nodes Failed: 0
+  PASS §1H applicability (all 151 nodes)
+  PASS capability_contract (Phase 1: all nodes declare, cite, cover, and are provided for)
+  PASS render_contract_floor_9: 0 broken renders (floor 0)
+  PASS grading_contract_floor_10: 0 mis-gradings (floor 0)
+  PASS assertion_coverage_8: 54/100 proven, 46 knowingly unproven
+  PASS census: nodes=151 unit_tests=403 mutations=56 variant_candidates=975
+  PASS contract_doc_matches_registry / operator_doc_covers_registry / two_direction
+  PHASE 1 PASSED SUCCESSFULLY! Praise God!
+  EXIT=0
+
+$ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.run_all --phase 2
+  skips the entire Phase 1 band; PASS two_direction_contract_match with only §5/§6F-H
+  in scope; EXIT=1 on the pre-existing 679 §5 / 90 §6 Phase-2 backlog.
+
+$ PYTHONPATH=. .venv/bin/python tests/mutation_harness.py
+  56/56 mutations detected.        (was 50; +1 phase registry, +4 §6 band, +1 sync)
+  Praise God — the verifier verifies.
+```
+
+§8 allowlist SHRANK 50 → 46 — its only permitted direction — because §8 refused to let the
+four newly-proven §6 entries stay on it.
+
+### Consequence to carry forward
+
+Generation changed on the three ordinal nodes, on mat_g2_mg_q4_4, and on every node whose
+variant-coverage seed map moved, so their §5 reviews and §6 attestations are STALE BY
+CONSTRUCTION and return to the blind queue. That is the ordering this work existed to
+protect: Phase 2 artifacts are judgments about specific rendered seeds, and they are now
+being filed against generation that will not move under them.

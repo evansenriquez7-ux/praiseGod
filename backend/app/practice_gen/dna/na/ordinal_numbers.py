@@ -69,6 +69,17 @@ def _ordinal_word(n: int) -> str:
     return f"{prefix}-{_ORDINAL_WORDS.get(ones, _ordinal_suffix(ones))}"
 
 
+# ─── line-up subjects ─────────────────────────────────────────────────────────
+# Every ordinal competency in G1-G3 reads "Describe the position of OBJECTS using
+# ordinal numbers". Until 2026-09-09 this DNA rendered ordinal-word recall only --
+# "Which word describes the 9th position?" -- with no object anywhere in the item, and
+# §6D reported `objects` as unprovided on all three nodes. MATATAG names it, so building
+# it is the fix (Content Rule 4). Names match the pool the rest of the tree uses
+# (order_of_operations._WP_ACTORS).
+_LINEUP_NAMES = ["Ana", "Ben", "Carlo", "Dina", "Elena", "Fidel", "Gina", "Hector",
+                 "Iris", "Jose"]
+
+
 # ─── item template pool ───────────────────────────────────────────────────────
 # Each template has:
 #   "range_key": which grade/range this template suits
@@ -122,6 +133,27 @@ _ITEM_TEMPLATES = [
         "template":  "Which position comes after {symbol}?",
         "task_type": "compare_positions",
         "answer_key": "next_symbol",
+        "choices_type": "symbols",
+    },
+    # describe_position — the clause "the position of objects". The enumerated form can
+    # only be used when the line-up is long enough to HAVE an {symbol} member, so
+    # generate_params falls back to the scalable form below for large ordinals; that is
+    # what keeps scalar 1.0 reaching a G3 ceiling of 100th (§1A) while still naming an
+    # object at every value.
+    {
+        "range_key": "1st_to_10th",
+        "template":  "{lineup} stand in a row. Who is {symbol} in the row?",
+        "task_type": "describe_position",
+        "answer_key": "object_at_position",
+        "choices_type": "names",
+        "needs_lineup": True,
+    },
+    {
+        "range_key": "any",
+        "template":  "The pupils stand in a row. {actor} is number {n} in the row. "
+                     "Which word describes {actor}'s position?",
+        "task_type": "describe_position",
+        "answer_key": "symbol",
         "choices_type": "symbols",
     },
 ]
@@ -201,15 +233,28 @@ def generate_params(
             except (TypeError, ValueError):
                 pass
 
-    range_level = profile.get("range", "1st_to_10th")
     task_type = profile.get("task_type") or rng.choice(
-        ["identify_ordinal", "find_position", "compare_positions"]
+        ["identify_ordinal", "find_position", "compare_positions", "describe_position"]
     )
 
-    # Filter templates matching task_type and grade range
+    # Filter templates matching task_type.
+    #
+    # This used to fall back to the WHOLE pool when nothing matched, silently. Until
+    # 2026-09-09 `VARIANTS_BY_DNA` declared task_type=['identify_position',
+    # 'identify_object'] -- two values no template has ever carried -- so every request
+    # for either hit that fallback and rendered an arbitrary item. The variant was
+    # accepted, honoured by nothing, and indistinguishable from working: measured, both
+    # values produced byte-identical output across six seeds. A silent fallback is
+    # exactly what Protocol 3 forbids; an unknown task_type is now a named failure.
     candidates = [t for t in _ITEM_TEMPLATES if t["task_type"] == task_type]
     if not candidates:
-        candidates = _ITEM_TEMPLATES
+        raise ValueError(
+            f"generate_params (ordinal_numbers): task_type={task_type!r} matches no item "
+            f"template (seed={seed}, grade={grade}). Implemented task types are "
+            f"{sorted({t['task_type'] for t in _ITEM_TEMPLATES})}. Declaring a variant no "
+            f"template carries renders an arbitrary item under a name that promises a "
+            f"specific one."
+        )
 
     template_def = rng.choice(candidates)
 
@@ -223,6 +268,14 @@ def generate_params(
     # If asking for next symbol, ensure n + 1 stays within curriculum bounds
     if template_def["answer_key"] == "next_symbol" and n >= max_ord:
         n = max(min_ord, max_ord - 1)
+
+    # An enumerated line-up cannot have a 47th member. Swap to the scalable
+    # describe_position form rather than clamping `n`, which would stop scalar 1.0
+    # reaching a G3 competency ceiling of 100th.
+    if template_def.get("needs_lineup") and n > len(_LINEUP_NAMES):
+        template_def = next(t for t in _ITEM_TEMPLATES
+                            if t["task_type"] == "describe_position"
+                            and not t.get("needs_lineup"))
 
     symbol  = _ordinal_suffix(n)
     word    = _ordinal_word(n)
@@ -241,6 +294,11 @@ def generate_params(
             n2 = rng.randint(min_ord, max_ord)
         symbol2 = _ordinal_suffix(n2)
         answer  = symbol if n < n2 else symbol2
+    elif answer_key == "object_at_position":
+        # The line-up IS the object set the clause names; the answer is the object
+        # standing at the nth place, and the distractors are the others in the line.
+        lineup = _LINEUP_NAMES[:max(n, 4)]
+        answer = lineup[n - 1]
     elif answer_key == "next_symbol":
         answer = _ordinal_suffix(n + 1)
         n2, symbol2 = None, None
@@ -250,6 +308,11 @@ def generate_params(
     # Render question text
     tpl = template_def["template"]
     ctx: Dict[str, Any] = {"n": n, "symbol": symbol, "word": word}
+    if "{lineup}" in tpl:
+        names = _LINEUP_NAMES[:max(n, 4)]
+        ctx["lineup"] = ", ".join(names[:-1]) + " and " + names[-1]
+    if "{actor}" in tpl:
+        ctx["actor"] = _LINEUP_NAMES[(n - 1) % len(_LINEUP_NAMES)]
     if "symbol2" in tpl:
         if "n2" not in locals() or n2 is None:
             n2 = rng.randint(min_ord, max_ord)
@@ -265,6 +328,20 @@ def generate_params(
     curriculum_max = bounds["max_ordinal"]
     # Generate 3 unique distractors strictly within [min_ord, curriculum_max]
     distractors = []
+    if answer_key == "object_at_position":
+        # Distractors are the other objects in the same line -- an ordinal would not be
+        # a plausible wrong answer to "who is 3rd?", and would key a different skill.
+        others = [nm for nm in _LINEUP_NAMES[:max(n, 4)] if nm != answer]
+        rng.shuffle(others)
+        return {
+            "blank_target": "answer",
+            "n": n, "symbol": symbol, "word": word,
+            "question_text": question_text,
+            "answer": answer,
+            "task_type": task_type,
+            "distractors": others[:3],
+        }
+
     other_ns = [cand_n for cand_n in range(min_ord, curriculum_max + 1) if cand_n != n]
     rng.shuffle(other_ns)
 
@@ -312,13 +389,18 @@ def generate_hints(
 
     if task_type == "identify_ordinal":
         hints.append(f"Ordinal numbers describe {pos_label} in order.")
-        hints.append(f"The number {n} in a line is called the {symbol} ({word}).")
+        hints.append(f"The number {n} in order is called the {symbol} ({word}).")
         hints.append(f"Remember: 1st = first, 2nd = second, 3rd = third, then add -th.")
 
     elif task_type == "find_position":
         hints.append(f"'{word.capitalize()}' is an {ord_label} word.")
-        hints.append(f"Count positions starting from 1: 1st, 2nd, 3rd, … until you reach {word}.")
+        hints.append(f"Count positions from the start: 1st, 2nd, 3rd, … until you reach {word}.")
         hints.append(f"{word.capitalize()} = position {n}, written as {symbol}.")
+
+    elif task_type == "describe_position":
+        hints.append(f"Count the objects in order from the front: 1st, 2nd, 3rd, …")
+        hints.append(f"The {symbol} ({word}) place is position number {n}.")
+        hints.append(f"Find the object standing at position {n}.")
 
     else:  # compare_positions
         hints.append(f"Smaller ordinal numbers come earlier (closer to the start).")

@@ -598,7 +598,13 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     },
 
     "ordinal_numbers": {
-        "task_type": ["identify_position", "identify_object"],
+        # The four task types ordinal_numbers.py really implements. It declared
+        # ["identify_position", "identify_object"] until 2026-09-09 -- two values no
+        # item template has ever carried, so both fell through a silent fallback and
+        # rendered arbitrary items. `describe_position` is new, built because every
+        # ordinal competency reads "the position of OBJECTS" and nothing rendered one.
+        "task_type": ["identify_ordinal", "find_position", "compare_positions",
+                      "describe_position"],
     },
 
     "place_value": {
@@ -677,6 +683,11 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
         # was never mapped to a node before.
         "operation_mix": ["add_only", "mixed_add_sub"],
         "num_operands": ["three_terms", "four_terms"],
+        # Declared 2026-09-09. order_of_operations.py has always READ number_size (verified
+        # by rendering: 1_digit -> "3 + 9 + 6 + 7", 2_digit -> "74 - 19 + 70 + 46"), but it
+        # was only an axes_catalog axis, so nothing could name it as the provider for the
+        # "up to 2 digits" both competencies state.
+        "number_size": ["1_digit", "2_digit"],
         "context": ["pure", "word_problem"],
     },
 
@@ -804,6 +815,15 @@ VARIANTS_BY_DNA: Dict[str, Dict[str, List[str]]] = {
     "probability_language": {
         "scenario_type": ["certain_impossible", "equally_likely", "comparative", "superlative", "likely_unlikely"],
         "context": ["colored_objects", "coins", "spinners", "weather"],
+    },
+
+    "probability_experiment": {
+        # probability_experiment.py has always READ `experiment_type`
+        # (`profile.get("experiment_type") or rng.choice([...])`) and declares it as its
+        # own difficulty axis, but this table had no entry at all -- so nothing could name
+        # it as the provider for the sub-cases mat_g3_dp_q3_0's competency states verbatim:
+        # "(e.g., rolling a die or tossing a coin)". Verified by rendering all four values.
+        "experiment_type": ["coin_toss", "die_roll", "spinner", "colored_tiles"],
     },
 }
 
