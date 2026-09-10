@@ -75,6 +75,36 @@ VOCAB_REPEATING  = VocabGated(requires_vocab="repeating",  preferred="repeating"
 # 'm' pulled from elsewhere in the pool across other seeds).
 _LETTER_POOL = [c for c in "abcdefghijklmnop" if c not in ("g", "l", "m")]
 
+# A CONTIGUOUS slice of the alphabet, for ASCENDING/DESCENDING letter runs.
+# _LETTER_POOL above deliberately has holes, which is harmless for a repeating cycle
+# (any letters will do) and wrong for a run: "e, f, h, i" drawn from a holed pool is
+# not an alphabetical sequence at all, it silently skips g. This window is contiguous
+# AND avoids g/l/m for the same unit-abbreviation reason, which is what constrains it
+# to n-z (13 letters) rather than a-m -- the longest contiguous stretch the vocabulary
+# gate leaves available.
+#
+# STEP IS 1, and that is a measured constraint rather than a preference. A 7-term run
+# at step 2 spans 13 letters, which is the whole window, so `start` has exactly one
+# legal value and EVERY step-2 item is the identical sequence "n, p, r, t, v, x" --
+# observed twice in the first four samples when the cap was 2. A degenerate item that
+# renders the same content on every seed is a variety defect (§1F) dressed up as a
+# sub-case. Widen the window before raising this.
+_ALPHA_RUN_WINDOW = "nopqrstuvwxyz"
+_ALPHA_RUN_MAX_STEP = 1
+
+# The longest repeating unit a LETTER cycle may use. mat_g1_na_q3_6 prints its own
+# letter example as a THREE-letter unit ("letters: a, b, c, a, b, c, a, __, __")
+# beside a two-element numeric one ("numbers: 2, 4, 2, 4__, __"), and the grade
+# cycle_length bound -- (2, 3) at G1, truncated by int() through linear_interpolate --
+# resolved to 2 at every difficulty below 1.0. Measured 2026-09-10: 38 of 38 sampled
+# letter patterns on that node were 2-element, so the example the competency literally
+# spells out was unreachable. Ceiling of 5 per the owner's 2026-09-10 ruling ("up to
+# 5-letter repeating patterns"); the floor is 3 because that is what the competency
+# prints. The NUMERIC path keeps its grade bound untouched -- a five-term numeric cycle
+# at G1 is a different cognitive load and no competency names one (Content Rule 2).
+_LETTER_CYCLE_MIN_HI = 3
+_LETTER_CYCLE_MAX_HI = 5
+
 
 # ─── helpers ──────────────────────────────────────────────────────────────────
 
@@ -132,6 +162,14 @@ def generate_params(
 
     num_diff_scalar = diff_scalar
 
+    # Letters are allowed only where the COMPETENCY names them; registry.py binds
+    # `element_pool` from the competency text so this DNA never sees a node id
+    # (Scaling Mandate 4). mat_g1_na_q3_7 reads "using objects, images, or numbers"
+    # and named no letters, yet the identify_valid branch below offered a "letters"
+    # modality on it -- building what a competency does not name is invention
+    # (Content Rule 4), and this gate is what stops it.
+    letters_allowed = profile.get("element_pool") == "numbers_and_letters"
+
     pattern_type = profile.get("pattern_type", "growing")
     if pattern_type == "growing":
         pattern_type = "arithmetic_increasing"
@@ -181,7 +219,10 @@ def generate_params(
             cycle_len = rng.randint(cyc_lo, cyc_hi)
             # "Create repeating patterns using objects, images, or numbers" (mat_g1_na_q3_7)
             # supports three modalities: objects/shapes, letters, and numbers.
-            modality = rng.choice(["objects", "letters", "numbers"])
+            modality = rng.choice(
+                ["objects", "letters", "numbers"] if letters_allowed
+                else ["objects", "numbers"]
+            )
             if modality == "objects":
                 candidates = ["square", "triangle", "rectangle"]
                 cycle = rng.sample(candidates, min(cycle_len, len(candidates)))
@@ -300,8 +341,19 @@ def generate_params(
         # keep dominating, but letters now genuinely appear (blind review
         # of mat_g1_na_q3_6: "not a single sample across all 14 seeds uses
         # letters").
-        use_letters = rng.random() < 0.35
+        use_letters = letters_allowed and rng.random() < 0.35
         if use_letters:
+            # Widen the unit length for LETTERS only, and only upward, with an extra
+            # draw taken inside this branch so numeric cycles keep their exact rng
+            # stream and their content does not churn. An explicitly pinned cycle_hi
+            # still wins -- a caller asking for a 2-cycle gets one.
+            letter_hi = int(round(linear_interpolate(
+                _LETTER_CYCLE_MIN_HI, _LETTER_CYCLE_MAX_HI, diff_scalar)))
+            if "cycle_hi" in profile:
+                letter_hi = min(letter_hi, cyc_hi)
+            letter_hi = min(letter_hi, len(_LETTER_POOL))
+            if letter_hi > cycle_len:
+                cycle_len = rng.randint(cycle_len, letter_hi)
             candidates = _LETTER_POOL
             cycle = rng.sample(_LETTER_POOL, min(cycle_len, len(_LETTER_POOL)))
         else:
@@ -325,6 +377,43 @@ def generate_params(
         sequence = _make_repeating_sequence(0, cycle, seq_length + 1)
         step = 0
         rule = f"Repeat the group: {', '.join(map(str, cycle))}"
+    elif (pattern_type in ("arithmetic_increasing", "arithmetic_decreasing")
+          and letters_allowed and rng.random() < 0.35):
+        # ASCENDING / DESCENDING ALPHABETIC PATTERNS. mat_g2_na_q2_8 reads "Determine
+        # the next term/s in increasing or decreasing patterns, e.g., numbers, LETTERS
+        # and ..." -- letters in an increasing or decreasing pattern is a sub-case the
+        # competency names in its own words. Measured 2026-09-10, the node produced
+        # ZERO of them: every letter sequence it emitted was a REPEATING cycle
+        # ("n, b, n, b, n, b"), because `use_letters` lived entirely inside the
+        # repeating branch and the arithmetic branches were numeric-only. Building the
+        # verb a competency names is the fix, not scope creep (Content Rule 4).
+        #
+        # The competency's "and repetitions" clause is why repeating letter cycles ALSO
+        # belong on this node -- it names repetition as one of its own sub-cases -- so
+        # this branch is additional to that one, not a replacement for it.
+        #
+        # Drawn only when the competency allows letters, so nodes that name none keep
+        # their exact rng stream and their numeric content does not churn.
+        step = rng.randint(1, _ALPHA_RUN_MAX_STEP)
+        span = step * seq_length
+        if span > len(_ALPHA_RUN_WINDOW) - 1:
+            raise ValueError(
+                f"generate_params (patterns): an alphabetic run of {seq_length + 1} "
+                f"terms at step {step} needs {span + 1} letters but "
+                f"_ALPHA_RUN_WINDOW holds {len(_ALPHA_RUN_WINDOW)}. Widen the window "
+                f"or lower _ALPHA_RUN_MAX_STEP; do not silently shorten the sequence. "
+                f"(grade={grade}, seed={seed}, profile={difficulty_profile})"
+            )
+        start = rng.randint(0, len(_ALPHA_RUN_WINDOW) - 1 - span)
+        indices = [start + i * step for i in range(seq_length + 1)]
+        decreasing = pattern_type == "arithmetic_decreasing"
+        if decreasing:
+            indices.reverse()
+        sequence = [_ALPHA_RUN_WINDOW[i] for i in indices]
+        step = -step if decreasing else step
+        rule = (f"Go back {abs(step)} letter{'s' if abs(step) > 1 else ''} each time"
+                if decreasing else
+                f"Move forward {step} letter{'s' if step > 1 else ''} each time")
     elif pattern_type == "arithmetic_decreasing":
         pairs = []
         for s in range(step_lo, step_hi + 1):
@@ -423,7 +512,28 @@ def generate_params(
         # branch (see that file's own fix comment).
         result_dict["base_pattern"] = cycle
         result_dict["period"] = len(cycle)
-    if isinstance(answer, str):
+    if isinstance(answer, str) and answer in _ALPHA_RUN_WINDOW and step != 0:
+        # An alphabetic RUN deserves near-miss distractors -- the letters just before
+        # and after the correct one, which is the mistake a pupil actually makes --
+        # rather than three unrelated letters from the repeating-cycle pool. Drawn from
+        # the same contiguous window, so no distractor is g/l/m either.
+        idx = _ALPHA_RUN_WINDOW.index(answer)
+        near = [_ALPHA_RUN_WINDOW[i] for i in (idx - 2, idx - 1, idx + 1, idx + 2)
+                if 0 <= i < len(_ALPHA_RUN_WINDOW)
+                and _ALPHA_RUN_WINDOW[i] not in visible
+                and _ALPHA_RUN_WINDOW[i] != answer]
+        pool = [c for c in _ALPHA_RUN_WINDOW if c not in visible and c != answer
+                and c not in near]
+        rng.shuffle(pool)
+        chosen = (near + pool)[:3]
+        if len(chosen) < 3:
+            raise ValueError(
+                f"generate_params (patterns): only {len(chosen)} distractor(s) "
+                f"available for alphabetic answer {answer!r} against visible "
+                f"{visible}. (grade={grade}, seed={seed}, profile={difficulty_profile})"
+            )
+        result_dict["distractors"] = chosen
+    elif isinstance(answer, str):
         # A letter answer can't use the shared numeric-offset distractor
         # padding (base_generator's type-consistency guard correctly
         # skips it for a string correct_answer), so without explicit

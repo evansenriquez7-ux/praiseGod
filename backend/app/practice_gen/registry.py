@@ -964,6 +964,17 @@ def _parse_competency_bounds(
             bounds["pattern_type"] = "increasing_decreasing_or_repeating"
         elif "increasing" in text and "decreasing" in text:
             bounds["pattern_type"] = "increasing_or_decreasing"
+        # Whether this node's pattern elements may be LETTERS is a property of the
+        # competency, not of the node id: mat_g1_na_q3_6 prints "letters: a, b, c, a, b,
+        # c, a, __, __" as its own worked example and mat_g2_na_q2_8 lists "numbers,
+        # letters and ..." among its sub-cases, while mat_g1_na_q3_7 reads "using
+        # objects, images, or numbers" and names no letters at all -- yet patterns.py's
+        # identify_valid branch offered a "letters" modality on all three, which for
+        # q3_7 is invention (Content Rule 4). Bound here so the DNA never has to know a
+        # node id, and so a grade-7 competency that names letters gets them on the day
+        # it is written (Scaling Mandate 4).
+        if "letter" in text:
+            bounds["element_pool"] = "numbers_and_letters"
         if "missing term" in text:
             bounds["ask_type"] = "missing"
         elif "next term" in text:

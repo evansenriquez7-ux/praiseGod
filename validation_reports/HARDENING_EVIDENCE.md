@@ -9309,3 +9309,104 @@ $ PYTHONPATH=. .venv/bin/python -m backend.app.practice_gen.validation.validate_
 
 No seed accompanies these: no generator was changed. `mat_g1_na_q4_6` renders 0 visuals at every
 one of seeds 1-150, which is §5c's open defect, not a failure introduced here.
+
+---
+
+## 2026-09-10 — §5b: the letter sub-cases MATATAG prints, which the pipeline could not produce
+
+### What the competencies actually say, and what was measured against them
+
+```
+mat_g1_na_q3_6  "Determine the next term/s in a repeating pattern ... (e.g., numbers:
+                 2, 4, 2, 4__, __; LETTERS: a, b, c, a, b, c, a, __, __)."
+mat_g2_na_q2_8  "Determine the next term/s in INCREASING OR DECREASING patterns, e.g.,
+                 numbers, LETTERS and rhythmic properties, visual elements in arts,
+                 AND REPETITIONS."
+mat_g1_na_q3_7  "Create repeating patterns using objects, images, or numbers."
+```
+
+Measured 2026-09-10 over 150-300 rendered student-path seeds per node:
+
+| node | before | after |
+|---|---|---|
+| `mat_g1_na_q3_6` letter unit lengths | **2 only** (38/38) | 2, 3, 4 at ordinary difficulty; 2-5 at max |
+| `mat_g2_na_q2_8` ascending/descending letters | **0** | 74 of 107 letter items, 14 distinct sequences |
+| `mat_g1_na_q3_7` letter items | present | **0** — the competency names none |
+
+The G1 node could not render the example its own competency spells out. The G2 node named
+letters in an increasing-or-decreasing competency and produced only repeating letter cycles
+(`n, b, n, b, n, b`). Both are Content Rule 4 gaps: the competency names the sub-case, so
+building it is the fix.
+
+### The judgment the brief asked for, answered from the competency text
+
+*"Separately judge whether a REPEATING letter pattern belongs on an INCREASING OR DECREASING
+node at all; if it does not, that is a `competency_alignment` defect in its own right."*
+
+It belongs, and it is not a defect. `mat_g2_na_q2_8`'s competency ends "**and repetitions**" —
+repetition is one of the sub-cases it names in its own words, alongside increasing and
+decreasing. The registry already encodes this (`pattern_type = increasing_decreasing_or_repeating`,
+the only node with that composite bound). So the ascending/descending work is ADDITIONAL to the
+repeating cycles, not a replacement for them, and both now appear.
+
+### A third defect that fell out: letters on a competency that names none
+
+`mat_g1_na_q3_7` reads "using objects, images, or numbers". Its `identify_valid` branch offered
+`rng.choice(["objects", "letters", "numbers"])`. A letter is not an object and not an image;
+that modality was invention (Content Rule 4, the forbidden direction). It is gated off now.
+
+### How it is gated — no node id anywhere
+
+`registry.py` binds `element_pool = "numbers_and_letters"` when the node's COMPETENCY TEXT
+contains "letter". The DNA reads that bound and nothing else. A grade-7 competency that names
+letters gets them on the day it is written (Scaling Mandate 4), and a competency that does not
+name them cannot get them by accident.
+
+**Named limitation:** the binding keys on the word "letter" in the competency. A competency that
+names the sub-case some other way ("alphabetical patterns") would not be caught, and the honest
+fix is a richer competency parse, not a lower threshold.
+
+### Two constraints that are measurements, not preferences
+
+* **Alphabetic runs are drawn from `n`-`z`, not `a`-`z`.** The repeating-cycle pool excludes
+  `g`/`l`/`m` because a lone letter reads as a unit abbreviation (gram/liter/meter) and trips
+  §1D — that exclusion is already recorded in `_LETTER_POOL`'s own comment, from a live failure
+  on "seed 43's letter cycle ['e','h',...] on stray 'g'". A cycle can tolerate a holed pool; a
+  RUN cannot, because "e, f, h, i" silently skips g and is not alphabetical at all. `n`-`z` is
+  the longest contiguous stretch the vocabulary gate leaves available.
+* **Run step is 1, and that is forced.** At step 2 a 7-term run spans all 13 letters, so `start`
+  has exactly one legal value and every step-2 item renders the identical `n, p, r, t, v, x` —
+  observed twice in the first four samples while the cap was 2. A degenerate item that renders
+  the same content on every seed is a variety defect (§1F) dressed as a sub-case. The cap is
+  documented as "widen the window before raising this".
+
+Distractors for a run answer are the near-miss neighbours in the same window (the mistake a pupil
+actually makes), and the branch raises rather than shipping fewer than three.
+
+### Churn, measured as required
+
+```
+§5   1013 -> 1020  (+7)   The six `patterns` nodes now carry 46 §5 freshness findings.
+§6 Phase 2  211 -> 211    b09_mat_g2_na_q2_8 swapped its reason (unadjudicable at seed 11
+                          -> STALE on the stem at seed 11); one record, one finding either way.
+```
+
+Changing a generator invalidates Phase 2 artifacts by construction. These six nodes need
+re-review and re-attestation, and their existing verdicts are about content that no longer
+renders.
+
+### Evidence
+
+```
+$ render sweep, all six `patterns` nodes, stratified + max-difficulty + variant-coverage seeds
+  mat_g1_na_q3_6 119 seeds, 0 errors      mat_g2_na_q2_9 118 seeds, 0 errors
+  mat_g1_na_q3_7 118 seeds, 0 errors      mat_g3_na_q3_5 119 seeds, 0 errors
+  mat_g2_na_q2_8 119 seeds, 0 errors      mat_g3_na_q3_6 118 seeds, 0 errors
+
+$ mat_g1_na_q3_6 at max difficulty, letter unit lengths
+  {2: 10, 3: 17, 4: 19, 5: 27}   e.g. L=3 'p e b p e b'   L=5 'i c b n a i'
+
+$ mat_g2_na_q2_8, 300 seeds
+  74 alphabetic runs / 33 repeating cycles / 14 distinct run sequences
+  'q r s t u v'  't u v w x y'  'u t s r q p'  'z y x w v u'  'p q r s t u'  'x w v u t s'
+```
